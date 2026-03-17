@@ -85,6 +85,11 @@ export type BillingGroup = import("./billingGroup").BillingGroup;
 export const BillingGroup: typeof import("./billingGroup").BillingGroup = null as any;
 utilities.lazyLoad(exports, ["BillingGroup"], () => require("./billingGroup"));
 
+export { ByocAwsEntityArgs, ByocAwsEntityState } from "./byocAwsEntity";
+export type ByocAwsEntity = import("./byocAwsEntity").ByocAwsEntity;
+export const ByocAwsEntity: typeof import("./byocAwsEntity").ByocAwsEntity = null as any;
+utilities.lazyLoad(exports, ["ByocAwsEntity"], () => require("./byocAwsEntity"));
+
 export { CassandraArgs, CassandraState } from "./cassandra";
 export type Cassandra = import("./cassandra").Cassandra;
 export const Cassandra: typeof import("./cassandra").Cassandra = null as any;
@@ -969,6 +974,8 @@ const _module = {
                 return new AzureVpcPeeringConnection(name, <any>undefined, { urn })
             case "aiven:index/billingGroup:BillingGroup":
                 return new BillingGroup(name, <any>undefined, { urn })
+            case "aiven:index/byocAwsEntity:ByocAwsEntity":
+                return new ByocAwsEntity(name, <any>undefined, { urn })
             case "aiven:index/cassandra:Cassandra":
                 return new Cassandra(name, <any>undefined, { urn })
             case "aiven:index/cassandraUser:CassandraUser":
@@ -1146,6 +1153,7 @@ pulumi.runtime.registerResourceModule("aiven", "index/azurePrivatelink", _module
 pulumi.runtime.registerResourceModule("aiven", "index/azurePrivatelinkConnectionApproval", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/azureVpcPeeringConnection", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/billingGroup", _module)
+pulumi.runtime.registerResourceModule("aiven", "index/byocAwsEntity", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/cassandra", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/cassandraUser", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/clickhouse", _module)

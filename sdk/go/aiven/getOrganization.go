@@ -50,9 +50,9 @@ func LookupOrganization(ctx *pulumi.Context, args *LookupOrganizationArgs, opts 
 
 // A collection of arguments for invoking getOrganization.
 type LookupOrganizationArgs struct {
-	// ID of the organization.
+	// Organization ID. Exactly one of the fields must be specified: `id` or `name`.
 	Id *string `pulumi:"id"`
-	// Name of the organization.
+	// Name of the organization. Exactly one of the fields must be specified: `id` or `name`.
 	Name     *string                  `pulumi:"name"`
 	Timeouts *GetOrganizationTimeouts `pulumi:"timeouts"`
 }
@@ -61,10 +61,10 @@ type LookupOrganizationArgs struct {
 type LookupOrganizationResult struct {
 	// Timestamp in ISO 8601 format, always in UTC.
 	CreateTime string `pulumi:"createTime"`
-	// ID of the organization.
-	Id *string `pulumi:"id"`
-	// Name of the organization.
-	Name *string `pulumi:"name"`
+	// Organization ID. Exactly one of the fields must be specified: `id` or `name`.
+	Id string `pulumi:"id"`
+	// Name of the organization. Exactly one of the fields must be specified: `id` or `name`.
+	Name string `pulumi:"name"`
 	// Tenant identifier. **Deprecated**: This field is deprecated and will be removed in the next major release.
 	//
 	// Deprecated: This field is deprecated and will be removed in the next major release.
@@ -85,9 +85,9 @@ func LookupOrganizationOutput(ctx *pulumi.Context, args LookupOrganizationOutput
 
 // A collection of arguments for invoking getOrganization.
 type LookupOrganizationOutputArgs struct {
-	// ID of the organization.
+	// Organization ID. Exactly one of the fields must be specified: `id` or `name`.
 	Id pulumi.StringPtrInput `pulumi:"id"`
-	// Name of the organization.
+	// Name of the organization. Exactly one of the fields must be specified: `id` or `name`.
 	Name     pulumi.StringPtrInput           `pulumi:"name"`
 	Timeouts GetOrganizationTimeoutsPtrInput `pulumi:"timeouts"`
 }
@@ -116,14 +116,14 @@ func (o LookupOrganizationResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationResult) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// ID of the organization.
-func (o LookupOrganizationResultOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupOrganizationResult) *string { return v.Id }).(pulumi.StringPtrOutput)
+// Organization ID. Exactly one of the fields must be specified: `id` or `name`.
+func (o LookupOrganizationResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOrganizationResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Name of the organization.
-func (o LookupOrganizationResultOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupOrganizationResult) *string { return v.Name }).(pulumi.StringPtrOutput)
+// Name of the organization. Exactly one of the fields must be specified: `id` or `name`.
+func (o LookupOrganizationResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOrganizationResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Tenant identifier. **Deprecated**: This field is deprecated and will be removed in the next major release.

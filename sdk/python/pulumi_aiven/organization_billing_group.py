@@ -184,7 +184,6 @@ class _OrganizationBillingGroupState:
                  billing_emails: Optional[pulumi.Input[Sequence[pulumi.Input['OrganizationBillingGroupBillingEmailArgs']]]] = None,
                  billing_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  billing_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 currency: Optional[pulumi.Input[_builtins.str]] = None,
                  custom_invoice_text: Optional[pulumi.Input[_builtins.str]] = None,
                  organization_id: Optional[pulumi.Input[_builtins.str]] = None,
                  payment_method: Optional[pulumi.Input['OrganizationBillingGroupPaymentMethodArgs']] = None,
@@ -199,7 +198,6 @@ class _OrganizationBillingGroupState:
         :param pulumi.Input[Sequence[pulumi.Input['OrganizationBillingGroupBillingEmailArgs']]] billing_emails: Required property. List of billing contact emails.
         :param pulumi.Input[_builtins.str] billing_group_id: Billing group ID.
         :param pulumi.Input[_builtins.str] billing_group_name: Billing Group Name. Maximum length: `128`.
-        :param pulumi.Input[_builtins.str] currency: Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
         :param pulumi.Input[_builtins.str] custom_invoice_text: Extra billing text. Maximum length: `256`.
         :param pulumi.Input[_builtins.str] organization_id: ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
         :param pulumi.Input['OrganizationBillingGroupPaymentMethodArgs'] payment_method: Required property. Payment method.
@@ -216,8 +214,6 @@ class _OrganizationBillingGroupState:
             pulumi.set(__self__, "billing_group_id", billing_group_id)
         if billing_group_name is not None:
             pulumi.set(__self__, "billing_group_name", billing_group_name)
-        if currency is not None:
-            pulumi.set(__self__, "currency", currency)
         if custom_invoice_text is not None:
             pulumi.set(__self__, "custom_invoice_text", custom_invoice_text)
         if organization_id is not None:
@@ -290,18 +286,6 @@ class _OrganizationBillingGroupState:
     @billing_group_name.setter
     def billing_group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "billing_group_name", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def currency(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
-        """
-        return pulumi.get(self, "currency")
-
-    @currency.setter
-    def currency(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "currency", value)
 
     @_builtins.property
     @pulumi.getter(name="customInvoiceText")
@@ -493,7 +477,6 @@ class OrganizationBillingGroup(pulumi.CustomResource):
             __props__.__dict__["timeouts"] = timeouts
             __props__.__dict__["vat_id"] = vat_id
             __props__.__dict__["billing_group_id"] = None
-            __props__.__dict__["currency"] = None
         super(OrganizationBillingGroup, __self__).__init__(
             'aiven:index/organizationBillingGroup:OrganizationBillingGroup',
             resource_name,
@@ -509,7 +492,6 @@ class OrganizationBillingGroup(pulumi.CustomResource):
             billing_emails: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OrganizationBillingGroupBillingEmailArgs', 'OrganizationBillingGroupBillingEmailArgsDict']]]]] = None,
             billing_group_id: Optional[pulumi.Input[_builtins.str]] = None,
             billing_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-            currency: Optional[pulumi.Input[_builtins.str]] = None,
             custom_invoice_text: Optional[pulumi.Input[_builtins.str]] = None,
             organization_id: Optional[pulumi.Input[_builtins.str]] = None,
             payment_method: Optional[pulumi.Input[Union['OrganizationBillingGroupPaymentMethodArgs', 'OrganizationBillingGroupPaymentMethodArgsDict']]] = None,
@@ -528,7 +510,6 @@ class OrganizationBillingGroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['OrganizationBillingGroupBillingEmailArgs', 'OrganizationBillingGroupBillingEmailArgsDict']]]] billing_emails: Required property. List of billing contact emails.
         :param pulumi.Input[_builtins.str] billing_group_id: Billing group ID.
         :param pulumi.Input[_builtins.str] billing_group_name: Billing Group Name. Maximum length: `128`.
-        :param pulumi.Input[_builtins.str] currency: Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
         :param pulumi.Input[_builtins.str] custom_invoice_text: Extra billing text. Maximum length: `256`.
         :param pulumi.Input[_builtins.str] organization_id: ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
         :param pulumi.Input[Union['OrganizationBillingGroupPaymentMethodArgs', 'OrganizationBillingGroupPaymentMethodArgsDict']] payment_method: Required property. Payment method.
@@ -544,7 +525,6 @@ class OrganizationBillingGroup(pulumi.CustomResource):
         __props__.__dict__["billing_emails"] = billing_emails
         __props__.__dict__["billing_group_id"] = billing_group_id
         __props__.__dict__["billing_group_name"] = billing_group_name
-        __props__.__dict__["currency"] = currency
         __props__.__dict__["custom_invoice_text"] = custom_invoice_text
         __props__.__dict__["organization_id"] = organization_id
         __props__.__dict__["payment_method"] = payment_method
@@ -592,14 +572,6 @@ class OrganizationBillingGroup(pulumi.CustomResource):
         Billing Group Name. Maximum length: `128`.
         """
         return pulumi.get(self, "billing_group_name")
-
-    @_builtins.property
-    @pulumi.getter
-    def currency(self) -> pulumi.Output[_builtins.str]:
-        """
-        Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
-        """
-        return pulumi.get(self, "currency")
 
     @_builtins.property
     @pulumi.getter(name="customInvoiceText")

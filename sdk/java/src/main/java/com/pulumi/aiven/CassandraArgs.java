@@ -56,14 +56,22 @@ public final class CassandraArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Cassandra user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
+     * @deprecated
+     * This property is deprecated.
+     * 
      */
+    @Deprecated /* This property is deprecated. */
     @Import(name="cassandraUserConfig")
     private @Nullable Output<CassandraCassandraUserConfigArgs> cassandraUserConfig;
 
     /**
      * @return Cassandra user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
+     * @deprecated
+     * This property is deprecated.
+     * 
      */
+    @Deprecated /* This property is deprecated. */
     public Optional<Output<CassandraCassandraUserConfigArgs>> cassandraUserConfig() {
         return Optional.ofNullable(this.cassandraUserConfig);
     }
@@ -349,7 +357,11 @@ public final class CassandraArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * This property is deprecated.
+         * 
          */
+        @Deprecated /* This property is deprecated. */
         public Builder cassandraUserConfig(@Nullable Output<CassandraCassandraUserConfigArgs> cassandraUserConfig) {
             $.cassandraUserConfig = cassandraUserConfig;
             return this;
@@ -360,7 +372,11 @@ public final class CassandraArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * This property is deprecated.
+         * 
          */
+        @Deprecated /* This property is deprecated. */
         public Builder cassandraUserConfig(CassandraCassandraUserConfigArgs cassandraUserConfig) {
             return cassandraUserConfig(Output.of(cassandraUserConfig));
         }

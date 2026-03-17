@@ -18,6 +18,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? AdditionalBackupRegions;
         /// <summary>
+        /// Allow-list of HTTPS URLs used to validate GCP CredentialSource requests for Kafka Connect.
+        /// </summary>
+        public readonly ImmutableArray<string> GcpAuthAllowedUrls;
+        /// <summary>
         /// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         /// </summary>
         public readonly ImmutableArray<Outputs.KafkaConnectKafkaConnectUserConfigIpFilterObject> IpFilterObjects;
@@ -70,6 +74,8 @@ namespace Pulumi.Aiven.Outputs
         private KafkaConnectKafkaConnectUserConfig(
             string? additionalBackupRegions,
 
+            ImmutableArray<string> gcpAuthAllowedUrls,
+
             ImmutableArray<Outputs.KafkaConnectKafkaConnectUserConfigIpFilterObject> ipFilterObjects,
 
             ImmutableArray<string> ipFilterStrings,
@@ -95,6 +101,7 @@ namespace Pulumi.Aiven.Outputs
             bool? staticIps)
         {
             AdditionalBackupRegions = additionalBackupRegions;
+            GcpAuthAllowedUrls = gcpAuthAllowedUrls;
             IpFilterObjects = ipFilterObjects;
             IpFilterStrings = ipFilterStrings;
             IpFilters = ipFilters;

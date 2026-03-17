@@ -205,6 +205,12 @@ namespace Pulumi.Aiven.Inputs
         [Input("valkeyTimeout")]
         public Input<int>? ValkeyTimeout { get; set; }
 
+        /// <summary>
+        /// Enum: `8.1`, `9.0`, and newer. Valkey major version.
+        /// </summary>
+        [Input("valkeyVersion")]
+        public Input<string>? ValkeyVersion { get; set; }
+
         public ValkeyValkeyUserConfigGetArgs()
         {
         }

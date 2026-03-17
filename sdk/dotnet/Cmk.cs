@@ -70,7 +70,7 @@ namespace Pulumi.Aiven
         /// Mark the created CMK as default for all newly created services.
         /// </summary>
         [Output("defaultCmk")]
-        public Output<bool> DefaultCmk { get; private set; } = null!;
+        public Output<bool?> DefaultCmk { get; private set; } = null!;
 
         /// <summary>
         /// Project name. Changing this property forces recreation of the resource.
@@ -154,8 +154,8 @@ namespace Pulumi.Aiven
         /// <summary>
         /// Mark the created CMK as default for all newly created services.
         /// </summary>
-        [Input("defaultCmk", required: true)]
-        public Input<bool> DefaultCmk { get; set; } = null!;
+        [Input("defaultCmk")]
+        public Input<bool>? DefaultCmk { get; set; }
 
         /// <summary>
         /// Project name. Changing this property forces recreation of the resource.

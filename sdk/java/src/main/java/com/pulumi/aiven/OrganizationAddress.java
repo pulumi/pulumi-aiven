@@ -60,28 +60,28 @@ public class OrganizationAddress extends com.pulumi.resources.CustomResource {
         return this.addressLines;
     }
     /**
-     * City. Maximum length: `512`.
+     * City. Maximum length: `125`.
      * 
      */
     @Export(name="city", refs={String.class}, tree="[0]")
     private Output<String> city;
 
     /**
-     * @return City. Maximum length: `512`.
+     * @return City. Maximum length: `125`.
      * 
      */
     public Output<String> city() {
         return this.city;
     }
     /**
-     * Country Code.
+     * Country Code. Maximum length: `2`.
      * 
      */
     @Export(name="countryCode", refs={String.class}, tree="[0]")
     private Output<String> countryCode;
 
     /**
-     * @return Country Code.
+     * @return Country Code. Maximum length: `2`.
      * 
      */
     public Output<String> countryCode() {
@@ -164,14 +164,14 @@ public class OrganizationAddress extends com.pulumi.resources.CustomResource {
         return this.updateTime;
     }
     /**
-     * Zip Code. Maximum length: `32`.
+     * Zip Code. Maximum length: `10`.
      * 
      */
     @Export(name="zipCode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> zipCode;
 
     /**
-     * @return Zip Code. Maximum length: `32`.
+     * @return Zip Code. Maximum length: `10`.
      * 
      */
     public Output<Optional<String>> zipCode() {

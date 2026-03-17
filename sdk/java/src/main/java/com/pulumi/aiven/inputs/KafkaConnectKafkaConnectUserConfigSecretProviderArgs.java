@@ -4,6 +4,7 @@
 package com.pulumi.aiven.inputs;
 
 import com.pulumi.aiven.inputs.KafkaConnectKafkaConnectUserConfigSecretProviderAwsArgs;
+import com.pulumi.aiven.inputs.KafkaConnectKafkaConnectUserConfigSecretProviderEnvArgs;
 import com.pulumi.aiven.inputs.KafkaConnectKafkaConnectUserConfigSecretProviderVaultArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -31,6 +32,21 @@ public final class KafkaConnectKafkaConnectUserConfigSecretProviderArgs extends 
      */
     public Optional<Output<KafkaConnectKafkaConnectUserConfigSecretProviderAwsArgs>> aws() {
         return Optional.ofNullable(this.aws);
+    }
+
+    /**
+     * ENV secret provider configuration
+     * 
+     */
+    @Import(name="env")
+    private @Nullable Output<KafkaConnectKafkaConnectUserConfigSecretProviderEnvArgs> env;
+
+    /**
+     * @return ENV secret provider configuration
+     * 
+     */
+    public Optional<Output<KafkaConnectKafkaConnectUserConfigSecretProviderEnvArgs>> env() {
+        return Optional.ofNullable(this.env);
     }
 
     /**
@@ -67,6 +83,7 @@ public final class KafkaConnectKafkaConnectUserConfigSecretProviderArgs extends 
 
     private KafkaConnectKafkaConnectUserConfigSecretProviderArgs(KafkaConnectKafkaConnectUserConfigSecretProviderArgs $) {
         this.aws = $.aws;
+        this.env = $.env;
         this.name = $.name;
         this.vault = $.vault;
     }
@@ -108,6 +125,27 @@ public final class KafkaConnectKafkaConnectUserConfigSecretProviderArgs extends 
          */
         public Builder aws(KafkaConnectKafkaConnectUserConfigSecretProviderAwsArgs aws) {
             return aws(Output.of(aws));
+        }
+
+        /**
+         * @param env ENV secret provider configuration
+         * 
+         * @return builder
+         * 
+         */
+        public Builder env(@Nullable Output<KafkaConnectKafkaConnectUserConfigSecretProviderEnvArgs> env) {
+            $.env = env;
+            return this;
+        }
+
+        /**
+         * @param env ENV secret provider configuration
+         * 
+         * @return builder
+         * 
+         */
+        public Builder env(KafkaConnectKafkaConnectUserConfigSecretProviderEnvArgs env) {
+            return env(Output.of(env));
         }
 
         /**

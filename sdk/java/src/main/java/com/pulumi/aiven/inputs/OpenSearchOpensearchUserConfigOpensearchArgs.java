@@ -613,14 +613,14 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
     }
 
     /**
-     * Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default is false.
+     * Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default is false. Deprecated and ignored for service version 3.3 and higher.
      * 
      */
     @Import(name="overrideMainResponseVersion")
     private @Nullable Output<Boolean> overrideMainResponseVersion;
 
     /**
-     * @return Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default is false.
+     * @return Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default is false. Deprecated and ignored for service version 3.3 and higher.
      * 
      */
     public Optional<Output<Boolean>> overrideMainResponseVersion() {
@@ -1812,7 +1812,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         }
 
         /**
-         * @param overrideMainResponseVersion Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default is false.
+         * @param overrideMainResponseVersion Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default is false. Deprecated and ignored for service version 3.3 and higher.
          * 
          * @return builder
          * 
@@ -1823,7 +1823,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         }
 
         /**
-         * @param overrideMainResponseVersion Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default is false.
+         * @param overrideMainResponseVersion Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default is false. Deprecated and ignored for service version 3.3 and higher.
          * 
          * @return builder
          * 

@@ -10,6 +10,7 @@ import com.pulumi.aiven.inputs.ClickhouseClickhouseUserConfigPublicAccessArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -73,6 +74,21 @@ public final class ClickhouseClickhouseUserConfigArgs extends com.pulumi.resourc
      */
     public Optional<Output<Integer>> backupMinute() {
         return Optional.ofNullable(this.backupMinute);
+    }
+
+    /**
+     * Enum: `25.3`, and newer. ClickHouse major version.
+     * 
+     */
+    @Import(name="clickhouseVersion")
+    private @Nullable Output<String> clickhouseVersion;
+
+    /**
+     * @return Enum: `25.3`, and newer. ClickHouse major version.
+     * 
+     */
+    public Optional<Output<String>> clickhouseVersion() {
+        return Optional.ofNullable(this.clickhouseVersion);
     }
 
     /**
@@ -263,12 +279,28 @@ public final class ClickhouseClickhouseUserConfigArgs extends com.pulumi.resourc
         return Optional.ofNullable(this.staticIps);
     }
 
+    /**
+     * The percentage of free disk space required on local storage before data is moved to object storage. A value of 0.2 means data is moved when local storage has less than 20% free space. Default: `0.2`.
+     * 
+     */
+    @Import(name="tieredStorageMoveFactor")
+    private @Nullable Output<Double> tieredStorageMoveFactor;
+
+    /**
+     * @return The percentage of free disk space required on local storage before data is moved to object storage. A value of 0.2 means data is moved when local storage has less than 20% free space. Default: `0.2`.
+     * 
+     */
+    public Optional<Output<Double>> tieredStorageMoveFactor() {
+        return Optional.ofNullable(this.tieredStorageMoveFactor);
+    }
+
     private ClickhouseClickhouseUserConfigArgs() {}
 
     private ClickhouseClickhouseUserConfigArgs(ClickhouseClickhouseUserConfigArgs $) {
         this.additionalBackupRegions = $.additionalBackupRegions;
         this.backupHour = $.backupHour;
         this.backupMinute = $.backupMinute;
+        this.clickhouseVersion = $.clickhouseVersion;
         this.enableIpv6 = $.enableIpv6;
         this.ipFilterObjects = $.ipFilterObjects;
         this.ipFilterStrings = $.ipFilterStrings;
@@ -281,6 +313,7 @@ public final class ClickhouseClickhouseUserConfigArgs extends com.pulumi.resourc
         this.serviceLog = $.serviceLog;
         this.serviceToForkFrom = $.serviceToForkFrom;
         this.staticIps = $.staticIps;
+        this.tieredStorageMoveFactor = $.tieredStorageMoveFactor;
     }
 
     public static Builder builder() {
@@ -370,6 +403,27 @@ public final class ClickhouseClickhouseUserConfigArgs extends com.pulumi.resourc
          */
         public Builder backupMinute(Integer backupMinute) {
             return backupMinute(Output.of(backupMinute));
+        }
+
+        /**
+         * @param clickhouseVersion Enum: `25.3`, and newer. ClickHouse major version.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clickhouseVersion(@Nullable Output<String> clickhouseVersion) {
+            $.clickhouseVersion = clickhouseVersion;
+            return this;
+        }
+
+        /**
+         * @param clickhouseVersion Enum: `25.3`, and newer. ClickHouse major version.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clickhouseVersion(String clickhouseVersion) {
+            return clickhouseVersion(Output.of(clickhouseVersion));
         }
 
         /**
@@ -664,6 +718,27 @@ public final class ClickhouseClickhouseUserConfigArgs extends com.pulumi.resourc
          */
         public Builder staticIps(Boolean staticIps) {
             return staticIps(Output.of(staticIps));
+        }
+
+        /**
+         * @param tieredStorageMoveFactor The percentage of free disk space required on local storage before data is moved to object storage. A value of 0.2 means data is moved when local storage has less than 20% free space. Default: `0.2`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tieredStorageMoveFactor(@Nullable Output<Double> tieredStorageMoveFactor) {
+            $.tieredStorageMoveFactor = tieredStorageMoveFactor;
+            return this;
+        }
+
+        /**
+         * @param tieredStorageMoveFactor The percentage of free disk space required on local storage before data is moved to object storage. A value of 0.2 means data is moved when local storage has less than 20% free space. Default: `0.2`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tieredStorageMoveFactor(Double tieredStorageMoveFactor) {
+            return tieredStorageMoveFactor(Output.of(tieredStorageMoveFactor));
         }
 
         public ClickhouseClickhouseUserConfigArgs build() {

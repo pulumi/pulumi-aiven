@@ -6,6 +6,7 @@ package com.pulumi.aiven.outputs;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
 import java.lang.Integer;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -32,6 +33,16 @@ public final class GetOpenSearchOpensearchUserConfigOpensearchDashboards {
      * 
      */
     private @Nullable Integer opensearchRequestTimeout;
+    /**
+     * @return Determines whether the session TTL resets (is “kept alive”) on each user activity. Optional. Default is true. Default: `true`.
+     * 
+     */
+    private @Nullable Boolean sessionKeepalive;
+    /**
+     * @return Defines the time-to-live (TTL) for user sessions. The value should be a time value with unit, e.g. 1m, 5s, 1h, 3d, 100ms. Default is 1 hour. Default: `1h`.
+     * 
+     */
+    private @Nullable String sessionTtl;
 
     private GetOpenSearchOpensearchUserConfigOpensearchDashboards() {}
     /**
@@ -62,6 +73,20 @@ public final class GetOpenSearchOpensearchUserConfigOpensearchDashboards {
     public Optional<Integer> opensearchRequestTimeout() {
         return Optional.ofNullable(this.opensearchRequestTimeout);
     }
+    /**
+     * @return Determines whether the session TTL resets (is “kept alive”) on each user activity. Optional. Default is true. Default: `true`.
+     * 
+     */
+    public Optional<Boolean> sessionKeepalive() {
+        return Optional.ofNullable(this.sessionKeepalive);
+    }
+    /**
+     * @return Defines the time-to-live (TTL) for user sessions. The value should be a time value with unit, e.g. 1m, 5s, 1h, 3d, 100ms. Default is 1 hour. Default: `1h`.
+     * 
+     */
+    public Optional<String> sessionTtl() {
+        return Optional.ofNullable(this.sessionTtl);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -76,6 +101,8 @@ public final class GetOpenSearchOpensearchUserConfigOpensearchDashboards {
         private @Nullable Integer maxOldSpaceSize;
         private @Nullable Boolean multipleDataSourceEnabled;
         private @Nullable Integer opensearchRequestTimeout;
+        private @Nullable Boolean sessionKeepalive;
+        private @Nullable String sessionTtl;
         public Builder() {}
         public Builder(GetOpenSearchOpensearchUserConfigOpensearchDashboards defaults) {
     	      Objects.requireNonNull(defaults);
@@ -83,6 +110,8 @@ public final class GetOpenSearchOpensearchUserConfigOpensearchDashboards {
     	      this.maxOldSpaceSize = defaults.maxOldSpaceSize;
     	      this.multipleDataSourceEnabled = defaults.multipleDataSourceEnabled;
     	      this.opensearchRequestTimeout = defaults.opensearchRequestTimeout;
+    	      this.sessionKeepalive = defaults.sessionKeepalive;
+    	      this.sessionTtl = defaults.sessionTtl;
         }
 
         @CustomType.Setter
@@ -109,12 +138,26 @@ public final class GetOpenSearchOpensearchUserConfigOpensearchDashboards {
             this.opensearchRequestTimeout = opensearchRequestTimeout;
             return this;
         }
+        @CustomType.Setter
+        public Builder sessionKeepalive(@Nullable Boolean sessionKeepalive) {
+
+            this.sessionKeepalive = sessionKeepalive;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sessionTtl(@Nullable String sessionTtl) {
+
+            this.sessionTtl = sessionTtl;
+            return this;
+        }
         public GetOpenSearchOpensearchUserConfigOpensearchDashboards build() {
             final var _resultValue = new GetOpenSearchOpensearchUserConfigOpensearchDashboards();
             _resultValue.enabled = enabled;
             _resultValue.maxOldSpaceSize = maxOldSpaceSize;
             _resultValue.multipleDataSourceEnabled = multipleDataSourceEnabled;
             _resultValue.opensearchRequestTimeout = opensearchRequestTimeout;
+            _resultValue.sessionKeepalive = sessionKeepalive;
+            _resultValue.sessionTtl = sessionTtl;
             return _resultValue;
         }
     }

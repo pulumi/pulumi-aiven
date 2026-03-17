@@ -73,7 +73,7 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import aiven:index/governanceAccess:GovernanceAccess example ORGANIZATION_ID/SUSBCRIPTION_ID
+ * $ pulumi import aiven:index/governanceAccess:GovernanceAccess example ORGANIZATION_ID/ACCESS_ID
  * ```
  * 
  */
@@ -92,6 +92,20 @@ public class GovernanceAccess extends com.pulumi.resources.CustomResource {
      */
     public Output<GovernanceAccessAccessData> accessData() {
         return this.accessData;
+    }
+    /**
+     * The ID of the access.
+     * 
+     */
+    @Export(name="accessId", refs={String.class}, tree="[0]")
+    private Output<String> accessId;
+
+    /**
+     * @return The ID of the access.
+     * 
+     */
+    public Output<String> accessId() {
+        return this.accessId;
     }
     /**
      * Label to describe the access. Changing this property forces recreation of the resource.
@@ -148,20 +162,6 @@ public class GovernanceAccess extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> ownerUserGroupId() {
         return Codegen.optional(this.ownerUserGroupId);
-    }
-    /**
-     * The ID of the access.
-     * 
-     */
-    @Export(name="susbcriptionId", refs={String.class}, tree="[0]")
-    private Output<String> susbcriptionId;
-
-    /**
-     * @return The ID of the access.
-     * 
-     */
-    public Output<String> susbcriptionId() {
-        return this.susbcriptionId;
     }
     @Export(name="timeouts", refs={GovernanceAccessTimeouts.class}, tree="[0]")
     private Output</* @Nullable */ GovernanceAccessTimeouts> timeouts;

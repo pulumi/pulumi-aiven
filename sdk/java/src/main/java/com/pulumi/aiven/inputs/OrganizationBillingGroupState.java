@@ -96,21 +96,6 @@ public final class OrganizationBillingGroupState extends com.pulumi.resources.Re
     }
 
     /**
-     * Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
-     * 
-     */
-    @Import(name="currency")
-    private @Nullable Output<String> currency;
-
-    /**
-     * @return Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
-     * 
-     */
-    public Optional<Output<String>> currency() {
-        return Optional.ofNullable(this.currency);
-    }
-
-    /**
      * Extra billing text. Maximum length: `256`.
      * 
      */
@@ -200,7 +185,6 @@ public final class OrganizationBillingGroupState extends com.pulumi.resources.Re
         this.billingEmails = $.billingEmails;
         this.billingGroupId = $.billingGroupId;
         this.billingGroupName = $.billingGroupName;
-        this.currency = $.currency;
         this.customInvoiceText = $.customInvoiceText;
         this.organizationId = $.organizationId;
         this.paymentMethod = $.paymentMethod;
@@ -350,27 +334,6 @@ public final class OrganizationBillingGroupState extends com.pulumi.resources.Re
          */
         public Builder billingGroupName(String billingGroupName) {
             return billingGroupName(Output.of(billingGroupName));
-        }
-
-        /**
-         * @param currency Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder currency(@Nullable Output<String> currency) {
-            $.currency = currency;
-            return this;
-        }
-
-        /**
-         * @param currency Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder currency(String currency) {
-            return currency(Output.of(currency));
         }
 
         /**

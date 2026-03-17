@@ -129,6 +129,10 @@ namespace Pulumi.Aiven.Outputs
         /// Valkey idle connection timeout in seconds. Default: `300`.
         /// </summary>
         public readonly int? ValkeyTimeout;
+        /// <summary>
+        /// Enum: `8.1`, `9.0`, and newer. Valkey major version.
+        /// </summary>
+        public readonly string? ValkeyVersion;
 
         [OutputConstructor]
         private ValkeyValkeyUserConfig(
@@ -188,7 +192,9 @@ namespace Pulumi.Aiven.Outputs
 
             bool? valkeySsl,
 
-            int? valkeyTimeout)
+            int? valkeyTimeout,
+
+            string? valkeyVersion)
         {
             AdditionalBackupRegions = additionalBackupRegions;
             BackupHour = backupHour;
@@ -219,6 +225,7 @@ namespace Pulumi.Aiven.Outputs
             ValkeyPubsubClientOutputBufferLimit = valkeyPubsubClientOutputBufferLimit;
             ValkeySsl = valkeySsl;
             ValkeyTimeout = valkeyTimeout;
+            ValkeyVersion = valkeyVersion;
         }
     }
 }

@@ -65,6 +65,9 @@ class CassandraArgs:
         if cassandra is not None:
             pulumi.set(__self__, "cassandra", cassandra)
         if cassandra_user_config is not None:
+            warnings.warn("""This property is deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""cassandra_user_config is deprecated: This property is deprecated.""")
+        if cassandra_user_config is not None:
             pulumi.set(__self__, "cassandra_user_config", cassandra_user_config)
         if cloud_name is not None:
             pulumi.set(__self__, "cloud_name", cloud_name)
@@ -149,6 +152,7 @@ class CassandraArgs:
 
     @_builtins.property
     @pulumi.getter(name="cassandraUserConfig")
+    @_utilities.deprecated("""This property is deprecated.""")
     def cassandra_user_config(self) -> Optional[pulumi.Input['CassandraCassandraUserConfigArgs']]:
         """
         Cassandra user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
@@ -350,6 +354,9 @@ class _CassandraState:
         if cassandra is not None:
             pulumi.set(__self__, "cassandra", cassandra)
         if cassandra_user_config is not None:
+            warnings.warn("""This property is deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""cassandra_user_config is deprecated: This property is deprecated.""")
+        if cassandra_user_config is not None:
             pulumi.set(__self__, "cassandra_user_config", cassandra_user_config)
         if cloud_name is not None:
             pulumi.set(__self__, "cloud_name", cloud_name)
@@ -430,6 +437,7 @@ class _CassandraState:
 
     @_builtins.property
     @pulumi.getter(name="cassandraUserConfig")
+    @_utilities.deprecated("""This property is deprecated.""")
     def cassandra_user_config(self) -> Optional[pulumi.Input['CassandraCassandraUserConfigArgs']]:
         """
         Cassandra user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
@@ -1013,6 +1021,7 @@ class Cassandra(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="cassandraUserConfig")
+    @_utilities.deprecated("""This property is deprecated.""")
     def cassandra_user_config(self) -> pulumi.Output[Optional['outputs.CassandraCassandraUserConfig']]:
         """
         Cassandra user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later

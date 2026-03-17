@@ -37,15 +37,15 @@ public final class GovernanceAccessAccessDataArgs extends com.pulumi.resources.R
      * Project name. Changing this property forces recreation of the resource.
      * 
      */
-    @Import(name="project", required=true)
-    private Output<String> project;
+    @Import(name="projectName", required=true)
+    private Output<String> projectName;
 
     /**
      * @return Project name. Changing this property forces recreation of the resource.
      * 
      */
-    public Output<String> project() {
-        return this.project;
+    public Output<String> projectName() {
+        return this.projectName;
     }
 
     /**
@@ -82,7 +82,7 @@ public final class GovernanceAccessAccessDataArgs extends com.pulumi.resources.R
 
     private GovernanceAccessAccessDataArgs(GovernanceAccessAccessDataArgs $) {
         this.acls = $.acls;
-        this.project = $.project;
+        this.projectName = $.projectName;
         this.serviceName = $.serviceName;
         this.username = $.username;
     }
@@ -137,24 +137,24 @@ public final class GovernanceAccessAccessDataArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param project Project name. Changing this property forces recreation of the resource.
+         * @param projectName Project name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
          */
-        public Builder project(Output<String> project) {
-            $.project = project;
+        public Builder projectName(Output<String> projectName) {
+            $.projectName = projectName;
             return this;
         }
 
         /**
-         * @param project Project name. Changing this property forces recreation of the resource.
+         * @param projectName Project name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
          */
-        public Builder project(String project) {
-            return project(Output.of(project));
+        public Builder projectName(String projectName) {
+            return projectName(Output.of(projectName));
         }
 
         /**
@@ -203,8 +203,8 @@ public final class GovernanceAccessAccessDataArgs extends com.pulumi.resources.R
             if ($.acls == null) {
                 throw new MissingRequiredPropertyException("GovernanceAccessAccessDataArgs", "acls");
             }
-            if ($.project == null) {
-                throw new MissingRequiredPropertyException("GovernanceAccessAccessDataArgs", "project");
+            if ($.projectName == null) {
+                throw new MissingRequiredPropertyException("GovernanceAccessAccessDataArgs", "projectName");
             }
             if ($.serviceName == null) {
                 throw new MissingRequiredPropertyException("GovernanceAccessAccessDataArgs", "serviceName");

@@ -16,14 +16,14 @@ public final class GetOrganizationPlainArgs extends com.pulumi.resources.InvokeA
     public static final GetOrganizationPlainArgs Empty = new GetOrganizationPlainArgs();
 
     /**
-     * ID of the organization.
+     * Organization ID. Exactly one of the fields must be specified: `id` or `name`.
      * 
      */
     @Import(name="id")
     private @Nullable String id;
 
     /**
-     * @return ID of the organization.
+     * @return Organization ID. Exactly one of the fields must be specified: `id` or `name`.
      * 
      */
     public Optional<String> id() {
@@ -31,14 +31,14 @@ public final class GetOrganizationPlainArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * Name of the organization.
+     * Name of the organization. Exactly one of the fields must be specified: `id` or `name`.
      * 
      */
     @Import(name="name")
     private @Nullable String name;
 
     /**
-     * @return Name of the organization.
+     * @return Name of the organization. Exactly one of the fields must be specified: `id` or `name`.
      * 
      */
     public Optional<String> name() {
@@ -79,7 +79,7 @@ public final class GetOrganizationPlainArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param id ID of the organization.
+         * @param id Organization ID. Exactly one of the fields must be specified: `id` or `name`.
          * 
          * @return builder
          * 
@@ -90,7 +90,7 @@ public final class GetOrganizationPlainArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param name Name of the organization.
+         * @param name Name of the organization. Exactly one of the fields must be specified: `id` or `name`.
          * 
          * @return builder
          * 

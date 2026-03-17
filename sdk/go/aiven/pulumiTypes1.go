@@ -13,6 +13,1848 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetKafkaKafkaUserConfigPublicAccess struct {
+	// Allow clients to connect to kafka from the public internet for service nodes that are in a project VPC or another type of private network.
+	Kafka *bool `pulumi:"kafka"`
+	// Allow clients to connect to kafkaConnect from the public internet for service nodes that are in a project VPC or another type of private network.
+	KafkaConnect *bool `pulumi:"kafkaConnect"`
+	// Allow clients to connect to kafkaRest from the public internet for service nodes that are in a project VPC or another type of private network.
+	KafkaRest *bool `pulumi:"kafkaRest"`
+	// Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
+	Prometheus *bool `pulumi:"prometheus"`
+	// Allow clients to connect to schemaRegistry from the public internet for service nodes that are in a project VPC or another type of private network.
+	SchemaRegistry *bool `pulumi:"schemaRegistry"`
+}
+
+// GetKafkaKafkaUserConfigPublicAccessInput is an input type that accepts GetKafkaKafkaUserConfigPublicAccessArgs and GetKafkaKafkaUserConfigPublicAccessOutput values.
+// You can construct a concrete instance of `GetKafkaKafkaUserConfigPublicAccessInput` via:
+//
+//	GetKafkaKafkaUserConfigPublicAccessArgs{...}
+type GetKafkaKafkaUserConfigPublicAccessInput interface {
+	pulumi.Input
+
+	ToGetKafkaKafkaUserConfigPublicAccessOutput() GetKafkaKafkaUserConfigPublicAccessOutput
+	ToGetKafkaKafkaUserConfigPublicAccessOutputWithContext(context.Context) GetKafkaKafkaUserConfigPublicAccessOutput
+}
+
+type GetKafkaKafkaUserConfigPublicAccessArgs struct {
+	// Allow clients to connect to kafka from the public internet for service nodes that are in a project VPC or another type of private network.
+	Kafka pulumi.BoolPtrInput `pulumi:"kafka"`
+	// Allow clients to connect to kafkaConnect from the public internet for service nodes that are in a project VPC or another type of private network.
+	KafkaConnect pulumi.BoolPtrInput `pulumi:"kafkaConnect"`
+	// Allow clients to connect to kafkaRest from the public internet for service nodes that are in a project VPC or another type of private network.
+	KafkaRest pulumi.BoolPtrInput `pulumi:"kafkaRest"`
+	// Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
+	Prometheus pulumi.BoolPtrInput `pulumi:"prometheus"`
+	// Allow clients to connect to schemaRegistry from the public internet for service nodes that are in a project VPC or another type of private network.
+	SchemaRegistry pulumi.BoolPtrInput `pulumi:"schemaRegistry"`
+}
+
+func (GetKafkaKafkaUserConfigPublicAccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKafkaKafkaUserConfigPublicAccess)(nil)).Elem()
+}
+
+func (i GetKafkaKafkaUserConfigPublicAccessArgs) ToGetKafkaKafkaUserConfigPublicAccessOutput() GetKafkaKafkaUserConfigPublicAccessOutput {
+	return i.ToGetKafkaKafkaUserConfigPublicAccessOutputWithContext(context.Background())
+}
+
+func (i GetKafkaKafkaUserConfigPublicAccessArgs) ToGetKafkaKafkaUserConfigPublicAccessOutputWithContext(ctx context.Context) GetKafkaKafkaUserConfigPublicAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKafkaKafkaUserConfigPublicAccessOutput)
+}
+
+func (i GetKafkaKafkaUserConfigPublicAccessArgs) ToGetKafkaKafkaUserConfigPublicAccessPtrOutput() GetKafkaKafkaUserConfigPublicAccessPtrOutput {
+	return i.ToGetKafkaKafkaUserConfigPublicAccessPtrOutputWithContext(context.Background())
+}
+
+func (i GetKafkaKafkaUserConfigPublicAccessArgs) ToGetKafkaKafkaUserConfigPublicAccessPtrOutputWithContext(ctx context.Context) GetKafkaKafkaUserConfigPublicAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKafkaKafkaUserConfigPublicAccessOutput).ToGetKafkaKafkaUserConfigPublicAccessPtrOutputWithContext(ctx)
+}
+
+// GetKafkaKafkaUserConfigPublicAccessPtrInput is an input type that accepts GetKafkaKafkaUserConfigPublicAccessArgs, GetKafkaKafkaUserConfigPublicAccessPtr and GetKafkaKafkaUserConfigPublicAccessPtrOutput values.
+// You can construct a concrete instance of `GetKafkaKafkaUserConfigPublicAccessPtrInput` via:
+//
+//	        GetKafkaKafkaUserConfigPublicAccessArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetKafkaKafkaUserConfigPublicAccessPtrInput interface {
+	pulumi.Input
+
+	ToGetKafkaKafkaUserConfigPublicAccessPtrOutput() GetKafkaKafkaUserConfigPublicAccessPtrOutput
+	ToGetKafkaKafkaUserConfigPublicAccessPtrOutputWithContext(context.Context) GetKafkaKafkaUserConfigPublicAccessPtrOutput
+}
+
+type getKafkaKafkaUserConfigPublicAccessPtrType GetKafkaKafkaUserConfigPublicAccessArgs
+
+func GetKafkaKafkaUserConfigPublicAccessPtr(v *GetKafkaKafkaUserConfigPublicAccessArgs) GetKafkaKafkaUserConfigPublicAccessPtrInput {
+	return (*getKafkaKafkaUserConfigPublicAccessPtrType)(v)
+}
+
+func (*getKafkaKafkaUserConfigPublicAccessPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetKafkaKafkaUserConfigPublicAccess)(nil)).Elem()
+}
+
+func (i *getKafkaKafkaUserConfigPublicAccessPtrType) ToGetKafkaKafkaUserConfigPublicAccessPtrOutput() GetKafkaKafkaUserConfigPublicAccessPtrOutput {
+	return i.ToGetKafkaKafkaUserConfigPublicAccessPtrOutputWithContext(context.Background())
+}
+
+func (i *getKafkaKafkaUserConfigPublicAccessPtrType) ToGetKafkaKafkaUserConfigPublicAccessPtrOutputWithContext(ctx context.Context) GetKafkaKafkaUserConfigPublicAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKafkaKafkaUserConfigPublicAccessPtrOutput)
+}
+
+type GetKafkaKafkaUserConfigPublicAccessOutput struct{ *pulumi.OutputState }
+
+func (GetKafkaKafkaUserConfigPublicAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKafkaKafkaUserConfigPublicAccess)(nil)).Elem()
+}
+
+func (o GetKafkaKafkaUserConfigPublicAccessOutput) ToGetKafkaKafkaUserConfigPublicAccessOutput() GetKafkaKafkaUserConfigPublicAccessOutput {
+	return o
+}
+
+func (o GetKafkaKafkaUserConfigPublicAccessOutput) ToGetKafkaKafkaUserConfigPublicAccessOutputWithContext(ctx context.Context) GetKafkaKafkaUserConfigPublicAccessOutput {
+	return o
+}
+
+func (o GetKafkaKafkaUserConfigPublicAccessOutput) ToGetKafkaKafkaUserConfigPublicAccessPtrOutput() GetKafkaKafkaUserConfigPublicAccessPtrOutput {
+	return o.ToGetKafkaKafkaUserConfigPublicAccessPtrOutputWithContext(context.Background())
+}
+
+func (o GetKafkaKafkaUserConfigPublicAccessOutput) ToGetKafkaKafkaUserConfigPublicAccessPtrOutputWithContext(ctx context.Context) GetKafkaKafkaUserConfigPublicAccessPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetKafkaKafkaUserConfigPublicAccess) *GetKafkaKafkaUserConfigPublicAccess {
+		return &v
+	}).(GetKafkaKafkaUserConfigPublicAccessPtrOutput)
+}
+
+// Allow clients to connect to kafka from the public internet for service nodes that are in a project VPC or another type of private network.
+func (o GetKafkaKafkaUserConfigPublicAccessOutput) Kafka() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetKafkaKafkaUserConfigPublicAccess) *bool { return v.Kafka }).(pulumi.BoolPtrOutput)
+}
+
+// Allow clients to connect to kafkaConnect from the public internet for service nodes that are in a project VPC or another type of private network.
+func (o GetKafkaKafkaUserConfigPublicAccessOutput) KafkaConnect() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetKafkaKafkaUserConfigPublicAccess) *bool { return v.KafkaConnect }).(pulumi.BoolPtrOutput)
+}
+
+// Allow clients to connect to kafkaRest from the public internet for service nodes that are in a project VPC or another type of private network.
+func (o GetKafkaKafkaUserConfigPublicAccessOutput) KafkaRest() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetKafkaKafkaUserConfigPublicAccess) *bool { return v.KafkaRest }).(pulumi.BoolPtrOutput)
+}
+
+// Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
+func (o GetKafkaKafkaUserConfigPublicAccessOutput) Prometheus() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetKafkaKafkaUserConfigPublicAccess) *bool { return v.Prometheus }).(pulumi.BoolPtrOutput)
+}
+
+// Allow clients to connect to schemaRegistry from the public internet for service nodes that are in a project VPC or another type of private network.
+func (o GetKafkaKafkaUserConfigPublicAccessOutput) SchemaRegistry() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetKafkaKafkaUserConfigPublicAccess) *bool { return v.SchemaRegistry }).(pulumi.BoolPtrOutput)
+}
+
+type GetKafkaKafkaUserConfigPublicAccessPtrOutput struct{ *pulumi.OutputState }
+
+func (GetKafkaKafkaUserConfigPublicAccessPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetKafkaKafkaUserConfigPublicAccess)(nil)).Elem()
+}
+
+func (o GetKafkaKafkaUserConfigPublicAccessPtrOutput) ToGetKafkaKafkaUserConfigPublicAccessPtrOutput() GetKafkaKafkaUserConfigPublicAccessPtrOutput {
+	return o
+}
+
+func (o GetKafkaKafkaUserConfigPublicAccessPtrOutput) ToGetKafkaKafkaUserConfigPublicAccessPtrOutputWithContext(ctx context.Context) GetKafkaKafkaUserConfigPublicAccessPtrOutput {
+	return o
+}
+
+func (o GetKafkaKafkaUserConfigPublicAccessPtrOutput) Elem() GetKafkaKafkaUserConfigPublicAccessOutput {
+	return o.ApplyT(func(v *GetKafkaKafkaUserConfigPublicAccess) GetKafkaKafkaUserConfigPublicAccess {
+		if v != nil {
+			return *v
+		}
+		var ret GetKafkaKafkaUserConfigPublicAccess
+		return ret
+	}).(GetKafkaKafkaUserConfigPublicAccessOutput)
+}
+
+// Allow clients to connect to kafka from the public internet for service nodes that are in a project VPC or another type of private network.
+func (o GetKafkaKafkaUserConfigPublicAccessPtrOutput) Kafka() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetKafkaKafkaUserConfigPublicAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Kafka
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Allow clients to connect to kafkaConnect from the public internet for service nodes that are in a project VPC or another type of private network.
+func (o GetKafkaKafkaUserConfigPublicAccessPtrOutput) KafkaConnect() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetKafkaKafkaUserConfigPublicAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.KafkaConnect
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Allow clients to connect to kafkaRest from the public internet for service nodes that are in a project VPC or another type of private network.
+func (o GetKafkaKafkaUserConfigPublicAccessPtrOutput) KafkaRest() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetKafkaKafkaUserConfigPublicAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.KafkaRest
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
+func (o GetKafkaKafkaUserConfigPublicAccessPtrOutput) Prometheus() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetKafkaKafkaUserConfigPublicAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Prometheus
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Allow clients to connect to schemaRegistry from the public internet for service nodes that are in a project VPC or another type of private network.
+func (o GetKafkaKafkaUserConfigPublicAccessPtrOutput) SchemaRegistry() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetKafkaKafkaUserConfigPublicAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SchemaRegistry
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GetKafkaKafkaUserConfigSchemaRegistryConfig struct {
+	// If true, Karapace / Schema Registry on the service nodes can participate in leader election. It might be needed to disable this when the schemas topic is replicated to a secondary cluster and Karapace / Schema Registry there must not participate in leader election. Defaults to `true`.
+	LeaderEligibility *bool `pulumi:"leaderEligibility"`
+	// If enabled, kafka errors which can be retried or custom errors specified for the service will not be raised, instead, a warning log is emitted. This will denoise issue tracking systems, i.e. sentry. Defaults to `true`.
+	RetriableErrorsSilenced *bool `pulumi:"retriableErrorsSilenced"`
+	// If enabled, causes the Karapace schema-registry service to shutdown when there are invalid schema records in the `_schemas` topic. Defaults to `false`.
+	SchemaReaderStrictMode *bool `pulumi:"schemaReaderStrictMode"`
+	// The durable single partition topic that acts as the durable log for the data. This topic must be compacted to avoid losing data due to retention policy. Please note that changing this configuration in an existing Schema Registry / Karapace setup leads to previous schemas being inaccessible, data encoded with them potentially unreadable and schema ID sequence put out of order. It's only possible to do the switch while Schema Registry / Karapace is disabled. Defaults to `_schemas`.
+	TopicName *string `pulumi:"topicName"`
+}
+
+// GetKafkaKafkaUserConfigSchemaRegistryConfigInput is an input type that accepts GetKafkaKafkaUserConfigSchemaRegistryConfigArgs and GetKafkaKafkaUserConfigSchemaRegistryConfigOutput values.
+// You can construct a concrete instance of `GetKafkaKafkaUserConfigSchemaRegistryConfigInput` via:
+//
+//	GetKafkaKafkaUserConfigSchemaRegistryConfigArgs{...}
+type GetKafkaKafkaUserConfigSchemaRegistryConfigInput interface {
+	pulumi.Input
+
+	ToGetKafkaKafkaUserConfigSchemaRegistryConfigOutput() GetKafkaKafkaUserConfigSchemaRegistryConfigOutput
+	ToGetKafkaKafkaUserConfigSchemaRegistryConfigOutputWithContext(context.Context) GetKafkaKafkaUserConfigSchemaRegistryConfigOutput
+}
+
+type GetKafkaKafkaUserConfigSchemaRegistryConfigArgs struct {
+	// If true, Karapace / Schema Registry on the service nodes can participate in leader election. It might be needed to disable this when the schemas topic is replicated to a secondary cluster and Karapace / Schema Registry there must not participate in leader election. Defaults to `true`.
+	LeaderEligibility pulumi.BoolPtrInput `pulumi:"leaderEligibility"`
+	// If enabled, kafka errors which can be retried or custom errors specified for the service will not be raised, instead, a warning log is emitted. This will denoise issue tracking systems, i.e. sentry. Defaults to `true`.
+	RetriableErrorsSilenced pulumi.BoolPtrInput `pulumi:"retriableErrorsSilenced"`
+	// If enabled, causes the Karapace schema-registry service to shutdown when there are invalid schema records in the `_schemas` topic. Defaults to `false`.
+	SchemaReaderStrictMode pulumi.BoolPtrInput `pulumi:"schemaReaderStrictMode"`
+	// The durable single partition topic that acts as the durable log for the data. This topic must be compacted to avoid losing data due to retention policy. Please note that changing this configuration in an existing Schema Registry / Karapace setup leads to previous schemas being inaccessible, data encoded with them potentially unreadable and schema ID sequence put out of order. It's only possible to do the switch while Schema Registry / Karapace is disabled. Defaults to `_schemas`.
+	TopicName pulumi.StringPtrInput `pulumi:"topicName"`
+}
+
+func (GetKafkaKafkaUserConfigSchemaRegistryConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKafkaKafkaUserConfigSchemaRegistryConfig)(nil)).Elem()
+}
+
+func (i GetKafkaKafkaUserConfigSchemaRegistryConfigArgs) ToGetKafkaKafkaUserConfigSchemaRegistryConfigOutput() GetKafkaKafkaUserConfigSchemaRegistryConfigOutput {
+	return i.ToGetKafkaKafkaUserConfigSchemaRegistryConfigOutputWithContext(context.Background())
+}
+
+func (i GetKafkaKafkaUserConfigSchemaRegistryConfigArgs) ToGetKafkaKafkaUserConfigSchemaRegistryConfigOutputWithContext(ctx context.Context) GetKafkaKafkaUserConfigSchemaRegistryConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKafkaKafkaUserConfigSchemaRegistryConfigOutput)
+}
+
+func (i GetKafkaKafkaUserConfigSchemaRegistryConfigArgs) ToGetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutput() GetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutput {
+	return i.ToGetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GetKafkaKafkaUserConfigSchemaRegistryConfigArgs) ToGetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutputWithContext(ctx context.Context) GetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKafkaKafkaUserConfigSchemaRegistryConfigOutput).ToGetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutputWithContext(ctx)
+}
+
+// GetKafkaKafkaUserConfigSchemaRegistryConfigPtrInput is an input type that accepts GetKafkaKafkaUserConfigSchemaRegistryConfigArgs, GetKafkaKafkaUserConfigSchemaRegistryConfigPtr and GetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutput values.
+// You can construct a concrete instance of `GetKafkaKafkaUserConfigSchemaRegistryConfigPtrInput` via:
+//
+//	        GetKafkaKafkaUserConfigSchemaRegistryConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetKafkaKafkaUserConfigSchemaRegistryConfigPtrInput interface {
+	pulumi.Input
+
+	ToGetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutput() GetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutput
+	ToGetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutputWithContext(context.Context) GetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutput
+}
+
+type getKafkaKafkaUserConfigSchemaRegistryConfigPtrType GetKafkaKafkaUserConfigSchemaRegistryConfigArgs
+
+func GetKafkaKafkaUserConfigSchemaRegistryConfigPtr(v *GetKafkaKafkaUserConfigSchemaRegistryConfigArgs) GetKafkaKafkaUserConfigSchemaRegistryConfigPtrInput {
+	return (*getKafkaKafkaUserConfigSchemaRegistryConfigPtrType)(v)
+}
+
+func (*getKafkaKafkaUserConfigSchemaRegistryConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetKafkaKafkaUserConfigSchemaRegistryConfig)(nil)).Elem()
+}
+
+func (i *getKafkaKafkaUserConfigSchemaRegistryConfigPtrType) ToGetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutput() GetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutput {
+	return i.ToGetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *getKafkaKafkaUserConfigSchemaRegistryConfigPtrType) ToGetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutputWithContext(ctx context.Context) GetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutput)
+}
+
+type GetKafkaKafkaUserConfigSchemaRegistryConfigOutput struct{ *pulumi.OutputState }
+
+func (GetKafkaKafkaUserConfigSchemaRegistryConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKafkaKafkaUserConfigSchemaRegistryConfig)(nil)).Elem()
+}
+
+func (o GetKafkaKafkaUserConfigSchemaRegistryConfigOutput) ToGetKafkaKafkaUserConfigSchemaRegistryConfigOutput() GetKafkaKafkaUserConfigSchemaRegistryConfigOutput {
+	return o
+}
+
+func (o GetKafkaKafkaUserConfigSchemaRegistryConfigOutput) ToGetKafkaKafkaUserConfigSchemaRegistryConfigOutputWithContext(ctx context.Context) GetKafkaKafkaUserConfigSchemaRegistryConfigOutput {
+	return o
+}
+
+func (o GetKafkaKafkaUserConfigSchemaRegistryConfigOutput) ToGetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutput() GetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutput {
+	return o.ToGetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GetKafkaKafkaUserConfigSchemaRegistryConfigOutput) ToGetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutputWithContext(ctx context.Context) GetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetKafkaKafkaUserConfigSchemaRegistryConfig) *GetKafkaKafkaUserConfigSchemaRegistryConfig {
+		return &v
+	}).(GetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutput)
+}
+
+// If true, Karapace / Schema Registry on the service nodes can participate in leader election. It might be needed to disable this when the schemas topic is replicated to a secondary cluster and Karapace / Schema Registry there must not participate in leader election. Defaults to `true`.
+func (o GetKafkaKafkaUserConfigSchemaRegistryConfigOutput) LeaderEligibility() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetKafkaKafkaUserConfigSchemaRegistryConfig) *bool { return v.LeaderEligibility }).(pulumi.BoolPtrOutput)
+}
+
+// If enabled, kafka errors which can be retried or custom errors specified for the service will not be raised, instead, a warning log is emitted. This will denoise issue tracking systems, i.e. sentry. Defaults to `true`.
+func (o GetKafkaKafkaUserConfigSchemaRegistryConfigOutput) RetriableErrorsSilenced() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetKafkaKafkaUserConfigSchemaRegistryConfig) *bool { return v.RetriableErrorsSilenced }).(pulumi.BoolPtrOutput)
+}
+
+// If enabled, causes the Karapace schema-registry service to shutdown when there are invalid schema records in the `_schemas` topic. Defaults to `false`.
+func (o GetKafkaKafkaUserConfigSchemaRegistryConfigOutput) SchemaReaderStrictMode() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetKafkaKafkaUserConfigSchemaRegistryConfig) *bool { return v.SchemaReaderStrictMode }).(pulumi.BoolPtrOutput)
+}
+
+// The durable single partition topic that acts as the durable log for the data. This topic must be compacted to avoid losing data due to retention policy. Please note that changing this configuration in an existing Schema Registry / Karapace setup leads to previous schemas being inaccessible, data encoded with them potentially unreadable and schema ID sequence put out of order. It's only possible to do the switch while Schema Registry / Karapace is disabled. Defaults to `_schemas`.
+func (o GetKafkaKafkaUserConfigSchemaRegistryConfigOutput) TopicName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaKafkaUserConfigSchemaRegistryConfig) *string { return v.TopicName }).(pulumi.StringPtrOutput)
+}
+
+type GetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetKafkaKafkaUserConfigSchemaRegistryConfig)(nil)).Elem()
+}
+
+func (o GetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutput) ToGetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutput() GetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutput {
+	return o
+}
+
+func (o GetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutput) ToGetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutputWithContext(ctx context.Context) GetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutput {
+	return o
+}
+
+func (o GetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutput) Elem() GetKafkaKafkaUserConfigSchemaRegistryConfigOutput {
+	return o.ApplyT(func(v *GetKafkaKafkaUserConfigSchemaRegistryConfig) GetKafkaKafkaUserConfigSchemaRegistryConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GetKafkaKafkaUserConfigSchemaRegistryConfig
+		return ret
+	}).(GetKafkaKafkaUserConfigSchemaRegistryConfigOutput)
+}
+
+// If true, Karapace / Schema Registry on the service nodes can participate in leader election. It might be needed to disable this when the schemas topic is replicated to a secondary cluster and Karapace / Schema Registry there must not participate in leader election. Defaults to `true`.
+func (o GetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutput) LeaderEligibility() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetKafkaKafkaUserConfigSchemaRegistryConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.LeaderEligibility
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If enabled, kafka errors which can be retried or custom errors specified for the service will not be raised, instead, a warning log is emitted. This will denoise issue tracking systems, i.e. sentry. Defaults to `true`.
+func (o GetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutput) RetriableErrorsSilenced() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetKafkaKafkaUserConfigSchemaRegistryConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RetriableErrorsSilenced
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If enabled, causes the Karapace schema-registry service to shutdown when there are invalid schema records in the `_schemas` topic. Defaults to `false`.
+func (o GetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutput) SchemaReaderStrictMode() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetKafkaKafkaUserConfigSchemaRegistryConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SchemaReaderStrictMode
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The durable single partition topic that acts as the durable log for the data. This topic must be compacted to avoid losing data due to retention policy. Please note that changing this configuration in an existing Schema Registry / Karapace setup leads to previous schemas being inaccessible, data encoded with them potentially unreadable and schema ID sequence put out of order. It's only possible to do the switch while Schema Registry / Karapace is disabled. Defaults to `_schemas`.
+func (o GetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutput) TopicName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetKafkaKafkaUserConfigSchemaRegistryConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TopicName
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetKafkaKafkaUserConfigSingleZone struct {
+	// The availability zone to use for the service. This is only used when enabled is set to true. If not set the service will be allocated in random AZ.The AZ is not guaranteed, and the service may be allocated in a different AZ if the selected AZ is not available. Zones will not be validated and invalid zones will be ignored, falling back to random AZ selection. Common availability zones include: AWS (euc1-az1, euc1-az2, euc1-az3), GCP (europe-west1-a, europe-west1-b, europe-west1-c), Azure (germanywestcentral/1, germanywestcentral/2, germanywestcentral/3). Example: `euc1-az1`.
+	AvailabilityZone *string `pulumi:"availabilityZone"`
+	// Whether to allocate nodes on the same Availability Zone or spread across zones available. By default service nodes are spread across different AZs. The single AZ support is best-effort and may temporarily allocate nodes in different AZs e.g. in case of capacity limitations in one AZ.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// GetKafkaKafkaUserConfigSingleZoneInput is an input type that accepts GetKafkaKafkaUserConfigSingleZoneArgs and GetKafkaKafkaUserConfigSingleZoneOutput values.
+// You can construct a concrete instance of `GetKafkaKafkaUserConfigSingleZoneInput` via:
+//
+//	GetKafkaKafkaUserConfigSingleZoneArgs{...}
+type GetKafkaKafkaUserConfigSingleZoneInput interface {
+	pulumi.Input
+
+	ToGetKafkaKafkaUserConfigSingleZoneOutput() GetKafkaKafkaUserConfigSingleZoneOutput
+	ToGetKafkaKafkaUserConfigSingleZoneOutputWithContext(context.Context) GetKafkaKafkaUserConfigSingleZoneOutput
+}
+
+type GetKafkaKafkaUserConfigSingleZoneArgs struct {
+	// The availability zone to use for the service. This is only used when enabled is set to true. If not set the service will be allocated in random AZ.The AZ is not guaranteed, and the service may be allocated in a different AZ if the selected AZ is not available. Zones will not be validated and invalid zones will be ignored, falling back to random AZ selection. Common availability zones include: AWS (euc1-az1, euc1-az2, euc1-az3), GCP (europe-west1-a, europe-west1-b, europe-west1-c), Azure (germanywestcentral/1, germanywestcentral/2, germanywestcentral/3). Example: `euc1-az1`.
+	AvailabilityZone pulumi.StringPtrInput `pulumi:"availabilityZone"`
+	// Whether to allocate nodes on the same Availability Zone or spread across zones available. By default service nodes are spread across different AZs. The single AZ support is best-effort and may temporarily allocate nodes in different AZs e.g. in case of capacity limitations in one AZ.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (GetKafkaKafkaUserConfigSingleZoneArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKafkaKafkaUserConfigSingleZone)(nil)).Elem()
+}
+
+func (i GetKafkaKafkaUserConfigSingleZoneArgs) ToGetKafkaKafkaUserConfigSingleZoneOutput() GetKafkaKafkaUserConfigSingleZoneOutput {
+	return i.ToGetKafkaKafkaUserConfigSingleZoneOutputWithContext(context.Background())
+}
+
+func (i GetKafkaKafkaUserConfigSingleZoneArgs) ToGetKafkaKafkaUserConfigSingleZoneOutputWithContext(ctx context.Context) GetKafkaKafkaUserConfigSingleZoneOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKafkaKafkaUserConfigSingleZoneOutput)
+}
+
+func (i GetKafkaKafkaUserConfigSingleZoneArgs) ToGetKafkaKafkaUserConfigSingleZonePtrOutput() GetKafkaKafkaUserConfigSingleZonePtrOutput {
+	return i.ToGetKafkaKafkaUserConfigSingleZonePtrOutputWithContext(context.Background())
+}
+
+func (i GetKafkaKafkaUserConfigSingleZoneArgs) ToGetKafkaKafkaUserConfigSingleZonePtrOutputWithContext(ctx context.Context) GetKafkaKafkaUserConfigSingleZonePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKafkaKafkaUserConfigSingleZoneOutput).ToGetKafkaKafkaUserConfigSingleZonePtrOutputWithContext(ctx)
+}
+
+// GetKafkaKafkaUserConfigSingleZonePtrInput is an input type that accepts GetKafkaKafkaUserConfigSingleZoneArgs, GetKafkaKafkaUserConfigSingleZonePtr and GetKafkaKafkaUserConfigSingleZonePtrOutput values.
+// You can construct a concrete instance of `GetKafkaKafkaUserConfigSingleZonePtrInput` via:
+//
+//	        GetKafkaKafkaUserConfigSingleZoneArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetKafkaKafkaUserConfigSingleZonePtrInput interface {
+	pulumi.Input
+
+	ToGetKafkaKafkaUserConfigSingleZonePtrOutput() GetKafkaKafkaUserConfigSingleZonePtrOutput
+	ToGetKafkaKafkaUserConfigSingleZonePtrOutputWithContext(context.Context) GetKafkaKafkaUserConfigSingleZonePtrOutput
+}
+
+type getKafkaKafkaUserConfigSingleZonePtrType GetKafkaKafkaUserConfigSingleZoneArgs
+
+func GetKafkaKafkaUserConfigSingleZonePtr(v *GetKafkaKafkaUserConfigSingleZoneArgs) GetKafkaKafkaUserConfigSingleZonePtrInput {
+	return (*getKafkaKafkaUserConfigSingleZonePtrType)(v)
+}
+
+func (*getKafkaKafkaUserConfigSingleZonePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetKafkaKafkaUserConfigSingleZone)(nil)).Elem()
+}
+
+func (i *getKafkaKafkaUserConfigSingleZonePtrType) ToGetKafkaKafkaUserConfigSingleZonePtrOutput() GetKafkaKafkaUserConfigSingleZonePtrOutput {
+	return i.ToGetKafkaKafkaUserConfigSingleZonePtrOutputWithContext(context.Background())
+}
+
+func (i *getKafkaKafkaUserConfigSingleZonePtrType) ToGetKafkaKafkaUserConfigSingleZonePtrOutputWithContext(ctx context.Context) GetKafkaKafkaUserConfigSingleZonePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKafkaKafkaUserConfigSingleZonePtrOutput)
+}
+
+type GetKafkaKafkaUserConfigSingleZoneOutput struct{ *pulumi.OutputState }
+
+func (GetKafkaKafkaUserConfigSingleZoneOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKafkaKafkaUserConfigSingleZone)(nil)).Elem()
+}
+
+func (o GetKafkaKafkaUserConfigSingleZoneOutput) ToGetKafkaKafkaUserConfigSingleZoneOutput() GetKafkaKafkaUserConfigSingleZoneOutput {
+	return o
+}
+
+func (o GetKafkaKafkaUserConfigSingleZoneOutput) ToGetKafkaKafkaUserConfigSingleZoneOutputWithContext(ctx context.Context) GetKafkaKafkaUserConfigSingleZoneOutput {
+	return o
+}
+
+func (o GetKafkaKafkaUserConfigSingleZoneOutput) ToGetKafkaKafkaUserConfigSingleZonePtrOutput() GetKafkaKafkaUserConfigSingleZonePtrOutput {
+	return o.ToGetKafkaKafkaUserConfigSingleZonePtrOutputWithContext(context.Background())
+}
+
+func (o GetKafkaKafkaUserConfigSingleZoneOutput) ToGetKafkaKafkaUserConfigSingleZonePtrOutputWithContext(ctx context.Context) GetKafkaKafkaUserConfigSingleZonePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetKafkaKafkaUserConfigSingleZone) *GetKafkaKafkaUserConfigSingleZone {
+		return &v
+	}).(GetKafkaKafkaUserConfigSingleZonePtrOutput)
+}
+
+// The availability zone to use for the service. This is only used when enabled is set to true. If not set the service will be allocated in random AZ.The AZ is not guaranteed, and the service may be allocated in a different AZ if the selected AZ is not available. Zones will not be validated and invalid zones will be ignored, falling back to random AZ selection. Common availability zones include: AWS (euc1-az1, euc1-az2, euc1-az3), GCP (europe-west1-a, europe-west1-b, europe-west1-c), Azure (germanywestcentral/1, germanywestcentral/2, germanywestcentral/3). Example: `euc1-az1`.
+func (o GetKafkaKafkaUserConfigSingleZoneOutput) AvailabilityZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaKafkaUserConfigSingleZone) *string { return v.AvailabilityZone }).(pulumi.StringPtrOutput)
+}
+
+// Whether to allocate nodes on the same Availability Zone or spread across zones available. By default service nodes are spread across different AZs. The single AZ support is best-effort and may temporarily allocate nodes in different AZs e.g. in case of capacity limitations in one AZ.
+func (o GetKafkaKafkaUserConfigSingleZoneOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetKafkaKafkaUserConfigSingleZone) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type GetKafkaKafkaUserConfigSingleZonePtrOutput struct{ *pulumi.OutputState }
+
+func (GetKafkaKafkaUserConfigSingleZonePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetKafkaKafkaUserConfigSingleZone)(nil)).Elem()
+}
+
+func (o GetKafkaKafkaUserConfigSingleZonePtrOutput) ToGetKafkaKafkaUserConfigSingleZonePtrOutput() GetKafkaKafkaUserConfigSingleZonePtrOutput {
+	return o
+}
+
+func (o GetKafkaKafkaUserConfigSingleZonePtrOutput) ToGetKafkaKafkaUserConfigSingleZonePtrOutputWithContext(ctx context.Context) GetKafkaKafkaUserConfigSingleZonePtrOutput {
+	return o
+}
+
+func (o GetKafkaKafkaUserConfigSingleZonePtrOutput) Elem() GetKafkaKafkaUserConfigSingleZoneOutput {
+	return o.ApplyT(func(v *GetKafkaKafkaUserConfigSingleZone) GetKafkaKafkaUserConfigSingleZone {
+		if v != nil {
+			return *v
+		}
+		var ret GetKafkaKafkaUserConfigSingleZone
+		return ret
+	}).(GetKafkaKafkaUserConfigSingleZoneOutput)
+}
+
+// The availability zone to use for the service. This is only used when enabled is set to true. If not set the service will be allocated in random AZ.The AZ is not guaranteed, and the service may be allocated in a different AZ if the selected AZ is not available. Zones will not be validated and invalid zones will be ignored, falling back to random AZ selection. Common availability zones include: AWS (euc1-az1, euc1-az2, euc1-az3), GCP (europe-west1-a, europe-west1-b, europe-west1-c), Azure (germanywestcentral/1, germanywestcentral/2, germanywestcentral/3). Example: `euc1-az1`.
+func (o GetKafkaKafkaUserConfigSingleZonePtrOutput) AvailabilityZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetKafkaKafkaUserConfigSingleZone) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AvailabilityZone
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to allocate nodes on the same Availability Zone or spread across zones available. By default service nodes are spread across different AZs. The single AZ support is best-effort and may temporarily allocate nodes in different AZs e.g. in case of capacity limitations in one AZ.
+func (o GetKafkaKafkaUserConfigSingleZonePtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetKafkaKafkaUserConfigSingleZone) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GetKafkaKafkaUserConfigTieredStorage struct {
+	// Whether to enable the tiered storage functionality.
+	Enabled *bool `pulumi:"enabled"`
+	// Local cache configuration
+	//
+	// Deprecated: This property is deprecated.
+	LocalCache *GetKafkaKafkaUserConfigTieredStorageLocalCache `pulumi:"localCache"`
+}
+
+// GetKafkaKafkaUserConfigTieredStorageInput is an input type that accepts GetKafkaKafkaUserConfigTieredStorageArgs and GetKafkaKafkaUserConfigTieredStorageOutput values.
+// You can construct a concrete instance of `GetKafkaKafkaUserConfigTieredStorageInput` via:
+//
+//	GetKafkaKafkaUserConfigTieredStorageArgs{...}
+type GetKafkaKafkaUserConfigTieredStorageInput interface {
+	pulumi.Input
+
+	ToGetKafkaKafkaUserConfigTieredStorageOutput() GetKafkaKafkaUserConfigTieredStorageOutput
+	ToGetKafkaKafkaUserConfigTieredStorageOutputWithContext(context.Context) GetKafkaKafkaUserConfigTieredStorageOutput
+}
+
+type GetKafkaKafkaUserConfigTieredStorageArgs struct {
+	// Whether to enable the tiered storage functionality.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Local cache configuration
+	//
+	// Deprecated: This property is deprecated.
+	LocalCache GetKafkaKafkaUserConfigTieredStorageLocalCachePtrInput `pulumi:"localCache"`
+}
+
+func (GetKafkaKafkaUserConfigTieredStorageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKafkaKafkaUserConfigTieredStorage)(nil)).Elem()
+}
+
+func (i GetKafkaKafkaUserConfigTieredStorageArgs) ToGetKafkaKafkaUserConfigTieredStorageOutput() GetKafkaKafkaUserConfigTieredStorageOutput {
+	return i.ToGetKafkaKafkaUserConfigTieredStorageOutputWithContext(context.Background())
+}
+
+func (i GetKafkaKafkaUserConfigTieredStorageArgs) ToGetKafkaKafkaUserConfigTieredStorageOutputWithContext(ctx context.Context) GetKafkaKafkaUserConfigTieredStorageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKafkaKafkaUserConfigTieredStorageOutput)
+}
+
+func (i GetKafkaKafkaUserConfigTieredStorageArgs) ToGetKafkaKafkaUserConfigTieredStoragePtrOutput() GetKafkaKafkaUserConfigTieredStoragePtrOutput {
+	return i.ToGetKafkaKafkaUserConfigTieredStoragePtrOutputWithContext(context.Background())
+}
+
+func (i GetKafkaKafkaUserConfigTieredStorageArgs) ToGetKafkaKafkaUserConfigTieredStoragePtrOutputWithContext(ctx context.Context) GetKafkaKafkaUserConfigTieredStoragePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKafkaKafkaUserConfigTieredStorageOutput).ToGetKafkaKafkaUserConfigTieredStoragePtrOutputWithContext(ctx)
+}
+
+// GetKafkaKafkaUserConfigTieredStoragePtrInput is an input type that accepts GetKafkaKafkaUserConfigTieredStorageArgs, GetKafkaKafkaUserConfigTieredStoragePtr and GetKafkaKafkaUserConfigTieredStoragePtrOutput values.
+// You can construct a concrete instance of `GetKafkaKafkaUserConfigTieredStoragePtrInput` via:
+//
+//	        GetKafkaKafkaUserConfigTieredStorageArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetKafkaKafkaUserConfigTieredStoragePtrInput interface {
+	pulumi.Input
+
+	ToGetKafkaKafkaUserConfigTieredStoragePtrOutput() GetKafkaKafkaUserConfigTieredStoragePtrOutput
+	ToGetKafkaKafkaUserConfigTieredStoragePtrOutputWithContext(context.Context) GetKafkaKafkaUserConfigTieredStoragePtrOutput
+}
+
+type getKafkaKafkaUserConfigTieredStoragePtrType GetKafkaKafkaUserConfigTieredStorageArgs
+
+func GetKafkaKafkaUserConfigTieredStoragePtr(v *GetKafkaKafkaUserConfigTieredStorageArgs) GetKafkaKafkaUserConfigTieredStoragePtrInput {
+	return (*getKafkaKafkaUserConfigTieredStoragePtrType)(v)
+}
+
+func (*getKafkaKafkaUserConfigTieredStoragePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetKafkaKafkaUserConfigTieredStorage)(nil)).Elem()
+}
+
+func (i *getKafkaKafkaUserConfigTieredStoragePtrType) ToGetKafkaKafkaUserConfigTieredStoragePtrOutput() GetKafkaKafkaUserConfigTieredStoragePtrOutput {
+	return i.ToGetKafkaKafkaUserConfigTieredStoragePtrOutputWithContext(context.Background())
+}
+
+func (i *getKafkaKafkaUserConfigTieredStoragePtrType) ToGetKafkaKafkaUserConfigTieredStoragePtrOutputWithContext(ctx context.Context) GetKafkaKafkaUserConfigTieredStoragePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKafkaKafkaUserConfigTieredStoragePtrOutput)
+}
+
+type GetKafkaKafkaUserConfigTieredStorageOutput struct{ *pulumi.OutputState }
+
+func (GetKafkaKafkaUserConfigTieredStorageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKafkaKafkaUserConfigTieredStorage)(nil)).Elem()
+}
+
+func (o GetKafkaKafkaUserConfigTieredStorageOutput) ToGetKafkaKafkaUserConfigTieredStorageOutput() GetKafkaKafkaUserConfigTieredStorageOutput {
+	return o
+}
+
+func (o GetKafkaKafkaUserConfigTieredStorageOutput) ToGetKafkaKafkaUserConfigTieredStorageOutputWithContext(ctx context.Context) GetKafkaKafkaUserConfigTieredStorageOutput {
+	return o
+}
+
+func (o GetKafkaKafkaUserConfigTieredStorageOutput) ToGetKafkaKafkaUserConfigTieredStoragePtrOutput() GetKafkaKafkaUserConfigTieredStoragePtrOutput {
+	return o.ToGetKafkaKafkaUserConfigTieredStoragePtrOutputWithContext(context.Background())
+}
+
+func (o GetKafkaKafkaUserConfigTieredStorageOutput) ToGetKafkaKafkaUserConfigTieredStoragePtrOutputWithContext(ctx context.Context) GetKafkaKafkaUserConfigTieredStoragePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetKafkaKafkaUserConfigTieredStorage) *GetKafkaKafkaUserConfigTieredStorage {
+		return &v
+	}).(GetKafkaKafkaUserConfigTieredStoragePtrOutput)
+}
+
+// Whether to enable the tiered storage functionality.
+func (o GetKafkaKafkaUserConfigTieredStorageOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetKafkaKafkaUserConfigTieredStorage) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Local cache configuration
+//
+// Deprecated: This property is deprecated.
+func (o GetKafkaKafkaUserConfigTieredStorageOutput) LocalCache() GetKafkaKafkaUserConfigTieredStorageLocalCachePtrOutput {
+	return o.ApplyT(func(v GetKafkaKafkaUserConfigTieredStorage) *GetKafkaKafkaUserConfigTieredStorageLocalCache {
+		return v.LocalCache
+	}).(GetKafkaKafkaUserConfigTieredStorageLocalCachePtrOutput)
+}
+
+type GetKafkaKafkaUserConfigTieredStoragePtrOutput struct{ *pulumi.OutputState }
+
+func (GetKafkaKafkaUserConfigTieredStoragePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetKafkaKafkaUserConfigTieredStorage)(nil)).Elem()
+}
+
+func (o GetKafkaKafkaUserConfigTieredStoragePtrOutput) ToGetKafkaKafkaUserConfigTieredStoragePtrOutput() GetKafkaKafkaUserConfigTieredStoragePtrOutput {
+	return o
+}
+
+func (o GetKafkaKafkaUserConfigTieredStoragePtrOutput) ToGetKafkaKafkaUserConfigTieredStoragePtrOutputWithContext(ctx context.Context) GetKafkaKafkaUserConfigTieredStoragePtrOutput {
+	return o
+}
+
+func (o GetKafkaKafkaUserConfigTieredStoragePtrOutput) Elem() GetKafkaKafkaUserConfigTieredStorageOutput {
+	return o.ApplyT(func(v *GetKafkaKafkaUserConfigTieredStorage) GetKafkaKafkaUserConfigTieredStorage {
+		if v != nil {
+			return *v
+		}
+		var ret GetKafkaKafkaUserConfigTieredStorage
+		return ret
+	}).(GetKafkaKafkaUserConfigTieredStorageOutput)
+}
+
+// Whether to enable the tiered storage functionality.
+func (o GetKafkaKafkaUserConfigTieredStoragePtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetKafkaKafkaUserConfigTieredStorage) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Local cache configuration
+//
+// Deprecated: This property is deprecated.
+func (o GetKafkaKafkaUserConfigTieredStoragePtrOutput) LocalCache() GetKafkaKafkaUserConfigTieredStorageLocalCachePtrOutput {
+	return o.ApplyT(func(v *GetKafkaKafkaUserConfigTieredStorage) *GetKafkaKafkaUserConfigTieredStorageLocalCache {
+		if v == nil {
+			return nil
+		}
+		return v.LocalCache
+	}).(GetKafkaKafkaUserConfigTieredStorageLocalCachePtrOutput)
+}
+
+type GetKafkaKafkaUserConfigTieredStorageLocalCache struct {
+	// Local cache size in bytes. Example: `1073741824`.
+	//
+	// Deprecated: This property is deprecated.
+	Size *int `pulumi:"size"`
+}
+
+// GetKafkaKafkaUserConfigTieredStorageLocalCacheInput is an input type that accepts GetKafkaKafkaUserConfigTieredStorageLocalCacheArgs and GetKafkaKafkaUserConfigTieredStorageLocalCacheOutput values.
+// You can construct a concrete instance of `GetKafkaKafkaUserConfigTieredStorageLocalCacheInput` via:
+//
+//	GetKafkaKafkaUserConfigTieredStorageLocalCacheArgs{...}
+type GetKafkaKafkaUserConfigTieredStorageLocalCacheInput interface {
+	pulumi.Input
+
+	ToGetKafkaKafkaUserConfigTieredStorageLocalCacheOutput() GetKafkaKafkaUserConfigTieredStorageLocalCacheOutput
+	ToGetKafkaKafkaUserConfigTieredStorageLocalCacheOutputWithContext(context.Context) GetKafkaKafkaUserConfigTieredStorageLocalCacheOutput
+}
+
+type GetKafkaKafkaUserConfigTieredStorageLocalCacheArgs struct {
+	// Local cache size in bytes. Example: `1073741824`.
+	//
+	// Deprecated: This property is deprecated.
+	Size pulumi.IntPtrInput `pulumi:"size"`
+}
+
+func (GetKafkaKafkaUserConfigTieredStorageLocalCacheArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKafkaKafkaUserConfigTieredStorageLocalCache)(nil)).Elem()
+}
+
+func (i GetKafkaKafkaUserConfigTieredStorageLocalCacheArgs) ToGetKafkaKafkaUserConfigTieredStorageLocalCacheOutput() GetKafkaKafkaUserConfigTieredStorageLocalCacheOutput {
+	return i.ToGetKafkaKafkaUserConfigTieredStorageLocalCacheOutputWithContext(context.Background())
+}
+
+func (i GetKafkaKafkaUserConfigTieredStorageLocalCacheArgs) ToGetKafkaKafkaUserConfigTieredStorageLocalCacheOutputWithContext(ctx context.Context) GetKafkaKafkaUserConfigTieredStorageLocalCacheOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKafkaKafkaUserConfigTieredStorageLocalCacheOutput)
+}
+
+func (i GetKafkaKafkaUserConfigTieredStorageLocalCacheArgs) ToGetKafkaKafkaUserConfigTieredStorageLocalCachePtrOutput() GetKafkaKafkaUserConfigTieredStorageLocalCachePtrOutput {
+	return i.ToGetKafkaKafkaUserConfigTieredStorageLocalCachePtrOutputWithContext(context.Background())
+}
+
+func (i GetKafkaKafkaUserConfigTieredStorageLocalCacheArgs) ToGetKafkaKafkaUserConfigTieredStorageLocalCachePtrOutputWithContext(ctx context.Context) GetKafkaKafkaUserConfigTieredStorageLocalCachePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKafkaKafkaUserConfigTieredStorageLocalCacheOutput).ToGetKafkaKafkaUserConfigTieredStorageLocalCachePtrOutputWithContext(ctx)
+}
+
+// GetKafkaKafkaUserConfigTieredStorageLocalCachePtrInput is an input type that accepts GetKafkaKafkaUserConfigTieredStorageLocalCacheArgs, GetKafkaKafkaUserConfigTieredStorageLocalCachePtr and GetKafkaKafkaUserConfigTieredStorageLocalCachePtrOutput values.
+// You can construct a concrete instance of `GetKafkaKafkaUserConfigTieredStorageLocalCachePtrInput` via:
+//
+//	        GetKafkaKafkaUserConfigTieredStorageLocalCacheArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetKafkaKafkaUserConfigTieredStorageLocalCachePtrInput interface {
+	pulumi.Input
+
+	ToGetKafkaKafkaUserConfigTieredStorageLocalCachePtrOutput() GetKafkaKafkaUserConfigTieredStorageLocalCachePtrOutput
+	ToGetKafkaKafkaUserConfigTieredStorageLocalCachePtrOutputWithContext(context.Context) GetKafkaKafkaUserConfigTieredStorageLocalCachePtrOutput
+}
+
+type getKafkaKafkaUserConfigTieredStorageLocalCachePtrType GetKafkaKafkaUserConfigTieredStorageLocalCacheArgs
+
+func GetKafkaKafkaUserConfigTieredStorageLocalCachePtr(v *GetKafkaKafkaUserConfigTieredStorageLocalCacheArgs) GetKafkaKafkaUserConfigTieredStorageLocalCachePtrInput {
+	return (*getKafkaKafkaUserConfigTieredStorageLocalCachePtrType)(v)
+}
+
+func (*getKafkaKafkaUserConfigTieredStorageLocalCachePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetKafkaKafkaUserConfigTieredStorageLocalCache)(nil)).Elem()
+}
+
+func (i *getKafkaKafkaUserConfigTieredStorageLocalCachePtrType) ToGetKafkaKafkaUserConfigTieredStorageLocalCachePtrOutput() GetKafkaKafkaUserConfigTieredStorageLocalCachePtrOutput {
+	return i.ToGetKafkaKafkaUserConfigTieredStorageLocalCachePtrOutputWithContext(context.Background())
+}
+
+func (i *getKafkaKafkaUserConfigTieredStorageLocalCachePtrType) ToGetKafkaKafkaUserConfigTieredStorageLocalCachePtrOutputWithContext(ctx context.Context) GetKafkaKafkaUserConfigTieredStorageLocalCachePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKafkaKafkaUserConfigTieredStorageLocalCachePtrOutput)
+}
+
+type GetKafkaKafkaUserConfigTieredStorageLocalCacheOutput struct{ *pulumi.OutputState }
+
+func (GetKafkaKafkaUserConfigTieredStorageLocalCacheOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKafkaKafkaUserConfigTieredStorageLocalCache)(nil)).Elem()
+}
+
+func (o GetKafkaKafkaUserConfigTieredStorageLocalCacheOutput) ToGetKafkaKafkaUserConfigTieredStorageLocalCacheOutput() GetKafkaKafkaUserConfigTieredStorageLocalCacheOutput {
+	return o
+}
+
+func (o GetKafkaKafkaUserConfigTieredStorageLocalCacheOutput) ToGetKafkaKafkaUserConfigTieredStorageLocalCacheOutputWithContext(ctx context.Context) GetKafkaKafkaUserConfigTieredStorageLocalCacheOutput {
+	return o
+}
+
+func (o GetKafkaKafkaUserConfigTieredStorageLocalCacheOutput) ToGetKafkaKafkaUserConfigTieredStorageLocalCachePtrOutput() GetKafkaKafkaUserConfigTieredStorageLocalCachePtrOutput {
+	return o.ToGetKafkaKafkaUserConfigTieredStorageLocalCachePtrOutputWithContext(context.Background())
+}
+
+func (o GetKafkaKafkaUserConfigTieredStorageLocalCacheOutput) ToGetKafkaKafkaUserConfigTieredStorageLocalCachePtrOutputWithContext(ctx context.Context) GetKafkaKafkaUserConfigTieredStorageLocalCachePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetKafkaKafkaUserConfigTieredStorageLocalCache) *GetKafkaKafkaUserConfigTieredStorageLocalCache {
+		return &v
+	}).(GetKafkaKafkaUserConfigTieredStorageLocalCachePtrOutput)
+}
+
+// Local cache size in bytes. Example: `1073741824`.
+//
+// Deprecated: This property is deprecated.
+func (o GetKafkaKafkaUserConfigTieredStorageLocalCacheOutput) Size() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetKafkaKafkaUserConfigTieredStorageLocalCache) *int { return v.Size }).(pulumi.IntPtrOutput)
+}
+
+type GetKafkaKafkaUserConfigTieredStorageLocalCachePtrOutput struct{ *pulumi.OutputState }
+
+func (GetKafkaKafkaUserConfigTieredStorageLocalCachePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetKafkaKafkaUserConfigTieredStorageLocalCache)(nil)).Elem()
+}
+
+func (o GetKafkaKafkaUserConfigTieredStorageLocalCachePtrOutput) ToGetKafkaKafkaUserConfigTieredStorageLocalCachePtrOutput() GetKafkaKafkaUserConfigTieredStorageLocalCachePtrOutput {
+	return o
+}
+
+func (o GetKafkaKafkaUserConfigTieredStorageLocalCachePtrOutput) ToGetKafkaKafkaUserConfigTieredStorageLocalCachePtrOutputWithContext(ctx context.Context) GetKafkaKafkaUserConfigTieredStorageLocalCachePtrOutput {
+	return o
+}
+
+func (o GetKafkaKafkaUserConfigTieredStorageLocalCachePtrOutput) Elem() GetKafkaKafkaUserConfigTieredStorageLocalCacheOutput {
+	return o.ApplyT(func(v *GetKafkaKafkaUserConfigTieredStorageLocalCache) GetKafkaKafkaUserConfigTieredStorageLocalCache {
+		if v != nil {
+			return *v
+		}
+		var ret GetKafkaKafkaUserConfigTieredStorageLocalCache
+		return ret
+	}).(GetKafkaKafkaUserConfigTieredStorageLocalCacheOutput)
+}
+
+// Local cache size in bytes. Example: `1073741824`.
+//
+// Deprecated: This property is deprecated.
+func (o GetKafkaKafkaUserConfigTieredStorageLocalCachePtrOutput) Size() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetKafkaKafkaUserConfigTieredStorageLocalCache) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Size
+	}).(pulumi.IntPtrOutput)
+}
+
+type GetKafkaMirrorMakerComponent struct {
+	// Service component name
+	Component string `pulumi:"component"`
+	// Connection info for connecting to the service component. This is a combination of host and port.
+	ConnectionUri string `pulumi:"connectionUri"`
+	// Host name for connecting to the service component
+	Host string `pulumi:"host"`
+	// Kafka authentication method. This is a value specific to the 'kafka' service component
+	KafkaAuthenticationMethod string `pulumi:"kafkaAuthenticationMethod"`
+	// Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+	KafkaSslCa string `pulumi:"kafkaSslCa"`
+	// Port number for connecting to the service component
+	Port int `pulumi:"port"`
+	// Privatelink connection ID
+	PrivatelinkConnectionId string `pulumi:"privatelinkConnectionId"`
+	// Network access route
+	Route string `pulumi:"route"`
+	// Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
+	Ssl bool `pulumi:"ssl"`
+	// DNS usage name
+	Usage string `pulumi:"usage"`
+}
+
+// GetKafkaMirrorMakerComponentInput is an input type that accepts GetKafkaMirrorMakerComponentArgs and GetKafkaMirrorMakerComponentOutput values.
+// You can construct a concrete instance of `GetKafkaMirrorMakerComponentInput` via:
+//
+//	GetKafkaMirrorMakerComponentArgs{...}
+type GetKafkaMirrorMakerComponentInput interface {
+	pulumi.Input
+
+	ToGetKafkaMirrorMakerComponentOutput() GetKafkaMirrorMakerComponentOutput
+	ToGetKafkaMirrorMakerComponentOutputWithContext(context.Context) GetKafkaMirrorMakerComponentOutput
+}
+
+type GetKafkaMirrorMakerComponentArgs struct {
+	// Service component name
+	Component pulumi.StringInput `pulumi:"component"`
+	// Connection info for connecting to the service component. This is a combination of host and port.
+	ConnectionUri pulumi.StringInput `pulumi:"connectionUri"`
+	// Host name for connecting to the service component
+	Host pulumi.StringInput `pulumi:"host"`
+	// Kafka authentication method. This is a value specific to the 'kafka' service component
+	KafkaAuthenticationMethod pulumi.StringInput `pulumi:"kafkaAuthenticationMethod"`
+	// Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+	KafkaSslCa pulumi.StringInput `pulumi:"kafkaSslCa"`
+	// Port number for connecting to the service component
+	Port pulumi.IntInput `pulumi:"port"`
+	// Privatelink connection ID
+	PrivatelinkConnectionId pulumi.StringInput `pulumi:"privatelinkConnectionId"`
+	// Network access route
+	Route pulumi.StringInput `pulumi:"route"`
+	// Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
+	Ssl pulumi.BoolInput `pulumi:"ssl"`
+	// DNS usage name
+	Usage pulumi.StringInput `pulumi:"usage"`
+}
+
+func (GetKafkaMirrorMakerComponentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKafkaMirrorMakerComponent)(nil)).Elem()
+}
+
+func (i GetKafkaMirrorMakerComponentArgs) ToGetKafkaMirrorMakerComponentOutput() GetKafkaMirrorMakerComponentOutput {
+	return i.ToGetKafkaMirrorMakerComponentOutputWithContext(context.Background())
+}
+
+func (i GetKafkaMirrorMakerComponentArgs) ToGetKafkaMirrorMakerComponentOutputWithContext(ctx context.Context) GetKafkaMirrorMakerComponentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKafkaMirrorMakerComponentOutput)
+}
+
+// GetKafkaMirrorMakerComponentArrayInput is an input type that accepts GetKafkaMirrorMakerComponentArray and GetKafkaMirrorMakerComponentArrayOutput values.
+// You can construct a concrete instance of `GetKafkaMirrorMakerComponentArrayInput` via:
+//
+//	GetKafkaMirrorMakerComponentArray{ GetKafkaMirrorMakerComponentArgs{...} }
+type GetKafkaMirrorMakerComponentArrayInput interface {
+	pulumi.Input
+
+	ToGetKafkaMirrorMakerComponentArrayOutput() GetKafkaMirrorMakerComponentArrayOutput
+	ToGetKafkaMirrorMakerComponentArrayOutputWithContext(context.Context) GetKafkaMirrorMakerComponentArrayOutput
+}
+
+type GetKafkaMirrorMakerComponentArray []GetKafkaMirrorMakerComponentInput
+
+func (GetKafkaMirrorMakerComponentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKafkaMirrorMakerComponent)(nil)).Elem()
+}
+
+func (i GetKafkaMirrorMakerComponentArray) ToGetKafkaMirrorMakerComponentArrayOutput() GetKafkaMirrorMakerComponentArrayOutput {
+	return i.ToGetKafkaMirrorMakerComponentArrayOutputWithContext(context.Background())
+}
+
+func (i GetKafkaMirrorMakerComponentArray) ToGetKafkaMirrorMakerComponentArrayOutputWithContext(ctx context.Context) GetKafkaMirrorMakerComponentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKafkaMirrorMakerComponentArrayOutput)
+}
+
+type GetKafkaMirrorMakerComponentOutput struct{ *pulumi.OutputState }
+
+func (GetKafkaMirrorMakerComponentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKafkaMirrorMakerComponent)(nil)).Elem()
+}
+
+func (o GetKafkaMirrorMakerComponentOutput) ToGetKafkaMirrorMakerComponentOutput() GetKafkaMirrorMakerComponentOutput {
+	return o
+}
+
+func (o GetKafkaMirrorMakerComponentOutput) ToGetKafkaMirrorMakerComponentOutputWithContext(ctx context.Context) GetKafkaMirrorMakerComponentOutput {
+	return o
+}
+
+// Service component name
+func (o GetKafkaMirrorMakerComponentOutput) Component() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKafkaMirrorMakerComponent) string { return v.Component }).(pulumi.StringOutput)
+}
+
+// Connection info for connecting to the service component. This is a combination of host and port.
+func (o GetKafkaMirrorMakerComponentOutput) ConnectionUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKafkaMirrorMakerComponent) string { return v.ConnectionUri }).(pulumi.StringOutput)
+}
+
+// Host name for connecting to the service component
+func (o GetKafkaMirrorMakerComponentOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKafkaMirrorMakerComponent) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// Kafka authentication method. This is a value specific to the 'kafka' service component
+func (o GetKafkaMirrorMakerComponentOutput) KafkaAuthenticationMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKafkaMirrorMakerComponent) string { return v.KafkaAuthenticationMethod }).(pulumi.StringOutput)
+}
+
+// Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
+func (o GetKafkaMirrorMakerComponentOutput) KafkaSslCa() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKafkaMirrorMakerComponent) string { return v.KafkaSslCa }).(pulumi.StringOutput)
+}
+
+// Port number for connecting to the service component
+func (o GetKafkaMirrorMakerComponentOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetKafkaMirrorMakerComponent) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// Privatelink connection ID
+func (o GetKafkaMirrorMakerComponentOutput) PrivatelinkConnectionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKafkaMirrorMakerComponent) string { return v.PrivatelinkConnectionId }).(pulumi.StringOutput)
+}
+
+// Network access route
+func (o GetKafkaMirrorMakerComponentOutput) Route() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKafkaMirrorMakerComponent) string { return v.Route }).(pulumi.StringOutput)
+}
+
+// Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
+func (o GetKafkaMirrorMakerComponentOutput) Ssl() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetKafkaMirrorMakerComponent) bool { return v.Ssl }).(pulumi.BoolOutput)
+}
+
+// DNS usage name
+func (o GetKafkaMirrorMakerComponentOutput) Usage() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKafkaMirrorMakerComponent) string { return v.Usage }).(pulumi.StringOutput)
+}
+
+type GetKafkaMirrorMakerComponentArrayOutput struct{ *pulumi.OutputState }
+
+func (GetKafkaMirrorMakerComponentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKafkaMirrorMakerComponent)(nil)).Elem()
+}
+
+func (o GetKafkaMirrorMakerComponentArrayOutput) ToGetKafkaMirrorMakerComponentArrayOutput() GetKafkaMirrorMakerComponentArrayOutput {
+	return o
+}
+
+func (o GetKafkaMirrorMakerComponentArrayOutput) ToGetKafkaMirrorMakerComponentArrayOutputWithContext(ctx context.Context) GetKafkaMirrorMakerComponentArrayOutput {
+	return o
+}
+
+func (o GetKafkaMirrorMakerComponentArrayOutput) Index(i pulumi.IntInput) GetKafkaMirrorMakerComponentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKafkaMirrorMakerComponent {
+		return vs[0].([]GetKafkaMirrorMakerComponent)[vs[1].(int)]
+	}).(GetKafkaMirrorMakerComponentOutput)
+}
+
+type GetKafkaMirrorMakerKafkaMirrormakerUserConfig struct {
+	// Additional Cloud Regions for Backup Replication.
+	//
+	// Deprecated: This property is deprecated.
+	AdditionalBackupRegions *string `pulumi:"additionalBackupRegions"`
+	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+	IpFilterObjects []GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObject `pulumi:"ipFilterObjects"`
+	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+	IpFilterStrings []string `pulumi:"ipFilterStrings"`
+	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+	//
+	// Deprecated: Deprecated. Use `ipFilterString` instead.
+	IpFilters []string `pulumi:"ipFilters"`
+	// Kafka MirrorMaker configuration values
+	KafkaMirrormaker *GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker `pulumi:"kafkaMirrormaker"`
+	// List of allowed URLs for SASL OAUTHBEARER authentication. Only HTTPS URLs are allowed for security reasons.
+	SaslOauthbearerAllowedUrls []string `pulumi:"saslOauthbearerAllowedUrls"`
+	// Store logs for the service so that they are available in the HTTP API and console.
+	ServiceLog *bool `pulumi:"serviceLog"`
+	// Use static public IP addresses.
+	StaticIps *bool `pulumi:"staticIps"`
+}
+
+// GetKafkaMirrorMakerKafkaMirrormakerUserConfigInput is an input type that accepts GetKafkaMirrorMakerKafkaMirrormakerUserConfigArgs and GetKafkaMirrorMakerKafkaMirrormakerUserConfigOutput values.
+// You can construct a concrete instance of `GetKafkaMirrorMakerKafkaMirrormakerUserConfigInput` via:
+//
+//	GetKafkaMirrorMakerKafkaMirrormakerUserConfigArgs{...}
+type GetKafkaMirrorMakerKafkaMirrormakerUserConfigInput interface {
+	pulumi.Input
+
+	ToGetKafkaMirrorMakerKafkaMirrormakerUserConfigOutput() GetKafkaMirrorMakerKafkaMirrormakerUserConfigOutput
+	ToGetKafkaMirrorMakerKafkaMirrormakerUserConfigOutputWithContext(context.Context) GetKafkaMirrorMakerKafkaMirrormakerUserConfigOutput
+}
+
+type GetKafkaMirrorMakerKafkaMirrormakerUserConfigArgs struct {
+	// Additional Cloud Regions for Backup Replication.
+	//
+	// Deprecated: This property is deprecated.
+	AdditionalBackupRegions pulumi.StringPtrInput `pulumi:"additionalBackupRegions"`
+	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+	IpFilterObjects GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectArrayInput `pulumi:"ipFilterObjects"`
+	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+	IpFilterStrings pulumi.StringArrayInput `pulumi:"ipFilterStrings"`
+	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+	//
+	// Deprecated: Deprecated. Use `ipFilterString` instead.
+	IpFilters pulumi.StringArrayInput `pulumi:"ipFilters"`
+	// Kafka MirrorMaker configuration values
+	KafkaMirrormaker GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrInput `pulumi:"kafkaMirrormaker"`
+	// List of allowed URLs for SASL OAUTHBEARER authentication. Only HTTPS URLs are allowed for security reasons.
+	SaslOauthbearerAllowedUrls pulumi.StringArrayInput `pulumi:"saslOauthbearerAllowedUrls"`
+	// Store logs for the service so that they are available in the HTTP API and console.
+	ServiceLog pulumi.BoolPtrInput `pulumi:"serviceLog"`
+	// Use static public IP addresses.
+	StaticIps pulumi.BoolPtrInput `pulumi:"staticIps"`
+}
+
+func (GetKafkaMirrorMakerKafkaMirrormakerUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKafkaMirrorMakerKafkaMirrormakerUserConfig)(nil)).Elem()
+}
+
+func (i GetKafkaMirrorMakerKafkaMirrormakerUserConfigArgs) ToGetKafkaMirrorMakerKafkaMirrormakerUserConfigOutput() GetKafkaMirrorMakerKafkaMirrormakerUserConfigOutput {
+	return i.ToGetKafkaMirrorMakerKafkaMirrormakerUserConfigOutputWithContext(context.Background())
+}
+
+func (i GetKafkaMirrorMakerKafkaMirrormakerUserConfigArgs) ToGetKafkaMirrorMakerKafkaMirrormakerUserConfigOutputWithContext(ctx context.Context) GetKafkaMirrorMakerKafkaMirrormakerUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKafkaMirrorMakerKafkaMirrormakerUserConfigOutput)
+}
+
+// GetKafkaMirrorMakerKafkaMirrormakerUserConfigArrayInput is an input type that accepts GetKafkaMirrorMakerKafkaMirrormakerUserConfigArray and GetKafkaMirrorMakerKafkaMirrormakerUserConfigArrayOutput values.
+// You can construct a concrete instance of `GetKafkaMirrorMakerKafkaMirrormakerUserConfigArrayInput` via:
+//
+//	GetKafkaMirrorMakerKafkaMirrormakerUserConfigArray{ GetKafkaMirrorMakerKafkaMirrormakerUserConfigArgs{...} }
+type GetKafkaMirrorMakerKafkaMirrormakerUserConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetKafkaMirrorMakerKafkaMirrormakerUserConfigArrayOutput() GetKafkaMirrorMakerKafkaMirrormakerUserConfigArrayOutput
+	ToGetKafkaMirrorMakerKafkaMirrormakerUserConfigArrayOutputWithContext(context.Context) GetKafkaMirrorMakerKafkaMirrormakerUserConfigArrayOutput
+}
+
+type GetKafkaMirrorMakerKafkaMirrormakerUserConfigArray []GetKafkaMirrorMakerKafkaMirrormakerUserConfigInput
+
+func (GetKafkaMirrorMakerKafkaMirrormakerUserConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKafkaMirrorMakerKafkaMirrormakerUserConfig)(nil)).Elem()
+}
+
+func (i GetKafkaMirrorMakerKafkaMirrormakerUserConfigArray) ToGetKafkaMirrorMakerKafkaMirrormakerUserConfigArrayOutput() GetKafkaMirrorMakerKafkaMirrormakerUserConfigArrayOutput {
+	return i.ToGetKafkaMirrorMakerKafkaMirrormakerUserConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetKafkaMirrorMakerKafkaMirrormakerUserConfigArray) ToGetKafkaMirrorMakerKafkaMirrormakerUserConfigArrayOutputWithContext(ctx context.Context) GetKafkaMirrorMakerKafkaMirrormakerUserConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKafkaMirrorMakerKafkaMirrormakerUserConfigArrayOutput)
+}
+
+type GetKafkaMirrorMakerKafkaMirrormakerUserConfigOutput struct{ *pulumi.OutputState }
+
+func (GetKafkaMirrorMakerKafkaMirrormakerUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKafkaMirrorMakerKafkaMirrormakerUserConfig)(nil)).Elem()
+}
+
+func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigOutput) ToGetKafkaMirrorMakerKafkaMirrormakerUserConfigOutput() GetKafkaMirrorMakerKafkaMirrormakerUserConfigOutput {
+	return o
+}
+
+func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigOutput) ToGetKafkaMirrorMakerKafkaMirrormakerUserConfigOutputWithContext(ctx context.Context) GetKafkaMirrorMakerKafkaMirrormakerUserConfigOutput {
+	return o
+}
+
+// Additional Cloud Regions for Backup Replication.
+//
+// Deprecated: This property is deprecated.
+func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigOutput) AdditionalBackupRegions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaMirrorMakerKafkaMirrormakerUserConfig) *string { return v.AdditionalBackupRegions }).(pulumi.StringPtrOutput)
+}
+
+// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
+func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigOutput) IpFilterObjects() GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectArrayOutput {
+	return o.ApplyT(func(v GetKafkaMirrorMakerKafkaMirrormakerUserConfig) []GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObject {
+		return v.IpFilterObjects
+	}).(GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectArrayOutput)
+}
+
+// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigOutput) IpFilterStrings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetKafkaMirrorMakerKafkaMirrormakerUserConfig) []string { return v.IpFilterStrings }).(pulumi.StringArrayOutput)
+}
+
+// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
+//
+// Deprecated: Deprecated. Use `ipFilterString` instead.
+func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigOutput) IpFilters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetKafkaMirrorMakerKafkaMirrormakerUserConfig) []string { return v.IpFilters }).(pulumi.StringArrayOutput)
+}
+
+// Kafka MirrorMaker configuration values
+func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigOutput) KafkaMirrormaker() GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput {
+	return o.ApplyT(func(v GetKafkaMirrorMakerKafkaMirrormakerUserConfig) *GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker {
+		return v.KafkaMirrormaker
+	}).(GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput)
+}
+
+// List of allowed URLs for SASL OAUTHBEARER authentication. Only HTTPS URLs are allowed for security reasons.
+func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigOutput) SaslOauthbearerAllowedUrls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetKafkaMirrorMakerKafkaMirrormakerUserConfig) []string { return v.SaslOauthbearerAllowedUrls }).(pulumi.StringArrayOutput)
+}
+
+// Store logs for the service so that they are available in the HTTP API and console.
+func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigOutput) ServiceLog() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetKafkaMirrorMakerKafkaMirrormakerUserConfig) *bool { return v.ServiceLog }).(pulumi.BoolPtrOutput)
+}
+
+// Use static public IP addresses.
+func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigOutput) StaticIps() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetKafkaMirrorMakerKafkaMirrormakerUserConfig) *bool { return v.StaticIps }).(pulumi.BoolPtrOutput)
+}
+
+type GetKafkaMirrorMakerKafkaMirrormakerUserConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetKafkaMirrorMakerKafkaMirrormakerUserConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKafkaMirrorMakerKafkaMirrormakerUserConfig)(nil)).Elem()
+}
+
+func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigArrayOutput) ToGetKafkaMirrorMakerKafkaMirrormakerUserConfigArrayOutput() GetKafkaMirrorMakerKafkaMirrormakerUserConfigArrayOutput {
+	return o
+}
+
+func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigArrayOutput) ToGetKafkaMirrorMakerKafkaMirrormakerUserConfigArrayOutputWithContext(ctx context.Context) GetKafkaMirrorMakerKafkaMirrormakerUserConfigArrayOutput {
+	return o
+}
+
+func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigArrayOutput) Index(i pulumi.IntInput) GetKafkaMirrorMakerKafkaMirrormakerUserConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKafkaMirrorMakerKafkaMirrormakerUserConfig {
+		return vs[0].([]GetKafkaMirrorMakerKafkaMirrormakerUserConfig)[vs[1].(int)]
+	}).(GetKafkaMirrorMakerKafkaMirrormakerUserConfigOutput)
+}
+
+type GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObject struct {
+	// Description for IP filter list entry. Example: `Production service IP range`.
+	Description *string `pulumi:"description"`
+	// CIDR address block. Example: `10.20.0.0/16`.
+	Network string `pulumi:"network"`
+}
+
+// GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectInput is an input type that accepts GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectArgs and GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectOutput values.
+// You can construct a concrete instance of `GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectInput` via:
+//
+//	GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectArgs{...}
+type GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectInput interface {
+	pulumi.Input
+
+	ToGetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectOutput() GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectOutput
+	ToGetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectOutputWithContext(context.Context) GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectOutput
+}
+
+type GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectArgs struct {
+	// Description for IP filter list entry. Example: `Production service IP range`.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// CIDR address block. Example: `10.20.0.0/16`.
+	Network pulumi.StringInput `pulumi:"network"`
+}
+
+func (GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObject)(nil)).Elem()
+}
+
+func (i GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectArgs) ToGetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectOutput() GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectOutput {
+	return i.ToGetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectOutputWithContext(context.Background())
+}
+
+func (i GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectArgs) ToGetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectOutputWithContext(ctx context.Context) GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectOutput)
+}
+
+// GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectArrayInput is an input type that accepts GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectArray and GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectArrayOutput values.
+// You can construct a concrete instance of `GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectArrayInput` via:
+//
+//	GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectArray{ GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectArgs{...} }
+type GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectArrayInput interface {
+	pulumi.Input
+
+	ToGetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectArrayOutput() GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectArrayOutput
+	ToGetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectArrayOutputWithContext(context.Context) GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectArrayOutput
+}
+
+type GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectArray []GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectInput
+
+func (GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObject)(nil)).Elem()
+}
+
+func (i GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectArray) ToGetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectArrayOutput() GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectArrayOutput {
+	return i.ToGetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectArrayOutputWithContext(context.Background())
+}
+
+func (i GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectArray) ToGetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectArrayOutputWithContext(ctx context.Context) GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectArrayOutput)
+}
+
+type GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectOutput struct{ *pulumi.OutputState }
+
+func (GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObject)(nil)).Elem()
+}
+
+func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectOutput) ToGetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectOutput() GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectOutput {
+	return o
+}
+
+func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectOutput) ToGetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectOutputWithContext(ctx context.Context) GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectOutput {
+	return o
+}
+
+// Description for IP filter list entry. Example: `Production service IP range`.
+func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObject) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// CIDR address block. Example: `10.20.0.0/16`.
+func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObject) string { return v.Network }).(pulumi.StringOutput)
+}
+
+type GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectArrayOutput struct{ *pulumi.OutputState }
+
+func (GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObject)(nil)).Elem()
+}
+
+func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectArrayOutput) ToGetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectArrayOutput() GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectArrayOutput {
+	return o
+}
+
+func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectArrayOutput) ToGetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectArrayOutputWithContext(ctx context.Context) GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectArrayOutput {
+	return o
+}
+
+func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectArrayOutput) Index(i pulumi.IntInput) GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObject {
+		return vs[0].([]GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObject)[vs[1].(int)]
+	}).(GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectOutput)
+}
+
+type GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker struct {
+	// Timeout for administrative tasks, e.g. detecting new topics, loading of consumer group and offsets. Defaults to 60000 milliseconds (1 minute).
+	AdminTimeoutMs *int `pulumi:"adminTimeoutMs"`
+	// Whether to emit consumer group offset checkpoints to target cluster periodically (default: true).
+	EmitCheckpointsEnabled *bool `pulumi:"emitCheckpointsEnabled"`
+	// Frequency at which consumer group offset checkpoints are emitted (default: 60, every minute). Example: `60`.
+	EmitCheckpointsIntervalSeconds *int `pulumi:"emitCheckpointsIntervalSeconds"`
+	// Consumer groups to replicate. Supports comma-separated group IDs and regexes. Example: `.*`.
+	Groups *string `pulumi:"groups"`
+	// Exclude groups. Supports comma-separated group IDs and regexes. Excludes take precedence over includes. Example: `console-consumer-.*,connect-.*,__.*`.
+	GroupsExclude *string `pulumi:"groupsExclude"`
+	// How out-of-sync a remote partition can be before it is resynced. Example: `100`.
+	OffsetLagMax *int `pulumi:"offsetLagMax"`
+	// Whether to periodically check for new consumer groups. Defaults to `true`.
+	RefreshGroupsEnabled *bool `pulumi:"refreshGroupsEnabled"`
+	// Frequency of consumer group refresh in seconds. Defaults to 600 seconds (10 minutes).
+	RefreshGroupsIntervalSeconds *int `pulumi:"refreshGroupsIntervalSeconds"`
+	// Whether to periodically check for new topics and partitions. Defaults to `true`.
+	RefreshTopicsEnabled *bool `pulumi:"refreshTopicsEnabled"`
+	// Frequency of topic and partitions refresh in seconds. Defaults to 600 seconds (10 minutes).
+	RefreshTopicsIntervalSeconds *int `pulumi:"refreshTopicsIntervalSeconds"`
+	// Whether to periodically write the translated offsets of replicated consumer groups (in the source cluster) to __consumer_offsets topic in target cluster, as long as no active consumers in that group are connected to the target cluster.
+	SyncGroupOffsetsEnabled *bool `pulumi:"syncGroupOffsetsEnabled"`
+	// Frequency at which consumer group offsets are synced (default: 60, every minute). Example: `60`.
+	SyncGroupOffsetsIntervalSeconds *int `pulumi:"syncGroupOffsetsIntervalSeconds"`
+	// Whether to periodically configure remote topics to match their corresponding upstream topics.
+	SyncTopicConfigsEnabled *bool `pulumi:"syncTopicConfigsEnabled"`
+	// `tasks.max` is set to this multiplied by the number of CPUs in the service. Default: `1`.
+	TasksMaxPerCpu *int `pulumi:"tasksMaxPerCpu"`
+}
+
+// GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerInput is an input type that accepts GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs and GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput values.
+// You can construct a concrete instance of `GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerInput` via:
+//
+//	GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs{...}
+type GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerInput interface {
+	pulumi.Input
+
+	ToGetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput() GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput
+	ToGetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutputWithContext(context.Context) GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput
+}
+
+type GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs struct {
+	// Timeout for administrative tasks, e.g. detecting new topics, loading of consumer group and offsets. Defaults to 60000 milliseconds (1 minute).
+	AdminTimeoutMs pulumi.IntPtrInput `pulumi:"adminTimeoutMs"`
+	// Whether to emit consumer group offset checkpoints to target cluster periodically (default: true).
+	EmitCheckpointsEnabled pulumi.BoolPtrInput `pulumi:"emitCheckpointsEnabled"`
+	// Frequency at which consumer group offset checkpoints are emitted (default: 60, every minute). Example: `60`.
+	EmitCheckpointsIntervalSeconds pulumi.IntPtrInput `pulumi:"emitCheckpointsIntervalSeconds"`
+	// Consumer groups to replicate. Supports comma-separated group IDs and regexes. Example: `.*`.
+	Groups pulumi.StringPtrInput `pulumi:"groups"`
+	// Exclude groups. Supports comma-separated group IDs and regexes. Excludes take precedence over includes. Example: `console-consumer-.*,connect-.*,__.*`.
+	GroupsExclude pulumi.StringPtrInput `pulumi:"groupsExclude"`
+	// How out-of-sync a remote partition can be before it is resynced. Example: `100`.
+	OffsetLagMax pulumi.IntPtrInput `pulumi:"offsetLagMax"`
+	// Whether to periodically check for new consumer groups. Defaults to `true`.
+	RefreshGroupsEnabled pulumi.BoolPtrInput `pulumi:"refreshGroupsEnabled"`
+	// Frequency of consumer group refresh in seconds. Defaults to 600 seconds (10 minutes).
+	RefreshGroupsIntervalSeconds pulumi.IntPtrInput `pulumi:"refreshGroupsIntervalSeconds"`
+	// Whether to periodically check for new topics and partitions. Defaults to `true`.
+	RefreshTopicsEnabled pulumi.BoolPtrInput `pulumi:"refreshTopicsEnabled"`
+	// Frequency of topic and partitions refresh in seconds. Defaults to 600 seconds (10 minutes).
+	RefreshTopicsIntervalSeconds pulumi.IntPtrInput `pulumi:"refreshTopicsIntervalSeconds"`
+	// Whether to periodically write the translated offsets of replicated consumer groups (in the source cluster) to __consumer_offsets topic in target cluster, as long as no active consumers in that group are connected to the target cluster.
+	SyncGroupOffsetsEnabled pulumi.BoolPtrInput `pulumi:"syncGroupOffsetsEnabled"`
+	// Frequency at which consumer group offsets are synced (default: 60, every minute). Example: `60`.
+	SyncGroupOffsetsIntervalSeconds pulumi.IntPtrInput `pulumi:"syncGroupOffsetsIntervalSeconds"`
+	// Whether to periodically configure remote topics to match their corresponding upstream topics.
+	SyncTopicConfigsEnabled pulumi.BoolPtrInput `pulumi:"syncTopicConfigsEnabled"`
+	// `tasks.max` is set to this multiplied by the number of CPUs in the service. Default: `1`.
+	TasksMaxPerCpu pulumi.IntPtrInput `pulumi:"tasksMaxPerCpu"`
+}
+
+func (GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker)(nil)).Elem()
+}
+
+func (i GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs) ToGetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput() GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput {
+	return i.ToGetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutputWithContext(context.Background())
+}
+
+func (i GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs) ToGetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutputWithContext(ctx context.Context) GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput)
+}
+
+func (i GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs) ToGetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput() GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput {
+	return i.ToGetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutputWithContext(context.Background())
+}
+
+func (i GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs) ToGetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutputWithContext(ctx context.Context) GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput).ToGetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutputWithContext(ctx)
+}
+
+// GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrInput is an input type that accepts GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs, GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtr and GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput values.
+// You can construct a concrete instance of `GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrInput` via:
+//
+//	        GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrInput interface {
+	pulumi.Input
+
+	ToGetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput() GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput
+	ToGetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutputWithContext(context.Context) GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput
+}
+
+type getKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrType GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs
+
+func GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtr(v *GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs) GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrInput {
+	return (*getKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrType)(v)
+}
+
+func (*getKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker)(nil)).Elem()
+}
+
+func (i *getKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrType) ToGetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput() GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput {
+	return i.ToGetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutputWithContext(context.Background())
+}
+
+func (i *getKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrType) ToGetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutputWithContext(ctx context.Context) GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput)
+}
+
+type GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput struct{ *pulumi.OutputState }
+
+func (GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker)(nil)).Elem()
+}
+
+func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput) ToGetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput() GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput {
+	return o
+}
+
+func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput) ToGetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutputWithContext(ctx context.Context) GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput {
+	return o
+}
+
+func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput) ToGetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput() GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput {
+	return o.ToGetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutputWithContext(context.Background())
+}
+
+func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput) ToGetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutputWithContext(ctx context.Context) GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker) *GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker {
+		return &v
+	}).(GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput)
+}
+
+// Timeout for administrative tasks, e.g. detecting new topics, loading of consumer group and offsets. Defaults to 60000 milliseconds (1 minute).
+func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput) AdminTimeoutMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker) *int { return v.AdminTimeoutMs }).(pulumi.IntPtrOutput)
+}
+
+// Whether to emit consumer group offset checkpoints to target cluster periodically (default: true).
+func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput) EmitCheckpointsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker) *bool {
+		return v.EmitCheckpointsEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Frequency at which consumer group offset checkpoints are emitted (default: 60, every minute). Example: `60`.
+func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput) EmitCheckpointsIntervalSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker) *int {
+		return v.EmitCheckpointsIntervalSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// Consumer groups to replicate. Supports comma-separated group IDs and regexes. Example: `.*`.
+func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput) Groups() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker) *string { return v.Groups }).(pulumi.StringPtrOutput)
+}
+
+// Exclude groups. Supports comma-separated group IDs and regexes. Excludes take precedence over includes. Example: `console-consumer-.*,connect-.*,__.*`.
+func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput) GroupsExclude() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker) *string { return v.GroupsExclude }).(pulumi.StringPtrOutput)
+}
+
+// How out-of-sync a remote partition can be before it is resynced. Example: `100`.
+func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput) OffsetLagMax() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker) *int { return v.OffsetLagMax }).(pulumi.IntPtrOutput)
+}
+
+// Whether to periodically check for new consumer groups. Defaults to `true`.
+func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput) RefreshGroupsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker) *bool {
+		return v.RefreshGroupsEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Frequency of consumer group refresh in seconds. Defaults to 600 seconds (10 minutes).
+func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput) RefreshGroupsIntervalSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker) *int {
+		return v.RefreshGroupsIntervalSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// Whether to periodically check for new topics and partitions. Defaults to `true`.
+func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput) RefreshTopicsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker) *bool {
+		return v.RefreshTopicsEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Frequency of topic and partitions refresh in seconds. Defaults to 600 seconds (10 minutes).
+func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput) RefreshTopicsIntervalSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker) *int {
+		return v.RefreshTopicsIntervalSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// Whether to periodically write the translated offsets of replicated consumer groups (in the source cluster) to __consumer_offsets topic in target cluster, as long as no active consumers in that group are connected to the target cluster.
+func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput) SyncGroupOffsetsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker) *bool {
+		return v.SyncGroupOffsetsEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Frequency at which consumer group offsets are synced (default: 60, every minute). Example: `60`.
+func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput) SyncGroupOffsetsIntervalSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker) *int {
+		return v.SyncGroupOffsetsIntervalSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// Whether to periodically configure remote topics to match their corresponding upstream topics.
+func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput) SyncTopicConfigsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker) *bool {
+		return v.SyncTopicConfigsEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// `tasks.max` is set to this multiplied by the number of CPUs in the service. Default: `1`.
+func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput) TasksMaxPerCpu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker) *int { return v.TasksMaxPerCpu }).(pulumi.IntPtrOutput)
+}
+
+type GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput struct{ *pulumi.OutputState }
+
+func (GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker)(nil)).Elem()
+}
+
+func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) ToGetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput() GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput {
+	return o
+}
+
+func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) ToGetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutputWithContext(ctx context.Context) GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput {
+	return o
+}
+
+func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) Elem() GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput {
+	return o.ApplyT(func(v *GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker) GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker {
+		if v != nil {
+			return *v
+		}
+		var ret GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker
+		return ret
+	}).(GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput)
+}
+
+// Timeout for administrative tasks, e.g. detecting new topics, loading of consumer group and offsets. Defaults to 60000 milliseconds (1 minute).
+func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) AdminTimeoutMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AdminTimeoutMs
+	}).(pulumi.IntPtrOutput)
+}
+
+// Whether to emit consumer group offset checkpoints to target cluster periodically (default: true).
+func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) EmitCheckpointsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EmitCheckpointsEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Frequency at which consumer group offset checkpoints are emitted (default: 60, every minute). Example: `60`.
+func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) EmitCheckpointsIntervalSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker) *int {
+		if v == nil {
+			return nil
+		}
+		return v.EmitCheckpointsIntervalSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// Consumer groups to replicate. Supports comma-separated group IDs and regexes. Example: `.*`.
+func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) Groups() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Groups
+	}).(pulumi.StringPtrOutput)
+}
+
+// Exclude groups. Supports comma-separated group IDs and regexes. Excludes take precedence over includes. Example: `console-consumer-.*,connect-.*,__.*`.
+func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) GroupsExclude() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GroupsExclude
+	}).(pulumi.StringPtrOutput)
+}
+
+// How out-of-sync a remote partition can be before it is resynced. Example: `100`.
+func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) OffsetLagMax() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker) *int {
+		if v == nil {
+			return nil
+		}
+		return v.OffsetLagMax
+	}).(pulumi.IntPtrOutput)
+}
+
+// Whether to periodically check for new consumer groups. Defaults to `true`.
+func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) RefreshGroupsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RefreshGroupsEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Frequency of consumer group refresh in seconds. Defaults to 600 seconds (10 minutes).
+func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) RefreshGroupsIntervalSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RefreshGroupsIntervalSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// Whether to periodically check for new topics and partitions. Defaults to `true`.
+func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) RefreshTopicsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RefreshTopicsEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Frequency of topic and partitions refresh in seconds. Defaults to 600 seconds (10 minutes).
+func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) RefreshTopicsIntervalSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RefreshTopicsIntervalSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// Whether to periodically write the translated offsets of replicated consumer groups (in the source cluster) to __consumer_offsets topic in target cluster, as long as no active consumers in that group are connected to the target cluster.
+func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) SyncGroupOffsetsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SyncGroupOffsetsEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Frequency at which consumer group offsets are synced (default: 60, every minute). Example: `60`.
+func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) SyncGroupOffsetsIntervalSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SyncGroupOffsetsIntervalSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// Whether to periodically configure remote topics to match their corresponding upstream topics.
+func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) SyncTopicConfigsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SyncTopicConfigsEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// `tasks.max` is set to this multiplied by the number of CPUs in the service. Default: `1`.
+func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) TasksMaxPerCpu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TasksMaxPerCpu
+	}).(pulumi.IntPtrOutput)
+}
+
+type GetKafkaMirrorMakerServiceIntegration struct {
+	// Type of the service integration
+	IntegrationType string `pulumi:"integrationType"`
+	// Name of the source service
+	SourceServiceName string `pulumi:"sourceServiceName"`
+}
+
+// GetKafkaMirrorMakerServiceIntegrationInput is an input type that accepts GetKafkaMirrorMakerServiceIntegrationArgs and GetKafkaMirrorMakerServiceIntegrationOutput values.
+// You can construct a concrete instance of `GetKafkaMirrorMakerServiceIntegrationInput` via:
+//
+//	GetKafkaMirrorMakerServiceIntegrationArgs{...}
+type GetKafkaMirrorMakerServiceIntegrationInput interface {
+	pulumi.Input
+
+	ToGetKafkaMirrorMakerServiceIntegrationOutput() GetKafkaMirrorMakerServiceIntegrationOutput
+	ToGetKafkaMirrorMakerServiceIntegrationOutputWithContext(context.Context) GetKafkaMirrorMakerServiceIntegrationOutput
+}
+
+type GetKafkaMirrorMakerServiceIntegrationArgs struct {
+	// Type of the service integration
+	IntegrationType pulumi.StringInput `pulumi:"integrationType"`
+	// Name of the source service
+	SourceServiceName pulumi.StringInput `pulumi:"sourceServiceName"`
+}
+
+func (GetKafkaMirrorMakerServiceIntegrationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKafkaMirrorMakerServiceIntegration)(nil)).Elem()
+}
+
+func (i GetKafkaMirrorMakerServiceIntegrationArgs) ToGetKafkaMirrorMakerServiceIntegrationOutput() GetKafkaMirrorMakerServiceIntegrationOutput {
+	return i.ToGetKafkaMirrorMakerServiceIntegrationOutputWithContext(context.Background())
+}
+
+func (i GetKafkaMirrorMakerServiceIntegrationArgs) ToGetKafkaMirrorMakerServiceIntegrationOutputWithContext(ctx context.Context) GetKafkaMirrorMakerServiceIntegrationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKafkaMirrorMakerServiceIntegrationOutput)
+}
+
+// GetKafkaMirrorMakerServiceIntegrationArrayInput is an input type that accepts GetKafkaMirrorMakerServiceIntegrationArray and GetKafkaMirrorMakerServiceIntegrationArrayOutput values.
+// You can construct a concrete instance of `GetKafkaMirrorMakerServiceIntegrationArrayInput` via:
+//
+//	GetKafkaMirrorMakerServiceIntegrationArray{ GetKafkaMirrorMakerServiceIntegrationArgs{...} }
+type GetKafkaMirrorMakerServiceIntegrationArrayInput interface {
+	pulumi.Input
+
+	ToGetKafkaMirrorMakerServiceIntegrationArrayOutput() GetKafkaMirrorMakerServiceIntegrationArrayOutput
+	ToGetKafkaMirrorMakerServiceIntegrationArrayOutputWithContext(context.Context) GetKafkaMirrorMakerServiceIntegrationArrayOutput
+}
+
+type GetKafkaMirrorMakerServiceIntegrationArray []GetKafkaMirrorMakerServiceIntegrationInput
+
+func (GetKafkaMirrorMakerServiceIntegrationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKafkaMirrorMakerServiceIntegration)(nil)).Elem()
+}
+
+func (i GetKafkaMirrorMakerServiceIntegrationArray) ToGetKafkaMirrorMakerServiceIntegrationArrayOutput() GetKafkaMirrorMakerServiceIntegrationArrayOutput {
+	return i.ToGetKafkaMirrorMakerServiceIntegrationArrayOutputWithContext(context.Background())
+}
+
+func (i GetKafkaMirrorMakerServiceIntegrationArray) ToGetKafkaMirrorMakerServiceIntegrationArrayOutputWithContext(ctx context.Context) GetKafkaMirrorMakerServiceIntegrationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKafkaMirrorMakerServiceIntegrationArrayOutput)
+}
+
+type GetKafkaMirrorMakerServiceIntegrationOutput struct{ *pulumi.OutputState }
+
+func (GetKafkaMirrorMakerServiceIntegrationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKafkaMirrorMakerServiceIntegration)(nil)).Elem()
+}
+
+func (o GetKafkaMirrorMakerServiceIntegrationOutput) ToGetKafkaMirrorMakerServiceIntegrationOutput() GetKafkaMirrorMakerServiceIntegrationOutput {
+	return o
+}
+
+func (o GetKafkaMirrorMakerServiceIntegrationOutput) ToGetKafkaMirrorMakerServiceIntegrationOutputWithContext(ctx context.Context) GetKafkaMirrorMakerServiceIntegrationOutput {
+	return o
+}
+
+// Type of the service integration
+func (o GetKafkaMirrorMakerServiceIntegrationOutput) IntegrationType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKafkaMirrorMakerServiceIntegration) string { return v.IntegrationType }).(pulumi.StringOutput)
+}
+
+// Name of the source service
+func (o GetKafkaMirrorMakerServiceIntegrationOutput) SourceServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKafkaMirrorMakerServiceIntegration) string { return v.SourceServiceName }).(pulumi.StringOutput)
+}
+
+type GetKafkaMirrorMakerServiceIntegrationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetKafkaMirrorMakerServiceIntegrationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKafkaMirrorMakerServiceIntegration)(nil)).Elem()
+}
+
+func (o GetKafkaMirrorMakerServiceIntegrationArrayOutput) ToGetKafkaMirrorMakerServiceIntegrationArrayOutput() GetKafkaMirrorMakerServiceIntegrationArrayOutput {
+	return o
+}
+
+func (o GetKafkaMirrorMakerServiceIntegrationArrayOutput) ToGetKafkaMirrorMakerServiceIntegrationArrayOutputWithContext(ctx context.Context) GetKafkaMirrorMakerServiceIntegrationArrayOutput {
+	return o
+}
+
+func (o GetKafkaMirrorMakerServiceIntegrationArrayOutput) Index(i pulumi.IntInput) GetKafkaMirrorMakerServiceIntegrationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKafkaMirrorMakerServiceIntegration {
+		return vs[0].([]GetKafkaMirrorMakerServiceIntegration)[vs[1].(int)]
+	}).(GetKafkaMirrorMakerServiceIntegrationOutput)
+}
+
 type GetKafkaMirrorMakerTag struct {
 	// Service tag key
 	Key string `pulumi:"key"`
@@ -6323,6 +8165,8 @@ type GetMySqlMysqlUserConfigMysql struct {
 	LogOutput *string `pulumi:"logOutput"`
 	// The slowQueryLogs work as SQL statements that take more than longQueryTime seconds to execute. Example: `10`.
 	LongQueryTime *float64 `pulumi:"longQueryTime"`
+	// Enum: `0`, `1`. Sets how table and database names are stored and compared. 0 = case-sensitive (default), 1 = names stored lowercase, comparisons are case-insensitive. This option can only be set when creating the service and cannot be changed later. See https://dev.mysql.com/doc/refman/8.0/en/identifier-case-sensitivity.html for details.
+	LowerCaseTableNames *int `pulumi:"lowerCaseTableNames"`
 	// Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
 	MaxAllowedPacket *int `pulumi:"maxAllowedPacket"`
 	// Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M).
@@ -6399,6 +8243,8 @@ type GetMySqlMysqlUserConfigMysqlArgs struct {
 	LogOutput pulumi.StringPtrInput `pulumi:"logOutput"`
 	// The slowQueryLogs work as SQL statements that take more than longQueryTime seconds to execute. Example: `10`.
 	LongQueryTime pulumi.Float64PtrInput `pulumi:"longQueryTime"`
+	// Enum: `0`, `1`. Sets how table and database names are stored and compared. 0 = case-sensitive (default), 1 = names stored lowercase, comparisons are case-insensitive. This option can only be set when creating the service and cannot be changed later. See https://dev.mysql.com/doc/refman/8.0/en/identifier-case-sensitivity.html for details.
+	LowerCaseTableNames pulumi.IntPtrInput `pulumi:"lowerCaseTableNames"`
 	// Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
 	MaxAllowedPacket pulumi.IntPtrInput `pulumi:"maxAllowedPacket"`
 	// Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M).
@@ -6598,6 +8444,11 @@ func (o GetMySqlMysqlUserConfigMysqlOutput) LogOutput() pulumi.StringPtrOutput {
 // The slowQueryLogs work as SQL statements that take more than longQueryTime seconds to execute. Example: `10`.
 func (o GetMySqlMysqlUserConfigMysqlOutput) LongQueryTime() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *float64 { return v.LongQueryTime }).(pulumi.Float64PtrOutput)
+}
+
+// Enum: `0`, `1`. Sets how table and database names are stored and compared. 0 = case-sensitive (default), 1 = names stored lowercase, comparisons are case-insensitive. This option can only be set when creating the service and cannot be changed later. See https://dev.mysql.com/doc/refman/8.0/en/identifier-case-sensitivity.html for details.
+func (o GetMySqlMysqlUserConfigMysqlOutput) LowerCaseTableNames() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *int { return v.LowerCaseTableNames }).(pulumi.IntPtrOutput)
 }
 
 // Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
@@ -6877,6 +8728,16 @@ func (o GetMySqlMysqlUserConfigMysqlPtrOutput) LongQueryTime() pulumi.Float64Ptr
 		}
 		return v.LongQueryTime
 	}).(pulumi.Float64PtrOutput)
+}
+
+// Enum: `0`, `1`. Sets how table and database names are stored and compared. 0 = case-sensitive (default), 1 = names stored lowercase, comparisons are case-insensitive. This option can only be set when creating the service and cannot be changed later. See https://dev.mysql.com/doc/refman/8.0/en/identifier-case-sensitivity.html for details.
+func (o GetMySqlMysqlUserConfigMysqlPtrOutput) LowerCaseTableNames() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMysql) *int {
+		if v == nil {
+			return nil
+		}
+		return v.LowerCaseTableNames
+	}).(pulumi.IntPtrOutput)
 }
 
 // Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
@@ -10944,7 +12805,7 @@ type GetOpenSearchOpensearchUserConfigOpensearch struct {
 	MlCommonsOnlyRunOnMlNode *bool `pulumi:"mlCommonsOnlyRunOnMlNode"`
 	// Defines a limit of how much total remote data can be referenced as a ratio of the size of the disk reserved for the file cache. This is designed to be a safeguard to prevent oversubscribing a cluster. Defaults to 5gb. Requires restarting all OpenSearch nodes.
 	NodeSearchCacheSize *string `pulumi:"nodeSearchCacheSize"`
-	// Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default is false.
+	// Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default is false. Deprecated and ignored for service version 3.3 and higher.
 	OverrideMainResponseVersion *bool `pulumi:"overrideMainResponseVersion"`
 	// Enable or disable filtering of alerting by backend roles. Requires Security plugin. Defaults to false.
 	PluginsAlertingFilterByBackendRoles *bool `pulumi:"pluginsAlertingFilterByBackendRoles"`
@@ -11076,7 +12937,7 @@ type GetOpenSearchOpensearchUserConfigOpensearchArgs struct {
 	MlCommonsOnlyRunOnMlNode pulumi.BoolPtrInput `pulumi:"mlCommonsOnlyRunOnMlNode"`
 	// Defines a limit of how much total remote data can be referenced as a ratio of the size of the disk reserved for the file cache. This is designed to be a safeguard to prevent oversubscribing a cluster. Defaults to 5gb. Requires restarting all OpenSearch nodes.
 	NodeSearchCacheSize pulumi.StringPtrInput `pulumi:"nodeSearchCacheSize"`
-	// Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default is false.
+	// Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default is false. Deprecated and ignored for service version 3.3 and higher.
 	OverrideMainResponseVersion pulumi.BoolPtrInput `pulumi:"overrideMainResponseVersion"`
 	// Enable or disable filtering of alerting by backend roles. Requires Security plugin. Defaults to false.
 	PluginsAlertingFilterByBackendRoles pulumi.BoolPtrInput `pulumi:"pluginsAlertingFilterByBackendRoles"`
@@ -11407,7 +13268,7 @@ func (o GetOpenSearchOpensearchUserConfigOpensearchOutput) NodeSearchCacheSize()
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearch) *string { return v.NodeSearchCacheSize }).(pulumi.StringPtrOutput)
 }
 
-// Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default is false.
+// Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default is false. Deprecated and ignored for service version 3.3 and higher.
 func (o GetOpenSearchOpensearchUserConfigOpensearchOutput) OverrideMainResponseVersion() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearch) *bool { return v.OverrideMainResponseVersion }).(pulumi.BoolPtrOutput)
 }
@@ -11944,7 +13805,7 @@ func (o GetOpenSearchOpensearchUserConfigOpensearchPtrOutput) NodeSearchCacheSiz
 	}).(pulumi.StringPtrOutput)
 }
 
-// Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default is false.
+// Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default is false. Deprecated and ignored for service version 3.3 and higher.
 func (o GetOpenSearchOpensearchUserConfigOpensearchPtrOutput) OverrideMainResponseVersion() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearch) *bool {
 		if v == nil {
@@ -13392,6 +15253,10 @@ type GetOpenSearchOpensearchUserConfigOpensearchDashboards struct {
 	MultipleDataSourceEnabled *bool `pulumi:"multipleDataSourceEnabled"`
 	// Timeout in milliseconds for requests made by OpenSearch Dashboards towards OpenSearch. Default: `30000`.
 	OpensearchRequestTimeout *int `pulumi:"opensearchRequestTimeout"`
+	// Determines whether the session TTL resets (is “kept alive”) on each user activity. Optional. Default is true. Default: `true`.
+	SessionKeepalive *bool `pulumi:"sessionKeepalive"`
+	// Defines the time-to-live (TTL) for user sessions. The value should be a time value with unit, e.g. 1m, 5s, 1h, 3d, 100ms. Default is 1 hour. Default: `1h`.
+	SessionTtl *string `pulumi:"sessionTtl"`
 }
 
 // GetOpenSearchOpensearchUserConfigOpensearchDashboardsInput is an input type that accepts GetOpenSearchOpensearchUserConfigOpensearchDashboardsArgs and GetOpenSearchOpensearchUserConfigOpensearchDashboardsOutput values.
@@ -13414,6 +15279,10 @@ type GetOpenSearchOpensearchUserConfigOpensearchDashboardsArgs struct {
 	MultipleDataSourceEnabled pulumi.BoolPtrInput `pulumi:"multipleDataSourceEnabled"`
 	// Timeout in milliseconds for requests made by OpenSearch Dashboards towards OpenSearch. Default: `30000`.
 	OpensearchRequestTimeout pulumi.IntPtrInput `pulumi:"opensearchRequestTimeout"`
+	// Determines whether the session TTL resets (is “kept alive”) on each user activity. Optional. Default is true. Default: `true`.
+	SessionKeepalive pulumi.BoolPtrInput `pulumi:"sessionKeepalive"`
+	// Defines the time-to-live (TTL) for user sessions. The value should be a time value with unit, e.g. 1m, 5s, 1h, 3d, 100ms. Default is 1 hour. Default: `1h`.
+	SessionTtl pulumi.StringPtrInput `pulumi:"sessionTtl"`
 }
 
 func (GetOpenSearchOpensearchUserConfigOpensearchDashboardsArgs) ElementType() reflect.Type {
@@ -13515,6 +15384,16 @@ func (o GetOpenSearchOpensearchUserConfigOpensearchDashboardsOutput) OpensearchR
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchDashboards) *int { return v.OpensearchRequestTimeout }).(pulumi.IntPtrOutput)
 }
 
+// Determines whether the session TTL resets (is “kept alive”) on each user activity. Optional. Default is true. Default: `true`.
+func (o GetOpenSearchOpensearchUserConfigOpensearchDashboardsOutput) SessionKeepalive() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchDashboards) *bool { return v.SessionKeepalive }).(pulumi.BoolPtrOutput)
+}
+
+// Defines the time-to-live (TTL) for user sessions. The value should be a time value with unit, e.g. 1m, 5s, 1h, 3d, 100ms. Default is 1 hour. Default: `1h`.
+func (o GetOpenSearchOpensearchUserConfigOpensearchDashboardsOutput) SessionTtl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchDashboards) *string { return v.SessionTtl }).(pulumi.StringPtrOutput)
+}
+
 type GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput struct{ *pulumi.OutputState }
 
 func (GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput) ElementType() reflect.Type {
@@ -13577,6 +15456,26 @@ func (o GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput) Opensear
 		}
 		return v.OpensearchRequestTimeout
 	}).(pulumi.IntPtrOutput)
+}
+
+// Determines whether the session TTL resets (is “kept alive”) on each user activity. Optional. Default is true. Default: `true`.
+func (o GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput) SessionKeepalive() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchDashboards) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SessionKeepalive
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Defines the time-to-live (TTL) for user sessions. The value should be a time value with unit, e.g. 1m, 5s, 1h, 3d, 100ms. Default is 1 hour. Default: `1h`.
+func (o GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput) SessionTtl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchDashboards) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SessionTtl
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarks struct {
@@ -15135,7 +17034,7 @@ type GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpu stru
 	Enabled *bool `pulumi:"enabled"`
 	// Specify the value of N for the top N queries by the metric.
 	TopNSize *int `pulumi:"topNSize"`
-	// The window size of the top N queries by the metric.
+	// Configure the window size of the top N queries. The value should be a time value with unit, e.g. 1m, 5s, 1h.
 	WindowSize *string `pulumi:"windowSize"`
 }
 
@@ -15155,7 +17054,7 @@ type GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuArgs 
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// Specify the value of N for the top N queries by the metric.
 	TopNSize pulumi.IntPtrInput `pulumi:"topNSize"`
-	// The window size of the top N queries by the metric.
+	// Configure the window size of the top N queries. The value should be a time value with unit, e.g. 1m, 5s, 1h.
 	WindowSize pulumi.StringPtrInput `pulumi:"windowSize"`
 }
 
@@ -15246,7 +17145,7 @@ func (o GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuOu
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpu) *int { return v.TopNSize }).(pulumi.IntPtrOutput)
 }
 
-// The window size of the top N queries by the metric.
+// Configure the window size of the top N queries. The value should be a time value with unit, e.g. 1m, 5s, 1h.
 func (o GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuOutput) WindowSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpu) *string {
 		return v.WindowSize
@@ -15297,7 +17196,7 @@ func (o GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuPt
 	}).(pulumi.IntPtrOutput)
 }
 
-// The window size of the top N queries by the metric.
+// Configure the window size of the top N queries. The value should be a time value with unit, e.g. 1m, 5s, 1h.
 func (o GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuPtrOutput) WindowSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpu) *string {
 		if v == nil {
@@ -15312,7 +17211,7 @@ type GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatency 
 	Enabled *bool `pulumi:"enabled"`
 	// Specify the value of N for the top N queries by the metric.
 	TopNSize *int `pulumi:"topNSize"`
-	// The window size of the top N queries by the metric.
+	// Configure the window size of the top N queries. The value should be a time value with unit, e.g. 1m, 5s, 1h.
 	WindowSize *string `pulumi:"windowSize"`
 }
 
@@ -15332,7 +17231,7 @@ type GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyA
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// Specify the value of N for the top N queries by the metric.
 	TopNSize pulumi.IntPtrInput `pulumi:"topNSize"`
-	// The window size of the top N queries by the metric.
+	// Configure the window size of the top N queries. The value should be a time value with unit, e.g. 1m, 5s, 1h.
 	WindowSize pulumi.StringPtrInput `pulumi:"windowSize"`
 }
 
@@ -15427,7 +17326,7 @@ func (o GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLaten
 	}).(pulumi.IntPtrOutput)
 }
 
-// The window size of the top N queries by the metric.
+// Configure the window size of the top N queries. The value should be a time value with unit, e.g. 1m, 5s, 1h.
 func (o GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyOutput) WindowSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatency) *string {
 		return v.WindowSize
@@ -15478,7 +17377,7 @@ func (o GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLaten
 	}).(pulumi.IntPtrOutput)
 }
 
-// The window size of the top N queries by the metric.
+// Configure the window size of the top N queries. The value should be a time value with unit, e.g. 1m, 5s, 1h.
 func (o GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyPtrOutput) WindowSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatency) *string {
 		if v == nil {
@@ -15493,7 +17392,7 @@ type GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemory s
 	Enabled *bool `pulumi:"enabled"`
 	// Specify the value of N for the top N queries by the metric.
 	TopNSize *int `pulumi:"topNSize"`
-	// The window size of the top N queries by the metric.
+	// Configure the window size of the top N queries. The value should be a time value with unit, e.g. 1m, 5s, 1h.
 	WindowSize *string `pulumi:"windowSize"`
 }
 
@@ -15513,7 +17412,7 @@ type GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryAr
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// Specify the value of N for the top N queries by the metric.
 	TopNSize pulumi.IntPtrInput `pulumi:"topNSize"`
-	// The window size of the top N queries by the metric.
+	// Configure the window size of the top N queries. The value should be a time value with unit, e.g. 1m, 5s, 1h.
 	WindowSize pulumi.StringPtrInput `pulumi:"windowSize"`
 }
 
@@ -15608,7 +17507,7 @@ func (o GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemor
 	}).(pulumi.IntPtrOutput)
 }
 
-// The window size of the top N queries by the metric.
+// Configure the window size of the top N queries. The value should be a time value with unit, e.g. 1m, 5s, 1h.
 func (o GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryOutput) WindowSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemory) *string {
 		return v.WindowSize
@@ -15659,7 +17558,7 @@ func (o GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemor
 	}).(pulumi.IntPtrOutput)
 }
 
-// The window size of the top N queries by the metric.
+// Configure the window size of the top N queries. The value should be a time value with unit, e.g. 1m, 5s, 1h.
 func (o GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryPtrOutput) WindowSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemory) *string {
 		if v == nil {
@@ -18632,8 +20531,6 @@ type GetOrganizationBillingGroupListBillingGroup struct {
 	BillingGroupId string `pulumi:"billingGroupId"`
 	// Billing Group Name.
 	BillingGroupName string `pulumi:"billingGroupName"`
-	// Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
-	Currency string `pulumi:"currency"`
 	// Extra billing text.
 	CustomInvoiceText string `pulumi:"customInvoiceText"`
 	// Organization ID.
@@ -18668,8 +20565,6 @@ type GetOrganizationBillingGroupListBillingGroupArgs struct {
 	BillingGroupId pulumi.StringInput `pulumi:"billingGroupId"`
 	// Billing Group Name.
 	BillingGroupName pulumi.StringInput `pulumi:"billingGroupName"`
-	// Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
-	Currency pulumi.StringInput `pulumi:"currency"`
 	// Extra billing text.
 	CustomInvoiceText pulumi.StringInput `pulumi:"customInvoiceText"`
 	// Organization ID.
@@ -18760,11 +20655,6 @@ func (o GetOrganizationBillingGroupListBillingGroupOutput) BillingGroupId() pulu
 // Billing Group Name.
 func (o GetOrganizationBillingGroupListBillingGroupOutput) BillingGroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOrganizationBillingGroupListBillingGroup) string { return v.BillingGroupName }).(pulumi.StringOutput)
-}
-
-// Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
-func (o GetOrganizationBillingGroupListBillingGroupOutput) Currency() pulumi.StringOutput {
-	return o.ApplyT(func(v GetOrganizationBillingGroupListBillingGroup) string { return v.Currency }).(pulumi.StringOutput)
 }
 
 // Extra billing text.
@@ -19011,7 +20901,7 @@ func (o GetOrganizationBillingGroupListBillingGroupBillingEmailArrayOutput) Inde
 type GetOrganizationBillingGroupListBillingGroupPaymentMethod struct {
 	// Payment method ID.
 	PaymentMethodId string `pulumi:"paymentMethodId"`
-	// An enumeration. The possible values are `awsSubscription`, `azureSubscription`, `bankTransfer`, `creditCard`, `custom`, `disabled`, `gcpSubscription`, `noPaymentExpected` and `partner`.
+	// An enumeration. The possible values are `awsSubscription`, `azureSubscription`, `bankTransfer`, `creditCard`, `custom` and `gcpSubscription`.
 	PaymentMethodType string `pulumi:"paymentMethodType"`
 }
 
@@ -19029,7 +20919,7 @@ type GetOrganizationBillingGroupListBillingGroupPaymentMethodInput interface {
 type GetOrganizationBillingGroupListBillingGroupPaymentMethodArgs struct {
 	// Payment method ID.
 	PaymentMethodId pulumi.StringInput `pulumi:"paymentMethodId"`
-	// An enumeration. The possible values are `awsSubscription`, `azureSubscription`, `bankTransfer`, `creditCard`, `custom`, `disabled`, `gcpSubscription`, `noPaymentExpected` and `partner`.
+	// An enumeration. The possible values are `awsSubscription`, `azureSubscription`, `bankTransfer`, `creditCard`, `custom` and `gcpSubscription`.
 	PaymentMethodType pulumi.StringInput `pulumi:"paymentMethodType"`
 }
 
@@ -19089,7 +20979,7 @@ func (o GetOrganizationBillingGroupListBillingGroupPaymentMethodOutput) PaymentM
 	return o.ApplyT(func(v GetOrganizationBillingGroupListBillingGroupPaymentMethod) string { return v.PaymentMethodId }).(pulumi.StringOutput)
 }
 
-// An enumeration. The possible values are `awsSubscription`, `azureSubscription`, `bankTransfer`, `creditCard`, `custom`, `disabled`, `gcpSubscription`, `noPaymentExpected` and `partner`.
+// An enumeration. The possible values are `awsSubscription`, `azureSubscription`, `bankTransfer`, `creditCard`, `custom` and `gcpSubscription`.
 func (o GetOrganizationBillingGroupListBillingGroupPaymentMethodOutput) PaymentMethodType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOrganizationBillingGroupListBillingGroupPaymentMethod) string { return v.PaymentMethodType }).(pulumi.StringOutput)
 }
@@ -19254,7 +21144,7 @@ func (o GetOrganizationBillingGroupListTimeoutsPtrOutput) Read() pulumi.StringPt
 type GetOrganizationBillingGroupPaymentMethod struct {
 	// Payment method ID.
 	PaymentMethodId string `pulumi:"paymentMethodId"`
-	// An enumeration. The possible values are `awsSubscription`, `azureSubscription`, `bankTransfer`, `creditCard`, `custom`, `disabled`, `gcpSubscription`, `noPaymentExpected` and `partner`.
+	// An enumeration. The possible values are `awsSubscription`, `azureSubscription`, `bankTransfer`, `creditCard`, `custom` and `gcpSubscription`.
 	PaymentMethodType string `pulumi:"paymentMethodType"`
 }
 
@@ -19272,7 +21162,7 @@ type GetOrganizationBillingGroupPaymentMethodInput interface {
 type GetOrganizationBillingGroupPaymentMethodArgs struct {
 	// Payment method ID.
 	PaymentMethodId pulumi.StringInput `pulumi:"paymentMethodId"`
-	// An enumeration. The possible values are `awsSubscription`, `azureSubscription`, `bankTransfer`, `creditCard`, `custom`, `disabled`, `gcpSubscription`, `noPaymentExpected` and `partner`.
+	// An enumeration. The possible values are `awsSubscription`, `azureSubscription`, `bankTransfer`, `creditCard`, `custom` and `gcpSubscription`.
 	PaymentMethodType pulumi.StringInput `pulumi:"paymentMethodType"`
 }
 
@@ -19332,7 +21222,7 @@ func (o GetOrganizationBillingGroupPaymentMethodOutput) PaymentMethodId() pulumi
 	return o.ApplyT(func(v GetOrganizationBillingGroupPaymentMethod) string { return v.PaymentMethodId }).(pulumi.StringOutput)
 }
 
-// An enumeration. The possible values are `awsSubscription`, `azureSubscription`, `bankTransfer`, `creditCard`, `custom`, `disabled`, `gcpSubscription`, `noPaymentExpected` and `partner`.
+// An enumeration. The possible values are `awsSubscription`, `azureSubscription`, `bankTransfer`, `creditCard`, `custom` and `gcpSubscription`.
 func (o GetOrganizationBillingGroupPaymentMethodOutput) PaymentMethodType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOrganizationBillingGroupPaymentMethod) string { return v.PaymentMethodType }).(pulumi.StringOutput)
 }
@@ -19497,7 +21387,7 @@ func (o GetOrganizationBillingGroupTimeoutsPtrOutput) Read() pulumi.StringPtrOut
 type GetOrganizationPaymentMethodListPaymentMethod struct {
 	// Payment method ID.
 	PaymentMethodId string `pulumi:"paymentMethodId"`
-	// An enumeration. The possible values are `awsSubscription`, `azureSubscription`, `bankTransfer`, `creditCard`, `custom`, `disabled`, `gcpSubscription`, `noPaymentExpected` and `partner`.
+	// An enumeration. The possible values are `awsSubscription`, `azureSubscription`, `bankTransfer`, `creditCard`, `custom` and `gcpSubscription`.
 	PaymentMethodType string `pulumi:"paymentMethodType"`
 }
 
@@ -19515,7 +21405,7 @@ type GetOrganizationPaymentMethodListPaymentMethodInput interface {
 type GetOrganizationPaymentMethodListPaymentMethodArgs struct {
 	// Payment method ID.
 	PaymentMethodId pulumi.StringInput `pulumi:"paymentMethodId"`
-	// An enumeration. The possible values are `awsSubscription`, `azureSubscription`, `bankTransfer`, `creditCard`, `custom`, `disabled`, `gcpSubscription`, `noPaymentExpected` and `partner`.
+	// An enumeration. The possible values are `awsSubscription`, `azureSubscription`, `bankTransfer`, `creditCard`, `custom` and `gcpSubscription`.
 	PaymentMethodType pulumi.StringInput `pulumi:"paymentMethodType"`
 }
 
@@ -19575,7 +21465,7 @@ func (o GetOrganizationPaymentMethodListPaymentMethodOutput) PaymentMethodId() p
 	return o.ApplyT(func(v GetOrganizationPaymentMethodListPaymentMethod) string { return v.PaymentMethodId }).(pulumi.StringOutput)
 }
 
-// An enumeration. The possible values are `awsSubscription`, `azureSubscription`, `bankTransfer`, `creditCard`, `custom`, `disabled`, `gcpSubscription`, `noPaymentExpected` and `partner`.
+// An enumeration. The possible values are `awsSubscription`, `azureSubscription`, `bankTransfer`, `creditCard`, `custom` and `gcpSubscription`.
 func (o GetOrganizationPaymentMethodListPaymentMethodOutput) PaymentMethodType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOrganizationPaymentMethodListPaymentMethod) string { return v.PaymentMethodType }).(pulumi.StringOutput)
 }
@@ -22185,7 +24075,8 @@ type GetPgPgUserConfig struct {
 	// Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the sharedBuffers configuration value. Changing this parameter causes a service restart. Example: `41.5`.
 	SharedBuffersPercentage *float64 `pulumi:"sharedBuffersPercentage"`
 	// Use static public IP addresses.
-	StaticIps *bool `pulumi:"staticIps"`
+	StaticIps         *bool                               `pulumi:"staticIps"`
+	SwitchoverWindows []GetPgPgUserConfigSwitchoverWindow `pulumi:"switchoverWindows"`
 	// Enum: `off`, `quorum`. Synchronous replication type. Note that the service plan also needs to support synchronous replication.
 	SynchronousReplication *string `pulumi:"synchronousReplication"`
 	// System-wide settings for the timescaledb extension
@@ -22275,7 +24166,8 @@ type GetPgPgUserConfigArgs struct {
 	// Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the sharedBuffers configuration value. Changing this parameter causes a service restart. Example: `41.5`.
 	SharedBuffersPercentage pulumi.Float64PtrInput `pulumi:"sharedBuffersPercentage"`
 	// Use static public IP addresses.
-	StaticIps pulumi.BoolPtrInput `pulumi:"staticIps"`
+	StaticIps         pulumi.BoolPtrInput                         `pulumi:"staticIps"`
+	SwitchoverWindows GetPgPgUserConfigSwitchoverWindowArrayInput `pulumi:"switchoverWindows"`
 	// Enum: `off`, `quorum`. Synchronous replication type. Note that the service plan also needs to support synchronous replication.
 	SynchronousReplication pulumi.StringPtrInput `pulumi:"synchronousReplication"`
 	// System-wide settings for the timescaledb extension
@@ -22499,6 +24391,10 @@ func (o GetPgPgUserConfigOutput) SharedBuffersPercentage() pulumi.Float64PtrOutp
 // Use static public IP addresses.
 func (o GetPgPgUserConfigOutput) StaticIps() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfig) *bool { return v.StaticIps }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetPgPgUserConfigOutput) SwitchoverWindows() GetPgPgUserConfigSwitchoverWindowArrayOutput {
+	return o.ApplyT(func(v GetPgPgUserConfig) []GetPgPgUserConfigSwitchoverWindow { return v.SwitchoverWindows }).(GetPgPgUserConfigSwitchoverWindowArrayOutput)
 }
 
 // Enum: `off`, `quorum`. Synchronous replication type. Note that the service plan also needs to support synchronous replication.
@@ -22991,13 +24887,13 @@ type GetPgPgUserConfigPg struct {
 	LogMinDurationStatement *int `pulumi:"logMinDurationStatement"`
 	// Log statements for each temporary file created larger than this number of kilobytes, -1 disables.
 	LogTempFiles *int `pulumi:"logTempFiles"`
-	// Sets the PostgreSQL maximum number of concurrent connections to the database server. This is a limited-release parameter. Contact your account team to confirm your eligibility. You cannot decrease this parameter value when set. For services with a read replica, first increase the read replica's value. After the change is applied to the replica, you can increase the primary service's value. Changing this parameter causes a service restart.
+	// Sets the PostgreSQL maximum number of concurrent connections to the database server. For services with a read replica, first increase the read replica's value. After the change is applied to the replica, you can increase the primary service's value. Changing this parameter causes a service restart.
 	MaxConnections *int `pulumi:"maxConnections"`
 	// PostgreSQL maximum number of files that can be open per process. The default is `1000` (upstream default). Changing this parameter causes a service restart.
 	MaxFilesPerProcess *int `pulumi:"maxFilesPerProcess"`
 	// PostgreSQL maximum locks per transaction. Changing this parameter causes a service restart.
 	MaxLocksPerTransaction *int `pulumi:"maxLocksPerTransaction"`
-	// PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers). The default is `4` (upstream default). Changing this parameter causes a service restart.
+	// PostgreSQL maximum logical replication workers (taken from the pool defined by max_worker_processes). The default is `4` (upstream default). Changing this parameter causes a service restart.
 	MaxLogicalReplicationWorkers *int `pulumi:"maxLogicalReplicationWorkers"`
 	// Sets the maximum number of workers that the system can support for parallel queries. The default is `8` (upstream default).
 	MaxParallelWorkers *int `pulumi:"maxParallelWorkers"`
@@ -23119,13 +25015,13 @@ type GetPgPgUserConfigPgArgs struct {
 	LogMinDurationStatement pulumi.IntPtrInput `pulumi:"logMinDurationStatement"`
 	// Log statements for each temporary file created larger than this number of kilobytes, -1 disables.
 	LogTempFiles pulumi.IntPtrInput `pulumi:"logTempFiles"`
-	// Sets the PostgreSQL maximum number of concurrent connections to the database server. This is a limited-release parameter. Contact your account team to confirm your eligibility. You cannot decrease this parameter value when set. For services with a read replica, first increase the read replica's value. After the change is applied to the replica, you can increase the primary service's value. Changing this parameter causes a service restart.
+	// Sets the PostgreSQL maximum number of concurrent connections to the database server. For services with a read replica, first increase the read replica's value. After the change is applied to the replica, you can increase the primary service's value. Changing this parameter causes a service restart.
 	MaxConnections pulumi.IntPtrInput `pulumi:"maxConnections"`
 	// PostgreSQL maximum number of files that can be open per process. The default is `1000` (upstream default). Changing this parameter causes a service restart.
 	MaxFilesPerProcess pulumi.IntPtrInput `pulumi:"maxFilesPerProcess"`
 	// PostgreSQL maximum locks per transaction. Changing this parameter causes a service restart.
 	MaxLocksPerTransaction pulumi.IntPtrInput `pulumi:"maxLocksPerTransaction"`
-	// PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers). The default is `4` (upstream default). Changing this parameter causes a service restart.
+	// PostgreSQL maximum logical replication workers (taken from the pool defined by max_worker_processes). The default is `4` (upstream default). Changing this parameter causes a service restart.
 	MaxLogicalReplicationWorkers pulumi.IntPtrInput `pulumi:"maxLogicalReplicationWorkers"`
 	// Sets the maximum number of workers that the system can support for parallel queries. The default is `8` (upstream default).
 	MaxParallelWorkers pulumi.IntPtrInput `pulumi:"maxParallelWorkers"`
@@ -23393,7 +25289,7 @@ func (o GetPgPgUserConfigPgOutput) LogTempFiles() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.LogTempFiles }).(pulumi.IntPtrOutput)
 }
 
-// Sets the PostgreSQL maximum number of concurrent connections to the database server. This is a limited-release parameter. Contact your account team to confirm your eligibility. You cannot decrease this parameter value when set. For services with a read replica, first increase the read replica's value. After the change is applied to the replica, you can increase the primary service's value. Changing this parameter causes a service restart.
+// Sets the PostgreSQL maximum number of concurrent connections to the database server. For services with a read replica, first increase the read replica's value. After the change is applied to the replica, you can increase the primary service's value. Changing this parameter causes a service restart.
 func (o GetPgPgUserConfigPgOutput) MaxConnections() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.MaxConnections }).(pulumi.IntPtrOutput)
 }
@@ -23408,7 +25304,7 @@ func (o GetPgPgUserConfigPgOutput) MaxLocksPerTransaction() pulumi.IntPtrOutput 
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.MaxLocksPerTransaction }).(pulumi.IntPtrOutput)
 }
 
-// PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers). The default is `4` (upstream default). Changing this parameter causes a service restart.
+// PostgreSQL maximum logical replication workers (taken from the pool defined by max_worker_processes). The default is `4` (upstream default). Changing this parameter causes a service restart.
 func (o GetPgPgUserConfigPgOutput) MaxLogicalReplicationWorkers() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.MaxLogicalReplicationWorkers }).(pulumi.IntPtrOutput)
 }
@@ -23837,7 +25733,7 @@ func (o GetPgPgUserConfigPgPtrOutput) LogTempFiles() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Sets the PostgreSQL maximum number of concurrent connections to the database server. This is a limited-release parameter. Contact your account team to confirm your eligibility. You cannot decrease this parameter value when set. For services with a read replica, first increase the read replica's value. After the change is applied to the replica, you can increase the primary service's value. Changing this parameter causes a service restart.
+// Sets the PostgreSQL maximum number of concurrent connections to the database server. For services with a read replica, first increase the read replica's value. After the change is applied to the replica, you can increase the primary service's value. Changing this parameter causes a service restart.
 func (o GetPgPgUserConfigPgPtrOutput) MaxConnections() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) *int {
 		if v == nil {
@@ -23867,7 +25763,7 @@ func (o GetPgPgUserConfigPgPtrOutput) MaxLocksPerTransaction() pulumi.IntPtrOutp
 	}).(pulumi.IntPtrOutput)
 }
 
-// PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers). The default is `4` (upstream default). Changing this parameter causes a service restart.
+// PostgreSQL maximum logical replication workers (taken from the pool defined by max_worker_processes). The default is `4` (upstream default). Changing this parameter causes a service restart.
 func (o GetPgPgUserConfigPgPtrOutput) MaxLogicalReplicationWorkers() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) *int {
 		if v == nil {
@@ -25742,6 +27638,121 @@ func (o GetPgPgUserConfigPublicAccessPtrOutput) Prometheus() pulumi.BoolPtrOutpu
 		}
 		return v.Prometheus
 	}).(pulumi.BoolPtrOutput)
+}
+
+type GetPgPgUserConfigSwitchoverWindow struct {
+	// Enum: `friday`, `monday`, `saturday`, `sunday`, `thursday`, `tuesday`, `wednesday`.
+	Dow string `pulumi:"dow"`
+	// Example: `12:30:00`.
+	EndTime string `pulumi:"endTime"`
+	// Example: `12:30:00`.
+	StartTime string `pulumi:"startTime"`
+}
+
+// GetPgPgUserConfigSwitchoverWindowInput is an input type that accepts GetPgPgUserConfigSwitchoverWindowArgs and GetPgPgUserConfigSwitchoverWindowOutput values.
+// You can construct a concrete instance of `GetPgPgUserConfigSwitchoverWindowInput` via:
+//
+//	GetPgPgUserConfigSwitchoverWindowArgs{...}
+type GetPgPgUserConfigSwitchoverWindowInput interface {
+	pulumi.Input
+
+	ToGetPgPgUserConfigSwitchoverWindowOutput() GetPgPgUserConfigSwitchoverWindowOutput
+	ToGetPgPgUserConfigSwitchoverWindowOutputWithContext(context.Context) GetPgPgUserConfigSwitchoverWindowOutput
+}
+
+type GetPgPgUserConfigSwitchoverWindowArgs struct {
+	// Enum: `friday`, `monday`, `saturday`, `sunday`, `thursday`, `tuesday`, `wednesday`.
+	Dow pulumi.StringInput `pulumi:"dow"`
+	// Example: `12:30:00`.
+	EndTime pulumi.StringInput `pulumi:"endTime"`
+	// Example: `12:30:00`.
+	StartTime pulumi.StringInput `pulumi:"startTime"`
+}
+
+func (GetPgPgUserConfigSwitchoverWindowArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPgPgUserConfigSwitchoverWindow)(nil)).Elem()
+}
+
+func (i GetPgPgUserConfigSwitchoverWindowArgs) ToGetPgPgUserConfigSwitchoverWindowOutput() GetPgPgUserConfigSwitchoverWindowOutput {
+	return i.ToGetPgPgUserConfigSwitchoverWindowOutputWithContext(context.Background())
+}
+
+func (i GetPgPgUserConfigSwitchoverWindowArgs) ToGetPgPgUserConfigSwitchoverWindowOutputWithContext(ctx context.Context) GetPgPgUserConfigSwitchoverWindowOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPgPgUserConfigSwitchoverWindowOutput)
+}
+
+// GetPgPgUserConfigSwitchoverWindowArrayInput is an input type that accepts GetPgPgUserConfigSwitchoverWindowArray and GetPgPgUserConfigSwitchoverWindowArrayOutput values.
+// You can construct a concrete instance of `GetPgPgUserConfigSwitchoverWindowArrayInput` via:
+//
+//	GetPgPgUserConfigSwitchoverWindowArray{ GetPgPgUserConfigSwitchoverWindowArgs{...} }
+type GetPgPgUserConfigSwitchoverWindowArrayInput interface {
+	pulumi.Input
+
+	ToGetPgPgUserConfigSwitchoverWindowArrayOutput() GetPgPgUserConfigSwitchoverWindowArrayOutput
+	ToGetPgPgUserConfigSwitchoverWindowArrayOutputWithContext(context.Context) GetPgPgUserConfigSwitchoverWindowArrayOutput
+}
+
+type GetPgPgUserConfigSwitchoverWindowArray []GetPgPgUserConfigSwitchoverWindowInput
+
+func (GetPgPgUserConfigSwitchoverWindowArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPgPgUserConfigSwitchoverWindow)(nil)).Elem()
+}
+
+func (i GetPgPgUserConfigSwitchoverWindowArray) ToGetPgPgUserConfigSwitchoverWindowArrayOutput() GetPgPgUserConfigSwitchoverWindowArrayOutput {
+	return i.ToGetPgPgUserConfigSwitchoverWindowArrayOutputWithContext(context.Background())
+}
+
+func (i GetPgPgUserConfigSwitchoverWindowArray) ToGetPgPgUserConfigSwitchoverWindowArrayOutputWithContext(ctx context.Context) GetPgPgUserConfigSwitchoverWindowArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPgPgUserConfigSwitchoverWindowArrayOutput)
+}
+
+type GetPgPgUserConfigSwitchoverWindowOutput struct{ *pulumi.OutputState }
+
+func (GetPgPgUserConfigSwitchoverWindowOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPgPgUserConfigSwitchoverWindow)(nil)).Elem()
+}
+
+func (o GetPgPgUserConfigSwitchoverWindowOutput) ToGetPgPgUserConfigSwitchoverWindowOutput() GetPgPgUserConfigSwitchoverWindowOutput {
+	return o
+}
+
+func (o GetPgPgUserConfigSwitchoverWindowOutput) ToGetPgPgUserConfigSwitchoverWindowOutputWithContext(ctx context.Context) GetPgPgUserConfigSwitchoverWindowOutput {
+	return o
+}
+
+// Enum: `friday`, `monday`, `saturday`, `sunday`, `thursday`, `tuesday`, `wednesday`.
+func (o GetPgPgUserConfigSwitchoverWindowOutput) Dow() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigSwitchoverWindow) string { return v.Dow }).(pulumi.StringOutput)
+}
+
+// Example: `12:30:00`.
+func (o GetPgPgUserConfigSwitchoverWindowOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigSwitchoverWindow) string { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// Example: `12:30:00`.
+func (o GetPgPgUserConfigSwitchoverWindowOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigSwitchoverWindow) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+type GetPgPgUserConfigSwitchoverWindowArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPgPgUserConfigSwitchoverWindowArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPgPgUserConfigSwitchoverWindow)(nil)).Elem()
+}
+
+func (o GetPgPgUserConfigSwitchoverWindowArrayOutput) ToGetPgPgUserConfigSwitchoverWindowArrayOutput() GetPgPgUserConfigSwitchoverWindowArrayOutput {
+	return o
+}
+
+func (o GetPgPgUserConfigSwitchoverWindowArrayOutput) ToGetPgPgUserConfigSwitchoverWindowArrayOutputWithContext(ctx context.Context) GetPgPgUserConfigSwitchoverWindowArrayOutput {
+	return o
+}
+
+func (o GetPgPgUserConfigSwitchoverWindowArrayOutput) Index(i pulumi.IntInput) GetPgPgUserConfigSwitchoverWindowOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPgPgUserConfigSwitchoverWindow {
+		return vs[0].([]GetPgPgUserConfigSwitchoverWindow)[vs[1].(int)]
+	}).(GetPgPgUserConfigSwitchoverWindowOutput)
 }
 
 type GetPgPgUserConfigTimescaledb struct {
@@ -30109,7 +32120,7 @@ type GetServiceIntegrationEndpointDatadogUserConfig struct {
 	KafkaConsumerStatsTimeout *int `pulumi:"kafkaConsumerStatsTimeout"`
 	// Maximum number of partition contexts to send. Example: `32000`.
 	MaxPartitionContexts *int `pulumi:"maxPartitionContexts"`
-	// Enum: `ap1.datadoghq.com`, `datadoghq.com`, `datadoghq.eu`, `ddog-gov.com`, `us3.datadoghq.com`, `us5.datadoghq.com`. Datadog intake site. Defaults to datadoghq.com.
+	// Enum: `ap1.datadoghq.com`, `ap2.datadoghq.com`, `datadoghq.com`, `datadoghq.eu`, `ddog-gov.com`, `us3.datadoghq.com`, `us5.datadoghq.com`. Datadog intake site. Defaults to datadoghq.com.
 	Site *string `pulumi:"site"`
 }
 
@@ -30139,7 +32150,7 @@ type GetServiceIntegrationEndpointDatadogUserConfigArgs struct {
 	KafkaConsumerStatsTimeout pulumi.IntPtrInput `pulumi:"kafkaConsumerStatsTimeout"`
 	// Maximum number of partition contexts to send. Example: `32000`.
 	MaxPartitionContexts pulumi.IntPtrInput `pulumi:"maxPartitionContexts"`
-	// Enum: `ap1.datadoghq.com`, `datadoghq.com`, `datadoghq.eu`, `ddog-gov.com`, `us3.datadoghq.com`, `us5.datadoghq.com`. Datadog intake site. Defaults to datadoghq.com.
+	// Enum: `ap1.datadoghq.com`, `ap2.datadoghq.com`, `datadoghq.com`, `datadoghq.eu`, `ddog-gov.com`, `us3.datadoghq.com`, `us5.datadoghq.com`. Datadog intake site. Defaults to datadoghq.com.
 	Site pulumi.StringPtrInput `pulumi:"site"`
 }
 
@@ -30231,7 +32242,7 @@ func (o GetServiceIntegrationEndpointDatadogUserConfigOutput) MaxPartitionContex
 	return o.ApplyT(func(v GetServiceIntegrationEndpointDatadogUserConfig) *int { return v.MaxPartitionContexts }).(pulumi.IntPtrOutput)
 }
 
-// Enum: `ap1.datadoghq.com`, `datadoghq.com`, `datadoghq.eu`, `ddog-gov.com`, `us3.datadoghq.com`, `us5.datadoghq.com`. Datadog intake site. Defaults to datadoghq.com.
+// Enum: `ap1.datadoghq.com`, `ap2.datadoghq.com`, `datadoghq.com`, `datadoghq.eu`, `ddog-gov.com`, `us3.datadoghq.com`, `us5.datadoghq.com`. Datadog intake site. Defaults to datadoghq.com.
 func (o GetServiceIntegrationEndpointDatadogUserConfigOutput) Site() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServiceIntegrationEndpointDatadogUserConfig) *string { return v.Site }).(pulumi.StringPtrOutput)
 }
@@ -34590,6 +36601,8 @@ type GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf struct {
 	GatherPerfEventsStatements *bool `pulumi:"gatherPerfEventsStatements"`
 	// Gather thread state counts from INFORMATION_SCHEMA.PROCESSLIST.
 	GatherProcessList *bool `pulumi:"gatherProcessList"`
+	// Gather metrics from SHOW REPLICA STATUS command output.
+	GatherReplicaStatus *bool `pulumi:"gatherReplicaStatus"`
 	// Gather metrics from SHOW SLAVE STATUS command output.
 	GatherSlaveStatus *bool `pulumi:"gatherSlaveStatus"`
 	// Gather metrics from PERFORMANCE_SCHEMA.TABLE_IO_WAITS_SUMMARY_BY_TABLE.
@@ -34632,6 +36645,8 @@ type GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs struct {
 	GatherPerfEventsStatements pulumi.BoolPtrInput `pulumi:"gatherPerfEventsStatements"`
 	// Gather thread state counts from INFORMATION_SCHEMA.PROCESSLIST.
 	GatherProcessList pulumi.BoolPtrInput `pulumi:"gatherProcessList"`
+	// Gather metrics from SHOW REPLICA STATUS command output.
+	GatherReplicaStatus pulumi.BoolPtrInput `pulumi:"gatherReplicaStatus"`
 	// Gather metrics from SHOW SLAVE STATUS command output.
 	GatherSlaveStatus pulumi.BoolPtrInput `pulumi:"gatherSlaveStatus"`
 	// Gather metrics from PERFORMANCE_SCHEMA.TABLE_IO_WAITS_SUMMARY_BY_TABLE.
@@ -34766,6 +36781,11 @@ func (o GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput) GatherP
 	return o.ApplyT(func(v GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *bool { return v.GatherProcessList }).(pulumi.BoolPtrOutput)
 }
 
+// Gather metrics from SHOW REPLICA STATUS command output.
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput) GatherReplicaStatus() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *bool { return v.GatherReplicaStatus }).(pulumi.BoolPtrOutput)
+}
+
 // Gather metrics from SHOW SLAVE STATUS command output.
 func (o GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafOutput) GatherSlaveStatus() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *bool { return v.GatherSlaveStatus }).(pulumi.BoolPtrOutput)
@@ -34898,6 +36918,16 @@ func (o GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput) Gath
 			return nil
 		}
 		return v.GatherProcessList
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Gather metrics from SHOW REPLICA STATUS command output.
+func (o GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafPtrOutput) GatherReplicaStatus() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.GatherReplicaStatus
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -35224,6 +37254,8 @@ type GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf struct {
 	GatherPerfEventsStatements *bool `pulumi:"gatherPerfEventsStatements"`
 	// Gather thread state counts from INFORMATION_SCHEMA.PROCESSLIST.
 	GatherProcessList *bool `pulumi:"gatherProcessList"`
+	// Gather metrics from SHOW REPLICA STATUS command output.
+	GatherReplicaStatus *bool `pulumi:"gatherReplicaStatus"`
 	// Gather metrics from SHOW SLAVE STATUS command output.
 	GatherSlaveStatus *bool `pulumi:"gatherSlaveStatus"`
 	// Gather metrics from PERFORMANCE_SCHEMA.TABLE_IO_WAITS_SUMMARY_BY_TABLE.
@@ -35266,6 +37298,8 @@ type GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafArgs struct {
 	GatherPerfEventsStatements pulumi.BoolPtrInput `pulumi:"gatherPerfEventsStatements"`
 	// Gather thread state counts from INFORMATION_SCHEMA.PROCESSLIST.
 	GatherProcessList pulumi.BoolPtrInput `pulumi:"gatherProcessList"`
+	// Gather metrics from SHOW REPLICA STATUS command output.
+	GatherReplicaStatus pulumi.BoolPtrInput `pulumi:"gatherReplicaStatus"`
 	// Gather metrics from SHOW SLAVE STATUS command output.
 	GatherSlaveStatus pulumi.BoolPtrInput `pulumi:"gatherSlaveStatus"`
 	// Gather metrics from PERFORMANCE_SCHEMA.TABLE_IO_WAITS_SUMMARY_BY_TABLE.
@@ -35404,6 +37438,13 @@ func (o GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutput) Gath
 	return o.ApplyT(func(v GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf) *bool { return v.GatherProcessList }).(pulumi.BoolPtrOutput)
 }
 
+// Gather metrics from SHOW REPLICA STATUS command output.
+func (o GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutput) GatherReplicaStatus() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf) *bool {
+		return v.GatherReplicaStatus
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Gather metrics from SHOW SLAVE STATUS command output.
 func (o GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutput) GatherSlaveStatus() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf) *bool { return v.GatherSlaveStatus }).(pulumi.BoolPtrOutput)
@@ -35540,6 +37581,16 @@ func (o GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput) G
 			return nil
 		}
 		return v.GatherProcessList
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Gather metrics from SHOW REPLICA STATUS command output.
+func (o GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput) GatherReplicaStatus() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.GatherReplicaStatus
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -39424,6 +41475,8 @@ type GetValkeyValkeyUserConfig struct {
 	ValkeySsl *bool `pulumi:"valkeySsl"`
 	// Valkey idle connection timeout in seconds. Default: `300`.
 	ValkeyTimeout *int `pulumi:"valkeyTimeout"`
+	// Enum: `8.1`, `9.0`, and newer. Valkey major version.
+	ValkeyVersion *string `pulumi:"valkeyVersion"`
 }
 
 // GetValkeyValkeyUserConfigInput is an input type that accepts GetValkeyValkeyUserConfigArgs and GetValkeyValkeyUserConfigOutput values.
@@ -39498,6 +41551,8 @@ type GetValkeyValkeyUserConfigArgs struct {
 	ValkeySsl pulumi.BoolPtrInput `pulumi:"valkeySsl"`
 	// Valkey idle connection timeout in seconds. Default: `300`.
 	ValkeyTimeout pulumi.IntPtrInput `pulumi:"valkeyTimeout"`
+	// Enum: `8.1`, `9.0`, and newer. Valkey major version.
+	ValkeyVersion pulumi.StringPtrInput `pulumi:"valkeyVersion"`
 }
 
 func (GetValkeyValkeyUserConfigArgs) ElementType() reflect.Type {
@@ -39698,6 +41753,11 @@ func (o GetValkeyValkeyUserConfigOutput) ValkeySsl() pulumi.BoolPtrOutput {
 // Valkey idle connection timeout in seconds. Default: `300`.
 func (o GetValkeyValkeyUserConfigOutput) ValkeyTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetValkeyValkeyUserConfig) *int { return v.ValkeyTimeout }).(pulumi.IntPtrOutput)
+}
+
+// Enum: `8.1`, `9.0`, and newer. Valkey major version.
+func (o GetValkeyValkeyUserConfigOutput) ValkeyVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetValkeyValkeyUserConfig) *string { return v.ValkeyVersion }).(pulumi.StringPtrOutput)
 }
 
 type GetValkeyValkeyUserConfigArrayOutput struct{ *pulumi.OutputState }
@@ -40584,6 +42644,26 @@ func (o GetValkeyValkeyUserConfigPublicAccessPtrOutput) Valkey() pulumi.BoolPtrO
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaKafkaUserConfigPublicAccessInput)(nil)).Elem(), GetKafkaKafkaUserConfigPublicAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaKafkaUserConfigPublicAccessPtrInput)(nil)).Elem(), GetKafkaKafkaUserConfigPublicAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaKafkaUserConfigSchemaRegistryConfigInput)(nil)).Elem(), GetKafkaKafkaUserConfigSchemaRegistryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaKafkaUserConfigSchemaRegistryConfigPtrInput)(nil)).Elem(), GetKafkaKafkaUserConfigSchemaRegistryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaKafkaUserConfigSingleZoneInput)(nil)).Elem(), GetKafkaKafkaUserConfigSingleZoneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaKafkaUserConfigSingleZonePtrInput)(nil)).Elem(), GetKafkaKafkaUserConfigSingleZoneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaKafkaUserConfigTieredStorageInput)(nil)).Elem(), GetKafkaKafkaUserConfigTieredStorageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaKafkaUserConfigTieredStoragePtrInput)(nil)).Elem(), GetKafkaKafkaUserConfigTieredStorageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaKafkaUserConfigTieredStorageLocalCacheInput)(nil)).Elem(), GetKafkaKafkaUserConfigTieredStorageLocalCacheArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaKafkaUserConfigTieredStorageLocalCachePtrInput)(nil)).Elem(), GetKafkaKafkaUserConfigTieredStorageLocalCacheArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaMirrorMakerComponentInput)(nil)).Elem(), GetKafkaMirrorMakerComponentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaMirrorMakerComponentArrayInput)(nil)).Elem(), GetKafkaMirrorMakerComponentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaMirrorMakerKafkaMirrormakerUserConfigInput)(nil)).Elem(), GetKafkaMirrorMakerKafkaMirrormakerUserConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaMirrorMakerKafkaMirrormakerUserConfigArrayInput)(nil)).Elem(), GetKafkaMirrorMakerKafkaMirrormakerUserConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectInput)(nil)).Elem(), GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectArrayInput)(nil)).Elem(), GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerInput)(nil)).Elem(), GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrInput)(nil)).Elem(), GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaMirrorMakerServiceIntegrationInput)(nil)).Elem(), GetKafkaMirrorMakerServiceIntegrationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaMirrorMakerServiceIntegrationArrayInput)(nil)).Elem(), GetKafkaMirrorMakerServiceIntegrationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaMirrorMakerTagInput)(nil)).Elem(), GetKafkaMirrorMakerTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaMirrorMakerTagArrayInput)(nil)).Elem(), GetKafkaMirrorMakerTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaMirrorMakerTechEmailInput)(nil)).Elem(), GetKafkaMirrorMakerTechEmailArgs{})
@@ -40854,6 +42934,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPgPgUserConfigPrivatelinkAccessPtrInput)(nil)).Elem(), GetPgPgUserConfigPrivatelinkAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPgPgUserConfigPublicAccessInput)(nil)).Elem(), GetPgPgUserConfigPublicAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPgPgUserConfigPublicAccessPtrInput)(nil)).Elem(), GetPgPgUserConfigPublicAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPgPgUserConfigSwitchoverWindowInput)(nil)).Elem(), GetPgPgUserConfigSwitchoverWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPgPgUserConfigSwitchoverWindowArrayInput)(nil)).Elem(), GetPgPgUserConfigSwitchoverWindowArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPgPgUserConfigTimescaledbInput)(nil)).Elem(), GetPgPgUserConfigTimescaledbArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPgPgUserConfigTimescaledbPtrInput)(nil)).Elem(), GetPgPgUserConfigTimescaledbArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPgServiceIntegrationInput)(nil)).Elem(), GetPgServiceIntegrationArgs{})
@@ -41054,6 +43136,26 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPrivatelinkAccessPtrInput)(nil)).Elem(), GetValkeyValkeyUserConfigPrivatelinkAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPublicAccessInput)(nil)).Elem(), GetValkeyValkeyUserConfigPublicAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPublicAccessPtrInput)(nil)).Elem(), GetValkeyValkeyUserConfigPublicAccessArgs{})
+	pulumi.RegisterOutputType(GetKafkaKafkaUserConfigPublicAccessOutput{})
+	pulumi.RegisterOutputType(GetKafkaKafkaUserConfigPublicAccessPtrOutput{})
+	pulumi.RegisterOutputType(GetKafkaKafkaUserConfigSchemaRegistryConfigOutput{})
+	pulumi.RegisterOutputType(GetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutput{})
+	pulumi.RegisterOutputType(GetKafkaKafkaUserConfigSingleZoneOutput{})
+	pulumi.RegisterOutputType(GetKafkaKafkaUserConfigSingleZonePtrOutput{})
+	pulumi.RegisterOutputType(GetKafkaKafkaUserConfigTieredStorageOutput{})
+	pulumi.RegisterOutputType(GetKafkaKafkaUserConfigTieredStoragePtrOutput{})
+	pulumi.RegisterOutputType(GetKafkaKafkaUserConfigTieredStorageLocalCacheOutput{})
+	pulumi.RegisterOutputType(GetKafkaKafkaUserConfigTieredStorageLocalCachePtrOutput{})
+	pulumi.RegisterOutputType(GetKafkaMirrorMakerComponentOutput{})
+	pulumi.RegisterOutputType(GetKafkaMirrorMakerComponentArrayOutput{})
+	pulumi.RegisterOutputType(GetKafkaMirrorMakerKafkaMirrormakerUserConfigOutput{})
+	pulumi.RegisterOutputType(GetKafkaMirrorMakerKafkaMirrormakerUserConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectOutput{})
+	pulumi.RegisterOutputType(GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectArrayOutput{})
+	pulumi.RegisterOutputType(GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput{})
+	pulumi.RegisterOutputType(GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput{})
+	pulumi.RegisterOutputType(GetKafkaMirrorMakerServiceIntegrationOutput{})
+	pulumi.RegisterOutputType(GetKafkaMirrorMakerServiceIntegrationArrayOutput{})
 	pulumi.RegisterOutputType(GetKafkaMirrorMakerTagOutput{})
 	pulumi.RegisterOutputType(GetKafkaMirrorMakerTagArrayOutput{})
 	pulumi.RegisterOutputType(GetKafkaMirrorMakerTechEmailOutput{})
@@ -41324,6 +43426,8 @@ func init() {
 	pulumi.RegisterOutputType(GetPgPgUserConfigPrivatelinkAccessPtrOutput{})
 	pulumi.RegisterOutputType(GetPgPgUserConfigPublicAccessOutput{})
 	pulumi.RegisterOutputType(GetPgPgUserConfigPublicAccessPtrOutput{})
+	pulumi.RegisterOutputType(GetPgPgUserConfigSwitchoverWindowOutput{})
+	pulumi.RegisterOutputType(GetPgPgUserConfigSwitchoverWindowArrayOutput{})
 	pulumi.RegisterOutputType(GetPgPgUserConfigTimescaledbOutput{})
 	pulumi.RegisterOutputType(GetPgPgUserConfigTimescaledbPtrOutput{})
 	pulumi.RegisterOutputType(GetPgServiceIntegrationOutput{})

@@ -16,7 +16,7 @@ public final class OrganizationBillingGroupPaymentMethod {
      */
     private String paymentMethodId;
     /**
-     * @return An enumeration. The possible values are `awsSubscription`, `azureSubscription`, `bankTransfer`, `creditCard`, `custom`, `disabled`, `gcpSubscription`, `noPaymentExpected` and `partner`.
+     * @return An enumeration. The possible values are `awsSubscription`, `azureSubscription`, `bankTransfer`, `creditCard`, `custom` and `gcpSubscription`.
      * 
      */
     private String paymentMethodType;
@@ -30,7 +30,7 @@ public final class OrganizationBillingGroupPaymentMethod {
         return this.paymentMethodId;
     }
     /**
-     * @return An enumeration. The possible values are `awsSubscription`, `azureSubscription`, `bankTransfer`, `creditCard`, `custom`, `disabled`, `gcpSubscription`, `noPaymentExpected` and `partner`.
+     * @return An enumeration. The possible values are `awsSubscription`, `azureSubscription`, `bankTransfer`, `creditCard`, `custom` and `gcpSubscription`.
      * 
      */
     public String paymentMethodType() {

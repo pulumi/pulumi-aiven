@@ -35,11 +35,11 @@ export function getOrganization(args?: GetOrganizationArgs, opts?: pulumi.Invoke
  */
 export interface GetOrganizationArgs {
     /**
-     * ID of the organization.
+     * Organization ID. Exactly one of the fields must be specified: `id` or `name`.
      */
     id?: string;
     /**
-     * Name of the organization.
+     * Name of the organization. Exactly one of the fields must be specified: `id` or `name`.
      */
     name?: string;
     timeouts?: inputs.GetOrganizationTimeouts;
@@ -54,13 +54,13 @@ export interface GetOrganizationResult {
      */
     readonly createTime: string;
     /**
-     * ID of the organization.
+     * Organization ID. Exactly one of the fields must be specified: `id` or `name`.
      */
-    readonly id?: string;
+    readonly id: string;
     /**
-     * Name of the organization.
+     * Name of the organization. Exactly one of the fields must be specified: `id` or `name`.
      */
-    readonly name?: string;
+    readonly name: string;
     /**
      * Tenant identifier. **Deprecated**: This field is deprecated and will be removed in the next major release.
      *
@@ -102,11 +102,11 @@ export function getOrganizationOutput(args?: GetOrganizationOutputArgs, opts?: p
  */
 export interface GetOrganizationOutputArgs {
     /**
-     * ID of the organization.
+     * Organization ID. Exactly one of the fields must be specified: `id` or `name`.
      */
     id?: pulumi.Input<string>;
     /**
-     * Name of the organization.
+     * Name of the organization. Exactly one of the fields must be specified: `id` or `name`.
      */
     name?: pulumi.Input<string>;
     timeouts?: pulumi.Input<inputs.GetOrganizationTimeoutsArgs>;

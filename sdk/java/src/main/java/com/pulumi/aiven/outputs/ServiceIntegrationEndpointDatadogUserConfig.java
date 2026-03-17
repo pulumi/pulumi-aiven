@@ -52,7 +52,7 @@ public final class ServiceIntegrationEndpointDatadogUserConfig {
      */
     private @Nullable Integer maxPartitionContexts;
     /**
-     * @return Enum: `ap1.datadoghq.com`, `datadoghq.com`, `datadoghq.eu`, `ddog-gov.com`, `us3.datadoghq.com`, `us5.datadoghq.com`. Datadog intake site. Defaults to datadoghq.com.
+     * @return Enum: `ap1.datadoghq.com`, `ap2.datadoghq.com`, `datadoghq.com`, `datadoghq.eu`, `ddog-gov.com`, `us3.datadoghq.com`, `us5.datadoghq.com`. Datadog intake site. Defaults to datadoghq.com.
      * 
      */
     private @Nullable String site;
@@ -108,7 +108,7 @@ public final class ServiceIntegrationEndpointDatadogUserConfig {
         return Optional.ofNullable(this.maxPartitionContexts);
     }
     /**
-     * @return Enum: `ap1.datadoghq.com`, `datadoghq.com`, `datadoghq.eu`, `ddog-gov.com`, `us3.datadoghq.com`, `us5.datadoghq.com`. Datadog intake site. Defaults to datadoghq.com.
+     * @return Enum: `ap1.datadoghq.com`, `ap2.datadoghq.com`, `datadoghq.com`, `datadoghq.eu`, `ddog-gov.com`, `us3.datadoghq.com`, `us5.datadoghq.com`. Datadog intake site. Defaults to datadoghq.com.
      * 
      */
     public Optional<String> site() {

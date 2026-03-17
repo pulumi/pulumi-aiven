@@ -30,14 +30,14 @@ public final class OrganizationBillingGroupPaymentMethodArgs extends com.pulumi.
     }
 
     /**
-     * An enumeration. The possible values are `awsSubscription`, `azureSubscription`, `bankTransfer`, `creditCard`, `custom`, `disabled`, `gcpSubscription`, `noPaymentExpected` and `partner`.
+     * An enumeration. The possible values are `awsSubscription`, `azureSubscription`, `bankTransfer`, `creditCard`, `custom` and `gcpSubscription`.
      * 
      */
     @Import(name="paymentMethodType", required=true)
     private Output<String> paymentMethodType;
 
     /**
-     * @return An enumeration. The possible values are `awsSubscription`, `azureSubscription`, `bankTransfer`, `creditCard`, `custom`, `disabled`, `gcpSubscription`, `noPaymentExpected` and `partner`.
+     * @return An enumeration. The possible values are `awsSubscription`, `azureSubscription`, `bankTransfer`, `creditCard`, `custom` and `gcpSubscription`.
      * 
      */
     public Output<String> paymentMethodType() {
@@ -91,7 +91,7 @@ public final class OrganizationBillingGroupPaymentMethodArgs extends com.pulumi.
         }
 
         /**
-         * @param paymentMethodType An enumeration. The possible values are `awsSubscription`, `azureSubscription`, `bankTransfer`, `creditCard`, `custom`, `disabled`, `gcpSubscription`, `noPaymentExpected` and `partner`.
+         * @param paymentMethodType An enumeration. The possible values are `awsSubscription`, `azureSubscription`, `bankTransfer`, `creditCard`, `custom` and `gcpSubscription`.
          * 
          * @return builder
          * 
@@ -102,7 +102,7 @@ public final class OrganizationBillingGroupPaymentMethodArgs extends com.pulumi.
         }
 
         /**
-         * @param paymentMethodType An enumeration. The possible values are `awsSubscription`, `azureSubscription`, `bankTransfer`, `creditCard`, `custom`, `disabled`, `gcpSubscription`, `noPaymentExpected` and `partner`.
+         * @param paymentMethodType An enumeration. The possible values are `awsSubscription`, `azureSubscription`, `bankTransfer`, `creditCard`, `custom` and `gcpSubscription`.
          * 
          * @return builder
          * 

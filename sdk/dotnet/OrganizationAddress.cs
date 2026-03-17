@@ -37,13 +37,13 @@ namespace Pulumi.Aiven
         public Output<ImmutableArray<string>> AddressLines { get; private set; } = null!;
 
         /// <summary>
-        /// City. Maximum length: `512`.
+        /// City. Maximum length: `125`.
         /// </summary>
         [Output("city")]
         public Output<string> City { get; private set; } = null!;
 
         /// <summary>
-        /// Country Code.
+        /// Country Code. Maximum length: `2`.
         /// </summary>
         [Output("countryCode")]
         public Output<string> CountryCode { get; private set; } = null!;
@@ -82,7 +82,7 @@ namespace Pulumi.Aiven
         public Output<string> UpdateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Zip Code. Maximum length: `32`.
+        /// Zip Code. Maximum length: `10`.
         /// </summary>
         [Output("zipCode")]
         public Output<string?> ZipCode { get; private set; } = null!;
@@ -146,13 +146,13 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// City. Maximum length: `512`.
+        /// City. Maximum length: `125`.
         /// </summary>
         [Input("city", required: true)]
         public Input<string> City { get; set; } = null!;
 
         /// <summary>
-        /// Country Code.
+        /// Country Code. Maximum length: `2`.
         /// </summary>
         [Input("countryCode", required: true)]
         public Input<string> CountryCode { get; set; } = null!;
@@ -179,7 +179,7 @@ namespace Pulumi.Aiven
         public Input<Inputs.OrganizationAddressTimeoutsArgs>? Timeouts { get; set; }
 
         /// <summary>
-        /// Zip Code. Maximum length: `32`.
+        /// Zip Code. Maximum length: `10`.
         /// </summary>
         [Input("zipCode")]
         public Input<string>? ZipCode { get; set; }
@@ -211,13 +211,13 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// City. Maximum length: `512`.
+        /// City. Maximum length: `125`.
         /// </summary>
         [Input("city")]
         public Input<string>? City { get; set; }
 
         /// <summary>
-        /// Country Code.
+        /// Country Code. Maximum length: `2`.
         /// </summary>
         [Input("countryCode")]
         public Input<string>? CountryCode { get; set; }
@@ -256,7 +256,7 @@ namespace Pulumi.Aiven
         public Input<string>? UpdateTime { get; set; }
 
         /// <summary>
-        /// Zip Code. Maximum length: `32`.
+        /// Zip Code. Maximum length: `10`.
         /// </summary>
         [Input("zipCode")]
         public Input<string>? ZipCode { get; set; }

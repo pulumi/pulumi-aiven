@@ -40,7 +40,7 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * ```sh
- * $ pulumi import aiven:index/governanceAccess:GovernanceAccess example ORGANIZATION_ID/SUSBCRIPTION_ID
+ * $ pulumi import aiven:index/governanceAccess:GovernanceAccess example ORGANIZATION_ID/ACCESS_ID
  * ```
  */
 export class GovernanceAccess extends pulumi.CustomResource {
@@ -76,6 +76,10 @@ export class GovernanceAccess extends pulumi.CustomResource {
      */
     declare public readonly accessData: pulumi.Output<outputs.GovernanceAccessAccessData>;
     /**
+     * The ID of the access.
+     */
+    declare public /*out*/ readonly accessId: pulumi.Output<string>;
+    /**
      * Label to describe the access. Changing this property forces recreation of the resource.
      */
     declare public readonly accessName: pulumi.Output<string>;
@@ -91,10 +95,6 @@ export class GovernanceAccess extends pulumi.CustomResource {
      * The ID of the group that will own the access. Maximum length: `36`. Changing this property forces recreation of the resource.
      */
     declare public readonly ownerUserGroupId: pulumi.Output<string | undefined>;
-    /**
-     * The ID of the access.
-     */
-    declare public /*out*/ readonly susbcriptionId: pulumi.Output<string>;
     declare public readonly timeouts: pulumi.Output<outputs.GovernanceAccessTimeouts | undefined>;
 
     /**
@@ -111,11 +111,11 @@ export class GovernanceAccess extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as GovernanceAccessState | undefined;
             resourceInputs["accessData"] = state?.accessData;
+            resourceInputs["accessId"] = state?.accessId;
             resourceInputs["accessName"] = state?.accessName;
             resourceInputs["accessType"] = state?.accessType;
             resourceInputs["organizationId"] = state?.organizationId;
             resourceInputs["ownerUserGroupId"] = state?.ownerUserGroupId;
-            resourceInputs["susbcriptionId"] = state?.susbcriptionId;
             resourceInputs["timeouts"] = state?.timeouts;
         } else {
             const args = argsOrState as GovernanceAccessArgs | undefined;
@@ -137,7 +137,7 @@ export class GovernanceAccess extends pulumi.CustomResource {
             resourceInputs["organizationId"] = args?.organizationId;
             resourceInputs["ownerUserGroupId"] = args?.ownerUserGroupId;
             resourceInputs["timeouts"] = args?.timeouts;
-            resourceInputs["susbcriptionId"] = undefined /*out*/;
+            resourceInputs["accessId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(GovernanceAccess.__pulumiType, name, resourceInputs, opts);
@@ -152,6 +152,10 @@ export interface GovernanceAccessState {
      * Required property. access type specific data. Changing this property forces recreation of the resource.
      */
     accessData?: pulumi.Input<inputs.GovernanceAccessAccessData>;
+    /**
+     * The ID of the access.
+     */
+    accessId?: pulumi.Input<string>;
     /**
      * Label to describe the access. Changing this property forces recreation of the resource.
      */
@@ -168,10 +172,6 @@ export interface GovernanceAccessState {
      * The ID of the group that will own the access. Maximum length: `36`. Changing this property forces recreation of the resource.
      */
     ownerUserGroupId?: pulumi.Input<string>;
-    /**
-     * The ID of the access.
-     */
-    susbcriptionId?: pulumi.Input<string>;
     timeouts?: pulumi.Input<inputs.GovernanceAccessTimeouts>;
 }
 

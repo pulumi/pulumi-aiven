@@ -44,6 +44,8 @@ export class Cassandra extends pulumi.CustomResource {
     declare public readonly cassandra: pulumi.Output<outputs.CassandraCassandra>;
     /**
      * Cassandra user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+     *
+     * @deprecated This property is deprecated.
      */
     declare public readonly cassandraUserConfig: pulumi.Output<outputs.CassandraCassandraUserConfig | undefined>;
     /**
@@ -255,6 +257,8 @@ export interface CassandraState {
     cassandra?: pulumi.Input<inputs.CassandraCassandra>;
     /**
      * Cassandra user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+     *
+     * @deprecated This property is deprecated.
      */
     cassandraUserConfig?: pulumi.Input<inputs.CassandraCassandraUserConfig>;
     /**
@@ -377,6 +381,8 @@ export interface CassandraArgs {
     cassandra?: pulumi.Input<inputs.CassandraCassandra>;
     /**
      * Cassandra user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+     *
+     * @deprecated This property is deprecated.
      */
     cassandraUserConfig?: pulumi.Input<inputs.CassandraCassandraUserConfig>;
     /**

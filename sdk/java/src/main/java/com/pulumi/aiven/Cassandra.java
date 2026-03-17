@@ -56,7 +56,11 @@ public class Cassandra extends com.pulumi.resources.CustomResource {
     /**
      * Cassandra user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
+     * @deprecated
+     * This property is deprecated.
+     * 
      */
+    @Deprecated /* This property is deprecated. */
     @Export(name="cassandraUserConfig", refs={CassandraCassandraUserConfig.class}, tree="[0]")
     private Output</* @Nullable */ CassandraCassandraUserConfig> cassandraUserConfig;
 

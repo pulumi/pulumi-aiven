@@ -96,21 +96,6 @@ public final class GetOrganizationBillingGroupListBillingGroupArgs extends com.p
     }
 
     /**
-     * Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
-     * 
-     */
-    @Import(name="currency", required=true)
-    private Output<String> currency;
-
-    /**
-     * @return Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
-     * 
-     */
-    public Output<String> currency() {
-        return this.currency;
-    }
-
-    /**
      * Extra billing text.
      * 
      */
@@ -193,7 +178,6 @@ public final class GetOrganizationBillingGroupListBillingGroupArgs extends com.p
         this.billingEmails = $.billingEmails;
         this.billingGroupId = $.billingGroupId;
         this.billingGroupName = $.billingGroupName;
-        this.currency = $.currency;
         this.customInvoiceText = $.customInvoiceText;
         this.organizationId = $.organizationId;
         this.paymentMethods = $.paymentMethods;
@@ -345,27 +329,6 @@ public final class GetOrganizationBillingGroupListBillingGroupArgs extends com.p
         }
 
         /**
-         * @param currency Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder currency(Output<String> currency) {
-            $.currency = currency;
-            return this;
-        }
-
-        /**
-         * @param currency Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder currency(String currency) {
-            return currency(Output.of(currency));
-        }
-
-        /**
          * @param customInvoiceText Extra billing text.
          * 
          * @return builder
@@ -489,9 +452,6 @@ public final class GetOrganizationBillingGroupListBillingGroupArgs extends com.p
             }
             if ($.billingGroupName == null) {
                 throw new MissingRequiredPropertyException("GetOrganizationBillingGroupListBillingGroupArgs", "billingGroupName");
-            }
-            if ($.currency == null) {
-                throw new MissingRequiredPropertyException("GetOrganizationBillingGroupListBillingGroupArgs", "currency");
             }
             if ($.customInvoiceText == null) {
                 throw new MissingRequiredPropertyException("GetOrganizationBillingGroupListBillingGroupArgs", "customInvoiceText");

@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class KafkaKafkaUserConfigKafka {
     /**
-     * @return Enable auto-creation of topics. (Default: true).
+     * @return Enable auto-creation of topics. (Default: false).
      * 
      */
     private @Nullable Boolean autoCreateTopicsEnable;
@@ -257,7 +257,7 @@ public final class KafkaKafkaUserConfigKafka {
 
     private KafkaKafkaUserConfigKafka() {}
     /**
-     * @return Enable auto-creation of topics. (Default: true).
+     * @return Enable auto-creation of topics. (Default: false).
      * 
      */
     public Optional<Boolean> autoCreateTopicsEnable() {

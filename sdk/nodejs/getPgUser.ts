@@ -72,14 +72,6 @@ export interface GetPgUserResult {
      */
     readonly password: string;
     /**
-     * The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`.
-     */
-    readonly passwordWo: string;
-    /**
-     * Version number for `passwordWo`. Increment this to rotate the password. The field is required with `passwordWo`.
-     */
-    readonly passwordWoVersion: number;
-    /**
      * Allows replication. For the default avnadmin user this attribute is required and is always `true`.
      */
     readonly pgAllowReplication: boolean;

@@ -710,6 +710,51 @@ export interface BillingGroupTimeouts {
     update?: pulumi.Input<string>;
 }
 
+export interface ByocAwsEntityContactEmail {
+    /**
+     * User email address. Maximum length: `254`.
+     */
+    email: pulumi.Input<string>;
+    /**
+     * User real name. Maximum length: `256`.
+     */
+    realName?: pulumi.Input<string>;
+    /**
+     * Role of this user. Maximum length: `256`.
+     */
+    role?: pulumi.Input<string>;
+}
+
+export interface ByocAwsEntityError {
+    /**
+     * Category of this error. The possible value is `generalError`.
+     */
+    category?: pulumi.Input<string>;
+    /**
+     * Description of this error.
+     */
+    message?: pulumi.Input<string>;
+}
+
+export interface ByocAwsEntityTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: pulumi.Input<string>;
+}
+
 export interface CassandraCassandra {
     /**
      * Cassandra server URIs.
@@ -929,6 +974,10 @@ export interface ClickhouseClickhouseUserConfig {
      */
     backupMinute?: pulumi.Input<number>;
     /**
+     * Enum: `25.3`, and newer. ClickHouse major version.
+     */
+    clickhouseVersion?: pulumi.Input<string>;
+    /**
      * Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
      */
     enableIpv6?: pulumi.Input<boolean>;
@@ -978,6 +1027,10 @@ export interface ClickhouseClickhouseUserConfig {
      * Use static public IP addresses.
      */
     staticIps?: pulumi.Input<boolean>;
+    /**
+     * The percentage of free disk space required on local storage before data is moved to object storage. A value of 0.2 means data is moved when local storage has less than 20% free space. Default: `0.2`.
+     */
+    tieredStorageMoveFactor?: pulumi.Input<number>;
 }
 
 export interface ClickhouseClickhouseUserConfigIpFilterObject {
@@ -2094,10 +2147,6 @@ export interface GetOrganizationBillingGroupListBillingGroup {
      */
     billingGroupName?: string;
     /**
-     * Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
-     */
-    currency?: string;
-    /**
      * Extra billing text.
      */
     customInvoiceText?: string;
@@ -2140,10 +2189,6 @@ export interface GetOrganizationBillingGroupListBillingGroupArgs {
      * Billing Group Name.
      */
     billingGroupName?: pulumi.Input<string>;
-    /**
-     * Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
-     */
-    currency?: pulumi.Input<string>;
     /**
      * Extra billing text.
      */
@@ -2200,7 +2245,7 @@ export interface GetOrganizationBillingGroupListBillingGroupPaymentMethod {
      */
     paymentMethodId?: string;
     /**
-     * An enumeration. The possible values are `awsSubscription`, `azureSubscription`, `bankTransfer`, `creditCard`, `custom`, `disabled`, `gcpSubscription`, `noPaymentExpected` and `partner`.
+     * An enumeration. The possible values are `awsSubscription`, `azureSubscription`, `bankTransfer`, `creditCard`, `custom` and `gcpSubscription`.
      */
     paymentMethodType?: string;
 }
@@ -2211,7 +2256,7 @@ export interface GetOrganizationBillingGroupListBillingGroupPaymentMethodArgs {
      */
     paymentMethodId?: pulumi.Input<string>;
     /**
-     * An enumeration. The possible values are `awsSubscription`, `azureSubscription`, `bankTransfer`, `creditCard`, `custom`, `disabled`, `gcpSubscription`, `noPaymentExpected` and `partner`.
+     * An enumeration. The possible values are `awsSubscription`, `azureSubscription`, `bankTransfer`, `creditCard`, `custom` and `gcpSubscription`.
      */
     paymentMethodType?: pulumi.Input<string>;
 }
@@ -2236,7 +2281,7 @@ export interface GetOrganizationBillingGroupPaymentMethod {
      */
     paymentMethodId?: string;
     /**
-     * An enumeration. The possible values are `awsSubscription`, `azureSubscription`, `bankTransfer`, `creditCard`, `custom`, `disabled`, `gcpSubscription`, `noPaymentExpected` and `partner`.
+     * An enumeration. The possible values are `awsSubscription`, `azureSubscription`, `bankTransfer`, `creditCard`, `custom` and `gcpSubscription`.
      */
     paymentMethodType?: string;
 }
@@ -2247,7 +2292,7 @@ export interface GetOrganizationBillingGroupPaymentMethodArgs {
      */
     paymentMethodId?: pulumi.Input<string>;
     /**
-     * An enumeration. The possible values are `awsSubscription`, `azureSubscription`, `bankTransfer`, `creditCard`, `custom`, `disabled`, `gcpSubscription`, `noPaymentExpected` and `partner`.
+     * An enumeration. The possible values are `awsSubscription`, `azureSubscription`, `bankTransfer`, `creditCard`, `custom` and `gcpSubscription`.
      */
     paymentMethodType?: pulumi.Input<string>;
 }
@@ -2272,7 +2317,7 @@ export interface GetOrganizationPaymentMethodListPaymentMethod {
      */
     paymentMethodId?: string;
     /**
-     * An enumeration. The possible values are `awsSubscription`, `azureSubscription`, `bankTransfer`, `creditCard`, `custom`, `disabled`, `gcpSubscription`, `noPaymentExpected` and `partner`.
+     * An enumeration. The possible values are `awsSubscription`, `azureSubscription`, `bankTransfer`, `creditCard`, `custom` and `gcpSubscription`.
      */
     paymentMethodType?: string;
 }
@@ -2283,7 +2328,7 @@ export interface GetOrganizationPaymentMethodListPaymentMethodArgs {
      */
     paymentMethodId?: pulumi.Input<string>;
     /**
-     * An enumeration. The possible values are `awsSubscription`, `azureSubscription`, `bankTransfer`, `creditCard`, `custom`, `disabled`, `gcpSubscription`, `noPaymentExpected` and `partner`.
+     * An enumeration. The possible values are `awsSubscription`, `azureSubscription`, `bankTransfer`, `creditCard`, `custom` and `gcpSubscription`.
      */
     paymentMethodType?: pulumi.Input<string>;
 }
@@ -3132,7 +3177,7 @@ export interface GovernanceAccessAccessData {
     /**
      * Project name. Changing this property forces recreation of the resource.
      */
-    project: pulumi.Input<string>;
+    projectName: pulumi.Input<string>;
     /**
      * Service name. Changing this property forces recreation of the resource.
      */
@@ -4068,6 +4113,10 @@ export interface KafkaConnectKafkaConnectUserConfig {
      */
     additionalBackupRegions?: pulumi.Input<string>;
     /**
+     * Allow-list of HTTPS URLs used to validate GCP credentialSource requests for Kafka Connect.
+     */
+    gcpAuthAllowedUrls?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      */
     ipFilterObjects?: pulumi.Input<pulumi.Input<inputs.KafkaConnectKafkaConnectUserConfigIpFilterObject>[]>;
@@ -4251,6 +4300,10 @@ export interface KafkaConnectKafkaConnectUserConfigSecretProvider {
      */
     aws?: pulumi.Input<inputs.KafkaConnectKafkaConnectUserConfigSecretProviderAws>;
     /**
+     * ENV secret provider configuration
+     */
+    env?: pulumi.Input<inputs.KafkaConnectKafkaConnectUserConfigSecretProviderEnv>;
+    /**
      * Name of the secret provider. Used to reference secrets in connector config.
      */
     name: pulumi.Input<string>;
@@ -4277,6 +4330,13 @@ export interface KafkaConnectKafkaConnectUserConfigSecretProviderAws {
      * Secret key used to authenticate with aws.
      */
     secretKey?: pulumi.Input<string>;
+}
+
+export interface KafkaConnectKafkaConnectUserConfigSecretProviderEnv {
+    /**
+     * Key/value map of secrets for ENV secret provider.
+     */
+    secrets: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 export interface KafkaConnectKafkaConnectUserConfigSecretProviderVault {
@@ -4393,9 +4453,21 @@ export interface KafkaKafkaUserConfig {
      */
     customDomain?: pulumi.Input<string>;
     /**
+     * Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
+     */
+    enableIpv6?: pulumi.Input<boolean>;
+    /**
      * Enable follower fetching
      */
     followerFetching?: pulumi.Input<inputs.KafkaKafkaUserConfigFollowerFetching>;
+    /**
+     * Allow-list of HTTPS URLs used to validate GCP credentialSource requests for Kafka Connect.
+     */
+    gcpAuthAllowedUrls?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Inkless configuration values
+     */
+    inkless?: pulumi.Input<inputs.KafkaKafkaUserConfigInkless>;
     /**
      * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      */
@@ -4515,6 +4587,13 @@ export interface KafkaKafkaUserConfigFollowerFetching {
     enabled?: pulumi.Input<boolean>;
 }
 
+export interface KafkaKafkaUserConfigInkless {
+    /**
+     * Whether to enable the Inkless functionality.
+     */
+    enabled: pulumi.Input<boolean>;
+}
+
 export interface KafkaKafkaUserConfigIpFilterObject {
     /**
      * Description for IP filter list entry. Example: `Production service IP range`.
@@ -4528,7 +4607,7 @@ export interface KafkaKafkaUserConfigIpFilterObject {
 
 export interface KafkaKafkaUserConfigKafka {
     /**
-     * Enable auto-creation of topics. (Default: true).
+     * Enable auto-creation of topics. (Default: false).
      */
     autoCreateTopicsEnable?: pulumi.Input<boolean>;
     /**
@@ -4816,6 +4895,10 @@ export interface KafkaKafkaUserConfigKafkaConnectSecretProvider {
      */
     aws?: pulumi.Input<inputs.KafkaKafkaUserConfigKafkaConnectSecretProviderAws>;
     /**
+     * ENV secret provider configuration
+     */
+    env?: pulumi.Input<inputs.KafkaKafkaUserConfigKafkaConnectSecretProviderEnv>;
+    /**
      * Name of the secret provider. Used to reference secrets in connector config.
      */
     name: pulumi.Input<string>;
@@ -4842,6 +4925,13 @@ export interface KafkaKafkaUserConfigKafkaConnectSecretProviderAws {
      * Secret key used to authenticate with aws.
      */
     secretKey?: pulumi.Input<string>;
+}
+
+export interface KafkaKafkaUserConfigKafkaConnectSecretProviderEnv {
+    /**
+     * Key/value map of secrets for ENV secret provider.
+     */
+    secrets: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 export interface KafkaKafkaUserConfigKafkaConnectSecretProviderVault {
@@ -6219,6 +6309,10 @@ export interface MySqlMysqlUserConfigMysql {
      */
     longQueryTime?: pulumi.Input<number>;
     /**
+     * Enum: `0`, `1`. Sets how table and database names are stored and compared. 0 = case-sensitive (default), 1 = names stored lowercase, comparisons are case-insensitive. This option can only be set when creating the service and cannot be changed later. See https://dev.mysql.com/doc/refman/8.0/en/identifier-case-sensitivity.html for details.
+     */
+    lowerCaseTableNames?: pulumi.Input<number>;
+    /**
      * Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
      */
     maxAllowedPacket?: pulumi.Input<number>;
@@ -6994,7 +7088,7 @@ export interface OpenSearchOpensearchUserConfigOpensearch {
      */
     nodeSearchCacheSize?: pulumi.Input<string>;
     /**
-     * Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default is false.
+     * Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default is false. Deprecated and ignored for service version 3.3 and higher.
      */
     overrideMainResponseVersion?: pulumi.Input<boolean>;
     /**
@@ -7204,6 +7298,14 @@ export interface OpenSearchOpensearchUserConfigOpensearchDashboards {
      * Timeout in milliseconds for requests made by OpenSearch Dashboards towards OpenSearch. Default: `30000`.
      */
     opensearchRequestTimeout?: pulumi.Input<number>;
+    /**
+     * Determines whether the session TTL resets (is “kept alive”) on each user activity. Optional. Default is true. Default: `true`.
+     */
+    sessionKeepalive?: pulumi.Input<boolean>;
+    /**
+     * Defines the time-to-live (TTL) for user sessions. The value should be a time value with unit, e.g. 1m, 5s, 1h, 3d, 100ms. Default is 1 hour. Default: `1h`.
+     */
+    sessionTtl?: pulumi.Input<string>;
 }
 
 export interface OpenSearchOpensearchUserConfigOpensearchDiskWatermarks {
@@ -7377,7 +7479,7 @@ export interface OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQuerie
      */
     topNSize?: pulumi.Input<number>;
     /**
-     * The window size of the top N queries by the metric.
+     * Configure the window size of the top N queries. The value should be a time value with unit, e.g. 1m, 5s, 1h.
      */
     windowSize?: pulumi.Input<string>;
 }
@@ -7392,7 +7494,7 @@ export interface OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQuerie
      */
     topNSize?: pulumi.Input<number>;
     /**
-     * The window size of the top N queries by the metric.
+     * Configure the window size of the top N queries. The value should be a time value with unit, e.g. 1m, 5s, 1h.
      */
     windowSize?: pulumi.Input<string>;
 }
@@ -7407,7 +7509,7 @@ export interface OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQuerie
      */
     topNSize?: pulumi.Input<number>;
     /**
-     * The window size of the top N queries by the metric.
+     * Configure the window size of the top N queries. The value should be a time value with unit, e.g. 1m, 5s, 1h.
      */
     windowSize?: pulumi.Input<string>;
 }
@@ -7728,7 +7830,7 @@ export interface OrganizationBillingGroupPaymentMethod {
      */
     paymentMethodId: pulumi.Input<string>;
     /**
-     * An enumeration. The possible values are `awsSubscription`, `azureSubscription`, `bankTransfer`, `creditCard`, `custom`, `disabled`, `gcpSubscription`, `noPaymentExpected` and `partner`.
+     * An enumeration. The possible values are `awsSubscription`, `azureSubscription`, `bankTransfer`, `creditCard`, `custom` and `gcpSubscription`.
      */
     paymentMethodType: pulumi.Input<string>;
 }
@@ -7777,7 +7879,7 @@ export interface OrganizationPermissionPermission {
      */
     createTime?: pulumi.Input<string>;
     /**
-     * List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant". The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `readOnly`, `role:organization:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
+     * List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant". The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `readOnly`, `role:organization:admin`, `role:project:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
      */
     permissions: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -8195,6 +8297,7 @@ export interface PgPgUserConfig {
      * Use static public IP addresses.
      */
     staticIps?: pulumi.Input<boolean>;
+    switchoverWindows?: pulumi.Input<pulumi.Input<inputs.PgPgUserConfigSwitchoverWindow>[]>;
     /**
      * Enum: `off`, `quorum`. Synchronous replication type. Note that the service plan also needs to support synchronous replication.
      */
@@ -8373,7 +8476,7 @@ export interface PgPgUserConfigPg {
      */
     logTempFiles?: pulumi.Input<number>;
     /**
-     * Sets the PostgreSQL maximum number of concurrent connections to the database server. This is a limited-release parameter. Contact your account team to confirm your eligibility. You cannot decrease this parameter value when set. For services with a read replica, first increase the read replica's value. After the change is applied to the replica, you can increase the primary service's value. Changing this parameter causes a service restart.
+     * Sets the PostgreSQL maximum number of concurrent connections to the database server. For services with a read replica, first increase the read replica's value. After the change is applied to the replica, you can increase the primary service's value. Changing this parameter causes a service restart.
      */
     maxConnections?: pulumi.Input<number>;
     /**
@@ -8385,7 +8488,7 @@ export interface PgPgUserConfigPg {
      */
     maxLocksPerTransaction?: pulumi.Input<number>;
     /**
-     * PostgreSQL maximum logical replication workers (taken from the pool of max*parallel*workers). The default is `4` (upstream default). Changing this parameter causes a service restart.
+     * PostgreSQL maximum logical replication workers (taken from the pool defined by max*worker*processes). The default is `4` (upstream default). Changing this parameter causes a service restart.
      */
     maxLogicalReplicationWorkers?: pulumi.Input<number>;
     /**
@@ -8679,6 +8782,21 @@ export interface PgPgUserConfigPublicAccess {
      * Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
      */
     prometheus?: pulumi.Input<boolean>;
+}
+
+export interface PgPgUserConfigSwitchoverWindow {
+    /**
+     * Enum: `friday`, `monday`, `saturday`, `sunday`, `thursday`, `tuesday`, `wednesday`.
+     */
+    dow: pulumi.Input<string>;
+    /**
+     * Example: `12:30:00`.
+     */
+    endTime: pulumi.Input<string>;
+    /**
+     * Example: `12:30:00`.
+     */
+    startTime: pulumi.Input<string>;
 }
 
 export interface PgPgUserConfigTimescaledb {
@@ -9328,7 +9446,7 @@ export interface ServiceIntegrationEndpointDatadogUserConfig {
      */
     maxPartitionContexts?: pulumi.Input<number>;
     /**
-     * Enum: `ap1.datadoghq.com`, `datadoghq.com`, `datadoghq.eu`, `ddog-gov.com`, `us3.datadoghq.com`, `us5.datadoghq.com`. Datadog intake site. Defaults to datadoghq.com.
+     * Enum: `ap1.datadoghq.com`, `ap2.datadoghq.com`, `datadoghq.com`, `datadoghq.eu`, `ddog-gov.com`, `us3.datadoghq.com`, `us5.datadoghq.com`. Datadog intake site. Defaults to datadoghq.com.
      */
     site?: pulumi.Input<string>;
 }
@@ -9961,6 +10079,10 @@ export interface ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf {
      */
     gatherProcessList?: pulumi.Input<boolean>;
     /**
+     * Gather metrics from SHOW REPLICA STATUS command output.
+     */
+    gatherReplicaStatus?: pulumi.Input<boolean>;
+    /**
      * Gather metrics from SHOW SLAVE STATUS command output.
      */
     gatherSlaveStatus?: pulumi.Input<boolean>;
@@ -10033,6 +10155,10 @@ export interface ServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf {
      * Gather thread state counts from INFORMATION_SCHEMA.PROCESSLIST.
      */
     gatherProcessList?: pulumi.Input<boolean>;
+    /**
+     * Gather metrics from SHOW REPLICA STATUS command output.
+     */
+    gatherReplicaStatus?: pulumi.Input<boolean>;
     /**
      * Gather metrics from SHOW SLAVE STATUS command output.
      */
@@ -10544,6 +10670,10 @@ export interface ValkeyValkeyUserConfig {
      * Valkey idle connection timeout in seconds. Default: `300`.
      */
     valkeyTimeout?: pulumi.Input<number>;
+    /**
+     * Enum: `8.1`, `9.0`, and newer. Valkey major version.
+     */
+    valkeyVersion?: pulumi.Input<string>;
 }
 
 export interface ValkeyValkeyUserConfigIpFilterObject {

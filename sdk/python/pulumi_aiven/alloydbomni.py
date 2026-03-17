@@ -67,6 +67,9 @@ class AlloydbomniArgs:
         if alloydbomni is not None:
             pulumi.set(__self__, "alloydbomni", alloydbomni)
         if alloydbomni_user_config is not None:
+            warnings.warn("""This property is deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""alloydbomni_user_config is deprecated: This property is deprecated.""")
+        if alloydbomni_user_config is not None:
             pulumi.set(__self__, "alloydbomni_user_config", alloydbomni_user_config)
         if cloud_name is not None:
             pulumi.set(__self__, "cloud_name", cloud_name)
@@ -153,6 +156,7 @@ class AlloydbomniArgs:
 
     @_builtins.property
     @pulumi.getter(name="alloydbomniUserConfig")
+    @_utilities.deprecated("""This property is deprecated.""")
     def alloydbomni_user_config(self) -> Optional[pulumi.Input['AlloydbomniAlloydbomniUserConfigArgs']]:
         """
         Alloydbomni user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
@@ -368,6 +372,9 @@ class _AlloydbomniState:
         if alloydbomni is not None:
             pulumi.set(__self__, "alloydbomni", alloydbomni)
         if alloydbomni_user_config is not None:
+            warnings.warn("""This property is deprecated.""", DeprecationWarning)
+            pulumi.log.warn("""alloydbomni_user_config is deprecated: This property is deprecated.""")
+        if alloydbomni_user_config is not None:
             pulumi.set(__self__, "alloydbomni_user_config", alloydbomni_user_config)
         if cloud_name is not None:
             pulumi.set(__self__, "cloud_name", cloud_name)
@@ -450,6 +457,7 @@ class _AlloydbomniState:
 
     @_builtins.property
     @pulumi.getter(name="alloydbomniUserConfig")
+    @_utilities.deprecated("""This property is deprecated.""")
     def alloydbomni_user_config(self) -> Optional[pulumi.Input['AlloydbomniAlloydbomniUserConfigArgs']]:
         """
         Alloydbomni user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
@@ -1052,6 +1060,7 @@ class Alloydbomni(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="alloydbomniUserConfig")
+    @_utilities.deprecated("""This property is deprecated.""")
     def alloydbomni_user_config(self) -> pulumi.Output[Optional['outputs.AlloydbomniAlloydbomniUserConfig']]:
         """
         Alloydbomni user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later

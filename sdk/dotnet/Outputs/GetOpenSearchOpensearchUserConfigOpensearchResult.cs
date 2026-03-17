@@ -168,7 +168,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? NodeSearchCacheSize;
         /// <summary>
-        /// Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default is false.
+        /// Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default is false. Deprecated and ignored for service version 3.3 and higher.
         /// </summary>
         public readonly bool? OverrideMainResponseVersion;
         /// <summary>

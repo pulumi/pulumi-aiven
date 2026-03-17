@@ -4,6 +4,7 @@
 package com.pulumi.aiven.inputs;
 
 import com.pulumi.aiven.inputs.KafkaKafkaUserConfigFollowerFetchingArgs;
+import com.pulumi.aiven.inputs.KafkaKafkaUserConfigInklessArgs;
 import com.pulumi.aiven.inputs.KafkaKafkaUserConfigIpFilterObjectArgs;
 import com.pulumi.aiven.inputs.KafkaKafkaUserConfigKafkaArgs;
 import com.pulumi.aiven.inputs.KafkaKafkaUserConfigKafkaAuthenticationMethodsArgs;
@@ -118,6 +119,21 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
+     * 
+     */
+    @Import(name="enableIpv6")
+    private @Nullable Output<Boolean> enableIpv6;
+
+    /**
+     * @return Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
+     * 
+     */
+    public Optional<Output<Boolean>> enableIpv6() {
+        return Optional.ofNullable(this.enableIpv6);
+    }
+
+    /**
      * Enable follower fetching
      * 
      */
@@ -130,6 +146,36 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
      */
     public Optional<Output<KafkaKafkaUserConfigFollowerFetchingArgs>> followerFetching() {
         return Optional.ofNullable(this.followerFetching);
+    }
+
+    /**
+     * Allow-list of HTTPS URLs used to validate GCP credentialSource requests for Kafka Connect.
+     * 
+     */
+    @Import(name="gcpAuthAllowedUrls")
+    private @Nullable Output<List<String>> gcpAuthAllowedUrls;
+
+    /**
+     * @return Allow-list of HTTPS URLs used to validate GCP credentialSource requests for Kafka Connect.
+     * 
+     */
+    public Optional<Output<List<String>>> gcpAuthAllowedUrls() {
+        return Optional.ofNullable(this.gcpAuthAllowedUrls);
+    }
+
+    /**
+     * Inkless configuration values
+     * 
+     */
+    @Import(name="inkless")
+    private @Nullable Output<KafkaKafkaUserConfigInklessArgs> inkless;
+
+    /**
+     * @return Inkless configuration values
+     * 
+     */
+    public Optional<Output<KafkaKafkaUserConfigInklessArgs>> inkless() {
+        return Optional.ofNullable(this.inkless);
     }
 
     /**
@@ -553,7 +599,10 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
         this.backupIntervalHours = $.backupIntervalHours;
         this.backupRetentionDays = $.backupRetentionDays;
         this.customDomain = $.customDomain;
+        this.enableIpv6 = $.enableIpv6;
         this.followerFetching = $.followerFetching;
+        this.gcpAuthAllowedUrls = $.gcpAuthAllowedUrls;
+        this.inkless = $.inkless;
         this.ipFilterObjects = $.ipFilterObjects;
         this.ipFilterStrings = $.ipFilterStrings;
         this.ipFilters = $.ipFilters;
@@ -715,6 +764,27 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param enableIpv6 Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableIpv6(@Nullable Output<Boolean> enableIpv6) {
+            $.enableIpv6 = enableIpv6;
+            return this;
+        }
+
+        /**
+         * @param enableIpv6 Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableIpv6(Boolean enableIpv6) {
+            return enableIpv6(Output.of(enableIpv6));
+        }
+
+        /**
          * @param followerFetching Enable follower fetching
          * 
          * @return builder
@@ -733,6 +803,58 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
          */
         public Builder followerFetching(KafkaKafkaUserConfigFollowerFetchingArgs followerFetching) {
             return followerFetching(Output.of(followerFetching));
+        }
+
+        /**
+         * @param gcpAuthAllowedUrls Allow-list of HTTPS URLs used to validate GCP credentialSource requests for Kafka Connect.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gcpAuthAllowedUrls(@Nullable Output<List<String>> gcpAuthAllowedUrls) {
+            $.gcpAuthAllowedUrls = gcpAuthAllowedUrls;
+            return this;
+        }
+
+        /**
+         * @param gcpAuthAllowedUrls Allow-list of HTTPS URLs used to validate GCP credentialSource requests for Kafka Connect.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gcpAuthAllowedUrls(List<String> gcpAuthAllowedUrls) {
+            return gcpAuthAllowedUrls(Output.of(gcpAuthAllowedUrls));
+        }
+
+        /**
+         * @param gcpAuthAllowedUrls Allow-list of HTTPS URLs used to validate GCP credentialSource requests for Kafka Connect.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gcpAuthAllowedUrls(String... gcpAuthAllowedUrls) {
+            return gcpAuthAllowedUrls(List.of(gcpAuthAllowedUrls));
+        }
+
+        /**
+         * @param inkless Inkless configuration values
+         * 
+         * @return builder
+         * 
+         */
+        public Builder inkless(@Nullable Output<KafkaKafkaUserConfigInklessArgs> inkless) {
+            $.inkless = inkless;
+            return this;
+        }
+
+        /**
+         * @param inkless Inkless configuration values
+         * 
+         * @return builder
+         * 
+         */
+        public Builder inkless(KafkaKafkaUserConfigInklessArgs inkless) {
+            return inkless(Output.of(inkless));
         }
 
         /**

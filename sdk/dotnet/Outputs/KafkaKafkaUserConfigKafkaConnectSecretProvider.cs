@@ -18,6 +18,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.KafkaKafkaUserConfigKafkaConnectSecretProviderAws? Aws;
         /// <summary>
+        /// ENV secret provider configuration
+        /// </summary>
+        public readonly Outputs.KafkaKafkaUserConfigKafkaConnectSecretProviderEnv? Env;
+        /// <summary>
         /// Name of the secret provider. Used to reference secrets in connector config.
         /// </summary>
         public readonly string Name;
@@ -30,11 +34,14 @@ namespace Pulumi.Aiven.Outputs
         private KafkaKafkaUserConfigKafkaConnectSecretProvider(
             Outputs.KafkaKafkaUserConfigKafkaConnectSecretProviderAws? aws,
 
+            Outputs.KafkaKafkaUserConfigKafkaConnectSecretProviderEnv? env,
+
             string name,
 
             Outputs.KafkaKafkaUserConfigKafkaConnectSecretProviderVault? vault)
         {
             Aws = aws;
+            Env = env;
             Name = name;
             Vault = vault;
         }

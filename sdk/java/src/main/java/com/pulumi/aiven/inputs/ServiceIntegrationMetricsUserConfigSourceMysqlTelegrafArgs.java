@@ -122,6 +122,21 @@ public final class ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs ex
     }
 
     /**
+     * Gather metrics from SHOW REPLICA STATUS command output.
+     * 
+     */
+    @Import(name="gatherReplicaStatus")
+    private @Nullable Output<Boolean> gatherReplicaStatus;
+
+    /**
+     * @return Gather metrics from SHOW REPLICA STATUS command output.
+     * 
+     */
+    public Optional<Output<Boolean>> gatherReplicaStatus() {
+        return Optional.ofNullable(this.gatherReplicaStatus);
+    }
+
+    /**
      * Gather metrics from SHOW SLAVE STATUS command output.
      * 
      */
@@ -236,6 +251,7 @@ public final class ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs ex
         this.gatherInnodbMetrics = $.gatherInnodbMetrics;
         this.gatherPerfEventsStatements = $.gatherPerfEventsStatements;
         this.gatherProcessList = $.gatherProcessList;
+        this.gatherReplicaStatus = $.gatherReplicaStatus;
         this.gatherSlaveStatus = $.gatherSlaveStatus;
         this.gatherTableIoWaits = $.gatherTableIoWaits;
         this.gatherTableLockWaits = $.gatherTableLockWaits;
@@ -408,6 +424,27 @@ public final class ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs ex
          */
         public Builder gatherProcessList(Boolean gatherProcessList) {
             return gatherProcessList(Output.of(gatherProcessList));
+        }
+
+        /**
+         * @param gatherReplicaStatus Gather metrics from SHOW REPLICA STATUS command output.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gatherReplicaStatus(@Nullable Output<Boolean> gatherReplicaStatus) {
+            $.gatherReplicaStatus = gatherReplicaStatus;
+            return this;
+        }
+
+        /**
+         * @param gatherReplicaStatus Gather metrics from SHOW REPLICA STATUS command output.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gatherReplicaStatus(Boolean gatherReplicaStatus) {
+            return gatherReplicaStatus(Output.of(gatherReplicaStatus));
         }
 
         /**

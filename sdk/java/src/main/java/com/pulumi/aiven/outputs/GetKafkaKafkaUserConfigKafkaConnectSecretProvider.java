@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.aiven.outputs.GetKafkaKafkaUserConfigKafkaConnectSecretProviderAws;
+import com.pulumi.aiven.outputs.GetKafkaKafkaUserConfigKafkaConnectSecretProviderEnv;
 import com.pulumi.aiven.outputs.GetKafkaKafkaUserConfigKafkaConnectSecretProviderVault;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -19,6 +20,11 @@ public final class GetKafkaKafkaUserConfigKafkaConnectSecretProvider {
      * 
      */
     private @Nullable GetKafkaKafkaUserConfigKafkaConnectSecretProviderAws aws;
+    /**
+     * @return ENV secret provider configuration
+     * 
+     */
+    private @Nullable GetKafkaKafkaUserConfigKafkaConnectSecretProviderEnv env;
     /**
      * @return Name of the secret provider. Used to reference secrets in connector config.
      * 
@@ -37,6 +43,13 @@ public final class GetKafkaKafkaUserConfigKafkaConnectSecretProvider {
      */
     public Optional<GetKafkaKafkaUserConfigKafkaConnectSecretProviderAws> aws() {
         return Optional.ofNullable(this.aws);
+    }
+    /**
+     * @return ENV secret provider configuration
+     * 
+     */
+    public Optional<GetKafkaKafkaUserConfigKafkaConnectSecretProviderEnv> env() {
+        return Optional.ofNullable(this.env);
     }
     /**
      * @return Name of the secret provider. Used to reference secrets in connector config.
@@ -63,12 +76,14 @@ public final class GetKafkaKafkaUserConfigKafkaConnectSecretProvider {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable GetKafkaKafkaUserConfigKafkaConnectSecretProviderAws aws;
+        private @Nullable GetKafkaKafkaUserConfigKafkaConnectSecretProviderEnv env;
         private String name;
         private @Nullable GetKafkaKafkaUserConfigKafkaConnectSecretProviderVault vault;
         public Builder() {}
         public Builder(GetKafkaKafkaUserConfigKafkaConnectSecretProvider defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.aws = defaults.aws;
+    	      this.env = defaults.env;
     	      this.name = defaults.name;
     	      this.vault = defaults.vault;
         }
@@ -77,6 +92,12 @@ public final class GetKafkaKafkaUserConfigKafkaConnectSecretProvider {
         public Builder aws(@Nullable GetKafkaKafkaUserConfigKafkaConnectSecretProviderAws aws) {
 
             this.aws = aws;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder env(@Nullable GetKafkaKafkaUserConfigKafkaConnectSecretProviderEnv env) {
+
+            this.env = env;
             return this;
         }
         @CustomType.Setter
@@ -96,6 +117,7 @@ public final class GetKafkaKafkaUserConfigKafkaConnectSecretProvider {
         public GetKafkaKafkaUserConfigKafkaConnectSecretProvider build() {
             final var _resultValue = new GetKafkaKafkaUserConfigKafkaConnectSecretProvider();
             _resultValue.aws = aws;
+            _resultValue.env = env;
             _resultValue.name = name;
             _resultValue.vault = vault;
             return _resultValue;

@@ -174,14 +174,6 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string Password;
         /// <summary>
-        /// The password of the service user (write-only, not stored in state). The field is required with `PasswordWoVersion`. The field conflicts with `Password`.
-        /// </summary>
-        public readonly string PasswordWo;
-        /// <summary>
-        /// Version number for `PasswordWo`. Increment this to rotate the password. The field is required with `PasswordWo`.
-        /// </summary>
-        public readonly int PasswordWoVersion;
-        /// <summary>
         /// Project name.
         /// </summary>
         public readonly string Project;
@@ -211,10 +203,6 @@ namespace Pulumi.Aiven
 
             string password,
 
-            string passwordWo,
-
-            int passwordWoVersion,
-
             string project,
 
             string serviceName,
@@ -230,8 +218,6 @@ namespace Pulumi.Aiven
             Authentication = authentication;
             Id = id;
             Password = password;
-            PasswordWo = passwordWo;
-            PasswordWoVersion = passwordWoVersion;
             Project = project;
             ServiceName = serviceName;
             Timeouts = timeouts;

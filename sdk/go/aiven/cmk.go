@@ -64,7 +64,7 @@ type Cmk struct {
 	// Created At.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// Mark the created CMK as default for all newly created services.
-	DefaultCmk pulumi.BoolOutput `pulumi:"defaultCmk"`
+	DefaultCmk pulumi.BoolPtrOutput `pulumi:"defaultCmk"`
 	// Project name. Changing this property forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The unique identifier for the CMK in the cloud provider's KMS. In AWS, this is the Key ARN; in Google Cloud the Resource Name; and in Oracle Cloud the Key OCID. Maximum length: `512`. Changing this property forces recreation of the resource.
@@ -85,9 +85,6 @@ func NewCmk(ctx *pulumi.Context,
 
 	if args.CmkProvider == nil {
 		return nil, errors.New("invalid value for required argument 'CmkProvider'")
-	}
-	if args.DefaultCmk == nil {
-		return nil, errors.New("invalid value for required argument 'DefaultCmk'")
 	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
@@ -165,7 +162,7 @@ type cmkArgs struct {
 	// The cloud provider hosting the key management service (KMS). The possible values are `aws`, `gcp` and `oci`. Changing this property forces recreation of the resource.
 	CmkProvider string `pulumi:"cmkProvider"`
 	// Mark the created CMK as default for all newly created services.
-	DefaultCmk bool `pulumi:"defaultCmk"`
+	DefaultCmk *bool `pulumi:"defaultCmk"`
 	// Project name. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
 	// The unique identifier for the CMK in the cloud provider's KMS. In AWS, this is the Key ARN; in Google Cloud the Resource Name; and in Oracle Cloud the Key OCID. Maximum length: `512`. Changing this property forces recreation of the resource.
@@ -178,7 +175,7 @@ type CmkArgs struct {
 	// The cloud provider hosting the key management service (KMS). The possible values are `aws`, `gcp` and `oci`. Changing this property forces recreation of the resource.
 	CmkProvider pulumi.StringInput
 	// Mark the created CMK as default for all newly created services.
-	DefaultCmk pulumi.BoolInput
+	DefaultCmk pulumi.BoolPtrInput
 	// Project name. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput
 	// The unique identifier for the CMK in the cloud provider's KMS. In AWS, this is the Key ARN; in Google Cloud the Resource Name; and in Oracle Cloud the Key OCID. Maximum length: `512`. Changing this property forces recreation of the resource.
@@ -289,8 +286,8 @@ func (o CmkOutput) CreatedAt() pulumi.StringOutput {
 }
 
 // Mark the created CMK as default for all newly created services.
-func (o CmkOutput) DefaultCmk() pulumi.BoolOutput {
-	return o.ApplyT(func(v *Cmk) pulumi.BoolOutput { return v.DefaultCmk }).(pulumi.BoolOutput)
+func (o CmkOutput) DefaultCmk() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Cmk) pulumi.BoolPtrOutput { return v.DefaultCmk }).(pulumi.BoolPtrOutput)
 }
 
 // Project name. Changing this property forces recreation of the resource.

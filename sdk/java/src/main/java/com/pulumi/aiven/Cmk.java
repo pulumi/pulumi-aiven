@@ -117,14 +117,14 @@ public class Cmk extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="defaultCmk", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> defaultCmk;
+    private Output</* @Nullable */ Boolean> defaultCmk;
 
     /**
      * @return Mark the created CMK as default for all newly created services.
      * 
      */
-    public Output<Boolean> defaultCmk() {
-        return this.defaultCmk;
+    public Output<Optional<Boolean>> defaultCmk() {
+        return Codegen.optional(this.defaultCmk);
     }
     /**
      * Project name. Changing this property forces recreation of the resource.

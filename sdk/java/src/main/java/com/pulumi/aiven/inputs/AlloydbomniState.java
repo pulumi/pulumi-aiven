@@ -57,14 +57,22 @@ public final class AlloydbomniState extends com.pulumi.resources.ResourceArgs {
     /**
      * Alloydbomni user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
+     * @deprecated
+     * This property is deprecated.
+     * 
      */
+    @Deprecated /* This property is deprecated. */
     @Import(name="alloydbomniUserConfig")
     private @Nullable Output<AlloydbomniAlloydbomniUserConfigArgs> alloydbomniUserConfig;
 
     /**
      * @return Alloydbomni user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
+     * @deprecated
+     * This property is deprecated.
+     * 
      */
+    @Deprecated /* This property is deprecated. */
     public Optional<Output<AlloydbomniAlloydbomniUserConfigArgs>> alloydbomniUserConfig() {
         return Optional.ofNullable(this.alloydbomniUserConfig);
     }
@@ -574,7 +582,11 @@ public final class AlloydbomniState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * This property is deprecated.
+         * 
          */
+        @Deprecated /* This property is deprecated. */
         public Builder alloydbomniUserConfig(@Nullable Output<AlloydbomniAlloydbomniUserConfigArgs> alloydbomniUserConfig) {
             $.alloydbomniUserConfig = alloydbomniUserConfig;
             return this;
@@ -585,7 +597,11 @@ public final class AlloydbomniState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * This property is deprecated.
+         * 
          */
+        @Deprecated /* This property is deprecated. */
         public Builder alloydbomniUserConfig(AlloydbomniAlloydbomniUserConfigArgs alloydbomniUserConfig) {
             return alloydbomniUserConfig(Output.of(alloydbomniUserConfig));
         }

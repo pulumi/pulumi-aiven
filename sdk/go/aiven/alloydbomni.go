@@ -20,6 +20,8 @@ type Alloydbomni struct {
 	// Values provided by the AlloyDB Omni server.
 	Alloydbomni AlloydbomniAlloydbomniOutput `pulumi:"alloydbomni"`
 	// Alloydbomni user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+	//
+	// Deprecated: This property is deprecated.
 	AlloydbomniUserConfig AlloydbomniAlloydbomniUserConfigPtrOutput `pulumi:"alloydbomniUserConfig"`
 	// The cloud provider and region the service is hosted in. The format is `provider-region`, for example: `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ per project and service. Changing this value [migrates the service to another cloud provider or region](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and includes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases may have a brief interruption during DNS propagation.
 	CloudName pulumi.StringPtrOutput `pulumi:"cloudName"`
@@ -134,6 +136,8 @@ type alloydbomniState struct {
 	// Values provided by the AlloyDB Omni server.
 	Alloydbomni *AlloydbomniAlloydbomni `pulumi:"alloydbomni"`
 	// Alloydbomni user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+	//
+	// Deprecated: This property is deprecated.
 	AlloydbomniUserConfig *AlloydbomniAlloydbomniUserConfig `pulumi:"alloydbomniUserConfig"`
 	// The cloud provider and region the service is hosted in. The format is `provider-region`, for example: `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ per project and service. Changing this value [migrates the service to another cloud provider or region](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and includes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases may have a brief interruption during DNS propagation.
 	CloudName *string `pulumi:"cloudName"`
@@ -197,6 +201,8 @@ type AlloydbomniState struct {
 	// Values provided by the AlloyDB Omni server.
 	Alloydbomni AlloydbomniAlloydbomniPtrInput
 	// Alloydbomni user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+	//
+	// Deprecated: This property is deprecated.
 	AlloydbomniUserConfig AlloydbomniAlloydbomniUserConfigPtrInput
 	// The cloud provider and region the service is hosted in. The format is `provider-region`, for example: `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ per project and service. Changing this value [migrates the service to another cloud provider or region](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and includes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases may have a brief interruption during DNS propagation.
 	CloudName pulumi.StringPtrInput
@@ -264,6 +270,8 @@ type alloydbomniArgs struct {
 	// Values provided by the AlloyDB Omni server.
 	Alloydbomni *AlloydbomniAlloydbomni `pulumi:"alloydbomni"`
 	// Alloydbomni user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+	//
+	// Deprecated: This property is deprecated.
 	AlloydbomniUserConfig *AlloydbomniAlloydbomniUserConfig `pulumi:"alloydbomniUserConfig"`
 	// The cloud provider and region the service is hosted in. The format is `provider-region`, for example: `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ per project and service. Changing this value [migrates the service to another cloud provider or region](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and includes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases may have a brief interruption during DNS propagation.
 	CloudName *string `pulumi:"cloudName"`
@@ -302,6 +310,8 @@ type AlloydbomniArgs struct {
 	// Values provided by the AlloyDB Omni server.
 	Alloydbomni AlloydbomniAlloydbomniPtrInput
 	// Alloydbomni user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+	//
+	// Deprecated: This property is deprecated.
 	AlloydbomniUserConfig AlloydbomniAlloydbomniUserConfigPtrInput
 	// The cloud provider and region the service is hosted in. The format is `provider-region`, for example: `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ per project and service. Changing this value [migrates the service to another cloud provider or region](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and includes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases may have a brief interruption during DNS propagation.
 	CloudName pulumi.StringPtrInput
@@ -431,6 +441,8 @@ func (o AlloydbomniOutput) Alloydbomni() AlloydbomniAlloydbomniOutput {
 }
 
 // Alloydbomni user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+//
+// Deprecated: This property is deprecated.
 func (o AlloydbomniOutput) AlloydbomniUserConfig() AlloydbomniAlloydbomniUserConfigPtrOutput {
 	return o.ApplyT(func(v *Alloydbomni) AlloydbomniAlloydbomniUserConfigPtrOutput { return v.AlloydbomniUserConfig }).(AlloydbomniAlloydbomniUserConfigPtrOutput)
 }

@@ -17,14 +17,14 @@ public final class GetOrganizationArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetOrganizationArgs Empty = new GetOrganizationArgs();
 
     /**
-     * ID of the organization.
+     * Organization ID. Exactly one of the fields must be specified: `id` or `name`.
      * 
      */
     @Import(name="id")
     private @Nullable Output<String> id;
 
     /**
-     * @return ID of the organization.
+     * @return Organization ID. Exactly one of the fields must be specified: `id` or `name`.
      * 
      */
     public Optional<Output<String>> id() {
@@ -32,14 +32,14 @@ public final class GetOrganizationArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Name of the organization.
+     * Name of the organization. Exactly one of the fields must be specified: `id` or `name`.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the organization.
+     * @return Name of the organization. Exactly one of the fields must be specified: `id` or `name`.
      * 
      */
     public Optional<Output<String>> name() {
@@ -80,7 +80,7 @@ public final class GetOrganizationArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param id ID of the organization.
+         * @param id Organization ID. Exactly one of the fields must be specified: `id` or `name`.
          * 
          * @return builder
          * 
@@ -91,7 +91,7 @@ public final class GetOrganizationArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param id ID of the organization.
+         * @param id Organization ID. Exactly one of the fields must be specified: `id` or `name`.
          * 
          * @return builder
          * 
@@ -101,7 +101,7 @@ public final class GetOrganizationArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param name Name of the organization.
+         * @param name Name of the organization. Exactly one of the fields must be specified: `id` or `name`.
          * 
          * @return builder
          * 
@@ -112,7 +112,7 @@ public final class GetOrganizationArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param name Name of the organization.
+         * @param name Name of the organization. Exactly one of the fields must be specified: `id` or `name`.
          * 
          * @return builder
          * 

@@ -71,10 +71,6 @@ type LookupPgUserResult struct {
 	Id string `pulumi:"id"`
 	// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`.
 	Password string `pulumi:"password"`
-	// The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`.
-	PasswordWo string `pulumi:"passwordWo"`
-	// Version number for `passwordWo`. Increment this to rotate the password. The field is required with `passwordWo`.
-	PasswordWoVersion int `pulumi:"passwordWoVersion"`
 	// Allows replication. For the default avnadmin user this attribute is required and is always `true`.
 	PgAllowReplication bool `pulumi:"pgAllowReplication"`
 	// Project name.
@@ -145,16 +141,6 @@ func (o LookupPgUserResultOutput) Id() pulumi.StringOutput {
 // The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`.
 func (o LookupPgUserResultOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPgUserResult) string { return v.Password }).(pulumi.StringOutput)
-}
-
-// The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`.
-func (o LookupPgUserResultOutput) PasswordWo() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupPgUserResult) string { return v.PasswordWo }).(pulumi.StringOutput)
-}
-
-// Version number for `passwordWo`. Increment this to rotate the password. The field is required with `passwordWo`.
-func (o LookupPgUserResultOutput) PasswordWoVersion() pulumi.IntOutput {
-	return o.ApplyT(func(v LookupPgUserResult) int { return v.PasswordWoVersion }).(pulumi.IntOutput)
 }
 
 // Allows replication. For the default avnadmin user this attribute is required and is always `true`.

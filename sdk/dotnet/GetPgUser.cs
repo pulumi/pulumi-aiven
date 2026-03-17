@@ -170,14 +170,6 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string Password;
         /// <summary>
-        /// The password of the service user (write-only, not stored in state). The field is required with `PasswordWoVersion`. The field conflicts with `Password`.
-        /// </summary>
-        public readonly string PasswordWo;
-        /// <summary>
-        /// Version number for `PasswordWo`. Increment this to rotate the password. The field is required with `PasswordWo`.
-        /// </summary>
-        public readonly int PasswordWoVersion;
-        /// <summary>
         /// Allows replication. For the default avnadmin user this attribute is required and is always `True`.
         /// </summary>
         public readonly bool PgAllowReplication;
@@ -209,10 +201,6 @@ namespace Pulumi.Aiven
 
             string password,
 
-            string passwordWo,
-
-            int passwordWoVersion,
-
             bool pgAllowReplication,
 
             string project,
@@ -229,8 +217,6 @@ namespace Pulumi.Aiven
             AccessKey = accessKey;
             Id = id;
             Password = password;
-            PasswordWo = passwordWo;
-            PasswordWoVersion = passwordWoVersion;
             PgAllowReplication = pgAllowReplication;
             Project = project;
             ServiceName = serviceName;

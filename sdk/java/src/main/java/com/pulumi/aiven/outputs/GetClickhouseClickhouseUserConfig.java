@@ -9,6 +9,7 @@ import com.pulumi.aiven.outputs.GetClickhouseClickhouseUserConfigPrivatelinkAcce
 import com.pulumi.aiven.outputs.GetClickhouseClickhouseUserConfigPublicAccess;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
+import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -37,6 +38,11 @@ public final class GetClickhouseClickhouseUserConfig {
      * 
      */
     private @Nullable Integer backupMinute;
+    /**
+     * @return Enum: `25.3`, and newer. ClickHouse major version.
+     * 
+     */
+    private @Nullable String clickhouseVersion;
     /**
      * @return Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
      * 
@@ -101,6 +107,11 @@ public final class GetClickhouseClickhouseUserConfig {
      * 
      */
     private @Nullable Boolean staticIps;
+    /**
+     * @return The percentage of free disk space required on local storage before data is moved to object storage. A value of 0.2 means data is moved when local storage has less than 20% free space. Default: `0.2`.
+     * 
+     */
+    private @Nullable Double tieredStorageMoveFactor;
 
     private GetClickhouseClickhouseUserConfig() {}
     /**
@@ -127,6 +138,13 @@ public final class GetClickhouseClickhouseUserConfig {
      */
     public Optional<Integer> backupMinute() {
         return Optional.ofNullable(this.backupMinute);
+    }
+    /**
+     * @return Enum: `25.3`, and newer. ClickHouse major version.
+     * 
+     */
+    public Optional<String> clickhouseVersion() {
+        return Optional.ofNullable(this.clickhouseVersion);
     }
     /**
      * @return Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
@@ -216,6 +234,13 @@ public final class GetClickhouseClickhouseUserConfig {
     public Optional<Boolean> staticIps() {
         return Optional.ofNullable(this.staticIps);
     }
+    /**
+     * @return The percentage of free disk space required on local storage before data is moved to object storage. A value of 0.2 means data is moved when local storage has less than 20% free space. Default: `0.2`.
+     * 
+     */
+    public Optional<Double> tieredStorageMoveFactor() {
+        return Optional.ofNullable(this.tieredStorageMoveFactor);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -229,6 +254,7 @@ public final class GetClickhouseClickhouseUserConfig {
         private @Nullable String additionalBackupRegions;
         private @Nullable Integer backupHour;
         private @Nullable Integer backupMinute;
+        private @Nullable String clickhouseVersion;
         private @Nullable Boolean enableIpv6;
         private @Nullable List<GetClickhouseClickhouseUserConfigIpFilterObject> ipFilterObjects;
         private @Nullable List<String> ipFilterStrings;
@@ -241,12 +267,14 @@ public final class GetClickhouseClickhouseUserConfig {
         private @Nullable Boolean serviceLog;
         private @Nullable String serviceToForkFrom;
         private @Nullable Boolean staticIps;
+        private @Nullable Double tieredStorageMoveFactor;
         public Builder() {}
         public Builder(GetClickhouseClickhouseUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.additionalBackupRegions = defaults.additionalBackupRegions;
     	      this.backupHour = defaults.backupHour;
     	      this.backupMinute = defaults.backupMinute;
+    	      this.clickhouseVersion = defaults.clickhouseVersion;
     	      this.enableIpv6 = defaults.enableIpv6;
     	      this.ipFilterObjects = defaults.ipFilterObjects;
     	      this.ipFilterStrings = defaults.ipFilterStrings;
@@ -259,6 +287,7 @@ public final class GetClickhouseClickhouseUserConfig {
     	      this.serviceLog = defaults.serviceLog;
     	      this.serviceToForkFrom = defaults.serviceToForkFrom;
     	      this.staticIps = defaults.staticIps;
+    	      this.tieredStorageMoveFactor = defaults.tieredStorageMoveFactor;
         }
 
         @CustomType.Setter
@@ -277,6 +306,12 @@ public final class GetClickhouseClickhouseUserConfig {
         public Builder backupMinute(@Nullable Integer backupMinute) {
 
             this.backupMinute = backupMinute;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder clickhouseVersion(@Nullable String clickhouseVersion) {
+
+            this.clickhouseVersion = clickhouseVersion;
             return this;
         }
         @CustomType.Setter
@@ -360,11 +395,18 @@ public final class GetClickhouseClickhouseUserConfig {
             this.staticIps = staticIps;
             return this;
         }
+        @CustomType.Setter
+        public Builder tieredStorageMoveFactor(@Nullable Double tieredStorageMoveFactor) {
+
+            this.tieredStorageMoveFactor = tieredStorageMoveFactor;
+            return this;
+        }
         public GetClickhouseClickhouseUserConfig build() {
             final var _resultValue = new GetClickhouseClickhouseUserConfig();
             _resultValue.additionalBackupRegions = additionalBackupRegions;
             _resultValue.backupHour = backupHour;
             _resultValue.backupMinute = backupMinute;
+            _resultValue.clickhouseVersion = clickhouseVersion;
             _resultValue.enableIpv6 = enableIpv6;
             _resultValue.ipFilterObjects = ipFilterObjects;
             _resultValue.ipFilterStrings = ipFilterStrings;
@@ -377,6 +419,7 @@ public final class GetClickhouseClickhouseUserConfig {
             _resultValue.serviceLog = serviceLog;
             _resultValue.serviceToForkFrom = serviceToForkFrom;
             _resultValue.staticIps = staticIps;
+            _resultValue.tieredStorageMoveFactor = tieredStorageMoveFactor;
             return _resultValue;
         }
     }

@@ -52,8 +52,6 @@ type LookupOrganizationBillingGroupResult struct {
 	BillingGroupId string `pulumi:"billingGroupId"`
 	// Billing Group Name.
 	BillingGroupName string `pulumi:"billingGroupName"`
-	// Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
-	Currency string `pulumi:"currency"`
 	// Extra billing text.
 	CustomInvoiceText string `pulumi:"customInvoiceText"`
 	// Resource ID composed as: `organization_id/billing_group_id`.
@@ -139,11 +137,6 @@ func (o LookupOrganizationBillingGroupResultOutput) BillingGroupId() pulumi.Stri
 // Billing Group Name.
 func (o LookupOrganizationBillingGroupResultOutput) BillingGroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationBillingGroupResult) string { return v.BillingGroupName }).(pulumi.StringOutput)
-}
-
-// Acceptable currencies for a billing group. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
-func (o LookupOrganizationBillingGroupResultOutput) Currency() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupOrganizationBillingGroupResult) string { return v.Currency }).(pulumi.StringOutput)
 }
 
 // Extra billing text.
