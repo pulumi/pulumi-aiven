@@ -260,7 +260,7 @@ class OpenSearchAclRule(pulumi.CustomResource):
                     index=range["value"]["index"],
                     permission=range["value"]["permission"]))
 
-        pulumi.Output.all({i: v for i, v in acl_rules}).apply(lambda resolved_outputs: create_os_acl_rule(resolved_outputs[0]))
+        pulumi.Output.all({i: v for i, v in enumerate(acl_rules)}).apply(lambda resolved_outputs: create_os_acl_rule(resolved_outputs[0]))
         ```
 
         ## Import
@@ -343,7 +343,7 @@ class OpenSearchAclRule(pulumi.CustomResource):
                     index=range["value"]["index"],
                     permission=range["value"]["permission"]))
 
-        pulumi.Output.all({i: v for i, v in acl_rules}).apply(lambda resolved_outputs: create_os_acl_rule(resolved_outputs[0]))
+        pulumi.Output.all({i: v for i, v in enumerate(acl_rules)}).apply(lambda resolved_outputs: create_os_acl_rule(resolved_outputs[0]))
         ```
 
         ## Import
