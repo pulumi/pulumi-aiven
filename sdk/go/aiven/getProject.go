@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.LookupProject(ctx, &aiven.LookupProjectArgs{
+//			_, err := aiven.GetProject(ctx, &aiven.LookupProjectArgs{
 //				Project: "example-project",
 //			}, nil)
 //			if err != nil {

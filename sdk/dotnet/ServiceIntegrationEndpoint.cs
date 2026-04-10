@@ -27,7 +27,7 @@ namespace Pulumi.Aiven
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Datadog endpoint
-    ///     var exampleEndpoint = new Aiven.ServiceIntegrationEndpoint("example_endpoint", new()
+    ///     var exampleEndpoint = new Aiven.Index.ServiceIntegrationEndpoint("example_endpoint", new()
     ///     {
     ///         Project = exampleProject.Project,
     ///         EndpointName = "Datadog endpoint",
@@ -35,7 +35,7 @@ namespace Pulumi.Aiven
     ///     });
     /// 
     ///     // Disk autoscaler endpoint
-    ///     var autoscalerEndpoint = new Aiven.ServiceIntegrationEndpoint("autoscaler_endpoint", new()
+    ///     var autoscalerEndpoint = new Aiven.Index.ServiceIntegrationEndpoint("autoscaler_endpoint", new()
     ///     {
     ///         Project = exampleProject.Project,
     ///         EndpointName = "disk-autoscaler-200GiB",

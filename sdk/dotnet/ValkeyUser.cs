@@ -23,7 +23,7 @@ namespace Pulumi.Aiven
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Example user with read-only access for analytics
-    ///     var readAnalytics = new Aiven.ValkeyUser("read_analytics", new()
+    ///     var readAnalytics = new Aiven.Index.ValkeyUser("read_analytics", new()
     ///     {
     ///         Project = exampleProject.Project,
     ///         ServiceName = exampleValkey.ServiceName,
@@ -48,7 +48,7 @@ namespace Pulumi.Aiven
     ///     });
     /// 
     ///     // Example user with restricted write access for session management
-    ///     var manageSessions = new Aiven.ValkeyUser("manage_sessions", new()
+    ///     var manageSessions = new Aiven.Index.ValkeyUser("manage_sessions", new()
     ///     {
     ///         Project = exampleProject.Project,
     ///         ServiceName = exampleValkey.ServiceName,

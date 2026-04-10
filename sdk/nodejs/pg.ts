@@ -23,7 +23,7 @@ import * as utilities from "./utilities";
  *     serviceName: "example-postgres-service",
  *     maintenanceWindowDow: "monday",
  *     maintenanceWindowTime: "10:00:00",
- *     staticIps: std.index.toset({
+ *     staticIps: std.toset({
  *         input: [
  *             ips[0].staticIpAddressId,
  *             ips[1].staticIpAddressId,

@@ -24,7 +24,7 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleDragonfly = Aiven.GetDragonfly.Invoke(new()
+        ///     var exampleDragonfly = Aiven.Index.GetDragonfly.Invoke(new()
         ///     {
         ///         Project = exampleProject.Project,
         ///         ServiceName = "example-dragonfly-service",
@@ -49,7 +49,7 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleDragonfly = Aiven.GetDragonfly.Invoke(new()
+        ///     var exampleDragonfly = Aiven.Index.GetDragonfly.Invoke(new()
         ///     {
         ///         Project = exampleProject.Project,
         ///         ServiceName = "example-dragonfly-service",
@@ -74,7 +74,7 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleDragonfly = Aiven.GetDragonfly.Invoke(new()
+        ///     var exampleDragonfly = Aiven.Index.GetDragonfly.Invoke(new()
         ///     {
         ///         Project = exampleProject.Project,
         ///         ServiceName = "example-dragonfly-service",

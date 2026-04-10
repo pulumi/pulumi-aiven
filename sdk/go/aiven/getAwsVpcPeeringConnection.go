@@ -36,7 +36,7 @@ import (
 //				return err
 //			}
 //			_ = exampleVpc.ID().ApplyT(func(id string) (aiven.GetAwsVpcPeeringConnectionResult, error) {
-//				return aiven.GetAwsVpcPeeringConnectionResult(interface{}(aiven.LookupAwsVpcPeeringConnection(ctx, &aiven.LookupAwsVpcPeeringConnectionArgs{
+//				return aiven.GetAwsVpcPeeringConnectionResult(interface{}(aiven.GetAwsVpcPeeringConnection(ctx, &aiven.LookupAwsVpcPeeringConnectionArgs{
 //					VpcId:        id,
 //					AwsAccountId: awsId,
 //					AwsVpcId:     "vpc-1a2b3c4d5e6f7g8h9",

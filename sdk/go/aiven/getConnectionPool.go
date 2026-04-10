@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.LookupConnectionPool(ctx, &aiven.LookupConnectionPoolArgs{
+//			_, err := aiven.GetConnectionPool(ctx, &aiven.LookupConnectionPoolArgs{
 //				Project:     exampleProject.Project,
 //				ServiceName: examplePostgres.ServiceName,
 //				PoolName:    "example-pool",

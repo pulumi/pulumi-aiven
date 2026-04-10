@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.LookupClickhouseDatabase(ctx, &aiven.LookupClickhouseDatabaseArgs{
+//			_, err := aiven.GetClickhouseDatabase(ctx, &aiven.LookupClickhouseDatabaseArgs{
 //				Project:     exampleProject.Project,
 //				ServiceName: exampleClickhouse.ServiceName,
 //				Name:        "example-database",

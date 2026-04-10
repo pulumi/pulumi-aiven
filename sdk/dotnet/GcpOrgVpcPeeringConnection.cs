@@ -25,14 +25,14 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleVpc = new Aiven.OrganizationVpc("example_vpc", new()
+    ///     var exampleVpc = new Aiven.Index.OrganizationVpc("example_vpc", new()
     ///     {
     ///         OrganizationId = exampleAivenOrganization.Id,
     ///         CloudName = "google-europe-west10",
     ///         NetworkCidr = "10.0.0.0/24",
     ///     });
     /// 
-    ///     var example = new Aiven.GcpOrgVpcPeeringConnection("example", new()
+    ///     var example = new Aiven.Index.GcpOrgVpcPeeringConnection("example", new()
     ///     {
     ///         OrganizationId = exampleVpc.OrganizationId,
     ///         OrganizationVpcId = exampleVpc.OrganizationVpcId,

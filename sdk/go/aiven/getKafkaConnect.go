@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.LookupKafkaConnect(ctx, &aiven.LookupKafkaConnectArgs{
+//			_, err := aiven.GetKafkaConnect(ctx, &aiven.LookupKafkaConnectArgs{
 //				Project:     exampleProject.Project,
 //				ServiceName: "example-connect-service",
 //			}, nil)

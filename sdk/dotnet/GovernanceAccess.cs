@@ -25,7 +25,7 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleAccess = new Aiven.GovernanceAccess("example_access", new()
+    ///     var exampleAccess = new Aiven.Index.GovernanceAccess("example_access", new()
     ///     {
     ///         OrganizationId = main.Id,
     ///         AccessName = "example-topic-access",

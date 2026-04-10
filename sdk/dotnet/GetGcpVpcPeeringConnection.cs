@@ -24,7 +24,7 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var main = Aiven.GetGcpVpcPeeringConnection.Invoke(new()
+        ///     var main = Aiven.Index.GetGcpVpcPeeringConnection.Invoke(new()
         ///     {
         ///         VpcId = vpc.Id,
         ///         GcpProjectId = "example-project",
@@ -50,7 +50,7 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var main = Aiven.GetGcpVpcPeeringConnection.Invoke(new()
+        ///     var main = Aiven.Index.GetGcpVpcPeeringConnection.Invoke(new()
         ///     {
         ///         VpcId = vpc.Id,
         ///         GcpProjectId = "example-project",
@@ -76,7 +76,7 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var main = Aiven.GetGcpVpcPeeringConnection.Invoke(new()
+        ///     var main = Aiven.Index.GetGcpVpcPeeringConnection.Invoke(new()
         ///     {
         ///         VpcId = vpc.Id,
         ///         GcpProjectId = "example-project",

@@ -204,7 +204,7 @@ class AzurePrivatelinkConnectionApproval(pulumi.CustomResource):
             project=aiven_project_id,
             service_name=default.name,
             user_subscription_ids=[azure_subscription_id])
-        endpoint = azurerm.index.PrivateEndpoint("endpoint",
+        endpoint = azurerm.PrivateEndpoint("endpoint",
             name=postgres-endpoint,
             location=region,
             resource_group_name=azure_resource_group.name,
@@ -275,7 +275,7 @@ class AzurePrivatelinkConnectionApproval(pulumi.CustomResource):
             project=aiven_project_id,
             service_name=default.name,
             user_subscription_ids=[azure_subscription_id])
-        endpoint = azurerm.index.PrivateEndpoint("endpoint",
+        endpoint = azurerm.PrivateEndpoint("endpoint",
             name=postgres-endpoint,
             location=region,
             resource_group_name=azure_resource_group.name,

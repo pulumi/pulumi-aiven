@@ -22,7 +22,7 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleOpensearchUser = new Aiven.OpensearchUser("example_opensearch_user", new()
+    ///     var exampleOpensearchUser = new Aiven.Index.OpensearchUser("example_opensearch_user", new()
     ///     {
     ///         ServiceName = exampleOpensearch.ServiceName,
     ///         Project = exampleProject.Project,

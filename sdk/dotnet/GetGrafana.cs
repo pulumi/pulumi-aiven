@@ -24,7 +24,7 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleGrafana = Aiven.GetGrafana.Invoke(new()
+        ///     var exampleGrafana = Aiven.Index.GetGrafana.Invoke(new()
         ///     {
         ///         Project = exampleProject.Project,
         ///         ServiceName = "example-grafana-service",
@@ -49,7 +49,7 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleGrafana = Aiven.GetGrafana.Invoke(new()
+        ///     var exampleGrafana = Aiven.Index.GetGrafana.Invoke(new()
         ///     {
         ///         Project = exampleProject.Project,
         ///         ServiceName = "example-grafana-service",
@@ -74,7 +74,7 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleGrafana = Aiven.GetGrafana.Invoke(new()
+        ///     var exampleGrafana = Aiven.Index.GetGrafana.Invoke(new()
         ///     {
         ///         Project = exampleProject.Project,
         ///         ServiceName = "example-grafana-service",

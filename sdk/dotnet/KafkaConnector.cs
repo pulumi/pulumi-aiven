@@ -25,7 +25,7 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var kafka_os_connector = new Aiven.KafkaConnector("kafka-os-connector", new()
+    ///     var kafka_os_connector = new Aiven.Index.KafkaConnector("kafka-os-connector", new()
     ///     {
     ///         Project = exampleProject.Project,
     ///         ServiceName = exampleKafka.ServiceName,

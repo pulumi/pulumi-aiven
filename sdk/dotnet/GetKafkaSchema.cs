@@ -24,7 +24,7 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var config = Aiven.GetKafkaSchemaConfiguration.Invoke(new()
+        ///     var config = Aiven.Index.GetKafkaSchemaConfiguration.Invoke(new()
         ///     {
         ///         Project = kafka_schemas_project1.Project,
         ///         ServiceName = kafka_service1.ServiceName,
@@ -49,7 +49,7 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var config = Aiven.GetKafkaSchemaConfiguration.Invoke(new()
+        ///     var config = Aiven.Index.GetKafkaSchemaConfiguration.Invoke(new()
         ///     {
         ///         Project = kafka_schemas_project1.Project,
         ///         ServiceName = kafka_service1.ServiceName,
@@ -74,7 +74,7 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var config = Aiven.GetKafkaSchemaConfiguration.Invoke(new()
+        ///     var config = Aiven.Index.GetKafkaSchemaConfiguration.Invoke(new()
         ///     {
         ///         Project = kafka_schemas_project1.Project,
         ///         ServiceName = kafka_service1.ServiceName,

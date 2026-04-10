@@ -22,7 +22,7 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleReplicationFlow = new Aiven.MirrorMakerReplicationFlow("example_replication_flow", new()
+    ///     var exampleReplicationFlow = new Aiven.Index.MirrorMakerReplicationFlow("example_replication_flow", new()
     ///     {
     ///         Project = exampleProject.Project,
     ///         ServiceName = exampleKafka.ServiceName,

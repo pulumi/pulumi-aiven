@@ -23,17 +23,17 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var staticIps = new List&lt;Aiven.StaticIp&gt;();
+    ///     var staticIps = new List&lt;Aiven.Index.StaticIp&gt;();
     ///     for (var rangeIndex = 0; rangeIndex &lt; 2; rangeIndex++)
     ///     {
     ///         var range = new { Value = rangeIndex };
-    ///         staticIps.Add(new Aiven.StaticIp($"static_ips-{range.Value}", new()
+    ///         staticIps.Add(new Aiven.Index.StaticIp($"static_ips-{range.Value}", new()
     ///         {
     ///             Project = projectId,
     ///             CloudName = region,
     ///         }));
     ///     }
-    ///     var @default = new Aiven.Pg("default", new()
+    ///     var @default = new Aiven.Index.Pg("default", new()
     ///     {
     ///         ServiceName = "postgres",
     ///         Project = aivenProjectId,
@@ -56,7 +56,7 @@ namespace Pulumi.Aiven
     ///         },
     ///     });
     /// 
-    ///     var privatelink = new Aiven.AzurePrivatelink("privatelink", new()
+    ///     var privatelink = new Aiven.Index.AzurePrivatelink("privatelink", new()
     ///     {
     ///         Project = aivenProjectId,
     ///         ServiceName = @default.Name,
@@ -90,7 +90,7 @@ namespace Pulumi.Aiven
     ///         },
     ///     });
     /// 
-    ///     var approval = new Aiven.AzurePrivatelinkConnectionApproval("approval", new()
+    ///     var approval = new Aiven.Index.AzurePrivatelinkConnectionApproval("approval", new()
     ///     {
     ///         Project = aivenProjectId,
     ///         ServiceName = @default.ServiceName,

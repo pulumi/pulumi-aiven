@@ -22,21 +22,21 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var osUser1 = new Aiven.OpensearchUser("os_user_1", new()
+    ///     var osUser1 = new Aiven.Index.OpensearchUser("os_user_1", new()
     ///     {
     ///         Project = exampleProject.Project,
     ///         ServiceName = exampleOpensearch.ServiceName,
     ///         Username = "documentation-user-1",
     ///     });
     /// 
-    ///     var osUser2 = new Aiven.OpensearchUser("os_user_2", new()
+    ///     var osUser2 = new Aiven.Index.OpensearchUser("os_user_2", new()
     ///     {
     ///         Project = exampleProject.Project,
     ///         ServiceName = exampleOpensearch.ServiceName,
     ///         Username = "documentation-user-2",
     ///     });
     /// 
-    ///     var osAclsConfig = new Aiven.OpenSearchAclConfig("os_acls_config", new()
+    ///     var osAclsConfig = new Aiven.Index.OpenSearchAclConfig("os_acls_config", new()
     ///     {
     ///         Project = exampleProject.Project,
     ///         ServiceName = exampleOpensearch.ServiceName,
@@ -78,10 +78,10 @@ namespace Pulumi.Aiven
     ///         },
     ///     };
     /// 
-    ///     var osAclRule = new List&lt;Aiven.OpenSearchAclRule&gt;();
+    ///     var osAclRule = new List&lt;Aiven.Index.OpenSearchAclRule&gt;();
     ///     foreach (var range in aclRules.Select((value, i) =&gt; new { Key = i.ToString(), Value = pair.Value }).Select(pair =&gt; new { pair.Key, pair.Value }))
     ///     {
-    ///         osAclRule.Add(new Aiven.OpenSearchAclRule($"os_acl_rule-{range.Key}", new()
+    ///         osAclRule.Add(new Aiven.Index.OpenSearchAclRule($"os_acl_rule-{range.Key}", new()
     ///         {
     ///             Project = exampleProject.Project,
     ///             ServiceName = exampleOpensearch.ServiceName,

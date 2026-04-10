@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.LookupPg(ctx, &aiven.LookupPgArgs{
+//			_, err := aiven.GetPg(ctx, &aiven.LookupPgArgs{
 //				Project:     exampleProject.Project,
 //				ServiceName: "example-postgres-service",
 //			}, nil)
