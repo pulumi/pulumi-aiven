@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.LookupFlink(ctx, &aiven.LookupFlinkArgs{
+//			_, err := aiven.GetFlink(ctx, &aiven.LookupFlinkArgs{
 //				Project:     exampleProject.Project,
 //				ServiceName: "example-flink-service",
 //			}, nil)

@@ -22,7 +22,7 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleApp = new Aiven.FlinkApplication("example_app", new()
+    ///     var exampleApp = new Aiven.Index.FlinkApplication("example_app", new()
     ///     {
     ///         Project = exampleProject.Project,
     ///         ServiceName = "example-flink-service",

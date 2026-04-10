@@ -22,7 +22,7 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleRole = new Aiven.ClickhouseRole("example_role", new()
+    ///     var exampleRole = new Aiven.Index.ClickhouseRole("example_role", new()
     ///     {
     ///         ServiceName = exampleClickhouse.ServiceName,
     ///         Project = exampleProject.Project,

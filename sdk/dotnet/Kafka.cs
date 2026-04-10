@@ -22,7 +22,7 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleKafka = new Aiven.Kafka("example_kafka", new()
+    ///     var exampleKafka = new Aiven.Index.Kafka("example_kafka", new()
     ///     {
     ///         Project = exampleProject.Project,
     ///         CloudName = "google-europe-west1",

@@ -22,7 +22,7 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleUser = new Aiven.PgUser("example_user", new()
+    ///     var exampleUser = new Aiven.Index.PgUser("example_user", new()
     ///     {
     ///         ServiceName = examplePostgres.ServiceName,
     ///         Project = exampleProject.Project,
@@ -31,7 +31,7 @@ namespace Pulumi.Aiven
     ///     });
     /// 
     ///     // Each service has a default admin user with the username avnadmin.
-    ///     var adminUser = new Aiven.PgUser("admin_user", new()
+    ///     var adminUser = new Aiven.Index.PgUser("admin_user", new()
     ///     {
     ///         ServiceName = examplePostgres.ServiceName,
     ///         Project = exampleProject.Project,

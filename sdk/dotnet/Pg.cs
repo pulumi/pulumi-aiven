@@ -23,7 +23,7 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var examplePostgres = new Aiven.Pg("example_postgres", new()
+    ///     var examplePostgres = new Aiven.Index.Pg("example_postgres", new()
     ///     {
     ///         Project = exampleProject.Project,
     ///         CloudName = "google-europe-west1",

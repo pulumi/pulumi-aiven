@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.LookupOrganizationalUnit(ctx, &aiven.LookupOrganizationalUnitArgs{
+//			_, err := aiven.GetOrganizationalUnit(ctx, &aiven.LookupOrganizationalUnitArgs{
 //				Name: pulumi.StringRef("Example organizational unit"),
 //			}, nil)
 //			if err != nil {

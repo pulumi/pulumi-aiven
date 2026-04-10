@@ -22,7 +22,7 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleMysql = new Aiven.MySql("example_mysql", new()
+    ///     var exampleMysql = new Aiven.Index.MySql("example_mysql", new()
     ///     {
     ///         Project = exampleProject.Project,
     ///         CloudName = "google-europe-west1",

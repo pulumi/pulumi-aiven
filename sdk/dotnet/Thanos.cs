@@ -22,7 +22,7 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleThanos = new Aiven.Thanos("example_thanos", new()
+    ///     var exampleThanos = new Aiven.Index.Thanos("example_thanos", new()
     ///     {
     ///         Project = exampleProject.Project,
     ///         Plan = "startup-4",

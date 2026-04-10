@@ -252,7 +252,7 @@ class OpenSearchAclRule(pulumi.CustomResource):
         ]
         os_acl_rule = []
         def create_os_acl_rule(range_body):
-            for range in [{"key": k, "value": v} for [k, v] in enumerate(range_body)]:
+            for range in [{"key": k, "value": v} for [k, v] in (range_body).items()]:
                 os_acl_rule.append(aiven.OpenSearchAclRule(f"os_acl_rule-{range['key']}",
                     project=example_project["project"],
                     service_name=example_opensearch["serviceName"],
@@ -335,7 +335,7 @@ class OpenSearchAclRule(pulumi.CustomResource):
         ]
         os_acl_rule = []
         def create_os_acl_rule(range_body):
-            for range in [{"key": k, "value": v} for [k, v] in enumerate(range_body)]:
+            for range in [{"key": k, "value": v} for [k, v] in (range_body).items()]:
                 os_acl_rule.append(aiven.OpenSearchAclRule(f"os_acl_rule-{range['key']}",
                     project=example_project["project"],
                     service_name=example_opensearch["serviceName"],

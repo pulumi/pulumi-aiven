@@ -22,7 +22,7 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleValkey = new Aiven.Valkey("example_valkey", new()
+    ///     var exampleValkey = new Aiven.Index.Valkey("example_valkey", new()
     ///     {
     ///         Project = exampleProject.Project,
     ///         Plan = "startup-4",

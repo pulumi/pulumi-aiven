@@ -25,7 +25,7 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Aiven.ByocAwsEntity("example", new()
+    ///     var example = new Aiven.Index.ByocAwsEntity("example", new()
     ///     {
     ///         OrganizationId = main.Id,
     ///         DisplayName = "my-byoc-cloud",

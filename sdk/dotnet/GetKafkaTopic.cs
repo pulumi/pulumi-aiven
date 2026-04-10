@@ -24,7 +24,7 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleTopic = Aiven.GetKafkaTopic.Invoke(new()
+        ///     var exampleTopic = Aiven.Index.GetKafkaTopic.Invoke(new()
         ///     {
         ///         Project = exampleProject.Project,
         ///         ServiceName = exampleKafka.ServiceName,
@@ -50,7 +50,7 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleTopic = Aiven.GetKafkaTopic.Invoke(new()
+        ///     var exampleTopic = Aiven.Index.GetKafkaTopic.Invoke(new()
         ///     {
         ///         Project = exampleProject.Project,
         ///         ServiceName = exampleKafka.ServiceName,
@@ -76,7 +76,7 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleTopic = Aiven.GetKafkaTopic.Invoke(new()
+        ///     var exampleTopic = Aiven.Index.GetKafkaTopic.Invoke(new()
         ///     {
         ///         Project = exampleProject.Project,
         ///         ServiceName = exampleKafka.ServiceName,

@@ -27,7 +27,7 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var main = new Aiven.OpensearchSecurityPluginConfig("main", new()
+    ///     var main = new Aiven.Index.OpensearchSecurityPluginConfig("main", new()
     ///     {
     ///         Project = exampleProject.Project,
     ///         ServiceName = exampleOpensearch.ServiceName,

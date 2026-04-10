@@ -24,7 +24,7 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleProject = Aiven.GetProject.Invoke(new()
+        ///     var exampleProject = Aiven.Index.GetProject.Invoke(new()
         ///     {
         ///         Project = "example-project",
         ///     });
@@ -48,7 +48,7 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleProject = Aiven.GetProject.Invoke(new()
+        ///     var exampleProject = Aiven.Index.GetProject.Invoke(new()
         ///     {
         ///         Project = "example-project",
         ///     });
@@ -72,7 +72,7 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleProject = Aiven.GetProject.Invoke(new()
+        ///     var exampleProject = Aiven.Index.GetProject.Invoke(new()
         ///     {
         ///         Project = "example-project",
         ///     });

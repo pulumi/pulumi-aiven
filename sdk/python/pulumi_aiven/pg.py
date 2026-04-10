@@ -794,7 +794,7 @@ class Pg(pulumi.CustomResource):
             service_name="example-postgres-service",
             maintenance_window_dow="monday",
             maintenance_window_time="10:00:00",
-            static_ips=std.index.toset(input=[
+            static_ips=std.toset(input=[
                 ips[0]["staticIpAddressId"],
                 ips[1]["staticIpAddressId"],
                 ips[2]["staticIpAddressId"],
@@ -862,7 +862,7 @@ class Pg(pulumi.CustomResource):
             service_name="example-postgres-service",
             maintenance_window_dow="monday",
             maintenance_window_time="10:00:00",
-            static_ips=std.index.toset(input=[
+            static_ips=std.toset(input=[
                 ips[0]["staticIpAddressId"],
                 ips[1]["staticIpAddressId"],
                 ips[2]["staticIpAddressId"],

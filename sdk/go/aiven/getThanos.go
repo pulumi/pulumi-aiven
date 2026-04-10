@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.LookupThanos(ctx, &aiven.LookupThanosArgs{
+//			_, err := aiven.GetThanos(ctx, &aiven.LookupThanosArgs{
 //				Project:     exampleProject.Project,
 //				ServiceName: "example-thanos-service",
 //			}, nil)

@@ -24,7 +24,7 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var attachment = Aiven.GetTransitGatewayVpcAttachment.Invoke(new()
+        ///     var attachment = Aiven.Index.GetTransitGatewayVpcAttachment.Invoke(new()
         ///     {
         ///         VpcId = bar.Id,
         ///         PeerCloudAccount = "&lt;PEER_ACCOUNT_ID&gt;",
@@ -50,7 +50,7 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var attachment = Aiven.GetTransitGatewayVpcAttachment.Invoke(new()
+        ///     var attachment = Aiven.Index.GetTransitGatewayVpcAttachment.Invoke(new()
         ///     {
         ///         VpcId = bar.Id,
         ///         PeerCloudAccount = "&lt;PEER_ACCOUNT_ID&gt;",
@@ -76,7 +76,7 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var attachment = Aiven.GetTransitGatewayVpcAttachment.Invoke(new()
+        ///     var attachment = Aiven.Index.GetTransitGatewayVpcAttachment.Invoke(new()
         ///     {
         ///         VpcId = bar.Id,
         ///         PeerCloudAccount = "&lt;PEER_ACCOUNT_ID&gt;",

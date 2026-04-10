@@ -34,7 +34,7 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var main = new Aiven.AccountTeamMember("main", new()
+    ///     var main = new Aiven.Index.AccountTeamMember("main", new()
     ///     {
     ///         AccountId = ACCOUNT_RESOURCE_NAME.AccountId,
     ///         TeamId = TEAM_RESOURCE_NAME.TeamId,

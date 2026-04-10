@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.LookupKafkaMirrorMaker(ctx, &aiven.LookupKafkaMirrorMakerArgs{
+//			_, err := aiven.GetKafkaMirrorMaker(ctx, &aiven.LookupKafkaMirrorMakerArgs{
 //				Project:     exampleProject.Project,
 //				ServiceName: "example-mirrormaker-service",
 //			}, nil)

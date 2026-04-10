@@ -23,7 +23,7 @@ namespace Pulumi.Aiven
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Grant access to a specific project
-    ///     var exampleProjectPermissions = new Aiven.OrganizationPermission("example_project_permissions", new()
+    ///     var exampleProjectPermissions = new Aiven.Index.OrganizationPermission("example_project_permissions", new()
     ///     {
     ///         OrganizationId = main.Id,
     ///         ResourceId = exampleProject.Project,
@@ -54,7 +54,7 @@ namespace Pulumi.Aiven
     ///     });
     /// 
     ///     // Organization-level permissions
-    ///     var exampleOrgPermissions = new Aiven.OrganizationPermission("example_org_permissions", new()
+    ///     var exampleOrgPermissions = new Aiven.Index.OrganizationPermission("example_org_permissions", new()
     ///     {
     ///         OrganizationId = main.Id,
     ///         ResourceId = main.Id,

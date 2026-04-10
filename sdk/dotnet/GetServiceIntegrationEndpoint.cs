@@ -24,7 +24,7 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleDatadogEndpoint = Aiven.GetServiceIntegrationEndpoint.Invoke(new()
+        ///     var exampleDatadogEndpoint = Aiven.Index.GetServiceIntegrationEndpoint.Invoke(new()
         ///     {
         ///         Project = exampleProject.Project,
         ///         EndpointName = "Datadog endpoint",
@@ -49,7 +49,7 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleDatadogEndpoint = Aiven.GetServiceIntegrationEndpoint.Invoke(new()
+        ///     var exampleDatadogEndpoint = Aiven.Index.GetServiceIntegrationEndpoint.Invoke(new()
         ///     {
         ///         Project = exampleProject.Project,
         ///         EndpointName = "Datadog endpoint",
@@ -74,7 +74,7 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleDatadogEndpoint = Aiven.GetServiceIntegrationEndpoint.Invoke(new()
+        ///     var exampleDatadogEndpoint = Aiven.Index.GetServiceIntegrationEndpoint.Invoke(new()
         ///     {
         ///         Project = exampleProject.Project,
         ///         EndpointName = "Datadog endpoint",

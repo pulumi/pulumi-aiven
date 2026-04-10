@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.LookupServiceIntegration(ctx, &aiven.LookupServiceIntegrationArgs{
+//			_, err := aiven.GetServiceIntegration(ctx, &aiven.LookupServiceIntegrationArgs{
 //				Project:                exampleProject.Project,
 //				DestinationServiceName: exampleThanos.ServiceName,
 //				IntegrationType:        "metrics",

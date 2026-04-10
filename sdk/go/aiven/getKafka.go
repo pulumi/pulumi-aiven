@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.LookupKafka(ctx, &aiven.LookupKafkaArgs{
+//			_, err := aiven.GetKafka(ctx, &aiven.LookupKafkaArgs{
 //				Project:     exampleProject.Project,
 //				ServiceName: "example-kafka",
 //			}, nil)

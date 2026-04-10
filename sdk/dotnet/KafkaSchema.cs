@@ -22,7 +22,7 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var kafka_schema1 = new Aiven.KafkaSchema("kafka-schema1", new()
+    ///     var kafka_schema1 = new Aiven.Index.KafkaSchema("kafka-schema1", new()
     ///     {
     ///         Project = kafka_schemas_project1.Project,
     ///         ServiceName = kafka_service1.ServiceName,

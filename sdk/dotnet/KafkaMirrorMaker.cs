@@ -22,7 +22,7 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleMirrormaker = new Aiven.KafkaMirrorMaker("example_mirrormaker", new()
+    ///     var exampleMirrormaker = new Aiven.Index.KafkaMirrorMaker("example_mirrormaker", new()
     ///     {
     ///         Project = exampleProject.Project,
     ///         CloudName = "google-europe-west1",

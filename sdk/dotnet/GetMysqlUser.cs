@@ -24,7 +24,7 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleMysqlUser = Aiven.GetMysqlUser.Invoke(new()
+        ///     var exampleMysqlUser = Aiven.Index.GetMysqlUser.Invoke(new()
         ///     {
         ///         ServiceName = exampleMysql.ServiceName,
         ///         Project = exampleProject.Project,
@@ -50,7 +50,7 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleMysqlUser = Aiven.GetMysqlUser.Invoke(new()
+        ///     var exampleMysqlUser = Aiven.Index.GetMysqlUser.Invoke(new()
         ///     {
         ///         ServiceName = exampleMysql.ServiceName,
         ///         Project = exampleProject.Project,
@@ -76,7 +76,7 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleMysqlUser = Aiven.GetMysqlUser.Invoke(new()
+        ///     var exampleMysqlUser = Aiven.Index.GetMysqlUser.Invoke(new()
         ///     {
         ///         ServiceName = exampleMysql.ServiceName,
         ///         Project = exampleProject.Project,

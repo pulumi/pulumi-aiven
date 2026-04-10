@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.LookupBillingGroup(ctx, &aiven.LookupBillingGroupArgs{
+//			_, err := aiven.GetBillingGroup(ctx, &aiven.LookupBillingGroupArgs{
 //				BillingGroupId: "1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
 //			}, nil)
 //			if err != nil {

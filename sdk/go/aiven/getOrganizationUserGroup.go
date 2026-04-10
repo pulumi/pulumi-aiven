@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.LookupOrganizationUserGroup(ctx, &aiven.LookupOrganizationUserGroupArgs{
+//			_, err := aiven.GetOrganizationUserGroup(ctx, &aiven.LookupOrganizationUserGroupArgs{
 //				Name:           "Example group",
 //				OrganizationId: main.Id,
 //			}, nil)

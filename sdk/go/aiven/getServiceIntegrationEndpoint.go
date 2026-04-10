@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.LookupServiceIntegrationEndpoint(ctx, &aiven.LookupServiceIntegrationEndpointArgs{
+//			_, err := aiven.GetServiceIntegrationEndpoint(ctx, &aiven.LookupServiceIntegrationEndpointArgs{
 //				Project:      exampleProject.Project,
 //				EndpointName: "Datadog endpoint",
 //			}, nil)

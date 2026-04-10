@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.LookupGcpVpcPeeringConnection(ctx, &aiven.LookupGcpVpcPeeringConnectionArgs{
+//			_, err := aiven.GetGcpVpcPeeringConnection(ctx, &aiven.LookupGcpVpcPeeringConnectionArgs{
 //				VpcId:        vpc.Id,
 //				GcpProjectId: "example-project",
 //				PeerVpc:      "example-network",

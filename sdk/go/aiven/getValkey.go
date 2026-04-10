@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.LookupValkey(ctx, &aiven.LookupValkeyArgs{
+//			_, err := aiven.GetValkey(ctx, &aiven.LookupValkeyArgs{
 //				Project:     exampleProject.Project,
 //				ServiceName: "example-valkey-service",
 //			}, nil)

@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.LookupOpenSearchAclRule(ctx, &aiven.LookupOpenSearchAclRuleArgs{
+//			_, err := aiven.GetOpenSearchAclRule(ctx, &aiven.LookupOpenSearchAclRuleArgs{
 //				Project:     exampleProject.Project,
 //				ServiceName: exampleOpensearch.ServiceName,
 //				Username:    "documentation-user-1",

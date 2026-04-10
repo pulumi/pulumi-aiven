@@ -22,7 +22,7 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var attachment = new Aiven.TransitGatewayVpcAttachment("attachment", new()
+    ///     var attachment = new Aiven.Index.TransitGatewayVpcAttachment("attachment", new()
     ///     {
     ///         VpcId = bar.Id,
     ///         PeerCloudAccount = "&lt;PEER_ACCOUNT_ID&gt;",
