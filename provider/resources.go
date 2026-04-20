@@ -106,10 +106,6 @@ func Provider(ctx context.Context) tfbridge.ProviderInfo {
 			"api_token": {Secret: tfbridge.True()},
 		},
 		Resources: map[string]*tfbridge.ResourceInfo{
-			"aiven_alloydbomni": {
-				Fields: map[string]*tfbridge.SchemaInfo{"alloydbomni": {CSharpName: "AlloydbomniServer"}},
-			},
-
 			"aiven_clickhouse": {
 				Fields: map[string]*tfbridge.SchemaInfo{"clickhouse": {CSharpName: "ClickhouseServer"}},
 			},
@@ -118,10 +114,6 @@ func Provider(ctx context.Context) tfbridge.ProviderInfo {
 					"service_name": tfbridge.AutoName("serviceName", 255, "-"),
 					"grafana":      {CSharpName: "GrafanaServer"},
 				},
-			},
-			"aiven_influxdb": {
-				Tok:  makeResource(mainMod, "InfluxDb"),
-				Docs: &tfbridge.DocInfo{AllowMissing: true},
 			},
 			"aiven_kafka": {
 				Fields: map[string]*tfbridge.SchemaInfo{
@@ -142,8 +134,6 @@ func Provider(ctx context.Context) tfbridge.ProviderInfo {
 					"project": {CSharpName: "ProjectName"},
 				},
 			},
-			"aiven_m3aggregator":          {Tok: makeResource(mainMod, "M3Aggregator")},
-			"aiven_m3db":                  {Tok: makeResource(mainMod, "M3Db")},
 			"aiven_opensearch":            {Tok: makeResource(mainMod, "OpenSearch")},
 			"aiven_opensearch_acl_config": {Tok: makeResource(mainMod, "OpenSearchAclConfig")},
 			"aiven_opensearch_acl_rule":   {Tok: makeResource(mainMod, "OpenSearchAclRule")},
@@ -152,10 +142,6 @@ func Provider(ctx context.Context) tfbridge.ProviderInfo {
 			"aiven_cassandra":         {Fields: map[string]*tfbridge.SchemaInfo{"cassandra": {CSharpName: "CassandraServer"}}},
 			"aiven_dragonfly":         {Fields: map[string]*tfbridge.SchemaInfo{"dragonfly": {CSharpName: "DragonflyServer"}}},
 			"aiven_redis":             {Fields: map[string]*tfbridge.SchemaInfo{"redis": {CSharpName: "RedisServer"}}},
-			"aiven_influxdb_database": {Docs: &tfbridge.DocInfo{AllowMissing: true}},
-			"aiven_influxdb_user":     {Docs: &tfbridge.DocInfo{AllowMissing: true}},
-			"aiven_m3db_user":         {Tok: makeResource(mainMod, "M3dbUser")},
-
 			"aiven_thanos": {
 				Fields: map[string]*tfbridge.SchemaInfo{"thanos": {CSharpName: "ThanosServer"}},
 			},
@@ -164,23 +150,13 @@ func Provider(ctx context.Context) tfbridge.ProviderInfo {
 			},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
-			"aiven_influxdb": {
-				Tok:  makeDataSource(mainMod, "getInfluxDb"),
-				Docs: &tfbridge.DocInfo{AllowMissing: true},
-			},
 			"aiven_kafka_mirrormaker":            {Tok: makeDataSource(mainMod, "getKafkaMirrorMaker")},
 			"aiven_mirrormaker_replication_flow": {Tok: makeDataSource(mainMod, "getMirrorMakerReplicationFlow")},
 			"aiven_mysql":                        {Tok: makeDataSource(mainMod, "getMySql")},
 
-			// Manually mapped due to capitalization
-			"aiven_m3aggregator":          {Tok: makeDataSource(mainMod, "getM3Aggregator")},
-			"aiven_m3db":                  {Tok: makeDataSource(mainMod, "getM3Db")},
 			"aiven_opensearch_acl_rule":   {Tok: makeDataSource(mainMod, "getOpenSearchAclRule")},
 			"aiven_opensearch":            {Tok: makeDataSource(mainMod, "getOpenSearch")},
 			"aiven_opensearch_acl_config": {Tok: makeDataSource(mainMod, "getOpenSearchAclConfig")},
-
-			"aiven_influxdb_database": {Docs: &tfbridge.DocInfo{AllowMissing: true}},
-			"aiven_influxdb_user":     {Docs: &tfbridge.DocInfo{AllowMissing: true}},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			DevDependencies: map[string]string{
