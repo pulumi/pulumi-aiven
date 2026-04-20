@@ -67,7 +67,7 @@ type Cmk struct {
 	DefaultCmk pulumi.BoolPtrOutput `pulumi:"defaultCmk"`
 	// Project name. Changing this property forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The unique identifier for the CMK in the cloud provider's KMS. In AWS, this is the Key ARN; in Google Cloud the Resource Name; and in Oracle Cloud the Key OCID. Maximum length: `512`. Changing this property forces recreation of the resource.
+	// The unique identifier for the CMK in the cloud provider's KMS. In AWS, this is the Key ARN; in Google Cloud the Resource Name; and in Oracle Cloud the Key OCID. Length must be between `1` and `512`. Changing this property forces recreation of the resource.
 	Resource pulumi.StringOutput `pulumi:"resource"`
 	// Status. The possible values are `current`, `deleted` and `old`.
 	Status   pulumi.StringOutput  `pulumi:"status"`
@@ -125,7 +125,7 @@ type cmkState struct {
 	DefaultCmk *bool `pulumi:"defaultCmk"`
 	// Project name. Changing this property forces recreation of the resource.
 	Project *string `pulumi:"project"`
-	// The unique identifier for the CMK in the cloud provider's KMS. In AWS, this is the Key ARN; in Google Cloud the Resource Name; and in Oracle Cloud the Key OCID. Maximum length: `512`. Changing this property forces recreation of the resource.
+	// The unique identifier for the CMK in the cloud provider's KMS. In AWS, this is the Key ARN; in Google Cloud the Resource Name; and in Oracle Cloud the Key OCID. Length must be between `1` and `512`. Changing this property forces recreation of the resource.
 	Resource *string `pulumi:"resource"`
 	// Status. The possible values are `current`, `deleted` and `old`.
 	Status   *string      `pulumi:"status"`
@@ -145,7 +145,7 @@ type CmkState struct {
 	DefaultCmk pulumi.BoolPtrInput
 	// Project name. Changing this property forces recreation of the resource.
 	Project pulumi.StringPtrInput
-	// The unique identifier for the CMK in the cloud provider's KMS. In AWS, this is the Key ARN; in Google Cloud the Resource Name; and in Oracle Cloud the Key OCID. Maximum length: `512`. Changing this property forces recreation of the resource.
+	// The unique identifier for the CMK in the cloud provider's KMS. In AWS, this is the Key ARN; in Google Cloud the Resource Name; and in Oracle Cloud the Key OCID. Length must be between `1` and `512`. Changing this property forces recreation of the resource.
 	Resource pulumi.StringPtrInput
 	// Status. The possible values are `current`, `deleted` and `old`.
 	Status   pulumi.StringPtrInput
@@ -165,7 +165,7 @@ type cmkArgs struct {
 	DefaultCmk *bool `pulumi:"defaultCmk"`
 	// Project name. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
-	// The unique identifier for the CMK in the cloud provider's KMS. In AWS, this is the Key ARN; in Google Cloud the Resource Name; and in Oracle Cloud the Key OCID. Maximum length: `512`. Changing this property forces recreation of the resource.
+	// The unique identifier for the CMK in the cloud provider's KMS. In AWS, this is the Key ARN; in Google Cloud the Resource Name; and in Oracle Cloud the Key OCID. Length must be between `1` and `512`. Changing this property forces recreation of the resource.
 	Resource string       `pulumi:"resource"`
 	Timeouts *CmkTimeouts `pulumi:"timeouts"`
 }
@@ -178,7 +178,7 @@ type CmkArgs struct {
 	DefaultCmk pulumi.BoolPtrInput
 	// Project name. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput
-	// The unique identifier for the CMK in the cloud provider's KMS. In AWS, this is the Key ARN; in Google Cloud the Resource Name; and in Oracle Cloud the Key OCID. Maximum length: `512`. Changing this property forces recreation of the resource.
+	// The unique identifier for the CMK in the cloud provider's KMS. In AWS, this is the Key ARN; in Google Cloud the Resource Name; and in Oracle Cloud the Key OCID. Length must be between `1` and `512`. Changing this property forces recreation of the resource.
 	Resource pulumi.StringInput
 	Timeouts CmkTimeoutsPtrInput
 }
@@ -295,7 +295,7 @@ func (o CmkOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cmk) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// The unique identifier for the CMK in the cloud provider's KMS. In AWS, this is the Key ARN; in Google Cloud the Resource Name; and in Oracle Cloud the Key OCID. Maximum length: `512`. Changing this property forces recreation of the resource.
+// The unique identifier for the CMK in the cloud provider's KMS. In AWS, this is the Key ARN; in Google Cloud the Resource Name; and in Oracle Cloud the Key OCID. Length must be between `1` and `512`. Changing this property forces recreation of the resource.
 func (o CmkOutput) Resource() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cmk) pulumi.StringOutput { return v.Resource }).(pulumi.StringOutput)
 }

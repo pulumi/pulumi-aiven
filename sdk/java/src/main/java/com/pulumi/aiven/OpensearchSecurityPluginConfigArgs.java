@@ -3,11 +3,14 @@
 
 package com.pulumi.aiven;
 
+import com.pulumi.aiven.inputs.OpensearchSecurityPluginConfigTimeoutsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class OpensearchSecurityPluginConfigArgs extends com.pulumi.resources.ResourceArgs {
@@ -15,14 +18,14 @@ public final class OpensearchSecurityPluginConfigArgs extends com.pulumi.resourc
     public static final OpensearchSecurityPluginConfigArgs Empty = new OpensearchSecurityPluginConfigArgs();
 
     /**
-     * The password for the os-sec-admin user.
+     * Current os-sec-admin password. Length must be between `8` and `256`.
      * 
      */
     @Import(name="adminPassword", required=true)
     private Output<String> adminPassword;
 
     /**
-     * @return The password for the os-sec-admin user.
+     * @return Current os-sec-admin password. Length must be between `8` and `256`.
      * 
      */
     public Output<String> adminPassword() {
@@ -30,14 +33,14 @@ public final class OpensearchSecurityPluginConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="project", required=true)
     private Output<String> project;
 
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> project() {
@@ -45,18 +48,25 @@ public final class OpensearchSecurityPluginConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="serviceName", required=true)
     private Output<String> serviceName;
 
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service name. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> serviceName() {
         return this.serviceName;
+    }
+
+    @Import(name="timeouts")
+    private @Nullable Output<OpensearchSecurityPluginConfigTimeoutsArgs> timeouts;
+
+    public Optional<Output<OpensearchSecurityPluginConfigTimeoutsArgs>> timeouts() {
+        return Optional.ofNullable(this.timeouts);
     }
 
     private OpensearchSecurityPluginConfigArgs() {}
@@ -65,6 +75,7 @@ public final class OpensearchSecurityPluginConfigArgs extends com.pulumi.resourc
         this.adminPassword = $.adminPassword;
         this.project = $.project;
         this.serviceName = $.serviceName;
+        this.timeouts = $.timeouts;
     }
 
     public static Builder builder() {
@@ -86,7 +97,7 @@ public final class OpensearchSecurityPluginConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param adminPassword The password for the os-sec-admin user.
+         * @param adminPassword Current os-sec-admin password. Length must be between `8` and `256`.
          * 
          * @return builder
          * 
@@ -97,7 +108,7 @@ public final class OpensearchSecurityPluginConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param adminPassword The password for the os-sec-admin user.
+         * @param adminPassword Current os-sec-admin password. Length must be between `8` and `256`.
          * 
          * @return builder
          * 
@@ -107,7 +118,7 @@ public final class OpensearchSecurityPluginConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param project The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param project Project name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -118,7 +129,7 @@ public final class OpensearchSecurityPluginConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param project The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param project Project name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -128,7 +139,7 @@ public final class OpensearchSecurityPluginConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param serviceName The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param serviceName Service name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -139,13 +150,22 @@ public final class OpensearchSecurityPluginConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param serviceName The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param serviceName Service name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
          */
         public Builder serviceName(String serviceName) {
             return serviceName(Output.of(serviceName));
+        }
+
+        public Builder timeouts(@Nullable Output<OpensearchSecurityPluginConfigTimeoutsArgs> timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
+        public Builder timeouts(OpensearchSecurityPluginConfigTimeoutsArgs timeouts) {
+            return timeouts(Output.of(timeouts));
         }
 
         public OpensearchSecurityPluginConfigArgs build() {

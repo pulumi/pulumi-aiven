@@ -2,15 +2,12 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Enables and manages [OpenSearch Security for an Aiven for OpenSearch® service](https://aiven.io/docs/products/opensearch/concepts/os-security).
- *
- * After enabling OpenSearch Security management, **you can no longer use Aiven Terraform Provider to manage access controls for that service.** To manage user authentication and access control with OpenSearch Security management enabled,
- * use the OpenSearch Security Dashboard or OpenSearch Security API.
- *
- * **Once enabled, OpenSearch Security management cannot be disabled.** To disable it, [contact Aiven support](https://aiven.io/support-services).
+ * Enables and manages [OpenSearch Security for an Aiven for OpenSearch® service](https://aiven.io/docs/products/opensearch/concepts/os-security). After enabling OpenSearch Security management, **you can no longer use Aiven Terraform Provider to manage access controls for that service.** To manage user authentication and access control with OpenSearch Security management enabled, use the OpenSearch Security Dashboard or OpenSearch Security API. **Once enabled, OpenSearch Security management cannot be disabled.** To disable it, [contact Aiven support](https://aiven.io/support-services). If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
  *
  * ## Example Usage
  *
@@ -28,7 +25,7 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * ```sh
- * $ pulumi import aiven:index/opensearchSecurityPluginConfig:OpensearchSecurityPluginConfig main PROJECT/SERVICE_NAME
+ * $ pulumi import aiven:index/opensearchSecurityPluginConfig:OpensearchSecurityPluginConfig example PROJECT/SERVICE_NAME
  * ```
  */
 export class OpensearchSecurityPluginConfig extends pulumi.CustomResource {
@@ -60,29 +57,30 @@ export class OpensearchSecurityPluginConfig extends pulumi.CustomResource {
     }
 
     /**
-     * Whether the os-sec-admin user is enabled. This indicates whether OpenSearch Security management is enabled. This is always true when the os-sec-admin password was set at least once.
+     * security plugin admin defined.
      */
     declare public /*out*/ readonly adminEnabled: pulumi.Output<boolean>;
     /**
-     * The password for the os-sec-admin user.
+     * Current os-sec-admin password. Length must be between `8` and `256`.
      */
     declare public readonly adminPassword: pulumi.Output<string>;
     /**
-     * Whether the security plugin is available. This is always true for recently created services.
+     * Opensearch security available for the service.
      */
     declare public /*out*/ readonly available: pulumi.Output<boolean>;
     /**
-     * Whether the security plugin is enabled. This is always true for recently created services.
+     * Opensearch security enabled for the service.
      */
     declare public /*out*/ readonly enabled: pulumi.Output<boolean>;
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name. Changing this property forces recreation of the resource.
      */
     declare public readonly project: pulumi.Output<string>;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name. Changing this property forces recreation of the resource.
      */
     declare public readonly serviceName: pulumi.Output<string>;
+    declare public readonly timeouts: pulumi.Output<outputs.OpensearchSecurityPluginConfigTimeouts | undefined>;
 
     /**
      * Create a OpensearchSecurityPluginConfig resource with the given unique name, arguments, and options.
@@ -103,6 +101,7 @@ export class OpensearchSecurityPluginConfig extends pulumi.CustomResource {
             resourceInputs["enabled"] = state?.enabled;
             resourceInputs["project"] = state?.project;
             resourceInputs["serviceName"] = state?.serviceName;
+            resourceInputs["timeouts"] = state?.timeouts;
         } else {
             const args = argsOrState as OpensearchSecurityPluginConfigArgs | undefined;
             if (args?.adminPassword === undefined && !opts.urn) {
@@ -117,6 +116,7 @@ export class OpensearchSecurityPluginConfig extends pulumi.CustomResource {
             resourceInputs["adminPassword"] = args?.adminPassword ? pulumi.secret(args.adminPassword) : undefined;
             resourceInputs["project"] = args?.project;
             resourceInputs["serviceName"] = args?.serviceName;
+            resourceInputs["timeouts"] = args?.timeouts;
             resourceInputs["adminEnabled"] = undefined /*out*/;
             resourceInputs["available"] = undefined /*out*/;
             resourceInputs["enabled"] = undefined /*out*/;
@@ -133,29 +133,30 @@ export class OpensearchSecurityPluginConfig extends pulumi.CustomResource {
  */
 export interface OpensearchSecurityPluginConfigState {
     /**
-     * Whether the os-sec-admin user is enabled. This indicates whether OpenSearch Security management is enabled. This is always true when the os-sec-admin password was set at least once.
+     * security plugin admin defined.
      */
     adminEnabled?: pulumi.Input<boolean>;
     /**
-     * The password for the os-sec-admin user.
+     * Current os-sec-admin password. Length must be between `8` and `256`.
      */
     adminPassword?: pulumi.Input<string>;
     /**
-     * Whether the security plugin is available. This is always true for recently created services.
+     * Opensearch security available for the service.
      */
     available?: pulumi.Input<boolean>;
     /**
-     * Whether the security plugin is enabled. This is always true for recently created services.
+     * Opensearch security enabled for the service.
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name. Changing this property forces recreation of the resource.
      */
     project?: pulumi.Input<string>;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name. Changing this property forces recreation of the resource.
      */
     serviceName?: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.OpensearchSecurityPluginConfigTimeouts>;
 }
 
 /**
@@ -163,15 +164,16 @@ export interface OpensearchSecurityPluginConfigState {
  */
 export interface OpensearchSecurityPluginConfigArgs {
     /**
-     * The password for the os-sec-admin user.
+     * Current os-sec-admin password. Length must be between `8` and `256`.
      */
     adminPassword: pulumi.Input<string>;
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name. Changing this property forces recreation of the resource.
      */
     project: pulumi.Input<string>;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name. Changing this property forces recreation of the resource.
      */
     serviceName: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.OpensearchSecurityPluginConfigTimeouts>;
 }

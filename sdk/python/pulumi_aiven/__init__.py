@@ -11,9 +11,6 @@ from .account_authentication import *
 from .account_team import *
 from .account_team_member import *
 from .account_team_project import *
-from .alloydbomni import *
-from .alloydbomni_database import *
-from .alloydbomni_user import *
 from .aws_org_vpc_peering_connection import *
 from .aws_privatelink import *
 from .aws_vpc_peering_connection import *
@@ -49,9 +46,6 @@ from .get_account_authentication import *
 from .get_account_team import *
 from .get_account_team_member import *
 from .get_account_team_project import *
-from .get_alloydbomni import *
-from .get_alloydbomni_database import *
-from .get_alloydbomni_user import *
 from .get_aws_org_vpc_peering_connection import *
 from .get_aws_privatelink import *
 from .get_aws_vpc_peering_connection import *
@@ -75,9 +69,6 @@ from .get_gcp_org_vpc_peering_connection import *
 from .get_gcp_privatelink import *
 from .get_gcp_vpc_peering_connection import *
 from .get_grafana import *
-from .get_influx_db import *
-from .get_influxdb_database import *
-from .get_influxdb_user import *
 from .get_kafka import *
 from .get_kafka_acl import *
 from .get_kafka_connect import *
@@ -89,9 +80,6 @@ from .get_kafka_schema_registry_acl import *
 from .get_kafka_topic import *
 from .get_kafka_topic_list import *
 from .get_kafka_user import *
-from .get_m3_aggregator import *
-from .get_m3_db import *
-from .get_m3db_user import *
 from .get_mirror_maker_replication_flow import *
 from .get_my_sql import *
 from .get_mysql_database import *
@@ -135,9 +123,6 @@ from .get_valkey import *
 from .get_valkey_user import *
 from .governance_access import *
 from .grafana import *
-from .influx_db import *
-from .influxdb_database import *
-from .influxdb_user import *
 from .kafka import *
 from .kafka_acl import *
 from .kafka_connect import *
@@ -150,9 +135,6 @@ from .kafka_schema_configuration import *
 from .kafka_schema_registry_acl import *
 from .kafka_topic import *
 from .kafka_user import *
-from .m3_aggregator import *
-from .m3_db import *
-from .m3db_user import *
 from .mirror_maker_replication_flow import *
 from .my_sql import *
 from .mysql_database import *
@@ -242,30 +224,6 @@ _utilities.register(
   "fqn": "pulumi_aiven",
   "classes": {
    "aiven:index/accountTeamProject:AccountTeamProject": "AccountTeamProject"
-  }
- },
- {
-  "pkg": "aiven",
-  "mod": "index/alloydbomni",
-  "fqn": "pulumi_aiven",
-  "classes": {
-   "aiven:index/alloydbomni:Alloydbomni": "Alloydbomni"
-  }
- },
- {
-  "pkg": "aiven",
-  "mod": "index/alloydbomniDatabase",
-  "fqn": "pulumi_aiven",
-  "classes": {
-   "aiven:index/alloydbomniDatabase:AlloydbomniDatabase": "AlloydbomniDatabase"
-  }
- },
- {
-  "pkg": "aiven",
-  "mod": "index/alloydbomniUser",
-  "fqn": "pulumi_aiven",
-  "classes": {
-   "aiven:index/alloydbomniUser:AlloydbomniUser": "AlloydbomniUser"
   }
  },
  {
@@ -526,30 +484,6 @@ _utilities.register(
  },
  {
   "pkg": "aiven",
-  "mod": "index/influxDb",
-  "fqn": "pulumi_aiven",
-  "classes": {
-   "aiven:index/influxDb:InfluxDb": "InfluxDb"
-  }
- },
- {
-  "pkg": "aiven",
-  "mod": "index/influxdbDatabase",
-  "fqn": "pulumi_aiven",
-  "classes": {
-   "aiven:index/influxdbDatabase:InfluxdbDatabase": "InfluxdbDatabase"
-  }
- },
- {
-  "pkg": "aiven",
-  "mod": "index/influxdbUser",
-  "fqn": "pulumi_aiven",
-  "classes": {
-   "aiven:index/influxdbUser:InfluxdbUser": "InfluxdbUser"
-  }
- },
- {
-  "pkg": "aiven",
   "mod": "index/kafka",
   "fqn": "pulumi_aiven",
   "classes": {
@@ -642,30 +576,6 @@ _utilities.register(
   "fqn": "pulumi_aiven",
   "classes": {
    "aiven:index/kafkaUser:KafkaUser": "KafkaUser"
-  }
- },
- {
-  "pkg": "aiven",
-  "mod": "index/m3Aggregator",
-  "fqn": "pulumi_aiven",
-  "classes": {
-   "aiven:index/m3Aggregator:M3Aggregator": "M3Aggregator"
-  }
- },
- {
-  "pkg": "aiven",
-  "mod": "index/m3Db",
-  "fqn": "pulumi_aiven",
-  "classes": {
-   "aiven:index/m3Db:M3Db": "M3Db"
-  }
- },
- {
-  "pkg": "aiven",
-  "mod": "index/m3dbUser",
-  "fqn": "pulumi_aiven",
-  "classes": {
-   "aiven:index/m3dbUser:M3dbUser": "M3dbUser"
   }
  },
  {

@@ -143,7 +143,7 @@ namespace Pulumi.Aiven
         public Output<string> ServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// Job savepoint. Maximum length: `2048`. Changing this property forces recreation of the resource.
+        /// Job savepoint. Length must be between `1` and `2048`. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("startingSavepoint")]
         public Output<string?> StartingSavepoint { get; private set; } = null!;
@@ -152,7 +152,7 @@ namespace Pulumi.Aiven
         public Output<Outputs.FlinkApplicationDeploymentTimeouts?> Timeouts { get; private set; } = null!;
 
         /// <summary>
-        /// ApplicationVersion ID. Maximum length: `36`. Changing this property forces recreation of the resource.
+        /// ApplicationVersion ID. Length must be exactly `36`. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("versionId")]
         public Output<string> VersionId { get; private set; } = null!;
@@ -234,7 +234,7 @@ namespace Pulumi.Aiven
         public Input<string> ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// Job savepoint. Maximum length: `2048`. Changing this property forces recreation of the resource.
+        /// Job savepoint. Length must be between `1` and `2048`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("startingSavepoint")]
         public Input<string>? StartingSavepoint { get; set; }
@@ -243,7 +243,7 @@ namespace Pulumi.Aiven
         public Input<Inputs.FlinkApplicationDeploymentTimeoutsArgs>? Timeouts { get; set; }
 
         /// <summary>
-        /// ApplicationVersion ID. Maximum length: `36`. Changing this property forces recreation of the resource.
+        /// ApplicationVersion ID. Length must be exactly `36`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("versionId", required: true)]
         public Input<string> VersionId { get; set; } = null!;
@@ -305,7 +305,7 @@ namespace Pulumi.Aiven
         public Input<string>? ServiceName { get; set; }
 
         /// <summary>
-        /// Job savepoint. Maximum length: `2048`. Changing this property forces recreation of the resource.
+        /// Job savepoint. Length must be between `1` and `2048`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("startingSavepoint")]
         public Input<string>? StartingSavepoint { get; set; }
@@ -314,7 +314,7 @@ namespace Pulumi.Aiven
         public Input<Inputs.FlinkApplicationDeploymentTimeoutsGetArgs>? Timeouts { get; set; }
 
         /// <summary>
-        /// ApplicationVersion ID. Maximum length: `36`. Changing this property forces recreation of the resource.
+        /// ApplicationVersion ID. Length must be exactly `36`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("versionId")]
         public Input<string>? VersionId { get; set; }

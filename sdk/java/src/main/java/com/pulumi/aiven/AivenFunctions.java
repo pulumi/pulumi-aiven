@@ -14,12 +14,6 @@ import com.pulumi.aiven.inputs.GetAccountTeamMemberPlainArgs;
 import com.pulumi.aiven.inputs.GetAccountTeamPlainArgs;
 import com.pulumi.aiven.inputs.GetAccountTeamProjectArgs;
 import com.pulumi.aiven.inputs.GetAccountTeamProjectPlainArgs;
-import com.pulumi.aiven.inputs.GetAlloydbomniArgs;
-import com.pulumi.aiven.inputs.GetAlloydbomniDatabaseArgs;
-import com.pulumi.aiven.inputs.GetAlloydbomniDatabasePlainArgs;
-import com.pulumi.aiven.inputs.GetAlloydbomniPlainArgs;
-import com.pulumi.aiven.inputs.GetAlloydbomniUserArgs;
-import com.pulumi.aiven.inputs.GetAlloydbomniUserPlainArgs;
 import com.pulumi.aiven.inputs.GetAwsOrgVpcPeeringConnectionArgs;
 import com.pulumi.aiven.inputs.GetAwsOrgVpcPeeringConnectionPlainArgs;
 import com.pulumi.aiven.inputs.GetAwsPrivatelinkArgs;
@@ -66,12 +60,6 @@ import com.pulumi.aiven.inputs.GetGcpVpcPeeringConnectionArgs;
 import com.pulumi.aiven.inputs.GetGcpVpcPeeringConnectionPlainArgs;
 import com.pulumi.aiven.inputs.GetGrafanaArgs;
 import com.pulumi.aiven.inputs.GetGrafanaPlainArgs;
-import com.pulumi.aiven.inputs.GetInfluxDbArgs;
-import com.pulumi.aiven.inputs.GetInfluxDbPlainArgs;
-import com.pulumi.aiven.inputs.GetInfluxdbDatabaseArgs;
-import com.pulumi.aiven.inputs.GetInfluxdbDatabasePlainArgs;
-import com.pulumi.aiven.inputs.GetInfluxdbUserArgs;
-import com.pulumi.aiven.inputs.GetInfluxdbUserPlainArgs;
 import com.pulumi.aiven.inputs.GetKafkaAclArgs;
 import com.pulumi.aiven.inputs.GetKafkaAclPlainArgs;
 import com.pulumi.aiven.inputs.GetKafkaArgs;
@@ -94,12 +82,6 @@ import com.pulumi.aiven.inputs.GetKafkaTopicListPlainArgs;
 import com.pulumi.aiven.inputs.GetKafkaTopicPlainArgs;
 import com.pulumi.aiven.inputs.GetKafkaUserArgs;
 import com.pulumi.aiven.inputs.GetKafkaUserPlainArgs;
-import com.pulumi.aiven.inputs.GetM3AggregatorArgs;
-import com.pulumi.aiven.inputs.GetM3AggregatorPlainArgs;
-import com.pulumi.aiven.inputs.GetM3DbArgs;
-import com.pulumi.aiven.inputs.GetM3DbPlainArgs;
-import com.pulumi.aiven.inputs.GetM3dbUserArgs;
-import com.pulumi.aiven.inputs.GetM3dbUserPlainArgs;
 import com.pulumi.aiven.inputs.GetMirrorMakerReplicationFlowArgs;
 import com.pulumi.aiven.inputs.GetMirrorMakerReplicationFlowPlainArgs;
 import com.pulumi.aiven.inputs.GetMySqlArgs;
@@ -187,9 +169,6 @@ import com.pulumi.aiven.outputs.GetAccountResult;
 import com.pulumi.aiven.outputs.GetAccountTeamMemberResult;
 import com.pulumi.aiven.outputs.GetAccountTeamProjectResult;
 import com.pulumi.aiven.outputs.GetAccountTeamResult;
-import com.pulumi.aiven.outputs.GetAlloydbomniDatabaseResult;
-import com.pulumi.aiven.outputs.GetAlloydbomniResult;
-import com.pulumi.aiven.outputs.GetAlloydbomniUserResult;
 import com.pulumi.aiven.outputs.GetAwsOrgVpcPeeringConnectionResult;
 import com.pulumi.aiven.outputs.GetAwsPrivatelinkResult;
 import com.pulumi.aiven.outputs.GetAwsVpcPeeringConnectionResult;
@@ -213,9 +192,6 @@ import com.pulumi.aiven.outputs.GetGcpOrgVpcPeeringConnectionResult;
 import com.pulumi.aiven.outputs.GetGcpPrivatelinkResult;
 import com.pulumi.aiven.outputs.GetGcpVpcPeeringConnectionResult;
 import com.pulumi.aiven.outputs.GetGrafanaResult;
-import com.pulumi.aiven.outputs.GetInfluxDbResult;
-import com.pulumi.aiven.outputs.GetInfluxdbDatabaseResult;
-import com.pulumi.aiven.outputs.GetInfluxdbUserResult;
 import com.pulumi.aiven.outputs.GetKafkaAclResult;
 import com.pulumi.aiven.outputs.GetKafkaConnectResult;
 import com.pulumi.aiven.outputs.GetKafkaConnectorResult;
@@ -227,9 +203,6 @@ import com.pulumi.aiven.outputs.GetKafkaSchemaResult;
 import com.pulumi.aiven.outputs.GetKafkaTopicListResult;
 import com.pulumi.aiven.outputs.GetKafkaTopicResult;
 import com.pulumi.aiven.outputs.GetKafkaUserResult;
-import com.pulumi.aiven.outputs.GetM3AggregatorResult;
-import com.pulumi.aiven.outputs.GetM3DbResult;
-import com.pulumi.aiven.outputs.GetM3dbUserResult;
 import com.pulumi.aiven.outputs.GetMirrorMakerReplicationFlowResult;
 import com.pulumi.aiven.outputs.GetMySqlResult;
 import com.pulumi.aiven.outputs.GetMysqlDatabaseResult;
@@ -768,51 +741,6 @@ public final class AivenFunctions {
      */
     public static CompletableFuture<GetAccountTeamProjectResult> getAccountTeamProjectPlain(GetAccountTeamProjectPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getAccountTeamProject:getAccountTeamProject", TypeShape.of(GetAccountTeamProjectResult.class), args, Utilities.withVersion(options));
-    }
-    public static Output<GetAlloydbomniResult> getAlloydbomni(GetAlloydbomniArgs args) {
-        return getAlloydbomni(args, InvokeOptions.Empty);
-    }
-    public static CompletableFuture<GetAlloydbomniResult> getAlloydbomniPlain(GetAlloydbomniPlainArgs args) {
-        return getAlloydbomniPlain(args, InvokeOptions.Empty);
-    }
-    public static Output<GetAlloydbomniResult> getAlloydbomni(GetAlloydbomniArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("aiven:index/getAlloydbomni:getAlloydbomni", TypeShape.of(GetAlloydbomniResult.class), args, Utilities.withVersion(options));
-    }
-    public static Output<GetAlloydbomniResult> getAlloydbomni(GetAlloydbomniArgs args, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("aiven:index/getAlloydbomni:getAlloydbomni", TypeShape.of(GetAlloydbomniResult.class), args, Utilities.withVersion(options));
-    }
-    public static CompletableFuture<GetAlloydbomniResult> getAlloydbomniPlain(GetAlloydbomniPlainArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invokeAsync("aiven:index/getAlloydbomni:getAlloydbomni", TypeShape.of(GetAlloydbomniResult.class), args, Utilities.withVersion(options));
-    }
-    public static Output<GetAlloydbomniDatabaseResult> getAlloydbomniDatabase(GetAlloydbomniDatabaseArgs args) {
-        return getAlloydbomniDatabase(args, InvokeOptions.Empty);
-    }
-    public static CompletableFuture<GetAlloydbomniDatabaseResult> getAlloydbomniDatabasePlain(GetAlloydbomniDatabasePlainArgs args) {
-        return getAlloydbomniDatabasePlain(args, InvokeOptions.Empty);
-    }
-    public static Output<GetAlloydbomniDatabaseResult> getAlloydbomniDatabase(GetAlloydbomniDatabaseArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("aiven:index/getAlloydbomniDatabase:getAlloydbomniDatabase", TypeShape.of(GetAlloydbomniDatabaseResult.class), args, Utilities.withVersion(options));
-    }
-    public static Output<GetAlloydbomniDatabaseResult> getAlloydbomniDatabase(GetAlloydbomniDatabaseArgs args, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("aiven:index/getAlloydbomniDatabase:getAlloydbomniDatabase", TypeShape.of(GetAlloydbomniDatabaseResult.class), args, Utilities.withVersion(options));
-    }
-    public static CompletableFuture<GetAlloydbomniDatabaseResult> getAlloydbomniDatabasePlain(GetAlloydbomniDatabasePlainArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invokeAsync("aiven:index/getAlloydbomniDatabase:getAlloydbomniDatabase", TypeShape.of(GetAlloydbomniDatabaseResult.class), args, Utilities.withVersion(options));
-    }
-    public static Output<GetAlloydbomniUserResult> getAlloydbomniUser(GetAlloydbomniUserArgs args) {
-        return getAlloydbomniUser(args, InvokeOptions.Empty);
-    }
-    public static CompletableFuture<GetAlloydbomniUserResult> getAlloydbomniUserPlain(GetAlloydbomniUserPlainArgs args) {
-        return getAlloydbomniUserPlain(args, InvokeOptions.Empty);
-    }
-    public static Output<GetAlloydbomniUserResult> getAlloydbomniUser(GetAlloydbomniUserArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("aiven:index/getAlloydbomniUser:getAlloydbomniUser", TypeShape.of(GetAlloydbomniUserResult.class), args, Utilities.withVersion(options));
-    }
-    public static Output<GetAlloydbomniUserResult> getAlloydbomniUser(GetAlloydbomniUserArgs args, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("aiven:index/getAlloydbomniUser:getAlloydbomniUser", TypeShape.of(GetAlloydbomniUserResult.class), args, Utilities.withVersion(options));
-    }
-    public static CompletableFuture<GetAlloydbomniUserResult> getAlloydbomniUserPlain(GetAlloydbomniUserPlainArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invokeAsync("aiven:index/getAlloydbomniUser:getAlloydbomniUser", TypeShape.of(GetAlloydbomniUserResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Gets information about an AWS VPC peering connection.
@@ -2500,7 +2428,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invokeAsync("aiven:index/getClickhouseDatabase:getClickhouseDatabase", TypeShape.of(GetClickhouseDatabaseResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Gets information about a ClickHouse user.
+     * Gets information about an Aiven for ClickHouse user.
      * 
      * ## Example Usage
      * 
@@ -2542,7 +2470,7 @@ public final class AivenFunctions {
         return getClickhouseUser(args, InvokeOptions.Empty);
     }
     /**
-     * Gets information about a ClickHouse user.
+     * Gets information about an Aiven for ClickHouse user.
      * 
      * ## Example Usage
      * 
@@ -2584,7 +2512,7 @@ public final class AivenFunctions {
         return getClickhouseUserPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Gets information about a ClickHouse user.
+     * Gets information about an Aiven for ClickHouse user.
      * 
      * ## Example Usage
      * 
@@ -2626,7 +2554,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invoke("aiven:index/getClickhouseUser:getClickhouseUser", TypeShape.of(GetClickhouseUserResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Gets information about a ClickHouse user.
+     * Gets information about an Aiven for ClickHouse user.
      * 
      * ## Example Usage
      * 
@@ -2668,7 +2596,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invoke("aiven:index/getClickhouseUser:getClickhouseUser", TypeShape.of(GetClickhouseUserResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Gets information about a ClickHouse user.
+     * Gets information about an Aiven for ClickHouse user.
      * 
      * ## Example Usage
      * 
@@ -4473,51 +4401,6 @@ public final class AivenFunctions {
      */
     public static CompletableFuture<GetGrafanaResult> getGrafanaPlain(GetGrafanaPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getGrafana:getGrafana", TypeShape.of(GetGrafanaResult.class), args, Utilities.withVersion(options));
-    }
-    public static Output<GetInfluxDbResult> getInfluxDb(GetInfluxDbArgs args) {
-        return getInfluxDb(args, InvokeOptions.Empty);
-    }
-    public static CompletableFuture<GetInfluxDbResult> getInfluxDbPlain(GetInfluxDbPlainArgs args) {
-        return getInfluxDbPlain(args, InvokeOptions.Empty);
-    }
-    public static Output<GetInfluxDbResult> getInfluxDb(GetInfluxDbArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("aiven:index/getInfluxDb:getInfluxDb", TypeShape.of(GetInfluxDbResult.class), args, Utilities.withVersion(options));
-    }
-    public static Output<GetInfluxDbResult> getInfluxDb(GetInfluxDbArgs args, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("aiven:index/getInfluxDb:getInfluxDb", TypeShape.of(GetInfluxDbResult.class), args, Utilities.withVersion(options));
-    }
-    public static CompletableFuture<GetInfluxDbResult> getInfluxDbPlain(GetInfluxDbPlainArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invokeAsync("aiven:index/getInfluxDb:getInfluxDb", TypeShape.of(GetInfluxDbResult.class), args, Utilities.withVersion(options));
-    }
-    public static Output<GetInfluxdbDatabaseResult> getInfluxdbDatabase(GetInfluxdbDatabaseArgs args) {
-        return getInfluxdbDatabase(args, InvokeOptions.Empty);
-    }
-    public static CompletableFuture<GetInfluxdbDatabaseResult> getInfluxdbDatabasePlain(GetInfluxdbDatabasePlainArgs args) {
-        return getInfluxdbDatabasePlain(args, InvokeOptions.Empty);
-    }
-    public static Output<GetInfluxdbDatabaseResult> getInfluxdbDatabase(GetInfluxdbDatabaseArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("aiven:index/getInfluxdbDatabase:getInfluxdbDatabase", TypeShape.of(GetInfluxdbDatabaseResult.class), args, Utilities.withVersion(options));
-    }
-    public static Output<GetInfluxdbDatabaseResult> getInfluxdbDatabase(GetInfluxdbDatabaseArgs args, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("aiven:index/getInfluxdbDatabase:getInfluxdbDatabase", TypeShape.of(GetInfluxdbDatabaseResult.class), args, Utilities.withVersion(options));
-    }
-    public static CompletableFuture<GetInfluxdbDatabaseResult> getInfluxdbDatabasePlain(GetInfluxdbDatabasePlainArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invokeAsync("aiven:index/getInfluxdbDatabase:getInfluxdbDatabase", TypeShape.of(GetInfluxdbDatabaseResult.class), args, Utilities.withVersion(options));
-    }
-    public static Output<GetInfluxdbUserResult> getInfluxdbUser(GetInfluxdbUserArgs args) {
-        return getInfluxdbUser(args, InvokeOptions.Empty);
-    }
-    public static CompletableFuture<GetInfluxdbUserResult> getInfluxdbUserPlain(GetInfluxdbUserPlainArgs args) {
-        return getInfluxdbUserPlain(args, InvokeOptions.Empty);
-    }
-    public static Output<GetInfluxdbUserResult> getInfluxdbUser(GetInfluxdbUserArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("aiven:index/getInfluxdbUser:getInfluxdbUser", TypeShape.of(GetInfluxdbUserResult.class), args, Utilities.withVersion(options));
-    }
-    public static Output<GetInfluxdbUserResult> getInfluxdbUser(GetInfluxdbUserArgs args, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("aiven:index/getInfluxdbUser:getInfluxdbUser", TypeShape.of(GetInfluxdbUserResult.class), args, Utilities.withVersion(options));
-    }
-    public static CompletableFuture<GetInfluxdbUserResult> getInfluxdbUserPlain(GetInfluxdbUserPlainArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invokeAsync("aiven:index/getInfluxdbUser:getInfluxdbUser", TypeShape.of(GetInfluxdbUserResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Gets information about an Aiven for Apache Kafka® service.
@@ -6468,51 +6351,6 @@ public final class AivenFunctions {
      */
     public static CompletableFuture<GetKafkaUserResult> getKafkaUserPlain(GetKafkaUserPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getKafkaUser:getKafkaUser", TypeShape.of(GetKafkaUserResult.class), args, Utilities.withVersion(options));
-    }
-    public static Output<GetM3AggregatorResult> getM3Aggregator(GetM3AggregatorArgs args) {
-        return getM3Aggregator(args, InvokeOptions.Empty);
-    }
-    public static CompletableFuture<GetM3AggregatorResult> getM3AggregatorPlain(GetM3AggregatorPlainArgs args) {
-        return getM3AggregatorPlain(args, InvokeOptions.Empty);
-    }
-    public static Output<GetM3AggregatorResult> getM3Aggregator(GetM3AggregatorArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("aiven:index/getM3Aggregator:getM3Aggregator", TypeShape.of(GetM3AggregatorResult.class), args, Utilities.withVersion(options));
-    }
-    public static Output<GetM3AggregatorResult> getM3Aggregator(GetM3AggregatorArgs args, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("aiven:index/getM3Aggregator:getM3Aggregator", TypeShape.of(GetM3AggregatorResult.class), args, Utilities.withVersion(options));
-    }
-    public static CompletableFuture<GetM3AggregatorResult> getM3AggregatorPlain(GetM3AggregatorPlainArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invokeAsync("aiven:index/getM3Aggregator:getM3Aggregator", TypeShape.of(GetM3AggregatorResult.class), args, Utilities.withVersion(options));
-    }
-    public static Output<GetM3DbResult> getM3Db(GetM3DbArgs args) {
-        return getM3Db(args, InvokeOptions.Empty);
-    }
-    public static CompletableFuture<GetM3DbResult> getM3DbPlain(GetM3DbPlainArgs args) {
-        return getM3DbPlain(args, InvokeOptions.Empty);
-    }
-    public static Output<GetM3DbResult> getM3Db(GetM3DbArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("aiven:index/getM3Db:getM3Db", TypeShape.of(GetM3DbResult.class), args, Utilities.withVersion(options));
-    }
-    public static Output<GetM3DbResult> getM3Db(GetM3DbArgs args, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("aiven:index/getM3Db:getM3Db", TypeShape.of(GetM3DbResult.class), args, Utilities.withVersion(options));
-    }
-    public static CompletableFuture<GetM3DbResult> getM3DbPlain(GetM3DbPlainArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invokeAsync("aiven:index/getM3Db:getM3Db", TypeShape.of(GetM3DbResult.class), args, Utilities.withVersion(options));
-    }
-    public static Output<GetM3dbUserResult> getM3dbUser(GetM3dbUserArgs args) {
-        return getM3dbUser(args, InvokeOptions.Empty);
-    }
-    public static CompletableFuture<GetM3dbUserResult> getM3dbUserPlain(GetM3dbUserPlainArgs args) {
-        return getM3dbUserPlain(args, InvokeOptions.Empty);
-    }
-    public static Output<GetM3dbUserResult> getM3dbUser(GetM3dbUserArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("aiven:index/getM3dbUser:getM3dbUser", TypeShape.of(GetM3dbUserResult.class), args, Utilities.withVersion(options));
-    }
-    public static Output<GetM3dbUserResult> getM3dbUser(GetM3dbUserArgs args, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("aiven:index/getM3dbUser:getM3dbUser", TypeShape.of(GetM3dbUserResult.class), args, Utilities.withVersion(options));
-    }
-    public static CompletableFuture<GetM3dbUserResult> getM3dbUserPlain(GetM3dbUserPlainArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invokeAsync("aiven:index/getM3dbUser:getM3dbUser", TypeShape.of(GetM3dbUserResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Gets information about an [Aiven for Apache Kafka® MirrorMaker 2](https://aiven.io/docs/products/kafka/kafka-mirrormaker) replication flow.

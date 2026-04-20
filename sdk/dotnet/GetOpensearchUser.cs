@@ -94,19 +94,22 @@ namespace Pulumi.Aiven
     public sealed class GetOpensearchUserArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name.
         /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service name.
         /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
+        [Input("timeouts")]
+        public Inputs.GetOpensearchUserTimeoutsArgs? Timeouts { get; set; }
+
         /// <summary>
-        /// Name of the OpenSearch service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Account username.
         /// </summary>
         [Input("username", required: true)]
         public string Username { get; set; } = null!;
@@ -120,19 +123,22 @@ namespace Pulumi.Aiven
     public sealed class GetOpensearchUserInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service name.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
+        [Input("timeouts")]
+        public Input<Inputs.GetOpensearchUserTimeoutsInputArgs>? Timeouts { get; set; }
+
         /// <summary>
-        /// Name of the OpenSearch service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Account username.
         /// </summary>
         [Input("username", required: true)]
         public Input<string> Username { get; set; } = null!;
@@ -148,27 +154,28 @@ namespace Pulumi.Aiven
     public sealed class GetOpensearchUserResult
     {
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// Resource ID composed as: `project/service_name/username`.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+        /// The password of the service user (auto-generated if not provided). The field conflicts with `PasswordWo`.
         /// </summary>
         public readonly string Password;
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name.
         /// </summary>
         public readonly string Project;
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service name.
         /// </summary>
         public readonly string ServiceName;
+        public readonly Outputs.GetOpensearchUserTimeoutsResult? Timeouts;
         /// <summary>
-        /// User account type, such as primary or regular account.
+        /// Account type.
         /// </summary>
         public readonly string Type;
         /// <summary>
-        /// Name of the OpenSearch service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Account username.
         /// </summary>
         public readonly string Username;
 
@@ -182,6 +189,8 @@ namespace Pulumi.Aiven
 
             string serviceName,
 
+            Outputs.GetOpensearchUserTimeoutsResult? timeouts,
+
             string type,
 
             string username)
@@ -190,6 +199,7 @@ namespace Pulumi.Aiven
             Password = password;
             Project = project;
             ServiceName = serviceName;
+            Timeouts = timeouts;
             Type = type;
             Username = username;
         }

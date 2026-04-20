@@ -57,10 +57,10 @@ type MysqlUser struct {
 	AccessKey pulumi.StringOutput `pulumi:"accessKey"`
 	// Service specific authentication details. Currently only used for MySQL where accepted options are 'mysql_native_password' and 'caching_sha2_password', latter being default when this is not explicitly set. The possible values are `cachingSha2Password` and `mysqlNativePassword`.
 	Authentication pulumi.StringOutput `pulumi:"authentication"`
-	// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Value must be between `8` and `256`.
+	// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
 	Password pulumi.StringOutput `pulumi:"password"`
 	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-	// The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Value must be between `8` and `256`.
+	// The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Length must be between `8` and `256`.
 	PasswordWo pulumi.StringPtrOutput `pulumi:"passwordWo"`
 	// Version number for `passwordWo`. Increment this to rotate the password. The field is required with `passwordWo`. Minimum value: `1`.
 	PasswordWoVersion pulumi.IntPtrOutput `pulumi:"passwordWoVersion"`
@@ -133,10 +133,10 @@ type mysqlUserState struct {
 	AccessKey *string `pulumi:"accessKey"`
 	// Service specific authentication details. Currently only used for MySQL where accepted options are 'mysql_native_password' and 'caching_sha2_password', latter being default when this is not explicitly set. The possible values are `cachingSha2Password` and `mysqlNativePassword`.
 	Authentication *string `pulumi:"authentication"`
-	// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Value must be between `8` and `256`.
+	// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
 	Password *string `pulumi:"password"`
 	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-	// The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Value must be between `8` and `256`.
+	// The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Length must be between `8` and `256`.
 	PasswordWo *string `pulumi:"passwordWo"`
 	// Version number for `passwordWo`. Increment this to rotate the password. The field is required with `passwordWo`. Minimum value: `1`.
 	PasswordWoVersion *int `pulumi:"passwordWoVersion"`
@@ -158,10 +158,10 @@ type MysqlUserState struct {
 	AccessKey pulumi.StringPtrInput
 	// Service specific authentication details. Currently only used for MySQL where accepted options are 'mysql_native_password' and 'caching_sha2_password', latter being default when this is not explicitly set. The possible values are `cachingSha2Password` and `mysqlNativePassword`.
 	Authentication pulumi.StringPtrInput
-	// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Value must be between `8` and `256`.
+	// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
 	Password pulumi.StringPtrInput
 	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-	// The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Value must be between `8` and `256`.
+	// The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Length must be between `8` and `256`.
 	PasswordWo pulumi.StringPtrInput
 	// Version number for `passwordWo`. Increment this to rotate the password. The field is required with `passwordWo`. Minimum value: `1`.
 	PasswordWoVersion pulumi.IntPtrInput
@@ -183,10 +183,10 @@ func (MysqlUserState) ElementType() reflect.Type {
 type mysqlUserArgs struct {
 	// Service specific authentication details. Currently only used for MySQL where accepted options are 'mysql_native_password' and 'caching_sha2_password', latter being default when this is not explicitly set. The possible values are `cachingSha2Password` and `mysqlNativePassword`.
 	Authentication *string `pulumi:"authentication"`
-	// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Value must be between `8` and `256`.
+	// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
 	Password *string `pulumi:"password"`
 	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-	// The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Value must be between `8` and `256`.
+	// The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Length must be between `8` and `256`.
 	PasswordWo *string `pulumi:"passwordWo"`
 	// Version number for `passwordWo`. Increment this to rotate the password. The field is required with `passwordWo`. Minimum value: `1`.
 	PasswordWoVersion *int `pulumi:"passwordWoVersion"`
@@ -203,10 +203,10 @@ type mysqlUserArgs struct {
 type MysqlUserArgs struct {
 	// Service specific authentication details. Currently only used for MySQL where accepted options are 'mysql_native_password' and 'caching_sha2_password', latter being default when this is not explicitly set. The possible values are `cachingSha2Password` and `mysqlNativePassword`.
 	Authentication pulumi.StringPtrInput
-	// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Value must be between `8` and `256`.
+	// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
 	Password pulumi.StringPtrInput
 	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-	// The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Value must be between `8` and `256`.
+	// The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Length must be between `8` and `256`.
 	PasswordWo pulumi.StringPtrInput
 	// Version number for `passwordWo`. Increment this to rotate the password. The field is required with `passwordWo`. Minimum value: `1`.
 	PasswordWoVersion pulumi.IntPtrInput
@@ -321,13 +321,13 @@ func (o MysqlUserOutput) Authentication() pulumi.StringOutput {
 	return o.ApplyT(func(v *MysqlUser) pulumi.StringOutput { return v.Authentication }).(pulumi.StringOutput)
 }
 
-// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Value must be between `8` and `256`.
+// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
 func (o MysqlUserOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v *MysqlUser) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
 }
 
 // **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-// The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Value must be between `8` and `256`.
+// The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Length must be between `8` and `256`.
 func (o MysqlUserOutput) PasswordWo() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MysqlUser) pulumi.StringPtrOutput { return v.PasswordWo }).(pulumi.StringPtrOutput)
 }

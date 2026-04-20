@@ -37,6 +37,12 @@ namespace Pulumi.Aiven.Inputs
         public Input<int> DiskSpaceMb { get; set; } = null!;
 
         /// <summary>
+        /// True when the service uses a cluster plan with dedicated node groups.
+        /// </summary>
+        [Input("isClusterPlan", required: true)]
+        public Input<bool> IsClusterPlan { get; set; } = null!;
+
+        /// <summary>
         /// Number of service nodes in the active plan.
         /// </summary>
         [Input("nodeCount", required: true)]

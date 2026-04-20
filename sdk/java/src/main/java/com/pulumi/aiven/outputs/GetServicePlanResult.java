@@ -67,6 +67,11 @@ public final class GetServicePlanResult {
      */
     private String objectStorageGbPriceUsd;
     /**
+     * @return Number of primary nodes in this Valkey cluster service plan.
+     * 
+     */
+    private Integer primaryCount;
+    /**
      * @return Project name.
      * 
      */
@@ -160,6 +165,13 @@ public final class GetServicePlanResult {
         return this.objectStorageGbPriceUsd;
     }
     /**
+     * @return Number of primary nodes in this Valkey cluster service plan.
+     * 
+     */
+    public Integer primaryCount() {
+        return this.primaryCount;
+    }
+    /**
      * @return Project name.
      * 
      */
@@ -210,6 +222,7 @@ public final class GetServicePlanResult {
         private Integer maxMemoryPercent;
         private Integer nodeCount;
         private String objectStorageGbPriceUsd;
+        private Integer primaryCount;
         private String project;
         private String servicePlan;
         private String serviceType;
@@ -228,6 +241,7 @@ public final class GetServicePlanResult {
     	      this.maxMemoryPercent = defaults.maxMemoryPercent;
     	      this.nodeCount = defaults.nodeCount;
     	      this.objectStorageGbPriceUsd = defaults.objectStorageGbPriceUsd;
+    	      this.primaryCount = defaults.primaryCount;
     	      this.project = defaults.project;
     	      this.servicePlan = defaults.servicePlan;
     	      this.serviceType = defaults.serviceType;
@@ -317,6 +331,14 @@ public final class GetServicePlanResult {
             return this;
         }
         @CustomType.Setter
+        public Builder primaryCount(Integer primaryCount) {
+            if (primaryCount == null) {
+              throw new MissingRequiredPropertyException("GetServicePlanResult", "primaryCount");
+            }
+            this.primaryCount = primaryCount;
+            return this;
+        }
+        @CustomType.Setter
         public Builder project(String project) {
             if (project == null) {
               throw new MissingRequiredPropertyException("GetServicePlanResult", "project");
@@ -366,6 +388,7 @@ public final class GetServicePlanResult {
             _resultValue.maxMemoryPercent = maxMemoryPercent;
             _resultValue.nodeCount = nodeCount;
             _resultValue.objectStorageGbPriceUsd = objectStorageGbPriceUsd;
+            _resultValue.primaryCount = primaryCount;
             _resultValue.project = project;
             _resultValue.servicePlan = servicePlan;
             _resultValue.serviceType = serviceType;

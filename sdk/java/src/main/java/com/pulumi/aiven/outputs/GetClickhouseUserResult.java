@@ -3,95 +3,102 @@
 
 package com.pulumi.aiven.outputs;
 
+import com.pulumi.aiven.outputs.GetClickhouseUserTimeouts;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClickhouseUserResult {
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Resource ID composed as: `project/service_name/uuid`.
      * 
      */
     private String id;
     /**
-     * @return The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+     * @return The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`.
      * 
      */
     private String password;
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name.
      * 
      */
     private String project;
     /**
-     * @return Indicates if a ClickHouse user is required.
+     * @return Required user.
      * 
      */
     private Boolean required;
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service name.
      * 
      */
     private String serviceName;
+    private @Nullable GetClickhouseUserTimeouts timeouts;
     /**
-     * @return The name of the ClickHouse user. Changing this property forces recreation of the resource.
+     * @return User name. Exactly one of the fields must be specified: `uuid` or `username`.
      * 
      */
     private String username;
     /**
-     * @return UUID of the ClickHouse user.
+     * @return User identifier. Exactly one of the fields must be specified: `uuid` or `username`.
      * 
      */
     private String uuid;
 
     private GetClickhouseUserResult() {}
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Resource ID composed as: `project/service_name/uuid`.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+     * @return The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`.
      * 
      */
     public String password() {
         return this.password;
     }
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name.
      * 
      */
     public String project() {
         return this.project;
     }
     /**
-     * @return Indicates if a ClickHouse user is required.
+     * @return Required user.
      * 
      */
     public Boolean required() {
         return this.required;
     }
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service name.
      * 
      */
     public String serviceName() {
         return this.serviceName;
     }
+    public Optional<GetClickhouseUserTimeouts> timeouts() {
+        return Optional.ofNullable(this.timeouts);
+    }
     /**
-     * @return The name of the ClickHouse user. Changing this property forces recreation of the resource.
+     * @return User name. Exactly one of the fields must be specified: `uuid` or `username`.
      * 
      */
     public String username() {
         return this.username;
     }
     /**
-     * @return UUID of the ClickHouse user.
+     * @return User identifier. Exactly one of the fields must be specified: `uuid` or `username`.
      * 
      */
     public String uuid() {
@@ -112,6 +119,7 @@ public final class GetClickhouseUserResult {
         private String project;
         private Boolean required;
         private String serviceName;
+        private @Nullable GetClickhouseUserTimeouts timeouts;
         private String username;
         private String uuid;
         public Builder() {}
@@ -122,6 +130,7 @@ public final class GetClickhouseUserResult {
     	      this.project = defaults.project;
     	      this.required = defaults.required;
     	      this.serviceName = defaults.serviceName;
+    	      this.timeouts = defaults.timeouts;
     	      this.username = defaults.username;
     	      this.uuid = defaults.uuid;
         }
@@ -167,6 +176,12 @@ public final class GetClickhouseUserResult {
             return this;
         }
         @CustomType.Setter
+        public Builder timeouts(@Nullable GetClickhouseUserTimeouts timeouts) {
+
+            this.timeouts = timeouts;
+            return this;
+        }
+        @CustomType.Setter
         public Builder username(String username) {
             if (username == null) {
               throw new MissingRequiredPropertyException("GetClickhouseUserResult", "username");
@@ -189,6 +204,7 @@ public final class GetClickhouseUserResult {
             _resultValue.project = project;
             _resultValue.required = required;
             _resultValue.serviceName = serviceName;
+            _resultValue.timeouts = timeouts;
             _resultValue.username = username;
             _resultValue.uuid = uuid;
             return _resultValue;

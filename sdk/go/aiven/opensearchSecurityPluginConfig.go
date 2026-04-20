@@ -12,12 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Enables and manages [OpenSearch Security for an Aiven for OpenSearch® service](https://aiven.io/docs/products/opensearch/concepts/os-security).
-//
-// After enabling OpenSearch Security management, **you can no longer use Aiven Terraform Provider to manage access controls for that service.** To manage user authentication and access control with OpenSearch Security management enabled,
-// use the OpenSearch Security Dashboard or OpenSearch Security API.
-//
-// **Once enabled, OpenSearch Security management cannot be disabled.** To disable it, [contact Aiven support](https://aiven.io/support-services).
+// Enables and manages [OpenSearch Security for an Aiven for OpenSearch® service](https://aiven.io/docs/products/opensearch/concepts/os-security). After enabling OpenSearch Security management, **you can no longer use Aiven Terraform Provider to manage access controls for that service.** To manage user authentication and access control with OpenSearch Security management enabled, use the OpenSearch Security Dashboard or OpenSearch Security API. **Once enabled, OpenSearch Security management cannot be disabled.** To disable it, [contact Aiven support](https://aiven.io/support-services). If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
 //
 // ## Example Usage
 //
@@ -50,23 +45,24 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import aiven:index/opensearchSecurityPluginConfig:OpensearchSecurityPluginConfig main PROJECT/SERVICE_NAME
+// $ pulumi import aiven:index/opensearchSecurityPluginConfig:OpensearchSecurityPluginConfig example PROJECT/SERVICE_NAME
 // ```
 type OpensearchSecurityPluginConfig struct {
 	pulumi.CustomResourceState
 
-	// Whether the os-sec-admin user is enabled. This indicates whether OpenSearch Security management is enabled. This is always true when the os-sec-admin password was set at least once.
+	// security plugin admin defined.
 	AdminEnabled pulumi.BoolOutput `pulumi:"adminEnabled"`
-	// The password for the os-sec-admin user.
+	// Current os-sec-admin password. Length must be between `8` and `256`.
 	AdminPassword pulumi.StringOutput `pulumi:"adminPassword"`
-	// Whether the security plugin is available. This is always true for recently created services.
+	// Opensearch security available for the service.
 	Available pulumi.BoolOutput `pulumi:"available"`
-	// Whether the security plugin is enabled. This is always true for recently created services.
+	// Opensearch security enabled for the service.
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
+	// Service name. Changing this property forces recreation of the resource.
+	ServiceName pulumi.StringOutput                             `pulumi:"serviceName"`
+	Timeouts    OpensearchSecurityPluginConfigTimeoutsPtrOutput `pulumi:"timeouts"`
 }
 
 // NewOpensearchSecurityPluginConfig registers a new resource with the given unique name, arguments, and options.
@@ -115,33 +111,35 @@ func GetOpensearchSecurityPluginConfig(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering OpensearchSecurityPluginConfig resources.
 type opensearchSecurityPluginConfigState struct {
-	// Whether the os-sec-admin user is enabled. This indicates whether OpenSearch Security management is enabled. This is always true when the os-sec-admin password was set at least once.
+	// security plugin admin defined.
 	AdminEnabled *bool `pulumi:"adminEnabled"`
-	// The password for the os-sec-admin user.
+	// Current os-sec-admin password. Length must be between `8` and `256`.
 	AdminPassword *string `pulumi:"adminPassword"`
-	// Whether the security plugin is available. This is always true for recently created services.
+	// Opensearch security available for the service.
 	Available *bool `pulumi:"available"`
-	// Whether the security plugin is enabled. This is always true for recently created services.
+	// Opensearch security enabled for the service.
 	Enabled *bool `pulumi:"enabled"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project *string `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName *string `pulumi:"serviceName"`
+	// Service name. Changing this property forces recreation of the resource.
+	ServiceName *string                                 `pulumi:"serviceName"`
+	Timeouts    *OpensearchSecurityPluginConfigTimeouts `pulumi:"timeouts"`
 }
 
 type OpensearchSecurityPluginConfigState struct {
-	// Whether the os-sec-admin user is enabled. This indicates whether OpenSearch Security management is enabled. This is always true when the os-sec-admin password was set at least once.
+	// security plugin admin defined.
 	AdminEnabled pulumi.BoolPtrInput
-	// The password for the os-sec-admin user.
+	// Current os-sec-admin password. Length must be between `8` and `256`.
 	AdminPassword pulumi.StringPtrInput
-	// Whether the security plugin is available. This is always true for recently created services.
+	// Opensearch security available for the service.
 	Available pulumi.BoolPtrInput
-	// Whether the security plugin is enabled. This is always true for recently created services.
+	// Opensearch security enabled for the service.
 	Enabled pulumi.BoolPtrInput
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project pulumi.StringPtrInput
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Service name. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringPtrInput
+	Timeouts    OpensearchSecurityPluginConfigTimeoutsPtrInput
 }
 
 func (OpensearchSecurityPluginConfigState) ElementType() reflect.Type {
@@ -149,22 +147,24 @@ func (OpensearchSecurityPluginConfigState) ElementType() reflect.Type {
 }
 
 type opensearchSecurityPluginConfigArgs struct {
-	// The password for the os-sec-admin user.
+	// Current os-sec-admin password. Length must be between `8` and `256`.
 	AdminPassword string `pulumi:"adminPassword"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName string `pulumi:"serviceName"`
+	// Service name. Changing this property forces recreation of the resource.
+	ServiceName string                                  `pulumi:"serviceName"`
+	Timeouts    *OpensearchSecurityPluginConfigTimeouts `pulumi:"timeouts"`
 }
 
 // The set of arguments for constructing a OpensearchSecurityPluginConfig resource.
 type OpensearchSecurityPluginConfigArgs struct {
-	// The password for the os-sec-admin user.
+	// Current os-sec-admin password. Length must be between `8` and `256`.
 	AdminPassword pulumi.StringInput
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Service name. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringInput
+	Timeouts    OpensearchSecurityPluginConfigTimeoutsPtrInput
 }
 
 func (OpensearchSecurityPluginConfigArgs) ElementType() reflect.Type {
@@ -254,34 +254,40 @@ func (o OpensearchSecurityPluginConfigOutput) ToOpensearchSecurityPluginConfigOu
 	return o
 }
 
-// Whether the os-sec-admin user is enabled. This indicates whether OpenSearch Security management is enabled. This is always true when the os-sec-admin password was set at least once.
+// security plugin admin defined.
 func (o OpensearchSecurityPluginConfigOutput) AdminEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *OpensearchSecurityPluginConfig) pulumi.BoolOutput { return v.AdminEnabled }).(pulumi.BoolOutput)
 }
 
-// The password for the os-sec-admin user.
+// Current os-sec-admin password. Length must be between `8` and `256`.
 func (o OpensearchSecurityPluginConfigOutput) AdminPassword() pulumi.StringOutput {
 	return o.ApplyT(func(v *OpensearchSecurityPluginConfig) pulumi.StringOutput { return v.AdminPassword }).(pulumi.StringOutput)
 }
 
-// Whether the security plugin is available. This is always true for recently created services.
+// Opensearch security available for the service.
 func (o OpensearchSecurityPluginConfigOutput) Available() pulumi.BoolOutput {
 	return o.ApplyT(func(v *OpensearchSecurityPluginConfig) pulumi.BoolOutput { return v.Available }).(pulumi.BoolOutput)
 }
 
-// Whether the security plugin is enabled. This is always true for recently created services.
+// Opensearch security enabled for the service.
 func (o OpensearchSecurityPluginConfigOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *OpensearchSecurityPluginConfig) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// Project name. Changing this property forces recreation of the resource.
 func (o OpensearchSecurityPluginConfigOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *OpensearchSecurityPluginConfig) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// Service name. Changing this property forces recreation of the resource.
 func (o OpensearchSecurityPluginConfigOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *OpensearchSecurityPluginConfig) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+func (o OpensearchSecurityPluginConfigOutput) Timeouts() OpensearchSecurityPluginConfigTimeoutsPtrOutput {
+	return o.ApplyT(func(v *OpensearchSecurityPluginConfig) OpensearchSecurityPluginConfigTimeoutsPtrOutput {
+		return v.Timeouts
+	}).(OpensearchSecurityPluginConfigTimeoutsPtrOutput)
 }
 
 type OpensearchSecurityPluginConfigArrayOutput struct{ *pulumi.OutputState }

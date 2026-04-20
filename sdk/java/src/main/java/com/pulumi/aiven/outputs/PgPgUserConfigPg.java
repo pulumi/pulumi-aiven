@@ -260,6 +260,11 @@ public final class PgPgUserConfigPg {
      */
     private @Nullable String pgStatStatementsDotTrack;
     /**
+     * @return Enum: `local`, `off`, `on`, `remoteApply`, `remoteWrite`. Sets the current transaction&#39;s synchronization level. The default is `off`. This setting takes precedence over `synchronousReplication`.
+     * 
+     */
+    private @Nullable String synchronousCommit;
+    /**
      * @return PostgreSQL temporary file limit in KiB, -1 for unlimited.
      * 
      */
@@ -645,6 +650,13 @@ public final class PgPgUserConfigPg {
         return Optional.ofNullable(this.pgStatStatementsDotTrack);
     }
     /**
+     * @return Enum: `local`, `off`, `on`, `remoteApply`, `remoteWrite`. Sets the current transaction&#39;s synchronization level. The default is `off`. This setting takes precedence over `synchronousReplication`.
+     * 
+     */
+    public Optional<String> synchronousCommit() {
+        return Optional.ofNullable(this.synchronousCommit);
+    }
+    /**
      * @return PostgreSQL temporary file limit in KiB, -1 for unlimited.
      * 
      */
@@ -759,6 +771,7 @@ public final class PgPgUserConfigPg {
         private @Nullable Boolean pgStatMonitorDotPgsmEnableQueryPlan;
         private @Nullable Integer pgStatMonitorDotPgsmMaxBuckets;
         private @Nullable String pgStatStatementsDotTrack;
+        private @Nullable String synchronousCommit;
         private @Nullable Integer tempFileLimit;
         private @Nullable String timezone;
         private @Nullable Integer trackActivityQuerySize;
@@ -819,6 +832,7 @@ public final class PgPgUserConfigPg {
     	      this.pgStatMonitorDotPgsmEnableQueryPlan = defaults.pgStatMonitorDotPgsmEnableQueryPlan;
     	      this.pgStatMonitorDotPgsmMaxBuckets = defaults.pgStatMonitorDotPgsmMaxBuckets;
     	      this.pgStatStatementsDotTrack = defaults.pgStatStatementsDotTrack;
+    	      this.synchronousCommit = defaults.synchronousCommit;
     	      this.tempFileLimit = defaults.tempFileLimit;
     	      this.timezone = defaults.timezone;
     	      this.trackActivityQuerySize = defaults.trackActivityQuerySize;
@@ -1124,6 +1138,12 @@ public final class PgPgUserConfigPg {
             return this;
         }
         @CustomType.Setter
+        public Builder synchronousCommit(@Nullable String synchronousCommit) {
+
+            this.synchronousCommit = synchronousCommit;
+            return this;
+        }
+        @CustomType.Setter
         public Builder tempFileLimit(@Nullable Integer tempFileLimit) {
 
             this.tempFileLimit = tempFileLimit;
@@ -1222,6 +1242,7 @@ public final class PgPgUserConfigPg {
             _resultValue.pgStatMonitorDotPgsmEnableQueryPlan = pgStatMonitorDotPgsmEnableQueryPlan;
             _resultValue.pgStatMonitorDotPgsmMaxBuckets = pgStatMonitorDotPgsmMaxBuckets;
             _resultValue.pgStatStatementsDotTrack = pgStatStatementsDotTrack;
+            _resultValue.synchronousCommit = synchronousCommit;
             _resultValue.tempFileLimit = tempFileLimit;
             _resultValue.timezone = timezone;
             _resultValue.trackActivityQuerySize = trackActivityQuerySize;

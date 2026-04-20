@@ -3,6 +3,7 @@
 
 package com.pulumi.aiven.inputs;
 
+import com.pulumi.aiven.inputs.ConnectionPoolTimeoutsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
@@ -17,14 +18,14 @@ public final class ConnectionPoolState extends com.pulumi.resources.ResourceArgs
     public static final ConnectionPoolState Empty = new ConnectionPoolState();
 
     /**
-     * The URI for connecting to the pool.
+     * Connection URI for the DB pool.
      * 
      */
     @Import(name="connectionUri")
     private @Nullable Output<String> connectionUri;
 
     /**
-     * @return The URI for connecting to the pool.
+     * @return Connection URI for the DB pool.
      * 
      */
     public Optional<Output<String>> connectionUri() {
@@ -32,14 +33,14 @@ public final class ConnectionPoolState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service database name. Maximum length: `63`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="databaseName")
     private @Nullable Output<String> databaseName;
 
     /**
-     * @return The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service database name. Maximum length: `63`. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> databaseName() {
@@ -47,14 +48,14 @@ public final class ConnectionPoolState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The [operational mode](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling#pooling-modes). The possible values are `session`, `statement` and `transaction`. The default value is `transaction`.
+     * PGBouncer pool mode. The possible values are `session`, `statement` and `transaction`. The default value is `transaction`.
      * 
      */
     @Import(name="poolMode")
     private @Nullable Output<String> poolMode;
 
     /**
-     * @return The [operational mode](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling#pooling-modes). The possible values are `session`, `statement` and `transaction`. The default value is `transaction`.
+     * @return PGBouncer pool mode. The possible values are `session`, `statement` and `transaction`. The default value is `transaction`.
      * 
      */
     public Optional<Output<String>> poolMode() {
@@ -62,14 +63,14 @@ public final class ConnectionPoolState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Name of the pool. Changing this property forces recreation of the resource.
+     * PgBouncer connection pool name. Maximum length: `63`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="poolName")
     private @Nullable Output<String> poolName;
 
     /**
-     * @return Name of the pool. Changing this property forces recreation of the resource.
+     * @return PgBouncer connection pool name. Maximum length: `63`. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> poolName() {
@@ -77,14 +78,14 @@ public final class ConnectionPoolState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The number of PostgreSQL server connections this pool can use at a time. This does not affect the number of incoming connections. Each pool can handle a minimum of 5000 client connections. The default value is `10`.
+     * Size of PGBouncer&#39;s PostgreSQL side connection pool. Value must be between `1` and `10000`. The default value is `10`.
      * 
      */
     @Import(name="poolSize")
     private @Nullable Output<Integer> poolSize;
 
     /**
-     * @return The number of PostgreSQL server connections this pool can use at a time. This does not affect the number of incoming connections. Each pool can handle a minimum of 5000 client connections. The default value is `10`.
+     * @return Size of PGBouncer&#39;s PostgreSQL side connection pool. Value must be between `1` and `10000`. The default value is `10`.
      * 
      */
     public Optional<Output<Integer>> poolSize() {
@@ -92,14 +93,14 @@ public final class ConnectionPoolState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="project")
     private @Nullable Output<String> project;
 
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> project() {
@@ -107,29 +108,36 @@ public final class ConnectionPoolState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="serviceName")
     private @Nullable Output<String> serviceName;
 
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service name. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> serviceName() {
         return Optional.ofNullable(this.serviceName);
     }
 
+    @Import(name="timeouts")
+    private @Nullable Output<ConnectionPoolTimeoutsArgs> timeouts;
+
+    public Optional<Output<ConnectionPoolTimeoutsArgs>> timeouts() {
+        return Optional.ofNullable(this.timeouts);
+    }
+
     /**
-     * The name of the service user used to connect to the database. To set up proper dependencies please refer to this variable as a reference.
+     * Service username. Length must be between `1` and `64`.
      * 
      */
     @Import(name="username")
     private @Nullable Output<String> username;
 
     /**
-     * @return The name of the service user used to connect to the database. To set up proper dependencies please refer to this variable as a reference.
+     * @return Service username. Length must be between `1` and `64`.
      * 
      */
     public Optional<Output<String>> username() {
@@ -146,6 +154,7 @@ public final class ConnectionPoolState extends com.pulumi.resources.ResourceArgs
         this.poolSize = $.poolSize;
         this.project = $.project;
         this.serviceName = $.serviceName;
+        this.timeouts = $.timeouts;
         this.username = $.username;
     }
 
@@ -168,7 +177,7 @@ public final class ConnectionPoolState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param connectionUri The URI for connecting to the pool.
+         * @param connectionUri Connection URI for the DB pool.
          * 
          * @return builder
          * 
@@ -179,7 +188,7 @@ public final class ConnectionPoolState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param connectionUri The URI for connecting to the pool.
+         * @param connectionUri Connection URI for the DB pool.
          * 
          * @return builder
          * 
@@ -189,7 +198,7 @@ public final class ConnectionPoolState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param databaseName The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param databaseName Service database name. Maximum length: `63`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -200,7 +209,7 @@ public final class ConnectionPoolState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param databaseName The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param databaseName Service database name. Maximum length: `63`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -210,7 +219,7 @@ public final class ConnectionPoolState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param poolMode The [operational mode](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling#pooling-modes). The possible values are `session`, `statement` and `transaction`. The default value is `transaction`.
+         * @param poolMode PGBouncer pool mode. The possible values are `session`, `statement` and `transaction`. The default value is `transaction`.
          * 
          * @return builder
          * 
@@ -221,7 +230,7 @@ public final class ConnectionPoolState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param poolMode The [operational mode](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling#pooling-modes). The possible values are `session`, `statement` and `transaction`. The default value is `transaction`.
+         * @param poolMode PGBouncer pool mode. The possible values are `session`, `statement` and `transaction`. The default value is `transaction`.
          * 
          * @return builder
          * 
@@ -231,7 +240,7 @@ public final class ConnectionPoolState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param poolName Name of the pool. Changing this property forces recreation of the resource.
+         * @param poolName PgBouncer connection pool name. Maximum length: `63`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -242,7 +251,7 @@ public final class ConnectionPoolState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param poolName Name of the pool. Changing this property forces recreation of the resource.
+         * @param poolName PgBouncer connection pool name. Maximum length: `63`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -252,7 +261,7 @@ public final class ConnectionPoolState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param poolSize The number of PostgreSQL server connections this pool can use at a time. This does not affect the number of incoming connections. Each pool can handle a minimum of 5000 client connections. The default value is `10`.
+         * @param poolSize Size of PGBouncer&#39;s PostgreSQL side connection pool. Value must be between `1` and `10000`. The default value is `10`.
          * 
          * @return builder
          * 
@@ -263,7 +272,7 @@ public final class ConnectionPoolState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param poolSize The number of PostgreSQL server connections this pool can use at a time. This does not affect the number of incoming connections. Each pool can handle a minimum of 5000 client connections. The default value is `10`.
+         * @param poolSize Size of PGBouncer&#39;s PostgreSQL side connection pool. Value must be between `1` and `10000`. The default value is `10`.
          * 
          * @return builder
          * 
@@ -273,7 +282,7 @@ public final class ConnectionPoolState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param project The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param project Project name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -284,7 +293,7 @@ public final class ConnectionPoolState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param project The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param project Project name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -294,7 +303,7 @@ public final class ConnectionPoolState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param serviceName The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param serviceName Service name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -305,7 +314,7 @@ public final class ConnectionPoolState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param serviceName The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param serviceName Service name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -314,8 +323,17 @@ public final class ConnectionPoolState extends com.pulumi.resources.ResourceArgs
             return serviceName(Output.of(serviceName));
         }
 
+        public Builder timeouts(@Nullable Output<ConnectionPoolTimeoutsArgs> timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
+        public Builder timeouts(ConnectionPoolTimeoutsArgs timeouts) {
+            return timeouts(Output.of(timeouts));
+        }
+
         /**
-         * @param username The name of the service user used to connect to the database. To set up proper dependencies please refer to this variable as a reference.
+         * @param username Service username. Length must be between `1` and `64`.
          * 
          * @return builder
          * 
@@ -326,7 +344,7 @@ public final class ConnectionPoolState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param username The name of the service user used to connect to the database. To set up proper dependencies please refer to this variable as a reference.
+         * @param username Service username. Length must be between `1` and `64`.
          * 
          * @return builder
          * 

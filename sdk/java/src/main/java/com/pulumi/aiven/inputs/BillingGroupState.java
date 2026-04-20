@@ -176,14 +176,14 @@ public final class BillingGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Billing group ID. Maximum length: `36`. Changing this property forces recreation of the resource.
+     * Billing group ID. Length must be exactly `36`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="copyFromBillingGroup")
     private @Nullable Output<String> copyFromBillingGroup;
 
     /**
-     * @return Billing group ID. Maximum length: `36`. Changing this property forces recreation of the resource.
+     * @return Billing group ID. Length must be exactly `36`. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> copyFromBillingGroup() {
@@ -577,7 +577,7 @@ public final class BillingGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param copyFromBillingGroup Billing group ID. Maximum length: `36`. Changing this property forces recreation of the resource.
+         * @param copyFromBillingGroup Billing group ID. Length must be exactly `36`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -588,7 +588,7 @@ public final class BillingGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param copyFromBillingGroup Billing group ID. Maximum length: `36`. Changing this property forces recreation of the resource.
+         * @param copyFromBillingGroup Billing group ID. Length must be exactly `36`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 

@@ -34,8 +34,8 @@ class PgDatabaseArgs:
         :param pulumi.Input[_builtins.str] database_name: Service database name. Maximum length: `40`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] service_name: Service name. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] lc_collate: Default string sort order (`LC_COLLATE`) of the database. Maximum length: `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] lc_ctype: Default character classification (`LC_CTYPE`) of the database. Maximum length: `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] lc_collate: Default string sort order (`LC_COLLATE`) of the database. Length must be between `1` and `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] lc_ctype: Default character classification (`LC_CTYPE`) of the database. Length must be between `1` and `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.bool] termination_protection: Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console**. The default value is `false`. **Deprecated**: Instead, use `prevent_destroy`
         """
         pulumi.set(__self__, "database_name", database_name)
@@ -93,7 +93,7 @@ class PgDatabaseArgs:
     @pulumi.getter(name="lcCollate")
     def lc_collate(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Default string sort order (`LC_COLLATE`) of the database. Maximum length: `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+        Default string sort order (`LC_COLLATE`) of the database. Length must be between `1` and `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "lc_collate")
 
@@ -105,7 +105,7 @@ class PgDatabaseArgs:
     @pulumi.getter(name="lcCtype")
     def lc_ctype(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Default character classification (`LC_CTYPE`) of the database. Maximum length: `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+        Default character classification (`LC_CTYPE`) of the database. Length must be between `1` and `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "lc_ctype")
 
@@ -150,8 +150,8 @@ class _PgDatabaseState:
         Input properties used for looking up and filtering PgDatabase resources.
 
         :param pulumi.Input[_builtins.str] database_name: Service database name. Maximum length: `40`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] lc_collate: Default string sort order (`LC_COLLATE`) of the database. Maximum length: `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] lc_ctype: Default character classification (`LC_CTYPE`) of the database. Maximum length: `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] lc_collate: Default string sort order (`LC_COLLATE`) of the database. Length must be between `1` and `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] lc_ctype: Default character classification (`LC_CTYPE`) of the database. Length must be between `1` and `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] service_name: Service name. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.bool] termination_protection: Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console**. The default value is `false`. **Deprecated**: Instead, use `prevent_destroy`
@@ -190,7 +190,7 @@ class _PgDatabaseState:
     @pulumi.getter(name="lcCollate")
     def lc_collate(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Default string sort order (`LC_COLLATE`) of the database. Maximum length: `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+        Default string sort order (`LC_COLLATE`) of the database. Length must be between `1` and `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "lc_collate")
 
@@ -202,7 +202,7 @@ class _PgDatabaseState:
     @pulumi.getter(name="lcCtype")
     def lc_ctype(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Default character classification (`LC_CTYPE`) of the database. Maximum length: `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+        Default character classification (`LC_CTYPE`) of the database. Length must be between `1` and `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "lc_ctype")
 
@@ -296,8 +296,8 @@ class PgDatabase(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] database_name: Service database name. Maximum length: `40`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] lc_collate: Default string sort order (`LC_COLLATE`) of the database. Maximum length: `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] lc_ctype: Default character classification (`LC_CTYPE`) of the database. Maximum length: `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] lc_collate: Default string sort order (`LC_COLLATE`) of the database. Length must be between `1` and `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] lc_ctype: Default character classification (`LC_CTYPE`) of the database. Length must be between `1` and `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] service_name: Service name. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.bool] termination_protection: Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console**. The default value is `false`. **Deprecated**: Instead, use `prevent_destroy`
@@ -399,8 +399,8 @@ class PgDatabase(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] database_name: Service database name. Maximum length: `40`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] lc_collate: Default string sort order (`LC_COLLATE`) of the database. Maximum length: `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] lc_ctype: Default character classification (`LC_CTYPE`) of the database. Maximum length: `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] lc_collate: Default string sort order (`LC_COLLATE`) of the database. Length must be between `1` and `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] lc_ctype: Default character classification (`LC_CTYPE`) of the database. Length must be between `1` and `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] service_name: Service name. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.bool] termination_protection: Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console**. The default value is `false`. **Deprecated**: Instead, use `prevent_destroy`
@@ -430,7 +430,7 @@ class PgDatabase(pulumi.CustomResource):
     @pulumi.getter(name="lcCollate")
     def lc_collate(self) -> pulumi.Output[_builtins.str]:
         """
-        Default string sort order (`LC_COLLATE`) of the database. Maximum length: `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+        Default string sort order (`LC_COLLATE`) of the database. Length must be between `1` and `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "lc_collate")
 
@@ -438,7 +438,7 @@ class PgDatabase(pulumi.CustomResource):
     @pulumi.getter(name="lcCtype")
     def lc_ctype(self) -> pulumi.Output[_builtins.str]:
         """
-        Default character classification (`LC_CTYPE`) of the database. Maximum length: `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+        Default character classification (`LC_CTYPE`) of the database. Length must be between `1` and `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "lc_ctype")
 

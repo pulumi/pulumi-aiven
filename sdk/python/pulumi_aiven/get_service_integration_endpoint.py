@@ -27,7 +27,7 @@ class GetServiceIntegrationEndpointResult:
     """
     A collection of values returned by getServiceIntegrationEndpoint.
     """
-    def __init__(__self__, autoscaler_user_configs=None, datadog_user_configs=None, endpoint_config=None, endpoint_name=None, endpoint_type=None, external_aws_cloudwatch_logs_user_configs=None, external_aws_cloudwatch_metrics_user_configs=None, external_aws_s3_user_configs=None, external_azure_blob_storage_user_configs=None, external_clickhouse_user_configs=None, external_elasticsearch_logs_user_configs=None, external_google_cloud_bigqueries=None, external_google_cloud_logging_user_configs=None, external_kafka_user_configs=None, external_mysql_user_configs=None, external_opensearch_logs_user_configs=None, external_postgresqls=None, external_prometheus_user_configs=None, external_schema_registry_user_configs=None, id=None, jolokia_user_configs=None, project=None, prometheus_user_configs=None, rsyslog_user_configs=None):
+    def __init__(__self__, autoscaler_user_configs=None, datadog_user_configs=None, endpoint_config=None, endpoint_name=None, endpoint_type=None, external_aws_cloudwatch_logs_user_configs=None, external_aws_cloudwatch_metrics_user_configs=None, external_aws_s3_user_configs=None, external_azure_blob_storage_user_configs=None, external_clickhouse_user_configs=None, external_elasticsearch_logs_user_configs=None, external_google_cloud_bigqueries=None, external_google_cloud_logging_user_configs=None, external_kafka_user_configs=None, external_mysql_user_configs=None, external_object_storage_config_user_configs=None, external_opensearch_logs_user_configs=None, external_postgresqls=None, external_prometheus_user_configs=None, external_schema_registry_user_configs=None, id=None, jolokia_user_configs=None, project=None, prometheus_user_configs=None, rsyslog_user_configs=None):
         if autoscaler_user_configs and not isinstance(autoscaler_user_configs, list):
             raise TypeError("Expected argument 'autoscaler_user_configs' to be a list")
         pulumi.set(__self__, "autoscaler_user_configs", autoscaler_user_configs)
@@ -73,6 +73,9 @@ class GetServiceIntegrationEndpointResult:
         if external_mysql_user_configs and not isinstance(external_mysql_user_configs, list):
             raise TypeError("Expected argument 'external_mysql_user_configs' to be a list")
         pulumi.set(__self__, "external_mysql_user_configs", external_mysql_user_configs)
+        if external_object_storage_config_user_configs and not isinstance(external_object_storage_config_user_configs, list):
+            raise TypeError("Expected argument 'external_object_storage_config_user_configs' to be a list")
+        pulumi.set(__self__, "external_object_storage_config_user_configs", external_object_storage_config_user_configs)
         if external_opensearch_logs_user_configs and not isinstance(external_opensearch_logs_user_configs, list):
             raise TypeError("Expected argument 'external_opensearch_logs_user_configs' to be a list")
         pulumi.set(__self__, "external_opensearch_logs_user_configs", external_opensearch_logs_user_configs)
@@ -137,7 +140,7 @@ class GetServiceIntegrationEndpointResult:
     @pulumi.getter(name="endpointType")
     def endpoint_type(self) -> _builtins.str:
         """
-        The type of service integration endpoint. The possible values are `autoscaler`, `datadog`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_aws_s3`, `external_azure_blob_storage`, `external_clickhouse`, `external_elasticsearch_logs`, `external_google_cloud_bigquery`, `external_google_cloud_logging`, `external_kafka`, `external_mysql`, `external_opensearch_logs`, `external_postgresql`, `external_prometheus`, `external_redis`, `external_schema_registry`, `external_sumologic_logs`, `jolokia`, `prometheus` and `rsyslog`.
+        The type of service integration endpoint. The possible values are `autoscaler`, `datadog`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_aws_s3`, `external_azure_blob_storage`, `external_clickhouse`, `external_elasticsearch_logs`, `external_google_cloud_bigquery`, `external_google_cloud_logging`, `external_kafka`, `external_mysql`, `external_object_storage_config`, `external_opensearch_logs`, `external_postgresql`, `external_prometheus`, `external_redis`, `external_schema_registry`, `external_sumologic_logs`, `jolokia`, `prometheus` and `rsyslog`.
         """
         return pulumi.get(self, "endpoint_type")
 
@@ -220,6 +223,14 @@ class GetServiceIntegrationEndpointResult:
         ExternalMysql user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "external_mysql_user_configs")
+
+    @_builtins.property
+    @pulumi.getter(name="externalObjectStorageConfigUserConfigs")
+    def external_object_storage_config_user_configs(self) -> Sequence['outputs.GetServiceIntegrationEndpointExternalObjectStorageConfigUserConfigResult']:
+        """
+        ExternalObjectStorageConfig user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        """
+        return pulumi.get(self, "external_object_storage_config_user_configs")
 
     @_builtins.property
     @pulumi.getter(name="externalOpensearchLogsUserConfigs")
@@ -315,6 +326,7 @@ class AwaitableGetServiceIntegrationEndpointResult(GetServiceIntegrationEndpoint
             external_google_cloud_logging_user_configs=self.external_google_cloud_logging_user_configs,
             external_kafka_user_configs=self.external_kafka_user_configs,
             external_mysql_user_configs=self.external_mysql_user_configs,
+            external_object_storage_config_user_configs=self.external_object_storage_config_user_configs,
             external_opensearch_logs_user_configs=self.external_opensearch_logs_user_configs,
             external_postgresqls=self.external_postgresqls,
             external_prometheus_user_configs=self.external_prometheus_user_configs,
@@ -368,6 +380,7 @@ def get_service_integration_endpoint(endpoint_name: Optional[_builtins.str] = No
         external_google_cloud_logging_user_configs=pulumi.get(__ret__, 'external_google_cloud_logging_user_configs'),
         external_kafka_user_configs=pulumi.get(__ret__, 'external_kafka_user_configs'),
         external_mysql_user_configs=pulumi.get(__ret__, 'external_mysql_user_configs'),
+        external_object_storage_config_user_configs=pulumi.get(__ret__, 'external_object_storage_config_user_configs'),
         external_opensearch_logs_user_configs=pulumi.get(__ret__, 'external_opensearch_logs_user_configs'),
         external_postgresqls=pulumi.get(__ret__, 'external_postgresqls'),
         external_prometheus_user_configs=pulumi.get(__ret__, 'external_prometheus_user_configs'),
@@ -418,6 +431,7 @@ def get_service_integration_endpoint_output(endpoint_name: Optional[pulumi.Input
         external_google_cloud_logging_user_configs=pulumi.get(__response__, 'external_google_cloud_logging_user_configs'),
         external_kafka_user_configs=pulumi.get(__response__, 'external_kafka_user_configs'),
         external_mysql_user_configs=pulumi.get(__response__, 'external_mysql_user_configs'),
+        external_object_storage_config_user_configs=pulumi.get(__response__, 'external_object_storage_config_user_configs'),
         external_opensearch_logs_user_configs=pulumi.get(__response__, 'external_opensearch_logs_user_configs'),
         external_postgresqls=pulumi.get(__response__, 'external_postgresqls'),
         external_prometheus_user_configs=pulumi.get(__response__, 'external_prometheus_user_configs'),

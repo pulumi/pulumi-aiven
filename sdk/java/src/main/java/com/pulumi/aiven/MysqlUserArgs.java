@@ -34,14 +34,14 @@ public final class MysqlUserArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Value must be between `8` and `256`.
+     * The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
      * 
      */
     @Import(name="password")
     private @Nullable Output<String> password;
 
     /**
-     * @return The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Value must be between `8` and `256`.
+     * @return The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
      * 
      */
     public Optional<Output<String>> password() {
@@ -50,7 +50,7 @@ public final class MysqlUserArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Value must be between `8` and `256`.
+     * The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Length must be between `8` and `256`.
      * 
      */
     @Import(name="passwordWo")
@@ -58,7 +58,7 @@ public final class MysqlUserArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Value must be between `8` and `256`.
+     * The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Length must be between `8` and `256`.
      * 
      */
     public Optional<Output<String>> passwordWo() {
@@ -185,7 +185,7 @@ public final class MysqlUserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param password The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Value must be between `8` and `256`.
+         * @param password The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
          * 
          * @return builder
          * 
@@ -196,7 +196,7 @@ public final class MysqlUserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param password The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Value must be between `8` and `256`.
+         * @param password The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
          * 
          * @return builder
          * 
@@ -207,7 +207,7 @@ public final class MysqlUserArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param passwordWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-         * The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Value must be between `8` and `256`.
+         * The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Length must be between `8` and `256`.
          * 
          * @return builder
          * 
@@ -219,7 +219,7 @@ public final class MysqlUserArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param passwordWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-         * The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Value must be between `8` and `256`.
+         * The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Length must be between `8` and `256`.
          * 
          * @return builder
          * 

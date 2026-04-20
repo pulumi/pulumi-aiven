@@ -35,7 +35,7 @@ type OrganizationAddress struct {
 	CountryCode pulumi.StringOutput `pulumi:"countryCode"`
 	// Create Time.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// Name of a company. Maximum length: `128`.
+	// Name of a company. Length must be between `1` and `128`.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
 	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
@@ -100,7 +100,7 @@ type organizationAddressState struct {
 	CountryCode *string `pulumi:"countryCode"`
 	// Create Time.
 	CreateTime *string `pulumi:"createTime"`
-	// Name of a company. Maximum length: `128`.
+	// Name of a company. Length must be between `1` and `128`.
 	Name *string `pulumi:"name"`
 	// ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
 	OrganizationId *string `pulumi:"organizationId"`
@@ -124,7 +124,7 @@ type OrganizationAddressState struct {
 	CountryCode pulumi.StringPtrInput
 	// Create Time.
 	CreateTime pulumi.StringPtrInput
-	// Name of a company. Maximum length: `128`.
+	// Name of a company. Length must be between `1` and `128`.
 	Name pulumi.StringPtrInput
 	// ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
 	OrganizationId pulumi.StringPtrInput
@@ -148,7 +148,7 @@ type organizationAddressArgs struct {
 	City string `pulumi:"city"`
 	// Country Code. Maximum length: `2`.
 	CountryCode string `pulumi:"countryCode"`
-	// Name of a company. Maximum length: `128`.
+	// Name of a company. Length must be between `1` and `128`.
 	Name *string `pulumi:"name"`
 	// ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
 	OrganizationId string `pulumi:"organizationId"`
@@ -167,7 +167,7 @@ type OrganizationAddressArgs struct {
 	City pulumi.StringInput
 	// Country Code. Maximum length: `2`.
 	CountryCode pulumi.StringInput
-	// Name of a company. Maximum length: `128`.
+	// Name of a company. Length must be between `1` and `128`.
 	Name pulumi.StringPtrInput
 	// ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
 	OrganizationId pulumi.StringInput
@@ -290,7 +290,7 @@ func (o OrganizationAddressOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationAddress) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Name of a company. Maximum length: `128`.
+// Name of a company. Length must be between `1` and `128`.
 func (o OrganizationAddressOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationAddress) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

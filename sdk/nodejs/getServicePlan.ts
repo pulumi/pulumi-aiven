@@ -96,6 +96,10 @@ export interface GetServicePlanResult {
      */
     readonly objectStorageGbPriceUsd: string;
     /**
+     * Number of primary nodes in this Valkey cluster service plan.
+     */
+    readonly primaryCount: number;
+    /**
      * Project name.
      */
     readonly project: string;

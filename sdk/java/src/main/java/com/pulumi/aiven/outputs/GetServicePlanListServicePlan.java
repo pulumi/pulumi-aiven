@@ -6,6 +6,7 @@ package com.pulumi.aiven.outputs;
 import com.pulumi.aiven.outputs.GetServicePlanListServicePlanRegions;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Map;
@@ -13,6 +14,11 @@ import java.util.Objects;
 
 @CustomType
 public final class GetServicePlanListServicePlan {
+    /**
+     * @return True when the plan is a cluster plan with dedicated node groups.
+     * 
+     */
+    private Boolean isClusterPlan;
     /**
      * @return Maximum amount of system memory as a percentage (0-100) the service can actually use after taking into account management overhead. This is relevant for memory bound services for which some service management operations require allocating proportional amount of memory on top the basic load.
      * 
@@ -23,6 +29,11 @@ public final class GetServicePlanListServicePlan {
      * 
      */
     private Integer nodeCount;
+    /**
+     * @return Number of primary nodes in this Valkey cluster service plan.
+     * 
+     */
+    private Integer primaryCount;
     /**
      * @return Service plan hourly price per cloud region.
      * 
@@ -46,6 +57,13 @@ public final class GetServicePlanListServicePlan {
 
     private GetServicePlanListServicePlan() {}
     /**
+     * @return True when the plan is a cluster plan with dedicated node groups.
+     * 
+     */
+    public Boolean isClusterPlan() {
+        return this.isClusterPlan;
+    }
+    /**
      * @return Maximum amount of system memory as a percentage (0-100) the service can actually use after taking into account management overhead. This is relevant for memory bound services for which some service management operations require allocating proportional amount of memory on top the basic load.
      * 
      */
@@ -58,6 +76,13 @@ public final class GetServicePlanListServicePlan {
      */
     public Integer nodeCount() {
         return this.nodeCount;
+    }
+    /**
+     * @return Number of primary nodes in this Valkey cluster service plan.
+     * 
+     */
+    public Integer primaryCount() {
+        return this.primaryCount;
     }
     /**
      * @return Service plan hourly price per cloud region.
@@ -97,8 +122,10 @@ public final class GetServicePlanListServicePlan {
     }
     @CustomType.Builder
     public static final class Builder {
+        private Boolean isClusterPlan;
         private Integer maxMemoryPercent;
         private Integer nodeCount;
+        private Integer primaryCount;
         private Map<String,GetServicePlanListServicePlanRegions> regions;
         private String servicePlan;
         private String serviceType;
@@ -106,14 +133,24 @@ public final class GetServicePlanListServicePlan {
         public Builder() {}
         public Builder(GetServicePlanListServicePlan defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.isClusterPlan = defaults.isClusterPlan;
     	      this.maxMemoryPercent = defaults.maxMemoryPercent;
     	      this.nodeCount = defaults.nodeCount;
+    	      this.primaryCount = defaults.primaryCount;
     	      this.regions = defaults.regions;
     	      this.servicePlan = defaults.servicePlan;
     	      this.serviceType = defaults.serviceType;
     	      this.shardCount = defaults.shardCount;
         }
 
+        @CustomType.Setter
+        public Builder isClusterPlan(Boolean isClusterPlan) {
+            if (isClusterPlan == null) {
+              throw new MissingRequiredPropertyException("GetServicePlanListServicePlan", "isClusterPlan");
+            }
+            this.isClusterPlan = isClusterPlan;
+            return this;
+        }
         @CustomType.Setter
         public Builder maxMemoryPercent(Integer maxMemoryPercent) {
             if (maxMemoryPercent == null) {
@@ -128,6 +165,14 @@ public final class GetServicePlanListServicePlan {
               throw new MissingRequiredPropertyException("GetServicePlanListServicePlan", "nodeCount");
             }
             this.nodeCount = nodeCount;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder primaryCount(Integer primaryCount) {
+            if (primaryCount == null) {
+              throw new MissingRequiredPropertyException("GetServicePlanListServicePlan", "primaryCount");
+            }
+            this.primaryCount = primaryCount;
             return this;
         }
         @CustomType.Setter
@@ -164,8 +209,10 @@ public final class GetServicePlanListServicePlan {
         }
         public GetServicePlanListServicePlan build() {
             final var _resultValue = new GetServicePlanListServicePlan();
+            _resultValue.isClusterPlan = isClusterPlan;
             _resultValue.maxMemoryPercent = maxMemoryPercent;
             _resultValue.nodeCount = nodeCount;
+            _resultValue.primaryCount = primaryCount;
             _resultValue.regions = regions;
             _resultValue.servicePlan = servicePlan;
             _resultValue.serviceType = serviceType;

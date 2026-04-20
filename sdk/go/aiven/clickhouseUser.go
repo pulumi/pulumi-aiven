@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates and manages a ClickHouse user.
+// Creates and manages an Aiven for ClickHouse user. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
 //
 // ## Example Usage
 //
@@ -45,27 +45,28 @@ import (
 // ## Import
 //
 // ```sh
-// terraform import aiven_clickhouse_user.example_user PROJECT/SERVICE_NAME/USER_ID  # USER_ID is found in the systems.users table in ClickHouse
+// $ pulumi import aiven:index/clickhouseUser:ClickhouseUser example PROJECT/SERVICE_NAME/UUID
 // ```
 type ClickhouseUser struct {
 	pulumi.CustomResourceState
 
-	// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+	// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
 	Password pulumi.StringOutput `pulumi:"password"`
 	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-	// The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
+	// The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Length must be between `8` and `256`.
 	PasswordWo pulumi.StringPtrOutput `pulumi:"passwordWo"`
-	// Version number for `passwordWo`. Increment this to rotate the password. Must be >= 1.
+	// Version number for `passwordWo`. Increment this to rotate the password. The field is required with `passwordWo`. Minimum value: `1`.
 	PasswordWoVersion pulumi.IntPtrOutput `pulumi:"passwordWoVersion"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Indicates if a ClickHouse user is required.
+	// Required user.
 	Required pulumi.BoolOutput `pulumi:"required"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// The name of the ClickHouse user. Changing this property forces recreation of the resource.
+	// Service name. Changing this property forces recreation of the resource.
+	ServiceName pulumi.StringOutput             `pulumi:"serviceName"`
+	Timeouts    ClickhouseUserTimeoutsPtrOutput `pulumi:"timeouts"`
+	// User name. Maximum length: `64`. Changing this property forces recreation of the resource.
 	Username pulumi.StringOutput `pulumi:"username"`
-	// UUID of the ClickHouse user.
+	// User identifier.
 	Uuid pulumi.StringOutput `pulumi:"uuid"`
 }
 
@@ -119,42 +120,44 @@ func GetClickhouseUser(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ClickhouseUser resources.
 type clickhouseUserState struct {
-	// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+	// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
 	Password *string `pulumi:"password"`
 	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-	// The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
+	// The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Length must be between `8` and `256`.
 	PasswordWo *string `pulumi:"passwordWo"`
-	// Version number for `passwordWo`. Increment this to rotate the password. Must be >= 1.
+	// Version number for `passwordWo`. Increment this to rotate the password. The field is required with `passwordWo`. Minimum value: `1`.
 	PasswordWoVersion *int `pulumi:"passwordWoVersion"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project *string `pulumi:"project"`
-	// Indicates if a ClickHouse user is required.
+	// Required user.
 	Required *bool `pulumi:"required"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName *string `pulumi:"serviceName"`
-	// The name of the ClickHouse user. Changing this property forces recreation of the resource.
+	// Service name. Changing this property forces recreation of the resource.
+	ServiceName *string                 `pulumi:"serviceName"`
+	Timeouts    *ClickhouseUserTimeouts `pulumi:"timeouts"`
+	// User name. Maximum length: `64`. Changing this property forces recreation of the resource.
 	Username *string `pulumi:"username"`
-	// UUID of the ClickHouse user.
+	// User identifier.
 	Uuid *string `pulumi:"uuid"`
 }
 
 type ClickhouseUserState struct {
-	// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+	// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
 	Password pulumi.StringPtrInput
 	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-	// The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
+	// The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Length must be between `8` and `256`.
 	PasswordWo pulumi.StringPtrInput
-	// Version number for `passwordWo`. Increment this to rotate the password. Must be >= 1.
+	// Version number for `passwordWo`. Increment this to rotate the password. The field is required with `passwordWo`. Minimum value: `1`.
 	PasswordWoVersion pulumi.IntPtrInput
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project pulumi.StringPtrInput
-	// Indicates if a ClickHouse user is required.
+	// Required user.
 	Required pulumi.BoolPtrInput
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Service name. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringPtrInput
-	// The name of the ClickHouse user. Changing this property forces recreation of the resource.
+	Timeouts    ClickhouseUserTimeoutsPtrInput
+	// User name. Maximum length: `64`. Changing this property forces recreation of the resource.
 	Username pulumi.StringPtrInput
-	// UUID of the ClickHouse user.
+	// User identifier.
 	Uuid pulumi.StringPtrInput
 }
 
@@ -163,35 +166,37 @@ func (ClickhouseUserState) ElementType() reflect.Type {
 }
 
 type clickhouseUserArgs struct {
-	// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+	// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
 	Password *string `pulumi:"password"`
 	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-	// The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
+	// The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Length must be between `8` and `256`.
 	PasswordWo *string `pulumi:"passwordWo"`
-	// Version number for `passwordWo`. Increment this to rotate the password. Must be >= 1.
+	// Version number for `passwordWo`. Increment this to rotate the password. The field is required with `passwordWo`. Minimum value: `1`.
 	PasswordWoVersion *int `pulumi:"passwordWoVersion"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName string `pulumi:"serviceName"`
-	// The name of the ClickHouse user. Changing this property forces recreation of the resource.
+	// Service name. Changing this property forces recreation of the resource.
+	ServiceName string                  `pulumi:"serviceName"`
+	Timeouts    *ClickhouseUserTimeouts `pulumi:"timeouts"`
+	// User name. Maximum length: `64`. Changing this property forces recreation of the resource.
 	Username string `pulumi:"username"`
 }
 
 // The set of arguments for constructing a ClickhouseUser resource.
 type ClickhouseUserArgs struct {
-	// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+	// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
 	Password pulumi.StringPtrInput
 	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-	// The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
+	// The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Length must be between `8` and `256`.
 	PasswordWo pulumi.StringPtrInput
-	// Version number for `passwordWo`. Increment this to rotate the password. Must be >= 1.
+	// Version number for `passwordWo`. Increment this to rotate the password. The field is required with `passwordWo`. Minimum value: `1`.
 	PasswordWoVersion pulumi.IntPtrInput
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Service name. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringInput
-	// The name of the ClickHouse user. Changing this property forces recreation of the resource.
+	Timeouts    ClickhouseUserTimeoutsPtrInput
+	// User name. Maximum length: `64`. Changing this property forces recreation of the resource.
 	Username pulumi.StringInput
 }
 
@@ -282,43 +287,47 @@ func (o ClickhouseUserOutput) ToClickhouseUserOutputWithContext(ctx context.Cont
 	return o
 }
 
-// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
 func (o ClickhouseUserOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v *ClickhouseUser) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
 }
 
 // **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-// The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
+// The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Length must be between `8` and `256`.
 func (o ClickhouseUserOutput) PasswordWo() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClickhouseUser) pulumi.StringPtrOutput { return v.PasswordWo }).(pulumi.StringPtrOutput)
 }
 
-// Version number for `passwordWo`. Increment this to rotate the password. Must be >= 1.
+// Version number for `passwordWo`. Increment this to rotate the password. The field is required with `passwordWo`. Minimum value: `1`.
 func (o ClickhouseUserOutput) PasswordWoVersion() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClickhouseUser) pulumi.IntPtrOutput { return v.PasswordWoVersion }).(pulumi.IntPtrOutput)
 }
 
-// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// Project name. Changing this property forces recreation of the resource.
 func (o ClickhouseUserOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *ClickhouseUser) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// Indicates if a ClickHouse user is required.
+// Required user.
 func (o ClickhouseUserOutput) Required() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ClickhouseUser) pulumi.BoolOutput { return v.Required }).(pulumi.BoolOutput)
 }
 
-// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// Service name. Changing this property forces recreation of the resource.
 func (o ClickhouseUserOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ClickhouseUser) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// The name of the ClickHouse user. Changing this property forces recreation of the resource.
+func (o ClickhouseUserOutput) Timeouts() ClickhouseUserTimeoutsPtrOutput {
+	return o.ApplyT(func(v *ClickhouseUser) ClickhouseUserTimeoutsPtrOutput { return v.Timeouts }).(ClickhouseUserTimeoutsPtrOutput)
+}
+
+// User name. Maximum length: `64`. Changing this property forces recreation of the resource.
 func (o ClickhouseUserOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v *ClickhouseUser) pulumi.StringOutput { return v.Username }).(pulumi.StringOutput)
 }
 
-// UUID of the ClickHouse user.
+// User identifier.
 func (o ClickhouseUserOutput) Uuid() pulumi.StringOutput {
 	return o.ApplyT(func(v *ClickhouseUser) pulumi.StringOutput { return v.Uuid }).(pulumi.StringOutput)
 }

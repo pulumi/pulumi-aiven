@@ -77,6 +77,21 @@ public final class GetServiceListService extends com.pulumi.resources.InvokeArgs
     }
 
     /**
+     * True when the service uses a cluster plan with dedicated node groups.
+     * 
+     */
+    @Import(name="isClusterPlan", required=true)
+    private Boolean isClusterPlan;
+
+    /**
+     * @return True when the service uses a cluster plan with dedicated node groups.
+     * 
+     */
+    public Boolean isClusterPlan() {
+        return this.isClusterPlan;
+    }
+
+    /**
      * Number of service nodes in the active plan.
      * 
      */
@@ -263,6 +278,7 @@ public final class GetServiceListService extends com.pulumi.resources.InvokeArgs
         this.cloudName = $.cloudName;
         this.createTime = $.createTime;
         this.diskSpaceMb = $.diskSpaceMb;
+        this.isClusterPlan = $.isClusterPlan;
         this.nodeCount = $.nodeCount;
         this.nodeCpuCount = $.nodeCpuCount;
         this.nodeMemoryMb = $.nodeMemoryMb;
@@ -336,6 +352,17 @@ public final class GetServiceListService extends com.pulumi.resources.InvokeArgs
          */
         public Builder diskSpaceMb(Integer diskSpaceMb) {
             $.diskSpaceMb = diskSpaceMb;
+            return this;
+        }
+
+        /**
+         * @param isClusterPlan True when the service uses a cluster plan with dedicated node groups.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isClusterPlan(Boolean isClusterPlan) {
+            $.isClusterPlan = isClusterPlan;
             return this;
         }
 
@@ -483,6 +510,9 @@ public final class GetServiceListService extends com.pulumi.resources.InvokeArgs
             }
             if ($.diskSpaceMb == null) {
                 throw new MissingRequiredPropertyException("GetServiceListService", "diskSpaceMb");
+            }
+            if ($.isClusterPlan == null) {
+                throw new MissingRequiredPropertyException("GetServiceListService", "isClusterPlan");
             }
             if ($.nodeCount == null) {
                 throw new MissingRequiredPropertyException("GetServiceListService", "nodeCount");

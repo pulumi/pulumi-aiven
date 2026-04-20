@@ -36,9 +36,9 @@ class MysqlUserArgs:
         :param pulumi.Input[_builtins.str] service_name: The name of the MySQL® service user. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] username: The name of the MySQL® service user. Maximum length: `64`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] authentication: Service specific authentication details. Currently only used for MySQL where accepted options are 'mysql_native_password' and 'caching_sha2_password', latter being default when this is not explicitly set. The possible values are `caching_sha2_password` and `mysql_native_password`.
-        :param pulumi.Input[_builtins.str] password: The password of the service user (auto-generated if not provided). The field conflicts with `password_wo`. Value must be between `8` and `256`.
+        :param pulumi.Input[_builtins.str] password: The password of the service user (auto-generated if not provided). The field conflicts with `password_wo`. Length must be between `8` and `256`.
         :param pulumi.Input[_builtins.str] password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-               The password of the service user (write-only, not stored in state). The field is required with `password_wo_version`. The field conflicts with `password`. Value must be between `8` and `256`.
+               The password of the service user (write-only, not stored in state). The field is required with `password_wo_version`. The field conflicts with `password`. Length must be between `8` and `256`.
         :param pulumi.Input[_builtins.int] password_wo_version: Version number for `password_wo`. Increment this to rotate the password. The field is required with `password_wo`. Minimum value: `1`.
         """
         pulumi.set(__self__, "project", project)
@@ -107,7 +107,7 @@ class MysqlUserArgs:
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The password of the service user (auto-generated if not provided). The field conflicts with `password_wo`. Value must be between `8` and `256`.
+        The password of the service user (auto-generated if not provided). The field conflicts with `password_wo`. Length must be between `8` and `256`.
         """
         return pulumi.get(self, "password")
 
@@ -120,7 +120,7 @@ class MysqlUserArgs:
     def password_wo(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-        The password of the service user (write-only, not stored in state). The field is required with `password_wo_version`. The field conflicts with `password`. Value must be between `8` and `256`.
+        The password of the service user (write-only, not stored in state). The field is required with `password_wo_version`. The field conflicts with `password`. Length must be between `8` and `256`.
         """
         return pulumi.get(self, "password_wo")
 
@@ -170,9 +170,9 @@ class _MysqlUserState:
         :param pulumi.Input[_builtins.str] access_cert: Access certificate for TLS client authentication.
         :param pulumi.Input[_builtins.str] access_key: Access key for TLS client authentication.
         :param pulumi.Input[_builtins.str] authentication: Service specific authentication details. Currently only used for MySQL where accepted options are 'mysql_native_password' and 'caching_sha2_password', latter being default when this is not explicitly set. The possible values are `caching_sha2_password` and `mysql_native_password`.
-        :param pulumi.Input[_builtins.str] password: The password of the service user (auto-generated if not provided). The field conflicts with `password_wo`. Value must be between `8` and `256`.
+        :param pulumi.Input[_builtins.str] password: The password of the service user (auto-generated if not provided). The field conflicts with `password_wo`. Length must be between `8` and `256`.
         :param pulumi.Input[_builtins.str] password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-               The password of the service user (write-only, not stored in state). The field is required with `password_wo_version`. The field conflicts with `password`. Value must be between `8` and `256`.
+               The password of the service user (write-only, not stored in state). The field is required with `password_wo_version`. The field conflicts with `password`. Length must be between `8` and `256`.
         :param pulumi.Input[_builtins.int] password_wo_version: Version number for `password_wo`. Increment this to rotate the password. The field is required with `password_wo`. Minimum value: `1`.
         :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] service_name: The name of the MySQL® service user. Changing this property forces recreation of the resource.
@@ -242,7 +242,7 @@ class _MysqlUserState:
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The password of the service user (auto-generated if not provided). The field conflicts with `password_wo`. Value must be between `8` and `256`.
+        The password of the service user (auto-generated if not provided). The field conflicts with `password_wo`. Length must be between `8` and `256`.
         """
         return pulumi.get(self, "password")
 
@@ -255,7 +255,7 @@ class _MysqlUserState:
     def password_wo(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-        The password of the service user (write-only, not stored in state). The field is required with `password_wo_version`. The field conflicts with `password`. Value must be between `8` and `256`.
+        The password of the service user (write-only, not stored in state). The field is required with `password_wo_version`. The field conflicts with `password`. Length must be between `8` and `256`.
         """
         return pulumi.get(self, "password_wo")
 
@@ -374,9 +374,9 @@ class MysqlUser(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] authentication: Service specific authentication details. Currently only used for MySQL where accepted options are 'mysql_native_password' and 'caching_sha2_password', latter being default when this is not explicitly set. The possible values are `caching_sha2_password` and `mysql_native_password`.
-        :param pulumi.Input[_builtins.str] password: The password of the service user (auto-generated if not provided). The field conflicts with `password_wo`. Value must be between `8` and `256`.
+        :param pulumi.Input[_builtins.str] password: The password of the service user (auto-generated if not provided). The field conflicts with `password_wo`. Length must be between `8` and `256`.
         :param pulumi.Input[_builtins.str] password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-               The password of the service user (write-only, not stored in state). The field is required with `password_wo_version`. The field conflicts with `password`. Value must be between `8` and `256`.
+               The password of the service user (write-only, not stored in state). The field is required with `password_wo_version`. The field conflicts with `password`. Length must be between `8` and `256`.
         :param pulumi.Input[_builtins.int] password_wo_version: Version number for `password_wo`. Increment this to rotate the password. The field is required with `password_wo`. Minimum value: `1`.
         :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] service_name: The name of the MySQL® service user. Changing this property forces recreation of the resource.
@@ -493,9 +493,9 @@ class MysqlUser(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] access_cert: Access certificate for TLS client authentication.
         :param pulumi.Input[_builtins.str] access_key: Access key for TLS client authentication.
         :param pulumi.Input[_builtins.str] authentication: Service specific authentication details. Currently only used for MySQL where accepted options are 'mysql_native_password' and 'caching_sha2_password', latter being default when this is not explicitly set. The possible values are `caching_sha2_password` and `mysql_native_password`.
-        :param pulumi.Input[_builtins.str] password: The password of the service user (auto-generated if not provided). The field conflicts with `password_wo`. Value must be between `8` and `256`.
+        :param pulumi.Input[_builtins.str] password: The password of the service user (auto-generated if not provided). The field conflicts with `password_wo`. Length must be between `8` and `256`.
         :param pulumi.Input[_builtins.str] password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-               The password of the service user (write-only, not stored in state). The field is required with `password_wo_version`. The field conflicts with `password`. Value must be between `8` and `256`.
+               The password of the service user (write-only, not stored in state). The field is required with `password_wo_version`. The field conflicts with `password`. Length must be between `8` and `256`.
         :param pulumi.Input[_builtins.int] password_wo_version: Version number for `password_wo`. Increment this to rotate the password. The field is required with `password_wo`. Minimum value: `1`.
         :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] service_name: The name of the MySQL® service user. Changing this property forces recreation of the resource.
@@ -547,7 +547,7 @@ class MysqlUser(pulumi.CustomResource):
     @pulumi.getter
     def password(self) -> pulumi.Output[_builtins.str]:
         """
-        The password of the service user (auto-generated if not provided). The field conflicts with `password_wo`. Value must be between `8` and `256`.
+        The password of the service user (auto-generated if not provided). The field conflicts with `password_wo`. Length must be between `8` and `256`.
         """
         return pulumi.get(self, "password")
 
@@ -556,7 +556,7 @@ class MysqlUser(pulumi.CustomResource):
     def password_wo(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-        The password of the service user (write-only, not stored in state). The field is required with `password_wo_version`. The field conflicts with `password`. Value must be between `8` and `256`.
+        The password of the service user (write-only, not stored in state). The field is required with `password_wo_version`. The field conflicts with `password`. Length must be between `8` and `256`.
         """
         return pulumi.get(self, "password_wo")
 

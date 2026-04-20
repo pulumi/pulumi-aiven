@@ -30,7 +30,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? BackupHour;
         /// <summary>
-        /// Interval in hours between automatic backups. Minimum value is 3 hours. Must be a divisor of 24 (3, 4, 6, 8, 12, 24). (Applicable to ACU plans only). Example: `24`.
+        /// Enum: `12`, `24`, `3`, `4`, `6`, `8`. Interval in hours between automatic backups. Minimum value is 3 hours. Must be a divisor of 24 (3, 4, 6, 8, 12, 24). (Applicable to ACU plans only).
         /// </summary>
         public readonly int? BackupIntervalHours;
         /// <summary>
@@ -143,7 +143,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly bool? StaticIps;
         public readonly ImmutableArray<Outputs.PgPgUserConfigSwitchoverWindow> SwitchoverWindows;
         /// <summary>
-        /// Enum: `Off`, `Quorum`. Synchronous replication type. Note that the service plan also needs to support synchronous replication.
+        /// Enum: `Off`, `Quorum`. Use synchronous*commit instead. Any change to this setting will automatically update synchronous*commit. Setting the value to quorum changes synchronous*commit to remote*write, while setting it to off changes SynchronousCommit to off.
         /// </summary>
         public readonly string? SynchronousReplication;
         /// <summary>

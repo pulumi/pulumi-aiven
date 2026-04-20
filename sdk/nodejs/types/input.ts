@@ -28,663 +28,6 @@ export interface AccountAuthenticationSamlFieldMapping {
     realName?: pulumi.Input<string>;
 }
 
-export interface AlloydbomniAlloydbomni {
-    /**
-     * PgBouncer connection details for [connection pooling](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling).
-     *
-     * @deprecated This field was added by mistake and has never worked. It will be removed in future versions.
-     */
-    bouncer?: pulumi.Input<string>;
-    /**
-     * Primary AlloyDB Omni database name.
-     */
-    dbname?: pulumi.Input<string>;
-    /**
-     * AlloyDB Omni primary node host IP or name.
-     */
-    host?: pulumi.Input<string>;
-    /**
-     * The [number of allowed connections](https://aiven.io/docs/products/postgresql/reference/pg-connection-limits). Varies based on the service plan.
-     */
-    maxConnections?: pulumi.Input<number>;
-    /**
-     * AlloyDB Omni connection parameters.
-     */
-    params?: pulumi.Input<pulumi.Input<inputs.AlloydbomniAlloydbomniParam>[]>;
-    /**
-     * AlloyDB Omni admin user password.
-     */
-    password?: pulumi.Input<string>;
-    /**
-     * AlloyDB Omni port.
-     */
-    port?: pulumi.Input<number>;
-    /**
-     * AlloyDB Omni replica URI for services with a replica.
-     */
-    replicaUri?: pulumi.Input<string>;
-    /**
-     * AlloyDB Omni SSL mode setting.
-     */
-    sslmode?: pulumi.Input<string>;
-    /**
-     * AlloyDB Omni standby connection URIs.
-     */
-    standbyUris?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * AlloyDB Omni syncing connection URIs.
-     */
-    syncingUris?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * AlloyDB Omni primary connection URI.
-     */
-    uri?: pulumi.Input<string>;
-    /**
-     * AlloyDB Omni primary connection URIs.
-     */
-    uris?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * AlloyDB Omni admin user name.
-     */
-    user?: pulumi.Input<string>;
-}
-
-export interface AlloydbomniAlloydbomniParam {
-    /**
-     * Primary AlloyDB Omni database name.
-     */
-    databaseName?: pulumi.Input<string>;
-    /**
-     * AlloyDB Omni host IP or name.
-     */
-    host?: pulumi.Input<string>;
-    /**
-     * AlloyDB Omni admin user password.
-     */
-    password?: pulumi.Input<string>;
-    /**
-     * AlloyDB Omni port.
-     */
-    port?: pulumi.Input<number>;
-    /**
-     * AlloyDB Omni SSL mode setting.
-     */
-    sslmode?: pulumi.Input<string>;
-    /**
-     * AlloyDB Omni admin user name.
-     */
-    user?: pulumi.Input<string>;
-}
-
-export interface AlloydbomniAlloydbomniUserConfig {
-    /**
-     * Additional Cloud Regions for Backup Replication.
-     */
-    additionalBackupRegions?: pulumi.Input<string>;
-    /**
-     * Custom password for admin user. Defaults to random string. This must be set only when a new service is being created.
-     */
-    adminPassword?: pulumi.Input<string>;
-    /**
-     * Custom username for admin user. This must be set only when a new service is being created. Example: `avnadmin`.
-     */
-    adminUsername?: pulumi.Input<string>;
-    /**
-     * Enum: `15`, and newer. PostgreSQL major version.
-     */
-    alloydbomniVersion?: pulumi.Input<string>;
-    /**
-     * The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
-     */
-    backupHour?: pulumi.Input<number>;
-    /**
-     * The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
-     */
-    backupMinute?: pulumi.Input<number>;
-    /**
-     * Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
-     */
-    enableIpv6?: pulumi.Input<boolean>;
-    /**
-     * Enables or disables the columnar engine. When enabled, it accelerates SQL query processing. Default: `true`.
-     */
-    googleColumnarEngineEnabled?: pulumi.Input<boolean>;
-    /**
-     * Allocate the amount of RAM to store columnar data. Default: `10`.
-     */
-    googleColumnarEngineMemorySizePercentage?: pulumi.Input<number>;
-    /**
-     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
-     */
-    ipFilterObjects?: pulumi.Input<pulumi.Input<inputs.AlloydbomniAlloydbomniUserConfigIpFilterObject>[]>;
-    /**
-     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-     */
-    ipFilterStrings?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-     *
-     * @deprecated Deprecated. Use `ipFilterString` instead.
-     */
-    ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Number of nodes for the service. Example: `3`.
-     */
-    nodeCount?: pulumi.Input<number>;
-    /**
-     * postgresql.conf configuration values
-     */
-    pg?: pulumi.Input<inputs.AlloydbomniAlloydbomniUserConfigPg>;
-    /**
-     * Should the service which is being forked be a read replica (deprecated, use readReplica service integration instead).
-     */
-    pgReadReplica?: pulumi.Input<boolean>;
-    /**
-     * Name of the PG Service from which to fork (deprecated, use service_to_fork_from). This has effect only when a new service is being created. Example: `anotherservicename`.
-     */
-    pgServiceToForkFrom?: pulumi.Input<string>;
-    /**
-     * Enum: `15`, and newer. PostgreSQL major version.
-     */
-    pgVersion?: pulumi.Input<string>;
-    /**
-     * System-wide settings for the pgaudit extension
-     */
-    pgaudit?: pulumi.Input<inputs.AlloydbomniAlloydbomniUserConfigPgaudit>;
-    /**
-     * PGBouncer connection pooling settings
-     */
-    pgbouncer?: pulumi.Input<inputs.AlloydbomniAlloydbomniUserConfigPgbouncer>;
-    /**
-     * System-wide settings for pglookout
-     */
-    pglookout?: pulumi.Input<inputs.AlloydbomniAlloydbomniUserConfigPglookout>;
-    /**
-     * Allow access to selected service ports from private networks
-     */
-    privateAccess?: pulumi.Input<inputs.AlloydbomniAlloydbomniUserConfigPrivateAccess>;
-    /**
-     * Allow access to selected service components through Privatelink
-     */
-    privatelinkAccess?: pulumi.Input<inputs.AlloydbomniAlloydbomniUserConfigPrivatelinkAccess>;
-    /**
-     * Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
-     */
-    projectToForkFrom?: pulumi.Input<string>;
-    /**
-     * Allow access to selected service ports from the public Internet
-     */
-    publicAccess?: pulumi.Input<inputs.AlloydbomniAlloydbomniUserConfigPublicAccess>;
-    /**
-     * Recovery target time when forking a service. This has effect only when a new service is being created. Example: `2019-01-01 23:34:45`.
-     */
-    recoveryTargetTime?: pulumi.Input<string>;
-    /**
-     * Store logs for the service so that they are available in the HTTP API and console.
-     */
-    serviceLog?: pulumi.Input<boolean>;
-    /**
-     * Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
-     */
-    serviceToForkFrom?: pulumi.Input<string>;
-    /**
-     * Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the sharedBuffers configuration value. Changing this parameter causes a service restart. Example: `41.5`.
-     */
-    sharedBuffersPercentage?: pulumi.Input<number>;
-    /**
-     * Use static public IP addresses.
-     */
-    staticIps?: pulumi.Input<boolean>;
-    /**
-     * Enum: `off`, `quorum`. Synchronous replication type. Note that the service plan also needs to support synchronous replication.
-     */
-    synchronousReplication?: pulumi.Input<string>;
-    /**
-     * Enum: `aiven`, `timescale`. Variant of the PostgreSQL service, may affect the features that are exposed by default.
-     */
-    variant?: pulumi.Input<string>;
-    /**
-     * Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. The default is 1MB + 0.075% of total RAM (up to 32MB). Example: `4`.
-     */
-    workMem?: pulumi.Input<number>;
-}
-
-export interface AlloydbomniAlloydbomniUserConfigIpFilterObject {
-    /**
-     * Description for IP filter list entry. Example: `Production service IP range`.
-     */
-    description?: pulumi.Input<string>;
-    /**
-     * CIDR address block. Example: `10.20.0.0/16`.
-     */
-    network: pulumi.Input<string>;
-}
-
-export interface AlloydbomniAlloydbomniUserConfigPg {
-    /**
-     * Specifies a fraction of the table size to add to autovacuumAnalyzeThreshold when deciding whether to trigger an ANALYZE (e.g. `0.2` for 20% of the table size). The default is `0.2`.
-     */
-    autovacuumAnalyzeScaleFactor?: pulumi.Input<number>;
-    /**
-     * Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is `50`.
-     */
-    autovacuumAnalyzeThreshold?: pulumi.Input<number>;
-    /**
-     * Specifies the maximum age (in transactions) that a table's pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. The system launches autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. Changing this parameter causes a service restart.
-     */
-    autovacuumFreezeMaxAge?: pulumi.Input<number>;
-    /**
-     * Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is `3`. Changing this parameter causes a service restart.
-     */
-    autovacuumMaxWorkers?: pulumi.Input<number>;
-    /**
-     * Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds. The default is `60`.
-     */
-    autovacuumNaptime?: pulumi.Input<number>;
-    /**
-     * Specifies the cost delay value that will be used in automatic VACUUM operations. If `-1` is specified, the regular vacuumCostDelay value will be used. The default is `2` (upstream default).
-     */
-    autovacuumVacuumCostDelay?: pulumi.Input<number>;
-    /**
-     * Specifies the cost limit value that will be used in automatic VACUUM operations. If `-1` is specified, the regular vacuumCostLimit value will be used. The default is `-1` (upstream default).
-     */
-    autovacuumVacuumCostLimit?: pulumi.Input<number>;
-    /**
-     * Specifies a fraction of the table size to add to autovacuumVacuumThreshold when deciding whether to trigger a VACUUM (e.g. `0.2` for 20% of the table size). The default is `0.2`.
-     */
-    autovacuumVacuumScaleFactor?: pulumi.Input<number>;
-    /**
-     * Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is `50`.
-     */
-    autovacuumVacuumThreshold?: pulumi.Input<number>;
-    /**
-     * Specifies the delay between activity rounds for the background writer in milliseconds. The default is `200`. Example: `200`.
-     */
-    bgwriterDelay?: pulumi.Input<number>;
-    /**
-     * Whenever more than bgwriterFlushAfter bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes. Setting of 0 disables forced writeback. The default is `512`. Example: `512`.
-     */
-    bgwriterFlushAfter?: pulumi.Input<number>;
-    /**
-     * In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. The default is `100`. Example: `100`.
-     */
-    bgwriterLruMaxpages?: pulumi.Input<number>;
-    /**
-     * The average recent need for new buffers is multiplied by bgwriterLruMultiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is `2.0`. Example: `2`.
-     */
-    bgwriterLruMultiplier?: pulumi.Input<number>;
-    /**
-     * This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition. The default is `1000` (upstream default). Example: `1000`.
-     */
-    deadlockTimeout?: pulumi.Input<number>;
-    /**
-     * Enum: `lz4`, `pglz`. Specifies the default TOAST compression method for values of compressible columns. The default is `lz4`.
-     */
-    defaultToastCompression?: pulumi.Input<string>;
-    /**
-     * Time out sessions with open transactions after this number of milliseconds.
-     */
-    idleInTransactionSessionTimeout?: pulumi.Input<number>;
-    /**
-     * Controls system-wide use of Just-in-Time Compilation (JIT).
-     */
-    jit?: pulumi.Input<boolean>;
-    /**
-     * Causes each action executed by autovacuum to be logged if it ran for at least the specified number of milliseconds. Setting this to zero logs all autovacuum actions. Minus-one disables logging autovacuum actions. The default is `1000`.
-     */
-    logAutovacuumMinDuration?: pulumi.Input<number>;
-    /**
-     * Enum: `DEFAULT`, `TERSE`, `VERBOSE`. Controls the amount of detail written in the server log for each message that is logged.
-     */
-    logErrorVerbosity?: pulumi.Input<string>;
-    /**
-     * Enum: `'%m [%p] %q[user=%u,db=%d,app=%a] '`, `'%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '`, `'pid=%p,user=%u,db=%d,app=%a,client=%h '`, `'pid=%p,user=%u,db=%d,app=%a,client=%h,txid=%x,qid=%Q '`. Choose from one of the available log formats.
-     */
-    logLinePrefix?: pulumi.Input<string>;
-    /**
-     * Log statements that take more than this number of milliseconds to run, -1 disables.
-     */
-    logMinDurationStatement?: pulumi.Input<number>;
-    /**
-     * Log statements for each temporary file created larger than this number of kilobytes, -1 disables.
-     */
-    logTempFiles?: pulumi.Input<number>;
-    /**
-     * PostgreSQL maximum number of files that can be open per process. The default is `1000` (upstream default). Changing this parameter causes a service restart.
-     */
-    maxFilesPerProcess?: pulumi.Input<number>;
-    /**
-     * PostgreSQL maximum locks per transaction. Changing this parameter causes a service restart.
-     */
-    maxLocksPerTransaction?: pulumi.Input<number>;
-    /**
-     * PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers). The default is `4` (upstream default). Changing this parameter causes a service restart.
-     */
-    maxLogicalReplicationWorkers?: pulumi.Input<number>;
-    /**
-     * Sets the maximum number of workers that the system can support for parallel queries. The default is `8` (upstream default).
-     */
-    maxParallelWorkers?: pulumi.Input<number>;
-    /**
-     * Sets the maximum number of workers that can be started by a single Gather or Gather Merge node. The default is `2` (upstream default).
-     */
-    maxParallelWorkersPerGather?: pulumi.Input<number>;
-    /**
-     * PostgreSQL maximum predicate locks per transaction. The default is `64` (upstream default). Changing this parameter causes a service restart.
-     */
-    maxPredLocksPerTransaction?: pulumi.Input<number>;
-    /**
-     * PostgreSQL maximum prepared transactions. The default is `0`. Changing this parameter causes a service restart.
-     */
-    maxPreparedTransactions?: pulumi.Input<number>;
-    /**
-     * PostgreSQL maximum replication slots. The default is `20`. Changing this parameter causes a service restart.
-     */
-    maxReplicationSlots?: pulumi.Input<number>;
-    /**
-     * PostgreSQL maximum WAL size (MB) reserved for replication slots. If `-1` is specified, replication slots may retain an unlimited amount of WAL files. The default is `-1` (upstream default). walKeepSize minimum WAL size setting takes precedence over this.
-     */
-    maxSlotWalKeepSize?: pulumi.Input<number>;
-    /**
-     * Maximum depth of the stack in bytes. The default is `2097152` (upstream default).
-     */
-    maxStackDepth?: pulumi.Input<number>;
-    /**
-     * Max standby archive delay in milliseconds. The default is `30000` (upstream default).
-     */
-    maxStandbyArchiveDelay?: pulumi.Input<number>;
-    /**
-     * Max standby streaming delay in milliseconds. The default is `30000` (upstream default).
-     */
-    maxStandbyStreamingDelay?: pulumi.Input<number>;
-    /**
-     * Maximum number of synchronization workers per subscription. The default is `2`.
-     */
-    maxSyncWorkersPerSubscription?: pulumi.Input<number>;
-    /**
-     * PostgreSQL maximum WAL senders. The default is `20`. Changing this parameter causes a service restart.
-     */
-    maxWalSenders?: pulumi.Input<number>;
-    /**
-     * Sets the maximum number of background processes that the system can support. The default is `8`. Changing this parameter causes a service restart.
-     */
-    maxWorkerProcesses?: pulumi.Input<number>;
-    /**
-     * Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords.
-     */
-    passwordEncryption?: pulumi.Input<string>;
-    /**
-     * Sets the time interval in seconds to run pg_partman's scheduled tasks. The default is `3600`. Example: `3600`.
-     */
-    pgPartmanBgwDotInterval?: pulumi.Input<number>;
-    /**
-     * Controls which role to use for pg_partman's scheduled background tasks. Example: `myrolename`.
-     */
-    pgPartmanBgwDotRole?: pulumi.Input<string>;
-    /**
-     * Enum: `all`, `none`, `top`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default is `top`.
-     */
-    pgStatStatementsDotTrack?: pulumi.Input<string>;
-    /**
-     * PostgreSQL temporary file limit in KiB, -1 for unlimited.
-     */
-    tempFileLimit?: pulumi.Input<number>;
-    /**
-     * PostgreSQL service timezone. Example: `Europe/Helsinki`.
-     */
-    timezone?: pulumi.Input<string>;
-    /**
-     * Specifies the number of bytes reserved to track the currently executing command for each active session. Changing this parameter causes a service restart. Example: `1024`.
-     */
-    trackActivityQuerySize?: pulumi.Input<number>;
-    /**
-     * Enum: `off`, `on`. Record commit time of transactions. Changing this parameter causes a service restart.
-     */
-    trackCommitTimestamp?: pulumi.Input<string>;
-    /**
-     * Enum: `all`, `none`, `pl`. Enables tracking of function call counts and time used.
-     */
-    trackFunctions?: pulumi.Input<string>;
-    /**
-     * Enum: `off`, `on`. Enables timing of database I/O calls. The default is `off`. When on, it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
-     */
-    trackIoTiming?: pulumi.Input<string>;
-    /**
-     * Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout. Example: `60000`.
-     */
-    walSenderTimeout?: pulumi.Input<number>;
-    /**
-     * WAL flush interval in milliseconds. The default is `200`. Setting this parameter to a lower value may negatively impact performance. Example: `50`.
-     */
-    walWriterDelay?: pulumi.Input<number>;
-}
-
-export interface AlloydbomniAlloydbomniUserConfigPgaudit {
-    /**
-     * Enable pgaudit extension. When enabled, pgaudit extension will be automatically installed.Otherwise, extension will be uninstalled but auditing configurations will be preserved. Default: `false`.
-     */
-    featureEnabled?: pulumi.Input<boolean>;
-    /**
-     * Specifies that session logging should be enabled in the case where all relations in a statement are in pg_catalog. Default: `true`.
-     */
-    logCatalog?: pulumi.Input<boolean>;
-    /**
-     * Specifies whether log messages will be visible to a client process such as psql. Default: `false`.
-     */
-    logClient?: pulumi.Input<boolean>;
-    /**
-     * Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `log`, `notice`, `warning`. Specifies the log level that will be used for log entries. Default: `log`.
-     */
-    logLevel?: pulumi.Input<string>;
-    /**
-     * Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. Default: `-1`.
-     */
-    logMaxStringLength?: pulumi.Input<number>;
-    /**
-     * This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. Default: `true`.
-     */
-    logNestedStatements?: pulumi.Input<boolean>;
-    /**
-     * Specifies that audit logging should include the parameters that were passed with the statement. Default: `false`.
-     */
-    logParameter?: pulumi.Input<boolean>;
-    /**
-     * Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with <long param suppressed>. Default: `0`.
-     */
-    logParameterMaxSize?: pulumi.Input<number>;
-    /**
-     * Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
-     */
-    logRelation?: pulumi.Input<boolean>;
-    /**
-     * Log Rows. Default: `false`.
-     */
-    logRows?: pulumi.Input<boolean>;
-    /**
-     * Specifies whether logging will include the statement text and parameters (if enabled). Default: `true`.
-     */
-    logStatement?: pulumi.Input<boolean>;
-    /**
-     * Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. Default: `false`.
-     */
-    logStatementOnce?: pulumi.Input<boolean>;
-    /**
-     * Specifies which classes of statements will be logged by session audit logging.
-     */
-    logs?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Specifies the master role to use for object audit logging.
-     */
-    role?: pulumi.Input<string>;
-}
-
-export interface AlloydbomniAlloydbomniUserConfigPgbouncer {
-    /**
-     * If the automatically created database pools have been unused this many seconds, they are freed. If 0 then timeout is disabled. (seconds). Default: `3600`.
-     */
-    autodbIdleTimeout?: pulumi.Input<number>;
-    /**
-     * Do not allow more than this many server connections per database (regardless of user). Setting it to 0 means unlimited. Example: `0`.
-     */
-    autodbMaxDbConnections?: pulumi.Input<number>;
-    /**
-     * Enum: `session`, `statement`, `transaction`. PGBouncer pool mode. Default: `transaction`.
-     */
-    autodbPoolMode?: pulumi.Input<string>;
-    /**
-     * If non-zero then create automatically a pool of that size per user when a pool doesn't exist. Default: `0`.
-     */
-    autodbPoolSize?: pulumi.Input<number>;
-    /**
-     * List of parameters to ignore when given in startup packet.
-     */
-    ignoreStartupParameters?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * PgBouncer tracks protocol-level named prepared statements related commands sent by the client in transaction and statement pooling modes when maxPreparedStatements is set to a non-zero value. Setting it to 0 disables prepared statements. maxPreparedStatements defaults to 100, and its maximum is 3000. Default: `100`.
-     */
-    maxPreparedStatements?: pulumi.Input<number>;
-    /**
-     * Add more server connections to pool if below this number. Improves behavior when usual load comes suddenly back after period of total inactivity. The value is effectively capped at the pool size. Default: `0`.
-     */
-    minPoolSize?: pulumi.Input<number>;
-    /**
-     * If a server connection has been idle more than this many seconds it will be dropped. If 0 then timeout is disabled. (seconds). Default: `600`.
-     */
-    serverIdleTimeout?: pulumi.Input<number>;
-    /**
-     * The pooler will close an unused server connection that has been connected longer than this. (seconds). Default: `3600`.
-     */
-    serverLifetime?: pulumi.Input<number>;
-    /**
-     * Run serverResetQuery (DISCARD ALL) in all pooling modes. Default: `false`.
-     */
-    serverResetQueryAlways?: pulumi.Input<boolean>;
-}
-
-export interface AlloydbomniAlloydbomniUserConfigPglookout {
-    /**
-     * Number of seconds of master unavailability before triggering database failover to standby. Default: `60`.
-     */
-    maxFailoverReplicationTimeLag?: pulumi.Input<number>;
-}
-
-export interface AlloydbomniAlloydbomniUserConfigPrivateAccess {
-    /**
-     * Allow clients to connect to pg with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-     */
-    pg?: pulumi.Input<boolean>;
-    /**
-     * Allow clients to connect to pgbouncer with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-     */
-    pgbouncer?: pulumi.Input<boolean>;
-    /**
-     * Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-     */
-    prometheus?: pulumi.Input<boolean>;
-}
-
-export interface AlloydbomniAlloydbomniUserConfigPrivatelinkAccess {
-    /**
-     * Enable pg.
-     */
-    pg?: pulumi.Input<boolean>;
-    /**
-     * Enable pgbouncer.
-     */
-    pgbouncer?: pulumi.Input<boolean>;
-    /**
-     * Enable prometheus.
-     */
-    prometheus?: pulumi.Input<boolean>;
-}
-
-export interface AlloydbomniAlloydbomniUserConfigPublicAccess {
-    /**
-     * Allow clients to connect to pg from the public internet for service nodes that are in a project VPC or another type of private network.
-     */
-    pg?: pulumi.Input<boolean>;
-    /**
-     * Allow clients to connect to pgbouncer from the public internet for service nodes that are in a project VPC or another type of private network.
-     */
-    pgbouncer?: pulumi.Input<boolean>;
-    /**
-     * Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
-     */
-    prometheus?: pulumi.Input<boolean>;
-}
-
-export interface AlloydbomniComponent {
-    /**
-     * Service component name
-     */
-    component?: pulumi.Input<string>;
-    /**
-     * Connection info for connecting to the service component. This is a combination of host and port.
-     */
-    connectionUri?: pulumi.Input<string>;
-    /**
-     * Host name for connecting to the service component
-     */
-    host?: pulumi.Input<string>;
-    /**
-     * Kafka authentication method. This is a value specific to the 'kafka' service component
-     */
-    kafkaAuthenticationMethod?: pulumi.Input<string>;
-    /**
-     * Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
-     */
-    kafkaSslCa?: pulumi.Input<string>;
-    /**
-     * Port number for connecting to the service component
-     */
-    port?: pulumi.Input<number>;
-    /**
-     * Privatelink connection ID
-     */
-    privatelinkConnectionId?: pulumi.Input<string>;
-    /**
-     * Network access route
-     */
-    route?: pulumi.Input<string>;
-    /**
-     * Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
-     */
-    ssl?: pulumi.Input<boolean>;
-    /**
-     * DNS usage name
-     */
-    usage?: pulumi.Input<string>;
-}
-
-export interface AlloydbomniServiceIntegration {
-    /**
-     * Type of the service integration. The possible value is `readReplica`.
-     */
-    integrationType: pulumi.Input<string>;
-    /**
-     * Name of the source service
-     */
-    sourceServiceName: pulumi.Input<string>;
-}
-
-export interface AlloydbomniTag {
-    /**
-     * Service tag key
-     */
-    key: pulumi.Input<string>;
-    /**
-     * Service tag value
-     */
-    value: pulumi.Input<string>;
-}
-
-export interface AlloydbomniTechEmail {
-    /**
-     * An email address to contact for technical issues
-     */
-    email: pulumi.Input<string>;
-}
-
 export interface BillingGroupTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
@@ -974,7 +317,7 @@ export interface ClickhouseClickhouseUserConfig {
      */
     backupMinute?: pulumi.Input<number>;
     /**
-     * Enum: `25.3`, and newer. ClickHouse major version.
+     * Enum: `25.3`, `25.8`, and newer. ClickHouse major version.
      */
     clickhouseVersion?: pulumi.Input<string>;
     /**
@@ -1228,11 +571,61 @@ export interface ClickhouseTechEmail {
     email: pulumi.Input<string>;
 }
 
+export interface ClickhouseUserTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: pulumi.Input<string>;
+    /**
+     * Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+     *
+     * @deprecated Use operation-specific timeouts instead. This field will be removed in the next major version.
+     */
+    default?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: pulumi.Input<string>;
+}
+
 export interface CmkTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
     create?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: pulumi.Input<string>;
+}
+
+export interface ConnectionPoolTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: pulumi.Input<string>;
+    /**
+     * Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+     *
+     * @deprecated Use operation-specific timeouts instead. This field will be removed in the next major version.
+     */
+    default?: pulumi.Input<string>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
      */
@@ -1881,6 +1274,34 @@ export interface GetClickhouseDatabaseTimeoutsArgs {
     read?: pulumi.Input<string>;
 }
 
+export interface GetClickhouseUserTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: string;
+}
+
+export interface GetClickhouseUserTimeoutsArgs {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: pulumi.Input<string>;
+}
+
+export interface GetConnectionPoolTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: string;
+}
+
+export interface GetConnectionPoolTimeoutsArgs {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: pulumi.Input<string>;
+}
+
 export interface GetFlinkApplicationTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
@@ -2063,6 +1484,34 @@ export interface GetMysqlUserTimeouts {
 }
 
 export interface GetMysqlUserTimeoutsArgs {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: pulumi.Input<string>;
+}
+
+export interface GetOpensearchSecurityPluginConfigTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: string;
+}
+
+export interface GetOpensearchSecurityPluginConfigTimeoutsArgs {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: pulumi.Input<string>;
+}
+
+export interface GetOpensearchUserTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: string;
+}
+
+export interface GetOpensearchUserTimeoutsArgs {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
@@ -2825,6 +2274,10 @@ export interface GetServiceListService {
      */
     diskSpaceMb?: number;
     /**
+     * True when the service uses a cluster plan with dedicated node groups.
+     */
+    isClusterPlan?: boolean;
+    /**
      * Number of service nodes in the active plan.
      */
     nodeCount?: number;
@@ -2891,6 +2344,10 @@ export interface GetServiceListServiceArgs {
      * Megabytes of disk space for data storage.
      */
     diskSpaceMb?: pulumi.Input<number>;
+    /**
+     * True when the service uses a cluster plan with dedicated node groups.
+     */
+    isClusterPlan?: pulumi.Input<boolean>;
     /**
      * Number of service nodes in the active plan.
      */
@@ -3019,6 +2476,10 @@ export interface GetServicePlanBackupConfigArgs {
 
 export interface GetServicePlanListServicePlan {
     /**
+     * True when the plan is a cluster plan with dedicated node groups.
+     */
+    isClusterPlan?: boolean;
+    /**
      * Maximum amount of system memory as a percentage (0-100) the service can actually use after taking into account management overhead. This is relevant for memory bound services for which some service management operations require allocating proportional amount of memory on top the basic load.
      */
     maxMemoryPercent?: number;
@@ -3026,6 +2487,10 @@ export interface GetServicePlanListServicePlan {
      * Number of nodes in this service plan.
      */
     nodeCount?: number;
+    /**
+     * Number of primary nodes in this Valkey cluster service plan.
+     */
+    primaryCount?: number;
     /**
      * Service plan hourly price per cloud region.
      */
@@ -3046,6 +2511,10 @@ export interface GetServicePlanListServicePlan {
 
 export interface GetServicePlanListServicePlanArgs {
     /**
+     * True when the plan is a cluster plan with dedicated node groups.
+     */
+    isClusterPlan?: pulumi.Input<boolean>;
+    /**
      * Maximum amount of system memory as a percentage (0-100) the service can actually use after taking into account management overhead. This is relevant for memory bound services for which some service management operations require allocating proportional amount of memory on top the basic load.
      */
     maxMemoryPercent?: pulumi.Input<number>;
@@ -3053,6 +2522,10 @@ export interface GetServicePlanListServicePlanArgs {
      * Number of nodes in this service plan.
      */
     nodeCount?: pulumi.Input<number>;
+    /**
+     * Number of primary nodes in this Valkey cluster service plan.
+     */
+    primaryCount?: pulumi.Input<number>;
     /**
      * Service plan hourly price per cloud region.
      */
@@ -3786,239 +3259,6 @@ export interface GrafanaTechEmail {
     email: pulumi.Input<string>;
 }
 
-export interface InfluxDbComponent {
-    /**
-     * Service component name
-     */
-    component?: pulumi.Input<string>;
-    /**
-     * Connection info for connecting to the service component. This is a combination of host and port.
-     */
-    connectionUri?: pulumi.Input<string>;
-    /**
-     * Host name for connecting to the service component
-     */
-    host?: pulumi.Input<string>;
-    /**
-     * Kafka authentication method. This is a value specific to the 'kafka' service component
-     */
-    kafkaAuthenticationMethod?: pulumi.Input<string>;
-    /**
-     * Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
-     */
-    kafkaSslCa?: pulumi.Input<string>;
-    /**
-     * Port number for connecting to the service component
-     */
-    port?: pulumi.Input<number>;
-    /**
-     * Privatelink connection ID
-     */
-    privatelinkConnectionId?: pulumi.Input<string>;
-    /**
-     * Network access route
-     */
-    route?: pulumi.Input<string>;
-    /**
-     * Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
-     */
-    ssl?: pulumi.Input<boolean>;
-    /**
-     * DNS usage name
-     */
-    usage?: pulumi.Input<string>;
-}
-
-export interface InfluxDbInfluxdb {
-    /**
-     * Name of the default InfluxDB database
-     */
-    databaseName?: pulumi.Input<string>;
-    /**
-     * InfluxDB password
-     */
-    password?: pulumi.Input<string>;
-    /**
-     * InfluxDB server URIs.
-     */
-    uris?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * InfluxDB username
-     */
-    username?: pulumi.Input<string>;
-}
-
-export interface InfluxDbInfluxdbUserConfig {
-    /**
-     * Additional Cloud Regions for Backup Replication.
-     *
-     * @deprecated This property is deprecated.
-     */
-    additionalBackupRegions?: pulumi.Input<string>;
-    /**
-     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. When you set a custom domain for a service deployed in a VPC, the service certificate is only created for the public-* hostname and the custom domain. Example: `grafana.example.org`.
-     */
-    customDomain?: pulumi.Input<string>;
-    /**
-     * influxdb.conf configuration values
-     */
-    influxdb?: pulumi.Input<inputs.InfluxDbInfluxdbUserConfigInfluxdb>;
-    /**
-     * Enum: `1.8`, and newer. InfluxDB major version. Default: `1.8`.
-     */
-    influxdbVersion?: pulumi.Input<string>;
-    /**
-     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
-     */
-    ipFilterObjects?: pulumi.Input<pulumi.Input<inputs.InfluxDbInfluxdbUserConfigIpFilterObject>[]>;
-    /**
-     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-     */
-    ipFilterStrings?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-     *
-     * @deprecated Deprecated. Use `ipFilterString` instead.
-     */
-    ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Allow access to selected service ports from private networks
-     */
-    privateAccess?: pulumi.Input<inputs.InfluxDbInfluxdbUserConfigPrivateAccess>;
-    /**
-     * Allow access to selected service components through Privatelink
-     */
-    privatelinkAccess?: pulumi.Input<inputs.InfluxDbInfluxdbUserConfigPrivatelinkAccess>;
-    /**
-     * Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
-     */
-    projectToForkFrom?: pulumi.Input<string>;
-    /**
-     * Allow access to selected service ports from the public Internet
-     */
-    publicAccess?: pulumi.Input<inputs.InfluxDbInfluxdbUserConfigPublicAccess>;
-    /**
-     * Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
-     */
-    recoveryBasebackupName?: pulumi.Input<string>;
-    /**
-     * Store logs for the service so that they are available in the HTTP API and console.
-     */
-    serviceLog?: pulumi.Input<boolean>;
-    /**
-     * Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
-     */
-    serviceToForkFrom?: pulumi.Input<string>;
-    /**
-     * Use static public IP addresses.
-     */
-    staticIps?: pulumi.Input<boolean>;
-}
-
-export interface InfluxDbInfluxdbUserConfigInfluxdb {
-    /**
-     * The maximum duration in seconds before a query is logged as a slow query. Setting this to 0 (the default) will never log slow queries.
-     */
-    logQueriesAfter?: pulumi.Input<number>;
-    /**
-     * Maximum number of connections to InfluxDB. Setting this to 0 (default) means no limit. If using max_connection_limit, it is recommended to set the value to be large enough in order to not block clients unnecessarily.
-     */
-    maxConnectionLimit?: pulumi.Input<number>;
-    /**
-     * The maximum number of rows returned in a non-chunked query. Setting this to 0 (the default) allows an unlimited number to be returned.
-     */
-    maxRowLimit?: pulumi.Input<number>;
-    /**
-     * The maximum number of `GROUP BY time()` buckets that can be processed in a query. Setting this to 0 (the default) allows an unlimited number to be processed.
-     */
-    maxSelectBuckets?: pulumi.Input<number>;
-    /**
-     * The maximum number of points that can be processed in a SELECT statement. Setting this to 0 (the default) allows an unlimited number to be processed.
-     */
-    maxSelectPoint?: pulumi.Input<number>;
-    /**
-     * Whether queries should be logged before execution. May log sensitive data contained within a query.
-     */
-    queryLogEnabled?: pulumi.Input<boolean>;
-    /**
-     * The maximum duration in seconds before a query is killed. Setting this to 0 (the default) will never kill slow queries.
-     */
-    queryTimeout?: pulumi.Input<number>;
-}
-
-export interface InfluxDbInfluxdbUserConfigIpFilterObject {
-    /**
-     * Description for IP filter list entry. Example: `Production service IP range`.
-     */
-    description?: pulumi.Input<string>;
-    /**
-     * CIDR address block. Example: `10.20.0.0/16`.
-     */
-    network: pulumi.Input<string>;
-}
-
-export interface InfluxDbInfluxdbUserConfigPrivateAccess {
-    /**
-     * Allow clients to connect to influxdb with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-     */
-    influxdb?: pulumi.Input<boolean>;
-    /**
-     * Allow clients to connect to userBackup with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-     */
-    userBackup?: pulumi.Input<boolean>;
-}
-
-export interface InfluxDbInfluxdbUserConfigPrivatelinkAccess {
-    /**
-     * Enable influxdb.
-     */
-    influxdb?: pulumi.Input<boolean>;
-    /**
-     * Enable user_backup.
-     */
-    userBackup?: pulumi.Input<boolean>;
-}
-
-export interface InfluxDbInfluxdbUserConfigPublicAccess {
-    /**
-     * Allow clients to connect to influxdb from the public internet for service nodes that are in a project VPC or another type of private network.
-     */
-    influxdb?: pulumi.Input<boolean>;
-    /**
-     * Allow clients to connect to userBackup from the public internet for service nodes that are in a project VPC or another type of private network.
-     */
-    userBackup?: pulumi.Input<boolean>;
-}
-
-export interface InfluxDbServiceIntegration {
-    /**
-     * Type of the service integration
-     */
-    integrationType: pulumi.Input<string>;
-    /**
-     * Name of the source service
-     */
-    sourceServiceName: pulumi.Input<string>;
-}
-
-export interface InfluxDbTag {
-    /**
-     * Service tag key
-     */
-    key: pulumi.Input<string>;
-    /**
-     * Service tag value
-     */
-    value: pulumi.Input<string>;
-}
-
-export interface InfluxDbTechEmail {
-    /**
-     * An email address to contact for technical issues
-     */
-    email: pulumi.Input<string>;
-}
-
 export interface KafkaComponent {
     /**
      * Service component name
@@ -4441,7 +3681,7 @@ export interface KafkaKafkaUserConfig {
      */
     aivenKafkaTopicMessages?: pulumi.Input<boolean>;
     /**
-     * Interval in hours between automatic backups. Minimum value is 3 hours. Must be a divisor of 24 (3, 4, 6, 8, 12, 24). (Applicable to ACU plans only). Example: `24`.
+     * Enum: `12`, `24`, `3`, `4`, `6`, `8`. Interval in hours between automatic backups. Minimum value is 3 hours. Must be a divisor of 24 (3, 4, 6, 8, 12, 24). (Applicable to ACU plans only).
      */
     backupIntervalHours?: pulumi.Input<number>;
     /**
@@ -5485,506 +4725,6 @@ export interface KafkaTopicTag {
      * Tag value. Maximum length: `256`.
      */
     value?: pulumi.Input<string>;
-}
-
-export interface M3AggregatorComponent {
-    /**
-     * Service component name
-     */
-    component?: pulumi.Input<string>;
-    /**
-     * Connection info for connecting to the service component. This is a combination of host and port.
-     */
-    connectionUri?: pulumi.Input<string>;
-    /**
-     * Host name for connecting to the service component
-     */
-    host?: pulumi.Input<string>;
-    /**
-     * Kafka authentication method. This is a value specific to the 'kafka' service component
-     */
-    kafkaAuthenticationMethod?: pulumi.Input<string>;
-    /**
-     * Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
-     */
-    kafkaSslCa?: pulumi.Input<string>;
-    /**
-     * Port number for connecting to the service component
-     */
-    port?: pulumi.Input<number>;
-    /**
-     * Privatelink connection ID
-     */
-    privatelinkConnectionId?: pulumi.Input<string>;
-    /**
-     * Network access route
-     */
-    route?: pulumi.Input<string>;
-    /**
-     * Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
-     */
-    ssl?: pulumi.Input<boolean>;
-    /**
-     * DNS usage name
-     */
-    usage?: pulumi.Input<string>;
-}
-
-export interface M3AggregatorM3aggregator {
-    /**
-     * M3 Aggregator HTTP URI.
-     */
-    aggregatorHttpUri?: pulumi.Input<string>;
-    /**
-     * M3 Aggregator server URIs.
-     */
-    uris?: pulumi.Input<pulumi.Input<string>[]>;
-}
-
-export interface M3AggregatorM3aggregatorUserConfig {
-    /**
-     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
-     */
-    customDomain?: pulumi.Input<string>;
-    /**
-     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
-     */
-    ipFilterObjects?: pulumi.Input<pulumi.Input<inputs.M3AggregatorM3aggregatorUserConfigIpFilterObject>[]>;
-    /**
-     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-     */
-    ipFilterStrings?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-     *
-     * @deprecated Deprecated. Use `ipFilterString` instead.
-     */
-    ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Enum: `1.1`, `1.2`, `1.5`, and newer. M3 major version (deprecated, use m3aggregator_version).
-     */
-    m3Version?: pulumi.Input<string>;
-    /**
-     * Enum: `1.1`, `1.2`, `1.5`, and newer. M3 major version (the minimum compatible version).
-     */
-    m3aggregatorVersion?: pulumi.Input<string>;
-    /**
-     * Store logs for the service so that they are available in the HTTP API and console.
-     */
-    serviceLog?: pulumi.Input<boolean>;
-    /**
-     * Use static public IP addresses.
-     */
-    staticIps?: pulumi.Input<boolean>;
-}
-
-export interface M3AggregatorM3aggregatorUserConfigIpFilterObject {
-    /**
-     * Description for IP filter list entry. Example: `Production service IP range`.
-     */
-    description?: pulumi.Input<string>;
-    /**
-     * CIDR address block. Example: `10.20.0.0/16`.
-     */
-    network: pulumi.Input<string>;
-}
-
-export interface M3AggregatorServiceIntegration {
-    /**
-     * Type of the service integration
-     */
-    integrationType: pulumi.Input<string>;
-    /**
-     * Name of the source service
-     */
-    sourceServiceName: pulumi.Input<string>;
-}
-
-export interface M3AggregatorTag {
-    /**
-     * Service tag key
-     */
-    key: pulumi.Input<string>;
-    /**
-     * Service tag value
-     */
-    value: pulumi.Input<string>;
-}
-
-export interface M3AggregatorTechEmail {
-    /**
-     * An email address to contact for technical issues
-     */
-    email: pulumi.Input<string>;
-}
-
-export interface M3DbComponent {
-    /**
-     * Service component name
-     */
-    component?: pulumi.Input<string>;
-    /**
-     * Connection info for connecting to the service component. This is a combination of host and port.
-     */
-    connectionUri?: pulumi.Input<string>;
-    /**
-     * Host name for connecting to the service component
-     */
-    host?: pulumi.Input<string>;
-    /**
-     * Kafka authentication method. This is a value specific to the 'kafka' service component
-     */
-    kafkaAuthenticationMethod?: pulumi.Input<string>;
-    /**
-     * Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
-     */
-    kafkaSslCa?: pulumi.Input<string>;
-    /**
-     * Port number for connecting to the service component
-     */
-    port?: pulumi.Input<number>;
-    /**
-     * Privatelink connection ID
-     */
-    privatelinkConnectionId?: pulumi.Input<string>;
-    /**
-     * Network access route
-     */
-    route?: pulumi.Input<string>;
-    /**
-     * Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
-     */
-    ssl?: pulumi.Input<boolean>;
-    /**
-     * DNS usage name
-     */
-    usage?: pulumi.Input<string>;
-}
-
-export interface M3DbM3db {
-    /**
-     * M3DB cluster URI.
-     */
-    httpClusterUri?: pulumi.Input<string>;
-    /**
-     * M3DB node URI.
-     */
-    httpNodeUri?: pulumi.Input<string>;
-    /**
-     * InfluxDB URI.
-     */
-    influxdbUri?: pulumi.Input<string>;
-    /**
-     * Prometheus remote read URI.
-     */
-    prometheusRemoteReadUri?: pulumi.Input<string>;
-    /**
-     * Prometheus remote write URI.
-     */
-    prometheusRemoteWriteUri?: pulumi.Input<string>;
-    /**
-     * M3DB server URIs.
-     */
-    uris?: pulumi.Input<pulumi.Input<string>[]>;
-}
-
-export interface M3DbM3dbUserConfig {
-    /**
-     * Additional Cloud Regions for Backup Replication.
-     */
-    additionalBackupRegions?: pulumi.Input<string>;
-    /**
-     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
-     */
-    customDomain?: pulumi.Input<string>;
-    /**
-     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
-     */
-    ipFilterObjects?: pulumi.Input<pulumi.Input<inputs.M3DbM3dbUserConfigIpFilterObject>[]>;
-    /**
-     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-     */
-    ipFilterStrings?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-     *
-     * @deprecated Deprecated. Use `ipFilterString` instead.
-     */
-    ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * M3 limits
-     */
-    limits?: pulumi.Input<inputs.M3DbM3dbUserConfigLimits>;
-    /**
-     * M3 specific configuration options
-     */
-    m3?: pulumi.Input<inputs.M3DbM3dbUserConfigM3>;
-    /**
-     * Enum: `1.1`, `1.2`, `1.5`, and newer. M3 major version (deprecated, use m3db_version).
-     */
-    m3Version?: pulumi.Input<string>;
-    /**
-     * Enables access to Graphite Carbon plaintext metrics ingestion. It can be enabled only for services inside VPCs. The metrics are written to aggregated namespaces only.
-     */
-    m3coordinatorEnableGraphiteCarbonIngest?: pulumi.Input<boolean>;
-    /**
-     * Enum: `1.1`, `1.2`, `1.5`, and newer. M3 major version (the minimum compatible version).
-     */
-    m3dbVersion?: pulumi.Input<string>;
-    /**
-     * List of M3 namespaces
-     */
-    namespaces?: pulumi.Input<pulumi.Input<inputs.M3DbM3dbUserConfigNamespace>[]>;
-    /**
-     * Allow access to selected service ports from private networks
-     */
-    privateAccess?: pulumi.Input<inputs.M3DbM3dbUserConfigPrivateAccess>;
-    /**
-     * Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
-     */
-    projectToForkFrom?: pulumi.Input<string>;
-    /**
-     * Allow access to selected service ports from the public Internet
-     */
-    publicAccess?: pulumi.Input<inputs.M3DbM3dbUserConfigPublicAccess>;
-    /**
-     * M3 rules
-     */
-    rules?: pulumi.Input<inputs.M3DbM3dbUserConfigRules>;
-    /**
-     * Store logs for the service so that they are available in the HTTP API and console.
-     */
-    serviceLog?: pulumi.Input<boolean>;
-    /**
-     * Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
-     */
-    serviceToForkFrom?: pulumi.Input<string>;
-    /**
-     * Use static public IP addresses.
-     */
-    staticIps?: pulumi.Input<boolean>;
-}
-
-export interface M3DbM3dbUserConfigIpFilterObject {
-    /**
-     * Description for IP filter list entry. Example: `Production service IP range`.
-     */
-    description?: pulumi.Input<string>;
-    /**
-     * CIDR address block. Example: `10.20.0.0/16`.
-     */
-    network: pulumi.Input<string>;
-}
-
-export interface M3DbM3dbUserConfigLimits {
-    /**
-     * The maximum number of blocks that can be read in a given lookback period. Example: `20000`.
-     */
-    maxRecentlyQueriedSeriesBlocks?: pulumi.Input<number>;
-    /**
-     * The maximum number of disk bytes that can be read in a given lookback period. Example: `104857600`.
-     */
-    maxRecentlyQueriedSeriesDiskBytesRead?: pulumi.Input<number>;
-    /**
-     * The lookback period for `maxRecentlyQueriedSeriesBlocks` and `maxRecentlyQueriedSeriesDiskBytesRead`. Example: `15s`.
-     */
-    maxRecentlyQueriedSeriesLookback?: pulumi.Input<string>;
-    /**
-     * The maximum number of docs fetched in single query. Example: `100000`.
-     */
-    queryDocs?: pulumi.Input<number>;
-    /**
-     * When query limits are exceeded, whether to return error or return partial results.
-     */
-    queryRequireExhaustive?: pulumi.Input<boolean>;
-    /**
-     * The maximum number of series fetched in single query. Example: `100000`.
-     */
-    querySeries?: pulumi.Input<number>;
-}
-
-export interface M3DbM3dbUserConfigM3 {
-    /**
-     * M3 Tag Options
-     */
-    tagOptions?: pulumi.Input<inputs.M3DbM3dbUserConfigM3TagOptions>;
-}
-
-export interface M3DbM3dbUserConfigM3TagOptions {
-    /**
-     * Allows for duplicate tags to appear on series (not allowed by default).
-     */
-    allowTagNameDuplicates?: pulumi.Input<boolean>;
-    /**
-     * Allows for empty tags to appear on series (not allowed by default).
-     */
-    allowTagValueEmpty?: pulumi.Input<boolean>;
-}
-
-export interface M3DbM3dbUserConfigNamespace {
-    /**
-     * The name of the namespace. Example: `default`.
-     */
-    name: pulumi.Input<string>;
-    /**
-     * Namespace options
-     */
-    options?: pulumi.Input<inputs.M3DbM3dbUserConfigNamespaceOptions>;
-    /**
-     * The resolution for an aggregated namespace. Example: `30s`.
-     */
-    resolution?: pulumi.Input<string>;
-    /**
-     * Enum: `aggregated`, `unaggregated`. The type of aggregation (aggregated/unaggregated).
-     */
-    type: pulumi.Input<string>;
-}
-
-export interface M3DbM3dbUserConfigNamespaceOptions {
-    /**
-     * Retention options
-     */
-    retentionOptions: pulumi.Input<inputs.M3DbM3dbUserConfigNamespaceOptionsRetentionOptions>;
-    /**
-     * Controls whether M3DB will create snapshot files for this namespace.
-     */
-    snapshotEnabled?: pulumi.Input<boolean>;
-    /**
-     * Controls whether M3DB will include writes to this namespace in the commitlog.
-     */
-    writesToCommitlog?: pulumi.Input<boolean>;
-}
-
-export interface M3DbM3dbUserConfigNamespaceOptionsRetentionOptions {
-    /**
-     * Controls how long we wait before expiring stale data. Example: `5m`.
-     */
-    blockDataExpiryDuration?: pulumi.Input<string>;
-    /**
-     * Controls how long to keep a block in memory before flushing to a fileset on disk. Example: `2h`.
-     */
-    blocksizeDuration?: pulumi.Input<string>;
-    /**
-     * Controls how far into the future writes to the namespace will be accepted. Example: `10m`.
-     */
-    bufferFutureDuration?: pulumi.Input<string>;
-    /**
-     * Controls how far into the past writes to the namespace will be accepted. Example: `10m`.
-     */
-    bufferPastDuration?: pulumi.Input<string>;
-    /**
-     * Controls the duration of time that M3DB will retain data for the namespace. Example: `48h`.
-     */
-    retentionPeriodDuration?: pulumi.Input<string>;
-}
-
-export interface M3DbM3dbUserConfigPrivateAccess {
-    /**
-     * Allow clients to connect to m3coordinator with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-     */
-    m3coordinator?: pulumi.Input<boolean>;
-}
-
-export interface M3DbM3dbUserConfigPublicAccess {
-    /**
-     * Allow clients to connect to m3coordinator from the public internet for service nodes that are in a project VPC or another type of private network.
-     */
-    m3coordinator?: pulumi.Input<boolean>;
-}
-
-export interface M3DbM3dbUserConfigRules {
-    /**
-     * List of M3 mapping rules
-     */
-    mappings?: pulumi.Input<pulumi.Input<inputs.M3DbM3dbUserConfigRulesMapping>[]>;
-}
-
-export interface M3DbM3dbUserConfigRulesMapping {
-    /**
-     * List of aggregations to be applied.
-     */
-    aggregations?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Only store the derived metric (as specified in the roll-up rules), if any.
-     */
-    drop?: pulumi.Input<boolean>;
-    /**
-     * Matching metric names with wildcards (using __name__:wildcard) or matching tags and their (optionally wildcarded) values. For value, ! can be used at start of value for negation, and multiple filters can be supplied using space as separator. Example: `__name__:disk_* host:important-42 mount:!*&#47;sda`.
-     */
-    filter: pulumi.Input<string>;
-    /**
-     * The (optional) name of the rule. Example: `important disk metrics`.
-     */
-    name?: pulumi.Input<string>;
-    /**
-     * This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by glob (=wildcards).
-     *
-     * @deprecated Deprecated. Use `namespacesString` instead.
-     */
-    namespaces?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by exact match of retention period and resolution
-     */
-    namespacesObjects?: pulumi.Input<pulumi.Input<inputs.M3DbM3dbUserConfigRulesMappingNamespacesObject>[]>;
-    /**
-     * This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by glob (=wildcards).
-     */
-    namespacesStrings?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * List of tags to be appended to matching metrics
-     */
-    tags?: pulumi.Input<pulumi.Input<inputs.M3DbM3dbUserConfigRulesMappingTag>[]>;
-}
-
-export interface M3DbM3dbUserConfigRulesMappingNamespacesObject {
-    /**
-     * The resolution for the matching namespace. Example: `30s`.
-     */
-    resolution: pulumi.Input<string>;
-    /**
-     * The retention period of the matching namespace. Example: `48h`.
-     */
-    retention?: pulumi.Input<string>;
-}
-
-export interface M3DbM3dbUserConfigRulesMappingTag {
-    /**
-     * Name of the tag. Example: `myTag`.
-     */
-    name: pulumi.Input<string>;
-    /**
-     * Value of the tag. Example: `myValue`.
-     */
-    value: pulumi.Input<string>;
-}
-
-export interface M3DbServiceIntegration {
-    /**
-     * Type of the service integration
-     */
-    integrationType: pulumi.Input<string>;
-    /**
-     * Name of the source service
-     */
-    sourceServiceName: pulumi.Input<string>;
-}
-
-export interface M3DbTag {
-    /**
-     * Service tag key
-     */
-    key: pulumi.Input<string>;
-    /**
-     * Service tag value
-     */
-    value: pulumi.Input<string>;
-}
-
-export interface M3DbTechEmail {
-    /**
-     * An email address to contact for technical issues
-     */
-    email: pulumi.Input<string>;
 }
 
 export interface MySqlComponent {
@@ -7753,6 +6493,56 @@ export interface OpenSearchTechEmail {
     email: pulumi.Input<string>;
 }
 
+export interface OpensearchSecurityPluginConfigTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: pulumi.Input<string>;
+    /**
+     * Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+     *
+     * @deprecated Use operation-specific timeouts instead. This field will be removed in the next major version.
+     */
+    default?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: pulumi.Input<string>;
+}
+
+export interface OpensearchUserTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: pulumi.Input<string>;
+    /**
+     * Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+     *
+     * @deprecated Use operation-specific timeouts instead. This field will be removed in the next major version.
+     */
+    default?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: pulumi.Input<string>;
+}
+
 export interface OrganizationAddressTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
@@ -7879,7 +6669,7 @@ export interface OrganizationPermissionPermission {
      */
     createTime?: pulumi.Input<string>;
     /**
-     * List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant". The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `readOnly`, `role:organization:admin`, `role:project:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
+     * List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant". The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `readOnly`, `role:organization:admin`, `role:project:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:metrics:read`, `service:secrets:read` and `service:users:write`.
      */
     permissions: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -8182,7 +6972,7 @@ export interface PgPgUserConfig {
      */
     backupHour?: pulumi.Input<number>;
     /**
-     * Interval in hours between automatic backups. Minimum value is 3 hours. Must be a divisor of 24 (3, 4, 6, 8, 12, 24). (Applicable to ACU plans only). Example: `24`.
+     * Enum: `12`, `24`, `3`, `4`, `6`, `8`. Interval in hours between automatic backups. Minimum value is 3 hours. Must be a divisor of 24 (3, 4, 6, 8, 12, 24). (Applicable to ACU plans only).
      */
     backupIntervalHours?: pulumi.Input<number>;
     /**
@@ -8299,7 +7089,7 @@ export interface PgPgUserConfig {
     staticIps?: pulumi.Input<boolean>;
     switchoverWindows?: pulumi.Input<pulumi.Input<inputs.PgPgUserConfigSwitchoverWindow>[]>;
     /**
-     * Enum: `off`, `quorum`. Synchronous replication type. Note that the service plan also needs to support synchronous replication.
+     * Enum: `off`, `quorum`. Use synchronous*commit instead. Any change to this setting will automatically update synchronous*commit. Setting the value to quorum changes synchronous*commit to remote*write, while setting it to off changes synchronousCommit to off.
      */
     synchronousReplication?: pulumi.Input<string>;
     /**
@@ -8563,6 +7353,10 @@ export interface PgPgUserConfigPg {
      * Enum: `all`, `none`, `top`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default is `top`.
      */
     pgStatStatementsDotTrack?: pulumi.Input<string>;
+    /**
+     * Enum: `local`, `off`, `on`, `remoteApply`, `remoteWrite`. Sets the current transaction's synchronization level. The default is `off`. This setting takes precedence over `synchronousReplication`.
+     */
+    synchronousCommit?: pulumi.Input<string>;
     /**
      * PostgreSQL temporary file limit in KiB, -1 for unlimited.
      */
@@ -9201,9 +7995,13 @@ export interface ServiceIntegrationClickhouseKafkaUserConfigTable {
      */
     groupName: pulumi.Input<string>;
     /**
-     * Enum: `default`, `stream`. Defines how ClickHouse should handle errors when processing Kafka messages. `default` stops on errors, `stream` continues processing and logs errors. Default: `default`.
+     * Enum: `deadLetterQueue`, `default`, `stream`. Defines how ClickHouse should handle errors when processing Kafka messages. `default` stops on errors, `stream` continues processing and logs errors, `deadLetterQueue` saves error data to system.dead*letter*queue (requires ClickHouse 25.8+). Default: `default`.
      */
     handleErrorMode?: pulumi.Input<string>;
+    /**
+     * Optional materialized view that persists data from the Kafka engine table into a MergeTree-family table. When specified, a ClickHouse materialized view is created that automatically reads from the Kafka table and inserts into a durable target table
+     */
+    materializedView?: pulumi.Input<inputs.ServiceIntegrationClickhouseKafkaUserConfigTableMaterializedView>;
     /**
      * Maximum number of rows to collect before flushing data between Kafka and ClickHouse. Default: `0`.
      */
@@ -9283,6 +8081,41 @@ export interface ServiceIntegrationClickhouseKafkaUserConfigTableColumn {
      * The ClickHouse data type for this column. Must be a valid ClickHouse data type that can handle the data format. Example: `UInt64`.
      */
     type: pulumi.Input<string>;
+}
+
+export interface ServiceIntegrationClickhouseKafkaUserConfigTableMaterializedView {
+    /**
+     * The database to create the materialized view in. Must not be the Kafka integration database as it is not replicated and may be dropped. Default: `default`.
+     */
+    databaseName?: pulumi.Input<string>;
+    /**
+     * Enum: `AggregatingMergeTree`, `CollapsingMergeTree`, `MergeTree`, `ReplacingMergeTree`, `SummingMergeTree`, `VersionedCollapsingMergeTree`. The MergeTree-family engine for the materialized view's target table. Default: `MergeTree`.
+     */
+    engine?: pulumi.Input<string>;
+    /**
+     * Column names passed as engine arguments, e.g. the sign column for CollapsingMergeTree or the sign and version columns for VersionedCollapsingMergeTree.
+     */
+    engineParams?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Number of days after which data is moved from local disk to remote storage (tiered storage). Must be specified together with ttl_column. Example: `7`.
+     */
+    localDiskTtlDays?: pulumi.Input<number>;
+    /**
+     * Columns for the ORDER BY clause of the target table. Determines the sort order and primary index.
+     */
+    orderBies: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Date or DateTime column used for both row deletion TTL and local disk tiered storage TTL. Must be specified when ttl*days or local*disk*ttl*days is set. Example: `createdAt`.
+     */
+    ttlColumn?: pulumi.Input<string>;
+    /**
+     * Number of days after which rows are deleted, calculated from the TTL column value. Must be specified together with ttl_column. Example: `30`.
+     */
+    ttlDays?: pulumi.Input<number>;
+    /**
+     * The name of the materialized view to create. Example: `eventsMv`.
+     */
+    viewName: pulumi.Input<string>;
 }
 
 export interface ServiceIntegrationClickhouseKafkaUserConfigTableTopic {
@@ -9677,6 +8510,57 @@ export interface ServiceIntegrationEndpointExternalMysqlUserConfig {
      * User name. Example: `myname`.
      */
     username: pulumi.Input<string>;
+}
+
+export interface ServiceIntegrationEndpointExternalObjectStorageConfigUserConfig {
+    /**
+     * Azure account secret key (Azure only). Example: `YWNjb3VudCBrZXkgZXhhbXBsZQ==`.
+     */
+    accountKey?: pulumi.Input<string>;
+    /**
+     * Azure account name (Azure only). Example: `myazureaccount`.
+     */
+    accountName?: pulumi.Input<string>;
+    /**
+     * AWS access key ID (S3 only). Example: `AKIAIOSFODNN7EXAMPLE`.
+     */
+    awsAccessKeyId?: pulumi.Input<string>;
+    /**
+     * AWS secret access key (S3 only). Example: `wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY`.
+     */
+    awsSecretAccessKey?: pulumi.Input<string>;
+    /**
+     * Bucket name. Example: `my-thanos-bucket`.
+     */
+    bucketName?: pulumi.Input<string>;
+    /**
+     * Google service account credentials JSON (Google Cloud Storage only). Example: `{"type": "serviceAccount", ...`.
+     */
+    credentials?: pulumi.Input<string>;
+    /**
+     * S3-compatible endpoint host (S3 only). Example: `s3.eu-west-1.amazonaws.com`.
+     */
+    host?: pulumi.Input<string>;
+    /**
+     * S3-compatible endpoint port (S3 only). Example: `443`.
+     */
+    port?: pulumi.Input<number>;
+    /**
+     * Object storage prefix / path. Example: `thanos-data/`.
+     */
+    prefix?: pulumi.Input<string>;
+    /**
+     * GCP project ID (Google Cloud Storage only). Example: `my-gcp-project`.
+     */
+    projectId?: pulumi.Input<string>;
+    /**
+     * AWS S3 region (S3 only). Example: `eu-west-1`.
+     */
+    region?: pulumi.Input<string>;
+    /**
+     * Enum: `azure`, `google`, `s3`. Object storage type.
+     */
+    storageType: pulumi.Input<string>;
 }
 
 export interface ServiceIntegrationEndpointExternalOpensearchLogsUserConfig {
@@ -10187,6 +9071,31 @@ export interface ServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf {
      * Only include perf*events*statements whose last seen is less than this many seconds. Example: `86400`.
      */
     perfEventsStatementsTimeLimit?: pulumi.Input<number>;
+}
+
+export interface StaticIpTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: pulumi.Input<string>;
+    /**
+     * Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+     *
+     * @deprecated Use operation-specific timeouts instead. This field will be removed in the next major version.
+     */
+    default?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: pulumi.Input<string>;
 }
 
 export interface ThanosComponent {

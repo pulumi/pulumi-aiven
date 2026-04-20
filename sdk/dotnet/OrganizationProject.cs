@@ -28,7 +28,7 @@ namespace Pulumi.Aiven
         public Output<int> BasePort { get; private set; } = null!;
 
         /// <summary>
-        /// Billing group ID to assign to the project. It's required when moving projects between organizations.
+        /// Billing group ID to assign to the project. It's required when moving projects between organizations. Minimum length: `1`.
         /// </summary>
         [Output("billingGroupId")]
         public Output<string> BillingGroupId { get; private set; } = null!;
@@ -129,7 +129,7 @@ namespace Pulumi.Aiven
         public Input<int>? BasePort { get; set; }
 
         /// <summary>
-        /// Billing group ID to assign to the project. It's required when moving projects between organizations.
+        /// Billing group ID to assign to the project. It's required when moving projects between organizations. Minimum length: `1`.
         /// </summary>
         [Input("billingGroupId", required: true)]
         public Input<string> BillingGroupId { get; set; } = null!;
@@ -194,7 +194,7 @@ namespace Pulumi.Aiven
         public Input<int>? BasePort { get; set; }
 
         /// <summary>
-        /// Billing group ID to assign to the project. It's required when moving projects between organizations.
+        /// Billing group ID to assign to the project. It's required when moving projects between organizations. Minimum length: `1`.
         /// </summary>
         [Input("billingGroupId")]
         public Input<string>? BillingGroupId { get; set; }

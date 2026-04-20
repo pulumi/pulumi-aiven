@@ -30,6 +30,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int DiskSpaceMb;
         /// <summary>
+        /// True when the service uses a cluster plan with dedicated node groups.
+        /// </summary>
+        public readonly bool IsClusterPlan;
+        /// <summary>
         /// Number of service nodes in the active plan.
         /// </summary>
         public readonly int NodeCount;
@@ -88,6 +92,8 @@ namespace Pulumi.Aiven.Outputs
 
             int diskSpaceMb,
 
+            bool isClusterPlan,
+
             int nodeCount,
 
             int nodeCpuCount,
@@ -116,6 +122,7 @@ namespace Pulumi.Aiven.Outputs
             CloudName = cloudName;
             CreateTime = createTime;
             DiskSpaceMb = diskSpaceMb;
+            IsClusterPlan = isClusterPlan;
             NodeCount = nodeCount;
             NodeCpuCount = nodeCpuCount;
             NodeMemoryMb = nodeMemoryMb;

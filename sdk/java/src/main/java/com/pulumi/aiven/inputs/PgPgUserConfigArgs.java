@@ -92,14 +92,14 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Interval in hours between automatic backups. Minimum value is 3 hours. Must be a divisor of 24 (3, 4, 6, 8, 12, 24). (Applicable to ACU plans only). Example: `24`.
+     * Enum: `12`, `24`, `3`, `4`, `6`, `8`. Interval in hours between automatic backups. Minimum value is 3 hours. Must be a divisor of 24 (3, 4, 6, 8, 12, 24). (Applicable to ACU plans only).
      * 
      */
     @Import(name="backupIntervalHours")
     private @Nullable Output<Integer> backupIntervalHours;
 
     /**
-     * @return Interval in hours between automatic backups. Minimum value is 3 hours. Must be a divisor of 24 (3, 4, 6, 8, 12, 24). (Applicable to ACU plans only). Example: `24`.
+     * @return Enum: `12`, `24`, `3`, `4`, `6`, `8`. Interval in hours between automatic backups. Minimum value is 3 hours. Must be a divisor of 24 (3, 4, 6, 8, 12, 24). (Applicable to ACU plans only).
      * 
      */
     public Optional<Output<Integer>> backupIntervalHours() {
@@ -535,14 +535,14 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Enum: `off`, `quorum`. Synchronous replication type. Note that the service plan also needs to support synchronous replication.
+     * Enum: `off`, `quorum`. Use synchronous*commit instead. Any change to this setting will automatically update synchronous*commit. Setting the value to quorum changes synchronous*commit to remote*write, while setting it to off changes synchronousCommit to off.
      * 
      */
     @Import(name="synchronousReplication")
     private @Nullable Output<String> synchronousReplication;
 
     /**
-     * @return Enum: `off`, `quorum`. Synchronous replication type. Note that the service plan also needs to support synchronous replication.
+     * @return Enum: `off`, `quorum`. Use synchronous*commit instead. Any change to this setting will automatically update synchronous*commit. Setting the value to quorum changes synchronous*commit to remote*write, while setting it to off changes synchronousCommit to off.
      * 
      */
     public Optional<Output<String>> synchronousReplication() {
@@ -739,7 +739,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param backupIntervalHours Interval in hours between automatic backups. Minimum value is 3 hours. Must be a divisor of 24 (3, 4, 6, 8, 12, 24). (Applicable to ACU plans only). Example: `24`.
+         * @param backupIntervalHours Enum: `12`, `24`, `3`, `4`, `6`, `8`. Interval in hours between automatic backups. Minimum value is 3 hours. Must be a divisor of 24 (3, 4, 6, 8, 12, 24). (Applicable to ACU plans only).
          * 
          * @return builder
          * 
@@ -750,7 +750,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param backupIntervalHours Interval in hours between automatic backups. Minimum value is 3 hours. Must be a divisor of 24 (3, 4, 6, 8, 12, 24). (Applicable to ACU plans only). Example: `24`.
+         * @param backupIntervalHours Enum: `12`, `24`, `3`, `4`, `6`, `8`. Interval in hours between automatic backups. Minimum value is 3 hours. Must be a divisor of 24 (3, 4, 6, 8, 12, 24). (Applicable to ACU plans only).
          * 
          * @return builder
          * 
@@ -1390,7 +1390,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param synchronousReplication Enum: `off`, `quorum`. Synchronous replication type. Note that the service plan also needs to support synchronous replication.
+         * @param synchronousReplication Enum: `off`, `quorum`. Use synchronous*commit instead. Any change to this setting will automatically update synchronous*commit. Setting the value to quorum changes synchronous*commit to remote*write, while setting it to off changes synchronousCommit to off.
          * 
          * @return builder
          * 
@@ -1401,7 +1401,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param synchronousReplication Enum: `off`, `quorum`. Synchronous replication type. Note that the service plan also needs to support synchronous replication.
+         * @param synchronousReplication Enum: `off`, `quorum`. Use synchronous*commit instead. Any change to this setting will automatically update synchronous*commit. Setting the value to quorum changes synchronous*commit to remote*write, while setting it to off changes synchronousCommit to off.
          * 
          * @return builder
          * 

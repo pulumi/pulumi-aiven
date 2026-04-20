@@ -25,7 +25,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? AivenKafkaTopicMessages { get; set; }
 
         /// <summary>
-        /// Interval in hours between automatic backups. Minimum value is 3 hours. Must be a divisor of 24 (3, 4, 6, 8, 12, 24). (Applicable to ACU plans only). Example: `24`.
+        /// Enum: `12`, `24`, `3`, `4`, `6`, `8`. Interval in hours between automatic backups. Minimum value is 3 hours. Must be a divisor of 24 (3, 4, 6, 8, 12, 24). (Applicable to ACU plans only).
         /// </summary>
         [Input("backupIntervalHours")]
         public Input<int>? BackupIntervalHours { get; set; }

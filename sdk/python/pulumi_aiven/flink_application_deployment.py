@@ -35,10 +35,10 @@ class FlinkApplicationDeploymentArgs:
         :param pulumi.Input[_builtins.str] application_id: Application Id. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] service_name: Service name. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] version_id: ApplicationVersion ID. Maximum length: `36`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] version_id: ApplicationVersion ID. Length must be exactly `36`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.int] parallelism: Reading of Flink parallel execution documentation is recommended before setting this value to other than 1. Please do not set this value higher than (total number of nodes x number*of*task_slots), or every new job created will fail. Value must be between `1` and `128`. The default value is `1`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.bool] restart_enabled: Specifies whether a Flink Job is restarted in case it fails. The default value is `true`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] starting_savepoint: Job savepoint. Maximum length: `2048`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] starting_savepoint: Job savepoint. Length must be between `1` and `2048`. Changing this property forces recreation of the resource.
         """
         pulumi.set(__self__, "application_id", application_id)
         pulumi.set(__self__, "project", project)
@@ -93,7 +93,7 @@ class FlinkApplicationDeploymentArgs:
     @pulumi.getter(name="versionId")
     def version_id(self) -> pulumi.Input[_builtins.str]:
         """
-        ApplicationVersion ID. Maximum length: `36`. Changing this property forces recreation of the resource.
+        ApplicationVersion ID. Length must be exactly `36`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "version_id")
 
@@ -129,7 +129,7 @@ class FlinkApplicationDeploymentArgs:
     @pulumi.getter(name="startingSavepoint")
     def starting_savepoint(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Job savepoint. Maximum length: `2048`. Changing this property forces recreation of the resource.
+        Job savepoint. Length must be between `1` and `2048`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "starting_savepoint")
 
@@ -172,8 +172,8 @@ class _FlinkApplicationDeploymentState:
         :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.bool] restart_enabled: Specifies whether a Flink Job is restarted in case it fails. The default value is `true`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] service_name: Service name. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] starting_savepoint: Job savepoint. Maximum length: `2048`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] version_id: ApplicationVersion ID. Maximum length: `36`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] starting_savepoint: Job savepoint. Length must be between `1` and `2048`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] version_id: ApplicationVersion ID. Length must be exactly `36`. Changing this property forces recreation of the resource.
         """
         if application_id is not None:
             pulumi.set(__self__, "application_id", application_id)
@@ -298,7 +298,7 @@ class _FlinkApplicationDeploymentState:
     @pulumi.getter(name="startingSavepoint")
     def starting_savepoint(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Job savepoint. Maximum length: `2048`. Changing this property forces recreation of the resource.
+        Job savepoint. Length must be between `1` and `2048`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "starting_savepoint")
 
@@ -319,7 +319,7 @@ class _FlinkApplicationDeploymentState:
     @pulumi.getter(name="versionId")
     def version_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        ApplicationVersion ID. Maximum length: `36`. Changing this property forces recreation of the resource.
+        ApplicationVersion ID. Length must be exactly `36`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "version_id")
 
@@ -410,8 +410,8 @@ class FlinkApplicationDeployment(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.bool] restart_enabled: Specifies whether a Flink Job is restarted in case it fails. The default value is `true`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] service_name: Service name. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] starting_savepoint: Job savepoint. Maximum length: `2048`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] version_id: ApplicationVersion ID. Maximum length: `36`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] starting_savepoint: Job savepoint. Length must be between `1` and `2048`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] version_id: ApplicationVersion ID. Length must be exactly `36`. Changing this property forces recreation of the resource.
         """
         ...
     @overload
@@ -566,8 +566,8 @@ class FlinkApplicationDeployment(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.bool] restart_enabled: Specifies whether a Flink Job is restarted in case it fails. The default value is `true`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] service_name: Service name. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] starting_savepoint: Job savepoint. Maximum length: `2048`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] version_id: ApplicationVersion ID. Maximum length: `36`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] starting_savepoint: Job savepoint. Length must be between `1` and `2048`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] version_id: ApplicationVersion ID. Length must be exactly `36`. Changing this property forces recreation of the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -654,7 +654,7 @@ class FlinkApplicationDeployment(pulumi.CustomResource):
     @pulumi.getter(name="startingSavepoint")
     def starting_savepoint(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Job savepoint. Maximum length: `2048`. Changing this property forces recreation of the resource.
+        Job savepoint. Length must be between `1` and `2048`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "starting_savepoint")
 
@@ -667,7 +667,7 @@ class FlinkApplicationDeployment(pulumi.CustomResource):
     @pulumi.getter(name="versionId")
     def version_id(self) -> pulumi.Output[_builtins.str]:
         """
-        ApplicationVersion ID. Maximum length: `36`. Changing this property forces recreation of the resource.
+        ApplicationVersion ID. Length must be exactly `36`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "version_id")
 

@@ -6,6 +6,7 @@ package com.pulumi.aiven;
 import com.pulumi.aiven.ClickhouseUserArgs;
 import com.pulumi.aiven.Utilities;
 import com.pulumi.aiven.inputs.ClickhouseUserState;
+import com.pulumi.aiven.outputs.ClickhouseUserTimeouts;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -18,7 +19,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Creates and manages a ClickHouse user.
+ * Creates and manages an Aiven for ClickHouse user. If this resource is missing (for example, after a service power off), it&#39;s removed from the state and a new create plan is generated.
  * 
  * ## Example Usage
  * 
@@ -58,21 +59,21 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * terraform import aiven_clickhouse_user.example_user PROJECT/SERVICE_NAME/USER_ID  # USER_ID is found in the systems.users table in ClickHouse
+ * $ pulumi import aiven:index/clickhouseUser:ClickhouseUser example PROJECT/SERVICE_NAME/UUID
  * ```
  * 
  */
 @ResourceType(type="aiven:index/clickhouseUser:ClickhouseUser")
 public class ClickhouseUser extends com.pulumi.resources.CustomResource {
     /**
-     * The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+     * The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
      * 
      */
     @Export(name="password", refs={String.class}, tree="[0]")
     private Output<String> password;
 
     /**
-     * @return The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+     * @return The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
      * 
      */
     public Output<String> password() {
@@ -80,7 +81,7 @@ public class ClickhouseUser extends com.pulumi.resources.CustomResource {
     }
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
+     * The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Length must be between `8` and `256`.
      * 
      */
     @Export(name="passwordWo", refs={String.class}, tree="[0]")
@@ -88,91 +89,97 @@ public class ClickhouseUser extends com.pulumi.resources.CustomResource {
 
     /**
      * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
+     * The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Length must be between `8` and `256`.
      * 
      */
     public Output<Optional<String>> passwordWo() {
         return Codegen.optional(this.passwordWo);
     }
     /**
-     * Version number for `passwordWo`. Increment this to rotate the password. Must be &gt;= 1.
+     * Version number for `passwordWo`. Increment this to rotate the password. The field is required with `passwordWo`. Minimum value: `1`.
      * 
      */
     @Export(name="passwordWoVersion", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> passwordWoVersion;
 
     /**
-     * @return Version number for `passwordWo`. Increment this to rotate the password. Must be &gt;= 1.
+     * @return Version number for `passwordWo`. Increment this to rotate the password. The field is required with `passwordWo`. Minimum value: `1`.
      * 
      */
     public Output<Optional<Integer>> passwordWoVersion() {
         return Codegen.optional(this.passwordWoVersion);
     }
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> project() {
         return this.project;
     }
     /**
-     * Indicates if a ClickHouse user is required.
+     * Required user.
      * 
      */
     @Export(name="required", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> required;
 
     /**
-     * @return Indicates if a ClickHouse user is required.
+     * @return Required user.
      * 
      */
     public Output<Boolean> required() {
         return this.required;
     }
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service name. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> serviceName() {
         return this.serviceName;
     }
+    @Export(name="timeouts", refs={ClickhouseUserTimeouts.class}, tree="[0]")
+    private Output</* @Nullable */ ClickhouseUserTimeouts> timeouts;
+
+    public Output<Optional<ClickhouseUserTimeouts>> timeouts() {
+        return Codegen.optional(this.timeouts);
+    }
     /**
-     * The name of the ClickHouse user. Changing this property forces recreation of the resource.
+     * User name. Maximum length: `64`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="username", refs={String.class}, tree="[0]")
     private Output<String> username;
 
     /**
-     * @return The name of the ClickHouse user. Changing this property forces recreation of the resource.
+     * @return User name. Maximum length: `64`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> username() {
         return this.username;
     }
     /**
-     * UUID of the ClickHouse user.
+     * User identifier.
      * 
      */
     @Export(name="uuid", refs={String.class}, tree="[0]")
     private Output<String> uuid;
 
     /**
-     * @return UUID of the ClickHouse user.
+     * @return User identifier.
      * 
      */
     public Output<String> uuid() {

@@ -17,36 +17,6 @@ from . import _utilities
 __all__ = [
     'AccountAuthenticationSamlFieldMappingArgs',
     'AccountAuthenticationSamlFieldMappingArgsDict',
-    'AlloydbomniAlloydbomniArgs',
-    'AlloydbomniAlloydbomniArgsDict',
-    'AlloydbomniAlloydbomniParamArgs',
-    'AlloydbomniAlloydbomniParamArgsDict',
-    'AlloydbomniAlloydbomniUserConfigArgs',
-    'AlloydbomniAlloydbomniUserConfigArgsDict',
-    'AlloydbomniAlloydbomniUserConfigIpFilterObjectArgs',
-    'AlloydbomniAlloydbomniUserConfigIpFilterObjectArgsDict',
-    'AlloydbomniAlloydbomniUserConfigPgArgs',
-    'AlloydbomniAlloydbomniUserConfigPgArgsDict',
-    'AlloydbomniAlloydbomniUserConfigPgauditArgs',
-    'AlloydbomniAlloydbomniUserConfigPgauditArgsDict',
-    'AlloydbomniAlloydbomniUserConfigPgbouncerArgs',
-    'AlloydbomniAlloydbomniUserConfigPgbouncerArgsDict',
-    'AlloydbomniAlloydbomniUserConfigPglookoutArgs',
-    'AlloydbomniAlloydbomniUserConfigPglookoutArgsDict',
-    'AlloydbomniAlloydbomniUserConfigPrivateAccessArgs',
-    'AlloydbomniAlloydbomniUserConfigPrivateAccessArgsDict',
-    'AlloydbomniAlloydbomniUserConfigPrivatelinkAccessArgs',
-    'AlloydbomniAlloydbomniUserConfigPrivatelinkAccessArgsDict',
-    'AlloydbomniAlloydbomniUserConfigPublicAccessArgs',
-    'AlloydbomniAlloydbomniUserConfigPublicAccessArgsDict',
-    'AlloydbomniComponentArgs',
-    'AlloydbomniComponentArgsDict',
-    'AlloydbomniServiceIntegrationArgs',
-    'AlloydbomniServiceIntegrationArgsDict',
-    'AlloydbomniTagArgs',
-    'AlloydbomniTagArgsDict',
-    'AlloydbomniTechEmailArgs',
-    'AlloydbomniTechEmailArgsDict',
     'BillingGroupTimeoutsArgs',
     'BillingGroupTimeoutsArgsDict',
     'ByocAwsEntityContactEmailArgs',
@@ -101,8 +71,12 @@ __all__ = [
     'ClickhouseTagArgsDict',
     'ClickhouseTechEmailArgs',
     'ClickhouseTechEmailArgsDict',
+    'ClickhouseUserTimeoutsArgs',
+    'ClickhouseUserTimeoutsArgsDict',
     'CmkTimeoutsArgs',
     'CmkTimeoutsArgsDict',
+    'ConnectionPoolTimeoutsArgs',
+    'ConnectionPoolTimeoutsArgsDict',
     'DragonflyComponentArgs',
     'DragonflyComponentArgsDict',
     'DragonflyDragonflyArgs',
@@ -201,28 +175,6 @@ __all__ = [
     'GrafanaTagArgsDict',
     'GrafanaTechEmailArgs',
     'GrafanaTechEmailArgsDict',
-    'InfluxDbComponentArgs',
-    'InfluxDbComponentArgsDict',
-    'InfluxDbInfluxdbArgs',
-    'InfluxDbInfluxdbArgsDict',
-    'InfluxDbInfluxdbUserConfigArgs',
-    'InfluxDbInfluxdbUserConfigArgsDict',
-    'InfluxDbInfluxdbUserConfigInfluxdbArgs',
-    'InfluxDbInfluxdbUserConfigInfluxdbArgsDict',
-    'InfluxDbInfluxdbUserConfigIpFilterObjectArgs',
-    'InfluxDbInfluxdbUserConfigIpFilterObjectArgsDict',
-    'InfluxDbInfluxdbUserConfigPrivateAccessArgs',
-    'InfluxDbInfluxdbUserConfigPrivateAccessArgsDict',
-    'InfluxDbInfluxdbUserConfigPrivatelinkAccessArgs',
-    'InfluxDbInfluxdbUserConfigPrivatelinkAccessArgsDict',
-    'InfluxDbInfluxdbUserConfigPublicAccessArgs',
-    'InfluxDbInfluxdbUserConfigPublicAccessArgsDict',
-    'InfluxDbServiceIntegrationArgs',
-    'InfluxDbServiceIntegrationArgsDict',
-    'InfluxDbTagArgs',
-    'InfluxDbTagArgsDict',
-    'InfluxDbTechEmailArgs',
-    'InfluxDbTechEmailArgsDict',
     'KafkaComponentArgs',
     'KafkaComponentArgsDict',
     'KafkaConnectComponentArgs',
@@ -327,58 +279,6 @@ __all__ = [
     'KafkaTopicConfigArgsDict',
     'KafkaTopicTagArgs',
     'KafkaTopicTagArgsDict',
-    'M3AggregatorComponentArgs',
-    'M3AggregatorComponentArgsDict',
-    'M3AggregatorM3aggregatorArgs',
-    'M3AggregatorM3aggregatorArgsDict',
-    'M3AggregatorM3aggregatorUserConfigArgs',
-    'M3AggregatorM3aggregatorUserConfigArgsDict',
-    'M3AggregatorM3aggregatorUserConfigIpFilterObjectArgs',
-    'M3AggregatorM3aggregatorUserConfigIpFilterObjectArgsDict',
-    'M3AggregatorServiceIntegrationArgs',
-    'M3AggregatorServiceIntegrationArgsDict',
-    'M3AggregatorTagArgs',
-    'M3AggregatorTagArgsDict',
-    'M3AggregatorTechEmailArgs',
-    'M3AggregatorTechEmailArgsDict',
-    'M3DbComponentArgs',
-    'M3DbComponentArgsDict',
-    'M3DbM3dbArgs',
-    'M3DbM3dbArgsDict',
-    'M3DbM3dbUserConfigArgs',
-    'M3DbM3dbUserConfigArgsDict',
-    'M3DbM3dbUserConfigIpFilterObjectArgs',
-    'M3DbM3dbUserConfigIpFilterObjectArgsDict',
-    'M3DbM3dbUserConfigLimitsArgs',
-    'M3DbM3dbUserConfigLimitsArgsDict',
-    'M3DbM3dbUserConfigM3Args',
-    'M3DbM3dbUserConfigM3ArgsDict',
-    'M3DbM3dbUserConfigM3TagOptionsArgs',
-    'M3DbM3dbUserConfigM3TagOptionsArgsDict',
-    'M3DbM3dbUserConfigNamespaceArgs',
-    'M3DbM3dbUserConfigNamespaceArgsDict',
-    'M3DbM3dbUserConfigNamespaceOptionsArgs',
-    'M3DbM3dbUserConfigNamespaceOptionsArgsDict',
-    'M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs',
-    'M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgsDict',
-    'M3DbM3dbUserConfigPrivateAccessArgs',
-    'M3DbM3dbUserConfigPrivateAccessArgsDict',
-    'M3DbM3dbUserConfigPublicAccessArgs',
-    'M3DbM3dbUserConfigPublicAccessArgsDict',
-    'M3DbM3dbUserConfigRulesArgs',
-    'M3DbM3dbUserConfigRulesArgsDict',
-    'M3DbM3dbUserConfigRulesMappingArgs',
-    'M3DbM3dbUserConfigRulesMappingArgsDict',
-    'M3DbM3dbUserConfigRulesMappingNamespacesObjectArgs',
-    'M3DbM3dbUserConfigRulesMappingNamespacesObjectArgsDict',
-    'M3DbM3dbUserConfigRulesMappingTagArgs',
-    'M3DbM3dbUserConfigRulesMappingTagArgsDict',
-    'M3DbServiceIntegrationArgs',
-    'M3DbServiceIntegrationArgsDict',
-    'M3DbTagArgs',
-    'M3DbTagArgsDict',
-    'M3DbTechEmailArgs',
-    'M3DbTechEmailArgsDict',
     'MySqlComponentArgs',
     'MySqlComponentArgsDict',
     'MySqlMysqlArgs',
@@ -497,6 +397,10 @@ __all__ = [
     'OpenSearchTagArgsDict',
     'OpenSearchTechEmailArgs',
     'OpenSearchTechEmailArgsDict',
+    'OpensearchSecurityPluginConfigTimeoutsArgs',
+    'OpensearchSecurityPluginConfigTimeoutsArgsDict',
+    'OpensearchUserTimeoutsArgs',
+    'OpensearchUserTimeoutsArgsDict',
     'OrganizationAddressTimeoutsArgs',
     'OrganizationAddressTimeoutsArgsDict',
     'OrganizationApplicationUserTimeoutsArgs',
@@ -603,6 +507,8 @@ __all__ = [
     'ServiceIntegrationClickhouseKafkaUserConfigTableArgsDict',
     'ServiceIntegrationClickhouseKafkaUserConfigTableColumnArgs',
     'ServiceIntegrationClickhouseKafkaUserConfigTableColumnArgsDict',
+    'ServiceIntegrationClickhouseKafkaUserConfigTableMaterializedViewArgs',
+    'ServiceIntegrationClickhouseKafkaUserConfigTableMaterializedViewArgsDict',
     'ServiceIntegrationClickhouseKafkaUserConfigTableTopicArgs',
     'ServiceIntegrationClickhouseKafkaUserConfigTableTopicArgsDict',
     'ServiceIntegrationClickhousePostgresqlUserConfigArgs',
@@ -645,6 +551,8 @@ __all__ = [
     'ServiceIntegrationEndpointExternalKafkaUserConfigArgsDict',
     'ServiceIntegrationEndpointExternalMysqlUserConfigArgs',
     'ServiceIntegrationEndpointExternalMysqlUserConfigArgsDict',
+    'ServiceIntegrationEndpointExternalObjectStorageConfigUserConfigArgs',
+    'ServiceIntegrationEndpointExternalObjectStorageConfigUserConfigArgsDict',
     'ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgs',
     'ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgsDict',
     'ServiceIntegrationEndpointExternalPostgresqlArgs',
@@ -697,6 +605,8 @@ __all__ = [
     'ServiceIntegrationPrometheusUserConfigSourceMysqlArgsDict',
     'ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafArgs',
     'ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafArgsDict',
+    'StaticIpTimeoutsArgs',
+    'StaticIpTimeoutsArgsDict',
     'ThanosComponentArgs',
     'ThanosComponentArgsDict',
     'ThanosServiceIntegrationArgs',
@@ -749,6 +659,10 @@ __all__ = [
     'GetBillingGroupTimeoutsArgsDict',
     'GetClickhouseDatabaseTimeoutsArgs',
     'GetClickhouseDatabaseTimeoutsArgsDict',
+    'GetClickhouseUserTimeoutsArgs',
+    'GetClickhouseUserTimeoutsArgsDict',
+    'GetConnectionPoolTimeoutsArgs',
+    'GetConnectionPoolTimeoutsArgsDict',
     'GetFlinkApplicationTimeoutsArgs',
     'GetFlinkApplicationTimeoutsArgsDict',
     'GetKafkaTopicListTimeoutsArgs',
@@ -761,6 +675,10 @@ __all__ = [
     'GetMysqlDatabaseTimeoutsArgsDict',
     'GetMysqlUserTimeoutsArgs',
     'GetMysqlUserTimeoutsArgsDict',
+    'GetOpensearchSecurityPluginConfigTimeoutsArgs',
+    'GetOpensearchSecurityPluginConfigTimeoutsArgsDict',
+    'GetOpensearchUserTimeoutsArgs',
+    'GetOpensearchUserTimeoutsArgsDict',
     'GetOrganizationAddressTimeoutsArgs',
     'GetOrganizationAddressTimeoutsArgsDict',
     'GetOrganizationApplicationUserTimeoutsArgs',
@@ -938,3183 +856,6 @@ class AccountAuthenticationSamlFieldMappingArgs:
     @real_name.setter
     def real_name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "real_name", value)
-
-
-class AlloydbomniAlloydbomniArgsDict(TypedDict):
-    bouncer: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    PgBouncer connection details for [connection pooling](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling).
-    """
-    dbname: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    Primary AlloyDB Omni database name.
-    """
-    host: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    AlloyDB Omni primary node host IP or name.
-    """
-    max_connections: NotRequired[pulumi.Input[_builtins.int]]
-    """
-    The [number of allowed connections](https://aiven.io/docs/products/postgresql/reference/pg-connection-limits). Varies based on the service plan.
-    """
-    params: NotRequired[pulumi.Input[Sequence[pulumi.Input['AlloydbomniAlloydbomniParamArgsDict']]]]
-    """
-    AlloyDB Omni connection parameters.
-    """
-    password: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    AlloyDB Omni admin user password.
-    """
-    port: NotRequired[pulumi.Input[_builtins.int]]
-    """
-    AlloyDB Omni port.
-    """
-    replica_uri: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    AlloyDB Omni replica URI for services with a replica.
-    """
-    sslmode: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    AlloyDB Omni SSL mode setting.
-    """
-    standby_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-    """
-    AlloyDB Omni standby connection URIs.
-    """
-    syncing_uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-    """
-    AlloyDB Omni syncing connection URIs.
-    """
-    uri: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    AlloyDB Omni primary connection URI.
-    """
-    uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-    """
-    AlloyDB Omni primary connection URIs.
-    """
-    user: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    AlloyDB Omni admin user name.
-    """
-
-@pulumi.input_type
-class AlloydbomniAlloydbomniArgs:
-    def __init__(__self__, *,
-                 bouncer: Optional[pulumi.Input[_builtins.str]] = None,
-                 dbname: Optional[pulumi.Input[_builtins.str]] = None,
-                 host: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_connections: Optional[pulumi.Input[_builtins.int]] = None,
-                 params: Optional[pulumi.Input[Sequence[pulumi.Input['AlloydbomniAlloydbomniParamArgs']]]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 replica_uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 sslmode: Optional[pulumi.Input[_builtins.str]] = None,
-                 standby_uris: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 syncing_uris: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 uris: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 user: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] bouncer: PgBouncer connection details for [connection pooling](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling).
-        :param pulumi.Input[_builtins.str] dbname: Primary AlloyDB Omni database name.
-        :param pulumi.Input[_builtins.str] host: AlloyDB Omni primary node host IP or name.
-        :param pulumi.Input[_builtins.int] max_connections: The [number of allowed connections](https://aiven.io/docs/products/postgresql/reference/pg-connection-limits). Varies based on the service plan.
-        :param pulumi.Input[Sequence[pulumi.Input['AlloydbomniAlloydbomniParamArgs']]] params: AlloyDB Omni connection parameters.
-        :param pulumi.Input[_builtins.str] password: AlloyDB Omni admin user password.
-        :param pulumi.Input[_builtins.int] port: AlloyDB Omni port.
-        :param pulumi.Input[_builtins.str] replica_uri: AlloyDB Omni replica URI for services with a replica.
-        :param pulumi.Input[_builtins.str] sslmode: AlloyDB Omni SSL mode setting.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] standby_uris: AlloyDB Omni standby connection URIs.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] syncing_uris: AlloyDB Omni syncing connection URIs.
-        :param pulumi.Input[_builtins.str] uri: AlloyDB Omni primary connection URI.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] uris: AlloyDB Omni primary connection URIs.
-        :param pulumi.Input[_builtins.str] user: AlloyDB Omni admin user name.
-        """
-        if bouncer is not None:
-            warnings.warn("""This field was added by mistake and has never worked. It will be removed in future versions.""", DeprecationWarning)
-            pulumi.log.warn("""bouncer is deprecated: This field was added by mistake and has never worked. It will be removed in future versions.""")
-        if bouncer is not None:
-            pulumi.set(__self__, "bouncer", bouncer)
-        if dbname is not None:
-            pulumi.set(__self__, "dbname", dbname)
-        if host is not None:
-            pulumi.set(__self__, "host", host)
-        if max_connections is not None:
-            pulumi.set(__self__, "max_connections", max_connections)
-        if params is not None:
-            pulumi.set(__self__, "params", params)
-        if password is not None:
-            pulumi.set(__self__, "password", password)
-        if port is not None:
-            pulumi.set(__self__, "port", port)
-        if replica_uri is not None:
-            pulumi.set(__self__, "replica_uri", replica_uri)
-        if sslmode is not None:
-            pulumi.set(__self__, "sslmode", sslmode)
-        if standby_uris is not None:
-            pulumi.set(__self__, "standby_uris", standby_uris)
-        if syncing_uris is not None:
-            pulumi.set(__self__, "syncing_uris", syncing_uris)
-        if uri is not None:
-            pulumi.set(__self__, "uri", uri)
-        if uris is not None:
-            pulumi.set(__self__, "uris", uris)
-        if user is not None:
-            pulumi.set(__self__, "user", user)
-
-    @_builtins.property
-    @pulumi.getter
-    @_utilities.deprecated("""This field was added by mistake and has never worked. It will be removed in future versions.""")
-    def bouncer(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        PgBouncer connection details for [connection pooling](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling).
-        """
-        return pulumi.get(self, "bouncer")
-
-    @bouncer.setter
-    def bouncer(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "bouncer", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def dbname(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Primary AlloyDB Omni database name.
-        """
-        return pulumi.get(self, "dbname")
-
-    @dbname.setter
-    def dbname(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "dbname", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def host(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        AlloyDB Omni primary node host IP or name.
-        """
-        return pulumi.get(self, "host")
-
-    @host.setter
-    def host(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "host", value)
-
-    @_builtins.property
-    @pulumi.getter(name="maxConnections")
-    def max_connections(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        The [number of allowed connections](https://aiven.io/docs/products/postgresql/reference/pg-connection-limits). Varies based on the service plan.
-        """
-        return pulumi.get(self, "max_connections")
-
-    @max_connections.setter
-    def max_connections(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "max_connections", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def params(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AlloydbomniAlloydbomniParamArgs']]]]:
-        """
-        AlloyDB Omni connection parameters.
-        """
-        return pulumi.get(self, "params")
-
-    @params.setter
-    def params(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AlloydbomniAlloydbomniParamArgs']]]]):
-        pulumi.set(self, "params", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        AlloyDB Omni admin user password.
-        """
-        return pulumi.get(self, "password")
-
-    @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "password", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        AlloyDB Omni port.
-        """
-        return pulumi.get(self, "port")
-
-    @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "port", value)
-
-    @_builtins.property
-    @pulumi.getter(name="replicaUri")
-    def replica_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        AlloyDB Omni replica URI for services with a replica.
-        """
-        return pulumi.get(self, "replica_uri")
-
-    @replica_uri.setter
-    def replica_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "replica_uri", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def sslmode(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        AlloyDB Omni SSL mode setting.
-        """
-        return pulumi.get(self, "sslmode")
-
-    @sslmode.setter
-    def sslmode(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "sslmode", value)
-
-    @_builtins.property
-    @pulumi.getter(name="standbyUris")
-    def standby_uris(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        AlloyDB Omni standby connection URIs.
-        """
-        return pulumi.get(self, "standby_uris")
-
-    @standby_uris.setter
-    def standby_uris(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "standby_uris", value)
-
-    @_builtins.property
-    @pulumi.getter(name="syncingUris")
-    def syncing_uris(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        AlloyDB Omni syncing connection URIs.
-        """
-        return pulumi.get(self, "syncing_uris")
-
-    @syncing_uris.setter
-    def syncing_uris(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "syncing_uris", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def uri(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        AlloyDB Omni primary connection URI.
-        """
-        return pulumi.get(self, "uri")
-
-    @uri.setter
-    def uri(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "uri", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def uris(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        AlloyDB Omni primary connection URIs.
-        """
-        return pulumi.get(self, "uris")
-
-    @uris.setter
-    def uris(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "uris", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def user(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        AlloyDB Omni admin user name.
-        """
-        return pulumi.get(self, "user")
-
-    @user.setter
-    def user(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "user", value)
-
-
-class AlloydbomniAlloydbomniParamArgsDict(TypedDict):
-    database_name: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    Primary AlloyDB Omni database name.
-    """
-    host: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    AlloyDB Omni host IP or name.
-    """
-    password: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    AlloyDB Omni admin user password.
-    """
-    port: NotRequired[pulumi.Input[_builtins.int]]
-    """
-    AlloyDB Omni port.
-    """
-    sslmode: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    AlloyDB Omni SSL mode setting.
-    """
-    user: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    AlloyDB Omni admin user name.
-    """
-
-@pulumi.input_type
-class AlloydbomniAlloydbomniParamArgs:
-    def __init__(__self__, *,
-                 database_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 host: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 sslmode: Optional[pulumi.Input[_builtins.str]] = None,
-                 user: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] database_name: Primary AlloyDB Omni database name.
-        :param pulumi.Input[_builtins.str] host: AlloyDB Omni host IP or name.
-        :param pulumi.Input[_builtins.str] password: AlloyDB Omni admin user password.
-        :param pulumi.Input[_builtins.int] port: AlloyDB Omni port.
-        :param pulumi.Input[_builtins.str] sslmode: AlloyDB Omni SSL mode setting.
-        :param pulumi.Input[_builtins.str] user: AlloyDB Omni admin user name.
-        """
-        if database_name is not None:
-            pulumi.set(__self__, "database_name", database_name)
-        if host is not None:
-            pulumi.set(__self__, "host", host)
-        if password is not None:
-            pulumi.set(__self__, "password", password)
-        if port is not None:
-            pulumi.set(__self__, "port", port)
-        if sslmode is not None:
-            pulumi.set(__self__, "sslmode", sslmode)
-        if user is not None:
-            pulumi.set(__self__, "user", user)
-
-    @_builtins.property
-    @pulumi.getter(name="databaseName")
-    def database_name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Primary AlloyDB Omni database name.
-        """
-        return pulumi.get(self, "database_name")
-
-    @database_name.setter
-    def database_name(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "database_name", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def host(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        AlloyDB Omni host IP or name.
-        """
-        return pulumi.get(self, "host")
-
-    @host.setter
-    def host(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "host", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        AlloyDB Omni admin user password.
-        """
-        return pulumi.get(self, "password")
-
-    @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "password", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        AlloyDB Omni port.
-        """
-        return pulumi.get(self, "port")
-
-    @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "port", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def sslmode(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        AlloyDB Omni SSL mode setting.
-        """
-        return pulumi.get(self, "sslmode")
-
-    @sslmode.setter
-    def sslmode(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "sslmode", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def user(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        AlloyDB Omni admin user name.
-        """
-        return pulumi.get(self, "user")
-
-    @user.setter
-    def user(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "user", value)
-
-
-class AlloydbomniAlloydbomniUserConfigArgsDict(TypedDict):
-    additional_backup_regions: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    Additional Cloud Regions for Backup Replication.
-    """
-    admin_password: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    Custom password for admin user. Defaults to random string. This must be set only when a new service is being created.
-    """
-    admin_username: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    Custom username for admin user. This must be set only when a new service is being created. Example: `avnadmin`.
-    """
-    alloydbomni_version: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    Enum: `15`, and newer. PostgreSQL major version.
-    """
-    backup_hour: NotRequired[pulumi.Input[_builtins.int]]
-    """
-    The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
-    """
-    backup_minute: NotRequired[pulumi.Input[_builtins.int]]
-    """
-    The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
-    """
-    enable_ipv6: NotRequired[pulumi.Input[_builtins.bool]]
-    """
-    Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
-    """
-    google_columnar_engine_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-    """
-    Enables or disables the columnar engine. When enabled, it accelerates SQL query processing. Default: `true`.
-    """
-    google_columnar_engine_memory_size_percentage: NotRequired[pulumi.Input[_builtins.int]]
-    """
-    Allocate the amount of RAM to store columnar data. Default: `10`.
-    """
-    ip_filter_objects: NotRequired[pulumi.Input[Sequence[pulumi.Input['AlloydbomniAlloydbomniUserConfigIpFilterObjectArgsDict']]]]
-    """
-    Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
-    """
-    ip_filter_strings: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-    """
-    Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-    """
-    ip_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-    """
-    Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-    """
-    node_count: NotRequired[pulumi.Input[_builtins.int]]
-    """
-    Number of nodes for the service. Example: `3`.
-    """
-    pg: NotRequired[pulumi.Input['AlloydbomniAlloydbomniUserConfigPgArgsDict']]
-    """
-    postgresql.conf configuration values
-    """
-    pg_read_replica: NotRequired[pulumi.Input[_builtins.bool]]
-    """
-    Should the service which is being forked be a read replica (deprecated, use read_replica service integration instead).
-    """
-    pg_service_to_fork_from: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    Name of the PG Service from which to fork (deprecated, use service_to_fork_from). This has effect only when a new service is being created. Example: `anotherservicename`.
-    """
-    pg_version: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    Enum: `15`, and newer. PostgreSQL major version.
-    """
-    pgaudit: NotRequired[pulumi.Input['AlloydbomniAlloydbomniUserConfigPgauditArgsDict']]
-    """
-    System-wide settings for the pgaudit extension
-    """
-    pgbouncer: NotRequired[pulumi.Input['AlloydbomniAlloydbomniUserConfigPgbouncerArgsDict']]
-    """
-    PGBouncer connection pooling settings
-    """
-    pglookout: NotRequired[pulumi.Input['AlloydbomniAlloydbomniUserConfigPglookoutArgsDict']]
-    """
-    System-wide settings for pglookout
-    """
-    private_access: NotRequired[pulumi.Input['AlloydbomniAlloydbomniUserConfigPrivateAccessArgsDict']]
-    """
-    Allow access to selected service ports from private networks
-    """
-    privatelink_access: NotRequired[pulumi.Input['AlloydbomniAlloydbomniUserConfigPrivatelinkAccessArgsDict']]
-    """
-    Allow access to selected service components through Privatelink
-    """
-    project_to_fork_from: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
-    """
-    public_access: NotRequired[pulumi.Input['AlloydbomniAlloydbomniUserConfigPublicAccessArgsDict']]
-    """
-    Allow access to selected service ports from the public Internet
-    """
-    recovery_target_time: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    Recovery target time when forking a service. This has effect only when a new service is being created. Example: `2019-01-01 23:34:45`.
-    """
-    service_log: NotRequired[pulumi.Input[_builtins.bool]]
-    """
-    Store logs for the service so that they are available in the HTTP API and console.
-    """
-    service_to_fork_from: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
-    """
-    shared_buffers_percentage: NotRequired[pulumi.Input[_builtins.float]]
-    """
-    Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value. Changing this parameter causes a service restart. Example: `41.5`.
-    """
-    static_ips: NotRequired[pulumi.Input[_builtins.bool]]
-    """
-    Use static public IP addresses.
-    """
-    synchronous_replication: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    Enum: `off`, `quorum`. Synchronous replication type. Note that the service plan also needs to support synchronous replication.
-    """
-    variant: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    Enum: `aiven`, `timescale`. Variant of the PostgreSQL service, may affect the features that are exposed by default.
-    """
-    work_mem: NotRequired[pulumi.Input[_builtins.int]]
-    """
-    Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. The default is 1MB + 0.075% of total RAM (up to 32MB). Example: `4`.
-    """
-
-@pulumi.input_type
-class AlloydbomniAlloydbomniUserConfigArgs:
-    def __init__(__self__, *,
-                 additional_backup_regions: Optional[pulumi.Input[_builtins.str]] = None,
-                 admin_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 admin_username: Optional[pulumi.Input[_builtins.str]] = None,
-                 alloydbomni_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_hour: Optional[pulumi.Input[_builtins.int]] = None,
-                 backup_minute: Optional[pulumi.Input[_builtins.int]] = None,
-                 enable_ipv6: Optional[pulumi.Input[_builtins.bool]] = None,
-                 google_columnar_engine_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 google_columnar_engine_memory_size_percentage: Optional[pulumi.Input[_builtins.int]] = None,
-                 ip_filter_objects: Optional[pulumi.Input[Sequence[pulumi.Input['AlloydbomniAlloydbomniUserConfigIpFilterObjectArgs']]]] = None,
-                 ip_filter_strings: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ip_filters: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 pg: Optional[pulumi.Input['AlloydbomniAlloydbomniUserConfigPgArgs']] = None,
-                 pg_read_replica: Optional[pulumi.Input[_builtins.bool]] = None,
-                 pg_service_to_fork_from: Optional[pulumi.Input[_builtins.str]] = None,
-                 pg_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 pgaudit: Optional[pulumi.Input['AlloydbomniAlloydbomniUserConfigPgauditArgs']] = None,
-                 pgbouncer: Optional[pulumi.Input['AlloydbomniAlloydbomniUserConfigPgbouncerArgs']] = None,
-                 pglookout: Optional[pulumi.Input['AlloydbomniAlloydbomniUserConfigPglookoutArgs']] = None,
-                 private_access: Optional[pulumi.Input['AlloydbomniAlloydbomniUserConfigPrivateAccessArgs']] = None,
-                 privatelink_access: Optional[pulumi.Input['AlloydbomniAlloydbomniUserConfigPrivatelinkAccessArgs']] = None,
-                 project_to_fork_from: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_access: Optional[pulumi.Input['AlloydbomniAlloydbomniUserConfigPublicAccessArgs']] = None,
-                 recovery_target_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_log: Optional[pulumi.Input[_builtins.bool]] = None,
-                 service_to_fork_from: Optional[pulumi.Input[_builtins.str]] = None,
-                 shared_buffers_percentage: Optional[pulumi.Input[_builtins.float]] = None,
-                 static_ips: Optional[pulumi.Input[_builtins.bool]] = None,
-                 synchronous_replication: Optional[pulumi.Input[_builtins.str]] = None,
-                 variant: Optional[pulumi.Input[_builtins.str]] = None,
-                 work_mem: Optional[pulumi.Input[_builtins.int]] = None):
-        """
-        :param pulumi.Input[_builtins.str] additional_backup_regions: Additional Cloud Regions for Backup Replication.
-        :param pulumi.Input[_builtins.str] admin_password: Custom password for admin user. Defaults to random string. This must be set only when a new service is being created.
-        :param pulumi.Input[_builtins.str] admin_username: Custom username for admin user. This must be set only when a new service is being created. Example: `avnadmin`.
-        :param pulumi.Input[_builtins.str] alloydbomni_version: Enum: `15`, and newer. PostgreSQL major version.
-        :param pulumi.Input[_builtins.int] backup_hour: The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
-        :param pulumi.Input[_builtins.int] backup_minute: The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
-        :param pulumi.Input[_builtins.bool] enable_ipv6: Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
-        :param pulumi.Input[_builtins.bool] google_columnar_engine_enabled: Enables or disables the columnar engine. When enabled, it accelerates SQL query processing. Default: `true`.
-        :param pulumi.Input[_builtins.int] google_columnar_engine_memory_size_percentage: Allocate the amount of RAM to store columnar data. Default: `10`.
-        :param pulumi.Input[Sequence[pulumi.Input['AlloydbomniAlloydbomniUserConfigIpFilterObjectArgs']]] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ip_filters: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-        :param pulumi.Input[_builtins.int] node_count: Number of nodes for the service. Example: `3`.
-        :param pulumi.Input['AlloydbomniAlloydbomniUserConfigPgArgs'] pg: postgresql.conf configuration values
-        :param pulumi.Input[_builtins.bool] pg_read_replica: Should the service which is being forked be a read replica (deprecated, use read_replica service integration instead).
-        :param pulumi.Input[_builtins.str] pg_service_to_fork_from: Name of the PG Service from which to fork (deprecated, use service_to_fork_from). This has effect only when a new service is being created. Example: `anotherservicename`.
-        :param pulumi.Input[_builtins.str] pg_version: Enum: `15`, and newer. PostgreSQL major version.
-        :param pulumi.Input['AlloydbomniAlloydbomniUserConfigPgauditArgs'] pgaudit: System-wide settings for the pgaudit extension
-        :param pulumi.Input['AlloydbomniAlloydbomniUserConfigPgbouncerArgs'] pgbouncer: PGBouncer connection pooling settings
-        :param pulumi.Input['AlloydbomniAlloydbomniUserConfigPglookoutArgs'] pglookout: System-wide settings for pglookout
-        :param pulumi.Input['AlloydbomniAlloydbomniUserConfigPrivateAccessArgs'] private_access: Allow access to selected service ports from private networks
-        :param pulumi.Input['AlloydbomniAlloydbomniUserConfigPrivatelinkAccessArgs'] privatelink_access: Allow access to selected service components through Privatelink
-        :param pulumi.Input[_builtins.str] project_to_fork_from: Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
-        :param pulumi.Input['AlloydbomniAlloydbomniUserConfigPublicAccessArgs'] public_access: Allow access to selected service ports from the public Internet
-        :param pulumi.Input[_builtins.str] recovery_target_time: Recovery target time when forking a service. This has effect only when a new service is being created. Example: `2019-01-01 23:34:45`.
-        :param pulumi.Input[_builtins.bool] service_log: Store logs for the service so that they are available in the HTTP API and console.
-        :param pulumi.Input[_builtins.str] service_to_fork_from: Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
-        :param pulumi.Input[_builtins.float] shared_buffers_percentage: Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value. Changing this parameter causes a service restart. Example: `41.5`.
-        :param pulumi.Input[_builtins.bool] static_ips: Use static public IP addresses.
-        :param pulumi.Input[_builtins.str] synchronous_replication: Enum: `off`, `quorum`. Synchronous replication type. Note that the service plan also needs to support synchronous replication.
-        :param pulumi.Input[_builtins.str] variant: Enum: `aiven`, `timescale`. Variant of the PostgreSQL service, may affect the features that are exposed by default.
-        :param pulumi.Input[_builtins.int] work_mem: Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. The default is 1MB + 0.075% of total RAM (up to 32MB). Example: `4`.
-        """
-        if additional_backup_regions is not None:
-            pulumi.set(__self__, "additional_backup_regions", additional_backup_regions)
-        if admin_password is not None:
-            pulumi.set(__self__, "admin_password", admin_password)
-        if admin_username is not None:
-            pulumi.set(__self__, "admin_username", admin_username)
-        if alloydbomni_version is not None:
-            pulumi.set(__self__, "alloydbomni_version", alloydbomni_version)
-        if backup_hour is not None:
-            pulumi.set(__self__, "backup_hour", backup_hour)
-        if backup_minute is not None:
-            pulumi.set(__self__, "backup_minute", backup_minute)
-        if enable_ipv6 is not None:
-            pulumi.set(__self__, "enable_ipv6", enable_ipv6)
-        if google_columnar_engine_enabled is not None:
-            pulumi.set(__self__, "google_columnar_engine_enabled", google_columnar_engine_enabled)
-        if google_columnar_engine_memory_size_percentage is not None:
-            pulumi.set(__self__, "google_columnar_engine_memory_size_percentage", google_columnar_engine_memory_size_percentage)
-        if ip_filter_objects is not None:
-            pulumi.set(__self__, "ip_filter_objects", ip_filter_objects)
-        if ip_filter_strings is not None:
-            pulumi.set(__self__, "ip_filter_strings", ip_filter_strings)
-        if ip_filters is not None:
-            warnings.warn("""Deprecated. Use `ip_filter_string` instead.""", DeprecationWarning)
-            pulumi.log.warn("""ip_filters is deprecated: Deprecated. Use `ip_filter_string` instead.""")
-        if ip_filters is not None:
-            pulumi.set(__self__, "ip_filters", ip_filters)
-        if node_count is not None:
-            pulumi.set(__self__, "node_count", node_count)
-        if pg is not None:
-            pulumi.set(__self__, "pg", pg)
-        if pg_read_replica is not None:
-            pulumi.set(__self__, "pg_read_replica", pg_read_replica)
-        if pg_service_to_fork_from is not None:
-            pulumi.set(__self__, "pg_service_to_fork_from", pg_service_to_fork_from)
-        if pg_version is not None:
-            pulumi.set(__self__, "pg_version", pg_version)
-        if pgaudit is not None:
-            pulumi.set(__self__, "pgaudit", pgaudit)
-        if pgbouncer is not None:
-            pulumi.set(__self__, "pgbouncer", pgbouncer)
-        if pglookout is not None:
-            pulumi.set(__self__, "pglookout", pglookout)
-        if private_access is not None:
-            pulumi.set(__self__, "private_access", private_access)
-        if privatelink_access is not None:
-            pulumi.set(__self__, "privatelink_access", privatelink_access)
-        if project_to_fork_from is not None:
-            pulumi.set(__self__, "project_to_fork_from", project_to_fork_from)
-        if public_access is not None:
-            pulumi.set(__self__, "public_access", public_access)
-        if recovery_target_time is not None:
-            pulumi.set(__self__, "recovery_target_time", recovery_target_time)
-        if service_log is not None:
-            pulumi.set(__self__, "service_log", service_log)
-        if service_to_fork_from is not None:
-            pulumi.set(__self__, "service_to_fork_from", service_to_fork_from)
-        if shared_buffers_percentage is not None:
-            pulumi.set(__self__, "shared_buffers_percentage", shared_buffers_percentage)
-        if static_ips is not None:
-            pulumi.set(__self__, "static_ips", static_ips)
-        if synchronous_replication is not None:
-            pulumi.set(__self__, "synchronous_replication", synchronous_replication)
-        if variant is not None:
-            pulumi.set(__self__, "variant", variant)
-        if work_mem is not None:
-            pulumi.set(__self__, "work_mem", work_mem)
-
-    @_builtins.property
-    @pulumi.getter(name="additionalBackupRegions")
-    def additional_backup_regions(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Additional Cloud Regions for Backup Replication.
-        """
-        return pulumi.get(self, "additional_backup_regions")
-
-    @additional_backup_regions.setter
-    def additional_backup_regions(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "additional_backup_regions", value)
-
-    @_builtins.property
-    @pulumi.getter(name="adminPassword")
-    def admin_password(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Custom password for admin user. Defaults to random string. This must be set only when a new service is being created.
-        """
-        return pulumi.get(self, "admin_password")
-
-    @admin_password.setter
-    def admin_password(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "admin_password", value)
-
-    @_builtins.property
-    @pulumi.getter(name="adminUsername")
-    def admin_username(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Custom username for admin user. This must be set only when a new service is being created. Example: `avnadmin`.
-        """
-        return pulumi.get(self, "admin_username")
-
-    @admin_username.setter
-    def admin_username(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "admin_username", value)
-
-    @_builtins.property
-    @pulumi.getter(name="alloydbomniVersion")
-    def alloydbomni_version(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Enum: `15`, and newer. PostgreSQL major version.
-        """
-        return pulumi.get(self, "alloydbomni_version")
-
-    @alloydbomni_version.setter
-    def alloydbomni_version(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "alloydbomni_version", value)
-
-    @_builtins.property
-    @pulumi.getter(name="backupHour")
-    def backup_hour(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
-        """
-        return pulumi.get(self, "backup_hour")
-
-    @backup_hour.setter
-    def backup_hour(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "backup_hour", value)
-
-    @_builtins.property
-    @pulumi.getter(name="backupMinute")
-    def backup_minute(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
-        """
-        return pulumi.get(self, "backup_minute")
-
-    @backup_minute.setter
-    def backup_minute(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "backup_minute", value)
-
-    @_builtins.property
-    @pulumi.getter(name="enableIpv6")
-    def enable_ipv6(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
-        """
-        return pulumi.get(self, "enable_ipv6")
-
-    @enable_ipv6.setter
-    def enable_ipv6(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "enable_ipv6", value)
-
-    @_builtins.property
-    @pulumi.getter(name="googleColumnarEngineEnabled")
-    def google_columnar_engine_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Enables or disables the columnar engine. When enabled, it accelerates SQL query processing. Default: `true`.
-        """
-        return pulumi.get(self, "google_columnar_engine_enabled")
-
-    @google_columnar_engine_enabled.setter
-    def google_columnar_engine_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "google_columnar_engine_enabled", value)
-
-    @_builtins.property
-    @pulumi.getter(name="googleColumnarEngineMemorySizePercentage")
-    def google_columnar_engine_memory_size_percentage(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Allocate the amount of RAM to store columnar data. Default: `10`.
-        """
-        return pulumi.get(self, "google_columnar_engine_memory_size_percentage")
-
-    @google_columnar_engine_memory_size_percentage.setter
-    def google_columnar_engine_memory_size_percentage(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "google_columnar_engine_memory_size_percentage", value)
-
-    @_builtins.property
-    @pulumi.getter(name="ipFilterObjects")
-    def ip_filter_objects(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AlloydbomniAlloydbomniUserConfigIpFilterObjectArgs']]]]:
-        """
-        Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
-        """
-        return pulumi.get(self, "ip_filter_objects")
-
-    @ip_filter_objects.setter
-    def ip_filter_objects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AlloydbomniAlloydbomniUserConfigIpFilterObjectArgs']]]]):
-        pulumi.set(self, "ip_filter_objects", value)
-
-    @_builtins.property
-    @pulumi.getter(name="ipFilterStrings")
-    def ip_filter_strings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-        """
-        return pulumi.get(self, "ip_filter_strings")
-
-    @ip_filter_strings.setter
-    def ip_filter_strings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "ip_filter_strings", value)
-
-    @_builtins.property
-    @pulumi.getter(name="ipFilters")
-    @_utilities.deprecated("""Deprecated. Use `ip_filter_string` instead.""")
-    def ip_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-        """
-        return pulumi.get(self, "ip_filters")
-
-    @ip_filters.setter
-    def ip_filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "ip_filters", value)
-
-    @_builtins.property
-    @pulumi.getter(name="nodeCount")
-    def node_count(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Number of nodes for the service. Example: `3`.
-        """
-        return pulumi.get(self, "node_count")
-
-    @node_count.setter
-    def node_count(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "node_count", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def pg(self) -> Optional[pulumi.Input['AlloydbomniAlloydbomniUserConfigPgArgs']]:
-        """
-        postgresql.conf configuration values
-        """
-        return pulumi.get(self, "pg")
-
-    @pg.setter
-    def pg(self, value: Optional[pulumi.Input['AlloydbomniAlloydbomniUserConfigPgArgs']]):
-        pulumi.set(self, "pg", value)
-
-    @_builtins.property
-    @pulumi.getter(name="pgReadReplica")
-    def pg_read_replica(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Should the service which is being forked be a read replica (deprecated, use read_replica service integration instead).
-        """
-        return pulumi.get(self, "pg_read_replica")
-
-    @pg_read_replica.setter
-    def pg_read_replica(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "pg_read_replica", value)
-
-    @_builtins.property
-    @pulumi.getter(name="pgServiceToForkFrom")
-    def pg_service_to_fork_from(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Name of the PG Service from which to fork (deprecated, use service_to_fork_from). This has effect only when a new service is being created. Example: `anotherservicename`.
-        """
-        return pulumi.get(self, "pg_service_to_fork_from")
-
-    @pg_service_to_fork_from.setter
-    def pg_service_to_fork_from(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "pg_service_to_fork_from", value)
-
-    @_builtins.property
-    @pulumi.getter(name="pgVersion")
-    def pg_version(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Enum: `15`, and newer. PostgreSQL major version.
-        """
-        return pulumi.get(self, "pg_version")
-
-    @pg_version.setter
-    def pg_version(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "pg_version", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def pgaudit(self) -> Optional[pulumi.Input['AlloydbomniAlloydbomniUserConfigPgauditArgs']]:
-        """
-        System-wide settings for the pgaudit extension
-        """
-        return pulumi.get(self, "pgaudit")
-
-    @pgaudit.setter
-    def pgaudit(self, value: Optional[pulumi.Input['AlloydbomniAlloydbomniUserConfigPgauditArgs']]):
-        pulumi.set(self, "pgaudit", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def pgbouncer(self) -> Optional[pulumi.Input['AlloydbomniAlloydbomniUserConfigPgbouncerArgs']]:
-        """
-        PGBouncer connection pooling settings
-        """
-        return pulumi.get(self, "pgbouncer")
-
-    @pgbouncer.setter
-    def pgbouncer(self, value: Optional[pulumi.Input['AlloydbomniAlloydbomniUserConfigPgbouncerArgs']]):
-        pulumi.set(self, "pgbouncer", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def pglookout(self) -> Optional[pulumi.Input['AlloydbomniAlloydbomniUserConfigPglookoutArgs']]:
-        """
-        System-wide settings for pglookout
-        """
-        return pulumi.get(self, "pglookout")
-
-    @pglookout.setter
-    def pglookout(self, value: Optional[pulumi.Input['AlloydbomniAlloydbomniUserConfigPglookoutArgs']]):
-        pulumi.set(self, "pglookout", value)
-
-    @_builtins.property
-    @pulumi.getter(name="privateAccess")
-    def private_access(self) -> Optional[pulumi.Input['AlloydbomniAlloydbomniUserConfigPrivateAccessArgs']]:
-        """
-        Allow access to selected service ports from private networks
-        """
-        return pulumi.get(self, "private_access")
-
-    @private_access.setter
-    def private_access(self, value: Optional[pulumi.Input['AlloydbomniAlloydbomniUserConfigPrivateAccessArgs']]):
-        pulumi.set(self, "private_access", value)
-
-    @_builtins.property
-    @pulumi.getter(name="privatelinkAccess")
-    def privatelink_access(self) -> Optional[pulumi.Input['AlloydbomniAlloydbomniUserConfigPrivatelinkAccessArgs']]:
-        """
-        Allow access to selected service components through Privatelink
-        """
-        return pulumi.get(self, "privatelink_access")
-
-    @privatelink_access.setter
-    def privatelink_access(self, value: Optional[pulumi.Input['AlloydbomniAlloydbomniUserConfigPrivatelinkAccessArgs']]):
-        pulumi.set(self, "privatelink_access", value)
-
-    @_builtins.property
-    @pulumi.getter(name="projectToForkFrom")
-    def project_to_fork_from(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
-        """
-        return pulumi.get(self, "project_to_fork_from")
-
-    @project_to_fork_from.setter
-    def project_to_fork_from(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "project_to_fork_from", value)
-
-    @_builtins.property
-    @pulumi.getter(name="publicAccess")
-    def public_access(self) -> Optional[pulumi.Input['AlloydbomniAlloydbomniUserConfigPublicAccessArgs']]:
-        """
-        Allow access to selected service ports from the public Internet
-        """
-        return pulumi.get(self, "public_access")
-
-    @public_access.setter
-    def public_access(self, value: Optional[pulumi.Input['AlloydbomniAlloydbomniUserConfigPublicAccessArgs']]):
-        pulumi.set(self, "public_access", value)
-
-    @_builtins.property
-    @pulumi.getter(name="recoveryTargetTime")
-    def recovery_target_time(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Recovery target time when forking a service. This has effect only when a new service is being created. Example: `2019-01-01 23:34:45`.
-        """
-        return pulumi.get(self, "recovery_target_time")
-
-    @recovery_target_time.setter
-    def recovery_target_time(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "recovery_target_time", value)
-
-    @_builtins.property
-    @pulumi.getter(name="serviceLog")
-    def service_log(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Store logs for the service so that they are available in the HTTP API and console.
-        """
-        return pulumi.get(self, "service_log")
-
-    @service_log.setter
-    def service_log(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "service_log", value)
-
-    @_builtins.property
-    @pulumi.getter(name="serviceToForkFrom")
-    def service_to_fork_from(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
-        """
-        return pulumi.get(self, "service_to_fork_from")
-
-    @service_to_fork_from.setter
-    def service_to_fork_from(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "service_to_fork_from", value)
-
-    @_builtins.property
-    @pulumi.getter(name="sharedBuffersPercentage")
-    def shared_buffers_percentage(self) -> Optional[pulumi.Input[_builtins.float]]:
-        """
-        Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value. Changing this parameter causes a service restart. Example: `41.5`.
-        """
-        return pulumi.get(self, "shared_buffers_percentage")
-
-    @shared_buffers_percentage.setter
-    def shared_buffers_percentage(self, value: Optional[pulumi.Input[_builtins.float]]):
-        pulumi.set(self, "shared_buffers_percentage", value)
-
-    @_builtins.property
-    @pulumi.getter(name="staticIps")
-    def static_ips(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Use static public IP addresses.
-        """
-        return pulumi.get(self, "static_ips")
-
-    @static_ips.setter
-    def static_ips(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "static_ips", value)
-
-    @_builtins.property
-    @pulumi.getter(name="synchronousReplication")
-    def synchronous_replication(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Enum: `off`, `quorum`. Synchronous replication type. Note that the service plan also needs to support synchronous replication.
-        """
-        return pulumi.get(self, "synchronous_replication")
-
-    @synchronous_replication.setter
-    def synchronous_replication(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "synchronous_replication", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def variant(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Enum: `aiven`, `timescale`. Variant of the PostgreSQL service, may affect the features that are exposed by default.
-        """
-        return pulumi.get(self, "variant")
-
-    @variant.setter
-    def variant(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "variant", value)
-
-    @_builtins.property
-    @pulumi.getter(name="workMem")
-    def work_mem(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. The default is 1MB + 0.075% of total RAM (up to 32MB). Example: `4`.
-        """
-        return pulumi.get(self, "work_mem")
-
-    @work_mem.setter
-    def work_mem(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "work_mem", value)
-
-
-class AlloydbomniAlloydbomniUserConfigIpFilterObjectArgsDict(TypedDict):
-    network: pulumi.Input[_builtins.str]
-    """
-    CIDR address block. Example: `10.20.0.0/16`.
-    """
-    description: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    Description for IP filter list entry. Example: `Production service IP range`.
-    """
-
-@pulumi.input_type
-class AlloydbomniAlloydbomniUserConfigIpFilterObjectArgs:
-    def __init__(__self__, *,
-                 network: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] network: CIDR address block. Example: `10.20.0.0/16`.
-        :param pulumi.Input[_builtins.str] description: Description for IP filter list entry. Example: `Production service IP range`.
-        """
-        pulumi.set(__self__, "network", network)
-        if description is not None:
-            pulumi.set(__self__, "description", description)
-
-    @_builtins.property
-    @pulumi.getter
-    def network(self) -> pulumi.Input[_builtins.str]:
-        """
-        CIDR address block. Example: `10.20.0.0/16`.
-        """
-        return pulumi.get(self, "network")
-
-    @network.setter
-    def network(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "network", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Description for IP filter list entry. Example: `Production service IP range`.
-        """
-        return pulumi.get(self, "description")
-
-    @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "description", value)
-
-
-class AlloydbomniAlloydbomniUserConfigPgArgsDict(TypedDict):
-    autovacuum_analyze_scale_factor: NotRequired[pulumi.Input[_builtins.float]]
-    """
-    Specifies a fraction of the table size to add to autovacuum_analyze_threshold when deciding whether to trigger an ANALYZE (e.g. `0.2` for 20% of the table size). The default is `0.2`.
-    """
-    autovacuum_analyze_threshold: NotRequired[pulumi.Input[_builtins.int]]
-    """
-    Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is `50`.
-    """
-    autovacuum_freeze_max_age: NotRequired[pulumi.Input[_builtins.int]]
-    """
-    Specifies the maximum age (in transactions) that a table's pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. The system launches autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. Changing this parameter causes a service restart.
-    """
-    autovacuum_max_workers: NotRequired[pulumi.Input[_builtins.int]]
-    """
-    Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is `3`. Changing this parameter causes a service restart.
-    """
-    autovacuum_naptime: NotRequired[pulumi.Input[_builtins.int]]
-    """
-    Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds. The default is `60`.
-    """
-    autovacuum_vacuum_cost_delay: NotRequired[pulumi.Input[_builtins.int]]
-    """
-    Specifies the cost delay value that will be used in automatic VACUUM operations. If `-1` is specified, the regular vacuum_cost_delay value will be used. The default is `2` (upstream default).
-    """
-    autovacuum_vacuum_cost_limit: NotRequired[pulumi.Input[_builtins.int]]
-    """
-    Specifies the cost limit value that will be used in automatic VACUUM operations. If `-1` is specified, the regular vacuum_cost_limit value will be used. The default is `-1` (upstream default).
-    """
-    autovacuum_vacuum_scale_factor: NotRequired[pulumi.Input[_builtins.float]]
-    """
-    Specifies a fraction of the table size to add to autovacuum_vacuum_threshold when deciding whether to trigger a VACUUM (e.g. `0.2` for 20% of the table size). The default is `0.2`.
-    """
-    autovacuum_vacuum_threshold: NotRequired[pulumi.Input[_builtins.int]]
-    """
-    Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is `50`.
-    """
-    bgwriter_delay: NotRequired[pulumi.Input[_builtins.int]]
-    """
-    Specifies the delay between activity rounds for the background writer in milliseconds. The default is `200`. Example: `200`.
-    """
-    bgwriter_flush_after: NotRequired[pulumi.Input[_builtins.int]]
-    """
-    Whenever more than bgwriter_flush_after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes. Setting of 0 disables forced writeback. The default is `512`. Example: `512`.
-    """
-    bgwriter_lru_maxpages: NotRequired[pulumi.Input[_builtins.int]]
-    """
-    In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. The default is `100`. Example: `100`.
-    """
-    bgwriter_lru_multiplier: NotRequired[pulumi.Input[_builtins.float]]
-    """
-    The average recent need for new buffers is multiplied by bgwriter_lru_multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is `2.0`. Example: `2`.
-    """
-    deadlock_timeout: NotRequired[pulumi.Input[_builtins.int]]
-    """
-    This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition. The default is `1000` (upstream default). Example: `1000`.
-    """
-    default_toast_compression: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    Enum: `lz4`, `pglz`. Specifies the default TOAST compression method for values of compressible columns. The default is `lz4`.
-    """
-    idle_in_transaction_session_timeout: NotRequired[pulumi.Input[_builtins.int]]
-    """
-    Time out sessions with open transactions after this number of milliseconds.
-    """
-    jit: NotRequired[pulumi.Input[_builtins.bool]]
-    """
-    Controls system-wide use of Just-in-Time Compilation (JIT).
-    """
-    log_autovacuum_min_duration: NotRequired[pulumi.Input[_builtins.int]]
-    """
-    Causes each action executed by autovacuum to be logged if it ran for at least the specified number of milliseconds. Setting this to zero logs all autovacuum actions. Minus-one disables logging autovacuum actions. The default is `1000`.
-    """
-    log_error_verbosity: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    Enum: `DEFAULT`, `TERSE`, `VERBOSE`. Controls the amount of detail written in the server log for each message that is logged.
-    """
-    log_line_prefix: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    Enum: `'%m [%p] %q[user=%u,db=%d,app=%a] '`, `'%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '`, `'pid=%p,user=%u,db=%d,app=%a,client=%h '`, `'pid=%p,user=%u,db=%d,app=%a,client=%h,txid=%x,qid=%Q '`. Choose from one of the available log formats.
-    """
-    log_min_duration_statement: NotRequired[pulumi.Input[_builtins.int]]
-    """
-    Log statements that take more than this number of milliseconds to run, -1 disables.
-    """
-    log_temp_files: NotRequired[pulumi.Input[_builtins.int]]
-    """
-    Log statements for each temporary file created larger than this number of kilobytes, -1 disables.
-    """
-    max_files_per_process: NotRequired[pulumi.Input[_builtins.int]]
-    """
-    PostgreSQL maximum number of files that can be open per process. The default is `1000` (upstream default). Changing this parameter causes a service restart.
-    """
-    max_locks_per_transaction: NotRequired[pulumi.Input[_builtins.int]]
-    """
-    PostgreSQL maximum locks per transaction. Changing this parameter causes a service restart.
-    """
-    max_logical_replication_workers: NotRequired[pulumi.Input[_builtins.int]]
-    """
-    PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers). The default is `4` (upstream default). Changing this parameter causes a service restart.
-    """
-    max_parallel_workers: NotRequired[pulumi.Input[_builtins.int]]
-    """
-    Sets the maximum number of workers that the system can support for parallel queries. The default is `8` (upstream default).
-    """
-    max_parallel_workers_per_gather: NotRequired[pulumi.Input[_builtins.int]]
-    """
-    Sets the maximum number of workers that can be started by a single Gather or Gather Merge node. The default is `2` (upstream default).
-    """
-    max_pred_locks_per_transaction: NotRequired[pulumi.Input[_builtins.int]]
-    """
-    PostgreSQL maximum predicate locks per transaction. The default is `64` (upstream default). Changing this parameter causes a service restart.
-    """
-    max_prepared_transactions: NotRequired[pulumi.Input[_builtins.int]]
-    """
-    PostgreSQL maximum prepared transactions. The default is `0`. Changing this parameter causes a service restart.
-    """
-    max_replication_slots: NotRequired[pulumi.Input[_builtins.int]]
-    """
-    PostgreSQL maximum replication slots. The default is `20`. Changing this parameter causes a service restart.
-    """
-    max_slot_wal_keep_size: NotRequired[pulumi.Input[_builtins.int]]
-    """
-    PostgreSQL maximum WAL size (MB) reserved for replication slots. If `-1` is specified, replication slots may retain an unlimited amount of WAL files. The default is `-1` (upstream default). wal_keep_size minimum WAL size setting takes precedence over this.
-    """
-    max_stack_depth: NotRequired[pulumi.Input[_builtins.int]]
-    """
-    Maximum depth of the stack in bytes. The default is `2097152` (upstream default).
-    """
-    max_standby_archive_delay: NotRequired[pulumi.Input[_builtins.int]]
-    """
-    Max standby archive delay in milliseconds. The default is `30000` (upstream default).
-    """
-    max_standby_streaming_delay: NotRequired[pulumi.Input[_builtins.int]]
-    """
-    Max standby streaming delay in milliseconds. The default is `30000` (upstream default).
-    """
-    max_sync_workers_per_subscription: NotRequired[pulumi.Input[_builtins.int]]
-    """
-    Maximum number of synchronization workers per subscription. The default is `2`.
-    """
-    max_wal_senders: NotRequired[pulumi.Input[_builtins.int]]
-    """
-    PostgreSQL maximum WAL senders. The default is `20`. Changing this parameter causes a service restart.
-    """
-    max_worker_processes: NotRequired[pulumi.Input[_builtins.int]]
-    """
-    Sets the maximum number of background processes that the system can support. The default is `8`. Changing this parameter causes a service restart.
-    """
-    password_encryption: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords.
-    """
-    pg_partman_bgw_dot_interval: NotRequired[pulumi.Input[_builtins.int]]
-    """
-    Sets the time interval in seconds to run pg_partman's scheduled tasks. The default is `3600`. Example: `3600`.
-    """
-    pg_partman_bgw_dot_role: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    Controls which role to use for pg_partman's scheduled background tasks. Example: `myrolename`.
-    """
-    pg_stat_statements_dot_track: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    Enum: `all`, `none`, `top`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default is `top`.
-    """
-    temp_file_limit: NotRequired[pulumi.Input[_builtins.int]]
-    """
-    PostgreSQL temporary file limit in KiB, -1 for unlimited.
-    """
-    timezone: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    PostgreSQL service timezone. Example: `Europe/Helsinki`.
-    """
-    track_activity_query_size: NotRequired[pulumi.Input[_builtins.int]]
-    """
-    Specifies the number of bytes reserved to track the currently executing command for each active session. Changing this parameter causes a service restart. Example: `1024`.
-    """
-    track_commit_timestamp: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    Enum: `off`, `on`. Record commit time of transactions. Changing this parameter causes a service restart.
-    """
-    track_functions: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    Enum: `all`, `none`, `pl`. Enables tracking of function call counts and time used.
-    """
-    track_io_timing: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    Enum: `off`, `on`. Enables timing of database I/O calls. The default is `off`. When on, it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
-    """
-    wal_sender_timeout: NotRequired[pulumi.Input[_builtins.int]]
-    """
-    Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout. Example: `60000`.
-    """
-    wal_writer_delay: NotRequired[pulumi.Input[_builtins.int]]
-    """
-    WAL flush interval in milliseconds. The default is `200`. Setting this parameter to a lower value may negatively impact performance. Example: `50`.
-    """
-
-@pulumi.input_type
-class AlloydbomniAlloydbomniUserConfigPgArgs:
-    def __init__(__self__, *,
-                 autovacuum_analyze_scale_factor: Optional[pulumi.Input[_builtins.float]] = None,
-                 autovacuum_analyze_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 autovacuum_freeze_max_age: Optional[pulumi.Input[_builtins.int]] = None,
-                 autovacuum_max_workers: Optional[pulumi.Input[_builtins.int]] = None,
-                 autovacuum_naptime: Optional[pulumi.Input[_builtins.int]] = None,
-                 autovacuum_vacuum_cost_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 autovacuum_vacuum_cost_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 autovacuum_vacuum_scale_factor: Optional[pulumi.Input[_builtins.float]] = None,
-                 autovacuum_vacuum_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 bgwriter_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 bgwriter_flush_after: Optional[pulumi.Input[_builtins.int]] = None,
-                 bgwriter_lru_maxpages: Optional[pulumi.Input[_builtins.int]] = None,
-                 bgwriter_lru_multiplier: Optional[pulumi.Input[_builtins.float]] = None,
-                 deadlock_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 default_toast_compression: Optional[pulumi.Input[_builtins.str]] = None,
-                 idle_in_transaction_session_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 jit: Optional[pulumi.Input[_builtins.bool]] = None,
-                 log_autovacuum_min_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 log_error_verbosity: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_line_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_min_duration_statement: Optional[pulumi.Input[_builtins.int]] = None,
-                 log_temp_files: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_files_per_process: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_locks_per_transaction: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_logical_replication_workers: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_parallel_workers: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_parallel_workers_per_gather: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_pred_locks_per_transaction: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_prepared_transactions: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_replication_slots: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_slot_wal_keep_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_stack_depth: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_standby_archive_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_standby_streaming_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_sync_workers_per_subscription: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_wal_senders: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_worker_processes: Optional[pulumi.Input[_builtins.int]] = None,
-                 password_encryption: Optional[pulumi.Input[_builtins.str]] = None,
-                 pg_partman_bgw_dot_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 pg_partman_bgw_dot_role: Optional[pulumi.Input[_builtins.str]] = None,
-                 pg_stat_statements_dot_track: Optional[pulumi.Input[_builtins.str]] = None,
-                 temp_file_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 timezone: Optional[pulumi.Input[_builtins.str]] = None,
-                 track_activity_query_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 track_commit_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
-                 track_functions: Optional[pulumi.Input[_builtins.str]] = None,
-                 track_io_timing: Optional[pulumi.Input[_builtins.str]] = None,
-                 wal_sender_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 wal_writer_delay: Optional[pulumi.Input[_builtins.int]] = None):
-        """
-        :param pulumi.Input[_builtins.float] autovacuum_analyze_scale_factor: Specifies a fraction of the table size to add to autovacuum_analyze_threshold when deciding whether to trigger an ANALYZE (e.g. `0.2` for 20% of the table size). The default is `0.2`.
-        :param pulumi.Input[_builtins.int] autovacuum_analyze_threshold: Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is `50`.
-        :param pulumi.Input[_builtins.int] autovacuum_freeze_max_age: Specifies the maximum age (in transactions) that a table's pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. The system launches autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. Changing this parameter causes a service restart.
-        :param pulumi.Input[_builtins.int] autovacuum_max_workers: Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is `3`. Changing this parameter causes a service restart.
-        :param pulumi.Input[_builtins.int] autovacuum_naptime: Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds. The default is `60`.
-        :param pulumi.Input[_builtins.int] autovacuum_vacuum_cost_delay: Specifies the cost delay value that will be used in automatic VACUUM operations. If `-1` is specified, the regular vacuum_cost_delay value will be used. The default is `2` (upstream default).
-        :param pulumi.Input[_builtins.int] autovacuum_vacuum_cost_limit: Specifies the cost limit value that will be used in automatic VACUUM operations. If `-1` is specified, the regular vacuum_cost_limit value will be used. The default is `-1` (upstream default).
-        :param pulumi.Input[_builtins.float] autovacuum_vacuum_scale_factor: Specifies a fraction of the table size to add to autovacuum_vacuum_threshold when deciding whether to trigger a VACUUM (e.g. `0.2` for 20% of the table size). The default is `0.2`.
-        :param pulumi.Input[_builtins.int] autovacuum_vacuum_threshold: Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is `50`.
-        :param pulumi.Input[_builtins.int] bgwriter_delay: Specifies the delay between activity rounds for the background writer in milliseconds. The default is `200`. Example: `200`.
-        :param pulumi.Input[_builtins.int] bgwriter_flush_after: Whenever more than bgwriter_flush_after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes. Setting of 0 disables forced writeback. The default is `512`. Example: `512`.
-        :param pulumi.Input[_builtins.int] bgwriter_lru_maxpages: In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. The default is `100`. Example: `100`.
-        :param pulumi.Input[_builtins.float] bgwriter_lru_multiplier: The average recent need for new buffers is multiplied by bgwriter_lru_multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is `2.0`. Example: `2`.
-        :param pulumi.Input[_builtins.int] deadlock_timeout: This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition. The default is `1000` (upstream default). Example: `1000`.
-        :param pulumi.Input[_builtins.str] default_toast_compression: Enum: `lz4`, `pglz`. Specifies the default TOAST compression method for values of compressible columns. The default is `lz4`.
-        :param pulumi.Input[_builtins.int] idle_in_transaction_session_timeout: Time out sessions with open transactions after this number of milliseconds.
-        :param pulumi.Input[_builtins.bool] jit: Controls system-wide use of Just-in-Time Compilation (JIT).
-        :param pulumi.Input[_builtins.int] log_autovacuum_min_duration: Causes each action executed by autovacuum to be logged if it ran for at least the specified number of milliseconds. Setting this to zero logs all autovacuum actions. Minus-one disables logging autovacuum actions. The default is `1000`.
-        :param pulumi.Input[_builtins.str] log_error_verbosity: Enum: `DEFAULT`, `TERSE`, `VERBOSE`. Controls the amount of detail written in the server log for each message that is logged.
-        :param pulumi.Input[_builtins.str] log_line_prefix: Enum: `'%m [%p] %q[user=%u,db=%d,app=%a] '`, `'%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '`, `'pid=%p,user=%u,db=%d,app=%a,client=%h '`, `'pid=%p,user=%u,db=%d,app=%a,client=%h,txid=%x,qid=%Q '`. Choose from one of the available log formats.
-        :param pulumi.Input[_builtins.int] log_min_duration_statement: Log statements that take more than this number of milliseconds to run, -1 disables.
-        :param pulumi.Input[_builtins.int] log_temp_files: Log statements for each temporary file created larger than this number of kilobytes, -1 disables.
-        :param pulumi.Input[_builtins.int] max_files_per_process: PostgreSQL maximum number of files that can be open per process. The default is `1000` (upstream default). Changing this parameter causes a service restart.
-        :param pulumi.Input[_builtins.int] max_locks_per_transaction: PostgreSQL maximum locks per transaction. Changing this parameter causes a service restart.
-        :param pulumi.Input[_builtins.int] max_logical_replication_workers: PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers). The default is `4` (upstream default). Changing this parameter causes a service restart.
-        :param pulumi.Input[_builtins.int] max_parallel_workers: Sets the maximum number of workers that the system can support for parallel queries. The default is `8` (upstream default).
-        :param pulumi.Input[_builtins.int] max_parallel_workers_per_gather: Sets the maximum number of workers that can be started by a single Gather or Gather Merge node. The default is `2` (upstream default).
-        :param pulumi.Input[_builtins.int] max_pred_locks_per_transaction: PostgreSQL maximum predicate locks per transaction. The default is `64` (upstream default). Changing this parameter causes a service restart.
-        :param pulumi.Input[_builtins.int] max_prepared_transactions: PostgreSQL maximum prepared transactions. The default is `0`. Changing this parameter causes a service restart.
-        :param pulumi.Input[_builtins.int] max_replication_slots: PostgreSQL maximum replication slots. The default is `20`. Changing this parameter causes a service restart.
-        :param pulumi.Input[_builtins.int] max_slot_wal_keep_size: PostgreSQL maximum WAL size (MB) reserved for replication slots. If `-1` is specified, replication slots may retain an unlimited amount of WAL files. The default is `-1` (upstream default). wal_keep_size minimum WAL size setting takes precedence over this.
-        :param pulumi.Input[_builtins.int] max_stack_depth: Maximum depth of the stack in bytes. The default is `2097152` (upstream default).
-        :param pulumi.Input[_builtins.int] max_standby_archive_delay: Max standby archive delay in milliseconds. The default is `30000` (upstream default).
-        :param pulumi.Input[_builtins.int] max_standby_streaming_delay: Max standby streaming delay in milliseconds. The default is `30000` (upstream default).
-        :param pulumi.Input[_builtins.int] max_sync_workers_per_subscription: Maximum number of synchronization workers per subscription. The default is `2`.
-        :param pulumi.Input[_builtins.int] max_wal_senders: PostgreSQL maximum WAL senders. The default is `20`. Changing this parameter causes a service restart.
-        :param pulumi.Input[_builtins.int] max_worker_processes: Sets the maximum number of background processes that the system can support. The default is `8`. Changing this parameter causes a service restart.
-        :param pulumi.Input[_builtins.str] password_encryption: Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords.
-        :param pulumi.Input[_builtins.int] pg_partman_bgw_dot_interval: Sets the time interval in seconds to run pg_partman's scheduled tasks. The default is `3600`. Example: `3600`.
-        :param pulumi.Input[_builtins.str] pg_partman_bgw_dot_role: Controls which role to use for pg_partman's scheduled background tasks. Example: `myrolename`.
-        :param pulumi.Input[_builtins.str] pg_stat_statements_dot_track: Enum: `all`, `none`, `top`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default is `top`.
-        :param pulumi.Input[_builtins.int] temp_file_limit: PostgreSQL temporary file limit in KiB, -1 for unlimited.
-        :param pulumi.Input[_builtins.str] timezone: PostgreSQL service timezone. Example: `Europe/Helsinki`.
-        :param pulumi.Input[_builtins.int] track_activity_query_size: Specifies the number of bytes reserved to track the currently executing command for each active session. Changing this parameter causes a service restart. Example: `1024`.
-        :param pulumi.Input[_builtins.str] track_commit_timestamp: Enum: `off`, `on`. Record commit time of transactions. Changing this parameter causes a service restart.
-        :param pulumi.Input[_builtins.str] track_functions: Enum: `all`, `none`, `pl`. Enables tracking of function call counts and time used.
-        :param pulumi.Input[_builtins.str] track_io_timing: Enum: `off`, `on`. Enables timing of database I/O calls. The default is `off`. When on, it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
-        :param pulumi.Input[_builtins.int] wal_sender_timeout: Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout. Example: `60000`.
-        :param pulumi.Input[_builtins.int] wal_writer_delay: WAL flush interval in milliseconds. The default is `200`. Setting this parameter to a lower value may negatively impact performance. Example: `50`.
-        """
-        if autovacuum_analyze_scale_factor is not None:
-            pulumi.set(__self__, "autovacuum_analyze_scale_factor", autovacuum_analyze_scale_factor)
-        if autovacuum_analyze_threshold is not None:
-            pulumi.set(__self__, "autovacuum_analyze_threshold", autovacuum_analyze_threshold)
-        if autovacuum_freeze_max_age is not None:
-            pulumi.set(__self__, "autovacuum_freeze_max_age", autovacuum_freeze_max_age)
-        if autovacuum_max_workers is not None:
-            pulumi.set(__self__, "autovacuum_max_workers", autovacuum_max_workers)
-        if autovacuum_naptime is not None:
-            pulumi.set(__self__, "autovacuum_naptime", autovacuum_naptime)
-        if autovacuum_vacuum_cost_delay is not None:
-            pulumi.set(__self__, "autovacuum_vacuum_cost_delay", autovacuum_vacuum_cost_delay)
-        if autovacuum_vacuum_cost_limit is not None:
-            pulumi.set(__self__, "autovacuum_vacuum_cost_limit", autovacuum_vacuum_cost_limit)
-        if autovacuum_vacuum_scale_factor is not None:
-            pulumi.set(__self__, "autovacuum_vacuum_scale_factor", autovacuum_vacuum_scale_factor)
-        if autovacuum_vacuum_threshold is not None:
-            pulumi.set(__self__, "autovacuum_vacuum_threshold", autovacuum_vacuum_threshold)
-        if bgwriter_delay is not None:
-            pulumi.set(__self__, "bgwriter_delay", bgwriter_delay)
-        if bgwriter_flush_after is not None:
-            pulumi.set(__self__, "bgwriter_flush_after", bgwriter_flush_after)
-        if bgwriter_lru_maxpages is not None:
-            pulumi.set(__self__, "bgwriter_lru_maxpages", bgwriter_lru_maxpages)
-        if bgwriter_lru_multiplier is not None:
-            pulumi.set(__self__, "bgwriter_lru_multiplier", bgwriter_lru_multiplier)
-        if deadlock_timeout is not None:
-            pulumi.set(__self__, "deadlock_timeout", deadlock_timeout)
-        if default_toast_compression is not None:
-            pulumi.set(__self__, "default_toast_compression", default_toast_compression)
-        if idle_in_transaction_session_timeout is not None:
-            pulumi.set(__self__, "idle_in_transaction_session_timeout", idle_in_transaction_session_timeout)
-        if jit is not None:
-            pulumi.set(__self__, "jit", jit)
-        if log_autovacuum_min_duration is not None:
-            pulumi.set(__self__, "log_autovacuum_min_duration", log_autovacuum_min_duration)
-        if log_error_verbosity is not None:
-            pulumi.set(__self__, "log_error_verbosity", log_error_verbosity)
-        if log_line_prefix is not None:
-            pulumi.set(__self__, "log_line_prefix", log_line_prefix)
-        if log_min_duration_statement is not None:
-            pulumi.set(__self__, "log_min_duration_statement", log_min_duration_statement)
-        if log_temp_files is not None:
-            pulumi.set(__self__, "log_temp_files", log_temp_files)
-        if max_files_per_process is not None:
-            pulumi.set(__self__, "max_files_per_process", max_files_per_process)
-        if max_locks_per_transaction is not None:
-            pulumi.set(__self__, "max_locks_per_transaction", max_locks_per_transaction)
-        if max_logical_replication_workers is not None:
-            pulumi.set(__self__, "max_logical_replication_workers", max_logical_replication_workers)
-        if max_parallel_workers is not None:
-            pulumi.set(__self__, "max_parallel_workers", max_parallel_workers)
-        if max_parallel_workers_per_gather is not None:
-            pulumi.set(__self__, "max_parallel_workers_per_gather", max_parallel_workers_per_gather)
-        if max_pred_locks_per_transaction is not None:
-            pulumi.set(__self__, "max_pred_locks_per_transaction", max_pred_locks_per_transaction)
-        if max_prepared_transactions is not None:
-            pulumi.set(__self__, "max_prepared_transactions", max_prepared_transactions)
-        if max_replication_slots is not None:
-            pulumi.set(__self__, "max_replication_slots", max_replication_slots)
-        if max_slot_wal_keep_size is not None:
-            pulumi.set(__self__, "max_slot_wal_keep_size", max_slot_wal_keep_size)
-        if max_stack_depth is not None:
-            pulumi.set(__self__, "max_stack_depth", max_stack_depth)
-        if max_standby_archive_delay is not None:
-            pulumi.set(__self__, "max_standby_archive_delay", max_standby_archive_delay)
-        if max_standby_streaming_delay is not None:
-            pulumi.set(__self__, "max_standby_streaming_delay", max_standby_streaming_delay)
-        if max_sync_workers_per_subscription is not None:
-            pulumi.set(__self__, "max_sync_workers_per_subscription", max_sync_workers_per_subscription)
-        if max_wal_senders is not None:
-            pulumi.set(__self__, "max_wal_senders", max_wal_senders)
-        if max_worker_processes is not None:
-            pulumi.set(__self__, "max_worker_processes", max_worker_processes)
-        if password_encryption is not None:
-            pulumi.set(__self__, "password_encryption", password_encryption)
-        if pg_partman_bgw_dot_interval is not None:
-            pulumi.set(__self__, "pg_partman_bgw_dot_interval", pg_partman_bgw_dot_interval)
-        if pg_partman_bgw_dot_role is not None:
-            pulumi.set(__self__, "pg_partman_bgw_dot_role", pg_partman_bgw_dot_role)
-        if pg_stat_statements_dot_track is not None:
-            pulumi.set(__self__, "pg_stat_statements_dot_track", pg_stat_statements_dot_track)
-        if temp_file_limit is not None:
-            pulumi.set(__self__, "temp_file_limit", temp_file_limit)
-        if timezone is not None:
-            pulumi.set(__self__, "timezone", timezone)
-        if track_activity_query_size is not None:
-            pulumi.set(__self__, "track_activity_query_size", track_activity_query_size)
-        if track_commit_timestamp is not None:
-            pulumi.set(__self__, "track_commit_timestamp", track_commit_timestamp)
-        if track_functions is not None:
-            pulumi.set(__self__, "track_functions", track_functions)
-        if track_io_timing is not None:
-            pulumi.set(__self__, "track_io_timing", track_io_timing)
-        if wal_sender_timeout is not None:
-            pulumi.set(__self__, "wal_sender_timeout", wal_sender_timeout)
-        if wal_writer_delay is not None:
-            pulumi.set(__self__, "wal_writer_delay", wal_writer_delay)
-
-    @_builtins.property
-    @pulumi.getter(name="autovacuumAnalyzeScaleFactor")
-    def autovacuum_analyze_scale_factor(self) -> Optional[pulumi.Input[_builtins.float]]:
-        """
-        Specifies a fraction of the table size to add to autovacuum_analyze_threshold when deciding whether to trigger an ANALYZE (e.g. `0.2` for 20% of the table size). The default is `0.2`.
-        """
-        return pulumi.get(self, "autovacuum_analyze_scale_factor")
-
-    @autovacuum_analyze_scale_factor.setter
-    def autovacuum_analyze_scale_factor(self, value: Optional[pulumi.Input[_builtins.float]]):
-        pulumi.set(self, "autovacuum_analyze_scale_factor", value)
-
-    @_builtins.property
-    @pulumi.getter(name="autovacuumAnalyzeThreshold")
-    def autovacuum_analyze_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is `50`.
-        """
-        return pulumi.get(self, "autovacuum_analyze_threshold")
-
-    @autovacuum_analyze_threshold.setter
-    def autovacuum_analyze_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "autovacuum_analyze_threshold", value)
-
-    @_builtins.property
-    @pulumi.getter(name="autovacuumFreezeMaxAge")
-    def autovacuum_freeze_max_age(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the maximum age (in transactions) that a table's pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. The system launches autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. Changing this parameter causes a service restart.
-        """
-        return pulumi.get(self, "autovacuum_freeze_max_age")
-
-    @autovacuum_freeze_max_age.setter
-    def autovacuum_freeze_max_age(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "autovacuum_freeze_max_age", value)
-
-    @_builtins.property
-    @pulumi.getter(name="autovacuumMaxWorkers")
-    def autovacuum_max_workers(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is `3`. Changing this parameter causes a service restart.
-        """
-        return pulumi.get(self, "autovacuum_max_workers")
-
-    @autovacuum_max_workers.setter
-    def autovacuum_max_workers(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "autovacuum_max_workers", value)
-
-    @_builtins.property
-    @pulumi.getter(name="autovacuumNaptime")
-    def autovacuum_naptime(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds. The default is `60`.
-        """
-        return pulumi.get(self, "autovacuum_naptime")
-
-    @autovacuum_naptime.setter
-    def autovacuum_naptime(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "autovacuum_naptime", value)
-
-    @_builtins.property
-    @pulumi.getter(name="autovacuumVacuumCostDelay")
-    def autovacuum_vacuum_cost_delay(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the cost delay value that will be used in automatic VACUUM operations. If `-1` is specified, the regular vacuum_cost_delay value will be used. The default is `2` (upstream default).
-        """
-        return pulumi.get(self, "autovacuum_vacuum_cost_delay")
-
-    @autovacuum_vacuum_cost_delay.setter
-    def autovacuum_vacuum_cost_delay(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "autovacuum_vacuum_cost_delay", value)
-
-    @_builtins.property
-    @pulumi.getter(name="autovacuumVacuumCostLimit")
-    def autovacuum_vacuum_cost_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the cost limit value that will be used in automatic VACUUM operations. If `-1` is specified, the regular vacuum_cost_limit value will be used. The default is `-1` (upstream default).
-        """
-        return pulumi.get(self, "autovacuum_vacuum_cost_limit")
-
-    @autovacuum_vacuum_cost_limit.setter
-    def autovacuum_vacuum_cost_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "autovacuum_vacuum_cost_limit", value)
-
-    @_builtins.property
-    @pulumi.getter(name="autovacuumVacuumScaleFactor")
-    def autovacuum_vacuum_scale_factor(self) -> Optional[pulumi.Input[_builtins.float]]:
-        """
-        Specifies a fraction of the table size to add to autovacuum_vacuum_threshold when deciding whether to trigger a VACUUM (e.g. `0.2` for 20% of the table size). The default is `0.2`.
-        """
-        return pulumi.get(self, "autovacuum_vacuum_scale_factor")
-
-    @autovacuum_vacuum_scale_factor.setter
-    def autovacuum_vacuum_scale_factor(self, value: Optional[pulumi.Input[_builtins.float]]):
-        pulumi.set(self, "autovacuum_vacuum_scale_factor", value)
-
-    @_builtins.property
-    @pulumi.getter(name="autovacuumVacuumThreshold")
-    def autovacuum_vacuum_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is `50`.
-        """
-        return pulumi.get(self, "autovacuum_vacuum_threshold")
-
-    @autovacuum_vacuum_threshold.setter
-    def autovacuum_vacuum_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "autovacuum_vacuum_threshold", value)
-
-    @_builtins.property
-    @pulumi.getter(name="bgwriterDelay")
-    def bgwriter_delay(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the delay between activity rounds for the background writer in milliseconds. The default is `200`. Example: `200`.
-        """
-        return pulumi.get(self, "bgwriter_delay")
-
-    @bgwriter_delay.setter
-    def bgwriter_delay(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "bgwriter_delay", value)
-
-    @_builtins.property
-    @pulumi.getter(name="bgwriterFlushAfter")
-    def bgwriter_flush_after(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Whenever more than bgwriter_flush_after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes. Setting of 0 disables forced writeback. The default is `512`. Example: `512`.
-        """
-        return pulumi.get(self, "bgwriter_flush_after")
-
-    @bgwriter_flush_after.setter
-    def bgwriter_flush_after(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "bgwriter_flush_after", value)
-
-    @_builtins.property
-    @pulumi.getter(name="bgwriterLruMaxpages")
-    def bgwriter_lru_maxpages(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. The default is `100`. Example: `100`.
-        """
-        return pulumi.get(self, "bgwriter_lru_maxpages")
-
-    @bgwriter_lru_maxpages.setter
-    def bgwriter_lru_maxpages(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "bgwriter_lru_maxpages", value)
-
-    @_builtins.property
-    @pulumi.getter(name="bgwriterLruMultiplier")
-    def bgwriter_lru_multiplier(self) -> Optional[pulumi.Input[_builtins.float]]:
-        """
-        The average recent need for new buffers is multiplied by bgwriter_lru_multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is `2.0`. Example: `2`.
-        """
-        return pulumi.get(self, "bgwriter_lru_multiplier")
-
-    @bgwriter_lru_multiplier.setter
-    def bgwriter_lru_multiplier(self, value: Optional[pulumi.Input[_builtins.float]]):
-        pulumi.set(self, "bgwriter_lru_multiplier", value)
-
-    @_builtins.property
-    @pulumi.getter(name="deadlockTimeout")
-    def deadlock_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition. The default is `1000` (upstream default). Example: `1000`.
-        """
-        return pulumi.get(self, "deadlock_timeout")
-
-    @deadlock_timeout.setter
-    def deadlock_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "deadlock_timeout", value)
-
-    @_builtins.property
-    @pulumi.getter(name="defaultToastCompression")
-    def default_toast_compression(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Enum: `lz4`, `pglz`. Specifies the default TOAST compression method for values of compressible columns. The default is `lz4`.
-        """
-        return pulumi.get(self, "default_toast_compression")
-
-    @default_toast_compression.setter
-    def default_toast_compression(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "default_toast_compression", value)
-
-    @_builtins.property
-    @pulumi.getter(name="idleInTransactionSessionTimeout")
-    def idle_in_transaction_session_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Time out sessions with open transactions after this number of milliseconds.
-        """
-        return pulumi.get(self, "idle_in_transaction_session_timeout")
-
-    @idle_in_transaction_session_timeout.setter
-    def idle_in_transaction_session_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "idle_in_transaction_session_timeout", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def jit(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Controls system-wide use of Just-in-Time Compilation (JIT).
-        """
-        return pulumi.get(self, "jit")
-
-    @jit.setter
-    def jit(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "jit", value)
-
-    @_builtins.property
-    @pulumi.getter(name="logAutovacuumMinDuration")
-    def log_autovacuum_min_duration(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Causes each action executed by autovacuum to be logged if it ran for at least the specified number of milliseconds. Setting this to zero logs all autovacuum actions. Minus-one disables logging autovacuum actions. The default is `1000`.
-        """
-        return pulumi.get(self, "log_autovacuum_min_duration")
-
-    @log_autovacuum_min_duration.setter
-    def log_autovacuum_min_duration(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "log_autovacuum_min_duration", value)
-
-    @_builtins.property
-    @pulumi.getter(name="logErrorVerbosity")
-    def log_error_verbosity(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Enum: `DEFAULT`, `TERSE`, `VERBOSE`. Controls the amount of detail written in the server log for each message that is logged.
-        """
-        return pulumi.get(self, "log_error_verbosity")
-
-    @log_error_verbosity.setter
-    def log_error_verbosity(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "log_error_verbosity", value)
-
-    @_builtins.property
-    @pulumi.getter(name="logLinePrefix")
-    def log_line_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Enum: `'%m [%p] %q[user=%u,db=%d,app=%a] '`, `'%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '`, `'pid=%p,user=%u,db=%d,app=%a,client=%h '`, `'pid=%p,user=%u,db=%d,app=%a,client=%h,txid=%x,qid=%Q '`. Choose from one of the available log formats.
-        """
-        return pulumi.get(self, "log_line_prefix")
-
-    @log_line_prefix.setter
-    def log_line_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "log_line_prefix", value)
-
-    @_builtins.property
-    @pulumi.getter(name="logMinDurationStatement")
-    def log_min_duration_statement(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Log statements that take more than this number of milliseconds to run, -1 disables.
-        """
-        return pulumi.get(self, "log_min_duration_statement")
-
-    @log_min_duration_statement.setter
-    def log_min_duration_statement(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "log_min_duration_statement", value)
-
-    @_builtins.property
-    @pulumi.getter(name="logTempFiles")
-    def log_temp_files(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Log statements for each temporary file created larger than this number of kilobytes, -1 disables.
-        """
-        return pulumi.get(self, "log_temp_files")
-
-    @log_temp_files.setter
-    def log_temp_files(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "log_temp_files", value)
-
-    @_builtins.property
-    @pulumi.getter(name="maxFilesPerProcess")
-    def max_files_per_process(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        PostgreSQL maximum number of files that can be open per process. The default is `1000` (upstream default). Changing this parameter causes a service restart.
-        """
-        return pulumi.get(self, "max_files_per_process")
-
-    @max_files_per_process.setter
-    def max_files_per_process(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "max_files_per_process", value)
-
-    @_builtins.property
-    @pulumi.getter(name="maxLocksPerTransaction")
-    def max_locks_per_transaction(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        PostgreSQL maximum locks per transaction. Changing this parameter causes a service restart.
-        """
-        return pulumi.get(self, "max_locks_per_transaction")
-
-    @max_locks_per_transaction.setter
-    def max_locks_per_transaction(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "max_locks_per_transaction", value)
-
-    @_builtins.property
-    @pulumi.getter(name="maxLogicalReplicationWorkers")
-    def max_logical_replication_workers(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers). The default is `4` (upstream default). Changing this parameter causes a service restart.
-        """
-        return pulumi.get(self, "max_logical_replication_workers")
-
-    @max_logical_replication_workers.setter
-    def max_logical_replication_workers(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "max_logical_replication_workers", value)
-
-    @_builtins.property
-    @pulumi.getter(name="maxParallelWorkers")
-    def max_parallel_workers(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Sets the maximum number of workers that the system can support for parallel queries. The default is `8` (upstream default).
-        """
-        return pulumi.get(self, "max_parallel_workers")
-
-    @max_parallel_workers.setter
-    def max_parallel_workers(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "max_parallel_workers", value)
-
-    @_builtins.property
-    @pulumi.getter(name="maxParallelWorkersPerGather")
-    def max_parallel_workers_per_gather(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Sets the maximum number of workers that can be started by a single Gather or Gather Merge node. The default is `2` (upstream default).
-        """
-        return pulumi.get(self, "max_parallel_workers_per_gather")
-
-    @max_parallel_workers_per_gather.setter
-    def max_parallel_workers_per_gather(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "max_parallel_workers_per_gather", value)
-
-    @_builtins.property
-    @pulumi.getter(name="maxPredLocksPerTransaction")
-    def max_pred_locks_per_transaction(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        PostgreSQL maximum predicate locks per transaction. The default is `64` (upstream default). Changing this parameter causes a service restart.
-        """
-        return pulumi.get(self, "max_pred_locks_per_transaction")
-
-    @max_pred_locks_per_transaction.setter
-    def max_pred_locks_per_transaction(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "max_pred_locks_per_transaction", value)
-
-    @_builtins.property
-    @pulumi.getter(name="maxPreparedTransactions")
-    def max_prepared_transactions(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        PostgreSQL maximum prepared transactions. The default is `0`. Changing this parameter causes a service restart.
-        """
-        return pulumi.get(self, "max_prepared_transactions")
-
-    @max_prepared_transactions.setter
-    def max_prepared_transactions(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "max_prepared_transactions", value)
-
-    @_builtins.property
-    @pulumi.getter(name="maxReplicationSlots")
-    def max_replication_slots(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        PostgreSQL maximum replication slots. The default is `20`. Changing this parameter causes a service restart.
-        """
-        return pulumi.get(self, "max_replication_slots")
-
-    @max_replication_slots.setter
-    def max_replication_slots(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "max_replication_slots", value)
-
-    @_builtins.property
-    @pulumi.getter(name="maxSlotWalKeepSize")
-    def max_slot_wal_keep_size(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        PostgreSQL maximum WAL size (MB) reserved for replication slots. If `-1` is specified, replication slots may retain an unlimited amount of WAL files. The default is `-1` (upstream default). wal_keep_size minimum WAL size setting takes precedence over this.
-        """
-        return pulumi.get(self, "max_slot_wal_keep_size")
-
-    @max_slot_wal_keep_size.setter
-    def max_slot_wal_keep_size(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "max_slot_wal_keep_size", value)
-
-    @_builtins.property
-    @pulumi.getter(name="maxStackDepth")
-    def max_stack_depth(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Maximum depth of the stack in bytes. The default is `2097152` (upstream default).
-        """
-        return pulumi.get(self, "max_stack_depth")
-
-    @max_stack_depth.setter
-    def max_stack_depth(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "max_stack_depth", value)
-
-    @_builtins.property
-    @pulumi.getter(name="maxStandbyArchiveDelay")
-    def max_standby_archive_delay(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Max standby archive delay in milliseconds. The default is `30000` (upstream default).
-        """
-        return pulumi.get(self, "max_standby_archive_delay")
-
-    @max_standby_archive_delay.setter
-    def max_standby_archive_delay(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "max_standby_archive_delay", value)
-
-    @_builtins.property
-    @pulumi.getter(name="maxStandbyStreamingDelay")
-    def max_standby_streaming_delay(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Max standby streaming delay in milliseconds. The default is `30000` (upstream default).
-        """
-        return pulumi.get(self, "max_standby_streaming_delay")
-
-    @max_standby_streaming_delay.setter
-    def max_standby_streaming_delay(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "max_standby_streaming_delay", value)
-
-    @_builtins.property
-    @pulumi.getter(name="maxSyncWorkersPerSubscription")
-    def max_sync_workers_per_subscription(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Maximum number of synchronization workers per subscription. The default is `2`.
-        """
-        return pulumi.get(self, "max_sync_workers_per_subscription")
-
-    @max_sync_workers_per_subscription.setter
-    def max_sync_workers_per_subscription(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "max_sync_workers_per_subscription", value)
-
-    @_builtins.property
-    @pulumi.getter(name="maxWalSenders")
-    def max_wal_senders(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        PostgreSQL maximum WAL senders. The default is `20`. Changing this parameter causes a service restart.
-        """
-        return pulumi.get(self, "max_wal_senders")
-
-    @max_wal_senders.setter
-    def max_wal_senders(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "max_wal_senders", value)
-
-    @_builtins.property
-    @pulumi.getter(name="maxWorkerProcesses")
-    def max_worker_processes(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Sets the maximum number of background processes that the system can support. The default is `8`. Changing this parameter causes a service restart.
-        """
-        return pulumi.get(self, "max_worker_processes")
-
-    @max_worker_processes.setter
-    def max_worker_processes(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "max_worker_processes", value)
-
-    @_builtins.property
-    @pulumi.getter(name="passwordEncryption")
-    def password_encryption(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords.
-        """
-        return pulumi.get(self, "password_encryption")
-
-    @password_encryption.setter
-    def password_encryption(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "password_encryption", value)
-
-    @_builtins.property
-    @pulumi.getter(name="pgPartmanBgwDotInterval")
-    def pg_partman_bgw_dot_interval(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Sets the time interval in seconds to run pg_partman's scheduled tasks. The default is `3600`. Example: `3600`.
-        """
-        return pulumi.get(self, "pg_partman_bgw_dot_interval")
-
-    @pg_partman_bgw_dot_interval.setter
-    def pg_partman_bgw_dot_interval(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "pg_partman_bgw_dot_interval", value)
-
-    @_builtins.property
-    @pulumi.getter(name="pgPartmanBgwDotRole")
-    def pg_partman_bgw_dot_role(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Controls which role to use for pg_partman's scheduled background tasks. Example: `myrolename`.
-        """
-        return pulumi.get(self, "pg_partman_bgw_dot_role")
-
-    @pg_partman_bgw_dot_role.setter
-    def pg_partman_bgw_dot_role(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "pg_partman_bgw_dot_role", value)
-
-    @_builtins.property
-    @pulumi.getter(name="pgStatStatementsDotTrack")
-    def pg_stat_statements_dot_track(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Enum: `all`, `none`, `top`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default is `top`.
-        """
-        return pulumi.get(self, "pg_stat_statements_dot_track")
-
-    @pg_stat_statements_dot_track.setter
-    def pg_stat_statements_dot_track(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "pg_stat_statements_dot_track", value)
-
-    @_builtins.property
-    @pulumi.getter(name="tempFileLimit")
-    def temp_file_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        PostgreSQL temporary file limit in KiB, -1 for unlimited.
-        """
-        return pulumi.get(self, "temp_file_limit")
-
-    @temp_file_limit.setter
-    def temp_file_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "temp_file_limit", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def timezone(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        PostgreSQL service timezone. Example: `Europe/Helsinki`.
-        """
-        return pulumi.get(self, "timezone")
-
-    @timezone.setter
-    def timezone(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "timezone", value)
-
-    @_builtins.property
-    @pulumi.getter(name="trackActivityQuerySize")
-    def track_activity_query_size(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the number of bytes reserved to track the currently executing command for each active session. Changing this parameter causes a service restart. Example: `1024`.
-        """
-        return pulumi.get(self, "track_activity_query_size")
-
-    @track_activity_query_size.setter
-    def track_activity_query_size(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "track_activity_query_size", value)
-
-    @_builtins.property
-    @pulumi.getter(name="trackCommitTimestamp")
-    def track_commit_timestamp(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Enum: `off`, `on`. Record commit time of transactions. Changing this parameter causes a service restart.
-        """
-        return pulumi.get(self, "track_commit_timestamp")
-
-    @track_commit_timestamp.setter
-    def track_commit_timestamp(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "track_commit_timestamp", value)
-
-    @_builtins.property
-    @pulumi.getter(name="trackFunctions")
-    def track_functions(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Enum: `all`, `none`, `pl`. Enables tracking of function call counts and time used.
-        """
-        return pulumi.get(self, "track_functions")
-
-    @track_functions.setter
-    def track_functions(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "track_functions", value)
-
-    @_builtins.property
-    @pulumi.getter(name="trackIoTiming")
-    def track_io_timing(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Enum: `off`, `on`. Enables timing of database I/O calls. The default is `off`. When on, it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
-        """
-        return pulumi.get(self, "track_io_timing")
-
-    @track_io_timing.setter
-    def track_io_timing(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "track_io_timing", value)
-
-    @_builtins.property
-    @pulumi.getter(name="walSenderTimeout")
-    def wal_sender_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout. Example: `60000`.
-        """
-        return pulumi.get(self, "wal_sender_timeout")
-
-    @wal_sender_timeout.setter
-    def wal_sender_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "wal_sender_timeout", value)
-
-    @_builtins.property
-    @pulumi.getter(name="walWriterDelay")
-    def wal_writer_delay(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        WAL flush interval in milliseconds. The default is `200`. Setting this parameter to a lower value may negatively impact performance. Example: `50`.
-        """
-        return pulumi.get(self, "wal_writer_delay")
-
-    @wal_writer_delay.setter
-    def wal_writer_delay(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "wal_writer_delay", value)
-
-
-class AlloydbomniAlloydbomniUserConfigPgauditArgsDict(TypedDict):
-    feature_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-    """
-    Enable pgaudit extension. When enabled, pgaudit extension will be automatically installed.Otherwise, extension will be uninstalled but auditing configurations will be preserved. Default: `false`.
-    """
-    log_catalog: NotRequired[pulumi.Input[_builtins.bool]]
-    """
-    Specifies that session logging should be enabled in the case where all relations in a statement are in pg_catalog. Default: `true`.
-    """
-    log_client: NotRequired[pulumi.Input[_builtins.bool]]
-    """
-    Specifies whether log messages will be visible to a client process such as psql. Default: `false`.
-    """
-    log_level: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `log`, `notice`, `warning`. Specifies the log level that will be used for log entries. Default: `log`.
-    """
-    log_max_string_length: NotRequired[pulumi.Input[_builtins.int]]
-    """
-    Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. Default: `-1`.
-    """
-    log_nested_statements: NotRequired[pulumi.Input[_builtins.bool]]
-    """
-    This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. Default: `true`.
-    """
-    log_parameter: NotRequired[pulumi.Input[_builtins.bool]]
-    """
-    Specifies that audit logging should include the parameters that were passed with the statement. Default: `false`.
-    """
-    log_parameter_max_size: NotRequired[pulumi.Input[_builtins.int]]
-    """
-    Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with <long param suppressed>. Default: `0`.
-    """
-    log_relation: NotRequired[pulumi.Input[_builtins.bool]]
-    """
-    Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
-    """
-    log_rows: NotRequired[pulumi.Input[_builtins.bool]]
-    """
-    Log Rows. Default: `false`.
-    """
-    log_statement: NotRequired[pulumi.Input[_builtins.bool]]
-    """
-    Specifies whether logging will include the statement text and parameters (if enabled). Default: `true`.
-    """
-    log_statement_once: NotRequired[pulumi.Input[_builtins.bool]]
-    """
-    Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. Default: `false`.
-    """
-    logs: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-    """
-    Specifies which classes of statements will be logged by session audit logging.
-    """
-    role: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    Specifies the master role to use for object audit logging.
-    """
-
-@pulumi.input_type
-class AlloydbomniAlloydbomniUserConfigPgauditArgs:
-    def __init__(__self__, *,
-                 feature_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 log_catalog: Optional[pulumi.Input[_builtins.bool]] = None,
-                 log_client: Optional[pulumi.Input[_builtins.bool]] = None,
-                 log_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_max_string_length: Optional[pulumi.Input[_builtins.int]] = None,
-                 log_nested_statements: Optional[pulumi.Input[_builtins.bool]] = None,
-                 log_parameter: Optional[pulumi.Input[_builtins.bool]] = None,
-                 log_parameter_max_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 log_relation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 log_rows: Optional[pulumi.Input[_builtins.bool]] = None,
-                 log_statement: Optional[pulumi.Input[_builtins.bool]] = None,
-                 log_statement_once: Optional[pulumi.Input[_builtins.bool]] = None,
-                 logs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.bool] feature_enabled: Enable pgaudit extension. When enabled, pgaudit extension will be automatically installed.Otherwise, extension will be uninstalled but auditing configurations will be preserved. Default: `false`.
-        :param pulumi.Input[_builtins.bool] log_catalog: Specifies that session logging should be enabled in the case where all relations in a statement are in pg_catalog. Default: `true`.
-        :param pulumi.Input[_builtins.bool] log_client: Specifies whether log messages will be visible to a client process such as psql. Default: `false`.
-        :param pulumi.Input[_builtins.str] log_level: Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `log`, `notice`, `warning`. Specifies the log level that will be used for log entries. Default: `log`.
-        :param pulumi.Input[_builtins.int] log_max_string_length: Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. Default: `-1`.
-        :param pulumi.Input[_builtins.bool] log_nested_statements: This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. Default: `true`.
-        :param pulumi.Input[_builtins.bool] log_parameter: Specifies that audit logging should include the parameters that were passed with the statement. Default: `false`.
-        :param pulumi.Input[_builtins.int] log_parameter_max_size: Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with <long param suppressed>. Default: `0`.
-        :param pulumi.Input[_builtins.bool] log_relation: Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
-        :param pulumi.Input[_builtins.bool] log_rows: Log Rows. Default: `false`.
-        :param pulumi.Input[_builtins.bool] log_statement: Specifies whether logging will include the statement text and parameters (if enabled). Default: `true`.
-        :param pulumi.Input[_builtins.bool] log_statement_once: Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. Default: `false`.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] logs: Specifies which classes of statements will be logged by session audit logging.
-        :param pulumi.Input[_builtins.str] role: Specifies the master role to use for object audit logging.
-        """
-        if feature_enabled is not None:
-            pulumi.set(__self__, "feature_enabled", feature_enabled)
-        if log_catalog is not None:
-            pulumi.set(__self__, "log_catalog", log_catalog)
-        if log_client is not None:
-            pulumi.set(__self__, "log_client", log_client)
-        if log_level is not None:
-            pulumi.set(__self__, "log_level", log_level)
-        if log_max_string_length is not None:
-            pulumi.set(__self__, "log_max_string_length", log_max_string_length)
-        if log_nested_statements is not None:
-            pulumi.set(__self__, "log_nested_statements", log_nested_statements)
-        if log_parameter is not None:
-            pulumi.set(__self__, "log_parameter", log_parameter)
-        if log_parameter_max_size is not None:
-            pulumi.set(__self__, "log_parameter_max_size", log_parameter_max_size)
-        if log_relation is not None:
-            pulumi.set(__self__, "log_relation", log_relation)
-        if log_rows is not None:
-            pulumi.set(__self__, "log_rows", log_rows)
-        if log_statement is not None:
-            pulumi.set(__self__, "log_statement", log_statement)
-        if log_statement_once is not None:
-            pulumi.set(__self__, "log_statement_once", log_statement_once)
-        if logs is not None:
-            pulumi.set(__self__, "logs", logs)
-        if role is not None:
-            pulumi.set(__self__, "role", role)
-
-    @_builtins.property
-    @pulumi.getter(name="featureEnabled")
-    def feature_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Enable pgaudit extension. When enabled, pgaudit extension will be automatically installed.Otherwise, extension will be uninstalled but auditing configurations will be preserved. Default: `false`.
-        """
-        return pulumi.get(self, "feature_enabled")
-
-    @feature_enabled.setter
-    def feature_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "feature_enabled", value)
-
-    @_builtins.property
-    @pulumi.getter(name="logCatalog")
-    def log_catalog(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies that session logging should be enabled in the case where all relations in a statement are in pg_catalog. Default: `true`.
-        """
-        return pulumi.get(self, "log_catalog")
-
-    @log_catalog.setter
-    def log_catalog(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "log_catalog", value)
-
-    @_builtins.property
-    @pulumi.getter(name="logClient")
-    def log_client(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether log messages will be visible to a client process such as psql. Default: `false`.
-        """
-        return pulumi.get(self, "log_client")
-
-    @log_client.setter
-    def log_client(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "log_client", value)
-
-    @_builtins.property
-    @pulumi.getter(name="logLevel")
-    def log_level(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `log`, `notice`, `warning`. Specifies the log level that will be used for log entries. Default: `log`.
-        """
-        return pulumi.get(self, "log_level")
-
-    @log_level.setter
-    def log_level(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "log_level", value)
-
-    @_builtins.property
-    @pulumi.getter(name="logMaxStringLength")
-    def log_max_string_length(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. Default: `-1`.
-        """
-        return pulumi.get(self, "log_max_string_length")
-
-    @log_max_string_length.setter
-    def log_max_string_length(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "log_max_string_length", value)
-
-    @_builtins.property
-    @pulumi.getter(name="logNestedStatements")
-    def log_nested_statements(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. Default: `true`.
-        """
-        return pulumi.get(self, "log_nested_statements")
-
-    @log_nested_statements.setter
-    def log_nested_statements(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "log_nested_statements", value)
-
-    @_builtins.property
-    @pulumi.getter(name="logParameter")
-    def log_parameter(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies that audit logging should include the parameters that were passed with the statement. Default: `false`.
-        """
-        return pulumi.get(self, "log_parameter")
-
-    @log_parameter.setter
-    def log_parameter(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "log_parameter", value)
-
-    @_builtins.property
-    @pulumi.getter(name="logParameterMaxSize")
-    def log_parameter_max_size(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with <long param suppressed>. Default: `0`.
-        """
-        return pulumi.get(self, "log_parameter_max_size")
-
-    @log_parameter_max_size.setter
-    def log_parameter_max_size(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "log_parameter_max_size", value)
-
-    @_builtins.property
-    @pulumi.getter(name="logRelation")
-    def log_relation(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
-        """
-        return pulumi.get(self, "log_relation")
-
-    @log_relation.setter
-    def log_relation(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "log_relation", value)
-
-    @_builtins.property
-    @pulumi.getter(name="logRows")
-    def log_rows(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Log Rows. Default: `false`.
-        """
-        return pulumi.get(self, "log_rows")
-
-    @log_rows.setter
-    def log_rows(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "log_rows", value)
-
-    @_builtins.property
-    @pulumi.getter(name="logStatement")
-    def log_statement(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether logging will include the statement text and parameters (if enabled). Default: `true`.
-        """
-        return pulumi.get(self, "log_statement")
-
-    @log_statement.setter
-    def log_statement(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "log_statement", value)
-
-    @_builtins.property
-    @pulumi.getter(name="logStatementOnce")
-    def log_statement_once(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. Default: `false`.
-        """
-        return pulumi.get(self, "log_statement_once")
-
-    @log_statement_once.setter
-    def log_statement_once(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "log_statement_once", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def logs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies which classes of statements will be logged by session audit logging.
-        """
-        return pulumi.get(self, "logs")
-
-    @logs.setter
-    def logs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "logs", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def role(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the master role to use for object audit logging.
-        """
-        return pulumi.get(self, "role")
-
-    @role.setter
-    def role(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "role", value)
-
-
-class AlloydbomniAlloydbomniUserConfigPgbouncerArgsDict(TypedDict):
-    autodb_idle_timeout: NotRequired[pulumi.Input[_builtins.int]]
-    """
-    If the automatically created database pools have been unused this many seconds, they are freed. If 0 then timeout is disabled. (seconds). Default: `3600`.
-    """
-    autodb_max_db_connections: NotRequired[pulumi.Input[_builtins.int]]
-    """
-    Do not allow more than this many server connections per database (regardless of user). Setting it to 0 means unlimited. Example: `0`.
-    """
-    autodb_pool_mode: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    Enum: `session`, `statement`, `transaction`. PGBouncer pool mode. Default: `transaction`.
-    """
-    autodb_pool_size: NotRequired[pulumi.Input[_builtins.int]]
-    """
-    If non-zero then create automatically a pool of that size per user when a pool doesn't exist. Default: `0`.
-    """
-    ignore_startup_parameters: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-    """
-    List of parameters to ignore when given in startup packet.
-    """
-    max_prepared_statements: NotRequired[pulumi.Input[_builtins.int]]
-    """
-    PgBouncer tracks protocol-level named prepared statements related commands sent by the client in transaction and statement pooling modes when max_prepared_statements is set to a non-zero value. Setting it to 0 disables prepared statements. max_prepared_statements defaults to 100, and its maximum is 3000. Default: `100`.
-    """
-    min_pool_size: NotRequired[pulumi.Input[_builtins.int]]
-    """
-    Add more server connections to pool if below this number. Improves behavior when usual load comes suddenly back after period of total inactivity. The value is effectively capped at the pool size. Default: `0`.
-    """
-    server_idle_timeout: NotRequired[pulumi.Input[_builtins.int]]
-    """
-    If a server connection has been idle more than this many seconds it will be dropped. If 0 then timeout is disabled. (seconds). Default: `600`.
-    """
-    server_lifetime: NotRequired[pulumi.Input[_builtins.int]]
-    """
-    The pooler will close an unused server connection that has been connected longer than this. (seconds). Default: `3600`.
-    """
-    server_reset_query_always: NotRequired[pulumi.Input[_builtins.bool]]
-    """
-    Run server_reset_query (DISCARD ALL) in all pooling modes. Default: `false`.
-    """
-
-@pulumi.input_type
-class AlloydbomniAlloydbomniUserConfigPgbouncerArgs:
-    def __init__(__self__, *,
-                 autodb_idle_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 autodb_max_db_connections: Optional[pulumi.Input[_builtins.int]] = None,
-                 autodb_pool_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 autodb_pool_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 ignore_startup_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 max_prepared_statements: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_pool_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 server_idle_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 server_lifetime: Optional[pulumi.Input[_builtins.int]] = None,
-                 server_reset_query_always: Optional[pulumi.Input[_builtins.bool]] = None):
-        """
-        :param pulumi.Input[_builtins.int] autodb_idle_timeout: If the automatically created database pools have been unused this many seconds, they are freed. If 0 then timeout is disabled. (seconds). Default: `3600`.
-        :param pulumi.Input[_builtins.int] autodb_max_db_connections: Do not allow more than this many server connections per database (regardless of user). Setting it to 0 means unlimited. Example: `0`.
-        :param pulumi.Input[_builtins.str] autodb_pool_mode: Enum: `session`, `statement`, `transaction`. PGBouncer pool mode. Default: `transaction`.
-        :param pulumi.Input[_builtins.int] autodb_pool_size: If non-zero then create automatically a pool of that size per user when a pool doesn't exist. Default: `0`.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ignore_startup_parameters: List of parameters to ignore when given in startup packet.
-        :param pulumi.Input[_builtins.int] max_prepared_statements: PgBouncer tracks protocol-level named prepared statements related commands sent by the client in transaction and statement pooling modes when max_prepared_statements is set to a non-zero value. Setting it to 0 disables prepared statements. max_prepared_statements defaults to 100, and its maximum is 3000. Default: `100`.
-        :param pulumi.Input[_builtins.int] min_pool_size: Add more server connections to pool if below this number. Improves behavior when usual load comes suddenly back after period of total inactivity. The value is effectively capped at the pool size. Default: `0`.
-        :param pulumi.Input[_builtins.int] server_idle_timeout: If a server connection has been idle more than this many seconds it will be dropped. If 0 then timeout is disabled. (seconds). Default: `600`.
-        :param pulumi.Input[_builtins.int] server_lifetime: The pooler will close an unused server connection that has been connected longer than this. (seconds). Default: `3600`.
-        :param pulumi.Input[_builtins.bool] server_reset_query_always: Run server_reset_query (DISCARD ALL) in all pooling modes. Default: `false`.
-        """
-        if autodb_idle_timeout is not None:
-            pulumi.set(__self__, "autodb_idle_timeout", autodb_idle_timeout)
-        if autodb_max_db_connections is not None:
-            pulumi.set(__self__, "autodb_max_db_connections", autodb_max_db_connections)
-        if autodb_pool_mode is not None:
-            pulumi.set(__self__, "autodb_pool_mode", autodb_pool_mode)
-        if autodb_pool_size is not None:
-            pulumi.set(__self__, "autodb_pool_size", autodb_pool_size)
-        if ignore_startup_parameters is not None:
-            pulumi.set(__self__, "ignore_startup_parameters", ignore_startup_parameters)
-        if max_prepared_statements is not None:
-            pulumi.set(__self__, "max_prepared_statements", max_prepared_statements)
-        if min_pool_size is not None:
-            pulumi.set(__self__, "min_pool_size", min_pool_size)
-        if server_idle_timeout is not None:
-            pulumi.set(__self__, "server_idle_timeout", server_idle_timeout)
-        if server_lifetime is not None:
-            pulumi.set(__self__, "server_lifetime", server_lifetime)
-        if server_reset_query_always is not None:
-            pulumi.set(__self__, "server_reset_query_always", server_reset_query_always)
-
-    @_builtins.property
-    @pulumi.getter(name="autodbIdleTimeout")
-    def autodb_idle_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        If the automatically created database pools have been unused this many seconds, they are freed. If 0 then timeout is disabled. (seconds). Default: `3600`.
-        """
-        return pulumi.get(self, "autodb_idle_timeout")
-
-    @autodb_idle_timeout.setter
-    def autodb_idle_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "autodb_idle_timeout", value)
-
-    @_builtins.property
-    @pulumi.getter(name="autodbMaxDbConnections")
-    def autodb_max_db_connections(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Do not allow more than this many server connections per database (regardless of user). Setting it to 0 means unlimited. Example: `0`.
-        """
-        return pulumi.get(self, "autodb_max_db_connections")
-
-    @autodb_max_db_connections.setter
-    def autodb_max_db_connections(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "autodb_max_db_connections", value)
-
-    @_builtins.property
-    @pulumi.getter(name="autodbPoolMode")
-    def autodb_pool_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Enum: `session`, `statement`, `transaction`. PGBouncer pool mode. Default: `transaction`.
-        """
-        return pulumi.get(self, "autodb_pool_mode")
-
-    @autodb_pool_mode.setter
-    def autodb_pool_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "autodb_pool_mode", value)
-
-    @_builtins.property
-    @pulumi.getter(name="autodbPoolSize")
-    def autodb_pool_size(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        If non-zero then create automatically a pool of that size per user when a pool doesn't exist. Default: `0`.
-        """
-        return pulumi.get(self, "autodb_pool_size")
-
-    @autodb_pool_size.setter
-    def autodb_pool_size(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "autodb_pool_size", value)
-
-    @_builtins.property
-    @pulumi.getter(name="ignoreStartupParameters")
-    def ignore_startup_parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        List of parameters to ignore when given in startup packet.
-        """
-        return pulumi.get(self, "ignore_startup_parameters")
-
-    @ignore_startup_parameters.setter
-    def ignore_startup_parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "ignore_startup_parameters", value)
-
-    @_builtins.property
-    @pulumi.getter(name="maxPreparedStatements")
-    def max_prepared_statements(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        PgBouncer tracks protocol-level named prepared statements related commands sent by the client in transaction and statement pooling modes when max_prepared_statements is set to a non-zero value. Setting it to 0 disables prepared statements. max_prepared_statements defaults to 100, and its maximum is 3000. Default: `100`.
-        """
-        return pulumi.get(self, "max_prepared_statements")
-
-    @max_prepared_statements.setter
-    def max_prepared_statements(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "max_prepared_statements", value)
-
-    @_builtins.property
-    @pulumi.getter(name="minPoolSize")
-    def min_pool_size(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Add more server connections to pool if below this number. Improves behavior when usual load comes suddenly back after period of total inactivity. The value is effectively capped at the pool size. Default: `0`.
-        """
-        return pulumi.get(self, "min_pool_size")
-
-    @min_pool_size.setter
-    def min_pool_size(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "min_pool_size", value)
-
-    @_builtins.property
-    @pulumi.getter(name="serverIdleTimeout")
-    def server_idle_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        If a server connection has been idle more than this many seconds it will be dropped. If 0 then timeout is disabled. (seconds). Default: `600`.
-        """
-        return pulumi.get(self, "server_idle_timeout")
-
-    @server_idle_timeout.setter
-    def server_idle_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "server_idle_timeout", value)
-
-    @_builtins.property
-    @pulumi.getter(name="serverLifetime")
-    def server_lifetime(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        The pooler will close an unused server connection that has been connected longer than this. (seconds). Default: `3600`.
-        """
-        return pulumi.get(self, "server_lifetime")
-
-    @server_lifetime.setter
-    def server_lifetime(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "server_lifetime", value)
-
-    @_builtins.property
-    @pulumi.getter(name="serverResetQueryAlways")
-    def server_reset_query_always(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Run server_reset_query (DISCARD ALL) in all pooling modes. Default: `false`.
-        """
-        return pulumi.get(self, "server_reset_query_always")
-
-    @server_reset_query_always.setter
-    def server_reset_query_always(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "server_reset_query_always", value)
-
-
-class AlloydbomniAlloydbomniUserConfigPglookoutArgsDict(TypedDict):
-    max_failover_replication_time_lag: NotRequired[pulumi.Input[_builtins.int]]
-    """
-    Number of seconds of master unavailability before triggering database failover to standby. Default: `60`.
-    """
-
-@pulumi.input_type
-class AlloydbomniAlloydbomniUserConfigPglookoutArgs:
-    def __init__(__self__, *,
-                 max_failover_replication_time_lag: Optional[pulumi.Input[_builtins.int]] = None):
-        """
-        :param pulumi.Input[_builtins.int] max_failover_replication_time_lag: Number of seconds of master unavailability before triggering database failover to standby. Default: `60`.
-        """
-        if max_failover_replication_time_lag is not None:
-            pulumi.set(__self__, "max_failover_replication_time_lag", max_failover_replication_time_lag)
-
-    @_builtins.property
-    @pulumi.getter(name="maxFailoverReplicationTimeLag")
-    def max_failover_replication_time_lag(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Number of seconds of master unavailability before triggering database failover to standby. Default: `60`.
-        """
-        return pulumi.get(self, "max_failover_replication_time_lag")
-
-    @max_failover_replication_time_lag.setter
-    def max_failover_replication_time_lag(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "max_failover_replication_time_lag", value)
-
-
-class AlloydbomniAlloydbomniUserConfigPrivateAccessArgsDict(TypedDict):
-    pg: NotRequired[pulumi.Input[_builtins.bool]]
-    """
-    Allow clients to connect to pg with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-    """
-    pgbouncer: NotRequired[pulumi.Input[_builtins.bool]]
-    """
-    Allow clients to connect to pgbouncer with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-    """
-    prometheus: NotRequired[pulumi.Input[_builtins.bool]]
-    """
-    Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-    """
-
-@pulumi.input_type
-class AlloydbomniAlloydbomniUserConfigPrivateAccessArgs:
-    def __init__(__self__, *,
-                 pg: Optional[pulumi.Input[_builtins.bool]] = None,
-                 pgbouncer: Optional[pulumi.Input[_builtins.bool]] = None,
-                 prometheus: Optional[pulumi.Input[_builtins.bool]] = None):
-        """
-        :param pulumi.Input[_builtins.bool] pg: Allow clients to connect to pg with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-        :param pulumi.Input[_builtins.bool] pgbouncer: Allow clients to connect to pgbouncer with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-        :param pulumi.Input[_builtins.bool] prometheus: Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-        """
-        if pg is not None:
-            pulumi.set(__self__, "pg", pg)
-        if pgbouncer is not None:
-            pulumi.set(__self__, "pgbouncer", pgbouncer)
-        if prometheus is not None:
-            pulumi.set(__self__, "prometheus", prometheus)
-
-    @_builtins.property
-    @pulumi.getter
-    def pg(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Allow clients to connect to pg with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-        """
-        return pulumi.get(self, "pg")
-
-    @pg.setter
-    def pg(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "pg", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def pgbouncer(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Allow clients to connect to pgbouncer with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-        """
-        return pulumi.get(self, "pgbouncer")
-
-    @pgbouncer.setter
-    def pgbouncer(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "pgbouncer", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def prometheus(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-        """
-        return pulumi.get(self, "prometheus")
-
-    @prometheus.setter
-    def prometheus(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "prometheus", value)
-
-
-class AlloydbomniAlloydbomniUserConfigPrivatelinkAccessArgsDict(TypedDict):
-    pg: NotRequired[pulumi.Input[_builtins.bool]]
-    """
-    Enable pg.
-    """
-    pgbouncer: NotRequired[pulumi.Input[_builtins.bool]]
-    """
-    Enable pgbouncer.
-    """
-    prometheus: NotRequired[pulumi.Input[_builtins.bool]]
-    """
-    Enable prometheus.
-    """
-
-@pulumi.input_type
-class AlloydbomniAlloydbomniUserConfigPrivatelinkAccessArgs:
-    def __init__(__self__, *,
-                 pg: Optional[pulumi.Input[_builtins.bool]] = None,
-                 pgbouncer: Optional[pulumi.Input[_builtins.bool]] = None,
-                 prometheus: Optional[pulumi.Input[_builtins.bool]] = None):
-        """
-        :param pulumi.Input[_builtins.bool] pg: Enable pg.
-        :param pulumi.Input[_builtins.bool] pgbouncer: Enable pgbouncer.
-        :param pulumi.Input[_builtins.bool] prometheus: Enable prometheus.
-        """
-        if pg is not None:
-            pulumi.set(__self__, "pg", pg)
-        if pgbouncer is not None:
-            pulumi.set(__self__, "pgbouncer", pgbouncer)
-        if prometheus is not None:
-            pulumi.set(__self__, "prometheus", prometheus)
-
-    @_builtins.property
-    @pulumi.getter
-    def pg(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Enable pg.
-        """
-        return pulumi.get(self, "pg")
-
-    @pg.setter
-    def pg(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "pg", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def pgbouncer(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Enable pgbouncer.
-        """
-        return pulumi.get(self, "pgbouncer")
-
-    @pgbouncer.setter
-    def pgbouncer(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "pgbouncer", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def prometheus(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Enable prometheus.
-        """
-        return pulumi.get(self, "prometheus")
-
-    @prometheus.setter
-    def prometheus(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "prometheus", value)
-
-
-class AlloydbomniAlloydbomniUserConfigPublicAccessArgsDict(TypedDict):
-    pg: NotRequired[pulumi.Input[_builtins.bool]]
-    """
-    Allow clients to connect to pg from the public internet for service nodes that are in a project VPC or another type of private network.
-    """
-    pgbouncer: NotRequired[pulumi.Input[_builtins.bool]]
-    """
-    Allow clients to connect to pgbouncer from the public internet for service nodes that are in a project VPC or another type of private network.
-    """
-    prometheus: NotRequired[pulumi.Input[_builtins.bool]]
-    """
-    Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
-    """
-
-@pulumi.input_type
-class AlloydbomniAlloydbomniUserConfigPublicAccessArgs:
-    def __init__(__self__, *,
-                 pg: Optional[pulumi.Input[_builtins.bool]] = None,
-                 pgbouncer: Optional[pulumi.Input[_builtins.bool]] = None,
-                 prometheus: Optional[pulumi.Input[_builtins.bool]] = None):
-        """
-        :param pulumi.Input[_builtins.bool] pg: Allow clients to connect to pg from the public internet for service nodes that are in a project VPC or another type of private network.
-        :param pulumi.Input[_builtins.bool] pgbouncer: Allow clients to connect to pgbouncer from the public internet for service nodes that are in a project VPC or another type of private network.
-        :param pulumi.Input[_builtins.bool] prometheus: Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
-        """
-        if pg is not None:
-            pulumi.set(__self__, "pg", pg)
-        if pgbouncer is not None:
-            pulumi.set(__self__, "pgbouncer", pgbouncer)
-        if prometheus is not None:
-            pulumi.set(__self__, "prometheus", prometheus)
-
-    @_builtins.property
-    @pulumi.getter
-    def pg(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Allow clients to connect to pg from the public internet for service nodes that are in a project VPC or another type of private network.
-        """
-        return pulumi.get(self, "pg")
-
-    @pg.setter
-    def pg(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "pg", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def pgbouncer(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Allow clients to connect to pgbouncer from the public internet for service nodes that are in a project VPC or another type of private network.
-        """
-        return pulumi.get(self, "pgbouncer")
-
-    @pgbouncer.setter
-    def pgbouncer(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "pgbouncer", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def prometheus(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
-        """
-        return pulumi.get(self, "prometheus")
-
-    @prometheus.setter
-    def prometheus(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "prometheus", value)
-
-
-class AlloydbomniComponentArgsDict(TypedDict):
-    component: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    Service component name
-    """
-    connection_uri: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    Connection info for connecting to the service component. This is a combination of host and port.
-    """
-    host: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    Host name for connecting to the service component
-    """
-    kafka_authentication_method: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    Kafka authentication method. This is a value specific to the 'kafka' service component
-    """
-    kafka_ssl_ca: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
-    """
-    port: NotRequired[pulumi.Input[_builtins.int]]
-    """
-    Port number for connecting to the service component
-    """
-    privatelink_connection_id: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    Privatelink connection ID
-    """
-    route: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    Network access route
-    """
-    ssl: NotRequired[pulumi.Input[_builtins.bool]]
-    """
-    Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
-    """
-    usage: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    DNS usage name
-    """
-
-@pulumi.input_type
-class AlloydbomniComponentArgs:
-    def __init__(__self__, *,
-                 component: Optional[pulumi.Input[_builtins.str]] = None,
-                 connection_uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 host: Optional[pulumi.Input[_builtins.str]] = None,
-                 kafka_authentication_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 kafka_ssl_ca: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 privatelink_connection_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 route: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssl: Optional[pulumi.Input[_builtins.bool]] = None,
-                 usage: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] component: Service component name
-        :param pulumi.Input[_builtins.str] connection_uri: Connection info for connecting to the service component. This is a combination of host and port.
-        :param pulumi.Input[_builtins.str] host: Host name for connecting to the service component
-        :param pulumi.Input[_builtins.str] kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component
-        :param pulumi.Input[_builtins.str] kafka_ssl_ca: Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
-        :param pulumi.Input[_builtins.int] port: Port number for connecting to the service component
-        :param pulumi.Input[_builtins.str] privatelink_connection_id: Privatelink connection ID
-        :param pulumi.Input[_builtins.str] route: Network access route
-        :param pulumi.Input[_builtins.bool] ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
-        :param pulumi.Input[_builtins.str] usage: DNS usage name
-        """
-        if component is not None:
-            pulumi.set(__self__, "component", component)
-        if connection_uri is not None:
-            pulumi.set(__self__, "connection_uri", connection_uri)
-        if host is not None:
-            pulumi.set(__self__, "host", host)
-        if kafka_authentication_method is not None:
-            pulumi.set(__self__, "kafka_authentication_method", kafka_authentication_method)
-        if kafka_ssl_ca is not None:
-            pulumi.set(__self__, "kafka_ssl_ca", kafka_ssl_ca)
-        if port is not None:
-            pulumi.set(__self__, "port", port)
-        if privatelink_connection_id is not None:
-            pulumi.set(__self__, "privatelink_connection_id", privatelink_connection_id)
-        if route is not None:
-            pulumi.set(__self__, "route", route)
-        if ssl is not None:
-            pulumi.set(__self__, "ssl", ssl)
-        if usage is not None:
-            pulumi.set(__self__, "usage", usage)
-
-    @_builtins.property
-    @pulumi.getter
-    def component(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Service component name
-        """
-        return pulumi.get(self, "component")
-
-    @component.setter
-    def component(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "component", value)
-
-    @_builtins.property
-    @pulumi.getter(name="connectionUri")
-    def connection_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Connection info for connecting to the service component. This is a combination of host and port.
-        """
-        return pulumi.get(self, "connection_uri")
-
-    @connection_uri.setter
-    def connection_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "connection_uri", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def host(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Host name for connecting to the service component
-        """
-        return pulumi.get(self, "host")
-
-    @host.setter
-    def host(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "host", value)
-
-    @_builtins.property
-    @pulumi.getter(name="kafkaAuthenticationMethod")
-    def kafka_authentication_method(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Kafka authentication method. This is a value specific to the 'kafka' service component
-        """
-        return pulumi.get(self, "kafka_authentication_method")
-
-    @kafka_authentication_method.setter
-    def kafka_authentication_method(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "kafka_authentication_method", value)
-
-    @_builtins.property
-    @pulumi.getter(name="kafkaSslCa")
-    def kafka_ssl_ca(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
-        """
-        return pulumi.get(self, "kafka_ssl_ca")
-
-    @kafka_ssl_ca.setter
-    def kafka_ssl_ca(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "kafka_ssl_ca", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Port number for connecting to the service component
-        """
-        return pulumi.get(self, "port")
-
-    @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "port", value)
-
-    @_builtins.property
-    @pulumi.getter(name="privatelinkConnectionId")
-    def privatelink_connection_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Privatelink connection ID
-        """
-        return pulumi.get(self, "privatelink_connection_id")
-
-    @privatelink_connection_id.setter
-    def privatelink_connection_id(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "privatelink_connection_id", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def route(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Network access route
-        """
-        return pulumi.get(self, "route")
-
-    @route.setter
-    def route(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "route", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def ssl(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
-        """
-        return pulumi.get(self, "ssl")
-
-    @ssl.setter
-    def ssl(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "ssl", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def usage(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        DNS usage name
-        """
-        return pulumi.get(self, "usage")
-
-    @usage.setter
-    def usage(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "usage", value)
-
-
-class AlloydbomniServiceIntegrationArgsDict(TypedDict):
-    integration_type: pulumi.Input[_builtins.str]
-    """
-    Type of the service integration. The possible value is `read_replica`.
-    """
-    source_service_name: pulumi.Input[_builtins.str]
-    """
-    Name of the source service
-    """
-
-@pulumi.input_type
-class AlloydbomniServiceIntegrationArgs:
-    def __init__(__self__, *,
-                 integration_type: pulumi.Input[_builtins.str],
-                 source_service_name: pulumi.Input[_builtins.str]):
-        """
-        :param pulumi.Input[_builtins.str] integration_type: Type of the service integration. The possible value is `read_replica`.
-        :param pulumi.Input[_builtins.str] source_service_name: Name of the source service
-        """
-        pulumi.set(__self__, "integration_type", integration_type)
-        pulumi.set(__self__, "source_service_name", source_service_name)
-
-    @_builtins.property
-    @pulumi.getter(name="integrationType")
-    def integration_type(self) -> pulumi.Input[_builtins.str]:
-        """
-        Type of the service integration. The possible value is `read_replica`.
-        """
-        return pulumi.get(self, "integration_type")
-
-    @integration_type.setter
-    def integration_type(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "integration_type", value)
-
-    @_builtins.property
-    @pulumi.getter(name="sourceServiceName")
-    def source_service_name(self) -> pulumi.Input[_builtins.str]:
-        """
-        Name of the source service
-        """
-        return pulumi.get(self, "source_service_name")
-
-    @source_service_name.setter
-    def source_service_name(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "source_service_name", value)
-
-
-class AlloydbomniTagArgsDict(TypedDict):
-    key: pulumi.Input[_builtins.str]
-    """
-    Service tag key
-    """
-    value: pulumi.Input[_builtins.str]
-    """
-    Service tag value
-    """
-
-@pulumi.input_type
-class AlloydbomniTagArgs:
-    def __init__(__self__, *,
-                 key: pulumi.Input[_builtins.str],
-                 value: pulumi.Input[_builtins.str]):
-        """
-        :param pulumi.Input[_builtins.str] key: Service tag key
-        :param pulumi.Input[_builtins.str] value: Service tag value
-        """
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def key(self) -> pulumi.Input[_builtins.str]:
-        """
-        Service tag key
-        """
-        return pulumi.get(self, "key")
-
-    @key.setter
-    def key(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "key", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def value(self) -> pulumi.Input[_builtins.str]:
-        """
-        Service tag value
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "value", value)
-
-
-class AlloydbomniTechEmailArgsDict(TypedDict):
-    email: pulumi.Input[_builtins.str]
-    """
-    An email address to contact for technical issues
-    """
-
-@pulumi.input_type
-class AlloydbomniTechEmailArgs:
-    def __init__(__self__, *,
-                 email: pulumi.Input[_builtins.str]):
-        """
-        :param pulumi.Input[_builtins.str] email: An email address to contact for technical issues
-        """
-        pulumi.set(__self__, "email", email)
-
-    @_builtins.property
-    @pulumi.getter
-    def email(self) -> pulumi.Input[_builtins.str]:
-        """
-        An email address to contact for technical issues
-        """
-        return pulumi.get(self, "email")
-
-    @email.setter
-    def email(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "email", value)
 
 
 class BillingGroupTimeoutsArgsDict(TypedDict):
@@ -5388,7 +2129,7 @@ class ClickhouseClickhouseUserConfigArgsDict(TypedDict):
     """
     clickhouse_version: NotRequired[pulumi.Input[_builtins.str]]
     """
-    Enum: `25.3`, and newer. ClickHouse major version.
+    Enum: `25.3`, `25.8`, and newer. ClickHouse major version.
     """
     enable_ipv6: NotRequired[pulumi.Input[_builtins.bool]]
     """
@@ -5467,7 +2208,7 @@ class ClickhouseClickhouseUserConfigArgs:
         :param pulumi.Input[_builtins.str] additional_backup_regions: Additional Cloud Regions for Backup Replication.
         :param pulumi.Input[_builtins.int] backup_hour: The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
         :param pulumi.Input[_builtins.int] backup_minute: The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
-        :param pulumi.Input[_builtins.str] clickhouse_version: Enum: `25.3`, and newer. ClickHouse major version.
+        :param pulumi.Input[_builtins.str] clickhouse_version: Enum: `25.3`, `25.8`, and newer. ClickHouse major version.
         :param pulumi.Input[_builtins.bool] enable_ipv6: Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
         :param pulumi.Input[Sequence[pulumi.Input['ClickhouseClickhouseUserConfigIpFilterObjectArgs']]] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
@@ -5564,7 +2305,7 @@ class ClickhouseClickhouseUserConfigArgs:
     @pulumi.getter(name="clickhouseVersion")
     def clickhouse_version(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Enum: `25.3`, and newer. ClickHouse major version.
+        Enum: `25.3`, `25.8`, and newer. ClickHouse major version.
         """
         return pulumi.get(self, "clickhouse_version")
 
@@ -6626,6 +3367,119 @@ class ClickhouseTechEmailArgs:
         pulumi.set(self, "email", value)
 
 
+class ClickhouseUserTimeoutsArgsDict(TypedDict):
+    create: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
+    default: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+    """
+    delete: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+    """
+    read: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+    """
+    update: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
+
+@pulumi.input_type
+class ClickhouseUserTimeoutsArgs:
+    def __init__(__self__, *,
+                 create: Optional[pulumi.Input[_builtins.str]] = None,
+                 default: Optional[pulumi.Input[_builtins.str]] = None,
+                 delete: Optional[pulumi.Input[_builtins.str]] = None,
+                 read: Optional[pulumi.Input[_builtins.str]] = None,
+                 update: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param pulumi.Input[_builtins.str] default: Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+        :param pulumi.Input[_builtins.str] delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param pulumi.Input[_builtins.str] read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param pulumi.Input[_builtins.str] update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if default is not None:
+            warnings.warn("""Use operation-specific timeouts instead. This field will be removed in the next major version.""", DeprecationWarning)
+            pulumi.log.warn("""default is deprecated: Use operation-specific timeouts instead. This field will be removed in the next major version.""")
+        if default is not None:
+            pulumi.set(__self__, "default", default)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @create.setter
+    def create(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "create", value)
+
+    @_builtins.property
+    @pulumi.getter
+    @_utilities.deprecated("""Use operation-specific timeouts instead. This field will be removed in the next major version.""")
+    def default(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+        """
+        return pulumi.get(self, "default")
+
+    @default.setter
+    def default(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "default", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @delete.setter
+    def delete(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "delete", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "read", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+    @update.setter
+    def update(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "update", value)
+
+
 class CmkTimeoutsArgsDict(TypedDict):
     create: NotRequired[pulumi.Input[_builtins.str]]
     """
@@ -6677,6 +3531,119 @@ class CmkTimeoutsArgs:
     @create.setter
     def create(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "create", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @delete.setter
+    def delete(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "delete", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "read", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+    @update.setter
+    def update(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "update", value)
+
+
+class ConnectionPoolTimeoutsArgsDict(TypedDict):
+    create: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
+    default: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+    """
+    delete: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+    """
+    read: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+    """
+    update: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
+
+@pulumi.input_type
+class ConnectionPoolTimeoutsArgs:
+    def __init__(__self__, *,
+                 create: Optional[pulumi.Input[_builtins.str]] = None,
+                 default: Optional[pulumi.Input[_builtins.str]] = None,
+                 delete: Optional[pulumi.Input[_builtins.str]] = None,
+                 read: Optional[pulumi.Input[_builtins.str]] = None,
+                 update: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param pulumi.Input[_builtins.str] default: Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+        :param pulumi.Input[_builtins.str] delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param pulumi.Input[_builtins.str] read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param pulumi.Input[_builtins.str] update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if default is not None:
+            warnings.warn("""Use operation-specific timeouts instead. This field will be removed in the next major version.""", DeprecationWarning)
+            pulumi.log.warn("""default is deprecated: Use operation-specific timeouts instead. This field will be removed in the next major version.""")
+        if default is not None:
+            pulumi.set(__self__, "default", default)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @create.setter
+    def create(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "create", value)
+
+    @_builtins.property
+    @pulumi.getter
+    @_utilities.deprecated("""Use operation-specific timeouts instead. This field will be removed in the next major version.""")
+    def default(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+        """
+        return pulumi.get(self, "default")
+
+    @default.setter
+    def default(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "default", value)
 
     @_builtins.property
     @pulumi.getter
@@ -12447,1087 +9414,6 @@ class GrafanaTechEmailArgs:
         pulumi.set(self, "email", value)
 
 
-class InfluxDbComponentArgsDict(TypedDict):
-    component: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    Service component name
-    """
-    connection_uri: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    Connection info for connecting to the service component. This is a combination of host and port.
-    """
-    host: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    Host name for connecting to the service component
-    """
-    kafka_authentication_method: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    Kafka authentication method. This is a value specific to the 'kafka' service component
-    """
-    kafka_ssl_ca: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
-    """
-    port: NotRequired[pulumi.Input[_builtins.int]]
-    """
-    Port number for connecting to the service component
-    """
-    privatelink_connection_id: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    Privatelink connection ID
-    """
-    route: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    Network access route
-    """
-    ssl: NotRequired[pulumi.Input[_builtins.bool]]
-    """
-    Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
-    """
-    usage: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    DNS usage name
-    """
-
-@pulumi.input_type
-class InfluxDbComponentArgs:
-    def __init__(__self__, *,
-                 component: Optional[pulumi.Input[_builtins.str]] = None,
-                 connection_uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 host: Optional[pulumi.Input[_builtins.str]] = None,
-                 kafka_authentication_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 kafka_ssl_ca: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 privatelink_connection_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 route: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssl: Optional[pulumi.Input[_builtins.bool]] = None,
-                 usage: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] component: Service component name
-        :param pulumi.Input[_builtins.str] connection_uri: Connection info for connecting to the service component. This is a combination of host and port.
-        :param pulumi.Input[_builtins.str] host: Host name for connecting to the service component
-        :param pulumi.Input[_builtins.str] kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component
-        :param pulumi.Input[_builtins.str] kafka_ssl_ca: Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
-        :param pulumi.Input[_builtins.int] port: Port number for connecting to the service component
-        :param pulumi.Input[_builtins.str] privatelink_connection_id: Privatelink connection ID
-        :param pulumi.Input[_builtins.str] route: Network access route
-        :param pulumi.Input[_builtins.bool] ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
-        :param pulumi.Input[_builtins.str] usage: DNS usage name
-        """
-        if component is not None:
-            pulumi.set(__self__, "component", component)
-        if connection_uri is not None:
-            pulumi.set(__self__, "connection_uri", connection_uri)
-        if host is not None:
-            pulumi.set(__self__, "host", host)
-        if kafka_authentication_method is not None:
-            pulumi.set(__self__, "kafka_authentication_method", kafka_authentication_method)
-        if kafka_ssl_ca is not None:
-            pulumi.set(__self__, "kafka_ssl_ca", kafka_ssl_ca)
-        if port is not None:
-            pulumi.set(__self__, "port", port)
-        if privatelink_connection_id is not None:
-            pulumi.set(__self__, "privatelink_connection_id", privatelink_connection_id)
-        if route is not None:
-            pulumi.set(__self__, "route", route)
-        if ssl is not None:
-            pulumi.set(__self__, "ssl", ssl)
-        if usage is not None:
-            pulumi.set(__self__, "usage", usage)
-
-    @_builtins.property
-    @pulumi.getter
-    def component(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Service component name
-        """
-        return pulumi.get(self, "component")
-
-    @component.setter
-    def component(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "component", value)
-
-    @_builtins.property
-    @pulumi.getter(name="connectionUri")
-    def connection_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Connection info for connecting to the service component. This is a combination of host and port.
-        """
-        return pulumi.get(self, "connection_uri")
-
-    @connection_uri.setter
-    def connection_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "connection_uri", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def host(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Host name for connecting to the service component
-        """
-        return pulumi.get(self, "host")
-
-    @host.setter
-    def host(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "host", value)
-
-    @_builtins.property
-    @pulumi.getter(name="kafkaAuthenticationMethod")
-    def kafka_authentication_method(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Kafka authentication method. This is a value specific to the 'kafka' service component
-        """
-        return pulumi.get(self, "kafka_authentication_method")
-
-    @kafka_authentication_method.setter
-    def kafka_authentication_method(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "kafka_authentication_method", value)
-
-    @_builtins.property
-    @pulumi.getter(name="kafkaSslCa")
-    def kafka_ssl_ca(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
-        """
-        return pulumi.get(self, "kafka_ssl_ca")
-
-    @kafka_ssl_ca.setter
-    def kafka_ssl_ca(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "kafka_ssl_ca", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Port number for connecting to the service component
-        """
-        return pulumi.get(self, "port")
-
-    @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "port", value)
-
-    @_builtins.property
-    @pulumi.getter(name="privatelinkConnectionId")
-    def privatelink_connection_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Privatelink connection ID
-        """
-        return pulumi.get(self, "privatelink_connection_id")
-
-    @privatelink_connection_id.setter
-    def privatelink_connection_id(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "privatelink_connection_id", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def route(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Network access route
-        """
-        return pulumi.get(self, "route")
-
-    @route.setter
-    def route(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "route", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def ssl(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
-        """
-        return pulumi.get(self, "ssl")
-
-    @ssl.setter
-    def ssl(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "ssl", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def usage(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        DNS usage name
-        """
-        return pulumi.get(self, "usage")
-
-    @usage.setter
-    def usage(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "usage", value)
-
-
-class InfluxDbInfluxdbArgsDict(TypedDict):
-    database_name: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    Name of the default InfluxDB database
-    """
-    password: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    InfluxDB password
-    """
-    uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-    """
-    InfluxDB server URIs.
-    """
-    username: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    InfluxDB username
-    """
-
-@pulumi.input_type
-class InfluxDbInfluxdbArgs:
-    def __init__(__self__, *,
-                 database_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 uris: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] database_name: Name of the default InfluxDB database
-        :param pulumi.Input[_builtins.str] password: InfluxDB password
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] uris: InfluxDB server URIs.
-        :param pulumi.Input[_builtins.str] username: InfluxDB username
-        """
-        if database_name is not None:
-            pulumi.set(__self__, "database_name", database_name)
-        if password is not None:
-            pulumi.set(__self__, "password", password)
-        if uris is not None:
-            pulumi.set(__self__, "uris", uris)
-        if username is not None:
-            pulumi.set(__self__, "username", username)
-
-    @_builtins.property
-    @pulumi.getter(name="databaseName")
-    def database_name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Name of the default InfluxDB database
-        """
-        return pulumi.get(self, "database_name")
-
-    @database_name.setter
-    def database_name(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "database_name", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        InfluxDB password
-        """
-        return pulumi.get(self, "password")
-
-    @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "password", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def uris(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        InfluxDB server URIs.
-        """
-        return pulumi.get(self, "uris")
-
-    @uris.setter
-    def uris(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "uris", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def username(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        InfluxDB username
-        """
-        return pulumi.get(self, "username")
-
-    @username.setter
-    def username(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "username", value)
-
-
-class InfluxDbInfluxdbUserConfigArgsDict(TypedDict):
-    additional_backup_regions: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    Additional Cloud Regions for Backup Replication.
-    """
-    custom_domain: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. When you set a custom domain for a service deployed in a VPC, the service certificate is only created for the public-* hostname and the custom domain. Example: `grafana.example.org`.
-    """
-    influxdb: NotRequired[pulumi.Input['InfluxDbInfluxdbUserConfigInfluxdbArgsDict']]
-    """
-    influxdb.conf configuration values
-    """
-    influxdb_version: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    Enum: `1.8`, and newer. InfluxDB major version. Default: `1.8`.
-    """
-    ip_filter_objects: NotRequired[pulumi.Input[Sequence[pulumi.Input['InfluxDbInfluxdbUserConfigIpFilterObjectArgsDict']]]]
-    """
-    Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
-    """
-    ip_filter_strings: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-    """
-    Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-    """
-    ip_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-    """
-    Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-    """
-    private_access: NotRequired[pulumi.Input['InfluxDbInfluxdbUserConfigPrivateAccessArgsDict']]
-    """
-    Allow access to selected service ports from private networks
-    """
-    privatelink_access: NotRequired[pulumi.Input['InfluxDbInfluxdbUserConfigPrivatelinkAccessArgsDict']]
-    """
-    Allow access to selected service components through Privatelink
-    """
-    project_to_fork_from: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
-    """
-    public_access: NotRequired[pulumi.Input['InfluxDbInfluxdbUserConfigPublicAccessArgsDict']]
-    """
-    Allow access to selected service ports from the public Internet
-    """
-    recovery_basebackup_name: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
-    """
-    service_log: NotRequired[pulumi.Input[_builtins.bool]]
-    """
-    Store logs for the service so that they are available in the HTTP API and console.
-    """
-    service_to_fork_from: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
-    """
-    static_ips: NotRequired[pulumi.Input[_builtins.bool]]
-    """
-    Use static public IP addresses.
-    """
-
-@pulumi.input_type
-class InfluxDbInfluxdbUserConfigArgs:
-    def __init__(__self__, *,
-                 additional_backup_regions: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 influxdb: Optional[pulumi.Input['InfluxDbInfluxdbUserConfigInfluxdbArgs']] = None,
-                 influxdb_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_filter_objects: Optional[pulumi.Input[Sequence[pulumi.Input['InfluxDbInfluxdbUserConfigIpFilterObjectArgs']]]] = None,
-                 ip_filter_strings: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ip_filters: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 private_access: Optional[pulumi.Input['InfluxDbInfluxdbUserConfigPrivateAccessArgs']] = None,
-                 privatelink_access: Optional[pulumi.Input['InfluxDbInfluxdbUserConfigPrivatelinkAccessArgs']] = None,
-                 project_to_fork_from: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_access: Optional[pulumi.Input['InfluxDbInfluxdbUserConfigPublicAccessArgs']] = None,
-                 recovery_basebackup_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_log: Optional[pulumi.Input[_builtins.bool]] = None,
-                 service_to_fork_from: Optional[pulumi.Input[_builtins.str]] = None,
-                 static_ips: Optional[pulumi.Input[_builtins.bool]] = None):
-        """
-        :param pulumi.Input[_builtins.str] additional_backup_regions: Additional Cloud Regions for Backup Replication.
-        :param pulumi.Input[_builtins.str] custom_domain: Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. When you set a custom domain for a service deployed in a VPC, the service certificate is only created for the public-* hostname and the custom domain. Example: `grafana.example.org`.
-        :param pulumi.Input['InfluxDbInfluxdbUserConfigInfluxdbArgs'] influxdb: influxdb.conf configuration values
-        :param pulumi.Input[_builtins.str] influxdb_version: Enum: `1.8`, and newer. InfluxDB major version. Default: `1.8`.
-        :param pulumi.Input[Sequence[pulumi.Input['InfluxDbInfluxdbUserConfigIpFilterObjectArgs']]] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ip_filters: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-        :param pulumi.Input['InfluxDbInfluxdbUserConfigPrivateAccessArgs'] private_access: Allow access to selected service ports from private networks
-        :param pulumi.Input['InfluxDbInfluxdbUserConfigPrivatelinkAccessArgs'] privatelink_access: Allow access to selected service components through Privatelink
-        :param pulumi.Input[_builtins.str] project_to_fork_from: Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
-        :param pulumi.Input['InfluxDbInfluxdbUserConfigPublicAccessArgs'] public_access: Allow access to selected service ports from the public Internet
-        :param pulumi.Input[_builtins.str] recovery_basebackup_name: Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
-        :param pulumi.Input[_builtins.bool] service_log: Store logs for the service so that they are available in the HTTP API and console.
-        :param pulumi.Input[_builtins.str] service_to_fork_from: Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
-        :param pulumi.Input[_builtins.bool] static_ips: Use static public IP addresses.
-        """
-        if additional_backup_regions is not None:
-            warnings.warn("""This property is deprecated.""", DeprecationWarning)
-            pulumi.log.warn("""additional_backup_regions is deprecated: This property is deprecated.""")
-        if additional_backup_regions is not None:
-            pulumi.set(__self__, "additional_backup_regions", additional_backup_regions)
-        if custom_domain is not None:
-            pulumi.set(__self__, "custom_domain", custom_domain)
-        if influxdb is not None:
-            pulumi.set(__self__, "influxdb", influxdb)
-        if influxdb_version is not None:
-            pulumi.set(__self__, "influxdb_version", influxdb_version)
-        if ip_filter_objects is not None:
-            pulumi.set(__self__, "ip_filter_objects", ip_filter_objects)
-        if ip_filter_strings is not None:
-            pulumi.set(__self__, "ip_filter_strings", ip_filter_strings)
-        if ip_filters is not None:
-            warnings.warn("""Deprecated. Use `ip_filter_string` instead.""", DeprecationWarning)
-            pulumi.log.warn("""ip_filters is deprecated: Deprecated. Use `ip_filter_string` instead.""")
-        if ip_filters is not None:
-            pulumi.set(__self__, "ip_filters", ip_filters)
-        if private_access is not None:
-            pulumi.set(__self__, "private_access", private_access)
-        if privatelink_access is not None:
-            pulumi.set(__self__, "privatelink_access", privatelink_access)
-        if project_to_fork_from is not None:
-            pulumi.set(__self__, "project_to_fork_from", project_to_fork_from)
-        if public_access is not None:
-            pulumi.set(__self__, "public_access", public_access)
-        if recovery_basebackup_name is not None:
-            pulumi.set(__self__, "recovery_basebackup_name", recovery_basebackup_name)
-        if service_log is not None:
-            pulumi.set(__self__, "service_log", service_log)
-        if service_to_fork_from is not None:
-            pulumi.set(__self__, "service_to_fork_from", service_to_fork_from)
-        if static_ips is not None:
-            pulumi.set(__self__, "static_ips", static_ips)
-
-    @_builtins.property
-    @pulumi.getter(name="additionalBackupRegions")
-    @_utilities.deprecated("""This property is deprecated.""")
-    def additional_backup_regions(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Additional Cloud Regions for Backup Replication.
-        """
-        return pulumi.get(self, "additional_backup_regions")
-
-    @additional_backup_regions.setter
-    def additional_backup_regions(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "additional_backup_regions", value)
-
-    @_builtins.property
-    @pulumi.getter(name="customDomain")
-    def custom_domain(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. When you set a custom domain for a service deployed in a VPC, the service certificate is only created for the public-* hostname and the custom domain. Example: `grafana.example.org`.
-        """
-        return pulumi.get(self, "custom_domain")
-
-    @custom_domain.setter
-    def custom_domain(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "custom_domain", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def influxdb(self) -> Optional[pulumi.Input['InfluxDbInfluxdbUserConfigInfluxdbArgs']]:
-        """
-        influxdb.conf configuration values
-        """
-        return pulumi.get(self, "influxdb")
-
-    @influxdb.setter
-    def influxdb(self, value: Optional[pulumi.Input['InfluxDbInfluxdbUserConfigInfluxdbArgs']]):
-        pulumi.set(self, "influxdb", value)
-
-    @_builtins.property
-    @pulumi.getter(name="influxdbVersion")
-    def influxdb_version(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Enum: `1.8`, and newer. InfluxDB major version. Default: `1.8`.
-        """
-        return pulumi.get(self, "influxdb_version")
-
-    @influxdb_version.setter
-    def influxdb_version(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "influxdb_version", value)
-
-    @_builtins.property
-    @pulumi.getter(name="ipFilterObjects")
-    def ip_filter_objects(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InfluxDbInfluxdbUserConfigIpFilterObjectArgs']]]]:
-        """
-        Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
-        """
-        return pulumi.get(self, "ip_filter_objects")
-
-    @ip_filter_objects.setter
-    def ip_filter_objects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InfluxDbInfluxdbUserConfigIpFilterObjectArgs']]]]):
-        pulumi.set(self, "ip_filter_objects", value)
-
-    @_builtins.property
-    @pulumi.getter(name="ipFilterStrings")
-    def ip_filter_strings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-        """
-        return pulumi.get(self, "ip_filter_strings")
-
-    @ip_filter_strings.setter
-    def ip_filter_strings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "ip_filter_strings", value)
-
-    @_builtins.property
-    @pulumi.getter(name="ipFilters")
-    @_utilities.deprecated("""Deprecated. Use `ip_filter_string` instead.""")
-    def ip_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-        """
-        return pulumi.get(self, "ip_filters")
-
-    @ip_filters.setter
-    def ip_filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "ip_filters", value)
-
-    @_builtins.property
-    @pulumi.getter(name="privateAccess")
-    def private_access(self) -> Optional[pulumi.Input['InfluxDbInfluxdbUserConfigPrivateAccessArgs']]:
-        """
-        Allow access to selected service ports from private networks
-        """
-        return pulumi.get(self, "private_access")
-
-    @private_access.setter
-    def private_access(self, value: Optional[pulumi.Input['InfluxDbInfluxdbUserConfigPrivateAccessArgs']]):
-        pulumi.set(self, "private_access", value)
-
-    @_builtins.property
-    @pulumi.getter(name="privatelinkAccess")
-    def privatelink_access(self) -> Optional[pulumi.Input['InfluxDbInfluxdbUserConfigPrivatelinkAccessArgs']]:
-        """
-        Allow access to selected service components through Privatelink
-        """
-        return pulumi.get(self, "privatelink_access")
-
-    @privatelink_access.setter
-    def privatelink_access(self, value: Optional[pulumi.Input['InfluxDbInfluxdbUserConfigPrivatelinkAccessArgs']]):
-        pulumi.set(self, "privatelink_access", value)
-
-    @_builtins.property
-    @pulumi.getter(name="projectToForkFrom")
-    def project_to_fork_from(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
-        """
-        return pulumi.get(self, "project_to_fork_from")
-
-    @project_to_fork_from.setter
-    def project_to_fork_from(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "project_to_fork_from", value)
-
-    @_builtins.property
-    @pulumi.getter(name="publicAccess")
-    def public_access(self) -> Optional[pulumi.Input['InfluxDbInfluxdbUserConfigPublicAccessArgs']]:
-        """
-        Allow access to selected service ports from the public Internet
-        """
-        return pulumi.get(self, "public_access")
-
-    @public_access.setter
-    def public_access(self, value: Optional[pulumi.Input['InfluxDbInfluxdbUserConfigPublicAccessArgs']]):
-        pulumi.set(self, "public_access", value)
-
-    @_builtins.property
-    @pulumi.getter(name="recoveryBasebackupName")
-    def recovery_basebackup_name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
-        """
-        return pulumi.get(self, "recovery_basebackup_name")
-
-    @recovery_basebackup_name.setter
-    def recovery_basebackup_name(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "recovery_basebackup_name", value)
-
-    @_builtins.property
-    @pulumi.getter(name="serviceLog")
-    def service_log(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Store logs for the service so that they are available in the HTTP API and console.
-        """
-        return pulumi.get(self, "service_log")
-
-    @service_log.setter
-    def service_log(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "service_log", value)
-
-    @_builtins.property
-    @pulumi.getter(name="serviceToForkFrom")
-    def service_to_fork_from(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
-        """
-        return pulumi.get(self, "service_to_fork_from")
-
-    @service_to_fork_from.setter
-    def service_to_fork_from(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "service_to_fork_from", value)
-
-    @_builtins.property
-    @pulumi.getter(name="staticIps")
-    def static_ips(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Use static public IP addresses.
-        """
-        return pulumi.get(self, "static_ips")
-
-    @static_ips.setter
-    def static_ips(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "static_ips", value)
-
-
-class InfluxDbInfluxdbUserConfigInfluxdbArgsDict(TypedDict):
-    log_queries_after: NotRequired[pulumi.Input[_builtins.int]]
-    """
-    The maximum duration in seconds before a query is logged as a slow query. Setting this to 0 (the default) will never log slow queries.
-    """
-    max_connection_limit: NotRequired[pulumi.Input[_builtins.int]]
-    """
-    Maximum number of connections to InfluxDB. Setting this to 0 (default) means no limit. If using max_connection_limit, it is recommended to set the value to be large enough in order to not block clients unnecessarily.
-    """
-    max_row_limit: NotRequired[pulumi.Input[_builtins.int]]
-    """
-    The maximum number of rows returned in a non-chunked query. Setting this to 0 (the default) allows an unlimited number to be returned.
-    """
-    max_select_buckets: NotRequired[pulumi.Input[_builtins.int]]
-    """
-    The maximum number of `GROUP BY time()` buckets that can be processed in a query. Setting this to 0 (the default) allows an unlimited number to be processed.
-    """
-    max_select_point: NotRequired[pulumi.Input[_builtins.int]]
-    """
-    The maximum number of points that can be processed in a SELECT statement. Setting this to 0 (the default) allows an unlimited number to be processed.
-    """
-    query_log_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-    """
-    Whether queries should be logged before execution. May log sensitive data contained within a query.
-    """
-    query_timeout: NotRequired[pulumi.Input[_builtins.int]]
-    """
-    The maximum duration in seconds before a query is killed. Setting this to 0 (the default) will never kill slow queries.
-    """
-
-@pulumi.input_type
-class InfluxDbInfluxdbUserConfigInfluxdbArgs:
-    def __init__(__self__, *,
-                 log_queries_after: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_connection_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_row_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_select_buckets: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_select_point: Optional[pulumi.Input[_builtins.int]] = None,
-                 query_log_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 query_timeout: Optional[pulumi.Input[_builtins.int]] = None):
-        """
-        :param pulumi.Input[_builtins.int] log_queries_after: The maximum duration in seconds before a query is logged as a slow query. Setting this to 0 (the default) will never log slow queries.
-        :param pulumi.Input[_builtins.int] max_connection_limit: Maximum number of connections to InfluxDB. Setting this to 0 (default) means no limit. If using max_connection_limit, it is recommended to set the value to be large enough in order to not block clients unnecessarily.
-        :param pulumi.Input[_builtins.int] max_row_limit: The maximum number of rows returned in a non-chunked query. Setting this to 0 (the default) allows an unlimited number to be returned.
-        :param pulumi.Input[_builtins.int] max_select_buckets: The maximum number of `GROUP BY time()` buckets that can be processed in a query. Setting this to 0 (the default) allows an unlimited number to be processed.
-        :param pulumi.Input[_builtins.int] max_select_point: The maximum number of points that can be processed in a SELECT statement. Setting this to 0 (the default) allows an unlimited number to be processed.
-        :param pulumi.Input[_builtins.bool] query_log_enabled: Whether queries should be logged before execution. May log sensitive data contained within a query.
-        :param pulumi.Input[_builtins.int] query_timeout: The maximum duration in seconds before a query is killed. Setting this to 0 (the default) will never kill slow queries.
-        """
-        if log_queries_after is not None:
-            pulumi.set(__self__, "log_queries_after", log_queries_after)
-        if max_connection_limit is not None:
-            pulumi.set(__self__, "max_connection_limit", max_connection_limit)
-        if max_row_limit is not None:
-            pulumi.set(__self__, "max_row_limit", max_row_limit)
-        if max_select_buckets is not None:
-            pulumi.set(__self__, "max_select_buckets", max_select_buckets)
-        if max_select_point is not None:
-            pulumi.set(__self__, "max_select_point", max_select_point)
-        if query_log_enabled is not None:
-            pulumi.set(__self__, "query_log_enabled", query_log_enabled)
-        if query_timeout is not None:
-            pulumi.set(__self__, "query_timeout", query_timeout)
-
-    @_builtins.property
-    @pulumi.getter(name="logQueriesAfter")
-    def log_queries_after(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        The maximum duration in seconds before a query is logged as a slow query. Setting this to 0 (the default) will never log slow queries.
-        """
-        return pulumi.get(self, "log_queries_after")
-
-    @log_queries_after.setter
-    def log_queries_after(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "log_queries_after", value)
-
-    @_builtins.property
-    @pulumi.getter(name="maxConnectionLimit")
-    def max_connection_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Maximum number of connections to InfluxDB. Setting this to 0 (default) means no limit. If using max_connection_limit, it is recommended to set the value to be large enough in order to not block clients unnecessarily.
-        """
-        return pulumi.get(self, "max_connection_limit")
-
-    @max_connection_limit.setter
-    def max_connection_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "max_connection_limit", value)
-
-    @_builtins.property
-    @pulumi.getter(name="maxRowLimit")
-    def max_row_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        The maximum number of rows returned in a non-chunked query. Setting this to 0 (the default) allows an unlimited number to be returned.
-        """
-        return pulumi.get(self, "max_row_limit")
-
-    @max_row_limit.setter
-    def max_row_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "max_row_limit", value)
-
-    @_builtins.property
-    @pulumi.getter(name="maxSelectBuckets")
-    def max_select_buckets(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        The maximum number of `GROUP BY time()` buckets that can be processed in a query. Setting this to 0 (the default) allows an unlimited number to be processed.
-        """
-        return pulumi.get(self, "max_select_buckets")
-
-    @max_select_buckets.setter
-    def max_select_buckets(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "max_select_buckets", value)
-
-    @_builtins.property
-    @pulumi.getter(name="maxSelectPoint")
-    def max_select_point(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        The maximum number of points that can be processed in a SELECT statement. Setting this to 0 (the default) allows an unlimited number to be processed.
-        """
-        return pulumi.get(self, "max_select_point")
-
-    @max_select_point.setter
-    def max_select_point(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "max_select_point", value)
-
-    @_builtins.property
-    @pulumi.getter(name="queryLogEnabled")
-    def query_log_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Whether queries should be logged before execution. May log sensitive data contained within a query.
-        """
-        return pulumi.get(self, "query_log_enabled")
-
-    @query_log_enabled.setter
-    def query_log_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "query_log_enabled", value)
-
-    @_builtins.property
-    @pulumi.getter(name="queryTimeout")
-    def query_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        The maximum duration in seconds before a query is killed. Setting this to 0 (the default) will never kill slow queries.
-        """
-        return pulumi.get(self, "query_timeout")
-
-    @query_timeout.setter
-    def query_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "query_timeout", value)
-
-
-class InfluxDbInfluxdbUserConfigIpFilterObjectArgsDict(TypedDict):
-    network: pulumi.Input[_builtins.str]
-    """
-    CIDR address block. Example: `10.20.0.0/16`.
-    """
-    description: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    Description for IP filter list entry. Example: `Production service IP range`.
-    """
-
-@pulumi.input_type
-class InfluxDbInfluxdbUserConfigIpFilterObjectArgs:
-    def __init__(__self__, *,
-                 network: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] network: CIDR address block. Example: `10.20.0.0/16`.
-        :param pulumi.Input[_builtins.str] description: Description for IP filter list entry. Example: `Production service IP range`.
-        """
-        pulumi.set(__self__, "network", network)
-        if description is not None:
-            pulumi.set(__self__, "description", description)
-
-    @_builtins.property
-    @pulumi.getter
-    def network(self) -> pulumi.Input[_builtins.str]:
-        """
-        CIDR address block. Example: `10.20.0.0/16`.
-        """
-        return pulumi.get(self, "network")
-
-    @network.setter
-    def network(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "network", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Description for IP filter list entry. Example: `Production service IP range`.
-        """
-        return pulumi.get(self, "description")
-
-    @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "description", value)
-
-
-class InfluxDbInfluxdbUserConfigPrivateAccessArgsDict(TypedDict):
-    influxdb: NotRequired[pulumi.Input[_builtins.bool]]
-    """
-    Allow clients to connect to influxdb with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-    """
-    user_backup: NotRequired[pulumi.Input[_builtins.bool]]
-    """
-    Allow clients to connect to user_backup with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-    """
-
-@pulumi.input_type
-class InfluxDbInfluxdbUserConfigPrivateAccessArgs:
-    def __init__(__self__, *,
-                 influxdb: Optional[pulumi.Input[_builtins.bool]] = None,
-                 user_backup: Optional[pulumi.Input[_builtins.bool]] = None):
-        """
-        :param pulumi.Input[_builtins.bool] influxdb: Allow clients to connect to influxdb with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-        :param pulumi.Input[_builtins.bool] user_backup: Allow clients to connect to user_backup with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-        """
-        if influxdb is not None:
-            pulumi.set(__self__, "influxdb", influxdb)
-        if user_backup is not None:
-            pulumi.set(__self__, "user_backup", user_backup)
-
-    @_builtins.property
-    @pulumi.getter
-    def influxdb(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Allow clients to connect to influxdb with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-        """
-        return pulumi.get(self, "influxdb")
-
-    @influxdb.setter
-    def influxdb(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "influxdb", value)
-
-    @_builtins.property
-    @pulumi.getter(name="userBackup")
-    def user_backup(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Allow clients to connect to user_backup with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-        """
-        return pulumi.get(self, "user_backup")
-
-    @user_backup.setter
-    def user_backup(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "user_backup", value)
-
-
-class InfluxDbInfluxdbUserConfigPrivatelinkAccessArgsDict(TypedDict):
-    influxdb: NotRequired[pulumi.Input[_builtins.bool]]
-    """
-    Enable influxdb.
-    """
-    user_backup: NotRequired[pulumi.Input[_builtins.bool]]
-    """
-    Enable user_backup.
-    """
-
-@pulumi.input_type
-class InfluxDbInfluxdbUserConfigPrivatelinkAccessArgs:
-    def __init__(__self__, *,
-                 influxdb: Optional[pulumi.Input[_builtins.bool]] = None,
-                 user_backup: Optional[pulumi.Input[_builtins.bool]] = None):
-        """
-        :param pulumi.Input[_builtins.bool] influxdb: Enable influxdb.
-        :param pulumi.Input[_builtins.bool] user_backup: Enable user_backup.
-        """
-        if influxdb is not None:
-            pulumi.set(__self__, "influxdb", influxdb)
-        if user_backup is not None:
-            pulumi.set(__self__, "user_backup", user_backup)
-
-    @_builtins.property
-    @pulumi.getter
-    def influxdb(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Enable influxdb.
-        """
-        return pulumi.get(self, "influxdb")
-
-    @influxdb.setter
-    def influxdb(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "influxdb", value)
-
-    @_builtins.property
-    @pulumi.getter(name="userBackup")
-    def user_backup(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Enable user_backup.
-        """
-        return pulumi.get(self, "user_backup")
-
-    @user_backup.setter
-    def user_backup(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "user_backup", value)
-
-
-class InfluxDbInfluxdbUserConfigPublicAccessArgsDict(TypedDict):
-    influxdb: NotRequired[pulumi.Input[_builtins.bool]]
-    """
-    Allow clients to connect to influxdb from the public internet for service nodes that are in a project VPC or another type of private network.
-    """
-    user_backup: NotRequired[pulumi.Input[_builtins.bool]]
-    """
-    Allow clients to connect to user_backup from the public internet for service nodes that are in a project VPC or another type of private network.
-    """
-
-@pulumi.input_type
-class InfluxDbInfluxdbUserConfigPublicAccessArgs:
-    def __init__(__self__, *,
-                 influxdb: Optional[pulumi.Input[_builtins.bool]] = None,
-                 user_backup: Optional[pulumi.Input[_builtins.bool]] = None):
-        """
-        :param pulumi.Input[_builtins.bool] influxdb: Allow clients to connect to influxdb from the public internet for service nodes that are in a project VPC or another type of private network.
-        :param pulumi.Input[_builtins.bool] user_backup: Allow clients to connect to user_backup from the public internet for service nodes that are in a project VPC or another type of private network.
-        """
-        if influxdb is not None:
-            pulumi.set(__self__, "influxdb", influxdb)
-        if user_backup is not None:
-            pulumi.set(__self__, "user_backup", user_backup)
-
-    @_builtins.property
-    @pulumi.getter
-    def influxdb(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Allow clients to connect to influxdb from the public internet for service nodes that are in a project VPC or another type of private network.
-        """
-        return pulumi.get(self, "influxdb")
-
-    @influxdb.setter
-    def influxdb(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "influxdb", value)
-
-    @_builtins.property
-    @pulumi.getter(name="userBackup")
-    def user_backup(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Allow clients to connect to user_backup from the public internet for service nodes that are in a project VPC or another type of private network.
-        """
-        return pulumi.get(self, "user_backup")
-
-    @user_backup.setter
-    def user_backup(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "user_backup", value)
-
-
-class InfluxDbServiceIntegrationArgsDict(TypedDict):
-    integration_type: pulumi.Input[_builtins.str]
-    """
-    Type of the service integration
-    """
-    source_service_name: pulumi.Input[_builtins.str]
-    """
-    Name of the source service
-    """
-
-@pulumi.input_type
-class InfluxDbServiceIntegrationArgs:
-    def __init__(__self__, *,
-                 integration_type: pulumi.Input[_builtins.str],
-                 source_service_name: pulumi.Input[_builtins.str]):
-        """
-        :param pulumi.Input[_builtins.str] integration_type: Type of the service integration
-        :param pulumi.Input[_builtins.str] source_service_name: Name of the source service
-        """
-        pulumi.set(__self__, "integration_type", integration_type)
-        pulumi.set(__self__, "source_service_name", source_service_name)
-
-    @_builtins.property
-    @pulumi.getter(name="integrationType")
-    def integration_type(self) -> pulumi.Input[_builtins.str]:
-        """
-        Type of the service integration
-        """
-        return pulumi.get(self, "integration_type")
-
-    @integration_type.setter
-    def integration_type(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "integration_type", value)
-
-    @_builtins.property
-    @pulumi.getter(name="sourceServiceName")
-    def source_service_name(self) -> pulumi.Input[_builtins.str]:
-        """
-        Name of the source service
-        """
-        return pulumi.get(self, "source_service_name")
-
-    @source_service_name.setter
-    def source_service_name(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "source_service_name", value)
-
-
-class InfluxDbTagArgsDict(TypedDict):
-    key: pulumi.Input[_builtins.str]
-    """
-    Service tag key
-    """
-    value: pulumi.Input[_builtins.str]
-    """
-    Service tag value
-    """
-
-@pulumi.input_type
-class InfluxDbTagArgs:
-    def __init__(__self__, *,
-                 key: pulumi.Input[_builtins.str],
-                 value: pulumi.Input[_builtins.str]):
-        """
-        :param pulumi.Input[_builtins.str] key: Service tag key
-        :param pulumi.Input[_builtins.str] value: Service tag value
-        """
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def key(self) -> pulumi.Input[_builtins.str]:
-        """
-        Service tag key
-        """
-        return pulumi.get(self, "key")
-
-    @key.setter
-    def key(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "key", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def value(self) -> pulumi.Input[_builtins.str]:
-        """
-        Service tag value
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "value", value)
-
-
-class InfluxDbTechEmailArgsDict(TypedDict):
-    email: pulumi.Input[_builtins.str]
-    """
-    An email address to contact for technical issues
-    """
-
-@pulumi.input_type
-class InfluxDbTechEmailArgs:
-    def __init__(__self__, *,
-                 email: pulumi.Input[_builtins.str]):
-        """
-        :param pulumi.Input[_builtins.str] email: An email address to contact for technical issues
-        """
-        pulumi.set(__self__, "email", email)
-
-    @_builtins.property
-    @pulumi.getter
-    def email(self) -> pulumi.Input[_builtins.str]:
-        """
-        An email address to contact for technical issues
-        """
-        return pulumi.get(self, "email")
-
-    @email.setter
-    def email(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "email", value)
-
-
 class KafkaComponentArgsDict(TypedDict):
     component: NotRequired[pulumi.Input[_builtins.str]]
     """
@@ -15455,7 +11341,7 @@ class KafkaKafkaUserConfigArgsDict(TypedDict):
     """
     backup_interval_hours: NotRequired[pulumi.Input[_builtins.int]]
     """
-    Interval in hours between automatic backups. Minimum value is 3 hours. Must be a divisor of 24 (3, 4, 6, 8, 12, 24). (Applicable to ACU plans only). Example: `24`.
+    Enum: `12`, `24`, `3`, `4`, `6`, `8`. Interval in hours between automatic backups. Minimum value is 3 hours. Must be a divisor of 24 (3, 4, 6, 8, 12, 24). (Applicable to ACU plans only).
     """
     backup_retention_days: NotRequired[pulumi.Input[_builtins.int]]
     """
@@ -15632,7 +11518,7 @@ class KafkaKafkaUserConfigArgs:
         """
         :param pulumi.Input[_builtins.str] additional_backup_regions: Additional Cloud Regions for Backup Replication.
         :param pulumi.Input[_builtins.bool] aiven_kafka_topic_messages: Allow access to read Kafka topic messages in the Aiven Console and REST API.
-        :param pulumi.Input[_builtins.int] backup_interval_hours: Interval in hours between automatic backups. Minimum value is 3 hours. Must be a divisor of 24 (3, 4, 6, 8, 12, 24). (Applicable to ACU plans only). Example: `24`.
+        :param pulumi.Input[_builtins.int] backup_interval_hours: Enum: `12`, `24`, `3`, `4`, `6`, `8`. Interval in hours between automatic backups. Minimum value is 3 hours. Must be a divisor of 24 (3, 4, 6, 8, 12, 24). (Applicable to ACU plans only).
         :param pulumi.Input[_builtins.int] backup_retention_days: Number of days to retain automatic backups. Backups older than this value will be automatically deleted. (Applicable to ACU plans only). Example: `7`.
         :param pulumi.Input[_builtins.str] custom_domain: Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. When you set a custom domain for a service deployed in a VPC, the service certificate is only created for the public-* hostname and the custom domain. Example: `grafana.example.org`.
         :param pulumi.Input[_builtins.bool] enable_ipv6: Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
@@ -15775,7 +11661,7 @@ class KafkaKafkaUserConfigArgs:
     @pulumi.getter(name="backupIntervalHours")
     def backup_interval_hours(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Interval in hours between automatic backups. Minimum value is 3 hours. Must be a divisor of 24 (3, 4, 6, 8, 12, 24). (Applicable to ACU plans only). Example: `24`.
+        Enum: `12`, `24`, `3`, `4`, `6`, `8`. Interval in hours between automatic backups. Minimum value is 3 hours. Must be a divisor of 24 (3, 4, 6, 8, 12, 24). (Applicable to ACU plans only).
         """
         return pulumi.get(self, "backup_interval_hours")
 
@@ -20469,2313 +16355,6 @@ class KafkaTopicTagArgs:
     @value.setter
     def value(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "value", value)
-
-
-class M3AggregatorComponentArgsDict(TypedDict):
-    component: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    Service component name
-    """
-    connection_uri: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    Connection info for connecting to the service component. This is a combination of host and port.
-    """
-    host: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    Host name for connecting to the service component
-    """
-    kafka_authentication_method: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    Kafka authentication method. This is a value specific to the 'kafka' service component
-    """
-    kafka_ssl_ca: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
-    """
-    port: NotRequired[pulumi.Input[_builtins.int]]
-    """
-    Port number for connecting to the service component
-    """
-    privatelink_connection_id: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    Privatelink connection ID
-    """
-    route: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    Network access route
-    """
-    ssl: NotRequired[pulumi.Input[_builtins.bool]]
-    """
-    Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
-    """
-    usage: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    DNS usage name
-    """
-
-@pulumi.input_type
-class M3AggregatorComponentArgs:
-    def __init__(__self__, *,
-                 component: Optional[pulumi.Input[_builtins.str]] = None,
-                 connection_uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 host: Optional[pulumi.Input[_builtins.str]] = None,
-                 kafka_authentication_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 kafka_ssl_ca: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 privatelink_connection_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 route: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssl: Optional[pulumi.Input[_builtins.bool]] = None,
-                 usage: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] component: Service component name
-        :param pulumi.Input[_builtins.str] connection_uri: Connection info for connecting to the service component. This is a combination of host and port.
-        :param pulumi.Input[_builtins.str] host: Host name for connecting to the service component
-        :param pulumi.Input[_builtins.str] kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component
-        :param pulumi.Input[_builtins.str] kafka_ssl_ca: Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
-        :param pulumi.Input[_builtins.int] port: Port number for connecting to the service component
-        :param pulumi.Input[_builtins.str] privatelink_connection_id: Privatelink connection ID
-        :param pulumi.Input[_builtins.str] route: Network access route
-        :param pulumi.Input[_builtins.bool] ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
-        :param pulumi.Input[_builtins.str] usage: DNS usage name
-        """
-        if component is not None:
-            pulumi.set(__self__, "component", component)
-        if connection_uri is not None:
-            pulumi.set(__self__, "connection_uri", connection_uri)
-        if host is not None:
-            pulumi.set(__self__, "host", host)
-        if kafka_authentication_method is not None:
-            pulumi.set(__self__, "kafka_authentication_method", kafka_authentication_method)
-        if kafka_ssl_ca is not None:
-            pulumi.set(__self__, "kafka_ssl_ca", kafka_ssl_ca)
-        if port is not None:
-            pulumi.set(__self__, "port", port)
-        if privatelink_connection_id is not None:
-            pulumi.set(__self__, "privatelink_connection_id", privatelink_connection_id)
-        if route is not None:
-            pulumi.set(__self__, "route", route)
-        if ssl is not None:
-            pulumi.set(__self__, "ssl", ssl)
-        if usage is not None:
-            pulumi.set(__self__, "usage", usage)
-
-    @_builtins.property
-    @pulumi.getter
-    def component(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Service component name
-        """
-        return pulumi.get(self, "component")
-
-    @component.setter
-    def component(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "component", value)
-
-    @_builtins.property
-    @pulumi.getter(name="connectionUri")
-    def connection_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Connection info for connecting to the service component. This is a combination of host and port.
-        """
-        return pulumi.get(self, "connection_uri")
-
-    @connection_uri.setter
-    def connection_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "connection_uri", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def host(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Host name for connecting to the service component
-        """
-        return pulumi.get(self, "host")
-
-    @host.setter
-    def host(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "host", value)
-
-    @_builtins.property
-    @pulumi.getter(name="kafkaAuthenticationMethod")
-    def kafka_authentication_method(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Kafka authentication method. This is a value specific to the 'kafka' service component
-        """
-        return pulumi.get(self, "kafka_authentication_method")
-
-    @kafka_authentication_method.setter
-    def kafka_authentication_method(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "kafka_authentication_method", value)
-
-    @_builtins.property
-    @pulumi.getter(name="kafkaSslCa")
-    def kafka_ssl_ca(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
-        """
-        return pulumi.get(self, "kafka_ssl_ca")
-
-    @kafka_ssl_ca.setter
-    def kafka_ssl_ca(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "kafka_ssl_ca", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Port number for connecting to the service component
-        """
-        return pulumi.get(self, "port")
-
-    @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "port", value)
-
-    @_builtins.property
-    @pulumi.getter(name="privatelinkConnectionId")
-    def privatelink_connection_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Privatelink connection ID
-        """
-        return pulumi.get(self, "privatelink_connection_id")
-
-    @privatelink_connection_id.setter
-    def privatelink_connection_id(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "privatelink_connection_id", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def route(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Network access route
-        """
-        return pulumi.get(self, "route")
-
-    @route.setter
-    def route(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "route", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def ssl(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
-        """
-        return pulumi.get(self, "ssl")
-
-    @ssl.setter
-    def ssl(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "ssl", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def usage(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        DNS usage name
-        """
-        return pulumi.get(self, "usage")
-
-    @usage.setter
-    def usage(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "usage", value)
-
-
-class M3AggregatorM3aggregatorArgsDict(TypedDict):
-    aggregator_http_uri: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    M3 Aggregator HTTP URI.
-    """
-    uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-    """
-    M3 Aggregator server URIs.
-    """
-
-@pulumi.input_type
-class M3AggregatorM3aggregatorArgs:
-    def __init__(__self__, *,
-                 aggregator_http_uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 uris: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
-        """
-        :param pulumi.Input[_builtins.str] aggregator_http_uri: M3 Aggregator HTTP URI.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] uris: M3 Aggregator server URIs.
-        """
-        if aggregator_http_uri is not None:
-            pulumi.set(__self__, "aggregator_http_uri", aggregator_http_uri)
-        if uris is not None:
-            pulumi.set(__self__, "uris", uris)
-
-    @_builtins.property
-    @pulumi.getter(name="aggregatorHttpUri")
-    def aggregator_http_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        M3 Aggregator HTTP URI.
-        """
-        return pulumi.get(self, "aggregator_http_uri")
-
-    @aggregator_http_uri.setter
-    def aggregator_http_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "aggregator_http_uri", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def uris(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        M3 Aggregator server URIs.
-        """
-        return pulumi.get(self, "uris")
-
-    @uris.setter
-    def uris(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "uris", value)
-
-
-class M3AggregatorM3aggregatorUserConfigArgsDict(TypedDict):
-    custom_domain: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
-    """
-    ip_filter_objects: NotRequired[pulumi.Input[Sequence[pulumi.Input['M3AggregatorM3aggregatorUserConfigIpFilterObjectArgsDict']]]]
-    """
-    Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
-    """
-    ip_filter_strings: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-    """
-    Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-    """
-    ip_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-    """
-    Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-    """
-    m3_version: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    Enum: `1.1`, `1.2`, `1.5`, and newer. M3 major version (deprecated, use m3aggregator_version).
-    """
-    m3aggregator_version: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    Enum: `1.1`, `1.2`, `1.5`, and newer. M3 major version (the minimum compatible version).
-    """
-    service_log: NotRequired[pulumi.Input[_builtins.bool]]
-    """
-    Store logs for the service so that they are available in the HTTP API and console.
-    """
-    static_ips: NotRequired[pulumi.Input[_builtins.bool]]
-    """
-    Use static public IP addresses.
-    """
-
-@pulumi.input_type
-class M3AggregatorM3aggregatorUserConfigArgs:
-    def __init__(__self__, *,
-                 custom_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_filter_objects: Optional[pulumi.Input[Sequence[pulumi.Input['M3AggregatorM3aggregatorUserConfigIpFilterObjectArgs']]]] = None,
-                 ip_filter_strings: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ip_filters: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 m3_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 m3aggregator_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_log: Optional[pulumi.Input[_builtins.bool]] = None,
-                 static_ips: Optional[pulumi.Input[_builtins.bool]] = None):
-        """
-        :param pulumi.Input[_builtins.str] custom_domain: Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
-        :param pulumi.Input[Sequence[pulumi.Input['M3AggregatorM3aggregatorUserConfigIpFilterObjectArgs']]] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ip_filters: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-        :param pulumi.Input[_builtins.str] m3_version: Enum: `1.1`, `1.2`, `1.5`, and newer. M3 major version (deprecated, use m3aggregator_version).
-        :param pulumi.Input[_builtins.str] m3aggregator_version: Enum: `1.1`, `1.2`, `1.5`, and newer. M3 major version (the minimum compatible version).
-        :param pulumi.Input[_builtins.bool] service_log: Store logs for the service so that they are available in the HTTP API and console.
-        :param pulumi.Input[_builtins.bool] static_ips: Use static public IP addresses.
-        """
-        if custom_domain is not None:
-            pulumi.set(__self__, "custom_domain", custom_domain)
-        if ip_filter_objects is not None:
-            pulumi.set(__self__, "ip_filter_objects", ip_filter_objects)
-        if ip_filter_strings is not None:
-            pulumi.set(__self__, "ip_filter_strings", ip_filter_strings)
-        if ip_filters is not None:
-            warnings.warn("""Deprecated. Use `ip_filter_string` instead.""", DeprecationWarning)
-            pulumi.log.warn("""ip_filters is deprecated: Deprecated. Use `ip_filter_string` instead.""")
-        if ip_filters is not None:
-            pulumi.set(__self__, "ip_filters", ip_filters)
-        if m3_version is not None:
-            pulumi.set(__self__, "m3_version", m3_version)
-        if m3aggregator_version is not None:
-            pulumi.set(__self__, "m3aggregator_version", m3aggregator_version)
-        if service_log is not None:
-            pulumi.set(__self__, "service_log", service_log)
-        if static_ips is not None:
-            pulumi.set(__self__, "static_ips", static_ips)
-
-    @_builtins.property
-    @pulumi.getter(name="customDomain")
-    def custom_domain(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
-        """
-        return pulumi.get(self, "custom_domain")
-
-    @custom_domain.setter
-    def custom_domain(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "custom_domain", value)
-
-    @_builtins.property
-    @pulumi.getter(name="ipFilterObjects")
-    def ip_filter_objects(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['M3AggregatorM3aggregatorUserConfigIpFilterObjectArgs']]]]:
-        """
-        Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
-        """
-        return pulumi.get(self, "ip_filter_objects")
-
-    @ip_filter_objects.setter
-    def ip_filter_objects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['M3AggregatorM3aggregatorUserConfigIpFilterObjectArgs']]]]):
-        pulumi.set(self, "ip_filter_objects", value)
-
-    @_builtins.property
-    @pulumi.getter(name="ipFilterStrings")
-    def ip_filter_strings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-        """
-        return pulumi.get(self, "ip_filter_strings")
-
-    @ip_filter_strings.setter
-    def ip_filter_strings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "ip_filter_strings", value)
-
-    @_builtins.property
-    @pulumi.getter(name="ipFilters")
-    @_utilities.deprecated("""Deprecated. Use `ip_filter_string` instead.""")
-    def ip_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-        """
-        return pulumi.get(self, "ip_filters")
-
-    @ip_filters.setter
-    def ip_filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "ip_filters", value)
-
-    @_builtins.property
-    @pulumi.getter(name="m3Version")
-    def m3_version(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Enum: `1.1`, `1.2`, `1.5`, and newer. M3 major version (deprecated, use m3aggregator_version).
-        """
-        return pulumi.get(self, "m3_version")
-
-    @m3_version.setter
-    def m3_version(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "m3_version", value)
-
-    @_builtins.property
-    @pulumi.getter(name="m3aggregatorVersion")
-    def m3aggregator_version(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Enum: `1.1`, `1.2`, `1.5`, and newer. M3 major version (the minimum compatible version).
-        """
-        return pulumi.get(self, "m3aggregator_version")
-
-    @m3aggregator_version.setter
-    def m3aggregator_version(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "m3aggregator_version", value)
-
-    @_builtins.property
-    @pulumi.getter(name="serviceLog")
-    def service_log(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Store logs for the service so that they are available in the HTTP API and console.
-        """
-        return pulumi.get(self, "service_log")
-
-    @service_log.setter
-    def service_log(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "service_log", value)
-
-    @_builtins.property
-    @pulumi.getter(name="staticIps")
-    def static_ips(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Use static public IP addresses.
-        """
-        return pulumi.get(self, "static_ips")
-
-    @static_ips.setter
-    def static_ips(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "static_ips", value)
-
-
-class M3AggregatorM3aggregatorUserConfigIpFilterObjectArgsDict(TypedDict):
-    network: pulumi.Input[_builtins.str]
-    """
-    CIDR address block. Example: `10.20.0.0/16`.
-    """
-    description: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    Description for IP filter list entry. Example: `Production service IP range`.
-    """
-
-@pulumi.input_type
-class M3AggregatorM3aggregatorUserConfigIpFilterObjectArgs:
-    def __init__(__self__, *,
-                 network: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] network: CIDR address block. Example: `10.20.0.0/16`.
-        :param pulumi.Input[_builtins.str] description: Description for IP filter list entry. Example: `Production service IP range`.
-        """
-        pulumi.set(__self__, "network", network)
-        if description is not None:
-            pulumi.set(__self__, "description", description)
-
-    @_builtins.property
-    @pulumi.getter
-    def network(self) -> pulumi.Input[_builtins.str]:
-        """
-        CIDR address block. Example: `10.20.0.0/16`.
-        """
-        return pulumi.get(self, "network")
-
-    @network.setter
-    def network(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "network", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Description for IP filter list entry. Example: `Production service IP range`.
-        """
-        return pulumi.get(self, "description")
-
-    @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "description", value)
-
-
-class M3AggregatorServiceIntegrationArgsDict(TypedDict):
-    integration_type: pulumi.Input[_builtins.str]
-    """
-    Type of the service integration
-    """
-    source_service_name: pulumi.Input[_builtins.str]
-    """
-    Name of the source service
-    """
-
-@pulumi.input_type
-class M3AggregatorServiceIntegrationArgs:
-    def __init__(__self__, *,
-                 integration_type: pulumi.Input[_builtins.str],
-                 source_service_name: pulumi.Input[_builtins.str]):
-        """
-        :param pulumi.Input[_builtins.str] integration_type: Type of the service integration
-        :param pulumi.Input[_builtins.str] source_service_name: Name of the source service
-        """
-        pulumi.set(__self__, "integration_type", integration_type)
-        pulumi.set(__self__, "source_service_name", source_service_name)
-
-    @_builtins.property
-    @pulumi.getter(name="integrationType")
-    def integration_type(self) -> pulumi.Input[_builtins.str]:
-        """
-        Type of the service integration
-        """
-        return pulumi.get(self, "integration_type")
-
-    @integration_type.setter
-    def integration_type(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "integration_type", value)
-
-    @_builtins.property
-    @pulumi.getter(name="sourceServiceName")
-    def source_service_name(self) -> pulumi.Input[_builtins.str]:
-        """
-        Name of the source service
-        """
-        return pulumi.get(self, "source_service_name")
-
-    @source_service_name.setter
-    def source_service_name(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "source_service_name", value)
-
-
-class M3AggregatorTagArgsDict(TypedDict):
-    key: pulumi.Input[_builtins.str]
-    """
-    Service tag key
-    """
-    value: pulumi.Input[_builtins.str]
-    """
-    Service tag value
-    """
-
-@pulumi.input_type
-class M3AggregatorTagArgs:
-    def __init__(__self__, *,
-                 key: pulumi.Input[_builtins.str],
-                 value: pulumi.Input[_builtins.str]):
-        """
-        :param pulumi.Input[_builtins.str] key: Service tag key
-        :param pulumi.Input[_builtins.str] value: Service tag value
-        """
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def key(self) -> pulumi.Input[_builtins.str]:
-        """
-        Service tag key
-        """
-        return pulumi.get(self, "key")
-
-    @key.setter
-    def key(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "key", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def value(self) -> pulumi.Input[_builtins.str]:
-        """
-        Service tag value
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "value", value)
-
-
-class M3AggregatorTechEmailArgsDict(TypedDict):
-    email: pulumi.Input[_builtins.str]
-    """
-    An email address to contact for technical issues
-    """
-
-@pulumi.input_type
-class M3AggregatorTechEmailArgs:
-    def __init__(__self__, *,
-                 email: pulumi.Input[_builtins.str]):
-        """
-        :param pulumi.Input[_builtins.str] email: An email address to contact for technical issues
-        """
-        pulumi.set(__self__, "email", email)
-
-    @_builtins.property
-    @pulumi.getter
-    def email(self) -> pulumi.Input[_builtins.str]:
-        """
-        An email address to contact for technical issues
-        """
-        return pulumi.get(self, "email")
-
-    @email.setter
-    def email(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "email", value)
-
-
-class M3DbComponentArgsDict(TypedDict):
-    component: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    Service component name
-    """
-    connection_uri: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    Connection info for connecting to the service component. This is a combination of host and port.
-    """
-    host: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    Host name for connecting to the service component
-    """
-    kafka_authentication_method: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    Kafka authentication method. This is a value specific to the 'kafka' service component
-    """
-    kafka_ssl_ca: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
-    """
-    port: NotRequired[pulumi.Input[_builtins.int]]
-    """
-    Port number for connecting to the service component
-    """
-    privatelink_connection_id: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    Privatelink connection ID
-    """
-    route: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    Network access route
-    """
-    ssl: NotRequired[pulumi.Input[_builtins.bool]]
-    """
-    Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
-    """
-    usage: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    DNS usage name
-    """
-
-@pulumi.input_type
-class M3DbComponentArgs:
-    def __init__(__self__, *,
-                 component: Optional[pulumi.Input[_builtins.str]] = None,
-                 connection_uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 host: Optional[pulumi.Input[_builtins.str]] = None,
-                 kafka_authentication_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 kafka_ssl_ca: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 privatelink_connection_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 route: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssl: Optional[pulumi.Input[_builtins.bool]] = None,
-                 usage: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] component: Service component name
-        :param pulumi.Input[_builtins.str] connection_uri: Connection info for connecting to the service component. This is a combination of host and port.
-        :param pulumi.Input[_builtins.str] host: Host name for connecting to the service component
-        :param pulumi.Input[_builtins.str] kafka_authentication_method: Kafka authentication method. This is a value specific to the 'kafka' service component
-        :param pulumi.Input[_builtins.str] kafka_ssl_ca: Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
-        :param pulumi.Input[_builtins.int] port: Port number for connecting to the service component
-        :param pulumi.Input[_builtins.str] privatelink_connection_id: Privatelink connection ID
-        :param pulumi.Input[_builtins.str] route: Network access route
-        :param pulumi.Input[_builtins.bool] ssl: Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
-        :param pulumi.Input[_builtins.str] usage: DNS usage name
-        """
-        if component is not None:
-            pulumi.set(__self__, "component", component)
-        if connection_uri is not None:
-            pulumi.set(__self__, "connection_uri", connection_uri)
-        if host is not None:
-            pulumi.set(__self__, "host", host)
-        if kafka_authentication_method is not None:
-            pulumi.set(__self__, "kafka_authentication_method", kafka_authentication_method)
-        if kafka_ssl_ca is not None:
-            pulumi.set(__self__, "kafka_ssl_ca", kafka_ssl_ca)
-        if port is not None:
-            pulumi.set(__self__, "port", port)
-        if privatelink_connection_id is not None:
-            pulumi.set(__self__, "privatelink_connection_id", privatelink_connection_id)
-        if route is not None:
-            pulumi.set(__self__, "route", route)
-        if ssl is not None:
-            pulumi.set(__self__, "ssl", ssl)
-        if usage is not None:
-            pulumi.set(__self__, "usage", usage)
-
-    @_builtins.property
-    @pulumi.getter
-    def component(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Service component name
-        """
-        return pulumi.get(self, "component")
-
-    @component.setter
-    def component(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "component", value)
-
-    @_builtins.property
-    @pulumi.getter(name="connectionUri")
-    def connection_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Connection info for connecting to the service component. This is a combination of host and port.
-        """
-        return pulumi.get(self, "connection_uri")
-
-    @connection_uri.setter
-    def connection_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "connection_uri", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def host(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Host name for connecting to the service component
-        """
-        return pulumi.get(self, "host")
-
-    @host.setter
-    def host(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "host", value)
-
-    @_builtins.property
-    @pulumi.getter(name="kafkaAuthenticationMethod")
-    def kafka_authentication_method(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Kafka authentication method. This is a value specific to the 'kafka' service component
-        """
-        return pulumi.get(self, "kafka_authentication_method")
-
-    @kafka_authentication_method.setter
-    def kafka_authentication_method(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "kafka_authentication_method", value)
-
-    @_builtins.property
-    @pulumi.getter(name="kafkaSslCa")
-    def kafka_ssl_ca(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Kafka certificate used. The possible values are `letsencrypt` and `project_ca`.
-        """
-        return pulumi.get(self, "kafka_ssl_ca")
-
-    @kafka_ssl_ca.setter
-    def kafka_ssl_ca(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "kafka_ssl_ca", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Port number for connecting to the service component
-        """
-        return pulumi.get(self, "port")
-
-    @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "port", value)
-
-    @_builtins.property
-    @pulumi.getter(name="privatelinkConnectionId")
-    def privatelink_connection_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Privatelink connection ID
-        """
-        return pulumi.get(self, "privatelink_connection_id")
-
-    @privatelink_connection_id.setter
-    def privatelink_connection_id(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "privatelink_connection_id", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def route(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Network access route
-        """
-        return pulumi.get(self, "route")
-
-    @route.setter
-    def route(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "route", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def ssl(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
-        """
-        return pulumi.get(self, "ssl")
-
-    @ssl.setter
-    def ssl(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "ssl", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def usage(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        DNS usage name
-        """
-        return pulumi.get(self, "usage")
-
-    @usage.setter
-    def usage(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "usage", value)
-
-
-class M3DbM3dbArgsDict(TypedDict):
-    http_cluster_uri: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    M3DB cluster URI.
-    """
-    http_node_uri: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    M3DB node URI.
-    """
-    influxdb_uri: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    InfluxDB URI.
-    """
-    prometheus_remote_read_uri: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    Prometheus remote read URI.
-    """
-    prometheus_remote_write_uri: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    Prometheus remote write URI.
-    """
-    uris: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-    """
-    M3DB server URIs.
-    """
-
-@pulumi.input_type
-class M3DbM3dbArgs:
-    def __init__(__self__, *,
-                 http_cluster_uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 http_node_uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 influxdb_uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 prometheus_remote_read_uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 prometheus_remote_write_uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 uris: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
-        """
-        :param pulumi.Input[_builtins.str] http_cluster_uri: M3DB cluster URI.
-        :param pulumi.Input[_builtins.str] http_node_uri: M3DB node URI.
-        :param pulumi.Input[_builtins.str] influxdb_uri: InfluxDB URI.
-        :param pulumi.Input[_builtins.str] prometheus_remote_read_uri: Prometheus remote read URI.
-        :param pulumi.Input[_builtins.str] prometheus_remote_write_uri: Prometheus remote write URI.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] uris: M3DB server URIs.
-        """
-        if http_cluster_uri is not None:
-            pulumi.set(__self__, "http_cluster_uri", http_cluster_uri)
-        if http_node_uri is not None:
-            pulumi.set(__self__, "http_node_uri", http_node_uri)
-        if influxdb_uri is not None:
-            pulumi.set(__self__, "influxdb_uri", influxdb_uri)
-        if prometheus_remote_read_uri is not None:
-            pulumi.set(__self__, "prometheus_remote_read_uri", prometheus_remote_read_uri)
-        if prometheus_remote_write_uri is not None:
-            pulumi.set(__self__, "prometheus_remote_write_uri", prometheus_remote_write_uri)
-        if uris is not None:
-            pulumi.set(__self__, "uris", uris)
-
-    @_builtins.property
-    @pulumi.getter(name="httpClusterUri")
-    def http_cluster_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        M3DB cluster URI.
-        """
-        return pulumi.get(self, "http_cluster_uri")
-
-    @http_cluster_uri.setter
-    def http_cluster_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "http_cluster_uri", value)
-
-    @_builtins.property
-    @pulumi.getter(name="httpNodeUri")
-    def http_node_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        M3DB node URI.
-        """
-        return pulumi.get(self, "http_node_uri")
-
-    @http_node_uri.setter
-    def http_node_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "http_node_uri", value)
-
-    @_builtins.property
-    @pulumi.getter(name="influxdbUri")
-    def influxdb_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        InfluxDB URI.
-        """
-        return pulumi.get(self, "influxdb_uri")
-
-    @influxdb_uri.setter
-    def influxdb_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "influxdb_uri", value)
-
-    @_builtins.property
-    @pulumi.getter(name="prometheusRemoteReadUri")
-    def prometheus_remote_read_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Prometheus remote read URI.
-        """
-        return pulumi.get(self, "prometheus_remote_read_uri")
-
-    @prometheus_remote_read_uri.setter
-    def prometheus_remote_read_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "prometheus_remote_read_uri", value)
-
-    @_builtins.property
-    @pulumi.getter(name="prometheusRemoteWriteUri")
-    def prometheus_remote_write_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Prometheus remote write URI.
-        """
-        return pulumi.get(self, "prometheus_remote_write_uri")
-
-    @prometheus_remote_write_uri.setter
-    def prometheus_remote_write_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "prometheus_remote_write_uri", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def uris(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        M3DB server URIs.
-        """
-        return pulumi.get(self, "uris")
-
-    @uris.setter
-    def uris(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "uris", value)
-
-
-class M3DbM3dbUserConfigArgsDict(TypedDict):
-    additional_backup_regions: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    Additional Cloud Regions for Backup Replication.
-    """
-    custom_domain: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
-    """
-    ip_filter_objects: NotRequired[pulumi.Input[Sequence[pulumi.Input['M3DbM3dbUserConfigIpFilterObjectArgsDict']]]]
-    """
-    Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
-    """
-    ip_filter_strings: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-    """
-    Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-    """
-    ip_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-    """
-    Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-    """
-    limits: NotRequired[pulumi.Input['M3DbM3dbUserConfigLimitsArgsDict']]
-    """
-    M3 limits
-    """
-    m3: NotRequired[pulumi.Input['M3DbM3dbUserConfigM3ArgsDict']]
-    """
-    M3 specific configuration options
-    """
-    m3_version: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    Enum: `1.1`, `1.2`, `1.5`, and newer. M3 major version (deprecated, use m3db_version).
-    """
-    m3coordinator_enable_graphite_carbon_ingest: NotRequired[pulumi.Input[_builtins.bool]]
-    """
-    Enables access to Graphite Carbon plaintext metrics ingestion. It can be enabled only for services inside VPCs. The metrics are written to aggregated namespaces only.
-    """
-    m3db_version: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    Enum: `1.1`, `1.2`, `1.5`, and newer. M3 major version (the minimum compatible version).
-    """
-    namespaces: NotRequired[pulumi.Input[Sequence[pulumi.Input['M3DbM3dbUserConfigNamespaceArgsDict']]]]
-    """
-    List of M3 namespaces
-    """
-    private_access: NotRequired[pulumi.Input['M3DbM3dbUserConfigPrivateAccessArgsDict']]
-    """
-    Allow access to selected service ports from private networks
-    """
-    project_to_fork_from: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
-    """
-    public_access: NotRequired[pulumi.Input['M3DbM3dbUserConfigPublicAccessArgsDict']]
-    """
-    Allow access to selected service ports from the public Internet
-    """
-    rules: NotRequired[pulumi.Input['M3DbM3dbUserConfigRulesArgsDict']]
-    """
-    M3 rules
-    """
-    service_log: NotRequired[pulumi.Input[_builtins.bool]]
-    """
-    Store logs for the service so that they are available in the HTTP API and console.
-    """
-    service_to_fork_from: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
-    """
-    static_ips: NotRequired[pulumi.Input[_builtins.bool]]
-    """
-    Use static public IP addresses.
-    """
-
-@pulumi.input_type
-class M3DbM3dbUserConfigArgs:
-    def __init__(__self__, *,
-                 additional_backup_regions: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_filter_objects: Optional[pulumi.Input[Sequence[pulumi.Input['M3DbM3dbUserConfigIpFilterObjectArgs']]]] = None,
-                 ip_filter_strings: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ip_filters: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 limits: Optional[pulumi.Input['M3DbM3dbUserConfigLimitsArgs']] = None,
-                 m3: Optional[pulumi.Input['M3DbM3dbUserConfigM3Args']] = None,
-                 m3_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 m3coordinator_enable_graphite_carbon_ingest: Optional[pulumi.Input[_builtins.bool]] = None,
-                 m3db_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespaces: Optional[pulumi.Input[Sequence[pulumi.Input['M3DbM3dbUserConfigNamespaceArgs']]]] = None,
-                 private_access: Optional[pulumi.Input['M3DbM3dbUserConfigPrivateAccessArgs']] = None,
-                 project_to_fork_from: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_access: Optional[pulumi.Input['M3DbM3dbUserConfigPublicAccessArgs']] = None,
-                 rules: Optional[pulumi.Input['M3DbM3dbUserConfigRulesArgs']] = None,
-                 service_log: Optional[pulumi.Input[_builtins.bool]] = None,
-                 service_to_fork_from: Optional[pulumi.Input[_builtins.str]] = None,
-                 static_ips: Optional[pulumi.Input[_builtins.bool]] = None):
-        """
-        :param pulumi.Input[_builtins.str] additional_backup_regions: Additional Cloud Regions for Backup Replication.
-        :param pulumi.Input[_builtins.str] custom_domain: Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
-        :param pulumi.Input[Sequence[pulumi.Input['M3DbM3dbUserConfigIpFilterObjectArgs']]] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ip_filters: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-        :param pulumi.Input['M3DbM3dbUserConfigLimitsArgs'] limits: M3 limits
-        :param pulumi.Input['M3DbM3dbUserConfigM3Args'] m3: M3 specific configuration options
-        :param pulumi.Input[_builtins.str] m3_version: Enum: `1.1`, `1.2`, `1.5`, and newer. M3 major version (deprecated, use m3db_version).
-        :param pulumi.Input[_builtins.bool] m3coordinator_enable_graphite_carbon_ingest: Enables access to Graphite Carbon plaintext metrics ingestion. It can be enabled only for services inside VPCs. The metrics are written to aggregated namespaces only.
-        :param pulumi.Input[_builtins.str] m3db_version: Enum: `1.1`, `1.2`, `1.5`, and newer. M3 major version (the minimum compatible version).
-        :param pulumi.Input[Sequence[pulumi.Input['M3DbM3dbUserConfigNamespaceArgs']]] namespaces: List of M3 namespaces
-        :param pulumi.Input['M3DbM3dbUserConfigPrivateAccessArgs'] private_access: Allow access to selected service ports from private networks
-        :param pulumi.Input[_builtins.str] project_to_fork_from: Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
-        :param pulumi.Input['M3DbM3dbUserConfigPublicAccessArgs'] public_access: Allow access to selected service ports from the public Internet
-        :param pulumi.Input['M3DbM3dbUserConfigRulesArgs'] rules: M3 rules
-        :param pulumi.Input[_builtins.bool] service_log: Store logs for the service so that they are available in the HTTP API and console.
-        :param pulumi.Input[_builtins.str] service_to_fork_from: Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
-        :param pulumi.Input[_builtins.bool] static_ips: Use static public IP addresses.
-        """
-        if additional_backup_regions is not None:
-            pulumi.set(__self__, "additional_backup_regions", additional_backup_regions)
-        if custom_domain is not None:
-            pulumi.set(__self__, "custom_domain", custom_domain)
-        if ip_filter_objects is not None:
-            pulumi.set(__self__, "ip_filter_objects", ip_filter_objects)
-        if ip_filter_strings is not None:
-            pulumi.set(__self__, "ip_filter_strings", ip_filter_strings)
-        if ip_filters is not None:
-            warnings.warn("""Deprecated. Use `ip_filter_string` instead.""", DeprecationWarning)
-            pulumi.log.warn("""ip_filters is deprecated: Deprecated. Use `ip_filter_string` instead.""")
-        if ip_filters is not None:
-            pulumi.set(__self__, "ip_filters", ip_filters)
-        if limits is not None:
-            pulumi.set(__self__, "limits", limits)
-        if m3 is not None:
-            pulumi.set(__self__, "m3", m3)
-        if m3_version is not None:
-            pulumi.set(__self__, "m3_version", m3_version)
-        if m3coordinator_enable_graphite_carbon_ingest is not None:
-            pulumi.set(__self__, "m3coordinator_enable_graphite_carbon_ingest", m3coordinator_enable_graphite_carbon_ingest)
-        if m3db_version is not None:
-            pulumi.set(__self__, "m3db_version", m3db_version)
-        if namespaces is not None:
-            pulumi.set(__self__, "namespaces", namespaces)
-        if private_access is not None:
-            pulumi.set(__self__, "private_access", private_access)
-        if project_to_fork_from is not None:
-            pulumi.set(__self__, "project_to_fork_from", project_to_fork_from)
-        if public_access is not None:
-            pulumi.set(__self__, "public_access", public_access)
-        if rules is not None:
-            pulumi.set(__self__, "rules", rules)
-        if service_log is not None:
-            pulumi.set(__self__, "service_log", service_log)
-        if service_to_fork_from is not None:
-            pulumi.set(__self__, "service_to_fork_from", service_to_fork_from)
-        if static_ips is not None:
-            pulumi.set(__self__, "static_ips", static_ips)
-
-    @_builtins.property
-    @pulumi.getter(name="additionalBackupRegions")
-    def additional_backup_regions(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Additional Cloud Regions for Backup Replication.
-        """
-        return pulumi.get(self, "additional_backup_regions")
-
-    @additional_backup_regions.setter
-    def additional_backup_regions(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "additional_backup_regions", value)
-
-    @_builtins.property
-    @pulumi.getter(name="customDomain")
-    def custom_domain(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
-        """
-        return pulumi.get(self, "custom_domain")
-
-    @custom_domain.setter
-    def custom_domain(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "custom_domain", value)
-
-    @_builtins.property
-    @pulumi.getter(name="ipFilterObjects")
-    def ip_filter_objects(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['M3DbM3dbUserConfigIpFilterObjectArgs']]]]:
-        """
-        Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
-        """
-        return pulumi.get(self, "ip_filter_objects")
-
-    @ip_filter_objects.setter
-    def ip_filter_objects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['M3DbM3dbUserConfigIpFilterObjectArgs']]]]):
-        pulumi.set(self, "ip_filter_objects", value)
-
-    @_builtins.property
-    @pulumi.getter(name="ipFilterStrings")
-    def ip_filter_strings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-        """
-        return pulumi.get(self, "ip_filter_strings")
-
-    @ip_filter_strings.setter
-    def ip_filter_strings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "ip_filter_strings", value)
-
-    @_builtins.property
-    @pulumi.getter(name="ipFilters")
-    @_utilities.deprecated("""Deprecated. Use `ip_filter_string` instead.""")
-    def ip_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-        """
-        return pulumi.get(self, "ip_filters")
-
-    @ip_filters.setter
-    def ip_filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "ip_filters", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def limits(self) -> Optional[pulumi.Input['M3DbM3dbUserConfigLimitsArgs']]:
-        """
-        M3 limits
-        """
-        return pulumi.get(self, "limits")
-
-    @limits.setter
-    def limits(self, value: Optional[pulumi.Input['M3DbM3dbUserConfigLimitsArgs']]):
-        pulumi.set(self, "limits", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def m3(self) -> Optional[pulumi.Input['M3DbM3dbUserConfigM3Args']]:
-        """
-        M3 specific configuration options
-        """
-        return pulumi.get(self, "m3")
-
-    @m3.setter
-    def m3(self, value: Optional[pulumi.Input['M3DbM3dbUserConfigM3Args']]):
-        pulumi.set(self, "m3", value)
-
-    @_builtins.property
-    @pulumi.getter(name="m3Version")
-    def m3_version(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Enum: `1.1`, `1.2`, `1.5`, and newer. M3 major version (deprecated, use m3db_version).
-        """
-        return pulumi.get(self, "m3_version")
-
-    @m3_version.setter
-    def m3_version(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "m3_version", value)
-
-    @_builtins.property
-    @pulumi.getter(name="m3coordinatorEnableGraphiteCarbonIngest")
-    def m3coordinator_enable_graphite_carbon_ingest(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Enables access to Graphite Carbon plaintext metrics ingestion. It can be enabled only for services inside VPCs. The metrics are written to aggregated namespaces only.
-        """
-        return pulumi.get(self, "m3coordinator_enable_graphite_carbon_ingest")
-
-    @m3coordinator_enable_graphite_carbon_ingest.setter
-    def m3coordinator_enable_graphite_carbon_ingest(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "m3coordinator_enable_graphite_carbon_ingest", value)
-
-    @_builtins.property
-    @pulumi.getter(name="m3dbVersion")
-    def m3db_version(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Enum: `1.1`, `1.2`, `1.5`, and newer. M3 major version (the minimum compatible version).
-        """
-        return pulumi.get(self, "m3db_version")
-
-    @m3db_version.setter
-    def m3db_version(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "m3db_version", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def namespaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['M3DbM3dbUserConfigNamespaceArgs']]]]:
-        """
-        List of M3 namespaces
-        """
-        return pulumi.get(self, "namespaces")
-
-    @namespaces.setter
-    def namespaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['M3DbM3dbUserConfigNamespaceArgs']]]]):
-        pulumi.set(self, "namespaces", value)
-
-    @_builtins.property
-    @pulumi.getter(name="privateAccess")
-    def private_access(self) -> Optional[pulumi.Input['M3DbM3dbUserConfigPrivateAccessArgs']]:
-        """
-        Allow access to selected service ports from private networks
-        """
-        return pulumi.get(self, "private_access")
-
-    @private_access.setter
-    def private_access(self, value: Optional[pulumi.Input['M3DbM3dbUserConfigPrivateAccessArgs']]):
-        pulumi.set(self, "private_access", value)
-
-    @_builtins.property
-    @pulumi.getter(name="projectToForkFrom")
-    def project_to_fork_from(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
-        """
-        return pulumi.get(self, "project_to_fork_from")
-
-    @project_to_fork_from.setter
-    def project_to_fork_from(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "project_to_fork_from", value)
-
-    @_builtins.property
-    @pulumi.getter(name="publicAccess")
-    def public_access(self) -> Optional[pulumi.Input['M3DbM3dbUserConfigPublicAccessArgs']]:
-        """
-        Allow access to selected service ports from the public Internet
-        """
-        return pulumi.get(self, "public_access")
-
-    @public_access.setter
-    def public_access(self, value: Optional[pulumi.Input['M3DbM3dbUserConfigPublicAccessArgs']]):
-        pulumi.set(self, "public_access", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def rules(self) -> Optional[pulumi.Input['M3DbM3dbUserConfigRulesArgs']]:
-        """
-        M3 rules
-        """
-        return pulumi.get(self, "rules")
-
-    @rules.setter
-    def rules(self, value: Optional[pulumi.Input['M3DbM3dbUserConfigRulesArgs']]):
-        pulumi.set(self, "rules", value)
-
-    @_builtins.property
-    @pulumi.getter(name="serviceLog")
-    def service_log(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Store logs for the service so that they are available in the HTTP API and console.
-        """
-        return pulumi.get(self, "service_log")
-
-    @service_log.setter
-    def service_log(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "service_log", value)
-
-    @_builtins.property
-    @pulumi.getter(name="serviceToForkFrom")
-    def service_to_fork_from(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
-        """
-        return pulumi.get(self, "service_to_fork_from")
-
-    @service_to_fork_from.setter
-    def service_to_fork_from(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "service_to_fork_from", value)
-
-    @_builtins.property
-    @pulumi.getter(name="staticIps")
-    def static_ips(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Use static public IP addresses.
-        """
-        return pulumi.get(self, "static_ips")
-
-    @static_ips.setter
-    def static_ips(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "static_ips", value)
-
-
-class M3DbM3dbUserConfigIpFilterObjectArgsDict(TypedDict):
-    network: pulumi.Input[_builtins.str]
-    """
-    CIDR address block. Example: `10.20.0.0/16`.
-    """
-    description: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    Description for IP filter list entry. Example: `Production service IP range`.
-    """
-
-@pulumi.input_type
-class M3DbM3dbUserConfigIpFilterObjectArgs:
-    def __init__(__self__, *,
-                 network: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] network: CIDR address block. Example: `10.20.0.0/16`.
-        :param pulumi.Input[_builtins.str] description: Description for IP filter list entry. Example: `Production service IP range`.
-        """
-        pulumi.set(__self__, "network", network)
-        if description is not None:
-            pulumi.set(__self__, "description", description)
-
-    @_builtins.property
-    @pulumi.getter
-    def network(self) -> pulumi.Input[_builtins.str]:
-        """
-        CIDR address block. Example: `10.20.0.0/16`.
-        """
-        return pulumi.get(self, "network")
-
-    @network.setter
-    def network(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "network", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Description for IP filter list entry. Example: `Production service IP range`.
-        """
-        return pulumi.get(self, "description")
-
-    @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "description", value)
-
-
-class M3DbM3dbUserConfigLimitsArgsDict(TypedDict):
-    max_recently_queried_series_blocks: NotRequired[pulumi.Input[_builtins.int]]
-    """
-    The maximum number of blocks that can be read in a given lookback period. Example: `20000`.
-    """
-    max_recently_queried_series_disk_bytes_read: NotRequired[pulumi.Input[_builtins.int]]
-    """
-    The maximum number of disk bytes that can be read in a given lookback period. Example: `104857600`.
-    """
-    max_recently_queried_series_lookback: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    The lookback period for `max_recently_queried_series_blocks` and `max_recently_queried_series_disk_bytes_read`. Example: `15s`.
-    """
-    query_docs: NotRequired[pulumi.Input[_builtins.int]]
-    """
-    The maximum number of docs fetched in single query. Example: `100000`.
-    """
-    query_require_exhaustive: NotRequired[pulumi.Input[_builtins.bool]]
-    """
-    When query limits are exceeded, whether to return error or return partial results.
-    """
-    query_series: NotRequired[pulumi.Input[_builtins.int]]
-    """
-    The maximum number of series fetched in single query. Example: `100000`.
-    """
-
-@pulumi.input_type
-class M3DbM3dbUserConfigLimitsArgs:
-    def __init__(__self__, *,
-                 max_recently_queried_series_blocks: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_recently_queried_series_disk_bytes_read: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_recently_queried_series_lookback: Optional[pulumi.Input[_builtins.str]] = None,
-                 query_docs: Optional[pulumi.Input[_builtins.int]] = None,
-                 query_require_exhaustive: Optional[pulumi.Input[_builtins.bool]] = None,
-                 query_series: Optional[pulumi.Input[_builtins.int]] = None):
-        """
-        :param pulumi.Input[_builtins.int] max_recently_queried_series_blocks: The maximum number of blocks that can be read in a given lookback period. Example: `20000`.
-        :param pulumi.Input[_builtins.int] max_recently_queried_series_disk_bytes_read: The maximum number of disk bytes that can be read in a given lookback period. Example: `104857600`.
-        :param pulumi.Input[_builtins.str] max_recently_queried_series_lookback: The lookback period for `max_recently_queried_series_blocks` and `max_recently_queried_series_disk_bytes_read`. Example: `15s`.
-        :param pulumi.Input[_builtins.int] query_docs: The maximum number of docs fetched in single query. Example: `100000`.
-        :param pulumi.Input[_builtins.bool] query_require_exhaustive: When query limits are exceeded, whether to return error or return partial results.
-        :param pulumi.Input[_builtins.int] query_series: The maximum number of series fetched in single query. Example: `100000`.
-        """
-        if max_recently_queried_series_blocks is not None:
-            pulumi.set(__self__, "max_recently_queried_series_blocks", max_recently_queried_series_blocks)
-        if max_recently_queried_series_disk_bytes_read is not None:
-            pulumi.set(__self__, "max_recently_queried_series_disk_bytes_read", max_recently_queried_series_disk_bytes_read)
-        if max_recently_queried_series_lookback is not None:
-            pulumi.set(__self__, "max_recently_queried_series_lookback", max_recently_queried_series_lookback)
-        if query_docs is not None:
-            pulumi.set(__self__, "query_docs", query_docs)
-        if query_require_exhaustive is not None:
-            pulumi.set(__self__, "query_require_exhaustive", query_require_exhaustive)
-        if query_series is not None:
-            pulumi.set(__self__, "query_series", query_series)
-
-    @_builtins.property
-    @pulumi.getter(name="maxRecentlyQueriedSeriesBlocks")
-    def max_recently_queried_series_blocks(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        The maximum number of blocks that can be read in a given lookback period. Example: `20000`.
-        """
-        return pulumi.get(self, "max_recently_queried_series_blocks")
-
-    @max_recently_queried_series_blocks.setter
-    def max_recently_queried_series_blocks(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "max_recently_queried_series_blocks", value)
-
-    @_builtins.property
-    @pulumi.getter(name="maxRecentlyQueriedSeriesDiskBytesRead")
-    def max_recently_queried_series_disk_bytes_read(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        The maximum number of disk bytes that can be read in a given lookback period. Example: `104857600`.
-        """
-        return pulumi.get(self, "max_recently_queried_series_disk_bytes_read")
-
-    @max_recently_queried_series_disk_bytes_read.setter
-    def max_recently_queried_series_disk_bytes_read(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "max_recently_queried_series_disk_bytes_read", value)
-
-    @_builtins.property
-    @pulumi.getter(name="maxRecentlyQueriedSeriesLookback")
-    def max_recently_queried_series_lookback(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The lookback period for `max_recently_queried_series_blocks` and `max_recently_queried_series_disk_bytes_read`. Example: `15s`.
-        """
-        return pulumi.get(self, "max_recently_queried_series_lookback")
-
-    @max_recently_queried_series_lookback.setter
-    def max_recently_queried_series_lookback(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "max_recently_queried_series_lookback", value)
-
-    @_builtins.property
-    @pulumi.getter(name="queryDocs")
-    def query_docs(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        The maximum number of docs fetched in single query. Example: `100000`.
-        """
-        return pulumi.get(self, "query_docs")
-
-    @query_docs.setter
-    def query_docs(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "query_docs", value)
-
-    @_builtins.property
-    @pulumi.getter(name="queryRequireExhaustive")
-    def query_require_exhaustive(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        When query limits are exceeded, whether to return error or return partial results.
-        """
-        return pulumi.get(self, "query_require_exhaustive")
-
-    @query_require_exhaustive.setter
-    def query_require_exhaustive(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "query_require_exhaustive", value)
-
-    @_builtins.property
-    @pulumi.getter(name="querySeries")
-    def query_series(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        The maximum number of series fetched in single query. Example: `100000`.
-        """
-        return pulumi.get(self, "query_series")
-
-    @query_series.setter
-    def query_series(self, value: Optional[pulumi.Input[_builtins.int]]):
-        pulumi.set(self, "query_series", value)
-
-
-class M3DbM3dbUserConfigM3ArgsDict(TypedDict):
-    tag_options: NotRequired[pulumi.Input['M3DbM3dbUserConfigM3TagOptionsArgsDict']]
-    """
-    M3 Tag Options
-    """
-
-@pulumi.input_type
-class M3DbM3dbUserConfigM3Args:
-    def __init__(__self__, *,
-                 tag_options: Optional[pulumi.Input['M3DbM3dbUserConfigM3TagOptionsArgs']] = None):
-        """
-        :param pulumi.Input['M3DbM3dbUserConfigM3TagOptionsArgs'] tag_options: M3 Tag Options
-        """
-        if tag_options is not None:
-            pulumi.set(__self__, "tag_options", tag_options)
-
-    @_builtins.property
-    @pulumi.getter(name="tagOptions")
-    def tag_options(self) -> Optional[pulumi.Input['M3DbM3dbUserConfigM3TagOptionsArgs']]:
-        """
-        M3 Tag Options
-        """
-        return pulumi.get(self, "tag_options")
-
-    @tag_options.setter
-    def tag_options(self, value: Optional[pulumi.Input['M3DbM3dbUserConfigM3TagOptionsArgs']]):
-        pulumi.set(self, "tag_options", value)
-
-
-class M3DbM3dbUserConfigM3TagOptionsArgsDict(TypedDict):
-    allow_tag_name_duplicates: NotRequired[pulumi.Input[_builtins.bool]]
-    """
-    Allows for duplicate tags to appear on series (not allowed by default).
-    """
-    allow_tag_value_empty: NotRequired[pulumi.Input[_builtins.bool]]
-    """
-    Allows for empty tags to appear on series (not allowed by default).
-    """
-
-@pulumi.input_type
-class M3DbM3dbUserConfigM3TagOptionsArgs:
-    def __init__(__self__, *,
-                 allow_tag_name_duplicates: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allow_tag_value_empty: Optional[pulumi.Input[_builtins.bool]] = None):
-        """
-        :param pulumi.Input[_builtins.bool] allow_tag_name_duplicates: Allows for duplicate tags to appear on series (not allowed by default).
-        :param pulumi.Input[_builtins.bool] allow_tag_value_empty: Allows for empty tags to appear on series (not allowed by default).
-        """
-        if allow_tag_name_duplicates is not None:
-            pulumi.set(__self__, "allow_tag_name_duplicates", allow_tag_name_duplicates)
-        if allow_tag_value_empty is not None:
-            pulumi.set(__self__, "allow_tag_value_empty", allow_tag_value_empty)
-
-    @_builtins.property
-    @pulumi.getter(name="allowTagNameDuplicates")
-    def allow_tag_name_duplicates(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Allows for duplicate tags to appear on series (not allowed by default).
-        """
-        return pulumi.get(self, "allow_tag_name_duplicates")
-
-    @allow_tag_name_duplicates.setter
-    def allow_tag_name_duplicates(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "allow_tag_name_duplicates", value)
-
-    @_builtins.property
-    @pulumi.getter(name="allowTagValueEmpty")
-    def allow_tag_value_empty(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Allows for empty tags to appear on series (not allowed by default).
-        """
-        return pulumi.get(self, "allow_tag_value_empty")
-
-    @allow_tag_value_empty.setter
-    def allow_tag_value_empty(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "allow_tag_value_empty", value)
-
-
-class M3DbM3dbUserConfigNamespaceArgsDict(TypedDict):
-    name: pulumi.Input[_builtins.str]
-    """
-    The name of the namespace. Example: `default`.
-    """
-    type: pulumi.Input[_builtins.str]
-    """
-    Enum: `aggregated`, `unaggregated`. The type of aggregation (aggregated/unaggregated).
-    """
-    options: NotRequired[pulumi.Input['M3DbM3dbUserConfigNamespaceOptionsArgsDict']]
-    """
-    Namespace options
-    """
-    resolution: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    The resolution for an aggregated namespace. Example: `30s`.
-    """
-
-@pulumi.input_type
-class M3DbM3dbUserConfigNamespaceArgs:
-    def __init__(__self__, *,
-                 name: pulumi.Input[_builtins.str],
-                 type: pulumi.Input[_builtins.str],
-                 options: Optional[pulumi.Input['M3DbM3dbUserConfigNamespaceOptionsArgs']] = None,
-                 resolution: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] name: The name of the namespace. Example: `default`.
-        :param pulumi.Input[_builtins.str] type: Enum: `aggregated`, `unaggregated`. The type of aggregation (aggregated/unaggregated).
-        :param pulumi.Input['M3DbM3dbUserConfigNamespaceOptionsArgs'] options: Namespace options
-        :param pulumi.Input[_builtins.str] resolution: The resolution for an aggregated namespace. Example: `30s`.
-        """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "type", type)
-        if options is not None:
-            pulumi.set(__self__, "options", options)
-        if resolution is not None:
-            pulumi.set(__self__, "resolution", resolution)
-
-    @_builtins.property
-    @pulumi.getter
-    def name(self) -> pulumi.Input[_builtins.str]:
-        """
-        The name of the namespace. Example: `default`.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "name", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def type(self) -> pulumi.Input[_builtins.str]:
-        """
-        Enum: `aggregated`, `unaggregated`. The type of aggregation (aggregated/unaggregated).
-        """
-        return pulumi.get(self, "type")
-
-    @type.setter
-    def type(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "type", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def options(self) -> Optional[pulumi.Input['M3DbM3dbUserConfigNamespaceOptionsArgs']]:
-        """
-        Namespace options
-        """
-        return pulumi.get(self, "options")
-
-    @options.setter
-    def options(self, value: Optional[pulumi.Input['M3DbM3dbUserConfigNamespaceOptionsArgs']]):
-        pulumi.set(self, "options", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def resolution(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The resolution for an aggregated namespace. Example: `30s`.
-        """
-        return pulumi.get(self, "resolution")
-
-    @resolution.setter
-    def resolution(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "resolution", value)
-
-
-class M3DbM3dbUserConfigNamespaceOptionsArgsDict(TypedDict):
-    retention_options: pulumi.Input['M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgsDict']
-    """
-    Retention options
-    """
-    snapshot_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-    """
-    Controls whether M3DB will create snapshot files for this namespace.
-    """
-    writes_to_commitlog: NotRequired[pulumi.Input[_builtins.bool]]
-    """
-    Controls whether M3DB will include writes to this namespace in the commitlog.
-    """
-
-@pulumi.input_type
-class M3DbM3dbUserConfigNamespaceOptionsArgs:
-    def __init__(__self__, *,
-                 retention_options: pulumi.Input['M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs'],
-                 snapshot_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 writes_to_commitlog: Optional[pulumi.Input[_builtins.bool]] = None):
-        """
-        :param pulumi.Input['M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs'] retention_options: Retention options
-        :param pulumi.Input[_builtins.bool] snapshot_enabled: Controls whether M3DB will create snapshot files for this namespace.
-        :param pulumi.Input[_builtins.bool] writes_to_commitlog: Controls whether M3DB will include writes to this namespace in the commitlog.
-        """
-        pulumi.set(__self__, "retention_options", retention_options)
-        if snapshot_enabled is not None:
-            pulumi.set(__self__, "snapshot_enabled", snapshot_enabled)
-        if writes_to_commitlog is not None:
-            pulumi.set(__self__, "writes_to_commitlog", writes_to_commitlog)
-
-    @_builtins.property
-    @pulumi.getter(name="retentionOptions")
-    def retention_options(self) -> pulumi.Input['M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs']:
-        """
-        Retention options
-        """
-        return pulumi.get(self, "retention_options")
-
-    @retention_options.setter
-    def retention_options(self, value: pulumi.Input['M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs']):
-        pulumi.set(self, "retention_options", value)
-
-    @_builtins.property
-    @pulumi.getter(name="snapshotEnabled")
-    def snapshot_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Controls whether M3DB will create snapshot files for this namespace.
-        """
-        return pulumi.get(self, "snapshot_enabled")
-
-    @snapshot_enabled.setter
-    def snapshot_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "snapshot_enabled", value)
-
-    @_builtins.property
-    @pulumi.getter(name="writesToCommitlog")
-    def writes_to_commitlog(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Controls whether M3DB will include writes to this namespace in the commitlog.
-        """
-        return pulumi.get(self, "writes_to_commitlog")
-
-    @writes_to_commitlog.setter
-    def writes_to_commitlog(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "writes_to_commitlog", value)
-
-
-class M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgsDict(TypedDict):
-    block_data_expiry_duration: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    Controls how long we wait before expiring stale data. Example: `5m`.
-    """
-    blocksize_duration: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    Controls how long to keep a block in memory before flushing to a fileset on disk. Example: `2h`.
-    """
-    buffer_future_duration: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    Controls how far into the future writes to the namespace will be accepted. Example: `10m`.
-    """
-    buffer_past_duration: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    Controls how far into the past writes to the namespace will be accepted. Example: `10m`.
-    """
-    retention_period_duration: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    Controls the duration of time that M3DB will retain data for the namespace. Example: `48h`.
-    """
-
-@pulumi.input_type
-class M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs:
-    def __init__(__self__, *,
-                 block_data_expiry_duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 blocksize_duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 buffer_future_duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 buffer_past_duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 retention_period_duration: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] block_data_expiry_duration: Controls how long we wait before expiring stale data. Example: `5m`.
-        :param pulumi.Input[_builtins.str] blocksize_duration: Controls how long to keep a block in memory before flushing to a fileset on disk. Example: `2h`.
-        :param pulumi.Input[_builtins.str] buffer_future_duration: Controls how far into the future writes to the namespace will be accepted. Example: `10m`.
-        :param pulumi.Input[_builtins.str] buffer_past_duration: Controls how far into the past writes to the namespace will be accepted. Example: `10m`.
-        :param pulumi.Input[_builtins.str] retention_period_duration: Controls the duration of time that M3DB will retain data for the namespace. Example: `48h`.
-        """
-        if block_data_expiry_duration is not None:
-            pulumi.set(__self__, "block_data_expiry_duration", block_data_expiry_duration)
-        if blocksize_duration is not None:
-            pulumi.set(__self__, "blocksize_duration", blocksize_duration)
-        if buffer_future_duration is not None:
-            pulumi.set(__self__, "buffer_future_duration", buffer_future_duration)
-        if buffer_past_duration is not None:
-            pulumi.set(__self__, "buffer_past_duration", buffer_past_duration)
-        if retention_period_duration is not None:
-            pulumi.set(__self__, "retention_period_duration", retention_period_duration)
-
-    @_builtins.property
-    @pulumi.getter(name="blockDataExpiryDuration")
-    def block_data_expiry_duration(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Controls how long we wait before expiring stale data. Example: `5m`.
-        """
-        return pulumi.get(self, "block_data_expiry_duration")
-
-    @block_data_expiry_duration.setter
-    def block_data_expiry_duration(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "block_data_expiry_duration", value)
-
-    @_builtins.property
-    @pulumi.getter(name="blocksizeDuration")
-    def blocksize_duration(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Controls how long to keep a block in memory before flushing to a fileset on disk. Example: `2h`.
-        """
-        return pulumi.get(self, "blocksize_duration")
-
-    @blocksize_duration.setter
-    def blocksize_duration(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "blocksize_duration", value)
-
-    @_builtins.property
-    @pulumi.getter(name="bufferFutureDuration")
-    def buffer_future_duration(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Controls how far into the future writes to the namespace will be accepted. Example: `10m`.
-        """
-        return pulumi.get(self, "buffer_future_duration")
-
-    @buffer_future_duration.setter
-    def buffer_future_duration(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "buffer_future_duration", value)
-
-    @_builtins.property
-    @pulumi.getter(name="bufferPastDuration")
-    def buffer_past_duration(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Controls how far into the past writes to the namespace will be accepted. Example: `10m`.
-        """
-        return pulumi.get(self, "buffer_past_duration")
-
-    @buffer_past_duration.setter
-    def buffer_past_duration(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "buffer_past_duration", value)
-
-    @_builtins.property
-    @pulumi.getter(name="retentionPeriodDuration")
-    def retention_period_duration(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Controls the duration of time that M3DB will retain data for the namespace. Example: `48h`.
-        """
-        return pulumi.get(self, "retention_period_duration")
-
-    @retention_period_duration.setter
-    def retention_period_duration(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "retention_period_duration", value)
-
-
-class M3DbM3dbUserConfigPrivateAccessArgsDict(TypedDict):
-    m3coordinator: NotRequired[pulumi.Input[_builtins.bool]]
-    """
-    Allow clients to connect to m3coordinator with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-    """
-
-@pulumi.input_type
-class M3DbM3dbUserConfigPrivateAccessArgs:
-    def __init__(__self__, *,
-                 m3coordinator: Optional[pulumi.Input[_builtins.bool]] = None):
-        """
-        :param pulumi.Input[_builtins.bool] m3coordinator: Allow clients to connect to m3coordinator with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-        """
-        if m3coordinator is not None:
-            pulumi.set(__self__, "m3coordinator", m3coordinator)
-
-    @_builtins.property
-    @pulumi.getter
-    def m3coordinator(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Allow clients to connect to m3coordinator with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-        """
-        return pulumi.get(self, "m3coordinator")
-
-    @m3coordinator.setter
-    def m3coordinator(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "m3coordinator", value)
-
-
-class M3DbM3dbUserConfigPublicAccessArgsDict(TypedDict):
-    m3coordinator: NotRequired[pulumi.Input[_builtins.bool]]
-    """
-    Allow clients to connect to m3coordinator from the public internet for service nodes that are in a project VPC or another type of private network.
-    """
-
-@pulumi.input_type
-class M3DbM3dbUserConfigPublicAccessArgs:
-    def __init__(__self__, *,
-                 m3coordinator: Optional[pulumi.Input[_builtins.bool]] = None):
-        """
-        :param pulumi.Input[_builtins.bool] m3coordinator: Allow clients to connect to m3coordinator from the public internet for service nodes that are in a project VPC or another type of private network.
-        """
-        if m3coordinator is not None:
-            pulumi.set(__self__, "m3coordinator", m3coordinator)
-
-    @_builtins.property
-    @pulumi.getter
-    def m3coordinator(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Allow clients to connect to m3coordinator from the public internet for service nodes that are in a project VPC or another type of private network.
-        """
-        return pulumi.get(self, "m3coordinator")
-
-    @m3coordinator.setter
-    def m3coordinator(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "m3coordinator", value)
-
-
-class M3DbM3dbUserConfigRulesArgsDict(TypedDict):
-    mappings: NotRequired[pulumi.Input[Sequence[pulumi.Input['M3DbM3dbUserConfigRulesMappingArgsDict']]]]
-    """
-    List of M3 mapping rules
-    """
-
-@pulumi.input_type
-class M3DbM3dbUserConfigRulesArgs:
-    def __init__(__self__, *,
-                 mappings: Optional[pulumi.Input[Sequence[pulumi.Input['M3DbM3dbUserConfigRulesMappingArgs']]]] = None):
-        """
-        :param pulumi.Input[Sequence[pulumi.Input['M3DbM3dbUserConfigRulesMappingArgs']]] mappings: List of M3 mapping rules
-        """
-        if mappings is not None:
-            pulumi.set(__self__, "mappings", mappings)
-
-    @_builtins.property
-    @pulumi.getter
-    def mappings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['M3DbM3dbUserConfigRulesMappingArgs']]]]:
-        """
-        List of M3 mapping rules
-        """
-        return pulumi.get(self, "mappings")
-
-    @mappings.setter
-    def mappings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['M3DbM3dbUserConfigRulesMappingArgs']]]]):
-        pulumi.set(self, "mappings", value)
-
-
-class M3DbM3dbUserConfigRulesMappingArgsDict(TypedDict):
-    filter: pulumi.Input[_builtins.str]
-    """
-    Matching metric names with wildcards (using __name__:wildcard) or matching tags and their (optionally wildcarded) values. For value, ! can be used at start of value for negation, and multiple filters can be supplied using space as separator. Example: `__name__:disk_* host:important-42 mount:!*/sda`.
-    """
-    aggregations: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-    """
-    List of aggregations to be applied.
-    """
-    drop: NotRequired[pulumi.Input[_builtins.bool]]
-    """
-    Only store the derived metric (as specified in the roll-up rules), if any.
-    """
-    name: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    The (optional) name of the rule. Example: `important disk metrics`.
-    """
-    namespaces: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-    """
-    This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by glob (=wildcards).
-    """
-    namespaces_objects: NotRequired[pulumi.Input[Sequence[pulumi.Input['M3DbM3dbUserConfigRulesMappingNamespacesObjectArgsDict']]]]
-    """
-    This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by exact match of retention period and resolution
-    """
-    namespaces_strings: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-    """
-    This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by glob (=wildcards).
-    """
-    tags: NotRequired[pulumi.Input[Sequence[pulumi.Input['M3DbM3dbUserConfigRulesMappingTagArgsDict']]]]
-    """
-    List of tags to be appended to matching metrics
-    """
-
-@pulumi.input_type
-class M3DbM3dbUserConfigRulesMappingArgs:
-    def __init__(__self__, *,
-                 filter: pulumi.Input[_builtins.str],
-                 aggregations: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 drop: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 namespaces_objects: Optional[pulumi.Input[Sequence[pulumi.Input['M3DbM3dbUserConfigRulesMappingNamespacesObjectArgs']]]] = None,
-                 namespaces_strings: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['M3DbM3dbUserConfigRulesMappingTagArgs']]]] = None):
-        """
-        :param pulumi.Input[_builtins.str] filter: Matching metric names with wildcards (using __name__:wildcard) or matching tags and their (optionally wildcarded) values. For value, ! can be used at start of value for negation, and multiple filters can be supplied using space as separator. Example: `__name__:disk_* host:important-42 mount:!*/sda`.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] aggregations: List of aggregations to be applied.
-        :param pulumi.Input[_builtins.bool] drop: Only store the derived metric (as specified in the roll-up rules), if any.
-        :param pulumi.Input[_builtins.str] name: The (optional) name of the rule. Example: `important disk metrics`.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] namespaces: This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by glob (=wildcards).
-        :param pulumi.Input[Sequence[pulumi.Input['M3DbM3dbUserConfigRulesMappingNamespacesObjectArgs']]] namespaces_objects: This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by exact match of retention period and resolution
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] namespaces_strings: This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by glob (=wildcards).
-        :param pulumi.Input[Sequence[pulumi.Input['M3DbM3dbUserConfigRulesMappingTagArgs']]] tags: List of tags to be appended to matching metrics
-        """
-        pulumi.set(__self__, "filter", filter)
-        if aggregations is not None:
-            pulumi.set(__self__, "aggregations", aggregations)
-        if drop is not None:
-            pulumi.set(__self__, "drop", drop)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if namespaces is not None:
-            warnings.warn("""Deprecated. Use `namespaces_string` instead.""", DeprecationWarning)
-            pulumi.log.warn("""namespaces is deprecated: Deprecated. Use `namespaces_string` instead.""")
-        if namespaces is not None:
-            pulumi.set(__self__, "namespaces", namespaces)
-        if namespaces_objects is not None:
-            pulumi.set(__self__, "namespaces_objects", namespaces_objects)
-        if namespaces_strings is not None:
-            pulumi.set(__self__, "namespaces_strings", namespaces_strings)
-        if tags is not None:
-            pulumi.set(__self__, "tags", tags)
-
-    @_builtins.property
-    @pulumi.getter
-    def filter(self) -> pulumi.Input[_builtins.str]:
-        """
-        Matching metric names with wildcards (using __name__:wildcard) or matching tags and their (optionally wildcarded) values. For value, ! can be used at start of value for negation, and multiple filters can be supplied using space as separator. Example: `__name__:disk_* host:important-42 mount:!*/sda`.
-        """
-        return pulumi.get(self, "filter")
-
-    @filter.setter
-    def filter(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "filter", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def aggregations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        List of aggregations to be applied.
-        """
-        return pulumi.get(self, "aggregations")
-
-    @aggregations.setter
-    def aggregations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "aggregations", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def drop(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Only store the derived metric (as specified in the roll-up rules), if any.
-        """
-        return pulumi.get(self, "drop")
-
-    @drop.setter
-    def drop(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "drop", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The (optional) name of the rule. Example: `important disk metrics`.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "name", value)
-
-    @_builtins.property
-    @pulumi.getter
-    @_utilities.deprecated("""Deprecated. Use `namespaces_string` instead.""")
-    def namespaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by glob (=wildcards).
-        """
-        return pulumi.get(self, "namespaces")
-
-    @namespaces.setter
-    def namespaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "namespaces", value)
-
-    @_builtins.property
-    @pulumi.getter(name="namespacesObjects")
-    def namespaces_objects(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['M3DbM3dbUserConfigRulesMappingNamespacesObjectArgs']]]]:
-        """
-        This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by exact match of retention period and resolution
-        """
-        return pulumi.get(self, "namespaces_objects")
-
-    @namespaces_objects.setter
-    def namespaces_objects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['M3DbM3dbUserConfigRulesMappingNamespacesObjectArgs']]]]):
-        pulumi.set(self, "namespaces_objects", value)
-
-    @_builtins.property
-    @pulumi.getter(name="namespacesStrings")
-    def namespaces_strings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by glob (=wildcards).
-        """
-        return pulumi.get(self, "namespaces_strings")
-
-    @namespaces_strings.setter
-    def namespaces_strings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "namespaces_strings", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['M3DbM3dbUserConfigRulesMappingTagArgs']]]]:
-        """
-        List of tags to be appended to matching metrics
-        """
-        return pulumi.get(self, "tags")
-
-    @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['M3DbM3dbUserConfigRulesMappingTagArgs']]]]):
-        pulumi.set(self, "tags", value)
-
-
-class M3DbM3dbUserConfigRulesMappingNamespacesObjectArgsDict(TypedDict):
-    resolution: pulumi.Input[_builtins.str]
-    """
-    The resolution for the matching namespace. Example: `30s`.
-    """
-    retention: NotRequired[pulumi.Input[_builtins.str]]
-    """
-    The retention period of the matching namespace. Example: `48h`.
-    """
-
-@pulumi.input_type
-class M3DbM3dbUserConfigRulesMappingNamespacesObjectArgs:
-    def __init__(__self__, *,
-                 resolution: pulumi.Input[_builtins.str],
-                 retention: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] resolution: The resolution for the matching namespace. Example: `30s`.
-        :param pulumi.Input[_builtins.str] retention: The retention period of the matching namespace. Example: `48h`.
-        """
-        pulumi.set(__self__, "resolution", resolution)
-        if retention is not None:
-            pulumi.set(__self__, "retention", retention)
-
-    @_builtins.property
-    @pulumi.getter
-    def resolution(self) -> pulumi.Input[_builtins.str]:
-        """
-        The resolution for the matching namespace. Example: `30s`.
-        """
-        return pulumi.get(self, "resolution")
-
-    @resolution.setter
-    def resolution(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "resolution", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def retention(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The retention period of the matching namespace. Example: `48h`.
-        """
-        return pulumi.get(self, "retention")
-
-    @retention.setter
-    def retention(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "retention", value)
-
-
-class M3DbM3dbUserConfigRulesMappingTagArgsDict(TypedDict):
-    name: pulumi.Input[_builtins.str]
-    """
-    Name of the tag. Example: `my_tag`.
-    """
-    value: pulumi.Input[_builtins.str]
-    """
-    Value of the tag. Example: `my_value`.
-    """
-
-@pulumi.input_type
-class M3DbM3dbUserConfigRulesMappingTagArgs:
-    def __init__(__self__, *,
-                 name: pulumi.Input[_builtins.str],
-                 value: pulumi.Input[_builtins.str]):
-        """
-        :param pulumi.Input[_builtins.str] name: Name of the tag. Example: `my_tag`.
-        :param pulumi.Input[_builtins.str] value: Value of the tag. Example: `my_value`.
-        """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "value", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def name(self) -> pulumi.Input[_builtins.str]:
-        """
-        Name of the tag. Example: `my_tag`.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "name", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def value(self) -> pulumi.Input[_builtins.str]:
-        """
-        Value of the tag. Example: `my_value`.
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "value", value)
-
-
-class M3DbServiceIntegrationArgsDict(TypedDict):
-    integration_type: pulumi.Input[_builtins.str]
-    """
-    Type of the service integration
-    """
-    source_service_name: pulumi.Input[_builtins.str]
-    """
-    Name of the source service
-    """
-
-@pulumi.input_type
-class M3DbServiceIntegrationArgs:
-    def __init__(__self__, *,
-                 integration_type: pulumi.Input[_builtins.str],
-                 source_service_name: pulumi.Input[_builtins.str]):
-        """
-        :param pulumi.Input[_builtins.str] integration_type: Type of the service integration
-        :param pulumi.Input[_builtins.str] source_service_name: Name of the source service
-        """
-        pulumi.set(__self__, "integration_type", integration_type)
-        pulumi.set(__self__, "source_service_name", source_service_name)
-
-    @_builtins.property
-    @pulumi.getter(name="integrationType")
-    def integration_type(self) -> pulumi.Input[_builtins.str]:
-        """
-        Type of the service integration
-        """
-        return pulumi.get(self, "integration_type")
-
-    @integration_type.setter
-    def integration_type(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "integration_type", value)
-
-    @_builtins.property
-    @pulumi.getter(name="sourceServiceName")
-    def source_service_name(self) -> pulumi.Input[_builtins.str]:
-        """
-        Name of the source service
-        """
-        return pulumi.get(self, "source_service_name")
-
-    @source_service_name.setter
-    def source_service_name(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "source_service_name", value)
-
-
-class M3DbTagArgsDict(TypedDict):
-    key: pulumi.Input[_builtins.str]
-    """
-    Service tag key
-    """
-    value: pulumi.Input[_builtins.str]
-    """
-    Service tag value
-    """
-
-@pulumi.input_type
-class M3DbTagArgs:
-    def __init__(__self__, *,
-                 key: pulumi.Input[_builtins.str],
-                 value: pulumi.Input[_builtins.str]):
-        """
-        :param pulumi.Input[_builtins.str] key: Service tag key
-        :param pulumi.Input[_builtins.str] value: Service tag value
-        """
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def key(self) -> pulumi.Input[_builtins.str]:
-        """
-        Service tag key
-        """
-        return pulumi.get(self, "key")
-
-    @key.setter
-    def key(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "key", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def value(self) -> pulumi.Input[_builtins.str]:
-        """
-        Service tag value
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "value", value)
-
-
-class M3DbTechEmailArgsDict(TypedDict):
-    email: pulumi.Input[_builtins.str]
-    """
-    An email address to contact for technical issues
-    """
-
-@pulumi.input_type
-class M3DbTechEmailArgs:
-    def __init__(__self__, *,
-                 email: pulumi.Input[_builtins.str]):
-        """
-        :param pulumi.Input[_builtins.str] email: An email address to contact for technical issues
-        """
-        pulumi.set(__self__, "email", email)
-
-    @_builtins.property
-    @pulumi.getter
-    def email(self) -> pulumi.Input[_builtins.str]:
-        """
-        An email address to contact for technical issues
-        """
-        return pulumi.get(self, "email")
-
-    @email.setter
-    def email(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "email", value)
 
 
 class MySqlComponentArgsDict(TypedDict):
@@ -31223,6 +24802,232 @@ class OpenSearchTechEmailArgs:
         pulumi.set(self, "email", value)
 
 
+class OpensearchSecurityPluginConfigTimeoutsArgsDict(TypedDict):
+    create: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
+    default: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+    """
+    delete: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+    """
+    read: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+    """
+    update: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
+
+@pulumi.input_type
+class OpensearchSecurityPluginConfigTimeoutsArgs:
+    def __init__(__self__, *,
+                 create: Optional[pulumi.Input[_builtins.str]] = None,
+                 default: Optional[pulumi.Input[_builtins.str]] = None,
+                 delete: Optional[pulumi.Input[_builtins.str]] = None,
+                 read: Optional[pulumi.Input[_builtins.str]] = None,
+                 update: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param pulumi.Input[_builtins.str] default: Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+        :param pulumi.Input[_builtins.str] delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param pulumi.Input[_builtins.str] read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param pulumi.Input[_builtins.str] update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if default is not None:
+            warnings.warn("""Use operation-specific timeouts instead. This field will be removed in the next major version.""", DeprecationWarning)
+            pulumi.log.warn("""default is deprecated: Use operation-specific timeouts instead. This field will be removed in the next major version.""")
+        if default is not None:
+            pulumi.set(__self__, "default", default)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @create.setter
+    def create(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "create", value)
+
+    @_builtins.property
+    @pulumi.getter
+    @_utilities.deprecated("""Use operation-specific timeouts instead. This field will be removed in the next major version.""")
+    def default(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+        """
+        return pulumi.get(self, "default")
+
+    @default.setter
+    def default(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "default", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @delete.setter
+    def delete(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "delete", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "read", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+    @update.setter
+    def update(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "update", value)
+
+
+class OpensearchUserTimeoutsArgsDict(TypedDict):
+    create: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
+    default: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+    """
+    delete: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+    """
+    read: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+    """
+    update: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
+
+@pulumi.input_type
+class OpensearchUserTimeoutsArgs:
+    def __init__(__self__, *,
+                 create: Optional[pulumi.Input[_builtins.str]] = None,
+                 default: Optional[pulumi.Input[_builtins.str]] = None,
+                 delete: Optional[pulumi.Input[_builtins.str]] = None,
+                 read: Optional[pulumi.Input[_builtins.str]] = None,
+                 update: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param pulumi.Input[_builtins.str] default: Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+        :param pulumi.Input[_builtins.str] delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param pulumi.Input[_builtins.str] read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param pulumi.Input[_builtins.str] update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if default is not None:
+            warnings.warn("""Use operation-specific timeouts instead. This field will be removed in the next major version.""", DeprecationWarning)
+            pulumi.log.warn("""default is deprecated: Use operation-specific timeouts instead. This field will be removed in the next major version.""")
+        if default is not None:
+            pulumi.set(__self__, "default", default)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @create.setter
+    def create(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "create", value)
+
+    @_builtins.property
+    @pulumi.getter
+    @_utilities.deprecated("""Use operation-specific timeouts instead. This field will be removed in the next major version.""")
+    def default(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+        """
+        return pulumi.get(self, "default")
+
+    @default.setter
+    def default(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "default", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @delete.setter
+    def delete(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "delete", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "read", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+    @update.setter
+    def update(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "update", value)
+
+
 class OrganizationAddressTimeoutsArgsDict(TypedDict):
     create: NotRequired[pulumi.Input[_builtins.str]]
     """
@@ -31774,7 +25579,7 @@ class OrganizationGroupProjectTimeoutsArgs:
 class OrganizationPermissionPermissionArgsDict(TypedDict):
     permissions: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
     """
-    List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant". The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:project:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
+    List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant". The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:project:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:metrics:read`, `service:secrets:read` and `service:users:write`.
     """
     principal_id: pulumi.Input[_builtins.str]
     """
@@ -31802,7 +25607,7 @@ class OrganizationPermissionPermissionArgs:
                  create_time: Optional[pulumi.Input[_builtins.str]] = None,
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] permissions: List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant". The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:project:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] permissions: List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant". The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:project:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:metrics:read`, `service:secrets:read` and `service:users:write`.
         :param pulumi.Input[_builtins.str] principal_id: ID of the user or group to grant permissions to. Only active users who have accepted an [invite](https://aiven.io/docs/platform/howto/manage-org-users) to join the organization can be granted permissions.
         :param pulumi.Input[_builtins.str] principal_type: An enumeration. The possible values are `user` and `user_group`.
         :param pulumi.Input[_builtins.str] create_time: Create Time.
@@ -31820,7 +25625,7 @@ class OrganizationPermissionPermissionArgs:
     @pulumi.getter
     def permissions(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
         """
-        List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant". The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:project:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
+        List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant". The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:project:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:metrics:read`, `service:secrets:read` and `service:users:write`.
         """
         return pulumi.get(self, "permissions")
 
@@ -33156,7 +26961,7 @@ class PgPgUserConfigArgsDict(TypedDict):
     """
     backup_interval_hours: NotRequired[pulumi.Input[_builtins.int]]
     """
-    Interval in hours between automatic backups. Minimum value is 3 hours. Must be a divisor of 24 (3, 4, 6, 8, 12, 24). (Applicable to ACU plans only). Example: `24`.
+    Enum: `12`, `24`, `3`, `4`, `6`, `8`. Interval in hours between automatic backups. Minimum value is 3 hours. Must be a divisor of 24 (3, 4, 6, 8, 12, 24). (Applicable to ACU plans only).
     """
     backup_minute: NotRequired[pulumi.Input[_builtins.int]]
     """
@@ -33269,7 +27074,7 @@ class PgPgUserConfigArgsDict(TypedDict):
     switchover_windows: NotRequired[pulumi.Input[Sequence[pulumi.Input['PgPgUserConfigSwitchoverWindowArgsDict']]]]
     synchronous_replication: NotRequired[pulumi.Input[_builtins.str]]
     """
-    Enum: `off`, `quorum`. Synchronous replication type. Note that the service plan also needs to support synchronous replication.
+    Enum: `off`, `quorum`. Use synchronous*commit instead. Any change to this setting will automatically update synchronous*commit. Setting the value to quorum changes synchronous*commit to remote*write, while setting it to off changes synchronous_commit to off.
     """
     timescaledb: NotRequired[pulumi.Input['PgPgUserConfigTimescaledbArgsDict']]
     """
@@ -33329,7 +27134,7 @@ class PgPgUserConfigArgs:
         :param pulumi.Input[_builtins.str] admin_password: Custom password for admin user. Defaults to random string. This must be set only when a new service is being created.
         :param pulumi.Input[_builtins.str] admin_username: Custom username for admin user. This must be set only when a new service is being created. Example: `avnadmin`.
         :param pulumi.Input[_builtins.int] backup_hour: The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
-        :param pulumi.Input[_builtins.int] backup_interval_hours: Interval in hours between automatic backups. Minimum value is 3 hours. Must be a divisor of 24 (3, 4, 6, 8, 12, 24). (Applicable to ACU plans only). Example: `24`.
+        :param pulumi.Input[_builtins.int] backup_interval_hours: Enum: `12`, `24`, `3`, `4`, `6`, `8`. Interval in hours between automatic backups. Minimum value is 3 hours. Must be a divisor of 24 (3, 4, 6, 8, 12, 24). (Applicable to ACU plans only).
         :param pulumi.Input[_builtins.int] backup_minute: The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
         :param pulumi.Input[_builtins.int] backup_retention_days: Number of days to retain automatic backups. Backups older than this value will be automatically deleted. (Applicable to ACU plans only). Example: `7`.
         :param pulumi.Input[_builtins.bool] enable_ha_replica_dns: Creates a dedicated read-only DNS that automatically falls back to the primary if standby nodes are unavailable. It switches back when a standby recovers. Default: `false`.
@@ -33357,7 +27162,7 @@ class PgPgUserConfigArgs:
         :param pulumi.Input[_builtins.str] service_to_fork_from: Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
         :param pulumi.Input[_builtins.float] shared_buffers_percentage: Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value. Changing this parameter causes a service restart. Example: `41.5`.
         :param pulumi.Input[_builtins.bool] static_ips: Use static public IP addresses.
-        :param pulumi.Input[_builtins.str] synchronous_replication: Enum: `off`, `quorum`. Synchronous replication type. Note that the service plan also needs to support synchronous replication.
+        :param pulumi.Input[_builtins.str] synchronous_replication: Enum: `off`, `quorum`. Use synchronous*commit instead. Any change to this setting will automatically update synchronous*commit. Setting the value to quorum changes synchronous*commit to remote*write, while setting it to off changes synchronous_commit to off.
         :param pulumi.Input['PgPgUserConfigTimescaledbArgs'] timescaledb: System-wide settings for the timescaledb extension
         :param pulumi.Input[_builtins.str] variant: Enum: `aiven`, `timescale`. Variant of the PostgreSQL service, may affect the features that are exposed by default.
         :param pulumi.Input[_builtins.int] work_mem: Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. The default is 1MB + 0.075% of total RAM (up to 32MB). Example: `4`.
@@ -33495,7 +27300,7 @@ class PgPgUserConfigArgs:
     @pulumi.getter(name="backupIntervalHours")
     def backup_interval_hours(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Interval in hours between automatic backups. Minimum value is 3 hours. Must be a divisor of 24 (3, 4, 6, 8, 12, 24). (Applicable to ACU plans only). Example: `24`.
+        Enum: `12`, `24`, `3`, `4`, `6`, `8`. Interval in hours between automatic backups. Minimum value is 3 hours. Must be a divisor of 24 (3, 4, 6, 8, 12, 24). (Applicable to ACU plans only).
         """
         return pulumi.get(self, "backup_interval_hours")
 
@@ -33842,7 +27647,7 @@ class PgPgUserConfigArgs:
     @pulumi.getter(name="synchronousReplication")
     def synchronous_replication(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Enum: `off`, `quorum`. Synchronous replication type. Note that the service plan also needs to support synchronous replication.
+        Enum: `off`, `quorum`. Use synchronous*commit instead. Any change to this setting will automatically update synchronous*commit. Setting the value to quorum changes synchronous*commit to remote*write, while setting it to off changes synchronous_commit to off.
         """
         return pulumi.get(self, "synchronous_replication")
 
@@ -34319,6 +28124,10 @@ class PgPgUserConfigPgArgsDict(TypedDict):
     """
     Enum: `all`, `none`, `top`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default is `top`.
     """
+    synchronous_commit: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `local`, `off`, `on`, `remote_apply`, `remote_write`. Sets the current transaction's synchronization level. The default is `off`. This setting takes precedence over `synchronous_replication`.
+    """
     temp_file_limit: NotRequired[pulumi.Input[_builtins.int]]
     """
     PostgreSQL temporary file limit in KiB, -1 for unlimited.
@@ -34404,6 +28213,7 @@ class PgPgUserConfigPgArgs:
                  pg_stat_monitor_dot_pgsm_enable_query_plan: Optional[pulumi.Input[_builtins.bool]] = None,
                  pg_stat_monitor_dot_pgsm_max_buckets: Optional[pulumi.Input[_builtins.int]] = None,
                  pg_stat_statements_dot_track: Optional[pulumi.Input[_builtins.str]] = None,
+                 synchronous_commit: Optional[pulumi.Input[_builtins.str]] = None,
                  temp_file_limit: Optional[pulumi.Input[_builtins.int]] = None,
                  timezone: Optional[pulumi.Input[_builtins.str]] = None,
                  track_activity_query_size: Optional[pulumi.Input[_builtins.int]] = None,
@@ -34462,6 +28272,7 @@ class PgPgUserConfigPgArgs:
         :param pulumi.Input[_builtins.bool] pg_stat_monitor_dot_pgsm_enable_query_plan: Enables or disables query plan monitoring. Changing this parameter causes a service restart. Only available for PostgreSQL 13+.
         :param pulumi.Input[_builtins.int] pg_stat_monitor_dot_pgsm_max_buckets: Sets the maximum number of buckets. Changing this parameter causes a service restart. Only available for PostgreSQL 13+. Example: `10`.
         :param pulumi.Input[_builtins.str] pg_stat_statements_dot_track: Enum: `all`, `none`, `top`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default is `top`.
+        :param pulumi.Input[_builtins.str] synchronous_commit: Enum: `local`, `off`, `on`, `remote_apply`, `remote_write`. Sets the current transaction's synchronization level. The default is `off`. This setting takes precedence over `synchronous_replication`.
         :param pulumi.Input[_builtins.int] temp_file_limit: PostgreSQL temporary file limit in KiB, -1 for unlimited.
         :param pulumi.Input[_builtins.str] timezone: PostgreSQL service timezone. Example: `Europe/Helsinki`.
         :param pulumi.Input[_builtins.int] track_activity_query_size: Specifies the number of bytes reserved to track the currently executing command for each active session. Changing this parameter causes a service restart. Example: `1024`.
@@ -34569,6 +28380,8 @@ class PgPgUserConfigPgArgs:
             pulumi.set(__self__, "pg_stat_monitor_dot_pgsm_max_buckets", pg_stat_monitor_dot_pgsm_max_buckets)
         if pg_stat_statements_dot_track is not None:
             pulumi.set(__self__, "pg_stat_statements_dot_track", pg_stat_statements_dot_track)
+        if synchronous_commit is not None:
+            pulumi.set(__self__, "synchronous_commit", synchronous_commit)
         if temp_file_limit is not None:
             pulumi.set(__self__, "temp_file_limit", temp_file_limit)
         if timezone is not None:
@@ -35173,6 +28986,18 @@ class PgPgUserConfigPgArgs:
     @pg_stat_statements_dot_track.setter
     def pg_stat_statements_dot_track(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "pg_stat_statements_dot_track", value)
+
+    @_builtins.property
+    @pulumi.getter(name="synchronousCommit")
+    def synchronous_commit(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Enum: `local`, `off`, `on`, `remote_apply`, `remote_write`. Sets the current transaction's synchronization level. The default is `off`. This setting takes precedence over `synchronous_replication`.
+        """
+        return pulumi.get(self, "synchronous_commit")
+
+    @synchronous_commit.setter
+    def synchronous_commit(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "synchronous_commit", value)
 
     @_builtins.property
     @pulumi.getter(name="tempFileLimit")
@@ -37983,7 +31808,11 @@ class ServiceIntegrationClickhouseKafkaUserConfigTableArgsDict(TypedDict):
     """
     handle_error_mode: NotRequired[pulumi.Input[_builtins.str]]
     """
-    Enum: `default`, `stream`. Defines how ClickHouse should handle errors when processing Kafka messages. `default` stops on errors, `stream` continues processing and logs errors. Default: `default`.
+    Enum: `dead_letter_queue`, `default`, `stream`. Defines how ClickHouse should handle errors when processing Kafka messages. `default` stops on errors, `stream` continues processing and logs errors, `dead_letter_queue` saves error data to system.dead*letter*queue (requires ClickHouse 25.8+). Default: `default`.
+    """
+    materialized_view: NotRequired[pulumi.Input['ServiceIntegrationClickhouseKafkaUserConfigTableMaterializedViewArgsDict']]
+    """
+    Optional materialized view that persists data from the Kafka engine table into a MergeTree-family table. When specified, a ClickHouse materialized view is created that automatically reads from the Kafka table and inserts into a durable target table
     """
     max_block_size: NotRequired[pulumi.Input[_builtins.int]]
     """
@@ -38057,6 +31886,7 @@ class ServiceIntegrationClickhouseKafkaUserConfigTableArgs:
                  auto_offset_reset: Optional[pulumi.Input[_builtins.str]] = None,
                  date_time_input_format: Optional[pulumi.Input[_builtins.str]] = None,
                  handle_error_mode: Optional[pulumi.Input[_builtins.str]] = None,
+                 materialized_view: Optional[pulumi.Input['ServiceIntegrationClickhouseKafkaUserConfigTableMaterializedViewArgs']] = None,
                  max_block_size: Optional[pulumi.Input[_builtins.int]] = None,
                  max_rows_per_message: Optional[pulumi.Input[_builtins.int]] = None,
                  num_consumers: Optional[pulumi.Input[_builtins.int]] = None,
@@ -38080,7 +31910,8 @@ class ServiceIntegrationClickhouseKafkaUserConfigTableArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationClickhouseKafkaUserConfigTableTopicArgs']]] topics: Array of Kafka topics that this table will read data from or write data to. Messages from all specified topics will be inserted into this table, and data inserted into this table will be published to the topics
         :param pulumi.Input[_builtins.str] auto_offset_reset: Enum: `beginning`, `earliest`, `end`, `largest`, `latest`, `smallest`. Determines where to start reading from Kafka when no offset is stored or the stored offset is out of range. `earliest` starts from the beginning, `latest` starts from the end. Default: `earliest`.
         :param pulumi.Input[_builtins.str] date_time_input_format: Enum: `basic`, `best_effort`, `best_effort_us`. Specifies how ClickHouse should parse DateTime values from text-based input formats. `basic` uses simple parsing, `best_effort` attempts more flexible parsing. Default: `basic`.
-        :param pulumi.Input[_builtins.str] handle_error_mode: Enum: `default`, `stream`. Defines how ClickHouse should handle errors when processing Kafka messages. `default` stops on errors, `stream` continues processing and logs errors. Default: `default`.
+        :param pulumi.Input[_builtins.str] handle_error_mode: Enum: `dead_letter_queue`, `default`, `stream`. Defines how ClickHouse should handle errors when processing Kafka messages. `default` stops on errors, `stream` continues processing and logs errors, `dead_letter_queue` saves error data to system.dead*letter*queue (requires ClickHouse 25.8+). Default: `default`.
+        :param pulumi.Input['ServiceIntegrationClickhouseKafkaUserConfigTableMaterializedViewArgs'] materialized_view: Optional materialized view that persists data from the Kafka engine table into a MergeTree-family table. When specified, a ClickHouse materialized view is created that automatically reads from the Kafka table and inserts into a durable target table
         :param pulumi.Input[_builtins.int] max_block_size: Maximum number of rows to collect before flushing data between Kafka and ClickHouse. Default: `0`.
         :param pulumi.Input[_builtins.int] max_rows_per_message: Maximum number of rows that can be processed from a single Kafka message for row-based formats. Useful for controlling memory usage. Default: `1`.
         :param pulumi.Input[_builtins.int] num_consumers: Number of Kafka consumers to run per table per replica. Increasing this can improve throughput but may increase resource usage. Default: `1`.
@@ -38108,6 +31939,8 @@ class ServiceIntegrationClickhouseKafkaUserConfigTableArgs:
             pulumi.set(__self__, "date_time_input_format", date_time_input_format)
         if handle_error_mode is not None:
             pulumi.set(__self__, "handle_error_mode", handle_error_mode)
+        if materialized_view is not None:
+            pulumi.set(__self__, "materialized_view", materialized_view)
         if max_block_size is not None:
             pulumi.set(__self__, "max_block_size", max_block_size)
         if max_rows_per_message is not None:
@@ -38227,13 +32060,25 @@ class ServiceIntegrationClickhouseKafkaUserConfigTableArgs:
     @pulumi.getter(name="handleErrorMode")
     def handle_error_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Enum: `default`, `stream`. Defines how ClickHouse should handle errors when processing Kafka messages. `default` stops on errors, `stream` continues processing and logs errors. Default: `default`.
+        Enum: `dead_letter_queue`, `default`, `stream`. Defines how ClickHouse should handle errors when processing Kafka messages. `default` stops on errors, `stream` continues processing and logs errors, `dead_letter_queue` saves error data to system.dead*letter*queue (requires ClickHouse 25.8+). Default: `default`.
         """
         return pulumi.get(self, "handle_error_mode")
 
     @handle_error_mode.setter
     def handle_error_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "handle_error_mode", value)
+
+    @_builtins.property
+    @pulumi.getter(name="materializedView")
+    def materialized_view(self) -> Optional[pulumi.Input['ServiceIntegrationClickhouseKafkaUserConfigTableMaterializedViewArgs']]:
+        """
+        Optional materialized view that persists data from the Kafka engine table into a MergeTree-family table. When specified, a ClickHouse materialized view is created that automatically reads from the Kafka table and inserts into a durable target table
+        """
+        return pulumi.get(self, "materialized_view")
+
+    @materialized_view.setter
+    def materialized_view(self, value: Optional[pulumi.Input['ServiceIntegrationClickhouseKafkaUserConfigTableMaterializedViewArgs']]):
+        pulumi.set(self, "materialized_view", value)
 
     @_builtins.property
     @pulumi.getter(name="maxBlockSize")
@@ -38461,6 +32306,173 @@ class ServiceIntegrationClickhouseKafkaUserConfigTableColumnArgs:
     @type.setter
     def type(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "type", value)
+
+
+class ServiceIntegrationClickhouseKafkaUserConfigTableMaterializedViewArgsDict(TypedDict):
+    order_bies: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    Columns for the ORDER BY clause of the target table. Determines the sort order and primary index.
+    """
+    view_name: pulumi.Input[_builtins.str]
+    """
+    The name of the materialized view to create. Example: `events_mv`.
+    """
+    database_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The database to create the materialized view in. Must not be the Kafka integration database as it is not replicated and may be dropped. Default: `default`.
+    """
+    engine: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enum: `AggregatingMergeTree`, `CollapsingMergeTree`, `MergeTree`, `ReplacingMergeTree`, `SummingMergeTree`, `VersionedCollapsingMergeTree`. The MergeTree-family engine for the materialized view's target table. Default: `MergeTree`.
+    """
+    engine_params: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Column names passed as engine arguments, e.g. the sign column for CollapsingMergeTree or the sign and version columns for VersionedCollapsingMergeTree.
+    """
+    local_disk_ttl_days: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Number of days after which data is moved from local disk to remote storage (tiered storage). Must be specified together with ttl_column. Example: `7`.
+    """
+    ttl_column: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Date or DateTime column used for both row deletion TTL and local disk tiered storage TTL. Must be specified when ttl*days or local*disk*ttl*days is set. Example: `created_at`.
+    """
+    ttl_days: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Number of days after which rows are deleted, calculated from the TTL column value. Must be specified together with ttl_column. Example: `30`.
+    """
+
+@pulumi.input_type
+class ServiceIntegrationClickhouseKafkaUserConfigTableMaterializedViewArgs:
+    def __init__(__self__, *,
+                 order_bies: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
+                 view_name: pulumi.Input[_builtins.str],
+                 database_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 engine: Optional[pulumi.Input[_builtins.str]] = None,
+                 engine_params: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 local_disk_ttl_days: Optional[pulumi.Input[_builtins.int]] = None,
+                 ttl_column: Optional[pulumi.Input[_builtins.str]] = None,
+                 ttl_days: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] order_bies: Columns for the ORDER BY clause of the target table. Determines the sort order and primary index.
+        :param pulumi.Input[_builtins.str] view_name: The name of the materialized view to create. Example: `events_mv`.
+        :param pulumi.Input[_builtins.str] database_name: The database to create the materialized view in. Must not be the Kafka integration database as it is not replicated and may be dropped. Default: `default`.
+        :param pulumi.Input[_builtins.str] engine: Enum: `AggregatingMergeTree`, `CollapsingMergeTree`, `MergeTree`, `ReplacingMergeTree`, `SummingMergeTree`, `VersionedCollapsingMergeTree`. The MergeTree-family engine for the materialized view's target table. Default: `MergeTree`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] engine_params: Column names passed as engine arguments, e.g. the sign column for CollapsingMergeTree or the sign and version columns for VersionedCollapsingMergeTree.
+        :param pulumi.Input[_builtins.int] local_disk_ttl_days: Number of days after which data is moved from local disk to remote storage (tiered storage). Must be specified together with ttl_column. Example: `7`.
+        :param pulumi.Input[_builtins.str] ttl_column: Date or DateTime column used for both row deletion TTL and local disk tiered storage TTL. Must be specified when ttl*days or local*disk*ttl*days is set. Example: `created_at`.
+        :param pulumi.Input[_builtins.int] ttl_days: Number of days after which rows are deleted, calculated from the TTL column value. Must be specified together with ttl_column. Example: `30`.
+        """
+        pulumi.set(__self__, "order_bies", order_bies)
+        pulumi.set(__self__, "view_name", view_name)
+        if database_name is not None:
+            pulumi.set(__self__, "database_name", database_name)
+        if engine is not None:
+            pulumi.set(__self__, "engine", engine)
+        if engine_params is not None:
+            pulumi.set(__self__, "engine_params", engine_params)
+        if local_disk_ttl_days is not None:
+            pulumi.set(__self__, "local_disk_ttl_days", local_disk_ttl_days)
+        if ttl_column is not None:
+            pulumi.set(__self__, "ttl_column", ttl_column)
+        if ttl_days is not None:
+            pulumi.set(__self__, "ttl_days", ttl_days)
+
+    @_builtins.property
+    @pulumi.getter(name="orderBies")
+    def order_bies(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        """
+        Columns for the ORDER BY clause of the target table. Determines the sort order and primary index.
+        """
+        return pulumi.get(self, "order_bies")
+
+    @order_bies.setter
+    def order_bies(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        pulumi.set(self, "order_bies", value)
+
+    @_builtins.property
+    @pulumi.getter(name="viewName")
+    def view_name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The name of the materialized view to create. Example: `events_mv`.
+        """
+        return pulumi.get(self, "view_name")
+
+    @view_name.setter
+    def view_name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "view_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="databaseName")
+    def database_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The database to create the materialized view in. Must not be the Kafka integration database as it is not replicated and may be dropped. Default: `default`.
+        """
+        return pulumi.get(self, "database_name")
+
+    @database_name.setter
+    def database_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "database_name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def engine(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Enum: `AggregatingMergeTree`, `CollapsingMergeTree`, `MergeTree`, `ReplacingMergeTree`, `SummingMergeTree`, `VersionedCollapsingMergeTree`. The MergeTree-family engine for the materialized view's target table. Default: `MergeTree`.
+        """
+        return pulumi.get(self, "engine")
+
+    @engine.setter
+    def engine(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "engine", value)
+
+    @_builtins.property
+    @pulumi.getter(name="engineParams")
+    def engine_params(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Column names passed as engine arguments, e.g. the sign column for CollapsingMergeTree or the sign and version columns for VersionedCollapsingMergeTree.
+        """
+        return pulumi.get(self, "engine_params")
+
+    @engine_params.setter
+    def engine_params(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "engine_params", value)
+
+    @_builtins.property
+    @pulumi.getter(name="localDiskTtlDays")
+    def local_disk_ttl_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Number of days after which data is moved from local disk to remote storage (tiered storage). Must be specified together with ttl_column. Example: `7`.
+        """
+        return pulumi.get(self, "local_disk_ttl_days")
+
+    @local_disk_ttl_days.setter
+    def local_disk_ttl_days(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "local_disk_ttl_days", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ttlColumn")
+    def ttl_column(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Date or DateTime column used for both row deletion TTL and local disk tiered storage TTL. Must be specified when ttl*days or local*disk*ttl*days is set. Example: `created_at`.
+        """
+        return pulumi.get(self, "ttl_column")
+
+    @ttl_column.setter
+    def ttl_column(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "ttl_column", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ttlDays")
+    def ttl_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Number of days after which rows are deleted, calculated from the TTL column value. Must be specified together with ttl_column. Example: `30`.
+        """
+        return pulumi.get(self, "ttl_days")
+
+    @ttl_days.setter
+    def ttl_days(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "ttl_days", value)
 
 
 class ServiceIntegrationClickhouseKafkaUserConfigTableTopicArgsDict(TypedDict):
@@ -40239,6 +34251,254 @@ class ServiceIntegrationEndpointExternalMysqlUserConfigArgs:
     @ssl_root_cert.setter
     def ssl_root_cert(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "ssl_root_cert", value)
+
+
+class ServiceIntegrationEndpointExternalObjectStorageConfigUserConfigArgsDict(TypedDict):
+    storage_type: pulumi.Input[_builtins.str]
+    """
+    Enum: `azure`, `google`, `s3`. Object storage type.
+    """
+    account_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Azure account secret key (Azure only). Example: `YWNjb3VudCBrZXkgZXhhbXBsZQ==`.
+    """
+    account_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Azure account name (Azure only). Example: `myazureaccount`.
+    """
+    aws_access_key_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    AWS access key ID (S3 only). Example: `AKIAIOSFODNN7EXAMPLE`.
+    """
+    aws_secret_access_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    AWS secret access key (S3 only). Example: `wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY`.
+    """
+    bucket_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Bucket name. Example: `my-thanos-bucket`.
+    """
+    credentials: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Google service account credentials JSON (Google Cloud Storage only). Example: `{"type": "service_account", ...`.
+    """
+    host: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    S3-compatible endpoint host (S3 only). Example: `s3.eu-west-1.amazonaws.com`.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    S3-compatible endpoint port (S3 only). Example: `443`.
+    """
+    prefix: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Object storage prefix / path. Example: `thanos-data/`.
+    """
+    project_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    GCP project ID (Google Cloud Storage only). Example: `my-gcp-project`.
+    """
+    region: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    AWS S3 region (S3 only). Example: `eu-west-1`.
+    """
+
+@pulumi.input_type
+class ServiceIntegrationEndpointExternalObjectStorageConfigUserConfigArgs:
+    def __init__(__self__, *,
+                 storage_type: pulumi.Input[_builtins.str],
+                 account_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 aws_access_key_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 aws_secret_access_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 credentials: Optional[pulumi.Input[_builtins.str]] = None,
+                 host: Optional[pulumi.Input[_builtins.str]] = None,
+                 port: Optional[pulumi.Input[_builtins.int]] = None,
+                 prefix: Optional[pulumi.Input[_builtins.str]] = None,
+                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 region: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] storage_type: Enum: `azure`, `google`, `s3`. Object storage type.
+        :param pulumi.Input[_builtins.str] account_key: Azure account secret key (Azure only). Example: `YWNjb3VudCBrZXkgZXhhbXBsZQ==`.
+        :param pulumi.Input[_builtins.str] account_name: Azure account name (Azure only). Example: `myazureaccount`.
+        :param pulumi.Input[_builtins.str] aws_access_key_id: AWS access key ID (S3 only). Example: `AKIAIOSFODNN7EXAMPLE`.
+        :param pulumi.Input[_builtins.str] aws_secret_access_key: AWS secret access key (S3 only). Example: `wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY`.
+        :param pulumi.Input[_builtins.str] bucket_name: Bucket name. Example: `my-thanos-bucket`.
+        :param pulumi.Input[_builtins.str] credentials: Google service account credentials JSON (Google Cloud Storage only). Example: `{"type": "service_account", ...`.
+        :param pulumi.Input[_builtins.str] host: S3-compatible endpoint host (S3 only). Example: `s3.eu-west-1.amazonaws.com`.
+        :param pulumi.Input[_builtins.int] port: S3-compatible endpoint port (S3 only). Example: `443`.
+        :param pulumi.Input[_builtins.str] prefix: Object storage prefix / path. Example: `thanos-data/`.
+        :param pulumi.Input[_builtins.str] project_id: GCP project ID (Google Cloud Storage only). Example: `my-gcp-project`.
+        :param pulumi.Input[_builtins.str] region: AWS S3 region (S3 only). Example: `eu-west-1`.
+        """
+        pulumi.set(__self__, "storage_type", storage_type)
+        if account_key is not None:
+            pulumi.set(__self__, "account_key", account_key)
+        if account_name is not None:
+            pulumi.set(__self__, "account_name", account_name)
+        if aws_access_key_id is not None:
+            pulumi.set(__self__, "aws_access_key_id", aws_access_key_id)
+        if aws_secret_access_key is not None:
+            pulumi.set(__self__, "aws_secret_access_key", aws_secret_access_key)
+        if bucket_name is not None:
+            pulumi.set(__self__, "bucket_name", bucket_name)
+        if credentials is not None:
+            pulumi.set(__self__, "credentials", credentials)
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if prefix is not None:
+            pulumi.set(__self__, "prefix", prefix)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter(name="storageType")
+    def storage_type(self) -> pulumi.Input[_builtins.str]:
+        """
+        Enum: `azure`, `google`, `s3`. Object storage type.
+        """
+        return pulumi.get(self, "storage_type")
+
+    @storage_type.setter
+    def storage_type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "storage_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="accountKey")
+    def account_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Azure account secret key (Azure only). Example: `YWNjb3VudCBrZXkgZXhhbXBsZQ==`.
+        """
+        return pulumi.get(self, "account_key")
+
+    @account_key.setter
+    def account_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "account_key", value)
+
+    @_builtins.property
+    @pulumi.getter(name="accountName")
+    def account_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Azure account name (Azure only). Example: `myazureaccount`.
+        """
+        return pulumi.get(self, "account_name")
+
+    @account_name.setter
+    def account_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "account_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="awsAccessKeyId")
+    def aws_access_key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        AWS access key ID (S3 only). Example: `AKIAIOSFODNN7EXAMPLE`.
+        """
+        return pulumi.get(self, "aws_access_key_id")
+
+    @aws_access_key_id.setter
+    def aws_access_key_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "aws_access_key_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="awsSecretAccessKey")
+    def aws_secret_access_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        AWS secret access key (S3 only). Example: `wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY`.
+        """
+        return pulumi.get(self, "aws_secret_access_key")
+
+    @aws_secret_access_key.setter
+    def aws_secret_access_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "aws_secret_access_key", value)
+
+    @_builtins.property
+    @pulumi.getter(name="bucketName")
+    def bucket_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Bucket name. Example: `my-thanos-bucket`.
+        """
+        return pulumi.get(self, "bucket_name")
+
+    @bucket_name.setter
+    def bucket_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "bucket_name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def credentials(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Google service account credentials JSON (Google Cloud Storage only). Example: `{"type": "service_account", ...`.
+        """
+        return pulumi.get(self, "credentials")
+
+    @credentials.setter
+    def credentials(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "credentials", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def host(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        S3-compatible endpoint host (S3 only). Example: `s3.eu-west-1.amazonaws.com`.
+        """
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "host", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        S3-compatible endpoint port (S3 only). Example: `443`.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "port", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Object storage prefix / path. Example: `thanos-data/`.
+        """
+        return pulumi.get(self, "prefix")
+
+    @prefix.setter
+    def prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "prefix", value)
+
+    @_builtins.property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        GCP project ID (Google Cloud Storage only). Example: `my-gcp-project`.
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "project_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        AWS S3 region (S3 only). Example: `eu-west-1`.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "region", value)
 
 
 class ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgsDict(TypedDict):
@@ -42577,6 +36837,119 @@ class ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafArgs:
     @perf_events_statements_time_limit.setter
     def perf_events_statements_time_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "perf_events_statements_time_limit", value)
+
+
+class StaticIpTimeoutsArgsDict(TypedDict):
+    create: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
+    default: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+    """
+    delete: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+    """
+    read: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+    """
+    update: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
+
+@pulumi.input_type
+class StaticIpTimeoutsArgs:
+    def __init__(__self__, *,
+                 create: Optional[pulumi.Input[_builtins.str]] = None,
+                 default: Optional[pulumi.Input[_builtins.str]] = None,
+                 delete: Optional[pulumi.Input[_builtins.str]] = None,
+                 read: Optional[pulumi.Input[_builtins.str]] = None,
+                 update: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param pulumi.Input[_builtins.str] default: Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+        :param pulumi.Input[_builtins.str] delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param pulumi.Input[_builtins.str] read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param pulumi.Input[_builtins.str] update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if default is not None:
+            warnings.warn("""Use operation-specific timeouts instead. This field will be removed in the next major version.""", DeprecationWarning)
+            pulumi.log.warn("""default is deprecated: Use operation-specific timeouts instead. This field will be removed in the next major version.""")
+        if default is not None:
+            pulumi.set(__self__, "default", default)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @create.setter
+    def create(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "create", value)
+
+    @_builtins.property
+    @pulumi.getter
+    @_utilities.deprecated("""Use operation-specific timeouts instead. This field will be removed in the next major version.""")
+    def default(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+        """
+        return pulumi.get(self, "default")
+
+    @default.setter
+    def default(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "default", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @delete.setter
+    def delete(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "delete", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "read", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+    @update.setter
+    def update(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "update", value)
 
 
 class ThanosComponentArgsDict(TypedDict):
@@ -45311,6 +39684,64 @@ class GetClickhouseDatabaseTimeoutsArgs:
         pulumi.set(self, "read", value)
 
 
+class GetClickhouseUserTimeoutsArgsDict(TypedDict):
+    read: NotRequired[_builtins.str]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
+
+@pulumi.input_type
+class GetClickhouseUserTimeoutsArgs:
+    def __init__(__self__, *,
+                 read: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "read", value)
+
+
+class GetConnectionPoolTimeoutsArgsDict(TypedDict):
+    read: NotRequired[_builtins.str]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
+
+@pulumi.input_type
+class GetConnectionPoolTimeoutsArgs:
+    def __init__(__self__, *,
+                 read: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "read", value)
+
+
 class GetFlinkApplicationTimeoutsArgsDict(TypedDict):
     read: NotRequired[_builtins.str]
     """
@@ -45710,6 +40141,64 @@ class GetMysqlUserTimeoutsArgsDict(TypedDict):
 
 @pulumi.input_type
 class GetMysqlUserTimeoutsArgs:
+    def __init__(__self__, *,
+                 read: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "read", value)
+
+
+class GetOpensearchSecurityPluginConfigTimeoutsArgsDict(TypedDict):
+    read: NotRequired[_builtins.str]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
+
+@pulumi.input_type
+class GetOpensearchSecurityPluginConfigTimeoutsArgs:
+    def __init__(__self__, *,
+                 read: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "read", value)
+
+
+class GetOpensearchUserTimeoutsArgsDict(TypedDict):
+    read: NotRequired[_builtins.str]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
+
+@pulumi.input_type
+class GetOpensearchUserTimeoutsArgs:
     def __init__(__self__, *,
                  read: Optional[_builtins.str] = None):
         """
@@ -47377,6 +41866,10 @@ class GetServiceListServiceArgsDict(TypedDict):
     """
     Megabytes of disk space for data storage.
     """
+    is_cluster_plan: _builtins.bool
+    """
+    True when the service uses a cluster plan with dedicated node groups.
+    """
     node_count: _builtins.int
     """
     Number of service nodes in the active plan.
@@ -47433,6 +41926,7 @@ class GetServiceListServiceArgs:
                  cloud_name: _builtins.str,
                  create_time: _builtins.str,
                  disk_space_mb: _builtins.int,
+                 is_cluster_plan: _builtins.bool,
                  node_count: _builtins.int,
                  node_cpu_count: _builtins.int,
                  node_memory_mb: _builtins.float,
@@ -47450,6 +41944,7 @@ class GetServiceListServiceArgs:
         :param _builtins.str cloud_name: Target cloud.
         :param _builtins.str create_time: Service creation timestamp (ISO 8601).
         :param _builtins.int disk_space_mb: Megabytes of disk space for data storage.
+        :param _builtins.bool is_cluster_plan: True when the service uses a cluster plan with dedicated node groups.
         :param _builtins.int node_count: Number of service nodes in the active plan.
         :param _builtins.int node_cpu_count: Number of CPUs for each node.
         :param _builtins.float node_memory_mb: Megabytes of memory for each node.
@@ -47467,6 +41962,7 @@ class GetServiceListServiceArgs:
         pulumi.set(__self__, "cloud_name", cloud_name)
         pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "disk_space_mb", disk_space_mb)
+        pulumi.set(__self__, "is_cluster_plan", is_cluster_plan)
         pulumi.set(__self__, "node_count", node_count)
         pulumi.set(__self__, "node_cpu_count", node_cpu_count)
         pulumi.set(__self__, "node_memory_mb", node_memory_mb)
@@ -47527,6 +42023,18 @@ class GetServiceListServiceArgs:
     @disk_space_mb.setter
     def disk_space_mb(self, value: _builtins.int):
         pulumi.set(self, "disk_space_mb", value)
+
+    @_builtins.property
+    @pulumi.getter(name="isClusterPlan")
+    def is_cluster_plan(self) -> _builtins.bool:
+        """
+        True when the service uses a cluster plan with dedicated node groups.
+        """
+        return pulumi.get(self, "is_cluster_plan")
+
+    @is_cluster_plan.setter
+    def is_cluster_plan(self, value: _builtins.bool):
+        pulumi.set(self, "is_cluster_plan", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeCount")
@@ -47845,6 +42353,10 @@ class GetServicePlanBackupConfigArgs:
 
 
 class GetServicePlanListServicePlanArgsDict(TypedDict):
+    is_cluster_plan: _builtins.bool
+    """
+    True when the plan is a cluster plan with dedicated node groups.
+    """
     max_memory_percent: _builtins.int
     """
     Maximum amount of system memory as a percentage (0-100) the service can actually use after taking into account management overhead. This is relevant for memory bound services for which some service management operations require allocating proportional amount of memory on top the basic load.
@@ -47852,6 +42364,10 @@ class GetServicePlanListServicePlanArgsDict(TypedDict):
     node_count: _builtins.int
     """
     Number of nodes in this service plan.
+    """
+    primary_count: _builtins.int
+    """
+    Number of primary nodes in this Valkey cluster service plan.
     """
     regions: Mapping[str, 'GetServicePlanListServicePlanRegionsArgsDict']
     """
@@ -47873,26 +42389,44 @@ class GetServicePlanListServicePlanArgsDict(TypedDict):
 @pulumi.input_type
 class GetServicePlanListServicePlanArgs:
     def __init__(__self__, *,
+                 is_cluster_plan: _builtins.bool,
                  max_memory_percent: _builtins.int,
                  node_count: _builtins.int,
+                 primary_count: _builtins.int,
                  regions: Mapping[str, 'GetServicePlanListServicePlanRegionsArgs'],
                  service_plan: _builtins.str,
                  service_type: _builtins.str,
                  shard_count: _builtins.int):
         """
+        :param _builtins.bool is_cluster_plan: True when the plan is a cluster plan with dedicated node groups.
         :param _builtins.int max_memory_percent: Maximum amount of system memory as a percentage (0-100) the service can actually use after taking into account management overhead. This is relevant for memory bound services for which some service management operations require allocating proportional amount of memory on top the basic load.
         :param _builtins.int node_count: Number of nodes in this service plan.
+        :param _builtins.int primary_count: Number of primary nodes in this Valkey cluster service plan.
         :param Mapping[str, 'GetServicePlanListServicePlanRegionsArgs'] regions: Service plan hourly price per cloud region.
         :param _builtins.str service_plan: Subscription plan.
         :param _builtins.str service_type: Service type code.
         :param _builtins.int shard_count: Number of shards in this service plan.
         """
+        pulumi.set(__self__, "is_cluster_plan", is_cluster_plan)
         pulumi.set(__self__, "max_memory_percent", max_memory_percent)
         pulumi.set(__self__, "node_count", node_count)
+        pulumi.set(__self__, "primary_count", primary_count)
         pulumi.set(__self__, "regions", regions)
         pulumi.set(__self__, "service_plan", service_plan)
         pulumi.set(__self__, "service_type", service_type)
         pulumi.set(__self__, "shard_count", shard_count)
+
+    @_builtins.property
+    @pulumi.getter(name="isClusterPlan")
+    def is_cluster_plan(self) -> _builtins.bool:
+        """
+        True when the plan is a cluster plan with dedicated node groups.
+        """
+        return pulumi.get(self, "is_cluster_plan")
+
+    @is_cluster_plan.setter
+    def is_cluster_plan(self, value: _builtins.bool):
+        pulumi.set(self, "is_cluster_plan", value)
 
     @_builtins.property
     @pulumi.getter(name="maxMemoryPercent")
@@ -47917,6 +42451,18 @@ class GetServicePlanListServicePlanArgs:
     @node_count.setter
     def node_count(self, value: _builtins.int):
         pulumi.set(self, "node_count", value)
+
+    @_builtins.property
+    @pulumi.getter(name="primaryCount")
+    def primary_count(self) -> _builtins.int:
+        """
+        Number of primary nodes in this Valkey cluster service plan.
+        """
+        return pulumi.get(self, "primary_count")
+
+    @primary_count.setter
+    def primary_count(self, value: _builtins.int):
+        pulumi.set(self, "primary_count", value)
 
     @_builtins.property
     @pulumi.getter

@@ -67,14 +67,14 @@ public final class OrganizationBillingGroupArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Billing Group Name. Maximum length: `128`.
+     * Billing Group Name. Length must be between `1` and `128`.
      * 
      */
     @Import(name="billingGroupName", required=true)
     private Output<String> billingGroupName;
 
     /**
-     * @return Billing Group Name. Maximum length: `128`.
+     * @return Billing Group Name. Length must be between `1` and `128`.
      * 
      */
     public Output<String> billingGroupName() {
@@ -280,7 +280,7 @@ public final class OrganizationBillingGroupArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param billingGroupName Billing Group Name. Maximum length: `128`.
+         * @param billingGroupName Billing Group Name. Length must be between `1` and `128`.
          * 
          * @return builder
          * 
@@ -291,7 +291,7 @@ public final class OrganizationBillingGroupArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param billingGroupName Billing Group Name. Maximum length: `128`.
+         * @param billingGroupName Billing Group Name. Length must be between `1` and `128`.
          * 
          * @return builder
          * 

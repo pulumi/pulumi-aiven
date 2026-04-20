@@ -31,7 +31,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? BackupMinute { get; set; }
 
         /// <summary>
-        /// Enum: `25.3`, and newer. ClickHouse major version.
+        /// Enum: `25.3`, `25.8`, and newer. ClickHouse major version.
         /// </summary>
         [Input("clickhouseVersion")]
         public Input<string>? ClickhouseVersion { get; set; }

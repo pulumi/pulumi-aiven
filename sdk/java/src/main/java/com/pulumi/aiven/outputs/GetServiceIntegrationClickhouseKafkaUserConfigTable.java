@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.aiven.outputs.GetServiceIntegrationClickhouseKafkaUserConfigTableColumn;
+import com.pulumi.aiven.outputs.GetServiceIntegrationClickhouseKafkaUserConfigTableMaterializedView;
 import com.pulumi.aiven.outputs.GetServiceIntegrationClickhouseKafkaUserConfigTableTopic;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -43,10 +44,15 @@ public final class GetServiceIntegrationClickhouseKafkaUserConfigTable {
      */
     private String groupName;
     /**
-     * @return Enum: `default`, `stream`. Defines how ClickHouse should handle errors when processing Kafka messages. `default` stops on errors, `stream` continues processing and logs errors. Default: `default`.
+     * @return Enum: `deadLetterQueue`, `default`, `stream`. Defines how ClickHouse should handle errors when processing Kafka messages. `default` stops on errors, `stream` continues processing and logs errors, `deadLetterQueue` saves error data to system.dead_letter_queue (requires ClickHouse 25.8+). Default: `default`.
      * 
      */
     private @Nullable String handleErrorMode;
+    /**
+     * @return Optional materialized view that persists data from the Kafka engine table into a MergeTree-family table. When specified, a ClickHouse materialized view is created that automatically reads from the Kafka table and inserts into a durable target table
+     * 
+     */
+    private @Nullable GetServiceIntegrationClickhouseKafkaUserConfigTableMaterializedView materializedView;
     /**
      * @return Maximum number of rows to collect before flushing data between Kafka and ClickHouse. Default: `0`.
      * 
@@ -170,11 +176,18 @@ public final class GetServiceIntegrationClickhouseKafkaUserConfigTable {
         return this.groupName;
     }
     /**
-     * @return Enum: `default`, `stream`. Defines how ClickHouse should handle errors when processing Kafka messages. `default` stops on errors, `stream` continues processing and logs errors. Default: `default`.
+     * @return Enum: `deadLetterQueue`, `default`, `stream`. Defines how ClickHouse should handle errors when processing Kafka messages. `default` stops on errors, `stream` continues processing and logs errors, `deadLetterQueue` saves error data to system.dead_letter_queue (requires ClickHouse 25.8+). Default: `default`.
      * 
      */
     public Optional<String> handleErrorMode() {
         return Optional.ofNullable(this.handleErrorMode);
+    }
+    /**
+     * @return Optional materialized view that persists data from the Kafka engine table into a MergeTree-family table. When specified, a ClickHouse materialized view is created that automatically reads from the Kafka table and inserts into a durable target table
+     * 
+     */
+    public Optional<GetServiceIntegrationClickhouseKafkaUserConfigTableMaterializedView> materializedView() {
+        return Optional.ofNullable(this.materializedView);
     }
     /**
      * @return Maximum number of rows to collect before flushing data between Kafka and ClickHouse. Default: `0`.
@@ -311,6 +324,7 @@ public final class GetServiceIntegrationClickhouseKafkaUserConfigTable {
         private @Nullable String dateTimeInputFormat;
         private String groupName;
         private @Nullable String handleErrorMode;
+        private @Nullable GetServiceIntegrationClickhouseKafkaUserConfigTableMaterializedView materializedView;
         private @Nullable Integer maxBlockSize;
         private @Nullable Integer maxRowsPerMessage;
         private String name;
@@ -337,6 +351,7 @@ public final class GetServiceIntegrationClickhouseKafkaUserConfigTable {
     	      this.dateTimeInputFormat = defaults.dateTimeInputFormat;
     	      this.groupName = defaults.groupName;
     	      this.handleErrorMode = defaults.handleErrorMode;
+    	      this.materializedView = defaults.materializedView;
     	      this.maxBlockSize = defaults.maxBlockSize;
     	      this.maxRowsPerMessage = defaults.maxRowsPerMessage;
     	      this.name = defaults.name;
@@ -399,6 +414,12 @@ public final class GetServiceIntegrationClickhouseKafkaUserConfigTable {
         public Builder handleErrorMode(@Nullable String handleErrorMode) {
 
             this.handleErrorMode = handleErrorMode;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder materializedView(@Nullable GetServiceIntegrationClickhouseKafkaUserConfigTableMaterializedView materializedView) {
+
+            this.materializedView = materializedView;
             return this;
         }
         @CustomType.Setter
@@ -518,6 +539,7 @@ public final class GetServiceIntegrationClickhouseKafkaUserConfigTable {
             _resultValue.dateTimeInputFormat = dateTimeInputFormat;
             _resultValue.groupName = groupName;
             _resultValue.handleErrorMode = handleErrorMode;
+            _resultValue.materializedView = materializedView;
             _resultValue.maxBlockSize = maxBlockSize;
             _resultValue.maxRowsPerMessage = maxRowsPerMessage;
             _resultValue.name = name;

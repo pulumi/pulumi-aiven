@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetOpensearchUserResult',
@@ -26,7 +28,7 @@ class GetOpensearchUserResult:
     """
     A collection of values returned by getOpensearchUser.
     """
-    def __init__(__self__, id=None, password=None, project=None, service_name=None, type=None, username=None):
+    def __init__(__self__, id=None, password=None, project=None, service_name=None, timeouts=None, type=None, username=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -39,6 +41,9 @@ class GetOpensearchUserResult:
         if service_name and not isinstance(service_name, str):
             raise TypeError("Expected argument 'service_name' to be a str")
         pulumi.set(__self__, "service_name", service_name)
+        if timeouts and not isinstance(timeouts, dict):
+            raise TypeError("Expected argument 'timeouts' to be a dict")
+        pulumi.set(__self__, "timeouts", timeouts)
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
         pulumi.set(__self__, "type", type)
@@ -50,7 +55,7 @@ class GetOpensearchUserResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The provider-assigned unique ID for this managed resource.
+        Resource ID composed as: `project/service_name/username`.
         """
         return pulumi.get(self, "id")
 
@@ -58,7 +63,7 @@ class GetOpensearchUserResult:
     @pulumi.getter
     def password(self) -> _builtins.str:
         """
-        The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+        The password of the service user (auto-generated if not provided). The field conflicts with `password_wo`.
         """
         return pulumi.get(self, "password")
 
@@ -66,7 +71,7 @@ class GetOpensearchUserResult:
     @pulumi.getter
     def project(self) -> _builtins.str:
         """
-        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Project name.
         """
         return pulumi.get(self, "project")
 
@@ -74,15 +79,20 @@ class GetOpensearchUserResult:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> _builtins.str:
         """
-        The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Service name.
         """
         return pulumi.get(self, "service_name")
 
     @_builtins.property
     @pulumi.getter
+    def timeouts(self) -> Optional['outputs.GetOpensearchUserTimeoutsResult']:
+        return pulumi.get(self, "timeouts")
+
+    @_builtins.property
+    @pulumi.getter
     def type(self) -> _builtins.str:
         """
-        User account type, such as primary or regular account.
+        Account type.
         """
         return pulumi.get(self, "type")
 
@@ -90,7 +100,7 @@ class GetOpensearchUserResult:
     @pulumi.getter
     def username(self) -> _builtins.str:
         """
-        Name of the OpenSearch service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Account username.
         """
         return pulumi.get(self, "username")
 
@@ -105,12 +115,14 @@ class AwaitableGetOpensearchUserResult(GetOpensearchUserResult):
             password=self.password,
             project=self.project,
             service_name=self.service_name,
+            timeouts=self.timeouts,
             type=self.type,
             username=self.username)
 
 
 def get_opensearch_user(project: Optional[_builtins.str] = None,
                         service_name: Optional[_builtins.str] = None,
+                        timeouts: Optional[Union['GetOpensearchUserTimeoutsArgs', 'GetOpensearchUserTimeoutsArgsDict']] = None,
                         username: Optional[_builtins.str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOpensearchUserResult:
     """
@@ -128,13 +140,14 @@ def get_opensearch_user(project: Optional[_builtins.str] = None,
     ```
 
 
-    :param _builtins.str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param _builtins.str service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param _builtins.str username: Name of the OpenSearch service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+    :param _builtins.str project: Project name.
+    :param _builtins.str service_name: Service name.
+    :param _builtins.str username: Account username.
     """
     __args__ = dict()
     __args__['project'] = project
     __args__['serviceName'] = service_name
+    __args__['timeouts'] = timeouts
     __args__['username'] = username
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('aiven:index/getOpensearchUser:getOpensearchUser', __args__, opts=opts, typ=GetOpensearchUserResult).value
@@ -144,10 +157,12 @@ def get_opensearch_user(project: Optional[_builtins.str] = None,
         password=pulumi.get(__ret__, 'password'),
         project=pulumi.get(__ret__, 'project'),
         service_name=pulumi.get(__ret__, 'service_name'),
+        timeouts=pulumi.get(__ret__, 'timeouts'),
         type=pulumi.get(__ret__, 'type'),
         username=pulumi.get(__ret__, 'username'))
 def get_opensearch_user_output(project: Optional[pulumi.Input[_builtins.str]] = None,
                                service_name: Optional[pulumi.Input[_builtins.str]] = None,
+                               timeouts: Optional[pulumi.Input[Optional[Union['GetOpensearchUserTimeoutsArgs', 'GetOpensearchUserTimeoutsArgsDict']]]] = None,
                                username: Optional[pulumi.Input[_builtins.str]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOpensearchUserResult]:
     """
@@ -165,13 +180,14 @@ def get_opensearch_user_output(project: Optional[pulumi.Input[_builtins.str]] = 
     ```
 
 
-    :param _builtins.str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param _builtins.str service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param _builtins.str username: Name of the OpenSearch service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+    :param _builtins.str project: Project name.
+    :param _builtins.str service_name: Service name.
+    :param _builtins.str username: Account username.
     """
     __args__ = dict()
     __args__['project'] = project
     __args__['serviceName'] = service_name
+    __args__['timeouts'] = timeouts
     __args__['username'] = username
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('aiven:index/getOpensearchUser:getOpensearchUser', __args__, opts=opts, typ=GetOpensearchUserResult)
@@ -180,5 +196,6 @@ def get_opensearch_user_output(project: Optional[pulumi.Input[_builtins.str]] = 
         password=pulumi.get(__response__, 'password'),
         project=pulumi.get(__response__, 'project'),
         service_name=pulumi.get(__response__, 'service_name'),
+        timeouts=pulumi.get(__response__, 'timeouts'),
         type=pulumi.get(__response__, 'type'),
         username=pulumi.get(__response__, 'username')))

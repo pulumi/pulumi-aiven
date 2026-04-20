@@ -2,10 +2,12 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Gets information about a ClickHouse user.
+ * Gets information about an Aiven for ClickHouse user.
  *
  * ## Example Usage
  *
@@ -25,7 +27,9 @@ export function getClickhouseUser(args: GetClickhouseUserArgs, opts?: pulumi.Inv
     return pulumi.runtime.invoke("aiven:index/getClickhouseUser:getClickhouseUser", {
         "project": args.project,
         "serviceName": args.serviceName,
+        "timeouts": args.timeouts,
         "username": args.username,
+        "uuid": args.uuid,
     }, opts);
 }
 
@@ -34,17 +38,22 @@ export function getClickhouseUser(args: GetClickhouseUserArgs, opts?: pulumi.Inv
  */
 export interface GetClickhouseUserArgs {
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name.
      */
     project: string;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name.
      */
     serviceName: string;
+    timeouts?: inputs.GetClickhouseUserTimeouts;
     /**
-     * The name of the ClickHouse user. Changing this property forces recreation of the resource.
+     * User name. Exactly one of the fields must be specified: `uuid` or `username`.
      */
-    username: string;
+    username?: string;
+    /**
+     * User identifier. Exactly one of the fields must be specified: `uuid` or `username`.
+     */
+    uuid?: string;
 }
 
 /**
@@ -52,36 +61,37 @@ export interface GetClickhouseUserArgs {
  */
 export interface GetClickhouseUserResult {
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * Resource ID composed as: `project/service_name/uuid`.
      */
     readonly id: string;
     /**
-     * The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+     * The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`.
      */
     readonly password: string;
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name.
      */
     readonly project: string;
     /**
-     * Indicates if a ClickHouse user is required.
+     * Required user.
      */
     readonly required: boolean;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name.
      */
     readonly serviceName: string;
+    readonly timeouts?: outputs.GetClickhouseUserTimeouts;
     /**
-     * The name of the ClickHouse user. Changing this property forces recreation of the resource.
+     * User name. Exactly one of the fields must be specified: `uuid` or `username`.
      */
     readonly username: string;
     /**
-     * UUID of the ClickHouse user.
+     * User identifier. Exactly one of the fields must be specified: `uuid` or `username`.
      */
     readonly uuid: string;
 }
 /**
- * Gets information about a ClickHouse user.
+ * Gets information about an Aiven for ClickHouse user.
  *
  * ## Example Usage
  *
@@ -101,7 +111,9 @@ export function getClickhouseUserOutput(args: GetClickhouseUserOutputArgs, opts?
     return pulumi.runtime.invokeOutput("aiven:index/getClickhouseUser:getClickhouseUser", {
         "project": args.project,
         "serviceName": args.serviceName,
+        "timeouts": args.timeouts,
         "username": args.username,
+        "uuid": args.uuid,
     }, opts);
 }
 
@@ -110,15 +122,20 @@ export function getClickhouseUserOutput(args: GetClickhouseUserOutputArgs, opts?
  */
 export interface GetClickhouseUserOutputArgs {
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name.
      */
     project: pulumi.Input<string>;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name.
      */
     serviceName: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.GetClickhouseUserTimeoutsArgs>;
     /**
-     * The name of the ClickHouse user. Changing this property forces recreation of the resource.
+     * User name. Exactly one of the fields must be specified: `uuid` or `username`.
      */
-    username: pulumi.Input<string>;
+    username?: pulumi.Input<string>;
+    /**
+     * User identifier. Exactly one of the fields must be specified: `uuid` or `username`.
+     */
+    uuid?: pulumi.Input<string>;
 }

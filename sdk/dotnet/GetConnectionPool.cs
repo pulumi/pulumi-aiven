@@ -94,22 +94,25 @@ namespace Pulumi.Aiven
     public sealed class GetConnectionPoolArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Name of the pool. Changing this property forces recreation of the resource.
+        /// PgBouncer connection pool name.
         /// </summary>
         [Input("poolName", required: true)]
         public string PoolName { get; set; } = null!;
 
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name.
         /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service name.
         /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
+
+        [Input("timeouts")]
+        public Inputs.GetConnectionPoolTimeoutsArgs? Timeouts { get; set; }
 
         public GetConnectionPoolArgs()
         {
@@ -120,22 +123,25 @@ namespace Pulumi.Aiven
     public sealed class GetConnectionPoolInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Name of the pool. Changing this property forces recreation of the resource.
+        /// PgBouncer connection pool name.
         /// </summary>
         [Input("poolName", required: true)]
         public Input<string> PoolName { get; set; } = null!;
 
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service name.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
+
+        [Input("timeouts")]
+        public Input<Inputs.GetConnectionPoolTimeoutsInputArgs>? Timeouts { get; set; }
 
         public GetConnectionPoolInvokeArgs()
         {
@@ -148,39 +154,40 @@ namespace Pulumi.Aiven
     public sealed class GetConnectionPoolResult
     {
         /// <summary>
-        /// The URI for connecting to the pool.
+        /// Connection URI for the DB pool.
         /// </summary>
         public readonly string ConnectionUri;
         /// <summary>
-        /// The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service database name.
         /// </summary>
         public readonly string DatabaseName;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// Resource ID composed as: `project/service_name/pool_name`.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The [operational mode](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling#pooling-modes). The possible values are `Session`, `Statement` and `Transaction`. The default value is `Transaction`.
+        /// PGBouncer pool mode. The possible values are `Session`, `Statement` and `Transaction`. The default value is `Transaction`.
         /// </summary>
         public readonly string PoolMode;
         /// <summary>
-        /// Name of the pool. Changing this property forces recreation of the resource.
+        /// PgBouncer connection pool name.
         /// </summary>
         public readonly string PoolName;
         /// <summary>
-        /// The number of PostgreSQL server connections this pool can use at a time. This does not affect the number of incoming connections. Each pool can handle a minimum of 5000 client connections. The default value is `10`.
+        /// Size of PGBouncer's PostgreSQL side connection pool. The default value is `10`.
         /// </summary>
         public readonly int PoolSize;
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name.
         /// </summary>
         public readonly string Project;
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service name.
         /// </summary>
         public readonly string ServiceName;
+        public readonly Outputs.GetConnectionPoolTimeoutsResult? Timeouts;
         /// <summary>
-        /// The name of the service user used to connect to the database. To set up proper dependencies please refer to this variable as a reference.
+        /// Service username.
         /// </summary>
         public readonly string Username;
 
@@ -202,6 +209,8 @@ namespace Pulumi.Aiven
 
             string serviceName,
 
+            Outputs.GetConnectionPoolTimeoutsResult? timeouts,
+
             string username)
         {
             ConnectionUri = connectionUri;
@@ -212,6 +221,7 @@ namespace Pulumi.Aiven
             PoolSize = poolSize;
             Project = project;
             ServiceName = serviceName;
+            Timeouts = timeouts;
             Username = username;
         }
     }

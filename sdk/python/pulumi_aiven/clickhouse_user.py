@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['ClickhouseUserArgs', 'ClickhouseUser']
 
@@ -24,17 +26,18 @@ class ClickhouseUserArgs:
                  username: pulumi.Input[_builtins.str],
                  password: Optional[pulumi.Input[_builtins.str]] = None,
                  password_wo: Optional[pulumi.Input[_builtins.str]] = None,
-                 password_wo_version: Optional[pulumi.Input[_builtins.int]] = None):
+                 password_wo_version: Optional[pulumi.Input[_builtins.int]] = None,
+                 timeouts: Optional[pulumi.Input['ClickhouseUserTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a ClickhouseUser resource.
 
-        :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] username: The name of the ClickHouse user. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] password: The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+        :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] service_name: Service name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] username: User name. Maximum length: `64`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] password: The password of the service user (auto-generated if not provided). The field conflicts with `password_wo`. Length must be between `8` and `256`.
         :param pulumi.Input[_builtins.str] password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-               The password of the service user (write-only, not stored in state). Must be used with `password_wo_version`. Must be 8-256 characters.
-        :param pulumi.Input[_builtins.int] password_wo_version: Version number for `password_wo`. Increment this to rotate the password. Must be >= 1.
+               The password of the service user (write-only, not stored in state). The field is required with `password_wo_version`. The field conflicts with `password`. Length must be between `8` and `256`.
+        :param pulumi.Input[_builtins.int] password_wo_version: Version number for `password_wo`. Increment this to rotate the password. The field is required with `password_wo`. Minimum value: `1`.
         """
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "service_name", service_name)
@@ -45,12 +48,14 @@ class ClickhouseUserArgs:
             pulumi.set(__self__, "password_wo", password_wo)
         if password_wo_version is not None:
             pulumi.set(__self__, "password_wo_version", password_wo_version)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
 
     @_builtins.property
     @pulumi.getter
     def project(self) -> pulumi.Input[_builtins.str]:
         """
-        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Project name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -62,7 +67,7 @@ class ClickhouseUserArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[_builtins.str]:
         """
-        The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Service name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
@@ -74,7 +79,7 @@ class ClickhouseUserArgs:
     @pulumi.getter
     def username(self) -> pulumi.Input[_builtins.str]:
         """
-        The name of the ClickHouse user. Changing this property forces recreation of the resource.
+        User name. Maximum length: `64`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "username")
 
@@ -86,7 +91,7 @@ class ClickhouseUserArgs:
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+        The password of the service user (auto-generated if not provided). The field conflicts with `password_wo`. Length must be between `8` and `256`.
         """
         return pulumi.get(self, "password")
 
@@ -99,7 +104,7 @@ class ClickhouseUserArgs:
     def password_wo(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-        The password of the service user (write-only, not stored in state). Must be used with `password_wo_version`. Must be 8-256 characters.
+        The password of the service user (write-only, not stored in state). The field is required with `password_wo_version`. The field conflicts with `password`. Length must be between `8` and `256`.
         """
         return pulumi.get(self, "password_wo")
 
@@ -111,13 +116,22 @@ class ClickhouseUserArgs:
     @pulumi.getter(name="passwordWoVersion")
     def password_wo_version(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Version number for `password_wo`. Increment this to rotate the password. Must be >= 1.
+        Version number for `password_wo`. Increment this to rotate the password. The field is required with `password_wo`. Minimum value: `1`.
         """
         return pulumi.get(self, "password_wo_version")
 
     @password_wo_version.setter
     def password_wo_version(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "password_wo_version", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['ClickhouseUserTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['ClickhouseUserTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
 
 
 @pulumi.input_type
@@ -129,20 +143,21 @@ class _ClickhouseUserState:
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  required: Optional[pulumi.Input[_builtins.bool]] = None,
                  service_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 timeouts: Optional[pulumi.Input['ClickhouseUserTimeoutsArgs']] = None,
                  username: Optional[pulumi.Input[_builtins.str]] = None,
                  uuid: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ClickhouseUser resources.
 
-        :param pulumi.Input[_builtins.str] password: The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+        :param pulumi.Input[_builtins.str] password: The password of the service user (auto-generated if not provided). The field conflicts with `password_wo`. Length must be between `8` and `256`.
         :param pulumi.Input[_builtins.str] password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-               The password of the service user (write-only, not stored in state). Must be used with `password_wo_version`. Must be 8-256 characters.
-        :param pulumi.Input[_builtins.int] password_wo_version: Version number for `password_wo`. Increment this to rotate the password. Must be >= 1.
-        :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.bool] required: Indicates if a ClickHouse user is required.
-        :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] username: The name of the ClickHouse user. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] uuid: UUID of the ClickHouse user.
+               The password of the service user (write-only, not stored in state). The field is required with `password_wo_version`. The field conflicts with `password`. Length must be between `8` and `256`.
+        :param pulumi.Input[_builtins.int] password_wo_version: Version number for `password_wo`. Increment this to rotate the password. The field is required with `password_wo`. Minimum value: `1`.
+        :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.bool] required: Required user.
+        :param pulumi.Input[_builtins.str] service_name: Service name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] username: User name. Maximum length: `64`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] uuid: User identifier.
         """
         if password is not None:
             pulumi.set(__self__, "password", password)
@@ -156,6 +171,8 @@ class _ClickhouseUserState:
             pulumi.set(__self__, "required", required)
         if service_name is not None:
             pulumi.set(__self__, "service_name", service_name)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
         if username is not None:
             pulumi.set(__self__, "username", username)
         if uuid is not None:
@@ -165,7 +182,7 @@ class _ClickhouseUserState:
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+        The password of the service user (auto-generated if not provided). The field conflicts with `password_wo`. Length must be between `8` and `256`.
         """
         return pulumi.get(self, "password")
 
@@ -178,7 +195,7 @@ class _ClickhouseUserState:
     def password_wo(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-        The password of the service user (write-only, not stored in state). Must be used with `password_wo_version`. Must be 8-256 characters.
+        The password of the service user (write-only, not stored in state). The field is required with `password_wo_version`. The field conflicts with `password`. Length must be between `8` and `256`.
         """
         return pulumi.get(self, "password_wo")
 
@@ -190,7 +207,7 @@ class _ClickhouseUserState:
     @pulumi.getter(name="passwordWoVersion")
     def password_wo_version(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Version number for `password_wo`. Increment this to rotate the password. Must be >= 1.
+        Version number for `password_wo`. Increment this to rotate the password. The field is required with `password_wo`. Minimum value: `1`.
         """
         return pulumi.get(self, "password_wo_version")
 
@@ -202,7 +219,7 @@ class _ClickhouseUserState:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Project name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -214,7 +231,7 @@ class _ClickhouseUserState:
     @pulumi.getter
     def required(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Indicates if a ClickHouse user is required.
+        Required user.
         """
         return pulumi.get(self, "required")
 
@@ -226,7 +243,7 @@ class _ClickhouseUserState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Service name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
@@ -236,9 +253,18 @@ class _ClickhouseUserState:
 
     @_builtins.property
     @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['ClickhouseUserTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['ClickhouseUserTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
+
+    @_builtins.property
+    @pulumi.getter
     def username(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the ClickHouse user. Changing this property forces recreation of the resource.
+        User name. Maximum length: `64`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "username")
 
@@ -250,7 +276,7 @@ class _ClickhouseUserState:
     @pulumi.getter
     def uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        UUID of the ClickHouse user.
+        User identifier.
         """
         return pulumi.get(self, "uuid")
 
@@ -270,10 +296,11 @@ class ClickhouseUser(pulumi.CustomResource):
                  password_wo_version: Optional[pulumi.Input[_builtins.int]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  service_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 timeouts: Optional[pulumi.Input[Union['ClickhouseUserTimeoutsArgs', 'ClickhouseUserTimeoutsArgsDict']]] = None,
                  username: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Creates and manages a ClickHouse user.
+        Creates and manages an Aiven for ClickHouse user. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
 
         ## Example Usage
 
@@ -290,19 +317,19 @@ class ClickhouseUser(pulumi.CustomResource):
         ## Import
 
         ```sh
-        terraform import aiven_clickhouse_user.example_user PROJECT/SERVICE_NAME/USER_ID  # USER_ID is found in the systems.users table in ClickHouse
+        $ pulumi import aiven:index/clickhouseUser:ClickhouseUser example PROJECT/SERVICE_NAME/UUID
         ```
 
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] password: The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+        :param pulumi.Input[_builtins.str] password: The password of the service user (auto-generated if not provided). The field conflicts with `password_wo`. Length must be between `8` and `256`.
         :param pulumi.Input[_builtins.str] password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-               The password of the service user (write-only, not stored in state). Must be used with `password_wo_version`. Must be 8-256 characters.
-        :param pulumi.Input[_builtins.int] password_wo_version: Version number for `password_wo`. Increment this to rotate the password. Must be >= 1.
-        :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] username: The name of the ClickHouse user. Changing this property forces recreation of the resource.
+               The password of the service user (write-only, not stored in state). The field is required with `password_wo_version`. The field conflicts with `password`. Length must be between `8` and `256`.
+        :param pulumi.Input[_builtins.int] password_wo_version: Version number for `password_wo`. Increment this to rotate the password. The field is required with `password_wo`. Minimum value: `1`.
+        :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] service_name: Service name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] username: User name. Maximum length: `64`. Changing this property forces recreation of the resource.
         """
         ...
     @overload
@@ -311,7 +338,7 @@ class ClickhouseUser(pulumi.CustomResource):
                  args: ClickhouseUserArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates and manages a ClickHouse user.
+        Creates and manages an Aiven for ClickHouse user. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
 
         ## Example Usage
 
@@ -328,7 +355,7 @@ class ClickhouseUser(pulumi.CustomResource):
         ## Import
 
         ```sh
-        terraform import aiven_clickhouse_user.example_user PROJECT/SERVICE_NAME/USER_ID  # USER_ID is found in the systems.users table in ClickHouse
+        $ pulumi import aiven:index/clickhouseUser:ClickhouseUser example PROJECT/SERVICE_NAME/UUID
         ```
 
 
@@ -352,6 +379,7 @@ class ClickhouseUser(pulumi.CustomResource):
                  password_wo_version: Optional[pulumi.Input[_builtins.int]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  service_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 timeouts: Optional[pulumi.Input[Union['ClickhouseUserTimeoutsArgs', 'ClickhouseUserTimeoutsArgsDict']]] = None,
                  username: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -371,6 +399,7 @@ class ClickhouseUser(pulumi.CustomResource):
             if service_name is None and not opts.urn:
                 raise TypeError("Missing required property 'service_name'")
             __props__.__dict__["service_name"] = service_name
+            __props__.__dict__["timeouts"] = timeouts
             if username is None and not opts.urn:
                 raise TypeError("Missing required property 'username'")
             __props__.__dict__["username"] = username
@@ -394,6 +423,7 @@ class ClickhouseUser(pulumi.CustomResource):
             project: Optional[pulumi.Input[_builtins.str]] = None,
             required: Optional[pulumi.Input[_builtins.bool]] = None,
             service_name: Optional[pulumi.Input[_builtins.str]] = None,
+            timeouts: Optional[pulumi.Input[Union['ClickhouseUserTimeoutsArgs', 'ClickhouseUserTimeoutsArgsDict']]] = None,
             username: Optional[pulumi.Input[_builtins.str]] = None,
             uuid: Optional[pulumi.Input[_builtins.str]] = None) -> 'ClickhouseUser':
         """
@@ -403,15 +433,15 @@ class ClickhouseUser(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] password: The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+        :param pulumi.Input[_builtins.str] password: The password of the service user (auto-generated if not provided). The field conflicts with `password_wo`. Length must be between `8` and `256`.
         :param pulumi.Input[_builtins.str] password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-               The password of the service user (write-only, not stored in state). Must be used with `password_wo_version`. Must be 8-256 characters.
-        :param pulumi.Input[_builtins.int] password_wo_version: Version number for `password_wo`. Increment this to rotate the password. Must be >= 1.
-        :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.bool] required: Indicates if a ClickHouse user is required.
-        :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] username: The name of the ClickHouse user. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] uuid: UUID of the ClickHouse user.
+               The password of the service user (write-only, not stored in state). The field is required with `password_wo_version`. The field conflicts with `password`. Length must be between `8` and `256`.
+        :param pulumi.Input[_builtins.int] password_wo_version: Version number for `password_wo`. Increment this to rotate the password. The field is required with `password_wo`. Minimum value: `1`.
+        :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.bool] required: Required user.
+        :param pulumi.Input[_builtins.str] service_name: Service name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] username: User name. Maximum length: `64`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] uuid: User identifier.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -423,6 +453,7 @@ class ClickhouseUser(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["required"] = required
         __props__.__dict__["service_name"] = service_name
+        __props__.__dict__["timeouts"] = timeouts
         __props__.__dict__["username"] = username
         __props__.__dict__["uuid"] = uuid
         return ClickhouseUser(resource_name, opts=opts, __props__=__props__)
@@ -431,7 +462,7 @@ class ClickhouseUser(pulumi.CustomResource):
     @pulumi.getter
     def password(self) -> pulumi.Output[_builtins.str]:
         """
-        The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+        The password of the service user (auto-generated if not provided). The field conflicts with `password_wo`. Length must be between `8` and `256`.
         """
         return pulumi.get(self, "password")
 
@@ -440,7 +471,7 @@ class ClickhouseUser(pulumi.CustomResource):
     def password_wo(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-        The password of the service user (write-only, not stored in state). Must be used with `password_wo_version`. Must be 8-256 characters.
+        The password of the service user (write-only, not stored in state). The field is required with `password_wo_version`. The field conflicts with `password`. Length must be between `8` and `256`.
         """
         return pulumi.get(self, "password_wo")
 
@@ -448,7 +479,7 @@ class ClickhouseUser(pulumi.CustomResource):
     @pulumi.getter(name="passwordWoVersion")
     def password_wo_version(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        Version number for `password_wo`. Increment this to rotate the password. Must be >= 1.
+        Version number for `password_wo`. Increment this to rotate the password. The field is required with `password_wo`. Minimum value: `1`.
         """
         return pulumi.get(self, "password_wo_version")
 
@@ -456,7 +487,7 @@ class ClickhouseUser(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Project name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -464,7 +495,7 @@ class ClickhouseUser(pulumi.CustomResource):
     @pulumi.getter
     def required(self) -> pulumi.Output[_builtins.bool]:
         """
-        Indicates if a ClickHouse user is required.
+        Required user.
         """
         return pulumi.get(self, "required")
 
@@ -472,15 +503,20 @@ class ClickhouseUser(pulumi.CustomResource):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Service name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
     @_builtins.property
     @pulumi.getter
+    def timeouts(self) -> pulumi.Output[Optional['outputs.ClickhouseUserTimeouts']]:
+        return pulumi.get(self, "timeouts")
+
+    @_builtins.property
+    @pulumi.getter
     def username(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the ClickHouse user. Changing this property forces recreation of the resource.
+        User name. Maximum length: `64`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "username")
 
@@ -488,7 +524,7 @@ class ClickhouseUser(pulumi.CustomResource):
     @pulumi.getter
     def uuid(self) -> pulumi.Output[_builtins.str]:
         """
-        UUID of the ClickHouse user.
+        User identifier.
         """
         return pulumi.get(self, "uuid")
 

@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetConnectionPoolResult',
@@ -26,7 +28,7 @@ class GetConnectionPoolResult:
     """
     A collection of values returned by getConnectionPool.
     """
-    def __init__(__self__, connection_uri=None, database_name=None, id=None, pool_mode=None, pool_name=None, pool_size=None, project=None, service_name=None, username=None):
+    def __init__(__self__, connection_uri=None, database_name=None, id=None, pool_mode=None, pool_name=None, pool_size=None, project=None, service_name=None, timeouts=None, username=None):
         if connection_uri and not isinstance(connection_uri, str):
             raise TypeError("Expected argument 'connection_uri' to be a str")
         pulumi.set(__self__, "connection_uri", connection_uri)
@@ -51,6 +53,9 @@ class GetConnectionPoolResult:
         if service_name and not isinstance(service_name, str):
             raise TypeError("Expected argument 'service_name' to be a str")
         pulumi.set(__self__, "service_name", service_name)
+        if timeouts and not isinstance(timeouts, dict):
+            raise TypeError("Expected argument 'timeouts' to be a dict")
+        pulumi.set(__self__, "timeouts", timeouts)
         if username and not isinstance(username, str):
             raise TypeError("Expected argument 'username' to be a str")
         pulumi.set(__self__, "username", username)
@@ -59,7 +64,7 @@ class GetConnectionPoolResult:
     @pulumi.getter(name="connectionUri")
     def connection_uri(self) -> _builtins.str:
         """
-        The URI for connecting to the pool.
+        Connection URI for the DB pool.
         """
         return pulumi.get(self, "connection_uri")
 
@@ -67,7 +72,7 @@ class GetConnectionPoolResult:
     @pulumi.getter(name="databaseName")
     def database_name(self) -> _builtins.str:
         """
-        The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Service database name.
         """
         return pulumi.get(self, "database_name")
 
@@ -75,7 +80,7 @@ class GetConnectionPoolResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The provider-assigned unique ID for this managed resource.
+        Resource ID composed as: `project/service_name/pool_name`.
         """
         return pulumi.get(self, "id")
 
@@ -83,7 +88,7 @@ class GetConnectionPoolResult:
     @pulumi.getter(name="poolMode")
     def pool_mode(self) -> _builtins.str:
         """
-        The [operational mode](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling#pooling-modes). The possible values are `session`, `statement` and `transaction`. The default value is `transaction`.
+        PGBouncer pool mode. The possible values are `session`, `statement` and `transaction`. The default value is `transaction`.
         """
         return pulumi.get(self, "pool_mode")
 
@@ -91,7 +96,7 @@ class GetConnectionPoolResult:
     @pulumi.getter(name="poolName")
     def pool_name(self) -> _builtins.str:
         """
-        Name of the pool. Changing this property forces recreation of the resource.
+        PgBouncer connection pool name.
         """
         return pulumi.get(self, "pool_name")
 
@@ -99,7 +104,7 @@ class GetConnectionPoolResult:
     @pulumi.getter(name="poolSize")
     def pool_size(self) -> _builtins.int:
         """
-        The number of PostgreSQL server connections this pool can use at a time. This does not affect the number of incoming connections. Each pool can handle a minimum of 5000 client connections. The default value is `10`.
+        Size of PGBouncer's PostgreSQL side connection pool. The default value is `10`.
         """
         return pulumi.get(self, "pool_size")
 
@@ -107,7 +112,7 @@ class GetConnectionPoolResult:
     @pulumi.getter
     def project(self) -> _builtins.str:
         """
-        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Project name.
         """
         return pulumi.get(self, "project")
 
@@ -115,15 +120,20 @@ class GetConnectionPoolResult:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> _builtins.str:
         """
-        The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Service name.
         """
         return pulumi.get(self, "service_name")
 
     @_builtins.property
     @pulumi.getter
+    def timeouts(self) -> Optional['outputs.GetConnectionPoolTimeoutsResult']:
+        return pulumi.get(self, "timeouts")
+
+    @_builtins.property
+    @pulumi.getter
     def username(self) -> _builtins.str:
         """
-        The name of the service user used to connect to the database. To set up proper dependencies please refer to this variable as a reference.
+        Service username.
         """
         return pulumi.get(self, "username")
 
@@ -142,12 +152,14 @@ class AwaitableGetConnectionPoolResult(GetConnectionPoolResult):
             pool_size=self.pool_size,
             project=self.project,
             service_name=self.service_name,
+            timeouts=self.timeouts,
             username=self.username)
 
 
 def get_connection_pool(pool_name: Optional[_builtins.str] = None,
                         project: Optional[_builtins.str] = None,
                         service_name: Optional[_builtins.str] = None,
+                        timeouts: Optional[Union['GetConnectionPoolTimeoutsArgs', 'GetConnectionPoolTimeoutsArgsDict']] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetConnectionPoolResult:
     """
     Gets information about a connection pool in an Aiven for PostgreSQL® service.
@@ -164,14 +176,15 @@ def get_connection_pool(pool_name: Optional[_builtins.str] = None,
     ```
 
 
-    :param _builtins.str pool_name: Name of the pool. Changing this property forces recreation of the resource.
-    :param _builtins.str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param _builtins.str service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+    :param _builtins.str pool_name: PgBouncer connection pool name.
+    :param _builtins.str project: Project name.
+    :param _builtins.str service_name: Service name.
     """
     __args__ = dict()
     __args__['poolName'] = pool_name
     __args__['project'] = project
     __args__['serviceName'] = service_name
+    __args__['timeouts'] = timeouts
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('aiven:index/getConnectionPool:getConnectionPool', __args__, opts=opts, typ=GetConnectionPoolResult).value
 
@@ -184,10 +197,12 @@ def get_connection_pool(pool_name: Optional[_builtins.str] = None,
         pool_size=pulumi.get(__ret__, 'pool_size'),
         project=pulumi.get(__ret__, 'project'),
         service_name=pulumi.get(__ret__, 'service_name'),
+        timeouts=pulumi.get(__ret__, 'timeouts'),
         username=pulumi.get(__ret__, 'username'))
 def get_connection_pool_output(pool_name: Optional[pulumi.Input[_builtins.str]] = None,
                                project: Optional[pulumi.Input[_builtins.str]] = None,
                                service_name: Optional[pulumi.Input[_builtins.str]] = None,
+                               timeouts: Optional[pulumi.Input[Optional[Union['GetConnectionPoolTimeoutsArgs', 'GetConnectionPoolTimeoutsArgsDict']]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetConnectionPoolResult]:
     """
     Gets information about a connection pool in an Aiven for PostgreSQL® service.
@@ -204,14 +219,15 @@ def get_connection_pool_output(pool_name: Optional[pulumi.Input[_builtins.str]] 
     ```
 
 
-    :param _builtins.str pool_name: Name of the pool. Changing this property forces recreation of the resource.
-    :param _builtins.str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param _builtins.str service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+    :param _builtins.str pool_name: PgBouncer connection pool name.
+    :param _builtins.str project: Project name.
+    :param _builtins.str service_name: Service name.
     """
     __args__ = dict()
     __args__['poolName'] = pool_name
     __args__['project'] = project
     __args__['serviceName'] = service_name
+    __args__['timeouts'] = timeouts
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('aiven:index/getConnectionPool:getConnectionPool', __args__, opts=opts, typ=GetConnectionPoolResult)
     return __ret__.apply(lambda __response__: GetConnectionPoolResult(
@@ -223,4 +239,5 @@ def get_connection_pool_output(pool_name: Optional[pulumi.Input[_builtins.str]] 
         pool_size=pulumi.get(__response__, 'pool_size'),
         project=pulumi.get(__response__, 'project'),
         service_name=pulumi.get(__response__, 'service_name'),
+        timeouts=pulumi.get(__response__, 'timeouts'),
         username=pulumi.get(__response__, 'username')))

@@ -11,45 +11,60 @@ namespace Pulumi.Aiven
 {
     /// <summary>
     /// The aiven.StaticIp resource allows the creation and deletion of static ips. Please note that once a static ip is in the 'assigned' state it is bound to the node it is assigned to and cannot be deleted or disassociated until the node is recycled. Plans that would delete static ips that are in the assigned state will be blocked.
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    /// $ pulumi import aiven:index/staticIp:StaticIp example PROJECT/STATIC_IP_ADDRESS_ID
+    /// ```
     /// </summary>
     [AivenResourceType("aiven:index/staticIp:StaticIp")]
     public partial class StaticIp : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Specifies the cloud that the static ip belongs to. Changing this property forces recreation of the resource.
+        /// Target cloud. Maximum length: `256`. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("cloudName")]
         public Output<string> CloudName { get; private set; } = null!;
 
         /// <summary>
-        /// The address of the static ip.
+        /// IPv4 address.
         /// </summary>
         [Output("ipAddress")]
         public Output<string> IpAddress { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The service name the static ip is associated with.
+        /// Service name.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// The state the static ip is in.
+        /// Static IP address state. The possible values are `Assigned`, `Available`, `Created`, `Creating`, `Deleted` and `Deleting`.
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// The static ip id of the resource. Should be used as a reference elsewhere.
+        /// Static IP address identifier.
         /// </summary>
         [Output("staticIpAddressId")]
         public Output<string> StaticIpAddressId { get; private set; } = null!;
+
+        /// <summary>
+        /// Static IP address is protected against deletion. The default value is `False`.
+        /// </summary>
+        [Output("terminationProtection")]
+        public Output<bool> TerminationProtection { get; private set; } = null!;
+
+        [Output("timeouts")]
+        public Output<Outputs.StaticIpTimeouts?> Timeouts { get; private set; } = null!;
 
 
         /// <summary>
@@ -98,16 +113,25 @@ namespace Pulumi.Aiven
     public sealed class StaticIpArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies the cloud that the static ip belongs to. Changing this property forces recreation of the resource.
+        /// Target cloud. Maximum length: `256`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("cloudName", required: true)]
         public Input<string> CloudName { get; set; } = null!;
 
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
+
+        /// <summary>
+        /// Static IP address is protected against deletion. The default value is `False`.
+        /// </summary>
+        [Input("terminationProtection")]
+        public Input<bool>? TerminationProtection { get; set; }
+
+        [Input("timeouts")]
+        public Input<Inputs.StaticIpTimeoutsArgs>? Timeouts { get; set; }
 
         public StaticIpArgs()
         {
@@ -118,40 +142,49 @@ namespace Pulumi.Aiven
     public sealed class StaticIpState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies the cloud that the static ip belongs to. Changing this property forces recreation of the resource.
+        /// Target cloud. Maximum length: `256`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("cloudName")]
         public Input<string>? CloudName { get; set; }
 
         /// <summary>
-        /// The address of the static ip.
+        /// IPv4 address.
         /// </summary>
         [Input("ipAddress")]
         public Input<string>? IpAddress { get; set; }
 
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The service name the static ip is associated with.
+        /// Service name.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 
         /// <summary>
-        /// The state the static ip is in.
+        /// Static IP address state. The possible values are `Assigned`, `Available`, `Created`, `Creating`, `Deleted` and `Deleting`.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
 
         /// <summary>
-        /// The static ip id of the resource. Should be used as a reference elsewhere.
+        /// Static IP address identifier.
         /// </summary>
         [Input("staticIpAddressId")]
         public Input<string>? StaticIpAddressId { get; set; }
+
+        /// <summary>
+        /// Static IP address is protected against deletion. The default value is `False`.
+        /// </summary>
+        [Input("terminationProtection")]
+        public Input<bool>? TerminationProtection { get; set; }
+
+        [Input("timeouts")]
+        public Input<Inputs.StaticIpTimeoutsGetArgs>? Timeouts { get; set; }
 
         public StaticIpState()
         {

@@ -91,14 +91,14 @@ public class OrganizationBillingGroup extends com.pulumi.resources.CustomResourc
         return this.billingGroupId;
     }
     /**
-     * Billing Group Name. Maximum length: `128`.
+     * Billing Group Name. Length must be between `1` and `128`.
      * 
      */
     @Export(name="billingGroupName", refs={String.class}, tree="[0]")
     private Output<String> billingGroupName;
 
     /**
-     * @return Billing Group Name. Maximum length: `128`.
+     * @return Billing Group Name. Length must be between `1` and `128`.
      * 
      */
     public Output<String> billingGroupName() {

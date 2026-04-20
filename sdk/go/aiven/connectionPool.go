@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates and manages a [connection pool](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling) in an Aiven for PostgreSQL® service.
+// Creates and manages a [connection pool](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling) in an Aiven for PostgreSQL® service. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
 //
 // ## Example Usage
 //
@@ -49,26 +49,27 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import aiven:index/connectionPool:ConnectionPool main PROJECT/SERVICE_NAME/POOL_NAME
+// $ pulumi import aiven:index/connectionPool:ConnectionPool example PROJECT/SERVICE_NAME/POOL_NAME
 // ```
 type ConnectionPool struct {
 	pulumi.CustomResourceState
 
-	// The URI for connecting to the pool.
+	// Connection URI for the DB pool.
 	ConnectionUri pulumi.StringOutput `pulumi:"connectionUri"`
-	// The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Service database name. Maximum length: `63`. Changing this property forces recreation of the resource.
 	DatabaseName pulumi.StringOutput `pulumi:"databaseName"`
-	// The [operational mode](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling#pooling-modes). The possible values are `session`, `statement` and `transaction`. The default value is `transaction`.
-	PoolMode pulumi.StringPtrOutput `pulumi:"poolMode"`
-	// Name of the pool. Changing this property forces recreation of the resource.
+	// PGBouncer pool mode. The possible values are `session`, `statement` and `transaction`. The default value is `transaction`.
+	PoolMode pulumi.StringOutput `pulumi:"poolMode"`
+	// PgBouncer connection pool name. Maximum length: `63`. Changing this property forces recreation of the resource.
 	PoolName pulumi.StringOutput `pulumi:"poolName"`
-	// The number of PostgreSQL server connections this pool can use at a time. This does not affect the number of incoming connections. Each pool can handle a minimum of 5000 client connections. The default value is `10`.
-	PoolSize pulumi.IntPtrOutput `pulumi:"poolSize"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Size of PGBouncer's PostgreSQL side connection pool. Value must be between `1` and `10000`. The default value is `10`.
+	PoolSize pulumi.IntOutput `pulumi:"poolSize"`
+	// Project name. Changing this property forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// The name of the service user used to connect to the database. To set up proper dependencies please refer to this variable as a reference.
+	// Service name. Changing this property forces recreation of the resource.
+	ServiceName pulumi.StringOutput             `pulumi:"serviceName"`
+	Timeouts    ConnectionPoolTimeoutsPtrOutput `pulumi:"timeouts"`
+	// Service username. Length must be between `1` and `64`.
 	Username pulumi.StringPtrOutput `pulumi:"username"`
 }
 
@@ -118,40 +119,42 @@ func GetConnectionPool(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ConnectionPool resources.
 type connectionPoolState struct {
-	// The URI for connecting to the pool.
+	// Connection URI for the DB pool.
 	ConnectionUri *string `pulumi:"connectionUri"`
-	// The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Service database name. Maximum length: `63`. Changing this property forces recreation of the resource.
 	DatabaseName *string `pulumi:"databaseName"`
-	// The [operational mode](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling#pooling-modes). The possible values are `session`, `statement` and `transaction`. The default value is `transaction`.
+	// PGBouncer pool mode. The possible values are `session`, `statement` and `transaction`. The default value is `transaction`.
 	PoolMode *string `pulumi:"poolMode"`
-	// Name of the pool. Changing this property forces recreation of the resource.
+	// PgBouncer connection pool name. Maximum length: `63`. Changing this property forces recreation of the resource.
 	PoolName *string `pulumi:"poolName"`
-	// The number of PostgreSQL server connections this pool can use at a time. This does not affect the number of incoming connections. Each pool can handle a minimum of 5000 client connections. The default value is `10`.
+	// Size of PGBouncer's PostgreSQL side connection pool. Value must be between `1` and `10000`. The default value is `10`.
 	PoolSize *int `pulumi:"poolSize"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project *string `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName *string `pulumi:"serviceName"`
-	// The name of the service user used to connect to the database. To set up proper dependencies please refer to this variable as a reference.
+	// Service name. Changing this property forces recreation of the resource.
+	ServiceName *string                 `pulumi:"serviceName"`
+	Timeouts    *ConnectionPoolTimeouts `pulumi:"timeouts"`
+	// Service username. Length must be between `1` and `64`.
 	Username *string `pulumi:"username"`
 }
 
 type ConnectionPoolState struct {
-	// The URI for connecting to the pool.
+	// Connection URI for the DB pool.
 	ConnectionUri pulumi.StringPtrInput
-	// The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Service database name. Maximum length: `63`. Changing this property forces recreation of the resource.
 	DatabaseName pulumi.StringPtrInput
-	// The [operational mode](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling#pooling-modes). The possible values are `session`, `statement` and `transaction`. The default value is `transaction`.
+	// PGBouncer pool mode. The possible values are `session`, `statement` and `transaction`. The default value is `transaction`.
 	PoolMode pulumi.StringPtrInput
-	// Name of the pool. Changing this property forces recreation of the resource.
+	// PgBouncer connection pool name. Maximum length: `63`. Changing this property forces recreation of the resource.
 	PoolName pulumi.StringPtrInput
-	// The number of PostgreSQL server connections this pool can use at a time. This does not affect the number of incoming connections. Each pool can handle a minimum of 5000 client connections. The default value is `10`.
+	// Size of PGBouncer's PostgreSQL side connection pool. Value must be between `1` and `10000`. The default value is `10`.
 	PoolSize pulumi.IntPtrInput
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project pulumi.StringPtrInput
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Service name. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringPtrInput
-	// The name of the service user used to connect to the database. To set up proper dependencies please refer to this variable as a reference.
+	Timeouts    ConnectionPoolTimeoutsPtrInput
+	// Service username. Length must be between `1` and `64`.
 	Username pulumi.StringPtrInput
 }
 
@@ -160,37 +163,39 @@ func (ConnectionPoolState) ElementType() reflect.Type {
 }
 
 type connectionPoolArgs struct {
-	// The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Service database name. Maximum length: `63`. Changing this property forces recreation of the resource.
 	DatabaseName string `pulumi:"databaseName"`
-	// The [operational mode](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling#pooling-modes). The possible values are `session`, `statement` and `transaction`. The default value is `transaction`.
+	// PGBouncer pool mode. The possible values are `session`, `statement` and `transaction`. The default value is `transaction`.
 	PoolMode *string `pulumi:"poolMode"`
-	// Name of the pool. Changing this property forces recreation of the resource.
+	// PgBouncer connection pool name. Maximum length: `63`. Changing this property forces recreation of the resource.
 	PoolName string `pulumi:"poolName"`
-	// The number of PostgreSQL server connections this pool can use at a time. This does not affect the number of incoming connections. Each pool can handle a minimum of 5000 client connections. The default value is `10`.
+	// Size of PGBouncer's PostgreSQL side connection pool. Value must be between `1` and `10000`. The default value is `10`.
 	PoolSize *int `pulumi:"poolSize"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName string `pulumi:"serviceName"`
-	// The name of the service user used to connect to the database. To set up proper dependencies please refer to this variable as a reference.
+	// Service name. Changing this property forces recreation of the resource.
+	ServiceName string                  `pulumi:"serviceName"`
+	Timeouts    *ConnectionPoolTimeouts `pulumi:"timeouts"`
+	// Service username. Length must be between `1` and `64`.
 	Username *string `pulumi:"username"`
 }
 
 // The set of arguments for constructing a ConnectionPool resource.
 type ConnectionPoolArgs struct {
-	// The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Service database name. Maximum length: `63`. Changing this property forces recreation of the resource.
 	DatabaseName pulumi.StringInput
-	// The [operational mode](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling#pooling-modes). The possible values are `session`, `statement` and `transaction`. The default value is `transaction`.
+	// PGBouncer pool mode. The possible values are `session`, `statement` and `transaction`. The default value is `transaction`.
 	PoolMode pulumi.StringPtrInput
-	// Name of the pool. Changing this property forces recreation of the resource.
+	// PgBouncer connection pool name. Maximum length: `63`. Changing this property forces recreation of the resource.
 	PoolName pulumi.StringInput
-	// The number of PostgreSQL server connections this pool can use at a time. This does not affect the number of incoming connections. Each pool can handle a minimum of 5000 client connections. The default value is `10`.
+	// Size of PGBouncer's PostgreSQL side connection pool. Value must be between `1` and `10000`. The default value is `10`.
 	PoolSize pulumi.IntPtrInput
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Service name. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringInput
-	// The name of the service user used to connect to the database. To set up proper dependencies please refer to this variable as a reference.
+	Timeouts    ConnectionPoolTimeoutsPtrInput
+	// Service username. Length must be between `1` and `64`.
 	Username pulumi.StringPtrInput
 }
 
@@ -281,42 +286,46 @@ func (o ConnectionPoolOutput) ToConnectionPoolOutputWithContext(ctx context.Cont
 	return o
 }
 
-// The URI for connecting to the pool.
+// Connection URI for the DB pool.
 func (o ConnectionPoolOutput) ConnectionUri() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectionPool) pulumi.StringOutput { return v.ConnectionUri }).(pulumi.StringOutput)
 }
 
-// The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// Service database name. Maximum length: `63`. Changing this property forces recreation of the resource.
 func (o ConnectionPoolOutput) DatabaseName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectionPool) pulumi.StringOutput { return v.DatabaseName }).(pulumi.StringOutput)
 }
 
-// The [operational mode](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling#pooling-modes). The possible values are `session`, `statement` and `transaction`. The default value is `transaction`.
-func (o ConnectionPoolOutput) PoolMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ConnectionPool) pulumi.StringPtrOutput { return v.PoolMode }).(pulumi.StringPtrOutput)
+// PGBouncer pool mode. The possible values are `session`, `statement` and `transaction`. The default value is `transaction`.
+func (o ConnectionPoolOutput) PoolMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConnectionPool) pulumi.StringOutput { return v.PoolMode }).(pulumi.StringOutput)
 }
 
-// Name of the pool. Changing this property forces recreation of the resource.
+// PgBouncer connection pool name. Maximum length: `63`. Changing this property forces recreation of the resource.
 func (o ConnectionPoolOutput) PoolName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectionPool) pulumi.StringOutput { return v.PoolName }).(pulumi.StringOutput)
 }
 
-// The number of PostgreSQL server connections this pool can use at a time. This does not affect the number of incoming connections. Each pool can handle a minimum of 5000 client connections. The default value is `10`.
-func (o ConnectionPoolOutput) PoolSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ConnectionPool) pulumi.IntPtrOutput { return v.PoolSize }).(pulumi.IntPtrOutput)
+// Size of PGBouncer's PostgreSQL side connection pool. Value must be between `1` and `10000`. The default value is `10`.
+func (o ConnectionPoolOutput) PoolSize() pulumi.IntOutput {
+	return o.ApplyT(func(v *ConnectionPool) pulumi.IntOutput { return v.PoolSize }).(pulumi.IntOutput)
 }
 
-// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// Project name. Changing this property forces recreation of the resource.
 func (o ConnectionPoolOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectionPool) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// Service name. Changing this property forces recreation of the resource.
 func (o ConnectionPoolOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectionPool) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// The name of the service user used to connect to the database. To set up proper dependencies please refer to this variable as a reference.
+func (o ConnectionPoolOutput) Timeouts() ConnectionPoolTimeoutsPtrOutput {
+	return o.ApplyT(func(v *ConnectionPool) ConnectionPoolTimeoutsPtrOutput { return v.Timeouts }).(ConnectionPoolTimeoutsPtrOutput)
+}
+
+// Service username. Length must be between `1` and `64`.
 func (o ConnectionPoolOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionPool) pulumi.StringPtrOutput { return v.Username }).(pulumi.StringPtrOutput)
 }

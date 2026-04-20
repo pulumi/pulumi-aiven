@@ -90,7 +90,7 @@ namespace Pulumi.Aiven
         public Output<string> EndpointName { get; private set; } = null!;
 
         /// <summary>
-        /// The type of service integration endpoint. The possible values are `Autoscaler`, `Datadog`, `ExternalAwsCloudwatchLogs`, `ExternalAwsCloudwatchMetrics`, `ExternalAwsS3`, `ExternalAzureBlobStorage`, `ExternalClickhouse`, `ExternalElasticsearchLogs`, `ExternalGoogleCloudBigquery`, `ExternalGoogleCloudLogging`, `ExternalKafka`, `ExternalMysql`, `ExternalOpensearchLogs`, `ExternalPostgresql`, `ExternalPrometheus`, `ExternalRedis`, `ExternalSchemaRegistry`, `ExternalSumologicLogs`, `Jolokia`, `Prometheus` and `Rsyslog`.
+        /// The type of service integration endpoint. The possible values are `Autoscaler`, `Datadog`, `ExternalAwsCloudwatchLogs`, `ExternalAwsCloudwatchMetrics`, `ExternalAwsS3`, `ExternalAzureBlobStorage`, `ExternalClickhouse`, `ExternalElasticsearchLogs`, `ExternalGoogleCloudBigquery`, `ExternalGoogleCloudLogging`, `ExternalKafka`, `ExternalMysql`, `ExternalObjectStorageConfig`, `ExternalOpensearchLogs`, `ExternalPostgresql`, `ExternalPrometheus`, `ExternalRedis`, `ExternalSchemaRegistry`, `ExternalSumologicLogs`, `Jolokia`, `Prometheus` and `Rsyslog`.
         /// </summary>
         [Output("endpointType")]
         public Output<string> EndpointType { get; private set; } = null!;
@@ -154,6 +154,12 @@ namespace Pulumi.Aiven
         /// </summary>
         [Output("externalMysqlUserConfig")]
         public Output<Outputs.ServiceIntegrationEndpointExternalMysqlUserConfig?> ExternalMysqlUserConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// ExternalObjectStorageConfig user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        /// </summary>
+        [Output("externalObjectStorageConfigUserConfig")]
+        public Output<Outputs.ServiceIntegrationEndpointExternalObjectStorageConfigUserConfig?> ExternalObjectStorageConfigUserConfig { get; private set; } = null!;
 
         /// <summary>
         /// ExternalOpensearchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
@@ -268,7 +274,7 @@ namespace Pulumi.Aiven
         public Input<string> EndpointName { get; set; } = null!;
 
         /// <summary>
-        /// The type of service integration endpoint. The possible values are `Autoscaler`, `Datadog`, `ExternalAwsCloudwatchLogs`, `ExternalAwsCloudwatchMetrics`, `ExternalAwsS3`, `ExternalAzureBlobStorage`, `ExternalClickhouse`, `ExternalElasticsearchLogs`, `ExternalGoogleCloudBigquery`, `ExternalGoogleCloudLogging`, `ExternalKafka`, `ExternalMysql`, `ExternalOpensearchLogs`, `ExternalPostgresql`, `ExternalPrometheus`, `ExternalRedis`, `ExternalSchemaRegistry`, `ExternalSumologicLogs`, `Jolokia`, `Prometheus` and `Rsyslog`.
+        /// The type of service integration endpoint. The possible values are `Autoscaler`, `Datadog`, `ExternalAwsCloudwatchLogs`, `ExternalAwsCloudwatchMetrics`, `ExternalAwsS3`, `ExternalAzureBlobStorage`, `ExternalClickhouse`, `ExternalElasticsearchLogs`, `ExternalGoogleCloudBigquery`, `ExternalGoogleCloudLogging`, `ExternalKafka`, `ExternalMysql`, `ExternalObjectStorageConfig`, `ExternalOpensearchLogs`, `ExternalPostgresql`, `ExternalPrometheus`, `ExternalRedis`, `ExternalSchemaRegistry`, `ExternalSumologicLogs`, `Jolokia`, `Prometheus` and `Rsyslog`.
         /// </summary>
         [Input("endpointType", required: true)]
         public Input<string> EndpointType { get; set; } = null!;
@@ -332,6 +338,12 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("externalMysqlUserConfig")]
         public Input<Inputs.ServiceIntegrationEndpointExternalMysqlUserConfigArgs>? ExternalMysqlUserConfig { get; set; }
+
+        /// <summary>
+        /// ExternalObjectStorageConfig user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        /// </summary>
+        [Input("externalObjectStorageConfigUserConfig")]
+        public Input<Inputs.ServiceIntegrationEndpointExternalObjectStorageConfigUserConfigArgs>? ExternalObjectStorageConfigUserConfig { get; set; }
 
         /// <summary>
         /// ExternalOpensearchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
@@ -420,7 +432,7 @@ namespace Pulumi.Aiven
         public Input<string>? EndpointName { get; set; }
 
         /// <summary>
-        /// The type of service integration endpoint. The possible values are `Autoscaler`, `Datadog`, `ExternalAwsCloudwatchLogs`, `ExternalAwsCloudwatchMetrics`, `ExternalAwsS3`, `ExternalAzureBlobStorage`, `ExternalClickhouse`, `ExternalElasticsearchLogs`, `ExternalGoogleCloudBigquery`, `ExternalGoogleCloudLogging`, `ExternalKafka`, `ExternalMysql`, `ExternalOpensearchLogs`, `ExternalPostgresql`, `ExternalPrometheus`, `ExternalRedis`, `ExternalSchemaRegistry`, `ExternalSumologicLogs`, `Jolokia`, `Prometheus` and `Rsyslog`.
+        /// The type of service integration endpoint. The possible values are `Autoscaler`, `Datadog`, `ExternalAwsCloudwatchLogs`, `ExternalAwsCloudwatchMetrics`, `ExternalAwsS3`, `ExternalAzureBlobStorage`, `ExternalClickhouse`, `ExternalElasticsearchLogs`, `ExternalGoogleCloudBigquery`, `ExternalGoogleCloudLogging`, `ExternalKafka`, `ExternalMysql`, `ExternalObjectStorageConfig`, `ExternalOpensearchLogs`, `ExternalPostgresql`, `ExternalPrometheus`, `ExternalRedis`, `ExternalSchemaRegistry`, `ExternalSumologicLogs`, `Jolokia`, `Prometheus` and `Rsyslog`.
         /// </summary>
         [Input("endpointType")]
         public Input<string>? EndpointType { get; set; }
@@ -484,6 +496,12 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("externalMysqlUserConfig")]
         public Input<Inputs.ServiceIntegrationEndpointExternalMysqlUserConfigGetArgs>? ExternalMysqlUserConfig { get; set; }
+
+        /// <summary>
+        /// ExternalObjectStorageConfig user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        /// </summary>
+        [Input("externalObjectStorageConfigUserConfig")]
+        public Input<Inputs.ServiceIntegrationEndpointExternalObjectStorageConfigUserConfigGetArgs>? ExternalObjectStorageConfigUserConfig { get; set; }
 
         /// <summary>
         /// ExternalOpensearchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later

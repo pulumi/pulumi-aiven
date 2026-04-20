@@ -754,6 +754,21 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * Enum: `local`, `off`, `on`, `remoteApply`, `remoteWrite`. Sets the current transaction&#39;s synchronization level. The default is `off`. This setting takes precedence over `synchronousReplication`.
+     * 
+     */
+    @Import(name="synchronousCommit")
+    private @Nullable Output<String> synchronousCommit;
+
+    /**
+     * @return Enum: `local`, `off`, `on`, `remoteApply`, `remoteWrite`. Sets the current transaction&#39;s synchronization level. The default is `off`. This setting takes precedence over `synchronousReplication`.
+     * 
+     */
+    public Optional<Output<String>> synchronousCommit() {
+        return Optional.ofNullable(this.synchronousCommit);
+    }
+
+    /**
      * PostgreSQL temporary file limit in KiB, -1 for unlimited.
      * 
      */
@@ -925,6 +940,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         this.pgStatMonitorDotPgsmEnableQueryPlan = $.pgStatMonitorDotPgsmEnableQueryPlan;
         this.pgStatMonitorDotPgsmMaxBuckets = $.pgStatMonitorDotPgsmMaxBuckets;
         this.pgStatStatementsDotTrack = $.pgStatStatementsDotTrack;
+        this.synchronousCommit = $.synchronousCommit;
         this.tempFileLimit = $.tempFileLimit;
         this.timezone = $.timezone;
         this.trackActivityQuerySize = $.trackActivityQuerySize;
@@ -1980,6 +1996,27 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder pgStatStatementsDotTrack(String pgStatStatementsDotTrack) {
             return pgStatStatementsDotTrack(Output.of(pgStatStatementsDotTrack));
+        }
+
+        /**
+         * @param synchronousCommit Enum: `local`, `off`, `on`, `remoteApply`, `remoteWrite`. Sets the current transaction&#39;s synchronization level. The default is `off`. This setting takes precedence over `synchronousReplication`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder synchronousCommit(@Nullable Output<String> synchronousCommit) {
+            $.synchronousCommit = synchronousCommit;
+            return this;
+        }
+
+        /**
+         * @param synchronousCommit Enum: `local`, `off`, `on`, `remoteApply`, `remoteWrite`. Sets the current transaction&#39;s synchronization level. The default is `off`. This setting takes precedence over `synchronousReplication`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder synchronousCommit(String synchronousCommit) {
+            return synchronousCommit(Output.of(synchronousCommit));
         }
 
         /**

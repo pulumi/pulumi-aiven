@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -26,6 +28,7 @@ export function getConnectionPool(args: GetConnectionPoolArgs, opts?: pulumi.Inv
         "poolName": args.poolName,
         "project": args.project,
         "serviceName": args.serviceName,
+        "timeouts": args.timeouts,
     }, opts);
 }
 
@@ -34,17 +37,18 @@ export function getConnectionPool(args: GetConnectionPoolArgs, opts?: pulumi.Inv
  */
 export interface GetConnectionPoolArgs {
     /**
-     * Name of the pool. Changing this property forces recreation of the resource.
+     * PgBouncer connection pool name.
      */
     poolName: string;
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name.
      */
     project: string;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name.
      */
     serviceName: string;
+    timeouts?: inputs.GetConnectionPoolTimeouts;
 }
 
 /**
@@ -52,39 +56,40 @@ export interface GetConnectionPoolArgs {
  */
 export interface GetConnectionPoolResult {
     /**
-     * The URI for connecting to the pool.
+     * Connection URI for the DB pool.
      */
     readonly connectionUri: string;
     /**
-     * The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service database name.
      */
     readonly databaseName: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * Resource ID composed as: `project/service_name/pool_name`.
      */
     readonly id: string;
     /**
-     * The [operational mode](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling#pooling-modes). The possible values are `session`, `statement` and `transaction`. The default value is `transaction`.
+     * PGBouncer pool mode. The possible values are `session`, `statement` and `transaction`. The default value is `transaction`.
      */
     readonly poolMode: string;
     /**
-     * Name of the pool. Changing this property forces recreation of the resource.
+     * PgBouncer connection pool name.
      */
     readonly poolName: string;
     /**
-     * The number of PostgreSQL server connections this pool can use at a time. This does not affect the number of incoming connections. Each pool can handle a minimum of 5000 client connections. The default value is `10`.
+     * Size of PGBouncer's PostgreSQL side connection pool. The default value is `10`.
      */
     readonly poolSize: number;
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name.
      */
     readonly project: string;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name.
      */
     readonly serviceName: string;
+    readonly timeouts?: outputs.GetConnectionPoolTimeouts;
     /**
-     * The name of the service user used to connect to the database. To set up proper dependencies please refer to this variable as a reference.
+     * Service username.
      */
     readonly username: string;
 }
@@ -110,6 +115,7 @@ export function getConnectionPoolOutput(args: GetConnectionPoolOutputArgs, opts?
         "poolName": args.poolName,
         "project": args.project,
         "serviceName": args.serviceName,
+        "timeouts": args.timeouts,
     }, opts);
 }
 
@@ -118,15 +124,16 @@ export function getConnectionPoolOutput(args: GetConnectionPoolOutputArgs, opts?
  */
 export interface GetConnectionPoolOutputArgs {
     /**
-     * Name of the pool. Changing this property forces recreation of the resource.
+     * PgBouncer connection pool name.
      */
     poolName: pulumi.Input<string>;
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name.
      */
     project: pulumi.Input<string>;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name.
      */
     serviceName: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.GetConnectionPoolTimeoutsArgs>;
 }

@@ -30,21 +30,6 @@ export type AccountTeamProject = import("./accountTeamProject").AccountTeamProje
 export const AccountTeamProject: typeof import("./accountTeamProject").AccountTeamProject = null as any;
 utilities.lazyLoad(exports, ["AccountTeamProject"], () => require("./accountTeamProject"));
 
-export { AlloydbomniArgs, AlloydbomniState } from "./alloydbomni";
-export type Alloydbomni = import("./alloydbomni").Alloydbomni;
-export const Alloydbomni: typeof import("./alloydbomni").Alloydbomni = null as any;
-utilities.lazyLoad(exports, ["Alloydbomni"], () => require("./alloydbomni"));
-
-export { AlloydbomniDatabaseArgs, AlloydbomniDatabaseState } from "./alloydbomniDatabase";
-export type AlloydbomniDatabase = import("./alloydbomniDatabase").AlloydbomniDatabase;
-export const AlloydbomniDatabase: typeof import("./alloydbomniDatabase").AlloydbomniDatabase = null as any;
-utilities.lazyLoad(exports, ["AlloydbomniDatabase"], () => require("./alloydbomniDatabase"));
-
-export { AlloydbomniUserArgs, AlloydbomniUserState } from "./alloydbomniUser";
-export type AlloydbomniUser = import("./alloydbomniUser").AlloydbomniUser;
-export const AlloydbomniUser: typeof import("./alloydbomniUser").AlloydbomniUser = null as any;
-utilities.lazyLoad(exports, ["AlloydbomniUser"], () => require("./alloydbomniUser"));
-
 export { AwsOrgVpcPeeringConnectionArgs, AwsOrgVpcPeeringConnectionState } from "./awsOrgVpcPeeringConnection";
 export type AwsOrgVpcPeeringConnection = import("./awsOrgVpcPeeringConnection").AwsOrgVpcPeeringConnection;
 export const AwsOrgVpcPeeringConnection: typeof import("./awsOrgVpcPeeringConnection").AwsOrgVpcPeeringConnection = null as any;
@@ -220,21 +205,6 @@ export const getAccountTeamProject: typeof import("./getAccountTeamProject").get
 export const getAccountTeamProjectOutput: typeof import("./getAccountTeamProject").getAccountTeamProjectOutput = null as any;
 utilities.lazyLoad(exports, ["getAccountTeamProject","getAccountTeamProjectOutput"], () => require("./getAccountTeamProject"));
 
-export { GetAlloydbomniArgs, GetAlloydbomniResult, GetAlloydbomniOutputArgs } from "./getAlloydbomni";
-export const getAlloydbomni: typeof import("./getAlloydbomni").getAlloydbomni = null as any;
-export const getAlloydbomniOutput: typeof import("./getAlloydbomni").getAlloydbomniOutput = null as any;
-utilities.lazyLoad(exports, ["getAlloydbomni","getAlloydbomniOutput"], () => require("./getAlloydbomni"));
-
-export { GetAlloydbomniDatabaseArgs, GetAlloydbomniDatabaseResult, GetAlloydbomniDatabaseOutputArgs } from "./getAlloydbomniDatabase";
-export const getAlloydbomniDatabase: typeof import("./getAlloydbomniDatabase").getAlloydbomniDatabase = null as any;
-export const getAlloydbomniDatabaseOutput: typeof import("./getAlloydbomniDatabase").getAlloydbomniDatabaseOutput = null as any;
-utilities.lazyLoad(exports, ["getAlloydbomniDatabase","getAlloydbomniDatabaseOutput"], () => require("./getAlloydbomniDatabase"));
-
-export { GetAlloydbomniUserArgs, GetAlloydbomniUserResult, GetAlloydbomniUserOutputArgs } from "./getAlloydbomniUser";
-export const getAlloydbomniUser: typeof import("./getAlloydbomniUser").getAlloydbomniUser = null as any;
-export const getAlloydbomniUserOutput: typeof import("./getAlloydbomniUser").getAlloydbomniUserOutput = null as any;
-utilities.lazyLoad(exports, ["getAlloydbomniUser","getAlloydbomniUserOutput"], () => require("./getAlloydbomniUser"));
-
 export { GetAwsOrgVpcPeeringConnectionArgs, GetAwsOrgVpcPeeringConnectionResult, GetAwsOrgVpcPeeringConnectionOutputArgs } from "./getAwsOrgVpcPeeringConnection";
 export const getAwsOrgVpcPeeringConnection: typeof import("./getAwsOrgVpcPeeringConnection").getAwsOrgVpcPeeringConnection = null as any;
 export const getAwsOrgVpcPeeringConnectionOutput: typeof import("./getAwsOrgVpcPeeringConnection").getAwsOrgVpcPeeringConnectionOutput = null as any;
@@ -350,21 +320,6 @@ export const getGrafana: typeof import("./getGrafana").getGrafana = null as any;
 export const getGrafanaOutput: typeof import("./getGrafana").getGrafanaOutput = null as any;
 utilities.lazyLoad(exports, ["getGrafana","getGrafanaOutput"], () => require("./getGrafana"));
 
-export { GetInfluxDbArgs, GetInfluxDbResult, GetInfluxDbOutputArgs } from "./getInfluxDb";
-export const getInfluxDb: typeof import("./getInfluxDb").getInfluxDb = null as any;
-export const getInfluxDbOutput: typeof import("./getInfluxDb").getInfluxDbOutput = null as any;
-utilities.lazyLoad(exports, ["getInfluxDb","getInfluxDbOutput"], () => require("./getInfluxDb"));
-
-export { GetInfluxdbDatabaseArgs, GetInfluxdbDatabaseResult, GetInfluxdbDatabaseOutputArgs } from "./getInfluxdbDatabase";
-export const getInfluxdbDatabase: typeof import("./getInfluxdbDatabase").getInfluxdbDatabase = null as any;
-export const getInfluxdbDatabaseOutput: typeof import("./getInfluxdbDatabase").getInfluxdbDatabaseOutput = null as any;
-utilities.lazyLoad(exports, ["getInfluxdbDatabase","getInfluxdbDatabaseOutput"], () => require("./getInfluxdbDatabase"));
-
-export { GetInfluxdbUserArgs, GetInfluxdbUserResult, GetInfluxdbUserOutputArgs } from "./getInfluxdbUser";
-export const getInfluxdbUser: typeof import("./getInfluxdbUser").getInfluxdbUser = null as any;
-export const getInfluxdbUserOutput: typeof import("./getInfluxdbUser").getInfluxdbUserOutput = null as any;
-utilities.lazyLoad(exports, ["getInfluxdbUser","getInfluxdbUserOutput"], () => require("./getInfluxdbUser"));
-
 export { GetKafkaArgs, GetKafkaResult, GetKafkaOutputArgs } from "./getKafka";
 export const getKafka: typeof import("./getKafka").getKafka = null as any;
 export const getKafkaOutput: typeof import("./getKafka").getKafkaOutput = null as any;
@@ -419,21 +374,6 @@ export { GetKafkaUserArgs, GetKafkaUserResult, GetKafkaUserOutputArgs } from "./
 export const getKafkaUser: typeof import("./getKafkaUser").getKafkaUser = null as any;
 export const getKafkaUserOutput: typeof import("./getKafkaUser").getKafkaUserOutput = null as any;
 utilities.lazyLoad(exports, ["getKafkaUser","getKafkaUserOutput"], () => require("./getKafkaUser"));
-
-export { GetM3AggregatorArgs, GetM3AggregatorResult, GetM3AggregatorOutputArgs } from "./getM3Aggregator";
-export const getM3Aggregator: typeof import("./getM3Aggregator").getM3Aggregator = null as any;
-export const getM3AggregatorOutput: typeof import("./getM3Aggregator").getM3AggregatorOutput = null as any;
-utilities.lazyLoad(exports, ["getM3Aggregator","getM3AggregatorOutput"], () => require("./getM3Aggregator"));
-
-export { GetM3DbArgs, GetM3DbResult, GetM3DbOutputArgs } from "./getM3Db";
-export const getM3Db: typeof import("./getM3Db").getM3Db = null as any;
-export const getM3DbOutput: typeof import("./getM3Db").getM3DbOutput = null as any;
-utilities.lazyLoad(exports, ["getM3Db","getM3DbOutput"], () => require("./getM3Db"));
-
-export { GetM3dbUserArgs, GetM3dbUserResult, GetM3dbUserOutputArgs } from "./getM3dbUser";
-export const getM3dbUser: typeof import("./getM3dbUser").getM3dbUser = null as any;
-export const getM3dbUserOutput: typeof import("./getM3dbUser").getM3dbUserOutput = null as any;
-utilities.lazyLoad(exports, ["getM3dbUser","getM3dbUserOutput"], () => require("./getM3dbUser"));
 
 export { GetMirrorMakerReplicationFlowArgs, GetMirrorMakerReplicationFlowResult, GetMirrorMakerReplicationFlowOutputArgs } from "./getMirrorMakerReplicationFlow";
 export const getMirrorMakerReplicationFlow: typeof import("./getMirrorMakerReplicationFlow").getMirrorMakerReplicationFlow = null as any;
@@ -650,21 +590,6 @@ export type Grafana = import("./grafana").Grafana;
 export const Grafana: typeof import("./grafana").Grafana = null as any;
 utilities.lazyLoad(exports, ["Grafana"], () => require("./grafana"));
 
-export { InfluxDbArgs, InfluxDbState } from "./influxDb";
-export type InfluxDb = import("./influxDb").InfluxDb;
-export const InfluxDb: typeof import("./influxDb").InfluxDb = null as any;
-utilities.lazyLoad(exports, ["InfluxDb"], () => require("./influxDb"));
-
-export { InfluxdbDatabaseArgs, InfluxdbDatabaseState } from "./influxdbDatabase";
-export type InfluxdbDatabase = import("./influxdbDatabase").InfluxdbDatabase;
-export const InfluxdbDatabase: typeof import("./influxdbDatabase").InfluxdbDatabase = null as any;
-utilities.lazyLoad(exports, ["InfluxdbDatabase"], () => require("./influxdbDatabase"));
-
-export { InfluxdbUserArgs, InfluxdbUserState } from "./influxdbUser";
-export type InfluxdbUser = import("./influxdbUser").InfluxdbUser;
-export const InfluxdbUser: typeof import("./influxdbUser").InfluxdbUser = null as any;
-utilities.lazyLoad(exports, ["InfluxdbUser"], () => require("./influxdbUser"));
-
 export { KafkaArgs, KafkaState } from "./kafka";
 export type Kafka = import("./kafka").Kafka;
 export const Kafka: typeof import("./kafka").Kafka = null as any;
@@ -724,21 +649,6 @@ export { KafkaUserArgs, KafkaUserState } from "./kafkaUser";
 export type KafkaUser = import("./kafkaUser").KafkaUser;
 export const KafkaUser: typeof import("./kafkaUser").KafkaUser = null as any;
 utilities.lazyLoad(exports, ["KafkaUser"], () => require("./kafkaUser"));
-
-export { M3AggregatorArgs, M3AggregatorState } from "./m3aggregator";
-export type M3Aggregator = import("./m3aggregator").M3Aggregator;
-export const M3Aggregator: typeof import("./m3aggregator").M3Aggregator = null as any;
-utilities.lazyLoad(exports, ["M3Aggregator"], () => require("./m3aggregator"));
-
-export { M3DbArgs, M3DbState } from "./m3db";
-export type M3Db = import("./m3db").M3Db;
-export const M3Db: typeof import("./m3db").M3Db = null as any;
-utilities.lazyLoad(exports, ["M3Db"], () => require("./m3db"));
-
-export { M3dbUserArgs, M3dbUserState } from "./m3dbUser";
-export type M3dbUser = import("./m3dbUser").M3dbUser;
-export const M3dbUser: typeof import("./m3dbUser").M3dbUser = null as any;
-utilities.lazyLoad(exports, ["M3dbUser"], () => require("./m3dbUser"));
 
 export { MirrorMakerReplicationFlowArgs, MirrorMakerReplicationFlowState } from "./mirrorMakerReplicationFlow";
 export type MirrorMakerReplicationFlow = import("./mirrorMakerReplicationFlow").MirrorMakerReplicationFlow;
@@ -952,12 +862,6 @@ const _module = {
                 return new AccountTeamMember(name, <any>undefined, { urn })
             case "aiven:index/accountTeamProject:AccountTeamProject":
                 return new AccountTeamProject(name, <any>undefined, { urn })
-            case "aiven:index/alloydbomni:Alloydbomni":
-                return new Alloydbomni(name, <any>undefined, { urn })
-            case "aiven:index/alloydbomniDatabase:AlloydbomniDatabase":
-                return new AlloydbomniDatabase(name, <any>undefined, { urn })
-            case "aiven:index/alloydbomniUser:AlloydbomniUser":
-                return new AlloydbomniUser(name, <any>undefined, { urn })
             case "aiven:index/awsOrgVpcPeeringConnection:AwsOrgVpcPeeringConnection":
                 return new AwsOrgVpcPeeringConnection(name, <any>undefined, { urn })
             case "aiven:index/awsPrivatelink:AwsPrivatelink":
@@ -1022,12 +926,6 @@ const _module = {
                 return new GovernanceAccess(name, <any>undefined, { urn })
             case "aiven:index/grafana:Grafana":
                 return new Grafana(name, <any>undefined, { urn })
-            case "aiven:index/influxDb:InfluxDb":
-                return new InfluxDb(name, <any>undefined, { urn })
-            case "aiven:index/influxdbDatabase:InfluxdbDatabase":
-                return new InfluxdbDatabase(name, <any>undefined, { urn })
-            case "aiven:index/influxdbUser:InfluxdbUser":
-                return new InfluxdbUser(name, <any>undefined, { urn })
             case "aiven:index/kafka:Kafka":
                 return new Kafka(name, <any>undefined, { urn })
             case "aiven:index/kafkaAcl:KafkaAcl":
@@ -1052,12 +950,6 @@ const _module = {
                 return new KafkaTopic(name, <any>undefined, { urn })
             case "aiven:index/kafkaUser:KafkaUser":
                 return new KafkaUser(name, <any>undefined, { urn })
-            case "aiven:index/m3Aggregator:M3Aggregator":
-                return new M3Aggregator(name, <any>undefined, { urn })
-            case "aiven:index/m3Db:M3Db":
-                return new M3Db(name, <any>undefined, { urn })
-            case "aiven:index/m3dbUser:M3dbUser":
-                return new M3dbUser(name, <any>undefined, { urn })
             case "aiven:index/mirrorMakerReplicationFlow:MirrorMakerReplicationFlow":
                 return new MirrorMakerReplicationFlow(name, <any>undefined, { urn })
             case "aiven:index/mySql:MySql":
@@ -1142,9 +1034,6 @@ pulumi.runtime.registerResourceModule("aiven", "index/accountAuthentication", _m
 pulumi.runtime.registerResourceModule("aiven", "index/accountTeam", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/accountTeamMember", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/accountTeamProject", _module)
-pulumi.runtime.registerResourceModule("aiven", "index/alloydbomni", _module)
-pulumi.runtime.registerResourceModule("aiven", "index/alloydbomniDatabase", _module)
-pulumi.runtime.registerResourceModule("aiven", "index/alloydbomniUser", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/awsOrgVpcPeeringConnection", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/awsPrivatelink", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/awsVpcPeeringConnection", _module)
@@ -1177,9 +1066,6 @@ pulumi.runtime.registerResourceModule("aiven", "index/gcpPrivatelinkConnectionAp
 pulumi.runtime.registerResourceModule("aiven", "index/gcpVpcPeeringConnection", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/governanceAccess", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/grafana", _module)
-pulumi.runtime.registerResourceModule("aiven", "index/influxDb", _module)
-pulumi.runtime.registerResourceModule("aiven", "index/influxdbDatabase", _module)
-pulumi.runtime.registerResourceModule("aiven", "index/influxdbUser", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/kafka", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/kafkaAcl", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/kafkaConnect", _module)
@@ -1192,9 +1078,6 @@ pulumi.runtime.registerResourceModule("aiven", "index/kafkaSchemaConfiguration",
 pulumi.runtime.registerResourceModule("aiven", "index/kafkaSchemaRegistryAcl", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/kafkaTopic", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/kafkaUser", _module)
-pulumi.runtime.registerResourceModule("aiven", "index/m3Aggregator", _module)
-pulumi.runtime.registerResourceModule("aiven", "index/m3Db", _module)
-pulumi.runtime.registerResourceModule("aiven", "index/m3dbUser", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/mirrorMakerReplicationFlow", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/mySql", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/mysqlDatabase", _module)

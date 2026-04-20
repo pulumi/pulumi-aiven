@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -24,6 +26,7 @@ export function getOpensearchSecurityPluginConfig(args: GetOpensearchSecurityPlu
     return pulumi.runtime.invoke("aiven:index/getOpensearchSecurityPluginConfig:getOpensearchSecurityPluginConfig", {
         "project": args.project,
         "serviceName": args.serviceName,
+        "timeouts": args.timeouts,
     }, opts);
 }
 
@@ -32,13 +35,14 @@ export function getOpensearchSecurityPluginConfig(args: GetOpensearchSecurityPlu
  */
 export interface GetOpensearchSecurityPluginConfigArgs {
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name.
      */
     project: string;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name.
      */
     serviceName: string;
+    timeouts?: inputs.GetOpensearchSecurityPluginConfigTimeouts;
 }
 
 /**
@@ -46,33 +50,34 @@ export interface GetOpensearchSecurityPluginConfigArgs {
  */
 export interface GetOpensearchSecurityPluginConfigResult {
     /**
-     * Whether the os-sec-admin user is enabled. This indicates whether OpenSearch Security management is enabled. This is always true when the os-sec-admin password was set at least once.
+     * security plugin admin defined.
      */
     readonly adminEnabled: boolean;
     /**
-     * The password for the os-sec-admin user.
+     * Current os-sec-admin password.
      */
     readonly adminPassword: string;
     /**
-     * Whether the security plugin is available. This is always true for recently created services.
+     * Opensearch security available for the service.
      */
     readonly available: boolean;
     /**
-     * Whether the security plugin is enabled. This is always true for recently created services.
+     * Opensearch security enabled for the service.
      */
     readonly enabled: boolean;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * Resource ID composed as: `project/service_name`.
      */
     readonly id: string;
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name.
      */
     readonly project: string;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name.
      */
     readonly serviceName: string;
+    readonly timeouts?: outputs.GetOpensearchSecurityPluginConfigTimeouts;
 }
 /**
  * Gets information about OpenSearch Security configuration for an Aiven for OpenSearch® service.
@@ -94,6 +99,7 @@ export function getOpensearchSecurityPluginConfigOutput(args: GetOpensearchSecur
     return pulumi.runtime.invokeOutput("aiven:index/getOpensearchSecurityPluginConfig:getOpensearchSecurityPluginConfig", {
         "project": args.project,
         "serviceName": args.serviceName,
+        "timeouts": args.timeouts,
     }, opts);
 }
 
@@ -102,11 +108,12 @@ export function getOpensearchSecurityPluginConfigOutput(args: GetOpensearchSecur
  */
 export interface GetOpensearchSecurityPluginConfigOutputArgs {
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name.
      */
     project: pulumi.Input<string>;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name.
      */
     serviceName: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.GetOpensearchSecurityPluginConfigTimeoutsArgs>;
 }

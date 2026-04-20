@@ -13,6 +13,12 @@ namespace Pulumi.Aiven.Inputs
     public sealed class GetServicePlanListServicePlanArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
+        /// True when the plan is a cluster plan with dedicated node groups.
+        /// </summary>
+        [Input("isClusterPlan", required: true)]
+        public bool IsClusterPlan { get; set; }
+
+        /// <summary>
         /// Maximum amount of system memory as a percentage (0-100) the service can actually use after taking into account management overhead. This is relevant for memory bound services for which some service management operations require allocating proportional amount of memory on top the basic load.
         /// </summary>
         [Input("maxMemoryPercent", required: true)]
@@ -23,6 +29,12 @@ namespace Pulumi.Aiven.Inputs
         /// </summary>
         [Input("nodeCount", required: true)]
         public int NodeCount { get; set; }
+
+        /// <summary>
+        /// Number of primary nodes in this Valkey cluster service plan.
+        /// </summary>
+        [Input("primaryCount", required: true)]
+        public int PrimaryCount { get; set; }
 
         [Input("regions", required: true)]
         private Dictionary<string, Inputs.GetServicePlanListServicePlanRegionsArgs>? _regions;

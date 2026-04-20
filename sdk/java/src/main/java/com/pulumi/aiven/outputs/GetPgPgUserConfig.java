@@ -48,7 +48,7 @@ public final class GetPgPgUserConfig {
      */
     private @Nullable Integer backupHour;
     /**
-     * @return Interval in hours between automatic backups. Minimum value is 3 hours. Must be a divisor of 24 (3, 4, 6, 8, 12, 24). (Applicable to ACU plans only). Example: `24`.
+     * @return Enum: `12`, `24`, `3`, `4`, `6`, `8`. Interval in hours between automatic backups. Minimum value is 3 hours. Must be a divisor of 24 (3, 4, 6, 8, 12, 24). (Applicable to ACU plans only).
      * 
      */
     private @Nullable Integer backupIntervalHours;
@@ -197,7 +197,7 @@ public final class GetPgPgUserConfig {
     private @Nullable Boolean staticIps;
     private @Nullable List<GetPgPgUserConfigSwitchoverWindow> switchoverWindows;
     /**
-     * @return Enum: `off`, `quorum`. Synchronous replication type. Note that the service plan also needs to support synchronous replication.
+     * @return Enum: `off`, `quorum`. Use synchronousCommit instead. Any change to this setting will automatically update synchronous_commit. Setting the value to quorum changes synchronousCommit to remote_write, while setting it to off changes synchronousCommit to off.
      * 
      */
     private @Nullable String synchronousReplication;
@@ -247,7 +247,7 @@ public final class GetPgPgUserConfig {
         return Optional.ofNullable(this.backupHour);
     }
     /**
-     * @return Interval in hours between automatic backups. Minimum value is 3 hours. Must be a divisor of 24 (3, 4, 6, 8, 12, 24). (Applicable to ACU plans only). Example: `24`.
+     * @return Enum: `12`, `24`, `3`, `4`, `6`, `8`. Interval in hours between automatic backups. Minimum value is 3 hours. Must be a divisor of 24 (3, 4, 6, 8, 12, 24). (Applicable to ACU plans only).
      * 
      */
     public Optional<Integer> backupIntervalHours() {
@@ -454,7 +454,7 @@ public final class GetPgPgUserConfig {
         return this.switchoverWindows == null ? List.of() : this.switchoverWindows;
     }
     /**
-     * @return Enum: `off`, `quorum`. Synchronous replication type. Note that the service plan also needs to support synchronous replication.
+     * @return Enum: `off`, `quorum`. Use synchronousCommit instead. Any change to this setting will automatically update synchronous_commit. Setting the value to quorum changes synchronousCommit to remote_write, while setting it to off changes synchronousCommit to off.
      * 
      */
     public Optional<String> synchronousReplication() {

@@ -24,7 +24,7 @@ type OrganizationProject struct {
 
 	// Valid port number (10000-30000) to use as a base for service port allocation. Value must be between `10000` and `30000`.
 	BasePort pulumi.IntOutput `pulumi:"basePort"`
-	// Billing group ID to assign to the project. It's required when moving projects between organizations.
+	// Billing group ID to assign to the project. It's required when moving projects between organizations. Minimum length: `1`.
 	BillingGroupId pulumi.StringOutput `pulumi:"billingGroupId"`
 	// PEM encoded certificate.
 	CaCert pulumi.StringOutput `pulumi:"caCert"`
@@ -89,7 +89,7 @@ func GetOrganizationProject(ctx *pulumi.Context,
 type organizationProjectState struct {
 	// Valid port number (10000-30000) to use as a base for service port allocation. Value must be between `10000` and `30000`.
 	BasePort *int `pulumi:"basePort"`
-	// Billing group ID to assign to the project. It's required when moving projects between organizations.
+	// Billing group ID to assign to the project. It's required when moving projects between organizations. Minimum length: `1`.
 	BillingGroupId *string `pulumi:"billingGroupId"`
 	// PEM encoded certificate.
 	CaCert *string `pulumi:"caCert"`
@@ -109,7 +109,7 @@ type organizationProjectState struct {
 type OrganizationProjectState struct {
 	// Valid port number (10000-30000) to use as a base for service port allocation. Value must be between `10000` and `30000`.
 	BasePort pulumi.IntPtrInput
-	// Billing group ID to assign to the project. It's required when moving projects between organizations.
+	// Billing group ID to assign to the project. It's required when moving projects between organizations. Minimum length: `1`.
 	BillingGroupId pulumi.StringPtrInput
 	// PEM encoded certificate.
 	CaCert pulumi.StringPtrInput
@@ -133,7 +133,7 @@ func (OrganizationProjectState) ElementType() reflect.Type {
 type organizationProjectArgs struct {
 	// Valid port number (10000-30000) to use as a base for service port allocation. Value must be between `10000` and `30000`.
 	BasePort *int `pulumi:"basePort"`
-	// Billing group ID to assign to the project. It's required when moving projects between organizations.
+	// Billing group ID to assign to the project. It's required when moving projects between organizations. Minimum length: `1`.
 	BillingGroupId string `pulumi:"billingGroupId"`
 	// ID of an organization. Maximum length: `36`.
 	OrganizationId string `pulumi:"organizationId"`
@@ -152,7 +152,7 @@ type organizationProjectArgs struct {
 type OrganizationProjectArgs struct {
 	// Valid port number (10000-30000) to use as a base for service port allocation. Value must be between `10000` and `30000`.
 	BasePort pulumi.IntPtrInput
-	// Billing group ID to assign to the project. It's required when moving projects between organizations.
+	// Billing group ID to assign to the project. It's required when moving projects between organizations. Minimum length: `1`.
 	BillingGroupId pulumi.StringInput
 	// ID of an organization. Maximum length: `36`.
 	OrganizationId pulumi.StringInput
@@ -259,7 +259,7 @@ func (o OrganizationProjectOutput) BasePort() pulumi.IntOutput {
 	return o.ApplyT(func(v *OrganizationProject) pulumi.IntOutput { return v.BasePort }).(pulumi.IntOutput)
 }
 
-// Billing group ID to assign to the project. It's required when moving projects between organizations.
+// Billing group ID to assign to the project. It's required when moving projects between organizations. Minimum length: `1`.
 func (o OrganizationProjectOutput) BillingGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationProject) pulumi.StringOutput { return v.BillingGroupId }).(pulumi.StringOutput)
 }

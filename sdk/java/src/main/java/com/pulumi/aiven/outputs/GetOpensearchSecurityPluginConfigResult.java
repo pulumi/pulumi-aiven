@@ -3,99 +3,106 @@
 
 package com.pulumi.aiven.outputs;
 
+import com.pulumi.aiven.outputs.GetOpensearchSecurityPluginConfigTimeouts;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetOpensearchSecurityPluginConfigResult {
     /**
-     * @return Whether the os-sec-admin user is enabled. This indicates whether OpenSearch Security management is enabled. This is always true when the os-sec-admin password was set at least once.
+     * @return security plugin admin defined.
      * 
      */
     private Boolean adminEnabled;
     /**
-     * @return The password for the os-sec-admin user.
+     * @return Current os-sec-admin password.
      * 
      */
     private String adminPassword;
     /**
-     * @return Whether the security plugin is available. This is always true for recently created services.
+     * @return Opensearch security available for the service.
      * 
      */
     private Boolean available;
     /**
-     * @return Whether the security plugin is enabled. This is always true for recently created services.
+     * @return Opensearch security enabled for the service.
      * 
      */
     private Boolean enabled;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Resource ID composed as: `project/service_name`.
      * 
      */
     private String id;
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name.
      * 
      */
     private String project;
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service name.
      * 
      */
     private String serviceName;
+    private @Nullable GetOpensearchSecurityPluginConfigTimeouts timeouts;
 
     private GetOpensearchSecurityPluginConfigResult() {}
     /**
-     * @return Whether the os-sec-admin user is enabled. This indicates whether OpenSearch Security management is enabled. This is always true when the os-sec-admin password was set at least once.
+     * @return security plugin admin defined.
      * 
      */
     public Boolean adminEnabled() {
         return this.adminEnabled;
     }
     /**
-     * @return The password for the os-sec-admin user.
+     * @return Current os-sec-admin password.
      * 
      */
     public String adminPassword() {
         return this.adminPassword;
     }
     /**
-     * @return Whether the security plugin is available. This is always true for recently created services.
+     * @return Opensearch security available for the service.
      * 
      */
     public Boolean available() {
         return this.available;
     }
     /**
-     * @return Whether the security plugin is enabled. This is always true for recently created services.
+     * @return Opensearch security enabled for the service.
      * 
      */
     public Boolean enabled() {
         return this.enabled;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Resource ID composed as: `project/service_name`.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name.
      * 
      */
     public String project() {
         return this.project;
     }
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service name.
      * 
      */
     public String serviceName() {
         return this.serviceName;
+    }
+    public Optional<GetOpensearchSecurityPluginConfigTimeouts> timeouts() {
+        return Optional.ofNullable(this.timeouts);
     }
 
     public static Builder builder() {
@@ -114,6 +121,7 @@ public final class GetOpensearchSecurityPluginConfigResult {
         private String id;
         private String project;
         private String serviceName;
+        private @Nullable GetOpensearchSecurityPluginConfigTimeouts timeouts;
         public Builder() {}
         public Builder(GetOpensearchSecurityPluginConfigResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -124,6 +132,7 @@ public final class GetOpensearchSecurityPluginConfigResult {
     	      this.id = defaults.id;
     	      this.project = defaults.project;
     	      this.serviceName = defaults.serviceName;
+    	      this.timeouts = defaults.timeouts;
         }
 
         @CustomType.Setter
@@ -182,6 +191,12 @@ public final class GetOpensearchSecurityPluginConfigResult {
             this.serviceName = serviceName;
             return this;
         }
+        @CustomType.Setter
+        public Builder timeouts(@Nullable GetOpensearchSecurityPluginConfigTimeouts timeouts) {
+
+            this.timeouts = timeouts;
+            return this;
+        }
         public GetOpensearchSecurityPluginConfigResult build() {
             final var _resultValue = new GetOpensearchSecurityPluginConfigResult();
             _resultValue.adminEnabled = adminEnabled;
@@ -191,6 +206,7 @@ public final class GetOpensearchSecurityPluginConfigResult {
             _resultValue.id = id;
             _resultValue.project = project;
             _resultValue.serviceName = serviceName;
+            _resultValue.timeouts = timeouts;
             return _resultValue;
         }
     }

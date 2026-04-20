@@ -62,6 +62,8 @@ type GetServicePlanResult struct {
 	NodeCount int `pulumi:"nodeCount"`
 	// Hourly object storage price per GiB in this region in USD.
 	ObjectStorageGbPriceUsd string `pulumi:"objectStorageGbPriceUsd"`
+	// Number of primary nodes in this Valkey cluster service plan.
+	PrimaryCount int `pulumi:"primaryCount"`
 	// Project name.
 	Project string `pulumi:"project"`
 	// Service plan name.
@@ -164,6 +166,11 @@ func (o GetServicePlanResultOutput) NodeCount() pulumi.IntOutput {
 // Hourly object storage price per GiB in this region in USD.
 func (o GetServicePlanResultOutput) ObjectStorageGbPriceUsd() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServicePlanResult) string { return v.ObjectStorageGbPriceUsd }).(pulumi.StringOutput)
+}
+
+// Number of primary nodes in this Valkey cluster service plan.
+func (o GetServicePlanResultOutput) PrimaryCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServicePlanResult) int { return v.PrimaryCount }).(pulumi.IntOutput)
 }
 
 // Project name.

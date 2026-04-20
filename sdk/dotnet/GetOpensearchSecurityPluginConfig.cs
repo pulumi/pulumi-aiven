@@ -91,16 +91,19 @@ namespace Pulumi.Aiven
     public sealed class GetOpensearchSecurityPluginConfigArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name.
         /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service name.
         /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
+
+        [Input("timeouts")]
+        public Inputs.GetOpensearchSecurityPluginConfigTimeoutsArgs? Timeouts { get; set; }
 
         public GetOpensearchSecurityPluginConfigArgs()
         {
@@ -111,16 +114,19 @@ namespace Pulumi.Aiven
     public sealed class GetOpensearchSecurityPluginConfigInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service name.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
+
+        [Input("timeouts")]
+        public Input<Inputs.GetOpensearchSecurityPluginConfigTimeoutsInputArgs>? Timeouts { get; set; }
 
         public GetOpensearchSecurityPluginConfigInvokeArgs()
         {
@@ -133,33 +139,34 @@ namespace Pulumi.Aiven
     public sealed class GetOpensearchSecurityPluginConfigResult
     {
         /// <summary>
-        /// Whether the os-sec-admin user is enabled. This indicates whether OpenSearch Security management is enabled. This is always true when the os-sec-admin password was set at least once.
+        /// security plugin admin defined.
         /// </summary>
         public readonly bool AdminEnabled;
         /// <summary>
-        /// The password for the os-sec-admin user.
+        /// Current os-sec-admin password.
         /// </summary>
         public readonly string AdminPassword;
         /// <summary>
-        /// Whether the security plugin is available. This is always true for recently created services.
+        /// Opensearch security available for the service.
         /// </summary>
         public readonly bool Available;
         /// <summary>
-        /// Whether the security plugin is enabled. This is always true for recently created services.
+        /// Opensearch security enabled for the service.
         /// </summary>
         public readonly bool Enabled;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// Resource ID composed as: `project/service_name`.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name.
         /// </summary>
         public readonly string Project;
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service name.
         /// </summary>
         public readonly string ServiceName;
+        public readonly Outputs.GetOpensearchSecurityPluginConfigTimeoutsResult? Timeouts;
 
         [OutputConstructor]
         private GetOpensearchSecurityPluginConfigResult(
@@ -175,7 +182,9 @@ namespace Pulumi.Aiven
 
             string project,
 
-            string serviceName)
+            string serviceName,
+
+            Outputs.GetOpensearchSecurityPluginConfigTimeoutsResult? timeouts)
         {
             AdminEnabled = adminEnabled;
             AdminPassword = adminPassword;
@@ -184,6 +193,7 @@ namespace Pulumi.Aiven
             Id = id;
             Project = project;
             ServiceName = serviceName;
+            Timeouts = timeouts;
         }
     }
 }

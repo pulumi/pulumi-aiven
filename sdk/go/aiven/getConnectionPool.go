@@ -52,33 +52,35 @@ func LookupConnectionPool(ctx *pulumi.Context, args *LookupConnectionPoolArgs, o
 
 // A collection of arguments for invoking getConnectionPool.
 type LookupConnectionPoolArgs struct {
-	// Name of the pool. Changing this property forces recreation of the resource.
+	// PgBouncer connection pool name.
 	PoolName string `pulumi:"poolName"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name.
 	Project string `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName string `pulumi:"serviceName"`
+	// Service name.
+	ServiceName string                     `pulumi:"serviceName"`
+	Timeouts    *GetConnectionPoolTimeouts `pulumi:"timeouts"`
 }
 
 // A collection of values returned by getConnectionPool.
 type LookupConnectionPoolResult struct {
-	// The URI for connecting to the pool.
+	// Connection URI for the DB pool.
 	ConnectionUri string `pulumi:"connectionUri"`
-	// The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Service database name.
 	DatabaseName string `pulumi:"databaseName"`
-	// The provider-assigned unique ID for this managed resource.
+	// Resource ID composed as: `project/service_name/pool_name`.
 	Id string `pulumi:"id"`
-	// The [operational mode](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling#pooling-modes). The possible values are `session`, `statement` and `transaction`. The default value is `transaction`.
+	// PGBouncer pool mode. The possible values are `session`, `statement` and `transaction`. The default value is `transaction`.
 	PoolMode string `pulumi:"poolMode"`
-	// Name of the pool. Changing this property forces recreation of the resource.
+	// PgBouncer connection pool name.
 	PoolName string `pulumi:"poolName"`
-	// The number of PostgreSQL server connections this pool can use at a time. This does not affect the number of incoming connections. Each pool can handle a minimum of 5000 client connections. The default value is `10`.
+	// Size of PGBouncer's PostgreSQL side connection pool. The default value is `10`.
 	PoolSize int `pulumi:"poolSize"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name.
 	Project string `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName string `pulumi:"serviceName"`
-	// The name of the service user used to connect to the database. To set up proper dependencies please refer to this variable as a reference.
+	// Service name.
+	ServiceName string                     `pulumi:"serviceName"`
+	Timeouts    *GetConnectionPoolTimeouts `pulumi:"timeouts"`
+	// Service username.
 	Username string `pulumi:"username"`
 }
 
@@ -93,12 +95,13 @@ func LookupConnectionPoolOutput(ctx *pulumi.Context, args LookupConnectionPoolOu
 
 // A collection of arguments for invoking getConnectionPool.
 type LookupConnectionPoolOutputArgs struct {
-	// Name of the pool. Changing this property forces recreation of the resource.
+	// PgBouncer connection pool name.
 	PoolName pulumi.StringInput `pulumi:"poolName"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name.
 	Project pulumi.StringInput `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName pulumi.StringInput `pulumi:"serviceName"`
+	// Service name.
+	ServiceName pulumi.StringInput                `pulumi:"serviceName"`
+	Timeouts    GetConnectionPoolTimeoutsPtrInput `pulumi:"timeouts"`
 }
 
 func (LookupConnectionPoolOutputArgs) ElementType() reflect.Type {
@@ -120,47 +123,51 @@ func (o LookupConnectionPoolResultOutput) ToLookupConnectionPoolResultOutputWith
 	return o
 }
 
-// The URI for connecting to the pool.
+// Connection URI for the DB pool.
 func (o LookupConnectionPoolResultOutput) ConnectionUri() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectionPoolResult) string { return v.ConnectionUri }).(pulumi.StringOutput)
 }
 
-// The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// Service database name.
 func (o LookupConnectionPoolResultOutput) DatabaseName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectionPoolResult) string { return v.DatabaseName }).(pulumi.StringOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// Resource ID composed as: `project/service_name/pool_name`.
 func (o LookupConnectionPoolResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectionPoolResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The [operational mode](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling#pooling-modes). The possible values are `session`, `statement` and `transaction`. The default value is `transaction`.
+// PGBouncer pool mode. The possible values are `session`, `statement` and `transaction`. The default value is `transaction`.
 func (o LookupConnectionPoolResultOutput) PoolMode() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectionPoolResult) string { return v.PoolMode }).(pulumi.StringOutput)
 }
 
-// Name of the pool. Changing this property forces recreation of the resource.
+// PgBouncer connection pool name.
 func (o LookupConnectionPoolResultOutput) PoolName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectionPoolResult) string { return v.PoolName }).(pulumi.StringOutput)
 }
 
-// The number of PostgreSQL server connections this pool can use at a time. This does not affect the number of incoming connections. Each pool can handle a minimum of 5000 client connections. The default value is `10`.
+// Size of PGBouncer's PostgreSQL side connection pool. The default value is `10`.
 func (o LookupConnectionPoolResultOutput) PoolSize() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupConnectionPoolResult) int { return v.PoolSize }).(pulumi.IntOutput)
 }
 
-// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// Project name.
 func (o LookupConnectionPoolResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectionPoolResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
-// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// Service name.
 func (o LookupConnectionPoolResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectionPoolResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// The name of the service user used to connect to the database. To set up proper dependencies please refer to this variable as a reference.
+func (o LookupConnectionPoolResultOutput) Timeouts() GetConnectionPoolTimeoutsPtrOutput {
+	return o.ApplyT(func(v LookupConnectionPoolResult) *GetConnectionPoolTimeouts { return v.Timeouts }).(GetConnectionPoolTimeoutsPtrOutput)
+}
+
+// Service username.
 func (o LookupConnectionPoolResultOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectionPoolResult) string { return v.Username }).(pulumi.StringOutput)
 }

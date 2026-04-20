@@ -26,7 +26,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? BackupMinute;
         /// <summary>
-        /// Enum: `25.3`, and newer. ClickHouse major version.
+        /// Enum: `25.3`, `25.8`, and newer. ClickHouse major version.
         /// </summary>
         public readonly string? ClickhouseVersion;
         /// <summary>

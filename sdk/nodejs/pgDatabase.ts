@@ -61,11 +61,11 @@ export class PgDatabase extends pulumi.CustomResource {
      */
     declare public readonly databaseName: pulumi.Output<string>;
     /**
-     * Default string sort order (`LC_COLLATE`) of the database. Maximum length: `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+     * Default string sort order (`LC_COLLATE`) of the database. Length must be between `1` and `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
      */
     declare public readonly lcCollate: pulumi.Output<string>;
     /**
-     * Default character classification (`LC_CTYPE`) of the database. Maximum length: `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+     * Default character classification (`LC_CTYPE`) of the database. Length must be between `1` and `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
      */
     declare public readonly lcCtype: pulumi.Output<string>;
     /**
@@ -137,11 +137,11 @@ export interface PgDatabaseState {
      */
     databaseName?: pulumi.Input<string>;
     /**
-     * Default string sort order (`LC_COLLATE`) of the database. Maximum length: `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+     * Default string sort order (`LC_COLLATE`) of the database. Length must be between `1` and `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
      */
     lcCollate?: pulumi.Input<string>;
     /**
-     * Default character classification (`LC_CTYPE`) of the database. Maximum length: `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+     * Default character classification (`LC_CTYPE`) of the database. Length must be between `1` and `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
      */
     lcCtype?: pulumi.Input<string>;
     /**
@@ -170,11 +170,11 @@ export interface PgDatabaseArgs {
      */
     databaseName: pulumi.Input<string>;
     /**
-     * Default string sort order (`LC_COLLATE`) of the database. Maximum length: `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+     * Default string sort order (`LC_COLLATE`) of the database. Length must be between `1` and `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
      */
     lcCollate?: pulumi.Input<string>;
     /**
-     * Default character classification (`LC_CTYPE`) of the database. Maximum length: `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+     * Default character classification (`LC_CTYPE`) of the database. Length must be between `1` and `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
      */
     lcCtype?: pulumi.Input<string>;
     /**

@@ -84,7 +84,7 @@ export class Cmk extends pulumi.CustomResource {
      */
     declare public readonly project: pulumi.Output<string>;
     /**
-     * The unique identifier for the CMK in the cloud provider's KMS. In AWS, this is the Key ARN; in Google Cloud the Resource Name; and in Oracle Cloud the Key OCID. Maximum length: `512`. Changing this property forces recreation of the resource.
+     * The unique identifier for the CMK in the cloud provider's KMS. In AWS, this is the Key ARN; in Google Cloud the Resource Name; and in Oracle Cloud the Key OCID. Length must be between `1` and `512`. Changing this property forces recreation of the resource.
      */
     declare public readonly resource: pulumi.Output<string>;
     /**
@@ -170,7 +170,7 @@ export interface CmkState {
      */
     project?: pulumi.Input<string>;
     /**
-     * The unique identifier for the CMK in the cloud provider's KMS. In AWS, this is the Key ARN; in Google Cloud the Resource Name; and in Oracle Cloud the Key OCID. Maximum length: `512`. Changing this property forces recreation of the resource.
+     * The unique identifier for the CMK in the cloud provider's KMS. In AWS, this is the Key ARN; in Google Cloud the Resource Name; and in Oracle Cloud the Key OCID. Length must be between `1` and `512`. Changing this property forces recreation of the resource.
      */
     resource?: pulumi.Input<string>;
     /**
@@ -201,7 +201,7 @@ export interface CmkArgs {
      */
     project: pulumi.Input<string>;
     /**
-     * The unique identifier for the CMK in the cloud provider's KMS. In AWS, this is the Key ARN; in Google Cloud the Resource Name; and in Oracle Cloud the Key OCID. Maximum length: `512`. Changing this property forces recreation of the resource.
+     * The unique identifier for the CMK in the cloud provider's KMS. In AWS, this is the Key ARN; in Google Cloud the Resource Name; and in Oracle Cloud the Key OCID. Length must be between `1` and `512`. Changing this property forces recreation of the resource.
      */
     resource: pulumi.Input<string>;
     timeouts?: pulumi.Input<inputs.CmkTimeouts>;

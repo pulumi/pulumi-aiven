@@ -3,119 +3,126 @@
 
 package com.pulumi.aiven.outputs;
 
+import com.pulumi.aiven.outputs.GetConnectionPoolTimeouts;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetConnectionPoolResult {
     /**
-     * @return The URI for connecting to the pool.
+     * @return Connection URI for the DB pool.
      * 
      */
     private String connectionUri;
     /**
-     * @return The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service database name.
      * 
      */
     private String databaseName;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Resource ID composed as: `project/service_name/pool_name`.
      * 
      */
     private String id;
     /**
-     * @return The [operational mode](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling#pooling-modes). The possible values are `session`, `statement` and `transaction`. The default value is `transaction`.
+     * @return PGBouncer pool mode. The possible values are `session`, `statement` and `transaction`. The default value is `transaction`.
      * 
      */
     private String poolMode;
     /**
-     * @return Name of the pool. Changing this property forces recreation of the resource.
+     * @return PgBouncer connection pool name.
      * 
      */
     private String poolName;
     /**
-     * @return The number of PostgreSQL server connections this pool can use at a time. This does not affect the number of incoming connections. Each pool can handle a minimum of 5000 client connections. The default value is `10`.
+     * @return Size of PGBouncer&#39;s PostgreSQL side connection pool. The default value is `10`.
      * 
      */
     private Integer poolSize;
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name.
      * 
      */
     private String project;
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service name.
      * 
      */
     private String serviceName;
+    private @Nullable GetConnectionPoolTimeouts timeouts;
     /**
-     * @return The name of the service user used to connect to the database. To set up proper dependencies please refer to this variable as a reference.
+     * @return Service username.
      * 
      */
     private String username;
 
     private GetConnectionPoolResult() {}
     /**
-     * @return The URI for connecting to the pool.
+     * @return Connection URI for the DB pool.
      * 
      */
     public String connectionUri() {
         return this.connectionUri;
     }
     /**
-     * @return The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service database name.
      * 
      */
     public String databaseName() {
         return this.databaseName;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Resource ID composed as: `project/service_name/pool_name`.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return The [operational mode](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling#pooling-modes). The possible values are `session`, `statement` and `transaction`. The default value is `transaction`.
+     * @return PGBouncer pool mode. The possible values are `session`, `statement` and `transaction`. The default value is `transaction`.
      * 
      */
     public String poolMode() {
         return this.poolMode;
     }
     /**
-     * @return Name of the pool. Changing this property forces recreation of the resource.
+     * @return PgBouncer connection pool name.
      * 
      */
     public String poolName() {
         return this.poolName;
     }
     /**
-     * @return The number of PostgreSQL server connections this pool can use at a time. This does not affect the number of incoming connections. Each pool can handle a minimum of 5000 client connections. The default value is `10`.
+     * @return Size of PGBouncer&#39;s PostgreSQL side connection pool. The default value is `10`.
      * 
      */
     public Integer poolSize() {
         return this.poolSize;
     }
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name.
      * 
      */
     public String project() {
         return this.project;
     }
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service name.
      * 
      */
     public String serviceName() {
         return this.serviceName;
     }
+    public Optional<GetConnectionPoolTimeouts> timeouts() {
+        return Optional.ofNullable(this.timeouts);
+    }
     /**
-     * @return The name of the service user used to connect to the database. To set up proper dependencies please refer to this variable as a reference.
+     * @return Service username.
      * 
      */
     public String username() {
@@ -139,6 +146,7 @@ public final class GetConnectionPoolResult {
         private Integer poolSize;
         private String project;
         private String serviceName;
+        private @Nullable GetConnectionPoolTimeouts timeouts;
         private String username;
         public Builder() {}
         public Builder(GetConnectionPoolResult defaults) {
@@ -151,6 +159,7 @@ public final class GetConnectionPoolResult {
     	      this.poolSize = defaults.poolSize;
     	      this.project = defaults.project;
     	      this.serviceName = defaults.serviceName;
+    	      this.timeouts = defaults.timeouts;
     	      this.username = defaults.username;
         }
 
@@ -219,6 +228,12 @@ public final class GetConnectionPoolResult {
             return this;
         }
         @CustomType.Setter
+        public Builder timeouts(@Nullable GetConnectionPoolTimeouts timeouts) {
+
+            this.timeouts = timeouts;
+            return this;
+        }
+        @CustomType.Setter
         public Builder username(String username) {
             if (username == null) {
               throw new MissingRequiredPropertyException("GetConnectionPoolResult", "username");
@@ -236,6 +251,7 @@ public final class GetConnectionPoolResult {
             _resultValue.poolSize = poolSize;
             _resultValue.project = project;
             _resultValue.serviceName = serviceName;
+            _resultValue.timeouts = timeouts;
             _resultValue.username = username;
             return _resultValue;
         }

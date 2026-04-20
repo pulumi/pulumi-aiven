@@ -19,7 +19,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Creates and manages an Aiven for PostgreSQL® service user. If this resource is missing (for example, after a service power off), it&#39;s removed from the state and a new create plan is generated.
+ * Creates and manages an Aiven for PostgreSQL® service user. The built-in admin user belongs to the service itself. Write-only password management is not supported. If this resource is missing (for example, after a service power off), it&#39;s removed from the state and a new create plan is generated.
  * 
  * ## Example Usage
  * 
@@ -50,15 +50,6 @@ import javax.annotation.Nullable;
  *             .project(exampleProject.project())
  *             .username("example-service-user")
  *             .password(serviceUserPassword)
- *             .build());
- * 
- *         // Each service has a default admin user with the username avnadmin.
- *         var adminUser = new PgUser("adminUser", PgUserArgs.builder()
- *             .serviceName(examplePostgres.serviceName())
- *             .project(exampleProject.project())
- *             .username("avnadmin")
- *             .password(serviceUserPassword)
- *             .pgAllowReplication(true)
  *             .build());
  * 
  *     }
@@ -104,14 +95,14 @@ public class PgUser extends com.pulumi.resources.CustomResource {
         return this.accessKey;
     }
     /**
-     * The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Value must be between `8` and `256`.
+     * The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
      * 
      */
     @Export(name="password", refs={String.class}, tree="[0]")
     private Output<String> password;
 
     /**
-     * @return The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Value must be between `8` and `256`.
+     * @return The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
      * 
      */
     public Output<String> password() {
@@ -119,7 +110,7 @@ public class PgUser extends com.pulumi.resources.CustomResource {
     }
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Value must be between `8` and `256`.
+     * The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Length must be between `8` and `256`.
      * 
      */
     @Export(name="passwordWo", refs={String.class}, tree="[0]")
@@ -127,7 +118,7 @@ public class PgUser extends com.pulumi.resources.CustomResource {
 
     /**
      * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Value must be between `8` and `256`.
+     * The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Length must be between `8` and `256`.
      * 
      */
     public Output<Optional<String>> passwordWo() {

@@ -12,7 +12,7 @@ namespace Pulumi.Aiven
     public static class GetClickhouseUser
     {
         /// <summary>
-        /// Gets information about a ClickHouse user.
+        /// Gets information about an Aiven for ClickHouse user.
         /// 
         /// ## Example Usage
         /// 
@@ -38,7 +38,7 @@ namespace Pulumi.Aiven
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetClickhouseUserResult>("aiven:index/getClickhouseUser:getClickhouseUser", args ?? new GetClickhouseUserArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Gets information about a ClickHouse user.
+        /// Gets information about an Aiven for ClickHouse user.
         /// 
         /// ## Example Usage
         /// 
@@ -64,7 +64,7 @@ namespace Pulumi.Aiven
             => global::Pulumi.Deployment.Instance.Invoke<GetClickhouseUserResult>("aiven:index/getClickhouseUser:getClickhouseUser", args ?? new GetClickhouseUserInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Gets information about a ClickHouse user.
+        /// Gets information about an Aiven for ClickHouse user.
         /// 
         /// ## Example Usage
         /// 
@@ -94,22 +94,31 @@ namespace Pulumi.Aiven
     public sealed class GetClickhouseUserArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name.
         /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service name.
         /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
+        [Input("timeouts")]
+        public Inputs.GetClickhouseUserTimeoutsArgs? Timeouts { get; set; }
+
         /// <summary>
-        /// The name of the ClickHouse user. Changing this property forces recreation of the resource.
+        /// User name. Exactly one of the fields must be specified: `Uuid` or `Username`.
         /// </summary>
-        [Input("username", required: true)]
-        public string Username { get; set; } = null!;
+        [Input("username")]
+        public string? Username { get; set; }
+
+        /// <summary>
+        /// User identifier. Exactly one of the fields must be specified: `Uuid` or `Username`.
+        /// </summary>
+        [Input("uuid")]
+        public string? Uuid { get; set; }
 
         public GetClickhouseUserArgs()
         {
@@ -120,22 +129,31 @@ namespace Pulumi.Aiven
     public sealed class GetClickhouseUserInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service name.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
+        [Input("timeouts")]
+        public Input<Inputs.GetClickhouseUserTimeoutsInputArgs>? Timeouts { get; set; }
+
         /// <summary>
-        /// The name of the ClickHouse user. Changing this property forces recreation of the resource.
+        /// User name. Exactly one of the fields must be specified: `Uuid` or `Username`.
         /// </summary>
-        [Input("username", required: true)]
-        public Input<string> Username { get; set; } = null!;
+        [Input("username")]
+        public Input<string>? Username { get; set; }
+
+        /// <summary>
+        /// User identifier. Exactly one of the fields must be specified: `Uuid` or `Username`.
+        /// </summary>
+        [Input("uuid")]
+        public Input<string>? Uuid { get; set; }
 
         public GetClickhouseUserInvokeArgs()
         {
@@ -148,31 +166,32 @@ namespace Pulumi.Aiven
     public sealed class GetClickhouseUserResult
     {
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// Resource ID composed as: `project/service_name/uuid`.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+        /// The password of the service user (auto-generated if not provided). The field conflicts with `PasswordWo`.
         /// </summary>
         public readonly string Password;
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name.
         /// </summary>
         public readonly string Project;
         /// <summary>
-        /// Indicates if a ClickHouse user is required.
+        /// Required user.
         /// </summary>
         public readonly bool Required;
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service name.
         /// </summary>
         public readonly string ServiceName;
+        public readonly Outputs.GetClickhouseUserTimeoutsResult? Timeouts;
         /// <summary>
-        /// The name of the ClickHouse user. Changing this property forces recreation of the resource.
+        /// User name. Exactly one of the fields must be specified: `Uuid` or `Username`.
         /// </summary>
         public readonly string Username;
         /// <summary>
-        /// UUID of the ClickHouse user.
+        /// User identifier. Exactly one of the fields must be specified: `Uuid` or `Username`.
         /// </summary>
         public readonly string Uuid;
 
@@ -188,6 +207,8 @@ namespace Pulumi.Aiven
 
             string serviceName,
 
+            Outputs.GetClickhouseUserTimeoutsResult? timeouts,
+
             string username,
 
             string uuid)
@@ -197,6 +218,7 @@ namespace Pulumi.Aiven
             Project = project;
             Required = required;
             ServiceName = serviceName;
+            Timeouts = timeouts;
             Username = username;
             Uuid = uuid;
         }

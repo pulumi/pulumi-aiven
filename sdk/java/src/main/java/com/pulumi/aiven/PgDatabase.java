@@ -78,28 +78,28 @@ public class PgDatabase extends com.pulumi.resources.CustomResource {
         return this.databaseName;
     }
     /**
-     * Default string sort order (`LC_COLLATE`) of the database. Maximum length: `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+     * Default string sort order (`LC_COLLATE`) of the database. Length must be between `1` and `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="lcCollate", refs={String.class}, tree="[0]")
     private Output<String> lcCollate;
 
     /**
-     * @return Default string sort order (`LC_COLLATE`) of the database. Maximum length: `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+     * @return Default string sort order (`LC_COLLATE`) of the database. Length must be between `1` and `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> lcCollate() {
         return this.lcCollate;
     }
     /**
-     * Default character classification (`LC_CTYPE`) of the database. Maximum length: `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+     * Default character classification (`LC_CTYPE`) of the database. Length must be between `1` and `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="lcCtype", refs={String.class}, tree="[0]")
     private Output<String> lcCtype;
 
     /**
-     * @return Default character classification (`LC_CTYPE`) of the database. Maximum length: `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+     * @return Default character classification (`LC_CTYPE`) of the database. Length must be between `1` and `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> lcCtype() {

@@ -49,7 +49,7 @@ namespace Pulumi.Aiven
         public Output<string> BillingGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// Billing Group Name. Maximum length: `128`.
+        /// Billing Group Name. Length must be between `1` and `128`.
         /// </summary>
         [Output("billingGroupName")]
         public Output<string> BillingGroupName { get; private set; } = null!;
@@ -164,7 +164,7 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// Billing Group Name. Maximum length: `128`.
+        /// Billing Group Name. Length must be between `1` and `128`.
         /// </summary>
         [Input("billingGroupName", required: true)]
         public Input<string> BillingGroupName { get; set; } = null!;
@@ -247,7 +247,7 @@ namespace Pulumi.Aiven
         public Input<string>? BillingGroupId { get; set; }
 
         /// <summary>
-        /// Billing Group Name. Maximum length: `128`.
+        /// Billing Group Name. Length must be between `1` and `128`.
         /// </summary>
         [Input("billingGroupName")]
         public Input<string>? BillingGroupName { get; set; }

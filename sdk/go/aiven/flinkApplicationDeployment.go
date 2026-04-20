@@ -120,10 +120,10 @@ type FlinkApplicationDeployment struct {
 	RestartEnabled pulumi.BoolOutput `pulumi:"restartEnabled"`
 	// Service name. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// Job savepoint. Maximum length: `2048`. Changing this property forces recreation of the resource.
+	// Job savepoint. Length must be between `1` and `2048`. Changing this property forces recreation of the resource.
 	StartingSavepoint pulumi.StringPtrOutput                      `pulumi:"startingSavepoint"`
 	Timeouts          FlinkApplicationDeploymentTimeoutsPtrOutput `pulumi:"timeouts"`
-	// ApplicationVersion ID. Maximum length: `36`. Changing this property forces recreation of the resource.
+	// ApplicationVersion ID. Length must be exactly `36`. Changing this property forces recreation of the resource.
 	VersionId pulumi.StringOutput `pulumi:"versionId"`
 }
 
@@ -185,10 +185,10 @@ type flinkApplicationDeploymentState struct {
 	RestartEnabled *bool `pulumi:"restartEnabled"`
 	// Service name. Changing this property forces recreation of the resource.
 	ServiceName *string `pulumi:"serviceName"`
-	// Job savepoint. Maximum length: `2048`. Changing this property forces recreation of the resource.
+	// Job savepoint. Length must be between `1` and `2048`. Changing this property forces recreation of the resource.
 	StartingSavepoint *string                             `pulumi:"startingSavepoint"`
 	Timeouts          *FlinkApplicationDeploymentTimeouts `pulumi:"timeouts"`
-	// ApplicationVersion ID. Maximum length: `36`. Changing this property forces recreation of the resource.
+	// ApplicationVersion ID. Length must be exactly `36`. Changing this property forces recreation of the resource.
 	VersionId *string `pulumi:"versionId"`
 }
 
@@ -209,10 +209,10 @@ type FlinkApplicationDeploymentState struct {
 	RestartEnabled pulumi.BoolPtrInput
 	// Service name. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringPtrInput
-	// Job savepoint. Maximum length: `2048`. Changing this property forces recreation of the resource.
+	// Job savepoint. Length must be between `1` and `2048`. Changing this property forces recreation of the resource.
 	StartingSavepoint pulumi.StringPtrInput
 	Timeouts          FlinkApplicationDeploymentTimeoutsPtrInput
-	// ApplicationVersion ID. Maximum length: `36`. Changing this property forces recreation of the resource.
+	// ApplicationVersion ID. Length must be exactly `36`. Changing this property forces recreation of the resource.
 	VersionId pulumi.StringPtrInput
 }
 
@@ -231,10 +231,10 @@ type flinkApplicationDeploymentArgs struct {
 	RestartEnabled *bool `pulumi:"restartEnabled"`
 	// Service name. Changing this property forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
-	// Job savepoint. Maximum length: `2048`. Changing this property forces recreation of the resource.
+	// Job savepoint. Length must be between `1` and `2048`. Changing this property forces recreation of the resource.
 	StartingSavepoint *string                             `pulumi:"startingSavepoint"`
 	Timeouts          *FlinkApplicationDeploymentTimeouts `pulumi:"timeouts"`
-	// ApplicationVersion ID. Maximum length: `36`. Changing this property forces recreation of the resource.
+	// ApplicationVersion ID. Length must be exactly `36`. Changing this property forces recreation of the resource.
 	VersionId string `pulumi:"versionId"`
 }
 
@@ -250,10 +250,10 @@ type FlinkApplicationDeploymentArgs struct {
 	RestartEnabled pulumi.BoolPtrInput
 	// Service name. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringInput
-	// Job savepoint. Maximum length: `2048`. Changing this property forces recreation of the resource.
+	// Job savepoint. Length must be between `1` and `2048`. Changing this property forces recreation of the resource.
 	StartingSavepoint pulumi.StringPtrInput
 	Timeouts          FlinkApplicationDeploymentTimeoutsPtrInput
-	// ApplicationVersion ID. Maximum length: `36`. Changing this property forces recreation of the resource.
+	// ApplicationVersion ID. Length must be exactly `36`. Changing this property forces recreation of the resource.
 	VersionId pulumi.StringInput
 }
 
@@ -384,7 +384,7 @@ func (o FlinkApplicationDeploymentOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlinkApplicationDeployment) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// Job savepoint. Maximum length: `2048`. Changing this property forces recreation of the resource.
+// Job savepoint. Length must be between `1` and `2048`. Changing this property forces recreation of the resource.
 func (o FlinkApplicationDeploymentOutput) StartingSavepoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FlinkApplicationDeployment) pulumi.StringPtrOutput { return v.StartingSavepoint }).(pulumi.StringPtrOutput)
 }
@@ -393,7 +393,7 @@ func (o FlinkApplicationDeploymentOutput) Timeouts() FlinkApplicationDeploymentT
 	return o.ApplyT(func(v *FlinkApplicationDeployment) FlinkApplicationDeploymentTimeoutsPtrOutput { return v.Timeouts }).(FlinkApplicationDeploymentTimeoutsPtrOutput)
 }
 
-// ApplicationVersion ID. Maximum length: `36`. Changing this property forces recreation of the resource.
+// ApplicationVersion ID. Length must be exactly `36`. Changing this property forces recreation of the resource.
 func (o FlinkApplicationDeploymentOutput) VersionId() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlinkApplicationDeployment) pulumi.StringOutput { return v.VersionId }).(pulumi.StringOutput)
 }

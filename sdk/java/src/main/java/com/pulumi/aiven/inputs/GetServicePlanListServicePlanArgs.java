@@ -7,6 +7,7 @@ import com.pulumi.aiven.inputs.GetServicePlanListServicePlanRegionsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Map;
@@ -16,6 +17,21 @@ import java.util.Objects;
 public final class GetServicePlanListServicePlanArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final GetServicePlanListServicePlanArgs Empty = new GetServicePlanListServicePlanArgs();
+
+    /**
+     * True when the plan is a cluster plan with dedicated node groups.
+     * 
+     */
+    @Import(name="isClusterPlan", required=true)
+    private Output<Boolean> isClusterPlan;
+
+    /**
+     * @return True when the plan is a cluster plan with dedicated node groups.
+     * 
+     */
+    public Output<Boolean> isClusterPlan() {
+        return this.isClusterPlan;
+    }
 
     /**
      * Maximum amount of system memory as a percentage (0-100) the service can actually use after taking into account management overhead. This is relevant for memory bound services for which some service management operations require allocating proportional amount of memory on top the basic load.
@@ -45,6 +61,21 @@ public final class GetServicePlanListServicePlanArgs extends com.pulumi.resource
      */
     public Output<Integer> nodeCount() {
         return this.nodeCount;
+    }
+
+    /**
+     * Number of primary nodes in this Valkey cluster service plan.
+     * 
+     */
+    @Import(name="primaryCount", required=true)
+    private Output<Integer> primaryCount;
+
+    /**
+     * @return Number of primary nodes in this Valkey cluster service plan.
+     * 
+     */
+    public Output<Integer> primaryCount() {
+        return this.primaryCount;
     }
 
     /**
@@ -110,8 +141,10 @@ public final class GetServicePlanListServicePlanArgs extends com.pulumi.resource
     private GetServicePlanListServicePlanArgs() {}
 
     private GetServicePlanListServicePlanArgs(GetServicePlanListServicePlanArgs $) {
+        this.isClusterPlan = $.isClusterPlan;
         this.maxMemoryPercent = $.maxMemoryPercent;
         this.nodeCount = $.nodeCount;
+        this.primaryCount = $.primaryCount;
         this.regions = $.regions;
         this.servicePlan = $.servicePlan;
         this.serviceType = $.serviceType;
@@ -134,6 +167,27 @@ public final class GetServicePlanListServicePlanArgs extends com.pulumi.resource
 
         public Builder(GetServicePlanListServicePlanArgs defaults) {
             $ = new GetServicePlanListServicePlanArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param isClusterPlan True when the plan is a cluster plan with dedicated node groups.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isClusterPlan(Output<Boolean> isClusterPlan) {
+            $.isClusterPlan = isClusterPlan;
+            return this;
+        }
+
+        /**
+         * @param isClusterPlan True when the plan is a cluster plan with dedicated node groups.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isClusterPlan(Boolean isClusterPlan) {
+            return isClusterPlan(Output.of(isClusterPlan));
         }
 
         /**
@@ -176,6 +230,27 @@ public final class GetServicePlanListServicePlanArgs extends com.pulumi.resource
          */
         public Builder nodeCount(Integer nodeCount) {
             return nodeCount(Output.of(nodeCount));
+        }
+
+        /**
+         * @param primaryCount Number of primary nodes in this Valkey cluster service plan.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder primaryCount(Output<Integer> primaryCount) {
+            $.primaryCount = primaryCount;
+            return this;
+        }
+
+        /**
+         * @param primaryCount Number of primary nodes in this Valkey cluster service plan.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder primaryCount(Integer primaryCount) {
+            return primaryCount(Output.of(primaryCount));
         }
 
         /**
@@ -263,11 +338,17 @@ public final class GetServicePlanListServicePlanArgs extends com.pulumi.resource
         }
 
         public GetServicePlanListServicePlanArgs build() {
+            if ($.isClusterPlan == null) {
+                throw new MissingRequiredPropertyException("GetServicePlanListServicePlanArgs", "isClusterPlan");
+            }
             if ($.maxMemoryPercent == null) {
                 throw new MissingRequiredPropertyException("GetServicePlanListServicePlanArgs", "maxMemoryPercent");
             }
             if ($.nodeCount == null) {
                 throw new MissingRequiredPropertyException("GetServicePlanListServicePlanArgs", "nodeCount");
+            }
+            if ($.primaryCount == null) {
+                throw new MissingRequiredPropertyException("GetServicePlanListServicePlanArgs", "primaryCount");
             }
             if ($.regions == null) {
                 throw new MissingRequiredPropertyException("GetServicePlanListServicePlanArgs", "regions");

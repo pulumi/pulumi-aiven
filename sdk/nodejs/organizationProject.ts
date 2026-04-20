@@ -48,7 +48,7 @@ export class OrganizationProject extends pulumi.CustomResource {
      */
     declare public readonly basePort: pulumi.Output<number>;
     /**
-     * Billing group ID to assign to the project. It's required when moving projects between organizations.
+     * Billing group ID to assign to the project. It's required when moving projects between organizations. Minimum length: `1`.
      */
     declare public readonly billingGroupId: pulumi.Output<string>;
     /**
@@ -139,7 +139,7 @@ export interface OrganizationProjectState {
      */
     basePort?: pulumi.Input<number>;
     /**
-     * Billing group ID to assign to the project. It's required when moving projects between organizations.
+     * Billing group ID to assign to the project. It's required when moving projects between organizations. Minimum length: `1`.
      */
     billingGroupId?: pulumi.Input<string>;
     /**
@@ -178,7 +178,7 @@ export interface OrganizationProjectArgs {
      */
     basePort?: pulumi.Input<number>;
     /**
-     * Billing group ID to assign to the project. It's required when moving projects between organizations.
+     * Billing group ID to assign to the project. It's required when moving projects between organizations. Minimum length: `1`.
      */
     billingGroupId: pulumi.Input<string>;
     /**

@@ -6,6 +6,7 @@ package com.pulumi.aiven.inputs;
 import com.pulumi.aiven.inputs.GetServicePlanListServicePlanRegions;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Map;
@@ -15,6 +16,21 @@ import java.util.Objects;
 public final class GetServicePlanListServicePlan extends com.pulumi.resources.InvokeArgs {
 
     public static final GetServicePlanListServicePlan Empty = new GetServicePlanListServicePlan();
+
+    /**
+     * True when the plan is a cluster plan with dedicated node groups.
+     * 
+     */
+    @Import(name="isClusterPlan", required=true)
+    private Boolean isClusterPlan;
+
+    /**
+     * @return True when the plan is a cluster plan with dedicated node groups.
+     * 
+     */
+    public Boolean isClusterPlan() {
+        return this.isClusterPlan;
+    }
 
     /**
      * Maximum amount of system memory as a percentage (0-100) the service can actually use after taking into account management overhead. This is relevant for memory bound services for which some service management operations require allocating proportional amount of memory on top the basic load.
@@ -44,6 +60,21 @@ public final class GetServicePlanListServicePlan extends com.pulumi.resources.In
      */
     public Integer nodeCount() {
         return this.nodeCount;
+    }
+
+    /**
+     * Number of primary nodes in this Valkey cluster service plan.
+     * 
+     */
+    @Import(name="primaryCount", required=true)
+    private Integer primaryCount;
+
+    /**
+     * @return Number of primary nodes in this Valkey cluster service plan.
+     * 
+     */
+    public Integer primaryCount() {
+        return this.primaryCount;
     }
 
     /**
@@ -109,8 +140,10 @@ public final class GetServicePlanListServicePlan extends com.pulumi.resources.In
     private GetServicePlanListServicePlan() {}
 
     private GetServicePlanListServicePlan(GetServicePlanListServicePlan $) {
+        this.isClusterPlan = $.isClusterPlan;
         this.maxMemoryPercent = $.maxMemoryPercent;
         this.nodeCount = $.nodeCount;
+        this.primaryCount = $.primaryCount;
         this.regions = $.regions;
         this.servicePlan = $.servicePlan;
         this.serviceType = $.serviceType;
@@ -136,6 +169,17 @@ public final class GetServicePlanListServicePlan extends com.pulumi.resources.In
         }
 
         /**
+         * @param isClusterPlan True when the plan is a cluster plan with dedicated node groups.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isClusterPlan(Boolean isClusterPlan) {
+            $.isClusterPlan = isClusterPlan;
+            return this;
+        }
+
+        /**
          * @param maxMemoryPercent Maximum amount of system memory as a percentage (0-100) the service can actually use after taking into account management overhead. This is relevant for memory bound services for which some service management operations require allocating proportional amount of memory on top the basic load.
          * 
          * @return builder
@@ -154,6 +198,17 @@ public final class GetServicePlanListServicePlan extends com.pulumi.resources.In
          */
         public Builder nodeCount(Integer nodeCount) {
             $.nodeCount = nodeCount;
+            return this;
+        }
+
+        /**
+         * @param primaryCount Number of primary nodes in this Valkey cluster service plan.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder primaryCount(Integer primaryCount) {
+            $.primaryCount = primaryCount;
             return this;
         }
 
@@ -202,11 +257,17 @@ public final class GetServicePlanListServicePlan extends com.pulumi.resources.In
         }
 
         public GetServicePlanListServicePlan build() {
+            if ($.isClusterPlan == null) {
+                throw new MissingRequiredPropertyException("GetServicePlanListServicePlan", "isClusterPlan");
+            }
             if ($.maxMemoryPercent == null) {
                 throw new MissingRequiredPropertyException("GetServicePlanListServicePlan", "maxMemoryPercent");
             }
             if ($.nodeCount == null) {
                 throw new MissingRequiredPropertyException("GetServicePlanListServicePlan", "nodeCount");
+            }
+            if ($.primaryCount == null) {
+                throw new MissingRequiredPropertyException("GetServicePlanListServicePlan", "primaryCount");
             }
             if ($.regions == null) {
                 throw new MissingRequiredPropertyException("GetServicePlanListServicePlan", "regions");

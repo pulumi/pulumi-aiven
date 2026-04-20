@@ -18,6 +18,7 @@ import com.pulumi.aiven.outputs.ServiceIntegrationEndpointExternalGoogleCloudBig
 import com.pulumi.aiven.outputs.ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig;
 import com.pulumi.aiven.outputs.ServiceIntegrationEndpointExternalKafkaUserConfig;
 import com.pulumi.aiven.outputs.ServiceIntegrationEndpointExternalMysqlUserConfig;
+import com.pulumi.aiven.outputs.ServiceIntegrationEndpointExternalObjectStorageConfigUserConfig;
 import com.pulumi.aiven.outputs.ServiceIntegrationEndpointExternalOpensearchLogsUserConfig;
 import com.pulumi.aiven.outputs.ServiceIntegrationEndpointExternalPostgresql;
 import com.pulumi.aiven.outputs.ServiceIntegrationEndpointExternalPrometheusUserConfig;
@@ -157,14 +158,14 @@ public class ServiceIntegrationEndpoint extends com.pulumi.resources.CustomResou
         return this.endpointName;
     }
     /**
-     * The type of service integration endpoint. The possible values are `autoscaler`, `datadog`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalAwsS3`, `externalAzureBlobStorage`, `externalClickhouse`, `externalElasticsearchLogs`, `externalGoogleCloudBigquery`, `externalGoogleCloudLogging`, `externalKafka`, `externalMysql`, `externalOpensearchLogs`, `externalPostgresql`, `externalPrometheus`, `externalRedis`, `externalSchemaRegistry`, `externalSumologicLogs`, `jolokia`, `prometheus` and `rsyslog`.
+     * The type of service integration endpoint. The possible values are `autoscaler`, `datadog`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalAwsS3`, `externalAzureBlobStorage`, `externalClickhouse`, `externalElasticsearchLogs`, `externalGoogleCloudBigquery`, `externalGoogleCloudLogging`, `externalKafka`, `externalMysql`, `externalObjectStorageConfig`, `externalOpensearchLogs`, `externalPostgresql`, `externalPrometheus`, `externalRedis`, `externalSchemaRegistry`, `externalSumologicLogs`, `jolokia`, `prometheus` and `rsyslog`.
      * 
      */
     @Export(name="endpointType", refs={String.class}, tree="[0]")
     private Output<String> endpointType;
 
     /**
-     * @return The type of service integration endpoint. The possible values are `autoscaler`, `datadog`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalAwsS3`, `externalAzureBlobStorage`, `externalClickhouse`, `externalElasticsearchLogs`, `externalGoogleCloudBigquery`, `externalGoogleCloudLogging`, `externalKafka`, `externalMysql`, `externalOpensearchLogs`, `externalPostgresql`, `externalPrometheus`, `externalRedis`, `externalSchemaRegistry`, `externalSumologicLogs`, `jolokia`, `prometheus` and `rsyslog`.
+     * @return The type of service integration endpoint. The possible values are `autoscaler`, `datadog`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalAwsS3`, `externalAzureBlobStorage`, `externalClickhouse`, `externalElasticsearchLogs`, `externalGoogleCloudBigquery`, `externalGoogleCloudLogging`, `externalKafka`, `externalMysql`, `externalObjectStorageConfig`, `externalOpensearchLogs`, `externalPostgresql`, `externalPrometheus`, `externalRedis`, `externalSchemaRegistry`, `externalSumologicLogs`, `jolokia`, `prometheus` and `rsyslog`.
      * 
      */
     public Output<String> endpointType() {
@@ -309,6 +310,20 @@ public class ServiceIntegrationEndpoint extends com.pulumi.resources.CustomResou
      */
     public Output<Optional<ServiceIntegrationEndpointExternalMysqlUserConfig>> externalMysqlUserConfig() {
         return Codegen.optional(this.externalMysqlUserConfig);
+    }
+    /**
+     * ExternalObjectStorageConfig user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
+     * 
+     */
+    @Export(name="externalObjectStorageConfigUserConfig", refs={ServiceIntegrationEndpointExternalObjectStorageConfigUserConfig.class}, tree="[0]")
+    private Output</* @Nullable */ ServiceIntegrationEndpointExternalObjectStorageConfigUserConfig> externalObjectStorageConfigUserConfig;
+
+    /**
+     * @return ExternalObjectStorageConfig user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
+     * 
+     */
+    public Output<Optional<ServiceIntegrationEndpointExternalObjectStorageConfigUserConfig>> externalObjectStorageConfigUserConfig() {
+        return Codegen.optional(this.externalObjectStorageConfigUserConfig);
     }
     /**
      * ExternalOpensearchLogs user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later

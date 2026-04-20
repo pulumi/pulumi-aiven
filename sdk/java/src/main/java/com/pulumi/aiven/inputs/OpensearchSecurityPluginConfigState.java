@@ -3,6 +3,7 @@
 
 package com.pulumi.aiven.inputs;
 
+import com.pulumi.aiven.inputs.OpensearchSecurityPluginConfigTimeoutsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -17,14 +18,14 @@ public final class OpensearchSecurityPluginConfigState extends com.pulumi.resour
     public static final OpensearchSecurityPluginConfigState Empty = new OpensearchSecurityPluginConfigState();
 
     /**
-     * Whether the os-sec-admin user is enabled. This indicates whether OpenSearch Security management is enabled. This is always true when the os-sec-admin password was set at least once.
+     * security plugin admin defined.
      * 
      */
     @Import(name="adminEnabled")
     private @Nullable Output<Boolean> adminEnabled;
 
     /**
-     * @return Whether the os-sec-admin user is enabled. This indicates whether OpenSearch Security management is enabled. This is always true when the os-sec-admin password was set at least once.
+     * @return security plugin admin defined.
      * 
      */
     public Optional<Output<Boolean>> adminEnabled() {
@@ -32,14 +33,14 @@ public final class OpensearchSecurityPluginConfigState extends com.pulumi.resour
     }
 
     /**
-     * The password for the os-sec-admin user.
+     * Current os-sec-admin password. Length must be between `8` and `256`.
      * 
      */
     @Import(name="adminPassword")
     private @Nullable Output<String> adminPassword;
 
     /**
-     * @return The password for the os-sec-admin user.
+     * @return Current os-sec-admin password. Length must be between `8` and `256`.
      * 
      */
     public Optional<Output<String>> adminPassword() {
@@ -47,14 +48,14 @@ public final class OpensearchSecurityPluginConfigState extends com.pulumi.resour
     }
 
     /**
-     * Whether the security plugin is available. This is always true for recently created services.
+     * Opensearch security available for the service.
      * 
      */
     @Import(name="available")
     private @Nullable Output<Boolean> available;
 
     /**
-     * @return Whether the security plugin is available. This is always true for recently created services.
+     * @return Opensearch security available for the service.
      * 
      */
     public Optional<Output<Boolean>> available() {
@@ -62,14 +63,14 @@ public final class OpensearchSecurityPluginConfigState extends com.pulumi.resour
     }
 
     /**
-     * Whether the security plugin is enabled. This is always true for recently created services.
+     * Opensearch security enabled for the service.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Whether the security plugin is enabled. This is always true for recently created services.
+     * @return Opensearch security enabled for the service.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -77,14 +78,14 @@ public final class OpensearchSecurityPluginConfigState extends com.pulumi.resour
     }
 
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="project")
     private @Nullable Output<String> project;
 
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> project() {
@@ -92,18 +93,25 @@ public final class OpensearchSecurityPluginConfigState extends com.pulumi.resour
     }
 
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="serviceName")
     private @Nullable Output<String> serviceName;
 
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service name. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> serviceName() {
         return Optional.ofNullable(this.serviceName);
+    }
+
+    @Import(name="timeouts")
+    private @Nullable Output<OpensearchSecurityPluginConfigTimeoutsArgs> timeouts;
+
+    public Optional<Output<OpensearchSecurityPluginConfigTimeoutsArgs>> timeouts() {
+        return Optional.ofNullable(this.timeouts);
     }
 
     private OpensearchSecurityPluginConfigState() {}
@@ -115,6 +123,7 @@ public final class OpensearchSecurityPluginConfigState extends com.pulumi.resour
         this.enabled = $.enabled;
         this.project = $.project;
         this.serviceName = $.serviceName;
+        this.timeouts = $.timeouts;
     }
 
     public static Builder builder() {
@@ -136,7 +145,7 @@ public final class OpensearchSecurityPluginConfigState extends com.pulumi.resour
         }
 
         /**
-         * @param adminEnabled Whether the os-sec-admin user is enabled. This indicates whether OpenSearch Security management is enabled. This is always true when the os-sec-admin password was set at least once.
+         * @param adminEnabled security plugin admin defined.
          * 
          * @return builder
          * 
@@ -147,7 +156,7 @@ public final class OpensearchSecurityPluginConfigState extends com.pulumi.resour
         }
 
         /**
-         * @param adminEnabled Whether the os-sec-admin user is enabled. This indicates whether OpenSearch Security management is enabled. This is always true when the os-sec-admin password was set at least once.
+         * @param adminEnabled security plugin admin defined.
          * 
          * @return builder
          * 
@@ -157,7 +166,7 @@ public final class OpensearchSecurityPluginConfigState extends com.pulumi.resour
         }
 
         /**
-         * @param adminPassword The password for the os-sec-admin user.
+         * @param adminPassword Current os-sec-admin password. Length must be between `8` and `256`.
          * 
          * @return builder
          * 
@@ -168,7 +177,7 @@ public final class OpensearchSecurityPluginConfigState extends com.pulumi.resour
         }
 
         /**
-         * @param adminPassword The password for the os-sec-admin user.
+         * @param adminPassword Current os-sec-admin password. Length must be between `8` and `256`.
          * 
          * @return builder
          * 
@@ -178,7 +187,7 @@ public final class OpensearchSecurityPluginConfigState extends com.pulumi.resour
         }
 
         /**
-         * @param available Whether the security plugin is available. This is always true for recently created services.
+         * @param available Opensearch security available for the service.
          * 
          * @return builder
          * 
@@ -189,7 +198,7 @@ public final class OpensearchSecurityPluginConfigState extends com.pulumi.resour
         }
 
         /**
-         * @param available Whether the security plugin is available. This is always true for recently created services.
+         * @param available Opensearch security available for the service.
          * 
          * @return builder
          * 
@@ -199,7 +208,7 @@ public final class OpensearchSecurityPluginConfigState extends com.pulumi.resour
         }
 
         /**
-         * @param enabled Whether the security plugin is enabled. This is always true for recently created services.
+         * @param enabled Opensearch security enabled for the service.
          * 
          * @return builder
          * 
@@ -210,7 +219,7 @@ public final class OpensearchSecurityPluginConfigState extends com.pulumi.resour
         }
 
         /**
-         * @param enabled Whether the security plugin is enabled. This is always true for recently created services.
+         * @param enabled Opensearch security enabled for the service.
          * 
          * @return builder
          * 
@@ -220,7 +229,7 @@ public final class OpensearchSecurityPluginConfigState extends com.pulumi.resour
         }
 
         /**
-         * @param project The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param project Project name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -231,7 +240,7 @@ public final class OpensearchSecurityPluginConfigState extends com.pulumi.resour
         }
 
         /**
-         * @param project The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param project Project name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -241,7 +250,7 @@ public final class OpensearchSecurityPluginConfigState extends com.pulumi.resour
         }
 
         /**
-         * @param serviceName The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param serviceName Service name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -252,13 +261,22 @@ public final class OpensearchSecurityPluginConfigState extends com.pulumi.resour
         }
 
         /**
-         * @param serviceName The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param serviceName Service name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
          */
         public Builder serviceName(String serviceName) {
             return serviceName(Output.of(serviceName));
+        }
+
+        public Builder timeouts(@Nullable Output<OpensearchSecurityPluginConfigTimeoutsArgs> timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
+        public Builder timeouts(OpensearchSecurityPluginConfigTimeoutsArgs timeouts) {
+            return timeouts(Output.of(timeouts));
         }
 
         public OpensearchSecurityPluginConfigState build() {

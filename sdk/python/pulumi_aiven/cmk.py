@@ -31,7 +31,7 @@ class CmkArgs:
 
         :param pulumi.Input[_builtins.str] cmk_provider: The cloud provider hosting the key management service (KMS). The possible values are `aws`, `gcp` and `oci`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] resource: The unique identifier for the CMK in the cloud provider's KMS. In AWS, this is the Key ARN; in Google Cloud the Resource Name; and in Oracle Cloud the Key OCID. Maximum length: `512`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] resource: The unique identifier for the CMK in the cloud provider's KMS. In AWS, this is the Key ARN; in Google Cloud the Resource Name; and in Oracle Cloud the Key OCID. Length must be between `1` and `512`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.bool] default_cmk: Mark the created CMK as default for all newly created services.
         """
         pulumi.set(__self__, "cmk_provider", cmk_provider)
@@ -70,7 +70,7 @@ class CmkArgs:
     @pulumi.getter
     def resource(self) -> pulumi.Input[_builtins.str]:
         """
-        The unique identifier for the CMK in the cloud provider's KMS. In AWS, this is the Key ARN; in Google Cloud the Resource Name; and in Oracle Cloud the Key OCID. Maximum length: `512`. Changing this property forces recreation of the resource.
+        The unique identifier for the CMK in the cloud provider's KMS. In AWS, this is the Key ARN; in Google Cloud the Resource Name; and in Oracle Cloud the Key OCID. Length must be between `1` and `512`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "resource")
 
@@ -120,7 +120,7 @@ class _CmkState:
         :param pulumi.Input[_builtins.str] created_at: Created At.
         :param pulumi.Input[_builtins.bool] default_cmk: Mark the created CMK as default for all newly created services.
         :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] resource: The unique identifier for the CMK in the cloud provider's KMS. In AWS, this is the Key ARN; in Google Cloud the Resource Name; and in Oracle Cloud the Key OCID. Maximum length: `512`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] resource: The unique identifier for the CMK in the cloud provider's KMS. In AWS, this is the Key ARN; in Google Cloud the Resource Name; and in Oracle Cloud the Key OCID. Length must be between `1` and `512`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] status: Status. The possible values are `current`, `deleted` and `old`.
         :param pulumi.Input[_builtins.str] updated_at: Updated At.
         """
@@ -207,7 +207,7 @@ class _CmkState:
     @pulumi.getter
     def resource(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The unique identifier for the CMK in the cloud provider's KMS. In AWS, this is the Key ARN; in Google Cloud the Resource Name; and in Oracle Cloud the Key OCID. Maximum length: `512`. Changing this property forces recreation of the resource.
+        The unique identifier for the CMK in the cloud provider's KMS. In AWS, this is the Key ARN; in Google Cloud the Resource Name; and in Oracle Cloud the Key OCID. Length must be between `1` and `512`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "resource")
 
@@ -295,7 +295,7 @@ class Cmk(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] cmk_provider: The cloud provider hosting the key management service (KMS). The possible values are `aws`, `gcp` and `oci`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.bool] default_cmk: Mark the created CMK as default for all newly created services.
         :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] resource: The unique identifier for the CMK in the cloud provider's KMS. In AWS, this is the Key ARN; in Google Cloud the Resource Name; and in Oracle Cloud the Key OCID. Maximum length: `512`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] resource: The unique identifier for the CMK in the cloud provider's KMS. In AWS, this is the Key ARN; in Google Cloud the Resource Name; and in Oracle Cloud the Key OCID. Length must be between `1` and `512`. Changing this property forces recreation of the resource.
         """
         ...
     @overload
@@ -407,7 +407,7 @@ class Cmk(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] created_at: Created At.
         :param pulumi.Input[_builtins.bool] default_cmk: Mark the created CMK as default for all newly created services.
         :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] resource: The unique identifier for the CMK in the cloud provider's KMS. In AWS, this is the Key ARN; in Google Cloud the Resource Name; and in Oracle Cloud the Key OCID. Maximum length: `512`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] resource: The unique identifier for the CMK in the cloud provider's KMS. In AWS, this is the Key ARN; in Google Cloud the Resource Name; and in Oracle Cloud the Key OCID. Length must be between `1` and `512`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] status: Status. The possible values are `current`, `deleted` and `old`.
         :param pulumi.Input[_builtins.str] updated_at: Updated At.
         """
@@ -470,7 +470,7 @@ class Cmk(pulumi.CustomResource):
     @pulumi.getter
     def resource(self) -> pulumi.Output[_builtins.str]:
         """
-        The unique identifier for the CMK in the cloud provider's KMS. In AWS, this is the Key ARN; in Google Cloud the Resource Name; and in Oracle Cloud the Key OCID. Maximum length: `512`. Changing this property forces recreation of the resource.
+        The unique identifier for the CMK in the cloud provider's KMS. In AWS, this is the Key ARN; in Google Cloud the Resource Name; and in Oracle Cloud the Key OCID. Length must be between `1` and `512`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "resource")
 

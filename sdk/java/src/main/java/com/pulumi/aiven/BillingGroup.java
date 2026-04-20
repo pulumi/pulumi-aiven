@@ -216,14 +216,14 @@ public class BillingGroup extends com.pulumi.resources.CustomResource {
         return this.company;
     }
     /**
-     * Billing group ID. Maximum length: `36`. Changing this property forces recreation of the resource.
+     * Billing group ID. Length must be exactly `36`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="copyFromBillingGroup", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> copyFromBillingGroup;
 
     /**
-     * @return Billing group ID. Maximum length: `36`. Changing this property forces recreation of the resource.
+     * @return Billing group ID. Length must be exactly `36`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<Optional<String>> copyFromBillingGroup() {
