@@ -63,7 +63,7 @@ export class OrganizationBillingGroup extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly billingGroupId: pulumi.Output<string>;
     /**
-     * Billing Group Name. Maximum length: `128`.
+     * Billing Group Name. Length must be between `1` and `128`.
      */
     declare public readonly billingGroupName: pulumi.Output<string>;
     /**
@@ -173,7 +173,7 @@ export interface OrganizationBillingGroupState {
      */
     billingGroupId?: pulumi.Input<string>;
     /**
-     * Billing Group Name. Maximum length: `128`.
+     * Billing Group Name. Length must be between `1` and `128`.
      */
     billingGroupName?: pulumi.Input<string>;
     /**
@@ -216,7 +216,7 @@ export interface OrganizationBillingGroupArgs {
      */
     billingEmails: pulumi.Input<pulumi.Input<inputs.OrganizationBillingGroupBillingEmail>[]>;
     /**
-     * Billing Group Name. Maximum length: `128`.
+     * Billing Group Name. Length must be between `1` and `128`.
      */
     billingGroupName: pulumi.Input<string>;
     /**

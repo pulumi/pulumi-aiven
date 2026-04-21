@@ -179,6 +179,10 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string ObjectStorageGbPriceUsd;
         /// <summary>
+        /// Number of primary nodes in this Valkey cluster service plan.
+        /// </summary>
+        public readonly int PrimaryCount;
+        /// <summary>
         /// Project name.
         /// </summary>
         public readonly string Project;
@@ -218,6 +222,8 @@ namespace Pulumi.Aiven
 
             string objectStorageGbPriceUsd,
 
+            int primaryCount,
+
             string project,
 
             string servicePlan,
@@ -238,6 +244,7 @@ namespace Pulumi.Aiven
             MaxMemoryPercent = maxMemoryPercent;
             NodeCount = nodeCount;
             ObjectStorageGbPriceUsd = objectStorageGbPriceUsd;
+            PrimaryCount = primaryCount;
             Project = project;
             ServicePlan = servicePlan;
             ServiceType = serviceType;

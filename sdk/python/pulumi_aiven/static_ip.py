@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['StaticIpArgs', 'StaticIp']
 
@@ -20,21 +22,28 @@ __all__ = ['StaticIpArgs', 'StaticIp']
 class StaticIpArgs:
     def __init__(__self__, *,
                  cloud_name: pulumi.Input[_builtins.str],
-                 project: pulumi.Input[_builtins.str]):
+                 project: pulumi.Input[_builtins.str],
+                 termination_protection: Optional[pulumi.Input[_builtins.bool]] = None,
+                 timeouts: Optional[pulumi.Input['StaticIpTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a StaticIp resource.
 
-        :param pulumi.Input[_builtins.str] cloud_name: Specifies the cloud that the static ip belongs to. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] cloud_name: Target cloud. Maximum length: `256`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.bool] termination_protection: Static IP address is protected against deletion. The default value is `false`.
         """
         pulumi.set(__self__, "cloud_name", cloud_name)
         pulumi.set(__self__, "project", project)
+        if termination_protection is not None:
+            pulumi.set(__self__, "termination_protection", termination_protection)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
 
     @_builtins.property
     @pulumi.getter(name="cloudName")
     def cloud_name(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the cloud that the static ip belongs to. Changing this property forces recreation of the resource.
+        Target cloud. Maximum length: `256`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "cloud_name")
 
@@ -46,13 +55,34 @@ class StaticIpArgs:
     @pulumi.getter
     def project(self) -> pulumi.Input[_builtins.str]:
         """
-        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Project name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
     @project.setter
     def project(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "project", value)
+
+    @_builtins.property
+    @pulumi.getter(name="terminationProtection")
+    def termination_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Static IP address is protected against deletion. The default value is `false`.
+        """
+        return pulumi.get(self, "termination_protection")
+
+    @termination_protection.setter
+    def termination_protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "termination_protection", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['StaticIpTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['StaticIpTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
 
 
 @pulumi.input_type
@@ -63,16 +93,19 @@ class _StaticIpState:
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  service_name: Optional[pulumi.Input[_builtins.str]] = None,
                  state: Optional[pulumi.Input[_builtins.str]] = None,
-                 static_ip_address_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 static_ip_address_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 termination_protection: Optional[pulumi.Input[_builtins.bool]] = None,
+                 timeouts: Optional[pulumi.Input['StaticIpTimeoutsArgs']] = None):
         """
         Input properties used for looking up and filtering StaticIp resources.
 
-        :param pulumi.Input[_builtins.str] cloud_name: Specifies the cloud that the static ip belongs to. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] ip_address: The address of the static ip.
-        :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] service_name: The service name the static ip is associated with.
-        :param pulumi.Input[_builtins.str] state: The state the static ip is in.
-        :param pulumi.Input[_builtins.str] static_ip_address_id: The static ip id of the resource. Should be used as a reference elsewhere.
+        :param pulumi.Input[_builtins.str] cloud_name: Target cloud. Maximum length: `256`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] ip_address: IPv4 address.
+        :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] service_name: Service name.
+        :param pulumi.Input[_builtins.str] state: Static IP address state. The possible values are `assigned`, `available`, `created`, `creating`, `deleted` and `deleting`.
+        :param pulumi.Input[_builtins.str] static_ip_address_id: Static IP address identifier.
+        :param pulumi.Input[_builtins.bool] termination_protection: Static IP address is protected against deletion. The default value is `false`.
         """
         if cloud_name is not None:
             pulumi.set(__self__, "cloud_name", cloud_name)
@@ -86,12 +119,16 @@ class _StaticIpState:
             pulumi.set(__self__, "state", state)
         if static_ip_address_id is not None:
             pulumi.set(__self__, "static_ip_address_id", static_ip_address_id)
+        if termination_protection is not None:
+            pulumi.set(__self__, "termination_protection", termination_protection)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
 
     @_builtins.property
     @pulumi.getter(name="cloudName")
     def cloud_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the cloud that the static ip belongs to. Changing this property forces recreation of the resource.
+        Target cloud. Maximum length: `256`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "cloud_name")
 
@@ -103,7 +140,7 @@ class _StaticIpState:
     @pulumi.getter(name="ipAddress")
     def ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The address of the static ip.
+        IPv4 address.
         """
         return pulumi.get(self, "ip_address")
 
@@ -115,7 +152,7 @@ class _StaticIpState:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Project name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -127,7 +164,7 @@ class _StaticIpState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The service name the static ip is associated with.
+        Service name.
         """
         return pulumi.get(self, "service_name")
 
@@ -139,7 +176,7 @@ class _StaticIpState:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The state the static ip is in.
+        Static IP address state. The possible values are `assigned`, `available`, `created`, `creating`, `deleted` and `deleting`.
         """
         return pulumi.get(self, "state")
 
@@ -151,13 +188,34 @@ class _StaticIpState:
     @pulumi.getter(name="staticIpAddressId")
     def static_ip_address_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The static ip id of the resource. Should be used as a reference elsewhere.
+        Static IP address identifier.
         """
         return pulumi.get(self, "static_ip_address_id")
 
     @static_ip_address_id.setter
     def static_ip_address_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "static_ip_address_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="terminationProtection")
+    def termination_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Static IP address is protected against deletion. The default value is `false`.
+        """
+        return pulumi.get(self, "termination_protection")
+
+    @termination_protection.setter
+    def termination_protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "termination_protection", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['StaticIpTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['StaticIpTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
 
 
 @pulumi.type_token("aiven:index/staticIp:StaticIp")
@@ -168,15 +226,24 @@ class StaticIp(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cloud_name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
+                 termination_protection: Optional[pulumi.Input[_builtins.bool]] = None,
+                 timeouts: Optional[pulumi.Input[Union['StaticIpTimeoutsArgs', 'StaticIpTimeoutsArgsDict']]] = None,
                  __props__=None):
         """
         The StaticIp resource allows the creation and deletion of static ips. Please note that once a static ip is in the 'assigned' state it is bound to the node it is assigned to and cannot be deleted or disassociated until the node is recycled. Plans that would delete static ips that are in the assigned state will be blocked.
 
+        ## Import
+
+        ```sh
+        $ pulumi import aiven:index/staticIp:StaticIp example PROJECT/STATIC_IP_ADDRESS_ID
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] cloud_name: Specifies the cloud that the static ip belongs to. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] cloud_name: Target cloud. Maximum length: `256`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.bool] termination_protection: Static IP address is protected against deletion. The default value is `false`.
         """
         ...
     @overload
@@ -186,6 +253,12 @@ class StaticIp(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The StaticIp resource allows the creation and deletion of static ips. Please note that once a static ip is in the 'assigned' state it is bound to the node it is assigned to and cannot be deleted or disassociated until the node is recycled. Plans that would delete static ips that are in the assigned state will be blocked.
+
+        ## Import
+
+        ```sh
+        $ pulumi import aiven:index/staticIp:StaticIp example PROJECT/STATIC_IP_ADDRESS_ID
+        ```
 
 
         :param str resource_name: The name of the resource.
@@ -205,6 +278,8 @@ class StaticIp(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cloud_name: Optional[pulumi.Input[_builtins.str]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
+                 termination_protection: Optional[pulumi.Input[_builtins.bool]] = None,
+                 timeouts: Optional[pulumi.Input[Union['StaticIpTimeoutsArgs', 'StaticIpTimeoutsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -220,6 +295,8 @@ class StaticIp(pulumi.CustomResource):
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
+            __props__.__dict__["termination_protection"] = termination_protection
+            __props__.__dict__["timeouts"] = timeouts
             __props__.__dict__["ip_address"] = None
             __props__.__dict__["service_name"] = None
             __props__.__dict__["state"] = None
@@ -239,7 +316,9 @@ class StaticIp(pulumi.CustomResource):
             project: Optional[pulumi.Input[_builtins.str]] = None,
             service_name: Optional[pulumi.Input[_builtins.str]] = None,
             state: Optional[pulumi.Input[_builtins.str]] = None,
-            static_ip_address_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'StaticIp':
+            static_ip_address_id: Optional[pulumi.Input[_builtins.str]] = None,
+            termination_protection: Optional[pulumi.Input[_builtins.bool]] = None,
+            timeouts: Optional[pulumi.Input[Union['StaticIpTimeoutsArgs', 'StaticIpTimeoutsArgsDict']]] = None) -> 'StaticIp':
         """
         Get an existing StaticIp resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -247,12 +326,13 @@ class StaticIp(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] cloud_name: Specifies the cloud that the static ip belongs to. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] ip_address: The address of the static ip.
-        :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] service_name: The service name the static ip is associated with.
-        :param pulumi.Input[_builtins.str] state: The state the static ip is in.
-        :param pulumi.Input[_builtins.str] static_ip_address_id: The static ip id of the resource. Should be used as a reference elsewhere.
+        :param pulumi.Input[_builtins.str] cloud_name: Target cloud. Maximum length: `256`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] ip_address: IPv4 address.
+        :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] service_name: Service name.
+        :param pulumi.Input[_builtins.str] state: Static IP address state. The possible values are `assigned`, `available`, `created`, `creating`, `deleted` and `deleting`.
+        :param pulumi.Input[_builtins.str] static_ip_address_id: Static IP address identifier.
+        :param pulumi.Input[_builtins.bool] termination_protection: Static IP address is protected against deletion. The default value is `false`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -264,13 +344,15 @@ class StaticIp(pulumi.CustomResource):
         __props__.__dict__["service_name"] = service_name
         __props__.__dict__["state"] = state
         __props__.__dict__["static_ip_address_id"] = static_ip_address_id
+        __props__.__dict__["termination_protection"] = termination_protection
+        __props__.__dict__["timeouts"] = timeouts
         return StaticIp(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
     @pulumi.getter(name="cloudName")
     def cloud_name(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the cloud that the static ip belongs to. Changing this property forces recreation of the resource.
+        Target cloud. Maximum length: `256`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "cloud_name")
 
@@ -278,7 +360,7 @@ class StaticIp(pulumi.CustomResource):
     @pulumi.getter(name="ipAddress")
     def ip_address(self) -> pulumi.Output[_builtins.str]:
         """
-        The address of the static ip.
+        IPv4 address.
         """
         return pulumi.get(self, "ip_address")
 
@@ -286,7 +368,7 @@ class StaticIp(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Project name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -294,7 +376,7 @@ class StaticIp(pulumi.CustomResource):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[_builtins.str]:
         """
-        The service name the static ip is associated with.
+        Service name.
         """
         return pulumi.get(self, "service_name")
 
@@ -302,7 +384,7 @@ class StaticIp(pulumi.CustomResource):
     @pulumi.getter
     def state(self) -> pulumi.Output[_builtins.str]:
         """
-        The state the static ip is in.
+        Static IP address state. The possible values are `assigned`, `available`, `created`, `creating`, `deleted` and `deleting`.
         """
         return pulumi.get(self, "state")
 
@@ -310,7 +392,20 @@ class StaticIp(pulumi.CustomResource):
     @pulumi.getter(name="staticIpAddressId")
     def static_ip_address_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The static ip id of the resource. Should be used as a reference elsewhere.
+        Static IP address identifier.
         """
         return pulumi.get(self, "static_ip_address_id")
+
+    @_builtins.property
+    @pulumi.getter(name="terminationProtection")
+    def termination_protection(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Static IP address is protected against deletion. The default value is `false`.
+        """
+        return pulumi.get(self, "termination_protection")
+
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> pulumi.Output[Optional['outputs.StaticIpTimeouts']]:
+        return pulumi.get(self, "timeouts")
 

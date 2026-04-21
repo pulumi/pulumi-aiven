@@ -139,14 +139,14 @@ public final class FlinkApplicationDeploymentState extends com.pulumi.resources.
     }
 
     /**
-     * Job savepoint. Maximum length: `2048`. Changing this property forces recreation of the resource.
+     * Job savepoint. Length must be between `1` and `2048`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="startingSavepoint")
     private @Nullable Output<String> startingSavepoint;
 
     /**
-     * @return Job savepoint. Maximum length: `2048`. Changing this property forces recreation of the resource.
+     * @return Job savepoint. Length must be between `1` and `2048`. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> startingSavepoint() {
@@ -161,14 +161,14 @@ public final class FlinkApplicationDeploymentState extends com.pulumi.resources.
     }
 
     /**
-     * ApplicationVersion ID. Maximum length: `36`. Changing this property forces recreation of the resource.
+     * ApplicationVersion ID. Length must be exactly `36`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="versionId")
     private @Nullable Output<String> versionId;
 
     /**
-     * @return ApplicationVersion ID. Maximum length: `36`. Changing this property forces recreation of the resource.
+     * @return ApplicationVersion ID. Length must be exactly `36`. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> versionId() {
@@ -378,7 +378,7 @@ public final class FlinkApplicationDeploymentState extends com.pulumi.resources.
         }
 
         /**
-         * @param startingSavepoint Job savepoint. Maximum length: `2048`. Changing this property forces recreation of the resource.
+         * @param startingSavepoint Job savepoint. Length must be between `1` and `2048`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -389,7 +389,7 @@ public final class FlinkApplicationDeploymentState extends com.pulumi.resources.
         }
 
         /**
-         * @param startingSavepoint Job savepoint. Maximum length: `2048`. Changing this property forces recreation of the resource.
+         * @param startingSavepoint Job savepoint. Length must be between `1` and `2048`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -408,7 +408,7 @@ public final class FlinkApplicationDeploymentState extends com.pulumi.resources.
         }
 
         /**
-         * @param versionId ApplicationVersion ID. Maximum length: `36`. Changing this property forces recreation of the resource.
+         * @param versionId ApplicationVersion ID. Length must be exactly `36`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -419,7 +419,7 @@ public final class FlinkApplicationDeploymentState extends com.pulumi.resources.
         }
 
         /**
-         * @param versionId ApplicationVersion ID. Maximum length: `36`. Changing this property forces recreation of the resource.
+         * @param versionId ApplicationVersion ID. Length must be exactly `36`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 

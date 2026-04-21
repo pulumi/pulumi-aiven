@@ -34,6 +34,11 @@ public final class GetServiceListService {
      */
     private Integer diskSpaceMb;
     /**
+     * @return True when the service uses a cluster plan with dedicated node groups.
+     * 
+     */
+    private Boolean isClusterPlan;
+    /**
      * @return Number of service nodes in the active plan.
      * 
      */
@@ -122,6 +127,13 @@ public final class GetServiceListService {
      */
     public Integer diskSpaceMb() {
         return this.diskSpaceMb;
+    }
+    /**
+     * @return True when the service uses a cluster plan with dedicated node groups.
+     * 
+     */
+    public Boolean isClusterPlan() {
+        return this.isClusterPlan;
     }
     /**
      * @return Number of service nodes in the active plan.
@@ -221,6 +233,7 @@ public final class GetServiceListService {
         private String cloudName;
         private String createTime;
         private Integer diskSpaceMb;
+        private Boolean isClusterPlan;
         private Integer nodeCount;
         private Integer nodeCpuCount;
         private Double nodeMemoryMb;
@@ -240,6 +253,7 @@ public final class GetServiceListService {
     	      this.cloudName = defaults.cloudName;
     	      this.createTime = defaults.createTime;
     	      this.diskSpaceMb = defaults.diskSpaceMb;
+    	      this.isClusterPlan = defaults.isClusterPlan;
     	      this.nodeCount = defaults.nodeCount;
     	      this.nodeCpuCount = defaults.nodeCpuCount;
     	      this.nodeMemoryMb = defaults.nodeMemoryMb;
@@ -284,6 +298,14 @@ public final class GetServiceListService {
               throw new MissingRequiredPropertyException("GetServiceListService", "diskSpaceMb");
             }
             this.diskSpaceMb = diskSpaceMb;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder isClusterPlan(Boolean isClusterPlan) {
+            if (isClusterPlan == null) {
+              throw new MissingRequiredPropertyException("GetServiceListService", "isClusterPlan");
+            }
+            this.isClusterPlan = isClusterPlan;
             return this;
         }
         @CustomType.Setter
@@ -388,6 +410,7 @@ public final class GetServiceListService {
             _resultValue.cloudName = cloudName;
             _resultValue.createTime = createTime;
             _resultValue.diskSpaceMb = diskSpaceMb;
+            _resultValue.isClusterPlan = isClusterPlan;
             _resultValue.nodeCount = nodeCount;
             _resultValue.nodeCpuCount = nodeCpuCount;
             _resultValue.nodeMemoryMb = nodeMemoryMb;

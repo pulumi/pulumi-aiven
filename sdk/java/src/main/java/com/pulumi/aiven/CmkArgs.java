@@ -64,14 +64,14 @@ public final class CmkArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The unique identifier for the CMK in the cloud provider&#39;s KMS. In AWS, this is the Key ARN; in Google Cloud the Resource Name; and in Oracle Cloud the Key OCID. Maximum length: `512`. Changing this property forces recreation of the resource.
+     * The unique identifier for the CMK in the cloud provider&#39;s KMS. In AWS, this is the Key ARN; in Google Cloud the Resource Name; and in Oracle Cloud the Key OCID. Length must be between `1` and `512`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="resource", required=true)
     private Output<String> resource;
 
     /**
-     * @return The unique identifier for the CMK in the cloud provider&#39;s KMS. In AWS, this is the Key ARN; in Google Cloud the Resource Name; and in Oracle Cloud the Key OCID. Maximum length: `512`. Changing this property forces recreation of the resource.
+     * @return The unique identifier for the CMK in the cloud provider&#39;s KMS. In AWS, this is the Key ARN; in Google Cloud the Resource Name; and in Oracle Cloud the Key OCID. Length must be between `1` and `512`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> resource() {
@@ -177,7 +177,7 @@ public final class CmkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resource The unique identifier for the CMK in the cloud provider&#39;s KMS. In AWS, this is the Key ARN; in Google Cloud the Resource Name; and in Oracle Cloud the Key OCID. Maximum length: `512`. Changing this property forces recreation of the resource.
+         * @param resource The unique identifier for the CMK in the cloud provider&#39;s KMS. In AWS, this is the Key ARN; in Google Cloud the Resource Name; and in Oracle Cloud the Key OCID. Length must be between `1` and `512`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -188,7 +188,7 @@ public final class CmkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resource The unique identifier for the CMK in the cloud provider&#39;s KMS. In AWS, this is the Key ARN; in Google Cloud the Resource Name; and in Oracle Cloud the Key OCID. Maximum length: `512`. Changing this property forces recreation of the resource.
+         * @param resource The unique identifier for the CMK in the cloud provider&#39;s KMS. In AWS, this is the Key ARN; in Google Cloud the Resource Name; and in Oracle Cloud the Key OCID. Length must be between `1` and `512`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 

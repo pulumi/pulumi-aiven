@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// Creates and manages an Aiven for PostgreSQL® service user. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
+    /// Creates and manages an Aiven for PostgreSQL® service user. The built-in admin user belongs to the service itself. Write-only password management is not supported. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
     /// 
     /// ## Example Usage
     /// 
@@ -28,16 +28,6 @@ namespace Pulumi.Aiven
     ///         Project = exampleProject.Project,
     ///         Username = "example-service-user",
     ///         Password = serviceUserPassword,
-    ///     });
-    /// 
-    ///     // Each service has a default admin user with the username avnadmin.
-    ///     var adminUser = new Aiven.Index.PgUser("admin_user", new()
-    ///     {
-    ///         ServiceName = examplePostgres.ServiceName,
-    ///         Project = exampleProject.Project,
-    ///         Username = "avnadmin",
-    ///         Password = serviceUserPassword,
-    ///         PgAllowReplication = true,
     ///     });
     /// 
     /// });
@@ -65,14 +55,14 @@ namespace Pulumi.Aiven
         public Output<string> AccessKey { get; private set; } = null!;
 
         /// <summary>
-        /// The password of the service user (auto-generated if not provided). The field conflicts with `PasswordWo`. Value must be between `8` and `256`.
+        /// The password of the service user (auto-generated if not provided). The field conflicts with `PasswordWo`. Length must be between `8` and `256`.
         /// </summary>
         [Output("password")]
         public Output<string> Password { get; private set; } = null!;
 
         /// <summary>
         /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-        /// The password of the service user (write-only, not stored in state). The field is required with `PasswordWoVersion`. The field conflicts with `Password`. Value must be between `8` and `256`.
+        /// The password of the service user (write-only, not stored in state). The field is required with `PasswordWoVersion`. The field conflicts with `Password`. Length must be between `8` and `256`.
         /// </summary>
         [Output("passwordWo")]
         public Output<string?> PasswordWo { get; private set; } = null!;
@@ -173,7 +163,7 @@ namespace Pulumi.Aiven
         private Input<string>? _password;
 
         /// <summary>
-        /// The password of the service user (auto-generated if not provided). The field conflicts with `PasswordWo`. Value must be between `8` and `256`.
+        /// The password of the service user (auto-generated if not provided). The field conflicts with `PasswordWo`. Length must be between `8` and `256`.
         /// </summary>
         public Input<string>? Password
         {
@@ -190,7 +180,7 @@ namespace Pulumi.Aiven
 
         /// <summary>
         /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-        /// The password of the service user (write-only, not stored in state). The field is required with `PasswordWoVersion`. The field conflicts with `Password`. Value must be between `8` and `256`.
+        /// The password of the service user (write-only, not stored in state). The field is required with `PasswordWoVersion`. The field conflicts with `Password`. Length must be between `8` and `256`.
         /// </summary>
         public Input<string>? PasswordWo
         {
@@ -279,7 +269,7 @@ namespace Pulumi.Aiven
         private Input<string>? _password;
 
         /// <summary>
-        /// The password of the service user (auto-generated if not provided). The field conflicts with `PasswordWo`. Value must be between `8` and `256`.
+        /// The password of the service user (auto-generated if not provided). The field conflicts with `PasswordWo`. Length must be between `8` and `256`.
         /// </summary>
         public Input<string>? Password
         {
@@ -296,7 +286,7 @@ namespace Pulumi.Aiven
 
         /// <summary>
         /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-        /// The password of the service user (write-only, not stored in state). The field is required with `PasswordWoVersion`. The field conflicts with `Password`. Value must be between `8` and `256`.
+        /// The password of the service user (write-only, not stored in state). The field is required with `PasswordWoVersion`. The field conflicts with `Password`. Length must be between `8` and `256`.
         /// </summary>
         public Input<string>? PasswordWo
         {

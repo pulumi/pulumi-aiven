@@ -3,82 +3,89 @@
 
 package com.pulumi.aiven.outputs;
 
+import com.pulumi.aiven.outputs.GetOpensearchUserTimeouts;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetOpensearchUserResult {
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Resource ID composed as: `project/service_name/username`.
      * 
      */
     private String id;
     /**
-     * @return The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+     * @return The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`.
      * 
      */
     private String password;
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name.
      * 
      */
     private String project;
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service name.
      * 
      */
     private String serviceName;
+    private @Nullable GetOpensearchUserTimeouts timeouts;
     /**
-     * @return User account type, such as primary or regular account.
+     * @return Account type.
      * 
      */
     private String type;
     /**
-     * @return Name of the OpenSearch service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Account username.
      * 
      */
     private String username;
 
     private GetOpensearchUserResult() {}
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Resource ID composed as: `project/service_name/username`.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+     * @return The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`.
      * 
      */
     public String password() {
         return this.password;
     }
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name.
      * 
      */
     public String project() {
         return this.project;
     }
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service name.
      * 
      */
     public String serviceName() {
         return this.serviceName;
     }
+    public Optional<GetOpensearchUserTimeouts> timeouts() {
+        return Optional.ofNullable(this.timeouts);
+    }
     /**
-     * @return User account type, such as primary or regular account.
+     * @return Account type.
      * 
      */
     public String type() {
         return this.type;
     }
     /**
-     * @return Name of the OpenSearch service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Account username.
      * 
      */
     public String username() {
@@ -98,6 +105,7 @@ public final class GetOpensearchUserResult {
         private String password;
         private String project;
         private String serviceName;
+        private @Nullable GetOpensearchUserTimeouts timeouts;
         private String type;
         private String username;
         public Builder() {}
@@ -107,6 +115,7 @@ public final class GetOpensearchUserResult {
     	      this.password = defaults.password;
     	      this.project = defaults.project;
     	      this.serviceName = defaults.serviceName;
+    	      this.timeouts = defaults.timeouts;
     	      this.type = defaults.type;
     	      this.username = defaults.username;
         }
@@ -144,6 +153,12 @@ public final class GetOpensearchUserResult {
             return this;
         }
         @CustomType.Setter
+        public Builder timeouts(@Nullable GetOpensearchUserTimeouts timeouts) {
+
+            this.timeouts = timeouts;
+            return this;
+        }
+        @CustomType.Setter
         public Builder type(String type) {
             if (type == null) {
               throw new MissingRequiredPropertyException("GetOpensearchUserResult", "type");
@@ -165,6 +180,7 @@ public final class GetOpensearchUserResult {
             _resultValue.password = password;
             _resultValue.project = project;
             _resultValue.serviceName = serviceName;
+            _resultValue.timeouts = timeouts;
             _resultValue.type = type;
             _resultValue.username = username;
             return _resultValue;

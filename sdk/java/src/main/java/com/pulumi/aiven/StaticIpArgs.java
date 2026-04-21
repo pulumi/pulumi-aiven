@@ -3,11 +3,15 @@
 
 package com.pulumi.aiven;
 
+import com.pulumi.aiven.inputs.StaticIpTimeoutsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class StaticIpArgs extends com.pulumi.resources.ResourceArgs {
@@ -15,14 +19,14 @@ public final class StaticIpArgs extends com.pulumi.resources.ResourceArgs {
     public static final StaticIpArgs Empty = new StaticIpArgs();
 
     /**
-     * Specifies the cloud that the static ip belongs to. Changing this property forces recreation of the resource.
+     * Target cloud. Maximum length: `256`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="cloudName", required=true)
     private Output<String> cloudName;
 
     /**
-     * @return Specifies the cloud that the static ip belongs to. Changing this property forces recreation of the resource.
+     * @return Target cloud. Maximum length: `256`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> cloudName() {
@@ -30,18 +34,40 @@ public final class StaticIpArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="project", required=true)
     private Output<String> project;
 
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> project() {
         return this.project;
+    }
+
+    /**
+     * Static IP address is protected against deletion. The default value is `false`.
+     * 
+     */
+    @Import(name="terminationProtection")
+    private @Nullable Output<Boolean> terminationProtection;
+
+    /**
+     * @return Static IP address is protected against deletion. The default value is `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> terminationProtection() {
+        return Optional.ofNullable(this.terminationProtection);
+    }
+
+    @Import(name="timeouts")
+    private @Nullable Output<StaticIpTimeoutsArgs> timeouts;
+
+    public Optional<Output<StaticIpTimeoutsArgs>> timeouts() {
+        return Optional.ofNullable(this.timeouts);
     }
 
     private StaticIpArgs() {}
@@ -49,6 +75,8 @@ public final class StaticIpArgs extends com.pulumi.resources.ResourceArgs {
     private StaticIpArgs(StaticIpArgs $) {
         this.cloudName = $.cloudName;
         this.project = $.project;
+        this.terminationProtection = $.terminationProtection;
+        this.timeouts = $.timeouts;
     }
 
     public static Builder builder() {
@@ -70,7 +98,7 @@ public final class StaticIpArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cloudName Specifies the cloud that the static ip belongs to. Changing this property forces recreation of the resource.
+         * @param cloudName Target cloud. Maximum length: `256`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -81,7 +109,7 @@ public final class StaticIpArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cloudName Specifies the cloud that the static ip belongs to. Changing this property forces recreation of the resource.
+         * @param cloudName Target cloud. Maximum length: `256`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -91,7 +119,7 @@ public final class StaticIpArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param project Project name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -102,13 +130,43 @@ public final class StaticIpArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param project Project name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param terminationProtection Static IP address is protected against deletion. The default value is `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder terminationProtection(@Nullable Output<Boolean> terminationProtection) {
+            $.terminationProtection = terminationProtection;
+            return this;
+        }
+
+        /**
+         * @param terminationProtection Static IP address is protected against deletion. The default value is `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder terminationProtection(Boolean terminationProtection) {
+            return terminationProtection(Output.of(terminationProtection));
+        }
+
+        public Builder timeouts(@Nullable Output<StaticIpTimeoutsArgs> timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
+        public Builder timeouts(StaticIpTimeoutsArgs timeouts) {
+            return timeouts(Output.of(timeouts));
         }
 
         public StaticIpArgs build() {

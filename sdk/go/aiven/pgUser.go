@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates and manages an Aiven for PostgreSQL® service user. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
+// Creates and manages an Aiven for PostgreSQL® service user. The built-in admin user belongs to the service itself. Write-only password management is not supported. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
 //
 // ## Example Usage
 //
@@ -37,17 +37,6 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			// Each service has a default admin user with the username avnadmin.
-//			_, err = aiven.NewPgUser(ctx, "admin_user", &aiven.PgUserArgs{
-//				ServiceName:        pulumi.Any(examplePostgres.ServiceName),
-//				Project:            pulumi.Any(exampleProject.Project),
-//				Username:           pulumi.String("avnadmin"),
-//				Password:           pulumi.Any(serviceUserPassword),
-//				PgAllowReplication: pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
 //			return nil
 //		})
 //	}
@@ -66,10 +55,10 @@ type PgUser struct {
 	AccessCert pulumi.StringOutput `pulumi:"accessCert"`
 	// Access key for TLS client authentication.
 	AccessKey pulumi.StringOutput `pulumi:"accessKey"`
-	// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Value must be between `8` and `256`.
+	// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
 	Password pulumi.StringOutput `pulumi:"password"`
 	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-	// The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Value must be between `8` and `256`.
+	// The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Length must be between `8` and `256`.
 	PasswordWo pulumi.StringPtrOutput `pulumi:"passwordWo"`
 	// Version number for `passwordWo`. Increment this to rotate the password. The field is required with `passwordWo`. Minimum value: `1`.
 	PasswordWoVersion pulumi.IntPtrOutput `pulumi:"passwordWoVersion"`
@@ -142,10 +131,10 @@ type pgUserState struct {
 	AccessCert *string `pulumi:"accessCert"`
 	// Access key for TLS client authentication.
 	AccessKey *string `pulumi:"accessKey"`
-	// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Value must be between `8` and `256`.
+	// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
 	Password *string `pulumi:"password"`
 	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-	// The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Value must be between `8` and `256`.
+	// The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Length must be between `8` and `256`.
 	PasswordWo *string `pulumi:"passwordWo"`
 	// Version number for `passwordWo`. Increment this to rotate the password. The field is required with `passwordWo`. Minimum value: `1`.
 	PasswordWoVersion *int `pulumi:"passwordWoVersion"`
@@ -167,10 +156,10 @@ type PgUserState struct {
 	AccessCert pulumi.StringPtrInput
 	// Access key for TLS client authentication.
 	AccessKey pulumi.StringPtrInput
-	// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Value must be between `8` and `256`.
+	// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
 	Password pulumi.StringPtrInput
 	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-	// The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Value must be between `8` and `256`.
+	// The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Length must be between `8` and `256`.
 	PasswordWo pulumi.StringPtrInput
 	// Version number for `passwordWo`. Increment this to rotate the password. The field is required with `passwordWo`. Minimum value: `1`.
 	PasswordWoVersion pulumi.IntPtrInput
@@ -192,10 +181,10 @@ func (PgUserState) ElementType() reflect.Type {
 }
 
 type pgUserArgs struct {
-	// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Value must be between `8` and `256`.
+	// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
 	Password *string `pulumi:"password"`
 	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-	// The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Value must be between `8` and `256`.
+	// The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Length must be between `8` and `256`.
 	PasswordWo *string `pulumi:"passwordWo"`
 	// Version number for `passwordWo`. Increment this to rotate the password. The field is required with `passwordWo`. Minimum value: `1`.
 	PasswordWoVersion *int `pulumi:"passwordWoVersion"`
@@ -212,10 +201,10 @@ type pgUserArgs struct {
 
 // The set of arguments for constructing a PgUser resource.
 type PgUserArgs struct {
-	// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Value must be between `8` and `256`.
+	// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
 	Password pulumi.StringPtrInput
 	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-	// The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Value must be between `8` and `256`.
+	// The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Length must be between `8` and `256`.
 	PasswordWo pulumi.StringPtrInput
 	// Version number for `passwordWo`. Increment this to rotate the password. The field is required with `passwordWo`. Minimum value: `1`.
 	PasswordWoVersion pulumi.IntPtrInput
@@ -327,13 +316,13 @@ func (o PgUserOutput) AccessKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *PgUser) pulumi.StringOutput { return v.AccessKey }).(pulumi.StringOutput)
 }
 
-// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Value must be between `8` and `256`.
+// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
 func (o PgUserOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v *PgUser) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
 }
 
 // **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-// The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Value must be between `8` and `256`.
+// The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Length must be between `8` and `256`.
 func (o PgUserOutput) PasswordWo() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgUser) pulumi.StringPtrOutput { return v.PasswordWo }).(pulumi.StringPtrOutput)
 }

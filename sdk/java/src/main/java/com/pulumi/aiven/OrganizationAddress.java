@@ -102,14 +102,14 @@ public class OrganizationAddress extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
-     * Name of a company. Maximum length: `128`.
+     * Name of a company. Length must be between `1` and `128`.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of a company. Maximum length: `128`.
+     * @return Name of a company. Length must be between `1` and `128`.
      * 
      */
     public Output<String> name() {

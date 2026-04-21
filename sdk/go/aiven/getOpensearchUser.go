@@ -52,27 +52,29 @@ func LookupOpensearchUser(ctx *pulumi.Context, args *LookupOpensearchUserArgs, o
 
 // A collection of arguments for invoking getOpensearchUser.
 type LookupOpensearchUserArgs struct {
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name.
 	Project string `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName string `pulumi:"serviceName"`
-	// Name of the OpenSearch service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Service name.
+	ServiceName string                     `pulumi:"serviceName"`
+	Timeouts    *GetOpensearchUserTimeouts `pulumi:"timeouts"`
+	// Account username.
 	Username string `pulumi:"username"`
 }
 
 // A collection of values returned by getOpensearchUser.
 type LookupOpensearchUserResult struct {
-	// The provider-assigned unique ID for this managed resource.
+	// Resource ID composed as: `project/service_name/username`.
 	Id string `pulumi:"id"`
-	// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+	// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`.
 	Password string `pulumi:"password"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name.
 	Project string `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName string `pulumi:"serviceName"`
-	// User account type, such as primary or regular account.
+	// Service name.
+	ServiceName string                     `pulumi:"serviceName"`
+	Timeouts    *GetOpensearchUserTimeouts `pulumi:"timeouts"`
+	// Account type.
 	Type string `pulumi:"type"`
-	// Name of the OpenSearch service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Account username.
 	Username string `pulumi:"username"`
 }
 
@@ -87,11 +89,12 @@ func LookupOpensearchUserOutput(ctx *pulumi.Context, args LookupOpensearchUserOu
 
 // A collection of arguments for invoking getOpensearchUser.
 type LookupOpensearchUserOutputArgs struct {
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name.
 	Project pulumi.StringInput `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName pulumi.StringInput `pulumi:"serviceName"`
-	// Name of the OpenSearch service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Service name.
+	ServiceName pulumi.StringInput                `pulumi:"serviceName"`
+	Timeouts    GetOpensearchUserTimeoutsPtrInput `pulumi:"timeouts"`
+	// Account username.
 	Username pulumi.StringInput `pulumi:"username"`
 }
 
@@ -114,32 +117,36 @@ func (o LookupOpensearchUserResultOutput) ToLookupOpensearchUserResultOutputWith
 	return o
 }
 
-// The provider-assigned unique ID for this managed resource.
+// Resource ID composed as: `project/service_name/username`.
 func (o LookupOpensearchUserResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOpensearchUserResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`.
 func (o LookupOpensearchUserResultOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOpensearchUserResult) string { return v.Password }).(pulumi.StringOutput)
 }
 
-// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// Project name.
 func (o LookupOpensearchUserResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOpensearchUserResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
-// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// Service name.
 func (o LookupOpensearchUserResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOpensearchUserResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// User account type, such as primary or regular account.
+func (o LookupOpensearchUserResultOutput) Timeouts() GetOpensearchUserTimeoutsPtrOutput {
+	return o.ApplyT(func(v LookupOpensearchUserResult) *GetOpensearchUserTimeouts { return v.Timeouts }).(GetOpensearchUserTimeoutsPtrOutput)
+}
+
+// Account type.
 func (o LookupOpensearchUserResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOpensearchUserResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// Name of the OpenSearch service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// Account username.
 func (o LookupOpensearchUserResultOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOpensearchUserResult) string { return v.Username }).(pulumi.StringOutput)
 }

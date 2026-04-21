@@ -55,7 +55,7 @@ namespace Pulumi.Aiven
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Name of a company. Maximum length: `128`.
+        /// Name of a company. Length must be between `1` and `128`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -158,7 +158,7 @@ namespace Pulumi.Aiven
         public Input<string> CountryCode { get; set; } = null!;
 
         /// <summary>
-        /// Name of a company. Maximum length: `128`.
+        /// Name of a company. Length must be between `1` and `128`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -229,7 +229,7 @@ namespace Pulumi.Aiven
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Name of a company. Maximum length: `128`.
+        /// Name of a company. Length must be between `1` and `128`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

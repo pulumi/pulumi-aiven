@@ -149,7 +149,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string EndpointName;
         /// <summary>
-        /// The type of service integration endpoint. The possible values are `Autoscaler`, `Datadog`, `ExternalAwsCloudwatchLogs`, `ExternalAwsCloudwatchMetrics`, `ExternalAwsS3`, `ExternalAzureBlobStorage`, `ExternalClickhouse`, `ExternalElasticsearchLogs`, `ExternalGoogleCloudBigquery`, `ExternalGoogleCloudLogging`, `ExternalKafka`, `ExternalMysql`, `ExternalOpensearchLogs`, `ExternalPostgresql`, `ExternalPrometheus`, `ExternalRedis`, `ExternalSchemaRegistry`, `ExternalSumologicLogs`, `Jolokia`, `Prometheus` and `Rsyslog`.
+        /// The type of service integration endpoint. The possible values are `Autoscaler`, `Datadog`, `ExternalAwsCloudwatchLogs`, `ExternalAwsCloudwatchMetrics`, `ExternalAwsS3`, `ExternalAzureBlobStorage`, `ExternalClickhouse`, `ExternalElasticsearchLogs`, `ExternalGoogleCloudBigquery`, `ExternalGoogleCloudLogging`, `ExternalKafka`, `ExternalMysql`, `ExternalObjectStorageConfig`, `ExternalOpensearchLogs`, `ExternalPostgresql`, `ExternalPrometheus`, `ExternalRedis`, `ExternalSchemaRegistry`, `ExternalSumologicLogs`, `Jolokia`, `Prometheus` and `Rsyslog`.
         /// </summary>
         public readonly string EndpointType;
         /// <summary>
@@ -192,6 +192,10 @@ namespace Pulumi.Aiven
         /// ExternalMysql user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalMysqlUserConfigResult> ExternalMysqlUserConfigs;
+        /// <summary>
+        /// ExternalObjectStorageConfig user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalObjectStorageConfigUserConfigResult> ExternalObjectStorageConfigUserConfigs;
         /// <summary>
         /// ExternalOpensearchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         /// </summary>
@@ -261,6 +265,8 @@ namespace Pulumi.Aiven
 
             ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalMysqlUserConfigResult> externalMysqlUserConfigs,
 
+            ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalObjectStorageConfigUserConfigResult> externalObjectStorageConfigUserConfigs,
+
             ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigResult> externalOpensearchLogsUserConfigs,
 
             ImmutableArray<Outputs.GetServiceIntegrationEndpointExternalPostgresqlResult> externalPostgresqls,
@@ -294,6 +300,7 @@ namespace Pulumi.Aiven
             ExternalGoogleCloudLoggingUserConfigs = externalGoogleCloudLoggingUserConfigs;
             ExternalKafkaUserConfigs = externalKafkaUserConfigs;
             ExternalMysqlUserConfigs = externalMysqlUserConfigs;
+            ExternalObjectStorageConfigUserConfigs = externalObjectStorageConfigUserConfigs;
             ExternalOpensearchLogsUserConfigs = externalOpensearchLogsUserConfigs;
             ExternalPostgresqls = externalPostgresqls;
             ExternalPrometheusUserConfigs = externalPrometheusUserConfigs;

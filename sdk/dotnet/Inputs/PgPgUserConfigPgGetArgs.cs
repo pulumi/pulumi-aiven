@@ -307,6 +307,12 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? PgStatStatementsDotTrack { get; set; }
 
         /// <summary>
+        /// Enum: `Local`, `Off`, `On`, `RemoteApply`, `RemoteWrite`. Sets the current transaction's synchronization level. The default is `Off`. This setting takes precedence over `SynchronousReplication`.
+        /// </summary>
+        [Input("synchronousCommit")]
+        public Input<string>? SynchronousCommit { get; set; }
+
+        /// <summary>
         /// PostgreSQL temporary file limit in KiB, -1 for unlimited.
         /// </summary>
         [Input("tempFileLimit")]

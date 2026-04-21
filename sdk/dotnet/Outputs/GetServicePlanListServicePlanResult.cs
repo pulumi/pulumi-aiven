@@ -14,6 +14,10 @@ namespace Pulumi.Aiven.Outputs
     public sealed class GetServicePlanListServicePlanResult
     {
         /// <summary>
+        /// True when the plan is a cluster plan with dedicated node groups.
+        /// </summary>
+        public readonly bool IsClusterPlan;
+        /// <summary>
         /// Maximum amount of system memory as a percentage (0-100) the service can actually use after taking into account management overhead. This is relevant for memory bound services for which some service management operations require allocating proportional amount of memory on top the basic load.
         /// </summary>
         public readonly int MaxMemoryPercent;
@@ -21,6 +25,10 @@ namespace Pulumi.Aiven.Outputs
         /// Number of nodes in this service plan.
         /// </summary>
         public readonly int NodeCount;
+        /// <summary>
+        /// Number of primary nodes in this Valkey cluster service plan.
+        /// </summary>
+        public readonly int PrimaryCount;
         /// <summary>
         /// Service plan hourly price per cloud region.
         /// </summary>
@@ -40,9 +48,13 @@ namespace Pulumi.Aiven.Outputs
 
         [OutputConstructor]
         private GetServicePlanListServicePlanResult(
+            bool isClusterPlan,
+
             int maxMemoryPercent,
 
             int nodeCount,
+
+            int primaryCount,
 
             ImmutableDictionary<string, Outputs.GetServicePlanListServicePlanRegionsResult> regions,
 
@@ -52,8 +64,10 @@ namespace Pulumi.Aiven.Outputs
 
             int shardCount)
         {
+            IsClusterPlan = isClusterPlan;
             MaxMemoryPercent = maxMemoryPercent;
             NodeCount = nodeCount;
+            PrimaryCount = primaryCount;
             Regions = regions;
             ServicePlan = servicePlan;
             ServiceType = serviceType;

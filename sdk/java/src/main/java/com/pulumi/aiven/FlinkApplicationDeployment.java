@@ -229,14 +229,14 @@ public class FlinkApplicationDeployment extends com.pulumi.resources.CustomResou
         return this.serviceName;
     }
     /**
-     * Job savepoint. Maximum length: `2048`. Changing this property forces recreation of the resource.
+     * Job savepoint. Length must be between `1` and `2048`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="startingSavepoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> startingSavepoint;
 
     /**
-     * @return Job savepoint. Maximum length: `2048`. Changing this property forces recreation of the resource.
+     * @return Job savepoint. Length must be between `1` and `2048`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<Optional<String>> startingSavepoint() {
@@ -249,14 +249,14 @@ public class FlinkApplicationDeployment extends com.pulumi.resources.CustomResou
         return Codegen.optional(this.timeouts);
     }
     /**
-     * ApplicationVersion ID. Maximum length: `36`. Changing this property forces recreation of the resource.
+     * ApplicationVersion ID. Length must be exactly `36`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="versionId", refs={String.class}, tree="[0]")
     private Output<String> versionId;
 
     /**
-     * @return ApplicationVersion ID. Maximum length: `36`. Changing this property forces recreation of the resource.
+     * @return ApplicationVersion ID. Length must be exactly `36`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> versionId() {

@@ -26,108 +26,6 @@
                 "current": "aiven:index/accountTeamProject:AccountTeamProject",
                 "majorVersion": 6
             },
-            "aiven_alloydbomni": {
-                "current": "aiven:index/alloydbomni:Alloydbomni",
-                "majorVersion": 6,
-                "fields": {
-                    "alloydbomni": {
-                        "maxItemsOne": true,
-                        "elem": {
-                            "fields": {
-                                "params": {
-                                    "maxItemsOne": false
-                                },
-                                "standby_uris": {
-                                    "maxItemsOne": false
-                                },
-                                "syncing_uris": {
-                                    "maxItemsOne": false
-                                },
-                                "uris": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
-                    },
-                    "alloydbomni_user_config": {
-                        "maxItemsOne": true,
-                        "elem": {
-                            "fields": {
-                                "additional_backup_regions": {
-                                    "maxItemsOne": true
-                                },
-                                "ip_filter": {
-                                    "maxItemsOne": false
-                                },
-                                "ip_filter_object": {
-                                    "maxItemsOne": false
-                                },
-                                "ip_filter_string": {
-                                    "maxItemsOne": false
-                                },
-                                "pg": {
-                                    "maxItemsOne": true
-                                },
-                                "pgaudit": {
-                                    "maxItemsOne": true,
-                                    "elem": {
-                                        "fields": {
-                                            "log": {
-                                                "maxItemsOne": false
-                                            }
-                                        }
-                                    }
-                                },
-                                "pgbouncer": {
-                                    "maxItemsOne": true,
-                                    "elem": {
-                                        "fields": {
-                                            "ignore_startup_parameters": {
-                                                "maxItemsOne": false
-                                            }
-                                        }
-                                    }
-                                },
-                                "pglookout": {
-                                    "maxItemsOne": true
-                                },
-                                "private_access": {
-                                    "maxItemsOne": true
-                                },
-                                "privatelink_access": {
-                                    "maxItemsOne": true
-                                },
-                                "public_access": {
-                                    "maxItemsOne": true
-                                }
-                            }
-                        }
-                    },
-                    "components": {
-                        "maxItemsOne": false
-                    },
-                    "service_integrations": {
-                        "maxItemsOne": false
-                    },
-                    "static_ips": {
-                        "maxItemsOne": false
-                    },
-                    "tag": {
-                        "maxItemsOne": false
-                    },
-                    "tech_emails": {
-                        "maxItemsOne": false
-                    }
-                }
-            },
-            "aiven_alloydbomni_database": {
-                "current": "aiven:index/alloydbomniDatabase:AlloydbomniDatabase",
-                "majorVersion": 6
-            },
-            "aiven_alloydbomni_user": {
-                "current": "aiven:index/alloydbomniUser:AlloydbomniUser",
-                "majorVersion": 6
-            },
             "aiven_aws_org_vpc_peering_connection": {
                 "current": "aiven:index/awsOrgVpcPeeringConnection:AwsOrgVpcPeeringConnection",
                 "majorVersion": 6
@@ -703,76 +601,6 @@
                     }
                 }
             },
-            "aiven_influxdb": {
-                "current": "aiven:index/influxDb:InfluxDb",
-                "majorVersion": 6,
-                "fields": {
-                    "components": {
-                        "maxItemsOne": false
-                    },
-                    "influxdb": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "uris": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
-                    },
-                    "influxdb_user_config": {
-                        "maxItemsOne": true,
-                        "elem": {
-                            "fields": {
-                                "additional_backup_regions": {
-                                    "maxItemsOne": true
-                                },
-                                "influxdb": {
-                                    "maxItemsOne": true
-                                },
-                                "ip_filter": {
-                                    "maxItemsOne": false
-                                },
-                                "ip_filter_object": {
-                                    "maxItemsOne": false
-                                },
-                                "ip_filter_string": {
-                                    "maxItemsOne": false
-                                },
-                                "private_access": {
-                                    "maxItemsOne": true
-                                },
-                                "privatelink_access": {
-                                    "maxItemsOne": true
-                                },
-                                "public_access": {
-                                    "maxItemsOne": true
-                                }
-                            }
-                        }
-                    },
-                    "service_integrations": {
-                        "maxItemsOne": false
-                    },
-                    "static_ips": {
-                        "maxItemsOne": false
-                    },
-                    "tag": {
-                        "maxItemsOne": false
-                    },
-                    "tech_emails": {
-                        "maxItemsOne": false
-                    }
-                }
-            },
-            "aiven_influxdb_database": {
-                "current": "aiven:index/influxdbDatabase:InfluxdbDatabase",
-                "majorVersion": 6
-            },
-            "aiven_influxdb_user": {
-                "current": "aiven:index/influxdbUser:InfluxdbUser",
-                "majorVersion": 6
-            },
             "aiven_kafka": {
                 "current": "aiven:index/kafka:Kafka",
                 "majorVersion": 6,
@@ -1067,172 +895,6 @@
             },
             "aiven_kafka_user": {
                 "current": "aiven:index/kafkaUser:KafkaUser",
-                "majorVersion": 6
-            },
-            "aiven_m3aggregator": {
-                "current": "aiven:index/m3Aggregator:M3Aggregator",
-                "majorVersion": 6,
-                "fields": {
-                    "components": {
-                        "maxItemsOne": false
-                    },
-                    "m3aggregator": {
-                        "maxItemsOne": true,
-                        "elem": {
-                            "fields": {
-                                "uris": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
-                    },
-                    "m3aggregator_user_config": {
-                        "maxItemsOne": true,
-                        "elem": {
-                            "fields": {
-                                "ip_filter": {
-                                    "maxItemsOne": false
-                                },
-                                "ip_filter_object": {
-                                    "maxItemsOne": false
-                                },
-                                "ip_filter_string": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
-                    },
-                    "service_integrations": {
-                        "maxItemsOne": false
-                    },
-                    "static_ips": {
-                        "maxItemsOne": false
-                    },
-                    "tag": {
-                        "maxItemsOne": false
-                    },
-                    "tech_emails": {
-                        "maxItemsOne": false
-                    }
-                }
-            },
-            "aiven_m3db": {
-                "current": "aiven:index/m3Db:M3Db",
-                "majorVersion": 6,
-                "fields": {
-                    "components": {
-                        "maxItemsOne": false
-                    },
-                    "m3db": {
-                        "maxItemsOne": true,
-                        "elem": {
-                            "fields": {
-                                "uris": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
-                    },
-                    "m3db_user_config": {
-                        "maxItemsOne": true,
-                        "elem": {
-                            "fields": {
-                                "additional_backup_regions": {
-                                    "maxItemsOne": true
-                                },
-                                "ip_filter": {
-                                    "maxItemsOne": false
-                                },
-                                "ip_filter_object": {
-                                    "maxItemsOne": false
-                                },
-                                "ip_filter_string": {
-                                    "maxItemsOne": false
-                                },
-                                "limits": {
-                                    "maxItemsOne": true
-                                },
-                                "m3": {
-                                    "maxItemsOne": true,
-                                    "elem": {
-                                        "fields": {
-                                            "tag_options": {
-                                                "maxItemsOne": true
-                                            }
-                                        }
-                                    }
-                                },
-                                "namespaces": {
-                                    "maxItemsOne": false,
-                                    "elem": {
-                                        "fields": {
-                                            "options": {
-                                                "maxItemsOne": true,
-                                                "elem": {
-                                                    "fields": {
-                                                        "retention_options": {
-                                                            "maxItemsOne": true
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                },
-                                "private_access": {
-                                    "maxItemsOne": true
-                                },
-                                "public_access": {
-                                    "maxItemsOne": true
-                                },
-                                "rules": {
-                                    "maxItemsOne": true,
-                                    "elem": {
-                                        "fields": {
-                                            "mapping": {
-                                                "maxItemsOne": false,
-                                                "elem": {
-                                                    "fields": {
-                                                        "aggregations": {
-                                                            "maxItemsOne": false
-                                                        },
-                                                        "namespaces": {
-                                                            "maxItemsOne": false
-                                                        },
-                                                        "namespaces_object": {
-                                                            "maxItemsOne": false
-                                                        },
-                                                        "namespaces_string": {
-                                                            "maxItemsOne": false
-                                                        },
-                                                        "tags": {
-                                                            "maxItemsOne": false
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "service_integrations": {
-                        "maxItemsOne": false
-                    },
-                    "static_ips": {
-                        "maxItemsOne": false
-                    },
-                    "tag": {
-                        "maxItemsOne": false
-                    },
-                    "tech_emails": {
-                        "maxItemsOne": false
-                    }
-                }
-            },
-            "aiven_m3db_user": {
-                "current": "aiven:index/m3dbUser:M3dbUser",
                 "majorVersion": 6
             },
             "aiven_mirrormaker_replication_flow": {
@@ -1878,6 +1540,19 @@
                                             "columns": {
                                                 "maxItemsOne": false
                                             },
+                                            "materialized_view": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "engine_params": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "order_by": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
                                             "topics": {
                                                 "maxItemsOne": false
                                             }
@@ -2107,6 +1782,9 @@
                     "external_mysql_user_config": {
                         "maxItemsOne": true
                     },
+                    "external_object_storage_config_user_config": {
+                        "maxItemsOne": true
+                    },
                     "external_opensearch_logs_user_config": {
                         "maxItemsOne": true
                     },
@@ -2316,108 +1994,6 @@
             },
             "aiven_account_team_project": {
                 "current": "aiven:index/getAccountTeamProject:getAccountTeamProject",
-                "majorVersion": 6
-            },
-            "aiven_alloydbomni": {
-                "current": "aiven:index/getAlloydbomni:getAlloydbomni",
-                "majorVersion": 6,
-                "fields": {
-                    "alloydbomni": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "params": {
-                                    "maxItemsOne": false
-                                },
-                                "standby_uris": {
-                                    "maxItemsOne": false
-                                },
-                                "syncing_uris": {
-                                    "maxItemsOne": false
-                                },
-                                "uris": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
-                    },
-                    "alloydbomni_user_config": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "additional_backup_regions": {
-                                    "maxItemsOne": true
-                                },
-                                "ip_filter": {
-                                    "maxItemsOne": false
-                                },
-                                "ip_filter_object": {
-                                    "maxItemsOne": false
-                                },
-                                "ip_filter_string": {
-                                    "maxItemsOne": false
-                                },
-                                "pg": {
-                                    "maxItemsOne": true
-                                },
-                                "pgaudit": {
-                                    "maxItemsOne": true,
-                                    "elem": {
-                                        "fields": {
-                                            "log": {
-                                                "maxItemsOne": false
-                                            }
-                                        }
-                                    }
-                                },
-                                "pgbouncer": {
-                                    "maxItemsOne": true,
-                                    "elem": {
-                                        "fields": {
-                                            "ignore_startup_parameters": {
-                                                "maxItemsOne": false
-                                            }
-                                        }
-                                    }
-                                },
-                                "pglookout": {
-                                    "maxItemsOne": true
-                                },
-                                "private_access": {
-                                    "maxItemsOne": true
-                                },
-                                "privatelink_access": {
-                                    "maxItemsOne": true
-                                },
-                                "public_access": {
-                                    "maxItemsOne": true
-                                }
-                            }
-                        }
-                    },
-                    "components": {
-                        "maxItemsOne": false
-                    },
-                    "service_integrations": {
-                        "maxItemsOne": false
-                    },
-                    "static_ips": {
-                        "maxItemsOne": false
-                    },
-                    "tag": {
-                        "maxItemsOne": false
-                    },
-                    "tech_emails": {
-                        "maxItemsOne": false
-                    }
-                }
-            },
-            "aiven_alloydbomni_database": {
-                "current": "aiven:index/getAlloydbomniDatabase:getAlloydbomniDatabase",
-                "majorVersion": 6
-            },
-            "aiven_alloydbomni_user": {
-                "current": "aiven:index/getAlloydbomniUser:getAlloydbomniUser",
                 "majorVersion": 6
             },
             "aiven_aws_org_vpc_peering_connection": {
@@ -2948,76 +2524,6 @@
                     }
                 }
             },
-            "aiven_influxdb": {
-                "current": "aiven:index/getInfluxDb:getInfluxDb",
-                "majorVersion": 6,
-                "fields": {
-                    "components": {
-                        "maxItemsOne": false
-                    },
-                    "influxdb": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "uris": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
-                    },
-                    "influxdb_user_config": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "additional_backup_regions": {
-                                    "maxItemsOne": true
-                                },
-                                "influxdb": {
-                                    "maxItemsOne": true
-                                },
-                                "ip_filter": {
-                                    "maxItemsOne": false
-                                },
-                                "ip_filter_object": {
-                                    "maxItemsOne": false
-                                },
-                                "ip_filter_string": {
-                                    "maxItemsOne": false
-                                },
-                                "private_access": {
-                                    "maxItemsOne": true
-                                },
-                                "privatelink_access": {
-                                    "maxItemsOne": true
-                                },
-                                "public_access": {
-                                    "maxItemsOne": true
-                                }
-                            }
-                        }
-                    },
-                    "service_integrations": {
-                        "maxItemsOne": false
-                    },
-                    "static_ips": {
-                        "maxItemsOne": false
-                    },
-                    "tag": {
-                        "maxItemsOne": false
-                    },
-                    "tech_emails": {
-                        "maxItemsOne": false
-                    }
-                }
-            },
-            "aiven_influxdb_database": {
-                "current": "aiven:index/getInfluxdbDatabase:getInfluxdbDatabase",
-                "majorVersion": 6
-            },
-            "aiven_influxdb_user": {
-                "current": "aiven:index/getInfluxdbUser:getInfluxdbUser",
-                "majorVersion": 6
-            },
             "aiven_kafka": {
                 "current": "aiven:index/getKafka:getKafka",
                 "majorVersion": 6,
@@ -3320,172 +2826,6 @@
             },
             "aiven_kafka_user": {
                 "current": "aiven:index/getKafkaUser:getKafkaUser",
-                "majorVersion": 6
-            },
-            "aiven_m3aggregator": {
-                "current": "aiven:index/getM3Aggregator:getM3Aggregator",
-                "majorVersion": 6,
-                "fields": {
-                    "components": {
-                        "maxItemsOne": false
-                    },
-                    "m3aggregator": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "uris": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
-                    },
-                    "m3aggregator_user_config": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "ip_filter": {
-                                    "maxItemsOne": false
-                                },
-                                "ip_filter_object": {
-                                    "maxItemsOne": false
-                                },
-                                "ip_filter_string": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
-                    },
-                    "service_integrations": {
-                        "maxItemsOne": false
-                    },
-                    "static_ips": {
-                        "maxItemsOne": false
-                    },
-                    "tag": {
-                        "maxItemsOne": false
-                    },
-                    "tech_emails": {
-                        "maxItemsOne": false
-                    }
-                }
-            },
-            "aiven_m3db": {
-                "current": "aiven:index/getM3Db:getM3Db",
-                "majorVersion": 6,
-                "fields": {
-                    "components": {
-                        "maxItemsOne": false
-                    },
-                    "m3db": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "uris": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
-                    },
-                    "m3db_user_config": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "additional_backup_regions": {
-                                    "maxItemsOne": true
-                                },
-                                "ip_filter": {
-                                    "maxItemsOne": false
-                                },
-                                "ip_filter_object": {
-                                    "maxItemsOne": false
-                                },
-                                "ip_filter_string": {
-                                    "maxItemsOne": false
-                                },
-                                "limits": {
-                                    "maxItemsOne": true
-                                },
-                                "m3": {
-                                    "maxItemsOne": true,
-                                    "elem": {
-                                        "fields": {
-                                            "tag_options": {
-                                                "maxItemsOne": true
-                                            }
-                                        }
-                                    }
-                                },
-                                "namespaces": {
-                                    "maxItemsOne": false,
-                                    "elem": {
-                                        "fields": {
-                                            "options": {
-                                                "maxItemsOne": true,
-                                                "elem": {
-                                                    "fields": {
-                                                        "retention_options": {
-                                                            "maxItemsOne": true
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                },
-                                "private_access": {
-                                    "maxItemsOne": true
-                                },
-                                "public_access": {
-                                    "maxItemsOne": true
-                                },
-                                "rules": {
-                                    "maxItemsOne": true,
-                                    "elem": {
-                                        "fields": {
-                                            "mapping": {
-                                                "maxItemsOne": false,
-                                                "elem": {
-                                                    "fields": {
-                                                        "aggregations": {
-                                                            "maxItemsOne": false
-                                                        },
-                                                        "namespaces": {
-                                                            "maxItemsOne": false
-                                                        },
-                                                        "namespaces_object": {
-                                                            "maxItemsOne": false
-                                                        },
-                                                        "namespaces_string": {
-                                                            "maxItemsOne": false
-                                                        },
-                                                        "tags": {
-                                                            "maxItemsOne": false
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "service_integrations": {
-                        "maxItemsOne": false
-                    },
-                    "static_ips": {
-                        "maxItemsOne": false
-                    },
-                    "tag": {
-                        "maxItemsOne": false
-                    },
-                    "tech_emails": {
-                        "maxItemsOne": false
-                    }
-                }
-            },
-            "aiven_m3db_user": {
-                "current": "aiven:index/getM3dbUser:getM3dbUser",
                 "majorVersion": 6
             },
             "aiven_mirrormaker_replication_flow": {
@@ -4171,6 +3511,19 @@
                                             "columns": {
                                                 "maxItemsOne": false
                                             },
+                                            "materialized_view": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "engine_params": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "order_by": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
                                             "topics": {
                                                 "maxItemsOne": false
                                             }
@@ -4400,6 +3753,9 @@
                     "external_mysql_user_config": {
                         "maxItemsOne": false
                     },
+                    "external_object_storage_config_user_config": {
+                        "maxItemsOne": false
+                    },
                     "external_opensearch_logs_user_config": {
                         "maxItemsOne": false
                     },
@@ -4611,11 +3967,6 @@
     },
     "auto-settings": {
         "resources": {
-            "aiven_influxdb": {
-                "maxItemsOneOverrides": {
-                    "influxdb": false
-                }
-            },
             "aiven_kafka": {
                 "maxItemsOneOverrides": {
                     "kafka": false
@@ -4635,9 +3986,6 @@
             "aiven:index/accountTeam:AccountTeam": 0,
             "aiven:index/accountTeamMember:AccountTeamMember": 0,
             "aiven:index/accountTeamProject:AccountTeamProject": 0,
-            "aiven:index/alloydbomni:Alloydbomni": 0,
-            "aiven:index/alloydbomniDatabase:AlloydbomniDatabase": 0,
-            "aiven:index/alloydbomniUser:AlloydbomniUser": 0,
             "aiven:index/awsOrgVpcPeeringConnection:AwsOrgVpcPeeringConnection": 0,
             "aiven:index/awsPrivatelink:AwsPrivatelink": 0,
             "aiven:index/awsVpcPeeringConnection:AwsVpcPeeringConnection": 0,
@@ -4653,9 +4001,9 @@
             "aiven:index/clickhouseDatabase:ClickhouseDatabase": 1,
             "aiven:index/clickhouseGrant:ClickhouseGrant": 0,
             "aiven:index/clickhouseRole:ClickhouseRole": 0,
-            "aiven:index/clickhouseUser:ClickhouseUser": 0,
+            "aiven:index/clickhouseUser:ClickhouseUser": 1,
             "aiven:index/cmk:Cmk": 1,
-            "aiven:index/connectionPool:ConnectionPool": 0,
+            "aiven:index/connectionPool:ConnectionPool": 1,
             "aiven:index/dragonfly:Dragonfly": 0,
             "aiven:index/flink:Flink": 0,
             "aiven:index/flinkApplication:FlinkApplication": 1,
@@ -4670,9 +4018,6 @@
             "aiven:index/gcpVpcPeeringConnection:GcpVpcPeeringConnection": 0,
             "aiven:index/governanceAccess:GovernanceAccess": 1,
             "aiven:index/grafana:Grafana": 0,
-            "aiven:index/influxDb:InfluxDb": 0,
-            "aiven:index/influxdbDatabase:InfluxdbDatabase": 0,
-            "aiven:index/influxdbUser:InfluxdbUser": 0,
             "aiven:index/kafka:Kafka": 0,
             "aiven:index/kafkaAcl:KafkaAcl": 0,
             "aiven:index/kafkaConnect:KafkaConnect": 0,
@@ -4685,9 +4030,6 @@
             "aiven:index/kafkaSchemaRegistryAcl:KafkaSchemaRegistryAcl": 0,
             "aiven:index/kafkaTopic:KafkaTopic": 0,
             "aiven:index/kafkaUser:KafkaUser": 0,
-            "aiven:index/m3Aggregator:M3Aggregator": 0,
-            "aiven:index/m3Db:M3Db": 0,
-            "aiven:index/m3dbUser:M3dbUser": 0,
             "aiven:index/mirrorMakerReplicationFlow:MirrorMakerReplicationFlow": 0,
             "aiven:index/mySql:MySql": 0,
             "aiven:index/mysqlDatabase:MysqlDatabase": 1,
@@ -4695,8 +4037,8 @@
             "aiven:index/openSearch:OpenSearch": 0,
             "aiven:index/openSearchAclConfig:OpenSearchAclConfig": 0,
             "aiven:index/openSearchAclRule:OpenSearchAclRule": 0,
-            "aiven:index/opensearchSecurityPluginConfig:OpensearchSecurityPluginConfig": 0,
-            "aiven:index/opensearchUser:OpensearchUser": 0,
+            "aiven:index/opensearchSecurityPluginConfig:OpensearchSecurityPluginConfig": 1,
+            "aiven:index/opensearchUser:OpensearchUser": 1,
             "aiven:index/organization:Organization": 1,
             "aiven:index/organizationAddress:OrganizationAddress": 1,
             "aiven:index/organizationApplicationUser:OrganizationApplicationUser": 1,
@@ -4720,7 +4062,7 @@
             "aiven:index/redisUser:RedisUser": 0,
             "aiven:index/serviceIntegration:ServiceIntegration": 0,
             "aiven:index/serviceIntegrationEndpoint:ServiceIntegrationEndpoint": 0,
-            "aiven:index/staticIp:StaticIp": 0,
+            "aiven:index/staticIp:StaticIp": 1,
             "aiven:index/thanos:Thanos": 0,
             "aiven:index/transitGatewayVpcAttachment:TransitGatewayVpcAttachment": 0,
             "aiven:index/valkey:Valkey": 0,
@@ -4732,9 +4074,6 @@
             "aiven:index/getAccountTeam:getAccountTeam": 0,
             "aiven:index/getAccountTeamMember:getAccountTeamMember": 0,
             "aiven:index/getAccountTeamProject:getAccountTeamProject": 0,
-            "aiven:index/getAlloydbomni:getAlloydbomni": 0,
-            "aiven:index/getAlloydbomniDatabase:getAlloydbomniDatabase": 0,
-            "aiven:index/getAlloydbomniUser:getAlloydbomniUser": 0,
             "aiven:index/getAwsOrgVpcPeeringConnection:getAwsOrgVpcPeeringConnection": 0,
             "aiven:index/getAwsPrivatelink:getAwsPrivatelink": 0,
             "aiven:index/getAwsVpcPeeringConnection:getAwsVpcPeeringConnection": 0,
@@ -4747,8 +4086,8 @@
             "aiven:index/getCassandraUser:getCassandraUser": 0,
             "aiven:index/getClickhouse:getClickhouse": 0,
             "aiven:index/getClickhouseDatabase:getClickhouseDatabase": 1,
-            "aiven:index/getClickhouseUser:getClickhouseUser": 0,
-            "aiven:index/getConnectionPool:getConnectionPool": 0,
+            "aiven:index/getClickhouseUser:getClickhouseUser": 1,
+            "aiven:index/getConnectionPool:getConnectionPool": 1,
             "aiven:index/getDragonfly:getDragonfly": 0,
             "aiven:index/getExternalIdentity:getExternalIdentity": 1,
             "aiven:index/getFlink:getFlink": 0,
@@ -4758,9 +4097,6 @@
             "aiven:index/getGcpPrivatelink:getGcpPrivatelink": 0,
             "aiven:index/getGcpVpcPeeringConnection:getGcpVpcPeeringConnection": 0,
             "aiven:index/getGrafana:getGrafana": 0,
-            "aiven:index/getInfluxDb:getInfluxDb": 0,
-            "aiven:index/getInfluxdbDatabase:getInfluxdbDatabase": 0,
-            "aiven:index/getInfluxdbUser:getInfluxdbUser": 0,
             "aiven:index/getKafka:getKafka": 0,
             "aiven:index/getKafkaAcl:getKafkaAcl": 0,
             "aiven:index/getKafkaConnect:getKafkaConnect": 0,
@@ -4772,9 +4108,6 @@
             "aiven:index/getKafkaTopic:getKafkaTopic": 0,
             "aiven:index/getKafkaTopicList:getKafkaTopicList": 1,
             "aiven:index/getKafkaUser:getKafkaUser": 0,
-            "aiven:index/getM3Aggregator:getM3Aggregator": 0,
-            "aiven:index/getM3Db:getM3Db": 0,
-            "aiven:index/getM3dbUser:getM3dbUser": 0,
             "aiven:index/getMirrorMakerReplicationFlow:getMirrorMakerReplicationFlow": 0,
             "aiven:index/getMySql:getMySql": 0,
             "aiven:index/getMysqlDatabase:getMysqlDatabase": 1,
@@ -4782,8 +4115,8 @@
             "aiven:index/getOpenSearch:getOpenSearch": 0,
             "aiven:index/getOpenSearchAclConfig:getOpenSearchAclConfig": 0,
             "aiven:index/getOpenSearchAclRule:getOpenSearchAclRule": 0,
-            "aiven:index/getOpensearchSecurityPluginConfig:getOpensearchSecurityPluginConfig": 0,
-            "aiven:index/getOpensearchUser:getOpensearchUser": 0,
+            "aiven:index/getOpensearchSecurityPluginConfig:getOpensearchSecurityPluginConfig": 1,
+            "aiven:index/getOpensearchUser:getOpensearchUser": 1,
             "aiven:index/getOrganization:getOrganization": 1,
             "aiven:index/getOrganizationAddress:getOrganizationAddress": 1,
             "aiven:index/getOrganizationApplicationUser:getOrganizationApplicationUser": 1,

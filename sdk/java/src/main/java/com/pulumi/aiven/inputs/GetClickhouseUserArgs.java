@@ -3,11 +3,14 @@
 
 package com.pulumi.aiven.inputs;
 
+import com.pulumi.aiven.inputs.GetClickhouseUserTimeoutsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetClickhouseUserArgs extends com.pulumi.resources.InvokeArgs {
@@ -15,14 +18,14 @@ public final class GetClickhouseUserArgs extends com.pulumi.resources.InvokeArgs
     public static final GetClickhouseUserArgs Empty = new GetClickhouseUserArgs();
 
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name.
      * 
      */
     @Import(name="project", required=true)
     private Output<String> project;
 
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name.
      * 
      */
     public Output<String> project() {
@@ -30,33 +33,55 @@ public final class GetClickhouseUserArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name.
      * 
      */
     @Import(name="serviceName", required=true)
     private Output<String> serviceName;
 
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service name.
      * 
      */
     public Output<String> serviceName() {
         return this.serviceName;
     }
 
-    /**
-     * The name of the ClickHouse user. Changing this property forces recreation of the resource.
-     * 
-     */
-    @Import(name="username", required=true)
-    private Output<String> username;
+    @Import(name="timeouts")
+    private @Nullable Output<GetClickhouseUserTimeoutsArgs> timeouts;
+
+    public Optional<Output<GetClickhouseUserTimeoutsArgs>> timeouts() {
+        return Optional.ofNullable(this.timeouts);
+    }
 
     /**
-     * @return The name of the ClickHouse user. Changing this property forces recreation of the resource.
+     * User name. Exactly one of the fields must be specified: `uuid` or `username`.
      * 
      */
-    public Output<String> username() {
-        return this.username;
+    @Import(name="username")
+    private @Nullable Output<String> username;
+
+    /**
+     * @return User name. Exactly one of the fields must be specified: `uuid` or `username`.
+     * 
+     */
+    public Optional<Output<String>> username() {
+        return Optional.ofNullable(this.username);
+    }
+
+    /**
+     * User identifier. Exactly one of the fields must be specified: `uuid` or `username`.
+     * 
+     */
+    @Import(name="uuid")
+    private @Nullable Output<String> uuid;
+
+    /**
+     * @return User identifier. Exactly one of the fields must be specified: `uuid` or `username`.
+     * 
+     */
+    public Optional<Output<String>> uuid() {
+        return Optional.ofNullable(this.uuid);
     }
 
     private GetClickhouseUserArgs() {}
@@ -64,7 +89,9 @@ public final class GetClickhouseUserArgs extends com.pulumi.resources.InvokeArgs
     private GetClickhouseUserArgs(GetClickhouseUserArgs $) {
         this.project = $.project;
         this.serviceName = $.serviceName;
+        this.timeouts = $.timeouts;
         this.username = $.username;
+        this.uuid = $.uuid;
     }
 
     public static Builder builder() {
@@ -86,7 +113,7 @@ public final class GetClickhouseUserArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param project The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param project Project name.
          * 
          * @return builder
          * 
@@ -97,7 +124,7 @@ public final class GetClickhouseUserArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param project The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param project Project name.
          * 
          * @return builder
          * 
@@ -107,7 +134,7 @@ public final class GetClickhouseUserArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param serviceName The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param serviceName Service name.
          * 
          * @return builder
          * 
@@ -118,7 +145,7 @@ public final class GetClickhouseUserArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param serviceName The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param serviceName Service name.
          * 
          * @return builder
          * 
@@ -127,19 +154,28 @@ public final class GetClickhouseUserArgs extends com.pulumi.resources.InvokeArgs
             return serviceName(Output.of(serviceName));
         }
 
+        public Builder timeouts(@Nullable Output<GetClickhouseUserTimeoutsArgs> timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
+        public Builder timeouts(GetClickhouseUserTimeoutsArgs timeouts) {
+            return timeouts(Output.of(timeouts));
+        }
+
         /**
-         * @param username The name of the ClickHouse user. Changing this property forces recreation of the resource.
+         * @param username User name. Exactly one of the fields must be specified: `uuid` or `username`.
          * 
          * @return builder
          * 
          */
-        public Builder username(Output<String> username) {
+        public Builder username(@Nullable Output<String> username) {
             $.username = username;
             return this;
         }
 
         /**
-         * @param username The name of the ClickHouse user. Changing this property forces recreation of the resource.
+         * @param username User name. Exactly one of the fields must be specified: `uuid` or `username`.
          * 
          * @return builder
          * 
@@ -148,15 +184,33 @@ public final class GetClickhouseUserArgs extends com.pulumi.resources.InvokeArgs
             return username(Output.of(username));
         }
 
+        /**
+         * @param uuid User identifier. Exactly one of the fields must be specified: `uuid` or `username`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder uuid(@Nullable Output<String> uuid) {
+            $.uuid = uuid;
+            return this;
+        }
+
+        /**
+         * @param uuid User identifier. Exactly one of the fields must be specified: `uuid` or `username`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder uuid(String uuid) {
+            return uuid(Output.of(uuid));
+        }
+
         public GetClickhouseUserArgs build() {
             if ($.project == null) {
                 throw new MissingRequiredPropertyException("GetClickhouseUserArgs", "project");
             }
             if ($.serviceName == null) {
                 throw new MissingRequiredPropertyException("GetClickhouseUserArgs", "serviceName");
-            }
-            if ($.username == null) {
-                throw new MissingRequiredPropertyException("GetClickhouseUserArgs", "username");
             }
             return $;
         }

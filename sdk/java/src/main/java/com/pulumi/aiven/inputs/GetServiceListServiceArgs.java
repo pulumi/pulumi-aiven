@@ -78,6 +78,21 @@ public final class GetServiceListServiceArgs extends com.pulumi.resources.Resour
     }
 
     /**
+     * True when the service uses a cluster plan with dedicated node groups.
+     * 
+     */
+    @Import(name="isClusterPlan", required=true)
+    private Output<Boolean> isClusterPlan;
+
+    /**
+     * @return True when the service uses a cluster plan with dedicated node groups.
+     * 
+     */
+    public Output<Boolean> isClusterPlan() {
+        return this.isClusterPlan;
+    }
+
+    /**
      * Number of service nodes in the active plan.
      * 
      */
@@ -264,6 +279,7 @@ public final class GetServiceListServiceArgs extends com.pulumi.resources.Resour
         this.cloudName = $.cloudName;
         this.createTime = $.createTime;
         this.diskSpaceMb = $.diskSpaceMb;
+        this.isClusterPlan = $.isClusterPlan;
         this.nodeCount = $.nodeCount;
         this.nodeCpuCount = $.nodeCpuCount;
         this.nodeMemoryMb = $.nodeMemoryMb;
@@ -378,6 +394,27 @@ public final class GetServiceListServiceArgs extends com.pulumi.resources.Resour
          */
         public Builder diskSpaceMb(Integer diskSpaceMb) {
             return diskSpaceMb(Output.of(diskSpaceMb));
+        }
+
+        /**
+         * @param isClusterPlan True when the service uses a cluster plan with dedicated node groups.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isClusterPlan(Output<Boolean> isClusterPlan) {
+            $.isClusterPlan = isClusterPlan;
+            return this;
+        }
+
+        /**
+         * @param isClusterPlan True when the service uses a cluster plan with dedicated node groups.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isClusterPlan(Boolean isClusterPlan) {
+            return isClusterPlan(Output.of(isClusterPlan));
         }
 
         /**
@@ -644,6 +681,9 @@ public final class GetServiceListServiceArgs extends com.pulumi.resources.Resour
             }
             if ($.diskSpaceMb == null) {
                 throw new MissingRequiredPropertyException("GetServiceListServiceArgs", "diskSpaceMb");
+            }
+            if ($.isClusterPlan == null) {
+                throw new MissingRequiredPropertyException("GetServiceListServiceArgs", "isClusterPlan");
             }
             if ($.nodeCount == null) {
                 throw new MissingRequiredPropertyException("GetServiceListServiceArgs", "nodeCount");

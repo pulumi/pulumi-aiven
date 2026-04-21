@@ -13,21 +13,30 @@ import (
 )
 
 // The StaticIp resource allows the creation and deletion of static ips. Please note that once a static ip is in the 'assigned' state it is bound to the node it is assigned to and cannot be deleted or disassociated until the node is recycled. Plans that would delete static ips that are in the assigned state will be blocked.
+//
+// ## Import
+//
+// ```sh
+// $ pulumi import aiven:index/staticIp:StaticIp example PROJECT/STATIC_IP_ADDRESS_ID
+// ```
 type StaticIp struct {
 	pulumi.CustomResourceState
 
-	// Specifies the cloud that the static ip belongs to. Changing this property forces recreation of the resource.
+	// Target cloud. Maximum length: `256`. Changing this property forces recreation of the resource.
 	CloudName pulumi.StringOutput `pulumi:"cloudName"`
-	// The address of the static ip.
+	// IPv4 address.
 	IpAddress pulumi.StringOutput `pulumi:"ipAddress"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The service name the static ip is associated with.
+	// Service name.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// The state the static ip is in.
+	// Static IP address state. The possible values are `assigned`, `available`, `created`, `creating`, `deleted` and `deleting`.
 	State pulumi.StringOutput `pulumi:"state"`
-	// The static ip id of the resource. Should be used as a reference elsewhere.
+	// Static IP address identifier.
 	StaticIpAddressId pulumi.StringOutput `pulumi:"staticIpAddressId"`
+	// Static IP address is protected against deletion. The default value is `false`.
+	TerminationProtection pulumi.BoolOutput         `pulumi:"terminationProtection"`
+	Timeouts              StaticIpTimeoutsPtrOutput `pulumi:"timeouts"`
 }
 
 // NewStaticIp registers a new resource with the given unique name, arguments, and options.
@@ -66,33 +75,39 @@ func GetStaticIp(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering StaticIp resources.
 type staticIpState struct {
-	// Specifies the cloud that the static ip belongs to. Changing this property forces recreation of the resource.
+	// Target cloud. Maximum length: `256`. Changing this property forces recreation of the resource.
 	CloudName *string `pulumi:"cloudName"`
-	// The address of the static ip.
+	// IPv4 address.
 	IpAddress *string `pulumi:"ipAddress"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project *string `pulumi:"project"`
-	// The service name the static ip is associated with.
+	// Service name.
 	ServiceName *string `pulumi:"serviceName"`
-	// The state the static ip is in.
+	// Static IP address state. The possible values are `assigned`, `available`, `created`, `creating`, `deleted` and `deleting`.
 	State *string `pulumi:"state"`
-	// The static ip id of the resource. Should be used as a reference elsewhere.
+	// Static IP address identifier.
 	StaticIpAddressId *string `pulumi:"staticIpAddressId"`
+	// Static IP address is protected against deletion. The default value is `false`.
+	TerminationProtection *bool             `pulumi:"terminationProtection"`
+	Timeouts              *StaticIpTimeouts `pulumi:"timeouts"`
 }
 
 type StaticIpState struct {
-	// Specifies the cloud that the static ip belongs to. Changing this property forces recreation of the resource.
+	// Target cloud. Maximum length: `256`. Changing this property forces recreation of the resource.
 	CloudName pulumi.StringPtrInput
-	// The address of the static ip.
+	// IPv4 address.
 	IpAddress pulumi.StringPtrInput
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project pulumi.StringPtrInput
-	// The service name the static ip is associated with.
+	// Service name.
 	ServiceName pulumi.StringPtrInput
-	// The state the static ip is in.
+	// Static IP address state. The possible values are `assigned`, `available`, `created`, `creating`, `deleted` and `deleting`.
 	State pulumi.StringPtrInput
-	// The static ip id of the resource. Should be used as a reference elsewhere.
+	// Static IP address identifier.
 	StaticIpAddressId pulumi.StringPtrInput
+	// Static IP address is protected against deletion. The default value is `false`.
+	TerminationProtection pulumi.BoolPtrInput
+	Timeouts              StaticIpTimeoutsPtrInput
 }
 
 func (StaticIpState) ElementType() reflect.Type {
@@ -100,18 +115,24 @@ func (StaticIpState) ElementType() reflect.Type {
 }
 
 type staticIpArgs struct {
-	// Specifies the cloud that the static ip belongs to. Changing this property forces recreation of the resource.
+	// Target cloud. Maximum length: `256`. Changing this property forces recreation of the resource.
 	CloudName string `pulumi:"cloudName"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
+	// Static IP address is protected against deletion. The default value is `false`.
+	TerminationProtection *bool             `pulumi:"terminationProtection"`
+	Timeouts              *StaticIpTimeouts `pulumi:"timeouts"`
 }
 
 // The set of arguments for constructing a StaticIp resource.
 type StaticIpArgs struct {
-	// Specifies the cloud that the static ip belongs to. Changing this property forces recreation of the resource.
+	// Target cloud. Maximum length: `256`. Changing this property forces recreation of the resource.
 	CloudName pulumi.StringInput
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput
+	// Static IP address is protected against deletion. The default value is `false`.
+	TerminationProtection pulumi.BoolPtrInput
+	Timeouts              StaticIpTimeoutsPtrInput
 }
 
 func (StaticIpArgs) ElementType() reflect.Type {
@@ -201,34 +222,43 @@ func (o StaticIpOutput) ToStaticIpOutputWithContext(ctx context.Context) StaticI
 	return o
 }
 
-// Specifies the cloud that the static ip belongs to. Changing this property forces recreation of the resource.
+// Target cloud. Maximum length: `256`. Changing this property forces recreation of the resource.
 func (o StaticIpOutput) CloudName() pulumi.StringOutput {
 	return o.ApplyT(func(v *StaticIp) pulumi.StringOutput { return v.CloudName }).(pulumi.StringOutput)
 }
 
-// The address of the static ip.
+// IPv4 address.
 func (o StaticIpOutput) IpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v *StaticIp) pulumi.StringOutput { return v.IpAddress }).(pulumi.StringOutput)
 }
 
-// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// Project name. Changing this property forces recreation of the resource.
 func (o StaticIpOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *StaticIp) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// The service name the static ip is associated with.
+// Service name.
 func (o StaticIpOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *StaticIp) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// The state the static ip is in.
+// Static IP address state. The possible values are `assigned`, `available`, `created`, `creating`, `deleted` and `deleting`.
 func (o StaticIpOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *StaticIp) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
-// The static ip id of the resource. Should be used as a reference elsewhere.
+// Static IP address identifier.
 func (o StaticIpOutput) StaticIpAddressId() pulumi.StringOutput {
 	return o.ApplyT(func(v *StaticIp) pulumi.StringOutput { return v.StaticIpAddressId }).(pulumi.StringOutput)
+}
+
+// Static IP address is protected against deletion. The default value is `false`.
+func (o StaticIpOutput) TerminationProtection() pulumi.BoolOutput {
+	return o.ApplyT(func(v *StaticIp) pulumi.BoolOutput { return v.TerminationProtection }).(pulumi.BoolOutput)
+}
+
+func (o StaticIpOutput) Timeouts() StaticIpTimeoutsPtrOutput {
+	return o.ApplyT(func(v *StaticIp) StaticIpTimeoutsPtrOutput { return v.Timeouts }).(StaticIpTimeoutsPtrOutput)
 }
 
 type StaticIpArrayOutput struct{ *pulumi.OutputState }

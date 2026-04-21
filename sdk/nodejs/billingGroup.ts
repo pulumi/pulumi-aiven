@@ -104,7 +104,7 @@ export class BillingGroup extends pulumi.CustomResource {
      */
     declare public readonly company: pulumi.Output<string>;
     /**
-     * Billing group ID. Maximum length: `36`. Changing this property forces recreation of the resource.
+     * Billing group ID. Length must be exactly `36`. Changing this property forces recreation of the resource.
      */
     declare public readonly copyFromBillingGroup: pulumi.Output<string | undefined>;
     /**
@@ -240,7 +240,7 @@ export interface BillingGroupState {
      */
     company?: pulumi.Input<string>;
     /**
-     * Billing group ID. Maximum length: `36`. Changing this property forces recreation of the resource.
+     * Billing group ID. Length must be exactly `36`. Changing this property forces recreation of the resource.
      */
     copyFromBillingGroup?: pulumi.Input<string>;
     /**
@@ -313,7 +313,7 @@ export interface BillingGroupArgs {
      */
     company?: pulumi.Input<string>;
     /**
-     * Billing group ID. Maximum length: `36`. Changing this property forces recreation of the resource.
+     * Billing group ID. Length must be exactly `36`. Changing this property forces recreation of the resource.
      */
     copyFromBillingGroup?: pulumi.Input<string>;
     /**

@@ -31,12 +31,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AccountTeamMember{}
 	case "aiven:index/accountTeamProject:AccountTeamProject":
 		r = &AccountTeamProject{}
-	case "aiven:index/alloydbomni:Alloydbomni":
-		r = &Alloydbomni{}
-	case "aiven:index/alloydbomniDatabase:AlloydbomniDatabase":
-		r = &AlloydbomniDatabase{}
-	case "aiven:index/alloydbomniUser:AlloydbomniUser":
-		r = &AlloydbomniUser{}
 	case "aiven:index/awsOrgVpcPeeringConnection:AwsOrgVpcPeeringConnection":
 		r = &AwsOrgVpcPeeringConnection{}
 	case "aiven:index/awsPrivatelink:AwsPrivatelink":
@@ -101,12 +95,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &GovernanceAccess{}
 	case "aiven:index/grafana:Grafana":
 		r = &Grafana{}
-	case "aiven:index/influxDb:InfluxDb":
-		r = &InfluxDb{}
-	case "aiven:index/influxdbDatabase:InfluxdbDatabase":
-		r = &InfluxdbDatabase{}
-	case "aiven:index/influxdbUser:InfluxdbUser":
-		r = &InfluxdbUser{}
 	case "aiven:index/kafka:Kafka":
 		r = &Kafka{}
 	case "aiven:index/kafkaAcl:KafkaAcl":
@@ -131,12 +119,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &KafkaTopic{}
 	case "aiven:index/kafkaUser:KafkaUser":
 		r = &KafkaUser{}
-	case "aiven:index/m3Aggregator:M3Aggregator":
-		r = &M3Aggregator{}
-	case "aiven:index/m3Db:M3Db":
-		r = &M3Db{}
-	case "aiven:index/m3dbUser:M3dbUser":
-		r = &M3dbUser{}
 	case "aiven:index/mirrorMakerReplicationFlow:MirrorMakerReplicationFlow":
 		r = &MirrorMakerReplicationFlow{}
 	case "aiven:index/mySql:MySql":
@@ -265,21 +247,6 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"aiven",
 		"index/accountTeamProject",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"aiven",
-		"index/alloydbomni",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"aiven",
-		"index/alloydbomniDatabase",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"aiven",
-		"index/alloydbomniUser",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -444,21 +411,6 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"aiven",
-		"index/influxDb",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"aiven",
-		"index/influxdbDatabase",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"aiven",
-		"index/influxdbUser",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"aiven",
 		"index/kafka",
 		&module{version},
 	)
@@ -515,21 +467,6 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"aiven",
 		"index/kafkaUser",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"aiven",
-		"index/m3Aggregator",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"aiven",
-		"index/m3Db",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"aiven",
-		"index/m3dbUser",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

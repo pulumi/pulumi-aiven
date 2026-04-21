@@ -129,12 +129,12 @@ export class FlinkApplicationDeployment extends pulumi.CustomResource {
      */
     declare public readonly serviceName: pulumi.Output<string>;
     /**
-     * Job savepoint. Maximum length: `2048`. Changing this property forces recreation of the resource.
+     * Job savepoint. Length must be between `1` and `2048`. Changing this property forces recreation of the resource.
      */
     declare public readonly startingSavepoint: pulumi.Output<string | undefined>;
     declare public readonly timeouts: pulumi.Output<outputs.FlinkApplicationDeploymentTimeouts | undefined>;
     /**
-     * ApplicationVersion ID. Maximum length: `36`. Changing this property forces recreation of the resource.
+     * ApplicationVersion ID. Length must be exactly `36`. Changing this property forces recreation of the resource.
      */
     declare public readonly versionId: pulumi.Output<string>;
 
@@ -230,12 +230,12 @@ export interface FlinkApplicationDeploymentState {
      */
     serviceName?: pulumi.Input<string>;
     /**
-     * Job savepoint. Maximum length: `2048`. Changing this property forces recreation of the resource.
+     * Job savepoint. Length must be between `1` and `2048`. Changing this property forces recreation of the resource.
      */
     startingSavepoint?: pulumi.Input<string>;
     timeouts?: pulumi.Input<inputs.FlinkApplicationDeploymentTimeouts>;
     /**
-     * ApplicationVersion ID. Maximum length: `36`. Changing this property forces recreation of the resource.
+     * ApplicationVersion ID. Length must be exactly `36`. Changing this property forces recreation of the resource.
      */
     versionId?: pulumi.Input<string>;
 }
@@ -265,12 +265,12 @@ export interface FlinkApplicationDeploymentArgs {
      */
     serviceName: pulumi.Input<string>;
     /**
-     * Job savepoint. Maximum length: `2048`. Changing this property forces recreation of the resource.
+     * Job savepoint. Length must be between `1` and `2048`. Changing this property forces recreation of the resource.
      */
     startingSavepoint?: pulumi.Input<string>;
     timeouts?: pulumi.Input<inputs.FlinkApplicationDeploymentTimeouts>;
     /**
-     * ApplicationVersion ID. Maximum length: `36`. Changing this property forces recreation of the resource.
+     * ApplicationVersion ID. Length must be exactly `36`. Changing this property forces recreation of the resource.
      */
     versionId: pulumi.Input<string>;
 }

@@ -6,102 +6,131 @@ package com.pulumi.aiven;
 import com.pulumi.aiven.StaticIpArgs;
 import com.pulumi.aiven.Utilities;
 import com.pulumi.aiven.inputs.StaticIpState;
+import com.pulumi.aiven.outputs.StaticIpTimeouts;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
  * The aiven.StaticIp resource allows the creation and deletion of static ips. Please note that once a static ip is in the &#39;assigned&#39; state it is bound to the node it is assigned to and cannot be deleted or disassociated until the node is recycled. Plans that would delete static ips that are in the assigned state will be blocked.
  * 
+ * ## Import
+ * 
+ * ```sh
+ * $ pulumi import aiven:index/staticIp:StaticIp example PROJECT/STATIC_IP_ADDRESS_ID
+ * ```
+ * 
  */
 @ResourceType(type="aiven:index/staticIp:StaticIp")
 public class StaticIp extends com.pulumi.resources.CustomResource {
     /**
-     * Specifies the cloud that the static ip belongs to. Changing this property forces recreation of the resource.
+     * Target cloud. Maximum length: `256`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="cloudName", refs={String.class}, tree="[0]")
     private Output<String> cloudName;
 
     /**
-     * @return Specifies the cloud that the static ip belongs to. Changing this property forces recreation of the resource.
+     * @return Target cloud. Maximum length: `256`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> cloudName() {
         return this.cloudName;
     }
     /**
-     * The address of the static ip.
+     * IPv4 address.
      * 
      */
     @Export(name="ipAddress", refs={String.class}, tree="[0]")
     private Output<String> ipAddress;
 
     /**
-     * @return The address of the static ip.
+     * @return IPv4 address.
      * 
      */
     public Output<String> ipAddress() {
         return this.ipAddress;
     }
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> project() {
         return this.project;
     }
     /**
-     * The service name the static ip is associated with.
+     * Service name.
      * 
      */
     @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     /**
-     * @return The service name the static ip is associated with.
+     * @return Service name.
      * 
      */
     public Output<String> serviceName() {
         return this.serviceName;
     }
     /**
-     * The state the static ip is in.
+     * Static IP address state. The possible values are `assigned`, `available`, `created`, `creating`, `deleted` and `deleting`.
      * 
      */
     @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**
-     * @return The state the static ip is in.
+     * @return Static IP address state. The possible values are `assigned`, `available`, `created`, `creating`, `deleted` and `deleting`.
      * 
      */
     public Output<String> state() {
         return this.state;
     }
     /**
-     * The static ip id of the resource. Should be used as a reference elsewhere.
+     * Static IP address identifier.
      * 
      */
     @Export(name="staticIpAddressId", refs={String.class}, tree="[0]")
     private Output<String> staticIpAddressId;
 
     /**
-     * @return The static ip id of the resource. Should be used as a reference elsewhere.
+     * @return Static IP address identifier.
      * 
      */
     public Output<String> staticIpAddressId() {
         return this.staticIpAddressId;
+    }
+    /**
+     * Static IP address is protected against deletion. The default value is `false`.
+     * 
+     */
+    @Export(name="terminationProtection", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> terminationProtection;
+
+    /**
+     * @return Static IP address is protected against deletion. The default value is `false`.
+     * 
+     */
+    public Output<Boolean> terminationProtection() {
+        return this.terminationProtection;
+    }
+    @Export(name="timeouts", refs={StaticIpTimeouts.class}, tree="[0]")
+    private Output</* @Nullable */ StaticIpTimeouts> timeouts;
+
+    public Output<Optional<StaticIpTimeouts>> timeouts() {
+        return Codegen.optional(this.timeouts);
     }
 
     /**

@@ -49,10 +49,16 @@ namespace Pulumi.Aiven.Inputs
         public Input<string> GroupName { get; set; } = null!;
 
         /// <summary>
-        /// Enum: `Default`, `Stream`. Defines how ClickHouse should handle errors when processing Kafka messages. `Default` stops on errors, `Stream` continues processing and logs errors. Default: `Default`.
+        /// Enum: `DeadLetterQueue`, `Default`, `Stream`. Defines how ClickHouse should handle errors when processing Kafka messages. `Default` stops on errors, `Stream` continues processing and logs errors, `DeadLetterQueue` saves error data to system.dead*letter*queue (requires ClickHouse 25.8+). Default: `Default`.
         /// </summary>
         [Input("handleErrorMode")]
         public Input<string>? HandleErrorMode { get; set; }
+
+        /// <summary>
+        /// Optional materialized view that persists data from the Kafka engine table into a MergeTree-family table. When specified, a ClickHouse materialized view is created that automatically reads from the Kafka table and inserts into a durable target table
+        /// </summary>
+        [Input("materializedView")]
+        public Input<Inputs.ServiceIntegrationClickhouseKafkaUserConfigTableMaterializedViewGetArgs>? MaterializedView { get; set; }
 
         /// <summary>
         /// Maximum number of rows to collect before flushing data between Kafka and ClickHouse. Default: `0`.

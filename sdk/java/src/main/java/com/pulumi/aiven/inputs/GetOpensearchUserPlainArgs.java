@@ -3,10 +3,13 @@
 
 package com.pulumi.aiven.inputs;
 
+import com.pulumi.aiven.inputs.GetOpensearchUserTimeouts;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetOpensearchUserPlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -14,14 +17,14 @@ public final class GetOpensearchUserPlainArgs extends com.pulumi.resources.Invok
     public static final GetOpensearchUserPlainArgs Empty = new GetOpensearchUserPlainArgs();
 
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name.
      * 
      */
     @Import(name="project", required=true)
     private String project;
 
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name.
      * 
      */
     public String project() {
@@ -29,29 +32,36 @@ public final class GetOpensearchUserPlainArgs extends com.pulumi.resources.Invok
     }
 
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name.
      * 
      */
     @Import(name="serviceName", required=true)
     private String serviceName;
 
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service name.
      * 
      */
     public String serviceName() {
         return this.serviceName;
     }
 
+    @Import(name="timeouts")
+    private @Nullable GetOpensearchUserTimeouts timeouts;
+
+    public Optional<GetOpensearchUserTimeouts> timeouts() {
+        return Optional.ofNullable(this.timeouts);
+    }
+
     /**
-     * Name of the OpenSearch service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Account username.
      * 
      */
     @Import(name="username", required=true)
     private String username;
 
     /**
-     * @return Name of the OpenSearch service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Account username.
      * 
      */
     public String username() {
@@ -63,6 +73,7 @@ public final class GetOpensearchUserPlainArgs extends com.pulumi.resources.Invok
     private GetOpensearchUserPlainArgs(GetOpensearchUserPlainArgs $) {
         this.project = $.project;
         this.serviceName = $.serviceName;
+        this.timeouts = $.timeouts;
         this.username = $.username;
     }
 
@@ -85,7 +96,7 @@ public final class GetOpensearchUserPlainArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param project The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param project Project name.
          * 
          * @return builder
          * 
@@ -96,7 +107,7 @@ public final class GetOpensearchUserPlainArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param serviceName The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param serviceName Service name.
          * 
          * @return builder
          * 
@@ -106,8 +117,13 @@ public final class GetOpensearchUserPlainArgs extends com.pulumi.resources.Invok
             return this;
         }
 
+        public Builder timeouts(@Nullable GetOpensearchUserTimeouts timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
         /**
-         * @param username Name of the OpenSearch service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param username Account username.
          * 
          * @return builder
          * 

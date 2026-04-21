@@ -32,7 +32,7 @@ class OrganizationProjectArgs:
         """
         The set of arguments for constructing a OrganizationProject resource.
 
-        :param pulumi.Input[_builtins.str] billing_group_id: Billing group ID to assign to the project. It's required when moving projects between organizations.
+        :param pulumi.Input[_builtins.str] billing_group_id: Billing group ID to assign to the project. It's required when moving projects between organizations. Minimum length: `1`.
         :param pulumi.Input[_builtins.str] organization_id: ID of an organization. Maximum length: `36`.
         :param pulumi.Input[_builtins.str] parent_id: Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.
         :param pulumi.Input[_builtins.str] project_id: The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It's recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource. Changing this property forces recreation of the resource.
@@ -57,7 +57,7 @@ class OrganizationProjectArgs:
     @pulumi.getter(name="billingGroupId")
     def billing_group_id(self) -> pulumi.Input[_builtins.str]:
         """
-        Billing group ID to assign to the project. It's required when moving projects between organizations.
+        Billing group ID to assign to the project. It's required when moving projects between organizations. Minimum length: `1`.
         """
         return pulumi.get(self, "billing_group_id")
 
@@ -163,7 +163,7 @@ class _OrganizationProjectState:
         Input properties used for looking up and filtering OrganizationProject resources.
 
         :param pulumi.Input[_builtins.int] base_port: Valid port number (10000-30000) to use as a base for service port allocation. Value must be between `10000` and `30000`.
-        :param pulumi.Input[_builtins.str] billing_group_id: Billing group ID to assign to the project. It's required when moving projects between organizations.
+        :param pulumi.Input[_builtins.str] billing_group_id: Billing group ID to assign to the project. It's required when moving projects between organizations. Minimum length: `1`.
         :param pulumi.Input[_builtins.str] ca_cert: PEM encoded certificate.
         :param pulumi.Input[_builtins.str] organization_id: ID of an organization. Maximum length: `36`.
         :param pulumi.Input[_builtins.str] parent_id: Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.
@@ -206,7 +206,7 @@ class _OrganizationProjectState:
     @pulumi.getter(name="billingGroupId")
     def billing_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Billing group ID to assign to the project. It's required when moving projects between organizations.
+        Billing group ID to assign to the project. It's required when moving projects between organizations. Minimum length: `1`.
         """
         return pulumi.get(self, "billing_group_id")
 
@@ -324,7 +324,7 @@ class OrganizationProject(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] base_port: Valid port number (10000-30000) to use as a base for service port allocation. Value must be between `10000` and `30000`.
-        :param pulumi.Input[_builtins.str] billing_group_id: Billing group ID to assign to the project. It's required when moving projects between organizations.
+        :param pulumi.Input[_builtins.str] billing_group_id: Billing group ID to assign to the project. It's required when moving projects between organizations. Minimum length: `1`.
         :param pulumi.Input[_builtins.str] organization_id: ID of an organization. Maximum length: `36`.
         :param pulumi.Input[_builtins.str] parent_id: Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.
         :param pulumi.Input[_builtins.str] project_id: The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It's recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource. Changing this property forces recreation of the resource.
@@ -425,7 +425,7 @@ class OrganizationProject(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] base_port: Valid port number (10000-30000) to use as a base for service port allocation. Value must be between `10000` and `30000`.
-        :param pulumi.Input[_builtins.str] billing_group_id: Billing group ID to assign to the project. It's required when moving projects between organizations.
+        :param pulumi.Input[_builtins.str] billing_group_id: Billing group ID to assign to the project. It's required when moving projects between organizations. Minimum length: `1`.
         :param pulumi.Input[_builtins.str] ca_cert: PEM encoded certificate.
         :param pulumi.Input[_builtins.str] organization_id: ID of an organization. Maximum length: `36`.
         :param pulumi.Input[_builtins.str] parent_id: Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.
@@ -460,7 +460,7 @@ class OrganizationProject(pulumi.CustomResource):
     @pulumi.getter(name="billingGroupId")
     def billing_group_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Billing group ID to assign to the project. It's required when moving projects between organizations.
+        Billing group ID to assign to the project. It's required when moving projects between organizations. Minimum length: `1`.
         """
         return pulumi.get(self, "billing_group_id")
 

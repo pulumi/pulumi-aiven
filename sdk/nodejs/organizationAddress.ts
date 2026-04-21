@@ -67,7 +67,7 @@ export class OrganizationAddress extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
-     * Name of a company. Maximum length: `128`.
+     * Name of a company. Length must be between `1` and `128`.
      */
     declare public readonly name: pulumi.Output<string>;
     /**
@@ -168,7 +168,7 @@ export interface OrganizationAddressState {
      */
     createTime?: pulumi.Input<string>;
     /**
-     * Name of a company. Maximum length: `128`.
+     * Name of a company. Length must be between `1` and `128`.
      */
     name?: pulumi.Input<string>;
     /**
@@ -207,7 +207,7 @@ export interface OrganizationAddressArgs {
      */
     countryCode: pulumi.Input<string>;
     /**
-     * Name of a company. Maximum length: `128`.
+     * Name of a company. Length must be between `1` and `128`.
      */
     name?: pulumi.Input<string>;
     /**

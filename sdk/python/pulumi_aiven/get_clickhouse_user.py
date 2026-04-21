@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetClickhouseUserResult',
@@ -26,7 +28,7 @@ class GetClickhouseUserResult:
     """
     A collection of values returned by getClickhouseUser.
     """
-    def __init__(__self__, id=None, password=None, project=None, required=None, service_name=None, username=None, uuid=None):
+    def __init__(__self__, id=None, password=None, project=None, required=None, service_name=None, timeouts=None, username=None, uuid=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -42,6 +44,9 @@ class GetClickhouseUserResult:
         if service_name and not isinstance(service_name, str):
             raise TypeError("Expected argument 'service_name' to be a str")
         pulumi.set(__self__, "service_name", service_name)
+        if timeouts and not isinstance(timeouts, dict):
+            raise TypeError("Expected argument 'timeouts' to be a dict")
+        pulumi.set(__self__, "timeouts", timeouts)
         if username and not isinstance(username, str):
             raise TypeError("Expected argument 'username' to be a str")
         pulumi.set(__self__, "username", username)
@@ -53,7 +58,7 @@ class GetClickhouseUserResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The provider-assigned unique ID for this managed resource.
+        Resource ID composed as: `project/service_name/uuid`.
         """
         return pulumi.get(self, "id")
 
@@ -61,7 +66,7 @@ class GetClickhouseUserResult:
     @pulumi.getter
     def password(self) -> _builtins.str:
         """
-        The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+        The password of the service user (auto-generated if not provided). The field conflicts with `password_wo`.
         """
         return pulumi.get(self, "password")
 
@@ -69,7 +74,7 @@ class GetClickhouseUserResult:
     @pulumi.getter
     def project(self) -> _builtins.str:
         """
-        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Project name.
         """
         return pulumi.get(self, "project")
 
@@ -77,7 +82,7 @@ class GetClickhouseUserResult:
     @pulumi.getter
     def required(self) -> _builtins.bool:
         """
-        Indicates if a ClickHouse user is required.
+        Required user.
         """
         return pulumi.get(self, "required")
 
@@ -85,15 +90,20 @@ class GetClickhouseUserResult:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> _builtins.str:
         """
-        The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Service name.
         """
         return pulumi.get(self, "service_name")
 
     @_builtins.property
     @pulumi.getter
+    def timeouts(self) -> Optional['outputs.GetClickhouseUserTimeoutsResult']:
+        return pulumi.get(self, "timeouts")
+
+    @_builtins.property
+    @pulumi.getter
     def username(self) -> _builtins.str:
         """
-        The name of the ClickHouse user. Changing this property forces recreation of the resource.
+        User name. Exactly one of the fields must be specified: `uuid` or `username`.
         """
         return pulumi.get(self, "username")
 
@@ -101,7 +111,7 @@ class GetClickhouseUserResult:
     @pulumi.getter
     def uuid(self) -> _builtins.str:
         """
-        UUID of the ClickHouse user.
+        User identifier. Exactly one of the fields must be specified: `uuid` or `username`.
         """
         return pulumi.get(self, "uuid")
 
@@ -117,16 +127,19 @@ class AwaitableGetClickhouseUserResult(GetClickhouseUserResult):
             project=self.project,
             required=self.required,
             service_name=self.service_name,
+            timeouts=self.timeouts,
             username=self.username,
             uuid=self.uuid)
 
 
 def get_clickhouse_user(project: Optional[_builtins.str] = None,
                         service_name: Optional[_builtins.str] = None,
+                        timeouts: Optional[Union['GetClickhouseUserTimeoutsArgs', 'GetClickhouseUserTimeoutsArgsDict']] = None,
                         username: Optional[_builtins.str] = None,
+                        uuid: Optional[_builtins.str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClickhouseUserResult:
     """
-    Gets information about a ClickHouse user.
+    Gets information about an Aiven for ClickHouse user.
 
     ## Example Usage
 
@@ -140,14 +153,17 @@ def get_clickhouse_user(project: Optional[_builtins.str] = None,
     ```
 
 
-    :param _builtins.str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param _builtins.str service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param _builtins.str username: The name of the ClickHouse user. Changing this property forces recreation of the resource.
+    :param _builtins.str project: Project name.
+    :param _builtins.str service_name: Service name.
+    :param _builtins.str username: User name. Exactly one of the fields must be specified: `uuid` or `username`.
+    :param _builtins.str uuid: User identifier. Exactly one of the fields must be specified: `uuid` or `username`.
     """
     __args__ = dict()
     __args__['project'] = project
     __args__['serviceName'] = service_name
+    __args__['timeouts'] = timeouts
     __args__['username'] = username
+    __args__['uuid'] = uuid
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('aiven:index/getClickhouseUser:getClickhouseUser', __args__, opts=opts, typ=GetClickhouseUserResult).value
 
@@ -157,14 +173,17 @@ def get_clickhouse_user(project: Optional[_builtins.str] = None,
         project=pulumi.get(__ret__, 'project'),
         required=pulumi.get(__ret__, 'required'),
         service_name=pulumi.get(__ret__, 'service_name'),
+        timeouts=pulumi.get(__ret__, 'timeouts'),
         username=pulumi.get(__ret__, 'username'),
         uuid=pulumi.get(__ret__, 'uuid'))
 def get_clickhouse_user_output(project: Optional[pulumi.Input[_builtins.str]] = None,
                                service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                               username: Optional[pulumi.Input[_builtins.str]] = None,
+                               timeouts: Optional[pulumi.Input[Optional[Union['GetClickhouseUserTimeoutsArgs', 'GetClickhouseUserTimeoutsArgsDict']]]] = None,
+                               username: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                               uuid: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetClickhouseUserResult]:
     """
-    Gets information about a ClickHouse user.
+    Gets information about an Aiven for ClickHouse user.
 
     ## Example Usage
 
@@ -178,14 +197,17 @@ def get_clickhouse_user_output(project: Optional[pulumi.Input[_builtins.str]] = 
     ```
 
 
-    :param _builtins.str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param _builtins.str service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param _builtins.str username: The name of the ClickHouse user. Changing this property forces recreation of the resource.
+    :param _builtins.str project: Project name.
+    :param _builtins.str service_name: Service name.
+    :param _builtins.str username: User name. Exactly one of the fields must be specified: `uuid` or `username`.
+    :param _builtins.str uuid: User identifier. Exactly one of the fields must be specified: `uuid` or `username`.
     """
     __args__ = dict()
     __args__['project'] = project
     __args__['serviceName'] = service_name
+    __args__['timeouts'] = timeouts
     __args__['username'] = username
+    __args__['uuid'] = uuid
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('aiven:index/getClickhouseUser:getClickhouseUser', __args__, opts=opts, typ=GetClickhouseUserResult)
     return __ret__.apply(lambda __response__: GetClickhouseUserResult(
@@ -194,5 +216,6 @@ def get_clickhouse_user_output(project: Optional[pulumi.Input[_builtins.str]] = 
         project=pulumi.get(__response__, 'project'),
         required=pulumi.get(__response__, 'required'),
         service_name=pulumi.get(__response__, 'service_name'),
+        timeouts=pulumi.get(__response__, 'timeouts'),
         username=pulumi.get(__response__, 'username'),
         uuid=pulumi.get(__response__, 'uuid')))

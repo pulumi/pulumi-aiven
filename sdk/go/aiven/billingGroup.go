@@ -80,7 +80,7 @@ type BillingGroup struct {
 	City pulumi.StringOutput `pulumi:"city"`
 	// Name of a company. Maximum length: `128`.
 	Company pulumi.StringOutput `pulumi:"company"`
-	// Billing group ID. Maximum length: `36`. Changing this property forces recreation of the resource.
+	// Billing group ID. Length must be exactly `36`. Changing this property forces recreation of the resource.
 	CopyFromBillingGroup pulumi.StringPtrOutput `pulumi:"copyFromBillingGroup"`
 	// Two letter country code for billing country. Maximum length: `2`.
 	CountryCode pulumi.StringOutput `pulumi:"countryCode"`
@@ -152,7 +152,7 @@ type billingGroupState struct {
 	City *string `pulumi:"city"`
 	// Name of a company. Maximum length: `128`.
 	Company *string `pulumi:"company"`
-	// Billing group ID. Maximum length: `36`. Changing this property forces recreation of the resource.
+	// Billing group ID. Length must be exactly `36`. Changing this property forces recreation of the resource.
 	CopyFromBillingGroup *string `pulumi:"copyFromBillingGroup"`
 	// Two letter country code for billing country. Maximum length: `2`.
 	CountryCode *string `pulumi:"countryCode"`
@@ -192,7 +192,7 @@ type BillingGroupState struct {
 	City pulumi.StringPtrInput
 	// Name of a company. Maximum length: `128`.
 	Company pulumi.StringPtrInput
-	// Billing group ID. Maximum length: `36`. Changing this property forces recreation of the resource.
+	// Billing group ID. Length must be exactly `36`. Changing this property forces recreation of the resource.
 	CopyFromBillingGroup pulumi.StringPtrInput
 	// Two letter country code for billing country. Maximum length: `2`.
 	CountryCode pulumi.StringPtrInput
@@ -234,7 +234,7 @@ type billingGroupArgs struct {
 	City *string `pulumi:"city"`
 	// Name of a company. Maximum length: `128`.
 	Company *string `pulumi:"company"`
-	// Billing group ID. Maximum length: `36`. Changing this property forces recreation of the resource.
+	// Billing group ID. Length must be exactly `36`. Changing this property forces recreation of the resource.
 	CopyFromBillingGroup *string `pulumi:"copyFromBillingGroup"`
 	// Two letter country code for billing country. Maximum length: `2`.
 	CountryCode *string `pulumi:"countryCode"`
@@ -273,7 +273,7 @@ type BillingGroupArgs struct {
 	City pulumi.StringPtrInput
 	// Name of a company. Maximum length: `128`.
 	Company pulumi.StringPtrInput
-	// Billing group ID. Maximum length: `36`. Changing this property forces recreation of the resource.
+	// Billing group ID. Length must be exactly `36`. Changing this property forces recreation of the resource.
 	CopyFromBillingGroup pulumi.StringPtrInput
 	// Two letter country code for billing country. Maximum length: `2`.
 	CountryCode pulumi.StringPtrInput
@@ -429,7 +429,7 @@ func (o BillingGroupOutput) Company() pulumi.StringOutput {
 	return o.ApplyT(func(v *BillingGroup) pulumi.StringOutput { return v.Company }).(pulumi.StringOutput)
 }
 
-// Billing group ID. Maximum length: `36`. Changing this property forces recreation of the resource.
+// Billing group ID. Length must be exactly `36`. Changing this property forces recreation of the resource.
 func (o BillingGroupOutput) CopyFromBillingGroup() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BillingGroup) pulumi.StringPtrOutput { return v.CopyFromBillingGroup }).(pulumi.StringPtrOutput)
 }

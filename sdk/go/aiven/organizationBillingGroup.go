@@ -33,7 +33,7 @@ type OrganizationBillingGroup struct {
 	BillingEmails OrganizationBillingGroupBillingEmailArrayOutput `pulumi:"billingEmails"`
 	// Billing group ID.
 	BillingGroupId pulumi.StringOutput `pulumi:"billingGroupId"`
-	// Billing Group Name. Maximum length: `128`.
+	// Billing Group Name. Length must be between `1` and `128`.
 	BillingGroupName pulumi.StringOutput `pulumi:"billingGroupName"`
 	// Extra billing text. Maximum length: `256`.
 	CustomInvoiceText pulumi.StringPtrOutput `pulumi:"customInvoiceText"`
@@ -107,7 +107,7 @@ type organizationBillingGroupState struct {
 	BillingEmails []OrganizationBillingGroupBillingEmail `pulumi:"billingEmails"`
 	// Billing group ID.
 	BillingGroupId *string `pulumi:"billingGroupId"`
-	// Billing Group Name. Maximum length: `128`.
+	// Billing Group Name. Length must be between `1` and `128`.
 	BillingGroupName *string `pulumi:"billingGroupName"`
 	// Extra billing text. Maximum length: `256`.
 	CustomInvoiceText *string `pulumi:"customInvoiceText"`
@@ -131,7 +131,7 @@ type OrganizationBillingGroupState struct {
 	BillingEmails OrganizationBillingGroupBillingEmailArrayInput
 	// Billing group ID.
 	BillingGroupId pulumi.StringPtrInput
-	// Billing Group Name. Maximum length: `128`.
+	// Billing Group Name. Length must be between `1` and `128`.
 	BillingGroupName pulumi.StringPtrInput
 	// Extra billing text. Maximum length: `256`.
 	CustomInvoiceText pulumi.StringPtrInput
@@ -157,7 +157,7 @@ type organizationBillingGroupArgs struct {
 	BillingContactEmails []OrganizationBillingGroupBillingContactEmail `pulumi:"billingContactEmails"`
 	// Required property. List of billing contact emails.
 	BillingEmails []OrganizationBillingGroupBillingEmail `pulumi:"billingEmails"`
-	// Billing Group Name. Maximum length: `128`.
+	// Billing Group Name. Length must be between `1` and `128`.
 	BillingGroupName string `pulumi:"billingGroupName"`
 	// Extra billing text. Maximum length: `256`.
 	CustomInvoiceText *string `pulumi:"customInvoiceText"`
@@ -180,7 +180,7 @@ type OrganizationBillingGroupArgs struct {
 	BillingContactEmails OrganizationBillingGroupBillingContactEmailArrayInput
 	// Required property. List of billing contact emails.
 	BillingEmails OrganizationBillingGroupBillingEmailArrayInput
-	// Billing Group Name. Maximum length: `128`.
+	// Billing Group Name. Length must be between `1` and `128`.
 	BillingGroupName pulumi.StringInput
 	// Extra billing text. Maximum length: `256`.
 	CustomInvoiceText pulumi.StringPtrInput
@@ -306,7 +306,7 @@ func (o OrganizationBillingGroupOutput) BillingGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationBillingGroup) pulumi.StringOutput { return v.BillingGroupId }).(pulumi.StringOutput)
 }
 
-// Billing Group Name. Maximum length: `128`.
+// Billing Group Name. Length must be between `1` and `128`.
 func (o OrganizationBillingGroupOutput) BillingGroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationBillingGroup) pulumi.StringOutput { return v.BillingGroupName }).(pulumi.StringOutput)
 }

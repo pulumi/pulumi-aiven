@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates and manages an Aiven for OpenSearch® service user.
+// Creates and manages an Aiven for OpenSearch® service user. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
 //
 // ## Example Usage
 //
@@ -46,25 +46,26 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import aiven:index/opensearchUser:OpensearchUser example_opensearch_user PROJECT/SERVICE_NAME/USERNAME
+// $ pulumi import aiven:index/opensearchUser:OpensearchUser example PROJECT/SERVICE_NAME/USERNAME
 // ```
 type OpensearchUser struct {
 	pulumi.CustomResourceState
 
-	// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+	// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
 	Password pulumi.StringOutput `pulumi:"password"`
 	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-	// The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
+	// The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Length must be between `8` and `256`.
 	PasswordWo pulumi.StringPtrOutput `pulumi:"passwordWo"`
-	// Version number for `passwordWo`. Increment this to rotate the password. Must be >= 1.
+	// Version number for `passwordWo`. Increment this to rotate the password. Must be >= 1. The field is required with `passwordWo`. Minimum value: `1`.
 	PasswordWoVersion pulumi.IntPtrOutput `pulumi:"passwordWoVersion"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// User account type, such as primary or regular account.
+	// Service name. Changing this property forces recreation of the resource.
+	ServiceName pulumi.StringOutput             `pulumi:"serviceName"`
+	Timeouts    OpensearchUserTimeoutsPtrOutput `pulumi:"timeouts"`
+	// Account type.
 	Type pulumi.StringOutput `pulumi:"type"`
-	// Name of the OpenSearch service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Account username. Maximum length: `64`. Changing this property forces recreation of the resource.
 	Username pulumi.StringOutput `pulumi:"username"`
 }
 
@@ -118,38 +119,40 @@ func GetOpensearchUser(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering OpensearchUser resources.
 type opensearchUserState struct {
-	// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+	// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
 	Password *string `pulumi:"password"`
 	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-	// The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
+	// The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Length must be between `8` and `256`.
 	PasswordWo *string `pulumi:"passwordWo"`
-	// Version number for `passwordWo`. Increment this to rotate the password. Must be >= 1.
+	// Version number for `passwordWo`. Increment this to rotate the password. Must be >= 1. The field is required with `passwordWo`. Minimum value: `1`.
 	PasswordWoVersion *int `pulumi:"passwordWoVersion"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project *string `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName *string `pulumi:"serviceName"`
-	// User account type, such as primary or regular account.
+	// Service name. Changing this property forces recreation of the resource.
+	ServiceName *string                 `pulumi:"serviceName"`
+	Timeouts    *OpensearchUserTimeouts `pulumi:"timeouts"`
+	// Account type.
 	Type *string `pulumi:"type"`
-	// Name of the OpenSearch service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Account username. Maximum length: `64`. Changing this property forces recreation of the resource.
 	Username *string `pulumi:"username"`
 }
 
 type OpensearchUserState struct {
-	// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+	// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
 	Password pulumi.StringPtrInput
 	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-	// The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
+	// The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Length must be between `8` and `256`.
 	PasswordWo pulumi.StringPtrInput
-	// Version number for `passwordWo`. Increment this to rotate the password. Must be >= 1.
+	// Version number for `passwordWo`. Increment this to rotate the password. Must be >= 1. The field is required with `passwordWo`. Minimum value: `1`.
 	PasswordWoVersion pulumi.IntPtrInput
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project pulumi.StringPtrInput
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Service name. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringPtrInput
-	// User account type, such as primary or regular account.
+	Timeouts    OpensearchUserTimeoutsPtrInput
+	// Account type.
 	Type pulumi.StringPtrInput
-	// Name of the OpenSearch service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Account username. Maximum length: `64`. Changing this property forces recreation of the resource.
 	Username pulumi.StringPtrInput
 }
 
@@ -158,35 +161,37 @@ func (OpensearchUserState) ElementType() reflect.Type {
 }
 
 type opensearchUserArgs struct {
-	// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+	// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
 	Password *string `pulumi:"password"`
 	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-	// The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
+	// The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Length must be between `8` and `256`.
 	PasswordWo *string `pulumi:"passwordWo"`
-	// Version number for `passwordWo`. Increment this to rotate the password. Must be >= 1.
+	// Version number for `passwordWo`. Increment this to rotate the password. Must be >= 1. The field is required with `passwordWo`. Minimum value: `1`.
 	PasswordWoVersion *int `pulumi:"passwordWoVersion"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName string `pulumi:"serviceName"`
-	// Name of the OpenSearch service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Service name. Changing this property forces recreation of the resource.
+	ServiceName string                  `pulumi:"serviceName"`
+	Timeouts    *OpensearchUserTimeouts `pulumi:"timeouts"`
+	// Account username. Maximum length: `64`. Changing this property forces recreation of the resource.
 	Username string `pulumi:"username"`
 }
 
 // The set of arguments for constructing a OpensearchUser resource.
 type OpensearchUserArgs struct {
-	// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+	// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
 	Password pulumi.StringPtrInput
 	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-	// The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
+	// The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Length must be between `8` and `256`.
 	PasswordWo pulumi.StringPtrInput
-	// Version number for `passwordWo`. Increment this to rotate the password. Must be >= 1.
+	// Version number for `passwordWo`. Increment this to rotate the password. Must be >= 1. The field is required with `passwordWo`. Minimum value: `1`.
 	PasswordWoVersion pulumi.IntPtrInput
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Service name. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringInput
-	// Name of the OpenSearch service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	Timeouts    OpensearchUserTimeoutsPtrInput
+	// Account username. Maximum length: `64`. Changing this property forces recreation of the resource.
 	Username pulumi.StringInput
 }
 
@@ -277,38 +282,42 @@ func (o OpensearchUserOutput) ToOpensearchUserOutputWithContext(ctx context.Cont
 	return o
 }
 
-// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
 func (o OpensearchUserOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v *OpensearchUser) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
 }
 
 // **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-// The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
+// The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Length must be between `8` and `256`.
 func (o OpensearchUserOutput) PasswordWo() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OpensearchUser) pulumi.StringPtrOutput { return v.PasswordWo }).(pulumi.StringPtrOutput)
 }
 
-// Version number for `passwordWo`. Increment this to rotate the password. Must be >= 1.
+// Version number for `passwordWo`. Increment this to rotate the password. Must be >= 1. The field is required with `passwordWo`. Minimum value: `1`.
 func (o OpensearchUserOutput) PasswordWoVersion() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OpensearchUser) pulumi.IntPtrOutput { return v.PasswordWoVersion }).(pulumi.IntPtrOutput)
 }
 
-// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// Project name. Changing this property forces recreation of the resource.
 func (o OpensearchUserOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *OpensearchUser) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// Service name. Changing this property forces recreation of the resource.
 func (o OpensearchUserOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *OpensearchUser) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// User account type, such as primary or regular account.
+func (o OpensearchUserOutput) Timeouts() OpensearchUserTimeoutsPtrOutput {
+	return o.ApplyT(func(v *OpensearchUser) OpensearchUserTimeoutsPtrOutput { return v.Timeouts }).(OpensearchUserTimeoutsPtrOutput)
+}
+
+// Account type.
 func (o OpensearchUserOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *OpensearchUser) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// Name of the OpenSearch service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// Account username. Maximum length: `64`. Changing this property forces recreation of the resource.
 func (o OpensearchUserOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v *OpensearchUser) pulumi.StringOutput { return v.Username }).(pulumi.StringOutput)
 }

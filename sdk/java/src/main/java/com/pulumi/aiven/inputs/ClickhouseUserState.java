@@ -3,6 +3,7 @@
 
 package com.pulumi.aiven.inputs;
 
+import com.pulumi.aiven.inputs.ClickhouseUserTimeoutsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -18,14 +19,14 @@ public final class ClickhouseUserState extends com.pulumi.resources.ResourceArgs
     public static final ClickhouseUserState Empty = new ClickhouseUserState();
 
     /**
-     * The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+     * The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
      * 
      */
     @Import(name="password")
     private @Nullable Output<String> password;
 
     /**
-     * @return The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+     * @return The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
      * 
      */
     public Optional<Output<String>> password() {
@@ -34,7 +35,7 @@ public final class ClickhouseUserState extends com.pulumi.resources.ResourceArgs
 
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
+     * The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Length must be between `8` and `256`.
      * 
      */
     @Import(name="passwordWo")
@@ -42,7 +43,7 @@ public final class ClickhouseUserState extends com.pulumi.resources.ResourceArgs
 
     /**
      * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
+     * The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Length must be between `8` and `256`.
      * 
      */
     public Optional<Output<String>> passwordWo() {
@@ -50,14 +51,14 @@ public final class ClickhouseUserState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Version number for `passwordWo`. Increment this to rotate the password. Must be &gt;= 1.
+     * Version number for `passwordWo`. Increment this to rotate the password. The field is required with `passwordWo`. Minimum value: `1`.
      * 
      */
     @Import(name="passwordWoVersion")
     private @Nullable Output<Integer> passwordWoVersion;
 
     /**
-     * @return Version number for `passwordWo`. Increment this to rotate the password. Must be &gt;= 1.
+     * @return Version number for `passwordWo`. Increment this to rotate the password. The field is required with `passwordWo`. Minimum value: `1`.
      * 
      */
     public Optional<Output<Integer>> passwordWoVersion() {
@@ -65,14 +66,14 @@ public final class ClickhouseUserState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="project")
     private @Nullable Output<String> project;
 
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> project() {
@@ -80,14 +81,14 @@ public final class ClickhouseUserState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Indicates if a ClickHouse user is required.
+     * Required user.
      * 
      */
     @Import(name="required")
     private @Nullable Output<Boolean> required;
 
     /**
-     * @return Indicates if a ClickHouse user is required.
+     * @return Required user.
      * 
      */
     public Optional<Output<Boolean>> required() {
@@ -95,29 +96,36 @@ public final class ClickhouseUserState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="serviceName")
     private @Nullable Output<String> serviceName;
 
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service name. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> serviceName() {
         return Optional.ofNullable(this.serviceName);
     }
 
+    @Import(name="timeouts")
+    private @Nullable Output<ClickhouseUserTimeoutsArgs> timeouts;
+
+    public Optional<Output<ClickhouseUserTimeoutsArgs>> timeouts() {
+        return Optional.ofNullable(this.timeouts);
+    }
+
     /**
-     * The name of the ClickHouse user. Changing this property forces recreation of the resource.
+     * User name. Maximum length: `64`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="username")
     private @Nullable Output<String> username;
 
     /**
-     * @return The name of the ClickHouse user. Changing this property forces recreation of the resource.
+     * @return User name. Maximum length: `64`. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> username() {
@@ -125,14 +133,14 @@ public final class ClickhouseUserState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * UUID of the ClickHouse user.
+     * User identifier.
      * 
      */
     @Import(name="uuid")
     private @Nullable Output<String> uuid;
 
     /**
-     * @return UUID of the ClickHouse user.
+     * @return User identifier.
      * 
      */
     public Optional<Output<String>> uuid() {
@@ -148,6 +156,7 @@ public final class ClickhouseUserState extends com.pulumi.resources.ResourceArgs
         this.project = $.project;
         this.required = $.required;
         this.serviceName = $.serviceName;
+        this.timeouts = $.timeouts;
         this.username = $.username;
         this.uuid = $.uuid;
     }
@@ -171,7 +180,7 @@ public final class ClickhouseUserState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param password The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+         * @param password The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
          * 
          * @return builder
          * 
@@ -182,7 +191,7 @@ public final class ClickhouseUserState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param password The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+         * @param password The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
          * 
          * @return builder
          * 
@@ -193,7 +202,7 @@ public final class ClickhouseUserState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param passwordWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-         * The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
+         * The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Length must be between `8` and `256`.
          * 
          * @return builder
          * 
@@ -205,7 +214,7 @@ public final class ClickhouseUserState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param passwordWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-         * The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
+         * The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Length must be between `8` and `256`.
          * 
          * @return builder
          * 
@@ -215,7 +224,7 @@ public final class ClickhouseUserState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param passwordWoVersion Version number for `passwordWo`. Increment this to rotate the password. Must be &gt;= 1.
+         * @param passwordWoVersion Version number for `passwordWo`. Increment this to rotate the password. The field is required with `passwordWo`. Minimum value: `1`.
          * 
          * @return builder
          * 
@@ -226,7 +235,7 @@ public final class ClickhouseUserState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param passwordWoVersion Version number for `passwordWo`. Increment this to rotate the password. Must be &gt;= 1.
+         * @param passwordWoVersion Version number for `passwordWo`. Increment this to rotate the password. The field is required with `passwordWo`. Minimum value: `1`.
          * 
          * @return builder
          * 
@@ -236,7 +245,7 @@ public final class ClickhouseUserState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param project The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param project Project name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -247,7 +256,7 @@ public final class ClickhouseUserState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param project The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param project Project name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -257,7 +266,7 @@ public final class ClickhouseUserState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param required Indicates if a ClickHouse user is required.
+         * @param required Required user.
          * 
          * @return builder
          * 
@@ -268,7 +277,7 @@ public final class ClickhouseUserState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param required Indicates if a ClickHouse user is required.
+         * @param required Required user.
          * 
          * @return builder
          * 
@@ -278,7 +287,7 @@ public final class ClickhouseUserState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param serviceName The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param serviceName Service name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -289,7 +298,7 @@ public final class ClickhouseUserState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param serviceName The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param serviceName Service name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -298,8 +307,17 @@ public final class ClickhouseUserState extends com.pulumi.resources.ResourceArgs
             return serviceName(Output.of(serviceName));
         }
 
+        public Builder timeouts(@Nullable Output<ClickhouseUserTimeoutsArgs> timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
+        public Builder timeouts(ClickhouseUserTimeoutsArgs timeouts) {
+            return timeouts(Output.of(timeouts));
+        }
+
         /**
-         * @param username The name of the ClickHouse user. Changing this property forces recreation of the resource.
+         * @param username User name. Maximum length: `64`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -310,7 +328,7 @@ public final class ClickhouseUserState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param username The name of the ClickHouse user. Changing this property forces recreation of the resource.
+         * @param username User name. Maximum length: `64`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -320,7 +338,7 @@ public final class ClickhouseUserState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param uuid UUID of the ClickHouse user.
+         * @param uuid User identifier.
          * 
          * @return builder
          * 
@@ -331,7 +349,7 @@ public final class ClickhouseUserState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param uuid UUID of the ClickHouse user.
+         * @param uuid User identifier.
          * 
          * @return builder
          * 

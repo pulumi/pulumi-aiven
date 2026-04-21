@@ -6,6 +6,7 @@ package com.pulumi.aiven;
 import com.pulumi.aiven.ConnectionPoolArgs;
 import com.pulumi.aiven.Utilities;
 import com.pulumi.aiven.inputs.ConnectionPoolState;
+import com.pulumi.aiven.outputs.ConnectionPoolTimeouts;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -17,7 +18,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Creates and manages a [connection pool](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling) in an Aiven for PostgreSQL® service.
+ * Creates and manages a [connection pool](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling) in an Aiven for PostgreSQL® service. If this resource is missing (for example, after a service power off), it&#39;s removed from the state and a new create plan is generated.
  * 
  * ## Example Usage
  * 
@@ -61,119 +62,125 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import aiven:index/connectionPool:ConnectionPool main PROJECT/SERVICE_NAME/POOL_NAME
+ * $ pulumi import aiven:index/connectionPool:ConnectionPool example PROJECT/SERVICE_NAME/POOL_NAME
  * ```
  * 
  */
 @ResourceType(type="aiven:index/connectionPool:ConnectionPool")
 public class ConnectionPool extends com.pulumi.resources.CustomResource {
     /**
-     * The URI for connecting to the pool.
+     * Connection URI for the DB pool.
      * 
      */
     @Export(name="connectionUri", refs={String.class}, tree="[0]")
     private Output<String> connectionUri;
 
     /**
-     * @return The URI for connecting to the pool.
+     * @return Connection URI for the DB pool.
      * 
      */
     public Output<String> connectionUri() {
         return this.connectionUri;
     }
     /**
-     * The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service database name. Maximum length: `63`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="databaseName", refs={String.class}, tree="[0]")
     private Output<String> databaseName;
 
     /**
-     * @return The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service database name. Maximum length: `63`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> databaseName() {
         return this.databaseName;
     }
     /**
-     * The [operational mode](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling#pooling-modes). The possible values are `session`, `statement` and `transaction`. The default value is `transaction`.
+     * PGBouncer pool mode. The possible values are `session`, `statement` and `transaction`. The default value is `transaction`.
      * 
      */
     @Export(name="poolMode", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> poolMode;
+    private Output<String> poolMode;
 
     /**
-     * @return The [operational mode](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling#pooling-modes). The possible values are `session`, `statement` and `transaction`. The default value is `transaction`.
+     * @return PGBouncer pool mode. The possible values are `session`, `statement` and `transaction`. The default value is `transaction`.
      * 
      */
-    public Output<Optional<String>> poolMode() {
-        return Codegen.optional(this.poolMode);
+    public Output<String> poolMode() {
+        return this.poolMode;
     }
     /**
-     * Name of the pool. Changing this property forces recreation of the resource.
+     * PgBouncer connection pool name. Maximum length: `63`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="poolName", refs={String.class}, tree="[0]")
     private Output<String> poolName;
 
     /**
-     * @return Name of the pool. Changing this property forces recreation of the resource.
+     * @return PgBouncer connection pool name. Maximum length: `63`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> poolName() {
         return this.poolName;
     }
     /**
-     * The number of PostgreSQL server connections this pool can use at a time. This does not affect the number of incoming connections. Each pool can handle a minimum of 5000 client connections. The default value is `10`.
+     * Size of PGBouncer&#39;s PostgreSQL side connection pool. Value must be between `1` and `10000`. The default value is `10`.
      * 
      */
     @Export(name="poolSize", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> poolSize;
+    private Output<Integer> poolSize;
 
     /**
-     * @return The number of PostgreSQL server connections this pool can use at a time. This does not affect the number of incoming connections. Each pool can handle a minimum of 5000 client connections. The default value is `10`.
+     * @return Size of PGBouncer&#39;s PostgreSQL side connection pool. Value must be between `1` and `10000`. The default value is `10`.
      * 
      */
-    public Output<Optional<Integer>> poolSize() {
-        return Codegen.optional(this.poolSize);
+    public Output<Integer> poolSize() {
+        return this.poolSize;
     }
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> project() {
         return this.project;
     }
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service name. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> serviceName() {
         return this.serviceName;
     }
+    @Export(name="timeouts", refs={ConnectionPoolTimeouts.class}, tree="[0]")
+    private Output</* @Nullable */ ConnectionPoolTimeouts> timeouts;
+
+    public Output<Optional<ConnectionPoolTimeouts>> timeouts() {
+        return Codegen.optional(this.timeouts);
+    }
     /**
-     * The name of the service user used to connect to the database. To set up proper dependencies please refer to this variable as a reference.
+     * Service username. Length must be between `1` and `64`.
      * 
      */
     @Export(name="username", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> username;
 
     /**
-     * @return The name of the service user used to connect to the database. To set up proper dependencies please refer to this variable as a reference.
+     * @return Service username. Length must be between `1` and `64`.
      * 
      */
     public Output<Optional<String>> username() {

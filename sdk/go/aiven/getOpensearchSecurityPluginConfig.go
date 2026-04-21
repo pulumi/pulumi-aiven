@@ -51,28 +51,30 @@ func LookupOpensearchSecurityPluginConfig(ctx *pulumi.Context, args *LookupOpens
 
 // A collection of arguments for invoking getOpensearchSecurityPluginConfig.
 type LookupOpensearchSecurityPluginConfigArgs struct {
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name.
 	Project string `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName string `pulumi:"serviceName"`
+	// Service name.
+	ServiceName string                                     `pulumi:"serviceName"`
+	Timeouts    *GetOpensearchSecurityPluginConfigTimeouts `pulumi:"timeouts"`
 }
 
 // A collection of values returned by getOpensearchSecurityPluginConfig.
 type LookupOpensearchSecurityPluginConfigResult struct {
-	// Whether the os-sec-admin user is enabled. This indicates whether OpenSearch Security management is enabled. This is always true when the os-sec-admin password was set at least once.
+	// security plugin admin defined.
 	AdminEnabled bool `pulumi:"adminEnabled"`
-	// The password for the os-sec-admin user.
+	// Current os-sec-admin password.
 	AdminPassword string `pulumi:"adminPassword"`
-	// Whether the security plugin is available. This is always true for recently created services.
+	// Opensearch security available for the service.
 	Available bool `pulumi:"available"`
-	// Whether the security plugin is enabled. This is always true for recently created services.
+	// Opensearch security enabled for the service.
 	Enabled bool `pulumi:"enabled"`
-	// The provider-assigned unique ID for this managed resource.
+	// Resource ID composed as: `project/service_name`.
 	Id string `pulumi:"id"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name.
 	Project string `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName string `pulumi:"serviceName"`
+	// Service name.
+	ServiceName string                                     `pulumi:"serviceName"`
+	Timeouts    *GetOpensearchSecurityPluginConfigTimeouts `pulumi:"timeouts"`
 }
 
 func LookupOpensearchSecurityPluginConfigOutput(ctx *pulumi.Context, args LookupOpensearchSecurityPluginConfigOutputArgs, opts ...pulumi.InvokeOption) LookupOpensearchSecurityPluginConfigResultOutput {
@@ -86,10 +88,11 @@ func LookupOpensearchSecurityPluginConfigOutput(ctx *pulumi.Context, args Lookup
 
 // A collection of arguments for invoking getOpensearchSecurityPluginConfig.
 type LookupOpensearchSecurityPluginConfigOutputArgs struct {
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name.
 	Project pulumi.StringInput `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName pulumi.StringInput `pulumi:"serviceName"`
+	// Service name.
+	ServiceName pulumi.StringInput                                `pulumi:"serviceName"`
+	Timeouts    GetOpensearchSecurityPluginConfigTimeoutsPtrInput `pulumi:"timeouts"`
 }
 
 func (LookupOpensearchSecurityPluginConfigOutputArgs) ElementType() reflect.Type {
@@ -111,39 +114,45 @@ func (o LookupOpensearchSecurityPluginConfigResultOutput) ToLookupOpensearchSecu
 	return o
 }
 
-// Whether the os-sec-admin user is enabled. This indicates whether OpenSearch Security management is enabled. This is always true when the os-sec-admin password was set at least once.
+// security plugin admin defined.
 func (o LookupOpensearchSecurityPluginConfigResultOutput) AdminEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupOpensearchSecurityPluginConfigResult) bool { return v.AdminEnabled }).(pulumi.BoolOutput)
 }
 
-// The password for the os-sec-admin user.
+// Current os-sec-admin password.
 func (o LookupOpensearchSecurityPluginConfigResultOutput) AdminPassword() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOpensearchSecurityPluginConfigResult) string { return v.AdminPassword }).(pulumi.StringOutput)
 }
 
-// Whether the security plugin is available. This is always true for recently created services.
+// Opensearch security available for the service.
 func (o LookupOpensearchSecurityPluginConfigResultOutput) Available() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupOpensearchSecurityPluginConfigResult) bool { return v.Available }).(pulumi.BoolOutput)
 }
 
-// Whether the security plugin is enabled. This is always true for recently created services.
+// Opensearch security enabled for the service.
 func (o LookupOpensearchSecurityPluginConfigResultOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupOpensearchSecurityPluginConfigResult) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// Resource ID composed as: `project/service_name`.
 func (o LookupOpensearchSecurityPluginConfigResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOpensearchSecurityPluginConfigResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// Project name.
 func (o LookupOpensearchSecurityPluginConfigResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOpensearchSecurityPluginConfigResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
-// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// Service name.
 func (o LookupOpensearchSecurityPluginConfigResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOpensearchSecurityPluginConfigResult) string { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+func (o LookupOpensearchSecurityPluginConfigResultOutput) Timeouts() GetOpensearchSecurityPluginConfigTimeoutsPtrOutput {
+	return o.ApplyT(func(v LookupOpensearchSecurityPluginConfigResult) *GetOpensearchSecurityPluginConfigTimeouts {
+		return v.Timeouts
+	}).(GetOpensearchSecurityPluginConfigTimeoutsPtrOutput)
 }
 
 func init() {

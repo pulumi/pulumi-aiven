@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetOpensearchSecurityPluginConfigResult',
@@ -26,7 +28,7 @@ class GetOpensearchSecurityPluginConfigResult:
     """
     A collection of values returned by getOpensearchSecurityPluginConfig.
     """
-    def __init__(__self__, admin_enabled=None, admin_password=None, available=None, enabled=None, id=None, project=None, service_name=None):
+    def __init__(__self__, admin_enabled=None, admin_password=None, available=None, enabled=None, id=None, project=None, service_name=None, timeouts=None):
         if admin_enabled and not isinstance(admin_enabled, bool):
             raise TypeError("Expected argument 'admin_enabled' to be a bool")
         pulumi.set(__self__, "admin_enabled", admin_enabled)
@@ -48,12 +50,15 @@ class GetOpensearchSecurityPluginConfigResult:
         if service_name and not isinstance(service_name, str):
             raise TypeError("Expected argument 'service_name' to be a str")
         pulumi.set(__self__, "service_name", service_name)
+        if timeouts and not isinstance(timeouts, dict):
+            raise TypeError("Expected argument 'timeouts' to be a dict")
+        pulumi.set(__self__, "timeouts", timeouts)
 
     @_builtins.property
     @pulumi.getter(name="adminEnabled")
     def admin_enabled(self) -> _builtins.bool:
         """
-        Whether the os-sec-admin user is enabled. This indicates whether OpenSearch Security management is enabled. This is always true when the os-sec-admin password was set at least once.
+        security plugin admin defined.
         """
         return pulumi.get(self, "admin_enabled")
 
@@ -61,7 +66,7 @@ class GetOpensearchSecurityPluginConfigResult:
     @pulumi.getter(name="adminPassword")
     def admin_password(self) -> _builtins.str:
         """
-        The password for the os-sec-admin user.
+        Current os-sec-admin password.
         """
         return pulumi.get(self, "admin_password")
 
@@ -69,7 +74,7 @@ class GetOpensearchSecurityPluginConfigResult:
     @pulumi.getter
     def available(self) -> _builtins.bool:
         """
-        Whether the security plugin is available. This is always true for recently created services.
+        Opensearch security available for the service.
         """
         return pulumi.get(self, "available")
 
@@ -77,7 +82,7 @@ class GetOpensearchSecurityPluginConfigResult:
     @pulumi.getter
     def enabled(self) -> _builtins.bool:
         """
-        Whether the security plugin is enabled. This is always true for recently created services.
+        Opensearch security enabled for the service.
         """
         return pulumi.get(self, "enabled")
 
@@ -85,7 +90,7 @@ class GetOpensearchSecurityPluginConfigResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The provider-assigned unique ID for this managed resource.
+        Resource ID composed as: `project/service_name`.
         """
         return pulumi.get(self, "id")
 
@@ -93,7 +98,7 @@ class GetOpensearchSecurityPluginConfigResult:
     @pulumi.getter
     def project(self) -> _builtins.str:
         """
-        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Project name.
         """
         return pulumi.get(self, "project")
 
@@ -101,9 +106,14 @@ class GetOpensearchSecurityPluginConfigResult:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> _builtins.str:
         """
-        The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Service name.
         """
         return pulumi.get(self, "service_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> Optional['outputs.GetOpensearchSecurityPluginConfigTimeoutsResult']:
+        return pulumi.get(self, "timeouts")
 
 
 class AwaitableGetOpensearchSecurityPluginConfigResult(GetOpensearchSecurityPluginConfigResult):
@@ -118,11 +128,13 @@ class AwaitableGetOpensearchSecurityPluginConfigResult(GetOpensearchSecurityPlug
             enabled=self.enabled,
             id=self.id,
             project=self.project,
-            service_name=self.service_name)
+            service_name=self.service_name,
+            timeouts=self.timeouts)
 
 
 def get_opensearch_security_plugin_config(project: Optional[_builtins.str] = None,
                                           service_name: Optional[_builtins.str] = None,
+                                          timeouts: Optional[Union['GetOpensearchSecurityPluginConfigTimeoutsArgs', 'GetOpensearchSecurityPluginConfigTimeoutsArgsDict']] = None,
                                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOpensearchSecurityPluginConfigResult:
     """
     Gets information about OpenSearch Security configuration for an Aiven for OpenSearch® service.
@@ -138,12 +150,13 @@ def get_opensearch_security_plugin_config(project: Optional[_builtins.str] = Non
     ```
 
 
-    :param _builtins.str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param _builtins.str service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+    :param _builtins.str project: Project name.
+    :param _builtins.str service_name: Service name.
     """
     __args__ = dict()
     __args__['project'] = project
     __args__['serviceName'] = service_name
+    __args__['timeouts'] = timeouts
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('aiven:index/getOpensearchSecurityPluginConfig:getOpensearchSecurityPluginConfig', __args__, opts=opts, typ=GetOpensearchSecurityPluginConfigResult).value
 
@@ -154,9 +167,11 @@ def get_opensearch_security_plugin_config(project: Optional[_builtins.str] = Non
         enabled=pulumi.get(__ret__, 'enabled'),
         id=pulumi.get(__ret__, 'id'),
         project=pulumi.get(__ret__, 'project'),
-        service_name=pulumi.get(__ret__, 'service_name'))
+        service_name=pulumi.get(__ret__, 'service_name'),
+        timeouts=pulumi.get(__ret__, 'timeouts'))
 def get_opensearch_security_plugin_config_output(project: Optional[pulumi.Input[_builtins.str]] = None,
                                                  service_name: Optional[pulumi.Input[_builtins.str]] = None,
+                                                 timeouts: Optional[pulumi.Input[Optional[Union['GetOpensearchSecurityPluginConfigTimeoutsArgs', 'GetOpensearchSecurityPluginConfigTimeoutsArgsDict']]]] = None,
                                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOpensearchSecurityPluginConfigResult]:
     """
     Gets information about OpenSearch Security configuration for an Aiven for OpenSearch® service.
@@ -172,12 +187,13 @@ def get_opensearch_security_plugin_config_output(project: Optional[pulumi.Input[
     ```
 
 
-    :param _builtins.str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param _builtins.str service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+    :param _builtins.str project: Project name.
+    :param _builtins.str service_name: Service name.
     """
     __args__ = dict()
     __args__['project'] = project
     __args__['serviceName'] = service_name
+    __args__['timeouts'] = timeouts
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('aiven:index/getOpensearchSecurityPluginConfig:getOpensearchSecurityPluginConfig', __args__, opts=opts, typ=GetOpensearchSecurityPluginConfigResult)
     return __ret__.apply(lambda __response__: GetOpensearchSecurityPluginConfigResult(
@@ -187,4 +203,5 @@ def get_opensearch_security_plugin_config_output(project: Optional[pulumi.Input[
         enabled=pulumi.get(__response__, 'enabled'),
         id=pulumi.get(__response__, 'id'),
         project=pulumi.get(__response__, 'project'),
-        service_name=pulumi.get(__response__, 'service_name')))
+        service_name=pulumi.get(__response__, 'service_name'),
+        timeouts=pulumi.get(__response__, 'timeouts')))

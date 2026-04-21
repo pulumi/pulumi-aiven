@@ -28,663 +28,6 @@ export interface AccountAuthenticationSamlFieldMapping {
     realName?: string;
 }
 
-export interface AlloydbomniAlloydbomni {
-    /**
-     * PgBouncer connection details for [connection pooling](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling).
-     *
-     * @deprecated This field was added by mistake and has never worked. It will be removed in future versions.
-     */
-    bouncer: string;
-    /**
-     * Primary AlloyDB Omni database name.
-     */
-    dbname: string;
-    /**
-     * AlloyDB Omni primary node host IP or name.
-     */
-    host: string;
-    /**
-     * The [number of allowed connections](https://aiven.io/docs/products/postgresql/reference/pg-connection-limits). Varies based on the service plan.
-     */
-    maxConnections: number;
-    /**
-     * AlloyDB Omni connection parameters.
-     */
-    params: outputs.AlloydbomniAlloydbomniParam[];
-    /**
-     * AlloyDB Omni admin user password.
-     */
-    password: string;
-    /**
-     * AlloyDB Omni port.
-     */
-    port: number;
-    /**
-     * AlloyDB Omni replica URI for services with a replica.
-     */
-    replicaUri: string;
-    /**
-     * AlloyDB Omni SSL mode setting.
-     */
-    sslmode: string;
-    /**
-     * AlloyDB Omni standby connection URIs.
-     */
-    standbyUris: string[];
-    /**
-     * AlloyDB Omni syncing connection URIs.
-     */
-    syncingUris: string[];
-    /**
-     * AlloyDB Omni primary connection URI.
-     */
-    uri: string;
-    /**
-     * AlloyDB Omni primary connection URIs.
-     */
-    uris: string[];
-    /**
-     * AlloyDB Omni admin user name.
-     */
-    user: string;
-}
-
-export interface AlloydbomniAlloydbomniParam {
-    /**
-     * Primary AlloyDB Omni database name.
-     */
-    databaseName: string;
-    /**
-     * AlloyDB Omni host IP or name.
-     */
-    host: string;
-    /**
-     * AlloyDB Omni admin user password.
-     */
-    password: string;
-    /**
-     * AlloyDB Omni port.
-     */
-    port: number;
-    /**
-     * AlloyDB Omni SSL mode setting.
-     */
-    sslmode: string;
-    /**
-     * AlloyDB Omni admin user name.
-     */
-    user: string;
-}
-
-export interface AlloydbomniAlloydbomniUserConfig {
-    /**
-     * Additional Cloud Regions for Backup Replication.
-     */
-    additionalBackupRegions?: string;
-    /**
-     * Custom password for admin user. Defaults to random string. This must be set only when a new service is being created.
-     */
-    adminPassword?: string;
-    /**
-     * Custom username for admin user. This must be set only when a new service is being created. Example: `avnadmin`.
-     */
-    adminUsername?: string;
-    /**
-     * Enum: `15`, and newer. PostgreSQL major version.
-     */
-    alloydbomniVersion?: string;
-    /**
-     * The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
-     */
-    backupHour?: number;
-    /**
-     * The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
-     */
-    backupMinute?: number;
-    /**
-     * Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
-     */
-    enableIpv6?: boolean;
-    /**
-     * Enables or disables the columnar engine. When enabled, it accelerates SQL query processing. Default: `true`.
-     */
-    googleColumnarEngineEnabled?: boolean;
-    /**
-     * Allocate the amount of RAM to store columnar data. Default: `10`.
-     */
-    googleColumnarEngineMemorySizePercentage?: number;
-    /**
-     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
-     */
-    ipFilterObjects?: outputs.AlloydbomniAlloydbomniUserConfigIpFilterObject[];
-    /**
-     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-     */
-    ipFilterStrings?: string[];
-    /**
-     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-     *
-     * @deprecated Deprecated. Use `ipFilterString` instead.
-     */
-    ipFilters?: string[];
-    /**
-     * Number of nodes for the service. Example: `3`.
-     */
-    nodeCount?: number;
-    /**
-     * postgresql.conf configuration values
-     */
-    pg?: outputs.AlloydbomniAlloydbomniUserConfigPg;
-    /**
-     * Should the service which is being forked be a read replica (deprecated, use readReplica service integration instead).
-     */
-    pgReadReplica?: boolean;
-    /**
-     * Name of the PG Service from which to fork (deprecated, use service_to_fork_from). This has effect only when a new service is being created. Example: `anotherservicename`.
-     */
-    pgServiceToForkFrom?: string;
-    /**
-     * Enum: `15`, and newer. PostgreSQL major version.
-     */
-    pgVersion?: string;
-    /**
-     * System-wide settings for the pgaudit extension
-     */
-    pgaudit?: outputs.AlloydbomniAlloydbomniUserConfigPgaudit;
-    /**
-     * PGBouncer connection pooling settings
-     */
-    pgbouncer?: outputs.AlloydbomniAlloydbomniUserConfigPgbouncer;
-    /**
-     * System-wide settings for pglookout
-     */
-    pglookout?: outputs.AlloydbomniAlloydbomniUserConfigPglookout;
-    /**
-     * Allow access to selected service ports from private networks
-     */
-    privateAccess?: outputs.AlloydbomniAlloydbomniUserConfigPrivateAccess;
-    /**
-     * Allow access to selected service components through Privatelink
-     */
-    privatelinkAccess?: outputs.AlloydbomniAlloydbomniUserConfigPrivatelinkAccess;
-    /**
-     * Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
-     */
-    projectToForkFrom?: string;
-    /**
-     * Allow access to selected service ports from the public Internet
-     */
-    publicAccess?: outputs.AlloydbomniAlloydbomniUserConfigPublicAccess;
-    /**
-     * Recovery target time when forking a service. This has effect only when a new service is being created. Example: `2019-01-01 23:34:45`.
-     */
-    recoveryTargetTime?: string;
-    /**
-     * Store logs for the service so that they are available in the HTTP API and console.
-     */
-    serviceLog?: boolean;
-    /**
-     * Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
-     */
-    serviceToForkFrom?: string;
-    /**
-     * Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the sharedBuffers configuration value. Changing this parameter causes a service restart. Example: `41.5`.
-     */
-    sharedBuffersPercentage?: number;
-    /**
-     * Use static public IP addresses.
-     */
-    staticIps?: boolean;
-    /**
-     * Enum: `off`, `quorum`. Synchronous replication type. Note that the service plan also needs to support synchronous replication.
-     */
-    synchronousReplication?: string;
-    /**
-     * Enum: `aiven`, `timescale`. Variant of the PostgreSQL service, may affect the features that are exposed by default.
-     */
-    variant?: string;
-    /**
-     * Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. The default is 1MB + 0.075% of total RAM (up to 32MB). Example: `4`.
-     */
-    workMem?: number;
-}
-
-export interface AlloydbomniAlloydbomniUserConfigIpFilterObject {
-    /**
-     * Description for IP filter list entry. Example: `Production service IP range`.
-     */
-    description?: string;
-    /**
-     * CIDR address block. Example: `10.20.0.0/16`.
-     */
-    network: string;
-}
-
-export interface AlloydbomniAlloydbomniUserConfigPg {
-    /**
-     * Specifies a fraction of the table size to add to autovacuumAnalyzeThreshold when deciding whether to trigger an ANALYZE (e.g. `0.2` for 20% of the table size). The default is `0.2`.
-     */
-    autovacuumAnalyzeScaleFactor?: number;
-    /**
-     * Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is `50`.
-     */
-    autovacuumAnalyzeThreshold?: number;
-    /**
-     * Specifies the maximum age (in transactions) that a table's pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. The system launches autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. Changing this parameter causes a service restart.
-     */
-    autovacuumFreezeMaxAge?: number;
-    /**
-     * Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is `3`. Changing this parameter causes a service restart.
-     */
-    autovacuumMaxWorkers?: number;
-    /**
-     * Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds. The default is `60`.
-     */
-    autovacuumNaptime?: number;
-    /**
-     * Specifies the cost delay value that will be used in automatic VACUUM operations. If `-1` is specified, the regular vacuumCostDelay value will be used. The default is `2` (upstream default).
-     */
-    autovacuumVacuumCostDelay?: number;
-    /**
-     * Specifies the cost limit value that will be used in automatic VACUUM operations. If `-1` is specified, the regular vacuumCostLimit value will be used. The default is `-1` (upstream default).
-     */
-    autovacuumVacuumCostLimit?: number;
-    /**
-     * Specifies a fraction of the table size to add to autovacuumVacuumThreshold when deciding whether to trigger a VACUUM (e.g. `0.2` for 20% of the table size). The default is `0.2`.
-     */
-    autovacuumVacuumScaleFactor?: number;
-    /**
-     * Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is `50`.
-     */
-    autovacuumVacuumThreshold?: number;
-    /**
-     * Specifies the delay between activity rounds for the background writer in milliseconds. The default is `200`. Example: `200`.
-     */
-    bgwriterDelay?: number;
-    /**
-     * Whenever more than bgwriterFlushAfter bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes. Setting of 0 disables forced writeback. The default is `512`. Example: `512`.
-     */
-    bgwriterFlushAfter?: number;
-    /**
-     * In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. The default is `100`. Example: `100`.
-     */
-    bgwriterLruMaxpages?: number;
-    /**
-     * The average recent need for new buffers is multiplied by bgwriterLruMultiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is `2.0`. Example: `2`.
-     */
-    bgwriterLruMultiplier?: number;
-    /**
-     * This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition. The default is `1000` (upstream default). Example: `1000`.
-     */
-    deadlockTimeout?: number;
-    /**
-     * Enum: `lz4`, `pglz`. Specifies the default TOAST compression method for values of compressible columns. The default is `lz4`.
-     */
-    defaultToastCompression?: string;
-    /**
-     * Time out sessions with open transactions after this number of milliseconds.
-     */
-    idleInTransactionSessionTimeout?: number;
-    /**
-     * Controls system-wide use of Just-in-Time Compilation (JIT).
-     */
-    jit?: boolean;
-    /**
-     * Causes each action executed by autovacuum to be logged if it ran for at least the specified number of milliseconds. Setting this to zero logs all autovacuum actions. Minus-one disables logging autovacuum actions. The default is `1000`.
-     */
-    logAutovacuumMinDuration?: number;
-    /**
-     * Enum: `DEFAULT`, `TERSE`, `VERBOSE`. Controls the amount of detail written in the server log for each message that is logged.
-     */
-    logErrorVerbosity?: string;
-    /**
-     * Enum: `'%m [%p] %q[user=%u,db=%d,app=%a] '`, `'%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '`, `'pid=%p,user=%u,db=%d,app=%a,client=%h '`, `'pid=%p,user=%u,db=%d,app=%a,client=%h,txid=%x,qid=%Q '`. Choose from one of the available log formats.
-     */
-    logLinePrefix?: string;
-    /**
-     * Log statements that take more than this number of milliseconds to run, -1 disables.
-     */
-    logMinDurationStatement?: number;
-    /**
-     * Log statements for each temporary file created larger than this number of kilobytes, -1 disables.
-     */
-    logTempFiles?: number;
-    /**
-     * PostgreSQL maximum number of files that can be open per process. The default is `1000` (upstream default). Changing this parameter causes a service restart.
-     */
-    maxFilesPerProcess?: number;
-    /**
-     * PostgreSQL maximum locks per transaction. Changing this parameter causes a service restart.
-     */
-    maxLocksPerTransaction?: number;
-    /**
-     * PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers). The default is `4` (upstream default). Changing this parameter causes a service restart.
-     */
-    maxLogicalReplicationWorkers?: number;
-    /**
-     * Sets the maximum number of workers that the system can support for parallel queries. The default is `8` (upstream default).
-     */
-    maxParallelWorkers?: number;
-    /**
-     * Sets the maximum number of workers that can be started by a single Gather or Gather Merge node. The default is `2` (upstream default).
-     */
-    maxParallelWorkersPerGather?: number;
-    /**
-     * PostgreSQL maximum predicate locks per transaction. The default is `64` (upstream default). Changing this parameter causes a service restart.
-     */
-    maxPredLocksPerTransaction?: number;
-    /**
-     * PostgreSQL maximum prepared transactions. The default is `0`. Changing this parameter causes a service restart.
-     */
-    maxPreparedTransactions?: number;
-    /**
-     * PostgreSQL maximum replication slots. The default is `20`. Changing this parameter causes a service restart.
-     */
-    maxReplicationSlots?: number;
-    /**
-     * PostgreSQL maximum WAL size (MB) reserved for replication slots. If `-1` is specified, replication slots may retain an unlimited amount of WAL files. The default is `-1` (upstream default). walKeepSize minimum WAL size setting takes precedence over this.
-     */
-    maxSlotWalKeepSize?: number;
-    /**
-     * Maximum depth of the stack in bytes. The default is `2097152` (upstream default).
-     */
-    maxStackDepth?: number;
-    /**
-     * Max standby archive delay in milliseconds. The default is `30000` (upstream default).
-     */
-    maxStandbyArchiveDelay?: number;
-    /**
-     * Max standby streaming delay in milliseconds. The default is `30000` (upstream default).
-     */
-    maxStandbyStreamingDelay?: number;
-    /**
-     * Maximum number of synchronization workers per subscription. The default is `2`.
-     */
-    maxSyncWorkersPerSubscription?: number;
-    /**
-     * PostgreSQL maximum WAL senders. The default is `20`. Changing this parameter causes a service restart.
-     */
-    maxWalSenders?: number;
-    /**
-     * Sets the maximum number of background processes that the system can support. The default is `8`. Changing this parameter causes a service restart.
-     */
-    maxWorkerProcesses?: number;
-    /**
-     * Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords.
-     */
-    passwordEncryption?: string;
-    /**
-     * Sets the time interval in seconds to run pg_partman's scheduled tasks. The default is `3600`. Example: `3600`.
-     */
-    pgPartmanBgwDotInterval?: number;
-    /**
-     * Controls which role to use for pg_partman's scheduled background tasks. Example: `myrolename`.
-     */
-    pgPartmanBgwDotRole?: string;
-    /**
-     * Enum: `all`, `none`, `top`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default is `top`.
-     */
-    pgStatStatementsDotTrack?: string;
-    /**
-     * PostgreSQL temporary file limit in KiB, -1 for unlimited.
-     */
-    tempFileLimit?: number;
-    /**
-     * PostgreSQL service timezone. Example: `Europe/Helsinki`.
-     */
-    timezone?: string;
-    /**
-     * Specifies the number of bytes reserved to track the currently executing command for each active session. Changing this parameter causes a service restart. Example: `1024`.
-     */
-    trackActivityQuerySize?: number;
-    /**
-     * Enum: `off`, `on`. Record commit time of transactions. Changing this parameter causes a service restart.
-     */
-    trackCommitTimestamp?: string;
-    /**
-     * Enum: `all`, `none`, `pl`. Enables tracking of function call counts and time used.
-     */
-    trackFunctions?: string;
-    /**
-     * Enum: `off`, `on`. Enables timing of database I/O calls. The default is `off`. When on, it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
-     */
-    trackIoTiming?: string;
-    /**
-     * Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout. Example: `60000`.
-     */
-    walSenderTimeout?: number;
-    /**
-     * WAL flush interval in milliseconds. The default is `200`. Setting this parameter to a lower value may negatively impact performance. Example: `50`.
-     */
-    walWriterDelay?: number;
-}
-
-export interface AlloydbomniAlloydbomniUserConfigPgaudit {
-    /**
-     * Enable pgaudit extension. When enabled, pgaudit extension will be automatically installed.Otherwise, extension will be uninstalled but auditing configurations will be preserved. Default: `false`.
-     */
-    featureEnabled?: boolean;
-    /**
-     * Specifies that session logging should be enabled in the case where all relations in a statement are in pg_catalog. Default: `true`.
-     */
-    logCatalog?: boolean;
-    /**
-     * Specifies whether log messages will be visible to a client process such as psql. Default: `false`.
-     */
-    logClient?: boolean;
-    /**
-     * Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `log`, `notice`, `warning`. Specifies the log level that will be used for log entries. Default: `log`.
-     */
-    logLevel?: string;
-    /**
-     * Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. Default: `-1`.
-     */
-    logMaxStringLength?: number;
-    /**
-     * This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. Default: `true`.
-     */
-    logNestedStatements?: boolean;
-    /**
-     * Specifies that audit logging should include the parameters that were passed with the statement. Default: `false`.
-     */
-    logParameter?: boolean;
-    /**
-     * Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with <long param suppressed>. Default: `0`.
-     */
-    logParameterMaxSize?: number;
-    /**
-     * Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
-     */
-    logRelation?: boolean;
-    /**
-     * Log Rows. Default: `false`.
-     */
-    logRows?: boolean;
-    /**
-     * Specifies whether logging will include the statement text and parameters (if enabled). Default: `true`.
-     */
-    logStatement?: boolean;
-    /**
-     * Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. Default: `false`.
-     */
-    logStatementOnce?: boolean;
-    /**
-     * Specifies which classes of statements will be logged by session audit logging.
-     */
-    logs?: string[];
-    /**
-     * Specifies the master role to use for object audit logging.
-     */
-    role?: string;
-}
-
-export interface AlloydbomniAlloydbomniUserConfigPgbouncer {
-    /**
-     * If the automatically created database pools have been unused this many seconds, they are freed. If 0 then timeout is disabled. (seconds). Default: `3600`.
-     */
-    autodbIdleTimeout?: number;
-    /**
-     * Do not allow more than this many server connections per database (regardless of user). Setting it to 0 means unlimited. Example: `0`.
-     */
-    autodbMaxDbConnections?: number;
-    /**
-     * Enum: `session`, `statement`, `transaction`. PGBouncer pool mode. Default: `transaction`.
-     */
-    autodbPoolMode?: string;
-    /**
-     * If non-zero then create automatically a pool of that size per user when a pool doesn't exist. Default: `0`.
-     */
-    autodbPoolSize?: number;
-    /**
-     * List of parameters to ignore when given in startup packet.
-     */
-    ignoreStartupParameters?: string[];
-    /**
-     * PgBouncer tracks protocol-level named prepared statements related commands sent by the client in transaction and statement pooling modes when maxPreparedStatements is set to a non-zero value. Setting it to 0 disables prepared statements. maxPreparedStatements defaults to 100, and its maximum is 3000. Default: `100`.
-     */
-    maxPreparedStatements?: number;
-    /**
-     * Add more server connections to pool if below this number. Improves behavior when usual load comes suddenly back after period of total inactivity. The value is effectively capped at the pool size. Default: `0`.
-     */
-    minPoolSize?: number;
-    /**
-     * If a server connection has been idle more than this many seconds it will be dropped. If 0 then timeout is disabled. (seconds). Default: `600`.
-     */
-    serverIdleTimeout?: number;
-    /**
-     * The pooler will close an unused server connection that has been connected longer than this. (seconds). Default: `3600`.
-     */
-    serverLifetime?: number;
-    /**
-     * Run serverResetQuery (DISCARD ALL) in all pooling modes. Default: `false`.
-     */
-    serverResetQueryAlways?: boolean;
-}
-
-export interface AlloydbomniAlloydbomniUserConfigPglookout {
-    /**
-     * Number of seconds of master unavailability before triggering database failover to standby. Default: `60`.
-     */
-    maxFailoverReplicationTimeLag?: number;
-}
-
-export interface AlloydbomniAlloydbomniUserConfigPrivateAccess {
-    /**
-     * Allow clients to connect to pg with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-     */
-    pg?: boolean;
-    /**
-     * Allow clients to connect to pgbouncer with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-     */
-    pgbouncer?: boolean;
-    /**
-     * Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-     */
-    prometheus?: boolean;
-}
-
-export interface AlloydbomniAlloydbomniUserConfigPrivatelinkAccess {
-    /**
-     * Enable pg.
-     */
-    pg?: boolean;
-    /**
-     * Enable pgbouncer.
-     */
-    pgbouncer?: boolean;
-    /**
-     * Enable prometheus.
-     */
-    prometheus?: boolean;
-}
-
-export interface AlloydbomniAlloydbomniUserConfigPublicAccess {
-    /**
-     * Allow clients to connect to pg from the public internet for service nodes that are in a project VPC or another type of private network.
-     */
-    pg?: boolean;
-    /**
-     * Allow clients to connect to pgbouncer from the public internet for service nodes that are in a project VPC or another type of private network.
-     */
-    pgbouncer?: boolean;
-    /**
-     * Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
-     */
-    prometheus?: boolean;
-}
-
-export interface AlloydbomniComponent {
-    /**
-     * Service component name
-     */
-    component: string;
-    /**
-     * Connection info for connecting to the service component. This is a combination of host and port.
-     */
-    connectionUri: string;
-    /**
-     * Host name for connecting to the service component
-     */
-    host: string;
-    /**
-     * Kafka authentication method. This is a value specific to the 'kafka' service component
-     */
-    kafkaAuthenticationMethod: string;
-    /**
-     * Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
-     */
-    kafkaSslCa: string;
-    /**
-     * Port number for connecting to the service component
-     */
-    port: number;
-    /**
-     * Privatelink connection ID
-     */
-    privatelinkConnectionId: string;
-    /**
-     * Network access route
-     */
-    route: string;
-    /**
-     * Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
-     */
-    ssl: boolean;
-    /**
-     * DNS usage name
-     */
-    usage: string;
-}
-
-export interface AlloydbomniServiceIntegration {
-    /**
-     * Type of the service integration. The possible value is `readReplica`.
-     */
-    integrationType: string;
-    /**
-     * Name of the source service
-     */
-    sourceServiceName: string;
-}
-
-export interface AlloydbomniTag {
-    /**
-     * Service tag key
-     */
-    key: string;
-    /**
-     * Service tag value
-     */
-    value: string;
-}
-
-export interface AlloydbomniTechEmail {
-    /**
-     * An email address to contact for technical issues
-     */
-    email: string;
-}
-
 export interface BillingGroupTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
@@ -974,7 +317,7 @@ export interface ClickhouseClickhouseUserConfig {
      */
     backupMinute?: number;
     /**
-     * Enum: `25.3`, and newer. ClickHouse major version.
+     * Enum: `25.3`, `25.8`, and newer. ClickHouse major version.
      */
     clickhouseVersion?: string;
     /**
@@ -1228,11 +571,61 @@ export interface ClickhouseTechEmail {
     email: string;
 }
 
+export interface ClickhouseUserTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: string;
+    /**
+     * Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+     *
+     * @deprecated Use operation-specific timeouts instead. This field will be removed in the next major version.
+     */
+    default?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: string;
+}
+
 export interface CmkTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
     create?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: string;
+}
+
+export interface ConnectionPoolTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: string;
+    /**
+     * Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+     *
+     * @deprecated Use operation-specific timeouts instead. This field will be removed in the next major version.
+     */
+    default?: string;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
      */
@@ -1876,663 +1269,6 @@ export interface GetAccountAuthenticationSamlFieldMapping {
     realName?: string;
 }
 
-export interface GetAlloydbomniAlloydbomni {
-    /**
-     * PgBouncer connection details for [connection pooling](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling).
-     *
-     * @deprecated This field was added by mistake and has never worked. It will be removed in future versions.
-     */
-    bouncer: string;
-    /**
-     * Primary AlloyDB Omni database name.
-     */
-    dbname: string;
-    /**
-     * AlloyDB Omni primary node host IP or name.
-     */
-    host: string;
-    /**
-     * The [number of allowed connections](https://aiven.io/docs/products/postgresql/reference/pg-connection-limits). Varies based on the service plan.
-     */
-    maxConnections: number;
-    /**
-     * AlloyDB Omni connection parameters.
-     */
-    params: outputs.GetAlloydbomniAlloydbomniParam[];
-    /**
-     * AlloyDB Omni admin user password.
-     */
-    password: string;
-    /**
-     * AlloyDB Omni port.
-     */
-    port: number;
-    /**
-     * AlloyDB Omni replica URI for services with a replica.
-     */
-    replicaUri: string;
-    /**
-     * AlloyDB Omni SSL mode setting.
-     */
-    sslmode: string;
-    /**
-     * AlloyDB Omni standby connection URIs.
-     */
-    standbyUris: string[];
-    /**
-     * AlloyDB Omni syncing connection URIs.
-     */
-    syncingUris: string[];
-    /**
-     * AlloyDB Omni primary connection URI.
-     */
-    uri: string;
-    /**
-     * AlloyDB Omni primary connection URIs.
-     */
-    uris: string[];
-    /**
-     * AlloyDB Omni admin user name.
-     */
-    user: string;
-}
-
-export interface GetAlloydbomniAlloydbomniParam {
-    /**
-     * Primary AlloyDB Omni database name.
-     */
-    databaseName: string;
-    /**
-     * AlloyDB Omni host IP or name.
-     */
-    host: string;
-    /**
-     * AlloyDB Omni admin user password.
-     */
-    password: string;
-    /**
-     * AlloyDB Omni port.
-     */
-    port: number;
-    /**
-     * AlloyDB Omni SSL mode setting.
-     */
-    sslmode: string;
-    /**
-     * AlloyDB Omni admin user name.
-     */
-    user: string;
-}
-
-export interface GetAlloydbomniAlloydbomniUserConfig {
-    /**
-     * Additional Cloud Regions for Backup Replication.
-     */
-    additionalBackupRegions?: string;
-    /**
-     * Custom password for admin user. Defaults to random string. This must be set only when a new service is being created.
-     */
-    adminPassword?: string;
-    /**
-     * Custom username for admin user. This must be set only when a new service is being created. Example: `avnadmin`.
-     */
-    adminUsername?: string;
-    /**
-     * Enum: `15`, and newer. PostgreSQL major version.
-     */
-    alloydbomniVersion?: string;
-    /**
-     * The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
-     */
-    backupHour?: number;
-    /**
-     * The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
-     */
-    backupMinute?: number;
-    /**
-     * Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
-     */
-    enableIpv6?: boolean;
-    /**
-     * Enables or disables the columnar engine. When enabled, it accelerates SQL query processing. Default: `true`.
-     */
-    googleColumnarEngineEnabled?: boolean;
-    /**
-     * Allocate the amount of RAM to store columnar data. Default: `10`.
-     */
-    googleColumnarEngineMemorySizePercentage?: number;
-    /**
-     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
-     */
-    ipFilterObjects?: outputs.GetAlloydbomniAlloydbomniUserConfigIpFilterObject[];
-    /**
-     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-     */
-    ipFilterStrings?: string[];
-    /**
-     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-     *
-     * @deprecated Deprecated. Use `ipFilterString` instead.
-     */
-    ipFilters?: string[];
-    /**
-     * Number of nodes for the service. Example: `3`.
-     */
-    nodeCount?: number;
-    /**
-     * postgresql.conf configuration values
-     */
-    pg?: outputs.GetAlloydbomniAlloydbomniUserConfigPg;
-    /**
-     * Should the service which is being forked be a read replica (deprecated, use readReplica service integration instead).
-     */
-    pgReadReplica?: boolean;
-    /**
-     * Name of the PG Service from which to fork (deprecated, use service_to_fork_from). This has effect only when a new service is being created. Example: `anotherservicename`.
-     */
-    pgServiceToForkFrom?: string;
-    /**
-     * Enum: `15`, and newer. PostgreSQL major version.
-     */
-    pgVersion?: string;
-    /**
-     * System-wide settings for the pgaudit extension
-     */
-    pgaudit?: outputs.GetAlloydbomniAlloydbomniUserConfigPgaudit;
-    /**
-     * PGBouncer connection pooling settings
-     */
-    pgbouncer?: outputs.GetAlloydbomniAlloydbomniUserConfigPgbouncer;
-    /**
-     * System-wide settings for pglookout
-     */
-    pglookout?: outputs.GetAlloydbomniAlloydbomniUserConfigPglookout;
-    /**
-     * Allow access to selected service ports from private networks
-     */
-    privateAccess?: outputs.GetAlloydbomniAlloydbomniUserConfigPrivateAccess;
-    /**
-     * Allow access to selected service components through Privatelink
-     */
-    privatelinkAccess?: outputs.GetAlloydbomniAlloydbomniUserConfigPrivatelinkAccess;
-    /**
-     * Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
-     */
-    projectToForkFrom?: string;
-    /**
-     * Allow access to selected service ports from the public Internet
-     */
-    publicAccess?: outputs.GetAlloydbomniAlloydbomniUserConfigPublicAccess;
-    /**
-     * Recovery target time when forking a service. This has effect only when a new service is being created. Example: `2019-01-01 23:34:45`.
-     */
-    recoveryTargetTime?: string;
-    /**
-     * Store logs for the service so that they are available in the HTTP API and console.
-     */
-    serviceLog?: boolean;
-    /**
-     * Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
-     */
-    serviceToForkFrom?: string;
-    /**
-     * Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the sharedBuffers configuration value. Changing this parameter causes a service restart. Example: `41.5`.
-     */
-    sharedBuffersPercentage?: number;
-    /**
-     * Use static public IP addresses.
-     */
-    staticIps?: boolean;
-    /**
-     * Enum: `off`, `quorum`. Synchronous replication type. Note that the service plan also needs to support synchronous replication.
-     */
-    synchronousReplication?: string;
-    /**
-     * Enum: `aiven`, `timescale`. Variant of the PostgreSQL service, may affect the features that are exposed by default.
-     */
-    variant?: string;
-    /**
-     * Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. The default is 1MB + 0.075% of total RAM (up to 32MB). Example: `4`.
-     */
-    workMem?: number;
-}
-
-export interface GetAlloydbomniAlloydbomniUserConfigIpFilterObject {
-    /**
-     * Description for IP filter list entry. Example: `Production service IP range`.
-     */
-    description?: string;
-    /**
-     * CIDR address block. Example: `10.20.0.0/16`.
-     */
-    network: string;
-}
-
-export interface GetAlloydbomniAlloydbomniUserConfigPg {
-    /**
-     * Specifies a fraction of the table size to add to autovacuumAnalyzeThreshold when deciding whether to trigger an ANALYZE (e.g. `0.2` for 20% of the table size). The default is `0.2`.
-     */
-    autovacuumAnalyzeScaleFactor?: number;
-    /**
-     * Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is `50`.
-     */
-    autovacuumAnalyzeThreshold?: number;
-    /**
-     * Specifies the maximum age (in transactions) that a table's pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. The system launches autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. Changing this parameter causes a service restart.
-     */
-    autovacuumFreezeMaxAge?: number;
-    /**
-     * Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is `3`. Changing this parameter causes a service restart.
-     */
-    autovacuumMaxWorkers?: number;
-    /**
-     * Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds. The default is `60`.
-     */
-    autovacuumNaptime?: number;
-    /**
-     * Specifies the cost delay value that will be used in automatic VACUUM operations. If `-1` is specified, the regular vacuumCostDelay value will be used. The default is `2` (upstream default).
-     */
-    autovacuumVacuumCostDelay?: number;
-    /**
-     * Specifies the cost limit value that will be used in automatic VACUUM operations. If `-1` is specified, the regular vacuumCostLimit value will be used. The default is `-1` (upstream default).
-     */
-    autovacuumVacuumCostLimit?: number;
-    /**
-     * Specifies a fraction of the table size to add to autovacuumVacuumThreshold when deciding whether to trigger a VACUUM (e.g. `0.2` for 20% of the table size). The default is `0.2`.
-     */
-    autovacuumVacuumScaleFactor?: number;
-    /**
-     * Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is `50`.
-     */
-    autovacuumVacuumThreshold?: number;
-    /**
-     * Specifies the delay between activity rounds for the background writer in milliseconds. The default is `200`. Example: `200`.
-     */
-    bgwriterDelay?: number;
-    /**
-     * Whenever more than bgwriterFlushAfter bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes. Setting of 0 disables forced writeback. The default is `512`. Example: `512`.
-     */
-    bgwriterFlushAfter?: number;
-    /**
-     * In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. The default is `100`. Example: `100`.
-     */
-    bgwriterLruMaxpages?: number;
-    /**
-     * The average recent need for new buffers is multiplied by bgwriterLruMultiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is `2.0`. Example: `2`.
-     */
-    bgwriterLruMultiplier?: number;
-    /**
-     * This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition. The default is `1000` (upstream default). Example: `1000`.
-     */
-    deadlockTimeout?: number;
-    /**
-     * Enum: `lz4`, `pglz`. Specifies the default TOAST compression method for values of compressible columns. The default is `lz4`.
-     */
-    defaultToastCompression?: string;
-    /**
-     * Time out sessions with open transactions after this number of milliseconds.
-     */
-    idleInTransactionSessionTimeout?: number;
-    /**
-     * Controls system-wide use of Just-in-Time Compilation (JIT).
-     */
-    jit?: boolean;
-    /**
-     * Causes each action executed by autovacuum to be logged if it ran for at least the specified number of milliseconds. Setting this to zero logs all autovacuum actions. Minus-one disables logging autovacuum actions. The default is `1000`.
-     */
-    logAutovacuumMinDuration?: number;
-    /**
-     * Enum: `DEFAULT`, `TERSE`, `VERBOSE`. Controls the amount of detail written in the server log for each message that is logged.
-     */
-    logErrorVerbosity?: string;
-    /**
-     * Enum: `'%m [%p] %q[user=%u,db=%d,app=%a] '`, `'%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '`, `'pid=%p,user=%u,db=%d,app=%a,client=%h '`, `'pid=%p,user=%u,db=%d,app=%a,client=%h,txid=%x,qid=%Q '`. Choose from one of the available log formats.
-     */
-    logLinePrefix?: string;
-    /**
-     * Log statements that take more than this number of milliseconds to run, -1 disables.
-     */
-    logMinDurationStatement?: number;
-    /**
-     * Log statements for each temporary file created larger than this number of kilobytes, -1 disables.
-     */
-    logTempFiles?: number;
-    /**
-     * PostgreSQL maximum number of files that can be open per process. The default is `1000` (upstream default). Changing this parameter causes a service restart.
-     */
-    maxFilesPerProcess?: number;
-    /**
-     * PostgreSQL maximum locks per transaction. Changing this parameter causes a service restart.
-     */
-    maxLocksPerTransaction?: number;
-    /**
-     * PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers). The default is `4` (upstream default). Changing this parameter causes a service restart.
-     */
-    maxLogicalReplicationWorkers?: number;
-    /**
-     * Sets the maximum number of workers that the system can support for parallel queries. The default is `8` (upstream default).
-     */
-    maxParallelWorkers?: number;
-    /**
-     * Sets the maximum number of workers that can be started by a single Gather or Gather Merge node. The default is `2` (upstream default).
-     */
-    maxParallelWorkersPerGather?: number;
-    /**
-     * PostgreSQL maximum predicate locks per transaction. The default is `64` (upstream default). Changing this parameter causes a service restart.
-     */
-    maxPredLocksPerTransaction?: number;
-    /**
-     * PostgreSQL maximum prepared transactions. The default is `0`. Changing this parameter causes a service restart.
-     */
-    maxPreparedTransactions?: number;
-    /**
-     * PostgreSQL maximum replication slots. The default is `20`. Changing this parameter causes a service restart.
-     */
-    maxReplicationSlots?: number;
-    /**
-     * PostgreSQL maximum WAL size (MB) reserved for replication slots. If `-1` is specified, replication slots may retain an unlimited amount of WAL files. The default is `-1` (upstream default). walKeepSize minimum WAL size setting takes precedence over this.
-     */
-    maxSlotWalKeepSize?: number;
-    /**
-     * Maximum depth of the stack in bytes. The default is `2097152` (upstream default).
-     */
-    maxStackDepth?: number;
-    /**
-     * Max standby archive delay in milliseconds. The default is `30000` (upstream default).
-     */
-    maxStandbyArchiveDelay?: number;
-    /**
-     * Max standby streaming delay in milliseconds. The default is `30000` (upstream default).
-     */
-    maxStandbyStreamingDelay?: number;
-    /**
-     * Maximum number of synchronization workers per subscription. The default is `2`.
-     */
-    maxSyncWorkersPerSubscription?: number;
-    /**
-     * PostgreSQL maximum WAL senders. The default is `20`. Changing this parameter causes a service restart.
-     */
-    maxWalSenders?: number;
-    /**
-     * Sets the maximum number of background processes that the system can support. The default is `8`. Changing this parameter causes a service restart.
-     */
-    maxWorkerProcesses?: number;
-    /**
-     * Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords.
-     */
-    passwordEncryption?: string;
-    /**
-     * Sets the time interval in seconds to run pg_partman's scheduled tasks. The default is `3600`. Example: `3600`.
-     */
-    pgPartmanBgwDotInterval?: number;
-    /**
-     * Controls which role to use for pg_partman's scheduled background tasks. Example: `myrolename`.
-     */
-    pgPartmanBgwDotRole?: string;
-    /**
-     * Enum: `all`, `none`, `top`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default is `top`.
-     */
-    pgStatStatementsDotTrack?: string;
-    /**
-     * PostgreSQL temporary file limit in KiB, -1 for unlimited.
-     */
-    tempFileLimit?: number;
-    /**
-     * PostgreSQL service timezone. Example: `Europe/Helsinki`.
-     */
-    timezone?: string;
-    /**
-     * Specifies the number of bytes reserved to track the currently executing command for each active session. Changing this parameter causes a service restart. Example: `1024`.
-     */
-    trackActivityQuerySize?: number;
-    /**
-     * Enum: `off`, `on`. Record commit time of transactions. Changing this parameter causes a service restart.
-     */
-    trackCommitTimestamp?: string;
-    /**
-     * Enum: `all`, `none`, `pl`. Enables tracking of function call counts and time used.
-     */
-    trackFunctions?: string;
-    /**
-     * Enum: `off`, `on`. Enables timing of database I/O calls. The default is `off`. When on, it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
-     */
-    trackIoTiming?: string;
-    /**
-     * Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout. Example: `60000`.
-     */
-    walSenderTimeout?: number;
-    /**
-     * WAL flush interval in milliseconds. The default is `200`. Setting this parameter to a lower value may negatively impact performance. Example: `50`.
-     */
-    walWriterDelay?: number;
-}
-
-export interface GetAlloydbomniAlloydbomniUserConfigPgaudit {
-    /**
-     * Enable pgaudit extension. When enabled, pgaudit extension will be automatically installed.Otherwise, extension will be uninstalled but auditing configurations will be preserved. Default: `false`.
-     */
-    featureEnabled?: boolean;
-    /**
-     * Specifies that session logging should be enabled in the case where all relations in a statement are in pg_catalog. Default: `true`.
-     */
-    logCatalog?: boolean;
-    /**
-     * Specifies whether log messages will be visible to a client process such as psql. Default: `false`.
-     */
-    logClient?: boolean;
-    /**
-     * Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `log`, `notice`, `warning`. Specifies the log level that will be used for log entries. Default: `log`.
-     */
-    logLevel?: string;
-    /**
-     * Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. Default: `-1`.
-     */
-    logMaxStringLength?: number;
-    /**
-     * This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. Default: `true`.
-     */
-    logNestedStatements?: boolean;
-    /**
-     * Specifies that audit logging should include the parameters that were passed with the statement. Default: `false`.
-     */
-    logParameter?: boolean;
-    /**
-     * Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with <long param suppressed>. Default: `0`.
-     */
-    logParameterMaxSize?: number;
-    /**
-     * Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
-     */
-    logRelation?: boolean;
-    /**
-     * Log Rows. Default: `false`.
-     */
-    logRows?: boolean;
-    /**
-     * Specifies whether logging will include the statement text and parameters (if enabled). Default: `true`.
-     */
-    logStatement?: boolean;
-    /**
-     * Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. Default: `false`.
-     */
-    logStatementOnce?: boolean;
-    /**
-     * Specifies which classes of statements will be logged by session audit logging.
-     */
-    logs?: string[];
-    /**
-     * Specifies the master role to use for object audit logging.
-     */
-    role?: string;
-}
-
-export interface GetAlloydbomniAlloydbomniUserConfigPgbouncer {
-    /**
-     * If the automatically created database pools have been unused this many seconds, they are freed. If 0 then timeout is disabled. (seconds). Default: `3600`.
-     */
-    autodbIdleTimeout?: number;
-    /**
-     * Do not allow more than this many server connections per database (regardless of user). Setting it to 0 means unlimited. Example: `0`.
-     */
-    autodbMaxDbConnections?: number;
-    /**
-     * Enum: `session`, `statement`, `transaction`. PGBouncer pool mode. Default: `transaction`.
-     */
-    autodbPoolMode?: string;
-    /**
-     * If non-zero then create automatically a pool of that size per user when a pool doesn't exist. Default: `0`.
-     */
-    autodbPoolSize?: number;
-    /**
-     * List of parameters to ignore when given in startup packet.
-     */
-    ignoreStartupParameters?: string[];
-    /**
-     * PgBouncer tracks protocol-level named prepared statements related commands sent by the client in transaction and statement pooling modes when maxPreparedStatements is set to a non-zero value. Setting it to 0 disables prepared statements. maxPreparedStatements defaults to 100, and its maximum is 3000. Default: `100`.
-     */
-    maxPreparedStatements?: number;
-    /**
-     * Add more server connections to pool if below this number. Improves behavior when usual load comes suddenly back after period of total inactivity. The value is effectively capped at the pool size. Default: `0`.
-     */
-    minPoolSize?: number;
-    /**
-     * If a server connection has been idle more than this many seconds it will be dropped. If 0 then timeout is disabled. (seconds). Default: `600`.
-     */
-    serverIdleTimeout?: number;
-    /**
-     * The pooler will close an unused server connection that has been connected longer than this. (seconds). Default: `3600`.
-     */
-    serverLifetime?: number;
-    /**
-     * Run serverResetQuery (DISCARD ALL) in all pooling modes. Default: `false`.
-     */
-    serverResetQueryAlways?: boolean;
-}
-
-export interface GetAlloydbomniAlloydbomniUserConfigPglookout {
-    /**
-     * Number of seconds of master unavailability before triggering database failover to standby. Default: `60`.
-     */
-    maxFailoverReplicationTimeLag?: number;
-}
-
-export interface GetAlloydbomniAlloydbomniUserConfigPrivateAccess {
-    /**
-     * Allow clients to connect to pg with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-     */
-    pg?: boolean;
-    /**
-     * Allow clients to connect to pgbouncer with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-     */
-    pgbouncer?: boolean;
-    /**
-     * Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-     */
-    prometheus?: boolean;
-}
-
-export interface GetAlloydbomniAlloydbomniUserConfigPrivatelinkAccess {
-    /**
-     * Enable pg.
-     */
-    pg?: boolean;
-    /**
-     * Enable pgbouncer.
-     */
-    pgbouncer?: boolean;
-    /**
-     * Enable prometheus.
-     */
-    prometheus?: boolean;
-}
-
-export interface GetAlloydbomniAlloydbomniUserConfigPublicAccess {
-    /**
-     * Allow clients to connect to pg from the public internet for service nodes that are in a project VPC or another type of private network.
-     */
-    pg?: boolean;
-    /**
-     * Allow clients to connect to pgbouncer from the public internet for service nodes that are in a project VPC or another type of private network.
-     */
-    pgbouncer?: boolean;
-    /**
-     * Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
-     */
-    prometheus?: boolean;
-}
-
-export interface GetAlloydbomniComponent {
-    /**
-     * Service component name
-     */
-    component: string;
-    /**
-     * Connection info for connecting to the service component. This is a combination of host and port.
-     */
-    connectionUri: string;
-    /**
-     * Host name for connecting to the service component
-     */
-    host: string;
-    /**
-     * Kafka authentication method. This is a value specific to the 'kafka' service component
-     */
-    kafkaAuthenticationMethod: string;
-    /**
-     * Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
-     */
-    kafkaSslCa: string;
-    /**
-     * Port number for connecting to the service component
-     */
-    port: number;
-    /**
-     * Privatelink connection ID
-     */
-    privatelinkConnectionId: string;
-    /**
-     * Network access route
-     */
-    route: string;
-    /**
-     * Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
-     */
-    ssl: boolean;
-    /**
-     * DNS usage name
-     */
-    usage: string;
-}
-
-export interface GetAlloydbomniServiceIntegration {
-    /**
-     * Type of the service integration. The possible value is `readReplica`.
-     */
-    integrationType: string;
-    /**
-     * Name of the source service
-     */
-    sourceServiceName: string;
-}
-
-export interface GetAlloydbomniTag {
-    /**
-     * Service tag key
-     */
-    key: string;
-    /**
-     * Service tag value
-     */
-    value: string;
-}
-
-export interface GetAlloydbomniTechEmail {
-    /**
-     * An email address to contact for technical issues
-     */
-    email: string;
-}
-
 export interface GetBillingGroupTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
@@ -2955,7 +1691,7 @@ export interface GetClickhouseClickhouseUserConfig {
      */
     backupMinute?: number;
     /**
-     * Enum: `25.3`, and newer. ClickHouse major version.
+     * Enum: `25.3`, `25.8`, and newer. ClickHouse major version.
      */
     clickhouseVersion?: string;
     /**
@@ -3159,6 +1895,20 @@ export interface GetClickhouseTechEmail {
      * An email address to contact for technical issues
      */
     email: string;
+}
+
+export interface GetClickhouseUserTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: string;
+}
+
+export interface GetConnectionPoolTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: string;
 }
 
 export interface GetDragonflyComponent {
@@ -4140,239 +2890,6 @@ export interface GetGrafanaTechEmail {
     email: string;
 }
 
-export interface GetInfluxDbComponent {
-    /**
-     * Service component name
-     */
-    component: string;
-    /**
-     * Connection info for connecting to the service component. This is a combination of host and port.
-     */
-    connectionUri: string;
-    /**
-     * Host name for connecting to the service component
-     */
-    host: string;
-    /**
-     * Kafka authentication method. This is a value specific to the 'kafka' service component
-     */
-    kafkaAuthenticationMethod: string;
-    /**
-     * Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
-     */
-    kafkaSslCa: string;
-    /**
-     * Port number for connecting to the service component
-     */
-    port: number;
-    /**
-     * Privatelink connection ID
-     */
-    privatelinkConnectionId: string;
-    /**
-     * Network access route
-     */
-    route: string;
-    /**
-     * Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
-     */
-    ssl: boolean;
-    /**
-     * DNS usage name
-     */
-    usage: string;
-}
-
-export interface GetInfluxDbInfluxdb {
-    /**
-     * Name of the default InfluxDB database
-     */
-    databaseName: string;
-    /**
-     * InfluxDB password
-     */
-    password: string;
-    /**
-     * InfluxDB server URIs.
-     */
-    uris: string[];
-    /**
-     * InfluxDB username
-     */
-    username: string;
-}
-
-export interface GetInfluxDbInfluxdbUserConfig {
-    /**
-     * Additional Cloud Regions for Backup Replication.
-     *
-     * @deprecated This property is deprecated.
-     */
-    additionalBackupRegions?: string;
-    /**
-     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. When you set a custom domain for a service deployed in a VPC, the service certificate is only created for the public-* hostname and the custom domain. Example: `grafana.example.org`.
-     */
-    customDomain?: string;
-    /**
-     * influxdb.conf configuration values
-     */
-    influxdb?: outputs.GetInfluxDbInfluxdbUserConfigInfluxdb;
-    /**
-     * Enum: `1.8`, and newer. InfluxDB major version. Default: `1.8`.
-     */
-    influxdbVersion?: string;
-    /**
-     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
-     */
-    ipFilterObjects?: outputs.GetInfluxDbInfluxdbUserConfigIpFilterObject[];
-    /**
-     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-     */
-    ipFilterStrings?: string[];
-    /**
-     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-     *
-     * @deprecated Deprecated. Use `ipFilterString` instead.
-     */
-    ipFilters?: string[];
-    /**
-     * Allow access to selected service ports from private networks
-     */
-    privateAccess?: outputs.GetInfluxDbInfluxdbUserConfigPrivateAccess;
-    /**
-     * Allow access to selected service components through Privatelink
-     */
-    privatelinkAccess?: outputs.GetInfluxDbInfluxdbUserConfigPrivatelinkAccess;
-    /**
-     * Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
-     */
-    projectToForkFrom?: string;
-    /**
-     * Allow access to selected service ports from the public Internet
-     */
-    publicAccess?: outputs.GetInfluxDbInfluxdbUserConfigPublicAccess;
-    /**
-     * Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
-     */
-    recoveryBasebackupName?: string;
-    /**
-     * Store logs for the service so that they are available in the HTTP API and console.
-     */
-    serviceLog?: boolean;
-    /**
-     * Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
-     */
-    serviceToForkFrom?: string;
-    /**
-     * Use static public IP addresses.
-     */
-    staticIps?: boolean;
-}
-
-export interface GetInfluxDbInfluxdbUserConfigInfluxdb {
-    /**
-     * The maximum duration in seconds before a query is logged as a slow query. Setting this to 0 (the default) will never log slow queries.
-     */
-    logQueriesAfter?: number;
-    /**
-     * Maximum number of connections to InfluxDB. Setting this to 0 (default) means no limit. If using max_connection_limit, it is recommended to set the value to be large enough in order to not block clients unnecessarily.
-     */
-    maxConnectionLimit?: number;
-    /**
-     * The maximum number of rows returned in a non-chunked query. Setting this to 0 (the default) allows an unlimited number to be returned.
-     */
-    maxRowLimit?: number;
-    /**
-     * The maximum number of `GROUP BY time()` buckets that can be processed in a query. Setting this to 0 (the default) allows an unlimited number to be processed.
-     */
-    maxSelectBuckets?: number;
-    /**
-     * The maximum number of points that can be processed in a SELECT statement. Setting this to 0 (the default) allows an unlimited number to be processed.
-     */
-    maxSelectPoint?: number;
-    /**
-     * Whether queries should be logged before execution. May log sensitive data contained within a query.
-     */
-    queryLogEnabled?: boolean;
-    /**
-     * The maximum duration in seconds before a query is killed. Setting this to 0 (the default) will never kill slow queries.
-     */
-    queryTimeout?: number;
-}
-
-export interface GetInfluxDbInfluxdbUserConfigIpFilterObject {
-    /**
-     * Description for IP filter list entry. Example: `Production service IP range`.
-     */
-    description?: string;
-    /**
-     * CIDR address block. Example: `10.20.0.0/16`.
-     */
-    network: string;
-}
-
-export interface GetInfluxDbInfluxdbUserConfigPrivateAccess {
-    /**
-     * Allow clients to connect to influxdb with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-     */
-    influxdb?: boolean;
-    /**
-     * Allow clients to connect to userBackup with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-     */
-    userBackup?: boolean;
-}
-
-export interface GetInfluxDbInfluxdbUserConfigPrivatelinkAccess {
-    /**
-     * Enable influxdb.
-     */
-    influxdb?: boolean;
-    /**
-     * Enable user_backup.
-     */
-    userBackup?: boolean;
-}
-
-export interface GetInfluxDbInfluxdbUserConfigPublicAccess {
-    /**
-     * Allow clients to connect to influxdb from the public internet for service nodes that are in a project VPC or another type of private network.
-     */
-    influxdb?: boolean;
-    /**
-     * Allow clients to connect to userBackup from the public internet for service nodes that are in a project VPC or another type of private network.
-     */
-    userBackup?: boolean;
-}
-
-export interface GetInfluxDbServiceIntegration {
-    /**
-     * Type of the service integration
-     */
-    integrationType: string;
-    /**
-     * Name of the source service
-     */
-    sourceServiceName: string;
-}
-
-export interface GetInfluxDbTag {
-    /**
-     * Service tag key
-     */
-    key: string;
-    /**
-     * Service tag value
-     */
-    value: string;
-}
-
-export interface GetInfluxDbTechEmail {
-    /**
-     * An email address to contact for technical issues
-     */
-    email: string;
-}
-
 export interface GetKafkaComponent {
     /**
      * Service component name
@@ -4795,7 +3312,7 @@ export interface GetKafkaKafkaUserConfig {
      */
     aivenKafkaTopicMessages?: boolean;
     /**
-     * Interval in hours between automatic backups. Minimum value is 3 hours. Must be a divisor of 24 (3, 4, 6, 8, 12, 24). (Applicable to ACU plans only). Example: `24`.
+     * Enum: `12`, `24`, `3`, `4`, `6`, `8`. Interval in hours between automatic backups. Minimum value is 3 hours. Must be a divisor of 24 (3, 4, 6, 8, 12, 24). (Applicable to ACU plans only).
      */
     backupIntervalHours?: number;
     /**
@@ -5912,506 +4429,6 @@ export interface GetKafkaTopicTag {
      * Tag value. Maximum length: `256`.
      */
     value?: string;
-}
-
-export interface GetM3AggregatorComponent {
-    /**
-     * Service component name
-     */
-    component: string;
-    /**
-     * Connection info for connecting to the service component. This is a combination of host and port.
-     */
-    connectionUri: string;
-    /**
-     * Host name for connecting to the service component
-     */
-    host: string;
-    /**
-     * Kafka authentication method. This is a value specific to the 'kafka' service component
-     */
-    kafkaAuthenticationMethod: string;
-    /**
-     * Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
-     */
-    kafkaSslCa: string;
-    /**
-     * Port number for connecting to the service component
-     */
-    port: number;
-    /**
-     * Privatelink connection ID
-     */
-    privatelinkConnectionId: string;
-    /**
-     * Network access route
-     */
-    route: string;
-    /**
-     * Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
-     */
-    ssl: boolean;
-    /**
-     * DNS usage name
-     */
-    usage: string;
-}
-
-export interface GetM3AggregatorM3aggregator {
-    /**
-     * M3 Aggregator HTTP URI.
-     */
-    aggregatorHttpUri: string;
-    /**
-     * M3 Aggregator server URIs.
-     */
-    uris: string[];
-}
-
-export interface GetM3AggregatorM3aggregatorUserConfig {
-    /**
-     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
-     */
-    customDomain?: string;
-    /**
-     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
-     */
-    ipFilterObjects?: outputs.GetM3AggregatorM3aggregatorUserConfigIpFilterObject[];
-    /**
-     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-     */
-    ipFilterStrings?: string[];
-    /**
-     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-     *
-     * @deprecated Deprecated. Use `ipFilterString` instead.
-     */
-    ipFilters?: string[];
-    /**
-     * Enum: `1.1`, `1.2`, `1.5`, and newer. M3 major version (deprecated, use m3aggregator_version).
-     */
-    m3Version?: string;
-    /**
-     * Enum: `1.1`, `1.2`, `1.5`, and newer. M3 major version (the minimum compatible version).
-     */
-    m3aggregatorVersion?: string;
-    /**
-     * Store logs for the service so that they are available in the HTTP API and console.
-     */
-    serviceLog?: boolean;
-    /**
-     * Use static public IP addresses.
-     */
-    staticIps?: boolean;
-}
-
-export interface GetM3AggregatorM3aggregatorUserConfigIpFilterObject {
-    /**
-     * Description for IP filter list entry. Example: `Production service IP range`.
-     */
-    description?: string;
-    /**
-     * CIDR address block. Example: `10.20.0.0/16`.
-     */
-    network: string;
-}
-
-export interface GetM3AggregatorServiceIntegration {
-    /**
-     * Type of the service integration
-     */
-    integrationType: string;
-    /**
-     * Name of the source service
-     */
-    sourceServiceName: string;
-}
-
-export interface GetM3AggregatorTag {
-    /**
-     * Service tag key
-     */
-    key: string;
-    /**
-     * Service tag value
-     */
-    value: string;
-}
-
-export interface GetM3AggregatorTechEmail {
-    /**
-     * An email address to contact for technical issues
-     */
-    email: string;
-}
-
-export interface GetM3DbComponent {
-    /**
-     * Service component name
-     */
-    component: string;
-    /**
-     * Connection info for connecting to the service component. This is a combination of host and port.
-     */
-    connectionUri: string;
-    /**
-     * Host name for connecting to the service component
-     */
-    host: string;
-    /**
-     * Kafka authentication method. This is a value specific to the 'kafka' service component
-     */
-    kafkaAuthenticationMethod: string;
-    /**
-     * Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
-     */
-    kafkaSslCa: string;
-    /**
-     * Port number for connecting to the service component
-     */
-    port: number;
-    /**
-     * Privatelink connection ID
-     */
-    privatelinkConnectionId: string;
-    /**
-     * Network access route
-     */
-    route: string;
-    /**
-     * Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
-     */
-    ssl: boolean;
-    /**
-     * DNS usage name
-     */
-    usage: string;
-}
-
-export interface GetM3DbM3db {
-    /**
-     * M3DB cluster URI.
-     */
-    httpClusterUri: string;
-    /**
-     * M3DB node URI.
-     */
-    httpNodeUri: string;
-    /**
-     * InfluxDB URI.
-     */
-    influxdbUri: string;
-    /**
-     * Prometheus remote read URI.
-     */
-    prometheusRemoteReadUri: string;
-    /**
-     * Prometheus remote write URI.
-     */
-    prometheusRemoteWriteUri: string;
-    /**
-     * M3DB server URIs.
-     */
-    uris: string[];
-}
-
-export interface GetM3DbM3dbUserConfig {
-    /**
-     * Additional Cloud Regions for Backup Replication.
-     */
-    additionalBackupRegions?: string;
-    /**
-     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
-     */
-    customDomain?: string;
-    /**
-     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
-     */
-    ipFilterObjects?: outputs.GetM3DbM3dbUserConfigIpFilterObject[];
-    /**
-     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-     */
-    ipFilterStrings?: string[];
-    /**
-     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-     *
-     * @deprecated Deprecated. Use `ipFilterString` instead.
-     */
-    ipFilters?: string[];
-    /**
-     * M3 limits
-     */
-    limits?: outputs.GetM3DbM3dbUserConfigLimits;
-    /**
-     * M3 specific configuration options
-     */
-    m3?: outputs.GetM3DbM3dbUserConfigM3;
-    /**
-     * Enum: `1.1`, `1.2`, `1.5`, and newer. M3 major version (deprecated, use m3db_version).
-     */
-    m3Version?: string;
-    /**
-     * Enables access to Graphite Carbon plaintext metrics ingestion. It can be enabled only for services inside VPCs. The metrics are written to aggregated namespaces only.
-     */
-    m3coordinatorEnableGraphiteCarbonIngest?: boolean;
-    /**
-     * Enum: `1.1`, `1.2`, `1.5`, and newer. M3 major version (the minimum compatible version).
-     */
-    m3dbVersion?: string;
-    /**
-     * List of M3 namespaces
-     */
-    namespaces?: outputs.GetM3DbM3dbUserConfigNamespace[];
-    /**
-     * Allow access to selected service ports from private networks
-     */
-    privateAccess?: outputs.GetM3DbM3dbUserConfigPrivateAccess;
-    /**
-     * Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
-     */
-    projectToForkFrom?: string;
-    /**
-     * Allow access to selected service ports from the public Internet
-     */
-    publicAccess?: outputs.GetM3DbM3dbUserConfigPublicAccess;
-    /**
-     * M3 rules
-     */
-    rules?: outputs.GetM3DbM3dbUserConfigRules;
-    /**
-     * Store logs for the service so that they are available in the HTTP API and console.
-     */
-    serviceLog?: boolean;
-    /**
-     * Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
-     */
-    serviceToForkFrom?: string;
-    /**
-     * Use static public IP addresses.
-     */
-    staticIps?: boolean;
-}
-
-export interface GetM3DbM3dbUserConfigIpFilterObject {
-    /**
-     * Description for IP filter list entry. Example: `Production service IP range`.
-     */
-    description?: string;
-    /**
-     * CIDR address block. Example: `10.20.0.0/16`.
-     */
-    network: string;
-}
-
-export interface GetM3DbM3dbUserConfigLimits {
-    /**
-     * The maximum number of blocks that can be read in a given lookback period. Example: `20000`.
-     */
-    maxRecentlyQueriedSeriesBlocks?: number;
-    /**
-     * The maximum number of disk bytes that can be read in a given lookback period. Example: `104857600`.
-     */
-    maxRecentlyQueriedSeriesDiskBytesRead?: number;
-    /**
-     * The lookback period for `maxRecentlyQueriedSeriesBlocks` and `maxRecentlyQueriedSeriesDiskBytesRead`. Example: `15s`.
-     */
-    maxRecentlyQueriedSeriesLookback?: string;
-    /**
-     * The maximum number of docs fetched in single query. Example: `100000`.
-     */
-    queryDocs?: number;
-    /**
-     * When query limits are exceeded, whether to return error or return partial results.
-     */
-    queryRequireExhaustive?: boolean;
-    /**
-     * The maximum number of series fetched in single query. Example: `100000`.
-     */
-    querySeries?: number;
-}
-
-export interface GetM3DbM3dbUserConfigM3 {
-    /**
-     * M3 Tag Options
-     */
-    tagOptions?: outputs.GetM3DbM3dbUserConfigM3TagOptions;
-}
-
-export interface GetM3DbM3dbUserConfigM3TagOptions {
-    /**
-     * Allows for duplicate tags to appear on series (not allowed by default).
-     */
-    allowTagNameDuplicates?: boolean;
-    /**
-     * Allows for empty tags to appear on series (not allowed by default).
-     */
-    allowTagValueEmpty?: boolean;
-}
-
-export interface GetM3DbM3dbUserConfigNamespace {
-    /**
-     * The name of the namespace. Example: `default`.
-     */
-    name: string;
-    /**
-     * Namespace options
-     */
-    options?: outputs.GetM3DbM3dbUserConfigNamespaceOptions;
-    /**
-     * The resolution for an aggregated namespace. Example: `30s`.
-     */
-    resolution?: string;
-    /**
-     * Enum: `aggregated`, `unaggregated`. The type of aggregation (aggregated/unaggregated).
-     */
-    type: string;
-}
-
-export interface GetM3DbM3dbUserConfigNamespaceOptions {
-    /**
-     * Retention options
-     */
-    retentionOptions: outputs.GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptions;
-    /**
-     * Controls whether M3DB will create snapshot files for this namespace.
-     */
-    snapshotEnabled?: boolean;
-    /**
-     * Controls whether M3DB will include writes to this namespace in the commitlog.
-     */
-    writesToCommitlog?: boolean;
-}
-
-export interface GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptions {
-    /**
-     * Controls how long we wait before expiring stale data. Example: `5m`.
-     */
-    blockDataExpiryDuration?: string;
-    /**
-     * Controls how long to keep a block in memory before flushing to a fileset on disk. Example: `2h`.
-     */
-    blocksizeDuration?: string;
-    /**
-     * Controls how far into the future writes to the namespace will be accepted. Example: `10m`.
-     */
-    bufferFutureDuration?: string;
-    /**
-     * Controls how far into the past writes to the namespace will be accepted. Example: `10m`.
-     */
-    bufferPastDuration?: string;
-    /**
-     * Controls the duration of time that M3DB will retain data for the namespace. Example: `48h`.
-     */
-    retentionPeriodDuration?: string;
-}
-
-export interface GetM3DbM3dbUserConfigPrivateAccess {
-    /**
-     * Allow clients to connect to m3coordinator with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-     */
-    m3coordinator?: boolean;
-}
-
-export interface GetM3DbM3dbUserConfigPublicAccess {
-    /**
-     * Allow clients to connect to m3coordinator from the public internet for service nodes that are in a project VPC or another type of private network.
-     */
-    m3coordinator?: boolean;
-}
-
-export interface GetM3DbM3dbUserConfigRules {
-    /**
-     * List of M3 mapping rules
-     */
-    mappings?: outputs.GetM3DbM3dbUserConfigRulesMapping[];
-}
-
-export interface GetM3DbM3dbUserConfigRulesMapping {
-    /**
-     * List of aggregations to be applied.
-     */
-    aggregations?: string[];
-    /**
-     * Only store the derived metric (as specified in the roll-up rules), if any.
-     */
-    drop?: boolean;
-    /**
-     * Matching metric names with wildcards (using __name__:wildcard) or matching tags and their (optionally wildcarded) values. For value, ! can be used at start of value for negation, and multiple filters can be supplied using space as separator. Example: `__name__:disk_* host:important-42 mount:!*&#47;sda`.
-     */
-    filter: string;
-    /**
-     * The (optional) name of the rule. Example: `important disk metrics`.
-     */
-    name?: string;
-    /**
-     * This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by glob (=wildcards).
-     *
-     * @deprecated Deprecated. Use `namespacesString` instead.
-     */
-    namespaces?: string[];
-    /**
-     * This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by exact match of retention period and resolution
-     */
-    namespacesObjects?: outputs.GetM3DbM3dbUserConfigRulesMappingNamespacesObject[];
-    /**
-     * This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by glob (=wildcards).
-     */
-    namespacesStrings?: string[];
-    /**
-     * List of tags to be appended to matching metrics
-     */
-    tags?: outputs.GetM3DbM3dbUserConfigRulesMappingTag[];
-}
-
-export interface GetM3DbM3dbUserConfigRulesMappingNamespacesObject {
-    /**
-     * The resolution for the matching namespace. Example: `30s`.
-     */
-    resolution: string;
-    /**
-     * The retention period of the matching namespace. Example: `48h`.
-     */
-    retention?: string;
-}
-
-export interface GetM3DbM3dbUserConfigRulesMappingTag {
-    /**
-     * Name of the tag. Example: `myTag`.
-     */
-    name: string;
-    /**
-     * Value of the tag. Example: `myValue`.
-     */
-    value: string;
-}
-
-export interface GetM3DbServiceIntegration {
-    /**
-     * Type of the service integration
-     */
-    integrationType: string;
-    /**
-     * Name of the source service
-     */
-    sourceServiceName: string;
-}
-
-export interface GetM3DbTag {
-    /**
-     * Service tag key
-     */
-    key: string;
-    /**
-     * Service tag value
-     */
-    value: string;
-}
-
-export interface GetM3DbTechEmail {
-    /**
-     * An email address to contact for technical issues
-     */
-    email: string;
 }
 
 export interface GetMySqlComponent {
@@ -8144,6 +6161,20 @@ export interface GetOpenSearchTechEmail {
     email: string;
 }
 
+export interface GetOpensearchSecurityPluginConfigTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: string;
+}
+
+export interface GetOpensearchUserTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: string;
+}
+
 export interface GetOrganizationAddressTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
@@ -8655,7 +6686,7 @@ export interface GetPgPgUserConfig {
      */
     backupHour?: number;
     /**
-     * Interval in hours between automatic backups. Minimum value is 3 hours. Must be a divisor of 24 (3, 4, 6, 8, 12, 24). (Applicable to ACU plans only). Example: `24`.
+     * Enum: `12`, `24`, `3`, `4`, `6`, `8`. Interval in hours between automatic backups. Minimum value is 3 hours. Must be a divisor of 24 (3, 4, 6, 8, 12, 24). (Applicable to ACU plans only).
      */
     backupIntervalHours?: number;
     /**
@@ -8772,7 +6803,7 @@ export interface GetPgPgUserConfig {
     staticIps?: boolean;
     switchoverWindows?: outputs.GetPgPgUserConfigSwitchoverWindow[];
     /**
-     * Enum: `off`, `quorum`. Synchronous replication type. Note that the service plan also needs to support synchronous replication.
+     * Enum: `off`, `quorum`. Use synchronousCommit instead. Any change to this setting will automatically update synchronous_commit. Setting the value to quorum changes synchronousCommit to remote_write, while setting it to off changes synchronousCommit to off.
      */
     synchronousReplication?: string;
     /**
@@ -9036,6 +7067,10 @@ export interface GetPgPgUserConfigPg {
      * Enum: `all`, `none`, `top`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default is `top`.
      */
     pgStatStatementsDotTrack?: string;
+    /**
+     * Enum: `local`, `off`, `on`, `remoteApply`, `remoteWrite`. Sets the current transaction's synchronization level. The default is `off`. This setting takes precedence over `synchronousReplication`.
+     */
+    synchronousCommit?: string;
     /**
      * PostgreSQL temporary file limit in KiB, -1 for unlimited.
      */
@@ -9656,9 +7691,13 @@ export interface GetServiceIntegrationClickhouseKafkaUserConfigTable {
      */
     groupName: string;
     /**
-     * Enum: `default`, `stream`. Defines how ClickHouse should handle errors when processing Kafka messages. `default` stops on errors, `stream` continues processing and logs errors. Default: `default`.
+     * Enum: `deadLetterQueue`, `default`, `stream`. Defines how ClickHouse should handle errors when processing Kafka messages. `default` stops on errors, `stream` continues processing and logs errors, `deadLetterQueue` saves error data to system.dead_letter_queue (requires ClickHouse 25.8+). Default: `default`.
      */
     handleErrorMode?: string;
+    /**
+     * Optional materialized view that persists data from the Kafka engine table into a MergeTree-family table. When specified, a ClickHouse materialized view is created that automatically reads from the Kafka table and inserts into a durable target table
+     */
+    materializedView?: outputs.GetServiceIntegrationClickhouseKafkaUserConfigTableMaterializedView;
     /**
      * Maximum number of rows to collect before flushing data between Kafka and ClickHouse. Default: `0`.
      */
@@ -9738,6 +7777,41 @@ export interface GetServiceIntegrationClickhouseKafkaUserConfigTableColumn {
      * The ClickHouse data type for this column. Must be a valid ClickHouse data type that can handle the data format. Example: `UInt64`.
      */
     type: string;
+}
+
+export interface GetServiceIntegrationClickhouseKafkaUserConfigTableMaterializedView {
+    /**
+     * The database to create the materialized view in. Must not be the Kafka integration database as it is not replicated and may be dropped. Default: `default`.
+     */
+    databaseName?: string;
+    /**
+     * Enum: `AggregatingMergeTree`, `CollapsingMergeTree`, `MergeTree`, `ReplacingMergeTree`, `SummingMergeTree`, `VersionedCollapsingMergeTree`. The MergeTree-family engine for the materialized view's target table. Default: `MergeTree`.
+     */
+    engine?: string;
+    /**
+     * Column names passed as engine arguments, e.g. the sign column for CollapsingMergeTree or the sign and version columns for VersionedCollapsingMergeTree.
+     */
+    engineParams?: string[];
+    /**
+     * Number of days after which data is moved from local disk to remote storage (tiered storage). Must be specified together with ttl_column. Example: `7`.
+     */
+    localDiskTtlDays?: number;
+    /**
+     * Columns for the ORDER BY clause of the target table. Determines the sort order and primary index.
+     */
+    orderBies: string[];
+    /**
+     * Date or DateTime column used for both row deletion TTL and local disk tiered storage TTL. Must be specified when ttlDays or localDiskTtlDays is set. Example: `createdAt`.
+     */
+    ttlColumn?: string;
+    /**
+     * Number of days after which rows are deleted, calculated from the TTL column value. Must be specified together with ttl_column. Example: `30`.
+     */
+    ttlDays?: number;
+    /**
+     * The name of the materialized view to create. Example: `eventsMv`.
+     */
+    viewName: string;
 }
 
 export interface GetServiceIntegrationClickhouseKafkaUserConfigTableTopic {
@@ -10132,6 +8206,57 @@ export interface GetServiceIntegrationEndpointExternalMysqlUserConfig {
      * User name. Example: `myname`.
      */
     username: string;
+}
+
+export interface GetServiceIntegrationEndpointExternalObjectStorageConfigUserConfig {
+    /**
+     * Azure account secret key (Azure only). Example: `YWNjb3VudCBrZXkgZXhhbXBsZQ==`.
+     */
+    accountKey?: string;
+    /**
+     * Azure account name (Azure only). Example: `myazureaccount`.
+     */
+    accountName?: string;
+    /**
+     * AWS access key ID (S3 only). Example: `AKIAIOSFODNN7EXAMPLE`.
+     */
+    awsAccessKeyId?: string;
+    /**
+     * AWS secret access key (S3 only). Example: `wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY`.
+     */
+    awsSecretAccessKey?: string;
+    /**
+     * Bucket name. Example: `my-thanos-bucket`.
+     */
+    bucketName?: string;
+    /**
+     * Google service account credentials JSON (Google Cloud Storage only). Example: `{"type": "serviceAccount", ...`.
+     */
+    credentials?: string;
+    /**
+     * S3-compatible endpoint host (S3 only). Example: `s3.eu-west-1.amazonaws.com`.
+     */
+    host?: string;
+    /**
+     * S3-compatible endpoint port (S3 only). Example: `443`.
+     */
+    port?: number;
+    /**
+     * Object storage prefix / path. Example: `thanos-data/`.
+     */
+    prefix?: string;
+    /**
+     * GCP project ID (Google Cloud Storage only). Example: `my-gcp-project`.
+     */
+    projectId?: string;
+    /**
+     * AWS S3 region (S3 only). Example: `eu-west-1`.
+     */
+    region?: string;
+    /**
+     * Enum: `azure`, `google`, `s3`. Object storage type.
+     */
+    storageType: string;
 }
 
 export interface GetServiceIntegrationEndpointExternalOpensearchLogsUserConfig {
@@ -10662,6 +8787,10 @@ export interface GetServiceListService {
      */
     diskSpaceMb: number;
     /**
+     * True when the service uses a cluster plan with dedicated node groups.
+     */
+    isClusterPlan: boolean;
+    /**
      * Number of service nodes in the active plan.
      */
     nodeCount: number;
@@ -10751,6 +8880,10 @@ export interface GetServicePlanBackupConfig {
 
 export interface GetServicePlanListServicePlan {
     /**
+     * True when the plan is a cluster plan with dedicated node groups.
+     */
+    isClusterPlan: boolean;
+    /**
      * Maximum amount of system memory as a percentage (0-100) the service can actually use after taking into account management overhead. This is relevant for memory bound services for which some service management operations require allocating proportional amount of memory on top the basic load.
      */
     maxMemoryPercent: number;
@@ -10758,6 +8891,10 @@ export interface GetServicePlanListServicePlan {
      * Number of nodes in this service plan.
      */
     nodeCount: number;
+    /**
+     * Number of primary nodes in this Valkey cluster service plan.
+     */
+    primaryCount: number;
     /**
      * Service plan hourly price per cloud region.
      */
@@ -12012,239 +10149,6 @@ export interface GrafanaTechEmail {
     email: string;
 }
 
-export interface InfluxDbComponent {
-    /**
-     * Service component name
-     */
-    component: string;
-    /**
-     * Connection info for connecting to the service component. This is a combination of host and port.
-     */
-    connectionUri: string;
-    /**
-     * Host name for connecting to the service component
-     */
-    host: string;
-    /**
-     * Kafka authentication method. This is a value specific to the 'kafka' service component
-     */
-    kafkaAuthenticationMethod: string;
-    /**
-     * Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
-     */
-    kafkaSslCa: string;
-    /**
-     * Port number for connecting to the service component
-     */
-    port: number;
-    /**
-     * Privatelink connection ID
-     */
-    privatelinkConnectionId: string;
-    /**
-     * Network access route
-     */
-    route: string;
-    /**
-     * Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
-     */
-    ssl: boolean;
-    /**
-     * DNS usage name
-     */
-    usage: string;
-}
-
-export interface InfluxDbInfluxdb {
-    /**
-     * Name of the default InfluxDB database
-     */
-    databaseName: string;
-    /**
-     * InfluxDB password
-     */
-    password: string;
-    /**
-     * InfluxDB server URIs.
-     */
-    uris: string[];
-    /**
-     * InfluxDB username
-     */
-    username: string;
-}
-
-export interface InfluxDbInfluxdbUserConfig {
-    /**
-     * Additional Cloud Regions for Backup Replication.
-     *
-     * @deprecated This property is deprecated.
-     */
-    additionalBackupRegions?: string;
-    /**
-     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. When you set a custom domain for a service deployed in a VPC, the service certificate is only created for the public-* hostname and the custom domain. Example: `grafana.example.org`.
-     */
-    customDomain?: string;
-    /**
-     * influxdb.conf configuration values
-     */
-    influxdb?: outputs.InfluxDbInfluxdbUserConfigInfluxdb;
-    /**
-     * Enum: `1.8`, and newer. InfluxDB major version. Default: `1.8`.
-     */
-    influxdbVersion?: string;
-    /**
-     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
-     */
-    ipFilterObjects?: outputs.InfluxDbInfluxdbUserConfigIpFilterObject[];
-    /**
-     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-     */
-    ipFilterStrings?: string[];
-    /**
-     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-     *
-     * @deprecated Deprecated. Use `ipFilterString` instead.
-     */
-    ipFilters?: string[];
-    /**
-     * Allow access to selected service ports from private networks
-     */
-    privateAccess?: outputs.InfluxDbInfluxdbUserConfigPrivateAccess;
-    /**
-     * Allow access to selected service components through Privatelink
-     */
-    privatelinkAccess?: outputs.InfluxDbInfluxdbUserConfigPrivatelinkAccess;
-    /**
-     * Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
-     */
-    projectToForkFrom?: string;
-    /**
-     * Allow access to selected service ports from the public Internet
-     */
-    publicAccess?: outputs.InfluxDbInfluxdbUserConfigPublicAccess;
-    /**
-     * Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
-     */
-    recoveryBasebackupName?: string;
-    /**
-     * Store logs for the service so that they are available in the HTTP API and console.
-     */
-    serviceLog?: boolean;
-    /**
-     * Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
-     */
-    serviceToForkFrom?: string;
-    /**
-     * Use static public IP addresses.
-     */
-    staticIps?: boolean;
-}
-
-export interface InfluxDbInfluxdbUserConfigInfluxdb {
-    /**
-     * The maximum duration in seconds before a query is logged as a slow query. Setting this to 0 (the default) will never log slow queries.
-     */
-    logQueriesAfter?: number;
-    /**
-     * Maximum number of connections to InfluxDB. Setting this to 0 (default) means no limit. If using max_connection_limit, it is recommended to set the value to be large enough in order to not block clients unnecessarily.
-     */
-    maxConnectionLimit?: number;
-    /**
-     * The maximum number of rows returned in a non-chunked query. Setting this to 0 (the default) allows an unlimited number to be returned.
-     */
-    maxRowLimit?: number;
-    /**
-     * The maximum number of `GROUP BY time()` buckets that can be processed in a query. Setting this to 0 (the default) allows an unlimited number to be processed.
-     */
-    maxSelectBuckets?: number;
-    /**
-     * The maximum number of points that can be processed in a SELECT statement. Setting this to 0 (the default) allows an unlimited number to be processed.
-     */
-    maxSelectPoint?: number;
-    /**
-     * Whether queries should be logged before execution. May log sensitive data contained within a query.
-     */
-    queryLogEnabled?: boolean;
-    /**
-     * The maximum duration in seconds before a query is killed. Setting this to 0 (the default) will never kill slow queries.
-     */
-    queryTimeout?: number;
-}
-
-export interface InfluxDbInfluxdbUserConfigIpFilterObject {
-    /**
-     * Description for IP filter list entry. Example: `Production service IP range`.
-     */
-    description?: string;
-    /**
-     * CIDR address block. Example: `10.20.0.0/16`.
-     */
-    network: string;
-}
-
-export interface InfluxDbInfluxdbUserConfigPrivateAccess {
-    /**
-     * Allow clients to connect to influxdb with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-     */
-    influxdb?: boolean;
-    /**
-     * Allow clients to connect to userBackup with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-     */
-    userBackup?: boolean;
-}
-
-export interface InfluxDbInfluxdbUserConfigPrivatelinkAccess {
-    /**
-     * Enable influxdb.
-     */
-    influxdb?: boolean;
-    /**
-     * Enable user_backup.
-     */
-    userBackup?: boolean;
-}
-
-export interface InfluxDbInfluxdbUserConfigPublicAccess {
-    /**
-     * Allow clients to connect to influxdb from the public internet for service nodes that are in a project VPC or another type of private network.
-     */
-    influxdb?: boolean;
-    /**
-     * Allow clients to connect to userBackup from the public internet for service nodes that are in a project VPC or another type of private network.
-     */
-    userBackup?: boolean;
-}
-
-export interface InfluxDbServiceIntegration {
-    /**
-     * Type of the service integration
-     */
-    integrationType: string;
-    /**
-     * Name of the source service
-     */
-    sourceServiceName: string;
-}
-
-export interface InfluxDbTag {
-    /**
-     * Service tag key
-     */
-    key: string;
-    /**
-     * Service tag value
-     */
-    value: string;
-}
-
-export interface InfluxDbTechEmail {
-    /**
-     * An email address to contact for technical issues
-     */
-    email: string;
-}
-
 export interface KafkaComponent {
     /**
      * Service component name
@@ -12667,7 +10571,7 @@ export interface KafkaKafkaUserConfig {
      */
     aivenKafkaTopicMessages?: boolean;
     /**
-     * Interval in hours between automatic backups. Minimum value is 3 hours. Must be a divisor of 24 (3, 4, 6, 8, 12, 24). (Applicable to ACU plans only). Example: `24`.
+     * Enum: `12`, `24`, `3`, `4`, `6`, `8`. Interval in hours between automatic backups. Minimum value is 3 hours. Must be a divisor of 24 (3, 4, 6, 8, 12, 24). (Applicable to ACU plans only).
      */
     backupIntervalHours?: number;
     /**
@@ -13711,506 +11615,6 @@ export interface KafkaTopicTag {
      * Tag value. Maximum length: `256`.
      */
     value?: string;
-}
-
-export interface M3AggregatorComponent {
-    /**
-     * Service component name
-     */
-    component: string;
-    /**
-     * Connection info for connecting to the service component. This is a combination of host and port.
-     */
-    connectionUri: string;
-    /**
-     * Host name for connecting to the service component
-     */
-    host: string;
-    /**
-     * Kafka authentication method. This is a value specific to the 'kafka' service component
-     */
-    kafkaAuthenticationMethod: string;
-    /**
-     * Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
-     */
-    kafkaSslCa: string;
-    /**
-     * Port number for connecting to the service component
-     */
-    port: number;
-    /**
-     * Privatelink connection ID
-     */
-    privatelinkConnectionId: string;
-    /**
-     * Network access route
-     */
-    route: string;
-    /**
-     * Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
-     */
-    ssl: boolean;
-    /**
-     * DNS usage name
-     */
-    usage: string;
-}
-
-export interface M3AggregatorM3aggregator {
-    /**
-     * M3 Aggregator HTTP URI.
-     */
-    aggregatorHttpUri: string;
-    /**
-     * M3 Aggregator server URIs.
-     */
-    uris: string[];
-}
-
-export interface M3AggregatorM3aggregatorUserConfig {
-    /**
-     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
-     */
-    customDomain?: string;
-    /**
-     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
-     */
-    ipFilterObjects?: outputs.M3AggregatorM3aggregatorUserConfigIpFilterObject[];
-    /**
-     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-     */
-    ipFilterStrings?: string[];
-    /**
-     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-     *
-     * @deprecated Deprecated. Use `ipFilterString` instead.
-     */
-    ipFilters?: string[];
-    /**
-     * Enum: `1.1`, `1.2`, `1.5`, and newer. M3 major version (deprecated, use m3aggregator_version).
-     */
-    m3Version?: string;
-    /**
-     * Enum: `1.1`, `1.2`, `1.5`, and newer. M3 major version (the minimum compatible version).
-     */
-    m3aggregatorVersion?: string;
-    /**
-     * Store logs for the service so that they are available in the HTTP API and console.
-     */
-    serviceLog?: boolean;
-    /**
-     * Use static public IP addresses.
-     */
-    staticIps?: boolean;
-}
-
-export interface M3AggregatorM3aggregatorUserConfigIpFilterObject {
-    /**
-     * Description for IP filter list entry. Example: `Production service IP range`.
-     */
-    description?: string;
-    /**
-     * CIDR address block. Example: `10.20.0.0/16`.
-     */
-    network: string;
-}
-
-export interface M3AggregatorServiceIntegration {
-    /**
-     * Type of the service integration
-     */
-    integrationType: string;
-    /**
-     * Name of the source service
-     */
-    sourceServiceName: string;
-}
-
-export interface M3AggregatorTag {
-    /**
-     * Service tag key
-     */
-    key: string;
-    /**
-     * Service tag value
-     */
-    value: string;
-}
-
-export interface M3AggregatorTechEmail {
-    /**
-     * An email address to contact for technical issues
-     */
-    email: string;
-}
-
-export interface M3DbComponent {
-    /**
-     * Service component name
-     */
-    component: string;
-    /**
-     * Connection info for connecting to the service component. This is a combination of host and port.
-     */
-    connectionUri: string;
-    /**
-     * Host name for connecting to the service component
-     */
-    host: string;
-    /**
-     * Kafka authentication method. This is a value specific to the 'kafka' service component
-     */
-    kafkaAuthenticationMethod: string;
-    /**
-     * Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
-     */
-    kafkaSslCa: string;
-    /**
-     * Port number for connecting to the service component
-     */
-    port: number;
-    /**
-     * Privatelink connection ID
-     */
-    privatelinkConnectionId: string;
-    /**
-     * Network access route
-     */
-    route: string;
-    /**
-     * Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
-     */
-    ssl: boolean;
-    /**
-     * DNS usage name
-     */
-    usage: string;
-}
-
-export interface M3DbM3db {
-    /**
-     * M3DB cluster URI.
-     */
-    httpClusterUri: string;
-    /**
-     * M3DB node URI.
-     */
-    httpNodeUri: string;
-    /**
-     * InfluxDB URI.
-     */
-    influxdbUri: string;
-    /**
-     * Prometheus remote read URI.
-     */
-    prometheusRemoteReadUri: string;
-    /**
-     * Prometheus remote write URI.
-     */
-    prometheusRemoteWriteUri: string;
-    /**
-     * M3DB server URIs.
-     */
-    uris: string[];
-}
-
-export interface M3DbM3dbUserConfig {
-    /**
-     * Additional Cloud Regions for Backup Replication.
-     */
-    additionalBackupRegions?: string;
-    /**
-     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
-     */
-    customDomain?: string;
-    /**
-     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
-     */
-    ipFilterObjects?: outputs.M3DbM3dbUserConfigIpFilterObject[];
-    /**
-     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-     */
-    ipFilterStrings?: string[];
-    /**
-     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-     *
-     * @deprecated Deprecated. Use `ipFilterString` instead.
-     */
-    ipFilters?: string[];
-    /**
-     * M3 limits
-     */
-    limits?: outputs.M3DbM3dbUserConfigLimits;
-    /**
-     * M3 specific configuration options
-     */
-    m3?: outputs.M3DbM3dbUserConfigM3;
-    /**
-     * Enum: `1.1`, `1.2`, `1.5`, and newer. M3 major version (deprecated, use m3db_version).
-     */
-    m3Version?: string;
-    /**
-     * Enables access to Graphite Carbon plaintext metrics ingestion. It can be enabled only for services inside VPCs. The metrics are written to aggregated namespaces only.
-     */
-    m3coordinatorEnableGraphiteCarbonIngest?: boolean;
-    /**
-     * Enum: `1.1`, `1.2`, `1.5`, and newer. M3 major version (the minimum compatible version).
-     */
-    m3dbVersion?: string;
-    /**
-     * List of M3 namespaces
-     */
-    namespaces?: outputs.M3DbM3dbUserConfigNamespace[];
-    /**
-     * Allow access to selected service ports from private networks
-     */
-    privateAccess?: outputs.M3DbM3dbUserConfigPrivateAccess;
-    /**
-     * Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
-     */
-    projectToForkFrom?: string;
-    /**
-     * Allow access to selected service ports from the public Internet
-     */
-    publicAccess?: outputs.M3DbM3dbUserConfigPublicAccess;
-    /**
-     * M3 rules
-     */
-    rules?: outputs.M3DbM3dbUserConfigRules;
-    /**
-     * Store logs for the service so that they are available in the HTTP API and console.
-     */
-    serviceLog?: boolean;
-    /**
-     * Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
-     */
-    serviceToForkFrom?: string;
-    /**
-     * Use static public IP addresses.
-     */
-    staticIps?: boolean;
-}
-
-export interface M3DbM3dbUserConfigIpFilterObject {
-    /**
-     * Description for IP filter list entry. Example: `Production service IP range`.
-     */
-    description?: string;
-    /**
-     * CIDR address block. Example: `10.20.0.0/16`.
-     */
-    network: string;
-}
-
-export interface M3DbM3dbUserConfigLimits {
-    /**
-     * The maximum number of blocks that can be read in a given lookback period. Example: `20000`.
-     */
-    maxRecentlyQueriedSeriesBlocks?: number;
-    /**
-     * The maximum number of disk bytes that can be read in a given lookback period. Example: `104857600`.
-     */
-    maxRecentlyQueriedSeriesDiskBytesRead?: number;
-    /**
-     * The lookback period for `maxRecentlyQueriedSeriesBlocks` and `maxRecentlyQueriedSeriesDiskBytesRead`. Example: `15s`.
-     */
-    maxRecentlyQueriedSeriesLookback?: string;
-    /**
-     * The maximum number of docs fetched in single query. Example: `100000`.
-     */
-    queryDocs?: number;
-    /**
-     * When query limits are exceeded, whether to return error or return partial results.
-     */
-    queryRequireExhaustive?: boolean;
-    /**
-     * The maximum number of series fetched in single query. Example: `100000`.
-     */
-    querySeries?: number;
-}
-
-export interface M3DbM3dbUserConfigM3 {
-    /**
-     * M3 Tag Options
-     */
-    tagOptions?: outputs.M3DbM3dbUserConfigM3TagOptions;
-}
-
-export interface M3DbM3dbUserConfigM3TagOptions {
-    /**
-     * Allows for duplicate tags to appear on series (not allowed by default).
-     */
-    allowTagNameDuplicates?: boolean;
-    /**
-     * Allows for empty tags to appear on series (not allowed by default).
-     */
-    allowTagValueEmpty?: boolean;
-}
-
-export interface M3DbM3dbUserConfigNamespace {
-    /**
-     * The name of the namespace. Example: `default`.
-     */
-    name: string;
-    /**
-     * Namespace options
-     */
-    options?: outputs.M3DbM3dbUserConfigNamespaceOptions;
-    /**
-     * The resolution for an aggregated namespace. Example: `30s`.
-     */
-    resolution?: string;
-    /**
-     * Enum: `aggregated`, `unaggregated`. The type of aggregation (aggregated/unaggregated).
-     */
-    type: string;
-}
-
-export interface M3DbM3dbUserConfigNamespaceOptions {
-    /**
-     * Retention options
-     */
-    retentionOptions: outputs.M3DbM3dbUserConfigNamespaceOptionsRetentionOptions;
-    /**
-     * Controls whether M3DB will create snapshot files for this namespace.
-     */
-    snapshotEnabled?: boolean;
-    /**
-     * Controls whether M3DB will include writes to this namespace in the commitlog.
-     */
-    writesToCommitlog?: boolean;
-}
-
-export interface M3DbM3dbUserConfigNamespaceOptionsRetentionOptions {
-    /**
-     * Controls how long we wait before expiring stale data. Example: `5m`.
-     */
-    blockDataExpiryDuration?: string;
-    /**
-     * Controls how long to keep a block in memory before flushing to a fileset on disk. Example: `2h`.
-     */
-    blocksizeDuration?: string;
-    /**
-     * Controls how far into the future writes to the namespace will be accepted. Example: `10m`.
-     */
-    bufferFutureDuration?: string;
-    /**
-     * Controls how far into the past writes to the namespace will be accepted. Example: `10m`.
-     */
-    bufferPastDuration?: string;
-    /**
-     * Controls the duration of time that M3DB will retain data for the namespace. Example: `48h`.
-     */
-    retentionPeriodDuration?: string;
-}
-
-export interface M3DbM3dbUserConfigPrivateAccess {
-    /**
-     * Allow clients to connect to m3coordinator with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-     */
-    m3coordinator?: boolean;
-}
-
-export interface M3DbM3dbUserConfigPublicAccess {
-    /**
-     * Allow clients to connect to m3coordinator from the public internet for service nodes that are in a project VPC or another type of private network.
-     */
-    m3coordinator?: boolean;
-}
-
-export interface M3DbM3dbUserConfigRules {
-    /**
-     * List of M3 mapping rules
-     */
-    mappings?: outputs.M3DbM3dbUserConfigRulesMapping[];
-}
-
-export interface M3DbM3dbUserConfigRulesMapping {
-    /**
-     * List of aggregations to be applied.
-     */
-    aggregations?: string[];
-    /**
-     * Only store the derived metric (as specified in the roll-up rules), if any.
-     */
-    drop?: boolean;
-    /**
-     * Matching metric names with wildcards (using __name__:wildcard) or matching tags and their (optionally wildcarded) values. For value, ! can be used at start of value for negation, and multiple filters can be supplied using space as separator. Example: `__name__:disk_* host:important-42 mount:!*&#47;sda`.
-     */
-    filter: string;
-    /**
-     * The (optional) name of the rule. Example: `important disk metrics`.
-     */
-    name?: string;
-    /**
-     * This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by glob (=wildcards).
-     *
-     * @deprecated Deprecated. Use `namespacesString` instead.
-     */
-    namespaces?: string[];
-    /**
-     * This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by exact match of retention period and resolution
-     */
-    namespacesObjects?: outputs.M3DbM3dbUserConfigRulesMappingNamespacesObject[];
-    /**
-     * This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by glob (=wildcards).
-     */
-    namespacesStrings?: string[];
-    /**
-     * List of tags to be appended to matching metrics
-     */
-    tags?: outputs.M3DbM3dbUserConfigRulesMappingTag[];
-}
-
-export interface M3DbM3dbUserConfigRulesMappingNamespacesObject {
-    /**
-     * The resolution for the matching namespace. Example: `30s`.
-     */
-    resolution: string;
-    /**
-     * The retention period of the matching namespace. Example: `48h`.
-     */
-    retention?: string;
-}
-
-export interface M3DbM3dbUserConfigRulesMappingTag {
-    /**
-     * Name of the tag. Example: `myTag`.
-     */
-    name: string;
-    /**
-     * Value of the tag. Example: `myValue`.
-     */
-    value: string;
-}
-
-export interface M3DbServiceIntegration {
-    /**
-     * Type of the service integration
-     */
-    integrationType: string;
-    /**
-     * Name of the source service
-     */
-    sourceServiceName: string;
-}
-
-export interface M3DbTag {
-    /**
-     * Service tag key
-     */
-    key: string;
-    /**
-     * Service tag value
-     */
-    value: string;
-}
-
-export interface M3DbTechEmail {
-    /**
-     * An email address to contact for technical issues
-     */
-    email: string;
 }
 
 export interface MySqlComponent {
@@ -15979,6 +13383,56 @@ export interface OpenSearchTechEmail {
     email: string;
 }
 
+export interface OpensearchSecurityPluginConfigTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: string;
+    /**
+     * Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+     *
+     * @deprecated Use operation-specific timeouts instead. This field will be removed in the next major version.
+     */
+    default?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: string;
+}
+
+export interface OpensearchUserTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: string;
+    /**
+     * Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+     *
+     * @deprecated Use operation-specific timeouts instead. This field will be removed in the next major version.
+     */
+    default?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: string;
+}
+
 export interface OrganizationAddressTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
@@ -16105,7 +13559,7 @@ export interface OrganizationPermissionPermission {
      */
     createTime: string;
     /**
-     * List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant". The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `readOnly`, `role:organization:admin`, `role:project:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:secrets:read` and `service:users:write`.
+     * List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant". The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `readOnly`, `role:organization:admin`, `role:project:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:metrics:read`, `service:secrets:read` and `service:users:write`.
      */
     permissions: string[];
     /**
@@ -16408,7 +13862,7 @@ export interface PgPgUserConfig {
      */
     backupHour?: number;
     /**
-     * Interval in hours between automatic backups. Minimum value is 3 hours. Must be a divisor of 24 (3, 4, 6, 8, 12, 24). (Applicable to ACU plans only). Example: `24`.
+     * Enum: `12`, `24`, `3`, `4`, `6`, `8`. Interval in hours between automatic backups. Minimum value is 3 hours. Must be a divisor of 24 (3, 4, 6, 8, 12, 24). (Applicable to ACU plans only).
      */
     backupIntervalHours?: number;
     /**
@@ -16525,7 +13979,7 @@ export interface PgPgUserConfig {
     staticIps?: boolean;
     switchoverWindows?: outputs.PgPgUserConfigSwitchoverWindow[];
     /**
-     * Enum: `off`, `quorum`. Synchronous replication type. Note that the service plan also needs to support synchronous replication.
+     * Enum: `off`, `quorum`. Use synchronous*commit instead. Any change to this setting will automatically update synchronous*commit. Setting the value to quorum changes synchronous*commit to remote*write, while setting it to off changes synchronousCommit to off.
      */
     synchronousReplication?: string;
     /**
@@ -16789,6 +14243,10 @@ export interface PgPgUserConfigPg {
      * Enum: `all`, `none`, `top`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default is `top`.
      */
     pgStatStatementsDotTrack?: string;
+    /**
+     * Enum: `local`, `off`, `on`, `remoteApply`, `remoteWrite`. Sets the current transaction's synchronization level. The default is `off`. This setting takes precedence over `synchronousReplication`.
+     */
+    synchronousCommit?: string;
     /**
      * PostgreSQL temporary file limit in KiB, -1 for unlimited.
      */
@@ -17427,9 +14885,13 @@ export interface ServiceIntegrationClickhouseKafkaUserConfigTable {
      */
     groupName: string;
     /**
-     * Enum: `default`, `stream`. Defines how ClickHouse should handle errors when processing Kafka messages. `default` stops on errors, `stream` continues processing and logs errors. Default: `default`.
+     * Enum: `deadLetterQueue`, `default`, `stream`. Defines how ClickHouse should handle errors when processing Kafka messages. `default` stops on errors, `stream` continues processing and logs errors, `deadLetterQueue` saves error data to system.dead*letter*queue (requires ClickHouse 25.8+). Default: `default`.
      */
     handleErrorMode?: string;
+    /**
+     * Optional materialized view that persists data from the Kafka engine table into a MergeTree-family table. When specified, a ClickHouse materialized view is created that automatically reads from the Kafka table and inserts into a durable target table
+     */
+    materializedView?: outputs.ServiceIntegrationClickhouseKafkaUserConfigTableMaterializedView;
     /**
      * Maximum number of rows to collect before flushing data between Kafka and ClickHouse. Default: `0`.
      */
@@ -17509,6 +14971,41 @@ export interface ServiceIntegrationClickhouseKafkaUserConfigTableColumn {
      * The ClickHouse data type for this column. Must be a valid ClickHouse data type that can handle the data format. Example: `UInt64`.
      */
     type: string;
+}
+
+export interface ServiceIntegrationClickhouseKafkaUserConfigTableMaterializedView {
+    /**
+     * The database to create the materialized view in. Must not be the Kafka integration database as it is not replicated and may be dropped. Default: `default`.
+     */
+    databaseName?: string;
+    /**
+     * Enum: `AggregatingMergeTree`, `CollapsingMergeTree`, `MergeTree`, `ReplacingMergeTree`, `SummingMergeTree`, `VersionedCollapsingMergeTree`. The MergeTree-family engine for the materialized view's target table. Default: `MergeTree`.
+     */
+    engine?: string;
+    /**
+     * Column names passed as engine arguments, e.g. the sign column for CollapsingMergeTree or the sign and version columns for VersionedCollapsingMergeTree.
+     */
+    engineParams?: string[];
+    /**
+     * Number of days after which data is moved from local disk to remote storage (tiered storage). Must be specified together with ttl_column. Example: `7`.
+     */
+    localDiskTtlDays?: number;
+    /**
+     * Columns for the ORDER BY clause of the target table. Determines the sort order and primary index.
+     */
+    orderBies: string[];
+    /**
+     * Date or DateTime column used for both row deletion TTL and local disk tiered storage TTL. Must be specified when ttl*days or local*disk*ttl*days is set. Example: `createdAt`.
+     */
+    ttlColumn?: string;
+    /**
+     * Number of days after which rows are deleted, calculated from the TTL column value. Must be specified together with ttl_column. Example: `30`.
+     */
+    ttlDays?: number;
+    /**
+     * The name of the materialized view to create. Example: `eventsMv`.
+     */
+    viewName: string;
 }
 
 export interface ServiceIntegrationClickhouseKafkaUserConfigTableTopic {
@@ -17903,6 +15400,57 @@ export interface ServiceIntegrationEndpointExternalMysqlUserConfig {
      * User name. Example: `myname`.
      */
     username: string;
+}
+
+export interface ServiceIntegrationEndpointExternalObjectStorageConfigUserConfig {
+    /**
+     * Azure account secret key (Azure only). Example: `YWNjb3VudCBrZXkgZXhhbXBsZQ==`.
+     */
+    accountKey?: string;
+    /**
+     * Azure account name (Azure only). Example: `myazureaccount`.
+     */
+    accountName?: string;
+    /**
+     * AWS access key ID (S3 only). Example: `AKIAIOSFODNN7EXAMPLE`.
+     */
+    awsAccessKeyId?: string;
+    /**
+     * AWS secret access key (S3 only). Example: `wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY`.
+     */
+    awsSecretAccessKey?: string;
+    /**
+     * Bucket name. Example: `my-thanos-bucket`.
+     */
+    bucketName?: string;
+    /**
+     * Google service account credentials JSON (Google Cloud Storage only). Example: `{"type": "serviceAccount", ...`.
+     */
+    credentials?: string;
+    /**
+     * S3-compatible endpoint host (S3 only). Example: `s3.eu-west-1.amazonaws.com`.
+     */
+    host?: string;
+    /**
+     * S3-compatible endpoint port (S3 only). Example: `443`.
+     */
+    port?: number;
+    /**
+     * Object storage prefix / path. Example: `thanos-data/`.
+     */
+    prefix?: string;
+    /**
+     * GCP project ID (Google Cloud Storage only). Example: `my-gcp-project`.
+     */
+    projectId?: string;
+    /**
+     * AWS S3 region (S3 only). Example: `eu-west-1`.
+     */
+    region?: string;
+    /**
+     * Enum: `azure`, `google`, `s3`. Object storage type.
+     */
+    storageType: string;
 }
 
 export interface ServiceIntegrationEndpointExternalOpensearchLogsUserConfig {
@@ -18413,6 +15961,31 @@ export interface ServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf {
      * Only include perf*events*statements whose last seen is less than this many seconds. Example: `86400`.
      */
     perfEventsStatementsTimeLimit?: number;
+}
+
+export interface StaticIpTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: string;
+    /**
+     * Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+     *
+     * @deprecated Use operation-specific timeouts instead. This field will be removed in the next major version.
+     */
+    default?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: string;
 }
 
 export interface ThanosComponent {

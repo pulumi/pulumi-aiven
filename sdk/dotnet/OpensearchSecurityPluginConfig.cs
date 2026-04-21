@@ -10,12 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// Enables and manages [OpenSearch Security for an Aiven for OpenSearch® service](https://aiven.io/docs/products/opensearch/concepts/os-security).
-    /// 
-    /// After enabling OpenSearch Security management, **you can no longer use Aiven Terraform Provider to manage access controls for that service.** To manage user authentication and access control with OpenSearch Security management enabled,
-    /// use the OpenSearch Security Dashboard or OpenSearch Security API.
-    /// 
-    /// **Once enabled, OpenSearch Security management cannot be disabled.** To disable it, [contact Aiven support](https://aiven.io/support-services).
+    /// Enables and manages [OpenSearch Security for an Aiven for OpenSearch® service](https://aiven.io/docs/products/opensearch/concepts/os-security). After enabling OpenSearch Security management, **you can no longer use Aiven Terraform Provider to manage access controls for that service.** To manage user authentication and access control with OpenSearch Security management enabled, use the OpenSearch Security Dashboard or OpenSearch Security API. **Once enabled, OpenSearch Security management cannot be disabled.** To disable it, [contact Aiven support](https://aiven.io/support-services). If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
     /// 
     /// ## Example Usage
     /// 
@@ -40,47 +35,50 @@ namespace Pulumi.Aiven
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import aiven:index/opensearchSecurityPluginConfig:OpensearchSecurityPluginConfig main PROJECT/SERVICE_NAME
+    /// $ pulumi import aiven:index/opensearchSecurityPluginConfig:OpensearchSecurityPluginConfig example PROJECT/SERVICE_NAME
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/opensearchSecurityPluginConfig:OpensearchSecurityPluginConfig")]
     public partial class OpensearchSecurityPluginConfig : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Whether the os-sec-admin user is enabled. This indicates whether OpenSearch Security management is enabled. This is always true when the os-sec-admin password was set at least once.
+        /// security plugin admin defined.
         /// </summary>
         [Output("adminEnabled")]
         public Output<bool> AdminEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// The password for the os-sec-admin user.
+        /// Current os-sec-admin password. Length must be between `8` and `256`.
         /// </summary>
         [Output("adminPassword")]
         public Output<string> AdminPassword { get; private set; } = null!;
 
         /// <summary>
-        /// Whether the security plugin is available. This is always true for recently created services.
+        /// Opensearch security available for the service.
         /// </summary>
         [Output("available")]
         public Output<bool> Available { get; private set; } = null!;
 
         /// <summary>
-        /// Whether the security plugin is enabled. This is always true for recently created services.
+        /// Opensearch security enabled for the service.
         /// </summary>
         [Output("enabled")]
         public Output<bool> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service name. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
+
+        [Output("timeouts")]
+        public Output<Outputs.OpensearchSecurityPluginConfigTimeouts?> Timeouts { get; private set; } = null!;
 
 
         /// <summary>
@@ -136,7 +134,7 @@ namespace Pulumi.Aiven
         private Input<string>? _adminPassword;
 
         /// <summary>
-        /// The password for the os-sec-admin user.
+        /// Current os-sec-admin password. Length must be between `8` and `256`.
         /// </summary>
         public Input<string>? AdminPassword
         {
@@ -149,16 +147,19 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service name. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
+
+        [Input("timeouts")]
+        public Input<Inputs.OpensearchSecurityPluginConfigTimeoutsArgs>? Timeouts { get; set; }
 
         public OpensearchSecurityPluginConfigArgs()
         {
@@ -169,7 +170,7 @@ namespace Pulumi.Aiven
     public sealed class OpensearchSecurityPluginConfigState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether the os-sec-admin user is enabled. This indicates whether OpenSearch Security management is enabled. This is always true when the os-sec-admin password was set at least once.
+        /// security plugin admin defined.
         /// </summary>
         [Input("adminEnabled")]
         public Input<bool>? AdminEnabled { get; set; }
@@ -178,7 +179,7 @@ namespace Pulumi.Aiven
         private Input<string>? _adminPassword;
 
         /// <summary>
-        /// The password for the os-sec-admin user.
+        /// Current os-sec-admin password. Length must be between `8` and `256`.
         /// </summary>
         public Input<string>? AdminPassword
         {
@@ -191,28 +192,31 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// Whether the security plugin is available. This is always true for recently created services.
+        /// Opensearch security available for the service.
         /// </summary>
         [Input("available")]
         public Input<bool>? Available { get; set; }
 
         /// <summary>
-        /// Whether the security plugin is enabled. This is always true for recently created services.
+        /// Opensearch security enabled for the service.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service name. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
+
+        [Input("timeouts")]
+        public Input<Inputs.OpensearchSecurityPluginConfigTimeoutsGetArgs>? Timeouts { get; set; }
 
         public OpensearchSecurityPluginConfigState()
         {

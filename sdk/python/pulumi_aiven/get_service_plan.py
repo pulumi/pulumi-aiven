@@ -28,7 +28,7 @@ class GetServicePlanResult:
     """
     A collection of values returned by getServicePlan.
     """
-    def __init__(__self__, backup_configs=None, base_price_usd=None, cloud_name=None, disk_space_cap_mb=None, disk_space_mb=None, disk_space_step_mb=None, id=None, max_memory_percent=None, node_count=None, object_storage_gb_price_usd=None, project=None, service_plan=None, service_type=None, shard_count=None, timeouts=None):
+    def __init__(__self__, backup_configs=None, base_price_usd=None, cloud_name=None, disk_space_cap_mb=None, disk_space_mb=None, disk_space_step_mb=None, id=None, max_memory_percent=None, node_count=None, object_storage_gb_price_usd=None, primary_count=None, project=None, service_plan=None, service_type=None, shard_count=None, timeouts=None):
         if backup_configs and not isinstance(backup_configs, list):
             raise TypeError("Expected argument 'backup_configs' to be a list")
         pulumi.set(__self__, "backup_configs", backup_configs)
@@ -59,6 +59,9 @@ class GetServicePlanResult:
         if object_storage_gb_price_usd and not isinstance(object_storage_gb_price_usd, str):
             raise TypeError("Expected argument 'object_storage_gb_price_usd' to be a str")
         pulumi.set(__self__, "object_storage_gb_price_usd", object_storage_gb_price_usd)
+        if primary_count and not isinstance(primary_count, int):
+            raise TypeError("Expected argument 'primary_count' to be a int")
+        pulumi.set(__self__, "primary_count", primary_count)
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
@@ -156,6 +159,14 @@ class GetServicePlanResult:
         return pulumi.get(self, "object_storage_gb_price_usd")
 
     @_builtins.property
+    @pulumi.getter(name="primaryCount")
+    def primary_count(self) -> _builtins.int:
+        """
+        Number of primary nodes in this Valkey cluster service plan.
+        """
+        return pulumi.get(self, "primary_count")
+
+    @_builtins.property
     @pulumi.getter
     def project(self) -> _builtins.str:
         """
@@ -209,6 +220,7 @@ class AwaitableGetServicePlanResult(GetServicePlanResult):
             max_memory_percent=self.max_memory_percent,
             node_count=self.node_count,
             object_storage_gb_price_usd=self.object_storage_gb_price_usd,
+            primary_count=self.primary_count,
             project=self.project,
             service_plan=self.service_plan,
             service_type=self.service_type,
@@ -257,6 +269,7 @@ def get_service_plan(backup_configs: Optional[Sequence[Union['GetServicePlanBack
         max_memory_percent=pulumi.get(__ret__, 'max_memory_percent'),
         node_count=pulumi.get(__ret__, 'node_count'),
         object_storage_gb_price_usd=pulumi.get(__ret__, 'object_storage_gb_price_usd'),
+        primary_count=pulumi.get(__ret__, 'primary_count'),
         project=pulumi.get(__ret__, 'project'),
         service_plan=pulumi.get(__ret__, 'service_plan'),
         service_type=pulumi.get(__ret__, 'service_type'),
@@ -302,6 +315,7 @@ def get_service_plan_output(backup_configs: Optional[pulumi.Input[Optional[Seque
         max_memory_percent=pulumi.get(__response__, 'max_memory_percent'),
         node_count=pulumi.get(__response__, 'node_count'),
         object_storage_gb_price_usd=pulumi.get(__response__, 'object_storage_gb_price_usd'),
+        primary_count=pulumi.get(__response__, 'primary_count'),
         project=pulumi.get(__response__, 'project'),
         service_plan=pulumi.get(__response__, 'service_plan'),
         service_type=pulumi.get(__response__, 'service_type'),

@@ -51,7 +51,7 @@ class BillingGroupArgs:
         :param pulumi.Input[_builtins.str] card_id: Credit card ID. Maximum length: `64`.
         :param pulumi.Input[_builtins.str] city: Address city. Maximum length: `512`.
         :param pulumi.Input[_builtins.str] company: Name of a company. Maximum length: `128`.
-        :param pulumi.Input[_builtins.str] copy_from_billing_group: Billing group ID. Maximum length: `36`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] copy_from_billing_group: Billing group ID. Length must be exactly `36`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] country_code: Two letter country code for billing country. Maximum length: `2`.
         :param pulumi.Input[_builtins.str] name: Billing group name. Maximum length: `128`.
         :param pulumi.Input[_builtins.str] state: Address state or province. Maximum length: `128`.
@@ -220,7 +220,7 @@ class BillingGroupArgs:
     @pulumi.getter(name="copyFromBillingGroup")
     def copy_from_billing_group(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Billing group ID. Maximum length: `36`. Changing this property forces recreation of the resource.
+        Billing group ID. Length must be exactly `36`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "copy_from_billing_group")
 
@@ -332,7 +332,7 @@ class _BillingGroupState:
         :param pulumi.Input[_builtins.str] card_id: Credit card ID. Maximum length: `64`.
         :param pulumi.Input[_builtins.str] city: Address city. Maximum length: `512`.
         :param pulumi.Input[_builtins.str] company: Name of a company. Maximum length: `128`.
-        :param pulumi.Input[_builtins.str] copy_from_billing_group: Billing group ID. Maximum length: `36`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] copy_from_billing_group: Billing group ID. Length must be exactly `36`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] country_code: Two letter country code for billing country. Maximum length: `2`.
         :param pulumi.Input[_builtins.str] name: Billing group name. Maximum length: `128`.
         :param pulumi.Input[_builtins.str] parent_id: Link a billing group to an existing organization by using its ID.
@@ -505,7 +505,7 @@ class _BillingGroupState:
     @pulumi.getter(name="copyFromBillingGroup")
     def copy_from_billing_group(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Billing group ID. Maximum length: `36`. Changing this property forces recreation of the resource.
+        Billing group ID. Length must be exactly `36`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "copy_from_billing_group")
 
@@ -656,7 +656,7 @@ class BillingGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] card_id: Credit card ID. Maximum length: `64`.
         :param pulumi.Input[_builtins.str] city: Address city. Maximum length: `512`.
         :param pulumi.Input[_builtins.str] company: Name of a company. Maximum length: `128`.
-        :param pulumi.Input[_builtins.str] copy_from_billing_group: Billing group ID. Maximum length: `36`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] copy_from_billing_group: Billing group ID. Length must be exactly `36`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] country_code: Two letter country code for billing country. Maximum length: `2`.
         :param pulumi.Input[_builtins.str] name: Billing group name. Maximum length: `128`.
         :param pulumi.Input[_builtins.str] parent_id: Link a billing group to an existing organization by using its ID.
@@ -802,7 +802,7 @@ class BillingGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] card_id: Credit card ID. Maximum length: `64`.
         :param pulumi.Input[_builtins.str] city: Address city. Maximum length: `512`.
         :param pulumi.Input[_builtins.str] company: Name of a company. Maximum length: `128`.
-        :param pulumi.Input[_builtins.str] copy_from_billing_group: Billing group ID. Maximum length: `36`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] copy_from_billing_group: Billing group ID. Length must be exactly `36`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] country_code: Two letter country code for billing country. Maximum length: `2`.
         :param pulumi.Input[_builtins.str] name: Billing group name. Maximum length: `128`.
         :param pulumi.Input[_builtins.str] parent_id: Link a billing group to an existing organization by using its ID.
@@ -919,7 +919,7 @@ class BillingGroup(pulumi.CustomResource):
     @pulumi.getter(name="copyFromBillingGroup")
     def copy_from_billing_group(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Billing group ID. Maximum length: `36`. Changing this property forces recreation of the resource.
+        Billing group ID. Length must be exactly `36`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "copy_from_billing_group")
 

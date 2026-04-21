@@ -141,14 +141,14 @@ public class Cmk extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
-     * The unique identifier for the CMK in the cloud provider&#39;s KMS. In AWS, this is the Key ARN; in Google Cloud the Resource Name; and in Oracle Cloud the Key OCID. Maximum length: `512`. Changing this property forces recreation of the resource.
+     * The unique identifier for the CMK in the cloud provider&#39;s KMS. In AWS, this is the Key ARN; in Google Cloud the Resource Name; and in Oracle Cloud the Key OCID. Length must be between `1` and `512`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="resource", refs={String.class}, tree="[0]")
     private Output<String> resource;
 
     /**
-     * @return The unique identifier for the CMK in the cloud provider&#39;s KMS. In AWS, this is the Key ARN; in Google Cloud the Resource Name; and in Oracle Cloud the Key OCID. Maximum length: `512`. Changing this property forces recreation of the resource.
+     * @return The unique identifier for the CMK in the cloud provider&#39;s KMS. In AWS, this is the Key ARN; in Google Cloud the Resource Name; and in Oracle Cloud the Key OCID. Length must be between `1` and `512`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> resource() {

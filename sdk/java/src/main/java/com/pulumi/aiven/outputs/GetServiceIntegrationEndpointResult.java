@@ -15,6 +15,7 @@ import com.pulumi.aiven.outputs.GetServiceIntegrationEndpointExternalGoogleCloud
 import com.pulumi.aiven.outputs.GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig;
 import com.pulumi.aiven.outputs.GetServiceIntegrationEndpointExternalKafkaUserConfig;
 import com.pulumi.aiven.outputs.GetServiceIntegrationEndpointExternalMysqlUserConfig;
+import com.pulumi.aiven.outputs.GetServiceIntegrationEndpointExternalObjectStorageConfigUserConfig;
 import com.pulumi.aiven.outputs.GetServiceIntegrationEndpointExternalOpensearchLogsUserConfig;
 import com.pulumi.aiven.outputs.GetServiceIntegrationEndpointExternalPostgresql;
 import com.pulumi.aiven.outputs.GetServiceIntegrationEndpointExternalPrometheusUserConfig;
@@ -52,7 +53,7 @@ public final class GetServiceIntegrationEndpointResult {
      */
     private String endpointName;
     /**
-     * @return The type of service integration endpoint. The possible values are `autoscaler`, `datadog`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalAwsS3`, `externalAzureBlobStorage`, `externalClickhouse`, `externalElasticsearchLogs`, `externalGoogleCloudBigquery`, `externalGoogleCloudLogging`, `externalKafka`, `externalMysql`, `externalOpensearchLogs`, `externalPostgresql`, `externalPrometheus`, `externalRedis`, `externalSchemaRegistry`, `externalSumologicLogs`, `jolokia`, `prometheus` and `rsyslog`.
+     * @return The type of service integration endpoint. The possible values are `autoscaler`, `datadog`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalAwsS3`, `externalAzureBlobStorage`, `externalClickhouse`, `externalElasticsearchLogs`, `externalGoogleCloudBigquery`, `externalGoogleCloudLogging`, `externalKafka`, `externalMysql`, `externalObjectStorageConfig`, `externalOpensearchLogs`, `externalPostgresql`, `externalPrometheus`, `externalRedis`, `externalSchemaRegistry`, `externalSumologicLogs`, `jolokia`, `prometheus` and `rsyslog`.
      * 
      */
     private String endpointType;
@@ -106,6 +107,11 @@ public final class GetServiceIntegrationEndpointResult {
      * 
      */
     private List<GetServiceIntegrationEndpointExternalMysqlUserConfig> externalMysqlUserConfigs;
+    /**
+     * @return ExternalObjectStorageConfig user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
+     * 
+     */
+    private List<GetServiceIntegrationEndpointExternalObjectStorageConfigUserConfig> externalObjectStorageConfigUserConfigs;
     /**
      * @return ExternalOpensearchLogs user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
      * 
@@ -182,7 +188,7 @@ public final class GetServiceIntegrationEndpointResult {
         return this.endpointName;
     }
     /**
-     * @return The type of service integration endpoint. The possible values are `autoscaler`, `datadog`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalAwsS3`, `externalAzureBlobStorage`, `externalClickhouse`, `externalElasticsearchLogs`, `externalGoogleCloudBigquery`, `externalGoogleCloudLogging`, `externalKafka`, `externalMysql`, `externalOpensearchLogs`, `externalPostgresql`, `externalPrometheus`, `externalRedis`, `externalSchemaRegistry`, `externalSumologicLogs`, `jolokia`, `prometheus` and `rsyslog`.
+     * @return The type of service integration endpoint. The possible values are `autoscaler`, `datadog`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalAwsS3`, `externalAzureBlobStorage`, `externalClickhouse`, `externalElasticsearchLogs`, `externalGoogleCloudBigquery`, `externalGoogleCloudLogging`, `externalKafka`, `externalMysql`, `externalObjectStorageConfig`, `externalOpensearchLogs`, `externalPostgresql`, `externalPrometheus`, `externalRedis`, `externalSchemaRegistry`, `externalSumologicLogs`, `jolokia`, `prometheus` and `rsyslog`.
      * 
      */
     public String endpointType() {
@@ -257,6 +263,13 @@ public final class GetServiceIntegrationEndpointResult {
      */
     public List<GetServiceIntegrationEndpointExternalMysqlUserConfig> externalMysqlUserConfigs() {
         return this.externalMysqlUserConfigs;
+    }
+    /**
+     * @return ExternalObjectStorageConfig user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
+     * 
+     */
+    public List<GetServiceIntegrationEndpointExternalObjectStorageConfigUserConfig> externalObjectStorageConfigUserConfigs() {
+        return this.externalObjectStorageConfigUserConfigs;
     }
     /**
      * @return ExternalOpensearchLogs user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
@@ -346,6 +359,7 @@ public final class GetServiceIntegrationEndpointResult {
         private List<GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig> externalGoogleCloudLoggingUserConfigs;
         private List<GetServiceIntegrationEndpointExternalKafkaUserConfig> externalKafkaUserConfigs;
         private List<GetServiceIntegrationEndpointExternalMysqlUserConfig> externalMysqlUserConfigs;
+        private List<GetServiceIntegrationEndpointExternalObjectStorageConfigUserConfig> externalObjectStorageConfigUserConfigs;
         private List<GetServiceIntegrationEndpointExternalOpensearchLogsUserConfig> externalOpensearchLogsUserConfigs;
         private List<GetServiceIntegrationEndpointExternalPostgresql> externalPostgresqls;
         private List<GetServiceIntegrationEndpointExternalPrometheusUserConfig> externalPrometheusUserConfigs;
@@ -373,6 +387,7 @@ public final class GetServiceIntegrationEndpointResult {
     	      this.externalGoogleCloudLoggingUserConfigs = defaults.externalGoogleCloudLoggingUserConfigs;
     	      this.externalKafkaUserConfigs = defaults.externalKafkaUserConfigs;
     	      this.externalMysqlUserConfigs = defaults.externalMysqlUserConfigs;
+    	      this.externalObjectStorageConfigUserConfigs = defaults.externalObjectStorageConfigUserConfigs;
     	      this.externalOpensearchLogsUserConfigs = defaults.externalOpensearchLogsUserConfigs;
     	      this.externalPostgresqls = defaults.externalPostgresqls;
     	      this.externalPrometheusUserConfigs = defaults.externalPrometheusUserConfigs;
@@ -541,6 +556,17 @@ public final class GetServiceIntegrationEndpointResult {
             return externalMysqlUserConfigs(List.of(externalMysqlUserConfigs));
         }
         @CustomType.Setter
+        public Builder externalObjectStorageConfigUserConfigs(List<GetServiceIntegrationEndpointExternalObjectStorageConfigUserConfig> externalObjectStorageConfigUserConfigs) {
+            if (externalObjectStorageConfigUserConfigs == null) {
+              throw new MissingRequiredPropertyException("GetServiceIntegrationEndpointResult", "externalObjectStorageConfigUserConfigs");
+            }
+            this.externalObjectStorageConfigUserConfigs = externalObjectStorageConfigUserConfigs;
+            return this;
+        }
+        public Builder externalObjectStorageConfigUserConfigs(GetServiceIntegrationEndpointExternalObjectStorageConfigUserConfig... externalObjectStorageConfigUserConfigs) {
+            return externalObjectStorageConfigUserConfigs(List.of(externalObjectStorageConfigUserConfigs));
+        }
+        @CustomType.Setter
         public Builder externalOpensearchLogsUserConfigs(List<GetServiceIntegrationEndpointExternalOpensearchLogsUserConfig> externalOpensearchLogsUserConfigs) {
             if (externalOpensearchLogsUserConfigs == null) {
               throw new MissingRequiredPropertyException("GetServiceIntegrationEndpointResult", "externalOpensearchLogsUserConfigs");
@@ -650,6 +676,7 @@ public final class GetServiceIntegrationEndpointResult {
             _resultValue.externalGoogleCloudLoggingUserConfigs = externalGoogleCloudLoggingUserConfigs;
             _resultValue.externalKafkaUserConfigs = externalKafkaUserConfigs;
             _resultValue.externalMysqlUserConfigs = externalMysqlUserConfigs;
+            _resultValue.externalObjectStorageConfigUserConfigs = externalObjectStorageConfigUserConfigs;
             _resultValue.externalOpensearchLogsUserConfigs = externalOpensearchLogsUserConfigs;
             _resultValue.externalPostgresqls = externalPostgresqls;
             _resultValue.externalPrometheusUserConfigs = externalPrometheusUserConfigs;

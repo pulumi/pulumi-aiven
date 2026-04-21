@@ -48,13 +48,13 @@ namespace Pulumi.Aiven
         public Output<string> DatabaseName { get; private set; } = null!;
 
         /// <summary>
-        /// Default string sort order (`LC_COLLATE`) of the database. Maximum length: `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+        /// Default string sort order (`LC_COLLATE`) of the database. Length must be between `1` and `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("lcCollate")]
         public Output<string> LcCollate { get; private set; } = null!;
 
         /// <summary>
-        /// Default character classification (`LC_CTYPE`) of the database. Maximum length: `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+        /// Default character classification (`LC_CTYPE`) of the database. Length must be between `1` and `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("lcCtype")]
         public Output<string> LcCtype { get; private set; } = null!;
@@ -133,13 +133,13 @@ namespace Pulumi.Aiven
         public Input<string> DatabaseName { get; set; } = null!;
 
         /// <summary>
-        /// Default string sort order (`LC_COLLATE`) of the database. Maximum length: `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+        /// Default string sort order (`LC_COLLATE`) of the database. Length must be between `1` and `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("lcCollate")]
         public Input<string>? LcCollate { get; set; }
 
         /// <summary>
-        /// Default character classification (`LC_CTYPE`) of the database. Maximum length: `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+        /// Default character classification (`LC_CTYPE`) of the database. Length must be between `1` and `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("lcCtype")]
         public Input<string>? LcCtype { get; set; }
@@ -180,13 +180,13 @@ namespace Pulumi.Aiven
         public Input<string>? DatabaseName { get; set; }
 
         /// <summary>
-        /// Default string sort order (`LC_COLLATE`) of the database. Maximum length: `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+        /// Default string sort order (`LC_COLLATE`) of the database. Length must be between `1` and `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("lcCollate")]
         public Input<string>? LcCollate { get; set; }
 
         /// <summary>
-        /// Default character classification (`LC_CTYPE`) of the database. Maximum length: `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+        /// Default character classification (`LC_CTYPE`) of the database. Length must be between `1` and `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("lcCtype")]
         public Input<string>? LcCtype { get; set; }

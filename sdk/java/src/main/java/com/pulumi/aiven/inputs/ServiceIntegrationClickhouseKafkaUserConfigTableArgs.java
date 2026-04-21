@@ -4,6 +4,7 @@
 package com.pulumi.aiven.inputs;
 
 import com.pulumi.aiven.inputs.ServiceIntegrationClickhouseKafkaUserConfigTableColumnArgs;
+import com.pulumi.aiven.inputs.ServiceIntegrationClickhouseKafkaUserConfigTableMaterializedViewArgs;
 import com.pulumi.aiven.inputs.ServiceIntegrationClickhouseKafkaUserConfigTableTopicArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -97,18 +98,33 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableArgs extends 
     }
 
     /**
-     * Enum: `default`, `stream`. Defines how ClickHouse should handle errors when processing Kafka messages. `default` stops on errors, `stream` continues processing and logs errors. Default: `default`.
+     * Enum: `deadLetterQueue`, `default`, `stream`. Defines how ClickHouse should handle errors when processing Kafka messages. `default` stops on errors, `stream` continues processing and logs errors, `deadLetterQueue` saves error data to system.dead*letter*queue (requires ClickHouse 25.8+). Default: `default`.
      * 
      */
     @Import(name="handleErrorMode")
     private @Nullable Output<String> handleErrorMode;
 
     /**
-     * @return Enum: `default`, `stream`. Defines how ClickHouse should handle errors when processing Kafka messages. `default` stops on errors, `stream` continues processing and logs errors. Default: `default`.
+     * @return Enum: `deadLetterQueue`, `default`, `stream`. Defines how ClickHouse should handle errors when processing Kafka messages. `default` stops on errors, `stream` continues processing and logs errors, `deadLetterQueue` saves error data to system.dead*letter*queue (requires ClickHouse 25.8+). Default: `default`.
      * 
      */
     public Optional<Output<String>> handleErrorMode() {
         return Optional.ofNullable(this.handleErrorMode);
+    }
+
+    /**
+     * Optional materialized view that persists data from the Kafka engine table into a MergeTree-family table. When specified, a ClickHouse materialized view is created that automatically reads from the Kafka table and inserts into a durable target table
+     * 
+     */
+    @Import(name="materializedView")
+    private @Nullable Output<ServiceIntegrationClickhouseKafkaUserConfigTableMaterializedViewArgs> materializedView;
+
+    /**
+     * @return Optional materialized view that persists data from the Kafka engine table into a MergeTree-family table. When specified, a ClickHouse materialized view is created that automatically reads from the Kafka table and inserts into a durable target table
+     * 
+     */
+    public Optional<Output<ServiceIntegrationClickhouseKafkaUserConfigTableMaterializedViewArgs>> materializedView() {
+        return Optional.ofNullable(this.materializedView);
     }
 
     /**
@@ -375,6 +391,7 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableArgs extends 
         this.dateTimeInputFormat = $.dateTimeInputFormat;
         this.groupName = $.groupName;
         this.handleErrorMode = $.handleErrorMode;
+        this.materializedView = $.materializedView;
         this.maxBlockSize = $.maxBlockSize;
         this.maxRowsPerMessage = $.maxRowsPerMessage;
         this.name = $.name;
@@ -528,7 +545,7 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableArgs extends 
         }
 
         /**
-         * @param handleErrorMode Enum: `default`, `stream`. Defines how ClickHouse should handle errors when processing Kafka messages. `default` stops on errors, `stream` continues processing and logs errors. Default: `default`.
+         * @param handleErrorMode Enum: `deadLetterQueue`, `default`, `stream`. Defines how ClickHouse should handle errors when processing Kafka messages. `default` stops on errors, `stream` continues processing and logs errors, `deadLetterQueue` saves error data to system.dead*letter*queue (requires ClickHouse 25.8+). Default: `default`.
          * 
          * @return builder
          * 
@@ -539,13 +556,34 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableArgs extends 
         }
 
         /**
-         * @param handleErrorMode Enum: `default`, `stream`. Defines how ClickHouse should handle errors when processing Kafka messages. `default` stops on errors, `stream` continues processing and logs errors. Default: `default`.
+         * @param handleErrorMode Enum: `deadLetterQueue`, `default`, `stream`. Defines how ClickHouse should handle errors when processing Kafka messages. `default` stops on errors, `stream` continues processing and logs errors, `deadLetterQueue` saves error data to system.dead*letter*queue (requires ClickHouse 25.8+). Default: `default`.
          * 
          * @return builder
          * 
          */
         public Builder handleErrorMode(String handleErrorMode) {
             return handleErrorMode(Output.of(handleErrorMode));
+        }
+
+        /**
+         * @param materializedView Optional materialized view that persists data from the Kafka engine table into a MergeTree-family table. When specified, a ClickHouse materialized view is created that automatically reads from the Kafka table and inserts into a durable target table
+         * 
+         * @return builder
+         * 
+         */
+        public Builder materializedView(@Nullable Output<ServiceIntegrationClickhouseKafkaUserConfigTableMaterializedViewArgs> materializedView) {
+            $.materializedView = materializedView;
+            return this;
+        }
+
+        /**
+         * @param materializedView Optional materialized view that persists data from the Kafka engine table into a MergeTree-family table. When specified, a ClickHouse materialized view is created that automatically reads from the Kafka table and inserts into a durable target table
+         * 
+         * @return builder
+         * 
+         */
+        public Builder materializedView(ServiceIntegrationClickhouseKafkaUserConfigTableMaterializedViewArgs materializedView) {
+            return materializedView(Output.of(materializedView));
         }
 
         /**

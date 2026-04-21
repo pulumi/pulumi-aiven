@@ -109,7 +109,7 @@ namespace Pulumi.Aiven
         public Output<string> Company { get; private set; } = null!;
 
         /// <summary>
-        /// Billing group ID. Maximum length: `36`. Changing this property forces recreation of the resource.
+        /// Billing group ID. Length must be exactly `36`. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("copyFromBillingGroup")]
         public Output<string?> CopyFromBillingGroup { get; private set; } = null!;
@@ -272,7 +272,7 @@ namespace Pulumi.Aiven
         public Input<string>? Company { get; set; }
 
         /// <summary>
-        /// Billing group ID. Maximum length: `36`. Changing this property forces recreation of the resource.
+        /// Billing group ID. Length must be exactly `36`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("copyFromBillingGroup")]
         public Input<string>? CopyFromBillingGroup { get; set; }
@@ -403,7 +403,7 @@ namespace Pulumi.Aiven
         public Input<string>? Company { get; set; }
 
         /// <summary>
-        /// Billing group ID. Maximum length: `36`. Changing this property forces recreation of the resource.
+        /// Billing group ID. Length must be exactly `36`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("copyFromBillingGroup")]
         public Input<string>? CopyFromBillingGroup { get; set; }

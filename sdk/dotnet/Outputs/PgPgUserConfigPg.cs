@@ -210,6 +210,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? PgStatStatementsDotTrack;
         /// <summary>
+        /// Enum: `Local`, `Off`, `On`, `RemoteApply`, `RemoteWrite`. Sets the current transaction's synchronization level. The default is `Off`. This setting takes precedence over `SynchronousReplication`.
+        /// </summary>
+        public readonly string? SynchronousCommit;
+        /// <summary>
         /// PostgreSQL temporary file limit in KiB, -1 for unlimited.
         /// </summary>
         public readonly int? TempFileLimit;
@@ -342,6 +346,8 @@ namespace Pulumi.Aiven.Outputs
 
             string? pgStatStatementsDotTrack,
 
+            string? synchronousCommit,
+
             int? tempFileLimit,
 
             string? timezone,
@@ -407,6 +413,7 @@ namespace Pulumi.Aiven.Outputs
             PgStatMonitorDotPgsmEnableQueryPlan = pgStatMonitorDotPgsmEnableQueryPlan;
             PgStatMonitorDotPgsmMaxBuckets = pgStatMonitorDotPgsmMaxBuckets;
             PgStatStatementsDotTrack = pgStatStatementsDotTrack;
+            SynchronousCommit = synchronousCommit;
             TempFileLimit = tempFileLimit;
             Timezone = timezone;
             TrackActivityQuerySize = trackActivityQuerySize;

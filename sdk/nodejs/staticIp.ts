@@ -2,10 +2,18 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
  * The aiven.StaticIp resource allows the creation and deletion of static ips. Please note that once a static ip is in the 'assigned' state it is bound to the node it is assigned to and cannot be deleted or disassociated until the node is recycled. Plans that would delete static ips that are in the assigned state will be blocked.
+ *
+ * ## Import
+ *
+ * ```sh
+ * $ pulumi import aiven:index/staticIp:StaticIp example PROJECT/STATIC_IP_ADDRESS_ID
+ * ```
  */
 export class StaticIp extends pulumi.CustomResource {
     /**
@@ -36,29 +44,34 @@ export class StaticIp extends pulumi.CustomResource {
     }
 
     /**
-     * Specifies the cloud that the static ip belongs to. Changing this property forces recreation of the resource.
+     * Target cloud. Maximum length: `256`. Changing this property forces recreation of the resource.
      */
     declare public readonly cloudName: pulumi.Output<string>;
     /**
-     * The address of the static ip.
+     * IPv4 address.
      */
     declare public /*out*/ readonly ipAddress: pulumi.Output<string>;
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name. Changing this property forces recreation of the resource.
      */
     declare public readonly project: pulumi.Output<string>;
     /**
-     * The service name the static ip is associated with.
+     * Service name.
      */
     declare public /*out*/ readonly serviceName: pulumi.Output<string>;
     /**
-     * The state the static ip is in.
+     * Static IP address state. The possible values are `assigned`, `available`, `created`, `creating`, `deleted` and `deleting`.
      */
     declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
-     * The static ip id of the resource. Should be used as a reference elsewhere.
+     * Static IP address identifier.
      */
     declare public /*out*/ readonly staticIpAddressId: pulumi.Output<string>;
+    /**
+     * Static IP address is protected against deletion. The default value is `false`.
+     */
+    declare public readonly terminationProtection: pulumi.Output<boolean>;
+    declare public readonly timeouts: pulumi.Output<outputs.StaticIpTimeouts | undefined>;
 
     /**
      * Create a StaticIp resource with the given unique name, arguments, and options.
@@ -79,6 +92,8 @@ export class StaticIp extends pulumi.CustomResource {
             resourceInputs["serviceName"] = state?.serviceName;
             resourceInputs["state"] = state?.state;
             resourceInputs["staticIpAddressId"] = state?.staticIpAddressId;
+            resourceInputs["terminationProtection"] = state?.terminationProtection;
+            resourceInputs["timeouts"] = state?.timeouts;
         } else {
             const args = argsOrState as StaticIpArgs | undefined;
             if (args?.cloudName === undefined && !opts.urn) {
@@ -89,6 +104,8 @@ export class StaticIp extends pulumi.CustomResource {
             }
             resourceInputs["cloudName"] = args?.cloudName;
             resourceInputs["project"] = args?.project;
+            resourceInputs["terminationProtection"] = args?.terminationProtection;
+            resourceInputs["timeouts"] = args?.timeouts;
             resourceInputs["ipAddress"] = undefined /*out*/;
             resourceInputs["serviceName"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
@@ -104,29 +121,34 @@ export class StaticIp extends pulumi.CustomResource {
  */
 export interface StaticIpState {
     /**
-     * Specifies the cloud that the static ip belongs to. Changing this property forces recreation of the resource.
+     * Target cloud. Maximum length: `256`. Changing this property forces recreation of the resource.
      */
     cloudName?: pulumi.Input<string>;
     /**
-     * The address of the static ip.
+     * IPv4 address.
      */
     ipAddress?: pulumi.Input<string>;
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name. Changing this property forces recreation of the resource.
      */
     project?: pulumi.Input<string>;
     /**
-     * The service name the static ip is associated with.
+     * Service name.
      */
     serviceName?: pulumi.Input<string>;
     /**
-     * The state the static ip is in.
+     * Static IP address state. The possible values are `assigned`, `available`, `created`, `creating`, `deleted` and `deleting`.
      */
     state?: pulumi.Input<string>;
     /**
-     * The static ip id of the resource. Should be used as a reference elsewhere.
+     * Static IP address identifier.
      */
     staticIpAddressId?: pulumi.Input<string>;
+    /**
+     * Static IP address is protected against deletion. The default value is `false`.
+     */
+    terminationProtection?: pulumi.Input<boolean>;
+    timeouts?: pulumi.Input<inputs.StaticIpTimeouts>;
 }
 
 /**
@@ -134,11 +156,16 @@ export interface StaticIpState {
  */
 export interface StaticIpArgs {
     /**
-     * Specifies the cloud that the static ip belongs to. Changing this property forces recreation of the resource.
+     * Target cloud. Maximum length: `256`. Changing this property forces recreation of the resource.
      */
     cloudName: pulumi.Input<string>;
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name. Changing this property forces recreation of the resource.
      */
     project: pulumi.Input<string>;
+    /**
+     * Static IP address is protected against deletion. The default value is `false`.
+     */
+    terminationProtection?: pulumi.Input<boolean>;
+    timeouts?: pulumi.Input<inputs.StaticIpTimeouts>;
 }

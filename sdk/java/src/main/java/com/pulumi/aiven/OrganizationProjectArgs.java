@@ -36,14 +36,14 @@ public final class OrganizationProjectArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Billing group ID to assign to the project. It&#39;s required when moving projects between organizations.
+     * Billing group ID to assign to the project. It&#39;s required when moving projects between organizations. Minimum length: `1`.
      * 
      */
     @Import(name="billingGroupId", required=true)
     private Output<String> billingGroupId;
 
     /**
-     * @return Billing group ID to assign to the project. It&#39;s required when moving projects between organizations.
+     * @return Billing group ID to assign to the project. It&#39;s required when moving projects between organizations. Minimum length: `1`.
      * 
      */
     public Output<String> billingGroupId() {
@@ -185,7 +185,7 @@ public final class OrganizationProjectArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param billingGroupId Billing group ID to assign to the project. It&#39;s required when moving projects between organizations.
+         * @param billingGroupId Billing group ID to assign to the project. It&#39;s required when moving projects between organizations. Minimum length: `1`.
          * 
          * @return builder
          * 
@@ -196,7 +196,7 @@ public final class OrganizationProjectArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param billingGroupId Billing group ID to assign to the project. It&#39;s required when moving projects between organizations.
+         * @param billingGroupId Billing group ID to assign to the project. It&#39;s required when moving projects between organizations. Minimum length: `1`.
          * 
          * @return builder
          * 

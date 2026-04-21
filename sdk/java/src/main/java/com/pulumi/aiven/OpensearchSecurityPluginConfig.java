@@ -6,6 +6,7 @@ package com.pulumi.aiven;
 import com.pulumi.aiven.OpensearchSecurityPluginConfigArgs;
 import com.pulumi.aiven.Utilities;
 import com.pulumi.aiven.inputs.OpensearchSecurityPluginConfigState;
+import com.pulumi.aiven.outputs.OpensearchSecurityPluginConfigTimeouts;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -13,15 +14,11 @@ import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Enables and manages [OpenSearch Security for an Aiven for OpenSearch® service](https://aiven.io/docs/products/opensearch/concepts/os-security).
- * 
- * After enabling OpenSearch Security management, **you can no longer use Aiven Terraform Provider to manage access controls for that service.** To manage user authentication and access control with OpenSearch Security management enabled,
- * use the OpenSearch Security Dashboard or OpenSearch Security API.
- * 
- * **Once enabled, OpenSearch Security management cannot be disabled.** To disable it, [contact Aiven support](https://aiven.io/support-services).
+ * Enables and manages [OpenSearch Security for an Aiven for OpenSearch® service](https://aiven.io/docs/products/opensearch/concepts/os-security). After enabling OpenSearch Security management, **you can no longer use Aiven Terraform Provider to manage access controls for that service.** To manage user authentication and access control with OpenSearch Security management enabled, use the OpenSearch Security Dashboard or OpenSearch Security API. **Once enabled, OpenSearch Security management cannot be disabled.** To disable it, [contact Aiven support](https://aiven.io/support-services). If this resource is missing (for example, after a service power off), it&#39;s removed from the state and a new create plan is generated.
  * 
  * ## Example Usage
  * 
@@ -61,95 +58,101 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import aiven:index/opensearchSecurityPluginConfig:OpensearchSecurityPluginConfig main PROJECT/SERVICE_NAME
+ * $ pulumi import aiven:index/opensearchSecurityPluginConfig:OpensearchSecurityPluginConfig example PROJECT/SERVICE_NAME
  * ```
  * 
  */
 @ResourceType(type="aiven:index/opensearchSecurityPluginConfig:OpensearchSecurityPluginConfig")
 public class OpensearchSecurityPluginConfig extends com.pulumi.resources.CustomResource {
     /**
-     * Whether the os-sec-admin user is enabled. This indicates whether OpenSearch Security management is enabled. This is always true when the os-sec-admin password was set at least once.
+     * security plugin admin defined.
      * 
      */
     @Export(name="adminEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> adminEnabled;
 
     /**
-     * @return Whether the os-sec-admin user is enabled. This indicates whether OpenSearch Security management is enabled. This is always true when the os-sec-admin password was set at least once.
+     * @return security plugin admin defined.
      * 
      */
     public Output<Boolean> adminEnabled() {
         return this.adminEnabled;
     }
     /**
-     * The password for the os-sec-admin user.
+     * Current os-sec-admin password. Length must be between `8` and `256`.
      * 
      */
     @Export(name="adminPassword", refs={String.class}, tree="[0]")
     private Output<String> adminPassword;
 
     /**
-     * @return The password for the os-sec-admin user.
+     * @return Current os-sec-admin password. Length must be between `8` and `256`.
      * 
      */
     public Output<String> adminPassword() {
         return this.adminPassword;
     }
     /**
-     * Whether the security plugin is available. This is always true for recently created services.
+     * Opensearch security available for the service.
      * 
      */
     @Export(name="available", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> available;
 
     /**
-     * @return Whether the security plugin is available. This is always true for recently created services.
+     * @return Opensearch security available for the service.
      * 
      */
     public Output<Boolean> available() {
         return this.available;
     }
     /**
-     * Whether the security plugin is enabled. This is always true for recently created services.
+     * Opensearch security enabled for the service.
      * 
      */
     @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enabled;
 
     /**
-     * @return Whether the security plugin is enabled. This is always true for recently created services.
+     * @return Opensearch security enabled for the service.
      * 
      */
     public Output<Boolean> enabled() {
         return this.enabled;
     }
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> project() {
         return this.project;
     }
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service name. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> serviceName() {
         return this.serviceName;
+    }
+    @Export(name="timeouts", refs={OpensearchSecurityPluginConfigTimeouts.class}, tree="[0]")
+    private Output</* @Nullable */ OpensearchSecurityPluginConfigTimeouts> timeouts;
+
+    public Output<Optional<OpensearchSecurityPluginConfigTimeouts>> timeouts() {
+        return Codegen.optional(this.timeouts);
     }
 
     /**

@@ -90,7 +90,7 @@ export class ServiceIntegrationEndpoint extends pulumi.CustomResource {
      */
     declare public readonly endpointName: pulumi.Output<string>;
     /**
-     * The type of service integration endpoint. The possible values are `autoscaler`, `datadog`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalAwsS3`, `externalAzureBlobStorage`, `externalClickhouse`, `externalElasticsearchLogs`, `externalGoogleCloudBigquery`, `externalGoogleCloudLogging`, `externalKafka`, `externalMysql`, `externalOpensearchLogs`, `externalPostgresql`, `externalPrometheus`, `externalRedis`, `externalSchemaRegistry`, `externalSumologicLogs`, `jolokia`, `prometheus` and `rsyslog`.
+     * The type of service integration endpoint. The possible values are `autoscaler`, `datadog`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalAwsS3`, `externalAzureBlobStorage`, `externalClickhouse`, `externalElasticsearchLogs`, `externalGoogleCloudBigquery`, `externalGoogleCloudLogging`, `externalKafka`, `externalMysql`, `externalObjectStorageConfig`, `externalOpensearchLogs`, `externalPostgresql`, `externalPrometheus`, `externalRedis`, `externalSchemaRegistry`, `externalSumologicLogs`, `jolokia`, `prometheus` and `rsyslog`.
      */
     declare public readonly endpointType: pulumi.Output<string>;
     /**
@@ -133,6 +133,10 @@ export class ServiceIntegrationEndpoint extends pulumi.CustomResource {
      * ExternalMysql user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
     declare public readonly externalMysqlUserConfig: pulumi.Output<outputs.ServiceIntegrationEndpointExternalMysqlUserConfig | undefined>;
+    /**
+     * ExternalObjectStorageConfig user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+     */
+    declare public readonly externalObjectStorageConfigUserConfig: pulumi.Output<outputs.ServiceIntegrationEndpointExternalObjectStorageConfigUserConfig | undefined>;
     /**
      * ExternalOpensearchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
@@ -194,6 +198,7 @@ export class ServiceIntegrationEndpoint extends pulumi.CustomResource {
             resourceInputs["externalGoogleCloudLoggingUserConfig"] = state?.externalGoogleCloudLoggingUserConfig;
             resourceInputs["externalKafkaUserConfig"] = state?.externalKafkaUserConfig;
             resourceInputs["externalMysqlUserConfig"] = state?.externalMysqlUserConfig;
+            resourceInputs["externalObjectStorageConfigUserConfig"] = state?.externalObjectStorageConfigUserConfig;
             resourceInputs["externalOpensearchLogsUserConfig"] = state?.externalOpensearchLogsUserConfig;
             resourceInputs["externalPostgresql"] = state?.externalPostgresql;
             resourceInputs["externalPrometheusUserConfig"] = state?.externalPrometheusUserConfig;
@@ -227,6 +232,7 @@ export class ServiceIntegrationEndpoint extends pulumi.CustomResource {
             resourceInputs["externalGoogleCloudLoggingUserConfig"] = args?.externalGoogleCloudLoggingUserConfig;
             resourceInputs["externalKafkaUserConfig"] = args?.externalKafkaUserConfig;
             resourceInputs["externalMysqlUserConfig"] = args?.externalMysqlUserConfig;
+            resourceInputs["externalObjectStorageConfigUserConfig"] = args?.externalObjectStorageConfigUserConfig;
             resourceInputs["externalOpensearchLogsUserConfig"] = args?.externalOpensearchLogsUserConfig;
             resourceInputs["externalPostgresql"] = args?.externalPostgresql;
             resourceInputs["externalPrometheusUserConfig"] = args?.externalPrometheusUserConfig;
@@ -263,7 +269,7 @@ export interface ServiceIntegrationEndpointState {
      */
     endpointName?: pulumi.Input<string>;
     /**
-     * The type of service integration endpoint. The possible values are `autoscaler`, `datadog`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalAwsS3`, `externalAzureBlobStorage`, `externalClickhouse`, `externalElasticsearchLogs`, `externalGoogleCloudBigquery`, `externalGoogleCloudLogging`, `externalKafka`, `externalMysql`, `externalOpensearchLogs`, `externalPostgresql`, `externalPrometheus`, `externalRedis`, `externalSchemaRegistry`, `externalSumologicLogs`, `jolokia`, `prometheus` and `rsyslog`.
+     * The type of service integration endpoint. The possible values are `autoscaler`, `datadog`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalAwsS3`, `externalAzureBlobStorage`, `externalClickhouse`, `externalElasticsearchLogs`, `externalGoogleCloudBigquery`, `externalGoogleCloudLogging`, `externalKafka`, `externalMysql`, `externalObjectStorageConfig`, `externalOpensearchLogs`, `externalPostgresql`, `externalPrometheus`, `externalRedis`, `externalSchemaRegistry`, `externalSumologicLogs`, `jolokia`, `prometheus` and `rsyslog`.
      */
     endpointType?: pulumi.Input<string>;
     /**
@@ -306,6 +312,10 @@ export interface ServiceIntegrationEndpointState {
      * ExternalMysql user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
     externalMysqlUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalMysqlUserConfig>;
+    /**
+     * ExternalObjectStorageConfig user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+     */
+    externalObjectStorageConfigUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalObjectStorageConfigUserConfig>;
     /**
      * ExternalOpensearchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
@@ -357,7 +367,7 @@ export interface ServiceIntegrationEndpointArgs {
      */
     endpointName: pulumi.Input<string>;
     /**
-     * The type of service integration endpoint. The possible values are `autoscaler`, `datadog`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalAwsS3`, `externalAzureBlobStorage`, `externalClickhouse`, `externalElasticsearchLogs`, `externalGoogleCloudBigquery`, `externalGoogleCloudLogging`, `externalKafka`, `externalMysql`, `externalOpensearchLogs`, `externalPostgresql`, `externalPrometheus`, `externalRedis`, `externalSchemaRegistry`, `externalSumologicLogs`, `jolokia`, `prometheus` and `rsyslog`.
+     * The type of service integration endpoint. The possible values are `autoscaler`, `datadog`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalAwsS3`, `externalAzureBlobStorage`, `externalClickhouse`, `externalElasticsearchLogs`, `externalGoogleCloudBigquery`, `externalGoogleCloudLogging`, `externalKafka`, `externalMysql`, `externalObjectStorageConfig`, `externalOpensearchLogs`, `externalPostgresql`, `externalPrometheus`, `externalRedis`, `externalSchemaRegistry`, `externalSumologicLogs`, `jolokia`, `prometheus` and `rsyslog`.
      */
     endpointType: pulumi.Input<string>;
     /**
@@ -400,6 +410,10 @@ export interface ServiceIntegrationEndpointArgs {
      * ExternalMysql user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
     externalMysqlUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalMysqlUserConfig>;
+    /**
+     * ExternalObjectStorageConfig user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+     */
+    externalObjectStorageConfigUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalObjectStorageConfigUserConfig>;
     /**
      * ExternalOpensearchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */

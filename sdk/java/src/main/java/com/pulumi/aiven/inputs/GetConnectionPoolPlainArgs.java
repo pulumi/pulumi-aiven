@@ -3,10 +3,13 @@
 
 package com.pulumi.aiven.inputs;
 
+import com.pulumi.aiven.inputs.GetConnectionPoolTimeouts;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetConnectionPoolPlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -14,14 +17,14 @@ public final class GetConnectionPoolPlainArgs extends com.pulumi.resources.Invok
     public static final GetConnectionPoolPlainArgs Empty = new GetConnectionPoolPlainArgs();
 
     /**
-     * Name of the pool. Changing this property forces recreation of the resource.
+     * PgBouncer connection pool name.
      * 
      */
     @Import(name="poolName", required=true)
     private String poolName;
 
     /**
-     * @return Name of the pool. Changing this property forces recreation of the resource.
+     * @return PgBouncer connection pool name.
      * 
      */
     public String poolName() {
@@ -29,14 +32,14 @@ public final class GetConnectionPoolPlainArgs extends com.pulumi.resources.Invok
     }
 
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name.
      * 
      */
     @Import(name="project", required=true)
     private String project;
 
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name.
      * 
      */
     public String project() {
@@ -44,18 +47,25 @@ public final class GetConnectionPoolPlainArgs extends com.pulumi.resources.Invok
     }
 
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name.
      * 
      */
     @Import(name="serviceName", required=true)
     private String serviceName;
 
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service name.
      * 
      */
     public String serviceName() {
         return this.serviceName;
+    }
+
+    @Import(name="timeouts")
+    private @Nullable GetConnectionPoolTimeouts timeouts;
+
+    public Optional<GetConnectionPoolTimeouts> timeouts() {
+        return Optional.ofNullable(this.timeouts);
     }
 
     private GetConnectionPoolPlainArgs() {}
@@ -64,6 +74,7 @@ public final class GetConnectionPoolPlainArgs extends com.pulumi.resources.Invok
         this.poolName = $.poolName;
         this.project = $.project;
         this.serviceName = $.serviceName;
+        this.timeouts = $.timeouts;
     }
 
     public static Builder builder() {
@@ -85,7 +96,7 @@ public final class GetConnectionPoolPlainArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param poolName Name of the pool. Changing this property forces recreation of the resource.
+         * @param poolName PgBouncer connection pool name.
          * 
          * @return builder
          * 
@@ -96,7 +107,7 @@ public final class GetConnectionPoolPlainArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param project The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param project Project name.
          * 
          * @return builder
          * 
@@ -107,13 +118,18 @@ public final class GetConnectionPoolPlainArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param serviceName The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param serviceName Service name.
          * 
          * @return builder
          * 
          */
         public Builder serviceName(String serviceName) {
             $.serviceName = serviceName;
+            return this;
+        }
+
+        public Builder timeouts(@Nullable GetConnectionPoolTimeouts timeouts) {
+            $.timeouts = timeouts;
             return this;
         }
 

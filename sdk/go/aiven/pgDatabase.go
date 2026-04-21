@@ -52,9 +52,9 @@ type PgDatabase struct {
 
 	// Service database name. Maximum length: `40`. Changing this property forces recreation of the resource.
 	DatabaseName pulumi.StringOutput `pulumi:"databaseName"`
-	// Default string sort order (`LC_COLLATE`) of the database. Maximum length: `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+	// Default string sort order (`LC_COLLATE`) of the database. Length must be between `1` and `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
 	LcCollate pulumi.StringOutput `pulumi:"lcCollate"`
-	// Default character classification (`LC_CTYPE`) of the database. Maximum length: `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+	// Default character classification (`LC_CTYPE`) of the database. Length must be between `1` and `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
 	LcCtype pulumi.StringOutput `pulumi:"lcCtype"`
 	// Project name. Changing this property forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -108,9 +108,9 @@ func GetPgDatabase(ctx *pulumi.Context,
 type pgDatabaseState struct {
 	// Service database name. Maximum length: `40`. Changing this property forces recreation of the resource.
 	DatabaseName *string `pulumi:"databaseName"`
-	// Default string sort order (`LC_COLLATE`) of the database. Maximum length: `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+	// Default string sort order (`LC_COLLATE`) of the database. Length must be between `1` and `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
 	LcCollate *string `pulumi:"lcCollate"`
-	// Default character classification (`LC_CTYPE`) of the database. Maximum length: `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+	// Default character classification (`LC_CTYPE`) of the database. Length must be between `1` and `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
 	LcCtype *string `pulumi:"lcCtype"`
 	// Project name. Changing this property forces recreation of the resource.
 	Project *string `pulumi:"project"`
@@ -126,9 +126,9 @@ type pgDatabaseState struct {
 type PgDatabaseState struct {
 	// Service database name. Maximum length: `40`. Changing this property forces recreation of the resource.
 	DatabaseName pulumi.StringPtrInput
-	// Default string sort order (`LC_COLLATE`) of the database. Maximum length: `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+	// Default string sort order (`LC_COLLATE`) of the database. Length must be between `1` and `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
 	LcCollate pulumi.StringPtrInput
-	// Default character classification (`LC_CTYPE`) of the database. Maximum length: `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+	// Default character classification (`LC_CTYPE`) of the database. Length must be between `1` and `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
 	LcCtype pulumi.StringPtrInput
 	// Project name. Changing this property forces recreation of the resource.
 	Project pulumi.StringPtrInput
@@ -148,9 +148,9 @@ func (PgDatabaseState) ElementType() reflect.Type {
 type pgDatabaseArgs struct {
 	// Service database name. Maximum length: `40`. Changing this property forces recreation of the resource.
 	DatabaseName string `pulumi:"databaseName"`
-	// Default string sort order (`LC_COLLATE`) of the database. Maximum length: `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+	// Default string sort order (`LC_COLLATE`) of the database. Length must be between `1` and `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
 	LcCollate *string `pulumi:"lcCollate"`
-	// Default character classification (`LC_CTYPE`) of the database. Maximum length: `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+	// Default character classification (`LC_CTYPE`) of the database. Length must be between `1` and `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
 	LcCtype *string `pulumi:"lcCtype"`
 	// Project name. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
@@ -167,9 +167,9 @@ type pgDatabaseArgs struct {
 type PgDatabaseArgs struct {
 	// Service database name. Maximum length: `40`. Changing this property forces recreation of the resource.
 	DatabaseName pulumi.StringInput
-	// Default string sort order (`LC_COLLATE`) of the database. Maximum length: `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+	// Default string sort order (`LC_COLLATE`) of the database. Length must be between `1` and `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
 	LcCollate pulumi.StringPtrInput
-	// Default character classification (`LC_CTYPE`) of the database. Maximum length: `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+	// Default character classification (`LC_CTYPE`) of the database. Length must be between `1` and `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
 	LcCtype pulumi.StringPtrInput
 	// Project name. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput
@@ -274,12 +274,12 @@ func (o PgDatabaseOutput) DatabaseName() pulumi.StringOutput {
 	return o.ApplyT(func(v *PgDatabase) pulumi.StringOutput { return v.DatabaseName }).(pulumi.StringOutput)
 }
 
-// Default string sort order (`LC_COLLATE`) of the database. Maximum length: `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+// Default string sort order (`LC_COLLATE`) of the database. Length must be between `1` and `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
 func (o PgDatabaseOutput) LcCollate() pulumi.StringOutput {
 	return o.ApplyT(func(v *PgDatabase) pulumi.StringOutput { return v.LcCollate }).(pulumi.StringOutput)
 }
 
-// Default character classification (`LC_CTYPE`) of the database. Maximum length: `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
+// Default character classification (`LC_CTYPE`) of the database. Length must be between `1` and `128`. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
 func (o PgDatabaseOutput) LcCtype() pulumi.StringOutput {
 	return o.ApplyT(func(v *PgDatabase) pulumi.StringOutput { return v.LcCtype }).(pulumi.StringOutput)
 }

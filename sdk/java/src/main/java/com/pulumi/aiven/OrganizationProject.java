@@ -45,14 +45,14 @@ public class OrganizationProject extends com.pulumi.resources.CustomResource {
         return this.basePort;
     }
     /**
-     * Billing group ID to assign to the project. It&#39;s required when moving projects between organizations.
+     * Billing group ID to assign to the project. It&#39;s required when moving projects between organizations. Minimum length: `1`.
      * 
      */
     @Export(name="billingGroupId", refs={String.class}, tree="[0]")
     private Output<String> billingGroupId;
 
     /**
-     * @return Billing group ID to assign to the project. It&#39;s required when moving projects between organizations.
+     * @return Billing group ID to assign to the project. It&#39;s required when moving projects between organizations. Minimum length: `1`.
      * 
      */
     public Output<String> billingGroupId() {

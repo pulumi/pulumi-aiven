@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['ConnectionPoolArgs', 'ConnectionPool']
 
@@ -25,17 +27,18 @@ class ConnectionPoolArgs:
                  service_name: pulumi.Input[_builtins.str],
                  pool_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  pool_size: Optional[pulumi.Input[_builtins.int]] = None,
+                 timeouts: Optional[pulumi.Input['ConnectionPoolTimeoutsArgs']] = None,
                  username: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ConnectionPool resource.
 
-        :param pulumi.Input[_builtins.str] database_name: The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] pool_name: Name of the pool. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] pool_mode: The [operational mode](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling#pooling-modes). The possible values are `session`, `statement` and `transaction`. The default value is `transaction`.
-        :param pulumi.Input[_builtins.int] pool_size: The number of PostgreSQL server connections this pool can use at a time. This does not affect the number of incoming connections. Each pool can handle a minimum of 5000 client connections. The default value is `10`.
-        :param pulumi.Input[_builtins.str] username: The name of the service user used to connect to the database. To set up proper dependencies please refer to this variable as a reference.
+        :param pulumi.Input[_builtins.str] database_name: Service database name. Maximum length: `63`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] pool_name: PgBouncer connection pool name. Maximum length: `63`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] service_name: Service name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] pool_mode: PGBouncer pool mode. The possible values are `session`, `statement` and `transaction`. The default value is `transaction`.
+        :param pulumi.Input[_builtins.int] pool_size: Size of PGBouncer's PostgreSQL side connection pool. Value must be between `1` and `10000`. The default value is `10`.
+        :param pulumi.Input[_builtins.str] username: Service username. Length must be between `1` and `64`.
         """
         pulumi.set(__self__, "database_name", database_name)
         pulumi.set(__self__, "pool_name", pool_name)
@@ -45,6 +48,8 @@ class ConnectionPoolArgs:
             pulumi.set(__self__, "pool_mode", pool_mode)
         if pool_size is not None:
             pulumi.set(__self__, "pool_size", pool_size)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
         if username is not None:
             pulumi.set(__self__, "username", username)
 
@@ -52,7 +57,7 @@ class ConnectionPoolArgs:
     @pulumi.getter(name="databaseName")
     def database_name(self) -> pulumi.Input[_builtins.str]:
         """
-        The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Service database name. Maximum length: `63`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "database_name")
 
@@ -64,7 +69,7 @@ class ConnectionPoolArgs:
     @pulumi.getter(name="poolName")
     def pool_name(self) -> pulumi.Input[_builtins.str]:
         """
-        Name of the pool. Changing this property forces recreation of the resource.
+        PgBouncer connection pool name. Maximum length: `63`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "pool_name")
 
@@ -76,7 +81,7 @@ class ConnectionPoolArgs:
     @pulumi.getter
     def project(self) -> pulumi.Input[_builtins.str]:
         """
-        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Project name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -88,7 +93,7 @@ class ConnectionPoolArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[_builtins.str]:
         """
-        The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Service name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
@@ -100,7 +105,7 @@ class ConnectionPoolArgs:
     @pulumi.getter(name="poolMode")
     def pool_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The [operational mode](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling#pooling-modes). The possible values are `session`, `statement` and `transaction`. The default value is `transaction`.
+        PGBouncer pool mode. The possible values are `session`, `statement` and `transaction`. The default value is `transaction`.
         """
         return pulumi.get(self, "pool_mode")
 
@@ -112,7 +117,7 @@ class ConnectionPoolArgs:
     @pulumi.getter(name="poolSize")
     def pool_size(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The number of PostgreSQL server connections this pool can use at a time. This does not affect the number of incoming connections. Each pool can handle a minimum of 5000 client connections. The default value is `10`.
+        Size of PGBouncer's PostgreSQL side connection pool. Value must be between `1` and `10000`. The default value is `10`.
         """
         return pulumi.get(self, "pool_size")
 
@@ -122,9 +127,18 @@ class ConnectionPoolArgs:
 
     @_builtins.property
     @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['ConnectionPoolTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['ConnectionPoolTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
+
+    @_builtins.property
+    @pulumi.getter
     def username(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the service user used to connect to the database. To set up proper dependencies please refer to this variable as a reference.
+        Service username. Length must be between `1` and `64`.
         """
         return pulumi.get(self, "username")
 
@@ -143,18 +157,19 @@ class _ConnectionPoolState:
                  pool_size: Optional[pulumi.Input[_builtins.int]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  service_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 timeouts: Optional[pulumi.Input['ConnectionPoolTimeoutsArgs']] = None,
                  username: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ConnectionPool resources.
 
-        :param pulumi.Input[_builtins.str] connection_uri: The URI for connecting to the pool.
-        :param pulumi.Input[_builtins.str] database_name: The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] pool_mode: The [operational mode](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling#pooling-modes). The possible values are `session`, `statement` and `transaction`. The default value is `transaction`.
-        :param pulumi.Input[_builtins.str] pool_name: Name of the pool. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.int] pool_size: The number of PostgreSQL server connections this pool can use at a time. This does not affect the number of incoming connections. Each pool can handle a minimum of 5000 client connections. The default value is `10`.
-        :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] username: The name of the service user used to connect to the database. To set up proper dependencies please refer to this variable as a reference.
+        :param pulumi.Input[_builtins.str] connection_uri: Connection URI for the DB pool.
+        :param pulumi.Input[_builtins.str] database_name: Service database name. Maximum length: `63`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] pool_mode: PGBouncer pool mode. The possible values are `session`, `statement` and `transaction`. The default value is `transaction`.
+        :param pulumi.Input[_builtins.str] pool_name: PgBouncer connection pool name. Maximum length: `63`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.int] pool_size: Size of PGBouncer's PostgreSQL side connection pool. Value must be between `1` and `10000`. The default value is `10`.
+        :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] service_name: Service name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] username: Service username. Length must be between `1` and `64`.
         """
         if connection_uri is not None:
             pulumi.set(__self__, "connection_uri", connection_uri)
@@ -170,6 +185,8 @@ class _ConnectionPoolState:
             pulumi.set(__self__, "project", project)
         if service_name is not None:
             pulumi.set(__self__, "service_name", service_name)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
         if username is not None:
             pulumi.set(__self__, "username", username)
 
@@ -177,7 +194,7 @@ class _ConnectionPoolState:
     @pulumi.getter(name="connectionUri")
     def connection_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The URI for connecting to the pool.
+        Connection URI for the DB pool.
         """
         return pulumi.get(self, "connection_uri")
 
@@ -189,7 +206,7 @@ class _ConnectionPoolState:
     @pulumi.getter(name="databaseName")
     def database_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Service database name. Maximum length: `63`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "database_name")
 
@@ -201,7 +218,7 @@ class _ConnectionPoolState:
     @pulumi.getter(name="poolMode")
     def pool_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The [operational mode](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling#pooling-modes). The possible values are `session`, `statement` and `transaction`. The default value is `transaction`.
+        PGBouncer pool mode. The possible values are `session`, `statement` and `transaction`. The default value is `transaction`.
         """
         return pulumi.get(self, "pool_mode")
 
@@ -213,7 +230,7 @@ class _ConnectionPoolState:
     @pulumi.getter(name="poolName")
     def pool_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Name of the pool. Changing this property forces recreation of the resource.
+        PgBouncer connection pool name. Maximum length: `63`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "pool_name")
 
@@ -225,7 +242,7 @@ class _ConnectionPoolState:
     @pulumi.getter(name="poolSize")
     def pool_size(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The number of PostgreSQL server connections this pool can use at a time. This does not affect the number of incoming connections. Each pool can handle a minimum of 5000 client connections. The default value is `10`.
+        Size of PGBouncer's PostgreSQL side connection pool. Value must be between `1` and `10000`. The default value is `10`.
         """
         return pulumi.get(self, "pool_size")
 
@@ -237,7 +254,7 @@ class _ConnectionPoolState:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Project name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -249,7 +266,7 @@ class _ConnectionPoolState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Service name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
@@ -259,9 +276,18 @@ class _ConnectionPoolState:
 
     @_builtins.property
     @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['ConnectionPoolTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['ConnectionPoolTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
+
+    @_builtins.property
+    @pulumi.getter
     def username(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the service user used to connect to the database. To set up proper dependencies please refer to this variable as a reference.
+        Service username. Length must be between `1` and `64`.
         """
         return pulumi.get(self, "username")
 
@@ -282,10 +308,11 @@ class ConnectionPool(pulumi.CustomResource):
                  pool_size: Optional[pulumi.Input[_builtins.int]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  service_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 timeouts: Optional[pulumi.Input[Union['ConnectionPoolTimeoutsArgs', 'ConnectionPoolTimeoutsArgsDict']]] = None,
                  username: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Creates and manages a [connection pool](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling) in an Aiven for PostgreSQL® service.
+        Creates and manages a [connection pool](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling) in an Aiven for PostgreSQL® service. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
 
         ## Example Usage
 
@@ -306,19 +333,19 @@ class ConnectionPool(pulumi.CustomResource):
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/connectionPool:ConnectionPool main PROJECT/SERVICE_NAME/POOL_NAME
+        $ pulumi import aiven:index/connectionPool:ConnectionPool example PROJECT/SERVICE_NAME/POOL_NAME
         ```
 
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] database_name: The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] pool_mode: The [operational mode](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling#pooling-modes). The possible values are `session`, `statement` and `transaction`. The default value is `transaction`.
-        :param pulumi.Input[_builtins.str] pool_name: Name of the pool. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.int] pool_size: The number of PostgreSQL server connections this pool can use at a time. This does not affect the number of incoming connections. Each pool can handle a minimum of 5000 client connections. The default value is `10`.
-        :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] username: The name of the service user used to connect to the database. To set up proper dependencies please refer to this variable as a reference.
+        :param pulumi.Input[_builtins.str] database_name: Service database name. Maximum length: `63`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] pool_mode: PGBouncer pool mode. The possible values are `session`, `statement` and `transaction`. The default value is `transaction`.
+        :param pulumi.Input[_builtins.str] pool_name: PgBouncer connection pool name. Maximum length: `63`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.int] pool_size: Size of PGBouncer's PostgreSQL side connection pool. Value must be between `1` and `10000`. The default value is `10`.
+        :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] service_name: Service name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] username: Service username. Length must be between `1` and `64`.
         """
         ...
     @overload
@@ -327,7 +354,7 @@ class ConnectionPool(pulumi.CustomResource):
                  args: ConnectionPoolArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates and manages a [connection pool](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling) in an Aiven for PostgreSQL® service.
+        Creates and manages a [connection pool](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling) in an Aiven for PostgreSQL® service. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
 
         ## Example Usage
 
@@ -348,7 +375,7 @@ class ConnectionPool(pulumi.CustomResource):
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/connectionPool:ConnectionPool main PROJECT/SERVICE_NAME/POOL_NAME
+        $ pulumi import aiven:index/connectionPool:ConnectionPool example PROJECT/SERVICE_NAME/POOL_NAME
         ```
 
 
@@ -373,6 +400,7 @@ class ConnectionPool(pulumi.CustomResource):
                  pool_size: Optional[pulumi.Input[_builtins.int]] = None,
                  project: Optional[pulumi.Input[_builtins.str]] = None,
                  service_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 timeouts: Optional[pulumi.Input[Union['ConnectionPoolTimeoutsArgs', 'ConnectionPoolTimeoutsArgsDict']]] = None,
                  username: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -397,6 +425,7 @@ class ConnectionPool(pulumi.CustomResource):
             if service_name is None and not opts.urn:
                 raise TypeError("Missing required property 'service_name'")
             __props__.__dict__["service_name"] = service_name
+            __props__.__dict__["timeouts"] = timeouts
             __props__.__dict__["username"] = username
             __props__.__dict__["connection_uri"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["connectionUri"])
@@ -418,6 +447,7 @@ class ConnectionPool(pulumi.CustomResource):
             pool_size: Optional[pulumi.Input[_builtins.int]] = None,
             project: Optional[pulumi.Input[_builtins.str]] = None,
             service_name: Optional[pulumi.Input[_builtins.str]] = None,
+            timeouts: Optional[pulumi.Input[Union['ConnectionPoolTimeoutsArgs', 'ConnectionPoolTimeoutsArgsDict']]] = None,
             username: Optional[pulumi.Input[_builtins.str]] = None) -> 'ConnectionPool':
         """
         Get an existing ConnectionPool resource's state with the given name, id, and optional extra
@@ -426,14 +456,14 @@ class ConnectionPool(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] connection_uri: The URI for connecting to the pool.
-        :param pulumi.Input[_builtins.str] database_name: The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] pool_mode: The [operational mode](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling#pooling-modes). The possible values are `session`, `statement` and `transaction`. The default value is `transaction`.
-        :param pulumi.Input[_builtins.str] pool_name: Name of the pool. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.int] pool_size: The number of PostgreSQL server connections this pool can use at a time. This does not affect the number of incoming connections. Each pool can handle a minimum of 5000 client connections. The default value is `10`.
-        :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] username: The name of the service user used to connect to the database. To set up proper dependencies please refer to this variable as a reference.
+        :param pulumi.Input[_builtins.str] connection_uri: Connection URI for the DB pool.
+        :param pulumi.Input[_builtins.str] database_name: Service database name. Maximum length: `63`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] pool_mode: PGBouncer pool mode. The possible values are `session`, `statement` and `transaction`. The default value is `transaction`.
+        :param pulumi.Input[_builtins.str] pool_name: PgBouncer connection pool name. Maximum length: `63`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.int] pool_size: Size of PGBouncer's PostgreSQL side connection pool. Value must be between `1` and `10000`. The default value is `10`.
+        :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] service_name: Service name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] username: Service username. Length must be between `1` and `64`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -446,6 +476,7 @@ class ConnectionPool(pulumi.CustomResource):
         __props__.__dict__["pool_size"] = pool_size
         __props__.__dict__["project"] = project
         __props__.__dict__["service_name"] = service_name
+        __props__.__dict__["timeouts"] = timeouts
         __props__.__dict__["username"] = username
         return ConnectionPool(resource_name, opts=opts, __props__=__props__)
 
@@ -453,7 +484,7 @@ class ConnectionPool(pulumi.CustomResource):
     @pulumi.getter(name="connectionUri")
     def connection_uri(self) -> pulumi.Output[_builtins.str]:
         """
-        The URI for connecting to the pool.
+        Connection URI for the DB pool.
         """
         return pulumi.get(self, "connection_uri")
 
@@ -461,15 +492,15 @@ class ConnectionPool(pulumi.CustomResource):
     @pulumi.getter(name="databaseName")
     def database_name(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Service database name. Maximum length: `63`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "database_name")
 
     @_builtins.property
     @pulumi.getter(name="poolMode")
-    def pool_mode(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def pool_mode(self) -> pulumi.Output[_builtins.str]:
         """
-        The [operational mode](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling#pooling-modes). The possible values are `session`, `statement` and `transaction`. The default value is `transaction`.
+        PGBouncer pool mode. The possible values are `session`, `statement` and `transaction`. The default value is `transaction`.
         """
         return pulumi.get(self, "pool_mode")
 
@@ -477,15 +508,15 @@ class ConnectionPool(pulumi.CustomResource):
     @pulumi.getter(name="poolName")
     def pool_name(self) -> pulumi.Output[_builtins.str]:
         """
-        Name of the pool. Changing this property forces recreation of the resource.
+        PgBouncer connection pool name. Maximum length: `63`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "pool_name")
 
     @_builtins.property
     @pulumi.getter(name="poolSize")
-    def pool_size(self) -> pulumi.Output[Optional[_builtins.int]]:
+    def pool_size(self) -> pulumi.Output[_builtins.int]:
         """
-        The number of PostgreSQL server connections this pool can use at a time. This does not affect the number of incoming connections. Each pool can handle a minimum of 5000 client connections. The default value is `10`.
+        Size of PGBouncer's PostgreSQL side connection pool. Value must be between `1` and `10000`. The default value is `10`.
         """
         return pulumi.get(self, "pool_size")
 
@@ -493,7 +524,7 @@ class ConnectionPool(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Project name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -501,15 +532,20 @@ class ConnectionPool(pulumi.CustomResource):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Service name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
     @_builtins.property
     @pulumi.getter
+    def timeouts(self) -> pulumi.Output[Optional['outputs.ConnectionPoolTimeouts']]:
+        return pulumi.get(self, "timeouts")
+
+    @_builtins.property
+    @pulumi.getter
     def username(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The name of the service user used to connect to the database. To set up proper dependencies please refer to this variable as a reference.
+        Service username. Length must be between `1` and `64`.
         """
         return pulumi.get(self, "username")
 
