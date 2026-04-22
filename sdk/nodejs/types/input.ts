@@ -4659,6 +4659,14 @@ export interface KafkaTopicConfig {
      */
     messageFormatVersion?: pulumi.Input<string>;
     /**
+     * The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps later than the broker's timestamp.
+     */
+    messageTimestampAfterMaxMs?: pulumi.Input<number>;
+    /**
+     * The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps earlier than the broker's timestamp.
+     */
+    messageTimestampBeforeMaxMs?: pulumi.Input<number>;
+    /**
      * The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. This configuration is ignored if message.timestamp.type=LogAppendTime.
      */
     messageTimestampDifferenceMaxMs?: pulumi.Input<string>;
@@ -4683,7 +4691,7 @@ export interface KafkaTopicConfig {
      */
     preallocate?: pulumi.Input<boolean>;
     /**
-     * Indicates whether tiered storage should be enabled.
+     * Indicates whether tiered storage should be enabled. This is only available for services with Tiered Storage feature enabled.
      */
     remoteStorageEnable?: pulumi.Input<boolean>;
     /**
@@ -4695,7 +4703,7 @@ export interface KafkaTopicConfig {
      */
     retentionMs?: pulumi.Input<string>;
     /**
-     * This configuration controls the size of the index that maps offsets to file positions. We preallocate this index file and shrink it only after log rolls. You generally should not need to change this setting.
+     * This configuration controls the segment file size for the log. Retention and cleaning is always done a file at a time so a larger segment size means fewer files but less granular control over retention. Setting this to a very low value has consequences, and the Aiven management plane ignores values less than 10 megabytes.
      */
     segmentBytes?: pulumi.Input<string>;
     /**

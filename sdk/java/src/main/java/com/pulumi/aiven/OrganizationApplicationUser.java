@@ -63,6 +63,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="aiven:index/organizationApplicationUser:OrganizationApplicationUser")
 public class OrganizationApplicationUser extends com.pulumi.resources.CustomResource {
     /**
+     * Time this application user was created.
+     * 
+     */
+    @Export(name="createTime", refs={String.class}, tree="[0]")
+    private Output<String> createTime;
+
+    /**
+     * @return Time this application user was created.
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
+    }
+    /**
      * User Email.
      * 
      */

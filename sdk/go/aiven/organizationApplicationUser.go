@@ -49,6 +49,8 @@ import (
 type OrganizationApplicationUser struct {
 	pulumi.CustomResourceState
 
+	// Time this application user was created.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// User Email.
 	Email pulumi.StringOutput `pulumi:"email"`
 	// Alters super admin state of the organization application user. The default value is `false`. **Deprecated**: This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `OrganizationPermission` resource.
@@ -97,6 +99,8 @@ func GetOrganizationApplicationUser(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering OrganizationApplicationUser resources.
 type organizationApplicationUserState struct {
+	// Time this application user was created.
+	CreateTime *string `pulumi:"createTime"`
 	// User Email.
 	Email *string `pulumi:"email"`
 	// Alters super admin state of the organization application user. The default value is `false`. **Deprecated**: This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `OrganizationPermission` resource.
@@ -113,6 +117,8 @@ type organizationApplicationUserState struct {
 }
 
 type OrganizationApplicationUserState struct {
+	// Time this application user was created.
+	CreateTime pulumi.StringPtrInput
 	// User Email.
 	Email pulumi.StringPtrInput
 	// Alters super admin state of the organization application user. The default value is `false`. **Deprecated**: This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `OrganizationPermission` resource.
@@ -242,6 +248,11 @@ func (o OrganizationApplicationUserOutput) ToOrganizationApplicationUserOutput()
 
 func (o OrganizationApplicationUserOutput) ToOrganizationApplicationUserOutputWithContext(ctx context.Context) OrganizationApplicationUserOutput {
 	return o
+}
+
+// Time this application user was created.
+func (o OrganizationApplicationUserOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *OrganizationApplicationUser) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
 // User Email.

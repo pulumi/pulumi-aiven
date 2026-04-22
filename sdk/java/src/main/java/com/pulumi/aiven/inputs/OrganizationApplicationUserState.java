@@ -18,6 +18,21 @@ public final class OrganizationApplicationUserState extends com.pulumi.resources
     public static final OrganizationApplicationUserState Empty = new OrganizationApplicationUserState();
 
     /**
+     * Time this application user was created.
+     * 
+     */
+    @Import(name="createTime")
+    private @Nullable Output<String> createTime;
+
+    /**
+     * @return Time this application user was created.
+     * 
+     */
+    public Optional<Output<String>> createTime() {
+        return Optional.ofNullable(this.createTime);
+    }
+
+    /**
      * User Email.
      * 
      */
@@ -110,6 +125,7 @@ public final class OrganizationApplicationUserState extends com.pulumi.resources
     private OrganizationApplicationUserState() {}
 
     private OrganizationApplicationUserState(OrganizationApplicationUserState $) {
+        this.createTime = $.createTime;
         this.email = $.email;
         this.isSuperAdmin = $.isSuperAdmin;
         this.name = $.name;
@@ -134,6 +150,27 @@ public final class OrganizationApplicationUserState extends com.pulumi.resources
 
         public Builder(OrganizationApplicationUserState defaults) {
             $ = new OrganizationApplicationUserState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param createTime Time this application user was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(@Nullable Output<String> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        /**
+         * @param createTime Time this application user was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(String createTime) {
+            return createTime(Output.of(createTime));
         }
 
         /**

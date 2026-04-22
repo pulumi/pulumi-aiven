@@ -11820,6 +11820,10 @@ class KafkaTopicConfig(dict):
             suggest = "message_downconversion_enable"
         elif key == "messageFormatVersion":
             suggest = "message_format_version"
+        elif key == "messageTimestampAfterMaxMs":
+            suggest = "message_timestamp_after_max_ms"
+        elif key == "messageTimestampBeforeMaxMs":
+            suggest = "message_timestamp_before_max_ms"
         elif key == "messageTimestampDifferenceMaxMs":
             suggest = "message_timestamp_difference_max_ms"
         elif key == "messageTimestampType":
@@ -11873,6 +11877,8 @@ class KafkaTopicConfig(dict):
                  max_message_bytes: Optional[_builtins.str] = None,
                  message_downconversion_enable: Optional[_builtins.bool] = None,
                  message_format_version: Optional[_builtins.str] = None,
+                 message_timestamp_after_max_ms: Optional[_builtins.int] = None,
+                 message_timestamp_before_max_ms: Optional[_builtins.int] = None,
                  message_timestamp_difference_max_ms: Optional[_builtins.str] = None,
                  message_timestamp_type: Optional[_builtins.str] = None,
                  min_cleanable_dirty_ratio: Optional[_builtins.float] = None,
@@ -11902,16 +11908,18 @@ class KafkaTopicConfig(dict):
         :param _builtins.str max_message_bytes: The largest record batch size allowed by Kafka (after compression if compression is enabled). If this is increased and there are consumers older than 0.10.2, the consumers' fetch size must also be increased so that the they can fetch record batches this large. In the latest message format version, records are always grouped into batches for efficiency. In previous message format versions, uncompressed records are not grouped into batches and this limit only applies to a single record in that case.
         :param _builtins.bool message_downconversion_enable: This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests. When set to false, broker will not perform down-conversion for consumers expecting an older message format. The broker responds with UNSUPPORTED_VERSION error for consume requests from such older clients. This configuration does not apply to any message format conversion that might be required for replication to followers.
         :param _builtins.str message_format_version: Specify the message format version the broker will use to append messages to the logs. The value should be a valid ApiVersion. Some examples are: 0.8.2, 0.9.0.0, 0.10.0, check ApiVersion for more details. By setting a particular message format version, the user is certifying that all the existing messages on disk are smaller or equal than the specified version. Setting this value incorrectly will cause consumers with older versions to break as they will receive messages with a format that they don't understand. Deprecated in Kafka 4.0+: this configuration is removed and any supplied value will be ignored; for services upgraded to 4.0+, the returned value may be 'None'. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.0`, `4.0-IV0`, `4.1` and `4.1-IV0`.
+        :param _builtins.int message_timestamp_after_max_ms: The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps later than the broker's timestamp.
+        :param _builtins.int message_timestamp_before_max_ms: The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps earlier than the broker's timestamp.
         :param _builtins.str message_timestamp_difference_max_ms: The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. This configuration is ignored if message.timestamp.type=LogAppendTime.
         :param _builtins.str message_timestamp_type: Define whether the timestamp in the message is message create time or log append time. The possible values are `CreateTime` and `LogAppendTime`.
         :param _builtins.float min_cleanable_dirty_ratio: This configuration controls how frequently the log compactor will attempt to clean the log (assuming log compaction is enabled). By default we will avoid cleaning a log where more than 50% of the log has been compacted. This ratio bounds the maximum space wasted in the log by duplicates (at 50% at most 50% of the log could be duplicates). A higher ratio will mean fewer, more efficient cleanings but will mean more wasted space in the log. If the max.compaction.lag.ms or the min.compaction.lag.ms configurations are also specified, then the log compactor considers the log to be eligible for compaction as soon as either: (i) the dirty ratio threshold has been met and the log has had dirty (uncompacted) records for at least the min.compaction.lag.ms duration, or (ii) if the log has had dirty (uncompacted) records for at most the max.compaction.lag.ms period.
         :param _builtins.str min_compaction_lag_ms: The minimum time a message will remain uncompacted in the log. Only applicable for logs that are being compacted.
         :param _builtins.str min_insync_replicas: When a producer sets acks to 'all' (or '-1'), this configuration specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful. If this minimum cannot be met, then the producer will raise an exception (either NotEnoughReplicas or NotEnoughReplicasAfterAppend). When used together, min.insync.replicas and acks allow you to enforce greater durability guarantees. A typical scenario would be to create a topic with a replication factor of 3, set min.insync.replicas to 2, and produce with acks of 'all'. This will ensure that the producer raises an exception if a majority of replicas do not receive a write.
         :param _builtins.bool preallocate: True if we should preallocate the file on disk when creating a new log segment.
-        :param _builtins.bool remote_storage_enable: Indicates whether tiered storage should be enabled.
+        :param _builtins.bool remote_storage_enable: Indicates whether tiered storage should be enabled. This is only available for services with Tiered Storage feature enabled.
         :param _builtins.str retention_bytes: This configuration controls the maximum size a partition (which consists of log segments) can grow to before we will discard old log segments to free up space if we are using the 'delete' retention policy. By default there is no size limit only a time limit. Since this limit is enforced at the partition level, multiply it by the number of partitions to compute the topic retention in bytes.
         :param _builtins.str retention_ms: This configuration controls the maximum time we will retain a log before we will discard old log segments to free up space if we are using the 'delete' retention policy. This represents an SLA on how soon consumers must read their data. If set to -1, no time limit is applied.
-        :param _builtins.str segment_bytes: This configuration controls the size of the index that maps offsets to file positions. We preallocate this index file and shrink it only after log rolls. You generally should not need to change this setting.
+        :param _builtins.str segment_bytes: This configuration controls the segment file size for the log. Retention and cleaning is always done a file at a time so a larger segment size means fewer files but less granular control over retention. Setting this to a very low value has consequences, and the Aiven management plane ignores values less than 10 megabytes.
         :param _builtins.str segment_index_bytes: This configuration controls the size of the index that maps offsets to file positions. We preallocate this index file and shrink it only after log rolls. You generally should not need to change this setting.
         :param _builtins.str segment_jitter_ms: The maximum random jitter subtracted from the scheduled segment roll time to avoid thundering herds of segment rolling
         :param _builtins.str segment_ms: This configuration controls the period of time after which Kafka will force the log to roll even if the segment file isn't full to ensure that retention can delete or compact old data. Setting this to a very low value has consequences, and the Aiven management plane ignores values less than 10 seconds.
@@ -11945,6 +11953,10 @@ class KafkaTopicConfig(dict):
             pulumi.set(__self__, "message_downconversion_enable", message_downconversion_enable)
         if message_format_version is not None:
             pulumi.set(__self__, "message_format_version", message_format_version)
+        if message_timestamp_after_max_ms is not None:
+            pulumi.set(__self__, "message_timestamp_after_max_ms", message_timestamp_after_max_ms)
+        if message_timestamp_before_max_ms is not None:
+            pulumi.set(__self__, "message_timestamp_before_max_ms", message_timestamp_before_max_ms)
         if message_timestamp_difference_max_ms is not None:
             pulumi.set(__self__, "message_timestamp_difference_max_ms", message_timestamp_difference_max_ms)
         if message_timestamp_type is not None:
@@ -12087,6 +12099,22 @@ class KafkaTopicConfig(dict):
         return pulumi.get(self, "message_format_version")
 
     @_builtins.property
+    @pulumi.getter(name="messageTimestampAfterMaxMs")
+    def message_timestamp_after_max_ms(self) -> Optional[_builtins.int]:
+        """
+        The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps later than the broker's timestamp.
+        """
+        return pulumi.get(self, "message_timestamp_after_max_ms")
+
+    @_builtins.property
+    @pulumi.getter(name="messageTimestampBeforeMaxMs")
+    def message_timestamp_before_max_ms(self) -> Optional[_builtins.int]:
+        """
+        The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps earlier than the broker's timestamp.
+        """
+        return pulumi.get(self, "message_timestamp_before_max_ms")
+
+    @_builtins.property
     @pulumi.getter(name="messageTimestampDifferenceMaxMs")
     def message_timestamp_difference_max_ms(self) -> Optional[_builtins.str]:
         """
@@ -12138,7 +12166,7 @@ class KafkaTopicConfig(dict):
     @pulumi.getter(name="remoteStorageEnable")
     def remote_storage_enable(self) -> Optional[_builtins.bool]:
         """
-        Indicates whether tiered storage should be enabled.
+        Indicates whether tiered storage should be enabled. This is only available for services with Tiered Storage feature enabled.
         """
         return pulumi.get(self, "remote_storage_enable")
 
@@ -12162,7 +12190,7 @@ class KafkaTopicConfig(dict):
     @pulumi.getter(name="segmentBytes")
     def segment_bytes(self) -> Optional[_builtins.str]:
         """
-        This configuration controls the size of the index that maps offsets to file positions. We preallocate this index file and shrink it only after log rolls. You generally should not need to change this setting.
+        This configuration controls the segment file size for the log. Retention and cleaning is always done a file at a time so a larger segment size means fewer files but less granular control over retention. Setting this to a very low value has consequences, and the Aiven management plane ignores values less than 10 megabytes.
         """
         return pulumi.get(self, "segment_bytes")
 
@@ -37953,6 +37981,8 @@ class GetKafkaTopicConfigResult(dict):
                  max_message_bytes: Optional[_builtins.str] = None,
                  message_downconversion_enable: Optional[_builtins.bool] = None,
                  message_format_version: Optional[_builtins.str] = None,
+                 message_timestamp_after_max_ms: Optional[_builtins.int] = None,
+                 message_timestamp_before_max_ms: Optional[_builtins.int] = None,
                  message_timestamp_difference_max_ms: Optional[_builtins.str] = None,
                  message_timestamp_type: Optional[_builtins.str] = None,
                  min_cleanable_dirty_ratio: Optional[_builtins.float] = None,
@@ -37982,16 +38012,18 @@ class GetKafkaTopicConfigResult(dict):
         :param _builtins.str max_message_bytes: The largest record batch size allowed by Kafka (after compression if compression is enabled). If this is increased and there are consumers older than 0.10.2, the consumers' fetch size must also be increased so that the they can fetch record batches this large. In the latest message format version, records are always grouped into batches for efficiency. In previous message format versions, uncompressed records are not grouped into batches and this limit only applies to a single record in that case.
         :param _builtins.bool message_downconversion_enable: This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests. When set to false, broker will not perform down-conversion for consumers expecting an older message format. The broker responds with UNSUPPORTED_VERSION error for consume requests from such older clients. This configuration does not apply to any message format conversion that might be required for replication to followers.
         :param _builtins.str message_format_version: Specify the message format version the broker will use to append messages to the logs. The value should be a valid ApiVersion. Some examples are: 0.8.2, 0.9.0.0, 0.10.0, check ApiVersion for more details. By setting a particular message format version, the user is certifying that all the existing messages on disk are smaller or equal than the specified version. Setting this value incorrectly will cause consumers with older versions to break as they will receive messages with a format that they don't understand. Deprecated in Kafka 4.0+: this configuration is removed and any supplied value will be ignored; for services upgraded to 4.0+, the returned value may be 'None'. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.0`, `4.0-IV0`, `4.1` and `4.1-IV0`.
+        :param _builtins.int message_timestamp_after_max_ms: The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps later than the broker's timestamp.
+        :param _builtins.int message_timestamp_before_max_ms: The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps earlier than the broker's timestamp.
         :param _builtins.str message_timestamp_difference_max_ms: The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. This configuration is ignored if message.timestamp.type=LogAppendTime.
         :param _builtins.str message_timestamp_type: Define whether the timestamp in the message is message create time or log append time. The possible values are `CreateTime` and `LogAppendTime`.
         :param _builtins.float min_cleanable_dirty_ratio: This configuration controls how frequently the log compactor will attempt to clean the log (assuming log compaction is enabled). By default we will avoid cleaning a log where more than 50% of the log has been compacted. This ratio bounds the maximum space wasted in the log by duplicates (at 50% at most 50% of the log could be duplicates). A higher ratio will mean fewer, more efficient cleanings but will mean more wasted space in the log. If the max.compaction.lag.ms or the min.compaction.lag.ms configurations are also specified, then the log compactor considers the log to be eligible for compaction as soon as either: (i) the dirty ratio threshold has been met and the log has had dirty (uncompacted) records for at least the min.compaction.lag.ms duration, or (ii) if the log has had dirty (uncompacted) records for at most the max.compaction.lag.ms period.
         :param _builtins.str min_compaction_lag_ms: The minimum time a message will remain uncompacted in the log. Only applicable for logs that are being compacted.
         :param _builtins.str min_insync_replicas: When a producer sets acks to 'all' (or '-1'), this configuration specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful. If this minimum cannot be met, then the producer will raise an exception (either NotEnoughReplicas or NotEnoughReplicasAfterAppend). When used together, min.insync.replicas and acks allow you to enforce greater durability guarantees. A typical scenario would be to create a topic with a replication factor of 3, set min.insync.replicas to 2, and produce with acks of 'all'. This will ensure that the producer raises an exception if a majority of replicas do not receive a write.
         :param _builtins.bool preallocate: True if we should preallocate the file on disk when creating a new log segment.
-        :param _builtins.bool remote_storage_enable: Indicates whether tiered storage should be enabled.
+        :param _builtins.bool remote_storage_enable: Indicates whether tiered storage should be enabled. This is only available for services with Tiered Storage feature enabled.
         :param _builtins.str retention_bytes: This configuration controls the maximum size a partition (which consists of log segments) can grow to before we will discard old log segments to free up space if we are using the 'delete' retention policy. By default there is no size limit only a time limit. Since this limit is enforced at the partition level, multiply it by the number of partitions to compute the topic retention in bytes.
         :param _builtins.str retention_ms: This configuration controls the maximum time we will retain a log before we will discard old log segments to free up space if we are using the 'delete' retention policy. This represents an SLA on how soon consumers must read their data. If set to -1, no time limit is applied.
-        :param _builtins.str segment_bytes: This configuration controls the size of the index that maps offsets to file positions. We preallocate this index file and shrink it only after log rolls. You generally should not need to change this setting.
+        :param _builtins.str segment_bytes: This configuration controls the segment file size for the log. Retention and cleaning is always done a file at a time so a larger segment size means fewer files but less granular control over retention. Setting this to a very low value has consequences, and the Aiven management plane ignores values less than 10 megabytes.
         :param _builtins.str segment_index_bytes: This configuration controls the size of the index that maps offsets to file positions. We preallocate this index file and shrink it only after log rolls. You generally should not need to change this setting.
         :param _builtins.str segment_jitter_ms: The maximum random jitter subtracted from the scheduled segment roll time to avoid thundering herds of segment rolling
         :param _builtins.str segment_ms: This configuration controls the period of time after which Kafka will force the log to roll even if the segment file isn't full to ensure that retention can delete or compact old data. Setting this to a very low value has consequences, and the Aiven management plane ignores values less than 10 seconds.
@@ -38025,6 +38057,10 @@ class GetKafkaTopicConfigResult(dict):
             pulumi.set(__self__, "message_downconversion_enable", message_downconversion_enable)
         if message_format_version is not None:
             pulumi.set(__self__, "message_format_version", message_format_version)
+        if message_timestamp_after_max_ms is not None:
+            pulumi.set(__self__, "message_timestamp_after_max_ms", message_timestamp_after_max_ms)
+        if message_timestamp_before_max_ms is not None:
+            pulumi.set(__self__, "message_timestamp_before_max_ms", message_timestamp_before_max_ms)
         if message_timestamp_difference_max_ms is not None:
             pulumi.set(__self__, "message_timestamp_difference_max_ms", message_timestamp_difference_max_ms)
         if message_timestamp_type is not None:
@@ -38167,6 +38203,22 @@ class GetKafkaTopicConfigResult(dict):
         return pulumi.get(self, "message_format_version")
 
     @_builtins.property
+    @pulumi.getter(name="messageTimestampAfterMaxMs")
+    def message_timestamp_after_max_ms(self) -> Optional[_builtins.int]:
+        """
+        The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps later than the broker's timestamp.
+        """
+        return pulumi.get(self, "message_timestamp_after_max_ms")
+
+    @_builtins.property
+    @pulumi.getter(name="messageTimestampBeforeMaxMs")
+    def message_timestamp_before_max_ms(self) -> Optional[_builtins.int]:
+        """
+        The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps earlier than the broker's timestamp.
+        """
+        return pulumi.get(self, "message_timestamp_before_max_ms")
+
+    @_builtins.property
     @pulumi.getter(name="messageTimestampDifferenceMaxMs")
     def message_timestamp_difference_max_ms(self) -> Optional[_builtins.str]:
         """
@@ -38218,7 +38270,7 @@ class GetKafkaTopicConfigResult(dict):
     @pulumi.getter(name="remoteStorageEnable")
     def remote_storage_enable(self) -> Optional[_builtins.bool]:
         """
-        Indicates whether tiered storage should be enabled.
+        Indicates whether tiered storage should be enabled. This is only available for services with Tiered Storage feature enabled.
         """
         return pulumi.get(self, "remote_storage_enable")
 
@@ -38242,7 +38294,7 @@ class GetKafkaTopicConfigResult(dict):
     @pulumi.getter(name="segmentBytes")
     def segment_bytes(self) -> Optional[_builtins.str]:
         """
-        This configuration controls the size of the index that maps offsets to file positions. We preallocate this index file and shrink it only after log rolls. You generally should not need to change this setting.
+        This configuration controls the segment file size for the log. Retention and cleaning is always done a file at a time so a larger segment size means fewer files but less granular control over retention. Setting this to a very low value has consequences, and the Aiven management plane ignores values less than 10 megabytes.
         """
         return pulumi.get(self, "segment_bytes")
 

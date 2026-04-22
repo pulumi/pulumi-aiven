@@ -41,6 +41,12 @@ namespace Pulumi.Aiven
     public partial class OrganizationApplicationUser : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Time this application user was created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
         /// User Email.
         /// </summary>
         [Output("email")]
@@ -148,6 +154,12 @@ namespace Pulumi.Aiven
 
     public sealed class OrganizationApplicationUserState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Time this application user was created.
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
         /// <summary>
         /// User Email.
         /// </summary>

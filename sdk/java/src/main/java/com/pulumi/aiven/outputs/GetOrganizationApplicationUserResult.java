@@ -15,6 +15,11 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetOrganizationApplicationUserResult {
     /**
+     * @return Time this application user was created.
+     * 
+     */
+    private String createTime;
+    /**
      * @return User Email.
      * 
      */
@@ -51,6 +56,13 @@ public final class GetOrganizationApplicationUserResult {
     private String userId;
 
     private GetOrganizationApplicationUserResult() {}
+    /**
+     * @return Time this application user was created.
+     * 
+     */
+    public String createTime() {
+        return this.createTime;
+    }
     /**
      * @return User Email.
      * 
@@ -110,6 +122,7 @@ public final class GetOrganizationApplicationUserResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String createTime;
         private String email;
         private String id;
         private Boolean isSuperAdmin;
@@ -120,6 +133,7 @@ public final class GetOrganizationApplicationUserResult {
         public Builder() {}
         public Builder(GetOrganizationApplicationUserResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.createTime = defaults.createTime;
     	      this.email = defaults.email;
     	      this.id = defaults.id;
     	      this.isSuperAdmin = defaults.isSuperAdmin;
@@ -129,6 +143,14 @@ public final class GetOrganizationApplicationUserResult {
     	      this.userId = defaults.userId;
         }
 
+        @CustomType.Setter
+        public Builder createTime(String createTime) {
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationApplicationUserResult", "createTime");
+            }
+            this.createTime = createTime;
+            return this;
+        }
         @CustomType.Setter
         public Builder email(String email) {
             if (email == null) {
@@ -185,6 +207,7 @@ public final class GetOrganizationApplicationUserResult {
         }
         public GetOrganizationApplicationUserResult build() {
             final var _resultValue = new GetOrganizationApplicationUserResult();
+            _resultValue.createTime = createTime;
             _resultValue.email = email;
             _resultValue.id = id;
             _resultValue.isSuperAdmin = isSuperAdmin;

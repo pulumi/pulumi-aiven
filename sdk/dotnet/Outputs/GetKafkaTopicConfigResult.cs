@@ -70,6 +70,14 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? MessageFormatVersion;
         /// <summary>
+        /// The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps later than the broker's timestamp.
+        /// </summary>
+        public readonly int? MessageTimestampAfterMaxMs;
+        /// <summary>
+        /// The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps earlier than the broker's timestamp.
+        /// </summary>
+        public readonly int? MessageTimestampBeforeMaxMs;
+        /// <summary>
         /// The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. This configuration is ignored if message.timestamp.type=LogAppendTime.
         /// </summary>
         public readonly string? MessageTimestampDifferenceMaxMs;
@@ -94,7 +102,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? Preallocate;
         /// <summary>
-        /// Indicates whether tiered storage should be enabled.
+        /// Indicates whether tiered storage should be enabled. This is only available for services with Tiered Storage feature enabled.
         /// </summary>
         public readonly bool? RemoteStorageEnable;
         /// <summary>
@@ -106,7 +114,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? RetentionMs;
         /// <summary>
-        /// This configuration controls the size of the index that maps offsets to file positions. We preallocate this index file and shrink it only after log rolls. You generally should not need to change this setting.
+        /// This configuration controls the segment file size for the log. Retention and cleaning is always done a file at a time so a larger segment size means fewer files but less granular control over retention. Setting this to a very low value has consequences, and the Aiven management plane ignores values less than 10 megabytes.
         /// </summary>
         public readonly string? SegmentBytes;
         /// <summary>
@@ -156,6 +164,10 @@ namespace Pulumi.Aiven.Outputs
 
             string? messageFormatVersion,
 
+            int? messageTimestampAfterMaxMs,
+
+            int? messageTimestampBeforeMaxMs,
+
             string? messageTimestampDifferenceMaxMs,
 
             string? messageTimestampType,
@@ -198,6 +210,8 @@ namespace Pulumi.Aiven.Outputs
             MaxMessageBytes = maxMessageBytes;
             MessageDownconversionEnable = messageDownconversionEnable;
             MessageFormatVersion = messageFormatVersion;
+            MessageTimestampAfterMaxMs = messageTimestampAfterMaxMs;
+            MessageTimestampBeforeMaxMs = messageTimestampBeforeMaxMs;
             MessageTimestampDifferenceMaxMs = messageTimestampDifferenceMaxMs;
             MessageTimestampType = messageTimestampType;
             MinCleanableDirtyRatio = minCleanableDirtyRatio;

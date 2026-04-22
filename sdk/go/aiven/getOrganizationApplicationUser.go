@@ -33,6 +33,8 @@ type LookupOrganizationApplicationUserArgs struct {
 
 // A collection of values returned by getOrganizationApplicationUser.
 type LookupOrganizationApplicationUserResult struct {
+	// Time this application user was created.
+	CreateTime string `pulumi:"createTime"`
 	// User Email.
 	Email string `pulumi:"email"`
 	// Resource ID composed as: `organization_id/user_id`.
@@ -85,6 +87,11 @@ func (o LookupOrganizationApplicationUserResultOutput) ToLookupOrganizationAppli
 
 func (o LookupOrganizationApplicationUserResultOutput) ToLookupOrganizationApplicationUserResultOutputWithContext(ctx context.Context) LookupOrganizationApplicationUserResultOutput {
 	return o
+}
+
+// Time this application user was created.
+func (o LookupOrganizationApplicationUserResultOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOrganizationApplicationUserResult) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
 // User Email.
