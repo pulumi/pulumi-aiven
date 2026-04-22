@@ -93,6 +93,7 @@ class OrganizationApplicationUserArgs:
 @pulumi.input_type
 class _OrganizationApplicationUserState:
     def __init__(__self__, *,
+                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
                  email: Optional[pulumi.Input[_builtins.str]] = None,
                  is_super_admin: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -102,12 +103,15 @@ class _OrganizationApplicationUserState:
         """
         Input properties used for looking up and filtering OrganizationApplicationUser resources.
 
+        :param pulumi.Input[_builtins.str] create_time: Time this application user was created.
         :param pulumi.Input[_builtins.str] email: User Email.
         :param pulumi.Input[_builtins.bool] is_super_admin: Alters super admin state of the organization application user. The default value is `false`. **Deprecated**: This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `OrganizationPermission` resource.
         :param pulumi.Input[_builtins.str] name: Name.
         :param pulumi.Input[_builtins.str] organization_id: ID of an organization. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] user_id: User ID.
         """
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
         if email is not None:
             pulumi.set(__self__, "email", email)
         if is_super_admin is not None:
@@ -123,6 +127,18 @@ class _OrganizationApplicationUserState:
             pulumi.set(__self__, "timeouts", timeouts)
         if user_id is not None:
             pulumi.set(__self__, "user_id", user_id)
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Time this application user was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
@@ -294,6 +310,7 @@ class OrganizationApplicationUser(pulumi.CustomResource):
                 raise TypeError("Missing required property 'organization_id'")
             __props__.__dict__["organization_id"] = organization_id
             __props__.__dict__["timeouts"] = timeouts
+            __props__.__dict__["create_time"] = None
             __props__.__dict__["email"] = None
             __props__.__dict__["user_id"] = None
         super(OrganizationApplicationUser, __self__).__init__(
@@ -306,6 +323,7 @@ class OrganizationApplicationUser(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: Optional[pulumi.Input[_builtins.str]] = None,
             email: Optional[pulumi.Input[_builtins.str]] = None,
             is_super_admin: Optional[pulumi.Input[_builtins.bool]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -319,6 +337,7 @@ class OrganizationApplicationUser(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] create_time: Time this application user was created.
         :param pulumi.Input[_builtins.str] email: User Email.
         :param pulumi.Input[_builtins.bool] is_super_admin: Alters super admin state of the organization application user. The default value is `false`. **Deprecated**: This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `OrganizationPermission` resource.
         :param pulumi.Input[_builtins.str] name: Name.
@@ -329,6 +348,7 @@ class OrganizationApplicationUser(pulumi.CustomResource):
 
         __props__ = _OrganizationApplicationUserState.__new__(_OrganizationApplicationUserState)
 
+        __props__.__dict__["create_time"] = create_time
         __props__.__dict__["email"] = email
         __props__.__dict__["is_super_admin"] = is_super_admin
         __props__.__dict__["name"] = name
@@ -336,6 +356,14 @@ class OrganizationApplicationUser(pulumi.CustomResource):
         __props__.__dict__["timeouts"] = timeouts
         __props__.__dict__["user_id"] = user_id
         return OrganizationApplicationUser(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[_builtins.str]:
+        """
+        Time this application user was created.
+        """
+        return pulumi.get(self, "create_time")
 
     @_builtins.property
     @pulumi.getter

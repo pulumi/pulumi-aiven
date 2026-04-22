@@ -38,6 +38,10 @@ export interface GetOrganizationApplicationUserArgs {
  */
 export interface GetOrganizationApplicationUserResult {
     /**
+     * Time this application user was created.
+     */
+    readonly createTime: string;
+    /**
      * User Email.
      */
     readonly email: string;

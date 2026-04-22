@@ -6,6 +6,7 @@ package com.pulumi.aiven.outputs;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
 import java.lang.Double;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -84,6 +85,16 @@ public final class GetKafkaTopicConfig {
      */
     private @Nullable String messageFormatVersion;
     /**
+     * @return The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps later than the broker&#39;s timestamp.
+     * 
+     */
+    private @Nullable Integer messageTimestampAfterMaxMs;
+    /**
+     * @return The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps earlier than the broker&#39;s timestamp.
+     * 
+     */
+    private @Nullable Integer messageTimestampBeforeMaxMs;
+    /**
      * @return The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. This configuration is ignored if message.timestamp.type=LogAppendTime.
      * 
      */
@@ -114,7 +125,7 @@ public final class GetKafkaTopicConfig {
      */
     private @Nullable Boolean preallocate;
     /**
-     * @return Indicates whether tiered storage should be enabled.
+     * @return Indicates whether tiered storage should be enabled. This is only available for services with Tiered Storage feature enabled.
      * 
      */
     private @Nullable Boolean remoteStorageEnable;
@@ -129,7 +140,7 @@ public final class GetKafkaTopicConfig {
      */
     private @Nullable String retentionMs;
     /**
-     * @return This configuration controls the size of the index that maps offsets to file positions. We preallocate this index file and shrink it only after log rolls. You generally should not need to change this setting.
+     * @return This configuration controls the segment file size for the log. Retention and cleaning is always done a file at a time so a larger segment size means fewer files but less granular control over retention. Setting this to a very low value has consequences, and the Aiven management plane ignores values less than 10 megabytes.
      * 
      */
     private @Nullable String segmentBytes;
@@ -254,6 +265,20 @@ public final class GetKafkaTopicConfig {
         return Optional.ofNullable(this.messageFormatVersion);
     }
     /**
+     * @return The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps later than the broker&#39;s timestamp.
+     * 
+     */
+    public Optional<Integer> messageTimestampAfterMaxMs() {
+        return Optional.ofNullable(this.messageTimestampAfterMaxMs);
+    }
+    /**
+     * @return The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps earlier than the broker&#39;s timestamp.
+     * 
+     */
+    public Optional<Integer> messageTimestampBeforeMaxMs() {
+        return Optional.ofNullable(this.messageTimestampBeforeMaxMs);
+    }
+    /**
      * @return The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. This configuration is ignored if message.timestamp.type=LogAppendTime.
      * 
      */
@@ -296,7 +321,7 @@ public final class GetKafkaTopicConfig {
         return Optional.ofNullable(this.preallocate);
     }
     /**
-     * @return Indicates whether tiered storage should be enabled.
+     * @return Indicates whether tiered storage should be enabled. This is only available for services with Tiered Storage feature enabled.
      * 
      */
     public Optional<Boolean> remoteStorageEnable() {
@@ -317,7 +342,7 @@ public final class GetKafkaTopicConfig {
         return Optional.ofNullable(this.retentionMs);
     }
     /**
-     * @return This configuration controls the size of the index that maps offsets to file positions. We preallocate this index file and shrink it only after log rolls. You generally should not need to change this setting.
+     * @return This configuration controls the segment file size for the log. Retention and cleaning is always done a file at a time so a larger segment size means fewer files but less granular control over retention. Setting this to a very low value has consequences, and the Aiven management plane ignores values less than 10 megabytes.
      * 
      */
     public Optional<String> segmentBytes() {
@@ -375,6 +400,8 @@ public final class GetKafkaTopicConfig {
         private @Nullable String maxMessageBytes;
         private @Nullable Boolean messageDownconversionEnable;
         private @Nullable String messageFormatVersion;
+        private @Nullable Integer messageTimestampAfterMaxMs;
+        private @Nullable Integer messageTimestampBeforeMaxMs;
         private @Nullable String messageTimestampDifferenceMaxMs;
         private @Nullable String messageTimestampType;
         private @Nullable Double minCleanableDirtyRatio;
@@ -406,6 +433,8 @@ public final class GetKafkaTopicConfig {
     	      this.maxMessageBytes = defaults.maxMessageBytes;
     	      this.messageDownconversionEnable = defaults.messageDownconversionEnable;
     	      this.messageFormatVersion = defaults.messageFormatVersion;
+    	      this.messageTimestampAfterMaxMs = defaults.messageTimestampAfterMaxMs;
+    	      this.messageTimestampBeforeMaxMs = defaults.messageTimestampBeforeMaxMs;
     	      this.messageTimestampDifferenceMaxMs = defaults.messageTimestampDifferenceMaxMs;
     	      this.messageTimestampType = defaults.messageTimestampType;
     	      this.minCleanableDirtyRatio = defaults.minCleanableDirtyRatio;
@@ -504,6 +533,18 @@ public final class GetKafkaTopicConfig {
         public Builder messageFormatVersion(@Nullable String messageFormatVersion) {
 
             this.messageFormatVersion = messageFormatVersion;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder messageTimestampAfterMaxMs(@Nullable Integer messageTimestampAfterMaxMs) {
+
+            this.messageTimestampAfterMaxMs = messageTimestampAfterMaxMs;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder messageTimestampBeforeMaxMs(@Nullable Integer messageTimestampBeforeMaxMs) {
+
+            this.messageTimestampBeforeMaxMs = messageTimestampBeforeMaxMs;
             return this;
         }
         @CustomType.Setter
@@ -606,6 +647,8 @@ public final class GetKafkaTopicConfig {
             _resultValue.maxMessageBytes = maxMessageBytes;
             _resultValue.messageDownconversionEnable = messageDownconversionEnable;
             _resultValue.messageFormatVersion = messageFormatVersion;
+            _resultValue.messageTimestampAfterMaxMs = messageTimestampAfterMaxMs;
+            _resultValue.messageTimestampBeforeMaxMs = messageTimestampBeforeMaxMs;
             _resultValue.messageTimestampDifferenceMaxMs = messageTimestampDifferenceMaxMs;
             _resultValue.messageTimestampType = messageTimestampType;
             _resultValue.minCleanableDirtyRatio = minCleanableDirtyRatio;

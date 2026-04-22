@@ -82,6 +82,10 @@ namespace Pulumi.Aiven
     public sealed class GetOrganizationApplicationUserResult
     {
         /// <summary>
+        /// Time this application user was created.
+        /// </summary>
+        public readonly string CreateTime;
+        /// <summary>
         /// User Email.
         /// </summary>
         public readonly string Email;
@@ -109,6 +113,8 @@ namespace Pulumi.Aiven
 
         [OutputConstructor]
         private GetOrganizationApplicationUserResult(
+            string createTime,
+
             string email,
 
             string id,
@@ -123,6 +129,7 @@ namespace Pulumi.Aiven
 
             string userId)
         {
+            CreateTime = createTime;
             Email = email;
             Id = id;
             IsSuperAdmin = isSuperAdmin;

@@ -28,7 +28,10 @@ class GetOrganizationApplicationUserResult:
     """
     A collection of values returned by getOrganizationApplicationUser.
     """
-    def __init__(__self__, email=None, id=None, is_super_admin=None, name=None, organization_id=None, timeouts=None, user_id=None):
+    def __init__(__self__, create_time=None, email=None, id=None, is_super_admin=None, name=None, organization_id=None, timeouts=None, user_id=None):
+        if create_time and not isinstance(create_time, str):
+            raise TypeError("Expected argument 'create_time' to be a str")
+        pulumi.set(__self__, "create_time", create_time)
         if email and not isinstance(email, str):
             raise TypeError("Expected argument 'email' to be a str")
         pulumi.set(__self__, "email", email)
@@ -50,6 +53,14 @@ class GetOrganizationApplicationUserResult:
         if user_id and not isinstance(user_id, str):
             raise TypeError("Expected argument 'user_id' to be a str")
         pulumi.set(__self__, "user_id", user_id)
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> _builtins.str:
+        """
+        Time this application user was created.
+        """
+        return pulumi.get(self, "create_time")
 
     @_builtins.property
     @pulumi.getter
@@ -112,6 +123,7 @@ class AwaitableGetOrganizationApplicationUserResult(GetOrganizationApplicationUs
         if False:
             yield self
         return GetOrganizationApplicationUserResult(
+            create_time=self.create_time,
             email=self.email,
             id=self.id,
             is_super_admin=self.is_super_admin,
@@ -140,6 +152,7 @@ def get_organization_application_user(organization_id: Optional[_builtins.str] =
     __ret__ = pulumi.runtime.invoke('aiven:index/getOrganizationApplicationUser:getOrganizationApplicationUser', __args__, opts=opts, typ=GetOrganizationApplicationUserResult).value
 
     return AwaitableGetOrganizationApplicationUserResult(
+        create_time=pulumi.get(__ret__, 'create_time'),
         email=pulumi.get(__ret__, 'email'),
         id=pulumi.get(__ret__, 'id'),
         is_super_admin=pulumi.get(__ret__, 'is_super_admin'),
@@ -165,6 +178,7 @@ def get_organization_application_user_output(organization_id: Optional[pulumi.In
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('aiven:index/getOrganizationApplicationUser:getOrganizationApplicationUser', __args__, opts=opts, typ=GetOrganizationApplicationUserResult)
     return __ret__.apply(lambda __response__: GetOrganizationApplicationUserResult(
+        create_time=pulumi.get(__response__, 'create_time'),
         email=pulumi.get(__response__, 'email'),
         id=pulumi.get(__response__, 'id'),
         is_super_admin=pulumi.get(__response__, 'is_super_admin'),

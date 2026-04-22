@@ -56,6 +56,10 @@ export class OrganizationApplicationUser extends pulumi.CustomResource {
     }
 
     /**
+     * Time this application user was created.
+     */
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
+    /**
      * User Email.
      */
     declare public /*out*/ readonly email: pulumi.Output<string>;
@@ -92,6 +96,7 @@ export class OrganizationApplicationUser extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OrganizationApplicationUserState | undefined;
+            resourceInputs["createTime"] = state?.createTime;
             resourceInputs["email"] = state?.email;
             resourceInputs["isSuperAdmin"] = state?.isSuperAdmin;
             resourceInputs["name"] = state?.name;
@@ -107,6 +112,7 @@ export class OrganizationApplicationUser extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["organizationId"] = args?.organizationId;
             resourceInputs["timeouts"] = args?.timeouts;
+            resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["email"] = undefined /*out*/;
             resourceInputs["userId"] = undefined /*out*/;
         }
@@ -119,6 +125,10 @@ export class OrganizationApplicationUser extends pulumi.CustomResource {
  * Input properties used for looking up and filtering OrganizationApplicationUser resources.
  */
 export interface OrganizationApplicationUserState {
+    /**
+     * Time this application user was created.
+     */
+    createTime?: pulumi.Input<string>;
     /**
      * User Email.
      */

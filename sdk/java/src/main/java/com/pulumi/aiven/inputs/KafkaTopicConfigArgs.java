@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Double;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -228,6 +229,36 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps later than the broker&#39;s timestamp.
+     * 
+     */
+    @Import(name="messageTimestampAfterMaxMs")
+    private @Nullable Output<Integer> messageTimestampAfterMaxMs;
+
+    /**
+     * @return The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps later than the broker&#39;s timestamp.
+     * 
+     */
+    public Optional<Output<Integer>> messageTimestampAfterMaxMs() {
+        return Optional.ofNullable(this.messageTimestampAfterMaxMs);
+    }
+
+    /**
+     * The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps earlier than the broker&#39;s timestamp.
+     * 
+     */
+    @Import(name="messageTimestampBeforeMaxMs")
+    private @Nullable Output<Integer> messageTimestampBeforeMaxMs;
+
+    /**
+     * @return The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps earlier than the broker&#39;s timestamp.
+     * 
+     */
+    public Optional<Output<Integer>> messageTimestampBeforeMaxMs() {
+        return Optional.ofNullable(this.messageTimestampBeforeMaxMs);
+    }
+
+    /**
      * The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. This configuration is ignored if message.timestamp.type=LogAppendTime.
      * 
      */
@@ -318,14 +349,14 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Indicates whether tiered storage should be enabled.
+     * Indicates whether tiered storage should be enabled. This is only available for services with Tiered Storage feature enabled.
      * 
      */
     @Import(name="remoteStorageEnable")
     private @Nullable Output<Boolean> remoteStorageEnable;
 
     /**
-     * @return Indicates whether tiered storage should be enabled.
+     * @return Indicates whether tiered storage should be enabled. This is only available for services with Tiered Storage feature enabled.
      * 
      */
     public Optional<Output<Boolean>> remoteStorageEnable() {
@@ -363,14 +394,14 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * This configuration controls the size of the index that maps offsets to file positions. We preallocate this index file and shrink it only after log rolls. You generally should not need to change this setting.
+     * This configuration controls the segment file size for the log. Retention and cleaning is always done a file at a time so a larger segment size means fewer files but less granular control over retention. Setting this to a very low value has consequences, and the Aiven management plane ignores values less than 10 megabytes.
      * 
      */
     @Import(name="segmentBytes")
     private @Nullable Output<String> segmentBytes;
 
     /**
-     * @return This configuration controls the size of the index that maps offsets to file positions. We preallocate this index file and shrink it only after log rolls. You generally should not need to change this setting.
+     * @return This configuration controls the segment file size for the log. Retention and cleaning is always done a file at a time so a larger segment size means fewer files but less granular control over retention. Setting this to a very low value has consequences, and the Aiven management plane ignores values less than 10 megabytes.
      * 
      */
     public Optional<Output<String>> segmentBytes() {
@@ -454,6 +485,8 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         this.maxMessageBytes = $.maxMessageBytes;
         this.messageDownconversionEnable = $.messageDownconversionEnable;
         this.messageFormatVersion = $.messageFormatVersion;
+        this.messageTimestampAfterMaxMs = $.messageTimestampAfterMaxMs;
+        this.messageTimestampBeforeMaxMs = $.messageTimestampBeforeMaxMs;
         this.messageTimestampDifferenceMaxMs = $.messageTimestampDifferenceMaxMs;
         this.messageTimestampType = $.messageTimestampType;
         this.minCleanableDirtyRatio = $.minCleanableDirtyRatio;
@@ -783,6 +816,48 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
+         * @param messageTimestampAfterMaxMs The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps later than the broker&#39;s timestamp.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder messageTimestampAfterMaxMs(@Nullable Output<Integer> messageTimestampAfterMaxMs) {
+            $.messageTimestampAfterMaxMs = messageTimestampAfterMaxMs;
+            return this;
+        }
+
+        /**
+         * @param messageTimestampAfterMaxMs The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps later than the broker&#39;s timestamp.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder messageTimestampAfterMaxMs(Integer messageTimestampAfterMaxMs) {
+            return messageTimestampAfterMaxMs(Output.of(messageTimestampAfterMaxMs));
+        }
+
+        /**
+         * @param messageTimestampBeforeMaxMs The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps earlier than the broker&#39;s timestamp.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder messageTimestampBeforeMaxMs(@Nullable Output<Integer> messageTimestampBeforeMaxMs) {
+            $.messageTimestampBeforeMaxMs = messageTimestampBeforeMaxMs;
+            return this;
+        }
+
+        /**
+         * @param messageTimestampBeforeMaxMs The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps earlier than the broker&#39;s timestamp.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder messageTimestampBeforeMaxMs(Integer messageTimestampBeforeMaxMs) {
+            return messageTimestampBeforeMaxMs(Output.of(messageTimestampBeforeMaxMs));
+        }
+
+        /**
          * @param messageTimestampDifferenceMaxMs The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. This configuration is ignored if message.timestamp.type=LogAppendTime.
          * 
          * @return builder
@@ -909,7 +984,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param remoteStorageEnable Indicates whether tiered storage should be enabled.
+         * @param remoteStorageEnable Indicates whether tiered storage should be enabled. This is only available for services with Tiered Storage feature enabled.
          * 
          * @return builder
          * 
@@ -920,7 +995,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param remoteStorageEnable Indicates whether tiered storage should be enabled.
+         * @param remoteStorageEnable Indicates whether tiered storage should be enabled. This is only available for services with Tiered Storage feature enabled.
          * 
          * @return builder
          * 
@@ -972,7 +1047,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param segmentBytes This configuration controls the size of the index that maps offsets to file positions. We preallocate this index file and shrink it only after log rolls. You generally should not need to change this setting.
+         * @param segmentBytes This configuration controls the segment file size for the log. Retention and cleaning is always done a file at a time so a larger segment size means fewer files but less granular control over retention. Setting this to a very low value has consequences, and the Aiven management plane ignores values less than 10 megabytes.
          * 
          * @return builder
          * 
@@ -983,7 +1058,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param segmentBytes This configuration controls the size of the index that maps offsets to file positions. We preallocate this index file and shrink it only after log rolls. You generally should not need to change this setting.
+         * @param segmentBytes This configuration controls the segment file size for the log. Retention and cleaning is always done a file at a time so a larger segment size means fewer files but less granular control over retention. Setting this to a very low value has consequences, and the Aiven management plane ignores values less than 10 megabytes.
          * 
          * @return builder
          * 
