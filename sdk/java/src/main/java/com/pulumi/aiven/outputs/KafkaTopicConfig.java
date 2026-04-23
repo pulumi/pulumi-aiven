@@ -6,7 +6,6 @@ package com.pulumi.aiven.outputs;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
 import java.lang.Double;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -88,12 +87,12 @@ public final class KafkaTopicConfig {
      * @return The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps later than the broker&#39;s timestamp.
      * 
      */
-    private @Nullable Integer messageTimestampAfterMaxMs;
+    private @Nullable String messageTimestampAfterMaxMs;
     /**
      * @return The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps earlier than the broker&#39;s timestamp.
      * 
      */
-    private @Nullable Integer messageTimestampBeforeMaxMs;
+    private @Nullable String messageTimestampBeforeMaxMs;
     /**
      * @return The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. This configuration is ignored if message.timestamp.type=LogAppendTime.
      * 
@@ -268,14 +267,14 @@ public final class KafkaTopicConfig {
      * @return The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps later than the broker&#39;s timestamp.
      * 
      */
-    public Optional<Integer> messageTimestampAfterMaxMs() {
+    public Optional<String> messageTimestampAfterMaxMs() {
         return Optional.ofNullable(this.messageTimestampAfterMaxMs);
     }
     /**
      * @return The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps earlier than the broker&#39;s timestamp.
      * 
      */
-    public Optional<Integer> messageTimestampBeforeMaxMs() {
+    public Optional<String> messageTimestampBeforeMaxMs() {
         return Optional.ofNullable(this.messageTimestampBeforeMaxMs);
     }
     /**
@@ -400,8 +399,8 @@ public final class KafkaTopicConfig {
         private @Nullable String maxMessageBytes;
         private @Nullable Boolean messageDownconversionEnable;
         private @Nullable String messageFormatVersion;
-        private @Nullable Integer messageTimestampAfterMaxMs;
-        private @Nullable Integer messageTimestampBeforeMaxMs;
+        private @Nullable String messageTimestampAfterMaxMs;
+        private @Nullable String messageTimestampBeforeMaxMs;
         private @Nullable String messageTimestampDifferenceMaxMs;
         private @Nullable String messageTimestampType;
         private @Nullable Double minCleanableDirtyRatio;
@@ -536,13 +535,13 @@ public final class KafkaTopicConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder messageTimestampAfterMaxMs(@Nullable Integer messageTimestampAfterMaxMs) {
+        public Builder messageTimestampAfterMaxMs(@Nullable String messageTimestampAfterMaxMs) {
 
             this.messageTimestampAfterMaxMs = messageTimestampAfterMaxMs;
             return this;
         }
         @CustomType.Setter
-        public Builder messageTimestampBeforeMaxMs(@Nullable Integer messageTimestampBeforeMaxMs) {
+        public Builder messageTimestampBeforeMaxMs(@Nullable String messageTimestampBeforeMaxMs) {
 
             this.messageTimestampBeforeMaxMs = messageTimestampBeforeMaxMs;
             return this;

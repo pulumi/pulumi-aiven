@@ -72,11 +72,11 @@ namespace Pulumi.Aiven.Outputs
         /// <summary>
         /// The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps later than the broker's timestamp.
         /// </summary>
-        public readonly int? MessageTimestampAfterMaxMs;
+        public readonly string? MessageTimestampAfterMaxMs;
         /// <summary>
         /// The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps earlier than the broker's timestamp.
         /// </summary>
-        public readonly int? MessageTimestampBeforeMaxMs;
+        public readonly string? MessageTimestampBeforeMaxMs;
         /// <summary>
         /// The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. This configuration is ignored if message.timestamp.type=LogAppendTime.
         /// </summary>
@@ -164,9 +164,9 @@ namespace Pulumi.Aiven.Outputs
 
             string? messageFormatVersion,
 
-            int? messageTimestampAfterMaxMs,
+            string? messageTimestampAfterMaxMs,
 
-            int? messageTimestampBeforeMaxMs,
+            string? messageTimestampBeforeMaxMs,
 
             string? messageTimestampDifferenceMaxMs,
 

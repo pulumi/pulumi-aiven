@@ -4292,11 +4292,11 @@ export interface GetKafkaTopicConfig {
     /**
      * The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps later than the broker's timestamp.
      */
-    messageTimestampAfterMaxMs?: number;
+    messageTimestampAfterMaxMs?: string;
     /**
      * The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps earlier than the broker's timestamp.
      */
-    messageTimestampBeforeMaxMs?: number;
+    messageTimestampBeforeMaxMs?: string;
     /**
      * The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. This configuration is ignored if message.timestamp.type=LogAppendTime.
      */
@@ -11559,11 +11559,11 @@ export interface KafkaTopicConfig {
     /**
      * The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps later than the broker's timestamp.
      */
-    messageTimestampAfterMaxMs?: number;
+    messageTimestampAfterMaxMs?: string;
     /**
      * The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps earlier than the broker's timestamp.
      */
-    messageTimestampBeforeMaxMs?: number;
+    messageTimestampBeforeMaxMs?: string;
     /**
      * The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. This configuration is ignored if message.timestamp.type=LogAppendTime.
      */
