@@ -7,7 +7,6 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Double;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -233,13 +232,13 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
      * 
      */
     @Import(name="messageTimestampAfterMaxMs")
-    private @Nullable Output<Integer> messageTimestampAfterMaxMs;
+    private @Nullable Output<String> messageTimestampAfterMaxMs;
 
     /**
      * @return The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps later than the broker&#39;s timestamp.
      * 
      */
-    public Optional<Output<Integer>> messageTimestampAfterMaxMs() {
+    public Optional<Output<String>> messageTimestampAfterMaxMs() {
         return Optional.ofNullable(this.messageTimestampAfterMaxMs);
     }
 
@@ -248,13 +247,13 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
      * 
      */
     @Import(name="messageTimestampBeforeMaxMs")
-    private @Nullable Output<Integer> messageTimestampBeforeMaxMs;
+    private @Nullable Output<String> messageTimestampBeforeMaxMs;
 
     /**
      * @return The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps earlier than the broker&#39;s timestamp.
      * 
      */
-    public Optional<Output<Integer>> messageTimestampBeforeMaxMs() {
+    public Optional<Output<String>> messageTimestampBeforeMaxMs() {
         return Optional.ofNullable(this.messageTimestampBeforeMaxMs);
     }
 
@@ -821,7 +820,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
          * @return builder
          * 
          */
-        public Builder messageTimestampAfterMaxMs(@Nullable Output<Integer> messageTimestampAfterMaxMs) {
+        public Builder messageTimestampAfterMaxMs(@Nullable Output<String> messageTimestampAfterMaxMs) {
             $.messageTimestampAfterMaxMs = messageTimestampAfterMaxMs;
             return this;
         }
@@ -832,7 +831,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
          * @return builder
          * 
          */
-        public Builder messageTimestampAfterMaxMs(Integer messageTimestampAfterMaxMs) {
+        public Builder messageTimestampAfterMaxMs(String messageTimestampAfterMaxMs) {
             return messageTimestampAfterMaxMs(Output.of(messageTimestampAfterMaxMs));
         }
 
@@ -842,7 +841,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
          * @return builder
          * 
          */
-        public Builder messageTimestampBeforeMaxMs(@Nullable Output<Integer> messageTimestampBeforeMaxMs) {
+        public Builder messageTimestampBeforeMaxMs(@Nullable Output<String> messageTimestampBeforeMaxMs) {
             $.messageTimestampBeforeMaxMs = messageTimestampBeforeMaxMs;
             return this;
         }
@@ -853,7 +852,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
          * @return builder
          * 
          */
-        public Builder messageTimestampBeforeMaxMs(Integer messageTimestampBeforeMaxMs) {
+        public Builder messageTimestampBeforeMaxMs(String messageTimestampBeforeMaxMs) {
             return messageTimestampBeforeMaxMs(Output.of(messageTimestampBeforeMaxMs));
         }
 

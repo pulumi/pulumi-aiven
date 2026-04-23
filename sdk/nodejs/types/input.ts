@@ -4661,11 +4661,11 @@ export interface KafkaTopicConfig {
     /**
      * The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps later than the broker's timestamp.
      */
-    messageTimestampAfterMaxMs?: pulumi.Input<number>;
+    messageTimestampAfterMaxMs?: pulumi.Input<string>;
     /**
      * The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps earlier than the broker's timestamp.
      */
-    messageTimestampBeforeMaxMs?: pulumi.Input<number>;
+    messageTimestampBeforeMaxMs?: pulumi.Input<string>;
     /**
      * The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. This configuration is ignored if message.timestamp.type=LogAppendTime.
      */
