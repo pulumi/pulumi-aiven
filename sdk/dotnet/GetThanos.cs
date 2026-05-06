@@ -24,7 +24,7 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleThanos = Aiven.Index.GetThanos.Invoke(new()
+        ///     var exampleThanos = Aiven.GetThanos.Invoke(new()
         ///     {
         ///         Project = exampleProject.Project,
         ///         ServiceName = "example-thanos-service",
@@ -49,7 +49,7 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleThanos = Aiven.Index.GetThanos.Invoke(new()
+        ///     var exampleThanos = Aiven.GetThanos.Invoke(new()
         ///     {
         ///         Project = exampleProject.Project,
         ///         ServiceName = "example-thanos-service",
@@ -74,7 +74,7 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleThanos = Aiven.Index.GetThanos.Invoke(new()
+        ///     var exampleThanos = Aiven.GetThanos.Invoke(new()
         ///     {
         ///         Project = exampleProject.Project,
         ///         ServiceName = "example-thanos-service",

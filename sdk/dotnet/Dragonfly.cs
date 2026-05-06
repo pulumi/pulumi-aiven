@@ -22,7 +22,7 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleDragonfly = new Aiven.Index.Dragonfly("example_dragonfly", new()
+    ///     var exampleDragonfly = new Aiven.Dragonfly("example_dragonfly", new()
     ///     {
     ///         Project = exampleProject.Project,
     ///         Plan = "startup-4",

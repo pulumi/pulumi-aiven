@@ -252,7 +252,7 @@ class OpenSearchAclRule(pulumi.CustomResource):
         ]
         os_acl_rule = []
         def create_os_acl_rule(range_body):
-            for range in [{"key": k, "value": v} for [k, v] in (range_body).items()]:
+            for range in [{"key": k, "value": v} for [k, v] in sorted((range_body).items())]:
                 os_acl_rule.append(aiven.OpenSearchAclRule(f"os_acl_rule-{range['key']}",
                     project=example_project["project"],
                     service_name=example_opensearch["serviceName"],
@@ -260,7 +260,7 @@ class OpenSearchAclRule(pulumi.CustomResource):
                     index=range["value"]["index"],
                     permission=range["value"]["permission"]))
 
-        pulumi.Output.all({i: v for i, v in enumerate(acl_rules)}).apply(lambda resolved_outputs: create_os_acl_rule(resolved_outputs[0]))
+        pulumi.Output.all({str(i): v for i, v in enumerate(acl_rules)}).apply(lambda resolved_outputs: create_os_acl_rule(resolved_outputs[0]))
         ```
 
         ## Import
@@ -335,7 +335,7 @@ class OpenSearchAclRule(pulumi.CustomResource):
         ]
         os_acl_rule = []
         def create_os_acl_rule(range_body):
-            for range in [{"key": k, "value": v} for [k, v] in (range_body).items()]:
+            for range in [{"key": k, "value": v} for [k, v] in sorted((range_body).items())]:
                 os_acl_rule.append(aiven.OpenSearchAclRule(f"os_acl_rule-{range['key']}",
                     project=example_project["project"],
                     service_name=example_opensearch["serviceName"],
@@ -343,7 +343,7 @@ class OpenSearchAclRule(pulumi.CustomResource):
                     index=range["value"]["index"],
                     permission=range["value"]["permission"]))
 
-        pulumi.Output.all({i: v for i, v in enumerate(acl_rules)}).apply(lambda resolved_outputs: create_os_acl_rule(resolved_outputs[0]))
+        pulumi.Output.all({str(i): v for i, v in enumerate(acl_rules)}).apply(lambda resolved_outputs: create_os_acl_rule(resolved_outputs[0]))
         ```
 
         ## Import

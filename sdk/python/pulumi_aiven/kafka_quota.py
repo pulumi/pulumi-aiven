@@ -342,7 +342,7 @@ class KafkaQuota(pulumi.CustomResource):
             client_id="example_client",
             consumer_byte_rate=1000,
             producer_byte_rate=1000,
-            request_percentage=50)
+            request_percentage=float(50))
         ```
 
         ## Import
@@ -412,7 +412,7 @@ class KafkaQuota(pulumi.CustomResource):
             client_id="example_client",
             consumer_byte_rate=1000,
             producer_byte_rate=1000,
-            request_percentage=50)
+            request_percentage=float(50))
         ```
 
         ## Import

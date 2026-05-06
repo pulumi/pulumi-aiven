@@ -24,7 +24,7 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var main = Aiven.Index.GetOrganization.Invoke(new()
+        ///     var main = Aiven.GetOrganization.Invoke(new()
         ///     {
         ///         Name = "Example organization",
         ///     });
@@ -48,7 +48,7 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var main = Aiven.Index.GetOrganization.Invoke(new()
+        ///     var main = Aiven.GetOrganization.Invoke(new()
         ///     {
         ///         Name = "Example organization",
         ///     });
@@ -72,7 +72,7 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var main = Aiven.Index.GetOrganization.Invoke(new()
+        ///     var main = Aiven.GetOrganization.Invoke(new()
         ///     {
         ///         Name = "Example organization",
         ///     });

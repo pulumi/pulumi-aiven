@@ -36,7 +36,7 @@ namespace Pulumi.Aiven
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Integrate Kafka and Thanos services for metrics
-    ///     var exampleIntegration = new Aiven.Index.ServiceIntegration("example_integration", new()
+    ///     var exampleIntegration = new Aiven.ServiceIntegration("example_integration", new()
     ///     {
     ///         Project = exampleProject.Project,
     ///         IntegrationType = "metrics",
@@ -45,7 +45,7 @@ namespace Pulumi.Aiven
     ///     });
     /// 
     ///     // Use disk autoscaler with a PostgreSQL service
-    ///     var autoscalerEndpoint = new Aiven.Index.ServiceIntegrationEndpoint("autoscaler_endpoint", new()
+    ///     var autoscalerEndpoint = new Aiven.ServiceIntegrationEndpoint("autoscaler_endpoint", new()
     ///     {
     ///         Project = exampleProject.Project,
     ///         EndpointName = "disk-autoscaler-200GiB",
@@ -63,7 +63,7 @@ namespace Pulumi.Aiven
     ///         },
     ///     });
     /// 
-    ///     var autoscalerIntegration = new Aiven.Index.ServiceIntegration("autoscaler_integration", new()
+    ///     var autoscalerIntegration = new Aiven.ServiceIntegration("autoscaler_integration", new()
     ///     {
     ///         Project = exampleProject.Project,
     ///         IntegrationType = "autoscaler",

@@ -22,7 +22,7 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var main = new Aiven.Index.Organization("main", new()
+    ///     var main = new Aiven.Organization("main", new()
     ///     {
     ///         Name = "Example organization",
     ///     });

@@ -22,7 +22,7 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var approve = new Aiven.Index.GcpPrivatelinkConnectionApproval("approve", new()
+    ///     var approve = new Aiven.GcpPrivatelinkConnectionApproval("approve", new()
     ///     {
     ///         Project = exampleProject.Project,
     ///         ServiceName = exampleKafka.ServiceName,

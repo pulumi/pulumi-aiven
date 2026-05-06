@@ -31,7 +31,7 @@ namespace Pulumi.Aiven
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a Kafka service.
-    ///     var exampleKafka = new Aiven.Index.Kafka("example_kafka", new()
+    ///     var exampleKafka = new Aiven.Kafka("example_kafka", new()
     ///     {
     ///         Project = exampleProject.Project,
     ///         ServiceName = "example-kafka-service",
@@ -40,7 +40,7 @@ namespace Pulumi.Aiven
     ///     });
     /// 
     ///     // Create a Kafka Connect service.
-    ///     var exampleKafkaConnect = new Aiven.Index.KafkaConnect("example_kafka_connect", new()
+    ///     var exampleKafkaConnect = new Aiven.KafkaConnect("example_kafka_connect", new()
     ///     {
     ///         Project = exampleProject.Project,
     ///         CloudName = "google-europe-west1",
@@ -60,7 +60,7 @@ namespace Pulumi.Aiven
     ///     });
     /// 
     ///     // Integrate the Kafka and Kafka Connect services.
-    ///     var kafkaConnectIntegration = new Aiven.Index.ServiceIntegration("kafka_connect_integration", new()
+    ///     var kafkaConnectIntegration = new Aiven.ServiceIntegration("kafka_connect_integration", new()
     ///     {
     ///         Project = exampleProject.Project,
     ///         IntegrationType = "kafka_connect",

@@ -24,7 +24,7 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleValkey = Aiven.Index.GetValkey.Invoke(new()
+        ///     var exampleValkey = Aiven.GetValkey.Invoke(new()
         ///     {
         ///         Project = exampleProject.Project,
         ///         ServiceName = "example-valkey-service",
@@ -49,7 +49,7 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleValkey = Aiven.Index.GetValkey.Invoke(new()
+        ///     var exampleValkey = Aiven.GetValkey.Invoke(new()
         ///     {
         ///         Project = exampleProject.Project,
         ///         ServiceName = "example-valkey-service",
@@ -74,7 +74,7 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleValkey = Aiven.Index.GetValkey.Invoke(new()
+        ///     var exampleValkey = Aiven.GetValkey.Invoke(new()
         ///     {
         ///         Project = exampleProject.Project,
         ///         ServiceName = "example-valkey-service",
