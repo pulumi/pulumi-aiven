@@ -183,11 +183,11 @@ def get_aws_org_vpc_peering_connection(aws_account_id: Optional[_builtins.str] =
         organization_vpc_id=pulumi.get(__ret__, 'organization_vpc_id'),
         peering_connection_id=pulumi.get(__ret__, 'peering_connection_id'),
         state=pulumi.get(__ret__, 'state'))
-def get_aws_org_vpc_peering_connection_output(aws_account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                              aws_vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                              aws_vpc_region: Optional[pulumi.Input[_builtins.str]] = None,
-                                              organization_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                              organization_vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_aws_org_vpc_peering_connection_output(aws_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                              aws_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                              aws_vpc_region: pulumi.Input[Optional[_builtins.str]] = None,
+                                              organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                              organization_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAwsOrgVpcPeeringConnectionResult]:
     """
     Gets information about an AWS VPC peering connection.

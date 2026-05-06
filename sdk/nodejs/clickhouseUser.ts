@@ -148,37 +148,37 @@ export interface ClickhouseUserState {
     /**
      * The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Length must be between `8` and `256`.
      */
-    passwordWo?: pulumi.Input<string>;
+    passwordWo?: pulumi.Input<string | undefined>;
     /**
      * Version number for `passwordWo`. Increment this to rotate the password. The field is required with `passwordWo`. Minimum value: `1`.
      */
-    passwordWoVersion?: pulumi.Input<number>;
+    passwordWoVersion?: pulumi.Input<number | undefined>;
     /**
      * Project name. Changing this property forces recreation of the resource.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Required user.
      */
-    required?: pulumi.Input<boolean>;
+    required?: pulumi.Input<boolean | undefined>;
     /**
      * Service name. Changing this property forces recreation of the resource.
      */
-    serviceName?: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.ClickhouseUserTimeouts>;
+    serviceName?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.ClickhouseUserTimeouts | undefined>;
     /**
      * User name. Maximum length: `64`. Changing this property forces recreation of the resource.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
     /**
      * User identifier.
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -188,16 +188,16 @@ export interface ClickhouseUserArgs {
     /**
      * The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Length must be between `8` and `256`.
      */
-    passwordWo?: pulumi.Input<string>;
+    passwordWo?: pulumi.Input<string | undefined>;
     /**
      * Version number for `passwordWo`. Increment this to rotate the password. The field is required with `passwordWo`. Minimum value: `1`.
      */
-    passwordWoVersion?: pulumi.Input<number>;
+    passwordWoVersion?: pulumi.Input<number | undefined>;
     /**
      * Project name. Changing this property forces recreation of the resource.
      */
@@ -206,7 +206,7 @@ export interface ClickhouseUserArgs {
      * Service name. Changing this property forces recreation of the resource.
      */
     serviceName: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.ClickhouseUserTimeouts>;
+    timeouts?: pulumi.Input<inputs.ClickhouseUserTimeouts | undefined>;
     /**
      * User name. Maximum length: `64`. Changing this property forces recreation of the resource.
      */

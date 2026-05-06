@@ -90,17 +90,17 @@ class KafkaConnectorArgs:
 @pulumi.input_type
 class _KafkaConnectorState:
     def __init__(__self__, *,
-                 config: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 connector_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 plugin_author: Optional[pulumi.Input[_builtins.str]] = None,
-                 plugin_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 plugin_doc_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 plugin_title: Optional[pulumi.Input[_builtins.str]] = None,
-                 plugin_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 plugin_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tasks: Optional[pulumi.Input[Sequence[pulumi.Input['KafkaConnectorTaskArgs']]]] = None):
+                 config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 connector_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 plugin_author: pulumi.Input[Optional[_builtins.str]] = None,
+                 plugin_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 plugin_doc_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 plugin_title: pulumi.Input[Optional[_builtins.str]] = None,
+                 plugin_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 plugin_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tasks: pulumi.Input[Optional[Sequence[pulumi.Input['KafkaConnectorTaskArgs']]]] = None):
         """
         Input properties used for looking up and filtering KafkaConnector resources.
 
@@ -141,134 +141,134 @@ class _KafkaConnectorState:
 
     @_builtins.property
     @pulumi.getter
-    def config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def config(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The Kafka connector configuration parameters.
         """
         return pulumi.get(self, "config")
 
     @config.setter
-    def config(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def config(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "config", value)
 
     @_builtins.property
     @pulumi.getter(name="connectorName")
-    def connector_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connector_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Kafka connector name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "connector_name")
 
     @connector_name.setter
-    def connector_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connector_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connector_name", value)
 
     @_builtins.property
     @pulumi.getter(name="pluginAuthor")
-    def plugin_author(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def plugin_author(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Kafka connector author.
         """
         return pulumi.get(self, "plugin_author")
 
     @plugin_author.setter
-    def plugin_author(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def plugin_author(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "plugin_author", value)
 
     @_builtins.property
     @pulumi.getter(name="pluginClass")
-    def plugin_class(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def plugin_class(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Kafka connector Java class.
         """
         return pulumi.get(self, "plugin_class")
 
     @plugin_class.setter
-    def plugin_class(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def plugin_class(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "plugin_class", value)
 
     @_builtins.property
     @pulumi.getter(name="pluginDocUrl")
-    def plugin_doc_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def plugin_doc_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Kafka connector documentation URL.
         """
         return pulumi.get(self, "plugin_doc_url")
 
     @plugin_doc_url.setter
-    def plugin_doc_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def plugin_doc_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "plugin_doc_url", value)
 
     @_builtins.property
     @pulumi.getter(name="pluginTitle")
-    def plugin_title(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def plugin_title(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Kafka connector title.
         """
         return pulumi.get(self, "plugin_title")
 
     @plugin_title.setter
-    def plugin_title(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def plugin_title(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "plugin_title", value)
 
     @_builtins.property
     @pulumi.getter(name="pluginType")
-    def plugin_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def plugin_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Kafka connector type.
         """
         return pulumi.get(self, "plugin_type")
 
     @plugin_type.setter
-    def plugin_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def plugin_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "plugin_type", value)
 
     @_builtins.property
     @pulumi.getter(name="pluginVersion")
-    def plugin_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def plugin_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version of the Kafka connector.
         """
         return pulumi.get(self, "plugin_version")
 
     @plugin_version.setter
-    def plugin_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def plugin_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "plugin_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceName")
-    def service_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
-    def service_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def tasks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KafkaConnectorTaskArgs']]]]:
+    def tasks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['KafkaConnectorTaskArgs']]]]:
         """
         List of tasks of a connector.
         """
         return pulumi.get(self, "tasks")
 
     @tasks.setter
-    def tasks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['KafkaConnectorTaskArgs']]]]):
+    def tasks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['KafkaConnectorTaskArgs']]]]):
         pulumi.set(self, "tasks", value)
 
 
@@ -278,10 +278,10 @@ class KafkaConnector(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 connector_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 connector_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Creates and manages Aiven for Apache Kafka® [connectors](https://aiven.io/docs/products/kafka/kafka-connect/concepts/list-of-connector-plugins).
@@ -379,10 +379,10 @@ class KafkaConnector(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 connector_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 connector_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -421,17 +421,17 @@ class KafkaConnector(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            config: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            connector_name: Optional[pulumi.Input[_builtins.str]] = None,
-            plugin_author: Optional[pulumi.Input[_builtins.str]] = None,
-            plugin_class: Optional[pulumi.Input[_builtins.str]] = None,
-            plugin_doc_url: Optional[pulumi.Input[_builtins.str]] = None,
-            plugin_title: Optional[pulumi.Input[_builtins.str]] = None,
-            plugin_type: Optional[pulumi.Input[_builtins.str]] = None,
-            plugin_version: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            service_name: Optional[pulumi.Input[_builtins.str]] = None,
-            tasks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['KafkaConnectorTaskArgs', 'KafkaConnectorTaskArgsDict']]]]] = None) -> 'KafkaConnector':
+            config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            connector_name: pulumi.Input[Optional[_builtins.str]] = None,
+            plugin_author: pulumi.Input[Optional[_builtins.str]] = None,
+            plugin_class: pulumi.Input[Optional[_builtins.str]] = None,
+            plugin_doc_url: pulumi.Input[Optional[_builtins.str]] = None,
+            plugin_title: pulumi.Input[Optional[_builtins.str]] = None,
+            plugin_type: pulumi.Input[Optional[_builtins.str]] = None,
+            plugin_version: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            service_name: pulumi.Input[Optional[_builtins.str]] = None,
+            tasks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KafkaConnectorTaskArgs', 'KafkaConnectorTaskArgsDict']]]]] = None) -> 'KafkaConnector':
         """
         Get an existing KafkaConnector resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

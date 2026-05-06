@@ -22,13 +22,13 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var tfUser = new Aiven.Index.OrganizationApplicationUser("tf_user", new()
+    ///     var tfUser = new Aiven.OrganizationApplicationUser("tf_user", new()
     ///     {
     ///         OrganizationId = main.Id,
     ///         Name = "app-terraform",
     ///     });
     /// 
-    ///     var example = new Aiven.Index.OrganizationApplicationUserToken("example", new()
+    ///     var example = new Aiven.OrganizationApplicationUserToken("example", new()
     ///     {
     ///         OrganizationId = main.Id,
     ///         UserId = tfUser.UserId,

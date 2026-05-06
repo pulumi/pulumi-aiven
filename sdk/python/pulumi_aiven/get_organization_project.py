@@ -198,10 +198,10 @@ def get_organization_project(organization_id: Optional[_builtins.str] = None,
         tags=pulumi.get(__ret__, 'tags'),
         technical_emails=pulumi.get(__ret__, 'technical_emails'),
         timeouts=pulumi.get(__ret__, 'timeouts'))
-def get_organization_project_output(organization_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                    project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                    tags: Optional[pulumi.Input[Optional[Sequence[Union['GetOrganizationProjectTagArgs', 'GetOrganizationProjectTagArgsDict']]]]] = None,
-                                    timeouts: Optional[pulumi.Input[Optional[Union['GetOrganizationProjectTimeoutsArgs', 'GetOrganizationProjectTimeoutsArgsDict']]]] = None,
+def get_organization_project_output(organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                    project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                    tags: pulumi.Input[Optional[Optional[Sequence[Union['GetOrganizationProjectTagArgs', 'GetOrganizationProjectTagArgsDict']]]]] = None,
+                                    timeouts: pulumi.Input[Optional[Optional[Union['GetOrganizationProjectTimeoutsArgs', 'GetOrganizationProjectTimeoutsArgsDict']]]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOrganizationProjectResult]:
     """
     Gets information about an Aiven project.

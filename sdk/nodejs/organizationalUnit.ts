@@ -120,24 +120,24 @@ export interface OrganizationalUnitState {
     /**
      * Timestamp in ISO 8601 format, always in UTC.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The name of the organizational unit. Maximum length: `83`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the organization that the unit is created in. Maximum length: `36`.
      */
-    parentId?: pulumi.Input<string>;
+    parentId?: pulumi.Input<string | undefined>;
     /**
      * Tenant identifier.
      */
-    tenantId?: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.OrganizationalUnitTimeouts>;
+    tenantId?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.OrganizationalUnitTimeouts | undefined>;
     /**
      * Timestamp in ISO 8601 format, always in UTC.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -147,10 +147,10 @@ export interface OrganizationalUnitArgs {
     /**
      * The name of the organizational unit. Maximum length: `83`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the organization that the unit is created in. Maximum length: `36`.
      */
     parentId: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.OrganizationalUnitTimeouts>;
+    timeouts?: pulumi.Input<inputs.OrganizationalUnitTimeouts | undefined>;
 }

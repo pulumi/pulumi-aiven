@@ -180,7 +180,7 @@ def get_account(name: Optional[_builtins.str] = None,
         primary_billing_group_id=pulumi.get(__ret__, 'primary_billing_group_id'),
         tenant_id=pulumi.get(__ret__, 'tenant_id'),
         update_time=pulumi.get(__ret__, 'update_time'))
-def get_account_output(name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_account_output(name: pulumi.Input[Optional[_builtins.str]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountResult]:
     """
     The Account data source provides information about the existing Aiven Account.

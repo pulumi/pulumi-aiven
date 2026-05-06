@@ -128,27 +128,27 @@ export interface GcpVpcPeeringConnectionState {
     /**
      * Google Cloud project ID. Changing this property forces recreation of the resource.
      */
-    gcpProjectId?: pulumi.Input<string>;
+    gcpProjectId?: pulumi.Input<string | undefined>;
     /**
      * Google Cloud VPC network name. Changing this property forces recreation of the resource.
      */
-    peerVpc?: pulumi.Input<string>;
+    peerVpc?: pulumi.Input<string | undefined>;
     /**
      * Computed Google Cloud network peering link.
      */
-    selfLink?: pulumi.Input<string>;
+    selfLink?: pulumi.Input<string | undefined>;
     /**
      * State of the peering connection.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * State-specific help or error information.
      */
-    stateInfo?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    stateInfo?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The VPC the peering connection belongs to. Changing this property forces recreation of the resource.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
 }
 
 /**

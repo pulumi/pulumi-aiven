@@ -23,17 +23,17 @@ class AccountAuthenticationArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[_builtins.str],
                  type: pulumi.Input[_builtins.str],
-                 auto_join_team_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 saml_certificate: Optional[pulumi.Input[_builtins.str]] = None,
-                 saml_digest_algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-                 saml_entity_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 saml_field_mapping: Optional[pulumi.Input['AccountAuthenticationSamlFieldMappingArgs']] = None,
-                 saml_idp_login_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 saml_idp_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 saml_signature_algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-                 saml_variant: Optional[pulumi.Input[_builtins.str]] = None):
+                 auto_join_team_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 saml_certificate: pulumi.Input[Optional[_builtins.str]] = None,
+                 saml_digest_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+                 saml_entity_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 saml_field_mapping: pulumi.Input[Optional['AccountAuthenticationSamlFieldMappingArgs']] = None,
+                 saml_idp_login_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 saml_idp_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 saml_signature_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+                 saml_variant: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a AccountAuthentication resource.
 
@@ -102,158 +102,158 @@ class AccountAuthenticationArgs:
 
     @_builtins.property
     @pulumi.getter(name="autoJoinTeamId")
-    def auto_join_team_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auto_join_team_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Team ID
         """
         return pulumi.get(self, "auto_join_team_id")
 
     @auto_join_team_id.setter
-    def auto_join_team_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auto_join_team_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auto_join_team_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Status of account authentication method. The default value is `false`.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the account authentication.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="samlCertificate")
-    def saml_certificate(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def saml_certificate(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SAML Certificate
         """
         return pulumi.get(self, "saml_certificate")
 
     @saml_certificate.setter
-    def saml_certificate(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def saml_certificate(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "saml_certificate", value)
 
     @_builtins.property
     @pulumi.getter(name="samlDigestAlgorithm")
-    def saml_digest_algorithm(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def saml_digest_algorithm(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Digest algorithm. This is an advanced option that typically does not need to be set.
         """
         return pulumi.get(self, "saml_digest_algorithm")
 
     @saml_digest_algorithm.setter
-    def saml_digest_algorithm(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def saml_digest_algorithm(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "saml_digest_algorithm", value)
 
     @_builtins.property
     @pulumi.getter(name="samlEntityId")
-    def saml_entity_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def saml_entity_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SAML Entity id
         """
         return pulumi.get(self, "saml_entity_id")
 
     @saml_entity_id.setter
-    def saml_entity_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def saml_entity_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "saml_entity_id", value)
 
     @_builtins.property
     @pulumi.getter(name="samlFieldMapping")
-    def saml_field_mapping(self) -> Optional[pulumi.Input['AccountAuthenticationSamlFieldMappingArgs']]:
+    def saml_field_mapping(self) -> pulumi.Input[Optional['AccountAuthenticationSamlFieldMappingArgs']]:
         """
         Map IdP fields
         """
         return pulumi.get(self, "saml_field_mapping")
 
     @saml_field_mapping.setter
-    def saml_field_mapping(self, value: Optional[pulumi.Input['AccountAuthenticationSamlFieldMappingArgs']]):
+    def saml_field_mapping(self, value: pulumi.Input[Optional['AccountAuthenticationSamlFieldMappingArgs']]):
         pulumi.set(self, "saml_field_mapping", value)
 
     @_builtins.property
     @pulumi.getter(name="samlIdpLoginAllowed")
-    def saml_idp_login_allowed(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def saml_idp_login_allowed(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set to 'true' to enable IdP initiated login
         """
         return pulumi.get(self, "saml_idp_login_allowed")
 
     @saml_idp_login_allowed.setter
-    def saml_idp_login_allowed(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def saml_idp_login_allowed(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "saml_idp_login_allowed", value)
 
     @_builtins.property
     @pulumi.getter(name="samlIdpUrl")
-    def saml_idp_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def saml_idp_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SAML Idp URL
         """
         return pulumi.get(self, "saml_idp_url")
 
     @saml_idp_url.setter
-    def saml_idp_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def saml_idp_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "saml_idp_url", value)
 
     @_builtins.property
     @pulumi.getter(name="samlSignatureAlgorithm")
-    def saml_signature_algorithm(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def saml_signature_algorithm(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Signature algorithm. This is an advanced option that typically does not need to be set.
         """
         return pulumi.get(self, "saml_signature_algorithm")
 
     @saml_signature_algorithm.setter
-    def saml_signature_algorithm(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def saml_signature_algorithm(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "saml_signature_algorithm", value)
 
     @_builtins.property
     @pulumi.getter(name="samlVariant")
-    def saml_variant(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def saml_variant(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SAML server variant
         """
         return pulumi.get(self, "saml_variant")
 
     @saml_variant.setter
-    def saml_variant(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def saml_variant(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "saml_variant", value)
 
 
 @pulumi.input_type
 class _AccountAuthenticationState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 authentication_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_join_team_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 saml_acs_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 saml_certificate: Optional[pulumi.Input[_builtins.str]] = None,
-                 saml_digest_algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-                 saml_entity_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 saml_field_mapping: Optional[pulumi.Input['AccountAuthenticationSamlFieldMappingArgs']] = None,
-                 saml_idp_login_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 saml_idp_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 saml_metadata_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 saml_signature_algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-                 saml_variant: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 authentication_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_join_team_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 saml_acs_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 saml_certificate: pulumi.Input[Optional[_builtins.str]] = None,
+                 saml_digest_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+                 saml_entity_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 saml_field_mapping: pulumi.Input[Optional['AccountAuthenticationSamlFieldMappingArgs']] = None,
+                 saml_idp_login_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 saml_idp_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 saml_metadata_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 saml_signature_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+                 saml_variant: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccountAuthentication resources.
 
@@ -315,218 +315,218 @@ class _AccountAuthenticationState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique id of the account.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="authenticationId")
-    def authentication_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def authentication_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Account authentication id
         """
         return pulumi.get(self, "authentication_id")
 
     @authentication_id.setter
-    def authentication_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def authentication_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "authentication_id", value)
 
     @_builtins.property
     @pulumi.getter(name="autoJoinTeamId")
-    def auto_join_team_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auto_join_team_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Team ID
         """
         return pulumi.get(self, "auto_join_team_id")
 
     @auto_join_team_id.setter
-    def auto_join_team_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auto_join_team_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auto_join_team_id", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Time of creation
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Status of account authentication method. The default value is `false`.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the account authentication.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="samlAcsUrl")
-    def saml_acs_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def saml_acs_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SAML Assertion Consumer Service URL
         """
         return pulumi.get(self, "saml_acs_url")
 
     @saml_acs_url.setter
-    def saml_acs_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def saml_acs_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "saml_acs_url", value)
 
     @_builtins.property
     @pulumi.getter(name="samlCertificate")
-    def saml_certificate(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def saml_certificate(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SAML Certificate
         """
         return pulumi.get(self, "saml_certificate")
 
     @saml_certificate.setter
-    def saml_certificate(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def saml_certificate(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "saml_certificate", value)
 
     @_builtins.property
     @pulumi.getter(name="samlDigestAlgorithm")
-    def saml_digest_algorithm(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def saml_digest_algorithm(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Digest algorithm. This is an advanced option that typically does not need to be set.
         """
         return pulumi.get(self, "saml_digest_algorithm")
 
     @saml_digest_algorithm.setter
-    def saml_digest_algorithm(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def saml_digest_algorithm(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "saml_digest_algorithm", value)
 
     @_builtins.property
     @pulumi.getter(name="samlEntityId")
-    def saml_entity_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def saml_entity_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SAML Entity id
         """
         return pulumi.get(self, "saml_entity_id")
 
     @saml_entity_id.setter
-    def saml_entity_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def saml_entity_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "saml_entity_id", value)
 
     @_builtins.property
     @pulumi.getter(name="samlFieldMapping")
-    def saml_field_mapping(self) -> Optional[pulumi.Input['AccountAuthenticationSamlFieldMappingArgs']]:
+    def saml_field_mapping(self) -> pulumi.Input[Optional['AccountAuthenticationSamlFieldMappingArgs']]:
         """
         Map IdP fields
         """
         return pulumi.get(self, "saml_field_mapping")
 
     @saml_field_mapping.setter
-    def saml_field_mapping(self, value: Optional[pulumi.Input['AccountAuthenticationSamlFieldMappingArgs']]):
+    def saml_field_mapping(self, value: pulumi.Input[Optional['AccountAuthenticationSamlFieldMappingArgs']]):
         pulumi.set(self, "saml_field_mapping", value)
 
     @_builtins.property
     @pulumi.getter(name="samlIdpLoginAllowed")
-    def saml_idp_login_allowed(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def saml_idp_login_allowed(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set to 'true' to enable IdP initiated login
         """
         return pulumi.get(self, "saml_idp_login_allowed")
 
     @saml_idp_login_allowed.setter
-    def saml_idp_login_allowed(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def saml_idp_login_allowed(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "saml_idp_login_allowed", value)
 
     @_builtins.property
     @pulumi.getter(name="samlIdpUrl")
-    def saml_idp_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def saml_idp_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SAML Idp URL
         """
         return pulumi.get(self, "saml_idp_url")
 
     @saml_idp_url.setter
-    def saml_idp_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def saml_idp_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "saml_idp_url", value)
 
     @_builtins.property
     @pulumi.getter(name="samlMetadataUrl")
-    def saml_metadata_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def saml_metadata_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SAML Metadata URL
         """
         return pulumi.get(self, "saml_metadata_url")
 
     @saml_metadata_url.setter
-    def saml_metadata_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def saml_metadata_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "saml_metadata_url", value)
 
     @_builtins.property
     @pulumi.getter(name="samlSignatureAlgorithm")
-    def saml_signature_algorithm(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def saml_signature_algorithm(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Signature algorithm. This is an advanced option that typically does not need to be set.
         """
         return pulumi.get(self, "saml_signature_algorithm")
 
     @saml_signature_algorithm.setter
-    def saml_signature_algorithm(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def saml_signature_algorithm(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "saml_signature_algorithm", value)
 
     @_builtins.property
     @pulumi.getter(name="samlVariant")
-    def saml_variant(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def saml_variant(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SAML server variant
         """
         return pulumi.get(self, "saml_variant")
 
     @saml_variant.setter
-    def saml_variant(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def saml_variant(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "saml_variant", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The account authentication type. The possible values are `internal` and `saml`.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Time of last update
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -536,19 +536,19 @@ class AccountAuthentication(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_join_team_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 saml_certificate: Optional[pulumi.Input[_builtins.str]] = None,
-                 saml_digest_algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-                 saml_entity_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 saml_field_mapping: Optional[pulumi.Input[Union['AccountAuthenticationSamlFieldMappingArgs', 'AccountAuthenticationSamlFieldMappingArgsDict']]] = None,
-                 saml_idp_login_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 saml_idp_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 saml_signature_algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-                 saml_variant: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_join_team_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 saml_certificate: pulumi.Input[Optional[_builtins.str]] = None,
+                 saml_digest_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+                 saml_entity_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 saml_field_mapping: pulumi.Input[Optional[Union['AccountAuthenticationSamlFieldMappingArgs', 'AccountAuthenticationSamlFieldMappingArgsDict']]] = None,
+                 saml_idp_login_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 saml_idp_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 saml_signature_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+                 saml_variant: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Creates and manages an authentication method.
@@ -617,19 +617,19 @@ class AccountAuthentication(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_join_team_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 saml_certificate: Optional[pulumi.Input[_builtins.str]] = None,
-                 saml_digest_algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-                 saml_entity_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 saml_field_mapping: Optional[pulumi.Input[Union['AccountAuthenticationSamlFieldMappingArgs', 'AccountAuthenticationSamlFieldMappingArgsDict']]] = None,
-                 saml_idp_login_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 saml_idp_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 saml_signature_algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-                 saml_variant: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_join_team_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 saml_certificate: pulumi.Input[Optional[_builtins.str]] = None,
+                 saml_digest_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+                 saml_entity_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 saml_field_mapping: pulumi.Input[Optional[Union['AccountAuthenticationSamlFieldMappingArgs', 'AccountAuthenticationSamlFieldMappingArgsDict']]] = None,
+                 saml_idp_login_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 saml_idp_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 saml_signature_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+                 saml_variant: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -671,24 +671,24 @@ class AccountAuthentication(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            authentication_id: Optional[pulumi.Input[_builtins.str]] = None,
-            auto_join_team_id: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            saml_acs_url: Optional[pulumi.Input[_builtins.str]] = None,
-            saml_certificate: Optional[pulumi.Input[_builtins.str]] = None,
-            saml_digest_algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-            saml_entity_id: Optional[pulumi.Input[_builtins.str]] = None,
-            saml_field_mapping: Optional[pulumi.Input[Union['AccountAuthenticationSamlFieldMappingArgs', 'AccountAuthenticationSamlFieldMappingArgsDict']]] = None,
-            saml_idp_login_allowed: Optional[pulumi.Input[_builtins.bool]] = None,
-            saml_idp_url: Optional[pulumi.Input[_builtins.str]] = None,
-            saml_metadata_url: Optional[pulumi.Input[_builtins.str]] = None,
-            saml_signature_algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-            saml_variant: Optional[pulumi.Input[_builtins.str]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'AccountAuthentication':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            authentication_id: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_join_team_id: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            saml_acs_url: pulumi.Input[Optional[_builtins.str]] = None,
+            saml_certificate: pulumi.Input[Optional[_builtins.str]] = None,
+            saml_digest_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+            saml_entity_id: pulumi.Input[Optional[_builtins.str]] = None,
+            saml_field_mapping: pulumi.Input[Optional[Union['AccountAuthenticationSamlFieldMappingArgs', 'AccountAuthenticationSamlFieldMappingArgsDict']]] = None,
+            saml_idp_login_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+            saml_idp_url: pulumi.Input[Optional[_builtins.str]] = None,
+            saml_metadata_url: pulumi.Input[Optional[_builtins.str]] = None,
+            saml_signature_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+            saml_variant: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'AccountAuthentication':
         """
         Get an existing AccountAuthentication resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

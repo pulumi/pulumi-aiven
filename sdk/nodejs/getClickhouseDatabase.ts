@@ -121,5 +121,5 @@ export interface GetClickhouseDatabaseOutputArgs {
      * Service name.
      */
     serviceName: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.GetClickhouseDatabaseTimeoutsArgs>;
+    timeouts?: pulumi.Input<inputs.GetClickhouseDatabaseTimeoutsArgs | undefined>;
 }

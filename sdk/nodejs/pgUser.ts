@@ -161,45 +161,45 @@ export interface PgUserState {
     /**
      * Access certificate for TLS client authentication.
      */
-    accessCert?: pulumi.Input<string>;
+    accessCert?: pulumi.Input<string | undefined>;
     /**
      * Access key for TLS client authentication.
      */
-    accessKey?: pulumi.Input<string>;
+    accessKey?: pulumi.Input<string | undefined>;
     /**
      * The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Length must be between `8` and `256`.
      */
-    passwordWo?: pulumi.Input<string>;
+    passwordWo?: pulumi.Input<string | undefined>;
     /**
      * Version number for `passwordWo`. Increment this to rotate the password. The field is required with `passwordWo`. Minimum value: `1`.
      */
-    passwordWoVersion?: pulumi.Input<number>;
+    passwordWoVersion?: pulumi.Input<number | undefined>;
     /**
      * Allows replication. For the default avnadmin user this attribute is required and is always `true`.
      */
-    pgAllowReplication?: pulumi.Input<boolean>;
+    pgAllowReplication?: pulumi.Input<boolean | undefined>;
     /**
      * Project name. Changing this property forces recreation of the resource.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The name of the service. Changing this property forces recreation of the resource.
      */
-    serviceName?: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.PgUserTimeouts>;
+    serviceName?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.PgUserTimeouts | undefined>;
     /**
      * The service user account type, either primary or regular.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * The name of the service user for this service. Maximum length: `64`. Changing this property forces recreation of the resource.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -209,20 +209,20 @@ export interface PgUserArgs {
     /**
      * The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Length must be between `8` and `256`.
      */
-    passwordWo?: pulumi.Input<string>;
+    passwordWo?: pulumi.Input<string | undefined>;
     /**
      * Version number for `passwordWo`. Increment this to rotate the password. The field is required with `passwordWo`. Minimum value: `1`.
      */
-    passwordWoVersion?: pulumi.Input<number>;
+    passwordWoVersion?: pulumi.Input<number | undefined>;
     /**
      * Allows replication. For the default avnadmin user this attribute is required and is always `true`.
      */
-    pgAllowReplication?: pulumi.Input<boolean>;
+    pgAllowReplication?: pulumi.Input<boolean | undefined>;
     /**
      * Project name. Changing this property forces recreation of the resource.
      */
@@ -231,7 +231,7 @@ export interface PgUserArgs {
      * The name of the service. Changing this property forces recreation of the resource.
      */
     serviceName: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.PgUserTimeouts>;
+    timeouts?: pulumi.Input<inputs.PgUserTimeouts | undefined>;
     /**
      * The name of the service user for this service. Maximum length: `64`. Changing this property forces recreation of the resource.
      */

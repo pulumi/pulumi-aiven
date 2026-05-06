@@ -175,47 +175,47 @@ export interface KafkaConnectorState {
     /**
      * The Kafka connector configuration parameters.
      */
-    config?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    config?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The Kafka connector name. Changing this property forces recreation of the resource.
      */
-    connectorName?: pulumi.Input<string>;
+    connectorName?: pulumi.Input<string | undefined>;
     /**
      * The Kafka connector author.
      */
-    pluginAuthor?: pulumi.Input<string>;
+    pluginAuthor?: pulumi.Input<string | undefined>;
     /**
      * The Kafka connector Java class.
      */
-    pluginClass?: pulumi.Input<string>;
+    pluginClass?: pulumi.Input<string | undefined>;
     /**
      * The Kafka connector documentation URL.
      */
-    pluginDocUrl?: pulumi.Input<string>;
+    pluginDocUrl?: pulumi.Input<string | undefined>;
     /**
      * The Kafka connector title.
      */
-    pluginTitle?: pulumi.Input<string>;
+    pluginTitle?: pulumi.Input<string | undefined>;
     /**
      * The Kafka connector type.
      */
-    pluginType?: pulumi.Input<string>;
+    pluginType?: pulumi.Input<string | undefined>;
     /**
      * The version of the Kafka connector.
      */
-    pluginVersion?: pulumi.Input<string>;
+    pluginVersion?: pulumi.Input<string | undefined>;
     /**
      * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    serviceName?: pulumi.Input<string>;
+    serviceName?: pulumi.Input<string | undefined>;
     /**
      * List of tasks of a connector.
      */
-    tasks?: pulumi.Input<pulumi.Input<inputs.KafkaConnectorTask>[]>;
+    tasks?: pulumi.Input<pulumi.Input<inputs.KafkaConnectorTask>[] | undefined>;
 }
 
 /**

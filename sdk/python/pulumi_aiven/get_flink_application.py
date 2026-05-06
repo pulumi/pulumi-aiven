@@ -202,11 +202,11 @@ def get_flink_application(application_id: Optional[_builtins.str] = None,
         timeouts=pulumi.get(__ret__, 'timeouts'),
         updated_at=pulumi.get(__ret__, 'updated_at'),
         updated_by=pulumi.get(__ret__, 'updated_by'))
-def get_flink_application_output(application_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                 name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                                 service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                                 timeouts: Optional[pulumi.Input[Optional[Union['GetFlinkApplicationTimeoutsArgs', 'GetFlinkApplicationTimeoutsArgsDict']]]] = None,
+def get_flink_application_output(application_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                 name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                                 service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                                 timeouts: pulumi.Input[Optional[Optional[Union['GetFlinkApplicationTimeoutsArgs', 'GetFlinkApplicationTimeoutsArgsDict']]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFlinkApplicationResult]:
     """
     Gets information about an Aiven for Apache Flink® application.

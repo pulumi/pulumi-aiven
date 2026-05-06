@@ -128,30 +128,30 @@ export interface OrganizationApplicationUserState {
     /**
      * Time this application user was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * User Email.
      */
-    email?: pulumi.Input<string>;
+    email?: pulumi.Input<string | undefined>;
     /**
      * Alters super admin state of the organization application user. The default value is `false`. **Deprecated**: This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `aiven.OrganizationPermission` resource.
      *
      * @deprecated This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `aiven.OrganizationPermission` resource.
      */
-    isSuperAdmin?: pulumi.Input<boolean>;
+    isSuperAdmin?: pulumi.Input<boolean | undefined>;
     /**
      * Name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * ID of an organization. Changing this property forces recreation of the resource.
      */
-    organizationId?: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.OrganizationApplicationUserTimeouts>;
+    organizationId?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.OrganizationApplicationUserTimeouts | undefined>;
     /**
      * User ID.
      */
-    userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -163,14 +163,14 @@ export interface OrganizationApplicationUserArgs {
      *
      * @deprecated This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `aiven.OrganizationPermission` resource.
      */
-    isSuperAdmin?: pulumi.Input<boolean>;
+    isSuperAdmin?: pulumi.Input<boolean | undefined>;
     /**
      * Name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * ID of an organization. Changing this property forces recreation of the resource.
      */
     organizationId: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.OrganizationApplicationUserTimeouts>;
+    timeouts?: pulumi.Input<inputs.OrganizationApplicationUserTimeouts | undefined>;
 }

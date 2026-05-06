@@ -128,27 +128,27 @@ export interface GcpPrivatelinkConnectionApprovalState {
     /**
      * Aiven internal ID for the private link connection.
      */
-    privatelinkConnectionId?: pulumi.Input<string>;
+    privatelinkConnectionId?: pulumi.Input<string | undefined>;
     /**
      * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The Google Private Service Connect connection ID.
      */
-    pscConnectionId?: pulumi.Input<string>;
+    pscConnectionId?: pulumi.Input<string | undefined>;
     /**
      * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    serviceName?: pulumi.Input<string>;
+    serviceName?: pulumi.Input<string | undefined>;
     /**
      * The state of the connection.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The Private Service Connect connection user IP address.
      */
-    userIpAddress?: pulumi.Input<string>;
+    userIpAddress?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -162,7 +162,7 @@ export interface GcpPrivatelinkConnectionApprovalArgs {
     /**
      * The Google Private Service Connect connection ID.
      */
-    pscConnectionId?: pulumi.Input<string>;
+    pscConnectionId?: pulumi.Input<string | undefined>;
     /**
      * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */

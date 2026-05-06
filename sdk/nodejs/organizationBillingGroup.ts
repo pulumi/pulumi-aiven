@@ -159,44 +159,44 @@ export interface OrganizationBillingGroupState {
     /**
      * Billing address ID. Maximum length: `36`.
      */
-    billingAddressId?: pulumi.Input<string>;
+    billingAddressId?: pulumi.Input<string | undefined>;
     /**
      * Required property. List of billing contact emails.
      */
-    billingContactEmails?: pulumi.Input<pulumi.Input<inputs.OrganizationBillingGroupBillingContactEmail>[]>;
+    billingContactEmails?: pulumi.Input<pulumi.Input<inputs.OrganizationBillingGroupBillingContactEmail>[] | undefined>;
     /**
      * Required property. List of billing contact emails.
      */
-    billingEmails?: pulumi.Input<pulumi.Input<inputs.OrganizationBillingGroupBillingEmail>[]>;
+    billingEmails?: pulumi.Input<pulumi.Input<inputs.OrganizationBillingGroupBillingEmail>[] | undefined>;
     /**
      * Billing group ID.
      */
-    billingGroupId?: pulumi.Input<string>;
+    billingGroupId?: pulumi.Input<string | undefined>;
     /**
      * Billing Group Name. Length must be between `1` and `128`.
      */
-    billingGroupName?: pulumi.Input<string>;
+    billingGroupName?: pulumi.Input<string | undefined>;
     /**
      * Extra billing text. Maximum length: `256`.
      */
-    customInvoiceText?: pulumi.Input<string>;
+    customInvoiceText?: pulumi.Input<string | undefined>;
     /**
      * ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
      */
-    organizationId?: pulumi.Input<string>;
+    organizationId?: pulumi.Input<string | undefined>;
     /**
      * Required property. Payment method.
      */
-    paymentMethod?: pulumi.Input<inputs.OrganizationBillingGroupPaymentMethod>;
+    paymentMethod?: pulumi.Input<inputs.OrganizationBillingGroupPaymentMethod | undefined>;
     /**
      * Shipping address ID. Maximum length: `36`.
      */
-    shippingAddressId?: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.OrganizationBillingGroupTimeouts>;
+    shippingAddressId?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.OrganizationBillingGroupTimeouts | undefined>;
     /**
      * VAT ID.
      */
-    vatId?: pulumi.Input<string>;
+    vatId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -222,7 +222,7 @@ export interface OrganizationBillingGroupArgs {
     /**
      * Extra billing text. Maximum length: `256`.
      */
-    customInvoiceText?: pulumi.Input<string>;
+    customInvoiceText?: pulumi.Input<string | undefined>;
     /**
      * ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
      */
@@ -235,9 +235,9 @@ export interface OrganizationBillingGroupArgs {
      * Shipping address ID. Maximum length: `36`.
      */
     shippingAddressId: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.OrganizationBillingGroupTimeouts>;
+    timeouts?: pulumi.Input<inputs.OrganizationBillingGroupTimeouts | undefined>;
     /**
      * VAT ID.
      */
-    vatId?: pulumi.Input<string>;
+    vatId?: pulumi.Input<string | undefined>;
 }

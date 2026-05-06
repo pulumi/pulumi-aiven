@@ -268,99 +268,99 @@ export interface ServiceIntegrationState {
     /**
      * ClickhouseCredentials user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    clickhouseCredentialsUserConfig?: pulumi.Input<inputs.ServiceIntegrationClickhouseCredentialsUserConfig>;
+    clickhouseCredentialsUserConfig?: pulumi.Input<inputs.ServiceIntegrationClickhouseCredentialsUserConfig | undefined>;
     /**
      * ClickhouseKafka user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    clickhouseKafkaUserConfig?: pulumi.Input<inputs.ServiceIntegrationClickhouseKafkaUserConfig>;
+    clickhouseKafkaUserConfig?: pulumi.Input<inputs.ServiceIntegrationClickhouseKafkaUserConfig | undefined>;
     /**
      * ClickhousePostgresql user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    clickhousePostgresqlUserConfig?: pulumi.Input<inputs.ServiceIntegrationClickhousePostgresqlUserConfig>;
+    clickhousePostgresqlUserConfig?: pulumi.Input<inputs.ServiceIntegrationClickhousePostgresqlUserConfig | undefined>;
     /**
      * Datadog user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    datadogUserConfig?: pulumi.Input<inputs.ServiceIntegrationDatadogUserConfig>;
+    datadogUserConfig?: pulumi.Input<inputs.ServiceIntegrationDatadogUserConfig | undefined>;
     /**
      * Destination endpoint for the integration.
      */
-    destinationEndpointId?: pulumi.Input<string>;
+    destinationEndpointId?: pulumi.Input<string | undefined>;
     /**
      * Destination service for the integration.
      */
-    destinationServiceName?: pulumi.Input<string>;
+    destinationServiceName?: pulumi.Input<string | undefined>;
     /**
      * Destination service project name
      */
-    destinationServiceProject?: pulumi.Input<string>;
+    destinationServiceProject?: pulumi.Input<string | undefined>;
     /**
      * ExternalAwsCloudwatchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    externalAwsCloudwatchLogsUserConfig?: pulumi.Input<inputs.ServiceIntegrationExternalAwsCloudwatchLogsUserConfig>;
+    externalAwsCloudwatchLogsUserConfig?: pulumi.Input<inputs.ServiceIntegrationExternalAwsCloudwatchLogsUserConfig | undefined>;
     /**
      * ExternalAwsCloudwatchMetrics user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    externalAwsCloudwatchMetricsUserConfig?: pulumi.Input<inputs.ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig>;
+    externalAwsCloudwatchMetricsUserConfig?: pulumi.Input<inputs.ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig | undefined>;
     /**
      * ExternalElasticsearchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    externalElasticsearchLogsUserConfig?: pulumi.Input<inputs.ServiceIntegrationExternalElasticsearchLogsUserConfig>;
+    externalElasticsearchLogsUserConfig?: pulumi.Input<inputs.ServiceIntegrationExternalElasticsearchLogsUserConfig | undefined>;
     /**
      * ExternalOpensearchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    externalOpensearchLogsUserConfig?: pulumi.Input<inputs.ServiceIntegrationExternalOpensearchLogsUserConfig>;
+    externalOpensearchLogsUserConfig?: pulumi.Input<inputs.ServiceIntegrationExternalOpensearchLogsUserConfig | undefined>;
     /**
      * FlinkExternalPostgresql user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    flinkExternalPostgresqlUserConfig?: pulumi.Input<inputs.ServiceIntegrationFlinkExternalPostgresqlUserConfig>;
+    flinkExternalPostgresqlUserConfig?: pulumi.Input<inputs.ServiceIntegrationFlinkExternalPostgresqlUserConfig | undefined>;
     /**
      * The ID of the Aiven service integration.
      */
-    integrationId?: pulumi.Input<string>;
+    integrationId?: pulumi.Input<string | undefined>;
     /**
      * Type of the service integration. The possible values are `alertmanager`, `autoscaler`, `caching`, `cassandraCrossServiceCluster`, `clickhouseCredentials`, `clickhouseKafka`, `clickhousePostgresql`, `dashboard`, `datadog`, `datasource`, `disasterRecovery`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalElasticsearchLogs`, `externalGoogleCloudLogging`, `externalOpensearchLogs`, `flink`, `flinkExternalBigquery`, `flinkExternalKafka`, `flinkExternalPostgresql`, `internalConnectivity`, `jolokia`, `kafkaConnect`, `kafkaConnectPostgresql`, `kafkaLogs`, `kafkaMirrormaker`, `logs`, `metrics`, `opensearchCrossClusterReplication`, `opensearchCrossClusterSearch`, `prometheus`, `readReplica`, `rsyslog`, `schemaRegistryProxy`, `serviceComposition`, `stresstester`, `thanosDistributedQuery`, `thanosMigrate`, `thanosObjectStorage`, `thanoscompactor`, `thanosquery`, `thanosruler`, `thanosstore`, `vector` and `vmalert`.
      */
-    integrationType?: pulumi.Input<string>;
+    integrationType?: pulumi.Input<string | undefined>;
     /**
      * KafkaConnect user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    kafkaConnectUserConfig?: pulumi.Input<inputs.ServiceIntegrationKafkaConnectUserConfig>;
+    kafkaConnectUserConfig?: pulumi.Input<inputs.ServiceIntegrationKafkaConnectUserConfig | undefined>;
     /**
      * KafkaLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    kafkaLogsUserConfig?: pulumi.Input<inputs.ServiceIntegrationKafkaLogsUserConfig>;
+    kafkaLogsUserConfig?: pulumi.Input<inputs.ServiceIntegrationKafkaLogsUserConfig | undefined>;
     /**
      * KafkaMirrormaker user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    kafkaMirrormakerUserConfig?: pulumi.Input<inputs.ServiceIntegrationKafkaMirrormakerUserConfig>;
+    kafkaMirrormakerUserConfig?: pulumi.Input<inputs.ServiceIntegrationKafkaMirrormakerUserConfig | undefined>;
     /**
      * Logs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    logsUserConfig?: pulumi.Input<inputs.ServiceIntegrationLogsUserConfig>;
+    logsUserConfig?: pulumi.Input<inputs.ServiceIntegrationLogsUserConfig | undefined>;
     /**
      * Metrics user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    metricsUserConfig?: pulumi.Input<inputs.ServiceIntegrationMetricsUserConfig>;
+    metricsUserConfig?: pulumi.Input<inputs.ServiceIntegrationMetricsUserConfig | undefined>;
     /**
      * Project the integration belongs to.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Prometheus user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    prometheusUserConfig?: pulumi.Input<inputs.ServiceIntegrationPrometheusUserConfig>;
+    prometheusUserConfig?: pulumi.Input<inputs.ServiceIntegrationPrometheusUserConfig | undefined>;
     /**
      * Source endpoint for the integration.
      */
-    sourceEndpointId?: pulumi.Input<string>;
+    sourceEndpointId?: pulumi.Input<string | undefined>;
     /**
      * Source service for the integration (if any)
      */
-    sourceServiceName?: pulumi.Input<string>;
+    sourceServiceName?: pulumi.Input<string | undefined>;
     /**
      * Source service project name
      */
-    sourceServiceProject?: pulumi.Input<string>;
+    sourceServiceProject?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -370,51 +370,51 @@ export interface ServiceIntegrationArgs {
     /**
      * ClickhouseCredentials user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    clickhouseCredentialsUserConfig?: pulumi.Input<inputs.ServiceIntegrationClickhouseCredentialsUserConfig>;
+    clickhouseCredentialsUserConfig?: pulumi.Input<inputs.ServiceIntegrationClickhouseCredentialsUserConfig | undefined>;
     /**
      * ClickhouseKafka user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    clickhouseKafkaUserConfig?: pulumi.Input<inputs.ServiceIntegrationClickhouseKafkaUserConfig>;
+    clickhouseKafkaUserConfig?: pulumi.Input<inputs.ServiceIntegrationClickhouseKafkaUserConfig | undefined>;
     /**
      * ClickhousePostgresql user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    clickhousePostgresqlUserConfig?: pulumi.Input<inputs.ServiceIntegrationClickhousePostgresqlUserConfig>;
+    clickhousePostgresqlUserConfig?: pulumi.Input<inputs.ServiceIntegrationClickhousePostgresqlUserConfig | undefined>;
     /**
      * Datadog user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    datadogUserConfig?: pulumi.Input<inputs.ServiceIntegrationDatadogUserConfig>;
+    datadogUserConfig?: pulumi.Input<inputs.ServiceIntegrationDatadogUserConfig | undefined>;
     /**
      * Destination endpoint for the integration.
      */
-    destinationEndpointId?: pulumi.Input<string>;
+    destinationEndpointId?: pulumi.Input<string | undefined>;
     /**
      * Destination service for the integration.
      */
-    destinationServiceName?: pulumi.Input<string>;
+    destinationServiceName?: pulumi.Input<string | undefined>;
     /**
      * Destination service project name
      */
-    destinationServiceProject?: pulumi.Input<string>;
+    destinationServiceProject?: pulumi.Input<string | undefined>;
     /**
      * ExternalAwsCloudwatchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    externalAwsCloudwatchLogsUserConfig?: pulumi.Input<inputs.ServiceIntegrationExternalAwsCloudwatchLogsUserConfig>;
+    externalAwsCloudwatchLogsUserConfig?: pulumi.Input<inputs.ServiceIntegrationExternalAwsCloudwatchLogsUserConfig | undefined>;
     /**
      * ExternalAwsCloudwatchMetrics user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    externalAwsCloudwatchMetricsUserConfig?: pulumi.Input<inputs.ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig>;
+    externalAwsCloudwatchMetricsUserConfig?: pulumi.Input<inputs.ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig | undefined>;
     /**
      * ExternalElasticsearchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    externalElasticsearchLogsUserConfig?: pulumi.Input<inputs.ServiceIntegrationExternalElasticsearchLogsUserConfig>;
+    externalElasticsearchLogsUserConfig?: pulumi.Input<inputs.ServiceIntegrationExternalElasticsearchLogsUserConfig | undefined>;
     /**
      * ExternalOpensearchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    externalOpensearchLogsUserConfig?: pulumi.Input<inputs.ServiceIntegrationExternalOpensearchLogsUserConfig>;
+    externalOpensearchLogsUserConfig?: pulumi.Input<inputs.ServiceIntegrationExternalOpensearchLogsUserConfig | undefined>;
     /**
      * FlinkExternalPostgresql user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    flinkExternalPostgresqlUserConfig?: pulumi.Input<inputs.ServiceIntegrationFlinkExternalPostgresqlUserConfig>;
+    flinkExternalPostgresqlUserConfig?: pulumi.Input<inputs.ServiceIntegrationFlinkExternalPostgresqlUserConfig | undefined>;
     /**
      * Type of the service integration. The possible values are `alertmanager`, `autoscaler`, `caching`, `cassandraCrossServiceCluster`, `clickhouseCredentials`, `clickhouseKafka`, `clickhousePostgresql`, `dashboard`, `datadog`, `datasource`, `disasterRecovery`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalElasticsearchLogs`, `externalGoogleCloudLogging`, `externalOpensearchLogs`, `flink`, `flinkExternalBigquery`, `flinkExternalKafka`, `flinkExternalPostgresql`, `internalConnectivity`, `jolokia`, `kafkaConnect`, `kafkaConnectPostgresql`, `kafkaLogs`, `kafkaMirrormaker`, `logs`, `metrics`, `opensearchCrossClusterReplication`, `opensearchCrossClusterSearch`, `prometheus`, `readReplica`, `rsyslog`, `schemaRegistryProxy`, `serviceComposition`, `stresstester`, `thanosDistributedQuery`, `thanosMigrate`, `thanosObjectStorage`, `thanoscompactor`, `thanosquery`, `thanosruler`, `thanosstore`, `vector` and `vmalert`.
      */
@@ -422,23 +422,23 @@ export interface ServiceIntegrationArgs {
     /**
      * KafkaConnect user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    kafkaConnectUserConfig?: pulumi.Input<inputs.ServiceIntegrationKafkaConnectUserConfig>;
+    kafkaConnectUserConfig?: pulumi.Input<inputs.ServiceIntegrationKafkaConnectUserConfig | undefined>;
     /**
      * KafkaLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    kafkaLogsUserConfig?: pulumi.Input<inputs.ServiceIntegrationKafkaLogsUserConfig>;
+    kafkaLogsUserConfig?: pulumi.Input<inputs.ServiceIntegrationKafkaLogsUserConfig | undefined>;
     /**
      * KafkaMirrormaker user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    kafkaMirrormakerUserConfig?: pulumi.Input<inputs.ServiceIntegrationKafkaMirrormakerUserConfig>;
+    kafkaMirrormakerUserConfig?: pulumi.Input<inputs.ServiceIntegrationKafkaMirrormakerUserConfig | undefined>;
     /**
      * Logs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    logsUserConfig?: pulumi.Input<inputs.ServiceIntegrationLogsUserConfig>;
+    logsUserConfig?: pulumi.Input<inputs.ServiceIntegrationLogsUserConfig | undefined>;
     /**
      * Metrics user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    metricsUserConfig?: pulumi.Input<inputs.ServiceIntegrationMetricsUserConfig>;
+    metricsUserConfig?: pulumi.Input<inputs.ServiceIntegrationMetricsUserConfig | undefined>;
     /**
      * Project the integration belongs to.
      */
@@ -446,17 +446,17 @@ export interface ServiceIntegrationArgs {
     /**
      * Prometheus user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    prometheusUserConfig?: pulumi.Input<inputs.ServiceIntegrationPrometheusUserConfig>;
+    prometheusUserConfig?: pulumi.Input<inputs.ServiceIntegrationPrometheusUserConfig | undefined>;
     /**
      * Source endpoint for the integration.
      */
-    sourceEndpointId?: pulumi.Input<string>;
+    sourceEndpointId?: pulumi.Input<string | undefined>;
     /**
      * Source service for the integration (if any)
      */
-    sourceServiceName?: pulumi.Input<string>;
+    sourceServiceName?: pulumi.Input<string | undefined>;
     /**
      * Source service project name
      */
-    sourceServiceProject?: pulumi.Input<string>;
+    sourceServiceProject?: pulumi.Input<string | undefined>;
 }

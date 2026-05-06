@@ -123,32 +123,32 @@ export interface StaticIpState {
     /**
      * Target cloud. Maximum length: `256`. Changing this property forces recreation of the resource.
      */
-    cloudName?: pulumi.Input<string>;
+    cloudName?: pulumi.Input<string | undefined>;
     /**
      * IPv4 address.
      */
-    ipAddress?: pulumi.Input<string>;
+    ipAddress?: pulumi.Input<string | undefined>;
     /**
      * Project name. Changing this property forces recreation of the resource.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Service name.
      */
-    serviceName?: pulumi.Input<string>;
+    serviceName?: pulumi.Input<string | undefined>;
     /**
      * Static IP address state. The possible values are `assigned`, `available`, `created`, `creating`, `deleted` and `deleting`.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * Static IP address identifier.
      */
-    staticIpAddressId?: pulumi.Input<string>;
+    staticIpAddressId?: pulumi.Input<string | undefined>;
     /**
      * Static IP address is protected against deletion. The default value is `false`.
      */
-    terminationProtection?: pulumi.Input<boolean>;
-    timeouts?: pulumi.Input<inputs.StaticIpTimeouts>;
+    terminationProtection?: pulumi.Input<boolean | undefined>;
+    timeouts?: pulumi.Input<inputs.StaticIpTimeouts | undefined>;
 }
 
 /**
@@ -166,6 +166,6 @@ export interface StaticIpArgs {
     /**
      * Static IP address is protected against deletion. The default value is `false`.
      */
-    terminationProtection?: pulumi.Input<boolean>;
-    timeouts?: pulumi.Input<inputs.StaticIpTimeouts>;
+    terminationProtection?: pulumi.Input<boolean | undefined>;
+    timeouts?: pulumi.Input<inputs.StaticIpTimeouts | undefined>;
 }

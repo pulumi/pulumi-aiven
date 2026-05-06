@@ -80,6 +80,6 @@ export interface GetOrganizationPaymentMethodListOutputArgs {
     /**
      * Payment Methods.
      */
-    paymentMethods?: pulumi.Input<pulumi.Input<inputs.GetOrganizationPaymentMethodListPaymentMethodArgs>[]>;
-    timeouts?: pulumi.Input<inputs.GetOrganizationPaymentMethodListTimeoutsArgs>;
+    paymentMethods?: pulumi.Input<pulumi.Input<inputs.GetOrganizationPaymentMethodListPaymentMethodArgs>[] | undefined>;
+    timeouts?: pulumi.Input<inputs.GetOrganizationPaymentMethodListTimeoutsArgs | undefined>;
 }

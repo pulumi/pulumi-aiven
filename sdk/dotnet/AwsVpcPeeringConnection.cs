@@ -22,14 +22,14 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleVpc = new Aiven.Index.ProjectVpc("example_vpc", new()
+    ///     var exampleVpc = new Aiven.ProjectVpc("example_vpc", new()
     ///     {
     ///         Project = exampleProject.Project,
     ///         CloudName = "aws-us-east-2",
     ///         NetworkCidr = "192.168.1.0/24",
     ///     });
     /// 
-    ///     var awsToAivenPeering = new Aiven.Index.AwsVpcPeeringConnection("aws_to_aiven_peering", new()
+    ///     var awsToAivenPeering = new Aiven.AwsVpcPeeringConnection("aws_to_aiven_peering", new()
     ///     {
     ///         VpcId = exampleVpc.Id,
     ///         AwsAccountId = awsId,

@@ -24,7 +24,7 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var main = Aiven.Index.GetPgDatabase.Invoke(new()
+        ///     var main = Aiven.GetPgDatabase.Invoke(new()
         ///     {
         ///         Project = exampleProject.Project,
         ///         ServiceName = examplePostgres.ServiceName,
@@ -50,7 +50,7 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var main = Aiven.Index.GetPgDatabase.Invoke(new()
+        ///     var main = Aiven.GetPgDatabase.Invoke(new()
         ///     {
         ///         Project = exampleProject.Project,
         ///         ServiceName = examplePostgres.ServiceName,
@@ -76,7 +76,7 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var main = Aiven.Index.GetPgDatabase.Invoke(new()
+        ///     var main = Aiven.GetPgDatabase.Invoke(new()
         ///     {
         ///         Project = exampleProject.Project,
         ///         ServiceName = examplePostgres.ServiceName,

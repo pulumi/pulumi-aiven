@@ -123,10 +123,10 @@ def get_kafka_topic_list(project: Optional[_builtins.str] = None,
         service_name=pulumi.get(__ret__, 'service_name'),
         timeouts=pulumi.get(__ret__, 'timeouts'),
         topics=pulumi.get(__ret__, 'topics'))
-def get_kafka_topic_list_output(project: Optional[pulumi.Input[_builtins.str]] = None,
-                                service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                                timeouts: Optional[pulumi.Input[Optional[Union['GetKafkaTopicListTimeoutsArgs', 'GetKafkaTopicListTimeoutsArgsDict']]]] = None,
-                                topics: Optional[pulumi.Input[Optional[Sequence[Union['GetKafkaTopicListTopicArgs', 'GetKafkaTopicListTopicArgsDict']]]]] = None,
+def get_kafka_topic_list_output(project: pulumi.Input[Optional[_builtins.str]] = None,
+                                service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                                timeouts: pulumi.Input[Optional[Optional[Union['GetKafkaTopicListTimeoutsArgs', 'GetKafkaTopicListTimeoutsArgsDict']]]] = None,
+                                topics: pulumi.Input[Optional[Optional[Sequence[Union['GetKafkaTopicListTopicArgs', 'GetKafkaTopicListTopicArgsDict']]]]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKafkaTopicListResult]:
     """
     Lists Kafka topics for a service.

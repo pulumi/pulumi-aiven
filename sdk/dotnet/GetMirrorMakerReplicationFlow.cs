@@ -24,7 +24,7 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleReplicationFlow = Aiven.Index.GetMirrorMakerReplicationFlow.Invoke(new()
+        ///     var exampleReplicationFlow = Aiven.GetMirrorMakerReplicationFlow.Invoke(new()
         ///     {
         ///         Project = exampleProject.Project,
         ///         ServiceName = exampleKafka.ServiceName,
@@ -51,7 +51,7 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleReplicationFlow = Aiven.Index.GetMirrorMakerReplicationFlow.Invoke(new()
+        ///     var exampleReplicationFlow = Aiven.GetMirrorMakerReplicationFlow.Invoke(new()
         ///     {
         ///         Project = exampleProject.Project,
         ///         ServiceName = exampleKafka.ServiceName,
@@ -78,7 +78,7 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleReplicationFlow = Aiven.Index.GetMirrorMakerReplicationFlow.Invoke(new()
+        ///     var exampleReplicationFlow = Aiven.GetMirrorMakerReplicationFlow.Invoke(new()
         ///     {
         ///         Project = exampleProject.Project,
         ///         ServiceName = exampleKafka.ServiceName,

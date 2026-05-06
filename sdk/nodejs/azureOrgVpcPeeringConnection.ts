@@ -170,39 +170,39 @@ export interface AzureOrgVpcPeeringConnectionState {
     /**
      * The ID of the Azure subscription in UUID4 format. Changing this property forces recreation of the resource.
      */
-    azureSubscriptionId?: pulumi.Input<string>;
+    azureSubscriptionId?: pulumi.Input<string | undefined>;
     /**
      * Identifier of the organization.
      */
-    organizationId?: pulumi.Input<string>;
+    organizationId?: pulumi.Input<string | undefined>;
     /**
      * Identifier of the organization VPC.
      */
-    organizationVpcId?: pulumi.Input<string>;
+    organizationVpcId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Azure app that is allowed to create a peering to the Azure Virtual Network (VNet) in UUID4 format. Changing this property forces recreation of the resource.
      */
-    peerAzureAppId?: pulumi.Input<string>;
+    peerAzureAppId?: pulumi.Input<string | undefined>;
     /**
      * The Azure tenant ID in UUID4 format. Changing this property forces recreation of the resource.
      */
-    peerAzureTenantId?: pulumi.Input<string>;
+    peerAzureTenantId?: pulumi.Input<string | undefined>;
     /**
      * The name of the Azure resource group associated with the VNet. Changing this property forces recreation of the resource.
      */
-    peerResourceGroup?: pulumi.Input<string>;
+    peerResourceGroup?: pulumi.Input<string | undefined>;
     /**
      * The ID of the cloud provider for the peering connection.
      */
-    peeringConnectionId?: pulumi.Input<string>;
+    peeringConnectionId?: pulumi.Input<string | undefined>;
     /**
      * State of the peering connection
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The name of the Azure VNet. Changing this property forces recreation of the resource.
      */
-    vnetName?: pulumi.Input<string>;
+    vnetName?: pulumi.Input<string | undefined>;
 }
 
 /**

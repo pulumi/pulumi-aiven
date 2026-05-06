@@ -76,10 +76,10 @@ export interface GetOrganizationBillingGroupListOutputArgs {
     /**
      * A list of all billing groups belonging to the organization.
      */
-    billingGroups?: pulumi.Input<pulumi.Input<inputs.GetOrganizationBillingGroupListBillingGroupArgs>[]>;
+    billingGroups?: pulumi.Input<pulumi.Input<inputs.GetOrganizationBillingGroupListBillingGroupArgs>[] | undefined>;
     /**
      * ID of an organization.
      */
     organizationId: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.GetOrganizationBillingGroupListTimeoutsArgs>;
+    timeouts?: pulumi.Input<inputs.GetOrganizationBillingGroupListTimeoutsArgs | undefined>;
 }

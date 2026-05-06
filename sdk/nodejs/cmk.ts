@@ -152,36 +152,36 @@ export interface CmkState {
     /**
      * Customer Managed Key identifier (CMK ID).
      */
-    cmkId?: pulumi.Input<string>;
+    cmkId?: pulumi.Input<string | undefined>;
     /**
      * The cloud provider hosting the key management service (KMS). The possible values are `aws`, `gcp` and `oci`. Changing this property forces recreation of the resource.
      */
-    cmkProvider?: pulumi.Input<string>;
+    cmkProvider?: pulumi.Input<string | undefined>;
     /**
      * Created At.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Mark the created CMK as default for all newly created services.
      */
-    defaultCmk?: pulumi.Input<boolean>;
+    defaultCmk?: pulumi.Input<boolean | undefined>;
     /**
      * Project name. Changing this property forces recreation of the resource.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier for the CMK in the cloud provider's KMS. In AWS, this is the Key ARN; in Google Cloud the Resource Name; and in Oracle Cloud the Key OCID. Length must be between `1` and `512`. Changing this property forces recreation of the resource.
      */
-    resource?: pulumi.Input<string>;
+    resource?: pulumi.Input<string | undefined>;
     /**
      * Status. The possible values are `current`, `deleted` and `old`.
      */
-    status?: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.CmkTimeouts>;
+    status?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.CmkTimeouts | undefined>;
     /**
      * Updated At.
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -195,7 +195,7 @@ export interface CmkArgs {
     /**
      * Mark the created CMK as default for all newly created services.
      */
-    defaultCmk?: pulumi.Input<boolean>;
+    defaultCmk?: pulumi.Input<boolean | undefined>;
     /**
      * Project name. Changing this property forces recreation of the resource.
      */
@@ -204,5 +204,5 @@ export interface CmkArgs {
      * The unique identifier for the CMK in the cloud provider's KMS. In AWS, this is the Key ARN; in Google Cloud the Resource Name; and in Oracle Cloud the Key OCID. Length must be between `1` and `512`. Changing this property forces recreation of the resource.
      */
     resource: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.CmkTimeouts>;
+    timeouts?: pulumi.Input<inputs.CmkTimeouts | undefined>;
 }

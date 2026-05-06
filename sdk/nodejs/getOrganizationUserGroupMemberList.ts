@@ -104,12 +104,12 @@ export interface GetOrganizationUserGroupMemberListOutputArgs {
     /**
      * User group members.
      */
-    members?: pulumi.Input<pulumi.Input<inputs.GetOrganizationUserGroupMemberListMemberArgs>[]>;
+    members?: pulumi.Input<pulumi.Input<inputs.GetOrganizationUserGroupMemberListMemberArgs>[] | undefined>;
     /**
      * ID of an organization.
      */
     organizationId: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.GetOrganizationUserGroupMemberListTimeoutsArgs>;
+    timeouts?: pulumi.Input<inputs.GetOrganizationUserGroupMemberListTimeoutsArgs | undefined>;
     /**
      * ID of the user group.
      */

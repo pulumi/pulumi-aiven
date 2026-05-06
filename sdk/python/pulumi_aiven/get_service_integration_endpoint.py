@@ -390,8 +390,8 @@ def get_service_integration_endpoint(endpoint_name: Optional[_builtins.str] = No
         project=pulumi.get(__ret__, 'project'),
         prometheus_user_configs=pulumi.get(__ret__, 'prometheus_user_configs'),
         rsyslog_user_configs=pulumi.get(__ret__, 'rsyslog_user_configs'))
-def get_service_integration_endpoint_output(endpoint_name: Optional[pulumi.Input[_builtins.str]] = None,
-                                            project: Optional[pulumi.Input[_builtins.str]] = None,
+def get_service_integration_endpoint_output(endpoint_name: pulumi.Input[Optional[_builtins.str]] = None,
+                                            project: pulumi.Input[Optional[_builtins.str]] = None,
                                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServiceIntegrationEndpointResult]:
     """
     Gets information about an integration endpoint.

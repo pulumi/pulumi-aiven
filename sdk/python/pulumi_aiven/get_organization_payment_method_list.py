@@ -110,9 +110,9 @@ def get_organization_payment_method_list(organization_id: Optional[_builtins.str
         organization_id=pulumi.get(__ret__, 'organization_id'),
         payment_methods=pulumi.get(__ret__, 'payment_methods'),
         timeouts=pulumi.get(__ret__, 'timeouts'))
-def get_organization_payment_method_list_output(organization_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                                payment_methods: Optional[pulumi.Input[Optional[Sequence[Union['GetOrganizationPaymentMethodListPaymentMethodArgs', 'GetOrganizationPaymentMethodListPaymentMethodArgsDict']]]]] = None,
-                                                timeouts: Optional[pulumi.Input[Optional[Union['GetOrganizationPaymentMethodListTimeoutsArgs', 'GetOrganizationPaymentMethodListTimeoutsArgsDict']]]] = None,
+def get_organization_payment_method_list_output(organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                                payment_methods: pulumi.Input[Optional[Optional[Sequence[Union['GetOrganizationPaymentMethodListPaymentMethodArgs', 'GetOrganizationPaymentMethodListPaymentMethodArgsDict']]]]] = None,
+                                                timeouts: pulumi.Input[Optional[Optional[Union['GetOrganizationPaymentMethodListTimeoutsArgs', 'GetOrganizationPaymentMethodListTimeoutsArgsDict']]]] = None,
                                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOrganizationPaymentMethodListResult]:
     """
     Lists payment methods for an organization.

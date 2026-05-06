@@ -176,11 +176,11 @@ def get_clickhouse_user(project: Optional[_builtins.str] = None,
         timeouts=pulumi.get(__ret__, 'timeouts'),
         username=pulumi.get(__ret__, 'username'),
         uuid=pulumi.get(__ret__, 'uuid'))
-def get_clickhouse_user_output(project: Optional[pulumi.Input[_builtins.str]] = None,
-                               service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                               timeouts: Optional[pulumi.Input[Optional[Union['GetClickhouseUserTimeoutsArgs', 'GetClickhouseUserTimeoutsArgsDict']]]] = None,
-                               username: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                               uuid: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_clickhouse_user_output(project: pulumi.Input[Optional[_builtins.str]] = None,
+                               service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                               timeouts: pulumi.Input[Optional[Optional[Union['GetClickhouseUserTimeoutsArgs', 'GetClickhouseUserTimeoutsArgsDict']]]] = None,
+                               username: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                               uuid: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetClickhouseUserResult]:
     """
     Gets information about an Aiven for ClickHouse user.

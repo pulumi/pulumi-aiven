@@ -154,11 +154,11 @@ def get_kafka_schema_registry_acl(permission: Optional[_builtins.str] = None,
         resource=pulumi.get(__ret__, 'resource'),
         service_name=pulumi.get(__ret__, 'service_name'),
         username=pulumi.get(__ret__, 'username'))
-def get_kafka_schema_registry_acl_output(permission: Optional[pulumi.Input[_builtins.str]] = None,
-                                         project: Optional[pulumi.Input[_builtins.str]] = None,
-                                         resource: Optional[pulumi.Input[_builtins.str]] = None,
-                                         service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                                         username: Optional[pulumi.Input[_builtins.str]] = None,
+def get_kafka_schema_registry_acl_output(permission: pulumi.Input[Optional[_builtins.str]] = None,
+                                         project: pulumi.Input[Optional[_builtins.str]] = None,
+                                         resource: pulumi.Input[Optional[_builtins.str]] = None,
+                                         service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                                         username: pulumi.Input[Optional[_builtins.str]] = None,
                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKafkaSchemaRegistryAclResult]:
     """
     The Data Source Kafka Schema Registry ACL data source provides information about the existing Aiven Kafka Schema Registry ACL for a Kafka service.

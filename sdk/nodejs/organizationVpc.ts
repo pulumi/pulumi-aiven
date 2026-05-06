@@ -137,31 +137,31 @@ export interface OrganizationVpcState {
     /**
      * The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.
      */
-    cloudName?: pulumi.Input<string>;
+    cloudName?: pulumi.Input<string | undefined>;
     /**
      * Time of creation of the VPC.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Network address range used by the VPC. For example, `192.168.0.0/24`.
      */
-    networkCidr?: pulumi.Input<string>;
+    networkCidr?: pulumi.Input<string | undefined>;
     /**
      * The ID of the organization.
      */
-    organizationId?: pulumi.Input<string>;
+    organizationId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Aiven Organization VPC.
      */
-    organizationVpcId?: pulumi.Input<string>;
+    organizationVpcId?: pulumi.Input<string | undefined>;
     /**
      * State of the VPC. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * Time of the last update of the VPC.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**

@@ -25,10 +25,10 @@ class ConnectionPoolArgs:
                  pool_name: pulumi.Input[_builtins.str],
                  project: pulumi.Input[_builtins.str],
                  service_name: pulumi.Input[_builtins.str],
-                 pool_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 pool_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 timeouts: Optional[pulumi.Input['ConnectionPoolTimeoutsArgs']] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None):
+                 pool_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 pool_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 timeouts: pulumi.Input[Optional['ConnectionPoolTimeoutsArgs']] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ConnectionPool resource.
 
@@ -103,62 +103,62 @@ class ConnectionPoolArgs:
 
     @_builtins.property
     @pulumi.getter(name="poolMode")
-    def pool_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pool_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         PGBouncer pool mode. The possible values are `session`, `statement` and `transaction`. The default value is `transaction`.
         """
         return pulumi.get(self, "pool_mode")
 
     @pool_mode.setter
-    def pool_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pool_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pool_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="poolSize")
-    def pool_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def pool_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Size of PGBouncer's PostgreSQL side connection pool. Value must be between `1` and `10000`. The default value is `10`.
         """
         return pulumi.get(self, "pool_size")
 
     @pool_size.setter
-    def pool_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def pool_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "pool_size", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['ConnectionPoolTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['ConnectionPoolTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['ConnectionPoolTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['ConnectionPoolTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
     @_builtins.property
     @pulumi.getter
-    def username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Service username. Length must be between `1` and `64`.
         """
         return pulumi.get(self, "username")
 
     @username.setter
-    def username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "username", value)
 
 
 @pulumi.input_type
 class _ConnectionPoolState:
     def __init__(__self__, *,
-                 connection_uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 database_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 pool_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 pool_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 pool_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input['ConnectionPoolTimeoutsArgs']] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None):
+                 connection_uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 database_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 pool_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 pool_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 pool_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional['ConnectionPoolTimeoutsArgs']] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ConnectionPool resources.
 
@@ -192,107 +192,107 @@ class _ConnectionPoolState:
 
     @_builtins.property
     @pulumi.getter(name="connectionUri")
-    def connection_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connection_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Connection URI for the DB pool.
         """
         return pulumi.get(self, "connection_uri")
 
     @connection_uri.setter
-    def connection_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connection_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connection_uri", value)
 
     @_builtins.property
     @pulumi.getter(name="databaseName")
-    def database_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def database_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Service database name. Maximum length: `63`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "database_name")
 
     @database_name.setter
-    def database_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def database_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "database_name", value)
 
     @_builtins.property
     @pulumi.getter(name="poolMode")
-    def pool_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pool_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         PGBouncer pool mode. The possible values are `session`, `statement` and `transaction`. The default value is `transaction`.
         """
         return pulumi.get(self, "pool_mode")
 
     @pool_mode.setter
-    def pool_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pool_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pool_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="poolName")
-    def pool_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pool_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         PgBouncer connection pool name. Maximum length: `63`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "pool_name")
 
     @pool_name.setter
-    def pool_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pool_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pool_name", value)
 
     @_builtins.property
     @pulumi.getter(name="poolSize")
-    def pool_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def pool_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Size of PGBouncer's PostgreSQL side connection pool. Value must be between `1` and `10000`. The default value is `10`.
         """
         return pulumi.get(self, "pool_size")
 
     @pool_size.setter
-    def pool_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def pool_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "pool_size", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Project name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceName")
-    def service_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Service name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
-    def service_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['ConnectionPoolTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['ConnectionPoolTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['ConnectionPoolTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['ConnectionPoolTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
     @_builtins.property
     @pulumi.getter
-    def username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Service username. Length must be between `1` and `64`.
         """
         return pulumi.get(self, "username")
 
     @username.setter
-    def username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "username", value)
 
 
@@ -302,14 +302,14 @@ class ConnectionPool(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 database_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 pool_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 pool_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 pool_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input[Union['ConnectionPoolTimeoutsArgs', 'ConnectionPoolTimeoutsArgsDict']]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None,
+                 database_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 pool_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 pool_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 pool_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['ConnectionPoolTimeoutsArgs', 'ConnectionPoolTimeoutsArgsDict']]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Creates and manages a [connection pool](https://aiven.io/docs/products/postgresql/concepts/pg-connection-pooling) in an Aiven for PostgreSQL® service. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
@@ -394,14 +394,14 @@ class ConnectionPool(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 database_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 pool_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 pool_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 pool_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input[Union['ConnectionPoolTimeoutsArgs', 'ConnectionPoolTimeoutsArgsDict']]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None,
+                 database_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 pool_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 pool_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 pool_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['ConnectionPoolTimeoutsArgs', 'ConnectionPoolTimeoutsArgsDict']]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -440,15 +440,15 @@ class ConnectionPool(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            connection_uri: Optional[pulumi.Input[_builtins.str]] = None,
-            database_name: Optional[pulumi.Input[_builtins.str]] = None,
-            pool_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            pool_name: Optional[pulumi.Input[_builtins.str]] = None,
-            pool_size: Optional[pulumi.Input[_builtins.int]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            service_name: Optional[pulumi.Input[_builtins.str]] = None,
-            timeouts: Optional[pulumi.Input[Union['ConnectionPoolTimeoutsArgs', 'ConnectionPoolTimeoutsArgsDict']]] = None,
-            username: Optional[pulumi.Input[_builtins.str]] = None) -> 'ConnectionPool':
+            connection_uri: pulumi.Input[Optional[_builtins.str]] = None,
+            database_name: pulumi.Input[Optional[_builtins.str]] = None,
+            pool_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            pool_name: pulumi.Input[Optional[_builtins.str]] = None,
+            pool_size: pulumi.Input[Optional[_builtins.int]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            service_name: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['ConnectionPoolTimeoutsArgs', 'ConnectionPoolTimeoutsArgsDict']]] = None,
+            username: pulumi.Input[Optional[_builtins.str]] = None) -> 'ConnectionPool':
         """
         Get an existing ConnectionPool resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

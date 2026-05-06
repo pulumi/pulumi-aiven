@@ -115,5 +115,5 @@ export interface GetOpensearchSecurityPluginConfigOutputArgs {
      * Service name.
      */
     serviceName: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.GetOpensearchSecurityPluginConfigTimeoutsArgs>;
+    timeouts?: pulumi.Input<inputs.GetOpensearchSecurityPluginConfigTimeoutsArgs | undefined>;
 }

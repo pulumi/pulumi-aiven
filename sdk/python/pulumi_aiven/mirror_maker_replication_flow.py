@@ -26,16 +26,16 @@ class MirrorMakerReplicationFlowArgs:
                  service_name: pulumi.Input[_builtins.str],
                  source_cluster: pulumi.Input[_builtins.str],
                  target_cluster: pulumi.Input[_builtins.str],
-                 config_properties_excludes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 emit_backward_heartbeats_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 emit_heartbeats_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 exactly_once_delivery_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 follower_fetching_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 replication_factor: Optional[pulumi.Input[_builtins.int]] = None,
-                 sync_group_offsets_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sync_group_offsets_interval_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 topics: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 topics_blacklists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 config_properties_excludes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 emit_backward_heartbeats_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 emit_heartbeats_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 exactly_once_delivery_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 follower_fetching_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 replication_factor: pulumi.Input[Optional[_builtins.int]] = None,
+                 sync_group_offsets_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sync_group_offsets_interval_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 topics: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 topics_blacklists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a MirrorMakerReplicationFlow resource.
 
@@ -171,145 +171,145 @@ class MirrorMakerReplicationFlowArgs:
 
     @_builtins.property
     @pulumi.getter(name="configPropertiesExcludes")
-    def config_properties_excludes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def config_properties_excludes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of topic configuration properties and regular expressions to not replicate. The properties that are not replicated by default are: `follower.replication.throttled.replicas`, `leader.replication.throttled.replicas`, `message.timestamp.difference.max.ms`, `message.timestamp.type`, `unclean.leader.election.enable`, and `min.insync.replicas`. Setting this overrides the defaults. For example, to enable replication for 'min.insync.replicas' and 'unclean.leader.election.enable' set this to: ["follower\\\\.replication\\\\.throttled\\\\.replicas", "leader\\\\.replication\\\\.throttled\\\\.replicas", "message\\\\.timestamp\\\\.difference\\\\.max\\\\.ms",  "message\\\\.timestamp\\\\.type"]
         """
         return pulumi.get(self, "config_properties_excludes")
 
     @config_properties_excludes.setter
-    def config_properties_excludes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def config_properties_excludes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "config_properties_excludes", value)
 
     @_builtins.property
     @pulumi.getter(name="emitBackwardHeartbeatsEnabled")
-    def emit_backward_heartbeats_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def emit_backward_heartbeats_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enables emitting heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
         """
         return pulumi.get(self, "emit_backward_heartbeats_enabled")
 
     @emit_backward_heartbeats_enabled.setter
-    def emit_backward_heartbeats_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def emit_backward_heartbeats_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "emit_backward_heartbeats_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="emitHeartbeatsEnabled")
-    def emit_heartbeats_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def emit_heartbeats_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enables emitting heartbeats to the target cluster. The default value is `false`.
         """
         return pulumi.get(self, "emit_heartbeats_enabled")
 
     @emit_heartbeats_enabled.setter
-    def emit_heartbeats_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def emit_heartbeats_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "emit_heartbeats_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="exactlyOnceDeliveryEnabled")
-    def exactly_once_delivery_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def exactly_once_delivery_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enables exactly-once message delivery. Set this to `enabled` for new replications. The default value is `false`.
         """
         return pulumi.get(self, "exactly_once_delivery_enabled")
 
     @exactly_once_delivery_enabled.setter
-    def exactly_once_delivery_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def exactly_once_delivery_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "exactly_once_delivery_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="followerFetchingEnabled")
-    def follower_fetching_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def follower_fetching_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Assigns a Rack ID based on the availability-zone to enable follower fetching and rack awareness per replication flow. Defaults to enabled by the service for new flows, but is left unchanged for existing ones when not set.
         """
         return pulumi.get(self, "follower_fetching_enabled")
 
     @follower_fetching_enabled.setter
-    def follower_fetching_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def follower_fetching_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "follower_fetching_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="replicationFactor")
-    def replication_factor(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def replication_factor(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Replication factor, `>= 1`.
         """
         return pulumi.get(self, "replication_factor")
 
     @replication_factor.setter
-    def replication_factor(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def replication_factor(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "replication_factor", value)
 
     @_builtins.property
     @pulumi.getter(name="syncGroupOffsetsEnabled")
-    def sync_group_offsets_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def sync_group_offsets_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Sync consumer group offsets. The default value is `false`.
         """
         return pulumi.get(self, "sync_group_offsets_enabled")
 
     @sync_group_offsets_enabled.setter
-    def sync_group_offsets_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def sync_group_offsets_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "sync_group_offsets_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="syncGroupOffsetsIntervalSeconds")
-    def sync_group_offsets_interval_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def sync_group_offsets_interval_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Frequency of consumer group offset sync. The default value is `1`.
         """
         return pulumi.get(self, "sync_group_offsets_interval_seconds")
 
     @sync_group_offsets_interval_seconds.setter
-    def sync_group_offsets_interval_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def sync_group_offsets_interval_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "sync_group_offsets_interval_seconds", value)
 
     @_builtins.property
     @pulumi.getter
-    def topics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def topics(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The topics to include in the replica defined by a [list of regular expressions in Java format](https://aiven.io/docs/products/kafka/kafka-mirrormaker/concepts/replication-flow-topics-regex).
         """
         return pulumi.get(self, "topics")
 
     @topics.setter
-    def topics(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def topics(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "topics", value)
 
     @_builtins.property
     @pulumi.getter(name="topicsBlacklists")
-    def topics_blacklists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def topics_blacklists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The topics to exclude from the replica defined by a [list of regular expressions in Java format](https://aiven.io/docs/products/kafka/kafka-mirrormaker/concepts/replication-flow-topics-regex).
         """
         return pulumi.get(self, "topics_blacklists")
 
     @topics_blacklists.setter
-    def topics_blacklists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def topics_blacklists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "topics_blacklists", value)
 
 
 @pulumi.input_type
 class _MirrorMakerReplicationFlowState:
     def __init__(__self__, *,
-                 config_properties_excludes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 emit_backward_heartbeats_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 emit_heartbeats_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 exactly_once_delivery_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 follower_fetching_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 offset_syncs_topic_location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 replication_factor: Optional[pulumi.Input[_builtins.int]] = None,
-                 replication_policy_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_cluster: Optional[pulumi.Input[_builtins.str]] = None,
-                 sync_group_offsets_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sync_group_offsets_interval_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 target_cluster: Optional[pulumi.Input[_builtins.str]] = None,
-                 topics: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 topics_blacklists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 config_properties_excludes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 emit_backward_heartbeats_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 emit_heartbeats_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 exactly_once_delivery_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 follower_fetching_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 offset_syncs_topic_location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 replication_factor: pulumi.Input[Optional[_builtins.int]] = None,
+                 replication_policy_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_cluster: pulumi.Input[Optional[_builtins.str]] = None,
+                 sync_group_offsets_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sync_group_offsets_interval_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 target_cluster: pulumi.Input[Optional[_builtins.str]] = None,
+                 topics: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 topics_blacklists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering MirrorMakerReplicationFlow resources.
 
@@ -368,206 +368,206 @@ class _MirrorMakerReplicationFlowState:
 
     @_builtins.property
     @pulumi.getter(name="configPropertiesExcludes")
-    def config_properties_excludes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def config_properties_excludes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of topic configuration properties and regular expressions to not replicate. The properties that are not replicated by default are: `follower.replication.throttled.replicas`, `leader.replication.throttled.replicas`, `message.timestamp.difference.max.ms`, `message.timestamp.type`, `unclean.leader.election.enable`, and `min.insync.replicas`. Setting this overrides the defaults. For example, to enable replication for 'min.insync.replicas' and 'unclean.leader.election.enable' set this to: ["follower\\\\.replication\\\\.throttled\\\\.replicas", "leader\\\\.replication\\\\.throttled\\\\.replicas", "message\\\\.timestamp\\\\.difference\\\\.max\\\\.ms",  "message\\\\.timestamp\\\\.type"]
         """
         return pulumi.get(self, "config_properties_excludes")
 
     @config_properties_excludes.setter
-    def config_properties_excludes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def config_properties_excludes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "config_properties_excludes", value)
 
     @_builtins.property
     @pulumi.getter(name="emitBackwardHeartbeatsEnabled")
-    def emit_backward_heartbeats_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def emit_backward_heartbeats_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enables emitting heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
         """
         return pulumi.get(self, "emit_backward_heartbeats_enabled")
 
     @emit_backward_heartbeats_enabled.setter
-    def emit_backward_heartbeats_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def emit_backward_heartbeats_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "emit_backward_heartbeats_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="emitHeartbeatsEnabled")
-    def emit_heartbeats_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def emit_heartbeats_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enables emitting heartbeats to the target cluster. The default value is `false`.
         """
         return pulumi.get(self, "emit_heartbeats_enabled")
 
     @emit_heartbeats_enabled.setter
-    def emit_heartbeats_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def emit_heartbeats_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "emit_heartbeats_enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enables replication flow for a service.
         """
         return pulumi.get(self, "enable")
 
     @enable.setter
-    def enable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable", value)
 
     @_builtins.property
     @pulumi.getter(name="exactlyOnceDeliveryEnabled")
-    def exactly_once_delivery_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def exactly_once_delivery_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enables exactly-once message delivery. Set this to `enabled` for new replications. The default value is `false`.
         """
         return pulumi.get(self, "exactly_once_delivery_enabled")
 
     @exactly_once_delivery_enabled.setter
-    def exactly_once_delivery_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def exactly_once_delivery_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "exactly_once_delivery_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="followerFetchingEnabled")
-    def follower_fetching_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def follower_fetching_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Assigns a Rack ID based on the availability-zone to enable follower fetching and rack awareness per replication flow. Defaults to enabled by the service for new flows, but is left unchanged for existing ones when not set.
         """
         return pulumi.get(self, "follower_fetching_enabled")
 
     @follower_fetching_enabled.setter
-    def follower_fetching_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def follower_fetching_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "follower_fetching_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="offsetSyncsTopicLocation")
-    def offset_syncs_topic_location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def offset_syncs_topic_location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Offset syncs topic location. The possible values are `source` and `target`.
         """
         return pulumi.get(self, "offset_syncs_topic_location")
 
     @offset_syncs_topic_location.setter
-    def offset_syncs_topic_location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def offset_syncs_topic_location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "offset_syncs_topic_location", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="replicationFactor")
-    def replication_factor(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def replication_factor(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Replication factor, `>= 1`.
         """
         return pulumi.get(self, "replication_factor")
 
     @replication_factor.setter
-    def replication_factor(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def replication_factor(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "replication_factor", value)
 
     @_builtins.property
     @pulumi.getter(name="replicationPolicyClass")
-    def replication_policy_class(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def replication_policy_class(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
         """
         return pulumi.get(self, "replication_policy_class")
 
     @replication_policy_class.setter
-    def replication_policy_class(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def replication_policy_class(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "replication_policy_class", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceName")
-    def service_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
-    def service_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_name", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceCluster")
-    def source_cluster(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_cluster(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Source cluster alias. Maximum length: `128`.
         """
         return pulumi.get(self, "source_cluster")
 
     @source_cluster.setter
-    def source_cluster(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_cluster(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_cluster", value)
 
     @_builtins.property
     @pulumi.getter(name="syncGroupOffsetsEnabled")
-    def sync_group_offsets_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def sync_group_offsets_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Sync consumer group offsets. The default value is `false`.
         """
         return pulumi.get(self, "sync_group_offsets_enabled")
 
     @sync_group_offsets_enabled.setter
-    def sync_group_offsets_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def sync_group_offsets_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "sync_group_offsets_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="syncGroupOffsetsIntervalSeconds")
-    def sync_group_offsets_interval_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def sync_group_offsets_interval_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Frequency of consumer group offset sync. The default value is `1`.
         """
         return pulumi.get(self, "sync_group_offsets_interval_seconds")
 
     @sync_group_offsets_interval_seconds.setter
-    def sync_group_offsets_interval_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def sync_group_offsets_interval_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "sync_group_offsets_interval_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="targetCluster")
-    def target_cluster(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_cluster(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Target cluster alias. Maximum length: `128`.
         """
         return pulumi.get(self, "target_cluster")
 
     @target_cluster.setter
-    def target_cluster(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_cluster(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_cluster", value)
 
     @_builtins.property
     @pulumi.getter
-    def topics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def topics(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The topics to include in the replica defined by a [list of regular expressions in Java format](https://aiven.io/docs/products/kafka/kafka-mirrormaker/concepts/replication-flow-topics-regex).
         """
         return pulumi.get(self, "topics")
 
     @topics.setter
-    def topics(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def topics(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "topics", value)
 
     @_builtins.property
     @pulumi.getter(name="topicsBlacklists")
-    def topics_blacklists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def topics_blacklists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The topics to exclude from the replica defined by a [list of regular expressions in Java format](https://aiven.io/docs/products/kafka/kafka-mirrormaker/concepts/replication-flow-topics-regex).
         """
         return pulumi.get(self, "topics_blacklists")
 
     @topics_blacklists.setter
-    def topics_blacklists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def topics_blacklists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "topics_blacklists", value)
 
 
@@ -577,23 +577,23 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config_properties_excludes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 emit_backward_heartbeats_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 emit_heartbeats_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 exactly_once_delivery_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 follower_fetching_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 offset_syncs_topic_location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 replication_factor: Optional[pulumi.Input[_builtins.int]] = None,
-                 replication_policy_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_cluster: Optional[pulumi.Input[_builtins.str]] = None,
-                 sync_group_offsets_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sync_group_offsets_interval_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 target_cluster: Optional[pulumi.Input[_builtins.str]] = None,
-                 topics: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 topics_blacklists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 config_properties_excludes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 emit_backward_heartbeats_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 emit_heartbeats_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 exactly_once_delivery_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 follower_fetching_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 offset_syncs_topic_location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 replication_factor: pulumi.Input[Optional[_builtins.int]] = None,
+                 replication_policy_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_cluster: pulumi.Input[Optional[_builtins.str]] = None,
+                 sync_group_offsets_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sync_group_offsets_interval_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 target_cluster: pulumi.Input[Optional[_builtins.str]] = None,
+                 topics: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 topics_blacklists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Creates and manages an [Aiven for Apache Kafka® MirrorMaker 2](https://aiven.io/docs/products/kafka/kafka-mirrormaker) replication flow.
@@ -712,23 +712,23 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config_properties_excludes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 emit_backward_heartbeats_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 emit_heartbeats_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 exactly_once_delivery_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 follower_fetching_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 offset_syncs_topic_location: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 replication_factor: Optional[pulumi.Input[_builtins.int]] = None,
-                 replication_policy_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_cluster: Optional[pulumi.Input[_builtins.str]] = None,
-                 sync_group_offsets_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sync_group_offsets_interval_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 target_cluster: Optional[pulumi.Input[_builtins.str]] = None,
-                 topics: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 topics_blacklists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 config_properties_excludes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 emit_backward_heartbeats_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 emit_heartbeats_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 exactly_once_delivery_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 follower_fetching_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 offset_syncs_topic_location: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 replication_factor: pulumi.Input[Optional[_builtins.int]] = None,
+                 replication_policy_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_cluster: pulumi.Input[Optional[_builtins.str]] = None,
+                 sync_group_offsets_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sync_group_offsets_interval_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 target_cluster: pulumi.Input[Optional[_builtins.str]] = None,
+                 topics: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 topics_blacklists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -779,23 +779,23 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            config_properties_excludes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            emit_backward_heartbeats_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            emit_heartbeats_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            enable: Optional[pulumi.Input[_builtins.bool]] = None,
-            exactly_once_delivery_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            follower_fetching_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            offset_syncs_topic_location: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            replication_factor: Optional[pulumi.Input[_builtins.int]] = None,
-            replication_policy_class: Optional[pulumi.Input[_builtins.str]] = None,
-            service_name: Optional[pulumi.Input[_builtins.str]] = None,
-            source_cluster: Optional[pulumi.Input[_builtins.str]] = None,
-            sync_group_offsets_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            sync_group_offsets_interval_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-            target_cluster: Optional[pulumi.Input[_builtins.str]] = None,
-            topics: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            topics_blacklists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'MirrorMakerReplicationFlow':
+            config_properties_excludes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            emit_backward_heartbeats_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            emit_heartbeats_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable: pulumi.Input[Optional[_builtins.bool]] = None,
+            exactly_once_delivery_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            follower_fetching_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            offset_syncs_topic_location: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            replication_factor: pulumi.Input[Optional[_builtins.int]] = None,
+            replication_policy_class: pulumi.Input[Optional[_builtins.str]] = None,
+            service_name: pulumi.Input[Optional[_builtins.str]] = None,
+            source_cluster: pulumi.Input[Optional[_builtins.str]] = None,
+            sync_group_offsets_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            sync_group_offsets_interval_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+            target_cluster: pulumi.Input[Optional[_builtins.str]] = None,
+            topics: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            topics_blacklists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'MirrorMakerReplicationFlow':
         """
         Get an existing MirrorMakerReplicationFlow resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

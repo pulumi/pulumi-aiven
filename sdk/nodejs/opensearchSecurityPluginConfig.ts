@@ -135,28 +135,28 @@ export interface OpensearchSecurityPluginConfigState {
     /**
      * security plugin admin defined.
      */
-    adminEnabled?: pulumi.Input<boolean>;
+    adminEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Current os-sec-admin password. Length must be between `8` and `256`.
      */
-    adminPassword?: pulumi.Input<string>;
+    adminPassword?: pulumi.Input<string | undefined>;
     /**
      * Opensearch security available for the service.
      */
-    available?: pulumi.Input<boolean>;
+    available?: pulumi.Input<boolean | undefined>;
     /**
      * Opensearch security enabled for the service.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Project name. Changing this property forces recreation of the resource.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Service name. Changing this property forces recreation of the resource.
      */
-    serviceName?: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.OpensearchSecurityPluginConfigTimeouts>;
+    serviceName?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.OpensearchSecurityPluginConfigTimeouts | undefined>;
 }
 
 /**
@@ -175,5 +175,5 @@ export interface OpensearchSecurityPluginConfigArgs {
      * Service name. Changing this property forces recreation of the resource.
      */
     serviceName: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.OpensearchSecurityPluginConfigTimeouts>;
+    timeouts?: pulumi.Input<inputs.OpensearchSecurityPluginConfigTimeouts | undefined>;
 }

@@ -160,9 +160,9 @@ def get_organization_application_user(organization_id: Optional[_builtins.str] =
         organization_id=pulumi.get(__ret__, 'organization_id'),
         timeouts=pulumi.get(__ret__, 'timeouts'),
         user_id=pulumi.get(__ret__, 'user_id'))
-def get_organization_application_user_output(organization_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                             timeouts: Optional[pulumi.Input[Optional[Union['GetOrganizationApplicationUserTimeoutsArgs', 'GetOrganizationApplicationUserTimeoutsArgsDict']]]] = None,
-                                             user_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_organization_application_user_output(organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                             timeouts: pulumi.Input[Optional[Optional[Union['GetOrganizationApplicationUserTimeoutsArgs', 'GetOrganizationApplicationUserTimeoutsArgsDict']]]] = None,
+                                             user_id: pulumi.Input[Optional[_builtins.str]] = None,
                                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOrganizationApplicationUserResult]:
     """
     Gets information about an application user.

@@ -110,22 +110,22 @@ export interface OrganizationState {
     /**
      * Timestamp in ISO 8601 format, always in UTC.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Name of the organization. Maximum length: `83`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Tenant identifier. **Deprecated**: This field is deprecated and will be removed in the next major release.
      *
      * @deprecated This field is deprecated and will be removed in the next major release.
      */
-    tenantId?: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.OrganizationTimeouts>;
+    tenantId?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.OrganizationTimeouts | undefined>;
     /**
      * Timestamp in ISO 8601 format, always in UTC.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -135,6 +135,6 @@ export interface OrganizationArgs {
     /**
      * Name of the organization. Maximum length: `83`.
      */
-    name?: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.OrganizationTimeouts>;
+    name?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.OrganizationTimeouts | undefined>;
 }

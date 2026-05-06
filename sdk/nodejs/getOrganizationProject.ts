@@ -132,6 +132,6 @@ export interface GetOrganizationProjectOutputArgs {
     /**
      * Tags are key-value pairs that allow you to categorize projects.
      */
-    tags?: pulumi.Input<pulumi.Input<inputs.GetOrganizationProjectTagArgs>[]>;
-    timeouts?: pulumi.Input<inputs.GetOrganizationProjectTimeoutsArgs>;
+    tags?: pulumi.Input<pulumi.Input<inputs.GetOrganizationProjectTagArgs>[] | undefined>;
+    timeouts?: pulumi.Input<inputs.GetOrganizationProjectTimeoutsArgs | undefined>;
 }

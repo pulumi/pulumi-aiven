@@ -169,9 +169,9 @@ def get_opensearch_security_plugin_config(project: Optional[_builtins.str] = Non
         project=pulumi.get(__ret__, 'project'),
         service_name=pulumi.get(__ret__, 'service_name'),
         timeouts=pulumi.get(__ret__, 'timeouts'))
-def get_opensearch_security_plugin_config_output(project: Optional[pulumi.Input[_builtins.str]] = None,
-                                                 service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                                                 timeouts: Optional[pulumi.Input[Optional[Union['GetOpensearchSecurityPluginConfigTimeoutsArgs', 'GetOpensearchSecurityPluginConfigTimeoutsArgsDict']]]] = None,
+def get_opensearch_security_plugin_config_output(project: pulumi.Input[Optional[_builtins.str]] = None,
+                                                 service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                                                 timeouts: pulumi.Input[Optional[Optional[Union['GetOpensearchSecurityPluginConfigTimeoutsArgs', 'GetOpensearchSecurityPluginConfigTimeoutsArgsDict']]]] = None,
                                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOpensearchSecurityPluginConfigResult]:
     """
     Gets information about OpenSearch Security configuration for an Aiven for OpenSearch® service.

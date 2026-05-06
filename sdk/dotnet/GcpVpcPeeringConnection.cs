@@ -22,7 +22,7 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foo = new Aiven.Index.GcpVpcPeeringConnection("foo", new()
+    ///     var foo = new Aiven.GcpVpcPeeringConnection("foo", new()
     ///     {
     ///         VpcId = vpc.Id,
     ///         GcpProjectId = "xxxx",

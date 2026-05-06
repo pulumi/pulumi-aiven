@@ -24,7 +24,7 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleUser = Aiven.Index.GetClickhouseUser.Invoke(new()
+        ///     var exampleUser = Aiven.GetClickhouseUser.Invoke(new()
         ///     {
         ///         Project = exampleProject.Project,
         ///         ServiceName = exampleClickhouse.ServiceName,
@@ -50,7 +50,7 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleUser = Aiven.Index.GetClickhouseUser.Invoke(new()
+        ///     var exampleUser = Aiven.GetClickhouseUser.Invoke(new()
         ///     {
         ///         Project = exampleProject.Project,
         ///         ServiceName = exampleClickhouse.ServiceName,
@@ -76,7 +76,7 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleUser = Aiven.Index.GetClickhouseUser.Invoke(new()
+        ///     var exampleUser = Aiven.GetClickhouseUser.Invoke(new()
         ///     {
         ///         Project = exampleProject.Project,
         ///         ServiceName = exampleClickhouse.ServiceName,

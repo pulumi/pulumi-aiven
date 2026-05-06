@@ -168,8 +168,8 @@ def get_azure_privatelink(project: Optional[_builtins.str] = None,
         service_name=pulumi.get(__ret__, 'service_name'),
         state=pulumi.get(__ret__, 'state'),
         user_subscription_ids=pulumi.get(__ret__, 'user_subscription_ids'))
-def get_azure_privatelink_output(project: Optional[pulumi.Input[_builtins.str]] = None,
-                                 service_name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_azure_privatelink_output(project: pulumi.Input[Optional[_builtins.str]] = None,
+                                 service_name: pulumi.Input[Optional[_builtins.str]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAzurePrivatelinkResult]:
     """
     Gets information about an Azure Private Link connection for an Aiven service.

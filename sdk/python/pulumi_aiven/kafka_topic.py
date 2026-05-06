@@ -26,11 +26,11 @@ class KafkaTopicArgs:
                  replication: pulumi.Input[_builtins.int],
                  service_name: pulumi.Input[_builtins.str],
                  topic_name: pulumi.Input[_builtins.str],
-                 config: Optional[pulumi.Input['KafkaTopicConfigArgs']] = None,
-                 owner_user_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['KafkaTopicTagArgs']]]] = None,
-                 termination_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 topic_description: Optional[pulumi.Input[_builtins.str]] = None):
+                 config: pulumi.Input[Optional['KafkaTopicConfigArgs']] = None,
+                 owner_user_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input['KafkaTopicTagArgs']]]] = None,
+                 termination_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 topic_description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a KafkaTopic resource.
 
@@ -123,78 +123,78 @@ class KafkaTopicArgs:
 
     @_builtins.property
     @pulumi.getter
-    def config(self) -> Optional[pulumi.Input['KafkaTopicConfigArgs']]:
+    def config(self) -> pulumi.Input[Optional['KafkaTopicConfigArgs']]:
         """
         [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics.
         """
         return pulumi.get(self, "config")
 
     @config.setter
-    def config(self, value: Optional[pulumi.Input['KafkaTopicConfigArgs']]):
+    def config(self, value: pulumi.Input[Optional['KafkaTopicConfigArgs']]):
         pulumi.set(self, "config", value)
 
     @_builtins.property
     @pulumi.getter(name="ownerUserGroupId")
-    def owner_user_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def owner_user_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the user group that owns the topic. Assigning ownership to decentralize topic management is part of [Aiven for Apache Kafka® governance](https://aiven.io/docs/products/kafka/concepts/governance-overview).
         """
         return pulumi.get(self, "owner_user_group_id")
 
     @owner_user_group_id.setter
-    def owner_user_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def owner_user_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "owner_user_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KafkaTopicTagArgs']]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['KafkaTopicTagArgs']]]]:
         """
         Tags for the topic.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['KafkaTopicTagArgs']]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['KafkaTopicTagArgs']]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="terminationProtection")
-    def termination_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def termination_protection(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Prevents topics from being deleted by Terraform. It's recommended for topics containing critical data. **Topics can still be deleted in the Aiven Console.**
         """
         return pulumi.get(self, "termination_protection")
 
     @termination_protection.setter
-    def termination_protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def termination_protection(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "termination_protection", value)
 
     @_builtins.property
     @pulumi.getter(name="topicDescription")
-    def topic_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def topic_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the topic
         """
         return pulumi.get(self, "topic_description")
 
     @topic_description.setter
-    def topic_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def topic_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "topic_description", value)
 
 
 @pulumi.input_type
 class _KafkaTopicState:
     def __init__(__self__, *,
-                 config: Optional[pulumi.Input['KafkaTopicConfigArgs']] = None,
-                 owner_user_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 partitions: Optional[pulumi.Input[_builtins.int]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 replication: Optional[pulumi.Input[_builtins.int]] = None,
-                 service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['KafkaTopicTagArgs']]]] = None,
-                 termination_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 topic_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 topic_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 config: pulumi.Input[Optional['KafkaTopicConfigArgs']] = None,
+                 owner_user_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 partitions: pulumi.Input[Optional[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 replication: pulumi.Input[Optional[_builtins.int]] = None,
+                 service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input['KafkaTopicTagArgs']]]] = None,
+                 termination_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 topic_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 topic_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering KafkaTopic resources.
 
@@ -232,122 +232,122 @@ class _KafkaTopicState:
 
     @_builtins.property
     @pulumi.getter
-    def config(self) -> Optional[pulumi.Input['KafkaTopicConfigArgs']]:
+    def config(self) -> pulumi.Input[Optional['KafkaTopicConfigArgs']]:
         """
         [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics.
         """
         return pulumi.get(self, "config")
 
     @config.setter
-    def config(self, value: Optional[pulumi.Input['KafkaTopicConfigArgs']]):
+    def config(self, value: pulumi.Input[Optional['KafkaTopicConfigArgs']]):
         pulumi.set(self, "config", value)
 
     @_builtins.property
     @pulumi.getter(name="ownerUserGroupId")
-    def owner_user_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def owner_user_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the user group that owns the topic. Assigning ownership to decentralize topic management is part of [Aiven for Apache Kafka® governance](https://aiven.io/docs/products/kafka/concepts/governance-overview).
         """
         return pulumi.get(self, "owner_user_group_id")
 
     @owner_user_group_id.setter
-    def owner_user_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def owner_user_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "owner_user_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def partitions(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def partitions(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of partitions to create in the topic.
         """
         return pulumi.get(self, "partitions")
 
     @partitions.setter
-    def partitions(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def partitions(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "partitions", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def replication(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def replication(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The replication factor for the topic.
         """
         return pulumi.get(self, "replication")
 
     @replication.setter
-    def replication(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def replication(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "replication", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceName")
-    def service_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
-    def service_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KafkaTopicTagArgs']]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['KafkaTopicTagArgs']]]]:
         """
         Tags for the topic.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['KafkaTopicTagArgs']]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['KafkaTopicTagArgs']]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="terminationProtection")
-    def termination_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def termination_protection(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Prevents topics from being deleted by Terraform. It's recommended for topics containing critical data. **Topics can still be deleted in the Aiven Console.**
         """
         return pulumi.get(self, "termination_protection")
 
     @termination_protection.setter
-    def termination_protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def termination_protection(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "termination_protection", value)
 
     @_builtins.property
     @pulumi.getter(name="topicDescription")
-    def topic_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def topic_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the topic
         """
         return pulumi.get(self, "topic_description")
 
     @topic_description.setter
-    def topic_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def topic_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "topic_description", value)
 
     @_builtins.property
     @pulumi.getter(name="topicName")
-    def topic_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def topic_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the topic. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "topic_name")
 
     @topic_name.setter
-    def topic_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def topic_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "topic_name", value)
 
 
@@ -357,16 +357,16 @@ class KafkaTopic(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: Optional[pulumi.Input[Union['KafkaTopicConfigArgs', 'KafkaTopicConfigArgsDict']]] = None,
-                 owner_user_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 partitions: Optional[pulumi.Input[_builtins.int]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 replication: Optional[pulumi.Input[_builtins.int]] = None,
-                 service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['KafkaTopicTagArgs', 'KafkaTopicTagArgsDict']]]]] = None,
-                 termination_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 topic_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 topic_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 config: pulumi.Input[Optional[Union['KafkaTopicConfigArgs', 'KafkaTopicConfigArgsDict']]] = None,
+                 owner_user_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 partitions: pulumi.Input[Optional[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 replication: pulumi.Input[Optional[_builtins.int]] = None,
+                 service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KafkaTopicTagArgs', 'KafkaTopicTagArgsDict']]]]] = None,
+                 termination_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 topic_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 topic_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Creates and manages an Aiven for Apache Kafka® [topic](https://aiven.io/docs/products/kafka/concepts).
@@ -462,16 +462,16 @@ class KafkaTopic(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: Optional[pulumi.Input[Union['KafkaTopicConfigArgs', 'KafkaTopicConfigArgsDict']]] = None,
-                 owner_user_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 partitions: Optional[pulumi.Input[_builtins.int]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 replication: Optional[pulumi.Input[_builtins.int]] = None,
-                 service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['KafkaTopicTagArgs', 'KafkaTopicTagArgsDict']]]]] = None,
-                 termination_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 topic_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 topic_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 config: pulumi.Input[Optional[Union['KafkaTopicConfigArgs', 'KafkaTopicConfigArgsDict']]] = None,
+                 owner_user_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 partitions: pulumi.Input[Optional[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 replication: pulumi.Input[Optional[_builtins.int]] = None,
+                 service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KafkaTopicTagArgs', 'KafkaTopicTagArgsDict']]]]] = None,
+                 termination_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 topic_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 topic_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -511,16 +511,16 @@ class KafkaTopic(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            config: Optional[pulumi.Input[Union['KafkaTopicConfigArgs', 'KafkaTopicConfigArgsDict']]] = None,
-            owner_user_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            partitions: Optional[pulumi.Input[_builtins.int]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            replication: Optional[pulumi.Input[_builtins.int]] = None,
-            service_name: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['KafkaTopicTagArgs', 'KafkaTopicTagArgsDict']]]]] = None,
-            termination_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-            topic_description: Optional[pulumi.Input[_builtins.str]] = None,
-            topic_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'KafkaTopic':
+            config: pulumi.Input[Optional[Union['KafkaTopicConfigArgs', 'KafkaTopicConfigArgsDict']]] = None,
+            owner_user_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            partitions: pulumi.Input[Optional[_builtins.int]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            replication: pulumi.Input[Optional[_builtins.int]] = None,
+            service_name: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KafkaTopicTagArgs', 'KafkaTopicTagArgsDict']]]]] = None,
+            termination_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+            topic_description: pulumi.Input[Optional[_builtins.str]] = None,
+            topic_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'KafkaTopic':
         """
         Get an existing KafkaTopic resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -126,11 +126,11 @@ export interface GetOrganizationBillingGroupOutputArgs {
     /**
      * List of billing contact emails.
      */
-    billingContactEmails?: pulumi.Input<pulumi.Input<inputs.GetOrganizationBillingGroupBillingContactEmailArgs>[]>;
+    billingContactEmails?: pulumi.Input<pulumi.Input<inputs.GetOrganizationBillingGroupBillingContactEmailArgs>[] | undefined>;
     /**
      * List of billing contact emails.
      */
-    billingEmails?: pulumi.Input<pulumi.Input<inputs.GetOrganizationBillingGroupBillingEmailArgs>[]>;
+    billingEmails?: pulumi.Input<pulumi.Input<inputs.GetOrganizationBillingGroupBillingEmailArgs>[] | undefined>;
     /**
      * Billing group ID.
      */
@@ -142,6 +142,6 @@ export interface GetOrganizationBillingGroupOutputArgs {
     /**
      * Payment method.
      */
-    paymentMethods?: pulumi.Input<pulumi.Input<inputs.GetOrganizationBillingGroupPaymentMethodArgs>[]>;
-    timeouts?: pulumi.Input<inputs.GetOrganizationBillingGroupTimeoutsArgs>;
+    paymentMethods?: pulumi.Input<pulumi.Input<inputs.GetOrganizationBillingGroupPaymentMethodArgs>[] | undefined>;
+    timeouts?: pulumi.Input<inputs.GetOrganizationBillingGroupTimeoutsArgs | undefined>;
 }

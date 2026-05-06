@@ -121,9 +121,9 @@ def get_service_list(project: Optional[_builtins.str] = None,
         project=pulumi.get(__ret__, 'project'),
         services=pulumi.get(__ret__, 'services'),
         timeouts=pulumi.get(__ret__, 'timeouts'))
-def get_service_list_output(project: Optional[pulumi.Input[_builtins.str]] = None,
-                            services: Optional[pulumi.Input[Optional[Sequence[Union['GetServiceListServiceArgs', 'GetServiceListServiceArgsDict']]]]] = None,
-                            timeouts: Optional[pulumi.Input[Optional[Union['GetServiceListTimeoutsArgs', 'GetServiceListTimeoutsArgsDict']]]] = None,
+def get_service_list_output(project: pulumi.Input[Optional[_builtins.str]] = None,
+                            services: pulumi.Input[Optional[Optional[Sequence[Union['GetServiceListServiceArgs', 'GetServiceListServiceArgsDict']]]]] = None,
+                            timeouts: pulumi.Input[Optional[Optional[Union['GetServiceListTimeoutsArgs', 'GetServiceListTimeoutsArgsDict']]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServiceListResult]:
     """
     A list of all services in a project.

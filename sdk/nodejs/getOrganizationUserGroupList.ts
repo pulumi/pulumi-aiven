@@ -71,9 +71,9 @@ export interface GetOrganizationUserGroupListOutputArgs {
      * ID of an organization.
      */
     organizationId: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.GetOrganizationUserGroupListTimeoutsArgs>;
+    timeouts?: pulumi.Input<inputs.GetOrganizationUserGroupListTimeoutsArgs | undefined>;
     /**
      * User Groups.
      */
-    userGroups?: pulumi.Input<pulumi.Input<inputs.GetOrganizationUserGroupListUserGroupArgs>[]>;
+    userGroups?: pulumi.Input<pulumi.Input<inputs.GetOrganizationUserGroupListUserGroupArgs>[] | undefined>;
 }

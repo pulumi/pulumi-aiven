@@ -142,8 +142,8 @@ def get_aws_privatelink(project: Optional[_builtins.str] = None,
         principals=pulumi.get(__ret__, 'principals'),
         project=pulumi.get(__ret__, 'project'),
         service_name=pulumi.get(__ret__, 'service_name'))
-def get_aws_privatelink_output(project: Optional[pulumi.Input[_builtins.str]] = None,
-                               service_name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_aws_privatelink_output(project: pulumi.Input[Optional[_builtins.str]] = None,
+                               service_name: pulumi.Input[Optional[_builtins.str]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAwsPrivatelinkResult]:
     """
     Gets information about an AWS PrivateLink connection for an Aiven service.

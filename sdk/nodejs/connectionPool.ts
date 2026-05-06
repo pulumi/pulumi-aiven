@@ -154,36 +154,36 @@ export interface ConnectionPoolState {
     /**
      * Connection URI for the DB pool.
      */
-    connectionUri?: pulumi.Input<string>;
+    connectionUri?: pulumi.Input<string | undefined>;
     /**
      * Service database name. Maximum length: `63`. Changing this property forces recreation of the resource.
      */
-    databaseName?: pulumi.Input<string>;
+    databaseName?: pulumi.Input<string | undefined>;
     /**
      * PGBouncer pool mode. The possible values are `session`, `statement` and `transaction`. The default value is `transaction`.
      */
-    poolMode?: pulumi.Input<string>;
+    poolMode?: pulumi.Input<string | undefined>;
     /**
      * PgBouncer connection pool name. Maximum length: `63`. Changing this property forces recreation of the resource.
      */
-    poolName?: pulumi.Input<string>;
+    poolName?: pulumi.Input<string | undefined>;
     /**
      * Size of PGBouncer's PostgreSQL side connection pool. Value must be between `1` and `10000`. The default value is `10`.
      */
-    poolSize?: pulumi.Input<number>;
+    poolSize?: pulumi.Input<number | undefined>;
     /**
      * Project name. Changing this property forces recreation of the resource.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Service name. Changing this property forces recreation of the resource.
      */
-    serviceName?: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.ConnectionPoolTimeouts>;
+    serviceName?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.ConnectionPoolTimeouts | undefined>;
     /**
      * Service username. Length must be between `1` and `64`.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -197,7 +197,7 @@ export interface ConnectionPoolArgs {
     /**
      * PGBouncer pool mode. The possible values are `session`, `statement` and `transaction`. The default value is `transaction`.
      */
-    poolMode?: pulumi.Input<string>;
+    poolMode?: pulumi.Input<string | undefined>;
     /**
      * PgBouncer connection pool name. Maximum length: `63`. Changing this property forces recreation of the resource.
      */
@@ -205,7 +205,7 @@ export interface ConnectionPoolArgs {
     /**
      * Size of PGBouncer's PostgreSQL side connection pool. Value must be between `1` and `10000`. The default value is `10`.
      */
-    poolSize?: pulumi.Input<number>;
+    poolSize?: pulumi.Input<number | undefined>;
     /**
      * Project name. Changing this property forces recreation of the resource.
      */
@@ -214,9 +214,9 @@ export interface ConnectionPoolArgs {
      * Service name. Changing this property forces recreation of the resource.
      */
     serviceName: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.ConnectionPoolTimeouts>;
+    timeouts?: pulumi.Input<inputs.ConnectionPoolTimeouts | undefined>;
     /**
      * Service username. Length must be between `1` and `64`.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }

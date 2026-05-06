@@ -129,8 +129,8 @@ def get_open_search_acl_config(project: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         project=pulumi.get(__ret__, 'project'),
         service_name=pulumi.get(__ret__, 'service_name'))
-def get_open_search_acl_config_output(project: Optional[pulumi.Input[_builtins.str]] = None,
-                                      service_name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_open_search_acl_config_output(project: pulumi.Input[Optional[_builtins.str]] = None,
+                                      service_name: pulumi.Input[Optional[_builtins.str]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOpenSearchAclConfigResult]:
     """
     Gets information about access control for an Aiven for OpenSearch® service.

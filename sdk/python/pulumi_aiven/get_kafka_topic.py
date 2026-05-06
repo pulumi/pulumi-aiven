@@ -212,9 +212,9 @@ def get_kafka_topic(project: Optional[_builtins.str] = None,
         termination_protection=pulumi.get(__ret__, 'termination_protection'),
         topic_description=pulumi.get(__ret__, 'topic_description'),
         topic_name=pulumi.get(__ret__, 'topic_name'))
-def get_kafka_topic_output(project: Optional[pulumi.Input[_builtins.str]] = None,
-                           service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                           topic_name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_kafka_topic_output(project: pulumi.Input[Optional[_builtins.str]] = None,
+                           service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                           topic_name: pulumi.Input[Optional[_builtins.str]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKafkaTopicResult]:
     """
     Gets information about an Aiven for Apache Kafka® topic.

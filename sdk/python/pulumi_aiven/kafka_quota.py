@@ -21,11 +21,11 @@ class KafkaQuotaArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[_builtins.str],
                  service_name: pulumi.Input[_builtins.str],
-                 client_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 consumer_byte_rate: Optional[pulumi.Input[_builtins.int]] = None,
-                 producer_byte_rate: Optional[pulumi.Input[_builtins.int]] = None,
-                 request_percentage: Optional[pulumi.Input[_builtins.float]] = None,
-                 user: Optional[pulumi.Input[_builtins.str]] = None):
+                 client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 consumer_byte_rate: pulumi.Input[Optional[_builtins.int]] = None,
+                 producer_byte_rate: pulumi.Input[Optional[_builtins.int]] = None,
+                 request_percentage: pulumi.Input[Optional[_builtins.float]] = None,
+                 user: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a KafkaQuota resource.
 
@@ -90,7 +90,7 @@ class KafkaQuotaArgs:
 
     @_builtins.property
     @pulumi.getter(name="clientId")
-    def client_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Represents a logical group of clients, assigned a unique name by the client application.
         Quotas can be applied based on user, client-id, or both.
@@ -101,12 +101,12 @@ class KafkaQuotaArgs:
         return pulumi.get(self, "client_id")
 
     @client_id.setter
-    def client_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_id", value)
 
     @_builtins.property
     @pulumi.getter(name="consumerByteRate")
-    def consumer_byte_rate(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def consumer_byte_rate(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Defines the bandwidth limit in bytes/sec for each group of clients sharing a quota.
         Every distinct client group is allocated a specific quota, as defined by the cluster, on a per-broker basis.
@@ -115,12 +115,12 @@ class KafkaQuotaArgs:
         return pulumi.get(self, "consumer_byte_rate")
 
     @consumer_byte_rate.setter
-    def consumer_byte_rate(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def consumer_byte_rate(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "consumer_byte_rate", value)
 
     @_builtins.property
     @pulumi.getter(name="producerByteRate")
-    def producer_byte_rate(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def producer_byte_rate(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Defines the bandwidth limit in bytes/sec for each group of clients sharing a quota.
         Every distinct client group is allocated a specific quota, as defined by the cluster, on a per-broker basis.
@@ -129,12 +129,12 @@ class KafkaQuotaArgs:
         return pulumi.get(self, "producer_byte_rate")
 
     @producer_byte_rate.setter
-    def producer_byte_rate(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def producer_byte_rate(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "producer_byte_rate", value)
 
     @_builtins.property
     @pulumi.getter(name="requestPercentage")
-    def request_percentage(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def request_percentage(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Sets the maximum percentage of CPU time that a client group can use on request handler I/O and network threads per broker within a quota window.
         Exceeding this limit triggers throttling.
@@ -143,12 +143,12 @@ class KafkaQuotaArgs:
         return pulumi.get(self, "request_percentage")
 
     @request_percentage.setter
-    def request_percentage(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def request_percentage(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "request_percentage", value)
 
     @_builtins.property
     @pulumi.getter
-    def user(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Represents a logical group of clients, assigned a unique name by the client application.
         Quotas can be applied based on user, client-id, or both.
@@ -159,20 +159,20 @@ class KafkaQuotaArgs:
         return pulumi.get(self, "user")
 
     @user.setter
-    def user(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user", value)
 
 
 @pulumi.input_type
 class _KafkaQuotaState:
     def __init__(__self__, *,
-                 client_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 consumer_byte_rate: Optional[pulumi.Input[_builtins.int]] = None,
-                 producer_byte_rate: Optional[pulumi.Input[_builtins.int]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 request_percentage: Optional[pulumi.Input[_builtins.float]] = None,
-                 service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 user: Optional[pulumi.Input[_builtins.str]] = None):
+                 client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 consumer_byte_rate: pulumi.Input[Optional[_builtins.int]] = None,
+                 producer_byte_rate: pulumi.Input[Optional[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 request_percentage: pulumi.Input[Optional[_builtins.float]] = None,
+                 service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 user: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering KafkaQuota resources.
 
@@ -215,7 +215,7 @@ class _KafkaQuotaState:
 
     @_builtins.property
     @pulumi.getter(name="clientId")
-    def client_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Represents a logical group of clients, assigned a unique name by the client application.
         Quotas can be applied based on user, client-id, or both.
@@ -226,12 +226,12 @@ class _KafkaQuotaState:
         return pulumi.get(self, "client_id")
 
     @client_id.setter
-    def client_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_id", value)
 
     @_builtins.property
     @pulumi.getter(name="consumerByteRate")
-    def consumer_byte_rate(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def consumer_byte_rate(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Defines the bandwidth limit in bytes/sec for each group of clients sharing a quota.
         Every distinct client group is allocated a specific quota, as defined by the cluster, on a per-broker basis.
@@ -240,12 +240,12 @@ class _KafkaQuotaState:
         return pulumi.get(self, "consumer_byte_rate")
 
     @consumer_byte_rate.setter
-    def consumer_byte_rate(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def consumer_byte_rate(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "consumer_byte_rate", value)
 
     @_builtins.property
     @pulumi.getter(name="producerByteRate")
-    def producer_byte_rate(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def producer_byte_rate(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Defines the bandwidth limit in bytes/sec for each group of clients sharing a quota.
         Every distinct client group is allocated a specific quota, as defined by the cluster, on a per-broker basis.
@@ -254,24 +254,24 @@ class _KafkaQuotaState:
         return pulumi.get(self, "producer_byte_rate")
 
     @producer_byte_rate.setter
-    def producer_byte_rate(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def producer_byte_rate(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "producer_byte_rate", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="requestPercentage")
-    def request_percentage(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def request_percentage(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Sets the maximum percentage of CPU time that a client group can use on request handler I/O and network threads per broker within a quota window.
         Exceeding this limit triggers throttling.
@@ -280,24 +280,24 @@ class _KafkaQuotaState:
         return pulumi.get(self, "request_percentage")
 
     @request_percentage.setter
-    def request_percentage(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def request_percentage(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "request_percentage", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceName")
-    def service_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
-    def service_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def user(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Represents a logical group of clients, assigned a unique name by the client application.
         Quotas can be applied based on user, client-id, or both.
@@ -308,7 +308,7 @@ class _KafkaQuotaState:
         return pulumi.get(self, "user")
 
     @user.setter
-    def user(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user", value)
 
 
@@ -318,13 +318,13 @@ class KafkaQuota(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 client_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 consumer_byte_rate: Optional[pulumi.Input[_builtins.int]] = None,
-                 producer_byte_rate: Optional[pulumi.Input[_builtins.int]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 request_percentage: Optional[pulumi.Input[_builtins.float]] = None,
-                 service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 user: Optional[pulumi.Input[_builtins.str]] = None,
+                 client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 consumer_byte_rate: pulumi.Input[Optional[_builtins.int]] = None,
+                 producer_byte_rate: pulumi.Input[Optional[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 request_percentage: pulumi.Input[Optional[_builtins.float]] = None,
+                 service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 user: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Creates and manages quotas for an Aiven for Apache Kafka® service user.
@@ -342,7 +342,7 @@ class KafkaQuota(pulumi.CustomResource):
             client_id="example_client",
             consumer_byte_rate=1000,
             producer_byte_rate=1000,
-            request_percentage=50)
+            request_percentage=float(50))
         ```
 
         ## Import
@@ -412,7 +412,7 @@ class KafkaQuota(pulumi.CustomResource):
             client_id="example_client",
             consumer_byte_rate=1000,
             producer_byte_rate=1000,
-            request_percentage=50)
+            request_percentage=float(50))
         ```
 
         ## Import
@@ -451,13 +451,13 @@ class KafkaQuota(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 client_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 consumer_byte_rate: Optional[pulumi.Input[_builtins.int]] = None,
-                 producer_byte_rate: Optional[pulumi.Input[_builtins.int]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 request_percentage: Optional[pulumi.Input[_builtins.float]] = None,
-                 service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 user: Optional[pulumi.Input[_builtins.str]] = None,
+                 client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 consumer_byte_rate: pulumi.Input[Optional[_builtins.int]] = None,
+                 producer_byte_rate: pulumi.Input[Optional[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 request_percentage: pulumi.Input[Optional[_builtins.float]] = None,
+                 service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 user: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -488,13 +488,13 @@ class KafkaQuota(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            client_id: Optional[pulumi.Input[_builtins.str]] = None,
-            consumer_byte_rate: Optional[pulumi.Input[_builtins.int]] = None,
-            producer_byte_rate: Optional[pulumi.Input[_builtins.int]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            request_percentage: Optional[pulumi.Input[_builtins.float]] = None,
-            service_name: Optional[pulumi.Input[_builtins.str]] = None,
-            user: Optional[pulumi.Input[_builtins.str]] = None) -> 'KafkaQuota':
+            client_id: pulumi.Input[Optional[_builtins.str]] = None,
+            consumer_byte_rate: pulumi.Input[Optional[_builtins.int]] = None,
+            producer_byte_rate: pulumi.Input[Optional[_builtins.int]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            request_percentage: pulumi.Input[Optional[_builtins.float]] = None,
+            service_name: pulumi.Input[Optional[_builtins.str]] = None,
+            user: pulumi.Input[Optional[_builtins.str]] = None) -> 'KafkaQuota':
         """
         Get an existing KafkaQuota resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

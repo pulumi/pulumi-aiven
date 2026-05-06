@@ -269,8 +269,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetAccountArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -312,8 +312,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetAccountArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -355,8 +355,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetAccountArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -398,8 +398,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetAccountArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -441,8 +441,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetAccountArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -806,8 +806,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetAwsPrivatelinkArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -847,8 +847,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetAwsPrivatelinkArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -888,8 +888,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetAwsPrivatelinkArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -929,8 +929,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetAwsPrivatelinkArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -970,8 +970,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetAwsPrivatelinkArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1013,8 +1013,8 @@ public final class AivenFunctions {
      * import com.pulumi.aiven.ProjectVpcArgs;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetAwsVpcPeeringConnectionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1064,8 +1064,8 @@ public final class AivenFunctions {
      * import com.pulumi.aiven.ProjectVpcArgs;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetAwsVpcPeeringConnectionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1115,8 +1115,8 @@ public final class AivenFunctions {
      * import com.pulumi.aiven.ProjectVpcArgs;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetAwsVpcPeeringConnectionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1166,8 +1166,8 @@ public final class AivenFunctions {
      * import com.pulumi.aiven.ProjectVpcArgs;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetAwsVpcPeeringConnectionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1217,8 +1217,8 @@ public final class AivenFunctions {
      * import com.pulumi.aiven.ProjectVpcArgs;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetAwsVpcPeeringConnectionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1316,8 +1316,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetAzurePrivatelinkArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1357,8 +1357,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetAzurePrivatelinkArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1398,8 +1398,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetAzurePrivatelinkArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1439,8 +1439,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetAzurePrivatelinkArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1480,8 +1480,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetAzurePrivatelinkArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1521,8 +1521,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetAzureVpcPeeringConnectionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1566,8 +1566,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetAzureVpcPeeringConnectionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1611,8 +1611,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetAzureVpcPeeringConnectionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1656,8 +1656,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetAzureVpcPeeringConnectionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1701,8 +1701,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetAzureVpcPeeringConnectionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1746,8 +1746,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetBillingGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1786,8 +1786,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetBillingGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1826,8 +1826,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetBillingGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1866,8 +1866,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetBillingGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1906,8 +1906,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetBillingGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2026,8 +2026,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetClickhouseArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2067,8 +2067,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetClickhouseArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2108,8 +2108,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetClickhouseArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2149,8 +2149,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetClickhouseArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2190,8 +2190,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetClickhouseArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2231,8 +2231,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetClickhouseDatabaseArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2273,8 +2273,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetClickhouseDatabaseArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2315,8 +2315,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetClickhouseDatabaseArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2357,8 +2357,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetClickhouseDatabaseArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2399,8 +2399,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetClickhouseDatabaseArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2441,8 +2441,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetClickhouseUserArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2483,8 +2483,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetClickhouseUserArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2525,8 +2525,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetClickhouseUserArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2567,8 +2567,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetClickhouseUserArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2609,8 +2609,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetClickhouseUserArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2651,8 +2651,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetConnectionPoolArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2693,8 +2693,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetConnectionPoolArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2735,8 +2735,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetConnectionPoolArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2777,8 +2777,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetConnectionPoolArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2819,8 +2819,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetConnectionPoolArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2861,8 +2861,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetDragonflyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2902,8 +2902,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetDragonflyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2943,8 +2943,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetDragonflyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2984,8 +2984,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetDragonflyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3025,8 +3025,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetDragonflyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3116,8 +3116,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetFlinkArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3157,8 +3157,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetFlinkArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3198,8 +3198,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetFlinkArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3239,8 +3239,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetFlinkArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3280,8 +3280,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetFlinkArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3321,8 +3321,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetFlinkApplicationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3363,8 +3363,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetFlinkApplicationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3405,8 +3405,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetFlinkApplicationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3447,8 +3447,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetFlinkApplicationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3489,8 +3489,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetFlinkApplicationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3531,8 +3531,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetFlinkApplicationVersionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3574,8 +3574,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetFlinkApplicationVersionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3617,8 +3617,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetFlinkApplicationVersionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3660,8 +3660,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetFlinkApplicationVersionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3703,8 +3703,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetFlinkApplicationVersionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3796,8 +3796,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetGcpPrivatelinkArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3837,8 +3837,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetGcpPrivatelinkArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3878,8 +3878,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetGcpPrivatelinkArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3919,8 +3919,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetGcpPrivatelinkArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3960,8 +3960,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetGcpPrivatelinkArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4001,8 +4001,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetGcpVpcPeeringConnectionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4043,8 +4043,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetGcpVpcPeeringConnectionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4085,8 +4085,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetGcpVpcPeeringConnectionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4127,8 +4127,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetGcpVpcPeeringConnectionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4169,8 +4169,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetGcpVpcPeeringConnectionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4211,8 +4211,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetGrafanaArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4252,8 +4252,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetGrafanaArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4293,8 +4293,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetGrafanaArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4334,8 +4334,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetGrafanaArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4375,8 +4375,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetGrafanaArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4416,8 +4416,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetKafkaArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4457,8 +4457,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetKafkaArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4498,8 +4498,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetKafkaArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4539,8 +4539,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetKafkaArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4580,8 +4580,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetKafkaArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4621,8 +4621,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetKafkaAclArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4665,8 +4665,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetKafkaAclArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4709,8 +4709,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetKafkaAclArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4753,8 +4753,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetKafkaAclArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4797,8 +4797,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetKafkaAclArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4841,8 +4841,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetKafkaConnectArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4882,8 +4882,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetKafkaConnectArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4923,8 +4923,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetKafkaConnectArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4964,8 +4964,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetKafkaConnectArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5005,8 +5005,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetKafkaConnectArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5046,8 +5046,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetKafkaConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5088,8 +5088,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetKafkaConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5130,8 +5130,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetKafkaConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5172,8 +5172,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetKafkaConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5214,8 +5214,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetKafkaConnectorArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5256,8 +5256,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetKafkaMirrorMakerArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5297,8 +5297,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetKafkaMirrorMakerArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5338,8 +5338,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetKafkaMirrorMakerArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5379,8 +5379,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetKafkaMirrorMakerArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5420,8 +5420,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetKafkaMirrorMakerArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5461,8 +5461,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetKafkaSchemaConfigurationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5502,8 +5502,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetKafkaSchemaConfigurationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5543,8 +5543,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetKafkaSchemaConfigurationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5584,8 +5584,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetKafkaSchemaConfigurationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5625,8 +5625,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetKafkaSchemaConfigurationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5666,8 +5666,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.KafkaSchemaConfiguration;
      * import com.pulumi.aiven.KafkaSchemaConfigurationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5708,8 +5708,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.KafkaSchemaConfiguration;
      * import com.pulumi.aiven.KafkaSchemaConfigurationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5750,8 +5750,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.KafkaSchemaConfiguration;
      * import com.pulumi.aiven.KafkaSchemaConfigurationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5792,8 +5792,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.KafkaSchemaConfiguration;
      * import com.pulumi.aiven.KafkaSchemaConfigurationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5834,8 +5834,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.KafkaSchemaConfiguration;
      * import com.pulumi.aiven.KafkaSchemaConfigurationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5911,8 +5911,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetKafkaTopicArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5953,8 +5953,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetKafkaTopicArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5995,8 +5995,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetKafkaTopicArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6037,8 +6037,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetKafkaTopicArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6079,8 +6079,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetKafkaTopicArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6156,8 +6156,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetKafkaUserArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6198,8 +6198,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetKafkaUserArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6240,8 +6240,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetKafkaUserArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6282,8 +6282,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetKafkaUserArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6324,8 +6324,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetKafkaUserArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6366,8 +6366,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetMirrorMakerReplicationFlowArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6409,8 +6409,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetMirrorMakerReplicationFlowArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6452,8 +6452,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetMirrorMakerReplicationFlowArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6495,8 +6495,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetMirrorMakerReplicationFlowArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6538,8 +6538,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetMirrorMakerReplicationFlowArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6581,8 +6581,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetMySqlArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6622,8 +6622,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetMySqlArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6663,8 +6663,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetMySqlArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6704,8 +6704,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetMySqlArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6745,8 +6745,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetMySqlArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6786,8 +6786,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetMysqlDatabaseArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6828,8 +6828,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetMysqlDatabaseArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6870,8 +6870,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetMysqlDatabaseArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6912,8 +6912,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetMysqlDatabaseArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6954,8 +6954,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetMysqlDatabaseArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6996,8 +6996,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetMysqlUserArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7038,8 +7038,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetMysqlUserArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7080,8 +7080,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetMysqlUserArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7122,8 +7122,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetMysqlUserArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7164,8 +7164,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetMysqlUserArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7206,8 +7206,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetOpenSearchArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7247,8 +7247,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetOpenSearchArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7288,8 +7288,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetOpenSearchArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7329,8 +7329,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetOpenSearchArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7370,8 +7370,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetOpenSearchArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7411,8 +7411,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetOpenSearchAclConfigArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7452,8 +7452,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetOpenSearchAclConfigArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7493,8 +7493,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetOpenSearchAclConfigArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7534,8 +7534,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetOpenSearchAclConfigArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7575,8 +7575,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetOpenSearchAclConfigArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7616,8 +7616,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetOpenSearchAclRuleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7659,8 +7659,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetOpenSearchAclRuleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7702,8 +7702,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetOpenSearchAclRuleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7745,8 +7745,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetOpenSearchAclRuleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7788,8 +7788,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetOpenSearchAclRuleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7831,8 +7831,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetOpensearchSecurityPluginConfigArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7872,8 +7872,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetOpensearchSecurityPluginConfigArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7913,8 +7913,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetOpensearchSecurityPluginConfigArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7954,8 +7954,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetOpensearchSecurityPluginConfigArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7995,8 +7995,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetOpensearchSecurityPluginConfigArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8036,8 +8036,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetOpensearchUserArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8078,8 +8078,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetOpensearchUserArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8120,8 +8120,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetOpensearchUserArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8162,8 +8162,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetOpensearchUserArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8204,8 +8204,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetOpensearchUserArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8246,8 +8246,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetOrganizationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8286,8 +8286,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetOrganizationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8326,8 +8326,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetOrganizationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8366,8 +8366,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetOrganizationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8406,8 +8406,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetOrganizationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8446,8 +8446,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetOrganizationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8486,8 +8486,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetOrganizationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8761,8 +8761,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetOrganizationProjectArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8802,8 +8802,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetOrganizationProjectArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8843,8 +8843,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetOrganizationProjectArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8884,8 +8884,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetOrganizationProjectArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8925,8 +8925,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetOrganizationProjectArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9036,8 +9036,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetOrganizationUserGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9077,8 +9077,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetOrganizationUserGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9118,8 +9118,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetOrganizationUserGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9159,8 +9159,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetOrganizationUserGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9200,8 +9200,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetOrganizationUserGroupArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9276,8 +9276,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetOrganizationUserGroupMemberListArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9317,8 +9317,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetOrganizationUserGroupMemberListArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9358,8 +9358,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetOrganizationUserGroupMemberListArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9399,8 +9399,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetOrganizationUserGroupMemberListArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9440,8 +9440,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetOrganizationUserGroupMemberListArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9481,8 +9481,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetOrganizationUserListArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9521,8 +9521,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetOrganizationUserListArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9561,8 +9561,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetOrganizationUserListArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9601,8 +9601,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetOrganizationUserListArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9641,8 +9641,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetOrganizationUserListArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9681,8 +9681,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetOrganizationUserListArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9721,8 +9721,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetOrganizationUserListArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9811,8 +9811,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetOrganizationalUnitArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9851,8 +9851,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetOrganizationalUnitArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9891,8 +9891,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetOrganizationalUnitArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9931,8 +9931,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetOrganizationalUnitArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9971,8 +9971,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetOrganizationalUnitArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10011,8 +10011,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetOrganizationalUnitArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10051,8 +10051,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetOrganizationalUnitArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10091,8 +10091,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetPgArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10132,8 +10132,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetPgArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10173,8 +10173,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetPgArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10214,8 +10214,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetPgArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10255,8 +10255,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetPgArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10296,8 +10296,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetPgDatabaseArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10338,8 +10338,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetPgDatabaseArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10380,8 +10380,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetPgDatabaseArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10422,8 +10422,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetPgDatabaseArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10464,8 +10464,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetPgDatabaseArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10506,8 +10506,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetPgUserArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10548,8 +10548,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetPgUserArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10590,8 +10590,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetPgUserArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10632,8 +10632,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetPgUserArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10674,8 +10674,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetPgUserArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10716,8 +10716,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetProjectArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10756,8 +10756,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetProjectArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10796,8 +10796,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetProjectArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10836,8 +10836,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetProjectArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10876,8 +10876,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetProjectArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10921,8 +10921,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetProjectUserArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10967,8 +10967,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetProjectUserArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11013,8 +11013,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetProjectUserArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11059,8 +11059,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetProjectUserArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11105,8 +11105,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetProjectUserArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11146,8 +11146,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetProjectVpcArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11187,8 +11187,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetProjectVpcArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11228,8 +11228,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetProjectVpcArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11269,8 +11269,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetProjectVpcArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11310,8 +11310,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetProjectVpcArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11351,8 +11351,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetProjectVpcArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11392,8 +11392,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetProjectVpcArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11465,8 +11465,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetServiceComponentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11511,8 +11511,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetServiceComponentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11557,8 +11557,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetServiceComponentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11603,8 +11603,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetServiceComponentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11649,8 +11649,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetServiceComponentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11693,8 +11693,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetServiceIntegrationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11736,8 +11736,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetServiceIntegrationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11779,8 +11779,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetServiceIntegrationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11822,8 +11822,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetServiceIntegrationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11865,8 +11865,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetServiceIntegrationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11908,8 +11908,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetServiceIntegrationEndpointArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11949,8 +11949,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetServiceIntegrationEndpointArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11990,8 +11990,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetServiceIntegrationEndpointArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12031,8 +12031,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetServiceIntegrationEndpointArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12072,8 +12072,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetServiceIntegrationEndpointArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12243,8 +12243,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetThanosArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12284,8 +12284,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetThanosArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12325,8 +12325,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetThanosArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12366,8 +12366,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetThanosArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12407,8 +12407,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetThanosArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12448,8 +12448,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetTransitGatewayVpcAttachmentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12490,8 +12490,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetTransitGatewayVpcAttachmentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12532,8 +12532,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetTransitGatewayVpcAttachmentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12574,8 +12574,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetTransitGatewayVpcAttachmentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12616,8 +12616,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetTransitGatewayVpcAttachmentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12658,8 +12658,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetValkeyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12699,8 +12699,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetValkeyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12740,8 +12740,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetValkeyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12781,8 +12781,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetValkeyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12822,8 +12822,8 @@ public final class AivenFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.aiven.AivenFunctions;
      * import com.pulumi.aiven.inputs.GetValkeyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

@@ -180,15 +180,15 @@ export interface GetServiceComponentOutputArgs {
     /**
      * Kafka authentication method. This is a value specific to the 'kafka' service component. The possible values are `certificate` and `sasl`.
      */
-    kafkaAuthenticationMethod?: pulumi.Input<string>;
+    kafkaAuthenticationMethod?: pulumi.Input<string | undefined>;
     /**
      * Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
      */
-    kafkaSslCa?: pulumi.Input<string>;
+    kafkaSslCa?: pulumi.Input<string | undefined>;
     /**
      * Privatelink connection ID
      */
-    privatelinkConnectionId?: pulumi.Input<string>;
+    privatelinkConnectionId?: pulumi.Input<string | undefined>;
     /**
      * Project name
      */
@@ -196,17 +196,17 @@ export interface GetServiceComponentOutputArgs {
     /**
      * Network access route. The possible values are `dynamic`, `private`, `privatelink` and `public`.
      */
-    route?: pulumi.Input<string>;
+    route?: pulumi.Input<string | undefined>;
     /**
      * Service name
      */
-    serviceName?: pulumi.Input<string>;
+    serviceName?: pulumi.Input<string | undefined>;
     /**
      * Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components that may disable encryption
      */
-    ssl?: pulumi.Input<boolean>;
+    ssl?: pulumi.Input<boolean | undefined>;
     /**
      * DNS usage name. The possible values are `disasterRecovery`, `haReplica`, `primary` and `replica`.
      */
-    usage?: pulumi.Input<string>;
+    usage?: pulumi.Input<string | undefined>;
 }

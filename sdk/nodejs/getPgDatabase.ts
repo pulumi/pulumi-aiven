@@ -129,5 +129,5 @@ export interface GetPgDatabaseOutputArgs {
      * Service name.
      */
     serviceName: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.GetPgDatabaseTimeoutsArgs>;
+    timeouts?: pulumi.Input<inputs.GetPgDatabaseTimeoutsArgs | undefined>;
 }

@@ -106,10 +106,10 @@ export interface GetOrganizationalUnitOutputArgs {
     /**
      * The ID of this resource. Exactly one of the fields must be specified: `id` or `name`.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * The name of the organizational unit. Exactly one of the fields must be specified: `id` or `name`.
      */
-    name?: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.GetOrganizationalUnitTimeoutsArgs>;
+    name?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.GetOrganizationalUnitTimeoutsArgs | undefined>;
 }

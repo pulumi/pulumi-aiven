@@ -27,7 +27,7 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var mytestuser = new Aiven.Index.ProjectUser("mytestuser", new()
+    ///     var mytestuser = new Aiven.ProjectUser("mytestuser", new()
     ///     {
     ///         Project = myproject.Project,
     ///         Email = "john.doe@example.com",

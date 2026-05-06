@@ -27,7 +27,7 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var account1 = Aiven.Index.GetAccount.Invoke(new()
+        ///     var account1 = Aiven.GetAccount.Invoke(new()
         ///     {
         ///         Name = "&lt;ACCOUNT_NAME&gt;",
         ///     });
@@ -54,7 +54,7 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var account1 = Aiven.Index.GetAccount.Invoke(new()
+        ///     var account1 = Aiven.GetAccount.Invoke(new()
         ///     {
         ///         Name = "&lt;ACCOUNT_NAME&gt;",
         ///     });
@@ -81,7 +81,7 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var account1 = Aiven.Index.GetAccount.Invoke(new()
+        ///     var account1 = Aiven.GetAccount.Invoke(new()
         ///     {
         ///         Name = "&lt;ACCOUNT_NAME&gt;",
         ///     });

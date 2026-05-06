@@ -66,7 +66,7 @@ export interface ProviderArgs {
     /**
      * Aiven authentication token. Can also be set with the AIVEN_TOKEN environment variable.
      */
-    apiToken?: pulumi.Input<string>;
+    apiToken?: pulumi.Input<string | undefined>;
 }
 
 export namespace Provider {

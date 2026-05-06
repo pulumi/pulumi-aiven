@@ -357,8 +357,8 @@ def get_cassanda(project: Optional[_builtins.str] = None,
         tags=pulumi.get(__ret__, 'tags'),
         tech_emails=pulumi.get(__ret__, 'tech_emails'),
         termination_protection=pulumi.get(__ret__, 'termination_protection'))
-def get_cassanda_output(project: Optional[pulumi.Input[_builtins.str]] = None,
-                        service_name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_cassanda_output(project: pulumi.Input[Optional[_builtins.str]] = None,
+                        service_name: pulumi.Input[Optional[_builtins.str]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCassandaResult]:
     """
     Use this data source to access information about an existing resource.

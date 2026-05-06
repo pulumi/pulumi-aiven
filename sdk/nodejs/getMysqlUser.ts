@@ -131,7 +131,7 @@ export interface GetMysqlUserOutputArgs {
      * The name of the MySQL® service user.
      */
     serviceName: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.GetMysqlUserTimeoutsArgs>;
+    timeouts?: pulumi.Input<inputs.GetMysqlUserTimeoutsArgs | undefined>;
     /**
      * The name of the MySQL® service user.
      */

@@ -23,12 +23,12 @@ class OrganizationApplicationUserTokenArgs:
     def __init__(__self__, *,
                  organization_id: pulumi.Input[_builtins.str],
                  user_id: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 extend_when_used: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ip_allowlists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 max_age_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 timeouts: Optional[pulumi.Input['OrganizationApplicationUserTokenTimeoutsArgs']] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 extend_when_used: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ip_allowlists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 max_age_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 timeouts: pulumi.Input[Optional['OrganizationApplicationUserTokenTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a OrganizationApplicationUserToken resource.
 
@@ -81,95 +81,95 @@ class OrganizationApplicationUserTokenArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description. Maximum length: `1000`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="extendWhenUsed")
-    def extend_when_used(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def extend_when_used(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Extend token expiration time when token is used. Only applicable if max*age*seconds is specified. The default value is `false`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "extend_when_used")
 
     @extend_when_used.setter
-    def extend_when_used(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def extend_when_used(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "extend_when_used", value)
 
     @_builtins.property
     @pulumi.getter(name="ipAllowlists")
-    def ip_allowlists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ip_allowlists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of allowed IP ranges. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "ip_allowlists")
 
     @ip_allowlists.setter
-    def ip_allowlists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ip_allowlists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ip_allowlists", value)
 
     @_builtins.property
     @pulumi.getter(name="maxAgeSeconds")
-    def max_age_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_age_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Time the token remains valid since creation (or since last use if extend*when*used is true). Value must be between `600` and `315360000`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "max_age_seconds")
 
     @max_age_seconds.setter
-    def max_age_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_age_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_age_seconds", value)
 
     @_builtins.property
     @pulumi.getter
-    def scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Scopes this token is restricted to if specified. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "scopes")
 
     @scopes.setter
-    def scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def scopes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "scopes", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['OrganizationApplicationUserTokenTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['OrganizationApplicationUserTokenTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['OrganizationApplicationUserTokenTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['OrganizationApplicationUserTokenTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
 
 @pulumi.input_type
 class _OrganizationApplicationUserTokenState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_manually: Optional[pulumi.Input[_builtins.bool]] = None,
-                 currently_active: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 expiry_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 extend_when_used: Optional[pulumi.Input[_builtins.bool]] = None,
-                 full_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_allowlists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 last_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_used_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_user_agent: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_user_agent_human_readable: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_age_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 organization_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 timeouts: Optional[pulumi.Input['OrganizationApplicationUserTokenTimeoutsArgs']] = None,
-                 token_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_manually: pulumi.Input[Optional[_builtins.bool]] = None,
+                 currently_active: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 expiry_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 extend_when_used: pulumi.Input[Optional[_builtins.bool]] = None,
+                 full_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_allowlists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 last_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_used_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_user_agent: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_user_agent_human_readable: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_age_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 timeouts: pulumi.Input[Optional['OrganizationApplicationUserTokenTimeoutsArgs']] = None,
+                 token_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OrganizationApplicationUserToken resources.
 
@@ -230,215 +230,215 @@ class _OrganizationApplicationUserTokenState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Create Time.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="createdManually")
-    def created_manually(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def created_manually(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         True for tokens explicitly created via the access_tokens API, false for tokens created via login.
         """
         return pulumi.get(self, "created_manually")
 
     @created_manually.setter
-    def created_manually(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def created_manually(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "created_manually", value)
 
     @_builtins.property
     @pulumi.getter(name="currentlyActive")
-    def currently_active(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def currently_active(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         true if API request was made with this access token.
         """
         return pulumi.get(self, "currently_active")
 
     @currently_active.setter
-    def currently_active(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def currently_active(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "currently_active", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description. Maximum length: `1000`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="expiryTime")
-    def expiry_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expiry_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Timestamp when the access token will expire unless extended, if ever.
         """
         return pulumi.get(self, "expiry_time")
 
     @expiry_time.setter
-    def expiry_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expiry_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expiry_time", value)
 
     @_builtins.property
     @pulumi.getter(name="extendWhenUsed")
-    def extend_when_used(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def extend_when_used(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Extend token expiration time when token is used. Only applicable if max*age*seconds is specified. The default value is `false`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "extend_when_used")
 
     @extend_when_used.setter
-    def extend_when_used(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def extend_when_used(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "extend_when_used", value)
 
     @_builtins.property
     @pulumi.getter(name="fullToken")
-    def full_token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def full_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Full Token.
         """
         return pulumi.get(self, "full_token")
 
     @full_token.setter
-    def full_token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def full_token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "full_token", value)
 
     @_builtins.property
     @pulumi.getter(name="ipAllowlists")
-    def ip_allowlists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ip_allowlists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of allowed IP ranges. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "ip_allowlists")
 
     @ip_allowlists.setter
-    def ip_allowlists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ip_allowlists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ip_allowlists", value)
 
     @_builtins.property
     @pulumi.getter(name="lastIp")
-    def last_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IP address the access token was last used from in case it has ever been used.
         """
         return pulumi.get(self, "last_ip")
 
     @last_ip.setter
-    def last_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="lastUsedTime")
-    def last_used_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_used_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Timestamp when the access token was last used, if ever.
         """
         return pulumi.get(self, "last_used_time")
 
     @last_used_time.setter
-    def last_used_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_used_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_used_time", value)
 
     @_builtins.property
     @pulumi.getter(name="lastUserAgent")
-    def last_user_agent(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_user_agent(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User agent string of the client that last used the token in case it has ever been used.
         """
         return pulumi.get(self, "last_user_agent")
 
     @last_user_agent.setter
-    def last_user_agent(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_user_agent(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_user_agent", value)
 
     @_builtins.property
     @pulumi.getter(name="lastUserAgentHumanReadable")
-    def last_user_agent_human_readable(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_user_agent_human_readable(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Human readable user agent string of the client that last used the token in case user agent is known.
         """
         return pulumi.get(self, "last_user_agent_human_readable")
 
     @last_user_agent_human_readable.setter
-    def last_user_agent_human_readable(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_user_agent_human_readable(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_user_agent_human_readable", value)
 
     @_builtins.property
     @pulumi.getter(name="maxAgeSeconds")
-    def max_age_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_age_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Time the token remains valid since creation (or since last use if extend*when*used is true). Value must be between `600` and `315360000`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "max_age_seconds")
 
     @max_age_seconds.setter
-    def max_age_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_age_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_age_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="organizationId")
-    def organization_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def organization_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of an organization. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "organization_id")
 
     @organization_id.setter
-    def organization_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def organization_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "organization_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Scopes this token is restricted to if specified. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "scopes")
 
     @scopes.setter
-    def scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def scopes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "scopes", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['OrganizationApplicationUserTokenTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['OrganizationApplicationUserTokenTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['OrganizationApplicationUserTokenTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['OrganizationApplicationUserTokenTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
     @_builtins.property
     @pulumi.getter(name="tokenPrefix")
-    def token_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def token_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         First characters of the actual token value. Full value is only exposed after creation. This value is used when updating or revoking tokens. Note that the value may contain /, + and = characters and must be URL encoded when used (/ =&gt; %2F, + =&gt; %2B, = =&gt; %3D).
         """
         return pulumi.get(self, "token_prefix")
 
     @token_prefix.setter
-    def token_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def token_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "token_prefix", value)
 
     @_builtins.property
     @pulumi.getter(name="userId")
-    def user_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User ID. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "user_id")
 
     @user_id.setter
-    def user_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_id", value)
 
 
@@ -448,14 +448,14 @@ class OrganizationApplicationUserToken(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 extend_when_used: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ip_allowlists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 max_age_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 organization_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 timeouts: Optional[pulumi.Input[Union['OrganizationApplicationUserTokenTimeoutsArgs', 'OrganizationApplicationUserTokenTimeoutsArgsDict']]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 extend_when_used: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ip_allowlists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 max_age_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 timeouts: pulumi.Input[Optional[Union['OrganizationApplicationUserTokenTimeoutsArgs', 'OrganizationApplicationUserTokenTimeoutsArgsDict']]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Creates and manages an application user token. Review the [best practices](https://aiven.io/docs/platform/concepts/application-users#security-best-practices) for securing application users and their tokens.
@@ -538,14 +538,14 @@ class OrganizationApplicationUserToken(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 extend_when_used: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ip_allowlists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 max_age_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 organization_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 timeouts: Optional[pulumi.Input[Union['OrganizationApplicationUserTokenTimeoutsArgs', 'OrganizationApplicationUserTokenTimeoutsArgsDict']]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 extend_when_used: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ip_allowlists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 max_age_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 timeouts: pulumi.Input[Optional[Union['OrganizationApplicationUserTokenTimeoutsArgs', 'OrganizationApplicationUserTokenTimeoutsArgsDict']]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -589,24 +589,24 @@ class OrganizationApplicationUserToken(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            created_manually: Optional[pulumi.Input[_builtins.bool]] = None,
-            currently_active: Optional[pulumi.Input[_builtins.bool]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            expiry_time: Optional[pulumi.Input[_builtins.str]] = None,
-            extend_when_used: Optional[pulumi.Input[_builtins.bool]] = None,
-            full_token: Optional[pulumi.Input[_builtins.str]] = None,
-            ip_allowlists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            last_ip: Optional[pulumi.Input[_builtins.str]] = None,
-            last_used_time: Optional[pulumi.Input[_builtins.str]] = None,
-            last_user_agent: Optional[pulumi.Input[_builtins.str]] = None,
-            last_user_agent_human_readable: Optional[pulumi.Input[_builtins.str]] = None,
-            max_age_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-            organization_id: Optional[pulumi.Input[_builtins.str]] = None,
-            scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            timeouts: Optional[pulumi.Input[Union['OrganizationApplicationUserTokenTimeoutsArgs', 'OrganizationApplicationUserTokenTimeoutsArgsDict']]] = None,
-            token_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-            user_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'OrganizationApplicationUserToken':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            created_manually: pulumi.Input[Optional[_builtins.bool]] = None,
+            currently_active: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            expiry_time: pulumi.Input[Optional[_builtins.str]] = None,
+            extend_when_used: pulumi.Input[Optional[_builtins.bool]] = None,
+            full_token: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_allowlists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            last_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            last_used_time: pulumi.Input[Optional[_builtins.str]] = None,
+            last_user_agent: pulumi.Input[Optional[_builtins.str]] = None,
+            last_user_agent_human_readable: pulumi.Input[Optional[_builtins.str]] = None,
+            max_age_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+            organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+            scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            timeouts: pulumi.Input[Optional[Union['OrganizationApplicationUserTokenTimeoutsArgs', 'OrganizationApplicationUserTokenTimeoutsArgsDict']]] = None,
+            token_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            user_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'OrganizationApplicationUserToken':
         """
         Get an existing OrganizationApplicationUserToken resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

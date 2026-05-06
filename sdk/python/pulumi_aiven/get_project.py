@@ -256,7 +256,7 @@ def get_project(project: Optional[_builtins.str] = None,
         tags=pulumi.get(__ret__, 'tags'),
         technical_emails=pulumi.get(__ret__, 'technical_emails'),
         use_source_project_billing_group=pulumi.get(__ret__, 'use_source_project_billing_group'))
-def get_project_output(project: Optional[pulumi.Input[_builtins.str]] = None,
+def get_project_output(project: pulumi.Input[Optional[_builtins.str]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectResult]:
     """
     Gets information about an Aiven project.
