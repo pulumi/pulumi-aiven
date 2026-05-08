@@ -24,7 +24,7 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleApp = Aiven.Index.GetFlinkApplication.Invoke(new()
+        ///     var exampleApp = Aiven.GetFlinkApplication.Invoke(new()
         ///     {
         ///         Project = exampleProject.Project,
         ///         ServiceName = "example-flink-service",
@@ -50,7 +50,7 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleApp = Aiven.Index.GetFlinkApplication.Invoke(new()
+        ///     var exampleApp = Aiven.GetFlinkApplication.Invoke(new()
         ///     {
         ///         Project = exampleProject.Project,
         ///         ServiceName = "example-flink-service",
@@ -76,7 +76,7 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleApp = Aiven.Index.GetFlinkApplication.Invoke(new()
+        ///     var exampleApp = Aiven.GetFlinkApplication.Invoke(new()
         ///     {
         ///         Project = exampleProject.Project,
         ///         ServiceName = "example-flink-service",

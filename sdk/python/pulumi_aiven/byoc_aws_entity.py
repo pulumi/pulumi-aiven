@@ -27,11 +27,11 @@ class ByocAwsEntityArgs:
                  display_name: pulumi.Input[_builtins.str],
                  organization_id: pulumi.Input[_builtins.str],
                  reserved_cidr: pulumi.Input[_builtins.str],
-                 aws_iam_role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 contact_emails: Optional[pulumi.Input[Sequence[pulumi.Input['ByocAwsEntityContactEmailArgs']]]] = None,
-                 errors: Optional[pulumi.Input[Sequence[pulumi.Input['ByocAwsEntityErrorArgs']]]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 timeouts: Optional[pulumi.Input['ByocAwsEntityTimeoutsArgs']] = None):
+                 aws_iam_role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 contact_emails: pulumi.Input[Optional[Sequence[pulumi.Input['ByocAwsEntityContactEmailArgs']]]] = None,
+                 errors: pulumi.Input[Optional[Sequence[pulumi.Input['ByocAwsEntityErrorArgs']]]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 timeouts: pulumi.Input[Optional['ByocAwsEntityTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a ByocAwsEntity resource.
 
@@ -137,92 +137,92 @@ class ByocAwsEntityArgs:
 
     @_builtins.property
     @pulumi.getter(name="awsIamRoleArn")
-    def aws_iam_role_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def aws_iam_role_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Amazon Resource Name. Maximum length: `2048`.
         """
         return pulumi.get(self, "aws_iam_role_arn")
 
     @aws_iam_role_arn.setter
-    def aws_iam_role_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def aws_iam_role_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "aws_iam_role_arn", value)
 
     @_builtins.property
     @pulumi.getter(name="contactEmails")
-    def contact_emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ByocAwsEntityContactEmailArgs']]]]:
+    def contact_emails(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ByocAwsEntityContactEmailArgs']]]]:
         """
         Email addresses for notifications and alerts for this BYOC cloud.
         """
         return pulumi.get(self, "contact_emails")
 
     @contact_emails.setter
-    def contact_emails(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ByocAwsEntityContactEmailArgs']]]]):
+    def contact_emails(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ByocAwsEntityContactEmailArgs']]]]):
         pulumi.set(self, "contact_emails", value)
 
     @_builtins.property
     @pulumi.getter
-    def errors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ByocAwsEntityErrorArgs']]]]:
+    def errors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ByocAwsEntityErrorArgs']]]]:
         """
         List of errors for this custom cloud environment.
         """
         return pulumi.get(self, "errors")
 
     @errors.setter
-    def errors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ByocAwsEntityErrorArgs']]]]):
+    def errors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ByocAwsEntityErrorArgs']]]]):
         pulumi.set(self, "errors", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Set of resource tags.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['ByocAwsEntityTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['ByocAwsEntityTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['ByocAwsEntityTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['ByocAwsEntityTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
 
 @pulumi.input_type
 class _ByocAwsEntityState:
     def __init__(__self__, *,
-                 aiven_aws_account_principal: Optional[pulumi.Input[_builtins.str]] = None,
-                 aiven_aws_assume_role_external_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 aiven_aws_object_storage_credentials_creator_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 aiven_aws_object_storage_user_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 aiven_management_cidr_blocks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 aiven_object_storage_credentials_creator_user: Optional[pulumi.Input[_builtins.str]] = None,
-                 aws_iam_role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 aws_subnets_bastion: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 aws_subnets_workload: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 bucket_names: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 byoc_resource_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 byoc_unique_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloud_provider: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloud_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 contact_emails: Optional[pulumi.Input[Sequence[pulumi.Input['ByocAwsEntityContactEmailArgs']]]] = None,
-                 custom_cloud_environment_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_cloud_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 deployment_model: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 errors: Optional[pulumi.Input[Sequence[pulumi.Input['ByocAwsEntityErrorArgs']]]] = None,
-                 organization_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 reserved_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 timeouts: Optional[pulumi.Input['ByocAwsEntityTimeoutsArgs']] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 use_customer_owned_storage: Optional[pulumi.Input[_builtins.bool]] = None):
+                 aiven_aws_account_principal: pulumi.Input[Optional[_builtins.str]] = None,
+                 aiven_aws_assume_role_external_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 aiven_aws_object_storage_credentials_creator_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 aiven_aws_object_storage_user_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 aiven_management_cidr_blocks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 aiven_object_storage_credentials_creator_user: pulumi.Input[Optional[_builtins.str]] = None,
+                 aws_iam_role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 aws_subnets_bastion: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 aws_subnets_workload: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 bucket_names: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 byoc_resource_tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 byoc_unique_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloud_provider: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloud_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 contact_emails: pulumi.Input[Optional[Sequence[pulumi.Input['ByocAwsEntityContactEmailArgs']]]] = None,
+                 custom_cloud_environment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_cloud_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 deployment_model: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 errors: pulumi.Input[Optional[Sequence[pulumi.Input['ByocAwsEntityErrorArgs']]]] = None,
+                 organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 reserved_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 timeouts: pulumi.Input[Optional['ByocAwsEntityTimeoutsArgs']] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 use_customer_owned_storage: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering ByocAwsEntity resources.
 
@@ -310,323 +310,323 @@ class _ByocAwsEntityState:
 
     @_builtins.property
     @pulumi.getter(name="aivenAwsAccountPrincipal")
-    def aiven_aws_account_principal(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def aiven_aws_account_principal(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Entity that assumes the IAM role for controlling the BYOC account.
         """
         return pulumi.get(self, "aiven_aws_account_principal")
 
     @aiven_aws_account_principal.setter
-    def aiven_aws_account_principal(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def aiven_aws_account_principal(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "aiven_aws_account_principal", value)
 
     @_builtins.property
     @pulumi.getter(name="aivenAwsAssumeRoleExternalId")
-    def aiven_aws_assume_role_external_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def aiven_aws_assume_role_external_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         External ID for assuming the IAM role for controlling the BYOC account.
         """
         return pulumi.get(self, "aiven_aws_assume_role_external_id")
 
     @aiven_aws_assume_role_external_id.setter
-    def aiven_aws_assume_role_external_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def aiven_aws_assume_role_external_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "aiven_aws_assume_role_external_id", value)
 
     @_builtins.property
     @pulumi.getter(name="aivenAwsObjectStorageCredentialsCreatorArn")
-    def aiven_aws_object_storage_credentials_creator_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def aiven_aws_object_storage_credentials_creator_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Amazon Resource Name.
         """
         return pulumi.get(self, "aiven_aws_object_storage_credentials_creator_arn")
 
     @aiven_aws_object_storage_credentials_creator_arn.setter
-    def aiven_aws_object_storage_credentials_creator_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def aiven_aws_object_storage_credentials_creator_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "aiven_aws_object_storage_credentials_creator_arn", value)
 
     @_builtins.property
     @pulumi.getter(name="aivenAwsObjectStorageUserArn")
-    def aiven_aws_object_storage_user_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def aiven_aws_object_storage_user_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Amazon Resource Name.
         """
         return pulumi.get(self, "aiven_aws_object_storage_user_arn")
 
     @aiven_aws_object_storage_user_arn.setter
-    def aiven_aws_object_storage_user_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def aiven_aws_object_storage_user_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "aiven_aws_object_storage_user_arn", value)
 
     @_builtins.property
     @pulumi.getter(name="aivenManagementCidrBlocks")
-    def aiven_management_cidr_blocks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def aiven_management_cidr_blocks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         IP address ranges for incoming connections to the bastion host from the Aiven management plane.
         """
         return pulumi.get(self, "aiven_management_cidr_blocks")
 
     @aiven_management_cidr_blocks.setter
-    def aiven_management_cidr_blocks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def aiven_management_cidr_blocks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "aiven_management_cidr_blocks", value)
 
     @_builtins.property
     @pulumi.getter(name="aivenObjectStorageCredentialsCreatorUser")
-    def aiven_object_storage_credentials_creator_user(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def aiven_object_storage_credentials_creator_user(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Google account identifier.
         """
         return pulumi.get(self, "aiven_object_storage_credentials_creator_user")
 
     @aiven_object_storage_credentials_creator_user.setter
-    def aiven_object_storage_credentials_creator_user(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def aiven_object_storage_credentials_creator_user(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "aiven_object_storage_credentials_creator_user", value)
 
     @_builtins.property
     @pulumi.getter(name="awsIamRoleArn")
-    def aws_iam_role_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def aws_iam_role_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Amazon Resource Name. Maximum length: `2048`.
         """
         return pulumi.get(self, "aws_iam_role_arn")
 
     @aws_iam_role_arn.setter
-    def aws_iam_role_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def aws_iam_role_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "aws_iam_role_arn", value)
 
     @_builtins.property
     @pulumi.getter(name="awsSubnetsBastion")
-    def aws_subnets_bastion(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def aws_subnets_bastion(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Subnets to build in the bastion VPC.
         """
         return pulumi.get(self, "aws_subnets_bastion")
 
     @aws_subnets_bastion.setter
-    def aws_subnets_bastion(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def aws_subnets_bastion(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "aws_subnets_bastion", value)
 
     @_builtins.property
     @pulumi.getter(name="awsSubnetsWorkload")
-    def aws_subnets_workload(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def aws_subnets_workload(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Subnets to build in the workload VPC.
         """
         return pulumi.get(self, "aws_subnets_workload")
 
     @aws_subnets_workload.setter
-    def aws_subnets_workload(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def aws_subnets_workload(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "aws_subnets_workload", value)
 
     @_builtins.property
     @pulumi.getter(name="bucketNames")
-    def bucket_names(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def bucket_names(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Names and usages of buckets required for workloads.
         """
         return pulumi.get(self, "bucket_names")
 
     @bucket_names.setter
-    def bucket_names(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def bucket_names(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "bucket_names", value)
 
     @_builtins.property
     @pulumi.getter(name="byocResourceTags")
-    def byoc_resource_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def byoc_resource_tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Set of tags for the resources provisioned on the BYOC account.
         """
         return pulumi.get(self, "byoc_resource_tags")
 
     @byoc_resource_tags.setter
-    def byoc_resource_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def byoc_resource_tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "byoc_resource_tags", value)
 
     @_builtins.property
     @pulumi.getter(name="byocUniqueName")
-    def byoc_unique_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def byoc_unique_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name for all the resources created for the custom cloud environment.
         """
         return pulumi.get(self, "byoc_unique_name")
 
     @byoc_unique_name.setter
-    def byoc_unique_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def byoc_unique_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "byoc_unique_name", value)
 
     @_builtins.property
     @pulumi.getter(name="cloudProvider")
-    def cloud_provider(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cloud_provider(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cloud provider for the BYOC cloud. The possible values are `aws`, `azure`, `google` and `oracle`.
         """
         return pulumi.get(self, "cloud_provider")
 
     @cloud_provider.setter
-    def cloud_provider(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cloud_provider(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cloud_provider", value)
 
     @_builtins.property
     @pulumi.getter(name="cloudRegion")
-    def cloud_region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cloud_region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cloud region for the BYOC cloud. Maximum length: `32`.
         """
         return pulumi.get(self, "cloud_region")
 
     @cloud_region.setter
-    def cloud_region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cloud_region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cloud_region", value)
 
     @_builtins.property
     @pulumi.getter(name="contactEmails")
-    def contact_emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ByocAwsEntityContactEmailArgs']]]]:
+    def contact_emails(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ByocAwsEntityContactEmailArgs']]]]:
         """
         Email addresses for notifications and alerts for this BYOC cloud.
         """
         return pulumi.get(self, "contact_emails")
 
     @contact_emails.setter
-    def contact_emails(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ByocAwsEntityContactEmailArgs']]]]):
+    def contact_emails(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ByocAwsEntityContactEmailArgs']]]]):
         pulumi.set(self, "contact_emails", value)
 
     @_builtins.property
     @pulumi.getter(name="customCloudEnvironmentId")
-    def custom_cloud_environment_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def custom_cloud_environment_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of a custom cloud environment.
         """
         return pulumi.get(self, "custom_cloud_environment_id")
 
     @custom_cloud_environment_id.setter
-    def custom_cloud_environment_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def custom_cloud_environment_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "custom_cloud_environment_id", value)
 
     @_builtins.property
     @pulumi.getter(name="customCloudNames")
-    def custom_cloud_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def custom_cloud_names(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Cloud names that can be used to provision a service on this BYOC.
         """
         return pulumi.get(self, "custom_cloud_names")
 
     @custom_cloud_names.setter
-    def custom_cloud_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def custom_cloud_names(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "custom_cloud_names", value)
 
     @_builtins.property
     @pulumi.getter(name="deploymentModel")
-    def deployment_model(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deployment_model(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Deployment model for the BYOC cloud. The possible values are `direct_ipsec_ingress`, `ipsec_ingress`, `standard` and `standard_public`.
         """
         return pulumi.get(self, "deployment_model")
 
     @deployment_model.setter
-    def deployment_model(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deployment_model(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deployment_model", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Short name for this BYOC cloud. Maximum length: `64`.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def errors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ByocAwsEntityErrorArgs']]]]:
+    def errors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ByocAwsEntityErrorArgs']]]]:
         """
         List of errors for this custom cloud environment.
         """
         return pulumi.get(self, "errors")
 
     @errors.setter
-    def errors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ByocAwsEntityErrorArgs']]]]):
+    def errors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ByocAwsEntityErrorArgs']]]]):
         pulumi.set(self, "errors", value)
 
     @_builtins.property
     @pulumi.getter(name="organizationId")
-    def organization_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def organization_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of an organization. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "organization_id")
 
     @organization_id.setter
-    def organization_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def organization_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "organization_id", value)
 
     @_builtins.property
     @pulumi.getter(name="reservedCidr")
-    def reserved_cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reserved_cidr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         CIDR range reserved for Aiven provisioned networks in the BYOC cloud. Maximum length: `18`.
         """
         return pulumi.get(self, "reserved_cidr")
 
     @reserved_cidr.setter
-    def reserved_cidr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reserved_cidr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reserved_cidr", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         State of this BYOC cloud. The possible values are `active`, `creating`, `creation_failed`, `deleted`, `deleting`, `deletion_failed`, `disconnected`, `draft`, `reconnecting` and `validating`.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Set of resource tags.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['ByocAwsEntityTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['ByocAwsEntityTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['ByocAwsEntityTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['ByocAwsEntityTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom cloud environment last update timestamp (ISO 8601).
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
     @_builtins.property
     @pulumi.getter(name="useCustomerOwnedStorage")
-    def use_customer_owned_storage(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_customer_owned_storage(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         True if this BYOC cloud is using customer owned storage.
         """
         return pulumi.get(self, "use_customer_owned_storage")
 
     @use_customer_owned_storage.setter
-    def use_customer_owned_storage(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_customer_owned_storage(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_customer_owned_storage", value)
 
 
@@ -636,17 +636,17 @@ class ByocAwsEntity(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aws_iam_role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloud_provider: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloud_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 contact_emails: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ByocAwsEntityContactEmailArgs', 'ByocAwsEntityContactEmailArgsDict']]]]] = None,
-                 deployment_model: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 errors: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ByocAwsEntityErrorArgs', 'ByocAwsEntityErrorArgsDict']]]]] = None,
-                 organization_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 reserved_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 timeouts: Optional[pulumi.Input[Union['ByocAwsEntityTimeoutsArgs', 'ByocAwsEntityTimeoutsArgsDict']]] = None,
+                 aws_iam_role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloud_provider: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloud_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 contact_emails: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ByocAwsEntityContactEmailArgs', 'ByocAwsEntityContactEmailArgsDict']]]]] = None,
+                 deployment_model: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 errors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ByocAwsEntityErrorArgs', 'ByocAwsEntityErrorArgsDict']]]]] = None,
+                 organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 reserved_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 timeouts: pulumi.Input[Optional[Union['ByocAwsEntityTimeoutsArgs', 'ByocAwsEntityTimeoutsArgsDict']]] = None,
                  __props__=None):
         """
         Creates and manages a BYOC custom cloud environment on AWS.
@@ -750,17 +750,17 @@ class ByocAwsEntity(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aws_iam_role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloud_provider: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloud_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 contact_emails: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ByocAwsEntityContactEmailArgs', 'ByocAwsEntityContactEmailArgsDict']]]]] = None,
-                 deployment_model: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 errors: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ByocAwsEntityErrorArgs', 'ByocAwsEntityErrorArgsDict']]]]] = None,
-                 organization_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 reserved_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 timeouts: Optional[pulumi.Input[Union['ByocAwsEntityTimeoutsArgs', 'ByocAwsEntityTimeoutsArgsDict']]] = None,
+                 aws_iam_role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloud_provider: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloud_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 contact_emails: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ByocAwsEntityContactEmailArgs', 'ByocAwsEntityContactEmailArgsDict']]]]] = None,
+                 deployment_model: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 errors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ByocAwsEntityErrorArgs', 'ByocAwsEntityErrorArgsDict']]]]] = None,
+                 organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 reserved_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 timeouts: pulumi.Input[Optional[Union['ByocAwsEntityTimeoutsArgs', 'ByocAwsEntityTimeoutsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -819,33 +819,33 @@ class ByocAwsEntity(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            aiven_aws_account_principal: Optional[pulumi.Input[_builtins.str]] = None,
-            aiven_aws_assume_role_external_id: Optional[pulumi.Input[_builtins.str]] = None,
-            aiven_aws_object_storage_credentials_creator_arn: Optional[pulumi.Input[_builtins.str]] = None,
-            aiven_aws_object_storage_user_arn: Optional[pulumi.Input[_builtins.str]] = None,
-            aiven_management_cidr_blocks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            aiven_object_storage_credentials_creator_user: Optional[pulumi.Input[_builtins.str]] = None,
-            aws_iam_role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-            aws_subnets_bastion: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            aws_subnets_workload: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            bucket_names: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            byoc_resource_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            byoc_unique_name: Optional[pulumi.Input[_builtins.str]] = None,
-            cloud_provider: Optional[pulumi.Input[_builtins.str]] = None,
-            cloud_region: Optional[pulumi.Input[_builtins.str]] = None,
-            contact_emails: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ByocAwsEntityContactEmailArgs', 'ByocAwsEntityContactEmailArgsDict']]]]] = None,
-            custom_cloud_environment_id: Optional[pulumi.Input[_builtins.str]] = None,
-            custom_cloud_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            deployment_model: Optional[pulumi.Input[_builtins.str]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            errors: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ByocAwsEntityErrorArgs', 'ByocAwsEntityErrorArgsDict']]]]] = None,
-            organization_id: Optional[pulumi.Input[_builtins.str]] = None,
-            reserved_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            timeouts: Optional[pulumi.Input[Union['ByocAwsEntityTimeoutsArgs', 'ByocAwsEntityTimeoutsArgsDict']]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None,
-            use_customer_owned_storage: Optional[pulumi.Input[_builtins.bool]] = None) -> 'ByocAwsEntity':
+            aiven_aws_account_principal: pulumi.Input[Optional[_builtins.str]] = None,
+            aiven_aws_assume_role_external_id: pulumi.Input[Optional[_builtins.str]] = None,
+            aiven_aws_object_storage_credentials_creator_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            aiven_aws_object_storage_user_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            aiven_management_cidr_blocks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            aiven_object_storage_credentials_creator_user: pulumi.Input[Optional[_builtins.str]] = None,
+            aws_iam_role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            aws_subnets_bastion: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            aws_subnets_workload: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            bucket_names: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            byoc_resource_tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            byoc_unique_name: pulumi.Input[Optional[_builtins.str]] = None,
+            cloud_provider: pulumi.Input[Optional[_builtins.str]] = None,
+            cloud_region: pulumi.Input[Optional[_builtins.str]] = None,
+            contact_emails: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ByocAwsEntityContactEmailArgs', 'ByocAwsEntityContactEmailArgsDict']]]]] = None,
+            custom_cloud_environment_id: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_cloud_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            deployment_model: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            errors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ByocAwsEntityErrorArgs', 'ByocAwsEntityErrorArgsDict']]]]] = None,
+            organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+            reserved_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            timeouts: pulumi.Input[Optional[Union['ByocAwsEntityTimeoutsArgs', 'ByocAwsEntityTimeoutsArgsDict']]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            use_customer_owned_storage: pulumi.Input[Optional[_builtins.bool]] = None) -> 'ByocAwsEntity':
         """
         Get an existing ByocAwsEntity resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

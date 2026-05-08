@@ -156,9 +156,9 @@ def get_account_team_member(account_id: Optional[_builtins.str] = None,
         invited_by_user_email=pulumi.get(__ret__, 'invited_by_user_email'),
         team_id=pulumi.get(__ret__, 'team_id'),
         user_email=pulumi.get(__ret__, 'user_email'))
-def get_account_team_member_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                   team_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                   user_email: Optional[pulumi.Input[_builtins.str]] = None,
+def get_account_team_member_output(account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                   team_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                   user_email: pulumi.Input[Optional[_builtins.str]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountTeamMemberResult]:
     """
     The Account Team Member data source provides information about the existing Aiven Account Team Member.

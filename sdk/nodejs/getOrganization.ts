@@ -104,10 +104,10 @@ export interface GetOrganizationOutputArgs {
     /**
      * Organization ID. Exactly one of the fields must be specified: `id` or `name`.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * Name of the organization. Exactly one of the fields must be specified: `id` or `name`.
      */
-    name?: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.GetOrganizationTimeoutsArgs>;
+    name?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.GetOrganizationTimeoutsArgs | undefined>;
 }

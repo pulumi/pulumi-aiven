@@ -142,8 +142,8 @@ def get_gcp_privatelink(project: Optional[_builtins.str] = None,
         project=pulumi.get(__ret__, 'project'),
         service_name=pulumi.get(__ret__, 'service_name'),
         state=pulumi.get(__ret__, 'state'))
-def get_gcp_privatelink_output(project: Optional[pulumi.Input[_builtins.str]] = None,
-                               service_name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_gcp_privatelink_output(project: pulumi.Input[Optional[_builtins.str]] = None,
+                               service_name: pulumi.Input[Optional[_builtins.str]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGcpPrivatelinkResult]:
     """
     Gets information about a Google Private Service Connect connection for an Aiven service.

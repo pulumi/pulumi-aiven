@@ -137,36 +137,36 @@ export interface OrganizationProjectState {
     /**
      * Valid port number (10000-30000) to use as a base for service port allocation. Value must be between `10000` and `30000`.
      */
-    basePort?: pulumi.Input<number>;
+    basePort?: pulumi.Input<number | undefined>;
     /**
      * Billing group ID to assign to the project. It's required when moving projects between organizations. Minimum length: `1`.
      */
-    billingGroupId?: pulumi.Input<string>;
+    billingGroupId?: pulumi.Input<string | undefined>;
     /**
      * PEM encoded certificate.
      */
-    caCert?: pulumi.Input<string>;
+    caCert?: pulumi.Input<string | undefined>;
     /**
      * ID of an organization. Maximum length: `36`.
      */
-    organizationId?: pulumi.Input<string>;
+    organizationId?: pulumi.Input<string | undefined>;
     /**
      * Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.
      */
-    parentId?: pulumi.Input<string>;
+    parentId?: pulumi.Input<string | undefined>;
     /**
      * The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It's recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource. Changing this property forces recreation of the resource.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Tags are key-value pairs that allow you to categorize projects.
      */
-    tags?: pulumi.Input<pulumi.Input<inputs.OrganizationProjectTag>[]>;
+    tags?: pulumi.Input<pulumi.Input<inputs.OrganizationProjectTag>[] | undefined>;
     /**
      * The email addresses for [project contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this project and its services. You can also set email contacts at the service level. It's good practice to keep these up-to-date to be aware of any potential issues with your project.
      */
-    technicalEmails?: pulumi.Input<pulumi.Input<string>[]>;
-    timeouts?: pulumi.Input<inputs.OrganizationProjectTimeouts>;
+    technicalEmails?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    timeouts?: pulumi.Input<inputs.OrganizationProjectTimeouts | undefined>;
 }
 
 /**
@@ -176,7 +176,7 @@ export interface OrganizationProjectArgs {
     /**
      * Valid port number (10000-30000) to use as a base for service port allocation. Value must be between `10000` and `30000`.
      */
-    basePort?: pulumi.Input<number>;
+    basePort?: pulumi.Input<number | undefined>;
     /**
      * Billing group ID to assign to the project. It's required when moving projects between organizations. Minimum length: `1`.
      */
@@ -196,10 +196,10 @@ export interface OrganizationProjectArgs {
     /**
      * Tags are key-value pairs that allow you to categorize projects.
      */
-    tags?: pulumi.Input<pulumi.Input<inputs.OrganizationProjectTag>[]>;
+    tags?: pulumi.Input<pulumi.Input<inputs.OrganizationProjectTag>[] | undefined>;
     /**
      * The email addresses for [project contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this project and its services. You can also set email contacts at the service level. It's good practice to keep these up-to-date to be aware of any potential issues with your project.
      */
-    technicalEmails?: pulumi.Input<pulumi.Input<string>[]>;
-    timeouts?: pulumi.Input<inputs.OrganizationProjectTimeouts>;
+    technicalEmails?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    timeouts?: pulumi.Input<inputs.OrganizationProjectTimeouts | undefined>;
 }

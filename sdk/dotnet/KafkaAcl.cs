@@ -25,7 +25,7 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleAcl = new Aiven.Index.KafkaAcl("example_acl", new()
+    ///     var exampleAcl = new Aiven.KafkaAcl("example_acl", new()
     ///     {
     ///         Project = exampleProject.Project,
     ///         ServiceName = exampleKafka.ServiceName,

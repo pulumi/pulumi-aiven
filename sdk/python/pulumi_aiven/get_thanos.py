@@ -455,8 +455,8 @@ def get_thanos(project: Optional[_builtins.str] = None,
         termination_protection=pulumi.get(__ret__, 'termination_protection'),
         thanos=pulumi.get(__ret__, 'thanos'),
         thanos_user_configs=pulumi.get(__ret__, 'thanos_user_configs'))
-def get_thanos_output(project: Optional[pulumi.Input[_builtins.str]] = None,
-                      service_name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_thanos_output(project: pulumi.Input[Optional[_builtins.str]] = None,
+                      service_name: pulumi.Input[Optional[_builtins.str]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetThanosResult]:
     """
     Gets information about an Aiven for Thanos® service.

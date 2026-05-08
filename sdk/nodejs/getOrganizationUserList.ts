@@ -100,14 +100,14 @@ export interface GetOrganizationUserListOutputArgs {
     /**
      * ID of an organization. Exactly one of the fields must be specified: `id` or `name`.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * The name of the organization. Exactly one of the fields must be specified: `id` or `name`.
      */
-    name?: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.GetOrganizationUserListTimeoutsArgs>;
+    name?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.GetOrganizationUserListTimeoutsArgs | undefined>;
     /**
      * List of users of the organization.
      */
-    users?: pulumi.Input<pulumi.Input<inputs.GetOrganizationUserListUserArgs>[]>;
+    users?: pulumi.Input<pulumi.Input<inputs.GetOrganizationUserListUserArgs>[] | undefined>;
 }

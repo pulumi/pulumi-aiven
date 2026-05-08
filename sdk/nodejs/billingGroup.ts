@@ -202,72 +202,72 @@ export interface BillingGroupState {
      *
      * @deprecated Use `parentId` instead. This field will be removed in the next major release.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Address lines 1 and 2. For example, street, PO box, or building.
      */
-    addressLines?: pulumi.Input<pulumi.Input<string>[]>;
+    addressLines?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of billing groups contact email addresses.
      */
-    billingContactEmails?: pulumi.Input<pulumi.Input<string>[]>;
+    billingContactEmails?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Billing currency. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
      */
-    billingCurrency?: pulumi.Input<string>;
+    billingCurrency?: pulumi.Input<string | undefined>;
     /**
      * List of project billing email addresses.
      */
-    billingEmails?: pulumi.Input<pulumi.Input<string>[]>;
+    billingEmails?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Extra text to be included in all project invoices, e.g. purchase order or cost center number. Maximum length: `1000`.
      */
-    billingExtraText?: pulumi.Input<string>;
+    billingExtraText?: pulumi.Input<string | undefined>;
     /**
      * The [ID of the billing group](https://aiven.io/docs/platform/reference/get-resource-IDs#get-a-billing-group-id). To set up proper dependencies please refer to this variable as a reference.
      */
-    billingGroupId?: pulumi.Input<string>;
+    billingGroupId?: pulumi.Input<string | undefined>;
     /**
      * Credit card ID. Maximum length: `64`.
      */
-    cardId?: pulumi.Input<string>;
+    cardId?: pulumi.Input<string | undefined>;
     /**
      * Address city. Maximum length: `512`.
      */
-    city?: pulumi.Input<string>;
+    city?: pulumi.Input<string | undefined>;
     /**
      * Name of a company. Maximum length: `128`.
      */
-    company?: pulumi.Input<string>;
+    company?: pulumi.Input<string | undefined>;
     /**
      * Billing group ID. Length must be exactly `36`. Changing this property forces recreation of the resource.
      */
-    copyFromBillingGroup?: pulumi.Input<string>;
+    copyFromBillingGroup?: pulumi.Input<string | undefined>;
     /**
      * Two letter country code for billing country. Maximum length: `2`.
      */
-    countryCode?: pulumi.Input<string>;
+    countryCode?: pulumi.Input<string | undefined>;
     /**
      * Billing group name. Maximum length: `128`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Link a billing group to an existing organization by using its ID.
      */
-    parentId?: pulumi.Input<string>;
+    parentId?: pulumi.Input<string | undefined>;
     /**
      * Address state or province. Maximum length: `128`.
      */
-    state?: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.BillingGroupTimeouts>;
+    state?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.BillingGroupTimeouts | undefined>;
     /**
      * EU VAT Identification Number. Maximum length: `64`.
      */
-    vatId?: pulumi.Input<string>;
+    vatId?: pulumi.Input<string | undefined>;
     /**
      * Address zip code. Maximum length: `32`.
      */
-    zipCode?: pulumi.Input<string>;
+    zipCode?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -279,51 +279,51 @@ export interface BillingGroupArgs {
      *
      * @deprecated Use `parentId` instead. This field will be removed in the next major release.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Address lines 1 and 2. For example, street, PO box, or building.
      */
-    addressLines?: pulumi.Input<pulumi.Input<string>[]>;
+    addressLines?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of billing groups contact email addresses.
      */
-    billingContactEmails?: pulumi.Input<pulumi.Input<string>[]>;
+    billingContactEmails?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Billing currency. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
      */
-    billingCurrency?: pulumi.Input<string>;
+    billingCurrency?: pulumi.Input<string | undefined>;
     /**
      * List of project billing email addresses.
      */
-    billingEmails?: pulumi.Input<pulumi.Input<string>[]>;
+    billingEmails?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Extra text to be included in all project invoices, e.g. purchase order or cost center number. Maximum length: `1000`.
      */
-    billingExtraText?: pulumi.Input<string>;
+    billingExtraText?: pulumi.Input<string | undefined>;
     /**
      * Credit card ID. Maximum length: `64`.
      */
-    cardId?: pulumi.Input<string>;
+    cardId?: pulumi.Input<string | undefined>;
     /**
      * Address city. Maximum length: `512`.
      */
-    city?: pulumi.Input<string>;
+    city?: pulumi.Input<string | undefined>;
     /**
      * Name of a company. Maximum length: `128`.
      */
-    company?: pulumi.Input<string>;
+    company?: pulumi.Input<string | undefined>;
     /**
      * Billing group ID. Length must be exactly `36`. Changing this property forces recreation of the resource.
      */
-    copyFromBillingGroup?: pulumi.Input<string>;
+    copyFromBillingGroup?: pulumi.Input<string | undefined>;
     /**
      * Two letter country code for billing country. Maximum length: `2`.
      */
-    countryCode?: pulumi.Input<string>;
+    countryCode?: pulumi.Input<string | undefined>;
     /**
      * Billing group name. Maximum length: `128`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Link a billing group to an existing organization by using its ID.
      */
@@ -331,14 +331,14 @@ export interface BillingGroupArgs {
     /**
      * Address state or province. Maximum length: `128`.
      */
-    state?: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.BillingGroupTimeouts>;
+    state?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.BillingGroupTimeouts | undefined>;
     /**
      * EU VAT Identification Number. Maximum length: `64`.
      */
-    vatId?: pulumi.Input<string>;
+    vatId?: pulumi.Input<string | undefined>;
     /**
      * Address zip code. Maximum length: `32`.
      */
-    zipCode?: pulumi.Input<string>;
+    zipCode?: pulumi.Input<string | undefined>;
 }

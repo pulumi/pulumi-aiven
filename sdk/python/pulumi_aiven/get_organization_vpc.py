@@ -161,8 +161,8 @@ def get_organization_vpc(organization_id: Optional[_builtins.str] = None,
         organization_vpc_id=pulumi.get(__ret__, 'organization_vpc_id'),
         state=pulumi.get(__ret__, 'state'),
         update_time=pulumi.get(__ret__, 'update_time'))
-def get_organization_vpc_output(organization_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                organization_vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_organization_vpc_output(organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                organization_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOrganizationVpcResult]:
     """
     Gets information about an existing VPC in an Aiven organization.

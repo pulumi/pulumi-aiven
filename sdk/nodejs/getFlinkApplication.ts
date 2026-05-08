@@ -132,11 +132,11 @@ export interface GetFlinkApplicationOutputArgs {
     /**
      * Application ID. Exactly one of the fields must be specified: `applicationId` or `name`.
      */
-    applicationId?: pulumi.Input<string>;
+    applicationId?: pulumi.Input<string | undefined>;
     /**
      * Application name. Exactly one of the fields must be specified: `applicationId` or `name`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Project name.
      */
@@ -145,5 +145,5 @@ export interface GetFlinkApplicationOutputArgs {
      * Service name.
      */
     serviceName: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.GetFlinkApplicationTimeoutsArgs>;
+    timeouts?: pulumi.Input<inputs.GetFlinkApplicationTimeoutsArgs | undefined>;
 }

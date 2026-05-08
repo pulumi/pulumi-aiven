@@ -143,31 +143,31 @@ export interface AwsVpcPeeringConnectionState {
     /**
      * AWS account ID. Changing this property forces recreation of the resource.
      */
-    awsAccountId?: pulumi.Input<string>;
+    awsAccountId?: pulumi.Input<string | undefined>;
     /**
      * AWS VPC ID. Changing this property forces recreation of the resource.
      */
-    awsVpcId?: pulumi.Input<string>;
+    awsVpcId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the AWS VPC peering connection.
      */
-    awsVpcPeeringConnectionId?: pulumi.Input<string>;
+    awsVpcPeeringConnectionId?: pulumi.Input<string | undefined>;
     /**
      * The AWS region of the peered VPC, if different from the Aiven VPC region. Changing this property forces recreation of the resource.
      */
-    awsVpcRegion?: pulumi.Input<string>;
+    awsVpcRegion?: pulumi.Input<string | undefined>;
     /**
      * The state of the peering connection.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * State-specific help or error information.
      */
-    stateInfo?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    stateInfo?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The ID of the Aiven VPC. Changing this property forces recreation of the resource.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
 }
 
 /**

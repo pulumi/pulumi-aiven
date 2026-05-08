@@ -169,20 +169,20 @@ export interface OrganizationPermissionState {
     /**
      * ID of an organization. Changing this property forces recreation of the resource.
      */
-    organizationId?: pulumi.Input<string>;
+    organizationId?: pulumi.Input<string | undefined>;
     /**
      * Required property. List of roles to set.
      */
-    permissions?: pulumi.Input<pulumi.Input<inputs.OrganizationPermissionPermission>[]>;
+    permissions?: pulumi.Input<pulumi.Input<inputs.OrganizationPermissionPermission>[] | undefined>;
     /**
      * The ID of the organization, unit, or project to grant permissions for. The project ID is the name of the project. Changing this property forces recreation of the resource.
      */
-    resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string | undefined>;
     /**
      * Resource type. The possible values are `organization`, `organizationUnit` and `project`. Changing this property forces recreation of the resource.
      */
-    resourceType?: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.OrganizationPermissionTimeouts>;
+    resourceType?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.OrganizationPermissionTimeouts | undefined>;
 }
 
 /**
@@ -205,5 +205,5 @@ export interface OrganizationPermissionArgs {
      * Resource type. The possible values are `organization`, `organizationUnit` and `project`. Changing this property forces recreation of the resource.
      */
     resourceType: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.OrganizationPermissionTimeouts>;
+    timeouts?: pulumi.Input<inputs.OrganizationPermissionTimeouts | undefined>;
 }

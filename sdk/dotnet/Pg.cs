@@ -23,7 +23,7 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var examplePostgres = new Aiven.Index.Pg("example_postgres", new()
+    ///     var examplePostgres = new Aiven.Pg("example_postgres", new()
     ///     {
     ///         Project = exampleProject.Project,
     ///         CloudName = "google-europe-west1",
@@ -31,7 +31,7 @@ namespace Pulumi.Aiven
     ///         ServiceName = "example-postgres-service",
     ///         MaintenanceWindowDow = "monday",
     ///         MaintenanceWindowTime = "10:00:00",
-    ///         StaticIps = Std.Index.Toset.Invoke(new()
+    ///         StaticIps = Std.Toset.Invoke(new()
     ///         {
     ///             Input = new[]
     ///             {

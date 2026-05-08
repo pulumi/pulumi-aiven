@@ -90,16 +90,16 @@ class FlinkJarApplicationVersionArgs:
 @pulumi.input_type
 class _FlinkJarApplicationVersionState:
     def __init__(__self__, *,
-                 application_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 application_version_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_by: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_infos: Optional[pulumi.Input[Sequence[pulumi.Input['FlinkJarApplicationVersionFileInfoArgs']]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 source: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_checksum: Optional[pulumi.Input[_builtins.str]] = None,
-                 version: Optional[pulumi.Input[_builtins.int]] = None):
+                 application_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 application_version_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_by: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_infos: pulumi.Input[Optional[Sequence[pulumi.Input['FlinkJarApplicationVersionFileInfoArgs']]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 source: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_checksum: pulumi.Input[Optional[_builtins.str]] = None,
+                 version: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering FlinkJarApplicationVersion resources.
 
@@ -137,122 +137,122 @@ class _FlinkJarApplicationVersionState:
 
     @_builtins.property
     @pulumi.getter(name="applicationId")
-    def application_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def application_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Application Id. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "application_id")
 
     @application_id.setter
-    def application_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def application_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "application_id", value)
 
     @_builtins.property
     @pulumi.getter(name="applicationVersionId")
-    def application_version_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def application_version_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ApplicationVersion ID.
         """
         return pulumi.get(self, "application_version_id")
 
     @application_version_id.setter
-    def application_version_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def application_version_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "application_version_id", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation timestamp of this entity in ISO 8601 format, always in UTC.
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter(name="createdBy")
-    def created_by(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_by(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creator of this entity.
         """
         return pulumi.get(self, "created_by")
 
     @created_by.setter
-    def created_by(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_by(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_by", value)
 
     @_builtins.property
     @pulumi.getter(name="fileInfos")
-    def file_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FlinkJarApplicationVersionFileInfoArgs']]]]:
+    def file_infos(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FlinkJarApplicationVersionFileInfoArgs']]]]:
         """
         Flink JarApplicationVersion FileInfo.
         """
         return pulumi.get(self, "file_infos")
 
     @file_infos.setter
-    def file_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FlinkJarApplicationVersionFileInfoArgs']]]]):
+    def file_infos(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FlinkJarApplicationVersionFileInfoArgs']]]]):
         pulumi.set(self, "file_infos", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Project name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceName")
-    def service_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Service name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
-    def service_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def source(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The path to the jar file to upload.
         """
         return pulumi.get(self, "source")
 
     @source.setter
-    def source(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceChecksum")
-    def source_checksum(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_checksum(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The sha256 checksum of the jar file to upload.
         """
         return pulumi.get(self, "source_checksum")
 
     @source_checksum.setter
-    def source_checksum(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_checksum(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_checksum", value)
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Version number.
         """
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "version", value)
 
 
@@ -262,10 +262,10 @@ class FlinkJarApplicationVersion(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 application_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 source: Optional[pulumi.Input[_builtins.str]] = None,
+                 application_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 source: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Creates and manages an Aiven for Apache Flink® jar application version.
@@ -375,10 +375,10 @@ class FlinkJarApplicationVersion(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 application_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 source: Optional[pulumi.Input[_builtins.str]] = None,
+                 application_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 source: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -416,16 +416,16 @@ class FlinkJarApplicationVersion(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            application_id: Optional[pulumi.Input[_builtins.str]] = None,
-            application_version_id: Optional[pulumi.Input[_builtins.str]] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            created_by: Optional[pulumi.Input[_builtins.str]] = None,
-            file_infos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FlinkJarApplicationVersionFileInfoArgs', 'FlinkJarApplicationVersionFileInfoArgsDict']]]]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            service_name: Optional[pulumi.Input[_builtins.str]] = None,
-            source: Optional[pulumi.Input[_builtins.str]] = None,
-            source_checksum: Optional[pulumi.Input[_builtins.str]] = None,
-            version: Optional[pulumi.Input[_builtins.int]] = None) -> 'FlinkJarApplicationVersion':
+            application_id: pulumi.Input[Optional[_builtins.str]] = None,
+            application_version_id: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            created_by: pulumi.Input[Optional[_builtins.str]] = None,
+            file_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FlinkJarApplicationVersionFileInfoArgs', 'FlinkJarApplicationVersionFileInfoArgsDict']]]]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            service_name: pulumi.Input[Optional[_builtins.str]] = None,
+            source: pulumi.Input[Optional[_builtins.str]] = None,
+            source_checksum: pulumi.Input[Optional[_builtins.str]] = None,
+            version: pulumi.Input[Optional[_builtins.int]] = None) -> 'FlinkJarApplicationVersion':
         """
         Get an existing FlinkJarApplicationVersion resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

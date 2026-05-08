@@ -23,7 +23,7 @@ class TransitGatewayVpcAttachmentArgs:
                  peer_vpc: pulumi.Input[_builtins.str],
                  user_peer_network_cidrs: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  vpc_id: pulumi.Input[_builtins.str],
-                 peer_region: Optional[pulumi.Input[_builtins.str]] = None):
+                 peer_region: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a TransitGatewayVpcAttachment resource.
 
@@ -90,28 +90,28 @@ class TransitGatewayVpcAttachmentArgs:
 
     @_builtins.property
     @pulumi.getter(name="peerRegion")
-    def peer_region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def peer_region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         AWS region of the peered VPC (if not in the same region as Aiven VPC). This value can't be changed.
         """
         return pulumi.get(self, "peer_region")
 
     @peer_region.setter
-    def peer_region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def peer_region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "peer_region", value)
 
 
 @pulumi.input_type
 class _TransitGatewayVpcAttachmentState:
     def __init__(__self__, *,
-                 peer_cloud_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_vpc: Optional[pulumi.Input[_builtins.str]] = None,
-                 peering_connection_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 state_info: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 user_peer_network_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 peer_cloud_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_vpc: pulumi.Input[Optional[_builtins.str]] = None,
+                 peering_connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 state_info: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 user_peer_network_cidrs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TransitGatewayVpcAttachment resources.
 
@@ -143,98 +143,98 @@ class _TransitGatewayVpcAttachmentState:
 
     @_builtins.property
     @pulumi.getter(name="peerCloudAccount")
-    def peer_cloud_account(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def peer_cloud_account(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         AWS account ID or GCP project ID of the peered VPC. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "peer_cloud_account")
 
     @peer_cloud_account.setter
-    def peer_cloud_account(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def peer_cloud_account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "peer_cloud_account", value)
 
     @_builtins.property
     @pulumi.getter(name="peerRegion")
-    def peer_region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def peer_region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         AWS region of the peered VPC (if not in the same region as Aiven VPC). This value can't be changed.
         """
         return pulumi.get(self, "peer_region")
 
     @peer_region.setter
-    def peer_region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def peer_region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "peer_region", value)
 
     @_builtins.property
     @pulumi.getter(name="peerVpc")
-    def peer_vpc(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def peer_vpc(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Transit gateway ID. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "peer_vpc")
 
     @peer_vpc.setter
-    def peer_vpc(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def peer_vpc(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "peer_vpc", value)
 
     @_builtins.property
     @pulumi.getter(name="peeringConnectionId")
-    def peering_connection_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def peering_connection_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cloud provider identifier for the peering connection if available
         """
         return pulumi.get(self, "peering_connection_id")
 
     @peering_connection_id.setter
-    def peering_connection_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def peering_connection_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "peering_connection_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         State of the peering connection
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter(name="stateInfo")
-    def state_info(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def state_info(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         State-specific help or error information
         """
         return pulumi.get(self, "state_info")
 
     @state_info.setter
-    def state_info(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def state_info(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "state_info", value)
 
     @_builtins.property
     @pulumi.getter(name="userPeerNetworkCidrs")
-    def user_peer_network_cidrs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def user_peer_network_cidrs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of private IPv4 ranges to route through the peering connection
         """
         return pulumi.get(self, "user_peer_network_cidrs")
 
     @user_peer_network_cidrs.setter
-    def user_peer_network_cidrs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def user_peer_network_cidrs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "user_peer_network_cidrs", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
 
@@ -244,11 +244,11 @@ class TransitGatewayVpcAttachment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 peer_cloud_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_vpc: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_peer_network_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 peer_cloud_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_vpc: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_peer_network_cidrs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The Transit Gateway VPC Attachment resource allows the creation and management Transit Gateway VPC Attachment VPC peering connection between Aiven and AWS.
@@ -327,11 +327,11 @@ class TransitGatewayVpcAttachment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 peer_cloud_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_vpc: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_peer_network_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 peer_cloud_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_vpc: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_peer_network_cidrs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -367,14 +367,14 @@ class TransitGatewayVpcAttachment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            peer_cloud_account: Optional[pulumi.Input[_builtins.str]] = None,
-            peer_region: Optional[pulumi.Input[_builtins.str]] = None,
-            peer_vpc: Optional[pulumi.Input[_builtins.str]] = None,
-            peering_connection_id: Optional[pulumi.Input[_builtins.str]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            state_info: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            user_peer_network_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            vpc_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'TransitGatewayVpcAttachment':
+            peer_cloud_account: pulumi.Input[Optional[_builtins.str]] = None,
+            peer_region: pulumi.Input[Optional[_builtins.str]] = None,
+            peer_vpc: pulumi.Input[Optional[_builtins.str]] = None,
+            peering_connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            state_info: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            user_peer_network_cidrs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'TransitGatewayVpcAttachment':
         """
         Get an existing TransitGatewayVpcAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

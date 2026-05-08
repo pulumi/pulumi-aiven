@@ -167,33 +167,33 @@ export interface KafkaQuotaState {
      * All connections within a quota group share the same quota.
      * It is possible to set default quotas for each (user, client-id), user or client-id group by specifying 'default'
      */
-    clientId?: pulumi.Input<string>;
+    clientId?: pulumi.Input<string | undefined>;
     /**
      * Defines the bandwidth limit in bytes/sec for each group of clients sharing a quota.
      * Every distinct client group is allocated a specific quota, as defined by the cluster, on a per-broker basis.
      * Exceeding this limit results in client throttling.
      */
-    consumerByteRate?: pulumi.Input<number>;
+    consumerByteRate?: pulumi.Input<number | undefined>;
     /**
      * Defines the bandwidth limit in bytes/sec for each group of clients sharing a quota.
      * Every distinct client group is allocated a specific quota, as defined by the cluster, on a per-broker basis.
      * Exceeding this limit results in client throttling.
      */
-    producerByteRate?: pulumi.Input<number>;
+    producerByteRate?: pulumi.Input<number | undefined>;
     /**
      * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Sets the maximum percentage of CPU time that a client group can use on request handler I/O and network threads per broker within a quota window.
      * Exceeding this limit triggers throttling.
      * The quota, expressed as a percentage, also indicates the total allowable CPU usage for the client groups sharing the quota.
      */
-    requestPercentage?: pulumi.Input<number>;
+    requestPercentage?: pulumi.Input<number | undefined>;
     /**
      * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    serviceName?: pulumi.Input<string>;
+    serviceName?: pulumi.Input<string | undefined>;
     /**
      * Represents a logical group of clients, assigned a unique name by the client application.
      * Quotas can be applied based on user, client-id, or both.
@@ -201,7 +201,7 @@ export interface KafkaQuotaState {
      * All connections within a quota group share the same quota.
      * It is possible to set default quotas for each (user, client-id), user or client-id group by specifying 'default'
      */
-    user?: pulumi.Input<string>;
+    user?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -215,19 +215,19 @@ export interface KafkaQuotaArgs {
      * All connections within a quota group share the same quota.
      * It is possible to set default quotas for each (user, client-id), user or client-id group by specifying 'default'
      */
-    clientId?: pulumi.Input<string>;
+    clientId?: pulumi.Input<string | undefined>;
     /**
      * Defines the bandwidth limit in bytes/sec for each group of clients sharing a quota.
      * Every distinct client group is allocated a specific quota, as defined by the cluster, on a per-broker basis.
      * Exceeding this limit results in client throttling.
      */
-    consumerByteRate?: pulumi.Input<number>;
+    consumerByteRate?: pulumi.Input<number | undefined>;
     /**
      * Defines the bandwidth limit in bytes/sec for each group of clients sharing a quota.
      * Every distinct client group is allocated a specific quota, as defined by the cluster, on a per-broker basis.
      * Exceeding this limit results in client throttling.
      */
-    producerByteRate?: pulumi.Input<number>;
+    producerByteRate?: pulumi.Input<number | undefined>;
     /**
      * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
@@ -237,7 +237,7 @@ export interface KafkaQuotaArgs {
      * Exceeding this limit triggers throttling.
      * The quota, expressed as a percentage, also indicates the total allowable CPU usage for the client groups sharing the quota.
      */
-    requestPercentage?: pulumi.Input<number>;
+    requestPercentage?: pulumi.Input<number | undefined>;
     /**
      * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
@@ -249,5 +249,5 @@ export interface KafkaQuotaArgs {
      * All connections within a quota group share the same quota.
      * It is possible to set default quotas for each (user, client-id), user or client-id group by specifying 'default'
      */
-    user?: pulumi.Input<string>;
+    user?: pulumi.Input<string | undefined>;
 }

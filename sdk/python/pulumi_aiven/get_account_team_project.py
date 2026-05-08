@@ -130,9 +130,9 @@ def get_account_team_project(account_id: Optional[_builtins.str] = None,
         project_name=pulumi.get(__ret__, 'project_name'),
         team_id=pulumi.get(__ret__, 'team_id'),
         team_type=pulumi.get(__ret__, 'team_type'))
-def get_account_team_project_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                    project_name: Optional[pulumi.Input[_builtins.str]] = None,
-                                    team_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_account_team_project_output(account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                    project_name: pulumi.Input[Optional[_builtins.str]] = None,
+                                    team_id: pulumi.Input[Optional[_builtins.str]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountTeamProjectResult]:
     """
     The Account Team Project data source provides information about the existing Account Team Project.

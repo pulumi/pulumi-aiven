@@ -153,11 +153,11 @@ def get_open_search_acl_rule(index: Optional[_builtins.str] = None,
         project=pulumi.get(__ret__, 'project'),
         service_name=pulumi.get(__ret__, 'service_name'),
         username=pulumi.get(__ret__, 'username'))
-def get_open_search_acl_rule_output(index: Optional[pulumi.Input[_builtins.str]] = None,
-                                    permission: Optional[pulumi.Input[_builtins.str]] = None,
-                                    project: Optional[pulumi.Input[_builtins.str]] = None,
-                                    service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                                    username: Optional[pulumi.Input[_builtins.str]] = None,
+def get_open_search_acl_rule_output(index: pulumi.Input[Optional[_builtins.str]] = None,
+                                    permission: pulumi.Input[Optional[_builtins.str]] = None,
+                                    project: pulumi.Input[Optional[_builtins.str]] = None,
+                                    service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                                    username: pulumi.Input[Optional[_builtins.str]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOpenSearchAclRuleResult]:
     """
     Gets information about an Aiven for OpenSearch® ACL rule.

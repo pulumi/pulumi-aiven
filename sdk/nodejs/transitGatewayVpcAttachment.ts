@@ -145,35 +145,35 @@ export interface TransitGatewayVpcAttachmentState {
     /**
      * AWS account ID or GCP project ID of the peered VPC. Changing this property forces recreation of the resource.
      */
-    peerCloudAccount?: pulumi.Input<string>;
+    peerCloudAccount?: pulumi.Input<string | undefined>;
     /**
      * AWS region of the peered VPC (if not in the same region as Aiven VPC). This value can't be changed.
      */
-    peerRegion?: pulumi.Input<string>;
+    peerRegion?: pulumi.Input<string | undefined>;
     /**
      * Transit gateway ID. Changing this property forces recreation of the resource.
      */
-    peerVpc?: pulumi.Input<string>;
+    peerVpc?: pulumi.Input<string | undefined>;
     /**
      * Cloud provider identifier for the peering connection if available
      */
-    peeringConnectionId?: pulumi.Input<string>;
+    peeringConnectionId?: pulumi.Input<string | undefined>;
     /**
      * State of the peering connection
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * State-specific help or error information
      */
-    stateInfo?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    stateInfo?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * List of private IPv4 ranges to route through the peering connection
      */
-    userPeerNetworkCidrs?: pulumi.Input<pulumi.Input<string>[]>;
+    userPeerNetworkCidrs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -187,7 +187,7 @@ export interface TransitGatewayVpcAttachmentArgs {
     /**
      * AWS region of the peered VPC (if not in the same region as Aiven VPC). This value can't be changed.
      */
-    peerRegion?: pulumi.Input<string>;
+    peerRegion?: pulumi.Input<string | undefined>;
     /**
      * Transit gateway ID. Changing this property forces recreation of the resource.
      */

@@ -22,9 +22,9 @@ __all__ = ['OrganizationApplicationUserArgs', 'OrganizationApplicationUser']
 class OrganizationApplicationUserArgs:
     def __init__(__self__, *,
                  organization_id: pulumi.Input[_builtins.str],
-                 is_super_admin: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input['OrganizationApplicationUserTimeoutsArgs']] = None):
+                 is_super_admin: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional['OrganizationApplicationUserTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a OrganizationApplicationUser resource.
 
@@ -58,48 +58,48 @@ class OrganizationApplicationUserArgs:
     @_builtins.property
     @pulumi.getter(name="isSuperAdmin")
     @_utilities.deprecated("""This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `OrganizationPermission` resource.""")
-    def is_super_admin(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_super_admin(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Alters super admin state of the organization application user. The default value is `false`. **Deprecated**: This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `OrganizationPermission` resource.
         """
         return pulumi.get(self, "is_super_admin")
 
     @is_super_admin.setter
-    def is_super_admin(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_super_admin(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_super_admin", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['OrganizationApplicationUserTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['OrganizationApplicationUserTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['OrganizationApplicationUserTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['OrganizationApplicationUserTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
 
 @pulumi.input_type
 class _OrganizationApplicationUserState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 email: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_super_admin: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 organization_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input['OrganizationApplicationUserTimeoutsArgs']] = None,
-                 user_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 email: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_super_admin: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional['OrganizationApplicationUserTimeoutsArgs']] = None,
+                 user_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OrganizationApplicationUser resources.
 
@@ -130,84 +130,84 @@ class _OrganizationApplicationUserState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Time this application user was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User Email.
         """
         return pulumi.get(self, "email")
 
     @email.setter
-    def email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "email", value)
 
     @_builtins.property
     @pulumi.getter(name="isSuperAdmin")
     @_utilities.deprecated("""This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `OrganizationPermission` resource.""")
-    def is_super_admin(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_super_admin(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Alters super admin state of the organization application user. The default value is `false`. **Deprecated**: This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `OrganizationPermission` resource.
         """
         return pulumi.get(self, "is_super_admin")
 
     @is_super_admin.setter
-    def is_super_admin(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_super_admin(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_super_admin", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="organizationId")
-    def organization_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def organization_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of an organization. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "organization_id")
 
     @organization_id.setter
-    def organization_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def organization_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "organization_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['OrganizationApplicationUserTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['OrganizationApplicationUserTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['OrganizationApplicationUserTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['OrganizationApplicationUserTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
     @_builtins.property
     @pulumi.getter(name="userId")
-    def user_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User ID.
         """
         return pulumi.get(self, "user_id")
 
     @user_id.setter
-    def user_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_id", value)
 
 
@@ -217,10 +217,10 @@ class OrganizationApplicationUser(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 is_super_admin: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 organization_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input[Union['OrganizationApplicationUserTimeoutsArgs', 'OrganizationApplicationUserTimeoutsArgsDict']]] = None,
+                 is_super_admin: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['OrganizationApplicationUserTimeoutsArgs', 'OrganizationApplicationUserTimeoutsArgsDict']]] = None,
                  __props__=None):
         """
         Creates and manages an organization application user. [Application users](https://aiven.io/docs/platform/concepts/application-users) can be used for programmatic access to the platform using a token created with the `OrganizationApplicationUserToken` resource. You give application users access to your organization, projects, and services using the `OrganizationPermission` resource. You can also add application users to groups using the `OrganizationUserGroupMember` resource.`.
@@ -291,10 +291,10 @@ class OrganizationApplicationUser(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 is_super_admin: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 organization_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input[Union['OrganizationApplicationUserTimeoutsArgs', 'OrganizationApplicationUserTimeoutsArgsDict']]] = None,
+                 is_super_admin: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['OrganizationApplicationUserTimeoutsArgs', 'OrganizationApplicationUserTimeoutsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -323,13 +323,13 @@ class OrganizationApplicationUser(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            email: Optional[pulumi.Input[_builtins.str]] = None,
-            is_super_admin: Optional[pulumi.Input[_builtins.bool]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            organization_id: Optional[pulumi.Input[_builtins.str]] = None,
-            timeouts: Optional[pulumi.Input[Union['OrganizationApplicationUserTimeoutsArgs', 'OrganizationApplicationUserTimeoutsArgsDict']]] = None,
-            user_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'OrganizationApplicationUser':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            email: pulumi.Input[Optional[_builtins.str]] = None,
+            is_super_admin: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['OrganizationApplicationUserTimeoutsArgs', 'OrganizationApplicationUserTimeoutsArgsDict']]] = None,
+            user_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'OrganizationApplicationUser':
         """
         Get an existing OrganizationApplicationUser resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

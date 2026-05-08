@@ -140,8 +140,8 @@ def get_account_team(account_id: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         team_id=pulumi.get(__ret__, 'team_id'),
         update_time=pulumi.get(__ret__, 'update_time'))
-def get_account_team_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                            name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_account_team_output(account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                            name: pulumi.Input[Optional[_builtins.str]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountTeamResult]:
     """
     The Account Team data source provides information about the existing Account Team.

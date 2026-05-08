@@ -23,9 +23,9 @@ class ClickhouseDatabaseArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[_builtins.str],
                  service_name: pulumi.Input[_builtins.str],
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 termination_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 timeouts: Optional[pulumi.Input['ClickhouseDatabaseTimeoutsArgs']] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 termination_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 timeouts: pulumi.Input[Optional['ClickhouseDatabaseTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a ClickhouseDatabase resource.
 
@@ -72,47 +72,47 @@ class ClickhouseDatabaseArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Service database name. Maximum length: `40`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="terminationProtection")
     @_utilities.deprecated("""Instead, use [`prevent_destroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)""")
-    def termination_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def termination_protection(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console**. The default value is `false`. **Deprecated**: Instead, use `prevent_destroy`
         """
         return pulumi.get(self, "termination_protection")
 
     @termination_protection.setter
-    def termination_protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def termination_protection(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "termination_protection", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['ClickhouseDatabaseTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['ClickhouseDatabaseTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['ClickhouseDatabaseTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['ClickhouseDatabaseTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
 
 @pulumi.input_type
 class _ClickhouseDatabaseState:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 termination_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 timeouts: Optional[pulumi.Input['ClickhouseDatabaseTimeoutsArgs']] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 termination_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 timeouts: pulumi.Input[Optional['ClickhouseDatabaseTimeoutsArgs']] = None):
         """
         Input properties used for looking up and filtering ClickhouseDatabase resources.
 
@@ -137,60 +137,60 @@ class _ClickhouseDatabaseState:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Service database name. Maximum length: `40`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Project name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceName")
-    def service_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Service name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
-    def service_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_name", value)
 
     @_builtins.property
     @pulumi.getter(name="terminationProtection")
     @_utilities.deprecated("""Instead, use [`prevent_destroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)""")
-    def termination_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def termination_protection(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console**. The default value is `false`. **Deprecated**: Instead, use `prevent_destroy`
         """
         return pulumi.get(self, "termination_protection")
 
     @termination_protection.setter
-    def termination_protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def termination_protection(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "termination_protection", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['ClickhouseDatabaseTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['ClickhouseDatabaseTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['ClickhouseDatabaseTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['ClickhouseDatabaseTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
 
@@ -200,11 +200,11 @@ class ClickhouseDatabase(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 termination_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 timeouts: Optional[pulumi.Input[Union['ClickhouseDatabaseTimeoutsArgs', 'ClickhouseDatabaseTimeoutsArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 termination_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 timeouts: pulumi.Input[Optional[Union['ClickhouseDatabaseTimeoutsArgs', 'ClickhouseDatabaseTimeoutsArgsDict']]] = None,
                  __props__=None):
         """
         Creates and manages an [Aiven for ClickHouse](https://aiven.io/docs/products/clickhouse) database. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
@@ -296,11 +296,11 @@ class ClickhouseDatabase(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 termination_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 timeouts: Optional[pulumi.Input[Union['ClickhouseDatabaseTimeoutsArgs', 'ClickhouseDatabaseTimeoutsArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 termination_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 timeouts: pulumi.Input[Optional[Union['ClickhouseDatabaseTimeoutsArgs', 'ClickhouseDatabaseTimeoutsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -329,11 +329,11 @@ class ClickhouseDatabase(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            service_name: Optional[pulumi.Input[_builtins.str]] = None,
-            termination_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-            timeouts: Optional[pulumi.Input[Union['ClickhouseDatabaseTimeoutsArgs', 'ClickhouseDatabaseTimeoutsArgsDict']]] = None) -> 'ClickhouseDatabase':
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            service_name: pulumi.Input[Optional[_builtins.str]] = None,
+            termination_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+            timeouts: pulumi.Input[Optional[Union['ClickhouseDatabaseTimeoutsArgs', 'ClickhouseDatabaseTimeoutsArgsDict']]] = None) -> 'ClickhouseDatabase':
         """
         Get an existing ClickhouseDatabase resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -89,7 +89,7 @@ export interface GetOrganizationApplicationUserOutputArgs {
      * ID of an organization.
      */
     organizationId: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.GetOrganizationApplicationUserTimeoutsArgs>;
+    timeouts?: pulumi.Input<inputs.GetOrganizationApplicationUserTimeoutsArgs | undefined>;
     /**
      * User ID.
      */

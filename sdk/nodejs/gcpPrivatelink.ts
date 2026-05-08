@@ -118,23 +118,23 @@ export interface GcpPrivatelinkState {
     /**
      * Google Private Service Connect service attachment.
      */
-    googleServiceAttachment?: pulumi.Input<string>;
+    googleServiceAttachment?: pulumi.Input<string | undefined>;
     /**
      * Printable result of the Google Cloud Private Service Connect request.
      */
-    message?: pulumi.Input<string>;
+    message?: pulumi.Input<string | undefined>;
     /**
      * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    serviceName?: pulumi.Input<string>;
+    serviceName?: pulumi.Input<string | undefined>;
     /**
      * The state of the Private Service Connect resource.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
 }
 
 /**

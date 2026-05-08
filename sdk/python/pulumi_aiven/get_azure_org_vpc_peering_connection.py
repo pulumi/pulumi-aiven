@@ -196,11 +196,11 @@ def get_azure_org_vpc_peering_connection(azure_subscription_id: Optional[_builti
         peering_connection_id=pulumi.get(__ret__, 'peering_connection_id'),
         state=pulumi.get(__ret__, 'state'),
         vnet_name=pulumi.get(__ret__, 'vnet_name'))
-def get_azure_org_vpc_peering_connection_output(azure_subscription_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                                organization_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                                organization_vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                                peer_resource_group: Optional[pulumi.Input[_builtins.str]] = None,
-                                                vnet_name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_azure_org_vpc_peering_connection_output(azure_subscription_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                                organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                                organization_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                                peer_resource_group: pulumi.Input[Optional[_builtins.str]] = None,
+                                                vnet_name: pulumi.Input[Optional[_builtins.str]] = None,
                                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAzureOrgVpcPeeringConnectionResult]:
     """
     Gets information about about an Azure VPC peering connection.

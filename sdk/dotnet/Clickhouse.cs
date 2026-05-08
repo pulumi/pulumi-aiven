@@ -22,7 +22,7 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleClickhouse = new Aiven.Index.Clickhouse("example_clickhouse", new()
+    ///     var exampleClickhouse = new Aiven.Clickhouse("example_clickhouse", new()
     ///     {
     ///         Project = exampleProject.Project,
     ///         CloudName = "google-europe-west1",

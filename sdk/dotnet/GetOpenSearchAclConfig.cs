@@ -24,7 +24,7 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var os_acl_config = Aiven.Index.GetOpenSearchAclConfig.Invoke(new()
+        ///     var os_acl_config = Aiven.GetOpenSearchAclConfig.Invoke(new()
         ///     {
         ///         Project = exampleProject.Project,
         ///         ServiceName = exampleOpensearch.ServiceName,
@@ -49,7 +49,7 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var os_acl_config = Aiven.Index.GetOpenSearchAclConfig.Invoke(new()
+        ///     var os_acl_config = Aiven.GetOpenSearchAclConfig.Invoke(new()
         ///     {
         ///         Project = exampleProject.Project,
         ///         ServiceName = exampleOpensearch.ServiceName,
@@ -74,7 +74,7 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var os_acl_config = Aiven.Index.GetOpenSearchAclConfig.Invoke(new()
+        ///     var os_acl_config = Aiven.GetOpenSearchAclConfig.Invoke(new()
         ///     {
         ///         Project = exampleProject.Project,
         ///         ServiceName = exampleOpensearch.ServiceName,

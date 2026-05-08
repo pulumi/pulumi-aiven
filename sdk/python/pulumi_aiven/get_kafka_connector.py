@@ -225,9 +225,9 @@ def get_kafka_connector(connector_name: Optional[_builtins.str] = None,
         project=pulumi.get(__ret__, 'project'),
         service_name=pulumi.get(__ret__, 'service_name'),
         tasks=pulumi.get(__ret__, 'tasks'))
-def get_kafka_connector_output(connector_name: Optional[pulumi.Input[_builtins.str]] = None,
-                               project: Optional[pulumi.Input[_builtins.str]] = None,
-                               service_name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_kafka_connector_output(connector_name: pulumi.Input[Optional[_builtins.str]] = None,
+                               project: pulumi.Input[Optional[_builtins.str]] = None,
+                               service_name: pulumi.Input[Optional[_builtins.str]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKafkaConnectorResult]:
     """
     Gets information about an Aiven for Apache Kafka® connector.

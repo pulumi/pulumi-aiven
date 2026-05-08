@@ -110,9 +110,9 @@ def get_organization_billing_group_list(billing_groups: Optional[Sequence[Union[
         id=pulumi.get(__ret__, 'id'),
         organization_id=pulumi.get(__ret__, 'organization_id'),
         timeouts=pulumi.get(__ret__, 'timeouts'))
-def get_organization_billing_group_list_output(billing_groups: Optional[pulumi.Input[Optional[Sequence[Union['GetOrganizationBillingGroupListBillingGroupArgs', 'GetOrganizationBillingGroupListBillingGroupArgsDict']]]]] = None,
-                                               organization_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                               timeouts: Optional[pulumi.Input[Optional[Union['GetOrganizationBillingGroupListTimeoutsArgs', 'GetOrganizationBillingGroupListTimeoutsArgsDict']]]] = None,
+def get_organization_billing_group_list_output(billing_groups: pulumi.Input[Optional[Optional[Sequence[Union['GetOrganizationBillingGroupListBillingGroupArgs', 'GetOrganizationBillingGroupListBillingGroupArgsDict']]]]] = None,
+                                               organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                               timeouts: pulumi.Input[Optional[Optional[Union['GetOrganizationBillingGroupListTimeoutsArgs', 'GetOrganizationBillingGroupListTimeoutsArgsDict']]]] = None,
                                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOrganizationBillingGroupListResult]:
     """
     Lists billing groups for an organization.

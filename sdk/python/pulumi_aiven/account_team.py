@@ -20,7 +20,7 @@ __all__ = ['AccountTeamArgs', 'AccountTeam']
 class AccountTeamArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[_builtins.str],
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a AccountTeam resource.
 
@@ -45,25 +45,25 @@ class AccountTeamArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The account team name
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
 class _AccountTeamState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 team_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 team_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccountTeam resources.
 
@@ -86,62 +86,62 @@ class _AccountTeamState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique account id
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Time of creation
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The account team name
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="teamId")
-    def team_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def team_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The auto-generated unique account team id
         """
         return pulumi.get(self, "team_id")
 
     @team_id.setter
-    def team_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def team_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "team_id", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Time of last update
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -151,8 +151,8 @@ class AccountTeam(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Creates and manages a team.
@@ -238,8 +238,8 @@ class AccountTeam(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -266,11 +266,11 @@ class AccountTeam(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            team_id: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'AccountTeam':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            team_id: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'AccountTeam':
         """
         Get an existing AccountTeam resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

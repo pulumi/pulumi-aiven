@@ -187,9 +187,9 @@ def get_valkey_user(project: Optional[_builtins.str] = None,
         valkey_acl_channels=pulumi.get(__ret__, 'valkey_acl_channels'),
         valkey_acl_commands=pulumi.get(__ret__, 'valkey_acl_commands'),
         valkey_acl_keys=pulumi.get(__ret__, 'valkey_acl_keys'))
-def get_valkey_user_output(project: Optional[pulumi.Input[_builtins.str]] = None,
-                           service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                           username: Optional[pulumi.Input[_builtins.str]] = None,
+def get_valkey_user_output(project: pulumi.Input[Optional[_builtins.str]] = None,
+                           service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                           username: pulumi.Input[Optional[_builtins.str]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetValkeyUserResult]:
     """
     The Valkey User data source provides information about the existing Aiven for Valkey user.

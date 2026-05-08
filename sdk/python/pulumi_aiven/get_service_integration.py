@@ -398,10 +398,10 @@ def get_service_integration(destination_service_name: Optional[_builtins.str] = 
         source_endpoint_id=pulumi.get(__ret__, 'source_endpoint_id'),
         source_service_name=pulumi.get(__ret__, 'source_service_name'),
         source_service_project=pulumi.get(__ret__, 'source_service_project'))
-def get_service_integration_output(destination_service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                                   integration_type: Optional[pulumi.Input[_builtins.str]] = None,
-                                   project: Optional[pulumi.Input[_builtins.str]] = None,
-                                   source_service_name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_service_integration_output(destination_service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                                   integration_type: pulumi.Input[Optional[_builtins.str]] = None,
+                                   project: pulumi.Input[Optional[_builtins.str]] = None,
+                                   source_service_name: pulumi.Input[Optional[_builtins.str]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServiceIntegrationResult]:
     """
     Gets information about an Aiven service integration.

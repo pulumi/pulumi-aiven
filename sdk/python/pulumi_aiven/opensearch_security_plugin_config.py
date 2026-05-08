@@ -24,7 +24,7 @@ class OpensearchSecurityPluginConfigArgs:
                  admin_password: pulumi.Input[_builtins.str],
                  project: pulumi.Input[_builtins.str],
                  service_name: pulumi.Input[_builtins.str],
-                 timeouts: Optional[pulumi.Input['OpensearchSecurityPluginConfigTimeoutsArgs']] = None):
+                 timeouts: pulumi.Input[Optional['OpensearchSecurityPluginConfigTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a OpensearchSecurityPluginConfig resource.
 
@@ -76,24 +76,24 @@ class OpensearchSecurityPluginConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['OpensearchSecurityPluginConfigTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['OpensearchSecurityPluginConfigTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['OpensearchSecurityPluginConfigTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['OpensearchSecurityPluginConfigTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
 
 @pulumi.input_type
 class _OpensearchSecurityPluginConfigState:
     def __init__(__self__, *,
-                 admin_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 admin_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 available: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input['OpensearchSecurityPluginConfigTimeoutsArgs']] = None):
+                 admin_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 admin_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 available: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional['OpensearchSecurityPluginConfigTimeoutsArgs']] = None):
         """
         Input properties used for looking up and filtering OpensearchSecurityPluginConfig resources.
 
@@ -121,83 +121,83 @@ class _OpensearchSecurityPluginConfigState:
 
     @_builtins.property
     @pulumi.getter(name="adminEnabled")
-    def admin_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def admin_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         security plugin admin defined.
         """
         return pulumi.get(self, "admin_enabled")
 
     @admin_enabled.setter
-    def admin_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def admin_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "admin_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="adminPassword")
-    def admin_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def admin_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Current os-sec-admin password. Length must be between `8` and `256`.
         """
         return pulumi.get(self, "admin_password")
 
     @admin_password.setter
-    def admin_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def admin_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "admin_password", value)
 
     @_builtins.property
     @pulumi.getter
-    def available(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def available(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Opensearch security available for the service.
         """
         return pulumi.get(self, "available")
 
     @available.setter
-    def available(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def available(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "available", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Opensearch security enabled for the service.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Project name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceName")
-    def service_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Service name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
-    def service_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['OpensearchSecurityPluginConfigTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['OpensearchSecurityPluginConfigTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['OpensearchSecurityPluginConfigTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['OpensearchSecurityPluginConfigTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
 
@@ -207,10 +207,10 @@ class OpensearchSecurityPluginConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 admin_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input[Union['OpensearchSecurityPluginConfigTimeoutsArgs', 'OpensearchSecurityPluginConfigTimeoutsArgsDict']]] = None,
+                 admin_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['OpensearchSecurityPluginConfigTimeoutsArgs', 'OpensearchSecurityPluginConfigTimeoutsArgsDict']]] = None,
                  __props__=None):
         """
         Enables and manages [OpenSearch Security for an Aiven for OpenSearch® service](https://aiven.io/docs/products/opensearch/concepts/os-security). After enabling OpenSearch Security management, **you can no longer use Aiven Terraform Provider to manage access controls for that service.** To manage user authentication and access control with OpenSearch Security management enabled, use the OpenSearch Security Dashboard or OpenSearch Security API. **Once enabled, OpenSearch Security management cannot be disabled.** To disable it, [contact Aiven support](https://aiven.io/support-services). If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
@@ -283,10 +283,10 @@ class OpensearchSecurityPluginConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 admin_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input[Union['OpensearchSecurityPluginConfigTimeoutsArgs', 'OpensearchSecurityPluginConfigTimeoutsArgsDict']]] = None,
+                 admin_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['OpensearchSecurityPluginConfigTimeoutsArgs', 'OpensearchSecurityPluginConfigTimeoutsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -321,13 +321,13 @@ class OpensearchSecurityPluginConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            admin_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            admin_password: Optional[pulumi.Input[_builtins.str]] = None,
-            available: Optional[pulumi.Input[_builtins.bool]] = None,
-            enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            service_name: Optional[pulumi.Input[_builtins.str]] = None,
-            timeouts: Optional[pulumi.Input[Union['OpensearchSecurityPluginConfigTimeoutsArgs', 'OpensearchSecurityPluginConfigTimeoutsArgsDict']]] = None) -> 'OpensearchSecurityPluginConfig':
+            admin_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            admin_password: pulumi.Input[Optional[_builtins.str]] = None,
+            available: pulumi.Input[Optional[_builtins.bool]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            service_name: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['OpensearchSecurityPluginConfigTimeoutsArgs', 'OpensearchSecurityPluginConfigTimeoutsArgsDict']]] = None) -> 'OpensearchSecurityPluginConfig':
         """
         Get an existing OpensearchSecurityPluginConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

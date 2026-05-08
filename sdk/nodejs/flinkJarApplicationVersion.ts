@@ -177,43 +177,43 @@ export interface FlinkJarApplicationVersionState {
     /**
      * Application Id. Changing this property forces recreation of the resource.
      */
-    applicationId?: pulumi.Input<string>;
+    applicationId?: pulumi.Input<string | undefined>;
     /**
      * ApplicationVersion ID.
      */
-    applicationVersionId?: pulumi.Input<string>;
+    applicationVersionId?: pulumi.Input<string | undefined>;
     /**
      * The creation timestamp of this entity in ISO 8601 format, always in UTC.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The creator of this entity.
      */
-    createdBy?: pulumi.Input<string>;
+    createdBy?: pulumi.Input<string | undefined>;
     /**
      * Flink JarApplicationVersion FileInfo.
      */
-    fileInfos?: pulumi.Input<pulumi.Input<inputs.FlinkJarApplicationVersionFileInfo>[]>;
+    fileInfos?: pulumi.Input<pulumi.Input<inputs.FlinkJarApplicationVersionFileInfo>[] | undefined>;
     /**
      * Project name. Changing this property forces recreation of the resource.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Service name. Changing this property forces recreation of the resource.
      */
-    serviceName?: pulumi.Input<string>;
+    serviceName?: pulumi.Input<string | undefined>;
     /**
      * The path to the jar file to upload.
      */
-    source?: pulumi.Input<string>;
+    source?: pulumi.Input<string | undefined>;
     /**
      * The sha256 checksum of the jar file to upload.
      */
-    sourceChecksum?: pulumi.Input<string>;
+    sourceChecksum?: pulumi.Input<string | undefined>;
     /**
      * Version number.
      */
-    version?: pulumi.Input<number>;
+    version?: pulumi.Input<number | undefined>;
 }
 
 /**

@@ -21,7 +21,7 @@ class AzurePrivatelinkConnectionApprovalArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[_builtins.str],
                  service_name: pulumi.Input[_builtins.str],
-                 endpoint_ip_address: Optional[pulumi.Input[_builtins.str]] = None):
+                 endpoint_ip_address: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a AzurePrivatelinkConnectionApproval resource.
 
@@ -60,25 +60,25 @@ class AzurePrivatelinkConnectionApprovalArgs:
 
     @_builtins.property
     @pulumi.getter(name="endpointIpAddress")
-    def endpoint_ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint_ip_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IP address of Azure private endpoint.
         """
         return pulumi.get(self, "endpoint_ip_address")
 
     @endpoint_ip_address.setter
-    def endpoint_ip_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint_ip_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint_ip_address", value)
 
 
 @pulumi.input_type
 class _AzurePrivatelinkConnectionApprovalState:
     def __init__(__self__, *,
-                 endpoint_ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 privatelink_connection_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None):
+                 endpoint_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 privatelink_connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AzurePrivatelinkConnectionApproval resources.
 
@@ -101,62 +101,62 @@ class _AzurePrivatelinkConnectionApprovalState:
 
     @_builtins.property
     @pulumi.getter(name="endpointIpAddress")
-    def endpoint_ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint_ip_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IP address of Azure private endpoint.
         """
         return pulumi.get(self, "endpoint_ip_address")
 
     @endpoint_ip_address.setter
-    def endpoint_ip_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint_ip_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint_ip_address", value)
 
     @_builtins.property
     @pulumi.getter(name="privatelinkConnectionId")
-    def privatelink_connection_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def privatelink_connection_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Private Link connection.
         """
         return pulumi.get(self, "privatelink_connection_id")
 
     @privatelink_connection_id.setter
-    def privatelink_connection_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def privatelink_connection_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "privatelink_connection_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceName")
-    def service_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
-    def service_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The state of the Private Link connection.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
 
@@ -166,9 +166,9 @@ class AzurePrivatelinkConnectionApproval(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 endpoint_ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 endpoint_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Approves an Azure Private Link connection to an Aiven service with an associated endpoint IP.
@@ -177,10 +177,11 @@ class AzurePrivatelinkConnectionApproval(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_aiven as aiven
         import pulumi_azurerm as azurerm
 
-        static_ips = []
+        static_ips: list[Any] = []
         for range in [{"value": i} for i in range(0, 2)]:
             static_ips.append(aiven.StaticIp(f"static_ips-{range['value']}",
                 project=project_id,
@@ -248,10 +249,11 @@ class AzurePrivatelinkConnectionApproval(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_aiven as aiven
         import pulumi_azurerm as azurerm
 
-        static_ips = []
+        static_ips: list[Any] = []
         for range in [{"value": i} for i in range(0, 2)]:
             static_ips.append(aiven.StaticIp(f"static_ips-{range['value']}",
                 project=project_id,
@@ -315,9 +317,9 @@ class AzurePrivatelinkConnectionApproval(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 endpoint_ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 endpoint_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -346,11 +348,11 @@ class AzurePrivatelinkConnectionApproval(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            endpoint_ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-            privatelink_connection_id: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            service_name: Optional[pulumi.Input[_builtins.str]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None) -> 'AzurePrivatelinkConnectionApproval':
+            endpoint_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+            privatelink_connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            service_name: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None) -> 'AzurePrivatelinkConnectionApproval':
         """
         Get an existing AzurePrivatelinkConnectionApproval resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

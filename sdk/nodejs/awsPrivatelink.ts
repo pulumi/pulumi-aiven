@@ -122,23 +122,23 @@ export interface AwsPrivatelinkState {
     /**
      * AWS service ID.
      */
-    awsServiceId?: pulumi.Input<string>;
+    awsServiceId?: pulumi.Input<string | undefined>;
     /**
      * AWS service name.
      */
-    awsServiceName?: pulumi.Input<string>;
+    awsServiceName?: pulumi.Input<string | undefined>;
     /**
      * List of the ARNs of the AWS accounts or IAM users allowed to connect to the VPC endpoint.
      */
-    principals?: pulumi.Input<pulumi.Input<string>[]>;
+    principals?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    serviceName?: pulumi.Input<string>;
+    serviceName?: pulumi.Input<string | undefined>;
 }
 
 /**

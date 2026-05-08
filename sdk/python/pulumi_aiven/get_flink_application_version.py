@@ -242,10 +242,10 @@ def get_flink_application_version(application_id: Optional[_builtins.str] = None
         sources=pulumi.get(__ret__, 'sources'),
         statement=pulumi.get(__ret__, 'statement'),
         version=pulumi.get(__ret__, 'version'))
-def get_flink_application_version_output(application_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                         application_version_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                         project: Optional[pulumi.Input[_builtins.str]] = None,
-                                         service_name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_flink_application_version_output(application_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                         application_version_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                         project: pulumi.Input[Optional[_builtins.str]] = None,
+                                         service_name: pulumi.Input[Optional[_builtins.str]] = None,
                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFlinkApplicationVersionResult]:
     """
     Gets information about an Aiven for Apache Flink® application version.

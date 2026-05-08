@@ -217,67 +217,67 @@ export interface FlinkJarApplicationDeploymentState {
     /**
      * Application Id. Changing this property forces recreation of the resource.
      */
-    applicationId?: pulumi.Input<string>;
+    applicationId?: pulumi.Input<string | undefined>;
     /**
      * The creation timestamp of this entity in ISO 8601 format, always in UTC.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The creator of this entity.
      */
-    createdBy?: pulumi.Input<string>;
+    createdBy?: pulumi.Input<string | undefined>;
     /**
      * Deployment ID.
      */
-    deploymentId?: pulumi.Input<string>;
+    deploymentId?: pulumi.Input<string | undefined>;
     /**
      * The fully qualified name of the entry class to pass during Flink job submission through the entryClass parameter. Maximum length: `128`.
      */
-    entryClass?: pulumi.Input<string>;
+    entryClass?: pulumi.Input<string | undefined>;
     /**
      * Error message describing what caused deployment to fail.
      */
-    errorMsg?: pulumi.Input<string>;
+    errorMsg?: pulumi.Input<string | undefined>;
     /**
      * Job ID.
      */
-    jobId?: pulumi.Input<string>;
+    jobId?: pulumi.Input<string | undefined>;
     /**
      * Job savepoint.
      */
-    lastSavepoint?: pulumi.Input<string>;
+    lastSavepoint?: pulumi.Input<string | undefined>;
     /**
      * Reading of Flink parallel execution documentation is recommended before setting this value to other than 1. Please do not set this value higher than (total number of nodes x number*of*task_slots), or every new job created will fail.
      */
-    parallelism?: pulumi.Input<number>;
+    parallelism?: pulumi.Input<number | undefined>;
     /**
      * Arguments to pass during Flink job submission through the programArgsList parameter.
      */
-    programArgs?: pulumi.Input<pulumi.Input<string>[]>;
+    programArgs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Project name. Changing this property forces recreation of the resource.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether a Flink Job is restarted in case it fails. Changing this property forces recreation of the resource.
      */
-    restartEnabled?: pulumi.Input<boolean>;
+    restartEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Service name. Changing this property forces recreation of the resource.
      */
-    serviceName?: pulumi.Input<string>;
+    serviceName?: pulumi.Input<string | undefined>;
     /**
      * Job savepoint. Maximum length: `2048`.
      */
-    startingSavepoint?: pulumi.Input<string>;
+    startingSavepoint?: pulumi.Input<string | undefined>;
     /**
      * Deployment status. The possible values are `CANCELED`, `CANCELLING`, `CANCELLING_REQUESTED`, `CREATED`, `DELETE_REQUESTED`, `DELETING`, `FAILED`, `FAILING`, `FINISHED`, `INITIALIZING`, `RECONCILING`, `RESTARTING`, `RUNNING`, `SAVING`, `SAVING_AND_STOP`, `SAVING_AND_STOP_REQUESTED` and `SUSPENDED`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * ApplicationVersion ID. Maximum length: `36`. Changing this property forces recreation of the resource.
      */
-    versionId?: pulumi.Input<string>;
+    versionId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -291,15 +291,15 @@ export interface FlinkJarApplicationDeploymentArgs {
     /**
      * The fully qualified name of the entry class to pass during Flink job submission through the entryClass parameter. Maximum length: `128`.
      */
-    entryClass?: pulumi.Input<string>;
+    entryClass?: pulumi.Input<string | undefined>;
     /**
      * Reading of Flink parallel execution documentation is recommended before setting this value to other than 1. Please do not set this value higher than (total number of nodes x number*of*task_slots), or every new job created will fail.
      */
-    parallelism?: pulumi.Input<number>;
+    parallelism?: pulumi.Input<number | undefined>;
     /**
      * Arguments to pass during Flink job submission through the programArgsList parameter.
      */
-    programArgs?: pulumi.Input<pulumi.Input<string>[]>;
+    programArgs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Project name. Changing this property forces recreation of the resource.
      */
@@ -307,7 +307,7 @@ export interface FlinkJarApplicationDeploymentArgs {
     /**
      * Specifies whether a Flink Job is restarted in case it fails. Changing this property forces recreation of the resource.
      */
-    restartEnabled?: pulumi.Input<boolean>;
+    restartEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Service name. Changing this property forces recreation of the resource.
      */
@@ -315,7 +315,7 @@ export interface FlinkJarApplicationDeploymentArgs {
     /**
      * Job savepoint. Maximum length: `2048`.
      */
-    startingSavepoint?: pulumi.Input<string>;
+    startingSavepoint?: pulumi.Input<string | undefined>;
     /**
      * ApplicationVersion ID. Maximum length: `36`. Changing this property forces recreation of the resource.
      */

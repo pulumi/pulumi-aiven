@@ -22,7 +22,7 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleMysqlUser = new Aiven.Index.MysqlUser("example_mysql_user", new()
+    ///     var exampleMysqlUser = new Aiven.MysqlUser("example_mysql_user", new()
     ///     {
     ///         ServiceName = exampleMysql.ServiceName,
     ///         Project = exampleProject.Project,

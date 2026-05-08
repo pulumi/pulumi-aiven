@@ -23,10 +23,10 @@ class ClickhouseGrantArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[_builtins.str],
                  service_name: pulumi.Input[_builtins.str],
-                 privilege_grants: Optional[pulumi.Input[Sequence[pulumi.Input['ClickhouseGrantPrivilegeGrantArgs']]]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_grants: Optional[pulumi.Input[Sequence[pulumi.Input['ClickhouseGrantRoleGrantArgs']]]] = None,
-                 user: Optional[pulumi.Input[_builtins.str]] = None):
+                 privilege_grants: pulumi.Input[Optional[Sequence[pulumi.Input['ClickhouseGrantPrivilegeGrantArgs']]]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_grants: pulumi.Input[Optional[Sequence[pulumi.Input['ClickhouseGrantRoleGrantArgs']]]] = None,
+                 user: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ClickhouseGrant resource.
 
@@ -74,62 +74,62 @@ class ClickhouseGrantArgs:
 
     @_builtins.property
     @pulumi.getter(name="privilegeGrants")
-    def privilege_grants(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClickhouseGrantPrivilegeGrantArgs']]]]:
+    def privilege_grants(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClickhouseGrantPrivilegeGrantArgs']]]]:
         """
         Grant privileges. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "privilege_grants")
 
     @privilege_grants.setter
-    def privilege_grants(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClickhouseGrantPrivilegeGrantArgs']]]]):
+    def privilege_grants(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClickhouseGrantPrivilegeGrantArgs']]]]):
         pulumi.set(self, "privilege_grants", value)
 
     @_builtins.property
     @pulumi.getter
-    def role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The role to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "role")
 
     @role.setter
-    def role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role", value)
 
     @_builtins.property
     @pulumi.getter(name="roleGrants")
-    def role_grants(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClickhouseGrantRoleGrantArgs']]]]:
+    def role_grants(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClickhouseGrantRoleGrantArgs']]]]:
         """
         Grant roles. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "role_grants")
 
     @role_grants.setter
-    def role_grants(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClickhouseGrantRoleGrantArgs']]]]):
+    def role_grants(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClickhouseGrantRoleGrantArgs']]]]):
         pulumi.set(self, "role_grants", value)
 
     @_builtins.property
     @pulumi.getter
-    def user(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "user")
 
     @user.setter
-    def user(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user", value)
 
 
 @pulumi.input_type
 class _ClickhouseGrantState:
     def __init__(__self__, *,
-                 privilege_grants: Optional[pulumi.Input[Sequence[pulumi.Input['ClickhouseGrantPrivilegeGrantArgs']]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_grants: Optional[pulumi.Input[Sequence[pulumi.Input['ClickhouseGrantRoleGrantArgs']]]] = None,
-                 service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 user: Optional[pulumi.Input[_builtins.str]] = None):
+                 privilege_grants: pulumi.Input[Optional[Sequence[pulumi.Input['ClickhouseGrantPrivilegeGrantArgs']]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_grants: pulumi.Input[Optional[Sequence[pulumi.Input['ClickhouseGrantRoleGrantArgs']]]] = None,
+                 service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 user: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ClickhouseGrant resources.
 
@@ -155,74 +155,74 @@ class _ClickhouseGrantState:
 
     @_builtins.property
     @pulumi.getter(name="privilegeGrants")
-    def privilege_grants(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClickhouseGrantPrivilegeGrantArgs']]]]:
+    def privilege_grants(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClickhouseGrantPrivilegeGrantArgs']]]]:
         """
         Grant privileges. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "privilege_grants")
 
     @privilege_grants.setter
-    def privilege_grants(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClickhouseGrantPrivilegeGrantArgs']]]]):
+    def privilege_grants(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClickhouseGrantPrivilegeGrantArgs']]]]):
         pulumi.set(self, "privilege_grants", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The role to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "role")
 
     @role.setter
-    def role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role", value)
 
     @_builtins.property
     @pulumi.getter(name="roleGrants")
-    def role_grants(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClickhouseGrantRoleGrantArgs']]]]:
+    def role_grants(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClickhouseGrantRoleGrantArgs']]]]:
         """
         Grant roles. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "role_grants")
 
     @role_grants.setter
-    def role_grants(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClickhouseGrantRoleGrantArgs']]]]):
+    def role_grants(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClickhouseGrantRoleGrantArgs']]]]):
         pulumi.set(self, "role_grants", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceName")
-    def service_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
-    def service_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def user(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "user")
 
     @user.setter
-    def user(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user", value)
 
 
@@ -232,12 +232,12 @@ class ClickhouseGrant(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 privilege_grants: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClickhouseGrantPrivilegeGrantArgs', 'ClickhouseGrantPrivilegeGrantArgsDict']]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_grants: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClickhouseGrantRoleGrantArgs', 'ClickhouseGrantRoleGrantArgsDict']]]]] = None,
-                 service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 user: Optional[pulumi.Input[_builtins.str]] = None,
+                 privilege_grants: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClickhouseGrantPrivilegeGrantArgs', 'ClickhouseGrantPrivilegeGrantArgsDict']]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_grants: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClickhouseGrantRoleGrantArgs', 'ClickhouseGrantRoleGrantArgsDict']]]]] = None,
+                 service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 user: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Creates and manages ClickHouse grants to give users and roles privileges to a ClickHouse service.
@@ -403,12 +403,12 @@ class ClickhouseGrant(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 privilege_grants: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClickhouseGrantPrivilegeGrantArgs', 'ClickhouseGrantPrivilegeGrantArgsDict']]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_grants: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClickhouseGrantRoleGrantArgs', 'ClickhouseGrantRoleGrantArgsDict']]]]] = None,
-                 service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 user: Optional[pulumi.Input[_builtins.str]] = None,
+                 privilege_grants: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClickhouseGrantPrivilegeGrantArgs', 'ClickhouseGrantPrivilegeGrantArgsDict']]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_grants: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClickhouseGrantRoleGrantArgs', 'ClickhouseGrantRoleGrantArgsDict']]]]] = None,
+                 service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 user: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -438,12 +438,12 @@ class ClickhouseGrant(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            privilege_grants: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClickhouseGrantPrivilegeGrantArgs', 'ClickhouseGrantPrivilegeGrantArgsDict']]]]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            role: Optional[pulumi.Input[_builtins.str]] = None,
-            role_grants: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClickhouseGrantRoleGrantArgs', 'ClickhouseGrantRoleGrantArgsDict']]]]] = None,
-            service_name: Optional[pulumi.Input[_builtins.str]] = None,
-            user: Optional[pulumi.Input[_builtins.str]] = None) -> 'ClickhouseGrant':
+            privilege_grants: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClickhouseGrantPrivilegeGrantArgs', 'ClickhouseGrantPrivilegeGrantArgsDict']]]]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            role: pulumi.Input[Optional[_builtins.str]] = None,
+            role_grants: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClickhouseGrantRoleGrantArgs', 'ClickhouseGrantRoleGrantArgsDict']]]]] = None,
+            service_name: pulumi.Input[Optional[_builtins.str]] = None,
+            user: pulumi.Input[Optional[_builtins.str]] = None) -> 'ClickhouseGrant':
         """
         Get an existing ClickhouseGrant resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

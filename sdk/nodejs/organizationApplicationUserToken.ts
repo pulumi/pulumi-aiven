@@ -202,72 +202,72 @@ export interface OrganizationApplicationUserTokenState {
     /**
      * Create Time.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * True for tokens explicitly created via the accessTokens API, false for tokens created via login.
      */
-    createdManually?: pulumi.Input<boolean>;
+    createdManually?: pulumi.Input<boolean | undefined>;
     /**
      * true if API request was made with this access token.
      */
-    currentlyActive?: pulumi.Input<boolean>;
+    currentlyActive?: pulumi.Input<boolean | undefined>;
     /**
      * Description. Maximum length: `1000`. Changing this property forces recreation of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Timestamp when the access token will expire unless extended, if ever.
      */
-    expiryTime?: pulumi.Input<string>;
+    expiryTime?: pulumi.Input<string | undefined>;
     /**
      * Extend token expiration time when token is used. Only applicable if max*age*seconds is specified. The default value is `false`. Changing this property forces recreation of the resource.
      */
-    extendWhenUsed?: pulumi.Input<boolean>;
+    extendWhenUsed?: pulumi.Input<boolean | undefined>;
     /**
      * Full Token.
      */
-    fullToken?: pulumi.Input<string>;
+    fullToken?: pulumi.Input<string | undefined>;
     /**
      * List of allowed IP ranges. Changing this property forces recreation of the resource.
      */
-    ipAllowlists?: pulumi.Input<pulumi.Input<string>[]>;
+    ipAllowlists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * IP address the access token was last used from in case it has ever been used.
      */
-    lastIp?: pulumi.Input<string>;
+    lastIp?: pulumi.Input<string | undefined>;
     /**
      * Timestamp when the access token was last used, if ever.
      */
-    lastUsedTime?: pulumi.Input<string>;
+    lastUsedTime?: pulumi.Input<string | undefined>;
     /**
      * User agent string of the client that last used the token in case it has ever been used.
      */
-    lastUserAgent?: pulumi.Input<string>;
+    lastUserAgent?: pulumi.Input<string | undefined>;
     /**
      * Human readable user agent string of the client that last used the token in case user agent is known.
      */
-    lastUserAgentHumanReadable?: pulumi.Input<string>;
+    lastUserAgentHumanReadable?: pulumi.Input<string | undefined>;
     /**
      * Time the token remains valid since creation (or since last use if extend*when*used is true). Value must be between `600` and `315360000`. Changing this property forces recreation of the resource.
      */
-    maxAgeSeconds?: pulumi.Input<number>;
+    maxAgeSeconds?: pulumi.Input<number | undefined>;
     /**
      * ID of an organization. Changing this property forces recreation of the resource.
      */
-    organizationId?: pulumi.Input<string>;
+    organizationId?: pulumi.Input<string | undefined>;
     /**
      * Scopes this token is restricted to if specified. Changing this property forces recreation of the resource.
      */
-    scopes?: pulumi.Input<pulumi.Input<string>[]>;
-    timeouts?: pulumi.Input<inputs.OrganizationApplicationUserTokenTimeouts>;
+    scopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    timeouts?: pulumi.Input<inputs.OrganizationApplicationUserTokenTimeouts | undefined>;
     /**
      * First characters of the actual token value. Full value is only exposed after creation. This value is used when updating or revoking tokens. Note that the value may contain /, + and = characters and must be URL encoded when used (/ =&gt; %2F, + =&gt; %2B, = =&gt; %3D).
      */
-    tokenPrefix?: pulumi.Input<string>;
+    tokenPrefix?: pulumi.Input<string | undefined>;
     /**
      * User ID. Changing this property forces recreation of the resource.
      */
-    userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -277,19 +277,19 @@ export interface OrganizationApplicationUserTokenArgs {
     /**
      * Description. Maximum length: `1000`. Changing this property forces recreation of the resource.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Extend token expiration time when token is used. Only applicable if max*age*seconds is specified. The default value is `false`. Changing this property forces recreation of the resource.
      */
-    extendWhenUsed?: pulumi.Input<boolean>;
+    extendWhenUsed?: pulumi.Input<boolean | undefined>;
     /**
      * List of allowed IP ranges. Changing this property forces recreation of the resource.
      */
-    ipAllowlists?: pulumi.Input<pulumi.Input<string>[]>;
+    ipAllowlists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Time the token remains valid since creation (or since last use if extend*when*used is true). Value must be between `600` and `315360000`. Changing this property forces recreation of the resource.
      */
-    maxAgeSeconds?: pulumi.Input<number>;
+    maxAgeSeconds?: pulumi.Input<number | undefined>;
     /**
      * ID of an organization. Changing this property forces recreation of the resource.
      */
@@ -297,8 +297,8 @@ export interface OrganizationApplicationUserTokenArgs {
     /**
      * Scopes this token is restricted to if specified. Changing this property forces recreation of the resource.
      */
-    scopes?: pulumi.Input<pulumi.Input<string>[]>;
-    timeouts?: pulumi.Input<inputs.OrganizationApplicationUserTokenTimeouts>;
+    scopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    timeouts?: pulumi.Input<inputs.OrganizationApplicationUserTokenTimeouts | undefined>;
     /**
      * User ID. Changing this property forces recreation of the resource.
      */

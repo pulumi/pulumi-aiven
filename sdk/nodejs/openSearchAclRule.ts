@@ -57,8 +57,8 @@ import * as utilities from "./utilities";
  *     },
  * ];
  * const osAclRule: aiven.OpenSearchAclRule[] = [];
- * pulumi.all(aclRules.map((v, k) => [k, v] as const).reduce((__obj, [i, v]) => ({ ...__obj, [i]: v }), {})).apply(rangeBody => {
- *     for (const range of Object.entries(rangeBody).map(([k, v]) => ({key: k, value: v}))) {
+ * pulumi.all(aclRules.map((v, k) => [k, v] as const).reduce((__obj, [i, v]) => ({ ...__obj, [String(i)]: v }), {})).apply(rangeBody => {
+ *     for (const range of Object.entries(rangeBody).sort().map(([k, v]) => ({key: k, value: v}))) {
  *         osAclRule.push(new aiven.OpenSearchAclRule(`os_acl_rule-${range.key}`, {
  *             project: exampleProject.project,
  *             serviceName: exampleOpensearch.serviceName,
@@ -178,23 +178,23 @@ export interface OpenSearchAclRuleState {
     /**
      * The index pattern for this ACL rule. Maximum length: `249`. Changing this property forces recreation of the resource.
      */
-    index?: pulumi.Input<string>;
+    index?: pulumi.Input<string | undefined>;
     /**
      * The permissions for this ACL rule. The possible values are `admin`, `deny`, `read`, `readwrite` and `write`.
      */
-    permission?: pulumi.Input<string>;
+    permission?: pulumi.Input<string | undefined>;
     /**
      * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    serviceName?: pulumi.Input<string>;
+    serviceName?: pulumi.Input<string | undefined>;
     /**
      * The username for the OpenSearch user this ACL rule applies to. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }
 
 /**

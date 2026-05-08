@@ -129,9 +129,9 @@ def get_organization_user(organization_id: Optional[_builtins.str] = None,
         organization_id=pulumi.get(__ret__, 'organization_id'),
         user_email=pulumi.get(__ret__, 'user_email'),
         user_id=pulumi.get(__ret__, 'user_id'))
-def get_organization_user_output(organization_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                 user_email: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                 user_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_organization_user_output(organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                 user_email: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                 user_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOrganizationUserResult]:
     """
     The Organization User data source provides information about the existing Aiven Organization User.

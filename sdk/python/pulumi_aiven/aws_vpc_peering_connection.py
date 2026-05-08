@@ -88,13 +88,13 @@ class AwsVpcPeeringConnectionArgs:
 @pulumi.input_type
 class _AwsVpcPeeringConnectionState:
     def __init__(__self__, *,
-                 aws_account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 aws_vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 aws_vpc_peering_connection_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 aws_vpc_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 state_info: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 aws_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 aws_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 aws_vpc_peering_connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 aws_vpc_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 state_info: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AwsVpcPeeringConnection resources.
 
@@ -123,86 +123,86 @@ class _AwsVpcPeeringConnectionState:
 
     @_builtins.property
     @pulumi.getter(name="awsAccountId")
-    def aws_account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def aws_account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         AWS account ID. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "aws_account_id")
 
     @aws_account_id.setter
-    def aws_account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def aws_account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "aws_account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="awsVpcId")
-    def aws_vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def aws_vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         AWS VPC ID. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "aws_vpc_id")
 
     @aws_vpc_id.setter
-    def aws_vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def aws_vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "aws_vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="awsVpcPeeringConnectionId")
-    def aws_vpc_peering_connection_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def aws_vpc_peering_connection_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the AWS VPC peering connection.
         """
         return pulumi.get(self, "aws_vpc_peering_connection_id")
 
     @aws_vpc_peering_connection_id.setter
-    def aws_vpc_peering_connection_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def aws_vpc_peering_connection_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "aws_vpc_peering_connection_id", value)
 
     @_builtins.property
     @pulumi.getter(name="awsVpcRegion")
-    def aws_vpc_region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def aws_vpc_region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The AWS region of the peered VPC, if different from the Aiven VPC region. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "aws_vpc_region")
 
     @aws_vpc_region.setter
-    def aws_vpc_region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def aws_vpc_region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "aws_vpc_region", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The state of the peering connection.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter(name="stateInfo")
-    def state_info(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def state_info(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         State-specific help or error information.
         """
         return pulumi.get(self, "state_info")
 
     @state_info.setter
-    def state_info(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def state_info(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "state_info", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Aiven VPC. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
 
@@ -212,10 +212,10 @@ class AwsVpcPeeringConnection(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aws_account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 aws_vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 aws_vpc_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 aws_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 aws_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 aws_vpc_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Creates and manages an AWS VPC peering connection with an Aiven VPC.
@@ -299,10 +299,10 @@ class AwsVpcPeeringConnection(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aws_account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 aws_vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 aws_vpc_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 aws_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 aws_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 aws_vpc_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -337,13 +337,13 @@ class AwsVpcPeeringConnection(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            aws_account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            aws_vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-            aws_vpc_peering_connection_id: Optional[pulumi.Input[_builtins.str]] = None,
-            aws_vpc_region: Optional[pulumi.Input[_builtins.str]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            state_info: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            vpc_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'AwsVpcPeeringConnection':
+            aws_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            aws_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            aws_vpc_peering_connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+            aws_vpc_region: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            state_info: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'AwsVpcPeeringConnection':
         """
         Get an existing AwsVpcPeeringConnection resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

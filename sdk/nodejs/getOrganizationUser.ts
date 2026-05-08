@@ -96,9 +96,9 @@ export interface GetOrganizationUserOutputArgs {
     /**
      * This is a user email address
      */
-    userEmail?: pulumi.Input<string>;
+    userEmail?: pulumi.Input<string | undefined>;
     /**
      * The unique organization user ID
      */
-    userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string | undefined>;
 }

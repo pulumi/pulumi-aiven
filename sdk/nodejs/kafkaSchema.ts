@@ -154,31 +154,31 @@ export interface KafkaSchemaState {
     /**
      * Kafka Schemas compatibility level. The possible values are `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`, `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE` and `NONE`.
      */
-    compatibilityLevel?: pulumi.Input<string>;
+    compatibilityLevel?: pulumi.Input<string | undefined>;
     /**
      * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Kafka Schema configuration. Should be a valid Avro, JSON, or Protobuf schema, depending on the schema type.
      */
-    schema?: pulumi.Input<string>;
+    schema?: pulumi.Input<string | undefined>;
     /**
      * Kafka Schema configuration type. Defaults to AVRO. The possible values are `AVRO`, `JSON` and `PROTOBUF`.
      */
-    schemaType?: pulumi.Input<string>;
+    schemaType?: pulumi.Input<string | undefined>;
     /**
      * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    serviceName?: pulumi.Input<string>;
+    serviceName?: pulumi.Input<string | undefined>;
     /**
      * The Kafka Schema Subject name. Changing this property forces recreation of the resource.
      */
-    subjectName?: pulumi.Input<string>;
+    subjectName?: pulumi.Input<string | undefined>;
     /**
      * Kafka Schema configuration version.
      */
-    version?: pulumi.Input<number>;
+    version?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -188,7 +188,7 @@ export interface KafkaSchemaArgs {
     /**
      * Kafka Schemas compatibility level. The possible values are `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`, `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE` and `NONE`.
      */
-    compatibilityLevel?: pulumi.Input<string>;
+    compatibilityLevel?: pulumi.Input<string | undefined>;
     /**
      * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
@@ -200,7 +200,7 @@ export interface KafkaSchemaArgs {
     /**
      * Kafka Schema configuration type. Defaults to AVRO. The possible values are `AVRO`, `JSON` and `PROTOBUF`.
      */
-    schemaType?: pulumi.Input<string>;
+    schemaType?: pulumi.Input<string | undefined>;
     /**
      * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */

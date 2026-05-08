@@ -121,5 +121,5 @@ export interface GetMysqlDatabaseOutputArgs {
      * Service name.
      */
     serviceName: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.GetMysqlDatabaseTimeoutsArgs>;
+    timeouts?: pulumi.Input<inputs.GetMysqlDatabaseTimeoutsArgs | undefined>;
 }

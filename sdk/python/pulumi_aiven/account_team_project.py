@@ -21,8 +21,8 @@ class AccountTeamProjectArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[_builtins.str],
                  team_id: pulumi.Input[_builtins.str],
-                 project_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 team_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 project_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 team_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a AccountTeamProject resource.
 
@@ -64,36 +64,36 @@ class AccountTeamProjectArgs:
 
     @_builtins.property
     @pulumi.getter(name="projectName")
-    def project_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of an already existing project
         """
         return pulumi.get(self, "project_name")
 
     @project_name.setter
-    def project_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_name", value)
 
     @_builtins.property
     @pulumi.getter(name="teamType")
-    def team_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def team_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Account team project type. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:project:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:metrics:read`, `service:secrets:read` and `service:users:write`.
         """
         return pulumi.get(self, "team_type")
 
     @team_type.setter
-    def team_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def team_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "team_type", value)
 
 
 @pulumi.input_type
 class _AccountTeamProjectState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 team_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 team_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 team_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 team_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccountTeamProject resources.
 
@@ -113,50 +113,50 @@ class _AccountTeamProjectState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique account id
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectName")
-    def project_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of an already existing project
         """
         return pulumi.get(self, "project_name")
 
     @project_name.setter
-    def project_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_name", value)
 
     @_builtins.property
     @pulumi.getter(name="teamId")
-    def team_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def team_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An account team id
         """
         return pulumi.get(self, "team_id")
 
     @team_id.setter
-    def team_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def team_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "team_id", value)
 
     @_builtins.property
     @pulumi.getter(name="teamType")
-    def team_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def team_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Account team project type. The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:project:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:metrics:read`, `service:secrets:read` and `service:users:write`.
         """
         return pulumi.get(self, "team_type")
 
     @team_type.setter
-    def team_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def team_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "team_type", value)
 
 
@@ -166,10 +166,10 @@ class AccountTeamProject(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 team_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 team_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 team_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 team_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Links an existing project to an existing team. Both the project and team should have the same `account_id`.
@@ -273,10 +273,10 @@ class AccountTeamProject(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 team_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 team_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 team_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 team_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -304,10 +304,10 @@ class AccountTeamProject(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            project_name: Optional[pulumi.Input[_builtins.str]] = None,
-            team_id: Optional[pulumi.Input[_builtins.str]] = None,
-            team_type: Optional[pulumi.Input[_builtins.str]] = None) -> 'AccountTeamProject':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_name: pulumi.Input[Optional[_builtins.str]] = None,
+            team_id: pulumi.Input[Optional[_builtins.str]] = None,
+            team_type: pulumi.Input[Optional[_builtins.str]] = None) -> 'AccountTeamProject':
         """
         Get an existing AccountTeamProject resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

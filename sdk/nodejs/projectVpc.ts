@@ -116,19 +116,19 @@ export interface ProjectVpcState {
     /**
      * The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.
      */
-    cloudName?: pulumi.Input<string>;
+    cloudName?: pulumi.Input<string | undefined>;
     /**
      * Network address range used by the VPC. For example, `192.168.0.0/24`.
      */
-    networkCidr?: pulumi.Input<string>;
+    networkCidr?: pulumi.Input<string | undefined>;
     /**
      * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * State of the VPC. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
 }
 
 /**

@@ -25,8 +25,8 @@ class GovernanceAccessArgs:
                  access_name: pulumi.Input[_builtins.str],
                  access_type: pulumi.Input[_builtins.str],
                  organization_id: pulumi.Input[_builtins.str],
-                 owner_user_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input['GovernanceAccessTimeoutsArgs']] = None):
+                 owner_user_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional['GovernanceAccessTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a GovernanceAccess resource.
 
@@ -95,36 +95,36 @@ class GovernanceAccessArgs:
 
     @_builtins.property
     @pulumi.getter(name="ownerUserGroupId")
-    def owner_user_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def owner_user_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the group that will own the access. Maximum length: `36`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "owner_user_group_id")
 
     @owner_user_group_id.setter
-    def owner_user_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def owner_user_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "owner_user_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['GovernanceAccessTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['GovernanceAccessTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['GovernanceAccessTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['GovernanceAccessTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
 
 @pulumi.input_type
 class _GovernanceAccessState:
     def __init__(__self__, *,
-                 access_data: Optional[pulumi.Input['GovernanceAccessAccessDataArgs']] = None,
-                 access_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 access_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 access_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 organization_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 owner_user_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input['GovernanceAccessTimeoutsArgs']] = None):
+                 access_data: pulumi.Input[Optional['GovernanceAccessAccessDataArgs']] = None,
+                 access_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 access_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 access_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 owner_user_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional['GovernanceAccessTimeoutsArgs']] = None):
         """
         Input properties used for looking up and filtering GovernanceAccess resources.
 
@@ -152,83 +152,83 @@ class _GovernanceAccessState:
 
     @_builtins.property
     @pulumi.getter(name="accessData")
-    def access_data(self) -> Optional[pulumi.Input['GovernanceAccessAccessDataArgs']]:
+    def access_data(self) -> pulumi.Input[Optional['GovernanceAccessAccessDataArgs']]:
         """
         Required property. access type specific data. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "access_data")
 
     @access_data.setter
-    def access_data(self, value: Optional[pulumi.Input['GovernanceAccessAccessDataArgs']]):
+    def access_data(self, value: pulumi.Input[Optional['GovernanceAccessAccessDataArgs']]):
         pulumi.set(self, "access_data", value)
 
     @_builtins.property
     @pulumi.getter(name="accessId")
-    def access_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the access.
         """
         return pulumi.get(self, "access_id")
 
     @access_id.setter
-    def access_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_id", value)
 
     @_builtins.property
     @pulumi.getter(name="accessName")
-    def access_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Label to describe the access. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "access_name")
 
     @access_name.setter
-    def access_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_name", value)
 
     @_builtins.property
     @pulumi.getter(name="accessType")
-    def access_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An enumeration. The possible value is `KAFKA`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "access_type")
 
     @access_type.setter
-    def access_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_type", value)
 
     @_builtins.property
     @pulumi.getter(name="organizationId")
-    def organization_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def organization_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of an organization. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "organization_id")
 
     @organization_id.setter
-    def organization_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def organization_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "organization_id", value)
 
     @_builtins.property
     @pulumi.getter(name="ownerUserGroupId")
-    def owner_user_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def owner_user_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the group that will own the access. Maximum length: `36`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "owner_user_group_id")
 
     @owner_user_group_id.setter
-    def owner_user_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def owner_user_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "owner_user_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['GovernanceAccessTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['GovernanceAccessTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['GovernanceAccessTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['GovernanceAccessTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
 
@@ -238,12 +238,12 @@ class GovernanceAccess(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_data: Optional[pulumi.Input[Union['GovernanceAccessAccessDataArgs', 'GovernanceAccessAccessDataArgsDict']]] = None,
-                 access_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 access_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 organization_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 owner_user_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input[Union['GovernanceAccessTimeoutsArgs', 'GovernanceAccessTimeoutsArgsDict']]] = None,
+                 access_data: pulumi.Input[Optional[Union['GovernanceAccessAccessDataArgs', 'GovernanceAccessAccessDataArgsDict']]] = None,
+                 access_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 access_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 owner_user_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['GovernanceAccessTimeoutsArgs', 'GovernanceAccessTimeoutsArgsDict']]] = None,
                  __props__=None):
         """
         Request access to an Apache Kafka topic in Aiven for Apache Kafka® Governance. [Governance](https://aiven.io/docs/products/kafka/howto/governance) helps you manage your Kafka clusters securely and efficiently through structured policies, roles, and processes. You can manage approval workflows using Terraform and GitHub Actions.
@@ -348,12 +348,12 @@ class GovernanceAccess(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_data: Optional[pulumi.Input[Union['GovernanceAccessAccessDataArgs', 'GovernanceAccessAccessDataArgsDict']]] = None,
-                 access_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 access_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 organization_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 owner_user_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input[Union['GovernanceAccessTimeoutsArgs', 'GovernanceAccessTimeoutsArgsDict']]] = None,
+                 access_data: pulumi.Input[Optional[Union['GovernanceAccessAccessDataArgs', 'GovernanceAccessAccessDataArgsDict']]] = None,
+                 access_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 access_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 owner_user_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['GovernanceAccessTimeoutsArgs', 'GovernanceAccessTimeoutsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -388,13 +388,13 @@ class GovernanceAccess(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_data: Optional[pulumi.Input[Union['GovernanceAccessAccessDataArgs', 'GovernanceAccessAccessDataArgsDict']]] = None,
-            access_id: Optional[pulumi.Input[_builtins.str]] = None,
-            access_name: Optional[pulumi.Input[_builtins.str]] = None,
-            access_type: Optional[pulumi.Input[_builtins.str]] = None,
-            organization_id: Optional[pulumi.Input[_builtins.str]] = None,
-            owner_user_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            timeouts: Optional[pulumi.Input[Union['GovernanceAccessTimeoutsArgs', 'GovernanceAccessTimeoutsArgsDict']]] = None) -> 'GovernanceAccess':
+            access_data: pulumi.Input[Optional[Union['GovernanceAccessAccessDataArgs', 'GovernanceAccessAccessDataArgsDict']]] = None,
+            access_id: pulumi.Input[Optional[_builtins.str]] = None,
+            access_name: pulumi.Input[Optional[_builtins.str]] = None,
+            access_type: pulumi.Input[Optional[_builtins.str]] = None,
+            organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+            owner_user_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['GovernanceAccessTimeoutsArgs', 'GovernanceAccessTimeoutsArgsDict']]] = None) -> 'GovernanceAccess':
         """
         Get an existing GovernanceAccess resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

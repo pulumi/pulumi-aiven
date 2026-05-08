@@ -207,55 +207,55 @@ export interface FlinkApplicationVersionState {
     /**
      * Application ID.
      */
-    applicationId?: pulumi.Input<string>;
+    applicationId?: pulumi.Input<string | undefined>;
     /**
      * Application version ID.
      */
-    applicationVersionId?: pulumi.Input<string>;
+    applicationVersionId?: pulumi.Input<string | undefined>;
     /**
      * Application version creation time.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The user who created the application.
      */
-    createdBy?: pulumi.Input<string>;
+    createdBy?: pulumi.Input<string | undefined>;
     /**
      * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    serviceName?: pulumi.Input<string>;
+    serviceName?: pulumi.Input<string | undefined>;
     /**
      * The sink table for the application.
      */
-    sink?: pulumi.Input<pulumi.Input<inputs.FlinkApplicationVersionSink>[]>;
+    sink?: pulumi.Input<pulumi.Input<inputs.FlinkApplicationVersionSink>[] | undefined>;
     /**
      * Application sinks
      *
      * @deprecated This field is deprecated and will be removed in the next major release. Use `sink` instead.
      */
-    sinks?: pulumi.Input<pulumi.Input<inputs.FlinkApplicationVersionSink>[]>;
+    sinks?: pulumi.Input<pulumi.Input<inputs.FlinkApplicationVersionSink>[] | undefined>;
     /**
      * The source table for the application.
      */
-    source?: pulumi.Input<pulumi.Input<inputs.FlinkApplicationVersionSource>[]>;
+    source?: pulumi.Input<pulumi.Input<inputs.FlinkApplicationVersionSource>[] | undefined>;
     /**
      * Application sources
      *
      * @deprecated This field is deprecated and will be removed in the next major release. Use `source` instead.
      */
-    sources?: pulumi.Input<pulumi.Input<inputs.FlinkApplicationVersionSource>[]>;
+    sources?: pulumi.Input<pulumi.Input<inputs.FlinkApplicationVersionSource>[] | undefined>;
     /**
      * Job SQL statement.
      */
-    statement?: pulumi.Input<string>;
+    statement?: pulumi.Input<string | undefined>;
     /**
      * Application version number.
      */
-    version?: pulumi.Input<number>;
+    version?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -277,23 +277,23 @@ export interface FlinkApplicationVersionArgs {
     /**
      * The sink table for the application.
      */
-    sink?: pulumi.Input<pulumi.Input<inputs.FlinkApplicationVersionSink>[]>;
+    sink?: pulumi.Input<pulumi.Input<inputs.FlinkApplicationVersionSink>[] | undefined>;
     /**
      * Application sinks
      *
      * @deprecated This field is deprecated and will be removed in the next major release. Use `sink` instead.
      */
-    sinks?: pulumi.Input<pulumi.Input<inputs.FlinkApplicationVersionSink>[]>;
+    sinks?: pulumi.Input<pulumi.Input<inputs.FlinkApplicationVersionSink>[] | undefined>;
     /**
      * The source table for the application.
      */
-    source?: pulumi.Input<pulumi.Input<inputs.FlinkApplicationVersionSource>[]>;
+    source?: pulumi.Input<pulumi.Input<inputs.FlinkApplicationVersionSource>[] | undefined>;
     /**
      * Application sources
      *
      * @deprecated This field is deprecated and will be removed in the next major release. Use `source` instead.
      */
-    sources?: pulumi.Input<pulumi.Input<inputs.FlinkApplicationVersionSource>[]>;
+    sources?: pulumi.Input<pulumi.Input<inputs.FlinkApplicationVersionSource>[] | undefined>;
     /**
      * Job SQL statement.
      */

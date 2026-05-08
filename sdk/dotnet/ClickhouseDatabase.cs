@@ -24,7 +24,7 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleClickhouse = new Aiven.Index.Clickhouse("example_clickhouse", new()
+    ///     var exampleClickhouse = new Aiven.Clickhouse("example_clickhouse", new()
     ///     {
     ///         Project = exampleProject.Project,
     ///         CloudName = "google-europe-west1",
@@ -34,7 +34,7 @@ namespace Pulumi.Aiven
     ///         MaintenanceWindowTime = "10:00:00",
     ///     });
     /// 
-    ///     var exampleDb = new Aiven.Index.ClickhouseDatabase("example_db", new()
+    ///     var exampleDb = new Aiven.ClickhouseDatabase("example_db", new()
     ///     {
     ///         Project = exampleProject.Project,
     ///         ServiceName = exampleClickhouse.ServiceName,

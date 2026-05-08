@@ -22,7 +22,7 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleGrafana = new Aiven.Index.Grafana("example_grafana", new()
+    ///     var exampleGrafana = new Aiven.Grafana("example_grafana", new()
     ///     {
     ///         Project = exampleProject.Project,
     ///         CloudName = "google-europe-west1",

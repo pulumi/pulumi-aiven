@@ -455,8 +455,8 @@ def get_valkey(project: Optional[_builtins.str] = None,
         termination_protection=pulumi.get(__ret__, 'termination_protection'),
         valkey_user_configs=pulumi.get(__ret__, 'valkey_user_configs'),
         valkeys=pulumi.get(__ret__, 'valkeys'))
-def get_valkey_output(project: Optional[pulumi.Input[_builtins.str]] = None,
-                      service_name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_valkey_output(project: pulumi.Input[Optional[_builtins.str]] = None,
+                      service_name: pulumi.Input[Optional[_builtins.str]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetValkeyResult]:
     """
     Gets information about an Aiven for Valkey service.

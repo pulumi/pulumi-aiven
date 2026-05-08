@@ -131,7 +131,7 @@ export interface GetPgUserOutputArgs {
      * The name of the service.
      */
     serviceName: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.GetPgUserTimeoutsArgs>;
+    timeouts?: pulumi.Input<inputs.GetPgUserTimeoutsArgs | undefined>;
     /**
      * The name of the service user for this service.
      */

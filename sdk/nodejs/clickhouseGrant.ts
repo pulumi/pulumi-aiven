@@ -175,27 +175,27 @@ export interface ClickhouseGrantState {
     /**
      * Grant privileges. Changing this property forces recreation of the resource.
      */
-    privilegeGrants?: pulumi.Input<pulumi.Input<inputs.ClickhouseGrantPrivilegeGrant>[]>;
+    privilegeGrants?: pulumi.Input<pulumi.Input<inputs.ClickhouseGrantPrivilegeGrant>[] | undefined>;
     /**
      * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The role to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
     /**
      * Grant roles. Changing this property forces recreation of the resource.
      */
-    roleGrants?: pulumi.Input<pulumi.Input<inputs.ClickhouseGrantRoleGrant>[]>;
+    roleGrants?: pulumi.Input<pulumi.Input<inputs.ClickhouseGrantRoleGrant>[] | undefined>;
     /**
      * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    serviceName?: pulumi.Input<string>;
+    serviceName?: pulumi.Input<string | undefined>;
     /**
      * The user to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    user?: pulumi.Input<string>;
+    user?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -205,7 +205,7 @@ export interface ClickhouseGrantArgs {
     /**
      * Grant privileges. Changing this property forces recreation of the resource.
      */
-    privilegeGrants?: pulumi.Input<pulumi.Input<inputs.ClickhouseGrantPrivilegeGrant>[]>;
+    privilegeGrants?: pulumi.Input<pulumi.Input<inputs.ClickhouseGrantPrivilegeGrant>[] | undefined>;
     /**
      * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
@@ -213,11 +213,11 @@ export interface ClickhouseGrantArgs {
     /**
      * The role to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
     /**
      * Grant roles. Changing this property forces recreation of the resource.
      */
-    roleGrants?: pulumi.Input<pulumi.Input<inputs.ClickhouseGrantRoleGrant>[]>;
+    roleGrants?: pulumi.Input<pulumi.Input<inputs.ClickhouseGrantRoleGrant>[] | undefined>;
     /**
      * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
@@ -225,5 +225,5 @@ export interface ClickhouseGrantArgs {
     /**
      * The user to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    user?: pulumi.Input<string>;
+    user?: pulumi.Input<string | undefined>;
 }

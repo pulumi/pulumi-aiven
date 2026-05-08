@@ -22,7 +22,7 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleBillingGroup = new Aiven.Index.BillingGroup("example_billing_group", new()
+    ///     var exampleBillingGroup = new Aiven.BillingGroup("example_billing_group", new()
     ///     {
     ///         Name = "example-billing-group",
     ///         BillingCurrency = "USD",
@@ -30,7 +30,7 @@ namespace Pulumi.Aiven
     ///         ParentId = main.Id,
     ///     });
     /// 
-    ///     var exampleProject = new Aiven.Index.Project("example_project", new()
+    ///     var exampleProject = new Aiven.Project("example_project", new()
     ///     {
     ///         ProjectName = "example-project",
     ///         BillingGroup = exampleBillingGroup.Id,

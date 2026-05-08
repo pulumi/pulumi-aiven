@@ -200,44 +200,44 @@ export interface FlinkApplicationDeploymentState {
     /**
      * Application Id. Changing this property forces recreation of the resource.
      */
-    applicationId?: pulumi.Input<string>;
+    applicationId?: pulumi.Input<string | undefined>;
     /**
      * The creation timestamp of this entity in ISO 8601 format, always in UTC.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The creator of this entity.
      */
-    createdBy?: pulumi.Input<string>;
+    createdBy?: pulumi.Input<string | undefined>;
     /**
      * Deployment ID.
      */
-    deploymentId?: pulumi.Input<string>;
+    deploymentId?: pulumi.Input<string | undefined>;
     /**
      * Reading of Flink parallel execution documentation is recommended before setting this value to other than 1. Please do not set this value higher than (total number of nodes x number*of*task_slots), or every new job created will fail. Value must be between `1` and `128`. The default value is `1`. Changing this property forces recreation of the resource.
      */
-    parallelism?: pulumi.Input<number>;
+    parallelism?: pulumi.Input<number | undefined>;
     /**
      * Project name. Changing this property forces recreation of the resource.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether a Flink Job is restarted in case it fails. The default value is `true`. Changing this property forces recreation of the resource.
      */
-    restartEnabled?: pulumi.Input<boolean>;
+    restartEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Service name. Changing this property forces recreation of the resource.
      */
-    serviceName?: pulumi.Input<string>;
+    serviceName?: pulumi.Input<string | undefined>;
     /**
      * Job savepoint. Length must be between `1` and `2048`. Changing this property forces recreation of the resource.
      */
-    startingSavepoint?: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.FlinkApplicationDeploymentTimeouts>;
+    startingSavepoint?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.FlinkApplicationDeploymentTimeouts | undefined>;
     /**
      * ApplicationVersion ID. Length must be exactly `36`. Changing this property forces recreation of the resource.
      */
-    versionId?: pulumi.Input<string>;
+    versionId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -251,7 +251,7 @@ export interface FlinkApplicationDeploymentArgs {
     /**
      * Reading of Flink parallel execution documentation is recommended before setting this value to other than 1. Please do not set this value higher than (total number of nodes x number*of*task_slots), or every new job created will fail. Value must be between `1` and `128`. The default value is `1`. Changing this property forces recreation of the resource.
      */
-    parallelism?: pulumi.Input<number>;
+    parallelism?: pulumi.Input<number | undefined>;
     /**
      * Project name. Changing this property forces recreation of the resource.
      */
@@ -259,7 +259,7 @@ export interface FlinkApplicationDeploymentArgs {
     /**
      * Specifies whether a Flink Job is restarted in case it fails. The default value is `true`. Changing this property forces recreation of the resource.
      */
-    restartEnabled?: pulumi.Input<boolean>;
+    restartEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Service name. Changing this property forces recreation of the resource.
      */
@@ -267,8 +267,8 @@ export interface FlinkApplicationDeploymentArgs {
     /**
      * Job savepoint. Length must be between `1` and `2048`. Changing this property forces recreation of the resource.
      */
-    startingSavepoint?: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.FlinkApplicationDeploymentTimeouts>;
+    startingSavepoint?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.FlinkApplicationDeploymentTimeouts | undefined>;
     /**
      * ApplicationVersion ID. Length must be exactly `36`. Changing this property forces recreation of the resource.
      */

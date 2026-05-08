@@ -25,10 +25,10 @@ class OrganizationProjectArgs:
                  organization_id: pulumi.Input[_builtins.str],
                  parent_id: pulumi.Input[_builtins.str],
                  project_id: pulumi.Input[_builtins.str],
-                 base_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['OrganizationProjectTagArgs']]]] = None,
-                 technical_emails: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 timeouts: Optional[pulumi.Input['OrganizationProjectTimeoutsArgs']] = None):
+                 base_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input['OrganizationProjectTagArgs']]]] = None,
+                 technical_emails: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 timeouts: pulumi.Input[Optional['OrganizationProjectTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a OrganizationProject resource.
 
@@ -103,62 +103,62 @@ class OrganizationProjectArgs:
 
     @_builtins.property
     @pulumi.getter(name="basePort")
-    def base_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def base_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Valid port number (10000-30000) to use as a base for service port allocation. Value must be between `10000` and `30000`.
         """
         return pulumi.get(self, "base_port")
 
     @base_port.setter
-    def base_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def base_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "base_port", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OrganizationProjectTagArgs']]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OrganizationProjectTagArgs']]]]:
         """
         Tags are key-value pairs that allow you to categorize projects.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OrganizationProjectTagArgs']]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OrganizationProjectTagArgs']]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="technicalEmails")
-    def technical_emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def technical_emails(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The email addresses for [project contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this project and its services. You can also set email contacts at the service level. It's good practice to keep these up-to-date to be aware of any potential issues with your project.
         """
         return pulumi.get(self, "technical_emails")
 
     @technical_emails.setter
-    def technical_emails(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def technical_emails(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "technical_emails", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['OrganizationProjectTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['OrganizationProjectTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['OrganizationProjectTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['OrganizationProjectTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
 
 @pulumi.input_type
 class _OrganizationProjectState:
     def __init__(__self__, *,
-                 base_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 billing_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ca_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 organization_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['OrganizationProjectTagArgs']]]] = None,
-                 technical_emails: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 timeouts: Optional[pulumi.Input['OrganizationProjectTimeoutsArgs']] = None):
+                 base_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 billing_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ca_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input['OrganizationProjectTagArgs']]]] = None,
+                 technical_emails: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 timeouts: pulumi.Input[Optional['OrganizationProjectTimeoutsArgs']] = None):
         """
         Input properties used for looking up and filtering OrganizationProject resources.
 
@@ -192,107 +192,107 @@ class _OrganizationProjectState:
 
     @_builtins.property
     @pulumi.getter(name="basePort")
-    def base_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def base_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Valid port number (10000-30000) to use as a base for service port allocation. Value must be between `10000` and `30000`.
         """
         return pulumi.get(self, "base_port")
 
     @base_port.setter
-    def base_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def base_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "base_port", value)
 
     @_builtins.property
     @pulumi.getter(name="billingGroupId")
-    def billing_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def billing_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Billing group ID to assign to the project. It's required when moving projects between organizations. Minimum length: `1`.
         """
         return pulumi.get(self, "billing_group_id")
 
     @billing_group_id.setter
-    def billing_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def billing_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "billing_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="caCert")
-    def ca_cert(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ca_cert(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         PEM encoded certificate.
         """
         return pulumi.get(self, "ca_cert")
 
     @ca_cert.setter
-    def ca_cert(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ca_cert(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ca_cert", value)
 
     @_builtins.property
     @pulumi.getter(name="organizationId")
-    def organization_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def organization_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of an organization. Maximum length: `36`.
         """
         return pulumi.get(self, "organization_id")
 
     @organization_id.setter
-    def organization_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def organization_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "organization_id", value)
 
     @_builtins.property
     @pulumi.getter(name="parentId")
-    def parent_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.
         """
         return pulumi.get(self, "parent_id")
 
     @parent_id.setter
-    def parent_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It's recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OrganizationProjectTagArgs']]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OrganizationProjectTagArgs']]]]:
         """
         Tags are key-value pairs that allow you to categorize projects.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OrganizationProjectTagArgs']]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OrganizationProjectTagArgs']]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="technicalEmails")
-    def technical_emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def technical_emails(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The email addresses for [project contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this project and its services. You can also set email contacts at the service level. It's good practice to keep these up-to-date to be aware of any potential issues with your project.
         """
         return pulumi.get(self, "technical_emails")
 
     @technical_emails.setter
-    def technical_emails(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def technical_emails(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "technical_emails", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['OrganizationProjectTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['OrganizationProjectTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['OrganizationProjectTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['OrganizationProjectTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
 
@@ -302,14 +302,14 @@ class OrganizationProject(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 base_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 billing_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 organization_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OrganizationProjectTagArgs', 'OrganizationProjectTagArgsDict']]]]] = None,
-                 technical_emails: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 timeouts: Optional[pulumi.Input[Union['OrganizationProjectTimeoutsArgs', 'OrganizationProjectTimeoutsArgsDict']]] = None,
+                 base_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 billing_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OrganizationProjectTagArgs', 'OrganizationProjectTagArgsDict']]]]] = None,
+                 technical_emails: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 timeouts: pulumi.Input[Optional[Union['OrganizationProjectTimeoutsArgs', 'OrganizationProjectTimeoutsArgsDict']]] = None,
                  __props__=None):
         """
         Creates and manages an [Aiven project](https://aiven.io/docs/platform/concepts/orgs-units-projects#projects).
@@ -362,14 +362,14 @@ class OrganizationProject(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 base_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 billing_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 organization_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OrganizationProjectTagArgs', 'OrganizationProjectTagArgsDict']]]]] = None,
-                 technical_emails: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 timeouts: Optional[pulumi.Input[Union['OrganizationProjectTimeoutsArgs', 'OrganizationProjectTimeoutsArgsDict']]] = None,
+                 base_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 billing_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OrganizationProjectTagArgs', 'OrganizationProjectTagArgsDict']]]]] = None,
+                 technical_emails: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 timeouts: pulumi.Input[Optional[Union['OrganizationProjectTimeoutsArgs', 'OrganizationProjectTimeoutsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -408,15 +408,15 @@ class OrganizationProject(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            base_port: Optional[pulumi.Input[_builtins.int]] = None,
-            billing_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            ca_cert: Optional[pulumi.Input[_builtins.str]] = None,
-            organization_id: Optional[pulumi.Input[_builtins.str]] = None,
-            parent_id: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OrganizationProjectTagArgs', 'OrganizationProjectTagArgsDict']]]]] = None,
-            technical_emails: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            timeouts: Optional[pulumi.Input[Union['OrganizationProjectTimeoutsArgs', 'OrganizationProjectTimeoutsArgsDict']]] = None) -> 'OrganizationProject':
+            base_port: pulumi.Input[Optional[_builtins.int]] = None,
+            billing_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ca_cert: pulumi.Input[Optional[_builtins.str]] = None,
+            organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+            parent_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OrganizationProjectTagArgs', 'OrganizationProjectTagArgsDict']]]]] = None,
+            technical_emails: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            timeouts: pulumi.Input[Optional[Union['OrganizationProjectTimeoutsArgs', 'OrganizationProjectTimeoutsArgsDict']]] = None) -> 'OrganizationProject':
         """
         Get an existing OrganizationProject resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

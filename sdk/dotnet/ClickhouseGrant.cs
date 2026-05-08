@@ -31,7 +31,7 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleRole = new Aiven.Index.ClickhouseRole("example_role", new()
+    ///     var exampleRole = new Aiven.ClickhouseRole("example_role", new()
     ///     {
     ///         Project = exampleProject.Project,
     ///         ServiceName = exampleClickhouse.ServiceName,
@@ -39,7 +39,7 @@ namespace Pulumi.Aiven
     ///     });
     /// 
     ///     // Grant privileges to the example role.
-    ///     var rolePrivileges = new Aiven.Index.ClickhouseGrant("role_privileges", new()
+    ///     var rolePrivileges = new Aiven.ClickhouseGrant("role_privileges", new()
     ///     {
     ///         Project = exampleProject.Project,
     ///         ServiceName = exampleClickhouse.ServiceName,
@@ -71,14 +71,14 @@ namespace Pulumi.Aiven
     ///     });
     /// 
     ///     // Grant the role to the user.
-    ///     var exampleUser = new Aiven.Index.ClickhouseUser("example_user", new()
+    ///     var exampleUser = new Aiven.ClickhouseUser("example_user", new()
     ///     {
     ///         Project = exampleProject.Project,
     ///         ServiceName = exampleClickhouse.ServiceName,
     ///         Username = "example-user",
     ///     });
     /// 
-    ///     var userRoleAssignment = new Aiven.Index.ClickhouseGrant("user_role_assignment", new()
+    ///     var userRoleAssignment = new Aiven.ClickhouseGrant("user_role_assignment", new()
     ///     {
     ///         Project = exampleProject.Project,
     ///         ServiceName = exampleClickhouse.ServiceName,

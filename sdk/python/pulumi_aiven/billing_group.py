@@ -22,22 +22,22 @@ __all__ = ['BillingGroupArgs', 'BillingGroup']
 class BillingGroupArgs:
     def __init__(__self__, *,
                  parent_id: pulumi.Input[_builtins.str],
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 address_lines: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 billing_contact_emails: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 billing_currency: Optional[pulumi.Input[_builtins.str]] = None,
-                 billing_emails: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 billing_extra_text: Optional[pulumi.Input[_builtins.str]] = None,
-                 card_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 city: Optional[pulumi.Input[_builtins.str]] = None,
-                 company: Optional[pulumi.Input[_builtins.str]] = None,
-                 copy_from_billing_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 country_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input['BillingGroupTimeoutsArgs']] = None,
-                 vat_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zip_code: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 address_lines: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 billing_contact_emails: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 billing_currency: pulumi.Input[Optional[_builtins.str]] = None,
+                 billing_emails: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 billing_extra_text: pulumi.Input[Optional[_builtins.str]] = None,
+                 card_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 city: pulumi.Input[Optional[_builtins.str]] = None,
+                 company: pulumi.Input[Optional[_builtins.str]] = None,
+                 copy_from_billing_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 country_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional['BillingGroupTimeoutsArgs']] = None,
+                 vat_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zip_code: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a BillingGroup resource.
 
@@ -110,215 +110,215 @@ class BillingGroupArgs:
     @_builtins.property
     @pulumi.getter(name="accountId")
     @_utilities.deprecated("""Use `parent_id` instead. This field will be removed in the next major release.""")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Account ID. Maximum length: `36`. **Deprecated**: Use `parent_id` instead. This field will be removed in the next major release.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="addressLines")
-    def address_lines(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def address_lines(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Address lines 1 and 2. For example, street, PO box, or building.
         """
         return pulumi.get(self, "address_lines")
 
     @address_lines.setter
-    def address_lines(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def address_lines(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "address_lines", value)
 
     @_builtins.property
     @pulumi.getter(name="billingContactEmails")
-    def billing_contact_emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def billing_contact_emails(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of billing groups contact email addresses.
         """
         return pulumi.get(self, "billing_contact_emails")
 
     @billing_contact_emails.setter
-    def billing_contact_emails(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def billing_contact_emails(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "billing_contact_emails", value)
 
     @_builtins.property
     @pulumi.getter(name="billingCurrency")
-    def billing_currency(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def billing_currency(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Billing currency. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
         """
         return pulumi.get(self, "billing_currency")
 
     @billing_currency.setter
-    def billing_currency(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def billing_currency(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "billing_currency", value)
 
     @_builtins.property
     @pulumi.getter(name="billingEmails")
-    def billing_emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def billing_emails(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of project billing email addresses.
         """
         return pulumi.get(self, "billing_emails")
 
     @billing_emails.setter
-    def billing_emails(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def billing_emails(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "billing_emails", value)
 
     @_builtins.property
     @pulumi.getter(name="billingExtraText")
-    def billing_extra_text(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def billing_extra_text(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Extra text to be included in all project invoices, e.g. purchase order or cost center number. Maximum length: `1000`.
         """
         return pulumi.get(self, "billing_extra_text")
 
     @billing_extra_text.setter
-    def billing_extra_text(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def billing_extra_text(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "billing_extra_text", value)
 
     @_builtins.property
     @pulumi.getter(name="cardId")
-    def card_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def card_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Credit card ID. Maximum length: `64`.
         """
         return pulumi.get(self, "card_id")
 
     @card_id.setter
-    def card_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def card_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "card_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def city(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def city(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Address city. Maximum length: `512`.
         """
         return pulumi.get(self, "city")
 
     @city.setter
-    def city(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def city(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "city", value)
 
     @_builtins.property
     @pulumi.getter
-    def company(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def company(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of a company. Maximum length: `128`.
         """
         return pulumi.get(self, "company")
 
     @company.setter
-    def company(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def company(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "company", value)
 
     @_builtins.property
     @pulumi.getter(name="copyFromBillingGroup")
-    def copy_from_billing_group(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def copy_from_billing_group(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Billing group ID. Length must be exactly `36`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "copy_from_billing_group")
 
     @copy_from_billing_group.setter
-    def copy_from_billing_group(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def copy_from_billing_group(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "copy_from_billing_group", value)
 
     @_builtins.property
     @pulumi.getter(name="countryCode")
-    def country_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def country_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Two letter country code for billing country. Maximum length: `2`.
         """
         return pulumi.get(self, "country_code")
 
     @country_code.setter
-    def country_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def country_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "country_code", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Billing group name. Maximum length: `128`.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Address state or province. Maximum length: `128`.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['BillingGroupTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['BillingGroupTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['BillingGroupTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['BillingGroupTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
     @_builtins.property
     @pulumi.getter(name="vatId")
-    def vat_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vat_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         EU VAT Identification Number. Maximum length: `64`.
         """
         return pulumi.get(self, "vat_id")
 
     @vat_id.setter
-    def vat_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vat_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vat_id", value)
 
     @_builtins.property
     @pulumi.getter(name="zipCode")
-    def zip_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zip_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Address zip code. Maximum length: `32`.
         """
         return pulumi.get(self, "zip_code")
 
     @zip_code.setter
-    def zip_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zip_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zip_code", value)
 
 
 @pulumi.input_type
 class _BillingGroupState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 address_lines: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 billing_contact_emails: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 billing_currency: Optional[pulumi.Input[_builtins.str]] = None,
-                 billing_emails: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 billing_extra_text: Optional[pulumi.Input[_builtins.str]] = None,
-                 billing_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 card_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 city: Optional[pulumi.Input[_builtins.str]] = None,
-                 company: Optional[pulumi.Input[_builtins.str]] = None,
-                 copy_from_billing_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 country_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input['BillingGroupTimeoutsArgs']] = None,
-                 vat_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zip_code: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 address_lines: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 billing_contact_emails: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 billing_currency: pulumi.Input[Optional[_builtins.str]] = None,
+                 billing_emails: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 billing_extra_text: pulumi.Input[Optional[_builtins.str]] = None,
+                 billing_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 card_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 city: pulumi.Input[Optional[_builtins.str]] = None,
+                 company: pulumi.Input[Optional[_builtins.str]] = None,
+                 copy_from_billing_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 country_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional['BillingGroupTimeoutsArgs']] = None,
+                 vat_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zip_code: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BillingGroup resources.
 
@@ -383,215 +383,215 @@ class _BillingGroupState:
     @_builtins.property
     @pulumi.getter(name="accountId")
     @_utilities.deprecated("""Use `parent_id` instead. This field will be removed in the next major release.""")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Account ID. Maximum length: `36`. **Deprecated**: Use `parent_id` instead. This field will be removed in the next major release.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="addressLines")
-    def address_lines(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def address_lines(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Address lines 1 and 2. For example, street, PO box, or building.
         """
         return pulumi.get(self, "address_lines")
 
     @address_lines.setter
-    def address_lines(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def address_lines(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "address_lines", value)
 
     @_builtins.property
     @pulumi.getter(name="billingContactEmails")
-    def billing_contact_emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def billing_contact_emails(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of billing groups contact email addresses.
         """
         return pulumi.get(self, "billing_contact_emails")
 
     @billing_contact_emails.setter
-    def billing_contact_emails(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def billing_contact_emails(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "billing_contact_emails", value)
 
     @_builtins.property
     @pulumi.getter(name="billingCurrency")
-    def billing_currency(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def billing_currency(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Billing currency. The possible values are `AUD`, `CAD`, `CHF`, `DKK`, `EUR`, `GBP`, `JPY`, `NOK`, `NZD`, `SEK`, `SGD` and `USD`.
         """
         return pulumi.get(self, "billing_currency")
 
     @billing_currency.setter
-    def billing_currency(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def billing_currency(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "billing_currency", value)
 
     @_builtins.property
     @pulumi.getter(name="billingEmails")
-    def billing_emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def billing_emails(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of project billing email addresses.
         """
         return pulumi.get(self, "billing_emails")
 
     @billing_emails.setter
-    def billing_emails(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def billing_emails(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "billing_emails", value)
 
     @_builtins.property
     @pulumi.getter(name="billingExtraText")
-    def billing_extra_text(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def billing_extra_text(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Extra text to be included in all project invoices, e.g. purchase order or cost center number. Maximum length: `1000`.
         """
         return pulumi.get(self, "billing_extra_text")
 
     @billing_extra_text.setter
-    def billing_extra_text(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def billing_extra_text(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "billing_extra_text", value)
 
     @_builtins.property
     @pulumi.getter(name="billingGroupId")
-    def billing_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def billing_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The [ID of the billing group](https://aiven.io/docs/platform/reference/get-resource-IDs#get-a-billing-group-id). To set up proper dependencies please refer to this variable as a reference.
         """
         return pulumi.get(self, "billing_group_id")
 
     @billing_group_id.setter
-    def billing_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def billing_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "billing_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="cardId")
-    def card_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def card_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Credit card ID. Maximum length: `64`.
         """
         return pulumi.get(self, "card_id")
 
     @card_id.setter
-    def card_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def card_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "card_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def city(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def city(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Address city. Maximum length: `512`.
         """
         return pulumi.get(self, "city")
 
     @city.setter
-    def city(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def city(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "city", value)
 
     @_builtins.property
     @pulumi.getter
-    def company(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def company(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of a company. Maximum length: `128`.
         """
         return pulumi.get(self, "company")
 
     @company.setter
-    def company(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def company(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "company", value)
 
     @_builtins.property
     @pulumi.getter(name="copyFromBillingGroup")
-    def copy_from_billing_group(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def copy_from_billing_group(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Billing group ID. Length must be exactly `36`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "copy_from_billing_group")
 
     @copy_from_billing_group.setter
-    def copy_from_billing_group(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def copy_from_billing_group(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "copy_from_billing_group", value)
 
     @_builtins.property
     @pulumi.getter(name="countryCode")
-    def country_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def country_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Two letter country code for billing country. Maximum length: `2`.
         """
         return pulumi.get(self, "country_code")
 
     @country_code.setter
-    def country_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def country_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "country_code", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Billing group name. Maximum length: `128`.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="parentId")
-    def parent_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Link a billing group to an existing organization by using its ID.
         """
         return pulumi.get(self, "parent_id")
 
     @parent_id.setter
-    def parent_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Address state or province. Maximum length: `128`.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['BillingGroupTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['BillingGroupTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['BillingGroupTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['BillingGroupTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
     @_builtins.property
     @pulumi.getter(name="vatId")
-    def vat_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vat_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         EU VAT Identification Number. Maximum length: `64`.
         """
         return pulumi.get(self, "vat_id")
 
     @vat_id.setter
-    def vat_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vat_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vat_id", value)
 
     @_builtins.property
     @pulumi.getter(name="zipCode")
-    def zip_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zip_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Address zip code. Maximum length: `32`.
         """
         return pulumi.get(self, "zip_code")
 
     @zip_code.setter
-    def zip_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zip_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zip_code", value)
 
 
@@ -601,23 +601,23 @@ class BillingGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 address_lines: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 billing_contact_emails: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 billing_currency: Optional[pulumi.Input[_builtins.str]] = None,
-                 billing_emails: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 billing_extra_text: Optional[pulumi.Input[_builtins.str]] = None,
-                 card_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 city: Optional[pulumi.Input[_builtins.str]] = None,
-                 company: Optional[pulumi.Input[_builtins.str]] = None,
-                 copy_from_billing_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 country_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input[Union['BillingGroupTimeoutsArgs', 'BillingGroupTimeoutsArgsDict']]] = None,
-                 vat_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zip_code: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 address_lines: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 billing_contact_emails: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 billing_currency: pulumi.Input[Optional[_builtins.str]] = None,
+                 billing_emails: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 billing_extra_text: pulumi.Input[Optional[_builtins.str]] = None,
+                 card_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 city: pulumi.Input[Optional[_builtins.str]] = None,
+                 company: pulumi.Input[Optional[_builtins.str]] = None,
+                 copy_from_billing_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 country_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['BillingGroupTimeoutsArgs', 'BillingGroupTimeoutsArgsDict']]] = None,
+                 vat_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zip_code: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Creates and manages [billing groups](https://aiven.io/docs/platform/concepts/billing-groups) and assigns them to projects.
@@ -711,23 +711,23 @@ class BillingGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 address_lines: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 billing_contact_emails: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 billing_currency: Optional[pulumi.Input[_builtins.str]] = None,
-                 billing_emails: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 billing_extra_text: Optional[pulumi.Input[_builtins.str]] = None,
-                 card_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 city: Optional[pulumi.Input[_builtins.str]] = None,
-                 company: Optional[pulumi.Input[_builtins.str]] = None,
-                 copy_from_billing_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 country_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input[Union['BillingGroupTimeoutsArgs', 'BillingGroupTimeoutsArgsDict']]] = None,
-                 vat_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zip_code: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 address_lines: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 billing_contact_emails: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 billing_currency: pulumi.Input[Optional[_builtins.str]] = None,
+                 billing_emails: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 billing_extra_text: pulumi.Input[Optional[_builtins.str]] = None,
+                 card_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 city: pulumi.Input[Optional[_builtins.str]] = None,
+                 company: pulumi.Input[Optional[_builtins.str]] = None,
+                 copy_from_billing_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 country_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['BillingGroupTimeoutsArgs', 'BillingGroupTimeoutsArgsDict']]] = None,
+                 vat_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zip_code: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -767,24 +767,24 @@ class BillingGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            address_lines: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            billing_contact_emails: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            billing_currency: Optional[pulumi.Input[_builtins.str]] = None,
-            billing_emails: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            billing_extra_text: Optional[pulumi.Input[_builtins.str]] = None,
-            billing_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            card_id: Optional[pulumi.Input[_builtins.str]] = None,
-            city: Optional[pulumi.Input[_builtins.str]] = None,
-            company: Optional[pulumi.Input[_builtins.str]] = None,
-            copy_from_billing_group: Optional[pulumi.Input[_builtins.str]] = None,
-            country_code: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            parent_id: Optional[pulumi.Input[_builtins.str]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            timeouts: Optional[pulumi.Input[Union['BillingGroupTimeoutsArgs', 'BillingGroupTimeoutsArgsDict']]] = None,
-            vat_id: Optional[pulumi.Input[_builtins.str]] = None,
-            zip_code: Optional[pulumi.Input[_builtins.str]] = None) -> 'BillingGroup':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            address_lines: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            billing_contact_emails: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            billing_currency: pulumi.Input[Optional[_builtins.str]] = None,
+            billing_emails: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            billing_extra_text: pulumi.Input[Optional[_builtins.str]] = None,
+            billing_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            card_id: pulumi.Input[Optional[_builtins.str]] = None,
+            city: pulumi.Input[Optional[_builtins.str]] = None,
+            company: pulumi.Input[Optional[_builtins.str]] = None,
+            copy_from_billing_group: pulumi.Input[Optional[_builtins.str]] = None,
+            country_code: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent_id: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['BillingGroupTimeoutsArgs', 'BillingGroupTimeoutsArgsDict']]] = None,
+            vat_id: pulumi.Input[Optional[_builtins.str]] = None,
+            zip_code: pulumi.Input[Optional[_builtins.str]] = None) -> 'BillingGroup':
         """
         Get an existing BillingGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

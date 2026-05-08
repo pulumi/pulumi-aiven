@@ -106,6 +106,6 @@ export interface GetServiceListOutputArgs {
     /**
      * List of services under the project.
      */
-    services?: pulumi.Input<pulumi.Input<inputs.GetServiceListServiceArgs>[]>;
-    timeouts?: pulumi.Input<inputs.GetServiceListTimeoutsArgs>;
+    services?: pulumi.Input<pulumi.Input<inputs.GetServiceListServiceArgs>[] | undefined>;
+    timeouts?: pulumi.Input<inputs.GetServiceListTimeoutsArgs | undefined>;
 }

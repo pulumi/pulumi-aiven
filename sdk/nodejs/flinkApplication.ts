@@ -142,36 +142,36 @@ export interface FlinkApplicationState {
     /**
      * Application ID.
      */
-    applicationId?: pulumi.Input<string>;
+    applicationId?: pulumi.Input<string | undefined>;
     /**
      * The creation timestamp of this entity in ISO 8601 format, always in UTC.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The creator of this entity.
      */
-    createdBy?: pulumi.Input<string>;
+    createdBy?: pulumi.Input<string | undefined>;
     /**
      * Application name. Maximum length: `128`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Project name. Changing this property forces recreation of the resource.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Service name. Changing this property forces recreation of the resource.
      */
-    serviceName?: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.FlinkApplicationTimeouts>;
+    serviceName?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.FlinkApplicationTimeouts | undefined>;
     /**
      * The update timestamp of this entity in ISO 8601 format, always in UTC.
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * The latest updater of this entity.
      */
-    updatedBy?: pulumi.Input<string>;
+    updatedBy?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -181,7 +181,7 @@ export interface FlinkApplicationArgs {
     /**
      * Application name. Maximum length: `128`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Project name. Changing this property forces recreation of the resource.
      */
@@ -190,5 +190,5 @@ export interface FlinkApplicationArgs {
      * Service name. Changing this property forces recreation of the resource.
      */
     serviceName: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.FlinkApplicationTimeouts>;
+    timeouts?: pulumi.Input<inputs.FlinkApplicationTimeouts | undefined>;
 }

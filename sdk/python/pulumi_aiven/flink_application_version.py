@@ -25,10 +25,10 @@ class FlinkApplicationVersionArgs:
                  project: pulumi.Input[_builtins.str],
                  service_name: pulumi.Input[_builtins.str],
                  statement: pulumi.Input[_builtins.str],
-                 sink: Optional[pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSinkArgs']]]] = None,
-                 sinks: Optional[pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSinkArgs']]]] = None,
-                 source: Optional[pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSourceArgs']]]] = None,
-                 sources: Optional[pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSourceArgs']]]] = None):
+                 sink: pulumi.Input[Optional[Sequence[pulumi.Input['FlinkApplicationVersionSinkArgs']]]] = None,
+                 sinks: pulumi.Input[Optional[Sequence[pulumi.Input['FlinkApplicationVersionSinkArgs']]]] = None,
+                 source: pulumi.Input[Optional[Sequence[pulumi.Input['FlinkApplicationVersionSourceArgs']]]] = None,
+                 sources: pulumi.Input[Optional[Sequence[pulumi.Input['FlinkApplicationVersionSourceArgs']]]] = None):
         """
         The set of arguments for constructing a FlinkApplicationVersion resource.
 
@@ -110,70 +110,70 @@ class FlinkApplicationVersionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def sink(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSinkArgs']]]]:
+    def sink(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FlinkApplicationVersionSinkArgs']]]]:
         """
         The sink table for the application.
         """
         return pulumi.get(self, "sink")
 
     @sink.setter
-    def sink(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSinkArgs']]]]):
+    def sink(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FlinkApplicationVersionSinkArgs']]]]):
         pulumi.set(self, "sink", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""This field is deprecated and will be removed in the next major release. Use `sink` instead.""")
-    def sinks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSinkArgs']]]]:
+    def sinks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FlinkApplicationVersionSinkArgs']]]]:
         """
         Application sinks
         """
         return pulumi.get(self, "sinks")
 
     @sinks.setter
-    def sinks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSinkArgs']]]]):
+    def sinks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FlinkApplicationVersionSinkArgs']]]]):
         pulumi.set(self, "sinks", value)
 
     @_builtins.property
     @pulumi.getter
-    def source(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSourceArgs']]]]:
+    def source(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FlinkApplicationVersionSourceArgs']]]]:
         """
         The source table for the application.
         """
         return pulumi.get(self, "source")
 
     @source.setter
-    def source(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSourceArgs']]]]):
+    def source(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FlinkApplicationVersionSourceArgs']]]]):
         pulumi.set(self, "source", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""This field is deprecated and will be removed in the next major release. Use `source` instead.""")
-    def sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSourceArgs']]]]:
+    def sources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FlinkApplicationVersionSourceArgs']]]]:
         """
         Application sources
         """
         return pulumi.get(self, "sources")
 
     @sources.setter
-    def sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSourceArgs']]]]):
+    def sources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FlinkApplicationVersionSourceArgs']]]]):
         pulumi.set(self, "sources", value)
 
 
 @pulumi.input_type
 class _FlinkApplicationVersionState:
     def __init__(__self__, *,
-                 application_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 application_version_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_by: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 sink: Optional[pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSinkArgs']]]] = None,
-                 sinks: Optional[pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSinkArgs']]]] = None,
-                 source: Optional[pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSourceArgs']]]] = None,
-                 sources: Optional[pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSourceArgs']]]] = None,
-                 statement: Optional[pulumi.Input[_builtins.str]] = None,
-                 version: Optional[pulumi.Input[_builtins.int]] = None):
+                 application_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 application_version_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_by: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 sink: pulumi.Input[Optional[Sequence[pulumi.Input['FlinkApplicationVersionSinkArgs']]]] = None,
+                 sinks: pulumi.Input[Optional[Sequence[pulumi.Input['FlinkApplicationVersionSinkArgs']]]] = None,
+                 source: pulumi.Input[Optional[Sequence[pulumi.Input['FlinkApplicationVersionSourceArgs']]]] = None,
+                 sources: pulumi.Input[Optional[Sequence[pulumi.Input['FlinkApplicationVersionSourceArgs']]]] = None,
+                 statement: pulumi.Input[Optional[_builtins.str]] = None,
+                 version: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering FlinkApplicationVersion resources.
 
@@ -223,148 +223,148 @@ class _FlinkApplicationVersionState:
 
     @_builtins.property
     @pulumi.getter(name="applicationId")
-    def application_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def application_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Application ID.
         """
         return pulumi.get(self, "application_id")
 
     @application_id.setter
-    def application_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def application_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "application_id", value)
 
     @_builtins.property
     @pulumi.getter(name="applicationVersionId")
-    def application_version_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def application_version_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Application version ID.
         """
         return pulumi.get(self, "application_version_id")
 
     @application_version_id.setter
-    def application_version_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def application_version_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "application_version_id", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Application version creation time.
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter(name="createdBy")
-    def created_by(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_by(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user who created the application.
         """
         return pulumi.get(self, "created_by")
 
     @created_by.setter
-    def created_by(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_by(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_by", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceName")
-    def service_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
-    def service_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def sink(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSinkArgs']]]]:
+    def sink(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FlinkApplicationVersionSinkArgs']]]]:
         """
         The sink table for the application.
         """
         return pulumi.get(self, "sink")
 
     @sink.setter
-    def sink(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSinkArgs']]]]):
+    def sink(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FlinkApplicationVersionSinkArgs']]]]):
         pulumi.set(self, "sink", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""This field is deprecated and will be removed in the next major release. Use `sink` instead.""")
-    def sinks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSinkArgs']]]]:
+    def sinks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FlinkApplicationVersionSinkArgs']]]]:
         """
         Application sinks
         """
         return pulumi.get(self, "sinks")
 
     @sinks.setter
-    def sinks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSinkArgs']]]]):
+    def sinks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FlinkApplicationVersionSinkArgs']]]]):
         pulumi.set(self, "sinks", value)
 
     @_builtins.property
     @pulumi.getter
-    def source(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSourceArgs']]]]:
+    def source(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FlinkApplicationVersionSourceArgs']]]]:
         """
         The source table for the application.
         """
         return pulumi.get(self, "source")
 
     @source.setter
-    def source(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSourceArgs']]]]):
+    def source(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FlinkApplicationVersionSourceArgs']]]]):
         pulumi.set(self, "source", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""This field is deprecated and will be removed in the next major release. Use `source` instead.""")
-    def sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSourceArgs']]]]:
+    def sources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FlinkApplicationVersionSourceArgs']]]]:
         """
         Application sources
         """
         return pulumi.get(self, "sources")
 
     @sources.setter
-    def sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSourceArgs']]]]):
+    def sources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FlinkApplicationVersionSourceArgs']]]]):
         pulumi.set(self, "sources", value)
 
     @_builtins.property
     @pulumi.getter
-    def statement(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def statement(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Job SQL statement.
         """
         return pulumi.get(self, "statement")
 
     @statement.setter
-    def statement(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def statement(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "statement", value)
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Application version number.
         """
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "version", value)
 
 
@@ -374,14 +374,14 @@ class FlinkApplicationVersion(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 application_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 sink: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FlinkApplicationVersionSinkArgs', 'FlinkApplicationVersionSinkArgsDict']]]]] = None,
-                 sinks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FlinkApplicationVersionSinkArgs', 'FlinkApplicationVersionSinkArgsDict']]]]] = None,
-                 source: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FlinkApplicationVersionSourceArgs', 'FlinkApplicationVersionSourceArgsDict']]]]] = None,
-                 sources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FlinkApplicationVersionSourceArgs', 'FlinkApplicationVersionSourceArgsDict']]]]] = None,
-                 statement: Optional[pulumi.Input[_builtins.str]] = None,
+                 application_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 sink: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FlinkApplicationVersionSinkArgs', 'FlinkApplicationVersionSinkArgsDict']]]]] = None,
+                 sinks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FlinkApplicationVersionSinkArgs', 'FlinkApplicationVersionSinkArgsDict']]]]] = None,
+                 source: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FlinkApplicationVersionSourceArgs', 'FlinkApplicationVersionSourceArgsDict']]]]] = None,
+                 sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FlinkApplicationVersionSourceArgs', 'FlinkApplicationVersionSourceArgsDict']]]]] = None,
+                 statement: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Creates and manages an Aiven for Apache Flink® application version.
@@ -525,14 +525,14 @@ class FlinkApplicationVersion(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 application_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 sink: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FlinkApplicationVersionSinkArgs', 'FlinkApplicationVersionSinkArgsDict']]]]] = None,
-                 sinks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FlinkApplicationVersionSinkArgs', 'FlinkApplicationVersionSinkArgsDict']]]]] = None,
-                 source: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FlinkApplicationVersionSourceArgs', 'FlinkApplicationVersionSourceArgsDict']]]]] = None,
-                 sources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FlinkApplicationVersionSourceArgs', 'FlinkApplicationVersionSourceArgsDict']]]]] = None,
-                 statement: Optional[pulumi.Input[_builtins.str]] = None,
+                 application_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 sink: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FlinkApplicationVersionSinkArgs', 'FlinkApplicationVersionSinkArgsDict']]]]] = None,
+                 sinks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FlinkApplicationVersionSinkArgs', 'FlinkApplicationVersionSinkArgsDict']]]]] = None,
+                 source: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FlinkApplicationVersionSourceArgs', 'FlinkApplicationVersionSourceArgsDict']]]]] = None,
+                 sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FlinkApplicationVersionSourceArgs', 'FlinkApplicationVersionSourceArgsDict']]]]] = None,
+                 statement: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -572,18 +572,18 @@ class FlinkApplicationVersion(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            application_id: Optional[pulumi.Input[_builtins.str]] = None,
-            application_version_id: Optional[pulumi.Input[_builtins.str]] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            created_by: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            service_name: Optional[pulumi.Input[_builtins.str]] = None,
-            sink: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FlinkApplicationVersionSinkArgs', 'FlinkApplicationVersionSinkArgsDict']]]]] = None,
-            sinks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FlinkApplicationVersionSinkArgs', 'FlinkApplicationVersionSinkArgsDict']]]]] = None,
-            source: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FlinkApplicationVersionSourceArgs', 'FlinkApplicationVersionSourceArgsDict']]]]] = None,
-            sources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FlinkApplicationVersionSourceArgs', 'FlinkApplicationVersionSourceArgsDict']]]]] = None,
-            statement: Optional[pulumi.Input[_builtins.str]] = None,
-            version: Optional[pulumi.Input[_builtins.int]] = None) -> 'FlinkApplicationVersion':
+            application_id: pulumi.Input[Optional[_builtins.str]] = None,
+            application_version_id: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            created_by: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            service_name: pulumi.Input[Optional[_builtins.str]] = None,
+            sink: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FlinkApplicationVersionSinkArgs', 'FlinkApplicationVersionSinkArgsDict']]]]] = None,
+            sinks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FlinkApplicationVersionSinkArgs', 'FlinkApplicationVersionSinkArgsDict']]]]] = None,
+            source: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FlinkApplicationVersionSourceArgs', 'FlinkApplicationVersionSourceArgsDict']]]]] = None,
+            sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FlinkApplicationVersionSourceArgs', 'FlinkApplicationVersionSourceArgsDict']]]]] = None,
+            statement: pulumi.Input[Optional[_builtins.str]] = None,
+            version: pulumi.Input[Optional[_builtins.int]] = None) -> 'FlinkApplicationVersion':
         """
         Get an existing FlinkApplicationVersion resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

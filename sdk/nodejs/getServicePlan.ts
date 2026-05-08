@@ -142,7 +142,7 @@ export interface GetServicePlanOutputArgs {
     /**
      * Backup configuration for this service plan.
      */
-    backupConfigs?: pulumi.Input<pulumi.Input<inputs.GetServicePlanBackupConfigArgs>[]>;
+    backupConfigs?: pulumi.Input<pulumi.Input<inputs.GetServicePlanBackupConfigArgs>[] | undefined>;
     /**
      * Cloud region name.
      */
@@ -159,5 +159,5 @@ export interface GetServicePlanOutputArgs {
      * Service type code.
      */
     serviceType: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.GetServicePlanTimeoutsArgs>;
+    timeouts?: pulumi.Input<inputs.GetServicePlanTimeoutsArgs | undefined>;
 }

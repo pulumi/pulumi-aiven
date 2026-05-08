@@ -455,8 +455,8 @@ def get_open_search(project: Optional[_builtins.str] = None,
         tags=pulumi.get(__ret__, 'tags'),
         tech_emails=pulumi.get(__ret__, 'tech_emails'),
         termination_protection=pulumi.get(__ret__, 'termination_protection'))
-def get_open_search_output(project: Optional[pulumi.Input[_builtins.str]] = None,
-                           service_name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_open_search_output(project: pulumi.Input[Optional[_builtins.str]] = None,
+                           service_name: pulumi.Input[Optional[_builtins.str]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOpenSearchResult]:
     """
     Gets information about an Aiven for OpenSearch® service.

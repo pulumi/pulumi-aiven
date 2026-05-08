@@ -442,8 +442,8 @@ def get_kafka_mirror_maker(project: Optional[_builtins.str] = None,
         tags=pulumi.get(__ret__, 'tags'),
         tech_emails=pulumi.get(__ret__, 'tech_emails'),
         termination_protection=pulumi.get(__ret__, 'termination_protection'))
-def get_kafka_mirror_maker_output(project: Optional[pulumi.Input[_builtins.str]] = None,
-                                  service_name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_kafka_mirror_maker_output(project: pulumi.Input[Optional[_builtins.str]] = None,
+                                  service_name: pulumi.Input[Optional[_builtins.str]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKafkaMirrorMakerResult]:
     """
     Gets information about an Aiven for Apache Kafka® MirrorMaker 2 service.
