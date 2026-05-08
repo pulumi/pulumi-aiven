@@ -150,44 +150,44 @@ export interface OrganizationAddressState {
     /**
      * Address ID.
      */
-    addressId?: pulumi.Input<string>;
+    addressId?: pulumi.Input<string | undefined>;
     /**
      * Address Lines.
      */
-    addressLines?: pulumi.Input<pulumi.Input<string>[]>;
+    addressLines?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * City. Maximum length: `125`.
      */
-    city?: pulumi.Input<string>;
+    city?: pulumi.Input<string | undefined>;
     /**
      * Country Code. Maximum length: `2`.
      */
-    countryCode?: pulumi.Input<string>;
+    countryCode?: pulumi.Input<string | undefined>;
     /**
      * Create Time.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Name of a company. Length must be between `1` and `128`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
      */
-    organizationId?: pulumi.Input<string>;
+    organizationId?: pulumi.Input<string | undefined>;
     /**
      * State. Maximum length: `128`.
      */
-    state?: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.OrganizationAddressTimeouts>;
+    state?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.OrganizationAddressTimeouts | undefined>;
     /**
      * Update Time.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
     /**
      * Zip Code. Maximum length: `10`.
      */
-    zipCode?: pulumi.Input<string>;
+    zipCode?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -209,7 +209,7 @@ export interface OrganizationAddressArgs {
     /**
      * Name of a company. Length must be between `1` and `128`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
      */
@@ -217,10 +217,10 @@ export interface OrganizationAddressArgs {
     /**
      * State. Maximum length: `128`.
      */
-    state?: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.OrganizationAddressTimeouts>;
+    state?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.OrganizationAddressTimeouts | undefined>;
     /**
      * Zip Code. Maximum length: `10`.
      */
-    zipCode?: pulumi.Input<string>;
+    zipCode?: pulumi.Input<string | undefined>;
 }

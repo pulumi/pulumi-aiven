@@ -24,19 +24,19 @@ class CassandraArgs:
                  plan: pulumi.Input[_builtins.str],
                  project: pulumi.Input[_builtins.str],
                  service_name: pulumi.Input[_builtins.str],
-                 additional_disk_space: Optional[pulumi.Input[_builtins.str]] = None,
-                 cassandra: Optional[pulumi.Input['CassandraCassandraArgs']] = None,
-                 cassandra_user_config: Optional[pulumi.Input['CassandraCassandraUserConfigArgs']] = None,
-                 cloud_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_space: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintenance_window_dow: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintenance_window_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_integrations: Optional[pulumi.Input[Sequence[pulumi.Input['CassandraServiceIntegrationArgs']]]] = None,
-                 static_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['CassandraTagArgs']]]] = None,
-                 tech_emails: Optional[pulumi.Input[Sequence[pulumi.Input['CassandraTechEmailArgs']]]] = None,
-                 termination_protection: Optional[pulumi.Input[_builtins.bool]] = None):
+                 additional_disk_space: pulumi.Input[Optional[_builtins.str]] = None,
+                 cassandra: pulumi.Input[Optional['CassandraCassandraArgs']] = None,
+                 cassandra_user_config: pulumi.Input[Optional['CassandraCassandraUserConfigArgs']] = None,
+                 cloud_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_space: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintenance_window_dow: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintenance_window_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_integrations: pulumi.Input[Optional[Sequence[pulumi.Input['CassandraServiceIntegrationArgs']]]] = None,
+                 static_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input['CassandraTagArgs']]]] = None,
+                 tech_emails: pulumi.Input[Optional[Sequence[pulumi.Input['CassandraTechEmailArgs']]]] = None,
+                 termination_protection: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Cassandra resource.
 
@@ -128,194 +128,194 @@ class CassandraArgs:
 
     @_builtins.property
     @pulumi.getter(name="additionalDiskSpace")
-    def additional_disk_space(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def additional_disk_space(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30 GiB to the default disk space defined by the `plan`. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
         """
         return pulumi.get(self, "additional_disk_space")
 
     @additional_disk_space.setter
-    def additional_disk_space(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def additional_disk_space(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "additional_disk_space", value)
 
     @_builtins.property
     @pulumi.getter
-    def cassandra(self) -> Optional[pulumi.Input['CassandraCassandraArgs']]:
+    def cassandra(self) -> pulumi.Input[Optional['CassandraCassandraArgs']]:
         """
         Values provided by the Cassandra server.
         """
         return pulumi.get(self, "cassandra")
 
     @cassandra.setter
-    def cassandra(self, value: Optional[pulumi.Input['CassandraCassandraArgs']]):
+    def cassandra(self, value: pulumi.Input[Optional['CassandraCassandraArgs']]):
         pulumi.set(self, "cassandra", value)
 
     @_builtins.property
     @pulumi.getter(name="cassandraUserConfig")
     @_utilities.deprecated("""This property is deprecated.""")
-    def cassandra_user_config(self) -> Optional[pulumi.Input['CassandraCassandraUserConfigArgs']]:
+    def cassandra_user_config(self) -> pulumi.Input[Optional['CassandraCassandraUserConfigArgs']]:
         """
         Cassandra user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "cassandra_user_config")
 
     @cassandra_user_config.setter
-    def cassandra_user_config(self, value: Optional[pulumi.Input['CassandraCassandraUserConfigArgs']]):
+    def cassandra_user_config(self, value: pulumi.Input[Optional['CassandraCassandraUserConfigArgs']]):
         pulumi.set(self, "cassandra_user_config", value)
 
     @_builtins.property
     @pulumi.getter(name="cloudName")
-    def cloud_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cloud_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The cloud provider and region the service is hosted in. The format is `provider-region`, for example: `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ per project and service. Changing this value [migrates the service to another cloud provider or region](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and includes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases may have a brief interruption during DNS propagation.
         """
         return pulumi.get(self, "cloud_name")
 
     @cloud_name.setter
-    def cloud_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cloud_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cloud_name", value)
 
     @_builtins.property
     @pulumi.getter(name="diskSpace")
-    def disk_space(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disk_space(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Service disk space to set. Possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
         """
         return pulumi.get(self, "disk_space")
 
     @disk_space.setter
-    def disk_space(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disk_space(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disk_space", value)
 
     @_builtins.property
     @pulumi.getter(name="maintenanceWindowDow")
-    def maintenance_window_dow(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def maintenance_window_dow(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         """
         return pulumi.get(self, "maintenance_window_dow")
 
     @maintenance_window_dow.setter
-    def maintenance_window_dow(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def maintenance_window_dow(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "maintenance_window_dow", value)
 
     @_builtins.property
     @pulumi.getter(name="maintenanceWindowTime")
-    def maintenance_window_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def maintenance_window_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
         """
         return pulumi.get(self, "maintenance_window_time")
 
     @maintenance_window_time.setter
-    def maintenance_window_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def maintenance_window_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "maintenance_window_time", value)
 
     @_builtins.property
     @pulumi.getter(name="projectVpcId")
-    def project_vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the VPC the service should run in. If the value is not set, the service runs on the Public Internet. When set, the value should be given as a reference to set up dependencies correctly, and the VPC must be in the same cloud and region as the service itself. The service can be freely moved to and from VPC after creation, but doing so triggers migration to new servers, so the operation can take a significant amount of time to complete if the service has a lot of data.
         """
         return pulumi.get(self, "project_vpc_id")
 
     @project_vpc_id.setter
-    def project_vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceIntegrations")
-    def service_integrations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CassandraServiceIntegrationArgs']]]]:
+    def service_integrations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['CassandraServiceIntegrationArgs']]]]:
         """
         Service integrations to specify when creating a service. Not applied after initial service creation
         """
         return pulumi.get(self, "service_integrations")
 
     @service_integrations.setter
-    def service_integrations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CassandraServiceIntegrationArgs']]]]):
+    def service_integrations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['CassandraServiceIntegrationArgs']]]]):
         pulumi.set(self, "service_integrations", value)
 
     @_builtins.property
     @pulumi.getter(name="staticIps")
-    def static_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def static_ips(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
         """
         return pulumi.get(self, "static_ips")
 
     @static_ips.setter
-    def static_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def static_ips(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "static_ips", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CassandraTagArgs']]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['CassandraTagArgs']]]]:
         """
         Tags are key-value pairs that allow you to categorize services.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CassandraTagArgs']]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['CassandraTagArgs']]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="techEmails")
-    def tech_emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CassandraTechEmailArgs']]]]:
+    def tech_emails(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['CassandraTechEmailArgs']]]]:
         """
         The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
         """
         return pulumi.get(self, "tech_emails")
 
     @tech_emails.setter
-    def tech_emails(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CassandraTechEmailArgs']]]]):
+    def tech_emails(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['CassandraTechEmailArgs']]]]):
         pulumi.set(self, "tech_emails", value)
 
     @_builtins.property
     @pulumi.getter(name="terminationProtection")
-    def termination_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def termination_protection(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
         """
         return pulumi.get(self, "termination_protection")
 
     @termination_protection.setter
-    def termination_protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def termination_protection(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "termination_protection", value)
 
 
 @pulumi.input_type
 class _CassandraState:
     def __init__(__self__, *,
-                 additional_disk_space: Optional[pulumi.Input[_builtins.str]] = None,
-                 cassandra: Optional[pulumi.Input['CassandraCassandraArgs']] = None,
-                 cassandra_user_config: Optional[pulumi.Input['CassandraCassandraUserConfigArgs']] = None,
-                 cloud_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 components: Optional[pulumi.Input[Sequence[pulumi.Input['CassandraComponentArgs']]]] = None,
-                 disk_space: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_space_cap: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_space_default: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_space_step: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_space_used: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintenance_window_dow: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintenance_window_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 maintenance_window_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 plan: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_host: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_integrations: Optional[pulumi.Input[Sequence[pulumi.Input['CassandraServiceIntegrationArgs']]]] = None,
-                 service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 service_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_username: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 static_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['CassandraTagArgs']]]] = None,
-                 tech_emails: Optional[pulumi.Input[Sequence[pulumi.Input['CassandraTechEmailArgs']]]] = None,
-                 termination_protection: Optional[pulumi.Input[_builtins.bool]] = None):
+                 additional_disk_space: pulumi.Input[Optional[_builtins.str]] = None,
+                 cassandra: pulumi.Input[Optional['CassandraCassandraArgs']] = None,
+                 cassandra_user_config: pulumi.Input[Optional['CassandraCassandraUserConfigArgs']] = None,
+                 cloud_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 components: pulumi.Input[Optional[Sequence[pulumi.Input['CassandraComponentArgs']]]] = None,
+                 disk_space: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_space_cap: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_space_default: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_space_step: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_space_used: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintenance_window_dow: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintenance_window_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 maintenance_window_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 plan: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_host: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_integrations: pulumi.Input[Optional[Sequence[pulumi.Input['CassandraServiceIntegrationArgs']]]] = None,
+                 service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 service_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_username: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 static_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input['CassandraTagArgs']]]] = None,
+                 tech_emails: pulumi.Input[Optional[Sequence[pulumi.Input['CassandraTechEmailArgs']]]] = None,
+                 termination_protection: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering Cassandra resources.
 
@@ -413,351 +413,351 @@ class _CassandraState:
 
     @_builtins.property
     @pulumi.getter(name="additionalDiskSpace")
-    def additional_disk_space(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def additional_disk_space(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30 GiB to the default disk space defined by the `plan`. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
         """
         return pulumi.get(self, "additional_disk_space")
 
     @additional_disk_space.setter
-    def additional_disk_space(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def additional_disk_space(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "additional_disk_space", value)
 
     @_builtins.property
     @pulumi.getter
-    def cassandra(self) -> Optional[pulumi.Input['CassandraCassandraArgs']]:
+    def cassandra(self) -> pulumi.Input[Optional['CassandraCassandraArgs']]:
         """
         Values provided by the Cassandra server.
         """
         return pulumi.get(self, "cassandra")
 
     @cassandra.setter
-    def cassandra(self, value: Optional[pulumi.Input['CassandraCassandraArgs']]):
+    def cassandra(self, value: pulumi.Input[Optional['CassandraCassandraArgs']]):
         pulumi.set(self, "cassandra", value)
 
     @_builtins.property
     @pulumi.getter(name="cassandraUserConfig")
     @_utilities.deprecated("""This property is deprecated.""")
-    def cassandra_user_config(self) -> Optional[pulumi.Input['CassandraCassandraUserConfigArgs']]:
+    def cassandra_user_config(self) -> pulumi.Input[Optional['CassandraCassandraUserConfigArgs']]:
         """
         Cassandra user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "cassandra_user_config")
 
     @cassandra_user_config.setter
-    def cassandra_user_config(self, value: Optional[pulumi.Input['CassandraCassandraUserConfigArgs']]):
+    def cassandra_user_config(self, value: pulumi.Input[Optional['CassandraCassandraUserConfigArgs']]):
         pulumi.set(self, "cassandra_user_config", value)
 
     @_builtins.property
     @pulumi.getter(name="cloudName")
-    def cloud_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cloud_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The cloud provider and region the service is hosted in. The format is `provider-region`, for example: `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ per project and service. Changing this value [migrates the service to another cloud provider or region](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and includes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases may have a brief interruption during DNS propagation.
         """
         return pulumi.get(self, "cloud_name")
 
     @cloud_name.setter
-    def cloud_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cloud_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cloud_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def components(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CassandraComponentArgs']]]]:
+    def components(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['CassandraComponentArgs']]]]:
         """
         Service component information objects
         """
         return pulumi.get(self, "components")
 
     @components.setter
-    def components(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CassandraComponentArgs']]]]):
+    def components(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['CassandraComponentArgs']]]]):
         pulumi.set(self, "components", value)
 
     @_builtins.property
     @pulumi.getter(name="diskSpace")
-    def disk_space(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disk_space(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Service disk space to set. Possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
         """
         return pulumi.get(self, "disk_space")
 
     @disk_space.setter
-    def disk_space(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disk_space(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disk_space", value)
 
     @_builtins.property
     @pulumi.getter(name="diskSpaceCap")
-    def disk_space_cap(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disk_space_cap(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
         """
         return pulumi.get(self, "disk_space_cap")
 
     @disk_space_cap.setter
-    def disk_space_cap(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disk_space_cap(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disk_space_cap", value)
 
     @_builtins.property
     @pulumi.getter(name="diskSpaceDefault")
-    def disk_space_default(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disk_space_default(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `disk_space`
         """
         return pulumi.get(self, "disk_space_default")
 
     @disk_space_default.setter
-    def disk_space_default(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disk_space_default(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disk_space_default", value)
 
     @_builtins.property
     @pulumi.getter(name="diskSpaceStep")
-    def disk_space_step(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disk_space_step(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
         """
         return pulumi.get(self, "disk_space_step")
 
     @disk_space_step.setter
-    def disk_space_step(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disk_space_step(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disk_space_step", value)
 
     @_builtins.property
     @pulumi.getter(name="diskSpaceUsed")
-    def disk_space_used(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disk_space_used(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The disk space that the service is currently using. This is the sum of the `plan` default disk space and `additional_disk_space` in human-readable format (for example: `90GiB`).
         """
         return pulumi.get(self, "disk_space_used")
 
     @disk_space_used.setter
-    def disk_space_used(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disk_space_used(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disk_space_used", value)
 
     @_builtins.property
     @pulumi.getter(name="maintenanceWindowDow")
-    def maintenance_window_dow(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def maintenance_window_dow(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         """
         return pulumi.get(self, "maintenance_window_dow")
 
     @maintenance_window_dow.setter
-    def maintenance_window_dow(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def maintenance_window_dow(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "maintenance_window_dow", value)
 
     @_builtins.property
     @pulumi.getter(name="maintenanceWindowEnabled")
-    def maintenance_window_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def maintenance_window_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the maintenance window is currently enabled for this service.
         """
         return pulumi.get(self, "maintenance_window_enabled")
 
     @maintenance_window_enabled.setter
-    def maintenance_window_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def maintenance_window_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "maintenance_window_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="maintenanceWindowTime")
-    def maintenance_window_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def maintenance_window_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
         """
         return pulumi.get(self, "maintenance_window_time")
 
     @maintenance_window_time.setter
-    def maintenance_window_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def maintenance_window_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "maintenance_window_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def plan(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def plan(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Defines what kind of computing resources are allocated for the service. Plan names must be lowercase alphanumeric (e.g., `business-8`, `my_plan_16`). It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
         """
         return pulumi.get(self, "plan")
 
     @plan.setter
-    def plan(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def plan(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "plan", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="projectVpcId")
-    def project_vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the VPC the service should run in. If the value is not set, the service runs on the Public Internet. When set, the value should be given as a reference to set up dependencies correctly, and the VPC must be in the same cloud and region as the service itself. The service can be freely moved to and from VPC after creation, but doing so triggers migration to new servers, so the operation can take a significant amount of time to complete if the service has a lot of data.
         """
         return pulumi.get(self, "project_vpc_id")
 
     @project_vpc_id.setter
-    def project_vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceHost")
-    def service_host(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_host(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The hostname of the service.
         """
         return pulumi.get(self, "service_host")
 
     @service_host.setter
-    def service_host(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_host(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_host", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceIntegrations")
-    def service_integrations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CassandraServiceIntegrationArgs']]]]:
+    def service_integrations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['CassandraServiceIntegrationArgs']]]]:
         """
         Service integrations to specify when creating a service. Not applied after initial service creation
         """
         return pulumi.get(self, "service_integrations")
 
     @service_integrations.setter
-    def service_integrations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CassandraServiceIntegrationArgs']]]]):
+    def service_integrations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['CassandraServiceIntegrationArgs']]]]):
         pulumi.set(self, "service_integrations", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceName")
-    def service_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
         """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
-    def service_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_name", value)
 
     @_builtins.property
     @pulumi.getter(name="servicePassword")
-    def service_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Password used for connecting to the service, if applicable
         """
         return pulumi.get(self, "service_password")
 
     @service_password.setter
-    def service_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_password", value)
 
     @_builtins.property
     @pulumi.getter(name="servicePort")
-    def service_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def service_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The port of the service
         """
         return pulumi.get(self, "service_port")
 
     @service_port.setter
-    def service_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def service_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "service_port", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceType")
-    def service_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Aiven internal service type code
         """
         return pulumi.get(self, "service_type")
 
     @service_type.setter
-    def service_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_type", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceUri")
-    def service_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
         """
         return pulumi.get(self, "service_uri")
 
     @service_uri.setter
-    def service_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_uri", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceUsername")
-    def service_username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Username used for connecting to the service, if applicable
         """
         return pulumi.get(self, "service_username")
 
     @service_username.setter
-    def service_username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_username", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Service state. Possible values are `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`. Services cannot be powered on or off with Terraform. To power a service on or off, [use the Aiven Console or Aiven CLI](https://aiven.io/docs/platform/concepts/service-power-cycle).
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter(name="staticIps")
-    def static_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def static_ips(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
         """
         return pulumi.get(self, "static_ips")
 
     @static_ips.setter
-    def static_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def static_ips(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "static_ips", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CassandraTagArgs']]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['CassandraTagArgs']]]]:
         """
         Tags are key-value pairs that allow you to categorize services.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CassandraTagArgs']]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['CassandraTagArgs']]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="techEmails")
-    def tech_emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CassandraTechEmailArgs']]]]:
+    def tech_emails(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['CassandraTechEmailArgs']]]]:
         """
         The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
         """
         return pulumi.get(self, "tech_emails")
 
     @tech_emails.setter
-    def tech_emails(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CassandraTechEmailArgs']]]]):
+    def tech_emails(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['CassandraTechEmailArgs']]]]):
         pulumi.set(self, "tech_emails", value)
 
     @_builtins.property
     @pulumi.getter(name="terminationProtection")
-    def termination_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def termination_protection(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
         """
         return pulumi.get(self, "termination_protection")
 
     @termination_protection.setter
-    def termination_protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def termination_protection(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "termination_protection", value)
 
 
@@ -767,22 +767,22 @@ class Cassandra(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 additional_disk_space: Optional[pulumi.Input[_builtins.str]] = None,
-                 cassandra: Optional[pulumi.Input[Union['CassandraCassandraArgs', 'CassandraCassandraArgsDict']]] = None,
-                 cassandra_user_config: Optional[pulumi.Input[Union['CassandraCassandraUserConfigArgs', 'CassandraCassandraUserConfigArgsDict']]] = None,
-                 cloud_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_space: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintenance_window_dow: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintenance_window_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 plan: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_integrations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CassandraServiceIntegrationArgs', 'CassandraServiceIntegrationArgsDict']]]]] = None,
-                 service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 static_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CassandraTagArgs', 'CassandraTagArgsDict']]]]] = None,
-                 tech_emails: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CassandraTechEmailArgs', 'CassandraTechEmailArgsDict']]]]] = None,
-                 termination_protection: Optional[pulumi.Input[_builtins.bool]] = None,
+                 additional_disk_space: pulumi.Input[Optional[_builtins.str]] = None,
+                 cassandra: pulumi.Input[Optional[Union['CassandraCassandraArgs', 'CassandraCassandraArgsDict']]] = None,
+                 cassandra_user_config: pulumi.Input[Optional[Union['CassandraCassandraUserConfigArgs', 'CassandraCassandraUserConfigArgsDict']]] = None,
+                 cloud_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_space: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintenance_window_dow: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintenance_window_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 plan: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_integrations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CassandraServiceIntegrationArgs', 'CassandraServiceIntegrationArgsDict']]]]] = None,
+                 service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 static_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CassandraTagArgs', 'CassandraTagArgsDict']]]]] = None,
+                 tech_emails: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CassandraTechEmailArgs', 'CassandraTechEmailArgsDict']]]]] = None,
+                 termination_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         Create a Cassandra resource with the given unique name, props, and options.
@@ -830,22 +830,22 @@ class Cassandra(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 additional_disk_space: Optional[pulumi.Input[_builtins.str]] = None,
-                 cassandra: Optional[pulumi.Input[Union['CassandraCassandraArgs', 'CassandraCassandraArgsDict']]] = None,
-                 cassandra_user_config: Optional[pulumi.Input[Union['CassandraCassandraUserConfigArgs', 'CassandraCassandraUserConfigArgsDict']]] = None,
-                 cloud_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_space: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintenance_window_dow: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintenance_window_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 plan: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_integrations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CassandraServiceIntegrationArgs', 'CassandraServiceIntegrationArgsDict']]]]] = None,
-                 service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 static_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CassandraTagArgs', 'CassandraTagArgsDict']]]]] = None,
-                 tech_emails: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CassandraTechEmailArgs', 'CassandraTechEmailArgsDict']]]]] = None,
-                 termination_protection: Optional[pulumi.Input[_builtins.bool]] = None,
+                 additional_disk_space: pulumi.Input[Optional[_builtins.str]] = None,
+                 cassandra: pulumi.Input[Optional[Union['CassandraCassandraArgs', 'CassandraCassandraArgsDict']]] = None,
+                 cassandra_user_config: pulumi.Input[Optional[Union['CassandraCassandraUserConfigArgs', 'CassandraCassandraUserConfigArgsDict']]] = None,
+                 cloud_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_space: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintenance_window_dow: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintenance_window_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 plan: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_integrations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CassandraServiceIntegrationArgs', 'CassandraServiceIntegrationArgsDict']]]]] = None,
+                 service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 static_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CassandraTagArgs', 'CassandraTagArgsDict']]]]] = None,
+                 tech_emails: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CassandraTechEmailArgs', 'CassandraTechEmailArgsDict']]]]] = None,
+                 termination_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -902,35 +902,35 @@ class Cassandra(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            additional_disk_space: Optional[pulumi.Input[_builtins.str]] = None,
-            cassandra: Optional[pulumi.Input[Union['CassandraCassandraArgs', 'CassandraCassandraArgsDict']]] = None,
-            cassandra_user_config: Optional[pulumi.Input[Union['CassandraCassandraUserConfigArgs', 'CassandraCassandraUserConfigArgsDict']]] = None,
-            cloud_name: Optional[pulumi.Input[_builtins.str]] = None,
-            components: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CassandraComponentArgs', 'CassandraComponentArgsDict']]]]] = None,
-            disk_space: Optional[pulumi.Input[_builtins.str]] = None,
-            disk_space_cap: Optional[pulumi.Input[_builtins.str]] = None,
-            disk_space_default: Optional[pulumi.Input[_builtins.str]] = None,
-            disk_space_step: Optional[pulumi.Input[_builtins.str]] = None,
-            disk_space_used: Optional[pulumi.Input[_builtins.str]] = None,
-            maintenance_window_dow: Optional[pulumi.Input[_builtins.str]] = None,
-            maintenance_window_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            maintenance_window_time: Optional[pulumi.Input[_builtins.str]] = None,
-            plan: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            project_vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-            service_host: Optional[pulumi.Input[_builtins.str]] = None,
-            service_integrations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CassandraServiceIntegrationArgs', 'CassandraServiceIntegrationArgsDict']]]]] = None,
-            service_name: Optional[pulumi.Input[_builtins.str]] = None,
-            service_password: Optional[pulumi.Input[_builtins.str]] = None,
-            service_port: Optional[pulumi.Input[_builtins.int]] = None,
-            service_type: Optional[pulumi.Input[_builtins.str]] = None,
-            service_uri: Optional[pulumi.Input[_builtins.str]] = None,
-            service_username: Optional[pulumi.Input[_builtins.str]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            static_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CassandraTagArgs', 'CassandraTagArgsDict']]]]] = None,
-            tech_emails: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CassandraTechEmailArgs', 'CassandraTechEmailArgsDict']]]]] = None,
-            termination_protection: Optional[pulumi.Input[_builtins.bool]] = None) -> 'Cassandra':
+            additional_disk_space: pulumi.Input[Optional[_builtins.str]] = None,
+            cassandra: pulumi.Input[Optional[Union['CassandraCassandraArgs', 'CassandraCassandraArgsDict']]] = None,
+            cassandra_user_config: pulumi.Input[Optional[Union['CassandraCassandraUserConfigArgs', 'CassandraCassandraUserConfigArgsDict']]] = None,
+            cloud_name: pulumi.Input[Optional[_builtins.str]] = None,
+            components: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CassandraComponentArgs', 'CassandraComponentArgsDict']]]]] = None,
+            disk_space: pulumi.Input[Optional[_builtins.str]] = None,
+            disk_space_cap: pulumi.Input[Optional[_builtins.str]] = None,
+            disk_space_default: pulumi.Input[Optional[_builtins.str]] = None,
+            disk_space_step: pulumi.Input[Optional[_builtins.str]] = None,
+            disk_space_used: pulumi.Input[Optional[_builtins.str]] = None,
+            maintenance_window_dow: pulumi.Input[Optional[_builtins.str]] = None,
+            maintenance_window_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            maintenance_window_time: pulumi.Input[Optional[_builtins.str]] = None,
+            plan: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            project_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            service_host: pulumi.Input[Optional[_builtins.str]] = None,
+            service_integrations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CassandraServiceIntegrationArgs', 'CassandraServiceIntegrationArgsDict']]]]] = None,
+            service_name: pulumi.Input[Optional[_builtins.str]] = None,
+            service_password: pulumi.Input[Optional[_builtins.str]] = None,
+            service_port: pulumi.Input[Optional[_builtins.int]] = None,
+            service_type: pulumi.Input[Optional[_builtins.str]] = None,
+            service_uri: pulumi.Input[Optional[_builtins.str]] = None,
+            service_username: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            static_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CassandraTagArgs', 'CassandraTagArgsDict']]]]] = None,
+            tech_emails: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CassandraTechEmailArgs', 'CassandraTechEmailArgsDict']]]]] = None,
+            termination_protection: pulumi.Input[Optional[_builtins.bool]] = None) -> 'Cassandra':
         """
         Get an existing Cassandra resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

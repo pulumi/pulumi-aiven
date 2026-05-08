@@ -135,5 +135,5 @@ export interface GetConnectionPoolOutputArgs {
      * Service name.
      */
     serviceName: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.GetConnectionPoolTimeoutsArgs>;
+    timeouts?: pulumi.Input<inputs.GetConnectionPoolTimeoutsArgs | undefined>;
 }

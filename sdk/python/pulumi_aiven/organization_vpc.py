@@ -73,13 +73,13 @@ class OrganizationVpcArgs:
 @pulumi.input_type
 class _OrganizationVpcState:
     def __init__(__self__, *,
-                 cloud_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 organization_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 organization_vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 cloud_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OrganizationVpc resources.
 
@@ -108,86 +108,86 @@ class _OrganizationVpcState:
 
     @_builtins.property
     @pulumi.getter(name="cloudName")
-    def cloud_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cloud_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "cloud_name")
 
     @cloud_name.setter
-    def cloud_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cloud_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cloud_name", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Time of creation of the VPC.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="networkCidr")
-    def network_cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_cidr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Network address range used by the VPC. For example, `192.168.0.0/24`.
         """
         return pulumi.get(self, "network_cidr")
 
     @network_cidr.setter
-    def network_cidr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_cidr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_cidr", value)
 
     @_builtins.property
     @pulumi.getter(name="organizationId")
-    def organization_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def organization_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the organization.
         """
         return pulumi.get(self, "organization_id")
 
     @organization_id.setter
-    def organization_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def organization_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "organization_id", value)
 
     @_builtins.property
     @pulumi.getter(name="organizationVpcId")
-    def organization_vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def organization_vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Aiven Organization VPC.
         """
         return pulumi.get(self, "organization_vpc_id")
 
     @organization_vpc_id.setter
-    def organization_vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def organization_vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "organization_vpc_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         State of the VPC. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Time of the last update of the VPC.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -197,9 +197,9 @@ class OrganizationVpc(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cloud_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 organization_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 cloud_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Creates and manages a VPC for an Aiven organization.
@@ -278,9 +278,9 @@ class OrganizationVpc(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cloud_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 organization_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 cloud_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -313,13 +313,13 @@ class OrganizationVpc(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cloud_name: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            network_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-            organization_id: Optional[pulumi.Input[_builtins.str]] = None,
-            organization_vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'OrganizationVpc':
+            cloud_name: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            network_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+            organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+            organization_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'OrganizationVpc':
         """
         Get an existing OrganizationVpc resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

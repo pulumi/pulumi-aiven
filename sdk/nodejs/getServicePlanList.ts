@@ -84,10 +84,10 @@ export interface GetServicePlanListOutputArgs {
     /**
      * List of plans available for this type of service.
      */
-    servicePlans?: pulumi.Input<pulumi.Input<inputs.GetServicePlanListServicePlanArgs>[]>;
+    servicePlans?: pulumi.Input<pulumi.Input<inputs.GetServicePlanListServicePlanArgs>[] | undefined>;
     /**
      * Service type.
      */
     serviceType: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.GetServicePlanListTimeoutsArgs>;
+    timeouts?: pulumi.Input<inputs.GetServicePlanListTimeoutsArgs | undefined>;
 }

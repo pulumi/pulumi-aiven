@@ -73,12 +73,12 @@ class AccountTeamMemberArgs:
 @pulumi.input_type
 class _AccountTeamMemberState:
     def __init__(__self__, *,
-                 accepted: Optional[pulumi.Input[_builtins.bool]] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 invited_by_user_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 team_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_email: Optional[pulumi.Input[_builtins.str]] = None):
+                 accepted: pulumi.Input[Optional[_builtins.bool]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 invited_by_user_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 team_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_email: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccountTeamMember resources.
 
@@ -104,74 +104,74 @@ class _AccountTeamMemberState:
 
     @_builtins.property
     @pulumi.getter
-    def accepted(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def accepted(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a member of an account team.
         """
         return pulumi.get(self, "accepted")
 
     @accepted.setter
-    def accepted(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def accepted(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "accepted", value)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique account id. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Time of creation
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="invitedByUserEmail")
-    def invited_by_user_email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def invited_by_user_email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The email address that invited this user.
         """
         return pulumi.get(self, "invited_by_user_email")
 
     @invited_by_user_email.setter
-    def invited_by_user_email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def invited_by_user_email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "invited_by_user_email", value)
 
     @_builtins.property
     @pulumi.getter(name="teamId")
-    def team_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def team_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An account team id. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "team_id")
 
     @team_id.setter
-    def team_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def team_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "team_id", value)
 
     @_builtins.property
     @pulumi.getter(name="userEmail")
-    def user_email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. Should be lowercase. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "user_email")
 
     @user_email.setter
-    def user_email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_email", value)
 
 
@@ -181,9 +181,9 @@ class AccountTeamMember(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 team_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_email: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 team_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_email: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Adds a user as a team member.
@@ -280,9 +280,9 @@ class AccountTeamMember(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 team_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_email: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 team_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_email: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -314,12 +314,12 @@ class AccountTeamMember(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            accepted: Optional[pulumi.Input[_builtins.bool]] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            invited_by_user_email: Optional[pulumi.Input[_builtins.str]] = None,
-            team_id: Optional[pulumi.Input[_builtins.str]] = None,
-            user_email: Optional[pulumi.Input[_builtins.str]] = None) -> 'AccountTeamMember':
+            accepted: pulumi.Input[Optional[_builtins.bool]] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            invited_by_user_email: pulumi.Input[Optional[_builtins.str]] = None,
+            team_id: pulumi.Input[Optional[_builtins.str]] = None,
+            user_email: pulumi.Input[Optional[_builtins.str]] = None) -> 'AccountTeamMember':
         """
         Get an existing AccountTeamMember resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -134,8 +134,8 @@ def get_project_user(email: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         member_type=pulumi.get(__ret__, 'member_type'),
         project=pulumi.get(__ret__, 'project'))
-def get_project_user_output(email: Optional[pulumi.Input[_builtins.str]] = None,
-                            project: Optional[pulumi.Input[_builtins.str]] = None,
+def get_project_user_output(email: pulumi.Input[Optional[_builtins.str]] = None,
+                            project: pulumi.Input[Optional[_builtins.str]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectUserResult]:
     """
     The Project User data source provides information about the existing Aiven Project User.

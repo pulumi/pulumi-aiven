@@ -172,9 +172,9 @@ def get_kafka_user(project: Optional[_builtins.str] = None,
         service_name=pulumi.get(__ret__, 'service_name'),
         type=pulumi.get(__ret__, 'type'),
         username=pulumi.get(__ret__, 'username'))
-def get_kafka_user_output(project: Optional[pulumi.Input[_builtins.str]] = None,
-                          service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                          username: Optional[pulumi.Input[_builtins.str]] = None,
+def get_kafka_user_output(project: pulumi.Input[Optional[_builtins.str]] = None,
+                          service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                          username: pulumi.Input[Optional[_builtins.str]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKafkaUserResult]:
     """
     Gets information about an Aiven for Apache Kafka® service user.

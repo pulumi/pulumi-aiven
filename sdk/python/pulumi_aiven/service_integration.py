@@ -23,27 +23,27 @@ class ServiceIntegrationArgs:
     def __init__(__self__, *,
                  integration_type: pulumi.Input[_builtins.str],
                  project: pulumi.Input[_builtins.str],
-                 clickhouse_credentials_user_config: Optional[pulumi.Input['ServiceIntegrationClickhouseCredentialsUserConfigArgs']] = None,
-                 clickhouse_kafka_user_config: Optional[pulumi.Input['ServiceIntegrationClickhouseKafkaUserConfigArgs']] = None,
-                 clickhouse_postgresql_user_config: Optional[pulumi.Input['ServiceIntegrationClickhousePostgresqlUserConfigArgs']] = None,
-                 datadog_user_config: Optional[pulumi.Input['ServiceIntegrationDatadogUserConfigArgs']] = None,
-                 destination_endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_service_project: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_aws_cloudwatch_logs_user_config: Optional[pulumi.Input['ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs']] = None,
-                 external_aws_cloudwatch_metrics_user_config: Optional[pulumi.Input['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs']] = None,
-                 external_elasticsearch_logs_user_config: Optional[pulumi.Input['ServiceIntegrationExternalElasticsearchLogsUserConfigArgs']] = None,
-                 external_opensearch_logs_user_config: Optional[pulumi.Input['ServiceIntegrationExternalOpensearchLogsUserConfigArgs']] = None,
-                 flink_external_postgresql_user_config: Optional[pulumi.Input['ServiceIntegrationFlinkExternalPostgresqlUserConfigArgs']] = None,
-                 kafka_connect_user_config: Optional[pulumi.Input['ServiceIntegrationKafkaConnectUserConfigArgs']] = None,
-                 kafka_logs_user_config: Optional[pulumi.Input['ServiceIntegrationKafkaLogsUserConfigArgs']] = None,
-                 kafka_mirrormaker_user_config: Optional[pulumi.Input['ServiceIntegrationKafkaMirrormakerUserConfigArgs']] = None,
-                 logs_user_config: Optional[pulumi.Input['ServiceIntegrationLogsUserConfigArgs']] = None,
-                 metrics_user_config: Optional[pulumi.Input['ServiceIntegrationMetricsUserConfigArgs']] = None,
-                 prometheus_user_config: Optional[pulumi.Input['ServiceIntegrationPrometheusUserConfigArgs']] = None,
-                 source_endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_service_project: Optional[pulumi.Input[_builtins.str]] = None):
+                 clickhouse_credentials_user_config: pulumi.Input[Optional['ServiceIntegrationClickhouseCredentialsUserConfigArgs']] = None,
+                 clickhouse_kafka_user_config: pulumi.Input[Optional['ServiceIntegrationClickhouseKafkaUserConfigArgs']] = None,
+                 clickhouse_postgresql_user_config: pulumi.Input[Optional['ServiceIntegrationClickhousePostgresqlUserConfigArgs']] = None,
+                 datadog_user_config: pulumi.Input[Optional['ServiceIntegrationDatadogUserConfigArgs']] = None,
+                 destination_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_service_project: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_aws_cloudwatch_logs_user_config: pulumi.Input[Optional['ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs']] = None,
+                 external_aws_cloudwatch_metrics_user_config: pulumi.Input[Optional['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs']] = None,
+                 external_elasticsearch_logs_user_config: pulumi.Input[Optional['ServiceIntegrationExternalElasticsearchLogsUserConfigArgs']] = None,
+                 external_opensearch_logs_user_config: pulumi.Input[Optional['ServiceIntegrationExternalOpensearchLogsUserConfigArgs']] = None,
+                 flink_external_postgresql_user_config: pulumi.Input[Optional['ServiceIntegrationFlinkExternalPostgresqlUserConfigArgs']] = None,
+                 kafka_connect_user_config: pulumi.Input[Optional['ServiceIntegrationKafkaConnectUserConfigArgs']] = None,
+                 kafka_logs_user_config: pulumi.Input[Optional['ServiceIntegrationKafkaLogsUserConfigArgs']] = None,
+                 kafka_mirrormaker_user_config: pulumi.Input[Optional['ServiceIntegrationKafkaMirrormakerUserConfigArgs']] = None,
+                 logs_user_config: pulumi.Input[Optional['ServiceIntegrationLogsUserConfigArgs']] = None,
+                 metrics_user_config: pulumi.Input[Optional['ServiceIntegrationMetricsUserConfigArgs']] = None,
+                 prometheus_user_config: pulumi.Input[Optional['ServiceIntegrationPrometheusUserConfigArgs']] = None,
+                 source_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_service_project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ServiceIntegration resource.
 
@@ -142,284 +142,284 @@ class ServiceIntegrationArgs:
 
     @_builtins.property
     @pulumi.getter(name="clickhouseCredentialsUserConfig")
-    def clickhouse_credentials_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationClickhouseCredentialsUserConfigArgs']]:
+    def clickhouse_credentials_user_config(self) -> pulumi.Input[Optional['ServiceIntegrationClickhouseCredentialsUserConfigArgs']]:
         """
         ClickhouseCredentials user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "clickhouse_credentials_user_config")
 
     @clickhouse_credentials_user_config.setter
-    def clickhouse_credentials_user_config(self, value: Optional[pulumi.Input['ServiceIntegrationClickhouseCredentialsUserConfigArgs']]):
+    def clickhouse_credentials_user_config(self, value: pulumi.Input[Optional['ServiceIntegrationClickhouseCredentialsUserConfigArgs']]):
         pulumi.set(self, "clickhouse_credentials_user_config", value)
 
     @_builtins.property
     @pulumi.getter(name="clickhouseKafkaUserConfig")
-    def clickhouse_kafka_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationClickhouseKafkaUserConfigArgs']]:
+    def clickhouse_kafka_user_config(self) -> pulumi.Input[Optional['ServiceIntegrationClickhouseKafkaUserConfigArgs']]:
         """
         ClickhouseKafka user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "clickhouse_kafka_user_config")
 
     @clickhouse_kafka_user_config.setter
-    def clickhouse_kafka_user_config(self, value: Optional[pulumi.Input['ServiceIntegrationClickhouseKafkaUserConfigArgs']]):
+    def clickhouse_kafka_user_config(self, value: pulumi.Input[Optional['ServiceIntegrationClickhouseKafkaUserConfigArgs']]):
         pulumi.set(self, "clickhouse_kafka_user_config", value)
 
     @_builtins.property
     @pulumi.getter(name="clickhousePostgresqlUserConfig")
-    def clickhouse_postgresql_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationClickhousePostgresqlUserConfigArgs']]:
+    def clickhouse_postgresql_user_config(self) -> pulumi.Input[Optional['ServiceIntegrationClickhousePostgresqlUserConfigArgs']]:
         """
         ClickhousePostgresql user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "clickhouse_postgresql_user_config")
 
     @clickhouse_postgresql_user_config.setter
-    def clickhouse_postgresql_user_config(self, value: Optional[pulumi.Input['ServiceIntegrationClickhousePostgresqlUserConfigArgs']]):
+    def clickhouse_postgresql_user_config(self, value: pulumi.Input[Optional['ServiceIntegrationClickhousePostgresqlUserConfigArgs']]):
         pulumi.set(self, "clickhouse_postgresql_user_config", value)
 
     @_builtins.property
     @pulumi.getter(name="datadogUserConfig")
-    def datadog_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationDatadogUserConfigArgs']]:
+    def datadog_user_config(self) -> pulumi.Input[Optional['ServiceIntegrationDatadogUserConfigArgs']]:
         """
         Datadog user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "datadog_user_config")
 
     @datadog_user_config.setter
-    def datadog_user_config(self, value: Optional[pulumi.Input['ServiceIntegrationDatadogUserConfigArgs']]):
+    def datadog_user_config(self, value: pulumi.Input[Optional['ServiceIntegrationDatadogUserConfigArgs']]):
         pulumi.set(self, "datadog_user_config", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationEndpointId")
-    def destination_endpoint_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination_endpoint_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Destination endpoint for the integration.
         """
         return pulumi.get(self, "destination_endpoint_id")
 
     @destination_endpoint_id.setter
-    def destination_endpoint_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination_endpoint_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination_endpoint_id", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationServiceName")
-    def destination_service_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination_service_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Destination service for the integration.
         """
         return pulumi.get(self, "destination_service_name")
 
     @destination_service_name.setter
-    def destination_service_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination_service_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination_service_name", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationServiceProject")
-    def destination_service_project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination_service_project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Destination service project name
         """
         return pulumi.get(self, "destination_service_project")
 
     @destination_service_project.setter
-    def destination_service_project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination_service_project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination_service_project", value)
 
     @_builtins.property
     @pulumi.getter(name="externalAwsCloudwatchLogsUserConfig")
-    def external_aws_cloudwatch_logs_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs']]:
+    def external_aws_cloudwatch_logs_user_config(self) -> pulumi.Input[Optional['ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs']]:
         """
         ExternalAwsCloudwatchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "external_aws_cloudwatch_logs_user_config")
 
     @external_aws_cloudwatch_logs_user_config.setter
-    def external_aws_cloudwatch_logs_user_config(self, value: Optional[pulumi.Input['ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs']]):
+    def external_aws_cloudwatch_logs_user_config(self, value: pulumi.Input[Optional['ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs']]):
         pulumi.set(self, "external_aws_cloudwatch_logs_user_config", value)
 
     @_builtins.property
     @pulumi.getter(name="externalAwsCloudwatchMetricsUserConfig")
-    def external_aws_cloudwatch_metrics_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs']]:
+    def external_aws_cloudwatch_metrics_user_config(self) -> pulumi.Input[Optional['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs']]:
         """
         ExternalAwsCloudwatchMetrics user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "external_aws_cloudwatch_metrics_user_config")
 
     @external_aws_cloudwatch_metrics_user_config.setter
-    def external_aws_cloudwatch_metrics_user_config(self, value: Optional[pulumi.Input['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs']]):
+    def external_aws_cloudwatch_metrics_user_config(self, value: pulumi.Input[Optional['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs']]):
         pulumi.set(self, "external_aws_cloudwatch_metrics_user_config", value)
 
     @_builtins.property
     @pulumi.getter(name="externalElasticsearchLogsUserConfig")
-    def external_elasticsearch_logs_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationExternalElasticsearchLogsUserConfigArgs']]:
+    def external_elasticsearch_logs_user_config(self) -> pulumi.Input[Optional['ServiceIntegrationExternalElasticsearchLogsUserConfigArgs']]:
         """
         ExternalElasticsearchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "external_elasticsearch_logs_user_config")
 
     @external_elasticsearch_logs_user_config.setter
-    def external_elasticsearch_logs_user_config(self, value: Optional[pulumi.Input['ServiceIntegrationExternalElasticsearchLogsUserConfigArgs']]):
+    def external_elasticsearch_logs_user_config(self, value: pulumi.Input[Optional['ServiceIntegrationExternalElasticsearchLogsUserConfigArgs']]):
         pulumi.set(self, "external_elasticsearch_logs_user_config", value)
 
     @_builtins.property
     @pulumi.getter(name="externalOpensearchLogsUserConfig")
-    def external_opensearch_logs_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationExternalOpensearchLogsUserConfigArgs']]:
+    def external_opensearch_logs_user_config(self) -> pulumi.Input[Optional['ServiceIntegrationExternalOpensearchLogsUserConfigArgs']]:
         """
         ExternalOpensearchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "external_opensearch_logs_user_config")
 
     @external_opensearch_logs_user_config.setter
-    def external_opensearch_logs_user_config(self, value: Optional[pulumi.Input['ServiceIntegrationExternalOpensearchLogsUserConfigArgs']]):
+    def external_opensearch_logs_user_config(self, value: pulumi.Input[Optional['ServiceIntegrationExternalOpensearchLogsUserConfigArgs']]):
         pulumi.set(self, "external_opensearch_logs_user_config", value)
 
     @_builtins.property
     @pulumi.getter(name="flinkExternalPostgresqlUserConfig")
-    def flink_external_postgresql_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationFlinkExternalPostgresqlUserConfigArgs']]:
+    def flink_external_postgresql_user_config(self) -> pulumi.Input[Optional['ServiceIntegrationFlinkExternalPostgresqlUserConfigArgs']]:
         """
         FlinkExternalPostgresql user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "flink_external_postgresql_user_config")
 
     @flink_external_postgresql_user_config.setter
-    def flink_external_postgresql_user_config(self, value: Optional[pulumi.Input['ServiceIntegrationFlinkExternalPostgresqlUserConfigArgs']]):
+    def flink_external_postgresql_user_config(self, value: pulumi.Input[Optional['ServiceIntegrationFlinkExternalPostgresqlUserConfigArgs']]):
         pulumi.set(self, "flink_external_postgresql_user_config", value)
 
     @_builtins.property
     @pulumi.getter(name="kafkaConnectUserConfig")
-    def kafka_connect_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationKafkaConnectUserConfigArgs']]:
+    def kafka_connect_user_config(self) -> pulumi.Input[Optional['ServiceIntegrationKafkaConnectUserConfigArgs']]:
         """
         KafkaConnect user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "kafka_connect_user_config")
 
     @kafka_connect_user_config.setter
-    def kafka_connect_user_config(self, value: Optional[pulumi.Input['ServiceIntegrationKafkaConnectUserConfigArgs']]):
+    def kafka_connect_user_config(self, value: pulumi.Input[Optional['ServiceIntegrationKafkaConnectUserConfigArgs']]):
         pulumi.set(self, "kafka_connect_user_config", value)
 
     @_builtins.property
     @pulumi.getter(name="kafkaLogsUserConfig")
-    def kafka_logs_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationKafkaLogsUserConfigArgs']]:
+    def kafka_logs_user_config(self) -> pulumi.Input[Optional['ServiceIntegrationKafkaLogsUserConfigArgs']]:
         """
         KafkaLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "kafka_logs_user_config")
 
     @kafka_logs_user_config.setter
-    def kafka_logs_user_config(self, value: Optional[pulumi.Input['ServiceIntegrationKafkaLogsUserConfigArgs']]):
+    def kafka_logs_user_config(self, value: pulumi.Input[Optional['ServiceIntegrationKafkaLogsUserConfigArgs']]):
         pulumi.set(self, "kafka_logs_user_config", value)
 
     @_builtins.property
     @pulumi.getter(name="kafkaMirrormakerUserConfig")
-    def kafka_mirrormaker_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationKafkaMirrormakerUserConfigArgs']]:
+    def kafka_mirrormaker_user_config(self) -> pulumi.Input[Optional['ServiceIntegrationKafkaMirrormakerUserConfigArgs']]:
         """
         KafkaMirrormaker user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "kafka_mirrormaker_user_config")
 
     @kafka_mirrormaker_user_config.setter
-    def kafka_mirrormaker_user_config(self, value: Optional[pulumi.Input['ServiceIntegrationKafkaMirrormakerUserConfigArgs']]):
+    def kafka_mirrormaker_user_config(self, value: pulumi.Input[Optional['ServiceIntegrationKafkaMirrormakerUserConfigArgs']]):
         pulumi.set(self, "kafka_mirrormaker_user_config", value)
 
     @_builtins.property
     @pulumi.getter(name="logsUserConfig")
-    def logs_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationLogsUserConfigArgs']]:
+    def logs_user_config(self) -> pulumi.Input[Optional['ServiceIntegrationLogsUserConfigArgs']]:
         """
         Logs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "logs_user_config")
 
     @logs_user_config.setter
-    def logs_user_config(self, value: Optional[pulumi.Input['ServiceIntegrationLogsUserConfigArgs']]):
+    def logs_user_config(self, value: pulumi.Input[Optional['ServiceIntegrationLogsUserConfigArgs']]):
         pulumi.set(self, "logs_user_config", value)
 
     @_builtins.property
     @pulumi.getter(name="metricsUserConfig")
-    def metrics_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationMetricsUserConfigArgs']]:
+    def metrics_user_config(self) -> pulumi.Input[Optional['ServiceIntegrationMetricsUserConfigArgs']]:
         """
         Metrics user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "metrics_user_config")
 
     @metrics_user_config.setter
-    def metrics_user_config(self, value: Optional[pulumi.Input['ServiceIntegrationMetricsUserConfigArgs']]):
+    def metrics_user_config(self, value: pulumi.Input[Optional['ServiceIntegrationMetricsUserConfigArgs']]):
         pulumi.set(self, "metrics_user_config", value)
 
     @_builtins.property
     @pulumi.getter(name="prometheusUserConfig")
-    def prometheus_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationPrometheusUserConfigArgs']]:
+    def prometheus_user_config(self) -> pulumi.Input[Optional['ServiceIntegrationPrometheusUserConfigArgs']]:
         """
         Prometheus user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "prometheus_user_config")
 
     @prometheus_user_config.setter
-    def prometheus_user_config(self, value: Optional[pulumi.Input['ServiceIntegrationPrometheusUserConfigArgs']]):
+    def prometheus_user_config(self, value: pulumi.Input[Optional['ServiceIntegrationPrometheusUserConfigArgs']]):
         pulumi.set(self, "prometheus_user_config", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceEndpointId")
-    def source_endpoint_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_endpoint_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Source endpoint for the integration.
         """
         return pulumi.get(self, "source_endpoint_id")
 
     @source_endpoint_id.setter
-    def source_endpoint_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_endpoint_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_endpoint_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceServiceName")
-    def source_service_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_service_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Source service for the integration (if any)
         """
         return pulumi.get(self, "source_service_name")
 
     @source_service_name.setter
-    def source_service_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_service_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_service_name", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceServiceProject")
-    def source_service_project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_service_project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Source service project name
         """
         return pulumi.get(self, "source_service_project")
 
     @source_service_project.setter
-    def source_service_project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_service_project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_service_project", value)
 
 
 @pulumi.input_type
 class _ServiceIntegrationState:
     def __init__(__self__, *,
-                 clickhouse_credentials_user_config: Optional[pulumi.Input['ServiceIntegrationClickhouseCredentialsUserConfigArgs']] = None,
-                 clickhouse_kafka_user_config: Optional[pulumi.Input['ServiceIntegrationClickhouseKafkaUserConfigArgs']] = None,
-                 clickhouse_postgresql_user_config: Optional[pulumi.Input['ServiceIntegrationClickhousePostgresqlUserConfigArgs']] = None,
-                 datadog_user_config: Optional[pulumi.Input['ServiceIntegrationDatadogUserConfigArgs']] = None,
-                 destination_endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_service_project: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_aws_cloudwatch_logs_user_config: Optional[pulumi.Input['ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs']] = None,
-                 external_aws_cloudwatch_metrics_user_config: Optional[pulumi.Input['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs']] = None,
-                 external_elasticsearch_logs_user_config: Optional[pulumi.Input['ServiceIntegrationExternalElasticsearchLogsUserConfigArgs']] = None,
-                 external_opensearch_logs_user_config: Optional[pulumi.Input['ServiceIntegrationExternalOpensearchLogsUserConfigArgs']] = None,
-                 flink_external_postgresql_user_config: Optional[pulumi.Input['ServiceIntegrationFlinkExternalPostgresqlUserConfigArgs']] = None,
-                 integration_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 integration_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 kafka_connect_user_config: Optional[pulumi.Input['ServiceIntegrationKafkaConnectUserConfigArgs']] = None,
-                 kafka_logs_user_config: Optional[pulumi.Input['ServiceIntegrationKafkaLogsUserConfigArgs']] = None,
-                 kafka_mirrormaker_user_config: Optional[pulumi.Input['ServiceIntegrationKafkaMirrormakerUserConfigArgs']] = None,
-                 logs_user_config: Optional[pulumi.Input['ServiceIntegrationLogsUserConfigArgs']] = None,
-                 metrics_user_config: Optional[pulumi.Input['ServiceIntegrationMetricsUserConfigArgs']] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 prometheus_user_config: Optional[pulumi.Input['ServiceIntegrationPrometheusUserConfigArgs']] = None,
-                 source_endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_service_project: Optional[pulumi.Input[_builtins.str]] = None):
+                 clickhouse_credentials_user_config: pulumi.Input[Optional['ServiceIntegrationClickhouseCredentialsUserConfigArgs']] = None,
+                 clickhouse_kafka_user_config: pulumi.Input[Optional['ServiceIntegrationClickhouseKafkaUserConfigArgs']] = None,
+                 clickhouse_postgresql_user_config: pulumi.Input[Optional['ServiceIntegrationClickhousePostgresqlUserConfigArgs']] = None,
+                 datadog_user_config: pulumi.Input[Optional['ServiceIntegrationDatadogUserConfigArgs']] = None,
+                 destination_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_service_project: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_aws_cloudwatch_logs_user_config: pulumi.Input[Optional['ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs']] = None,
+                 external_aws_cloudwatch_metrics_user_config: pulumi.Input[Optional['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs']] = None,
+                 external_elasticsearch_logs_user_config: pulumi.Input[Optional['ServiceIntegrationExternalElasticsearchLogsUserConfigArgs']] = None,
+                 external_opensearch_logs_user_config: pulumi.Input[Optional['ServiceIntegrationExternalOpensearchLogsUserConfigArgs']] = None,
+                 flink_external_postgresql_user_config: pulumi.Input[Optional['ServiceIntegrationFlinkExternalPostgresqlUserConfigArgs']] = None,
+                 integration_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 integration_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 kafka_connect_user_config: pulumi.Input[Optional['ServiceIntegrationKafkaConnectUserConfigArgs']] = None,
+                 kafka_logs_user_config: pulumi.Input[Optional['ServiceIntegrationKafkaLogsUserConfigArgs']] = None,
+                 kafka_mirrormaker_user_config: pulumi.Input[Optional['ServiceIntegrationKafkaMirrormakerUserConfigArgs']] = None,
+                 logs_user_config: pulumi.Input[Optional['ServiceIntegrationLogsUserConfigArgs']] = None,
+                 metrics_user_config: pulumi.Input[Optional['ServiceIntegrationMetricsUserConfigArgs']] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 prometheus_user_config: pulumi.Input[Optional['ServiceIntegrationPrometheusUserConfigArgs']] = None,
+                 source_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_service_project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServiceIntegration resources.
 
@@ -499,290 +499,290 @@ class _ServiceIntegrationState:
 
     @_builtins.property
     @pulumi.getter(name="clickhouseCredentialsUserConfig")
-    def clickhouse_credentials_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationClickhouseCredentialsUserConfigArgs']]:
+    def clickhouse_credentials_user_config(self) -> pulumi.Input[Optional['ServiceIntegrationClickhouseCredentialsUserConfigArgs']]:
         """
         ClickhouseCredentials user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "clickhouse_credentials_user_config")
 
     @clickhouse_credentials_user_config.setter
-    def clickhouse_credentials_user_config(self, value: Optional[pulumi.Input['ServiceIntegrationClickhouseCredentialsUserConfigArgs']]):
+    def clickhouse_credentials_user_config(self, value: pulumi.Input[Optional['ServiceIntegrationClickhouseCredentialsUserConfigArgs']]):
         pulumi.set(self, "clickhouse_credentials_user_config", value)
 
     @_builtins.property
     @pulumi.getter(name="clickhouseKafkaUserConfig")
-    def clickhouse_kafka_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationClickhouseKafkaUserConfigArgs']]:
+    def clickhouse_kafka_user_config(self) -> pulumi.Input[Optional['ServiceIntegrationClickhouseKafkaUserConfigArgs']]:
         """
         ClickhouseKafka user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "clickhouse_kafka_user_config")
 
     @clickhouse_kafka_user_config.setter
-    def clickhouse_kafka_user_config(self, value: Optional[pulumi.Input['ServiceIntegrationClickhouseKafkaUserConfigArgs']]):
+    def clickhouse_kafka_user_config(self, value: pulumi.Input[Optional['ServiceIntegrationClickhouseKafkaUserConfigArgs']]):
         pulumi.set(self, "clickhouse_kafka_user_config", value)
 
     @_builtins.property
     @pulumi.getter(name="clickhousePostgresqlUserConfig")
-    def clickhouse_postgresql_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationClickhousePostgresqlUserConfigArgs']]:
+    def clickhouse_postgresql_user_config(self) -> pulumi.Input[Optional['ServiceIntegrationClickhousePostgresqlUserConfigArgs']]:
         """
         ClickhousePostgresql user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "clickhouse_postgresql_user_config")
 
     @clickhouse_postgresql_user_config.setter
-    def clickhouse_postgresql_user_config(self, value: Optional[pulumi.Input['ServiceIntegrationClickhousePostgresqlUserConfigArgs']]):
+    def clickhouse_postgresql_user_config(self, value: pulumi.Input[Optional['ServiceIntegrationClickhousePostgresqlUserConfigArgs']]):
         pulumi.set(self, "clickhouse_postgresql_user_config", value)
 
     @_builtins.property
     @pulumi.getter(name="datadogUserConfig")
-    def datadog_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationDatadogUserConfigArgs']]:
+    def datadog_user_config(self) -> pulumi.Input[Optional['ServiceIntegrationDatadogUserConfigArgs']]:
         """
         Datadog user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "datadog_user_config")
 
     @datadog_user_config.setter
-    def datadog_user_config(self, value: Optional[pulumi.Input['ServiceIntegrationDatadogUserConfigArgs']]):
+    def datadog_user_config(self, value: pulumi.Input[Optional['ServiceIntegrationDatadogUserConfigArgs']]):
         pulumi.set(self, "datadog_user_config", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationEndpointId")
-    def destination_endpoint_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination_endpoint_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Destination endpoint for the integration.
         """
         return pulumi.get(self, "destination_endpoint_id")
 
     @destination_endpoint_id.setter
-    def destination_endpoint_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination_endpoint_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination_endpoint_id", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationServiceName")
-    def destination_service_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination_service_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Destination service for the integration.
         """
         return pulumi.get(self, "destination_service_name")
 
     @destination_service_name.setter
-    def destination_service_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination_service_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination_service_name", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationServiceProject")
-    def destination_service_project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination_service_project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Destination service project name
         """
         return pulumi.get(self, "destination_service_project")
 
     @destination_service_project.setter
-    def destination_service_project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination_service_project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination_service_project", value)
 
     @_builtins.property
     @pulumi.getter(name="externalAwsCloudwatchLogsUserConfig")
-    def external_aws_cloudwatch_logs_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs']]:
+    def external_aws_cloudwatch_logs_user_config(self) -> pulumi.Input[Optional['ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs']]:
         """
         ExternalAwsCloudwatchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "external_aws_cloudwatch_logs_user_config")
 
     @external_aws_cloudwatch_logs_user_config.setter
-    def external_aws_cloudwatch_logs_user_config(self, value: Optional[pulumi.Input['ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs']]):
+    def external_aws_cloudwatch_logs_user_config(self, value: pulumi.Input[Optional['ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs']]):
         pulumi.set(self, "external_aws_cloudwatch_logs_user_config", value)
 
     @_builtins.property
     @pulumi.getter(name="externalAwsCloudwatchMetricsUserConfig")
-    def external_aws_cloudwatch_metrics_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs']]:
+    def external_aws_cloudwatch_metrics_user_config(self) -> pulumi.Input[Optional['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs']]:
         """
         ExternalAwsCloudwatchMetrics user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "external_aws_cloudwatch_metrics_user_config")
 
     @external_aws_cloudwatch_metrics_user_config.setter
-    def external_aws_cloudwatch_metrics_user_config(self, value: Optional[pulumi.Input['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs']]):
+    def external_aws_cloudwatch_metrics_user_config(self, value: pulumi.Input[Optional['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs']]):
         pulumi.set(self, "external_aws_cloudwatch_metrics_user_config", value)
 
     @_builtins.property
     @pulumi.getter(name="externalElasticsearchLogsUserConfig")
-    def external_elasticsearch_logs_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationExternalElasticsearchLogsUserConfigArgs']]:
+    def external_elasticsearch_logs_user_config(self) -> pulumi.Input[Optional['ServiceIntegrationExternalElasticsearchLogsUserConfigArgs']]:
         """
         ExternalElasticsearchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "external_elasticsearch_logs_user_config")
 
     @external_elasticsearch_logs_user_config.setter
-    def external_elasticsearch_logs_user_config(self, value: Optional[pulumi.Input['ServiceIntegrationExternalElasticsearchLogsUserConfigArgs']]):
+    def external_elasticsearch_logs_user_config(self, value: pulumi.Input[Optional['ServiceIntegrationExternalElasticsearchLogsUserConfigArgs']]):
         pulumi.set(self, "external_elasticsearch_logs_user_config", value)
 
     @_builtins.property
     @pulumi.getter(name="externalOpensearchLogsUserConfig")
-    def external_opensearch_logs_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationExternalOpensearchLogsUserConfigArgs']]:
+    def external_opensearch_logs_user_config(self) -> pulumi.Input[Optional['ServiceIntegrationExternalOpensearchLogsUserConfigArgs']]:
         """
         ExternalOpensearchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "external_opensearch_logs_user_config")
 
     @external_opensearch_logs_user_config.setter
-    def external_opensearch_logs_user_config(self, value: Optional[pulumi.Input['ServiceIntegrationExternalOpensearchLogsUserConfigArgs']]):
+    def external_opensearch_logs_user_config(self, value: pulumi.Input[Optional['ServiceIntegrationExternalOpensearchLogsUserConfigArgs']]):
         pulumi.set(self, "external_opensearch_logs_user_config", value)
 
     @_builtins.property
     @pulumi.getter(name="flinkExternalPostgresqlUserConfig")
-    def flink_external_postgresql_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationFlinkExternalPostgresqlUserConfigArgs']]:
+    def flink_external_postgresql_user_config(self) -> pulumi.Input[Optional['ServiceIntegrationFlinkExternalPostgresqlUserConfigArgs']]:
         """
         FlinkExternalPostgresql user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "flink_external_postgresql_user_config")
 
     @flink_external_postgresql_user_config.setter
-    def flink_external_postgresql_user_config(self, value: Optional[pulumi.Input['ServiceIntegrationFlinkExternalPostgresqlUserConfigArgs']]):
+    def flink_external_postgresql_user_config(self, value: pulumi.Input[Optional['ServiceIntegrationFlinkExternalPostgresqlUserConfigArgs']]):
         pulumi.set(self, "flink_external_postgresql_user_config", value)
 
     @_builtins.property
     @pulumi.getter(name="integrationId")
-    def integration_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def integration_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Aiven service integration.
         """
         return pulumi.get(self, "integration_id")
 
     @integration_id.setter
-    def integration_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def integration_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "integration_id", value)
 
     @_builtins.property
     @pulumi.getter(name="integrationType")
-    def integration_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def integration_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of the service integration. The possible values are `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `disaster_recovery`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `flink_external_postgresql`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `service_composition`, `stresstester`, `thanos_distributed_query`, `thanos_migrate`, `thanos_object_storage`, `thanoscompactor`, `thanosquery`, `thanosruler`, `thanosstore`, `vector` and `vmalert`.
         """
         return pulumi.get(self, "integration_type")
 
     @integration_type.setter
-    def integration_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def integration_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "integration_type", value)
 
     @_builtins.property
     @pulumi.getter(name="kafkaConnectUserConfig")
-    def kafka_connect_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationKafkaConnectUserConfigArgs']]:
+    def kafka_connect_user_config(self) -> pulumi.Input[Optional['ServiceIntegrationKafkaConnectUserConfigArgs']]:
         """
         KafkaConnect user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "kafka_connect_user_config")
 
     @kafka_connect_user_config.setter
-    def kafka_connect_user_config(self, value: Optional[pulumi.Input['ServiceIntegrationKafkaConnectUserConfigArgs']]):
+    def kafka_connect_user_config(self, value: pulumi.Input[Optional['ServiceIntegrationKafkaConnectUserConfigArgs']]):
         pulumi.set(self, "kafka_connect_user_config", value)
 
     @_builtins.property
     @pulumi.getter(name="kafkaLogsUserConfig")
-    def kafka_logs_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationKafkaLogsUserConfigArgs']]:
+    def kafka_logs_user_config(self) -> pulumi.Input[Optional['ServiceIntegrationKafkaLogsUserConfigArgs']]:
         """
         KafkaLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "kafka_logs_user_config")
 
     @kafka_logs_user_config.setter
-    def kafka_logs_user_config(self, value: Optional[pulumi.Input['ServiceIntegrationKafkaLogsUserConfigArgs']]):
+    def kafka_logs_user_config(self, value: pulumi.Input[Optional['ServiceIntegrationKafkaLogsUserConfigArgs']]):
         pulumi.set(self, "kafka_logs_user_config", value)
 
     @_builtins.property
     @pulumi.getter(name="kafkaMirrormakerUserConfig")
-    def kafka_mirrormaker_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationKafkaMirrormakerUserConfigArgs']]:
+    def kafka_mirrormaker_user_config(self) -> pulumi.Input[Optional['ServiceIntegrationKafkaMirrormakerUserConfigArgs']]:
         """
         KafkaMirrormaker user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "kafka_mirrormaker_user_config")
 
     @kafka_mirrormaker_user_config.setter
-    def kafka_mirrormaker_user_config(self, value: Optional[pulumi.Input['ServiceIntegrationKafkaMirrormakerUserConfigArgs']]):
+    def kafka_mirrormaker_user_config(self, value: pulumi.Input[Optional['ServiceIntegrationKafkaMirrormakerUserConfigArgs']]):
         pulumi.set(self, "kafka_mirrormaker_user_config", value)
 
     @_builtins.property
     @pulumi.getter(name="logsUserConfig")
-    def logs_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationLogsUserConfigArgs']]:
+    def logs_user_config(self) -> pulumi.Input[Optional['ServiceIntegrationLogsUserConfigArgs']]:
         """
         Logs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "logs_user_config")
 
     @logs_user_config.setter
-    def logs_user_config(self, value: Optional[pulumi.Input['ServiceIntegrationLogsUserConfigArgs']]):
+    def logs_user_config(self, value: pulumi.Input[Optional['ServiceIntegrationLogsUserConfigArgs']]):
         pulumi.set(self, "logs_user_config", value)
 
     @_builtins.property
     @pulumi.getter(name="metricsUserConfig")
-    def metrics_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationMetricsUserConfigArgs']]:
+    def metrics_user_config(self) -> pulumi.Input[Optional['ServiceIntegrationMetricsUserConfigArgs']]:
         """
         Metrics user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "metrics_user_config")
 
     @metrics_user_config.setter
-    def metrics_user_config(self, value: Optional[pulumi.Input['ServiceIntegrationMetricsUserConfigArgs']]):
+    def metrics_user_config(self, value: pulumi.Input[Optional['ServiceIntegrationMetricsUserConfigArgs']]):
         pulumi.set(self, "metrics_user_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Project the integration belongs to.
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="prometheusUserConfig")
-    def prometheus_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationPrometheusUserConfigArgs']]:
+    def prometheus_user_config(self) -> pulumi.Input[Optional['ServiceIntegrationPrometheusUserConfigArgs']]:
         """
         Prometheus user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "prometheus_user_config")
 
     @prometheus_user_config.setter
-    def prometheus_user_config(self, value: Optional[pulumi.Input['ServiceIntegrationPrometheusUserConfigArgs']]):
+    def prometheus_user_config(self, value: pulumi.Input[Optional['ServiceIntegrationPrometheusUserConfigArgs']]):
         pulumi.set(self, "prometheus_user_config", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceEndpointId")
-    def source_endpoint_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_endpoint_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Source endpoint for the integration.
         """
         return pulumi.get(self, "source_endpoint_id")
 
     @source_endpoint_id.setter
-    def source_endpoint_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_endpoint_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_endpoint_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceServiceName")
-    def source_service_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_service_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Source service for the integration (if any)
         """
         return pulumi.get(self, "source_service_name")
 
     @source_service_name.setter
-    def source_service_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_service_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_service_name", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceServiceProject")
-    def source_service_project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_service_project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Source service project name
         """
         return pulumi.get(self, "source_service_project")
 
     @source_service_project.setter
-    def source_service_project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_service_project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_service_project", value)
 
 
@@ -792,29 +792,29 @@ class ServiceIntegration(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 clickhouse_credentials_user_config: Optional[pulumi.Input[Union['ServiceIntegrationClickhouseCredentialsUserConfigArgs', 'ServiceIntegrationClickhouseCredentialsUserConfigArgsDict']]] = None,
-                 clickhouse_kafka_user_config: Optional[pulumi.Input[Union['ServiceIntegrationClickhouseKafkaUserConfigArgs', 'ServiceIntegrationClickhouseKafkaUserConfigArgsDict']]] = None,
-                 clickhouse_postgresql_user_config: Optional[pulumi.Input[Union['ServiceIntegrationClickhousePostgresqlUserConfigArgs', 'ServiceIntegrationClickhousePostgresqlUserConfigArgsDict']]] = None,
-                 datadog_user_config: Optional[pulumi.Input[Union['ServiceIntegrationDatadogUserConfigArgs', 'ServiceIntegrationDatadogUserConfigArgsDict']]] = None,
-                 destination_endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_service_project: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_aws_cloudwatch_logs_user_config: Optional[pulumi.Input[Union['ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs', 'ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgsDict']]] = None,
-                 external_aws_cloudwatch_metrics_user_config: Optional[pulumi.Input[Union['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs', 'ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgsDict']]] = None,
-                 external_elasticsearch_logs_user_config: Optional[pulumi.Input[Union['ServiceIntegrationExternalElasticsearchLogsUserConfigArgs', 'ServiceIntegrationExternalElasticsearchLogsUserConfigArgsDict']]] = None,
-                 external_opensearch_logs_user_config: Optional[pulumi.Input[Union['ServiceIntegrationExternalOpensearchLogsUserConfigArgs', 'ServiceIntegrationExternalOpensearchLogsUserConfigArgsDict']]] = None,
-                 flink_external_postgresql_user_config: Optional[pulumi.Input[Union['ServiceIntegrationFlinkExternalPostgresqlUserConfigArgs', 'ServiceIntegrationFlinkExternalPostgresqlUserConfigArgsDict']]] = None,
-                 integration_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 kafka_connect_user_config: Optional[pulumi.Input[Union['ServiceIntegrationKafkaConnectUserConfigArgs', 'ServiceIntegrationKafkaConnectUserConfigArgsDict']]] = None,
-                 kafka_logs_user_config: Optional[pulumi.Input[Union['ServiceIntegrationKafkaLogsUserConfigArgs', 'ServiceIntegrationKafkaLogsUserConfigArgsDict']]] = None,
-                 kafka_mirrormaker_user_config: Optional[pulumi.Input[Union['ServiceIntegrationKafkaMirrormakerUserConfigArgs', 'ServiceIntegrationKafkaMirrormakerUserConfigArgsDict']]] = None,
-                 logs_user_config: Optional[pulumi.Input[Union['ServiceIntegrationLogsUserConfigArgs', 'ServiceIntegrationLogsUserConfigArgsDict']]] = None,
-                 metrics_user_config: Optional[pulumi.Input[Union['ServiceIntegrationMetricsUserConfigArgs', 'ServiceIntegrationMetricsUserConfigArgsDict']]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 prometheus_user_config: Optional[pulumi.Input[Union['ServiceIntegrationPrometheusUserConfigArgs', 'ServiceIntegrationPrometheusUserConfigArgsDict']]] = None,
-                 source_endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_service_project: Optional[pulumi.Input[_builtins.str]] = None,
+                 clickhouse_credentials_user_config: pulumi.Input[Optional[Union['ServiceIntegrationClickhouseCredentialsUserConfigArgs', 'ServiceIntegrationClickhouseCredentialsUserConfigArgsDict']]] = None,
+                 clickhouse_kafka_user_config: pulumi.Input[Optional[Union['ServiceIntegrationClickhouseKafkaUserConfigArgs', 'ServiceIntegrationClickhouseKafkaUserConfigArgsDict']]] = None,
+                 clickhouse_postgresql_user_config: pulumi.Input[Optional[Union['ServiceIntegrationClickhousePostgresqlUserConfigArgs', 'ServiceIntegrationClickhousePostgresqlUserConfigArgsDict']]] = None,
+                 datadog_user_config: pulumi.Input[Optional[Union['ServiceIntegrationDatadogUserConfigArgs', 'ServiceIntegrationDatadogUserConfigArgsDict']]] = None,
+                 destination_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_service_project: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_aws_cloudwatch_logs_user_config: pulumi.Input[Optional[Union['ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs', 'ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgsDict']]] = None,
+                 external_aws_cloudwatch_metrics_user_config: pulumi.Input[Optional[Union['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs', 'ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgsDict']]] = None,
+                 external_elasticsearch_logs_user_config: pulumi.Input[Optional[Union['ServiceIntegrationExternalElasticsearchLogsUserConfigArgs', 'ServiceIntegrationExternalElasticsearchLogsUserConfigArgsDict']]] = None,
+                 external_opensearch_logs_user_config: pulumi.Input[Optional[Union['ServiceIntegrationExternalOpensearchLogsUserConfigArgs', 'ServiceIntegrationExternalOpensearchLogsUserConfigArgsDict']]] = None,
+                 flink_external_postgresql_user_config: pulumi.Input[Optional[Union['ServiceIntegrationFlinkExternalPostgresqlUserConfigArgs', 'ServiceIntegrationFlinkExternalPostgresqlUserConfigArgsDict']]] = None,
+                 integration_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 kafka_connect_user_config: pulumi.Input[Optional[Union['ServiceIntegrationKafkaConnectUserConfigArgs', 'ServiceIntegrationKafkaConnectUserConfigArgsDict']]] = None,
+                 kafka_logs_user_config: pulumi.Input[Optional[Union['ServiceIntegrationKafkaLogsUserConfigArgs', 'ServiceIntegrationKafkaLogsUserConfigArgsDict']]] = None,
+                 kafka_mirrormaker_user_config: pulumi.Input[Optional[Union['ServiceIntegrationKafkaMirrormakerUserConfigArgs', 'ServiceIntegrationKafkaMirrormakerUserConfigArgsDict']]] = None,
+                 logs_user_config: pulumi.Input[Optional[Union['ServiceIntegrationLogsUserConfigArgs', 'ServiceIntegrationLogsUserConfigArgsDict']]] = None,
+                 metrics_user_config: pulumi.Input[Optional[Union['ServiceIntegrationMetricsUserConfigArgs', 'ServiceIntegrationMetricsUserConfigArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 prometheus_user_config: pulumi.Input[Optional[Union['ServiceIntegrationPrometheusUserConfigArgs', 'ServiceIntegrationPrometheusUserConfigArgsDict']]] = None,
+                 source_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_service_project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Creates and manages an Aiven [service integration](https://aiven.io/docs/platform/concepts/service-integration).
@@ -969,29 +969,29 @@ class ServiceIntegration(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 clickhouse_credentials_user_config: Optional[pulumi.Input[Union['ServiceIntegrationClickhouseCredentialsUserConfigArgs', 'ServiceIntegrationClickhouseCredentialsUserConfigArgsDict']]] = None,
-                 clickhouse_kafka_user_config: Optional[pulumi.Input[Union['ServiceIntegrationClickhouseKafkaUserConfigArgs', 'ServiceIntegrationClickhouseKafkaUserConfigArgsDict']]] = None,
-                 clickhouse_postgresql_user_config: Optional[pulumi.Input[Union['ServiceIntegrationClickhousePostgresqlUserConfigArgs', 'ServiceIntegrationClickhousePostgresqlUserConfigArgsDict']]] = None,
-                 datadog_user_config: Optional[pulumi.Input[Union['ServiceIntegrationDatadogUserConfigArgs', 'ServiceIntegrationDatadogUserConfigArgsDict']]] = None,
-                 destination_endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_service_project: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_aws_cloudwatch_logs_user_config: Optional[pulumi.Input[Union['ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs', 'ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgsDict']]] = None,
-                 external_aws_cloudwatch_metrics_user_config: Optional[pulumi.Input[Union['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs', 'ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgsDict']]] = None,
-                 external_elasticsearch_logs_user_config: Optional[pulumi.Input[Union['ServiceIntegrationExternalElasticsearchLogsUserConfigArgs', 'ServiceIntegrationExternalElasticsearchLogsUserConfigArgsDict']]] = None,
-                 external_opensearch_logs_user_config: Optional[pulumi.Input[Union['ServiceIntegrationExternalOpensearchLogsUserConfigArgs', 'ServiceIntegrationExternalOpensearchLogsUserConfigArgsDict']]] = None,
-                 flink_external_postgresql_user_config: Optional[pulumi.Input[Union['ServiceIntegrationFlinkExternalPostgresqlUserConfigArgs', 'ServiceIntegrationFlinkExternalPostgresqlUserConfigArgsDict']]] = None,
-                 integration_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 kafka_connect_user_config: Optional[pulumi.Input[Union['ServiceIntegrationKafkaConnectUserConfigArgs', 'ServiceIntegrationKafkaConnectUserConfigArgsDict']]] = None,
-                 kafka_logs_user_config: Optional[pulumi.Input[Union['ServiceIntegrationKafkaLogsUserConfigArgs', 'ServiceIntegrationKafkaLogsUserConfigArgsDict']]] = None,
-                 kafka_mirrormaker_user_config: Optional[pulumi.Input[Union['ServiceIntegrationKafkaMirrormakerUserConfigArgs', 'ServiceIntegrationKafkaMirrormakerUserConfigArgsDict']]] = None,
-                 logs_user_config: Optional[pulumi.Input[Union['ServiceIntegrationLogsUserConfigArgs', 'ServiceIntegrationLogsUserConfigArgsDict']]] = None,
-                 metrics_user_config: Optional[pulumi.Input[Union['ServiceIntegrationMetricsUserConfigArgs', 'ServiceIntegrationMetricsUserConfigArgsDict']]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 prometheus_user_config: Optional[pulumi.Input[Union['ServiceIntegrationPrometheusUserConfigArgs', 'ServiceIntegrationPrometheusUserConfigArgsDict']]] = None,
-                 source_endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_service_project: Optional[pulumi.Input[_builtins.str]] = None,
+                 clickhouse_credentials_user_config: pulumi.Input[Optional[Union['ServiceIntegrationClickhouseCredentialsUserConfigArgs', 'ServiceIntegrationClickhouseCredentialsUserConfigArgsDict']]] = None,
+                 clickhouse_kafka_user_config: pulumi.Input[Optional[Union['ServiceIntegrationClickhouseKafkaUserConfigArgs', 'ServiceIntegrationClickhouseKafkaUserConfigArgsDict']]] = None,
+                 clickhouse_postgresql_user_config: pulumi.Input[Optional[Union['ServiceIntegrationClickhousePostgresqlUserConfigArgs', 'ServiceIntegrationClickhousePostgresqlUserConfigArgsDict']]] = None,
+                 datadog_user_config: pulumi.Input[Optional[Union['ServiceIntegrationDatadogUserConfigArgs', 'ServiceIntegrationDatadogUserConfigArgsDict']]] = None,
+                 destination_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_service_project: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_aws_cloudwatch_logs_user_config: pulumi.Input[Optional[Union['ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs', 'ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgsDict']]] = None,
+                 external_aws_cloudwatch_metrics_user_config: pulumi.Input[Optional[Union['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs', 'ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgsDict']]] = None,
+                 external_elasticsearch_logs_user_config: pulumi.Input[Optional[Union['ServiceIntegrationExternalElasticsearchLogsUserConfigArgs', 'ServiceIntegrationExternalElasticsearchLogsUserConfigArgsDict']]] = None,
+                 external_opensearch_logs_user_config: pulumi.Input[Optional[Union['ServiceIntegrationExternalOpensearchLogsUserConfigArgs', 'ServiceIntegrationExternalOpensearchLogsUserConfigArgsDict']]] = None,
+                 flink_external_postgresql_user_config: pulumi.Input[Optional[Union['ServiceIntegrationFlinkExternalPostgresqlUserConfigArgs', 'ServiceIntegrationFlinkExternalPostgresqlUserConfigArgsDict']]] = None,
+                 integration_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 kafka_connect_user_config: pulumi.Input[Optional[Union['ServiceIntegrationKafkaConnectUserConfigArgs', 'ServiceIntegrationKafkaConnectUserConfigArgsDict']]] = None,
+                 kafka_logs_user_config: pulumi.Input[Optional[Union['ServiceIntegrationKafkaLogsUserConfigArgs', 'ServiceIntegrationKafkaLogsUserConfigArgsDict']]] = None,
+                 kafka_mirrormaker_user_config: pulumi.Input[Optional[Union['ServiceIntegrationKafkaMirrormakerUserConfigArgs', 'ServiceIntegrationKafkaMirrormakerUserConfigArgsDict']]] = None,
+                 logs_user_config: pulumi.Input[Optional[Union['ServiceIntegrationLogsUserConfigArgs', 'ServiceIntegrationLogsUserConfigArgsDict']]] = None,
+                 metrics_user_config: pulumi.Input[Optional[Union['ServiceIntegrationMetricsUserConfigArgs', 'ServiceIntegrationMetricsUserConfigArgsDict']]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 prometheus_user_config: pulumi.Input[Optional[Union['ServiceIntegrationPrometheusUserConfigArgs', 'ServiceIntegrationPrometheusUserConfigArgsDict']]] = None,
+                 source_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_service_project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1039,30 +1039,30 @@ class ServiceIntegration(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            clickhouse_credentials_user_config: Optional[pulumi.Input[Union['ServiceIntegrationClickhouseCredentialsUserConfigArgs', 'ServiceIntegrationClickhouseCredentialsUserConfigArgsDict']]] = None,
-            clickhouse_kafka_user_config: Optional[pulumi.Input[Union['ServiceIntegrationClickhouseKafkaUserConfigArgs', 'ServiceIntegrationClickhouseKafkaUserConfigArgsDict']]] = None,
-            clickhouse_postgresql_user_config: Optional[pulumi.Input[Union['ServiceIntegrationClickhousePostgresqlUserConfigArgs', 'ServiceIntegrationClickhousePostgresqlUserConfigArgsDict']]] = None,
-            datadog_user_config: Optional[pulumi.Input[Union['ServiceIntegrationDatadogUserConfigArgs', 'ServiceIntegrationDatadogUserConfigArgsDict']]] = None,
-            destination_endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
-            destination_service_name: Optional[pulumi.Input[_builtins.str]] = None,
-            destination_service_project: Optional[pulumi.Input[_builtins.str]] = None,
-            external_aws_cloudwatch_logs_user_config: Optional[pulumi.Input[Union['ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs', 'ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgsDict']]] = None,
-            external_aws_cloudwatch_metrics_user_config: Optional[pulumi.Input[Union['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs', 'ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgsDict']]] = None,
-            external_elasticsearch_logs_user_config: Optional[pulumi.Input[Union['ServiceIntegrationExternalElasticsearchLogsUserConfigArgs', 'ServiceIntegrationExternalElasticsearchLogsUserConfigArgsDict']]] = None,
-            external_opensearch_logs_user_config: Optional[pulumi.Input[Union['ServiceIntegrationExternalOpensearchLogsUserConfigArgs', 'ServiceIntegrationExternalOpensearchLogsUserConfigArgsDict']]] = None,
-            flink_external_postgresql_user_config: Optional[pulumi.Input[Union['ServiceIntegrationFlinkExternalPostgresqlUserConfigArgs', 'ServiceIntegrationFlinkExternalPostgresqlUserConfigArgsDict']]] = None,
-            integration_id: Optional[pulumi.Input[_builtins.str]] = None,
-            integration_type: Optional[pulumi.Input[_builtins.str]] = None,
-            kafka_connect_user_config: Optional[pulumi.Input[Union['ServiceIntegrationKafkaConnectUserConfigArgs', 'ServiceIntegrationKafkaConnectUserConfigArgsDict']]] = None,
-            kafka_logs_user_config: Optional[pulumi.Input[Union['ServiceIntegrationKafkaLogsUserConfigArgs', 'ServiceIntegrationKafkaLogsUserConfigArgsDict']]] = None,
-            kafka_mirrormaker_user_config: Optional[pulumi.Input[Union['ServiceIntegrationKafkaMirrormakerUserConfigArgs', 'ServiceIntegrationKafkaMirrormakerUserConfigArgsDict']]] = None,
-            logs_user_config: Optional[pulumi.Input[Union['ServiceIntegrationLogsUserConfigArgs', 'ServiceIntegrationLogsUserConfigArgsDict']]] = None,
-            metrics_user_config: Optional[pulumi.Input[Union['ServiceIntegrationMetricsUserConfigArgs', 'ServiceIntegrationMetricsUserConfigArgsDict']]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            prometheus_user_config: Optional[pulumi.Input[Union['ServiceIntegrationPrometheusUserConfigArgs', 'ServiceIntegrationPrometheusUserConfigArgsDict']]] = None,
-            source_endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
-            source_service_name: Optional[pulumi.Input[_builtins.str]] = None,
-            source_service_project: Optional[pulumi.Input[_builtins.str]] = None) -> 'ServiceIntegration':
+            clickhouse_credentials_user_config: pulumi.Input[Optional[Union['ServiceIntegrationClickhouseCredentialsUserConfigArgs', 'ServiceIntegrationClickhouseCredentialsUserConfigArgsDict']]] = None,
+            clickhouse_kafka_user_config: pulumi.Input[Optional[Union['ServiceIntegrationClickhouseKafkaUserConfigArgs', 'ServiceIntegrationClickhouseKafkaUserConfigArgsDict']]] = None,
+            clickhouse_postgresql_user_config: pulumi.Input[Optional[Union['ServiceIntegrationClickhousePostgresqlUserConfigArgs', 'ServiceIntegrationClickhousePostgresqlUserConfigArgsDict']]] = None,
+            datadog_user_config: pulumi.Input[Optional[Union['ServiceIntegrationDatadogUserConfigArgs', 'ServiceIntegrationDatadogUserConfigArgsDict']]] = None,
+            destination_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_service_name: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_service_project: pulumi.Input[Optional[_builtins.str]] = None,
+            external_aws_cloudwatch_logs_user_config: pulumi.Input[Optional[Union['ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs', 'ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgsDict']]] = None,
+            external_aws_cloudwatch_metrics_user_config: pulumi.Input[Optional[Union['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs', 'ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgsDict']]] = None,
+            external_elasticsearch_logs_user_config: pulumi.Input[Optional[Union['ServiceIntegrationExternalElasticsearchLogsUserConfigArgs', 'ServiceIntegrationExternalElasticsearchLogsUserConfigArgsDict']]] = None,
+            external_opensearch_logs_user_config: pulumi.Input[Optional[Union['ServiceIntegrationExternalOpensearchLogsUserConfigArgs', 'ServiceIntegrationExternalOpensearchLogsUserConfigArgsDict']]] = None,
+            flink_external_postgresql_user_config: pulumi.Input[Optional[Union['ServiceIntegrationFlinkExternalPostgresqlUserConfigArgs', 'ServiceIntegrationFlinkExternalPostgresqlUserConfigArgsDict']]] = None,
+            integration_id: pulumi.Input[Optional[_builtins.str]] = None,
+            integration_type: pulumi.Input[Optional[_builtins.str]] = None,
+            kafka_connect_user_config: pulumi.Input[Optional[Union['ServiceIntegrationKafkaConnectUserConfigArgs', 'ServiceIntegrationKafkaConnectUserConfigArgsDict']]] = None,
+            kafka_logs_user_config: pulumi.Input[Optional[Union['ServiceIntegrationKafkaLogsUserConfigArgs', 'ServiceIntegrationKafkaLogsUserConfigArgsDict']]] = None,
+            kafka_mirrormaker_user_config: pulumi.Input[Optional[Union['ServiceIntegrationKafkaMirrormakerUserConfigArgs', 'ServiceIntegrationKafkaMirrormakerUserConfigArgsDict']]] = None,
+            logs_user_config: pulumi.Input[Optional[Union['ServiceIntegrationLogsUserConfigArgs', 'ServiceIntegrationLogsUserConfigArgsDict']]] = None,
+            metrics_user_config: pulumi.Input[Optional[Union['ServiceIntegrationMetricsUserConfigArgs', 'ServiceIntegrationMetricsUserConfigArgsDict']]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            prometheus_user_config: pulumi.Input[Optional[Union['ServiceIntegrationPrometheusUserConfigArgs', 'ServiceIntegrationPrometheusUserConfigArgsDict']]] = None,
+            source_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+            source_service_name: pulumi.Input[Optional[_builtins.str]] = None,
+            source_service_project: pulumi.Input[Optional[_builtins.str]] = None) -> 'ServiceIntegration':
         """
         Get an existing ServiceIntegration resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -25,14 +25,14 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleVpc = new Aiven.Index.OrganizationVpc("example_vpc", new()
+    ///     var exampleVpc = new Aiven.OrganizationVpc("example_vpc", new()
     ///     {
     ///         OrganizationId = example.Id,
     ///         CloudName = "azure-germany-westcentral",
     ///         NetworkCidr = "10.0.0.0/24",
     ///     });
     /// 
-    ///     var examplePeering = new Aiven.Index.AzureOrgVpcPeeringConnection("example_peering", new()
+    ///     var examplePeering = new Aiven.AzureOrgVpcPeeringConnection("example_peering", new()
     ///     {
     ///         OrganizationId = exampleVpc.OrganizationId,
     ///         OrganizationVpcId = exampleVpc.OrganizationVpcId,

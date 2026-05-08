@@ -309,8 +309,8 @@ def get_billing_group(billing_group_id: Optional[_builtins.str] = None,
         timeouts=pulumi.get(__ret__, 'timeouts'),
         vat_id=pulumi.get(__ret__, 'vat_id'),
         zip_code=pulumi.get(__ret__, 'zip_code'))
-def get_billing_group_output(billing_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                             timeouts: Optional[pulumi.Input[Optional[Union['GetBillingGroupTimeoutsArgs', 'GetBillingGroupTimeoutsArgsDict']]]] = None,
+def get_billing_group_output(billing_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                             timeouts: pulumi.Input[Optional[Optional[Union['GetBillingGroupTimeoutsArgs', 'GetBillingGroupTimeoutsArgsDict']]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBillingGroupResult]:
     """
     Gets information about a billing group.

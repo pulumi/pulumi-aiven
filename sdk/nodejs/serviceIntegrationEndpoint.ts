@@ -255,99 +255,99 @@ export interface ServiceIntegrationEndpointState {
     /**
      * Autoscaler user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    autoscalerUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointAutoscalerUserConfig>;
+    autoscalerUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointAutoscalerUserConfig | undefined>;
     /**
      * Datadog user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    datadogUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointDatadogUserConfig>;
+    datadogUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointDatadogUserConfig | undefined>;
     /**
      * Backend configuration for the endpoint.
      */
-    endpointConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    endpointConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Name of the service integration endpoint.
      */
-    endpointName?: pulumi.Input<string>;
+    endpointName?: pulumi.Input<string | undefined>;
     /**
      * The type of service integration endpoint. The possible values are `autoscaler`, `datadog`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalAwsS3`, `externalAzureBlobStorage`, `externalClickhouse`, `externalElasticsearchLogs`, `externalGoogleCloudBigquery`, `externalGoogleCloudLogging`, `externalKafka`, `externalMysql`, `externalObjectStorageConfig`, `externalOpensearchLogs`, `externalPostgresql`, `externalPrometheus`, `externalRedis`, `externalSchemaRegistry`, `externalSumologicLogs`, `jolokia`, `prometheus` and `rsyslog`.
      */
-    endpointType?: pulumi.Input<string>;
+    endpointType?: pulumi.Input<string | undefined>;
     /**
      * ExternalAwsCloudwatchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    externalAwsCloudwatchLogsUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig>;
+    externalAwsCloudwatchLogsUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig | undefined>;
     /**
      * ExternalAwsCloudwatchMetrics user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    externalAwsCloudwatchMetricsUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig>;
+    externalAwsCloudwatchMetricsUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig | undefined>;
     /**
      * ExternalAwsS3 user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    externalAwsS3UserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalAwsS3UserConfig>;
+    externalAwsS3UserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalAwsS3UserConfig | undefined>;
     /**
      * ExternalAzureBlobStorage user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    externalAzureBlobStorageUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalAzureBlobStorageUserConfig>;
+    externalAzureBlobStorageUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalAzureBlobStorageUserConfig | undefined>;
     /**
      * ExternalClickhouse user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    externalClickhouseUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalClickhouseUserConfig>;
+    externalClickhouseUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalClickhouseUserConfig | undefined>;
     /**
      * ExternalElasticsearchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    externalElasticsearchLogsUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig>;
+    externalElasticsearchLogsUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig | undefined>;
     /**
      * ExternalGoogleCloudBigquery user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    externalGoogleCloudBigquery?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalGoogleCloudBigquery>;
+    externalGoogleCloudBigquery?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalGoogleCloudBigquery | undefined>;
     /**
      * ExternalGoogleCloudLogging user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    externalGoogleCloudLoggingUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig>;
+    externalGoogleCloudLoggingUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig | undefined>;
     /**
      * ExternalKafka user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    externalKafkaUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalKafkaUserConfig>;
+    externalKafkaUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalKafkaUserConfig | undefined>;
     /**
      * ExternalMysql user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    externalMysqlUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalMysqlUserConfig>;
+    externalMysqlUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalMysqlUserConfig | undefined>;
     /**
      * ExternalObjectStorageConfig user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    externalObjectStorageConfigUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalObjectStorageConfigUserConfig>;
+    externalObjectStorageConfigUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalObjectStorageConfigUserConfig | undefined>;
     /**
      * ExternalOpensearchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    externalOpensearchLogsUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalOpensearchLogsUserConfig>;
+    externalOpensearchLogsUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalOpensearchLogsUserConfig | undefined>;
     /**
      * ExternalPostgresql user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    externalPostgresql?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalPostgresql>;
+    externalPostgresql?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalPostgresql | undefined>;
     /**
      * ExternalPrometheus user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    externalPrometheusUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalPrometheusUserConfig>;
+    externalPrometheusUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalPrometheusUserConfig | undefined>;
     /**
      * ExternalSchemaRegistry user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    externalSchemaRegistryUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalSchemaRegistryUserConfig>;
+    externalSchemaRegistryUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalSchemaRegistryUserConfig | undefined>;
     /**
      * Jolokia user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    jolokiaUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointJolokiaUserConfig>;
+    jolokiaUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointJolokiaUserConfig | undefined>;
     /**
      * Project the service integration endpoint is in.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Prometheus user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    prometheusUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointPrometheusUserConfig>;
+    prometheusUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointPrometheusUserConfig | undefined>;
     /**
      * Rsyslog user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    rsyslogUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointRsyslogUserConfig>;
+    rsyslogUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointRsyslogUserConfig | undefined>;
 }
 
 /**
@@ -357,11 +357,11 @@ export interface ServiceIntegrationEndpointArgs {
     /**
      * Autoscaler user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    autoscalerUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointAutoscalerUserConfig>;
+    autoscalerUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointAutoscalerUserConfig | undefined>;
     /**
      * Datadog user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    datadogUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointDatadogUserConfig>;
+    datadogUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointDatadogUserConfig | undefined>;
     /**
      * Name of the service integration endpoint.
      */
@@ -373,67 +373,67 @@ export interface ServiceIntegrationEndpointArgs {
     /**
      * ExternalAwsCloudwatchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    externalAwsCloudwatchLogsUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig>;
+    externalAwsCloudwatchLogsUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig | undefined>;
     /**
      * ExternalAwsCloudwatchMetrics user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    externalAwsCloudwatchMetricsUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig>;
+    externalAwsCloudwatchMetricsUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig | undefined>;
     /**
      * ExternalAwsS3 user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    externalAwsS3UserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalAwsS3UserConfig>;
+    externalAwsS3UserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalAwsS3UserConfig | undefined>;
     /**
      * ExternalAzureBlobStorage user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    externalAzureBlobStorageUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalAzureBlobStorageUserConfig>;
+    externalAzureBlobStorageUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalAzureBlobStorageUserConfig | undefined>;
     /**
      * ExternalClickhouse user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    externalClickhouseUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalClickhouseUserConfig>;
+    externalClickhouseUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalClickhouseUserConfig | undefined>;
     /**
      * ExternalElasticsearchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    externalElasticsearchLogsUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig>;
+    externalElasticsearchLogsUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig | undefined>;
     /**
      * ExternalGoogleCloudBigquery user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    externalGoogleCloudBigquery?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalGoogleCloudBigquery>;
+    externalGoogleCloudBigquery?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalGoogleCloudBigquery | undefined>;
     /**
      * ExternalGoogleCloudLogging user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    externalGoogleCloudLoggingUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig>;
+    externalGoogleCloudLoggingUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig | undefined>;
     /**
      * ExternalKafka user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    externalKafkaUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalKafkaUserConfig>;
+    externalKafkaUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalKafkaUserConfig | undefined>;
     /**
      * ExternalMysql user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    externalMysqlUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalMysqlUserConfig>;
+    externalMysqlUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalMysqlUserConfig | undefined>;
     /**
      * ExternalObjectStorageConfig user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    externalObjectStorageConfigUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalObjectStorageConfigUserConfig>;
+    externalObjectStorageConfigUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalObjectStorageConfigUserConfig | undefined>;
     /**
      * ExternalOpensearchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    externalOpensearchLogsUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalOpensearchLogsUserConfig>;
+    externalOpensearchLogsUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalOpensearchLogsUserConfig | undefined>;
     /**
      * ExternalPostgresql user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    externalPostgresql?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalPostgresql>;
+    externalPostgresql?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalPostgresql | undefined>;
     /**
      * ExternalPrometheus user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    externalPrometheusUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalPrometheusUserConfig>;
+    externalPrometheusUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalPrometheusUserConfig | undefined>;
     /**
      * ExternalSchemaRegistry user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    externalSchemaRegistryUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalSchemaRegistryUserConfig>;
+    externalSchemaRegistryUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointExternalSchemaRegistryUserConfig | undefined>;
     /**
      * Jolokia user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    jolokiaUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointJolokiaUserConfig>;
+    jolokiaUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointJolokiaUserConfig | undefined>;
     /**
      * Project the service integration endpoint is in.
      */
@@ -441,9 +441,9 @@ export interface ServiceIntegrationEndpointArgs {
     /**
      * Prometheus user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    prometheusUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointPrometheusUserConfig>;
+    prometheusUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointPrometheusUserConfig | undefined>;
     /**
      * Rsyslog user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    rsyslogUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointRsyslogUserConfig>;
+    rsyslogUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointRsyslogUserConfig | undefined>;
 }

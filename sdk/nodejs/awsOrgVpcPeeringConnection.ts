@@ -156,35 +156,35 @@ export interface AwsOrgVpcPeeringConnectionState {
     /**
      * AWS account ID. Changing this property forces recreation of the resource.
      */
-    awsAccountId?: pulumi.Input<string>;
+    awsAccountId?: pulumi.Input<string | undefined>;
     /**
      * AWS VPC ID. Changing this property forces recreation of the resource.
      */
-    awsVpcId?: pulumi.Input<string>;
+    awsVpcId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the AWS VPC peering connection.
      */
-    awsVpcPeeringConnectionId?: pulumi.Input<string>;
+    awsVpcPeeringConnectionId?: pulumi.Input<string | undefined>;
     /**
      * The AWS region of the peered VPC. For example, `eu-central-1`.
      */
-    awsVpcRegion?: pulumi.Input<string>;
+    awsVpcRegion?: pulumi.Input<string | undefined>;
     /**
      * Identifier of the organization.
      */
-    organizationId?: pulumi.Input<string>;
+    organizationId?: pulumi.Input<string | undefined>;
     /**
      * Identifier of the organization VPC.
      */
-    organizationVpcId?: pulumi.Input<string>;
+    organizationVpcId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the peering connection.
      */
-    peeringConnectionId?: pulumi.Input<string>;
+    peeringConnectionId?: pulumi.Input<string | undefined>;
     /**
      * State of the peering connection. The possible values are `ACTIVE`, `APPROVED`, `APPROVED_PEER_REQUESTED`, `DELETED`, `DELETED_BY_PEER`, `DELETING`, `ERROR`, `INVALID_SPECIFICATION`, `PENDING_PEER` and `REJECTED_BY_PEER`.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
 }
 
 /**

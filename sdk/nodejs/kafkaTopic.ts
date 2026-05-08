@@ -168,43 +168,43 @@ export interface KafkaTopicState {
     /**
      * [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics.
      */
-    config?: pulumi.Input<inputs.KafkaTopicConfig>;
+    config?: pulumi.Input<inputs.KafkaTopicConfig | undefined>;
     /**
      * The ID of the user group that owns the topic. Assigning ownership to decentralize topic management is part of [Aiven for Apache Kafka® governance](https://aiven.io/docs/products/kafka/concepts/governance-overview).
      */
-    ownerUserGroupId?: pulumi.Input<string>;
+    ownerUserGroupId?: pulumi.Input<string | undefined>;
     /**
      * The number of partitions to create in the topic.
      */
-    partitions?: pulumi.Input<number>;
+    partitions?: pulumi.Input<number | undefined>;
     /**
      * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The replication factor for the topic.
      */
-    replication?: pulumi.Input<number>;
+    replication?: pulumi.Input<number | undefined>;
     /**
      * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    serviceName?: pulumi.Input<string>;
+    serviceName?: pulumi.Input<string | undefined>;
     /**
      * Tags for the topic.
      */
-    tags?: pulumi.Input<pulumi.Input<inputs.KafkaTopicTag>[]>;
+    tags?: pulumi.Input<pulumi.Input<inputs.KafkaTopicTag>[] | undefined>;
     /**
      * Prevents topics from being deleted by Terraform. It's recommended for topics containing critical data. **Topics can still be deleted in the Aiven Console.**
      */
-    terminationProtection?: pulumi.Input<boolean>;
+    terminationProtection?: pulumi.Input<boolean | undefined>;
     /**
      * The description of the topic
      */
-    topicDescription?: pulumi.Input<string>;
+    topicDescription?: pulumi.Input<string | undefined>;
     /**
      * The name of the topic. Changing this property forces recreation of the resource.
      */
-    topicName?: pulumi.Input<string>;
+    topicName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -214,11 +214,11 @@ export interface KafkaTopicArgs {
     /**
      * [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics.
      */
-    config?: pulumi.Input<inputs.KafkaTopicConfig>;
+    config?: pulumi.Input<inputs.KafkaTopicConfig | undefined>;
     /**
      * The ID of the user group that owns the topic. Assigning ownership to decentralize topic management is part of [Aiven for Apache Kafka® governance](https://aiven.io/docs/products/kafka/concepts/governance-overview).
      */
-    ownerUserGroupId?: pulumi.Input<string>;
+    ownerUserGroupId?: pulumi.Input<string | undefined>;
     /**
      * The number of partitions to create in the topic.
      */
@@ -238,15 +238,15 @@ export interface KafkaTopicArgs {
     /**
      * Tags for the topic.
      */
-    tags?: pulumi.Input<pulumi.Input<inputs.KafkaTopicTag>[]>;
+    tags?: pulumi.Input<pulumi.Input<inputs.KafkaTopicTag>[] | undefined>;
     /**
      * Prevents topics from being deleted by Terraform. It's recommended for topics containing critical data. **Topics can still be deleted in the Aiven Console.**
      */
-    terminationProtection?: pulumi.Input<boolean>;
+    terminationProtection?: pulumi.Input<boolean | undefined>;
     /**
      * The description of the topic
      */
-    topicDescription?: pulumi.Input<string>;
+    topicDescription?: pulumi.Input<string | undefined>;
     /**
      * The name of the topic. Changing this property forces recreation of the resource.
      */

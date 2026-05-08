@@ -24,8 +24,8 @@ class CmkArgs:
                  cmk_provider: pulumi.Input[_builtins.str],
                  project: pulumi.Input[_builtins.str],
                  resource: pulumi.Input[_builtins.str],
-                 default_cmk: Optional[pulumi.Input[_builtins.bool]] = None,
-                 timeouts: Optional[pulumi.Input['CmkTimeoutsArgs']] = None):
+                 default_cmk: pulumi.Input[Optional[_builtins.bool]] = None,
+                 timeouts: pulumi.Input[Optional['CmkTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a Cmk resource.
 
@@ -80,38 +80,38 @@ class CmkArgs:
 
     @_builtins.property
     @pulumi.getter(name="defaultCmk")
-    def default_cmk(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def default_cmk(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Mark the created CMK as default for all newly created services.
         """
         return pulumi.get(self, "default_cmk")
 
     @default_cmk.setter
-    def default_cmk(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def default_cmk(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "default_cmk", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['CmkTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['CmkTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['CmkTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['CmkTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
 
 @pulumi.input_type
 class _CmkState:
     def __init__(__self__, *,
-                 cmk_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cmk_provider: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_cmk: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input['CmkTimeoutsArgs']] = None,
-                 updated_at: Optional[pulumi.Input[_builtins.str]] = None):
+                 cmk_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cmk_provider: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_cmk: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional['CmkTimeoutsArgs']] = None,
+                 updated_at: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Cmk resources.
 
@@ -145,107 +145,107 @@ class _CmkState:
 
     @_builtins.property
     @pulumi.getter(name="cmkId")
-    def cmk_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cmk_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Customer Managed Key identifier (CMK ID).
         """
         return pulumi.get(self, "cmk_id")
 
     @cmk_id.setter
-    def cmk_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cmk_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cmk_id", value)
 
     @_builtins.property
     @pulumi.getter(name="cmkProvider")
-    def cmk_provider(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cmk_provider(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The cloud provider hosting the key management service (KMS). The possible values are `aws`, `gcp` and `oci`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "cmk_provider")
 
     @cmk_provider.setter
-    def cmk_provider(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cmk_provider(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cmk_provider", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Created At.
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultCmk")
-    def default_cmk(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def default_cmk(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Mark the created CMK as default for all newly created services.
         """
         return pulumi.get(self, "default_cmk")
 
     @default_cmk.setter
-    def default_cmk(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def default_cmk(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "default_cmk", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Project name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def resource(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier for the CMK in the cloud provider's KMS. In AWS, this is the Key ARN; in Google Cloud the Resource Name; and in Oracle Cloud the Key OCID. Length must be between `1` and `512`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "resource")
 
     @resource.setter
-    def resource(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Status. The possible values are `current`, `deleted` and `old`.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['CmkTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['CmkTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['CmkTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['CmkTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def updated_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Updated At.
         """
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
-    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def updated_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "updated_at", value)
 
 
@@ -255,11 +255,11 @@ class Cmk(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cmk_provider: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_cmk: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input[Union['CmkTimeoutsArgs', 'CmkTimeoutsArgsDict']]] = None,
+                 cmk_provider: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_cmk: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['CmkTimeoutsArgs', 'CmkTimeoutsArgsDict']]] = None,
                  __props__=None):
         """
         Creates and manages [customer managed keys](https://aiven.io/docs/platform/howto/bring-your-own-key) (CMKs) for encrypting service data. Use your own CMKs from your cloud provider's key management service (KMS) to encrypt data for all services in an Aiven project. This gives you complete control over your encryption keys, meaning you can independently manage the key lifecycle and access policies.
@@ -347,11 +347,11 @@ class Cmk(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cmk_provider: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_cmk: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input[Union['CmkTimeoutsArgs', 'CmkTimeoutsArgsDict']]] = None,
+                 cmk_provider: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_cmk: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['CmkTimeoutsArgs', 'CmkTimeoutsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -386,15 +386,15 @@ class Cmk(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cmk_id: Optional[pulumi.Input[_builtins.str]] = None,
-            cmk_provider: Optional[pulumi.Input[_builtins.str]] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            default_cmk: Optional[pulumi.Input[_builtins.bool]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            resource: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            timeouts: Optional[pulumi.Input[Union['CmkTimeoutsArgs', 'CmkTimeoutsArgsDict']]] = None,
-            updated_at: Optional[pulumi.Input[_builtins.str]] = None) -> 'Cmk':
+            cmk_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cmk_provider: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            default_cmk: pulumi.Input[Optional[_builtins.bool]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            resource: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['CmkTimeoutsArgs', 'CmkTimeoutsArgsDict']]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None) -> 'Cmk':
         """
         Get an existing Cmk resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

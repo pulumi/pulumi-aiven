@@ -26,7 +26,7 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var sc1 = Aiven.Index.GetServiceComponent.Invoke(new()
+        ///     var sc1 = Aiven.GetServiceComponent.Invoke(new()
         ///     {
         ///         Project = project1.Project,
         ///         ServiceName = service1.ServiceName,
@@ -56,7 +56,7 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var sc1 = Aiven.Index.GetServiceComponent.Invoke(new()
+        ///     var sc1 = Aiven.GetServiceComponent.Invoke(new()
         ///     {
         ///         Project = project1.Project,
         ///         ServiceName = service1.ServiceName,
@@ -86,7 +86,7 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var sc1 = Aiven.Index.GetServiceComponent.Invoke(new()
+        ///     var sc1 = Aiven.GetServiceComponent.Invoke(new()
         ///     {
         ///         Project = project1.Project,
         ///         ServiceName = service1.ServiceName,

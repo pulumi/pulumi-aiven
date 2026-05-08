@@ -162,23 +162,23 @@ export interface AzurePrivatelinkConnectionApprovalState {
     /**
      * IP address of Azure private endpoint.
      */
-    endpointIpAddress?: pulumi.Input<string>;
+    endpointIpAddress?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Private Link connection.
      */
-    privatelinkConnectionId?: pulumi.Input<string>;
+    privatelinkConnectionId?: pulumi.Input<string | undefined>;
     /**
      * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    serviceName?: pulumi.Input<string>;
+    serviceName?: pulumi.Input<string | undefined>;
     /**
      * The state of the Private Link connection.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -188,7 +188,7 @@ export interface AzurePrivatelinkConnectionApprovalArgs {
     /**
      * IP address of Azure private endpoint.
      */
-    endpointIpAddress?: pulumi.Input<string>;
+    endpointIpAddress?: pulumi.Input<string | undefined>;
     /**
      * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */

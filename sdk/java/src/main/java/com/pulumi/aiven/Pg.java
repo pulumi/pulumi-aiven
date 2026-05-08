@@ -41,8 +41,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.aiven.inputs.PgPgUserConfigPublicAccessArgs;
  * import com.pulumi.aiven.inputs.PgPgUserConfigPgArgs;
  * import com.pulumi.std.StdFunctions;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -61,11 +61,11 @@ import javax.annotation.Nullable;
  *             .serviceName("example-postgres-service")
  *             .maintenanceWindowDow("monday")
  *             .maintenanceWindowTime("10:00:00")
- *             .staticIps(StdFunctions.toset(Map.of("input",             
+ *             .staticIps(StdFunctions.toset(Map.of("input", Arrays.asList(            
  *                 ips[0].staticIpAddressId(),
  *                 ips[1].staticIpAddressId(),
  *                 ips[2].staticIpAddressId(),
- *                 ips[3].staticIpAddressId())).result())
+ *                 ips[3].staticIpAddressId()))).result())
  *             .pgUserConfig(PgPgUserConfigArgs.builder()
  *                 .staticIps(true)
  *                 .publicAccess(PgPgUserConfigPublicAccessArgs.builder()

@@ -24,14 +24,14 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleVpc = new Aiven.Index.ProjectVpc("example_vpc", new()
+        ///     var exampleVpc = new Aiven.ProjectVpc("example_vpc", new()
         ///     {
         ///         Project = exampleProject.Project,
         ///         CloudName = "google-europe-west1",
         ///         NetworkCidr = "192.168.1.0/24",
         ///     });
         /// 
-        ///     var awsToAivenPeering = Aiven.Index.GetAwsVpcPeeringConnection.Invoke(new()
+        ///     var awsToAivenPeering = Aiven.GetAwsVpcPeeringConnection.Invoke(new()
         ///     {
         ///         VpcId = exampleVpc.Id,
         ///         AwsAccountId = awsId,
@@ -58,14 +58,14 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleVpc = new Aiven.Index.ProjectVpc("example_vpc", new()
+        ///     var exampleVpc = new Aiven.ProjectVpc("example_vpc", new()
         ///     {
         ///         Project = exampleProject.Project,
         ///         CloudName = "google-europe-west1",
         ///         NetworkCidr = "192.168.1.0/24",
         ///     });
         /// 
-        ///     var awsToAivenPeering = Aiven.Index.GetAwsVpcPeeringConnection.Invoke(new()
+        ///     var awsToAivenPeering = Aiven.GetAwsVpcPeeringConnection.Invoke(new()
         ///     {
         ///         VpcId = exampleVpc.Id,
         ///         AwsAccountId = awsId,
@@ -92,14 +92,14 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleVpc = new Aiven.Index.ProjectVpc("example_vpc", new()
+        ///     var exampleVpc = new Aiven.ProjectVpc("example_vpc", new()
         ///     {
         ///         Project = exampleProject.Project,
         ///         CloudName = "google-europe-west1",
         ///         NetworkCidr = "192.168.1.0/24",
         ///     });
         /// 
-        ///     var awsToAivenPeering = Aiven.Index.GetAwsVpcPeeringConnection.Invoke(new()
+        ///     var awsToAivenPeering = Aiven.GetAwsVpcPeeringConnection.Invoke(new()
         ///     {
         ///         VpcId = exampleVpc.Id,
         ///         AwsAccountId = awsId,

@@ -73,10 +73,10 @@ class ProjectVpcArgs:
 @pulumi.input_type
 class _ProjectVpcState:
     def __init__(__self__, *,
-                 cloud_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None):
+                 cloud_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ProjectVpc resources.
 
@@ -96,50 +96,50 @@ class _ProjectVpcState:
 
     @_builtins.property
     @pulumi.getter(name="cloudName")
-    def cloud_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cloud_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "cloud_name")
 
     @cloud_name.setter
-    def cloud_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cloud_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cloud_name", value)
 
     @_builtins.property
     @pulumi.getter(name="networkCidr")
-    def network_cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_cidr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Network address range used by the VPC. For example, `192.168.0.0/24`.
         """
         return pulumi.get(self, "network_cidr")
 
     @network_cidr.setter
-    def network_cidr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_cidr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_cidr", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         State of the VPC. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
 
@@ -149,9 +149,9 @@ class ProjectVpc(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cloud_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 cloud_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Creates and manages a VPC for an Aiven project.
@@ -224,9 +224,9 @@ class ProjectVpc(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cloud_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
+                 cloud_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -256,10 +256,10 @@ class ProjectVpc(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cloud_name: Optional[pulumi.Input[_builtins.str]] = None,
-            network_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None) -> 'ProjectVpc':
+            cloud_name: pulumi.Input[Optional[_builtins.str]] = None,
+            network_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None) -> 'ProjectVpc':
         """
         Get an existing ProjectVpc resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -133,15 +133,15 @@ class AzureOrgVpcPeeringConnectionArgs:
 @pulumi.input_type
 class _AzureOrgVpcPeeringConnectionState:
     def __init__(__self__, *,
-                 azure_subscription_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 organization_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 organization_vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_azure_app_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_azure_tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_resource_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 peering_connection_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 vnet_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 azure_subscription_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_azure_app_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_azure_tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_resource_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 peering_connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 vnet_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AzureOrgVpcPeeringConnection resources.
 
@@ -176,110 +176,110 @@ class _AzureOrgVpcPeeringConnectionState:
 
     @_builtins.property
     @pulumi.getter(name="azureSubscriptionId")
-    def azure_subscription_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def azure_subscription_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Azure subscription in UUID4 format. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "azure_subscription_id")
 
     @azure_subscription_id.setter
-    def azure_subscription_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def azure_subscription_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "azure_subscription_id", value)
 
     @_builtins.property
     @pulumi.getter(name="organizationId")
-    def organization_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def organization_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier of the organization.
         """
         return pulumi.get(self, "organization_id")
 
     @organization_id.setter
-    def organization_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def organization_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "organization_id", value)
 
     @_builtins.property
     @pulumi.getter(name="organizationVpcId")
-    def organization_vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def organization_vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier of the organization VPC.
         """
         return pulumi.get(self, "organization_vpc_id")
 
     @organization_vpc_id.setter
-    def organization_vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def organization_vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "organization_vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="peerAzureAppId")
-    def peer_azure_app_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def peer_azure_app_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Azure app that is allowed to create a peering to the Azure Virtual Network (VNet) in UUID4 format. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "peer_azure_app_id")
 
     @peer_azure_app_id.setter
-    def peer_azure_app_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def peer_azure_app_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "peer_azure_app_id", value)
 
     @_builtins.property
     @pulumi.getter(name="peerAzureTenantId")
-    def peer_azure_tenant_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def peer_azure_tenant_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Azure tenant ID in UUID4 format. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "peer_azure_tenant_id")
 
     @peer_azure_tenant_id.setter
-    def peer_azure_tenant_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def peer_azure_tenant_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "peer_azure_tenant_id", value)
 
     @_builtins.property
     @pulumi.getter(name="peerResourceGroup")
-    def peer_resource_group(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def peer_resource_group(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Azure resource group associated with the VNet. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "peer_resource_group")
 
     @peer_resource_group.setter
-    def peer_resource_group(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def peer_resource_group(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "peer_resource_group", value)
 
     @_builtins.property
     @pulumi.getter(name="peeringConnectionId")
-    def peering_connection_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def peering_connection_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the cloud provider for the peering connection.
         """
         return pulumi.get(self, "peering_connection_id")
 
     @peering_connection_id.setter
-    def peering_connection_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def peering_connection_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "peering_connection_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         State of the peering connection
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter(name="vnetName")
-    def vnet_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vnet_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Azure VNet. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "vnet_name")
 
     @vnet_name.setter
-    def vnet_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vnet_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vnet_name", value)
 
 
@@ -289,13 +289,13 @@ class AzureOrgVpcPeeringConnection(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 azure_subscription_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 organization_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 organization_vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_azure_app_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_azure_tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_resource_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 vnet_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 azure_subscription_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_azure_app_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_azure_tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_resource_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 vnet_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Creates and manages an Azure VPC peering connection with an Aiven VPC.
@@ -394,13 +394,13 @@ class AzureOrgVpcPeeringConnection(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 azure_subscription_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 organization_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 organization_vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_azure_app_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_azure_tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_resource_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 vnet_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 azure_subscription_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_azure_app_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_azure_tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_resource_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 vnet_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -443,15 +443,15 @@ class AzureOrgVpcPeeringConnection(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            azure_subscription_id: Optional[pulumi.Input[_builtins.str]] = None,
-            organization_id: Optional[pulumi.Input[_builtins.str]] = None,
-            organization_vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-            peer_azure_app_id: Optional[pulumi.Input[_builtins.str]] = None,
-            peer_azure_tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-            peer_resource_group: Optional[pulumi.Input[_builtins.str]] = None,
-            peering_connection_id: Optional[pulumi.Input[_builtins.str]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            vnet_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'AzureOrgVpcPeeringConnection':
+            azure_subscription_id: pulumi.Input[Optional[_builtins.str]] = None,
+            organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+            organization_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            peer_azure_app_id: pulumi.Input[Optional[_builtins.str]] = None,
+            peer_azure_tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+            peer_resource_group: pulumi.Input[Optional[_builtins.str]] = None,
+            peering_connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            vnet_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'AzureOrgVpcPeeringConnection':
         """
         Get an existing AzureOrgVpcPeeringConnection resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -185,9 +185,9 @@ def get_transit_gateway_vpc_attachment(peer_cloud_account: Optional[_builtins.st
         state_info=pulumi.get(__ret__, 'state_info'),
         user_peer_network_cidrs=pulumi.get(__ret__, 'user_peer_network_cidrs'),
         vpc_id=pulumi.get(__ret__, 'vpc_id'))
-def get_transit_gateway_vpc_attachment_output(peer_cloud_account: Optional[pulumi.Input[_builtins.str]] = None,
-                                              peer_vpc: Optional[pulumi.Input[_builtins.str]] = None,
-                                              vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_transit_gateway_vpc_attachment_output(peer_cloud_account: pulumi.Input[Optional[_builtins.str]] = None,
+                                              peer_vpc: pulumi.Input[Optional[_builtins.str]] = None,
+                                              vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTransitGatewayVpcAttachmentResult]:
     """
     The Transit Gateway VPC Attachment resource allows the creation and management Transit Gateway VPC Attachment VPC peering connection between Aiven and AWS.

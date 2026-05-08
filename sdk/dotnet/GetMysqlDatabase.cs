@@ -24,7 +24,7 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleDatabase = Aiven.Index.GetMysqlDatabase.Invoke(new()
+        ///     var exampleDatabase = Aiven.GetMysqlDatabase.Invoke(new()
         ///     {
         ///         Project = exampleProject.Project,
         ///         ServiceName = exampleMysql.ServiceName,
@@ -50,7 +50,7 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleDatabase = Aiven.Index.GetMysqlDatabase.Invoke(new()
+        ///     var exampleDatabase = Aiven.GetMysqlDatabase.Invoke(new()
         ///     {
         ///         Project = exampleProject.Project,
         ///         ServiceName = exampleMysql.ServiceName,
@@ -76,7 +76,7 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleDatabase = Aiven.Index.GetMysqlDatabase.Invoke(new()
+        ///     var exampleDatabase = Aiven.GetMysqlDatabase.Invoke(new()
         ///     {
         ///         Project = exampleProject.Project,
         ///         ServiceName = exampleMysql.ServiceName,

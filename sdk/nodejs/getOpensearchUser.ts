@@ -119,7 +119,7 @@ export interface GetOpensearchUserOutputArgs {
      * Service name.
      */
     serviceName: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.GetOpensearchUserTimeoutsArgs>;
+    timeouts?: pulumi.Input<inputs.GetOpensearchUserTimeoutsArgs | undefined>;
     /**
      * Account username.
      */

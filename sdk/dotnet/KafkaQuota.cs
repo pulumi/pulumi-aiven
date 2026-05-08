@@ -22,7 +22,7 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleQuota = new Aiven.Index.KafkaQuota("example_quota", new()
+    ///     var exampleQuota = new Aiven.KafkaQuota("example_quota", new()
     ///     {
     ///         Project = foo.Project,
     ///         ServiceName = exampleKafka.ServiceName,

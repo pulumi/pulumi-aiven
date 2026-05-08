@@ -274,108 +274,108 @@ export interface ByocAwsEntityState {
     /**
      * Entity that assumes the IAM role for controlling the BYOC account.
      */
-    aivenAwsAccountPrincipal?: pulumi.Input<string>;
+    aivenAwsAccountPrincipal?: pulumi.Input<string | undefined>;
     /**
      * External ID for assuming the IAM role for controlling the BYOC account.
      */
-    aivenAwsAssumeRoleExternalId?: pulumi.Input<string>;
+    aivenAwsAssumeRoleExternalId?: pulumi.Input<string | undefined>;
     /**
      * Amazon Resource Name.
      */
-    aivenAwsObjectStorageCredentialsCreatorArn?: pulumi.Input<string>;
+    aivenAwsObjectStorageCredentialsCreatorArn?: pulumi.Input<string | undefined>;
     /**
      * Amazon Resource Name.
      */
-    aivenAwsObjectStorageUserArn?: pulumi.Input<string>;
+    aivenAwsObjectStorageUserArn?: pulumi.Input<string | undefined>;
     /**
      * IP address ranges for incoming connections to the bastion host from the Aiven management plane.
      */
-    aivenManagementCidrBlocks?: pulumi.Input<pulumi.Input<string>[]>;
+    aivenManagementCidrBlocks?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Google account identifier.
      */
-    aivenObjectStorageCredentialsCreatorUser?: pulumi.Input<string>;
+    aivenObjectStorageCredentialsCreatorUser?: pulumi.Input<string | undefined>;
     /**
      * Amazon Resource Name. Maximum length: `2048`.
      */
-    awsIamRoleArn?: pulumi.Input<string>;
+    awsIamRoleArn?: pulumi.Input<string | undefined>;
     /**
      * Subnets to build in the bastion VPC.
      */
-    awsSubnetsBastion?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    awsSubnetsBastion?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Subnets to build in the workload VPC.
      */
-    awsSubnetsWorkload?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    awsSubnetsWorkload?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Names and usages of buckets required for workloads.
      */
-    bucketNames?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    bucketNames?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Set of tags for the resources provisioned on the BYOC account.
      */
-    byocResourceTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    byocResourceTags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Name for all the resources created for the custom cloud environment.
      */
-    byocUniqueName?: pulumi.Input<string>;
+    byocUniqueName?: pulumi.Input<string | undefined>;
     /**
      * Cloud provider for the BYOC cloud. The possible values are `aws`, `azure`, `google` and `oracle`.
      */
-    cloudProvider?: pulumi.Input<string>;
+    cloudProvider?: pulumi.Input<string | undefined>;
     /**
      * Cloud region for the BYOC cloud. Maximum length: `32`.
      */
-    cloudRegion?: pulumi.Input<string>;
+    cloudRegion?: pulumi.Input<string | undefined>;
     /**
      * Email addresses for notifications and alerts for this BYOC cloud.
      */
-    contactEmails?: pulumi.Input<pulumi.Input<inputs.ByocAwsEntityContactEmail>[]>;
+    contactEmails?: pulumi.Input<pulumi.Input<inputs.ByocAwsEntityContactEmail>[] | undefined>;
     /**
      * ID of a custom cloud environment.
      */
-    customCloudEnvironmentId?: pulumi.Input<string>;
+    customCloudEnvironmentId?: pulumi.Input<string | undefined>;
     /**
      * Cloud names that can be used to provision a service on this BYOC.
      */
-    customCloudNames?: pulumi.Input<pulumi.Input<string>[]>;
+    customCloudNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Deployment model for the BYOC cloud. The possible values are `directIpsecIngress`, `ipsecIngress`, `standard` and `standardPublic`.
      */
-    deploymentModel?: pulumi.Input<string>;
+    deploymentModel?: pulumi.Input<string | undefined>;
     /**
      * Short name for this BYOC cloud. Maximum length: `64`.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * List of errors for this custom cloud environment.
      */
-    errors?: pulumi.Input<pulumi.Input<inputs.ByocAwsEntityError>[]>;
+    errors?: pulumi.Input<pulumi.Input<inputs.ByocAwsEntityError>[] | undefined>;
     /**
      * ID of an organization. Changing this property forces recreation of the resource.
      */
-    organizationId?: pulumi.Input<string>;
+    organizationId?: pulumi.Input<string | undefined>;
     /**
      * CIDR range reserved for Aiven provisioned networks in the BYOC cloud. Maximum length: `18`.
      */
-    reservedCidr?: pulumi.Input<string>;
+    reservedCidr?: pulumi.Input<string | undefined>;
     /**
      * State of this BYOC cloud. The possible values are `active`, `creating`, `creationFailed`, `deleted`, `deleting`, `deletionFailed`, `disconnected`, `draft`, `reconnecting` and `validating`.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * Set of resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    timeouts?: pulumi.Input<inputs.ByocAwsEntityTimeouts>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    timeouts?: pulumi.Input<inputs.ByocAwsEntityTimeouts | undefined>;
     /**
      * Custom cloud environment last update timestamp (ISO 8601).
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
     /**
      * True if this BYOC cloud is using customer owned storage.
      */
-    useCustomerOwnedStorage?: pulumi.Input<boolean>;
+    useCustomerOwnedStorage?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -385,7 +385,7 @@ export interface ByocAwsEntityArgs {
     /**
      * Amazon Resource Name. Maximum length: `2048`.
      */
-    awsIamRoleArn?: pulumi.Input<string>;
+    awsIamRoleArn?: pulumi.Input<string | undefined>;
     /**
      * Cloud provider for the BYOC cloud. The possible values are `aws`, `azure`, `google` and `oracle`.
      */
@@ -397,7 +397,7 @@ export interface ByocAwsEntityArgs {
     /**
      * Email addresses for notifications and alerts for this BYOC cloud.
      */
-    contactEmails?: pulumi.Input<pulumi.Input<inputs.ByocAwsEntityContactEmail>[]>;
+    contactEmails?: pulumi.Input<pulumi.Input<inputs.ByocAwsEntityContactEmail>[] | undefined>;
     /**
      * Deployment model for the BYOC cloud. The possible values are `directIpsecIngress`, `ipsecIngress`, `standard` and `standardPublic`.
      */
@@ -409,7 +409,7 @@ export interface ByocAwsEntityArgs {
     /**
      * List of errors for this custom cloud environment.
      */
-    errors?: pulumi.Input<pulumi.Input<inputs.ByocAwsEntityError>[]>;
+    errors?: pulumi.Input<pulumi.Input<inputs.ByocAwsEntityError>[] | undefined>;
     /**
      * ID of an organization. Changing this property forces recreation of the resource.
      */
@@ -421,6 +421,6 @@ export interface ByocAwsEntityArgs {
     /**
      * Set of resource tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    timeouts?: pulumi.Input<inputs.ByocAwsEntityTimeouts>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    timeouts?: pulumi.Input<inputs.ByocAwsEntityTimeouts | undefined>;
 }

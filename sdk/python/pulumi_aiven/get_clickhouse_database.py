@@ -148,10 +148,10 @@ def get_clickhouse_database(name: Optional[_builtins.str] = None,
         service_name=pulumi.get(__ret__, 'service_name'),
         termination_protection=pulumi.get(__ret__, 'termination_protection'),
         timeouts=pulumi.get(__ret__, 'timeouts'))
-def get_clickhouse_database_output(name: Optional[pulumi.Input[_builtins.str]] = None,
-                                   project: Optional[pulumi.Input[_builtins.str]] = None,
-                                   service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                                   timeouts: Optional[pulumi.Input[Optional[Union['GetClickhouseDatabaseTimeoutsArgs', 'GetClickhouseDatabaseTimeoutsArgsDict']]]] = None,
+def get_clickhouse_database_output(name: pulumi.Input[Optional[_builtins.str]] = None,
+                                   project: pulumi.Input[Optional[_builtins.str]] = None,
+                                   service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                                   timeouts: pulumi.Input[Optional[Optional[Union['GetClickhouseDatabaseTimeoutsArgs', 'GetClickhouseDatabaseTimeoutsArgsDict']]]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetClickhouseDatabaseResult]:
     """
     Gets information about an Aiven for ClickHouse database.

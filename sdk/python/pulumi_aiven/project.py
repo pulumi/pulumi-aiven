@@ -22,15 +22,15 @@ __all__ = ['ProjectArgs', 'Project']
 class ProjectArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[_builtins.str],
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 add_account_owners_admin_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 billing_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 copy_from_project: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_cloud: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectTagArgs']]]] = None,
-                 technical_emails: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 use_source_project_billing_group: Optional[pulumi.Input[_builtins.bool]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 add_account_owners_admin_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 billing_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 copy_from_project: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_cloud: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input['ProjectTagArgs']]]] = None,
+                 technical_emails: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 use_source_project_billing_group: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Project resource.
 
@@ -89,132 +89,132 @@ class ProjectArgs:
     @_builtins.property
     @pulumi.getter(name="accountId")
     @_utilities.deprecated("""Use parent_id instead. This field will be removed in the next major release.""")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Link a project to an existing account using its account ID. This field is deprecated. Use `parent_id` instead. To set up proper dependencies please refer to this variable as a reference.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="addAccountOwnersAdminAccess")
     @_utilities.deprecated("""This field is deprecated and will be removed in the next major release. Currently, it will always be set to true, regardless of the value set in the manifest.""")
-    def add_account_owners_admin_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def add_account_owners_admin_access(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If parent_id is set, grant account owner team admin access to the new project. The default value is `true`.
         """
         return pulumi.get(self, "add_account_owners_admin_access")
 
     @add_account_owners_admin_access.setter
-    def add_account_owners_admin_access(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def add_account_owners_admin_access(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "add_account_owners_admin_access", value)
 
     @_builtins.property
     @pulumi.getter(name="billingGroup")
-    def billing_group(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def billing_group(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the billing group this project is assigned to. To set up proper dependencies please refer to this variable as a reference.
         """
         return pulumi.get(self, "billing_group")
 
     @billing_group.setter
-    def billing_group(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def billing_group(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "billing_group", value)
 
     @_builtins.property
     @pulumi.getter(name="copyFromProject")
-    def copy_from_project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def copy_from_project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the project to copy billing information, technical contacts, and some other project attributes from. This is most useful to set up the same billing method when you use bank transfers to pay invoices for other projects. You can only do this when creating a project. You can't set the billing over the API for an existing. To set up proper dependencies please refer to this variable as a reference.
         """
         return pulumi.get(self, "copy_from_project")
 
     @copy_from_project.setter
-    def copy_from_project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def copy_from_project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "copy_from_project", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultCloud")
-    def default_cloud(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_cloud(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Default cloud provider and region where services are hosted. This can be changed after the project is created and will not affect existing services.
         """
         return pulumi.get(self, "default_cloud")
 
     @default_cloud.setter
-    def default_cloud(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_cloud(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_cloud", value)
 
     @_builtins.property
     @pulumi.getter(name="parentId")
-    def parent_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.
         """
         return pulumi.get(self, "parent_id")
 
     @parent_id.setter
-    def parent_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ProjectTagArgs']]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ProjectTagArgs']]]]:
         """
         Tags are key-value pairs that allow you to categorize projects.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectTagArgs']]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ProjectTagArgs']]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="technicalEmails")
-    def technical_emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def technical_emails(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The email addresses for [project contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this project and its services. You can also set email contacts at the service level. It's good practice to keep these up-to-date to be aware of any potential issues with your project.
         """
         return pulumi.get(self, "technical_emails")
 
     @technical_emails.setter
-    def technical_emails(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def technical_emails(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "technical_emails", value)
 
     @_builtins.property
     @pulumi.getter(name="useSourceProjectBillingGroup")
     @_utilities.deprecated("""This field is deprecated and will be removed in the next major release.""")
-    def use_source_project_billing_group(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_source_project_billing_group(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Use the same billing group that is used in source project.
         """
         return pulumi.get(self, "use_source_project_billing_group")
 
     @use_source_project_billing_group.setter
-    def use_source_project_billing_group(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_source_project_billing_group(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_source_project_billing_group", value)
 
 
 @pulumi.input_type
 class _ProjectState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 add_account_owners_admin_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 available_credits: Optional[pulumi.Input[_builtins.str]] = None,
-                 billing_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 ca_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 copy_from_project: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_cloud: Optional[pulumi.Input[_builtins.str]] = None,
-                 estimated_balance: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectTagArgs']]]] = None,
-                 technical_emails: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 use_source_project_billing_group: Optional[pulumi.Input[_builtins.bool]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 add_account_owners_admin_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 available_credits: pulumi.Input[Optional[_builtins.str]] = None,
+                 billing_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 ca_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 copy_from_project: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_cloud: pulumi.Input[Optional[_builtins.str]] = None,
+                 estimated_balance: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input['ProjectTagArgs']]]] = None,
+                 technical_emails: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 use_source_project_billing_group: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering Project resources.
 
@@ -274,172 +274,172 @@ class _ProjectState:
     @_builtins.property
     @pulumi.getter(name="accountId")
     @_utilities.deprecated("""Use parent_id instead. This field will be removed in the next major release.""")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Link a project to an existing account using its account ID. This field is deprecated. Use `parent_id` instead. To set up proper dependencies please refer to this variable as a reference.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="addAccountOwnersAdminAccess")
     @_utilities.deprecated("""This field is deprecated and will be removed in the next major release. Currently, it will always be set to true, regardless of the value set in the manifest.""")
-    def add_account_owners_admin_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def add_account_owners_admin_access(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If parent_id is set, grant account owner team admin access to the new project. The default value is `true`.
         """
         return pulumi.get(self, "add_account_owners_admin_access")
 
     @add_account_owners_admin_access.setter
-    def add_account_owners_admin_access(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def add_account_owners_admin_access(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "add_account_owners_admin_access", value)
 
     @_builtins.property
     @pulumi.getter(name="availableCredits")
-    def available_credits(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def available_credits(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The number of trial or promotional credits remaining for this project.
         """
         return pulumi.get(self, "available_credits")
 
     @available_credits.setter
-    def available_credits(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def available_credits(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "available_credits", value)
 
     @_builtins.property
     @pulumi.getter(name="billingGroup")
-    def billing_group(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def billing_group(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the billing group this project is assigned to. To set up proper dependencies please refer to this variable as a reference.
         """
         return pulumi.get(self, "billing_group")
 
     @billing_group.setter
-    def billing_group(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def billing_group(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "billing_group", value)
 
     @_builtins.property
     @pulumi.getter(name="caCert")
-    def ca_cert(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ca_cert(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The CA certificate for the project. This is required for configuring clients that connect to certain services like Kafka.
         """
         return pulumi.get(self, "ca_cert")
 
     @ca_cert.setter
-    def ca_cert(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ca_cert(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ca_cert", value)
 
     @_builtins.property
     @pulumi.getter(name="copyFromProject")
-    def copy_from_project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def copy_from_project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the project to copy billing information, technical contacts, and some other project attributes from. This is most useful to set up the same billing method when you use bank transfers to pay invoices for other projects. You can only do this when creating a project. You can't set the billing over the API for an existing. To set up proper dependencies please refer to this variable as a reference.
         """
         return pulumi.get(self, "copy_from_project")
 
     @copy_from_project.setter
-    def copy_from_project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def copy_from_project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "copy_from_project", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultCloud")
-    def default_cloud(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_cloud(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Default cloud provider and region where services are hosted. This can be changed after the project is created and will not affect existing services.
         """
         return pulumi.get(self, "default_cloud")
 
     @default_cloud.setter
-    def default_cloud(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_cloud(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_cloud", value)
 
     @_builtins.property
     @pulumi.getter(name="estimatedBalance")
-    def estimated_balance(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def estimated_balance(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The monthly running estimate for this project for the current billing period.
         """
         return pulumi.get(self, "estimated_balance")
 
     @estimated_balance.setter
-    def estimated_balance(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def estimated_balance(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "estimated_balance", value)
 
     @_builtins.property
     @pulumi.getter(name="parentId")
-    def parent_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.
         """
         return pulumi.get(self, "parent_id")
 
     @parent_id.setter
-    def parent_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent_id", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentMethod")
-    def payment_method(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_method(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The payment type used for this project. For example,`card`.
         """
         return pulumi.get(self, "payment_method")
 
     @payment_method.setter
-    def payment_method(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_method(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_method", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the project. Names must be globally unique among all Aiven customers and cannot be changed later without destroying and re-creating the project, including all sub-resources.
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ProjectTagArgs']]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ProjectTagArgs']]]]:
         """
         Tags are key-value pairs that allow you to categorize projects.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectTagArgs']]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ProjectTagArgs']]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="technicalEmails")
-    def technical_emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def technical_emails(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The email addresses for [project contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this project and its services. You can also set email contacts at the service level. It's good practice to keep these up-to-date to be aware of any potential issues with your project.
         """
         return pulumi.get(self, "technical_emails")
 
     @technical_emails.setter
-    def technical_emails(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def technical_emails(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "technical_emails", value)
 
     @_builtins.property
     @pulumi.getter(name="useSourceProjectBillingGroup")
     @_utilities.deprecated("""This field is deprecated and will be removed in the next major release.""")
-    def use_source_project_billing_group(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_source_project_billing_group(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Use the same billing group that is used in source project.
         """
         return pulumi.get(self, "use_source_project_billing_group")
 
     @use_source_project_billing_group.setter
-    def use_source_project_billing_group(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_source_project_billing_group(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_source_project_billing_group", value)
 
 
@@ -449,16 +449,16 @@ class Project(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 add_account_owners_admin_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 billing_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 copy_from_project: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_cloud: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProjectTagArgs', 'ProjectTagArgsDict']]]]] = None,
-                 technical_emails: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 use_source_project_billing_group: Optional[pulumi.Input[_builtins.bool]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 add_account_owners_admin_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 billing_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 copy_from_project: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_cloud: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectTagArgs', 'ProjectTagArgsDict']]]]] = None,
+                 technical_emails: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 use_source_project_billing_group: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         Creates and manages an [Aiven project](https://aiven.io/docs/platform/concepts/orgs-units-projects#projects). You should create projects in organizations or organizational units using the `parent_id` field. In a future release, this resource will be replaced by `OrganizationProject` resource, which requires the `parent_id` field.
@@ -514,16 +514,16 @@ class Project(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 add_account_owners_admin_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 billing_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 copy_from_project: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_cloud: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProjectTagArgs', 'ProjectTagArgsDict']]]]] = None,
-                 technical_emails: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 use_source_project_billing_group: Optional[pulumi.Input[_builtins.bool]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 add_account_owners_admin_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 billing_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 copy_from_project: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_cloud: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectTagArgs', 'ProjectTagArgsDict']]]]] = None,
+                 technical_emails: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 use_source_project_billing_group: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -561,20 +561,20 @@ class Project(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            add_account_owners_admin_access: Optional[pulumi.Input[_builtins.bool]] = None,
-            available_credits: Optional[pulumi.Input[_builtins.str]] = None,
-            billing_group: Optional[pulumi.Input[_builtins.str]] = None,
-            ca_cert: Optional[pulumi.Input[_builtins.str]] = None,
-            copy_from_project: Optional[pulumi.Input[_builtins.str]] = None,
-            default_cloud: Optional[pulumi.Input[_builtins.str]] = None,
-            estimated_balance: Optional[pulumi.Input[_builtins.str]] = None,
-            parent_id: Optional[pulumi.Input[_builtins.str]] = None,
-            payment_method: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProjectTagArgs', 'ProjectTagArgsDict']]]]] = None,
-            technical_emails: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            use_source_project_billing_group: Optional[pulumi.Input[_builtins.bool]] = None) -> 'Project':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            add_account_owners_admin_access: pulumi.Input[Optional[_builtins.bool]] = None,
+            available_credits: pulumi.Input[Optional[_builtins.str]] = None,
+            billing_group: pulumi.Input[Optional[_builtins.str]] = None,
+            ca_cert: pulumi.Input[Optional[_builtins.str]] = None,
+            copy_from_project: pulumi.Input[Optional[_builtins.str]] = None,
+            default_cloud: pulumi.Input[Optional[_builtins.str]] = None,
+            estimated_balance: pulumi.Input[Optional[_builtins.str]] = None,
+            parent_id: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_method: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectTagArgs', 'ProjectTagArgsDict']]]]] = None,
+            technical_emails: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            use_source_project_billing_group: pulumi.Input[Optional[_builtins.bool]] = None) -> 'Project':
         """
         Get an existing Project resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

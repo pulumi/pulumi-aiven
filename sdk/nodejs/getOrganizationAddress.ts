@@ -113,5 +113,5 @@ export interface GetOrganizationAddressOutputArgs {
      * ID of an organization.
      */
     organizationId: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.GetOrganizationAddressTimeoutsArgs>;
+    timeouts?: pulumi.Input<inputs.GetOrganizationAddressTimeoutsArgs | undefined>;
 }

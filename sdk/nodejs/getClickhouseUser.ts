@@ -129,13 +129,13 @@ export interface GetClickhouseUserOutputArgs {
      * Service name.
      */
     serviceName: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.GetClickhouseUserTimeoutsArgs>;
+    timeouts?: pulumi.Input<inputs.GetClickhouseUserTimeoutsArgs | undefined>;
     /**
      * User name. Exactly one of the fields must be specified: `uuid` or `username`.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
     /**
      * User identifier. Exactly one of the fields must be specified: `uuid` or `username`.
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }

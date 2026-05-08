@@ -73,11 +73,11 @@ class AwsPrivatelinkArgs:
 @pulumi.input_type
 class _AwsPrivatelinkState:
     def __init__(__self__, *,
-                 aws_service_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 aws_service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 principals: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 aws_service_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 aws_service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 principals: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AwsPrivatelink resources.
 
@@ -100,62 +100,62 @@ class _AwsPrivatelinkState:
 
     @_builtins.property
     @pulumi.getter(name="awsServiceId")
-    def aws_service_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def aws_service_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         AWS service ID.
         """
         return pulumi.get(self, "aws_service_id")
 
     @aws_service_id.setter
-    def aws_service_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def aws_service_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "aws_service_id", value)
 
     @_builtins.property
     @pulumi.getter(name="awsServiceName")
-    def aws_service_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def aws_service_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         AWS service name.
         """
         return pulumi.get(self, "aws_service_name")
 
     @aws_service_name.setter
-    def aws_service_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def aws_service_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "aws_service_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def principals(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def principals(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of the ARNs of the AWS accounts or IAM users allowed to connect to the VPC endpoint.
         """
         return pulumi.get(self, "principals")
 
     @principals.setter
-    def principals(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def principals(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "principals", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceName")
-    def service_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
-    def service_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_name", value)
 
 
@@ -165,9 +165,9 @@ class AwsPrivatelink(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 principals: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 principals: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Creates and manages an [AWS PrivateLink for Aiven services](https://aiven.io/docs/platform/howto/use-aws-privatelinks) in a VPC.
@@ -240,9 +240,9 @@ class AwsPrivatelink(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 principals: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 principals: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -273,11 +273,11 @@ class AwsPrivatelink(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            aws_service_id: Optional[pulumi.Input[_builtins.str]] = None,
-            aws_service_name: Optional[pulumi.Input[_builtins.str]] = None,
-            principals: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            service_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'AwsPrivatelink':
+            aws_service_id: pulumi.Input[Optional[_builtins.str]] = None,
+            aws_service_name: pulumi.Input[Optional[_builtins.str]] = None,
+            principals: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            service_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'AwsPrivatelink':
         """
         Get an existing AwsPrivatelink resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

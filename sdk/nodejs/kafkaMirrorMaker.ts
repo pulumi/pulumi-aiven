@@ -273,115 +273,115 @@ export interface KafkaMirrorMakerState {
     /**
      * Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30 GiB to the default disk space defined by the `plan`. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
      */
-    additionalDiskSpace?: pulumi.Input<string>;
+    additionalDiskSpace?: pulumi.Input<string | undefined>;
     /**
      * The cloud provider and region the service is hosted in. The format is `provider-region`, for example: `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ per project and service. Changing this value [migrates the service to another cloud provider or region](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and includes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases may have a brief interruption during DNS propagation.
      */
-    cloudName?: pulumi.Input<string>;
+    cloudName?: pulumi.Input<string | undefined>;
     /**
      * Service component information objects
      */
-    components?: pulumi.Input<pulumi.Input<inputs.KafkaMirrorMakerComponent>[]>;
+    components?: pulumi.Input<pulumi.Input<inputs.KafkaMirrorMakerComponent>[] | undefined>;
     /**
      * Service disk space to set. Possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
      */
-    diskSpace?: pulumi.Input<string>;
+    diskSpace?: pulumi.Input<string | undefined>;
     /**
      * The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
      */
-    diskSpaceCap?: pulumi.Input<string>;
+    diskSpaceCap?: pulumi.Input<string | undefined>;
     /**
      * The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `diskSpace`
      */
-    diskSpaceDefault?: pulumi.Input<string>;
+    diskSpaceDefault?: pulumi.Input<string | undefined>;
     /**
      * The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `diskSpace` needs to increment from `diskSpaceDefault` by increments of this size.
      */
-    diskSpaceStep?: pulumi.Input<string>;
+    diskSpaceStep?: pulumi.Input<string | undefined>;
     /**
      * The disk space that the service is currently using. This is the sum of the `plan` default disk space and `additionalDiskSpace` in human-readable format (for example: `90GiB`).
      */
-    diskSpaceUsed?: pulumi.Input<string>;
+    diskSpaceUsed?: pulumi.Input<string | undefined>;
     /**
      * KafkaMirrormaker user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    kafkaMirrormakerUserConfig?: pulumi.Input<inputs.KafkaMirrorMakerKafkaMirrormakerUserConfig>;
+    kafkaMirrormakerUserConfig?: pulumi.Input<inputs.KafkaMirrorMakerKafkaMirrormakerUserConfig | undefined>;
     /**
      * Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
      */
-    maintenanceWindowDow?: pulumi.Input<string>;
+    maintenanceWindowDow?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the maintenance window is currently enabled for this service.
      */
-    maintenanceWindowEnabled?: pulumi.Input<boolean>;
+    maintenanceWindowEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
      */
-    maintenanceWindowTime?: pulumi.Input<string>;
+    maintenanceWindowTime?: pulumi.Input<string | undefined>;
     /**
      * Defines what kind of computing resources are allocated for the service. Plan names must be lowercase alphanumeric (e.g., `business-8`, `myPlan16`). It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
      */
-    plan?: pulumi.Input<string>;
+    plan?: pulumi.Input<string | undefined>;
     /**
      * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Specifies the VPC the service should run in. If the value is not set, the service runs on the Public Internet. When set, the value should be given as a reference to set up dependencies correctly, and the VPC must be in the same cloud and region as the service itself. The service can be freely moved to and from VPC after creation, but doing so triggers migration to new servers, so the operation can take a significant amount of time to complete if the service has a lot of data.
      */
-    projectVpcId?: pulumi.Input<string>;
+    projectVpcId?: pulumi.Input<string | undefined>;
     /**
      * The hostname of the service.
      */
-    serviceHost?: pulumi.Input<string>;
+    serviceHost?: pulumi.Input<string | undefined>;
     /**
      * Service integrations to specify when creating a service. Not applied after initial service creation
      */
-    serviceIntegrations?: pulumi.Input<pulumi.Input<inputs.KafkaMirrorMakerServiceIntegration>[]>;
+    serviceIntegrations?: pulumi.Input<pulumi.Input<inputs.KafkaMirrorMakerServiceIntegration>[] | undefined>;
     /**
      * Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
      */
-    serviceName?: pulumi.Input<string>;
+    serviceName?: pulumi.Input<string | undefined>;
     /**
      * Password used for connecting to the service, if applicable
      */
-    servicePassword?: pulumi.Input<string>;
+    servicePassword?: pulumi.Input<string | undefined>;
     /**
      * The port of the service
      */
-    servicePort?: pulumi.Input<number>;
+    servicePort?: pulumi.Input<number | undefined>;
     /**
      * Aiven internal service type code
      */
-    serviceType?: pulumi.Input<string>;
+    serviceType?: pulumi.Input<string | undefined>;
     /**
      * URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
      */
-    serviceUri?: pulumi.Input<string>;
+    serviceUri?: pulumi.Input<string | undefined>;
     /**
      * Username used for connecting to the service, if applicable
      */
-    serviceUsername?: pulumi.Input<string>;
+    serviceUsername?: pulumi.Input<string | undefined>;
     /**
      * Service state. Possible values are `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`. Services cannot be powered on or off with Terraform. To power a service on or off, [use the Aiven Console or Aiven CLI](https://aiven.io/docs/platform/concepts/service-power-cycle).
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
      */
-    staticIps?: pulumi.Input<pulumi.Input<string>[]>;
+    staticIps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Tags are key-value pairs that allow you to categorize services.
      */
-    tags?: pulumi.Input<pulumi.Input<inputs.KafkaMirrorMakerTag>[]>;
+    tags?: pulumi.Input<pulumi.Input<inputs.KafkaMirrorMakerTag>[] | undefined>;
     /**
      * The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
      */
-    techEmails?: pulumi.Input<pulumi.Input<inputs.KafkaMirrorMakerTechEmail>[]>;
+    techEmails?: pulumi.Input<pulumi.Input<inputs.KafkaMirrorMakerTechEmail>[] | undefined>;
     /**
      * Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
      */
-    terminationProtection?: pulumi.Input<boolean>;
+    terminationProtection?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -391,27 +391,27 @@ export interface KafkaMirrorMakerArgs {
     /**
      * Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30 GiB to the default disk space defined by the `plan`. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
      */
-    additionalDiskSpace?: pulumi.Input<string>;
+    additionalDiskSpace?: pulumi.Input<string | undefined>;
     /**
      * The cloud provider and region the service is hosted in. The format is `provider-region`, for example: `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ per project and service. Changing this value [migrates the service to another cloud provider or region](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and includes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases may have a brief interruption during DNS propagation.
      */
-    cloudName?: pulumi.Input<string>;
+    cloudName?: pulumi.Input<string | undefined>;
     /**
      * Service disk space to set. Possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
      */
-    diskSpace?: pulumi.Input<string>;
+    diskSpace?: pulumi.Input<string | undefined>;
     /**
      * KafkaMirrormaker user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
-    kafkaMirrormakerUserConfig?: pulumi.Input<inputs.KafkaMirrorMakerKafkaMirrormakerUserConfig>;
+    kafkaMirrormakerUserConfig?: pulumi.Input<inputs.KafkaMirrorMakerKafkaMirrormakerUserConfig | undefined>;
     /**
      * Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
      */
-    maintenanceWindowDow?: pulumi.Input<string>;
+    maintenanceWindowDow?: pulumi.Input<string | undefined>;
     /**
      * Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
      */
-    maintenanceWindowTime?: pulumi.Input<string>;
+    maintenanceWindowTime?: pulumi.Input<string | undefined>;
     /**
      * Defines what kind of computing resources are allocated for the service. Plan names must be lowercase alphanumeric (e.g., `business-8`, `myPlan16`). It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
      */
@@ -423,11 +423,11 @@ export interface KafkaMirrorMakerArgs {
     /**
      * Specifies the VPC the service should run in. If the value is not set, the service runs on the Public Internet. When set, the value should be given as a reference to set up dependencies correctly, and the VPC must be in the same cloud and region as the service itself. The service can be freely moved to and from VPC after creation, but doing so triggers migration to new servers, so the operation can take a significant amount of time to complete if the service has a lot of data.
      */
-    projectVpcId?: pulumi.Input<string>;
+    projectVpcId?: pulumi.Input<string | undefined>;
     /**
      * Service integrations to specify when creating a service. Not applied after initial service creation
      */
-    serviceIntegrations?: pulumi.Input<pulumi.Input<inputs.KafkaMirrorMakerServiceIntegration>[]>;
+    serviceIntegrations?: pulumi.Input<pulumi.Input<inputs.KafkaMirrorMakerServiceIntegration>[] | undefined>;
     /**
      * Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
      */
@@ -435,17 +435,17 @@ export interface KafkaMirrorMakerArgs {
     /**
      * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
      */
-    staticIps?: pulumi.Input<pulumi.Input<string>[]>;
+    staticIps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Tags are key-value pairs that allow you to categorize services.
      */
-    tags?: pulumi.Input<pulumi.Input<inputs.KafkaMirrorMakerTag>[]>;
+    tags?: pulumi.Input<pulumi.Input<inputs.KafkaMirrorMakerTag>[] | undefined>;
     /**
      * The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
      */
-    techEmails?: pulumi.Input<pulumi.Input<inputs.KafkaMirrorMakerTechEmail>[]>;
+    techEmails?: pulumi.Input<pulumi.Input<inputs.KafkaMirrorMakerTechEmail>[] | undefined>;
     /**
      * Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
      */
-    terminationProtection?: pulumi.Input<boolean>;
+    terminationProtection?: pulumi.Input<boolean | undefined>;
 }

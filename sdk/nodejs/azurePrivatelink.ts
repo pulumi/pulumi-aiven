@@ -134,31 +134,31 @@ export interface AzurePrivatelinkState {
     /**
      * The Azure Private Link service alias.
      */
-    azureServiceAlias?: pulumi.Input<string>;
+    azureServiceAlias?: pulumi.Input<string | undefined>;
     /**
      * The Azure Private Link service ID.
      */
-    azureServiceId?: pulumi.Input<string>;
+    azureServiceId?: pulumi.Input<string | undefined>;
     /**
      * Printable result of the Azure Private Link request.
      */
-    message?: pulumi.Input<string>;
+    message?: pulumi.Input<string | undefined>;
     /**
      * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    serviceName?: pulumi.Input<string>;
+    serviceName?: pulumi.Input<string | undefined>;
     /**
      * The state of the Private Link resource.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * A list of allowed subscription IDs. Maximum length: `16`.
      */
-    userSubscriptionIds?: pulumi.Input<pulumi.Input<string>[]>;
+    userSubscriptionIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**

@@ -22,7 +22,7 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleUser = new Aiven.Index.PgUser("example_user", new()
+    ///     var exampleUser = new Aiven.PgUser("example_user", new()
     ///     {
     ///         ServiceName = examplePostgres.ServiceName,
     ///         Project = exampleProject.Project,

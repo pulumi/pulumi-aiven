@@ -275,12 +275,12 @@ def get_service_plan(backup_configs: Optional[Sequence[Union['GetServicePlanBack
         service_type=pulumi.get(__ret__, 'service_type'),
         shard_count=pulumi.get(__ret__, 'shard_count'),
         timeouts=pulumi.get(__ret__, 'timeouts'))
-def get_service_plan_output(backup_configs: Optional[pulumi.Input[Optional[Sequence[Union['GetServicePlanBackupConfigArgs', 'GetServicePlanBackupConfigArgsDict']]]]] = None,
-                            cloud_name: Optional[pulumi.Input[_builtins.str]] = None,
-                            project: Optional[pulumi.Input[_builtins.str]] = None,
-                            service_plan: Optional[pulumi.Input[_builtins.str]] = None,
-                            service_type: Optional[pulumi.Input[_builtins.str]] = None,
-                            timeouts: Optional[pulumi.Input[Optional[Union['GetServicePlanTimeoutsArgs', 'GetServicePlanTimeoutsArgsDict']]]] = None,
+def get_service_plan_output(backup_configs: pulumi.Input[Optional[Optional[Sequence[Union['GetServicePlanBackupConfigArgs', 'GetServicePlanBackupConfigArgsDict']]]]] = None,
+                            cloud_name: pulumi.Input[Optional[_builtins.str]] = None,
+                            project: pulumi.Input[Optional[_builtins.str]] = None,
+                            service_plan: pulumi.Input[Optional[_builtins.str]] = None,
+                            service_type: pulumi.Input[Optional[_builtins.str]] = None,
+                            timeouts: pulumi.Input[Optional[Optional[Union['GetServicePlanTimeoutsArgs', 'GetServicePlanTimeoutsArgsDict']]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServicePlanResult]:
     """
     Gets detailed information about a specific service plan, including specifications and pricing for a cloud region.

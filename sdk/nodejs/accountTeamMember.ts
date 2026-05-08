@@ -140,27 +140,27 @@ export interface AccountTeamMemberState {
     /**
      * is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a member of an account team.
      */
-    accepted?: pulumi.Input<boolean>;
+    accepted?: pulumi.Input<boolean | undefined>;
     /**
      * The unique account id. Changing this property forces recreation of the resource.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Time of creation
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The email address that invited this user.
      */
-    invitedByUserEmail?: pulumi.Input<string>;
+    invitedByUserEmail?: pulumi.Input<string | undefined>;
     /**
      * An account team id. Changing this property forces recreation of the resource.
      */
-    teamId?: pulumi.Input<string>;
+    teamId?: pulumi.Input<string | undefined>;
     /**
      * Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. Should be lowercase. Changing this property forces recreation of the resource.
      */
-    userEmail?: pulumi.Input<string>;
+    userEmail?: pulumi.Input<string | undefined>;
 }
 
 /**

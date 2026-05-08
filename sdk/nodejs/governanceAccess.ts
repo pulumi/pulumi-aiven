@@ -151,28 +151,28 @@ export interface GovernanceAccessState {
     /**
      * Required property. access type specific data. Changing this property forces recreation of the resource.
      */
-    accessData?: pulumi.Input<inputs.GovernanceAccessAccessData>;
+    accessData?: pulumi.Input<inputs.GovernanceAccessAccessData | undefined>;
     /**
      * The ID of the access.
      */
-    accessId?: pulumi.Input<string>;
+    accessId?: pulumi.Input<string | undefined>;
     /**
      * Label to describe the access. Changing this property forces recreation of the resource.
      */
-    accessName?: pulumi.Input<string>;
+    accessName?: pulumi.Input<string | undefined>;
     /**
      * An enumeration. The possible value is `KAFKA`. Changing this property forces recreation of the resource.
      */
-    accessType?: pulumi.Input<string>;
+    accessType?: pulumi.Input<string | undefined>;
     /**
      * ID of an organization. Changing this property forces recreation of the resource.
      */
-    organizationId?: pulumi.Input<string>;
+    organizationId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the group that will own the access. Maximum length: `36`. Changing this property forces recreation of the resource.
      */
-    ownerUserGroupId?: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.GovernanceAccessTimeouts>;
+    ownerUserGroupId?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.GovernanceAccessTimeouts | undefined>;
 }
 
 /**
@@ -198,6 +198,6 @@ export interface GovernanceAccessArgs {
     /**
      * The ID of the group that will own the access. Maximum length: `36`. Changing this property forces recreation of the resource.
      */
-    ownerUserGroupId?: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.GovernanceAccessTimeouts>;
+    ownerUserGroupId?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.GovernanceAccessTimeouts | undefined>;
 }

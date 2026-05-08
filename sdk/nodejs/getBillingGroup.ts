@@ -149,5 +149,5 @@ export interface GetBillingGroupOutputArgs {
      * The [ID of the billing group](https://aiven.io/docs/platform/reference/get-resource-IDs#get-a-billing-group-id). To set up proper dependencies please refer to this variable as a reference.
      */
     billingGroupId: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.GetBillingGroupTimeoutsArgs>;
+    timeouts?: pulumi.Input<inputs.GetBillingGroupTimeoutsArgs | undefined>;
 }

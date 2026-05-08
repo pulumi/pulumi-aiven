@@ -119,29 +119,29 @@ export interface OrganizationUserState {
      *
      * @deprecated This field is deprecated and will be removed in the next major release.
      */
-    accepted?: pulumi.Input<boolean>;
+    accepted?: pulumi.Input<boolean | undefined>;
     /**
      * Time of creation
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The email address of the user who sent an invitation to the user.
      *
      * @deprecated This field is deprecated and will be removed in the next major release.
      */
-    invitedBy?: pulumi.Input<string>;
+    invitedBy?: pulumi.Input<string | undefined>;
     /**
      * The unique organization ID. Changing this property forces recreation of the resource.
      */
-    organizationId?: pulumi.Input<string>;
+    organizationId?: pulumi.Input<string | undefined>;
     /**
      * This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. Changing this property forces recreation of the resource.
      */
-    userEmail?: pulumi.Input<string>;
+    userEmail?: pulumi.Input<string | undefined>;
     /**
      * The unique organization user ID
      */
-    userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string | undefined>;
 }
 
 /**

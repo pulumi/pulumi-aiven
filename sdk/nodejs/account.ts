@@ -140,41 +140,41 @@ export interface AccountState {
      *
      * @deprecated The new aiven.Organization resource won't have it, use the built-in ID field instead.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Time of creation
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * If true, user is part of the owners team for this account
      *
      * @deprecated The new aiven.Organization resource won't have it, and will not have a replacement.
      */
-    isAccountOwner?: pulumi.Input<boolean>;
+    isAccountOwner?: pulumi.Input<boolean | undefined>;
     /**
      * Account name
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Owner team id
      *
      * @deprecated The new aiven.Organization resource won't have it, and will not have a replacement.
      */
-    ownerTeamId?: pulumi.Input<string>;
+    ownerTeamId?: pulumi.Input<string | undefined>;
     /**
      * Billing group id
      *
      * @deprecated The new aiven.Organization resource won't have it, and will not have a replacement.
      */
-    primaryBillingGroupId?: pulumi.Input<string>;
+    primaryBillingGroupId?: pulumi.Input<string | undefined>;
     /**
      * Tenant id
      */
-    tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string | undefined>;
     /**
      * Time of last update
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -184,11 +184,11 @@ export interface AccountArgs {
     /**
      * Account name
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Billing group id
      *
      * @deprecated The new aiven.Organization resource won't have it, and will not have a replacement.
      */
-    primaryBillingGroupId?: pulumi.Input<string>;
+    primaryBillingGroupId?: pulumi.Input<string | undefined>;
 }

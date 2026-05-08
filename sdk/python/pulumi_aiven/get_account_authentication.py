@@ -305,8 +305,8 @@ def get_account_authentication(account_id: Optional[_builtins.str] = None,
         saml_variant=pulumi.get(__ret__, 'saml_variant'),
         type=pulumi.get(__ret__, 'type'),
         update_time=pulumi.get(__ret__, 'update_time'))
-def get_account_authentication_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                      name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_account_authentication_output(account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                      name: pulumi.Input[Optional[_builtins.str]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountAuthenticationResult]:
     """
     The Account Authentication data source provides information about the existing Aiven Account Authentication.

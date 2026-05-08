@@ -29,7 +29,7 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var mytestuser = Aiven.Index.GetProjectUser.Invoke(new()
+        ///     var mytestuser = Aiven.GetProjectUser.Invoke(new()
         ///     {
         ///         Project = myproject.Project,
         ///         Email = "john.doe@example.com",
@@ -59,7 +59,7 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var mytestuser = Aiven.Index.GetProjectUser.Invoke(new()
+        ///     var mytestuser = Aiven.GetProjectUser.Invoke(new()
         ///     {
         ///         Project = myproject.Project,
         ///         Email = "john.doe@example.com",
@@ -89,7 +89,7 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var mytestuser = Aiven.Index.GetProjectUser.Invoke(new()
+        ///     var mytestuser = Aiven.GetProjectUser.Invoke(new()
         ///     {
         ///         Project = myproject.Project,
         ///         Email = "john.doe@example.com",

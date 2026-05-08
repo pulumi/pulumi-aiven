@@ -108,20 +108,20 @@ export interface OrganizationUserGroupMemberState {
     /**
      * ID of the user group. Changing this property forces recreation of the resource.
      */
-    groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string | undefined>;
     /**
      * Last Activity Time.
      */
-    lastActivityTime?: pulumi.Input<string>;
+    lastActivityTime?: pulumi.Input<string | undefined>;
     /**
      * ID of an organization. Changing this property forces recreation of the resource.
      */
-    organizationId?: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.OrganizationUserGroupMemberTimeouts>;
+    organizationId?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.OrganizationUserGroupMemberTimeouts | undefined>;
     /**
      * User ID. Changing this property forces recreation of the resource.
      */
-    userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -136,7 +136,7 @@ export interface OrganizationUserGroupMemberArgs {
      * ID of an organization. Changing this property forces recreation of the resource.
      */
     organizationId: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.OrganizationUserGroupMemberTimeouts>;
+    timeouts?: pulumi.Input<inputs.OrganizationUserGroupMemberTimeouts | undefined>;
     /**
      * User ID. Changing this property forces recreation of the resource.
      */

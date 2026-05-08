@@ -23,11 +23,11 @@ class FlinkJarApplicationDeploymentArgs:
                  project: pulumi.Input[_builtins.str],
                  service_name: pulumi.Input[_builtins.str],
                  version_id: pulumi.Input[_builtins.str],
-                 entry_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 parallelism: Optional[pulumi.Input[_builtins.int]] = None,
-                 program_args: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 restart_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 starting_savepoint: Optional[pulumi.Input[_builtins.str]] = None):
+                 entry_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 parallelism: pulumi.Input[Optional[_builtins.int]] = None,
+                 program_args: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 restart_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 starting_savepoint: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a FlinkJarApplicationDeployment resource.
 
@@ -106,84 +106,84 @@ class FlinkJarApplicationDeploymentArgs:
 
     @_builtins.property
     @pulumi.getter(name="entryClass")
-    def entry_class(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def entry_class(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The fully qualified name of the entry class to pass during Flink job submission through the entryClass parameter. Maximum length: `128`.
         """
         return pulumi.get(self, "entry_class")
 
     @entry_class.setter
-    def entry_class(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def entry_class(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "entry_class", value)
 
     @_builtins.property
     @pulumi.getter
-    def parallelism(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def parallelism(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Reading of Flink parallel execution documentation is recommended before setting this value to other than 1. Please do not set this value higher than (total number of nodes x number*of*task_slots), or every new job created will fail.
         """
         return pulumi.get(self, "parallelism")
 
     @parallelism.setter
-    def parallelism(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def parallelism(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "parallelism", value)
 
     @_builtins.property
     @pulumi.getter(name="programArgs")
-    def program_args(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def program_args(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Arguments to pass during Flink job submission through the programArgsList parameter.
         """
         return pulumi.get(self, "program_args")
 
     @program_args.setter
-    def program_args(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def program_args(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "program_args", value)
 
     @_builtins.property
     @pulumi.getter(name="restartEnabled")
-    def restart_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def restart_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether a Flink Job is restarted in case it fails. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "restart_enabled")
 
     @restart_enabled.setter
-    def restart_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def restart_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "restart_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="startingSavepoint")
-    def starting_savepoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def starting_savepoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Job savepoint. Maximum length: `2048`.
         """
         return pulumi.get(self, "starting_savepoint")
 
     @starting_savepoint.setter
-    def starting_savepoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def starting_savepoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "starting_savepoint", value)
 
 
 @pulumi.input_type
 class _FlinkJarApplicationDeploymentState:
     def __init__(__self__, *,
-                 application_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_by: Optional[pulumi.Input[_builtins.str]] = None,
-                 deployment_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 entry_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 error_msg: Optional[pulumi.Input[_builtins.str]] = None,
-                 job_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_savepoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 parallelism: Optional[pulumi.Input[_builtins.int]] = None,
-                 program_args: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 restart_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 starting_savepoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 version_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 application_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_by: pulumi.Input[Optional[_builtins.str]] = None,
+                 deployment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 entry_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 error_msg: pulumi.Input[Optional[_builtins.str]] = None,
+                 job_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_savepoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 parallelism: pulumi.Input[Optional[_builtins.int]] = None,
+                 program_args: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 restart_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 starting_savepoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 version_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FlinkJarApplicationDeployment resources.
 
@@ -239,194 +239,194 @@ class _FlinkJarApplicationDeploymentState:
 
     @_builtins.property
     @pulumi.getter(name="applicationId")
-    def application_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def application_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Application Id. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "application_id")
 
     @application_id.setter
-    def application_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def application_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "application_id", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation timestamp of this entity in ISO 8601 format, always in UTC.
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter(name="createdBy")
-    def created_by(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_by(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creator of this entity.
         """
         return pulumi.get(self, "created_by")
 
     @created_by.setter
-    def created_by(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_by(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_by", value)
 
     @_builtins.property
     @pulumi.getter(name="deploymentId")
-    def deployment_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deployment_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Deployment ID.
         """
         return pulumi.get(self, "deployment_id")
 
     @deployment_id.setter
-    def deployment_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deployment_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deployment_id", value)
 
     @_builtins.property
     @pulumi.getter(name="entryClass")
-    def entry_class(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def entry_class(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The fully qualified name of the entry class to pass during Flink job submission through the entryClass parameter. Maximum length: `128`.
         """
         return pulumi.get(self, "entry_class")
 
     @entry_class.setter
-    def entry_class(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def entry_class(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "entry_class", value)
 
     @_builtins.property
     @pulumi.getter(name="errorMsg")
-    def error_msg(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def error_msg(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Error message describing what caused deployment to fail.
         """
         return pulumi.get(self, "error_msg")
 
     @error_msg.setter
-    def error_msg(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def error_msg(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "error_msg", value)
 
     @_builtins.property
     @pulumi.getter(name="jobId")
-    def job_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def job_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Job ID.
         """
         return pulumi.get(self, "job_id")
 
     @job_id.setter
-    def job_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def job_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "job_id", value)
 
     @_builtins.property
     @pulumi.getter(name="lastSavepoint")
-    def last_savepoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_savepoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Job savepoint.
         """
         return pulumi.get(self, "last_savepoint")
 
     @last_savepoint.setter
-    def last_savepoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_savepoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_savepoint", value)
 
     @_builtins.property
     @pulumi.getter
-    def parallelism(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def parallelism(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Reading of Flink parallel execution documentation is recommended before setting this value to other than 1. Please do not set this value higher than (total number of nodes x number*of*task_slots), or every new job created will fail.
         """
         return pulumi.get(self, "parallelism")
 
     @parallelism.setter
-    def parallelism(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def parallelism(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "parallelism", value)
 
     @_builtins.property
     @pulumi.getter(name="programArgs")
-    def program_args(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def program_args(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Arguments to pass during Flink job submission through the programArgsList parameter.
         """
         return pulumi.get(self, "program_args")
 
     @program_args.setter
-    def program_args(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def program_args(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "program_args", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Project name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="restartEnabled")
-    def restart_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def restart_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether a Flink Job is restarted in case it fails. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "restart_enabled")
 
     @restart_enabled.setter
-    def restart_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def restart_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "restart_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceName")
-    def service_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Service name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
-    def service_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_name", value)
 
     @_builtins.property
     @pulumi.getter(name="startingSavepoint")
-    def starting_savepoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def starting_savepoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Job savepoint. Maximum length: `2048`.
         """
         return pulumi.get(self, "starting_savepoint")
 
     @starting_savepoint.setter
-    def starting_savepoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def starting_savepoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "starting_savepoint", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Deployment status. The possible values are `CANCELED`, `CANCELLING`, `CANCELLING_REQUESTED`, `CREATED`, `DELETE_REQUESTED`, `DELETING`, `FAILED`, `FAILING`, `FINISHED`, `INITIALIZING`, `RECONCILING`, `RESTARTING`, `RUNNING`, `SAVING`, `SAVING_AND_STOP`, `SAVING_AND_STOP_REQUESTED` and `SUSPENDED`.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="versionId")
-    def version_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ApplicationVersion ID. Maximum length: `36`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "version_id")
 
     @version_id.setter
-    def version_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version_id", value)
 
 
@@ -436,15 +436,15 @@ class FlinkJarApplicationDeployment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 application_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 entry_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 parallelism: Optional[pulumi.Input[_builtins.int]] = None,
-                 program_args: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 restart_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 starting_savepoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 version_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 application_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 entry_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 parallelism: pulumi.Input[Optional[_builtins.int]] = None,
+                 program_args: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 restart_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 starting_savepoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 version_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Creates and manages the deployment of an Aiven for Apache Flink® application.
@@ -569,15 +569,15 @@ class FlinkJarApplicationDeployment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 application_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 entry_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 parallelism: Optional[pulumi.Input[_builtins.int]] = None,
-                 program_args: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 restart_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 starting_savepoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 version_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 application_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 entry_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 parallelism: pulumi.Input[Optional[_builtins.int]] = None,
+                 program_args: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 restart_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 starting_savepoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 version_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -621,22 +621,22 @@ class FlinkJarApplicationDeployment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            application_id: Optional[pulumi.Input[_builtins.str]] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            created_by: Optional[pulumi.Input[_builtins.str]] = None,
-            deployment_id: Optional[pulumi.Input[_builtins.str]] = None,
-            entry_class: Optional[pulumi.Input[_builtins.str]] = None,
-            error_msg: Optional[pulumi.Input[_builtins.str]] = None,
-            job_id: Optional[pulumi.Input[_builtins.str]] = None,
-            last_savepoint: Optional[pulumi.Input[_builtins.str]] = None,
-            parallelism: Optional[pulumi.Input[_builtins.int]] = None,
-            program_args: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            restart_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            service_name: Optional[pulumi.Input[_builtins.str]] = None,
-            starting_savepoint: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            version_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'FlinkJarApplicationDeployment':
+            application_id: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            created_by: pulumi.Input[Optional[_builtins.str]] = None,
+            deployment_id: pulumi.Input[Optional[_builtins.str]] = None,
+            entry_class: pulumi.Input[Optional[_builtins.str]] = None,
+            error_msg: pulumi.Input[Optional[_builtins.str]] = None,
+            job_id: pulumi.Input[Optional[_builtins.str]] = None,
+            last_savepoint: pulumi.Input[Optional[_builtins.str]] = None,
+            parallelism: pulumi.Input[Optional[_builtins.int]] = None,
+            program_args: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            restart_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            service_name: pulumi.Input[Optional[_builtins.str]] = None,
+            starting_savepoint: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            version_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'FlinkJarApplicationDeployment':
         """
         Get an existing FlinkJarApplicationDeployment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

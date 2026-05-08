@@ -24,7 +24,7 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var azureToAivenPeering = Aiven.Index.GetAzureVpcPeeringConnection.Invoke(new()
+        ///     var azureToAivenPeering = Aiven.GetAzureVpcPeeringConnection.Invoke(new()
         ///     {
         ///         VpcId = exampleVpc.Id,
         ///         AzureSubscriptionId = "00000000-0000-0000-0000-000000000000",
@@ -53,7 +53,7 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var azureToAivenPeering = Aiven.Index.GetAzureVpcPeeringConnection.Invoke(new()
+        ///     var azureToAivenPeering = Aiven.GetAzureVpcPeeringConnection.Invoke(new()
         ///     {
         ///         VpcId = exampleVpc.Id,
         ///         AzureSubscriptionId = "00000000-0000-0000-0000-000000000000",
@@ -82,7 +82,7 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var azureToAivenPeering = Aiven.Index.GetAzureVpcPeeringConnection.Invoke(new()
+        ///     var azureToAivenPeering = Aiven.GetAzureVpcPeeringConnection.Invoke(new()
         ///     {
         ///         VpcId = exampleVpc.Id,
         ///         AzureSubscriptionId = "00000000-0000-0000-0000-000000000000",

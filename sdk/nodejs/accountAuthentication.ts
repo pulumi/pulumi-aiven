@@ -191,75 +191,75 @@ export interface AccountAuthenticationState {
     /**
      * The unique id of the account.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Account authentication id
      */
-    authenticationId?: pulumi.Input<string>;
+    authenticationId?: pulumi.Input<string | undefined>;
     /**
      * Team ID
      */
-    autoJoinTeamId?: pulumi.Input<string>;
+    autoJoinTeamId?: pulumi.Input<string | undefined>;
     /**
      * Time of creation
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Status of account authentication method. The default value is `false`.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the account authentication.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * SAML Assertion Consumer Service URL
      */
-    samlAcsUrl?: pulumi.Input<string>;
+    samlAcsUrl?: pulumi.Input<string | undefined>;
     /**
      * SAML Certificate
      */
-    samlCertificate?: pulumi.Input<string>;
+    samlCertificate?: pulumi.Input<string | undefined>;
     /**
      * Digest algorithm. This is an advanced option that typically does not need to be set.
      */
-    samlDigestAlgorithm?: pulumi.Input<string>;
+    samlDigestAlgorithm?: pulumi.Input<string | undefined>;
     /**
      * SAML Entity id
      */
-    samlEntityId?: pulumi.Input<string>;
+    samlEntityId?: pulumi.Input<string | undefined>;
     /**
      * Map IdP fields
      */
-    samlFieldMapping?: pulumi.Input<inputs.AccountAuthenticationSamlFieldMapping>;
+    samlFieldMapping?: pulumi.Input<inputs.AccountAuthenticationSamlFieldMapping | undefined>;
     /**
      * Set to 'true' to enable IdP initiated login
      */
-    samlIdpLoginAllowed?: pulumi.Input<boolean>;
+    samlIdpLoginAllowed?: pulumi.Input<boolean | undefined>;
     /**
      * SAML Idp URL
      */
-    samlIdpUrl?: pulumi.Input<string>;
+    samlIdpUrl?: pulumi.Input<string | undefined>;
     /**
      * SAML Metadata URL
      */
-    samlMetadataUrl?: pulumi.Input<string>;
+    samlMetadataUrl?: pulumi.Input<string | undefined>;
     /**
      * Signature algorithm. This is an advanced option that typically does not need to be set.
      */
-    samlSignatureAlgorithm?: pulumi.Input<string>;
+    samlSignatureAlgorithm?: pulumi.Input<string | undefined>;
     /**
      * SAML server variant
      */
-    samlVariant?: pulumi.Input<string>;
+    samlVariant?: pulumi.Input<string | undefined>;
     /**
      * The account authentication type. The possible values are `internal` and `saml`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * Time of last update
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -273,47 +273,47 @@ export interface AccountAuthenticationArgs {
     /**
      * Team ID
      */
-    autoJoinTeamId?: pulumi.Input<string>;
+    autoJoinTeamId?: pulumi.Input<string | undefined>;
     /**
      * Status of account authentication method. The default value is `false`.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the account authentication.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * SAML Certificate
      */
-    samlCertificate?: pulumi.Input<string>;
+    samlCertificate?: pulumi.Input<string | undefined>;
     /**
      * Digest algorithm. This is an advanced option that typically does not need to be set.
      */
-    samlDigestAlgorithm?: pulumi.Input<string>;
+    samlDigestAlgorithm?: pulumi.Input<string | undefined>;
     /**
      * SAML Entity id
      */
-    samlEntityId?: pulumi.Input<string>;
+    samlEntityId?: pulumi.Input<string | undefined>;
     /**
      * Map IdP fields
      */
-    samlFieldMapping?: pulumi.Input<inputs.AccountAuthenticationSamlFieldMapping>;
+    samlFieldMapping?: pulumi.Input<inputs.AccountAuthenticationSamlFieldMapping | undefined>;
     /**
      * Set to 'true' to enable IdP initiated login
      */
-    samlIdpLoginAllowed?: pulumi.Input<boolean>;
+    samlIdpLoginAllowed?: pulumi.Input<boolean | undefined>;
     /**
      * SAML Idp URL
      */
-    samlIdpUrl?: pulumi.Input<string>;
+    samlIdpUrl?: pulumi.Input<string | undefined>;
     /**
      * Signature algorithm. This is an advanced option that typically does not need to be set.
      */
-    samlSignatureAlgorithm?: pulumi.Input<string>;
+    samlSignatureAlgorithm?: pulumi.Input<string | undefined>;
     /**
      * SAML server variant
      */
-    samlVariant?: pulumi.Input<string>;
+    samlVariant?: pulumi.Input<string | undefined>;
     /**
      * The account authentication type. The possible values are `internal` and `saml`.
      */

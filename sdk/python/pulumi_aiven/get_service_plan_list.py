@@ -123,10 +123,10 @@ def get_service_plan_list(project: Optional[_builtins.str] = None,
         service_plans=pulumi.get(__ret__, 'service_plans'),
         service_type=pulumi.get(__ret__, 'service_type'),
         timeouts=pulumi.get(__ret__, 'timeouts'))
-def get_service_plan_list_output(project: Optional[pulumi.Input[_builtins.str]] = None,
-                                 service_plans: Optional[pulumi.Input[Optional[Sequence[Union['GetServicePlanListServicePlanArgs', 'GetServicePlanListServicePlanArgsDict']]]]] = None,
-                                 service_type: Optional[pulumi.Input[_builtins.str]] = None,
-                                 timeouts: Optional[pulumi.Input[Optional[Union['GetServicePlanListTimeoutsArgs', 'GetServicePlanListTimeoutsArgsDict']]]] = None,
+def get_service_plan_list_output(project: pulumi.Input[Optional[_builtins.str]] = None,
+                                 service_plans: pulumi.Input[Optional[Optional[Sequence[Union['GetServicePlanListServicePlanArgs', 'GetServicePlanListServicePlanArgsDict']]]]] = None,
+                                 service_type: pulumi.Input[Optional[_builtins.str]] = None,
+                                 timeouts: pulumi.Input[Optional[Optional[Union['GetServicePlanListTimeoutsArgs', 'GetServicePlanListTimeoutsArgsDict']]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServicePlanListResult]:
     """
     A list of service plans for a given project and service type.

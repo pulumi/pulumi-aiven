@@ -103,11 +103,11 @@ class OpenSearchAclRuleArgs:
 @pulumi.input_type
 class _OpenSearchAclRuleState:
     def __init__(__self__, *,
-                 index: Optional[pulumi.Input[_builtins.str]] = None,
-                 permission: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None):
+                 index: pulumi.Input[Optional[_builtins.str]] = None,
+                 permission: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OpenSearchAclRule resources.
 
@@ -130,62 +130,62 @@ class _OpenSearchAclRuleState:
 
     @_builtins.property
     @pulumi.getter
-    def index(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def index(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The index pattern for this ACL rule. Maximum length: `249`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "index")
 
     @index.setter
-    def index(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def index(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "index", value)
 
     @_builtins.property
     @pulumi.getter
-    def permission(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def permission(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The permissions for this ACL rule. The possible values are `admin`, `deny`, `read`, `readwrite` and `write`.
         """
         return pulumi.get(self, "permission")
 
     @permission.setter
-    def permission(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def permission(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "permission", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceName")
-    def service_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
-    def service_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The username for the OpenSearch user this ACL rule applies to. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "username")
 
     @username.setter
-    def username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "username", value)
 
 
@@ -195,11 +195,11 @@ class OpenSearchAclRule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 index: Optional[pulumi.Input[_builtins.str]] = None,
-                 permission: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None,
+                 index: pulumi.Input[Optional[_builtins.str]] = None,
+                 permission: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Create an access control list (ACL) rule for indexes in an Aiven for OpenSearch® service. ACLs apply only to indexes and don't control access to other OpenSearch APIs such as OpenSearch Dashboards.
@@ -208,6 +208,7 @@ class OpenSearchAclRule(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_aiven as aiven
 
         os_user1 = aiven.OpensearchUser("os_user_1",
@@ -250,9 +251,9 @@ class OpenSearchAclRule(pulumi.CustomResource):
                 "permission": "readwrite",
             },
         ]
-        os_acl_rule = []
+        os_acl_rule: list[Any] = []
         def create_os_acl_rule(range_body):
-            for range in [{"key": k, "value": v} for [k, v] in (range_body).items()]:
+            for range in [{"key": k, "value": v} for [k, v] in sorted((range_body).items())]:
                 os_acl_rule.append(aiven.OpenSearchAclRule(f"os_acl_rule-{range['key']}",
                     project=example_project["project"],
                     service_name=example_opensearch["serviceName"],
@@ -260,7 +261,7 @@ class OpenSearchAclRule(pulumi.CustomResource):
                     index=range["value"]["index"],
                     permission=range["value"]["permission"]))
 
-        pulumi.Output.all({i: v for i, v in enumerate(acl_rules)}).apply(lambda resolved_outputs: create_os_acl_rule(resolved_outputs[0]))
+        pulumi.Output.all({str(i): v for i, v in enumerate(acl_rules)}).apply(lambda resolved_outputs: create_os_acl_rule(resolved_outputs[0]))
         ```
 
         ## Import
@@ -291,6 +292,7 @@ class OpenSearchAclRule(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_aiven as aiven
 
         os_user1 = aiven.OpensearchUser("os_user_1",
@@ -333,9 +335,9 @@ class OpenSearchAclRule(pulumi.CustomResource):
                 "permission": "readwrite",
             },
         ]
-        os_acl_rule = []
+        os_acl_rule: list[Any] = []
         def create_os_acl_rule(range_body):
-            for range in [{"key": k, "value": v} for [k, v] in (range_body).items()]:
+            for range in [{"key": k, "value": v} for [k, v] in sorted((range_body).items())]:
                 os_acl_rule.append(aiven.OpenSearchAclRule(f"os_acl_rule-{range['key']}",
                     project=example_project["project"],
                     service_name=example_opensearch["serviceName"],
@@ -343,7 +345,7 @@ class OpenSearchAclRule(pulumi.CustomResource):
                     index=range["value"]["index"],
                     permission=range["value"]["permission"]))
 
-        pulumi.Output.all({i: v for i, v in enumerate(acl_rules)}).apply(lambda resolved_outputs: create_os_acl_rule(resolved_outputs[0]))
+        pulumi.Output.all({str(i): v for i, v in enumerate(acl_rules)}).apply(lambda resolved_outputs: create_os_acl_rule(resolved_outputs[0]))
         ```
 
         ## Import
@@ -368,11 +370,11 @@ class OpenSearchAclRule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 index: Optional[pulumi.Input[_builtins.str]] = None,
-                 permission: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None,
+                 index: pulumi.Input[Optional[_builtins.str]] = None,
+                 permission: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -407,11 +409,11 @@ class OpenSearchAclRule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            index: Optional[pulumi.Input[_builtins.str]] = None,
-            permission: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            service_name: Optional[pulumi.Input[_builtins.str]] = None,
-            username: Optional[pulumi.Input[_builtins.str]] = None) -> 'OpenSearchAclRule':
+            index: pulumi.Input[Optional[_builtins.str]] = None,
+            permission: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            service_name: pulumi.Input[Optional[_builtins.str]] = None,
+            username: pulumi.Input[Optional[_builtins.str]] = None) -> 'OpenSearchAclRule':
         """
         Get an existing OpenSearchAclRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

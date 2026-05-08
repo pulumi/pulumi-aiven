@@ -85,9 +85,9 @@ export interface GetKafkaTopicListOutputArgs {
      * Service name.
      */
     serviceName: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.GetKafkaTopicListTimeoutsArgs>;
+    timeouts?: pulumi.Input<inputs.GetKafkaTopicListTimeoutsArgs | undefined>;
     /**
      * List of Kafka topics.
      */
-    topics?: pulumi.Input<pulumi.Input<inputs.GetKafkaTopicListTopicArgs>[]>;
+    topics?: pulumi.Input<pulumi.Input<inputs.GetKafkaTopicListTopicArgs>[] | undefined>;
 }

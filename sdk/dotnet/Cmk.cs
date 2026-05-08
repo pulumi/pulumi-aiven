@@ -28,7 +28,7 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleUser = new Aiven.Index.Cmk("example_user", new()
+    ///     var exampleUser = new Aiven.Cmk("example_user", new()
     ///     {
     ///         Project = aivenProjectName,
     ///         Resource = cmkResource,

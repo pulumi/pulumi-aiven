@@ -191,48 +191,48 @@ export interface ValkeyUserState {
     /**
      * The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
      */
-    passwordWo?: pulumi.Input<string>;
+    passwordWo?: pulumi.Input<string | undefined>;
     /**
      * Version number for `passwordWo`. Increment this to rotate the password. Must be >= 1.
      */
-    passwordWoVersion?: pulumi.Input<number>;
+    passwordWoVersion?: pulumi.Input<number | undefined>;
     /**
      * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    serviceName?: pulumi.Input<string>;
+    serviceName?: pulumi.Input<string | undefined>;
     /**
      * User account type, such as primary or regular account.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * Name of the Valkey service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
     /**
      * Allow or disallow command categories. To allow a category use the prefix `+@` and to disallow use `-@`. See the [Valkey documentation](https://valkey.io/topics/acl/) for details on the ACL feature. The field is required with `valkeyAclCommands` and `valkeyAclKeys`.
      */
-    valkeyAclCategories?: pulumi.Input<pulumi.Input<string>[]>;
+    valkeyAclCategories?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Allows and disallows access to pub/sub channels. Entries are defined as standard glob patterns.
      */
-    valkeyAclChannels?: pulumi.Input<pulumi.Input<string>[]>;
+    valkeyAclChannels?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Defines rules for individual commands. To allow a command use the prefix `+` and to disallow use `-`. The field is required with `valkeyAclCategories` and `valkeyAclKeys`.
      */
-    valkeyAclCommands?: pulumi.Input<pulumi.Input<string>[]>;
+    valkeyAclCommands?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Key access rules. Entries are defined as standard glob patterns. The field is required with `valkeyAclCategories` and `valkeyAclKeys`.
      */
-    valkeyAclKeys?: pulumi.Input<pulumi.Input<string>[]>;
+    valkeyAclKeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -242,16 +242,16 @@ export interface ValkeyUserArgs {
     /**
      * The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
      */
-    passwordWo?: pulumi.Input<string>;
+    passwordWo?: pulumi.Input<string | undefined>;
     /**
      * Version number for `passwordWo`. Increment this to rotate the password. Must be >= 1.
      */
-    passwordWoVersion?: pulumi.Input<number>;
+    passwordWoVersion?: pulumi.Input<number | undefined>;
     /**
      * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
@@ -267,17 +267,17 @@ export interface ValkeyUserArgs {
     /**
      * Allow or disallow command categories. To allow a category use the prefix `+@` and to disallow use `-@`. See the [Valkey documentation](https://valkey.io/topics/acl/) for details on the ACL feature. The field is required with `valkeyAclCommands` and `valkeyAclKeys`.
      */
-    valkeyAclCategories?: pulumi.Input<pulumi.Input<string>[]>;
+    valkeyAclCategories?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Allows and disallows access to pub/sub channels. Entries are defined as standard glob patterns.
      */
-    valkeyAclChannels?: pulumi.Input<pulumi.Input<string>[]>;
+    valkeyAclChannels?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Defines rules for individual commands. To allow a command use the prefix `+` and to disallow use `-`. The field is required with `valkeyAclCategories` and `valkeyAclKeys`.
      */
-    valkeyAclCommands?: pulumi.Input<pulumi.Input<string>[]>;
+    valkeyAclCommands?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Key access rules. Entries are defined as standard glob patterns. The field is required with `valkeyAclCategories` and `valkeyAclKeys`.
      */
-    valkeyAclKeys?: pulumi.Input<pulumi.Input<string>[]>;
+    valkeyAclKeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
