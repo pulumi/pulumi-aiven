@@ -97,68 +97,21 @@
                     }
                 }
             },
-            "aiven_cassandra": {
-                "current": "aiven:index/cassandra:Cassandra",
+            "aiven_byoc_aws_provision": {
+                "current": "aiven:index/byocAwsProvision:ByocAwsProvision",
+                "majorVersion": 6
+            },
+            "aiven_byoc_permissions": {
+                "current": "aiven:index/byocPermissions:ByocPermissions",
                 "majorVersion": 6,
                 "fields": {
-                    "cassandra": {
-                        "maxItemsOne": true,
-                        "elem": {
-                            "fields": {
-                                "uris": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
-                    },
-                    "cassandra_user_config": {
-                        "maxItemsOne": true,
-                        "elem": {
-                            "fields": {
-                                "additional_backup_regions": {
-                                    "maxItemsOne": true
-                                },
-                                "cassandra": {
-                                    "maxItemsOne": true
-                                },
-                                "ip_filter": {
-                                    "maxItemsOne": false
-                                },
-                                "ip_filter_object": {
-                                    "maxItemsOne": false
-                                },
-                                "ip_filter_string": {
-                                    "maxItemsOne": false
-                                },
-                                "private_access": {
-                                    "maxItemsOne": true
-                                },
-                                "public_access": {
-                                    "maxItemsOne": true
-                                }
-                            }
-                        }
-                    },
-                    "components": {
+                    "accounts": {
                         "maxItemsOne": false
                     },
-                    "service_integrations": {
-                        "maxItemsOne": false
-                    },
-                    "static_ips": {
-                        "maxItemsOne": false
-                    },
-                    "tag": {
-                        "maxItemsOne": false
-                    },
-                    "tech_emails": {
+                    "projects": {
                         "maxItemsOne": false
                     }
                 }
-            },
-            "aiven_cassandra_user": {
-                "current": "aiven:index/cassandraUser:CassandraUser",
-                "majorVersion": 6
             },
             "aiven_clickhouse": {
                 "current": "aiven:index/clickhouse:Clickhouse",
@@ -197,6 +150,12 @@
                                     "maxItemsOne": true
                                 },
                                 "public_access": {
+                                    "maxItemsOne": true
+                                },
+                                "server_settings": {
+                                    "maxItemsOne": true
+                                },
+                                "session_settings": {
                                     "maxItemsOne": true
                                 }
                             }
@@ -1432,89 +1391,6 @@
                 "current": "aiven:index/projectVpc:ProjectVpc",
                 "majorVersion": 6
             },
-            "aiven_redis": {
-                "current": "aiven:index/redis:Redis",
-                "majorVersion": 6,
-                "fields": {
-                    "components": {
-                        "maxItemsOne": false
-                    },
-                    "redis": {
-                        "maxItemsOne": true,
-                        "elem": {
-                            "fields": {
-                                "slave_uris": {
-                                    "maxItemsOne": false
-                                },
-                                "uris": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
-                    },
-                    "redis_user_config": {
-                        "maxItemsOne": true,
-                        "elem": {
-                            "fields": {
-                                "additional_backup_regions": {
-                                    "maxItemsOne": true
-                                },
-                                "ip_filter": {
-                                    "maxItemsOne": false
-                                },
-                                "ip_filter_object": {
-                                    "maxItemsOne": false
-                                },
-                                "ip_filter_string": {
-                                    "maxItemsOne": false
-                                },
-                                "migration": {
-                                    "maxItemsOne": true
-                                },
-                                "private_access": {
-                                    "maxItemsOne": true
-                                },
-                                "privatelink_access": {
-                                    "maxItemsOne": true
-                                },
-                                "public_access": {
-                                    "maxItemsOne": true
-                                }
-                            }
-                        }
-                    },
-                    "service_integrations": {
-                        "maxItemsOne": false
-                    },
-                    "static_ips": {
-                        "maxItemsOne": false
-                    },
-                    "tag": {
-                        "maxItemsOne": false
-                    },
-                    "tech_emails": {
-                        "maxItemsOne": false
-                    }
-                }
-            },
-            "aiven_redis_user": {
-                "current": "aiven:index/redisUser:RedisUser",
-                "majorVersion": 6,
-                "fields": {
-                    "redis_acl_categories": {
-                        "maxItemsOne": false
-                    },
-                    "redis_acl_channels": {
-                        "maxItemsOne": false
-                    },
-                    "redis_acl_commands": {
-                        "maxItemsOne": false
-                    },
-                    "redis_acl_keys": {
-                        "maxItemsOne": false
-                    }
-                }
-            },
             "aiven_service_integration": {
                 "current": "aiven:index/serviceIntegration:ServiceIntegration",
                 "majorVersion": 6,
@@ -1886,6 +1762,10 @@
                     }
                 }
             },
+            "aiven_upgrade_step": {
+                "current": "aiven:index/upgradeStep:UpgradeStep",
+                "majorVersion": 6
+            },
             "aiven_valkey": {
                 "current": "aiven:index/valkey:Valkey",
                 "majorVersion": 6,
@@ -2045,128 +1925,6 @@
                     }
                 }
             },
-            "aiven_cassandra": {
-                "current": "aiven:index/getCassandra:getCassandra",
-                "majorVersion": 6,
-                "fields": {
-                    "cassandra": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "uris": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
-                    },
-                    "cassandra_user_config": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "additional_backup_regions": {
-                                    "maxItemsOne": true
-                                },
-                                "cassandra": {
-                                    "maxItemsOne": true
-                                },
-                                "ip_filter": {
-                                    "maxItemsOne": false
-                                },
-                                "ip_filter_object": {
-                                    "maxItemsOne": false
-                                },
-                                "ip_filter_string": {
-                                    "maxItemsOne": false
-                                },
-                                "private_access": {
-                                    "maxItemsOne": true
-                                },
-                                "public_access": {
-                                    "maxItemsOne": true
-                                }
-                            }
-                        }
-                    },
-                    "components": {
-                        "maxItemsOne": false
-                    },
-                    "service_integrations": {
-                        "maxItemsOne": false
-                    },
-                    "static_ips": {
-                        "maxItemsOne": false
-                    },
-                    "tag": {
-                        "maxItemsOne": false
-                    },
-                    "tech_emails": {
-                        "maxItemsOne": false
-                    }
-                }
-            },
-            "aiven_cassandra_legacy": {
-                "current": "aiven:index/getCassanda:getCassanda",
-                "majorVersion": 6,
-                "fields": {
-                    "cassandra": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "uris": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
-                    },
-                    "cassandra_user_config": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "additional_backup_regions": {
-                                    "maxItemsOne": true
-                                },
-                                "cassandra": {
-                                    "maxItemsOne": true
-                                },
-                                "ip_filter": {
-                                    "maxItemsOne": false
-                                },
-                                "ip_filter_object": {
-                                    "maxItemsOne": false
-                                },
-                                "ip_filter_string": {
-                                    "maxItemsOne": false
-                                },
-                                "private_access": {
-                                    "maxItemsOne": true
-                                },
-                                "public_access": {
-                                    "maxItemsOne": true
-                                }
-                            }
-                        }
-                    },
-                    "components": {
-                        "maxItemsOne": false
-                    },
-                    "service_integrations": {
-                        "maxItemsOne": false
-                    },
-                    "static_ips": {
-                        "maxItemsOne": false
-                    },
-                    "tag": {
-                        "maxItemsOne": false
-                    },
-                    "tech_emails": {
-                        "maxItemsOne": false
-                    }
-                }
-            },
-            "aiven_cassandra_user": {
-                "current": "aiven:index/getCassandraUser:getCassandraUser",
-                "majorVersion": 6
-            },
             "aiven_clickhouse": {
                 "current": "aiven:index/getClickhouse:getClickhouse",
                 "majorVersion": 6,
@@ -2204,6 +1962,12 @@
                                     "maxItemsOne": true
                                 },
                                 "public_access": {
+                                    "maxItemsOne": true
+                                },
+                                "server_settings": {
+                                    "maxItemsOne": true
+                                },
+                                "session_settings": {
                                     "maxItemsOne": true
                                 }
                             }
@@ -3399,89 +3163,6 @@
                 "current": "aiven:index/getProjectVpc:getProjectVpc",
                 "majorVersion": 6
             },
-            "aiven_redis": {
-                "current": "aiven:index/getRedis:getRedis",
-                "majorVersion": 6,
-                "fields": {
-                    "components": {
-                        "maxItemsOne": false
-                    },
-                    "redis": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "slave_uris": {
-                                    "maxItemsOne": false
-                                },
-                                "uris": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
-                    },
-                    "redis_user_config": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "additional_backup_regions": {
-                                    "maxItemsOne": true
-                                },
-                                "ip_filter": {
-                                    "maxItemsOne": false
-                                },
-                                "ip_filter_object": {
-                                    "maxItemsOne": false
-                                },
-                                "ip_filter_string": {
-                                    "maxItemsOne": false
-                                },
-                                "migration": {
-                                    "maxItemsOne": true
-                                },
-                                "private_access": {
-                                    "maxItemsOne": true
-                                },
-                                "privatelink_access": {
-                                    "maxItemsOne": true
-                                },
-                                "public_access": {
-                                    "maxItemsOne": true
-                                }
-                            }
-                        }
-                    },
-                    "service_integrations": {
-                        "maxItemsOne": false
-                    },
-                    "static_ips": {
-                        "maxItemsOne": false
-                    },
-                    "tag": {
-                        "maxItemsOne": false
-                    },
-                    "tech_emails": {
-                        "maxItemsOne": false
-                    }
-                }
-            },
-            "aiven_redis_user": {
-                "current": "aiven:index/getRedisUser:getRedisUser",
-                "majorVersion": 6,
-                "fields": {
-                    "redis_acl_categories": {
-                        "maxItemsOne": false
-                    },
-                    "redis_acl_channels": {
-                        "maxItemsOne": false
-                    },
-                    "redis_acl_commands": {
-                        "maxItemsOne": false
-                    },
-                    "redis_acl_keys": {
-                        "maxItemsOne": false
-                    }
-                }
-            },
             "aiven_service_component": {
                 "current": "aiven:index/getServiceComponent:getServiceComponent",
                 "majorVersion": 6
@@ -3995,8 +3676,8 @@
             "aiven:index/azureVpcPeeringConnection:AzureVpcPeeringConnection": 0,
             "aiven:index/billingGroup:BillingGroup": 1,
             "aiven:index/byocAwsEntity:ByocAwsEntity": 1,
-            "aiven:index/cassandra:Cassandra": 0,
-            "aiven:index/cassandraUser:CassandraUser": 0,
+            "aiven:index/byocAwsProvision:ByocAwsProvision": 1,
+            "aiven:index/byocPermissions:ByocPermissions": 1,
             "aiven:index/clickhouse:Clickhouse": 0,
             "aiven:index/clickhouseDatabase:ClickhouseDatabase": 1,
             "aiven:index/clickhouseGrant:ClickhouseGrant": 0,
@@ -4027,7 +3708,7 @@
             "aiven:index/kafkaQuota:KafkaQuota": 0,
             "aiven:index/kafkaSchema:KafkaSchema": 0,
             "aiven:index/kafkaSchemaConfiguration:KafkaSchemaConfiguration": 0,
-            "aiven:index/kafkaSchemaRegistryAcl:KafkaSchemaRegistryAcl": 0,
+            "aiven:index/kafkaSchemaRegistryAcl:KafkaSchemaRegistryAcl": 1,
             "aiven:index/kafkaTopic:KafkaTopic": 0,
             "aiven:index/kafkaUser:KafkaUser": 0,
             "aiven:index/mirrorMakerReplicationFlow:MirrorMakerReplicationFlow": 0,
@@ -4058,13 +3739,12 @@
             "aiven:index/project:Project": 0,
             "aiven:index/projectUser:ProjectUser": 0,
             "aiven:index/projectVpc:ProjectVpc": 0,
-            "aiven:index/redis:Redis": 0,
-            "aiven:index/redisUser:RedisUser": 0,
             "aiven:index/serviceIntegration:ServiceIntegration": 0,
             "aiven:index/serviceIntegrationEndpoint:ServiceIntegrationEndpoint": 0,
             "aiven:index/staticIp:StaticIp": 1,
             "aiven:index/thanos:Thanos": 0,
             "aiven:index/transitGatewayVpcAttachment:TransitGatewayVpcAttachment": 0,
+            "aiven:index/upgradeStep:UpgradeStep": 1,
             "aiven:index/valkey:Valkey": 0,
             "aiven:index/valkeyUser:ValkeyUser": 0
         },
@@ -4081,9 +3761,6 @@
             "aiven:index/getAzurePrivatelink:getAzurePrivatelink": 0,
             "aiven:index/getAzureVpcPeeringConnection:getAzureVpcPeeringConnection": 0,
             "aiven:index/getBillingGroup:getBillingGroup": 1,
-            "aiven:index/getCassanda:getCassanda": 0,
-            "aiven:index/getCassandra:getCassandra": 0,
-            "aiven:index/getCassandraUser:getCassandraUser": 0,
             "aiven:index/getClickhouse:getClickhouse": 0,
             "aiven:index/getClickhouseDatabase:getClickhouseDatabase": 1,
             "aiven:index/getClickhouseUser:getClickhouseUser": 1,
@@ -4104,7 +3781,7 @@
             "aiven:index/getKafkaMirrorMaker:getKafkaMirrorMaker": 0,
             "aiven:index/getKafkaSchema:getKafkaSchema": 0,
             "aiven:index/getKafkaSchemaConfiguration:getKafkaSchemaConfiguration": 0,
-            "aiven:index/getKafkaSchemaRegistryAcl:getKafkaSchemaRegistryAcl": 0,
+            "aiven:index/getKafkaSchemaRegistryAcl:getKafkaSchemaRegistryAcl": 1,
             "aiven:index/getKafkaTopic:getKafkaTopic": 0,
             "aiven:index/getKafkaTopicList:getKafkaTopicList": 1,
             "aiven:index/getKafkaUser:getKafkaUser": 0,
@@ -4137,8 +3814,6 @@
             "aiven:index/getProject:getProject": 0,
             "aiven:index/getProjectUser:getProjectUser": 0,
             "aiven:index/getProjectVpc:getProjectVpc": 0,
-            "aiven:index/getRedis:getRedis": 0,
-            "aiven:index/getRedisUser:getRedisUser": 0,
             "aiven:index/getServiceComponent:getServiceComponent": 0,
             "aiven:index/getServiceIntegration:getServiceIntegration": 0,
             "aiven:index/getServiceIntegrationEndpoint:getServiceIntegrationEndpoint": 0,
