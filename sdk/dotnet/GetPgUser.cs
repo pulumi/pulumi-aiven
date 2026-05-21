@@ -24,11 +24,11 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleUser = Aiven.GetPgUser.Invoke(new()
+        ///     var example = Aiven.GetPgUser.Invoke(new()
         ///     {
-        ///         ServiceName = examplePostgres.ServiceName,
-        ///         Project = exampleProject.Project,
-        ///         Username = "example-service-user",
+        ///         Project = "my-project",
+        ///         ServiceName = "my-pg",
+        ///         Username = "testuser",
         ///     });
         /// 
         /// });
@@ -50,11 +50,11 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleUser = Aiven.GetPgUser.Invoke(new()
+        ///     var example = Aiven.GetPgUser.Invoke(new()
         ///     {
-        ///         ServiceName = examplePostgres.ServiceName,
-        ///         Project = exampleProject.Project,
-        ///         Username = "example-service-user",
+        ///         Project = "my-project",
+        ///         ServiceName = "my-pg",
+        ///         Username = "testuser",
         ///     });
         /// 
         /// });
@@ -76,11 +76,11 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleUser = Aiven.GetPgUser.Invoke(new()
+        ///     var example = Aiven.GetPgUser.Invoke(new()
         ///     {
-        ///         ServiceName = examplePostgres.ServiceName,
-        ///         Project = exampleProject.Project,
-        ///         Username = "example-service-user",
+        ///         Project = "my-project",
+        ///         ServiceName = "my-pg",
+        ///         Username = "testuser",
         ///     });
         /// 
         /// });

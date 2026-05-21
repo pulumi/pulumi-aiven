@@ -205,54 +205,15 @@ class OrganizationPermission(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        # Grant access to a specific project
-        example_project_permissions = aiven.OrganizationPermission("example_project_permissions",
-            organization_id=main["id"],
-            resource_id=example_project["project"],
-            resource_type="project",
-            permissions=[
-                {
-                    "permissions": [
-                        "operator",
-                        "service:logs:read",
-                    ],
-                    "principal_id": "u123a456b7890c",
-                    "principal_type": "user",
-                },
-                {
-                    "permissions": [
-                        "project:integrations:write",
-                        "developer",
-                    ],
-                    "principal_id": example_group["groupId"],
-                    "principal_type": "user_group",
-                },
-            ])
-        # Organization-level permissions
-        example_org_permissions = aiven.OrganizationPermission("example_org_permissions",
-            organization_id=main["id"],
-            resource_id=main["id"],
+        example = aiven.OrganizationPermission("example",
+            organization_id="org1a23f456789",
             resource_type="organization",
-            permissions=[
-                {
-                    "permissions": [
-                        "organization:app_users:write",
-                        "project:audit_logs:read",
-                    ],
-                    "principal_id": "u123a456b7890c",
-                    "principal_type": "user",
-                },
-                {
-                    "permissions": [
-                        "organization:users:write",
-                        "organization:groups:write",
-                        "organization:domains:write",
-                        "organization:idps:write",
-                    ],
-                    "principal_id": example_group_aiven_organization_user_group["groupId"],
-                    "principal_type": "user_group",
-                },
-            ])
+            resource_id="foo",
+            permissions=[{
+                "principal_id": "u12345",
+                "permissions": ["read_only"],
+                "principal_type": "user",
+            }])
         ```
 
         ## Import
@@ -284,54 +245,15 @@ class OrganizationPermission(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        # Grant access to a specific project
-        example_project_permissions = aiven.OrganizationPermission("example_project_permissions",
-            organization_id=main["id"],
-            resource_id=example_project["project"],
-            resource_type="project",
-            permissions=[
-                {
-                    "permissions": [
-                        "operator",
-                        "service:logs:read",
-                    ],
-                    "principal_id": "u123a456b7890c",
-                    "principal_type": "user",
-                },
-                {
-                    "permissions": [
-                        "project:integrations:write",
-                        "developer",
-                    ],
-                    "principal_id": example_group["groupId"],
-                    "principal_type": "user_group",
-                },
-            ])
-        # Organization-level permissions
-        example_org_permissions = aiven.OrganizationPermission("example_org_permissions",
-            organization_id=main["id"],
-            resource_id=main["id"],
+        example = aiven.OrganizationPermission("example",
+            organization_id="org1a23f456789",
             resource_type="organization",
-            permissions=[
-                {
-                    "permissions": [
-                        "organization:app_users:write",
-                        "project:audit_logs:read",
-                    ],
-                    "principal_id": "u123a456b7890c",
-                    "principal_type": "user",
-                },
-                {
-                    "permissions": [
-                        "organization:users:write",
-                        "organization:groups:write",
-                        "organization:domains:write",
-                        "organization:idps:write",
-                    ],
-                    "principal_id": example_group_aiven_organization_user_group["groupId"],
-                    "principal_type": "user_group",
-                },
-            ])
+            resource_id="foo",
+            permissions=[{
+                "principal_id": "u12345",
+                "permissions": ["read_only"],
+                "principal_type": "user",
+            }])
         ```
 
         ## Import

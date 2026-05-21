@@ -162,7 +162,7 @@ class Organization(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        main = aiven.Organization("main", name="Example organization")
+        example = aiven.Organization("example", name="Aiven Ltd")
         ```
 
         ## Import
@@ -191,7 +191,7 @@ class Organization(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        main = aiven.Organization("main", name="Example organization")
+        example = aiven.Organization("example", name="Aiven Ltd")
         ```
 
         ## Import

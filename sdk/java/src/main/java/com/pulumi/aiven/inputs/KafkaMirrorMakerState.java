@@ -54,6 +54,21 @@ public final class KafkaMirrorMakerState extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * UUID of the Customer Managed Key (CMK) used to apply [bring your own key (BYOK) encryption](https://aiven.io/docs/platform/howto/bring-your-own-key) to this service&#39;s data at rest. You can register a CMK for an Aiven project using the `aiven.Cmk` resource. Removing this attribute doesn&#39;t remove the CMK association. To remove it from this service, set this attribute to the all-zero UUID `00000000-0000-0000-0000-000000000000`.
+     * 
+     */
+    @Import(name="cmkId")
+    private @Nullable Output<String> cmkId;
+
+    /**
+     * @return UUID of the Customer Managed Key (CMK) used to apply [bring your own key (BYOK) encryption](https://aiven.io/docs/platform/howto/bring-your-own-key) to this service&#39;s data at rest. You can register a CMK for an Aiven project using the `aiven.Cmk` resource. Removing this attribute doesn&#39;t remove the CMK association. To remove it from this service, set this attribute to the all-zero UUID `00000000-0000-0000-0000-000000000000`.
+     * 
+     */
+    public Optional<Output<String>> cmkId() {
+        return Optional.ofNullable(this.cmkId);
+    }
+
+    /**
      * Service component information objects
      * 
      */
@@ -448,6 +463,7 @@ public final class KafkaMirrorMakerState extends com.pulumi.resources.ResourceAr
     private KafkaMirrorMakerState(KafkaMirrorMakerState $) {
         this.additionalDiskSpace = $.additionalDiskSpace;
         this.cloudName = $.cloudName;
+        this.cmkId = $.cmkId;
         this.components = $.components;
         this.diskSpace = $.diskSpace;
         this.diskSpaceCap = $.diskSpaceCap;
@@ -534,6 +550,27 @@ public final class KafkaMirrorMakerState extends com.pulumi.resources.ResourceAr
          */
         public Builder cloudName(String cloudName) {
             return cloudName(Output.of(cloudName));
+        }
+
+        /**
+         * @param cmkId UUID of the Customer Managed Key (CMK) used to apply [bring your own key (BYOK) encryption](https://aiven.io/docs/platform/howto/bring-your-own-key) to this service&#39;s data at rest. You can register a CMK for an Aiven project using the `aiven.Cmk` resource. Removing this attribute doesn&#39;t remove the CMK association. To remove it from this service, set this attribute to the all-zero UUID `00000000-0000-0000-0000-000000000000`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cmkId(@Nullable Output<String> cmkId) {
+            $.cmkId = cmkId;
+            return this;
+        }
+
+        /**
+         * @param cmkId UUID of the Customer Managed Key (CMK) used to apply [bring your own key (BYOK) encryption](https://aiven.io/docs/platform/howto/bring-your-own-key) to this service&#39;s data at rest. You can register a CMK for an Aiven project using the `aiven.Cmk` resource. Removing this attribute doesn&#39;t remove the CMK association. To remove it from this service, set this attribute to the all-zero UUID `00000000-0000-0000-0000-000000000000`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cmkId(String cmkId) {
+            return cmkId(Output.of(cmkId));
         }
 
         /**

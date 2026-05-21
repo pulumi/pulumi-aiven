@@ -28,14 +28,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewConnectionPool(ctx, "main", &aiven.ConnectionPoolArgs{
-//				Project:      pulumi.Any(exampleProject.Project),
-//				ServiceName:  pulumi.Any(examplePostgres.ServiceName),
-//				DatabaseName: pulumi.Any(mainAivenPgDatabase.DatabaseName),
+//			_, err := aiven.NewConnectionPool(ctx, "example", &aiven.ConnectionPoolArgs{
+//				Project:      pulumi.String("my-project"),
+//				ServiceName:  pulumi.String("foo"),
+//				PoolName:     pulumi.String("mypool-x-y-z"),
+//				DatabaseName: pulumi.String("testdb"),
 //				PoolMode:     pulumi.String("transaction"),
-//				PoolName:     pulumi.String("example-pool"),
 //				PoolSize:     pulumi.Int(10),
-//				Username:     pulumi.Any(exampleUser.Username),
+//				Username:     pulumi.String("testuser"),
 //			})
 //			if err != nil {
 //				return err

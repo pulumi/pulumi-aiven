@@ -5,6 +5,7 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -152,6 +153,21 @@ public final class KafkaConnectKafkaConnectUserConfigKafkaConnectArgs extends co
     }
 
     /**
+     * When enabled, connectors will automatically resolve IPv6 addresses from external server names configured with dual-stack. Default: `false`.
+     * 
+     */
+    @Import(name="preferIpv6AddressEnable")
+    private @Nullable Output<Boolean> preferIpv6AddressEnable;
+
+    /**
+     * @return When enabled, connectors will automatically resolve IPv6 addresses from external server names configured with dual-stack. Default: `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> preferIpv6AddressEnable() {
+        return Optional.ofNullable(this.preferIpv6AddressEnable);
+    }
+
+    /**
      * This setting gives the upper bound of the batch size to be sent. If there are fewer than this many bytes accumulated for this partition, the producer will `linger` for the linger.ms time waiting for more records to show up. A batch size of zero will disable batching entirely (defaults to 16384).
      * 
      */
@@ -268,6 +284,7 @@ public final class KafkaConnectKafkaConnectUserConfigKafkaConnectArgs extends co
         this.consumerMaxPollRecords = $.consumerMaxPollRecords;
         this.offsetFlushIntervalMs = $.offsetFlushIntervalMs;
         this.offsetFlushTimeoutMs = $.offsetFlushTimeoutMs;
+        this.preferIpv6AddressEnable = $.preferIpv6AddressEnable;
         this.producerBatchSize = $.producerBatchSize;
         this.producerBufferMemory = $.producerBufferMemory;
         this.producerCompressionType = $.producerCompressionType;
@@ -482,6 +499,27 @@ public final class KafkaConnectKafkaConnectUserConfigKafkaConnectArgs extends co
          */
         public Builder offsetFlushTimeoutMs(Integer offsetFlushTimeoutMs) {
             return offsetFlushTimeoutMs(Output.of(offsetFlushTimeoutMs));
+        }
+
+        /**
+         * @param preferIpv6AddressEnable When enabled, connectors will automatically resolve IPv6 addresses from external server names configured with dual-stack. Default: `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder preferIpv6AddressEnable(@Nullable Output<Boolean> preferIpv6AddressEnable) {
+            $.preferIpv6AddressEnable = preferIpv6AddressEnable;
+            return this;
+        }
+
+        /**
+         * @param preferIpv6AddressEnable When enabled, connectors will automatically resolve IPv6 addresses from external server names configured with dual-stack. Default: `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder preferIpv6AddressEnable(Boolean preferIpv6AddressEnable) {
+            return preferIpv6AddressEnable(Output.of(preferIpv6AddressEnable));
         }
 
         /**

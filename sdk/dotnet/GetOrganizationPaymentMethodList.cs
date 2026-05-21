@@ -16,6 +16,24 @@ namespace Pulumi.Aiven
         /// 
         /// **This resource is in the beta stage and may change without notice.** Set
         /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Aiven.GetOrganizationPaymentMethodList.Invoke(new()
+        ///     {
+        ///         OrganizationId = "org1a23f456789",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetOrganizationPaymentMethodListResult> InvokeAsync(GetOrganizationPaymentMethodListArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationPaymentMethodListResult>("aiven:index/getOrganizationPaymentMethodList:getOrganizationPaymentMethodList", args ?? new GetOrganizationPaymentMethodListArgs(), options.WithDefaults());
@@ -25,6 +43,24 @@ namespace Pulumi.Aiven
         /// 
         /// **This resource is in the beta stage and may change without notice.** Set
         /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Aiven.GetOrganizationPaymentMethodList.Invoke(new()
+        ///     {
+        ///         OrganizationId = "org1a23f456789",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetOrganizationPaymentMethodListResult> Invoke(GetOrganizationPaymentMethodListInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetOrganizationPaymentMethodListResult>("aiven:index/getOrganizationPaymentMethodList:getOrganizationPaymentMethodList", args ?? new GetOrganizationPaymentMethodListInvokeArgs(), options.WithDefaults());
@@ -34,6 +70,24 @@ namespace Pulumi.Aiven
         /// 
         /// **This resource is in the beta stage and may change without notice.** Set
         /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Aiven.GetOrganizationPaymentMethodList.Invoke(new()
+        ///     {
+        ///         OrganizationId = "org1a23f456789",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetOrganizationPaymentMethodListResult> Invoke(GetOrganizationPaymentMethodListInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetOrganizationPaymentMethodListResult>("aiven:index/getOrganizationPaymentMethodList:getOrganizationPaymentMethodList", args ?? new GetOrganizationPaymentMethodListInvokeArgs(), options.WithDefaults());

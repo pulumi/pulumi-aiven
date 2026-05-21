@@ -24,6 +24,11 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTable {
      */
     private @Nullable String autoOffsetReset;
     /**
+     * @return When set to a non-zero value and there are no committed offsets, the consumer starts from the offset corresponding to (now - auto*offset*reset*by*duration*ms). This overrides auto*offset_reset when set. Requires ClickHouse &gt;= 25.8. Default: `0`.
+     * 
+     */
+    private @Nullable Integer autoOffsetResetByDurationMs;
+    /**
      * @return Array of column definitions that specify the structure of the ClickHouse table. Each column maps to a field in the Kafka messages
      * 
      */
@@ -146,6 +151,13 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTable {
      */
     public Optional<String> autoOffsetReset() {
         return Optional.ofNullable(this.autoOffsetReset);
+    }
+    /**
+     * @return When set to a non-zero value and there are no committed offsets, the consumer starts from the offset corresponding to (now - auto*offset*reset*by*duration*ms). This overrides auto*offset_reset when set. Requires ClickHouse &gt;= 25.8. Default: `0`.
+     * 
+     */
+    public Optional<Integer> autoOffsetResetByDurationMs() {
+        return Optional.ofNullable(this.autoOffsetResetByDurationMs);
     }
     /**
      * @return Array of column definitions that specify the structure of the ClickHouse table. Each column maps to a field in the Kafka messages
@@ -319,6 +331,7 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTable {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String autoOffsetReset;
+        private @Nullable Integer autoOffsetResetByDurationMs;
         private List<ServiceIntegrationClickhouseKafkaUserConfigTableColumn> columns;
         private String dataFormat;
         private @Nullable String dateTimeInputFormat;
@@ -346,6 +359,7 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTable {
         public Builder(ServiceIntegrationClickhouseKafkaUserConfigTable defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autoOffsetReset = defaults.autoOffsetReset;
+    	      this.autoOffsetResetByDurationMs = defaults.autoOffsetResetByDurationMs;
     	      this.columns = defaults.columns;
     	      this.dataFormat = defaults.dataFormat;
     	      this.dateTimeInputFormat = defaults.dateTimeInputFormat;
@@ -375,6 +389,12 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTable {
         public Builder autoOffsetReset(@Nullable String autoOffsetReset) {
 
             this.autoOffsetReset = autoOffsetReset;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder autoOffsetResetByDurationMs(@Nullable Integer autoOffsetResetByDurationMs) {
+
+            this.autoOffsetResetByDurationMs = autoOffsetResetByDurationMs;
             return this;
         }
         @CustomType.Setter
@@ -534,6 +554,7 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTable {
         public ServiceIntegrationClickhouseKafkaUserConfigTable build() {
             final var _resultValue = new ServiceIntegrationClickhouseKafkaUserConfigTable();
             _resultValue.autoOffsetReset = autoOffsetReset;
+            _resultValue.autoOffsetResetByDurationMs = autoOffsetResetByDurationMs;
             _resultValue.columns = columns;
             _resultValue.dataFormat = dataFormat;
             _resultValue.dateTimeInputFormat = dateTimeInputFormat;

@@ -8,6 +8,17 @@ import * as utilities from "./utilities";
 
 /**
  * List all user groups within an organization.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const example = aiven.getOrganizationUserGroupList({
+ *     organizationId: "org1a23f456789",
+ * });
+ * ```
  */
 export function getOrganizationUserGroupList(args: GetOrganizationUserGroupListArgs, opts?: pulumi.InvokeOptions): Promise<GetOrganizationUserGroupListResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -53,6 +64,17 @@ export interface GetOrganizationUserGroupListResult {
 }
 /**
  * List all user groups within an organization.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const example = aiven.getOrganizationUserGroupList({
+ *     organizationId: "org1a23f456789",
+ * });
+ * ```
  */
 export function getOrganizationUserGroupListOutput(args: GetOrganizationUserGroupListOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOrganizationUserGroupListResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

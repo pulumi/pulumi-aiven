@@ -49,10 +49,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &BillingGroup{}
 	case "aiven:index/byocAwsEntity:ByocAwsEntity":
 		r = &ByocAwsEntity{}
-	case "aiven:index/cassandra:Cassandra":
-		r = &Cassandra{}
-	case "aiven:index/cassandraUser:CassandraUser":
-		r = &CassandraUser{}
+	case "aiven:index/byocAwsProvision:ByocAwsProvision":
+		r = &ByocAwsProvision{}
+	case "aiven:index/byocPermissions:ByocPermissions":
+		r = &ByocPermissions{}
 	case "aiven:index/clickhouse:Clickhouse":
 		r = &Clickhouse{}
 	case "aiven:index/clickhouseDatabase:ClickhouseDatabase":
@@ -175,10 +175,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ProjectUser{}
 	case "aiven:index/projectVpc:ProjectVpc":
 		r = &ProjectVpc{}
-	case "aiven:index/redis:Redis":
-		r = &Redis{}
-	case "aiven:index/redisUser:RedisUser":
-		r = &RedisUser{}
 	case "aiven:index/serviceIntegration:ServiceIntegration":
 		r = &ServiceIntegration{}
 	case "aiven:index/serviceIntegrationEndpoint:ServiceIntegrationEndpoint":
@@ -189,6 +185,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Thanos{}
 	case "aiven:index/transitGatewayVpcAttachment:TransitGatewayVpcAttachment":
 		r = &TransitGatewayVpcAttachment{}
+	case "aiven:index/upgradeStep:UpgradeStep":
+		r = &UpgradeStep{}
 	case "aiven:index/valkey:Valkey":
 		r = &Valkey{}
 	case "aiven:index/valkeyUser:ValkeyUser":
@@ -296,12 +294,12 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"aiven",
-		"index/cassandra",
+		"index/byocAwsProvision",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"aiven",
-		"index/cassandraUser",
+		"index/byocPermissions",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -611,16 +609,6 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"aiven",
-		"index/redis",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"aiven",
-		"index/redisUser",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"aiven",
 		"index/serviceIntegration",
 		&module{version},
 	)
@@ -642,6 +630,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"aiven",
 		"index/transitGatewayVpcAttachment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"aiven",
+		"index/upgradeStep",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

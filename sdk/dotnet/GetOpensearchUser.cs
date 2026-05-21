@@ -24,11 +24,11 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleOpensearchUser = Aiven.GetOpensearchUser.Invoke(new()
+        ///     var example = Aiven.GetOpensearchUser.Invoke(new()
         ///     {
-        ///         ServiceName = "example-opensearch-service",
-        ///         Project = exampleProject.Project,
-        ///         Username = "example-opensearch-user",
+        ///         Project = "my-project",
+        ///         ServiceName = "my-opensearch",
+        ///         Username = "testuser",
         ///     });
         /// 
         /// });
@@ -50,11 +50,11 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleOpensearchUser = Aiven.GetOpensearchUser.Invoke(new()
+        ///     var example = Aiven.GetOpensearchUser.Invoke(new()
         ///     {
-        ///         ServiceName = "example-opensearch-service",
-        ///         Project = exampleProject.Project,
-        ///         Username = "example-opensearch-user",
+        ///         Project = "my-project",
+        ///         ServiceName = "my-opensearch",
+        ///         Username = "testuser",
         ///     });
         /// 
         /// });
@@ -76,11 +76,11 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleOpensearchUser = Aiven.GetOpensearchUser.Invoke(new()
+        ///     var example = Aiven.GetOpensearchUser.Invoke(new()
         ///     {
-        ///         ServiceName = "example-opensearch-service",
-        ///         Project = exampleProject.Project,
-        ///         Username = "example-opensearch-user",
+        ///         Project = "my-project",
+        ///         ServiceName = "my-opensearch",
+        ///         Username = "testuser",
         ///     });
         /// 
         /// });

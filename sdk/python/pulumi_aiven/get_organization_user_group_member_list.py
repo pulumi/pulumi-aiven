@@ -110,8 +110,8 @@ def get_organization_user_group_member_list(members: Optional[Sequence[Union['Ge
     import pulumi
     import pulumi_aiven as aiven
 
-    foo = aiven.get_organization_user_group_member_list(organization_id=organization_id,
-        user_group_id=user_group_id)
+    example = aiven.get_organization_user_group_member_list(organization_id="org1a23f456789",
+        user_group_id="foo")
     ```
 
 
@@ -147,8 +147,8 @@ def get_organization_user_group_member_list_output(members: pulumi.Input[Optiona
     import pulumi
     import pulumi_aiven as aiven
 
-    foo = aiven.get_organization_user_group_member_list(organization_id=organization_id,
-        user_group_id=user_group_id)
+    example = aiven.get_organization_user_group_member_list(organization_id="org1a23f456789",
+        user_group_id="foo")
     ```
 
 

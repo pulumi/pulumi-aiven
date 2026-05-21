@@ -14,9 +14,6 @@ import (
 
 // Creates and manages [customer managed keys](https://aiven.io/docs/platform/howto/bring-your-own-key) (CMKs) for encrypting service data. Use your own CMKs from your cloud provider's key management service (KMS) to encrypt data for all services in an Aiven project. This gives you complete control over your encryption keys, meaning you can independently manage the key lifecycle and access policies.
 //
-// **This resource is in the beta stage and may change without notice.** Set
-// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
-//
 // > **Warning**
 // If you remove a CMK, the services linked to the key will stop working. Migrate the services to another CMK or an Aiven-managed key before removing the CMK.
 //
@@ -34,10 +31,10 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewCmk(ctx, "example_user", &aiven.CmkArgs{
-//				Project:     pulumi.Any(aivenProjectName),
-//				Resource:    pulumi.Any(cmkResource),
-//				CmkProvider: pulumi.String("gcp"),
+//			_, err := aiven.NewCmk(ctx, "example", &aiven.CmkArgs{
+//				Project:     pulumi.String("my-project"),
+//				CmkProvider: pulumi.String("aws"),
+//				Resource:    pulumi.String("my-resource"),
 //				DefaultCmk:  pulumi.Bool(false),
 //			})
 //			if err != nil {
@@ -59,7 +56,7 @@ type Cmk struct {
 
 	// Customer Managed Key identifier (CMK ID).
 	CmkId pulumi.StringOutput `pulumi:"cmkId"`
-	// The cloud provider hosting the key management service (KMS). The possible values are `aws`, `gcp` and `oci`. Changing this property forces recreation of the resource.
+	// The cloud provider hosting the key management service (KMS). The possible values are `aws`, `azure`, `gcp` and `oci`. Changing this property forces recreation of the resource.
 	CmkProvider pulumi.StringOutput `pulumi:"cmkProvider"`
 	// Created At.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
@@ -117,7 +114,7 @@ func GetCmk(ctx *pulumi.Context,
 type cmkState struct {
 	// Customer Managed Key identifier (CMK ID).
 	CmkId *string `pulumi:"cmkId"`
-	// The cloud provider hosting the key management service (KMS). The possible values are `aws`, `gcp` and `oci`. Changing this property forces recreation of the resource.
+	// The cloud provider hosting the key management service (KMS). The possible values are `aws`, `azure`, `gcp` and `oci`. Changing this property forces recreation of the resource.
 	CmkProvider *string `pulumi:"cmkProvider"`
 	// Created At.
 	CreatedAt *string `pulumi:"createdAt"`
@@ -137,7 +134,7 @@ type cmkState struct {
 type CmkState struct {
 	// Customer Managed Key identifier (CMK ID).
 	CmkId pulumi.StringPtrInput
-	// The cloud provider hosting the key management service (KMS). The possible values are `aws`, `gcp` and `oci`. Changing this property forces recreation of the resource.
+	// The cloud provider hosting the key management service (KMS). The possible values are `aws`, `azure`, `gcp` and `oci`. Changing this property forces recreation of the resource.
 	CmkProvider pulumi.StringPtrInput
 	// Created At.
 	CreatedAt pulumi.StringPtrInput
@@ -159,7 +156,7 @@ func (CmkState) ElementType() reflect.Type {
 }
 
 type cmkArgs struct {
-	// The cloud provider hosting the key management service (KMS). The possible values are `aws`, `gcp` and `oci`. Changing this property forces recreation of the resource.
+	// The cloud provider hosting the key management service (KMS). The possible values are `aws`, `azure`, `gcp` and `oci`. Changing this property forces recreation of the resource.
 	CmkProvider string `pulumi:"cmkProvider"`
 	// Mark the created CMK as default for all newly created services.
 	DefaultCmk *bool `pulumi:"defaultCmk"`
@@ -172,7 +169,7 @@ type cmkArgs struct {
 
 // The set of arguments for constructing a Cmk resource.
 type CmkArgs struct {
-	// The cloud provider hosting the key management service (KMS). The possible values are `aws`, `gcp` and `oci`. Changing this property forces recreation of the resource.
+	// The cloud provider hosting the key management service (KMS). The possible values are `aws`, `azure`, `gcp` and `oci`. Changing this property forces recreation of the resource.
 	CmkProvider pulumi.StringInput
 	// Mark the created CMK as default for all newly created services.
 	DefaultCmk pulumi.BoolPtrInput
@@ -275,7 +272,7 @@ func (o CmkOutput) CmkId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cmk) pulumi.StringOutput { return v.CmkId }).(pulumi.StringOutput)
 }
 
-// The cloud provider hosting the key management service (KMS). The possible values are `aws`, `gcp` and `oci`. Changing this property forces recreation of the resource.
+// The cloud provider hosting the key management service (KMS). The possible values are `aws`, `azure`, `gcp` and `oci`. Changing this property forces recreation of the resource.
 func (o CmkOutput) CmkProvider() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cmk) pulumi.StringOutput { return v.CmkProvider }).(pulumi.StringOutput)
 }

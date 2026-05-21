@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetKafkaSchemaRegistryAclResult',
@@ -26,7 +28,7 @@ class GetKafkaSchemaRegistryAclResult:
     """
     A collection of values returned by getKafkaSchemaRegistryAcl.
     """
-    def __init__(__self__, acl_id=None, id=None, permission=None, project=None, resource=None, service_name=None, username=None):
+    def __init__(__self__, acl_id=None, id=None, permission=None, project=None, resource=None, service_name=None, timeouts=None, username=None):
         if acl_id and not isinstance(acl_id, str):
             raise TypeError("Expected argument 'acl_id' to be a str")
         pulumi.set(__self__, "acl_id", acl_id)
@@ -45,6 +47,9 @@ class GetKafkaSchemaRegistryAclResult:
         if service_name and not isinstance(service_name, str):
             raise TypeError("Expected argument 'service_name' to be a str")
         pulumi.set(__self__, "service_name", service_name)
+        if timeouts and not isinstance(timeouts, dict):
+            raise TypeError("Expected argument 'timeouts' to be a dict")
+        pulumi.set(__self__, "timeouts", timeouts)
         if username and not isinstance(username, str):
             raise TypeError("Expected argument 'username' to be a str")
         pulumi.set(__self__, "username", username)
@@ -53,7 +58,7 @@ class GetKafkaSchemaRegistryAclResult:
     @pulumi.getter(name="aclId")
     def acl_id(self) -> _builtins.str:
         """
-        Kafka Schema Registry ACL ID
+        Kafka Schema Registry ACL ID. Provide either `acl_id`, or all of `permission`, `resource` and `username` together.
         """
         return pulumi.get(self, "acl_id")
 
@@ -61,7 +66,7 @@ class GetKafkaSchemaRegistryAclResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The provider-assigned unique ID for this managed resource.
+        Resource ID composed as: `project/service_name/acl_id`.
         """
         return pulumi.get(self, "id")
 
@@ -69,7 +74,7 @@ class GetKafkaSchemaRegistryAclResult:
     @pulumi.getter
     def permission(self) -> _builtins.str:
         """
-        Kafka Schema Registry permission to grant. The possible values are `schema_registry_read` and `schema_registry_write`. Changing this property forces recreation of the resource.
+        ACL entry for Schema Registry. The possible values are `schema_registry_read` and `schema_registry_write`. Provide either `acl_id`, or all of `permission`, `resource` and `username` together.
         """
         return pulumi.get(self, "permission")
 
@@ -77,7 +82,7 @@ class GetKafkaSchemaRegistryAclResult:
     @pulumi.getter
     def project(self) -> _builtins.str:
         """
-        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Project name.
         """
         return pulumi.get(self, "project")
 
@@ -85,7 +90,7 @@ class GetKafkaSchemaRegistryAclResult:
     @pulumi.getter
     def resource(self) -> _builtins.str:
         """
-        Resource name pattern for the Schema Registry ACL entry. Changing this property forces recreation of the resource.
+        Schema Registry ACL entry resource name pattern. Provide either `acl_id`, or all of `permission`, `resource` and `username` together.
         """
         return pulumi.get(self, "resource")
 
@@ -93,15 +98,20 @@ class GetKafkaSchemaRegistryAclResult:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> _builtins.str:
         """
-        The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Service name.
         """
         return pulumi.get(self, "service_name")
 
     @_builtins.property
     @pulumi.getter
+    def timeouts(self) -> Optional['outputs.GetKafkaSchemaRegistryAclTimeoutsResult']:
+        return pulumi.get(self, "timeouts")
+
+    @_builtins.property
+    @pulumi.getter
     def username(self) -> _builtins.str:
         """
-        Username pattern for the ACL entry. Changing this property forces recreation of the resource.
+        Username. Provide either `acl_id`, or all of `permission`, `resource` and `username` together.
         """
         return pulumi.get(self, "username")
 
@@ -118,30 +128,47 @@ class AwaitableGetKafkaSchemaRegistryAclResult(GetKafkaSchemaRegistryAclResult):
             project=self.project,
             resource=self.resource,
             service_name=self.service_name,
+            timeouts=self.timeouts,
             username=self.username)
 
 
-def get_kafka_schema_registry_acl(permission: Optional[_builtins.str] = None,
+def get_kafka_schema_registry_acl(acl_id: Optional[_builtins.str] = None,
+                                  permission: Optional[_builtins.str] = None,
                                   project: Optional[_builtins.str] = None,
                                   resource: Optional[_builtins.str] = None,
                                   service_name: Optional[_builtins.str] = None,
+                                  timeouts: Optional[Union['GetKafkaSchemaRegistryAclTimeoutsArgs', 'GetKafkaSchemaRegistryAclTimeoutsArgsDict']] = None,
                                   username: Optional[_builtins.str] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKafkaSchemaRegistryAclResult:
     """
-    The Data Source Kafka Schema Registry ACL data source provides information about the existing Aiven Kafka Schema Registry ACL for a Kafka service.
+    Gets information about an Aiven for Apache Kafka® Schema Registry ACL entry.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    example = aiven.get_kafka_schema_registry_acl(project="my-project",
+        service_name="my-kafka",
+        acl_id="foo")
+    ```
 
 
-    :param _builtins.str permission: Kafka Schema Registry permission to grant. The possible values are `schema_registry_read` and `schema_registry_write`. Changing this property forces recreation of the resource.
-    :param _builtins.str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param _builtins.str resource: Resource name pattern for the Schema Registry ACL entry. Changing this property forces recreation of the resource.
-    :param _builtins.str service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param _builtins.str username: Username pattern for the ACL entry. Changing this property forces recreation of the resource.
+    :param _builtins.str acl_id: Kafka Schema Registry ACL ID. Provide either `acl_id`, or all of `permission`, `resource` and `username` together.
+    :param _builtins.str permission: ACL entry for Schema Registry. The possible values are `schema_registry_read` and `schema_registry_write`. Provide either `acl_id`, or all of `permission`, `resource` and `username` together.
+    :param _builtins.str project: Project name.
+    :param _builtins.str resource: Schema Registry ACL entry resource name pattern. Provide either `acl_id`, or all of `permission`, `resource` and `username` together.
+    :param _builtins.str service_name: Service name.
+    :param _builtins.str username: Username. Provide either `acl_id`, or all of `permission`, `resource` and `username` together.
     """
     __args__ = dict()
+    __args__['aclId'] = acl_id
     __args__['permission'] = permission
     __args__['project'] = project
     __args__['resource'] = resource
     __args__['serviceName'] = service_name
+    __args__['timeouts'] = timeouts
     __args__['username'] = username
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('aiven:index/getKafkaSchemaRegistryAcl:getKafkaSchemaRegistryAcl', __args__, opts=opts, typ=GetKafkaSchemaRegistryAclResult).value
@@ -153,28 +180,45 @@ def get_kafka_schema_registry_acl(permission: Optional[_builtins.str] = None,
         project=pulumi.get(__ret__, 'project'),
         resource=pulumi.get(__ret__, 'resource'),
         service_name=pulumi.get(__ret__, 'service_name'),
+        timeouts=pulumi.get(__ret__, 'timeouts'),
         username=pulumi.get(__ret__, 'username'))
-def get_kafka_schema_registry_acl_output(permission: pulumi.Input[Optional[_builtins.str]] = None,
+def get_kafka_schema_registry_acl_output(acl_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                         permission: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                          project: pulumi.Input[Optional[_builtins.str]] = None,
-                                         resource: pulumi.Input[Optional[_builtins.str]] = None,
+                                         resource: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                          service_name: pulumi.Input[Optional[_builtins.str]] = None,
-                                         username: pulumi.Input[Optional[_builtins.str]] = None,
+                                         timeouts: pulumi.Input[Optional[Optional[Union['GetKafkaSchemaRegistryAclTimeoutsArgs', 'GetKafkaSchemaRegistryAclTimeoutsArgsDict']]]] = None,
+                                         username: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKafkaSchemaRegistryAclResult]:
     """
-    The Data Source Kafka Schema Registry ACL data source provides information about the existing Aiven Kafka Schema Registry ACL for a Kafka service.
+    Gets information about an Aiven for Apache Kafka® Schema Registry ACL entry.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    example = aiven.get_kafka_schema_registry_acl(project="my-project",
+        service_name="my-kafka",
+        acl_id="foo")
+    ```
 
 
-    :param _builtins.str permission: Kafka Schema Registry permission to grant. The possible values are `schema_registry_read` and `schema_registry_write`. Changing this property forces recreation of the resource.
-    :param _builtins.str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param _builtins.str resource: Resource name pattern for the Schema Registry ACL entry. Changing this property forces recreation of the resource.
-    :param _builtins.str service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param _builtins.str username: Username pattern for the ACL entry. Changing this property forces recreation of the resource.
+    :param _builtins.str acl_id: Kafka Schema Registry ACL ID. Provide either `acl_id`, or all of `permission`, `resource` and `username` together.
+    :param _builtins.str permission: ACL entry for Schema Registry. The possible values are `schema_registry_read` and `schema_registry_write`. Provide either `acl_id`, or all of `permission`, `resource` and `username` together.
+    :param _builtins.str project: Project name.
+    :param _builtins.str resource: Schema Registry ACL entry resource name pattern. Provide either `acl_id`, or all of `permission`, `resource` and `username` together.
+    :param _builtins.str service_name: Service name.
+    :param _builtins.str username: Username. Provide either `acl_id`, or all of `permission`, `resource` and `username` together.
     """
     __args__ = dict()
+    __args__['aclId'] = acl_id
     __args__['permission'] = permission
     __args__['project'] = project
     __args__['resource'] = resource
     __args__['serviceName'] = service_name
+    __args__['timeouts'] = timeouts
     __args__['username'] = username
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('aiven:index/getKafkaSchemaRegistryAcl:getKafkaSchemaRegistryAcl', __args__, opts=opts, typ=GetKafkaSchemaRegistryAclResult)
@@ -185,4 +229,5 @@ def get_kafka_schema_registry_acl_output(permission: pulumi.Input[Optional[_buil
         project=pulumi.get(__response__, 'project'),
         resource=pulumi.get(__response__, 'resource'),
         service_name=pulumi.get(__response__, 'service_name'),
+        timeouts=pulumi.get(__response__, 'timeouts'),
         username=pulumi.get(__response__, 'username')))

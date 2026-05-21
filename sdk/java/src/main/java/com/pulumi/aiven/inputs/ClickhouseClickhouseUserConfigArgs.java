@@ -7,6 +7,8 @@ import com.pulumi.aiven.inputs.ClickhouseClickhouseUserConfigIpFilterObjectArgs;
 import com.pulumi.aiven.inputs.ClickhouseClickhouseUserConfigPrivateAccessArgs;
 import com.pulumi.aiven.inputs.ClickhouseClickhouseUserConfigPrivatelinkAccessArgs;
 import com.pulumi.aiven.inputs.ClickhouseClickhouseUserConfigPublicAccessArgs;
+import com.pulumi.aiven.inputs.ClickhouseClickhouseUserConfigServerSettingsArgs;
+import com.pulumi.aiven.inputs.ClickhouseClickhouseUserConfigSessionSettingsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -235,6 +237,21 @@ public final class ClickhouseClickhouseUserConfigArgs extends com.pulumi.resourc
     }
 
     /**
+     * ClickHouse server settings, which can be found in the `system.server_settings` table
+     * 
+     */
+    @Import(name="serverSettings")
+    private @Nullable Output<ClickhouseClickhouseUserConfigServerSettingsArgs> serverSettings;
+
+    /**
+     * @return ClickHouse server settings, which can be found in the `system.server_settings` table
+     * 
+     */
+    public Optional<Output<ClickhouseClickhouseUserConfigServerSettingsArgs>> serverSettings() {
+        return Optional.ofNullable(this.serverSettings);
+    }
+
+    /**
      * Store logs for the service so that they are available in the HTTP API and console.
      * 
      */
@@ -262,6 +279,21 @@ public final class ClickhouseClickhouseUserConfigArgs extends com.pulumi.resourc
      */
     public Optional<Output<String>> serviceToForkFrom() {
         return Optional.ofNullable(this.serviceToForkFrom);
+    }
+
+    /**
+     * ClickHouse session settings, which can be found in the `system.settings` table
+     * 
+     */
+    @Import(name="sessionSettings")
+    private @Nullable Output<ClickhouseClickhouseUserConfigSessionSettingsArgs> sessionSettings;
+
+    /**
+     * @return ClickHouse session settings, which can be found in the `system.settings` table
+     * 
+     */
+    public Optional<Output<ClickhouseClickhouseUserConfigSessionSettingsArgs>> sessionSettings() {
+        return Optional.ofNullable(this.sessionSettings);
     }
 
     /**
@@ -310,8 +342,10 @@ public final class ClickhouseClickhouseUserConfigArgs extends com.pulumi.resourc
         this.projectToForkFrom = $.projectToForkFrom;
         this.publicAccess = $.publicAccess;
         this.recoveryBasebackupName = $.recoveryBasebackupName;
+        this.serverSettings = $.serverSettings;
         this.serviceLog = $.serviceLog;
         this.serviceToForkFrom = $.serviceToForkFrom;
+        this.sessionSettings = $.sessionSettings;
         this.staticIps = $.staticIps;
         this.tieredStorageMoveFactor = $.tieredStorageMoveFactor;
     }
@@ -658,6 +692,27 @@ public final class ClickhouseClickhouseUserConfigArgs extends com.pulumi.resourc
         }
 
         /**
+         * @param serverSettings ClickHouse server settings, which can be found in the `system.server_settings` table
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serverSettings(@Nullable Output<ClickhouseClickhouseUserConfigServerSettingsArgs> serverSettings) {
+            $.serverSettings = serverSettings;
+            return this;
+        }
+
+        /**
+         * @param serverSettings ClickHouse server settings, which can be found in the `system.server_settings` table
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serverSettings(ClickhouseClickhouseUserConfigServerSettingsArgs serverSettings) {
+            return serverSettings(Output.of(serverSettings));
+        }
+
+        /**
          * @param serviceLog Store logs for the service so that they are available in the HTTP API and console.
          * 
          * @return builder
@@ -697,6 +752,27 @@ public final class ClickhouseClickhouseUserConfigArgs extends com.pulumi.resourc
          */
         public Builder serviceToForkFrom(String serviceToForkFrom) {
             return serviceToForkFrom(Output.of(serviceToForkFrom));
+        }
+
+        /**
+         * @param sessionSettings ClickHouse session settings, which can be found in the `system.settings` table
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sessionSettings(@Nullable Output<ClickhouseClickhouseUserConfigSessionSettingsArgs> sessionSettings) {
+            $.sessionSettings = sessionSettings;
+            return this;
+        }
+
+        /**
+         * @param sessionSettings ClickHouse session settings, which can be found in the `system.settings` table
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sessionSettings(ClickhouseClickhouseUserConfigSessionSettingsArgs sessionSettings) {
+            return sessionSettings(Output.of(sessionSettings));
         }
 
         /**

@@ -66,6 +66,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? RecoveryBasebackupName;
         /// <summary>
+        /// ClickHouse server settings, which can be found in the `system.server_settings` table
+        /// </summary>
+        public readonly Outputs.ClickhouseClickhouseUserConfigServerSettings? ServerSettings;
+        /// <summary>
         /// Store logs for the service so that they are available in the HTTP API and console.
         /// </summary>
         public readonly bool? ServiceLog;
@@ -73,6 +77,10 @@ namespace Pulumi.Aiven.Outputs
         /// Name of another service to fork from. This has effect only when a new service is being created. Example: `Anotherservicename`.
         /// </summary>
         public readonly string? ServiceToForkFrom;
+        /// <summary>
+        /// ClickHouse session settings, which can be found in the `system.settings` table
+        /// </summary>
+        public readonly Outputs.ClickhouseClickhouseUserConfigSessionSettings? SessionSettings;
         /// <summary>
         /// Use static public IP addresses.
         /// </summary>
@@ -110,9 +118,13 @@ namespace Pulumi.Aiven.Outputs
 
             string? recoveryBasebackupName,
 
+            Outputs.ClickhouseClickhouseUserConfigServerSettings? serverSettings,
+
             bool? serviceLog,
 
             string? serviceToForkFrom,
+
+            Outputs.ClickhouseClickhouseUserConfigSessionSettings? sessionSettings,
 
             bool? staticIps,
 
@@ -131,8 +143,10 @@ namespace Pulumi.Aiven.Outputs
             ProjectToForkFrom = projectToForkFrom;
             PublicAccess = publicAccess;
             RecoveryBasebackupName = recoveryBasebackupName;
+            ServerSettings = serverSettings;
             ServiceLog = serviceLog;
             ServiceToForkFrom = serviceToForkFrom;
+            SessionSettings = sessionSettings;
             StaticIps = staticIps;
             TieredStorageMoveFactor = tieredStorageMoveFactor;
         }

@@ -22,18 +22,32 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleBillingGroup = new Aiven.BillingGroup("example_billing_group", new()
+    ///     var example = new Aiven.BillingGroup("example", new()
     ///     {
-    ///         Name = "example-billing-group",
+    ///         ParentId = "foo",
+    ///         Name = "my billing group",
+    ///         CardId = "9330c086-8781-11e5-89ff-5404a64abfef",
+    ///         VatId = "FI27957435",
+    ///         AddressLines = new[]
+    ///         {
+    ///             "Main Street 1",
+    ///         },
+    ///         BillingContactEmails = new[]
+    ///         {
+    ///             "jane@example.com",
+    ///         },
     ///         BillingCurrency = "USD",
-    ///         VatId = "123ABC",
-    ///         ParentId = main.Id,
-    ///     });
-    /// 
-    ///     var exampleProject = new Aiven.Project("example_project", new()
-    ///     {
-    ///         ProjectName = "example-project",
-    ///         BillingGroup = exampleBillingGroup.Id,
+    ///         BillingEmails = new[]
+    ///         {
+    ///             "test@example.com",
+    ///         },
+    ///         BillingExtraText = "Purchase order: PO100018",
+    ///         City = "Helsinki",
+    ///         Company = "My Company",
+    ///         CopyFromBillingGroup = "ffb3f0cd-5532-4eb9-8867-f2cac5823492",
+    ///         CountryCode = "FI",
+    ///         State = "foo",
+    ///         ZipCode = "01234",
     ///     });
     /// 
     /// });

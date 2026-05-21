@@ -14,6 +14,34 @@ import (
 
 // Adds and manages users in a user group. You can add organization users and application users to groups. Organization users must be [managed in the Aiven Console](https://aiven.io/docs/platform/howto/manage-org-users). Application users can be created and managed using the `OrganizationApplicationUser` resource. Groups are granted roles and permissions using the `OrganizationPermission` resource.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := aiven.NewOrganizationUserGroupMember(ctx, "example", &aiven.OrganizationUserGroupMemberArgs{
+//				OrganizationId: pulumi.String("org1a23f456789"),
+//				GroupId:        pulumi.String("foo"),
+//				UserId:         pulumi.String("foo"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh

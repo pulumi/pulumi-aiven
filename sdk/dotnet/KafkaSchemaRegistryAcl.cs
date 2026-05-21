@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// The Resource Kafka Schema Registry ACL resource allows the creation and management of Schema Registry ACLs for an Aiven Kafka service.
+    /// Creates and manages an Aiven for Apache Kafka® Schema Registry ACL entry. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
     /// 
     /// ## Example Usage
     /// 
@@ -22,13 +22,13 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foo = new Aiven.KafkaSchemaRegistryAcl("foo", new()
+    ///     var example = new Aiven.KafkaSchemaRegistryAcl("example", new()
     ///     {
-    ///         Project = kafka_schemas_project1.Project,
-    ///         ServiceName = kafka_service1.ServiceName,
-    ///         Resource = "Subject:topic-1",
-    ///         Username = "group-user-*",
+    ///         Project = "my-project",
+    ///         ServiceName = "my-kafka",
     ///         Permission = "schema_registry_read",
+    ///         Resource = "Config:",
+    ///         Username = "admin*",
     ///     });
     /// 
     /// });
@@ -44,37 +44,40 @@ namespace Pulumi.Aiven
     public partial class KafkaSchemaRegistryAcl : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Kafka Schema Registry ACL ID
+        /// Kafka Schema Registry ACL ID.
         /// </summary>
         [Output("aclId")]
         public Output<string> AclId { get; private set; } = null!;
 
         /// <summary>
-        /// Kafka Schema Registry permission to grant. The possible values are `SchemaRegistryRead` and `SchemaRegistryWrite`. Changing this property forces recreation of the resource.
+        /// ACL entry for Schema Registry. The possible values are `SchemaRegistryRead` and `SchemaRegistryWrite`. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("permission")]
         public Output<string> Permission { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Resource name pattern for the Schema Registry ACL entry. Changing this property forces recreation of the resource.
+        /// Schema Registry ACL entry resource name pattern. Length must be between `1` and `249`. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("resource")]
         public Output<string> Resource { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service name. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
 
+        [Output("timeouts")]
+        public Output<Outputs.KafkaSchemaRegistryAclTimeouts?> Timeouts { get; private set; } = null!;
+
         /// <summary>
-        /// Username pattern for the ACL entry. Changing this property forces recreation of the resource.
+        /// Username. Length must be between `1` and `64`. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("username")]
         public Output<string> Username { get; private set; } = null!;
@@ -126,31 +129,34 @@ namespace Pulumi.Aiven
     public sealed class KafkaSchemaRegistryAclArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Kafka Schema Registry permission to grant. The possible values are `SchemaRegistryRead` and `SchemaRegistryWrite`. Changing this property forces recreation of the resource.
+        /// ACL entry for Schema Registry. The possible values are `SchemaRegistryRead` and `SchemaRegistryWrite`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("permission", required: true)]
         public Input<string> Permission { get; set; } = null!;
 
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// Resource name pattern for the Schema Registry ACL entry. Changing this property forces recreation of the resource.
+        /// Schema Registry ACL entry resource name pattern. Length must be between `1` and `249`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("resource", required: true)]
         public Input<string> Resource { get; set; } = null!;
 
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service name. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
+        [Input("timeouts")]
+        public Input<Inputs.KafkaSchemaRegistryAclTimeoutsArgs>? Timeouts { get; set; }
+
         /// <summary>
-        /// Username pattern for the ACL entry. Changing this property forces recreation of the resource.
+        /// Username. Length must be between `1` and `64`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("username", required: true)]
         public Input<string> Username { get; set; } = null!;
@@ -164,37 +170,40 @@ namespace Pulumi.Aiven
     public sealed class KafkaSchemaRegistryAclState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Kafka Schema Registry ACL ID
+        /// Kafka Schema Registry ACL ID.
         /// </summary>
         [Input("aclId")]
         public Input<string>? AclId { get; set; }
 
         /// <summary>
-        /// Kafka Schema Registry permission to grant. The possible values are `SchemaRegistryRead` and `SchemaRegistryWrite`. Changing this property forces recreation of the resource.
+        /// ACL entry for Schema Registry. The possible values are `SchemaRegistryRead` and `SchemaRegistryWrite`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("permission")]
         public Input<string>? Permission { get; set; }
 
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Resource name pattern for the Schema Registry ACL entry. Changing this property forces recreation of the resource.
+        /// Schema Registry ACL entry resource name pattern. Length must be between `1` and `249`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("resource")]
         public Input<string>? Resource { get; set; }
 
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service name. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 
+        [Input("timeouts")]
+        public Input<Inputs.KafkaSchemaRegistryAclTimeoutsGetArgs>? Timeouts { get; set; }
+
         /// <summary>
-        /// Username pattern for the ACL entry. Changing this property forces recreation of the resource.
+        /// Username. Length must be between `1` and `64`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }

@@ -15,10 +15,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const exampleDatabase = aiven.getMysqlDatabase({
- *     project: exampleProject.project,
- *     serviceName: exampleMysql.serviceName,
- *     databaseName: "example-database",
+ * const example = aiven.getMysqlDatabase({
+ *     project: "my-project",
+ *     serviceName: "my-mysql",
+ *     databaseName: "testdb",
  * });
  * ```
  */
@@ -88,10 +88,10 @@ export interface GetMysqlDatabaseResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const exampleDatabase = aiven.getMysqlDatabase({
- *     project: exampleProject.project,
- *     serviceName: exampleMysql.serviceName,
- *     databaseName: "example-database",
+ * const example = aiven.getMysqlDatabase({
+ *     project: "my-project",
+ *     serviceName: "my-mysql",
+ *     databaseName: "testdb",
  * });
  * ```
  */

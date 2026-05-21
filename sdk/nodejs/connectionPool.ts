@@ -15,14 +15,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const main = new aiven.ConnectionPool("main", {
- *     project: exampleProject.project,
- *     serviceName: examplePostgres.serviceName,
- *     databaseName: mainAivenPgDatabase.databaseName,
+ * const example = new aiven.ConnectionPool("example", {
+ *     project: "my-project",
+ *     serviceName: "foo",
+ *     poolName: "mypool-x-y-z",
+ *     databaseName: "testdb",
  *     poolMode: "transaction",
- *     poolName: "example-pool",
  *     poolSize: 10,
- *     username: exampleUser.username,
+ *     username: "testuser",
  * });
  * ```
  *

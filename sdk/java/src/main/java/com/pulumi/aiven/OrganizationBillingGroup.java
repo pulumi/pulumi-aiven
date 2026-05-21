@@ -25,6 +25,57 @@ import javax.annotation.Nullable;
  * **This resource is in the beta stage and may change without notice.** Set
  * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
  * 
+ * ## Example Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.aiven.OrganizationBillingGroup;
+ * import com.pulumi.aiven.OrganizationBillingGroupArgs;
+ * import com.pulumi.aiven.inputs.OrganizationBillingGroupBillingContactEmailArgs;
+ * import com.pulumi.aiven.inputs.OrganizationBillingGroupBillingEmailArgs;
+ * import com.pulumi.aiven.inputs.OrganizationBillingGroupPaymentMethodArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var example = new OrganizationBillingGroup("example", OrganizationBillingGroupArgs.builder()
+ *             .organizationId("org1a23f456789")
+ *             .billingAddressId("addr4b1ff1ceeaa")
+ *             .shippingAddressId("addr4b1ff1ceeaa")
+ *             .billingContactEmails(OrganizationBillingGroupBillingContactEmailArgs.builder()
+ *                 .email("jane}{@literal @}{@code example.com")
+ *                 .build())
+ *             .billingEmails(OrganizationBillingGroupBillingEmailArgs.builder()
+ *                 .email("jane}{@literal @}{@code example.com")
+ *                 .build())
+ *             .billingGroupName("Default billing group for the organization")
+ *             .paymentMethod(OrganizationBillingGroupPaymentMethodArgs.builder()
+ *                 .paymentMethodId("pm4b1ff1ceeaa")
+ *                 .paymentMethodType("credit_card")
+ *                 .build())
+ *             .vatId("FI12345678")
+ *             .customInvoiceText("Extra billing text")
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * ```sh

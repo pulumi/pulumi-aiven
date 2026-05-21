@@ -16,8 +16,8 @@ import * as utilities from "./utilities";
  * import * as aiven from "@pulumi/aiven";
  *
  * const example = aiven.getOrganizationProject({
- *     projectId: foo.projectId,
- *     organizationId: foo.organizationId,
+ *     organizationId: "org1234abcd",
+ *     projectId: "project-1",
  * });
  * ```
  */
@@ -102,8 +102,8 @@ export interface GetOrganizationProjectResult {
  * import * as aiven from "@pulumi/aiven";
  *
  * const example = aiven.getOrganizationProject({
- *     projectId: foo.projectId,
- *     organizationId: foo.organizationId,
+ *     organizationId: "org1234abcd",
+ *     projectId: "project-1",
  * });
  * ```
  */

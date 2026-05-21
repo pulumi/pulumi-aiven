@@ -15,8 +15,8 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const users = aiven.getOrganizationUserList({
- *     name: "Example organization",
+ * const example = aiven.getOrganizationUserList({
+ *     id: "org1a23f456789",
  * });
  * ```
  */
@@ -77,8 +77,8 @@ export interface GetOrganizationUserListResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const users = aiven.getOrganizationUserList({
- *     name: "Example organization",
+ * const example = aiven.getOrganizationUserList({
+ *     id: "org1a23f456789",
  * });
  * ```
  */

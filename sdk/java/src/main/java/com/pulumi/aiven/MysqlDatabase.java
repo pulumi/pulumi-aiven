@@ -43,10 +43,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleMysqlDatabase = new MysqlDatabase("exampleMysqlDatabase", MysqlDatabaseArgs.builder()
- *             .project(exampleProject.project())
- *             .serviceName(exampleMysql.serviceName())
- *             .databaseName("example-database")
+ *         var example = new MysqlDatabase("example", MysqlDatabaseArgs.builder()
+ *             .project("my-project")
+ *             .serviceName("my-mysql")
+ *             .databaseName("testdb")
  *             .build());
  * 
  *     }

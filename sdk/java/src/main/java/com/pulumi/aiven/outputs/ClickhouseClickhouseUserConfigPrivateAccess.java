@@ -17,6 +17,11 @@ public final class ClickhouseClickhouseUserConfigPrivateAccess {
      */
     private @Nullable Boolean clickhouse;
     /**
+     * @return Allow clients to connect to clickhouseArrowflight with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * 
+     */
+    private @Nullable Boolean clickhouseArrowflight;
+    /**
      * @return Allow clients to connect to clickhouseHttps with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
      * 
      */
@@ -39,6 +44,13 @@ public final class ClickhouseClickhouseUserConfigPrivateAccess {
      */
     public Optional<Boolean> clickhouse() {
         return Optional.ofNullable(this.clickhouse);
+    }
+    /**
+     * @return Allow clients to connect to clickhouseArrowflight with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * 
+     */
+    public Optional<Boolean> clickhouseArrowflight() {
+        return Optional.ofNullable(this.clickhouseArrowflight);
     }
     /**
      * @return Allow clients to connect to clickhouseHttps with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
@@ -72,6 +84,7 @@ public final class ClickhouseClickhouseUserConfigPrivateAccess {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean clickhouse;
+        private @Nullable Boolean clickhouseArrowflight;
         private @Nullable Boolean clickhouseHttps;
         private @Nullable Boolean clickhouseMysql;
         private @Nullable Boolean prometheus;
@@ -79,6 +92,7 @@ public final class ClickhouseClickhouseUserConfigPrivateAccess {
         public Builder(ClickhouseClickhouseUserConfigPrivateAccess defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clickhouse = defaults.clickhouse;
+    	      this.clickhouseArrowflight = defaults.clickhouseArrowflight;
     	      this.clickhouseHttps = defaults.clickhouseHttps;
     	      this.clickhouseMysql = defaults.clickhouseMysql;
     	      this.prometheus = defaults.prometheus;
@@ -88,6 +102,12 @@ public final class ClickhouseClickhouseUserConfigPrivateAccess {
         public Builder clickhouse(@Nullable Boolean clickhouse) {
 
             this.clickhouse = clickhouse;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder clickhouseArrowflight(@Nullable Boolean clickhouseArrowflight) {
+
+            this.clickhouseArrowflight = clickhouseArrowflight;
             return this;
         }
         @CustomType.Setter
@@ -111,6 +131,7 @@ public final class ClickhouseClickhouseUserConfigPrivateAccess {
         public ClickhouseClickhouseUserConfigPrivateAccess build() {
             final var _resultValue = new ClickhouseClickhouseUserConfigPrivateAccess();
             _resultValue.clickhouse = clickhouse;
+            _resultValue.clickhouseArrowflight = clickhouseArrowflight;
             _resultValue.clickhouseHttps = clickhouseHttps;
             _resultValue.clickhouseMysql = clickhouseMysql;
             _resultValue.prometheus = prometheus;

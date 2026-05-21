@@ -24,10 +24,10 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var foo = Aiven.GetOrganizationUserGroupMemberList.Invoke(new()
+        ///     var example = Aiven.GetOrganizationUserGroupMemberList.Invoke(new()
         ///     {
-        ///         OrganizationId = organizationId,
-        ///         UserGroupId = userGroupId,
+        ///         OrganizationId = "org1a23f456789",
+        ///         UserGroupId = "foo",
         ///     });
         /// 
         /// });
@@ -49,10 +49,10 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var foo = Aiven.GetOrganizationUserGroupMemberList.Invoke(new()
+        ///     var example = Aiven.GetOrganizationUserGroupMemberList.Invoke(new()
         ///     {
-        ///         OrganizationId = organizationId,
-        ///         UserGroupId = userGroupId,
+        ///         OrganizationId = "org1a23f456789",
+        ///         UserGroupId = "foo",
         ///     });
         /// 
         /// });
@@ -74,10 +74,10 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var foo = Aiven.GetOrganizationUserGroupMemberList.Invoke(new()
+        ///     var example = Aiven.GetOrganizationUserGroupMemberList.Invoke(new()
         ///     {
-        ///         OrganizationId = organizationId,
-        ///         UserGroupId = userGroupId,
+        ///         OrganizationId = "org1a23f456789",
+        ///         UserGroupId = "foo",
         ///     });
         /// 
         /// });

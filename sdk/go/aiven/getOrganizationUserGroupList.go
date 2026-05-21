@@ -12,6 +12,32 @@ import (
 )
 
 // List all user groups within an organization.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := aiven.GetOrganizationUserGroupList(ctx, &aiven.GetOrganizationUserGroupListArgs{
+//				OrganizationId: "org1a23f456789",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetOrganizationUserGroupList(ctx *pulumi.Context, args *GetOrganizationUserGroupListArgs, opts ...pulumi.InvokeOption) (*GetOrganizationUserGroupListResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetOrganizationUserGroupListResult

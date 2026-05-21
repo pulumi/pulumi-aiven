@@ -93,14 +93,14 @@ public final class OrganizationAddressState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Name of a company. Length must be between `1` and `128`.
+     * Name of a company. Length must be between `1` and `83`.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of a company. Length must be between `1` and `128`.
+     * @return Name of a company. Length must be between `1` and `83`.
      * 
      */
     public Optional<Output<String>> name() {
@@ -324,7 +324,7 @@ public final class OrganizationAddressState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param name Name of a company. Length must be between `1` and `128`.
+         * @param name Name of a company. Length must be between `1` and `83`.
          * 
          * @return builder
          * 
@@ -335,7 +335,7 @@ public final class OrganizationAddressState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param name Name of a company. Length must be between `1` and `128`.
+         * @param name Name of a company. Length must be between `1` and `83`.
          * 
          * @return builder
          * 

@@ -24,11 +24,11 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var main = Aiven.GetConnectionPool.Invoke(new()
+        ///     var example = Aiven.GetConnectionPool.Invoke(new()
         ///     {
-        ///         Project = exampleProject.Project,
-        ///         ServiceName = examplePostgres.ServiceName,
-        ///         PoolName = "example-pool",
+        ///         Project = "my-project",
+        ///         ServiceName = "foo",
+        ///         PoolName = "mypool-x-y-z",
         ///     });
         /// 
         /// });
@@ -50,11 +50,11 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var main = Aiven.GetConnectionPool.Invoke(new()
+        ///     var example = Aiven.GetConnectionPool.Invoke(new()
         ///     {
-        ///         Project = exampleProject.Project,
-        ///         ServiceName = examplePostgres.ServiceName,
-        ///         PoolName = "example-pool",
+        ///         Project = "my-project",
+        ///         ServiceName = "foo",
+        ///         PoolName = "mypool-x-y-z",
         ///     });
         /// 
         /// });
@@ -76,11 +76,11 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var main = Aiven.GetConnectionPool.Invoke(new()
+        ///     var example = Aiven.GetConnectionPool.Invoke(new()
         ///     {
-        ///         Project = exampleProject.Project,
-        ///         ServiceName = examplePostgres.ServiceName,
-        ///         PoolName = "example-pool",
+        ///         Project = "my-project",
+        ///         ServiceName = "foo",
+        ///         PoolName = "mypool-x-y-z",
         ///     });
         /// 
         /// });

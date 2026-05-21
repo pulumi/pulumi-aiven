@@ -26,6 +26,7 @@ class FlinkArgs:
                  service_name: pulumi.Input[_builtins.str],
                  additional_disk_space: pulumi.Input[Optional[_builtins.str]] = None,
                  cloud_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cmk_id: pulumi.Input[Optional[_builtins.str]] = None,
                  disk_space: pulumi.Input[Optional[_builtins.str]] = None,
                  flink: pulumi.Input[Optional['FlinkFlinkArgs']] = None,
                  flink_user_config: pulumi.Input[Optional['FlinkFlinkUserConfigArgs']] = None,
@@ -45,6 +46,7 @@ class FlinkArgs:
         :param pulumi.Input[_builtins.str] service_name: Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
         :param pulumi.Input[_builtins.str] additional_disk_space: Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30 GiB to the default disk space defined by the `plan`. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
         :param pulumi.Input[_builtins.str] cloud_name: The cloud provider and region the service is hosted in. The format is `provider-region`, for example: `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ per project and service. Changing this value [migrates the service to another cloud provider or region](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and includes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases may have a brief interruption during DNS propagation.
+        :param pulumi.Input[_builtins.str] cmk_id: UUID of the Customer Managed Key (CMK) used to apply [bring your own key (BYOK) encryption](https://aiven.io/docs/platform/howto/bring-your-own-key) to this service's data at rest. You can register a CMK for an Aiven project using the `Cmk` resource. Removing this attribute doesn't remove the CMK association. To remove it from this service, set this attribute to the all-zero UUID `00000000-0000-0000-0000-000000000000`.
         :param pulumi.Input[_builtins.str] disk_space: Service disk space to set. Possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
         :param pulumi.Input['FlinkFlinkArgs'] flink: Values provided by the Flink server.
         :param pulumi.Input['FlinkFlinkUserConfigArgs'] flink_user_config: Flink user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
@@ -64,6 +66,8 @@ class FlinkArgs:
             pulumi.set(__self__, "additional_disk_space", additional_disk_space)
         if cloud_name is not None:
             pulumi.set(__self__, "cloud_name", cloud_name)
+        if cmk_id is not None:
+            pulumi.set(__self__, "cmk_id", cmk_id)
         if disk_space is not None:
             pulumi.set(__self__, "disk_space", disk_space)
         if flink is not None:
@@ -146,6 +150,18 @@ class FlinkArgs:
     @cloud_name.setter
     def cloud_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cloud_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="cmkId")
+    def cmk_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        UUID of the Customer Managed Key (CMK) used to apply [bring your own key (BYOK) encryption](https://aiven.io/docs/platform/howto/bring-your-own-key) to this service's data at rest. You can register a CMK for an Aiven project using the `Cmk` resource. Removing this attribute doesn't remove the CMK association. To remove it from this service, set this attribute to the all-zero UUID `00000000-0000-0000-0000-000000000000`.
+        """
+        return pulumi.get(self, "cmk_id")
+
+    @cmk_id.setter
+    def cmk_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "cmk_id", value)
 
     @_builtins.property
     @pulumi.getter(name="diskSpace")
@@ -285,6 +301,7 @@ class _FlinkState:
     def __init__(__self__, *,
                  additional_disk_space: pulumi.Input[Optional[_builtins.str]] = None,
                  cloud_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cmk_id: pulumi.Input[Optional[_builtins.str]] = None,
                  components: pulumi.Input[Optional[Sequence[pulumi.Input['FlinkComponentArgs']]]] = None,
                  disk_space: pulumi.Input[Optional[_builtins.str]] = None,
                  disk_space_cap: pulumi.Input[Optional[_builtins.str]] = None,
@@ -317,6 +334,7 @@ class _FlinkState:
 
         :param pulumi.Input[_builtins.str] additional_disk_space: Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30 GiB to the default disk space defined by the `plan`. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
         :param pulumi.Input[_builtins.str] cloud_name: The cloud provider and region the service is hosted in. The format is `provider-region`, for example: `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ per project and service. Changing this value [migrates the service to another cloud provider or region](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and includes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases may have a brief interruption during DNS propagation.
+        :param pulumi.Input[_builtins.str] cmk_id: UUID of the Customer Managed Key (CMK) used to apply [bring your own key (BYOK) encryption](https://aiven.io/docs/platform/howto/bring-your-own-key) to this service's data at rest. You can register a CMK for an Aiven project using the `Cmk` resource. Removing this attribute doesn't remove the CMK association. To remove it from this service, set this attribute to the all-zero UUID `00000000-0000-0000-0000-000000000000`.
         :param pulumi.Input[Sequence[pulumi.Input['FlinkComponentArgs']]] components: Service component information objects
         :param pulumi.Input[_builtins.str] disk_space: Service disk space to set. Possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
         :param pulumi.Input[_builtins.str] disk_space_cap: The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
@@ -349,6 +367,8 @@ class _FlinkState:
             pulumi.set(__self__, "additional_disk_space", additional_disk_space)
         if cloud_name is not None:
             pulumi.set(__self__, "cloud_name", cloud_name)
+        if cmk_id is not None:
+            pulumi.set(__self__, "cmk_id", cmk_id)
         if components is not None:
             pulumi.set(__self__, "components", components)
         if disk_space is not None:
@@ -427,6 +447,18 @@ class _FlinkState:
     @cloud_name.setter
     def cloud_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cloud_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="cmkId")
+    def cmk_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        UUID of the Customer Managed Key (CMK) used to apply [bring your own key (BYOK) encryption](https://aiven.io/docs/platform/howto/bring-your-own-key) to this service's data at rest. You can register a CMK for an Aiven project using the `Cmk` resource. Removing this attribute doesn't remove the CMK association. To remove it from this service, set this attribute to the all-zero UUID `00000000-0000-0000-0000-000000000000`.
+        """
+        return pulumi.get(self, "cmk_id")
+
+    @cmk_id.setter
+    def cmk_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "cmk_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -761,6 +793,7 @@ class Flink(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  additional_disk_space: pulumi.Input[Optional[_builtins.str]] = None,
                  cloud_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cmk_id: pulumi.Input[Optional[_builtins.str]] = None,
                  disk_space: pulumi.Input[Optional[_builtins.str]] = None,
                  flink: pulumi.Input[Optional[Union['FlinkFlinkArgs', 'FlinkFlinkArgsDict']]] = None,
                  flink_user_config: pulumi.Input[Optional[Union['FlinkFlinkUserConfigArgs', 'FlinkFlinkUserConfigArgsDict']]] = None,
@@ -808,6 +841,7 @@ class Flink(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] additional_disk_space: Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30 GiB to the default disk space defined by the `plan`. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
         :param pulumi.Input[_builtins.str] cloud_name: The cloud provider and region the service is hosted in. The format is `provider-region`, for example: `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ per project and service. Changing this value [migrates the service to another cloud provider or region](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and includes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases may have a brief interruption during DNS propagation.
+        :param pulumi.Input[_builtins.str] cmk_id: UUID of the Customer Managed Key (CMK) used to apply [bring your own key (BYOK) encryption](https://aiven.io/docs/platform/howto/bring-your-own-key) to this service's data at rest. You can register a CMK for an Aiven project using the `Cmk` resource. Removing this attribute doesn't remove the CMK association. To remove it from this service, set this attribute to the all-zero UUID `00000000-0000-0000-0000-000000000000`.
         :param pulumi.Input[_builtins.str] disk_space: Service disk space to set. Possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
         :param pulumi.Input[Union['FlinkFlinkArgs', 'FlinkFlinkArgsDict']] flink: Values provided by the Flink server.
         :param pulumi.Input[Union['FlinkFlinkUserConfigArgs', 'FlinkFlinkUserConfigArgsDict']] flink_user_config: Flink user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
@@ -874,6 +908,7 @@ class Flink(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  additional_disk_space: pulumi.Input[Optional[_builtins.str]] = None,
                  cloud_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cmk_id: pulumi.Input[Optional[_builtins.str]] = None,
                  disk_space: pulumi.Input[Optional[_builtins.str]] = None,
                  flink: pulumi.Input[Optional[Union['FlinkFlinkArgs', 'FlinkFlinkArgsDict']]] = None,
                  flink_user_config: pulumi.Input[Optional[Union['FlinkFlinkUserConfigArgs', 'FlinkFlinkUserConfigArgsDict']]] = None,
@@ -899,6 +934,7 @@ class Flink(pulumi.CustomResource):
 
             __props__.__dict__["additional_disk_space"] = additional_disk_space
             __props__.__dict__["cloud_name"] = cloud_name
+            __props__.__dict__["cmk_id"] = cmk_id
             __props__.__dict__["disk_space"] = disk_space
             __props__.__dict__["flink"] = None if flink is None else pulumi.Output.secret(flink)
             __props__.__dict__["flink_user_config"] = flink_user_config
@@ -946,6 +982,7 @@ class Flink(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             additional_disk_space: pulumi.Input[Optional[_builtins.str]] = None,
             cloud_name: pulumi.Input[Optional[_builtins.str]] = None,
+            cmk_id: pulumi.Input[Optional[_builtins.str]] = None,
             components: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FlinkComponentArgs', 'FlinkComponentArgsDict']]]]] = None,
             disk_space: pulumi.Input[Optional[_builtins.str]] = None,
             disk_space_cap: pulumi.Input[Optional[_builtins.str]] = None,
@@ -982,6 +1019,7 @@ class Flink(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] additional_disk_space: Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30 GiB to the default disk space defined by the `plan`. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
         :param pulumi.Input[_builtins.str] cloud_name: The cloud provider and region the service is hosted in. The format is `provider-region`, for example: `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ per project and service. Changing this value [migrates the service to another cloud provider or region](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and includes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases may have a brief interruption during DNS propagation.
+        :param pulumi.Input[_builtins.str] cmk_id: UUID of the Customer Managed Key (CMK) used to apply [bring your own key (BYOK) encryption](https://aiven.io/docs/platform/howto/bring-your-own-key) to this service's data at rest. You can register a CMK for an Aiven project using the `Cmk` resource. Removing this attribute doesn't remove the CMK association. To remove it from this service, set this attribute to the all-zero UUID `00000000-0000-0000-0000-000000000000`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['FlinkComponentArgs', 'FlinkComponentArgsDict']]]] components: Service component information objects
         :param pulumi.Input[_builtins.str] disk_space: Service disk space to set. Possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
         :param pulumi.Input[_builtins.str] disk_space_cap: The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
@@ -1016,6 +1054,7 @@ class Flink(pulumi.CustomResource):
 
         __props__.__dict__["additional_disk_space"] = additional_disk_space
         __props__.__dict__["cloud_name"] = cloud_name
+        __props__.__dict__["cmk_id"] = cmk_id
         __props__.__dict__["components"] = components
         __props__.__dict__["disk_space"] = disk_space
         __props__.__dict__["disk_space_cap"] = disk_space_cap
@@ -1060,6 +1099,14 @@ class Flink(pulumi.CustomResource):
         The cloud provider and region the service is hosted in. The format is `provider-region`, for example: `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ per project and service. Changing this value [migrates the service to another cloud provider or region](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and includes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases may have a brief interruption during DNS propagation.
         """
         return pulumi.get(self, "cloud_name")
+
+    @_builtins.property
+    @pulumi.getter(name="cmkId")
+    def cmk_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        UUID of the Customer Managed Key (CMK) used to apply [bring your own key (BYOK) encryption](https://aiven.io/docs/platform/howto/bring-your-own-key) to this service's data at rest. You can register a CMK for an Aiven project using the `Cmk` resource. Removing this attribute doesn't remove the CMK association. To remove it from this service, set this attribute to the all-zero UUID `00000000-0000-0000-0000-000000000000`.
+        """
+        return pulumi.get(self, "cmk_id")
 
     @_builtins.property
     @pulumi.getter

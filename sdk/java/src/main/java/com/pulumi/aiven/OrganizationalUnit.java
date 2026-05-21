@@ -42,9 +42,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleUnit = new OrganizationalUnit("exampleUnit", OrganizationalUnitArgs.builder()
- *             .name("Example organizational unit")
- *             .parentId(main.id())
+ *         var example = new OrganizationalUnit("example", OrganizationalUnitArgs.builder()
+ *             .parentId("a22ba494e096")
+ *             .name("Aiven Ltd")
  *             .build());
  * 
  *     }

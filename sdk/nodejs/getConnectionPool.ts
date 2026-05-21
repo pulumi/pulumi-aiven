@@ -15,10 +15,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const main = aiven.getConnectionPool({
- *     project: exampleProject.project,
- *     serviceName: examplePostgres.serviceName,
- *     poolName: "example-pool",
+ * const example = aiven.getConnectionPool({
+ *     project: "my-project",
+ *     serviceName: "foo",
+ *     poolName: "mypool-x-y-z",
  * });
  * ```
  */
@@ -102,10 +102,10 @@ export interface GetConnectionPoolResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const main = aiven.getConnectionPool({
- *     project: exampleProject.project,
- *     serviceName: examplePostgres.serviceName,
- *     poolName: "example-pool",
+ * const example = aiven.getConnectionPool({
+ *     project: "my-project",
+ *     serviceName: "foo",
+ *     poolName: "mypool-x-y-z",
  * });
  * ```
  */

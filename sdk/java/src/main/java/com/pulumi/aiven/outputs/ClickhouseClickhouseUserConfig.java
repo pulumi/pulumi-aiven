@@ -7,6 +7,8 @@ import com.pulumi.aiven.outputs.ClickhouseClickhouseUserConfigIpFilterObject;
 import com.pulumi.aiven.outputs.ClickhouseClickhouseUserConfigPrivateAccess;
 import com.pulumi.aiven.outputs.ClickhouseClickhouseUserConfigPrivatelinkAccess;
 import com.pulumi.aiven.outputs.ClickhouseClickhouseUserConfigPublicAccess;
+import com.pulumi.aiven.outputs.ClickhouseClickhouseUserConfigServerSettings;
+import com.pulumi.aiven.outputs.ClickhouseClickhouseUserConfigSessionSettings;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
 import java.lang.Double;
@@ -93,6 +95,11 @@ public final class ClickhouseClickhouseUserConfig {
      */
     private @Nullable String recoveryBasebackupName;
     /**
+     * @return ClickHouse server settings, which can be found in the `system.server_settings` table
+     * 
+     */
+    private @Nullable ClickhouseClickhouseUserConfigServerSettings serverSettings;
+    /**
      * @return Store logs for the service so that they are available in the HTTP API and console.
      * 
      */
@@ -102,6 +109,11 @@ public final class ClickhouseClickhouseUserConfig {
      * 
      */
     private @Nullable String serviceToForkFrom;
+    /**
+     * @return ClickHouse session settings, which can be found in the `system.settings` table
+     * 
+     */
+    private @Nullable ClickhouseClickhouseUserConfigSessionSettings sessionSettings;
     /**
      * @return Use static public IP addresses.
      * 
@@ -214,6 +226,13 @@ public final class ClickhouseClickhouseUserConfig {
         return Optional.ofNullable(this.recoveryBasebackupName);
     }
     /**
+     * @return ClickHouse server settings, which can be found in the `system.server_settings` table
+     * 
+     */
+    public Optional<ClickhouseClickhouseUserConfigServerSettings> serverSettings() {
+        return Optional.ofNullable(this.serverSettings);
+    }
+    /**
      * @return Store logs for the service so that they are available in the HTTP API and console.
      * 
      */
@@ -226,6 +245,13 @@ public final class ClickhouseClickhouseUserConfig {
      */
     public Optional<String> serviceToForkFrom() {
         return Optional.ofNullable(this.serviceToForkFrom);
+    }
+    /**
+     * @return ClickHouse session settings, which can be found in the `system.settings` table
+     * 
+     */
+    public Optional<ClickhouseClickhouseUserConfigSessionSettings> sessionSettings() {
+        return Optional.ofNullable(this.sessionSettings);
     }
     /**
      * @return Use static public IP addresses.
@@ -264,8 +290,10 @@ public final class ClickhouseClickhouseUserConfig {
         private @Nullable String projectToForkFrom;
         private @Nullable ClickhouseClickhouseUserConfigPublicAccess publicAccess;
         private @Nullable String recoveryBasebackupName;
+        private @Nullable ClickhouseClickhouseUserConfigServerSettings serverSettings;
         private @Nullable Boolean serviceLog;
         private @Nullable String serviceToForkFrom;
+        private @Nullable ClickhouseClickhouseUserConfigSessionSettings sessionSettings;
         private @Nullable Boolean staticIps;
         private @Nullable Double tieredStorageMoveFactor;
         public Builder() {}
@@ -284,8 +312,10 @@ public final class ClickhouseClickhouseUserConfig {
     	      this.projectToForkFrom = defaults.projectToForkFrom;
     	      this.publicAccess = defaults.publicAccess;
     	      this.recoveryBasebackupName = defaults.recoveryBasebackupName;
+    	      this.serverSettings = defaults.serverSettings;
     	      this.serviceLog = defaults.serviceLog;
     	      this.serviceToForkFrom = defaults.serviceToForkFrom;
+    	      this.sessionSettings = defaults.sessionSettings;
     	      this.staticIps = defaults.staticIps;
     	      this.tieredStorageMoveFactor = defaults.tieredStorageMoveFactor;
         }
@@ -378,6 +408,12 @@ public final class ClickhouseClickhouseUserConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder serverSettings(@Nullable ClickhouseClickhouseUserConfigServerSettings serverSettings) {
+
+            this.serverSettings = serverSettings;
+            return this;
+        }
+        @CustomType.Setter
         public Builder serviceLog(@Nullable Boolean serviceLog) {
 
             this.serviceLog = serviceLog;
@@ -387,6 +423,12 @@ public final class ClickhouseClickhouseUserConfig {
         public Builder serviceToForkFrom(@Nullable String serviceToForkFrom) {
 
             this.serviceToForkFrom = serviceToForkFrom;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sessionSettings(@Nullable ClickhouseClickhouseUserConfigSessionSettings sessionSettings) {
+
+            this.sessionSettings = sessionSettings;
             return this;
         }
         @CustomType.Setter
@@ -416,8 +458,10 @@ public final class ClickhouseClickhouseUserConfig {
             _resultValue.projectToForkFrom = projectToForkFrom;
             _resultValue.publicAccess = publicAccess;
             _resultValue.recoveryBasebackupName = recoveryBasebackupName;
+            _resultValue.serverSettings = serverSettings;
             _resultValue.serviceLog = serviceLog;
             _resultValue.serviceToForkFrom = serviceToForkFrom;
+            _resultValue.sessionSettings = sessionSettings;
             _resultValue.staticIps = staticIps;
             _resultValue.tieredStorageMoveFactor = tieredStorageMoveFactor;
             return _resultValue;

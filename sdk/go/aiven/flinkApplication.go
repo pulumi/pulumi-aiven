@@ -28,10 +28,10 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewFlinkApplication(ctx, "example_app", &aiven.FlinkApplicationArgs{
-//				Project:     pulumi.Any(exampleProject.Project),
-//				ServiceName: pulumi.String("example-flink-service"),
-//				Name:        pulumi.String("example-app"),
+//			_, err := aiven.NewFlinkApplication(ctx, "example", &aiven.FlinkApplicationArgs{
+//				Project:     pulumi.String("my-project"),
+//				ServiceName: pulumi.String("my-application"),
+//				Name:        pulumi.String("TestJob"),
 //			})
 //			if err != nil {
 //				return err

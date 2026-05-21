@@ -28,11 +28,12 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewOpensearchUser(ctx, "example_opensearch_user", &aiven.OpensearchUserArgs{
-//				ServiceName: pulumi.Any(exampleOpensearch.ServiceName),
-//				Project:     pulumi.Any(exampleProject.Project),
-//				Username:    pulumi.String("example-opensearch-user"),
-//				Password:    pulumi.Any(opensearchUserPassword),
+//			_, err := aiven.NewOpensearchUser(ctx, "example", &aiven.OpensearchUserArgs{
+//				Project:           pulumi.String("my-project"),
+//				ServiceName:       pulumi.String("my-opensearch"),
+//				Username:          pulumi.String("testuser"),
+//				PasswordWo:        pulumi.String("password123"),
+//				PasswordWoVersion: pulumi.Int(1),
 //			})
 //			if err != nil {
 //				return err

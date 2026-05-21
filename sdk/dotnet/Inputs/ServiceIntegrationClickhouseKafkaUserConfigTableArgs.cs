@@ -18,6 +18,12 @@ namespace Pulumi.Aiven.Inputs
         [Input("autoOffsetReset")]
         public Input<string>? AutoOffsetReset { get; set; }
 
+        /// <summary>
+        /// When set to a non-zero value and there are no committed offsets, the consumer starts from the offset corresponding to (now - auto*offset*reset*by*duration*ms). This overrides auto*offset_reset when set. Requires ClickHouse &gt;= 25.8. Default: `0`.
+        /// </summary>
+        [Input("autoOffsetResetByDurationMs")]
+        public Input<int>? AutoOffsetResetByDurationMs { get; set; }
+
         [Input("columns", required: true)]
         private InputList<Inputs.ServiceIntegrationClickhouseKafkaUserConfigTableColumnArgs>? _columns;
 

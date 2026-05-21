@@ -24,9 +24,9 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleUnit = Aiven.GetOrganizationalUnit.Invoke(new()
+        ///     var example = Aiven.GetOrganizationalUnit.Invoke(new()
         ///     {
-        ///         Name = "Example organizational unit",
+        ///         Id = "foo",
         ///     });
         /// 
         /// });
@@ -48,9 +48,9 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleUnit = Aiven.GetOrganizationalUnit.Invoke(new()
+        ///     var example = Aiven.GetOrganizationalUnit.Invoke(new()
         ///     {
-        ///         Name = "Example organizational unit",
+        ///         Id = "foo",
         ///     });
         /// 
         /// });
@@ -72,9 +72,9 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleUnit = Aiven.GetOrganizationalUnit.Invoke(new()
+        ///     var example = Aiven.GetOrganizationalUnit.Invoke(new()
         ///     {
-        ///         Name = "Example organizational unit",
+        ///         Id = "foo",
         ///     });
         /// 
         /// });

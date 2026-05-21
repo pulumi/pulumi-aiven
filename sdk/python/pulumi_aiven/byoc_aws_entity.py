@@ -35,12 +35,12 @@ class ByocAwsEntityArgs:
         """
         The set of arguments for constructing a ByocAwsEntity resource.
 
-        :param pulumi.Input[_builtins.str] cloud_provider: Cloud provider for the BYOC cloud. The possible values are `aws`, `azure`, `google` and `oracle`.
-        :param pulumi.Input[_builtins.str] cloud_region: Cloud region for the BYOC cloud. Maximum length: `32`.
-        :param pulumi.Input[_builtins.str] deployment_model: Deployment model for the BYOC cloud. The possible values are `direct_ipsec_ingress`, `ipsec_ingress`, `standard` and `standard_public`.
+        :param pulumi.Input[_builtins.str] cloud_provider: Cloud provider for the BYOC cloud. The possible values are `aws`, `azure`, `google` and `oracle`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] cloud_region: Cloud region for the BYOC cloud. Maximum length: `32`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] deployment_model: Deployment model for the BYOC cloud. The possible values are `direct_ipsec_ingress`, `hipaa`, `ipsec_ingress`, `pci_dss`, `standard` and `standard_public`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] display_name: Short name for this BYOC cloud. Maximum length: `64`.
         :param pulumi.Input[_builtins.str] organization_id: ID of an organization. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] reserved_cidr: CIDR range reserved for Aiven provisioned networks in the BYOC cloud. Maximum length: `18`.
+        :param pulumi.Input[_builtins.str] reserved_cidr: CIDR range reserved for Aiven provisioned networks in the BYOC cloud. Maximum length: `18`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] aws_iam_role_arn: Amazon Resource Name. Maximum length: `2048`.
         :param pulumi.Input[Sequence[pulumi.Input['ByocAwsEntityContactEmailArgs']]] contact_emails: Email addresses for notifications and alerts for this BYOC cloud.
         :param pulumi.Input[Sequence[pulumi.Input['ByocAwsEntityErrorArgs']]] errors: List of errors for this custom cloud environment.
@@ -67,7 +67,7 @@ class ByocAwsEntityArgs:
     @pulumi.getter(name="cloudProvider")
     def cloud_provider(self) -> pulumi.Input[_builtins.str]:
         """
-        Cloud provider for the BYOC cloud. The possible values are `aws`, `azure`, `google` and `oracle`.
+        Cloud provider for the BYOC cloud. The possible values are `aws`, `azure`, `google` and `oracle`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "cloud_provider")
 
@@ -79,7 +79,7 @@ class ByocAwsEntityArgs:
     @pulumi.getter(name="cloudRegion")
     def cloud_region(self) -> pulumi.Input[_builtins.str]:
         """
-        Cloud region for the BYOC cloud. Maximum length: `32`.
+        Cloud region for the BYOC cloud. Maximum length: `32`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "cloud_region")
 
@@ -91,7 +91,7 @@ class ByocAwsEntityArgs:
     @pulumi.getter(name="deploymentModel")
     def deployment_model(self) -> pulumi.Input[_builtins.str]:
         """
-        Deployment model for the BYOC cloud. The possible values are `direct_ipsec_ingress`, `ipsec_ingress`, `standard` and `standard_public`.
+        Deployment model for the BYOC cloud. The possible values are `direct_ipsec_ingress`, `hipaa`, `ipsec_ingress`, `pci_dss`, `standard` and `standard_public`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "deployment_model")
 
@@ -127,7 +127,7 @@ class ByocAwsEntityArgs:
     @pulumi.getter(name="reservedCidr")
     def reserved_cidr(self) -> pulumi.Input[_builtins.str]:
         """
-        CIDR range reserved for Aiven provisioned networks in the BYOC cloud. Maximum length: `18`.
+        CIDR range reserved for Aiven provisioned networks in the BYOC cloud. Maximum length: `18`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "reserved_cidr")
 
@@ -238,16 +238,16 @@ class _ByocAwsEntityState:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] bucket_names: Names and usages of buckets required for workloads.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] byoc_resource_tags: Set of tags for the resources provisioned on the BYOC account.
         :param pulumi.Input[_builtins.str] byoc_unique_name: Name for all the resources created for the custom cloud environment.
-        :param pulumi.Input[_builtins.str] cloud_provider: Cloud provider for the BYOC cloud. The possible values are `aws`, `azure`, `google` and `oracle`.
-        :param pulumi.Input[_builtins.str] cloud_region: Cloud region for the BYOC cloud. Maximum length: `32`.
+        :param pulumi.Input[_builtins.str] cloud_provider: Cloud provider for the BYOC cloud. The possible values are `aws`, `azure`, `google` and `oracle`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] cloud_region: Cloud region for the BYOC cloud. Maximum length: `32`. Changing this property forces recreation of the resource.
         :param pulumi.Input[Sequence[pulumi.Input['ByocAwsEntityContactEmailArgs']]] contact_emails: Email addresses for notifications and alerts for this BYOC cloud.
         :param pulumi.Input[_builtins.str] custom_cloud_environment_id: ID of a custom cloud environment.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_cloud_names: Cloud names that can be used to provision a service on this BYOC.
-        :param pulumi.Input[_builtins.str] deployment_model: Deployment model for the BYOC cloud. The possible values are `direct_ipsec_ingress`, `ipsec_ingress`, `standard` and `standard_public`.
+        :param pulumi.Input[_builtins.str] deployment_model: Deployment model for the BYOC cloud. The possible values are `direct_ipsec_ingress`, `hipaa`, `ipsec_ingress`, `pci_dss`, `standard` and `standard_public`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] display_name: Short name for this BYOC cloud. Maximum length: `64`.
         :param pulumi.Input[Sequence[pulumi.Input['ByocAwsEntityErrorArgs']]] errors: List of errors for this custom cloud environment.
         :param pulumi.Input[_builtins.str] organization_id: ID of an organization. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] reserved_cidr: CIDR range reserved for Aiven provisioned networks in the BYOC cloud. Maximum length: `18`.
+        :param pulumi.Input[_builtins.str] reserved_cidr: CIDR range reserved for Aiven provisioned networks in the BYOC cloud. Maximum length: `18`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] state: State of this BYOC cloud. The possible values are `active`, `creating`, `creation_failed`, `deleted`, `deleting`, `deletion_failed`, `disconnected`, `draft`, `reconnecting` and `validating`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Set of resource tags.
         :param pulumi.Input[_builtins.str] update_time: Custom cloud environment last update timestamp (ISO 8601).
@@ -456,7 +456,7 @@ class _ByocAwsEntityState:
     @pulumi.getter(name="cloudProvider")
     def cloud_provider(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Cloud provider for the BYOC cloud. The possible values are `aws`, `azure`, `google` and `oracle`.
+        Cloud provider for the BYOC cloud. The possible values are `aws`, `azure`, `google` and `oracle`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "cloud_provider")
 
@@ -468,7 +468,7 @@ class _ByocAwsEntityState:
     @pulumi.getter(name="cloudRegion")
     def cloud_region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Cloud region for the BYOC cloud. Maximum length: `32`.
+        Cloud region for the BYOC cloud. Maximum length: `32`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "cloud_region")
 
@@ -516,7 +516,7 @@ class _ByocAwsEntityState:
     @pulumi.getter(name="deploymentModel")
     def deployment_model(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Deployment model for the BYOC cloud. The possible values are `direct_ipsec_ingress`, `ipsec_ingress`, `standard` and `standard_public`.
+        Deployment model for the BYOC cloud. The possible values are `direct_ipsec_ingress`, `hipaa`, `ipsec_ingress`, `pci_dss`, `standard` and `standard_public`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "deployment_model")
 
@@ -564,7 +564,7 @@ class _ByocAwsEntityState:
     @pulumi.getter(name="reservedCidr")
     def reserved_cidr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        CIDR range reserved for Aiven provisioned networks in the BYOC cloud. Maximum length: `18`.
+        CIDR range reserved for Aiven provisioned networks in the BYOC cloud. Maximum length: `18`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "reserved_cidr")
 
@@ -661,18 +661,21 @@ class ByocAwsEntity(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         example = aiven.ByocAwsEntity("example",
-            organization_id=main["id"],
-            display_name="my-byoc-cloud",
+            organization_id="org1a23f456789",
             cloud_provider="aws",
-            cloud_region="aws-eu-west-1",
+            cloud_region="eu-west-1",
             deployment_model="standard",
-            reserved_cidr="10.0.0.0/16",
-            aws_iam_role_arn="arn:aws:iam::123456789012:role/my-aiven-byoc-role",
+            display_name="byoc-cloud-prod-eu-west-1",
+            reserved_cidr="192.168.6.0/24",
+            aws_iam_role_arn="arn:aws:iam::012345678901:root",
             contact_emails=[{
-                "email": "ops@example.com",
-                "real_name": "Ops Team",
+                "email": "jane@example.com",
+                "real_name": "Jane Smith",
                 "role": "admin",
-            }])
+            }],
+            tags={
+                "foo": "foo",
+            })
         ```
 
         ## Import
@@ -685,14 +688,14 @@ class ByocAwsEntity(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] aws_iam_role_arn: Amazon Resource Name. Maximum length: `2048`.
-        :param pulumi.Input[_builtins.str] cloud_provider: Cloud provider for the BYOC cloud. The possible values are `aws`, `azure`, `google` and `oracle`.
-        :param pulumi.Input[_builtins.str] cloud_region: Cloud region for the BYOC cloud. Maximum length: `32`.
+        :param pulumi.Input[_builtins.str] cloud_provider: Cloud provider for the BYOC cloud. The possible values are `aws`, `azure`, `google` and `oracle`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] cloud_region: Cloud region for the BYOC cloud. Maximum length: `32`. Changing this property forces recreation of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ByocAwsEntityContactEmailArgs', 'ByocAwsEntityContactEmailArgsDict']]]] contact_emails: Email addresses for notifications and alerts for this BYOC cloud.
-        :param pulumi.Input[_builtins.str] deployment_model: Deployment model for the BYOC cloud. The possible values are `direct_ipsec_ingress`, `ipsec_ingress`, `standard` and `standard_public`.
+        :param pulumi.Input[_builtins.str] deployment_model: Deployment model for the BYOC cloud. The possible values are `direct_ipsec_ingress`, `hipaa`, `ipsec_ingress`, `pci_dss`, `standard` and `standard_public`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] display_name: Short name for this BYOC cloud. Maximum length: `64`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ByocAwsEntityErrorArgs', 'ByocAwsEntityErrorArgsDict']]]] errors: List of errors for this custom cloud environment.
         :param pulumi.Input[_builtins.str] organization_id: ID of an organization. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] reserved_cidr: CIDR range reserved for Aiven provisioned networks in the BYOC cloud. Maximum length: `18`.
+        :param pulumi.Input[_builtins.str] reserved_cidr: CIDR range reserved for Aiven provisioned networks in the BYOC cloud. Maximum length: `18`. Changing this property forces recreation of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Set of resource tags.
         """
         ...
@@ -714,18 +717,21 @@ class ByocAwsEntity(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         example = aiven.ByocAwsEntity("example",
-            organization_id=main["id"],
-            display_name="my-byoc-cloud",
+            organization_id="org1a23f456789",
             cloud_provider="aws",
-            cloud_region="aws-eu-west-1",
+            cloud_region="eu-west-1",
             deployment_model="standard",
-            reserved_cidr="10.0.0.0/16",
-            aws_iam_role_arn="arn:aws:iam::123456789012:role/my-aiven-byoc-role",
+            display_name="byoc-cloud-prod-eu-west-1",
+            reserved_cidr="192.168.6.0/24",
+            aws_iam_role_arn="arn:aws:iam::012345678901:root",
             contact_emails=[{
-                "email": "ops@example.com",
-                "real_name": "Ops Team",
+                "email": "jane@example.com",
+                "real_name": "Jane Smith",
                 "role": "admin",
-            }])
+            }],
+            tags={
+                "foo": "foo",
+            })
         ```
 
         ## Import
@@ -865,16 +871,16 @@ class ByocAwsEntity(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] bucket_names: Names and usages of buckets required for workloads.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] byoc_resource_tags: Set of tags for the resources provisioned on the BYOC account.
         :param pulumi.Input[_builtins.str] byoc_unique_name: Name for all the resources created for the custom cloud environment.
-        :param pulumi.Input[_builtins.str] cloud_provider: Cloud provider for the BYOC cloud. The possible values are `aws`, `azure`, `google` and `oracle`.
-        :param pulumi.Input[_builtins.str] cloud_region: Cloud region for the BYOC cloud. Maximum length: `32`.
+        :param pulumi.Input[_builtins.str] cloud_provider: Cloud provider for the BYOC cloud. The possible values are `aws`, `azure`, `google` and `oracle`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] cloud_region: Cloud region for the BYOC cloud. Maximum length: `32`. Changing this property forces recreation of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ByocAwsEntityContactEmailArgs', 'ByocAwsEntityContactEmailArgsDict']]]] contact_emails: Email addresses for notifications and alerts for this BYOC cloud.
         :param pulumi.Input[_builtins.str] custom_cloud_environment_id: ID of a custom cloud environment.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_cloud_names: Cloud names that can be used to provision a service on this BYOC.
-        :param pulumi.Input[_builtins.str] deployment_model: Deployment model for the BYOC cloud. The possible values are `direct_ipsec_ingress`, `ipsec_ingress`, `standard` and `standard_public`.
+        :param pulumi.Input[_builtins.str] deployment_model: Deployment model for the BYOC cloud. The possible values are `direct_ipsec_ingress`, `hipaa`, `ipsec_ingress`, `pci_dss`, `standard` and `standard_public`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] display_name: Short name for this BYOC cloud. Maximum length: `64`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ByocAwsEntityErrorArgs', 'ByocAwsEntityErrorArgsDict']]]] errors: List of errors for this custom cloud environment.
         :param pulumi.Input[_builtins.str] organization_id: ID of an organization. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] reserved_cidr: CIDR range reserved for Aiven provisioned networks in the BYOC cloud. Maximum length: `18`.
+        :param pulumi.Input[_builtins.str] reserved_cidr: CIDR range reserved for Aiven provisioned networks in the BYOC cloud. Maximum length: `18`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] state: State of this BYOC cloud. The possible values are `active`, `creating`, `creation_failed`, `deleted`, `deleting`, `deletion_failed`, `disconnected`, `draft`, `reconnecting` and `validating`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Set of resource tags.
         :param pulumi.Input[_builtins.str] update_time: Custom cloud environment last update timestamp (ISO 8601).
@@ -1013,7 +1019,7 @@ class ByocAwsEntity(pulumi.CustomResource):
     @pulumi.getter(name="cloudProvider")
     def cloud_provider(self) -> pulumi.Output[_builtins.str]:
         """
-        Cloud provider for the BYOC cloud. The possible values are `aws`, `azure`, `google` and `oracle`.
+        Cloud provider for the BYOC cloud. The possible values are `aws`, `azure`, `google` and `oracle`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "cloud_provider")
 
@@ -1021,7 +1027,7 @@ class ByocAwsEntity(pulumi.CustomResource):
     @pulumi.getter(name="cloudRegion")
     def cloud_region(self) -> pulumi.Output[_builtins.str]:
         """
-        Cloud region for the BYOC cloud. Maximum length: `32`.
+        Cloud region for the BYOC cloud. Maximum length: `32`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "cloud_region")
 
@@ -1053,7 +1059,7 @@ class ByocAwsEntity(pulumi.CustomResource):
     @pulumi.getter(name="deploymentModel")
     def deployment_model(self) -> pulumi.Output[_builtins.str]:
         """
-        Deployment model for the BYOC cloud. The possible values are `direct_ipsec_ingress`, `ipsec_ingress`, `standard` and `standard_public`.
+        Deployment model for the BYOC cloud. The possible values are `direct_ipsec_ingress`, `hipaa`, `ipsec_ingress`, `pci_dss`, `standard` and `standard_public`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "deployment_model")
 
@@ -1085,7 +1091,7 @@ class ByocAwsEntity(pulumi.CustomResource):
     @pulumi.getter(name="reservedCidr")
     def reserved_cidr(self) -> pulumi.Output[_builtins.str]:
         """
-        CIDR range reserved for Aiven provisioned networks in the BYOC cloud. Maximum length: `18`.
+        CIDR range reserved for Aiven provisioned networks in the BYOC cloud. Maximum length: `18`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "reserved_cidr")
 

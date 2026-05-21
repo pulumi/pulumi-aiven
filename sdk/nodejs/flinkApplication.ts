@@ -15,10 +15,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const exampleApp = new aiven.FlinkApplication("example_app", {
- *     project: exampleProject.project,
- *     serviceName: "example-flink-service",
- *     name: "example-app",
+ * const example = new aiven.FlinkApplication("example", {
+ *     project: "my-project",
+ *     serviceName: "my-application",
+ *     name: "TestJob",
  * });
  * ```
  *

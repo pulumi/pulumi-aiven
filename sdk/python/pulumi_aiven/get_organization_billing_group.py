@@ -193,6 +193,16 @@ def get_organization_billing_group(billing_contact_emails: Optional[Sequence[Uni
     **This resource is in the beta stage and may change without notice.** Set
     the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    example = aiven.get_organization_billing_group(organization_id="org1a23f456789",
+        billing_group_id="1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d")
+    ```
+
 
     :param Sequence[Union['GetOrganizationBillingGroupBillingContactEmailArgs', 'GetOrganizationBillingGroupBillingContactEmailArgsDict']] billing_contact_emails: List of billing contact emails.
     :param Sequence[Union['GetOrganizationBillingGroupBillingEmailArgs', 'GetOrganizationBillingGroupBillingEmailArgsDict']] billing_emails: List of billing contact emails.
@@ -235,6 +245,16 @@ def get_organization_billing_group_output(billing_contact_emails: pulumi.Input[O
 
     **This resource is in the beta stage and may change without notice.** Set
     the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    example = aiven.get_organization_billing_group(organization_id="org1a23f456789",
+        billing_group_id="1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d")
+    ```
 
 
     :param Sequence[Union['GetOrganizationBillingGroupBillingContactEmailArgs', 'GetOrganizationBillingGroupBillingContactEmailArgsDict']] billing_contact_emails: List of billing contact emails.

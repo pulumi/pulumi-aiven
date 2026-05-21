@@ -28,9 +28,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.GetPgDatabase(ctx, &aiven.LookupPgDatabaseArgs{
-//				Project:      exampleProject.Project,
-//				ServiceName:  examplePostgres.ServiceName,
-//				DatabaseName: "example-database",
+//				Project:      "my-project",
+//				ServiceName:  "my-pg",
+//				DatabaseName: "testdb",
 //			}, nil)
 //			if err != nil {
 //				return err

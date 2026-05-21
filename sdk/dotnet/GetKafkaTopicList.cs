@@ -13,18 +13,75 @@ namespace Pulumi.Aiven
     {
         /// <summary>
         /// Lists Kafka topics for a service.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Aiven.GetKafkaTopicList.Invoke(new()
+        ///     {
+        ///         Project = "my-project",
+        ///         ServiceName = "my-kafka",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetKafkaTopicListResult> InvokeAsync(GetKafkaTopicListArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetKafkaTopicListResult>("aiven:index/getKafkaTopicList:getKafkaTopicList", args ?? new GetKafkaTopicListArgs(), options.WithDefaults());
 
         /// <summary>
         /// Lists Kafka topics for a service.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Aiven.GetKafkaTopicList.Invoke(new()
+        ///     {
+        ///         Project = "my-project",
+        ///         ServiceName = "my-kafka",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetKafkaTopicListResult> Invoke(GetKafkaTopicListInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetKafkaTopicListResult>("aiven:index/getKafkaTopicList:getKafkaTopicList", args ?? new GetKafkaTopicListInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// Lists Kafka topics for a service.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Aiven.GetKafkaTopicList.Invoke(new()
+        ///     {
+        ///         Project = "my-project",
+        ///         ServiceName = "my-kafka",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetKafkaTopicListResult> Invoke(GetKafkaTopicListInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetKafkaTopicListResult>("aiven:index/getKafkaTopicList:getKafkaTopicList", args ?? new GetKafkaTopicListInvokeArgs(), options.WithDefaults());

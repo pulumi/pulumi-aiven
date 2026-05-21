@@ -43,9 +43,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var tfUser = new OrganizationApplicationUser("tfUser", OrganizationApplicationUserArgs.builder()
- *             .organizationId(main.id())
- *             .name("app-terraform")
+ *         var example = new OrganizationApplicationUser("example", OrganizationApplicationUserArgs.builder()
+ *             .organizationId("org1a23f456789")
+ *             .name("devops app user")
  *             .build());
  * 
  *     }

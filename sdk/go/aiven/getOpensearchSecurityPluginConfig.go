@@ -28,8 +28,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.GetOpensearchSecurityPluginConfig(ctx, &aiven.LookupOpensearchSecurityPluginConfigArgs{
-//				Project:     exampleProject.Project,
-//				ServiceName: exampleOpensearch.ServiceName,
+//				Project:     "my-project",
+//				ServiceName: "my-opensearch",
 //			}, nil)
 //			if err != nil {
 //				return err

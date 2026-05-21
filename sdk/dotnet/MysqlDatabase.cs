@@ -22,11 +22,11 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleMysqlDatabase = new Aiven.MysqlDatabase("example_mysql_database", new()
+    ///     var example = new Aiven.MysqlDatabase("example", new()
     ///     {
-    ///         Project = exampleProject.Project,
-    ///         ServiceName = exampleMysql.ServiceName,
-    ///         DatabaseName = "example-database",
+    ///         Project = "my-project",
+    ///         ServiceName = "my-mysql",
+    ///         DatabaseName = "testdb",
     ///     });
     /// 
     /// });

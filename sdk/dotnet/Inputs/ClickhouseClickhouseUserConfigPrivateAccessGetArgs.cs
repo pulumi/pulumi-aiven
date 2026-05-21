@@ -19,6 +19,12 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? Clickhouse { get; set; }
 
         /// <summary>
+        /// Allow clients to connect to ClickhouseArrowflight with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        /// </summary>
+        [Input("clickhouseArrowflight")]
+        public Input<bool>? ClickhouseArrowflight { get; set; }
+
+        /// <summary>
         /// Allow clients to connect to ClickhouseHttps with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
         /// </summary>
         [Input("clickhouseHttps")]

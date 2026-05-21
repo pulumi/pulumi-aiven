@@ -22,11 +22,13 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var main = new Aiven.PgDatabase("main", new()
+    ///     var example = new Aiven.PgDatabase("example", new()
     ///     {
-    ///         Project = exampleProject.Project,
-    ///         ServiceName = examplePostgres.ServiceName,
-    ///         DatabaseName = "example-database",
+    ///         Project = "my-project",
+    ///         ServiceName = "my-pg",
+    ///         DatabaseName = "testdb",
+    ///         LcCollate = "en_US.UTF-8",
+    ///         LcCtype = "en_US.UTF-8",
     ///     });
     /// 
     /// });

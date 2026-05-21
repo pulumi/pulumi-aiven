@@ -45,11 +45,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleUser = new PgUser("exampleUser", PgUserArgs.builder()
- *             .serviceName(examplePostgres.serviceName())
- *             .project(exampleProject.project())
- *             .username("example-service-user")
- *             .password(serviceUserPassword)
+ *         var example = new PgUser("example", PgUserArgs.builder()
+ *             .project("my-project")
+ *             .serviceName("my-pg")
+ *             .username("testuser")
+ *             .passwordWo("password123")
+ *             .passwordWoVersion(1)
+ *             .pgAllowReplication(true)
  *             .build());
  * 
  *     }

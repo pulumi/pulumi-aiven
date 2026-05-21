@@ -24,6 +24,11 @@ public final class GetServiceListService {
      */
     private String cloudName;
     /**
+     * @return Active Customer Managed Key identifier (CMK ID).
+     * 
+     */
+    private String cmkId;
+    /**
      * @return Service creation timestamp (ISO 8601).
      * 
      */
@@ -113,6 +118,13 @@ public final class GetServiceListService {
      */
     public String cloudName() {
         return this.cloudName;
+    }
+    /**
+     * @return Active Customer Managed Key identifier (CMK ID).
+     * 
+     */
+    public String cmkId() {
+        return this.cmkId;
     }
     /**
      * @return Service creation timestamp (ISO 8601).
@@ -231,6 +243,7 @@ public final class GetServiceListService {
     public static final class Builder {
         private String cloudDescription;
         private String cloudName;
+        private String cmkId;
         private String createTime;
         private Integer diskSpaceMb;
         private Boolean isClusterPlan;
@@ -251,6 +264,7 @@ public final class GetServiceListService {
     	      Objects.requireNonNull(defaults);
     	      this.cloudDescription = defaults.cloudDescription;
     	      this.cloudName = defaults.cloudName;
+    	      this.cmkId = defaults.cmkId;
     	      this.createTime = defaults.createTime;
     	      this.diskSpaceMb = defaults.diskSpaceMb;
     	      this.isClusterPlan = defaults.isClusterPlan;
@@ -282,6 +296,14 @@ public final class GetServiceListService {
               throw new MissingRequiredPropertyException("GetServiceListService", "cloudName");
             }
             this.cloudName = cloudName;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder cmkId(String cmkId) {
+            if (cmkId == null) {
+              throw new MissingRequiredPropertyException("GetServiceListService", "cmkId");
+            }
+            this.cmkId = cmkId;
             return this;
         }
         @CustomType.Setter
@@ -408,6 +430,7 @@ public final class GetServiceListService {
             final var _resultValue = new GetServiceListService();
             _resultValue.cloudDescription = cloudDescription;
             _resultValue.cloudName = cloudName;
+            _resultValue.cmkId = cmkId;
             _resultValue.createTime = createTime;
             _resultValue.diskSpaceMb = diskSpaceMb;
             _resultValue.isClusterPlan = isClusterPlan;

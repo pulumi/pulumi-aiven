@@ -28,10 +28,12 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewPgDatabase(ctx, "main", &aiven.PgDatabaseArgs{
-//				Project:      pulumi.Any(exampleProject.Project),
-//				ServiceName:  pulumi.Any(examplePostgres.ServiceName),
-//				DatabaseName: pulumi.String("example-database"),
+//			_, err := aiven.NewPgDatabase(ctx, "example", &aiven.PgDatabaseArgs{
+//				Project:      pulumi.String("my-project"),
+//				ServiceName:  pulumi.String("my-pg"),
+//				DatabaseName: pulumi.String("testdb"),
+//				LcCollate:    pulumi.String("en_US.UTF-8"),
+//				LcCtype:      pulumi.String("en_US.UTF-8"),
 //			})
 //			if err != nil {
 //				return err

@@ -320,14 +320,14 @@ class ConnectionPool(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        main = aiven.ConnectionPool("main",
-            project=example_project["project"],
-            service_name=example_postgres["serviceName"],
-            database_name=main_aiven_pg_database["databaseName"],
+        example = aiven.ConnectionPool("example",
+            project="my-project",
+            service_name="foo",
+            pool_name="mypool-x-y-z",
+            database_name="testdb",
             pool_mode="transaction",
-            pool_name="example-pool",
             pool_size=10,
-            username=example_user["username"])
+            username="testuser")
         ```
 
         ## Import
@@ -362,14 +362,14 @@ class ConnectionPool(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        main = aiven.ConnectionPool("main",
-            project=example_project["project"],
-            service_name=example_postgres["serviceName"],
-            database_name=main_aiven_pg_database["databaseName"],
+        example = aiven.ConnectionPool("example",
+            project="my-project",
+            service_name="foo",
+            pool_name="mypool-x-y-z",
+            database_name="testdb",
             pool_mode="transaction",
-            pool_name="example-pool",
             pool_size=10,
-            username=example_user["username"])
+            username="testuser")
         ```
 
         ## Import

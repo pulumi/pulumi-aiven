@@ -15,10 +15,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const exampleClickhouseDb = aiven.getClickhouseDatabase({
- *     project: exampleProject.project,
- *     serviceName: exampleClickhouse.serviceName,
- *     name: "example-database",
+ * const example = aiven.getClickhouseDatabase({
+ *     project: "my-project",
+ *     serviceName: "my-clickhouse",
+ *     name: "testdb",
  * });
  * ```
  */
@@ -88,10 +88,10 @@ export interface GetClickhouseDatabaseResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const exampleClickhouseDb = aiven.getClickhouseDatabase({
- *     project: exampleProject.project,
- *     serviceName: exampleClickhouse.serviceName,
- *     name: "example-database",
+ * const example = aiven.getClickhouseDatabase({
+ *     project: "my-project",
+ *     serviceName: "my-clickhouse",
+ *     name: "testdb",
  * });
  * ```
  */

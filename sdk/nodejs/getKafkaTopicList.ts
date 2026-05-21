@@ -8,6 +8,18 @@ import * as utilities from "./utilities";
 
 /**
  * Lists Kafka topics for a service.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const example = aiven.getKafkaTopicList({
+ *     project: "my-project",
+ *     serviceName: "my-kafka",
+ * });
+ * ```
  */
 export function getKafkaTopicList(args: GetKafkaTopicListArgs, opts?: pulumi.InvokeOptions): Promise<GetKafkaTopicListResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -62,6 +74,18 @@ export interface GetKafkaTopicListResult {
 }
 /**
  * Lists Kafka topics for a service.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const example = aiven.getKafkaTopicList({
+ *     project: "my-project",
+ *     serviceName: "my-kafka",
+ * });
+ * ```
  */
 export function getKafkaTopicListOutput(args: GetKafkaTopicListOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetKafkaTopicListResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

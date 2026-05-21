@@ -31,6 +31,21 @@ public final class ClickhouseClickhouseUserConfigPrivatelinkAccessArgs extends c
     }
 
     /**
+     * Enable clickhouse_arrowflight.
+     * 
+     */
+    @Import(name="clickhouseArrowflight")
+    private @Nullable Output<Boolean> clickhouseArrowflight;
+
+    /**
+     * @return Enable clickhouse_arrowflight.
+     * 
+     */
+    public Optional<Output<Boolean>> clickhouseArrowflight() {
+        return Optional.ofNullable(this.clickhouseArrowflight);
+    }
+
+    /**
      * Enable clickhouse_https.
      * 
      */
@@ -79,6 +94,7 @@ public final class ClickhouseClickhouseUserConfigPrivatelinkAccessArgs extends c
 
     private ClickhouseClickhouseUserConfigPrivatelinkAccessArgs(ClickhouseClickhouseUserConfigPrivatelinkAccessArgs $) {
         this.clickhouse = $.clickhouse;
+        this.clickhouseArrowflight = $.clickhouseArrowflight;
         this.clickhouseHttps = $.clickhouseHttps;
         this.clickhouseMysql = $.clickhouseMysql;
         this.prometheus = $.prometheus;
@@ -121,6 +137,27 @@ public final class ClickhouseClickhouseUserConfigPrivatelinkAccessArgs extends c
          */
         public Builder clickhouse(Boolean clickhouse) {
             return clickhouse(Output.of(clickhouse));
+        }
+
+        /**
+         * @param clickhouseArrowflight Enable clickhouse_arrowflight.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clickhouseArrowflight(@Nullable Output<Boolean> clickhouseArrowflight) {
+            $.clickhouseArrowflight = clickhouseArrowflight;
+            return this;
+        }
+
+        /**
+         * @param clickhouseArrowflight Enable clickhouse_arrowflight.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clickhouseArrowflight(Boolean clickhouseArrowflight) {
+            return clickhouseArrowflight(Output.of(clickhouseArrowflight));
         }
 
         /**

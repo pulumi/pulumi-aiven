@@ -147,9 +147,9 @@ def get_clickhouse_user(project: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    example_user = aiven.get_clickhouse_user(project=example_project["project"],
-        service_name=example_clickhouse["serviceName"],
-        username="analyst")
+    example = aiven.get_clickhouse_user(project="my-project",
+        service_name="my-clickhouse",
+        uuid="1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d")
     ```
 
 
@@ -191,9 +191,9 @@ def get_clickhouse_user_output(project: pulumi.Input[Optional[_builtins.str]] = 
     import pulumi
     import pulumi_aiven as aiven
 
-    example_user = aiven.get_clickhouse_user(project=example_project["project"],
-        service_name=example_clickhouse["serviceName"],
-        username="analyst")
+    example = aiven.get_clickhouse_user(project="my-project",
+        service_name="my-clickhouse",
+        uuid="1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d")
     ```
 
 

@@ -3,10 +3,13 @@
 
 package com.pulumi.aiven.inputs;
 
+import com.pulumi.aiven.inputs.GetKafkaSchemaRegistryAclTimeouts;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetKafkaSchemaRegistryAclPlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -14,29 +17,44 @@ public final class GetKafkaSchemaRegistryAclPlainArgs extends com.pulumi.resourc
     public static final GetKafkaSchemaRegistryAclPlainArgs Empty = new GetKafkaSchemaRegistryAclPlainArgs();
 
     /**
-     * Kafka Schema Registry permission to grant. The possible values are `schemaRegistryRead` and `schemaRegistryWrite`. Changing this property forces recreation of the resource.
+     * Kafka Schema Registry ACL ID. Provide either `aclId`, or all of `permission`, `resource` and `username` together.
      * 
      */
-    @Import(name="permission", required=true)
-    private String permission;
+    @Import(name="aclId")
+    private @Nullable String aclId;
 
     /**
-     * @return Kafka Schema Registry permission to grant. The possible values are `schemaRegistryRead` and `schemaRegistryWrite`. Changing this property forces recreation of the resource.
+     * @return Kafka Schema Registry ACL ID. Provide either `aclId`, or all of `permission`, `resource` and `username` together.
      * 
      */
-    public String permission() {
-        return this.permission;
+    public Optional<String> aclId() {
+        return Optional.ofNullable(this.aclId);
     }
 
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * ACL entry for Schema Registry. The possible values are `schemaRegistryRead` and `schemaRegistryWrite`. Provide either `aclId`, or all of `permission`, `resource` and `username` together.
+     * 
+     */
+    @Import(name="permission")
+    private @Nullable String permission;
+
+    /**
+     * @return ACL entry for Schema Registry. The possible values are `schemaRegistryRead` and `schemaRegistryWrite`. Provide either `aclId`, or all of `permission`, `resource` and `username` together.
+     * 
+     */
+    public Optional<String> permission() {
+        return Optional.ofNullable(this.permission);
+    }
+
+    /**
+     * Project name.
      * 
      */
     @Import(name="project", required=true)
     private String project;
 
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name.
      * 
      */
     public String project() {
@@ -44,57 +62,66 @@ public final class GetKafkaSchemaRegistryAclPlainArgs extends com.pulumi.resourc
     }
 
     /**
-     * Resource name pattern for the Schema Registry ACL entry. Changing this property forces recreation of the resource.
+     * Schema Registry ACL entry resource name pattern. Provide either `aclId`, or all of `permission`, `resource` and `username` together.
      * 
      */
-    @Import(name="resource", required=true)
-    private String resource;
+    @Import(name="resource")
+    private @Nullable String resource;
 
     /**
-     * @return Resource name pattern for the Schema Registry ACL entry. Changing this property forces recreation of the resource.
+     * @return Schema Registry ACL entry resource name pattern. Provide either `aclId`, or all of `permission`, `resource` and `username` together.
      * 
      */
-    public String resource() {
-        return this.resource;
+    public Optional<String> resource() {
+        return Optional.ofNullable(this.resource);
     }
 
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name.
      * 
      */
     @Import(name="serviceName", required=true)
     private String serviceName;
 
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service name.
      * 
      */
     public String serviceName() {
         return this.serviceName;
     }
 
-    /**
-     * Username pattern for the ACL entry. Changing this property forces recreation of the resource.
-     * 
-     */
-    @Import(name="username", required=true)
-    private String username;
+    @Import(name="timeouts")
+    private @Nullable GetKafkaSchemaRegistryAclTimeouts timeouts;
+
+    public Optional<GetKafkaSchemaRegistryAclTimeouts> timeouts() {
+        return Optional.ofNullable(this.timeouts);
+    }
 
     /**
-     * @return Username pattern for the ACL entry. Changing this property forces recreation of the resource.
+     * Username. Provide either `aclId`, or all of `permission`, `resource` and `username` together.
      * 
      */
-    public String username() {
-        return this.username;
+    @Import(name="username")
+    private @Nullable String username;
+
+    /**
+     * @return Username. Provide either `aclId`, or all of `permission`, `resource` and `username` together.
+     * 
+     */
+    public Optional<String> username() {
+        return Optional.ofNullable(this.username);
     }
 
     private GetKafkaSchemaRegistryAclPlainArgs() {}
 
     private GetKafkaSchemaRegistryAclPlainArgs(GetKafkaSchemaRegistryAclPlainArgs $) {
+        this.aclId = $.aclId;
         this.permission = $.permission;
         this.project = $.project;
         this.resource = $.resource;
         this.serviceName = $.serviceName;
+        this.timeouts = $.timeouts;
         this.username = $.username;
     }
 
@@ -117,18 +144,29 @@ public final class GetKafkaSchemaRegistryAclPlainArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param permission Kafka Schema Registry permission to grant. The possible values are `schemaRegistryRead` and `schemaRegistryWrite`. Changing this property forces recreation of the resource.
+         * @param aclId Kafka Schema Registry ACL ID. Provide either `aclId`, or all of `permission`, `resource` and `username` together.
          * 
          * @return builder
          * 
          */
-        public Builder permission(String permission) {
+        public Builder aclId(@Nullable String aclId) {
+            $.aclId = aclId;
+            return this;
+        }
+
+        /**
+         * @param permission ACL entry for Schema Registry. The possible values are `schemaRegistryRead` and `schemaRegistryWrite`. Provide either `aclId`, or all of `permission`, `resource` and `username` together.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder permission(@Nullable String permission) {
             $.permission = permission;
             return this;
         }
 
         /**
-         * @param project The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param project Project name.
          * 
          * @return builder
          * 
@@ -139,18 +177,18 @@ public final class GetKafkaSchemaRegistryAclPlainArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param resource Resource name pattern for the Schema Registry ACL entry. Changing this property forces recreation of the resource.
+         * @param resource Schema Registry ACL entry resource name pattern. Provide either `aclId`, or all of `permission`, `resource` and `username` together.
          * 
          * @return builder
          * 
          */
-        public Builder resource(String resource) {
+        public Builder resource(@Nullable String resource) {
             $.resource = resource;
             return this;
         }
 
         /**
-         * @param serviceName The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param serviceName Service name.
          * 
          * @return builder
          * 
@@ -160,32 +198,28 @@ public final class GetKafkaSchemaRegistryAclPlainArgs extends com.pulumi.resourc
             return this;
         }
 
+        public Builder timeouts(@Nullable GetKafkaSchemaRegistryAclTimeouts timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
         /**
-         * @param username Username pattern for the ACL entry. Changing this property forces recreation of the resource.
+         * @param username Username. Provide either `aclId`, or all of `permission`, `resource` and `username` together.
          * 
          * @return builder
          * 
          */
-        public Builder username(String username) {
+        public Builder username(@Nullable String username) {
             $.username = username;
             return this;
         }
 
         public GetKafkaSchemaRegistryAclPlainArgs build() {
-            if ($.permission == null) {
-                throw new MissingRequiredPropertyException("GetKafkaSchemaRegistryAclPlainArgs", "permission");
-            }
             if ($.project == null) {
                 throw new MissingRequiredPropertyException("GetKafkaSchemaRegistryAclPlainArgs", "project");
             }
-            if ($.resource == null) {
-                throw new MissingRequiredPropertyException("GetKafkaSchemaRegistryAclPlainArgs", "resource");
-            }
             if ($.serviceName == null) {
                 throw new MissingRequiredPropertyException("GetKafkaSchemaRegistryAclPlainArgs", "serviceName");
-            }
-            if ($.username == null) {
-                throw new MissingRequiredPropertyException("GetKafkaSchemaRegistryAclPlainArgs", "username");
             }
             return $;
         }

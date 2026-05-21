@@ -20,8 +20,8 @@ from .azure_privatelink_connection_approval import *
 from .azure_vpc_peering_connection import *
 from .billing_group import *
 from .byoc_aws_entity import *
-from .cassandra import *
-from .cassandra_user import *
+from .byoc_aws_provision import *
+from .byoc_permissions import *
 from .clickhouse import *
 from .clickhouse_database import *
 from .clickhouse_grant import *
@@ -53,9 +53,6 @@ from .get_azure_org_vpc_peering_connection import *
 from .get_azure_privatelink import *
 from .get_azure_vpc_peering_connection import *
 from .get_billing_group import *
-from .get_cassanda import *
-from .get_cassandra import *
-from .get_cassandra_user import *
 from .get_clickhouse import *
 from .get_clickhouse_database import *
 from .get_clickhouse_user import *
@@ -109,8 +106,6 @@ from .get_pg_user import *
 from .get_project import *
 from .get_project_user import *
 from .get_project_vpc import *
-from .get_redis import *
-from .get_redis_user import *
 from .get_service_component import *
 from .get_service_integration import *
 from .get_service_integration_endpoint import *
@@ -164,13 +159,12 @@ from .project import *
 from .project_user import *
 from .project_vpc import *
 from .provider import *
-from .redis import *
-from .redis_user import *
 from .service_integration import *
 from .service_integration_endpoint import *
 from .static_ip import *
 from .thanos import *
 from .transit_gateway_vpc_attachment import *
+from .upgrade_step import *
 from .valkey import *
 from .valkey_user import *
 from ._inputs import *
@@ -300,18 +294,18 @@ _utilities.register(
  },
  {
   "pkg": "aiven",
-  "mod": "index/cassandra",
+  "mod": "index/byocAwsProvision",
   "fqn": "pulumi_aiven",
   "classes": {
-   "aiven:index/cassandra:Cassandra": "Cassandra"
+   "aiven:index/byocAwsProvision:ByocAwsProvision": "ByocAwsProvision"
   }
  },
  {
   "pkg": "aiven",
-  "mod": "index/cassandraUser",
+  "mod": "index/byocPermissions",
   "fqn": "pulumi_aiven",
   "classes": {
-   "aiven:index/cassandraUser:CassandraUser": "CassandraUser"
+   "aiven:index/byocPermissions:ByocPermissions": "ByocPermissions"
   }
  },
  {
@@ -804,22 +798,6 @@ _utilities.register(
  },
  {
   "pkg": "aiven",
-  "mod": "index/redis",
-  "fqn": "pulumi_aiven",
-  "classes": {
-   "aiven:index/redis:Redis": "Redis"
-  }
- },
- {
-  "pkg": "aiven",
-  "mod": "index/redisUser",
-  "fqn": "pulumi_aiven",
-  "classes": {
-   "aiven:index/redisUser:RedisUser": "RedisUser"
-  }
- },
- {
-  "pkg": "aiven",
   "mod": "index/serviceIntegration",
   "fqn": "pulumi_aiven",
   "classes": {
@@ -856,6 +834,14 @@ _utilities.register(
   "fqn": "pulumi_aiven",
   "classes": {
    "aiven:index/transitGatewayVpcAttachment:TransitGatewayVpcAttachment": "TransitGatewayVpcAttachment"
+  }
+ },
+ {
+  "pkg": "aiven",
+  "mod": "index/upgradeStep",
+  "fqn": "pulumi_aiven",
+  "classes": {
+   "aiven:index/upgradeStep:UpgradeStep": "UpgradeStep"
   }
  },
  {

@@ -42,10 +42,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleApp = new FlinkApplication("exampleApp", FlinkApplicationArgs.builder()
- *             .project(exampleProject.project())
- *             .serviceName("example-flink-service")
- *             .name("example-app")
+ *         var example = new FlinkApplication("example", FlinkApplicationArgs.builder()
+ *             .project("my-project")
+ *             .serviceName("my-application")
+ *             .name("TestJob")
  *             .build());
  * 
  *     }

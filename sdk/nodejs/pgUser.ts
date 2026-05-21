@@ -15,11 +15,13 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const exampleUser = new aiven.PgUser("example_user", {
- *     serviceName: examplePostgres.serviceName,
- *     project: exampleProject.project,
- *     username: "example-service-user",
- *     password: serviceUserPassword,
+ * const example = new aiven.PgUser("example", {
+ *     project: "my-project",
+ *     serviceName: "my-pg",
+ *     username: "testuser",
+ *     passwordWo: "password123",
+ *     passwordWoVersion: 1,
+ *     pgAllowReplication: true,
  * });
  * ```
  *

@@ -12,6 +12,32 @@ import * as utilities from "./utilities";
  * **This resource is in the beta stage and may change without notice.** Set
  * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const example = new aiven.OrganizationBillingGroup("example", {
+ *     organizationId: "org1a23f456789",
+ *     billingAddressId: "addr4b1ff1ceeaa",
+ *     shippingAddressId: "addr4b1ff1ceeaa",
+ *     billingContactEmails: [{
+ *         email: "jane@example.com",
+ *     }],
+ *     billingEmails: [{
+ *         email: "jane@example.com",
+ *     }],
+ *     billingGroupName: "Default billing group for the organization",
+ *     paymentMethod: {
+ *         paymentMethodId: "pm4b1ff1ceeaa",
+ *         paymentMethodType: "credit_card",
+ *     },
+ *     vatId: "FI12345678",
+ *     customInvoiceText: "Extra billing text",
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

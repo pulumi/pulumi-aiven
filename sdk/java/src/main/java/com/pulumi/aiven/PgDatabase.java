@@ -43,10 +43,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var main = new PgDatabase("main", PgDatabaseArgs.builder()
- *             .project(exampleProject.project())
- *             .serviceName(examplePostgres.serviceName())
- *             .databaseName("example-database")
+ *         var example = new PgDatabase("example", PgDatabaseArgs.builder()
+ *             .project("my-project")
+ *             .serviceName("my-pg")
+ *             .databaseName("testdb")
+ *             .lcCollate("en_US.UTF-8")
+ *             .lcCtype("en_US.UTF-8")
  *             .build());
  * 
  *     }

@@ -31,6 +31,21 @@ public final class ClickhouseClickhouseUserConfigPrivateAccessArgs extends com.p
     }
 
     /**
+     * Allow clients to connect to clickhouseArrowflight with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * 
+     */
+    @Import(name="clickhouseArrowflight")
+    private @Nullable Output<Boolean> clickhouseArrowflight;
+
+    /**
+     * @return Allow clients to connect to clickhouseArrowflight with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * 
+     */
+    public Optional<Output<Boolean>> clickhouseArrowflight() {
+        return Optional.ofNullable(this.clickhouseArrowflight);
+    }
+
+    /**
      * Allow clients to connect to clickhouseHttps with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
      * 
      */
@@ -79,6 +94,7 @@ public final class ClickhouseClickhouseUserConfigPrivateAccessArgs extends com.p
 
     private ClickhouseClickhouseUserConfigPrivateAccessArgs(ClickhouseClickhouseUserConfigPrivateAccessArgs $) {
         this.clickhouse = $.clickhouse;
+        this.clickhouseArrowflight = $.clickhouseArrowflight;
         this.clickhouseHttps = $.clickhouseHttps;
         this.clickhouseMysql = $.clickhouseMysql;
         this.prometheus = $.prometheus;
@@ -121,6 +137,27 @@ public final class ClickhouseClickhouseUserConfigPrivateAccessArgs extends com.p
          */
         public Builder clickhouse(Boolean clickhouse) {
             return clickhouse(Output.of(clickhouse));
+        }
+
+        /**
+         * @param clickhouseArrowflight Allow clients to connect to clickhouseArrowflight with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clickhouseArrowflight(@Nullable Output<Boolean> clickhouseArrowflight) {
+            $.clickhouseArrowflight = clickhouseArrowflight;
+            return this;
+        }
+
+        /**
+         * @param clickhouseArrowflight Allow clients to connect to clickhouseArrowflight with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clickhouseArrowflight(Boolean clickhouseArrowflight) {
+            return clickhouseArrowflight(Output.of(clickhouseArrowflight));
         }
 
         /**

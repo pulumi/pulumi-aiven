@@ -466,13 +466,14 @@ class OrganizationApplicationUserToken(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        tf_user = aiven.OrganizationApplicationUser("tf_user",
-            organization_id=main["id"],
-            name="app-terraform")
         example = aiven.OrganizationApplicationUserToken("example",
-            organization_id=main["id"],
-            user_id=tf_user.user_id,
-            description="Token for TF access to Aiven.")
+            organization_id="org1a23f456789",
+            user_id="foo",
+            description="Integration client Alpha",
+            extend_when_used=False,
+            ip_allowlists=["192.168.0.0/24"],
+            max_age_seconds=600,
+            scopes=["user:read"])
         ```
 
         ## Import
@@ -507,13 +508,14 @@ class OrganizationApplicationUserToken(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        tf_user = aiven.OrganizationApplicationUser("tf_user",
-            organization_id=main["id"],
-            name="app-terraform")
         example = aiven.OrganizationApplicationUserToken("example",
-            organization_id=main["id"],
-            user_id=tf_user.user_id,
-            description="Token for TF access to Aiven.")
+            organization_id="org1a23f456789",
+            user_id="foo",
+            description="Integration client Alpha",
+            extend_when_used=False,
+            ip_allowlists=["192.168.0.0/24"],
+            max_age_seconds=600,
+            scopes=["user:read"])
         ```
 
         ## Import

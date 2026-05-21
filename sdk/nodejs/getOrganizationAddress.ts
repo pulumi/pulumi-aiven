@@ -11,6 +11,18 @@ import * as utilities from "./utilities";
  *
  * **This resource is in the beta stage and may change without notice.** Set
  * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const example = aiven.getOrganizationAddress({
+ *     organizationId: "org1a23f456789",
+ *     addressId: "foo",
+ * });
+ * ```
  */
 export function getOrganizationAddress(args: GetOrganizationAddressArgs, opts?: pulumi.InvokeOptions): Promise<GetOrganizationAddressResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -91,6 +103,18 @@ export interface GetOrganizationAddressResult {
  *
  * **This resource is in the beta stage and may change without notice.** Set
  * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const example = aiven.getOrganizationAddress({
+ *     organizationId: "org1a23f456789",
+ *     addressId: "foo",
+ * });
+ * ```
  */
 export function getOrganizationAddressOutput(args: GetOrganizationAddressOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOrganizationAddressResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

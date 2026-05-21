@@ -18,6 +18,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? AutoOffsetReset;
         /// <summary>
+        /// When set to a non-zero value and there are no committed offsets, the consumer starts from the offset corresponding to (now - auto*offset*reset*by*duration*ms). This overrides auto*offset_reset when set. Requires ClickHouse &gt;= 25.8. Default: `0`.
+        /// </summary>
+        public readonly int? AutoOffsetResetByDurationMs;
+        /// <summary>
         /// Array of column definitions that specify the structure of the ClickHouse table. Each column maps to a field in the Kafka messages
         /// </summary>
         public readonly ImmutableArray<Outputs.ServiceIntegrationClickhouseKafkaUserConfigTableColumn> Columns;
@@ -114,6 +118,8 @@ namespace Pulumi.Aiven.Outputs
         private ServiceIntegrationClickhouseKafkaUserConfigTable(
             string? autoOffsetReset,
 
+            int? autoOffsetResetByDurationMs,
+
             ImmutableArray<Outputs.ServiceIntegrationClickhouseKafkaUserConfigTableColumn> columns,
 
             string dataFormat,
@@ -161,6 +167,7 @@ namespace Pulumi.Aiven.Outputs
             ImmutableArray<Outputs.ServiceIntegrationClickhouseKafkaUserConfigTableTopic> topics)
         {
             AutoOffsetReset = autoOffsetReset;
+            AutoOffsetResetByDurationMs = autoOffsetResetByDurationMs;
             Columns = columns;
             DataFormat = dataFormat;
             DateTimeInputFormat = dateTimeInputFormat;

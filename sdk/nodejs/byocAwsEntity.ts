@@ -19,18 +19,21 @@ import * as utilities from "./utilities";
  * import * as aiven from "@pulumi/aiven";
  *
  * const example = new aiven.ByocAwsEntity("example", {
- *     organizationId: main.id,
- *     displayName: "my-byoc-cloud",
+ *     organizationId: "org1a23f456789",
  *     cloudProvider: "aws",
- *     cloudRegion: "aws-eu-west-1",
+ *     cloudRegion: "eu-west-1",
  *     deploymentModel: "standard",
- *     reservedCidr: "10.0.0.0/16",
- *     awsIamRoleArn: "arn:aws:iam::123456789012:role/my-aiven-byoc-role",
+ *     displayName: "byoc-cloud-prod-eu-west-1",
+ *     reservedCidr: "192.168.6.0/24",
+ *     awsIamRoleArn: "arn:aws:iam::012345678901:root",
  *     contactEmails: [{
- *         email: "ops@example.com",
- *         realName: "Ops Team",
+ *         email: "jane@example.com",
+ *         realName: "Jane Smith",
  *         role: "admin",
  *     }],
+ *     tags: {
+ *         foo: "foo",
+ *     },
  * });
  * ```
  *
@@ -117,11 +120,11 @@ export class ByocAwsEntity extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly byocUniqueName: pulumi.Output<string>;
     /**
-     * Cloud provider for the BYOC cloud. The possible values are `aws`, `azure`, `google` and `oracle`.
+     * Cloud provider for the BYOC cloud. The possible values are `aws`, `azure`, `google` and `oracle`. Changing this property forces recreation of the resource.
      */
     declare public readonly cloudProvider: pulumi.Output<string>;
     /**
-     * Cloud region for the BYOC cloud. Maximum length: `32`.
+     * Cloud region for the BYOC cloud. Maximum length: `32`. Changing this property forces recreation of the resource.
      */
     declare public readonly cloudRegion: pulumi.Output<string>;
     /**
@@ -137,7 +140,7 @@ export class ByocAwsEntity extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly customCloudNames: pulumi.Output<string[]>;
     /**
-     * Deployment model for the BYOC cloud. The possible values are `directIpsecIngress`, `ipsecIngress`, `standard` and `standardPublic`.
+     * Deployment model for the BYOC cloud. The possible values are `directIpsecIngress`, `hipaa`, `ipsecIngress`, `pciDss`, `standard` and `standardPublic`. Changing this property forces recreation of the resource.
      */
     declare public readonly deploymentModel: pulumi.Output<string>;
     /**
@@ -153,7 +156,7 @@ export class ByocAwsEntity extends pulumi.CustomResource {
      */
     declare public readonly organizationId: pulumi.Output<string>;
     /**
-     * CIDR range reserved for Aiven provisioned networks in the BYOC cloud. Maximum length: `18`.
+     * CIDR range reserved for Aiven provisioned networks in the BYOC cloud. Maximum length: `18`. Changing this property forces recreation of the resource.
      */
     declare public readonly reservedCidr: pulumi.Output<string>;
     /**
@@ -320,11 +323,11 @@ export interface ByocAwsEntityState {
      */
     byocUniqueName?: pulumi.Input<string | undefined>;
     /**
-     * Cloud provider for the BYOC cloud. The possible values are `aws`, `azure`, `google` and `oracle`.
+     * Cloud provider for the BYOC cloud. The possible values are `aws`, `azure`, `google` and `oracle`. Changing this property forces recreation of the resource.
      */
     cloudProvider?: pulumi.Input<string | undefined>;
     /**
-     * Cloud region for the BYOC cloud. Maximum length: `32`.
+     * Cloud region for the BYOC cloud. Maximum length: `32`. Changing this property forces recreation of the resource.
      */
     cloudRegion?: pulumi.Input<string | undefined>;
     /**
@@ -340,7 +343,7 @@ export interface ByocAwsEntityState {
      */
     customCloudNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Deployment model for the BYOC cloud. The possible values are `directIpsecIngress`, `ipsecIngress`, `standard` and `standardPublic`.
+     * Deployment model for the BYOC cloud. The possible values are `directIpsecIngress`, `hipaa`, `ipsecIngress`, `pciDss`, `standard` and `standardPublic`. Changing this property forces recreation of the resource.
      */
     deploymentModel?: pulumi.Input<string | undefined>;
     /**
@@ -356,7 +359,7 @@ export interface ByocAwsEntityState {
      */
     organizationId?: pulumi.Input<string | undefined>;
     /**
-     * CIDR range reserved for Aiven provisioned networks in the BYOC cloud. Maximum length: `18`.
+     * CIDR range reserved for Aiven provisioned networks in the BYOC cloud. Maximum length: `18`. Changing this property forces recreation of the resource.
      */
     reservedCidr?: pulumi.Input<string | undefined>;
     /**
@@ -387,11 +390,11 @@ export interface ByocAwsEntityArgs {
      */
     awsIamRoleArn?: pulumi.Input<string | undefined>;
     /**
-     * Cloud provider for the BYOC cloud. The possible values are `aws`, `azure`, `google` and `oracle`.
+     * Cloud provider for the BYOC cloud. The possible values are `aws`, `azure`, `google` and `oracle`. Changing this property forces recreation of the resource.
      */
     cloudProvider: pulumi.Input<string>;
     /**
-     * Cloud region for the BYOC cloud. Maximum length: `32`.
+     * Cloud region for the BYOC cloud. Maximum length: `32`. Changing this property forces recreation of the resource.
      */
     cloudRegion: pulumi.Input<string>;
     /**
@@ -399,7 +402,7 @@ export interface ByocAwsEntityArgs {
      */
     contactEmails?: pulumi.Input<pulumi.Input<inputs.ByocAwsEntityContactEmail>[] | undefined>;
     /**
-     * Deployment model for the BYOC cloud. The possible values are `directIpsecIngress`, `ipsecIngress`, `standard` and `standardPublic`.
+     * Deployment model for the BYOC cloud. The possible values are `directIpsecIngress`, `hipaa`, `ipsecIngress`, `pciDss`, `standard` and `standardPublic`. Changing this property forces recreation of the resource.
      */
     deploymentModel: pulumi.Input<string>;
     /**
@@ -415,7 +418,7 @@ export interface ByocAwsEntityArgs {
      */
     organizationId: pulumi.Input<string>;
     /**
-     * CIDR range reserved for Aiven provisioned networks in the BYOC cloud. Maximum length: `18`.
+     * CIDR range reserved for Aiven provisioned networks in the BYOC cloud. Maximum length: `18`. Changing this property forces recreation of the resource.
      */
     reservedCidr: pulumi.Input<string>;
     /**

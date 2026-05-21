@@ -141,6 +141,10 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string CloudName;
         /// <summary>
+        /// UUID of the Customer Managed Key (CMK) used to apply [bring your own key (BYOK) encryption](https://aiven.io/docs/platform/howto/bring-your-own-key) to this service's data at rest. You can register a CMK for an Aiven project using the `aiven.Cmk` resource. Removing this attribute doesn't remove the CMK association. To remove it from this service, set this attribute to the all-zero UUID `00000000-0000-0000-0000-000000000000`.
+        /// </summary>
+        public readonly string CmkId;
+        /// <summary>
         /// Service component information objects
         /// </summary>
         public readonly ImmutableArray<Outputs.GetThanosComponentResult> Components;
@@ -259,6 +263,8 @@ namespace Pulumi.Aiven
 
             string cloudName,
 
+            string cmkId,
+
             ImmutableArray<Outputs.GetThanosComponentResult> components,
 
             string diskSpace,
@@ -317,6 +323,7 @@ namespace Pulumi.Aiven
         {
             AdditionalDiskSpace = additionalDiskSpace;
             CloudName = cloudName;
+            CmkId = cmkId;
             Components = components;
             DiskSpace = diskSpace;
             DiskSpaceCap = diskSpaceCap;

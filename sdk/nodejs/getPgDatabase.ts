@@ -15,10 +15,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const main = aiven.getPgDatabase({
- *     project: exampleProject.project,
- *     serviceName: examplePostgres.serviceName,
- *     databaseName: "example-database",
+ * const example = aiven.getPgDatabase({
+ *     project: "my-project",
+ *     serviceName: "my-pg",
+ *     databaseName: "testdb",
  * });
  * ```
  */
@@ -96,10 +96,10 @@ export interface GetPgDatabaseResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const main = aiven.getPgDatabase({
- *     project: exampleProject.project,
- *     serviceName: examplePostgres.serviceName,
- *     databaseName: "example-database",
+ * const example = aiven.getPgDatabase({
+ *     project: "my-project",
+ *     serviceName: "my-pg",
+ *     databaseName: "testdb",
  * });
  * ```
  */

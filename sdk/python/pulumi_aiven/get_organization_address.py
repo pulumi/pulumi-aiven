@@ -190,6 +190,16 @@ def get_organization_address(address_id: Optional[_builtins.str] = None,
     **This resource is in the beta stage and may change without notice.** Set
     the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    example = aiven.get_organization_address(organization_id="org1a23f456789",
+        address_id="foo")
+    ```
+
 
     :param _builtins.str address_id: Address ID.
     :param _builtins.str organization_id: ID of an organization.
@@ -223,6 +233,16 @@ def get_organization_address_output(address_id: pulumi.Input[Optional[_builtins.
 
     **This resource is in the beta stage and may change without notice.** Set
     the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    example = aiven.get_organization_address(organization_id="org1a23f456789",
+        address_id="foo")
+    ```
 
 
     :param _builtins.str address_id: Address ID.

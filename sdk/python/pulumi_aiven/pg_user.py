@@ -357,11 +357,13 @@ class PgUser(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        example_user = aiven.PgUser("example_user",
-            service_name=example_postgres["serviceName"],
-            project=example_project["project"],
-            username="example-service-user",
-            password=service_user_password)
+        example = aiven.PgUser("example",
+            project="my-project",
+            service_name="my-pg",
+            username="testuser",
+            password_wo="password123",
+            password_wo_version=1,
+            pg_allow_replication=True)
         ```
 
         ## Import
@@ -397,11 +399,13 @@ class PgUser(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        example_user = aiven.PgUser("example_user",
-            service_name=example_postgres["serviceName"],
-            project=example_project["project"],
-            username="example-service-user",
-            password=service_user_password)
+        example = aiven.PgUser("example",
+            project="my-project",
+            service_name="my-pg",
+            username="testuser",
+            password_wo="password123",
+            password_wo_version=1,
+            pg_allow_replication=True)
         ```
 
         ## Import

@@ -22,12 +22,13 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleOpensearchUser = new Aiven.OpensearchUser("example_opensearch_user", new()
+    ///     var example = new Aiven.OpensearchUser("example", new()
     ///     {
-    ///         ServiceName = exampleOpensearch.ServiceName,
-    ///         Project = exampleProject.Project,
-    ///         Username = "example-opensearch-user",
-    ///         Password = opensearchUserPassword,
+    ///         Project = "my-project",
+    ///         ServiceName = "my-opensearch",
+    ///         Username = "testuser",
+    ///         PasswordWo = "password123",
+    ///         PasswordWoVersion = 1,
     ///     });
     /// 
     /// });

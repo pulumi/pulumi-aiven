@@ -44,14 +44,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var main = new ConnectionPool("main", ConnectionPoolArgs.builder()
- *             .project(exampleProject.project())
- *             .serviceName(examplePostgres.serviceName())
- *             .databaseName(mainAivenPgDatabase.databaseName())
+ *         var example = new ConnectionPool("example", ConnectionPoolArgs.builder()
+ *             .project("my-project")
+ *             .serviceName("foo")
+ *             .poolName("mypool-x-y-z")
+ *             .databaseName("testdb")
  *             .poolMode("transaction")
- *             .poolName("example-pool")
  *             .poolSize(10)
- *             .username(exampleUser.username())
+ *             .username("testuser")
  *             .build());
  * 
  *     }

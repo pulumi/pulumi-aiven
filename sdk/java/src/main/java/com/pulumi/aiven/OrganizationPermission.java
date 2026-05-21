@@ -45,50 +45,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         // Grant access to a specific project
- *         var exampleProjectPermissions = new OrganizationPermission("exampleProjectPermissions", OrganizationPermissionArgs.builder()
- *             .organizationId(main.id())
- *             .resourceId(exampleProject.project())
- *             .resourceType("project")
- *             .permissions(            
- *                 OrganizationPermissionPermissionArgs.builder()
- *                     .permissions(                    
- *                         "operator",
- *                         "service:logs:read")
- *                     .principalId("u123a456b7890c")
- *                     .principalType("user")
- *                     .build(),
- *                 OrganizationPermissionPermissionArgs.builder()
- *                     .permissions(                    
- *                         "project:integrations:write",
- *                         "developer")
- *                     .principalId(exampleGroup.groupId())
- *                     .principalType("user_group")
- *                     .build())
- *             .build());
- * 
- *         // Organization-level permissions
- *         var exampleOrgPermissions = new OrganizationPermission("exampleOrgPermissions", OrganizationPermissionArgs.builder()
- *             .organizationId(main.id())
- *             .resourceId(main.id())
+ *         var example = new OrganizationPermission("example", OrganizationPermissionArgs.builder()
+ *             .organizationId("org1a23f456789")
  *             .resourceType("organization")
- *             .permissions(            
- *                 OrganizationPermissionPermissionArgs.builder()
- *                     .permissions(                    
- *                         "organization:app_users:write",
- *                         "project:audit_logs:read")
- *                     .principalId("u123a456b7890c")
- *                     .principalType("user")
- *                     .build(),
- *                 OrganizationPermissionPermissionArgs.builder()
- *                     .permissions(                    
- *                         "organization:users:write",
- *                         "organization:groups:write",
- *                         "organization:domains:write",
- *                         "organization:idps:write")
- *                     .principalId(exampleGroupAivenOrganizationUserGroup.groupId())
- *                     .principalType("user_group")
- *                     .build())
+ *             .resourceId("foo")
+ *             .permissions(OrganizationPermissionPermissionArgs.builder()
+ *                 .principalId("u12345")
+ *                 .permissions("read_only")
+ *                 .principalType("user")
+ *                 .build())
  *             .build());
  * 
  *     }

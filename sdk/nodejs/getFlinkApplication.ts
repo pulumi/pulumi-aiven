@@ -15,10 +15,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const exampleApp = aiven.getFlinkApplication({
- *     project: exampleProject.project,
- *     serviceName: "example-flink-service",
- *     name: "example-app",
+ * const example = aiven.getFlinkApplication({
+ *     project: "my-project",
+ *     serviceName: "my-application",
+ *     applicationId: "1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
  * });
  * ```
  */
@@ -107,10 +107,10 @@ export interface GetFlinkApplicationResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const exampleApp = aiven.getFlinkApplication({
- *     project: exampleProject.project,
- *     serviceName: "example-flink-service",
- *     name: "example-app",
+ * const example = aiven.getFlinkApplication({
+ *     project: "my-project",
+ *     serviceName: "my-application",
+ *     applicationId: "1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
  * });
  * ```
  */

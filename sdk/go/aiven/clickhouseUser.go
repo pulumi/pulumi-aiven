@@ -28,10 +28,12 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewClickhouseUser(ctx, "example_user", &aiven.ClickhouseUserArgs{
-//				Project:     pulumi.Any(exampleProject.Project),
-//				ServiceName: pulumi.Any(exampleService.ServiceName),
-//				Username:    pulumi.String("analyst"),
+//			_, err := aiven.NewClickhouseUser(ctx, "example", &aiven.ClickhouseUserArgs{
+//				Project:           pulumi.String("my-project"),
+//				ServiceName:       pulumi.String("my-clickhouse"),
+//				Username:          pulumi.String("alice"),
+//				PasswordWo:        pulumi.String("password123"),
+//				PasswordWoVersion: pulumi.Int(1),
 //			})
 //			if err != nil {
 //				return err

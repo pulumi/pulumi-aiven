@@ -18,6 +18,41 @@ import javax.annotation.Nullable;
 /**
  * Adds and manages users in a user group. You can add organization users and application users to groups. Organization users must be [managed in the Aiven Console](https://aiven.io/docs/platform/howto/manage-org-users). Application users can be created and managed using the `aiven.OrganizationApplicationUser` resource. Groups are granted roles and permissions using the `aiven.OrganizationPermission` resource.
  * 
+ * ## Example Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.aiven.OrganizationUserGroupMember;
+ * import com.pulumi.aiven.OrganizationUserGroupMemberArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new OrganizationUserGroupMember("example", OrganizationUserGroupMemberArgs.builder()
+ *             .organizationId("org1a23f456789")
+ *             .groupId("foo")
+ *             .userId("foo")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * ```sh

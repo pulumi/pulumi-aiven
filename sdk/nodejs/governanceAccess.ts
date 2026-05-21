@@ -18,22 +18,23 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const exampleAccess = new aiven.GovernanceAccess("example_access", {
- *     organizationId: main.id,
- *     accessName: "example-topic-access",
- *     accessType: "KAFKA",
+ * const example = new aiven.GovernanceAccess("example", {
+ *     organizationId: "org1a23f456789",
  *     accessData: {
- *         project: exampleProject.project,
- *         serviceName: exampleKafka.serviceName,
  *         acls: [{
- *             resourceName: "example-topic",
- *             resourceType: "Topic",
- *             operation: "Read",
+ *             operation: "Write",
  *             permissionType: "ALLOW",
+ *             resourceName: "events",
+ *             resourceType: "Topic",
  *             host: "*",
  *         }],
+ *         projectName: "project-1",
+ *         serviceName: "service-1",
+ *         username: "api3",
  *     },
- *     ownerUserGroupId: example.groupId,
+ *     accessName: "My Access",
+ *     accessType: "KAFKA",
+ *     ownerUserGroupId: "ug22ba494e096",
  * });
  * ```
  *

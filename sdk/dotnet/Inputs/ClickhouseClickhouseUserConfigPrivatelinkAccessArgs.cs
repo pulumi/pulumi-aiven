@@ -19,6 +19,12 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? Clickhouse { get; set; }
 
         /// <summary>
+        /// Enable clickhouse_arrowflight.
+        /// </summary>
+        [Input("clickhouseArrowflight")]
+        public Input<bool>? ClickhouseArrowflight { get; set; }
+
+        /// <summary>
         /// Enable clickhouse_https.
         /// </summary>
         [Input("clickhouseHttps")]

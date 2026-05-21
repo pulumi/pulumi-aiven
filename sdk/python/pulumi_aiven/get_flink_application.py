@@ -171,9 +171,9 @@ def get_flink_application(application_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    example_app = aiven.get_flink_application(project=example_project["project"],
-        service_name="example-flink-service",
-        name="example-app")
+    example = aiven.get_flink_application(project="my-project",
+        service_name="my-application",
+        application_id="1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d")
     ```
 
 
@@ -217,9 +217,9 @@ def get_flink_application_output(application_id: pulumi.Input[Optional[Optional[
     import pulumi
     import pulumi_aiven as aiven
 
-    example_app = aiven.get_flink_application(project=example_project["project"],
-        service_name="example-flink-service",
-        name="example-app")
+    example = aiven.get_flink_application(project="my-project",
+        service_name="my-application",
+        application_id="1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d")
     ```
 
 

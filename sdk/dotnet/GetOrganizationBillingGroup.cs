@@ -16,6 +16,25 @@ namespace Pulumi.Aiven
         /// 
         /// **This resource is in the beta stage and may change without notice.** Set
         /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Aiven.GetOrganizationBillingGroup.Invoke(new()
+        ///     {
+        ///         OrganizationId = "org1a23f456789",
+        ///         BillingGroupId = "1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetOrganizationBillingGroupResult> InvokeAsync(GetOrganizationBillingGroupArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationBillingGroupResult>("aiven:index/getOrganizationBillingGroup:getOrganizationBillingGroup", args ?? new GetOrganizationBillingGroupArgs(), options.WithDefaults());
@@ -25,6 +44,25 @@ namespace Pulumi.Aiven
         /// 
         /// **This resource is in the beta stage and may change without notice.** Set
         /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Aiven.GetOrganizationBillingGroup.Invoke(new()
+        ///     {
+        ///         OrganizationId = "org1a23f456789",
+        ///         BillingGroupId = "1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetOrganizationBillingGroupResult> Invoke(GetOrganizationBillingGroupInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetOrganizationBillingGroupResult>("aiven:index/getOrganizationBillingGroup:getOrganizationBillingGroup", args ?? new GetOrganizationBillingGroupInvokeArgs(), options.WithDefaults());
@@ -34,6 +72,25 @@ namespace Pulumi.Aiven
         /// 
         /// **This resource is in the beta stage and may change without notice.** Set
         /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Aiven.GetOrganizationBillingGroup.Invoke(new()
+        ///     {
+        ///         OrganizationId = "org1a23f456789",
+        ///         BillingGroupId = "1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetOrganizationBillingGroupResult> Invoke(GetOrganizationBillingGroupInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetOrganizationBillingGroupResult>("aiven:index/getOrganizationBillingGroup:getOrganizationBillingGroup", args ?? new GetOrganizationBillingGroupInvokeArgs(), options.WithDefaults());

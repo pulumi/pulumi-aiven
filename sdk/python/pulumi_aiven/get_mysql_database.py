@@ -123,9 +123,9 @@ def get_mysql_database(database_name: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    example_database = aiven.get_mysql_database(project=example_project["project"],
-        service_name=example_mysql["serviceName"],
-        database_name="example-database")
+    example = aiven.get_mysql_database(project="my-project",
+        service_name="my-mysql",
+        database_name="testdb")
     ```
 
 
@@ -162,9 +162,9 @@ def get_mysql_database_output(database_name: pulumi.Input[Optional[_builtins.str
     import pulumi
     import pulumi_aiven as aiven
 
-    example_database = aiven.get_mysql_database(project=example_project["project"],
-        service_name=example_mysql["serviceName"],
-        database_name="example-database")
+    example = aiven.get_mysql_database(project="my-project",
+        service_name="my-mysql",
+        database_name="testdb")
     ```
 
 

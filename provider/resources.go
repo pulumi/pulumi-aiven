@@ -139,9 +139,7 @@ func Provider(ctx context.Context) tfbridge.ProviderInfo {
 			"aiven_opensearch_acl_rule":   {Tok: makeResource(mainMod, "OpenSearchAclRule")},
 			"aiven_flink":                 {Fields: map[string]*tfbridge.SchemaInfo{"flink": {CSharpName: "FlinkDetails"}}},
 
-			"aiven_cassandra":         {Fields: map[string]*tfbridge.SchemaInfo{"cassandra": {CSharpName: "CassandraServer"}}},
 			"aiven_dragonfly":         {Fields: map[string]*tfbridge.SchemaInfo{"dragonfly": {CSharpName: "DragonflyServer"}}},
-			"aiven_redis":             {Fields: map[string]*tfbridge.SchemaInfo{"redis": {CSharpName: "RedisServer"}}},
 			"aiven_thanos": {
 				Fields: map[string]*tfbridge.SchemaInfo{"thanos": {CSharpName: "ThanosServer"}},
 			},
@@ -191,13 +189,6 @@ func Provider(ctx context.Context) tfbridge.ProviderInfo {
 			},
 		},
 	}
-
-	prov.RenameDataSource("aiven_cassandra", makeDataSource(mainMod, "getCassanda"),
-		makeDataSource(mainMod, "getCassandra"), mainMod, mainMod, &tfbridge.DataSourceInfo{
-			Docs: &tfbridge.DocInfo{
-				Source: "cassandra.md",
-			},
-		})
 
 	prov.MustComputeTokens(tfbridgetokens.SingleModule("aiven_", mainMod,
 		tfbridgetokens.MakeStandard(mainPkg)))

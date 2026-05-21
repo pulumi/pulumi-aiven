@@ -15,9 +15,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const tfUser = new aiven.OrganizationApplicationUser("tf_user", {
- *     organizationId: main.id,
- *     name: "app-terraform",
+ * const example = new aiven.OrganizationApplicationUser("example", {
+ *     organizationId: "org1a23f456789",
+ *     name: "devops app user",
  * });
  * ```
  *

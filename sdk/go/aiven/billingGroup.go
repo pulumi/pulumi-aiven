@@ -28,18 +28,28 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleBillingGroup, err := aiven.NewBillingGroup(ctx, "example_billing_group", &aiven.BillingGroupArgs{
-//				Name:            pulumi.String("example-billing-group"),
+//			_, err := aiven.NewBillingGroup(ctx, "example", &aiven.BillingGroupArgs{
+//				ParentId: pulumi.String("foo"),
+//				Name:     pulumi.String("my billing group"),
+//				CardId:   pulumi.String("9330c086-8781-11e5-89ff-5404a64abfef"),
+//				VatId:    pulumi.String("FI27957435"),
+//				AddressLines: pulumi.StringArray{
+//					pulumi.String("Main Street 1"),
+//				},
+//				BillingContactEmails: pulumi.StringArray{
+//					pulumi.String("jane@example.com"),
+//				},
 //				BillingCurrency: pulumi.String("USD"),
-//				VatId:           pulumi.String("123ABC"),
-//				ParentId:        pulumi.Any(main.Id),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = aiven.NewProject(ctx, "example_project", &aiven.ProjectArgs{
-//				Project:      pulumi.String("example-project"),
-//				BillingGroup: exampleBillingGroup.ID(),
+//				BillingEmails: pulumi.StringArray{
+//					pulumi.String("test@example.com"),
+//				},
+//				BillingExtraText:     pulumi.String("Purchase order: PO100018"),
+//				City:                 pulumi.String("Helsinki"),
+//				Company:              pulumi.String("My Company"),
+//				CopyFromBillingGroup: pulumi.String("ffb3f0cd-5532-4eb9-8867-f2cac5823492"),
+//				CountryCode:          pulumi.String("FI"),
+//				State:                pulumi.String("foo"),
+//				ZipCode:              pulumi.String("01234"),
 //			})
 //			if err != nil {
 //				return err

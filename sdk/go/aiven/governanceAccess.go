@@ -31,24 +31,25 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewGovernanceAccess(ctx, "example_access", &aiven.GovernanceAccessArgs{
-//				OrganizationId: pulumi.Any(main.Id),
-//				AccessName:     pulumi.String("example-topic-access"),
-//				AccessType:     pulumi.String("KAFKA"),
+//			_, err := aiven.NewGovernanceAccess(ctx, "example", &aiven.GovernanceAccessArgs{
+//				OrganizationId: pulumi.String("org1a23f456789"),
 //				AccessData: &aiven.GovernanceAccessAccessDataArgs{
-//					Project:     exampleProject.Project,
-//					ServiceName: pulumi.Any(exampleKafka.ServiceName),
 //					Acls: aiven.GovernanceAccessAccessDataAclArray{
 //						&aiven.GovernanceAccessAccessDataAclArgs{
-//							ResourceName:   pulumi.String("example-topic"),
-//							ResourceType:   pulumi.String("Topic"),
-//							Operation:      pulumi.String("Read"),
+//							Operation:      pulumi.String("Write"),
 //							PermissionType: pulumi.String("ALLOW"),
+//							ResourceName:   pulumi.String("events"),
+//							ResourceType:   pulumi.String("Topic"),
 //							Host:           pulumi.String("*"),
 //						},
 //					},
+//					ProjectName: pulumi.String("project-1"),
+//					ServiceName: pulumi.String("service-1"),
+//					Username:    pulumi.String("api3"),
 //				},
-//				OwnerUserGroupId: pulumi.Any(example.GroupId),
+//				AccessName:       pulumi.String("My Access"),
+//				AccessType:       pulumi.String("KAFKA"),
+//				OwnerUserGroupId: pulumi.String("ug22ba494e096"),
 //			})
 //			if err != nil {
 //				return err

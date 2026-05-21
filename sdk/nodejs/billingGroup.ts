@@ -15,15 +15,22 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const exampleBillingGroup = new aiven.BillingGroup("example_billing_group", {
- *     name: "example-billing-group",
+ * const example = new aiven.BillingGroup("example", {
+ *     parentId: "foo",
+ *     name: "my billing group",
+ *     cardId: "9330c086-8781-11e5-89ff-5404a64abfef",
+ *     vatId: "FI27957435",
+ *     addressLines: ["Main Street 1"],
+ *     billingContactEmails: ["jane@example.com"],
  *     billingCurrency: "USD",
- *     vatId: "123ABC",
- *     parentId: main.id,
- * });
- * const exampleProject = new aiven.Project("example_project", {
- *     project: "example-project",
- *     billingGroup: exampleBillingGroup.id,
+ *     billingEmails: ["test@example.com"],
+ *     billingExtraText: "Purchase order: PO100018",
+ *     city: "Helsinki",
+ *     company: "My Company",
+ *     copyFromBillingGroup: "ffb3f0cd-5532-4eb9-8867-f2cac5823492",
+ *     countryCode: "FI",
+ *     state: "foo",
+ *     zipCode: "01234",
  * });
  * ```
  *

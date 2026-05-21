@@ -52,18 +52,19 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var example = new ByocAwsEntity("example", ByocAwsEntityArgs.builder()
- *             .organizationId(main.id())
- *             .displayName("my-byoc-cloud")
+ *             .organizationId("org1a23f456789")
  *             .cloudProvider("aws")
- *             .cloudRegion("aws-eu-west-1")
+ *             .cloudRegion("eu-west-1")
  *             .deploymentModel("standard")
- *             .reservedCidr("10.0.0.0/16")
- *             .awsIamRoleArn("arn:aws:iam::123456789012:role/my-aiven-byoc-role")
+ *             .displayName("byoc-cloud-prod-eu-west-1")
+ *             .reservedCidr("192.168.6.0/24")
+ *             .awsIamRoleArn("arn:aws:iam::012345678901:root")
  *             .contactEmails(ByocAwsEntityContactEmailArgs.builder()
- *                 .email("ops}{@literal @}{@code example.com")
- *                 .realName("Ops Team")
+ *                 .email("jane}{@literal @}{@code example.com")
+ *                 .realName("Jane Smith")
  *                 .role("admin")
  *                 .build())
+ *             .tags(Map.of("foo", "foo"))
  *             .build());
  * 
  *     }}{@code
@@ -249,28 +250,28 @@ public class ByocAwsEntity extends com.pulumi.resources.CustomResource {
         return this.byocUniqueName;
     }
     /**
-     * Cloud provider for the BYOC cloud. The possible values are `aws`, `azure`, `google` and `oracle`.
+     * Cloud provider for the BYOC cloud. The possible values are `aws`, `azure`, `google` and `oracle`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="cloudProvider", refs={String.class}, tree="[0]")
     private Output<String> cloudProvider;
 
     /**
-     * @return Cloud provider for the BYOC cloud. The possible values are `aws`, `azure`, `google` and `oracle`.
+     * @return Cloud provider for the BYOC cloud. The possible values are `aws`, `azure`, `google` and `oracle`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> cloudProvider() {
         return this.cloudProvider;
     }
     /**
-     * Cloud region for the BYOC cloud. Maximum length: `32`.
+     * Cloud region for the BYOC cloud. Maximum length: `32`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="cloudRegion", refs={String.class}, tree="[0]")
     private Output<String> cloudRegion;
 
     /**
-     * @return Cloud region for the BYOC cloud. Maximum length: `32`.
+     * @return Cloud region for the BYOC cloud. Maximum length: `32`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> cloudRegion() {
@@ -319,14 +320,14 @@ public class ByocAwsEntity extends com.pulumi.resources.CustomResource {
         return this.customCloudNames;
     }
     /**
-     * Deployment model for the BYOC cloud. The possible values are `directIpsecIngress`, `ipsecIngress`, `standard` and `standardPublic`.
+     * Deployment model for the BYOC cloud. The possible values are `directIpsecIngress`, `hipaa`, `ipsecIngress`, `pciDss`, `standard` and `standardPublic`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="deploymentModel", refs={String.class}, tree="[0]")
     private Output<String> deploymentModel;
 
     /**
-     * @return Deployment model for the BYOC cloud. The possible values are `directIpsecIngress`, `ipsecIngress`, `standard` and `standardPublic`.
+     * @return Deployment model for the BYOC cloud. The possible values are `directIpsecIngress`, `hipaa`, `ipsecIngress`, `pciDss`, `standard` and `standardPublic`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> deploymentModel() {
@@ -375,14 +376,14 @@ public class ByocAwsEntity extends com.pulumi.resources.CustomResource {
         return this.organizationId;
     }
     /**
-     * CIDR range reserved for Aiven provisioned networks in the BYOC cloud. Maximum length: `18`.
+     * CIDR range reserved for Aiven provisioned networks in the BYOC cloud. Maximum length: `18`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="reservedCidr", refs={String.class}, tree="[0]")
     private Output<String> reservedCidr;
 
     /**
-     * @return CIDR range reserved for Aiven provisioned networks in the BYOC cloud. Maximum length: `18`.
+     * @return CIDR range reserved for Aiven provisioned networks in the BYOC cloud. Maximum length: `18`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> reservedCidr() {

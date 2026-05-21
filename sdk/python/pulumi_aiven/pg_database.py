@@ -280,10 +280,12 @@ class PgDatabase(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        main = aiven.PgDatabase("main",
-            project=example_project["project"],
-            service_name=example_postgres["serviceName"],
-            database_name="example-database")
+        example = aiven.PgDatabase("example",
+            project="my-project",
+            service_name="my-pg",
+            database_name="testdb",
+            lc_collate="en_US.UTF-8",
+            lc_ctype="en_US.UTF-8")
         ```
 
         ## Import
@@ -317,10 +319,12 @@ class PgDatabase(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        main = aiven.PgDatabase("main",
-            project=example_project["project"],
-            service_name=example_postgres["serviceName"],
-            database_name="example-database")
+        example = aiven.PgDatabase("example",
+            project="my-project",
+            service_name="my-pg",
+            database_name="testdb",
+            lc_collate="en_US.UTF-8",
+            lc_ctype="en_US.UTF-8")
         ```
 
         ## Import

@@ -12,19 +12,79 @@ namespace Pulumi.Aiven
     public static class GetKafkaSchemaRegistryAcl
     {
         /// <summary>
-        /// The Data Source Kafka Schema Registry ACL data source provides information about the existing Aiven Kafka Schema Registry ACL for a Kafka service.
+        /// Gets information about an Aiven for Apache Kafka® Schema Registry ACL entry.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Aiven.GetKafkaSchemaRegistryAcl.Invoke(new()
+        ///     {
+        ///         Project = "my-project",
+        ///         ServiceName = "my-kafka",
+        ///         AclId = "foo",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetKafkaSchemaRegistryAclResult> InvokeAsync(GetKafkaSchemaRegistryAclArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetKafkaSchemaRegistryAclResult>("aiven:index/getKafkaSchemaRegistryAcl:getKafkaSchemaRegistryAcl", args ?? new GetKafkaSchemaRegistryAclArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The Data Source Kafka Schema Registry ACL data source provides information about the existing Aiven Kafka Schema Registry ACL for a Kafka service.
+        /// Gets information about an Aiven for Apache Kafka® Schema Registry ACL entry.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Aiven.GetKafkaSchemaRegistryAcl.Invoke(new()
+        ///     {
+        ///         Project = "my-project",
+        ///         ServiceName = "my-kafka",
+        ///         AclId = "foo",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetKafkaSchemaRegistryAclResult> Invoke(GetKafkaSchemaRegistryAclInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetKafkaSchemaRegistryAclResult>("aiven:index/getKafkaSchemaRegistryAcl:getKafkaSchemaRegistryAcl", args ?? new GetKafkaSchemaRegistryAclInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The Data Source Kafka Schema Registry ACL data source provides information about the existing Aiven Kafka Schema Registry ACL for a Kafka service.
+        /// Gets information about an Aiven for Apache Kafka® Schema Registry ACL entry.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Aiven.GetKafkaSchemaRegistryAcl.Invoke(new()
+        ///     {
+        ///         Project = "my-project",
+        ///         ServiceName = "my-kafka",
+        ///         AclId = "foo",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetKafkaSchemaRegistryAclResult> Invoke(GetKafkaSchemaRegistryAclInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetKafkaSchemaRegistryAclResult>("aiven:index/getKafkaSchemaRegistryAcl:getKafkaSchemaRegistryAcl", args ?? new GetKafkaSchemaRegistryAclInvokeArgs(), options.WithDefaults());
@@ -34,34 +94,43 @@ namespace Pulumi.Aiven
     public sealed class GetKafkaSchemaRegistryAclArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Kafka Schema Registry permission to grant. The possible values are `SchemaRegistryRead` and `SchemaRegistryWrite`. Changing this property forces recreation of the resource.
+        /// Kafka Schema Registry ACL ID. Provide either `AclId`, or all of `Permission`, `Resource` and `Username` together.
         /// </summary>
-        [Input("permission", required: true)]
-        public string Permission { get; set; } = null!;
+        [Input("aclId")]
+        public string? AclId { get; set; }
 
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// ACL entry for Schema Registry. The possible values are `SchemaRegistryRead` and `SchemaRegistryWrite`. Provide either `AclId`, or all of `Permission`, `Resource` and `Username` together.
+        /// </summary>
+        [Input("permission")]
+        public string? Permission { get; set; }
+
+        /// <summary>
+        /// Project name.
         /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
         /// <summary>
-        /// Resource name pattern for the Schema Registry ACL entry. Changing this property forces recreation of the resource.
+        /// Schema Registry ACL entry resource name pattern. Provide either `AclId`, or all of `Permission`, `Resource` and `Username` together.
         /// </summary>
-        [Input("resource", required: true)]
-        public string Resource { get; set; } = null!;
+        [Input("resource")]
+        public string? Resource { get; set; }
 
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service name.
         /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
+        [Input("timeouts")]
+        public Inputs.GetKafkaSchemaRegistryAclTimeoutsArgs? Timeouts { get; set; }
+
         /// <summary>
-        /// Username pattern for the ACL entry. Changing this property forces recreation of the resource.
+        /// Username. Provide either `AclId`, or all of `Permission`, `Resource` and `Username` together.
         /// </summary>
-        [Input("username", required: true)]
-        public string Username { get; set; } = null!;
+        [Input("username")]
+        public string? Username { get; set; }
 
         public GetKafkaSchemaRegistryAclArgs()
         {
@@ -72,34 +141,43 @@ namespace Pulumi.Aiven
     public sealed class GetKafkaSchemaRegistryAclInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Kafka Schema Registry permission to grant. The possible values are `SchemaRegistryRead` and `SchemaRegistryWrite`. Changing this property forces recreation of the resource.
+        /// Kafka Schema Registry ACL ID. Provide either `AclId`, or all of `Permission`, `Resource` and `Username` together.
         /// </summary>
-        [Input("permission", required: true)]
-        public Input<string> Permission { get; set; } = null!;
+        [Input("aclId")]
+        public Input<string>? AclId { get; set; }
 
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// ACL entry for Schema Registry. The possible values are `SchemaRegistryRead` and `SchemaRegistryWrite`. Provide either `AclId`, or all of `Permission`, `Resource` and `Username` together.
+        /// </summary>
+        [Input("permission")]
+        public Input<string>? Permission { get; set; }
+
+        /// <summary>
+        /// Project name.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// Resource name pattern for the Schema Registry ACL entry. Changing this property forces recreation of the resource.
+        /// Schema Registry ACL entry resource name pattern. Provide either `AclId`, or all of `Permission`, `Resource` and `Username` together.
         /// </summary>
-        [Input("resource", required: true)]
-        public Input<string> Resource { get; set; } = null!;
+        [Input("resource")]
+        public Input<string>? Resource { get; set; }
 
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service name.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
+        [Input("timeouts")]
+        public Input<Inputs.GetKafkaSchemaRegistryAclTimeoutsInputArgs>? Timeouts { get; set; }
+
         /// <summary>
-        /// Username pattern for the ACL entry. Changing this property forces recreation of the resource.
+        /// Username. Provide either `AclId`, or all of `Permission`, `Resource` and `Username` together.
         /// </summary>
-        [Input("username", required: true)]
-        public Input<string> Username { get; set; } = null!;
+        [Input("username")]
+        public Input<string>? Username { get; set; }
 
         public GetKafkaSchemaRegistryAclInvokeArgs()
         {
@@ -112,31 +190,32 @@ namespace Pulumi.Aiven
     public sealed class GetKafkaSchemaRegistryAclResult
     {
         /// <summary>
-        /// Kafka Schema Registry ACL ID
+        /// Kafka Schema Registry ACL ID. Provide either `AclId`, or all of `Permission`, `Resource` and `Username` together.
         /// </summary>
         public readonly string AclId;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// Resource ID composed as: `project/service_name/acl_id`.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Kafka Schema Registry permission to grant. The possible values are `SchemaRegistryRead` and `SchemaRegistryWrite`. Changing this property forces recreation of the resource.
+        /// ACL entry for Schema Registry. The possible values are `SchemaRegistryRead` and `SchemaRegistryWrite`. Provide either `AclId`, or all of `Permission`, `Resource` and `Username` together.
         /// </summary>
         public readonly string Permission;
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name.
         /// </summary>
         public readonly string Project;
         /// <summary>
-        /// Resource name pattern for the Schema Registry ACL entry. Changing this property forces recreation of the resource.
+        /// Schema Registry ACL entry resource name pattern. Provide either `AclId`, or all of `Permission`, `Resource` and `Username` together.
         /// </summary>
         public readonly string Resource;
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service name.
         /// </summary>
         public readonly string ServiceName;
+        public readonly Outputs.GetKafkaSchemaRegistryAclTimeoutsResult? Timeouts;
         /// <summary>
-        /// Username pattern for the ACL entry. Changing this property forces recreation of the resource.
+        /// Username. Provide either `AclId`, or all of `Permission`, `Resource` and `Username` together.
         /// </summary>
         public readonly string Username;
 
@@ -154,6 +233,8 @@ namespace Pulumi.Aiven
 
             string serviceName,
 
+            Outputs.GetKafkaSchemaRegistryAclTimeoutsResult? timeouts,
+
             string username)
         {
             AclId = aclId;
@@ -162,6 +243,7 @@ namespace Pulumi.Aiven
             Project = project;
             Resource = resource;
             ServiceName = serviceName;
+            Timeouts = timeouts;
             Username = username;
         }
     }

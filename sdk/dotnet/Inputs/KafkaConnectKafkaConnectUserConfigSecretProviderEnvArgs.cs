@@ -21,7 +21,11 @@ namespace Pulumi.Aiven.Inputs
         public InputMap<string> Secrets
         {
             get => _secrets ?? (_secrets = new InputMap<string>());
-            set => _secrets = value;
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, string>());
+                _secrets = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
         }
 
         public KafkaConnectKafkaConnectUserConfigSecretProviderEnvArgs()

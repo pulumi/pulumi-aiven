@@ -134,9 +134,9 @@ def get_opensearch_user(project: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    example_opensearch_user = aiven.get_opensearch_user(service_name="example-opensearch-service",
-        project=example_project["project"],
-        username="example-opensearch-user")
+    example = aiven.get_opensearch_user(project="my-project",
+        service_name="my-opensearch",
+        username="testuser")
     ```
 
 
@@ -174,9 +174,9 @@ def get_opensearch_user_output(project: pulumi.Input[Optional[_builtins.str]] = 
     import pulumi
     import pulumi_aiven as aiven
 
-    example_opensearch_user = aiven.get_opensearch_user(service_name="example-opensearch-service",
-        project=example_project["project"],
-        username="example-opensearch-user")
+    example = aiven.get_opensearch_user(project="my-project",
+        service_name="my-opensearch",
+        username="testuser")
     ```
 
 

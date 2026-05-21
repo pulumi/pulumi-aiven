@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const exampleBillingGroup = aiven.getBillingGroup({
+ * const example = aiven.getBillingGroup({
  *     billingGroupId: "1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
  * });
  * ```
@@ -128,7 +128,7 @@ export interface GetBillingGroupResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const exampleBillingGroup = aiven.getBillingGroup({
+ * const example = aiven.getBillingGroup({
  *     billingGroupId: "1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
  * });
  * ```

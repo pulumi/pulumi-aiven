@@ -14,6 +14,45 @@ import (
 
 // Creates and manages an [Aiven project](https://aiven.io/docs/platform/concepts/orgs-units-projects#projects).
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := aiven.NewOrganizationProject(ctx, "example", &aiven.OrganizationProjectArgs{
+//				OrganizationId: pulumi.String("org1234abcd"),
+//				ProjectId:      pulumi.String("project-1"),
+//				BillingGroupId: pulumi.String("721bf796-1d89-402d-9195-425a23c4efdc"),
+//				ParentId:       pulumi.String("a3fd7a594e01"),
+//				BasePort:       pulumi.Int(10000),
+//				Tags: aiven.OrganizationProjectTagArray{
+//					&aiven.OrganizationProjectTagArgs{
+//						Key:   pulumi.String("foo"),
+//						Value: pulumi.String("foo"),
+//					},
+//				},
+//				TechnicalEmails: pulumi.StringArray{
+//					pulumi.String("foo@example.com"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh

@@ -44,11 +44,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleMysqlUser = new MysqlUser("exampleMysqlUser", MysqlUserArgs.builder()
- *             .serviceName(exampleMysql.serviceName())
- *             .project(exampleProject.project())
- *             .username("example-mysql-user")
- *             .password(serviceUserPw)
+ *         var example = new MysqlUser("example", MysqlUserArgs.builder()
+ *             .project("my-project")
+ *             .serviceName("my-mysql")
+ *             .username("testuser")
+ *             .passwordWo("password123")
+ *             .passwordWoVersion(1)
+ *             .authentication("caching_sha2_password")
  *             .build());
  * 
  *     }

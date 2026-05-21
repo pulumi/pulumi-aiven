@@ -91,6 +91,15 @@ def get_organization_user_group_list(organization_id: Optional[_builtins.str] = 
     """
     List all user groups within an organization.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    example = aiven.get_organization_user_group_list(organization_id="org1a23f456789")
+    ```
+
 
     :param _builtins.str organization_id: ID of an organization.
     :param Sequence[Union['GetOrganizationUserGroupListUserGroupArgs', 'GetOrganizationUserGroupListUserGroupArgsDict']] user_groups: User Groups.
@@ -113,6 +122,15 @@ def get_organization_user_group_list_output(organization_id: pulumi.Input[Option
                                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOrganizationUserGroupListResult]:
     """
     List all user groups within an organization.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    example = aiven.get_organization_user_group_list(organization_id="org1a23f456789")
+    ```
 
 
     :param _builtins.str organization_id: ID of an organization.

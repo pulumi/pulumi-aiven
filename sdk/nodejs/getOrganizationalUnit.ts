@@ -15,8 +15,8 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const exampleUnit = aiven.getOrganizationalUnit({
- *     name: "Example organizational unit",
+ * const example = aiven.getOrganizationalUnit({
+ *     id: "foo",
  * });
  * ```
  */
@@ -84,8 +84,8 @@ export interface GetOrganizationalUnitResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const exampleUnit = aiven.getOrganizationalUnit({
- *     name: "Example organizational unit",
+ * const example = aiven.getOrganizationalUnit({
+ *     id: "foo",
  * });
  * ```
  */

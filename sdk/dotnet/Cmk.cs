@@ -12,9 +12,6 @@ namespace Pulumi.Aiven
     /// <summary>
     /// Creates and manages [customer managed keys](https://aiven.io/docs/platform/howto/bring-your-own-key) (CMKs) for encrypting service data. Use your own CMKs from your cloud provider's key management service (KMS) to encrypt data for all services in an Aiven project. This gives you complete control over your encryption keys, meaning you can independently manage the key lifecycle and access policies.
     /// 
-    /// **This resource is in the beta stage and may change without notice.** Set
-    /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
-    /// 
     /// &gt; **Warning**
     /// If you remove a CMK, the services linked to the key will stop working. Migrate the services to another CMK or an Aiven-managed key before removing the CMK.
     /// 
@@ -28,11 +25,11 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleUser = new Aiven.Cmk("example_user", new()
+    ///     var example = new Aiven.Cmk("example", new()
     ///     {
-    ///         Project = aivenProjectName,
-    ///         Resource = cmkResource,
-    ///         CmkProvider = "gcp",
+    ///         Project = "my-project",
+    ///         CmkProvider = "aws",
+    ///         Resource = "my-resource",
     ///         DefaultCmk = false,
     ///     });
     /// 
@@ -55,7 +52,7 @@ namespace Pulumi.Aiven
         public Output<string> CmkId { get; private set; } = null!;
 
         /// <summary>
-        /// The cloud provider hosting the key management service (KMS). The possible values are `Aws`, `Gcp` and `Oci`. Changing this property forces recreation of the resource.
+        /// The cloud provider hosting the key management service (KMS). The possible values are `Aws`, `Azure`, `Gcp` and `Oci`. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("cmkProvider")]
         public Output<string> CmkProvider { get; private set; } = null!;
@@ -146,7 +143,7 @@ namespace Pulumi.Aiven
     public sealed class CmkArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The cloud provider hosting the key management service (KMS). The possible values are `Aws`, `Gcp` and `Oci`. Changing this property forces recreation of the resource.
+        /// The cloud provider hosting the key management service (KMS). The possible values are `Aws`, `Azure`, `Gcp` and `Oci`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("cmkProvider", required: true)]
         public Input<string> CmkProvider { get; set; } = null!;
@@ -187,7 +184,7 @@ namespace Pulumi.Aiven
         public Input<string>? CmkId { get; set; }
 
         /// <summary>
-        /// The cloud provider hosting the key management service (KMS). The possible values are `Aws`, `Gcp` and `Oci`. Changing this property forces recreation of the resource.
+        /// The cloud provider hosting the key management service (KMS). The possible values are `Aws`, `Azure`, `Gcp` and `Oci`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("cmkProvider")]
         public Input<string>? CmkProvider { get; set; }

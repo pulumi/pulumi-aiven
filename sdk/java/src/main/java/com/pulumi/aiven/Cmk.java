@@ -19,9 +19,6 @@ import javax.annotation.Nullable;
 /**
  * Creates and manages [customer managed keys](https://aiven.io/docs/platform/howto/bring-your-own-key) (CMKs) for encrypting service data. Use your own CMKs from your cloud provider&#39;s key management service (KMS) to encrypt data for all services in an Aiven project. This gives you complete control over your encryption keys, meaning you can independently manage the key lifecycle and access policies.
  * 
- * **This resource is in the beta stage and may change without notice.** Set
- * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
- * 
  * &gt; **Warning**
  * If you remove a CMK, the services linked to the key will stop working. Migrate the services to another CMK or an Aiven-managed key before removing the CMK.
  * 
@@ -49,10 +46,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleUser = new Cmk("exampleUser", CmkArgs.builder()
- *             .project(aivenProjectName)
- *             .resource(cmkResource)
- *             .cmkProvider("gcp")
+ *         var example = new Cmk("example", CmkArgs.builder()
+ *             .project("my-project")
+ *             .cmkProvider("aws")
+ *             .resource("my-resource")
  *             .defaultCmk(false)
  *             .build());
  * 
@@ -85,14 +82,14 @@ public class Cmk extends com.pulumi.resources.CustomResource {
         return this.cmkId;
     }
     /**
-     * The cloud provider hosting the key management service (KMS). The possible values are `aws`, `gcp` and `oci`. Changing this property forces recreation of the resource.
+     * The cloud provider hosting the key management service (KMS). The possible values are `aws`, `azure`, `gcp` and `oci`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="cmkProvider", refs={String.class}, tree="[0]")
     private Output<String> cmkProvider;
 
     /**
-     * @return The cloud provider hosting the key management service (KMS). The possible values are `aws`, `gcp` and `oci`. Changing this property forces recreation of the resource.
+     * @return The cloud provider hosting the key management service (KMS). The possible values are `aws`, `azure`, `gcp` and `oci`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> cmkProvider() {

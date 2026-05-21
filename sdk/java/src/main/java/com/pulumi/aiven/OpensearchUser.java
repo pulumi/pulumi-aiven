@@ -44,11 +44,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleOpensearchUser = new OpensearchUser("exampleOpensearchUser", OpensearchUserArgs.builder()
- *             .serviceName(exampleOpensearch.serviceName())
- *             .project(exampleProject.project())
- *             .username("example-opensearch-user")
- *             .password(opensearchUserPassword)
+ *         var example = new OpensearchUser("example", OpensearchUserArgs.builder()
+ *             .project("my-project")
+ *             .serviceName("my-opensearch")
+ *             .username("testuser")
+ *             .passwordWo("password123")
+ *             .passwordWoVersion(1)
  *             .build());
  * 
  *     }

@@ -110,6 +110,12 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? RecoveryBasebackupName { get; set; }
 
         /// <summary>
+        /// ClickHouse server settings, which can be found in the `system.server_settings` table
+        /// </summary>
+        [Input("serverSettings")]
+        public Input<Inputs.ClickhouseClickhouseUserConfigServerSettingsArgs>? ServerSettings { get; set; }
+
+        /// <summary>
         /// Store logs for the service so that they are available in the HTTP API and console.
         /// </summary>
         [Input("serviceLog")]
@@ -120,6 +126,12 @@ namespace Pulumi.Aiven.Inputs
         /// </summary>
         [Input("serviceToForkFrom")]
         public Input<string>? ServiceToForkFrom { get; set; }
+
+        /// <summary>
+        /// ClickHouse session settings, which can be found in the `system.settings` table
+        /// </summary>
+        [Input("sessionSettings")]
+        public Input<Inputs.ClickhouseClickhouseUserConfigSessionSettingsArgs>? SessionSettings { get; set; }
 
         /// <summary>
         /// Use static public IP addresses.

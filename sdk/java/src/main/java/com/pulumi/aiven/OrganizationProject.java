@@ -21,6 +21,49 @@ import javax.annotation.Nullable;
 /**
  * Creates and manages an [Aiven project](https://aiven.io/docs/platform/concepts/orgs-units-projects#projects).
  * 
+ * ## Example Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.aiven.OrganizationProject;
+ * import com.pulumi.aiven.OrganizationProjectArgs;
+ * import com.pulumi.aiven.inputs.OrganizationProjectTagArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var example = new OrganizationProject("example", OrganizationProjectArgs.builder()
+ *             .organizationId("org1234abcd")
+ *             .projectId("project-1")
+ *             .billingGroupId("721bf796-1d89-402d-9195-425a23c4efdc")
+ *             .parentId("a3fd7a594e01")
+ *             .basePort(10000)
+ *             .tags(OrganizationProjectTagArgs.builder()
+ *                 .key("foo")
+ *                 .value("foo")
+ *                 .build())
+ *             .technicalEmails("foo}{@literal @}{@code example.com")
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * ```sh

@@ -13,18 +13,72 @@ namespace Pulumi.Aiven
     {
         /// <summary>
         /// List all user groups within an organization.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Aiven.GetOrganizationUserGroupList.Invoke(new()
+        ///     {
+        ///         OrganizationId = "org1a23f456789",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetOrganizationUserGroupListResult> InvokeAsync(GetOrganizationUserGroupListArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationUserGroupListResult>("aiven:index/getOrganizationUserGroupList:getOrganizationUserGroupList", args ?? new GetOrganizationUserGroupListArgs(), options.WithDefaults());
 
         /// <summary>
         /// List all user groups within an organization.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Aiven.GetOrganizationUserGroupList.Invoke(new()
+        ///     {
+        ///         OrganizationId = "org1a23f456789",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetOrganizationUserGroupListResult> Invoke(GetOrganizationUserGroupListInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetOrganizationUserGroupListResult>("aiven:index/getOrganizationUserGroupList:getOrganizationUserGroupList", args ?? new GetOrganizationUserGroupListInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// List all user groups within an organization.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Aiven.GetOrganizationUserGroupList.Invoke(new()
+        ///     {
+        ///         OrganizationId = "org1a23f456789",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetOrganizationUserGroupListResult> Invoke(GetOrganizationUserGroupListInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetOrganizationUserGroupListResult>("aiven:index/getOrganizationUserGroupList:getOrganizationUserGroupList", args ?? new GetOrganizationUserGroupListInvokeArgs(), options.WithDefaults());

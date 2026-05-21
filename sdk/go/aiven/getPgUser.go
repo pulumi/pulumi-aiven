@@ -28,9 +28,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.GetPgUser(ctx, &aiven.LookupPgUserArgs{
-//				ServiceName: examplePostgres.ServiceName,
-//				Project:     exampleProject.Project,
-//				Username:    "example-service-user",
+//				Project:     "my-project",
+//				ServiceName: "my-pg",
+//				Username:    "testuser",
 //			}, nil)
 //			if err != nil {
 //				return err

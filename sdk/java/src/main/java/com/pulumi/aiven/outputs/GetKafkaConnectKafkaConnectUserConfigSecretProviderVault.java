@@ -34,6 +34,11 @@ public final class GetKafkaConnectKafkaConnectUserConfigSecretProviderVault {
      */
     private @Nullable Integer prefixPathDepth;
     /**
+     * @return PEM encoded certificate of the Vault server. Required if the vault server uses a self-signed certificate.
+     * 
+     */
+    private @Nullable String serverPem;
+    /**
      * @return Token used to authenticate with vault and auth method `token`.
      * 
      */
@@ -69,6 +74,13 @@ public final class GetKafkaConnectKafkaConnectUserConfigSecretProviderVault {
         return Optional.ofNullable(this.prefixPathDepth);
     }
     /**
+     * @return PEM encoded certificate of the Vault server. Required if the vault server uses a self-signed certificate.
+     * 
+     */
+    public Optional<String> serverPem() {
+        return Optional.ofNullable(this.serverPem);
+    }
+    /**
      * @return Token used to authenticate with vault and auth method `token`.
      * 
      */
@@ -89,6 +101,7 @@ public final class GetKafkaConnectKafkaConnectUserConfigSecretProviderVault {
         private String authMethod;
         private @Nullable Integer engineVersion;
         private @Nullable Integer prefixPathDepth;
+        private @Nullable String serverPem;
         private @Nullable String token;
         public Builder() {}
         public Builder(GetKafkaConnectKafkaConnectUserConfigSecretProviderVault defaults) {
@@ -97,6 +110,7 @@ public final class GetKafkaConnectKafkaConnectUserConfigSecretProviderVault {
     	      this.authMethod = defaults.authMethod;
     	      this.engineVersion = defaults.engineVersion;
     	      this.prefixPathDepth = defaults.prefixPathDepth;
+    	      this.serverPem = defaults.serverPem;
     	      this.token = defaults.token;
         }
 
@@ -129,6 +143,12 @@ public final class GetKafkaConnectKafkaConnectUserConfigSecretProviderVault {
             return this;
         }
         @CustomType.Setter
+        public Builder serverPem(@Nullable String serverPem) {
+
+            this.serverPem = serverPem;
+            return this;
+        }
+        @CustomType.Setter
         public Builder token(@Nullable String token) {
 
             this.token = token;
@@ -140,6 +160,7 @@ public final class GetKafkaConnectKafkaConnectUserConfigSecretProviderVault {
             _resultValue.authMethod = authMethod;
             _resultValue.engineVersion = engineVersion;
             _resultValue.prefixPathDepth = prefixPathDepth;
+            _resultValue.serverPem = serverPem;
             _resultValue.token = token;
             return _resultValue;
         }

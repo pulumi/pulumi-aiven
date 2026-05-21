@@ -22,6 +22,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string CloudName;
         /// <summary>
+        /// Active Customer Managed Key identifier (CMK ID).
+        /// </summary>
+        public readonly string CmkId;
+        /// <summary>
         /// Service creation timestamp (ISO 8601).
         /// </summary>
         public readonly string CreateTime;
@@ -88,6 +92,8 @@ namespace Pulumi.Aiven.Outputs
 
             string cloudName,
 
+            string cmkId,
+
             string createTime,
 
             int diskSpaceMb,
@@ -120,6 +126,7 @@ namespace Pulumi.Aiven.Outputs
         {
             CloudDescription = cloudDescription;
             CloudName = cloudName;
+            CmkId = cmkId;
             CreateTime = createTime;
             DiskSpaceMb = diskSpaceMb;
             IsClusterPlan = isClusterPlan;

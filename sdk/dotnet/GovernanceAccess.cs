@@ -25,28 +25,29 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleAccess = new Aiven.GovernanceAccess("example_access", new()
+    ///     var example = new Aiven.GovernanceAccess("example", new()
     ///     {
-    ///         OrganizationId = main.Id,
-    ///         AccessName = "example-topic-access",
-    ///         AccessType = "KAFKA",
+    ///         OrganizationId = "org1a23f456789",
     ///         AccessData = new Aiven.Inputs.GovernanceAccessAccessDataArgs
     ///         {
-    ///             Project = exampleProject.Project,
-    ///             ServiceName = exampleKafka.ServiceName,
     ///             Acls = new[]
     ///             {
     ///                 new Aiven.Inputs.GovernanceAccessAccessDataAclArgs
     ///                 {
-    ///                     ResourceName = "example-topic",
-    ///                     ResourceType = "Topic",
-    ///                     Operation = "Read",
+    ///                     Operation = "Write",
     ///                     PermissionType = "ALLOW",
+    ///                     ResourceName = "events",
+    ///                     ResourceType = "Topic",
     ///                     Host = "*",
     ///                 },
     ///             },
+    ///             ProjectName = "project-1",
+    ///             ServiceName = "service-1",
+    ///             Username = "api3",
     ///         },
-    ///         OwnerUserGroupId = example.GroupId,
+    ///         AccessName = "My Access",
+    ///         AccessType = "KAFKA",
+    ///         OwnerUserGroupId = "ug22ba494e096",
     ///     });
     /// 
     /// });

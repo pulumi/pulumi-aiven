@@ -25,6 +25,7 @@ class PgArgs:
                  project: pulumi.Input[_builtins.str],
                  additional_disk_space: pulumi.Input[Optional[_builtins.str]] = None,
                  cloud_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cmk_id: pulumi.Input[Optional[_builtins.str]] = None,
                  disk_space: pulumi.Input[Optional[_builtins.str]] = None,
                  maintenance_window_dow: pulumi.Input[Optional[_builtins.str]] = None,
                  maintenance_window_time: pulumi.Input[Optional[_builtins.str]] = None,
@@ -44,6 +45,7 @@ class PgArgs:
         :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] additional_disk_space: Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30 GiB to the default disk space defined by the `plan`. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
         :param pulumi.Input[_builtins.str] cloud_name: The cloud provider and region the service is hosted in. The format is `provider-region`, for example: `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ per project and service. Changing this value [migrates the service to another cloud provider or region](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and includes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases may have a brief interruption during DNS propagation.
+        :param pulumi.Input[_builtins.str] cmk_id: UUID of the Customer Managed Key (CMK) used to apply [bring your own key (BYOK) encryption](https://aiven.io/docs/platform/howto/bring-your-own-key) to this service's data at rest. You can register a CMK for an Aiven project using the `Cmk` resource. Removing this attribute doesn't remove the CMK association. To remove it from this service, set this attribute to the all-zero UUID `00000000-0000-0000-0000-000000000000`.
         :param pulumi.Input[_builtins.str] disk_space: Service disk space to set. Possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
         :param pulumi.Input[_builtins.str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[_builtins.str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
@@ -63,6 +65,8 @@ class PgArgs:
             pulumi.set(__self__, "additional_disk_space", additional_disk_space)
         if cloud_name is not None:
             pulumi.set(__self__, "cloud_name", cloud_name)
+        if cmk_id is not None:
+            pulumi.set(__self__, "cmk_id", cmk_id)
         if disk_space is not None:
             pulumi.set(__self__, "disk_space", disk_space)
         if maintenance_window_dow is not None:
@@ -135,6 +139,18 @@ class PgArgs:
     @cloud_name.setter
     def cloud_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cloud_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="cmkId")
+    def cmk_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        UUID of the Customer Managed Key (CMK) used to apply [bring your own key (BYOK) encryption](https://aiven.io/docs/platform/howto/bring-your-own-key) to this service's data at rest. You can register a CMK for an Aiven project using the `Cmk` resource. Removing this attribute doesn't remove the CMK association. To remove it from this service, set this attribute to the all-zero UUID `00000000-0000-0000-0000-000000000000`.
+        """
+        return pulumi.get(self, "cmk_id")
+
+    @cmk_id.setter
+    def cmk_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "cmk_id", value)
 
     @_builtins.property
     @pulumi.getter(name="diskSpace")
@@ -286,6 +302,7 @@ class _PgState:
     def __init__(__self__, *,
                  additional_disk_space: pulumi.Input[Optional[_builtins.str]] = None,
                  cloud_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cmk_id: pulumi.Input[Optional[_builtins.str]] = None,
                  components: pulumi.Input[Optional[Sequence[pulumi.Input['PgComponentArgs']]]] = None,
                  disk_space: pulumi.Input[Optional[_builtins.str]] = None,
                  disk_space_cap: pulumi.Input[Optional[_builtins.str]] = None,
@@ -318,6 +335,7 @@ class _PgState:
 
         :param pulumi.Input[_builtins.str] additional_disk_space: Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30 GiB to the default disk space defined by the `plan`. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
         :param pulumi.Input[_builtins.str] cloud_name: The cloud provider and region the service is hosted in. The format is `provider-region`, for example: `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ per project and service. Changing this value [migrates the service to another cloud provider or region](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and includes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases may have a brief interruption during DNS propagation.
+        :param pulumi.Input[_builtins.str] cmk_id: UUID of the Customer Managed Key (CMK) used to apply [bring your own key (BYOK) encryption](https://aiven.io/docs/platform/howto/bring-your-own-key) to this service's data at rest. You can register a CMK for an Aiven project using the `Cmk` resource. Removing this attribute doesn't remove the CMK association. To remove it from this service, set this attribute to the all-zero UUID `00000000-0000-0000-0000-000000000000`.
         :param pulumi.Input[Sequence[pulumi.Input['PgComponentArgs']]] components: Service component information objects
         :param pulumi.Input[_builtins.str] disk_space: Service disk space to set. Possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
         :param pulumi.Input[_builtins.str] disk_space_cap: The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
@@ -350,6 +368,8 @@ class _PgState:
             pulumi.set(__self__, "additional_disk_space", additional_disk_space)
         if cloud_name is not None:
             pulumi.set(__self__, "cloud_name", cloud_name)
+        if cmk_id is not None:
+            pulumi.set(__self__, "cmk_id", cmk_id)
         if components is not None:
             pulumi.set(__self__, "components", components)
         if disk_space is not None:
@@ -428,6 +448,18 @@ class _PgState:
     @cloud_name.setter
     def cloud_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cloud_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="cmkId")
+    def cmk_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        UUID of the Customer Managed Key (CMK) used to apply [bring your own key (BYOK) encryption](https://aiven.io/docs/platform/howto/bring-your-own-key) to this service's data at rest. You can register a CMK for an Aiven project using the `Cmk` resource. Removing this attribute doesn't remove the CMK association. To remove it from this service, set this attribute to the all-zero UUID `00000000-0000-0000-0000-000000000000`.
+        """
+        return pulumi.get(self, "cmk_id")
+
+    @cmk_id.setter
+    def cmk_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "cmk_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -762,6 +794,7 @@ class Pg(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  additional_disk_space: pulumi.Input[Optional[_builtins.str]] = None,
                  cloud_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cmk_id: pulumi.Input[Optional[_builtins.str]] = None,
                  disk_space: pulumi.Input[Optional[_builtins.str]] = None,
                  maintenance_window_dow: pulumi.Input[Optional[_builtins.str]] = None,
                  maintenance_window_time: pulumi.Input[Optional[_builtins.str]] = None,
@@ -824,6 +857,7 @@ class Pg(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] additional_disk_space: Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30 GiB to the default disk space defined by the `plan`. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
         :param pulumi.Input[_builtins.str] cloud_name: The cloud provider and region the service is hosted in. The format is `provider-region`, for example: `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ per project and service. Changing this value [migrates the service to another cloud provider or region](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and includes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases may have a brief interruption during DNS propagation.
+        :param pulumi.Input[_builtins.str] cmk_id: UUID of the Customer Managed Key (CMK) used to apply [bring your own key (BYOK) encryption](https://aiven.io/docs/platform/howto/bring-your-own-key) to this service's data at rest. You can register a CMK for an Aiven project using the `Cmk` resource. Removing this attribute doesn't remove the CMK association. To remove it from this service, set this attribute to the all-zero UUID `00000000-0000-0000-0000-000000000000`.
         :param pulumi.Input[_builtins.str] disk_space: Service disk space to set. Possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
         :param pulumi.Input[_builtins.str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[_builtins.str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
@@ -905,6 +939,7 @@ class Pg(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  additional_disk_space: pulumi.Input[Optional[_builtins.str]] = None,
                  cloud_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cmk_id: pulumi.Input[Optional[_builtins.str]] = None,
                  disk_space: pulumi.Input[Optional[_builtins.str]] = None,
                  maintenance_window_dow: pulumi.Input[Optional[_builtins.str]] = None,
                  maintenance_window_time: pulumi.Input[Optional[_builtins.str]] = None,
@@ -930,6 +965,7 @@ class Pg(pulumi.CustomResource):
 
             __props__.__dict__["additional_disk_space"] = additional_disk_space
             __props__.__dict__["cloud_name"] = cloud_name
+            __props__.__dict__["cmk_id"] = cmk_id
             __props__.__dict__["disk_space"] = disk_space
             __props__.__dict__["maintenance_window_dow"] = maintenance_window_dow
             __props__.__dict__["maintenance_window_time"] = maintenance_window_time
@@ -975,6 +1011,7 @@ class Pg(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             additional_disk_space: pulumi.Input[Optional[_builtins.str]] = None,
             cloud_name: pulumi.Input[Optional[_builtins.str]] = None,
+            cmk_id: pulumi.Input[Optional[_builtins.str]] = None,
             components: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PgComponentArgs', 'PgComponentArgsDict']]]]] = None,
             disk_space: pulumi.Input[Optional[_builtins.str]] = None,
             disk_space_cap: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1011,6 +1048,7 @@ class Pg(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] additional_disk_space: Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30 GiB to the default disk space defined by the `plan`. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
         :param pulumi.Input[_builtins.str] cloud_name: The cloud provider and region the service is hosted in. The format is `provider-region`, for example: `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ per project and service. Changing this value [migrates the service to another cloud provider or region](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and includes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases may have a brief interruption during DNS propagation.
+        :param pulumi.Input[_builtins.str] cmk_id: UUID of the Customer Managed Key (CMK) used to apply [bring your own key (BYOK) encryption](https://aiven.io/docs/platform/howto/bring-your-own-key) to this service's data at rest. You can register a CMK for an Aiven project using the `Cmk` resource. Removing this attribute doesn't remove the CMK association. To remove it from this service, set this attribute to the all-zero UUID `00000000-0000-0000-0000-000000000000`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['PgComponentArgs', 'PgComponentArgsDict']]]] components: Service component information objects
         :param pulumi.Input[_builtins.str] disk_space: Service disk space to set. Possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
         :param pulumi.Input[_builtins.str] disk_space_cap: The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
@@ -1045,6 +1083,7 @@ class Pg(pulumi.CustomResource):
 
         __props__.__dict__["additional_disk_space"] = additional_disk_space
         __props__.__dict__["cloud_name"] = cloud_name
+        __props__.__dict__["cmk_id"] = cmk_id
         __props__.__dict__["components"] = components
         __props__.__dict__["disk_space"] = disk_space
         __props__.__dict__["disk_space_cap"] = disk_space_cap
@@ -1089,6 +1128,14 @@ class Pg(pulumi.CustomResource):
         The cloud provider and region the service is hosted in. The format is `provider-region`, for example: `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ per project and service. Changing this value [migrates the service to another cloud provider or region](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and includes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases may have a brief interruption during DNS propagation.
         """
         return pulumi.get(self, "cloud_name")
+
+    @_builtins.property
+    @pulumi.getter(name="cmkId")
+    def cmk_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        UUID of the Customer Managed Key (CMK) used to apply [bring your own key (BYOK) encryption](https://aiven.io/docs/platform/howto/bring-your-own-key) to this service's data at rest. You can register a CMK for an Aiven project using the `Cmk` resource. Removing this attribute doesn't remove the CMK association. To remove it from this service, set this attribute to the all-zero UUID `00000000-0000-0000-0000-000000000000`.
+        """
+        return pulumi.get(self, "cmk_id")
 
     @_builtins.property
     @pulumi.getter

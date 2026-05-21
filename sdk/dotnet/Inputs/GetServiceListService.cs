@@ -25,6 +25,12 @@ namespace Pulumi.Aiven.Inputs
         public string CloudName { get; set; } = null!;
 
         /// <summary>
+        /// Active Customer Managed Key identifier (CMK ID).
+        /// </summary>
+        [Input("cmkId", required: true)]
+        public string CmkId { get; set; } = null!;
+
+        /// <summary>
         /// Service creation timestamp (ISO 8601).
         /// </summary>
         [Input("createTime", required: true)]

@@ -75,15 +75,15 @@ export type ByocAwsEntity = import("./byocAwsEntity").ByocAwsEntity;
 export const ByocAwsEntity: typeof import("./byocAwsEntity").ByocAwsEntity = null as any;
 utilities.lazyLoad(exports, ["ByocAwsEntity"], () => require("./byocAwsEntity"));
 
-export { CassandraArgs, CassandraState } from "./cassandra";
-export type Cassandra = import("./cassandra").Cassandra;
-export const Cassandra: typeof import("./cassandra").Cassandra = null as any;
-utilities.lazyLoad(exports, ["Cassandra"], () => require("./cassandra"));
+export { ByocAwsProvisionArgs, ByocAwsProvisionState } from "./byocAwsProvision";
+export type ByocAwsProvision = import("./byocAwsProvision").ByocAwsProvision;
+export const ByocAwsProvision: typeof import("./byocAwsProvision").ByocAwsProvision = null as any;
+utilities.lazyLoad(exports, ["ByocAwsProvision"], () => require("./byocAwsProvision"));
 
-export { CassandraUserArgs, CassandraUserState } from "./cassandraUser";
-export type CassandraUser = import("./cassandraUser").CassandraUser;
-export const CassandraUser: typeof import("./cassandraUser").CassandraUser = null as any;
-utilities.lazyLoad(exports, ["CassandraUser"], () => require("./cassandraUser"));
+export { ByocPermissionsArgs, ByocPermissionsState } from "./byocPermissions";
+export type ByocPermissions = import("./byocPermissions").ByocPermissions;
+export const ByocPermissions: typeof import("./byocPermissions").ByocPermissions = null as any;
+utilities.lazyLoad(exports, ["ByocPermissions"], () => require("./byocPermissions"));
 
 export { ClickhouseArgs, ClickhouseState } from "./clickhouse";
 export type Clickhouse = import("./clickhouse").Clickhouse;
@@ -239,21 +239,6 @@ export { GetBillingGroupArgs, GetBillingGroupResult, GetBillingGroupOutputArgs }
 export const getBillingGroup: typeof import("./getBillingGroup").getBillingGroup = null as any;
 export const getBillingGroupOutput: typeof import("./getBillingGroup").getBillingGroupOutput = null as any;
 utilities.lazyLoad(exports, ["getBillingGroup","getBillingGroupOutput"], () => require("./getBillingGroup"));
-
-export { GetCassandaArgs, GetCassandaResult, GetCassandaOutputArgs } from "./getCassanda";
-export const getCassanda: typeof import("./getCassanda").getCassanda = null as any;
-export const getCassandaOutput: typeof import("./getCassanda").getCassandaOutput = null as any;
-utilities.lazyLoad(exports, ["getCassanda","getCassandaOutput"], () => require("./getCassanda"));
-
-export { GetCassandraArgs, GetCassandraResult, GetCassandraOutputArgs } from "./getCassandra";
-export const getCassandra: typeof import("./getCassandra").getCassandra = null as any;
-export const getCassandraOutput: typeof import("./getCassandra").getCassandraOutput = null as any;
-utilities.lazyLoad(exports, ["getCassandra","getCassandraOutput"], () => require("./getCassandra"));
-
-export { GetCassandraUserArgs, GetCassandraUserResult, GetCassandraUserOutputArgs } from "./getCassandraUser";
-export const getCassandraUser: typeof import("./getCassandraUser").getCassandraUser = null as any;
-export const getCassandraUserOutput: typeof import("./getCassandraUser").getCassandraUserOutput = null as any;
-utilities.lazyLoad(exports, ["getCassandraUser","getCassandraUserOutput"], () => require("./getCassandraUser"));
 
 export { GetClickhouseArgs, GetClickhouseResult, GetClickhouseOutputArgs } from "./getClickhouse";
 export const getClickhouse: typeof import("./getClickhouse").getClickhouse = null as any;
@@ -520,16 +505,6 @@ export const getProjectVpc: typeof import("./getProjectVpc").getProjectVpc = nul
 export const getProjectVpcOutput: typeof import("./getProjectVpc").getProjectVpcOutput = null as any;
 utilities.lazyLoad(exports, ["getProjectVpc","getProjectVpcOutput"], () => require("./getProjectVpc"));
 
-export { GetRedisArgs, GetRedisResult, GetRedisOutputArgs } from "./getRedis";
-export const getRedis: typeof import("./getRedis").getRedis = null as any;
-export const getRedisOutput: typeof import("./getRedis").getRedisOutput = null as any;
-utilities.lazyLoad(exports, ["getRedis","getRedisOutput"], () => require("./getRedis"));
-
-export { GetRedisUserArgs, GetRedisUserResult, GetRedisUserOutputArgs } from "./getRedisUser";
-export const getRedisUser: typeof import("./getRedisUser").getRedisUser = null as any;
-export const getRedisUserOutput: typeof import("./getRedisUser").getRedisUserOutput = null as any;
-utilities.lazyLoad(exports, ["getRedisUser","getRedisUserOutput"], () => require("./getRedisUser"));
-
 export { GetServiceComponentArgs, GetServiceComponentResult, GetServiceComponentOutputArgs } from "./getServiceComponent";
 export const getServiceComponent: typeof import("./getServiceComponent").getServiceComponent = null as any;
 export const getServiceComponentOutput: typeof import("./getServiceComponent").getServiceComponentOutput = null as any;
@@ -793,16 +768,6 @@ utilities.lazyLoad(exports, ["ProjectVpc"], () => require("./projectVpc"));
 export * from "./provider";
 import { Provider } from "./provider";
 
-export { RedisArgs, RedisState } from "./redis";
-export type Redis = import("./redis").Redis;
-export const Redis: typeof import("./redis").Redis = null as any;
-utilities.lazyLoad(exports, ["Redis"], () => require("./redis"));
-
-export { RedisUserArgs, RedisUserState } from "./redisUser";
-export type RedisUser = import("./redisUser").RedisUser;
-export const RedisUser: typeof import("./redisUser").RedisUser = null as any;
-utilities.lazyLoad(exports, ["RedisUser"], () => require("./redisUser"));
-
 export { ServiceIntegrationArgs, ServiceIntegrationState } from "./serviceIntegration";
 export type ServiceIntegration = import("./serviceIntegration").ServiceIntegration;
 export const ServiceIntegration: typeof import("./serviceIntegration").ServiceIntegration = null as any;
@@ -827,6 +792,11 @@ export { TransitGatewayVpcAttachmentArgs, TransitGatewayVpcAttachmentState } fro
 export type TransitGatewayVpcAttachment = import("./transitGatewayVpcAttachment").TransitGatewayVpcAttachment;
 export const TransitGatewayVpcAttachment: typeof import("./transitGatewayVpcAttachment").TransitGatewayVpcAttachment = null as any;
 utilities.lazyLoad(exports, ["TransitGatewayVpcAttachment"], () => require("./transitGatewayVpcAttachment"));
+
+export { UpgradeStepArgs, UpgradeStepState } from "./upgradeStep";
+export type UpgradeStep = import("./upgradeStep").UpgradeStep;
+export const UpgradeStep: typeof import("./upgradeStep").UpgradeStep = null as any;
+utilities.lazyLoad(exports, ["UpgradeStep"], () => require("./upgradeStep"));
 
 export { ValkeyArgs, ValkeyState } from "./valkey";
 export type Valkey = import("./valkey").Valkey;
@@ -880,10 +850,10 @@ const _module = {
                 return new BillingGroup(name, <any>undefined, { urn })
             case "aiven:index/byocAwsEntity:ByocAwsEntity":
                 return new ByocAwsEntity(name, <any>undefined, { urn })
-            case "aiven:index/cassandra:Cassandra":
-                return new Cassandra(name, <any>undefined, { urn })
-            case "aiven:index/cassandraUser:CassandraUser":
-                return new CassandraUser(name, <any>undefined, { urn })
+            case "aiven:index/byocAwsProvision:ByocAwsProvision":
+                return new ByocAwsProvision(name, <any>undefined, { urn })
+            case "aiven:index/byocPermissions:ByocPermissions":
+                return new ByocPermissions(name, <any>undefined, { urn })
             case "aiven:index/clickhouse:Clickhouse":
                 return new Clickhouse(name, <any>undefined, { urn })
             case "aiven:index/clickhouseDatabase:ClickhouseDatabase":
@@ -1006,10 +976,6 @@ const _module = {
                 return new ProjectUser(name, <any>undefined, { urn })
             case "aiven:index/projectVpc:ProjectVpc":
                 return new ProjectVpc(name, <any>undefined, { urn })
-            case "aiven:index/redis:Redis":
-                return new Redis(name, <any>undefined, { urn })
-            case "aiven:index/redisUser:RedisUser":
-                return new RedisUser(name, <any>undefined, { urn })
             case "aiven:index/serviceIntegration:ServiceIntegration":
                 return new ServiceIntegration(name, <any>undefined, { urn })
             case "aiven:index/serviceIntegrationEndpoint:ServiceIntegrationEndpoint":
@@ -1020,6 +986,8 @@ const _module = {
                 return new Thanos(name, <any>undefined, { urn })
             case "aiven:index/transitGatewayVpcAttachment:TransitGatewayVpcAttachment":
                 return new TransitGatewayVpcAttachment(name, <any>undefined, { urn })
+            case "aiven:index/upgradeStep:UpgradeStep":
+                return new UpgradeStep(name, <any>undefined, { urn })
             case "aiven:index/valkey:Valkey":
                 return new Valkey(name, <any>undefined, { urn })
             case "aiven:index/valkeyUser:ValkeyUser":
@@ -1043,8 +1011,8 @@ pulumi.runtime.registerResourceModule("aiven", "index/azurePrivatelinkConnection
 pulumi.runtime.registerResourceModule("aiven", "index/azureVpcPeeringConnection", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/billingGroup", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/byocAwsEntity", _module)
-pulumi.runtime.registerResourceModule("aiven", "index/cassandra", _module)
-pulumi.runtime.registerResourceModule("aiven", "index/cassandraUser", _module)
+pulumi.runtime.registerResourceModule("aiven", "index/byocAwsProvision", _module)
+pulumi.runtime.registerResourceModule("aiven", "index/byocPermissions", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/clickhouse", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/clickhouseDatabase", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/clickhouseGrant", _module)
@@ -1106,13 +1074,12 @@ pulumi.runtime.registerResourceModule("aiven", "index/pgUser", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/project", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/projectUser", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/projectVpc", _module)
-pulumi.runtime.registerResourceModule("aiven", "index/redis", _module)
-pulumi.runtime.registerResourceModule("aiven", "index/redisUser", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/serviceIntegration", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/serviceIntegrationEndpoint", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/staticIp", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/thanos", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/transitGatewayVpcAttachment", _module)
+pulumi.runtime.registerResourceModule("aiven", "index/upgradeStep", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/valkey", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/valkeyUser", _module)
 pulumi.runtime.registerResourcePackage("aiven", {

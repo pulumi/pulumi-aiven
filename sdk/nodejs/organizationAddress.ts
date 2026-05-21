@@ -12,6 +12,23 @@ import * as utilities from "./utilities";
  * **This resource is in the beta stage and may change without notice.** Set
  * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const example = new aiven.OrganizationAddress("example", {
+ *     organizationId: "org1a23f456789",
+ *     addressLines: ["Main Street 1"],
+ *     city: "Helsinki",
+ *     countryCode: "FI",
+ *     name: "Aiven Oy",
+ *     state: "foo",
+ *     zipCode: "01234",
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh
@@ -67,7 +84,7 @@ export class OrganizationAddress extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
-     * Name of a company. Length must be between `1` and `128`.
+     * Name of a company. Length must be between `1` and `83`.
      */
     declare public readonly name: pulumi.Output<string>;
     /**
@@ -168,7 +185,7 @@ export interface OrganizationAddressState {
      */
     createTime?: pulumi.Input<string | undefined>;
     /**
-     * Name of a company. Length must be between `1` and `128`.
+     * Name of a company. Length must be between `1` and `83`.
      */
     name?: pulumi.Input<string | undefined>;
     /**
@@ -207,7 +224,7 @@ export interface OrganizationAddressArgs {
      */
     countryCode: pulumi.Input<string>;
     /**
-     * Name of a company. Length must be between `1` and `128`.
+     * Name of a company. Length must be between `1` and `83`.
      */
     name?: pulumi.Input<string | undefined>;
     /**

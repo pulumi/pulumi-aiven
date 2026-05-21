@@ -30,8 +30,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.aiven.Clickhouse;
- * import com.pulumi.aiven.ClickhouseArgs;
  * import com.pulumi.aiven.ClickhouseDatabase;
  * import com.pulumi.aiven.ClickhouseDatabaseArgs;
  * import java.util.ArrayList;
@@ -47,19 +45,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleClickhouse = new Clickhouse("exampleClickhouse", ClickhouseArgs.builder()
- *             .project(exampleProject.project())
- *             .cloudName("google-europe-west1")
- *             .plan("business-4")
- *             .serviceName("example-clickhouse-service")
- *             .maintenanceWindowDow("monday")
- *             .maintenanceWindowTime("10:00:00")
- *             .build());
- * 
- *         var exampleDb = new ClickhouseDatabase("exampleDb", ClickhouseDatabaseArgs.builder()
- *             .project(exampleProject.project())
- *             .serviceName(exampleClickhouse.serviceName())
- *             .name("example-database")
+ *         var example = new ClickhouseDatabase("example", ClickhouseDatabaseArgs.builder()
+ *             .project("my-project")
+ *             .serviceName("my-clickhouse")
+ *             .name("testdb")
  *             .build());
  * 
  *     }
