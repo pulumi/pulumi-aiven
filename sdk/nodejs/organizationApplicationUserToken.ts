@@ -15,14 +15,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const tfUser = new aiven.OrganizationApplicationUser("tf_user", {
- *     organizationId: main.id,
- *     name: "app-terraform",
- * });
  * const example = new aiven.OrganizationApplicationUserToken("example", {
- *     organizationId: main.id,
- *     userId: tfUser.userId,
- *     description: "Token for TF access to Aiven.",
+ *     organizationId: "org1a23f456789",
+ *     userId: "foo",
+ *     description: "Integration client Alpha",
+ *     extendWhenUsed: false,
+ *     ipAllowlists: ["192.168.0.0/24"],
+ *     maxAgeSeconds: 600,
+ *     scopes: ["user:read"],
  * });
  * ```
  *

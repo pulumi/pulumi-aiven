@@ -28,17 +28,18 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			tfUser, err := aiven.NewOrganizationApplicationUser(ctx, "tf_user", &aiven.OrganizationApplicationUserArgs{
-//				OrganizationId: pulumi.Any(main.Id),
-//				Name:           pulumi.String("app-terraform"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = aiven.NewOrganizationApplicationUserToken(ctx, "example", &aiven.OrganizationApplicationUserTokenArgs{
-//				OrganizationId: pulumi.Any(main.Id),
-//				UserId:         tfUser.UserId,
-//				Description:    pulumi.String("Token for TF access to Aiven."),
+//			_, err := aiven.NewOrganizationApplicationUserToken(ctx, "example", &aiven.OrganizationApplicationUserTokenArgs{
+//				OrganizationId: pulumi.String("org1a23f456789"),
+//				UserId:         pulumi.String("foo"),
+//				Description:    pulumi.String("Integration client Alpha"),
+//				ExtendWhenUsed: pulumi.Bool(false),
+//				IpAllowlists: pulumi.StringArray{
+//					pulumi.String("192.168.0.0/24"),
+//				},
+//				MaxAgeSeconds: pulumi.Int(600),
+//				Scopes: pulumi.StringArray{
+//					pulumi.String("user:read"),
+//				},
 //			})
 //			if err != nil {
 //				return err

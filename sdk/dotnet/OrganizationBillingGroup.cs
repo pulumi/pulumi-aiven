@@ -15,6 +15,48 @@ namespace Pulumi.Aiven
     /// **This resource is in the beta stage and may change without notice.** Set
     /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Aiven = Pulumi.Aiven;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Aiven.OrganizationBillingGroup("example", new()
+    ///     {
+    ///         OrganizationId = "org1a23f456789",
+    ///         BillingAddressId = "addr4b1ff1ceeaa",
+    ///         ShippingAddressId = "addr4b1ff1ceeaa",
+    ///         BillingContactEmails = new[]
+    ///         {
+    ///             new Aiven.Inputs.OrganizationBillingGroupBillingContactEmailArgs
+    ///             {
+    ///                 Email = "jane@example.com",
+    ///             },
+    ///         },
+    ///         BillingEmails = new[]
+    ///         {
+    ///             new Aiven.Inputs.OrganizationBillingGroupBillingEmailArgs
+    ///             {
+    ///                 Email = "jane@example.com",
+    ///             },
+    ///         },
+    ///         BillingGroupName = "Default billing group for the organization",
+    ///         PaymentMethod = new Aiven.Inputs.OrganizationBillingGroupPaymentMethodArgs
+    ///         {
+    ///             PaymentMethodId = "pm4b1ff1ceeaa",
+    ///             PaymentMethodType = "credit_card",
+    ///         },
+    ///         VatId = "FI12345678",
+    ///         CustomInvoiceText = "Extra billing text",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

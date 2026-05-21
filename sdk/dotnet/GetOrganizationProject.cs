@@ -26,8 +26,8 @@ namespace Pulumi.Aiven
         /// {
         ///     var example = Aiven.GetOrganizationProject.Invoke(new()
         ///     {
-        ///         ProjectId = foo.ProjectId,
-        ///         OrganizationId = foo.OrganizationId,
+        ///         OrganizationId = "org1234abcd",
+        ///         ProjectId = "project-1",
         ///     });
         /// 
         /// });
@@ -51,8 +51,8 @@ namespace Pulumi.Aiven
         /// {
         ///     var example = Aiven.GetOrganizationProject.Invoke(new()
         ///     {
-        ///         ProjectId = foo.ProjectId,
-        ///         OrganizationId = foo.OrganizationId,
+        ///         OrganizationId = "org1234abcd",
+        ///         ProjectId = "project-1",
         ///     });
         /// 
         /// });
@@ -76,8 +76,8 @@ namespace Pulumi.Aiven
         /// {
         ///     var example = Aiven.GetOrganizationProject.Invoke(new()
         ///     {
-        ///         ProjectId = foo.ProjectId,
-        ///         OrganizationId = foo.OrganizationId,
+        ///         OrganizationId = "org1234abcd",
+        ///         ProjectId = "project-1",
         ///     });
         /// 
         /// });

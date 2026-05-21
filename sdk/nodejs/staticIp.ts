@@ -9,6 +9,19 @@ import * as utilities from "./utilities";
 /**
  * The aiven.StaticIp resource allows the creation and deletion of static ips. Please note that once a static ip is in the 'assigned' state it is bound to the node it is assigned to and cannot be deleted or disassociated until the node is recycled. Plans that would delete static ips that are in the assigned state will be blocked.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const example = new aiven.StaticIp("example", {
+ *     project: "my-project",
+ *     cloudName: "aws-eu-central-1",
+ *     terminationProtection: false,
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

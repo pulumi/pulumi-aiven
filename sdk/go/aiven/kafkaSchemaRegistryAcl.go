@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Resource Kafka Schema Registry ACL resource allows the creation and management of Schema Registry ACLs for an Aiven Kafka service.
+// Creates and manages an Aiven for Apache Kafka® Schema Registry ACL entry. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
 //
 // ## Example Usage
 //
@@ -28,12 +28,12 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewKafkaSchemaRegistryAcl(ctx, "foo", &aiven.KafkaSchemaRegistryAclArgs{
-//				Project:     pulumi.Any(kafka_schemas_project1.Project),
-//				ServiceName: pulumi.Any(kafka_service1.ServiceName),
-//				Resource:    pulumi.String("Subject:topic-1"),
-//				Username:    pulumi.String("group-user-*"),
+//			_, err := aiven.NewKafkaSchemaRegistryAcl(ctx, "example", &aiven.KafkaSchemaRegistryAclArgs{
+//				Project:     pulumi.String("my-project"),
+//				ServiceName: pulumi.String("my-kafka"),
 //				Permission:  pulumi.String("schema_registry_read"),
+//				Resource:    pulumi.String("Config:"),
+//				Username:    pulumi.String("admin*"),
 //			})
 //			if err != nil {
 //				return err
@@ -52,17 +52,18 @@ import (
 type KafkaSchemaRegistryAcl struct {
 	pulumi.CustomResourceState
 
-	// Kafka Schema Registry ACL ID
+	// Kafka Schema Registry ACL ID.
 	AclId pulumi.StringOutput `pulumi:"aclId"`
-	// Kafka Schema Registry permission to grant. The possible values are `schemaRegistryRead` and `schemaRegistryWrite`. Changing this property forces recreation of the resource.
+	// ACL entry for Schema Registry. The possible values are `schemaRegistryRead` and `schemaRegistryWrite`. Changing this property forces recreation of the resource.
 	Permission pulumi.StringOutput `pulumi:"permission"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Resource name pattern for the Schema Registry ACL entry. Changing this property forces recreation of the resource.
+	// Schema Registry ACL entry resource name pattern. Length must be between `1` and `249`. Changing this property forces recreation of the resource.
 	Resource pulumi.StringOutput `pulumi:"resource"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// Username pattern for the ACL entry. Changing this property forces recreation of the resource.
+	// Service name. Changing this property forces recreation of the resource.
+	ServiceName pulumi.StringOutput                     `pulumi:"serviceName"`
+	Timeouts    KafkaSchemaRegistryAclTimeoutsPtrOutput `pulumi:"timeouts"`
+	// Username. Length must be between `1` and `64`. Changing this property forces recreation of the resource.
 	Username pulumi.StringOutput `pulumi:"username"`
 }
 
@@ -111,32 +112,34 @@ func GetKafkaSchemaRegistryAcl(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering KafkaSchemaRegistryAcl resources.
 type kafkaSchemaRegistryAclState struct {
-	// Kafka Schema Registry ACL ID
+	// Kafka Schema Registry ACL ID.
 	AclId *string `pulumi:"aclId"`
-	// Kafka Schema Registry permission to grant. The possible values are `schemaRegistryRead` and `schemaRegistryWrite`. Changing this property forces recreation of the resource.
+	// ACL entry for Schema Registry. The possible values are `schemaRegistryRead` and `schemaRegistryWrite`. Changing this property forces recreation of the resource.
 	Permission *string `pulumi:"permission"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project *string `pulumi:"project"`
-	// Resource name pattern for the Schema Registry ACL entry. Changing this property forces recreation of the resource.
+	// Schema Registry ACL entry resource name pattern. Length must be between `1` and `249`. Changing this property forces recreation of the resource.
 	Resource *string `pulumi:"resource"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName *string `pulumi:"serviceName"`
-	// Username pattern for the ACL entry. Changing this property forces recreation of the resource.
+	// Service name. Changing this property forces recreation of the resource.
+	ServiceName *string                         `pulumi:"serviceName"`
+	Timeouts    *KafkaSchemaRegistryAclTimeouts `pulumi:"timeouts"`
+	// Username. Length must be between `1` and `64`. Changing this property forces recreation of the resource.
 	Username *string `pulumi:"username"`
 }
 
 type KafkaSchemaRegistryAclState struct {
-	// Kafka Schema Registry ACL ID
+	// Kafka Schema Registry ACL ID.
 	AclId pulumi.StringPtrInput
-	// Kafka Schema Registry permission to grant. The possible values are `schemaRegistryRead` and `schemaRegistryWrite`. Changing this property forces recreation of the resource.
+	// ACL entry for Schema Registry. The possible values are `schemaRegistryRead` and `schemaRegistryWrite`. Changing this property forces recreation of the resource.
 	Permission pulumi.StringPtrInput
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project pulumi.StringPtrInput
-	// Resource name pattern for the Schema Registry ACL entry. Changing this property forces recreation of the resource.
+	// Schema Registry ACL entry resource name pattern. Length must be between `1` and `249`. Changing this property forces recreation of the resource.
 	Resource pulumi.StringPtrInput
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Service name. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringPtrInput
-	// Username pattern for the ACL entry. Changing this property forces recreation of the resource.
+	Timeouts    KafkaSchemaRegistryAclTimeoutsPtrInput
+	// Username. Length must be between `1` and `64`. Changing this property forces recreation of the resource.
 	Username pulumi.StringPtrInput
 }
 
@@ -145,29 +148,31 @@ func (KafkaSchemaRegistryAclState) ElementType() reflect.Type {
 }
 
 type kafkaSchemaRegistryAclArgs struct {
-	// Kafka Schema Registry permission to grant. The possible values are `schemaRegistryRead` and `schemaRegistryWrite`. Changing this property forces recreation of the resource.
+	// ACL entry for Schema Registry. The possible values are `schemaRegistryRead` and `schemaRegistryWrite`. Changing this property forces recreation of the resource.
 	Permission string `pulumi:"permission"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
-	// Resource name pattern for the Schema Registry ACL entry. Changing this property forces recreation of the resource.
+	// Schema Registry ACL entry resource name pattern. Length must be between `1` and `249`. Changing this property forces recreation of the resource.
 	Resource string `pulumi:"resource"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName string `pulumi:"serviceName"`
-	// Username pattern for the ACL entry. Changing this property forces recreation of the resource.
+	// Service name. Changing this property forces recreation of the resource.
+	ServiceName string                          `pulumi:"serviceName"`
+	Timeouts    *KafkaSchemaRegistryAclTimeouts `pulumi:"timeouts"`
+	// Username. Length must be between `1` and `64`. Changing this property forces recreation of the resource.
 	Username string `pulumi:"username"`
 }
 
 // The set of arguments for constructing a KafkaSchemaRegistryAcl resource.
 type KafkaSchemaRegistryAclArgs struct {
-	// Kafka Schema Registry permission to grant. The possible values are `schemaRegistryRead` and `schemaRegistryWrite`. Changing this property forces recreation of the resource.
+	// ACL entry for Schema Registry. The possible values are `schemaRegistryRead` and `schemaRegistryWrite`. Changing this property forces recreation of the resource.
 	Permission pulumi.StringInput
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput
-	// Resource name pattern for the Schema Registry ACL entry. Changing this property forces recreation of the resource.
+	// Schema Registry ACL entry resource name pattern. Length must be between `1` and `249`. Changing this property forces recreation of the resource.
 	Resource pulumi.StringInput
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Service name. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringInput
-	// Username pattern for the ACL entry. Changing this property forces recreation of the resource.
+	Timeouts    KafkaSchemaRegistryAclTimeoutsPtrInput
+	// Username. Length must be between `1` and `64`. Changing this property forces recreation of the resource.
 	Username pulumi.StringInput
 }
 
@@ -258,32 +263,36 @@ func (o KafkaSchemaRegistryAclOutput) ToKafkaSchemaRegistryAclOutputWithContext(
 	return o
 }
 
-// Kafka Schema Registry ACL ID
+// Kafka Schema Registry ACL ID.
 func (o KafkaSchemaRegistryAclOutput) AclId() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaSchemaRegistryAcl) pulumi.StringOutput { return v.AclId }).(pulumi.StringOutput)
 }
 
-// Kafka Schema Registry permission to grant. The possible values are `schemaRegistryRead` and `schemaRegistryWrite`. Changing this property forces recreation of the resource.
+// ACL entry for Schema Registry. The possible values are `schemaRegistryRead` and `schemaRegistryWrite`. Changing this property forces recreation of the resource.
 func (o KafkaSchemaRegistryAclOutput) Permission() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaSchemaRegistryAcl) pulumi.StringOutput { return v.Permission }).(pulumi.StringOutput)
 }
 
-// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// Project name. Changing this property forces recreation of the resource.
 func (o KafkaSchemaRegistryAclOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaSchemaRegistryAcl) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// Resource name pattern for the Schema Registry ACL entry. Changing this property forces recreation of the resource.
+// Schema Registry ACL entry resource name pattern. Length must be between `1` and `249`. Changing this property forces recreation of the resource.
 func (o KafkaSchemaRegistryAclOutput) Resource() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaSchemaRegistryAcl) pulumi.StringOutput { return v.Resource }).(pulumi.StringOutput)
 }
 
-// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// Service name. Changing this property forces recreation of the resource.
 func (o KafkaSchemaRegistryAclOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaSchemaRegistryAcl) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// Username pattern for the ACL entry. Changing this property forces recreation of the resource.
+func (o KafkaSchemaRegistryAclOutput) Timeouts() KafkaSchemaRegistryAclTimeoutsPtrOutput {
+	return o.ApplyT(func(v *KafkaSchemaRegistryAcl) KafkaSchemaRegistryAclTimeoutsPtrOutput { return v.Timeouts }).(KafkaSchemaRegistryAclTimeoutsPtrOutput)
+}
+
+// Username. Length must be between `1` and `64`. Changing this property forces recreation of the resource.
 func (o KafkaSchemaRegistryAclOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaSchemaRegistryAcl) pulumi.StringOutput { return v.Username }).(pulumi.StringOutput)
 }

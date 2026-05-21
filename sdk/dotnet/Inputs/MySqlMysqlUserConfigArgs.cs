@@ -114,7 +114,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<Inputs.MySqlMysqlUserConfigMysqlIncrementalBackupArgs>? MysqlIncrementalBackup { get; set; }
 
         /// <summary>
-        /// Enum: `8`, and newer. MySQL major version.
+        /// Enum: `8`, `8.4`, and newer. MySQL major version.
         /// </summary>
         [Input("mysqlVersion")]
         public Input<string>? MysqlVersion { get; set; }

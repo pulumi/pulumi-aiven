@@ -18,6 +18,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? Clickhouse;
         /// <summary>
+        /// Allow clients to connect to ClickhouseArrowflight with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        /// </summary>
+        public readonly bool? ClickhouseArrowflight;
+        /// <summary>
         /// Allow clients to connect to ClickhouseHttps with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
         /// </summary>
         public readonly bool? ClickhouseHttps;
@@ -34,6 +38,8 @@ namespace Pulumi.Aiven.Outputs
         private GetClickhouseClickhouseUserConfigPrivateAccessResult(
             bool? clickhouse,
 
+            bool? clickhouseArrowflight,
+
             bool? clickhouseHttps,
 
             bool? clickhouseMysql,
@@ -41,6 +47,7 @@ namespace Pulumi.Aiven.Outputs
             bool? prometheus)
         {
             Clickhouse = clickhouse;
+            ClickhouseArrowflight = clickhouseArrowflight;
             ClickhouseHttps = clickhouseHttps;
             ClickhouseMysql = clickhouseMysql;
             Prometheus = prometheus;

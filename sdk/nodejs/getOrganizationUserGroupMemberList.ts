@@ -15,9 +15,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const foo = aiven.getOrganizationUserGroupMemberList({
- *     organizationId: organizationId,
- *     userGroupId: userGroupId,
+ * const example = aiven.getOrganizationUserGroupMemberList({
+ *     organizationId: "org1a23f456789",
+ *     userGroupId: "foo",
  * });
  * ```
  */
@@ -81,9 +81,9 @@ export interface GetOrganizationUserGroupMemberListResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const foo = aiven.getOrganizationUserGroupMemberList({
- *     organizationId: organizationId,
- *     userGroupId: userGroupId,
+ * const example = aiven.getOrganizationUserGroupMemberList({
+ *     organizationId: "org1a23f456789",
+ *     userGroupId: "foo",
  * });
  * ```
  */

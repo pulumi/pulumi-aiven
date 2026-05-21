@@ -28,8 +28,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.GetOrganizationUserGroupMemberList(ctx, &aiven.GetOrganizationUserGroupMemberListArgs{
-//				OrganizationId: organizationId,
-//				UserGroupId:    userGroupId,
+//				OrganizationId: "org1a23f456789",
+//				UserGroupId:    "foo",
 //			}, nil)
 //			if err != nil {
 //				return err

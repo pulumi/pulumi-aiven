@@ -145,8 +145,8 @@ def get_opensearch_security_plugin_config(project: Optional[_builtins.str] = Non
     import pulumi
     import pulumi_aiven as aiven
 
-    os_sec_config = aiven.get_opensearch_security_plugin_config(project=example_project["project"],
-        service_name=example_opensearch["serviceName"])
+    example = aiven.get_opensearch_security_plugin_config(project="my-project",
+        service_name="my-opensearch")
     ```
 
 
@@ -182,8 +182,8 @@ def get_opensearch_security_plugin_config_output(project: pulumi.Input[Optional[
     import pulumi
     import pulumi_aiven as aiven
 
-    os_sec_config = aiven.get_opensearch_security_plugin_config(project=example_project["project"],
-        service_name=example_opensearch["serviceName"])
+    example = aiven.get_opensearch_security_plugin_config(project="my-project",
+        service_name="my-opensearch")
     ```
 
 

@@ -9,9 +9,6 @@ import * as utilities from "./utilities";
 /**
  * Creates and manages [customer managed keys](https://aiven.io/docs/platform/howto/bring-your-own-key) (CMKs) for encrypting service data. Use your own CMKs from your cloud provider's key management service (KMS) to encrypt data for all services in an Aiven project. This gives you complete control over your encryption keys, meaning you can independently manage the key lifecycle and access policies.
  *
- * **This resource is in the beta stage and may change without notice.** Set
- * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
- *
  * > **Warning**
  * If you remove a CMK, the services linked to the key will stop working. Migrate the services to another CMK or an Aiven-managed key before removing the CMK.
  *
@@ -21,10 +18,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const exampleUser = new aiven.Cmk("example_user", {
- *     project: aivenProjectName,
- *     resource: cmkResource,
- *     cmkProvider: "gcp",
+ * const example = new aiven.Cmk("example", {
+ *     project: "my-project",
+ *     cmkProvider: "aws",
+ *     resource: "my-resource",
  *     defaultCmk: false,
  * });
  * ```
@@ -68,7 +65,7 @@ export class Cmk extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly cmkId: pulumi.Output<string>;
     /**
-     * The cloud provider hosting the key management service (KMS). The possible values are `aws`, `gcp` and `oci`. Changing this property forces recreation of the resource.
+     * The cloud provider hosting the key management service (KMS). The possible values are `aws`, `azure`, `gcp` and `oci`. Changing this property forces recreation of the resource.
      */
     declare public readonly cmkProvider: pulumi.Output<string>;
     /**
@@ -154,7 +151,7 @@ export interface CmkState {
      */
     cmkId?: pulumi.Input<string | undefined>;
     /**
-     * The cloud provider hosting the key management service (KMS). The possible values are `aws`, `gcp` and `oci`. Changing this property forces recreation of the resource.
+     * The cloud provider hosting the key management service (KMS). The possible values are `aws`, `azure`, `gcp` and `oci`. Changing this property forces recreation of the resource.
      */
     cmkProvider?: pulumi.Input<string | undefined>;
     /**
@@ -189,7 +186,7 @@ export interface CmkState {
  */
 export interface CmkArgs {
     /**
-     * The cloud provider hosting the key management service (KMS). The possible values are `aws`, `gcp` and `oci`. Changing this property forces recreation of the resource.
+     * The cloud provider hosting the key management service (KMS). The possible values are `aws`, `azure`, `gcp` and `oci`. Changing this property forces recreation of the resource.
      */
     cmkProvider: pulumi.Input<string>;
     /**

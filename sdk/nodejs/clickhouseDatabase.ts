@@ -17,18 +17,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const exampleClickhouse = new aiven.Clickhouse("example_clickhouse", {
- *     project: exampleProject.project,
- *     cloudName: "google-europe-west1",
- *     plan: "business-4",
- *     serviceName: "example-clickhouse-service",
- *     maintenanceWindowDow: "monday",
- *     maintenanceWindowTime: "10:00:00",
- * });
- * const exampleDb = new aiven.ClickhouseDatabase("example_db", {
- *     project: exampleProject.project,
- *     serviceName: exampleClickhouse.serviceName,
- *     name: "example-database",
+ * const example = new aiven.ClickhouseDatabase("example", {
+ *     project: "my-project",
+ *     serviceName: "my-clickhouse",
+ *     name: "testdb",
  * });
  * ```
  *

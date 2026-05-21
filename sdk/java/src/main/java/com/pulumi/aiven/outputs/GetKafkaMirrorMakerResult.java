@@ -29,6 +29,11 @@ public final class GetKafkaMirrorMakerResult {
      */
     private String cloudName;
     /**
+     * @return UUID of the Customer Managed Key (CMK) used to apply [bring your own key (BYOK) encryption](https://aiven.io/docs/platform/howto/bring-your-own-key) to this service&#39;s data at rest. You can register a CMK for an Aiven project using the `aiven.Cmk` resource. Removing this attribute doesn&#39;t remove the CMK association. To remove it from this service, set this attribute to the all-zero UUID `00000000-0000-0000-0000-000000000000`.
+     * 
+     */
+    private String cmkId;
+    /**
      * @return Service component information objects
      * 
      */
@@ -178,6 +183,13 @@ public final class GetKafkaMirrorMakerResult {
      */
     public String cloudName() {
         return this.cloudName;
+    }
+    /**
+     * @return UUID of the Customer Managed Key (CMK) used to apply [bring your own key (BYOK) encryption](https://aiven.io/docs/platform/howto/bring-your-own-key) to this service&#39;s data at rest. You can register a CMK for an Aiven project using the `aiven.Cmk` resource. Removing this attribute doesn&#39;t remove the CMK association. To remove it from this service, set this attribute to the all-zero UUID `00000000-0000-0000-0000-000000000000`.
+     * 
+     */
+    public String cmkId() {
+        return this.cmkId;
     }
     /**
      * @return Service component information objects
@@ -380,6 +392,7 @@ public final class GetKafkaMirrorMakerResult {
     public static final class Builder {
         private String additionalDiskSpace;
         private String cloudName;
+        private String cmkId;
         private List<GetKafkaMirrorMakerComponent> components;
         private String diskSpace;
         private String diskSpaceCap;
@@ -412,6 +425,7 @@ public final class GetKafkaMirrorMakerResult {
     	      Objects.requireNonNull(defaults);
     	      this.additionalDiskSpace = defaults.additionalDiskSpace;
     	      this.cloudName = defaults.cloudName;
+    	      this.cmkId = defaults.cmkId;
     	      this.components = defaults.components;
     	      this.diskSpace = defaults.diskSpace;
     	      this.diskSpaceCap = defaults.diskSpaceCap;
@@ -455,6 +469,14 @@ public final class GetKafkaMirrorMakerResult {
               throw new MissingRequiredPropertyException("GetKafkaMirrorMakerResult", "cloudName");
             }
             this.cloudName = cloudName;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder cmkId(String cmkId) {
+            if (cmkId == null) {
+              throw new MissingRequiredPropertyException("GetKafkaMirrorMakerResult", "cmkId");
+            }
+            this.cmkId = cmkId;
             return this;
         }
         @CustomType.Setter
@@ -695,6 +717,7 @@ public final class GetKafkaMirrorMakerResult {
             final var _resultValue = new GetKafkaMirrorMakerResult();
             _resultValue.additionalDiskSpace = additionalDiskSpace;
             _resultValue.cloudName = cloudName;
+            _resultValue.cmkId = cmkId;
             _resultValue.components = components;
             _resultValue.diskSpace = diskSpace;
             _resultValue.diskSpaceCap = diskSpaceCap;

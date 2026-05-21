@@ -22,15 +22,15 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var main = new Aiven.ConnectionPool("main", new()
+    ///     var example = new Aiven.ConnectionPool("example", new()
     ///     {
-    ///         Project = exampleProject.Project,
-    ///         ServiceName = examplePostgres.ServiceName,
-    ///         DatabaseName = mainAivenPgDatabase.DatabaseName,
+    ///         Project = "my-project",
+    ///         ServiceName = "foo",
+    ///         PoolName = "mypool-x-y-z",
+    ///         DatabaseName = "testdb",
     ///         PoolMode = "transaction",
-    ///         PoolName = "example-pool",
     ///         PoolSize = 10,
-    ///         Username = exampleUser.Username,
+    ///         Username = "testuser",
     ///     });
     /// 
     /// });

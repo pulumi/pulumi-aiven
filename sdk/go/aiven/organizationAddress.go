@@ -17,6 +17,40 @@ import (
 // **This resource is in the beta stage and may change without notice.** Set
 // the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := aiven.NewOrganizationAddress(ctx, "example", &aiven.OrganizationAddressArgs{
+//				OrganizationId: pulumi.String("org1a23f456789"),
+//				AddressLines: pulumi.StringArray{
+//					pulumi.String("Main Street 1"),
+//				},
+//				City:        pulumi.String("Helsinki"),
+//				CountryCode: pulumi.String("FI"),
+//				Name:        pulumi.String("Aiven Oy"),
+//				State:       pulumi.String("foo"),
+//				ZipCode:     pulumi.String("01234"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh
@@ -35,7 +69,7 @@ type OrganizationAddress struct {
 	CountryCode pulumi.StringOutput `pulumi:"countryCode"`
 	// Create Time.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// Name of a company. Length must be between `1` and `128`.
+	// Name of a company. Length must be between `1` and `83`.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
 	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
@@ -100,7 +134,7 @@ type organizationAddressState struct {
 	CountryCode *string `pulumi:"countryCode"`
 	// Create Time.
 	CreateTime *string `pulumi:"createTime"`
-	// Name of a company. Length must be between `1` and `128`.
+	// Name of a company. Length must be between `1` and `83`.
 	Name *string `pulumi:"name"`
 	// ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
 	OrganizationId *string `pulumi:"organizationId"`
@@ -124,7 +158,7 @@ type OrganizationAddressState struct {
 	CountryCode pulumi.StringPtrInput
 	// Create Time.
 	CreateTime pulumi.StringPtrInput
-	// Name of a company. Length must be between `1` and `128`.
+	// Name of a company. Length must be between `1` and `83`.
 	Name pulumi.StringPtrInput
 	// ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
 	OrganizationId pulumi.StringPtrInput
@@ -148,7 +182,7 @@ type organizationAddressArgs struct {
 	City string `pulumi:"city"`
 	// Country Code. Maximum length: `2`.
 	CountryCode string `pulumi:"countryCode"`
-	// Name of a company. Length must be between `1` and `128`.
+	// Name of a company. Length must be between `1` and `83`.
 	Name *string `pulumi:"name"`
 	// ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
 	OrganizationId string `pulumi:"organizationId"`
@@ -167,7 +201,7 @@ type OrganizationAddressArgs struct {
 	City pulumi.StringInput
 	// Country Code. Maximum length: `2`.
 	CountryCode pulumi.StringInput
-	// Name of a company. Length must be between `1` and `128`.
+	// Name of a company. Length must be between `1` and `83`.
 	Name pulumi.StringPtrInput
 	// ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
 	OrganizationId pulumi.StringInput
@@ -290,7 +324,7 @@ func (o OrganizationAddressOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationAddress) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Name of a company. Length must be between `1` and `128`.
+// Name of a company. Length must be between `1` and `83`.
 func (o OrganizationAddressOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationAddress) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -57,6 +58,11 @@ public final class KafkaKafkaUserConfigKafkaConnectConfig {
      * 
      */
     private @Nullable Integer offsetFlushTimeoutMs;
+    /**
+     * @return When enabled, connectors will automatically resolve IPv6 addresses from external server names configured with dual-stack. Default: `false`.
+     * 
+     */
+    private @Nullable Boolean preferIpv6AddressEnable;
     /**
      * @return This setting gives the upper bound of the batch size to be sent. If there are fewer than this many bytes accumulated for this partition, the producer will `linger` for the linger.ms time waiting for more records to show up. A batch size of zero will disable batching entirely (defaults to 16384).
      * 
@@ -158,6 +164,13 @@ public final class KafkaKafkaUserConfigKafkaConnectConfig {
         return Optional.ofNullable(this.offsetFlushTimeoutMs);
     }
     /**
+     * @return When enabled, connectors will automatically resolve IPv6 addresses from external server names configured with dual-stack. Default: `false`.
+     * 
+     */
+    public Optional<Boolean> preferIpv6AddressEnable() {
+        return Optional.ofNullable(this.preferIpv6AddressEnable);
+    }
+    /**
      * @return This setting gives the upper bound of the batch size to be sent. If there are fewer than this many bytes accumulated for this partition, the producer will `linger` for the linger.ms time waiting for more records to show up. A batch size of zero will disable batching entirely (defaults to 16384).
      * 
      */
@@ -225,6 +238,7 @@ public final class KafkaKafkaUserConfigKafkaConnectConfig {
         private @Nullable Integer consumerMaxPollRecords;
         private @Nullable Integer offsetFlushIntervalMs;
         private @Nullable Integer offsetFlushTimeoutMs;
+        private @Nullable Boolean preferIpv6AddressEnable;
         private @Nullable Integer producerBatchSize;
         private @Nullable Integer producerBufferMemory;
         private @Nullable String producerCompressionType;
@@ -244,6 +258,7 @@ public final class KafkaKafkaUserConfigKafkaConnectConfig {
     	      this.consumerMaxPollRecords = defaults.consumerMaxPollRecords;
     	      this.offsetFlushIntervalMs = defaults.offsetFlushIntervalMs;
     	      this.offsetFlushTimeoutMs = defaults.offsetFlushTimeoutMs;
+    	      this.preferIpv6AddressEnable = defaults.preferIpv6AddressEnable;
     	      this.producerBatchSize = defaults.producerBatchSize;
     	      this.producerBufferMemory = defaults.producerBufferMemory;
     	      this.producerCompressionType = defaults.producerCompressionType;
@@ -308,6 +323,12 @@ public final class KafkaKafkaUserConfigKafkaConnectConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder preferIpv6AddressEnable(@Nullable Boolean preferIpv6AddressEnable) {
+
+            this.preferIpv6AddressEnable = preferIpv6AddressEnable;
+            return this;
+        }
+        @CustomType.Setter
         public Builder producerBatchSize(@Nullable Integer producerBatchSize) {
 
             this.producerBatchSize = producerBatchSize;
@@ -360,6 +381,7 @@ public final class KafkaKafkaUserConfigKafkaConnectConfig {
             _resultValue.consumerMaxPollRecords = consumerMaxPollRecords;
             _resultValue.offsetFlushIntervalMs = offsetFlushIntervalMs;
             _resultValue.offsetFlushTimeoutMs = offsetFlushTimeoutMs;
+            _resultValue.preferIpv6AddressEnable = preferIpv6AddressEnable;
             _resultValue.producerBatchSize = producerBatchSize;
             _resultValue.producerBufferMemory = producerBufferMemory;
             _resultValue.producerCompressionType = producerCompressionType;

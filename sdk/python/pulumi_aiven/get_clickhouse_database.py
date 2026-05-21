@@ -123,9 +123,9 @@ def get_clickhouse_database(name: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    example_clickhouse_db = aiven.get_clickhouse_database(project=example_project["project"],
-        service_name=example_clickhouse["serviceName"],
-        name="example-database")
+    example = aiven.get_clickhouse_database(project="my-project",
+        service_name="my-clickhouse",
+        name="testdb")
     ```
 
 
@@ -162,9 +162,9 @@ def get_clickhouse_database_output(name: pulumi.Input[Optional[_builtins.str]] =
     import pulumi
     import pulumi_aiven as aiven
 
-    example_clickhouse_db = aiven.get_clickhouse_database(project=example_project["project"],
-        service_name=example_clickhouse["serviceName"],
-        name="example-database")
+    example = aiven.get_clickhouse_database(project="my-project",
+        service_name="my-clickhouse",
+        name="testdb")
     ```
 
 

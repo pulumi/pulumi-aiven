@@ -30,8 +30,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.aiven.BillingGroup;
  * import com.pulumi.aiven.BillingGroupArgs;
- * import com.pulumi.aiven.Project;
- * import com.pulumi.aiven.ProjectArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -39,26 +37,32 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
- *         var exampleBillingGroup = new BillingGroup("exampleBillingGroup", BillingGroupArgs.builder()
- *             .name("example-billing-group")
+ *     public static void stack(Context ctx) }{{@code
+ *         var example = new BillingGroup("example", BillingGroupArgs.builder()
+ *             .parentId("foo")
+ *             .name("my billing group")
+ *             .cardId("9330c086-8781-11e5-89ff-5404a64abfef")
+ *             .vatId("FI27957435")
+ *             .addressLines("Main Street 1")
+ *             .billingContactEmails("jane}{@literal @}{@code example.com")
  *             .billingCurrency("USD")
- *             .vatId("123ABC")
- *             .parentId(main.id())
+ *             .billingEmails("test}{@literal @}{@code example.com")
+ *             .billingExtraText("Purchase order: PO100018")
+ *             .city("Helsinki")
+ *             .company("My Company")
+ *             .copyFromBillingGroup("ffb3f0cd-5532-4eb9-8867-f2cac5823492")
+ *             .countryCode("FI")
+ *             .state("foo")
+ *             .zipCode("01234")
  *             .build());
  * 
- *         var exampleProject = new Project("exampleProject", ProjectArgs.builder()
- *             .project("example-project")
- *             .billingGroup(exampleBillingGroup.id())
- *             .build());
- * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

@@ -11,6 +11,17 @@ import * as utilities from "./utilities";
  *
  * **This resource is in the beta stage and may change without notice.** Set
  * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const example = aiven.getOrganizationPaymentMethodList({
+ *     organizationId: "org1a23f456789",
+ * });
+ * ```
  */
 export function getOrganizationPaymentMethodList(args: GetOrganizationPaymentMethodListArgs, opts?: pulumi.InvokeOptions): Promise<GetOrganizationPaymentMethodListResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -59,6 +70,17 @@ export interface GetOrganizationPaymentMethodListResult {
  *
  * **This resource is in the beta stage and may change without notice.** Set
  * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const example = aiven.getOrganizationPaymentMethodList({
+ *     organizationId: "org1a23f456789",
+ * });
+ * ```
  */
 export function getOrganizationPaymentMethodListOutput(args: GetOrganizationPaymentMethodListOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOrganizationPaymentMethodListResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -67,6 +67,12 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? OffsetFlushTimeoutMs { get; set; }
 
         /// <summary>
+        /// When enabled, connectors will automatically resolve IPv6 addresses from external server names configured with dual-stack. Default: `False`.
+        /// </summary>
+        [Input("preferIpv6AddressEnable")]
+        public Input<bool>? PreferIpv6AddressEnable { get; set; }
+
+        /// <summary>
         /// This setting gives the upper bound of the batch size to be sent. If there are fewer than this many bytes accumulated for this partition, the producer will `Linger` for the linger.ms time waiting for more records to show up. A batch size of zero will disable batching entirely (defaults to 16384).
         /// </summary>
         [Input("producerBatchSize")]

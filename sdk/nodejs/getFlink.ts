@@ -56,6 +56,10 @@ export interface GetFlinkResult {
      */
     readonly cloudName: string;
     /**
+     * UUID of the Customer Managed Key (CMK) used to apply [bring your own key (BYOK) encryption](https://aiven.io/docs/platform/howto/bring-your-own-key) to this service's data at rest. You can register a CMK for an Aiven project using the `aiven.Cmk` resource. Removing this attribute doesn't remove the CMK association. To remove it from this service, set this attribute to the all-zero UUID `00000000-0000-0000-0000-000000000000`.
+     */
+    readonly cmkId: string;
+    /**
      * Service component information objects
      */
     readonly components: outputs.GetFlinkComponent[];

@@ -15,6 +15,32 @@ import (
 //
 // **This resource is in the beta stage and may change without notice.** Set
 // the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := aiven.GetOrganizationBillingGroupList(ctx, &aiven.GetOrganizationBillingGroupListArgs{
+//				OrganizationId: "org1a23f456789",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetOrganizationBillingGroupList(ctx *pulumi.Context, args *GetOrganizationBillingGroupListArgs, opts ...pulumi.InvokeOption) (*GetOrganizationBillingGroupListResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetOrganizationBillingGroupListResult

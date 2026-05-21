@@ -39,11 +39,21 @@ namespace Pulumi.Aiven.Inputs
         [Input("timeout")]
         public Input<double>? Timeout { get; set; }
 
+        [Input("url", required: true)]
+        private Input<string>? _url;
+
         /// <summary>
         /// Elasticsearch connection URL. Example: `https://user:passwd@logs.example.com/`.
         /// </summary>
-        [Input("url", required: true)]
-        public Input<string> Url { get; set; } = null!;
+        public Input<string>? Url
+        {
+            get => _url;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _url = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigGetArgs()
         {

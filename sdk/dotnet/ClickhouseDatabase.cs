@@ -24,21 +24,11 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleClickhouse = new Aiven.Clickhouse("example_clickhouse", new()
+    ///     var example = new Aiven.ClickhouseDatabase("example", new()
     ///     {
-    ///         Project = exampleProject.Project,
-    ///         CloudName = "google-europe-west1",
-    ///         Plan = "business-4",
-    ///         ServiceName = "example-clickhouse-service",
-    ///         MaintenanceWindowDow = "monday",
-    ///         MaintenanceWindowTime = "10:00:00",
-    ///     });
-    /// 
-    ///     var exampleDb = new Aiven.ClickhouseDatabase("example_db", new()
-    ///     {
-    ///         Project = exampleProject.Project,
-    ///         ServiceName = exampleClickhouse.ServiceName,
-    ///         Name = "example-database",
+    ///         Project = "my-project",
+    ///         ServiceName = "my-clickhouse",
+    ///         Name = "testdb",
     ///     });
     /// 
     /// });

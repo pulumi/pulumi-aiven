@@ -22,10 +22,10 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var tfUser = new Aiven.OrganizationApplicationUser("tf_user", new()
+    ///     var example = new Aiven.OrganizationApplicationUser("example", new()
     ///     {
-    ///         OrganizationId = main.Id,
-    ///         Name = "app-terraform",
+    ///         OrganizationId = "org1a23f456789",
+    ///         Name = "devops app user",
     ///     });
     /// 
     /// });

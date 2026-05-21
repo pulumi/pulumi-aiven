@@ -24,10 +24,10 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var os_sec_config = Aiven.GetOpensearchSecurityPluginConfig.Invoke(new()
+        ///     var example = Aiven.GetOpensearchSecurityPluginConfig.Invoke(new()
         ///     {
-        ///         Project = exampleProject.Project,
-        ///         ServiceName = exampleOpensearch.ServiceName,
+        ///         Project = "my-project",
+        ///         ServiceName = "my-opensearch",
         ///     });
         /// 
         /// });
@@ -49,10 +49,10 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var os_sec_config = Aiven.GetOpensearchSecurityPluginConfig.Invoke(new()
+        ///     var example = Aiven.GetOpensearchSecurityPluginConfig.Invoke(new()
         ///     {
-        ///         Project = exampleProject.Project,
-        ///         ServiceName = exampleOpensearch.ServiceName,
+        ///         Project = "my-project",
+        ///         ServiceName = "my-opensearch",
         ///     });
         /// 
         /// });
@@ -74,10 +74,10 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var os_sec_config = Aiven.GetOpensearchSecurityPluginConfig.Invoke(new()
+        ///     var example = Aiven.GetOpensearchSecurityPluginConfig.Invoke(new()
         ///     {
-        ///         Project = exampleProject.Project,
-        ///         ServiceName = exampleOpensearch.ServiceName,
+        ///         Project = "my-project",
+        ///         ServiceName = "my-opensearch",
         ///     });
         /// 
         /// });

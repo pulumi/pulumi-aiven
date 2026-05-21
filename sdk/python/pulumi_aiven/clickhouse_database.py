@@ -217,17 +217,10 @@ class ClickhouseDatabase(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        example_clickhouse = aiven.Clickhouse("example_clickhouse",
-            project=example_project["project"],
-            cloud_name="google-europe-west1",
-            plan="business-4",
-            service_name="example-clickhouse-service",
-            maintenance_window_dow="monday",
-            maintenance_window_time="10:00:00")
-        example_db = aiven.ClickhouseDatabase("example_db",
-            project=example_project["project"],
-            service_name=example_clickhouse.service_name,
-            name="example-database")
+        example = aiven.ClickhouseDatabase("example",
+            project="my-project",
+            service_name="my-clickhouse",
+            name="testdb")
         ```
 
         ## Import
@@ -261,17 +254,10 @@ class ClickhouseDatabase(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        example_clickhouse = aiven.Clickhouse("example_clickhouse",
-            project=example_project["project"],
-            cloud_name="google-europe-west1",
-            plan="business-4",
-            service_name="example-clickhouse-service",
-            maintenance_window_dow="monday",
-            maintenance_window_time="10:00:00")
-        example_db = aiven.ClickhouseDatabase("example_db",
-            project=example_project["project"],
-            service_name=example_clickhouse.service_name,
-            name="example-database")
+        example = aiven.ClickhouseDatabase("example",
+            project="my-project",
+            service_name="my-clickhouse",
+            name="testdb")
         ```
 
         ## Import

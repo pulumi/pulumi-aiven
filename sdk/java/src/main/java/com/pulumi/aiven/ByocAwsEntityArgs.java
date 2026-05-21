@@ -37,14 +37,14 @@ public final class ByocAwsEntityArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Cloud provider for the BYOC cloud. The possible values are `aws`, `azure`, `google` and `oracle`.
+     * Cloud provider for the BYOC cloud. The possible values are `aws`, `azure`, `google` and `oracle`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="cloudProvider", required=true)
     private Output<String> cloudProvider;
 
     /**
-     * @return Cloud provider for the BYOC cloud. The possible values are `aws`, `azure`, `google` and `oracle`.
+     * @return Cloud provider for the BYOC cloud. The possible values are `aws`, `azure`, `google` and `oracle`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> cloudProvider() {
@@ -52,14 +52,14 @@ public final class ByocAwsEntityArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Cloud region for the BYOC cloud. Maximum length: `32`.
+     * Cloud region for the BYOC cloud. Maximum length: `32`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="cloudRegion", required=true)
     private Output<String> cloudRegion;
 
     /**
-     * @return Cloud region for the BYOC cloud. Maximum length: `32`.
+     * @return Cloud region for the BYOC cloud. Maximum length: `32`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> cloudRegion() {
@@ -82,14 +82,14 @@ public final class ByocAwsEntityArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Deployment model for the BYOC cloud. The possible values are `directIpsecIngress`, `ipsecIngress`, `standard` and `standardPublic`.
+     * Deployment model for the BYOC cloud. The possible values are `directIpsecIngress`, `hipaa`, `ipsecIngress`, `pciDss`, `standard` and `standardPublic`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="deploymentModel", required=true)
     private Output<String> deploymentModel;
 
     /**
-     * @return Deployment model for the BYOC cloud. The possible values are `directIpsecIngress`, `ipsecIngress`, `standard` and `standardPublic`.
+     * @return Deployment model for the BYOC cloud. The possible values are `directIpsecIngress`, `hipaa`, `ipsecIngress`, `pciDss`, `standard` and `standardPublic`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> deploymentModel() {
@@ -142,14 +142,14 @@ public final class ByocAwsEntityArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * CIDR range reserved for Aiven provisioned networks in the BYOC cloud. Maximum length: `18`.
+     * CIDR range reserved for Aiven provisioned networks in the BYOC cloud. Maximum length: `18`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="reservedCidr", required=true)
     private Output<String> reservedCidr;
 
     /**
-     * @return CIDR range reserved for Aiven provisioned networks in the BYOC cloud. Maximum length: `18`.
+     * @return CIDR range reserved for Aiven provisioned networks in the BYOC cloud. Maximum length: `18`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> reservedCidr() {
@@ -234,7 +234,7 @@ public final class ByocAwsEntityArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cloudProvider Cloud provider for the BYOC cloud. The possible values are `aws`, `azure`, `google` and `oracle`.
+         * @param cloudProvider Cloud provider for the BYOC cloud. The possible values are `aws`, `azure`, `google` and `oracle`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -245,7 +245,7 @@ public final class ByocAwsEntityArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cloudProvider Cloud provider for the BYOC cloud. The possible values are `aws`, `azure`, `google` and `oracle`.
+         * @param cloudProvider Cloud provider for the BYOC cloud. The possible values are `aws`, `azure`, `google` and `oracle`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -255,7 +255,7 @@ public final class ByocAwsEntityArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cloudRegion Cloud region for the BYOC cloud. Maximum length: `32`.
+         * @param cloudRegion Cloud region for the BYOC cloud. Maximum length: `32`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -266,7 +266,7 @@ public final class ByocAwsEntityArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cloudRegion Cloud region for the BYOC cloud. Maximum length: `32`.
+         * @param cloudRegion Cloud region for the BYOC cloud. Maximum length: `32`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -307,7 +307,7 @@ public final class ByocAwsEntityArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deploymentModel Deployment model for the BYOC cloud. The possible values are `directIpsecIngress`, `ipsecIngress`, `standard` and `standardPublic`.
+         * @param deploymentModel Deployment model for the BYOC cloud. The possible values are `directIpsecIngress`, `hipaa`, `ipsecIngress`, `pciDss`, `standard` and `standardPublic`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -318,7 +318,7 @@ public final class ByocAwsEntityArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deploymentModel Deployment model for the BYOC cloud. The possible values are `directIpsecIngress`, `ipsecIngress`, `standard` and `standardPublic`.
+         * @param deploymentModel Deployment model for the BYOC cloud. The possible values are `directIpsecIngress`, `hipaa`, `ipsecIngress`, `pciDss`, `standard` and `standardPublic`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -401,7 +401,7 @@ public final class ByocAwsEntityArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param reservedCidr CIDR range reserved for Aiven provisioned networks in the BYOC cloud. Maximum length: `18`.
+         * @param reservedCidr CIDR range reserved for Aiven provisioned networks in the BYOC cloud. Maximum length: `18`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -412,7 +412,7 @@ public final class ByocAwsEntityArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param reservedCidr CIDR range reserved for Aiven provisioned networks in the BYOC cloud. Maximum length: `18`.
+         * @param reservedCidr CIDR range reserved for Aiven provisioned networks in the BYOC cloud. Maximum length: `18`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 

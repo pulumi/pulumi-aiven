@@ -24,11 +24,11 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleApp = Aiven.GetFlinkApplication.Invoke(new()
+        ///     var example = Aiven.GetFlinkApplication.Invoke(new()
         ///     {
-        ///         Project = exampleProject.Project,
-        ///         ServiceName = "example-flink-service",
-        ///         Name = "example-app",
+        ///         Project = "my-project",
+        ///         ServiceName = "my-application",
+        ///         ApplicationId = "1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
         ///     });
         /// 
         /// });
@@ -50,11 +50,11 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleApp = Aiven.GetFlinkApplication.Invoke(new()
+        ///     var example = Aiven.GetFlinkApplication.Invoke(new()
         ///     {
-        ///         Project = exampleProject.Project,
-        ///         ServiceName = "example-flink-service",
-        ///         Name = "example-app",
+        ///         Project = "my-project",
+        ///         ServiceName = "my-application",
+        ///         ApplicationId = "1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
         ///     });
         /// 
         /// });
@@ -76,11 +76,11 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleApp = Aiven.GetFlinkApplication.Invoke(new()
+        ///     var example = Aiven.GetFlinkApplication.Invoke(new()
         ///     {
-        ///         Project = exampleProject.Project,
-        ///         ServiceName = "example-flink-service",
-        ///         Name = "example-app",
+        ///         Project = "my-project",
+        ///         ServiceName = "my-application",
+        ///         ApplicationId = "1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
         ///     });
         /// 
         /// });

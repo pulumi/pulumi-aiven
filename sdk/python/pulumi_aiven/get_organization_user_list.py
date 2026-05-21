@@ -98,7 +98,7 @@ def get_organization_user_list(id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    users = aiven.get_organization_user_list(name="Example organization")
+    example = aiven.get_organization_user_list(id="org1a23f456789")
     ```
 
 
@@ -133,7 +133,7 @@ def get_organization_user_list_output(id: pulumi.Input[Optional[Optional[_builti
     import pulumi
     import pulumi_aiven as aiven
 
-    users = aiven.get_organization_user_list(name="Example organization")
+    example = aiven.get_organization_user_list(id="org1a23f456789")
     ```
 
 

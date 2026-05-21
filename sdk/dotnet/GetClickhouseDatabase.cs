@@ -24,11 +24,11 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleClickhouseDb = Aiven.GetClickhouseDatabase.Invoke(new()
+        ///     var example = Aiven.GetClickhouseDatabase.Invoke(new()
         ///     {
-        ///         Project = exampleProject.Project,
-        ///         ServiceName = exampleClickhouse.ServiceName,
-        ///         Name = "example-database",
+        ///         Project = "my-project",
+        ///         ServiceName = "my-clickhouse",
+        ///         Name = "testdb",
         ///     });
         /// 
         /// });
@@ -50,11 +50,11 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleClickhouseDb = Aiven.GetClickhouseDatabase.Invoke(new()
+        ///     var example = Aiven.GetClickhouseDatabase.Invoke(new()
         ///     {
-        ///         Project = exampleProject.Project,
-        ///         ServiceName = exampleClickhouse.ServiceName,
-        ///         Name = "example-database",
+        ///         Project = "my-project",
+        ///         ServiceName = "my-clickhouse",
+        ///         Name = "testdb",
         ///     });
         /// 
         /// });
@@ -76,11 +76,11 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleClickhouseDb = Aiven.GetClickhouseDatabase.Invoke(new()
+        ///     var example = Aiven.GetClickhouseDatabase.Invoke(new()
         ///     {
-        ///         Project = exampleProject.Project,
-        ///         ServiceName = exampleClickhouse.ServiceName,
-        ///         Name = "example-database",
+        ///         Project = "my-project",
+        ///         ServiceName = "my-clickhouse",
+        ///         Name = "testdb",
         ///     });
         /// 
         /// });

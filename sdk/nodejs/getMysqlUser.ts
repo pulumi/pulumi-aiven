@@ -15,10 +15,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const exampleMysqlUser = aiven.getMysqlUser({
- *     serviceName: exampleMysql.serviceName,
- *     project: exampleProject.project,
- *     username: "example-mysql-user",
+ * const example = aiven.getMysqlUser({
+ *     project: "my-project",
+ *     serviceName: "my-mysql",
+ *     username: "testuser",
  * });
  * ```
  */
@@ -102,10 +102,10 @@ export interface GetMysqlUserResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const exampleMysqlUser = aiven.getMysqlUser({
- *     serviceName: exampleMysql.serviceName,
- *     project: exampleProject.project,
- *     username: "example-mysql-user",
+ * const example = aiven.getMysqlUser({
+ *     project: "my-project",
+ *     serviceName: "my-mysql",
+ *     username: "testuser",
  * });
  * ```
  */

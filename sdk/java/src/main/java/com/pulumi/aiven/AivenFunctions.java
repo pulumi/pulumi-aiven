@@ -28,12 +28,6 @@ import com.pulumi.aiven.inputs.GetAzureVpcPeeringConnectionArgs;
 import com.pulumi.aiven.inputs.GetAzureVpcPeeringConnectionPlainArgs;
 import com.pulumi.aiven.inputs.GetBillingGroupArgs;
 import com.pulumi.aiven.inputs.GetBillingGroupPlainArgs;
-import com.pulumi.aiven.inputs.GetCassandaArgs;
-import com.pulumi.aiven.inputs.GetCassandaPlainArgs;
-import com.pulumi.aiven.inputs.GetCassandraArgs;
-import com.pulumi.aiven.inputs.GetCassandraPlainArgs;
-import com.pulumi.aiven.inputs.GetCassandraUserArgs;
-import com.pulumi.aiven.inputs.GetCassandraUserPlainArgs;
 import com.pulumi.aiven.inputs.GetClickhouseArgs;
 import com.pulumi.aiven.inputs.GetClickhouseDatabaseArgs;
 import com.pulumi.aiven.inputs.GetClickhouseDatabasePlainArgs;
@@ -140,10 +134,6 @@ import com.pulumi.aiven.inputs.GetProjectUserArgs;
 import com.pulumi.aiven.inputs.GetProjectUserPlainArgs;
 import com.pulumi.aiven.inputs.GetProjectVpcArgs;
 import com.pulumi.aiven.inputs.GetProjectVpcPlainArgs;
-import com.pulumi.aiven.inputs.GetRedisArgs;
-import com.pulumi.aiven.inputs.GetRedisPlainArgs;
-import com.pulumi.aiven.inputs.GetRedisUserArgs;
-import com.pulumi.aiven.inputs.GetRedisUserPlainArgs;
 import com.pulumi.aiven.inputs.GetServiceComponentArgs;
 import com.pulumi.aiven.inputs.GetServiceComponentPlainArgs;
 import com.pulumi.aiven.inputs.GetServiceIntegrationArgs;
@@ -176,9 +166,6 @@ import com.pulumi.aiven.outputs.GetAzureOrgVpcPeeringConnectionResult;
 import com.pulumi.aiven.outputs.GetAzurePrivatelinkResult;
 import com.pulumi.aiven.outputs.GetAzureVpcPeeringConnectionResult;
 import com.pulumi.aiven.outputs.GetBillingGroupResult;
-import com.pulumi.aiven.outputs.GetCassandaResult;
-import com.pulumi.aiven.outputs.GetCassandraResult;
-import com.pulumi.aiven.outputs.GetCassandraUserResult;
 import com.pulumi.aiven.outputs.GetClickhouseDatabaseResult;
 import com.pulumi.aiven.outputs.GetClickhouseResult;
 import com.pulumi.aiven.outputs.GetClickhouseUserResult;
@@ -232,8 +219,6 @@ import com.pulumi.aiven.outputs.GetPgUserResult;
 import com.pulumi.aiven.outputs.GetProjectResult;
 import com.pulumi.aiven.outputs.GetProjectUserResult;
 import com.pulumi.aiven.outputs.GetProjectVpcResult;
-import com.pulumi.aiven.outputs.GetRedisResult;
-import com.pulumi.aiven.outputs.GetRedisUserResult;
 import com.pulumi.aiven.outputs.GetServiceComponentResult;
 import com.pulumi.aiven.outputs.GetServiceIntegrationEndpointResult;
 import com.pulumi.aiven.outputs.GetServiceIntegrationResult;
@@ -1759,7 +1744,7 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleBillingGroup = AivenFunctions.getBillingGroup(GetBillingGroupArgs.builder()
+     *         final var example = AivenFunctions.getBillingGroup(GetBillingGroupArgs.builder()
      *             .billingGroupId("1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d")
      *             .build());
      * 
@@ -1799,7 +1784,7 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleBillingGroup = AivenFunctions.getBillingGroup(GetBillingGroupArgs.builder()
+     *         final var example = AivenFunctions.getBillingGroup(GetBillingGroupArgs.builder()
      *             .billingGroupId("1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d")
      *             .build());
      * 
@@ -1839,7 +1824,7 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleBillingGroup = AivenFunctions.getBillingGroup(GetBillingGroupArgs.builder()
+     *         final var example = AivenFunctions.getBillingGroup(GetBillingGroupArgs.builder()
      *             .billingGroupId("1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d")
      *             .build());
      * 
@@ -1879,7 +1864,7 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleBillingGroup = AivenFunctions.getBillingGroup(GetBillingGroupArgs.builder()
+     *         final var example = AivenFunctions.getBillingGroup(GetBillingGroupArgs.builder()
      *             .billingGroupId("1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d")
      *             .build());
      * 
@@ -1919,7 +1904,7 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleBillingGroup = AivenFunctions.getBillingGroup(GetBillingGroupArgs.builder()
+     *         final var example = AivenFunctions.getBillingGroup(GetBillingGroupArgs.builder()
      *             .billingGroupId("1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d")
      *             .build());
      * 
@@ -1931,86 +1916,6 @@ public final class AivenFunctions {
      */
     public static CompletableFuture<GetBillingGroupResult> getBillingGroupPlain(GetBillingGroupPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getBillingGroup:getBillingGroup", TypeShape.of(GetBillingGroupResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * 
-     * @deprecated
-     * aiven.getCassanda has been deprecated in favor of aiven.getCassandra
-     * 
-     */
-    @Deprecated /* aiven.getCassanda has been deprecated in favor of aiven.getCassandra */
-    public static Output<GetCassandaResult> getCassanda(GetCassandaArgs args) {
-        return getCassanda(args, InvokeOptions.Empty);
-    }
-    /**
-     * 
-     * @deprecated
-     * aiven.getCassanda has been deprecated in favor of aiven.getCassandra
-     * 
-     */
-    @Deprecated /* aiven.getCassanda has been deprecated in favor of aiven.getCassandra */
-    public static CompletableFuture<GetCassandaResult> getCassandaPlain(GetCassandaPlainArgs args) {
-        return getCassandaPlain(args, InvokeOptions.Empty);
-    }
-    /**
-     * 
-     * @deprecated
-     * aiven.getCassanda has been deprecated in favor of aiven.getCassandra
-     * 
-     */
-    @Deprecated /* aiven.getCassanda has been deprecated in favor of aiven.getCassandra */
-    public static Output<GetCassandaResult> getCassanda(GetCassandaArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("aiven:index/getCassanda:getCassanda", TypeShape.of(GetCassandaResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * 
-     * @deprecated
-     * aiven.getCassanda has been deprecated in favor of aiven.getCassandra
-     * 
-     */
-    @Deprecated /* aiven.getCassanda has been deprecated in favor of aiven.getCassandra */
-    public static Output<GetCassandaResult> getCassanda(GetCassandaArgs args, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("aiven:index/getCassanda:getCassanda", TypeShape.of(GetCassandaResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * 
-     * @deprecated
-     * aiven.getCassanda has been deprecated in favor of aiven.getCassandra
-     * 
-     */
-    @Deprecated /* aiven.getCassanda has been deprecated in favor of aiven.getCassandra */
-    public static CompletableFuture<GetCassandaResult> getCassandaPlain(GetCassandaPlainArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invokeAsync("aiven:index/getCassanda:getCassanda", TypeShape.of(GetCassandaResult.class), args, Utilities.withVersion(options));
-    }
-    public static Output<GetCassandraResult> getCassandra(GetCassandraArgs args) {
-        return getCassandra(args, InvokeOptions.Empty);
-    }
-    public static CompletableFuture<GetCassandraResult> getCassandraPlain(GetCassandraPlainArgs args) {
-        return getCassandraPlain(args, InvokeOptions.Empty);
-    }
-    public static Output<GetCassandraResult> getCassandra(GetCassandraArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("aiven:index/getCassandra:getCassandra", TypeShape.of(GetCassandraResult.class), args, Utilities.withVersion(options));
-    }
-    public static Output<GetCassandraResult> getCassandra(GetCassandraArgs args, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("aiven:index/getCassandra:getCassandra", TypeShape.of(GetCassandraResult.class), args, Utilities.withVersion(options));
-    }
-    public static CompletableFuture<GetCassandraResult> getCassandraPlain(GetCassandraPlainArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invokeAsync("aiven:index/getCassandra:getCassandra", TypeShape.of(GetCassandraResult.class), args, Utilities.withVersion(options));
-    }
-    public static Output<GetCassandraUserResult> getCassandraUser(GetCassandraUserArgs args) {
-        return getCassandraUser(args, InvokeOptions.Empty);
-    }
-    public static CompletableFuture<GetCassandraUserResult> getCassandraUserPlain(GetCassandraUserPlainArgs args) {
-        return getCassandraUserPlain(args, InvokeOptions.Empty);
-    }
-    public static Output<GetCassandraUserResult> getCassandraUser(GetCassandraUserArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("aiven:index/getCassandraUser:getCassandraUser", TypeShape.of(GetCassandraUserResult.class), args, Utilities.withVersion(options));
-    }
-    public static Output<GetCassandraUserResult> getCassandraUser(GetCassandraUserArgs args, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("aiven:index/getCassandraUser:getCassandraUser", TypeShape.of(GetCassandraUserResult.class), args, Utilities.withVersion(options));
-    }
-    public static CompletableFuture<GetCassandraUserResult> getCassandraUserPlain(GetCassandraUserPlainArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invokeAsync("aiven:index/getCassandraUser:getCassandraUser", TypeShape.of(GetCassandraUserResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Gets information about a ClickHouse service.
@@ -2244,10 +2149,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleClickhouseDb = AivenFunctions.getClickhouseDatabase(GetClickhouseDatabaseArgs.builder()
-     *             .project(exampleProject.project())
-     *             .serviceName(exampleClickhouse.serviceName())
-     *             .name("example-database")
+     *         final var example = AivenFunctions.getClickhouseDatabase(GetClickhouseDatabaseArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("my-clickhouse")
+     *             .name("testdb")
      *             .build());
      * 
      *     }
@@ -2286,10 +2191,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleClickhouseDb = AivenFunctions.getClickhouseDatabase(GetClickhouseDatabaseArgs.builder()
-     *             .project(exampleProject.project())
-     *             .serviceName(exampleClickhouse.serviceName())
-     *             .name("example-database")
+     *         final var example = AivenFunctions.getClickhouseDatabase(GetClickhouseDatabaseArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("my-clickhouse")
+     *             .name("testdb")
      *             .build());
      * 
      *     }
@@ -2328,10 +2233,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleClickhouseDb = AivenFunctions.getClickhouseDatabase(GetClickhouseDatabaseArgs.builder()
-     *             .project(exampleProject.project())
-     *             .serviceName(exampleClickhouse.serviceName())
-     *             .name("example-database")
+     *         final var example = AivenFunctions.getClickhouseDatabase(GetClickhouseDatabaseArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("my-clickhouse")
+     *             .name("testdb")
      *             .build());
      * 
      *     }
@@ -2370,10 +2275,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleClickhouseDb = AivenFunctions.getClickhouseDatabase(GetClickhouseDatabaseArgs.builder()
-     *             .project(exampleProject.project())
-     *             .serviceName(exampleClickhouse.serviceName())
-     *             .name("example-database")
+     *         final var example = AivenFunctions.getClickhouseDatabase(GetClickhouseDatabaseArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("my-clickhouse")
+     *             .name("testdb")
      *             .build());
      * 
      *     }
@@ -2412,10 +2317,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleClickhouseDb = AivenFunctions.getClickhouseDatabase(GetClickhouseDatabaseArgs.builder()
-     *             .project(exampleProject.project())
-     *             .serviceName(exampleClickhouse.serviceName())
-     *             .name("example-database")
+     *         final var example = AivenFunctions.getClickhouseDatabase(GetClickhouseDatabaseArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("my-clickhouse")
+     *             .name("testdb")
      *             .build());
      * 
      *     }
@@ -2454,10 +2359,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleUser = AivenFunctions.getClickhouseUser(GetClickhouseUserArgs.builder()
-     *             .project(exampleProject.project())
-     *             .serviceName(exampleClickhouse.serviceName())
-     *             .username("analyst")
+     *         final var example = AivenFunctions.getClickhouseUser(GetClickhouseUserArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("my-clickhouse")
+     *             .uuid("1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d")
      *             .build());
      * 
      *     }
@@ -2496,10 +2401,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleUser = AivenFunctions.getClickhouseUser(GetClickhouseUserArgs.builder()
-     *             .project(exampleProject.project())
-     *             .serviceName(exampleClickhouse.serviceName())
-     *             .username("analyst")
+     *         final var example = AivenFunctions.getClickhouseUser(GetClickhouseUserArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("my-clickhouse")
+     *             .uuid("1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d")
      *             .build());
      * 
      *     }
@@ -2538,10 +2443,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleUser = AivenFunctions.getClickhouseUser(GetClickhouseUserArgs.builder()
-     *             .project(exampleProject.project())
-     *             .serviceName(exampleClickhouse.serviceName())
-     *             .username("analyst")
+     *         final var example = AivenFunctions.getClickhouseUser(GetClickhouseUserArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("my-clickhouse")
+     *             .uuid("1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d")
      *             .build());
      * 
      *     }
@@ -2580,10 +2485,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleUser = AivenFunctions.getClickhouseUser(GetClickhouseUserArgs.builder()
-     *             .project(exampleProject.project())
-     *             .serviceName(exampleClickhouse.serviceName())
-     *             .username("analyst")
+     *         final var example = AivenFunctions.getClickhouseUser(GetClickhouseUserArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("my-clickhouse")
+     *             .uuid("1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d")
      *             .build());
      * 
      *     }
@@ -2622,10 +2527,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleUser = AivenFunctions.getClickhouseUser(GetClickhouseUserArgs.builder()
-     *             .project(exampleProject.project())
-     *             .serviceName(exampleClickhouse.serviceName())
-     *             .username("analyst")
+     *         final var example = AivenFunctions.getClickhouseUser(GetClickhouseUserArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("my-clickhouse")
+     *             .uuid("1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d")
      *             .build());
      * 
      *     }
@@ -2664,10 +2569,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var main = AivenFunctions.getConnectionPool(GetConnectionPoolArgs.builder()
-     *             .project(exampleProject.project())
-     *             .serviceName(examplePostgres.serviceName())
-     *             .poolName("example-pool")
+     *         final var example = AivenFunctions.getConnectionPool(GetConnectionPoolArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("foo")
+     *             .poolName("mypool-x-y-z")
      *             .build());
      * 
      *     }
@@ -2706,10 +2611,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var main = AivenFunctions.getConnectionPool(GetConnectionPoolArgs.builder()
-     *             .project(exampleProject.project())
-     *             .serviceName(examplePostgres.serviceName())
-     *             .poolName("example-pool")
+     *         final var example = AivenFunctions.getConnectionPool(GetConnectionPoolArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("foo")
+     *             .poolName("mypool-x-y-z")
      *             .build());
      * 
      *     }
@@ -2748,10 +2653,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var main = AivenFunctions.getConnectionPool(GetConnectionPoolArgs.builder()
-     *             .project(exampleProject.project())
-     *             .serviceName(examplePostgres.serviceName())
-     *             .poolName("example-pool")
+     *         final var example = AivenFunctions.getConnectionPool(GetConnectionPoolArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("foo")
+     *             .poolName("mypool-x-y-z")
      *             .build());
      * 
      *     }
@@ -2790,10 +2695,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var main = AivenFunctions.getConnectionPool(GetConnectionPoolArgs.builder()
-     *             .project(exampleProject.project())
-     *             .serviceName(examplePostgres.serviceName())
-     *             .poolName("example-pool")
+     *         final var example = AivenFunctions.getConnectionPool(GetConnectionPoolArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("foo")
+     *             .poolName("mypool-x-y-z")
      *             .build());
      * 
      *     }
@@ -2832,10 +2737,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var main = AivenFunctions.getConnectionPool(GetConnectionPoolArgs.builder()
-     *             .project(exampleProject.project())
-     *             .serviceName(examplePostgres.serviceName())
-     *             .poolName("example-pool")
+     *         final var example = AivenFunctions.getConnectionPool(GetConnectionPoolArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("foo")
+     *             .poolName("mypool-x-y-z")
      *             .build());
      * 
      *     }
@@ -3334,10 +3239,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleApp = AivenFunctions.getFlinkApplication(GetFlinkApplicationArgs.builder()
-     *             .project(exampleProject.project())
-     *             .serviceName("example-flink-service")
-     *             .name("example-app")
+     *         final var example = AivenFunctions.getFlinkApplication(GetFlinkApplicationArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("my-application")
+     *             .applicationId("1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d")
      *             .build());
      * 
      *     }
@@ -3376,10 +3281,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleApp = AivenFunctions.getFlinkApplication(GetFlinkApplicationArgs.builder()
-     *             .project(exampleProject.project())
-     *             .serviceName("example-flink-service")
-     *             .name("example-app")
+     *         final var example = AivenFunctions.getFlinkApplication(GetFlinkApplicationArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("my-application")
+     *             .applicationId("1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d")
      *             .build());
      * 
      *     }
@@ -3418,10 +3323,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleApp = AivenFunctions.getFlinkApplication(GetFlinkApplicationArgs.builder()
-     *             .project(exampleProject.project())
-     *             .serviceName("example-flink-service")
-     *             .name("example-app")
+     *         final var example = AivenFunctions.getFlinkApplication(GetFlinkApplicationArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("my-application")
+     *             .applicationId("1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d")
      *             .build());
      * 
      *     }
@@ -3460,10 +3365,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleApp = AivenFunctions.getFlinkApplication(GetFlinkApplicationArgs.builder()
-     *             .project(exampleProject.project())
-     *             .serviceName("example-flink-service")
-     *             .name("example-app")
+     *         final var example = AivenFunctions.getFlinkApplication(GetFlinkApplicationArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("my-application")
+     *             .applicationId("1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d")
      *             .build());
      * 
      *     }
@@ -3502,10 +3407,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleApp = AivenFunctions.getFlinkApplication(GetFlinkApplicationArgs.builder()
-     *             .project(exampleProject.project())
-     *             .serviceName("example-flink-service")
-     *             .name("example-app")
+     *         final var example = AivenFunctions.getFlinkApplication(GetFlinkApplicationArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("my-application")
+     *             .applicationId("1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d")
      *             .build());
      * 
      *     }
@@ -5863,35 +5768,210 @@ public final class AivenFunctions {
         return Deployment.getInstance().invokeAsync("aiven:index/getKafkaSchemaConfiguration:getKafkaSchemaConfiguration", TypeShape.of(GetKafkaSchemaConfigurationResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The Data Source Kafka Schema Registry ACL data source provides information about the existing Aiven Kafka Schema Registry ACL for a Kafka service.
+     * Gets information about an Aiven for Apache Kafka® Schema Registry ACL entry.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetKafkaSchemaRegistryAclArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getKafkaSchemaRegistryAcl(GetKafkaSchemaRegistryAclArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("my-kafka")
+     *             .aclId("foo")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetKafkaSchemaRegistryAclResult> getKafkaSchemaRegistryAcl(GetKafkaSchemaRegistryAclArgs args) {
         return getKafkaSchemaRegistryAcl(args, InvokeOptions.Empty);
     }
     /**
-     * The Data Source Kafka Schema Registry ACL data source provides information about the existing Aiven Kafka Schema Registry ACL for a Kafka service.
+     * Gets information about an Aiven for Apache Kafka® Schema Registry ACL entry.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetKafkaSchemaRegistryAclArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getKafkaSchemaRegistryAcl(GetKafkaSchemaRegistryAclArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("my-kafka")
+     *             .aclId("foo")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetKafkaSchemaRegistryAclResult> getKafkaSchemaRegistryAclPlain(GetKafkaSchemaRegistryAclPlainArgs args) {
         return getKafkaSchemaRegistryAclPlain(args, InvokeOptions.Empty);
     }
     /**
-     * The Data Source Kafka Schema Registry ACL data source provides information about the existing Aiven Kafka Schema Registry ACL for a Kafka service.
+     * Gets information about an Aiven for Apache Kafka® Schema Registry ACL entry.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetKafkaSchemaRegistryAclArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getKafkaSchemaRegistryAcl(GetKafkaSchemaRegistryAclArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("my-kafka")
+     *             .aclId("foo")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetKafkaSchemaRegistryAclResult> getKafkaSchemaRegistryAcl(GetKafkaSchemaRegistryAclArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getKafkaSchemaRegistryAcl:getKafkaSchemaRegistryAcl", TypeShape.of(GetKafkaSchemaRegistryAclResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The Data Source Kafka Schema Registry ACL data source provides information about the existing Aiven Kafka Schema Registry ACL for a Kafka service.
+     * Gets information about an Aiven for Apache Kafka® Schema Registry ACL entry.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetKafkaSchemaRegistryAclArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getKafkaSchemaRegistryAcl(GetKafkaSchemaRegistryAclArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("my-kafka")
+     *             .aclId("foo")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetKafkaSchemaRegistryAclResult> getKafkaSchemaRegistryAcl(GetKafkaSchemaRegistryAclArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getKafkaSchemaRegistryAcl:getKafkaSchemaRegistryAcl", TypeShape.of(GetKafkaSchemaRegistryAclResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The Data Source Kafka Schema Registry ACL data source provides information about the existing Aiven Kafka Schema Registry ACL for a Kafka service.
+     * Gets information about an Aiven for Apache Kafka® Schema Registry ACL entry.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetKafkaSchemaRegistryAclArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getKafkaSchemaRegistryAcl(GetKafkaSchemaRegistryAclArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("my-kafka")
+     *             .aclId("foo")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetKafkaSchemaRegistryAclResult> getKafkaSchemaRegistryAclPlain(GetKafkaSchemaRegistryAclPlainArgs args, InvokeOptions options) {
@@ -6110,12 +6190,80 @@ public final class AivenFunctions {
     /**
      * Lists Kafka topics for a service.
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetKafkaTopicListArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getKafkaTopicList(GetKafkaTopicListArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("my-kafka")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetKafkaTopicListResult> getKafkaTopicList(GetKafkaTopicListArgs args) {
         return getKafkaTopicList(args, InvokeOptions.Empty);
     }
     /**
      * Lists Kafka topics for a service.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetKafkaTopicListArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getKafkaTopicList(GetKafkaTopicListArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("my-kafka")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetKafkaTopicListResult> getKafkaTopicListPlain(GetKafkaTopicListPlainArgs args) {
@@ -6124,6 +6272,40 @@ public final class AivenFunctions {
     /**
      * Lists Kafka topics for a service.
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetKafkaTopicListArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getKafkaTopicList(GetKafkaTopicListArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("my-kafka")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetKafkaTopicListResult> getKafkaTopicList(GetKafkaTopicListArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getKafkaTopicList:getKafkaTopicList", TypeShape.of(GetKafkaTopicListResult.class), args, Utilities.withVersion(options));
@@ -6131,12 +6313,80 @@ public final class AivenFunctions {
     /**
      * Lists Kafka topics for a service.
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetKafkaTopicListArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getKafkaTopicList(GetKafkaTopicListArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("my-kafka")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetKafkaTopicListResult> getKafkaTopicList(GetKafkaTopicListArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getKafkaTopicList:getKafkaTopicList", TypeShape.of(GetKafkaTopicListResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Lists Kafka topics for a service.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetKafkaTopicListArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getKafkaTopicList(GetKafkaTopicListArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("my-kafka")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetKafkaTopicListResult> getKafkaTopicListPlain(GetKafkaTopicListPlainArgs args, InvokeOptions options) {
@@ -6799,10 +7049,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleDatabase = AivenFunctions.getMysqlDatabase(GetMysqlDatabaseArgs.builder()
-     *             .project(exampleProject.project())
-     *             .serviceName(exampleMysql.serviceName())
-     *             .databaseName("example-database")
+     *         final var example = AivenFunctions.getMysqlDatabase(GetMysqlDatabaseArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("my-mysql")
+     *             .databaseName("testdb")
      *             .build());
      * 
      *     }
@@ -6841,10 +7091,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleDatabase = AivenFunctions.getMysqlDatabase(GetMysqlDatabaseArgs.builder()
-     *             .project(exampleProject.project())
-     *             .serviceName(exampleMysql.serviceName())
-     *             .databaseName("example-database")
+     *         final var example = AivenFunctions.getMysqlDatabase(GetMysqlDatabaseArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("my-mysql")
+     *             .databaseName("testdb")
      *             .build());
      * 
      *     }
@@ -6883,10 +7133,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleDatabase = AivenFunctions.getMysqlDatabase(GetMysqlDatabaseArgs.builder()
-     *             .project(exampleProject.project())
-     *             .serviceName(exampleMysql.serviceName())
-     *             .databaseName("example-database")
+     *         final var example = AivenFunctions.getMysqlDatabase(GetMysqlDatabaseArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("my-mysql")
+     *             .databaseName("testdb")
      *             .build());
      * 
      *     }
@@ -6925,10 +7175,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleDatabase = AivenFunctions.getMysqlDatabase(GetMysqlDatabaseArgs.builder()
-     *             .project(exampleProject.project())
-     *             .serviceName(exampleMysql.serviceName())
-     *             .databaseName("example-database")
+     *         final var example = AivenFunctions.getMysqlDatabase(GetMysqlDatabaseArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("my-mysql")
+     *             .databaseName("testdb")
      *             .build());
      * 
      *     }
@@ -6967,10 +7217,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleDatabase = AivenFunctions.getMysqlDatabase(GetMysqlDatabaseArgs.builder()
-     *             .project(exampleProject.project())
-     *             .serviceName(exampleMysql.serviceName())
-     *             .databaseName("example-database")
+     *         final var example = AivenFunctions.getMysqlDatabase(GetMysqlDatabaseArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("my-mysql")
+     *             .databaseName("testdb")
      *             .build());
      * 
      *     }
@@ -7009,10 +7259,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleMysqlUser = AivenFunctions.getMysqlUser(GetMysqlUserArgs.builder()
-     *             .serviceName(exampleMysql.serviceName())
-     *             .project(exampleProject.project())
-     *             .username("example-mysql-user")
+     *         final var example = AivenFunctions.getMysqlUser(GetMysqlUserArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("my-mysql")
+     *             .username("testuser")
      *             .build());
      * 
      *     }
@@ -7051,10 +7301,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleMysqlUser = AivenFunctions.getMysqlUser(GetMysqlUserArgs.builder()
-     *             .serviceName(exampleMysql.serviceName())
-     *             .project(exampleProject.project())
-     *             .username("example-mysql-user")
+     *         final var example = AivenFunctions.getMysqlUser(GetMysqlUserArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("my-mysql")
+     *             .username("testuser")
      *             .build());
      * 
      *     }
@@ -7093,10 +7343,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleMysqlUser = AivenFunctions.getMysqlUser(GetMysqlUserArgs.builder()
-     *             .serviceName(exampleMysql.serviceName())
-     *             .project(exampleProject.project())
-     *             .username("example-mysql-user")
+     *         final var example = AivenFunctions.getMysqlUser(GetMysqlUserArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("my-mysql")
+     *             .username("testuser")
      *             .build());
      * 
      *     }
@@ -7135,10 +7385,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleMysqlUser = AivenFunctions.getMysqlUser(GetMysqlUserArgs.builder()
-     *             .serviceName(exampleMysql.serviceName())
-     *             .project(exampleProject.project())
-     *             .username("example-mysql-user")
+     *         final var example = AivenFunctions.getMysqlUser(GetMysqlUserArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("my-mysql")
+     *             .username("testuser")
      *             .build());
      * 
      *     }
@@ -7177,10 +7427,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleMysqlUser = AivenFunctions.getMysqlUser(GetMysqlUserArgs.builder()
-     *             .serviceName(exampleMysql.serviceName())
-     *             .project(exampleProject.project())
-     *             .username("example-mysql-user")
+     *         final var example = AivenFunctions.getMysqlUser(GetMysqlUserArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("my-mysql")
+     *             .username("testuser")
      *             .build());
      * 
      *     }
@@ -7844,9 +8094,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var os-sec-config = AivenFunctions.getOpensearchSecurityPluginConfig(GetOpensearchSecurityPluginConfigArgs.builder()
-     *             .project(exampleProject.project())
-     *             .serviceName(exampleOpensearch.serviceName())
+     *         final var example = AivenFunctions.getOpensearchSecurityPluginConfig(GetOpensearchSecurityPluginConfigArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("my-opensearch")
      *             .build());
      * 
      *     }
@@ -7885,9 +8135,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var os-sec-config = AivenFunctions.getOpensearchSecurityPluginConfig(GetOpensearchSecurityPluginConfigArgs.builder()
-     *             .project(exampleProject.project())
-     *             .serviceName(exampleOpensearch.serviceName())
+     *         final var example = AivenFunctions.getOpensearchSecurityPluginConfig(GetOpensearchSecurityPluginConfigArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("my-opensearch")
      *             .build());
      * 
      *     }
@@ -7926,9 +8176,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var os-sec-config = AivenFunctions.getOpensearchSecurityPluginConfig(GetOpensearchSecurityPluginConfigArgs.builder()
-     *             .project(exampleProject.project())
-     *             .serviceName(exampleOpensearch.serviceName())
+     *         final var example = AivenFunctions.getOpensearchSecurityPluginConfig(GetOpensearchSecurityPluginConfigArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("my-opensearch")
      *             .build());
      * 
      *     }
@@ -7967,9 +8217,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var os-sec-config = AivenFunctions.getOpensearchSecurityPluginConfig(GetOpensearchSecurityPluginConfigArgs.builder()
-     *             .project(exampleProject.project())
-     *             .serviceName(exampleOpensearch.serviceName())
+     *         final var example = AivenFunctions.getOpensearchSecurityPluginConfig(GetOpensearchSecurityPluginConfigArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("my-opensearch")
      *             .build());
      * 
      *     }
@@ -8008,9 +8258,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var os-sec-config = AivenFunctions.getOpensearchSecurityPluginConfig(GetOpensearchSecurityPluginConfigArgs.builder()
-     *             .project(exampleProject.project())
-     *             .serviceName(exampleOpensearch.serviceName())
+     *         final var example = AivenFunctions.getOpensearchSecurityPluginConfig(GetOpensearchSecurityPluginConfigArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("my-opensearch")
      *             .build());
      * 
      *     }
@@ -8049,10 +8299,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleOpensearchUser = AivenFunctions.getOpensearchUser(GetOpensearchUserArgs.builder()
-     *             .serviceName("example-opensearch-service")
-     *             .project(exampleProject.project())
-     *             .username("example-opensearch-user")
+     *         final var example = AivenFunctions.getOpensearchUser(GetOpensearchUserArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("my-opensearch")
+     *             .username("testuser")
      *             .build());
      * 
      *     }
@@ -8091,10 +8341,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleOpensearchUser = AivenFunctions.getOpensearchUser(GetOpensearchUserArgs.builder()
-     *             .serviceName("example-opensearch-service")
-     *             .project(exampleProject.project())
-     *             .username("example-opensearch-user")
+     *         final var example = AivenFunctions.getOpensearchUser(GetOpensearchUserArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("my-opensearch")
+     *             .username("testuser")
      *             .build());
      * 
      *     }
@@ -8133,10 +8383,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleOpensearchUser = AivenFunctions.getOpensearchUser(GetOpensearchUserArgs.builder()
-     *             .serviceName("example-opensearch-service")
-     *             .project(exampleProject.project())
-     *             .username("example-opensearch-user")
+     *         final var example = AivenFunctions.getOpensearchUser(GetOpensearchUserArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("my-opensearch")
+     *             .username("testuser")
      *             .build());
      * 
      *     }
@@ -8175,10 +8425,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleOpensearchUser = AivenFunctions.getOpensearchUser(GetOpensearchUserArgs.builder()
-     *             .serviceName("example-opensearch-service")
-     *             .project(exampleProject.project())
-     *             .username("example-opensearch-user")
+     *         final var example = AivenFunctions.getOpensearchUser(GetOpensearchUserArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("my-opensearch")
+     *             .username("testuser")
      *             .build());
      * 
      *     }
@@ -8217,10 +8467,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleOpensearchUser = AivenFunctions.getOpensearchUser(GetOpensearchUserArgs.builder()
-     *             .serviceName("example-opensearch-service")
-     *             .project(exampleProject.project())
-     *             .username("example-opensearch-user")
+     *         final var example = AivenFunctions.getOpensearchUser(GetOpensearchUserArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("my-opensearch")
+     *             .username("testuser")
      *             .build());
      * 
      *     }
@@ -8259,8 +8509,8 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var main = AivenFunctions.getOrganization(GetOrganizationArgs.builder()
-     *             .name("Example organization")
+     *         final var example = AivenFunctions.getOrganization(GetOrganizationArgs.builder()
+     *             .id("org1a23f456789")
      *             .build());
      * 
      *     }
@@ -8299,8 +8549,8 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var main = AivenFunctions.getOrganization(GetOrganizationArgs.builder()
-     *             .name("Example organization")
+     *         final var example = AivenFunctions.getOrganization(GetOrganizationArgs.builder()
+     *             .id("org1a23f456789")
      *             .build());
      * 
      *     }
@@ -8339,8 +8589,8 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var main = AivenFunctions.getOrganization(GetOrganizationArgs.builder()
-     *             .name("Example organization")
+     *         final var example = AivenFunctions.getOrganization(GetOrganizationArgs.builder()
+     *             .id("org1a23f456789")
      *             .build());
      * 
      *     }
@@ -8379,8 +8629,8 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var main = AivenFunctions.getOrganization(GetOrganizationArgs.builder()
-     *             .name("Example organization")
+     *         final var example = AivenFunctions.getOrganization(GetOrganizationArgs.builder()
+     *             .id("org1a23f456789")
      *             .build());
      * 
      *     }
@@ -8419,8 +8669,8 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var main = AivenFunctions.getOrganization(GetOrganizationArgs.builder()
-     *             .name("Example organization")
+     *         final var example = AivenFunctions.getOrganization(GetOrganizationArgs.builder()
+     *             .id("org1a23f456789")
      *             .build());
      * 
      *     }
@@ -8459,8 +8709,8 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var main = AivenFunctions.getOrganization(GetOrganizationArgs.builder()
-     *             .name("Example organization")
+     *         final var example = AivenFunctions.getOrganization(GetOrganizationArgs.builder()
+     *             .id("org1a23f456789")
      *             .build());
      * 
      *     }
@@ -8499,8 +8749,8 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var main = AivenFunctions.getOrganization(GetOrganizationArgs.builder()
-     *             .name("Example organization")
+     *         final var example = AivenFunctions.getOrganization(GetOrganizationArgs.builder()
+     *             .id("org1a23f456789")
      *             .build());
      * 
      *     }
@@ -8518,6 +8768,40 @@ public final class AivenFunctions {
      * **This resource is in the beta stage and may change without notice.** Set
      * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetOrganizationAddressArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getOrganizationAddress(GetOrganizationAddressArgs.builder()
+     *             .organizationId("org1a23f456789")
+     *             .addressId("foo")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetOrganizationAddressResult> getOrganizationAddress(GetOrganizationAddressArgs args) {
         return getOrganizationAddress(args, InvokeOptions.Empty);
@@ -8527,6 +8811,40 @@ public final class AivenFunctions {
      * 
      * **This resource is in the beta stage and may change without notice.** Set
      * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetOrganizationAddressArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getOrganizationAddress(GetOrganizationAddressArgs.builder()
+     *             .organizationId("org1a23f456789")
+     *             .addressId("foo")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetOrganizationAddressResult> getOrganizationAddressPlain(GetOrganizationAddressPlainArgs args) {
@@ -8538,6 +8856,40 @@ public final class AivenFunctions {
      * **This resource is in the beta stage and may change without notice.** Set
      * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetOrganizationAddressArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getOrganizationAddress(GetOrganizationAddressArgs.builder()
+     *             .organizationId("org1a23f456789")
+     *             .addressId("foo")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetOrganizationAddressResult> getOrganizationAddress(GetOrganizationAddressArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getOrganizationAddress:getOrganizationAddress", TypeShape.of(GetOrganizationAddressResult.class), args, Utilities.withVersion(options));
@@ -8548,6 +8900,40 @@ public final class AivenFunctions {
      * **This resource is in the beta stage and may change without notice.** Set
      * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetOrganizationAddressArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getOrganizationAddress(GetOrganizationAddressArgs.builder()
+     *             .organizationId("org1a23f456789")
+     *             .addressId("foo")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetOrganizationAddressResult> getOrganizationAddress(GetOrganizationAddressArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getOrganizationAddress:getOrganizationAddress", TypeShape.of(GetOrganizationAddressResult.class), args, Utilities.withVersion(options));
@@ -8557,6 +8943,40 @@ public final class AivenFunctions {
      * 
      * **This resource is in the beta stage and may change without notice.** Set
      * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetOrganizationAddressArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getOrganizationAddress(GetOrganizationAddressArgs.builder()
+     *             .organizationId("org1a23f456789")
+     *             .addressId("foo")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetOrganizationAddressResult> getOrganizationAddressPlain(GetOrganizationAddressPlainArgs args, InvokeOptions options) {
@@ -8603,6 +9023,40 @@ public final class AivenFunctions {
      * **This resource is in the beta stage and may change without notice.** Set
      * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetOrganizationBillingGroupArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getOrganizationBillingGroup(GetOrganizationBillingGroupArgs.builder()
+     *             .organizationId("org1a23f456789")
+     *             .billingGroupId("1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetOrganizationBillingGroupResult> getOrganizationBillingGroup(GetOrganizationBillingGroupArgs args) {
         return getOrganizationBillingGroup(args, InvokeOptions.Empty);
@@ -8612,6 +9066,40 @@ public final class AivenFunctions {
      * 
      * **This resource is in the beta stage and may change without notice.** Set
      * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetOrganizationBillingGroupArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getOrganizationBillingGroup(GetOrganizationBillingGroupArgs.builder()
+     *             .organizationId("org1a23f456789")
+     *             .billingGroupId("1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetOrganizationBillingGroupResult> getOrganizationBillingGroupPlain(GetOrganizationBillingGroupPlainArgs args) {
@@ -8623,6 +9111,40 @@ public final class AivenFunctions {
      * **This resource is in the beta stage and may change without notice.** Set
      * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetOrganizationBillingGroupArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getOrganizationBillingGroup(GetOrganizationBillingGroupArgs.builder()
+     *             .organizationId("org1a23f456789")
+     *             .billingGroupId("1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetOrganizationBillingGroupResult> getOrganizationBillingGroup(GetOrganizationBillingGroupArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getOrganizationBillingGroup:getOrganizationBillingGroup", TypeShape.of(GetOrganizationBillingGroupResult.class), args, Utilities.withVersion(options));
@@ -8632,6 +9154,40 @@ public final class AivenFunctions {
      * 
      * **This resource is in the beta stage and may change without notice.** Set
      * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetOrganizationBillingGroupArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getOrganizationBillingGroup(GetOrganizationBillingGroupArgs.builder()
+     *             .organizationId("org1a23f456789")
+     *             .billingGroupId("1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetOrganizationBillingGroupResult> getOrganizationBillingGroup(GetOrganizationBillingGroupArgs args, InvokeOutputOptions options) {
@@ -8643,6 +9199,40 @@ public final class AivenFunctions {
      * **This resource is in the beta stage and may change without notice.** Set
      * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetOrganizationBillingGroupArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getOrganizationBillingGroup(GetOrganizationBillingGroupArgs.builder()
+     *             .organizationId("org1a23f456789")
+     *             .billingGroupId("1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static CompletableFuture<GetOrganizationBillingGroupResult> getOrganizationBillingGroupPlain(GetOrganizationBillingGroupPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getOrganizationBillingGroup:getOrganizationBillingGroup", TypeShape.of(GetOrganizationBillingGroupResult.class), args, Utilities.withVersion(options));
@@ -8652,6 +9242,39 @@ public final class AivenFunctions {
      * 
      * **This resource is in the beta stage and may change without notice.** Set
      * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetOrganizationBillingGroupListArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getOrganizationBillingGroupList(GetOrganizationBillingGroupListArgs.builder()
+     *             .organizationId("org1a23f456789")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetOrganizationBillingGroupListResult> getOrganizationBillingGroupList(GetOrganizationBillingGroupListArgs args) {
@@ -8663,6 +9286,39 @@ public final class AivenFunctions {
      * **This resource is in the beta stage and may change without notice.** Set
      * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetOrganizationBillingGroupListArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getOrganizationBillingGroupList(GetOrganizationBillingGroupListArgs.builder()
+     *             .organizationId("org1a23f456789")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static CompletableFuture<GetOrganizationBillingGroupListResult> getOrganizationBillingGroupListPlain(GetOrganizationBillingGroupListPlainArgs args) {
         return getOrganizationBillingGroupListPlain(args, InvokeOptions.Empty);
@@ -8672,6 +9328,39 @@ public final class AivenFunctions {
      * 
      * **This resource is in the beta stage and may change without notice.** Set
      * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetOrganizationBillingGroupListArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getOrganizationBillingGroupList(GetOrganizationBillingGroupListArgs.builder()
+     *             .organizationId("org1a23f456789")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetOrganizationBillingGroupListResult> getOrganizationBillingGroupList(GetOrganizationBillingGroupListArgs args, InvokeOptions options) {
@@ -8683,6 +9372,39 @@ public final class AivenFunctions {
      * **This resource is in the beta stage and may change without notice.** Set
      * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetOrganizationBillingGroupListArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getOrganizationBillingGroupList(GetOrganizationBillingGroupListArgs.builder()
+     *             .organizationId("org1a23f456789")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetOrganizationBillingGroupListResult> getOrganizationBillingGroupList(GetOrganizationBillingGroupListArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getOrganizationBillingGroupList:getOrganizationBillingGroupList", TypeShape.of(GetOrganizationBillingGroupListResult.class), args, Utilities.withVersion(options));
@@ -8692,6 +9414,39 @@ public final class AivenFunctions {
      * 
      * **This resource is in the beta stage and may change without notice.** Set
      * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetOrganizationBillingGroupListArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getOrganizationBillingGroupList(GetOrganizationBillingGroupListArgs.builder()
+     *             .organizationId("org1a23f456789")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetOrganizationBillingGroupListResult> getOrganizationBillingGroupListPlain(GetOrganizationBillingGroupListPlainArgs args, InvokeOptions options) {
@@ -8703,6 +9458,39 @@ public final class AivenFunctions {
      * **This resource is in the beta stage and may change without notice.** Set
      * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetOrganizationPaymentMethodListArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getOrganizationPaymentMethodList(GetOrganizationPaymentMethodListArgs.builder()
+     *             .organizationId("org1a23f456789")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetOrganizationPaymentMethodListResult> getOrganizationPaymentMethodList(GetOrganizationPaymentMethodListArgs args) {
         return getOrganizationPaymentMethodList(args, InvokeOptions.Empty);
@@ -8712,6 +9500,39 @@ public final class AivenFunctions {
      * 
      * **This resource is in the beta stage and may change without notice.** Set
      * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetOrganizationPaymentMethodListArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getOrganizationPaymentMethodList(GetOrganizationPaymentMethodListArgs.builder()
+     *             .organizationId("org1a23f456789")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetOrganizationPaymentMethodListResult> getOrganizationPaymentMethodListPlain(GetOrganizationPaymentMethodListPlainArgs args) {
@@ -8723,6 +9544,39 @@ public final class AivenFunctions {
      * **This resource is in the beta stage and may change without notice.** Set
      * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetOrganizationPaymentMethodListArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getOrganizationPaymentMethodList(GetOrganizationPaymentMethodListArgs.builder()
+     *             .organizationId("org1a23f456789")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetOrganizationPaymentMethodListResult> getOrganizationPaymentMethodList(GetOrganizationPaymentMethodListArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getOrganizationPaymentMethodList:getOrganizationPaymentMethodList", TypeShape.of(GetOrganizationPaymentMethodListResult.class), args, Utilities.withVersion(options));
@@ -8733,6 +9587,39 @@ public final class AivenFunctions {
      * **This resource is in the beta stage and may change without notice.** Set
      * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetOrganizationPaymentMethodListArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getOrganizationPaymentMethodList(GetOrganizationPaymentMethodListArgs.builder()
+     *             .organizationId("org1a23f456789")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetOrganizationPaymentMethodListResult> getOrganizationPaymentMethodList(GetOrganizationPaymentMethodListArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getOrganizationPaymentMethodList:getOrganizationPaymentMethodList", TypeShape.of(GetOrganizationPaymentMethodListResult.class), args, Utilities.withVersion(options));
@@ -8742,6 +9629,39 @@ public final class AivenFunctions {
      * 
      * **This resource is in the beta stage and may change without notice.** Set
      * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetOrganizationPaymentMethodListArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getOrganizationPaymentMethodList(GetOrganizationPaymentMethodListArgs.builder()
+     *             .organizationId("org1a23f456789")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetOrganizationPaymentMethodListResult> getOrganizationPaymentMethodListPlain(GetOrganizationPaymentMethodListPlainArgs args, InvokeOptions options) {
@@ -8775,8 +9695,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AivenFunctions.getOrganizationProject(GetOrganizationProjectArgs.builder()
-     *             .projectId(foo.projectId())
-     *             .organizationId(foo.organizationId())
+     *             .organizationId("org1234abcd")
+     *             .projectId("project-1")
      *             .build());
      * 
      *     }
@@ -8816,8 +9736,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AivenFunctions.getOrganizationProject(GetOrganizationProjectArgs.builder()
-     *             .projectId(foo.projectId())
-     *             .organizationId(foo.organizationId())
+     *             .organizationId("org1234abcd")
+     *             .projectId("project-1")
      *             .build());
      * 
      *     }
@@ -8857,8 +9777,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AivenFunctions.getOrganizationProject(GetOrganizationProjectArgs.builder()
-     *             .projectId(foo.projectId())
-     *             .organizationId(foo.organizationId())
+     *             .organizationId("org1234abcd")
+     *             .projectId("project-1")
      *             .build());
      * 
      *     }
@@ -8898,8 +9818,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AivenFunctions.getOrganizationProject(GetOrganizationProjectArgs.builder()
-     *             .projectId(foo.projectId())
-     *             .organizationId(foo.organizationId())
+     *             .organizationId("org1234abcd")
+     *             .projectId("project-1")
      *             .build());
      * 
      *     }
@@ -8939,8 +9859,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AivenFunctions.getOrganizationProject(GetOrganizationProjectArgs.builder()
-     *             .projectId(foo.projectId())
-     *             .organizationId(foo.organizationId())
+     *             .organizationId("org1234abcd")
+     *             .projectId("project-1")
      *             .build());
      * 
      *     }
@@ -9230,12 +10150,78 @@ public final class AivenFunctions {
     /**
      * List all user groups within an organization.
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetOrganizationUserGroupListArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getOrganizationUserGroupList(GetOrganizationUserGroupListArgs.builder()
+     *             .organizationId("org1a23f456789")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetOrganizationUserGroupListResult> getOrganizationUserGroupList(GetOrganizationUserGroupListArgs args) {
         return getOrganizationUserGroupList(args, InvokeOptions.Empty);
     }
     /**
      * List all user groups within an organization.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetOrganizationUserGroupListArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getOrganizationUserGroupList(GetOrganizationUserGroupListArgs.builder()
+     *             .organizationId("org1a23f456789")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetOrganizationUserGroupListResult> getOrganizationUserGroupListPlain(GetOrganizationUserGroupListPlainArgs args) {
@@ -9244,6 +10230,39 @@ public final class AivenFunctions {
     /**
      * List all user groups within an organization.
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetOrganizationUserGroupListArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getOrganizationUserGroupList(GetOrganizationUserGroupListArgs.builder()
+     *             .organizationId("org1a23f456789")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetOrganizationUserGroupListResult> getOrganizationUserGroupList(GetOrganizationUserGroupListArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getOrganizationUserGroupList:getOrganizationUserGroupList", TypeShape.of(GetOrganizationUserGroupListResult.class), args, Utilities.withVersion(options));
@@ -9251,12 +10270,78 @@ public final class AivenFunctions {
     /**
      * List all user groups within an organization.
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetOrganizationUserGroupListArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getOrganizationUserGroupList(GetOrganizationUserGroupListArgs.builder()
+     *             .organizationId("org1a23f456789")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetOrganizationUserGroupListResult> getOrganizationUserGroupList(GetOrganizationUserGroupListArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getOrganizationUserGroupList:getOrganizationUserGroupList", TypeShape.of(GetOrganizationUserGroupListResult.class), args, Utilities.withVersion(options));
     }
     /**
      * List all user groups within an organization.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetOrganizationUserGroupListArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getOrganizationUserGroupList(GetOrganizationUserGroupListArgs.builder()
+     *             .organizationId("org1a23f456789")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetOrganizationUserGroupListResult> getOrganizationUserGroupListPlain(GetOrganizationUserGroupListPlainArgs args, InvokeOptions options) {
@@ -9289,9 +10374,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var foo = AivenFunctions.getOrganizationUserGroupMemberList(GetOrganizationUserGroupMemberListArgs.builder()
-     *             .organizationId(organizationId)
-     *             .userGroupId(userGroupId)
+     *         final var example = AivenFunctions.getOrganizationUserGroupMemberList(GetOrganizationUserGroupMemberListArgs.builder()
+     *             .organizationId("org1a23f456789")
+     *             .userGroupId("foo")
      *             .build());
      * 
      *     }
@@ -9330,9 +10415,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var foo = AivenFunctions.getOrganizationUserGroupMemberList(GetOrganizationUserGroupMemberListArgs.builder()
-     *             .organizationId(organizationId)
-     *             .userGroupId(userGroupId)
+     *         final var example = AivenFunctions.getOrganizationUserGroupMemberList(GetOrganizationUserGroupMemberListArgs.builder()
+     *             .organizationId("org1a23f456789")
+     *             .userGroupId("foo")
      *             .build());
      * 
      *     }
@@ -9371,9 +10456,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var foo = AivenFunctions.getOrganizationUserGroupMemberList(GetOrganizationUserGroupMemberListArgs.builder()
-     *             .organizationId(organizationId)
-     *             .userGroupId(userGroupId)
+     *         final var example = AivenFunctions.getOrganizationUserGroupMemberList(GetOrganizationUserGroupMemberListArgs.builder()
+     *             .organizationId("org1a23f456789")
+     *             .userGroupId("foo")
      *             .build());
      * 
      *     }
@@ -9412,9 +10497,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var foo = AivenFunctions.getOrganizationUserGroupMemberList(GetOrganizationUserGroupMemberListArgs.builder()
-     *             .organizationId(organizationId)
-     *             .userGroupId(userGroupId)
+     *         final var example = AivenFunctions.getOrganizationUserGroupMemberList(GetOrganizationUserGroupMemberListArgs.builder()
+     *             .organizationId("org1a23f456789")
+     *             .userGroupId("foo")
      *             .build());
      * 
      *     }
@@ -9453,9 +10538,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var foo = AivenFunctions.getOrganizationUserGroupMemberList(GetOrganizationUserGroupMemberListArgs.builder()
-     *             .organizationId(organizationId)
-     *             .userGroupId(userGroupId)
+     *         final var example = AivenFunctions.getOrganizationUserGroupMemberList(GetOrganizationUserGroupMemberListArgs.builder()
+     *             .organizationId("org1a23f456789")
+     *             .userGroupId("foo")
      *             .build());
      * 
      *     }
@@ -9494,8 +10579,8 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var users = AivenFunctions.getOrganizationUserList(GetOrganizationUserListArgs.builder()
-     *             .name("Example organization")
+     *         final var example = AivenFunctions.getOrganizationUserList(GetOrganizationUserListArgs.builder()
+     *             .id("org1a23f456789")
      *             .build());
      * 
      *     }
@@ -9534,8 +10619,8 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var users = AivenFunctions.getOrganizationUserList(GetOrganizationUserListArgs.builder()
-     *             .name("Example organization")
+     *         final var example = AivenFunctions.getOrganizationUserList(GetOrganizationUserListArgs.builder()
+     *             .id("org1a23f456789")
      *             .build());
      * 
      *     }
@@ -9574,8 +10659,8 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var users = AivenFunctions.getOrganizationUserList(GetOrganizationUserListArgs.builder()
-     *             .name("Example organization")
+     *         final var example = AivenFunctions.getOrganizationUserList(GetOrganizationUserListArgs.builder()
+     *             .id("org1a23f456789")
      *             .build());
      * 
      *     }
@@ -9614,8 +10699,8 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var users = AivenFunctions.getOrganizationUserList(GetOrganizationUserListArgs.builder()
-     *             .name("Example organization")
+     *         final var example = AivenFunctions.getOrganizationUserList(GetOrganizationUserListArgs.builder()
+     *             .id("org1a23f456789")
      *             .build());
      * 
      *     }
@@ -9654,8 +10739,8 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var users = AivenFunctions.getOrganizationUserList(GetOrganizationUserListArgs.builder()
-     *             .name("Example organization")
+     *         final var example = AivenFunctions.getOrganizationUserList(GetOrganizationUserListArgs.builder()
+     *             .id("org1a23f456789")
      *             .build());
      * 
      *     }
@@ -9694,8 +10779,8 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var users = AivenFunctions.getOrganizationUserList(GetOrganizationUserListArgs.builder()
-     *             .name("Example organization")
+     *         final var example = AivenFunctions.getOrganizationUserList(GetOrganizationUserListArgs.builder()
+     *             .id("org1a23f456789")
      *             .build());
      * 
      *     }
@@ -9734,8 +10819,8 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var users = AivenFunctions.getOrganizationUserList(GetOrganizationUserListArgs.builder()
-     *             .name("Example organization")
+     *         final var example = AivenFunctions.getOrganizationUserList(GetOrganizationUserListArgs.builder()
+     *             .id("org1a23f456789")
      *             .build());
      * 
      *     }
@@ -9824,8 +10909,8 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleUnit = AivenFunctions.getOrganizationalUnit(GetOrganizationalUnitArgs.builder()
-     *             .name("Example organizational unit")
+     *         final var example = AivenFunctions.getOrganizationalUnit(GetOrganizationalUnitArgs.builder()
+     *             .id("foo")
      *             .build());
      * 
      *     }
@@ -9864,8 +10949,8 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleUnit = AivenFunctions.getOrganizationalUnit(GetOrganizationalUnitArgs.builder()
-     *             .name("Example organizational unit")
+     *         final var example = AivenFunctions.getOrganizationalUnit(GetOrganizationalUnitArgs.builder()
+     *             .id("foo")
      *             .build());
      * 
      *     }
@@ -9904,8 +10989,8 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleUnit = AivenFunctions.getOrganizationalUnit(GetOrganizationalUnitArgs.builder()
-     *             .name("Example organizational unit")
+     *         final var example = AivenFunctions.getOrganizationalUnit(GetOrganizationalUnitArgs.builder()
+     *             .id("foo")
      *             .build());
      * 
      *     }
@@ -9944,8 +11029,8 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleUnit = AivenFunctions.getOrganizationalUnit(GetOrganizationalUnitArgs.builder()
-     *             .name("Example organizational unit")
+     *         final var example = AivenFunctions.getOrganizationalUnit(GetOrganizationalUnitArgs.builder()
+     *             .id("foo")
      *             .build());
      * 
      *     }
@@ -9984,8 +11069,8 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleUnit = AivenFunctions.getOrganizationalUnit(GetOrganizationalUnitArgs.builder()
-     *             .name("Example organizational unit")
+     *         final var example = AivenFunctions.getOrganizationalUnit(GetOrganizationalUnitArgs.builder()
+     *             .id("foo")
      *             .build());
      * 
      *     }
@@ -10024,8 +11109,8 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleUnit = AivenFunctions.getOrganizationalUnit(GetOrganizationalUnitArgs.builder()
-     *             .name("Example organizational unit")
+     *         final var example = AivenFunctions.getOrganizationalUnit(GetOrganizationalUnitArgs.builder()
+     *             .id("foo")
      *             .build());
      * 
      *     }
@@ -10064,8 +11149,8 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleUnit = AivenFunctions.getOrganizationalUnit(GetOrganizationalUnitArgs.builder()
-     *             .name("Example organizational unit")
+     *         final var example = AivenFunctions.getOrganizationalUnit(GetOrganizationalUnitArgs.builder()
+     *             .id("foo")
      *             .build());
      * 
      *     }
@@ -10309,10 +11394,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var main = AivenFunctions.getPgDatabase(GetPgDatabaseArgs.builder()
-     *             .project(exampleProject.project())
-     *             .serviceName(examplePostgres.serviceName())
-     *             .databaseName("example-database")
+     *         final var example = AivenFunctions.getPgDatabase(GetPgDatabaseArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("my-pg")
+     *             .databaseName("testdb")
      *             .build());
      * 
      *     }
@@ -10351,10 +11436,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var main = AivenFunctions.getPgDatabase(GetPgDatabaseArgs.builder()
-     *             .project(exampleProject.project())
-     *             .serviceName(examplePostgres.serviceName())
-     *             .databaseName("example-database")
+     *         final var example = AivenFunctions.getPgDatabase(GetPgDatabaseArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("my-pg")
+     *             .databaseName("testdb")
      *             .build());
      * 
      *     }
@@ -10393,10 +11478,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var main = AivenFunctions.getPgDatabase(GetPgDatabaseArgs.builder()
-     *             .project(exampleProject.project())
-     *             .serviceName(examplePostgres.serviceName())
-     *             .databaseName("example-database")
+     *         final var example = AivenFunctions.getPgDatabase(GetPgDatabaseArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("my-pg")
+     *             .databaseName("testdb")
      *             .build());
      * 
      *     }
@@ -10435,10 +11520,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var main = AivenFunctions.getPgDatabase(GetPgDatabaseArgs.builder()
-     *             .project(exampleProject.project())
-     *             .serviceName(examplePostgres.serviceName())
-     *             .databaseName("example-database")
+     *         final var example = AivenFunctions.getPgDatabase(GetPgDatabaseArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("my-pg")
+     *             .databaseName("testdb")
      *             .build());
      * 
      *     }
@@ -10477,10 +11562,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var main = AivenFunctions.getPgDatabase(GetPgDatabaseArgs.builder()
-     *             .project(exampleProject.project())
-     *             .serviceName(examplePostgres.serviceName())
-     *             .databaseName("example-database")
+     *         final var example = AivenFunctions.getPgDatabase(GetPgDatabaseArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("my-pg")
+     *             .databaseName("testdb")
      *             .build());
      * 
      *     }
@@ -10519,10 +11604,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleUser = AivenFunctions.getPgUser(GetPgUserArgs.builder()
-     *             .serviceName(examplePostgres.serviceName())
-     *             .project(exampleProject.project())
-     *             .username("example-service-user")
+     *         final var example = AivenFunctions.getPgUser(GetPgUserArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("my-pg")
+     *             .username("testuser")
      *             .build());
      * 
      *     }
@@ -10561,10 +11646,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleUser = AivenFunctions.getPgUser(GetPgUserArgs.builder()
-     *             .serviceName(examplePostgres.serviceName())
-     *             .project(exampleProject.project())
-     *             .username("example-service-user")
+     *         final var example = AivenFunctions.getPgUser(GetPgUserArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("my-pg")
+     *             .username("testuser")
      *             .build());
      * 
      *     }
@@ -10603,10 +11688,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleUser = AivenFunctions.getPgUser(GetPgUserArgs.builder()
-     *             .serviceName(examplePostgres.serviceName())
-     *             .project(exampleProject.project())
-     *             .username("example-service-user")
+     *         final var example = AivenFunctions.getPgUser(GetPgUserArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("my-pg")
+     *             .username("testuser")
      *             .build());
      * 
      *     }
@@ -10645,10 +11730,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleUser = AivenFunctions.getPgUser(GetPgUserArgs.builder()
-     *             .serviceName(examplePostgres.serviceName())
-     *             .project(exampleProject.project())
-     *             .username("example-service-user")
+     *         final var example = AivenFunctions.getPgUser(GetPgUserArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("my-pg")
+     *             .username("testuser")
      *             .build());
      * 
      *     }
@@ -10687,10 +11772,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleUser = AivenFunctions.getPgUser(GetPgUserArgs.builder()
-     *             .serviceName(examplePostgres.serviceName())
-     *             .project(exampleProject.project())
-     *             .username("example-service-user")
+     *         final var example = AivenFunctions.getPgUser(GetPgUserArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("my-pg")
+     *             .username("testuser")
      *             .build());
      * 
      *     }
@@ -11418,36 +12503,6 @@ public final class AivenFunctions {
      */
     public static CompletableFuture<GetProjectVpcResult> getProjectVpcPlain(GetProjectVpcPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getProjectVpc:getProjectVpc", TypeShape.of(GetProjectVpcResult.class), args, Utilities.withVersion(options));
-    }
-    public static Output<GetRedisResult> getRedis(GetRedisArgs args) {
-        return getRedis(args, InvokeOptions.Empty);
-    }
-    public static CompletableFuture<GetRedisResult> getRedisPlain(GetRedisPlainArgs args) {
-        return getRedisPlain(args, InvokeOptions.Empty);
-    }
-    public static Output<GetRedisResult> getRedis(GetRedisArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("aiven:index/getRedis:getRedis", TypeShape.of(GetRedisResult.class), args, Utilities.withVersion(options));
-    }
-    public static Output<GetRedisResult> getRedis(GetRedisArgs args, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("aiven:index/getRedis:getRedis", TypeShape.of(GetRedisResult.class), args, Utilities.withVersion(options));
-    }
-    public static CompletableFuture<GetRedisResult> getRedisPlain(GetRedisPlainArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invokeAsync("aiven:index/getRedis:getRedis", TypeShape.of(GetRedisResult.class), args, Utilities.withVersion(options));
-    }
-    public static Output<GetRedisUserResult> getRedisUser(GetRedisUserArgs args) {
-        return getRedisUser(args, InvokeOptions.Empty);
-    }
-    public static CompletableFuture<GetRedisUserResult> getRedisUserPlain(GetRedisUserPlainArgs args) {
-        return getRedisUserPlain(args, InvokeOptions.Empty);
-    }
-    public static Output<GetRedisUserResult> getRedisUser(GetRedisUserArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("aiven:index/getRedisUser:getRedisUser", TypeShape.of(GetRedisUserResult.class), args, Utilities.withVersion(options));
-    }
-    public static Output<GetRedisUserResult> getRedisUser(GetRedisUserArgs args, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("aiven:index/getRedisUser:getRedisUser", TypeShape.of(GetRedisUserResult.class), args, Utilities.withVersion(options));
-    }
-    public static CompletableFuture<GetRedisUserResult> getRedisUserPlain(GetRedisUserPlainArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invokeAsync("aiven:index/getRedisUser:getRedisUser", TypeShape.of(GetRedisUserResult.class), args, Utilities.withVersion(options));
     }
     /**
      * The Service Component data source provides information about the existing Aiven service Component.

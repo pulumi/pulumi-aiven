@@ -15,10 +15,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const exampleUser = aiven.getPgUser({
- *     serviceName: examplePostgres.serviceName,
- *     project: exampleProject.project,
- *     username: "example-service-user",
+ * const example = aiven.getPgUser({
+ *     project: "my-project",
+ *     serviceName: "my-pg",
+ *     username: "testuser",
  * });
  * ```
  */
@@ -102,10 +102,10 @@ export interface GetPgUserResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const exampleUser = aiven.getPgUser({
- *     serviceName: examplePostgres.serviceName,
- *     project: exampleProject.project,
- *     username: "example-service-user",
+ * const example = aiven.getPgUser({
+ *     project: "my-project",
+ *     serviceName: "my-pg",
+ *     username: "testuser",
  * });
  * ```
  */

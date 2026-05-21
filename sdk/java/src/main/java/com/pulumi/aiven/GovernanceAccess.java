@@ -47,22 +47,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleAccess = new GovernanceAccess("exampleAccess", GovernanceAccessArgs.builder()
- *             .organizationId(main.id())
- *             .accessName("example-topic-access")
- *             .accessType("KAFKA")
+ *         var example = new GovernanceAccess("example", GovernanceAccessArgs.builder()
+ *             .organizationId("org1a23f456789")
  *             .accessData(GovernanceAccessAccessDataArgs.builder()
- *                 .project(exampleProject.project())
- *                 .serviceName(exampleKafka.serviceName())
  *                 .acls(GovernanceAccessAccessDataAclArgs.builder()
- *                     .resourceName("example-topic")
- *                     .resourceType("Topic")
- *                     .operation("Read")
+ *                     .operation("Write")
  *                     .permissionType("ALLOW")
+ *                     .resourceName("events")
+ *                     .resourceType("Topic")
  *                     .host("*")
  *                     .build())
+ *                 .projectName("project-1")
+ *                 .serviceName("service-1")
+ *                 .username("api3")
  *                 .build())
- *             .ownerUserGroupId(example.groupId())
+ *             .accessName("My Access")
+ *             .accessType("KAFKA")
+ *             .ownerUserGroupId("ug22ba494e096")
  *             .build());
  * 
  *     }

@@ -28,8 +28,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.GetOrganizationProject(ctx, &aiven.LookupOrganizationProjectArgs{
-//				ProjectId:      foo.ProjectId,
-//				OrganizationId: foo.OrganizationId,
+//				OrganizationId: "org1234abcd",
+//				ProjectId:      "project-1",
 //			}, nil)
 //			if err != nil {
 //				return err

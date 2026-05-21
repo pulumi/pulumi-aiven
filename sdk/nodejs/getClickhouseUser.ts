@@ -15,10 +15,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const exampleUser = aiven.getClickhouseUser({
- *     project: exampleProject.project,
- *     serviceName: exampleClickhouse.serviceName,
- *     username: "analyst",
+ * const example = aiven.getClickhouseUser({
+ *     project: "my-project",
+ *     serviceName: "my-clickhouse",
+ *     uuid: "1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
  * });
  * ```
  */
@@ -99,10 +99,10 @@ export interface GetClickhouseUserResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const exampleUser = aiven.getClickhouseUser({
- *     project: exampleProject.project,
- *     serviceName: exampleClickhouse.serviceName,
- *     username: "analyst",
+ * const example = aiven.getClickhouseUser({
+ *     project: "my-project",
+ *     serviceName: "my-clickhouse",
+ *     uuid: "1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
  * });
  * ```
  */

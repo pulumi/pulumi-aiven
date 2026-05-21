@@ -3,94 +3,101 @@
 
 package com.pulumi.aiven.outputs;
 
+import com.pulumi.aiven.outputs.GetKafkaSchemaRegistryAclTimeouts;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetKafkaSchemaRegistryAclResult {
     /**
-     * @return Kafka Schema Registry ACL ID
+     * @return Kafka Schema Registry ACL ID. Provide either `aclId`, or all of `permission`, `resource` and `username` together.
      * 
      */
     private String aclId;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Resource ID composed as: `project/service_name/acl_id`.
      * 
      */
     private String id;
     /**
-     * @return Kafka Schema Registry permission to grant. The possible values are `schemaRegistryRead` and `schemaRegistryWrite`. Changing this property forces recreation of the resource.
+     * @return ACL entry for Schema Registry. The possible values are `schemaRegistryRead` and `schemaRegistryWrite`. Provide either `aclId`, or all of `permission`, `resource` and `username` together.
      * 
      */
     private String permission;
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name.
      * 
      */
     private String project;
     /**
-     * @return Resource name pattern for the Schema Registry ACL entry. Changing this property forces recreation of the resource.
+     * @return Schema Registry ACL entry resource name pattern. Provide either `aclId`, or all of `permission`, `resource` and `username` together.
      * 
      */
     private String resource;
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service name.
      * 
      */
     private String serviceName;
+    private @Nullable GetKafkaSchemaRegistryAclTimeouts timeouts;
     /**
-     * @return Username pattern for the ACL entry. Changing this property forces recreation of the resource.
+     * @return Username. Provide either `aclId`, or all of `permission`, `resource` and `username` together.
      * 
      */
     private String username;
 
     private GetKafkaSchemaRegistryAclResult() {}
     /**
-     * @return Kafka Schema Registry ACL ID
+     * @return Kafka Schema Registry ACL ID. Provide either `aclId`, or all of `permission`, `resource` and `username` together.
      * 
      */
     public String aclId() {
         return this.aclId;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Resource ID composed as: `project/service_name/acl_id`.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return Kafka Schema Registry permission to grant. The possible values are `schemaRegistryRead` and `schemaRegistryWrite`. Changing this property forces recreation of the resource.
+     * @return ACL entry for Schema Registry. The possible values are `schemaRegistryRead` and `schemaRegistryWrite`. Provide either `aclId`, or all of `permission`, `resource` and `username` together.
      * 
      */
     public String permission() {
         return this.permission;
     }
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name.
      * 
      */
     public String project() {
         return this.project;
     }
     /**
-     * @return Resource name pattern for the Schema Registry ACL entry. Changing this property forces recreation of the resource.
+     * @return Schema Registry ACL entry resource name pattern. Provide either `aclId`, or all of `permission`, `resource` and `username` together.
      * 
      */
     public String resource() {
         return this.resource;
     }
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service name.
      * 
      */
     public String serviceName() {
         return this.serviceName;
     }
+    public Optional<GetKafkaSchemaRegistryAclTimeouts> timeouts() {
+        return Optional.ofNullable(this.timeouts);
+    }
     /**
-     * @return Username pattern for the ACL entry. Changing this property forces recreation of the resource.
+     * @return Username. Provide either `aclId`, or all of `permission`, `resource` and `username` together.
      * 
      */
     public String username() {
@@ -112,6 +119,7 @@ public final class GetKafkaSchemaRegistryAclResult {
         private String project;
         private String resource;
         private String serviceName;
+        private @Nullable GetKafkaSchemaRegistryAclTimeouts timeouts;
         private String username;
         public Builder() {}
         public Builder(GetKafkaSchemaRegistryAclResult defaults) {
@@ -122,6 +130,7 @@ public final class GetKafkaSchemaRegistryAclResult {
     	      this.project = defaults.project;
     	      this.resource = defaults.resource;
     	      this.serviceName = defaults.serviceName;
+    	      this.timeouts = defaults.timeouts;
     	      this.username = defaults.username;
         }
 
@@ -174,6 +183,12 @@ public final class GetKafkaSchemaRegistryAclResult {
             return this;
         }
         @CustomType.Setter
+        public Builder timeouts(@Nullable GetKafkaSchemaRegistryAclTimeouts timeouts) {
+
+            this.timeouts = timeouts;
+            return this;
+        }
+        @CustomType.Setter
         public Builder username(String username) {
             if (username == null) {
               throw new MissingRequiredPropertyException("GetKafkaSchemaRegistryAclResult", "username");
@@ -189,6 +204,7 @@ public final class GetKafkaSchemaRegistryAclResult {
             _resultValue.project = project;
             _resultValue.resource = resource;
             _resultValue.serviceName = serviceName;
+            _resultValue.timeouts = timeouts;
             _resultValue.username = username;
             return _resultValue;
         }

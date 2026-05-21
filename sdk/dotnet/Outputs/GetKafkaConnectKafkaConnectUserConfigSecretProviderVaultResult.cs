@@ -30,6 +30,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? PrefixPathDepth;
         /// <summary>
+        /// PEM encoded certificate of the Vault server. Required if the vault server uses a self-signed certificate.
+        /// </summary>
+        public readonly string? ServerPem;
+        /// <summary>
         /// Token used to authenticate with vault and auth method `Token`.
         /// </summary>
         public readonly string? Token;
@@ -44,12 +48,15 @@ namespace Pulumi.Aiven.Outputs
 
             int? prefixPathDepth,
 
+            string? serverPem,
+
             string? token)
         {
             Address = address;
             AuthMethod = authMethod;
             EngineVersion = engineVersion;
             PrefixPathDepth = prefixPathDepth;
+            ServerPem = serverPem;
             Token = token;
         }
     }

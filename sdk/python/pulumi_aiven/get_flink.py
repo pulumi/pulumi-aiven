@@ -27,13 +27,16 @@ class GetFlinkResult:
     """
     A collection of values returned by getFlink.
     """
-    def __init__(__self__, additional_disk_space=None, cloud_name=None, components=None, disk_space=None, disk_space_cap=None, disk_space_default=None, disk_space_step=None, disk_space_used=None, flink_user_configs=None, flinks=None, id=None, maintenance_window_dow=None, maintenance_window_enabled=None, maintenance_window_time=None, plan=None, project=None, project_vpc_id=None, service_host=None, service_integrations=None, service_name=None, service_password=None, service_port=None, service_type=None, service_uri=None, service_username=None, state=None, static_ips=None, tags=None, tech_emails=None, termination_protection=None):
+    def __init__(__self__, additional_disk_space=None, cloud_name=None, cmk_id=None, components=None, disk_space=None, disk_space_cap=None, disk_space_default=None, disk_space_step=None, disk_space_used=None, flink_user_configs=None, flinks=None, id=None, maintenance_window_dow=None, maintenance_window_enabled=None, maintenance_window_time=None, plan=None, project=None, project_vpc_id=None, service_host=None, service_integrations=None, service_name=None, service_password=None, service_port=None, service_type=None, service_uri=None, service_username=None, state=None, static_ips=None, tags=None, tech_emails=None, termination_protection=None):
         if additional_disk_space and not isinstance(additional_disk_space, str):
             raise TypeError("Expected argument 'additional_disk_space' to be a str")
         pulumi.set(__self__, "additional_disk_space", additional_disk_space)
         if cloud_name and not isinstance(cloud_name, str):
             raise TypeError("Expected argument 'cloud_name' to be a str")
         pulumi.set(__self__, "cloud_name", cloud_name)
+        if cmk_id and not isinstance(cmk_id, str):
+            raise TypeError("Expected argument 'cmk_id' to be a str")
+        pulumi.set(__self__, "cmk_id", cmk_id)
         if components and not isinstance(components, list):
             raise TypeError("Expected argument 'components' to be a list")
         pulumi.set(__self__, "components", components)
@@ -134,6 +137,14 @@ class GetFlinkResult:
         The cloud provider and region the service is hosted in. The format is `provider-region`, for example: `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ per project and service. Changing this value [migrates the service to another cloud provider or region](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and includes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases may have a brief interruption during DNS propagation.
         """
         return pulumi.get(self, "cloud_name")
+
+    @_builtins.property
+    @pulumi.getter(name="cmkId")
+    def cmk_id(self) -> _builtins.str:
+        """
+        UUID of the Customer Managed Key (CMK) used to apply [bring your own key (BYOK) encryption](https://aiven.io/docs/platform/howto/bring-your-own-key) to this service's data at rest. You can register a CMK for an Aiven project using the `Cmk` resource. Removing this attribute doesn't remove the CMK association. To remove it from this service, set this attribute to the all-zero UUID `00000000-0000-0000-0000-000000000000`.
+        """
+        return pulumi.get(self, "cmk_id")
 
     @_builtins.property
     @pulumi.getter
@@ -368,6 +379,7 @@ class AwaitableGetFlinkResult(GetFlinkResult):
         return GetFlinkResult(
             additional_disk_space=self.additional_disk_space,
             cloud_name=self.cloud_name,
+            cmk_id=self.cmk_id,
             components=self.components,
             disk_space=self.disk_space,
             disk_space_cap=self.disk_space_cap,
@@ -427,6 +439,7 @@ def get_flink(project: Optional[_builtins.str] = None,
     return AwaitableGetFlinkResult(
         additional_disk_space=pulumi.get(__ret__, 'additional_disk_space'),
         cloud_name=pulumi.get(__ret__, 'cloud_name'),
+        cmk_id=pulumi.get(__ret__, 'cmk_id'),
         components=pulumi.get(__ret__, 'components'),
         disk_space=pulumi.get(__ret__, 'disk_space'),
         disk_space_cap=pulumi.get(__ret__, 'disk_space_cap'),
@@ -483,6 +496,7 @@ def get_flink_output(project: pulumi.Input[Optional[_builtins.str]] = None,
     return __ret__.apply(lambda __response__: GetFlinkResult(
         additional_disk_space=pulumi.get(__response__, 'additional_disk_space'),
         cloud_name=pulumi.get(__response__, 'cloud_name'),
+        cmk_id=pulumi.get(__response__, 'cmk_id'),
         components=pulumi.get(__response__, 'components'),
         disk_space=pulumi.get(__response__, 'disk_space'),
         disk_space_cap=pulumi.get(__response__, 'disk_space_cap'),

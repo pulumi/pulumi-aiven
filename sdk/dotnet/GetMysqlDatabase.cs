@@ -24,11 +24,11 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleDatabase = Aiven.GetMysqlDatabase.Invoke(new()
+        ///     var example = Aiven.GetMysqlDatabase.Invoke(new()
         ///     {
-        ///         Project = exampleProject.Project,
-        ///         ServiceName = exampleMysql.ServiceName,
-        ///         DatabaseName = "example-database",
+        ///         Project = "my-project",
+        ///         ServiceName = "my-mysql",
+        ///         DatabaseName = "testdb",
         ///     });
         /// 
         /// });
@@ -50,11 +50,11 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleDatabase = Aiven.GetMysqlDatabase.Invoke(new()
+        ///     var example = Aiven.GetMysqlDatabase.Invoke(new()
         ///     {
-        ///         Project = exampleProject.Project,
-        ///         ServiceName = exampleMysql.ServiceName,
-        ///         DatabaseName = "example-database",
+        ///         Project = "my-project",
+        ///         ServiceName = "my-mysql",
+        ///         DatabaseName = "testdb",
         ///     });
         /// 
         /// });
@@ -76,11 +76,11 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleDatabase = Aiven.GetMysqlDatabase.Invoke(new()
+        ///     var example = Aiven.GetMysqlDatabase.Invoke(new()
         ///     {
-        ///         Project = exampleProject.Project,
-        ///         ServiceName = exampleMysql.ServiceName,
-        ///         DatabaseName = "example-database",
+        ///         Project = "my-project",
+        ///         ServiceName = "my-mysql",
+        ///         DatabaseName = "testdb",
         ///     });
         /// 
         /// });

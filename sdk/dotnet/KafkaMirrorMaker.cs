@@ -68,6 +68,12 @@ namespace Pulumi.Aiven
         public Output<string?> CloudName { get; private set; } = null!;
 
         /// <summary>
+        /// UUID of the Customer Managed Key (CMK) used to apply [bring your own key (BYOK) encryption](https://aiven.io/docs/platform/howto/bring-your-own-key) to this service's data at rest. You can register a CMK for an Aiven project using the `aiven.Cmk` resource. Removing this attribute doesn't remove the CMK association. To remove it from this service, set this attribute to the all-zero UUID `00000000-0000-0000-0000-000000000000`.
+        /// </summary>
+        [Output("cmkId")]
+        public Output<string> CmkId { get; private set; } = null!;
+
+        /// <summary>
         /// Service component information objects
         /// </summary>
         [Output("components")]
@@ -287,6 +293,12 @@ namespace Pulumi.Aiven
         public Input<string>? CloudName { get; set; }
 
         /// <summary>
+        /// UUID of the Customer Managed Key (CMK) used to apply [bring your own key (BYOK) encryption](https://aiven.io/docs/platform/howto/bring-your-own-key) to this service's data at rest. You can register a CMK for an Aiven project using the `aiven.Cmk` resource. Removing this attribute doesn't remove the CMK association. To remove it from this service, set this attribute to the all-zero UUID `00000000-0000-0000-0000-000000000000`.
+        /// </summary>
+        [Input("cmkId")]
+        public Input<string>? CmkId { get; set; }
+
+        /// <summary>
         /// Service disk space to set. Possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
         /// </summary>
         [Input("diskSpace")]
@@ -407,6 +419,12 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("cloudName")]
         public Input<string>? CloudName { get; set; }
+
+        /// <summary>
+        /// UUID of the Customer Managed Key (CMK) used to apply [bring your own key (BYOK) encryption](https://aiven.io/docs/platform/howto/bring-your-own-key) to this service's data at rest. You can register a CMK for an Aiven project using the `aiven.Cmk` resource. Removing this attribute doesn't remove the CMK association. To remove it from this service, set this attribute to the all-zero UUID `00000000-0000-0000-0000-000000000000`.
+        /// </summary>
+        [Input("cmkId")]
+        public Input<string>? CmkId { get; set; }
 
         [Input("components")]
         private InputList<Inputs.KafkaMirrorMakerComponentGetArgs>? _components;

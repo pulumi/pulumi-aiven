@@ -12,6 +12,33 @@ import (
 )
 
 // Lists Kafka topics for a service.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := aiven.GetKafkaTopicList(ctx, &aiven.GetKafkaTopicListArgs{
+//				Project:     "my-project",
+//				ServiceName: "my-kafka",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetKafkaTopicList(ctx *pulumi.Context, args *GetKafkaTopicListArgs, opts ...pulumi.InvokeOption) (*GetKafkaTopicListResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetKafkaTopicListResult

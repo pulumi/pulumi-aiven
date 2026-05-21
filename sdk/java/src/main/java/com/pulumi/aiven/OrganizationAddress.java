@@ -22,6 +22,45 @@ import javax.annotation.Nullable;
  * **This resource is in the beta stage and may change without notice.** Set
  * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
  * 
+ * ## Example Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.aiven.OrganizationAddress;
+ * import com.pulumi.aiven.OrganizationAddressArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new OrganizationAddress("example", OrganizationAddressArgs.builder()
+ *             .organizationId("org1a23f456789")
+ *             .addressLines("Main Street 1")
+ *             .city("Helsinki")
+ *             .countryCode("FI")
+ *             .name("Aiven Oy")
+ *             .state("foo")
+ *             .zipCode("01234")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * ```sh
@@ -102,14 +141,14 @@ public class OrganizationAddress extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
-     * Name of a company. Length must be between `1` and `128`.
+     * Name of a company. Length must be between `1` and `83`.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of a company. Length must be between `1` and `128`.
+     * @return Name of a company. Length must be between `1` and `83`.
      * 
      */
     public Output<String> name() {

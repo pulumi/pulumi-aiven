@@ -6,15 +6,17 @@ package com.pulumi.aiven;
 import com.pulumi.aiven.KafkaSchemaRegistryAclArgs;
 import com.pulumi.aiven.Utilities;
 import com.pulumi.aiven.inputs.KafkaSchemaRegistryAclState;
+import com.pulumi.aiven.outputs.KafkaSchemaRegistryAclTimeouts;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The Resource Kafka Schema Registry ACL resource allows the creation and management of Schema Registry ACLs for an Aiven Kafka service.
+ * Creates and manages an Aiven for Apache Kafka® Schema Registry ACL entry. If this resource is missing (for example, after a service power off), it&#39;s removed from the state and a new create plan is generated.
  * 
  * ## Example Usage
  * 
@@ -40,12 +42,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foo = new KafkaSchemaRegistryAcl("foo", KafkaSchemaRegistryAclArgs.builder()
- *             .project(kafka_schemas_project1.project())
- *             .serviceName(kafka_service1.serviceName())
- *             .resource("Subject:topic-1")
- *             .username("group-user-*")
+ *         var example = new KafkaSchemaRegistryAcl("example", KafkaSchemaRegistryAclArgs.builder()
+ *             .project("my-project")
+ *             .serviceName("my-kafka")
  *             .permission("schema_registry_read")
+ *             .resource("Config:")
+ *             .username("admin*")
  *             .build());
  * 
  *     }
@@ -63,84 +65,90 @@ import javax.annotation.Nullable;
 @ResourceType(type="aiven:index/kafkaSchemaRegistryAcl:KafkaSchemaRegistryAcl")
 public class KafkaSchemaRegistryAcl extends com.pulumi.resources.CustomResource {
     /**
-     * Kafka Schema Registry ACL ID
+     * Kafka Schema Registry ACL ID.
      * 
      */
     @Export(name="aclId", refs={String.class}, tree="[0]")
     private Output<String> aclId;
 
     /**
-     * @return Kafka Schema Registry ACL ID
+     * @return Kafka Schema Registry ACL ID.
      * 
      */
     public Output<String> aclId() {
         return this.aclId;
     }
     /**
-     * Kafka Schema Registry permission to grant. The possible values are `schemaRegistryRead` and `schemaRegistryWrite`. Changing this property forces recreation of the resource.
+     * ACL entry for Schema Registry. The possible values are `schemaRegistryRead` and `schemaRegistryWrite`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="permission", refs={String.class}, tree="[0]")
     private Output<String> permission;
 
     /**
-     * @return Kafka Schema Registry permission to grant. The possible values are `schemaRegistryRead` and `schemaRegistryWrite`. Changing this property forces recreation of the resource.
+     * @return ACL entry for Schema Registry. The possible values are `schemaRegistryRead` and `schemaRegistryWrite`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> permission() {
         return this.permission;
     }
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> project() {
         return this.project;
     }
     /**
-     * Resource name pattern for the Schema Registry ACL entry. Changing this property forces recreation of the resource.
+     * Schema Registry ACL entry resource name pattern. Length must be between `1` and `249`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="resource", refs={String.class}, tree="[0]")
     private Output<String> resource;
 
     /**
-     * @return Resource name pattern for the Schema Registry ACL entry. Changing this property forces recreation of the resource.
+     * @return Schema Registry ACL entry resource name pattern. Length must be between `1` and `249`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> resource() {
         return this.resource;
     }
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service name. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> serviceName() {
         return this.serviceName;
     }
+    @Export(name="timeouts", refs={KafkaSchemaRegistryAclTimeouts.class}, tree="[0]")
+    private Output</* @Nullable */ KafkaSchemaRegistryAclTimeouts> timeouts;
+
+    public Output<Optional<KafkaSchemaRegistryAclTimeouts>> timeouts() {
+        return Codegen.optional(this.timeouts);
+    }
     /**
-     * Username pattern for the ACL entry. Changing this property forces recreation of the resource.
+     * Username. Length must be between `1` and `64`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="username", refs={String.class}, tree="[0]")
     private Output<String> username;
 
     /**
-     * @return Username pattern for the ACL entry. Changing this property forces recreation of the resource.
+     * @return Username. Length must be between `1` and `64`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> username() {

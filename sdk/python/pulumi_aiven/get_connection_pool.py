@@ -170,9 +170,9 @@ def get_connection_pool(pool_name: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    main = aiven.get_connection_pool(project=example_project["project"],
-        service_name=example_postgres["serviceName"],
-        pool_name="example-pool")
+    example = aiven.get_connection_pool(project="my-project",
+        service_name="foo",
+        pool_name="mypool-x-y-z")
     ```
 
 
@@ -213,9 +213,9 @@ def get_connection_pool_output(pool_name: pulumi.Input[Optional[_builtins.str]] 
     import pulumi
     import pulumi_aiven as aiven
 
-    main = aiven.get_connection_pool(project=example_project["project"],
-        service_name=example_postgres["serviceName"],
-        pool_name="example-pool")
+    example = aiven.get_connection_pool(project="my-project",
+        service_name="foo",
+        pool_name="mypool-x-y-z")
     ```
 
 

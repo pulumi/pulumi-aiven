@@ -36,6 +36,12 @@ namespace Pulumi.Aiven.Inputs
         [Input("prefixPathDepth")]
         public Input<int>? PrefixPathDepth { get; set; }
 
+        /// <summary>
+        /// PEM encoded certificate of the Vault server. Required if the vault server uses a self-signed certificate.
+        /// </summary>
+        [Input("serverPem")]
+        public Input<string>? ServerPem { get; set; }
+
         [Input("token")]
         private Input<string>? _token;
 

@@ -277,7 +277,7 @@ def get_billing_group(billing_group_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    example_billing_group = aiven.get_billing_group(billing_group_id="1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d")
+    example = aiven.get_billing_group(billing_group_id="1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d")
     ```
 
 
@@ -321,7 +321,7 @@ def get_billing_group_output(billing_group_id: pulumi.Input[Optional[_builtins.s
     import pulumi
     import pulumi_aiven as aiven
 
-    example_billing_group = aiven.get_billing_group(billing_group_id="1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d")
+    example = aiven.get_billing_group(billing_group_id="1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d")
     ```
 
 

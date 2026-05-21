@@ -30,21 +30,10 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleClickhouse, err := aiven.NewClickhouse(ctx, "example_clickhouse", &aiven.ClickhouseArgs{
-//				Project:               pulumi.Any(exampleProject.Project),
-//				CloudName:             pulumi.String("google-europe-west1"),
-//				Plan:                  pulumi.String("business-4"),
-//				ServiceName:           pulumi.String("example-clickhouse-service"),
-//				MaintenanceWindowDow:  pulumi.String("monday"),
-//				MaintenanceWindowTime: pulumi.String("10:00:00"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = aiven.NewClickhouseDatabase(ctx, "example_db", &aiven.ClickhouseDatabaseArgs{
-//				Project:     pulumi.Any(exampleProject.Project),
-//				ServiceName: exampleClickhouse.ServiceName,
-//				Name:        pulumi.String("example-database"),
+//			_, err := aiven.NewClickhouseDatabase(ctx, "example", &aiven.ClickhouseDatabaseArgs{
+//				Project:     pulumi.String("my-project"),
+//				ServiceName: pulumi.String("my-clickhouse"),
+//				Name:        pulumi.String("testdb"),
 //			})
 //			if err != nil {
 //				return err

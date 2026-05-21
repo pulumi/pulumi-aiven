@@ -94,6 +94,15 @@ def get_organization_billing_group_list(billing_groups: Optional[Sequence[Union[
     **This resource is in the beta stage and may change without notice.** Set
     the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    example = aiven.get_organization_billing_group_list(organization_id="org1a23f456789")
+    ```
+
 
     :param Sequence[Union['GetOrganizationBillingGroupListBillingGroupArgs', 'GetOrganizationBillingGroupListBillingGroupArgsDict']] billing_groups: A list of all billing groups belonging to the organization.
     :param _builtins.str organization_id: ID of an organization.
@@ -119,6 +128,15 @@ def get_organization_billing_group_list_output(billing_groups: pulumi.Input[Opti
 
     **This resource is in the beta stage and may change without notice.** Set
     the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    example = aiven.get_organization_billing_group_list(organization_id="org1a23f456789")
+    ```
 
 
     :param Sequence[Union['GetOrganizationBillingGroupListBillingGroupArgs', 'GetOrganizationBillingGroupListBillingGroupArgsDict']] billing_groups: A list of all billing groups belonging to the organization.

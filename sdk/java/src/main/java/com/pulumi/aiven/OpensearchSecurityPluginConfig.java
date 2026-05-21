@@ -44,10 +44,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var main = new OpensearchSecurityPluginConfig("main", OpensearchSecurityPluginConfigArgs.builder()
- *             .project(exampleProject.project())
- *             .serviceName(exampleOpensearch.serviceName())
- *             .adminPassword(opensearchSecurityAdminPassword)
+ *         var example = new OpensearchSecurityPluginConfig("example", OpensearchSecurityPluginConfigArgs.builder()
+ *             .project("my-project")
+ *             .serviceName("my-opensearch")
+ *             .adminPassword("h3.2aD!z2")
  *             .build());
  * 
  *     }

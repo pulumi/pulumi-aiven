@@ -133,7 +133,7 @@ def get_organizational_unit(id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    example_unit = aiven.get_organizational_unit(name="Example organizational unit")
+    example = aiven.get_organizational_unit(id="foo")
     ```
 
 
@@ -168,7 +168,7 @@ def get_organizational_unit_output(id: pulumi.Input[Optional[Optional[_builtins.
     import pulumi
     import pulumi_aiven as aiven
 
-    example_unit = aiven.get_organizational_unit(name="Example organizational unit")
+    example = aiven.get_organizational_unit(id="foo")
     ```
 
 

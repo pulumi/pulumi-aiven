@@ -15,8 +15,8 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const main = aiven.getOrganization({
- *     name: "Example organization",
+ * const example = aiven.getOrganization({
+ *     id: "org1a23f456789",
  * });
  * ```
  */
@@ -82,8 +82,8 @@ export interface GetOrganizationResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const main = aiven.getOrganization({
- *     name: "Example organization",
+ * const example = aiven.getOrganization({
+ *     id: "org1a23f456789",
  * });
  * ```
  */

@@ -38,6 +38,21 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableArgs extends 
     }
 
     /**
+     * When set to a non-zero value and there are no committed offsets, the consumer starts from the offset corresponding to (now - auto*offset*reset*by*duration*ms). This overrides auto*offset_reset when set. Requires ClickHouse &gt;= 25.8. Default: `0`.
+     * 
+     */
+    @Import(name="autoOffsetResetByDurationMs")
+    private @Nullable Output<Integer> autoOffsetResetByDurationMs;
+
+    /**
+     * @return When set to a non-zero value and there are no committed offsets, the consumer starts from the offset corresponding to (now - auto*offset*reset*by*duration*ms). This overrides auto*offset_reset when set. Requires ClickHouse &gt;= 25.8. Default: `0`.
+     * 
+     */
+    public Optional<Output<Integer>> autoOffsetResetByDurationMs() {
+        return Optional.ofNullable(this.autoOffsetResetByDurationMs);
+    }
+
+    /**
      * Array of column definitions that specify the structure of the ClickHouse table. Each column maps to a field in the Kafka messages
      * 
      */
@@ -386,6 +401,7 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableArgs extends 
 
     private ServiceIntegrationClickhouseKafkaUserConfigTableArgs(ServiceIntegrationClickhouseKafkaUserConfigTableArgs $) {
         this.autoOffsetReset = $.autoOffsetReset;
+        this.autoOffsetResetByDurationMs = $.autoOffsetResetByDurationMs;
         this.columns = $.columns;
         this.dataFormat = $.dataFormat;
         this.dateTimeInputFormat = $.dateTimeInputFormat;
@@ -448,6 +464,27 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableArgs extends 
          */
         public Builder autoOffsetReset(String autoOffsetReset) {
             return autoOffsetReset(Output.of(autoOffsetReset));
+        }
+
+        /**
+         * @param autoOffsetResetByDurationMs When set to a non-zero value and there are no committed offsets, the consumer starts from the offset corresponding to (now - auto*offset*reset*by*duration*ms). This overrides auto*offset_reset when set. Requires ClickHouse &gt;= 25.8. Default: `0`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoOffsetResetByDurationMs(@Nullable Output<Integer> autoOffsetResetByDurationMs) {
+            $.autoOffsetResetByDurationMs = autoOffsetResetByDurationMs;
+            return this;
+        }
+
+        /**
+         * @param autoOffsetResetByDurationMs When set to a non-zero value and there are no committed offsets, the consumer starts from the offset corresponding to (now - auto*offset*reset*by*duration*ms). This overrides auto*offset_reset when set. Requires ClickHouse &gt;= 25.8. Default: `0`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoOffsetResetByDurationMs(Integer autoOffsetResetByDurationMs) {
+            return autoOffsetResetByDurationMs(Output.of(autoOffsetResetByDurationMs));
         }
 
         /**

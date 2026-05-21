@@ -11,6 +11,17 @@ import * as utilities from "./utilities";
  *
  * **This resource is in the beta stage and may change without notice.** Set
  * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const example = aiven.getOrganizationBillingGroupList({
+ *     organizationId: "org1a23f456789",
+ * });
+ * ```
  */
 export function getOrganizationBillingGroupList(args: GetOrganizationBillingGroupListArgs, opts?: pulumi.InvokeOptions): Promise<GetOrganizationBillingGroupListResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -59,6 +70,17 @@ export interface GetOrganizationBillingGroupListResult {
  *
  * **This resource is in the beta stage and may change without notice.** Set
  * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const example = aiven.getOrganizationBillingGroupList({
+ *     organizationId: "org1a23f456789",
+ * });
+ * ```
  */
 export function getOrganizationBillingGroupListOutput(args: GetOrganizationBillingGroupListOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOrganizationBillingGroupListResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

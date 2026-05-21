@@ -254,10 +254,10 @@ class FlinkApplication(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        example_app = aiven.FlinkApplication("example_app",
-            project=example_project["project"],
-            service_name="example-flink-service",
-            name="example-app")
+        example = aiven.FlinkApplication("example",
+            project="my-project",
+            service_name="my-application",
+            name="TestJob")
         ```
 
         ## Import
@@ -288,10 +288,10 @@ class FlinkApplication(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        example_app = aiven.FlinkApplication("example_app",
-            project=example_project["project"],
-            service_name="example-flink-service",
-            name="example-app")
+        example = aiven.FlinkApplication("example",
+            project="my-project",
+            service_name="my-application",
+            name="TestJob")
         ```
 
         ## Import

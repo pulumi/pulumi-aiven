@@ -9,6 +9,19 @@ import * as utilities from "./utilities";
 /**
  * Adds and manages users in a user group. You can add organization users and application users to groups. Organization users must be [managed in the Aiven Console](https://aiven.io/docs/platform/howto/manage-org-users). Application users can be created and managed using the `aiven.OrganizationApplicationUser` resource. Groups are granted roles and permissions using the `aiven.OrganizationPermission` resource.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const example = new aiven.OrganizationUserGroupMember("example", {
+ *     organizationId: "org1a23f456789",
+ *     groupId: "foo",
+ *     userId: "foo",
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

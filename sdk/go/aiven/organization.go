@@ -27,8 +27,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewOrganization(ctx, "main", &aiven.OrganizationArgs{
-//				Name: pulumi.String("Example organization"),
+//			_, err := aiven.NewOrganization(ctx, "example", &aiven.OrganizationArgs{
+//				Name: pulumi.String("Aiven Ltd"),
 //			})
 //			if err != nil {
 //				return err

@@ -22,17 +22,21 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var tfUser = new Aiven.OrganizationApplicationUser("tf_user", new()
-    ///     {
-    ///         OrganizationId = main.Id,
-    ///         Name = "app-terraform",
-    ///     });
-    /// 
     ///     var example = new Aiven.OrganizationApplicationUserToken("example", new()
     ///     {
-    ///         OrganizationId = main.Id,
-    ///         UserId = tfUser.UserId,
-    ///         Description = "Token for TF access to Aiven.",
+    ///         OrganizationId = "org1a23f456789",
+    ///         UserId = "foo",
+    ///         Description = "Integration client Alpha",
+    ///         ExtendWhenUsed = false,
+    ///         IpAllowlists = new[]
+    ///         {
+    ///             "192.168.0.0/24",
+    ///         },
+    ///         MaxAgeSeconds = 600,
+    ///         Scopes = new[]
+    ///         {
+    ///             "user:read",
+    ///         },
     ///     });
     /// 
     /// });

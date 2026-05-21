@@ -3,11 +3,14 @@
 
 package com.pulumi.aiven;
 
+import com.pulumi.aiven.inputs.KafkaSchemaRegistryAclTimeoutsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class KafkaSchemaRegistryAclArgs extends com.pulumi.resources.ResourceArgs {
@@ -15,14 +18,14 @@ public final class KafkaSchemaRegistryAclArgs extends com.pulumi.resources.Resou
     public static final KafkaSchemaRegistryAclArgs Empty = new KafkaSchemaRegistryAclArgs();
 
     /**
-     * Kafka Schema Registry permission to grant. The possible values are `schemaRegistryRead` and `schemaRegistryWrite`. Changing this property forces recreation of the resource.
+     * ACL entry for Schema Registry. The possible values are `schemaRegistryRead` and `schemaRegistryWrite`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="permission", required=true)
     private Output<String> permission;
 
     /**
-     * @return Kafka Schema Registry permission to grant. The possible values are `schemaRegistryRead` and `schemaRegistryWrite`. Changing this property forces recreation of the resource.
+     * @return ACL entry for Schema Registry. The possible values are `schemaRegistryRead` and `schemaRegistryWrite`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> permission() {
@@ -30,14 +33,14 @@ public final class KafkaSchemaRegistryAclArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="project", required=true)
     private Output<String> project;
 
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> project() {
@@ -45,14 +48,14 @@ public final class KafkaSchemaRegistryAclArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Resource name pattern for the Schema Registry ACL entry. Changing this property forces recreation of the resource.
+     * Schema Registry ACL entry resource name pattern. Length must be between `1` and `249`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="resource", required=true)
     private Output<String> resource;
 
     /**
-     * @return Resource name pattern for the Schema Registry ACL entry. Changing this property forces recreation of the resource.
+     * @return Schema Registry ACL entry resource name pattern. Length must be between `1` and `249`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> resource() {
@@ -60,29 +63,36 @@ public final class KafkaSchemaRegistryAclArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="serviceName", required=true)
     private Output<String> serviceName;
 
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service name. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> serviceName() {
         return this.serviceName;
     }
 
+    @Import(name="timeouts")
+    private @Nullable Output<KafkaSchemaRegistryAclTimeoutsArgs> timeouts;
+
+    public Optional<Output<KafkaSchemaRegistryAclTimeoutsArgs>> timeouts() {
+        return Optional.ofNullable(this.timeouts);
+    }
+
     /**
-     * Username pattern for the ACL entry. Changing this property forces recreation of the resource.
+     * Username. Length must be between `1` and `64`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="username", required=true)
     private Output<String> username;
 
     /**
-     * @return Username pattern for the ACL entry. Changing this property forces recreation of the resource.
+     * @return Username. Length must be between `1` and `64`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> username() {
@@ -96,6 +106,7 @@ public final class KafkaSchemaRegistryAclArgs extends com.pulumi.resources.Resou
         this.project = $.project;
         this.resource = $.resource;
         this.serviceName = $.serviceName;
+        this.timeouts = $.timeouts;
         this.username = $.username;
     }
 
@@ -118,7 +129,7 @@ public final class KafkaSchemaRegistryAclArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param permission Kafka Schema Registry permission to grant. The possible values are `schemaRegistryRead` and `schemaRegistryWrite`. Changing this property forces recreation of the resource.
+         * @param permission ACL entry for Schema Registry. The possible values are `schemaRegistryRead` and `schemaRegistryWrite`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -129,7 +140,7 @@ public final class KafkaSchemaRegistryAclArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param permission Kafka Schema Registry permission to grant. The possible values are `schemaRegistryRead` and `schemaRegistryWrite`. Changing this property forces recreation of the resource.
+         * @param permission ACL entry for Schema Registry. The possible values are `schemaRegistryRead` and `schemaRegistryWrite`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -139,7 +150,7 @@ public final class KafkaSchemaRegistryAclArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param project The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param project Project name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -150,7 +161,7 @@ public final class KafkaSchemaRegistryAclArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param project The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param project Project name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -160,7 +171,7 @@ public final class KafkaSchemaRegistryAclArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param resource Resource name pattern for the Schema Registry ACL entry. Changing this property forces recreation of the resource.
+         * @param resource Schema Registry ACL entry resource name pattern. Length must be between `1` and `249`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -171,7 +182,7 @@ public final class KafkaSchemaRegistryAclArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param resource Resource name pattern for the Schema Registry ACL entry. Changing this property forces recreation of the resource.
+         * @param resource Schema Registry ACL entry resource name pattern. Length must be between `1` and `249`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -181,7 +192,7 @@ public final class KafkaSchemaRegistryAclArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param serviceName The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param serviceName Service name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -192,7 +203,7 @@ public final class KafkaSchemaRegistryAclArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param serviceName The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param serviceName Service name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -201,8 +212,17 @@ public final class KafkaSchemaRegistryAclArgs extends com.pulumi.resources.Resou
             return serviceName(Output.of(serviceName));
         }
 
+        public Builder timeouts(@Nullable Output<KafkaSchemaRegistryAclTimeoutsArgs> timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
+        public Builder timeouts(KafkaSchemaRegistryAclTimeoutsArgs timeouts) {
+            return timeouts(Output.of(timeouts));
+        }
+
         /**
-         * @param username Username pattern for the ACL entry. Changing this property forces recreation of the resource.
+         * @param username Username. Length must be between `1` and `64`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -213,7 +233,7 @@ public final class KafkaSchemaRegistryAclArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param username Username pattern for the ACL entry. Changing this property forces recreation of the resource.
+         * @param username Username. Length must be between `1` and `64`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 

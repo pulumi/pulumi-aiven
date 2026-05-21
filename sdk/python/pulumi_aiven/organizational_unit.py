@@ -190,9 +190,9 @@ class OrganizationalUnit(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        example_unit = aiven.OrganizationalUnit("example_unit",
-            name="Example organizational unit",
-            parent_id=main["id"])
+        example = aiven.OrganizationalUnit("example",
+            parent_id="a22ba494e096",
+            name="Aiven Ltd")
         ```
 
         ## Import
@@ -222,9 +222,9 @@ class OrganizationalUnit(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        example_unit = aiven.OrganizationalUnit("example_unit",
-            name="Example organizational unit",
-            parent_id=main["id"])
+        example = aiven.OrganizationalUnit("example",
+            parent_id="a22ba494e096",
+            name="Aiven Ltd")
         ```
 
         ## Import

@@ -170,8 +170,8 @@ def get_organization_project(organization_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    example = aiven.get_organization_project(project_id=foo["projectId"],
-        organization_id=foo["organizationId"])
+    example = aiven.get_organization_project(organization_id="org1234abcd",
+        project_id="project-1")
     ```
 
 
@@ -212,8 +212,8 @@ def get_organization_project_output(organization_id: pulumi.Input[Optional[_buil
     import pulumi
     import pulumi_aiven as aiven
 
-    example = aiven.get_organization_project(project_id=foo["projectId"],
-        organization_id=foo["organizationId"])
+    example = aiven.get_organization_project(organization_id="org1234abcd",
+        project_id="project-1")
     ```
 
 

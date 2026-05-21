@@ -47,6 +47,21 @@ public final class GetServiceListService extends com.pulumi.resources.InvokeArgs
     }
 
     /**
+     * Active Customer Managed Key identifier (CMK ID).
+     * 
+     */
+    @Import(name="cmkId", required=true)
+    private String cmkId;
+
+    /**
+     * @return Active Customer Managed Key identifier (CMK ID).
+     * 
+     */
+    public String cmkId() {
+        return this.cmkId;
+    }
+
+    /**
      * Service creation timestamp (ISO 8601).
      * 
      */
@@ -276,6 +291,7 @@ public final class GetServiceListService extends com.pulumi.resources.InvokeArgs
     private GetServiceListService(GetServiceListService $) {
         this.cloudDescription = $.cloudDescription;
         this.cloudName = $.cloudName;
+        this.cmkId = $.cmkId;
         this.createTime = $.createTime;
         this.diskSpaceMb = $.diskSpaceMb;
         this.isClusterPlan = $.isClusterPlan;
@@ -330,6 +346,17 @@ public final class GetServiceListService extends com.pulumi.resources.InvokeArgs
          */
         public Builder cloudName(String cloudName) {
             $.cloudName = cloudName;
+            return this;
+        }
+
+        /**
+         * @param cmkId Active Customer Managed Key identifier (CMK ID).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cmkId(String cmkId) {
+            $.cmkId = cmkId;
             return this;
         }
 
@@ -504,6 +531,9 @@ public final class GetServiceListService extends com.pulumi.resources.InvokeArgs
             }
             if ($.cloudName == null) {
                 throw new MissingRequiredPropertyException("GetServiceListService", "cloudName");
+            }
+            if ($.cmkId == null) {
+                throw new MissingRequiredPropertyException("GetServiceListService", "cmkId");
             }
             if ($.createTime == null) {
                 throw new MissingRequiredPropertyException("GetServiceListService", "createTime");

@@ -9,6 +9,26 @@ import * as utilities from "./utilities";
 /**
  * Creates and manages an [Aiven project](https://aiven.io/docs/platform/concepts/orgs-units-projects#projects).
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const example = new aiven.OrganizationProject("example", {
+ *     organizationId: "org1234abcd",
+ *     projectId: "project-1",
+ *     billingGroupId: "721bf796-1d89-402d-9195-425a23c4efdc",
+ *     parentId: "a3fd7a594e01",
+ *     basePort: 10000,
+ *     tags: [{
+ *         key: "foo",
+ *         value: "foo",
+ *     }],
+ *     technicalEmails: ["foo@example.com"],
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

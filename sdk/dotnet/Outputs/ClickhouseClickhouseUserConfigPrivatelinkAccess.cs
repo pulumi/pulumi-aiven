@@ -18,6 +18,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? Clickhouse;
         /// <summary>
+        /// Enable clickhouse_arrowflight.
+        /// </summary>
+        public readonly bool? ClickhouseArrowflight;
+        /// <summary>
         /// Enable clickhouse_https.
         /// </summary>
         public readonly bool? ClickhouseHttps;
@@ -34,6 +38,8 @@ namespace Pulumi.Aiven.Outputs
         private ClickhouseClickhouseUserConfigPrivatelinkAccess(
             bool? clickhouse,
 
+            bool? clickhouseArrowflight,
+
             bool? clickhouseHttps,
 
             bool? clickhouseMysql,
@@ -41,6 +47,7 @@ namespace Pulumi.Aiven.Outputs
             bool? prometheus)
         {
             Clickhouse = clickhouse;
+            ClickhouseArrowflight = clickhouseArrowflight;
             ClickhouseHttps = clickhouseHttps;
             ClickhouseMysql = clickhouseMysql;
             Prometheus = prometheus;

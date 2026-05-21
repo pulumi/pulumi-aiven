@@ -15,11 +15,13 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const exampleMysqlUser = new aiven.MysqlUser("example_mysql_user", {
- *     serviceName: exampleMysql.serviceName,
- *     project: exampleProject.project,
- *     username: "example-mysql-user",
- *     password: serviceUserPw,
+ * const example = new aiven.MysqlUser("example", {
+ *     project: "my-project",
+ *     serviceName: "my-mysql",
+ *     username: "testuser",
+ *     passwordWo: "password123",
+ *     passwordWoVersion: 1,
+ *     authentication: "caching_sha2_password",
  * });
  * ```
  *

@@ -15,10 +15,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const exampleOpensearchUser = aiven.getOpensearchUser({
- *     serviceName: "example-opensearch-service",
- *     project: exampleProject.project,
- *     username: "example-opensearch-user",
+ * const example = aiven.getOpensearchUser({
+ *     project: "my-project",
+ *     serviceName: "my-opensearch",
+ *     username: "testuser",
  * });
  * ```
  */
@@ -90,10 +90,10 @@ export interface GetOpensearchUserResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const exampleOpensearchUser = aiven.getOpensearchUser({
- *     serviceName: "example-opensearch-service",
- *     project: exampleProject.project,
- *     username: "example-opensearch-user",
+ * const example = aiven.getOpensearchUser({
+ *     project: "my-project",
+ *     serviceName: "my-opensearch",
+ *     username: "testuser",
  * });
  * ```
  */

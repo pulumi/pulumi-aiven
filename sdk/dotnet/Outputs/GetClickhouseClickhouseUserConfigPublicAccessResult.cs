@@ -18,6 +18,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? Clickhouse;
         /// <summary>
+        /// Allow clients to connect to ClickhouseArrowflight from the public internet for service nodes that are in a project VPC or another type of private network.
+        /// </summary>
+        public readonly bool? ClickhouseArrowflight;
+        /// <summary>
         /// Allow clients to connect to ClickhouseHttps from the public internet for service nodes that are in a project VPC or another type of private network.
         /// </summary>
         public readonly bool? ClickhouseHttps;
@@ -34,6 +38,8 @@ namespace Pulumi.Aiven.Outputs
         private GetClickhouseClickhouseUserConfigPublicAccessResult(
             bool? clickhouse,
 
+            bool? clickhouseArrowflight,
+
             bool? clickhouseHttps,
 
             bool? clickhouseMysql,
@@ -41,6 +47,7 @@ namespace Pulumi.Aiven.Outputs
             bool? prometheus)
         {
             Clickhouse = clickhouse;
+            ClickhouseArrowflight = clickhouseArrowflight;
             ClickhouseHttps = clickhouseHttps;
             ClickhouseMysql = clickhouseMysql;
             Prometheus = prometheus;

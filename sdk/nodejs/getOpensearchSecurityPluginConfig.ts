@@ -15,9 +15,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const os_sec_config = aiven.getOpensearchSecurityPluginConfig({
- *     project: exampleProject.project,
- *     serviceName: exampleOpensearch.serviceName,
+ * const example = aiven.getOpensearchSecurityPluginConfig({
+ *     project: "my-project",
+ *     serviceName: "my-opensearch",
  * });
  * ```
  */
@@ -88,9 +88,9 @@ export interface GetOpensearchSecurityPluginConfigResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const os_sec_config = aiven.getOpensearchSecurityPluginConfig({
- *     project: exampleProject.project,
- *     serviceName: exampleOpensearch.serviceName,
+ * const example = aiven.getOpensearchSecurityPluginConfig({
+ *     project: "my-project",
+ *     serviceName: "my-opensearch",
  * });
  * ```
  */

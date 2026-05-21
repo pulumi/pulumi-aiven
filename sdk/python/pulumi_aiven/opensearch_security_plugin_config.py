@@ -221,10 +221,10 @@ class OpensearchSecurityPluginConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        main = aiven.OpensearchSecurityPluginConfig("main",
-            project=example_project["project"],
-            service_name=example_opensearch["serviceName"],
-            admin_password=opensearch_security_admin_password)
+        example = aiven.OpensearchSecurityPluginConfig("example",
+            project="my-project",
+            service_name="my-opensearch",
+            admin_password="h3.2aD!z2")
         ```
 
         ## Import
@@ -255,10 +255,10 @@ class OpensearchSecurityPluginConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        main = aiven.OpensearchSecurityPluginConfig("main",
-            project=example_project["project"],
-            service_name=example_opensearch["serviceName"],
-            admin_password=opensearch_security_admin_password)
+        example = aiven.OpensearchSecurityPluginConfig("example",
+            project="my-project",
+            service_name="my-opensearch",
+            admin_password="h3.2aD!z2")
         ```
 
         ## Import

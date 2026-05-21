@@ -19,6 +19,41 @@ import javax.annotation.Nullable;
 /**
  * The aiven.StaticIp resource allows the creation and deletion of static ips. Please note that once a static ip is in the &#39;assigned&#39; state it is bound to the node it is assigned to and cannot be deleted or disassociated until the node is recycled. Plans that would delete static ips that are in the assigned state will be blocked.
  * 
+ * ## Example Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.aiven.StaticIp;
+ * import com.pulumi.aiven.StaticIpArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new StaticIp("example", StaticIpArgs.builder()
+ *             .project("my-project")
+ *             .cloudName("aws-eu-central-1")
+ *             .terminationProtection(false)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * ```sh

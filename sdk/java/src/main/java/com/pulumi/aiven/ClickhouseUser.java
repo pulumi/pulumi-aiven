@@ -45,10 +45,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleUser = new ClickhouseUser("exampleUser", ClickhouseUserArgs.builder()
- *             .project(exampleProject.project())
- *             .serviceName(exampleService.serviceName())
- *             .username("analyst")
+ *         var example = new ClickhouseUser("example", ClickhouseUserArgs.builder()
+ *             .project("my-project")
+ *             .serviceName("my-clickhouse")
+ *             .username("alice")
+ *             .passwordWo("password123")
+ *             .passwordWoVersion(1)
  *             .build());
  * 
  *     }

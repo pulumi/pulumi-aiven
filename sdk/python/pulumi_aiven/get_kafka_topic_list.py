@@ -104,6 +104,16 @@ def get_kafka_topic_list(project: Optional[_builtins.str] = None,
     """
     Lists Kafka topics for a service.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    example = aiven.get_kafka_topic_list(project="my-project",
+        service_name="my-kafka")
+    ```
+
 
     :param _builtins.str project: Project name.
     :param _builtins.str service_name: Service name.
@@ -130,6 +140,16 @@ def get_kafka_topic_list_output(project: pulumi.Input[Optional[_builtins.str]] =
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKafkaTopicListResult]:
     """
     Lists Kafka topics for a service.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    example = aiven.get_kafka_topic_list(project="my-project",
+        service_name="my-kafka")
+    ```
 
 
     :param _builtins.str project: Project name.

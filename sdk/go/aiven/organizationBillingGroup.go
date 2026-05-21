@@ -17,6 +17,51 @@ import (
 // **This resource is in the beta stage and may change without notice.** Set
 // the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := aiven.NewOrganizationBillingGroup(ctx, "example", &aiven.OrganizationBillingGroupArgs{
+//				OrganizationId:    pulumi.String("org1a23f456789"),
+//				BillingAddressId:  pulumi.String("addr4b1ff1ceeaa"),
+//				ShippingAddressId: pulumi.String("addr4b1ff1ceeaa"),
+//				BillingContactEmails: aiven.OrganizationBillingGroupBillingContactEmailArray{
+//					&aiven.OrganizationBillingGroupBillingContactEmailArgs{
+//						Email: pulumi.String("jane@example.com"),
+//					},
+//				},
+//				BillingEmails: aiven.OrganizationBillingGroupBillingEmailArray{
+//					&aiven.OrganizationBillingGroupBillingEmailArgs{
+//						Email: pulumi.String("jane@example.com"),
+//					},
+//				},
+//				BillingGroupName: pulumi.String("Default billing group for the organization"),
+//				PaymentMethod: &aiven.OrganizationBillingGroupPaymentMethodArgs{
+//					PaymentMethodId:   pulumi.String("pm4b1ff1ceeaa"),
+//					PaymentMethodType: pulumi.String("credit_card"),
+//				},
+//				VatId:             pulumi.String("FI12345678"),
+//				CustomInvoiceText: pulumi.String("Extra billing text"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh

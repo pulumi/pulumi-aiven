@@ -78,6 +78,21 @@ public final class KafkaConnectKafkaConnectUserConfigSecretProviderVaultArgs ext
     }
 
     /**
+     * PEM encoded certificate of the Vault server. Required if the vault server uses a self-signed certificate.
+     * 
+     */
+    @Import(name="serverPem")
+    private @Nullable Output<String> serverPem;
+
+    /**
+     * @return PEM encoded certificate of the Vault server. Required if the vault server uses a self-signed certificate.
+     * 
+     */
+    public Optional<Output<String>> serverPem() {
+        return Optional.ofNullable(this.serverPem);
+    }
+
+    /**
      * Token used to authenticate with vault and auth method `token`.
      * 
      */
@@ -99,6 +114,7 @@ public final class KafkaConnectKafkaConnectUserConfigSecretProviderVaultArgs ext
         this.authMethod = $.authMethod;
         this.engineVersion = $.engineVersion;
         this.prefixPathDepth = $.prefixPathDepth;
+        this.serverPem = $.serverPem;
         this.token = $.token;
     }
 
@@ -202,6 +218,27 @@ public final class KafkaConnectKafkaConnectUserConfigSecretProviderVaultArgs ext
          */
         public Builder prefixPathDepth(Integer prefixPathDepth) {
             return prefixPathDepth(Output.of(prefixPathDepth));
+        }
+
+        /**
+         * @param serverPem PEM encoded certificate of the Vault server. Required if the vault server uses a self-signed certificate.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serverPem(@Nullable Output<String> serverPem) {
+            $.serverPem = serverPem;
+            return this;
+        }
+
+        /**
+         * @param serverPem PEM encoded certificate of the Vault server. Required if the vault server uses a self-signed certificate.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serverPem(String serverPem) {
+            return serverPem(Output.of(serverPem));
         }
 
         /**

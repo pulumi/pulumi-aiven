@@ -170,9 +170,9 @@ def get_pg_user(project: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    example_user = aiven.get_pg_user(service_name=example_postgres["serviceName"],
-        project=example_project["project"],
-        username="example-service-user")
+    example = aiven.get_pg_user(project="my-project",
+        service_name="my-pg",
+        username="testuser")
     ```
 
 
@@ -213,9 +213,9 @@ def get_pg_user_output(project: pulumi.Input[Optional[_builtins.str]] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    example_user = aiven.get_pg_user(service_name=example_postgres["serviceName"],
-        project=example_project["project"],
-        username="example-service-user")
+    example = aiven.get_pg_user(project="my-project",
+        service_name="my-pg",
+        username="testuser")
     ```
 
 

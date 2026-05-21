@@ -170,9 +170,9 @@ def get_mysql_user(project: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    example_mysql_user = aiven.get_mysql_user(service_name=example_mysql["serviceName"],
-        project=example_project["project"],
-        username="example-mysql-user")
+    example = aiven.get_mysql_user(project="my-project",
+        service_name="my-mysql",
+        username="testuser")
     ```
 
 
@@ -213,9 +213,9 @@ def get_mysql_user_output(project: pulumi.Input[Optional[_builtins.str]] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    example_mysql_user = aiven.get_mysql_user(service_name=example_mysql["serviceName"],
-        project=example_project["project"],
-        username="example-mysql-user")
+    example = aiven.get_mysql_user(project="my-project",
+        service_name="my-mysql",
+        username="testuser")
     ```
 
 

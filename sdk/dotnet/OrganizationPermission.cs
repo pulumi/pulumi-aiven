@@ -22,66 +22,21 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     // Grant access to a specific project
-    ///     var exampleProjectPermissions = new Aiven.OrganizationPermission("example_project_permissions", new()
+    ///     var example = new Aiven.OrganizationPermission("example", new()
     ///     {
-    ///         OrganizationId = main.Id,
-    ///         ResourceId = exampleProject.Project,
-    ///         ResourceType = "project",
-    ///         Permissions = new[]
-    ///         {
-    ///             new Aiven.Inputs.OrganizationPermissionPermissionArgs
-    ///             {
-    ///                 Permissions = new[]
-    ///                 {
-    ///                     "operator",
-    ///                     "service:logs:read",
-    ///                 },
-    ///                 PrincipalId = "u123a456b7890c",
-    ///                 PrincipalType = "user",
-    ///             },
-    ///             new Aiven.Inputs.OrganizationPermissionPermissionArgs
-    ///             {
-    ///                 Permissions = new[]
-    ///                 {
-    ///                     "project:integrations:write",
-    ///                     "developer",
-    ///                 },
-    ///                 PrincipalId = exampleGroup.GroupId,
-    ///                 PrincipalType = "user_group",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    ///     // Organization-level permissions
-    ///     var exampleOrgPermissions = new Aiven.OrganizationPermission("example_org_permissions", new()
-    ///     {
-    ///         OrganizationId = main.Id,
-    ///         ResourceId = main.Id,
+    ///         OrganizationId = "org1a23f456789",
     ///         ResourceType = "organization",
+    ///         ResourceId = "foo",
     ///         Permissions = new[]
     ///         {
     ///             new Aiven.Inputs.OrganizationPermissionPermissionArgs
     ///             {
+    ///                 PrincipalId = "u12345",
     ///                 Permissions = new[]
     ///                 {
-    ///                     "organization:app_users:write",
-    ///                     "project:audit_logs:read",
+    ///                     "read_only",
     ///                 },
-    ///                 PrincipalId = "u123a456b7890c",
     ///                 PrincipalType = "user",
-    ///             },
-    ///             new Aiven.Inputs.OrganizationPermissionPermissionArgs
-    ///             {
-    ///                 Permissions = new[]
-    ///                 {
-    ///                     "organization:users:write",
-    ///                     "organization:groups:write",
-    ///                     "organization:domains:write",
-    ///                     "organization:idps:write",
-    ///                 },
-    ///                 PrincipalId = exampleGroupAivenOrganizationUserGroup.GroupId,
-    ///                 PrincipalType = "user_group",
     ///             },
     ///         },
     ///     });

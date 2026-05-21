@@ -22,11 +22,11 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var main = new Aiven.OpensearchSecurityPluginConfig("main", new()
+    ///     var example = new Aiven.OpensearchSecurityPluginConfig("example", new()
     ///     {
-    ///         Project = exampleProject.Project,
-    ///         ServiceName = exampleOpensearch.ServiceName,
-    ///         AdminPassword = opensearchSecurityAdminPassword,
+    ///         Project = "my-project",
+    ///         ServiceName = "my-opensearch",
+    ///         AdminPassword = "h3.2aD!z2",
     ///     });
     /// 
     /// });

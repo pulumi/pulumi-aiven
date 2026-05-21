@@ -48,6 +48,21 @@ public final class GetServiceListServiceArgs extends com.pulumi.resources.Resour
     }
 
     /**
+     * Active Customer Managed Key identifier (CMK ID).
+     * 
+     */
+    @Import(name="cmkId", required=true)
+    private Output<String> cmkId;
+
+    /**
+     * @return Active Customer Managed Key identifier (CMK ID).
+     * 
+     */
+    public Output<String> cmkId() {
+        return this.cmkId;
+    }
+
+    /**
      * Service creation timestamp (ISO 8601).
      * 
      */
@@ -277,6 +292,7 @@ public final class GetServiceListServiceArgs extends com.pulumi.resources.Resour
     private GetServiceListServiceArgs(GetServiceListServiceArgs $) {
         this.cloudDescription = $.cloudDescription;
         this.cloudName = $.cloudName;
+        this.cmkId = $.cmkId;
         this.createTime = $.createTime;
         this.diskSpaceMb = $.diskSpaceMb;
         this.isClusterPlan = $.isClusterPlan;
@@ -352,6 +368,27 @@ public final class GetServiceListServiceArgs extends com.pulumi.resources.Resour
          */
         public Builder cloudName(String cloudName) {
             return cloudName(Output.of(cloudName));
+        }
+
+        /**
+         * @param cmkId Active Customer Managed Key identifier (CMK ID).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cmkId(Output<String> cmkId) {
+            $.cmkId = cmkId;
+            return this;
+        }
+
+        /**
+         * @param cmkId Active Customer Managed Key identifier (CMK ID).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cmkId(String cmkId) {
+            return cmkId(Output.of(cmkId));
         }
 
         /**
@@ -675,6 +712,9 @@ public final class GetServiceListServiceArgs extends com.pulumi.resources.Resour
             }
             if ($.cloudName == null) {
                 throw new MissingRequiredPropertyException("GetServiceListServiceArgs", "cloudName");
+            }
+            if ($.cmkId == null) {
+                throw new MissingRequiredPropertyException("GetServiceListServiceArgs", "cmkId");
             }
             if ($.createTime == null) {
                 throw new MissingRequiredPropertyException("GetServiceListServiceArgs", "createTime");

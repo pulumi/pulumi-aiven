@@ -31,6 +31,21 @@ public final class ClickhouseClickhouseUserConfigPublicAccessArgs extends com.pu
     }
 
     /**
+     * Allow clients to connect to clickhouseArrowflight from the public internet for service nodes that are in a project VPC or another type of private network.
+     * 
+     */
+    @Import(name="clickhouseArrowflight")
+    private @Nullable Output<Boolean> clickhouseArrowflight;
+
+    /**
+     * @return Allow clients to connect to clickhouseArrowflight from the public internet for service nodes that are in a project VPC or another type of private network.
+     * 
+     */
+    public Optional<Output<Boolean>> clickhouseArrowflight() {
+        return Optional.ofNullable(this.clickhouseArrowflight);
+    }
+
+    /**
      * Allow clients to connect to clickhouseHttps from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
@@ -79,6 +94,7 @@ public final class ClickhouseClickhouseUserConfigPublicAccessArgs extends com.pu
 
     private ClickhouseClickhouseUserConfigPublicAccessArgs(ClickhouseClickhouseUserConfigPublicAccessArgs $) {
         this.clickhouse = $.clickhouse;
+        this.clickhouseArrowflight = $.clickhouseArrowflight;
         this.clickhouseHttps = $.clickhouseHttps;
         this.clickhouseMysql = $.clickhouseMysql;
         this.prometheus = $.prometheus;
@@ -121,6 +137,27 @@ public final class ClickhouseClickhouseUserConfigPublicAccessArgs extends com.pu
          */
         public Builder clickhouse(Boolean clickhouse) {
             return clickhouse(Output.of(clickhouse));
+        }
+
+        /**
+         * @param clickhouseArrowflight Allow clients to connect to clickhouseArrowflight from the public internet for service nodes that are in a project VPC or another type of private network.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clickhouseArrowflight(@Nullable Output<Boolean> clickhouseArrowflight) {
+            $.clickhouseArrowflight = clickhouseArrowflight;
+            return this;
+        }
+
+        /**
+         * @param clickhouseArrowflight Allow clients to connect to clickhouseArrowflight from the public internet for service nodes that are in a project VPC or another type of private network.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clickhouseArrowflight(Boolean clickhouseArrowflight) {
+            return clickhouseArrowflight(Output.of(clickhouseArrowflight));
         }
 
         /**

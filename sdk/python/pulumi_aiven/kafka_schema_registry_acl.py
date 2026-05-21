@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['KafkaSchemaRegistryAclArgs', 'KafkaSchemaRegistryAcl']
 
@@ -23,27 +25,30 @@ class KafkaSchemaRegistryAclArgs:
                  project: pulumi.Input[_builtins.str],
                  resource: pulumi.Input[_builtins.str],
                  service_name: pulumi.Input[_builtins.str],
-                 username: pulumi.Input[_builtins.str]):
+                 username: pulumi.Input[_builtins.str],
+                 timeouts: pulumi.Input[Optional['KafkaSchemaRegistryAclTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a KafkaSchemaRegistryAcl resource.
 
-        :param pulumi.Input[_builtins.str] permission: Kafka Schema Registry permission to grant. The possible values are `schema_registry_read` and `schema_registry_write`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] resource: Resource name pattern for the Schema Registry ACL entry. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] username: Username pattern for the ACL entry. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] permission: ACL entry for Schema Registry. The possible values are `schema_registry_read` and `schema_registry_write`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] resource: Schema Registry ACL entry resource name pattern. Length must be between `1` and `249`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] service_name: Service name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] username: Username. Length must be between `1` and `64`. Changing this property forces recreation of the resource.
         """
         pulumi.set(__self__, "permission", permission)
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "resource", resource)
         pulumi.set(__self__, "service_name", service_name)
         pulumi.set(__self__, "username", username)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
 
     @_builtins.property
     @pulumi.getter
     def permission(self) -> pulumi.Input[_builtins.str]:
         """
-        Kafka Schema Registry permission to grant. The possible values are `schema_registry_read` and `schema_registry_write`. Changing this property forces recreation of the resource.
+        ACL entry for Schema Registry. The possible values are `schema_registry_read` and `schema_registry_write`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "permission")
 
@@ -55,7 +60,7 @@ class KafkaSchemaRegistryAclArgs:
     @pulumi.getter
     def project(self) -> pulumi.Input[_builtins.str]:
         """
-        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Project name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -67,7 +72,7 @@ class KafkaSchemaRegistryAclArgs:
     @pulumi.getter
     def resource(self) -> pulumi.Input[_builtins.str]:
         """
-        Resource name pattern for the Schema Registry ACL entry. Changing this property forces recreation of the resource.
+        Schema Registry ACL entry resource name pattern. Length must be between `1` and `249`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "resource")
 
@@ -79,7 +84,7 @@ class KafkaSchemaRegistryAclArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[_builtins.str]:
         """
-        The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Service name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
@@ -91,13 +96,22 @@ class KafkaSchemaRegistryAclArgs:
     @pulumi.getter
     def username(self) -> pulumi.Input[_builtins.str]:
         """
-        Username pattern for the ACL entry. Changing this property forces recreation of the resource.
+        Username. Length must be between `1` and `64`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "username")
 
     @username.setter
     def username(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "username", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> pulumi.Input[Optional['KafkaSchemaRegistryAclTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: pulumi.Input[Optional['KafkaSchemaRegistryAclTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
 
 
 @pulumi.input_type
@@ -108,16 +122,17 @@ class _KafkaSchemaRegistryAclState:
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  resource: pulumi.Input[Optional[_builtins.str]] = None,
                  service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional['KafkaSchemaRegistryAclTimeoutsArgs']] = None,
                  username: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering KafkaSchemaRegistryAcl resources.
 
-        :param pulumi.Input[_builtins.str] acl_id: Kafka Schema Registry ACL ID
-        :param pulumi.Input[_builtins.str] permission: Kafka Schema Registry permission to grant. The possible values are `schema_registry_read` and `schema_registry_write`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] resource: Resource name pattern for the Schema Registry ACL entry. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] username: Username pattern for the ACL entry. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] acl_id: Kafka Schema Registry ACL ID.
+        :param pulumi.Input[_builtins.str] permission: ACL entry for Schema Registry. The possible values are `schema_registry_read` and `schema_registry_write`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] resource: Schema Registry ACL entry resource name pattern. Length must be between `1` and `249`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] service_name: Service name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] username: Username. Length must be between `1` and `64`. Changing this property forces recreation of the resource.
         """
         if acl_id is not None:
             pulumi.set(__self__, "acl_id", acl_id)
@@ -129,6 +144,8 @@ class _KafkaSchemaRegistryAclState:
             pulumi.set(__self__, "resource", resource)
         if service_name is not None:
             pulumi.set(__self__, "service_name", service_name)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
         if username is not None:
             pulumi.set(__self__, "username", username)
 
@@ -136,7 +153,7 @@ class _KafkaSchemaRegistryAclState:
     @pulumi.getter(name="aclId")
     def acl_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Kafka Schema Registry ACL ID
+        Kafka Schema Registry ACL ID.
         """
         return pulumi.get(self, "acl_id")
 
@@ -148,7 +165,7 @@ class _KafkaSchemaRegistryAclState:
     @pulumi.getter
     def permission(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Kafka Schema Registry permission to grant. The possible values are `schema_registry_read` and `schema_registry_write`. Changing this property forces recreation of the resource.
+        ACL entry for Schema Registry. The possible values are `schema_registry_read` and `schema_registry_write`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "permission")
 
@@ -160,7 +177,7 @@ class _KafkaSchemaRegistryAclState:
     @pulumi.getter
     def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Project name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -172,7 +189,7 @@ class _KafkaSchemaRegistryAclState:
     @pulumi.getter
     def resource(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Resource name pattern for the Schema Registry ACL entry. Changing this property forces recreation of the resource.
+        Schema Registry ACL entry resource name pattern. Length must be between `1` and `249`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "resource")
 
@@ -184,7 +201,7 @@ class _KafkaSchemaRegistryAclState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Service name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
@@ -194,9 +211,18 @@ class _KafkaSchemaRegistryAclState:
 
     @_builtins.property
     @pulumi.getter
+    def timeouts(self) -> pulumi.Input[Optional['KafkaSchemaRegistryAclTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: pulumi.Input[Optional['KafkaSchemaRegistryAclTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
+
+    @_builtins.property
+    @pulumi.getter
     def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Username pattern for the ACL entry. Changing this property forces recreation of the resource.
+        Username. Length must be between `1` and `64`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "username")
 
@@ -215,10 +241,11 @@ class KafkaSchemaRegistryAcl(pulumi.CustomResource):
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  resource: pulumi.Input[Optional[_builtins.str]] = None,
                  service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['KafkaSchemaRegistryAclTimeoutsArgs', 'KafkaSchemaRegistryAclTimeoutsArgsDict']]] = None,
                  username: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
-        The Resource Kafka Schema Registry ACL resource allows the creation and management of Schema Registry ACLs for an Aiven Kafka service.
+        Creates and manages an Aiven for Apache Kafka® Schema Registry ACL entry. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
 
         ## Example Usage
 
@@ -226,12 +253,12 @@ class KafkaSchemaRegistryAcl(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        foo = aiven.KafkaSchemaRegistryAcl("foo",
-            project=kafka_schemas_project1["project"],
-            service_name=kafka_service1["serviceName"],
-            resource="Subject:topic-1",
-            username="group-user-*",
-            permission="schema_registry_read")
+        example = aiven.KafkaSchemaRegistryAcl("example",
+            project="my-project",
+            service_name="my-kafka",
+            permission="schema_registry_read",
+            resource="Config:",
+            username="admin*")
         ```
 
         ## Import
@@ -243,11 +270,11 @@ class KafkaSchemaRegistryAcl(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] permission: Kafka Schema Registry permission to grant. The possible values are `schema_registry_read` and `schema_registry_write`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] resource: Resource name pattern for the Schema Registry ACL entry. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] username: Username pattern for the ACL entry. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] permission: ACL entry for Schema Registry. The possible values are `schema_registry_read` and `schema_registry_write`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] resource: Schema Registry ACL entry resource name pattern. Length must be between `1` and `249`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] service_name: Service name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] username: Username. Length must be between `1` and `64`. Changing this property forces recreation of the resource.
         """
         ...
     @overload
@@ -256,7 +283,7 @@ class KafkaSchemaRegistryAcl(pulumi.CustomResource):
                  args: KafkaSchemaRegistryAclArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The Resource Kafka Schema Registry ACL resource allows the creation and management of Schema Registry ACLs for an Aiven Kafka service.
+        Creates and manages an Aiven for Apache Kafka® Schema Registry ACL entry. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
 
         ## Example Usage
 
@@ -264,12 +291,12 @@ class KafkaSchemaRegistryAcl(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        foo = aiven.KafkaSchemaRegistryAcl("foo",
-            project=kafka_schemas_project1["project"],
-            service_name=kafka_service1["serviceName"],
-            resource="Subject:topic-1",
-            username="group-user-*",
-            permission="schema_registry_read")
+        example = aiven.KafkaSchemaRegistryAcl("example",
+            project="my-project",
+            service_name="my-kafka",
+            permission="schema_registry_read",
+            resource="Config:",
+            username="admin*")
         ```
 
         ## Import
@@ -298,6 +325,7 @@ class KafkaSchemaRegistryAcl(pulumi.CustomResource):
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  resource: pulumi.Input[Optional[_builtins.str]] = None,
                  service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['KafkaSchemaRegistryAclTimeoutsArgs', 'KafkaSchemaRegistryAclTimeoutsArgsDict']]] = None,
                  username: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -320,6 +348,7 @@ class KafkaSchemaRegistryAcl(pulumi.CustomResource):
             if service_name is None and not opts.urn:
                 raise TypeError("Missing required property 'service_name'")
             __props__.__dict__["service_name"] = service_name
+            __props__.__dict__["timeouts"] = timeouts
             if username is None and not opts.urn:
                 raise TypeError("Missing required property 'username'")
             __props__.__dict__["username"] = username
@@ -339,6 +368,7 @@ class KafkaSchemaRegistryAcl(pulumi.CustomResource):
             project: pulumi.Input[Optional[_builtins.str]] = None,
             resource: pulumi.Input[Optional[_builtins.str]] = None,
             service_name: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['KafkaSchemaRegistryAclTimeoutsArgs', 'KafkaSchemaRegistryAclTimeoutsArgsDict']]] = None,
             username: pulumi.Input[Optional[_builtins.str]] = None) -> 'KafkaSchemaRegistryAcl':
         """
         Get an existing KafkaSchemaRegistryAcl resource's state with the given name, id, and optional extra
@@ -347,12 +377,12 @@ class KafkaSchemaRegistryAcl(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] acl_id: Kafka Schema Registry ACL ID
-        :param pulumi.Input[_builtins.str] permission: Kafka Schema Registry permission to grant. The possible values are `schema_registry_read` and `schema_registry_write`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] resource: Resource name pattern for the Schema Registry ACL entry. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] username: Username pattern for the ACL entry. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] acl_id: Kafka Schema Registry ACL ID.
+        :param pulumi.Input[_builtins.str] permission: ACL entry for Schema Registry. The possible values are `schema_registry_read` and `schema_registry_write`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] resource: Schema Registry ACL entry resource name pattern. Length must be between `1` and `249`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] service_name: Service name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] username: Username. Length must be between `1` and `64`. Changing this property forces recreation of the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -363,6 +393,7 @@ class KafkaSchemaRegistryAcl(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["resource"] = resource
         __props__.__dict__["service_name"] = service_name
+        __props__.__dict__["timeouts"] = timeouts
         __props__.__dict__["username"] = username
         return KafkaSchemaRegistryAcl(resource_name, opts=opts, __props__=__props__)
 
@@ -370,7 +401,7 @@ class KafkaSchemaRegistryAcl(pulumi.CustomResource):
     @pulumi.getter(name="aclId")
     def acl_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Kafka Schema Registry ACL ID
+        Kafka Schema Registry ACL ID.
         """
         return pulumi.get(self, "acl_id")
 
@@ -378,7 +409,7 @@ class KafkaSchemaRegistryAcl(pulumi.CustomResource):
     @pulumi.getter
     def permission(self) -> pulumi.Output[_builtins.str]:
         """
-        Kafka Schema Registry permission to grant. The possible values are `schema_registry_read` and `schema_registry_write`. Changing this property forces recreation of the resource.
+        ACL entry for Schema Registry. The possible values are `schema_registry_read` and `schema_registry_write`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "permission")
 
@@ -386,7 +417,7 @@ class KafkaSchemaRegistryAcl(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Project name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -394,7 +425,7 @@ class KafkaSchemaRegistryAcl(pulumi.CustomResource):
     @pulumi.getter
     def resource(self) -> pulumi.Output[_builtins.str]:
         """
-        Resource name pattern for the Schema Registry ACL entry. Changing this property forces recreation of the resource.
+        Schema Registry ACL entry resource name pattern. Length must be between `1` and `249`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "resource")
 
@@ -402,15 +433,20 @@ class KafkaSchemaRegistryAcl(pulumi.CustomResource):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Service name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
     @_builtins.property
     @pulumi.getter
+    def timeouts(self) -> pulumi.Output[Optional['outputs.KafkaSchemaRegistryAclTimeouts']]:
+        return pulumi.get(self, "timeouts")
+
+    @_builtins.property
+    @pulumi.getter
     def username(self) -> pulumi.Output[_builtins.str]:
         """
-        Username pattern for the ACL entry. Changing this property forces recreation of the resource.
+        Username. Length must be between `1` and `64`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "username")
 

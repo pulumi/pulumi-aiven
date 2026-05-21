@@ -257,22 +257,23 @@ class GovernanceAccess(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        example_access = aiven.GovernanceAccess("example_access",
-            organization_id=main["id"],
-            access_name="example-topic-access",
-            access_type="KAFKA",
+        example = aiven.GovernanceAccess("example",
+            organization_id="org1a23f456789",
             access_data={
-                "project": example_project["project"],
-                "service_name": example_kafka["serviceName"],
                 "acls": [{
-                    "resource_name": "example-topic",
-                    "resource_type": "Topic",
-                    "operation": "Read",
+                    "operation": "Write",
                     "permission_type": "ALLOW",
+                    "resource_name": "events",
+                    "resource_type": "Topic",
                     "host": "*",
                 }],
+                "project_name": "project-1",
+                "service_name": "service-1",
+                "username": "api3",
             },
-            owner_user_group_id=example["groupId"])
+            access_name="My Access",
+            access_type="KAFKA",
+            owner_user_group_id="ug22ba494e096")
         ```
 
         ## Import
@@ -308,22 +309,23 @@ class GovernanceAccess(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        example_access = aiven.GovernanceAccess("example_access",
-            organization_id=main["id"],
-            access_name="example-topic-access",
-            access_type="KAFKA",
+        example = aiven.GovernanceAccess("example",
+            organization_id="org1a23f456789",
             access_data={
-                "project": example_project["project"],
-                "service_name": example_kafka["serviceName"],
                 "acls": [{
-                    "resource_name": "example-topic",
-                    "resource_type": "Topic",
-                    "operation": "Read",
+                    "operation": "Write",
                     "permission_type": "ALLOW",
+                    "resource_name": "events",
+                    "resource_type": "Topic",
                     "host": "*",
                 }],
+                "project_name": "project-1",
+                "service_name": "service-1",
+                "username": "api3",
             },
-            owner_user_group_id=example["groupId"])
+            access_name="My Access",
+            access_type="KAFKA",
+            owner_user_group_id="ug22ba494e096")
         ```
 
         ## Import

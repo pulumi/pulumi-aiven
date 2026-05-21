@@ -15,55 +15,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * // Grant access to a specific project
- * const exampleProjectPermissions = new aiven.OrganizationPermission("example_project_permissions", {
- *     organizationId: main.id,
- *     resourceId: exampleProject.project,
- *     resourceType: "project",
- *     permissions: [
- *         {
- *             permissions: [
- *                 "operator",
- *                 "service:logs:read",
- *             ],
- *             principalId: "u123a456b7890c",
- *             principalType: "user",
- *         },
- *         {
- *             permissions: [
- *                 "project:integrations:write",
- *                 "developer",
- *             ],
- *             principalId: exampleGroup.groupId,
- *             principalType: "user_group",
- *         },
- *     ],
- * });
- * // Organization-level permissions
- * const exampleOrgPermissions = new aiven.OrganizationPermission("example_org_permissions", {
- *     organizationId: main.id,
- *     resourceId: main.id,
+ * const example = new aiven.OrganizationPermission("example", {
+ *     organizationId: "org1a23f456789",
  *     resourceType: "organization",
- *     permissions: [
- *         {
- *             permissions: [
- *                 "organization:app_users:write",
- *                 "project:audit_logs:read",
- *             ],
- *             principalId: "u123a456b7890c",
- *             principalType: "user",
- *         },
- *         {
- *             permissions: [
- *                 "organization:users:write",
- *                 "organization:groups:write",
- *                 "organization:domains:write",
- *                 "organization:idps:write",
- *             ],
- *             principalId: exampleGroupAivenOrganizationUserGroup.groupId,
- *             principalType: "user_group",
- *         },
- *     ],
+ *     resourceId: "foo",
+ *     permissions: [{
+ *         principalId: "u12345",
+ *         permissions: ["read_only"],
+ *         principalType: "user",
+ *     }],
  * });
  * ```
  *

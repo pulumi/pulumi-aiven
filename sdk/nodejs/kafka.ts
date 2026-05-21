@@ -82,6 +82,10 @@ export class Kafka extends pulumi.CustomResource {
      */
     declare public readonly cloudName: pulumi.Output<string | undefined>;
     /**
+     * UUID of the Customer Managed Key (CMK) used to apply [bring your own key (BYOK) encryption](https://aiven.io/docs/platform/howto/bring-your-own-key) to this service's data at rest. You can register a CMK for an Aiven project using the `aiven.Cmk` resource. Removing this attribute doesn't remove the CMK association. To remove it from this service, set this attribute to the all-zero UUID `00000000-0000-0000-0000-000000000000`.
+     */
+    declare public readonly cmkId: pulumi.Output<string>;
+    /**
      * Service component information objects
      */
     declare public /*out*/ readonly components: pulumi.Output<outputs.KafkaComponent[]>;
@@ -215,6 +219,7 @@ export class Kafka extends pulumi.CustomResource {
             const state = argsOrState as KafkaState | undefined;
             resourceInputs["additionalDiskSpace"] = state?.additionalDiskSpace;
             resourceInputs["cloudName"] = state?.cloudName;
+            resourceInputs["cmkId"] = state?.cmkId;
             resourceInputs["components"] = state?.components;
             resourceInputs["defaultAcl"] = state?.defaultAcl;
             resourceInputs["diskSpace"] = state?.diskSpace;
@@ -257,6 +262,7 @@ export class Kafka extends pulumi.CustomResource {
             }
             resourceInputs["additionalDiskSpace"] = args?.additionalDiskSpace;
             resourceInputs["cloudName"] = args?.cloudName;
+            resourceInputs["cmkId"] = args?.cmkId;
             resourceInputs["defaultAcl"] = args?.defaultAcl;
             resourceInputs["diskSpace"] = args?.diskSpace;
             resourceInputs["kafkaUserConfig"] = args?.kafkaUserConfig;
@@ -306,6 +312,10 @@ export interface KafkaState {
      * The cloud provider and region the service is hosted in. The format is `provider-region`, for example: `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ per project and service. Changing this value [migrates the service to another cloud provider or region](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and includes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases may have a brief interruption during DNS propagation.
      */
     cloudName?: pulumi.Input<string | undefined>;
+    /**
+     * UUID of the Customer Managed Key (CMK) used to apply [bring your own key (BYOK) encryption](https://aiven.io/docs/platform/howto/bring-your-own-key) to this service's data at rest. You can register a CMK for an Aiven project using the `aiven.Cmk` resource. Removing this attribute doesn't remove the CMK association. To remove it from this service, set this attribute to the all-zero UUID `00000000-0000-0000-0000-000000000000`.
+     */
+    cmkId?: pulumi.Input<string | undefined>;
     /**
      * Service component information objects
      */
@@ -438,6 +448,10 @@ export interface KafkaArgs {
      * The cloud provider and region the service is hosted in. The format is `provider-region`, for example: `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ per project and service. Changing this value [migrates the service to another cloud provider or region](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and includes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases may have a brief interruption during DNS propagation.
      */
     cloudName?: pulumi.Input<string | undefined>;
+    /**
+     * UUID of the Customer Managed Key (CMK) used to apply [bring your own key (BYOK) encryption](https://aiven.io/docs/platform/howto/bring-your-own-key) to this service's data at rest. You can register a CMK for an Aiven project using the `aiven.Cmk` resource. Removing this attribute doesn't remove the CMK association. To remove it from this service, set this attribute to the all-zero UUID `00000000-0000-0000-0000-000000000000`.
+     */
+    cmkId?: pulumi.Input<string | undefined>;
     /**
      * Create a default wildcard Kafka ACL.
      */

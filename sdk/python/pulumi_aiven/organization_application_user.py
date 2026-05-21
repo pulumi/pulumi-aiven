@@ -231,9 +231,9 @@ class OrganizationApplicationUser(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        tf_user = aiven.OrganizationApplicationUser("tf_user",
-            organization_id=main["id"],
-            name="app-terraform")
+        example = aiven.OrganizationApplicationUser("example",
+            organization_id="org1a23f456789",
+            name="devops app user")
         ```
 
         ## Import
@@ -264,9 +264,9 @@ class OrganizationApplicationUser(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        tf_user = aiven.OrganizationApplicationUser("tf_user",
-            organization_id=main["id"],
-            name="app-terraform")
+        example = aiven.OrganizationApplicationUser("example",
+            organization_id="org1a23f456789",
+            name="devops app user")
         ```
 
         ## Import

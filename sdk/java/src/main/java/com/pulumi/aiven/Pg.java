@@ -122,6 +122,20 @@ public class Pg extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.cloudName);
     }
     /**
+     * UUID of the Customer Managed Key (CMK) used to apply [bring your own key (BYOK) encryption](https://aiven.io/docs/platform/howto/bring-your-own-key) to this service&#39;s data at rest. You can register a CMK for an Aiven project using the `aiven.Cmk` resource. Removing this attribute doesn&#39;t remove the CMK association. To remove it from this service, set this attribute to the all-zero UUID `00000000-0000-0000-0000-000000000000`.
+     * 
+     */
+    @Export(name="cmkId", refs={String.class}, tree="[0]")
+    private Output<String> cmkId;
+
+    /**
+     * @return UUID of the Customer Managed Key (CMK) used to apply [bring your own key (BYOK) encryption](https://aiven.io/docs/platform/howto/bring-your-own-key) to this service&#39;s data at rest. You can register a CMK for an Aiven project using the `aiven.Cmk` resource. Removing this attribute doesn&#39;t remove the CMK association. To remove it from this service, set this attribute to the all-zero UUID `00000000-0000-0000-0000-000000000000`.
+     * 
+     */
+    public Output<String> cmkId() {
+        return this.cmkId;
+    }
+    /**
      * Service component information objects
      * 
      */

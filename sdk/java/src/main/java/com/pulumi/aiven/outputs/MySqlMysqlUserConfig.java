@@ -86,7 +86,7 @@ public final class MySqlMysqlUserConfig {
      */
     private @Nullable MySqlMysqlUserConfigMysqlIncrementalBackup mysqlIncrementalBackup;
     /**
-     * @return Enum: `8`, and newer. MySQL major version.
+     * @return Enum: `8`, `8.4`, and newer. MySQL major version.
      * 
      */
     private @Nullable String mysqlVersion;
@@ -221,7 +221,7 @@ public final class MySqlMysqlUserConfig {
         return Optional.ofNullable(this.mysqlIncrementalBackup);
     }
     /**
-     * @return Enum: `8`, and newer. MySQL major version.
+     * @return Enum: `8`, `8.4`, and newer. MySQL major version.
      * 
      */
     public Optional<String> mysqlVersion() {

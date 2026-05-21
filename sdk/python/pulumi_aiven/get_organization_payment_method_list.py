@@ -94,6 +94,15 @@ def get_organization_payment_method_list(organization_id: Optional[_builtins.str
     **This resource is in the beta stage and may change without notice.** Set
     the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    example = aiven.get_organization_payment_method_list(organization_id="org1a23f456789")
+    ```
+
 
     :param _builtins.str organization_id: ID of an organization.
     :param Sequence[Union['GetOrganizationPaymentMethodListPaymentMethodArgs', 'GetOrganizationPaymentMethodListPaymentMethodArgsDict']] payment_methods: Payment Methods.
@@ -119,6 +128,15 @@ def get_organization_payment_method_list_output(organization_id: pulumi.Input[Op
 
     **This resource is in the beta stage and may change without notice.** Set
     the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    example = aiven.get_organization_payment_method_list(organization_id="org1a23f456789")
+    ```
 
 
     :param _builtins.str organization_id: ID of an organization.

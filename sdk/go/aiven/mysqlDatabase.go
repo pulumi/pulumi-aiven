@@ -28,10 +28,10 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewMysqlDatabase(ctx, "example_mysql_database", &aiven.MysqlDatabaseArgs{
-//				Project:      pulumi.Any(exampleProject.Project),
-//				ServiceName:  pulumi.Any(exampleMysql.ServiceName),
-//				DatabaseName: pulumi.String("example-database"),
+//			_, err := aiven.NewMysqlDatabase(ctx, "example", &aiven.MysqlDatabaseArgs{
+//				Project:      pulumi.String("my-project"),
+//				ServiceName:  pulumi.String("my-mysql"),
+//				DatabaseName: pulumi.String("testdb"),
 //			})
 //			if err != nil {
 //				return err

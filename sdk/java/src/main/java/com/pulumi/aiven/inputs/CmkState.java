@@ -33,14 +33,14 @@ public final class CmkState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The cloud provider hosting the key management service (KMS). The possible values are `aws`, `gcp` and `oci`. Changing this property forces recreation of the resource.
+     * The cloud provider hosting the key management service (KMS). The possible values are `aws`, `azure`, `gcp` and `oci`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="cmkProvider")
     private @Nullable Output<String> cmkProvider;
 
     /**
-     * @return The cloud provider hosting the key management service (KMS). The possible values are `aws`, `gcp` and `oci`. Changing this property forces recreation of the resource.
+     * @return The cloud provider hosting the key management service (KMS). The possible values are `aws`, `azure`, `gcp` and `oci`. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> cmkProvider() {
@@ -198,7 +198,7 @@ public final class CmkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cmkProvider The cloud provider hosting the key management service (KMS). The possible values are `aws`, `gcp` and `oci`. Changing this property forces recreation of the resource.
+         * @param cmkProvider The cloud provider hosting the key management service (KMS). The possible values are `aws`, `azure`, `gcp` and `oci`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -209,7 +209,7 @@ public final class CmkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cmkProvider The cloud provider hosting the key management service (KMS). The possible values are `aws`, `gcp` and `oci`. Changing this property forces recreation of the resource.
+         * @param cmkProvider The cloud provider hosting the key management service (KMS). The possible values are `aws`, `azure`, `gcp` and `oci`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 

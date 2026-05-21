@@ -380,6 +380,31 @@ class OrganizationBillingGroup(pulumi.CustomResource):
         **This resource is in the beta stage and may change without notice.** Set
         the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        example = aiven.OrganizationBillingGroup("example",
+            organization_id="org1a23f456789",
+            billing_address_id="addr4b1ff1ceeaa",
+            shipping_address_id="addr4b1ff1ceeaa",
+            billing_contact_emails=[{
+                "email": "jane@example.com",
+            }],
+            billing_emails=[{
+                "email": "jane@example.com",
+            }],
+            billing_group_name="Default billing group for the organization",
+            payment_method={
+                "payment_method_id": "pm4b1ff1ceeaa",
+                "payment_method_type": "credit_card",
+            },
+            vat_id="FI12345678",
+            custom_invoice_text="Extra billing text")
+        ```
+
         ## Import
 
         ```sh
@@ -410,6 +435,31 @@ class OrganizationBillingGroup(pulumi.CustomResource):
 
         **This resource is in the beta stage and may change without notice.** Set
         the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        example = aiven.OrganizationBillingGroup("example",
+            organization_id="org1a23f456789",
+            billing_address_id="addr4b1ff1ceeaa",
+            shipping_address_id="addr4b1ff1ceeaa",
+            billing_contact_emails=[{
+                "email": "jane@example.com",
+            }],
+            billing_emails=[{
+                "email": "jane@example.com",
+            }],
+            billing_group_name="Default billing group for the organization",
+            payment_method={
+                "payment_method_id": "pm4b1ff1ceeaa",
+                "payment_method_type": "credit_card",
+            },
+            vat_id="FI12345678",
+            custom_invoice_text="Extra billing text")
+        ```
 
         ## Import
 

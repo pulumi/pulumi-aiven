@@ -2,10 +2,12 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The Resource Kafka Schema Registry ACL resource allows the creation and management of Schema Registry ACLs for an Aiven Kafka service.
+ * Creates and manages an Aiven for Apache Kafka® Schema Registry ACL entry. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
  *
  * ## Example Usage
  *
@@ -13,12 +15,12 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const foo = new aiven.KafkaSchemaRegistryAcl("foo", {
- *     project: kafka_schemas_project1.project,
- *     serviceName: kafka_service1.serviceName,
- *     resource: "Subject:topic-1",
- *     username: "group-user-*",
+ * const example = new aiven.KafkaSchemaRegistryAcl("example", {
+ *     project: "my-project",
+ *     serviceName: "my-kafka",
  *     permission: "schema_registry_read",
+ *     resource: "Config:",
+ *     username: "admin*",
  * });
  * ```
  *
@@ -57,27 +59,28 @@ export class KafkaSchemaRegistryAcl extends pulumi.CustomResource {
     }
 
     /**
-     * Kafka Schema Registry ACL ID
+     * Kafka Schema Registry ACL ID.
      */
     declare public /*out*/ readonly aclId: pulumi.Output<string>;
     /**
-     * Kafka Schema Registry permission to grant. The possible values are `schemaRegistryRead` and `schemaRegistryWrite`. Changing this property forces recreation of the resource.
+     * ACL entry for Schema Registry. The possible values are `schemaRegistryRead` and `schemaRegistryWrite`. Changing this property forces recreation of the resource.
      */
     declare public readonly permission: pulumi.Output<string>;
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name. Changing this property forces recreation of the resource.
      */
     declare public readonly project: pulumi.Output<string>;
     /**
-     * Resource name pattern for the Schema Registry ACL entry. Changing this property forces recreation of the resource.
+     * Schema Registry ACL entry resource name pattern. Length must be between `1` and `249`. Changing this property forces recreation of the resource.
      */
     declare public readonly resource: pulumi.Output<string>;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name. Changing this property forces recreation of the resource.
      */
     declare public readonly serviceName: pulumi.Output<string>;
+    declare public readonly timeouts: pulumi.Output<outputs.KafkaSchemaRegistryAclTimeouts | undefined>;
     /**
-     * Username pattern for the ACL entry. Changing this property forces recreation of the resource.
+     * Username. Length must be between `1` and `64`. Changing this property forces recreation of the resource.
      */
     declare public readonly username: pulumi.Output<string>;
 
@@ -99,6 +102,7 @@ export class KafkaSchemaRegistryAcl extends pulumi.CustomResource {
             resourceInputs["project"] = state?.project;
             resourceInputs["resource"] = state?.resource;
             resourceInputs["serviceName"] = state?.serviceName;
+            resourceInputs["timeouts"] = state?.timeouts;
             resourceInputs["username"] = state?.username;
         } else {
             const args = argsOrState as KafkaSchemaRegistryAclArgs | undefined;
@@ -121,6 +125,7 @@ export class KafkaSchemaRegistryAcl extends pulumi.CustomResource {
             resourceInputs["project"] = args?.project;
             resourceInputs["resource"] = args?.resource;
             resourceInputs["serviceName"] = args?.serviceName;
+            resourceInputs["timeouts"] = args?.timeouts;
             resourceInputs["username"] = args?.username;
             resourceInputs["aclId"] = undefined /*out*/;
         }
@@ -134,27 +139,28 @@ export class KafkaSchemaRegistryAcl extends pulumi.CustomResource {
  */
 export interface KafkaSchemaRegistryAclState {
     /**
-     * Kafka Schema Registry ACL ID
+     * Kafka Schema Registry ACL ID.
      */
     aclId?: pulumi.Input<string | undefined>;
     /**
-     * Kafka Schema Registry permission to grant. The possible values are `schemaRegistryRead` and `schemaRegistryWrite`. Changing this property forces recreation of the resource.
+     * ACL entry for Schema Registry. The possible values are `schemaRegistryRead` and `schemaRegistryWrite`. Changing this property forces recreation of the resource.
      */
     permission?: pulumi.Input<string | undefined>;
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name. Changing this property forces recreation of the resource.
      */
     project?: pulumi.Input<string | undefined>;
     /**
-     * Resource name pattern for the Schema Registry ACL entry. Changing this property forces recreation of the resource.
+     * Schema Registry ACL entry resource name pattern. Length must be between `1` and `249`. Changing this property forces recreation of the resource.
      */
     resource?: pulumi.Input<string | undefined>;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name. Changing this property forces recreation of the resource.
      */
     serviceName?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.KafkaSchemaRegistryAclTimeouts | undefined>;
     /**
-     * Username pattern for the ACL entry. Changing this property forces recreation of the resource.
+     * Username. Length must be between `1` and `64`. Changing this property forces recreation of the resource.
      */
     username?: pulumi.Input<string | undefined>;
 }
@@ -164,23 +170,24 @@ export interface KafkaSchemaRegistryAclState {
  */
 export interface KafkaSchemaRegistryAclArgs {
     /**
-     * Kafka Schema Registry permission to grant. The possible values are `schemaRegistryRead` and `schemaRegistryWrite`. Changing this property forces recreation of the resource.
+     * ACL entry for Schema Registry. The possible values are `schemaRegistryRead` and `schemaRegistryWrite`. Changing this property forces recreation of the resource.
      */
     permission: pulumi.Input<string>;
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name. Changing this property forces recreation of the resource.
      */
     project: pulumi.Input<string>;
     /**
-     * Resource name pattern for the Schema Registry ACL entry. Changing this property forces recreation of the resource.
+     * Schema Registry ACL entry resource name pattern. Length must be between `1` and `249`. Changing this property forces recreation of the resource.
      */
     resource: pulumi.Input<string>;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name. Changing this property forces recreation of the resource.
      */
     serviceName: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.KafkaSchemaRegistryAclTimeouts | undefined>;
     /**
-     * Username pattern for the ACL entry. Changing this property forces recreation of the resource.
+     * Username. Length must be between `1` and `64`. Changing this property forces recreation of the resource.
      */
     username: pulumi.Input<string>;
 }

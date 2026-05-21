@@ -28,11 +28,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewMysqlUser(ctx, "example_mysql_user", &aiven.MysqlUserArgs{
-//				ServiceName: pulumi.Any(exampleMysql.ServiceName),
-//				Project:     pulumi.Any(exampleProject.Project),
-//				Username:    pulumi.String("example-mysql-user"),
-//				Password:    pulumi.Any(serviceUserPw),
+//			_, err := aiven.NewMysqlUser(ctx, "example", &aiven.MysqlUserArgs{
+//				Project:           pulumi.String("my-project"),
+//				ServiceName:       pulumi.String("my-mysql"),
+//				Username:          pulumi.String("testuser"),
+//				PasswordWo:        pulumi.String("password123"),
+//				PasswordWoVersion: pulumi.Int(1),
+//				Authentication:    pulumi.String("caching_sha2_password"),
 //			})
 //			if err != nil {
 //				return err

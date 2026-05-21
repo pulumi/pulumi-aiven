@@ -357,11 +357,13 @@ class MysqlUser(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        example_mysql_user = aiven.MysqlUser("example_mysql_user",
-            service_name=example_mysql["serviceName"],
-            project=example_project["project"],
-            username="example-mysql-user",
-            password=service_user_pw)
+        example = aiven.MysqlUser("example",
+            project="my-project",
+            service_name="my-mysql",
+            username="testuser",
+            password_wo="password123",
+            password_wo_version=1,
+            authentication="caching_sha2_password")
         ```
 
         ## Import
@@ -397,11 +399,13 @@ class MysqlUser(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        example_mysql_user = aiven.MysqlUser("example_mysql_user",
-            service_name=example_mysql["serviceName"],
-            project=example_project["project"],
-            username="example-mysql-user",
-            password=service_user_pw)
+        example = aiven.MysqlUser("example",
+            project="my-project",
+            service_name="my-mysql",
+            username="testuser",
+            password_wo="password123",
+            password_wo_version=1,
+            authentication="caching_sha2_password")
         ```
 
         ## Import

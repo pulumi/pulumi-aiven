@@ -30,8 +30,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.aiven.OrganizationApplicationUser;
- * import com.pulumi.aiven.OrganizationApplicationUserArgs;
  * import com.pulumi.aiven.OrganizationApplicationUserToken;
  * import com.pulumi.aiven.OrganizationApplicationUserTokenArgs;
  * import java.util.ArrayList;
@@ -47,15 +45,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var tfUser = new OrganizationApplicationUser("tfUser", OrganizationApplicationUserArgs.builder()
- *             .organizationId(main.id())
- *             .name("app-terraform")
- *             .build());
- * 
  *         var example = new OrganizationApplicationUserToken("example", OrganizationApplicationUserTokenArgs.builder()
- *             .organizationId(main.id())
- *             .userId(tfUser.userId())
- *             .description("Token for TF access to Aiven.")
+ *             .organizationId("org1a23f456789")
+ *             .userId("foo")
+ *             .description("Integration client Alpha")
+ *             .extendWhenUsed(false)
+ *             .ipAllowlists("192.168.0.0/24")
+ *             .maxAgeSeconds(600)
+ *             .scopes("user:read")
  *             .build());
  * 
  *     }

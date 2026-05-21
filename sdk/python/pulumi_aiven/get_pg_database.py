@@ -147,9 +147,9 @@ def get_pg_database(database_name: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    main = aiven.get_pg_database(project=example_project["project"],
-        service_name=example_postgres["serviceName"],
-        database_name="example-database")
+    example = aiven.get_pg_database(project="my-project",
+        service_name="my-pg",
+        database_name="testdb")
     ```
 
 
@@ -188,9 +188,9 @@ def get_pg_database_output(database_name: pulumi.Input[Optional[_builtins.str]] 
     import pulumi
     import pulumi_aiven as aiven
 
-    main = aiven.get_pg_database(project=example_project["project"],
-        service_name=example_postgres["serviceName"],
-        database_name="example-database")
+    example = aiven.get_pg_database(project="my-project",
+        service_name="my-pg",
+        database_name="testdb")
     ```
 
 

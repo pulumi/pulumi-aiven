@@ -98,200 +98,42 @@ export interface ByocAwsEntityTimeouts {
     update?: string;
 }
 
-export interface CassandraCassandra {
+export interface ByocAwsProvisionTimeouts {
     /**
-     * Cassandra server URIs.
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    uris: string[];
+    create?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: string;
 }
 
-export interface CassandraCassandraUserConfig {
+export interface ByocPermissionsTimeouts {
     /**
-     * Additional Cloud Regions for Backup Replication.
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    additionalBackupRegions?: string;
+    create?: string;
     /**
-     * The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
      */
-    backupHour?: number;
+    delete?: string;
     /**
-     * The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
-    backupMinute?: number;
+    read?: string;
     /**
-     * Cassandra configuration values
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    cassandra?: outputs.CassandraCassandraUserConfigCassandra;
-    /**
-     * Enum: `3`, `4`, `4.1`, and newer. Cassandra version.
-     */
-    cassandraVersion?: string;
-    /**
-     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
-     */
-    ipFilterObjects?: outputs.CassandraCassandraUserConfigIpFilterObject[];
-    /**
-     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-     */
-    ipFilterStrings?: string[];
-    /**
-     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-     *
-     * @deprecated Deprecated. Use `ipFilterString` instead.
-     */
-    ipFilters?: string[];
-    /**
-     * Sets the service into migration mode enabling the sstableloader utility to be used to upload Cassandra data files. Available only on service create.
-     */
-    migrateSstableloader?: boolean;
-    /**
-     * Allow access to selected service ports from private networks
-     */
-    privateAccess?: outputs.CassandraCassandraUserConfigPrivateAccess;
-    /**
-     * Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
-     */
-    projectToForkFrom?: string;
-    /**
-     * Allow access to selected service ports from the public Internet
-     */
-    publicAccess?: outputs.CassandraCassandraUserConfigPublicAccess;
-    /**
-     * Store logs for the service so that they are available in the HTTP API and console.
-     */
-    serviceLog?: boolean;
-    /**
-     * Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
-     */
-    serviceToForkFrom?: string;
-    /**
-     * When bootstrapping, instead of creating a new Cassandra cluster try to join an existing one from another service. Can only be set on service creation. Example: `my-test-cassandra`.
-     */
-    serviceToJoinWith?: string;
-    /**
-     * Use static public IP addresses.
-     */
-    staticIps?: boolean;
-}
-
-export interface CassandraCassandraUserConfigCassandra {
-    /**
-     * Fail any multiple-partition batch exceeding this value. 50kb (10x warn threshold) by default. Example: `50`.
-     */
-    batchSizeFailThresholdInKb?: number;
-    /**
-     * Log a warning message on any multiple-partition batch size exceeding this value.5kb per batch by default.Caution should be taken on increasing the size of this thresholdas it can lead to node instability. Example: `5`.
-     */
-    batchSizeWarnThresholdInKb?: number;
-    /**
-     * Name of the datacenter to which nodes of this service belong. Can be set only when creating the service. Example: `my-service-google-west1`.
-     */
-    datacenter?: string;
-    /**
-     * How long the coordinator waits for read operations to complete before timing it out. 5 seconds by default. Example: `5000`.
-     */
-    readRequestTimeoutInMs?: number;
-    /**
-     * How long the coordinator waits for write requests to complete with at least one node in the local datacenter. 2 seconds by default. Example: `2000`.
-     */
-    writeRequestTimeoutInMs?: number;
-}
-
-export interface CassandraCassandraUserConfigIpFilterObject {
-    /**
-     * Description for IP filter list entry. Example: `Production service IP range`.
-     */
-    description?: string;
-    /**
-     * CIDR address block. Example: `10.20.0.0/16`.
-     */
-    network: string;
-}
-
-export interface CassandraCassandraUserConfigPrivateAccess {
-    /**
-     * Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-     */
-    prometheus?: boolean;
-}
-
-export interface CassandraCassandraUserConfigPublicAccess {
-    /**
-     * Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
-     */
-    prometheus?: boolean;
-}
-
-export interface CassandraComponent {
-    /**
-     * Service component name
-     */
-    component: string;
-    /**
-     * Connection info for connecting to the service component. This is a combination of host and port.
-     */
-    connectionUri: string;
-    /**
-     * Host name for connecting to the service component
-     */
-    host: string;
-    /**
-     * Kafka authentication method. This is a value specific to the 'kafka' service component
-     */
-    kafkaAuthenticationMethod: string;
-    /**
-     * Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
-     */
-    kafkaSslCa: string;
-    /**
-     * Port number for connecting to the service component
-     */
-    port: number;
-    /**
-     * Privatelink connection ID
-     */
-    privatelinkConnectionId: string;
-    /**
-     * Network access route
-     */
-    route: string;
-    /**
-     * Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
-     */
-    ssl: boolean;
-    /**
-     * DNS usage name
-     */
-    usage: string;
-}
-
-export interface CassandraServiceIntegration {
-    /**
-     * Type of the service integration
-     */
-    integrationType: string;
-    /**
-     * Name of the source service
-     */
-    sourceServiceName: string;
-}
-
-export interface CassandraTag {
-    /**
-     * Service tag key
-     */
-    key: string;
-    /**
-     * Service tag value
-     */
-    value: string;
-}
-
-export interface CassandraTechEmail {
-    /**
-     * An email address to contact for technical issues
-     */
-    email: string;
+    update?: string;
 }
 
 export interface ClickhouseClickhouse {
@@ -359,6 +201,10 @@ export interface ClickhouseClickhouseUserConfig {
      */
     recoveryBasebackupName?: string;
     /**
+     * ClickHouse server settings, which can be found in the `system.server_settings` table
+     */
+    serverSettings?: outputs.ClickhouseClickhouseUserConfigServerSettings;
+    /**
      * Store logs for the service so that they are available in the HTTP API and console.
      */
     serviceLog?: boolean;
@@ -366,6 +212,10 @@ export interface ClickhouseClickhouseUserConfig {
      * Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
      */
     serviceToForkFrom?: string;
+    /**
+     * ClickHouse session settings, which can be found in the `system.settings` table
+     */
+    sessionSettings?: outputs.ClickhouseClickhouseUserConfigSessionSettings;
     /**
      * Use static public IP addresses.
      */
@@ -393,6 +243,10 @@ export interface ClickhouseClickhouseUserConfigPrivateAccess {
      */
     clickhouse?: boolean;
     /**
+     * Allow clients to connect to clickhouseArrowflight with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+     */
+    clickhouseArrowflight?: boolean;
+    /**
      * Allow clients to connect to clickhouseHttps with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
      */
     clickhouseHttps?: boolean;
@@ -411,6 +265,10 @@ export interface ClickhouseClickhouseUserConfigPrivatelinkAccess {
      * Enable clickhouse.
      */
     clickhouse?: boolean;
+    /**
+     * Enable clickhouse_arrowflight.
+     */
+    clickhouseArrowflight?: boolean;
     /**
      * Enable clickhouse_https.
      */
@@ -431,6 +289,10 @@ export interface ClickhouseClickhouseUserConfigPublicAccess {
      */
     clickhouse?: boolean;
     /**
+     * Allow clients to connect to clickhouseArrowflight from the public internet for service nodes that are in a project VPC or another type of private network.
+     */
+    clickhouseArrowflight?: boolean;
+    /**
      * Allow clients to connect to clickhouseHttps from the public internet for service nodes that are in a project VPC or another type of private network.
      */
     clickhouseHttps?: boolean;
@@ -442,6 +304,20 @@ export interface ClickhouseClickhouseUserConfigPublicAccess {
      * Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
      */
     prometheus?: boolean;
+}
+
+export interface ClickhouseClickhouseUserConfigServerSettings {
+    /**
+     * Fraction of total server memory allocated to the vector similarity index cache. 0 disables the cache. Default is 0.07 (7% of server memory). Only effective on ClickHouse 25.8+. Default: `0.07`.
+     */
+    vectorSimilarityIndexCacheSize?: number;
+}
+
+export interface ClickhouseClickhouseUserConfigSessionSettings {
+    /**
+     * When set, ClickHouse applies backward-compatible behavior from the specified version. Automatically set to the previous version on major version upgrade. Set to null to disable compatibility mode once all incompatibilities have been resolved. Takes effect after the next service restart/upgrade.
+     */
+    compatibility?: string;
 }
 
 export interface ClickhouseComponent {
@@ -1276,398 +1152,6 @@ export interface GetBillingGroupTimeouts {
     read?: string;
 }
 
-export interface GetCassandaCassandra {
-    /**
-     * Cassandra server URIs.
-     */
-    uris: string[];
-}
-
-export interface GetCassandaCassandraUserConfig {
-    /**
-     * Additional Cloud Regions for Backup Replication.
-     */
-    additionalBackupRegions?: string;
-    /**
-     * The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
-     */
-    backupHour?: number;
-    /**
-     * The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
-     */
-    backupMinute?: number;
-    /**
-     * Cassandra configuration values
-     */
-    cassandra?: outputs.GetCassandaCassandraUserConfigCassandra;
-    /**
-     * Enum: `3`, `4`, `4.1`, and newer. Cassandra version.
-     */
-    cassandraVersion?: string;
-    /**
-     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
-     */
-    ipFilterObjects?: outputs.GetCassandaCassandraUserConfigIpFilterObject[];
-    /**
-     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-     */
-    ipFilterStrings?: string[];
-    /**
-     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-     *
-     * @deprecated Deprecated. Use `ipFilterString` instead.
-     */
-    ipFilters?: string[];
-    /**
-     * Sets the service into migration mode enabling the sstableloader utility to be used to upload Cassandra data files. Available only on service create.
-     */
-    migrateSstableloader?: boolean;
-    /**
-     * Allow access to selected service ports from private networks
-     */
-    privateAccess?: outputs.GetCassandaCassandraUserConfigPrivateAccess;
-    /**
-     * Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
-     */
-    projectToForkFrom?: string;
-    /**
-     * Allow access to selected service ports from the public Internet
-     */
-    publicAccess?: outputs.GetCassandaCassandraUserConfigPublicAccess;
-    /**
-     * Store logs for the service so that they are available in the HTTP API and console.
-     */
-    serviceLog?: boolean;
-    /**
-     * Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
-     */
-    serviceToForkFrom?: string;
-    /**
-     * When bootstrapping, instead of creating a new Cassandra cluster try to join an existing one from another service. Can only be set on service creation. Example: `my-test-cassandra`.
-     */
-    serviceToJoinWith?: string;
-    /**
-     * Use static public IP addresses.
-     */
-    staticIps?: boolean;
-}
-
-export interface GetCassandaCassandraUserConfigCassandra {
-    /**
-     * Fail any multiple-partition batch exceeding this value. 50kb (10x warn threshold) by default. Example: `50`.
-     */
-    batchSizeFailThresholdInKb?: number;
-    /**
-     * Log a warning message on any multiple-partition batch size exceeding this value.5kb per batch by default.Caution should be taken on increasing the size of this thresholdas it can lead to node instability. Example: `5`.
-     */
-    batchSizeWarnThresholdInKb?: number;
-    /**
-     * Name of the datacenter to which nodes of this service belong. Can be set only when creating the service. Example: `my-service-google-west1`.
-     */
-    datacenter?: string;
-    /**
-     * How long the coordinator waits for read operations to complete before timing it out. 5 seconds by default. Example: `5000`.
-     */
-    readRequestTimeoutInMs?: number;
-    /**
-     * How long the coordinator waits for write requests to complete with at least one node in the local datacenter. 2 seconds by default. Example: `2000`.
-     */
-    writeRequestTimeoutInMs?: number;
-}
-
-export interface GetCassandaCassandraUserConfigIpFilterObject {
-    /**
-     * Description for IP filter list entry. Example: `Production service IP range`.
-     */
-    description?: string;
-    /**
-     * CIDR address block. Example: `10.20.0.0/16`.
-     */
-    network: string;
-}
-
-export interface GetCassandaCassandraUserConfigPrivateAccess {
-    /**
-     * Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-     */
-    prometheus?: boolean;
-}
-
-export interface GetCassandaCassandraUserConfigPublicAccess {
-    /**
-     * Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
-     */
-    prometheus?: boolean;
-}
-
-export interface GetCassandaComponent {
-    /**
-     * Service component name
-     */
-    component: string;
-    /**
-     * Connection info for connecting to the service component. This is a combination of host and port.
-     */
-    connectionUri: string;
-    /**
-     * Host name for connecting to the service component
-     */
-    host: string;
-    /**
-     * Kafka authentication method. This is a value specific to the 'kafka' service component
-     */
-    kafkaAuthenticationMethod: string;
-    /**
-     * Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
-     */
-    kafkaSslCa: string;
-    /**
-     * Port number for connecting to the service component
-     */
-    port: number;
-    /**
-     * Privatelink connection ID
-     */
-    privatelinkConnectionId: string;
-    /**
-     * Network access route
-     */
-    route: string;
-    /**
-     * Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
-     */
-    ssl: boolean;
-    /**
-     * DNS usage name
-     */
-    usage: string;
-}
-
-export interface GetCassandaServiceIntegration {
-    /**
-     * Type of the service integration
-     */
-    integrationType: string;
-    /**
-     * Name of the source service
-     */
-    sourceServiceName: string;
-}
-
-export interface GetCassandaTag {
-    /**
-     * Service tag key
-     */
-    key: string;
-    /**
-     * Service tag value
-     */
-    value: string;
-}
-
-export interface GetCassandaTechEmail {
-    /**
-     * An email address to contact for technical issues
-     */
-    email: string;
-}
-
-export interface GetCassandraCassandra {
-    /**
-     * Cassandra server URIs.
-     */
-    uris: string[];
-}
-
-export interface GetCassandraCassandraUserConfig {
-    /**
-     * Additional Cloud Regions for Backup Replication.
-     */
-    additionalBackupRegions?: string;
-    /**
-     * The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
-     */
-    backupHour?: number;
-    /**
-     * The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
-     */
-    backupMinute?: number;
-    /**
-     * Cassandra configuration values
-     */
-    cassandra?: outputs.GetCassandraCassandraUserConfigCassandra;
-    /**
-     * Enum: `3`, `4`, `4.1`, and newer. Cassandra version.
-     */
-    cassandraVersion?: string;
-    /**
-     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
-     */
-    ipFilterObjects?: outputs.GetCassandraCassandraUserConfigIpFilterObject[];
-    /**
-     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-     */
-    ipFilterStrings?: string[];
-    /**
-     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-     *
-     * @deprecated Deprecated. Use `ipFilterString` instead.
-     */
-    ipFilters?: string[];
-    /**
-     * Sets the service into migration mode enabling the sstableloader utility to be used to upload Cassandra data files. Available only on service create.
-     */
-    migrateSstableloader?: boolean;
-    /**
-     * Allow access to selected service ports from private networks
-     */
-    privateAccess?: outputs.GetCassandraCassandraUserConfigPrivateAccess;
-    /**
-     * Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
-     */
-    projectToForkFrom?: string;
-    /**
-     * Allow access to selected service ports from the public Internet
-     */
-    publicAccess?: outputs.GetCassandraCassandraUserConfigPublicAccess;
-    /**
-     * Store logs for the service so that they are available in the HTTP API and console.
-     */
-    serviceLog?: boolean;
-    /**
-     * Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
-     */
-    serviceToForkFrom?: string;
-    /**
-     * When bootstrapping, instead of creating a new Cassandra cluster try to join an existing one from another service. Can only be set on service creation. Example: `my-test-cassandra`.
-     */
-    serviceToJoinWith?: string;
-    /**
-     * Use static public IP addresses.
-     */
-    staticIps?: boolean;
-}
-
-export interface GetCassandraCassandraUserConfigCassandra {
-    /**
-     * Fail any multiple-partition batch exceeding this value. 50kb (10x warn threshold) by default. Example: `50`.
-     */
-    batchSizeFailThresholdInKb?: number;
-    /**
-     * Log a warning message on any multiple-partition batch size exceeding this value.5kb per batch by default.Caution should be taken on increasing the size of this thresholdas it can lead to node instability. Example: `5`.
-     */
-    batchSizeWarnThresholdInKb?: number;
-    /**
-     * Name of the datacenter to which nodes of this service belong. Can be set only when creating the service. Example: `my-service-google-west1`.
-     */
-    datacenter?: string;
-    /**
-     * How long the coordinator waits for read operations to complete before timing it out. 5 seconds by default. Example: `5000`.
-     */
-    readRequestTimeoutInMs?: number;
-    /**
-     * How long the coordinator waits for write requests to complete with at least one node in the local datacenter. 2 seconds by default. Example: `2000`.
-     */
-    writeRequestTimeoutInMs?: number;
-}
-
-export interface GetCassandraCassandraUserConfigIpFilterObject {
-    /**
-     * Description for IP filter list entry. Example: `Production service IP range`.
-     */
-    description?: string;
-    /**
-     * CIDR address block. Example: `10.20.0.0/16`.
-     */
-    network: string;
-}
-
-export interface GetCassandraCassandraUserConfigPrivateAccess {
-    /**
-     * Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-     */
-    prometheus?: boolean;
-}
-
-export interface GetCassandraCassandraUserConfigPublicAccess {
-    /**
-     * Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
-     */
-    prometheus?: boolean;
-}
-
-export interface GetCassandraComponent {
-    /**
-     * Service component name
-     */
-    component: string;
-    /**
-     * Connection info for connecting to the service component. This is a combination of host and port.
-     */
-    connectionUri: string;
-    /**
-     * Host name for connecting to the service component
-     */
-    host: string;
-    /**
-     * Kafka authentication method. This is a value specific to the 'kafka' service component
-     */
-    kafkaAuthenticationMethod: string;
-    /**
-     * Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
-     */
-    kafkaSslCa: string;
-    /**
-     * Port number for connecting to the service component
-     */
-    port: number;
-    /**
-     * Privatelink connection ID
-     */
-    privatelinkConnectionId: string;
-    /**
-     * Network access route
-     */
-    route: string;
-    /**
-     * Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
-     */
-    ssl: boolean;
-    /**
-     * DNS usage name
-     */
-    usage: string;
-}
-
-export interface GetCassandraServiceIntegration {
-    /**
-     * Type of the service integration
-     */
-    integrationType: string;
-    /**
-     * Name of the source service
-     */
-    sourceServiceName: string;
-}
-
-export interface GetCassandraTag {
-    /**
-     * Service tag key
-     */
-    key: string;
-    /**
-     * Service tag value
-     */
-    value: string;
-}
-
-export interface GetCassandraTechEmail {
-    /**
-     * An email address to contact for technical issues
-     */
-    email: string;
-}
-
 export interface GetClickhouseClickhouse {
     /**
      * ClickHouse server URIs.
@@ -1733,6 +1217,10 @@ export interface GetClickhouseClickhouseUserConfig {
      */
     recoveryBasebackupName?: string;
     /**
+     * ClickHouse server settings, which can be found in the `system.server_settings` table
+     */
+    serverSettings?: outputs.GetClickhouseClickhouseUserConfigServerSettings;
+    /**
      * Store logs for the service so that they are available in the HTTP API and console.
      */
     serviceLog?: boolean;
@@ -1740,6 +1228,10 @@ export interface GetClickhouseClickhouseUserConfig {
      * Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
      */
     serviceToForkFrom?: string;
+    /**
+     * ClickHouse session settings, which can be found in the `system.settings` table
+     */
+    sessionSettings?: outputs.GetClickhouseClickhouseUserConfigSessionSettings;
     /**
      * Use static public IP addresses.
      */
@@ -1767,6 +1259,10 @@ export interface GetClickhouseClickhouseUserConfigPrivateAccess {
      */
     clickhouse?: boolean;
     /**
+     * Allow clients to connect to clickhouseArrowflight with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+     */
+    clickhouseArrowflight?: boolean;
+    /**
      * Allow clients to connect to clickhouseHttps with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
      */
     clickhouseHttps?: boolean;
@@ -1785,6 +1281,10 @@ export interface GetClickhouseClickhouseUserConfigPrivatelinkAccess {
      * Enable clickhouse.
      */
     clickhouse?: boolean;
+    /**
+     * Enable clickhouse_arrowflight.
+     */
+    clickhouseArrowflight?: boolean;
     /**
      * Enable clickhouse_https.
      */
@@ -1805,6 +1305,10 @@ export interface GetClickhouseClickhouseUserConfigPublicAccess {
      */
     clickhouse?: boolean;
     /**
+     * Allow clients to connect to clickhouseArrowflight from the public internet for service nodes that are in a project VPC or another type of private network.
+     */
+    clickhouseArrowflight?: boolean;
+    /**
      * Allow clients to connect to clickhouseHttps from the public internet for service nodes that are in a project VPC or another type of private network.
      */
     clickhouseHttps?: boolean;
@@ -1816,6 +1320,20 @@ export interface GetClickhouseClickhouseUserConfigPublicAccess {
      * Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
      */
     prometheus?: boolean;
+}
+
+export interface GetClickhouseClickhouseUserConfigServerSettings {
+    /**
+     * Fraction of total server memory allocated to the vector similarity index cache. 0 disables the cache. Default is 0.07 (7% of server memory). Only effective on ClickHouse 25.8+. Default: `0.07`.
+     */
+    vectorSimilarityIndexCacheSize?: number;
+}
+
+export interface GetClickhouseClickhouseUserConfigSessionSettings {
+    /**
+     * When set, ClickHouse applies backward-compatible behavior from the specified version. Automatically set to the previous version on major version upgrade. Set to null to disable compatibility mode once all incompatibilities have been resolved. Takes effect after the next service restart/upgrade.
+     */
+    compatibility?: string;
 }
 
 export interface GetClickhouseComponent {
@@ -3088,6 +2606,10 @@ export interface GetKafkaConnectKafkaConnectUserConfigKafkaConnect {
      */
     offsetFlushTimeoutMs?: number;
     /**
+     * When enabled, connectors will automatically resolve IPv6 addresses from external server names configured with dual-stack. Default: `false`.
+     */
+    preferIpv6AddressEnable?: boolean;
+    /**
      * This setting gives the upper bound of the batch size to be sent. If there are fewer than this many bytes accumulated for this partition, the producer will `linger` for the linger.ms time waiting for more records to show up. A batch size of zero will disable batching entirely (defaults to 16384).
      */
     producerBatchSize?: number;
@@ -3227,6 +2749,10 @@ export interface GetKafkaConnectKafkaConnectUserConfigSecretProviderVault {
      * Prefix path depth of the secrets Engine. Default is 1. If the secrets engine path has more than one segment it has to be increased to the number of segments.
      */
     prefixPathDepth?: number;
+    /**
+     * PEM encoded certificate of the Vault server. Required if the vault server uses a self-signed certificate.
+     */
+    serverPem?: string;
     /**
      * Token used to authenticate with vault and auth method `token`.
      */
@@ -3720,6 +3246,10 @@ export interface GetKafkaKafkaUserConfigKafkaConnectConfig {
      */
     offsetFlushTimeoutMs?: number;
     /**
+     * When enabled, connectors will automatically resolve IPv6 addresses from external server names configured with dual-stack. Default: `false`.
+     */
+    preferIpv6AddressEnable?: boolean;
+    /**
      * This setting gives the upper bound of the batch size to be sent. If there are fewer than this many bytes accumulated for this partition, the producer will `linger` for the linger.ms time waiting for more records to show up. A batch size of zero will disable batching entirely (defaults to 16384).
      */
     producerBatchSize?: number;
@@ -3822,6 +3352,10 @@ export interface GetKafkaKafkaUserConfigKafkaConnectSecretProviderVault {
      * Prefix path depth of the secrets Engine. Default is 1. If the secrets engine path has more than one segment it has to be increased to the number of segments.
      */
     prefixPathDepth?: number;
+    /**
+     * PEM encoded certificate of the Vault server. Required if the vault server uses a self-signed certificate.
+     */
+    serverPem?: string;
     /**
      * Token used to authenticate with vault and auth method `token`.
      */
@@ -4201,6 +3735,13 @@ export interface GetKafkaMirrorMakerTechEmail {
      * An email address to contact for technical issues
      */
     email: string;
+}
+
+export interface GetKafkaSchemaRegistryAclTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: string;
 }
 
 export interface GetKafkaServiceIntegration {
@@ -4584,7 +4125,7 @@ export interface GetMySqlMysqlUserConfig {
      */
     mysqlIncrementalBackup?: outputs.GetMySqlMysqlUserConfigMysqlIncrementalBackup;
     /**
-     * Enum: `8`, and newer. MySQL major version.
+     * Enum: `8`, `8.4`, and newer. MySQL major version.
      */
     mysqlVersion?: string;
     /**
@@ -7369,293 +6910,6 @@ export interface GetProjectTag {
     value: string;
 }
 
-export interface GetRedisComponent {
-    /**
-     * Service component name
-     */
-    component: string;
-    /**
-     * Connection info for connecting to the service component. This is a combination of host and port.
-     */
-    connectionUri: string;
-    /**
-     * Host name for connecting to the service component
-     */
-    host: string;
-    /**
-     * Kafka authentication method. This is a value specific to the 'kafka' service component
-     */
-    kafkaAuthenticationMethod: string;
-    /**
-     * Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
-     */
-    kafkaSslCa: string;
-    /**
-     * Port number for connecting to the service component
-     */
-    port: number;
-    /**
-     * Privatelink connection ID
-     */
-    privatelinkConnectionId: string;
-    /**
-     * Network access route
-     */
-    route: string;
-    /**
-     * Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
-     */
-    ssl: boolean;
-    /**
-     * DNS usage name
-     */
-    usage: string;
-}
-
-export interface GetRedisRedi {
-    /**
-     * Redis password.
-     */
-    password: string;
-    /**
-     * Redis replica server URI.
-     */
-    replicaUri: string;
-    /**
-     * Redis slave server URIs.
-     */
-    slaveUris: string[];
-    /**
-     * Redis server URIs.
-     */
-    uris: string[];
-}
-
-export interface GetRedisRedisUserConfig {
-    /**
-     * Additional Cloud Regions for Backup Replication.
-     */
-    additionalBackupRegions?: string;
-    /**
-     * The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
-     */
-    backupHour?: number;
-    /**
-     * The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
-     */
-    backupMinute?: number;
-    /**
-     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
-     */
-    ipFilterObjects?: outputs.GetRedisRedisUserConfigIpFilterObject[];
-    /**
-     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-     */
-    ipFilterStrings?: string[];
-    /**
-     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-     *
-     * @deprecated Deprecated. Use `ipFilterString` instead.
-     */
-    ipFilters?: string[];
-    /**
-     * Migrate data from existing server
-     */
-    migration?: outputs.GetRedisRedisUserConfigMigration;
-    /**
-     * Allow access to selected service ports from private networks
-     */
-    privateAccess?: outputs.GetRedisRedisUserConfigPrivateAccess;
-    /**
-     * Allow access to selected service components through Privatelink
-     */
-    privatelinkAccess?: outputs.GetRedisRedisUserConfigPrivatelinkAccess;
-    /**
-     * Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
-     */
-    projectToForkFrom?: string;
-    /**
-     * Allow access to selected service ports from the public Internet
-     */
-    publicAccess?: outputs.GetRedisRedisUserConfigPublicAccess;
-    /**
-     * Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
-     */
-    recoveryBasebackupName?: string;
-    /**
-     * Enum: `allchannels`, `resetchannels`. Determines default pub/sub channels' ACL for new users if ACL is not supplied. When this option is not defined, allChannels is assumed to keep backward compatibility. This option doesn't affect Redis configuration acl-pubsub-default.
-     */
-    redisAclChannelsDefault?: string;
-    /**
-     * Set Redis IO thread count. Changing this will cause a restart of the Redis service. Example: `1`.
-     */
-    redisIoThreads?: number;
-    /**
-     * LFU maxmemory-policy counter decay time in minutes. Default: `1`.
-     */
-    redisLfuDecayTime?: number;
-    /**
-     * Counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory-policies. Default: `10`.
-     */
-    redisLfuLogFactor?: number;
-    /**
-     * Enum: `allkeys-lfu`, `allkeys-lru`, `allkeys-random`, `noeviction`, `volatile-lfu`, `volatile-lru`, `volatile-random`, `volatile-ttl`. Redis maxmemory-policy. Default: `noeviction`.
-     */
-    redisMaxmemoryPolicy?: string;
-    /**
-     * Set notify-keyspace-events option.
-     */
-    redisNotifyKeyspaceEvents?: string;
-    /**
-     * Set number of Redis databases. Changing this will cause a restart of the Redis service. Example: `16`.
-     */
-    redisNumberOfDatabases?: number;
-    /**
-     * Enum: `off`, `rdb`. When persistence is `rdb`, Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to the backup schedule for backup purposes. When persistence is `off`, no RDB dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can't be forked.
-     */
-    redisPersistence?: string;
-    /**
-     * Set output buffer limit for pub / sub clients in MB. The value is the hard limit, the soft limit is 1/4 of the hard limit. When setting the limit, be mindful of the available memory in the selected service plan. Example: `64`.
-     */
-    redisPubsubClientOutputBufferLimit?: number;
-    /**
-     * Require SSL to access Redis. Default: `true`.
-     */
-    redisSsl?: boolean;
-    /**
-     * Redis idle connection timeout in seconds. Default: `300`.
-     */
-    redisTimeout?: number;
-    /**
-     * Enum: `7.0`, and newer. Redis major version.
-     */
-    redisVersion?: string;
-    /**
-     * Store logs for the service so that they are available in the HTTP API and console.
-     */
-    serviceLog?: boolean;
-    /**
-     * Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
-     */
-    serviceToForkFrom?: string;
-    /**
-     * Use static public IP addresses.
-     */
-    staticIps?: boolean;
-}
-
-export interface GetRedisRedisUserConfigIpFilterObject {
-    /**
-     * Description for IP filter list entry. Example: `Production service IP range`.
-     */
-    description?: string;
-    /**
-     * CIDR address block. Example: `10.20.0.0/16`.
-     */
-    network: string;
-}
-
-export interface GetRedisRedisUserConfigMigration {
-    /**
-     * Database name for bootstrapping the initial connection. Example: `defaultdb`.
-     */
-    dbname?: string;
-    /**
-     * Hostname or IP address of the server where to migrate data from. Example: `my.server.com`.
-     */
-    host: string;
-    /**
-     * Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment). Example: `db1,db2`.
-     */
-    ignoreDbs?: string;
-    /**
-     * Comma-separated list of database roles, which should be ignored during migration (supported by PostgreSQL only at the moment). Example: `role1,role2`.
-     */
-    ignoreRoles?: string;
-    /**
-     * Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
-     */
-    method?: string;
-    /**
-     * Password for authentication with the server where to migrate data from. Example: `jjKk45Nnd`.
-     */
-    password?: string;
-    /**
-     * Port number of the server where to migrate data from. Example: `1234`.
-     */
-    port: number;
-    /**
-     * The server where to migrate data from is secured with SSL. Default: `true`.
-     */
-    ssl?: boolean;
-    /**
-     * User name for authentication with the server where to migrate data from. Example: `myname`.
-     */
-    username?: string;
-}
-
-export interface GetRedisRedisUserConfigPrivateAccess {
-    /**
-     * Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-     */
-    prometheus?: boolean;
-    /**
-     * Allow clients to connect to redis with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-     */
-    redis?: boolean;
-}
-
-export interface GetRedisRedisUserConfigPrivatelinkAccess {
-    /**
-     * Enable prometheus.
-     */
-    prometheus?: boolean;
-    /**
-     * Enable redis.
-     */
-    redis?: boolean;
-}
-
-export interface GetRedisRedisUserConfigPublicAccess {
-    /**
-     * Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
-     */
-    prometheus?: boolean;
-    /**
-     * Allow clients to connect to redis from the public internet for service nodes that are in a project VPC or another type of private network.
-     */
-    redis?: boolean;
-}
-
-export interface GetRedisServiceIntegration {
-    /**
-     * Type of the service integration. The possible value is `readReplica`.
-     */
-    integrationType: string;
-    /**
-     * Name of the source service
-     */
-    sourceServiceName: string;
-}
-
-export interface GetRedisTag {
-    /**
-     * Service tag key
-     */
-    key: string;
-    /**
-     * Service tag value
-     */
-    value: string;
-}
-
-export interface GetRedisTechEmail {
-    /**
-     * An email address to contact for technical issues
-     */
-    email: string;
-}
-
 export interface GetServiceIntegrationClickhouseCredentialsUserConfig {
     /**
      * Grants to assign
@@ -7682,6 +6936,10 @@ export interface GetServiceIntegrationClickhouseKafkaUserConfigTable {
      * Enum: `beginning`, `earliest`, `end`, `largest`, `latest`, `smallest`. Determines where to start reading from Kafka when no offset is stored or the stored offset is out of range. `earliest` starts from the beginning, `latest` starts from the end. Default: `earliest`.
      */
     autoOffsetReset?: string;
+    /**
+     * When set to a non-zero value and there are no committed offsets, the consumer starts from the offset corresponding to (now - auto_offset_reset_by_duration_ms). This overrides autoOffsetReset when set. Requires ClickHouse >= 25.8. Default: `0`.
+     */
+    autoOffsetResetByDurationMs?: number;
     /**
      * Array of column definitions that specify the structure of the ClickHouse table. Each column maps to a field in the Kafka messages
      */
@@ -8786,6 +8044,10 @@ export interface GetServiceListService {
      * Target cloud.
      */
     cloudName: string;
+    /**
+     * Active Customer Managed Key identifier (CMK ID).
+     */
+    cmkId: string;
     /**
      * Service creation timestamp (ISO 8601).
      */
@@ -10355,6 +9617,10 @@ export interface KafkaConnectKafkaConnectUserConfigKafkaConnect {
      */
     offsetFlushTimeoutMs?: number;
     /**
+     * When enabled, connectors will automatically resolve IPv6 addresses from external server names configured with dual-stack. Default: `false`.
+     */
+    preferIpv6AddressEnable?: boolean;
+    /**
      * This setting gives the upper bound of the batch size to be sent. If there are fewer than this many bytes accumulated for this partition, the producer will `linger` for the linger.ms time waiting for more records to show up. A batch size of zero will disable batching entirely (defaults to 16384).
      */
     producerBatchSize?: number;
@@ -10494,6 +9760,10 @@ export interface KafkaConnectKafkaConnectUserConfigSecretProviderVault {
      * Prefix path depth of the secrets Engine. Default is 1. If the secrets engine path has more than one segment it has to be increased to the number of segments.
      */
     prefixPathDepth?: number;
+    /**
+     * PEM encoded certificate of the Vault server. Required if the vault server uses a self-signed certificate.
+     */
+    serverPem?: string;
     /**
      * Token used to authenticate with vault and auth method `token`.
      */
@@ -10987,6 +10257,10 @@ export interface KafkaKafkaUserConfigKafkaConnectConfig {
      */
     offsetFlushTimeoutMs?: number;
     /**
+     * When enabled, connectors will automatically resolve IPv6 addresses from external server names configured with dual-stack. Default: `false`.
+     */
+    preferIpv6AddressEnable?: boolean;
+    /**
      * This setting gives the upper bound of the batch size to be sent. If there are fewer than this many bytes accumulated for this partition, the producer will `linger` for the linger.ms time waiting for more records to show up. A batch size of zero will disable batching entirely (defaults to 16384).
      */
     producerBatchSize?: number;
@@ -11089,6 +10363,10 @@ export interface KafkaKafkaUserConfigKafkaConnectSecretProviderVault {
      * Prefix path depth of the secrets Engine. Default is 1. If the secrets engine path has more than one segment it has to be increased to the number of segments.
      */
     prefixPathDepth?: number;
+    /**
+     * PEM encoded certificate of the Vault server. Required if the vault server uses a self-signed certificate.
+     */
+    serverPem?: string;
     /**
      * Token used to authenticate with vault and auth method `token`.
      */
@@ -11470,6 +10748,31 @@ export interface KafkaMirrorMakerTechEmail {
     email: string;
 }
 
+export interface KafkaSchemaRegistryAclTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: string;
+    /**
+     * Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+     *
+     * @deprecated Use operation-specific timeouts instead. This field will be removed in the next major version.
+     */
+    default?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: string;
+}
+
 export interface KafkaServiceIntegration {
     /**
      * Type of the service integration
@@ -11778,7 +11081,7 @@ export interface MySqlMysqlUserConfig {
      */
     mysqlIncrementalBackup?: outputs.MySqlMysqlUserConfigMysqlIncrementalBackup;
     /**
-     * Enum: `8`, and newer. MySQL major version.
+     * Enum: `8`, `8.4`, and newer. MySQL major version.
      */
     mysqlVersion?: string;
     /**
@@ -14571,293 +13874,6 @@ export interface ProjectTag {
     value: string;
 }
 
-export interface RedisComponent {
-    /**
-     * Service component name
-     */
-    component: string;
-    /**
-     * Connection info for connecting to the service component. This is a combination of host and port.
-     */
-    connectionUri: string;
-    /**
-     * Host name for connecting to the service component
-     */
-    host: string;
-    /**
-     * Kafka authentication method. This is a value specific to the 'kafka' service component
-     */
-    kafkaAuthenticationMethod: string;
-    /**
-     * Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
-     */
-    kafkaSslCa: string;
-    /**
-     * Port number for connecting to the service component
-     */
-    port: number;
-    /**
-     * Privatelink connection ID
-     */
-    privatelinkConnectionId: string;
-    /**
-     * Network access route
-     */
-    route: string;
-    /**
-     * Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
-     */
-    ssl: boolean;
-    /**
-     * DNS usage name
-     */
-    usage: string;
-}
-
-export interface RedisRedis {
-    /**
-     * Redis password.
-     */
-    password: string;
-    /**
-     * Redis replica server URI.
-     */
-    replicaUri: string;
-    /**
-     * Redis slave server URIs.
-     */
-    slaveUris: string[];
-    /**
-     * Redis server URIs.
-     */
-    uris: string[];
-}
-
-export interface RedisRedisUserConfig {
-    /**
-     * Additional Cloud Regions for Backup Replication.
-     */
-    additionalBackupRegions?: string;
-    /**
-     * The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
-     */
-    backupHour?: number;
-    /**
-     * The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
-     */
-    backupMinute?: number;
-    /**
-     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
-     */
-    ipFilterObjects?: outputs.RedisRedisUserConfigIpFilterObject[];
-    /**
-     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-     */
-    ipFilterStrings?: string[];
-    /**
-     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-     *
-     * @deprecated Deprecated. Use `ipFilterString` instead.
-     */
-    ipFilters?: string[];
-    /**
-     * Migrate data from existing server
-     */
-    migration?: outputs.RedisRedisUserConfigMigration;
-    /**
-     * Allow access to selected service ports from private networks
-     */
-    privateAccess?: outputs.RedisRedisUserConfigPrivateAccess;
-    /**
-     * Allow access to selected service components through Privatelink
-     */
-    privatelinkAccess?: outputs.RedisRedisUserConfigPrivatelinkAccess;
-    /**
-     * Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
-     */
-    projectToForkFrom?: string;
-    /**
-     * Allow access to selected service ports from the public Internet
-     */
-    publicAccess?: outputs.RedisRedisUserConfigPublicAccess;
-    /**
-     * Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
-     */
-    recoveryBasebackupName?: string;
-    /**
-     * Enum: `allchannels`, `resetchannels`. Determines default pub/sub channels' ACL for new users if ACL is not supplied. When this option is not defined, allChannels is assumed to keep backward compatibility. This option doesn't affect Redis configuration acl-pubsub-default.
-     */
-    redisAclChannelsDefault?: string;
-    /**
-     * Set Redis IO thread count. Changing this will cause a restart of the Redis service. Example: `1`.
-     */
-    redisIoThreads?: number;
-    /**
-     * LFU maxmemory-policy counter decay time in minutes. Default: `1`.
-     */
-    redisLfuDecayTime?: number;
-    /**
-     * Counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory-policies. Default: `10`.
-     */
-    redisLfuLogFactor?: number;
-    /**
-     * Enum: `allkeys-lfu`, `allkeys-lru`, `allkeys-random`, `noeviction`, `volatile-lfu`, `volatile-lru`, `volatile-random`, `volatile-ttl`. Redis maxmemory-policy. Default: `noeviction`.
-     */
-    redisMaxmemoryPolicy?: string;
-    /**
-     * Set notify-keyspace-events option.
-     */
-    redisNotifyKeyspaceEvents?: string;
-    /**
-     * Set number of Redis databases. Changing this will cause a restart of the Redis service. Example: `16`.
-     */
-    redisNumberOfDatabases?: number;
-    /**
-     * Enum: `off`, `rdb`. When persistence is `rdb`, Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to the backup schedule for backup purposes. When persistence is `off`, no RDB dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can't be forked.
-     */
-    redisPersistence?: string;
-    /**
-     * Set output buffer limit for pub / sub clients in MB. The value is the hard limit, the soft limit is 1/4 of the hard limit. When setting the limit, be mindful of the available memory in the selected service plan. Example: `64`.
-     */
-    redisPubsubClientOutputBufferLimit?: number;
-    /**
-     * Require SSL to access Redis. Default: `true`.
-     */
-    redisSsl?: boolean;
-    /**
-     * Redis idle connection timeout in seconds. Default: `300`.
-     */
-    redisTimeout?: number;
-    /**
-     * Enum: `7.0`, and newer. Redis major version.
-     */
-    redisVersion?: string;
-    /**
-     * Store logs for the service so that they are available in the HTTP API and console.
-     */
-    serviceLog?: boolean;
-    /**
-     * Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
-     */
-    serviceToForkFrom?: string;
-    /**
-     * Use static public IP addresses.
-     */
-    staticIps?: boolean;
-}
-
-export interface RedisRedisUserConfigIpFilterObject {
-    /**
-     * Description for IP filter list entry. Example: `Production service IP range`.
-     */
-    description?: string;
-    /**
-     * CIDR address block. Example: `10.20.0.0/16`.
-     */
-    network: string;
-}
-
-export interface RedisRedisUserConfigMigration {
-    /**
-     * Database name for bootstrapping the initial connection. Example: `defaultdb`.
-     */
-    dbname?: string;
-    /**
-     * Hostname or IP address of the server where to migrate data from. Example: `my.server.com`.
-     */
-    host: string;
-    /**
-     * Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment). Example: `db1,db2`.
-     */
-    ignoreDbs?: string;
-    /**
-     * Comma-separated list of database roles, which should be ignored during migration (supported by PostgreSQL only at the moment). Example: `role1,role2`.
-     */
-    ignoreRoles?: string;
-    /**
-     * Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
-     */
-    method?: string;
-    /**
-     * Password for authentication with the server where to migrate data from. Example: `jjKk45Nnd`.
-     */
-    password?: string;
-    /**
-     * Port number of the server where to migrate data from. Example: `1234`.
-     */
-    port: number;
-    /**
-     * The server where to migrate data from is secured with SSL. Default: `true`.
-     */
-    ssl?: boolean;
-    /**
-     * User name for authentication with the server where to migrate data from. Example: `myname`.
-     */
-    username?: string;
-}
-
-export interface RedisRedisUserConfigPrivateAccess {
-    /**
-     * Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-     */
-    prometheus?: boolean;
-    /**
-     * Allow clients to connect to redis with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-     */
-    redis?: boolean;
-}
-
-export interface RedisRedisUserConfigPrivatelinkAccess {
-    /**
-     * Enable prometheus.
-     */
-    prometheus?: boolean;
-    /**
-     * Enable redis.
-     */
-    redis?: boolean;
-}
-
-export interface RedisRedisUserConfigPublicAccess {
-    /**
-     * Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
-     */
-    prometheus?: boolean;
-    /**
-     * Allow clients to connect to redis from the public internet for service nodes that are in a project VPC or another type of private network.
-     */
-    redis?: boolean;
-}
-
-export interface RedisServiceIntegration {
-    /**
-     * Type of the service integration. The possible value is `readReplica`.
-     */
-    integrationType: string;
-    /**
-     * Name of the source service
-     */
-    sourceServiceName: string;
-}
-
-export interface RedisTag {
-    /**
-     * Service tag key
-     */
-    key: string;
-    /**
-     * Service tag value
-     */
-    value: string;
-}
-
-export interface RedisTechEmail {
-    /**
-     * An email address to contact for technical issues
-     */
-    email: string;
-}
-
 export interface ServiceIntegrationClickhouseCredentialsUserConfig {
     /**
      * Grants to assign
@@ -14884,6 +13900,10 @@ export interface ServiceIntegrationClickhouseKafkaUserConfigTable {
      * Enum: `beginning`, `earliest`, `end`, `largest`, `latest`, `smallest`. Determines where to start reading from Kafka when no offset is stored or the stored offset is out of range. `earliest` starts from the beginning, `latest` starts from the end. Default: `earliest`.
      */
     autoOffsetReset?: string;
+    /**
+     * When set to a non-zero value and there are no committed offsets, the consumer starts from the offset corresponding to (now - auto*offset*reset*by*duration*ms). This overrides auto*offset_reset when set. Requires ClickHouse >= 25.8. Default: `0`.
+     */
+    autoOffsetResetByDurationMs?: number;
     /**
      * Array of column definitions that specify the structure of the ClickHouse table. Each column maps to a field in the Kafka messages
      */
@@ -16273,6 +15293,25 @@ export interface ThanosThanosUserConfigQueryFrontend {
      * Whether to align the query range boundaries with the step. If enabled, the query range boundaries will be aligned to the step, providing more accurate results for queries with high-resolution data. Default: `true`.
      */
     queryRangeAlignRangeWithStep?: boolean;
+}
+
+export interface UpgradeStepTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: string;
 }
 
 export interface ValkeyComponent {

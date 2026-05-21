@@ -19,6 +19,12 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? Clickhouse { get; set; }
 
         /// <summary>
+        /// Allow clients to connect to ClickhouseArrowflight from the public internet for service nodes that are in a project VPC or another type of private network.
+        /// </summary>
+        [Input("clickhouseArrowflight")]
+        public Input<bool>? ClickhouseArrowflight { get; set; }
+
+        /// <summary>
         /// Allow clients to connect to ClickhouseHttps from the public internet for service nodes that are in a project VPC or another type of private network.
         /// </summary>
         [Input("clickhouseHttps")]

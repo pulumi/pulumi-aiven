@@ -183,6 +183,18 @@ class OrganizationUserGroupMember(pulumi.CustomResource):
         """
         Adds and manages users in a user group. You can add organization users and application users to groups. Organization users must be [managed in the Aiven Console](https://aiven.io/docs/platform/howto/manage-org-users). Application users can be created and managed using the `OrganizationApplicationUser` resource. Groups are granted roles and permissions using the `OrganizationPermission` resource.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        example = aiven.OrganizationUserGroupMember("example",
+            organization_id="org1a23f456789",
+            group_id="foo",
+            user_id="foo")
+        ```
+
         ## Import
 
         ```sh
@@ -204,6 +216,18 @@ class OrganizationUserGroupMember(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Adds and manages users in a user group. You can add organization users and application users to groups. Organization users must be [managed in the Aiven Console](https://aiven.io/docs/platform/howto/manage-org-users). Application users can be created and managed using the `OrganizationApplicationUser` resource. Groups are granted roles and permissions using the `OrganizationPermission` resource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        example = aiven.OrganizationUserGroupMember("example",
+            organization_id="org1a23f456789",
+            group_id="foo",
+            user_id="foo")
+        ```
 
         ## Import
 

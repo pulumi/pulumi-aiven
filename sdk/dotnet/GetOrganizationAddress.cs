@@ -16,6 +16,25 @@ namespace Pulumi.Aiven
         /// 
         /// **This resource is in the beta stage and may change without notice.** Set
         /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Aiven.GetOrganizationAddress.Invoke(new()
+        ///     {
+        ///         OrganizationId = "org1a23f456789",
+        ///         AddressId = "foo",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetOrganizationAddressResult> InvokeAsync(GetOrganizationAddressArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationAddressResult>("aiven:index/getOrganizationAddress:getOrganizationAddress", args ?? new GetOrganizationAddressArgs(), options.WithDefaults());
@@ -25,6 +44,25 @@ namespace Pulumi.Aiven
         /// 
         /// **This resource is in the beta stage and may change without notice.** Set
         /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Aiven.GetOrganizationAddress.Invoke(new()
+        ///     {
+        ///         OrganizationId = "org1a23f456789",
+        ///         AddressId = "foo",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetOrganizationAddressResult> Invoke(GetOrganizationAddressInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetOrganizationAddressResult>("aiven:index/getOrganizationAddress:getOrganizationAddress", args ?? new GetOrganizationAddressInvokeArgs(), options.WithDefaults());
@@ -34,6 +72,25 @@ namespace Pulumi.Aiven
         /// 
         /// **This resource is in the beta stage and may change without notice.** Set
         /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Aiven.GetOrganizationAddress.Invoke(new()
+        ///     {
+        ///         OrganizationId = "org1a23f456789",
+        ///         AddressId = "foo",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetOrganizationAddressResult> Invoke(GetOrganizationAddressInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetOrganizationAddressResult>("aiven:index/getOrganizationAddress:getOrganizationAddress", args ?? new GetOrganizationAddressInvokeArgs(), options.WithDefaults());

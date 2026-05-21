@@ -62,7 +62,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.MySqlMysqlUserConfigMysqlIncrementalBackup? MysqlIncrementalBackup;
         /// <summary>
-        /// Enum: `8`, and newer. MySQL major version.
+        /// Enum: `8`, `8.4`, and newer. MySQL major version.
         /// </summary>
         public readonly string? MysqlVersion;
         /// <summary>

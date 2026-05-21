@@ -122,7 +122,7 @@ def get_organization(id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    main = aiven.get_organization(name="Example organization")
+    example = aiven.get_organization(id="org1a23f456789")
     ```
 
 
@@ -156,7 +156,7 @@ def get_organization_output(id: pulumi.Input[Optional[Optional[_builtins.str]]] 
     import pulumi
     import pulumi_aiven as aiven
 
-    main = aiven.get_organization(name="Example organization")
+    example = aiven.get_organization(id="org1a23f456789")
     ```
 
 

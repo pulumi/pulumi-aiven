@@ -98,200 +98,42 @@ export interface ByocAwsEntityTimeouts {
     update?: pulumi.Input<string | undefined>;
 }
 
-export interface CassandraCassandra {
+export interface ByocAwsProvisionTimeouts {
     /**
-     * Cassandra server URIs.
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    uris?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    create?: pulumi.Input<string | undefined>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: pulumi.Input<string | undefined>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string | undefined>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: pulumi.Input<string | undefined>;
 }
 
-export interface CassandraCassandraUserConfig {
+export interface ByocPermissionsTimeouts {
     /**
-     * Additional Cloud Regions for Backup Replication.
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    additionalBackupRegions?: pulumi.Input<string | undefined>;
+    create?: pulumi.Input<string | undefined>;
     /**
-     * The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
      */
-    backupHour?: pulumi.Input<number | undefined>;
+    delete?: pulumi.Input<string | undefined>;
     /**
-     * The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
-    backupMinute?: pulumi.Input<number | undefined>;
+    read?: pulumi.Input<string | undefined>;
     /**
-     * Cassandra configuration values
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    cassandra?: pulumi.Input<inputs.CassandraCassandraUserConfigCassandra | undefined>;
-    /**
-     * Enum: `3`, `4`, `4.1`, and newer. Cassandra version.
-     */
-    cassandraVersion?: pulumi.Input<string | undefined>;
-    /**
-     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
-     */
-    ipFilterObjects?: pulumi.Input<pulumi.Input<inputs.CassandraCassandraUserConfigIpFilterObject>[] | undefined>;
-    /**
-     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-     */
-    ipFilterStrings?: pulumi.Input<pulumi.Input<string>[] | undefined>;
-    /**
-     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-     *
-     * @deprecated Deprecated. Use `ipFilterString` instead.
-     */
-    ipFilters?: pulumi.Input<pulumi.Input<string>[] | undefined>;
-    /**
-     * Sets the service into migration mode enabling the sstableloader utility to be used to upload Cassandra data files. Available only on service create.
-     */
-    migrateSstableloader?: pulumi.Input<boolean | undefined>;
-    /**
-     * Allow access to selected service ports from private networks
-     */
-    privateAccess?: pulumi.Input<inputs.CassandraCassandraUserConfigPrivateAccess | undefined>;
-    /**
-     * Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
-     */
-    projectToForkFrom?: pulumi.Input<string | undefined>;
-    /**
-     * Allow access to selected service ports from the public Internet
-     */
-    publicAccess?: pulumi.Input<inputs.CassandraCassandraUserConfigPublicAccess | undefined>;
-    /**
-     * Store logs for the service so that they are available in the HTTP API and console.
-     */
-    serviceLog?: pulumi.Input<boolean | undefined>;
-    /**
-     * Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
-     */
-    serviceToForkFrom?: pulumi.Input<string | undefined>;
-    /**
-     * When bootstrapping, instead of creating a new Cassandra cluster try to join an existing one from another service. Can only be set on service creation. Example: `my-test-cassandra`.
-     */
-    serviceToJoinWith?: pulumi.Input<string | undefined>;
-    /**
-     * Use static public IP addresses.
-     */
-    staticIps?: pulumi.Input<boolean | undefined>;
-}
-
-export interface CassandraCassandraUserConfigCassandra {
-    /**
-     * Fail any multiple-partition batch exceeding this value. 50kb (10x warn threshold) by default. Example: `50`.
-     */
-    batchSizeFailThresholdInKb?: pulumi.Input<number | undefined>;
-    /**
-     * Log a warning message on any multiple-partition batch size exceeding this value.5kb per batch by default.Caution should be taken on increasing the size of this thresholdas it can lead to node instability. Example: `5`.
-     */
-    batchSizeWarnThresholdInKb?: pulumi.Input<number | undefined>;
-    /**
-     * Name of the datacenter to which nodes of this service belong. Can be set only when creating the service. Example: `my-service-google-west1`.
-     */
-    datacenter?: pulumi.Input<string | undefined>;
-    /**
-     * How long the coordinator waits for read operations to complete before timing it out. 5 seconds by default. Example: `5000`.
-     */
-    readRequestTimeoutInMs?: pulumi.Input<number | undefined>;
-    /**
-     * How long the coordinator waits for write requests to complete with at least one node in the local datacenter. 2 seconds by default. Example: `2000`.
-     */
-    writeRequestTimeoutInMs?: pulumi.Input<number | undefined>;
-}
-
-export interface CassandraCassandraUserConfigIpFilterObject {
-    /**
-     * Description for IP filter list entry. Example: `Production service IP range`.
-     */
-    description?: pulumi.Input<string | undefined>;
-    /**
-     * CIDR address block. Example: `10.20.0.0/16`.
-     */
-    network: pulumi.Input<string>;
-}
-
-export interface CassandraCassandraUserConfigPrivateAccess {
-    /**
-     * Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-     */
-    prometheus?: pulumi.Input<boolean | undefined>;
-}
-
-export interface CassandraCassandraUserConfigPublicAccess {
-    /**
-     * Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
-     */
-    prometheus?: pulumi.Input<boolean | undefined>;
-}
-
-export interface CassandraComponent {
-    /**
-     * Service component name
-     */
-    component?: pulumi.Input<string | undefined>;
-    /**
-     * Connection info for connecting to the service component. This is a combination of host and port.
-     */
-    connectionUri?: pulumi.Input<string | undefined>;
-    /**
-     * Host name for connecting to the service component
-     */
-    host?: pulumi.Input<string | undefined>;
-    /**
-     * Kafka authentication method. This is a value specific to the 'kafka' service component
-     */
-    kafkaAuthenticationMethod?: pulumi.Input<string | undefined>;
-    /**
-     * Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
-     */
-    kafkaSslCa?: pulumi.Input<string | undefined>;
-    /**
-     * Port number for connecting to the service component
-     */
-    port?: pulumi.Input<number | undefined>;
-    /**
-     * Privatelink connection ID
-     */
-    privatelinkConnectionId?: pulumi.Input<string | undefined>;
-    /**
-     * Network access route
-     */
-    route?: pulumi.Input<string | undefined>;
-    /**
-     * Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
-     */
-    ssl?: pulumi.Input<boolean | undefined>;
-    /**
-     * DNS usage name
-     */
-    usage?: pulumi.Input<string | undefined>;
-}
-
-export interface CassandraServiceIntegration {
-    /**
-     * Type of the service integration
-     */
-    integrationType: pulumi.Input<string>;
-    /**
-     * Name of the source service
-     */
-    sourceServiceName: pulumi.Input<string>;
-}
-
-export interface CassandraTag {
-    /**
-     * Service tag key
-     */
-    key: pulumi.Input<string>;
-    /**
-     * Service tag value
-     */
-    value: pulumi.Input<string>;
-}
-
-export interface CassandraTechEmail {
-    /**
-     * An email address to contact for technical issues
-     */
-    email: pulumi.Input<string>;
+    update?: pulumi.Input<string | undefined>;
 }
 
 export interface ClickhouseClickhouse {
@@ -359,6 +201,10 @@ export interface ClickhouseClickhouseUserConfig {
      */
     recoveryBasebackupName?: pulumi.Input<string | undefined>;
     /**
+     * ClickHouse server settings, which can be found in the `system.server_settings` table
+     */
+    serverSettings?: pulumi.Input<inputs.ClickhouseClickhouseUserConfigServerSettings | undefined>;
+    /**
      * Store logs for the service so that they are available in the HTTP API and console.
      */
     serviceLog?: pulumi.Input<boolean | undefined>;
@@ -366,6 +212,10 @@ export interface ClickhouseClickhouseUserConfig {
      * Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
      */
     serviceToForkFrom?: pulumi.Input<string | undefined>;
+    /**
+     * ClickHouse session settings, which can be found in the `system.settings` table
+     */
+    sessionSettings?: pulumi.Input<inputs.ClickhouseClickhouseUserConfigSessionSettings | undefined>;
     /**
      * Use static public IP addresses.
      */
@@ -393,6 +243,10 @@ export interface ClickhouseClickhouseUserConfigPrivateAccess {
      */
     clickhouse?: pulumi.Input<boolean | undefined>;
     /**
+     * Allow clients to connect to clickhouseArrowflight with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+     */
+    clickhouseArrowflight?: pulumi.Input<boolean | undefined>;
+    /**
      * Allow clients to connect to clickhouseHttps with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
      */
     clickhouseHttps?: pulumi.Input<boolean | undefined>;
@@ -411,6 +265,10 @@ export interface ClickhouseClickhouseUserConfigPrivatelinkAccess {
      * Enable clickhouse.
      */
     clickhouse?: pulumi.Input<boolean | undefined>;
+    /**
+     * Enable clickhouse_arrowflight.
+     */
+    clickhouseArrowflight?: pulumi.Input<boolean | undefined>;
     /**
      * Enable clickhouse_https.
      */
@@ -431,6 +289,10 @@ export interface ClickhouseClickhouseUserConfigPublicAccess {
      */
     clickhouse?: pulumi.Input<boolean | undefined>;
     /**
+     * Allow clients to connect to clickhouseArrowflight from the public internet for service nodes that are in a project VPC or another type of private network.
+     */
+    clickhouseArrowflight?: pulumi.Input<boolean | undefined>;
+    /**
      * Allow clients to connect to clickhouseHttps from the public internet for service nodes that are in a project VPC or another type of private network.
      */
     clickhouseHttps?: pulumi.Input<boolean | undefined>;
@@ -442,6 +304,20 @@ export interface ClickhouseClickhouseUserConfigPublicAccess {
      * Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
      */
     prometheus?: pulumi.Input<boolean | undefined>;
+}
+
+export interface ClickhouseClickhouseUserConfigServerSettings {
+    /**
+     * Fraction of total server memory allocated to the vector similarity index cache. 0 disables the cache. Default is 0.07 (7% of server memory). Only effective on ClickHouse 25.8+. Default: `0.07`.
+     */
+    vectorSimilarityIndexCacheSize?: pulumi.Input<number | undefined>;
+}
+
+export interface ClickhouseClickhouseUserConfigSessionSettings {
+    /**
+     * When set, ClickHouse applies backward-compatible behavior from the specified version. Automatically set to the previous version on major version upgrade. Set to null to disable compatibility mode once all incompatibilities have been resolved. Takes effect after the next service restart/upgrade.
+     */
+    compatibility?: pulumi.Input<string | undefined>;
 }
 
 export interface ClickhouseComponent {
@@ -1310,6 +1186,20 @@ export interface GetFlinkApplicationTimeouts {
 }
 
 export interface GetFlinkApplicationTimeoutsArgs {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: pulumi.Input<string | undefined>;
+}
+
+export interface GetKafkaSchemaRegistryAclTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: string;
+}
+
+export interface GetKafkaSchemaRegistryAclTimeoutsArgs {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
@@ -2266,6 +2156,10 @@ export interface GetServiceListService {
      */
     cloudName?: string;
     /**
+     * Active Customer Managed Key identifier (CMK ID).
+     */
+    cmkId?: string;
+    /**
      * Service creation timestamp (ISO 8601).
      */
     createTime?: string;
@@ -2336,6 +2230,10 @@ export interface GetServiceListServiceArgs {
      * Target cloud.
      */
     cloudName?: pulumi.Input<string | undefined>;
+    /**
+     * Active Customer Managed Key identifier (CMK ID).
+     */
+    cmkId?: pulumi.Input<string | undefined>;
     /**
      * Service creation timestamp (ISO 8601).
      */
@@ -3457,6 +3355,10 @@ export interface KafkaConnectKafkaConnectUserConfigKafkaConnect {
      */
     offsetFlushTimeoutMs?: pulumi.Input<number | undefined>;
     /**
+     * When enabled, connectors will automatically resolve IPv6 addresses from external server names configured with dual-stack. Default: `false`.
+     */
+    preferIpv6AddressEnable?: pulumi.Input<boolean | undefined>;
+    /**
      * This setting gives the upper bound of the batch size to be sent. If there are fewer than this many bytes accumulated for this partition, the producer will `linger` for the linger.ms time waiting for more records to show up. A batch size of zero will disable batching entirely (defaults to 16384).
      */
     producerBatchSize?: pulumi.Input<number | undefined>;
@@ -3596,6 +3498,10 @@ export interface KafkaConnectKafkaConnectUserConfigSecretProviderVault {
      * Prefix path depth of the secrets Engine. Default is 1. If the secrets engine path has more than one segment it has to be increased to the number of segments.
      */
     prefixPathDepth?: pulumi.Input<number | undefined>;
+    /**
+     * PEM encoded certificate of the Vault server. Required if the vault server uses a self-signed certificate.
+     */
+    serverPem?: pulumi.Input<string | undefined>;
     /**
      * Token used to authenticate with vault and auth method `token`.
      */
@@ -4089,6 +3995,10 @@ export interface KafkaKafkaUserConfigKafkaConnectConfig {
      */
     offsetFlushTimeoutMs?: pulumi.Input<number | undefined>;
     /**
+     * When enabled, connectors will automatically resolve IPv6 addresses from external server names configured with dual-stack. Default: `false`.
+     */
+    preferIpv6AddressEnable?: pulumi.Input<boolean | undefined>;
+    /**
      * This setting gives the upper bound of the batch size to be sent. If there are fewer than this many bytes accumulated for this partition, the producer will `linger` for the linger.ms time waiting for more records to show up. A batch size of zero will disable batching entirely (defaults to 16384).
      */
     producerBatchSize?: pulumi.Input<number | undefined>;
@@ -4191,6 +4101,10 @@ export interface KafkaKafkaUserConfigKafkaConnectSecretProviderVault {
      * Prefix path depth of the secrets Engine. Default is 1. If the secrets engine path has more than one segment it has to be increased to the number of segments.
      */
     prefixPathDepth?: pulumi.Input<number | undefined>;
+    /**
+     * PEM encoded certificate of the Vault server. Required if the vault server uses a self-signed certificate.
+     */
+    serverPem?: pulumi.Input<string | undefined>;
     /**
      * Token used to authenticate with vault and auth method `token`.
      */
@@ -4572,6 +4486,31 @@ export interface KafkaMirrorMakerTechEmail {
     email: pulumi.Input<string>;
 }
 
+export interface KafkaSchemaRegistryAclTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: pulumi.Input<string | undefined>;
+    /**
+     * Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+     *
+     * @deprecated Use operation-specific timeouts instead. This field will be removed in the next major version.
+     */
+    default?: pulumi.Input<string | undefined>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: pulumi.Input<string | undefined>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string | undefined>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: pulumi.Input<string | undefined>;
+}
+
 export interface KafkaServiceIntegration {
     /**
      * Type of the service integration
@@ -4880,7 +4819,7 @@ export interface MySqlMysqlUserConfig {
      */
     mysqlIncrementalBackup?: pulumi.Input<inputs.MySqlMysqlUserConfigMysqlIncrementalBackup | undefined>;
     /**
-     * Enum: `8`, and newer. MySQL major version.
+     * Enum: `8`, `8.4`, and newer. MySQL major version.
      */
     mysqlVersion?: pulumi.Input<string | undefined>;
     /**
@@ -7673,293 +7612,6 @@ export interface ProjectTag {
     value: pulumi.Input<string>;
 }
 
-export interface RedisComponent {
-    /**
-     * Service component name
-     */
-    component?: pulumi.Input<string | undefined>;
-    /**
-     * Connection info for connecting to the service component. This is a combination of host and port.
-     */
-    connectionUri?: pulumi.Input<string | undefined>;
-    /**
-     * Host name for connecting to the service component
-     */
-    host?: pulumi.Input<string | undefined>;
-    /**
-     * Kafka authentication method. This is a value specific to the 'kafka' service component
-     */
-    kafkaAuthenticationMethod?: pulumi.Input<string | undefined>;
-    /**
-     * Kafka certificate used. The possible values are `letsencrypt` and `projectCa`.
-     */
-    kafkaSslCa?: pulumi.Input<string | undefined>;
-    /**
-     * Port number for connecting to the service component
-     */
-    port?: pulumi.Input<number | undefined>;
-    /**
-     * Privatelink connection ID
-     */
-    privatelinkConnectionId?: pulumi.Input<string | undefined>;
-    /**
-     * Network access route
-     */
-    route?: pulumi.Input<string | undefined>;
-    /**
-     * Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
-     */
-    ssl?: pulumi.Input<boolean | undefined>;
-    /**
-     * DNS usage name
-     */
-    usage?: pulumi.Input<string | undefined>;
-}
-
-export interface RedisRedis {
-    /**
-     * Redis password.
-     */
-    password?: pulumi.Input<string | undefined>;
-    /**
-     * Redis replica server URI.
-     */
-    replicaUri?: pulumi.Input<string | undefined>;
-    /**
-     * Redis slave server URIs.
-     */
-    slaveUris?: pulumi.Input<pulumi.Input<string>[] | undefined>;
-    /**
-     * Redis server URIs.
-     */
-    uris?: pulumi.Input<pulumi.Input<string>[] | undefined>;
-}
-
-export interface RedisRedisUserConfig {
-    /**
-     * Additional Cloud Regions for Backup Replication.
-     */
-    additionalBackupRegions?: pulumi.Input<string | undefined>;
-    /**
-     * The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
-     */
-    backupHour?: pulumi.Input<number | undefined>;
-    /**
-     * The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
-     */
-    backupMinute?: pulumi.Input<number | undefined>;
-    /**
-     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
-     */
-    ipFilterObjects?: pulumi.Input<pulumi.Input<inputs.RedisRedisUserConfigIpFilterObject>[] | undefined>;
-    /**
-     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-     */
-    ipFilterStrings?: pulumi.Input<pulumi.Input<string>[] | undefined>;
-    /**
-     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
-     *
-     * @deprecated Deprecated. Use `ipFilterString` instead.
-     */
-    ipFilters?: pulumi.Input<pulumi.Input<string>[] | undefined>;
-    /**
-     * Migrate data from existing server
-     */
-    migration?: pulumi.Input<inputs.RedisRedisUserConfigMigration | undefined>;
-    /**
-     * Allow access to selected service ports from private networks
-     */
-    privateAccess?: pulumi.Input<inputs.RedisRedisUserConfigPrivateAccess | undefined>;
-    /**
-     * Allow access to selected service components through Privatelink
-     */
-    privatelinkAccess?: pulumi.Input<inputs.RedisRedisUserConfigPrivatelinkAccess | undefined>;
-    /**
-     * Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
-     */
-    projectToForkFrom?: pulumi.Input<string | undefined>;
-    /**
-     * Allow access to selected service ports from the public Internet
-     */
-    publicAccess?: pulumi.Input<inputs.RedisRedisUserConfigPublicAccess | undefined>;
-    /**
-     * Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
-     */
-    recoveryBasebackupName?: pulumi.Input<string | undefined>;
-    /**
-     * Enum: `allchannels`, `resetchannels`. Determines default pub/sub channels' ACL for new users if ACL is not supplied. When this option is not defined, allChannels is assumed to keep backward compatibility. This option doesn't affect Redis configuration acl-pubsub-default.
-     */
-    redisAclChannelsDefault?: pulumi.Input<string | undefined>;
-    /**
-     * Set Redis IO thread count. Changing this will cause a restart of the Redis service. Example: `1`.
-     */
-    redisIoThreads?: pulumi.Input<number | undefined>;
-    /**
-     * LFU maxmemory-policy counter decay time in minutes. Default: `1`.
-     */
-    redisLfuDecayTime?: pulumi.Input<number | undefined>;
-    /**
-     * Counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory-policies. Default: `10`.
-     */
-    redisLfuLogFactor?: pulumi.Input<number | undefined>;
-    /**
-     * Enum: `allkeys-lfu`, `allkeys-lru`, `allkeys-random`, `noeviction`, `volatile-lfu`, `volatile-lru`, `volatile-random`, `volatile-ttl`. Redis maxmemory-policy. Default: `noeviction`.
-     */
-    redisMaxmemoryPolicy?: pulumi.Input<string | undefined>;
-    /**
-     * Set notify-keyspace-events option.
-     */
-    redisNotifyKeyspaceEvents?: pulumi.Input<string | undefined>;
-    /**
-     * Set number of Redis databases. Changing this will cause a restart of the Redis service. Example: `16`.
-     */
-    redisNumberOfDatabases?: pulumi.Input<number | undefined>;
-    /**
-     * Enum: `off`, `rdb`. When persistence is `rdb`, Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to the backup schedule for backup purposes. When persistence is `off`, no RDB dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can't be forked.
-     */
-    redisPersistence?: pulumi.Input<string | undefined>;
-    /**
-     * Set output buffer limit for pub / sub clients in MB. The value is the hard limit, the soft limit is 1/4 of the hard limit. When setting the limit, be mindful of the available memory in the selected service plan. Example: `64`.
-     */
-    redisPubsubClientOutputBufferLimit?: pulumi.Input<number | undefined>;
-    /**
-     * Require SSL to access Redis. Default: `true`.
-     */
-    redisSsl?: pulumi.Input<boolean | undefined>;
-    /**
-     * Redis idle connection timeout in seconds. Default: `300`.
-     */
-    redisTimeout?: pulumi.Input<number | undefined>;
-    /**
-     * Enum: `7.0`, and newer. Redis major version.
-     */
-    redisVersion?: pulumi.Input<string | undefined>;
-    /**
-     * Store logs for the service so that they are available in the HTTP API and console.
-     */
-    serviceLog?: pulumi.Input<boolean | undefined>;
-    /**
-     * Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
-     */
-    serviceToForkFrom?: pulumi.Input<string | undefined>;
-    /**
-     * Use static public IP addresses.
-     */
-    staticIps?: pulumi.Input<boolean | undefined>;
-}
-
-export interface RedisRedisUserConfigIpFilterObject {
-    /**
-     * Description for IP filter list entry. Example: `Production service IP range`.
-     */
-    description?: pulumi.Input<string | undefined>;
-    /**
-     * CIDR address block. Example: `10.20.0.0/16`.
-     */
-    network: pulumi.Input<string>;
-}
-
-export interface RedisRedisUserConfigMigration {
-    /**
-     * Database name for bootstrapping the initial connection. Example: `defaultdb`.
-     */
-    dbname?: pulumi.Input<string | undefined>;
-    /**
-     * Hostname or IP address of the server where to migrate data from. Example: `my.server.com`.
-     */
-    host: pulumi.Input<string>;
-    /**
-     * Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment). Example: `db1,db2`.
-     */
-    ignoreDbs?: pulumi.Input<string | undefined>;
-    /**
-     * Comma-separated list of database roles, which should be ignored during migration (supported by PostgreSQL only at the moment). Example: `role1,role2`.
-     */
-    ignoreRoles?: pulumi.Input<string | undefined>;
-    /**
-     * Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
-     */
-    method?: pulumi.Input<string | undefined>;
-    /**
-     * Password for authentication with the server where to migrate data from. Example: `jjKk45Nnd`.
-     */
-    password?: pulumi.Input<string | undefined>;
-    /**
-     * Port number of the server where to migrate data from. Example: `1234`.
-     */
-    port: pulumi.Input<number>;
-    /**
-     * The server where to migrate data from is secured with SSL. Default: `true`.
-     */
-    ssl?: pulumi.Input<boolean | undefined>;
-    /**
-     * User name for authentication with the server where to migrate data from. Example: `myname`.
-     */
-    username?: pulumi.Input<string | undefined>;
-}
-
-export interface RedisRedisUserConfigPrivateAccess {
-    /**
-     * Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-     */
-    prometheus?: pulumi.Input<boolean | undefined>;
-    /**
-     * Allow clients to connect to redis with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-     */
-    redis?: pulumi.Input<boolean | undefined>;
-}
-
-export interface RedisRedisUserConfigPrivatelinkAccess {
-    /**
-     * Enable prometheus.
-     */
-    prometheus?: pulumi.Input<boolean | undefined>;
-    /**
-     * Enable redis.
-     */
-    redis?: pulumi.Input<boolean | undefined>;
-}
-
-export interface RedisRedisUserConfigPublicAccess {
-    /**
-     * Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
-     */
-    prometheus?: pulumi.Input<boolean | undefined>;
-    /**
-     * Allow clients to connect to redis from the public internet for service nodes that are in a project VPC or another type of private network.
-     */
-    redis?: pulumi.Input<boolean | undefined>;
-}
-
-export interface RedisServiceIntegration {
-    /**
-     * Type of the service integration. The possible value is `readReplica`.
-     */
-    integrationType: pulumi.Input<string>;
-    /**
-     * Name of the source service
-     */
-    sourceServiceName: pulumi.Input<string>;
-}
-
-export interface RedisTag {
-    /**
-     * Service tag key
-     */
-    key: pulumi.Input<string>;
-    /**
-     * Service tag value
-     */
-    value: pulumi.Input<string>;
-}
-
-export interface RedisTechEmail {
-    /**
-     * An email address to contact for technical issues
-     */
-    email: pulumi.Input<string>;
-}
-
 export interface ServiceIntegrationClickhouseCredentialsUserConfig {
     /**
      * Grants to assign
@@ -7986,6 +7638,10 @@ export interface ServiceIntegrationClickhouseKafkaUserConfigTable {
      * Enum: `beginning`, `earliest`, `end`, `largest`, `latest`, `smallest`. Determines where to start reading from Kafka when no offset is stored or the stored offset is out of range. `earliest` starts from the beginning, `latest` starts from the end. Default: `earliest`.
      */
     autoOffsetReset?: pulumi.Input<string | undefined>;
+    /**
+     * When set to a non-zero value and there are no committed offsets, the consumer starts from the offset corresponding to (now - auto*offset*reset*by*duration*ms). This overrides auto*offset_reset when set. Requires ClickHouse >= 25.8. Default: `0`.
+     */
+    autoOffsetResetByDurationMs?: pulumi.Input<number | undefined>;
     /**
      * Array of column definitions that specify the structure of the ClickHouse table. Each column maps to a field in the Kafka messages
      */
@@ -9375,6 +9031,25 @@ export interface ThanosThanosUserConfigQueryFrontend {
      * Whether to align the query range boundaries with the step. If enabled, the query range boundaries will be aligned to the step, providing more accurate results for queries with high-resolution data. Default: `true`.
      */
     queryRangeAlignRangeWithStep?: pulumi.Input<boolean | undefined>;
+}
+
+export interface UpgradeStepTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: pulumi.Input<string | undefined>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: pulumi.Input<string | undefined>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string | undefined>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: pulumi.Input<string | undefined>;
 }
 
 export interface ValkeyComponent {

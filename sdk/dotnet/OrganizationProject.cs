@@ -12,6 +12,40 @@ namespace Pulumi.Aiven
     /// <summary>
     /// Creates and manages an [Aiven project](https://aiven.io/docs/platform/concepts/orgs-units-projects#projects).
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Aiven = Pulumi.Aiven;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Aiven.OrganizationProject("example", new()
+    ///     {
+    ///         OrganizationId = "org1234abcd",
+    ///         ProjectId = "project-1",
+    ///         BillingGroupId = "721bf796-1d89-402d-9195-425a23c4efdc",
+    ///         ParentId = "a3fd7a594e01",
+    ///         BasePort = 10000,
+    ///         Tags = new[]
+    ///         {
+    ///             new Aiven.Inputs.OrganizationProjectTagArgs
+    ///             {
+    ///                 Key = "foo",
+    ///                 Value = "foo",
+    ///             },
+    ///         },
+    ///         TechnicalEmails = new[]
+    ///         {
+    ///             "foo@example.com",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

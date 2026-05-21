@@ -17,6 +17,11 @@ public final class GetClickhouseClickhouseUserConfigPrivatelinkAccess {
      */
     private @Nullable Boolean clickhouse;
     /**
+     * @return Enable clickhouse_arrowflight.
+     * 
+     */
+    private @Nullable Boolean clickhouseArrowflight;
+    /**
      * @return Enable clickhouse_https.
      * 
      */
@@ -39,6 +44,13 @@ public final class GetClickhouseClickhouseUserConfigPrivatelinkAccess {
      */
     public Optional<Boolean> clickhouse() {
         return Optional.ofNullable(this.clickhouse);
+    }
+    /**
+     * @return Enable clickhouse_arrowflight.
+     * 
+     */
+    public Optional<Boolean> clickhouseArrowflight() {
+        return Optional.ofNullable(this.clickhouseArrowflight);
     }
     /**
      * @return Enable clickhouse_https.
@@ -72,6 +84,7 @@ public final class GetClickhouseClickhouseUserConfigPrivatelinkAccess {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean clickhouse;
+        private @Nullable Boolean clickhouseArrowflight;
         private @Nullable Boolean clickhouseHttps;
         private @Nullable Boolean clickhouseMysql;
         private @Nullable Boolean prometheus;
@@ -79,6 +92,7 @@ public final class GetClickhouseClickhouseUserConfigPrivatelinkAccess {
         public Builder(GetClickhouseClickhouseUserConfigPrivatelinkAccess defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clickhouse = defaults.clickhouse;
+    	      this.clickhouseArrowflight = defaults.clickhouseArrowflight;
     	      this.clickhouseHttps = defaults.clickhouseHttps;
     	      this.clickhouseMysql = defaults.clickhouseMysql;
     	      this.prometheus = defaults.prometheus;
@@ -88,6 +102,12 @@ public final class GetClickhouseClickhouseUserConfigPrivatelinkAccess {
         public Builder clickhouse(@Nullable Boolean clickhouse) {
 
             this.clickhouse = clickhouse;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder clickhouseArrowflight(@Nullable Boolean clickhouseArrowflight) {
+
+            this.clickhouseArrowflight = clickhouseArrowflight;
             return this;
         }
         @CustomType.Setter
@@ -111,6 +131,7 @@ public final class GetClickhouseClickhouseUserConfigPrivatelinkAccess {
         public GetClickhouseClickhouseUserConfigPrivatelinkAccess build() {
             final var _resultValue = new GetClickhouseClickhouseUserConfigPrivatelinkAccess();
             _resultValue.clickhouse = clickhouse;
+            _resultValue.clickhouseArrowflight = clickhouseArrowflight;
             _resultValue.clickhouseHttps = clickhouseHttps;
             _resultValue.clickhouseMysql = clickhouseMysql;
             _resultValue.prometheus = prometheus;
