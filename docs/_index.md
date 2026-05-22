@@ -24,7 +24,7 @@ Sign up for Aiven and [create a personal token](https://aiven.io/docs/platform/h
 You can also create an [application user](https://aiven.io/docs/platform/howto/manage-application-users) and use its token for accessing the Aiven Provider.
 ## Example usage
 
-{{< chooser language "typescript,python,go,csharp,java,yaml" >}}
+{{< chooser language "typescript,python,go,csharp,java,yaml,hcl" >}}
 {{% choosable language typescript %}}
 ```yaml
 # Pulumi.yaml provider configuration file
@@ -156,6 +156,12 @@ public class App {
     public static void stack(Context ctx) {
     }
 }
+```
+
+{{% /choosable %}}
+{{% choosable language hcl %}}
+```hcl
+Example currently unavailable in this language
 ```
 
 {{% /choosable %}}

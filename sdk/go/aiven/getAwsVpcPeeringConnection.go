@@ -35,14 +35,12 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_ = exampleVpc.ID().ApplyT(func(id string) (aiven.GetAwsVpcPeeringConnectionResult, error) {
-//				return aiven.GetAwsVpcPeeringConnectionResult(interface{}(aiven.GetAwsVpcPeeringConnection(ctx, &aiven.LookupAwsVpcPeeringConnectionArgs{
-//					VpcId:        id,
-//					AwsAccountId: awsId,
-//					AwsVpcId:     "vpc-1a2b3c4d5e6f7g8h9",
-//					AwsVpcRegion: "aws-us-east-2",
-//				}, nil))), nil
-//			}).(aiven.GetAwsVpcPeeringConnectionResultOutput)
+//			_ = aiven.GetAwsVpcPeeringConnectionOutput(ctx, aiven.GetAwsVpcPeeringConnectionOutputArgs{
+//				VpcId:        exampleVpc.ID(),
+//				AwsAccountId: pulumi.Any(awsId),
+//				AwsVpcId:     pulumi.String("vpc-1a2b3c4d5e6f7g8h9"),
+//				AwsVpcRegion: pulumi.String("aws-us-east-2"),
+//			}, nil)
 //			return nil
 //		})
 //	}
