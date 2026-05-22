@@ -18,12 +18,12 @@ import * as utilities from "./utilities";
  *     cloudName: "google-europe-west1",
  *     networkCidr: "192.168.1.0/24",
  * });
- * const awsToAivenPeering = exampleVpc.id.apply(id => aiven.getAwsVpcPeeringConnectionOutput({
- *     vpcId: id,
+ * const awsToAivenPeering = aiven.getAwsVpcPeeringConnectionOutput({
+ *     vpcId: exampleVpc.id,
  *     awsAccountId: awsId,
  *     awsVpcId: "vpc-1a2b3c4d5e6f7g8h9",
  *     awsVpcRegion: "aws-us-east-2",
- * }));
+ * });
  * ```
  */
 export function getAwsVpcPeeringConnection(args: GetAwsVpcPeeringConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetAwsVpcPeeringConnectionResult> {
@@ -109,12 +109,12 @@ export interface GetAwsVpcPeeringConnectionResult {
  *     cloudName: "google-europe-west1",
  *     networkCidr: "192.168.1.0/24",
  * });
- * const awsToAivenPeering = exampleVpc.id.apply(id => aiven.getAwsVpcPeeringConnectionOutput({
- *     vpcId: id,
+ * const awsToAivenPeering = aiven.getAwsVpcPeeringConnectionOutput({
+ *     vpcId: exampleVpc.id,
  *     awsAccountId: awsId,
  *     awsVpcId: "vpc-1a2b3c4d5e6f7g8h9",
  *     awsVpcRegion: "aws-us-east-2",
- * }));
+ * });
  * ```
  */
 export function getAwsVpcPeeringConnectionOutput(args: GetAwsVpcPeeringConnectionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAwsVpcPeeringConnectionResult> {

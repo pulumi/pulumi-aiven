@@ -1377,7 +1377,7 @@ class ClickhouseClickhouseUserConfigArgsDict(TypedDict):
     """
     Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
     """
-    ip_filter_objects: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClickhouseClickhouseUserConfigIpFilterObjectArgs']]]]]
+    ip_filter_objects: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClickhouseClickhouseUserConfigIpFilterObjectArgsDict']]]]]
     """
     Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
     """
@@ -1389,11 +1389,11 @@ class ClickhouseClickhouseUserConfigArgsDict(TypedDict):
     """
     Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
     """
-    private_access: NotRequired[pulumi.Input[Optional['ClickhouseClickhouseUserConfigPrivateAccessArgs']]]
+    private_access: NotRequired[pulumi.Input[Optional['ClickhouseClickhouseUserConfigPrivateAccessArgsDict']]]
     """
     Allow access to selected service ports from private networks
     """
-    privatelink_access: NotRequired[pulumi.Input[Optional['ClickhouseClickhouseUserConfigPrivatelinkAccessArgs']]]
+    privatelink_access: NotRequired[pulumi.Input[Optional['ClickhouseClickhouseUserConfigPrivatelinkAccessArgsDict']]]
     """
     Allow access to selected service components through Privatelink
     """
@@ -1401,7 +1401,7 @@ class ClickhouseClickhouseUserConfigArgsDict(TypedDict):
     """
     Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
     """
-    public_access: NotRequired[pulumi.Input[Optional['ClickhouseClickhouseUserConfigPublicAccessArgs']]]
+    public_access: NotRequired[pulumi.Input[Optional['ClickhouseClickhouseUserConfigPublicAccessArgsDict']]]
     """
     Allow access to selected service ports from the public Internet
     """
@@ -1409,7 +1409,7 @@ class ClickhouseClickhouseUserConfigArgsDict(TypedDict):
     """
     Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
     """
-    server_settings: NotRequired[pulumi.Input[Optional['ClickhouseClickhouseUserConfigServerSettingsArgs']]]
+    server_settings: NotRequired[pulumi.Input[Optional['ClickhouseClickhouseUserConfigServerSettingsArgsDict']]]
     """
     ClickHouse server settings, which can be found in the `system.server_settings` table
     """
@@ -1421,7 +1421,7 @@ class ClickhouseClickhouseUserConfigArgsDict(TypedDict):
     """
     Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
     """
-    session_settings: NotRequired[pulumi.Input[Optional['ClickhouseClickhouseUserConfigSessionSettingsArgs']]]
+    session_settings: NotRequired[pulumi.Input[Optional['ClickhouseClickhouseUserConfigSessionSettingsArgsDict']]]
     """
     ClickHouse session settings, which can be found in the `system.settings` table
     """
@@ -3393,7 +3393,7 @@ class DragonflyDragonflyUserConfigArgsDict(TypedDict):
     """
     Require SSL to access Dragonfly. Default: `true`.
     """
-    ip_filter_objects: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DragonflyDragonflyUserConfigIpFilterObjectArgs']]]]]
+    ip_filter_objects: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DragonflyDragonflyUserConfigIpFilterObjectArgsDict']]]]]
     """
     Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
     """
@@ -3405,15 +3405,15 @@ class DragonflyDragonflyUserConfigArgsDict(TypedDict):
     """
     Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
     """
-    migration: NotRequired[pulumi.Input[Optional['DragonflyDragonflyUserConfigMigrationArgs']]]
+    migration: NotRequired[pulumi.Input[Optional['DragonflyDragonflyUserConfigMigrationArgsDict']]]
     """
     Migrate data from existing server
     """
-    private_access: NotRequired[pulumi.Input[Optional['DragonflyDragonflyUserConfigPrivateAccessArgs']]]
+    private_access: NotRequired[pulumi.Input[Optional['DragonflyDragonflyUserConfigPrivateAccessArgsDict']]]
     """
     Allow access to selected service ports from private networks
     """
-    privatelink_access: NotRequired[pulumi.Input[Optional['DragonflyDragonflyUserConfigPrivatelinkAccessArgs']]]
+    privatelink_access: NotRequired[pulumi.Input[Optional['DragonflyDragonflyUserConfigPrivatelinkAccessArgsDict']]]
     """
     Allow access to selected service components through Privatelink
     """
@@ -3421,7 +3421,7 @@ class DragonflyDragonflyUserConfigArgsDict(TypedDict):
     """
     Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
     """
-    public_access: NotRequired[pulumi.Input[Optional['DragonflyDragonflyUserConfigPublicAccessArgs']]]
+    public_access: NotRequired[pulumi.Input[Optional['DragonflyDragonflyUserConfigPublicAccessArgsDict']]]
     """
     Allow access to selected service ports from the public Internet
     """
@@ -4770,7 +4770,7 @@ class FlinkFlinkUserConfigArgsDict(TypedDict):
     """
     Enum: `1.16`, `1.19`, `1.20`, and newer. Flink major version.
     """
-    ip_filter_objects: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FlinkFlinkUserConfigIpFilterObjectArgs']]]]]
+    ip_filter_objects: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FlinkFlinkUserConfigIpFilterObjectArgsDict']]]]]
     """
     Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
     """
@@ -4794,11 +4794,11 @@ class FlinkFlinkUserConfigArgsDict(TypedDict):
     """
     Maximum size in bytes for messages exchanged between the JobManager and the TaskManagers.
     """
-    privatelink_access: NotRequired[pulumi.Input[Optional['FlinkFlinkUserConfigPrivatelinkAccessArgs']]]
+    privatelink_access: NotRequired[pulumi.Input[Optional['FlinkFlinkUserConfigPrivatelinkAccessArgsDict']]]
     """
     Allow access to selected service components through Privatelink
     """
-    public_access: NotRequired[pulumi.Input[Optional['FlinkFlinkUserConfigPublicAccessArgs']]]
+    public_access: NotRequired[pulumi.Input[Optional['FlinkFlinkUserConfigPublicAccessArgsDict']]]
     """
     Allow access to selected service ports from the public Internet
     """
@@ -5169,7 +5169,7 @@ class FlinkJarApplicationApplicationVersionArgsDict(TypedDict):
     """
     The creator of this entity.
     """
-    file_infos: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FlinkJarApplicationApplicationVersionFileInfoArgs']]]]]
+    file_infos: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FlinkJarApplicationApplicationVersionFileInfoArgsDict']]]]]
     """
     Flink JarApplicationVersion FileInfo.
     """
@@ -6501,7 +6501,7 @@ class GrafanaGrafanaUserConfigArgsDict(TypedDict):
     """
     Allow embedding Grafana dashboards with iframe/frame/object/embed tags. Disabled by default to limit impact of clickjacking.
     """
-    auth_azuread: NotRequired[pulumi.Input[Optional['GrafanaGrafanaUserConfigAuthAzureadArgs']]]
+    auth_azuread: NotRequired[pulumi.Input[Optional['GrafanaGrafanaUserConfigAuthAzureadArgsDict']]]
     """
     Azure AD OAuth integration
     """
@@ -6509,19 +6509,19 @@ class GrafanaGrafanaUserConfigArgsDict(TypedDict):
     """
     Enable or disable basic authentication form, used by Grafana built-in login.
     """
-    auth_generic_oauth: NotRequired[pulumi.Input[Optional['GrafanaGrafanaUserConfigAuthGenericOauthArgs']]]
+    auth_generic_oauth: NotRequired[pulumi.Input[Optional['GrafanaGrafanaUserConfigAuthGenericOauthArgsDict']]]
     """
     Generic OAuth integration
     """
-    auth_github: NotRequired[pulumi.Input[Optional['GrafanaGrafanaUserConfigAuthGithubArgs']]]
+    auth_github: NotRequired[pulumi.Input[Optional['GrafanaGrafanaUserConfigAuthGithubArgsDict']]]
     """
     Github Auth integration
     """
-    auth_gitlab: NotRequired[pulumi.Input[Optional['GrafanaGrafanaUserConfigAuthGitlabArgs']]]
+    auth_gitlab: NotRequired[pulumi.Input[Optional['GrafanaGrafanaUserConfigAuthGitlabArgsDict']]]
     """
     GitLab Auth integration
     """
-    auth_google: NotRequired[pulumi.Input[Optional['GrafanaGrafanaUserConfigAuthGoogleArgs']]]
+    auth_google: NotRequired[pulumi.Input[Optional['GrafanaGrafanaUserConfigAuthGoogleArgsDict']]]
     """
     Google Auth integration
     """
@@ -6557,7 +6557,7 @@ class GrafanaGrafanaUserConfigArgsDict(TypedDict):
     """
     Timeout for data proxy requests in seconds. Example: `30`.
     """
-    date_formats: NotRequired[pulumi.Input[Optional['GrafanaGrafanaUserConfigDateFormatsArgs']]]
+    date_formats: NotRequired[pulumi.Input[Optional['GrafanaGrafanaUserConfigDateFormatsArgsDict']]]
     """
     Grafana date format specifications
     """
@@ -6569,7 +6569,7 @@ class GrafanaGrafanaUserConfigArgsDict(TypedDict):
     """
     Editors can manage folders, teams and dashboards created by them.
     """
-    external_image_storage: NotRequired[pulumi.Input[Optional['GrafanaGrafanaUserConfigExternalImageStorageArgs']]]
+    external_image_storage: NotRequired[pulumi.Input[Optional['GrafanaGrafanaUserConfigExternalImageStorageArgsDict']]]
     """
     External image store settings
     """
@@ -6577,7 +6577,7 @@ class GrafanaGrafanaUserConfigArgsDict(TypedDict):
     """
     Google Analytics ID. Example: `UA-123456-4`.
     """
-    ip_filter_objects: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GrafanaGrafanaUserConfigIpFilterObjectArgs']]]]]
+    ip_filter_objects: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GrafanaGrafanaUserConfigIpFilterObjectArgsDict']]]]]
     """
     Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
     """
@@ -6597,11 +6597,11 @@ class GrafanaGrafanaUserConfigArgsDict(TypedDict):
     """
     Enforce user lookup based on email instead of the unique ID provided by the IdP. This setup introduces significant security risks, such as potential phishing, spoofing, and other data breaches.
     """
-    private_access: NotRequired[pulumi.Input[Optional['GrafanaGrafanaUserConfigPrivateAccessArgs']]]
+    private_access: NotRequired[pulumi.Input[Optional['GrafanaGrafanaUserConfigPrivateAccessArgsDict']]]
     """
     Allow access to selected service ports from private networks
     """
-    privatelink_access: NotRequired[pulumi.Input[Optional['GrafanaGrafanaUserConfigPrivatelinkAccessArgs']]]
+    privatelink_access: NotRequired[pulumi.Input[Optional['GrafanaGrafanaUserConfigPrivatelinkAccessArgsDict']]]
     """
     Allow access to selected service components through Privatelink
     """
@@ -6609,7 +6609,7 @@ class GrafanaGrafanaUserConfigArgsDict(TypedDict):
     """
     Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
     """
-    public_access: NotRequired[pulumi.Input[Optional['GrafanaGrafanaUserConfigPublicAccessArgs']]]
+    public_access: NotRequired[pulumi.Input[Optional['GrafanaGrafanaUserConfigPublicAccessArgsDict']]]
     """
     Allow access to selected service ports from the public Internet
     """
@@ -6625,7 +6625,7 @@ class GrafanaGrafanaUserConfigArgsDict(TypedDict):
     """
     Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
     """
-    smtp_server: NotRequired[pulumi.Input[Optional['GrafanaGrafanaUserConfigSmtpServerArgs']]]
+    smtp_server: NotRequired[pulumi.Input[Optional['GrafanaGrafanaUserConfigSmtpServerArgsDict']]]
     """
     SMTP server settings
     """
@@ -9241,7 +9241,7 @@ class KafkaConnectKafkaConnectUserConfigArgsDict(TypedDict):
     """
     Allow-list of HTTPS URLs used to validate GCP credential_source requests for Kafka Connect.
     """
-    ip_filter_objects: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['KafkaConnectKafkaConnectUserConfigIpFilterObjectArgs']]]]]
+    ip_filter_objects: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['KafkaConnectKafkaConnectUserConfigIpFilterObjectArgsDict']]]]]
     """
     Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
     """
@@ -9253,23 +9253,23 @@ class KafkaConnectKafkaConnectUserConfigArgsDict(TypedDict):
     """
     Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
     """
-    kafka_connect: NotRequired[pulumi.Input[Optional['KafkaConnectKafkaConnectUserConfigKafkaConnectArgs']]]
+    kafka_connect: NotRequired[pulumi.Input[Optional['KafkaConnectKafkaConnectUserConfigKafkaConnectArgsDict']]]
     """
     Kafka Connect configuration values
     """
-    plugin_versions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['KafkaConnectKafkaConnectUserConfigPluginVersionArgs']]]]]
+    plugin_versions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['KafkaConnectKafkaConnectUserConfigPluginVersionArgsDict']]]]]
     """
     The plugin selected by the user
     """
-    private_access: NotRequired[pulumi.Input[Optional['KafkaConnectKafkaConnectUserConfigPrivateAccessArgs']]]
+    private_access: NotRequired[pulumi.Input[Optional['KafkaConnectKafkaConnectUserConfigPrivateAccessArgsDict']]]
     """
     Allow access to selected service ports from private networks
     """
-    privatelink_access: NotRequired[pulumi.Input[Optional['KafkaConnectKafkaConnectUserConfigPrivatelinkAccessArgs']]]
+    privatelink_access: NotRequired[pulumi.Input[Optional['KafkaConnectKafkaConnectUserConfigPrivatelinkAccessArgsDict']]]
     """
     Allow access to selected service components through Privatelink
     """
-    public_access: NotRequired[pulumi.Input[Optional['KafkaConnectKafkaConnectUserConfigPublicAccessArgs']]]
+    public_access: NotRequired[pulumi.Input[Optional['KafkaConnectKafkaConnectUserConfigPublicAccessArgsDict']]]
     """
     Allow access to selected service ports from the public Internet
     """
@@ -9277,7 +9277,7 @@ class KafkaConnectKafkaConnectUserConfigArgsDict(TypedDict):
     """
     List of allowed URLs for SASL OAUTHBEARER authentication. Only HTTPS URLs are allowed for security reasons.
     """
-    secret_providers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['KafkaConnectKafkaConnectUserConfigSecretProviderArgs']]]]]
+    secret_providers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['KafkaConnectKafkaConnectUserConfigSecretProviderArgsDict']]]]]
     """
     Configure external secret providers in order to reference external secrets in connector configuration. Currently Hashicorp Vault (provider: vault, auth*method: token) and AWS Secrets Manager (provider: aws, auth*method: credentials) are supported. Secrets can be referenced in connector config with ${\\n\\n:\\n\\n:\\n\\n}
     """
@@ -10145,15 +10145,15 @@ class KafkaConnectKafkaConnectUserConfigSecretProviderArgsDict(TypedDict):
     """
     Name of the secret provider. Used to reference secrets in connector config.
     """
-    aws: NotRequired[pulumi.Input[Optional['KafkaConnectKafkaConnectUserConfigSecretProviderAwsArgs']]]
+    aws: NotRequired[pulumi.Input[Optional['KafkaConnectKafkaConnectUserConfigSecretProviderAwsArgsDict']]]
     """
     AWS secret provider configuration
     """
-    env: NotRequired[pulumi.Input[Optional['KafkaConnectKafkaConnectUserConfigSecretProviderEnvArgs']]]
+    env: NotRequired[pulumi.Input[Optional['KafkaConnectKafkaConnectUserConfigSecretProviderEnvArgsDict']]]
     """
     ENV secret provider configuration
     """
-    vault: NotRequired[pulumi.Input[Optional['KafkaConnectKafkaConnectUserConfigSecretProviderVaultArgs']]]
+    vault: NotRequired[pulumi.Input[Optional['KafkaConnectKafkaConnectUserConfigSecretProviderVaultArgsDict']]]
     """
     Vault secret provider configuration
     """
@@ -10795,7 +10795,7 @@ class KafkaKafkaUserConfigArgsDict(TypedDict):
     """
     Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
     """
-    follower_fetching: NotRequired[pulumi.Input[Optional['KafkaKafkaUserConfigFollowerFetchingArgs']]]
+    follower_fetching: NotRequired[pulumi.Input[Optional['KafkaKafkaUserConfigFollowerFetchingArgsDict']]]
     """
     Enable follower fetching
     """
@@ -10803,11 +10803,11 @@ class KafkaKafkaUserConfigArgsDict(TypedDict):
     """
     Allow-list of HTTPS URLs used to validate GCP credential_source requests for Kafka Connect.
     """
-    inkless: NotRequired[pulumi.Input[Optional['KafkaKafkaUserConfigInklessArgs']]]
+    inkless: NotRequired[pulumi.Input[Optional['KafkaKafkaUserConfigInklessArgsDict']]]
     """
     Inkless configuration values
     """
-    ip_filter_objects: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['KafkaKafkaUserConfigIpFilterObjectArgs']]]]]
+    ip_filter_objects: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['KafkaKafkaUserConfigIpFilterObjectArgsDict']]]]]
     """
     Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
     """
@@ -10819,11 +10819,11 @@ class KafkaKafkaUserConfigArgsDict(TypedDict):
     """
     Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
     """
-    kafka: NotRequired[pulumi.Input[Optional['KafkaKafkaUserConfigKafkaArgs']]]
+    kafka: NotRequired[pulumi.Input[Optional['KafkaKafkaUserConfigKafkaArgsDict']]]
     """
     Kafka broker configuration values
     """
-    kafka_authentication_methods: NotRequired[pulumi.Input[Optional['KafkaKafkaUserConfigKafkaAuthenticationMethodsArgs']]]
+    kafka_authentication_methods: NotRequired[pulumi.Input[Optional['KafkaKafkaUserConfigKafkaAuthenticationMethodsArgsDict']]]
     """
     Kafka authentication methods
     """
@@ -10831,19 +10831,19 @@ class KafkaKafkaUserConfigArgsDict(TypedDict):
     """
     Enable Kafka Connect service. Default: `false`.
     """
-    kafka_connect_config: NotRequired[pulumi.Input[Optional['KafkaKafkaUserConfigKafkaConnectConfigArgs']]]
+    kafka_connect_config: NotRequired[pulumi.Input[Optional['KafkaKafkaUserConfigKafkaConnectConfigArgsDict']]]
     """
     Kafka Connect configuration values
     """
-    kafka_connect_plugin_versions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['KafkaKafkaUserConfigKafkaConnectPluginVersionArgs']]]]]
+    kafka_connect_plugin_versions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['KafkaKafkaUserConfigKafkaConnectPluginVersionArgsDict']]]]]
     """
     The plugin selected by the user
     """
-    kafka_connect_secret_providers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['KafkaKafkaUserConfigKafkaConnectSecretProviderArgs']]]]]
+    kafka_connect_secret_providers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['KafkaKafkaUserConfigKafkaConnectSecretProviderArgsDict']]]]]
     """
     Configure external secret providers in order to reference external secrets in connector configuration. Currently Hashicorp Vault (provider: vault, auth*method: token) and AWS Secrets Manager (provider: aws, auth*method: credentials) are supported. Secrets can be referenced in connector config with ${\\n\\n:\\n\\n:\\n\\n}
     """
-    kafka_diskless: NotRequired[pulumi.Input[Optional['KafkaKafkaUserConfigKafkaDisklessArgs']]]
+    kafka_diskless: NotRequired[pulumi.Input[Optional['KafkaKafkaUserConfigKafkaDisklessArgsDict']]]
     """
     Kafka Diskless configuration values
     """
@@ -10855,11 +10855,11 @@ class KafkaKafkaUserConfigArgsDict(TypedDict):
     """
     Enable authorization in Kafka-REST service.
     """
-    kafka_rest_config: NotRequired[pulumi.Input[Optional['KafkaKafkaUserConfigKafkaRestConfigArgs']]]
+    kafka_rest_config: NotRequired[pulumi.Input[Optional['KafkaKafkaUserConfigKafkaRestConfigArgsDict']]]
     """
     Kafka REST configuration
     """
-    kafka_sasl_mechanisms: NotRequired[pulumi.Input[Optional['KafkaKafkaUserConfigKafkaSaslMechanismsArgs']]]
+    kafka_sasl_mechanisms: NotRequired[pulumi.Input[Optional['KafkaKafkaUserConfigKafkaSaslMechanismsArgsDict']]]
     """
     Kafka SASL mechanisms
     """
@@ -10875,15 +10875,15 @@ class KafkaKafkaUserConfigArgsDict(TypedDict):
     """
     Use a Let's Encrypt certificate authority (CA) for Kafka SASL authentication via Privatelink. (Default: False).
     """
-    private_access: NotRequired[pulumi.Input[Optional['KafkaKafkaUserConfigPrivateAccessArgs']]]
+    private_access: NotRequired[pulumi.Input[Optional['KafkaKafkaUserConfigPrivateAccessArgsDict']]]
     """
     Allow access to selected service ports from private networks
     """
-    privatelink_access: NotRequired[pulumi.Input[Optional['KafkaKafkaUserConfigPrivatelinkAccessArgs']]]
+    privatelink_access: NotRequired[pulumi.Input[Optional['KafkaKafkaUserConfigPrivatelinkAccessArgsDict']]]
     """
     Allow access to selected service components through Privatelink
     """
-    public_access: NotRequired[pulumi.Input[Optional['KafkaKafkaUserConfigPublicAccessArgs']]]
+    public_access: NotRequired[pulumi.Input[Optional['KafkaKafkaUserConfigPublicAccessArgsDict']]]
     """
     Allow access to selected service ports from the public Internet
     """
@@ -10895,7 +10895,7 @@ class KafkaKafkaUserConfigArgsDict(TypedDict):
     """
     Enable Schema-Registry service. Default: `false`.
     """
-    schema_registry_config: NotRequired[pulumi.Input[Optional['KafkaKafkaUserConfigSchemaRegistryConfigArgs']]]
+    schema_registry_config: NotRequired[pulumi.Input[Optional['KafkaKafkaUserConfigSchemaRegistryConfigArgsDict']]]
     """
     Schema Registry configuration
     """
@@ -10903,7 +10903,7 @@ class KafkaKafkaUserConfigArgsDict(TypedDict):
     """
     Store logs for the service so that they are available in the HTTP API and console.
     """
-    single_zone: NotRequired[pulumi.Input[Optional['KafkaKafkaUserConfigSingleZoneArgs']]]
+    single_zone: NotRequired[pulumi.Input[Optional['KafkaKafkaUserConfigSingleZoneArgsDict']]]
     """
     Single-zone configuration
     """
@@ -10911,7 +10911,7 @@ class KafkaKafkaUserConfigArgsDict(TypedDict):
     """
     Use static public IP addresses.
     """
-    tiered_storage: NotRequired[pulumi.Input[Optional['KafkaKafkaUserConfigTieredStorageArgs']]]
+    tiered_storage: NotRequired[pulumi.Input[Optional['KafkaKafkaUserConfigTieredStorageArgsDict']]]
     """
     Tiered storage configuration
     """
@@ -13031,15 +13031,15 @@ class KafkaKafkaUserConfigKafkaConnectSecretProviderArgsDict(TypedDict):
     """
     Name of the secret provider. Used to reference secrets in connector config.
     """
-    aws: NotRequired[pulumi.Input[Optional['KafkaKafkaUserConfigKafkaConnectSecretProviderAwsArgs']]]
+    aws: NotRequired[pulumi.Input[Optional['KafkaKafkaUserConfigKafkaConnectSecretProviderAwsArgsDict']]]
     """
     AWS secret provider configuration
     """
-    env: NotRequired[pulumi.Input[Optional['KafkaKafkaUserConfigKafkaConnectSecretProviderEnvArgs']]]
+    env: NotRequired[pulumi.Input[Optional['KafkaKafkaUserConfigKafkaConnectSecretProviderEnvArgsDict']]]
     """
     ENV secret provider configuration
     """
-    vault: NotRequired[pulumi.Input[Optional['KafkaKafkaUserConfigKafkaConnectSecretProviderVaultArgs']]]
+    vault: NotRequired[pulumi.Input[Optional['KafkaKafkaUserConfigKafkaConnectSecretProviderVaultArgsDict']]]
     """
     Vault secret provider configuration
     """
@@ -14172,7 +14172,7 @@ class KafkaKafkaUserConfigTieredStorageArgsDict(TypedDict):
     """
     Whether to enable the tiered storage functionality.
     """
-    local_cache: NotRequired[pulumi.Input[Optional['KafkaKafkaUserConfigTieredStorageLocalCacheArgs']]]
+    local_cache: NotRequired[pulumi.Input[Optional['KafkaKafkaUserConfigTieredStorageLocalCacheArgsDict']]]
     """
     Local cache configuration
     """
@@ -14467,7 +14467,7 @@ class KafkaMirrorMakerKafkaMirrormakerUserConfigArgsDict(TypedDict):
     """
     Additional Cloud Regions for Backup Replication.
     """
-    ip_filter_objects: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['KafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectArgs']]]]]
+    ip_filter_objects: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['KafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectArgsDict']]]]]
     """
     Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
     """
@@ -14479,7 +14479,7 @@ class KafkaMirrorMakerKafkaMirrormakerUserConfigArgsDict(TypedDict):
     """
     Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
     """
-    kafka_mirrormaker: NotRequired[pulumi.Input[Optional['KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs']]]
+    kafka_mirrormaker: NotRequired[pulumi.Input[Optional['KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgsDict']]]
     """
     Kafka MirrorMaker configuration values
     """
@@ -16200,7 +16200,7 @@ class MySqlComponentArgs:
 
 
 class MySqlMysqlArgsDict(TypedDict):
-    params: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['MySqlMysqlParamArgs']]]]]
+    params: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['MySqlMysqlParamArgsDict']]]]]
     """
     MySQL connection parameters.
     """
@@ -16462,7 +16462,7 @@ class MySqlMysqlUserConfigArgsDict(TypedDict):
     """
     The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default for example if using the MySQL Debezium Kafka connector. Example: `600`.
     """
-    ip_filter_objects: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['MySqlMysqlUserConfigIpFilterObjectArgs']]]]]
+    ip_filter_objects: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['MySqlMysqlUserConfigIpFilterObjectArgsDict']]]]]
     """
     Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
     """
@@ -16474,15 +16474,15 @@ class MySqlMysqlUserConfigArgsDict(TypedDict):
     """
     Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
     """
-    migration: NotRequired[pulumi.Input[Optional['MySqlMysqlUserConfigMigrationArgs']]]
+    migration: NotRequired[pulumi.Input[Optional['MySqlMysqlUserConfigMigrationArgsDict']]]
     """
     Migrate data from existing server
     """
-    mysql: NotRequired[pulumi.Input[Optional['MySqlMysqlUserConfigMysqlArgs']]]
+    mysql: NotRequired[pulumi.Input[Optional['MySqlMysqlUserConfigMysqlArgsDict']]]
     """
     mysql.conf configuration values
     """
-    mysql_incremental_backup: NotRequired[pulumi.Input[Optional['MySqlMysqlUserConfigMysqlIncrementalBackupArgs']]]
+    mysql_incremental_backup: NotRequired[pulumi.Input[Optional['MySqlMysqlUserConfigMysqlIncrementalBackupArgsDict']]]
     """
     MySQL incremental backup configuration
     """
@@ -16490,11 +16490,11 @@ class MySqlMysqlUserConfigArgsDict(TypedDict):
     """
     Enum: `8`, `8.4`, and newer. MySQL major version.
     """
-    private_access: NotRequired[pulumi.Input[Optional['MySqlMysqlUserConfigPrivateAccessArgs']]]
+    private_access: NotRequired[pulumi.Input[Optional['MySqlMysqlUserConfigPrivateAccessArgsDict']]]
     """
     Allow access to selected service ports from private networks
     """
-    privatelink_access: NotRequired[pulumi.Input[Optional['MySqlMysqlUserConfigPrivatelinkAccessArgs']]]
+    privatelink_access: NotRequired[pulumi.Input[Optional['MySqlMysqlUserConfigPrivatelinkAccessArgsDict']]]
     """
     Allow access to selected service components through Privatelink
     """
@@ -16502,7 +16502,7 @@ class MySqlMysqlUserConfigArgsDict(TypedDict):
     """
     Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
     """
-    public_access: NotRequired[pulumi.Input[Optional['MySqlMysqlUserConfigPublicAccessArgs']]]
+    public_access: NotRequired[pulumi.Input[Optional['MySqlMysqlUserConfigPublicAccessArgsDict']]]
     """
     Allow access to selected service ports from the public Internet
     """
@@ -18724,7 +18724,7 @@ class OpenSearchOpensearchUserConfigArgsDict(TypedDict):
     """
     Additional Cloud Regions for Backup Replication.
     """
-    azure_migration: NotRequired[pulumi.Input[Optional['OpenSearchOpensearchUserConfigAzureMigrationArgs']]]
+    azure_migration: NotRequired[pulumi.Input[Optional['OpenSearchOpensearchUserConfigAzureMigrationArgsDict']]]
     """
     Azure migration settings
     """
@@ -18736,23 +18736,23 @@ class OpenSearchOpensearchUserConfigArgsDict(TypedDict):
     """
     Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can not be activated unless specifically allowed for the project.
     """
-    gcs_migration: NotRequired[pulumi.Input[Optional['OpenSearchOpensearchUserConfigGcsMigrationArgs']]]
+    gcs_migration: NotRequired[pulumi.Input[Optional['OpenSearchOpensearchUserConfigGcsMigrationArgsDict']]]
     """
     Google Cloud Storage migration settings
     """
-    index_patterns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OpenSearchOpensearchUserConfigIndexPatternArgs']]]]]
+    index_patterns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OpenSearchOpensearchUserConfigIndexPatternArgsDict']]]]]
     """
     Index patterns
     """
-    index_rollup: NotRequired[pulumi.Input[Optional['OpenSearchOpensearchUserConfigIndexRollupArgs']]]
+    index_rollup: NotRequired[pulumi.Input[Optional['OpenSearchOpensearchUserConfigIndexRollupArgsDict']]]
     """
     Index rollup settings
     """
-    index_template: NotRequired[pulumi.Input[Optional['OpenSearchOpensearchUserConfigIndexTemplateArgs']]]
+    index_template: NotRequired[pulumi.Input[Optional['OpenSearchOpensearchUserConfigIndexTemplateArgsDict']]]
     """
     Template settings for all new indexes
     """
-    ip_filter_objects: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OpenSearchOpensearchUserConfigIpFilterObjectArgs']]]]]
+    ip_filter_objects: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OpenSearchOpensearchUserConfigIpFilterObjectArgsDict']]]]]
     """
     Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
     """
@@ -18764,7 +18764,7 @@ class OpenSearchOpensearchUserConfigArgsDict(TypedDict):
     """
     Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
     """
-    jwt: NotRequired[pulumi.Input[Optional['OpenSearchOpensearchUserConfigJwtArgs']]]
+    jwt: NotRequired[pulumi.Input[Optional['OpenSearchOpensearchUserConfigJwtArgsDict']]]
     """
     OpenSearch JWT Configuration
     """
@@ -18776,15 +18776,15 @@ class OpenSearchOpensearchUserConfigArgsDict(TypedDict):
     """
     Use index_patterns instead. Default: `0`.
     """
-    openid: NotRequired[pulumi.Input[Optional['OpenSearchOpensearchUserConfigOpenidArgs']]]
+    openid: NotRequired[pulumi.Input[Optional['OpenSearchOpensearchUserConfigOpenidArgsDict']]]
     """
     OpenSearch OpenID Connect Configuration
     """
-    opensearch: NotRequired[pulumi.Input[Optional['OpenSearchOpensearchUserConfigOpensearchArgs']]]
+    opensearch: NotRequired[pulumi.Input[Optional['OpenSearchOpensearchUserConfigOpensearchArgsDict']]]
     """
     OpenSearch settings
     """
-    opensearch_dashboards: NotRequired[pulumi.Input[Optional['OpenSearchOpensearchUserConfigOpensearchDashboardsArgs']]]
+    opensearch_dashboards: NotRequired[pulumi.Input[Optional['OpenSearchOpensearchUserConfigOpensearchDashboardsArgsDict']]]
     """
     OpenSearch Dashboards settings
     """
@@ -18792,11 +18792,11 @@ class OpenSearchOpensearchUserConfigArgsDict(TypedDict):
     """
     Enum: `1`, `2`, `2.19`, `3.3`, and newer. OpenSearch version.
     """
-    private_access: NotRequired[pulumi.Input[Optional['OpenSearchOpensearchUserConfigPrivateAccessArgs']]]
+    private_access: NotRequired[pulumi.Input[Optional['OpenSearchOpensearchUserConfigPrivateAccessArgsDict']]]
     """
     Allow access to selected service ports from private networks
     """
-    privatelink_access: NotRequired[pulumi.Input[Optional['OpenSearchOpensearchUserConfigPrivatelinkAccessArgs']]]
+    privatelink_access: NotRequired[pulumi.Input[Optional['OpenSearchOpensearchUserConfigPrivatelinkAccessArgsDict']]]
     """
     Allow access to selected service components through Privatelink
     """
@@ -18804,7 +18804,7 @@ class OpenSearchOpensearchUserConfigArgsDict(TypedDict):
     """
     Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
     """
-    public_access: NotRequired[pulumi.Input[Optional['OpenSearchOpensearchUserConfigPublicAccessArgs']]]
+    public_access: NotRequired[pulumi.Input[Optional['OpenSearchOpensearchUserConfigPublicAccessArgsDict']]]
     """
     Allow access to selected service ports from the public Internet
     """
@@ -18812,11 +18812,11 @@ class OpenSearchOpensearchUserConfigArgsDict(TypedDict):
     """
     Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
     """
-    s3_migration: NotRequired[pulumi.Input[Optional['OpenSearchOpensearchUserConfigS3MigrationArgs']]]
+    s3_migration: NotRequired[pulumi.Input[Optional['OpenSearchOpensearchUserConfigS3MigrationArgsDict']]]
     """
     AWS S3 / AWS S3 compatible migration settings
     """
-    saml: NotRequired[pulumi.Input[Optional['OpenSearchOpensearchUserConfigSamlArgs']]]
+    saml: NotRequired[pulumi.Input[Optional['OpenSearchOpensearchUserConfigSamlArgsDict']]]
     """
     OpenSearch SAML configuration
     """
@@ -20500,7 +20500,7 @@ class OpenSearchOpensearchUserConfigOpensearchArgsDict(TypedDict):
     """
     Require explicit index names when deleting.
     """
-    auth_failure_listeners: NotRequired[pulumi.Input[Optional['OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersArgs']]]
+    auth_failure_listeners: NotRequired[pulumi.Input[Optional['OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersArgsDict']]]
     """
     Opensearch Security Plugin Settings
     """
@@ -20512,7 +20512,7 @@ class OpenSearchOpensearchUserConfigOpensearchArgsDict(TypedDict):
     """
     Controls the number of shards allowed in the cluster per data node. Example: `1000`.
     """
-    cluster_remote_store: NotRequired[pulumi.Input[Optional['OpenSearchOpensearchUserConfigOpensearchClusterRemoteStoreArgs']]]
+    cluster_remote_store: NotRequired[pulumi.Input[Optional['OpenSearchOpensearchUserConfigOpensearchClusterRemoteStoreArgsDict']]]
     cluster_routing_allocation_balance_prefer_primary: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     When set to true, OpenSearch attempts to evenly distribute the primary shards between the cluster nodes. Enabling this setting does not always guarantee an equal number of primary shards on each node, especially in the event of a failover. Changing this setting to false after it was set to true does not invoke redistribution of primary shards. Default is false.
@@ -20521,8 +20521,8 @@ class OpenSearchOpensearchUserConfigOpensearchArgsDict(TypedDict):
     """
     How many concurrent incoming/outgoing shard recoveries (normally replicas) are allowed to happen on a node. Defaults to node cpu count * 2.
     """
-    cluster_search_request_slowlog: NotRequired[pulumi.Input[Optional['OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogArgs']]]
-    disk_watermarks: NotRequired[pulumi.Input[Optional['OpenSearchOpensearchUserConfigOpensearchDiskWatermarksArgs']]]
+    cluster_search_request_slowlog: NotRequired[pulumi.Input[Optional['OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogArgsDict']]]
+    disk_watermarks: NotRequired[pulumi.Input[Optional['OpenSearchOpensearchUserConfigOpensearchDiskWatermarksArgsDict']]]
     """
     Watermark settings
     """
@@ -20658,25 +20658,25 @@ class OpenSearchOpensearchUserConfigOpensearchArgsDict(TypedDict):
     """
     Whitelisted addresses for reindexing. Changing this value will cause all OpenSearch instances to restart.
     """
-    remote_store: NotRequired[pulumi.Input[Optional['OpenSearchOpensearchUserConfigOpensearchRemoteStoreArgs']]]
+    remote_store: NotRequired[pulumi.Input[Optional['OpenSearchOpensearchUserConfigOpensearchRemoteStoreArgsDict']]]
     script_max_compilations_rate: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Script compilation circuit breaker limits the number of inline script compilations within a period of time. Default is use-context. Example: `75/5m`.
     """
-    search_backpressure: NotRequired[pulumi.Input[Optional['OpenSearchOpensearchUserConfigOpensearchSearchBackpressureArgs']]]
+    search_backpressure: NotRequired[pulumi.Input[Optional['OpenSearchOpensearchUserConfigOpensearchSearchBackpressureArgsDict']]]
     """
     Search Backpressure Settings
     """
-    search_insights_top_queries: NotRequired[pulumi.Input[Optional['OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesArgs']]]
+    search_insights_top_queries: NotRequired[pulumi.Input[Optional['OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesArgsDict']]]
     search_max_buckets: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Maximum number of aggregation buckets allowed in a single response. OpenSearch default value is used when this is not defined. Example: `10000`.
     """
-    segrep: NotRequired[pulumi.Input[Optional['OpenSearchOpensearchUserConfigOpensearchSegrepArgs']]]
+    segrep: NotRequired[pulumi.Input[Optional['OpenSearchOpensearchUserConfigOpensearchSegrepArgsDict']]]
     """
     Segment Replication Backpressure Settings
     """
-    shard_indexing_pressure: NotRequired[pulumi.Input[Optional['OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureArgs']]]
+    shard_indexing_pressure: NotRequired[pulumi.Input[Optional['OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureArgsDict']]]
     """
     Shard indexing back pressure settings
     """
@@ -21693,8 +21693,8 @@ class OpenSearchOpensearchUserConfigOpensearchArgs:
 
 
 class OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersArgsDict(TypedDict):
-    internal_authentication_backend_limiting: NotRequired[pulumi.Input[Optional['OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingArgs']]]
-    ip_rate_limiting: NotRequired[pulumi.Input[Optional['OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingArgs']]]
+    internal_authentication_backend_limiting: NotRequired[pulumi.Input[Optional['OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingArgsDict']]]
+    ip_rate_limiting: NotRequired[pulumi.Input[Optional['OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingArgsDict']]]
     """
     IP address rate limiting settings
     """
@@ -22110,7 +22110,7 @@ class OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogArgsDic
     """
     Enum: `debug`, `info`, `trace`, `warn`. Log level. Default: `trace`.
     """
-    threshold: NotRequired[pulumi.Input[Optional['OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdArgs']]]
+    threshold: NotRequired[pulumi.Input[Optional['OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdArgsDict']]]
 
 @pulumi.input_type
 class OpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogArgs:
@@ -22525,15 +22525,15 @@ class OpenSearchOpensearchUserConfigOpensearchSearchBackpressureArgsDict(TypedDi
     """
     Enum: `disabled`, `enforced`, `monitor_only`. The search backpressure mode. Valid values are monitor*only, enforced, or disabled. Default is monitor*only.
     """
-    node_duress: NotRequired[pulumi.Input[Optional['OpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressArgs']]]
+    node_duress: NotRequired[pulumi.Input[Optional['OpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressArgsDict']]]
     """
     Node duress settings
     """
-    search_shard_task: NotRequired[pulumi.Input[Optional['OpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskArgs']]]
+    search_shard_task: NotRequired[pulumi.Input[Optional['OpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskArgsDict']]]
     """
     Search shard settings
     """
-    search_task: NotRequired[pulumi.Input[Optional['OpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskArgs']]]
+    search_task: NotRequired[pulumi.Input[Optional['OpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskArgsDict']]]
     """
     Search task settings
     """
@@ -23057,15 +23057,15 @@ class OpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskArgs:
 
 
 class OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesArgsDict(TypedDict):
-    cpu: NotRequired[pulumi.Input[Optional['OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuArgs']]]
+    cpu: NotRequired[pulumi.Input[Optional['OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuArgsDict']]]
     """
     Top N queries monitoring by CPU
     """
-    latency: NotRequired[pulumi.Input[Optional['OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyArgs']]]
+    latency: NotRequired[pulumi.Input[Optional['OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyArgsDict']]]
     """
     Top N queries monitoring by latency
     """
-    memory: NotRequired[pulumi.Input[Optional['OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryArgs']]]
+    memory: NotRequired[pulumi.Input[Optional['OpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryArgsDict']]]
     """
     Top N queries monitoring by memory
     """
@@ -23430,11 +23430,11 @@ class OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureArgsDict(Type
     """
     Run shard indexing backpressure in shadow mode or enforced mode. In shadow mode (value set as false), shard indexing backpressure tracks all granular-level metrics, but it doesn’t actually reject any indexing requests. In enforced mode (value set as true), shard indexing backpressure rejects any requests to the cluster that might cause a dip in its performance. Default is false.
     """
-    operating_factor: NotRequired[pulumi.Input[Optional['OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorArgs']]]
+    operating_factor: NotRequired[pulumi.Input[Optional['OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorArgsDict']]]
     """
     Operating factor
     """
-    primary_parameter: NotRequired[pulumi.Input[Optional['OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterArgs']]]
+    primary_parameter: NotRequired[pulumi.Input[Optional['OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterArgsDict']]]
     """
     Primary parameter
     """
@@ -23580,8 +23580,8 @@ class OpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFact
 
 
 class OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterArgsDict(TypedDict):
-    node: NotRequired[pulumi.Input[Optional['OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodeArgs']]]
-    shard: NotRequired[pulumi.Input[Optional['OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardArgs']]]
+    node: NotRequired[pulumi.Input[Optional['OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodeArgsDict']]]
+    shard: NotRequired[pulumi.Input[Optional['OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardArgsDict']]]
 
 @pulumi.input_type
 class OpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterArgs:
@@ -26170,7 +26170,7 @@ class PgPgArgsDict(TypedDict):
     """
     The [number of allowed connections](https://aiven.io/docs/products/postgresql/reference/pg-connection-limits). Varies based on the service plan.
     """
-    params: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PgPgParamArgs']]]]]
+    params: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PgPgParamArgsDict']]]]]
     """
     PostgreSQL connection parameters.
     """
@@ -26612,7 +26612,7 @@ class PgPgUserConfigArgsDict(TypedDict):
     """
     Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
     """
-    ip_filter_objects: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PgPgUserConfigIpFilterObjectArgs']]]]]
+    ip_filter_objects: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PgPgUserConfigIpFilterObjectArgsDict']]]]]
     """
     Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
     """
@@ -26624,7 +26624,7 @@ class PgPgUserConfigArgsDict(TypedDict):
     """
     Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
     """
-    migration: NotRequired[pulumi.Input[Optional['PgPgUserConfigMigrationArgs']]]
+    migration: NotRequired[pulumi.Input[Optional['PgPgUserConfigMigrationArgsDict']]]
     """
     Migrate data from existing server
     """
@@ -26632,11 +26632,11 @@ class PgPgUserConfigArgsDict(TypedDict):
     """
     Number of nodes for the service. Example: `3`.
     """
-    pg: NotRequired[pulumi.Input[Optional['PgPgUserConfigPgArgs']]]
+    pg: NotRequired[pulumi.Input[Optional['PgPgUserConfigPgArgsDict']]]
     """
     postgresql.conf configuration values
     """
-    pg_qualstats: NotRequired[pulumi.Input[Optional['PgPgUserConfigPgQualstatsArgs']]]
+    pg_qualstats: NotRequired[pulumi.Input[Optional['PgPgUserConfigPgQualstatsArgsDict']]]
     """
     System-wide settings for the pg*qualstats extension
     """
@@ -26656,23 +26656,23 @@ class PgPgUserConfigArgsDict(TypedDict):
     """
     Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`, `17`, `18`, and newer. PostgreSQL major version.
     """
-    pgaudit: NotRequired[pulumi.Input[Optional['PgPgUserConfigPgauditArgs']]]
+    pgaudit: NotRequired[pulumi.Input[Optional['PgPgUserConfigPgauditArgsDict']]]
     """
     System-wide settings for the pgaudit extension
     """
-    pgbouncer: NotRequired[pulumi.Input[Optional['PgPgUserConfigPgbouncerArgs']]]
+    pgbouncer: NotRequired[pulumi.Input[Optional['PgPgUserConfigPgbouncerArgsDict']]]
     """
     PGBouncer connection pooling settings
     """
-    pglookout: NotRequired[pulumi.Input[Optional['PgPgUserConfigPglookoutArgs']]]
+    pglookout: NotRequired[pulumi.Input[Optional['PgPgUserConfigPglookoutArgsDict']]]
     """
     System-wide settings for pglookout
     """
-    private_access: NotRequired[pulumi.Input[Optional['PgPgUserConfigPrivateAccessArgs']]]
+    private_access: NotRequired[pulumi.Input[Optional['PgPgUserConfigPrivateAccessArgsDict']]]
     """
     Allow access to selected service ports from private networks
     """
-    privatelink_access: NotRequired[pulumi.Input[Optional['PgPgUserConfigPrivatelinkAccessArgs']]]
+    privatelink_access: NotRequired[pulumi.Input[Optional['PgPgUserConfigPrivatelinkAccessArgsDict']]]
     """
     Allow access to selected service components through Privatelink
     """
@@ -26680,7 +26680,7 @@ class PgPgUserConfigArgsDict(TypedDict):
     """
     Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
     """
-    public_access: NotRequired[pulumi.Input[Optional['PgPgUserConfigPublicAccessArgs']]]
+    public_access: NotRequired[pulumi.Input[Optional['PgPgUserConfigPublicAccessArgsDict']]]
     """
     Allow access to selected service ports from the public Internet
     """
@@ -26704,12 +26704,12 @@ class PgPgUserConfigArgsDict(TypedDict):
     """
     Use static public IP addresses.
     """
-    switchover_windows: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PgPgUserConfigSwitchoverWindowArgs']]]]]
+    switchover_windows: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PgPgUserConfigSwitchoverWindowArgsDict']]]]]
     synchronous_replication: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Enum: `off`, `quorum`. Use synchronous*commit instead. Any change to this setting will automatically update synchronous*commit. Setting the value to quorum changes synchronous*commit to remote*write, while setting it to off changes synchronous_commit to off.
     """
-    timescaledb: NotRequired[pulumi.Input[Optional['PgPgUserConfigTimescaledbArgs']]]
+    timescaledb: NotRequired[pulumi.Input[Optional['PgPgUserConfigTimescaledbArgsDict']]]
     """
     System-wide settings for the timescaledb extension
     """
@@ -29970,7 +29970,7 @@ class ProjectTagArgs:
 
 
 class ServiceIntegrationClickhouseCredentialsUserConfigArgsDict(TypedDict):
-    grants: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServiceIntegrationClickhouseCredentialsUserConfigGrantArgs']]]]]
+    grants: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServiceIntegrationClickhouseCredentialsUserConfigGrantArgsDict']]]]]
     """
     Grants to assign
     """
@@ -30027,7 +30027,7 @@ class ServiceIntegrationClickhouseCredentialsUserConfigGrantArgs:
 
 
 class ServiceIntegrationClickhouseKafkaUserConfigArgsDict(TypedDict):
-    tables: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServiceIntegrationClickhouseKafkaUserConfigTableArgs']]]]]
+    tables: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServiceIntegrationClickhouseKafkaUserConfigTableArgsDict']]]]]
     """
     Array of table configurations that define how Kafka topics are mapped to ClickHouse tables. Each table configuration specifies the table structure, associated Kafka topics, and read/write settings
     """
@@ -30092,7 +30092,7 @@ class ServiceIntegrationClickhouseKafkaUserConfigTableArgsDict(TypedDict):
     """
     Enum: `dead_letter_queue`, `default`, `stream`. Defines how ClickHouse should handle errors when processing Kafka messages. `default` stops on errors, `stream` continues processing and logs errors, `dead_letter_queue` saves error data to system.dead*letter*queue (requires ClickHouse 25.8+). Default: `default`.
     """
-    materialized_view: NotRequired[pulumi.Input[Optional['ServiceIntegrationClickhouseKafkaUserConfigTableMaterializedViewArgs']]]
+    materialized_view: NotRequired[pulumi.Input[Optional['ServiceIntegrationClickhouseKafkaUserConfigTableMaterializedViewArgsDict']]]
     """
     Optional materialized view that persists data from the Kafka engine table into a MergeTree-family table. When specified, a ClickHouse materialized view is created that automatically reads from the Kafka table and inserts into a durable target table
     """
@@ -30802,7 +30802,7 @@ class ServiceIntegrationClickhouseKafkaUserConfigTableTopicArgs:
 
 
 class ServiceIntegrationClickhousePostgresqlUserConfigArgsDict(TypedDict):
-    databases: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServiceIntegrationClickhousePostgresqlUserConfigDatabaseArgs']]]]]
+    databases: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServiceIntegrationClickhousePostgresqlUserConfigDatabaseArgsDict']]]]]
     """
     Databases to expose
     """
@@ -30888,7 +30888,7 @@ class ServiceIntegrationDatadogUserConfigArgsDict(TypedDict):
     """
     Enable Datadog PgBouncer Metric Tracking.
     """
-    datadog_tags: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServiceIntegrationDatadogUserConfigDatadogTagArgs']]]]]
+    datadog_tags: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServiceIntegrationDatadogUserConfigDatadogTagArgsDict']]]]]
     """
     Custom tags provided by user
     """
@@ -30920,11 +30920,11 @@ class ServiceIntegrationDatadogUserConfigArgsDict(TypedDict):
     """
     List of custom metrics.
     """
-    opensearch: NotRequired[pulumi.Input[Optional['ServiceIntegrationDatadogUserConfigOpensearchArgs']]]
+    opensearch: NotRequired[pulumi.Input[Optional['ServiceIntegrationDatadogUserConfigOpensearchArgsDict']]]
     """
     Datadog Opensearch Options
     """
-    redis: NotRequired[pulumi.Input[Optional['ServiceIntegrationDatadogUserConfigRedisArgs']]]
+    redis: NotRequired[pulumi.Input[Optional['ServiceIntegrationDatadogUserConfigRedisArgsDict']]]
     """
     Datadog Redis Options
     """
@@ -31374,7 +31374,7 @@ class ServiceIntegrationEndpointDatadogUserConfigArgsDict(TypedDict):
     """
     Datadog API key. Example: `848f30907c15c55d601fe45487cce9b6`.
     """
-    datadog_tags: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs']]]]]
+    datadog_tags: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServiceIntegrationEndpointDatadogUserConfigDatadogTagArgsDict']]]]]
     """
     Custom tags provided by user
     """
@@ -33641,11 +33641,11 @@ class ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs:
 
 
 class ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgsDict(TypedDict):
-    dropped_metrics: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs']]]]]
+    dropped_metrics: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgsDict']]]]]
     """
     Metrics to not send to AWS CloudWatch (takes precedence over extra*metrics)
     """
-    extra_metrics: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs']]]]]
+    extra_metrics: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgsDict']]]]]
     """
     Metrics to allow through to AWS CloudWatch (in addition to default metrics)
     """
@@ -33871,7 +33871,7 @@ class ServiceIntegrationFlinkExternalPostgresqlUserConfigArgs:
 
 
 class ServiceIntegrationKafkaConnectUserConfigArgsDict(TypedDict):
-    kafka_connect: NotRequired[pulumi.Input[Optional['ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs']]]
+    kafka_connect: NotRequired[pulumi.Input[Optional['ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgsDict']]]
     """
     Kafka Connect service configuration values
     """
@@ -34041,7 +34041,7 @@ class ServiceIntegrationKafkaMirrormakerUserConfigArgsDict(TypedDict):
     """
     The alias under which the Kafka cluster is known to MirrorMaker. Can contain the following symbols: ASCII alphanumerics, `.`, `_`, and `-`. Example: `kafka-abc`.
     """
-    kafka_mirrormaker: NotRequired[pulumi.Input[Optional['ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerArgs']]]
+    kafka_mirrormaker: NotRequired[pulumi.Input[Optional['ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerArgsDict']]]
     """
     Kafka MirrorMaker configuration values
     """
@@ -34336,7 +34336,7 @@ class ServiceIntegrationMetricsUserConfigArgsDict(TypedDict):
     """
     Name of a user that can be used to read metrics. This will be used for Grafana integration (if enabled) to prevent Grafana users from making undesired changes. Only affects PostgreSQL destinations. Defaults to `metrics_reader`. Note that this must be the same for all metrics integrations that write data to the same PostgreSQL service.
     """
-    source_mysql: NotRequired[pulumi.Input[Optional['ServiceIntegrationMetricsUserConfigSourceMysqlArgs']]]
+    source_mysql: NotRequired[pulumi.Input[Optional['ServiceIntegrationMetricsUserConfigSourceMysqlArgsDict']]]
     """
     Configuration options for metrics where source service is MySQL
     """
@@ -34433,7 +34433,7 @@ class ServiceIntegrationMetricsUserConfigArgs:
 
 
 class ServiceIntegrationMetricsUserConfigSourceMysqlArgsDict(TypedDict):
-    telegraf: NotRequired[pulumi.Input[Optional['ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs']]]
+    telegraf: NotRequired[pulumi.Input[Optional['ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgsDict']]]
     """
     Configuration options for Telegraf MySQL input plugin
     """
@@ -34771,7 +34771,7 @@ class ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs:
 
 
 class ServiceIntegrationPrometheusUserConfigArgsDict(TypedDict):
-    source_mysql: NotRequired[pulumi.Input[Optional['ServiceIntegrationPrometheusUserConfigSourceMysqlArgs']]]
+    source_mysql: NotRequired[pulumi.Input[Optional['ServiceIntegrationPrometheusUserConfigSourceMysqlArgsDict']]]
     """
     Configuration options for metrics where source service is MySQL
     """
@@ -34800,7 +34800,7 @@ class ServiceIntegrationPrometheusUserConfigArgs:
 
 
 class ServiceIntegrationPrometheusUserConfigSourceMysqlArgsDict(TypedDict):
-    telegraf: NotRequired[pulumi.Input[Optional['ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafArgs']]]
+    telegraf: NotRequired[pulumi.Input[Optional['ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafArgsDict']]]
     """
     Configuration options for Telegraf MySQL input plugin
     """
@@ -35671,7 +35671,7 @@ class ThanosThanosArgs:
 
 
 class ThanosThanosUserConfigArgsDict(TypedDict):
-    compactor: NotRequired[pulumi.Input[Optional['ThanosThanosUserConfigCompactorArgs']]]
+    compactor: NotRequired[pulumi.Input[Optional['ThanosThanosUserConfigCompactorArgsDict']]]
     """
     Configuration options for Thanos Compactor
     """
@@ -35679,7 +35679,7 @@ class ThanosThanosUserConfigArgsDict(TypedDict):
     """
     Environmental variables.
     """
-    ip_filter_objects: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ThanosThanosUserConfigIpFilterObjectArgs']]]]]
+    ip_filter_objects: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ThanosThanosUserConfigIpFilterObjectArgsDict']]]]]
     """
     Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
     """
@@ -35695,23 +35695,23 @@ class ThanosThanosUserConfigArgsDict(TypedDict):
     """
     After exceeding the limit a service alert is going to be raised (0 means not set).
     """
-    private_access: NotRequired[pulumi.Input[Optional['ThanosThanosUserConfigPrivateAccessArgs']]]
+    private_access: NotRequired[pulumi.Input[Optional['ThanosThanosUserConfigPrivateAccessArgsDict']]]
     """
     Allow access to selected service ports from private networks
     """
-    privatelink_access: NotRequired[pulumi.Input[Optional['ThanosThanosUserConfigPrivatelinkAccessArgs']]]
+    privatelink_access: NotRequired[pulumi.Input[Optional['ThanosThanosUserConfigPrivatelinkAccessArgsDict']]]
     """
     Allow access to selected service components through Privatelink
     """
-    public_access: NotRequired[pulumi.Input[Optional['ThanosThanosUserConfigPublicAccessArgs']]]
+    public_access: NotRequired[pulumi.Input[Optional['ThanosThanosUserConfigPublicAccessArgsDict']]]
     """
     Allow access to selected service ports from the public Internet
     """
-    query: NotRequired[pulumi.Input[Optional['ThanosThanosUserConfigQueryArgs']]]
+    query: NotRequired[pulumi.Input[Optional['ThanosThanosUserConfigQueryArgsDict']]]
     """
     Configuration options for Thanos Query
     """
-    query_frontend: NotRequired[pulumi.Input[Optional['ThanosThanosUserConfigQueryFrontendArgs']]]
+    query_frontend: NotRequired[pulumi.Input[Optional['ThanosThanosUserConfigQueryFrontendArgsDict']]]
     """
     Configuration options for Thanos Query Frontend
     """
@@ -37039,7 +37039,7 @@ class ValkeyValkeyUserConfigArgsDict(TypedDict):
     """
     When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when `valkey_persistence` is set to `off`. Default: `true`.
     """
-    ip_filter_objects: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ValkeyValkeyUserConfigIpFilterObjectArgs']]]]]
+    ip_filter_objects: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ValkeyValkeyUserConfigIpFilterObjectArgsDict']]]]]
     """
     Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
     """
@@ -37051,15 +37051,15 @@ class ValkeyValkeyUserConfigArgsDict(TypedDict):
     """
     Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
     """
-    migration: NotRequired[pulumi.Input[Optional['ValkeyValkeyUserConfigMigrationArgs']]]
+    migration: NotRequired[pulumi.Input[Optional['ValkeyValkeyUserConfigMigrationArgsDict']]]
     """
     Migrate data from existing server
     """
-    private_access: NotRequired[pulumi.Input[Optional['ValkeyValkeyUserConfigPrivateAccessArgs']]]
+    private_access: NotRequired[pulumi.Input[Optional['ValkeyValkeyUserConfigPrivateAccessArgsDict']]]
     """
     Allow access to selected service ports from private networks
     """
-    privatelink_access: NotRequired[pulumi.Input[Optional['ValkeyValkeyUserConfigPrivatelinkAccessArgs']]]
+    privatelink_access: NotRequired[pulumi.Input[Optional['ValkeyValkeyUserConfigPrivatelinkAccessArgsDict']]]
     """
     Allow access to selected service components through Privatelink
     """
@@ -37067,7 +37067,7 @@ class ValkeyValkeyUserConfigArgsDict(TypedDict):
     """
     Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
     """
-    public_access: NotRequired[pulumi.Input[Optional['ValkeyValkeyUserConfigPublicAccessArgs']]]
+    public_access: NotRequired[pulumi.Input[Optional['ValkeyValkeyUserConfigPublicAccessArgsDict']]]
     """
     Allow access to selected service ports from the public Internet
     """

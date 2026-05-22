@@ -1017,12 +1017,12 @@ public final class AivenFunctions {
      *             .networkCidr("192.168.1.0/24")
      *             .build());
      * 
-     *         final var awsToAivenPeering = exampleVpc.id().applyValue(_id -> AivenFunctions.getAwsVpcPeeringConnection(GetAwsVpcPeeringConnectionArgs.builder()
-     *             .vpcId(_id)
+     *         final var awsToAivenPeering = AivenFunctions.getAwsVpcPeeringConnection(GetAwsVpcPeeringConnectionArgs.builder()
+     *             .vpcId(exampleVpc.id())
      *             .awsAccountId(awsId)
      *             .awsVpcId("vpc-1a2b3c4d5e6f7g8h9")
      *             .awsVpcRegion("aws-us-east-2")
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -1068,12 +1068,12 @@ public final class AivenFunctions {
      *             .networkCidr("192.168.1.0/24")
      *             .build());
      * 
-     *         final var awsToAivenPeering = exampleVpc.id().applyValue(_id -> AivenFunctions.getAwsVpcPeeringConnection(GetAwsVpcPeeringConnectionArgs.builder()
-     *             .vpcId(_id)
+     *         final var awsToAivenPeering = AivenFunctions.getAwsVpcPeeringConnection(GetAwsVpcPeeringConnectionArgs.builder()
+     *             .vpcId(exampleVpc.id())
      *             .awsAccountId(awsId)
      *             .awsVpcId("vpc-1a2b3c4d5e6f7g8h9")
      *             .awsVpcRegion("aws-us-east-2")
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -1119,12 +1119,12 @@ public final class AivenFunctions {
      *             .networkCidr("192.168.1.0/24")
      *             .build());
      * 
-     *         final var awsToAivenPeering = exampleVpc.id().applyValue(_id -> AivenFunctions.getAwsVpcPeeringConnection(GetAwsVpcPeeringConnectionArgs.builder()
-     *             .vpcId(_id)
+     *         final var awsToAivenPeering = AivenFunctions.getAwsVpcPeeringConnection(GetAwsVpcPeeringConnectionArgs.builder()
+     *             .vpcId(exampleVpc.id())
      *             .awsAccountId(awsId)
      *             .awsVpcId("vpc-1a2b3c4d5e6f7g8h9")
      *             .awsVpcRegion("aws-us-east-2")
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -1170,12 +1170,12 @@ public final class AivenFunctions {
      *             .networkCidr("192.168.1.0/24")
      *             .build());
      * 
-     *         final var awsToAivenPeering = exampleVpc.id().applyValue(_id -> AivenFunctions.getAwsVpcPeeringConnection(GetAwsVpcPeeringConnectionArgs.builder()
-     *             .vpcId(_id)
+     *         final var awsToAivenPeering = AivenFunctions.getAwsVpcPeeringConnection(GetAwsVpcPeeringConnectionArgs.builder()
+     *             .vpcId(exampleVpc.id())
      *             .awsAccountId(awsId)
      *             .awsVpcId("vpc-1a2b3c4d5e6f7g8h9")
      *             .awsVpcRegion("aws-us-east-2")
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
@@ -1221,12 +1221,12 @@ public final class AivenFunctions {
      *             .networkCidr("192.168.1.0/24")
      *             .build());
      * 
-     *         final var awsToAivenPeering = exampleVpc.id().applyValue(_id -> AivenFunctions.getAwsVpcPeeringConnection(GetAwsVpcPeeringConnectionArgs.builder()
-     *             .vpcId(_id)
+     *         final var awsToAivenPeering = AivenFunctions.getAwsVpcPeeringConnection(GetAwsVpcPeeringConnectionArgs.builder()
+     *             .vpcId(exampleVpc.id())
      *             .awsAccountId(awsId)
      *             .awsVpcId("vpc-1a2b3c4d5e6f7g8h9")
      *             .awsVpcRegion("aws-us-east-2")
-     *             .build()));
+     *             .build());
      * 
      *     }
      * }
