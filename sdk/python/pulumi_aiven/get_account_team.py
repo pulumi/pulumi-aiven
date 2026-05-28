@@ -115,7 +115,7 @@ def get_account_team(account_id: Optional[_builtins.str] = None,
     """
     The Account Team data source provides information about the existing Account Team.
 
-    !> **Teams have been replaced by groups**
+    > **Teams have been replaced by groups**
     To make the transition to groups smoother,
     migrate your teams to groups.
 
@@ -146,7 +146,7 @@ def get_account_team_output(account_id: pulumi.Input[Optional[_builtins.str]] = 
     """
     The Account Team data source provides information about the existing Account Team.
 
-    !> **Teams have been replaced by groups**
+    > **Teams have been replaced by groups**
     To make the transition to groups smoother,
     migrate your teams to groups.
 

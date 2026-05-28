@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 /**
  * Links an existing project to an existing team. Both the project and team should have the same `accountId`.
  * 
- * !&gt; **Teams have been replaced by groups**
+ * &gt; **Teams have been replaced by groups**
  * To make the transition to groups smoother,
  * migrate your teams to groups.
  * 

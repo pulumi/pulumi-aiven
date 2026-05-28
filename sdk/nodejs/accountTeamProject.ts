@@ -7,7 +7,7 @@ import * as utilities from "./utilities";
 /**
  * Links an existing project to an existing team. Both the project and team should have the same `accountId`.
  *
- * !> **Teams have been replaced by groups**
+ * > **Teams have been replaced by groups**
  * To make the transition to groups smoother,
  * migrate your teams to groups.
  *

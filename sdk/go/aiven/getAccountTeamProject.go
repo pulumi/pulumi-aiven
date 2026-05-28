@@ -13,7 +13,7 @@ import (
 
 // The Account Team Project data source provides information about the existing Account Team Project.
 //
-// !> **Teams have been replaced by groups**
+// > **Teams have been replaced by groups**
 // To make the transition to groups smoother,
 // migrate your teams to groups.
 //
