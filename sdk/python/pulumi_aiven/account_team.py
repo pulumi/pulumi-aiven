@@ -157,7 +157,7 @@ class AccountTeam(pulumi.CustomResource):
         """
         Creates and manages a team.
 
-        !> **Teams have been replaced by groups**
+        > **Teams have been replaced by groups**
         To make the transition to groups smoother,
         migrate your teams to groups.
 
@@ -197,7 +197,7 @@ class AccountTeam(pulumi.CustomResource):
         """
         Creates and manages a team.
 
-        !> **Teams have been replaced by groups**
+        > **Teams have been replaced by groups**
         To make the transition to groups smoother,
         migrate your teams to groups.
 

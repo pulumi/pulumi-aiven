@@ -12,7 +12,7 @@ namespace Pulumi.Aiven
     /// <summary>
     /// Creates and manages a team.
     /// 
-    /// !&gt; **Teams have been replaced by groups**
+    /// &gt; **Teams have been replaced by groups**
     /// To make the transition to groups smoother,
     /// migrate your teams to groups.
     /// 

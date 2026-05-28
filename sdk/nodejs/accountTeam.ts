@@ -7,7 +7,7 @@ import * as utilities from "./utilities";
 /**
  * Creates and manages a team.
  *
- * !> **Teams have been replaced by groups**
+ * > **Teams have been replaced by groups**
  * To make the transition to groups smoother,
  * migrate your teams to groups.
  *

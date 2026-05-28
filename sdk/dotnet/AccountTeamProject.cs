@@ -12,7 +12,7 @@ namespace Pulumi.Aiven
     /// <summary>
     /// Links an existing project to an existing team. Both the project and team should have the same `AccountId`.
     /// 
-    /// !&gt; **Teams have been replaced by groups**
+    /// &gt; **Teams have been replaced by groups**
     /// To make the transition to groups smoother,
     /// migrate your teams to groups.
     /// 

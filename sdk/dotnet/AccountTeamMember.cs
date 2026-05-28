@@ -16,7 +16,7 @@ namespace Pulumi.Aiven
     /// The user is added to the team after they accept the invite. Deleting `aiven.AccountTeamMember`
     /// deletes the pending invite if not accepted or removes the user from the team if they already accepted the invite.
     /// 
-    /// !&gt; **Teams have been replaced by groups**
+    /// &gt; **Teams have been replaced by groups**
     /// To make the transition to groups smoother,
     /// migrate your teams to groups.
     /// 

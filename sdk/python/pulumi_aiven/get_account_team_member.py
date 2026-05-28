@@ -128,7 +128,7 @@ def get_account_team_member(account_id: Optional[_builtins.str] = None,
     """
     The Account Team Member data source provides information about the existing Aiven Account Team Member.
 
-    !> **Teams have been replaced by groups**
+    > **Teams have been replaced by groups**
     To make the transition to groups smoother,
     migrate your teams to groups.
 
@@ -163,7 +163,7 @@ def get_account_team_member_output(account_id: pulumi.Input[Optional[_builtins.s
     """
     The Account Team Member data source provides information about the existing Aiven Account Team Member.
 
-    !> **Teams have been replaced by groups**
+    > **Teams have been replaced by groups**
     To make the transition to groups smoother,
     migrate your teams to groups.
 

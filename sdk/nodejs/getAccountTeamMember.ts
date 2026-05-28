@@ -7,7 +7,7 @@ import * as utilities from "./utilities";
 /**
  * The Account Team Member data source provides information about the existing Aiven Account Team Member.
  *
- * !> **Teams have been replaced by groups**
+ * > **Teams have been replaced by groups**
  * To make the transition to groups smoother,
  * migrate your teams to groups.
  *
@@ -78,7 +78,7 @@ export interface GetAccountTeamMemberResult {
 /**
  * The Account Team Member data source provides information about the existing Aiven Account Team Member.
  *
- * !> **Teams have been replaced by groups**
+ * > **Teams have been replaced by groups**
  * To make the transition to groups smoother,
  * migrate your teams to groups.
  *

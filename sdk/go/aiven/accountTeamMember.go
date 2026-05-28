@@ -18,7 +18,7 @@ import (
 // The user is added to the team after they accept the invite. Deleting `AccountTeamMember`
 // deletes the pending invite if not accepted or removes the user from the team if they already accepted the invite.
 //
-// !> **Teams have been replaced by groups**
+// > **Teams have been replaced by groups**
 // To make the transition to groups smoother,
 // migrate your teams to groups.
 //
