@@ -54,6 +54,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.aiven.ServiceIntegrationEndpoint;
  * import com.pulumi.aiven.ServiceIntegrationEndpointArgs;
  * import com.pulumi.aiven.inputs.ServiceIntegrationEndpointAutoscalerUserConfigArgs;
+ * import com.pulumi.aiven.inputs.ServiceIntegrationEndpointAutoscalerUserConfigAutoscalingArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
