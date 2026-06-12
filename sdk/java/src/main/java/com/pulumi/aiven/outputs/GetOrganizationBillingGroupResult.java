@@ -43,6 +43,11 @@ public final class GetOrganizationBillingGroupResult {
      */
     private String billingGroupName;
     /**
+     * @return The date when this billing group was created.
+     * 
+     */
+    private String createTime;
+    /**
      * @return Extra billing text.
      * 
      */
@@ -111,6 +116,13 @@ public final class GetOrganizationBillingGroupResult {
         return this.billingGroupName;
     }
     /**
+     * @return The date when this billing group was created.
+     * 
+     */
+    public String createTime() {
+        return this.createTime;
+    }
+    /**
      * @return Extra billing text.
      * 
      */
@@ -170,6 +182,7 @@ public final class GetOrganizationBillingGroupResult {
         private @Nullable List<GetOrganizationBillingGroupBillingEmail> billingEmails;
         private String billingGroupId;
         private String billingGroupName;
+        private String createTime;
         private String customInvoiceText;
         private String id;
         private String organizationId;
@@ -185,6 +198,7 @@ public final class GetOrganizationBillingGroupResult {
     	      this.billingEmails = defaults.billingEmails;
     	      this.billingGroupId = defaults.billingGroupId;
     	      this.billingGroupName = defaults.billingGroupName;
+    	      this.createTime = defaults.createTime;
     	      this.customInvoiceText = defaults.customInvoiceText;
     	      this.id = defaults.id;
     	      this.organizationId = defaults.organizationId;
@@ -234,6 +248,14 @@ public final class GetOrganizationBillingGroupResult {
               throw new MissingRequiredPropertyException("GetOrganizationBillingGroupResult", "billingGroupName");
             }
             this.billingGroupName = billingGroupName;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder createTime(String createTime) {
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationBillingGroupResult", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
@@ -298,6 +320,7 @@ public final class GetOrganizationBillingGroupResult {
             _resultValue.billingEmails = billingEmails;
             _resultValue.billingGroupId = billingGroupId;
             _resultValue.billingGroupName = billingGroupName;
+            _resultValue.createTime = createTime;
             _resultValue.customInvoiceText = customInvoiceText;
             _resultValue.id = id;
             _resultValue.organizationId = organizationId;

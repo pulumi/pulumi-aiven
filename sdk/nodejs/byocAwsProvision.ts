@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Provisions a BYOC custom cloud environment by handing Aiven the IAM role ARN created in the customer AWS account. Transitions the environment from `draft` to `active` so services can be deployed into it. Create this resource after the customer-side AWS infrastructure (IAM role, VPC, subnets, security groups, buckets) has been applied, and before `aiven.ByocPermissions`. `terraform destroy` on this resource is a state-only operation -- it does not reverse provisioning. To tear down, destroy the underlying `aiven.ByocAwsEntity`.
+ * Provisions a BYOC custom cloud environment by handing Aiven the IAM role ARN created in the customer AWS account. Transitions the environment from `draft` to `active` so services can be deployed into it. Create this resource after the customer-side AWS infrastructure (IAM role, VPC, subnets, security groups, buckets) has been defined.
  *
  * **This resource is in the beta stage and may change without notice.** Set
  * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
@@ -76,9 +76,17 @@ export class ByocAwsProvision extends pulumi.CustomResource {
      */
     declare public readonly customCloudEnvironmentId: pulumi.Output<string>;
     /**
+     * Cloud names that can be used to provision a service on this BYOC.
+     */
+    declare public /*out*/ readonly customCloudNames: pulumi.Output<string[]>;
+    /**
      * ID of an organization. Changing this property forces recreation of the resource.
      */
     declare public readonly organizationId: pulumi.Output<string>;
+    /**
+     * State of this BYOC cloud. The possible values are `active`, `creating`, `creationFailed`, `deleted`, `deleting`, `deletionFailed`, `disconnected`, `draft`, `reconnecting` and `validating`.
+     */
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     declare public readonly timeouts: pulumi.Output<outputs.ByocAwsProvisionTimeouts | undefined>;
 
     /**
@@ -98,7 +106,9 @@ export class ByocAwsProvision extends pulumi.CustomResource {
             resourceInputs["aivenAwsAssumeRoleExternalId"] = state?.aivenAwsAssumeRoleExternalId;
             resourceInputs["awsIamRoleArn"] = state?.awsIamRoleArn;
             resourceInputs["customCloudEnvironmentId"] = state?.customCloudEnvironmentId;
+            resourceInputs["customCloudNames"] = state?.customCloudNames;
             resourceInputs["organizationId"] = state?.organizationId;
+            resourceInputs["state"] = state?.state;
             resourceInputs["timeouts"] = state?.timeouts;
         } else {
             const args = argsOrState as ByocAwsProvisionArgs | undefined;
@@ -117,6 +127,8 @@ export class ByocAwsProvision extends pulumi.CustomResource {
             resourceInputs["timeouts"] = args?.timeouts;
             resourceInputs["aivenAwsAccountPrincipal"] = undefined /*out*/;
             resourceInputs["aivenAwsAssumeRoleExternalId"] = undefined /*out*/;
+            resourceInputs["customCloudNames"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ByocAwsProvision.__pulumiType, name, resourceInputs, opts);
@@ -144,9 +156,17 @@ export interface ByocAwsProvisionState {
      */
     customCloudEnvironmentId?: pulumi.Input<string | undefined>;
     /**
+     * Cloud names that can be used to provision a service on this BYOC.
+     */
+    customCloudNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
      * ID of an organization. Changing this property forces recreation of the resource.
      */
     organizationId?: pulumi.Input<string | undefined>;
+    /**
+     * State of this BYOC cloud. The possible values are `active`, `creating`, `creationFailed`, `deleted`, `deleting`, `deletionFailed`, `disconnected`, `draft`, `reconnecting` and `validating`.
+     */
+    state?: pulumi.Input<string | undefined>;
     timeouts?: pulumi.Input<inputs.ByocAwsProvisionTimeouts | undefined>;
 }
 

@@ -4,7 +4,6 @@
 package com.pulumi.aiven;
 
 import com.pulumi.aiven.inputs.ByocAwsEntityContactEmailArgs;
-import com.pulumi.aiven.inputs.ByocAwsEntityErrorArgs;
 import com.pulumi.aiven.inputs.ByocAwsEntityTimeoutsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -20,21 +19,6 @@ import javax.annotation.Nullable;
 public final class ByocAwsEntityArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ByocAwsEntityArgs Empty = new ByocAwsEntityArgs();
-
-    /**
-     * Amazon Resource Name. Maximum length: `2048`.
-     * 
-     */
-    @Import(name="awsIamRoleArn")
-    private @Nullable Output<String> awsIamRoleArn;
-
-    /**
-     * @return Amazon Resource Name. Maximum length: `2048`.
-     * 
-     */
-    public Optional<Output<String>> awsIamRoleArn() {
-        return Optional.ofNullable(this.awsIamRoleArn);
-    }
 
     /**
      * Cloud provider for the BYOC cloud. The possible values are `aws`, `azure`, `google` and `oracle`. Changing this property forces recreation of the resource.
@@ -112,21 +96,6 @@ public final class ByocAwsEntityArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of errors for this custom cloud environment.
-     * 
-     */
-    @Import(name="errors")
-    private @Nullable Output<List<ByocAwsEntityErrorArgs>> errors;
-
-    /**
-     * @return List of errors for this custom cloud environment.
-     * 
-     */
-    public Optional<Output<List<ByocAwsEntityErrorArgs>>> errors() {
-        return Optional.ofNullable(this.errors);
-    }
-
-    /**
      * ID of an organization. Changing this property forces recreation of the resource.
      * 
      */
@@ -181,13 +150,11 @@ public final class ByocAwsEntityArgs extends com.pulumi.resources.ResourceArgs {
     private ByocAwsEntityArgs() {}
 
     private ByocAwsEntityArgs(ByocAwsEntityArgs $) {
-        this.awsIamRoleArn = $.awsIamRoleArn;
         this.cloudProvider = $.cloudProvider;
         this.cloudRegion = $.cloudRegion;
         this.contactEmails = $.contactEmails;
         this.deploymentModel = $.deploymentModel;
         this.displayName = $.displayName;
-        this.errors = $.errors;
         this.organizationId = $.organizationId;
         this.reservedCidr = $.reservedCidr;
         this.tags = $.tags;
@@ -210,27 +177,6 @@ public final class ByocAwsEntityArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(ByocAwsEntityArgs defaults) {
             $ = new ByocAwsEntityArgs(Objects.requireNonNull(defaults));
-        }
-
-        /**
-         * @param awsIamRoleArn Amazon Resource Name. Maximum length: `2048`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder awsIamRoleArn(@Nullable Output<String> awsIamRoleArn) {
-            $.awsIamRoleArn = awsIamRoleArn;
-            return this;
-        }
-
-        /**
-         * @param awsIamRoleArn Amazon Resource Name. Maximum length: `2048`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder awsIamRoleArn(String awsIamRoleArn) {
-            return awsIamRoleArn(Output.of(awsIamRoleArn));
         }
 
         /**
@@ -346,37 +292,6 @@ public final class ByocAwsEntityArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder displayName(String displayName) {
             return displayName(Output.of(displayName));
-        }
-
-        /**
-         * @param errors List of errors for this custom cloud environment.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder errors(@Nullable Output<List<ByocAwsEntityErrorArgs>> errors) {
-            $.errors = errors;
-            return this;
-        }
-
-        /**
-         * @param errors List of errors for this custom cloud environment.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder errors(List<ByocAwsEntityErrorArgs> errors) {
-            return errors(Output.of(errors));
-        }
-
-        /**
-         * @param errors List of errors for this custom cloud environment.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder errors(ByocAwsEntityErrorArgs... errors) {
-            return errors(List.of(errors));
         }
 
         /**

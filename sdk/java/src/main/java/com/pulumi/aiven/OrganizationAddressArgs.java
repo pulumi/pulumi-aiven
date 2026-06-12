@@ -19,14 +19,14 @@ public final class OrganizationAddressArgs extends com.pulumi.resources.Resource
     public static final OrganizationAddressArgs Empty = new OrganizationAddressArgs();
 
     /**
-     * Address Lines.
+     * Address lines.
      * 
      */
     @Import(name="addressLines", required=true)
     private Output<List<String>> addressLines;
 
     /**
-     * @return Address Lines.
+     * @return Address lines.
      * 
      */
     public Output<List<String>> addressLines() {
@@ -34,14 +34,14 @@ public final class OrganizationAddressArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * City. Maximum length: `125`.
+     * City. Maximum length: `50`.
      * 
      */
     @Import(name="city", required=true)
     private Output<String> city;
 
     /**
-     * @return City. Maximum length: `125`.
+     * @return City. Maximum length: `50`.
      * 
      */
     public Output<String> city() {
@@ -64,14 +64,14 @@ public final class OrganizationAddressArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Name of a company. Length must be between `1` and `83`.
+     * Name. Length must be between `1` and `83`.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of a company. Length must be between `1` and `83`.
+     * @return Name. Length must be between `1` and `83`.
      * 
      */
     public Optional<Output<String>> name() {
@@ -94,14 +94,14 @@ public final class OrganizationAddressArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * State. Maximum length: `128`.
+     * State. Maximum length: `30`.
      * 
      */
     @Import(name="state")
     private @Nullable Output<String> state;
 
     /**
-     * @return State. Maximum length: `128`.
+     * @return State. Maximum length: `30`.
      * 
      */
     public Optional<Output<String>> state() {
@@ -116,14 +116,14 @@ public final class OrganizationAddressArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Zip Code. Maximum length: `10`.
+     * Zip Code. Maximum length: `36`.
      * 
      */
     @Import(name="zipCode")
     private @Nullable Output<String> zipCode;
 
     /**
-     * @return Zip Code. Maximum length: `10`.
+     * @return Zip Code. Maximum length: `36`.
      * 
      */
     public Optional<Output<String>> zipCode() {
@@ -162,7 +162,7 @@ public final class OrganizationAddressArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param addressLines Address Lines.
+         * @param addressLines Address lines.
          * 
          * @return builder
          * 
@@ -173,7 +173,7 @@ public final class OrganizationAddressArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param addressLines Address Lines.
+         * @param addressLines Address lines.
          * 
          * @return builder
          * 
@@ -183,7 +183,7 @@ public final class OrganizationAddressArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param addressLines Address Lines.
+         * @param addressLines Address lines.
          * 
          * @return builder
          * 
@@ -193,7 +193,7 @@ public final class OrganizationAddressArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param city City. Maximum length: `125`.
+         * @param city City. Maximum length: `50`.
          * 
          * @return builder
          * 
@@ -204,7 +204,7 @@ public final class OrganizationAddressArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param city City. Maximum length: `125`.
+         * @param city City. Maximum length: `50`.
          * 
          * @return builder
          * 
@@ -235,7 +235,7 @@ public final class OrganizationAddressArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param name Name of a company. Length must be between `1` and `83`.
+         * @param name Name. Length must be between `1` and `83`.
          * 
          * @return builder
          * 
@@ -246,7 +246,7 @@ public final class OrganizationAddressArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param name Name of a company. Length must be between `1` and `83`.
+         * @param name Name. Length must be between `1` and `83`.
          * 
          * @return builder
          * 
@@ -277,7 +277,7 @@ public final class OrganizationAddressArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param state State. Maximum length: `128`.
+         * @param state State. Maximum length: `30`.
          * 
          * @return builder
          * 
@@ -288,7 +288,7 @@ public final class OrganizationAddressArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param state State. Maximum length: `128`.
+         * @param state State. Maximum length: `30`.
          * 
          * @return builder
          * 
@@ -307,7 +307,7 @@ public final class OrganizationAddressArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param zipCode Zip Code. Maximum length: `10`.
+         * @param zipCode Zip Code. Maximum length: `36`.
          * 
          * @return builder
          * 
@@ -318,7 +318,7 @@ public final class OrganizationAddressArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param zipCode Zip Code. Maximum length: `10`.
+         * @param zipCode Zip Code. Maximum length: `36`.
          * 
          * @return builder
          * 

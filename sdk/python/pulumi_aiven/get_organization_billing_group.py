@@ -28,7 +28,7 @@ class GetOrganizationBillingGroupResult:
     """
     A collection of values returned by getOrganizationBillingGroup.
     """
-    def __init__(__self__, billing_address_id=None, billing_contact_emails=None, billing_emails=None, billing_group_id=None, billing_group_name=None, custom_invoice_text=None, id=None, organization_id=None, payment_methods=None, shipping_address_id=None, timeouts=None, vat_id=None):
+    def __init__(__self__, billing_address_id=None, billing_contact_emails=None, billing_emails=None, billing_group_id=None, billing_group_name=None, create_time=None, custom_invoice_text=None, id=None, organization_id=None, payment_methods=None, shipping_address_id=None, timeouts=None, vat_id=None):
         if billing_address_id and not isinstance(billing_address_id, str):
             raise TypeError("Expected argument 'billing_address_id' to be a str")
         pulumi.set(__self__, "billing_address_id", billing_address_id)
@@ -44,6 +44,9 @@ class GetOrganizationBillingGroupResult:
         if billing_group_name and not isinstance(billing_group_name, str):
             raise TypeError("Expected argument 'billing_group_name' to be a str")
         pulumi.set(__self__, "billing_group_name", billing_group_name)
+        if create_time and not isinstance(create_time, str):
+            raise TypeError("Expected argument 'create_time' to be a str")
+        pulumi.set(__self__, "create_time", create_time)
         if custom_invoice_text and not isinstance(custom_invoice_text, str):
             raise TypeError("Expected argument 'custom_invoice_text' to be a str")
         pulumi.set(__self__, "custom_invoice_text", custom_invoice_text)
@@ -105,6 +108,14 @@ class GetOrganizationBillingGroupResult:
         Billing Group Name.
         """
         return pulumi.get(self, "billing_group_name")
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> _builtins.str:
+        """
+        The date when this billing group was created.
+        """
+        return pulumi.get(self, "create_time")
 
     @_builtins.property
     @pulumi.getter(name="customInvoiceText")
@@ -171,6 +182,7 @@ class AwaitableGetOrganizationBillingGroupResult(GetOrganizationBillingGroupResu
             billing_emails=self.billing_emails,
             billing_group_id=self.billing_group_id,
             billing_group_name=self.billing_group_name,
+            create_time=self.create_time,
             custom_invoice_text=self.custom_invoice_text,
             id=self.id,
             organization_id=self.organization_id,
@@ -189,9 +201,6 @@ def get_organization_billing_group(billing_contact_emails: Optional[Sequence[Uni
                                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOrganizationBillingGroupResult:
     """
     Gets information about a billing group.
-
-    **This resource is in the beta stage and may change without notice.** Set
-    the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
 
     ## Example Usage
 
@@ -226,6 +235,7 @@ def get_organization_billing_group(billing_contact_emails: Optional[Sequence[Uni
         billing_emails=pulumi.get(__ret__, 'billing_emails'),
         billing_group_id=pulumi.get(__ret__, 'billing_group_id'),
         billing_group_name=pulumi.get(__ret__, 'billing_group_name'),
+        create_time=pulumi.get(__ret__, 'create_time'),
         custom_invoice_text=pulumi.get(__ret__, 'custom_invoice_text'),
         id=pulumi.get(__ret__, 'id'),
         organization_id=pulumi.get(__ret__, 'organization_id'),
@@ -242,9 +252,6 @@ def get_organization_billing_group_output(billing_contact_emails: pulumi.Input[O
                                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOrganizationBillingGroupResult]:
     """
     Gets information about a billing group.
-
-    **This resource is in the beta stage and may change without notice.** Set
-    the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
 
     ## Example Usage
 
@@ -278,6 +285,7 @@ def get_organization_billing_group_output(billing_contact_emails: pulumi.Input[O
         billing_emails=pulumi.get(__response__, 'billing_emails'),
         billing_group_id=pulumi.get(__response__, 'billing_group_id'),
         billing_group_name=pulumi.get(__response__, 'billing_group_name'),
+        create_time=pulumi.get(__response__, 'create_time'),
         custom_invoice_text=pulumi.get(__response__, 'custom_invoice_text'),
         id=pulumi.get(__response__, 'id'),
         organization_id=pulumi.get(__response__, 'organization_id'),

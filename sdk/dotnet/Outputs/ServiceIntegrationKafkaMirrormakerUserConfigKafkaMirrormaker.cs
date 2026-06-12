@@ -18,13 +18,29 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? ConsumerAutoOffsetReset;
         /// <summary>
+        /// The maximum amount of data the server should return for a fetch request.
+        /// </summary>
+        public readonly int? ConsumerFetchMaxBytes;
+        /// <summary>
         /// The minimum amount of data the server should return for a fetch request. Example: `1024`.
         /// </summary>
         public readonly int? ConsumerFetchMinBytes;
         /// <summary>
+        /// The maximum amount of data per partition the server will return.
+        /// </summary>
+        public readonly int? ConsumerMaxPartitionFetchBytes;
+        /// <summary>
         /// Set consumer max.poll.records. The default is 500. Example: `500`.
         /// </summary>
         public readonly int? ConsumerMaxPollRecords;
+        /// <summary>
+        /// The size of the TCP receive buffer (SO_RCVBUF) to use when reading data. -1 uses the OS default. Example: `65536`.
+        /// </summary>
+        public readonly int? ConsumerReceiveBufferBytes;
+        /// <summary>
+        /// The maximum time the client will wait for a response to a request. Example: `30000`.
+        /// </summary>
+        public readonly int? ConsumerRequestTimeoutMs;
         /// <summary>
         /// The batch size in bytes producer will attempt to collect before publishing to broker. Example: `1024`.
         /// </summary>
@@ -45,14 +61,30 @@ namespace Pulumi.Aiven.Outputs
         /// The maximum request size in bytes.
         /// </summary>
         public readonly int? ProducerMaxRequestSize;
+        /// <summary>
+        /// The maximum time the client will wait for a response to a request. Example: `30000`.
+        /// </summary>
+        public readonly int? ProducerRequestTimeoutMs;
+        /// <summary>
+        /// The size of the TCP send buffer (SO_SNDBUF) to use when sending data. -1 uses the OS default. Example: `131072`.
+        /// </summary>
+        public readonly int? ProducerSendBufferBytes;
 
         [OutputConstructor]
         private ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker(
             string? consumerAutoOffsetReset,
 
+            int? consumerFetchMaxBytes,
+
             int? consumerFetchMinBytes,
 
+            int? consumerMaxPartitionFetchBytes,
+
             int? consumerMaxPollRecords,
+
+            int? consumerReceiveBufferBytes,
+
+            int? consumerRequestTimeoutMs,
 
             int? producerBatchSize,
 
@@ -62,16 +94,26 @@ namespace Pulumi.Aiven.Outputs
 
             int? producerLingerMs,
 
-            int? producerMaxRequestSize)
+            int? producerMaxRequestSize,
+
+            int? producerRequestTimeoutMs,
+
+            int? producerSendBufferBytes)
         {
             ConsumerAutoOffsetReset = consumerAutoOffsetReset;
+            ConsumerFetchMaxBytes = consumerFetchMaxBytes;
             ConsumerFetchMinBytes = consumerFetchMinBytes;
+            ConsumerMaxPartitionFetchBytes = consumerMaxPartitionFetchBytes;
             ConsumerMaxPollRecords = consumerMaxPollRecords;
+            ConsumerReceiveBufferBytes = consumerReceiveBufferBytes;
+            ConsumerRequestTimeoutMs = consumerRequestTimeoutMs;
             ProducerBatchSize = producerBatchSize;
             ProducerBufferMemory = producerBufferMemory;
             ProducerCompressionType = producerCompressionType;
             ProducerLingerMs = producerLingerMs;
             ProducerMaxRequestSize = producerMaxRequestSize;
+            ProducerRequestTimeoutMs = producerRequestTimeoutMs;
+            ProducerSendBufferBytes = producerSendBufferBytes;
         }
     }
 }

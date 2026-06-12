@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// Creates and manages a VPC for an Aiven project.
+    /// Creates and manages a VPC for an Aiven project. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
     /// 
     /// ## Example Usage
     /// 
@@ -22,11 +22,11 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleVpc = new Aiven.ProjectVpc("example_vpc", new()
+    ///     var example = new Aiven.ProjectVpc("example", new()
     ///     {
-    ///         Project = exampleProject.Project,
-    ///         CloudName = "google-europe-west1",
-    ///         NetworkCidr = "192.168.1.0/24",
+    ///         Project = "my-project",
+    ///         CloudName = "aws-eu-central-1",
+    ///         NetworkCidr = "192.168.6.0/24",
     ///     });
     /// 
     /// });
@@ -35,35 +35,44 @@ namespace Pulumi.Aiven
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import aiven:index/projectVpc:ProjectVpc example_vpc PROJECT/ID
+    /// $ pulumi import aiven:index/projectVpc:ProjectVpc example PROJECT/PROJECT_VPC_ID
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/projectVpc:ProjectVpc")]
     public partial class ProjectVpc : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.
+        /// Target cloud. Maximum length: `256`. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("cloudName")]
         public Output<string> CloudName { get; private set; } = null!;
 
         /// <summary>
-        /// Network address range used by the VPC. For example, `192.168.0.0/24`.
+        /// IPv4 network range CIDR. Maximum length: `18`. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("networkCidr")]
         public Output<string> NetworkCidr { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// State of the VPC. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
+        /// Project VPC ID.
+        /// </summary>
+        [Output("projectVpcId")]
+        public Output<string> ProjectVpcId { get; private set; } = null!;
+
+        /// <summary>
+        /// Project VPC state. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
+
+        [Output("timeouts")]
+        public Output<Outputs.ProjectVpcTimeouts?> Timeouts { get; private set; } = null!;
 
 
         /// <summary>
@@ -112,22 +121,25 @@ namespace Pulumi.Aiven
     public sealed class ProjectVpcArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.
+        /// Target cloud. Maximum length: `256`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("cloudName", required: true)]
         public Input<string> CloudName { get; set; } = null!;
 
         /// <summary>
-        /// Network address range used by the VPC. For example, `192.168.0.0/24`.
+        /// IPv4 network range CIDR. Maximum length: `18`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("networkCidr", required: true)]
         public Input<string> NetworkCidr { get; set; } = null!;
 
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
+
+        [Input("timeouts")]
+        public Input<Inputs.ProjectVpcTimeoutsArgs>? Timeouts { get; set; }
 
         public ProjectVpcArgs()
         {
@@ -138,28 +150,37 @@ namespace Pulumi.Aiven
     public sealed class ProjectVpcState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.
+        /// Target cloud. Maximum length: `256`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("cloudName")]
         public Input<string>? CloudName { get; set; }
 
         /// <summary>
-        /// Network address range used by the VPC. For example, `192.168.0.0/24`.
+        /// IPv4 network range CIDR. Maximum length: `18`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("networkCidr")]
         public Input<string>? NetworkCidr { get; set; }
 
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// State of the VPC. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
+        /// Project VPC ID.
+        /// </summary>
+        [Input("projectVpcId")]
+        public Input<string>? ProjectVpcId { get; set; }
+
+        /// <summary>
+        /// Project VPC state. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
+
+        [Input("timeouts")]
+        public Input<Inputs.ProjectVpcTimeoutsGetArgs>? Timeouts { get; set; }
 
         public ProjectVpcState()
         {

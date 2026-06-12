@@ -91,9 +91,6 @@ def get_organization_payment_method_list(organization_id: Optional[_builtins.str
     """
     Lists payment methods for an organization.
 
-    **This resource is in the beta stage and may change without notice.** Set
-    the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
-
     ## Example Usage
 
     ```python
@@ -125,9 +122,6 @@ def get_organization_payment_method_list_output(organization_id: pulumi.Input[Op
                                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOrganizationPaymentMethodListResult]:
     """
     Lists payment methods for an organization.
-
-    **This resource is in the beta stage and may change without notice.** Set
-    the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
 
     ## Example Usage
 

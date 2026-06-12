@@ -118,6 +118,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? NetWriteTimeout;
         /// <summary>
+        /// The number of rows per thread in the events*statements*history table. Changing this parameter will lead to a restart of the MySQL service.
+        /// </summary>
+        public readonly int? PerformanceSchemaEventsStatementsHistorySize;
+        /// <summary>
         /// Slow query log enables capturing of slow queries. Setting slow*query*log to false also truncates the mysql.slow_log table.
         /// </summary>
         public readonly bool? SlowQueryLog;
@@ -196,6 +200,8 @@ namespace Pulumi.Aiven.Outputs
 
             int? netWriteTimeout,
 
+            int? performanceSchemaEventsStatementsHistorySize,
+
             bool? slowQueryLog,
 
             int? sortBufferSize,
@@ -234,6 +240,7 @@ namespace Pulumi.Aiven.Outputs
             NetBufferLength = netBufferLength;
             NetReadTimeout = netReadTimeout;
             NetWriteTimeout = netWriteTimeout;
+            PerformanceSchemaEventsStatementsHistorySize = performanceSchemaEventsStatementsHistorySize;
             SlowQueryLog = slowQueryLog;
             SortBufferSize = sortBufferSize;
             SqlMode = sqlMode;

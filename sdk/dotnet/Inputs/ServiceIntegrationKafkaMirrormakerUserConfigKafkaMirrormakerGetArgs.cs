@@ -19,16 +19,40 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? ConsumerAutoOffsetReset { get; set; }
 
         /// <summary>
+        /// The maximum amount of data the server should return for a fetch request.
+        /// </summary>
+        [Input("consumerFetchMaxBytes")]
+        public Input<int>? ConsumerFetchMaxBytes { get; set; }
+
+        /// <summary>
         /// The minimum amount of data the server should return for a fetch request. Example: `1024`.
         /// </summary>
         [Input("consumerFetchMinBytes")]
         public Input<int>? ConsumerFetchMinBytes { get; set; }
 
         /// <summary>
+        /// The maximum amount of data per partition the server will return.
+        /// </summary>
+        [Input("consumerMaxPartitionFetchBytes")]
+        public Input<int>? ConsumerMaxPartitionFetchBytes { get; set; }
+
+        /// <summary>
         /// Set consumer max.poll.records. The default is 500. Example: `500`.
         /// </summary>
         [Input("consumerMaxPollRecords")]
         public Input<int>? ConsumerMaxPollRecords { get; set; }
+
+        /// <summary>
+        /// The size of the TCP receive buffer (SO_RCVBUF) to use when reading data. -1 uses the OS default. Example: `65536`.
+        /// </summary>
+        [Input("consumerReceiveBufferBytes")]
+        public Input<int>? ConsumerReceiveBufferBytes { get; set; }
+
+        /// <summary>
+        /// The maximum time the client will wait for a response to a request. Example: `30000`.
+        /// </summary>
+        [Input("consumerRequestTimeoutMs")]
+        public Input<int>? ConsumerRequestTimeoutMs { get; set; }
 
         /// <summary>
         /// The batch size in bytes producer will attempt to collect before publishing to broker. Example: `1024`.
@@ -59,6 +83,18 @@ namespace Pulumi.Aiven.Inputs
         /// </summary>
         [Input("producerMaxRequestSize")]
         public Input<int>? ProducerMaxRequestSize { get; set; }
+
+        /// <summary>
+        /// The maximum time the client will wait for a response to a request. Example: `30000`.
+        /// </summary>
+        [Input("producerRequestTimeoutMs")]
+        public Input<int>? ProducerRequestTimeoutMs { get; set; }
+
+        /// <summary>
+        /// The size of the TCP send buffer (SO_SNDBUF) to use when sending data. -1 uses the OS default. Example: `131072`.
+        /// </summary>
+        [Input("producerSendBufferBytes")]
+        public Input<int>? ProducerSendBufferBytes { get; set; }
 
         public ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerGetArgs()
         {

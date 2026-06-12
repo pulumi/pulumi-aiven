@@ -2,10 +2,12 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Creates and manages a VPC for an Aiven project.
+ * Creates and manages a VPC for an Aiven project. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
  *
  * ## Example Usage
  *
@@ -13,17 +15,17 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const exampleVpc = new aiven.ProjectVpc("example_vpc", {
- *     project: exampleProject.project,
- *     cloudName: "google-europe-west1",
- *     networkCidr: "192.168.1.0/24",
+ * const example = new aiven.ProjectVpc("example", {
+ *     project: "my-project",
+ *     cloudName: "aws-eu-central-1",
+ *     networkCidr: "192.168.6.0/24",
  * });
  * ```
  *
  * ## Import
  *
  * ```sh
- * $ pulumi import aiven:index/projectVpc:ProjectVpc example_vpc PROJECT/ID
+ * $ pulumi import aiven:index/projectVpc:ProjectVpc example PROJECT/PROJECT_VPC_ID
  * ```
  */
 export class ProjectVpc extends pulumi.CustomResource {
@@ -55,21 +57,26 @@ export class ProjectVpc extends pulumi.CustomResource {
     }
 
     /**
-     * The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.
+     * Target cloud. Maximum length: `256`. Changing this property forces recreation of the resource.
      */
     declare public readonly cloudName: pulumi.Output<string>;
     /**
-     * Network address range used by the VPC. For example, `192.168.0.0/24`.
+     * IPv4 network range CIDR. Maximum length: `18`. Changing this property forces recreation of the resource.
      */
     declare public readonly networkCidr: pulumi.Output<string>;
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name. Changing this property forces recreation of the resource.
      */
     declare public readonly project: pulumi.Output<string>;
     /**
-     * State of the VPC. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
+     * Project VPC ID.
+     */
+    declare public /*out*/ readonly projectVpcId: pulumi.Output<string>;
+    /**
+     * Project VPC state. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
      */
     declare public /*out*/ readonly state: pulumi.Output<string>;
+    declare public readonly timeouts: pulumi.Output<outputs.ProjectVpcTimeouts | undefined>;
 
     /**
      * Create a ProjectVpc resource with the given unique name, arguments, and options.
@@ -87,7 +94,9 @@ export class ProjectVpc extends pulumi.CustomResource {
             resourceInputs["cloudName"] = state?.cloudName;
             resourceInputs["networkCidr"] = state?.networkCidr;
             resourceInputs["project"] = state?.project;
+            resourceInputs["projectVpcId"] = state?.projectVpcId;
             resourceInputs["state"] = state?.state;
+            resourceInputs["timeouts"] = state?.timeouts;
         } else {
             const args = argsOrState as ProjectVpcArgs | undefined;
             if (args?.cloudName === undefined && !opts.urn) {
@@ -102,6 +111,8 @@ export class ProjectVpc extends pulumi.CustomResource {
             resourceInputs["cloudName"] = args?.cloudName;
             resourceInputs["networkCidr"] = args?.networkCidr;
             resourceInputs["project"] = args?.project;
+            resourceInputs["timeouts"] = args?.timeouts;
+            resourceInputs["projectVpcId"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -114,21 +125,26 @@ export class ProjectVpc extends pulumi.CustomResource {
  */
 export interface ProjectVpcState {
     /**
-     * The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.
+     * Target cloud. Maximum length: `256`. Changing this property forces recreation of the resource.
      */
     cloudName?: pulumi.Input<string | undefined>;
     /**
-     * Network address range used by the VPC. For example, `192.168.0.0/24`.
+     * IPv4 network range CIDR. Maximum length: `18`. Changing this property forces recreation of the resource.
      */
     networkCidr?: pulumi.Input<string | undefined>;
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name. Changing this property forces recreation of the resource.
      */
     project?: pulumi.Input<string | undefined>;
     /**
-     * State of the VPC. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
+     * Project VPC ID.
+     */
+    projectVpcId?: pulumi.Input<string | undefined>;
+    /**
+     * Project VPC state. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
      */
     state?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.ProjectVpcTimeouts | undefined>;
 }
 
 /**
@@ -136,15 +152,16 @@ export interface ProjectVpcState {
  */
 export interface ProjectVpcArgs {
     /**
-     * The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.
+     * Target cloud. Maximum length: `256`. Changing this property forces recreation of the resource.
      */
     cloudName: pulumi.Input<string>;
     /**
-     * Network address range used by the VPC. For example, `192.168.0.0/24`.
+     * IPv4 network range CIDR. Maximum length: `18`. Changing this property forces recreation of the resource.
      */
     networkCidr: pulumi.Input<string>;
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name. Changing this property forces recreation of the resource.
      */
     project: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.ProjectVpcTimeouts | undefined>;
 }

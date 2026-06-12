@@ -3,6 +3,7 @@
 
 package com.pulumi.aiven.inputs;
 
+import com.pulumi.aiven.inputs.GetProjectVpcTimeoutsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
@@ -16,14 +17,14 @@ public final class GetProjectVpcArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetProjectVpcArgs Empty = new GetProjectVpcArgs();
 
     /**
-     * The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`.
+     * Target cloud. The field is required with `project`. Exactly one of the fields must be specified: `projectVpcId`, `cloudName` or `vpcId`.
      * 
      */
     @Import(name="cloudName")
     private @Nullable Output<String> cloudName;
 
     /**
-     * @return The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`.
+     * @return Target cloud. The field is required with `project`. Exactly one of the fields must be specified: `projectVpcId`, `cloudName` or `vpcId`.
      * 
      */
     public Optional<Output<String>> cloudName() {
@@ -31,14 +32,14 @@ public final class GetProjectVpcArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Identifies the project this resource belongs to.
+     * Project name.
      * 
      */
     @Import(name="project")
     private @Nullable Output<String> project;
 
     /**
-     * @return Identifies the project this resource belongs to.
+     * @return Project name.
      * 
      */
     public Optional<Output<String>> project() {
@@ -46,16 +47,46 @@ public final class GetProjectVpcArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The ID of the VPC. This can be used to filter out the other VPCs if there are more than one for the project and cloud.
+     * Project VPC ID. The field is required with `project`. Exactly one of the fields must be specified: `projectVpcId`, `cloudName` or `vpcId`.
      * 
      */
+    @Import(name="projectVpcId")
+    private @Nullable Output<String> projectVpcId;
+
+    /**
+     * @return Project VPC ID. The field is required with `project`. Exactly one of the fields must be specified: `projectVpcId`, `cloudName` or `vpcId`.
+     * 
+     */
+    public Optional<Output<String>> projectVpcId() {
+        return Optional.ofNullable(this.projectVpcId);
+    }
+
+    @Import(name="timeouts")
+    private @Nullable Output<GetProjectVpcTimeoutsArgs> timeouts;
+
+    public Optional<Output<GetProjectVpcTimeoutsArgs>> timeouts() {
+        return Optional.ofNullable(this.timeouts);
+    }
+
+    /**
+     * The ID of the VPC in `project/project_vpc_id` format. The field conflicts with `project`. Exactly one of the fields must be specified: `projectVpcId`, `cloudName` or `vpcId`. **Deprecated**: This attribute is deprecated and will be removed in a future version. Use `projectVpcId` instead.
+     * 
+     * @deprecated
+     * This attribute is deprecated and will be removed in a future version. Use `projectVpcId` instead.
+     * 
+     */
+    @Deprecated /* This attribute is deprecated and will be removed in a future version. Use `projectVpcId` instead. */
     @Import(name="vpcId")
     private @Nullable Output<String> vpcId;
 
     /**
-     * @return The ID of the VPC. This can be used to filter out the other VPCs if there are more than one for the project and cloud.
+     * @return The ID of the VPC in `project/project_vpc_id` format. The field conflicts with `project`. Exactly one of the fields must be specified: `projectVpcId`, `cloudName` or `vpcId`. **Deprecated**: This attribute is deprecated and will be removed in a future version. Use `projectVpcId` instead.
+     * 
+     * @deprecated
+     * This attribute is deprecated and will be removed in a future version. Use `projectVpcId` instead.
      * 
      */
+    @Deprecated /* This attribute is deprecated and will be removed in a future version. Use `projectVpcId` instead. */
     public Optional<Output<String>> vpcId() {
         return Optional.ofNullable(this.vpcId);
     }
@@ -65,6 +96,8 @@ public final class GetProjectVpcArgs extends com.pulumi.resources.InvokeArgs {
     private GetProjectVpcArgs(GetProjectVpcArgs $) {
         this.cloudName = $.cloudName;
         this.project = $.project;
+        this.projectVpcId = $.projectVpcId;
+        this.timeouts = $.timeouts;
         this.vpcId = $.vpcId;
     }
 
@@ -87,7 +120,7 @@ public final class GetProjectVpcArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param cloudName The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`.
+         * @param cloudName Target cloud. The field is required with `project`. Exactly one of the fields must be specified: `projectVpcId`, `cloudName` or `vpcId`.
          * 
          * @return builder
          * 
@@ -98,7 +131,7 @@ public final class GetProjectVpcArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param cloudName The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`.
+         * @param cloudName Target cloud. The field is required with `project`. Exactly one of the fields must be specified: `projectVpcId`, `cloudName` or `vpcId`.
          * 
          * @return builder
          * 
@@ -108,7 +141,7 @@ public final class GetProjectVpcArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param project Identifies the project this resource belongs to.
+         * @param project Project name.
          * 
          * @return builder
          * 
@@ -119,7 +152,7 @@ public final class GetProjectVpcArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param project Identifies the project this resource belongs to.
+         * @param project Project name.
          * 
          * @return builder
          * 
@@ -129,22 +162,60 @@ public final class GetProjectVpcArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param vpcId The ID of the VPC. This can be used to filter out the other VPCs if there are more than one for the project and cloud.
+         * @param projectVpcId Project VPC ID. The field is required with `project`. Exactly one of the fields must be specified: `projectVpcId`, `cloudName` or `vpcId`.
          * 
          * @return builder
          * 
          */
+        public Builder projectVpcId(@Nullable Output<String> projectVpcId) {
+            $.projectVpcId = projectVpcId;
+            return this;
+        }
+
+        /**
+         * @param projectVpcId Project VPC ID. The field is required with `project`. Exactly one of the fields must be specified: `projectVpcId`, `cloudName` or `vpcId`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder projectVpcId(String projectVpcId) {
+            return projectVpcId(Output.of(projectVpcId));
+        }
+
+        public Builder timeouts(@Nullable Output<GetProjectVpcTimeoutsArgs> timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
+        public Builder timeouts(GetProjectVpcTimeoutsArgs timeouts) {
+            return timeouts(Output.of(timeouts));
+        }
+
+        /**
+         * @param vpcId The ID of the VPC in `project/project_vpc_id` format. The field conflicts with `project`. Exactly one of the fields must be specified: `projectVpcId`, `cloudName` or `vpcId`. **Deprecated**: This attribute is deprecated and will be removed in a future version. Use `projectVpcId` instead.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * This attribute is deprecated and will be removed in a future version. Use `projectVpcId` instead.
+         * 
+         */
+        @Deprecated /* This attribute is deprecated and will be removed in a future version. Use `projectVpcId` instead. */
         public Builder vpcId(@Nullable Output<String> vpcId) {
             $.vpcId = vpcId;
             return this;
         }
 
         /**
-         * @param vpcId The ID of the VPC. This can be used to filter out the other VPCs if there are more than one for the project and cloud.
+         * @param vpcId The ID of the VPC in `project/project_vpc_id` format. The field conflicts with `project`. Exactly one of the fields must be specified: `projectVpcId`, `cloudName` or `vpcId`. **Deprecated**: This attribute is deprecated and will be removed in a future version. Use `projectVpcId` instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * This attribute is deprecated and will be removed in a future version. Use `projectVpcId` instead.
+         * 
          */
+        @Deprecated /* This attribute is deprecated and will be removed in a future version. Use `projectVpcId` instead. */
         public Builder vpcId(String vpcId) {
             return vpcId(Output.of(vpcId));
         }

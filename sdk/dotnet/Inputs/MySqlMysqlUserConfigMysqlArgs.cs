@@ -169,6 +169,12 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? NetWriteTimeout { get; set; }
 
         /// <summary>
+        /// The number of rows per thread in the events*statements*history table. Changing this parameter will lead to a restart of the MySQL service.
+        /// </summary>
+        [Input("performanceSchemaEventsStatementsHistorySize")]
+        public Input<int>? PerformanceSchemaEventsStatementsHistorySize { get; set; }
+
+        /// <summary>
         /// Slow query log enables capturing of slow queries. Setting slow*query*log to false also truncates the mysql.slow_log table.
         /// </summary>
         [Input("slowQueryLog")]

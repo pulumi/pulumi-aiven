@@ -3,6 +3,7 @@
 
 package com.pulumi.aiven.outputs;
 
+import com.pulumi.aiven.outputs.GetProjectVpcTimeouts;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
@@ -13,76 +14,100 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetProjectVpcResult {
     /**
-     * @return The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`.
+     * @return Target cloud. The field is required with `project`. Exactly one of the fields must be specified: `projectVpcId`, `cloudName` or `vpcId`.
      * 
      */
-    private @Nullable String cloudName;
+    private String cloudName;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Resource ID composed as: `project/project_vpc_id`.
      * 
      */
     private String id;
     /**
-     * @return Network address range used by the VPC. For example, `192.168.0.0/24`.
+     * @return IPv4 network range CIDR.
      * 
      */
     private String networkCidr;
     /**
-     * @return Identifies the project this resource belongs to.
+     * @return Project name.
      * 
      */
-    private @Nullable String project;
+    private String project;
     /**
-     * @return State of the VPC. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
+     * @return Project VPC ID. The field is required with `project`. Exactly one of the fields must be specified: `projectVpcId`, `cloudName` or `vpcId`.
+     * 
+     */
+    private String projectVpcId;
+    /**
+     * @return Project VPC state. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
      * 
      */
     private String state;
+    private @Nullable GetProjectVpcTimeouts timeouts;
     /**
-     * @return The ID of the VPC. This can be used to filter out the other VPCs if there are more than one for the project and cloud.
+     * @return The ID of the VPC in `project/project_vpc_id` format. The field conflicts with `project`. Exactly one of the fields must be specified: `projectVpcId`, `cloudName` or `vpcId`. **Deprecated**: This attribute is deprecated and will be removed in a future version. Use `projectVpcId` instead.
+     * 
+     * @deprecated
+     * This attribute is deprecated and will be removed in a future version. Use `projectVpcId` instead.
      * 
      */
+    @Deprecated /* This attribute is deprecated and will be removed in a future version. Use `projectVpcId` instead. */
     private @Nullable String vpcId;
 
     private GetProjectVpcResult() {}
     /**
-     * @return The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`.
+     * @return Target cloud. The field is required with `project`. Exactly one of the fields must be specified: `projectVpcId`, `cloudName` or `vpcId`.
      * 
      */
-    public Optional<String> cloudName() {
-        return Optional.ofNullable(this.cloudName);
+    public String cloudName() {
+        return this.cloudName;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Resource ID composed as: `project/project_vpc_id`.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return Network address range used by the VPC. For example, `192.168.0.0/24`.
+     * @return IPv4 network range CIDR.
      * 
      */
     public String networkCidr() {
         return this.networkCidr;
     }
     /**
-     * @return Identifies the project this resource belongs to.
+     * @return Project name.
      * 
      */
-    public Optional<String> project() {
-        return Optional.ofNullable(this.project);
+    public String project() {
+        return this.project;
     }
     /**
-     * @return State of the VPC. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
+     * @return Project VPC ID. The field is required with `project`. Exactly one of the fields must be specified: `projectVpcId`, `cloudName` or `vpcId`.
+     * 
+     */
+    public String projectVpcId() {
+        return this.projectVpcId;
+    }
+    /**
+     * @return Project VPC state. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
      * 
      */
     public String state() {
         return this.state;
     }
+    public Optional<GetProjectVpcTimeouts> timeouts() {
+        return Optional.ofNullable(this.timeouts);
+    }
     /**
-     * @return The ID of the VPC. This can be used to filter out the other VPCs if there are more than one for the project and cloud.
+     * @return The ID of the VPC in `project/project_vpc_id` format. The field conflicts with `project`. Exactly one of the fields must be specified: `projectVpcId`, `cloudName` or `vpcId`. **Deprecated**: This attribute is deprecated and will be removed in a future version. Use `projectVpcId` instead.
+     * 
+     * @deprecated
+     * This attribute is deprecated and will be removed in a future version. Use `projectVpcId` instead.
      * 
      */
+    @Deprecated /* This attribute is deprecated and will be removed in a future version. Use `projectVpcId` instead. */
     public Optional<String> vpcId() {
         return Optional.ofNullable(this.vpcId);
     }
@@ -96,11 +121,13 @@ public final class GetProjectVpcResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String cloudName;
+        private String cloudName;
         private String id;
         private String networkCidr;
-        private @Nullable String project;
+        private String project;
+        private String projectVpcId;
         private String state;
+        private @Nullable GetProjectVpcTimeouts timeouts;
         private @Nullable String vpcId;
         public Builder() {}
         public Builder(GetProjectVpcResult defaults) {
@@ -109,13 +136,17 @@ public final class GetProjectVpcResult {
     	      this.id = defaults.id;
     	      this.networkCidr = defaults.networkCidr;
     	      this.project = defaults.project;
+    	      this.projectVpcId = defaults.projectVpcId;
     	      this.state = defaults.state;
+    	      this.timeouts = defaults.timeouts;
     	      this.vpcId = defaults.vpcId;
         }
 
         @CustomType.Setter
-        public Builder cloudName(@Nullable String cloudName) {
-
+        public Builder cloudName(String cloudName) {
+            if (cloudName == null) {
+              throw new MissingRequiredPropertyException("GetProjectVpcResult", "cloudName");
+            }
             this.cloudName = cloudName;
             return this;
         }
@@ -136,9 +167,19 @@ public final class GetProjectVpcResult {
             return this;
         }
         @CustomType.Setter
-        public Builder project(@Nullable String project) {
-
+        public Builder project(String project) {
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetProjectVpcResult", "project");
+            }
             this.project = project;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder projectVpcId(String projectVpcId) {
+            if (projectVpcId == null) {
+              throw new MissingRequiredPropertyException("GetProjectVpcResult", "projectVpcId");
+            }
+            this.projectVpcId = projectVpcId;
             return this;
         }
         @CustomType.Setter
@@ -147,6 +188,12 @@ public final class GetProjectVpcResult {
               throw new MissingRequiredPropertyException("GetProjectVpcResult", "state");
             }
             this.state = state;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder timeouts(@Nullable GetProjectVpcTimeouts timeouts) {
+
+            this.timeouts = timeouts;
             return this;
         }
         @CustomType.Setter
@@ -161,7 +208,9 @@ public final class GetProjectVpcResult {
             _resultValue.id = id;
             _resultValue.networkCidr = networkCidr;
             _resultValue.project = project;
+            _resultValue.projectVpcId = projectVpcId;
             _resultValue.state = state;
+            _resultValue.timeouts = timeouts;
             _resultValue.vpcId = vpcId;
             return _resultValue;
         }

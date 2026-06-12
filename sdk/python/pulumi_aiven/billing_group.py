@@ -49,14 +49,14 @@ class BillingGroupArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] billing_emails: List of project billing email addresses.
         :param pulumi.Input[_builtins.str] billing_extra_text: Extra text to be included in all project invoices, e.g. purchase order or cost center number. Maximum length: `1000`.
         :param pulumi.Input[_builtins.str] card_id: Credit card ID. Maximum length: `64`.
-        :param pulumi.Input[_builtins.str] city: Address city. Maximum length: `512`.
-        :param pulumi.Input[_builtins.str] company: Name of a company. Maximum length: `128`.
+        :param pulumi.Input[_builtins.str] city: Address city. Maximum length: `50`.
+        :param pulumi.Input[_builtins.str] company: Name of a company. Maximum length: `83`.
         :param pulumi.Input[_builtins.str] copy_from_billing_group: Billing group ID. Length must be exactly `36`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] country_code: Two letter country code for billing country. Maximum length: `2`.
         :param pulumi.Input[_builtins.str] name: Billing group name. Maximum length: `128`.
-        :param pulumi.Input[_builtins.str] state: Address state or province. Maximum length: `128`.
+        :param pulumi.Input[_builtins.str] state: Address state or province. Maximum length: `30`.
         :param pulumi.Input[_builtins.str] vat_id: EU VAT Identification Number. Maximum length: `64`.
-        :param pulumi.Input[_builtins.str] zip_code: Address zip code. Maximum length: `32`.
+        :param pulumi.Input[_builtins.str] zip_code: Address zip code. Maximum length: `36`.
         """
         pulumi.set(__self__, "parent_id", parent_id)
         if account_id is not None:
@@ -196,7 +196,7 @@ class BillingGroupArgs:
     @pulumi.getter
     def city(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Address city. Maximum length: `512`.
+        Address city. Maximum length: `50`.
         """
         return pulumi.get(self, "city")
 
@@ -208,7 +208,7 @@ class BillingGroupArgs:
     @pulumi.getter
     def company(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Name of a company. Maximum length: `128`.
+        Name of a company. Maximum length: `83`.
         """
         return pulumi.get(self, "company")
 
@@ -256,7 +256,7 @@ class BillingGroupArgs:
     @pulumi.getter
     def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Address state or province. Maximum length: `128`.
+        Address state or province. Maximum length: `30`.
         """
         return pulumi.get(self, "state")
 
@@ -289,7 +289,7 @@ class BillingGroupArgs:
     @pulumi.getter(name="zipCode")
     def zip_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Address zip code. Maximum length: `32`.
+        Address zip code. Maximum length: `36`.
         """
         return pulumi.get(self, "zip_code")
 
@@ -330,15 +330,15 @@ class _BillingGroupState:
         :param pulumi.Input[_builtins.str] billing_extra_text: Extra text to be included in all project invoices, e.g. purchase order or cost center number. Maximum length: `1000`.
         :param pulumi.Input[_builtins.str] billing_group_id: The [ID of the billing group](https://aiven.io/docs/platform/reference/get-resource-IDs#get-a-billing-group-id). To set up proper dependencies please refer to this variable as a reference.
         :param pulumi.Input[_builtins.str] card_id: Credit card ID. Maximum length: `64`.
-        :param pulumi.Input[_builtins.str] city: Address city. Maximum length: `512`.
-        :param pulumi.Input[_builtins.str] company: Name of a company. Maximum length: `128`.
+        :param pulumi.Input[_builtins.str] city: Address city. Maximum length: `50`.
+        :param pulumi.Input[_builtins.str] company: Name of a company. Maximum length: `83`.
         :param pulumi.Input[_builtins.str] copy_from_billing_group: Billing group ID. Length must be exactly `36`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] country_code: Two letter country code for billing country. Maximum length: `2`.
         :param pulumi.Input[_builtins.str] name: Billing group name. Maximum length: `128`.
         :param pulumi.Input[_builtins.str] parent_id: Link a billing group to an existing organization by using its ID.
-        :param pulumi.Input[_builtins.str] state: Address state or province. Maximum length: `128`.
+        :param pulumi.Input[_builtins.str] state: Address state or province. Maximum length: `30`.
         :param pulumi.Input[_builtins.str] vat_id: EU VAT Identification Number. Maximum length: `64`.
-        :param pulumi.Input[_builtins.str] zip_code: Address zip code. Maximum length: `32`.
+        :param pulumi.Input[_builtins.str] zip_code: Address zip code. Maximum length: `36`.
         """
         if account_id is not None:
             warnings.warn("""Use `parent_id` instead. This field will be removed in the next major release.""", DeprecationWarning)
@@ -481,7 +481,7 @@ class _BillingGroupState:
     @pulumi.getter
     def city(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Address city. Maximum length: `512`.
+        Address city. Maximum length: `50`.
         """
         return pulumi.get(self, "city")
 
@@ -493,7 +493,7 @@ class _BillingGroupState:
     @pulumi.getter
     def company(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Name of a company. Maximum length: `128`.
+        Name of a company. Maximum length: `83`.
         """
         return pulumi.get(self, "company")
 
@@ -553,7 +553,7 @@ class _BillingGroupState:
     @pulumi.getter
     def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Address state or province. Maximum length: `128`.
+        Address state or province. Maximum length: `30`.
         """
         return pulumi.get(self, "state")
 
@@ -586,7 +586,7 @@ class _BillingGroupState:
     @pulumi.getter(name="zipCode")
     def zip_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Address zip code. Maximum length: `32`.
+        Address zip code. Maximum length: `36`.
         """
         return pulumi.get(self, "zip_code")
 
@@ -620,7 +620,7 @@ class BillingGroup(pulumi.CustomResource):
                  zip_code: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
-        Creates and manages [billing groups](https://aiven.io/docs/platform/concepts/billing-groups) and assigns them to projects.
+        Creates and manages [billing groups](https://aiven.io/docs/platform/concepts/billing-groups) and assigns them to projects. **Deprecated**: Use `OrganizationBillingGroup` instead. This resource will be removed in the next major release.
 
         ## Example Usage
 
@@ -662,15 +662,15 @@ class BillingGroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] billing_emails: List of project billing email addresses.
         :param pulumi.Input[_builtins.str] billing_extra_text: Extra text to be included in all project invoices, e.g. purchase order or cost center number. Maximum length: `1000`.
         :param pulumi.Input[_builtins.str] card_id: Credit card ID. Maximum length: `64`.
-        :param pulumi.Input[_builtins.str] city: Address city. Maximum length: `512`.
-        :param pulumi.Input[_builtins.str] company: Name of a company. Maximum length: `128`.
+        :param pulumi.Input[_builtins.str] city: Address city. Maximum length: `50`.
+        :param pulumi.Input[_builtins.str] company: Name of a company. Maximum length: `83`.
         :param pulumi.Input[_builtins.str] copy_from_billing_group: Billing group ID. Length must be exactly `36`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] country_code: Two letter country code for billing country. Maximum length: `2`.
         :param pulumi.Input[_builtins.str] name: Billing group name. Maximum length: `128`.
         :param pulumi.Input[_builtins.str] parent_id: Link a billing group to an existing organization by using its ID.
-        :param pulumi.Input[_builtins.str] state: Address state or province. Maximum length: `128`.
+        :param pulumi.Input[_builtins.str] state: Address state or province. Maximum length: `30`.
         :param pulumi.Input[_builtins.str] vat_id: EU VAT Identification Number. Maximum length: `64`.
-        :param pulumi.Input[_builtins.str] zip_code: Address zip code. Maximum length: `32`.
+        :param pulumi.Input[_builtins.str] zip_code: Address zip code. Maximum length: `36`.
         """
         ...
     @overload
@@ -679,7 +679,7 @@ class BillingGroup(pulumi.CustomResource):
                  args: BillingGroupArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates and manages [billing groups](https://aiven.io/docs/platform/concepts/billing-groups) and assigns them to projects.
+        Creates and manages [billing groups](https://aiven.io/docs/platform/concepts/billing-groups) and assigns them to projects. **Deprecated**: Use `OrganizationBillingGroup` instead. This resource will be removed in the next major release.
 
         ## Example Usage
 
@@ -816,15 +816,15 @@ class BillingGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] billing_extra_text: Extra text to be included in all project invoices, e.g. purchase order or cost center number. Maximum length: `1000`.
         :param pulumi.Input[_builtins.str] billing_group_id: The [ID of the billing group](https://aiven.io/docs/platform/reference/get-resource-IDs#get-a-billing-group-id). To set up proper dependencies please refer to this variable as a reference.
         :param pulumi.Input[_builtins.str] card_id: Credit card ID. Maximum length: `64`.
-        :param pulumi.Input[_builtins.str] city: Address city. Maximum length: `512`.
-        :param pulumi.Input[_builtins.str] company: Name of a company. Maximum length: `128`.
+        :param pulumi.Input[_builtins.str] city: Address city. Maximum length: `50`.
+        :param pulumi.Input[_builtins.str] company: Name of a company. Maximum length: `83`.
         :param pulumi.Input[_builtins.str] copy_from_billing_group: Billing group ID. Length must be exactly `36`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] country_code: Two letter country code for billing country. Maximum length: `2`.
         :param pulumi.Input[_builtins.str] name: Billing group name. Maximum length: `128`.
         :param pulumi.Input[_builtins.str] parent_id: Link a billing group to an existing organization by using its ID.
-        :param pulumi.Input[_builtins.str] state: Address state or province. Maximum length: `128`.
+        :param pulumi.Input[_builtins.str] state: Address state or province. Maximum length: `30`.
         :param pulumi.Input[_builtins.str] vat_id: EU VAT Identification Number. Maximum length: `64`.
-        :param pulumi.Input[_builtins.str] zip_code: Address zip code. Maximum length: `32`.
+        :param pulumi.Input[_builtins.str] zip_code: Address zip code. Maximum length: `36`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -919,7 +919,7 @@ class BillingGroup(pulumi.CustomResource):
     @pulumi.getter
     def city(self) -> pulumi.Output[_builtins.str]:
         """
-        Address city. Maximum length: `512`.
+        Address city. Maximum length: `50`.
         """
         return pulumi.get(self, "city")
 
@@ -927,7 +927,7 @@ class BillingGroup(pulumi.CustomResource):
     @pulumi.getter
     def company(self) -> pulumi.Output[_builtins.str]:
         """
-        Name of a company. Maximum length: `128`.
+        Name of a company. Maximum length: `83`.
         """
         return pulumi.get(self, "company")
 
@@ -967,7 +967,7 @@ class BillingGroup(pulumi.CustomResource):
     @pulumi.getter
     def state(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Address state or province. Maximum length: `128`.
+        Address state or province. Maximum length: `30`.
         """
         return pulumi.get(self, "state")
 
@@ -988,7 +988,7 @@ class BillingGroup(pulumi.CustomResource):
     @pulumi.getter(name="zipCode")
     def zip_code(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Address zip code. Maximum length: `32`.
+        Address zip code. Maximum length: `36`.
         """
         return pulumi.get(self, "zip_code")
 

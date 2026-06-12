@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provisions a BYOC custom cloud environment by handing Aiven the IAM role ARN created in the customer AWS account. Transitions the environment from `draft` to `active` so services can be deployed into it. Create this resource after the customer-side AWS infrastructure (IAM role, VPC, subnets, security groups, buckets) has been applied, and before `ByocPermissions`. `terraform destroy` on this resource is a state-only operation -- it does not reverse provisioning. To tear down, destroy the underlying `ByocAwsEntity`.
+// Provisions a BYOC custom cloud environment by handing Aiven the IAM role ARN created in the customer AWS account. Transitions the environment from `draft` to `active` so services can be deployed into it. Create this resource after the customer-side AWS infrastructure (IAM role, VPC, subnets, security groups, buckets) has been defined.
 //
 // **This resource is in the beta stage and may change without notice.** Set
 // the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
@@ -61,9 +61,13 @@ type ByocAwsProvision struct {
 	AwsIamRoleArn pulumi.StringOutput `pulumi:"awsIamRoleArn"`
 	// ID of a custom cloud environment. Length must be exactly `36`. Changing this property forces recreation of the resource.
 	CustomCloudEnvironmentId pulumi.StringOutput `pulumi:"customCloudEnvironmentId"`
+	// Cloud names that can be used to provision a service on this BYOC.
+	CustomCloudNames pulumi.StringArrayOutput `pulumi:"customCloudNames"`
 	// ID of an organization. Changing this property forces recreation of the resource.
-	OrganizationId pulumi.StringOutput               `pulumi:"organizationId"`
-	Timeouts       ByocAwsProvisionTimeoutsPtrOutput `pulumi:"timeouts"`
+	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
+	// State of this BYOC cloud. The possible values are `active`, `creating`, `creationFailed`, `deleted`, `deleting`, `deletionFailed`, `disconnected`, `draft`, `reconnecting` and `validating`.
+	State    pulumi.StringOutput               `pulumi:"state"`
+	Timeouts ByocAwsProvisionTimeoutsPtrOutput `pulumi:"timeouts"`
 }
 
 // NewByocAwsProvision registers a new resource with the given unique name, arguments, and options.
@@ -113,9 +117,13 @@ type byocAwsProvisionState struct {
 	AwsIamRoleArn *string `pulumi:"awsIamRoleArn"`
 	// ID of a custom cloud environment. Length must be exactly `36`. Changing this property forces recreation of the resource.
 	CustomCloudEnvironmentId *string `pulumi:"customCloudEnvironmentId"`
+	// Cloud names that can be used to provision a service on this BYOC.
+	CustomCloudNames []string `pulumi:"customCloudNames"`
 	// ID of an organization. Changing this property forces recreation of the resource.
-	OrganizationId *string                   `pulumi:"organizationId"`
-	Timeouts       *ByocAwsProvisionTimeouts `pulumi:"timeouts"`
+	OrganizationId *string `pulumi:"organizationId"`
+	// State of this BYOC cloud. The possible values are `active`, `creating`, `creationFailed`, `deleted`, `deleting`, `deletionFailed`, `disconnected`, `draft`, `reconnecting` and `validating`.
+	State    *string                   `pulumi:"state"`
+	Timeouts *ByocAwsProvisionTimeouts `pulumi:"timeouts"`
 }
 
 type ByocAwsProvisionState struct {
@@ -127,9 +135,13 @@ type ByocAwsProvisionState struct {
 	AwsIamRoleArn pulumi.StringPtrInput
 	// ID of a custom cloud environment. Length must be exactly `36`. Changing this property forces recreation of the resource.
 	CustomCloudEnvironmentId pulumi.StringPtrInput
+	// Cloud names that can be used to provision a service on this BYOC.
+	CustomCloudNames pulumi.StringArrayInput
 	// ID of an organization. Changing this property forces recreation of the resource.
 	OrganizationId pulumi.StringPtrInput
-	Timeouts       ByocAwsProvisionTimeoutsPtrInput
+	// State of this BYOC cloud. The possible values are `active`, `creating`, `creationFailed`, `deleted`, `deleting`, `deletionFailed`, `disconnected`, `draft`, `reconnecting` and `validating`.
+	State    pulumi.StringPtrInput
+	Timeouts ByocAwsProvisionTimeoutsPtrInput
 }
 
 func (ByocAwsProvisionState) ElementType() reflect.Type {
@@ -264,9 +276,19 @@ func (o ByocAwsProvisionOutput) CustomCloudEnvironmentId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ByocAwsProvision) pulumi.StringOutput { return v.CustomCloudEnvironmentId }).(pulumi.StringOutput)
 }
 
+// Cloud names that can be used to provision a service on this BYOC.
+func (o ByocAwsProvisionOutput) CustomCloudNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ByocAwsProvision) pulumi.StringArrayOutput { return v.CustomCloudNames }).(pulumi.StringArrayOutput)
+}
+
 // ID of an organization. Changing this property forces recreation of the resource.
 func (o ByocAwsProvisionOutput) OrganizationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ByocAwsProvision) pulumi.StringOutput { return v.OrganizationId }).(pulumi.StringOutput)
+}
+
+// State of this BYOC cloud. The possible values are `active`, `creating`, `creationFailed`, `deleted`, `deleting`, `deletionFailed`, `disconnected`, `draft`, `reconnecting` and `validating`.
+func (o ByocAwsProvisionOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *ByocAwsProvision) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
 func (o ByocAwsProvisionOutput) Timeouts() ByocAwsProvisionTimeoutsPtrOutput {

@@ -28,8 +28,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.GetProjectVpc(ctx, &aiven.LookupProjectVpcArgs{
-//				Project:   pulumi.StringRef(exampleProject.Project),
-//				CloudName: pulumi.StringRef("google-europe-west1"),
+//				Project:      pulumi.StringRef("my-project"),
+//				ProjectVpcId: pulumi.StringRef("1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -51,27 +51,37 @@ func LookupProjectVpc(ctx *pulumi.Context, args *LookupProjectVpcArgs, opts ...p
 
 // A collection of arguments for invoking getProjectVpc.
 type LookupProjectVpcArgs struct {
-	// The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`.
+	// Target cloud. The field is required with `project`. Exactly one of the fields must be specified: `projectVpcId`, `cloudName` or `vpcId`.
 	CloudName *string `pulumi:"cloudName"`
-	// Identifies the project this resource belongs to.
+	// Project name.
 	Project *string `pulumi:"project"`
-	// The ID of the VPC. This can be used to filter out the other VPCs if there are more than one for the project and cloud.
+	// Project VPC ID. The field is required with `project`. Exactly one of the fields must be specified: `projectVpcId`, `cloudName` or `vpcId`.
+	ProjectVpcId *string                `pulumi:"projectVpcId"`
+	Timeouts     *GetProjectVpcTimeouts `pulumi:"timeouts"`
+	// The ID of the VPC in `project/project_vpc_id` format. The field conflicts with `project`. Exactly one of the fields must be specified: `projectVpcId`, `cloudName` or `vpcId`. **Deprecated**: This attribute is deprecated and will be removed in a future version. Use `projectVpcId` instead.
+	//
+	// Deprecated: This attribute is deprecated and will be removed in a future version. Use `projectVpcId` instead.
 	VpcId *string `pulumi:"vpcId"`
 }
 
 // A collection of values returned by getProjectVpc.
 type LookupProjectVpcResult struct {
-	// The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`.
-	CloudName *string `pulumi:"cloudName"`
-	// The provider-assigned unique ID for this managed resource.
+	// Target cloud. The field is required with `project`. Exactly one of the fields must be specified: `projectVpcId`, `cloudName` or `vpcId`.
+	CloudName string `pulumi:"cloudName"`
+	// Resource ID composed as: `project/project_vpc_id`.
 	Id string `pulumi:"id"`
-	// Network address range used by the VPC. For example, `192.168.0.0/24`.
+	// IPv4 network range CIDR.
 	NetworkCidr string `pulumi:"networkCidr"`
-	// Identifies the project this resource belongs to.
-	Project *string `pulumi:"project"`
-	// State of the VPC. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
-	State string `pulumi:"state"`
-	// The ID of the VPC. This can be used to filter out the other VPCs if there are more than one for the project and cloud.
+	// Project name.
+	Project string `pulumi:"project"`
+	// Project VPC ID. The field is required with `project`. Exactly one of the fields must be specified: `projectVpcId`, `cloudName` or `vpcId`.
+	ProjectVpcId string `pulumi:"projectVpcId"`
+	// Project VPC state. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
+	State    string                 `pulumi:"state"`
+	Timeouts *GetProjectVpcTimeouts `pulumi:"timeouts"`
+	// The ID of the VPC in `project/project_vpc_id` format. The field conflicts with `project`. Exactly one of the fields must be specified: `projectVpcId`, `cloudName` or `vpcId`. **Deprecated**: This attribute is deprecated and will be removed in a future version. Use `projectVpcId` instead.
+	//
+	// Deprecated: This attribute is deprecated and will be removed in a future version. Use `projectVpcId` instead.
 	VpcId *string `pulumi:"vpcId"`
 }
 
@@ -86,11 +96,16 @@ func LookupProjectVpcOutput(ctx *pulumi.Context, args LookupProjectVpcOutputArgs
 
 // A collection of arguments for invoking getProjectVpc.
 type LookupProjectVpcOutputArgs struct {
-	// The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`.
+	// Target cloud. The field is required with `project`. Exactly one of the fields must be specified: `projectVpcId`, `cloudName` or `vpcId`.
 	CloudName pulumi.StringPtrInput `pulumi:"cloudName"`
-	// Identifies the project this resource belongs to.
+	// Project name.
 	Project pulumi.StringPtrInput `pulumi:"project"`
-	// The ID of the VPC. This can be used to filter out the other VPCs if there are more than one for the project and cloud.
+	// Project VPC ID. The field is required with `project`. Exactly one of the fields must be specified: `projectVpcId`, `cloudName` or `vpcId`.
+	ProjectVpcId pulumi.StringPtrInput         `pulumi:"projectVpcId"`
+	Timeouts     GetProjectVpcTimeoutsPtrInput `pulumi:"timeouts"`
+	// The ID of the VPC in `project/project_vpc_id` format. The field conflicts with `project`. Exactly one of the fields must be specified: `projectVpcId`, `cloudName` or `vpcId`. **Deprecated**: This attribute is deprecated and will be removed in a future version. Use `projectVpcId` instead.
+	//
+	// Deprecated: This attribute is deprecated and will be removed in a future version. Use `projectVpcId` instead.
 	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
 }
 
@@ -113,32 +128,43 @@ func (o LookupProjectVpcResultOutput) ToLookupProjectVpcResultOutputWithContext(
 	return o
 }
 
-// The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`.
-func (o LookupProjectVpcResultOutput) CloudName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupProjectVpcResult) *string { return v.CloudName }).(pulumi.StringPtrOutput)
+// Target cloud. The field is required with `project`. Exactly one of the fields must be specified: `projectVpcId`, `cloudName` or `vpcId`.
+func (o LookupProjectVpcResultOutput) CloudName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectVpcResult) string { return v.CloudName }).(pulumi.StringOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// Resource ID composed as: `project/project_vpc_id`.
 func (o LookupProjectVpcResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectVpcResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Network address range used by the VPC. For example, `192.168.0.0/24`.
+// IPv4 network range CIDR.
 func (o LookupProjectVpcResultOutput) NetworkCidr() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectVpcResult) string { return v.NetworkCidr }).(pulumi.StringOutput)
 }
 
-// Identifies the project this resource belongs to.
-func (o LookupProjectVpcResultOutput) Project() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupProjectVpcResult) *string { return v.Project }).(pulumi.StringPtrOutput)
+// Project name.
+func (o LookupProjectVpcResultOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectVpcResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
-// State of the VPC. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
+// Project VPC ID. The field is required with `project`. Exactly one of the fields must be specified: `projectVpcId`, `cloudName` or `vpcId`.
+func (o LookupProjectVpcResultOutput) ProjectVpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectVpcResult) string { return v.ProjectVpcId }).(pulumi.StringOutput)
+}
+
+// Project VPC state. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
 func (o LookupProjectVpcResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectVpcResult) string { return v.State }).(pulumi.StringOutput)
 }
 
-// The ID of the VPC. This can be used to filter out the other VPCs if there are more than one for the project and cloud.
+func (o LookupProjectVpcResultOutput) Timeouts() GetProjectVpcTimeoutsPtrOutput {
+	return o.ApplyT(func(v LookupProjectVpcResult) *GetProjectVpcTimeouts { return v.Timeouts }).(GetProjectVpcTimeoutsPtrOutput)
+}
+
+// The ID of the VPC in `project/project_vpc_id` format. The field conflicts with `project`. Exactly one of the fields must be specified: `projectVpcId`, `cloudName` or `vpcId`. **Deprecated**: This attribute is deprecated and will be removed in a future version. Use `projectVpcId` instead.
+//
+// Deprecated: This attribute is deprecated and will be removed in a future version. Use `projectVpcId` instead.
 func (o LookupProjectVpcResultOutput) VpcId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupProjectVpcResult) *string { return v.VpcId }).(pulumi.StringPtrOutput)
 }

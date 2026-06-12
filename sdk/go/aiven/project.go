@@ -31,6 +31,8 @@ type Project struct {
 	// Deprecated: This field is deprecated and will be removed in the next major release. Currently, it will always be set to true, regardless of the value set in the manifest.
 	AddAccountOwnersAdminAccess pulumi.BoolPtrOutput `pulumi:"addAccountOwnersAdminAccess"`
 	// The number of trial or promotional credits remaining for this project.
+	//
+	// Deprecated: This field is deprecated on the resource and is no longer populated. Use the `Project` data source to read this value. It will be removed in the next major release.
 	AvailableCredits pulumi.StringOutput `pulumi:"availableCredits"`
 	// The ID of the billing group this project is assigned to. To set up proper dependencies please refer to this variable as a reference.
 	BillingGroup pulumi.StringPtrOutput `pulumi:"billingGroup"`
@@ -41,6 +43,8 @@ type Project struct {
 	// Default cloud provider and region where services are hosted. This can be changed after the project is created and will not affect existing services.
 	DefaultCloud pulumi.StringPtrOutput `pulumi:"defaultCloud"`
 	// The monthly running estimate for this project for the current billing period.
+	//
+	// Deprecated: This field is deprecated on the resource and is no longer populated. Use the `Project` data source to read this value. It will be removed in the next major release.
 	EstimatedBalance pulumi.StringOutput `pulumi:"estimatedBalance"`
 	// Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.
 	ParentId pulumi.StringPtrOutput `pulumi:"parentId"`
@@ -104,6 +108,8 @@ type projectState struct {
 	// Deprecated: This field is deprecated and will be removed in the next major release. Currently, it will always be set to true, regardless of the value set in the manifest.
 	AddAccountOwnersAdminAccess *bool `pulumi:"addAccountOwnersAdminAccess"`
 	// The number of trial or promotional credits remaining for this project.
+	//
+	// Deprecated: This field is deprecated on the resource and is no longer populated. Use the `Project` data source to read this value. It will be removed in the next major release.
 	AvailableCredits *string `pulumi:"availableCredits"`
 	// The ID of the billing group this project is assigned to. To set up proper dependencies please refer to this variable as a reference.
 	BillingGroup *string `pulumi:"billingGroup"`
@@ -114,6 +120,8 @@ type projectState struct {
 	// Default cloud provider and region where services are hosted. This can be changed after the project is created and will not affect existing services.
 	DefaultCloud *string `pulumi:"defaultCloud"`
 	// The monthly running estimate for this project for the current billing period.
+	//
+	// Deprecated: This field is deprecated on the resource and is no longer populated. Use the `Project` data source to read this value. It will be removed in the next major release.
 	EstimatedBalance *string `pulumi:"estimatedBalance"`
 	// Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.
 	ParentId *string `pulumi:"parentId"`
@@ -141,6 +149,8 @@ type ProjectState struct {
 	// Deprecated: This field is deprecated and will be removed in the next major release. Currently, it will always be set to true, regardless of the value set in the manifest.
 	AddAccountOwnersAdminAccess pulumi.BoolPtrInput
 	// The number of trial or promotional credits remaining for this project.
+	//
+	// Deprecated: This field is deprecated on the resource and is no longer populated. Use the `Project` data source to read this value. It will be removed in the next major release.
 	AvailableCredits pulumi.StringPtrInput
 	// The ID of the billing group this project is assigned to. To set up proper dependencies please refer to this variable as a reference.
 	BillingGroup pulumi.StringPtrInput
@@ -151,6 +161,8 @@ type ProjectState struct {
 	// Default cloud provider and region where services are hosted. This can be changed after the project is created and will not affect existing services.
 	DefaultCloud pulumi.StringPtrInput
 	// The monthly running estimate for this project for the current billing period.
+	//
+	// Deprecated: This field is deprecated on the resource and is no longer populated. Use the `Project` data source to read this value. It will be removed in the next major release.
 	EstimatedBalance pulumi.StringPtrInput
 	// Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.
 	ParentId pulumi.StringPtrInput
@@ -333,6 +345,8 @@ func (o ProjectOutput) AddAccountOwnersAdminAccess() pulumi.BoolPtrOutput {
 }
 
 // The number of trial or promotional credits remaining for this project.
+//
+// Deprecated: This field is deprecated on the resource and is no longer populated. Use the `Project` data source to read this value. It will be removed in the next major release.
 func (o ProjectOutput) AvailableCredits() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.AvailableCredits }).(pulumi.StringOutput)
 }
@@ -358,6 +372,8 @@ func (o ProjectOutput) DefaultCloud() pulumi.StringPtrOutput {
 }
 
 // The monthly running estimate for this project for the current billing period.
+//
+// Deprecated: This field is deprecated on the resource and is no longer populated. Use the `Project` data source to read this value. It will be removed in the next major release.
 func (o ProjectOutput) EstimatedBalance() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.EstimatedBalance }).(pulumi.StringOutput)
 }

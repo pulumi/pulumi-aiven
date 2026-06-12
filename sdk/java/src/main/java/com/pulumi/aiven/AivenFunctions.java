@@ -34,6 +34,14 @@ import com.pulumi.aiven.inputs.GetClickhouseDatabasePlainArgs;
 import com.pulumi.aiven.inputs.GetClickhousePlainArgs;
 import com.pulumi.aiven.inputs.GetClickhouseUserArgs;
 import com.pulumi.aiven.inputs.GetClickhouseUserPlainArgs;
+import com.pulumi.aiven.inputs.GetCmkAccessorAwsArgs;
+import com.pulumi.aiven.inputs.GetCmkAccessorAwsPlainArgs;
+import com.pulumi.aiven.inputs.GetCmkAccessorAzureArgs;
+import com.pulumi.aiven.inputs.GetCmkAccessorAzurePlainArgs;
+import com.pulumi.aiven.inputs.GetCmkAccessorGcpArgs;
+import com.pulumi.aiven.inputs.GetCmkAccessorGcpPlainArgs;
+import com.pulumi.aiven.inputs.GetCmkAccessorOciArgs;
+import com.pulumi.aiven.inputs.GetCmkAccessorOciPlainArgs;
 import com.pulumi.aiven.inputs.GetConnectionPoolArgs;
 import com.pulumi.aiven.inputs.GetConnectionPoolPlainArgs;
 import com.pulumi.aiven.inputs.GetDragonflyArgs;
@@ -169,6 +177,10 @@ import com.pulumi.aiven.outputs.GetBillingGroupResult;
 import com.pulumi.aiven.outputs.GetClickhouseDatabaseResult;
 import com.pulumi.aiven.outputs.GetClickhouseResult;
 import com.pulumi.aiven.outputs.GetClickhouseUserResult;
+import com.pulumi.aiven.outputs.GetCmkAccessorAwsResult;
+import com.pulumi.aiven.outputs.GetCmkAccessorAzureResult;
+import com.pulumi.aiven.outputs.GetCmkAccessorGcpResult;
+import com.pulumi.aiven.outputs.GetCmkAccessorOciResult;
 import com.pulumi.aiven.outputs.GetConnectionPoolResult;
 import com.pulumi.aiven.outputs.GetDragonflyResult;
 import com.pulumi.aiven.outputs.GetExternalIdentityResult;
@@ -1718,7 +1730,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invokeAsync("aiven:index/getAzureVpcPeeringConnection:getAzureVpcPeeringConnection", TypeShape.of(GetAzureVpcPeeringConnectionResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Gets information about a billing group.
+     * Gets information about a billing group. **Deprecated**: Use `aiven.OrganizationBillingGroup` instead. This data source will be removed in the next major release.
      * 
      * ## Example Usage
      * 
@@ -1758,7 +1770,7 @@ public final class AivenFunctions {
         return getBillingGroup(args, InvokeOptions.Empty);
     }
     /**
-     * Gets information about a billing group.
+     * Gets information about a billing group. **Deprecated**: Use `aiven.OrganizationBillingGroup` instead. This data source will be removed in the next major release.
      * 
      * ## Example Usage
      * 
@@ -1798,7 +1810,7 @@ public final class AivenFunctions {
         return getBillingGroupPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Gets information about a billing group.
+     * Gets information about a billing group. **Deprecated**: Use `aiven.OrganizationBillingGroup` instead. This data source will be removed in the next major release.
      * 
      * ## Example Usage
      * 
@@ -1838,7 +1850,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invoke("aiven:index/getBillingGroup:getBillingGroup", TypeShape.of(GetBillingGroupResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Gets information about a billing group.
+     * Gets information about a billing group. **Deprecated**: Use `aiven.OrganizationBillingGroup` instead. This data source will be removed in the next major release.
      * 
      * ## Example Usage
      * 
@@ -1878,7 +1890,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invoke("aiven:index/getBillingGroup:getBillingGroup", TypeShape.of(GetBillingGroupResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Gets information about a billing group.
+     * Gets information about a billing group. **Deprecated**: Use `aiven.OrganizationBillingGroup` instead. This data source will be removed in the next major release.
      * 
      * ## Example Usage
      * 
@@ -2541,6 +2553,806 @@ public final class AivenFunctions {
      */
     public static CompletableFuture<GetClickhouseUserResult> getClickhouseUserPlain(GetClickhouseUserPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getClickhouseUser:getClickhouseUser", TypeShape.of(GetClickhouseUserResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets the AWS CMK accessor for an Aiven project. The accessor is used to authenticate Aiven to your AWS Key Management Service (KMS).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetCmkAccessorAwsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getCmkAccessorAws(GetCmkAccessorAwsArgs.builder()
+     *             .project("my-project")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetCmkAccessorAwsResult> getCmkAccessorAws(GetCmkAccessorAwsArgs args) {
+        return getCmkAccessorAws(args, InvokeOptions.Empty);
+    }
+    /**
+     * Gets the AWS CMK accessor for an Aiven project. The accessor is used to authenticate Aiven to your AWS Key Management Service (KMS).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetCmkAccessorAwsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getCmkAccessorAws(GetCmkAccessorAwsArgs.builder()
+     *             .project("my-project")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetCmkAccessorAwsResult> getCmkAccessorAwsPlain(GetCmkAccessorAwsPlainArgs args) {
+        return getCmkAccessorAwsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Gets the AWS CMK accessor for an Aiven project. The accessor is used to authenticate Aiven to your AWS Key Management Service (KMS).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetCmkAccessorAwsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getCmkAccessorAws(GetCmkAccessorAwsArgs.builder()
+     *             .project("my-project")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetCmkAccessorAwsResult> getCmkAccessorAws(GetCmkAccessorAwsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getCmkAccessorAws:getCmkAccessorAws", TypeShape.of(GetCmkAccessorAwsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets the AWS CMK accessor for an Aiven project. The accessor is used to authenticate Aiven to your AWS Key Management Service (KMS).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetCmkAccessorAwsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getCmkAccessorAws(GetCmkAccessorAwsArgs.builder()
+     *             .project("my-project")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetCmkAccessorAwsResult> getCmkAccessorAws(GetCmkAccessorAwsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getCmkAccessorAws:getCmkAccessorAws", TypeShape.of(GetCmkAccessorAwsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets the AWS CMK accessor for an Aiven project. The accessor is used to authenticate Aiven to your AWS Key Management Service (KMS).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetCmkAccessorAwsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getCmkAccessorAws(GetCmkAccessorAwsArgs.builder()
+     *             .project("my-project")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetCmkAccessorAwsResult> getCmkAccessorAwsPlain(GetCmkAccessorAwsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("aiven:index/getCmkAccessorAws:getCmkAccessorAws", TypeShape.of(GetCmkAccessorAwsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets the Azure CMK accessor for an Aiven project. The accessor is used to authenticate Aiven to your Azure Key Vault.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetCmkAccessorAzureArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getCmkAccessorAzure(GetCmkAccessorAzureArgs.builder()
+     *             .project("my-project")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetCmkAccessorAzureResult> getCmkAccessorAzure(GetCmkAccessorAzureArgs args) {
+        return getCmkAccessorAzure(args, InvokeOptions.Empty);
+    }
+    /**
+     * Gets the Azure CMK accessor for an Aiven project. The accessor is used to authenticate Aiven to your Azure Key Vault.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetCmkAccessorAzureArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getCmkAccessorAzure(GetCmkAccessorAzureArgs.builder()
+     *             .project("my-project")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetCmkAccessorAzureResult> getCmkAccessorAzurePlain(GetCmkAccessorAzurePlainArgs args) {
+        return getCmkAccessorAzurePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Gets the Azure CMK accessor for an Aiven project. The accessor is used to authenticate Aiven to your Azure Key Vault.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetCmkAccessorAzureArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getCmkAccessorAzure(GetCmkAccessorAzureArgs.builder()
+     *             .project("my-project")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetCmkAccessorAzureResult> getCmkAccessorAzure(GetCmkAccessorAzureArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getCmkAccessorAzure:getCmkAccessorAzure", TypeShape.of(GetCmkAccessorAzureResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets the Azure CMK accessor for an Aiven project. The accessor is used to authenticate Aiven to your Azure Key Vault.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetCmkAccessorAzureArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getCmkAccessorAzure(GetCmkAccessorAzureArgs.builder()
+     *             .project("my-project")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetCmkAccessorAzureResult> getCmkAccessorAzure(GetCmkAccessorAzureArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getCmkAccessorAzure:getCmkAccessorAzure", TypeShape.of(GetCmkAccessorAzureResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets the Azure CMK accessor for an Aiven project. The accessor is used to authenticate Aiven to your Azure Key Vault.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetCmkAccessorAzureArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getCmkAccessorAzure(GetCmkAccessorAzureArgs.builder()
+     *             .project("my-project")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetCmkAccessorAzureResult> getCmkAccessorAzurePlain(GetCmkAccessorAzurePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("aiven:index/getCmkAccessorAzure:getCmkAccessorAzure", TypeShape.of(GetCmkAccessorAzureResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets the GCP CMK accessor for an Aiven project. The accessor is used to authenticate Aiven to your Google Cloud Key Management Service (KMS).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetCmkAccessorGcpArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getCmkAccessorGcp(GetCmkAccessorGcpArgs.builder()
+     *             .project("my-project")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetCmkAccessorGcpResult> getCmkAccessorGcp(GetCmkAccessorGcpArgs args) {
+        return getCmkAccessorGcp(args, InvokeOptions.Empty);
+    }
+    /**
+     * Gets the GCP CMK accessor for an Aiven project. The accessor is used to authenticate Aiven to your Google Cloud Key Management Service (KMS).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetCmkAccessorGcpArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getCmkAccessorGcp(GetCmkAccessorGcpArgs.builder()
+     *             .project("my-project")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetCmkAccessorGcpResult> getCmkAccessorGcpPlain(GetCmkAccessorGcpPlainArgs args) {
+        return getCmkAccessorGcpPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Gets the GCP CMK accessor for an Aiven project. The accessor is used to authenticate Aiven to your Google Cloud Key Management Service (KMS).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetCmkAccessorGcpArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getCmkAccessorGcp(GetCmkAccessorGcpArgs.builder()
+     *             .project("my-project")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetCmkAccessorGcpResult> getCmkAccessorGcp(GetCmkAccessorGcpArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getCmkAccessorGcp:getCmkAccessorGcp", TypeShape.of(GetCmkAccessorGcpResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets the GCP CMK accessor for an Aiven project. The accessor is used to authenticate Aiven to your Google Cloud Key Management Service (KMS).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetCmkAccessorGcpArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getCmkAccessorGcp(GetCmkAccessorGcpArgs.builder()
+     *             .project("my-project")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetCmkAccessorGcpResult> getCmkAccessorGcp(GetCmkAccessorGcpArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getCmkAccessorGcp:getCmkAccessorGcp", TypeShape.of(GetCmkAccessorGcpResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets the GCP CMK accessor for an Aiven project. The accessor is used to authenticate Aiven to your Google Cloud Key Management Service (KMS).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetCmkAccessorGcpArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getCmkAccessorGcp(GetCmkAccessorGcpArgs.builder()
+     *             .project("my-project")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetCmkAccessorGcpResult> getCmkAccessorGcpPlain(GetCmkAccessorGcpPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("aiven:index/getCmkAccessorGcp:getCmkAccessorGcp", TypeShape.of(GetCmkAccessorGcpResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets the OCI CMK accessor for an Aiven project. The accessor is used to authenticate Aiven to your Oracle Cloud Infrastructure (OCI) Vault.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetCmkAccessorOciArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getCmkAccessorOci(GetCmkAccessorOciArgs.builder()
+     *             .project("my-project")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetCmkAccessorOciResult> getCmkAccessorOci(GetCmkAccessorOciArgs args) {
+        return getCmkAccessorOci(args, InvokeOptions.Empty);
+    }
+    /**
+     * Gets the OCI CMK accessor for an Aiven project. The accessor is used to authenticate Aiven to your Oracle Cloud Infrastructure (OCI) Vault.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetCmkAccessorOciArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getCmkAccessorOci(GetCmkAccessorOciArgs.builder()
+     *             .project("my-project")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetCmkAccessorOciResult> getCmkAccessorOciPlain(GetCmkAccessorOciPlainArgs args) {
+        return getCmkAccessorOciPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Gets the OCI CMK accessor for an Aiven project. The accessor is used to authenticate Aiven to your Oracle Cloud Infrastructure (OCI) Vault.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetCmkAccessorOciArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getCmkAccessorOci(GetCmkAccessorOciArgs.builder()
+     *             .project("my-project")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetCmkAccessorOciResult> getCmkAccessorOci(GetCmkAccessorOciArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getCmkAccessorOci:getCmkAccessorOci", TypeShape.of(GetCmkAccessorOciResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets the OCI CMK accessor for an Aiven project. The accessor is used to authenticate Aiven to your Oracle Cloud Infrastructure (OCI) Vault.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetCmkAccessorOciArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getCmkAccessorOci(GetCmkAccessorOciArgs.builder()
+     *             .project("my-project")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetCmkAccessorOciResult> getCmkAccessorOci(GetCmkAccessorOciArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getCmkAccessorOci:getCmkAccessorOci", TypeShape.of(GetCmkAccessorOciResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets the OCI CMK accessor for an Aiven project. The accessor is used to authenticate Aiven to your Oracle Cloud Infrastructure (OCI) Vault.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetCmkAccessorOciArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getCmkAccessorOci(GetCmkAccessorOciArgs.builder()
+     *             .project("my-project")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetCmkAccessorOciResult> getCmkAccessorOciPlain(GetCmkAccessorOciPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("aiven:index/getCmkAccessorOci:getCmkAccessorOci", TypeShape.of(GetCmkAccessorOciResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Gets information about a connection pool in an Aiven for PostgreSQL® service.
@@ -8765,9 +9577,6 @@ public final class AivenFunctions {
     /**
      * Gets information about an organization address.
      * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
-     * 
      * ## Example Usage
      * 
      * <pre>
@@ -8808,9 +9617,6 @@ public final class AivenFunctions {
     }
     /**
      * Gets information about an organization address.
-     * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
      * 
      * ## Example Usage
      * 
@@ -8853,9 +9659,6 @@ public final class AivenFunctions {
     /**
      * Gets information about an organization address.
      * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
-     * 
      * ## Example Usage
      * 
      * <pre>
@@ -8897,9 +9700,6 @@ public final class AivenFunctions {
     /**
      * Gets information about an organization address.
      * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
-     * 
      * ## Example Usage
      * 
      * <pre>
@@ -8940,9 +9740,6 @@ public final class AivenFunctions {
     }
     /**
      * Gets information about an organization address.
-     * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
      * 
      * ## Example Usage
      * 
@@ -9020,9 +9817,6 @@ public final class AivenFunctions {
     /**
      * Gets information about a billing group.
      * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
-     * 
      * ## Example Usage
      * 
      * <pre>
@@ -9063,9 +9857,6 @@ public final class AivenFunctions {
     }
     /**
      * Gets information about a billing group.
-     * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
      * 
      * ## Example Usage
      * 
@@ -9108,9 +9899,6 @@ public final class AivenFunctions {
     /**
      * Gets information about a billing group.
      * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
-     * 
      * ## Example Usage
      * 
      * <pre>
@@ -9151,9 +9939,6 @@ public final class AivenFunctions {
     }
     /**
      * Gets information about a billing group.
-     * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
      * 
      * ## Example Usage
      * 
@@ -9196,9 +9981,6 @@ public final class AivenFunctions {
     /**
      * Gets information about a billing group.
      * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
-     * 
      * ## Example Usage
      * 
      * <pre>
@@ -9240,9 +10022,6 @@ public final class AivenFunctions {
     /**
      * Lists billing groups for an organization.
      * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
-     * 
      * ## Example Usage
      * 
      * <pre>
@@ -9282,9 +10061,6 @@ public final class AivenFunctions {
     }
     /**
      * Lists billing groups for an organization.
-     * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
      * 
      * ## Example Usage
      * 
@@ -9326,9 +10102,6 @@ public final class AivenFunctions {
     /**
      * Lists billing groups for an organization.
      * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
-     * 
      * ## Example Usage
      * 
      * <pre>
@@ -9368,9 +10141,6 @@ public final class AivenFunctions {
     }
     /**
      * Lists billing groups for an organization.
-     * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
      * 
      * ## Example Usage
      * 
@@ -9412,9 +10182,6 @@ public final class AivenFunctions {
     /**
      * Lists billing groups for an organization.
      * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
-     * 
      * ## Example Usage
      * 
      * <pre>
@@ -9454,9 +10221,6 @@ public final class AivenFunctions {
     }
     /**
      * Lists payment methods for an organization.
-     * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
      * 
      * ## Example Usage
      * 
@@ -9498,9 +10262,6 @@ public final class AivenFunctions {
     /**
      * Lists payment methods for an organization.
      * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
-     * 
      * ## Example Usage
      * 
      * <pre>
@@ -9540,9 +10301,6 @@ public final class AivenFunctions {
     }
     /**
      * Lists payment methods for an organization.
-     * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
      * 
      * ## Example Usage
      * 
@@ -9584,9 +10342,6 @@ public final class AivenFunctions {
     /**
      * Lists payment methods for an organization.
      * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
-     * 
      * ## Example Usage
      * 
      * <pre>
@@ -9626,9 +10381,6 @@ public final class AivenFunctions {
     }
     /**
      * Lists payment methods for an organization.
-     * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
      * 
      * ## Example Usage
      * 
@@ -12244,9 +12996,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleVpc = AivenFunctions.getProjectVpc(GetProjectVpcArgs.builder()
-     *             .project(exampleProject.project())
-     *             .cloudName("google-europe-west1")
+     *         final var example = AivenFunctions.getProjectVpc(GetProjectVpcArgs.builder()
+     *             .project("my-project")
+     *             .projectVpcId("1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d")
      *             .build());
      * 
      *     }
@@ -12285,9 +13037,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleVpc = AivenFunctions.getProjectVpc(GetProjectVpcArgs.builder()
-     *             .project(exampleProject.project())
-     *             .cloudName("google-europe-west1")
+     *         final var example = AivenFunctions.getProjectVpc(GetProjectVpcArgs.builder()
+     *             .project("my-project")
+     *             .projectVpcId("1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d")
      *             .build());
      * 
      *     }
@@ -12326,9 +13078,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleVpc = AivenFunctions.getProjectVpc(GetProjectVpcArgs.builder()
-     *             .project(exampleProject.project())
-     *             .cloudName("google-europe-west1")
+     *         final var example = AivenFunctions.getProjectVpc(GetProjectVpcArgs.builder()
+     *             .project("my-project")
+     *             .projectVpcId("1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d")
      *             .build());
      * 
      *     }
@@ -12367,9 +13119,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleVpc = AivenFunctions.getProjectVpc(GetProjectVpcArgs.builder()
-     *             .project(exampleProject.project())
-     *             .cloudName("google-europe-west1")
+     *         final var example = AivenFunctions.getProjectVpc(GetProjectVpcArgs.builder()
+     *             .project("my-project")
+     *             .projectVpcId("1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d")
      *             .build());
      * 
      *     }
@@ -12408,9 +13160,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleVpc = AivenFunctions.getProjectVpc(GetProjectVpcArgs.builder()
-     *             .project(exampleProject.project())
-     *             .cloudName("google-europe-west1")
+     *         final var example = AivenFunctions.getProjectVpc(GetProjectVpcArgs.builder()
+     *             .project("my-project")
+     *             .projectVpcId("1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d")
      *             .build());
      * 
      *     }
@@ -12449,9 +13201,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleVpc = AivenFunctions.getProjectVpc(GetProjectVpcArgs.builder()
-     *             .project(exampleProject.project())
-     *             .cloudName("google-europe-west1")
+     *         final var example = AivenFunctions.getProjectVpc(GetProjectVpcArgs.builder()
+     *             .project("my-project")
+     *             .projectVpcId("1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d")
      *             .build());
      * 
      *     }
@@ -12490,9 +13242,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleVpc = AivenFunctions.getProjectVpc(GetProjectVpcArgs.builder()
-     *             .project(exampleProject.project())
-     *             .cloudName("google-europe-west1")
+     *         final var example = AivenFunctions.getProjectVpc(GetProjectVpcArgs.builder()
+     *             .project("my-project")
+     *             .projectVpcId("1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d")
      *             .build());
      * 
      *     }

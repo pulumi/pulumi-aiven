@@ -55,6 +55,12 @@ namespace Pulumi.Aiven.Inputs
         public string BillingGroupName { get; set; } = null!;
 
         /// <summary>
+        /// The date when this billing group was created.
+        /// </summary>
+        [Input("createTime", required: true)]
+        public string CreateTime { get; set; } = null!;
+
+        /// <summary>
         /// Extra billing text.
         /// </summary>
         [Input("customInvoiceText", required: true)]

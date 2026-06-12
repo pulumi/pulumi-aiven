@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Creates and manages [billing groups](https://aiven.io/docs/platform/concepts/billing-groups) and assigns them to projects.
+ * Creates and manages [billing groups](https://aiven.io/docs/platform/concepts/billing-groups) and assigns them to projects. **Deprecated**: Use `aiven.OrganizationBillingGroup` instead. This resource will be removed in the next major release.
  *
  * ## Example Usage
  *
@@ -103,11 +103,11 @@ export class BillingGroup extends pulumi.CustomResource {
      */
     declare public readonly cardId: pulumi.Output<string | undefined>;
     /**
-     * Address city. Maximum length: `512`.
+     * Address city. Maximum length: `50`.
      */
     declare public readonly city: pulumi.Output<string>;
     /**
-     * Name of a company. Maximum length: `128`.
+     * Name of a company. Maximum length: `83`.
      */
     declare public readonly company: pulumi.Output<string>;
     /**
@@ -127,7 +127,7 @@ export class BillingGroup extends pulumi.CustomResource {
      */
     declare public readonly parentId: pulumi.Output<string>;
     /**
-     * Address state or province. Maximum length: `128`.
+     * Address state or province. Maximum length: `30`.
      */
     declare public readonly state: pulumi.Output<string | undefined>;
     declare public readonly timeouts: pulumi.Output<outputs.BillingGroupTimeouts | undefined>;
@@ -136,7 +136,7 @@ export class BillingGroup extends pulumi.CustomResource {
      */
     declare public readonly vatId: pulumi.Output<string>;
     /**
-     * Address zip code. Maximum length: `32`.
+     * Address zip code. Maximum length: `36`.
      */
     declare public readonly zipCode: pulumi.Output<string | undefined>;
 
@@ -239,11 +239,11 @@ export interface BillingGroupState {
      */
     cardId?: pulumi.Input<string | undefined>;
     /**
-     * Address city. Maximum length: `512`.
+     * Address city. Maximum length: `50`.
      */
     city?: pulumi.Input<string | undefined>;
     /**
-     * Name of a company. Maximum length: `128`.
+     * Name of a company. Maximum length: `83`.
      */
     company?: pulumi.Input<string | undefined>;
     /**
@@ -263,7 +263,7 @@ export interface BillingGroupState {
      */
     parentId?: pulumi.Input<string | undefined>;
     /**
-     * Address state or province. Maximum length: `128`.
+     * Address state or province. Maximum length: `30`.
      */
     state?: pulumi.Input<string | undefined>;
     timeouts?: pulumi.Input<inputs.BillingGroupTimeouts | undefined>;
@@ -272,7 +272,7 @@ export interface BillingGroupState {
      */
     vatId?: pulumi.Input<string | undefined>;
     /**
-     * Address zip code. Maximum length: `32`.
+     * Address zip code. Maximum length: `36`.
      */
     zipCode?: pulumi.Input<string | undefined>;
 }
@@ -312,11 +312,11 @@ export interface BillingGroupArgs {
      */
     cardId?: pulumi.Input<string | undefined>;
     /**
-     * Address city. Maximum length: `512`.
+     * Address city. Maximum length: `50`.
      */
     city?: pulumi.Input<string | undefined>;
     /**
-     * Name of a company. Maximum length: `128`.
+     * Name of a company. Maximum length: `83`.
      */
     company?: pulumi.Input<string | undefined>;
     /**
@@ -336,7 +336,7 @@ export interface BillingGroupArgs {
      */
     parentId: pulumi.Input<string>;
     /**
-     * Address state or province. Maximum length: `128`.
+     * Address state or province. Maximum length: `30`.
      */
     state?: pulumi.Input<string | undefined>;
     timeouts?: pulumi.Input<inputs.BillingGroupTimeouts | undefined>;
@@ -345,7 +345,7 @@ export interface BillingGroupArgs {
      */
     vatId?: pulumi.Input<string | undefined>;
     /**
-     * Address zip code. Maximum length: `32`.
+     * Address zip code. Maximum length: `36`.
      */
     zipCode?: pulumi.Input<string | undefined>;
 }

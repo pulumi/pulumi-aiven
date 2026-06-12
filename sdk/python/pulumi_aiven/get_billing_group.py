@@ -269,7 +269,7 @@ def get_billing_group(billing_group_id: Optional[_builtins.str] = None,
                       timeouts: Optional[Union['GetBillingGroupTimeoutsArgs', 'GetBillingGroupTimeoutsArgsDict']] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetBillingGroupResult:
     """
-    Gets information about a billing group.
+    Gets information about a billing group. **Deprecated**: Use `OrganizationBillingGroup` instead. This data source will be removed in the next major release.
 
     ## Example Usage
 
@@ -313,7 +313,7 @@ def get_billing_group_output(billing_group_id: pulumi.Input[Optional[_builtins.s
                              timeouts: pulumi.Input[Optional[Optional[Union['GetBillingGroupTimeoutsArgs', 'GetBillingGroupTimeoutsArgsDict']]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBillingGroupResult]:
     """
-    Gets information about a billing group.
+    Gets information about a billing group. **Deprecated**: Use `OrganizationBillingGroup` instead. This data source will be removed in the next major release.
 
     ## Example Usage
 

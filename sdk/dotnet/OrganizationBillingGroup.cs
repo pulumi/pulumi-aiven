@@ -12,9 +12,6 @@ namespace Pulumi.Aiven
     /// <summary>
     /// Creates and manages an organization billing group.
     /// 
-    /// **This resource is in the beta stage and may change without notice.** Set
-    /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -95,6 +92,12 @@ namespace Pulumi.Aiven
         /// </summary>
         [Output("billingGroupName")]
         public Output<string> BillingGroupName { get; private set; } = null!;
+
+        /// <summary>
+        /// The date when this billing group was created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
         /// Extra billing text. Maximum length: `256`.
@@ -293,6 +296,12 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("billingGroupName")]
         public Input<string>? BillingGroupName { get; set; }
+
+        /// <summary>
+        /// The date when this billing group was created.
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
 
         /// <summary>
         /// Extra billing text. Maximum length: `256`.

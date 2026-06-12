@@ -145,6 +145,11 @@ public final class GetMySqlMysqlUserConfigMysql {
      */
     private @Nullable Integer netWriteTimeout;
     /**
+     * @return The number of rows per thread in the eventsStatementsHistory table. Changing this parameter will lead to a restart of the MySQL service.
+     * 
+     */
+    private @Nullable Integer performanceSchemaEventsStatementsHistorySize;
+    /**
      * @return Slow query log enables capturing of slow queries. Setting slowQueryLog to false also truncates the mysql.slow_log table.
      * 
      */
@@ -359,6 +364,13 @@ public final class GetMySqlMysqlUserConfigMysql {
         return Optional.ofNullable(this.netWriteTimeout);
     }
     /**
+     * @return The number of rows per thread in the eventsStatementsHistory table. Changing this parameter will lead to a restart of the MySQL service.
+     * 
+     */
+    public Optional<Integer> performanceSchemaEventsStatementsHistorySize() {
+        return Optional.ofNullable(this.performanceSchemaEventsStatementsHistorySize);
+    }
+    /**
      * @return Slow query log enables capturing of slow queries. Setting slowQueryLog to false also truncates the mysql.slow_log table.
      * 
      */
@@ -436,6 +448,7 @@ public final class GetMySqlMysqlUserConfigMysql {
         private @Nullable Integer netBufferLength;
         private @Nullable Integer netReadTimeout;
         private @Nullable Integer netWriteTimeout;
+        private @Nullable Integer performanceSchemaEventsStatementsHistorySize;
         private @Nullable Boolean slowQueryLog;
         private @Nullable Integer sortBufferSize;
         private @Nullable String sqlMode;
@@ -471,6 +484,7 @@ public final class GetMySqlMysqlUserConfigMysql {
     	      this.netBufferLength = defaults.netBufferLength;
     	      this.netReadTimeout = defaults.netReadTimeout;
     	      this.netWriteTimeout = defaults.netWriteTimeout;
+    	      this.performanceSchemaEventsStatementsHistorySize = defaults.performanceSchemaEventsStatementsHistorySize;
     	      this.slowQueryLog = defaults.slowQueryLog;
     	      this.sortBufferSize = defaults.sortBufferSize;
     	      this.sqlMode = defaults.sqlMode;
@@ -636,6 +650,12 @@ public final class GetMySqlMysqlUserConfigMysql {
             return this;
         }
         @CustomType.Setter
+        public Builder performanceSchemaEventsStatementsHistorySize(@Nullable Integer performanceSchemaEventsStatementsHistorySize) {
+
+            this.performanceSchemaEventsStatementsHistorySize = performanceSchemaEventsStatementsHistorySize;
+            return this;
+        }
+        @CustomType.Setter
         public Builder slowQueryLog(@Nullable Boolean slowQueryLog) {
 
             this.slowQueryLog = slowQueryLog;
@@ -699,6 +719,7 @@ public final class GetMySqlMysqlUserConfigMysql {
             _resultValue.netBufferLength = netBufferLength;
             _resultValue.netReadTimeout = netReadTimeout;
             _resultValue.netWriteTimeout = netWriteTimeout;
+            _resultValue.performanceSchemaEventsStatementsHistorySize = performanceSchemaEventsStatementsHistorySize;
             _resultValue.slowQueryLog = slowQueryLog;
             _resultValue.sortBufferSize = sortBufferSize;
             _resultValue.sqlMode = sqlMode;

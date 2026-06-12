@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// Creates and manages [billing groups](https://aiven.io/docs/platform/concepts/billing-groups) and assigns them to projects.
+    /// Creates and manages [billing groups](https://aiven.io/docs/platform/concepts/billing-groups) and assigns them to projects. **Deprecated**: Use `aiven.OrganizationBillingGroup` instead. This resource will be removed in the next major release.
     /// 
     /// ## Example Usage
     /// 
@@ -111,13 +111,13 @@ namespace Pulumi.Aiven
         public Output<string?> CardId { get; private set; } = null!;
 
         /// <summary>
-        /// Address city. Maximum length: `512`.
+        /// Address city. Maximum length: `50`.
         /// </summary>
         [Output("city")]
         public Output<string> City { get; private set; } = null!;
 
         /// <summary>
-        /// Name of a company. Maximum length: `128`.
+        /// Name of a company. Maximum length: `83`.
         /// </summary>
         [Output("company")]
         public Output<string> Company { get; private set; } = null!;
@@ -147,7 +147,7 @@ namespace Pulumi.Aiven
         public Output<string> ParentId { get; private set; } = null!;
 
         /// <summary>
-        /// Address state or province. Maximum length: `128`.
+        /// Address state or province. Maximum length: `30`.
         /// </summary>
         [Output("state")]
         public Output<string?> State { get; private set; } = null!;
@@ -162,7 +162,7 @@ namespace Pulumi.Aiven
         public Output<string> VatId { get; private set; } = null!;
 
         /// <summary>
-        /// Address zip code. Maximum length: `32`.
+        /// Address zip code. Maximum length: `36`.
         /// </summary>
         [Output("zipCode")]
         public Output<string?> ZipCode { get; private set; } = null!;
@@ -274,13 +274,13 @@ namespace Pulumi.Aiven
         public Input<string>? CardId { get; set; }
 
         /// <summary>
-        /// Address city. Maximum length: `512`.
+        /// Address city. Maximum length: `50`.
         /// </summary>
         [Input("city")]
         public Input<string>? City { get; set; }
 
         /// <summary>
-        /// Name of a company. Maximum length: `128`.
+        /// Name of a company. Maximum length: `83`.
         /// </summary>
         [Input("company")]
         public Input<string>? Company { get; set; }
@@ -310,7 +310,7 @@ namespace Pulumi.Aiven
         public Input<string> ParentId { get; set; } = null!;
 
         /// <summary>
-        /// Address state or province. Maximum length: `128`.
+        /// Address state or province. Maximum length: `30`.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
@@ -325,7 +325,7 @@ namespace Pulumi.Aiven
         public Input<string>? VatId { get; set; }
 
         /// <summary>
-        /// Address zip code. Maximum length: `32`.
+        /// Address zip code. Maximum length: `36`.
         /// </summary>
         [Input("zipCode")]
         public Input<string>? ZipCode { get; set; }
@@ -405,13 +405,13 @@ namespace Pulumi.Aiven
         public Input<string>? CardId { get; set; }
 
         /// <summary>
-        /// Address city. Maximum length: `512`.
+        /// Address city. Maximum length: `50`.
         /// </summary>
         [Input("city")]
         public Input<string>? City { get; set; }
 
         /// <summary>
-        /// Name of a company. Maximum length: `128`.
+        /// Name of a company. Maximum length: `83`.
         /// </summary>
         [Input("company")]
         public Input<string>? Company { get; set; }
@@ -441,7 +441,7 @@ namespace Pulumi.Aiven
         public Input<string>? ParentId { get; set; }
 
         /// <summary>
-        /// Address state or province. Maximum length: `128`.
+        /// Address state or province. Maximum length: `30`.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
@@ -456,7 +456,7 @@ namespace Pulumi.Aiven
         public Input<string>? VatId { get; set; }
 
         /// <summary>
-        /// Address zip code. Maximum length: `32`.
+        /// Address zip code. Maximum length: `36`.
         /// </summary>
         [Input("zipCode")]
         public Input<string>? ZipCode { get; set; }

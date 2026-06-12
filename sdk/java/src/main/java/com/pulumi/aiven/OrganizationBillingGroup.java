@@ -22,9 +22,6 @@ import javax.annotation.Nullable;
 /**
  * Creates and manages an organization billing group.
  * 
- * **This resource is in the beta stage and may change without notice.** Set
- * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
- * 
  * ## Example Usage
  * 
  * <pre>
@@ -154,6 +151,20 @@ public class OrganizationBillingGroup extends com.pulumi.resources.CustomResourc
      */
     public Output<String> billingGroupName() {
         return this.billingGroupName;
+    }
+    /**
+     * The date when this billing group was created.
+     * 
+     */
+    @Export(name="createTime", refs={String.class}, tree="[0]")
+    private Output<String> createTime;
+
+    /**
+     * @return The date when this billing group was created.
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
     }
     /**
      * Extra billing text. Maximum length: `256`.

@@ -33,7 +33,6 @@ namespace Pulumi.Aiven
     ///         DeploymentModel = "standard",
     ///         DisplayName = "byoc-cloud-prod-eu-west-1",
     ///         ReservedCidr = "192.168.6.0/24",
-    ///         AwsIamRoleArn = "arn:aws:iam::012345678901:root",
     ///         ContactEmails = new[]
     ///         {
     ///             new Aiven.Inputs.ByocAwsEntityContactEmailArgs
@@ -98,12 +97,6 @@ namespace Pulumi.Aiven
         public Output<string> AivenObjectStorageCredentialsCreatorUser { get; private set; } = null!;
 
         /// <summary>
-        /// Amazon Resource Name. Maximum length: `2048`.
-        /// </summary>
-        [Output("awsIamRoleArn")]
-        public Output<string?> AwsIamRoleArn { get; private set; } = null!;
-
-        /// <summary>
         /// Subnets to build in the bastion VPC.
         /// </summary>
         [Output("awsSubnetsBastion")]
@@ -158,12 +151,6 @@ namespace Pulumi.Aiven
         public Output<string> CustomCloudEnvironmentId { get; private set; } = null!;
 
         /// <summary>
-        /// Cloud names that can be used to provision a service on this BYOC.
-        /// </summary>
-        [Output("customCloudNames")]
-        public Output<ImmutableArray<string>> CustomCloudNames { get; private set; } = null!;
-
-        /// <summary>
         /// Deployment model for the BYOC cloud. The possible values are `DirectIpsecIngress`, `Hipaa`, `IpsecIngress`, `PciDss`, `Standard` and `StandardPublic`. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("deploymentModel")]
@@ -174,12 +161,6 @@ namespace Pulumi.Aiven
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
-
-        /// <summary>
-        /// List of errors for this custom cloud environment.
-        /// </summary>
-        [Output("errors")]
-        public Output<ImmutableArray<Outputs.ByocAwsEntityError>> Errors { get; private set; } = null!;
 
         /// <summary>
         /// ID of an organization. Changing this property forces recreation of the resource.
@@ -194,12 +175,6 @@ namespace Pulumi.Aiven
         public Output<string> ReservedCidr { get; private set; } = null!;
 
         /// <summary>
-        /// State of this BYOC cloud. The possible values are `Active`, `Creating`, `CreationFailed`, `Deleted`, `Deleting`, `DeletionFailed`, `Disconnected`, `Draft`, `Reconnecting` and `Validating`.
-        /// </summary>
-        [Output("state")]
-        public Output<string> State { get; private set; } = null!;
-
-        /// <summary>
         /// Set of resource tags.
         /// </summary>
         [Output("tags")]
@@ -207,12 +182,6 @@ namespace Pulumi.Aiven
 
         [Output("timeouts")]
         public Output<Outputs.ByocAwsEntityTimeouts?> Timeouts { get; private set; } = null!;
-
-        /// <summary>
-        /// Custom cloud environment last update timestamp (ISO 8601).
-        /// </summary>
-        [Output("updateTime")]
-        public Output<string> UpdateTime { get; private set; } = null!;
 
         /// <summary>
         /// True if this BYOC cloud is using customer owned storage.
@@ -267,12 +236,6 @@ namespace Pulumi.Aiven
     public sealed class ByocAwsEntityArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Amazon Resource Name. Maximum length: `2048`.
-        /// </summary>
-        [Input("awsIamRoleArn")]
-        public Input<string>? AwsIamRoleArn { get; set; }
-
-        /// <summary>
         /// Cloud provider for the BYOC cloud. The possible values are `Aws`, `Azure`, `Google` and `Oracle`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("cloudProvider", required: true)]
@@ -307,18 +270,6 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("displayName", required: true)]
         public Input<string> DisplayName { get; set; } = null!;
-
-        [Input("errors")]
-        private InputList<Inputs.ByocAwsEntityErrorArgs>? _errors;
-
-        /// <summary>
-        /// List of errors for this custom cloud environment.
-        /// </summary>
-        public InputList<Inputs.ByocAwsEntityErrorArgs> Errors
-        {
-            get => _errors ?? (_errors = new InputList<Inputs.ByocAwsEntityErrorArgs>());
-            set => _errors = value;
-        }
 
         /// <summary>
         /// ID of an organization. Changing this property forces recreation of the resource.
@@ -396,12 +347,6 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("aivenObjectStorageCredentialsCreatorUser")]
         public Input<string>? AivenObjectStorageCredentialsCreatorUser { get; set; }
-
-        /// <summary>
-        /// Amazon Resource Name. Maximum length: `2048`.
-        /// </summary>
-        [Input("awsIamRoleArn")]
-        public Input<string>? AwsIamRoleArn { get; set; }
 
         [Input("awsSubnetsBastion")]
         private InputMap<string>? _awsSubnetsBastion;
@@ -487,18 +432,6 @@ namespace Pulumi.Aiven
         [Input("customCloudEnvironmentId")]
         public Input<string>? CustomCloudEnvironmentId { get; set; }
 
-        [Input("customCloudNames")]
-        private InputList<string>? _customCloudNames;
-
-        /// <summary>
-        /// Cloud names that can be used to provision a service on this BYOC.
-        /// </summary>
-        public InputList<string> CustomCloudNames
-        {
-            get => _customCloudNames ?? (_customCloudNames = new InputList<string>());
-            set => _customCloudNames = value;
-        }
-
         /// <summary>
         /// Deployment model for the BYOC cloud. The possible values are `DirectIpsecIngress`, `Hipaa`, `IpsecIngress`, `PciDss`, `Standard` and `StandardPublic`. Changing this property forces recreation of the resource.
         /// </summary>
@@ -511,18 +444,6 @@ namespace Pulumi.Aiven
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
-        [Input("errors")]
-        private InputList<Inputs.ByocAwsEntityErrorGetArgs>? _errors;
-
-        /// <summary>
-        /// List of errors for this custom cloud environment.
-        /// </summary>
-        public InputList<Inputs.ByocAwsEntityErrorGetArgs> Errors
-        {
-            get => _errors ?? (_errors = new InputList<Inputs.ByocAwsEntityErrorGetArgs>());
-            set => _errors = value;
-        }
-
         /// <summary>
         /// ID of an organization. Changing this property forces recreation of the resource.
         /// </summary>
@@ -534,12 +455,6 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("reservedCidr")]
         public Input<string>? ReservedCidr { get; set; }
-
-        /// <summary>
-        /// State of this BYOC cloud. The possible values are `Active`, `Creating`, `CreationFailed`, `Deleted`, `Deleting`, `DeletionFailed`, `Disconnected`, `Draft`, `Reconnecting` and `Validating`.
-        /// </summary>
-        [Input("state")]
-        public Input<string>? State { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
@@ -555,12 +470,6 @@ namespace Pulumi.Aiven
 
         [Input("timeouts")]
         public Input<Inputs.ByocAwsEntityTimeoutsGetArgs>? Timeouts { get; set; }
-
-        /// <summary>
-        /// Custom cloud environment last update timestamp (ISO 8601).
-        /// </summary>
-        [Input("updateTime")]
-        public Input<string>? UpdateTime { get; set; }
 
         /// <summary>
         /// True if this BYOC cloud is using customer owned storage.

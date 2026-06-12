@@ -9,9 +9,6 @@ import * as utilities from "./utilities";
 /**
  * Creates and manages an organization billing group.
  *
- * **This resource is in the beta stage and may change without notice.** Set
- * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
- *
  * ## Example Usage
  *
  * ```typescript
@@ -93,6 +90,10 @@ export class OrganizationBillingGroup extends pulumi.CustomResource {
      */
     declare public readonly billingGroupName: pulumi.Output<string>;
     /**
+     * The date when this billing group was created.
+     */
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
+    /**
      * Extra billing text. Maximum length: `256`.
      */
     declare public readonly customInvoiceText: pulumi.Output<string | undefined>;
@@ -132,6 +133,7 @@ export class OrganizationBillingGroup extends pulumi.CustomResource {
             resourceInputs["billingEmails"] = state?.billingEmails;
             resourceInputs["billingGroupId"] = state?.billingGroupId;
             resourceInputs["billingGroupName"] = state?.billingGroupName;
+            resourceInputs["createTime"] = state?.createTime;
             resourceInputs["customInvoiceText"] = state?.customInvoiceText;
             resourceInputs["organizationId"] = state?.organizationId;
             resourceInputs["paymentMethod"] = state?.paymentMethod;
@@ -172,6 +174,7 @@ export class OrganizationBillingGroup extends pulumi.CustomResource {
             resourceInputs["timeouts"] = args?.timeouts;
             resourceInputs["vatId"] = args?.vatId;
             resourceInputs["billingGroupId"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(OrganizationBillingGroup.__pulumiType, name, resourceInputs, opts);
@@ -202,6 +205,10 @@ export interface OrganizationBillingGroupState {
      * Billing Group Name. Length must be between `1` and `128`.
      */
     billingGroupName?: pulumi.Input<string | undefined>;
+    /**
+     * The date when this billing group was created.
+     */
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Extra billing text. Maximum length: `256`.
      */

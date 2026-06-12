@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetProjectVpcResult',
@@ -26,7 +28,7 @@ class GetProjectVpcResult:
     """
     A collection of values returned by getProjectVpc.
     """
-    def __init__(__self__, cloud_name=None, id=None, network_cidr=None, project=None, state=None, vpc_id=None):
+    def __init__(__self__, cloud_name=None, id=None, network_cidr=None, project=None, project_vpc_id=None, state=None, timeouts=None, vpc_id=None):
         if cloud_name and not isinstance(cloud_name, str):
             raise TypeError("Expected argument 'cloud_name' to be a str")
         pulumi.set(__self__, "cloud_name", cloud_name)
@@ -39,18 +41,24 @@ class GetProjectVpcResult:
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
+        if project_vpc_id and not isinstance(project_vpc_id, str):
+            raise TypeError("Expected argument 'project_vpc_id' to be a str")
+        pulumi.set(__self__, "project_vpc_id", project_vpc_id)
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
+        if timeouts and not isinstance(timeouts, dict):
+            raise TypeError("Expected argument 'timeouts' to be a dict")
+        pulumi.set(__self__, "timeouts", timeouts)
         if vpc_id and not isinstance(vpc_id, str):
             raise TypeError("Expected argument 'vpc_id' to be a str")
         pulumi.set(__self__, "vpc_id", vpc_id)
 
     @_builtins.property
     @pulumi.getter(name="cloudName")
-    def cloud_name(self) -> Optional[_builtins.str]:
+    def cloud_name(self) -> _builtins.str:
         """
-        The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`.
+        Target cloud. The field is required with `project`. Exactly one of the fields must be specified: `project_vpc_id`, `cloud_name` or `vpc_id`.
         """
         return pulumi.get(self, "cloud_name")
 
@@ -58,7 +66,7 @@ class GetProjectVpcResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The provider-assigned unique ID for this managed resource.
+        Resource ID composed as: `project/project_vpc_id`.
         """
         return pulumi.get(self, "id")
 
@@ -66,31 +74,45 @@ class GetProjectVpcResult:
     @pulumi.getter(name="networkCidr")
     def network_cidr(self) -> _builtins.str:
         """
-        Network address range used by the VPC. For example, `192.168.0.0/24`.
+        IPv4 network range CIDR.
         """
         return pulumi.get(self, "network_cidr")
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[_builtins.str]:
+    def project(self) -> _builtins.str:
         """
-        Identifies the project this resource belongs to.
+        Project name.
         """
         return pulumi.get(self, "project")
+
+    @_builtins.property
+    @pulumi.getter(name="projectVpcId")
+    def project_vpc_id(self) -> _builtins.str:
+        """
+        Project VPC ID. The field is required with `project`. Exactly one of the fields must be specified: `project_vpc_id`, `cloud_name` or `vpc_id`.
+        """
+        return pulumi.get(self, "project_vpc_id")
 
     @_builtins.property
     @pulumi.getter
     def state(self) -> _builtins.str:
         """
-        State of the VPC. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
+        Project VPC state. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
         """
         return pulumi.get(self, "state")
 
     @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> Optional['outputs.GetProjectVpcTimeoutsResult']:
+        return pulumi.get(self, "timeouts")
+
+    @_builtins.property
     @pulumi.getter(name="vpcId")
+    @_utilities.deprecated("""This attribute is deprecated and will be removed in a future version. Use `project_vpc_id` instead.""")
     def vpc_id(self) -> Optional[_builtins.str]:
         """
-        The ID of the VPC. This can be used to filter out the other VPCs if there are more than one for the project and cloud.
+        The ID of the VPC in `project/project_vpc_id` format. The field conflicts with `project`. Exactly one of the fields must be specified: `project_vpc_id`, `cloud_name` or `vpc_id`. **Deprecated**: This attribute is deprecated and will be removed in a future version. Use `project_vpc_id` instead.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -105,12 +127,16 @@ class AwaitableGetProjectVpcResult(GetProjectVpcResult):
             id=self.id,
             network_cidr=self.network_cidr,
             project=self.project,
+            project_vpc_id=self.project_vpc_id,
             state=self.state,
+            timeouts=self.timeouts,
             vpc_id=self.vpc_id)
 
 
 def get_project_vpc(cloud_name: Optional[_builtins.str] = None,
                     project: Optional[_builtins.str] = None,
+                    project_vpc_id: Optional[_builtins.str] = None,
+                    timeouts: Optional[Union['GetProjectVpcTimeoutsArgs', 'GetProjectVpcTimeoutsArgsDict']] = None,
                     vpc_id: Optional[_builtins.str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProjectVpcResult:
     """
@@ -122,18 +148,21 @@ def get_project_vpc(cloud_name: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    example_vpc = aiven.get_project_vpc(project=example_project["project"],
-        cloud_name="google-europe-west1")
+    example = aiven.get_project_vpc(project="my-project",
+        project_vpc_id="1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d")
     ```
 
 
-    :param _builtins.str cloud_name: The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`.
-    :param _builtins.str project: Identifies the project this resource belongs to.
-    :param _builtins.str vpc_id: The ID of the VPC. This can be used to filter out the other VPCs if there are more than one for the project and cloud.
+    :param _builtins.str cloud_name: Target cloud. The field is required with `project`. Exactly one of the fields must be specified: `project_vpc_id`, `cloud_name` or `vpc_id`.
+    :param _builtins.str project: Project name.
+    :param _builtins.str project_vpc_id: Project VPC ID. The field is required with `project`. Exactly one of the fields must be specified: `project_vpc_id`, `cloud_name` or `vpc_id`.
+    :param _builtins.str vpc_id: The ID of the VPC in `project/project_vpc_id` format. The field conflicts with `project`. Exactly one of the fields must be specified: `project_vpc_id`, `cloud_name` or `vpc_id`. **Deprecated**: This attribute is deprecated and will be removed in a future version. Use `project_vpc_id` instead.
     """
     __args__ = dict()
     __args__['cloudName'] = cloud_name
     __args__['project'] = project
+    __args__['projectVpcId'] = project_vpc_id
+    __args__['timeouts'] = timeouts
     __args__['vpcId'] = vpc_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('aiven:index/getProjectVpc:getProjectVpc', __args__, opts=opts, typ=GetProjectVpcResult).value
@@ -143,10 +172,14 @@ def get_project_vpc(cloud_name: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         network_cidr=pulumi.get(__ret__, 'network_cidr'),
         project=pulumi.get(__ret__, 'project'),
+        project_vpc_id=pulumi.get(__ret__, 'project_vpc_id'),
         state=pulumi.get(__ret__, 'state'),
+        timeouts=pulumi.get(__ret__, 'timeouts'),
         vpc_id=pulumi.get(__ret__, 'vpc_id'))
 def get_project_vpc_output(cloud_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                            project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                           project_vpc_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                           timeouts: pulumi.Input[Optional[Optional[Union['GetProjectVpcTimeoutsArgs', 'GetProjectVpcTimeoutsArgsDict']]]] = None,
                            vpc_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectVpcResult]:
     """
@@ -158,18 +191,21 @@ def get_project_vpc_output(cloud_name: pulumi.Input[Optional[Optional[_builtins.
     import pulumi
     import pulumi_aiven as aiven
 
-    example_vpc = aiven.get_project_vpc(project=example_project["project"],
-        cloud_name="google-europe-west1")
+    example = aiven.get_project_vpc(project="my-project",
+        project_vpc_id="1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d")
     ```
 
 
-    :param _builtins.str cloud_name: The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`.
-    :param _builtins.str project: Identifies the project this resource belongs to.
-    :param _builtins.str vpc_id: The ID of the VPC. This can be used to filter out the other VPCs if there are more than one for the project and cloud.
+    :param _builtins.str cloud_name: Target cloud. The field is required with `project`. Exactly one of the fields must be specified: `project_vpc_id`, `cloud_name` or `vpc_id`.
+    :param _builtins.str project: Project name.
+    :param _builtins.str project_vpc_id: Project VPC ID. The field is required with `project`. Exactly one of the fields must be specified: `project_vpc_id`, `cloud_name` or `vpc_id`.
+    :param _builtins.str vpc_id: The ID of the VPC in `project/project_vpc_id` format. The field conflicts with `project`. Exactly one of the fields must be specified: `project_vpc_id`, `cloud_name` or `vpc_id`. **Deprecated**: This attribute is deprecated and will be removed in a future version. Use `project_vpc_id` instead.
     """
     __args__ = dict()
     __args__['cloudName'] = cloud_name
     __args__['project'] = project
+    __args__['projectVpcId'] = project_vpc_id
+    __args__['timeouts'] = timeouts
     __args__['vpcId'] = vpc_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('aiven:index/getProjectVpc:getProjectVpc', __args__, opts=opts, typ=GetProjectVpcResult)
@@ -178,5 +214,7 @@ def get_project_vpc_output(cloud_name: pulumi.Input[Optional[Optional[_builtins.
         id=pulumi.get(__response__, 'id'),
         network_cidr=pulumi.get(__response__, 'network_cidr'),
         project=pulumi.get(__response__, 'project'),
+        project_vpc_id=pulumi.get(__response__, 'project_vpc_id'),
         state=pulumi.get(__response__, 'state'),
+        timeouts=pulumi.get(__response__, 'timeouts'),
         vpc_id=pulumi.get(__response__, 'vpc_id')))

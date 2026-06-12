@@ -9,9 +9,6 @@ import * as utilities from "./utilities";
 /**
  * Creates and manages an organization address.
  *
- * **This resource is in the beta stage and may change without notice.** Set
- * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
- *
  * ## Example Usage
  *
  * ```typescript
@@ -20,7 +17,7 @@ import * as utilities from "./utilities";
  *
  * const example = new aiven.OrganizationAddress("example", {
  *     organizationId: "org1a23f456789",
- *     addressLines: ["Main Street 1"],
+ *     addressLines: ["Street 1"],
  *     city: "Helsinki",
  *     countryCode: "FI",
  *     name: "Aiven Oy",
@@ -68,11 +65,11 @@ export class OrganizationAddress extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly addressId: pulumi.Output<string>;
     /**
-     * Address Lines.
+     * Address lines.
      */
     declare public readonly addressLines: pulumi.Output<string[]>;
     /**
-     * City. Maximum length: `125`.
+     * City. Maximum length: `50`.
      */
     declare public readonly city: pulumi.Output<string>;
     /**
@@ -84,7 +81,7 @@ export class OrganizationAddress extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
-     * Name of a company. Length must be between `1` and `83`.
+     * Name. Length must be between `1` and `83`.
      */
     declare public readonly name: pulumi.Output<string>;
     /**
@@ -92,7 +89,7 @@ export class OrganizationAddress extends pulumi.CustomResource {
      */
     declare public readonly organizationId: pulumi.Output<string>;
     /**
-     * State. Maximum length: `128`.
+     * State. Maximum length: `30`.
      */
     declare public readonly state: pulumi.Output<string | undefined>;
     declare public readonly timeouts: pulumi.Output<outputs.OrganizationAddressTimeouts | undefined>;
@@ -101,7 +98,7 @@ export class OrganizationAddress extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly updateTime: pulumi.Output<string>;
     /**
-     * Zip Code. Maximum length: `10`.
+     * Zip Code. Maximum length: `36`.
      */
     declare public readonly zipCode: pulumi.Output<string | undefined>;
 
@@ -169,11 +166,11 @@ export interface OrganizationAddressState {
      */
     addressId?: pulumi.Input<string | undefined>;
     /**
-     * Address Lines.
+     * Address lines.
      */
     addressLines?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * City. Maximum length: `125`.
+     * City. Maximum length: `50`.
      */
     city?: pulumi.Input<string | undefined>;
     /**
@@ -185,7 +182,7 @@ export interface OrganizationAddressState {
      */
     createTime?: pulumi.Input<string | undefined>;
     /**
-     * Name of a company. Length must be between `1` and `83`.
+     * Name. Length must be between `1` and `83`.
      */
     name?: pulumi.Input<string | undefined>;
     /**
@@ -193,7 +190,7 @@ export interface OrganizationAddressState {
      */
     organizationId?: pulumi.Input<string | undefined>;
     /**
-     * State. Maximum length: `128`.
+     * State. Maximum length: `30`.
      */
     state?: pulumi.Input<string | undefined>;
     timeouts?: pulumi.Input<inputs.OrganizationAddressTimeouts | undefined>;
@@ -202,7 +199,7 @@ export interface OrganizationAddressState {
      */
     updateTime?: pulumi.Input<string | undefined>;
     /**
-     * Zip Code. Maximum length: `10`.
+     * Zip Code. Maximum length: `36`.
      */
     zipCode?: pulumi.Input<string | undefined>;
 }
@@ -212,11 +209,11 @@ export interface OrganizationAddressState {
  */
 export interface OrganizationAddressArgs {
     /**
-     * Address Lines.
+     * Address lines.
      */
     addressLines: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * City. Maximum length: `125`.
+     * City. Maximum length: `50`.
      */
     city: pulumi.Input<string>;
     /**
@@ -224,7 +221,7 @@ export interface OrganizationAddressArgs {
      */
     countryCode: pulumi.Input<string>;
     /**
-     * Name of a company. Length must be between `1` and `83`.
+     * Name. Length must be between `1` and `83`.
      */
     name?: pulumi.Input<string | undefined>;
     /**
@@ -232,12 +229,12 @@ export interface OrganizationAddressArgs {
      */
     organizationId: pulumi.Input<string>;
     /**
-     * State. Maximum length: `128`.
+     * State. Maximum length: `30`.
      */
     state?: pulumi.Input<string | undefined>;
     timeouts?: pulumi.Input<inputs.OrganizationAddressTimeouts | undefined>;
     /**
-     * Zip Code. Maximum length: `10`.
+     * Zip Code. Maximum length: `36`.
      */
     zipCode?: pulumi.Input<string | undefined>;
 }

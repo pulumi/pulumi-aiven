@@ -38,7 +38,6 @@ import (
 //				DeploymentModel: pulumi.String("standard"),
 //				DisplayName:     pulumi.String("byoc-cloud-prod-eu-west-1"),
 //				ReservedCidr:    pulumi.String("192.168.6.0/24"),
-//				AwsIamRoleArn:   pulumi.String("arn:aws:iam::012345678901:root"),
 //				ContactEmails: aiven.ByocAwsEntityContactEmailArray{
 //					&aiven.ByocAwsEntityContactEmailArgs{
 //						Email:    pulumi.String("jane@example.com"),
@@ -79,8 +78,6 @@ type ByocAwsEntity struct {
 	AivenManagementCidrBlocks pulumi.StringArrayOutput `pulumi:"aivenManagementCidrBlocks"`
 	// Google account identifier.
 	AivenObjectStorageCredentialsCreatorUser pulumi.StringOutput `pulumi:"aivenObjectStorageCredentialsCreatorUser"`
-	// Amazon Resource Name. Maximum length: `2048`.
-	AwsIamRoleArn pulumi.StringPtrOutput `pulumi:"awsIamRoleArn"`
 	// Subnets to build in the bastion VPC.
 	AwsSubnetsBastion pulumi.StringMapOutput `pulumi:"awsSubnetsBastion"`
 	// Subnets to build in the workload VPC.
@@ -99,25 +96,17 @@ type ByocAwsEntity struct {
 	ContactEmails ByocAwsEntityContactEmailArrayOutput `pulumi:"contactEmails"`
 	// ID of a custom cloud environment.
 	CustomCloudEnvironmentId pulumi.StringOutput `pulumi:"customCloudEnvironmentId"`
-	// Cloud names that can be used to provision a service on this BYOC.
-	CustomCloudNames pulumi.StringArrayOutput `pulumi:"customCloudNames"`
 	// Deployment model for the BYOC cloud. The possible values are `directIpsecIngress`, `hipaa`, `ipsecIngress`, `pciDss`, `standard` and `standardPublic`. Changing this property forces recreation of the resource.
 	DeploymentModel pulumi.StringOutput `pulumi:"deploymentModel"`
 	// Short name for this BYOC cloud. Maximum length: `64`.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
-	// List of errors for this custom cloud environment.
-	Errors ByocAwsEntityErrorArrayOutput `pulumi:"errors"`
 	// ID of an organization. Changing this property forces recreation of the resource.
 	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
 	// CIDR range reserved for Aiven provisioned networks in the BYOC cloud. Maximum length: `18`. Changing this property forces recreation of the resource.
 	ReservedCidr pulumi.StringOutput `pulumi:"reservedCidr"`
-	// State of this BYOC cloud. The possible values are `active`, `creating`, `creationFailed`, `deleted`, `deleting`, `deletionFailed`, `disconnected`, `draft`, `reconnecting` and `validating`.
-	State pulumi.StringOutput `pulumi:"state"`
 	// Set of resource tags.
 	Tags     pulumi.StringMapOutput         `pulumi:"tags"`
 	Timeouts ByocAwsEntityTimeoutsPtrOutput `pulumi:"timeouts"`
-	// Custom cloud environment last update timestamp (ISO 8601).
-	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// True if this BYOC cloud is using customer owned storage.
 	UseCustomerOwnedStorage pulumi.BoolOutput `pulumi:"useCustomerOwnedStorage"`
 }
@@ -182,8 +171,6 @@ type byocAwsEntityState struct {
 	AivenManagementCidrBlocks []string `pulumi:"aivenManagementCidrBlocks"`
 	// Google account identifier.
 	AivenObjectStorageCredentialsCreatorUser *string `pulumi:"aivenObjectStorageCredentialsCreatorUser"`
-	// Amazon Resource Name. Maximum length: `2048`.
-	AwsIamRoleArn *string `pulumi:"awsIamRoleArn"`
 	// Subnets to build in the bastion VPC.
 	AwsSubnetsBastion map[string]string `pulumi:"awsSubnetsBastion"`
 	// Subnets to build in the workload VPC.
@@ -202,25 +189,17 @@ type byocAwsEntityState struct {
 	ContactEmails []ByocAwsEntityContactEmail `pulumi:"contactEmails"`
 	// ID of a custom cloud environment.
 	CustomCloudEnvironmentId *string `pulumi:"customCloudEnvironmentId"`
-	// Cloud names that can be used to provision a service on this BYOC.
-	CustomCloudNames []string `pulumi:"customCloudNames"`
 	// Deployment model for the BYOC cloud. The possible values are `directIpsecIngress`, `hipaa`, `ipsecIngress`, `pciDss`, `standard` and `standardPublic`. Changing this property forces recreation of the resource.
 	DeploymentModel *string `pulumi:"deploymentModel"`
 	// Short name for this BYOC cloud. Maximum length: `64`.
 	DisplayName *string `pulumi:"displayName"`
-	// List of errors for this custom cloud environment.
-	Errors []ByocAwsEntityError `pulumi:"errors"`
 	// ID of an organization. Changing this property forces recreation of the resource.
 	OrganizationId *string `pulumi:"organizationId"`
 	// CIDR range reserved for Aiven provisioned networks in the BYOC cloud. Maximum length: `18`. Changing this property forces recreation of the resource.
 	ReservedCidr *string `pulumi:"reservedCidr"`
-	// State of this BYOC cloud. The possible values are `active`, `creating`, `creationFailed`, `deleted`, `deleting`, `deletionFailed`, `disconnected`, `draft`, `reconnecting` and `validating`.
-	State *string `pulumi:"state"`
 	// Set of resource tags.
 	Tags     map[string]string      `pulumi:"tags"`
 	Timeouts *ByocAwsEntityTimeouts `pulumi:"timeouts"`
-	// Custom cloud environment last update timestamp (ISO 8601).
-	UpdateTime *string `pulumi:"updateTime"`
 	// True if this BYOC cloud is using customer owned storage.
 	UseCustomerOwnedStorage *bool `pulumi:"useCustomerOwnedStorage"`
 }
@@ -238,8 +217,6 @@ type ByocAwsEntityState struct {
 	AivenManagementCidrBlocks pulumi.StringArrayInput
 	// Google account identifier.
 	AivenObjectStorageCredentialsCreatorUser pulumi.StringPtrInput
-	// Amazon Resource Name. Maximum length: `2048`.
-	AwsIamRoleArn pulumi.StringPtrInput
 	// Subnets to build in the bastion VPC.
 	AwsSubnetsBastion pulumi.StringMapInput
 	// Subnets to build in the workload VPC.
@@ -258,25 +235,17 @@ type ByocAwsEntityState struct {
 	ContactEmails ByocAwsEntityContactEmailArrayInput
 	// ID of a custom cloud environment.
 	CustomCloudEnvironmentId pulumi.StringPtrInput
-	// Cloud names that can be used to provision a service on this BYOC.
-	CustomCloudNames pulumi.StringArrayInput
 	// Deployment model for the BYOC cloud. The possible values are `directIpsecIngress`, `hipaa`, `ipsecIngress`, `pciDss`, `standard` and `standardPublic`. Changing this property forces recreation of the resource.
 	DeploymentModel pulumi.StringPtrInput
 	// Short name for this BYOC cloud. Maximum length: `64`.
 	DisplayName pulumi.StringPtrInput
-	// List of errors for this custom cloud environment.
-	Errors ByocAwsEntityErrorArrayInput
 	// ID of an organization. Changing this property forces recreation of the resource.
 	OrganizationId pulumi.StringPtrInput
 	// CIDR range reserved for Aiven provisioned networks in the BYOC cloud. Maximum length: `18`. Changing this property forces recreation of the resource.
 	ReservedCidr pulumi.StringPtrInput
-	// State of this BYOC cloud. The possible values are `active`, `creating`, `creationFailed`, `deleted`, `deleting`, `deletionFailed`, `disconnected`, `draft`, `reconnecting` and `validating`.
-	State pulumi.StringPtrInput
 	// Set of resource tags.
 	Tags     pulumi.StringMapInput
 	Timeouts ByocAwsEntityTimeoutsPtrInput
-	// Custom cloud environment last update timestamp (ISO 8601).
-	UpdateTime pulumi.StringPtrInput
 	// True if this BYOC cloud is using customer owned storage.
 	UseCustomerOwnedStorage pulumi.BoolPtrInput
 }
@@ -286,8 +255,6 @@ func (ByocAwsEntityState) ElementType() reflect.Type {
 }
 
 type byocAwsEntityArgs struct {
-	// Amazon Resource Name. Maximum length: `2048`.
-	AwsIamRoleArn *string `pulumi:"awsIamRoleArn"`
 	// Cloud provider for the BYOC cloud. The possible values are `aws`, `azure`, `google` and `oracle`. Changing this property forces recreation of the resource.
 	CloudProvider string `pulumi:"cloudProvider"`
 	// Cloud region for the BYOC cloud. Maximum length: `32`. Changing this property forces recreation of the resource.
@@ -298,8 +265,6 @@ type byocAwsEntityArgs struct {
 	DeploymentModel string `pulumi:"deploymentModel"`
 	// Short name for this BYOC cloud. Maximum length: `64`.
 	DisplayName string `pulumi:"displayName"`
-	// List of errors for this custom cloud environment.
-	Errors []ByocAwsEntityError `pulumi:"errors"`
 	// ID of an organization. Changing this property forces recreation of the resource.
 	OrganizationId string `pulumi:"organizationId"`
 	// CIDR range reserved for Aiven provisioned networks in the BYOC cloud. Maximum length: `18`. Changing this property forces recreation of the resource.
@@ -311,8 +276,6 @@ type byocAwsEntityArgs struct {
 
 // The set of arguments for constructing a ByocAwsEntity resource.
 type ByocAwsEntityArgs struct {
-	// Amazon Resource Name. Maximum length: `2048`.
-	AwsIamRoleArn pulumi.StringPtrInput
 	// Cloud provider for the BYOC cloud. The possible values are `aws`, `azure`, `google` and `oracle`. Changing this property forces recreation of the resource.
 	CloudProvider pulumi.StringInput
 	// Cloud region for the BYOC cloud. Maximum length: `32`. Changing this property forces recreation of the resource.
@@ -323,8 +286,6 @@ type ByocAwsEntityArgs struct {
 	DeploymentModel pulumi.StringInput
 	// Short name for this BYOC cloud. Maximum length: `64`.
 	DisplayName pulumi.StringInput
-	// List of errors for this custom cloud environment.
-	Errors ByocAwsEntityErrorArrayInput
 	// ID of an organization. Changing this property forces recreation of the resource.
 	OrganizationId pulumi.StringInput
 	// CIDR range reserved for Aiven provisioned networks in the BYOC cloud. Maximum length: `18`. Changing this property forces recreation of the resource.
@@ -451,11 +412,6 @@ func (o ByocAwsEntityOutput) AivenObjectStorageCredentialsCreatorUser() pulumi.S
 	return o.ApplyT(func(v *ByocAwsEntity) pulumi.StringOutput { return v.AivenObjectStorageCredentialsCreatorUser }).(pulumi.StringOutput)
 }
 
-// Amazon Resource Name. Maximum length: `2048`.
-func (o ByocAwsEntityOutput) AwsIamRoleArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ByocAwsEntity) pulumi.StringPtrOutput { return v.AwsIamRoleArn }).(pulumi.StringPtrOutput)
-}
-
 // Subnets to build in the bastion VPC.
 func (o ByocAwsEntityOutput) AwsSubnetsBastion() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ByocAwsEntity) pulumi.StringMapOutput { return v.AwsSubnetsBastion }).(pulumi.StringMapOutput)
@@ -501,11 +457,6 @@ func (o ByocAwsEntityOutput) CustomCloudEnvironmentId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ByocAwsEntity) pulumi.StringOutput { return v.CustomCloudEnvironmentId }).(pulumi.StringOutput)
 }
 
-// Cloud names that can be used to provision a service on this BYOC.
-func (o ByocAwsEntityOutput) CustomCloudNames() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ByocAwsEntity) pulumi.StringArrayOutput { return v.CustomCloudNames }).(pulumi.StringArrayOutput)
-}
-
 // Deployment model for the BYOC cloud. The possible values are `directIpsecIngress`, `hipaa`, `ipsecIngress`, `pciDss`, `standard` and `standardPublic`. Changing this property forces recreation of the resource.
 func (o ByocAwsEntityOutput) DeploymentModel() pulumi.StringOutput {
 	return o.ApplyT(func(v *ByocAwsEntity) pulumi.StringOutput { return v.DeploymentModel }).(pulumi.StringOutput)
@@ -514,11 +465,6 @@ func (o ByocAwsEntityOutput) DeploymentModel() pulumi.StringOutput {
 // Short name for this BYOC cloud. Maximum length: `64`.
 func (o ByocAwsEntityOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ByocAwsEntity) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
-}
-
-// List of errors for this custom cloud environment.
-func (o ByocAwsEntityOutput) Errors() ByocAwsEntityErrorArrayOutput {
-	return o.ApplyT(func(v *ByocAwsEntity) ByocAwsEntityErrorArrayOutput { return v.Errors }).(ByocAwsEntityErrorArrayOutput)
 }
 
 // ID of an organization. Changing this property forces recreation of the resource.
@@ -531,11 +477,6 @@ func (o ByocAwsEntityOutput) ReservedCidr() pulumi.StringOutput {
 	return o.ApplyT(func(v *ByocAwsEntity) pulumi.StringOutput { return v.ReservedCidr }).(pulumi.StringOutput)
 }
 
-// State of this BYOC cloud. The possible values are `active`, `creating`, `creationFailed`, `deleted`, `deleting`, `deletionFailed`, `disconnected`, `draft`, `reconnecting` and `validating`.
-func (o ByocAwsEntityOutput) State() pulumi.StringOutput {
-	return o.ApplyT(func(v *ByocAwsEntity) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
-}
-
 // Set of resource tags.
 func (o ByocAwsEntityOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ByocAwsEntity) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
@@ -543,11 +484,6 @@ func (o ByocAwsEntityOutput) Tags() pulumi.StringMapOutput {
 
 func (o ByocAwsEntityOutput) Timeouts() ByocAwsEntityTimeoutsPtrOutput {
 	return o.ApplyT(func(v *ByocAwsEntity) ByocAwsEntityTimeoutsPtrOutput { return v.Timeouts }).(ByocAwsEntityTimeoutsPtrOutput)
-}
-
-// Custom cloud environment last update timestamp (ISO 8601).
-func (o ByocAwsEntityOutput) UpdateTime() pulumi.StringOutput {
-	return o.ApplyT(func(v *ByocAwsEntity) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
 // True if this BYOC cloud is using customer owned storage.

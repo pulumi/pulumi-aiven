@@ -25,7 +25,6 @@ import * as utilities from "./utilities";
  *     deploymentModel: "standard",
  *     displayName: "byoc-cloud-prod-eu-west-1",
  *     reservedCidr: "192.168.6.0/24",
- *     awsIamRoleArn: "arn:aws:iam::012345678901:root",
  *     contactEmails: [{
  *         email: "jane@example.com",
  *         realName: "Jane Smith",
@@ -96,10 +95,6 @@ export class ByocAwsEntity extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly aivenObjectStorageCredentialsCreatorUser: pulumi.Output<string>;
     /**
-     * Amazon Resource Name. Maximum length: `2048`.
-     */
-    declare public readonly awsIamRoleArn: pulumi.Output<string | undefined>;
-    /**
      * Subnets to build in the bastion VPC.
      */
     declare public /*out*/ readonly awsSubnetsBastion: pulumi.Output<{[key: string]: string}>;
@@ -136,10 +131,6 @@ export class ByocAwsEntity extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly customCloudEnvironmentId: pulumi.Output<string>;
     /**
-     * Cloud names that can be used to provision a service on this BYOC.
-     */
-    declare public /*out*/ readonly customCloudNames: pulumi.Output<string[]>;
-    /**
      * Deployment model for the BYOC cloud. The possible values are `directIpsecIngress`, `hipaa`, `ipsecIngress`, `pciDss`, `standard` and `standardPublic`. Changing this property forces recreation of the resource.
      */
     declare public readonly deploymentModel: pulumi.Output<string>;
@@ -147,10 +138,6 @@ export class ByocAwsEntity extends pulumi.CustomResource {
      * Short name for this BYOC cloud. Maximum length: `64`.
      */
     declare public readonly displayName: pulumi.Output<string>;
-    /**
-     * List of errors for this custom cloud environment.
-     */
-    declare public readonly errors: pulumi.Output<outputs.ByocAwsEntityError[] | undefined>;
     /**
      * ID of an organization. Changing this property forces recreation of the resource.
      */
@@ -160,18 +147,10 @@ export class ByocAwsEntity extends pulumi.CustomResource {
      */
     declare public readonly reservedCidr: pulumi.Output<string>;
     /**
-     * State of this BYOC cloud. The possible values are `active`, `creating`, `creationFailed`, `deleted`, `deleting`, `deletionFailed`, `disconnected`, `draft`, `reconnecting` and `validating`.
-     */
-    declare public /*out*/ readonly state: pulumi.Output<string>;
-    /**
      * Set of resource tags.
      */
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     declare public readonly timeouts: pulumi.Output<outputs.ByocAwsEntityTimeouts | undefined>;
-    /**
-     * Custom cloud environment last update timestamp (ISO 8601).
-     */
-    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
     /**
      * True if this BYOC cloud is using customer owned storage.
      */
@@ -196,7 +175,6 @@ export class ByocAwsEntity extends pulumi.CustomResource {
             resourceInputs["aivenAwsObjectStorageUserArn"] = state?.aivenAwsObjectStorageUserArn;
             resourceInputs["aivenManagementCidrBlocks"] = state?.aivenManagementCidrBlocks;
             resourceInputs["aivenObjectStorageCredentialsCreatorUser"] = state?.aivenObjectStorageCredentialsCreatorUser;
-            resourceInputs["awsIamRoleArn"] = state?.awsIamRoleArn;
             resourceInputs["awsSubnetsBastion"] = state?.awsSubnetsBastion;
             resourceInputs["awsSubnetsWorkload"] = state?.awsSubnetsWorkload;
             resourceInputs["bucketNames"] = state?.bucketNames;
@@ -206,16 +184,12 @@ export class ByocAwsEntity extends pulumi.CustomResource {
             resourceInputs["cloudRegion"] = state?.cloudRegion;
             resourceInputs["contactEmails"] = state?.contactEmails;
             resourceInputs["customCloudEnvironmentId"] = state?.customCloudEnvironmentId;
-            resourceInputs["customCloudNames"] = state?.customCloudNames;
             resourceInputs["deploymentModel"] = state?.deploymentModel;
             resourceInputs["displayName"] = state?.displayName;
-            resourceInputs["errors"] = state?.errors;
             resourceInputs["organizationId"] = state?.organizationId;
             resourceInputs["reservedCidr"] = state?.reservedCidr;
-            resourceInputs["state"] = state?.state;
             resourceInputs["tags"] = state?.tags;
             resourceInputs["timeouts"] = state?.timeouts;
-            resourceInputs["updateTime"] = state?.updateTime;
             resourceInputs["useCustomerOwnedStorage"] = state?.useCustomerOwnedStorage;
         } else {
             const args = argsOrState as ByocAwsEntityArgs | undefined;
@@ -237,13 +211,11 @@ export class ByocAwsEntity extends pulumi.CustomResource {
             if (args?.reservedCidr === undefined && !opts.urn) {
                 throw new Error("Missing required property 'reservedCidr'");
             }
-            resourceInputs["awsIamRoleArn"] = args?.awsIamRoleArn;
             resourceInputs["cloudProvider"] = args?.cloudProvider;
             resourceInputs["cloudRegion"] = args?.cloudRegion;
             resourceInputs["contactEmails"] = args?.contactEmails;
             resourceInputs["deploymentModel"] = args?.deploymentModel;
             resourceInputs["displayName"] = args?.displayName;
-            resourceInputs["errors"] = args?.errors;
             resourceInputs["organizationId"] = args?.organizationId;
             resourceInputs["reservedCidr"] = args?.reservedCidr;
             resourceInputs["tags"] = args?.tags;
@@ -260,9 +232,6 @@ export class ByocAwsEntity extends pulumi.CustomResource {
             resourceInputs["byocResourceTags"] = undefined /*out*/;
             resourceInputs["byocUniqueName"] = undefined /*out*/;
             resourceInputs["customCloudEnvironmentId"] = undefined /*out*/;
-            resourceInputs["customCloudNames"] = undefined /*out*/;
-            resourceInputs["state"] = undefined /*out*/;
-            resourceInputs["updateTime"] = undefined /*out*/;
             resourceInputs["useCustomerOwnedStorage"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -298,10 +267,6 @@ export interface ByocAwsEntityState {
      * Google account identifier.
      */
     aivenObjectStorageCredentialsCreatorUser?: pulumi.Input<string | undefined>;
-    /**
-     * Amazon Resource Name. Maximum length: `2048`.
-     */
-    awsIamRoleArn?: pulumi.Input<string | undefined>;
     /**
      * Subnets to build in the bastion VPC.
      */
@@ -339,10 +304,6 @@ export interface ByocAwsEntityState {
      */
     customCloudEnvironmentId?: pulumi.Input<string | undefined>;
     /**
-     * Cloud names that can be used to provision a service on this BYOC.
-     */
-    customCloudNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
-    /**
      * Deployment model for the BYOC cloud. The possible values are `directIpsecIngress`, `hipaa`, `ipsecIngress`, `pciDss`, `standard` and `standardPublic`. Changing this property forces recreation of the resource.
      */
     deploymentModel?: pulumi.Input<string | undefined>;
@@ -350,10 +311,6 @@ export interface ByocAwsEntityState {
      * Short name for this BYOC cloud. Maximum length: `64`.
      */
     displayName?: pulumi.Input<string | undefined>;
-    /**
-     * List of errors for this custom cloud environment.
-     */
-    errors?: pulumi.Input<pulumi.Input<inputs.ByocAwsEntityError>[] | undefined>;
     /**
      * ID of an organization. Changing this property forces recreation of the resource.
      */
@@ -363,18 +320,10 @@ export interface ByocAwsEntityState {
      */
     reservedCidr?: pulumi.Input<string | undefined>;
     /**
-     * State of this BYOC cloud. The possible values are `active`, `creating`, `creationFailed`, `deleted`, `deleting`, `deletionFailed`, `disconnected`, `draft`, `reconnecting` and `validating`.
-     */
-    state?: pulumi.Input<string | undefined>;
-    /**
      * Set of resource tags.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     timeouts?: pulumi.Input<inputs.ByocAwsEntityTimeouts | undefined>;
-    /**
-     * Custom cloud environment last update timestamp (ISO 8601).
-     */
-    updateTime?: pulumi.Input<string | undefined>;
     /**
      * True if this BYOC cloud is using customer owned storage.
      */
@@ -385,10 +334,6 @@ export interface ByocAwsEntityState {
  * The set of arguments for constructing a ByocAwsEntity resource.
  */
 export interface ByocAwsEntityArgs {
-    /**
-     * Amazon Resource Name. Maximum length: `2048`.
-     */
-    awsIamRoleArn?: pulumi.Input<string | undefined>;
     /**
      * Cloud provider for the BYOC cloud. The possible values are `aws`, `azure`, `google` and `oracle`. Changing this property forces recreation of the resource.
      */
@@ -409,10 +354,6 @@ export interface ByocAwsEntityArgs {
      * Short name for this BYOC cloud. Maximum length: `64`.
      */
     displayName: pulumi.Input<string>;
-    /**
-     * List of errors for this custom cloud environment.
-     */
-    errors?: pulumi.Input<pulumi.Input<inputs.ByocAwsEntityError>[] | undefined>;
     /**
      * ID of an organization. Changing this property forces recreation of the resource.
      */

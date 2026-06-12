@@ -32,13 +32,13 @@ class OrganizationAddressArgs:
         """
         The set of arguments for constructing a OrganizationAddress resource.
 
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] address_lines: Address Lines.
-        :param pulumi.Input[_builtins.str] city: City. Maximum length: `125`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] address_lines: Address lines.
+        :param pulumi.Input[_builtins.str] city: City. Maximum length: `50`.
         :param pulumi.Input[_builtins.str] country_code: Country Code. Maximum length: `2`.
         :param pulumi.Input[_builtins.str] organization_id: ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] name: Name of a company. Length must be between `1` and `83`.
-        :param pulumi.Input[_builtins.str] state: State. Maximum length: `128`.
-        :param pulumi.Input[_builtins.str] zip_code: Zip Code. Maximum length: `10`.
+        :param pulumi.Input[_builtins.str] name: Name. Length must be between `1` and `83`.
+        :param pulumi.Input[_builtins.str] state: State. Maximum length: `30`.
+        :param pulumi.Input[_builtins.str] zip_code: Zip Code. Maximum length: `36`.
         """
         pulumi.set(__self__, "address_lines", address_lines)
         pulumi.set(__self__, "city", city)
@@ -57,7 +57,7 @@ class OrganizationAddressArgs:
     @pulumi.getter(name="addressLines")
     def address_lines(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
         """
-        Address Lines.
+        Address lines.
         """
         return pulumi.get(self, "address_lines")
 
@@ -69,7 +69,7 @@ class OrganizationAddressArgs:
     @pulumi.getter
     def city(self) -> pulumi.Input[_builtins.str]:
         """
-        City. Maximum length: `125`.
+        City. Maximum length: `50`.
         """
         return pulumi.get(self, "city")
 
@@ -105,7 +105,7 @@ class OrganizationAddressArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Name of a company. Length must be between `1` and `83`.
+        Name. Length must be between `1` and `83`.
         """
         return pulumi.get(self, "name")
 
@@ -117,7 +117,7 @@ class OrganizationAddressArgs:
     @pulumi.getter
     def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        State. Maximum length: `128`.
+        State. Maximum length: `30`.
         """
         return pulumi.get(self, "state")
 
@@ -138,7 +138,7 @@ class OrganizationAddressArgs:
     @pulumi.getter(name="zipCode")
     def zip_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Zip Code. Maximum length: `10`.
+        Zip Code. Maximum length: `36`.
         """
         return pulumi.get(self, "zip_code")
 
@@ -165,15 +165,15 @@ class _OrganizationAddressState:
         Input properties used for looking up and filtering OrganizationAddress resources.
 
         :param pulumi.Input[_builtins.str] address_id: Address ID.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] address_lines: Address Lines.
-        :param pulumi.Input[_builtins.str] city: City. Maximum length: `125`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] address_lines: Address lines.
+        :param pulumi.Input[_builtins.str] city: City. Maximum length: `50`.
         :param pulumi.Input[_builtins.str] country_code: Country Code. Maximum length: `2`.
         :param pulumi.Input[_builtins.str] create_time: Create Time.
-        :param pulumi.Input[_builtins.str] name: Name of a company. Length must be between `1` and `83`.
+        :param pulumi.Input[_builtins.str] name: Name. Length must be between `1` and `83`.
         :param pulumi.Input[_builtins.str] organization_id: ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] state: State. Maximum length: `128`.
+        :param pulumi.Input[_builtins.str] state: State. Maximum length: `30`.
         :param pulumi.Input[_builtins.str] update_time: Update Time.
-        :param pulumi.Input[_builtins.str] zip_code: Zip Code. Maximum length: `10`.
+        :param pulumi.Input[_builtins.str] zip_code: Zip Code. Maximum length: `36`.
         """
         if address_id is not None:
             pulumi.set(__self__, "address_id", address_id)
@@ -214,7 +214,7 @@ class _OrganizationAddressState:
     @pulumi.getter(name="addressLines")
     def address_lines(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Address Lines.
+        Address lines.
         """
         return pulumi.get(self, "address_lines")
 
@@ -226,7 +226,7 @@ class _OrganizationAddressState:
     @pulumi.getter
     def city(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        City. Maximum length: `125`.
+        City. Maximum length: `50`.
         """
         return pulumi.get(self, "city")
 
@@ -262,7 +262,7 @@ class _OrganizationAddressState:
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Name of a company. Length must be between `1` and `83`.
+        Name. Length must be between `1` and `83`.
         """
         return pulumi.get(self, "name")
 
@@ -286,7 +286,7 @@ class _OrganizationAddressState:
     @pulumi.getter
     def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        State. Maximum length: `128`.
+        State. Maximum length: `30`.
         """
         return pulumi.get(self, "state")
 
@@ -319,7 +319,7 @@ class _OrganizationAddressState:
     @pulumi.getter(name="zipCode")
     def zip_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Zip Code. Maximum length: `10`.
+        Zip Code. Maximum length: `36`.
         """
         return pulumi.get(self, "zip_code")
 
@@ -346,9 +346,6 @@ class OrganizationAddress(pulumi.CustomResource):
         """
         Creates and manages an organization address.
 
-        **This resource is in the beta stage and may change without notice.** Set
-        the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
-
         ## Example Usage
 
         ```python
@@ -357,7 +354,7 @@ class OrganizationAddress(pulumi.CustomResource):
 
         example = aiven.OrganizationAddress("example",
             organization_id="org1a23f456789",
-            address_lines=["Main Street 1"],
+            address_lines=["Street 1"],
             city="Helsinki",
             country_code="FI",
             name="Aiven Oy",
@@ -374,13 +371,13 @@ class OrganizationAddress(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] address_lines: Address Lines.
-        :param pulumi.Input[_builtins.str] city: City. Maximum length: `125`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] address_lines: Address lines.
+        :param pulumi.Input[_builtins.str] city: City. Maximum length: `50`.
         :param pulumi.Input[_builtins.str] country_code: Country Code. Maximum length: `2`.
-        :param pulumi.Input[_builtins.str] name: Name of a company. Length must be between `1` and `83`.
+        :param pulumi.Input[_builtins.str] name: Name. Length must be between `1` and `83`.
         :param pulumi.Input[_builtins.str] organization_id: ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] state: State. Maximum length: `128`.
-        :param pulumi.Input[_builtins.str] zip_code: Zip Code. Maximum length: `10`.
+        :param pulumi.Input[_builtins.str] state: State. Maximum length: `30`.
+        :param pulumi.Input[_builtins.str] zip_code: Zip Code. Maximum length: `36`.
         """
         ...
     @overload
@@ -391,9 +388,6 @@ class OrganizationAddress(pulumi.CustomResource):
         """
         Creates and manages an organization address.
 
-        **This resource is in the beta stage and may change without notice.** Set
-        the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
-
         ## Example Usage
 
         ```python
@@ -402,7 +396,7 @@ class OrganizationAddress(pulumi.CustomResource):
 
         example = aiven.OrganizationAddress("example",
             organization_id="org1a23f456789",
-            address_lines=["Main Street 1"],
+            address_lines=["Street 1"],
             city="Helsinki",
             country_code="FI",
             name="Aiven Oy",
@@ -497,15 +491,15 @@ class OrganizationAddress(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] address_id: Address ID.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] address_lines: Address Lines.
-        :param pulumi.Input[_builtins.str] city: City. Maximum length: `125`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] address_lines: Address lines.
+        :param pulumi.Input[_builtins.str] city: City. Maximum length: `50`.
         :param pulumi.Input[_builtins.str] country_code: Country Code. Maximum length: `2`.
         :param pulumi.Input[_builtins.str] create_time: Create Time.
-        :param pulumi.Input[_builtins.str] name: Name of a company. Length must be between `1` and `83`.
+        :param pulumi.Input[_builtins.str] name: Name. Length must be between `1` and `83`.
         :param pulumi.Input[_builtins.str] organization_id: ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] state: State. Maximum length: `128`.
+        :param pulumi.Input[_builtins.str] state: State. Maximum length: `30`.
         :param pulumi.Input[_builtins.str] update_time: Update Time.
-        :param pulumi.Input[_builtins.str] zip_code: Zip Code. Maximum length: `10`.
+        :param pulumi.Input[_builtins.str] zip_code: Zip Code. Maximum length: `36`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -536,7 +530,7 @@ class OrganizationAddress(pulumi.CustomResource):
     @pulumi.getter(name="addressLines")
     def address_lines(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        Address Lines.
+        Address lines.
         """
         return pulumi.get(self, "address_lines")
 
@@ -544,7 +538,7 @@ class OrganizationAddress(pulumi.CustomResource):
     @pulumi.getter
     def city(self) -> pulumi.Output[_builtins.str]:
         """
-        City. Maximum length: `125`.
+        City. Maximum length: `50`.
         """
         return pulumi.get(self, "city")
 
@@ -568,7 +562,7 @@ class OrganizationAddress(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        Name of a company. Length must be between `1` and `83`.
+        Name. Length must be between `1` and `83`.
         """
         return pulumi.get(self, "name")
 
@@ -584,7 +578,7 @@ class OrganizationAddress(pulumi.CustomResource):
     @pulumi.getter
     def state(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        State. Maximum length: `128`.
+        State. Maximum length: `30`.
         """
         return pulumi.get(self, "state")
 
@@ -605,7 +599,7 @@ class OrganizationAddress(pulumi.CustomResource):
     @pulumi.getter(name="zipCode")
     def zip_code(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Zip Code. Maximum length: `10`.
+        Zip Code. Maximum length: `36`.
         """
         return pulumi.get(self, "zip_code")
 

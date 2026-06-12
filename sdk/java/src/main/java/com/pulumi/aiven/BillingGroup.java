@@ -17,7 +17,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Creates and manages [billing groups](https://aiven.io/docs/platform/concepts/billing-groups) and assigns them to projects.
+ * Creates and manages [billing groups](https://aiven.io/docs/platform/concepts/billing-groups) and assigns them to projects. **Deprecated**: Use `aiven.OrganizationBillingGroup` instead. This resource will be removed in the next major release.
  * 
  * ## Example Usage
  * 
@@ -192,28 +192,28 @@ public class BillingGroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.cardId);
     }
     /**
-     * Address city. Maximum length: `512`.
+     * Address city. Maximum length: `50`.
      * 
      */
     @Export(name="city", refs={String.class}, tree="[0]")
     private Output<String> city;
 
     /**
-     * @return Address city. Maximum length: `512`.
+     * @return Address city. Maximum length: `50`.
      * 
      */
     public Output<String> city() {
         return this.city;
     }
     /**
-     * Name of a company. Maximum length: `128`.
+     * Name of a company. Maximum length: `83`.
      * 
      */
     @Export(name="company", refs={String.class}, tree="[0]")
     private Output<String> company;
 
     /**
-     * @return Name of a company. Maximum length: `128`.
+     * @return Name of a company. Maximum length: `83`.
      * 
      */
     public Output<String> company() {
@@ -276,14 +276,14 @@ public class BillingGroup extends com.pulumi.resources.CustomResource {
         return this.parentId;
     }
     /**
-     * Address state or province. Maximum length: `128`.
+     * Address state or province. Maximum length: `30`.
      * 
      */
     @Export(name="state", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> state;
 
     /**
-     * @return Address state or province. Maximum length: `128`.
+     * @return Address state or province. Maximum length: `30`.
      * 
      */
     public Output<Optional<String>> state() {
@@ -310,14 +310,14 @@ public class BillingGroup extends com.pulumi.resources.CustomResource {
         return this.vatId;
     }
     /**
-     * Address zip code. Maximum length: `32`.
+     * Address zip code. Maximum length: `36`.
      * 
      */
     @Export(name="zipCode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> zipCode;
 
     /**
-     * @return Address zip code. Maximum length: `32`.
+     * @return Address zip code. Maximum length: `36`.
      * 
      */
     public Output<Optional<String>> zipCode() {

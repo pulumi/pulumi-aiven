@@ -14,9 +14,6 @@ namespace Pulumi.Aiven
         /// <summary>
         /// Gets information about an organization address.
         /// 
-        /// **This resource is in the beta stage and may change without notice.** Set
-        /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -42,9 +39,6 @@ namespace Pulumi.Aiven
         /// <summary>
         /// Gets information about an organization address.
         /// 
-        /// **This resource is in the beta stage and may change without notice.** Set
-        /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -69,9 +63,6 @@ namespace Pulumi.Aiven
 
         /// <summary>
         /// Gets information about an organization address.
-        /// 
-        /// **This resource is in the beta stage and may change without notice.** Set
-        /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
         /// 
         /// ## Example Usage
         /// 
@@ -152,7 +143,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string AddressId;
         /// <summary>
-        /// Address Lines.
+        /// Address lines.
         /// </summary>
         public readonly ImmutableArray<string> AddressLines;
         /// <summary>
@@ -172,7 +163,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Name of a company.
+        /// Name.
         /// </summary>
         public readonly string Name;
         /// <summary>

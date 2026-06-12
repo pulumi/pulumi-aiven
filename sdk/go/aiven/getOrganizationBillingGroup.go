@@ -13,9 +13,6 @@ import (
 
 // Gets information about a billing group.
 //
-// **This resource is in the beta stage and may change without notice.** Set
-// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
-//
 // ## Example Usage
 //
 // ```go
@@ -79,6 +76,8 @@ type LookupOrganizationBillingGroupResult struct {
 	BillingGroupId string `pulumi:"billingGroupId"`
 	// Billing Group Name.
 	BillingGroupName string `pulumi:"billingGroupName"`
+	// The date when this billing group was created.
+	CreateTime string `pulumi:"createTime"`
 	// Extra billing text.
 	CustomInvoiceText string `pulumi:"customInvoiceText"`
 	// Resource ID composed as: `organization_id/billing_group_id`.
@@ -164,6 +163,11 @@ func (o LookupOrganizationBillingGroupResultOutput) BillingGroupId() pulumi.Stri
 // Billing Group Name.
 func (o LookupOrganizationBillingGroupResultOutput) BillingGroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationBillingGroupResult) string { return v.BillingGroupName }).(pulumi.StringOutput)
+}
+
+// The date when this billing group was created.
+func (o LookupOrganizationBillingGroupResultOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOrganizationBillingGroupResult) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
 // Extra billing text.

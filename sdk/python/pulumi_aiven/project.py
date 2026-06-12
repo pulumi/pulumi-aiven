@@ -244,6 +244,9 @@ class _ProjectState:
         if add_account_owners_admin_access is not None:
             pulumi.set(__self__, "add_account_owners_admin_access", add_account_owners_admin_access)
         if available_credits is not None:
+            warnings.warn("""This field is deprecated on the resource and is no longer populated. Use the `Project` data source to read this value. It will be removed in the next major release.""", DeprecationWarning)
+            pulumi.log.warn("""available_credits is deprecated: This field is deprecated on the resource and is no longer populated. Use the `Project` data source to read this value. It will be removed in the next major release.""")
+        if available_credits is not None:
             pulumi.set(__self__, "available_credits", available_credits)
         if billing_group is not None:
             pulumi.set(__self__, "billing_group", billing_group)
@@ -253,6 +256,9 @@ class _ProjectState:
             pulumi.set(__self__, "copy_from_project", copy_from_project)
         if default_cloud is not None:
             pulumi.set(__self__, "default_cloud", default_cloud)
+        if estimated_balance is not None:
+            warnings.warn("""This field is deprecated on the resource and is no longer populated. Use the `Project` data source to read this value. It will be removed in the next major release.""", DeprecationWarning)
+            pulumi.log.warn("""estimated_balance is deprecated: This field is deprecated on the resource and is no longer populated. Use the `Project` data source to read this value. It will be removed in the next major release.""")
         if estimated_balance is not None:
             pulumi.set(__self__, "estimated_balance", estimated_balance)
         if parent_id is not None:
@@ -299,6 +305,7 @@ class _ProjectState:
 
     @_builtins.property
     @pulumi.getter(name="availableCredits")
+    @_utilities.deprecated("""This field is deprecated on the resource and is no longer populated. Use the `Project` data source to read this value. It will be removed in the next major release.""")
     def available_credits(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The number of trial or promotional credits remaining for this project.
@@ -359,6 +366,7 @@ class _ProjectState:
 
     @_builtins.property
     @pulumi.getter(name="estimatedBalance")
+    @_utilities.deprecated("""This field is deprecated on the resource and is no longer populated. Use the `Project` data source to read this value. It will be removed in the next major release.""")
     def estimated_balance(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The monthly running estimate for this project for the current billing period.
@@ -637,6 +645,7 @@ class Project(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="availableCredits")
+    @_utilities.deprecated("""This field is deprecated on the resource and is no longer populated. Use the `Project` data source to read this value. It will be removed in the next major release.""")
     def available_credits(self) -> pulumi.Output[_builtins.str]:
         """
         The number of trial or promotional credits remaining for this project.
@@ -677,6 +686,7 @@ class Project(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="estimatedBalance")
+    @_utilities.deprecated("""This field is deprecated on the resource and is no longer populated. Use the `Project` data source to read this value. It will be removed in the next major release.""")
     def estimated_balance(self) -> pulumi.Output[_builtins.str]:
         """
         The monthly running estimate for this project for the current billing period.

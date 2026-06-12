@@ -132,14 +132,14 @@ public final class BillingGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Address city. Maximum length: `512`.
+     * Address city. Maximum length: `50`.
      * 
      */
     @Import(name="city")
     private @Nullable Output<String> city;
 
     /**
-     * @return Address city. Maximum length: `512`.
+     * @return Address city. Maximum length: `50`.
      * 
      */
     public Optional<Output<String>> city() {
@@ -147,14 +147,14 @@ public final class BillingGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of a company. Maximum length: `128`.
+     * Name of a company. Maximum length: `83`.
      * 
      */
     @Import(name="company")
     private @Nullable Output<String> company;
 
     /**
-     * @return Name of a company. Maximum length: `128`.
+     * @return Name of a company. Maximum length: `83`.
      * 
      */
     public Optional<Output<String>> company() {
@@ -222,14 +222,14 @@ public final class BillingGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Address state or province. Maximum length: `128`.
+     * Address state or province. Maximum length: `30`.
      * 
      */
     @Import(name="state")
     private @Nullable Output<String> state;
 
     /**
-     * @return Address state or province. Maximum length: `128`.
+     * @return Address state or province. Maximum length: `30`.
      * 
      */
     public Optional<Output<String>> state() {
@@ -259,14 +259,14 @@ public final class BillingGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Address zip code. Maximum length: `32`.
+     * Address zip code. Maximum length: `36`.
      * 
      */
     @Import(name="zipCode")
     private @Nullable Output<String> zipCode;
 
     /**
-     * @return Address zip code. Maximum length: `32`.
+     * @return Address zip code. Maximum length: `36`.
      * 
      */
     public Optional<Output<String>> zipCode() {
@@ -499,7 +499,7 @@ public final class BillingGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param city Address city. Maximum length: `512`.
+         * @param city Address city. Maximum length: `50`.
          * 
          * @return builder
          * 
@@ -510,7 +510,7 @@ public final class BillingGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param city Address city. Maximum length: `512`.
+         * @param city Address city. Maximum length: `50`.
          * 
          * @return builder
          * 
@@ -520,7 +520,7 @@ public final class BillingGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param company Name of a company. Maximum length: `128`.
+         * @param company Name of a company. Maximum length: `83`.
          * 
          * @return builder
          * 
@@ -531,7 +531,7 @@ public final class BillingGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param company Name of a company. Maximum length: `128`.
+         * @param company Name of a company. Maximum length: `83`.
          * 
          * @return builder
          * 
@@ -625,7 +625,7 @@ public final class BillingGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param state Address state or province. Maximum length: `128`.
+         * @param state Address state or province. Maximum length: `30`.
          * 
          * @return builder
          * 
@@ -636,7 +636,7 @@ public final class BillingGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param state Address state or province. Maximum length: `128`.
+         * @param state Address state or province. Maximum length: `30`.
          * 
          * @return builder
          * 
@@ -676,7 +676,7 @@ public final class BillingGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zipCode Address zip code. Maximum length: `32`.
+         * @param zipCode Address zip code. Maximum length: `36`.
          * 
          * @return builder
          * 
@@ -687,7 +687,7 @@ public final class BillingGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zipCode Address zip code. Maximum length: `32`.
+         * @param zipCode Address zip code. Maximum length: `36`.
          * 
          * @return builder
          * 

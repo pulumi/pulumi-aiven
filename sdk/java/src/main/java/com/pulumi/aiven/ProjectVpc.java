@@ -6,15 +6,17 @@ package com.pulumi.aiven;
 import com.pulumi.aiven.ProjectVpcArgs;
 import com.pulumi.aiven.Utilities;
 import com.pulumi.aiven.inputs.ProjectVpcState;
+import com.pulumi.aiven.outputs.ProjectVpcTimeouts;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Creates and manages a VPC for an Aiven project.
+ * Creates and manages a VPC for an Aiven project. If this resource is missing (for example, after a service power off), it&#39;s removed from the state and a new create plan is generated.
  * 
  * ## Example Usage
  * 
@@ -40,10 +42,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleVpc = new ProjectVpc("exampleVpc", ProjectVpcArgs.builder()
- *             .project(exampleProject.project())
- *             .cloudName("google-europe-west1")
- *             .networkCidr("192.168.1.0/24")
+ *         var example = new ProjectVpc("example", ProjectVpcArgs.builder()
+ *             .project("my-project")
+ *             .cloudName("aws-eu-central-1")
+ *             .networkCidr("192.168.6.0/24")
  *             .build());
  * 
  *     }
@@ -54,67 +56,87 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import aiven:index/projectVpc:ProjectVpc example_vpc PROJECT/ID
+ * $ pulumi import aiven:index/projectVpc:ProjectVpc example PROJECT/PROJECT_VPC_ID
  * ```
  * 
  */
 @ResourceType(type="aiven:index/projectVpc:ProjectVpc")
 public class ProjectVpc extends com.pulumi.resources.CustomResource {
     /**
-     * The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.
+     * Target cloud. Maximum length: `256`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="cloudName", refs={String.class}, tree="[0]")
     private Output<String> cloudName;
 
     /**
-     * @return The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.
+     * @return Target cloud. Maximum length: `256`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> cloudName() {
         return this.cloudName;
     }
     /**
-     * Network address range used by the VPC. For example, `192.168.0.0/24`.
+     * IPv4 network range CIDR. Maximum length: `18`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="networkCidr", refs={String.class}, tree="[0]")
     private Output<String> networkCidr;
 
     /**
-     * @return Network address range used by the VPC. For example, `192.168.0.0/24`.
+     * @return IPv4 network range CIDR. Maximum length: `18`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> networkCidr() {
         return this.networkCidr;
     }
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> project() {
         return this.project;
     }
     /**
-     * State of the VPC. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
+     * Project VPC ID.
+     * 
+     */
+    @Export(name="projectVpcId", refs={String.class}, tree="[0]")
+    private Output<String> projectVpcId;
+
+    /**
+     * @return Project VPC ID.
+     * 
+     */
+    public Output<String> projectVpcId() {
+        return this.projectVpcId;
+    }
+    /**
+     * Project VPC state. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
      * 
      */
     @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**
-     * @return State of the VPC. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
+     * @return Project VPC state. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
      * 
      */
     public Output<String> state() {
         return this.state;
+    }
+    @Export(name="timeouts", refs={ProjectVpcTimeouts.class}, tree="[0]")
+    private Output</* @Nullable */ ProjectVpcTimeouts> timeouts;
+
+    public Output<Optional<ProjectVpcTimeouts>> timeouts() {
+        return Codegen.optional(this.timeouts);
     }
 
     /**

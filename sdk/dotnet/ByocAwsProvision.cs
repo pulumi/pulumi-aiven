@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// Provisions a BYOC custom cloud environment by handing Aiven the IAM role ARN created in the customer AWS account. Transitions the environment from `Draft` to `Active` so services can be deployed into it. Create this resource after the customer-side AWS infrastructure (IAM role, VPC, subnets, security groups, buckets) has been applied, and before `aiven.ByocPermissions`. `terraform destroy` on this resource is a state-only operation -- it does not reverse provisioning. To tear down, destroy the underlying `aiven.ByocAwsEntity`.
+    /// Provisions a BYOC custom cloud environment by handing Aiven the IAM role ARN created in the customer AWS account. Transitions the environment from `Draft` to `Active` so services can be deployed into it. Create this resource after the customer-side AWS infrastructure (IAM role, VPC, subnets, security groups, buckets) has been defined.
     /// 
     /// **This resource is in the beta stage and may change without notice.** Set
     /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
@@ -69,10 +69,22 @@ namespace Pulumi.Aiven
         public Output<string> CustomCloudEnvironmentId { get; private set; } = null!;
 
         /// <summary>
+        /// Cloud names that can be used to provision a service on this BYOC.
+        /// </summary>
+        [Output("customCloudNames")]
+        public Output<ImmutableArray<string>> CustomCloudNames { get; private set; } = null!;
+
+        /// <summary>
         /// ID of an organization. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("organizationId")]
         public Output<string> OrganizationId { get; private set; } = null!;
+
+        /// <summary>
+        /// State of this BYOC cloud. The possible values are `Active`, `Creating`, `CreationFailed`, `Deleted`, `Deleting`, `DeletionFailed`, `Disconnected`, `Draft`, `Reconnecting` and `Validating`.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
 
         [Output("timeouts")]
         public Output<Outputs.ByocAwsProvisionTimeouts?> Timeouts { get; private set; } = null!;
@@ -176,11 +188,29 @@ namespace Pulumi.Aiven
         [Input("customCloudEnvironmentId")]
         public Input<string>? CustomCloudEnvironmentId { get; set; }
 
+        [Input("customCloudNames")]
+        private InputList<string>? _customCloudNames;
+
+        /// <summary>
+        /// Cloud names that can be used to provision a service on this BYOC.
+        /// </summary>
+        public InputList<string> CustomCloudNames
+        {
+            get => _customCloudNames ?? (_customCloudNames = new InputList<string>());
+            set => _customCloudNames = value;
+        }
+
         /// <summary>
         /// ID of an organization. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("organizationId")]
         public Input<string>? OrganizationId { get; set; }
+
+        /// <summary>
+        /// State of this BYOC cloud. The possible values are `Active`, `Creating`, `CreationFailed`, `Deleted`, `Deleting`, `DeletionFailed`, `Disconnected`, `Draft`, `Reconnecting` and `Validating`.
+        /// </summary>
+        [Input("state")]
+        public Input<string>? State { get; set; }
 
         [Input("timeouts")]
         public Input<Inputs.ByocAwsProvisionTimeoutsGetArgs>? Timeouts { get; set; }

@@ -24,10 +24,10 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleVpc = Aiven.GetProjectVpc.Invoke(new()
+        ///     var example = Aiven.GetProjectVpc.Invoke(new()
         ///     {
-        ///         Project = exampleProject.Project,
-        ///         CloudName = "google-europe-west1",
+        ///         Project = "my-project",
+        ///         ProjectVpcId = "1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
         ///     });
         /// 
         /// });
@@ -49,10 +49,10 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleVpc = Aiven.GetProjectVpc.Invoke(new()
+        ///     var example = Aiven.GetProjectVpc.Invoke(new()
         ///     {
-        ///         Project = exampleProject.Project,
-        ///         CloudName = "google-europe-west1",
+        ///         Project = "my-project",
+        ///         ProjectVpcId = "1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
         ///     });
         /// 
         /// });
@@ -74,10 +74,10 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleVpc = Aiven.GetProjectVpc.Invoke(new()
+        ///     var example = Aiven.GetProjectVpc.Invoke(new()
         ///     {
-        ///         Project = exampleProject.Project,
-        ///         CloudName = "google-europe-west1",
+        ///         Project = "my-project",
+        ///         ProjectVpcId = "1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
         ///     });
         /// 
         /// });
@@ -91,19 +91,28 @@ namespace Pulumi.Aiven
     public sealed class GetProjectVpcArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`.
+        /// Target cloud. The field is required with `Project`. Exactly one of the fields must be specified: `ProjectVpcId`, `CloudName` or `VpcId`.
         /// </summary>
         [Input("cloudName")]
         public string? CloudName { get; set; }
 
         /// <summary>
-        /// Identifies the project this resource belongs to.
+        /// Project name.
         /// </summary>
         [Input("project")]
         public string? Project { get; set; }
 
         /// <summary>
-        /// The ID of the VPC. This can be used to filter out the other VPCs if there are more than one for the project and cloud.
+        /// Project VPC ID. The field is required with `Project`. Exactly one of the fields must be specified: `ProjectVpcId`, `CloudName` or `VpcId`.
+        /// </summary>
+        [Input("projectVpcId")]
+        public string? ProjectVpcId { get; set; }
+
+        [Input("timeouts")]
+        public Inputs.GetProjectVpcTimeoutsArgs? Timeouts { get; set; }
+
+        /// <summary>
+        /// The ID of the VPC in `project/project_vpc_id` format. The field conflicts with `Project`. Exactly one of the fields must be specified: `ProjectVpcId`, `CloudName` or `VpcId`. **Deprecated**: This attribute is deprecated and will be removed in a future version. Use `ProjectVpcId` instead.
         /// </summary>
         [Input("vpcId")]
         public string? VpcId { get; set; }
@@ -117,19 +126,28 @@ namespace Pulumi.Aiven
     public sealed class GetProjectVpcInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`.
+        /// Target cloud. The field is required with `Project`. Exactly one of the fields must be specified: `ProjectVpcId`, `CloudName` or `VpcId`.
         /// </summary>
         [Input("cloudName")]
         public Input<string>? CloudName { get; set; }
 
         /// <summary>
-        /// Identifies the project this resource belongs to.
+        /// Project name.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The ID of the VPC. This can be used to filter out the other VPCs if there are more than one for the project and cloud.
+        /// Project VPC ID. The field is required with `Project`. Exactly one of the fields must be specified: `ProjectVpcId`, `CloudName` or `VpcId`.
+        /// </summary>
+        [Input("projectVpcId")]
+        public Input<string>? ProjectVpcId { get; set; }
+
+        [Input("timeouts")]
+        public Input<Inputs.GetProjectVpcTimeoutsInputArgs>? Timeouts { get; set; }
+
+        /// <summary>
+        /// The ID of the VPC in `project/project_vpc_id` format. The field conflicts with `Project`. Exactly one of the fields must be specified: `ProjectVpcId`, `CloudName` or `VpcId`. **Deprecated**: This attribute is deprecated and will be removed in a future version. Use `ProjectVpcId` instead.
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
@@ -145,41 +163,50 @@ namespace Pulumi.Aiven
     public sealed class GetProjectVpcResult
     {
         /// <summary>
-        /// The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`.
+        /// Target cloud. The field is required with `Project`. Exactly one of the fields must be specified: `ProjectVpcId`, `CloudName` or `VpcId`.
         /// </summary>
-        public readonly string? CloudName;
+        public readonly string CloudName;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// Resource ID composed as: `project/project_vpc_id`.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Network address range used by the VPC. For example, `192.168.0.0/24`.
+        /// IPv4 network range CIDR.
         /// </summary>
         public readonly string NetworkCidr;
         /// <summary>
-        /// Identifies the project this resource belongs to.
+        /// Project name.
         /// </summary>
-        public readonly string? Project;
+        public readonly string Project;
         /// <summary>
-        /// State of the VPC. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
+        /// Project VPC ID. The field is required with `Project`. Exactly one of the fields must be specified: `ProjectVpcId`, `CloudName` or `VpcId`.
+        /// </summary>
+        public readonly string ProjectVpcId;
+        /// <summary>
+        /// Project VPC state. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
         /// </summary>
         public readonly string State;
+        public readonly Outputs.GetProjectVpcTimeoutsResult? Timeouts;
         /// <summary>
-        /// The ID of the VPC. This can be used to filter out the other VPCs if there are more than one for the project and cloud.
+        /// The ID of the VPC in `project/project_vpc_id` format. The field conflicts with `Project`. Exactly one of the fields must be specified: `ProjectVpcId`, `CloudName` or `VpcId`. **Deprecated**: This attribute is deprecated and will be removed in a future version. Use `ProjectVpcId` instead.
         /// </summary>
         public readonly string? VpcId;
 
         [OutputConstructor]
         private GetProjectVpcResult(
-            string? cloudName,
+            string cloudName,
 
             string id,
 
             string networkCidr,
 
-            string? project,
+            string project,
+
+            string projectVpcId,
 
             string state,
+
+            Outputs.GetProjectVpcTimeoutsResult? timeouts,
 
             string? vpcId)
         {
@@ -187,7 +214,9 @@ namespace Pulumi.Aiven
             Id = id;
             NetworkCidr = networkCidr;
             Project = project;
+            ProjectVpcId = projectVpcId;
             State = state;
+            Timeouts = timeouts;
             VpcId = vpcId;
         }
     }

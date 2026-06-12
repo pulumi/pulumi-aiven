@@ -91,9 +91,6 @@ def get_organization_billing_group_list(billing_groups: Optional[Sequence[Union[
     """
     Lists billing groups for an organization.
 
-    **This resource is in the beta stage and may change without notice.** Set
-    the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
-
     ## Example Usage
 
     ```python
@@ -125,9 +122,6 @@ def get_organization_billing_group_list_output(billing_groups: pulumi.Input[Opti
                                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOrganizationBillingGroupListResult]:
     """
     Lists billing groups for an organization.
-
-    **This resource is in the beta stage and may change without notice.** Set
-    the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
 
     ## Example Usage
 
