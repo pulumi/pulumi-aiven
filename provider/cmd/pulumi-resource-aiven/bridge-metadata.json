@@ -88,18 +88,17 @@
                     },
                     "contact_emails": {
                         "maxItemsOne": false
-                    },
-                    "custom_cloud_names": {
-                        "maxItemsOne": false
-                    },
-                    "errors": {
-                        "maxItemsOne": false
                     }
                 }
             },
             "aiven_byoc_aws_provision": {
                 "current": "aiven:index/byocAwsProvision:ByocAwsProvision",
-                "majorVersion": 6
+                "majorVersion": 6,
+                "fields": {
+                    "custom_cloud_names": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "aiven_byoc_permissions": {
                 "current": "aiven:index/byocPermissions:ByocPermissions",
@@ -1998,6 +1997,22 @@
                 "current": "aiven:index/getClickhouseUser:getClickhouseUser",
                 "majorVersion": 6
             },
+            "aiven_cmk_accessor_aws": {
+                "current": "aiven:index/getCmkAccessorAws:getCmkAccessorAws",
+                "majorVersion": 6
+            },
+            "aiven_cmk_accessor_azure": {
+                "current": "aiven:index/getCmkAccessorAzure:getCmkAccessorAzure",
+                "majorVersion": 6
+            },
+            "aiven_cmk_accessor_gcp": {
+                "current": "aiven:index/getCmkAccessorGcp:getCmkAccessorGcp",
+                "majorVersion": 6
+            },
+            "aiven_cmk_accessor_oci": {
+                "current": "aiven:index/getCmkAccessorOci:getCmkAccessorOci",
+                "majorVersion": 6
+            },
             "aiven_connection_pool": {
                 "current": "aiven:index/getConnectionPool:getConnectionPool",
                 "majorVersion": 6
@@ -3738,7 +3753,7 @@
             "aiven:index/pgUser:PgUser": 1,
             "aiven:index/project:Project": 0,
             "aiven:index/projectUser:ProjectUser": 0,
-            "aiven:index/projectVpc:ProjectVpc": 0,
+            "aiven:index/projectVpc:ProjectVpc": 1,
             "aiven:index/serviceIntegration:ServiceIntegration": 0,
             "aiven:index/serviceIntegrationEndpoint:ServiceIntegrationEndpoint": 0,
             "aiven:index/staticIp:StaticIp": 1,
@@ -3764,6 +3779,10 @@
             "aiven:index/getClickhouse:getClickhouse": 0,
             "aiven:index/getClickhouseDatabase:getClickhouseDatabase": 1,
             "aiven:index/getClickhouseUser:getClickhouseUser": 1,
+            "aiven:index/getCmkAccessorAws:getCmkAccessorAws": 1,
+            "aiven:index/getCmkAccessorAzure:getCmkAccessorAzure": 1,
+            "aiven:index/getCmkAccessorGcp:getCmkAccessorGcp": 1,
+            "aiven:index/getCmkAccessorOci:getCmkAccessorOci": 1,
             "aiven:index/getConnectionPool:getConnectionPool": 1,
             "aiven:index/getDragonfly:getDragonfly": 0,
             "aiven:index/getExternalIdentity:getExternalIdentity": 1,
@@ -3813,7 +3832,7 @@
             "aiven:index/getPgUser:getPgUser": 1,
             "aiven:index/getProject:getProject": 0,
             "aiven:index/getProjectUser:getProjectUser": 0,
-            "aiven:index/getProjectVpc:getProjectVpc": 0,
+            "aiven:index/getProjectVpc:getProjectVpc": 1,
             "aiven:index/getServiceComponent:getServiceComponent": 0,
             "aiven:index/getServiceIntegration:getServiceIntegration": 0,
             "aiven:index/getServiceIntegrationEndpoint:getServiceIntegrationEndpoint": 0,
