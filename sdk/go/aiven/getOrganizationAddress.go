@@ -13,9 +13,6 @@ import (
 
 // Gets information about an organization address.
 //
-// **This resource is in the beta stage and may change without notice.** Set
-// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
-//
 // ## Example Usage
 //
 // ```go
@@ -65,7 +62,7 @@ type LookupOrganizationAddressArgs struct {
 type LookupOrganizationAddressResult struct {
 	// Address ID.
 	AddressId string `pulumi:"addressId"`
-	// Address Lines.
+	// Address lines.
 	AddressLines []string `pulumi:"addressLines"`
 	// City.
 	City string `pulumi:"city"`
@@ -75,7 +72,7 @@ type LookupOrganizationAddressResult struct {
 	CreateTime string `pulumi:"createTime"`
 	// Resource ID composed as: `organization_id/address_id`.
 	Id string `pulumi:"id"`
-	// Name of a company.
+	// Name.
 	Name string `pulumi:"name"`
 	// ID of an organization.
 	OrganizationId string `pulumi:"organizationId"`
@@ -130,7 +127,7 @@ func (o LookupOrganizationAddressResultOutput) AddressId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationAddressResult) string { return v.AddressId }).(pulumi.StringOutput)
 }
 
-// Address Lines.
+// Address lines.
 func (o LookupOrganizationAddressResultOutput) AddressLines() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupOrganizationAddressResult) []string { return v.AddressLines }).(pulumi.StringArrayOutput)
 }
@@ -155,7 +152,7 @@ func (o LookupOrganizationAddressResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationAddressResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Name of a company.
+// Name.
 func (o LookupOrganizationAddressResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationAddressResult) string { return v.Name }).(pulumi.StringOutput)
 }

@@ -12,11 +12,12 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provisions a BYOC custom cloud environment by handing Aiven the IAM role ARN created in the customer AWS account. Transitions the environment from `draft` to `active` so services can be deployed into it. Create this resource after the customer-side AWS infrastructure (IAM role, VPC, subnets, security groups, buckets) has been applied, and before `aiven.ByocPermissions`. `terraform destroy` on this resource is a state-only operation -- it does not reverse provisioning. To tear down, destroy the underlying `aiven.ByocAwsEntity`.
+ * Provisions a BYOC custom cloud environment by handing Aiven the IAM role ARN created in the customer AWS account. Transitions the environment from `draft` to `active` so services can be deployed into it. Create this resource after the customer-side AWS infrastructure (IAM role, VPC, subnets, security groups, buckets) has been defined.
  * 
  * **This resource is in the beta stage and may change without notice.** Set
  * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
@@ -122,6 +123,20 @@ public class ByocAwsProvision extends com.pulumi.resources.CustomResource {
         return this.customCloudEnvironmentId;
     }
     /**
+     * Cloud names that can be used to provision a service on this BYOC.
+     * 
+     */
+    @Export(name="customCloudNames", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> customCloudNames;
+
+    /**
+     * @return Cloud names that can be used to provision a service on this BYOC.
+     * 
+     */
+    public Output<List<String>> customCloudNames() {
+        return this.customCloudNames;
+    }
+    /**
      * ID of an organization. Changing this property forces recreation of the resource.
      * 
      */
@@ -134,6 +149,20 @@ public class ByocAwsProvision extends com.pulumi.resources.CustomResource {
      */
     public Output<String> organizationId() {
         return this.organizationId;
+    }
+    /**
+     * State of this BYOC cloud. The possible values are `active`, `creating`, `creationFailed`, `deleted`, `deleting`, `deletionFailed`, `disconnected`, `draft`, `reconnecting` and `validating`.
+     * 
+     */
+    @Export(name="state", refs={String.class}, tree="[0]")
+    private Output<String> state;
+
+    /**
+     * @return State of this BYOC cloud. The possible values are `active`, `creating`, `creationFailed`, `deleted`, `deleting`, `deletionFailed`, `disconnected`, `draft`, `reconnecting` and `validating`.
+     * 
+     */
+    public Output<String> state() {
+        return this.state;
     }
     @Export(name="timeouts", refs={ByocAwsProvisionTimeouts.class}, tree="[0]")
     private Output</* @Nullable */ ByocAwsProvisionTimeouts> timeouts;

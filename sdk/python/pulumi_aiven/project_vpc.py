@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['ProjectVpcArgs', 'ProjectVpc']
 
@@ -21,23 +23,26 @@ class ProjectVpcArgs:
     def __init__(__self__, *,
                  cloud_name: pulumi.Input[_builtins.str],
                  network_cidr: pulumi.Input[_builtins.str],
-                 project: pulumi.Input[_builtins.str]):
+                 project: pulumi.Input[_builtins.str],
+                 timeouts: pulumi.Input[Optional['ProjectVpcTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a ProjectVpc resource.
 
-        :param pulumi.Input[_builtins.str] cloud_name: The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] network_cidr: Network address range used by the VPC. For example, `192.168.0.0/24`.
-        :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] cloud_name: Target cloud. Maximum length: `256`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] network_cidr: IPv4 network range CIDR. Maximum length: `18`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
         """
         pulumi.set(__self__, "cloud_name", cloud_name)
         pulumi.set(__self__, "network_cidr", network_cidr)
         pulumi.set(__self__, "project", project)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
 
     @_builtins.property
     @pulumi.getter(name="cloudName")
     def cloud_name(self) -> pulumi.Input[_builtins.str]:
         """
-        The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.
+        Target cloud. Maximum length: `256`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "cloud_name")
 
@@ -49,7 +54,7 @@ class ProjectVpcArgs:
     @pulumi.getter(name="networkCidr")
     def network_cidr(self) -> pulumi.Input[_builtins.str]:
         """
-        Network address range used by the VPC. For example, `192.168.0.0/24`.
+        IPv4 network range CIDR. Maximum length: `18`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "network_cidr")
 
@@ -61,13 +66,22 @@ class ProjectVpcArgs:
     @pulumi.getter
     def project(self) -> pulumi.Input[_builtins.str]:
         """
-        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Project name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
     @project.setter
     def project(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "project", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> pulumi.Input[Optional['ProjectVpcTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: pulumi.Input[Optional['ProjectVpcTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
 
 
 @pulumi.input_type
@@ -76,14 +90,17 @@ class _ProjectVpcState:
                  cloud_name: pulumi.Input[Optional[_builtins.str]] = None,
                  network_cidr: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 state: pulumi.Input[Optional[_builtins.str]] = None):
+                 project_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional['ProjectVpcTimeoutsArgs']] = None):
         """
         Input properties used for looking up and filtering ProjectVpc resources.
 
-        :param pulumi.Input[_builtins.str] cloud_name: The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] network_cidr: Network address range used by the VPC. For example, `192.168.0.0/24`.
-        :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] state: State of the VPC. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
+        :param pulumi.Input[_builtins.str] cloud_name: Target cloud. Maximum length: `256`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] network_cidr: IPv4 network range CIDR. Maximum length: `18`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] project_vpc_id: Project VPC ID.
+        :param pulumi.Input[_builtins.str] state: Project VPC state. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
         """
         if cloud_name is not None:
             pulumi.set(__self__, "cloud_name", cloud_name)
@@ -91,14 +108,18 @@ class _ProjectVpcState:
             pulumi.set(__self__, "network_cidr", network_cidr)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if project_vpc_id is not None:
+            pulumi.set(__self__, "project_vpc_id", project_vpc_id)
         if state is not None:
             pulumi.set(__self__, "state", state)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
 
     @_builtins.property
     @pulumi.getter(name="cloudName")
     def cloud_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.
+        Target cloud. Maximum length: `256`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "cloud_name")
 
@@ -110,7 +131,7 @@ class _ProjectVpcState:
     @pulumi.getter(name="networkCidr")
     def network_cidr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Network address range used by the VPC. For example, `192.168.0.0/24`.
+        IPv4 network range CIDR. Maximum length: `18`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "network_cidr")
 
@@ -122,7 +143,7 @@ class _ProjectVpcState:
     @pulumi.getter
     def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Project name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -131,16 +152,37 @@ class _ProjectVpcState:
         pulumi.set(self, "project", value)
 
     @_builtins.property
+    @pulumi.getter(name="projectVpcId")
+    def project_vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Project VPC ID.
+        """
+        return pulumi.get(self, "project_vpc_id")
+
+    @project_vpc_id.setter
+    def project_vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "project_vpc_id", value)
+
+    @_builtins.property
     @pulumi.getter
     def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        State of the VPC. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
+        Project VPC state. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
         """
         return pulumi.get(self, "state")
 
     @state.setter
     def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> pulumi.Input[Optional['ProjectVpcTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: pulumi.Input[Optional['ProjectVpcTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
 
 
 @pulumi.type_token("aiven:index/projectVpc:ProjectVpc")
@@ -152,9 +194,10 @@ class ProjectVpc(pulumi.CustomResource):
                  cloud_name: pulumi.Input[Optional[_builtins.str]] = None,
                  network_cidr: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['ProjectVpcTimeoutsArgs', 'ProjectVpcTimeoutsArgsDict']]] = None,
                  __props__=None):
         """
-        Creates and manages a VPC for an Aiven project.
+        Creates and manages a VPC for an Aiven project. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
 
         ## Example Usage
 
@@ -162,24 +205,24 @@ class ProjectVpc(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        example_vpc = aiven.ProjectVpc("example_vpc",
-            project=example_project["project"],
-            cloud_name="google-europe-west1",
-            network_cidr="192.168.1.0/24")
+        example = aiven.ProjectVpc("example",
+            project="my-project",
+            cloud_name="aws-eu-central-1",
+            network_cidr="192.168.6.0/24")
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/projectVpc:ProjectVpc example_vpc PROJECT/ID
+        $ pulumi import aiven:index/projectVpc:ProjectVpc example PROJECT/PROJECT_VPC_ID
         ```
 
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] cloud_name: The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] network_cidr: Network address range used by the VPC. For example, `192.168.0.0/24`.
-        :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] cloud_name: Target cloud. Maximum length: `256`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] network_cidr: IPv4 network range CIDR. Maximum length: `18`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
         """
         ...
     @overload
@@ -188,7 +231,7 @@ class ProjectVpc(pulumi.CustomResource):
                  args: ProjectVpcArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates and manages a VPC for an Aiven project.
+        Creates and manages a VPC for an Aiven project. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
 
         ## Example Usage
 
@@ -196,16 +239,16 @@ class ProjectVpc(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        example_vpc = aiven.ProjectVpc("example_vpc",
-            project=example_project["project"],
-            cloud_name="google-europe-west1",
-            network_cidr="192.168.1.0/24")
+        example = aiven.ProjectVpc("example",
+            project="my-project",
+            cloud_name="aws-eu-central-1",
+            network_cidr="192.168.6.0/24")
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/projectVpc:ProjectVpc example_vpc PROJECT/ID
+        $ pulumi import aiven:index/projectVpc:ProjectVpc example PROJECT/PROJECT_VPC_ID
         ```
 
 
@@ -227,6 +270,7 @@ class ProjectVpc(pulumi.CustomResource):
                  cloud_name: pulumi.Input[Optional[_builtins.str]] = None,
                  network_cidr: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['ProjectVpcTimeoutsArgs', 'ProjectVpcTimeoutsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -245,6 +289,8 @@ class ProjectVpc(pulumi.CustomResource):
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
+            __props__.__dict__["timeouts"] = timeouts
+            __props__.__dict__["project_vpc_id"] = None
             __props__.__dict__["state"] = None
         super(ProjectVpc, __self__).__init__(
             'aiven:index/projectVpc:ProjectVpc',
@@ -259,7 +305,9 @@ class ProjectVpc(pulumi.CustomResource):
             cloud_name: pulumi.Input[Optional[_builtins.str]] = None,
             network_cidr: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
-            state: pulumi.Input[Optional[_builtins.str]] = None) -> 'ProjectVpc':
+            project_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['ProjectVpcTimeoutsArgs', 'ProjectVpcTimeoutsArgsDict']]] = None) -> 'ProjectVpc':
         """
         Get an existing ProjectVpc resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -267,10 +315,11 @@ class ProjectVpc(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] cloud_name: The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] network_cidr: Network address range used by the VPC. For example, `192.168.0.0/24`.
-        :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] state: State of the VPC. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
+        :param pulumi.Input[_builtins.str] cloud_name: Target cloud. Maximum length: `256`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] network_cidr: IPv4 network range CIDR. Maximum length: `18`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] project_vpc_id: Project VPC ID.
+        :param pulumi.Input[_builtins.str] state: Project VPC state. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -279,14 +328,16 @@ class ProjectVpc(pulumi.CustomResource):
         __props__.__dict__["cloud_name"] = cloud_name
         __props__.__dict__["network_cidr"] = network_cidr
         __props__.__dict__["project"] = project
+        __props__.__dict__["project_vpc_id"] = project_vpc_id
         __props__.__dict__["state"] = state
+        __props__.__dict__["timeouts"] = timeouts
         return ProjectVpc(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
     @pulumi.getter(name="cloudName")
     def cloud_name(self) -> pulumi.Output[_builtins.str]:
         """
-        The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.
+        Target cloud. Maximum length: `256`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "cloud_name")
 
@@ -294,7 +345,7 @@ class ProjectVpc(pulumi.CustomResource):
     @pulumi.getter(name="networkCidr")
     def network_cidr(self) -> pulumi.Output[_builtins.str]:
         """
-        Network address range used by the VPC. For example, `192.168.0.0/24`.
+        IPv4 network range CIDR. Maximum length: `18`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "network_cidr")
 
@@ -302,15 +353,28 @@ class ProjectVpc(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Project name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
+
+    @_builtins.property
+    @pulumi.getter(name="projectVpcId")
+    def project_vpc_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        Project VPC ID.
+        """
+        return pulumi.get(self, "project_vpc_id")
 
     @_builtins.property
     @pulumi.getter
     def state(self) -> pulumi.Output[_builtins.str]:
         """
-        State of the VPC. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
+        Project VPC state. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
         """
         return pulumi.get(self, "state")
+
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> pulumi.Output[Optional['outputs.ProjectVpcTimeouts']]:
+        return pulumi.get(self, "timeouts")
 

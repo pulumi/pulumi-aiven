@@ -91,7 +91,9 @@ class _ByocAwsProvisionState:
                  aiven_aws_assume_role_external_id: pulumi.Input[Optional[_builtins.str]] = None,
                  aws_iam_role_arn: pulumi.Input[Optional[_builtins.str]] = None,
                  custom_cloud_environment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_cloud_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
                  timeouts: pulumi.Input[Optional['ByocAwsProvisionTimeoutsArgs']] = None):
         """
         Input properties used for looking up and filtering ByocAwsProvision resources.
@@ -100,7 +102,9 @@ class _ByocAwsProvisionState:
         :param pulumi.Input[_builtins.str] aiven_aws_assume_role_external_id: External ID for assuming the IAM role for controlling the BYOC account.
         :param pulumi.Input[_builtins.str] aws_iam_role_arn: Amazon Resource Name. Maximum length: `2048`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] custom_cloud_environment_id: ID of a custom cloud environment. Length must be exactly `36`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_cloud_names: Cloud names that can be used to provision a service on this BYOC.
         :param pulumi.Input[_builtins.str] organization_id: ID of an organization. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] state: State of this BYOC cloud. The possible values are `active`, `creating`, `creation_failed`, `deleted`, `deleting`, `deletion_failed`, `disconnected`, `draft`, `reconnecting` and `validating`.
         """
         if aiven_aws_account_principal is not None:
             pulumi.set(__self__, "aiven_aws_account_principal", aiven_aws_account_principal)
@@ -110,8 +114,12 @@ class _ByocAwsProvisionState:
             pulumi.set(__self__, "aws_iam_role_arn", aws_iam_role_arn)
         if custom_cloud_environment_id is not None:
             pulumi.set(__self__, "custom_cloud_environment_id", custom_cloud_environment_id)
+        if custom_cloud_names is not None:
+            pulumi.set(__self__, "custom_cloud_names", custom_cloud_names)
         if organization_id is not None:
             pulumi.set(__self__, "organization_id", organization_id)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
         if timeouts is not None:
             pulumi.set(__self__, "timeouts", timeouts)
 
@@ -164,6 +172,18 @@ class _ByocAwsProvisionState:
         pulumi.set(self, "custom_cloud_environment_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="customCloudNames")
+    def custom_cloud_names(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Cloud names that can be used to provision a service on this BYOC.
+        """
+        return pulumi.get(self, "custom_cloud_names")
+
+    @custom_cloud_names.setter
+    def custom_cloud_names(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "custom_cloud_names", value)
+
+    @_builtins.property
     @pulumi.getter(name="organizationId")
     def organization_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -174,6 +194,18 @@ class _ByocAwsProvisionState:
     @organization_id.setter
     def organization_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "organization_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        State of this BYOC cloud. The possible values are `active`, `creating`, `creation_failed`, `deleted`, `deleting`, `deletion_failed`, `disconnected`, `draft`, `reconnecting` and `validating`.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter
@@ -197,7 +229,7 @@ class ByocAwsProvision(pulumi.CustomResource):
                  timeouts: pulumi.Input[Optional[Union['ByocAwsProvisionTimeoutsArgs', 'ByocAwsProvisionTimeoutsArgsDict']]] = None,
                  __props__=None):
         """
-        Provisions a BYOC custom cloud environment by handing Aiven the IAM role ARN created in the customer AWS account. Transitions the environment from `draft` to `active` so services can be deployed into it. Create this resource after the customer-side AWS infrastructure (IAM role, VPC, subnets, security groups, buckets) has been applied, and before `ByocPermissions`. `terraform destroy` on this resource is a state-only operation -- it does not reverse provisioning. To tear down, destroy the underlying `ByocAwsEntity`.
+        Provisions a BYOC custom cloud environment by handing Aiven the IAM role ARN created in the customer AWS account. Transitions the environment from `draft` to `active` so services can be deployed into it. Create this resource after the customer-side AWS infrastructure (IAM role, VPC, subnets, security groups, buckets) has been defined.
 
         **This resource is in the beta stage and may change without notice.** Set
         the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
@@ -234,7 +266,7 @@ class ByocAwsProvision(pulumi.CustomResource):
                  args: ByocAwsProvisionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provisions a BYOC custom cloud environment by handing Aiven the IAM role ARN created in the customer AWS account. Transitions the environment from `draft` to `active` so services can be deployed into it. Create this resource after the customer-side AWS infrastructure (IAM role, VPC, subnets, security groups, buckets) has been applied, and before `ByocPermissions`. `terraform destroy` on this resource is a state-only operation -- it does not reverse provisioning. To tear down, destroy the underlying `ByocAwsEntity`.
+        Provisions a BYOC custom cloud environment by handing Aiven the IAM role ARN created in the customer AWS account. Transitions the environment from `draft` to `active` so services can be deployed into it. Create this resource after the customer-side AWS infrastructure (IAM role, VPC, subnets, security groups, buckets) has been defined.
 
         **This resource is in the beta stage and may change without notice.** Set
         the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
@@ -298,6 +330,8 @@ class ByocAwsProvision(pulumi.CustomResource):
             __props__.__dict__["timeouts"] = timeouts
             __props__.__dict__["aiven_aws_account_principal"] = None
             __props__.__dict__["aiven_aws_assume_role_external_id"] = None
+            __props__.__dict__["custom_cloud_names"] = None
+            __props__.__dict__["state"] = None
         super(ByocAwsProvision, __self__).__init__(
             'aiven:index/byocAwsProvision:ByocAwsProvision',
             resource_name,
@@ -312,7 +346,9 @@ class ByocAwsProvision(pulumi.CustomResource):
             aiven_aws_assume_role_external_id: pulumi.Input[Optional[_builtins.str]] = None,
             aws_iam_role_arn: pulumi.Input[Optional[_builtins.str]] = None,
             custom_cloud_environment_id: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_cloud_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
             timeouts: pulumi.Input[Optional[Union['ByocAwsProvisionTimeoutsArgs', 'ByocAwsProvisionTimeoutsArgsDict']]] = None) -> 'ByocAwsProvision':
         """
         Get an existing ByocAwsProvision resource's state with the given name, id, and optional extra
@@ -325,7 +361,9 @@ class ByocAwsProvision(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] aiven_aws_assume_role_external_id: External ID for assuming the IAM role for controlling the BYOC account.
         :param pulumi.Input[_builtins.str] aws_iam_role_arn: Amazon Resource Name. Maximum length: `2048`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] custom_cloud_environment_id: ID of a custom cloud environment. Length must be exactly `36`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_cloud_names: Cloud names that can be used to provision a service on this BYOC.
         :param pulumi.Input[_builtins.str] organization_id: ID of an organization. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] state: State of this BYOC cloud. The possible values are `active`, `creating`, `creation_failed`, `deleted`, `deleting`, `deletion_failed`, `disconnected`, `draft`, `reconnecting` and `validating`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -335,7 +373,9 @@ class ByocAwsProvision(pulumi.CustomResource):
         __props__.__dict__["aiven_aws_assume_role_external_id"] = aiven_aws_assume_role_external_id
         __props__.__dict__["aws_iam_role_arn"] = aws_iam_role_arn
         __props__.__dict__["custom_cloud_environment_id"] = custom_cloud_environment_id
+        __props__.__dict__["custom_cloud_names"] = custom_cloud_names
         __props__.__dict__["organization_id"] = organization_id
+        __props__.__dict__["state"] = state
         __props__.__dict__["timeouts"] = timeouts
         return ByocAwsProvision(resource_name, opts=opts, __props__=__props__)
 
@@ -372,12 +412,28 @@ class ByocAwsProvision(pulumi.CustomResource):
         return pulumi.get(self, "custom_cloud_environment_id")
 
     @_builtins.property
+    @pulumi.getter(name="customCloudNames")
+    def custom_cloud_names(self) -> pulumi.Output[Sequence[_builtins.str]]:
+        """
+        Cloud names that can be used to provision a service on this BYOC.
+        """
+        return pulumi.get(self, "custom_cloud_names")
+
+    @_builtins.property
     @pulumi.getter(name="organizationId")
     def organization_id(self) -> pulumi.Output[_builtins.str]:
         """
         ID of an organization. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "organization_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> pulumi.Output[_builtins.str]:
+        """
+        State of this BYOC cloud. The possible values are `active`, `creating`, `creation_failed`, `deleted`, `deleting`, `deletion_failed`, `disconnected`, `draft`, `reconnecting` and `validating`.
+        """
+        return pulumi.get(self, "state")
 
     @_builtins.property
     @pulumi.getter

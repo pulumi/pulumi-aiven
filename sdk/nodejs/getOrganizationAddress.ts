@@ -9,9 +9,6 @@ import * as utilities from "./utilities";
 /**
  * Gets information about an organization address.
  *
- * **This resource is in the beta stage and may change without notice.** Set
- * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
- *
  * ## Example Usage
  *
  * ```typescript
@@ -57,7 +54,7 @@ export interface GetOrganizationAddressResult {
      */
     readonly addressId: string;
     /**
-     * Address Lines.
+     * Address lines.
      */
     readonly addressLines: string[];
     /**
@@ -77,7 +74,7 @@ export interface GetOrganizationAddressResult {
      */
     readonly id: string;
     /**
-     * Name of a company.
+     * Name.
      */
     readonly name: string;
     /**
@@ -100,9 +97,6 @@ export interface GetOrganizationAddressResult {
 }
 /**
  * Gets information about an organization address.
- *
- * **This resource is in the beta stage and may change without notice.** Set
- * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
  *
  * ## Example Usage
  *

@@ -68,7 +68,11 @@ public class Project extends com.pulumi.resources.CustomResource {
     /**
      * The number of trial or promotional credits remaining for this project.
      * 
+     * @deprecated
+     * This field is deprecated on the resource and is no longer populated. Use the `aiven.Project` data source to read this value. It will be removed in the next major release.
+     * 
      */
+    @Deprecated /* This field is deprecated on the resource and is no longer populated. Use the `aiven.Project` data source to read this value. It will be removed in the next major release. */
     @Export(name="availableCredits", refs={String.class}, tree="[0]")
     private Output<String> availableCredits;
 
@@ -138,7 +142,11 @@ public class Project extends com.pulumi.resources.CustomResource {
     /**
      * The monthly running estimate for this project for the current billing period.
      * 
+     * @deprecated
+     * This field is deprecated on the resource and is no longer populated. Use the `aiven.Project` data source to read this value. It will be removed in the next major release.
+     * 
      */
+    @Deprecated /* This field is deprecated on the resource and is no longer populated. Use the `aiven.Project` data source to read this value. It will be removed in the next major release. */
     @Export(name="estimatedBalance", refs={String.class}, tree="[0]")
     private Output<String> estimatedBalance;
 

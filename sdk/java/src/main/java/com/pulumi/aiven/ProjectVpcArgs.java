@@ -3,11 +3,14 @@
 
 package com.pulumi.aiven;
 
+import com.pulumi.aiven.inputs.ProjectVpcTimeoutsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ProjectVpcArgs extends com.pulumi.resources.ResourceArgs {
@@ -15,14 +18,14 @@ public final class ProjectVpcArgs extends com.pulumi.resources.ResourceArgs {
     public static final ProjectVpcArgs Empty = new ProjectVpcArgs();
 
     /**
-     * The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.
+     * Target cloud. Maximum length: `256`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="cloudName", required=true)
     private Output<String> cloudName;
 
     /**
-     * @return The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.
+     * @return Target cloud. Maximum length: `256`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> cloudName() {
@@ -30,14 +33,14 @@ public final class ProjectVpcArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Network address range used by the VPC. For example, `192.168.0.0/24`.
+     * IPv4 network range CIDR. Maximum length: `18`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="networkCidr", required=true)
     private Output<String> networkCidr;
 
     /**
-     * @return Network address range used by the VPC. For example, `192.168.0.0/24`.
+     * @return IPv4 network range CIDR. Maximum length: `18`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> networkCidr() {
@@ -45,18 +48,25 @@ public final class ProjectVpcArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="project", required=true)
     private Output<String> project;
 
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> project() {
         return this.project;
+    }
+
+    @Import(name="timeouts")
+    private @Nullable Output<ProjectVpcTimeoutsArgs> timeouts;
+
+    public Optional<Output<ProjectVpcTimeoutsArgs>> timeouts() {
+        return Optional.ofNullable(this.timeouts);
     }
 
     private ProjectVpcArgs() {}
@@ -65,6 +75,7 @@ public final class ProjectVpcArgs extends com.pulumi.resources.ResourceArgs {
         this.cloudName = $.cloudName;
         this.networkCidr = $.networkCidr;
         this.project = $.project;
+        this.timeouts = $.timeouts;
     }
 
     public static Builder builder() {
@@ -86,7 +97,7 @@ public final class ProjectVpcArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cloudName The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.
+         * @param cloudName Target cloud. Maximum length: `256`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -97,7 +108,7 @@ public final class ProjectVpcArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cloudName The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.
+         * @param cloudName Target cloud. Maximum length: `256`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -107,7 +118,7 @@ public final class ProjectVpcArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param networkCidr Network address range used by the VPC. For example, `192.168.0.0/24`.
+         * @param networkCidr IPv4 network range CIDR. Maximum length: `18`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -118,7 +129,7 @@ public final class ProjectVpcArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param networkCidr Network address range used by the VPC. For example, `192.168.0.0/24`.
+         * @param networkCidr IPv4 network range CIDR. Maximum length: `18`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -128,7 +139,7 @@ public final class ProjectVpcArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param project Project name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -139,13 +150,22 @@ public final class ProjectVpcArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param project Project name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        public Builder timeouts(@Nullable Output<ProjectVpcTimeoutsArgs> timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
+        public Builder timeouts(ProjectVpcTimeoutsArgs timeouts) {
+            return timeouts(Output.of(timeouts));
         }
 
         public ProjectVpcArgs build() {

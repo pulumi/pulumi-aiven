@@ -4,7 +4,6 @@
 package com.pulumi.aiven.inputs;
 
 import com.pulumi.aiven.inputs.ByocAwsEntityContactEmailArgs;
-import com.pulumi.aiven.inputs.ByocAwsEntityErrorArgs;
 import com.pulumi.aiven.inputs.ByocAwsEntityTimeoutsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -109,21 +108,6 @@ public final class ByocAwsEntityState extends com.pulumi.resources.ResourceArgs 
      */
     public Optional<Output<String>> aivenObjectStorageCredentialsCreatorUser() {
         return Optional.ofNullable(this.aivenObjectStorageCredentialsCreatorUser);
-    }
-
-    /**
-     * Amazon Resource Name. Maximum length: `2048`.
-     * 
-     */
-    @Import(name="awsIamRoleArn")
-    private @Nullable Output<String> awsIamRoleArn;
-
-    /**
-     * @return Amazon Resource Name. Maximum length: `2048`.
-     * 
-     */
-    public Optional<Output<String>> awsIamRoleArn() {
-        return Optional.ofNullable(this.awsIamRoleArn);
     }
 
     /**
@@ -262,21 +246,6 @@ public final class ByocAwsEntityState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Cloud names that can be used to provision a service on this BYOC.
-     * 
-     */
-    @Import(name="customCloudNames")
-    private @Nullable Output<List<String>> customCloudNames;
-
-    /**
-     * @return Cloud names that can be used to provision a service on this BYOC.
-     * 
-     */
-    public Optional<Output<List<String>>> customCloudNames() {
-        return Optional.ofNullable(this.customCloudNames);
-    }
-
-    /**
      * Deployment model for the BYOC cloud. The possible values are `directIpsecIngress`, `hipaa`, `ipsecIngress`, `pciDss`, `standard` and `standardPublic`. Changing this property forces recreation of the resource.
      * 
      */
@@ -304,21 +273,6 @@ public final class ByocAwsEntityState extends com.pulumi.resources.ResourceArgs 
      */
     public Optional<Output<String>> displayName() {
         return Optional.ofNullable(this.displayName);
-    }
-
-    /**
-     * List of errors for this custom cloud environment.
-     * 
-     */
-    @Import(name="errors")
-    private @Nullable Output<List<ByocAwsEntityErrorArgs>> errors;
-
-    /**
-     * @return List of errors for this custom cloud environment.
-     * 
-     */
-    public Optional<Output<List<ByocAwsEntityErrorArgs>>> errors() {
-        return Optional.ofNullable(this.errors);
     }
 
     /**
@@ -352,21 +306,6 @@ public final class ByocAwsEntityState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * State of this BYOC cloud. The possible values are `active`, `creating`, `creationFailed`, `deleted`, `deleting`, `deletionFailed`, `disconnected`, `draft`, `reconnecting` and `validating`.
-     * 
-     */
-    @Import(name="state")
-    private @Nullable Output<String> state;
-
-    /**
-     * @return State of this BYOC cloud. The possible values are `active`, `creating`, `creationFailed`, `deleted`, `deleting`, `deletionFailed`, `disconnected`, `draft`, `reconnecting` and `validating`.
-     * 
-     */
-    public Optional<Output<String>> state() {
-        return Optional.ofNullable(this.state);
-    }
-
-    /**
      * Set of resource tags.
      * 
      */
@@ -386,21 +325,6 @@ public final class ByocAwsEntityState extends com.pulumi.resources.ResourceArgs 
 
     public Optional<Output<ByocAwsEntityTimeoutsArgs>> timeouts() {
         return Optional.ofNullable(this.timeouts);
-    }
-
-    /**
-     * Custom cloud environment last update timestamp (ISO 8601).
-     * 
-     */
-    @Import(name="updateTime")
-    private @Nullable Output<String> updateTime;
-
-    /**
-     * @return Custom cloud environment last update timestamp (ISO 8601).
-     * 
-     */
-    public Optional<Output<String>> updateTime() {
-        return Optional.ofNullable(this.updateTime);
     }
 
     /**
@@ -427,7 +351,6 @@ public final class ByocAwsEntityState extends com.pulumi.resources.ResourceArgs 
         this.aivenAwsObjectStorageUserArn = $.aivenAwsObjectStorageUserArn;
         this.aivenManagementCidrBlocks = $.aivenManagementCidrBlocks;
         this.aivenObjectStorageCredentialsCreatorUser = $.aivenObjectStorageCredentialsCreatorUser;
-        this.awsIamRoleArn = $.awsIamRoleArn;
         this.awsSubnetsBastion = $.awsSubnetsBastion;
         this.awsSubnetsWorkload = $.awsSubnetsWorkload;
         this.bucketNames = $.bucketNames;
@@ -437,16 +360,12 @@ public final class ByocAwsEntityState extends com.pulumi.resources.ResourceArgs 
         this.cloudRegion = $.cloudRegion;
         this.contactEmails = $.contactEmails;
         this.customCloudEnvironmentId = $.customCloudEnvironmentId;
-        this.customCloudNames = $.customCloudNames;
         this.deploymentModel = $.deploymentModel;
         this.displayName = $.displayName;
-        this.errors = $.errors;
         this.organizationId = $.organizationId;
         this.reservedCidr = $.reservedCidr;
-        this.state = $.state;
         this.tags = $.tags;
         this.timeouts = $.timeouts;
-        this.updateTime = $.updateTime;
         this.useCustomerOwnedStorage = $.useCustomerOwnedStorage;
     }
 
@@ -602,27 +521,6 @@ public final class ByocAwsEntityState extends com.pulumi.resources.ResourceArgs 
          */
         public Builder aivenObjectStorageCredentialsCreatorUser(String aivenObjectStorageCredentialsCreatorUser) {
             return aivenObjectStorageCredentialsCreatorUser(Output.of(aivenObjectStorageCredentialsCreatorUser));
-        }
-
-        /**
-         * @param awsIamRoleArn Amazon Resource Name. Maximum length: `2048`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder awsIamRoleArn(@Nullable Output<String> awsIamRoleArn) {
-            $.awsIamRoleArn = awsIamRoleArn;
-            return this;
-        }
-
-        /**
-         * @param awsIamRoleArn Amazon Resource Name. Maximum length: `2048`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder awsIamRoleArn(String awsIamRoleArn) {
-            return awsIamRoleArn(Output.of(awsIamRoleArn));
         }
 
         /**
@@ -825,37 +723,6 @@ public final class ByocAwsEntityState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param customCloudNames Cloud names that can be used to provision a service on this BYOC.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder customCloudNames(@Nullable Output<List<String>> customCloudNames) {
-            $.customCloudNames = customCloudNames;
-            return this;
-        }
-
-        /**
-         * @param customCloudNames Cloud names that can be used to provision a service on this BYOC.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder customCloudNames(List<String> customCloudNames) {
-            return customCloudNames(Output.of(customCloudNames));
-        }
-
-        /**
-         * @param customCloudNames Cloud names that can be used to provision a service on this BYOC.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder customCloudNames(String... customCloudNames) {
-            return customCloudNames(List.of(customCloudNames));
-        }
-
-        /**
          * @param deploymentModel Deployment model for the BYOC cloud. The possible values are `directIpsecIngress`, `hipaa`, `ipsecIngress`, `pciDss`, `standard` and `standardPublic`. Changing this property forces recreation of the resource.
          * 
          * @return builder
@@ -895,37 +762,6 @@ public final class ByocAwsEntityState extends com.pulumi.resources.ResourceArgs 
          */
         public Builder displayName(String displayName) {
             return displayName(Output.of(displayName));
-        }
-
-        /**
-         * @param errors List of errors for this custom cloud environment.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder errors(@Nullable Output<List<ByocAwsEntityErrorArgs>> errors) {
-            $.errors = errors;
-            return this;
-        }
-
-        /**
-         * @param errors List of errors for this custom cloud environment.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder errors(List<ByocAwsEntityErrorArgs> errors) {
-            return errors(Output.of(errors));
-        }
-
-        /**
-         * @param errors List of errors for this custom cloud environment.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder errors(ByocAwsEntityErrorArgs... errors) {
-            return errors(List.of(errors));
         }
 
         /**
@@ -971,27 +807,6 @@ public final class ByocAwsEntityState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param state State of this BYOC cloud. The possible values are `active`, `creating`, `creationFailed`, `deleted`, `deleting`, `deletionFailed`, `disconnected`, `draft`, `reconnecting` and `validating`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder state(@Nullable Output<String> state) {
-            $.state = state;
-            return this;
-        }
-
-        /**
-         * @param state State of this BYOC cloud. The possible values are `active`, `creating`, `creationFailed`, `deleted`, `deleting`, `deletionFailed`, `disconnected`, `draft`, `reconnecting` and `validating`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder state(String state) {
-            return state(Output.of(state));
-        }
-
-        /**
          * @param tags Set of resource tags.
          * 
          * @return builder
@@ -1019,27 +834,6 @@ public final class ByocAwsEntityState extends com.pulumi.resources.ResourceArgs 
 
         public Builder timeouts(ByocAwsEntityTimeoutsArgs timeouts) {
             return timeouts(Output.of(timeouts));
-        }
-
-        /**
-         * @param updateTime Custom cloud environment last update timestamp (ISO 8601).
-         * 
-         * @return builder
-         * 
-         */
-        public Builder updateTime(@Nullable Output<String> updateTime) {
-            $.updateTime = updateTime;
-            return this;
-        }
-
-        /**
-         * @param updateTime Custom cloud environment last update timestamp (ISO 8601).
-         * 
-         * @return builder
-         * 
-         */
-        public Builder updateTime(String updateTime) {
-            return updateTime(Output.of(updateTime));
         }
 
         /**

@@ -255,6 +255,26 @@ export const getClickhouseUser: typeof import("./getClickhouseUser").getClickhou
 export const getClickhouseUserOutput: typeof import("./getClickhouseUser").getClickhouseUserOutput = null as any;
 utilities.lazyLoad(exports, ["getClickhouseUser","getClickhouseUserOutput"], () => require("./getClickhouseUser"));
 
+export { GetCmkAccessorAwsArgs, GetCmkAccessorAwsResult, GetCmkAccessorAwsOutputArgs } from "./getCmkAccessorAws";
+export const getCmkAccessorAws: typeof import("./getCmkAccessorAws").getCmkAccessorAws = null as any;
+export const getCmkAccessorAwsOutput: typeof import("./getCmkAccessorAws").getCmkAccessorAwsOutput = null as any;
+utilities.lazyLoad(exports, ["getCmkAccessorAws","getCmkAccessorAwsOutput"], () => require("./getCmkAccessorAws"));
+
+export { GetCmkAccessorAzureArgs, GetCmkAccessorAzureResult, GetCmkAccessorAzureOutputArgs } from "./getCmkAccessorAzure";
+export const getCmkAccessorAzure: typeof import("./getCmkAccessorAzure").getCmkAccessorAzure = null as any;
+export const getCmkAccessorAzureOutput: typeof import("./getCmkAccessorAzure").getCmkAccessorAzureOutput = null as any;
+utilities.lazyLoad(exports, ["getCmkAccessorAzure","getCmkAccessorAzureOutput"], () => require("./getCmkAccessorAzure"));
+
+export { GetCmkAccessorGcpArgs, GetCmkAccessorGcpResult, GetCmkAccessorGcpOutputArgs } from "./getCmkAccessorGcp";
+export const getCmkAccessorGcp: typeof import("./getCmkAccessorGcp").getCmkAccessorGcp = null as any;
+export const getCmkAccessorGcpOutput: typeof import("./getCmkAccessorGcp").getCmkAccessorGcpOutput = null as any;
+utilities.lazyLoad(exports, ["getCmkAccessorGcp","getCmkAccessorGcpOutput"], () => require("./getCmkAccessorGcp"));
+
+export { GetCmkAccessorOciArgs, GetCmkAccessorOciResult, GetCmkAccessorOciOutputArgs } from "./getCmkAccessorOci";
+export const getCmkAccessorOci: typeof import("./getCmkAccessorOci").getCmkAccessorOci = null as any;
+export const getCmkAccessorOciOutput: typeof import("./getCmkAccessorOci").getCmkAccessorOciOutput = null as any;
+utilities.lazyLoad(exports, ["getCmkAccessorOci","getCmkAccessorOciOutput"], () => require("./getCmkAccessorOci"));
+
 export { GetConnectionPoolArgs, GetConnectionPoolResult, GetConnectionPoolOutputArgs } from "./getConnectionPool";
 export const getConnectionPool: typeof import("./getConnectionPool").getConnectionPool = null as any;
 export const getConnectionPoolOutput: typeof import("./getConnectionPool").getConnectionPoolOutput = null as any;

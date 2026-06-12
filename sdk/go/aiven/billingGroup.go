@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates and manages [billing groups](https://aiven.io/docs/platform/concepts/billing-groups) and assigns them to projects.
+// Creates and manages [billing groups](https://aiven.io/docs/platform/concepts/billing-groups) and assigns them to projects. **Deprecated**: Use `OrganizationBillingGroup` instead. This resource will be removed in the next major release.
 //
 // ## Example Usage
 //
@@ -86,9 +86,9 @@ type BillingGroup struct {
 	BillingGroupId pulumi.StringOutput `pulumi:"billingGroupId"`
 	// Credit card ID. Maximum length: `64`.
 	CardId pulumi.StringPtrOutput `pulumi:"cardId"`
-	// Address city. Maximum length: `512`.
+	// Address city. Maximum length: `50`.
 	City pulumi.StringOutput `pulumi:"city"`
-	// Name of a company. Maximum length: `128`.
+	// Name of a company. Maximum length: `83`.
 	Company pulumi.StringOutput `pulumi:"company"`
 	// Billing group ID. Length must be exactly `36`. Changing this property forces recreation of the resource.
 	CopyFromBillingGroup pulumi.StringPtrOutput `pulumi:"copyFromBillingGroup"`
@@ -98,12 +98,12 @@ type BillingGroup struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Link a billing group to an existing organization by using its ID.
 	ParentId pulumi.StringOutput `pulumi:"parentId"`
-	// Address state or province. Maximum length: `128`.
+	// Address state or province. Maximum length: `30`.
 	State    pulumi.StringPtrOutput        `pulumi:"state"`
 	Timeouts BillingGroupTimeoutsPtrOutput `pulumi:"timeouts"`
 	// EU VAT Identification Number. Maximum length: `64`.
 	VatId pulumi.StringOutput `pulumi:"vatId"`
-	// Address zip code. Maximum length: `32`.
+	// Address zip code. Maximum length: `36`.
 	ZipCode pulumi.StringPtrOutput `pulumi:"zipCode"`
 }
 
@@ -158,9 +158,9 @@ type billingGroupState struct {
 	BillingGroupId *string `pulumi:"billingGroupId"`
 	// Credit card ID. Maximum length: `64`.
 	CardId *string `pulumi:"cardId"`
-	// Address city. Maximum length: `512`.
+	// Address city. Maximum length: `50`.
 	City *string `pulumi:"city"`
-	// Name of a company. Maximum length: `128`.
+	// Name of a company. Maximum length: `83`.
 	Company *string `pulumi:"company"`
 	// Billing group ID. Length must be exactly `36`. Changing this property forces recreation of the resource.
 	CopyFromBillingGroup *string `pulumi:"copyFromBillingGroup"`
@@ -170,12 +170,12 @@ type billingGroupState struct {
 	Name *string `pulumi:"name"`
 	// Link a billing group to an existing organization by using its ID.
 	ParentId *string `pulumi:"parentId"`
-	// Address state or province. Maximum length: `128`.
+	// Address state or province. Maximum length: `30`.
 	State    *string               `pulumi:"state"`
 	Timeouts *BillingGroupTimeouts `pulumi:"timeouts"`
 	// EU VAT Identification Number. Maximum length: `64`.
 	VatId *string `pulumi:"vatId"`
-	// Address zip code. Maximum length: `32`.
+	// Address zip code. Maximum length: `36`.
 	ZipCode *string `pulumi:"zipCode"`
 }
 
@@ -198,9 +198,9 @@ type BillingGroupState struct {
 	BillingGroupId pulumi.StringPtrInput
 	// Credit card ID. Maximum length: `64`.
 	CardId pulumi.StringPtrInput
-	// Address city. Maximum length: `512`.
+	// Address city. Maximum length: `50`.
 	City pulumi.StringPtrInput
-	// Name of a company. Maximum length: `128`.
+	// Name of a company. Maximum length: `83`.
 	Company pulumi.StringPtrInput
 	// Billing group ID. Length must be exactly `36`. Changing this property forces recreation of the resource.
 	CopyFromBillingGroup pulumi.StringPtrInput
@@ -210,12 +210,12 @@ type BillingGroupState struct {
 	Name pulumi.StringPtrInput
 	// Link a billing group to an existing organization by using its ID.
 	ParentId pulumi.StringPtrInput
-	// Address state or province. Maximum length: `128`.
+	// Address state or province. Maximum length: `30`.
 	State    pulumi.StringPtrInput
 	Timeouts BillingGroupTimeoutsPtrInput
 	// EU VAT Identification Number. Maximum length: `64`.
 	VatId pulumi.StringPtrInput
-	// Address zip code. Maximum length: `32`.
+	// Address zip code. Maximum length: `36`.
 	ZipCode pulumi.StringPtrInput
 }
 
@@ -240,9 +240,9 @@ type billingGroupArgs struct {
 	BillingExtraText *string `pulumi:"billingExtraText"`
 	// Credit card ID. Maximum length: `64`.
 	CardId *string `pulumi:"cardId"`
-	// Address city. Maximum length: `512`.
+	// Address city. Maximum length: `50`.
 	City *string `pulumi:"city"`
-	// Name of a company. Maximum length: `128`.
+	// Name of a company. Maximum length: `83`.
 	Company *string `pulumi:"company"`
 	// Billing group ID. Length must be exactly `36`. Changing this property forces recreation of the resource.
 	CopyFromBillingGroup *string `pulumi:"copyFromBillingGroup"`
@@ -252,12 +252,12 @@ type billingGroupArgs struct {
 	Name *string `pulumi:"name"`
 	// Link a billing group to an existing organization by using its ID.
 	ParentId string `pulumi:"parentId"`
-	// Address state or province. Maximum length: `128`.
+	// Address state or province. Maximum length: `30`.
 	State    *string               `pulumi:"state"`
 	Timeouts *BillingGroupTimeouts `pulumi:"timeouts"`
 	// EU VAT Identification Number. Maximum length: `64`.
 	VatId *string `pulumi:"vatId"`
-	// Address zip code. Maximum length: `32`.
+	// Address zip code. Maximum length: `36`.
 	ZipCode *string `pulumi:"zipCode"`
 }
 
@@ -279,9 +279,9 @@ type BillingGroupArgs struct {
 	BillingExtraText pulumi.StringPtrInput
 	// Credit card ID. Maximum length: `64`.
 	CardId pulumi.StringPtrInput
-	// Address city. Maximum length: `512`.
+	// Address city. Maximum length: `50`.
 	City pulumi.StringPtrInput
-	// Name of a company. Maximum length: `128`.
+	// Name of a company. Maximum length: `83`.
 	Company pulumi.StringPtrInput
 	// Billing group ID. Length must be exactly `36`. Changing this property forces recreation of the resource.
 	CopyFromBillingGroup pulumi.StringPtrInput
@@ -291,12 +291,12 @@ type BillingGroupArgs struct {
 	Name pulumi.StringPtrInput
 	// Link a billing group to an existing organization by using its ID.
 	ParentId pulumi.StringInput
-	// Address state or province. Maximum length: `128`.
+	// Address state or province. Maximum length: `30`.
 	State    pulumi.StringPtrInput
 	Timeouts BillingGroupTimeoutsPtrInput
 	// EU VAT Identification Number. Maximum length: `64`.
 	VatId pulumi.StringPtrInput
-	// Address zip code. Maximum length: `32`.
+	// Address zip code. Maximum length: `36`.
 	ZipCode pulumi.StringPtrInput
 }
 
@@ -429,12 +429,12 @@ func (o BillingGroupOutput) CardId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BillingGroup) pulumi.StringPtrOutput { return v.CardId }).(pulumi.StringPtrOutput)
 }
 
-// Address city. Maximum length: `512`.
+// Address city. Maximum length: `50`.
 func (o BillingGroupOutput) City() pulumi.StringOutput {
 	return o.ApplyT(func(v *BillingGroup) pulumi.StringOutput { return v.City }).(pulumi.StringOutput)
 }
 
-// Name of a company. Maximum length: `128`.
+// Name of a company. Maximum length: `83`.
 func (o BillingGroupOutput) Company() pulumi.StringOutput {
 	return o.ApplyT(func(v *BillingGroup) pulumi.StringOutput { return v.Company }).(pulumi.StringOutput)
 }
@@ -459,7 +459,7 @@ func (o BillingGroupOutput) ParentId() pulumi.StringOutput {
 	return o.ApplyT(func(v *BillingGroup) pulumi.StringOutput { return v.ParentId }).(pulumi.StringOutput)
 }
 
-// Address state or province. Maximum length: `128`.
+// Address state or province. Maximum length: `30`.
 func (o BillingGroupOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BillingGroup) pulumi.StringPtrOutput { return v.State }).(pulumi.StringPtrOutput)
 }
@@ -473,7 +473,7 @@ func (o BillingGroupOutput) VatId() pulumi.StringOutput {
 	return o.ApplyT(func(v *BillingGroup) pulumi.StringOutput { return v.VatId }).(pulumi.StringOutput)
 }
 
-// Address zip code. Maximum length: `32`.
+// Address zip code. Maximum length: `36`.
 func (o BillingGroupOutput) ZipCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BillingGroup) pulumi.StringPtrOutput { return v.ZipCode }).(pulumi.StringPtrOutput)
 }

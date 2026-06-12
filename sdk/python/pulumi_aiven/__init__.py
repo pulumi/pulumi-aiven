@@ -56,6 +56,10 @@ from .get_billing_group import *
 from .get_clickhouse import *
 from .get_clickhouse_database import *
 from .get_clickhouse_user import *
+from .get_cmk_accessor_aws import *
+from .get_cmk_accessor_azure import *
+from .get_cmk_accessor_gcp import *
+from .get_cmk_accessor_oci import *
 from .get_connection_pool import *
 from .get_dragonfly import *
 from .get_external_identity import *

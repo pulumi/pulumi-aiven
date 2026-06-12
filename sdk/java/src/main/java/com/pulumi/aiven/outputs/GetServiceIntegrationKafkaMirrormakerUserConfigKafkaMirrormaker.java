@@ -18,15 +18,35 @@ public final class GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormak
      */
     private @Nullable String consumerAutoOffsetReset;
     /**
+     * @return The maximum amount of data the server should return for a fetch request.
+     * 
+     */
+    private @Nullable Integer consumerFetchMaxBytes;
+    /**
      * @return The minimum amount of data the server should return for a fetch request. Example: `1024`.
      * 
      */
     private @Nullable Integer consumerFetchMinBytes;
     /**
+     * @return The maximum amount of data per partition the server will return.
+     * 
+     */
+    private @Nullable Integer consumerMaxPartitionFetchBytes;
+    /**
      * @return Set consumer max.poll.records. The default is 500. Example: `500`.
      * 
      */
     private @Nullable Integer consumerMaxPollRecords;
+    /**
+     * @return The size of the TCP receive buffer (SO_RCVBUF) to use when reading data. -1 uses the OS default. Example: `65536`.
+     * 
+     */
+    private @Nullable Integer consumerReceiveBufferBytes;
+    /**
+     * @return The maximum time the client will wait for a response to a request. Example: `30000`.
+     * 
+     */
+    private @Nullable Integer consumerRequestTimeoutMs;
     /**
      * @return The batch size in bytes producer will attempt to collect before publishing to broker. Example: `1024`.
      * 
@@ -52,6 +72,16 @@ public final class GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormak
      * 
      */
     private @Nullable Integer producerMaxRequestSize;
+    /**
+     * @return The maximum time the client will wait for a response to a request. Example: `30000`.
+     * 
+     */
+    private @Nullable Integer producerRequestTimeoutMs;
+    /**
+     * @return The size of the TCP send buffer (SO_SNDBUF) to use when sending data. -1 uses the OS default. Example: `131072`.
+     * 
+     */
+    private @Nullable Integer producerSendBufferBytes;
 
     private GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker() {}
     /**
@@ -62,6 +92,13 @@ public final class GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormak
         return Optional.ofNullable(this.consumerAutoOffsetReset);
     }
     /**
+     * @return The maximum amount of data the server should return for a fetch request.
+     * 
+     */
+    public Optional<Integer> consumerFetchMaxBytes() {
+        return Optional.ofNullable(this.consumerFetchMaxBytes);
+    }
+    /**
      * @return The minimum amount of data the server should return for a fetch request. Example: `1024`.
      * 
      */
@@ -69,11 +106,32 @@ public final class GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormak
         return Optional.ofNullable(this.consumerFetchMinBytes);
     }
     /**
+     * @return The maximum amount of data per partition the server will return.
+     * 
+     */
+    public Optional<Integer> consumerMaxPartitionFetchBytes() {
+        return Optional.ofNullable(this.consumerMaxPartitionFetchBytes);
+    }
+    /**
      * @return Set consumer max.poll.records. The default is 500. Example: `500`.
      * 
      */
     public Optional<Integer> consumerMaxPollRecords() {
         return Optional.ofNullable(this.consumerMaxPollRecords);
+    }
+    /**
+     * @return The size of the TCP receive buffer (SO_RCVBUF) to use when reading data. -1 uses the OS default. Example: `65536`.
+     * 
+     */
+    public Optional<Integer> consumerReceiveBufferBytes() {
+        return Optional.ofNullable(this.consumerReceiveBufferBytes);
+    }
+    /**
+     * @return The maximum time the client will wait for a response to a request. Example: `30000`.
+     * 
+     */
+    public Optional<Integer> consumerRequestTimeoutMs() {
+        return Optional.ofNullable(this.consumerRequestTimeoutMs);
     }
     /**
      * @return The batch size in bytes producer will attempt to collect before publishing to broker. Example: `1024`.
@@ -110,6 +168,20 @@ public final class GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormak
     public Optional<Integer> producerMaxRequestSize() {
         return Optional.ofNullable(this.producerMaxRequestSize);
     }
+    /**
+     * @return The maximum time the client will wait for a response to a request. Example: `30000`.
+     * 
+     */
+    public Optional<Integer> producerRequestTimeoutMs() {
+        return Optional.ofNullable(this.producerRequestTimeoutMs);
+    }
+    /**
+     * @return The size of the TCP send buffer (SO_SNDBUF) to use when sending data. -1 uses the OS default. Example: `131072`.
+     * 
+     */
+    public Optional<Integer> producerSendBufferBytes() {
+        return Optional.ofNullable(this.producerSendBufferBytes);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -121,24 +193,36 @@ public final class GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormak
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String consumerAutoOffsetReset;
+        private @Nullable Integer consumerFetchMaxBytes;
         private @Nullable Integer consumerFetchMinBytes;
+        private @Nullable Integer consumerMaxPartitionFetchBytes;
         private @Nullable Integer consumerMaxPollRecords;
+        private @Nullable Integer consumerReceiveBufferBytes;
+        private @Nullable Integer consumerRequestTimeoutMs;
         private @Nullable Integer producerBatchSize;
         private @Nullable Integer producerBufferMemory;
         private @Nullable String producerCompressionType;
         private @Nullable Integer producerLingerMs;
         private @Nullable Integer producerMaxRequestSize;
+        private @Nullable Integer producerRequestTimeoutMs;
+        private @Nullable Integer producerSendBufferBytes;
         public Builder() {}
         public Builder(GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.consumerAutoOffsetReset = defaults.consumerAutoOffsetReset;
+    	      this.consumerFetchMaxBytes = defaults.consumerFetchMaxBytes;
     	      this.consumerFetchMinBytes = defaults.consumerFetchMinBytes;
+    	      this.consumerMaxPartitionFetchBytes = defaults.consumerMaxPartitionFetchBytes;
     	      this.consumerMaxPollRecords = defaults.consumerMaxPollRecords;
+    	      this.consumerReceiveBufferBytes = defaults.consumerReceiveBufferBytes;
+    	      this.consumerRequestTimeoutMs = defaults.consumerRequestTimeoutMs;
     	      this.producerBatchSize = defaults.producerBatchSize;
     	      this.producerBufferMemory = defaults.producerBufferMemory;
     	      this.producerCompressionType = defaults.producerCompressionType;
     	      this.producerLingerMs = defaults.producerLingerMs;
     	      this.producerMaxRequestSize = defaults.producerMaxRequestSize;
+    	      this.producerRequestTimeoutMs = defaults.producerRequestTimeoutMs;
+    	      this.producerSendBufferBytes = defaults.producerSendBufferBytes;
         }
 
         @CustomType.Setter
@@ -148,15 +232,39 @@ public final class GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormak
             return this;
         }
         @CustomType.Setter
+        public Builder consumerFetchMaxBytes(@Nullable Integer consumerFetchMaxBytes) {
+
+            this.consumerFetchMaxBytes = consumerFetchMaxBytes;
+            return this;
+        }
+        @CustomType.Setter
         public Builder consumerFetchMinBytes(@Nullable Integer consumerFetchMinBytes) {
 
             this.consumerFetchMinBytes = consumerFetchMinBytes;
             return this;
         }
         @CustomType.Setter
+        public Builder consumerMaxPartitionFetchBytes(@Nullable Integer consumerMaxPartitionFetchBytes) {
+
+            this.consumerMaxPartitionFetchBytes = consumerMaxPartitionFetchBytes;
+            return this;
+        }
+        @CustomType.Setter
         public Builder consumerMaxPollRecords(@Nullable Integer consumerMaxPollRecords) {
 
             this.consumerMaxPollRecords = consumerMaxPollRecords;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder consumerReceiveBufferBytes(@Nullable Integer consumerReceiveBufferBytes) {
+
+            this.consumerReceiveBufferBytes = consumerReceiveBufferBytes;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder consumerRequestTimeoutMs(@Nullable Integer consumerRequestTimeoutMs) {
+
+            this.consumerRequestTimeoutMs = consumerRequestTimeoutMs;
             return this;
         }
         @CustomType.Setter
@@ -189,16 +297,34 @@ public final class GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormak
             this.producerMaxRequestSize = producerMaxRequestSize;
             return this;
         }
+        @CustomType.Setter
+        public Builder producerRequestTimeoutMs(@Nullable Integer producerRequestTimeoutMs) {
+
+            this.producerRequestTimeoutMs = producerRequestTimeoutMs;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder producerSendBufferBytes(@Nullable Integer producerSendBufferBytes) {
+
+            this.producerSendBufferBytes = producerSendBufferBytes;
+            return this;
+        }
         public GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker build() {
             final var _resultValue = new GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker();
             _resultValue.consumerAutoOffsetReset = consumerAutoOffsetReset;
+            _resultValue.consumerFetchMaxBytes = consumerFetchMaxBytes;
             _resultValue.consumerFetchMinBytes = consumerFetchMinBytes;
+            _resultValue.consumerMaxPartitionFetchBytes = consumerMaxPartitionFetchBytes;
             _resultValue.consumerMaxPollRecords = consumerMaxPollRecords;
+            _resultValue.consumerReceiveBufferBytes = consumerReceiveBufferBytes;
+            _resultValue.consumerRequestTimeoutMs = consumerRequestTimeoutMs;
             _resultValue.producerBatchSize = producerBatchSize;
             _resultValue.producerBufferMemory = producerBufferMemory;
             _resultValue.producerCompressionType = producerCompressionType;
             _resultValue.producerLingerMs = producerLingerMs;
             _resultValue.producerMaxRequestSize = producerMaxRequestSize;
+            _resultValue.producerRequestTimeoutMs = producerRequestTimeoutMs;
+            _resultValue.producerSendBufferBytes = producerSendBufferBytes;
             return _resultValue;
         }
     }

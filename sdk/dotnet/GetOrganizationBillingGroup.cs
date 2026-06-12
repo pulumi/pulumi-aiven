@@ -14,9 +14,6 @@ namespace Pulumi.Aiven
         /// <summary>
         /// Gets information about a billing group.
         /// 
-        /// **This resource is in the beta stage and may change without notice.** Set
-        /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -42,9 +39,6 @@ namespace Pulumi.Aiven
         /// <summary>
         /// Gets information about a billing group.
         /// 
-        /// **This resource is in the beta stage and may change without notice.** Set
-        /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
-        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -69,9 +63,6 @@ namespace Pulumi.Aiven
 
         /// <summary>
         /// Gets information about a billing group.
-        /// 
-        /// **This resource is in the beta stage and may change without notice.** Set
-        /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
         /// 
         /// ## Example Usage
         /// 
@@ -240,6 +231,10 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string BillingGroupName;
         /// <summary>
+        /// The date when this billing group was created.
+        /// </summary>
+        public readonly string CreateTime;
+        /// <summary>
         /// Extra billing text.
         /// </summary>
         public readonly string CustomInvoiceText;
@@ -277,6 +272,8 @@ namespace Pulumi.Aiven
 
             string billingGroupName,
 
+            string createTime,
+
             string customInvoiceText,
 
             string id,
@@ -296,6 +293,7 @@ namespace Pulumi.Aiven
             BillingEmails = billingEmails;
             BillingGroupId = billingGroupId;
             BillingGroupName = billingGroupName;
+            CreateTime = createTime;
             CustomInvoiceText = customInvoiceText;
             Id = id;
             OrganizationId = organizationId;

@@ -34,6 +34,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string BillingGroupName;
         /// <summary>
+        /// The date when this billing group was created.
+        /// </summary>
+        public readonly string CreateTime;
+        /// <summary>
         /// Extra billing text.
         /// </summary>
         public readonly string CustomInvoiceText;
@@ -66,6 +70,8 @@ namespace Pulumi.Aiven.Outputs
 
             string billingGroupName,
 
+            string createTime,
+
             string customInvoiceText,
 
             string organizationId,
@@ -81,6 +87,7 @@ namespace Pulumi.Aiven.Outputs
             BillingEmails = billingEmails;
             BillingGroupId = billingGroupId;
             BillingGroupName = billingGroupName;
+            CreateTime = createTime;
             CustomInvoiceText = customInvoiceText;
             OrganizationId = organizationId;
             PaymentMethods = paymentMethods;

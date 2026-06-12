@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates and manages a VPC for an Aiven project.
+// Creates and manages a VPC for an Aiven project. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
 //
 // ## Example Usage
 //
@@ -28,10 +28,10 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewProjectVpc(ctx, "example_vpc", &aiven.ProjectVpcArgs{
-//				Project:     pulumi.Any(exampleProject.Project),
-//				CloudName:   pulumi.String("google-europe-west1"),
-//				NetworkCidr: pulumi.String("192.168.1.0/24"),
+//			_, err := aiven.NewProjectVpc(ctx, "example", &aiven.ProjectVpcArgs{
+//				Project:     pulumi.String("my-project"),
+//				CloudName:   pulumi.String("aws-eu-central-1"),
+//				NetworkCidr: pulumi.String("192.168.6.0/24"),
 //			})
 //			if err != nil {
 //				return err
@@ -45,19 +45,22 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import aiven:index/projectVpc:ProjectVpc example_vpc PROJECT/ID
+// $ pulumi import aiven:index/projectVpc:ProjectVpc example PROJECT/PROJECT_VPC_ID
 // ```
 type ProjectVpc struct {
 	pulumi.CustomResourceState
 
-	// The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.
+	// Target cloud. Maximum length: `256`. Changing this property forces recreation of the resource.
 	CloudName pulumi.StringOutput `pulumi:"cloudName"`
-	// Network address range used by the VPC. For example, `192.168.0.0/24`.
+	// IPv4 network range CIDR. Maximum length: `18`. Changing this property forces recreation of the resource.
 	NetworkCidr pulumi.StringOutput `pulumi:"networkCidr"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// State of the VPC. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
-	State pulumi.StringOutput `pulumi:"state"`
+	// Project VPC ID.
+	ProjectVpcId pulumi.StringOutput `pulumi:"projectVpcId"`
+	// Project VPC state. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
+	State    pulumi.StringOutput         `pulumi:"state"`
+	Timeouts ProjectVpcTimeoutsPtrOutput `pulumi:"timeouts"`
 }
 
 // NewProjectVpc registers a new resource with the given unique name, arguments, and options.
@@ -99,25 +102,31 @@ func GetProjectVpc(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ProjectVpc resources.
 type projectVpcState struct {
-	// The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.
+	// Target cloud. Maximum length: `256`. Changing this property forces recreation of the resource.
 	CloudName *string `pulumi:"cloudName"`
-	// Network address range used by the VPC. For example, `192.168.0.0/24`.
+	// IPv4 network range CIDR. Maximum length: `18`. Changing this property forces recreation of the resource.
 	NetworkCidr *string `pulumi:"networkCidr"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project *string `pulumi:"project"`
-	// State of the VPC. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
-	State *string `pulumi:"state"`
+	// Project VPC ID.
+	ProjectVpcId *string `pulumi:"projectVpcId"`
+	// Project VPC state. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
+	State    *string             `pulumi:"state"`
+	Timeouts *ProjectVpcTimeouts `pulumi:"timeouts"`
 }
 
 type ProjectVpcState struct {
-	// The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.
+	// Target cloud. Maximum length: `256`. Changing this property forces recreation of the resource.
 	CloudName pulumi.StringPtrInput
-	// Network address range used by the VPC. For example, `192.168.0.0/24`.
+	// IPv4 network range CIDR. Maximum length: `18`. Changing this property forces recreation of the resource.
 	NetworkCidr pulumi.StringPtrInput
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project pulumi.StringPtrInput
-	// State of the VPC. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
-	State pulumi.StringPtrInput
+	// Project VPC ID.
+	ProjectVpcId pulumi.StringPtrInput
+	// Project VPC state. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
+	State    pulumi.StringPtrInput
+	Timeouts ProjectVpcTimeoutsPtrInput
 }
 
 func (ProjectVpcState) ElementType() reflect.Type {
@@ -125,22 +134,24 @@ func (ProjectVpcState) ElementType() reflect.Type {
 }
 
 type projectVpcArgs struct {
-	// The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.
+	// Target cloud. Maximum length: `256`. Changing this property forces recreation of the resource.
 	CloudName string `pulumi:"cloudName"`
-	// Network address range used by the VPC. For example, `192.168.0.0/24`.
+	// IPv4 network range CIDR. Maximum length: `18`. Changing this property forces recreation of the resource.
 	NetworkCidr string `pulumi:"networkCidr"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	Project string `pulumi:"project"`
+	// Project name. Changing this property forces recreation of the resource.
+	Project  string              `pulumi:"project"`
+	Timeouts *ProjectVpcTimeouts `pulumi:"timeouts"`
 }
 
 // The set of arguments for constructing a ProjectVpc resource.
 type ProjectVpcArgs struct {
-	// The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.
+	// Target cloud. Maximum length: `256`. Changing this property forces recreation of the resource.
 	CloudName pulumi.StringInput
-	// Network address range used by the VPC. For example, `192.168.0.0/24`.
+	// IPv4 network range CIDR. Maximum length: `18`. Changing this property forces recreation of the resource.
 	NetworkCidr pulumi.StringInput
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	Project pulumi.StringInput
+	// Project name. Changing this property forces recreation of the resource.
+	Project  pulumi.StringInput
+	Timeouts ProjectVpcTimeoutsPtrInput
 }
 
 func (ProjectVpcArgs) ElementType() reflect.Type {
@@ -230,24 +241,33 @@ func (o ProjectVpcOutput) ToProjectVpcOutputWithContext(ctx context.Context) Pro
 	return o
 }
 
-// The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.
+// Target cloud. Maximum length: `256`. Changing this property forces recreation of the resource.
 func (o ProjectVpcOutput) CloudName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectVpc) pulumi.StringOutput { return v.CloudName }).(pulumi.StringOutput)
 }
 
-// Network address range used by the VPC. For example, `192.168.0.0/24`.
+// IPv4 network range CIDR. Maximum length: `18`. Changing this property forces recreation of the resource.
 func (o ProjectVpcOutput) NetworkCidr() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectVpc) pulumi.StringOutput { return v.NetworkCidr }).(pulumi.StringOutput)
 }
 
-// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// Project name. Changing this property forces recreation of the resource.
 func (o ProjectVpcOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectVpc) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// State of the VPC. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
+// Project VPC ID.
+func (o ProjectVpcOutput) ProjectVpcId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectVpc) pulumi.StringOutput { return v.ProjectVpcId }).(pulumi.StringOutput)
+}
+
+// Project VPC state. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
 func (o ProjectVpcOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectVpc) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+func (o ProjectVpcOutput) Timeouts() ProjectVpcTimeoutsPtrOutput {
+	return o.ApplyT(func(v *ProjectVpc) ProjectVpcTimeoutsPtrOutput { return v.Timeouts }).(ProjectVpcTimeoutsPtrOutput)
 }
 
 type ProjectVpcArrayOutput struct{ *pulumi.OutputState }

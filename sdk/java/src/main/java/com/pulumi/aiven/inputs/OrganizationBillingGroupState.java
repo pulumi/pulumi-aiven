@@ -96,6 +96,21 @@ public final class OrganizationBillingGroupState extends com.pulumi.resources.Re
     }
 
     /**
+     * The date when this billing group was created.
+     * 
+     */
+    @Import(name="createTime")
+    private @Nullable Output<String> createTime;
+
+    /**
+     * @return The date when this billing group was created.
+     * 
+     */
+    public Optional<Output<String>> createTime() {
+        return Optional.ofNullable(this.createTime);
+    }
+
+    /**
      * Extra billing text. Maximum length: `256`.
      * 
      */
@@ -185,6 +200,7 @@ public final class OrganizationBillingGroupState extends com.pulumi.resources.Re
         this.billingEmails = $.billingEmails;
         this.billingGroupId = $.billingGroupId;
         this.billingGroupName = $.billingGroupName;
+        this.createTime = $.createTime;
         this.customInvoiceText = $.customInvoiceText;
         this.organizationId = $.organizationId;
         this.paymentMethod = $.paymentMethod;
@@ -334,6 +350,27 @@ public final class OrganizationBillingGroupState extends com.pulumi.resources.Re
          */
         public Builder billingGroupName(String billingGroupName) {
             return billingGroupName(Output.of(billingGroupName));
+        }
+
+        /**
+         * @param createTime The date when this billing group was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(@Nullable Output<String> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        /**
+         * @param createTime The date when this billing group was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(String createTime) {
+            return createTime(Output.of(createTime));
         }
 
         /**

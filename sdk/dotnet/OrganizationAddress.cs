@@ -12,9 +12,6 @@ namespace Pulumi.Aiven
     /// <summary>
     /// Creates and manages an organization address.
     /// 
-    /// **This resource is in the beta stage and may change without notice.** Set
-    /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -30,7 +27,7 @@ namespace Pulumi.Aiven
     ///         OrganizationId = "org1a23f456789",
     ///         AddressLines = new[]
     ///         {
-    ///             "Main Street 1",
+    ///             "Street 1",
     ///         },
     ///         City = "Helsinki",
     ///         CountryCode = "FI",
@@ -58,13 +55,13 @@ namespace Pulumi.Aiven
         public Output<string> AddressId { get; private set; } = null!;
 
         /// <summary>
-        /// Address Lines.
+        /// Address lines.
         /// </summary>
         [Output("addressLines")]
         public Output<ImmutableArray<string>> AddressLines { get; private set; } = null!;
 
         /// <summary>
-        /// City. Maximum length: `125`.
+        /// City. Maximum length: `50`.
         /// </summary>
         [Output("city")]
         public Output<string> City { get; private set; } = null!;
@@ -82,7 +79,7 @@ namespace Pulumi.Aiven
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Name of a company. Length must be between `1` and `83`.
+        /// Name. Length must be between `1` and `83`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -94,7 +91,7 @@ namespace Pulumi.Aiven
         public Output<string> OrganizationId { get; private set; } = null!;
 
         /// <summary>
-        /// State. Maximum length: `128`.
+        /// State. Maximum length: `30`.
         /// </summary>
         [Output("state")]
         public Output<string?> State { get; private set; } = null!;
@@ -109,7 +106,7 @@ namespace Pulumi.Aiven
         public Output<string> UpdateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Zip Code. Maximum length: `10`.
+        /// Zip Code. Maximum length: `36`.
         /// </summary>
         [Output("zipCode")]
         public Output<string?> ZipCode { get; private set; } = null!;
@@ -164,7 +161,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _addressLines;
 
         /// <summary>
-        /// Address Lines.
+        /// Address lines.
         /// </summary>
         public InputList<string> AddressLines
         {
@@ -173,7 +170,7 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// City. Maximum length: `125`.
+        /// City. Maximum length: `50`.
         /// </summary>
         [Input("city", required: true)]
         public Input<string> City { get; set; } = null!;
@@ -185,7 +182,7 @@ namespace Pulumi.Aiven
         public Input<string> CountryCode { get; set; } = null!;
 
         /// <summary>
-        /// Name of a company. Length must be between `1` and `83`.
+        /// Name. Length must be between `1` and `83`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -197,7 +194,7 @@ namespace Pulumi.Aiven
         public Input<string> OrganizationId { get; set; } = null!;
 
         /// <summary>
-        /// State. Maximum length: `128`.
+        /// State. Maximum length: `30`.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
@@ -206,7 +203,7 @@ namespace Pulumi.Aiven
         public Input<Inputs.OrganizationAddressTimeoutsArgs>? Timeouts { get; set; }
 
         /// <summary>
-        /// Zip Code. Maximum length: `10`.
+        /// Zip Code. Maximum length: `36`.
         /// </summary>
         [Input("zipCode")]
         public Input<string>? ZipCode { get; set; }
@@ -229,7 +226,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _addressLines;
 
         /// <summary>
-        /// Address Lines.
+        /// Address lines.
         /// </summary>
         public InputList<string> AddressLines
         {
@@ -238,7 +235,7 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// City. Maximum length: `125`.
+        /// City. Maximum length: `50`.
         /// </summary>
         [Input("city")]
         public Input<string>? City { get; set; }
@@ -256,7 +253,7 @@ namespace Pulumi.Aiven
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Name of a company. Length must be between `1` and `83`.
+        /// Name. Length must be between `1` and `83`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -268,7 +265,7 @@ namespace Pulumi.Aiven
         public Input<string>? OrganizationId { get; set; }
 
         /// <summary>
-        /// State. Maximum length: `128`.
+        /// State. Maximum length: `30`.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
@@ -283,7 +280,7 @@ namespace Pulumi.Aiven
         public Input<string>? UpdateTime { get; set; }
 
         /// <summary>
-        /// Zip Code. Maximum length: `10`.
+        /// Zip Code. Maximum length: `36`.
         /// </summary>
         [Input("zipCode")]
         public Input<string>? ZipCode { get; set; }

@@ -32,6 +32,21 @@ public final class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerA
     }
 
     /**
+     * The maximum amount of data the server should return for a fetch request.
+     * 
+     */
+    @Import(name="consumerFetchMaxBytes")
+    private @Nullable Output<Integer> consumerFetchMaxBytes;
+
+    /**
+     * @return The maximum amount of data the server should return for a fetch request.
+     * 
+     */
+    public Optional<Output<Integer>> consumerFetchMaxBytes() {
+        return Optional.ofNullable(this.consumerFetchMaxBytes);
+    }
+
+    /**
      * The minimum amount of data the server should return for a fetch request. Example: `1024`.
      * 
      */
@@ -47,6 +62,21 @@ public final class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerA
     }
 
     /**
+     * The maximum amount of data per partition the server will return.
+     * 
+     */
+    @Import(name="consumerMaxPartitionFetchBytes")
+    private @Nullable Output<Integer> consumerMaxPartitionFetchBytes;
+
+    /**
+     * @return The maximum amount of data per partition the server will return.
+     * 
+     */
+    public Optional<Output<Integer>> consumerMaxPartitionFetchBytes() {
+        return Optional.ofNullable(this.consumerMaxPartitionFetchBytes);
+    }
+
+    /**
      * Set consumer max.poll.records. The default is 500. Example: `500`.
      * 
      */
@@ -59,6 +89,36 @@ public final class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerA
      */
     public Optional<Output<Integer>> consumerMaxPollRecords() {
         return Optional.ofNullable(this.consumerMaxPollRecords);
+    }
+
+    /**
+     * The size of the TCP receive buffer (SO_RCVBUF) to use when reading data. -1 uses the OS default. Example: `65536`.
+     * 
+     */
+    @Import(name="consumerReceiveBufferBytes")
+    private @Nullable Output<Integer> consumerReceiveBufferBytes;
+
+    /**
+     * @return The size of the TCP receive buffer (SO_RCVBUF) to use when reading data. -1 uses the OS default. Example: `65536`.
+     * 
+     */
+    public Optional<Output<Integer>> consumerReceiveBufferBytes() {
+        return Optional.ofNullable(this.consumerReceiveBufferBytes);
+    }
+
+    /**
+     * The maximum time the client will wait for a response to a request. Example: `30000`.
+     * 
+     */
+    @Import(name="consumerRequestTimeoutMs")
+    private @Nullable Output<Integer> consumerRequestTimeoutMs;
+
+    /**
+     * @return The maximum time the client will wait for a response to a request. Example: `30000`.
+     * 
+     */
+    public Optional<Output<Integer>> consumerRequestTimeoutMs() {
+        return Optional.ofNullable(this.consumerRequestTimeoutMs);
     }
 
     /**
@@ -136,17 +196,53 @@ public final class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerA
         return Optional.ofNullable(this.producerMaxRequestSize);
     }
 
+    /**
+     * The maximum time the client will wait for a response to a request. Example: `30000`.
+     * 
+     */
+    @Import(name="producerRequestTimeoutMs")
+    private @Nullable Output<Integer> producerRequestTimeoutMs;
+
+    /**
+     * @return The maximum time the client will wait for a response to a request. Example: `30000`.
+     * 
+     */
+    public Optional<Output<Integer>> producerRequestTimeoutMs() {
+        return Optional.ofNullable(this.producerRequestTimeoutMs);
+    }
+
+    /**
+     * The size of the TCP send buffer (SO_SNDBUF) to use when sending data. -1 uses the OS default. Example: `131072`.
+     * 
+     */
+    @Import(name="producerSendBufferBytes")
+    private @Nullable Output<Integer> producerSendBufferBytes;
+
+    /**
+     * @return The size of the TCP send buffer (SO_SNDBUF) to use when sending data. -1 uses the OS default. Example: `131072`.
+     * 
+     */
+    public Optional<Output<Integer>> producerSendBufferBytes() {
+        return Optional.ofNullable(this.producerSendBufferBytes);
+    }
+
     private ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerArgs() {}
 
     private ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerArgs(ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerArgs $) {
         this.consumerAutoOffsetReset = $.consumerAutoOffsetReset;
+        this.consumerFetchMaxBytes = $.consumerFetchMaxBytes;
         this.consumerFetchMinBytes = $.consumerFetchMinBytes;
+        this.consumerMaxPartitionFetchBytes = $.consumerMaxPartitionFetchBytes;
         this.consumerMaxPollRecords = $.consumerMaxPollRecords;
+        this.consumerReceiveBufferBytes = $.consumerReceiveBufferBytes;
+        this.consumerRequestTimeoutMs = $.consumerRequestTimeoutMs;
         this.producerBatchSize = $.producerBatchSize;
         this.producerBufferMemory = $.producerBufferMemory;
         this.producerCompressionType = $.producerCompressionType;
         this.producerLingerMs = $.producerLingerMs;
         this.producerMaxRequestSize = $.producerMaxRequestSize;
+        this.producerRequestTimeoutMs = $.producerRequestTimeoutMs;
+        this.producerSendBufferBytes = $.producerSendBufferBytes;
     }
 
     public static Builder builder() {
@@ -189,6 +285,27 @@ public final class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerA
         }
 
         /**
+         * @param consumerFetchMaxBytes The maximum amount of data the server should return for a fetch request.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder consumerFetchMaxBytes(@Nullable Output<Integer> consumerFetchMaxBytes) {
+            $.consumerFetchMaxBytes = consumerFetchMaxBytes;
+            return this;
+        }
+
+        /**
+         * @param consumerFetchMaxBytes The maximum amount of data the server should return for a fetch request.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder consumerFetchMaxBytes(Integer consumerFetchMaxBytes) {
+            return consumerFetchMaxBytes(Output.of(consumerFetchMaxBytes));
+        }
+
+        /**
          * @param consumerFetchMinBytes The minimum amount of data the server should return for a fetch request. Example: `1024`.
          * 
          * @return builder
@@ -210,6 +327,27 @@ public final class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerA
         }
 
         /**
+         * @param consumerMaxPartitionFetchBytes The maximum amount of data per partition the server will return.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder consumerMaxPartitionFetchBytes(@Nullable Output<Integer> consumerMaxPartitionFetchBytes) {
+            $.consumerMaxPartitionFetchBytes = consumerMaxPartitionFetchBytes;
+            return this;
+        }
+
+        /**
+         * @param consumerMaxPartitionFetchBytes The maximum amount of data per partition the server will return.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder consumerMaxPartitionFetchBytes(Integer consumerMaxPartitionFetchBytes) {
+            return consumerMaxPartitionFetchBytes(Output.of(consumerMaxPartitionFetchBytes));
+        }
+
+        /**
          * @param consumerMaxPollRecords Set consumer max.poll.records. The default is 500. Example: `500`.
          * 
          * @return builder
@@ -228,6 +366,48 @@ public final class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerA
          */
         public Builder consumerMaxPollRecords(Integer consumerMaxPollRecords) {
             return consumerMaxPollRecords(Output.of(consumerMaxPollRecords));
+        }
+
+        /**
+         * @param consumerReceiveBufferBytes The size of the TCP receive buffer (SO_RCVBUF) to use when reading data. -1 uses the OS default. Example: `65536`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder consumerReceiveBufferBytes(@Nullable Output<Integer> consumerReceiveBufferBytes) {
+            $.consumerReceiveBufferBytes = consumerReceiveBufferBytes;
+            return this;
+        }
+
+        /**
+         * @param consumerReceiveBufferBytes The size of the TCP receive buffer (SO_RCVBUF) to use when reading data. -1 uses the OS default. Example: `65536`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder consumerReceiveBufferBytes(Integer consumerReceiveBufferBytes) {
+            return consumerReceiveBufferBytes(Output.of(consumerReceiveBufferBytes));
+        }
+
+        /**
+         * @param consumerRequestTimeoutMs The maximum time the client will wait for a response to a request. Example: `30000`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder consumerRequestTimeoutMs(@Nullable Output<Integer> consumerRequestTimeoutMs) {
+            $.consumerRequestTimeoutMs = consumerRequestTimeoutMs;
+            return this;
+        }
+
+        /**
+         * @param consumerRequestTimeoutMs The maximum time the client will wait for a response to a request. Example: `30000`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder consumerRequestTimeoutMs(Integer consumerRequestTimeoutMs) {
+            return consumerRequestTimeoutMs(Output.of(consumerRequestTimeoutMs));
         }
 
         /**
@@ -333,6 +513,48 @@ public final class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerA
          */
         public Builder producerMaxRequestSize(Integer producerMaxRequestSize) {
             return producerMaxRequestSize(Output.of(producerMaxRequestSize));
+        }
+
+        /**
+         * @param producerRequestTimeoutMs The maximum time the client will wait for a response to a request. Example: `30000`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder producerRequestTimeoutMs(@Nullable Output<Integer> producerRequestTimeoutMs) {
+            $.producerRequestTimeoutMs = producerRequestTimeoutMs;
+            return this;
+        }
+
+        /**
+         * @param producerRequestTimeoutMs The maximum time the client will wait for a response to a request. Example: `30000`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder producerRequestTimeoutMs(Integer producerRequestTimeoutMs) {
+            return producerRequestTimeoutMs(Output.of(producerRequestTimeoutMs));
+        }
+
+        /**
+         * @param producerSendBufferBytes The size of the TCP send buffer (SO_SNDBUF) to use when sending data. -1 uses the OS default. Example: `131072`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder producerSendBufferBytes(@Nullable Output<Integer> producerSendBufferBytes) {
+            $.producerSendBufferBytes = producerSendBufferBytes;
+            return this;
+        }
+
+        /**
+         * @param producerSendBufferBytes The size of the TCP send buffer (SO_SNDBUF) to use when sending data. -1 uses the OS default. Example: `131072`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder producerSendBufferBytes(Integer producerSendBufferBytes) {
+            return producerSendBufferBytes(Output.of(producerSendBufferBytes));
         }
 
         public ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerArgs build() {

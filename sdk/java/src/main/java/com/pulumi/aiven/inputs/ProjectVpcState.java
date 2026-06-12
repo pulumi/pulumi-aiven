@@ -3,6 +3,7 @@
 
 package com.pulumi.aiven.inputs;
 
+import com.pulumi.aiven.inputs.ProjectVpcTimeoutsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
@@ -16,14 +17,14 @@ public final class ProjectVpcState extends com.pulumi.resources.ResourceArgs {
     public static final ProjectVpcState Empty = new ProjectVpcState();
 
     /**
-     * The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.
+     * Target cloud. Maximum length: `256`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="cloudName")
     private @Nullable Output<String> cloudName;
 
     /**
-     * @return The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.
+     * @return Target cloud. Maximum length: `256`. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> cloudName() {
@@ -31,14 +32,14 @@ public final class ProjectVpcState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Network address range used by the VPC. For example, `192.168.0.0/24`.
+     * IPv4 network range CIDR. Maximum length: `18`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="networkCidr")
     private @Nullable Output<String> networkCidr;
 
     /**
-     * @return Network address range used by the VPC. For example, `192.168.0.0/24`.
+     * @return IPv4 network range CIDR. Maximum length: `18`. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> networkCidr() {
@@ -46,14 +47,14 @@ public final class ProjectVpcState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="project")
     private @Nullable Output<String> project;
 
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> project() {
@@ -61,18 +62,40 @@ public final class ProjectVpcState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * State of the VPC. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
+     * Project VPC ID.
+     * 
+     */
+    @Import(name="projectVpcId")
+    private @Nullable Output<String> projectVpcId;
+
+    /**
+     * @return Project VPC ID.
+     * 
+     */
+    public Optional<Output<String>> projectVpcId() {
+        return Optional.ofNullable(this.projectVpcId);
+    }
+
+    /**
+     * Project VPC state. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
      * 
      */
     @Import(name="state")
     private @Nullable Output<String> state;
 
     /**
-     * @return State of the VPC. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
+     * @return Project VPC state. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
      * 
      */
     public Optional<Output<String>> state() {
         return Optional.ofNullable(this.state);
+    }
+
+    @Import(name="timeouts")
+    private @Nullable Output<ProjectVpcTimeoutsArgs> timeouts;
+
+    public Optional<Output<ProjectVpcTimeoutsArgs>> timeouts() {
+        return Optional.ofNullable(this.timeouts);
     }
 
     private ProjectVpcState() {}
@@ -81,7 +104,9 @@ public final class ProjectVpcState extends com.pulumi.resources.ResourceArgs {
         this.cloudName = $.cloudName;
         this.networkCidr = $.networkCidr;
         this.project = $.project;
+        this.projectVpcId = $.projectVpcId;
         this.state = $.state;
+        this.timeouts = $.timeouts;
     }
 
     public static Builder builder() {
@@ -103,7 +128,7 @@ public final class ProjectVpcState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cloudName The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.
+         * @param cloudName Target cloud. Maximum length: `256`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -114,7 +139,7 @@ public final class ProjectVpcState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cloudName The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.
+         * @param cloudName Target cloud. Maximum length: `256`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -124,7 +149,7 @@ public final class ProjectVpcState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param networkCidr Network address range used by the VPC. For example, `192.168.0.0/24`.
+         * @param networkCidr IPv4 network range CIDR. Maximum length: `18`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -135,7 +160,7 @@ public final class ProjectVpcState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param networkCidr Network address range used by the VPC. For example, `192.168.0.0/24`.
+         * @param networkCidr IPv4 network range CIDR. Maximum length: `18`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -145,7 +170,7 @@ public final class ProjectVpcState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param project Project name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -156,7 +181,7 @@ public final class ProjectVpcState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param project Project name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -166,7 +191,28 @@ public final class ProjectVpcState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param state State of the VPC. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
+         * @param projectVpcId Project VPC ID.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder projectVpcId(@Nullable Output<String> projectVpcId) {
+            $.projectVpcId = projectVpcId;
+            return this;
+        }
+
+        /**
+         * @param projectVpcId Project VPC ID.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder projectVpcId(String projectVpcId) {
+            return projectVpcId(Output.of(projectVpcId));
+        }
+
+        /**
+         * @param state Project VPC state. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
          * 
          * @return builder
          * 
@@ -177,13 +223,22 @@ public final class ProjectVpcState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param state State of the VPC. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
+         * @param state Project VPC state. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
          * 
          * @return builder
          * 
          */
         public Builder state(String state) {
             return state(Output.of(state));
+        }
+
+        public Builder timeouts(@Nullable Output<ProjectVpcTimeoutsArgs> timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
+        public Builder timeouts(ProjectVpcTimeoutsArgs timeouts) {
+            return timeouts(Output.of(timeouts));
         }
 
         public ProjectVpcState build() {

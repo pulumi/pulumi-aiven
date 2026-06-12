@@ -11,25 +11,17 @@ namespace Pulumi.Aiven.Outputs
 {
 
     [OutputType]
-    public sealed class ByocAwsEntityError
+    public sealed class GetCmkAccessorGcpTimeoutsResult
     {
         /// <summary>
-        /// Category of this error. The possible value is `GeneralError`.
+        /// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
         /// </summary>
-        public readonly string? Category;
-        /// <summary>
-        /// Description of this error.
-        /// </summary>
-        public readonly string? Message;
+        public readonly string? Read;
 
         [OutputConstructor]
-        private ByocAwsEntityError(
-            string? category,
-
-            string? message)
+        private GetCmkAccessorGcpTimeoutsResult(string? read)
         {
-            Category = category;
-            Message = message;
+            Read = read;
         }
     }
 }

@@ -184,6 +184,7 @@ class _OrganizationBillingGroupState:
                  billing_emails: pulumi.Input[Optional[Sequence[pulumi.Input['OrganizationBillingGroupBillingEmailArgs']]]] = None,
                  billing_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  billing_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  custom_invoice_text: pulumi.Input[Optional[_builtins.str]] = None,
                  organization_id: pulumi.Input[Optional[_builtins.str]] = None,
                  payment_method: pulumi.Input[Optional['OrganizationBillingGroupPaymentMethodArgs']] = None,
@@ -198,6 +199,7 @@ class _OrganizationBillingGroupState:
         :param pulumi.Input[Sequence[pulumi.Input['OrganizationBillingGroupBillingEmailArgs']]] billing_emails: Required property. List of billing contact emails.
         :param pulumi.Input[_builtins.str] billing_group_id: Billing group ID.
         :param pulumi.Input[_builtins.str] billing_group_name: Billing Group Name. Length must be between `1` and `128`.
+        :param pulumi.Input[_builtins.str] create_time: The date when this billing group was created.
         :param pulumi.Input[_builtins.str] custom_invoice_text: Extra billing text. Maximum length: `256`.
         :param pulumi.Input[_builtins.str] organization_id: ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
         :param pulumi.Input['OrganizationBillingGroupPaymentMethodArgs'] payment_method: Required property. Payment method.
@@ -214,6 +216,8 @@ class _OrganizationBillingGroupState:
             pulumi.set(__self__, "billing_group_id", billing_group_id)
         if billing_group_name is not None:
             pulumi.set(__self__, "billing_group_name", billing_group_name)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
         if custom_invoice_text is not None:
             pulumi.set(__self__, "custom_invoice_text", custom_invoice_text)
         if organization_id is not None:
@@ -286,6 +290,18 @@ class _OrganizationBillingGroupState:
     @billing_group_name.setter
     def billing_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "billing_group_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The date when this billing group was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="customInvoiceText")
@@ -377,9 +393,6 @@ class OrganizationBillingGroup(pulumi.CustomResource):
         """
         Creates and manages an organization billing group.
 
-        **This resource is in the beta stage and may change without notice.** Set
-        the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
-
         ## Example Usage
 
         ```python
@@ -432,9 +445,6 @@ class OrganizationBillingGroup(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates and manages an organization billing group.
-
-        **This resource is in the beta stage and may change without notice.** Set
-        the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
 
         ## Example Usage
 
@@ -527,6 +537,7 @@ class OrganizationBillingGroup(pulumi.CustomResource):
             __props__.__dict__["timeouts"] = timeouts
             __props__.__dict__["vat_id"] = vat_id
             __props__.__dict__["billing_group_id"] = None
+            __props__.__dict__["create_time"] = None
         super(OrganizationBillingGroup, __self__).__init__(
             'aiven:index/organizationBillingGroup:OrganizationBillingGroup',
             resource_name,
@@ -542,6 +553,7 @@ class OrganizationBillingGroup(pulumi.CustomResource):
             billing_emails: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OrganizationBillingGroupBillingEmailArgs', 'OrganizationBillingGroupBillingEmailArgsDict']]]]] = None,
             billing_group_id: pulumi.Input[Optional[_builtins.str]] = None,
             billing_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
             custom_invoice_text: pulumi.Input[Optional[_builtins.str]] = None,
             organization_id: pulumi.Input[Optional[_builtins.str]] = None,
             payment_method: pulumi.Input[Optional[Union['OrganizationBillingGroupPaymentMethodArgs', 'OrganizationBillingGroupPaymentMethodArgsDict']]] = None,
@@ -560,6 +572,7 @@ class OrganizationBillingGroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['OrganizationBillingGroupBillingEmailArgs', 'OrganizationBillingGroupBillingEmailArgsDict']]]] billing_emails: Required property. List of billing contact emails.
         :param pulumi.Input[_builtins.str] billing_group_id: Billing group ID.
         :param pulumi.Input[_builtins.str] billing_group_name: Billing Group Name. Length must be between `1` and `128`.
+        :param pulumi.Input[_builtins.str] create_time: The date when this billing group was created.
         :param pulumi.Input[_builtins.str] custom_invoice_text: Extra billing text. Maximum length: `256`.
         :param pulumi.Input[_builtins.str] organization_id: ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
         :param pulumi.Input[Union['OrganizationBillingGroupPaymentMethodArgs', 'OrganizationBillingGroupPaymentMethodArgsDict']] payment_method: Required property. Payment method.
@@ -575,6 +588,7 @@ class OrganizationBillingGroup(pulumi.CustomResource):
         __props__.__dict__["billing_emails"] = billing_emails
         __props__.__dict__["billing_group_id"] = billing_group_id
         __props__.__dict__["billing_group_name"] = billing_group_name
+        __props__.__dict__["create_time"] = create_time
         __props__.__dict__["custom_invoice_text"] = custom_invoice_text
         __props__.__dict__["organization_id"] = organization_id
         __props__.__dict__["payment_method"] = payment_method
@@ -622,6 +636,14 @@ class OrganizationBillingGroup(pulumi.CustomResource):
         Billing Group Name. Length must be between `1` and `128`.
         """
         return pulumi.get(self, "billing_group_name")
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[_builtins.str]:
+        """
+        The date when this billing group was created.
+        """
+        return pulumi.get(self, "create_time")
 
     @_builtins.property
     @pulumi.getter(name="customInvoiceText")

@@ -20,7 +20,7 @@ public final class GetOrganizationAddressResult {
      */
     private String addressId;
     /**
-     * @return Address Lines.
+     * @return Address lines.
      * 
      */
     private List<String> addressLines;
@@ -45,7 +45,7 @@ public final class GetOrganizationAddressResult {
      */
     private String id;
     /**
-     * @return Name of a company.
+     * @return Name.
      * 
      */
     private String name;
@@ -80,7 +80,7 @@ public final class GetOrganizationAddressResult {
         return this.addressId;
     }
     /**
-     * @return Address Lines.
+     * @return Address lines.
      * 
      */
     public List<String> addressLines() {
@@ -115,7 +115,7 @@ public final class GetOrganizationAddressResult {
         return this.id;
     }
     /**
-     * @return Name of a company.
+     * @return Name.
      * 
      */
     public String name() {

@@ -96,6 +96,21 @@ public final class GetOrganizationBillingGroupListBillingGroupArgs extends com.p
     }
 
     /**
+     * The date when this billing group was created.
+     * 
+     */
+    @Import(name="createTime", required=true)
+    private Output<String> createTime;
+
+    /**
+     * @return The date when this billing group was created.
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
+    }
+
+    /**
      * Extra billing text.
      * 
      */
@@ -178,6 +193,7 @@ public final class GetOrganizationBillingGroupListBillingGroupArgs extends com.p
         this.billingEmails = $.billingEmails;
         this.billingGroupId = $.billingGroupId;
         this.billingGroupName = $.billingGroupName;
+        this.createTime = $.createTime;
         this.customInvoiceText = $.customInvoiceText;
         this.organizationId = $.organizationId;
         this.paymentMethods = $.paymentMethods;
@@ -329,6 +345,27 @@ public final class GetOrganizationBillingGroupListBillingGroupArgs extends com.p
         }
 
         /**
+         * @param createTime The date when this billing group was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(Output<String> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        /**
+         * @param createTime The date when this billing group was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(String createTime) {
+            return createTime(Output.of(createTime));
+        }
+
+        /**
          * @param customInvoiceText Extra billing text.
          * 
          * @return builder
@@ -452,6 +489,9 @@ public final class GetOrganizationBillingGroupListBillingGroupArgs extends com.p
             }
             if ($.billingGroupName == null) {
                 throw new MissingRequiredPropertyException("GetOrganizationBillingGroupListBillingGroupArgs", "billingGroupName");
+            }
+            if ($.createTime == null) {
+                throw new MissingRequiredPropertyException("GetOrganizationBillingGroupListBillingGroupArgs", "createTime");
             }
             if ($.customInvoiceText == null) {
                 throw new MissingRequiredPropertyException("GetOrganizationBillingGroupListBillingGroupArgs", "customInvoiceText");

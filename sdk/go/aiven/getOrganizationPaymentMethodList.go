@@ -13,9 +13,6 @@ import (
 
 // Lists payment methods for an organization.
 //
-// **This resource is in the beta stage and may change without notice.** Set
-// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
-//
 // ## Example Usage
 //
 // ```go

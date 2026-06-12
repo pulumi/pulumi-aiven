@@ -9,9 +9,6 @@ import * as utilities from "./utilities";
 /**
  * Gets information about a billing group.
  *
- * **This resource is in the beta stage and may change without notice.** Set
- * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
- *
  * ## Example Usage
  *
  * ```typescript
@@ -88,6 +85,10 @@ export interface GetOrganizationBillingGroupResult {
      */
     readonly billingGroupName: string;
     /**
+     * The date when this billing group was created.
+     */
+    readonly createTime: string;
+    /**
      * Extra billing text.
      */
     readonly customInvoiceText: string;
@@ -115,9 +116,6 @@ export interface GetOrganizationBillingGroupResult {
 }
 /**
  * Gets information about a billing group.
- *
- * **This resource is in the beta stage and may change without notice.** Set
- * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
  *
  * ## Example Usage
  *

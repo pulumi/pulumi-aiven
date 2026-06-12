@@ -7,6 +7,7 @@ import com.pulumi.aiven.inputs.ByocAwsProvisionTimeoutsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -77,6 +78,21 @@ public final class ByocAwsProvisionState extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Cloud names that can be used to provision a service on this BYOC.
+     * 
+     */
+    @Import(name="customCloudNames")
+    private @Nullable Output<List<String>> customCloudNames;
+
+    /**
+     * @return Cloud names that can be used to provision a service on this BYOC.
+     * 
+     */
+    public Optional<Output<List<String>>> customCloudNames() {
+        return Optional.ofNullable(this.customCloudNames);
+    }
+
+    /**
      * ID of an organization. Changing this property forces recreation of the resource.
      * 
      */
@@ -89,6 +105,21 @@ public final class ByocAwsProvisionState extends com.pulumi.resources.ResourceAr
      */
     public Optional<Output<String>> organizationId() {
         return Optional.ofNullable(this.organizationId);
+    }
+
+    /**
+     * State of this BYOC cloud. The possible values are `active`, `creating`, `creationFailed`, `deleted`, `deleting`, `deletionFailed`, `disconnected`, `draft`, `reconnecting` and `validating`.
+     * 
+     */
+    @Import(name="state")
+    private @Nullable Output<String> state;
+
+    /**
+     * @return State of this BYOC cloud. The possible values are `active`, `creating`, `creationFailed`, `deleted`, `deleting`, `deletionFailed`, `disconnected`, `draft`, `reconnecting` and `validating`.
+     * 
+     */
+    public Optional<Output<String>> state() {
+        return Optional.ofNullable(this.state);
     }
 
     @Import(name="timeouts")
@@ -105,7 +136,9 @@ public final class ByocAwsProvisionState extends com.pulumi.resources.ResourceAr
         this.aivenAwsAssumeRoleExternalId = $.aivenAwsAssumeRoleExternalId;
         this.awsIamRoleArn = $.awsIamRoleArn;
         this.customCloudEnvironmentId = $.customCloudEnvironmentId;
+        this.customCloudNames = $.customCloudNames;
         this.organizationId = $.organizationId;
+        this.state = $.state;
         this.timeouts = $.timeouts;
     }
 
@@ -212,6 +245,37 @@ public final class ByocAwsProvisionState extends com.pulumi.resources.ResourceAr
         }
 
         /**
+         * @param customCloudNames Cloud names that can be used to provision a service on this BYOC.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customCloudNames(@Nullable Output<List<String>> customCloudNames) {
+            $.customCloudNames = customCloudNames;
+            return this;
+        }
+
+        /**
+         * @param customCloudNames Cloud names that can be used to provision a service on this BYOC.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customCloudNames(List<String> customCloudNames) {
+            return customCloudNames(Output.of(customCloudNames));
+        }
+
+        /**
+         * @param customCloudNames Cloud names that can be used to provision a service on this BYOC.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customCloudNames(String... customCloudNames) {
+            return customCloudNames(List.of(customCloudNames));
+        }
+
+        /**
          * @param organizationId ID of an organization. Changing this property forces recreation of the resource.
          * 
          * @return builder
@@ -230,6 +294,27 @@ public final class ByocAwsProvisionState extends com.pulumi.resources.ResourceAr
          */
         public Builder organizationId(String organizationId) {
             return organizationId(Output.of(organizationId));
+        }
+
+        /**
+         * @param state State of this BYOC cloud. The possible values are `active`, `creating`, `creationFailed`, `deleted`, `deleting`, `deletionFailed`, `disconnected`, `draft`, `reconnecting` and `validating`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder state(@Nullable Output<String> state) {
+            $.state = state;
+            return this;
+        }
+
+        /**
+         * @param state State of this BYOC cloud. The possible values are `active`, `creating`, `creationFailed`, `deleted`, `deleting`, `deletionFailed`, `disconnected`, `draft`, `reconnecting` and `validating`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder state(String state) {
+            return state(Output.of(state));
         }
 
         public Builder timeouts(@Nullable Output<ByocAwsProvisionTimeoutsArgs> timeouts) {

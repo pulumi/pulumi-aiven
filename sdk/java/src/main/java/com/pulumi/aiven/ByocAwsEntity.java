@@ -7,7 +7,6 @@ import com.pulumi.aiven.ByocAwsEntityArgs;
 import com.pulumi.aiven.Utilities;
 import com.pulumi.aiven.inputs.ByocAwsEntityState;
 import com.pulumi.aiven.outputs.ByocAwsEntityContactEmail;
-import com.pulumi.aiven.outputs.ByocAwsEntityError;
 import com.pulumi.aiven.outputs.ByocAwsEntityTimeouts;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
@@ -58,7 +57,6 @@ import javax.annotation.Nullable;
  *             .deploymentModel("standard")
  *             .displayName("byoc-cloud-prod-eu-west-1")
  *             .reservedCidr("192.168.6.0/24")
- *             .awsIamRoleArn("arn:aws:iam::012345678901:root")
  *             .contactEmails(ByocAwsEntityContactEmailArgs.builder()
  *                 .email("jane}{@literal @}{@code example.com")
  *                 .realName("Jane Smith")
@@ -164,20 +162,6 @@ public class ByocAwsEntity extends com.pulumi.resources.CustomResource {
      */
     public Output<String> aivenObjectStorageCredentialsCreatorUser() {
         return this.aivenObjectStorageCredentialsCreatorUser;
-    }
-    /**
-     * Amazon Resource Name. Maximum length: `2048`.
-     * 
-     */
-    @Export(name="awsIamRoleArn", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> awsIamRoleArn;
-
-    /**
-     * @return Amazon Resource Name. Maximum length: `2048`.
-     * 
-     */
-    public Output<Optional<String>> awsIamRoleArn() {
-        return Codegen.optional(this.awsIamRoleArn);
     }
     /**
      * Subnets to build in the bastion VPC.
@@ -306,20 +290,6 @@ public class ByocAwsEntity extends com.pulumi.resources.CustomResource {
         return this.customCloudEnvironmentId;
     }
     /**
-     * Cloud names that can be used to provision a service on this BYOC.
-     * 
-     */
-    @Export(name="customCloudNames", refs={List.class,String.class}, tree="[0,1]")
-    private Output<List<String>> customCloudNames;
-
-    /**
-     * @return Cloud names that can be used to provision a service on this BYOC.
-     * 
-     */
-    public Output<List<String>> customCloudNames() {
-        return this.customCloudNames;
-    }
-    /**
      * Deployment model for the BYOC cloud. The possible values are `directIpsecIngress`, `hipaa`, `ipsecIngress`, `pciDss`, `standard` and `standardPublic`. Changing this property forces recreation of the resource.
      * 
      */
@@ -346,20 +316,6 @@ public class ByocAwsEntity extends com.pulumi.resources.CustomResource {
      */
     public Output<String> displayName() {
         return this.displayName;
-    }
-    /**
-     * List of errors for this custom cloud environment.
-     * 
-     */
-    @Export(name="errors", refs={List.class,ByocAwsEntityError.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<ByocAwsEntityError>> errors;
-
-    /**
-     * @return List of errors for this custom cloud environment.
-     * 
-     */
-    public Output<Optional<List<ByocAwsEntityError>>> errors() {
-        return Codegen.optional(this.errors);
     }
     /**
      * ID of an organization. Changing this property forces recreation of the resource.
@@ -390,20 +346,6 @@ public class ByocAwsEntity extends com.pulumi.resources.CustomResource {
         return this.reservedCidr;
     }
     /**
-     * State of this BYOC cloud. The possible values are `active`, `creating`, `creationFailed`, `deleted`, `deleting`, `deletionFailed`, `disconnected`, `draft`, `reconnecting` and `validating`.
-     * 
-     */
-    @Export(name="state", refs={String.class}, tree="[0]")
-    private Output<String> state;
-
-    /**
-     * @return State of this BYOC cloud. The possible values are `active`, `creating`, `creationFailed`, `deleted`, `deleting`, `deletionFailed`, `disconnected`, `draft`, `reconnecting` and `validating`.
-     * 
-     */
-    public Output<String> state() {
-        return this.state;
-    }
-    /**
      * Set of resource tags.
      * 
      */
@@ -422,20 +364,6 @@ public class ByocAwsEntity extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<ByocAwsEntityTimeouts>> timeouts() {
         return Codegen.optional(this.timeouts);
-    }
-    /**
-     * Custom cloud environment last update timestamp (ISO 8601).
-     * 
-     */
-    @Export(name="updateTime", refs={String.class}, tree="[0]")
-    private Output<String> updateTime;
-
-    /**
-     * @return Custom cloud environment last update timestamp (ISO 8601).
-     * 
-     */
-    public Output<String> updateTime() {
-        return this.updateTime;
     }
     /**
      * True if this BYOC cloud is using customer owned storage.

@@ -67,14 +67,22 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     /**
      * The number of trial or promotional credits remaining for this project.
      * 
+     * @deprecated
+     * This field is deprecated on the resource and is no longer populated. Use the `aiven.Project` data source to read this value. It will be removed in the next major release.
+     * 
      */
+    @Deprecated /* This field is deprecated on the resource and is no longer populated. Use the `aiven.Project` data source to read this value. It will be removed in the next major release. */
     @Import(name="availableCredits")
     private @Nullable Output<String> availableCredits;
 
     /**
      * @return The number of trial or promotional credits remaining for this project.
      * 
+     * @deprecated
+     * This field is deprecated on the resource and is no longer populated. Use the `aiven.Project` data source to read this value. It will be removed in the next major release.
+     * 
      */
+    @Deprecated /* This field is deprecated on the resource and is no longer populated. Use the `aiven.Project` data source to read this value. It will be removed in the next major release. */
     public Optional<Output<String>> availableCredits() {
         return Optional.ofNullable(this.availableCredits);
     }
@@ -142,14 +150,22 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     /**
      * The monthly running estimate for this project for the current billing period.
      * 
+     * @deprecated
+     * This field is deprecated on the resource and is no longer populated. Use the `aiven.Project` data source to read this value. It will be removed in the next major release.
+     * 
      */
+    @Deprecated /* This field is deprecated on the resource and is no longer populated. Use the `aiven.Project` data source to read this value. It will be removed in the next major release. */
     @Import(name="estimatedBalance")
     private @Nullable Output<String> estimatedBalance;
 
     /**
      * @return The monthly running estimate for this project for the current billing period.
      * 
+     * @deprecated
+     * This field is deprecated on the resource and is no longer populated. Use the `aiven.Project` data source to read this value. It will be removed in the next major release.
+     * 
      */
+    @Deprecated /* This field is deprecated on the resource and is no longer populated. Use the `aiven.Project` data source to read this value. It will be removed in the next major release. */
     public Optional<Output<String>> estimatedBalance() {
         return Optional.ofNullable(this.estimatedBalance);
     }
@@ -352,7 +368,11 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field is deprecated on the resource and is no longer populated. Use the `aiven.Project` data source to read this value. It will be removed in the next major release.
+         * 
          */
+        @Deprecated /* This field is deprecated on the resource and is no longer populated. Use the `aiven.Project` data source to read this value. It will be removed in the next major release. */
         public Builder availableCredits(@Nullable Output<String> availableCredits) {
             $.availableCredits = availableCredits;
             return this;
@@ -363,7 +383,11 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field is deprecated on the resource and is no longer populated. Use the `aiven.Project` data source to read this value. It will be removed in the next major release.
+         * 
          */
+        @Deprecated /* This field is deprecated on the resource and is no longer populated. Use the `aiven.Project` data source to read this value. It will be removed in the next major release. */
         public Builder availableCredits(String availableCredits) {
             return availableCredits(Output.of(availableCredits));
         }
@@ -457,7 +481,11 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field is deprecated on the resource and is no longer populated. Use the `aiven.Project` data source to read this value. It will be removed in the next major release.
+         * 
          */
+        @Deprecated /* This field is deprecated on the resource and is no longer populated. Use the `aiven.Project` data source to read this value. It will be removed in the next major release. */
         public Builder estimatedBalance(@Nullable Output<String> estimatedBalance) {
             $.estimatedBalance = estimatedBalance;
             return this;
@@ -468,7 +496,11 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field is deprecated on the resource and is no longer populated. Use the `aiven.Project` data source to read this value. It will be removed in the next major release.
+         * 
          */
+        @Deprecated /* This field is deprecated on the resource and is no longer populated. Use the `aiven.Project` data source to read this value. It will be removed in the next major release. */
         public Builder estimatedBalance(String estimatedBalance) {
             return estimatedBalance(Output.of(estimatedBalance));
         }

@@ -14,9 +14,6 @@ import (
 
 // Creates and manages an organization billing group.
 //
-// **This resource is in the beta stage and may change without notice.** Set
-// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
-//
 // ## Example Usage
 //
 // ```go
@@ -80,6 +77,8 @@ type OrganizationBillingGroup struct {
 	BillingGroupId pulumi.StringOutput `pulumi:"billingGroupId"`
 	// Billing Group Name. Length must be between `1` and `128`.
 	BillingGroupName pulumi.StringOutput `pulumi:"billingGroupName"`
+	// The date when this billing group was created.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Extra billing text. Maximum length: `256`.
 	CustomInvoiceText pulumi.StringPtrOutput `pulumi:"customInvoiceText"`
 	// ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
@@ -154,6 +153,8 @@ type organizationBillingGroupState struct {
 	BillingGroupId *string `pulumi:"billingGroupId"`
 	// Billing Group Name. Length must be between `1` and `128`.
 	BillingGroupName *string `pulumi:"billingGroupName"`
+	// The date when this billing group was created.
+	CreateTime *string `pulumi:"createTime"`
 	// Extra billing text. Maximum length: `256`.
 	CustomInvoiceText *string `pulumi:"customInvoiceText"`
 	// ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
@@ -178,6 +179,8 @@ type OrganizationBillingGroupState struct {
 	BillingGroupId pulumi.StringPtrInput
 	// Billing Group Name. Length must be between `1` and `128`.
 	BillingGroupName pulumi.StringPtrInput
+	// The date when this billing group was created.
+	CreateTime pulumi.StringPtrInput
 	// Extra billing text. Maximum length: `256`.
 	CustomInvoiceText pulumi.StringPtrInput
 	// ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
@@ -354,6 +357,11 @@ func (o OrganizationBillingGroupOutput) BillingGroupId() pulumi.StringOutput {
 // Billing Group Name. Length must be between `1` and `128`.
 func (o OrganizationBillingGroupOutput) BillingGroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationBillingGroup) pulumi.StringOutput { return v.BillingGroupName }).(pulumi.StringOutput)
+}
+
+// The date when this billing group was created.
+func (o OrganizationBillingGroupOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *OrganizationBillingGroup) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
 // Extra billing text. Maximum length: `256`.

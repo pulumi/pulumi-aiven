@@ -68,17 +68,6 @@ export interface ByocAwsEntityContactEmail {
     role?: pulumi.Input<string | undefined>;
 }
 
-export interface ByocAwsEntityError {
-    /**
-     * Category of this error. The possible value is `generalError`.
-     */
-    category?: pulumi.Input<string | undefined>;
-    /**
-     * Description of this error.
-     */
-    message?: pulumi.Input<string | undefined>;
-}
-
 export interface ByocAwsEntityTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
@@ -1164,6 +1153,62 @@ export interface GetClickhouseUserTimeoutsArgs {
     read?: pulumi.Input<string | undefined>;
 }
 
+export interface GetCmkAccessorAwsTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: string;
+}
+
+export interface GetCmkAccessorAwsTimeoutsArgs {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: pulumi.Input<string | undefined>;
+}
+
+export interface GetCmkAccessorAzureTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: string;
+}
+
+export interface GetCmkAccessorAzureTimeoutsArgs {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: pulumi.Input<string | undefined>;
+}
+
+export interface GetCmkAccessorGcpTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: string;
+}
+
+export interface GetCmkAccessorGcpTimeoutsArgs {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: pulumi.Input<string | undefined>;
+}
+
+export interface GetCmkAccessorOciTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: string;
+}
+
+export interface GetCmkAccessorOciTimeoutsArgs {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: pulumi.Input<string | undefined>;
+}
+
 export interface GetConnectionPoolTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
@@ -1486,6 +1531,10 @@ export interface GetOrganizationBillingGroupListBillingGroup {
      */
     billingGroupName?: string;
     /**
+     * The date when this billing group was created.
+     */
+    createTime?: string;
+    /**
      * Extra billing text.
      */
     customInvoiceText?: string;
@@ -1528,6 +1577,10 @@ export interface GetOrganizationBillingGroupListBillingGroupArgs {
      * Billing Group Name.
      */
     billingGroupName?: pulumi.Input<string | undefined>;
+    /**
+     * The date when this billing group was created.
+     */
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Extra billing text.
      */
@@ -2140,6 +2193,20 @@ export interface GetPgUserTimeouts {
 }
 
 export interface GetPgUserTimeoutsArgs {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: pulumi.Input<string | undefined>;
+}
+
+export interface GetProjectVpcTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: string;
+}
+
+export interface GetProjectVpcTimeoutsArgs {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
@@ -4594,7 +4661,7 @@ export interface KafkaTopicConfig {
      */
     messageDownconversionEnable?: pulumi.Input<boolean | undefined>;
     /**
-     * Specify the message format version the broker will use to append messages to the logs. The value should be a valid ApiVersion. Some examples are: 0.8.2, 0.9.0.0, 0.10.0, check ApiVersion for more details. By setting a particular message format version, the user is certifying that all the existing messages on disk are smaller or equal than the specified version. Setting this value incorrectly will cause consumers with older versions to break as they will receive messages with a format that they don't understand. Deprecated in Kafka 4.0+: this configuration is removed and any supplied value will be ignored; for services upgraded to 4.0+, the returned value may be 'None'. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.0`, `4.0-IV0`, `4.1` and `4.1-IV0`.
+     * Specify the message format version the broker will use to append messages to the logs. The value should be a valid ApiVersion. Some examples are: 0.8.2, 0.9.0.0, 0.10.0, check ApiVersion for more details. By setting a particular message format version, the user is certifying that all the existing messages on disk are smaller or equal than the specified version. Setting this value incorrectly will cause consumers with older versions to break as they will receive messages with a format that they don't understand. Deprecated in Kafka 4.0+: this configuration is removed and any supplied value will be ignored; for services upgraded to 4.0+, the returned value may be 'None'. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.0`, `4.0-IV0`, `4.1`, `4.1-IV0`, `4.2` and `4.2-IV0`.
      */
     messageFormatVersion?: pulumi.Input<string | undefined>;
     /**
@@ -5019,6 +5086,10 @@ export interface MySqlMysqlUserConfigMysql {
      * The number of seconds to wait for a block to be written to a connection before aborting the write. Example: `30`.
      */
     netWriteTimeout?: pulumi.Input<number | undefined>;
+    /**
+     * The number of rows per thread in the events*statements*history table. Changing this parameter will lead to a restart of the MySQL service.
+     */
+    performanceSchemaEventsStatementsHistorySize?: pulumi.Input<number | undefined>;
     /**
      * Slow query log enables capturing of slow queries. Setting slow*query*log to false also truncates the mysql.slow_log table.
      */
@@ -7612,6 +7683,31 @@ export interface ProjectTag {
     value: pulumi.Input<string>;
 }
 
+export interface ProjectVpcTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: pulumi.Input<string | undefined>;
+    /**
+     * Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+     *
+     * @deprecated Use operation-specific timeouts instead. This field will be removed in the next major version.
+     */
+    default?: pulumi.Input<string | undefined>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: pulumi.Input<string | undefined>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string | undefined>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: pulumi.Input<string | undefined>;
+}
+
 export interface ServiceIntegrationClickhouseCredentialsUserConfig {
     /**
      * Grants to assign
@@ -7943,7 +8039,7 @@ export interface ServiceIntegrationEndpointDatadogUserConfig {
      */
     maxPartitionContexts?: pulumi.Input<number | undefined>;
     /**
-     * Enum: `ap1.datadoghq.com`, `ap2.datadoghq.com`, `datadoghq.com`, `datadoghq.eu`, `ddog-gov.com`, `us3.datadoghq.com`, `us5.datadoghq.com`. Datadog intake site. Defaults to datadoghq.com.
+     * Enum: `ap1.datadoghq.com`, `ap2.datadoghq.com`, `datadoghq.com`, `datadoghq.eu`, `ddog-gov.com`, `us2.ddog-gov.com`, `us3.datadoghq.com`, `us5.datadoghq.com`. Datadog intake site. Defaults to datadoghq.com.
      */
     site?: pulumi.Input<string | undefined>;
 }
@@ -8523,13 +8619,29 @@ export interface ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker {
      */
     consumerAutoOffsetReset?: pulumi.Input<string | undefined>;
     /**
+     * The maximum amount of data the server should return for a fetch request.
+     */
+    consumerFetchMaxBytes?: pulumi.Input<number | undefined>;
+    /**
      * The minimum amount of data the server should return for a fetch request. Example: `1024`.
      */
     consumerFetchMinBytes?: pulumi.Input<number | undefined>;
     /**
+     * The maximum amount of data per partition the server will return.
+     */
+    consumerMaxPartitionFetchBytes?: pulumi.Input<number | undefined>;
+    /**
      * Set consumer max.poll.records. The default is 500. Example: `500`.
      */
     consumerMaxPollRecords?: pulumi.Input<number | undefined>;
+    /**
+     * The size of the TCP receive buffer (SO_RCVBUF) to use when reading data. -1 uses the OS default. Example: `65536`.
+     */
+    consumerReceiveBufferBytes?: pulumi.Input<number | undefined>;
+    /**
+     * The maximum time the client will wait for a response to a request. Example: `30000`.
+     */
+    consumerRequestTimeoutMs?: pulumi.Input<number | undefined>;
     /**
      * The batch size in bytes producer will attempt to collect before publishing to broker. Example: `1024`.
      */
@@ -8550,6 +8662,14 @@ export interface ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker {
      * The maximum request size in bytes.
      */
     producerMaxRequestSize?: pulumi.Input<number | undefined>;
+    /**
+     * The maximum time the client will wait for a response to a request. Example: `30000`.
+     */
+    producerRequestTimeoutMs?: pulumi.Input<number | undefined>;
+    /**
+     * The size of the TCP send buffer (SO_SNDBUF) to use when sending data. -1 uses the OS default. Example: `131072`.
+     */
+    producerSendBufferBytes?: pulumi.Input<number | undefined>;
 }
 
 export interface ServiceIntegrationLogsUserConfig {

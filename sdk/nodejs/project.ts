@@ -57,6 +57,8 @@ export class Project extends pulumi.CustomResource {
     declare public readonly addAccountOwnersAdminAccess: pulumi.Output<boolean | undefined>;
     /**
      * The number of trial or promotional credits remaining for this project.
+     *
+     * @deprecated This field is deprecated on the resource and is no longer populated. Use the `aiven.Project` data source to read this value. It will be removed in the next major release.
      */
     declare public /*out*/ readonly availableCredits: pulumi.Output<string>;
     /**
@@ -77,6 +79,8 @@ export class Project extends pulumi.CustomResource {
     declare public readonly defaultCloud: pulumi.Output<string | undefined>;
     /**
      * The monthly running estimate for this project for the current billing period.
+     *
+     * @deprecated This field is deprecated on the resource and is no longer populated. Use the `aiven.Project` data source to read this value. It will be removed in the next major release.
      */
     declare public /*out*/ readonly estimatedBalance: pulumi.Output<string>;
     /**
@@ -178,6 +182,8 @@ export interface ProjectState {
     addAccountOwnersAdminAccess?: pulumi.Input<boolean | undefined>;
     /**
      * The number of trial or promotional credits remaining for this project.
+     *
+     * @deprecated This field is deprecated on the resource and is no longer populated. Use the `aiven.Project` data source to read this value. It will be removed in the next major release.
      */
     availableCredits?: pulumi.Input<string | undefined>;
     /**
@@ -198,6 +204,8 @@ export interface ProjectState {
     defaultCloud?: pulumi.Input<string | undefined>;
     /**
      * The monthly running estimate for this project for the current billing period.
+     *
+     * @deprecated This field is deprecated on the resource and is no longer populated. Use the `aiven.Project` data source to read this value. It will be removed in the next major release.
      */
     estimatedBalance?: pulumi.Input<string | undefined>;
     /**

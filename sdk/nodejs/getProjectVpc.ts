@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -13,9 +15,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const exampleVpc = aiven.getProjectVpc({
- *     project: exampleProject.project,
- *     cloudName: "google-europe-west1",
+ * const example = aiven.getProjectVpc({
+ *     project: "my-project",
+ *     projectVpcId: "1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
  * });
  * ```
  */
@@ -25,6 +27,8 @@ export function getProjectVpc(args?: GetProjectVpcArgs, opts?: pulumi.InvokeOpti
     return pulumi.runtime.invoke("aiven:index/getProjectVpc:getProjectVpc", {
         "cloudName": args.cloudName,
         "project": args.project,
+        "projectVpcId": args.projectVpcId,
+        "timeouts": args.timeouts,
         "vpcId": args.vpcId,
     }, opts);
 }
@@ -34,15 +38,22 @@ export function getProjectVpc(args?: GetProjectVpcArgs, opts?: pulumi.InvokeOpti
  */
 export interface GetProjectVpcArgs {
     /**
-     * The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`.
+     * Target cloud. The field is required with `project`. Exactly one of the fields must be specified: `projectVpcId`, `cloudName` or `vpcId`.
      */
     cloudName?: string;
     /**
-     * Identifies the project this resource belongs to.
+     * Project name.
      */
     project?: string;
     /**
-     * The ID of the VPC. This can be used to filter out the other VPCs if there are more than one for the project and cloud.
+     * Project VPC ID. The field is required with `project`. Exactly one of the fields must be specified: `projectVpcId`, `cloudName` or `vpcId`.
+     */
+    projectVpcId?: string;
+    timeouts?: inputs.GetProjectVpcTimeouts;
+    /**
+     * The ID of the VPC in `project/project_vpc_id` format. The field conflicts with `project`. Exactly one of the fields must be specified: `projectVpcId`, `cloudName` or `vpcId`. **Deprecated**: This attribute is deprecated and will be removed in a future version. Use `projectVpcId` instead.
+     *
+     * @deprecated This attribute is deprecated and will be removed in a future version. Use `projectVpcId` instead.
      */
     vpcId?: string;
 }
@@ -52,27 +63,34 @@ export interface GetProjectVpcArgs {
  */
 export interface GetProjectVpcResult {
     /**
-     * The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`.
+     * Target cloud. The field is required with `project`. Exactly one of the fields must be specified: `projectVpcId`, `cloudName` or `vpcId`.
      */
-    readonly cloudName?: string;
+    readonly cloudName: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * Resource ID composed as: `project/project_vpc_id`.
      */
     readonly id: string;
     /**
-     * Network address range used by the VPC. For example, `192.168.0.0/24`.
+     * IPv4 network range CIDR.
      */
     readonly networkCidr: string;
     /**
-     * Identifies the project this resource belongs to.
+     * Project name.
      */
-    readonly project?: string;
+    readonly project: string;
     /**
-     * State of the VPC. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
+     * Project VPC ID. The field is required with `project`. Exactly one of the fields must be specified: `projectVpcId`, `cloudName` or `vpcId`.
+     */
+    readonly projectVpcId: string;
+    /**
+     * Project VPC state. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
      */
     readonly state: string;
+    readonly timeouts?: outputs.GetProjectVpcTimeouts;
     /**
-     * The ID of the VPC. This can be used to filter out the other VPCs if there are more than one for the project and cloud.
+     * The ID of the VPC in `project/project_vpc_id` format. The field conflicts with `project`. Exactly one of the fields must be specified: `projectVpcId`, `cloudName` or `vpcId`. **Deprecated**: This attribute is deprecated and will be removed in a future version. Use `projectVpcId` instead.
+     *
+     * @deprecated This attribute is deprecated and will be removed in a future version. Use `projectVpcId` instead.
      */
     readonly vpcId?: string;
 }
@@ -85,9 +103,9 @@ export interface GetProjectVpcResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const exampleVpc = aiven.getProjectVpc({
- *     project: exampleProject.project,
- *     cloudName: "google-europe-west1",
+ * const example = aiven.getProjectVpc({
+ *     project: "my-project",
+ *     projectVpcId: "1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
  * });
  * ```
  */
@@ -97,6 +115,8 @@ export function getProjectVpcOutput(args?: GetProjectVpcOutputArgs, opts?: pulum
     return pulumi.runtime.invokeOutput("aiven:index/getProjectVpc:getProjectVpc", {
         "cloudName": args.cloudName,
         "project": args.project,
+        "projectVpcId": args.projectVpcId,
+        "timeouts": args.timeouts,
         "vpcId": args.vpcId,
     }, opts);
 }
@@ -106,15 +126,22 @@ export function getProjectVpcOutput(args?: GetProjectVpcOutputArgs, opts?: pulum
  */
 export interface GetProjectVpcOutputArgs {
     /**
-     * The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`.
+     * Target cloud. The field is required with `project`. Exactly one of the fields must be specified: `projectVpcId`, `cloudName` or `vpcId`.
      */
     cloudName?: pulumi.Input<string | undefined>;
     /**
-     * Identifies the project this resource belongs to.
+     * Project name.
      */
     project?: pulumi.Input<string | undefined>;
     /**
-     * The ID of the VPC. This can be used to filter out the other VPCs if there are more than one for the project and cloud.
+     * Project VPC ID. The field is required with `project`. Exactly one of the fields must be specified: `projectVpcId`, `cloudName` or `vpcId`.
+     */
+    projectVpcId?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.GetProjectVpcTimeoutsArgs | undefined>;
+    /**
+     * The ID of the VPC in `project/project_vpc_id` format. The field conflicts with `project`. Exactly one of the fields must be specified: `projectVpcId`, `cloudName` or `vpcId`. **Deprecated**: This attribute is deprecated and will be removed in a future version. Use `projectVpcId` instead.
+     *
+     * @deprecated This attribute is deprecated and will be removed in a future version. Use `projectVpcId` instead.
      */
     vpcId?: pulumi.Input<string | undefined>;
 }

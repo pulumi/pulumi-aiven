@@ -19,9 +19,6 @@ import javax.annotation.Nullable;
 /**
  * Creates and manages an organization address.
  * 
- * **This resource is in the beta stage and may change without notice.** Set
- * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
- * 
  * ## Example Usage
  * 
  * <pre>
@@ -48,7 +45,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var example = new OrganizationAddress("example", OrganizationAddressArgs.builder()
  *             .organizationId("org1a23f456789")
- *             .addressLines("Main Street 1")
+ *             .addressLines("Street 1")
  *             .city("Helsinki")
  *             .countryCode("FI")
  *             .name("Aiven Oy")
@@ -85,28 +82,28 @@ public class OrganizationAddress extends com.pulumi.resources.CustomResource {
         return this.addressId;
     }
     /**
-     * Address Lines.
+     * Address lines.
      * 
      */
     @Export(name="addressLines", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> addressLines;
 
     /**
-     * @return Address Lines.
+     * @return Address lines.
      * 
      */
     public Output<List<String>> addressLines() {
         return this.addressLines;
     }
     /**
-     * City. Maximum length: `125`.
+     * City. Maximum length: `50`.
      * 
      */
     @Export(name="city", refs={String.class}, tree="[0]")
     private Output<String> city;
 
     /**
-     * @return City. Maximum length: `125`.
+     * @return City. Maximum length: `50`.
      * 
      */
     public Output<String> city() {
@@ -141,14 +138,14 @@ public class OrganizationAddress extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
-     * Name of a company. Length must be between `1` and `83`.
+     * Name. Length must be between `1` and `83`.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of a company. Length must be between `1` and `83`.
+     * @return Name. Length must be between `1` and `83`.
      * 
      */
     public Output<String> name() {
@@ -169,14 +166,14 @@ public class OrganizationAddress extends com.pulumi.resources.CustomResource {
         return this.organizationId;
     }
     /**
-     * State. Maximum length: `128`.
+     * State. Maximum length: `30`.
      * 
      */
     @Export(name="state", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> state;
 
     /**
-     * @return State. Maximum length: `128`.
+     * @return State. Maximum length: `30`.
      * 
      */
     public Output<Optional<String>> state() {
@@ -203,14 +200,14 @@ public class OrganizationAddress extends com.pulumi.resources.CustomResource {
         return this.updateTime;
     }
     /**
-     * Zip Code. Maximum length: `10`.
+     * Zip Code. Maximum length: `36`.
      * 
      */
     @Export(name="zipCode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> zipCode;
 
     /**
-     * @return Zip Code. Maximum length: `10`.
+     * @return Zip Code. Maximum length: `36`.
      * 
      */
     public Output<Optional<String>> zipCode() {

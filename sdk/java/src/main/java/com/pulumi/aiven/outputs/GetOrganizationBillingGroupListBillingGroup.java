@@ -41,6 +41,11 @@ public final class GetOrganizationBillingGroupListBillingGroup {
      */
     private String billingGroupName;
     /**
+     * @return The date when this billing group was created.
+     * 
+     */
+    private String createTime;
+    /**
      * @return Extra billing text.
      * 
      */
@@ -103,6 +108,13 @@ public final class GetOrganizationBillingGroupListBillingGroup {
         return this.billingGroupName;
     }
     /**
+     * @return The date when this billing group was created.
+     * 
+     */
+    public String createTime() {
+        return this.createTime;
+    }
+    /**
      * @return Extra billing text.
      * 
      */
@@ -152,6 +164,7 @@ public final class GetOrganizationBillingGroupListBillingGroup {
         private @Nullable List<GetOrganizationBillingGroupListBillingGroupBillingEmail> billingEmails;
         private String billingGroupId;
         private String billingGroupName;
+        private String createTime;
         private String customInvoiceText;
         private String organizationId;
         private @Nullable List<GetOrganizationBillingGroupListBillingGroupPaymentMethod> paymentMethods;
@@ -165,6 +178,7 @@ public final class GetOrganizationBillingGroupListBillingGroup {
     	      this.billingEmails = defaults.billingEmails;
     	      this.billingGroupId = defaults.billingGroupId;
     	      this.billingGroupName = defaults.billingGroupName;
+    	      this.createTime = defaults.createTime;
     	      this.customInvoiceText = defaults.customInvoiceText;
     	      this.organizationId = defaults.organizationId;
     	      this.paymentMethods = defaults.paymentMethods;
@@ -215,6 +229,14 @@ public final class GetOrganizationBillingGroupListBillingGroup {
             return this;
         }
         @CustomType.Setter
+        public Builder createTime(String createTime) {
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationBillingGroupListBillingGroup", "createTime");
+            }
+            this.createTime = createTime;
+            return this;
+        }
+        @CustomType.Setter
         public Builder customInvoiceText(String customInvoiceText) {
             if (customInvoiceText == null) {
               throw new MissingRequiredPropertyException("GetOrganizationBillingGroupListBillingGroup", "customInvoiceText");
@@ -262,6 +284,7 @@ public final class GetOrganizationBillingGroupListBillingGroup {
             _resultValue.billingEmails = billingEmails;
             _resultValue.billingGroupId = billingGroupId;
             _resultValue.billingGroupName = billingGroupName;
+            _resultValue.createTime = createTime;
             _resultValue.customInvoiceText = customInvoiceText;
             _resultValue.organizationId = organizationId;
             _resultValue.paymentMethods = paymentMethods;

@@ -78,7 +78,7 @@ class GetOrganizationAddressResult:
     @pulumi.getter(name="addressLines")
     def address_lines(self) -> Sequence[_builtins.str]:
         """
-        Address Lines.
+        Address lines.
         """
         return pulumi.get(self, "address_lines")
 
@@ -118,7 +118,7 @@ class GetOrganizationAddressResult:
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        Name of a company.
+        Name.
         """
         return pulumi.get(self, "name")
 
@@ -187,9 +187,6 @@ def get_organization_address(address_id: Optional[_builtins.str] = None,
     """
     Gets information about an organization address.
 
-    **This resource is in the beta stage and may change without notice.** Set
-    the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
-
     ## Example Usage
 
     ```python
@@ -230,9 +227,6 @@ def get_organization_address_output(address_id: pulumi.Input[Optional[_builtins.
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOrganizationAddressResult]:
     """
     Gets information about an organization address.
-
-    **This resource is in the beta stage and may change without notice.** Set
-    the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
 
     ## Example Usage
 
