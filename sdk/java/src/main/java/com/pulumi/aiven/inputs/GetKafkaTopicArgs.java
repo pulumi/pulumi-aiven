@@ -3,11 +3,17 @@
 
 package com.pulumi.aiven.inputs;
 
+import com.pulumi.aiven.inputs.GetKafkaTopicConfigArgs;
+import com.pulumi.aiven.inputs.GetKafkaTopicTagArgs;
+import com.pulumi.aiven.inputs.GetKafkaTopicTimeoutsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetKafkaTopicArgs extends com.pulumi.resources.InvokeArgs {
@@ -15,14 +21,29 @@ public final class GetKafkaTopicArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetKafkaTopicArgs Empty = new GetKafkaTopicArgs();
 
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics. Removing the block won&#39;t reset the topic configuration to default values. Instead, the topic will retain its last known configuration.
+     * 
+     */
+    @Import(name="configs")
+    private @Nullable Output<List<GetKafkaTopicConfigArgs>> configs;
+
+    /**
+     * @return [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics. Removing the block won&#39;t reset the topic configuration to default values. Instead, the topic will retain its last known configuration.
+     * 
+     */
+    public Optional<Output<List<GetKafkaTopicConfigArgs>>> configs() {
+        return Optional.ofNullable(this.configs);
+    }
+
+    /**
+     * Project name.
      * 
      */
     @Import(name="project", required=true)
     private Output<String> project;
 
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name.
      * 
      */
     public Output<String> project() {
@@ -30,14 +51,14 @@ public final class GetKafkaTopicArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name.
      * 
      */
     @Import(name="serviceName", required=true)
     private Output<String> serviceName;
 
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service name.
      * 
      */
     public Output<String> serviceName() {
@@ -45,14 +66,36 @@ public final class GetKafkaTopicArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The name of the topic. Changing this property forces recreation of the resource.
+     * Topic tags.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<List<GetKafkaTopicTagArgs>> tags;
+
+    /**
+     * @return Topic tags.
+     * 
+     */
+    public Optional<Output<List<GetKafkaTopicTagArgs>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
+    @Import(name="timeouts")
+    private @Nullable Output<GetKafkaTopicTimeoutsArgs> timeouts;
+
+    public Optional<Output<GetKafkaTopicTimeoutsArgs>> timeouts() {
+        return Optional.ofNullable(this.timeouts);
+    }
+
+    /**
+     * Kafka topic name.
      * 
      */
     @Import(name="topicName", required=true)
     private Output<String> topicName;
 
     /**
-     * @return The name of the topic. Changing this property forces recreation of the resource.
+     * @return Kafka topic name.
      * 
      */
     public Output<String> topicName() {
@@ -62,8 +105,11 @@ public final class GetKafkaTopicArgs extends com.pulumi.resources.InvokeArgs {
     private GetKafkaTopicArgs() {}
 
     private GetKafkaTopicArgs(GetKafkaTopicArgs $) {
+        this.configs = $.configs;
         this.project = $.project;
         this.serviceName = $.serviceName;
+        this.tags = $.tags;
+        this.timeouts = $.timeouts;
         this.topicName = $.topicName;
     }
 
@@ -86,7 +132,38 @@ public final class GetKafkaTopicArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param project The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param configs [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics. Removing the block won&#39;t reset the topic configuration to default values. Instead, the topic will retain its last known configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder configs(@Nullable Output<List<GetKafkaTopicConfigArgs>> configs) {
+            $.configs = configs;
+            return this;
+        }
+
+        /**
+         * @param configs [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics. Removing the block won&#39;t reset the topic configuration to default values. Instead, the topic will retain its last known configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder configs(List<GetKafkaTopicConfigArgs> configs) {
+            return configs(Output.of(configs));
+        }
+
+        /**
+         * @param configs [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics. Removing the block won&#39;t reset the topic configuration to default values. Instead, the topic will retain its last known configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder configs(GetKafkaTopicConfigArgs... configs) {
+            return configs(List.of(configs));
+        }
+
+        /**
+         * @param project Project name.
          * 
          * @return builder
          * 
@@ -97,7 +174,7 @@ public final class GetKafkaTopicArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param project The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param project Project name.
          * 
          * @return builder
          * 
@@ -107,7 +184,7 @@ public final class GetKafkaTopicArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param serviceName The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param serviceName Service name.
          * 
          * @return builder
          * 
@@ -118,7 +195,7 @@ public final class GetKafkaTopicArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param serviceName The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param serviceName Service name.
          * 
          * @return builder
          * 
@@ -128,7 +205,47 @@ public final class GetKafkaTopicArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param topicName The name of the topic. Changing this property forces recreation of the resource.
+         * @param tags Topic tags.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<List<GetKafkaTopicTagArgs>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags Topic tags.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(List<GetKafkaTopicTagArgs> tags) {
+            return tags(Output.of(tags));
+        }
+
+        /**
+         * @param tags Topic tags.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(GetKafkaTopicTagArgs... tags) {
+            return tags(List.of(tags));
+        }
+
+        public Builder timeouts(@Nullable Output<GetKafkaTopicTimeoutsArgs> timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
+        public Builder timeouts(GetKafkaTopicTimeoutsArgs timeouts) {
+            return timeouts(Output.of(timeouts));
+        }
+
+        /**
+         * @param topicName Kafka topic name.
          * 
          * @return builder
          * 
@@ -139,7 +256,7 @@ public final class GetKafkaTopicArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param topicName The name of the topic. Changing this property forces recreation of the resource.
+         * @param topicName Kafka topic name.
          * 
          * @return builder
          * 

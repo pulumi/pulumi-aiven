@@ -13,7 +13,7 @@ namespace Pulumi.Aiven.Inputs
     public sealed class KafkaTopicTagGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Tag key. Maximum length: `64`.
+        /// Tag key. Length must be between `1` and `64`.
         /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;

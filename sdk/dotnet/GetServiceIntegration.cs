@@ -251,6 +251,10 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationPrometheusUserConfigResult> PrometheusUserConfigs;
         /// <summary>
+        /// Rsyslog user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetServiceIntegrationRsyslogUserConfigResult> RsyslogUserConfigs;
+        /// <summary>
         /// Source endpoint for the integration.
         /// </summary>
         public readonly string SourceEndpointId;
@@ -309,6 +313,8 @@ namespace Pulumi.Aiven
 
             ImmutableArray<Outputs.GetServiceIntegrationPrometheusUserConfigResult> prometheusUserConfigs,
 
+            ImmutableArray<Outputs.GetServiceIntegrationRsyslogUserConfigResult> rsyslogUserConfigs,
+
             string sourceEndpointId,
 
             string sourceServiceName,
@@ -337,6 +343,7 @@ namespace Pulumi.Aiven
             MetricsUserConfigs = metricsUserConfigs;
             Project = project;
             PrometheusUserConfigs = prometheusUserConfigs;
+            RsyslogUserConfigs = rsyslogUserConfigs;
             SourceEndpointId = sourceEndpointId;
             SourceServiceName = sourceServiceName;
             SourceServiceProject = sourceServiceProject;

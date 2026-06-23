@@ -30,6 +30,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? InformationSchemaStatsExpiry;
         /// <summary>
+        /// Whether InnoDB adaptive hash indexing is enabled. The optimal setting is workload-dependent: it speeds up lookups for some workloads but its internal latch can become a contention point under high concurrency, in which case disabling it can improve throughput.
+        /// </summary>
+        public readonly bool? InnodbAdaptiveHashIndex;
+        /// <summary>
         /// Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25. Example: `30`.
         /// </summary>
         public readonly int? InnodbChangeBufferMaxSize;
@@ -45,6 +49,14 @@ namespace Pulumi.Aiven.Outputs
         /// This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables. Example: `db_name/table_name`.
         /// </summary>
         public readonly string? InnodbFtServerStopwordTable;
+        /// <summary>
+        /// The number of I/O operations per second (IOPS) available to InnoDB background tasks, such as flushing pages from the buffer pool and merging data from the change buffer. Set this to a value appropriate for the underlying storage; it must not exceed innodb*io*capacity_max. Example: `2000`.
+        /// </summary>
+        public readonly int? InnodbIoCapacity;
+        /// <summary>
+        /// The maximum number of I/O operations per second (IOPS) that InnoDB background tasks may perform when flushing falls behind. Defaults to twice innodb*io*capacity (minimum 2000). This must be greater than or equal to innodb*io*capacity.
+        /// </summary>
+        public readonly int? InnodbIoCapacityMax;
         /// <summary>
         /// The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120. Example: `50`.
         /// </summary>
@@ -122,6 +134,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? PerformanceSchemaEventsStatementsHistorySize;
         /// <summary>
+        /// The maximum amount of space in bytes to use for all relay logs while replicating from an external migration source. When the limit is reached, the replication I/O thread stops fetching relay log events until the SQL thread has caught up. Raise this to give a large migration a bigger relay-log budget; ensure the service disk is sized accordingly. The setting applies only on the node replicating from the external source; standby nodes always use the Aiven-managed default (the smaller of 5 GiB and 30% of the service disk), which is also used when this option is left unset. Changing this parameter will lead to a restart of the MySQL service.
+        /// </summary>
+        public readonly int? RelayLogSpaceLimit;
+        /// <summary>
         /// Slow query log enables capturing of slow queries. Setting slow*query*log to false also truncates the mysql.slow_log table.
         /// </summary>
         public readonly bool? SlowQueryLog;
@@ -156,6 +172,8 @@ namespace Pulumi.Aiven.Outputs
 
             int? informationSchemaStatsExpiry,
 
+            bool? innodbAdaptiveHashIndex,
+
             int? innodbChangeBufferMaxSize,
 
             int? innodbFlushNeighbors,
@@ -163,6 +181,10 @@ namespace Pulumi.Aiven.Outputs
             int? innodbFtMinTokenSize,
 
             string? innodbFtServerStopwordTable,
+
+            int? innodbIoCapacity,
+
+            int? innodbIoCapacityMax,
 
             int? innodbLockWaitTimeout,
 
@@ -202,6 +224,8 @@ namespace Pulumi.Aiven.Outputs
 
             int? performanceSchemaEventsStatementsHistorySize,
 
+            int? relayLogSpaceLimit,
+
             bool? slowQueryLog,
 
             int? sortBufferSize,
@@ -218,10 +242,13 @@ namespace Pulumi.Aiven.Outputs
             DefaultTimeZone = defaultTimeZone;
             GroupConcatMaxLen = groupConcatMaxLen;
             InformationSchemaStatsExpiry = informationSchemaStatsExpiry;
+            InnodbAdaptiveHashIndex = innodbAdaptiveHashIndex;
             InnodbChangeBufferMaxSize = innodbChangeBufferMaxSize;
             InnodbFlushNeighbors = innodbFlushNeighbors;
             InnodbFtMinTokenSize = innodbFtMinTokenSize;
             InnodbFtServerStopwordTable = innodbFtServerStopwordTable;
+            InnodbIoCapacity = innodbIoCapacity;
+            InnodbIoCapacityMax = innodbIoCapacityMax;
             InnodbLockWaitTimeout = innodbLockWaitTimeout;
             InnodbLogBufferSize = innodbLogBufferSize;
             InnodbOnlineAlterLogMaxSize = innodbOnlineAlterLogMaxSize;
@@ -241,6 +268,7 @@ namespace Pulumi.Aiven.Outputs
             NetReadTimeout = netReadTimeout;
             NetWriteTimeout = netWriteTimeout;
             PerformanceSchemaEventsStatementsHistorySize = performanceSchemaEventsStatementsHistorySize;
+            RelayLogSpaceLimit = relayLogSpaceLimit;
             SlowQueryLog = slowQueryLog;
             SortBufferSize = sortBufferSize;
             SqlMode = sqlMode;

@@ -15,18 +15,21 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const exampleTopic = aiven.getKafkaTopic({
- *     project: exampleProject.project,
- *     serviceName: exampleKafka.serviceName,
- *     topicName: "example-topic",
+ * const example = aiven.getKafkaTopic({
+ *     project: "my-project",
+ *     serviceName: "my-kafka",
+ *     topicName: "mytopic",
  * });
  * ```
  */
 export function getKafkaTopic(args: GetKafkaTopicArgs, opts?: pulumi.InvokeOptions): Promise<GetKafkaTopicResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getKafkaTopic:getKafkaTopic", {
+        "configs": args.configs,
         "project": args.project,
         "serviceName": args.serviceName,
+        "tags": args.tags,
+        "timeouts": args.timeouts,
         "topicName": args.topicName,
     }, opts);
 }
@@ -36,15 +39,24 @@ export function getKafkaTopic(args: GetKafkaTopicArgs, opts?: pulumi.InvokeOptio
  */
 export interface GetKafkaTopicArgs {
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics. Removing the block won't reset the topic configuration to default values. Instead, the topic will retain its last known configuration.
+     */
+    configs?: inputs.GetKafkaTopicConfig[];
+    /**
+     * Project name.
      */
     project: string;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name.
      */
     serviceName: string;
     /**
-     * The name of the topic. Changing this property forces recreation of the resource.
+     * Topic tags.
+     */
+    tags?: inputs.GetKafkaTopicTag[];
+    timeouts?: inputs.GetKafkaTopicTimeouts;
+    /**
+     * Kafka topic name.
      */
     topicName: string;
 }
@@ -54,47 +66,50 @@ export interface GetKafkaTopicArgs {
  */
 export interface GetKafkaTopicResult {
     /**
-     * [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics.
+     * [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics. Removing the block won't reset the topic configuration to default values. Instead, the topic will retain its last known configuration.
      */
-    readonly configs: outputs.GetKafkaTopicConfig[];
+    readonly configs?: outputs.GetKafkaTopicConfig[];
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * Resource ID composed as: `project/service_name/topic_name`.
      */
     readonly id: string;
     /**
-     * The ID of the user group that owns the topic. Assigning ownership to decentralize topic management is part of [Aiven for Apache Kafka® governance](https://aiven.io/docs/products/kafka/concepts/governance-overview).
+     * The user group that owns this topic.
      */
     readonly ownerUserGroupId: string;
     /**
-     * The number of partitions to create in the topic.
+     * Number of partitions.
      */
     readonly partitions: number;
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name.
      */
     readonly project: string;
     /**
-     * The replication factor for the topic.
+     * Number of replicas.
      */
     readonly replication: number;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name.
      */
     readonly serviceName: string;
     /**
-     * Tags for the topic.
+     * Topic tags.
      */
-    readonly tags: outputs.GetKafkaTopicTag[];
+    readonly tags?: outputs.GetKafkaTopicTag[];
     /**
-     * Prevents topics from being deleted by Terraform. It's recommended for topics containing critical data. **Topics can still be deleted in the Aiven Console.**
+     * Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console**. The default value is `false`. **Deprecated**: Instead, use `preventDestroy`
+     *
+     * @deprecated Instead, use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)
      */
     readonly terminationProtection: boolean;
+    readonly timeouts?: outputs.GetKafkaTopicTimeouts;
     /**
-     * The description of the topic
+     * Topic description.
      */
     readonly topicDescription: string;
     /**
-     * The name of the topic. Changing this property forces recreation of the resource.
+     * Kafka topic name.
      */
     readonly topicName: string;
 }
@@ -107,18 +122,21 @@ export interface GetKafkaTopicResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const exampleTopic = aiven.getKafkaTopic({
- *     project: exampleProject.project,
- *     serviceName: exampleKafka.serviceName,
- *     topicName: "example-topic",
+ * const example = aiven.getKafkaTopic({
+ *     project: "my-project",
+ *     serviceName: "my-kafka",
+ *     topicName: "mytopic",
  * });
  * ```
  */
 export function getKafkaTopicOutput(args: GetKafkaTopicOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetKafkaTopicResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("aiven:index/getKafkaTopic:getKafkaTopic", {
+        "configs": args.configs,
         "project": args.project,
         "serviceName": args.serviceName,
+        "tags": args.tags,
+        "timeouts": args.timeouts,
         "topicName": args.topicName,
     }, opts);
 }
@@ -128,15 +146,24 @@ export function getKafkaTopicOutput(args: GetKafkaTopicOutputArgs, opts?: pulumi
  */
 export interface GetKafkaTopicOutputArgs {
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics. Removing the block won't reset the topic configuration to default values. Instead, the topic will retain its last known configuration.
+     */
+    configs?: pulumi.Input<pulumi.Input<inputs.GetKafkaTopicConfigArgs>[] | undefined>;
+    /**
+     * Project name.
      */
     project: pulumi.Input<string>;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name.
      */
     serviceName: pulumi.Input<string>;
     /**
-     * The name of the topic. Changing this property forces recreation of the resource.
+     * Topic tags.
+     */
+    tags?: pulumi.Input<pulumi.Input<inputs.GetKafkaTopicTagArgs>[] | undefined>;
+    timeouts?: pulumi.Input<inputs.GetKafkaTopicTimeoutsArgs | undefined>;
+    /**
+     * Kafka topic name.
      */
     topicName: pulumi.Input<string>;
 }

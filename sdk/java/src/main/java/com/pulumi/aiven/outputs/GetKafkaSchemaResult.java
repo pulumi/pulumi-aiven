@@ -3,10 +3,12 @@
 
 package com.pulumi.aiven.outputs;
 
+import com.pulumi.aiven.outputs.GetKafkaSchemaReference;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 
 @CustomType
@@ -26,6 +28,11 @@ public final class GetKafkaSchemaResult {
      * 
      */
     private String project;
+    /**
+     * @return Schema references.
+     * 
+     */
+    private List<GetKafkaSchemaReference> references;
     /**
      * @return Kafka Schema configuration. Should be a valid Avro, JSON, or Protobuf schema, depending on the schema type.
      * 
@@ -75,6 +82,13 @@ public final class GetKafkaSchemaResult {
         return this.project;
     }
     /**
+     * @return Schema references.
+     * 
+     */
+    public List<GetKafkaSchemaReference> references() {
+        return this.references;
+    }
+    /**
      * @return Kafka Schema configuration. Should be a valid Avro, JSON, or Protobuf schema, depending on the schema type.
      * 
      */
@@ -122,6 +136,7 @@ public final class GetKafkaSchemaResult {
         private String compatibilityLevel;
         private String id;
         private String project;
+        private List<GetKafkaSchemaReference> references;
         private String schema;
         private String schemaType;
         private String serviceName;
@@ -133,6 +148,7 @@ public final class GetKafkaSchemaResult {
     	      this.compatibilityLevel = defaults.compatibilityLevel;
     	      this.id = defaults.id;
     	      this.project = defaults.project;
+    	      this.references = defaults.references;
     	      this.schema = defaults.schema;
     	      this.schemaType = defaults.schemaType;
     	      this.serviceName = defaults.serviceName;
@@ -163,6 +179,17 @@ public final class GetKafkaSchemaResult {
             }
             this.project = project;
             return this;
+        }
+        @CustomType.Setter
+        public Builder references(List<GetKafkaSchemaReference> references) {
+            if (references == null) {
+              throw new MissingRequiredPropertyException("GetKafkaSchemaResult", "references");
+            }
+            this.references = references;
+            return this;
+        }
+        public Builder references(GetKafkaSchemaReference... references) {
+            return references(List.of(references));
         }
         @CustomType.Setter
         public Builder schema(String schema) {
@@ -209,6 +236,7 @@ public final class GetKafkaSchemaResult {
             _resultValue.compatibilityLevel = compatibilityLevel;
             _resultValue.id = id;
             _resultValue.project = project;
+            _resultValue.references = references;
             _resultValue.schema = schema;
             _resultValue.schemaType = schemaType;
             _resultValue.serviceName = serviceName;

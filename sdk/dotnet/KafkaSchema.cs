@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// The Kafka Schema resource allows the creation and management of Aiven Kafka Schemas.
+    /// The Kafka Schema resource allows the creation and management of Aiven Kafka Schemas. Schemas with references are hard deleted, while schemas without references are only soft deleted.
     /// 
     /// ## Example Usage
     /// 
@@ -69,6 +69,12 @@ namespace Pulumi.Aiven
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// Schema references.
+        /// </summary>
+        [Output("references")]
+        public Output<ImmutableArray<Outputs.KafkaSchemaReference>> References { get; private set; } = null!;
 
         /// <summary>
         /// Kafka Schema configuration. Should be a valid Avro, JSON, or Protobuf schema, depending on the schema type.
@@ -158,6 +164,18 @@ namespace Pulumi.Aiven
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
+        [Input("references")]
+        private InputList<Inputs.KafkaSchemaReferenceArgs>? _references;
+
+        /// <summary>
+        /// Schema references.
+        /// </summary>
+        public InputList<Inputs.KafkaSchemaReferenceArgs> References
+        {
+            get => _references ?? (_references = new InputList<Inputs.KafkaSchemaReferenceArgs>());
+            set => _references = value;
+        }
+
         /// <summary>
         /// Kafka Schema configuration. Should be a valid Avro, JSON, or Protobuf schema, depending on the schema type.
         /// </summary>
@@ -201,6 +219,18 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        [Input("references")]
+        private InputList<Inputs.KafkaSchemaReferenceGetArgs>? _references;
+
+        /// <summary>
+        /// Schema references.
+        /// </summary>
+        public InputList<Inputs.KafkaSchemaReferenceGetArgs> References
+        {
+            get => _references ?? (_references = new InputList<Inputs.KafkaSchemaReferenceGetArgs>());
+            set => _references = value;
+        }
 
         /// <summary>
         /// Kafka Schema configuration. Should be a valid Avro, JSON, or Protobuf schema, depending on the schema type.

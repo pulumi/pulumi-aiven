@@ -35,6 +35,11 @@ public final class MySqlMysqlUserConfigMysql {
      */
     private @Nullable Integer informationSchemaStatsExpiry;
     /**
+     * @return Whether InnoDB adaptive hash indexing is enabled. The optimal setting is workload-dependent: it speeds up lookups for some workloads but its internal latch can become a contention point under high concurrency, in which case disabling it can improve throughput.
+     * 
+     */
+    private @Nullable Boolean innodbAdaptiveHashIndex;
+    /**
      * @return Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25. Example: `30`.
      * 
      */
@@ -54,6 +59,16 @@ public final class MySqlMysqlUserConfigMysql {
      * 
      */
     private @Nullable String innodbFtServerStopwordTable;
+    /**
+     * @return The number of I/O operations per second (IOPS) available to InnoDB background tasks, such as flushing pages from the buffer pool and merging data from the change buffer. Set this to a value appropriate for the underlying storage; it must not exceed innodb*io*capacity_max. Example: `2000`.
+     * 
+     */
+    private @Nullable Integer innodbIoCapacity;
+    /**
+     * @return The maximum number of I/O operations per second (IOPS) that InnoDB background tasks may perform when flushing falls behind. Defaults to twice innodb*io*capacity (minimum 2000). This must be greater than or equal to innodb*io*capacity.
+     * 
+     */
+    private @Nullable Integer innodbIoCapacityMax;
     /**
      * @return The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120. Example: `50`.
      * 
@@ -150,6 +165,11 @@ public final class MySqlMysqlUserConfigMysql {
      */
     private @Nullable Integer performanceSchemaEventsStatementsHistorySize;
     /**
+     * @return The maximum amount of space in bytes to use for all relay logs while replicating from an external migration source. When the limit is reached, the replication I/O thread stops fetching relay log events until the SQL thread has caught up. Raise this to give a large migration a bigger relay-log budget; ensure the service disk is sized accordingly. The setting applies only on the node replicating from the external source; standby nodes always use the Aiven-managed default (the smaller of 5 GiB and 30% of the service disk), which is also used when this option is left unset. Changing this parameter will lead to a restart of the MySQL service.
+     * 
+     */
+    private @Nullable Integer relayLogSpaceLimit;
+    /**
      * @return Slow query log enables capturing of slow queries. Setting slow*query*log to false also truncates the mysql.slow_log table.
      * 
      */
@@ -210,6 +230,13 @@ public final class MySqlMysqlUserConfigMysql {
         return Optional.ofNullable(this.informationSchemaStatsExpiry);
     }
     /**
+     * @return Whether InnoDB adaptive hash indexing is enabled. The optimal setting is workload-dependent: it speeds up lookups for some workloads but its internal latch can become a contention point under high concurrency, in which case disabling it can improve throughput.
+     * 
+     */
+    public Optional<Boolean> innodbAdaptiveHashIndex() {
+        return Optional.ofNullable(this.innodbAdaptiveHashIndex);
+    }
+    /**
      * @return Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25. Example: `30`.
      * 
      */
@@ -236,6 +263,20 @@ public final class MySqlMysqlUserConfigMysql {
      */
     public Optional<String> innodbFtServerStopwordTable() {
         return Optional.ofNullable(this.innodbFtServerStopwordTable);
+    }
+    /**
+     * @return The number of I/O operations per second (IOPS) available to InnoDB background tasks, such as flushing pages from the buffer pool and merging data from the change buffer. Set this to a value appropriate for the underlying storage; it must not exceed innodb*io*capacity_max. Example: `2000`.
+     * 
+     */
+    public Optional<Integer> innodbIoCapacity() {
+        return Optional.ofNullable(this.innodbIoCapacity);
+    }
+    /**
+     * @return The maximum number of I/O operations per second (IOPS) that InnoDB background tasks may perform when flushing falls behind. Defaults to twice innodb*io*capacity (minimum 2000). This must be greater than or equal to innodb*io*capacity.
+     * 
+     */
+    public Optional<Integer> innodbIoCapacityMax() {
+        return Optional.ofNullable(this.innodbIoCapacityMax);
     }
     /**
      * @return The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120. Example: `50`.
@@ -371,6 +412,13 @@ public final class MySqlMysqlUserConfigMysql {
         return Optional.ofNullable(this.performanceSchemaEventsStatementsHistorySize);
     }
     /**
+     * @return The maximum amount of space in bytes to use for all relay logs while replicating from an external migration source. When the limit is reached, the replication I/O thread stops fetching relay log events until the SQL thread has caught up. Raise this to give a large migration a bigger relay-log budget; ensure the service disk is sized accordingly. The setting applies only on the node replicating from the external source; standby nodes always use the Aiven-managed default (the smaller of 5 GiB and 30% of the service disk), which is also used when this option is left unset. Changing this parameter will lead to a restart of the MySQL service.
+     * 
+     */
+    public Optional<Integer> relayLogSpaceLimit() {
+        return Optional.ofNullable(this.relayLogSpaceLimit);
+    }
+    /**
      * @return Slow query log enables capturing of slow queries. Setting slow*query*log to false also truncates the mysql.slow_log table.
      * 
      */
@@ -426,10 +474,13 @@ public final class MySqlMysqlUserConfigMysql {
         private @Nullable String defaultTimeZone;
         private @Nullable Integer groupConcatMaxLen;
         private @Nullable Integer informationSchemaStatsExpiry;
+        private @Nullable Boolean innodbAdaptiveHashIndex;
         private @Nullable Integer innodbChangeBufferMaxSize;
         private @Nullable Integer innodbFlushNeighbors;
         private @Nullable Integer innodbFtMinTokenSize;
         private @Nullable String innodbFtServerStopwordTable;
+        private @Nullable Integer innodbIoCapacity;
+        private @Nullable Integer innodbIoCapacityMax;
         private @Nullable Integer innodbLockWaitTimeout;
         private @Nullable Integer innodbLogBufferSize;
         private @Nullable Integer innodbOnlineAlterLogMaxSize;
@@ -449,6 +500,7 @@ public final class MySqlMysqlUserConfigMysql {
         private @Nullable Integer netReadTimeout;
         private @Nullable Integer netWriteTimeout;
         private @Nullable Integer performanceSchemaEventsStatementsHistorySize;
+        private @Nullable Integer relayLogSpaceLimit;
         private @Nullable Boolean slowQueryLog;
         private @Nullable Integer sortBufferSize;
         private @Nullable String sqlMode;
@@ -462,10 +514,13 @@ public final class MySqlMysqlUserConfigMysql {
     	      this.defaultTimeZone = defaults.defaultTimeZone;
     	      this.groupConcatMaxLen = defaults.groupConcatMaxLen;
     	      this.informationSchemaStatsExpiry = defaults.informationSchemaStatsExpiry;
+    	      this.innodbAdaptiveHashIndex = defaults.innodbAdaptiveHashIndex;
     	      this.innodbChangeBufferMaxSize = defaults.innodbChangeBufferMaxSize;
     	      this.innodbFlushNeighbors = defaults.innodbFlushNeighbors;
     	      this.innodbFtMinTokenSize = defaults.innodbFtMinTokenSize;
     	      this.innodbFtServerStopwordTable = defaults.innodbFtServerStopwordTable;
+    	      this.innodbIoCapacity = defaults.innodbIoCapacity;
+    	      this.innodbIoCapacityMax = defaults.innodbIoCapacityMax;
     	      this.innodbLockWaitTimeout = defaults.innodbLockWaitTimeout;
     	      this.innodbLogBufferSize = defaults.innodbLogBufferSize;
     	      this.innodbOnlineAlterLogMaxSize = defaults.innodbOnlineAlterLogMaxSize;
@@ -485,6 +540,7 @@ public final class MySqlMysqlUserConfigMysql {
     	      this.netReadTimeout = defaults.netReadTimeout;
     	      this.netWriteTimeout = defaults.netWriteTimeout;
     	      this.performanceSchemaEventsStatementsHistorySize = defaults.performanceSchemaEventsStatementsHistorySize;
+    	      this.relayLogSpaceLimit = defaults.relayLogSpaceLimit;
     	      this.slowQueryLog = defaults.slowQueryLog;
     	      this.sortBufferSize = defaults.sortBufferSize;
     	      this.sqlMode = defaults.sqlMode;
@@ -518,6 +574,12 @@ public final class MySqlMysqlUserConfigMysql {
             return this;
         }
         @CustomType.Setter
+        public Builder innodbAdaptiveHashIndex(@Nullable Boolean innodbAdaptiveHashIndex) {
+
+            this.innodbAdaptiveHashIndex = innodbAdaptiveHashIndex;
+            return this;
+        }
+        @CustomType.Setter
         public Builder innodbChangeBufferMaxSize(@Nullable Integer innodbChangeBufferMaxSize) {
 
             this.innodbChangeBufferMaxSize = innodbChangeBufferMaxSize;
@@ -539,6 +601,18 @@ public final class MySqlMysqlUserConfigMysql {
         public Builder innodbFtServerStopwordTable(@Nullable String innodbFtServerStopwordTable) {
 
             this.innodbFtServerStopwordTable = innodbFtServerStopwordTable;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder innodbIoCapacity(@Nullable Integer innodbIoCapacity) {
+
+            this.innodbIoCapacity = innodbIoCapacity;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder innodbIoCapacityMax(@Nullable Integer innodbIoCapacityMax) {
+
+            this.innodbIoCapacityMax = innodbIoCapacityMax;
             return this;
         }
         @CustomType.Setter
@@ -656,6 +730,12 @@ public final class MySqlMysqlUserConfigMysql {
             return this;
         }
         @CustomType.Setter
+        public Builder relayLogSpaceLimit(@Nullable Integer relayLogSpaceLimit) {
+
+            this.relayLogSpaceLimit = relayLogSpaceLimit;
+            return this;
+        }
+        @CustomType.Setter
         public Builder slowQueryLog(@Nullable Boolean slowQueryLog) {
 
             this.slowQueryLog = slowQueryLog;
@@ -697,10 +777,13 @@ public final class MySqlMysqlUserConfigMysql {
             _resultValue.defaultTimeZone = defaultTimeZone;
             _resultValue.groupConcatMaxLen = groupConcatMaxLen;
             _resultValue.informationSchemaStatsExpiry = informationSchemaStatsExpiry;
+            _resultValue.innodbAdaptiveHashIndex = innodbAdaptiveHashIndex;
             _resultValue.innodbChangeBufferMaxSize = innodbChangeBufferMaxSize;
             _resultValue.innodbFlushNeighbors = innodbFlushNeighbors;
             _resultValue.innodbFtMinTokenSize = innodbFtMinTokenSize;
             _resultValue.innodbFtServerStopwordTable = innodbFtServerStopwordTable;
+            _resultValue.innodbIoCapacity = innodbIoCapacity;
+            _resultValue.innodbIoCapacityMax = innodbIoCapacityMax;
             _resultValue.innodbLockWaitTimeout = innodbLockWaitTimeout;
             _resultValue.innodbLogBufferSize = innodbLogBufferSize;
             _resultValue.innodbOnlineAlterLogMaxSize = innodbOnlineAlterLogMaxSize;
@@ -720,6 +803,7 @@ public final class MySqlMysqlUserConfigMysql {
             _resultValue.netReadTimeout = netReadTimeout;
             _resultValue.netWriteTimeout = netWriteTimeout;
             _resultValue.performanceSchemaEventsStatementsHistorySize = performanceSchemaEventsStatementsHistorySize;
+            _resultValue.relayLogSpaceLimit = relayLogSpaceLimit;
             _resultValue.slowQueryLog = slowQueryLog;
             _resultValue.sortBufferSize = sortBufferSize;
             _resultValue.sqlMode = sqlMode;

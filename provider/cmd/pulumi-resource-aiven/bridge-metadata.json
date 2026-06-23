@@ -602,7 +602,14 @@
                                     "maxItemsOne": false
                                 },
                                 "kafka": {
-                                    "maxItemsOne": true
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "audit_log": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
                                 },
                                 "kafka_authentication_methods": {
                                     "maxItemsOne": true
@@ -829,7 +836,12 @@
             },
             "aiven_kafka_schema": {
                 "current": "aiven:index/kafkaSchema:KafkaSchema",
-                "majorVersion": 6
+                "majorVersion": 6,
+                "fields": {
+                    "references": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "aiven_kafka_schema_configuration": {
                 "current": "aiven:index/kafkaSchemaConfiguration:KafkaSchemaConfiguration",
@@ -1600,6 +1612,9 @@
                                 }
                             }
                         }
+                    },
+                    "rsyslog_user_config": {
+                        "maxItemsOne": true
                     }
                 }
             },
@@ -2346,7 +2361,14 @@
                                     "maxItemsOne": false
                                 },
                                 "kafka": {
-                                    "maxItemsOne": true
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "audit_log": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
                                 },
                                 "kafka_authentication_methods": {
                                     "maxItemsOne": true
@@ -2565,11 +2587,21 @@
             },
             "aiven_kafka_schema": {
                 "current": "aiven:index/getKafkaSchema:getKafkaSchema",
-                "majorVersion": 6
+                "majorVersion": 6,
+                "fields": {
+                    "references": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "aiven_kafka_schema_configuration": {
                 "current": "aiven:index/getKafkaSchemaConfiguration:getKafkaSchemaConfiguration",
-                "majorVersion": 6
+                "majorVersion": 6,
+                "fields": {
+                    "references": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "aiven_kafka_schema_registry_acl": {
                 "current": "aiven:index/getKafkaSchemaRegistryAcl:getKafkaSchemaRegistryAcl",
@@ -3392,6 +3424,9 @@
                                 }
                             }
                         }
+                    },
+                    "rsyslog_user_config": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -3689,6 +3724,7 @@
             "aiven_flink_application_deployment": {},
             "aiven_governance_access": {},
             "aiven_kafka_schema_registry_acl": {},
+            "aiven_kafka_topic": {},
             "aiven_mysql_database": {},
             "aiven_mysql_user": {},
             "aiven_opensearch_security_plugin_config": {},
@@ -3759,7 +3795,7 @@
             "aiven:index/kafkaSchema:KafkaSchema": 0,
             "aiven:index/kafkaSchemaConfiguration:KafkaSchemaConfiguration": 0,
             "aiven:index/kafkaSchemaRegistryAcl:KafkaSchemaRegistryAcl": 1,
-            "aiven:index/kafkaTopic:KafkaTopic": 0,
+            "aiven:index/kafkaTopic:KafkaTopic": 1,
             "aiven:index/kafkaUser:KafkaUser": 0,
             "aiven:index/mirrorMakerReplicationFlow:MirrorMakerReplicationFlow": 0,
             "aiven:index/mySql:MySql": 0,
@@ -3836,7 +3872,7 @@
             "aiven:index/getKafkaSchema:getKafkaSchema": 0,
             "aiven:index/getKafkaSchemaConfiguration:getKafkaSchemaConfiguration": 0,
             "aiven:index/getKafkaSchemaRegistryAcl:getKafkaSchemaRegistryAcl": 1,
-            "aiven:index/getKafkaTopic:getKafkaTopic": 0,
+            "aiven:index/getKafkaTopic:getKafkaTopic": 1,
             "aiven:index/getKafkaTopicList:getKafkaTopicList": 1,
             "aiven:index/getKafkaUser:getKafkaUser": 0,
             "aiven:index/getMirrorMakerReplicationFlow:getMirrorMakerReplicationFlow": 0,

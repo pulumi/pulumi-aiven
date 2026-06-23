@@ -28,6 +28,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? Cert;
         /// <summary>
+        /// When true, embedded newlines in a log message are escaped so a multi-line record (e.g. a stack trace) is delivered as one complete log entry. Useful for newline-delimited cloud log intakes that drop continuation lines. Default: `False`.
+        /// </summary>
+        public readonly bool? EscapeNewlines;
+        /// <summary>
         /// Enum: `Custom`, `Rfc3164`, `Rfc5424`. Message format. Default: `Rfc5424`.
         /// </summary>
         public readonly string Format;
@@ -69,6 +73,8 @@ namespace Pulumi.Aiven.Outputs
 
             string? cert,
 
+            bool? escapeNewlines,
+
             string format,
 
             string? key,
@@ -87,6 +93,7 @@ namespace Pulumi.Aiven.Outputs
         {
             Ca = ca;
             Cert = cert;
+            EscapeNewlines = escapeNewlines;
             Format = format;
             Key = key;
             Logline = logline;

@@ -79,6 +79,21 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
     }
 
     /**
+     * Whether InnoDB adaptive hash indexing is enabled. The optimal setting is workload-dependent: it speeds up lookups for some workloads but its internal latch can become a contention point under high concurrency, in which case disabling it can improve throughput.
+     * 
+     */
+    @Import(name="innodbAdaptiveHashIndex")
+    private @Nullable Output<Boolean> innodbAdaptiveHashIndex;
+
+    /**
+     * @return Whether InnoDB adaptive hash indexing is enabled. The optimal setting is workload-dependent: it speeds up lookups for some workloads but its internal latch can become a contention point under high concurrency, in which case disabling it can improve throughput.
+     * 
+     */
+    public Optional<Output<Boolean>> innodbAdaptiveHashIndex() {
+        return Optional.ofNullable(this.innodbAdaptiveHashIndex);
+    }
+
+    /**
      * Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25. Example: `30`.
      * 
      */
@@ -136,6 +151,36 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
      */
     public Optional<Output<String>> innodbFtServerStopwordTable() {
         return Optional.ofNullable(this.innodbFtServerStopwordTable);
+    }
+
+    /**
+     * The number of I/O operations per second (IOPS) available to InnoDB background tasks, such as flushing pages from the buffer pool and merging data from the change buffer. Set this to a value appropriate for the underlying storage; it must not exceed innodb*io*capacity_max. Example: `2000`.
+     * 
+     */
+    @Import(name="innodbIoCapacity")
+    private @Nullable Output<Integer> innodbIoCapacity;
+
+    /**
+     * @return The number of I/O operations per second (IOPS) available to InnoDB background tasks, such as flushing pages from the buffer pool and merging data from the change buffer. Set this to a value appropriate for the underlying storage; it must not exceed innodb*io*capacity_max. Example: `2000`.
+     * 
+     */
+    public Optional<Output<Integer>> innodbIoCapacity() {
+        return Optional.ofNullable(this.innodbIoCapacity);
+    }
+
+    /**
+     * The maximum number of I/O operations per second (IOPS) that InnoDB background tasks may perform when flushing falls behind. Defaults to twice innodb*io*capacity (minimum 2000). This must be greater than or equal to innodb*io*capacity.
+     * 
+     */
+    @Import(name="innodbIoCapacityMax")
+    private @Nullable Output<Integer> innodbIoCapacityMax;
+
+    /**
+     * @return The maximum number of I/O operations per second (IOPS) that InnoDB background tasks may perform when flushing falls behind. Defaults to twice innodb*io*capacity (minimum 2000). This must be greater than or equal to innodb*io*capacity.
+     * 
+     */
+    public Optional<Output<Integer>> innodbIoCapacityMax() {
+        return Optional.ofNullable(this.innodbIoCapacityMax);
     }
 
     /**
@@ -424,6 +469,21 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
     }
 
     /**
+     * The maximum amount of space in bytes to use for all relay logs while replicating from an external migration source. When the limit is reached, the replication I/O thread stops fetching relay log events until the SQL thread has caught up. Raise this to give a large migration a bigger relay-log budget; ensure the service disk is sized accordingly. The setting applies only on the node replicating from the external source; standby nodes always use the Aiven-managed default (the smaller of 5 GiB and 30% of the service disk), which is also used when this option is left unset. Changing this parameter will lead to a restart of the MySQL service.
+     * 
+     */
+    @Import(name="relayLogSpaceLimit")
+    private @Nullable Output<Integer> relayLogSpaceLimit;
+
+    /**
+     * @return The maximum amount of space in bytes to use for all relay logs while replicating from an external migration source. When the limit is reached, the replication I/O thread stops fetching relay log events until the SQL thread has caught up. Raise this to give a large migration a bigger relay-log budget; ensure the service disk is sized accordingly. The setting applies only on the node replicating from the external source; standby nodes always use the Aiven-managed default (the smaller of 5 GiB and 30% of the service disk), which is also used when this option is left unset. Changing this parameter will lead to a restart of the MySQL service.
+     * 
+     */
+    public Optional<Output<Integer>> relayLogSpaceLimit() {
+        return Optional.ofNullable(this.relayLogSpaceLimit);
+    }
+
+    /**
      * Slow query log enables capturing of slow queries. Setting slow*query*log to false also truncates the mysql.slow_log table.
      * 
      */
@@ -520,10 +580,13 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         this.defaultTimeZone = $.defaultTimeZone;
         this.groupConcatMaxLen = $.groupConcatMaxLen;
         this.informationSchemaStatsExpiry = $.informationSchemaStatsExpiry;
+        this.innodbAdaptiveHashIndex = $.innodbAdaptiveHashIndex;
         this.innodbChangeBufferMaxSize = $.innodbChangeBufferMaxSize;
         this.innodbFlushNeighbors = $.innodbFlushNeighbors;
         this.innodbFtMinTokenSize = $.innodbFtMinTokenSize;
         this.innodbFtServerStopwordTable = $.innodbFtServerStopwordTable;
+        this.innodbIoCapacity = $.innodbIoCapacity;
+        this.innodbIoCapacityMax = $.innodbIoCapacityMax;
         this.innodbLockWaitTimeout = $.innodbLockWaitTimeout;
         this.innodbLogBufferSize = $.innodbLogBufferSize;
         this.innodbOnlineAlterLogMaxSize = $.innodbOnlineAlterLogMaxSize;
@@ -543,6 +606,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         this.netReadTimeout = $.netReadTimeout;
         this.netWriteTimeout = $.netWriteTimeout;
         this.performanceSchemaEventsStatementsHistorySize = $.performanceSchemaEventsStatementsHistorySize;
+        this.relayLogSpaceLimit = $.relayLogSpaceLimit;
         this.slowQueryLog = $.slowQueryLog;
         this.sortBufferSize = $.sortBufferSize;
         this.sqlMode = $.sqlMode;
@@ -654,6 +718,27 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
+         * @param innodbAdaptiveHashIndex Whether InnoDB adaptive hash indexing is enabled. The optimal setting is workload-dependent: it speeds up lookups for some workloads but its internal latch can become a contention point under high concurrency, in which case disabling it can improve throughput.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder innodbAdaptiveHashIndex(@Nullable Output<Boolean> innodbAdaptiveHashIndex) {
+            $.innodbAdaptiveHashIndex = innodbAdaptiveHashIndex;
+            return this;
+        }
+
+        /**
+         * @param innodbAdaptiveHashIndex Whether InnoDB adaptive hash indexing is enabled. The optimal setting is workload-dependent: it speeds up lookups for some workloads but its internal latch can become a contention point under high concurrency, in which case disabling it can improve throughput.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder innodbAdaptiveHashIndex(Boolean innodbAdaptiveHashIndex) {
+            return innodbAdaptiveHashIndex(Output.of(innodbAdaptiveHashIndex));
+        }
+
+        /**
          * @param innodbChangeBufferMaxSize Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25. Example: `30`.
          * 
          * @return builder
@@ -735,6 +820,48 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
          */
         public Builder innodbFtServerStopwordTable(String innodbFtServerStopwordTable) {
             return innodbFtServerStopwordTable(Output.of(innodbFtServerStopwordTable));
+        }
+
+        /**
+         * @param innodbIoCapacity The number of I/O operations per second (IOPS) available to InnoDB background tasks, such as flushing pages from the buffer pool and merging data from the change buffer. Set this to a value appropriate for the underlying storage; it must not exceed innodb*io*capacity_max. Example: `2000`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder innodbIoCapacity(@Nullable Output<Integer> innodbIoCapacity) {
+            $.innodbIoCapacity = innodbIoCapacity;
+            return this;
+        }
+
+        /**
+         * @param innodbIoCapacity The number of I/O operations per second (IOPS) available to InnoDB background tasks, such as flushing pages from the buffer pool and merging data from the change buffer. Set this to a value appropriate for the underlying storage; it must not exceed innodb*io*capacity_max. Example: `2000`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder innodbIoCapacity(Integer innodbIoCapacity) {
+            return innodbIoCapacity(Output.of(innodbIoCapacity));
+        }
+
+        /**
+         * @param innodbIoCapacityMax The maximum number of I/O operations per second (IOPS) that InnoDB background tasks may perform when flushing falls behind. Defaults to twice innodb*io*capacity (minimum 2000). This must be greater than or equal to innodb*io*capacity.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder innodbIoCapacityMax(@Nullable Output<Integer> innodbIoCapacityMax) {
+            $.innodbIoCapacityMax = innodbIoCapacityMax;
+            return this;
+        }
+
+        /**
+         * @param innodbIoCapacityMax The maximum number of I/O operations per second (IOPS) that InnoDB background tasks may perform when flushing falls behind. Defaults to twice innodb*io*capacity (minimum 2000). This must be greater than or equal to innodb*io*capacity.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder innodbIoCapacityMax(Integer innodbIoCapacityMax) {
+            return innodbIoCapacityMax(Output.of(innodbIoCapacityMax));
         }
 
         /**
@@ -1134,6 +1261,27 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
          */
         public Builder performanceSchemaEventsStatementsHistorySize(Integer performanceSchemaEventsStatementsHistorySize) {
             return performanceSchemaEventsStatementsHistorySize(Output.of(performanceSchemaEventsStatementsHistorySize));
+        }
+
+        /**
+         * @param relayLogSpaceLimit The maximum amount of space in bytes to use for all relay logs while replicating from an external migration source. When the limit is reached, the replication I/O thread stops fetching relay log events until the SQL thread has caught up. Raise this to give a large migration a bigger relay-log budget; ensure the service disk is sized accordingly. The setting applies only on the node replicating from the external source; standby nodes always use the Aiven-managed default (the smaller of 5 GiB and 30% of the service disk), which is also used when this option is left unset. Changing this parameter will lead to a restart of the MySQL service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder relayLogSpaceLimit(@Nullable Output<Integer> relayLogSpaceLimit) {
+            $.relayLogSpaceLimit = relayLogSpaceLimit;
+            return this;
+        }
+
+        /**
+         * @param relayLogSpaceLimit The maximum amount of space in bytes to use for all relay logs while replicating from an external migration source. When the limit is reached, the replication I/O thread stops fetching relay log events until the SQL thread has caught up. Raise this to give a large migration a bigger relay-log budget; ensure the service disk is sized accordingly. The setting applies only on the node replicating from the external source; standby nodes always use the Aiven-managed default (the smaller of 5 GiB and 30% of the service disk), which is also used when this option is left unset. Changing this parameter will lead to a restart of the MySQL service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder relayLogSpaceLimit(Integer relayLogSpaceLimit) {
+            return relayLogSpaceLimit(Output.of(relayLogSpaceLimit));
         }
 
         /**

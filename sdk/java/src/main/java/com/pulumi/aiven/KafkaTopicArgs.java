@@ -5,6 +5,7 @@ package com.pulumi.aiven;
 
 import com.pulumi.aiven.inputs.KafkaTopicConfigArgs;
 import com.pulumi.aiven.inputs.KafkaTopicTagArgs;
+import com.pulumi.aiven.inputs.KafkaTopicTimeoutsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -22,14 +23,14 @@ public final class KafkaTopicArgs extends com.pulumi.resources.ResourceArgs {
     public static final KafkaTopicArgs Empty = new KafkaTopicArgs();
 
     /**
-     * [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics.
+     * [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics. Removing the block won&#39;t reset the topic configuration to default values. Instead, the topic will retain its last known configuration.
      * 
      */
     @Import(name="config")
     private @Nullable Output<KafkaTopicConfigArgs> config;
 
     /**
-     * @return [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics.
+     * @return [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics. Removing the block won&#39;t reset the topic configuration to default values. Instead, the topic will retain its last known configuration.
      * 
      */
     public Optional<Output<KafkaTopicConfigArgs>> config() {
@@ -37,14 +38,14 @@ public final class KafkaTopicArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the user group that owns the topic. Assigning ownership to decentralize topic management is part of [Aiven for Apache Kafka® governance](https://aiven.io/docs/products/kafka/concepts/governance-overview).
+     * The user group that owns this topic. Length must be between `1` and `36`.
      * 
      */
     @Import(name="ownerUserGroupId")
     private @Nullable Output<String> ownerUserGroupId;
 
     /**
-     * @return The ID of the user group that owns the topic. Assigning ownership to decentralize topic management is part of [Aiven for Apache Kafka® governance](https://aiven.io/docs/products/kafka/concepts/governance-overview).
+     * @return The user group that owns this topic. Length must be between `1` and `36`.
      * 
      */
     public Optional<Output<String>> ownerUserGroupId() {
@@ -52,14 +53,14 @@ public final class KafkaTopicArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The number of partitions to create in the topic.
+     * Number of partitions. Value must be between `1` and `1000000`.
      * 
      */
     @Import(name="partitions", required=true)
     private Output<Integer> partitions;
 
     /**
-     * @return The number of partitions to create in the topic.
+     * @return Number of partitions. Value must be between `1` and `1000000`.
      * 
      */
     public Output<Integer> partitions() {
@@ -67,14 +68,14 @@ public final class KafkaTopicArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="project", required=true)
     private Output<String> project;
 
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> project() {
@@ -82,14 +83,14 @@ public final class KafkaTopicArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The replication factor for the topic.
+     * Number of replicas. Minimum value: `1`.
      * 
      */
     @Import(name="replication", required=true)
     private Output<Integer> replication;
 
     /**
-     * @return The replication factor for the topic.
+     * @return Number of replicas. Minimum value: `1`.
      * 
      */
     public Output<Integer> replication() {
@@ -97,14 +98,14 @@ public final class KafkaTopicArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="serviceName", required=true)
     private Output<String> serviceName;
 
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service name. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> serviceName() {
@@ -112,14 +113,14 @@ public final class KafkaTopicArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Tags for the topic.
+     * Topic tags.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<List<KafkaTopicTagArgs>> tags;
 
     /**
-     * @return Tags for the topic.
+     * @return Topic tags.
      * 
      */
     public Optional<Output<List<KafkaTopicTagArgs>>> tags() {
@@ -127,29 +128,44 @@ public final class KafkaTopicArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Prevents topics from being deleted by Terraform. It&#39;s recommended for topics containing critical data. **Topics can still be deleted in the Aiven Console.**
+     * Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console**. The default value is `false`. **Deprecated**: Instead, use `preventDestroy`
+     * 
+     * @deprecated
+     * Instead, use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)
      * 
      */
+    @Deprecated /* Instead, use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion) */
     @Import(name="terminationProtection")
     private @Nullable Output<Boolean> terminationProtection;
 
     /**
-     * @return Prevents topics from being deleted by Terraform. It&#39;s recommended for topics containing critical data. **Topics can still be deleted in the Aiven Console.**
+     * @return Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console**. The default value is `false`. **Deprecated**: Instead, use `preventDestroy`
+     * 
+     * @deprecated
+     * Instead, use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)
      * 
      */
+    @Deprecated /* Instead, use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion) */
     public Optional<Output<Boolean>> terminationProtection() {
         return Optional.ofNullable(this.terminationProtection);
     }
 
+    @Import(name="timeouts")
+    private @Nullable Output<KafkaTopicTimeoutsArgs> timeouts;
+
+    public Optional<Output<KafkaTopicTimeoutsArgs>> timeouts() {
+        return Optional.ofNullable(this.timeouts);
+    }
+
     /**
-     * The description of the topic
+     * Topic description. Length must be between `1` and `256`.
      * 
      */
     @Import(name="topicDescription")
     private @Nullable Output<String> topicDescription;
 
     /**
-     * @return The description of the topic
+     * @return Topic description. Length must be between `1` and `256`.
      * 
      */
     public Optional<Output<String>> topicDescription() {
@@ -157,14 +173,14 @@ public final class KafkaTopicArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the topic. Changing this property forces recreation of the resource.
+     * Kafka topic name. Length must be between `1` and `249`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="topicName", required=true)
     private Output<String> topicName;
 
     /**
-     * @return The name of the topic. Changing this property forces recreation of the resource.
+     * @return Kafka topic name. Length must be between `1` and `249`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> topicName() {
@@ -182,6 +198,7 @@ public final class KafkaTopicArgs extends com.pulumi.resources.ResourceArgs {
         this.serviceName = $.serviceName;
         this.tags = $.tags;
         this.terminationProtection = $.terminationProtection;
+        this.timeouts = $.timeouts;
         this.topicDescription = $.topicDescription;
         this.topicName = $.topicName;
     }
@@ -205,7 +222,7 @@ public final class KafkaTopicArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param config [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics.
+         * @param config [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics. Removing the block won&#39;t reset the topic configuration to default values. Instead, the topic will retain its last known configuration.
          * 
          * @return builder
          * 
@@ -216,7 +233,7 @@ public final class KafkaTopicArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param config [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics.
+         * @param config [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics. Removing the block won&#39;t reset the topic configuration to default values. Instead, the topic will retain its last known configuration.
          * 
          * @return builder
          * 
@@ -226,7 +243,7 @@ public final class KafkaTopicArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ownerUserGroupId The ID of the user group that owns the topic. Assigning ownership to decentralize topic management is part of [Aiven for Apache Kafka® governance](https://aiven.io/docs/products/kafka/concepts/governance-overview).
+         * @param ownerUserGroupId The user group that owns this topic. Length must be between `1` and `36`.
          * 
          * @return builder
          * 
@@ -237,7 +254,7 @@ public final class KafkaTopicArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ownerUserGroupId The ID of the user group that owns the topic. Assigning ownership to decentralize topic management is part of [Aiven for Apache Kafka® governance](https://aiven.io/docs/products/kafka/concepts/governance-overview).
+         * @param ownerUserGroupId The user group that owns this topic. Length must be between `1` and `36`.
          * 
          * @return builder
          * 
@@ -247,7 +264,7 @@ public final class KafkaTopicArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param partitions The number of partitions to create in the topic.
+         * @param partitions Number of partitions. Value must be between `1` and `1000000`.
          * 
          * @return builder
          * 
@@ -258,7 +275,7 @@ public final class KafkaTopicArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param partitions The number of partitions to create in the topic.
+         * @param partitions Number of partitions. Value must be between `1` and `1000000`.
          * 
          * @return builder
          * 
@@ -268,7 +285,7 @@ public final class KafkaTopicArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param project Project name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -279,7 +296,7 @@ public final class KafkaTopicArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param project Project name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -289,7 +306,7 @@ public final class KafkaTopicArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param replication The replication factor for the topic.
+         * @param replication Number of replicas. Minimum value: `1`.
          * 
          * @return builder
          * 
@@ -300,7 +317,7 @@ public final class KafkaTopicArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param replication The replication factor for the topic.
+         * @param replication Number of replicas. Minimum value: `1`.
          * 
          * @return builder
          * 
@@ -310,7 +327,7 @@ public final class KafkaTopicArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceName The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param serviceName Service name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -321,7 +338,7 @@ public final class KafkaTopicArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceName The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param serviceName Service name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -331,7 +348,7 @@ public final class KafkaTopicArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags Tags for the topic.
+         * @param tags Topic tags.
          * 
          * @return builder
          * 
@@ -342,7 +359,7 @@ public final class KafkaTopicArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags Tags for the topic.
+         * @param tags Topic tags.
          * 
          * @return builder
          * 
@@ -352,7 +369,7 @@ public final class KafkaTopicArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags Tags for the topic.
+         * @param tags Topic tags.
          * 
          * @return builder
          * 
@@ -362,28 +379,45 @@ public final class KafkaTopicArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param terminationProtection Prevents topics from being deleted by Terraform. It&#39;s recommended for topics containing critical data. **Topics can still be deleted in the Aiven Console.**
+         * @param terminationProtection Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console**. The default value is `false`. **Deprecated**: Instead, use `preventDestroy`
          * 
          * @return builder
          * 
+         * @deprecated
+         * Instead, use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)
+         * 
          */
+        @Deprecated /* Instead, use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion) */
         public Builder terminationProtection(@Nullable Output<Boolean> terminationProtection) {
             $.terminationProtection = terminationProtection;
             return this;
         }
 
         /**
-         * @param terminationProtection Prevents topics from being deleted by Terraform. It&#39;s recommended for topics containing critical data. **Topics can still be deleted in the Aiven Console.**
+         * @param terminationProtection Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console**. The default value is `false`. **Deprecated**: Instead, use `preventDestroy`
          * 
          * @return builder
          * 
+         * @deprecated
+         * Instead, use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)
+         * 
          */
+        @Deprecated /* Instead, use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion) */
         public Builder terminationProtection(Boolean terminationProtection) {
             return terminationProtection(Output.of(terminationProtection));
         }
 
+        public Builder timeouts(@Nullable Output<KafkaTopicTimeoutsArgs> timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
+        public Builder timeouts(KafkaTopicTimeoutsArgs timeouts) {
+            return timeouts(Output.of(timeouts));
+        }
+
         /**
-         * @param topicDescription The description of the topic
+         * @param topicDescription Topic description. Length must be between `1` and `256`.
          * 
          * @return builder
          * 
@@ -394,7 +428,7 @@ public final class KafkaTopicArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param topicDescription The description of the topic
+         * @param topicDescription Topic description. Length must be between `1` and `256`.
          * 
          * @return builder
          * 
@@ -404,7 +438,7 @@ public final class KafkaTopicArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param topicName The name of the topic. Changing this property forces recreation of the resource.
+         * @param topicName Kafka topic name. Length must be between `1` and `249`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -415,7 +449,7 @@ public final class KafkaTopicArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param topicName The name of the topic. Changing this property forces recreation of the resource.
+         * @param topicName Kafka topic name. Length must be between `1` and `249`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 

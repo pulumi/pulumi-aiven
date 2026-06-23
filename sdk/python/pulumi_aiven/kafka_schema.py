@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['KafkaSchemaArgs', 'KafkaSchema']
 
@@ -24,6 +26,7 @@ class KafkaSchemaArgs:
                  service_name: pulumi.Input[_builtins.str],
                  subject_name: pulumi.Input[_builtins.str],
                  compatibility_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 references: pulumi.Input[Optional[Sequence[pulumi.Input['KafkaSchemaReferenceArgs']]]] = None,
                  schema_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a KafkaSchema resource.
@@ -33,6 +36,7 @@ class KafkaSchemaArgs:
         :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] subject_name: The Kafka Schema Subject name. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] compatibility_level: Kafka Schemas compatibility level. The possible values are `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`, `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE` and `NONE`.
+        :param pulumi.Input[Sequence[pulumi.Input['KafkaSchemaReferenceArgs']]] references: Schema references.
         :param pulumi.Input[_builtins.str] schema_type: Kafka Schema configuration type. Defaults to AVRO. The possible values are `AVRO`, `JSON` and `PROTOBUF`.
         """
         pulumi.set(__self__, "project", project)
@@ -41,6 +45,8 @@ class KafkaSchemaArgs:
         pulumi.set(__self__, "subject_name", subject_name)
         if compatibility_level is not None:
             pulumi.set(__self__, "compatibility_level", compatibility_level)
+        if references is not None:
+            pulumi.set(__self__, "references", references)
         if schema_type is not None:
             pulumi.set(__self__, "schema_type", schema_type)
 
@@ -105,6 +111,18 @@ class KafkaSchemaArgs:
         pulumi.set(self, "compatibility_level", value)
 
     @_builtins.property
+    @pulumi.getter
+    def references(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['KafkaSchemaReferenceArgs']]]]:
+        """
+        Schema references.
+        """
+        return pulumi.get(self, "references")
+
+    @references.setter
+    def references(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['KafkaSchemaReferenceArgs']]]]):
+        pulumi.set(self, "references", value)
+
+    @_builtins.property
     @pulumi.getter(name="schemaType")
     def schema_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -122,6 +140,7 @@ class _KafkaSchemaState:
     def __init__(__self__, *,
                  compatibility_level: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
+                 references: pulumi.Input[Optional[Sequence[pulumi.Input['KafkaSchemaReferenceArgs']]]] = None,
                  schema: pulumi.Input[Optional[_builtins.str]] = None,
                  schema_type: pulumi.Input[Optional[_builtins.str]] = None,
                  service_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -132,6 +151,7 @@ class _KafkaSchemaState:
 
         :param pulumi.Input[_builtins.str] compatibility_level: Kafka Schemas compatibility level. The possible values are `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`, `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE` and `NONE`.
         :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[Sequence[pulumi.Input['KafkaSchemaReferenceArgs']]] references: Schema references.
         :param pulumi.Input[_builtins.str] schema: Kafka Schema configuration. Should be a valid Avro, JSON, or Protobuf schema, depending on the schema type.
         :param pulumi.Input[_builtins.str] schema_type: Kafka Schema configuration type. Defaults to AVRO. The possible values are `AVRO`, `JSON` and `PROTOBUF`.
         :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -142,6 +162,8 @@ class _KafkaSchemaState:
             pulumi.set(__self__, "compatibility_level", compatibility_level)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if references is not None:
+            pulumi.set(__self__, "references", references)
         if schema is not None:
             pulumi.set(__self__, "schema", schema)
         if schema_type is not None:
@@ -176,6 +198,18 @@ class _KafkaSchemaState:
     @project.setter
     def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def references(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['KafkaSchemaReferenceArgs']]]]:
+        """
+        Schema references.
+        """
+        return pulumi.get(self, "references")
+
+    @references.setter
+    def references(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['KafkaSchemaReferenceArgs']]]]):
+        pulumi.set(self, "references", value)
 
     @_builtins.property
     @pulumi.getter
@@ -246,13 +280,14 @@ class KafkaSchema(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  compatibility_level: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
+                 references: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KafkaSchemaReferenceArgs', 'KafkaSchemaReferenceArgsDict']]]]] = None,
                  schema: pulumi.Input[Optional[_builtins.str]] = None,
                  schema_type: pulumi.Input[Optional[_builtins.str]] = None,
                  service_name: pulumi.Input[Optional[_builtins.str]] = None,
                  subject_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
-        The Kafka Schema resource allows the creation and management of Aiven Kafka Schemas.
+        The Kafka Schema resource allows the creation and management of Aiven Kafka Schemas. Schemas with references are hard deleted, while schemas without references are only soft deleted.
 
         ## Example Usage
 
@@ -294,6 +329,7 @@ class KafkaSchema(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] compatibility_level: Kafka Schemas compatibility level. The possible values are `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`, `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE` and `NONE`.
         :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['KafkaSchemaReferenceArgs', 'KafkaSchemaReferenceArgsDict']]]] references: Schema references.
         :param pulumi.Input[_builtins.str] schema: Kafka Schema configuration. Should be a valid Avro, JSON, or Protobuf schema, depending on the schema type.
         :param pulumi.Input[_builtins.str] schema_type: Kafka Schema configuration type. Defaults to AVRO. The possible values are `AVRO`, `JSON` and `PROTOBUF`.
         :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -306,7 +342,7 @@ class KafkaSchema(pulumi.CustomResource):
                  args: KafkaSchemaArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The Kafka Schema resource allows the creation and management of Aiven Kafka Schemas.
+        The Kafka Schema resource allows the creation and management of Aiven Kafka Schemas. Schemas with references are hard deleted, while schemas without references are only soft deleted.
 
         ## Example Usage
 
@@ -361,6 +397,7 @@ class KafkaSchema(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  compatibility_level: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
+                 references: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KafkaSchemaReferenceArgs', 'KafkaSchemaReferenceArgsDict']]]]] = None,
                  schema: pulumi.Input[Optional[_builtins.str]] = None,
                  schema_type: pulumi.Input[Optional[_builtins.str]] = None,
                  service_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -378,6 +415,7 @@ class KafkaSchema(pulumi.CustomResource):
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
+            __props__.__dict__["references"] = references
             if schema is None and not opts.urn:
                 raise TypeError("Missing required property 'schema'")
             __props__.__dict__["schema"] = schema
@@ -401,6 +439,7 @@ class KafkaSchema(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             compatibility_level: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
+            references: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KafkaSchemaReferenceArgs', 'KafkaSchemaReferenceArgsDict']]]]] = None,
             schema: pulumi.Input[Optional[_builtins.str]] = None,
             schema_type: pulumi.Input[Optional[_builtins.str]] = None,
             service_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -415,6 +454,7 @@ class KafkaSchema(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] compatibility_level: Kafka Schemas compatibility level. The possible values are `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`, `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE` and `NONE`.
         :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['KafkaSchemaReferenceArgs', 'KafkaSchemaReferenceArgsDict']]]] references: Schema references.
         :param pulumi.Input[_builtins.str] schema: Kafka Schema configuration. Should be a valid Avro, JSON, or Protobuf schema, depending on the schema type.
         :param pulumi.Input[_builtins.str] schema_type: Kafka Schema configuration type. Defaults to AVRO. The possible values are `AVRO`, `JSON` and `PROTOBUF`.
         :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -427,6 +467,7 @@ class KafkaSchema(pulumi.CustomResource):
 
         __props__.__dict__["compatibility_level"] = compatibility_level
         __props__.__dict__["project"] = project
+        __props__.__dict__["references"] = references
         __props__.__dict__["schema"] = schema
         __props__.__dict__["schema_type"] = schema_type
         __props__.__dict__["service_name"] = service_name
@@ -449,6 +490,14 @@ class KafkaSchema(pulumi.CustomResource):
         The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
+
+    @_builtins.property
+    @pulumi.getter
+    def references(self) -> pulumi.Output[Optional[Sequence['outputs.KafkaSchemaReference']]]:
+        """
+        Schema references.
+        """
+        return pulumi.get(self, "references")
 
     @_builtins.property
     @pulumi.getter

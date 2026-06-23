@@ -61,6 +61,18 @@ namespace Pulumi.Aiven.Inputs
         public Input<string> Indices { get; set; } = null!;
 
         /// <summary>
+        /// Throttles the restore rate per node. Defaults to unlimited. Note that if the recovery settings for managed services are set, this value is overridden by the recovery settings. Value should be a byte size with unit, e.g. 40mb, 100kb, 1gb.
+        /// </summary>
+        [Input("maxRestoreBytesPerSec")]
+        public Input<string>? MaxRestoreBytesPerSec { get; set; }
+
+        /// <summary>
+        /// Throttles the snapshot rate per node. Defaults to 40mb. Note that if the recovery settings for managed services are set, this value is overridden by the recovery settings. Value should be a byte size with unit, e.g. 40mb, 100kb, 1gb.
+        /// </summary>
+        [Input("maxSnapshotBytesPerSec")]
+        public Input<string>? MaxSnapshotBytesPerSec { get; set; }
+
+        /// <summary>
         /// Whether the repository is read-only. Default: `True`.
         /// </summary>
         [Input("readonly")]

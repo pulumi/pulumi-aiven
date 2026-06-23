@@ -11,7 +11,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Gets information about a billing group. **Deprecated**: Use `OrganizationBillingGroup` instead. This data source will be removed in the next major release.
+// Gets information about a billing group.
+//
+// > **This data source is deprecated**
+// Use `OrganizationBillingGroup` instead. This data source will be removed in the next major release.
 //
 // ## Example Usage
 //

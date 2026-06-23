@@ -21,6 +21,7 @@ import com.pulumi.aiven.outputs.ServiceIntegrationKafkaMirrormakerUserConfig;
 import com.pulumi.aiven.outputs.ServiceIntegrationLogsUserConfig;
 import com.pulumi.aiven.outputs.ServiceIntegrationMetricsUserConfig;
 import com.pulumi.aiven.outputs.ServiceIntegrationPrometheusUserConfig;
+import com.pulumi.aiven.outputs.ServiceIntegrationRsyslogUserConfig;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -408,6 +409,20 @@ public class ServiceIntegration extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<ServiceIntegrationPrometheusUserConfig>> prometheusUserConfig() {
         return Codegen.optional(this.prometheusUserConfig);
+    }
+    /**
+     * Rsyslog user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
+     * 
+     */
+    @Export(name="rsyslogUserConfig", refs={ServiceIntegrationRsyslogUserConfig.class}, tree="[0]")
+    private Output</* @Nullable */ ServiceIntegrationRsyslogUserConfig> rsyslogUserConfig;
+
+    /**
+     * @return Rsyslog user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
+     * 
+     */
+    public Output<Optional<ServiceIntegrationRsyslogUserConfig>> rsyslogUserConfig() {
+        return Codegen.optional(this.rsyslogUserConfig);
     }
     /**
      * Source endpoint for the integration.

@@ -6,17 +6,19 @@ package com.pulumi.aiven;
 import com.pulumi.aiven.KafkaSchemaArgs;
 import com.pulumi.aiven.Utilities;
 import com.pulumi.aiven.inputs.KafkaSchemaState;
+import com.pulumi.aiven.outputs.KafkaSchemaReference;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The Kafka Schema resource allows the creation and management of Aiven Kafka Schemas.
+ * The Kafka Schema resource allows the creation and management of Aiven Kafka Schemas. Schemas with references are hard deleted, while schemas without references are only soft deleted.
  * 
  * ## Example Usage
  * 
@@ -107,6 +109,20 @@ public class KafkaSchema extends com.pulumi.resources.CustomResource {
      */
     public Output<String> project() {
         return this.project;
+    }
+    /**
+     * Schema references.
+     * 
+     */
+    @Export(name="references", refs={List.class,KafkaSchemaReference.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<KafkaSchemaReference>> references;
+
+    /**
+     * @return Schema references.
+     * 
+     */
+    public Output<Optional<List<KafkaSchemaReference>>> references() {
+        return Codegen.optional(this.references);
     }
     /**
      * Kafka Schema configuration. Should be a valid Avro, JSON, or Protobuf schema, depending on the schema type.

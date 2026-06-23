@@ -12,7 +12,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates and manages [billing groups](https://aiven.io/docs/platform/concepts/billing-groups) and assigns them to projects. **Deprecated**: Use `OrganizationBillingGroup` instead. This resource will be removed in the next major release.
+// Creates and manages [billing groups](https://aiven.io/docs/platform/concepts/billing-groups) and assigns them to projects.
+//
+// > **This resource is deprecated**
+// Use `OrganizationBillingGroup` instead. This resource will be removed in the next major release.
 //
 // ## Example Usage
 //

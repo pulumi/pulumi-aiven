@@ -18,6 +18,7 @@ import com.pulumi.aiven.outputs.GetServiceIntegrationKafkaMirrormakerUserConfig;
 import com.pulumi.aiven.outputs.GetServiceIntegrationLogsUserConfig;
 import com.pulumi.aiven.outputs.GetServiceIntegrationMetricsUserConfig;
 import com.pulumi.aiven.outputs.GetServiceIntegrationPrometheusUserConfig;
+import com.pulumi.aiven.outputs.GetServiceIntegrationRsyslogUserConfig;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
@@ -136,6 +137,11 @@ public final class GetServiceIntegrationResult {
      * 
      */
     private List<GetServiceIntegrationPrometheusUserConfig> prometheusUserConfigs;
+    /**
+     * @return Rsyslog user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
+     * 
+     */
+    private List<GetServiceIntegrationRsyslogUserConfig> rsyslogUserConfigs;
     /**
      * @return Source endpoint for the integration.
      * 
@@ -308,6 +314,13 @@ public final class GetServiceIntegrationResult {
         return this.prometheusUserConfigs;
     }
     /**
+     * @return Rsyslog user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
+     * 
+     */
+    public List<GetServiceIntegrationRsyslogUserConfig> rsyslogUserConfigs() {
+        return this.rsyslogUserConfigs;
+    }
+    /**
      * @return Source endpoint for the integration.
      * 
      */
@@ -360,6 +373,7 @@ public final class GetServiceIntegrationResult {
         private List<GetServiceIntegrationMetricsUserConfig> metricsUserConfigs;
         private String project;
         private List<GetServiceIntegrationPrometheusUserConfig> prometheusUserConfigs;
+        private List<GetServiceIntegrationRsyslogUserConfig> rsyslogUserConfigs;
         private String sourceEndpointId;
         private String sourceServiceName;
         private String sourceServiceProject;
@@ -388,6 +402,7 @@ public final class GetServiceIntegrationResult {
     	      this.metricsUserConfigs = defaults.metricsUserConfigs;
     	      this.project = defaults.project;
     	      this.prometheusUserConfigs = defaults.prometheusUserConfigs;
+    	      this.rsyslogUserConfigs = defaults.rsyslogUserConfigs;
     	      this.sourceEndpointId = defaults.sourceEndpointId;
     	      this.sourceServiceName = defaults.sourceServiceName;
     	      this.sourceServiceProject = defaults.sourceServiceProject;
@@ -615,6 +630,17 @@ public final class GetServiceIntegrationResult {
             return prometheusUserConfigs(List.of(prometheusUserConfigs));
         }
         @CustomType.Setter
+        public Builder rsyslogUserConfigs(List<GetServiceIntegrationRsyslogUserConfig> rsyslogUserConfigs) {
+            if (rsyslogUserConfigs == null) {
+              throw new MissingRequiredPropertyException("GetServiceIntegrationResult", "rsyslogUserConfigs");
+            }
+            this.rsyslogUserConfigs = rsyslogUserConfigs;
+            return this;
+        }
+        public Builder rsyslogUserConfigs(GetServiceIntegrationRsyslogUserConfig... rsyslogUserConfigs) {
+            return rsyslogUserConfigs(List.of(rsyslogUserConfigs));
+        }
+        @CustomType.Setter
         public Builder sourceEndpointId(String sourceEndpointId) {
             if (sourceEndpointId == null) {
               throw new MissingRequiredPropertyException("GetServiceIntegrationResult", "sourceEndpointId");
@@ -662,6 +688,7 @@ public final class GetServiceIntegrationResult {
             _resultValue.metricsUserConfigs = metricsUserConfigs;
             _resultValue.project = project;
             _resultValue.prometheusUserConfigs = prometheusUserConfigs;
+            _resultValue.rsyslogUserConfigs = rsyslogUserConfigs;
             _resultValue.sourceEndpointId = sourceEndpointId;
             _resultValue.sourceServiceName = sourceServiceName;
             _resultValue.sourceServiceProject = sourceServiceProject;

@@ -67,6 +67,8 @@ type LookupKafkaSchemaResult struct {
 	Id string `pulumi:"id"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
+	// Schema references.
+	References []GetKafkaSchemaReference `pulumi:"references"`
 	// Kafka Schema configuration. Should be a valid Avro, JSON, or Protobuf schema, depending on the schema type.
 	Schema string `pulumi:"schema"`
 	// Kafka Schema configuration type. Defaults to AVRO. The possible values are `AVRO`, `JSON` and `PROTOBUF`.
@@ -130,6 +132,11 @@ func (o LookupKafkaSchemaResultOutput) Id() pulumi.StringOutput {
 // The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 func (o LookupKafkaSchemaResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaSchemaResult) string { return v.Project }).(pulumi.StringOutput)
+}
+
+// Schema references.
+func (o LookupKafkaSchemaResultOutput) References() GetKafkaSchemaReferenceArrayOutput {
+	return o.ApplyT(func(v LookupKafkaSchemaResult) []GetKafkaSchemaReference { return v.References }).(GetKafkaSchemaReferenceArrayOutput)
 }
 
 // Kafka Schema configuration. Should be a valid Avro, JSON, or Protobuf schema, depending on the schema type.

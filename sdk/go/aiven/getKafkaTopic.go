@@ -28,9 +28,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.GetKafkaTopic(ctx, &aiven.LookupKafkaTopicArgs{
-//				Project:     exampleProject.Project,
-//				ServiceName: exampleKafka.ServiceName,
-//				TopicName:   "example-topic",
+//				Project:     "my-project",
+//				ServiceName: "my-kafka",
+//				TopicName:   "mytopic",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -52,37 +52,45 @@ func LookupKafkaTopic(ctx *pulumi.Context, args *LookupKafkaTopicArgs, opts ...p
 
 // A collection of arguments for invoking getKafkaTopic.
 type LookupKafkaTopicArgs struct {
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics. Removing the block won't reset the topic configuration to default values. Instead, the topic will retain its last known configuration.
+	Configs []GetKafkaTopicConfig `pulumi:"configs"`
+	// Project name.
 	Project string `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Service name.
 	ServiceName string `pulumi:"serviceName"`
-	// The name of the topic. Changing this property forces recreation of the resource.
+	// Topic tags.
+	Tags     []GetKafkaTopicTag     `pulumi:"tags"`
+	Timeouts *GetKafkaTopicTimeouts `pulumi:"timeouts"`
+	// Kafka topic name.
 	TopicName string `pulumi:"topicName"`
 }
 
 // A collection of values returned by getKafkaTopic.
 type LookupKafkaTopicResult struct {
-	// [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics.
+	// [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics. Removing the block won't reset the topic configuration to default values. Instead, the topic will retain its last known configuration.
 	Configs []GetKafkaTopicConfig `pulumi:"configs"`
-	// The provider-assigned unique ID for this managed resource.
+	// Resource ID composed as: `project/service_name/topic_name`.
 	Id string `pulumi:"id"`
-	// The ID of the user group that owns the topic. Assigning ownership to decentralize topic management is part of [Aiven for Apache Kafka® governance](https://aiven.io/docs/products/kafka/concepts/governance-overview).
+	// The user group that owns this topic.
 	OwnerUserGroupId string `pulumi:"ownerUserGroupId"`
-	// The number of partitions to create in the topic.
+	// Number of partitions.
 	Partitions int `pulumi:"partitions"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name.
 	Project string `pulumi:"project"`
-	// The replication factor for the topic.
+	// Number of replicas.
 	Replication int `pulumi:"replication"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Service name.
 	ServiceName string `pulumi:"serviceName"`
-	// Tags for the topic.
+	// Topic tags.
 	Tags []GetKafkaTopicTag `pulumi:"tags"`
-	// Prevents topics from being deleted by Terraform. It's recommended for topics containing critical data. **Topics can still be deleted in the Aiven Console.**
-	TerminationProtection bool `pulumi:"terminationProtection"`
-	// The description of the topic
+	// Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console**. The default value is `false`. **Deprecated**: Instead, use `preventDestroy`
+	//
+	// Deprecated: Instead, use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)
+	TerminationProtection bool                   `pulumi:"terminationProtection"`
+	Timeouts              *GetKafkaTopicTimeouts `pulumi:"timeouts"`
+	// Topic description.
 	TopicDescription string `pulumi:"topicDescription"`
-	// The name of the topic. Changing this property forces recreation of the resource.
+	// Kafka topic name.
 	TopicName string `pulumi:"topicName"`
 }
 
@@ -97,11 +105,16 @@ func LookupKafkaTopicOutput(ctx *pulumi.Context, args LookupKafkaTopicOutputArgs
 
 // A collection of arguments for invoking getKafkaTopic.
 type LookupKafkaTopicOutputArgs struct {
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics. Removing the block won't reset the topic configuration to default values. Instead, the topic will retain its last known configuration.
+	Configs GetKafkaTopicConfigArrayInput `pulumi:"configs"`
+	// Project name.
 	Project pulumi.StringInput `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Service name.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
-	// The name of the topic. Changing this property forces recreation of the resource.
+	// Topic tags.
+	Tags     GetKafkaTopicTagArrayInput    `pulumi:"tags"`
+	Timeouts GetKafkaTopicTimeoutsPtrInput `pulumi:"timeouts"`
+	// Kafka topic name.
 	TopicName pulumi.StringInput `pulumi:"topicName"`
 }
 
@@ -124,57 +137,63 @@ func (o LookupKafkaTopicResultOutput) ToLookupKafkaTopicResultOutputWithContext(
 	return o
 }
 
-// [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics.
+// [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics. Removing the block won't reset the topic configuration to default values. Instead, the topic will retain its last known configuration.
 func (o LookupKafkaTopicResultOutput) Configs() GetKafkaTopicConfigArrayOutput {
 	return o.ApplyT(func(v LookupKafkaTopicResult) []GetKafkaTopicConfig { return v.Configs }).(GetKafkaTopicConfigArrayOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// Resource ID composed as: `project/service_name/topic_name`.
 func (o LookupKafkaTopicResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaTopicResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The ID of the user group that owns the topic. Assigning ownership to decentralize topic management is part of [Aiven for Apache Kafka® governance](https://aiven.io/docs/products/kafka/concepts/governance-overview).
+// The user group that owns this topic.
 func (o LookupKafkaTopicResultOutput) OwnerUserGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaTopicResult) string { return v.OwnerUserGroupId }).(pulumi.StringOutput)
 }
 
-// The number of partitions to create in the topic.
+// Number of partitions.
 func (o LookupKafkaTopicResultOutput) Partitions() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupKafkaTopicResult) int { return v.Partitions }).(pulumi.IntOutput)
 }
 
-// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// Project name.
 func (o LookupKafkaTopicResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaTopicResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
-// The replication factor for the topic.
+// Number of replicas.
 func (o LookupKafkaTopicResultOutput) Replication() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupKafkaTopicResult) int { return v.Replication }).(pulumi.IntOutput)
 }
 
-// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// Service name.
 func (o LookupKafkaTopicResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaTopicResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// Tags for the topic.
+// Topic tags.
 func (o LookupKafkaTopicResultOutput) Tags() GetKafkaTopicTagArrayOutput {
 	return o.ApplyT(func(v LookupKafkaTopicResult) []GetKafkaTopicTag { return v.Tags }).(GetKafkaTopicTagArrayOutput)
 }
 
-// Prevents topics from being deleted by Terraform. It's recommended for topics containing critical data. **Topics can still be deleted in the Aiven Console.**
+// Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console**. The default value is `false`. **Deprecated**: Instead, use `preventDestroy`
+//
+// Deprecated: Instead, use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)
 func (o LookupKafkaTopicResultOutput) TerminationProtection() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupKafkaTopicResult) bool { return v.TerminationProtection }).(pulumi.BoolOutput)
 }
 
-// The description of the topic
+func (o LookupKafkaTopicResultOutput) Timeouts() GetKafkaTopicTimeoutsPtrOutput {
+	return o.ApplyT(func(v LookupKafkaTopicResult) *GetKafkaTopicTimeouts { return v.Timeouts }).(GetKafkaTopicTimeoutsPtrOutput)
+}
+
+// Topic description.
 func (o LookupKafkaTopicResultOutput) TopicDescription() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaTopicResult) string { return v.TopicDescription }).(pulumi.StringOutput)
 }
 
-// The name of the topic. Changing this property forces recreation of the resource.
+// Kafka topic name.
 func (o LookupKafkaTopicResultOutput) TopicName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaTopicResult) string { return v.TopicName }).(pulumi.StringOutput)
 }

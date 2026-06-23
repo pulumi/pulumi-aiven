@@ -2,10 +2,12 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The Kafka Schema resource allows the creation and management of Aiven Kafka Schemas.
+ * The Kafka Schema resource allows the creation and management of Aiven Kafka Schemas. Schemas with references are hard deleted, while schemas without references are only soft deleted.
  *
  * ## Example Usage
  *
@@ -80,6 +82,10 @@ export class KafkaSchema extends pulumi.CustomResource {
      */
     declare public readonly project: pulumi.Output<string>;
     /**
+     * Schema references.
+     */
+    declare public readonly references: pulumi.Output<outputs.KafkaSchemaReference[] | undefined>;
+    /**
      * Kafka Schema configuration. Should be a valid Avro, JSON, or Protobuf schema, depending on the schema type.
      */
     declare public readonly schema: pulumi.Output<string>;
@@ -115,6 +121,7 @@ export class KafkaSchema extends pulumi.CustomResource {
             const state = argsOrState as KafkaSchemaState | undefined;
             resourceInputs["compatibilityLevel"] = state?.compatibilityLevel;
             resourceInputs["project"] = state?.project;
+            resourceInputs["references"] = state?.references;
             resourceInputs["schema"] = state?.schema;
             resourceInputs["schemaType"] = state?.schemaType;
             resourceInputs["serviceName"] = state?.serviceName;
@@ -136,6 +143,7 @@ export class KafkaSchema extends pulumi.CustomResource {
             }
             resourceInputs["compatibilityLevel"] = args?.compatibilityLevel;
             resourceInputs["project"] = args?.project;
+            resourceInputs["references"] = args?.references;
             resourceInputs["schema"] = args?.schema;
             resourceInputs["schemaType"] = args?.schemaType;
             resourceInputs["serviceName"] = args?.serviceName;
@@ -159,6 +167,10 @@ export interface KafkaSchemaState {
      * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project?: pulumi.Input<string | undefined>;
+    /**
+     * Schema references.
+     */
+    references?: pulumi.Input<pulumi.Input<inputs.KafkaSchemaReference>[] | undefined>;
     /**
      * Kafka Schema configuration. Should be a valid Avro, JSON, or Protobuf schema, depending on the schema type.
      */
@@ -193,6 +205,10 @@ export interface KafkaSchemaArgs {
      * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project: pulumi.Input<string>;
+    /**
+     * Schema references.
+     */
+    references?: pulumi.Input<pulumi.Input<inputs.KafkaSchemaReference>[] | undefined>;
     /**
      * Kafka Schema configuration. Should be a valid Avro, JSON, or Protobuf schema, depending on the schema type.
      */

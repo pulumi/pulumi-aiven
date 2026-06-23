@@ -31,6 +31,11 @@ public final class GetServiceIntegrationEndpointRsyslogUserConfig {
      */
     private @Nullable String cert;
     /**
+     * @return When true, embedded newlines in a log message are escaped so a multi-line record (e.g. a stack trace) is delivered as one complete log entry. Useful for newline-delimited cloud log intakes that drop continuation lines. Default: `false`.
+     * 
+     */
+    private @Nullable Boolean escapeNewlines;
+    /**
      * @return Enum: `custom`, `rfc3164`, `rfc5424`. Message format. Default: `rfc5424`.
      * 
      */
@@ -94,6 +99,13 @@ public final class GetServiceIntegrationEndpointRsyslogUserConfig {
      */
     public Optional<String> cert() {
         return Optional.ofNullable(this.cert);
+    }
+    /**
+     * @return When true, embedded newlines in a log message are escaped so a multi-line record (e.g. a stack trace) is delivered as one complete log entry. Useful for newline-delimited cloud log intakes that drop continuation lines. Default: `false`.
+     * 
+     */
+    public Optional<Boolean> escapeNewlines() {
+        return Optional.ofNullable(this.escapeNewlines);
     }
     /**
      * @return Enum: `custom`, `rfc3164`, `rfc5424`. Message format. Default: `rfc5424`.
@@ -166,6 +178,7 @@ public final class GetServiceIntegrationEndpointRsyslogUserConfig {
     public static final class Builder {
         private @Nullable String ca;
         private @Nullable String cert;
+        private @Nullable Boolean escapeNewlines;
         private String format;
         private @Nullable String key;
         private @Nullable String logline;
@@ -179,6 +192,7 @@ public final class GetServiceIntegrationEndpointRsyslogUserConfig {
     	      Objects.requireNonNull(defaults);
     	      this.ca = defaults.ca;
     	      this.cert = defaults.cert;
+    	      this.escapeNewlines = defaults.escapeNewlines;
     	      this.format = defaults.format;
     	      this.key = defaults.key;
     	      this.logline = defaults.logline;
@@ -199,6 +213,12 @@ public final class GetServiceIntegrationEndpointRsyslogUserConfig {
         public Builder cert(@Nullable String cert) {
 
             this.cert = cert;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder escapeNewlines(@Nullable Boolean escapeNewlines) {
+
+            this.escapeNewlines = escapeNewlines;
             return this;
         }
         @CustomType.Setter
@@ -261,6 +281,7 @@ public final class GetServiceIntegrationEndpointRsyslogUserConfig {
             final var _resultValue = new GetServiceIntegrationEndpointRsyslogUserConfig();
             _resultValue.ca = ca;
             _resultValue.cert = cert;
+            _resultValue.escapeNewlines = escapeNewlines;
             _resultValue.format = format;
             _resultValue.key = key;
             _resultValue.logline = logline;

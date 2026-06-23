@@ -210,6 +210,12 @@ namespace Pulumi.Aiven
         public Output<Outputs.ServiceIntegrationPrometheusUserConfig?> PrometheusUserConfig { get; private set; } = null!;
 
         /// <summary>
+        /// Rsyslog user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        /// </summary>
+        [Output("rsyslogUserConfig")]
+        public Output<Outputs.ServiceIntegrationRsyslogUserConfig?> RsyslogUserConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Source endpoint for the integration.
         /// </summary>
         [Output("sourceEndpointId")]
@@ -394,6 +400,12 @@ namespace Pulumi.Aiven
         public Input<Inputs.ServiceIntegrationPrometheusUserConfigArgs>? PrometheusUserConfig { get; set; }
 
         /// <summary>
+        /// Rsyslog user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        /// </summary>
+        [Input("rsyslogUserConfig")]
+        public Input<Inputs.ServiceIntegrationRsyslogUserConfigArgs>? RsyslogUserConfig { get; set; }
+
+        /// <summary>
         /// Source endpoint for the integration.
         /// </summary>
         [Input("sourceEndpointId")]
@@ -544,6 +556,12 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("prometheusUserConfig")]
         public Input<Inputs.ServiceIntegrationPrometheusUserConfigGetArgs>? PrometheusUserConfig { get; set; }
+
+        /// <summary>
+        /// Rsyslog user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        /// </summary>
+        [Input("rsyslogUserConfig")]
+        public Input<Inputs.ServiceIntegrationRsyslogUserConfigGetArgs>? RsyslogUserConfig { get; set; }
 
         /// <summary>
         /// Source endpoint for the integration.

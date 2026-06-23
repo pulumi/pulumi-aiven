@@ -148,6 +148,10 @@ export interface GetServiceIntegrationResult {
      */
     readonly prometheusUserConfigs: outputs.GetServiceIntegrationPrometheusUserConfig[];
     /**
+     * Rsyslog user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+     */
+    readonly rsyslogUserConfigs: outputs.GetServiceIntegrationRsyslogUserConfig[];
+    /**
      * Source endpoint for the integration.
      */
     readonly sourceEndpointId: string;

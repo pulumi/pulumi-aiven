@@ -148,6 +148,10 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string Project;
         /// <summary>
+        /// Schema references.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetKafkaSchemaConfigurationReferenceResult> References;
+        /// <summary>
         /// Kafka Schema configuration. Should be a valid Avro, JSON, or Protobuf schema, depending on the schema type.
         /// </summary>
         public readonly string Schema;
@@ -176,6 +180,8 @@ namespace Pulumi.Aiven
 
             string project,
 
+            ImmutableArray<Outputs.GetKafkaSchemaConfigurationReferenceResult> references,
+
             string schema,
 
             string schemaType,
@@ -189,6 +195,7 @@ namespace Pulumi.Aiven
             CompatibilityLevel = compatibilityLevel;
             Id = id;
             Project = project;
+            References = references;
             Schema = schema;
             SchemaType = schemaType;
             ServiceName = serviceName;

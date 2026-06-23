@@ -109,6 +109,8 @@ type LookupServiceIntegrationResult struct {
 	Project string `pulumi:"project"`
 	// Prometheus user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	PrometheusUserConfigs []GetServiceIntegrationPrometheusUserConfig `pulumi:"prometheusUserConfigs"`
+	// Rsyslog user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+	RsyslogUserConfigs []GetServiceIntegrationRsyslogUserConfig `pulumi:"rsyslogUserConfigs"`
 	// Source endpoint for the integration.
 	SourceEndpointId string `pulumi:"sourceEndpointId"`
 	// Source service for the integration (if any)
@@ -293,6 +295,13 @@ func (o LookupServiceIntegrationResultOutput) PrometheusUserConfigs() GetService
 	return o.ApplyT(func(v LookupServiceIntegrationResult) []GetServiceIntegrationPrometheusUserConfig {
 		return v.PrometheusUserConfigs
 	}).(GetServiceIntegrationPrometheusUserConfigArrayOutput)
+}
+
+// Rsyslog user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+func (o LookupServiceIntegrationResultOutput) RsyslogUserConfigs() GetServiceIntegrationRsyslogUserConfigArrayOutput {
+	return o.ApplyT(func(v LookupServiceIntegrationResult) []GetServiceIntegrationRsyslogUserConfig {
+		return v.RsyslogUserConfigs
+	}).(GetServiceIntegrationRsyslogUserConfigArrayOutput)
 }
 
 // Source endpoint for the integration.

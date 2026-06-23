@@ -8,6 +8,7 @@ import com.pulumi.aiven.Utilities;
 import com.pulumi.aiven.inputs.KafkaTopicState;
 import com.pulumi.aiven.outputs.KafkaTopicConfig;
 import com.pulumi.aiven.outputs.KafkaTopicTag;
+import com.pulumi.aiven.outputs.KafkaTopicTimeouts;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -20,7 +21,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Creates and manages an Aiven for Apache Kafka® [topic](https://aiven.io/docs/products/kafka/concepts).
+ * Creates and manages an Aiven for Apache Kafka® [topic](https://aiven.io/docs/products/kafka/concepts). If this resource is missing (for example, after a service power off), it&#39;s removed from the state and a new create plan is generated.
  * 
  * ## Example Usage
  * 
@@ -34,6 +35,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.aiven.KafkaTopic;
  * import com.pulumi.aiven.KafkaTopicArgs;
  * import com.pulumi.aiven.inputs.KafkaTopicConfigArgs;
+ * import com.pulumi.aiven.inputs.KafkaTopicTagArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -47,18 +49,50 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleTopic = new KafkaTopic("exampleTopic", KafkaTopicArgs.builder()
- *             .project(exampleProject.project())
- *             .serviceName(exampleKafka.serviceName())
- *             .topicName("example-topic")
- *             .partitions(5)
+ *         var example = new KafkaTopic("example", KafkaTopicArgs.builder()
+ *             .project("my-project")
+ *             .serviceName("my-kafka")
+ *             .topicName("mytopic")
+ *             .partitions(3)
  *             .replication(3)
- *             .terminationProtection(true)
+ *             .ownerUserGroupId("ug22ba494e096")
  *             .config(KafkaTopicConfigArgs.builder()
- *                 .flushMs("10")
- *                 .cleanupPolicy("compact,delete")
+ *                 .cleanupPolicy("delete")
+ *                 .compressionType("zstd")
+ *                 .deleteRetentionMs("86400000")
+ *                 .disklessEnable(false)
+ *                 .fileDeleteDelayMs("60000")
+ *                 .flushMessages("9223372036854775807")
+ *                 .flushMs("9223372036854775807")
+ *                 .indexIntervalBytes("4096")
+ *                 .localRetentionBytes("1073741824")
+ *                 .localRetentionMs("300000")
+ *                 .maxCompactionLagMs("86400000")
+ *                 .maxMessageBytes("1048588")
+ *                 .messageDownconversionEnable(true)
+ *                 .messageFormatVersion("2.7-IV2")
+ *                 .messageTimestampAfterMaxMs("3600000")
+ *                 .messageTimestampBeforeMaxMs("9223372036854775807")
+ *                 .messageTimestampDifferenceMaxMs("9223372036854775807")
+ *                 .messageTimestampType("CreateTime")
+ *                 .minCleanableDirtyRatio(0.5)
+ *                 .minCompactionLagMs("0")
+ *                 .minInsyncReplicas("2")
+ *                 .preallocate(false)
+ *                 .remoteStorageEnable(false)
+ *                 .retentionBytes("-1")
+ *                 .retentionMs("604800000")
+ *                 .segmentBytes("1073741824")
+ *                 .segmentIndexBytes("10485760")
+ *                 .segmentJitterMs("0")
+ *                 .segmentMs("604800000")
+ *                 .uncleanLeaderElectionEnable(false)
  *                 .build())
- *             .ownerUserGroupId(example.groupId())
+ *             .tags(KafkaTopicTagArgs.builder()
+ *                 .key("My-tag_key")
+ *                 .value("My tag value, value.")
+ *                 .build())
+ *             .topicDescription("Platform events")
  *             .build());
  * 
  *     }
@@ -69,147 +103,157 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import aiven:index/kafkaTopic:KafkaTopic example_topic PROJECT/SERVICE_NAME/TOPIC_NAME
+ * $ pulumi import aiven:index/kafkaTopic:KafkaTopic example PROJECT/SERVICE_NAME/TOPIC_NAME
  * ```
  * 
  */
 @ResourceType(type="aiven:index/kafkaTopic:KafkaTopic")
 public class KafkaTopic extends com.pulumi.resources.CustomResource {
     /**
-     * [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics.
+     * [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics. Removing the block won&#39;t reset the topic configuration to default values. Instead, the topic will retain its last known configuration.
      * 
      */
     @Export(name="config", refs={KafkaTopicConfig.class}, tree="[0]")
     private Output</* @Nullable */ KafkaTopicConfig> config;
 
     /**
-     * @return [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics.
+     * @return [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics. Removing the block won&#39;t reset the topic configuration to default values. Instead, the topic will retain its last known configuration.
      * 
      */
     public Output<Optional<KafkaTopicConfig>> config() {
         return Codegen.optional(this.config);
     }
     /**
-     * The ID of the user group that owns the topic. Assigning ownership to decentralize topic management is part of [Aiven for Apache Kafka® governance](https://aiven.io/docs/products/kafka/concepts/governance-overview).
+     * The user group that owns this topic. Length must be between `1` and `36`.
      * 
      */
     @Export(name="ownerUserGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ownerUserGroupId;
 
     /**
-     * @return The ID of the user group that owns the topic. Assigning ownership to decentralize topic management is part of [Aiven for Apache Kafka® governance](https://aiven.io/docs/products/kafka/concepts/governance-overview).
+     * @return The user group that owns this topic. Length must be between `1` and `36`.
      * 
      */
     public Output<Optional<String>> ownerUserGroupId() {
         return Codegen.optional(this.ownerUserGroupId);
     }
     /**
-     * The number of partitions to create in the topic.
+     * Number of partitions. Value must be between `1` and `1000000`.
      * 
      */
     @Export(name="partitions", refs={Integer.class}, tree="[0]")
     private Output<Integer> partitions;
 
     /**
-     * @return The number of partitions to create in the topic.
+     * @return Number of partitions. Value must be between `1` and `1000000`.
      * 
      */
     public Output<Integer> partitions() {
         return this.partitions;
     }
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> project() {
         return this.project;
     }
     /**
-     * The replication factor for the topic.
+     * Number of replicas. Minimum value: `1`.
      * 
      */
     @Export(name="replication", refs={Integer.class}, tree="[0]")
     private Output<Integer> replication;
 
     /**
-     * @return The replication factor for the topic.
+     * @return Number of replicas. Minimum value: `1`.
      * 
      */
     public Output<Integer> replication() {
         return this.replication;
     }
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service name. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> serviceName() {
         return this.serviceName;
     }
     /**
-     * Tags for the topic.
+     * Topic tags.
      * 
      */
     @Export(name="tags", refs={List.class,KafkaTopicTag.class}, tree="[0,1]")
     private Output</* @Nullable */ List<KafkaTopicTag>> tags;
 
     /**
-     * @return Tags for the topic.
+     * @return Topic tags.
      * 
      */
     public Output<Optional<List<KafkaTopicTag>>> tags() {
         return Codegen.optional(this.tags);
     }
     /**
-     * Prevents topics from being deleted by Terraform. It&#39;s recommended for topics containing critical data. **Topics can still be deleted in the Aiven Console.**
+     * Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console**. The default value is `false`. **Deprecated**: Instead, use `preventDestroy`
+     * 
+     * @deprecated
+     * Instead, use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)
      * 
      */
+    @Deprecated /* Instead, use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion) */
     @Export(name="terminationProtection", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> terminationProtection;
+    private Output<Boolean> terminationProtection;
 
     /**
-     * @return Prevents topics from being deleted by Terraform. It&#39;s recommended for topics containing critical data. **Topics can still be deleted in the Aiven Console.**
+     * @return Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console**. The default value is `false`. **Deprecated**: Instead, use `preventDestroy`
      * 
      */
-    public Output<Optional<Boolean>> terminationProtection() {
-        return Codegen.optional(this.terminationProtection);
+    public Output<Boolean> terminationProtection() {
+        return this.terminationProtection;
+    }
+    @Export(name="timeouts", refs={KafkaTopicTimeouts.class}, tree="[0]")
+    private Output</* @Nullable */ KafkaTopicTimeouts> timeouts;
+
+    public Output<Optional<KafkaTopicTimeouts>> timeouts() {
+        return Codegen.optional(this.timeouts);
     }
     /**
-     * The description of the topic
+     * Topic description. Length must be between `1` and `256`.
      * 
      */
     @Export(name="topicDescription", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> topicDescription;
 
     /**
-     * @return The description of the topic
+     * @return Topic description. Length must be between `1` and `256`.
      * 
      */
     public Output<Optional<String>> topicDescription() {
         return Codegen.optional(this.topicDescription);
     }
     /**
-     * The name of the topic. Changing this property forces recreation of the resource.
+     * Kafka topic name. Length must be between `1` and `249`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="topicName", refs={String.class}, tree="[0]")
     private Output<String> topicName;
 
     /**
-     * @return The name of the topic. Changing this property forces recreation of the resource.
+     * @return Kafka topic name. Length must be between `1` and `249`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> topicName() {

@@ -41,6 +41,7 @@ class ServiceIntegrationArgs:
                  logs_user_config: pulumi.Input[Optional['ServiceIntegrationLogsUserConfigArgs']] = None,
                  metrics_user_config: pulumi.Input[Optional['ServiceIntegrationMetricsUserConfigArgs']] = None,
                  prometheus_user_config: pulumi.Input[Optional['ServiceIntegrationPrometheusUserConfigArgs']] = None,
+                 rsyslog_user_config: pulumi.Input[Optional['ServiceIntegrationRsyslogUserConfigArgs']] = None,
                  source_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
                  source_service_name: pulumi.Input[Optional[_builtins.str]] = None,
                  source_service_project: pulumi.Input[Optional[_builtins.str]] = None):
@@ -67,6 +68,7 @@ class ServiceIntegrationArgs:
         :param pulumi.Input['ServiceIntegrationLogsUserConfigArgs'] logs_user_config: Logs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input['ServiceIntegrationMetricsUserConfigArgs'] metrics_user_config: Metrics user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input['ServiceIntegrationPrometheusUserConfigArgs'] prometheus_user_config: Prometheus user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        :param pulumi.Input['ServiceIntegrationRsyslogUserConfigArgs'] rsyslog_user_config: Rsyslog user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input[_builtins.str] source_endpoint_id: Source endpoint for the integration.
         :param pulumi.Input[_builtins.str] source_service_name: Source service for the integration (if any)
         :param pulumi.Input[_builtins.str] source_service_project: Source service project name
@@ -109,6 +111,8 @@ class ServiceIntegrationArgs:
             pulumi.set(__self__, "metrics_user_config", metrics_user_config)
         if prometheus_user_config is not None:
             pulumi.set(__self__, "prometheus_user_config", prometheus_user_config)
+        if rsyslog_user_config is not None:
+            pulumi.set(__self__, "rsyslog_user_config", rsyslog_user_config)
         if source_endpoint_id is not None:
             pulumi.set(__self__, "source_endpoint_id", source_endpoint_id)
         if source_service_name is not None:
@@ -357,6 +361,18 @@ class ServiceIntegrationArgs:
         pulumi.set(self, "prometheus_user_config", value)
 
     @_builtins.property
+    @pulumi.getter(name="rsyslogUserConfig")
+    def rsyslog_user_config(self) -> pulumi.Input[Optional['ServiceIntegrationRsyslogUserConfigArgs']]:
+        """
+        Rsyslog user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        """
+        return pulumi.get(self, "rsyslog_user_config")
+
+    @rsyslog_user_config.setter
+    def rsyslog_user_config(self, value: pulumi.Input[Optional['ServiceIntegrationRsyslogUserConfigArgs']]):
+        pulumi.set(self, "rsyslog_user_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="sourceEndpointId")
     def source_endpoint_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -417,6 +433,7 @@ class _ServiceIntegrationState:
                  metrics_user_config: pulumi.Input[Optional['ServiceIntegrationMetricsUserConfigArgs']] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  prometheus_user_config: pulumi.Input[Optional['ServiceIntegrationPrometheusUserConfigArgs']] = None,
+                 rsyslog_user_config: pulumi.Input[Optional['ServiceIntegrationRsyslogUserConfigArgs']] = None,
                  source_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
                  source_service_name: pulumi.Input[Optional[_builtins.str]] = None,
                  source_service_project: pulumi.Input[Optional[_builtins.str]] = None):
@@ -444,6 +461,7 @@ class _ServiceIntegrationState:
         :param pulumi.Input['ServiceIntegrationMetricsUserConfigArgs'] metrics_user_config: Metrics user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input[_builtins.str] project: Project the integration belongs to.
         :param pulumi.Input['ServiceIntegrationPrometheusUserConfigArgs'] prometheus_user_config: Prometheus user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        :param pulumi.Input['ServiceIntegrationRsyslogUserConfigArgs'] rsyslog_user_config: Rsyslog user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input[_builtins.str] source_endpoint_id: Source endpoint for the integration.
         :param pulumi.Input[_builtins.str] source_service_name: Source service for the integration (if any)
         :param pulumi.Input[_builtins.str] source_service_project: Source service project name
@@ -490,6 +508,8 @@ class _ServiceIntegrationState:
             pulumi.set(__self__, "project", project)
         if prometheus_user_config is not None:
             pulumi.set(__self__, "prometheus_user_config", prometheus_user_config)
+        if rsyslog_user_config is not None:
+            pulumi.set(__self__, "rsyslog_user_config", rsyslog_user_config)
         if source_endpoint_id is not None:
             pulumi.set(__self__, "source_endpoint_id", source_endpoint_id)
         if source_service_name is not None:
@@ -750,6 +770,18 @@ class _ServiceIntegrationState:
         pulumi.set(self, "prometheus_user_config", value)
 
     @_builtins.property
+    @pulumi.getter(name="rsyslogUserConfig")
+    def rsyslog_user_config(self) -> pulumi.Input[Optional['ServiceIntegrationRsyslogUserConfigArgs']]:
+        """
+        Rsyslog user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        """
+        return pulumi.get(self, "rsyslog_user_config")
+
+    @rsyslog_user_config.setter
+    def rsyslog_user_config(self, value: pulumi.Input[Optional['ServiceIntegrationRsyslogUserConfigArgs']]):
+        pulumi.set(self, "rsyslog_user_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="sourceEndpointId")
     def source_endpoint_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -812,6 +844,7 @@ class ServiceIntegration(pulumi.CustomResource):
                  metrics_user_config: pulumi.Input[Optional[Union['ServiceIntegrationMetricsUserConfigArgs', 'ServiceIntegrationMetricsUserConfigArgsDict']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  prometheus_user_config: pulumi.Input[Optional[Union['ServiceIntegrationPrometheusUserConfigArgs', 'ServiceIntegrationPrometheusUserConfigArgsDict']]] = None,
+                 rsyslog_user_config: pulumi.Input[Optional[Union['ServiceIntegrationRsyslogUserConfigArgs', 'ServiceIntegrationRsyslogUserConfigArgsDict']]] = None,
                  source_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
                  source_service_name: pulumi.Input[Optional[_builtins.str]] = None,
                  source_service_project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -891,6 +924,7 @@ class ServiceIntegration(pulumi.CustomResource):
         :param pulumi.Input[Union['ServiceIntegrationMetricsUserConfigArgs', 'ServiceIntegrationMetricsUserConfigArgsDict']] metrics_user_config: Metrics user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input[_builtins.str] project: Project the integration belongs to.
         :param pulumi.Input[Union['ServiceIntegrationPrometheusUserConfigArgs', 'ServiceIntegrationPrometheusUserConfigArgsDict']] prometheus_user_config: Prometheus user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        :param pulumi.Input[Union['ServiceIntegrationRsyslogUserConfigArgs', 'ServiceIntegrationRsyslogUserConfigArgsDict']] rsyslog_user_config: Rsyslog user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input[_builtins.str] source_endpoint_id: Source endpoint for the integration.
         :param pulumi.Input[_builtins.str] source_service_name: Source service for the integration (if any)
         :param pulumi.Input[_builtins.str] source_service_project: Source service project name
@@ -989,6 +1023,7 @@ class ServiceIntegration(pulumi.CustomResource):
                  metrics_user_config: pulumi.Input[Optional[Union['ServiceIntegrationMetricsUserConfigArgs', 'ServiceIntegrationMetricsUserConfigArgsDict']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  prometheus_user_config: pulumi.Input[Optional[Union['ServiceIntegrationPrometheusUserConfigArgs', 'ServiceIntegrationPrometheusUserConfigArgsDict']]] = None,
+                 rsyslog_user_config: pulumi.Input[Optional[Union['ServiceIntegrationRsyslogUserConfigArgs', 'ServiceIntegrationRsyslogUserConfigArgsDict']]] = None,
                  source_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
                  source_service_name: pulumi.Input[Optional[_builtins.str]] = None,
                  source_service_project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1025,6 +1060,7 @@ class ServiceIntegration(pulumi.CustomResource):
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["prometheus_user_config"] = prometheus_user_config
+            __props__.__dict__["rsyslog_user_config"] = rsyslog_user_config
             __props__.__dict__["source_endpoint_id"] = source_endpoint_id
             __props__.__dict__["source_service_name"] = source_service_name
             __props__.__dict__["source_service_project"] = source_service_project
@@ -1060,6 +1096,7 @@ class ServiceIntegration(pulumi.CustomResource):
             metrics_user_config: pulumi.Input[Optional[Union['ServiceIntegrationMetricsUserConfigArgs', 'ServiceIntegrationMetricsUserConfigArgsDict']]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             prometheus_user_config: pulumi.Input[Optional[Union['ServiceIntegrationPrometheusUserConfigArgs', 'ServiceIntegrationPrometheusUserConfigArgsDict']]] = None,
+            rsyslog_user_config: pulumi.Input[Optional[Union['ServiceIntegrationRsyslogUserConfigArgs', 'ServiceIntegrationRsyslogUserConfigArgsDict']]] = None,
             source_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
             source_service_name: pulumi.Input[Optional[_builtins.str]] = None,
             source_service_project: pulumi.Input[Optional[_builtins.str]] = None) -> 'ServiceIntegration':
@@ -1091,6 +1128,7 @@ class ServiceIntegration(pulumi.CustomResource):
         :param pulumi.Input[Union['ServiceIntegrationMetricsUserConfigArgs', 'ServiceIntegrationMetricsUserConfigArgsDict']] metrics_user_config: Metrics user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input[_builtins.str] project: Project the integration belongs to.
         :param pulumi.Input[Union['ServiceIntegrationPrometheusUserConfigArgs', 'ServiceIntegrationPrometheusUserConfigArgsDict']] prometheus_user_config: Prometheus user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        :param pulumi.Input[Union['ServiceIntegrationRsyslogUserConfigArgs', 'ServiceIntegrationRsyslogUserConfigArgsDict']] rsyslog_user_config: Rsyslog user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input[_builtins.str] source_endpoint_id: Source endpoint for the integration.
         :param pulumi.Input[_builtins.str] source_service_name: Source service for the integration (if any)
         :param pulumi.Input[_builtins.str] source_service_project: Source service project name
@@ -1120,6 +1158,7 @@ class ServiceIntegration(pulumi.CustomResource):
         __props__.__dict__["metrics_user_config"] = metrics_user_config
         __props__.__dict__["project"] = project
         __props__.__dict__["prometheus_user_config"] = prometheus_user_config
+        __props__.__dict__["rsyslog_user_config"] = rsyslog_user_config
         __props__.__dict__["source_endpoint_id"] = source_endpoint_id
         __props__.__dict__["source_service_name"] = source_service_name
         __props__.__dict__["source_service_project"] = source_service_project
@@ -1292,6 +1331,14 @@ class ServiceIntegration(pulumi.CustomResource):
         Prometheus user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         """
         return pulumi.get(self, "prometheus_user_config")
+
+    @_builtins.property
+    @pulumi.getter(name="rsyslogUserConfig")
+    def rsyslog_user_config(self) -> pulumi.Output[Optional['outputs.ServiceIntegrationRsyslogUserConfig']]:
+        """
+        Rsyslog user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        """
+        return pulumi.get(self, "rsyslog_user_config")
 
     @_builtins.property
     @pulumi.getter(name="sourceEndpointId")

@@ -59,6 +59,16 @@ public final class GetOpenSearchOpensearchUserConfigAzureMigration {
      */
     private @Nullable String key;
     /**
+     * @return Throttles the restore rate per node. Defaults to unlimited. Note that if the recovery settings for managed services are set, this value is overridden by the recovery settings. Value should be a byte size with unit, e.g. 40mb, 100kb, 1gb.
+     * 
+     */
+    private @Nullable String maxRestoreBytesPerSec;
+    /**
+     * @return Throttles the snapshot rate per node. Defaults to 40mb. Note that if the recovery settings for managed services are set, this value is overridden by the recovery settings. Value should be a byte size with unit, e.g. 40mb, 100kb, 1gb.
+     * 
+     */
+    private @Nullable String maxSnapshotBytesPerSec;
+    /**
      * @return Whether the repository is read-only. Default: `true`.
      * 
      */
@@ -144,6 +154,20 @@ public final class GetOpenSearchOpensearchUserConfigAzureMigration {
         return Optional.ofNullable(this.key);
     }
     /**
+     * @return Throttles the restore rate per node. Defaults to unlimited. Note that if the recovery settings for managed services are set, this value is overridden by the recovery settings. Value should be a byte size with unit, e.g. 40mb, 100kb, 1gb.
+     * 
+     */
+    public Optional<String> maxRestoreBytesPerSec() {
+        return Optional.ofNullable(this.maxRestoreBytesPerSec);
+    }
+    /**
+     * @return Throttles the snapshot rate per node. Defaults to 40mb. Note that if the recovery settings for managed services are set, this value is overridden by the recovery settings. Value should be a byte size with unit, e.g. 40mb, 100kb, 1gb.
+     * 
+     */
+    public Optional<String> maxSnapshotBytesPerSec() {
+        return Optional.ofNullable(this.maxSnapshotBytesPerSec);
+    }
+    /**
      * @return Whether the repository is read-only. Default: `true`.
      * 
      */
@@ -190,6 +214,8 @@ public final class GetOpenSearchOpensearchUserConfigAzureMigration {
         private @Nullable Boolean includeAliases;
         private String indices;
         private @Nullable String key;
+        private @Nullable String maxRestoreBytesPerSec;
+        private @Nullable String maxSnapshotBytesPerSec;
         private @Nullable Boolean readonly;
         private @Nullable Boolean restoreGlobalState;
         private @Nullable String sasToken;
@@ -206,6 +232,8 @@ public final class GetOpenSearchOpensearchUserConfigAzureMigration {
     	      this.includeAliases = defaults.includeAliases;
     	      this.indices = defaults.indices;
     	      this.key = defaults.key;
+    	      this.maxRestoreBytesPerSec = defaults.maxRestoreBytesPerSec;
+    	      this.maxSnapshotBytesPerSec = defaults.maxSnapshotBytesPerSec;
     	      this.readonly = defaults.readonly;
     	      this.restoreGlobalState = defaults.restoreGlobalState;
     	      this.sasToken = defaults.sasToken;
@@ -275,6 +303,18 @@ public final class GetOpenSearchOpensearchUserConfigAzureMigration {
             return this;
         }
         @CustomType.Setter
+        public Builder maxRestoreBytesPerSec(@Nullable String maxRestoreBytesPerSec) {
+
+            this.maxRestoreBytesPerSec = maxRestoreBytesPerSec;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder maxSnapshotBytesPerSec(@Nullable String maxSnapshotBytesPerSec) {
+
+            this.maxSnapshotBytesPerSec = maxSnapshotBytesPerSec;
+            return this;
+        }
+        @CustomType.Setter
         public Builder readonly(@Nullable Boolean readonly) {
 
             this.readonly = readonly;
@@ -311,6 +351,8 @@ public final class GetOpenSearchOpensearchUserConfigAzureMigration {
             _resultValue.includeAliases = includeAliases;
             _resultValue.indices = indices;
             _resultValue.key = key;
+            _resultValue.maxRestoreBytesPerSec = maxRestoreBytesPerSec;
+            _resultValue.maxSnapshotBytesPerSec = maxSnapshotBytesPerSec;
             _resultValue.readonly = readonly;
             _resultValue.restoreGlobalState = restoreGlobalState;
             _resultValue.sasToken = sasToken;

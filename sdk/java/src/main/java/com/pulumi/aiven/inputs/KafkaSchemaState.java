@@ -3,10 +3,12 @@
 
 package com.pulumi.aiven.inputs;
 
+import com.pulumi.aiven.inputs.KafkaSchemaReferenceArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -44,6 +46,21 @@ public final class KafkaSchemaState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
+    }
+
+    /**
+     * Schema references.
+     * 
+     */
+    @Import(name="references")
+    private @Nullable Output<List<KafkaSchemaReferenceArgs>> references;
+
+    /**
+     * @return Schema references.
+     * 
+     */
+    public Optional<Output<List<KafkaSchemaReferenceArgs>>> references() {
+        return Optional.ofNullable(this.references);
     }
 
     /**
@@ -126,6 +143,7 @@ public final class KafkaSchemaState extends com.pulumi.resources.ResourceArgs {
     private KafkaSchemaState(KafkaSchemaState $) {
         this.compatibilityLevel = $.compatibilityLevel;
         this.project = $.project;
+        this.references = $.references;
         this.schema = $.schema;
         this.schemaType = $.schemaType;
         this.serviceName = $.serviceName;
@@ -191,6 +209,37 @@ public final class KafkaSchemaState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param references Schema references.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder references(@Nullable Output<List<KafkaSchemaReferenceArgs>> references) {
+            $.references = references;
+            return this;
+        }
+
+        /**
+         * @param references Schema references.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder references(List<KafkaSchemaReferenceArgs> references) {
+            return references(Output.of(references));
+        }
+
+        /**
+         * @param references Schema references.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder references(KafkaSchemaReferenceArgs... references) {
+            return references(List.of(references));
         }
 
         /**

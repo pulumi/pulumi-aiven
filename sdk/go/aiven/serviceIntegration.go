@@ -133,6 +133,8 @@ type ServiceIntegration struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Prometheus user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	PrometheusUserConfig ServiceIntegrationPrometheusUserConfigPtrOutput `pulumi:"prometheusUserConfig"`
+	// Rsyslog user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+	RsyslogUserConfig ServiceIntegrationRsyslogUserConfigPtrOutput `pulumi:"rsyslogUserConfig"`
 	// Source endpoint for the integration.
 	SourceEndpointId pulumi.StringPtrOutput `pulumi:"sourceEndpointId"`
 	// Source service for the integration (if any)
@@ -219,6 +221,8 @@ type serviceIntegrationState struct {
 	Project *string `pulumi:"project"`
 	// Prometheus user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	PrometheusUserConfig *ServiceIntegrationPrometheusUserConfig `pulumi:"prometheusUserConfig"`
+	// Rsyslog user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+	RsyslogUserConfig *ServiceIntegrationRsyslogUserConfig `pulumi:"rsyslogUserConfig"`
 	// Source endpoint for the integration.
 	SourceEndpointId *string `pulumi:"sourceEndpointId"`
 	// Source service for the integration (if any)
@@ -270,6 +274,8 @@ type ServiceIntegrationState struct {
 	Project pulumi.StringPtrInput
 	// Prometheus user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	PrometheusUserConfig ServiceIntegrationPrometheusUserConfigPtrInput
+	// Rsyslog user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+	RsyslogUserConfig ServiceIntegrationRsyslogUserConfigPtrInput
 	// Source endpoint for the integration.
 	SourceEndpointId pulumi.StringPtrInput
 	// Source service for the integration (if any)
@@ -323,6 +329,8 @@ type serviceIntegrationArgs struct {
 	Project string `pulumi:"project"`
 	// Prometheus user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	PrometheusUserConfig *ServiceIntegrationPrometheusUserConfig `pulumi:"prometheusUserConfig"`
+	// Rsyslog user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+	RsyslogUserConfig *ServiceIntegrationRsyslogUserConfig `pulumi:"rsyslogUserConfig"`
 	// Source endpoint for the integration.
 	SourceEndpointId *string `pulumi:"sourceEndpointId"`
 	// Source service for the integration (if any)
@@ -373,6 +381,8 @@ type ServiceIntegrationArgs struct {
 	Project pulumi.StringInput
 	// Prometheus user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	PrometheusUserConfig ServiceIntegrationPrometheusUserConfigPtrInput
+	// Rsyslog user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+	RsyslogUserConfig ServiceIntegrationRsyslogUserConfigPtrInput
 	// Source endpoint for the integration.
 	SourceEndpointId pulumi.StringPtrInput
 	// Source service for the integration (if any)
@@ -595,6 +605,11 @@ func (o ServiceIntegrationOutput) PrometheusUserConfig() ServiceIntegrationProme
 	return o.ApplyT(func(v *ServiceIntegration) ServiceIntegrationPrometheusUserConfigPtrOutput {
 		return v.PrometheusUserConfig
 	}).(ServiceIntegrationPrometheusUserConfigPtrOutput)
+}
+
+// Rsyslog user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+func (o ServiceIntegrationOutput) RsyslogUserConfig() ServiceIntegrationRsyslogUserConfigPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegration) ServiceIntegrationRsyslogUserConfigPtrOutput { return v.RsyslogUserConfig }).(ServiceIntegrationRsyslogUserConfigPtrOutput)
 }
 
 // Source endpoint for the integration.

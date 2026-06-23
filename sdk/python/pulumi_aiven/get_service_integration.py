@@ -27,7 +27,7 @@ class GetServiceIntegrationResult:
     """
     A collection of values returned by getServiceIntegration.
     """
-    def __init__(__self__, clickhouse_credentials_user_configs=None, clickhouse_kafka_user_configs=None, clickhouse_postgresql_user_configs=None, datadog_user_configs=None, destination_endpoint_id=None, destination_service_name=None, destination_service_project=None, external_aws_cloudwatch_logs_user_configs=None, external_aws_cloudwatch_metrics_user_configs=None, external_elasticsearch_logs_user_configs=None, external_opensearch_logs_user_configs=None, flink_external_postgresql_user_configs=None, id=None, integration_id=None, integration_type=None, kafka_connect_user_configs=None, kafka_logs_user_configs=None, kafka_mirrormaker_user_configs=None, logs_user_configs=None, metrics_user_configs=None, project=None, prometheus_user_configs=None, source_endpoint_id=None, source_service_name=None, source_service_project=None):
+    def __init__(__self__, clickhouse_credentials_user_configs=None, clickhouse_kafka_user_configs=None, clickhouse_postgresql_user_configs=None, datadog_user_configs=None, destination_endpoint_id=None, destination_service_name=None, destination_service_project=None, external_aws_cloudwatch_logs_user_configs=None, external_aws_cloudwatch_metrics_user_configs=None, external_elasticsearch_logs_user_configs=None, external_opensearch_logs_user_configs=None, flink_external_postgresql_user_configs=None, id=None, integration_id=None, integration_type=None, kafka_connect_user_configs=None, kafka_logs_user_configs=None, kafka_mirrormaker_user_configs=None, logs_user_configs=None, metrics_user_configs=None, project=None, prometheus_user_configs=None, rsyslog_user_configs=None, source_endpoint_id=None, source_service_name=None, source_service_project=None):
         if clickhouse_credentials_user_configs and not isinstance(clickhouse_credentials_user_configs, list):
             raise TypeError("Expected argument 'clickhouse_credentials_user_configs' to be a list")
         pulumi.set(__self__, "clickhouse_credentials_user_configs", clickhouse_credentials_user_configs)
@@ -94,6 +94,9 @@ class GetServiceIntegrationResult:
         if prometheus_user_configs and not isinstance(prometheus_user_configs, list):
             raise TypeError("Expected argument 'prometheus_user_configs' to be a list")
         pulumi.set(__self__, "prometheus_user_configs", prometheus_user_configs)
+        if rsyslog_user_configs and not isinstance(rsyslog_user_configs, list):
+            raise TypeError("Expected argument 'rsyslog_user_configs' to be a list")
+        pulumi.set(__self__, "rsyslog_user_configs", rsyslog_user_configs)
         if source_endpoint_id and not isinstance(source_endpoint_id, str):
             raise TypeError("Expected argument 'source_endpoint_id' to be a str")
         pulumi.set(__self__, "source_endpoint_id", source_endpoint_id)
@@ -281,6 +284,14 @@ class GetServiceIntegrationResult:
         return pulumi.get(self, "prometheus_user_configs")
 
     @_builtins.property
+    @pulumi.getter(name="rsyslogUserConfigs")
+    def rsyslog_user_configs(self) -> Sequence['outputs.GetServiceIntegrationRsyslogUserConfigResult']:
+        """
+        Rsyslog user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        """
+        return pulumi.get(self, "rsyslog_user_configs")
+
+    @_builtins.property
     @pulumi.getter(name="sourceEndpointId")
     def source_endpoint_id(self) -> _builtins.str:
         """
@@ -333,6 +344,7 @@ class AwaitableGetServiceIntegrationResult(GetServiceIntegrationResult):
             metrics_user_configs=self.metrics_user_configs,
             project=self.project,
             prometheus_user_configs=self.prometheus_user_configs,
+            rsyslog_user_configs=self.rsyslog_user_configs,
             source_endpoint_id=self.source_endpoint_id,
             source_service_name=self.source_service_name,
             source_service_project=self.source_service_project)
@@ -395,6 +407,7 @@ def get_service_integration(destination_service_name: Optional[_builtins.str] = 
         metrics_user_configs=pulumi.get(__ret__, 'metrics_user_configs'),
         project=pulumi.get(__ret__, 'project'),
         prometheus_user_configs=pulumi.get(__ret__, 'prometheus_user_configs'),
+        rsyslog_user_configs=pulumi.get(__ret__, 'rsyslog_user_configs'),
         source_endpoint_id=pulumi.get(__ret__, 'source_endpoint_id'),
         source_service_name=pulumi.get(__ret__, 'source_service_name'),
         source_service_project=pulumi.get(__ret__, 'source_service_project'))
@@ -454,6 +467,7 @@ def get_service_integration_output(destination_service_name: pulumi.Input[Option
         metrics_user_configs=pulumi.get(__response__, 'metrics_user_configs'),
         project=pulumi.get(__response__, 'project'),
         prometheus_user_configs=pulumi.get(__response__, 'prometheus_user_configs'),
+        rsyslog_user_configs=pulumi.get(__response__, 'rsyslog_user_configs'),
         source_endpoint_id=pulumi.get(__response__, 'source_endpoint_id'),
         source_service_name=pulumi.get(__response__, 'source_service_name'),
         source_service_project=pulumi.get(__response__, 'source_service_project')))

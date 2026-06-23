@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Kafka Schema resource allows the creation and management of Aiven Kafka Schemas.
+// The Kafka Schema resource allows the creation and management of Aiven Kafka Schemas. Schemas with references are hard deleted, while schemas without references are only soft deleted.
 //
 // ## Example Usage
 //
@@ -73,6 +73,8 @@ type KafkaSchema struct {
 	CompatibilityLevel pulumi.StringPtrOutput `pulumi:"compatibilityLevel"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// Schema references.
+	References KafkaSchemaReferenceArrayOutput `pulumi:"references"`
 	// Kafka Schema configuration. Should be a valid Avro, JSON, or Protobuf schema, depending on the schema type.
 	Schema pulumi.StringOutput `pulumi:"schema"`
 	// Kafka Schema configuration type. Defaults to AVRO. The possible values are `AVRO`, `JSON` and `PROTOBUF`.
@@ -131,6 +133,8 @@ type kafkaSchemaState struct {
 	CompatibilityLevel *string `pulumi:"compatibilityLevel"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project *string `pulumi:"project"`
+	// Schema references.
+	References []KafkaSchemaReference `pulumi:"references"`
 	// Kafka Schema configuration. Should be a valid Avro, JSON, or Protobuf schema, depending on the schema type.
 	Schema *string `pulumi:"schema"`
 	// Kafka Schema configuration type. Defaults to AVRO. The possible values are `AVRO`, `JSON` and `PROTOBUF`.
@@ -148,6 +152,8 @@ type KafkaSchemaState struct {
 	CompatibilityLevel pulumi.StringPtrInput
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringPtrInput
+	// Schema references.
+	References KafkaSchemaReferenceArrayInput
 	// Kafka Schema configuration. Should be a valid Avro, JSON, or Protobuf schema, depending on the schema type.
 	Schema pulumi.StringPtrInput
 	// Kafka Schema configuration type. Defaults to AVRO. The possible values are `AVRO`, `JSON` and `PROTOBUF`.
@@ -169,6 +175,8 @@ type kafkaSchemaArgs struct {
 	CompatibilityLevel *string `pulumi:"compatibilityLevel"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
+	// Schema references.
+	References []KafkaSchemaReference `pulumi:"references"`
 	// Kafka Schema configuration. Should be a valid Avro, JSON, or Protobuf schema, depending on the schema type.
 	Schema string `pulumi:"schema"`
 	// Kafka Schema configuration type. Defaults to AVRO. The possible values are `AVRO`, `JSON` and `PROTOBUF`.
@@ -185,6 +193,8 @@ type KafkaSchemaArgs struct {
 	CompatibilityLevel pulumi.StringPtrInput
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput
+	// Schema references.
+	References KafkaSchemaReferenceArrayInput
 	// Kafka Schema configuration. Should be a valid Avro, JSON, or Protobuf schema, depending on the schema type.
 	Schema pulumi.StringInput
 	// Kafka Schema configuration type. Defaults to AVRO. The possible values are `AVRO`, `JSON` and `PROTOBUF`.
@@ -290,6 +300,11 @@ func (o KafkaSchemaOutput) CompatibilityLevel() pulumi.StringPtrOutput {
 // The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 func (o KafkaSchemaOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaSchema) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Schema references.
+func (o KafkaSchemaOutput) References() KafkaSchemaReferenceArrayOutput {
+	return o.ApplyT(func(v *KafkaSchema) KafkaSchemaReferenceArrayOutput { return v.References }).(KafkaSchemaReferenceArrayOutput)
 }
 
 // Kafka Schema configuration. Should be a valid Avro, JSON, or Protobuf schema, depending on the schema type.

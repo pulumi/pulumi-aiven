@@ -238,8 +238,8 @@ def get_service_plan(backup_configs: Optional[Sequence[Union['GetServicePlanBack
     """
     Gets detailed information about a specific service plan, including specifications and pricing for a cloud region.
 
-    **This resource is in the beta stage and may change without notice.** Set
-    the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+    **This data source is in the beta stage and may change without notice.** Set
+    the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the data source.
 
 
     :param Sequence[Union['GetServicePlanBackupConfigArgs', 'GetServicePlanBackupConfigArgsDict']] backup_configs: Backup configuration for this service plan.
@@ -285,8 +285,8 @@ def get_service_plan_output(backup_configs: pulumi.Input[Optional[Optional[Seque
     """
     Gets detailed information about a specific service plan, including specifications and pricing for a cloud region.
 
-    **This resource is in the beta stage and may change without notice.** Set
-    the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+    **This data source is in the beta stage and may change without notice.** Set
+    the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the data source.
 
 
     :param Sequence[Union['GetServicePlanBackupConfigArgs', 'GetServicePlanBackupConfigArgsDict']] backup_configs: Backup configuration for this service plan.

@@ -7,7 +7,10 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Gets information about a billing group. **Deprecated**: Use `aiven.OrganizationBillingGroup` instead. This data source will be removed in the next major release.
+ * Gets information about a billing group.
+ *
+ * > **This data source is deprecated**
+ * Use `aiven.OrganizationBillingGroup` instead. This data source will be removed in the next major release.
  *
  * ## Example Usage
  *
@@ -120,7 +123,10 @@ export interface GetBillingGroupResult {
     readonly zipCode: string;
 }
 /**
- * Gets information about a billing group. **Deprecated**: Use `aiven.OrganizationBillingGroup` instead. This data source will be removed in the next major release.
+ * Gets information about a billing group.
+ *
+ * > **This data source is deprecated**
+ * Use `aiven.OrganizationBillingGroup` instead. This data source will be removed in the next major release.
  *
  * ## Example Usage
  *

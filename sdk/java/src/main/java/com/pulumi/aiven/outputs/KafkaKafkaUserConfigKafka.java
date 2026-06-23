@@ -3,6 +3,7 @@
 
 package com.pulumi.aiven.outputs;
 
+import com.pulumi.aiven.outputs.KafkaKafkaUserConfigKafkaAuditLog;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
 import java.lang.Double;
@@ -14,6 +15,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class KafkaKafkaUserConfigKafka {
+    /**
+     * @return Enable Kafka audit logging by providing this object. Removing it disables the feature. Enabling, updating, or disabling audit logging causes a rolling restart of all Kafka brokers
+     * 
+     */
+    private @Nullable KafkaKafkaUserConfigKafkaAuditLog auditLog;
     /**
      * @return Enable auto-creation of topics. (Default: false).
      * 
@@ -35,6 +41,11 @@ public final class KafkaKafkaUserConfigKafka {
      */
     private @Nullable Integer defaultReplicationFactor;
     /**
+     * @return Enum: `classic`, `classic,consumer`, `classic,consumer,share`, `classic,consumer,share,streams`, `classic,consumer,streams`, `classic,share`, `classic,streams`. The enabled consumer group rebalance protocols. Use consumer, classic, share, streams to enable Kafka share groups.
+     * 
+     */
+    private @Nullable String groupCoordinatorRebalanceProtocols;
+    /**
      * @return The amount of time, in milliseconds, the group coordinator will wait for more consumers to join a new group before performing the first rebalance. A longer delay means potentially fewer rebalances, but increases the time until processing begins. The default value for this is 3 seconds. During development and testing it might be desirable to set this to 0 in order to not delay test execution time. (Default: 3000 ms (3 seconds)). Example: `3000`.
      * 
      */
@@ -49,6 +60,71 @@ public final class KafkaKafkaUserConfigKafka {
      * 
      */
     private @Nullable Integer groupMinSessionTimeoutMs;
+    /**
+     * @return The maximum delivery attempts for a share-group record. Example: `5`.
+     * 
+     */
+    private @Nullable Integer groupShareDeliveryCountLimit;
+    /**
+     * @return The heartbeat interval used by share group members. Example: `5000`.
+     * 
+     */
+    private @Nullable Integer groupShareHeartbeatIntervalMs;
+    /**
+     * @return The maximum number of share groups allowed on the broker.
+     * 
+     */
+    private @Nullable Integer groupShareMaxGroups;
+    /**
+     * @return The maximum heartbeat interval allowed for share group members. Example: `15000`.
+     * 
+     */
+    private @Nullable Integer groupShareMaxHeartbeatIntervalMs;
+    /**
+     * @return The maximum record lock duration allowed for share groups. Example: `60000`.
+     * 
+     */
+    private @Nullable Integer groupShareMaxRecordLockDurationMs;
+    /**
+     * @return The maximum session timeout allowed for share group members. Example: `60000`.
+     * 
+     */
+    private @Nullable Integer groupShareMaxSessionTimeoutMs;
+    /**
+     * @return The maximum number of members allowed in a share group. Example: `200`.
+     * 
+     */
+    private @Nullable Integer groupShareMaxSize;
+    /**
+     * @return The minimum heartbeat interval allowed for share group members. Example: `5000`.
+     * 
+     */
+    private @Nullable Integer groupShareMinHeartbeatIntervalMs;
+    /**
+     * @return The minimum record lock duration allowed for share groups. Example: `15000`.
+     * 
+     */
+    private @Nullable Integer groupShareMinRecordLockDurationMs;
+    /**
+     * @return The minimum session timeout allowed for share group members. Example: `45000`.
+     * 
+     */
+    private @Nullable Integer groupShareMinSessionTimeoutMs;
+    /**
+     * @return The maximum number of record locks allowed per share group partition. Example: `2000`.
+     * 
+     */
+    private @Nullable Integer groupSharePartitionMaxRecordLocks;
+    /**
+     * @return The duration for which a fetched share-group record is locked. Example: `30000`.
+     * 
+     */
+    private @Nullable Integer groupShareRecordLockDurationMs;
+    /**
+     * @return The timeout used to detect share group member failures. Example: `45000`.
+     * 
+     */
+    private @Nullable Integer groupShareSessionTimeoutMs;
     /**
      * @return How long are delete records retained? (Default: 86400000 (1 day)).
      * 
@@ -257,6 +333,13 @@ public final class KafkaKafkaUserConfigKafka {
 
     private KafkaKafkaUserConfigKafka() {}
     /**
+     * @return Enable Kafka audit logging by providing this object. Removing it disables the feature. Enabling, updating, or disabling audit logging causes a rolling restart of all Kafka brokers
+     * 
+     */
+    public Optional<KafkaKafkaUserConfigKafkaAuditLog> auditLog() {
+        return Optional.ofNullable(this.auditLog);
+    }
+    /**
      * @return Enable auto-creation of topics. (Default: false).
      * 
      */
@@ -285,6 +368,13 @@ public final class KafkaKafkaUserConfigKafka {
         return Optional.ofNullable(this.defaultReplicationFactor);
     }
     /**
+     * @return Enum: `classic`, `classic,consumer`, `classic,consumer,share`, `classic,consumer,share,streams`, `classic,consumer,streams`, `classic,share`, `classic,streams`. The enabled consumer group rebalance protocols. Use consumer, classic, share, streams to enable Kafka share groups.
+     * 
+     */
+    public Optional<String> groupCoordinatorRebalanceProtocols() {
+        return Optional.ofNullable(this.groupCoordinatorRebalanceProtocols);
+    }
+    /**
      * @return The amount of time, in milliseconds, the group coordinator will wait for more consumers to join a new group before performing the first rebalance. A longer delay means potentially fewer rebalances, but increases the time until processing begins. The default value for this is 3 seconds. During development and testing it might be desirable to set this to 0 in order to not delay test execution time. (Default: 3000 ms (3 seconds)). Example: `3000`.
      * 
      */
@@ -304,6 +394,97 @@ public final class KafkaKafkaUserConfigKafka {
      */
     public Optional<Integer> groupMinSessionTimeoutMs() {
         return Optional.ofNullable(this.groupMinSessionTimeoutMs);
+    }
+    /**
+     * @return The maximum delivery attempts for a share-group record. Example: `5`.
+     * 
+     */
+    public Optional<Integer> groupShareDeliveryCountLimit() {
+        return Optional.ofNullable(this.groupShareDeliveryCountLimit);
+    }
+    /**
+     * @return The heartbeat interval used by share group members. Example: `5000`.
+     * 
+     */
+    public Optional<Integer> groupShareHeartbeatIntervalMs() {
+        return Optional.ofNullable(this.groupShareHeartbeatIntervalMs);
+    }
+    /**
+     * @return The maximum number of share groups allowed on the broker.
+     * 
+     */
+    public Optional<Integer> groupShareMaxGroups() {
+        return Optional.ofNullable(this.groupShareMaxGroups);
+    }
+    /**
+     * @return The maximum heartbeat interval allowed for share group members. Example: `15000`.
+     * 
+     */
+    public Optional<Integer> groupShareMaxHeartbeatIntervalMs() {
+        return Optional.ofNullable(this.groupShareMaxHeartbeatIntervalMs);
+    }
+    /**
+     * @return The maximum record lock duration allowed for share groups. Example: `60000`.
+     * 
+     */
+    public Optional<Integer> groupShareMaxRecordLockDurationMs() {
+        return Optional.ofNullable(this.groupShareMaxRecordLockDurationMs);
+    }
+    /**
+     * @return The maximum session timeout allowed for share group members. Example: `60000`.
+     * 
+     */
+    public Optional<Integer> groupShareMaxSessionTimeoutMs() {
+        return Optional.ofNullable(this.groupShareMaxSessionTimeoutMs);
+    }
+    /**
+     * @return The maximum number of members allowed in a share group. Example: `200`.
+     * 
+     */
+    public Optional<Integer> groupShareMaxSize() {
+        return Optional.ofNullable(this.groupShareMaxSize);
+    }
+    /**
+     * @return The minimum heartbeat interval allowed for share group members. Example: `5000`.
+     * 
+     */
+    public Optional<Integer> groupShareMinHeartbeatIntervalMs() {
+        return Optional.ofNullable(this.groupShareMinHeartbeatIntervalMs);
+    }
+    /**
+     * @return The minimum record lock duration allowed for share groups. Example: `15000`.
+     * 
+     */
+    public Optional<Integer> groupShareMinRecordLockDurationMs() {
+        return Optional.ofNullable(this.groupShareMinRecordLockDurationMs);
+    }
+    /**
+     * @return The minimum session timeout allowed for share group members. Example: `45000`.
+     * 
+     */
+    public Optional<Integer> groupShareMinSessionTimeoutMs() {
+        return Optional.ofNullable(this.groupShareMinSessionTimeoutMs);
+    }
+    /**
+     * @return The maximum number of record locks allowed per share group partition. Example: `2000`.
+     * 
+     */
+    public Optional<Integer> groupSharePartitionMaxRecordLocks() {
+        return Optional.ofNullable(this.groupSharePartitionMaxRecordLocks);
+    }
+    /**
+     * @return The duration for which a fetched share-group record is locked. Example: `30000`.
+     * 
+     */
+    public Optional<Integer> groupShareRecordLockDurationMs() {
+        return Optional.ofNullable(this.groupShareRecordLockDurationMs);
+    }
+    /**
+     * @return The timeout used to detect share group member failures. Example: `45000`.
+     * 
+     */
+    public Optional<Integer> groupShareSessionTimeoutMs() {
+        return Optional.ofNullable(this.groupShareSessionTimeoutMs);
     }
     /**
      * @return How long are delete records retained? (Default: 86400000 (1 day)).
@@ -602,13 +783,28 @@ public final class KafkaKafkaUserConfigKafka {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable KafkaKafkaUserConfigKafkaAuditLog auditLog;
         private @Nullable Boolean autoCreateTopicsEnable;
         private @Nullable String compressionType;
         private @Nullable Integer connectionsMaxIdleMs;
         private @Nullable Integer defaultReplicationFactor;
+        private @Nullable String groupCoordinatorRebalanceProtocols;
         private @Nullable Integer groupInitialRebalanceDelayMs;
         private @Nullable Integer groupMaxSessionTimeoutMs;
         private @Nullable Integer groupMinSessionTimeoutMs;
+        private @Nullable Integer groupShareDeliveryCountLimit;
+        private @Nullable Integer groupShareHeartbeatIntervalMs;
+        private @Nullable Integer groupShareMaxGroups;
+        private @Nullable Integer groupShareMaxHeartbeatIntervalMs;
+        private @Nullable Integer groupShareMaxRecordLockDurationMs;
+        private @Nullable Integer groupShareMaxSessionTimeoutMs;
+        private @Nullable Integer groupShareMaxSize;
+        private @Nullable Integer groupShareMinHeartbeatIntervalMs;
+        private @Nullable Integer groupShareMinRecordLockDurationMs;
+        private @Nullable Integer groupShareMinSessionTimeoutMs;
+        private @Nullable Integer groupSharePartitionMaxRecordLocks;
+        private @Nullable Integer groupShareRecordLockDurationMs;
+        private @Nullable Integer groupShareSessionTimeoutMs;
         private @Nullable Integer logCleanerDeleteRetentionMs;
         private @Nullable Integer logCleanerMaxCompactionLagMs;
         private @Nullable Double logCleanerMinCleanableRatio;
@@ -653,13 +849,28 @@ public final class KafkaKafkaUserConfigKafka {
         public Builder() {}
         public Builder(KafkaKafkaUserConfigKafka defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.auditLog = defaults.auditLog;
     	      this.autoCreateTopicsEnable = defaults.autoCreateTopicsEnable;
     	      this.compressionType = defaults.compressionType;
     	      this.connectionsMaxIdleMs = defaults.connectionsMaxIdleMs;
     	      this.defaultReplicationFactor = defaults.defaultReplicationFactor;
+    	      this.groupCoordinatorRebalanceProtocols = defaults.groupCoordinatorRebalanceProtocols;
     	      this.groupInitialRebalanceDelayMs = defaults.groupInitialRebalanceDelayMs;
     	      this.groupMaxSessionTimeoutMs = defaults.groupMaxSessionTimeoutMs;
     	      this.groupMinSessionTimeoutMs = defaults.groupMinSessionTimeoutMs;
+    	      this.groupShareDeliveryCountLimit = defaults.groupShareDeliveryCountLimit;
+    	      this.groupShareHeartbeatIntervalMs = defaults.groupShareHeartbeatIntervalMs;
+    	      this.groupShareMaxGroups = defaults.groupShareMaxGroups;
+    	      this.groupShareMaxHeartbeatIntervalMs = defaults.groupShareMaxHeartbeatIntervalMs;
+    	      this.groupShareMaxRecordLockDurationMs = defaults.groupShareMaxRecordLockDurationMs;
+    	      this.groupShareMaxSessionTimeoutMs = defaults.groupShareMaxSessionTimeoutMs;
+    	      this.groupShareMaxSize = defaults.groupShareMaxSize;
+    	      this.groupShareMinHeartbeatIntervalMs = defaults.groupShareMinHeartbeatIntervalMs;
+    	      this.groupShareMinRecordLockDurationMs = defaults.groupShareMinRecordLockDurationMs;
+    	      this.groupShareMinSessionTimeoutMs = defaults.groupShareMinSessionTimeoutMs;
+    	      this.groupSharePartitionMaxRecordLocks = defaults.groupSharePartitionMaxRecordLocks;
+    	      this.groupShareRecordLockDurationMs = defaults.groupShareRecordLockDurationMs;
+    	      this.groupShareSessionTimeoutMs = defaults.groupShareSessionTimeoutMs;
     	      this.logCleanerDeleteRetentionMs = defaults.logCleanerDeleteRetentionMs;
     	      this.logCleanerMaxCompactionLagMs = defaults.logCleanerMaxCompactionLagMs;
     	      this.logCleanerMinCleanableRatio = defaults.logCleanerMinCleanableRatio;
@@ -704,6 +915,12 @@ public final class KafkaKafkaUserConfigKafka {
         }
 
         @CustomType.Setter
+        public Builder auditLog(@Nullable KafkaKafkaUserConfigKafkaAuditLog auditLog) {
+
+            this.auditLog = auditLog;
+            return this;
+        }
+        @CustomType.Setter
         public Builder autoCreateTopicsEnable(@Nullable Boolean autoCreateTopicsEnable) {
 
             this.autoCreateTopicsEnable = autoCreateTopicsEnable;
@@ -728,6 +945,12 @@ public final class KafkaKafkaUserConfigKafka {
             return this;
         }
         @CustomType.Setter
+        public Builder groupCoordinatorRebalanceProtocols(@Nullable String groupCoordinatorRebalanceProtocols) {
+
+            this.groupCoordinatorRebalanceProtocols = groupCoordinatorRebalanceProtocols;
+            return this;
+        }
+        @CustomType.Setter
         public Builder groupInitialRebalanceDelayMs(@Nullable Integer groupInitialRebalanceDelayMs) {
 
             this.groupInitialRebalanceDelayMs = groupInitialRebalanceDelayMs;
@@ -743,6 +966,84 @@ public final class KafkaKafkaUserConfigKafka {
         public Builder groupMinSessionTimeoutMs(@Nullable Integer groupMinSessionTimeoutMs) {
 
             this.groupMinSessionTimeoutMs = groupMinSessionTimeoutMs;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder groupShareDeliveryCountLimit(@Nullable Integer groupShareDeliveryCountLimit) {
+
+            this.groupShareDeliveryCountLimit = groupShareDeliveryCountLimit;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder groupShareHeartbeatIntervalMs(@Nullable Integer groupShareHeartbeatIntervalMs) {
+
+            this.groupShareHeartbeatIntervalMs = groupShareHeartbeatIntervalMs;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder groupShareMaxGroups(@Nullable Integer groupShareMaxGroups) {
+
+            this.groupShareMaxGroups = groupShareMaxGroups;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder groupShareMaxHeartbeatIntervalMs(@Nullable Integer groupShareMaxHeartbeatIntervalMs) {
+
+            this.groupShareMaxHeartbeatIntervalMs = groupShareMaxHeartbeatIntervalMs;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder groupShareMaxRecordLockDurationMs(@Nullable Integer groupShareMaxRecordLockDurationMs) {
+
+            this.groupShareMaxRecordLockDurationMs = groupShareMaxRecordLockDurationMs;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder groupShareMaxSessionTimeoutMs(@Nullable Integer groupShareMaxSessionTimeoutMs) {
+
+            this.groupShareMaxSessionTimeoutMs = groupShareMaxSessionTimeoutMs;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder groupShareMaxSize(@Nullable Integer groupShareMaxSize) {
+
+            this.groupShareMaxSize = groupShareMaxSize;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder groupShareMinHeartbeatIntervalMs(@Nullable Integer groupShareMinHeartbeatIntervalMs) {
+
+            this.groupShareMinHeartbeatIntervalMs = groupShareMinHeartbeatIntervalMs;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder groupShareMinRecordLockDurationMs(@Nullable Integer groupShareMinRecordLockDurationMs) {
+
+            this.groupShareMinRecordLockDurationMs = groupShareMinRecordLockDurationMs;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder groupShareMinSessionTimeoutMs(@Nullable Integer groupShareMinSessionTimeoutMs) {
+
+            this.groupShareMinSessionTimeoutMs = groupShareMinSessionTimeoutMs;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder groupSharePartitionMaxRecordLocks(@Nullable Integer groupSharePartitionMaxRecordLocks) {
+
+            this.groupSharePartitionMaxRecordLocks = groupSharePartitionMaxRecordLocks;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder groupShareRecordLockDurationMs(@Nullable Integer groupShareRecordLockDurationMs) {
+
+            this.groupShareRecordLockDurationMs = groupShareRecordLockDurationMs;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder groupShareSessionTimeoutMs(@Nullable Integer groupShareSessionTimeoutMs) {
+
+            this.groupShareSessionTimeoutMs = groupShareSessionTimeoutMs;
             return this;
         }
         @CustomType.Setter
@@ -993,13 +1294,28 @@ public final class KafkaKafkaUserConfigKafka {
         }
         public KafkaKafkaUserConfigKafka build() {
             final var _resultValue = new KafkaKafkaUserConfigKafka();
+            _resultValue.auditLog = auditLog;
             _resultValue.autoCreateTopicsEnable = autoCreateTopicsEnable;
             _resultValue.compressionType = compressionType;
             _resultValue.connectionsMaxIdleMs = connectionsMaxIdleMs;
             _resultValue.defaultReplicationFactor = defaultReplicationFactor;
+            _resultValue.groupCoordinatorRebalanceProtocols = groupCoordinatorRebalanceProtocols;
             _resultValue.groupInitialRebalanceDelayMs = groupInitialRebalanceDelayMs;
             _resultValue.groupMaxSessionTimeoutMs = groupMaxSessionTimeoutMs;
             _resultValue.groupMinSessionTimeoutMs = groupMinSessionTimeoutMs;
+            _resultValue.groupShareDeliveryCountLimit = groupShareDeliveryCountLimit;
+            _resultValue.groupShareHeartbeatIntervalMs = groupShareHeartbeatIntervalMs;
+            _resultValue.groupShareMaxGroups = groupShareMaxGroups;
+            _resultValue.groupShareMaxHeartbeatIntervalMs = groupShareMaxHeartbeatIntervalMs;
+            _resultValue.groupShareMaxRecordLockDurationMs = groupShareMaxRecordLockDurationMs;
+            _resultValue.groupShareMaxSessionTimeoutMs = groupShareMaxSessionTimeoutMs;
+            _resultValue.groupShareMaxSize = groupShareMaxSize;
+            _resultValue.groupShareMinHeartbeatIntervalMs = groupShareMinHeartbeatIntervalMs;
+            _resultValue.groupShareMinRecordLockDurationMs = groupShareMinRecordLockDurationMs;
+            _resultValue.groupShareMinSessionTimeoutMs = groupShareMinSessionTimeoutMs;
+            _resultValue.groupSharePartitionMaxRecordLocks = groupSharePartitionMaxRecordLocks;
+            _resultValue.groupShareRecordLockDurationMs = groupShareRecordLockDurationMs;
+            _resultValue.groupShareSessionTimeoutMs = groupShareSessionTimeoutMs;
             _resultValue.logCleanerDeleteRetentionMs = logCleanerDeleteRetentionMs;
             _resultValue.logCleanerMaxCompactionLagMs = logCleanerMaxCompactionLagMs;
             _resultValue.logCleanerMinCleanableRatio = logCleanerMinCleanableRatio;
