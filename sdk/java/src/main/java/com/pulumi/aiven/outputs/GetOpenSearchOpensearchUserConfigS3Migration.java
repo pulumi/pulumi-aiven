@@ -54,6 +54,16 @@ public final class GetOpenSearchOpensearchUserConfigS3Migration {
      */
     private String indices;
     /**
+     * @return Throttles the restore rate per node. Defaults to unlimited. Note that if the recovery settings for managed services are set, this value is overridden by the recovery settings. Value should be a byte size with unit, e.g. 40mb, 100kb, 1gb.
+     * 
+     */
+    private @Nullable String maxRestoreBytesPerSec;
+    /**
+     * @return Throttles the snapshot rate per node. Defaults to 40mb. Note that if the recovery settings for managed services are set, this value is overridden by the recovery settings. Value should be a byte size with unit, e.g. 40mb, 100kb, 1gb.
+     * 
+     */
+    private @Nullable String maxSnapshotBytesPerSec;
+    /**
      * @return Whether the repository is read-only. Default: `true`.
      * 
      */
@@ -142,6 +152,20 @@ public final class GetOpenSearchOpensearchUserConfigS3Migration {
         return this.indices;
     }
     /**
+     * @return Throttles the restore rate per node. Defaults to unlimited. Note that if the recovery settings for managed services are set, this value is overridden by the recovery settings. Value should be a byte size with unit, e.g. 40mb, 100kb, 1gb.
+     * 
+     */
+    public Optional<String> maxRestoreBytesPerSec() {
+        return Optional.ofNullable(this.maxRestoreBytesPerSec);
+    }
+    /**
+     * @return Throttles the snapshot rate per node. Defaults to 40mb. Note that if the recovery settings for managed services are set, this value is overridden by the recovery settings. Value should be a byte size with unit, e.g. 40mb, 100kb, 1gb.
+     * 
+     */
+    public Optional<String> maxSnapshotBytesPerSec() {
+        return Optional.ofNullable(this.maxSnapshotBytesPerSec);
+    }
+    /**
      * @return Whether the repository is read-only. Default: `true`.
      * 
      */
@@ -201,6 +225,8 @@ public final class GetOpenSearchOpensearchUserConfigS3Migration {
         private @Nullable String endpoint;
         private @Nullable Boolean includeAliases;
         private String indices;
+        private @Nullable String maxRestoreBytesPerSec;
+        private @Nullable String maxSnapshotBytesPerSec;
         private @Nullable Boolean readonly;
         private String region;
         private @Nullable Boolean restoreGlobalState;
@@ -218,6 +244,8 @@ public final class GetOpenSearchOpensearchUserConfigS3Migration {
     	      this.endpoint = defaults.endpoint;
     	      this.includeAliases = defaults.includeAliases;
     	      this.indices = defaults.indices;
+    	      this.maxRestoreBytesPerSec = defaults.maxRestoreBytesPerSec;
+    	      this.maxSnapshotBytesPerSec = defaults.maxSnapshotBytesPerSec;
     	      this.readonly = defaults.readonly;
     	      this.region = defaults.region;
     	      this.restoreGlobalState = defaults.restoreGlobalState;
@@ -283,6 +311,18 @@ public final class GetOpenSearchOpensearchUserConfigS3Migration {
             return this;
         }
         @CustomType.Setter
+        public Builder maxRestoreBytesPerSec(@Nullable String maxRestoreBytesPerSec) {
+
+            this.maxRestoreBytesPerSec = maxRestoreBytesPerSec;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder maxSnapshotBytesPerSec(@Nullable String maxSnapshotBytesPerSec) {
+
+            this.maxSnapshotBytesPerSec = maxSnapshotBytesPerSec;
+            return this;
+        }
+        @CustomType.Setter
         public Builder readonly(@Nullable Boolean readonly) {
 
             this.readonly = readonly;
@@ -334,6 +374,8 @@ public final class GetOpenSearchOpensearchUserConfigS3Migration {
             _resultValue.endpoint = endpoint;
             _resultValue.includeAliases = includeAliases;
             _resultValue.indices = indices;
+            _resultValue.maxRestoreBytesPerSec = maxRestoreBytesPerSec;
+            _resultValue.maxSnapshotBytesPerSec = maxSnapshotBytesPerSec;
             _resultValue.readonly = readonly;
             _resultValue.region = region;
             _resultValue.restoreGlobalState = restoreGlobalState;

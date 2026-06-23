@@ -7,36 +7,34 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetKafkaTopicTag {
     /**
-     * @return Tag key. Maximum length: `64`.
+     * @return Tag key.
      * 
      */
     private String key;
     /**
-     * @return Tag value. Maximum length: `256`.
+     * @return Tag value.
      * 
      */
-    private @Nullable String value;
+    private String value;
 
     private GetKafkaTopicTag() {}
     /**
-     * @return Tag key. Maximum length: `64`.
+     * @return Tag key.
      * 
      */
     public String key() {
         return this.key;
     }
     /**
-     * @return Tag value. Maximum length: `256`.
+     * @return Tag value.
      * 
      */
-    public Optional<String> value() {
-        return Optional.ofNullable(this.value);
+    public String value() {
+        return this.value;
     }
 
     public static Builder builder() {
@@ -49,7 +47,7 @@ public final class GetKafkaTopicTag {
     @CustomType.Builder
     public static final class Builder {
         private String key;
-        private @Nullable String value;
+        private String value;
         public Builder() {}
         public Builder(GetKafkaTopicTag defaults) {
     	      Objects.requireNonNull(defaults);
@@ -66,8 +64,10 @@ public final class GetKafkaTopicTag {
             return this;
         }
         @CustomType.Setter
-        public Builder value(@Nullable String value) {
-
+        public Builder value(String value) {
+            if (value == null) {
+              throw new MissingRequiredPropertyException("GetKafkaTopicTag", "value");
+            }
             this.value = value;
             return this;
         }

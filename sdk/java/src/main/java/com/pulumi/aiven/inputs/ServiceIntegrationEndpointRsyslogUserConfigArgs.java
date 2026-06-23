@@ -61,6 +61,21 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
     }
 
     /**
+     * When true, embedded newlines in a log message are escaped so a multi-line record (e.g. a stack trace) is delivered as one complete log entry. Useful for newline-delimited cloud log intakes that drop continuation lines. Default: `false`.
+     * 
+     */
+    @Import(name="escapeNewlines")
+    private @Nullable Output<Boolean> escapeNewlines;
+
+    /**
+     * @return When true, embedded newlines in a log message are escaped so a multi-line record (e.g. a stack trace) is delivered as one complete log entry. Useful for newline-delimited cloud log intakes that drop continuation lines. Default: `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> escapeNewlines() {
+        return Optional.ofNullable(this.escapeNewlines);
+    }
+
+    /**
      * Enum: `custom`, `rfc3164`, `rfc5424`. Message format. Default: `rfc5424`.
      * 
      */
@@ -191,6 +206,7 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
     private ServiceIntegrationEndpointRsyslogUserConfigArgs(ServiceIntegrationEndpointRsyslogUserConfigArgs $) {
         this.ca = $.ca;
         this.cert = $.cert;
+        this.escapeNewlines = $.escapeNewlines;
         this.format = $.format;
         this.key = $.key;
         this.logline = $.logline;
@@ -271,6 +287,27 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
          */
         public Builder cert(String cert) {
             return cert(Output.of(cert));
+        }
+
+        /**
+         * @param escapeNewlines When true, embedded newlines in a log message are escaped so a multi-line record (e.g. a stack trace) is delivered as one complete log entry. Useful for newline-delimited cloud log intakes that drop continuation lines. Default: `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder escapeNewlines(@Nullable Output<Boolean> escapeNewlines) {
+            $.escapeNewlines = escapeNewlines;
+            return this;
+        }
+
+        /**
+         * @param escapeNewlines When true, embedded newlines in a log message are escaped so a multi-line record (e.g. a stack trace) is delivered as one complete log entry. Useful for newline-delimited cloud log intakes that drop continuation lines. Default: `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder escapeNewlines(Boolean escapeNewlines) {
+            return escapeNewlines(Output.of(escapeNewlines));
         }
 
         /**

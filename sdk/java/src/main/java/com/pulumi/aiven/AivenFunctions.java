@@ -1730,7 +1730,10 @@ public final class AivenFunctions {
         return Deployment.getInstance().invokeAsync("aiven:index/getAzureVpcPeeringConnection:getAzureVpcPeeringConnection", TypeShape.of(GetAzureVpcPeeringConnectionResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Gets information about a billing group. **Deprecated**: Use `aiven.OrganizationBillingGroup` instead. This data source will be removed in the next major release.
+     * Gets information about a billing group.
+     * 
+     * &gt; **This data source is deprecated**
+     * Use `aiven.OrganizationBillingGroup` instead. This data source will be removed in the next major release.
      * 
      * ## Example Usage
      * 
@@ -1770,7 +1773,10 @@ public final class AivenFunctions {
         return getBillingGroup(args, InvokeOptions.Empty);
     }
     /**
-     * Gets information about a billing group. **Deprecated**: Use `aiven.OrganizationBillingGroup` instead. This data source will be removed in the next major release.
+     * Gets information about a billing group.
+     * 
+     * &gt; **This data source is deprecated**
+     * Use `aiven.OrganizationBillingGroup` instead. This data source will be removed in the next major release.
      * 
      * ## Example Usage
      * 
@@ -1810,7 +1816,10 @@ public final class AivenFunctions {
         return getBillingGroupPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Gets information about a billing group. **Deprecated**: Use `aiven.OrganizationBillingGroup` instead. This data source will be removed in the next major release.
+     * Gets information about a billing group.
+     * 
+     * &gt; **This data source is deprecated**
+     * Use `aiven.OrganizationBillingGroup` instead. This data source will be removed in the next major release.
      * 
      * ## Example Usage
      * 
@@ -1850,7 +1859,10 @@ public final class AivenFunctions {
         return Deployment.getInstance().invoke("aiven:index/getBillingGroup:getBillingGroup", TypeShape.of(GetBillingGroupResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Gets information about a billing group. **Deprecated**: Use `aiven.OrganizationBillingGroup` instead. This data source will be removed in the next major release.
+     * Gets information about a billing group.
+     * 
+     * &gt; **This data source is deprecated**
+     * Use `aiven.OrganizationBillingGroup` instead. This data source will be removed in the next major release.
      * 
      * ## Example Usage
      * 
@@ -1890,7 +1902,10 @@ public final class AivenFunctions {
         return Deployment.getInstance().invoke("aiven:index/getBillingGroup:getBillingGroup", TypeShape.of(GetBillingGroupResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Gets information about a billing group. **Deprecated**: Use `aiven.OrganizationBillingGroup` instead. This data source will be removed in the next major release.
+     * Gets information about a billing group.
+     * 
+     * &gt; **This data source is deprecated**
+     * Use `aiven.OrganizationBillingGroup` instead. This data source will be removed in the next major release.
      * 
      * ## Example Usage
      * 
@@ -6816,10 +6831,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleTopic = AivenFunctions.getKafkaTopic(GetKafkaTopicArgs.builder()
-     *             .project(exampleProject.project())
-     *             .serviceName(exampleKafka.serviceName())
-     *             .topicName("example-topic")
+     *         final var example = AivenFunctions.getKafkaTopic(GetKafkaTopicArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("my-kafka")
+     *             .topicName("mytopic")
      *             .build());
      * 
      *     }
@@ -6858,10 +6873,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleTopic = AivenFunctions.getKafkaTopic(GetKafkaTopicArgs.builder()
-     *             .project(exampleProject.project())
-     *             .serviceName(exampleKafka.serviceName())
-     *             .topicName("example-topic")
+     *         final var example = AivenFunctions.getKafkaTopic(GetKafkaTopicArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("my-kafka")
+     *             .topicName("mytopic")
      *             .build());
      * 
      *     }
@@ -6900,10 +6915,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleTopic = AivenFunctions.getKafkaTopic(GetKafkaTopicArgs.builder()
-     *             .project(exampleProject.project())
-     *             .serviceName(exampleKafka.serviceName())
-     *             .topicName("example-topic")
+     *         final var example = AivenFunctions.getKafkaTopic(GetKafkaTopicArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("my-kafka")
+     *             .topicName("mytopic")
      *             .build());
      * 
      *     }
@@ -6942,10 +6957,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleTopic = AivenFunctions.getKafkaTopic(GetKafkaTopicArgs.builder()
-     *             .project(exampleProject.project())
-     *             .serviceName(exampleKafka.serviceName())
-     *             .topicName("example-topic")
+     *         final var example = AivenFunctions.getKafkaTopic(GetKafkaTopicArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("my-kafka")
+     *             .topicName("mytopic")
      *             .build());
      * 
      *     }
@@ -6984,10 +6999,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleTopic = AivenFunctions.getKafkaTopic(GetKafkaTopicArgs.builder()
-     *             .project(exampleProject.project())
-     *             .serviceName(exampleKafka.serviceName())
-     *             .topicName("example-topic")
+     *         final var example = AivenFunctions.getKafkaTopic(GetKafkaTopicArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("my-kafka")
+     *             .topicName("mytopic")
      *             .build());
      * 
      *     }
@@ -13954,8 +13969,8 @@ public final class AivenFunctions {
     /**
      * Gets detailed information about a specific service plan, including specifications and pricing for a cloud region.
      * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * **This data source is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the data source.
      * 
      */
     public static Output<GetServicePlanResult> getServicePlan(GetServicePlanArgs args) {
@@ -13964,8 +13979,8 @@ public final class AivenFunctions {
     /**
      * Gets detailed information about a specific service plan, including specifications and pricing for a cloud region.
      * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * **This data source is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the data source.
      * 
      */
     public static CompletableFuture<GetServicePlanResult> getServicePlanPlain(GetServicePlanPlainArgs args) {
@@ -13974,8 +13989,8 @@ public final class AivenFunctions {
     /**
      * Gets detailed information about a specific service plan, including specifications and pricing for a cloud region.
      * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * **This data source is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the data source.
      * 
      */
     public static Output<GetServicePlanResult> getServicePlan(GetServicePlanArgs args, InvokeOptions options) {
@@ -13984,8 +13999,8 @@ public final class AivenFunctions {
     /**
      * Gets detailed information about a specific service plan, including specifications and pricing for a cloud region.
      * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * **This data source is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the data source.
      * 
      */
     public static Output<GetServicePlanResult> getServicePlan(GetServicePlanArgs args, InvokeOutputOptions options) {
@@ -13994,8 +14009,8 @@ public final class AivenFunctions {
     /**
      * Gets detailed information about a specific service plan, including specifications and pricing for a cloud region.
      * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * **This data source is in the beta stage and may change without notice.** Set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the data source.
      * 
      */
     public static CompletableFuture<GetServicePlanResult> getServicePlanPlain(GetServicePlanPlainArgs args, InvokeOptions options) {

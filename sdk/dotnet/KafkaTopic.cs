@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// Creates and manages an Aiven for Apache Kafka® [topic](https://aiven.io/docs/products/kafka/concepts).
+    /// Creates and manages an Aiven for Apache Kafka® [topic](https://aiven.io/docs/products/kafka/concepts). If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
     /// 
     /// ## Example Usage
     /// 
@@ -22,20 +22,56 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleTopic = new Aiven.KafkaTopic("example_topic", new()
+    ///     var example = new Aiven.KafkaTopic("example", new()
     ///     {
-    ///         Project = exampleProject.Project,
-    ///         ServiceName = exampleKafka.ServiceName,
-    ///         TopicName = "example-topic",
-    ///         Partitions = 5,
+    ///         Project = "my-project",
+    ///         ServiceName = "my-kafka",
+    ///         TopicName = "mytopic",
+    ///         Partitions = 3,
     ///         Replication = 3,
-    ///         TerminationProtection = true,
+    ///         OwnerUserGroupId = "ug22ba494e096",
     ///         Config = new Aiven.Inputs.KafkaTopicConfigArgs
     ///         {
-    ///             FlushMs = "10",
-    ///             CleanupPolicy = "compact,delete",
+    ///             CleanupPolicy = "delete",
+    ///             CompressionType = "zstd",
+    ///             DeleteRetentionMs = "86400000",
+    ///             DisklessEnable = false,
+    ///             FileDeleteDelayMs = "60000",
+    ///             FlushMessages = "9223372036854775807",
+    ///             FlushMs = "9223372036854775807",
+    ///             IndexIntervalBytes = "4096",
+    ///             LocalRetentionBytes = "1073741824",
+    ///             LocalRetentionMs = "300000",
+    ///             MaxCompactionLagMs = "86400000",
+    ///             MaxMessageBytes = "1048588",
+    ///             MessageDownconversionEnable = true,
+    ///             MessageFormatVersion = "2.7-IV2",
+    ///             MessageTimestampAfterMaxMs = "3600000",
+    ///             MessageTimestampBeforeMaxMs = "9223372036854775807",
+    ///             MessageTimestampDifferenceMaxMs = "9223372036854775807",
+    ///             MessageTimestampType = "CreateTime",
+    ///             MinCleanableDirtyRatio = 0.5,
+    ///             MinCompactionLagMs = "0",
+    ///             MinInsyncReplicas = "2",
+    ///             Preallocate = false,
+    ///             RemoteStorageEnable = false,
+    ///             RetentionBytes = "-1",
+    ///             RetentionMs = "604800000",
+    ///             SegmentBytes = "1073741824",
+    ///             SegmentIndexBytes = "10485760",
+    ///             SegmentJitterMs = "0",
+    ///             SegmentMs = "604800000",
+    ///             UncleanLeaderElectionEnable = false,
     ///         },
-    ///         OwnerUserGroupId = example.GroupId,
+    ///         Tags = new[]
+    ///         {
+    ///             new Aiven.Inputs.KafkaTopicTagArgs
+    ///             {
+    ///                 Key = "My-tag_key",
+    ///                 Value = "My tag value, value.",
+    ///             },
+    ///         },
+    ///         TopicDescription = "Platform events",
     ///     });
     /// 
     /// });
@@ -44,68 +80,71 @@ namespace Pulumi.Aiven
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import aiven:index/kafkaTopic:KafkaTopic example_topic PROJECT/SERVICE_NAME/TOPIC_NAME
+    /// $ pulumi import aiven:index/kafkaTopic:KafkaTopic example PROJECT/SERVICE_NAME/TOPIC_NAME
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/kafkaTopic:KafkaTopic")]
     public partial class KafkaTopic : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics.
+        /// [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics. Removing the block won't reset the topic configuration to default values. Instead, the topic will retain its last known configuration.
         /// </summary>
         [Output("config")]
         public Output<Outputs.KafkaTopicConfig?> Config { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the user group that owns the topic. Assigning ownership to decentralize topic management is part of [Aiven for Apache Kafka® governance](https://aiven.io/docs/products/kafka/concepts/governance-overview).
+        /// The user group that owns this topic. Length must be between `1` and `36`.
         /// </summary>
         [Output("ownerUserGroupId")]
         public Output<string?> OwnerUserGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// The number of partitions to create in the topic.
+        /// Number of partitions. Value must be between `1` and `1000000`.
         /// </summary>
         [Output("partitions")]
         public Output<int> Partitions { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The replication factor for the topic.
+        /// Number of replicas. Minimum value: `1`.
         /// </summary>
         [Output("replication")]
         public Output<int> Replication { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service name. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// Tags for the topic.
+        /// Topic tags.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<Outputs.KafkaTopicTag>> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// Prevents topics from being deleted by Terraform. It's recommended for topics containing critical data. **Topics can still be deleted in the Aiven Console.**
+        /// Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console**. The default value is `False`. **Deprecated**: Instead, use `PreventDestroy`
         /// </summary>
         [Output("terminationProtection")]
-        public Output<bool?> TerminationProtection { get; private set; } = null!;
+        public Output<bool> TerminationProtection { get; private set; } = null!;
+
+        [Output("timeouts")]
+        public Output<Outputs.KafkaTopicTimeouts?> Timeouts { get; private set; } = null!;
 
         /// <summary>
-        /// The description of the topic
+        /// Topic description. Length must be between `1` and `256`.
         /// </summary>
         [Output("topicDescription")]
         public Output<string?> TopicDescription { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the topic. Changing this property forces recreation of the resource.
+        /// Kafka topic name. Length must be between `1` and `249`. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("topicName")]
         public Output<string> TopicName { get; private set; } = null!;
@@ -157,37 +196,37 @@ namespace Pulumi.Aiven
     public sealed class KafkaTopicArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics.
+        /// [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics. Removing the block won't reset the topic configuration to default values. Instead, the topic will retain its last known configuration.
         /// </summary>
         [Input("config")]
         public Input<Inputs.KafkaTopicConfigArgs>? Config { get; set; }
 
         /// <summary>
-        /// The ID of the user group that owns the topic. Assigning ownership to decentralize topic management is part of [Aiven for Apache Kafka® governance](https://aiven.io/docs/products/kafka/concepts/governance-overview).
+        /// The user group that owns this topic. Length must be between `1` and `36`.
         /// </summary>
         [Input("ownerUserGroupId")]
         public Input<string>? OwnerUserGroupId { get; set; }
 
         /// <summary>
-        /// The number of partitions to create in the topic.
+        /// Number of partitions. Value must be between `1` and `1000000`.
         /// </summary>
         [Input("partitions", required: true)]
         public Input<int> Partitions { get; set; } = null!;
 
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// The replication factor for the topic.
+        /// Number of replicas. Minimum value: `1`.
         /// </summary>
         [Input("replication", required: true)]
         public Input<int> Replication { get; set; } = null!;
 
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service name. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
@@ -196,7 +235,7 @@ namespace Pulumi.Aiven
         private InputList<Inputs.KafkaTopicTagArgs>? _tags;
 
         /// <summary>
-        /// Tags for the topic.
+        /// Topic tags.
         /// </summary>
         public InputList<Inputs.KafkaTopicTagArgs> Tags
         {
@@ -205,19 +244,22 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// Prevents topics from being deleted by Terraform. It's recommended for topics containing critical data. **Topics can still be deleted in the Aiven Console.**
+        /// Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console**. The default value is `False`. **Deprecated**: Instead, use `PreventDestroy`
         /// </summary>
         [Input("terminationProtection")]
         public Input<bool>? TerminationProtection { get; set; }
 
+        [Input("timeouts")]
+        public Input<Inputs.KafkaTopicTimeoutsArgs>? Timeouts { get; set; }
+
         /// <summary>
-        /// The description of the topic
+        /// Topic description. Length must be between `1` and `256`.
         /// </summary>
         [Input("topicDescription")]
         public Input<string>? TopicDescription { get; set; }
 
         /// <summary>
-        /// The name of the topic. Changing this property forces recreation of the resource.
+        /// Kafka topic name. Length must be between `1` and `249`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("topicName", required: true)]
         public Input<string> TopicName { get; set; } = null!;
@@ -231,37 +273,37 @@ namespace Pulumi.Aiven
     public sealed class KafkaTopicState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics.
+        /// [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics. Removing the block won't reset the topic configuration to default values. Instead, the topic will retain its last known configuration.
         /// </summary>
         [Input("config")]
         public Input<Inputs.KafkaTopicConfigGetArgs>? Config { get; set; }
 
         /// <summary>
-        /// The ID of the user group that owns the topic. Assigning ownership to decentralize topic management is part of [Aiven for Apache Kafka® governance](https://aiven.io/docs/products/kafka/concepts/governance-overview).
+        /// The user group that owns this topic. Length must be between `1` and `36`.
         /// </summary>
         [Input("ownerUserGroupId")]
         public Input<string>? OwnerUserGroupId { get; set; }
 
         /// <summary>
-        /// The number of partitions to create in the topic.
+        /// Number of partitions. Value must be between `1` and `1000000`.
         /// </summary>
         [Input("partitions")]
         public Input<int>? Partitions { get; set; }
 
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The replication factor for the topic.
+        /// Number of replicas. Minimum value: `1`.
         /// </summary>
         [Input("replication")]
         public Input<int>? Replication { get; set; }
 
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service name. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
@@ -270,7 +312,7 @@ namespace Pulumi.Aiven
         private InputList<Inputs.KafkaTopicTagGetArgs>? _tags;
 
         /// <summary>
-        /// Tags for the topic.
+        /// Topic tags.
         /// </summary>
         public InputList<Inputs.KafkaTopicTagGetArgs> Tags
         {
@@ -279,19 +321,22 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// Prevents topics from being deleted by Terraform. It's recommended for topics containing critical data. **Topics can still be deleted in the Aiven Console.**
+        /// Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console**. The default value is `False`. **Deprecated**: Instead, use `PreventDestroy`
         /// </summary>
         [Input("terminationProtection")]
         public Input<bool>? TerminationProtection { get; set; }
 
+        [Input("timeouts")]
+        public Input<Inputs.KafkaTopicTimeoutsGetArgs>? Timeouts { get; set; }
+
         /// <summary>
-        /// The description of the topic
+        /// Topic description. Length must be between `1` and `256`.
         /// </summary>
         [Input("topicDescription")]
         public Input<string>? TopicDescription { get; set; }
 
         /// <summary>
-        /// The name of the topic. Changing this property forces recreation of the resource.
+        /// Kafka topic name. Length must be between `1` and `249`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("topicName")]
         public Input<string>? TopicName { get; set; }

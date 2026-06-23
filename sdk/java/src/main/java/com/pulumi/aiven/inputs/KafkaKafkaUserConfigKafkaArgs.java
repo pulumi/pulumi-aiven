@@ -3,6 +3,7 @@
 
 package com.pulumi.aiven.inputs;
 
+import com.pulumi.aiven.inputs.KafkaKafkaUserConfigKafkaAuditLogArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -17,6 +18,21 @@ import javax.annotation.Nullable;
 public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final KafkaKafkaUserConfigKafkaArgs Empty = new KafkaKafkaUserConfigKafkaArgs();
+
+    /**
+     * Enable Kafka audit logging by providing this object. Removing it disables the feature. Enabling, updating, or disabling audit logging causes a rolling restart of all Kafka brokers
+     * 
+     */
+    @Import(name="auditLog")
+    private @Nullable Output<KafkaKafkaUserConfigKafkaAuditLogArgs> auditLog;
+
+    /**
+     * @return Enable Kafka audit logging by providing this object. Removing it disables the feature. Enabling, updating, or disabling audit logging causes a rolling restart of all Kafka brokers
+     * 
+     */
+    public Optional<Output<KafkaKafkaUserConfigKafkaAuditLogArgs>> auditLog() {
+        return Optional.ofNullable(this.auditLog);
+    }
 
     /**
      * Enable auto-creation of topics. (Default: false).
@@ -79,6 +95,21 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
     }
 
     /**
+     * Enum: `classic`, `classic,consumer`, `classic,consumer,share`, `classic,consumer,share,streams`, `classic,consumer,streams`, `classic,share`, `classic,streams`. The enabled consumer group rebalance protocols. Use consumer, classic, share, streams to enable Kafka share groups.
+     * 
+     */
+    @Import(name="groupCoordinatorRebalanceProtocols")
+    private @Nullable Output<String> groupCoordinatorRebalanceProtocols;
+
+    /**
+     * @return Enum: `classic`, `classic,consumer`, `classic,consumer,share`, `classic,consumer,share,streams`, `classic,consumer,streams`, `classic,share`, `classic,streams`. The enabled consumer group rebalance protocols. Use consumer, classic, share, streams to enable Kafka share groups.
+     * 
+     */
+    public Optional<Output<String>> groupCoordinatorRebalanceProtocols() {
+        return Optional.ofNullable(this.groupCoordinatorRebalanceProtocols);
+    }
+
+    /**
      * The amount of time, in milliseconds, the group coordinator will wait for more consumers to join a new group before performing the first rebalance. A longer delay means potentially fewer rebalances, but increases the time until processing begins. The default value for this is 3 seconds. During development and testing it might be desirable to set this to 0 in order to not delay test execution time. (Default: 3000 ms (3 seconds)). Example: `3000`.
      * 
      */
@@ -121,6 +152,201 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
      */
     public Optional<Output<Integer>> groupMinSessionTimeoutMs() {
         return Optional.ofNullable(this.groupMinSessionTimeoutMs);
+    }
+
+    /**
+     * The maximum delivery attempts for a share-group record. Example: `5`.
+     * 
+     */
+    @Import(name="groupShareDeliveryCountLimit")
+    private @Nullable Output<Integer> groupShareDeliveryCountLimit;
+
+    /**
+     * @return The maximum delivery attempts for a share-group record. Example: `5`.
+     * 
+     */
+    public Optional<Output<Integer>> groupShareDeliveryCountLimit() {
+        return Optional.ofNullable(this.groupShareDeliveryCountLimit);
+    }
+
+    /**
+     * The heartbeat interval used by share group members. Example: `5000`.
+     * 
+     */
+    @Import(name="groupShareHeartbeatIntervalMs")
+    private @Nullable Output<Integer> groupShareHeartbeatIntervalMs;
+
+    /**
+     * @return The heartbeat interval used by share group members. Example: `5000`.
+     * 
+     */
+    public Optional<Output<Integer>> groupShareHeartbeatIntervalMs() {
+        return Optional.ofNullable(this.groupShareHeartbeatIntervalMs);
+    }
+
+    /**
+     * The maximum number of share groups allowed on the broker.
+     * 
+     */
+    @Import(name="groupShareMaxGroups")
+    private @Nullable Output<Integer> groupShareMaxGroups;
+
+    /**
+     * @return The maximum number of share groups allowed on the broker.
+     * 
+     */
+    public Optional<Output<Integer>> groupShareMaxGroups() {
+        return Optional.ofNullable(this.groupShareMaxGroups);
+    }
+
+    /**
+     * The maximum heartbeat interval allowed for share group members. Example: `15000`.
+     * 
+     */
+    @Import(name="groupShareMaxHeartbeatIntervalMs")
+    private @Nullable Output<Integer> groupShareMaxHeartbeatIntervalMs;
+
+    /**
+     * @return The maximum heartbeat interval allowed for share group members. Example: `15000`.
+     * 
+     */
+    public Optional<Output<Integer>> groupShareMaxHeartbeatIntervalMs() {
+        return Optional.ofNullable(this.groupShareMaxHeartbeatIntervalMs);
+    }
+
+    /**
+     * The maximum record lock duration allowed for share groups. Example: `60000`.
+     * 
+     */
+    @Import(name="groupShareMaxRecordLockDurationMs")
+    private @Nullable Output<Integer> groupShareMaxRecordLockDurationMs;
+
+    /**
+     * @return The maximum record lock duration allowed for share groups. Example: `60000`.
+     * 
+     */
+    public Optional<Output<Integer>> groupShareMaxRecordLockDurationMs() {
+        return Optional.ofNullable(this.groupShareMaxRecordLockDurationMs);
+    }
+
+    /**
+     * The maximum session timeout allowed for share group members. Example: `60000`.
+     * 
+     */
+    @Import(name="groupShareMaxSessionTimeoutMs")
+    private @Nullable Output<Integer> groupShareMaxSessionTimeoutMs;
+
+    /**
+     * @return The maximum session timeout allowed for share group members. Example: `60000`.
+     * 
+     */
+    public Optional<Output<Integer>> groupShareMaxSessionTimeoutMs() {
+        return Optional.ofNullable(this.groupShareMaxSessionTimeoutMs);
+    }
+
+    /**
+     * The maximum number of members allowed in a share group. Example: `200`.
+     * 
+     */
+    @Import(name="groupShareMaxSize")
+    private @Nullable Output<Integer> groupShareMaxSize;
+
+    /**
+     * @return The maximum number of members allowed in a share group. Example: `200`.
+     * 
+     */
+    public Optional<Output<Integer>> groupShareMaxSize() {
+        return Optional.ofNullable(this.groupShareMaxSize);
+    }
+
+    /**
+     * The minimum heartbeat interval allowed for share group members. Example: `5000`.
+     * 
+     */
+    @Import(name="groupShareMinHeartbeatIntervalMs")
+    private @Nullable Output<Integer> groupShareMinHeartbeatIntervalMs;
+
+    /**
+     * @return The minimum heartbeat interval allowed for share group members. Example: `5000`.
+     * 
+     */
+    public Optional<Output<Integer>> groupShareMinHeartbeatIntervalMs() {
+        return Optional.ofNullable(this.groupShareMinHeartbeatIntervalMs);
+    }
+
+    /**
+     * The minimum record lock duration allowed for share groups. Example: `15000`.
+     * 
+     */
+    @Import(name="groupShareMinRecordLockDurationMs")
+    private @Nullable Output<Integer> groupShareMinRecordLockDurationMs;
+
+    /**
+     * @return The minimum record lock duration allowed for share groups. Example: `15000`.
+     * 
+     */
+    public Optional<Output<Integer>> groupShareMinRecordLockDurationMs() {
+        return Optional.ofNullable(this.groupShareMinRecordLockDurationMs);
+    }
+
+    /**
+     * The minimum session timeout allowed for share group members. Example: `45000`.
+     * 
+     */
+    @Import(name="groupShareMinSessionTimeoutMs")
+    private @Nullable Output<Integer> groupShareMinSessionTimeoutMs;
+
+    /**
+     * @return The minimum session timeout allowed for share group members. Example: `45000`.
+     * 
+     */
+    public Optional<Output<Integer>> groupShareMinSessionTimeoutMs() {
+        return Optional.ofNullable(this.groupShareMinSessionTimeoutMs);
+    }
+
+    /**
+     * The maximum number of record locks allowed per share group partition. Example: `2000`.
+     * 
+     */
+    @Import(name="groupSharePartitionMaxRecordLocks")
+    private @Nullable Output<Integer> groupSharePartitionMaxRecordLocks;
+
+    /**
+     * @return The maximum number of record locks allowed per share group partition. Example: `2000`.
+     * 
+     */
+    public Optional<Output<Integer>> groupSharePartitionMaxRecordLocks() {
+        return Optional.ofNullable(this.groupSharePartitionMaxRecordLocks);
+    }
+
+    /**
+     * The duration for which a fetched share-group record is locked. Example: `30000`.
+     * 
+     */
+    @Import(name="groupShareRecordLockDurationMs")
+    private @Nullable Output<Integer> groupShareRecordLockDurationMs;
+
+    /**
+     * @return The duration for which a fetched share-group record is locked. Example: `30000`.
+     * 
+     */
+    public Optional<Output<Integer>> groupShareRecordLockDurationMs() {
+        return Optional.ofNullable(this.groupShareRecordLockDurationMs);
+    }
+
+    /**
+     * The timeout used to detect share group member failures. Example: `45000`.
+     * 
+     */
+    @Import(name="groupShareSessionTimeoutMs")
+    private @Nullable Output<Integer> groupShareSessionTimeoutMs;
+
+    /**
+     * @return The timeout used to detect share group member failures. Example: `45000`.
+     * 
+     */
+    public Optional<Output<Integer>> groupShareSessionTimeoutMs() {
+        return Optional.ofNullable(this.groupShareSessionTimeoutMs);
     }
 
     /**
@@ -741,13 +967,28 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
     private KafkaKafkaUserConfigKafkaArgs() {}
 
     private KafkaKafkaUserConfigKafkaArgs(KafkaKafkaUserConfigKafkaArgs $) {
+        this.auditLog = $.auditLog;
         this.autoCreateTopicsEnable = $.autoCreateTopicsEnable;
         this.compressionType = $.compressionType;
         this.connectionsMaxIdleMs = $.connectionsMaxIdleMs;
         this.defaultReplicationFactor = $.defaultReplicationFactor;
+        this.groupCoordinatorRebalanceProtocols = $.groupCoordinatorRebalanceProtocols;
         this.groupInitialRebalanceDelayMs = $.groupInitialRebalanceDelayMs;
         this.groupMaxSessionTimeoutMs = $.groupMaxSessionTimeoutMs;
         this.groupMinSessionTimeoutMs = $.groupMinSessionTimeoutMs;
+        this.groupShareDeliveryCountLimit = $.groupShareDeliveryCountLimit;
+        this.groupShareHeartbeatIntervalMs = $.groupShareHeartbeatIntervalMs;
+        this.groupShareMaxGroups = $.groupShareMaxGroups;
+        this.groupShareMaxHeartbeatIntervalMs = $.groupShareMaxHeartbeatIntervalMs;
+        this.groupShareMaxRecordLockDurationMs = $.groupShareMaxRecordLockDurationMs;
+        this.groupShareMaxSessionTimeoutMs = $.groupShareMaxSessionTimeoutMs;
+        this.groupShareMaxSize = $.groupShareMaxSize;
+        this.groupShareMinHeartbeatIntervalMs = $.groupShareMinHeartbeatIntervalMs;
+        this.groupShareMinRecordLockDurationMs = $.groupShareMinRecordLockDurationMs;
+        this.groupShareMinSessionTimeoutMs = $.groupShareMinSessionTimeoutMs;
+        this.groupSharePartitionMaxRecordLocks = $.groupSharePartitionMaxRecordLocks;
+        this.groupShareRecordLockDurationMs = $.groupShareRecordLockDurationMs;
+        this.groupShareSessionTimeoutMs = $.groupShareSessionTimeoutMs;
         this.logCleanerDeleteRetentionMs = $.logCleanerDeleteRetentionMs;
         this.logCleanerMaxCompactionLagMs = $.logCleanerMaxCompactionLagMs;
         this.logCleanerMinCleanableRatio = $.logCleanerMinCleanableRatio;
@@ -807,6 +1048,27 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
 
         public Builder(KafkaKafkaUserConfigKafkaArgs defaults) {
             $ = new KafkaKafkaUserConfigKafkaArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param auditLog Enable Kafka audit logging by providing this object. Removing it disables the feature. Enabling, updating, or disabling audit logging causes a rolling restart of all Kafka brokers
+         * 
+         * @return builder
+         * 
+         */
+        public Builder auditLog(@Nullable Output<KafkaKafkaUserConfigKafkaAuditLogArgs> auditLog) {
+            $.auditLog = auditLog;
+            return this;
+        }
+
+        /**
+         * @param auditLog Enable Kafka audit logging by providing this object. Removing it disables the feature. Enabling, updating, or disabling audit logging causes a rolling restart of all Kafka brokers
+         * 
+         * @return builder
+         * 
+         */
+        public Builder auditLog(KafkaKafkaUserConfigKafkaAuditLogArgs auditLog) {
+            return auditLog(Output.of(auditLog));
         }
 
         /**
@@ -894,6 +1156,27 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
         }
 
         /**
+         * @param groupCoordinatorRebalanceProtocols Enum: `classic`, `classic,consumer`, `classic,consumer,share`, `classic,consumer,share,streams`, `classic,consumer,streams`, `classic,share`, `classic,streams`. The enabled consumer group rebalance protocols. Use consumer, classic, share, streams to enable Kafka share groups.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder groupCoordinatorRebalanceProtocols(@Nullable Output<String> groupCoordinatorRebalanceProtocols) {
+            $.groupCoordinatorRebalanceProtocols = groupCoordinatorRebalanceProtocols;
+            return this;
+        }
+
+        /**
+         * @param groupCoordinatorRebalanceProtocols Enum: `classic`, `classic,consumer`, `classic,consumer,share`, `classic,consumer,share,streams`, `classic,consumer,streams`, `classic,share`, `classic,streams`. The enabled consumer group rebalance protocols. Use consumer, classic, share, streams to enable Kafka share groups.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder groupCoordinatorRebalanceProtocols(String groupCoordinatorRebalanceProtocols) {
+            return groupCoordinatorRebalanceProtocols(Output.of(groupCoordinatorRebalanceProtocols));
+        }
+
+        /**
          * @param groupInitialRebalanceDelayMs The amount of time, in milliseconds, the group coordinator will wait for more consumers to join a new group before performing the first rebalance. A longer delay means potentially fewer rebalances, but increases the time until processing begins. The default value for this is 3 seconds. During development and testing it might be desirable to set this to 0 in order to not delay test execution time. (Default: 3000 ms (3 seconds)). Example: `3000`.
          * 
          * @return builder
@@ -954,6 +1237,279 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
          */
         public Builder groupMinSessionTimeoutMs(Integer groupMinSessionTimeoutMs) {
             return groupMinSessionTimeoutMs(Output.of(groupMinSessionTimeoutMs));
+        }
+
+        /**
+         * @param groupShareDeliveryCountLimit The maximum delivery attempts for a share-group record. Example: `5`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder groupShareDeliveryCountLimit(@Nullable Output<Integer> groupShareDeliveryCountLimit) {
+            $.groupShareDeliveryCountLimit = groupShareDeliveryCountLimit;
+            return this;
+        }
+
+        /**
+         * @param groupShareDeliveryCountLimit The maximum delivery attempts for a share-group record. Example: `5`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder groupShareDeliveryCountLimit(Integer groupShareDeliveryCountLimit) {
+            return groupShareDeliveryCountLimit(Output.of(groupShareDeliveryCountLimit));
+        }
+
+        /**
+         * @param groupShareHeartbeatIntervalMs The heartbeat interval used by share group members. Example: `5000`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder groupShareHeartbeatIntervalMs(@Nullable Output<Integer> groupShareHeartbeatIntervalMs) {
+            $.groupShareHeartbeatIntervalMs = groupShareHeartbeatIntervalMs;
+            return this;
+        }
+
+        /**
+         * @param groupShareHeartbeatIntervalMs The heartbeat interval used by share group members. Example: `5000`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder groupShareHeartbeatIntervalMs(Integer groupShareHeartbeatIntervalMs) {
+            return groupShareHeartbeatIntervalMs(Output.of(groupShareHeartbeatIntervalMs));
+        }
+
+        /**
+         * @param groupShareMaxGroups The maximum number of share groups allowed on the broker.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder groupShareMaxGroups(@Nullable Output<Integer> groupShareMaxGroups) {
+            $.groupShareMaxGroups = groupShareMaxGroups;
+            return this;
+        }
+
+        /**
+         * @param groupShareMaxGroups The maximum number of share groups allowed on the broker.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder groupShareMaxGroups(Integer groupShareMaxGroups) {
+            return groupShareMaxGroups(Output.of(groupShareMaxGroups));
+        }
+
+        /**
+         * @param groupShareMaxHeartbeatIntervalMs The maximum heartbeat interval allowed for share group members. Example: `15000`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder groupShareMaxHeartbeatIntervalMs(@Nullable Output<Integer> groupShareMaxHeartbeatIntervalMs) {
+            $.groupShareMaxHeartbeatIntervalMs = groupShareMaxHeartbeatIntervalMs;
+            return this;
+        }
+
+        /**
+         * @param groupShareMaxHeartbeatIntervalMs The maximum heartbeat interval allowed for share group members. Example: `15000`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder groupShareMaxHeartbeatIntervalMs(Integer groupShareMaxHeartbeatIntervalMs) {
+            return groupShareMaxHeartbeatIntervalMs(Output.of(groupShareMaxHeartbeatIntervalMs));
+        }
+
+        /**
+         * @param groupShareMaxRecordLockDurationMs The maximum record lock duration allowed for share groups. Example: `60000`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder groupShareMaxRecordLockDurationMs(@Nullable Output<Integer> groupShareMaxRecordLockDurationMs) {
+            $.groupShareMaxRecordLockDurationMs = groupShareMaxRecordLockDurationMs;
+            return this;
+        }
+
+        /**
+         * @param groupShareMaxRecordLockDurationMs The maximum record lock duration allowed for share groups. Example: `60000`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder groupShareMaxRecordLockDurationMs(Integer groupShareMaxRecordLockDurationMs) {
+            return groupShareMaxRecordLockDurationMs(Output.of(groupShareMaxRecordLockDurationMs));
+        }
+
+        /**
+         * @param groupShareMaxSessionTimeoutMs The maximum session timeout allowed for share group members. Example: `60000`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder groupShareMaxSessionTimeoutMs(@Nullable Output<Integer> groupShareMaxSessionTimeoutMs) {
+            $.groupShareMaxSessionTimeoutMs = groupShareMaxSessionTimeoutMs;
+            return this;
+        }
+
+        /**
+         * @param groupShareMaxSessionTimeoutMs The maximum session timeout allowed for share group members. Example: `60000`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder groupShareMaxSessionTimeoutMs(Integer groupShareMaxSessionTimeoutMs) {
+            return groupShareMaxSessionTimeoutMs(Output.of(groupShareMaxSessionTimeoutMs));
+        }
+
+        /**
+         * @param groupShareMaxSize The maximum number of members allowed in a share group. Example: `200`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder groupShareMaxSize(@Nullable Output<Integer> groupShareMaxSize) {
+            $.groupShareMaxSize = groupShareMaxSize;
+            return this;
+        }
+
+        /**
+         * @param groupShareMaxSize The maximum number of members allowed in a share group. Example: `200`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder groupShareMaxSize(Integer groupShareMaxSize) {
+            return groupShareMaxSize(Output.of(groupShareMaxSize));
+        }
+
+        /**
+         * @param groupShareMinHeartbeatIntervalMs The minimum heartbeat interval allowed for share group members. Example: `5000`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder groupShareMinHeartbeatIntervalMs(@Nullable Output<Integer> groupShareMinHeartbeatIntervalMs) {
+            $.groupShareMinHeartbeatIntervalMs = groupShareMinHeartbeatIntervalMs;
+            return this;
+        }
+
+        /**
+         * @param groupShareMinHeartbeatIntervalMs The minimum heartbeat interval allowed for share group members. Example: `5000`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder groupShareMinHeartbeatIntervalMs(Integer groupShareMinHeartbeatIntervalMs) {
+            return groupShareMinHeartbeatIntervalMs(Output.of(groupShareMinHeartbeatIntervalMs));
+        }
+
+        /**
+         * @param groupShareMinRecordLockDurationMs The minimum record lock duration allowed for share groups. Example: `15000`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder groupShareMinRecordLockDurationMs(@Nullable Output<Integer> groupShareMinRecordLockDurationMs) {
+            $.groupShareMinRecordLockDurationMs = groupShareMinRecordLockDurationMs;
+            return this;
+        }
+
+        /**
+         * @param groupShareMinRecordLockDurationMs The minimum record lock duration allowed for share groups. Example: `15000`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder groupShareMinRecordLockDurationMs(Integer groupShareMinRecordLockDurationMs) {
+            return groupShareMinRecordLockDurationMs(Output.of(groupShareMinRecordLockDurationMs));
+        }
+
+        /**
+         * @param groupShareMinSessionTimeoutMs The minimum session timeout allowed for share group members. Example: `45000`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder groupShareMinSessionTimeoutMs(@Nullable Output<Integer> groupShareMinSessionTimeoutMs) {
+            $.groupShareMinSessionTimeoutMs = groupShareMinSessionTimeoutMs;
+            return this;
+        }
+
+        /**
+         * @param groupShareMinSessionTimeoutMs The minimum session timeout allowed for share group members. Example: `45000`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder groupShareMinSessionTimeoutMs(Integer groupShareMinSessionTimeoutMs) {
+            return groupShareMinSessionTimeoutMs(Output.of(groupShareMinSessionTimeoutMs));
+        }
+
+        /**
+         * @param groupSharePartitionMaxRecordLocks The maximum number of record locks allowed per share group partition. Example: `2000`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder groupSharePartitionMaxRecordLocks(@Nullable Output<Integer> groupSharePartitionMaxRecordLocks) {
+            $.groupSharePartitionMaxRecordLocks = groupSharePartitionMaxRecordLocks;
+            return this;
+        }
+
+        /**
+         * @param groupSharePartitionMaxRecordLocks The maximum number of record locks allowed per share group partition. Example: `2000`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder groupSharePartitionMaxRecordLocks(Integer groupSharePartitionMaxRecordLocks) {
+            return groupSharePartitionMaxRecordLocks(Output.of(groupSharePartitionMaxRecordLocks));
+        }
+
+        /**
+         * @param groupShareRecordLockDurationMs The duration for which a fetched share-group record is locked. Example: `30000`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder groupShareRecordLockDurationMs(@Nullable Output<Integer> groupShareRecordLockDurationMs) {
+            $.groupShareRecordLockDurationMs = groupShareRecordLockDurationMs;
+            return this;
+        }
+
+        /**
+         * @param groupShareRecordLockDurationMs The duration for which a fetched share-group record is locked. Example: `30000`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder groupShareRecordLockDurationMs(Integer groupShareRecordLockDurationMs) {
+            return groupShareRecordLockDurationMs(Output.of(groupShareRecordLockDurationMs));
+        }
+
+        /**
+         * @param groupShareSessionTimeoutMs The timeout used to detect share group member failures. Example: `45000`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder groupShareSessionTimeoutMs(@Nullable Output<Integer> groupShareSessionTimeoutMs) {
+            $.groupShareSessionTimeoutMs = groupShareSessionTimeoutMs;
+            return this;
+        }
+
+        /**
+         * @param groupShareSessionTimeoutMs The timeout used to detect share group member failures. Example: `45000`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder groupShareSessionTimeoutMs(Integer groupShareSessionTimeoutMs) {
+            return groupShareSessionTimeoutMs(Output.of(groupShareSessionTimeoutMs));
         }
 
         /**

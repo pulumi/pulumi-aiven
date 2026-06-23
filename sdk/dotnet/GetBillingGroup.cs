@@ -12,7 +12,10 @@ namespace Pulumi.Aiven
     public static class GetBillingGroup
     {
         /// <summary>
-        /// Gets information about a billing group. **Deprecated**: Use `aiven.OrganizationBillingGroup` instead. This data source will be removed in the next major release.
+        /// Gets information about a billing group.
+        /// 
+        /// &gt; **This data source is deprecated**
+        /// Use `aiven.OrganizationBillingGroup` instead. This data source will be removed in the next major release.
         /// 
         /// ## Example Usage
         /// 
@@ -36,7 +39,10 @@ namespace Pulumi.Aiven
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetBillingGroupResult>("aiven:index/getBillingGroup:getBillingGroup", args ?? new GetBillingGroupArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Gets information about a billing group. **Deprecated**: Use `aiven.OrganizationBillingGroup` instead. This data source will be removed in the next major release.
+        /// Gets information about a billing group.
+        /// 
+        /// &gt; **This data source is deprecated**
+        /// Use `aiven.OrganizationBillingGroup` instead. This data source will be removed in the next major release.
         /// 
         /// ## Example Usage
         /// 
@@ -60,7 +66,10 @@ namespace Pulumi.Aiven
             => global::Pulumi.Deployment.Instance.Invoke<GetBillingGroupResult>("aiven:index/getBillingGroup:getBillingGroup", args ?? new GetBillingGroupInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Gets information about a billing group. **Deprecated**: Use `aiven.OrganizationBillingGroup` instead. This data source will be removed in the next major release.
+        /// Gets information about a billing group.
+        /// 
+        /// &gt; **This data source is deprecated**
+        /// Use `aiven.OrganizationBillingGroup` instead. This data source will be removed in the next major release.
         /// 
         /// ## Example Usage
         /// 

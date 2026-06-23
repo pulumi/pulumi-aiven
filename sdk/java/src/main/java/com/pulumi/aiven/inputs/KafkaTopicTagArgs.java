@@ -17,14 +17,14 @@ public final class KafkaTopicTagArgs extends com.pulumi.resources.ResourceArgs {
     public static final KafkaTopicTagArgs Empty = new KafkaTopicTagArgs();
 
     /**
-     * Tag key. Maximum length: `64`.
+     * Tag key. Length must be between `1` and `64`.
      * 
      */
     @Import(name="key", required=true)
     private Output<String> key;
 
     /**
-     * @return Tag key. Maximum length: `64`.
+     * @return Tag key. Length must be between `1` and `64`.
      * 
      */
     public Output<String> key() {
@@ -72,7 +72,7 @@ public final class KafkaTopicTagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param key Tag key. Maximum length: `64`.
+         * @param key Tag key. Length must be between `1` and `64`.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class KafkaTopicTagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param key Tag key. Maximum length: `64`.
+         * @param key Tag key. Length must be between `1` and `64`.
          * 
          * @return builder
          * 

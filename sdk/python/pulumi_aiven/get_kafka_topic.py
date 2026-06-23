@@ -14,6 +14,7 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetKafkaTopicResult',
@@ -27,7 +28,7 @@ class GetKafkaTopicResult:
     """
     A collection of values returned by getKafkaTopic.
     """
-    def __init__(__self__, configs=None, id=None, owner_user_group_id=None, partitions=None, project=None, replication=None, service_name=None, tags=None, termination_protection=None, topic_description=None, topic_name=None):
+    def __init__(__self__, configs=None, id=None, owner_user_group_id=None, partitions=None, project=None, replication=None, service_name=None, tags=None, termination_protection=None, timeouts=None, topic_description=None, topic_name=None):
         if configs and not isinstance(configs, list):
             raise TypeError("Expected argument 'configs' to be a list")
         pulumi.set(__self__, "configs", configs)
@@ -55,6 +56,9 @@ class GetKafkaTopicResult:
         if termination_protection and not isinstance(termination_protection, bool):
             raise TypeError("Expected argument 'termination_protection' to be a bool")
         pulumi.set(__self__, "termination_protection", termination_protection)
+        if timeouts and not isinstance(timeouts, dict):
+            raise TypeError("Expected argument 'timeouts' to be a dict")
+        pulumi.set(__self__, "timeouts", timeouts)
         if topic_description and not isinstance(topic_description, str):
             raise TypeError("Expected argument 'topic_description' to be a str")
         pulumi.set(__self__, "topic_description", topic_description)
@@ -64,9 +68,9 @@ class GetKafkaTopicResult:
 
     @_builtins.property
     @pulumi.getter
-    def configs(self) -> Sequence['outputs.GetKafkaTopicConfigResult']:
+    def configs(self) -> Optional[Sequence['outputs.GetKafkaTopicConfigResult']]:
         """
-        [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics.
+        [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics. Removing the block won't reset the topic configuration to default values. Instead, the topic will retain its last known configuration.
         """
         return pulumi.get(self, "configs")
 
@@ -74,7 +78,7 @@ class GetKafkaTopicResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The provider-assigned unique ID for this managed resource.
+        Resource ID composed as: `project/service_name/topic_name`.
         """
         return pulumi.get(self, "id")
 
@@ -82,7 +86,7 @@ class GetKafkaTopicResult:
     @pulumi.getter(name="ownerUserGroupId")
     def owner_user_group_id(self) -> _builtins.str:
         """
-        The ID of the user group that owns the topic. Assigning ownership to decentralize topic management is part of [Aiven for Apache Kafka® governance](https://aiven.io/docs/products/kafka/concepts/governance-overview).
+        The user group that owns this topic.
         """
         return pulumi.get(self, "owner_user_group_id")
 
@@ -90,7 +94,7 @@ class GetKafkaTopicResult:
     @pulumi.getter
     def partitions(self) -> _builtins.int:
         """
-        The number of partitions to create in the topic.
+        Number of partitions.
         """
         return pulumi.get(self, "partitions")
 
@@ -98,7 +102,7 @@ class GetKafkaTopicResult:
     @pulumi.getter
     def project(self) -> _builtins.str:
         """
-        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Project name.
         """
         return pulumi.get(self, "project")
 
@@ -106,7 +110,7 @@ class GetKafkaTopicResult:
     @pulumi.getter
     def replication(self) -> _builtins.int:
         """
-        The replication factor for the topic.
+        Number of replicas.
         """
         return pulumi.get(self, "replication")
 
@@ -114,31 +118,37 @@ class GetKafkaTopicResult:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> _builtins.str:
         """
-        The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Service name.
         """
         return pulumi.get(self, "service_name")
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Sequence['outputs.GetKafkaTopicTagResult']:
+    def tags(self) -> Optional[Sequence['outputs.GetKafkaTopicTagResult']]:
         """
-        Tags for the topic.
+        Topic tags.
         """
         return pulumi.get(self, "tags")
 
     @_builtins.property
     @pulumi.getter(name="terminationProtection")
+    @_utilities.deprecated("""Instead, use [`prevent_destroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)""")
     def termination_protection(self) -> _builtins.bool:
         """
-        Prevents topics from being deleted by Terraform. It's recommended for topics containing critical data. **Topics can still be deleted in the Aiven Console.**
+        Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console**. The default value is `false`. **Deprecated**: Instead, use `prevent_destroy`
         """
         return pulumi.get(self, "termination_protection")
+
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> Optional['outputs.GetKafkaTopicTimeoutsResult']:
+        return pulumi.get(self, "timeouts")
 
     @_builtins.property
     @pulumi.getter(name="topicDescription")
     def topic_description(self) -> _builtins.str:
         """
-        The description of the topic
+        Topic description.
         """
         return pulumi.get(self, "topic_description")
 
@@ -146,7 +156,7 @@ class GetKafkaTopicResult:
     @pulumi.getter(name="topicName")
     def topic_name(self) -> _builtins.str:
         """
-        The name of the topic. Changing this property forces recreation of the resource.
+        Kafka topic name.
         """
         return pulumi.get(self, "topic_name")
 
@@ -166,12 +176,16 @@ class AwaitableGetKafkaTopicResult(GetKafkaTopicResult):
             service_name=self.service_name,
             tags=self.tags,
             termination_protection=self.termination_protection,
+            timeouts=self.timeouts,
             topic_description=self.topic_description,
             topic_name=self.topic_name)
 
 
-def get_kafka_topic(project: Optional[_builtins.str] = None,
+def get_kafka_topic(configs: Optional[Sequence[Union['GetKafkaTopicConfigArgs', 'GetKafkaTopicConfigArgsDict']]] = None,
+                    project: Optional[_builtins.str] = None,
                     service_name: Optional[_builtins.str] = None,
+                    tags: Optional[Sequence[Union['GetKafkaTopicTagArgs', 'GetKafkaTopicTagArgsDict']]] = None,
+                    timeouts: Optional[Union['GetKafkaTopicTimeoutsArgs', 'GetKafkaTopicTimeoutsArgsDict']] = None,
                     topic_name: Optional[_builtins.str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKafkaTopicResult:
     """
@@ -183,19 +197,24 @@ def get_kafka_topic(project: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    example_topic = aiven.get_kafka_topic(project=example_project["project"],
-        service_name=example_kafka["serviceName"],
-        topic_name="example-topic")
+    example = aiven.get_kafka_topic(project="my-project",
+        service_name="my-kafka",
+        topic_name="mytopic")
     ```
 
 
-    :param _builtins.str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param _builtins.str service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param _builtins.str topic_name: The name of the topic. Changing this property forces recreation of the resource.
+    :param Sequence[Union['GetKafkaTopicConfigArgs', 'GetKafkaTopicConfigArgsDict']] configs: [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics. Removing the block won't reset the topic configuration to default values. Instead, the topic will retain its last known configuration.
+    :param _builtins.str project: Project name.
+    :param _builtins.str service_name: Service name.
+    :param Sequence[Union['GetKafkaTopicTagArgs', 'GetKafkaTopicTagArgsDict']] tags: Topic tags.
+    :param _builtins.str topic_name: Kafka topic name.
     """
     __args__ = dict()
+    __args__['configs'] = configs
     __args__['project'] = project
     __args__['serviceName'] = service_name
+    __args__['tags'] = tags
+    __args__['timeouts'] = timeouts
     __args__['topicName'] = topic_name
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('aiven:index/getKafkaTopic:getKafkaTopic', __args__, opts=opts, typ=GetKafkaTopicResult).value
@@ -210,10 +229,14 @@ def get_kafka_topic(project: Optional[_builtins.str] = None,
         service_name=pulumi.get(__ret__, 'service_name'),
         tags=pulumi.get(__ret__, 'tags'),
         termination_protection=pulumi.get(__ret__, 'termination_protection'),
+        timeouts=pulumi.get(__ret__, 'timeouts'),
         topic_description=pulumi.get(__ret__, 'topic_description'),
         topic_name=pulumi.get(__ret__, 'topic_name'))
-def get_kafka_topic_output(project: pulumi.Input[Optional[_builtins.str]] = None,
+def get_kafka_topic_output(configs: pulumi.Input[Optional[Optional[Sequence[Union['GetKafkaTopicConfigArgs', 'GetKafkaTopicConfigArgsDict']]]]] = None,
+                           project: pulumi.Input[Optional[_builtins.str]] = None,
                            service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                           tags: pulumi.Input[Optional[Optional[Sequence[Union['GetKafkaTopicTagArgs', 'GetKafkaTopicTagArgsDict']]]]] = None,
+                           timeouts: pulumi.Input[Optional[Optional[Union['GetKafkaTopicTimeoutsArgs', 'GetKafkaTopicTimeoutsArgsDict']]]] = None,
                            topic_name: pulumi.Input[Optional[_builtins.str]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKafkaTopicResult]:
     """
@@ -225,19 +248,24 @@ def get_kafka_topic_output(project: pulumi.Input[Optional[_builtins.str]] = None
     import pulumi
     import pulumi_aiven as aiven
 
-    example_topic = aiven.get_kafka_topic(project=example_project["project"],
-        service_name=example_kafka["serviceName"],
-        topic_name="example-topic")
+    example = aiven.get_kafka_topic(project="my-project",
+        service_name="my-kafka",
+        topic_name="mytopic")
     ```
 
 
-    :param _builtins.str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param _builtins.str service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param _builtins.str topic_name: The name of the topic. Changing this property forces recreation of the resource.
+    :param Sequence[Union['GetKafkaTopicConfigArgs', 'GetKafkaTopicConfigArgsDict']] configs: [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics. Removing the block won't reset the topic configuration to default values. Instead, the topic will retain its last known configuration.
+    :param _builtins.str project: Project name.
+    :param _builtins.str service_name: Service name.
+    :param Sequence[Union['GetKafkaTopicTagArgs', 'GetKafkaTopicTagArgsDict']] tags: Topic tags.
+    :param _builtins.str topic_name: Kafka topic name.
     """
     __args__ = dict()
+    __args__['configs'] = configs
     __args__['project'] = project
     __args__['serviceName'] = service_name
+    __args__['tags'] = tags
+    __args__['timeouts'] = timeouts
     __args__['topicName'] = topic_name
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('aiven:index/getKafkaTopic:getKafkaTopic', __args__, opts=opts, typ=GetKafkaTopicResult)
@@ -251,5 +279,6 @@ def get_kafka_topic_output(project: pulumi.Input[Optional[_builtins.str]] = None
         service_name=pulumi.get(__response__, 'service_name'),
         tags=pulumi.get(__response__, 'tags'),
         termination_protection=pulumi.get(__response__, 'termination_protection'),
+        timeouts=pulumi.get(__response__, 'timeouts'),
         topic_description=pulumi.get(__response__, 'topic_description'),
         topic_name=pulumi.get(__response__, 'topic_name')))

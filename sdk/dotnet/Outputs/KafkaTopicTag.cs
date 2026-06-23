@@ -14,7 +14,7 @@ namespace Pulumi.Aiven.Outputs
     public sealed class KafkaTopicTag
     {
         /// <summary>
-        /// Tag key. Maximum length: `64`.
+        /// Tag key. Length must be between `1` and `64`.
         /// </summary>
         public readonly string Key;
         /// <summary>

@@ -50,6 +50,14 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? Key;
         /// <summary>
+        /// Throttles the restore rate per node. Defaults to unlimited. Note that if the recovery settings for managed services are set, this value is overridden by the recovery settings. Value should be a byte size with unit, e.g. 40mb, 100kb, 1gb.
+        /// </summary>
+        public readonly string? MaxRestoreBytesPerSec;
+        /// <summary>
+        /// Throttles the snapshot rate per node. Defaults to 40mb. Note that if the recovery settings for managed services are set, this value is overridden by the recovery settings. Value should be a byte size with unit, e.g. 40mb, 100kb, 1gb.
+        /// </summary>
+        public readonly string? MaxSnapshotBytesPerSec;
+        /// <summary>
         /// Whether the repository is read-only. Default: `True`.
         /// </summary>
         public readonly bool? Readonly;
@@ -86,6 +94,10 @@ namespace Pulumi.Aiven.Outputs
 
             string? key,
 
+            string? maxRestoreBytesPerSec,
+
+            string? maxSnapshotBytesPerSec,
+
             bool? @readonly,
 
             bool? restoreGlobalState,
@@ -103,6 +115,8 @@ namespace Pulumi.Aiven.Outputs
             IncludeAliases = includeAliases;
             Indices = indices;
             Key = key;
+            MaxRestoreBytesPerSec = maxRestoreBytesPerSec;
+            MaxSnapshotBytesPerSec = maxSnapshotBytesPerSec;
             Readonly = @readonly;
             RestoreGlobalState = restoreGlobalState;
             SasToken = sasToken;

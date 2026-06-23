@@ -13,6 +13,7 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
 
 __all__ = [
     'GetKafkaSchemaConfigurationResult',
@@ -26,7 +27,7 @@ class GetKafkaSchemaConfigurationResult:
     """
     A collection of values returned by getKafkaSchemaConfiguration.
     """
-    def __init__(__self__, compatibility_level=None, id=None, project=None, schema=None, schema_type=None, service_name=None, subject_name=None, version=None):
+    def __init__(__self__, compatibility_level=None, id=None, project=None, references=None, schema=None, schema_type=None, service_name=None, subject_name=None, version=None):
         if compatibility_level and not isinstance(compatibility_level, str):
             raise TypeError("Expected argument 'compatibility_level' to be a str")
         pulumi.set(__self__, "compatibility_level", compatibility_level)
@@ -36,6 +37,9 @@ class GetKafkaSchemaConfigurationResult:
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
+        if references and not isinstance(references, list):
+            raise TypeError("Expected argument 'references' to be a list")
+        pulumi.set(__self__, "references", references)
         if schema and not isinstance(schema, str):
             raise TypeError("Expected argument 'schema' to be a str")
         pulumi.set(__self__, "schema", schema)
@@ -75,6 +79,14 @@ class GetKafkaSchemaConfigurationResult:
         The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
+
+    @_builtins.property
+    @pulumi.getter
+    def references(self) -> Sequence['outputs.GetKafkaSchemaConfigurationReferenceResult']:
+        """
+        Schema references.
+        """
+        return pulumi.get(self, "references")
 
     @_builtins.property
     @pulumi.getter
@@ -126,6 +138,7 @@ class AwaitableGetKafkaSchemaConfigurationResult(GetKafkaSchemaConfigurationResu
             compatibility_level=self.compatibility_level,
             id=self.id,
             project=self.project,
+            references=self.references,
             schema=self.schema,
             schema_type=self.schema_type,
             service_name=self.service_name,
@@ -165,6 +178,7 @@ def get_kafka_schema_configuration(project: Optional[_builtins.str] = None,
         compatibility_level=pulumi.get(__ret__, 'compatibility_level'),
         id=pulumi.get(__ret__, 'id'),
         project=pulumi.get(__ret__, 'project'),
+        references=pulumi.get(__ret__, 'references'),
         schema=pulumi.get(__ret__, 'schema'),
         schema_type=pulumi.get(__ret__, 'schema_type'),
         service_name=pulumi.get(__ret__, 'service_name'),
@@ -201,6 +215,7 @@ def get_kafka_schema_configuration_output(project: pulumi.Input[Optional[_builti
         compatibility_level=pulumi.get(__response__, 'compatibility_level'),
         id=pulumi.get(__response__, 'id'),
         project=pulumi.get(__response__, 'project'),
+        references=pulumi.get(__response__, 'references'),
         schema=pulumi.get(__response__, 'schema'),
         schema_type=pulumi.get(__response__, 'schema_type'),
         service_name=pulumi.get(__response__, 'service_name'),

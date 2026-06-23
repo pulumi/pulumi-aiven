@@ -153,6 +153,36 @@ public final class OpenSearchOpensearchUserConfigAzureMigrationArgs extends com.
     }
 
     /**
+     * Throttles the restore rate per node. Defaults to unlimited. Note that if the recovery settings for managed services are set, this value is overridden by the recovery settings. Value should be a byte size with unit, e.g. 40mb, 100kb, 1gb.
+     * 
+     */
+    @Import(name="maxRestoreBytesPerSec")
+    private @Nullable Output<String> maxRestoreBytesPerSec;
+
+    /**
+     * @return Throttles the restore rate per node. Defaults to unlimited. Note that if the recovery settings for managed services are set, this value is overridden by the recovery settings. Value should be a byte size with unit, e.g. 40mb, 100kb, 1gb.
+     * 
+     */
+    public Optional<Output<String>> maxRestoreBytesPerSec() {
+        return Optional.ofNullable(this.maxRestoreBytesPerSec);
+    }
+
+    /**
+     * Throttles the snapshot rate per node. Defaults to 40mb. Note that if the recovery settings for managed services are set, this value is overridden by the recovery settings. Value should be a byte size with unit, e.g. 40mb, 100kb, 1gb.
+     * 
+     */
+    @Import(name="maxSnapshotBytesPerSec")
+    private @Nullable Output<String> maxSnapshotBytesPerSec;
+
+    /**
+     * @return Throttles the snapshot rate per node. Defaults to 40mb. Note that if the recovery settings for managed services are set, this value is overridden by the recovery settings. Value should be a byte size with unit, e.g. 40mb, 100kb, 1gb.
+     * 
+     */
+    public Optional<Output<String>> maxSnapshotBytesPerSec() {
+        return Optional.ofNullable(this.maxSnapshotBytesPerSec);
+    }
+
+    /**
      * Whether the repository is read-only. Default: `true`.
      * 
      */
@@ -224,6 +254,8 @@ public final class OpenSearchOpensearchUserConfigAzureMigrationArgs extends com.
         this.includeAliases = $.includeAliases;
         this.indices = $.indices;
         this.key = $.key;
+        this.maxRestoreBytesPerSec = $.maxRestoreBytesPerSec;
+        this.maxSnapshotBytesPerSec = $.maxSnapshotBytesPerSec;
         this.readonly = $.readonly;
         this.restoreGlobalState = $.restoreGlobalState;
         this.sasToken = $.sasToken;
@@ -435,6 +467,48 @@ public final class OpenSearchOpensearchUserConfigAzureMigrationArgs extends com.
          */
         public Builder key(String key) {
             return key(Output.of(key));
+        }
+
+        /**
+         * @param maxRestoreBytesPerSec Throttles the restore rate per node. Defaults to unlimited. Note that if the recovery settings for managed services are set, this value is overridden by the recovery settings. Value should be a byte size with unit, e.g. 40mb, 100kb, 1gb.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxRestoreBytesPerSec(@Nullable Output<String> maxRestoreBytesPerSec) {
+            $.maxRestoreBytesPerSec = maxRestoreBytesPerSec;
+            return this;
+        }
+
+        /**
+         * @param maxRestoreBytesPerSec Throttles the restore rate per node. Defaults to unlimited. Note that if the recovery settings for managed services are set, this value is overridden by the recovery settings. Value should be a byte size with unit, e.g. 40mb, 100kb, 1gb.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxRestoreBytesPerSec(String maxRestoreBytesPerSec) {
+            return maxRestoreBytesPerSec(Output.of(maxRestoreBytesPerSec));
+        }
+
+        /**
+         * @param maxSnapshotBytesPerSec Throttles the snapshot rate per node. Defaults to 40mb. Note that if the recovery settings for managed services are set, this value is overridden by the recovery settings. Value should be a byte size with unit, e.g. 40mb, 100kb, 1gb.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxSnapshotBytesPerSec(@Nullable Output<String> maxSnapshotBytesPerSec) {
+            $.maxSnapshotBytesPerSec = maxSnapshotBytesPerSec;
+            return this;
+        }
+
+        /**
+         * @param maxSnapshotBytesPerSec Throttles the snapshot rate per node. Defaults to 40mb. Note that if the recovery settings for managed services are set, this value is overridden by the recovery settings. Value should be a byte size with unit, e.g. 40mb, 100kb, 1gb.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxSnapshotBytesPerSec(String maxSnapshotBytesPerSec) {
+            return maxSnapshotBytesPerSec(Output.of(maxSnapshotBytesPerSec));
         }
 
         /**

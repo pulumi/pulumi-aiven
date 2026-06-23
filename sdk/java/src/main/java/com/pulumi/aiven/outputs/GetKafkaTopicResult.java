@@ -5,6 +5,7 @@ package com.pulumi.aiven.outputs;
 
 import com.pulumi.aiven.outputs.GetKafkaTopicConfig;
 import com.pulumi.aiven.outputs.GetKafkaTopicTag;
+import com.pulumi.aiven.outputs.GetKafkaTopicTimeouts;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
@@ -12,138 +13,152 @@ import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetKafkaTopicResult {
     /**
-     * @return [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics.
+     * @return [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics. Removing the block won&#39;t reset the topic configuration to default values. Instead, the topic will retain its last known configuration.
      * 
      */
-    private List<GetKafkaTopicConfig> configs;
+    private @Nullable List<GetKafkaTopicConfig> configs;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Resource ID composed as: `project/service_name/topic_name`.
      * 
      */
     private String id;
     /**
-     * @return The ID of the user group that owns the topic. Assigning ownership to decentralize topic management is part of [Aiven for Apache Kafka® governance](https://aiven.io/docs/products/kafka/concepts/governance-overview).
+     * @return The user group that owns this topic.
      * 
      */
     private String ownerUserGroupId;
     /**
-     * @return The number of partitions to create in the topic.
+     * @return Number of partitions.
      * 
      */
     private Integer partitions;
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name.
      * 
      */
     private String project;
     /**
-     * @return The replication factor for the topic.
+     * @return Number of replicas.
      * 
      */
     private Integer replication;
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service name.
      * 
      */
     private String serviceName;
     /**
-     * @return Tags for the topic.
+     * @return Topic tags.
      * 
      */
-    private List<GetKafkaTopicTag> tags;
+    private @Nullable List<GetKafkaTopicTag> tags;
     /**
-     * @return Prevents topics from being deleted by Terraform. It&#39;s recommended for topics containing critical data. **Topics can still be deleted in the Aiven Console.**
+     * @return Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console**. The default value is `false`. **Deprecated**: Instead, use `preventDestroy`
+     * 
+     * @deprecated
+     * Instead, use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)
      * 
      */
+    @Deprecated /* Instead, use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion) */
     private Boolean terminationProtection;
+    private @Nullable GetKafkaTopicTimeouts timeouts;
     /**
-     * @return The description of the topic
+     * @return Topic description.
      * 
      */
     private String topicDescription;
     /**
-     * @return The name of the topic. Changing this property forces recreation of the resource.
+     * @return Kafka topic name.
      * 
      */
     private String topicName;
 
     private GetKafkaTopicResult() {}
     /**
-     * @return [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics.
+     * @return [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics. Removing the block won&#39;t reset the topic configuration to default values. Instead, the topic will retain its last known configuration.
      * 
      */
     public List<GetKafkaTopicConfig> configs() {
-        return this.configs;
+        return this.configs == null ? List.of() : this.configs;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Resource ID composed as: `project/service_name/topic_name`.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return The ID of the user group that owns the topic. Assigning ownership to decentralize topic management is part of [Aiven for Apache Kafka® governance](https://aiven.io/docs/products/kafka/concepts/governance-overview).
+     * @return The user group that owns this topic.
      * 
      */
     public String ownerUserGroupId() {
         return this.ownerUserGroupId;
     }
     /**
-     * @return The number of partitions to create in the topic.
+     * @return Number of partitions.
      * 
      */
     public Integer partitions() {
         return this.partitions;
     }
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name.
      * 
      */
     public String project() {
         return this.project;
     }
     /**
-     * @return The replication factor for the topic.
+     * @return Number of replicas.
      * 
      */
     public Integer replication() {
         return this.replication;
     }
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service name.
      * 
      */
     public String serviceName() {
         return this.serviceName;
     }
     /**
-     * @return Tags for the topic.
+     * @return Topic tags.
      * 
      */
     public List<GetKafkaTopicTag> tags() {
-        return this.tags;
+        return this.tags == null ? List.of() : this.tags;
     }
     /**
-     * @return Prevents topics from being deleted by Terraform. It&#39;s recommended for topics containing critical data. **Topics can still be deleted in the Aiven Console.**
+     * @return Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console**. The default value is `false`. **Deprecated**: Instead, use `preventDestroy`
+     * 
+     * @deprecated
+     * Instead, use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)
      * 
      */
+    @Deprecated /* Instead, use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion) */
     public Boolean terminationProtection() {
         return this.terminationProtection;
     }
+    public Optional<GetKafkaTopicTimeouts> timeouts() {
+        return Optional.ofNullable(this.timeouts);
+    }
     /**
-     * @return The description of the topic
+     * @return Topic description.
      * 
      */
     public String topicDescription() {
         return this.topicDescription;
     }
     /**
-     * @return The name of the topic. Changing this property forces recreation of the resource.
+     * @return Kafka topic name.
      * 
      */
     public String topicName() {
@@ -159,15 +174,16 @@ public final class GetKafkaTopicResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private List<GetKafkaTopicConfig> configs;
+        private @Nullable List<GetKafkaTopicConfig> configs;
         private String id;
         private String ownerUserGroupId;
         private Integer partitions;
         private String project;
         private Integer replication;
         private String serviceName;
-        private List<GetKafkaTopicTag> tags;
+        private @Nullable List<GetKafkaTopicTag> tags;
         private Boolean terminationProtection;
+        private @Nullable GetKafkaTopicTimeouts timeouts;
         private String topicDescription;
         private String topicName;
         public Builder() {}
@@ -182,15 +198,14 @@ public final class GetKafkaTopicResult {
     	      this.serviceName = defaults.serviceName;
     	      this.tags = defaults.tags;
     	      this.terminationProtection = defaults.terminationProtection;
+    	      this.timeouts = defaults.timeouts;
     	      this.topicDescription = defaults.topicDescription;
     	      this.topicName = defaults.topicName;
         }
 
         @CustomType.Setter
-        public Builder configs(List<GetKafkaTopicConfig> configs) {
-            if (configs == null) {
-              throw new MissingRequiredPropertyException("GetKafkaTopicResult", "configs");
-            }
+        public Builder configs(@Nullable List<GetKafkaTopicConfig> configs) {
+
             this.configs = configs;
             return this;
         }
@@ -246,10 +261,8 @@ public final class GetKafkaTopicResult {
             return this;
         }
         @CustomType.Setter
-        public Builder tags(List<GetKafkaTopicTag> tags) {
-            if (tags == null) {
-              throw new MissingRequiredPropertyException("GetKafkaTopicResult", "tags");
-            }
+        public Builder tags(@Nullable List<GetKafkaTopicTag> tags) {
+
             this.tags = tags;
             return this;
         }
@@ -262,6 +275,12 @@ public final class GetKafkaTopicResult {
               throw new MissingRequiredPropertyException("GetKafkaTopicResult", "terminationProtection");
             }
             this.terminationProtection = terminationProtection;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder timeouts(@Nullable GetKafkaTopicTimeouts timeouts) {
+
+            this.timeouts = timeouts;
             return this;
         }
         @CustomType.Setter
@@ -291,6 +310,7 @@ public final class GetKafkaTopicResult {
             _resultValue.serviceName = serviceName;
             _resultValue.tags = tags;
             _resultValue.terminationProtection = terminationProtection;
+            _resultValue.timeouts = timeouts;
             _resultValue.topicDescription = topicDescription;
             _resultValue.topicName = topicName;
             return _resultValue;

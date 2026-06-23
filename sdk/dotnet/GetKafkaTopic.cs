@@ -24,11 +24,11 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleTopic = Aiven.GetKafkaTopic.Invoke(new()
+        ///     var example = Aiven.GetKafkaTopic.Invoke(new()
         ///     {
-        ///         Project = exampleProject.Project,
-        ///         ServiceName = exampleKafka.ServiceName,
-        ///         TopicName = "example-topic",
+        ///         Project = "my-project",
+        ///         ServiceName = "my-kafka",
+        ///         TopicName = "mytopic",
         ///     });
         /// 
         /// });
@@ -50,11 +50,11 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleTopic = Aiven.GetKafkaTopic.Invoke(new()
+        ///     var example = Aiven.GetKafkaTopic.Invoke(new()
         ///     {
-        ///         Project = exampleProject.Project,
-        ///         ServiceName = exampleKafka.ServiceName,
-        ///         TopicName = "example-topic",
+        ///         Project = "my-project",
+        ///         ServiceName = "my-kafka",
+        ///         TopicName = "mytopic",
         ///     });
         /// 
         /// });
@@ -76,11 +76,11 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleTopic = Aiven.GetKafkaTopic.Invoke(new()
+        ///     var example = Aiven.GetKafkaTopic.Invoke(new()
         ///     {
-        ///         Project = exampleProject.Project,
-        ///         ServiceName = exampleKafka.ServiceName,
-        ///         TopicName = "example-topic",
+        ///         Project = "my-project",
+        ///         ServiceName = "my-kafka",
+        ///         TopicName = "mytopic",
         ///     });
         /// 
         /// });
@@ -93,20 +93,47 @@ namespace Pulumi.Aiven
 
     public sealed class GetKafkaTopicArgs : global::Pulumi.InvokeArgs
     {
+        [Input("configs")]
+        private List<Inputs.GetKafkaTopicConfigArgs>? _configs;
+
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics. Removing the block won't reset the topic configuration to default values. Instead, the topic will retain its last known configuration.
+        /// </summary>
+        public List<Inputs.GetKafkaTopicConfigArgs> Configs
+        {
+            get => _configs ?? (_configs = new List<Inputs.GetKafkaTopicConfigArgs>());
+            set => _configs = value;
+        }
+
+        /// <summary>
+        /// Project name.
         /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service name.
         /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
+        [Input("tags")]
+        private List<Inputs.GetKafkaTopicTagArgs>? _tags;
+
         /// <summary>
-        /// The name of the topic. Changing this property forces recreation of the resource.
+        /// Topic tags.
+        /// </summary>
+        public List<Inputs.GetKafkaTopicTagArgs> Tags
+        {
+            get => _tags ?? (_tags = new List<Inputs.GetKafkaTopicTagArgs>());
+            set => _tags = value;
+        }
+
+        [Input("timeouts")]
+        public Inputs.GetKafkaTopicTimeoutsArgs? Timeouts { get; set; }
+
+        /// <summary>
+        /// Kafka topic name.
         /// </summary>
         [Input("topicName", required: true)]
         public string TopicName { get; set; } = null!;
@@ -119,20 +146,47 @@ namespace Pulumi.Aiven
 
     public sealed class GetKafkaTopicInvokeArgs : global::Pulumi.InvokeArgs
     {
+        [Input("configs")]
+        private InputList<Inputs.GetKafkaTopicConfigInputArgs>? _configs;
+
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics. Removing the block won't reset the topic configuration to default values. Instead, the topic will retain its last known configuration.
+        /// </summary>
+        public InputList<Inputs.GetKafkaTopicConfigInputArgs> Configs
+        {
+            get => _configs ?? (_configs = new InputList<Inputs.GetKafkaTopicConfigInputArgs>());
+            set => _configs = value;
+        }
+
+        /// <summary>
+        /// Project name.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service name.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
+        [Input("tags")]
+        private InputList<Inputs.GetKafkaTopicTagInputArgs>? _tags;
+
         /// <summary>
-        /// The name of the topic. Changing this property forces recreation of the resource.
+        /// Topic tags.
+        /// </summary>
+        public InputList<Inputs.GetKafkaTopicTagInputArgs> Tags
+        {
+            get => _tags ?? (_tags = new InputList<Inputs.GetKafkaTopicTagInputArgs>());
+            set => _tags = value;
+        }
+
+        [Input("timeouts")]
+        public Input<Inputs.GetKafkaTopicTimeoutsInputArgs>? Timeouts { get; set; }
+
+        /// <summary>
+        /// Kafka topic name.
         /// </summary>
         [Input("topicName", required: true)]
         public Input<string> TopicName { get; set; } = null!;
@@ -148,47 +202,48 @@ namespace Pulumi.Aiven
     public sealed class GetKafkaTopicResult
     {
         /// <summary>
-        /// [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics.
+        /// [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics. Removing the block won't reset the topic configuration to default values. Instead, the topic will retain its last known configuration.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetKafkaTopicConfigResult> Configs;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// Resource ID composed as: `project/service_name/topic_name`.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The ID of the user group that owns the topic. Assigning ownership to decentralize topic management is part of [Aiven for Apache Kafka® governance](https://aiven.io/docs/products/kafka/concepts/governance-overview).
+        /// The user group that owns this topic.
         /// </summary>
         public readonly string OwnerUserGroupId;
         /// <summary>
-        /// The number of partitions to create in the topic.
+        /// Number of partitions.
         /// </summary>
         public readonly int Partitions;
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name.
         /// </summary>
         public readonly string Project;
         /// <summary>
-        /// The replication factor for the topic.
+        /// Number of replicas.
         /// </summary>
         public readonly int Replication;
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service name.
         /// </summary>
         public readonly string ServiceName;
         /// <summary>
-        /// Tags for the topic.
+        /// Topic tags.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetKafkaTopicTagResult> Tags;
         /// <summary>
-        /// Prevents topics from being deleted by Terraform. It's recommended for topics containing critical data. **Topics can still be deleted in the Aiven Console.**
+        /// Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console**. The default value is `False`. **Deprecated**: Instead, use `PreventDestroy`
         /// </summary>
         public readonly bool TerminationProtection;
+        public readonly Outputs.GetKafkaTopicTimeoutsResult? Timeouts;
         /// <summary>
-        /// The description of the topic
+        /// Topic description.
         /// </summary>
         public readonly string TopicDescription;
         /// <summary>
-        /// The name of the topic. Changing this property forces recreation of the resource.
+        /// Kafka topic name.
         /// </summary>
         public readonly string TopicName;
 
@@ -212,6 +267,8 @@ namespace Pulumi.Aiven
 
             bool terminationProtection,
 
+            Outputs.GetKafkaTopicTimeoutsResult? timeouts,
+
             string topicDescription,
 
             string topicName)
@@ -225,6 +282,7 @@ namespace Pulumi.Aiven
             ServiceName = serviceName;
             Tags = tags;
             TerminationProtection = terminationProtection;
+            Timeouts = timeouts;
             TopicDescription = topicDescription;
             TopicName = topicName;
         }

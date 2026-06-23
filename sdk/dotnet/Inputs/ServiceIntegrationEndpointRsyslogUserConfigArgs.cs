@@ -31,6 +31,12 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? Cert { get; set; }
 
         /// <summary>
+        /// When true, embedded newlines in a log message are escaped so a multi-line record (e.g. a stack trace) is delivered as one complete log entry. Useful for newline-delimited cloud log intakes that drop continuation lines. Default: `False`.
+        /// </summary>
+        [Input("escapeNewlines")]
+        public Input<bool>? EscapeNewlines { get; set; }
+
+        /// <summary>
         /// Enum: `Custom`, `Rfc3164`, `Rfc5424`. Message format. Default: `Rfc5424`.
         /// </summary>
         [Input("format", required: true)]

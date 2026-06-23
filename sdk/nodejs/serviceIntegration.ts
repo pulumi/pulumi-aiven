@@ -174,6 +174,10 @@ export class ServiceIntegration extends pulumi.CustomResource {
      */
     declare public readonly prometheusUserConfig: pulumi.Output<outputs.ServiceIntegrationPrometheusUserConfig | undefined>;
     /**
+     * Rsyslog user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+     */
+    declare public readonly rsyslogUserConfig: pulumi.Output<outputs.ServiceIntegrationRsyslogUserConfig | undefined>;
+    /**
      * Source endpoint for the integration.
      */
     declare public readonly sourceEndpointId: pulumi.Output<string | undefined>;
@@ -220,6 +224,7 @@ export class ServiceIntegration extends pulumi.CustomResource {
             resourceInputs["metricsUserConfig"] = state?.metricsUserConfig;
             resourceInputs["project"] = state?.project;
             resourceInputs["prometheusUserConfig"] = state?.prometheusUserConfig;
+            resourceInputs["rsyslogUserConfig"] = state?.rsyslogUserConfig;
             resourceInputs["sourceEndpointId"] = state?.sourceEndpointId;
             resourceInputs["sourceServiceName"] = state?.sourceServiceName;
             resourceInputs["sourceServiceProject"] = state?.sourceServiceProject;
@@ -251,6 +256,7 @@ export class ServiceIntegration extends pulumi.CustomResource {
             resourceInputs["metricsUserConfig"] = args?.metricsUserConfig;
             resourceInputs["project"] = args?.project;
             resourceInputs["prometheusUserConfig"] = args?.prometheusUserConfig;
+            resourceInputs["rsyslogUserConfig"] = args?.rsyslogUserConfig;
             resourceInputs["sourceEndpointId"] = args?.sourceEndpointId;
             resourceInputs["sourceServiceName"] = args?.sourceServiceName;
             resourceInputs["sourceServiceProject"] = args?.sourceServiceProject;
@@ -350,6 +356,10 @@ export interface ServiceIntegrationState {
      */
     prometheusUserConfig?: pulumi.Input<inputs.ServiceIntegrationPrometheusUserConfig | undefined>;
     /**
+     * Rsyslog user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+     */
+    rsyslogUserConfig?: pulumi.Input<inputs.ServiceIntegrationRsyslogUserConfig | undefined>;
+    /**
      * Source endpoint for the integration.
      */
     sourceEndpointId?: pulumi.Input<string | undefined>;
@@ -447,6 +457,10 @@ export interface ServiceIntegrationArgs {
      * Prometheus user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
     prometheusUserConfig?: pulumi.Input<inputs.ServiceIntegrationPrometheusUserConfig | undefined>;
+    /**
+     * Rsyslog user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+     */
+    rsyslogUserConfig?: pulumi.Input<inputs.ServiceIntegrationRsyslogUserConfig | undefined>;
     /**
      * Source endpoint for the integration.
      */

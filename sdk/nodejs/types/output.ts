@@ -2941,7 +2941,7 @@ export interface GetKafkaKafkaUserConfig {
      */
     kafkaSaslMechanisms?: outputs.GetKafkaKafkaUserConfigKafkaSaslMechanisms;
     /**
-     * Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, `4.1`, and newer. Kafka major version.
+     * Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, `4.1`, `4.2`, and newer. Kafka major version.
      */
     kafkaVersion?: string;
     /**
@@ -3021,6 +3021,10 @@ export interface GetKafkaKafkaUserConfigIpFilterObject {
 
 export interface GetKafkaKafkaUserConfigKafka {
     /**
+     * Enable Kafka audit logging by providing this object. Removing it disables the feature. Enabling, updating, or disabling audit logging causes a rolling restart of all Kafka brokers
+     */
+    auditLog?: outputs.GetKafkaKafkaUserConfigKafkaAuditLog;
+    /**
      * Enable auto-creation of topics. (Default: false).
      */
     autoCreateTopicsEnable?: boolean;
@@ -3037,6 +3041,10 @@ export interface GetKafkaKafkaUserConfigKafka {
      */
     defaultReplicationFactor?: number;
     /**
+     * Enum: `classic`, `classic,consumer`, `classic,consumer,share`, `classic,consumer,share,streams`, `classic,consumer,streams`, `classic,share`, `classic,streams`. The enabled consumer group rebalance protocols. Use consumer, classic, share, streams to enable Kafka share groups.
+     */
+    groupCoordinatorRebalanceProtocols?: string;
+    /**
      * The amount of time, in milliseconds, the group coordinator will wait for more consumers to join a new group before performing the first rebalance. A longer delay means potentially fewer rebalances, but increases the time until processing begins. The default value for this is 3 seconds. During development and testing it might be desirable to set this to 0 in order to not delay test execution time. (Default: 3000 ms (3 seconds)). Example: `3000`.
      */
     groupInitialRebalanceDelayMs?: number;
@@ -3048,6 +3056,58 @@ export interface GetKafkaKafkaUserConfigKafka {
      * The minimum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. (Default: 6000 ms (6 seconds)). Example: `6000`.
      */
     groupMinSessionTimeoutMs?: number;
+    /**
+     * The maximum delivery attempts for a share-group record. Example: `5`.
+     */
+    groupShareDeliveryCountLimit?: number;
+    /**
+     * The heartbeat interval used by share group members. Example: `5000`.
+     */
+    groupShareHeartbeatIntervalMs?: number;
+    /**
+     * The maximum number of share groups allowed on the broker.
+     */
+    groupShareMaxGroups?: number;
+    /**
+     * The maximum heartbeat interval allowed for share group members. Example: `15000`.
+     */
+    groupShareMaxHeartbeatIntervalMs?: number;
+    /**
+     * The maximum record lock duration allowed for share groups. Example: `60000`.
+     */
+    groupShareMaxRecordLockDurationMs?: number;
+    /**
+     * The maximum session timeout allowed for share group members. Example: `60000`.
+     */
+    groupShareMaxSessionTimeoutMs?: number;
+    /**
+     * The maximum number of members allowed in a share group. Example: `200`.
+     */
+    groupShareMaxSize?: number;
+    /**
+     * The minimum heartbeat interval allowed for share group members. Example: `5000`.
+     */
+    groupShareMinHeartbeatIntervalMs?: number;
+    /**
+     * The minimum record lock duration allowed for share groups. Example: `15000`.
+     */
+    groupShareMinRecordLockDurationMs?: number;
+    /**
+     * The minimum session timeout allowed for share group members. Example: `45000`.
+     */
+    groupShareMinSessionTimeoutMs?: number;
+    /**
+     * The maximum number of record locks allowed per share group partition. Example: `2000`.
+     */
+    groupSharePartitionMaxRecordLocks?: number;
+    /**
+     * The duration for which a fetched share-group record is locked. Example: `30000`.
+     */
+    groupShareRecordLockDurationMs?: number;
+    /**
+     * The timeout used to detect share group member failures. Example: `45000`.
+     */
+    groupShareSessionTimeoutMs?: number;
     /**
      * How long are delete records retained? (Default: 86400000 (1 day)).
      */
@@ -3212,6 +3272,25 @@ export interface GetKafkaKafkaUserConfigKafka {
      * The transaction topic segment bytes should be kept relatively small in order to facilitate faster log compaction and cache loads (Default: 104857600 bytes (100 mebibytes)).
      */
     transactionStateLogSegmentBytes?: number;
+}
+
+export interface GetKafkaKafkaUserConfigKafkaAuditLog {
+    /**
+     * Aggregation period in seconds over which audit log entries are batched before being emitted. Default: `300`.
+     */
+    aggregationPeriodSec?: number;
+    /**
+     * Enum: `user`, `userAndIp`. Group audit log entries by user or by user and IP address. Only valid when recordType is user_operations. Default: `userAndIp`.
+     */
+    groupBy?: string;
+    /**
+     * Whether to include denied authorization attempts in the audit log. Default: `false`.
+     */
+    includeDenials?: boolean;
+    /**
+     * Enum: `userActivity`, `userOperations`. userOperations records individual Kafka API calls (produce, fetch, etc.). userActivity records higher-level user actions. Default: `userOperations`.
+     */
+    recordType?: string;
 }
 
 export interface GetKafkaKafkaUserConfigKafkaAuthenticationMethods {
@@ -3754,6 +3833,36 @@ export interface GetKafkaMirrorMakerTechEmail {
     email: string;
 }
 
+export interface GetKafkaSchemaConfigurationReference {
+    /**
+     * The name used to reference the provided subject and version. Maximum length: `1024`.
+     */
+    name: string;
+    /**
+     * Subject. Maximum length: `1024`.
+     */
+    subject: string;
+    /**
+     * Version.
+     */
+    version: number;
+}
+
+export interface GetKafkaSchemaReference {
+    /**
+     * The name used to reference the provided subject and version. Maximum length: `1024`.
+     */
+    name: string;
+    /**
+     * Subject. Maximum length: `1024`.
+     */
+    subject: string;
+    /**
+     * Version.
+     */
+    version: number;
+}
+
 export interface GetKafkaSchemaRegistryAclTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
@@ -3794,123 +3903,123 @@ export interface GetKafkaTopicConfig {
     /**
      * The retention policy to use on old segments. Possible values include 'delete', 'compact', or a comma-separated list of them. The default policy ('delete') will discard old segments when their retention time or size limit has been reached. The 'compact' setting will enable log compaction on the topic. The possible values are `compact`, `compact,delete` and `delete`.
      */
-    cleanupPolicy?: string;
+    cleanupPolicy: string;
     /**
      * Specify the final compression type for a given topic. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'uncompressed' which is equivalent to no compression; and 'producer' which means retain the original compression codec set by the producer. The possible values are `gzip`, `lz4`, `producer`, `snappy`, `uncompressed` and `zstd`.
      */
-    compressionType?: string;
+    compressionType: string;
     /**
      * The amount of time to retain delete tombstone markers for log compacted topics. This setting also gives a bound on the time in which a consumer must complete a read if they begin from offset 0 to ensure that they get a valid snapshot of the final stage (otherwise delete tombstones may be collected before they complete their scan).
      */
-    deleteRetentionMs?: string;
+    deleteRetentionMs: string;
     /**
-     * Creates a [diskless topic](https://aiven.io/docs/products/diskless). You can only do this when you create the topic and you cannot change it later. Diskless topics are only available for bring your own cloud (BYOC) services that have the feature enabled.
+     * Indicates whether diskless should be enabled. This is only available for BYOC services with Diskless feature enabled.
      */
-    disklessEnable?: boolean;
+    disklessEnable: boolean;
     /**
      * The time to wait before deleting a file from the filesystem.
      */
-    fileDeleteDelayMs?: string;
+    fileDeleteDelayMs: string;
     /**
      * This setting allows specifying an interval at which we will force an fsync of data written to the log. For example if this was set to 1 we would fsync after every message; if it were 5 we would fsync after every five messages. In general we recommend you not set this and use replication for durability and allow the operating system's background flush capabilities as it is more efficient.
      */
-    flushMessages?: string;
+    flushMessages: string;
     /**
      * This setting allows specifying a time interval at which we will force an fsync of data written to the log. For example if this was set to 1000 we would fsync after 1000 ms had passed. In general we recommend you not set this and use replication for durability and allow the operating system's background flush capabilities as it is more efficient.
      */
-    flushMs?: string;
+    flushMs: string;
     /**
      * This setting controls how frequently Kafka adds an index entry to its offset index. The default setting ensures that we index a message roughly every 4096 bytes. More indexing allows reads to jump closer to the exact position in the log but makes the index larger. You probably don't need to change this.
      */
-    indexIntervalBytes?: string;
+    indexIntervalBytes: string;
     /**
-     * This configuration controls the maximum bytes tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the limit is equal to overall retention time. If set to -1, no limit is applied but it's possible only if overall retention is also -1.
+     * This configuration controls the maximum bytes tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the limit is equal to overall retention time. If set to -1, no limit is applied but it's possible only if overall retention is also -1. The field is required with `retentionBytes`.
      */
-    localRetentionBytes?: string;
+    localRetentionBytes: string;
     /**
-     * This configuration controls the maximum time tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the time limit is equal to overall retention time. If set to -1, no time limit is applied but it's possible only if overall retention is also -1.
+     * This configuration controls the maximum time tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the time limit is equal to overall retention time. If set to -1, no time limit is applied but it's possible only if overall retention is also -1. The field is required with `retentionMs`.
      */
-    localRetentionMs?: string;
+    localRetentionMs: string;
     /**
      * The maximum time a message will remain ineligible for compaction in the log. Only applicable for logs that are being compacted.
      */
-    maxCompactionLagMs?: string;
+    maxCompactionLagMs: string;
     /**
      * The largest record batch size allowed by Kafka (after compression if compression is enabled). If this is increased and there are consumers older than 0.10.2, the consumers' fetch size must also be increased so that the they can fetch record batches this large. In the latest message format version, records are always grouped into batches for efficiency. In previous message format versions, uncompressed records are not grouped into batches and this limit only applies to a single record in that case.
      */
-    maxMessageBytes?: string;
+    maxMessageBytes: string;
     /**
      * This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests. When set to false, broker will not perform down-conversion for consumers expecting an older message format. The broker responds with UNSUPPORTED_VERSION error for consume requests from such older clients. This configuration does not apply to any message format conversion that might be required for replication to followers.
      */
-    messageDownconversionEnable?: boolean;
+    messageDownconversionEnable: boolean;
     /**
      * Specify the message format version the broker will use to append messages to the logs. The value should be a valid ApiVersion. Some examples are: 0.8.2, 0.9.0.0, 0.10.0, check ApiVersion for more details. By setting a particular message format version, the user is certifying that all the existing messages on disk are smaller or equal than the specified version. Setting this value incorrectly will cause consumers with older versions to break as they will receive messages with a format that they don't understand. Deprecated in Kafka 4.0+: this configuration is removed and any supplied value will be ignored; for services upgraded to 4.0+, the returned value may be 'None'. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.0`, `4.0-IV0`, `4.1`, `4.1-IV0`, `4.2` and `4.2-IV0`.
      */
-    messageFormatVersion?: string;
+    messageFormatVersion: string;
     /**
      * The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps later than the broker's timestamp.
      */
-    messageTimestampAfterMaxMs?: string;
+    messageTimestampAfterMaxMs: string;
     /**
      * The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps earlier than the broker's timestamp.
      */
-    messageTimestampBeforeMaxMs?: string;
+    messageTimestampBeforeMaxMs: string;
     /**
      * The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. This configuration is ignored if message.timestamp.type=LogAppendTime.
      */
-    messageTimestampDifferenceMaxMs?: string;
+    messageTimestampDifferenceMaxMs: string;
     /**
      * Define whether the timestamp in the message is message create time or log append time. The possible values are `CreateTime` and `LogAppendTime`.
      */
-    messageTimestampType?: string;
+    messageTimestampType: string;
     /**
      * This configuration controls how frequently the log compactor will attempt to clean the log (assuming log compaction is enabled). By default we will avoid cleaning a log where more than 50% of the log has been compacted. This ratio bounds the maximum space wasted in the log by duplicates (at 50% at most 50% of the log could be duplicates). A higher ratio will mean fewer, more efficient cleanings but will mean more wasted space in the log. If the max.compaction.lag.ms or the min.compaction.lag.ms configurations are also specified, then the log compactor considers the log to be eligible for compaction as soon as either: (i) the dirty ratio threshold has been met and the log has had dirty (uncompacted) records for at least the min.compaction.lag.ms duration, or (ii) if the log has had dirty (uncompacted) records for at most the max.compaction.lag.ms period.
      */
-    minCleanableDirtyRatio?: number;
+    minCleanableDirtyRatio: number;
     /**
      * The minimum time a message will remain uncompacted in the log. Only applicable for logs that are being compacted.
      */
-    minCompactionLagMs?: string;
+    minCompactionLagMs: string;
     /**
      * When a producer sets acks to 'all' (or '-1'), this configuration specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful. If this minimum cannot be met, then the producer will raise an exception (either NotEnoughReplicas or NotEnoughReplicasAfterAppend). When used together, min.insync.replicas and acks allow you to enforce greater durability guarantees. A typical scenario would be to create a topic with a replication factor of 3, set min.insync.replicas to 2, and produce with acks of 'all'. This will ensure that the producer raises an exception if a majority of replicas do not receive a write.
      */
-    minInsyncReplicas?: string;
+    minInsyncReplicas: string;
     /**
      * True if we should preallocate the file on disk when creating a new log segment.
      */
-    preallocate?: boolean;
+    preallocate: boolean;
     /**
      * Indicates whether tiered storage should be enabled. This is only available for services with Tiered Storage feature enabled.
      */
-    remoteStorageEnable?: boolean;
+    remoteStorageEnable: boolean;
     /**
      * This configuration controls the maximum size a partition (which consists of log segments) can grow to before we will discard old log segments to free up space if we are using the 'delete' retention policy. By default there is no size limit only a time limit. Since this limit is enforced at the partition level, multiply it by the number of partitions to compute the topic retention in bytes.
      */
-    retentionBytes?: string;
+    retentionBytes: string;
     /**
      * This configuration controls the maximum time we will retain a log before we will discard old log segments to free up space if we are using the 'delete' retention policy. This represents an SLA on how soon consumers must read their data. If set to -1, no time limit is applied.
      */
-    retentionMs?: string;
+    retentionMs: string;
     /**
      * This configuration controls the segment file size for the log. Retention and cleaning is always done a file at a time so a larger segment size means fewer files but less granular control over retention. Setting this to a very low value has consequences, and the Aiven management plane ignores values less than 10 megabytes.
      */
-    segmentBytes?: string;
+    segmentBytes: string;
     /**
      * This configuration controls the size of the index that maps offsets to file positions. We preallocate this index file and shrink it only after log rolls. You generally should not need to change this setting.
      */
-    segmentIndexBytes?: string;
+    segmentIndexBytes: string;
     /**
-     * The maximum random jitter subtracted from the scheduled segment roll time to avoid thundering herds of segment rolling
+     * The maximum random jitter subtracted from the scheduled segment roll time to avoid thundering herds of segment rolling.
      */
-    segmentJitterMs?: string;
+    segmentJitterMs: string;
     /**
      * This configuration controls the period of time after which Kafka will force the log to roll even if the segment file isn't full to ensure that retention can delete or compact old data. Setting this to a very low value has consequences, and the Aiven management plane ignores values less than 10 seconds.
      */
-    segmentMs?: string;
+    segmentMs: string;
     /**
      * Indicates whether to enable replicas not in the ISR set to be elected as leader as a last resort, even though doing so may result in data loss.
      */
-    uncleanLeaderElectionEnable?: boolean;
+    uncleanLeaderElectionEnable: boolean;
 }
 
 export interface GetKafkaTopicListTimeouts {
@@ -3988,13 +4097,20 @@ export interface GetKafkaTopicListTopicTag {
 
 export interface GetKafkaTopicTag {
     /**
-     * Tag key. Maximum length: `64`.
+     * Tag key.
      */
     key: string;
     /**
-     * Tag value. Maximum length: `256`.
+     * Tag value.
      */
-    value?: string;
+    value: string;
+}
+
+export interface GetKafkaTopicTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: string;
 }
 
 export interface GetMySqlComponent {
@@ -4255,6 +4371,10 @@ export interface GetMySqlMysqlUserConfigMysql {
      */
     informationSchemaStatsExpiry?: number;
     /**
+     * Whether InnoDB adaptive hash indexing is enabled. The optimal setting is workload-dependent: it speeds up lookups for some workloads but its internal latch can become a contention point under high concurrency, in which case disabling it can improve throughput.
+     */
+    innodbAdaptiveHashIndex?: boolean;
+    /**
      * Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25. Example: `30`.
      */
     innodbChangeBufferMaxSize?: number;
@@ -4270,6 +4390,14 @@ export interface GetMySqlMysqlUserConfigMysql {
      * This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables. Example: `db_name/table_name`.
      */
     innodbFtServerStopwordTable?: string;
+    /**
+     * The number of I/O operations per second (IOPS) available to InnoDB background tasks, such as flushing pages from the buffer pool and merging data from the change buffer. Set this to a value appropriate for the underlying storage; it must not exceed innodb_io_capacity_max. Example: `2000`.
+     */
+    innodbIoCapacity?: number;
+    /**
+     * The maximum number of I/O operations per second (IOPS) that InnoDB background tasks may perform when flushing falls behind. Defaults to twice innodbIoCapacity (minimum 2000). This must be greater than or equal to innodb_io_capacity.
+     */
+    innodbIoCapacityMax?: number;
     /**
      * The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120. Example: `50`.
      */
@@ -4346,6 +4474,10 @@ export interface GetMySqlMysqlUserConfigMysql {
      * The number of rows per thread in the eventsStatementsHistory table. Changing this parameter will lead to a restart of the MySQL service.
      */
     performanceSchemaEventsStatementsHistorySize?: number;
+    /**
+     * The maximum amount of space in bytes to use for all relay logs while replicating from an external migration source. When the limit is reached, the replication I/O thread stops fetching relay log events until the SQL thread has caught up. Raise this to give a large migration a bigger relay-log budget; ensure the service disk is sized accordingly. The setting applies only on the node replicating from the external source; standby nodes always use the Aiven-managed default (the smaller of 5 GiB and 30% of the service disk), which is also used when this option is left unset. Changing this parameter will lead to a restart of the MySQL service.
+     */
+    relayLogSpaceLimit?: number;
     /**
      * Slow query log enables capturing of slow queries. Setting slowQueryLog to false also truncates the mysql.slow_log table.
      */
@@ -4694,6 +4826,14 @@ export interface GetOpenSearchOpensearchUserConfigAzureMigration {
      */
     key?: string;
     /**
+     * Throttles the restore rate per node. Defaults to unlimited. Note that if the recovery settings for managed services are set, this value is overridden by the recovery settings. Value should be a byte size with unit, e.g. 40mb, 100kb, 1gb.
+     */
+    maxRestoreBytesPerSec?: string;
+    /**
+     * Throttles the snapshot rate per node. Defaults to 40mb. Note that if the recovery settings for managed services are set, this value is overridden by the recovery settings. Value should be a byte size with unit, e.g. 40mb, 100kb, 1gb.
+     */
+    maxSnapshotBytesPerSec?: string;
+    /**
      * Whether the repository is read-only. Default: `true`.
      */
     readonly?: boolean;
@@ -4740,6 +4880,14 @@ export interface GetOpenSearchOpensearchUserConfigGcsMigration {
      * A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. Example: `metrics*,logs*,data-20240823`.
      */
     indices: string;
+    /**
+     * Throttles the restore rate per node. Defaults to unlimited. Note that if the recovery settings for managed services are set, this value is overridden by the recovery settings. Value should be a byte size with unit, e.g. 40mb, 100kb, 1gb.
+     */
+    maxRestoreBytesPerSec?: string;
+    /**
+     * Throttles the snapshot rate per node. Defaults to 40mb. Note that if the recovery settings for managed services are set, this value is overridden by the recovery settings. Value should be a byte size with unit, e.g. 40mb, 100kb, 1gb.
+     */
+    maxSnapshotBytesPerSec?: string;
     /**
      * Whether the repository is read-only. Default: `true`.
      */
@@ -5642,6 +5790,14 @@ export interface GetOpenSearchOpensearchUserConfigS3Migration {
      * A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. Example: `metrics*,logs*,data-20240823`.
      */
     indices: string;
+    /**
+     * Throttles the restore rate per node. Defaults to unlimited. Note that if the recovery settings for managed services are set, this value is overridden by the recovery settings. Value should be a byte size with unit, e.g. 40mb, 100kb, 1gb.
+     */
+    maxRestoreBytesPerSec?: string;
+    /**
+     * Throttles the snapshot rate per node. Defaults to 40mb. Note that if the recovery settings for managed services are set, this value is overridden by the recovery settings. Value should be a byte size with unit, e.g. 40mb, 100kb, 1gb.
+     */
+    maxSnapshotBytesPerSec?: string;
     /**
      * Whether the repository is read-only. Default: `true`.
      */
@@ -7702,6 +7858,10 @@ export interface GetServiceIntegrationEndpointRsyslogUserConfig {
      */
     cert?: string;
     /**
+     * When true, embedded newlines in a log message are escaped so a multi-line record (e.g. a stack trace) is delivered as one complete log entry. Useful for newline-delimited cloud log intakes that drop continuation lines. Default: `false`.
+     */
+    escapeNewlines?: boolean;
+    /**
      * Enum: `custom`, `rfc3164`, `rfc5424`. Message format. Default: `rfc5424`.
      */
     format: string;
@@ -8089,6 +8249,13 @@ export interface GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf {
      * Only include perfEventsStatements whose last seen is less than this many seconds. Example: `86400`.
      */
     perfEventsStatementsTimeLimit?: number;
+}
+
+export interface GetServiceIntegrationRsyslogUserConfig {
+    /**
+     * Per-service override for escaping embedded newlines in log messages. When set, it overrides the rsyslog endpoint setting for this service. When unset, the endpoint setting applies.
+     */
+    escapeNewlines?: boolean;
 }
 
 export interface GetServiceListService {
@@ -9991,7 +10158,7 @@ export interface KafkaKafkaUserConfig {
      */
     kafkaSaslMechanisms?: outputs.KafkaKafkaUserConfigKafkaSaslMechanisms;
     /**
-     * Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, `4.1`, and newer. Kafka major version.
+     * Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, `4.1`, `4.2`, and newer. Kafka major version.
      */
     kafkaVersion?: string;
     /**
@@ -10071,6 +10238,10 @@ export interface KafkaKafkaUserConfigIpFilterObject {
 
 export interface KafkaKafkaUserConfigKafka {
     /**
+     * Enable Kafka audit logging by providing this object. Removing it disables the feature. Enabling, updating, or disabling audit logging causes a rolling restart of all Kafka brokers
+     */
+    auditLog?: outputs.KafkaKafkaUserConfigKafkaAuditLog;
+    /**
      * Enable auto-creation of topics. (Default: false).
      */
     autoCreateTopicsEnable?: boolean;
@@ -10087,6 +10258,10 @@ export interface KafkaKafkaUserConfigKafka {
      */
     defaultReplicationFactor?: number;
     /**
+     * Enum: `classic`, `classic,consumer`, `classic,consumer,share`, `classic,consumer,share,streams`, `classic,consumer,streams`, `classic,share`, `classic,streams`. The enabled consumer group rebalance protocols. Use consumer, classic, share, streams to enable Kafka share groups.
+     */
+    groupCoordinatorRebalanceProtocols?: string;
+    /**
      * The amount of time, in milliseconds, the group coordinator will wait for more consumers to join a new group before performing the first rebalance. A longer delay means potentially fewer rebalances, but increases the time until processing begins. The default value for this is 3 seconds. During development and testing it might be desirable to set this to 0 in order to not delay test execution time. (Default: 3000 ms (3 seconds)). Example: `3000`.
      */
     groupInitialRebalanceDelayMs?: number;
@@ -10098,6 +10273,58 @@ export interface KafkaKafkaUserConfigKafka {
      * The minimum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. (Default: 6000 ms (6 seconds)). Example: `6000`.
      */
     groupMinSessionTimeoutMs?: number;
+    /**
+     * The maximum delivery attempts for a share-group record. Example: `5`.
+     */
+    groupShareDeliveryCountLimit?: number;
+    /**
+     * The heartbeat interval used by share group members. Example: `5000`.
+     */
+    groupShareHeartbeatIntervalMs?: number;
+    /**
+     * The maximum number of share groups allowed on the broker.
+     */
+    groupShareMaxGroups?: number;
+    /**
+     * The maximum heartbeat interval allowed for share group members. Example: `15000`.
+     */
+    groupShareMaxHeartbeatIntervalMs?: number;
+    /**
+     * The maximum record lock duration allowed for share groups. Example: `60000`.
+     */
+    groupShareMaxRecordLockDurationMs?: number;
+    /**
+     * The maximum session timeout allowed for share group members. Example: `60000`.
+     */
+    groupShareMaxSessionTimeoutMs?: number;
+    /**
+     * The maximum number of members allowed in a share group. Example: `200`.
+     */
+    groupShareMaxSize?: number;
+    /**
+     * The minimum heartbeat interval allowed for share group members. Example: `5000`.
+     */
+    groupShareMinHeartbeatIntervalMs?: number;
+    /**
+     * The minimum record lock duration allowed for share groups. Example: `15000`.
+     */
+    groupShareMinRecordLockDurationMs?: number;
+    /**
+     * The minimum session timeout allowed for share group members. Example: `45000`.
+     */
+    groupShareMinSessionTimeoutMs?: number;
+    /**
+     * The maximum number of record locks allowed per share group partition. Example: `2000`.
+     */
+    groupSharePartitionMaxRecordLocks?: number;
+    /**
+     * The duration for which a fetched share-group record is locked. Example: `30000`.
+     */
+    groupShareRecordLockDurationMs?: number;
+    /**
+     * The timeout used to detect share group member failures. Example: `45000`.
+     */
+    groupShareSessionTimeoutMs?: number;
     /**
      * How long are delete records retained? (Default: 86400000 (1 day)).
      */
@@ -10262,6 +10489,25 @@ export interface KafkaKafkaUserConfigKafka {
      * The transaction topic segment bytes should be kept relatively small in order to facilitate faster log compaction and cache loads (Default: 104857600 bytes (100 mebibytes)).
      */
     transactionStateLogSegmentBytes?: number;
+}
+
+export interface KafkaKafkaUserConfigKafkaAuditLog {
+    /**
+     * Aggregation period in seconds over which audit log entries are batched before being emitted. Default: `300`.
+     */
+    aggregationPeriodSec?: number;
+    /**
+     * Enum: `user`, `userAndIp`. Group audit log entries by user or by user and IP address. Only valid when record*type is user*operations. Default: `userAndIp`.
+     */
+    groupBy?: string;
+    /**
+     * Whether to include denied authorization attempts in the audit log. Default: `false`.
+     */
+    includeDenials?: boolean;
+    /**
+     * Enum: `userActivity`, `userOperations`. user*operations records individual Kafka API calls (produce, fetch, etc.). user*activity records higher-level user actions. Default: `userOperations`.
+     */
+    recordType?: string;
 }
 
 export interface KafkaKafkaUserConfigKafkaAuthenticationMethods {
@@ -10804,6 +11050,21 @@ export interface KafkaMirrorMakerTechEmail {
     email: string;
 }
 
+export interface KafkaSchemaReference {
+    /**
+     * The name used to reference the provided subject and version. Maximum length: `1024`.
+     */
+    name: string;
+    /**
+     * Subject. Maximum length: `1024`.
+     */
+    subject: string;
+    /**
+     * Version.
+     */
+    version: number;
+}
+
 export interface KafkaSchemaRegistryAclTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
@@ -10862,134 +11123,159 @@ export interface KafkaTopicConfig {
     /**
      * The retention policy to use on old segments. Possible values include 'delete', 'compact', or a comma-separated list of them. The default policy ('delete') will discard old segments when their retention time or size limit has been reached. The 'compact' setting will enable log compaction on the topic. The possible values are `compact`, `compact,delete` and `delete`.
      */
-    cleanupPolicy?: string;
+    cleanupPolicy: string;
     /**
      * Specify the final compression type for a given topic. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'uncompressed' which is equivalent to no compression; and 'producer' which means retain the original compression codec set by the producer. The possible values are `gzip`, `lz4`, `producer`, `snappy`, `uncompressed` and `zstd`.
      */
-    compressionType?: string;
+    compressionType: string;
     /**
      * The amount of time to retain delete tombstone markers for log compacted topics. This setting also gives a bound on the time in which a consumer must complete a read if they begin from offset 0 to ensure that they get a valid snapshot of the final stage (otherwise delete tombstones may be collected before they complete their scan).
      */
-    deleteRetentionMs?: string;
+    deleteRetentionMs: string;
     /**
-     * Creates a [diskless topic](https://aiven.io/docs/products/diskless). You can only do this when you create the topic and you cannot change it later. Diskless topics are only available for bring your own cloud (BYOC) services that have the feature enabled.
+     * Indicates whether diskless should be enabled. This is only available for BYOC services with Diskless feature enabled.
      */
-    disklessEnable?: boolean;
+    disklessEnable: boolean;
     /**
      * The time to wait before deleting a file from the filesystem.
      */
-    fileDeleteDelayMs?: string;
+    fileDeleteDelayMs: string;
     /**
      * This setting allows specifying an interval at which we will force an fsync of data written to the log. For example if this was set to 1 we would fsync after every message; if it were 5 we would fsync after every five messages. In general we recommend you not set this and use replication for durability and allow the operating system's background flush capabilities as it is more efficient.
      */
-    flushMessages?: string;
+    flushMessages: string;
     /**
      * This setting allows specifying a time interval at which we will force an fsync of data written to the log. For example if this was set to 1000 we would fsync after 1000 ms had passed. In general we recommend you not set this and use replication for durability and allow the operating system's background flush capabilities as it is more efficient.
      */
-    flushMs?: string;
+    flushMs: string;
     /**
      * This setting controls how frequently Kafka adds an index entry to its offset index. The default setting ensures that we index a message roughly every 4096 bytes. More indexing allows reads to jump closer to the exact position in the log but makes the index larger. You probably don't need to change this.
      */
-    indexIntervalBytes?: string;
+    indexIntervalBytes: string;
     /**
-     * This configuration controls the maximum bytes tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the limit is equal to overall retention time. If set to -1, no limit is applied but it's possible only if overall retention is also -1.
+     * This configuration controls the maximum bytes tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the limit is equal to overall retention time. If set to -1, no limit is applied but it's possible only if overall retention is also -1. The field is required with `retentionBytes`.
      */
-    localRetentionBytes?: string;
+    localRetentionBytes: string;
     /**
-     * This configuration controls the maximum time tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the time limit is equal to overall retention time. If set to -1, no time limit is applied but it's possible only if overall retention is also -1.
+     * This configuration controls the maximum time tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the time limit is equal to overall retention time. If set to -1, no time limit is applied but it's possible only if overall retention is also -1. The field is required with `retentionMs`.
      */
-    localRetentionMs?: string;
+    localRetentionMs: string;
     /**
      * The maximum time a message will remain ineligible for compaction in the log. Only applicable for logs that are being compacted.
      */
-    maxCompactionLagMs?: string;
+    maxCompactionLagMs: string;
     /**
      * The largest record batch size allowed by Kafka (after compression if compression is enabled). If this is increased and there are consumers older than 0.10.2, the consumers' fetch size must also be increased so that the they can fetch record batches this large. In the latest message format version, records are always grouped into batches for efficiency. In previous message format versions, uncompressed records are not grouped into batches and this limit only applies to a single record in that case.
      */
-    maxMessageBytes?: string;
+    maxMessageBytes: string;
     /**
      * This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests. When set to false, broker will not perform down-conversion for consumers expecting an older message format. The broker responds with UNSUPPORTED_VERSION error for consume requests from such older clients. This configuration does not apply to any message format conversion that might be required for replication to followers.
      */
-    messageDownconversionEnable?: boolean;
+    messageDownconversionEnable: boolean;
     /**
      * Specify the message format version the broker will use to append messages to the logs. The value should be a valid ApiVersion. Some examples are: 0.8.2, 0.9.0.0, 0.10.0, check ApiVersion for more details. By setting a particular message format version, the user is certifying that all the existing messages on disk are smaller or equal than the specified version. Setting this value incorrectly will cause consumers with older versions to break as they will receive messages with a format that they don't understand. Deprecated in Kafka 4.0+: this configuration is removed and any supplied value will be ignored; for services upgraded to 4.0+, the returned value may be 'None'. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.0`, `4.0-IV0`, `4.1`, `4.1-IV0`, `4.2` and `4.2-IV0`.
      */
-    messageFormatVersion?: string;
+    messageFormatVersion: string;
     /**
      * The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps later than the broker's timestamp.
      */
-    messageTimestampAfterMaxMs?: string;
+    messageTimestampAfterMaxMs: string;
     /**
      * The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps earlier than the broker's timestamp.
      */
-    messageTimestampBeforeMaxMs?: string;
+    messageTimestampBeforeMaxMs: string;
     /**
      * The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. This configuration is ignored if message.timestamp.type=LogAppendTime.
      */
-    messageTimestampDifferenceMaxMs?: string;
+    messageTimestampDifferenceMaxMs: string;
     /**
      * Define whether the timestamp in the message is message create time or log append time. The possible values are `CreateTime` and `LogAppendTime`.
      */
-    messageTimestampType?: string;
+    messageTimestampType: string;
     /**
-     * This configuration controls how frequently the log compactor will attempt to clean the log (assuming log compaction is enabled). By default we will avoid cleaning a log where more than 50% of the log has been compacted. This ratio bounds the maximum space wasted in the log by duplicates (at 50% at most 50% of the log could be duplicates). A higher ratio will mean fewer, more efficient cleanings but will mean more wasted space in the log. If the max.compaction.lag.ms or the min.compaction.lag.ms configurations are also specified, then the log compactor considers the log to be eligible for compaction as soon as either: (i) the dirty ratio threshold has been met and the log has had dirty (uncompacted) records for at least the min.compaction.lag.ms duration, or (ii) if the log has had dirty (uncompacted) records for at most the max.compaction.lag.ms period.
+     * This configuration controls how frequently the log compactor will attempt to clean the log (assuming log compaction is enabled). By default we will avoid cleaning a log where more than 50% of the log has been compacted. This ratio bounds the maximum space wasted in the log by duplicates (at 50% at most 50% of the log could be duplicates). A higher ratio will mean fewer, more efficient cleanings but will mean more wasted space in the log. If the max.compaction.lag.ms or the min.compaction.lag.ms configurations are also specified, then the log compactor considers the log to be eligible for compaction as soon as either: (i) the dirty ratio threshold has been met and the log has had dirty (uncompacted) records for at least the min.compaction.lag.ms duration, or (ii) if the log has had dirty (uncompacted) records for at most the max.compaction.lag.ms period. Maximum value: `1`.
      */
-    minCleanableDirtyRatio?: number;
+    minCleanableDirtyRatio: number;
     /**
      * The minimum time a message will remain uncompacted in the log. Only applicable for logs that are being compacted.
      */
-    minCompactionLagMs?: string;
+    minCompactionLagMs: string;
     /**
-     * When a producer sets acks to 'all' (or '-1'), this configuration specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful. If this minimum cannot be met, then the producer will raise an exception (either NotEnoughReplicas or NotEnoughReplicasAfterAppend). When used together, min.insync.replicas and acks allow you to enforce greater durability guarantees. A typical scenario would be to create a topic with a replication factor of 3, set min.insync.replicas to 2, and produce with acks of 'all'. This will ensure that the producer raises an exception if a majority of replicas do not receive a write.
+     * When a producer sets acks to 'all' (or '-1'), this configuration specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful. If this minimum cannot be met, then the producer will raise an exception (either NotEnoughReplicas or NotEnoughReplicasAfterAppend). When used together, min.insync.replicas and acks allow you to enforce greater durability guarantees. A typical scenario would be to create a topic with a replication factor of 3, set min.insync.replicas to 2, and produce with acks of 'all'. This will ensure that the producer raises an exception if a majority of replicas do not receive a write. Minimum value: `1`.
      */
-    minInsyncReplicas?: string;
+    minInsyncReplicas: string;
     /**
      * True if we should preallocate the file on disk when creating a new log segment.
      */
-    preallocate?: boolean;
+    preallocate: boolean;
     /**
      * Indicates whether tiered storage should be enabled. This is only available for services with Tiered Storage feature enabled.
      */
-    remoteStorageEnable?: boolean;
+    remoteStorageEnable: boolean;
     /**
      * This configuration controls the maximum size a partition (which consists of log segments) can grow to before we will discard old log segments to free up space if we are using the 'delete' retention policy. By default there is no size limit only a time limit. Since this limit is enforced at the partition level, multiply it by the number of partitions to compute the topic retention in bytes.
      */
-    retentionBytes?: string;
+    retentionBytes: string;
     /**
      * This configuration controls the maximum time we will retain a log before we will discard old log segments to free up space if we are using the 'delete' retention policy. This represents an SLA on how soon consumers must read their data. If set to -1, no time limit is applied.
      */
-    retentionMs?: string;
+    retentionMs: string;
     /**
-     * This configuration controls the segment file size for the log. Retention and cleaning is always done a file at a time so a larger segment size means fewer files but less granular control over retention. Setting this to a very low value has consequences, and the Aiven management plane ignores values less than 10 megabytes.
+     * This configuration controls the segment file size for the log. Retention and cleaning is always done a file at a time so a larger segment size means fewer files but less granular control over retention. Setting this to a very low value has consequences, and the Aiven management plane ignores values less than 10 megabytes. Minimum value: `14`.
      */
-    segmentBytes?: string;
+    segmentBytes: string;
     /**
      * This configuration controls the size of the index that maps offsets to file positions. We preallocate this index file and shrink it only after log rolls. You generally should not need to change this setting.
      */
-    segmentIndexBytes?: string;
+    segmentIndexBytes: string;
     /**
-     * The maximum random jitter subtracted from the scheduled segment roll time to avoid thundering herds of segment rolling
+     * The maximum random jitter subtracted from the scheduled segment roll time to avoid thundering herds of segment rolling.
      */
-    segmentJitterMs?: string;
+    segmentJitterMs: string;
     /**
-     * This configuration controls the period of time after which Kafka will force the log to roll even if the segment file isn't full to ensure that retention can delete or compact old data. Setting this to a very low value has consequences, and the Aiven management plane ignores values less than 10 seconds.
+     * This configuration controls the period of time after which Kafka will force the log to roll even if the segment file isn't full to ensure that retention can delete or compact old data. Setting this to a very low value has consequences, and the Aiven management plane ignores values less than 10 seconds. Minimum value: `1`.
      */
-    segmentMs?: string;
+    segmentMs: string;
     /**
      * Indicates whether to enable replicas not in the ISR set to be elected as leader as a last resort, even though doing so may result in data loss.
      */
-    uncleanLeaderElectionEnable?: boolean;
+    uncleanLeaderElectionEnable: boolean;
 }
 
 export interface KafkaTopicTag {
     /**
-     * Tag key. Maximum length: `64`.
+     * Tag key. Length must be between `1` and `64`.
      */
     key: string;
     /**
      * Tag value. Maximum length: `256`.
      */
     value?: string;
+}
+
+export interface KafkaTopicTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: string;
+    /**
+     * Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+     *
+     * @deprecated Use operation-specific timeouts instead. This field will be removed in the next major version.
+     */
+    default?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: string;
 }
 
 export interface MySqlComponent {
@@ -11250,6 +11536,10 @@ export interface MySqlMysqlUserConfigMysql {
      */
     informationSchemaStatsExpiry?: number;
     /**
+     * Whether InnoDB adaptive hash indexing is enabled. The optimal setting is workload-dependent: it speeds up lookups for some workloads but its internal latch can become a contention point under high concurrency, in which case disabling it can improve throughput.
+     */
+    innodbAdaptiveHashIndex?: boolean;
+    /**
      * Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25. Example: `30`.
      */
     innodbChangeBufferMaxSize?: number;
@@ -11265,6 +11555,14 @@ export interface MySqlMysqlUserConfigMysql {
      * This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables. Example: `db_name/table_name`.
      */
     innodbFtServerStopwordTable?: string;
+    /**
+     * The number of I/O operations per second (IOPS) available to InnoDB background tasks, such as flushing pages from the buffer pool and merging data from the change buffer. Set this to a value appropriate for the underlying storage; it must not exceed innodb*io*capacity_max. Example: `2000`.
+     */
+    innodbIoCapacity?: number;
+    /**
+     * The maximum number of I/O operations per second (IOPS) that InnoDB background tasks may perform when flushing falls behind. Defaults to twice innodb*io*capacity (minimum 2000). This must be greater than or equal to innodb*io*capacity.
+     */
+    innodbIoCapacityMax?: number;
     /**
      * The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120. Example: `50`.
      */
@@ -11341,6 +11639,10 @@ export interface MySqlMysqlUserConfigMysql {
      * The number of rows per thread in the events*statements*history table. Changing this parameter will lead to a restart of the MySQL service.
      */
     performanceSchemaEventsStatementsHistorySize?: number;
+    /**
+     * The maximum amount of space in bytes to use for all relay logs while replicating from an external migration source. When the limit is reached, the replication I/O thread stops fetching relay log events until the SQL thread has caught up. Raise this to give a large migration a bigger relay-log budget; ensure the service disk is sized accordingly. The setting applies only on the node replicating from the external source; standby nodes always use the Aiven-managed default (the smaller of 5 GiB and 30% of the service disk), which is also used when this option is left unset. Changing this parameter will lead to a restart of the MySQL service.
+     */
+    relayLogSpaceLimit?: number;
     /**
      * Slow query log enables capturing of slow queries. Setting slow*query*log to false also truncates the mysql.slow_log table.
      */
@@ -11725,6 +12027,14 @@ export interface OpenSearchOpensearchUserConfigAzureMigration {
      */
     key?: string;
     /**
+     * Throttles the restore rate per node. Defaults to unlimited. Note that if the recovery settings for managed services are set, this value is overridden by the recovery settings. Value should be a byte size with unit, e.g. 40mb, 100kb, 1gb.
+     */
+    maxRestoreBytesPerSec?: string;
+    /**
+     * Throttles the snapshot rate per node. Defaults to 40mb. Note that if the recovery settings for managed services are set, this value is overridden by the recovery settings. Value should be a byte size with unit, e.g. 40mb, 100kb, 1gb.
+     */
+    maxSnapshotBytesPerSec?: string;
+    /**
      * Whether the repository is read-only. Default: `true`.
      */
     readonly?: boolean;
@@ -11771,6 +12081,14 @@ export interface OpenSearchOpensearchUserConfigGcsMigration {
      * A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. Example: `metrics*,logs*,data-20240823`.
      */
     indices: string;
+    /**
+     * Throttles the restore rate per node. Defaults to unlimited. Note that if the recovery settings for managed services are set, this value is overridden by the recovery settings. Value should be a byte size with unit, e.g. 40mb, 100kb, 1gb.
+     */
+    maxRestoreBytesPerSec?: string;
+    /**
+     * Throttles the snapshot rate per node. Defaults to 40mb. Note that if the recovery settings for managed services are set, this value is overridden by the recovery settings. Value should be a byte size with unit, e.g. 40mb, 100kb, 1gb.
+     */
+    maxSnapshotBytesPerSec?: string;
     /**
      * Whether the repository is read-only. Default: `true`.
      */
@@ -12674,6 +12992,14 @@ export interface OpenSearchOpensearchUserConfigS3Migration {
      */
     indices: string;
     /**
+     * Throttles the restore rate per node. Defaults to unlimited. Note that if the recovery settings for managed services are set, this value is overridden by the recovery settings. Value should be a byte size with unit, e.g. 40mb, 100kb, 1gb.
+     */
+    maxRestoreBytesPerSec?: string;
+    /**
+     * Throttles the snapshot rate per node. Defaults to 40mb. Note that if the recovery settings for managed services are set, this value is overridden by the recovery settings. Value should be a byte size with unit, e.g. 40mb, 100kb, 1gb.
+     */
+    maxSnapshotBytesPerSec?: string;
+    /**
      * Whether the repository is read-only. Default: `true`.
      */
     readonly?: boolean;
@@ -12938,7 +13264,7 @@ export interface OrganizationPermissionPermission {
      */
     createTime: string;
     /**
-     * List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant". The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `readOnly`, `role:organization:admin`, `role:project:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:metrics:read`, `service:secrets:read` and `service:users:write`.
+     * List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant". The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:sustainability:read`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `readOnly`, `role:organization:admin`, `role:project:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:metrics:read`, `service:secrets:read` and `service:users:write`.
      */
     permissions: string[];
     /**
@@ -14719,6 +15045,10 @@ export interface ServiceIntegrationEndpointRsyslogUserConfig {
      */
     cert?: string;
     /**
+     * When true, embedded newlines in a log message are escaped so a multi-line record (e.g. a stack trace) is delivered as one complete log entry. Useful for newline-delimited cloud log intakes that drop continuation lines. Default: `false`.
+     */
+    escapeNewlines?: boolean;
+    /**
      * Enum: `custom`, `rfc3164`, `rfc5424`. Message format. Default: `rfc5424`.
      */
     format: string;
@@ -15106,6 +15436,13 @@ export interface ServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf {
      * Only include perf*events*statements whose last seen is less than this many seconds. Example: `86400`.
      */
     perfEventsStatementsTimeLimit?: number;
+}
+
+export interface ServiceIntegrationRsyslogUserConfig {
+    /**
+     * Per-service override for escaping embedded newlines in log messages. When set, it overrides the rsyslog endpoint setting for this service. When unset, the endpoint setting applies.
+     */
+    escapeNewlines?: boolean;
 }
 
 export interface StaticIpTimeouts {

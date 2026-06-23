@@ -13,6 +13,1009 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetOrganizationBillingGroupListTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Read *string `pulumi:"read"`
+}
+
+// GetOrganizationBillingGroupListTimeoutsInput is an input type that accepts GetOrganizationBillingGroupListTimeoutsArgs and GetOrganizationBillingGroupListTimeoutsOutput values.
+// You can construct a concrete instance of `GetOrganizationBillingGroupListTimeoutsInput` via:
+//
+//	GetOrganizationBillingGroupListTimeoutsArgs{...}
+type GetOrganizationBillingGroupListTimeoutsInput interface {
+	pulumi.Input
+
+	ToGetOrganizationBillingGroupListTimeoutsOutput() GetOrganizationBillingGroupListTimeoutsOutput
+	ToGetOrganizationBillingGroupListTimeoutsOutputWithContext(context.Context) GetOrganizationBillingGroupListTimeoutsOutput
+}
+
+type GetOrganizationBillingGroupListTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Read pulumi.StringPtrInput `pulumi:"read"`
+}
+
+func (GetOrganizationBillingGroupListTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationBillingGroupListTimeouts)(nil)).Elem()
+}
+
+func (i GetOrganizationBillingGroupListTimeoutsArgs) ToGetOrganizationBillingGroupListTimeoutsOutput() GetOrganizationBillingGroupListTimeoutsOutput {
+	return i.ToGetOrganizationBillingGroupListTimeoutsOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationBillingGroupListTimeoutsArgs) ToGetOrganizationBillingGroupListTimeoutsOutputWithContext(ctx context.Context) GetOrganizationBillingGroupListTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationBillingGroupListTimeoutsOutput)
+}
+
+func (i GetOrganizationBillingGroupListTimeoutsArgs) ToGetOrganizationBillingGroupListTimeoutsPtrOutput() GetOrganizationBillingGroupListTimeoutsPtrOutput {
+	return i.ToGetOrganizationBillingGroupListTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationBillingGroupListTimeoutsArgs) ToGetOrganizationBillingGroupListTimeoutsPtrOutputWithContext(ctx context.Context) GetOrganizationBillingGroupListTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationBillingGroupListTimeoutsOutput).ToGetOrganizationBillingGroupListTimeoutsPtrOutputWithContext(ctx)
+}
+
+// GetOrganizationBillingGroupListTimeoutsPtrInput is an input type that accepts GetOrganizationBillingGroupListTimeoutsArgs, GetOrganizationBillingGroupListTimeoutsPtr and GetOrganizationBillingGroupListTimeoutsPtrOutput values.
+// You can construct a concrete instance of `GetOrganizationBillingGroupListTimeoutsPtrInput` via:
+//
+//	        GetOrganizationBillingGroupListTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetOrganizationBillingGroupListTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToGetOrganizationBillingGroupListTimeoutsPtrOutput() GetOrganizationBillingGroupListTimeoutsPtrOutput
+	ToGetOrganizationBillingGroupListTimeoutsPtrOutputWithContext(context.Context) GetOrganizationBillingGroupListTimeoutsPtrOutput
+}
+
+type getOrganizationBillingGroupListTimeoutsPtrType GetOrganizationBillingGroupListTimeoutsArgs
+
+func GetOrganizationBillingGroupListTimeoutsPtr(v *GetOrganizationBillingGroupListTimeoutsArgs) GetOrganizationBillingGroupListTimeoutsPtrInput {
+	return (*getOrganizationBillingGroupListTimeoutsPtrType)(v)
+}
+
+func (*getOrganizationBillingGroupListTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOrganizationBillingGroupListTimeouts)(nil)).Elem()
+}
+
+func (i *getOrganizationBillingGroupListTimeoutsPtrType) ToGetOrganizationBillingGroupListTimeoutsPtrOutput() GetOrganizationBillingGroupListTimeoutsPtrOutput {
+	return i.ToGetOrganizationBillingGroupListTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *getOrganizationBillingGroupListTimeoutsPtrType) ToGetOrganizationBillingGroupListTimeoutsPtrOutputWithContext(ctx context.Context) GetOrganizationBillingGroupListTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationBillingGroupListTimeoutsPtrOutput)
+}
+
+type GetOrganizationBillingGroupListTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationBillingGroupListTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationBillingGroupListTimeouts)(nil)).Elem()
+}
+
+func (o GetOrganizationBillingGroupListTimeoutsOutput) ToGetOrganizationBillingGroupListTimeoutsOutput() GetOrganizationBillingGroupListTimeoutsOutput {
+	return o
+}
+
+func (o GetOrganizationBillingGroupListTimeoutsOutput) ToGetOrganizationBillingGroupListTimeoutsOutputWithContext(ctx context.Context) GetOrganizationBillingGroupListTimeoutsOutput {
+	return o
+}
+
+func (o GetOrganizationBillingGroupListTimeoutsOutput) ToGetOrganizationBillingGroupListTimeoutsPtrOutput() GetOrganizationBillingGroupListTimeoutsPtrOutput {
+	return o.ToGetOrganizationBillingGroupListTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o GetOrganizationBillingGroupListTimeoutsOutput) ToGetOrganizationBillingGroupListTimeoutsPtrOutputWithContext(ctx context.Context) GetOrganizationBillingGroupListTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetOrganizationBillingGroupListTimeouts) *GetOrganizationBillingGroupListTimeouts {
+		return &v
+	}).(GetOrganizationBillingGroupListTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o GetOrganizationBillingGroupListTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOrganizationBillingGroupListTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+type GetOrganizationBillingGroupListTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationBillingGroupListTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOrganizationBillingGroupListTimeouts)(nil)).Elem()
+}
+
+func (o GetOrganizationBillingGroupListTimeoutsPtrOutput) ToGetOrganizationBillingGroupListTimeoutsPtrOutput() GetOrganizationBillingGroupListTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetOrganizationBillingGroupListTimeoutsPtrOutput) ToGetOrganizationBillingGroupListTimeoutsPtrOutputWithContext(ctx context.Context) GetOrganizationBillingGroupListTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetOrganizationBillingGroupListTimeoutsPtrOutput) Elem() GetOrganizationBillingGroupListTimeoutsOutput {
+	return o.ApplyT(func(v *GetOrganizationBillingGroupListTimeouts) GetOrganizationBillingGroupListTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret GetOrganizationBillingGroupListTimeouts
+		return ret
+	}).(GetOrganizationBillingGroupListTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o GetOrganizationBillingGroupListTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOrganizationBillingGroupListTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetOrganizationBillingGroupPaymentMethod struct {
+	// Payment method ID.
+	PaymentMethodId string `pulumi:"paymentMethodId"`
+	// An enumeration. The possible values are `awsSubscription`, `azureSubscription`, `bankTransfer`, `creditCard`, `custom` and `gcpSubscription`.
+	PaymentMethodType string `pulumi:"paymentMethodType"`
+}
+
+// GetOrganizationBillingGroupPaymentMethodInput is an input type that accepts GetOrganizationBillingGroupPaymentMethodArgs and GetOrganizationBillingGroupPaymentMethodOutput values.
+// You can construct a concrete instance of `GetOrganizationBillingGroupPaymentMethodInput` via:
+//
+//	GetOrganizationBillingGroupPaymentMethodArgs{...}
+type GetOrganizationBillingGroupPaymentMethodInput interface {
+	pulumi.Input
+
+	ToGetOrganizationBillingGroupPaymentMethodOutput() GetOrganizationBillingGroupPaymentMethodOutput
+	ToGetOrganizationBillingGroupPaymentMethodOutputWithContext(context.Context) GetOrganizationBillingGroupPaymentMethodOutput
+}
+
+type GetOrganizationBillingGroupPaymentMethodArgs struct {
+	// Payment method ID.
+	PaymentMethodId pulumi.StringInput `pulumi:"paymentMethodId"`
+	// An enumeration. The possible values are `awsSubscription`, `azureSubscription`, `bankTransfer`, `creditCard`, `custom` and `gcpSubscription`.
+	PaymentMethodType pulumi.StringInput `pulumi:"paymentMethodType"`
+}
+
+func (GetOrganizationBillingGroupPaymentMethodArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationBillingGroupPaymentMethod)(nil)).Elem()
+}
+
+func (i GetOrganizationBillingGroupPaymentMethodArgs) ToGetOrganizationBillingGroupPaymentMethodOutput() GetOrganizationBillingGroupPaymentMethodOutput {
+	return i.ToGetOrganizationBillingGroupPaymentMethodOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationBillingGroupPaymentMethodArgs) ToGetOrganizationBillingGroupPaymentMethodOutputWithContext(ctx context.Context) GetOrganizationBillingGroupPaymentMethodOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationBillingGroupPaymentMethodOutput)
+}
+
+// GetOrganizationBillingGroupPaymentMethodArrayInput is an input type that accepts GetOrganizationBillingGroupPaymentMethodArray and GetOrganizationBillingGroupPaymentMethodArrayOutput values.
+// You can construct a concrete instance of `GetOrganizationBillingGroupPaymentMethodArrayInput` via:
+//
+//	GetOrganizationBillingGroupPaymentMethodArray{ GetOrganizationBillingGroupPaymentMethodArgs{...} }
+type GetOrganizationBillingGroupPaymentMethodArrayInput interface {
+	pulumi.Input
+
+	ToGetOrganizationBillingGroupPaymentMethodArrayOutput() GetOrganizationBillingGroupPaymentMethodArrayOutput
+	ToGetOrganizationBillingGroupPaymentMethodArrayOutputWithContext(context.Context) GetOrganizationBillingGroupPaymentMethodArrayOutput
+}
+
+type GetOrganizationBillingGroupPaymentMethodArray []GetOrganizationBillingGroupPaymentMethodInput
+
+func (GetOrganizationBillingGroupPaymentMethodArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOrganizationBillingGroupPaymentMethod)(nil)).Elem()
+}
+
+func (i GetOrganizationBillingGroupPaymentMethodArray) ToGetOrganizationBillingGroupPaymentMethodArrayOutput() GetOrganizationBillingGroupPaymentMethodArrayOutput {
+	return i.ToGetOrganizationBillingGroupPaymentMethodArrayOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationBillingGroupPaymentMethodArray) ToGetOrganizationBillingGroupPaymentMethodArrayOutputWithContext(ctx context.Context) GetOrganizationBillingGroupPaymentMethodArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationBillingGroupPaymentMethodArrayOutput)
+}
+
+type GetOrganizationBillingGroupPaymentMethodOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationBillingGroupPaymentMethodOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationBillingGroupPaymentMethod)(nil)).Elem()
+}
+
+func (o GetOrganizationBillingGroupPaymentMethodOutput) ToGetOrganizationBillingGroupPaymentMethodOutput() GetOrganizationBillingGroupPaymentMethodOutput {
+	return o
+}
+
+func (o GetOrganizationBillingGroupPaymentMethodOutput) ToGetOrganizationBillingGroupPaymentMethodOutputWithContext(ctx context.Context) GetOrganizationBillingGroupPaymentMethodOutput {
+	return o
+}
+
+// Payment method ID.
+func (o GetOrganizationBillingGroupPaymentMethodOutput) PaymentMethodId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationBillingGroupPaymentMethod) string { return v.PaymentMethodId }).(pulumi.StringOutput)
+}
+
+// An enumeration. The possible values are `awsSubscription`, `azureSubscription`, `bankTransfer`, `creditCard`, `custom` and `gcpSubscription`.
+func (o GetOrganizationBillingGroupPaymentMethodOutput) PaymentMethodType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationBillingGroupPaymentMethod) string { return v.PaymentMethodType }).(pulumi.StringOutput)
+}
+
+type GetOrganizationBillingGroupPaymentMethodArrayOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationBillingGroupPaymentMethodArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOrganizationBillingGroupPaymentMethod)(nil)).Elem()
+}
+
+func (o GetOrganizationBillingGroupPaymentMethodArrayOutput) ToGetOrganizationBillingGroupPaymentMethodArrayOutput() GetOrganizationBillingGroupPaymentMethodArrayOutput {
+	return o
+}
+
+func (o GetOrganizationBillingGroupPaymentMethodArrayOutput) ToGetOrganizationBillingGroupPaymentMethodArrayOutputWithContext(ctx context.Context) GetOrganizationBillingGroupPaymentMethodArrayOutput {
+	return o
+}
+
+func (o GetOrganizationBillingGroupPaymentMethodArrayOutput) Index(i pulumi.IntInput) GetOrganizationBillingGroupPaymentMethodOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetOrganizationBillingGroupPaymentMethod {
+		return vs[0].([]GetOrganizationBillingGroupPaymentMethod)[vs[1].(int)]
+	}).(GetOrganizationBillingGroupPaymentMethodOutput)
+}
+
+type GetOrganizationBillingGroupTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Read *string `pulumi:"read"`
+}
+
+// GetOrganizationBillingGroupTimeoutsInput is an input type that accepts GetOrganizationBillingGroupTimeoutsArgs and GetOrganizationBillingGroupTimeoutsOutput values.
+// You can construct a concrete instance of `GetOrganizationBillingGroupTimeoutsInput` via:
+//
+//	GetOrganizationBillingGroupTimeoutsArgs{...}
+type GetOrganizationBillingGroupTimeoutsInput interface {
+	pulumi.Input
+
+	ToGetOrganizationBillingGroupTimeoutsOutput() GetOrganizationBillingGroupTimeoutsOutput
+	ToGetOrganizationBillingGroupTimeoutsOutputWithContext(context.Context) GetOrganizationBillingGroupTimeoutsOutput
+}
+
+type GetOrganizationBillingGroupTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Read pulumi.StringPtrInput `pulumi:"read"`
+}
+
+func (GetOrganizationBillingGroupTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationBillingGroupTimeouts)(nil)).Elem()
+}
+
+func (i GetOrganizationBillingGroupTimeoutsArgs) ToGetOrganizationBillingGroupTimeoutsOutput() GetOrganizationBillingGroupTimeoutsOutput {
+	return i.ToGetOrganizationBillingGroupTimeoutsOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationBillingGroupTimeoutsArgs) ToGetOrganizationBillingGroupTimeoutsOutputWithContext(ctx context.Context) GetOrganizationBillingGroupTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationBillingGroupTimeoutsOutput)
+}
+
+func (i GetOrganizationBillingGroupTimeoutsArgs) ToGetOrganizationBillingGroupTimeoutsPtrOutput() GetOrganizationBillingGroupTimeoutsPtrOutput {
+	return i.ToGetOrganizationBillingGroupTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationBillingGroupTimeoutsArgs) ToGetOrganizationBillingGroupTimeoutsPtrOutputWithContext(ctx context.Context) GetOrganizationBillingGroupTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationBillingGroupTimeoutsOutput).ToGetOrganizationBillingGroupTimeoutsPtrOutputWithContext(ctx)
+}
+
+// GetOrganizationBillingGroupTimeoutsPtrInput is an input type that accepts GetOrganizationBillingGroupTimeoutsArgs, GetOrganizationBillingGroupTimeoutsPtr and GetOrganizationBillingGroupTimeoutsPtrOutput values.
+// You can construct a concrete instance of `GetOrganizationBillingGroupTimeoutsPtrInput` via:
+//
+//	        GetOrganizationBillingGroupTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetOrganizationBillingGroupTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToGetOrganizationBillingGroupTimeoutsPtrOutput() GetOrganizationBillingGroupTimeoutsPtrOutput
+	ToGetOrganizationBillingGroupTimeoutsPtrOutputWithContext(context.Context) GetOrganizationBillingGroupTimeoutsPtrOutput
+}
+
+type getOrganizationBillingGroupTimeoutsPtrType GetOrganizationBillingGroupTimeoutsArgs
+
+func GetOrganizationBillingGroupTimeoutsPtr(v *GetOrganizationBillingGroupTimeoutsArgs) GetOrganizationBillingGroupTimeoutsPtrInput {
+	return (*getOrganizationBillingGroupTimeoutsPtrType)(v)
+}
+
+func (*getOrganizationBillingGroupTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOrganizationBillingGroupTimeouts)(nil)).Elem()
+}
+
+func (i *getOrganizationBillingGroupTimeoutsPtrType) ToGetOrganizationBillingGroupTimeoutsPtrOutput() GetOrganizationBillingGroupTimeoutsPtrOutput {
+	return i.ToGetOrganizationBillingGroupTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *getOrganizationBillingGroupTimeoutsPtrType) ToGetOrganizationBillingGroupTimeoutsPtrOutputWithContext(ctx context.Context) GetOrganizationBillingGroupTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationBillingGroupTimeoutsPtrOutput)
+}
+
+type GetOrganizationBillingGroupTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationBillingGroupTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationBillingGroupTimeouts)(nil)).Elem()
+}
+
+func (o GetOrganizationBillingGroupTimeoutsOutput) ToGetOrganizationBillingGroupTimeoutsOutput() GetOrganizationBillingGroupTimeoutsOutput {
+	return o
+}
+
+func (o GetOrganizationBillingGroupTimeoutsOutput) ToGetOrganizationBillingGroupTimeoutsOutputWithContext(ctx context.Context) GetOrganizationBillingGroupTimeoutsOutput {
+	return o
+}
+
+func (o GetOrganizationBillingGroupTimeoutsOutput) ToGetOrganizationBillingGroupTimeoutsPtrOutput() GetOrganizationBillingGroupTimeoutsPtrOutput {
+	return o.ToGetOrganizationBillingGroupTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o GetOrganizationBillingGroupTimeoutsOutput) ToGetOrganizationBillingGroupTimeoutsPtrOutputWithContext(ctx context.Context) GetOrganizationBillingGroupTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetOrganizationBillingGroupTimeouts) *GetOrganizationBillingGroupTimeouts {
+		return &v
+	}).(GetOrganizationBillingGroupTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o GetOrganizationBillingGroupTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOrganizationBillingGroupTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+type GetOrganizationBillingGroupTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationBillingGroupTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOrganizationBillingGroupTimeouts)(nil)).Elem()
+}
+
+func (o GetOrganizationBillingGroupTimeoutsPtrOutput) ToGetOrganizationBillingGroupTimeoutsPtrOutput() GetOrganizationBillingGroupTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetOrganizationBillingGroupTimeoutsPtrOutput) ToGetOrganizationBillingGroupTimeoutsPtrOutputWithContext(ctx context.Context) GetOrganizationBillingGroupTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetOrganizationBillingGroupTimeoutsPtrOutput) Elem() GetOrganizationBillingGroupTimeoutsOutput {
+	return o.ApplyT(func(v *GetOrganizationBillingGroupTimeouts) GetOrganizationBillingGroupTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret GetOrganizationBillingGroupTimeouts
+		return ret
+	}).(GetOrganizationBillingGroupTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o GetOrganizationBillingGroupTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOrganizationBillingGroupTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetOrganizationPaymentMethodListPaymentMethod struct {
+	// Payment method ID.
+	PaymentMethodId string `pulumi:"paymentMethodId"`
+	// An enumeration. The possible values are `awsSubscription`, `azureSubscription`, `bankTransfer`, `creditCard`, `custom` and `gcpSubscription`.
+	PaymentMethodType string `pulumi:"paymentMethodType"`
+}
+
+// GetOrganizationPaymentMethodListPaymentMethodInput is an input type that accepts GetOrganizationPaymentMethodListPaymentMethodArgs and GetOrganizationPaymentMethodListPaymentMethodOutput values.
+// You can construct a concrete instance of `GetOrganizationPaymentMethodListPaymentMethodInput` via:
+//
+//	GetOrganizationPaymentMethodListPaymentMethodArgs{...}
+type GetOrganizationPaymentMethodListPaymentMethodInput interface {
+	pulumi.Input
+
+	ToGetOrganizationPaymentMethodListPaymentMethodOutput() GetOrganizationPaymentMethodListPaymentMethodOutput
+	ToGetOrganizationPaymentMethodListPaymentMethodOutputWithContext(context.Context) GetOrganizationPaymentMethodListPaymentMethodOutput
+}
+
+type GetOrganizationPaymentMethodListPaymentMethodArgs struct {
+	// Payment method ID.
+	PaymentMethodId pulumi.StringInput `pulumi:"paymentMethodId"`
+	// An enumeration. The possible values are `awsSubscription`, `azureSubscription`, `bankTransfer`, `creditCard`, `custom` and `gcpSubscription`.
+	PaymentMethodType pulumi.StringInput `pulumi:"paymentMethodType"`
+}
+
+func (GetOrganizationPaymentMethodListPaymentMethodArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationPaymentMethodListPaymentMethod)(nil)).Elem()
+}
+
+func (i GetOrganizationPaymentMethodListPaymentMethodArgs) ToGetOrganizationPaymentMethodListPaymentMethodOutput() GetOrganizationPaymentMethodListPaymentMethodOutput {
+	return i.ToGetOrganizationPaymentMethodListPaymentMethodOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationPaymentMethodListPaymentMethodArgs) ToGetOrganizationPaymentMethodListPaymentMethodOutputWithContext(ctx context.Context) GetOrganizationPaymentMethodListPaymentMethodOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationPaymentMethodListPaymentMethodOutput)
+}
+
+// GetOrganizationPaymentMethodListPaymentMethodArrayInput is an input type that accepts GetOrganizationPaymentMethodListPaymentMethodArray and GetOrganizationPaymentMethodListPaymentMethodArrayOutput values.
+// You can construct a concrete instance of `GetOrganizationPaymentMethodListPaymentMethodArrayInput` via:
+//
+//	GetOrganizationPaymentMethodListPaymentMethodArray{ GetOrganizationPaymentMethodListPaymentMethodArgs{...} }
+type GetOrganizationPaymentMethodListPaymentMethodArrayInput interface {
+	pulumi.Input
+
+	ToGetOrganizationPaymentMethodListPaymentMethodArrayOutput() GetOrganizationPaymentMethodListPaymentMethodArrayOutput
+	ToGetOrganizationPaymentMethodListPaymentMethodArrayOutputWithContext(context.Context) GetOrganizationPaymentMethodListPaymentMethodArrayOutput
+}
+
+type GetOrganizationPaymentMethodListPaymentMethodArray []GetOrganizationPaymentMethodListPaymentMethodInput
+
+func (GetOrganizationPaymentMethodListPaymentMethodArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOrganizationPaymentMethodListPaymentMethod)(nil)).Elem()
+}
+
+func (i GetOrganizationPaymentMethodListPaymentMethodArray) ToGetOrganizationPaymentMethodListPaymentMethodArrayOutput() GetOrganizationPaymentMethodListPaymentMethodArrayOutput {
+	return i.ToGetOrganizationPaymentMethodListPaymentMethodArrayOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationPaymentMethodListPaymentMethodArray) ToGetOrganizationPaymentMethodListPaymentMethodArrayOutputWithContext(ctx context.Context) GetOrganizationPaymentMethodListPaymentMethodArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationPaymentMethodListPaymentMethodArrayOutput)
+}
+
+type GetOrganizationPaymentMethodListPaymentMethodOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationPaymentMethodListPaymentMethodOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationPaymentMethodListPaymentMethod)(nil)).Elem()
+}
+
+func (o GetOrganizationPaymentMethodListPaymentMethodOutput) ToGetOrganizationPaymentMethodListPaymentMethodOutput() GetOrganizationPaymentMethodListPaymentMethodOutput {
+	return o
+}
+
+func (o GetOrganizationPaymentMethodListPaymentMethodOutput) ToGetOrganizationPaymentMethodListPaymentMethodOutputWithContext(ctx context.Context) GetOrganizationPaymentMethodListPaymentMethodOutput {
+	return o
+}
+
+// Payment method ID.
+func (o GetOrganizationPaymentMethodListPaymentMethodOutput) PaymentMethodId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationPaymentMethodListPaymentMethod) string { return v.PaymentMethodId }).(pulumi.StringOutput)
+}
+
+// An enumeration. The possible values are `awsSubscription`, `azureSubscription`, `bankTransfer`, `creditCard`, `custom` and `gcpSubscription`.
+func (o GetOrganizationPaymentMethodListPaymentMethodOutput) PaymentMethodType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationPaymentMethodListPaymentMethod) string { return v.PaymentMethodType }).(pulumi.StringOutput)
+}
+
+type GetOrganizationPaymentMethodListPaymentMethodArrayOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationPaymentMethodListPaymentMethodArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOrganizationPaymentMethodListPaymentMethod)(nil)).Elem()
+}
+
+func (o GetOrganizationPaymentMethodListPaymentMethodArrayOutput) ToGetOrganizationPaymentMethodListPaymentMethodArrayOutput() GetOrganizationPaymentMethodListPaymentMethodArrayOutput {
+	return o
+}
+
+func (o GetOrganizationPaymentMethodListPaymentMethodArrayOutput) ToGetOrganizationPaymentMethodListPaymentMethodArrayOutputWithContext(ctx context.Context) GetOrganizationPaymentMethodListPaymentMethodArrayOutput {
+	return o
+}
+
+func (o GetOrganizationPaymentMethodListPaymentMethodArrayOutput) Index(i pulumi.IntInput) GetOrganizationPaymentMethodListPaymentMethodOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetOrganizationPaymentMethodListPaymentMethod {
+		return vs[0].([]GetOrganizationPaymentMethodListPaymentMethod)[vs[1].(int)]
+	}).(GetOrganizationPaymentMethodListPaymentMethodOutput)
+}
+
+type GetOrganizationPaymentMethodListTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Read *string `pulumi:"read"`
+}
+
+// GetOrganizationPaymentMethodListTimeoutsInput is an input type that accepts GetOrganizationPaymentMethodListTimeoutsArgs and GetOrganizationPaymentMethodListTimeoutsOutput values.
+// You can construct a concrete instance of `GetOrganizationPaymentMethodListTimeoutsInput` via:
+//
+//	GetOrganizationPaymentMethodListTimeoutsArgs{...}
+type GetOrganizationPaymentMethodListTimeoutsInput interface {
+	pulumi.Input
+
+	ToGetOrganizationPaymentMethodListTimeoutsOutput() GetOrganizationPaymentMethodListTimeoutsOutput
+	ToGetOrganizationPaymentMethodListTimeoutsOutputWithContext(context.Context) GetOrganizationPaymentMethodListTimeoutsOutput
+}
+
+type GetOrganizationPaymentMethodListTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Read pulumi.StringPtrInput `pulumi:"read"`
+}
+
+func (GetOrganizationPaymentMethodListTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationPaymentMethodListTimeouts)(nil)).Elem()
+}
+
+func (i GetOrganizationPaymentMethodListTimeoutsArgs) ToGetOrganizationPaymentMethodListTimeoutsOutput() GetOrganizationPaymentMethodListTimeoutsOutput {
+	return i.ToGetOrganizationPaymentMethodListTimeoutsOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationPaymentMethodListTimeoutsArgs) ToGetOrganizationPaymentMethodListTimeoutsOutputWithContext(ctx context.Context) GetOrganizationPaymentMethodListTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationPaymentMethodListTimeoutsOutput)
+}
+
+func (i GetOrganizationPaymentMethodListTimeoutsArgs) ToGetOrganizationPaymentMethodListTimeoutsPtrOutput() GetOrganizationPaymentMethodListTimeoutsPtrOutput {
+	return i.ToGetOrganizationPaymentMethodListTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationPaymentMethodListTimeoutsArgs) ToGetOrganizationPaymentMethodListTimeoutsPtrOutputWithContext(ctx context.Context) GetOrganizationPaymentMethodListTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationPaymentMethodListTimeoutsOutput).ToGetOrganizationPaymentMethodListTimeoutsPtrOutputWithContext(ctx)
+}
+
+// GetOrganizationPaymentMethodListTimeoutsPtrInput is an input type that accepts GetOrganizationPaymentMethodListTimeoutsArgs, GetOrganizationPaymentMethodListTimeoutsPtr and GetOrganizationPaymentMethodListTimeoutsPtrOutput values.
+// You can construct a concrete instance of `GetOrganizationPaymentMethodListTimeoutsPtrInput` via:
+//
+//	        GetOrganizationPaymentMethodListTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetOrganizationPaymentMethodListTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToGetOrganizationPaymentMethodListTimeoutsPtrOutput() GetOrganizationPaymentMethodListTimeoutsPtrOutput
+	ToGetOrganizationPaymentMethodListTimeoutsPtrOutputWithContext(context.Context) GetOrganizationPaymentMethodListTimeoutsPtrOutput
+}
+
+type getOrganizationPaymentMethodListTimeoutsPtrType GetOrganizationPaymentMethodListTimeoutsArgs
+
+func GetOrganizationPaymentMethodListTimeoutsPtr(v *GetOrganizationPaymentMethodListTimeoutsArgs) GetOrganizationPaymentMethodListTimeoutsPtrInput {
+	return (*getOrganizationPaymentMethodListTimeoutsPtrType)(v)
+}
+
+func (*getOrganizationPaymentMethodListTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOrganizationPaymentMethodListTimeouts)(nil)).Elem()
+}
+
+func (i *getOrganizationPaymentMethodListTimeoutsPtrType) ToGetOrganizationPaymentMethodListTimeoutsPtrOutput() GetOrganizationPaymentMethodListTimeoutsPtrOutput {
+	return i.ToGetOrganizationPaymentMethodListTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *getOrganizationPaymentMethodListTimeoutsPtrType) ToGetOrganizationPaymentMethodListTimeoutsPtrOutputWithContext(ctx context.Context) GetOrganizationPaymentMethodListTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationPaymentMethodListTimeoutsPtrOutput)
+}
+
+type GetOrganizationPaymentMethodListTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationPaymentMethodListTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationPaymentMethodListTimeouts)(nil)).Elem()
+}
+
+func (o GetOrganizationPaymentMethodListTimeoutsOutput) ToGetOrganizationPaymentMethodListTimeoutsOutput() GetOrganizationPaymentMethodListTimeoutsOutput {
+	return o
+}
+
+func (o GetOrganizationPaymentMethodListTimeoutsOutput) ToGetOrganizationPaymentMethodListTimeoutsOutputWithContext(ctx context.Context) GetOrganizationPaymentMethodListTimeoutsOutput {
+	return o
+}
+
+func (o GetOrganizationPaymentMethodListTimeoutsOutput) ToGetOrganizationPaymentMethodListTimeoutsPtrOutput() GetOrganizationPaymentMethodListTimeoutsPtrOutput {
+	return o.ToGetOrganizationPaymentMethodListTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o GetOrganizationPaymentMethodListTimeoutsOutput) ToGetOrganizationPaymentMethodListTimeoutsPtrOutputWithContext(ctx context.Context) GetOrganizationPaymentMethodListTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetOrganizationPaymentMethodListTimeouts) *GetOrganizationPaymentMethodListTimeouts {
+		return &v
+	}).(GetOrganizationPaymentMethodListTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o GetOrganizationPaymentMethodListTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOrganizationPaymentMethodListTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+type GetOrganizationPaymentMethodListTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationPaymentMethodListTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOrganizationPaymentMethodListTimeouts)(nil)).Elem()
+}
+
+func (o GetOrganizationPaymentMethodListTimeoutsPtrOutput) ToGetOrganizationPaymentMethodListTimeoutsPtrOutput() GetOrganizationPaymentMethodListTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetOrganizationPaymentMethodListTimeoutsPtrOutput) ToGetOrganizationPaymentMethodListTimeoutsPtrOutputWithContext(ctx context.Context) GetOrganizationPaymentMethodListTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetOrganizationPaymentMethodListTimeoutsPtrOutput) Elem() GetOrganizationPaymentMethodListTimeoutsOutput {
+	return o.ApplyT(func(v *GetOrganizationPaymentMethodListTimeouts) GetOrganizationPaymentMethodListTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret GetOrganizationPaymentMethodListTimeouts
+		return ret
+	}).(GetOrganizationPaymentMethodListTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o GetOrganizationPaymentMethodListTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOrganizationPaymentMethodListTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetOrganizationProjectTag struct {
+	// Project tag key.
+	Key string `pulumi:"key"`
+	// Project tag value.
+	Value string `pulumi:"value"`
+}
+
+// GetOrganizationProjectTagInput is an input type that accepts GetOrganizationProjectTagArgs and GetOrganizationProjectTagOutput values.
+// You can construct a concrete instance of `GetOrganizationProjectTagInput` via:
+//
+//	GetOrganizationProjectTagArgs{...}
+type GetOrganizationProjectTagInput interface {
+	pulumi.Input
+
+	ToGetOrganizationProjectTagOutput() GetOrganizationProjectTagOutput
+	ToGetOrganizationProjectTagOutputWithContext(context.Context) GetOrganizationProjectTagOutput
+}
+
+type GetOrganizationProjectTagArgs struct {
+	// Project tag key.
+	Key pulumi.StringInput `pulumi:"key"`
+	// Project tag value.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetOrganizationProjectTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationProjectTag)(nil)).Elem()
+}
+
+func (i GetOrganizationProjectTagArgs) ToGetOrganizationProjectTagOutput() GetOrganizationProjectTagOutput {
+	return i.ToGetOrganizationProjectTagOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationProjectTagArgs) ToGetOrganizationProjectTagOutputWithContext(ctx context.Context) GetOrganizationProjectTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationProjectTagOutput)
+}
+
+// GetOrganizationProjectTagArrayInput is an input type that accepts GetOrganizationProjectTagArray and GetOrganizationProjectTagArrayOutput values.
+// You can construct a concrete instance of `GetOrganizationProjectTagArrayInput` via:
+//
+//	GetOrganizationProjectTagArray{ GetOrganizationProjectTagArgs{...} }
+type GetOrganizationProjectTagArrayInput interface {
+	pulumi.Input
+
+	ToGetOrganizationProjectTagArrayOutput() GetOrganizationProjectTagArrayOutput
+	ToGetOrganizationProjectTagArrayOutputWithContext(context.Context) GetOrganizationProjectTagArrayOutput
+}
+
+type GetOrganizationProjectTagArray []GetOrganizationProjectTagInput
+
+func (GetOrganizationProjectTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOrganizationProjectTag)(nil)).Elem()
+}
+
+func (i GetOrganizationProjectTagArray) ToGetOrganizationProjectTagArrayOutput() GetOrganizationProjectTagArrayOutput {
+	return i.ToGetOrganizationProjectTagArrayOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationProjectTagArray) ToGetOrganizationProjectTagArrayOutputWithContext(ctx context.Context) GetOrganizationProjectTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationProjectTagArrayOutput)
+}
+
+type GetOrganizationProjectTagOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationProjectTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationProjectTag)(nil)).Elem()
+}
+
+func (o GetOrganizationProjectTagOutput) ToGetOrganizationProjectTagOutput() GetOrganizationProjectTagOutput {
+	return o
+}
+
+func (o GetOrganizationProjectTagOutput) ToGetOrganizationProjectTagOutputWithContext(ctx context.Context) GetOrganizationProjectTagOutput {
+	return o
+}
+
+// Project tag key.
+func (o GetOrganizationProjectTagOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationProjectTag) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Project tag value.
+func (o GetOrganizationProjectTagOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationProjectTag) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetOrganizationProjectTagArrayOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationProjectTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOrganizationProjectTag)(nil)).Elem()
+}
+
+func (o GetOrganizationProjectTagArrayOutput) ToGetOrganizationProjectTagArrayOutput() GetOrganizationProjectTagArrayOutput {
+	return o
+}
+
+func (o GetOrganizationProjectTagArrayOutput) ToGetOrganizationProjectTagArrayOutputWithContext(ctx context.Context) GetOrganizationProjectTagArrayOutput {
+	return o
+}
+
+func (o GetOrganizationProjectTagArrayOutput) Index(i pulumi.IntInput) GetOrganizationProjectTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetOrganizationProjectTag {
+		return vs[0].([]GetOrganizationProjectTag)[vs[1].(int)]
+	}).(GetOrganizationProjectTagOutput)
+}
+
+type GetOrganizationProjectTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Read *string `pulumi:"read"`
+}
+
+// GetOrganizationProjectTimeoutsInput is an input type that accepts GetOrganizationProjectTimeoutsArgs and GetOrganizationProjectTimeoutsOutput values.
+// You can construct a concrete instance of `GetOrganizationProjectTimeoutsInput` via:
+//
+//	GetOrganizationProjectTimeoutsArgs{...}
+type GetOrganizationProjectTimeoutsInput interface {
+	pulumi.Input
+
+	ToGetOrganizationProjectTimeoutsOutput() GetOrganizationProjectTimeoutsOutput
+	ToGetOrganizationProjectTimeoutsOutputWithContext(context.Context) GetOrganizationProjectTimeoutsOutput
+}
+
+type GetOrganizationProjectTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Read pulumi.StringPtrInput `pulumi:"read"`
+}
+
+func (GetOrganizationProjectTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationProjectTimeouts)(nil)).Elem()
+}
+
+func (i GetOrganizationProjectTimeoutsArgs) ToGetOrganizationProjectTimeoutsOutput() GetOrganizationProjectTimeoutsOutput {
+	return i.ToGetOrganizationProjectTimeoutsOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationProjectTimeoutsArgs) ToGetOrganizationProjectTimeoutsOutputWithContext(ctx context.Context) GetOrganizationProjectTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationProjectTimeoutsOutput)
+}
+
+func (i GetOrganizationProjectTimeoutsArgs) ToGetOrganizationProjectTimeoutsPtrOutput() GetOrganizationProjectTimeoutsPtrOutput {
+	return i.ToGetOrganizationProjectTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationProjectTimeoutsArgs) ToGetOrganizationProjectTimeoutsPtrOutputWithContext(ctx context.Context) GetOrganizationProjectTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationProjectTimeoutsOutput).ToGetOrganizationProjectTimeoutsPtrOutputWithContext(ctx)
+}
+
+// GetOrganizationProjectTimeoutsPtrInput is an input type that accepts GetOrganizationProjectTimeoutsArgs, GetOrganizationProjectTimeoutsPtr and GetOrganizationProjectTimeoutsPtrOutput values.
+// You can construct a concrete instance of `GetOrganizationProjectTimeoutsPtrInput` via:
+//
+//	        GetOrganizationProjectTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetOrganizationProjectTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToGetOrganizationProjectTimeoutsPtrOutput() GetOrganizationProjectTimeoutsPtrOutput
+	ToGetOrganizationProjectTimeoutsPtrOutputWithContext(context.Context) GetOrganizationProjectTimeoutsPtrOutput
+}
+
+type getOrganizationProjectTimeoutsPtrType GetOrganizationProjectTimeoutsArgs
+
+func GetOrganizationProjectTimeoutsPtr(v *GetOrganizationProjectTimeoutsArgs) GetOrganizationProjectTimeoutsPtrInput {
+	return (*getOrganizationProjectTimeoutsPtrType)(v)
+}
+
+func (*getOrganizationProjectTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOrganizationProjectTimeouts)(nil)).Elem()
+}
+
+func (i *getOrganizationProjectTimeoutsPtrType) ToGetOrganizationProjectTimeoutsPtrOutput() GetOrganizationProjectTimeoutsPtrOutput {
+	return i.ToGetOrganizationProjectTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *getOrganizationProjectTimeoutsPtrType) ToGetOrganizationProjectTimeoutsPtrOutputWithContext(ctx context.Context) GetOrganizationProjectTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationProjectTimeoutsPtrOutput)
+}
+
+type GetOrganizationProjectTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationProjectTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationProjectTimeouts)(nil)).Elem()
+}
+
+func (o GetOrganizationProjectTimeoutsOutput) ToGetOrganizationProjectTimeoutsOutput() GetOrganizationProjectTimeoutsOutput {
+	return o
+}
+
+func (o GetOrganizationProjectTimeoutsOutput) ToGetOrganizationProjectTimeoutsOutputWithContext(ctx context.Context) GetOrganizationProjectTimeoutsOutput {
+	return o
+}
+
+func (o GetOrganizationProjectTimeoutsOutput) ToGetOrganizationProjectTimeoutsPtrOutput() GetOrganizationProjectTimeoutsPtrOutput {
+	return o.ToGetOrganizationProjectTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o GetOrganizationProjectTimeoutsOutput) ToGetOrganizationProjectTimeoutsPtrOutputWithContext(ctx context.Context) GetOrganizationProjectTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetOrganizationProjectTimeouts) *GetOrganizationProjectTimeouts {
+		return &v
+	}).(GetOrganizationProjectTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o GetOrganizationProjectTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOrganizationProjectTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+type GetOrganizationProjectTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationProjectTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOrganizationProjectTimeouts)(nil)).Elem()
+}
+
+func (o GetOrganizationProjectTimeoutsPtrOutput) ToGetOrganizationProjectTimeoutsPtrOutput() GetOrganizationProjectTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetOrganizationProjectTimeoutsPtrOutput) ToGetOrganizationProjectTimeoutsPtrOutputWithContext(ctx context.Context) GetOrganizationProjectTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetOrganizationProjectTimeoutsPtrOutput) Elem() GetOrganizationProjectTimeoutsOutput {
+	return o.ApplyT(func(v *GetOrganizationProjectTimeouts) GetOrganizationProjectTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret GetOrganizationProjectTimeouts
+		return ret
+	}).(GetOrganizationProjectTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o GetOrganizationProjectTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOrganizationProjectTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetOrganizationTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Read *string `pulumi:"read"`
+}
+
+// GetOrganizationTimeoutsInput is an input type that accepts GetOrganizationTimeoutsArgs and GetOrganizationTimeoutsOutput values.
+// You can construct a concrete instance of `GetOrganizationTimeoutsInput` via:
+//
+//	GetOrganizationTimeoutsArgs{...}
+type GetOrganizationTimeoutsInput interface {
+	pulumi.Input
+
+	ToGetOrganizationTimeoutsOutput() GetOrganizationTimeoutsOutput
+	ToGetOrganizationTimeoutsOutputWithContext(context.Context) GetOrganizationTimeoutsOutput
+}
+
+type GetOrganizationTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Read pulumi.StringPtrInput `pulumi:"read"`
+}
+
+func (GetOrganizationTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationTimeouts)(nil)).Elem()
+}
+
+func (i GetOrganizationTimeoutsArgs) ToGetOrganizationTimeoutsOutput() GetOrganizationTimeoutsOutput {
+	return i.ToGetOrganizationTimeoutsOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationTimeoutsArgs) ToGetOrganizationTimeoutsOutputWithContext(ctx context.Context) GetOrganizationTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationTimeoutsOutput)
+}
+
+func (i GetOrganizationTimeoutsArgs) ToGetOrganizationTimeoutsPtrOutput() GetOrganizationTimeoutsPtrOutput {
+	return i.ToGetOrganizationTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationTimeoutsArgs) ToGetOrganizationTimeoutsPtrOutputWithContext(ctx context.Context) GetOrganizationTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationTimeoutsOutput).ToGetOrganizationTimeoutsPtrOutputWithContext(ctx)
+}
+
+// GetOrganizationTimeoutsPtrInput is an input type that accepts GetOrganizationTimeoutsArgs, GetOrganizationTimeoutsPtr and GetOrganizationTimeoutsPtrOutput values.
+// You can construct a concrete instance of `GetOrganizationTimeoutsPtrInput` via:
+//
+//	        GetOrganizationTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetOrganizationTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToGetOrganizationTimeoutsPtrOutput() GetOrganizationTimeoutsPtrOutput
+	ToGetOrganizationTimeoutsPtrOutputWithContext(context.Context) GetOrganizationTimeoutsPtrOutput
+}
+
+type getOrganizationTimeoutsPtrType GetOrganizationTimeoutsArgs
+
+func GetOrganizationTimeoutsPtr(v *GetOrganizationTimeoutsArgs) GetOrganizationTimeoutsPtrInput {
+	return (*getOrganizationTimeoutsPtrType)(v)
+}
+
+func (*getOrganizationTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOrganizationTimeouts)(nil)).Elem()
+}
+
+func (i *getOrganizationTimeoutsPtrType) ToGetOrganizationTimeoutsPtrOutput() GetOrganizationTimeoutsPtrOutput {
+	return i.ToGetOrganizationTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *getOrganizationTimeoutsPtrType) ToGetOrganizationTimeoutsPtrOutputWithContext(ctx context.Context) GetOrganizationTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationTimeoutsPtrOutput)
+}
+
+type GetOrganizationTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationTimeouts)(nil)).Elem()
+}
+
+func (o GetOrganizationTimeoutsOutput) ToGetOrganizationTimeoutsOutput() GetOrganizationTimeoutsOutput {
+	return o
+}
+
+func (o GetOrganizationTimeoutsOutput) ToGetOrganizationTimeoutsOutputWithContext(ctx context.Context) GetOrganizationTimeoutsOutput {
+	return o
+}
+
+func (o GetOrganizationTimeoutsOutput) ToGetOrganizationTimeoutsPtrOutput() GetOrganizationTimeoutsPtrOutput {
+	return o.ToGetOrganizationTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o GetOrganizationTimeoutsOutput) ToGetOrganizationTimeoutsPtrOutputWithContext(ctx context.Context) GetOrganizationTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetOrganizationTimeouts) *GetOrganizationTimeouts {
+		return &v
+	}).(GetOrganizationTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o GetOrganizationTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOrganizationTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+type GetOrganizationTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOrganizationTimeouts)(nil)).Elem()
+}
+
+func (o GetOrganizationTimeoutsPtrOutput) ToGetOrganizationTimeoutsPtrOutput() GetOrganizationTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetOrganizationTimeoutsPtrOutput) ToGetOrganizationTimeoutsPtrOutputWithContext(ctx context.Context) GetOrganizationTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetOrganizationTimeoutsPtrOutput) Elem() GetOrganizationTimeoutsOutput {
+	return o.ApplyT(func(v *GetOrganizationTimeouts) GetOrganizationTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret GetOrganizationTimeouts
+		return ret
+	}).(GetOrganizationTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o GetOrganizationTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOrganizationTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetOrganizationUserGroupListTimeouts struct {
 	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
 	Read *string `pulumi:"read"`
@@ -11357,6 +12360,8 @@ type GetServiceIntegrationEndpointRsyslogUserConfig struct {
 	// -----END CERTIFICATE-----
 	// `.
 	Cert *string `pulumi:"cert"`
+	// When true, embedded newlines in a log message are escaped so a multi-line record (e.g. a stack trace) is delivered as one complete log entry. Useful for newline-delimited cloud log intakes that drop continuation lines. Default: `false`.
+	EscapeNewlines *bool `pulumi:"escapeNewlines"`
 	// Enum: `custom`, `rfc3164`, `rfc5424`. Message format. Default: `rfc5424`.
 	Format string `pulumi:"format"`
 	// PEM encoded client key. Example: `-----BEGIN PRIVATE KEY-----
@@ -11400,6 +12405,8 @@ type GetServiceIntegrationEndpointRsyslogUserConfigArgs struct {
 	// -----END CERTIFICATE-----
 	// `.
 	Cert pulumi.StringPtrInput `pulumi:"cert"`
+	// When true, embedded newlines in a log message are escaped so a multi-line record (e.g. a stack trace) is delivered as one complete log entry. Useful for newline-delimited cloud log intakes that drop continuation lines. Default: `false`.
+	EscapeNewlines pulumi.BoolPtrInput `pulumi:"escapeNewlines"`
 	// Enum: `custom`, `rfc3164`, `rfc5424`. Message format. Default: `rfc5424`.
 	Format pulumi.StringInput `pulumi:"format"`
 	// PEM encoded client key. Example: `-----BEGIN PRIVATE KEY-----
@@ -11486,6 +12493,11 @@ func (o GetServiceIntegrationEndpointRsyslogUserConfigOutput) Ca() pulumi.String
 // `.
 func (o GetServiceIntegrationEndpointRsyslogUserConfigOutput) Cert() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServiceIntegrationEndpointRsyslogUserConfig) *string { return v.Cert }).(pulumi.StringPtrOutput)
+}
+
+// When true, embedded newlines in a log message are escaped so a multi-line record (e.g. a stack trace) is delivered as one complete log entry. Useful for newline-delimited cloud log intakes that drop continuation lines. Default: `false`.
+func (o GetServiceIntegrationEndpointRsyslogUserConfigOutput) EscapeNewlines() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointRsyslogUserConfig) *bool { return v.EscapeNewlines }).(pulumi.BoolPtrOutput)
 }
 
 // Enum: `custom`, `rfc3164`, `rfc5424`. Message format. Default: `rfc5424`.
@@ -14649,6 +15661,103 @@ func (o GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput) P
 		}
 		return v.PerfEventsStatementsTimeLimit
 	}).(pulumi.IntPtrOutput)
+}
+
+type GetServiceIntegrationRsyslogUserConfig struct {
+	// Per-service override for escaping embedded newlines in log messages. When set, it overrides the rsyslog endpoint setting for this service. When unset, the endpoint setting applies.
+	EscapeNewlines *bool `pulumi:"escapeNewlines"`
+}
+
+// GetServiceIntegrationRsyslogUserConfigInput is an input type that accepts GetServiceIntegrationRsyslogUserConfigArgs and GetServiceIntegrationRsyslogUserConfigOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationRsyslogUserConfigInput` via:
+//
+//	GetServiceIntegrationRsyslogUserConfigArgs{...}
+type GetServiceIntegrationRsyslogUserConfigInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationRsyslogUserConfigOutput() GetServiceIntegrationRsyslogUserConfigOutput
+	ToGetServiceIntegrationRsyslogUserConfigOutputWithContext(context.Context) GetServiceIntegrationRsyslogUserConfigOutput
+}
+
+type GetServiceIntegrationRsyslogUserConfigArgs struct {
+	// Per-service override for escaping embedded newlines in log messages. When set, it overrides the rsyslog endpoint setting for this service. When unset, the endpoint setting applies.
+	EscapeNewlines pulumi.BoolPtrInput `pulumi:"escapeNewlines"`
+}
+
+func (GetServiceIntegrationRsyslogUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationRsyslogUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationRsyslogUserConfigArgs) ToGetServiceIntegrationRsyslogUserConfigOutput() GetServiceIntegrationRsyslogUserConfigOutput {
+	return i.ToGetServiceIntegrationRsyslogUserConfigOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationRsyslogUserConfigArgs) ToGetServiceIntegrationRsyslogUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationRsyslogUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationRsyslogUserConfigOutput)
+}
+
+// GetServiceIntegrationRsyslogUserConfigArrayInput is an input type that accepts GetServiceIntegrationRsyslogUserConfigArray and GetServiceIntegrationRsyslogUserConfigArrayOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationRsyslogUserConfigArrayInput` via:
+//
+//	GetServiceIntegrationRsyslogUserConfigArray{ GetServiceIntegrationRsyslogUserConfigArgs{...} }
+type GetServiceIntegrationRsyslogUserConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationRsyslogUserConfigArrayOutput() GetServiceIntegrationRsyslogUserConfigArrayOutput
+	ToGetServiceIntegrationRsyslogUserConfigArrayOutputWithContext(context.Context) GetServiceIntegrationRsyslogUserConfigArrayOutput
+}
+
+type GetServiceIntegrationRsyslogUserConfigArray []GetServiceIntegrationRsyslogUserConfigInput
+
+func (GetServiceIntegrationRsyslogUserConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationRsyslogUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationRsyslogUserConfigArray) ToGetServiceIntegrationRsyslogUserConfigArrayOutput() GetServiceIntegrationRsyslogUserConfigArrayOutput {
+	return i.ToGetServiceIntegrationRsyslogUserConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationRsyslogUserConfigArray) ToGetServiceIntegrationRsyslogUserConfigArrayOutputWithContext(ctx context.Context) GetServiceIntegrationRsyslogUserConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationRsyslogUserConfigArrayOutput)
+}
+
+type GetServiceIntegrationRsyslogUserConfigOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationRsyslogUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationRsyslogUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationRsyslogUserConfigOutput) ToGetServiceIntegrationRsyslogUserConfigOutput() GetServiceIntegrationRsyslogUserConfigOutput {
+	return o
+}
+
+func (o GetServiceIntegrationRsyslogUserConfigOutput) ToGetServiceIntegrationRsyslogUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationRsyslogUserConfigOutput {
+	return o
+}
+
+// Per-service override for escaping embedded newlines in log messages. When set, it overrides the rsyslog endpoint setting for this service. When unset, the endpoint setting applies.
+func (o GetServiceIntegrationRsyslogUserConfigOutput) EscapeNewlines() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationRsyslogUserConfig) *bool { return v.EscapeNewlines }).(pulumi.BoolPtrOutput)
+}
+
+type GetServiceIntegrationRsyslogUserConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationRsyslogUserConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationRsyslogUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationRsyslogUserConfigArrayOutput) ToGetServiceIntegrationRsyslogUserConfigArrayOutput() GetServiceIntegrationRsyslogUserConfigArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationRsyslogUserConfigArrayOutput) ToGetServiceIntegrationRsyslogUserConfigArrayOutputWithContext(ctx context.Context) GetServiceIntegrationRsyslogUserConfigArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationRsyslogUserConfigArrayOutput) Index(i pulumi.IntInput) GetServiceIntegrationRsyslogUserConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceIntegrationRsyslogUserConfig {
+		return vs[0].([]GetServiceIntegrationRsyslogUserConfig)[vs[1].(int)]
+	}).(GetServiceIntegrationRsyslogUserConfigOutput)
 }
 
 type GetServiceListService struct {
@@ -19667,6 +20776,22 @@ func (o GetValkeyValkeyUserConfigPublicAccessPtrOutput) Valkey() pulumi.BoolPtrO
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationBillingGroupListTimeoutsInput)(nil)).Elem(), GetOrganizationBillingGroupListTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationBillingGroupListTimeoutsPtrInput)(nil)).Elem(), GetOrganizationBillingGroupListTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationBillingGroupPaymentMethodInput)(nil)).Elem(), GetOrganizationBillingGroupPaymentMethodArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationBillingGroupPaymentMethodArrayInput)(nil)).Elem(), GetOrganizationBillingGroupPaymentMethodArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationBillingGroupTimeoutsInput)(nil)).Elem(), GetOrganizationBillingGroupTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationBillingGroupTimeoutsPtrInput)(nil)).Elem(), GetOrganizationBillingGroupTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationPaymentMethodListPaymentMethodInput)(nil)).Elem(), GetOrganizationPaymentMethodListPaymentMethodArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationPaymentMethodListPaymentMethodArrayInput)(nil)).Elem(), GetOrganizationPaymentMethodListPaymentMethodArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationPaymentMethodListTimeoutsInput)(nil)).Elem(), GetOrganizationPaymentMethodListTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationPaymentMethodListTimeoutsPtrInput)(nil)).Elem(), GetOrganizationPaymentMethodListTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationProjectTagInput)(nil)).Elem(), GetOrganizationProjectTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationProjectTagArrayInput)(nil)).Elem(), GetOrganizationProjectTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationProjectTimeoutsInput)(nil)).Elem(), GetOrganizationProjectTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationProjectTimeoutsPtrInput)(nil)).Elem(), GetOrganizationProjectTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationTimeoutsInput)(nil)).Elem(), GetOrganizationTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationTimeoutsPtrInput)(nil)).Elem(), GetOrganizationTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationUserGroupListTimeoutsInput)(nil)).Elem(), GetOrganizationUserGroupListTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationUserGroupListTimeoutsPtrInput)(nil)).Elem(), GetOrganizationUserGroupListTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationUserGroupListUserGroupInput)(nil)).Elem(), GetOrganizationUserGroupListUserGroupArgs{})
@@ -19839,6 +20964,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationPrometheusUserConfigSourceMysqlPtrInput)(nil)).Elem(), GetServiceIntegrationPrometheusUserConfigSourceMysqlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafInput)(nil)).Elem(), GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrInput)(nil)).Elem(), GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationRsyslogUserConfigInput)(nil)).Elem(), GetServiceIntegrationRsyslogUserConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationRsyslogUserConfigArrayInput)(nil)).Elem(), GetServiceIntegrationRsyslogUserConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceListServiceInput)(nil)).Elem(), GetServiceListServiceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceListServiceArrayInput)(nil)).Elem(), GetServiceListServiceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceListTimeoutsInput)(nil)).Elem(), GetServiceListTimeoutsArgs{})
@@ -19901,6 +21028,22 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPrivatelinkAccessPtrInput)(nil)).Elem(), GetValkeyValkeyUserConfigPrivatelinkAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPublicAccessInput)(nil)).Elem(), GetValkeyValkeyUserConfigPublicAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPublicAccessPtrInput)(nil)).Elem(), GetValkeyValkeyUserConfigPublicAccessArgs{})
+	pulumi.RegisterOutputType(GetOrganizationBillingGroupListTimeoutsOutput{})
+	pulumi.RegisterOutputType(GetOrganizationBillingGroupListTimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(GetOrganizationBillingGroupPaymentMethodOutput{})
+	pulumi.RegisterOutputType(GetOrganizationBillingGroupPaymentMethodArrayOutput{})
+	pulumi.RegisterOutputType(GetOrganizationBillingGroupTimeoutsOutput{})
+	pulumi.RegisterOutputType(GetOrganizationBillingGroupTimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(GetOrganizationPaymentMethodListPaymentMethodOutput{})
+	pulumi.RegisterOutputType(GetOrganizationPaymentMethodListPaymentMethodArrayOutput{})
+	pulumi.RegisterOutputType(GetOrganizationPaymentMethodListTimeoutsOutput{})
+	pulumi.RegisterOutputType(GetOrganizationPaymentMethodListTimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(GetOrganizationProjectTagOutput{})
+	pulumi.RegisterOutputType(GetOrganizationProjectTagArrayOutput{})
+	pulumi.RegisterOutputType(GetOrganizationProjectTimeoutsOutput{})
+	pulumi.RegisterOutputType(GetOrganizationProjectTimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(GetOrganizationTimeoutsOutput{})
+	pulumi.RegisterOutputType(GetOrganizationTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(GetOrganizationUserGroupListTimeoutsOutput{})
 	pulumi.RegisterOutputType(GetOrganizationUserGroupListTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(GetOrganizationUserGroupListUserGroupOutput{})
@@ -20073,6 +21216,8 @@ func init() {
 	pulumi.RegisterOutputType(GetServiceIntegrationPrometheusUserConfigSourceMysqlPtrOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafPtrOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationRsyslogUserConfigOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationRsyslogUserConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceListServiceOutput{})
 	pulumi.RegisterOutputType(GetServiceListServiceArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceListTimeoutsOutput{})

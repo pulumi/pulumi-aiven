@@ -18,6 +18,7 @@ import com.pulumi.aiven.inputs.ServiceIntegrationKafkaMirrormakerUserConfigArgs;
 import com.pulumi.aiven.inputs.ServiceIntegrationLogsUserConfigArgs;
 import com.pulumi.aiven.inputs.ServiceIntegrationMetricsUserConfigArgs;
 import com.pulumi.aiven.inputs.ServiceIntegrationPrometheusUserConfigArgs;
+import com.pulumi.aiven.inputs.ServiceIntegrationRsyslogUserConfigArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -332,6 +333,21 @@ public final class ServiceIntegrationArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * Rsyslog user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
+     * 
+     */
+    @Import(name="rsyslogUserConfig")
+    private @Nullable Output<ServiceIntegrationRsyslogUserConfigArgs> rsyslogUserConfig;
+
+    /**
+     * @return Rsyslog user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
+     * 
+     */
+    public Optional<Output<ServiceIntegrationRsyslogUserConfigArgs>> rsyslogUserConfig() {
+        return Optional.ofNullable(this.rsyslogUserConfig);
+    }
+
+    /**
      * Source endpoint for the integration.
      * 
      */
@@ -399,6 +415,7 @@ public final class ServiceIntegrationArgs extends com.pulumi.resources.ResourceA
         this.metricsUserConfig = $.metricsUserConfig;
         this.project = $.project;
         this.prometheusUserConfig = $.prometheusUserConfig;
+        this.rsyslogUserConfig = $.rsyslogUserConfig;
         this.sourceEndpointId = $.sourceEndpointId;
         this.sourceServiceName = $.sourceServiceName;
         this.sourceServiceProject = $.sourceServiceProject;
@@ -840,6 +857,27 @@ public final class ServiceIntegrationArgs extends com.pulumi.resources.ResourceA
          */
         public Builder prometheusUserConfig(ServiceIntegrationPrometheusUserConfigArgs prometheusUserConfig) {
             return prometheusUserConfig(Output.of(prometheusUserConfig));
+        }
+
+        /**
+         * @param rsyslogUserConfig Rsyslog user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rsyslogUserConfig(@Nullable Output<ServiceIntegrationRsyslogUserConfigArgs> rsyslogUserConfig) {
+            $.rsyslogUserConfig = rsyslogUserConfig;
+            return this;
+        }
+
+        /**
+         * @param rsyslogUserConfig Rsyslog user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rsyslogUserConfig(ServiceIntegrationRsyslogUserConfigArgs rsyslogUserConfig) {
+            return rsyslogUserConfig(Output.of(rsyslogUserConfig));
         }
 
         /**

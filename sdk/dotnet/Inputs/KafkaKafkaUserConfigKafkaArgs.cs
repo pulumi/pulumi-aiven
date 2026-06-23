@@ -13,6 +13,12 @@ namespace Pulumi.Aiven.Inputs
     public sealed class KafkaKafkaUserConfigKafkaArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Enable Kafka audit logging by providing this object. Removing it disables the feature. Enabling, updating, or disabling audit logging causes a rolling restart of all Kafka brokers
+        /// </summary>
+        [Input("auditLog")]
+        public Input<Inputs.KafkaKafkaUserConfigKafkaAuditLogArgs>? AuditLog { get; set; }
+
+        /// <summary>
         /// Enable auto-creation of topics. (Default: false).
         /// </summary>
         [Input("autoCreateTopicsEnable")]
@@ -37,6 +43,12 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? DefaultReplicationFactor { get; set; }
 
         /// <summary>
+        /// Enum: `Classic`, `classic,consumer`, `classic,consumer,share`, `classic,consumer,share,streams`, `classic,consumer,streams`, `classic,share`, `classic,streams`. The enabled consumer group rebalance protocols. Use consumer, classic, share, streams to enable Kafka share groups.
+        /// </summary>
+        [Input("groupCoordinatorRebalanceProtocols")]
+        public Input<string>? GroupCoordinatorRebalanceProtocols { get; set; }
+
+        /// <summary>
         /// The amount of time, in milliseconds, the group coordinator will wait for more consumers to join a new group before performing the first rebalance. A longer delay means potentially fewer rebalances, but increases the time until processing begins. The default value for this is 3 seconds. During development and testing it might be desirable to set this to 0 in order to not delay test execution time. (Default: 3000 ms (3 seconds)). Example: `3000`.
         /// </summary>
         [Input("groupInitialRebalanceDelayMs")]
@@ -53,6 +65,84 @@ namespace Pulumi.Aiven.Inputs
         /// </summary>
         [Input("groupMinSessionTimeoutMs")]
         public Input<int>? GroupMinSessionTimeoutMs { get; set; }
+
+        /// <summary>
+        /// The maximum delivery attempts for a share-group record. Example: `5`.
+        /// </summary>
+        [Input("groupShareDeliveryCountLimit")]
+        public Input<int>? GroupShareDeliveryCountLimit { get; set; }
+
+        /// <summary>
+        /// The heartbeat interval used by share group members. Example: `5000`.
+        /// </summary>
+        [Input("groupShareHeartbeatIntervalMs")]
+        public Input<int>? GroupShareHeartbeatIntervalMs { get; set; }
+
+        /// <summary>
+        /// The maximum number of share groups allowed on the broker.
+        /// </summary>
+        [Input("groupShareMaxGroups")]
+        public Input<int>? GroupShareMaxGroups { get; set; }
+
+        /// <summary>
+        /// The maximum heartbeat interval allowed for share group members. Example: `15000`.
+        /// </summary>
+        [Input("groupShareMaxHeartbeatIntervalMs")]
+        public Input<int>? GroupShareMaxHeartbeatIntervalMs { get; set; }
+
+        /// <summary>
+        /// The maximum record lock duration allowed for share groups. Example: `60000`.
+        /// </summary>
+        [Input("groupShareMaxRecordLockDurationMs")]
+        public Input<int>? GroupShareMaxRecordLockDurationMs { get; set; }
+
+        /// <summary>
+        /// The maximum session timeout allowed for share group members. Example: `60000`.
+        /// </summary>
+        [Input("groupShareMaxSessionTimeoutMs")]
+        public Input<int>? GroupShareMaxSessionTimeoutMs { get; set; }
+
+        /// <summary>
+        /// The maximum number of members allowed in a share group. Example: `200`.
+        /// </summary>
+        [Input("groupShareMaxSize")]
+        public Input<int>? GroupShareMaxSize { get; set; }
+
+        /// <summary>
+        /// The minimum heartbeat interval allowed for share group members. Example: `5000`.
+        /// </summary>
+        [Input("groupShareMinHeartbeatIntervalMs")]
+        public Input<int>? GroupShareMinHeartbeatIntervalMs { get; set; }
+
+        /// <summary>
+        /// The minimum record lock duration allowed for share groups. Example: `15000`.
+        /// </summary>
+        [Input("groupShareMinRecordLockDurationMs")]
+        public Input<int>? GroupShareMinRecordLockDurationMs { get; set; }
+
+        /// <summary>
+        /// The minimum session timeout allowed for share group members. Example: `45000`.
+        /// </summary>
+        [Input("groupShareMinSessionTimeoutMs")]
+        public Input<int>? GroupShareMinSessionTimeoutMs { get; set; }
+
+        /// <summary>
+        /// The maximum number of record locks allowed per share group partition. Example: `2000`.
+        /// </summary>
+        [Input("groupSharePartitionMaxRecordLocks")]
+        public Input<int>? GroupSharePartitionMaxRecordLocks { get; set; }
+
+        /// <summary>
+        /// The duration for which a fetched share-group record is locked. Example: `30000`.
+        /// </summary>
+        [Input("groupShareRecordLockDurationMs")]
+        public Input<int>? GroupShareRecordLockDurationMs { get; set; }
+
+        /// <summary>
+        /// The timeout used to detect share group member failures. Example: `45000`.
+        /// </summary>
+        [Input("groupShareSessionTimeoutMs")]
+        public Input<int>? GroupShareSessionTimeoutMs { get; set; }
 
         /// <summary>
         /// How long are delete records retained? (Default: 86400000 (1 day)).

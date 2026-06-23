@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates and manages an Aiven for Apache Kafka® [topic](https://aiven.io/docs/products/kafka/concepts).
+// Creates and manages an Aiven for Apache Kafka® [topic](https://aiven.io/docs/products/kafka/concepts). If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
 //
 // ## Example Usage
 //
@@ -28,18 +28,52 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewKafkaTopic(ctx, "example_topic", &aiven.KafkaTopicArgs{
-//				Project:               pulumi.Any(exampleProject.Project),
-//				ServiceName:           pulumi.Any(exampleKafka.ServiceName),
-//				TopicName:             pulumi.String("example-topic"),
-//				Partitions:            pulumi.Int(5),
-//				Replication:           pulumi.Int(3),
-//				TerminationProtection: pulumi.Bool(true),
+//			_, err := aiven.NewKafkaTopic(ctx, "example", &aiven.KafkaTopicArgs{
+//				Project:          pulumi.String("my-project"),
+//				ServiceName:      pulumi.String("my-kafka"),
+//				TopicName:        pulumi.String("mytopic"),
+//				Partitions:       pulumi.Int(3),
+//				Replication:      pulumi.Int(3),
+//				OwnerUserGroupId: pulumi.String("ug22ba494e096"),
 //				Config: &aiven.KafkaTopicConfigArgs{
-//					FlushMs:       pulumi.String("10"),
-//					CleanupPolicy: pulumi.String("compact,delete"),
+//					CleanupPolicy:                   pulumi.String("delete"),
+//					CompressionType:                 pulumi.String("zstd"),
+//					DeleteRetentionMs:               pulumi.String("86400000"),
+//					DisklessEnable:                  pulumi.Bool(false),
+//					FileDeleteDelayMs:               pulumi.String("60000"),
+//					FlushMessages:                   pulumi.String("9223372036854775807"),
+//					FlushMs:                         pulumi.String("9223372036854775807"),
+//					IndexIntervalBytes:              pulumi.String("4096"),
+//					LocalRetentionBytes:             pulumi.String("1073741824"),
+//					LocalRetentionMs:                pulumi.String("300000"),
+//					MaxCompactionLagMs:              pulumi.String("86400000"),
+//					MaxMessageBytes:                 pulumi.String("1048588"),
+//					MessageDownconversionEnable:     pulumi.Bool(true),
+//					MessageFormatVersion:            pulumi.String("2.7-IV2"),
+//					MessageTimestampAfterMaxMs:      pulumi.String("3600000"),
+//					MessageTimestampBeforeMaxMs:     pulumi.String("9223372036854775807"),
+//					MessageTimestampDifferenceMaxMs: pulumi.String("9223372036854775807"),
+//					MessageTimestampType:            pulumi.String("CreateTime"),
+//					MinCleanableDirtyRatio:          pulumi.Float64(0.5),
+//					MinCompactionLagMs:              pulumi.String("0"),
+//					MinInsyncReplicas:               pulumi.String("2"),
+//					Preallocate:                     pulumi.Bool(false),
+//					RemoteStorageEnable:             pulumi.Bool(false),
+//					RetentionBytes:                  pulumi.String("-1"),
+//					RetentionMs:                     pulumi.String("604800000"),
+//					SegmentBytes:                    pulumi.String("1073741824"),
+//					SegmentIndexBytes:               pulumi.String("10485760"),
+//					SegmentJitterMs:                 pulumi.String("0"),
+//					SegmentMs:                       pulumi.String("604800000"),
+//					UncleanLeaderElectionEnable:     pulumi.Bool(false),
 //				},
-//				OwnerUserGroupId: pulumi.Any(example.GroupId),
+//				Tags: aiven.KafkaTopicTagArray{
+//					&aiven.KafkaTopicTagArgs{
+//						Key:   pulumi.String("My-tag_key"),
+//						Value: pulumi.String("My tag value, value."),
+//					},
+//				},
+//				TopicDescription: pulumi.String("Platform events"),
 //			})
 //			if err != nil {
 //				return err
@@ -53,30 +87,33 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import aiven:index/kafkaTopic:KafkaTopic example_topic PROJECT/SERVICE_NAME/TOPIC_NAME
+// $ pulumi import aiven:index/kafkaTopic:KafkaTopic example PROJECT/SERVICE_NAME/TOPIC_NAME
 // ```
 type KafkaTopic struct {
 	pulumi.CustomResourceState
 
-	// [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics.
+	// [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics. Removing the block won't reset the topic configuration to default values. Instead, the topic will retain its last known configuration.
 	Config KafkaTopicConfigPtrOutput `pulumi:"config"`
-	// The ID of the user group that owns the topic. Assigning ownership to decentralize topic management is part of [Aiven for Apache Kafka® governance](https://aiven.io/docs/products/kafka/concepts/governance-overview).
+	// The user group that owns this topic. Length must be between `1` and `36`.
 	OwnerUserGroupId pulumi.StringPtrOutput `pulumi:"ownerUserGroupId"`
-	// The number of partitions to create in the topic.
+	// Number of partitions. Value must be between `1` and `1000000`.
 	Partitions pulumi.IntOutput `pulumi:"partitions"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The replication factor for the topic.
+	// Number of replicas. Minimum value: `1`.
 	Replication pulumi.IntOutput `pulumi:"replication"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Service name. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// Tags for the topic.
+	// Topic tags.
 	Tags KafkaTopicTagArrayOutput `pulumi:"tags"`
-	// Prevents topics from being deleted by Terraform. It's recommended for topics containing critical data. **Topics can still be deleted in the Aiven Console.**
-	TerminationProtection pulumi.BoolPtrOutput `pulumi:"terminationProtection"`
-	// The description of the topic
+	// Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console**. The default value is `false`. **Deprecated**: Instead, use `preventDestroy`
+	//
+	// Deprecated: Instead, use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)
+	TerminationProtection pulumi.BoolOutput           `pulumi:"terminationProtection"`
+	Timeouts              KafkaTopicTimeoutsPtrOutput `pulumi:"timeouts"`
+	// Topic description. Length must be between `1` and `256`.
 	TopicDescription pulumi.StringPtrOutput `pulumi:"topicDescription"`
-	// The name of the topic. Changing this property forces recreation of the resource.
+	// Kafka topic name. Length must be between `1` and `249`. Changing this property forces recreation of the resource.
 	TopicName pulumi.StringOutput `pulumi:"topicName"`
 }
 
@@ -125,48 +162,54 @@ func GetKafkaTopic(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering KafkaTopic resources.
 type kafkaTopicState struct {
-	// [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics.
+	// [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics. Removing the block won't reset the topic configuration to default values. Instead, the topic will retain its last known configuration.
 	Config *KafkaTopicConfig `pulumi:"config"`
-	// The ID of the user group that owns the topic. Assigning ownership to decentralize topic management is part of [Aiven for Apache Kafka® governance](https://aiven.io/docs/products/kafka/concepts/governance-overview).
+	// The user group that owns this topic. Length must be between `1` and `36`.
 	OwnerUserGroupId *string `pulumi:"ownerUserGroupId"`
-	// The number of partitions to create in the topic.
+	// Number of partitions. Value must be between `1` and `1000000`.
 	Partitions *int `pulumi:"partitions"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project *string `pulumi:"project"`
-	// The replication factor for the topic.
+	// Number of replicas. Minimum value: `1`.
 	Replication *int `pulumi:"replication"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Service name. Changing this property forces recreation of the resource.
 	ServiceName *string `pulumi:"serviceName"`
-	// Tags for the topic.
+	// Topic tags.
 	Tags []KafkaTopicTag `pulumi:"tags"`
-	// Prevents topics from being deleted by Terraform. It's recommended for topics containing critical data. **Topics can still be deleted in the Aiven Console.**
-	TerminationProtection *bool `pulumi:"terminationProtection"`
-	// The description of the topic
+	// Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console**. The default value is `false`. **Deprecated**: Instead, use `preventDestroy`
+	//
+	// Deprecated: Instead, use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)
+	TerminationProtection *bool               `pulumi:"terminationProtection"`
+	Timeouts              *KafkaTopicTimeouts `pulumi:"timeouts"`
+	// Topic description. Length must be between `1` and `256`.
 	TopicDescription *string `pulumi:"topicDescription"`
-	// The name of the topic. Changing this property forces recreation of the resource.
+	// Kafka topic name. Length must be between `1` and `249`. Changing this property forces recreation of the resource.
 	TopicName *string `pulumi:"topicName"`
 }
 
 type KafkaTopicState struct {
-	// [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics.
+	// [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics. Removing the block won't reset the topic configuration to default values. Instead, the topic will retain its last known configuration.
 	Config KafkaTopicConfigPtrInput
-	// The ID of the user group that owns the topic. Assigning ownership to decentralize topic management is part of [Aiven for Apache Kafka® governance](https://aiven.io/docs/products/kafka/concepts/governance-overview).
+	// The user group that owns this topic. Length must be between `1` and `36`.
 	OwnerUserGroupId pulumi.StringPtrInput
-	// The number of partitions to create in the topic.
+	// Number of partitions. Value must be between `1` and `1000000`.
 	Partitions pulumi.IntPtrInput
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project pulumi.StringPtrInput
-	// The replication factor for the topic.
+	// Number of replicas. Minimum value: `1`.
 	Replication pulumi.IntPtrInput
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Service name. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringPtrInput
-	// Tags for the topic.
+	// Topic tags.
 	Tags KafkaTopicTagArrayInput
-	// Prevents topics from being deleted by Terraform. It's recommended for topics containing critical data. **Topics can still be deleted in the Aiven Console.**
+	// Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console**. The default value is `false`. **Deprecated**: Instead, use `preventDestroy`
+	//
+	// Deprecated: Instead, use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)
 	TerminationProtection pulumi.BoolPtrInput
-	// The description of the topic
+	Timeouts              KafkaTopicTimeoutsPtrInput
+	// Topic description. Length must be between `1` and `256`.
 	TopicDescription pulumi.StringPtrInput
-	// The name of the topic. Changing this property forces recreation of the resource.
+	// Kafka topic name. Length must be between `1` and `249`. Changing this property forces recreation of the resource.
 	TopicName pulumi.StringPtrInput
 }
 
@@ -175,49 +218,55 @@ func (KafkaTopicState) ElementType() reflect.Type {
 }
 
 type kafkaTopicArgs struct {
-	// [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics.
+	// [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics. Removing the block won't reset the topic configuration to default values. Instead, the topic will retain its last known configuration.
 	Config *KafkaTopicConfig `pulumi:"config"`
-	// The ID of the user group that owns the topic. Assigning ownership to decentralize topic management is part of [Aiven for Apache Kafka® governance](https://aiven.io/docs/products/kafka/concepts/governance-overview).
+	// The user group that owns this topic. Length must be between `1` and `36`.
 	OwnerUserGroupId *string `pulumi:"ownerUserGroupId"`
-	// The number of partitions to create in the topic.
+	// Number of partitions. Value must be between `1` and `1000000`.
 	Partitions int `pulumi:"partitions"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
-	// The replication factor for the topic.
+	// Number of replicas. Minimum value: `1`.
 	Replication int `pulumi:"replication"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Service name. Changing this property forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
-	// Tags for the topic.
+	// Topic tags.
 	Tags []KafkaTopicTag `pulumi:"tags"`
-	// Prevents topics from being deleted by Terraform. It's recommended for topics containing critical data. **Topics can still be deleted in the Aiven Console.**
-	TerminationProtection *bool `pulumi:"terminationProtection"`
-	// The description of the topic
+	// Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console**. The default value is `false`. **Deprecated**: Instead, use `preventDestroy`
+	//
+	// Deprecated: Instead, use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)
+	TerminationProtection *bool               `pulumi:"terminationProtection"`
+	Timeouts              *KafkaTopicTimeouts `pulumi:"timeouts"`
+	// Topic description. Length must be between `1` and `256`.
 	TopicDescription *string `pulumi:"topicDescription"`
-	// The name of the topic. Changing this property forces recreation of the resource.
+	// Kafka topic name. Length must be between `1` and `249`. Changing this property forces recreation of the resource.
 	TopicName string `pulumi:"topicName"`
 }
 
 // The set of arguments for constructing a KafkaTopic resource.
 type KafkaTopicArgs struct {
-	// [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics.
+	// [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics. Removing the block won't reset the topic configuration to default values. Instead, the topic will retain its last known configuration.
 	Config KafkaTopicConfigPtrInput
-	// The ID of the user group that owns the topic. Assigning ownership to decentralize topic management is part of [Aiven for Apache Kafka® governance](https://aiven.io/docs/products/kafka/concepts/governance-overview).
+	// The user group that owns this topic. Length must be between `1` and `36`.
 	OwnerUserGroupId pulumi.StringPtrInput
-	// The number of partitions to create in the topic.
+	// Number of partitions. Value must be between `1` and `1000000`.
 	Partitions pulumi.IntInput
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput
-	// The replication factor for the topic.
+	// Number of replicas. Minimum value: `1`.
 	Replication pulumi.IntInput
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Service name. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringInput
-	// Tags for the topic.
+	// Topic tags.
 	Tags KafkaTopicTagArrayInput
-	// Prevents topics from being deleted by Terraform. It's recommended for topics containing critical data. **Topics can still be deleted in the Aiven Console.**
+	// Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console**. The default value is `false`. **Deprecated**: Instead, use `preventDestroy`
+	//
+	// Deprecated: Instead, use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)
 	TerminationProtection pulumi.BoolPtrInput
-	// The description of the topic
+	Timeouts              KafkaTopicTimeoutsPtrInput
+	// Topic description. Length must be between `1` and `256`.
 	TopicDescription pulumi.StringPtrInput
-	// The name of the topic. Changing this property forces recreation of the resource.
+	// Kafka topic name. Length must be between `1` and `249`. Changing this property forces recreation of the resource.
 	TopicName pulumi.StringInput
 }
 
@@ -308,52 +357,58 @@ func (o KafkaTopicOutput) ToKafkaTopicOutputWithContext(ctx context.Context) Kaf
 	return o
 }
 
-// [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics.
+// [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics. Removing the block won't reset the topic configuration to default values. Instead, the topic will retain its last known configuration.
 func (o KafkaTopicOutput) Config() KafkaTopicConfigPtrOutput {
 	return o.ApplyT(func(v *KafkaTopic) KafkaTopicConfigPtrOutput { return v.Config }).(KafkaTopicConfigPtrOutput)
 }
 
-// The ID of the user group that owns the topic. Assigning ownership to decentralize topic management is part of [Aiven for Apache Kafka® governance](https://aiven.io/docs/products/kafka/concepts/governance-overview).
+// The user group that owns this topic. Length must be between `1` and `36`.
 func (o KafkaTopicOutput) OwnerUserGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaTopic) pulumi.StringPtrOutput { return v.OwnerUserGroupId }).(pulumi.StringPtrOutput)
 }
 
-// The number of partitions to create in the topic.
+// Number of partitions. Value must be between `1` and `1000000`.
 func (o KafkaTopicOutput) Partitions() pulumi.IntOutput {
 	return o.ApplyT(func(v *KafkaTopic) pulumi.IntOutput { return v.Partitions }).(pulumi.IntOutput)
 }
 
-// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// Project name. Changing this property forces recreation of the resource.
 func (o KafkaTopicOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaTopic) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// The replication factor for the topic.
+// Number of replicas. Minimum value: `1`.
 func (o KafkaTopicOutput) Replication() pulumi.IntOutput {
 	return o.ApplyT(func(v *KafkaTopic) pulumi.IntOutput { return v.Replication }).(pulumi.IntOutput)
 }
 
-// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// Service name. Changing this property forces recreation of the resource.
 func (o KafkaTopicOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaTopic) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// Tags for the topic.
+// Topic tags.
 func (o KafkaTopicOutput) Tags() KafkaTopicTagArrayOutput {
 	return o.ApplyT(func(v *KafkaTopic) KafkaTopicTagArrayOutput { return v.Tags }).(KafkaTopicTagArrayOutput)
 }
 
-// Prevents topics from being deleted by Terraform. It's recommended for topics containing critical data. **Topics can still be deleted in the Aiven Console.**
-func (o KafkaTopicOutput) TerminationProtection() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *KafkaTopic) pulumi.BoolPtrOutput { return v.TerminationProtection }).(pulumi.BoolPtrOutput)
+// Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console**. The default value is `false`. **Deprecated**: Instead, use `preventDestroy`
+//
+// Deprecated: Instead, use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)
+func (o KafkaTopicOutput) TerminationProtection() pulumi.BoolOutput {
+	return o.ApplyT(func(v *KafkaTopic) pulumi.BoolOutput { return v.TerminationProtection }).(pulumi.BoolOutput)
 }
 
-// The description of the topic
+func (o KafkaTopicOutput) Timeouts() KafkaTopicTimeoutsPtrOutput {
+	return o.ApplyT(func(v *KafkaTopic) KafkaTopicTimeoutsPtrOutput { return v.Timeouts }).(KafkaTopicTimeoutsPtrOutput)
+}
+
+// Topic description. Length must be between `1` and `256`.
 func (o KafkaTopicOutput) TopicDescription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaTopic) pulumi.StringPtrOutput { return v.TopicDescription }).(pulumi.StringPtrOutput)
 }
 
-// The name of the topic. Changing this property forces recreation of the resource.
+// Kafka topic name. Length must be between `1` and `249`. Changing this property forces recreation of the resource.
 func (o KafkaTopicOutput) TopicName() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaTopic) pulumi.StringOutput { return v.TopicName }).(pulumi.StringOutput)
 }

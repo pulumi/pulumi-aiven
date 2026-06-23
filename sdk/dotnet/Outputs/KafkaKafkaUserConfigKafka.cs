@@ -14,6 +14,10 @@ namespace Pulumi.Aiven.Outputs
     public sealed class KafkaKafkaUserConfigKafka
     {
         /// <summary>
+        /// Enable Kafka audit logging by providing this object. Removing it disables the feature. Enabling, updating, or disabling audit logging causes a rolling restart of all Kafka brokers
+        /// </summary>
+        public readonly Outputs.KafkaKafkaUserConfigKafkaAuditLog? AuditLog;
+        /// <summary>
         /// Enable auto-creation of topics. (Default: false).
         /// </summary>
         public readonly bool? AutoCreateTopicsEnable;
@@ -30,6 +34,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? DefaultReplicationFactor;
         /// <summary>
+        /// Enum: `Classic`, `classic,consumer`, `classic,consumer,share`, `classic,consumer,share,streams`, `classic,consumer,streams`, `classic,share`, `classic,streams`. The enabled consumer group rebalance protocols. Use consumer, classic, share, streams to enable Kafka share groups.
+        /// </summary>
+        public readonly string? GroupCoordinatorRebalanceProtocols;
+        /// <summary>
         /// The amount of time, in milliseconds, the group coordinator will wait for more consumers to join a new group before performing the first rebalance. A longer delay means potentially fewer rebalances, but increases the time until processing begins. The default value for this is 3 seconds. During development and testing it might be desirable to set this to 0 in order to not delay test execution time. (Default: 3000 ms (3 seconds)). Example: `3000`.
         /// </summary>
         public readonly int? GroupInitialRebalanceDelayMs;
@@ -41,6 +49,58 @@ namespace Pulumi.Aiven.Outputs
         /// The minimum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. (Default: 6000 ms (6 seconds)). Example: `6000`.
         /// </summary>
         public readonly int? GroupMinSessionTimeoutMs;
+        /// <summary>
+        /// The maximum delivery attempts for a share-group record. Example: `5`.
+        /// </summary>
+        public readonly int? GroupShareDeliveryCountLimit;
+        /// <summary>
+        /// The heartbeat interval used by share group members. Example: `5000`.
+        /// </summary>
+        public readonly int? GroupShareHeartbeatIntervalMs;
+        /// <summary>
+        /// The maximum number of share groups allowed on the broker.
+        /// </summary>
+        public readonly int? GroupShareMaxGroups;
+        /// <summary>
+        /// The maximum heartbeat interval allowed for share group members. Example: `15000`.
+        /// </summary>
+        public readonly int? GroupShareMaxHeartbeatIntervalMs;
+        /// <summary>
+        /// The maximum record lock duration allowed for share groups. Example: `60000`.
+        /// </summary>
+        public readonly int? GroupShareMaxRecordLockDurationMs;
+        /// <summary>
+        /// The maximum session timeout allowed for share group members. Example: `60000`.
+        /// </summary>
+        public readonly int? GroupShareMaxSessionTimeoutMs;
+        /// <summary>
+        /// The maximum number of members allowed in a share group. Example: `200`.
+        /// </summary>
+        public readonly int? GroupShareMaxSize;
+        /// <summary>
+        /// The minimum heartbeat interval allowed for share group members. Example: `5000`.
+        /// </summary>
+        public readonly int? GroupShareMinHeartbeatIntervalMs;
+        /// <summary>
+        /// The minimum record lock duration allowed for share groups. Example: `15000`.
+        /// </summary>
+        public readonly int? GroupShareMinRecordLockDurationMs;
+        /// <summary>
+        /// The minimum session timeout allowed for share group members. Example: `45000`.
+        /// </summary>
+        public readonly int? GroupShareMinSessionTimeoutMs;
+        /// <summary>
+        /// The maximum number of record locks allowed per share group partition. Example: `2000`.
+        /// </summary>
+        public readonly int? GroupSharePartitionMaxRecordLocks;
+        /// <summary>
+        /// The duration for which a fetched share-group record is locked. Example: `30000`.
+        /// </summary>
+        public readonly int? GroupShareRecordLockDurationMs;
+        /// <summary>
+        /// The timeout used to detect share group member failures. Example: `45000`.
+        /// </summary>
+        public readonly int? GroupShareSessionTimeoutMs;
         /// <summary>
         /// How long are delete records retained? (Default: 86400000 (1 day)).
         /// </summary>
@@ -208,6 +268,8 @@ namespace Pulumi.Aiven.Outputs
 
         [OutputConstructor]
         private KafkaKafkaUserConfigKafka(
+            Outputs.KafkaKafkaUserConfigKafkaAuditLog? auditLog,
+
             bool? autoCreateTopicsEnable,
 
             string? compressionType,
@@ -216,11 +278,39 @@ namespace Pulumi.Aiven.Outputs
 
             int? defaultReplicationFactor,
 
+            string? groupCoordinatorRebalanceProtocols,
+
             int? groupInitialRebalanceDelayMs,
 
             int? groupMaxSessionTimeoutMs,
 
             int? groupMinSessionTimeoutMs,
+
+            int? groupShareDeliveryCountLimit,
+
+            int? groupShareHeartbeatIntervalMs,
+
+            int? groupShareMaxGroups,
+
+            int? groupShareMaxHeartbeatIntervalMs,
+
+            int? groupShareMaxRecordLockDurationMs,
+
+            int? groupShareMaxSessionTimeoutMs,
+
+            int? groupShareMaxSize,
+
+            int? groupShareMinHeartbeatIntervalMs,
+
+            int? groupShareMinRecordLockDurationMs,
+
+            int? groupShareMinSessionTimeoutMs,
+
+            int? groupSharePartitionMaxRecordLocks,
+
+            int? groupShareRecordLockDurationMs,
+
+            int? groupShareSessionTimeoutMs,
 
             int? logCleanerDeleteRetentionMs,
 
@@ -304,13 +394,28 @@ namespace Pulumi.Aiven.Outputs
 
             int? transactionStateLogSegmentBytes)
         {
+            AuditLog = auditLog;
             AutoCreateTopicsEnable = autoCreateTopicsEnable;
             CompressionType = compressionType;
             ConnectionsMaxIdleMs = connectionsMaxIdleMs;
             DefaultReplicationFactor = defaultReplicationFactor;
+            GroupCoordinatorRebalanceProtocols = groupCoordinatorRebalanceProtocols;
             GroupInitialRebalanceDelayMs = groupInitialRebalanceDelayMs;
             GroupMaxSessionTimeoutMs = groupMaxSessionTimeoutMs;
             GroupMinSessionTimeoutMs = groupMinSessionTimeoutMs;
+            GroupShareDeliveryCountLimit = groupShareDeliveryCountLimit;
+            GroupShareHeartbeatIntervalMs = groupShareHeartbeatIntervalMs;
+            GroupShareMaxGroups = groupShareMaxGroups;
+            GroupShareMaxHeartbeatIntervalMs = groupShareMaxHeartbeatIntervalMs;
+            GroupShareMaxRecordLockDurationMs = groupShareMaxRecordLockDurationMs;
+            GroupShareMaxSessionTimeoutMs = groupShareMaxSessionTimeoutMs;
+            GroupShareMaxSize = groupShareMaxSize;
+            GroupShareMinHeartbeatIntervalMs = groupShareMinHeartbeatIntervalMs;
+            GroupShareMinRecordLockDurationMs = groupShareMinRecordLockDurationMs;
+            GroupShareMinSessionTimeoutMs = groupShareMinSessionTimeoutMs;
+            GroupSharePartitionMaxRecordLocks = groupSharePartitionMaxRecordLocks;
+            GroupShareRecordLockDurationMs = groupShareRecordLockDurationMs;
+            GroupShareSessionTimeoutMs = groupShareSessionTimeoutMs;
             LogCleanerDeleteRetentionMs = logCleanerDeleteRetentionMs;
             LogCleanerMaxCompactionLagMs = logCleanerMaxCompactionLagMs;
             LogCleanerMinCleanableRatio = logCleanerMinCleanableRatio;

@@ -13,8 +13,8 @@ import (
 
 // Gets detailed information about a specific service plan, including specifications and pricing for a cloud region.
 //
-// **This resource is in the beta stage and may change without notice.** Set
-// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+// **This data source is in the beta stage and may change without notice.** Set
+// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the data source.
 func GetServicePlan(ctx *pulumi.Context, args *GetServicePlanArgs, opts ...pulumi.InvokeOption) (*GetServicePlanResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetServicePlanResult

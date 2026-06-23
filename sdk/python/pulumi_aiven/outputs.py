@@ -112,6 +112,7 @@ __all__ = [
     'KafkaKafkaUserConfigInkless',
     'KafkaKafkaUserConfigIpFilterObject',
     'KafkaKafkaUserConfigKafka',
+    'KafkaKafkaUserConfigKafkaAuditLog',
     'KafkaKafkaUserConfigKafkaAuthenticationMethods',
     'KafkaKafkaUserConfigKafkaConnectConfig',
     'KafkaKafkaUserConfigKafkaConnectPluginVersion',
@@ -136,12 +137,14 @@ __all__ = [
     'KafkaMirrorMakerServiceIntegration',
     'KafkaMirrorMakerTag',
     'KafkaMirrorMakerTechEmail',
+    'KafkaSchemaReference',
     'KafkaSchemaRegistryAclTimeouts',
     'KafkaServiceIntegration',
     'KafkaTag',
     'KafkaTechEmail',
     'KafkaTopicConfig',
     'KafkaTopicTag',
+    'KafkaTopicTimeouts',
     'MySqlComponent',
     'MySqlMysql',
     'MySqlMysqlParam',
@@ -295,6 +298,7 @@ __all__ = [
     'ServiceIntegrationPrometheusUserConfig',
     'ServiceIntegrationPrometheusUserConfigSourceMysql',
     'ServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf',
+    'ServiceIntegrationRsyslogUserConfig',
     'StaticIpTimeouts',
     'ThanosComponent',
     'ThanosServiceIntegration',
@@ -406,6 +410,7 @@ __all__ = [
     'GetKafkaKafkaUserConfigInklessResult',
     'GetKafkaKafkaUserConfigIpFilterObjectResult',
     'GetKafkaKafkaUserConfigKafkaResult',
+    'GetKafkaKafkaUserConfigKafkaAuditLogResult',
     'GetKafkaKafkaUserConfigKafkaAuthenticationMethodsResult',
     'GetKafkaKafkaUserConfigKafkaConnectConfigResult',
     'GetKafkaKafkaUserConfigKafkaConnectPluginVersionResult',
@@ -430,6 +435,8 @@ __all__ = [
     'GetKafkaMirrorMakerServiceIntegrationResult',
     'GetKafkaMirrorMakerTagResult',
     'GetKafkaMirrorMakerTechEmailResult',
+    'GetKafkaSchemaConfigurationReferenceResult',
+    'GetKafkaSchemaReferenceResult',
     'GetKafkaSchemaRegistryAclTimeoutsResult',
     'GetKafkaServiceIntegrationResult',
     'GetKafkaTagResult',
@@ -439,6 +446,7 @@ __all__ = [
     'GetKafkaTopicListTopicResult',
     'GetKafkaTopicListTopicTagResult',
     'GetKafkaTopicTagResult',
+    'GetKafkaTopicTimeoutsResult',
     'GetMySqlComponentResult',
     'GetMySqlMysqlResult',
     'GetMySqlMysqlParamResult',
@@ -602,6 +610,7 @@ __all__ = [
     'GetServiceIntegrationPrometheusUserConfigResult',
     'GetServiceIntegrationPrometheusUserConfigSourceMysqlResult',
     'GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafResult',
+    'GetServiceIntegrationRsyslogUserConfigResult',
     'GetServiceListServiceResult',
     'GetServiceListTimeoutsResult',
     'GetServicePlanBackupConfigResult',
@@ -8171,7 +8180,7 @@ class KafkaKafkaUserConfig(dict):
         :param _builtins.bool kafka_rest_authorization: Enable authorization in Kafka-REST service.
         :param 'KafkaKafkaUserConfigKafkaRestConfigArgs' kafka_rest_config: Kafka REST configuration
         :param 'KafkaKafkaUserConfigKafkaSaslMechanismsArgs' kafka_sasl_mechanisms: Kafka SASL mechanisms
-        :param _builtins.str kafka_version: Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, `4.1`, and newer. Kafka major version.
+        :param _builtins.str kafka_version: Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, `4.1`, `4.2`, and newer. Kafka major version.
         :param _builtins.bool letsencrypt_sasl: Use a Let's Encrypt certificate authority (CA) for Kafka SASL authentication. (Default: False).
         :param _builtins.bool letsencrypt_sasl_privatelink: Use a Let's Encrypt certificate authority (CA) for Kafka SASL authentication via Privatelink. (Default: False).
         :param 'KafkaKafkaUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks
@@ -8448,7 +8457,7 @@ class KafkaKafkaUserConfig(dict):
     @pulumi.getter(name="kafkaVersion")
     def kafka_version(self) -> Optional[_builtins.str]:
         """
-        Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, `4.1`, and newer. Kafka major version.
+        Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, `4.1`, `4.2`, and newer. Kafka major version.
         """
         return pulumi.get(self, "kafka_version")
 
@@ -8621,7 +8630,9 @@ class KafkaKafkaUserConfigKafka(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "autoCreateTopicsEnable":
+        if key == "auditLog":
+            suggest = "audit_log"
+        elif key == "autoCreateTopicsEnable":
             suggest = "auto_create_topics_enable"
         elif key == "compressionType":
             suggest = "compression_type"
@@ -8629,12 +8640,40 @@ class KafkaKafkaUserConfigKafka(dict):
             suggest = "connections_max_idle_ms"
         elif key == "defaultReplicationFactor":
             suggest = "default_replication_factor"
+        elif key == "groupCoordinatorRebalanceProtocols":
+            suggest = "group_coordinator_rebalance_protocols"
         elif key == "groupInitialRebalanceDelayMs":
             suggest = "group_initial_rebalance_delay_ms"
         elif key == "groupMaxSessionTimeoutMs":
             suggest = "group_max_session_timeout_ms"
         elif key == "groupMinSessionTimeoutMs":
             suggest = "group_min_session_timeout_ms"
+        elif key == "groupShareDeliveryCountLimit":
+            suggest = "group_share_delivery_count_limit"
+        elif key == "groupShareHeartbeatIntervalMs":
+            suggest = "group_share_heartbeat_interval_ms"
+        elif key == "groupShareMaxGroups":
+            suggest = "group_share_max_groups"
+        elif key == "groupShareMaxHeartbeatIntervalMs":
+            suggest = "group_share_max_heartbeat_interval_ms"
+        elif key == "groupShareMaxRecordLockDurationMs":
+            suggest = "group_share_max_record_lock_duration_ms"
+        elif key == "groupShareMaxSessionTimeoutMs":
+            suggest = "group_share_max_session_timeout_ms"
+        elif key == "groupShareMaxSize":
+            suggest = "group_share_max_size"
+        elif key == "groupShareMinHeartbeatIntervalMs":
+            suggest = "group_share_min_heartbeat_interval_ms"
+        elif key == "groupShareMinRecordLockDurationMs":
+            suggest = "group_share_min_record_lock_duration_ms"
+        elif key == "groupShareMinSessionTimeoutMs":
+            suggest = "group_share_min_session_timeout_ms"
+        elif key == "groupSharePartitionMaxRecordLocks":
+            suggest = "group_share_partition_max_record_locks"
+        elif key == "groupShareRecordLockDurationMs":
+            suggest = "group_share_record_lock_duration_ms"
+        elif key == "groupShareSessionTimeoutMs":
+            suggest = "group_share_session_timeout_ms"
         elif key == "logCleanerDeleteRetentionMs":
             suggest = "log_cleaner_delete_retention_ms"
         elif key == "logCleanerMaxCompactionLagMs":
@@ -8730,13 +8769,28 @@ class KafkaKafkaUserConfigKafka(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 audit_log: Optional['outputs.KafkaKafkaUserConfigKafkaAuditLog'] = None,
                  auto_create_topics_enable: Optional[_builtins.bool] = None,
                  compression_type: Optional[_builtins.str] = None,
                  connections_max_idle_ms: Optional[_builtins.int] = None,
                  default_replication_factor: Optional[_builtins.int] = None,
+                 group_coordinator_rebalance_protocols: Optional[_builtins.str] = None,
                  group_initial_rebalance_delay_ms: Optional[_builtins.int] = None,
                  group_max_session_timeout_ms: Optional[_builtins.int] = None,
                  group_min_session_timeout_ms: Optional[_builtins.int] = None,
+                 group_share_delivery_count_limit: Optional[_builtins.int] = None,
+                 group_share_heartbeat_interval_ms: Optional[_builtins.int] = None,
+                 group_share_max_groups: Optional[_builtins.int] = None,
+                 group_share_max_heartbeat_interval_ms: Optional[_builtins.int] = None,
+                 group_share_max_record_lock_duration_ms: Optional[_builtins.int] = None,
+                 group_share_max_session_timeout_ms: Optional[_builtins.int] = None,
+                 group_share_max_size: Optional[_builtins.int] = None,
+                 group_share_min_heartbeat_interval_ms: Optional[_builtins.int] = None,
+                 group_share_min_record_lock_duration_ms: Optional[_builtins.int] = None,
+                 group_share_min_session_timeout_ms: Optional[_builtins.int] = None,
+                 group_share_partition_max_record_locks: Optional[_builtins.int] = None,
+                 group_share_record_lock_duration_ms: Optional[_builtins.int] = None,
+                 group_share_session_timeout_ms: Optional[_builtins.int] = None,
                  log_cleaner_delete_retention_ms: Optional[_builtins.int] = None,
                  log_cleaner_max_compaction_lag_ms: Optional[_builtins.int] = None,
                  log_cleaner_min_cleanable_ratio: Optional[_builtins.float] = None,
@@ -8779,13 +8833,28 @@ class KafkaKafkaUserConfigKafka(dict):
                  transaction_remove_expired_transaction_cleanup_interval_ms: Optional[_builtins.int] = None,
                  transaction_state_log_segment_bytes: Optional[_builtins.int] = None):
         """
+        :param 'KafkaKafkaUserConfigKafkaAuditLogArgs' audit_log: Enable Kafka audit logging by providing this object. Removing it disables the feature. Enabling, updating, or disabling audit logging causes a rolling restart of all Kafka brokers
         :param _builtins.bool auto_create_topics_enable: Enable auto-creation of topics. (Default: false).
         :param _builtins.str compression_type: Enum: `gzip`, `lz4`, `producer`, `snappy`, `uncompressed`, `zstd`. Specify the final compression type for a given topic. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `uncompressed` which is equivalent to no compression; and `producer` which means retain the original compression codec set by the producer.(Default: producer).
         :param _builtins.int connections_max_idle_ms: Idle connections timeout: the server socket processor threads close the connections that idle for longer than this. (Default: 600000 ms (10 minutes)). Example: `540000`.
         :param _builtins.int default_replication_factor: Replication factor for auto-created topics (Default: 3).
+        :param _builtins.str group_coordinator_rebalance_protocols: Enum: `classic`, `classic,consumer`, `classic,consumer,share`, `classic,consumer,share,streams`, `classic,consumer,streams`, `classic,share`, `classic,streams`. The enabled consumer group rebalance protocols. Use consumer, classic, share, streams to enable Kafka share groups.
         :param _builtins.int group_initial_rebalance_delay_ms: The amount of time, in milliseconds, the group coordinator will wait for more consumers to join a new group before performing the first rebalance. A longer delay means potentially fewer rebalances, but increases the time until processing begins. The default value for this is 3 seconds. During development and testing it might be desirable to set this to 0 in order to not delay test execution time. (Default: 3000 ms (3 seconds)). Example: `3000`.
         :param _builtins.int group_max_session_timeout_ms: The maximum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. Default: 1800000 ms (30 minutes).
         :param _builtins.int group_min_session_timeout_ms: The minimum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. (Default: 6000 ms (6 seconds)). Example: `6000`.
+        :param _builtins.int group_share_delivery_count_limit: The maximum delivery attempts for a share-group record. Example: `5`.
+        :param _builtins.int group_share_heartbeat_interval_ms: The heartbeat interval used by share group members. Example: `5000`.
+        :param _builtins.int group_share_max_groups: The maximum number of share groups allowed on the broker.
+        :param _builtins.int group_share_max_heartbeat_interval_ms: The maximum heartbeat interval allowed for share group members. Example: `15000`.
+        :param _builtins.int group_share_max_record_lock_duration_ms: The maximum record lock duration allowed for share groups. Example: `60000`.
+        :param _builtins.int group_share_max_session_timeout_ms: The maximum session timeout allowed for share group members. Example: `60000`.
+        :param _builtins.int group_share_max_size: The maximum number of members allowed in a share group. Example: `200`.
+        :param _builtins.int group_share_min_heartbeat_interval_ms: The minimum heartbeat interval allowed for share group members. Example: `5000`.
+        :param _builtins.int group_share_min_record_lock_duration_ms: The minimum record lock duration allowed for share groups. Example: `15000`.
+        :param _builtins.int group_share_min_session_timeout_ms: The minimum session timeout allowed for share group members. Example: `45000`.
+        :param _builtins.int group_share_partition_max_record_locks: The maximum number of record locks allowed per share group partition. Example: `2000`.
+        :param _builtins.int group_share_record_lock_duration_ms: The duration for which a fetched share-group record is locked. Example: `30000`.
+        :param _builtins.int group_share_session_timeout_ms: The timeout used to detect share group member failures. Example: `45000`.
         :param _builtins.int log_cleaner_delete_retention_ms: How long are delete records retained? (Default: 86400000 (1 day)).
         :param _builtins.int log_cleaner_max_compaction_lag_ms: The maximum amount of time message will remain uncompacted. Only applicable for logs that are being compacted. (Default: 9223372036854775807 ms (Long.MAX_VALUE)).
         :param _builtins.float log_cleaner_min_cleanable_ratio: Controls log compactor frequency. Larger value means more frequent compactions but also more space wasted for logs. Consider setting log.cleaner.max.compaction.lag.ms to enforce compactions sooner, instead of setting a very high value for this option. (Default: 0.5). Example: `0.5`.
@@ -8828,6 +8897,8 @@ class KafkaKafkaUserConfigKafka(dict):
         :param _builtins.int transaction_remove_expired_transaction_cleanup_interval_ms: The interval at which to remove transactions that have expired due to transactional.id.expiration.ms passing (Default: 3600000 ms (1 hour)).
         :param _builtins.int transaction_state_log_segment_bytes: The transaction topic segment bytes should be kept relatively small in order to facilitate faster log compaction and cache loads (Default: 104857600 bytes (100 mebibytes)).
         """
+        if audit_log is not None:
+            pulumi.set(__self__, "audit_log", audit_log)
         if auto_create_topics_enable is not None:
             pulumi.set(__self__, "auto_create_topics_enable", auto_create_topics_enable)
         if compression_type is not None:
@@ -8836,12 +8907,40 @@ class KafkaKafkaUserConfigKafka(dict):
             pulumi.set(__self__, "connections_max_idle_ms", connections_max_idle_ms)
         if default_replication_factor is not None:
             pulumi.set(__self__, "default_replication_factor", default_replication_factor)
+        if group_coordinator_rebalance_protocols is not None:
+            pulumi.set(__self__, "group_coordinator_rebalance_protocols", group_coordinator_rebalance_protocols)
         if group_initial_rebalance_delay_ms is not None:
             pulumi.set(__self__, "group_initial_rebalance_delay_ms", group_initial_rebalance_delay_ms)
         if group_max_session_timeout_ms is not None:
             pulumi.set(__self__, "group_max_session_timeout_ms", group_max_session_timeout_ms)
         if group_min_session_timeout_ms is not None:
             pulumi.set(__self__, "group_min_session_timeout_ms", group_min_session_timeout_ms)
+        if group_share_delivery_count_limit is not None:
+            pulumi.set(__self__, "group_share_delivery_count_limit", group_share_delivery_count_limit)
+        if group_share_heartbeat_interval_ms is not None:
+            pulumi.set(__self__, "group_share_heartbeat_interval_ms", group_share_heartbeat_interval_ms)
+        if group_share_max_groups is not None:
+            pulumi.set(__self__, "group_share_max_groups", group_share_max_groups)
+        if group_share_max_heartbeat_interval_ms is not None:
+            pulumi.set(__self__, "group_share_max_heartbeat_interval_ms", group_share_max_heartbeat_interval_ms)
+        if group_share_max_record_lock_duration_ms is not None:
+            pulumi.set(__self__, "group_share_max_record_lock_duration_ms", group_share_max_record_lock_duration_ms)
+        if group_share_max_session_timeout_ms is not None:
+            pulumi.set(__self__, "group_share_max_session_timeout_ms", group_share_max_session_timeout_ms)
+        if group_share_max_size is not None:
+            pulumi.set(__self__, "group_share_max_size", group_share_max_size)
+        if group_share_min_heartbeat_interval_ms is not None:
+            pulumi.set(__self__, "group_share_min_heartbeat_interval_ms", group_share_min_heartbeat_interval_ms)
+        if group_share_min_record_lock_duration_ms is not None:
+            pulumi.set(__self__, "group_share_min_record_lock_duration_ms", group_share_min_record_lock_duration_ms)
+        if group_share_min_session_timeout_ms is not None:
+            pulumi.set(__self__, "group_share_min_session_timeout_ms", group_share_min_session_timeout_ms)
+        if group_share_partition_max_record_locks is not None:
+            pulumi.set(__self__, "group_share_partition_max_record_locks", group_share_partition_max_record_locks)
+        if group_share_record_lock_duration_ms is not None:
+            pulumi.set(__self__, "group_share_record_lock_duration_ms", group_share_record_lock_duration_ms)
+        if group_share_session_timeout_ms is not None:
+            pulumi.set(__self__, "group_share_session_timeout_ms", group_share_session_timeout_ms)
         if log_cleaner_delete_retention_ms is not None:
             pulumi.set(__self__, "log_cleaner_delete_retention_ms", log_cleaner_delete_retention_ms)
         if log_cleaner_max_compaction_lag_ms is not None:
@@ -8926,6 +9025,14 @@ class KafkaKafkaUserConfigKafka(dict):
             pulumi.set(__self__, "transaction_state_log_segment_bytes", transaction_state_log_segment_bytes)
 
     @_builtins.property
+    @pulumi.getter(name="auditLog")
+    def audit_log(self) -> Optional['outputs.KafkaKafkaUserConfigKafkaAuditLog']:
+        """
+        Enable Kafka audit logging by providing this object. Removing it disables the feature. Enabling, updating, or disabling audit logging causes a rolling restart of all Kafka brokers
+        """
+        return pulumi.get(self, "audit_log")
+
+    @_builtins.property
     @pulumi.getter(name="autoCreateTopicsEnable")
     def auto_create_topics_enable(self) -> Optional[_builtins.bool]:
         """
@@ -8958,6 +9065,14 @@ class KafkaKafkaUserConfigKafka(dict):
         return pulumi.get(self, "default_replication_factor")
 
     @_builtins.property
+    @pulumi.getter(name="groupCoordinatorRebalanceProtocols")
+    def group_coordinator_rebalance_protocols(self) -> Optional[_builtins.str]:
+        """
+        Enum: `classic`, `classic,consumer`, `classic,consumer,share`, `classic,consumer,share,streams`, `classic,consumer,streams`, `classic,share`, `classic,streams`. The enabled consumer group rebalance protocols. Use consumer, classic, share, streams to enable Kafka share groups.
+        """
+        return pulumi.get(self, "group_coordinator_rebalance_protocols")
+
+    @_builtins.property
     @pulumi.getter(name="groupInitialRebalanceDelayMs")
     def group_initial_rebalance_delay_ms(self) -> Optional[_builtins.int]:
         """
@@ -8980,6 +9095,110 @@ class KafkaKafkaUserConfigKafka(dict):
         The minimum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. (Default: 6000 ms (6 seconds)). Example: `6000`.
         """
         return pulumi.get(self, "group_min_session_timeout_ms")
+
+    @_builtins.property
+    @pulumi.getter(name="groupShareDeliveryCountLimit")
+    def group_share_delivery_count_limit(self) -> Optional[_builtins.int]:
+        """
+        The maximum delivery attempts for a share-group record. Example: `5`.
+        """
+        return pulumi.get(self, "group_share_delivery_count_limit")
+
+    @_builtins.property
+    @pulumi.getter(name="groupShareHeartbeatIntervalMs")
+    def group_share_heartbeat_interval_ms(self) -> Optional[_builtins.int]:
+        """
+        The heartbeat interval used by share group members. Example: `5000`.
+        """
+        return pulumi.get(self, "group_share_heartbeat_interval_ms")
+
+    @_builtins.property
+    @pulumi.getter(name="groupShareMaxGroups")
+    def group_share_max_groups(self) -> Optional[_builtins.int]:
+        """
+        The maximum number of share groups allowed on the broker.
+        """
+        return pulumi.get(self, "group_share_max_groups")
+
+    @_builtins.property
+    @pulumi.getter(name="groupShareMaxHeartbeatIntervalMs")
+    def group_share_max_heartbeat_interval_ms(self) -> Optional[_builtins.int]:
+        """
+        The maximum heartbeat interval allowed for share group members. Example: `15000`.
+        """
+        return pulumi.get(self, "group_share_max_heartbeat_interval_ms")
+
+    @_builtins.property
+    @pulumi.getter(name="groupShareMaxRecordLockDurationMs")
+    def group_share_max_record_lock_duration_ms(self) -> Optional[_builtins.int]:
+        """
+        The maximum record lock duration allowed for share groups. Example: `60000`.
+        """
+        return pulumi.get(self, "group_share_max_record_lock_duration_ms")
+
+    @_builtins.property
+    @pulumi.getter(name="groupShareMaxSessionTimeoutMs")
+    def group_share_max_session_timeout_ms(self) -> Optional[_builtins.int]:
+        """
+        The maximum session timeout allowed for share group members. Example: `60000`.
+        """
+        return pulumi.get(self, "group_share_max_session_timeout_ms")
+
+    @_builtins.property
+    @pulumi.getter(name="groupShareMaxSize")
+    def group_share_max_size(self) -> Optional[_builtins.int]:
+        """
+        The maximum number of members allowed in a share group. Example: `200`.
+        """
+        return pulumi.get(self, "group_share_max_size")
+
+    @_builtins.property
+    @pulumi.getter(name="groupShareMinHeartbeatIntervalMs")
+    def group_share_min_heartbeat_interval_ms(self) -> Optional[_builtins.int]:
+        """
+        The minimum heartbeat interval allowed for share group members. Example: `5000`.
+        """
+        return pulumi.get(self, "group_share_min_heartbeat_interval_ms")
+
+    @_builtins.property
+    @pulumi.getter(name="groupShareMinRecordLockDurationMs")
+    def group_share_min_record_lock_duration_ms(self) -> Optional[_builtins.int]:
+        """
+        The minimum record lock duration allowed for share groups. Example: `15000`.
+        """
+        return pulumi.get(self, "group_share_min_record_lock_duration_ms")
+
+    @_builtins.property
+    @pulumi.getter(name="groupShareMinSessionTimeoutMs")
+    def group_share_min_session_timeout_ms(self) -> Optional[_builtins.int]:
+        """
+        The minimum session timeout allowed for share group members. Example: `45000`.
+        """
+        return pulumi.get(self, "group_share_min_session_timeout_ms")
+
+    @_builtins.property
+    @pulumi.getter(name="groupSharePartitionMaxRecordLocks")
+    def group_share_partition_max_record_locks(self) -> Optional[_builtins.int]:
+        """
+        The maximum number of record locks allowed per share group partition. Example: `2000`.
+        """
+        return pulumi.get(self, "group_share_partition_max_record_locks")
+
+    @_builtins.property
+    @pulumi.getter(name="groupShareRecordLockDurationMs")
+    def group_share_record_lock_duration_ms(self) -> Optional[_builtins.int]:
+        """
+        The duration for which a fetched share-group record is locked. Example: `30000`.
+        """
+        return pulumi.get(self, "group_share_record_lock_duration_ms")
+
+    @_builtins.property
+    @pulumi.getter(name="groupShareSessionTimeoutMs")
+    def group_share_session_timeout_ms(self) -> Optional[_builtins.int]:
+        """
+        The timeout used to detect share group member failures. Example: `45000`.
+        """
+        return pulumi.get(self, "group_share_session_timeout_ms")
 
     @_builtins.property
     @pulumi.getter(name="logCleanerDeleteRetentionMs")
@@ -9308,6 +9527,84 @@ class KafkaKafkaUserConfigKafka(dict):
         The transaction topic segment bytes should be kept relatively small in order to facilitate faster log compaction and cache loads (Default: 104857600 bytes (100 mebibytes)).
         """
         return pulumi.get(self, "transaction_state_log_segment_bytes")
+
+
+@pulumi.output_type
+class KafkaKafkaUserConfigKafkaAuditLog(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "aggregationPeriodSec":
+            suggest = "aggregation_period_sec"
+        elif key == "groupBy":
+            suggest = "group_by"
+        elif key == "includeDenials":
+            suggest = "include_denials"
+        elif key == "recordType":
+            suggest = "record_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in KafkaKafkaUserConfigKafkaAuditLog. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        KafkaKafkaUserConfigKafkaAuditLog.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        KafkaKafkaUserConfigKafkaAuditLog.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 aggregation_period_sec: Optional[_builtins.int] = None,
+                 group_by: Optional[_builtins.str] = None,
+                 include_denials: Optional[_builtins.bool] = None,
+                 record_type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.int aggregation_period_sec: Aggregation period in seconds over which audit log entries are batched before being emitted. Default: `300`.
+        :param _builtins.str group_by: Enum: `user`, `user_and_ip`. Group audit log entries by user or by user and IP address. Only valid when record*type is user*operations. Default: `user_and_ip`.
+        :param _builtins.bool include_denials: Whether to include denied authorization attempts in the audit log. Default: `false`.
+        :param _builtins.str record_type: Enum: `user_activity`, `user_operations`. user*operations records individual Kafka API calls (produce, fetch, etc.). user*activity records higher-level user actions. Default: `user_operations`.
+        """
+        if aggregation_period_sec is not None:
+            pulumi.set(__self__, "aggregation_period_sec", aggregation_period_sec)
+        if group_by is not None:
+            pulumi.set(__self__, "group_by", group_by)
+        if include_denials is not None:
+            pulumi.set(__self__, "include_denials", include_denials)
+        if record_type is not None:
+            pulumi.set(__self__, "record_type", record_type)
+
+    @_builtins.property
+    @pulumi.getter(name="aggregationPeriodSec")
+    def aggregation_period_sec(self) -> Optional[_builtins.int]:
+        """
+        Aggregation period in seconds over which audit log entries are batched before being emitted. Default: `300`.
+        """
+        return pulumi.get(self, "aggregation_period_sec")
+
+    @_builtins.property
+    @pulumi.getter(name="groupBy")
+    def group_by(self) -> Optional[_builtins.str]:
+        """
+        Enum: `user`, `user_and_ip`. Group audit log entries by user or by user and IP address. Only valid when record*type is user*operations. Default: `user_and_ip`.
+        """
+        return pulumi.get(self, "group_by")
+
+    @_builtins.property
+    @pulumi.getter(name="includeDenials")
+    def include_denials(self) -> Optional[_builtins.bool]:
+        """
+        Whether to include denied authorization attempts in the audit log. Default: `false`.
+        """
+        return pulumi.get(self, "include_denials")
+
+    @_builtins.property
+    @pulumi.getter(name="recordType")
+    def record_type(self) -> Optional[_builtins.str]:
+        """
+        Enum: `user_activity`, `user_operations`. user*operations records individual Kafka API calls (produce, fetch, etc.). user*activity records higher-level user actions. Default: `user_operations`.
+        """
+        return pulumi.get(self, "record_type")
 
 
 @pulumi.output_type
@@ -11248,6 +11545,46 @@ class KafkaMirrorMakerTechEmail(dict):
 
 
 @pulumi.output_type
+class KafkaSchemaReference(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 subject: _builtins.str,
+                 version: _builtins.int):
+        """
+        :param _builtins.str name: The name used to reference the provided subject and version. Maximum length: `1024`.
+        :param _builtins.str subject: Subject. Maximum length: `1024`.
+        :param _builtins.int version: Version.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "subject", subject)
+        pulumi.set(__self__, "version", version)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name used to reference the provided subject and version. Maximum length: `1024`.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def subject(self) -> _builtins.str:
+        """
+        Subject. Maximum length: `1024`.
+        """
+        return pulumi.get(self, "subject")
+
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> _builtins.int:
+        """
+        Version.
+        """
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
 class KafkaSchemaRegistryAclTimeouts(dict):
     def __init__(__self__, *,
                  create: Optional[_builtins.str] = None,
@@ -11520,13 +11857,13 @@ class KafkaTopicConfig(dict):
         :param _builtins.str cleanup_policy: The retention policy to use on old segments. Possible values include 'delete', 'compact', or a comma-separated list of them. The default policy ('delete') will discard old segments when their retention time or size limit has been reached. The 'compact' setting will enable log compaction on the topic. The possible values are `compact`, `compact,delete` and `delete`.
         :param _builtins.str compression_type: Specify the final compression type for a given topic. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'uncompressed' which is equivalent to no compression; and 'producer' which means retain the original compression codec set by the producer. The possible values are `gzip`, `lz4`, `producer`, `snappy`, `uncompressed` and `zstd`.
         :param _builtins.str delete_retention_ms: The amount of time to retain delete tombstone markers for log compacted topics. This setting also gives a bound on the time in which a consumer must complete a read if they begin from offset 0 to ensure that they get a valid snapshot of the final stage (otherwise delete tombstones may be collected before they complete their scan).
-        :param _builtins.bool diskless_enable: Creates a [diskless topic](https://aiven.io/docs/products/diskless). You can only do this when you create the topic and you cannot change it later. Diskless topics are only available for bring your own cloud (BYOC) services that have the feature enabled.
+        :param _builtins.bool diskless_enable: Indicates whether diskless should be enabled. This is only available for BYOC services with Diskless feature enabled.
         :param _builtins.str file_delete_delay_ms: The time to wait before deleting a file from the filesystem.
         :param _builtins.str flush_messages: This setting allows specifying an interval at which we will force an fsync of data written to the log. For example if this was set to 1 we would fsync after every message; if it were 5 we would fsync after every five messages. In general we recommend you not set this and use replication for durability and allow the operating system's background flush capabilities as it is more efficient.
         :param _builtins.str flush_ms: This setting allows specifying a time interval at which we will force an fsync of data written to the log. For example if this was set to 1000 we would fsync after 1000 ms had passed. In general we recommend you not set this and use replication for durability and allow the operating system's background flush capabilities as it is more efficient.
         :param _builtins.str index_interval_bytes: This setting controls how frequently Kafka adds an index entry to its offset index. The default setting ensures that we index a message roughly every 4096 bytes. More indexing allows reads to jump closer to the exact position in the log but makes the index larger. You probably don't need to change this.
-        :param _builtins.str local_retention_bytes: This configuration controls the maximum bytes tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the limit is equal to overall retention time. If set to -1, no limit is applied but it's possible only if overall retention is also -1.
-        :param _builtins.str local_retention_ms: This configuration controls the maximum time tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the time limit is equal to overall retention time. If set to -1, no time limit is applied but it's possible only if overall retention is also -1.
+        :param _builtins.str local_retention_bytes: This configuration controls the maximum bytes tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the limit is equal to overall retention time. If set to -1, no limit is applied but it's possible only if overall retention is also -1. The field is required with `retention_bytes`.
+        :param _builtins.str local_retention_ms: This configuration controls the maximum time tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the time limit is equal to overall retention time. If set to -1, no time limit is applied but it's possible only if overall retention is also -1. The field is required with `retention_ms`.
         :param _builtins.str max_compaction_lag_ms: The maximum time a message will remain ineligible for compaction in the log. Only applicable for logs that are being compacted.
         :param _builtins.str max_message_bytes: The largest record batch size allowed by Kafka (after compression if compression is enabled). If this is increased and there are consumers older than 0.10.2, the consumers' fetch size must also be increased so that the they can fetch record batches this large. In the latest message format version, records are always grouped into batches for efficiency. In previous message format versions, uncompressed records are not grouped into batches and this limit only applies to a single record in that case.
         :param _builtins.bool message_downconversion_enable: This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests. When set to false, broker will not perform down-conversion for consumers expecting an older message format. The broker responds with UNSUPPORTED_VERSION error for consume requests from such older clients. This configuration does not apply to any message format conversion that might be required for replication to followers.
@@ -11535,17 +11872,17 @@ class KafkaTopicConfig(dict):
         :param _builtins.str message_timestamp_before_max_ms: The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps earlier than the broker's timestamp.
         :param _builtins.str message_timestamp_difference_max_ms: The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. This configuration is ignored if message.timestamp.type=LogAppendTime.
         :param _builtins.str message_timestamp_type: Define whether the timestamp in the message is message create time or log append time. The possible values are `CreateTime` and `LogAppendTime`.
-        :param _builtins.float min_cleanable_dirty_ratio: This configuration controls how frequently the log compactor will attempt to clean the log (assuming log compaction is enabled). By default we will avoid cleaning a log where more than 50% of the log has been compacted. This ratio bounds the maximum space wasted in the log by duplicates (at 50% at most 50% of the log could be duplicates). A higher ratio will mean fewer, more efficient cleanings but will mean more wasted space in the log. If the max.compaction.lag.ms or the min.compaction.lag.ms configurations are also specified, then the log compactor considers the log to be eligible for compaction as soon as either: (i) the dirty ratio threshold has been met and the log has had dirty (uncompacted) records for at least the min.compaction.lag.ms duration, or (ii) if the log has had dirty (uncompacted) records for at most the max.compaction.lag.ms period.
+        :param _builtins.float min_cleanable_dirty_ratio: This configuration controls how frequently the log compactor will attempt to clean the log (assuming log compaction is enabled). By default we will avoid cleaning a log where more than 50% of the log has been compacted. This ratio bounds the maximum space wasted in the log by duplicates (at 50% at most 50% of the log could be duplicates). A higher ratio will mean fewer, more efficient cleanings but will mean more wasted space in the log. If the max.compaction.lag.ms or the min.compaction.lag.ms configurations are also specified, then the log compactor considers the log to be eligible for compaction as soon as either: (i) the dirty ratio threshold has been met and the log has had dirty (uncompacted) records for at least the min.compaction.lag.ms duration, or (ii) if the log has had dirty (uncompacted) records for at most the max.compaction.lag.ms period. Maximum value: `1`.
         :param _builtins.str min_compaction_lag_ms: The minimum time a message will remain uncompacted in the log. Only applicable for logs that are being compacted.
-        :param _builtins.str min_insync_replicas: When a producer sets acks to 'all' (or '-1'), this configuration specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful. If this minimum cannot be met, then the producer will raise an exception (either NotEnoughReplicas or NotEnoughReplicasAfterAppend). When used together, min.insync.replicas and acks allow you to enforce greater durability guarantees. A typical scenario would be to create a topic with a replication factor of 3, set min.insync.replicas to 2, and produce with acks of 'all'. This will ensure that the producer raises an exception if a majority of replicas do not receive a write.
+        :param _builtins.str min_insync_replicas: When a producer sets acks to 'all' (or '-1'), this configuration specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful. If this minimum cannot be met, then the producer will raise an exception (either NotEnoughReplicas or NotEnoughReplicasAfterAppend). When used together, min.insync.replicas and acks allow you to enforce greater durability guarantees. A typical scenario would be to create a topic with a replication factor of 3, set min.insync.replicas to 2, and produce with acks of 'all'. This will ensure that the producer raises an exception if a majority of replicas do not receive a write. Minimum value: `1`.
         :param _builtins.bool preallocate: True if we should preallocate the file on disk when creating a new log segment.
         :param _builtins.bool remote_storage_enable: Indicates whether tiered storage should be enabled. This is only available for services with Tiered Storage feature enabled.
         :param _builtins.str retention_bytes: This configuration controls the maximum size a partition (which consists of log segments) can grow to before we will discard old log segments to free up space if we are using the 'delete' retention policy. By default there is no size limit only a time limit. Since this limit is enforced at the partition level, multiply it by the number of partitions to compute the topic retention in bytes.
         :param _builtins.str retention_ms: This configuration controls the maximum time we will retain a log before we will discard old log segments to free up space if we are using the 'delete' retention policy. This represents an SLA on how soon consumers must read their data. If set to -1, no time limit is applied.
-        :param _builtins.str segment_bytes: This configuration controls the segment file size for the log. Retention and cleaning is always done a file at a time so a larger segment size means fewer files but less granular control over retention. Setting this to a very low value has consequences, and the Aiven management plane ignores values less than 10 megabytes.
+        :param _builtins.str segment_bytes: This configuration controls the segment file size for the log. Retention and cleaning is always done a file at a time so a larger segment size means fewer files but less granular control over retention. Setting this to a very low value has consequences, and the Aiven management plane ignores values less than 10 megabytes. Minimum value: `14`.
         :param _builtins.str segment_index_bytes: This configuration controls the size of the index that maps offsets to file positions. We preallocate this index file and shrink it only after log rolls. You generally should not need to change this setting.
-        :param _builtins.str segment_jitter_ms: The maximum random jitter subtracted from the scheduled segment roll time to avoid thundering herds of segment rolling
-        :param _builtins.str segment_ms: This configuration controls the period of time after which Kafka will force the log to roll even if the segment file isn't full to ensure that retention can delete or compact old data. Setting this to a very low value has consequences, and the Aiven management plane ignores values less than 10 seconds.
+        :param _builtins.str segment_jitter_ms: The maximum random jitter subtracted from the scheduled segment roll time to avoid thundering herds of segment rolling.
+        :param _builtins.str segment_ms: This configuration controls the period of time after which Kafka will force the log to roll even if the segment file isn't full to ensure that retention can delete or compact old data. Setting this to a very low value has consequences, and the Aiven management plane ignores values less than 10 seconds. Minimum value: `1`.
         :param _builtins.bool unclean_leader_election_enable: Indicates whether to enable replicas not in the ISR set to be elected as leader as a last resort, even though doing so may result in data loss.
         """
         if cleanup_policy is not None:
@@ -11637,7 +11974,7 @@ class KafkaTopicConfig(dict):
     @pulumi.getter(name="disklessEnable")
     def diskless_enable(self) -> Optional[_builtins.bool]:
         """
-        Creates a [diskless topic](https://aiven.io/docs/products/diskless). You can only do this when you create the topic and you cannot change it later. Diskless topics are only available for bring your own cloud (BYOC) services that have the feature enabled.
+        Indicates whether diskless should be enabled. This is only available for BYOC services with Diskless feature enabled.
         """
         return pulumi.get(self, "diskless_enable")
 
@@ -11677,7 +12014,7 @@ class KafkaTopicConfig(dict):
     @pulumi.getter(name="localRetentionBytes")
     def local_retention_bytes(self) -> Optional[_builtins.str]:
         """
-        This configuration controls the maximum bytes tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the limit is equal to overall retention time. If set to -1, no limit is applied but it's possible only if overall retention is also -1.
+        This configuration controls the maximum bytes tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the limit is equal to overall retention time. If set to -1, no limit is applied but it's possible only if overall retention is also -1. The field is required with `retention_bytes`.
         """
         return pulumi.get(self, "local_retention_bytes")
 
@@ -11685,7 +12022,7 @@ class KafkaTopicConfig(dict):
     @pulumi.getter(name="localRetentionMs")
     def local_retention_ms(self) -> Optional[_builtins.str]:
         """
-        This configuration controls the maximum time tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the time limit is equal to overall retention time. If set to -1, no time limit is applied but it's possible only if overall retention is also -1.
+        This configuration controls the maximum time tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the time limit is equal to overall retention time. If set to -1, no time limit is applied but it's possible only if overall retention is also -1. The field is required with `retention_ms`.
         """
         return pulumi.get(self, "local_retention_ms")
 
@@ -11757,7 +12094,7 @@ class KafkaTopicConfig(dict):
     @pulumi.getter(name="minCleanableDirtyRatio")
     def min_cleanable_dirty_ratio(self) -> Optional[_builtins.float]:
         """
-        This configuration controls how frequently the log compactor will attempt to clean the log (assuming log compaction is enabled). By default we will avoid cleaning a log where more than 50% of the log has been compacted. This ratio bounds the maximum space wasted in the log by duplicates (at 50% at most 50% of the log could be duplicates). A higher ratio will mean fewer, more efficient cleanings but will mean more wasted space in the log. If the max.compaction.lag.ms or the min.compaction.lag.ms configurations are also specified, then the log compactor considers the log to be eligible for compaction as soon as either: (i) the dirty ratio threshold has been met and the log has had dirty (uncompacted) records for at least the min.compaction.lag.ms duration, or (ii) if the log has had dirty (uncompacted) records for at most the max.compaction.lag.ms period.
+        This configuration controls how frequently the log compactor will attempt to clean the log (assuming log compaction is enabled). By default we will avoid cleaning a log where more than 50% of the log has been compacted. This ratio bounds the maximum space wasted in the log by duplicates (at 50% at most 50% of the log could be duplicates). A higher ratio will mean fewer, more efficient cleanings but will mean more wasted space in the log. If the max.compaction.lag.ms or the min.compaction.lag.ms configurations are also specified, then the log compactor considers the log to be eligible for compaction as soon as either: (i) the dirty ratio threshold has been met and the log has had dirty (uncompacted) records for at least the min.compaction.lag.ms duration, or (ii) if the log has had dirty (uncompacted) records for at most the max.compaction.lag.ms period. Maximum value: `1`.
         """
         return pulumi.get(self, "min_cleanable_dirty_ratio")
 
@@ -11773,7 +12110,7 @@ class KafkaTopicConfig(dict):
     @pulumi.getter(name="minInsyncReplicas")
     def min_insync_replicas(self) -> Optional[_builtins.str]:
         """
-        When a producer sets acks to 'all' (or '-1'), this configuration specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful. If this minimum cannot be met, then the producer will raise an exception (either NotEnoughReplicas or NotEnoughReplicasAfterAppend). When used together, min.insync.replicas and acks allow you to enforce greater durability guarantees. A typical scenario would be to create a topic with a replication factor of 3, set min.insync.replicas to 2, and produce with acks of 'all'. This will ensure that the producer raises an exception if a majority of replicas do not receive a write.
+        When a producer sets acks to 'all' (or '-1'), this configuration specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful. If this minimum cannot be met, then the producer will raise an exception (either NotEnoughReplicas or NotEnoughReplicasAfterAppend). When used together, min.insync.replicas and acks allow you to enforce greater durability guarantees. A typical scenario would be to create a topic with a replication factor of 3, set min.insync.replicas to 2, and produce with acks of 'all'. This will ensure that the producer raises an exception if a majority of replicas do not receive a write. Minimum value: `1`.
         """
         return pulumi.get(self, "min_insync_replicas")
 
@@ -11813,7 +12150,7 @@ class KafkaTopicConfig(dict):
     @pulumi.getter(name="segmentBytes")
     def segment_bytes(self) -> Optional[_builtins.str]:
         """
-        This configuration controls the segment file size for the log. Retention and cleaning is always done a file at a time so a larger segment size means fewer files but less granular control over retention. Setting this to a very low value has consequences, and the Aiven management plane ignores values less than 10 megabytes.
+        This configuration controls the segment file size for the log. Retention and cleaning is always done a file at a time so a larger segment size means fewer files but less granular control over retention. Setting this to a very low value has consequences, and the Aiven management plane ignores values less than 10 megabytes. Minimum value: `14`.
         """
         return pulumi.get(self, "segment_bytes")
 
@@ -11829,7 +12166,7 @@ class KafkaTopicConfig(dict):
     @pulumi.getter(name="segmentJitterMs")
     def segment_jitter_ms(self) -> Optional[_builtins.str]:
         """
-        The maximum random jitter subtracted from the scheduled segment roll time to avoid thundering herds of segment rolling
+        The maximum random jitter subtracted from the scheduled segment roll time to avoid thundering herds of segment rolling.
         """
         return pulumi.get(self, "segment_jitter_ms")
 
@@ -11837,7 +12174,7 @@ class KafkaTopicConfig(dict):
     @pulumi.getter(name="segmentMs")
     def segment_ms(self) -> Optional[_builtins.str]:
         """
-        This configuration controls the period of time after which Kafka will force the log to roll even if the segment file isn't full to ensure that retention can delete or compact old data. Setting this to a very low value has consequences, and the Aiven management plane ignores values less than 10 seconds.
+        This configuration controls the period of time after which Kafka will force the log to roll even if the segment file isn't full to ensure that retention can delete or compact old data. Setting this to a very low value has consequences, and the Aiven management plane ignores values less than 10 seconds. Minimum value: `1`.
         """
         return pulumi.get(self, "segment_ms")
 
@@ -11856,7 +12193,7 @@ class KafkaTopicTag(dict):
                  key: _builtins.str,
                  value: Optional[_builtins.str] = None):
         """
-        :param _builtins.str key: Tag key. Maximum length: `64`.
+        :param _builtins.str key: Tag key. Length must be between `1` and `64`.
         :param _builtins.str value: Tag value. Maximum length: `256`.
         """
         pulumi.set(__self__, "key", key)
@@ -11867,7 +12204,7 @@ class KafkaTopicTag(dict):
     @pulumi.getter
     def key(self) -> _builtins.str:
         """
-        Tag key. Maximum length: `64`.
+        Tag key. Length must be between `1` and `64`.
         """
         return pulumi.get(self, "key")
 
@@ -11878,6 +12215,74 @@ class KafkaTopicTag(dict):
         Tag value. Maximum length: `256`.
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class KafkaTopicTimeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[_builtins.str] = None,
+                 default: Optional[_builtins.str] = None,
+                 delete: Optional[_builtins.str] = None,
+                 read: Optional[_builtins.str] = None,
+                 update: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param _builtins.str default: Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+        :param _builtins.str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param _builtins.str update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if default is not None:
+            pulumi.set(__self__, "default", default)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @_builtins.property
+    @pulumi.getter
+    @_utilities.deprecated("""Use operation-specific timeouts instead. This field will be removed in the next major version.""")
+    def default(self) -> Optional[_builtins.str]:
+        """
+        Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+        """
+        return pulumi.get(self, "default")
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
 
 
 @pulumi.output_type
@@ -12730,6 +13135,8 @@ class MySqlMysqlUserConfigMysql(dict):
             suggest = "group_concat_max_len"
         elif key == "informationSchemaStatsExpiry":
             suggest = "information_schema_stats_expiry"
+        elif key == "innodbAdaptiveHashIndex":
+            suggest = "innodb_adaptive_hash_index"
         elif key == "innodbChangeBufferMaxSize":
             suggest = "innodb_change_buffer_max_size"
         elif key == "innodbFlushNeighbors":
@@ -12738,6 +13145,10 @@ class MySqlMysqlUserConfigMysql(dict):
             suggest = "innodb_ft_min_token_size"
         elif key == "innodbFtServerStopwordTable":
             suggest = "innodb_ft_server_stopword_table"
+        elif key == "innodbIoCapacity":
+            suggest = "innodb_io_capacity"
+        elif key == "innodbIoCapacityMax":
+            suggest = "innodb_io_capacity_max"
         elif key == "innodbLockWaitTimeout":
             suggest = "innodb_lock_wait_timeout"
         elif key == "innodbLogBufferSize":
@@ -12776,6 +13187,8 @@ class MySqlMysqlUserConfigMysql(dict):
             suggest = "net_write_timeout"
         elif key == "performanceSchemaEventsStatementsHistorySize":
             suggest = "performance_schema_events_statements_history_size"
+        elif key == "relayLogSpaceLimit":
+            suggest = "relay_log_space_limit"
         elif key == "slowQueryLog":
             suggest = "slow_query_log"
         elif key == "sortBufferSize":
@@ -12805,10 +13218,13 @@ class MySqlMysqlUserConfigMysql(dict):
                  default_time_zone: Optional[_builtins.str] = None,
                  group_concat_max_len: Optional[_builtins.int] = None,
                  information_schema_stats_expiry: Optional[_builtins.int] = None,
+                 innodb_adaptive_hash_index: Optional[_builtins.bool] = None,
                  innodb_change_buffer_max_size: Optional[_builtins.int] = None,
                  innodb_flush_neighbors: Optional[_builtins.int] = None,
                  innodb_ft_min_token_size: Optional[_builtins.int] = None,
                  innodb_ft_server_stopword_table: Optional[_builtins.str] = None,
+                 innodb_io_capacity: Optional[_builtins.int] = None,
+                 innodb_io_capacity_max: Optional[_builtins.int] = None,
                  innodb_lock_wait_timeout: Optional[_builtins.int] = None,
                  innodb_log_buffer_size: Optional[_builtins.int] = None,
                  innodb_online_alter_log_max_size: Optional[_builtins.int] = None,
@@ -12828,6 +13244,7 @@ class MySqlMysqlUserConfigMysql(dict):
                  net_read_timeout: Optional[_builtins.int] = None,
                  net_write_timeout: Optional[_builtins.int] = None,
                  performance_schema_events_statements_history_size: Optional[_builtins.int] = None,
+                 relay_log_space_limit: Optional[_builtins.int] = None,
                  slow_query_log: Optional[_builtins.bool] = None,
                  sort_buffer_size: Optional[_builtins.int] = None,
                  sql_mode: Optional[_builtins.str] = None,
@@ -12839,10 +13256,13 @@ class MySqlMysqlUserConfigMysql(dict):
         :param _builtins.str default_time_zone: Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or `SYSTEM` to use the MySQL server default. Example: `+03:00`.
         :param _builtins.int group_concat_max_len: The maximum permitted result length in bytes for the GROUP_CONCAT() function. Example: `1024`.
         :param _builtins.int information_schema_stats_expiry: The time, in seconds, before cached statistics expire. Example: `86400`.
+        :param _builtins.bool innodb_adaptive_hash_index: Whether InnoDB adaptive hash indexing is enabled. The optimal setting is workload-dependent: it speeds up lookups for some workloads but its internal latch can become a contention point under high concurrency, in which case disabling it can improve throughput.
         :param _builtins.int innodb_change_buffer_max_size: Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25. Example: `30`.
         :param _builtins.int innodb_flush_neighbors: Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent. Example: `0`.
         :param _builtins.int innodb_ft_min_token_size: Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service. Example: `3`.
         :param _builtins.str innodb_ft_server_stopword_table: This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables. Example: `db_name/table_name`.
+        :param _builtins.int innodb_io_capacity: The number of I/O operations per second (IOPS) available to InnoDB background tasks, such as flushing pages from the buffer pool and merging data from the change buffer. Set this to a value appropriate for the underlying storage; it must not exceed innodb*io*capacity_max. Example: `2000`.
+        :param _builtins.int innodb_io_capacity_max: The maximum number of I/O operations per second (IOPS) that InnoDB background tasks may perform when flushing falls behind. Defaults to twice innodb*io*capacity (minimum 2000). This must be greater than or equal to innodb*io*capacity.
         :param _builtins.int innodb_lock_wait_timeout: The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120. Example: `50`.
         :param _builtins.int innodb_log_buffer_size: The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
         :param _builtins.int innodb_online_alter_log_max_size: The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
@@ -12862,6 +13282,7 @@ class MySqlMysqlUserConfigMysql(dict):
         :param _builtins.int net_read_timeout: The number of seconds to wait for more data from a connection before aborting the read. Example: `30`.
         :param _builtins.int net_write_timeout: The number of seconds to wait for a block to be written to a connection before aborting the write. Example: `30`.
         :param _builtins.int performance_schema_events_statements_history_size: The number of rows per thread in the events*statements*history table. Changing this parameter will lead to a restart of the MySQL service.
+        :param _builtins.int relay_log_space_limit: The maximum amount of space in bytes to use for all relay logs while replicating from an external migration source. When the limit is reached, the replication I/O thread stops fetching relay log events until the SQL thread has caught up. Raise this to give a large migration a bigger relay-log budget; ensure the service disk is sized accordingly. The setting applies only on the node replicating from the external source; standby nodes always use the Aiven-managed default (the smaller of 5 GiB and 30% of the service disk), which is also used when this option is left unset. Changing this parameter will lead to a restart of the MySQL service.
         :param _builtins.bool slow_query_log: Slow query log enables capturing of slow queries. Setting slow*query*log to false also truncates the mysql.slow_log table.
         :param _builtins.int sort_buffer_size: Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K). Example: `262144`.
         :param _builtins.str sql_mode: Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned. Example: `ANSI,TRADITIONAL`.
@@ -12877,6 +13298,8 @@ class MySqlMysqlUserConfigMysql(dict):
             pulumi.set(__self__, "group_concat_max_len", group_concat_max_len)
         if information_schema_stats_expiry is not None:
             pulumi.set(__self__, "information_schema_stats_expiry", information_schema_stats_expiry)
+        if innodb_adaptive_hash_index is not None:
+            pulumi.set(__self__, "innodb_adaptive_hash_index", innodb_adaptive_hash_index)
         if innodb_change_buffer_max_size is not None:
             pulumi.set(__self__, "innodb_change_buffer_max_size", innodb_change_buffer_max_size)
         if innodb_flush_neighbors is not None:
@@ -12885,6 +13308,10 @@ class MySqlMysqlUserConfigMysql(dict):
             pulumi.set(__self__, "innodb_ft_min_token_size", innodb_ft_min_token_size)
         if innodb_ft_server_stopword_table is not None:
             pulumi.set(__self__, "innodb_ft_server_stopword_table", innodb_ft_server_stopword_table)
+        if innodb_io_capacity is not None:
+            pulumi.set(__self__, "innodb_io_capacity", innodb_io_capacity)
+        if innodb_io_capacity_max is not None:
+            pulumi.set(__self__, "innodb_io_capacity_max", innodb_io_capacity_max)
         if innodb_lock_wait_timeout is not None:
             pulumi.set(__self__, "innodb_lock_wait_timeout", innodb_lock_wait_timeout)
         if innodb_log_buffer_size is not None:
@@ -12923,6 +13350,8 @@ class MySqlMysqlUserConfigMysql(dict):
             pulumi.set(__self__, "net_write_timeout", net_write_timeout)
         if performance_schema_events_statements_history_size is not None:
             pulumi.set(__self__, "performance_schema_events_statements_history_size", performance_schema_events_statements_history_size)
+        if relay_log_space_limit is not None:
+            pulumi.set(__self__, "relay_log_space_limit", relay_log_space_limit)
         if slow_query_log is not None:
             pulumi.set(__self__, "slow_query_log", slow_query_log)
         if sort_buffer_size is not None:
@@ -12969,6 +13398,14 @@ class MySqlMysqlUserConfigMysql(dict):
         return pulumi.get(self, "information_schema_stats_expiry")
 
     @_builtins.property
+    @pulumi.getter(name="innodbAdaptiveHashIndex")
+    def innodb_adaptive_hash_index(self) -> Optional[_builtins.bool]:
+        """
+        Whether InnoDB adaptive hash indexing is enabled. The optimal setting is workload-dependent: it speeds up lookups for some workloads but its internal latch can become a contention point under high concurrency, in which case disabling it can improve throughput.
+        """
+        return pulumi.get(self, "innodb_adaptive_hash_index")
+
+    @_builtins.property
     @pulumi.getter(name="innodbChangeBufferMaxSize")
     def innodb_change_buffer_max_size(self) -> Optional[_builtins.int]:
         """
@@ -12999,6 +13436,22 @@ class MySqlMysqlUserConfigMysql(dict):
         This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables. Example: `db_name/table_name`.
         """
         return pulumi.get(self, "innodb_ft_server_stopword_table")
+
+    @_builtins.property
+    @pulumi.getter(name="innodbIoCapacity")
+    def innodb_io_capacity(self) -> Optional[_builtins.int]:
+        """
+        The number of I/O operations per second (IOPS) available to InnoDB background tasks, such as flushing pages from the buffer pool and merging data from the change buffer. Set this to a value appropriate for the underlying storage; it must not exceed innodb*io*capacity_max. Example: `2000`.
+        """
+        return pulumi.get(self, "innodb_io_capacity")
+
+    @_builtins.property
+    @pulumi.getter(name="innodbIoCapacityMax")
+    def innodb_io_capacity_max(self) -> Optional[_builtins.int]:
+        """
+        The maximum number of I/O operations per second (IOPS) that InnoDB background tasks may perform when flushing falls behind. Defaults to twice innodb*io*capacity (minimum 2000). This must be greater than or equal to innodb*io*capacity.
+        """
+        return pulumi.get(self, "innodb_io_capacity_max")
 
     @_builtins.property
     @pulumi.getter(name="innodbLockWaitTimeout")
@@ -13151,6 +13604,14 @@ class MySqlMysqlUserConfigMysql(dict):
         The number of rows per thread in the events*statements*history table. Changing this parameter will lead to a restart of the MySQL service.
         """
         return pulumi.get(self, "performance_schema_events_statements_history_size")
+
+    @_builtins.property
+    @pulumi.getter(name="relayLogSpaceLimit")
+    def relay_log_space_limit(self) -> Optional[_builtins.int]:
+        """
+        The maximum amount of space in bytes to use for all relay logs while replicating from an external migration source. When the limit is reached, the replication I/O thread stops fetching relay log events until the SQL thread has caught up. Raise this to give a large migration a bigger relay-log budget; ensure the service disk is sized accordingly. The setting applies only on the node replicating from the external source; standby nodes always use the Aiven-managed default (the smaller of 5 GiB and 30% of the service disk), which is also used when this option is left unset. Changing this parameter will lead to a restart of the MySQL service.
+        """
+        return pulumi.get(self, "relay_log_space_limit")
 
     @_builtins.property
     @pulumi.getter(name="slowQueryLog")
@@ -14267,6 +14728,10 @@ class OpenSearchOpensearchUserConfigAzureMigration(dict):
             suggest = "endpoint_suffix"
         elif key == "includeAliases":
             suggest = "include_aliases"
+        elif key == "maxRestoreBytesPerSec":
+            suggest = "max_restore_bytes_per_sec"
+        elif key == "maxSnapshotBytesPerSec":
+            suggest = "max_snapshot_bytes_per_sec"
         elif key == "restoreGlobalState":
             suggest = "restore_global_state"
         elif key == "sasToken":
@@ -14294,6 +14759,8 @@ class OpenSearchOpensearchUserConfigAzureMigration(dict):
                  endpoint_suffix: Optional[_builtins.str] = None,
                  include_aliases: Optional[_builtins.bool] = None,
                  key: Optional[_builtins.str] = None,
+                 max_restore_bytes_per_sec: Optional[_builtins.str] = None,
+                 max_snapshot_bytes_per_sec: Optional[_builtins.str] = None,
                  readonly: Optional[_builtins.bool] = None,
                  restore_global_state: Optional[_builtins.bool] = None,
                  sas_token: Optional[_builtins.str] = None):
@@ -14308,6 +14775,8 @@ class OpenSearchOpensearchUserConfigAzureMigration(dict):
         :param _builtins.str endpoint_suffix: Defines the DNS suffix for Azure Storage endpoints.
         :param _builtins.bool include_aliases: Whether to restore aliases alongside their associated indexes. Default is true.
         :param _builtins.str key: Azure account secret key. One of key or sas_token should be specified.
+        :param _builtins.str max_restore_bytes_per_sec: Throttles the restore rate per node. Defaults to unlimited. Note that if the recovery settings for managed services are set, this value is overridden by the recovery settings. Value should be a byte size with unit, e.g. 40mb, 100kb, 1gb.
+        :param _builtins.str max_snapshot_bytes_per_sec: Throttles the snapshot rate per node. Defaults to 40mb. Note that if the recovery settings for managed services are set, this value is overridden by the recovery settings. Value should be a byte size with unit, e.g. 40mb, 100kb, 1gb.
         :param _builtins.bool readonly: Whether the repository is read-only. Default: `true`.
         :param _builtins.bool restore_global_state: If true, restore the cluster state. Defaults to false.
         :param _builtins.str sas_token: A shared access signatures (SAS) token. One of key or sas_token should be specified.
@@ -14327,6 +14796,10 @@ class OpenSearchOpensearchUserConfigAzureMigration(dict):
             pulumi.set(__self__, "include_aliases", include_aliases)
         if key is not None:
             pulumi.set(__self__, "key", key)
+        if max_restore_bytes_per_sec is not None:
+            pulumi.set(__self__, "max_restore_bytes_per_sec", max_restore_bytes_per_sec)
+        if max_snapshot_bytes_per_sec is not None:
+            pulumi.set(__self__, "max_snapshot_bytes_per_sec", max_snapshot_bytes_per_sec)
         if readonly is not None:
             pulumi.set(__self__, "readonly", readonly)
         if restore_global_state is not None:
@@ -14415,6 +14888,22 @@ class OpenSearchOpensearchUserConfigAzureMigration(dict):
         return pulumi.get(self, "key")
 
     @_builtins.property
+    @pulumi.getter(name="maxRestoreBytesPerSec")
+    def max_restore_bytes_per_sec(self) -> Optional[_builtins.str]:
+        """
+        Throttles the restore rate per node. Defaults to unlimited. Note that if the recovery settings for managed services are set, this value is overridden by the recovery settings. Value should be a byte size with unit, e.g. 40mb, 100kb, 1gb.
+        """
+        return pulumi.get(self, "max_restore_bytes_per_sec")
+
+    @_builtins.property
+    @pulumi.getter(name="maxSnapshotBytesPerSec")
+    def max_snapshot_bytes_per_sec(self) -> Optional[_builtins.str]:
+        """
+        Throttles the snapshot rate per node. Defaults to 40mb. Note that if the recovery settings for managed services are set, this value is overridden by the recovery settings. Value should be a byte size with unit, e.g. 40mb, 100kb, 1gb.
+        """
+        return pulumi.get(self, "max_snapshot_bytes_per_sec")
+
+    @_builtins.property
     @pulumi.getter
     def readonly(self) -> Optional[_builtins.bool]:
         """
@@ -14452,6 +14941,10 @@ class OpenSearchOpensearchUserConfigGcsMigration(dict):
             suggest = "chunk_size"
         elif key == "includeAliases":
             suggest = "include_aliases"
+        elif key == "maxRestoreBytesPerSec":
+            suggest = "max_restore_bytes_per_sec"
+        elif key == "maxSnapshotBytesPerSec":
+            suggest = "max_snapshot_bytes_per_sec"
         elif key == "restoreGlobalState":
             suggest = "restore_global_state"
 
@@ -14475,6 +14968,8 @@ class OpenSearchOpensearchUserConfigGcsMigration(dict):
                  chunk_size: Optional[_builtins.str] = None,
                  compress: Optional[_builtins.bool] = None,
                  include_aliases: Optional[_builtins.bool] = None,
+                 max_restore_bytes_per_sec: Optional[_builtins.str] = None,
+                 max_snapshot_bytes_per_sec: Optional[_builtins.str] = None,
                  readonly: Optional[_builtins.bool] = None,
                  restore_global_state: Optional[_builtins.bool] = None):
         """
@@ -14486,6 +14981,8 @@ class OpenSearchOpensearchUserConfigGcsMigration(dict):
         :param _builtins.str chunk_size: Big files can be broken down into chunks during snapshotting if needed. Should be the same as for the 3rd party repository.
         :param _builtins.bool compress: When set to true metadata files are stored in compressed format.
         :param _builtins.bool include_aliases: Whether to restore aliases alongside their associated indexes. Default is true.
+        :param _builtins.str max_restore_bytes_per_sec: Throttles the restore rate per node. Defaults to unlimited. Note that if the recovery settings for managed services are set, this value is overridden by the recovery settings. Value should be a byte size with unit, e.g. 40mb, 100kb, 1gb.
+        :param _builtins.str max_snapshot_bytes_per_sec: Throttles the snapshot rate per node. Defaults to 40mb. Note that if the recovery settings for managed services are set, this value is overridden by the recovery settings. Value should be a byte size with unit, e.g. 40mb, 100kb, 1gb.
         :param _builtins.bool readonly: Whether the repository is read-only. Default: `true`.
         :param _builtins.bool restore_global_state: If true, restore the cluster state. Defaults to false.
         """
@@ -14500,6 +14997,10 @@ class OpenSearchOpensearchUserConfigGcsMigration(dict):
             pulumi.set(__self__, "compress", compress)
         if include_aliases is not None:
             pulumi.set(__self__, "include_aliases", include_aliases)
+        if max_restore_bytes_per_sec is not None:
+            pulumi.set(__self__, "max_restore_bytes_per_sec", max_restore_bytes_per_sec)
+        if max_snapshot_bytes_per_sec is not None:
+            pulumi.set(__self__, "max_snapshot_bytes_per_sec", max_snapshot_bytes_per_sec)
         if readonly is not None:
             pulumi.set(__self__, "readonly", readonly)
         if restore_global_state is not None:
@@ -14568,6 +15069,22 @@ class OpenSearchOpensearchUserConfigGcsMigration(dict):
         Whether to restore aliases alongside their associated indexes. Default is true.
         """
         return pulumi.get(self, "include_aliases")
+
+    @_builtins.property
+    @pulumi.getter(name="maxRestoreBytesPerSec")
+    def max_restore_bytes_per_sec(self) -> Optional[_builtins.str]:
+        """
+        Throttles the restore rate per node. Defaults to unlimited. Note that if the recovery settings for managed services are set, this value is overridden by the recovery settings. Value should be a byte size with unit, e.g. 40mb, 100kb, 1gb.
+        """
+        return pulumi.get(self, "max_restore_bytes_per_sec")
+
+    @_builtins.property
+    @pulumi.getter(name="maxSnapshotBytesPerSec")
+    def max_snapshot_bytes_per_sec(self) -> Optional[_builtins.str]:
+        """
+        Throttles the snapshot rate per node. Defaults to 40mb. Note that if the recovery settings for managed services are set, this value is overridden by the recovery settings. Value should be a byte size with unit, e.g. 40mb, 100kb, 1gb.
+        """
+        return pulumi.get(self, "max_snapshot_bytes_per_sec")
 
     @_builtins.property
     @pulumi.getter
@@ -17836,6 +18353,10 @@ class OpenSearchOpensearchUserConfigS3Migration(dict):
             suggest = "chunk_size"
         elif key == "includeAliases":
             suggest = "include_aliases"
+        elif key == "maxRestoreBytesPerSec":
+            suggest = "max_restore_bytes_per_sec"
+        elif key == "maxSnapshotBytesPerSec":
+            suggest = "max_snapshot_bytes_per_sec"
         elif key == "restoreGlobalState":
             suggest = "restore_global_state"
         elif key == "serverSideEncryption":
@@ -17864,6 +18385,8 @@ class OpenSearchOpensearchUserConfigS3Migration(dict):
                  compress: Optional[_builtins.bool] = None,
                  endpoint: Optional[_builtins.str] = None,
                  include_aliases: Optional[_builtins.bool] = None,
+                 max_restore_bytes_per_sec: Optional[_builtins.str] = None,
+                 max_snapshot_bytes_per_sec: Optional[_builtins.str] = None,
                  readonly: Optional[_builtins.bool] = None,
                  restore_global_state: Optional[_builtins.bool] = None,
                  server_side_encryption: Optional[_builtins.bool] = None):
@@ -17879,6 +18402,8 @@ class OpenSearchOpensearchUserConfigS3Migration(dict):
         :param _builtins.bool compress: When set to true metadata files are stored in compressed format.
         :param _builtins.str endpoint: The S3 service endpoint to connect to. If you are using an S3-compatible service then you should set this to the service’s endpoint.
         :param _builtins.bool include_aliases: Whether to restore aliases alongside their associated indexes. Default is true.
+        :param _builtins.str max_restore_bytes_per_sec: Throttles the restore rate per node. Defaults to unlimited. Note that if the recovery settings for managed services are set, this value is overridden by the recovery settings. Value should be a byte size with unit, e.g. 40mb, 100kb, 1gb.
+        :param _builtins.str max_snapshot_bytes_per_sec: Throttles the snapshot rate per node. Defaults to 40mb. Note that if the recovery settings for managed services are set, this value is overridden by the recovery settings. Value should be a byte size with unit, e.g. 40mb, 100kb, 1gb.
         :param _builtins.bool readonly: Whether the repository is read-only. Default: `true`.
         :param _builtins.bool restore_global_state: If true, restore the cluster state. Defaults to false.
         :param _builtins.bool server_side_encryption: When set to true files are encrypted on server side.
@@ -17898,6 +18423,10 @@ class OpenSearchOpensearchUserConfigS3Migration(dict):
             pulumi.set(__self__, "endpoint", endpoint)
         if include_aliases is not None:
             pulumi.set(__self__, "include_aliases", include_aliases)
+        if max_restore_bytes_per_sec is not None:
+            pulumi.set(__self__, "max_restore_bytes_per_sec", max_restore_bytes_per_sec)
+        if max_snapshot_bytes_per_sec is not None:
+            pulumi.set(__self__, "max_snapshot_bytes_per_sec", max_snapshot_bytes_per_sec)
         if readonly is not None:
             pulumi.set(__self__, "readonly", readonly)
         if restore_global_state is not None:
@@ -17992,6 +18521,22 @@ class OpenSearchOpensearchUserConfigS3Migration(dict):
         Whether to restore aliases alongside their associated indexes. Default is true.
         """
         return pulumi.get(self, "include_aliases")
+
+    @_builtins.property
+    @pulumi.getter(name="maxRestoreBytesPerSec")
+    def max_restore_bytes_per_sec(self) -> Optional[_builtins.str]:
+        """
+        Throttles the restore rate per node. Defaults to unlimited. Note that if the recovery settings for managed services are set, this value is overridden by the recovery settings. Value should be a byte size with unit, e.g. 40mb, 100kb, 1gb.
+        """
+        return pulumi.get(self, "max_restore_bytes_per_sec")
+
+    @_builtins.property
+    @pulumi.getter(name="maxSnapshotBytesPerSec")
+    def max_snapshot_bytes_per_sec(self) -> Optional[_builtins.str]:
+        """
+        Throttles the snapshot rate per node. Defaults to 40mb. Note that if the recovery settings for managed services are set, this value is overridden by the recovery settings. Value should be a byte size with unit, e.g. 40mb, 100kb, 1gb.
+        """
+        return pulumi.get(self, "max_snapshot_bytes_per_sec")
 
     @_builtins.property
     @pulumi.getter
@@ -18760,7 +19305,7 @@ class OrganizationPermissionPermission(dict):
                  create_time: Optional[_builtins.str] = None,
                  update_time: Optional[_builtins.str] = None):
         """
-        :param Sequence[_builtins.str] permissions: List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant". The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:project:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:metrics:read`, `service:secrets:read` and `service:users:write`.
+        :param Sequence[_builtins.str] permissions: List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant". The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:sustainability:read`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:project:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:metrics:read`, `service:secrets:read` and `service:users:write`.
         :param _builtins.str principal_id: ID of the user or group to grant permissions to. Only active users who have accepted an [invite](https://aiven.io/docs/platform/howto/manage-org-users) to join the organization can be granted permissions.
         :param _builtins.str principal_type: An enumeration. The possible values are `user` and `user_group`.
         :param _builtins.str create_time: Create Time.
@@ -18778,7 +19323,7 @@ class OrganizationPermissionPermission(dict):
     @pulumi.getter
     def permissions(self) -> Sequence[_builtins.str]:
         """
-        List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant". The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:project:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:metrics:read`, `service:secrets:read` and `service:users:write`.
+        List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant". The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:sustainability:read`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:project:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:metrics:read`, `service:secrets:read` and `service:users:write`.
         """
         return pulumi.get(self, "permissions")
 
@@ -24790,7 +25335,9 @@ class ServiceIntegrationEndpointRsyslogUserConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "maxMessageSize":
+        if key == "escapeNewlines":
+            suggest = "escape_newlines"
+        elif key == "maxMessageSize":
             suggest = "max_message_size"
 
         if suggest:
@@ -24811,6 +25358,7 @@ class ServiceIntegrationEndpointRsyslogUserConfig(dict):
                  tls: _builtins.bool,
                  ca: Optional[_builtins.str] = None,
                  cert: Optional[_builtins.str] = None,
+                 escape_newlines: Optional[_builtins.bool] = None,
                  key: Optional[_builtins.str] = None,
                  logline: Optional[_builtins.str] = None,
                  max_message_size: Optional[_builtins.int] = None,
@@ -24828,6 +25376,7 @@ class ServiceIntegrationEndpointRsyslogUserConfig(dict):
                ...
                -----END CERTIFICATE-----
                `.
+        :param _builtins.bool escape_newlines: When true, embedded newlines in a log message are escaped so a multi-line record (e.g. a stack trace) is delivered as one complete log entry. Useful for newline-delimited cloud log intakes that drop continuation lines. Default: `false`.
         :param _builtins.str key: PEM encoded client key. Example: `-----BEGIN PRIVATE KEY-----
                ...
                -----END PRIVATE KEY-----
@@ -24844,6 +25393,8 @@ class ServiceIntegrationEndpointRsyslogUserConfig(dict):
             pulumi.set(__self__, "ca", ca)
         if cert is not None:
             pulumi.set(__self__, "cert", cert)
+        if escape_newlines is not None:
+            pulumi.set(__self__, "escape_newlines", escape_newlines)
         if key is not None:
             pulumi.set(__self__, "key", key)
         if logline is not None:
@@ -24906,6 +25457,14 @@ class ServiceIntegrationEndpointRsyslogUserConfig(dict):
         `.
         """
         return pulumi.get(self, "cert")
+
+    @_builtins.property
+    @pulumi.getter(name="escapeNewlines")
+    def escape_newlines(self) -> Optional[_builtins.bool]:
+        """
+        When true, embedded newlines in a log message are escaped so a multi-line record (e.g. a stack trace) is delivered as one complete log entry. Useful for newline-delimited cloud log intakes that drop continuation lines. Default: `false`.
+        """
+        return pulumi.get(self, "escape_newlines")
 
     @_builtins.property
     @pulumi.getter
@@ -26297,6 +26856,42 @@ class ServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf(dict):
         Only include perf*events*statements whose last seen is less than this many seconds. Example: `86400`.
         """
         return pulumi.get(self, "perf_events_statements_time_limit")
+
+
+@pulumi.output_type
+class ServiceIntegrationRsyslogUserConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "escapeNewlines":
+            suggest = "escape_newlines"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceIntegrationRsyslogUserConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceIntegrationRsyslogUserConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceIntegrationRsyslogUserConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 escape_newlines: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.bool escape_newlines: Per-service override for escaping embedded newlines in log messages. When set, it overrides the rsyslog endpoint setting for this service. When unset, the endpoint setting applies.
+        """
+        if escape_newlines is not None:
+            pulumi.set(__self__, "escape_newlines", escape_newlines)
+
+    @_builtins.property
+    @pulumi.getter(name="escapeNewlines")
+    def escape_newlines(self) -> Optional[_builtins.bool]:
+        """
+        Per-service override for escaping embedded newlines in log messages. When set, it overrides the rsyslog endpoint setting for this service. When unset, the endpoint setting applies.
+        """
+        return pulumi.get(self, "escape_newlines")
 
 
 @pulumi.output_type
@@ -33348,7 +33943,7 @@ class GetKafkaKafkaUserConfigResult(dict):
         :param _builtins.bool kafka_rest_authorization: Enable authorization in Kafka-REST service.
         :param 'GetKafkaKafkaUserConfigKafkaRestConfigArgs' kafka_rest_config: Kafka REST configuration
         :param 'GetKafkaKafkaUserConfigKafkaSaslMechanismsArgs' kafka_sasl_mechanisms: Kafka SASL mechanisms
-        :param _builtins.str kafka_version: Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, `4.1`, and newer. Kafka major version.
+        :param _builtins.str kafka_version: Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, `4.1`, `4.2`, and newer. Kafka major version.
         :param _builtins.bool letsencrypt_sasl: Use a Let's Encrypt certificate authority (CA) for Kafka SASL authentication. (Default: False).
         :param _builtins.bool letsencrypt_sasl_privatelink: Use a Let's Encrypt certificate authority (CA) for Kafka SASL authentication via Privatelink. (Default: False).
         :param 'GetKafkaKafkaUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks
@@ -33625,7 +34220,7 @@ class GetKafkaKafkaUserConfigResult(dict):
     @pulumi.getter(name="kafkaVersion")
     def kafka_version(self) -> Optional[_builtins.str]:
         """
-        Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, `4.1`, and newer. Kafka major version.
+        Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, `4.1`, `4.2`, and newer. Kafka major version.
         """
         return pulumi.get(self, "kafka_version")
 
@@ -33796,13 +34391,28 @@ class GetKafkaKafkaUserConfigIpFilterObjectResult(dict):
 @pulumi.output_type
 class GetKafkaKafkaUserConfigKafkaResult(dict):
     def __init__(__self__, *,
+                 audit_log: Optional['outputs.GetKafkaKafkaUserConfigKafkaAuditLogResult'] = None,
                  auto_create_topics_enable: Optional[_builtins.bool] = None,
                  compression_type: Optional[_builtins.str] = None,
                  connections_max_idle_ms: Optional[_builtins.int] = None,
                  default_replication_factor: Optional[_builtins.int] = None,
+                 group_coordinator_rebalance_protocols: Optional[_builtins.str] = None,
                  group_initial_rebalance_delay_ms: Optional[_builtins.int] = None,
                  group_max_session_timeout_ms: Optional[_builtins.int] = None,
                  group_min_session_timeout_ms: Optional[_builtins.int] = None,
+                 group_share_delivery_count_limit: Optional[_builtins.int] = None,
+                 group_share_heartbeat_interval_ms: Optional[_builtins.int] = None,
+                 group_share_max_groups: Optional[_builtins.int] = None,
+                 group_share_max_heartbeat_interval_ms: Optional[_builtins.int] = None,
+                 group_share_max_record_lock_duration_ms: Optional[_builtins.int] = None,
+                 group_share_max_session_timeout_ms: Optional[_builtins.int] = None,
+                 group_share_max_size: Optional[_builtins.int] = None,
+                 group_share_min_heartbeat_interval_ms: Optional[_builtins.int] = None,
+                 group_share_min_record_lock_duration_ms: Optional[_builtins.int] = None,
+                 group_share_min_session_timeout_ms: Optional[_builtins.int] = None,
+                 group_share_partition_max_record_locks: Optional[_builtins.int] = None,
+                 group_share_record_lock_duration_ms: Optional[_builtins.int] = None,
+                 group_share_session_timeout_ms: Optional[_builtins.int] = None,
                  log_cleaner_delete_retention_ms: Optional[_builtins.int] = None,
                  log_cleaner_max_compaction_lag_ms: Optional[_builtins.int] = None,
                  log_cleaner_min_cleanable_ratio: Optional[_builtins.float] = None,
@@ -33845,13 +34455,28 @@ class GetKafkaKafkaUserConfigKafkaResult(dict):
                  transaction_remove_expired_transaction_cleanup_interval_ms: Optional[_builtins.int] = None,
                  transaction_state_log_segment_bytes: Optional[_builtins.int] = None):
         """
+        :param 'GetKafkaKafkaUserConfigKafkaAuditLogArgs' audit_log: Enable Kafka audit logging by providing this object. Removing it disables the feature. Enabling, updating, or disabling audit logging causes a rolling restart of all Kafka brokers
         :param _builtins.bool auto_create_topics_enable: Enable auto-creation of topics. (Default: false).
         :param _builtins.str compression_type: Enum: `gzip`, `lz4`, `producer`, `snappy`, `uncompressed`, `zstd`. Specify the final compression type for a given topic. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `uncompressed` which is equivalent to no compression; and `producer` which means retain the original compression codec set by the producer.(Default: producer).
         :param _builtins.int connections_max_idle_ms: Idle connections timeout: the server socket processor threads close the connections that idle for longer than this. (Default: 600000 ms (10 minutes)). Example: `540000`.
         :param _builtins.int default_replication_factor: Replication factor for auto-created topics (Default: 3).
+        :param _builtins.str group_coordinator_rebalance_protocols: Enum: `classic`, `classic,consumer`, `classic,consumer,share`, `classic,consumer,share,streams`, `classic,consumer,streams`, `classic,share`, `classic,streams`. The enabled consumer group rebalance protocols. Use consumer, classic, share, streams to enable Kafka share groups.
         :param _builtins.int group_initial_rebalance_delay_ms: The amount of time, in milliseconds, the group coordinator will wait for more consumers to join a new group before performing the first rebalance. A longer delay means potentially fewer rebalances, but increases the time until processing begins. The default value for this is 3 seconds. During development and testing it might be desirable to set this to 0 in order to not delay test execution time. (Default: 3000 ms (3 seconds)). Example: `3000`.
         :param _builtins.int group_max_session_timeout_ms: The maximum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. Default: 1800000 ms (30 minutes).
         :param _builtins.int group_min_session_timeout_ms: The minimum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. (Default: 6000 ms (6 seconds)). Example: `6000`.
+        :param _builtins.int group_share_delivery_count_limit: The maximum delivery attempts for a share-group record. Example: `5`.
+        :param _builtins.int group_share_heartbeat_interval_ms: The heartbeat interval used by share group members. Example: `5000`.
+        :param _builtins.int group_share_max_groups: The maximum number of share groups allowed on the broker.
+        :param _builtins.int group_share_max_heartbeat_interval_ms: The maximum heartbeat interval allowed for share group members. Example: `15000`.
+        :param _builtins.int group_share_max_record_lock_duration_ms: The maximum record lock duration allowed for share groups. Example: `60000`.
+        :param _builtins.int group_share_max_session_timeout_ms: The maximum session timeout allowed for share group members. Example: `60000`.
+        :param _builtins.int group_share_max_size: The maximum number of members allowed in a share group. Example: `200`.
+        :param _builtins.int group_share_min_heartbeat_interval_ms: The minimum heartbeat interval allowed for share group members. Example: `5000`.
+        :param _builtins.int group_share_min_record_lock_duration_ms: The minimum record lock duration allowed for share groups. Example: `15000`.
+        :param _builtins.int group_share_min_session_timeout_ms: The minimum session timeout allowed for share group members. Example: `45000`.
+        :param _builtins.int group_share_partition_max_record_locks: The maximum number of record locks allowed per share group partition. Example: `2000`.
+        :param _builtins.int group_share_record_lock_duration_ms: The duration for which a fetched share-group record is locked. Example: `30000`.
+        :param _builtins.int group_share_session_timeout_ms: The timeout used to detect share group member failures. Example: `45000`.
         :param _builtins.int log_cleaner_delete_retention_ms: How long are delete records retained? (Default: 86400000 (1 day)).
         :param _builtins.int log_cleaner_max_compaction_lag_ms: The maximum amount of time message will remain uncompacted. Only applicable for logs that are being compacted. (Default: 9223372036854775807 ms (Long.MAX_VALUE)).
         :param _builtins.float log_cleaner_min_cleanable_ratio: Controls log compactor frequency. Larger value means more frequent compactions but also more space wasted for logs. Consider setting log.cleaner.max.compaction.lag.ms to enforce compactions sooner, instead of setting a very high value for this option. (Default: 0.5). Example: `0.5`.
@@ -33894,6 +34519,8 @@ class GetKafkaKafkaUserConfigKafkaResult(dict):
         :param _builtins.int transaction_remove_expired_transaction_cleanup_interval_ms: The interval at which to remove transactions that have expired due to transactional.id.expiration.ms passing (Default: 3600000 ms (1 hour)).
         :param _builtins.int transaction_state_log_segment_bytes: The transaction topic segment bytes should be kept relatively small in order to facilitate faster log compaction and cache loads (Default: 104857600 bytes (100 mebibytes)).
         """
+        if audit_log is not None:
+            pulumi.set(__self__, "audit_log", audit_log)
         if auto_create_topics_enable is not None:
             pulumi.set(__self__, "auto_create_topics_enable", auto_create_topics_enable)
         if compression_type is not None:
@@ -33902,12 +34529,40 @@ class GetKafkaKafkaUserConfigKafkaResult(dict):
             pulumi.set(__self__, "connections_max_idle_ms", connections_max_idle_ms)
         if default_replication_factor is not None:
             pulumi.set(__self__, "default_replication_factor", default_replication_factor)
+        if group_coordinator_rebalance_protocols is not None:
+            pulumi.set(__self__, "group_coordinator_rebalance_protocols", group_coordinator_rebalance_protocols)
         if group_initial_rebalance_delay_ms is not None:
             pulumi.set(__self__, "group_initial_rebalance_delay_ms", group_initial_rebalance_delay_ms)
         if group_max_session_timeout_ms is not None:
             pulumi.set(__self__, "group_max_session_timeout_ms", group_max_session_timeout_ms)
         if group_min_session_timeout_ms is not None:
             pulumi.set(__self__, "group_min_session_timeout_ms", group_min_session_timeout_ms)
+        if group_share_delivery_count_limit is not None:
+            pulumi.set(__self__, "group_share_delivery_count_limit", group_share_delivery_count_limit)
+        if group_share_heartbeat_interval_ms is not None:
+            pulumi.set(__self__, "group_share_heartbeat_interval_ms", group_share_heartbeat_interval_ms)
+        if group_share_max_groups is not None:
+            pulumi.set(__self__, "group_share_max_groups", group_share_max_groups)
+        if group_share_max_heartbeat_interval_ms is not None:
+            pulumi.set(__self__, "group_share_max_heartbeat_interval_ms", group_share_max_heartbeat_interval_ms)
+        if group_share_max_record_lock_duration_ms is not None:
+            pulumi.set(__self__, "group_share_max_record_lock_duration_ms", group_share_max_record_lock_duration_ms)
+        if group_share_max_session_timeout_ms is not None:
+            pulumi.set(__self__, "group_share_max_session_timeout_ms", group_share_max_session_timeout_ms)
+        if group_share_max_size is not None:
+            pulumi.set(__self__, "group_share_max_size", group_share_max_size)
+        if group_share_min_heartbeat_interval_ms is not None:
+            pulumi.set(__self__, "group_share_min_heartbeat_interval_ms", group_share_min_heartbeat_interval_ms)
+        if group_share_min_record_lock_duration_ms is not None:
+            pulumi.set(__self__, "group_share_min_record_lock_duration_ms", group_share_min_record_lock_duration_ms)
+        if group_share_min_session_timeout_ms is not None:
+            pulumi.set(__self__, "group_share_min_session_timeout_ms", group_share_min_session_timeout_ms)
+        if group_share_partition_max_record_locks is not None:
+            pulumi.set(__self__, "group_share_partition_max_record_locks", group_share_partition_max_record_locks)
+        if group_share_record_lock_duration_ms is not None:
+            pulumi.set(__self__, "group_share_record_lock_duration_ms", group_share_record_lock_duration_ms)
+        if group_share_session_timeout_ms is not None:
+            pulumi.set(__self__, "group_share_session_timeout_ms", group_share_session_timeout_ms)
         if log_cleaner_delete_retention_ms is not None:
             pulumi.set(__self__, "log_cleaner_delete_retention_ms", log_cleaner_delete_retention_ms)
         if log_cleaner_max_compaction_lag_ms is not None:
@@ -33992,6 +34647,14 @@ class GetKafkaKafkaUserConfigKafkaResult(dict):
             pulumi.set(__self__, "transaction_state_log_segment_bytes", transaction_state_log_segment_bytes)
 
     @_builtins.property
+    @pulumi.getter(name="auditLog")
+    def audit_log(self) -> Optional['outputs.GetKafkaKafkaUserConfigKafkaAuditLogResult']:
+        """
+        Enable Kafka audit logging by providing this object. Removing it disables the feature. Enabling, updating, or disabling audit logging causes a rolling restart of all Kafka brokers
+        """
+        return pulumi.get(self, "audit_log")
+
+    @_builtins.property
     @pulumi.getter(name="autoCreateTopicsEnable")
     def auto_create_topics_enable(self) -> Optional[_builtins.bool]:
         """
@@ -34024,6 +34687,14 @@ class GetKafkaKafkaUserConfigKafkaResult(dict):
         return pulumi.get(self, "default_replication_factor")
 
     @_builtins.property
+    @pulumi.getter(name="groupCoordinatorRebalanceProtocols")
+    def group_coordinator_rebalance_protocols(self) -> Optional[_builtins.str]:
+        """
+        Enum: `classic`, `classic,consumer`, `classic,consumer,share`, `classic,consumer,share,streams`, `classic,consumer,streams`, `classic,share`, `classic,streams`. The enabled consumer group rebalance protocols. Use consumer, classic, share, streams to enable Kafka share groups.
+        """
+        return pulumi.get(self, "group_coordinator_rebalance_protocols")
+
+    @_builtins.property
     @pulumi.getter(name="groupInitialRebalanceDelayMs")
     def group_initial_rebalance_delay_ms(self) -> Optional[_builtins.int]:
         """
@@ -34046,6 +34717,110 @@ class GetKafkaKafkaUserConfigKafkaResult(dict):
         The minimum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. (Default: 6000 ms (6 seconds)). Example: `6000`.
         """
         return pulumi.get(self, "group_min_session_timeout_ms")
+
+    @_builtins.property
+    @pulumi.getter(name="groupShareDeliveryCountLimit")
+    def group_share_delivery_count_limit(self) -> Optional[_builtins.int]:
+        """
+        The maximum delivery attempts for a share-group record. Example: `5`.
+        """
+        return pulumi.get(self, "group_share_delivery_count_limit")
+
+    @_builtins.property
+    @pulumi.getter(name="groupShareHeartbeatIntervalMs")
+    def group_share_heartbeat_interval_ms(self) -> Optional[_builtins.int]:
+        """
+        The heartbeat interval used by share group members. Example: `5000`.
+        """
+        return pulumi.get(self, "group_share_heartbeat_interval_ms")
+
+    @_builtins.property
+    @pulumi.getter(name="groupShareMaxGroups")
+    def group_share_max_groups(self) -> Optional[_builtins.int]:
+        """
+        The maximum number of share groups allowed on the broker.
+        """
+        return pulumi.get(self, "group_share_max_groups")
+
+    @_builtins.property
+    @pulumi.getter(name="groupShareMaxHeartbeatIntervalMs")
+    def group_share_max_heartbeat_interval_ms(self) -> Optional[_builtins.int]:
+        """
+        The maximum heartbeat interval allowed for share group members. Example: `15000`.
+        """
+        return pulumi.get(self, "group_share_max_heartbeat_interval_ms")
+
+    @_builtins.property
+    @pulumi.getter(name="groupShareMaxRecordLockDurationMs")
+    def group_share_max_record_lock_duration_ms(self) -> Optional[_builtins.int]:
+        """
+        The maximum record lock duration allowed for share groups. Example: `60000`.
+        """
+        return pulumi.get(self, "group_share_max_record_lock_duration_ms")
+
+    @_builtins.property
+    @pulumi.getter(name="groupShareMaxSessionTimeoutMs")
+    def group_share_max_session_timeout_ms(self) -> Optional[_builtins.int]:
+        """
+        The maximum session timeout allowed for share group members. Example: `60000`.
+        """
+        return pulumi.get(self, "group_share_max_session_timeout_ms")
+
+    @_builtins.property
+    @pulumi.getter(name="groupShareMaxSize")
+    def group_share_max_size(self) -> Optional[_builtins.int]:
+        """
+        The maximum number of members allowed in a share group. Example: `200`.
+        """
+        return pulumi.get(self, "group_share_max_size")
+
+    @_builtins.property
+    @pulumi.getter(name="groupShareMinHeartbeatIntervalMs")
+    def group_share_min_heartbeat_interval_ms(self) -> Optional[_builtins.int]:
+        """
+        The minimum heartbeat interval allowed for share group members. Example: `5000`.
+        """
+        return pulumi.get(self, "group_share_min_heartbeat_interval_ms")
+
+    @_builtins.property
+    @pulumi.getter(name="groupShareMinRecordLockDurationMs")
+    def group_share_min_record_lock_duration_ms(self) -> Optional[_builtins.int]:
+        """
+        The minimum record lock duration allowed for share groups. Example: `15000`.
+        """
+        return pulumi.get(self, "group_share_min_record_lock_duration_ms")
+
+    @_builtins.property
+    @pulumi.getter(name="groupShareMinSessionTimeoutMs")
+    def group_share_min_session_timeout_ms(self) -> Optional[_builtins.int]:
+        """
+        The minimum session timeout allowed for share group members. Example: `45000`.
+        """
+        return pulumi.get(self, "group_share_min_session_timeout_ms")
+
+    @_builtins.property
+    @pulumi.getter(name="groupSharePartitionMaxRecordLocks")
+    def group_share_partition_max_record_locks(self) -> Optional[_builtins.int]:
+        """
+        The maximum number of record locks allowed per share group partition. Example: `2000`.
+        """
+        return pulumi.get(self, "group_share_partition_max_record_locks")
+
+    @_builtins.property
+    @pulumi.getter(name="groupShareRecordLockDurationMs")
+    def group_share_record_lock_duration_ms(self) -> Optional[_builtins.int]:
+        """
+        The duration for which a fetched share-group record is locked. Example: `30000`.
+        """
+        return pulumi.get(self, "group_share_record_lock_duration_ms")
+
+    @_builtins.property
+    @pulumi.getter(name="groupShareSessionTimeoutMs")
+    def group_share_session_timeout_ms(self) -> Optional[_builtins.int]:
+        """
+        The timeout used to detect share group member failures. Example: `45000`.
+        """
+        return pulumi.get(self, "group_share_session_timeout_ms")
 
     @_builtins.property
     @pulumi.getter(name="logCleanerDeleteRetentionMs")
@@ -34374,6 +35149,61 @@ class GetKafkaKafkaUserConfigKafkaResult(dict):
         The transaction topic segment bytes should be kept relatively small in order to facilitate faster log compaction and cache loads (Default: 104857600 bytes (100 mebibytes)).
         """
         return pulumi.get(self, "transaction_state_log_segment_bytes")
+
+
+@pulumi.output_type
+class GetKafkaKafkaUserConfigKafkaAuditLogResult(dict):
+    def __init__(__self__, *,
+                 aggregation_period_sec: Optional[_builtins.int] = None,
+                 group_by: Optional[_builtins.str] = None,
+                 include_denials: Optional[_builtins.bool] = None,
+                 record_type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.int aggregation_period_sec: Aggregation period in seconds over which audit log entries are batched before being emitted. Default: `300`.
+        :param _builtins.str group_by: Enum: `user`, `user_and_ip`. Group audit log entries by user or by user and IP address. Only valid when record_type is user_operations. Default: `user_and_ip`.
+        :param _builtins.bool include_denials: Whether to include denied authorization attempts in the audit log. Default: `false`.
+        :param _builtins.str record_type: Enum: `user_activity`, `user_operations`. user_operations records individual Kafka API calls (produce, fetch, etc.). user_activity records higher-level user actions. Default: `user_operations`.
+        """
+        if aggregation_period_sec is not None:
+            pulumi.set(__self__, "aggregation_period_sec", aggregation_period_sec)
+        if group_by is not None:
+            pulumi.set(__self__, "group_by", group_by)
+        if include_denials is not None:
+            pulumi.set(__self__, "include_denials", include_denials)
+        if record_type is not None:
+            pulumi.set(__self__, "record_type", record_type)
+
+    @_builtins.property
+    @pulumi.getter(name="aggregationPeriodSec")
+    def aggregation_period_sec(self) -> Optional[_builtins.int]:
+        """
+        Aggregation period in seconds over which audit log entries are batched before being emitted. Default: `300`.
+        """
+        return pulumi.get(self, "aggregation_period_sec")
+
+    @_builtins.property
+    @pulumi.getter(name="groupBy")
+    def group_by(self) -> Optional[_builtins.str]:
+        """
+        Enum: `user`, `user_and_ip`. Group audit log entries by user or by user and IP address. Only valid when record_type is user_operations. Default: `user_and_ip`.
+        """
+        return pulumi.get(self, "group_by")
+
+    @_builtins.property
+    @pulumi.getter(name="includeDenials")
+    def include_denials(self) -> Optional[_builtins.bool]:
+        """
+        Whether to include denied authorization attempts in the audit log. Default: `false`.
+        """
+        return pulumi.get(self, "include_denials")
+
+    @_builtins.property
+    @pulumi.getter(name="recordType")
+    def record_type(self) -> Optional[_builtins.str]:
+        """
+        Enum: `user_activity`, `user_operations`. user_operations records individual Kafka API calls (produce, fetch, etc.). user_activity records higher-level user actions. Default: `user_operations`.
+        """
+        return pulumi.get(self, "record_type")
 
 
 @pulumi.output_type
@@ -35904,6 +36734,86 @@ class GetKafkaMirrorMakerTechEmailResult(dict):
 
 
 @pulumi.output_type
+class GetKafkaSchemaConfigurationReferenceResult(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 subject: _builtins.str,
+                 version: _builtins.int):
+        """
+        :param _builtins.str name: The name used to reference the provided subject and version. Maximum length: `1024`.
+        :param _builtins.str subject: Subject. Maximum length: `1024`.
+        :param _builtins.int version: Version.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "subject", subject)
+        pulumi.set(__self__, "version", version)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name used to reference the provided subject and version. Maximum length: `1024`.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def subject(self) -> _builtins.str:
+        """
+        Subject. Maximum length: `1024`.
+        """
+        return pulumi.get(self, "subject")
+
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> _builtins.int:
+        """
+        Version.
+        """
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class GetKafkaSchemaReferenceResult(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 subject: _builtins.str,
+                 version: _builtins.int):
+        """
+        :param _builtins.str name: The name used to reference the provided subject and version. Maximum length: `1024`.
+        :param _builtins.str subject: Subject. Maximum length: `1024`.
+        :param _builtins.int version: Version.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "subject", subject)
+        pulumi.set(__self__, "version", version)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name used to reference the provided subject and version. Maximum length: `1024`.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def subject(self) -> _builtins.str:
+        """
+        Subject. Maximum length: `1024`.
+        """
+        return pulumi.get(self, "subject")
+
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> _builtins.int:
+        """
+        Version.
+        """
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
 class GetKafkaSchemaRegistryAclTimeoutsResult(dict):
     def __init__(__self__, *,
                  read: Optional[_builtins.str] = None):
@@ -36001,47 +36911,47 @@ class GetKafkaTechEmailResult(dict):
 @pulumi.output_type
 class GetKafkaTopicConfigResult(dict):
     def __init__(__self__, *,
-                 cleanup_policy: Optional[_builtins.str] = None,
-                 compression_type: Optional[_builtins.str] = None,
-                 delete_retention_ms: Optional[_builtins.str] = None,
-                 diskless_enable: Optional[_builtins.bool] = None,
-                 file_delete_delay_ms: Optional[_builtins.str] = None,
-                 flush_messages: Optional[_builtins.str] = None,
-                 flush_ms: Optional[_builtins.str] = None,
-                 index_interval_bytes: Optional[_builtins.str] = None,
-                 local_retention_bytes: Optional[_builtins.str] = None,
-                 local_retention_ms: Optional[_builtins.str] = None,
-                 max_compaction_lag_ms: Optional[_builtins.str] = None,
-                 max_message_bytes: Optional[_builtins.str] = None,
-                 message_downconversion_enable: Optional[_builtins.bool] = None,
-                 message_format_version: Optional[_builtins.str] = None,
-                 message_timestamp_after_max_ms: Optional[_builtins.str] = None,
-                 message_timestamp_before_max_ms: Optional[_builtins.str] = None,
-                 message_timestamp_difference_max_ms: Optional[_builtins.str] = None,
-                 message_timestamp_type: Optional[_builtins.str] = None,
-                 min_cleanable_dirty_ratio: Optional[_builtins.float] = None,
-                 min_compaction_lag_ms: Optional[_builtins.str] = None,
-                 min_insync_replicas: Optional[_builtins.str] = None,
-                 preallocate: Optional[_builtins.bool] = None,
-                 remote_storage_enable: Optional[_builtins.bool] = None,
-                 retention_bytes: Optional[_builtins.str] = None,
-                 retention_ms: Optional[_builtins.str] = None,
-                 segment_bytes: Optional[_builtins.str] = None,
-                 segment_index_bytes: Optional[_builtins.str] = None,
-                 segment_jitter_ms: Optional[_builtins.str] = None,
-                 segment_ms: Optional[_builtins.str] = None,
-                 unclean_leader_election_enable: Optional[_builtins.bool] = None):
+                 cleanup_policy: _builtins.str,
+                 compression_type: _builtins.str,
+                 delete_retention_ms: _builtins.str,
+                 diskless_enable: _builtins.bool,
+                 file_delete_delay_ms: _builtins.str,
+                 flush_messages: _builtins.str,
+                 flush_ms: _builtins.str,
+                 index_interval_bytes: _builtins.str,
+                 local_retention_bytes: _builtins.str,
+                 local_retention_ms: _builtins.str,
+                 max_compaction_lag_ms: _builtins.str,
+                 max_message_bytes: _builtins.str,
+                 message_downconversion_enable: _builtins.bool,
+                 message_format_version: _builtins.str,
+                 message_timestamp_after_max_ms: _builtins.str,
+                 message_timestamp_before_max_ms: _builtins.str,
+                 message_timestamp_difference_max_ms: _builtins.str,
+                 message_timestamp_type: _builtins.str,
+                 min_cleanable_dirty_ratio: _builtins.float,
+                 min_compaction_lag_ms: _builtins.str,
+                 min_insync_replicas: _builtins.str,
+                 preallocate: _builtins.bool,
+                 remote_storage_enable: _builtins.bool,
+                 retention_bytes: _builtins.str,
+                 retention_ms: _builtins.str,
+                 segment_bytes: _builtins.str,
+                 segment_index_bytes: _builtins.str,
+                 segment_jitter_ms: _builtins.str,
+                 segment_ms: _builtins.str,
+                 unclean_leader_election_enable: _builtins.bool):
         """
         :param _builtins.str cleanup_policy: The retention policy to use on old segments. Possible values include 'delete', 'compact', or a comma-separated list of them. The default policy ('delete') will discard old segments when their retention time or size limit has been reached. The 'compact' setting will enable log compaction on the topic. The possible values are `compact`, `compact,delete` and `delete`.
         :param _builtins.str compression_type: Specify the final compression type for a given topic. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'uncompressed' which is equivalent to no compression; and 'producer' which means retain the original compression codec set by the producer. The possible values are `gzip`, `lz4`, `producer`, `snappy`, `uncompressed` and `zstd`.
         :param _builtins.str delete_retention_ms: The amount of time to retain delete tombstone markers for log compacted topics. This setting also gives a bound on the time in which a consumer must complete a read if they begin from offset 0 to ensure that they get a valid snapshot of the final stage (otherwise delete tombstones may be collected before they complete their scan).
-        :param _builtins.bool diskless_enable: Creates a [diskless topic](https://aiven.io/docs/products/diskless). You can only do this when you create the topic and you cannot change it later. Diskless topics are only available for bring your own cloud (BYOC) services that have the feature enabled.
+        :param _builtins.bool diskless_enable: Indicates whether diskless should be enabled. This is only available for BYOC services with Diskless feature enabled.
         :param _builtins.str file_delete_delay_ms: The time to wait before deleting a file from the filesystem.
         :param _builtins.str flush_messages: This setting allows specifying an interval at which we will force an fsync of data written to the log. For example if this was set to 1 we would fsync after every message; if it were 5 we would fsync after every five messages. In general we recommend you not set this and use replication for durability and allow the operating system's background flush capabilities as it is more efficient.
         :param _builtins.str flush_ms: This setting allows specifying a time interval at which we will force an fsync of data written to the log. For example if this was set to 1000 we would fsync after 1000 ms had passed. In general we recommend you not set this and use replication for durability and allow the operating system's background flush capabilities as it is more efficient.
         :param _builtins.str index_interval_bytes: This setting controls how frequently Kafka adds an index entry to its offset index. The default setting ensures that we index a message roughly every 4096 bytes. More indexing allows reads to jump closer to the exact position in the log but makes the index larger. You probably don't need to change this.
-        :param _builtins.str local_retention_bytes: This configuration controls the maximum bytes tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the limit is equal to overall retention time. If set to -1, no limit is applied but it's possible only if overall retention is also -1.
-        :param _builtins.str local_retention_ms: This configuration controls the maximum time tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the time limit is equal to overall retention time. If set to -1, no time limit is applied but it's possible only if overall retention is also -1.
+        :param _builtins.str local_retention_bytes: This configuration controls the maximum bytes tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the limit is equal to overall retention time. If set to -1, no limit is applied but it's possible only if overall retention is also -1. The field is required with `retention_bytes`.
+        :param _builtins.str local_retention_ms: This configuration controls the maximum time tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the time limit is equal to overall retention time. If set to -1, no time limit is applied but it's possible only if overall retention is also -1. The field is required with `retention_ms`.
         :param _builtins.str max_compaction_lag_ms: The maximum time a message will remain ineligible for compaction in the log. Only applicable for logs that are being compacted.
         :param _builtins.str max_message_bytes: The largest record batch size allowed by Kafka (after compression if compression is enabled). If this is increased and there are consumers older than 0.10.2, the consumers' fetch size must also be increased so that the they can fetch record batches this large. In the latest message format version, records are always grouped into batches for efficiency. In previous message format versions, uncompressed records are not grouped into batches and this limit only applies to a single record in that case.
         :param _builtins.bool message_downconversion_enable: This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests. When set to false, broker will not perform down-conversion for consumers expecting an older message format. The broker responds with UNSUPPORTED_VERSION error for consume requests from such older clients. This configuration does not apply to any message format conversion that might be required for replication to followers.
@@ -36059,74 +36969,44 @@ class GetKafkaTopicConfigResult(dict):
         :param _builtins.str retention_ms: This configuration controls the maximum time we will retain a log before we will discard old log segments to free up space if we are using the 'delete' retention policy. This represents an SLA on how soon consumers must read their data. If set to -1, no time limit is applied.
         :param _builtins.str segment_bytes: This configuration controls the segment file size for the log. Retention and cleaning is always done a file at a time so a larger segment size means fewer files but less granular control over retention. Setting this to a very low value has consequences, and the Aiven management plane ignores values less than 10 megabytes.
         :param _builtins.str segment_index_bytes: This configuration controls the size of the index that maps offsets to file positions. We preallocate this index file and shrink it only after log rolls. You generally should not need to change this setting.
-        :param _builtins.str segment_jitter_ms: The maximum random jitter subtracted from the scheduled segment roll time to avoid thundering herds of segment rolling
+        :param _builtins.str segment_jitter_ms: The maximum random jitter subtracted from the scheduled segment roll time to avoid thundering herds of segment rolling.
         :param _builtins.str segment_ms: This configuration controls the period of time after which Kafka will force the log to roll even if the segment file isn't full to ensure that retention can delete or compact old data. Setting this to a very low value has consequences, and the Aiven management plane ignores values less than 10 seconds.
         :param _builtins.bool unclean_leader_election_enable: Indicates whether to enable replicas not in the ISR set to be elected as leader as a last resort, even though doing so may result in data loss.
         """
-        if cleanup_policy is not None:
-            pulumi.set(__self__, "cleanup_policy", cleanup_policy)
-        if compression_type is not None:
-            pulumi.set(__self__, "compression_type", compression_type)
-        if delete_retention_ms is not None:
-            pulumi.set(__self__, "delete_retention_ms", delete_retention_ms)
-        if diskless_enable is not None:
-            pulumi.set(__self__, "diskless_enable", diskless_enable)
-        if file_delete_delay_ms is not None:
-            pulumi.set(__self__, "file_delete_delay_ms", file_delete_delay_ms)
-        if flush_messages is not None:
-            pulumi.set(__self__, "flush_messages", flush_messages)
-        if flush_ms is not None:
-            pulumi.set(__self__, "flush_ms", flush_ms)
-        if index_interval_bytes is not None:
-            pulumi.set(__self__, "index_interval_bytes", index_interval_bytes)
-        if local_retention_bytes is not None:
-            pulumi.set(__self__, "local_retention_bytes", local_retention_bytes)
-        if local_retention_ms is not None:
-            pulumi.set(__self__, "local_retention_ms", local_retention_ms)
-        if max_compaction_lag_ms is not None:
-            pulumi.set(__self__, "max_compaction_lag_ms", max_compaction_lag_ms)
-        if max_message_bytes is not None:
-            pulumi.set(__self__, "max_message_bytes", max_message_bytes)
-        if message_downconversion_enable is not None:
-            pulumi.set(__self__, "message_downconversion_enable", message_downconversion_enable)
-        if message_format_version is not None:
-            pulumi.set(__self__, "message_format_version", message_format_version)
-        if message_timestamp_after_max_ms is not None:
-            pulumi.set(__self__, "message_timestamp_after_max_ms", message_timestamp_after_max_ms)
-        if message_timestamp_before_max_ms is not None:
-            pulumi.set(__self__, "message_timestamp_before_max_ms", message_timestamp_before_max_ms)
-        if message_timestamp_difference_max_ms is not None:
-            pulumi.set(__self__, "message_timestamp_difference_max_ms", message_timestamp_difference_max_ms)
-        if message_timestamp_type is not None:
-            pulumi.set(__self__, "message_timestamp_type", message_timestamp_type)
-        if min_cleanable_dirty_ratio is not None:
-            pulumi.set(__self__, "min_cleanable_dirty_ratio", min_cleanable_dirty_ratio)
-        if min_compaction_lag_ms is not None:
-            pulumi.set(__self__, "min_compaction_lag_ms", min_compaction_lag_ms)
-        if min_insync_replicas is not None:
-            pulumi.set(__self__, "min_insync_replicas", min_insync_replicas)
-        if preallocate is not None:
-            pulumi.set(__self__, "preallocate", preallocate)
-        if remote_storage_enable is not None:
-            pulumi.set(__self__, "remote_storage_enable", remote_storage_enable)
-        if retention_bytes is not None:
-            pulumi.set(__self__, "retention_bytes", retention_bytes)
-        if retention_ms is not None:
-            pulumi.set(__self__, "retention_ms", retention_ms)
-        if segment_bytes is not None:
-            pulumi.set(__self__, "segment_bytes", segment_bytes)
-        if segment_index_bytes is not None:
-            pulumi.set(__self__, "segment_index_bytes", segment_index_bytes)
-        if segment_jitter_ms is not None:
-            pulumi.set(__self__, "segment_jitter_ms", segment_jitter_ms)
-        if segment_ms is not None:
-            pulumi.set(__self__, "segment_ms", segment_ms)
-        if unclean_leader_election_enable is not None:
-            pulumi.set(__self__, "unclean_leader_election_enable", unclean_leader_election_enable)
+        pulumi.set(__self__, "cleanup_policy", cleanup_policy)
+        pulumi.set(__self__, "compression_type", compression_type)
+        pulumi.set(__self__, "delete_retention_ms", delete_retention_ms)
+        pulumi.set(__self__, "diskless_enable", diskless_enable)
+        pulumi.set(__self__, "file_delete_delay_ms", file_delete_delay_ms)
+        pulumi.set(__self__, "flush_messages", flush_messages)
+        pulumi.set(__self__, "flush_ms", flush_ms)
+        pulumi.set(__self__, "index_interval_bytes", index_interval_bytes)
+        pulumi.set(__self__, "local_retention_bytes", local_retention_bytes)
+        pulumi.set(__self__, "local_retention_ms", local_retention_ms)
+        pulumi.set(__self__, "max_compaction_lag_ms", max_compaction_lag_ms)
+        pulumi.set(__self__, "max_message_bytes", max_message_bytes)
+        pulumi.set(__self__, "message_downconversion_enable", message_downconversion_enable)
+        pulumi.set(__self__, "message_format_version", message_format_version)
+        pulumi.set(__self__, "message_timestamp_after_max_ms", message_timestamp_after_max_ms)
+        pulumi.set(__self__, "message_timestamp_before_max_ms", message_timestamp_before_max_ms)
+        pulumi.set(__self__, "message_timestamp_difference_max_ms", message_timestamp_difference_max_ms)
+        pulumi.set(__self__, "message_timestamp_type", message_timestamp_type)
+        pulumi.set(__self__, "min_cleanable_dirty_ratio", min_cleanable_dirty_ratio)
+        pulumi.set(__self__, "min_compaction_lag_ms", min_compaction_lag_ms)
+        pulumi.set(__self__, "min_insync_replicas", min_insync_replicas)
+        pulumi.set(__self__, "preallocate", preallocate)
+        pulumi.set(__self__, "remote_storage_enable", remote_storage_enable)
+        pulumi.set(__self__, "retention_bytes", retention_bytes)
+        pulumi.set(__self__, "retention_ms", retention_ms)
+        pulumi.set(__self__, "segment_bytes", segment_bytes)
+        pulumi.set(__self__, "segment_index_bytes", segment_index_bytes)
+        pulumi.set(__self__, "segment_jitter_ms", segment_jitter_ms)
+        pulumi.set(__self__, "segment_ms", segment_ms)
+        pulumi.set(__self__, "unclean_leader_election_enable", unclean_leader_election_enable)
 
     @_builtins.property
     @pulumi.getter(name="cleanupPolicy")
-    def cleanup_policy(self) -> Optional[_builtins.str]:
+    def cleanup_policy(self) -> _builtins.str:
         """
         The retention policy to use on old segments. Possible values include 'delete', 'compact', or a comma-separated list of them. The default policy ('delete') will discard old segments when their retention time or size limit has been reached. The 'compact' setting will enable log compaction on the topic. The possible values are `compact`, `compact,delete` and `delete`.
         """
@@ -36134,7 +37014,7 @@ class GetKafkaTopicConfigResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="compressionType")
-    def compression_type(self) -> Optional[_builtins.str]:
+    def compression_type(self) -> _builtins.str:
         """
         Specify the final compression type for a given topic. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'uncompressed' which is equivalent to no compression; and 'producer' which means retain the original compression codec set by the producer. The possible values are `gzip`, `lz4`, `producer`, `snappy`, `uncompressed` and `zstd`.
         """
@@ -36142,7 +37022,7 @@ class GetKafkaTopicConfigResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="deleteRetentionMs")
-    def delete_retention_ms(self) -> Optional[_builtins.str]:
+    def delete_retention_ms(self) -> _builtins.str:
         """
         The amount of time to retain delete tombstone markers for log compacted topics. This setting also gives a bound on the time in which a consumer must complete a read if they begin from offset 0 to ensure that they get a valid snapshot of the final stage (otherwise delete tombstones may be collected before they complete their scan).
         """
@@ -36150,15 +37030,15 @@ class GetKafkaTopicConfigResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="disklessEnable")
-    def diskless_enable(self) -> Optional[_builtins.bool]:
+    def diskless_enable(self) -> _builtins.bool:
         """
-        Creates a [diskless topic](https://aiven.io/docs/products/diskless). You can only do this when you create the topic and you cannot change it later. Diskless topics are only available for bring your own cloud (BYOC) services that have the feature enabled.
+        Indicates whether diskless should be enabled. This is only available for BYOC services with Diskless feature enabled.
         """
         return pulumi.get(self, "diskless_enable")
 
     @_builtins.property
     @pulumi.getter(name="fileDeleteDelayMs")
-    def file_delete_delay_ms(self) -> Optional[_builtins.str]:
+    def file_delete_delay_ms(self) -> _builtins.str:
         """
         The time to wait before deleting a file from the filesystem.
         """
@@ -36166,7 +37046,7 @@ class GetKafkaTopicConfigResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="flushMessages")
-    def flush_messages(self) -> Optional[_builtins.str]:
+    def flush_messages(self) -> _builtins.str:
         """
         This setting allows specifying an interval at which we will force an fsync of data written to the log. For example if this was set to 1 we would fsync after every message; if it were 5 we would fsync after every five messages. In general we recommend you not set this and use replication for durability and allow the operating system's background flush capabilities as it is more efficient.
         """
@@ -36174,7 +37054,7 @@ class GetKafkaTopicConfigResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="flushMs")
-    def flush_ms(self) -> Optional[_builtins.str]:
+    def flush_ms(self) -> _builtins.str:
         """
         This setting allows specifying a time interval at which we will force an fsync of data written to the log. For example if this was set to 1000 we would fsync after 1000 ms had passed. In general we recommend you not set this and use replication for durability and allow the operating system's background flush capabilities as it is more efficient.
         """
@@ -36182,7 +37062,7 @@ class GetKafkaTopicConfigResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="indexIntervalBytes")
-    def index_interval_bytes(self) -> Optional[_builtins.str]:
+    def index_interval_bytes(self) -> _builtins.str:
         """
         This setting controls how frequently Kafka adds an index entry to its offset index. The default setting ensures that we index a message roughly every 4096 bytes. More indexing allows reads to jump closer to the exact position in the log but makes the index larger. You probably don't need to change this.
         """
@@ -36190,23 +37070,23 @@ class GetKafkaTopicConfigResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="localRetentionBytes")
-    def local_retention_bytes(self) -> Optional[_builtins.str]:
+    def local_retention_bytes(self) -> _builtins.str:
         """
-        This configuration controls the maximum bytes tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the limit is equal to overall retention time. If set to -1, no limit is applied but it's possible only if overall retention is also -1.
+        This configuration controls the maximum bytes tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the limit is equal to overall retention time. If set to -1, no limit is applied but it's possible only if overall retention is also -1. The field is required with `retention_bytes`.
         """
         return pulumi.get(self, "local_retention_bytes")
 
     @_builtins.property
     @pulumi.getter(name="localRetentionMs")
-    def local_retention_ms(self) -> Optional[_builtins.str]:
+    def local_retention_ms(self) -> _builtins.str:
         """
-        This configuration controls the maximum time tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the time limit is equal to overall retention time. If set to -1, no time limit is applied but it's possible only if overall retention is also -1.
+        This configuration controls the maximum time tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the time limit is equal to overall retention time. If set to -1, no time limit is applied but it's possible only if overall retention is also -1. The field is required with `retention_ms`.
         """
         return pulumi.get(self, "local_retention_ms")
 
     @_builtins.property
     @pulumi.getter(name="maxCompactionLagMs")
-    def max_compaction_lag_ms(self) -> Optional[_builtins.str]:
+    def max_compaction_lag_ms(self) -> _builtins.str:
         """
         The maximum time a message will remain ineligible for compaction in the log. Only applicable for logs that are being compacted.
         """
@@ -36214,7 +37094,7 @@ class GetKafkaTopicConfigResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="maxMessageBytes")
-    def max_message_bytes(self) -> Optional[_builtins.str]:
+    def max_message_bytes(self) -> _builtins.str:
         """
         The largest record batch size allowed by Kafka (after compression if compression is enabled). If this is increased and there are consumers older than 0.10.2, the consumers' fetch size must also be increased so that the they can fetch record batches this large. In the latest message format version, records are always grouped into batches for efficiency. In previous message format versions, uncompressed records are not grouped into batches and this limit only applies to a single record in that case.
         """
@@ -36222,7 +37102,7 @@ class GetKafkaTopicConfigResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="messageDownconversionEnable")
-    def message_downconversion_enable(self) -> Optional[_builtins.bool]:
+    def message_downconversion_enable(self) -> _builtins.bool:
         """
         This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests. When set to false, broker will not perform down-conversion for consumers expecting an older message format. The broker responds with UNSUPPORTED_VERSION error for consume requests from such older clients. This configuration does not apply to any message format conversion that might be required for replication to followers.
         """
@@ -36230,7 +37110,7 @@ class GetKafkaTopicConfigResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="messageFormatVersion")
-    def message_format_version(self) -> Optional[_builtins.str]:
+    def message_format_version(self) -> _builtins.str:
         """
         Specify the message format version the broker will use to append messages to the logs. The value should be a valid ApiVersion. Some examples are: 0.8.2, 0.9.0.0, 0.10.0, check ApiVersion for more details. By setting a particular message format version, the user is certifying that all the existing messages on disk are smaller or equal than the specified version. Setting this value incorrectly will cause consumers with older versions to break as they will receive messages with a format that they don't understand. Deprecated in Kafka 4.0+: this configuration is removed and any supplied value will be ignored; for services upgraded to 4.0+, the returned value may be 'None'. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.0`, `4.0-IV0`, `4.1`, `4.1-IV0`, `4.2` and `4.2-IV0`.
         """
@@ -36238,7 +37118,7 @@ class GetKafkaTopicConfigResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="messageTimestampAfterMaxMs")
-    def message_timestamp_after_max_ms(self) -> Optional[_builtins.str]:
+    def message_timestamp_after_max_ms(self) -> _builtins.str:
         """
         The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps later than the broker's timestamp.
         """
@@ -36246,7 +37126,7 @@ class GetKafkaTopicConfigResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="messageTimestampBeforeMaxMs")
-    def message_timestamp_before_max_ms(self) -> Optional[_builtins.str]:
+    def message_timestamp_before_max_ms(self) -> _builtins.str:
         """
         The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps earlier than the broker's timestamp.
         """
@@ -36254,7 +37134,7 @@ class GetKafkaTopicConfigResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="messageTimestampDifferenceMaxMs")
-    def message_timestamp_difference_max_ms(self) -> Optional[_builtins.str]:
+    def message_timestamp_difference_max_ms(self) -> _builtins.str:
         """
         The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. This configuration is ignored if message.timestamp.type=LogAppendTime.
         """
@@ -36262,7 +37142,7 @@ class GetKafkaTopicConfigResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="messageTimestampType")
-    def message_timestamp_type(self) -> Optional[_builtins.str]:
+    def message_timestamp_type(self) -> _builtins.str:
         """
         Define whether the timestamp in the message is message create time or log append time. The possible values are `CreateTime` and `LogAppendTime`.
         """
@@ -36270,7 +37150,7 @@ class GetKafkaTopicConfigResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="minCleanableDirtyRatio")
-    def min_cleanable_dirty_ratio(self) -> Optional[_builtins.float]:
+    def min_cleanable_dirty_ratio(self) -> _builtins.float:
         """
         This configuration controls how frequently the log compactor will attempt to clean the log (assuming log compaction is enabled). By default we will avoid cleaning a log where more than 50% of the log has been compacted. This ratio bounds the maximum space wasted in the log by duplicates (at 50% at most 50% of the log could be duplicates). A higher ratio will mean fewer, more efficient cleanings but will mean more wasted space in the log. If the max.compaction.lag.ms or the min.compaction.lag.ms configurations are also specified, then the log compactor considers the log to be eligible for compaction as soon as either: (i) the dirty ratio threshold has been met and the log has had dirty (uncompacted) records for at least the min.compaction.lag.ms duration, or (ii) if the log has had dirty (uncompacted) records for at most the max.compaction.lag.ms period.
         """
@@ -36278,7 +37158,7 @@ class GetKafkaTopicConfigResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="minCompactionLagMs")
-    def min_compaction_lag_ms(self) -> Optional[_builtins.str]:
+    def min_compaction_lag_ms(self) -> _builtins.str:
         """
         The minimum time a message will remain uncompacted in the log. Only applicable for logs that are being compacted.
         """
@@ -36286,7 +37166,7 @@ class GetKafkaTopicConfigResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="minInsyncReplicas")
-    def min_insync_replicas(self) -> Optional[_builtins.str]:
+    def min_insync_replicas(self) -> _builtins.str:
         """
         When a producer sets acks to 'all' (or '-1'), this configuration specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful. If this minimum cannot be met, then the producer will raise an exception (either NotEnoughReplicas or NotEnoughReplicasAfterAppend). When used together, min.insync.replicas and acks allow you to enforce greater durability guarantees. A typical scenario would be to create a topic with a replication factor of 3, set min.insync.replicas to 2, and produce with acks of 'all'. This will ensure that the producer raises an exception if a majority of replicas do not receive a write.
         """
@@ -36294,7 +37174,7 @@ class GetKafkaTopicConfigResult(dict):
 
     @_builtins.property
     @pulumi.getter
-    def preallocate(self) -> Optional[_builtins.bool]:
+    def preallocate(self) -> _builtins.bool:
         """
         True if we should preallocate the file on disk when creating a new log segment.
         """
@@ -36302,7 +37182,7 @@ class GetKafkaTopicConfigResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="remoteStorageEnable")
-    def remote_storage_enable(self) -> Optional[_builtins.bool]:
+    def remote_storage_enable(self) -> _builtins.bool:
         """
         Indicates whether tiered storage should be enabled. This is only available for services with Tiered Storage feature enabled.
         """
@@ -36310,7 +37190,7 @@ class GetKafkaTopicConfigResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="retentionBytes")
-    def retention_bytes(self) -> Optional[_builtins.str]:
+    def retention_bytes(self) -> _builtins.str:
         """
         This configuration controls the maximum size a partition (which consists of log segments) can grow to before we will discard old log segments to free up space if we are using the 'delete' retention policy. By default there is no size limit only a time limit. Since this limit is enforced at the partition level, multiply it by the number of partitions to compute the topic retention in bytes.
         """
@@ -36318,7 +37198,7 @@ class GetKafkaTopicConfigResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="retentionMs")
-    def retention_ms(self) -> Optional[_builtins.str]:
+    def retention_ms(self) -> _builtins.str:
         """
         This configuration controls the maximum time we will retain a log before we will discard old log segments to free up space if we are using the 'delete' retention policy. This represents an SLA on how soon consumers must read their data. If set to -1, no time limit is applied.
         """
@@ -36326,7 +37206,7 @@ class GetKafkaTopicConfigResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="segmentBytes")
-    def segment_bytes(self) -> Optional[_builtins.str]:
+    def segment_bytes(self) -> _builtins.str:
         """
         This configuration controls the segment file size for the log. Retention and cleaning is always done a file at a time so a larger segment size means fewer files but less granular control over retention. Setting this to a very low value has consequences, and the Aiven management plane ignores values less than 10 megabytes.
         """
@@ -36334,7 +37214,7 @@ class GetKafkaTopicConfigResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="segmentIndexBytes")
-    def segment_index_bytes(self) -> Optional[_builtins.str]:
+    def segment_index_bytes(self) -> _builtins.str:
         """
         This configuration controls the size of the index that maps offsets to file positions. We preallocate this index file and shrink it only after log rolls. You generally should not need to change this setting.
         """
@@ -36342,15 +37222,15 @@ class GetKafkaTopicConfigResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="segmentJitterMs")
-    def segment_jitter_ms(self) -> Optional[_builtins.str]:
+    def segment_jitter_ms(self) -> _builtins.str:
         """
-        The maximum random jitter subtracted from the scheduled segment roll time to avoid thundering herds of segment rolling
+        The maximum random jitter subtracted from the scheduled segment roll time to avoid thundering herds of segment rolling.
         """
         return pulumi.get(self, "segment_jitter_ms")
 
     @_builtins.property
     @pulumi.getter(name="segmentMs")
-    def segment_ms(self) -> Optional[_builtins.str]:
+    def segment_ms(self) -> _builtins.str:
         """
         This configuration controls the period of time after which Kafka will force the log to roll even if the segment file isn't full to ensure that retention can delete or compact old data. Setting this to a very low value has consequences, and the Aiven management plane ignores values less than 10 seconds.
         """
@@ -36358,7 +37238,7 @@ class GetKafkaTopicConfigResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="uncleanLeaderElectionEnable")
-    def unclean_leader_election_enable(self) -> Optional[_builtins.bool]:
+    def unclean_leader_election_enable(self) -> _builtins.bool:
         """
         Indicates whether to enable replicas not in the ISR set to be elected as leader as a last resort, even though doing so may result in data loss.
         """
@@ -36568,30 +37448,48 @@ class GetKafkaTopicListTopicTagResult(dict):
 class GetKafkaTopicTagResult(dict):
     def __init__(__self__, *,
                  key: _builtins.str,
-                 value: Optional[_builtins.str] = None):
+                 value: _builtins.str):
         """
-        :param _builtins.str key: Tag key. Maximum length: `64`.
-        :param _builtins.str value: Tag value. Maximum length: `256`.
+        :param _builtins.str key: Tag key.
+        :param _builtins.str value: Tag value.
         """
         pulumi.set(__self__, "key", key)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
+        pulumi.set(__self__, "value", value)
 
     @_builtins.property
     @pulumi.getter
     def key(self) -> _builtins.str:
         """
-        Tag key. Maximum length: `64`.
+        Tag key.
         """
         return pulumi.get(self, "key")
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[_builtins.str]:
+    def value(self) -> _builtins.str:
         """
-        Tag value. Maximum length: `256`.
+        Tag value.
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetKafkaTopicTimeoutsResult(dict):
+    def __init__(__self__, *,
+                 read: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "read")
 
 
 @pulumi.output_type
@@ -37280,10 +38178,13 @@ class GetMySqlMysqlUserConfigMysqlResult(dict):
                  default_time_zone: Optional[_builtins.str] = None,
                  group_concat_max_len: Optional[_builtins.int] = None,
                  information_schema_stats_expiry: Optional[_builtins.int] = None,
+                 innodb_adaptive_hash_index: Optional[_builtins.bool] = None,
                  innodb_change_buffer_max_size: Optional[_builtins.int] = None,
                  innodb_flush_neighbors: Optional[_builtins.int] = None,
                  innodb_ft_min_token_size: Optional[_builtins.int] = None,
                  innodb_ft_server_stopword_table: Optional[_builtins.str] = None,
+                 innodb_io_capacity: Optional[_builtins.int] = None,
+                 innodb_io_capacity_max: Optional[_builtins.int] = None,
                  innodb_lock_wait_timeout: Optional[_builtins.int] = None,
                  innodb_log_buffer_size: Optional[_builtins.int] = None,
                  innodb_online_alter_log_max_size: Optional[_builtins.int] = None,
@@ -37303,6 +38204,7 @@ class GetMySqlMysqlUserConfigMysqlResult(dict):
                  net_read_timeout: Optional[_builtins.int] = None,
                  net_write_timeout: Optional[_builtins.int] = None,
                  performance_schema_events_statements_history_size: Optional[_builtins.int] = None,
+                 relay_log_space_limit: Optional[_builtins.int] = None,
                  slow_query_log: Optional[_builtins.bool] = None,
                  sort_buffer_size: Optional[_builtins.int] = None,
                  sql_mode: Optional[_builtins.str] = None,
@@ -37314,10 +38216,13 @@ class GetMySqlMysqlUserConfigMysqlResult(dict):
         :param _builtins.str default_time_zone: Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or `SYSTEM` to use the MySQL server default. Example: `+03:00`.
         :param _builtins.int group_concat_max_len: The maximum permitted result length in bytes for the GROUP_CONCAT() function. Example: `1024`.
         :param _builtins.int information_schema_stats_expiry: The time, in seconds, before cached statistics expire. Example: `86400`.
+        :param _builtins.bool innodb_adaptive_hash_index: Whether InnoDB adaptive hash indexing is enabled. The optimal setting is workload-dependent: it speeds up lookups for some workloads but its internal latch can become a contention point under high concurrency, in which case disabling it can improve throughput.
         :param _builtins.int innodb_change_buffer_max_size: Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25. Example: `30`.
         :param _builtins.int innodb_flush_neighbors: Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent. Example: `0`.
         :param _builtins.int innodb_ft_min_token_size: Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service. Example: `3`.
         :param _builtins.str innodb_ft_server_stopword_table: This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables. Example: `db_name/table_name`.
+        :param _builtins.int innodb_io_capacity: The number of I/O operations per second (IOPS) available to InnoDB background tasks, such as flushing pages from the buffer pool and merging data from the change buffer. Set this to a value appropriate for the underlying storage; it must not exceed innodb_io_capacity_max. Example: `2000`.
+        :param _builtins.int innodb_io_capacity_max: The maximum number of I/O operations per second (IOPS) that InnoDB background tasks may perform when flushing falls behind. Defaults to twice innodb_io_capacity (minimum 2000). This must be greater than or equal to innodb_io_capacity.
         :param _builtins.int innodb_lock_wait_timeout: The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120. Example: `50`.
         :param _builtins.int innodb_log_buffer_size: The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
         :param _builtins.int innodb_online_alter_log_max_size: The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
@@ -37337,6 +38242,7 @@ class GetMySqlMysqlUserConfigMysqlResult(dict):
         :param _builtins.int net_read_timeout: The number of seconds to wait for more data from a connection before aborting the read. Example: `30`.
         :param _builtins.int net_write_timeout: The number of seconds to wait for a block to be written to a connection before aborting the write. Example: `30`.
         :param _builtins.int performance_schema_events_statements_history_size: The number of rows per thread in the events_statements_history table. Changing this parameter will lead to a restart of the MySQL service.
+        :param _builtins.int relay_log_space_limit: The maximum amount of space in bytes to use for all relay logs while replicating from an external migration source. When the limit is reached, the replication I/O thread stops fetching relay log events until the SQL thread has caught up. Raise this to give a large migration a bigger relay-log budget; ensure the service disk is sized accordingly. The setting applies only on the node replicating from the external source; standby nodes always use the Aiven-managed default (the smaller of 5 GiB and 30% of the service disk), which is also used when this option is left unset. Changing this parameter will lead to a restart of the MySQL service.
         :param _builtins.bool slow_query_log: Slow query log enables capturing of slow queries. Setting slow_query_log to false also truncates the mysql.slow_log table.
         :param _builtins.int sort_buffer_size: Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K). Example: `262144`.
         :param _builtins.str sql_mode: Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned. Example: `ANSI,TRADITIONAL`.
@@ -37352,6 +38258,8 @@ class GetMySqlMysqlUserConfigMysqlResult(dict):
             pulumi.set(__self__, "group_concat_max_len", group_concat_max_len)
         if information_schema_stats_expiry is not None:
             pulumi.set(__self__, "information_schema_stats_expiry", information_schema_stats_expiry)
+        if innodb_adaptive_hash_index is not None:
+            pulumi.set(__self__, "innodb_adaptive_hash_index", innodb_adaptive_hash_index)
         if innodb_change_buffer_max_size is not None:
             pulumi.set(__self__, "innodb_change_buffer_max_size", innodb_change_buffer_max_size)
         if innodb_flush_neighbors is not None:
@@ -37360,6 +38268,10 @@ class GetMySqlMysqlUserConfigMysqlResult(dict):
             pulumi.set(__self__, "innodb_ft_min_token_size", innodb_ft_min_token_size)
         if innodb_ft_server_stopword_table is not None:
             pulumi.set(__self__, "innodb_ft_server_stopword_table", innodb_ft_server_stopword_table)
+        if innodb_io_capacity is not None:
+            pulumi.set(__self__, "innodb_io_capacity", innodb_io_capacity)
+        if innodb_io_capacity_max is not None:
+            pulumi.set(__self__, "innodb_io_capacity_max", innodb_io_capacity_max)
         if innodb_lock_wait_timeout is not None:
             pulumi.set(__self__, "innodb_lock_wait_timeout", innodb_lock_wait_timeout)
         if innodb_log_buffer_size is not None:
@@ -37398,6 +38310,8 @@ class GetMySqlMysqlUserConfigMysqlResult(dict):
             pulumi.set(__self__, "net_write_timeout", net_write_timeout)
         if performance_schema_events_statements_history_size is not None:
             pulumi.set(__self__, "performance_schema_events_statements_history_size", performance_schema_events_statements_history_size)
+        if relay_log_space_limit is not None:
+            pulumi.set(__self__, "relay_log_space_limit", relay_log_space_limit)
         if slow_query_log is not None:
             pulumi.set(__self__, "slow_query_log", slow_query_log)
         if sort_buffer_size is not None:
@@ -37444,6 +38358,14 @@ class GetMySqlMysqlUserConfigMysqlResult(dict):
         return pulumi.get(self, "information_schema_stats_expiry")
 
     @_builtins.property
+    @pulumi.getter(name="innodbAdaptiveHashIndex")
+    def innodb_adaptive_hash_index(self) -> Optional[_builtins.bool]:
+        """
+        Whether InnoDB adaptive hash indexing is enabled. The optimal setting is workload-dependent: it speeds up lookups for some workloads but its internal latch can become a contention point under high concurrency, in which case disabling it can improve throughput.
+        """
+        return pulumi.get(self, "innodb_adaptive_hash_index")
+
+    @_builtins.property
     @pulumi.getter(name="innodbChangeBufferMaxSize")
     def innodb_change_buffer_max_size(self) -> Optional[_builtins.int]:
         """
@@ -37474,6 +38396,22 @@ class GetMySqlMysqlUserConfigMysqlResult(dict):
         This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables. Example: `db_name/table_name`.
         """
         return pulumi.get(self, "innodb_ft_server_stopword_table")
+
+    @_builtins.property
+    @pulumi.getter(name="innodbIoCapacity")
+    def innodb_io_capacity(self) -> Optional[_builtins.int]:
+        """
+        The number of I/O operations per second (IOPS) available to InnoDB background tasks, such as flushing pages from the buffer pool and merging data from the change buffer. Set this to a value appropriate for the underlying storage; it must not exceed innodb_io_capacity_max. Example: `2000`.
+        """
+        return pulumi.get(self, "innodb_io_capacity")
+
+    @_builtins.property
+    @pulumi.getter(name="innodbIoCapacityMax")
+    def innodb_io_capacity_max(self) -> Optional[_builtins.int]:
+        """
+        The maximum number of I/O operations per second (IOPS) that InnoDB background tasks may perform when flushing falls behind. Defaults to twice innodb_io_capacity (minimum 2000). This must be greater than or equal to innodb_io_capacity.
+        """
+        return pulumi.get(self, "innodb_io_capacity_max")
 
     @_builtins.property
     @pulumi.getter(name="innodbLockWaitTimeout")
@@ -37626,6 +38564,14 @@ class GetMySqlMysqlUserConfigMysqlResult(dict):
         The number of rows per thread in the events_statements_history table. Changing this parameter will lead to a restart of the MySQL service.
         """
         return pulumi.get(self, "performance_schema_events_statements_history_size")
+
+    @_builtins.property
+    @pulumi.getter(name="relayLogSpaceLimit")
+    def relay_log_space_limit(self) -> Optional[_builtins.int]:
+        """
+        The maximum amount of space in bytes to use for all relay logs while replicating from an external migration source. When the limit is reached, the replication I/O thread stops fetching relay log events until the SQL thread has caught up. Raise this to give a large migration a bigger relay-log budget; ensure the service disk is sized accordingly. The setting applies only on the node replicating from the external source; standby nodes always use the Aiven-managed default (the smaller of 5 GiB and 30% of the service disk), which is also used when this option is left unset. Changing this parameter will lead to a restart of the MySQL service.
+        """
+        return pulumi.get(self, "relay_log_space_limit")
 
     @_builtins.property
     @pulumi.getter(name="slowQueryLog")
@@ -38486,6 +39432,8 @@ class GetOpenSearchOpensearchUserConfigAzureMigrationResult(dict):
                  endpoint_suffix: Optional[_builtins.str] = None,
                  include_aliases: Optional[_builtins.bool] = None,
                  key: Optional[_builtins.str] = None,
+                 max_restore_bytes_per_sec: Optional[_builtins.str] = None,
+                 max_snapshot_bytes_per_sec: Optional[_builtins.str] = None,
                  readonly: Optional[_builtins.bool] = None,
                  restore_global_state: Optional[_builtins.bool] = None,
                  sas_token: Optional[_builtins.str] = None):
@@ -38500,6 +39448,8 @@ class GetOpenSearchOpensearchUserConfigAzureMigrationResult(dict):
         :param _builtins.str endpoint_suffix: Defines the DNS suffix for Azure Storage endpoints.
         :param _builtins.bool include_aliases: Whether to restore aliases alongside their associated indexes. Default is true.
         :param _builtins.str key: Azure account secret key. One of key or sas_token should be specified.
+        :param _builtins.str max_restore_bytes_per_sec: Throttles the restore rate per node. Defaults to unlimited. Note that if the recovery settings for managed services are set, this value is overridden by the recovery settings. Value should be a byte size with unit, e.g. 40mb, 100kb, 1gb.
+        :param _builtins.str max_snapshot_bytes_per_sec: Throttles the snapshot rate per node. Defaults to 40mb. Note that if the recovery settings for managed services are set, this value is overridden by the recovery settings. Value should be a byte size with unit, e.g. 40mb, 100kb, 1gb.
         :param _builtins.bool readonly: Whether the repository is read-only. Default: `true`.
         :param _builtins.bool restore_global_state: If true, restore the cluster state. Defaults to false.
         :param _builtins.str sas_token: A shared access signatures (SAS) token. One of key or sas_token should be specified.
@@ -38519,6 +39469,10 @@ class GetOpenSearchOpensearchUserConfigAzureMigrationResult(dict):
             pulumi.set(__self__, "include_aliases", include_aliases)
         if key is not None:
             pulumi.set(__self__, "key", key)
+        if max_restore_bytes_per_sec is not None:
+            pulumi.set(__self__, "max_restore_bytes_per_sec", max_restore_bytes_per_sec)
+        if max_snapshot_bytes_per_sec is not None:
+            pulumi.set(__self__, "max_snapshot_bytes_per_sec", max_snapshot_bytes_per_sec)
         if readonly is not None:
             pulumi.set(__self__, "readonly", readonly)
         if restore_global_state is not None:
@@ -38607,6 +39561,22 @@ class GetOpenSearchOpensearchUserConfigAzureMigrationResult(dict):
         return pulumi.get(self, "key")
 
     @_builtins.property
+    @pulumi.getter(name="maxRestoreBytesPerSec")
+    def max_restore_bytes_per_sec(self) -> Optional[_builtins.str]:
+        """
+        Throttles the restore rate per node. Defaults to unlimited. Note that if the recovery settings for managed services are set, this value is overridden by the recovery settings. Value should be a byte size with unit, e.g. 40mb, 100kb, 1gb.
+        """
+        return pulumi.get(self, "max_restore_bytes_per_sec")
+
+    @_builtins.property
+    @pulumi.getter(name="maxSnapshotBytesPerSec")
+    def max_snapshot_bytes_per_sec(self) -> Optional[_builtins.str]:
+        """
+        Throttles the snapshot rate per node. Defaults to 40mb. Note that if the recovery settings for managed services are set, this value is overridden by the recovery settings. Value should be a byte size with unit, e.g. 40mb, 100kb, 1gb.
+        """
+        return pulumi.get(self, "max_snapshot_bytes_per_sec")
+
+    @_builtins.property
     @pulumi.getter
     def readonly(self) -> Optional[_builtins.bool]:
         """
@@ -38642,6 +39612,8 @@ class GetOpenSearchOpensearchUserConfigGcsMigrationResult(dict):
                  chunk_size: Optional[_builtins.str] = None,
                  compress: Optional[_builtins.bool] = None,
                  include_aliases: Optional[_builtins.bool] = None,
+                 max_restore_bytes_per_sec: Optional[_builtins.str] = None,
+                 max_snapshot_bytes_per_sec: Optional[_builtins.str] = None,
                  readonly: Optional[_builtins.bool] = None,
                  restore_global_state: Optional[_builtins.bool] = None):
         """
@@ -38653,6 +39625,8 @@ class GetOpenSearchOpensearchUserConfigGcsMigrationResult(dict):
         :param _builtins.str chunk_size: Big files can be broken down into chunks during snapshotting if needed. Should be the same as for the 3rd party repository.
         :param _builtins.bool compress: When set to true metadata files are stored in compressed format.
         :param _builtins.bool include_aliases: Whether to restore aliases alongside their associated indexes. Default is true.
+        :param _builtins.str max_restore_bytes_per_sec: Throttles the restore rate per node. Defaults to unlimited. Note that if the recovery settings for managed services are set, this value is overridden by the recovery settings. Value should be a byte size with unit, e.g. 40mb, 100kb, 1gb.
+        :param _builtins.str max_snapshot_bytes_per_sec: Throttles the snapshot rate per node. Defaults to 40mb. Note that if the recovery settings for managed services are set, this value is overridden by the recovery settings. Value should be a byte size with unit, e.g. 40mb, 100kb, 1gb.
         :param _builtins.bool readonly: Whether the repository is read-only. Default: `true`.
         :param _builtins.bool restore_global_state: If true, restore the cluster state. Defaults to false.
         """
@@ -38667,6 +39641,10 @@ class GetOpenSearchOpensearchUserConfigGcsMigrationResult(dict):
             pulumi.set(__self__, "compress", compress)
         if include_aliases is not None:
             pulumi.set(__self__, "include_aliases", include_aliases)
+        if max_restore_bytes_per_sec is not None:
+            pulumi.set(__self__, "max_restore_bytes_per_sec", max_restore_bytes_per_sec)
+        if max_snapshot_bytes_per_sec is not None:
+            pulumi.set(__self__, "max_snapshot_bytes_per_sec", max_snapshot_bytes_per_sec)
         if readonly is not None:
             pulumi.set(__self__, "readonly", readonly)
         if restore_global_state is not None:
@@ -38735,6 +39713,22 @@ class GetOpenSearchOpensearchUserConfigGcsMigrationResult(dict):
         Whether to restore aliases alongside their associated indexes. Default is true.
         """
         return pulumi.get(self, "include_aliases")
+
+    @_builtins.property
+    @pulumi.getter(name="maxRestoreBytesPerSec")
+    def max_restore_bytes_per_sec(self) -> Optional[_builtins.str]:
+        """
+        Throttles the restore rate per node. Defaults to unlimited. Note that if the recovery settings for managed services are set, this value is overridden by the recovery settings. Value should be a byte size with unit, e.g. 40mb, 100kb, 1gb.
+        """
+        return pulumi.get(self, "max_restore_bytes_per_sec")
+
+    @_builtins.property
+    @pulumi.getter(name="maxSnapshotBytesPerSec")
+    def max_snapshot_bytes_per_sec(self) -> Optional[_builtins.str]:
+        """
+        Throttles the snapshot rate per node. Defaults to 40mb. Note that if the recovery settings for managed services are set, this value is overridden by the recovery settings. Value should be a byte size with unit, e.g. 40mb, 100kb, 1gb.
+        """
+        return pulumi.get(self, "max_snapshot_bytes_per_sec")
 
     @_builtins.property
     @pulumi.getter
@@ -41285,6 +42279,8 @@ class GetOpenSearchOpensearchUserConfigS3MigrationResult(dict):
                  compress: Optional[_builtins.bool] = None,
                  endpoint: Optional[_builtins.str] = None,
                  include_aliases: Optional[_builtins.bool] = None,
+                 max_restore_bytes_per_sec: Optional[_builtins.str] = None,
+                 max_snapshot_bytes_per_sec: Optional[_builtins.str] = None,
                  readonly: Optional[_builtins.bool] = None,
                  restore_global_state: Optional[_builtins.bool] = None,
                  server_side_encryption: Optional[_builtins.bool] = None):
@@ -41300,6 +42296,8 @@ class GetOpenSearchOpensearchUserConfigS3MigrationResult(dict):
         :param _builtins.bool compress: When set to true metadata files are stored in compressed format.
         :param _builtins.str endpoint: The S3 service endpoint to connect to. If you are using an S3-compatible service then you should set this to the service’s endpoint.
         :param _builtins.bool include_aliases: Whether to restore aliases alongside their associated indexes. Default is true.
+        :param _builtins.str max_restore_bytes_per_sec: Throttles the restore rate per node. Defaults to unlimited. Note that if the recovery settings for managed services are set, this value is overridden by the recovery settings. Value should be a byte size with unit, e.g. 40mb, 100kb, 1gb.
+        :param _builtins.str max_snapshot_bytes_per_sec: Throttles the snapshot rate per node. Defaults to 40mb. Note that if the recovery settings for managed services are set, this value is overridden by the recovery settings. Value should be a byte size with unit, e.g. 40mb, 100kb, 1gb.
         :param _builtins.bool readonly: Whether the repository is read-only. Default: `true`.
         :param _builtins.bool restore_global_state: If true, restore the cluster state. Defaults to false.
         :param _builtins.bool server_side_encryption: When set to true files are encrypted on server side.
@@ -41319,6 +42317,10 @@ class GetOpenSearchOpensearchUserConfigS3MigrationResult(dict):
             pulumi.set(__self__, "endpoint", endpoint)
         if include_aliases is not None:
             pulumi.set(__self__, "include_aliases", include_aliases)
+        if max_restore_bytes_per_sec is not None:
+            pulumi.set(__self__, "max_restore_bytes_per_sec", max_restore_bytes_per_sec)
+        if max_snapshot_bytes_per_sec is not None:
+            pulumi.set(__self__, "max_snapshot_bytes_per_sec", max_snapshot_bytes_per_sec)
         if readonly is not None:
             pulumi.set(__self__, "readonly", readonly)
         if restore_global_state is not None:
@@ -41413,6 +42415,22 @@ class GetOpenSearchOpensearchUserConfigS3MigrationResult(dict):
         Whether to restore aliases alongside their associated indexes. Default is true.
         """
         return pulumi.get(self, "include_aliases")
+
+    @_builtins.property
+    @pulumi.getter(name="maxRestoreBytesPerSec")
+    def max_restore_bytes_per_sec(self) -> Optional[_builtins.str]:
+        """
+        Throttles the restore rate per node. Defaults to unlimited. Note that if the recovery settings for managed services are set, this value is overridden by the recovery settings. Value should be a byte size with unit, e.g. 40mb, 100kb, 1gb.
+        """
+        return pulumi.get(self, "max_restore_bytes_per_sec")
+
+    @_builtins.property
+    @pulumi.getter(name="maxSnapshotBytesPerSec")
+    def max_snapshot_bytes_per_sec(self) -> Optional[_builtins.str]:
+        """
+        Throttles the snapshot rate per node. Defaults to 40mb. Note that if the recovery settings for managed services are set, this value is overridden by the recovery settings. Value should be a byte size with unit, e.g. 40mb, 100kb, 1gb.
+        """
+        return pulumi.get(self, "max_snapshot_bytes_per_sec")
 
     @_builtins.property
     @pulumi.getter
@@ -47101,6 +48119,7 @@ class GetServiceIntegrationEndpointRsyslogUserConfigResult(dict):
                  tls: _builtins.bool,
                  ca: Optional[_builtins.str] = None,
                  cert: Optional[_builtins.str] = None,
+                 escape_newlines: Optional[_builtins.bool] = None,
                  key: Optional[_builtins.str] = None,
                  logline: Optional[_builtins.str] = None,
                  max_message_size: Optional[_builtins.int] = None,
@@ -47118,6 +48137,7 @@ class GetServiceIntegrationEndpointRsyslogUserConfigResult(dict):
                ...
                -----END CERTIFICATE-----
                `.
+        :param _builtins.bool escape_newlines: When true, embedded newlines in a log message are escaped so a multi-line record (e.g. a stack trace) is delivered as one complete log entry. Useful for newline-delimited cloud log intakes that drop continuation lines. Default: `false`.
         :param _builtins.str key: PEM encoded client key. Example: `-----BEGIN PRIVATE KEY-----
                ...
                -----END PRIVATE KEY-----
@@ -47134,6 +48154,8 @@ class GetServiceIntegrationEndpointRsyslogUserConfigResult(dict):
             pulumi.set(__self__, "ca", ca)
         if cert is not None:
             pulumi.set(__self__, "cert", cert)
+        if escape_newlines is not None:
+            pulumi.set(__self__, "escape_newlines", escape_newlines)
         if key is not None:
             pulumi.set(__self__, "key", key)
         if logline is not None:
@@ -47196,6 +48218,14 @@ class GetServiceIntegrationEndpointRsyslogUserConfigResult(dict):
         `.
         """
         return pulumi.get(self, "cert")
+
+    @_builtins.property
+    @pulumi.getter(name="escapeNewlines")
+    def escape_newlines(self) -> Optional[_builtins.bool]:
+        """
+        When true, embedded newlines in a log message are escaped so a multi-line record (e.g. a stack trace) is delivered as one complete log entry. Useful for newline-delimited cloud log intakes that drop continuation lines. Default: `false`.
+        """
+        return pulumi.get(self, "escape_newlines")
 
     @_builtins.property
     @pulumi.getter
@@ -48247,6 +49277,25 @@ class GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafResult(dict):
         Only include perf_events_statements whose last seen is less than this many seconds. Example: `86400`.
         """
         return pulumi.get(self, "perf_events_statements_time_limit")
+
+
+@pulumi.output_type
+class GetServiceIntegrationRsyslogUserConfigResult(dict):
+    def __init__(__self__, *,
+                 escape_newlines: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.bool escape_newlines: Per-service override for escaping embedded newlines in log messages. When set, it overrides the rsyslog endpoint setting for this service. When unset, the endpoint setting applies.
+        """
+        if escape_newlines is not None:
+            pulumi.set(__self__, "escape_newlines", escape_newlines)
+
+    @_builtins.property
+    @pulumi.getter(name="escapeNewlines")
+    def escape_newlines(self) -> Optional[_builtins.bool]:
+        """
+        Per-service override for escaping embedded newlines in log messages. When set, it overrides the rsyslog endpoint setting for this service. When unset, the endpoint setting applies.
+        """
+        return pulumi.get(self, "escape_newlines")
 
 
 @pulumi.output_type

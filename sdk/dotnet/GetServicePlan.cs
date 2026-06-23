@@ -14,8 +14,8 @@ namespace Pulumi.Aiven
         /// <summary>
         /// Gets detailed information about a specific service plan, including specifications and pricing for a cloud region.
         /// 
-        /// **This resource is in the beta stage and may change without notice.** Set
-        /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+        /// **This data source is in the beta stage and may change without notice.** Set
+        /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the data source.
         /// </summary>
         public static Task<GetServicePlanResult> InvokeAsync(GetServicePlanArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetServicePlanResult>("aiven:index/getServicePlan:getServicePlan", args ?? new GetServicePlanArgs(), options.WithDefaults());
@@ -23,8 +23,8 @@ namespace Pulumi.Aiven
         /// <summary>
         /// Gets detailed information about a specific service plan, including specifications and pricing for a cloud region.
         /// 
-        /// **This resource is in the beta stage and may change without notice.** Set
-        /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+        /// **This data source is in the beta stage and may change without notice.** Set
+        /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the data source.
         /// </summary>
         public static Output<GetServicePlanResult> Invoke(GetServicePlanInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServicePlanResult>("aiven:index/getServicePlan:getServicePlan", args ?? new GetServicePlanInvokeArgs(), options.WithDefaults());
@@ -32,8 +32,8 @@ namespace Pulumi.Aiven
         /// <summary>
         /// Gets detailed information about a specific service plan, including specifications and pricing for a cloud region.
         /// 
-        /// **This resource is in the beta stage and may change without notice.** Set
-        /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+        /// **This data source is in the beta stage and may change without notice.** Set
+        /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the data source.
         /// </summary>
         public static Output<GetServicePlanResult> Invoke(GetServicePlanInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetServicePlanResult>("aiven:index/getServicePlan:getServicePlan", args ?? new GetServicePlanInvokeArgs(), options.WithDefaults());

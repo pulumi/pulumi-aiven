@@ -63,14 +63,14 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Creates a [diskless topic](https://aiven.io/docs/products/diskless). You can only do this when you create the topic and you cannot change it later. Diskless topics are only available for bring your own cloud (BYOC) services that have the feature enabled.
+     * Indicates whether diskless should be enabled. This is only available for BYOC services with Diskless feature enabled.
      * 
      */
     @Import(name="disklessEnable")
     private @Nullable Output<Boolean> disklessEnable;
 
     /**
-     * @return Creates a [diskless topic](https://aiven.io/docs/products/diskless). You can only do this when you create the topic and you cannot change it later. Diskless topics are only available for bring your own cloud (BYOC) services that have the feature enabled.
+     * @return Indicates whether diskless should be enabled. This is only available for BYOC services with Diskless feature enabled.
      * 
      */
     public Optional<Output<Boolean>> disklessEnable() {
@@ -138,14 +138,14 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * This configuration controls the maximum bytes tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the limit is equal to overall retention time. If set to -1, no limit is applied but it&#39;s possible only if overall retention is also -1.
+     * This configuration controls the maximum bytes tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the limit is equal to overall retention time. If set to -1, no limit is applied but it&#39;s possible only if overall retention is also -1. The field is required with `retentionBytes`.
      * 
      */
     @Import(name="localRetentionBytes")
     private @Nullable Output<String> localRetentionBytes;
 
     /**
-     * @return This configuration controls the maximum bytes tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the limit is equal to overall retention time. If set to -1, no limit is applied but it&#39;s possible only if overall retention is also -1.
+     * @return This configuration controls the maximum bytes tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the limit is equal to overall retention time. If set to -1, no limit is applied but it&#39;s possible only if overall retention is also -1. The field is required with `retentionBytes`.
      * 
      */
     public Optional<Output<String>> localRetentionBytes() {
@@ -153,14 +153,14 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * This configuration controls the maximum time tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the time limit is equal to overall retention time. If set to -1, no time limit is applied but it&#39;s possible only if overall retention is also -1.
+     * This configuration controls the maximum time tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the time limit is equal to overall retention time. If set to -1, no time limit is applied but it&#39;s possible only if overall retention is also -1. The field is required with `retentionMs`.
      * 
      */
     @Import(name="localRetentionMs")
     private @Nullable Output<String> localRetentionMs;
 
     /**
-     * @return This configuration controls the maximum time tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the time limit is equal to overall retention time. If set to -1, no time limit is applied but it&#39;s possible only if overall retention is also -1.
+     * @return This configuration controls the maximum time tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the time limit is equal to overall retention time. If set to -1, no time limit is applied but it&#39;s possible only if overall retention is also -1. The field is required with `retentionMs`.
      * 
      */
     public Optional<Output<String>> localRetentionMs() {
@@ -288,14 +288,14 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * This configuration controls how frequently the log compactor will attempt to clean the log (assuming log compaction is enabled). By default we will avoid cleaning a log where more than 50% of the log has been compacted. This ratio bounds the maximum space wasted in the log by duplicates (at 50% at most 50% of the log could be duplicates). A higher ratio will mean fewer, more efficient cleanings but will mean more wasted space in the log. If the max.compaction.lag.ms or the min.compaction.lag.ms configurations are also specified, then the log compactor considers the log to be eligible for compaction as soon as either: (i) the dirty ratio threshold has been met and the log has had dirty (uncompacted) records for at least the min.compaction.lag.ms duration, or (ii) if the log has had dirty (uncompacted) records for at most the max.compaction.lag.ms period.
+     * This configuration controls how frequently the log compactor will attempt to clean the log (assuming log compaction is enabled). By default we will avoid cleaning a log where more than 50% of the log has been compacted. This ratio bounds the maximum space wasted in the log by duplicates (at 50% at most 50% of the log could be duplicates). A higher ratio will mean fewer, more efficient cleanings but will mean more wasted space in the log. If the max.compaction.lag.ms or the min.compaction.lag.ms configurations are also specified, then the log compactor considers the log to be eligible for compaction as soon as either: (i) the dirty ratio threshold has been met and the log has had dirty (uncompacted) records for at least the min.compaction.lag.ms duration, or (ii) if the log has had dirty (uncompacted) records for at most the max.compaction.lag.ms period. Maximum value: `1`.
      * 
      */
     @Import(name="minCleanableDirtyRatio")
     private @Nullable Output<Double> minCleanableDirtyRatio;
 
     /**
-     * @return This configuration controls how frequently the log compactor will attempt to clean the log (assuming log compaction is enabled). By default we will avoid cleaning a log where more than 50% of the log has been compacted. This ratio bounds the maximum space wasted in the log by duplicates (at 50% at most 50% of the log could be duplicates). A higher ratio will mean fewer, more efficient cleanings but will mean more wasted space in the log. If the max.compaction.lag.ms or the min.compaction.lag.ms configurations are also specified, then the log compactor considers the log to be eligible for compaction as soon as either: (i) the dirty ratio threshold has been met and the log has had dirty (uncompacted) records for at least the min.compaction.lag.ms duration, or (ii) if the log has had dirty (uncompacted) records for at most the max.compaction.lag.ms period.
+     * @return This configuration controls how frequently the log compactor will attempt to clean the log (assuming log compaction is enabled). By default we will avoid cleaning a log where more than 50% of the log has been compacted. This ratio bounds the maximum space wasted in the log by duplicates (at 50% at most 50% of the log could be duplicates). A higher ratio will mean fewer, more efficient cleanings but will mean more wasted space in the log. If the max.compaction.lag.ms or the min.compaction.lag.ms configurations are also specified, then the log compactor considers the log to be eligible for compaction as soon as either: (i) the dirty ratio threshold has been met and the log has had dirty (uncompacted) records for at least the min.compaction.lag.ms duration, or (ii) if the log has had dirty (uncompacted) records for at most the max.compaction.lag.ms period. Maximum value: `1`.
      * 
      */
     public Optional<Output<Double>> minCleanableDirtyRatio() {
@@ -318,14 +318,14 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * When a producer sets acks to &#39;all&#39; (or &#39;-1&#39;), this configuration specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful. If this minimum cannot be met, then the producer will raise an exception (either NotEnoughReplicas or NotEnoughReplicasAfterAppend). When used together, min.insync.replicas and acks allow you to enforce greater durability guarantees. A typical scenario would be to create a topic with a replication factor of 3, set min.insync.replicas to 2, and produce with acks of &#39;all&#39;. This will ensure that the producer raises an exception if a majority of replicas do not receive a write.
+     * When a producer sets acks to &#39;all&#39; (or &#39;-1&#39;), this configuration specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful. If this minimum cannot be met, then the producer will raise an exception (either NotEnoughReplicas or NotEnoughReplicasAfterAppend). When used together, min.insync.replicas and acks allow you to enforce greater durability guarantees. A typical scenario would be to create a topic with a replication factor of 3, set min.insync.replicas to 2, and produce with acks of &#39;all&#39;. This will ensure that the producer raises an exception if a majority of replicas do not receive a write. Minimum value: `1`.
      * 
      */
     @Import(name="minInsyncReplicas")
     private @Nullable Output<String> minInsyncReplicas;
 
     /**
-     * @return When a producer sets acks to &#39;all&#39; (or &#39;-1&#39;), this configuration specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful. If this minimum cannot be met, then the producer will raise an exception (either NotEnoughReplicas or NotEnoughReplicasAfterAppend). When used together, min.insync.replicas and acks allow you to enforce greater durability guarantees. A typical scenario would be to create a topic with a replication factor of 3, set min.insync.replicas to 2, and produce with acks of &#39;all&#39;. This will ensure that the producer raises an exception if a majority of replicas do not receive a write.
+     * @return When a producer sets acks to &#39;all&#39; (or &#39;-1&#39;), this configuration specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful. If this minimum cannot be met, then the producer will raise an exception (either NotEnoughReplicas or NotEnoughReplicasAfterAppend). When used together, min.insync.replicas and acks allow you to enforce greater durability guarantees. A typical scenario would be to create a topic with a replication factor of 3, set min.insync.replicas to 2, and produce with acks of &#39;all&#39;. This will ensure that the producer raises an exception if a majority of replicas do not receive a write. Minimum value: `1`.
      * 
      */
     public Optional<Output<String>> minInsyncReplicas() {
@@ -393,14 +393,14 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * This configuration controls the segment file size for the log. Retention and cleaning is always done a file at a time so a larger segment size means fewer files but less granular control over retention. Setting this to a very low value has consequences, and the Aiven management plane ignores values less than 10 megabytes.
+     * This configuration controls the segment file size for the log. Retention and cleaning is always done a file at a time so a larger segment size means fewer files but less granular control over retention. Setting this to a very low value has consequences, and the Aiven management plane ignores values less than 10 megabytes. Minimum value: `14`.
      * 
      */
     @Import(name="segmentBytes")
     private @Nullable Output<String> segmentBytes;
 
     /**
-     * @return This configuration controls the segment file size for the log. Retention and cleaning is always done a file at a time so a larger segment size means fewer files but less granular control over retention. Setting this to a very low value has consequences, and the Aiven management plane ignores values less than 10 megabytes.
+     * @return This configuration controls the segment file size for the log. Retention and cleaning is always done a file at a time so a larger segment size means fewer files but less granular control over retention. Setting this to a very low value has consequences, and the Aiven management plane ignores values less than 10 megabytes. Minimum value: `14`.
      * 
      */
     public Optional<Output<String>> segmentBytes() {
@@ -423,14 +423,14 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The maximum random jitter subtracted from the scheduled segment roll time to avoid thundering herds of segment rolling
+     * The maximum random jitter subtracted from the scheduled segment roll time to avoid thundering herds of segment rolling.
      * 
      */
     @Import(name="segmentJitterMs")
     private @Nullable Output<String> segmentJitterMs;
 
     /**
-     * @return The maximum random jitter subtracted from the scheduled segment roll time to avoid thundering herds of segment rolling
+     * @return The maximum random jitter subtracted from the scheduled segment roll time to avoid thundering herds of segment rolling.
      * 
      */
     public Optional<Output<String>> segmentJitterMs() {
@@ -438,14 +438,14 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * This configuration controls the period of time after which Kafka will force the log to roll even if the segment file isn&#39;t full to ensure that retention can delete or compact old data. Setting this to a very low value has consequences, and the Aiven management plane ignores values less than 10 seconds.
+     * This configuration controls the period of time after which Kafka will force the log to roll even if the segment file isn&#39;t full to ensure that retention can delete or compact old data. Setting this to a very low value has consequences, and the Aiven management plane ignores values less than 10 seconds. Minimum value: `1`.
      * 
      */
     @Import(name="segmentMs")
     private @Nullable Output<String> segmentMs;
 
     /**
-     * @return This configuration controls the period of time after which Kafka will force the log to roll even if the segment file isn&#39;t full to ensure that retention can delete or compact old data. Setting this to a very low value has consequences, and the Aiven management plane ignores values less than 10 seconds.
+     * @return This configuration controls the period of time after which Kafka will force the log to roll even if the segment file isn&#39;t full to ensure that retention can delete or compact old data. Setting this to a very low value has consequences, and the Aiven management plane ignores values less than 10 seconds. Minimum value: `1`.
      * 
      */
     public Optional<Output<String>> segmentMs() {
@@ -584,7 +584,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param disklessEnable Creates a [diskless topic](https://aiven.io/docs/products/diskless). You can only do this when you create the topic and you cannot change it later. Diskless topics are only available for bring your own cloud (BYOC) services that have the feature enabled.
+         * @param disklessEnable Indicates whether diskless should be enabled. This is only available for BYOC services with Diskless feature enabled.
          * 
          * @return builder
          * 
@@ -595,7 +595,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param disklessEnable Creates a [diskless topic](https://aiven.io/docs/products/diskless). You can only do this when you create the topic and you cannot change it later. Diskless topics are only available for bring your own cloud (BYOC) services that have the feature enabled.
+         * @param disklessEnable Indicates whether diskless should be enabled. This is only available for BYOC services with Diskless feature enabled.
          * 
          * @return builder
          * 
@@ -689,7 +689,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param localRetentionBytes This configuration controls the maximum bytes tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the limit is equal to overall retention time. If set to -1, no limit is applied but it&#39;s possible only if overall retention is also -1.
+         * @param localRetentionBytes This configuration controls the maximum bytes tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the limit is equal to overall retention time. If set to -1, no limit is applied but it&#39;s possible only if overall retention is also -1. The field is required with `retentionBytes`.
          * 
          * @return builder
          * 
@@ -700,7 +700,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param localRetentionBytes This configuration controls the maximum bytes tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the limit is equal to overall retention time. If set to -1, no limit is applied but it&#39;s possible only if overall retention is also -1.
+         * @param localRetentionBytes This configuration controls the maximum bytes tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the limit is equal to overall retention time. If set to -1, no limit is applied but it&#39;s possible only if overall retention is also -1. The field is required with `retentionBytes`.
          * 
          * @return builder
          * 
@@ -710,7 +710,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param localRetentionMs This configuration controls the maximum time tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the time limit is equal to overall retention time. If set to -1, no time limit is applied but it&#39;s possible only if overall retention is also -1.
+         * @param localRetentionMs This configuration controls the maximum time tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the time limit is equal to overall retention time. If set to -1, no time limit is applied but it&#39;s possible only if overall retention is also -1. The field is required with `retentionMs`.
          * 
          * @return builder
          * 
@@ -721,7 +721,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param localRetentionMs This configuration controls the maximum time tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the time limit is equal to overall retention time. If set to -1, no time limit is applied but it&#39;s possible only if overall retention is also -1.
+         * @param localRetentionMs This configuration controls the maximum time tiered storage will retain segment files locally before it will discard old log segments to free up space. If set to -2, the time limit is equal to overall retention time. If set to -1, no time limit is applied but it&#39;s possible only if overall retention is also -1. The field is required with `retentionMs`.
          * 
          * @return builder
          * 
@@ -899,7 +899,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param minCleanableDirtyRatio This configuration controls how frequently the log compactor will attempt to clean the log (assuming log compaction is enabled). By default we will avoid cleaning a log where more than 50% of the log has been compacted. This ratio bounds the maximum space wasted in the log by duplicates (at 50% at most 50% of the log could be duplicates). A higher ratio will mean fewer, more efficient cleanings but will mean more wasted space in the log. If the max.compaction.lag.ms or the min.compaction.lag.ms configurations are also specified, then the log compactor considers the log to be eligible for compaction as soon as either: (i) the dirty ratio threshold has been met and the log has had dirty (uncompacted) records for at least the min.compaction.lag.ms duration, or (ii) if the log has had dirty (uncompacted) records for at most the max.compaction.lag.ms period.
+         * @param minCleanableDirtyRatio This configuration controls how frequently the log compactor will attempt to clean the log (assuming log compaction is enabled). By default we will avoid cleaning a log where more than 50% of the log has been compacted. This ratio bounds the maximum space wasted in the log by duplicates (at 50% at most 50% of the log could be duplicates). A higher ratio will mean fewer, more efficient cleanings but will mean more wasted space in the log. If the max.compaction.lag.ms or the min.compaction.lag.ms configurations are also specified, then the log compactor considers the log to be eligible for compaction as soon as either: (i) the dirty ratio threshold has been met and the log has had dirty (uncompacted) records for at least the min.compaction.lag.ms duration, or (ii) if the log has had dirty (uncompacted) records for at most the max.compaction.lag.ms period. Maximum value: `1`.
          * 
          * @return builder
          * 
@@ -910,7 +910,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param minCleanableDirtyRatio This configuration controls how frequently the log compactor will attempt to clean the log (assuming log compaction is enabled). By default we will avoid cleaning a log where more than 50% of the log has been compacted. This ratio bounds the maximum space wasted in the log by duplicates (at 50% at most 50% of the log could be duplicates). A higher ratio will mean fewer, more efficient cleanings but will mean more wasted space in the log. If the max.compaction.lag.ms or the min.compaction.lag.ms configurations are also specified, then the log compactor considers the log to be eligible for compaction as soon as either: (i) the dirty ratio threshold has been met and the log has had dirty (uncompacted) records for at least the min.compaction.lag.ms duration, or (ii) if the log has had dirty (uncompacted) records for at most the max.compaction.lag.ms period.
+         * @param minCleanableDirtyRatio This configuration controls how frequently the log compactor will attempt to clean the log (assuming log compaction is enabled). By default we will avoid cleaning a log where more than 50% of the log has been compacted. This ratio bounds the maximum space wasted in the log by duplicates (at 50% at most 50% of the log could be duplicates). A higher ratio will mean fewer, more efficient cleanings but will mean more wasted space in the log. If the max.compaction.lag.ms or the min.compaction.lag.ms configurations are also specified, then the log compactor considers the log to be eligible for compaction as soon as either: (i) the dirty ratio threshold has been met and the log has had dirty (uncompacted) records for at least the min.compaction.lag.ms duration, or (ii) if the log has had dirty (uncompacted) records for at most the max.compaction.lag.ms period. Maximum value: `1`.
          * 
          * @return builder
          * 
@@ -941,7 +941,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param minInsyncReplicas When a producer sets acks to &#39;all&#39; (or &#39;-1&#39;), this configuration specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful. If this minimum cannot be met, then the producer will raise an exception (either NotEnoughReplicas or NotEnoughReplicasAfterAppend). When used together, min.insync.replicas and acks allow you to enforce greater durability guarantees. A typical scenario would be to create a topic with a replication factor of 3, set min.insync.replicas to 2, and produce with acks of &#39;all&#39;. This will ensure that the producer raises an exception if a majority of replicas do not receive a write.
+         * @param minInsyncReplicas When a producer sets acks to &#39;all&#39; (or &#39;-1&#39;), this configuration specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful. If this minimum cannot be met, then the producer will raise an exception (either NotEnoughReplicas or NotEnoughReplicasAfterAppend). When used together, min.insync.replicas and acks allow you to enforce greater durability guarantees. A typical scenario would be to create a topic with a replication factor of 3, set min.insync.replicas to 2, and produce with acks of &#39;all&#39;. This will ensure that the producer raises an exception if a majority of replicas do not receive a write. Minimum value: `1`.
          * 
          * @return builder
          * 
@@ -952,7 +952,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param minInsyncReplicas When a producer sets acks to &#39;all&#39; (or &#39;-1&#39;), this configuration specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful. If this minimum cannot be met, then the producer will raise an exception (either NotEnoughReplicas or NotEnoughReplicasAfterAppend). When used together, min.insync.replicas and acks allow you to enforce greater durability guarantees. A typical scenario would be to create a topic with a replication factor of 3, set min.insync.replicas to 2, and produce with acks of &#39;all&#39;. This will ensure that the producer raises an exception if a majority of replicas do not receive a write.
+         * @param minInsyncReplicas When a producer sets acks to &#39;all&#39; (or &#39;-1&#39;), this configuration specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful. If this minimum cannot be met, then the producer will raise an exception (either NotEnoughReplicas or NotEnoughReplicasAfterAppend). When used together, min.insync.replicas and acks allow you to enforce greater durability guarantees. A typical scenario would be to create a topic with a replication factor of 3, set min.insync.replicas to 2, and produce with acks of &#39;all&#39;. This will ensure that the producer raises an exception if a majority of replicas do not receive a write. Minimum value: `1`.
          * 
          * @return builder
          * 
@@ -1046,7 +1046,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param segmentBytes This configuration controls the segment file size for the log. Retention and cleaning is always done a file at a time so a larger segment size means fewer files but less granular control over retention. Setting this to a very low value has consequences, and the Aiven management plane ignores values less than 10 megabytes.
+         * @param segmentBytes This configuration controls the segment file size for the log. Retention and cleaning is always done a file at a time so a larger segment size means fewer files but less granular control over retention. Setting this to a very low value has consequences, and the Aiven management plane ignores values less than 10 megabytes. Minimum value: `14`.
          * 
          * @return builder
          * 
@@ -1057,7 +1057,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param segmentBytes This configuration controls the segment file size for the log. Retention and cleaning is always done a file at a time so a larger segment size means fewer files but less granular control over retention. Setting this to a very low value has consequences, and the Aiven management plane ignores values less than 10 megabytes.
+         * @param segmentBytes This configuration controls the segment file size for the log. Retention and cleaning is always done a file at a time so a larger segment size means fewer files but less granular control over retention. Setting this to a very low value has consequences, and the Aiven management plane ignores values less than 10 megabytes. Minimum value: `14`.
          * 
          * @return builder
          * 
@@ -1088,7 +1088,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param segmentJitterMs The maximum random jitter subtracted from the scheduled segment roll time to avoid thundering herds of segment rolling
+         * @param segmentJitterMs The maximum random jitter subtracted from the scheduled segment roll time to avoid thundering herds of segment rolling.
          * 
          * @return builder
          * 
@@ -1099,7 +1099,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param segmentJitterMs The maximum random jitter subtracted from the scheduled segment roll time to avoid thundering herds of segment rolling
+         * @param segmentJitterMs The maximum random jitter subtracted from the scheduled segment roll time to avoid thundering herds of segment rolling.
          * 
          * @return builder
          * 
@@ -1109,7 +1109,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param segmentMs This configuration controls the period of time after which Kafka will force the log to roll even if the segment file isn&#39;t full to ensure that retention can delete or compact old data. Setting this to a very low value has consequences, and the Aiven management plane ignores values less than 10 seconds.
+         * @param segmentMs This configuration controls the period of time after which Kafka will force the log to roll even if the segment file isn&#39;t full to ensure that retention can delete or compact old data. Setting this to a very low value has consequences, and the Aiven management plane ignores values less than 10 seconds. Minimum value: `1`.
          * 
          * @return builder
          * 
@@ -1120,7 +1120,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param segmentMs This configuration controls the period of time after which Kafka will force the log to roll even if the segment file isn&#39;t full to ensure that retention can delete or compact old data. Setting this to a very low value has consequences, and the Aiven management plane ignores values less than 10 seconds.
+         * @param segmentMs This configuration controls the period of time after which Kafka will force the log to roll even if the segment file isn&#39;t full to ensure that retention can delete or compact old data. Setting this to a very low value has consequences, and the Aiven management plane ignores values less than 10 seconds. Minimum value: `1`.
          * 
          * @return builder
          * 

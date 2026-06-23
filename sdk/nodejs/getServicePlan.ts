@@ -9,8 +9,8 @@ import * as utilities from "./utilities";
 /**
  * Gets detailed information about a specific service plan, including specifications and pricing for a cloud region.
  *
- * **This resource is in the beta stage and may change without notice.** Set
- * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+ * **This data source is in the beta stage and may change without notice.** Set
+ * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the data source.
  */
 export function getServicePlan(args: GetServicePlanArgs, opts?: pulumi.InvokeOptions): Promise<GetServicePlanResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -120,8 +120,8 @@ export interface GetServicePlanResult {
 /**
  * Gets detailed information about a specific service plan, including specifications and pricing for a cloud region.
  *
- * **This resource is in the beta stage and may change without notice.** Set
- * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+ * **This data source is in the beta stage and may change without notice.** Set
+ * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the data source.
  */
 export function getServicePlanOutput(args: GetServicePlanOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetServicePlanResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
