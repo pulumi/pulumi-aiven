@@ -1517,7 +1517,7 @@
                     "items": {
                         "$ref": "#/types/aiven:index/GovernanceAccessAccessDataAcl:GovernanceAccessAccessDataAcl"
                     },
-                    "description": "Required property. Acls. Changing this property forces recreation of the resource.\n"
+                    "description": "Acls. Changing this property forces recreation of the resource.\n"
                 },
                 "projectName": {
                     "type": "string",
@@ -2691,6 +2691,10 @@
                     "$ref": "#/types/aiven:index/KafkaConnectKafkaConnectUserConfigSecretProviderAws:KafkaConnectKafkaConnectUserConfigSecretProviderAws",
                     "description": "AWS secret provider configuration\n"
                 },
+                "azure": {
+                    "$ref": "#/types/aiven:index/KafkaConnectKafkaConnectUserConfigSecretProviderAzure:KafkaConnectKafkaConnectUserConfigSecretProviderAzure",
+                    "description": "Azure KeyVault secret provider configuration\n"
+                },
                 "env": {
                     "$ref": "#/types/aiven:index/KafkaConnectKafkaConnectUserConfigSecretProviderEnv:KafkaConnectKafkaConnectUserConfigSecretProviderEnv",
                     "description": "ENV secret provider configuration\n"
@@ -2733,6 +2737,31 @@
             "required": [
                 "authMethod",
                 "region"
+            ]
+        },
+        "aiven:index/KafkaConnectKafkaConnectUserConfigSecretProviderAzure:KafkaConnectKafkaConnectUserConfigSecretProviderAzure": {
+            "properties": {
+                "authMethod": {
+                    "type": "string",
+                    "description": "Enum: \u003cspan pulumi-lang-nodejs=\"`credentials`\" pulumi-lang-dotnet=\"`Credentials`\" pulumi-lang-go=\"`credentials`\" pulumi-lang-python=\"`credentials`\" pulumi-lang-yaml=\"`credentials`\" pulumi-lang-java=\"`credentials`\" pulumi-lang-hcl=\"`credentials`\"\u003e`credentials`\u003c/span\u003e. Auth method of the Azure KeyVault secret provider.\n"
+                },
+                "clientId": {
+                    "type": "string",
+                    "description": "Azure client ID for the service principal.\n"
+                },
+                "secret": {
+                    "type": "string",
+                    "description": "Azure client secret for the service principal.\n",
+                    "secret": true
+                },
+                "tenantId": {
+                    "type": "string",
+                    "description": "Azure tenant ID for the service principal.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "authMethod"
             ]
         },
         "aiven:index/KafkaConnectKafkaConnectUserConfigSecretProviderEnv:KafkaConnectKafkaConnectUserConfigSecretProviderEnv": {
@@ -3027,6 +3056,13 @@
                 "letsencryptSaslPrivatelink": {
                     "type": "boolean",
                     "description": "Use a Let's Encrypt certificate authority (CA) for Kafka SASL authentication via Privatelink. (Default: False).\n"
+                },
+                "preferredZones": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of preferred zone IDs for service node placement. Nodes will be placed in these zones when available. If a specified zone is unavailable (e.g., due to capacity constraints), nodes will be placed in other available zones to maintain the configured number of zones for availability. Invalid zone IDs are rejected at configuration time. Zone IDs are cloud-specific: AWS uses zone IDs like `euc1-az1`, GCP uses zone names like `europe-west1-a`, and Azure uses `location/zone` format like `germanywestcentral/1`. If single*zone is enabled with an availability*zone, that setting takes precedence over preferred_zones.Changes take effect on next node recreation (e.g., maintenance or plan change). For Kafka professional plans, nodes outside preferred zones are automatically rebalanced once per day.\n"
                 },
                 "privateAccess": {
                     "$ref": "#/types/aiven:index/KafkaKafkaUserConfigPrivateAccess:KafkaKafkaUserConfigPrivateAccess",
@@ -3499,6 +3535,10 @@
                     "$ref": "#/types/aiven:index/KafkaKafkaUserConfigKafkaConnectSecretProviderAws:KafkaKafkaUserConfigKafkaConnectSecretProviderAws",
                     "description": "AWS secret provider configuration\n"
                 },
+                "azure": {
+                    "$ref": "#/types/aiven:index/KafkaKafkaUserConfigKafkaConnectSecretProviderAzure:KafkaKafkaUserConfigKafkaConnectSecretProviderAzure",
+                    "description": "Azure KeyVault secret provider configuration\n"
+                },
                 "env": {
                     "$ref": "#/types/aiven:index/KafkaKafkaUserConfigKafkaConnectSecretProviderEnv:KafkaKafkaUserConfigKafkaConnectSecretProviderEnv",
                     "description": "ENV secret provider configuration\n"
@@ -3541,6 +3581,31 @@
             "required": [
                 "authMethod",
                 "region"
+            ]
+        },
+        "aiven:index/KafkaKafkaUserConfigKafkaConnectSecretProviderAzure:KafkaKafkaUserConfigKafkaConnectSecretProviderAzure": {
+            "properties": {
+                "authMethod": {
+                    "type": "string",
+                    "description": "Enum: \u003cspan pulumi-lang-nodejs=\"`credentials`\" pulumi-lang-dotnet=\"`Credentials`\" pulumi-lang-go=\"`credentials`\" pulumi-lang-python=\"`credentials`\" pulumi-lang-yaml=\"`credentials`\" pulumi-lang-java=\"`credentials`\" pulumi-lang-hcl=\"`credentials`\"\u003e`credentials`\u003c/span\u003e. Auth method of the Azure KeyVault secret provider.\n"
+                },
+                "clientId": {
+                    "type": "string",
+                    "description": "Azure client ID for the service principal.\n"
+                },
+                "secret": {
+                    "type": "string",
+                    "description": "Azure client secret for the service principal.\n",
+                    "secret": true
+                },
+                "tenantId": {
+                    "type": "string",
+                    "description": "Azure tenant ID for the service principal.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "authMethod"
             ]
         },
         "aiven:index/KafkaKafkaUserConfigKafkaConnectSecretProviderEnv:KafkaKafkaUserConfigKafkaConnectSecretProviderEnv": {
@@ -3595,6 +3660,13 @@
         },
         "aiven:index/KafkaKafkaUserConfigKafkaDiskless:KafkaKafkaUserConfigKafkaDiskless": {
             "properties": {
+                "autoDisklessTopicRegexes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The regexes of topics to auto enable diskless. Topics matching any of the regexes will be created as diskless topics.\n"
+                },
                 "enabled": {
                     "type": "boolean",
                     "description": "Whether to enable the Diskless functionality.\n"
@@ -4528,7 +4600,7 @@
                 },
                 "binlogRetentionPeriod": {
                     "type": "integer",
-                    "description": "The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default for example if using the MySQL Debezium Kafka connector. Example: \u003cspan pulumi-lang-nodejs=\"`600`\" pulumi-lang-dotnet=\"`600`\" pulumi-lang-go=\"`600`\" pulumi-lang-python=\"`600`\" pulumi-lang-yaml=\"`600`\" pulumi-lang-java=\"`600`\" pulumi-lang-hcl=\"`600`\"\u003e`600`\u003c/span\u003e.\n"
+                    "description": "Warning: reducing this value can make a large batch of binary logs eligible for purge at once. Depending on the volume, this can sometimes stall the MySQL commit path and block writes until the purge completes. To stay on the safe side, prefer lowering the value gradually in small decrements during a low-traffic window rather than dropping it drastically in one step. Example: \u003cspan pulumi-lang-nodejs=\"`600`\" pulumi-lang-dotnet=\"`600`\" pulumi-lang-go=\"`600`\" pulumi-lang-python=\"`600`\" pulumi-lang-yaml=\"`600`\" pulumi-lang-java=\"`600`\" pulumi-lang-hcl=\"`600`\"\u003e`600`\u003c/span\u003e.\n"
                 },
                 "ipFilterObjects": {
                     "type": "array",
@@ -5186,7 +5258,7 @@
                 },
                 "opensearchVersion": {
                     "type": "string",
-                    "description": "Enum: \u003cspan pulumi-lang-nodejs=\"`1`\" pulumi-lang-dotnet=\"`1`\" pulumi-lang-go=\"`1`\" pulumi-lang-python=\"`1`\" pulumi-lang-yaml=\"`1`\" pulumi-lang-java=\"`1`\" pulumi-lang-hcl=\"`1`\"\u003e`1`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`2`\" pulumi-lang-dotnet=\"`2`\" pulumi-lang-go=\"`2`\" pulumi-lang-python=\"`2`\" pulumi-lang-yaml=\"`2`\" pulumi-lang-java=\"`2`\" pulumi-lang-hcl=\"`2`\"\u003e`2`\u003c/span\u003e, `2.19`, `3.3`, and newer. OpenSearch version.\n"
+                    "description": "Enum: \u003cspan pulumi-lang-nodejs=\"`1`\" pulumi-lang-dotnet=\"`1`\" pulumi-lang-go=\"`1`\" pulumi-lang-python=\"`1`\" pulumi-lang-yaml=\"`1`\" pulumi-lang-java=\"`1`\" pulumi-lang-hcl=\"`1`\"\u003e`1`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`2`\" pulumi-lang-dotnet=\"`2`\" pulumi-lang-go=\"`2`\" pulumi-lang-python=\"`2`\" pulumi-lang-yaml=\"`2`\" pulumi-lang-java=\"`2`\" pulumi-lang-hcl=\"`2`\"\u003e`2`\u003c/span\u003e, `2.19`, `3.3`, `3.6`, and newer. OpenSearch version.\n"
                 },
                 "privateAccess": {
                     "$ref": "#/types/aiven:index/OpenSearchOpensearchUserConfigPrivateAccess:OpenSearchOpensearchUserConfigPrivateAccess",
@@ -9107,35 +9179,39 @@
                 },
                 "consumerFetchMaxBytes": {
                     "type": "integer",
-                    "description": "The maximum amount of data the server should return for a fetch request.\n"
+                    "description": "The maximum amount of data the server should return for a fetch request. Default is \u003cspan pulumi-lang-nodejs=\"`52428800`\" pulumi-lang-dotnet=\"`52428800`\" pulumi-lang-go=\"`52428800`\" pulumi-lang-python=\"`52428800`\" pulumi-lang-yaml=\"`52428800`\" pulumi-lang-java=\"`52428800`\" pulumi-lang-hcl=\"`52428800`\"\u003e`52428800`\u003c/span\u003e (50MiB).\n"
+                },
+                "consumerFetchMaxWaitMs": {
+                    "type": "integer",
+                    "description": "The maximum amount of time the server will block before answering the fetch request if there isn't sufficient data to immediately satisfy \u003cspan pulumi-lang-nodejs=\"`consumerFetchMinBytes`\" pulumi-lang-dotnet=\"`ConsumerFetchMinBytes`\" pulumi-lang-go=\"`consumerFetchMinBytes`\" pulumi-lang-python=\"`consumer_fetch_min_bytes`\" pulumi-lang-yaml=\"`consumerFetchMinBytes`\" pulumi-lang-java=\"`consumerFetchMinBytes`\" pulumi-lang-hcl=\"`consumer_fetch_min_bytes`\"\u003e`consumerFetchMinBytes`\u003c/span\u003e. Default is \u003cspan pulumi-lang-nodejs=\"`500`\" pulumi-lang-dotnet=\"`500`\" pulumi-lang-go=\"`500`\" pulumi-lang-python=\"`500`\" pulumi-lang-yaml=\"`500`\" pulumi-lang-java=\"`500`\" pulumi-lang-hcl=\"`500`\"\u003e`500`\u003c/span\u003e.\n"
                 },
                 "consumerFetchMinBytes": {
                     "type": "integer",
-                    "description": "The minimum amount of data the server should return for a fetch request. Example: \u003cspan pulumi-lang-nodejs=\"`1024`\" pulumi-lang-dotnet=\"`1024`\" pulumi-lang-go=\"`1024`\" pulumi-lang-python=\"`1024`\" pulumi-lang-yaml=\"`1024`\" pulumi-lang-java=\"`1024`\" pulumi-lang-hcl=\"`1024`\"\u003e`1024`\u003c/span\u003e.\n"
+                    "description": "The minimum amount of data the server should return for a fetch request. Default is \u003cspan pulumi-lang-nodejs=\"`1`\" pulumi-lang-dotnet=\"`1`\" pulumi-lang-go=\"`1`\" pulumi-lang-python=\"`1`\" pulumi-lang-yaml=\"`1`\" pulumi-lang-java=\"`1`\" pulumi-lang-hcl=\"`1`\"\u003e`1`\u003c/span\u003e. Example: \u003cspan pulumi-lang-nodejs=\"`1024`\" pulumi-lang-dotnet=\"`1024`\" pulumi-lang-go=\"`1024`\" pulumi-lang-python=\"`1024`\" pulumi-lang-yaml=\"`1024`\" pulumi-lang-java=\"`1024`\" pulumi-lang-hcl=\"`1024`\"\u003e`1024`\u003c/span\u003e.\n"
                 },
                 "consumerMaxPartitionFetchBytes": {
                     "type": "integer",
-                    "description": "The maximum amount of data per partition the server will return.\n"
+                    "description": "The maximum amount of data per partition the server will return. Default is \u003cspan pulumi-lang-nodejs=\"`1048576`\" pulumi-lang-dotnet=\"`1048576`\" pulumi-lang-go=\"`1048576`\" pulumi-lang-python=\"`1048576`\" pulumi-lang-yaml=\"`1048576`\" pulumi-lang-java=\"`1048576`\" pulumi-lang-hcl=\"`1048576`\"\u003e`1048576`\u003c/span\u003e (1MiB).\n"
                 },
                 "consumerMaxPollRecords": {
                     "type": "integer",
-                    "description": "Set consumer max.poll.records. The default is 500. Example: \u003cspan pulumi-lang-nodejs=\"`500`\" pulumi-lang-dotnet=\"`500`\" pulumi-lang-go=\"`500`\" pulumi-lang-python=\"`500`\" pulumi-lang-yaml=\"`500`\" pulumi-lang-java=\"`500`\" pulumi-lang-hcl=\"`500`\"\u003e`500`\u003c/span\u003e.\n"
+                    "description": "Set consumer max.poll.records. Default is \u003cspan pulumi-lang-nodejs=\"`500`\" pulumi-lang-dotnet=\"`500`\" pulumi-lang-go=\"`500`\" pulumi-lang-python=\"`500`\" pulumi-lang-yaml=\"`500`\" pulumi-lang-java=\"`500`\" pulumi-lang-hcl=\"`500`\"\u003e`500`\u003c/span\u003e.\n"
                 },
                 "consumerReceiveBufferBytes": {
                     "type": "integer",
-                    "description": "The size of the TCP receive buffer (SO_RCVBUF) to use when reading data. -1 uses the OS default. Example: \u003cspan pulumi-lang-nodejs=\"`65536`\" pulumi-lang-dotnet=\"`65536`\" pulumi-lang-go=\"`65536`\" pulumi-lang-python=\"`65536`\" pulumi-lang-yaml=\"`65536`\" pulumi-lang-java=\"`65536`\" pulumi-lang-hcl=\"`65536`\"\u003e`65536`\u003c/span\u003e.\n"
+                    "description": "The size of the TCP receive buffer (SO_RCVBUF) to use when reading data. Default is \u003cspan pulumi-lang-nodejs=\"`65536`\" pulumi-lang-dotnet=\"`65536`\" pulumi-lang-go=\"`65536`\" pulumi-lang-python=\"`65536`\" pulumi-lang-yaml=\"`65536`\" pulumi-lang-java=\"`65536`\" pulumi-lang-hcl=\"`65536`\"\u003e`65536`\u003c/span\u003e (64KiB). `-1` uses the OS default.\n"
                 },
                 "consumerRequestTimeoutMs": {
                     "type": "integer",
-                    "description": "The maximum time the client will wait for a response to a request. Example: \u003cspan pulumi-lang-nodejs=\"`30000`\" pulumi-lang-dotnet=\"`30000`\" pulumi-lang-go=\"`30000`\" pulumi-lang-python=\"`30000`\" pulumi-lang-yaml=\"`30000`\" pulumi-lang-java=\"`30000`\" pulumi-lang-hcl=\"`30000`\"\u003e`30000`\u003c/span\u003e.\n"
+                    "description": "The maximum time the client will wait for a response to a request. Default is \u003cspan pulumi-lang-nodejs=\"`30000`\" pulumi-lang-dotnet=\"`30000`\" pulumi-lang-go=\"`30000`\" pulumi-lang-python=\"`30000`\" pulumi-lang-yaml=\"`30000`\" pulumi-lang-java=\"`30000`\" pulumi-lang-hcl=\"`30000`\"\u003e`30000`\u003c/span\u003e (30s).\n"
                 },
                 "producerBatchSize": {
                     "type": "integer",
-                    "description": "The batch size in bytes producer will attempt to collect before publishing to broker. Example: \u003cspan pulumi-lang-nodejs=\"`1024`\" pulumi-lang-dotnet=\"`1024`\" pulumi-lang-go=\"`1024`\" pulumi-lang-python=\"`1024`\" pulumi-lang-yaml=\"`1024`\" pulumi-lang-java=\"`1024`\" pulumi-lang-hcl=\"`1024`\"\u003e`1024`\u003c/span\u003e.\n"
+                    "description": "The batch size in bytes producer will attempt to collect before publishing to broker. Default is \u003cspan pulumi-lang-nodejs=\"`16384`\" pulumi-lang-dotnet=\"`16384`\" pulumi-lang-go=\"`16384`\" pulumi-lang-python=\"`16384`\" pulumi-lang-yaml=\"`16384`\" pulumi-lang-java=\"`16384`\" pulumi-lang-hcl=\"`16384`\"\u003e`16384`\u003c/span\u003e (16KiB).\n"
                 },
                 "producerBufferMemory": {
                     "type": "integer",
-                    "description": "The amount of bytes producer can use for buffering data before publishing to broker.\n"
+                    "description": "The amount of bytes producer can use for buffering data before publishing to broker. Default is \u003cspan pulumi-lang-nodejs=\"`33554432`\" pulumi-lang-dotnet=\"`33554432`\" pulumi-lang-go=\"`33554432`\" pulumi-lang-python=\"`33554432`\" pulumi-lang-yaml=\"`33554432`\" pulumi-lang-java=\"`33554432`\" pulumi-lang-hcl=\"`33554432`\"\u003e`33554432`\u003c/span\u003e (32MiB).\n"
                 },
                 "producerCompressionType": {
                     "type": "string",
@@ -9143,19 +9219,19 @@
                 },
                 "producerLingerMs": {
                     "type": "integer",
-                    "description": "The linger time (ms) for waiting new data to arrive for publishing. Example: \u003cspan pulumi-lang-nodejs=\"`100`\" pulumi-lang-dotnet=\"`100`\" pulumi-lang-go=\"`100`\" pulumi-lang-python=\"`100`\" pulumi-lang-yaml=\"`100`\" pulumi-lang-java=\"`100`\" pulumi-lang-hcl=\"`100`\"\u003e`100`\u003c/span\u003e.\n"
+                    "description": "The linger time (ms) for waiting new data to arrive for publishing. Default is \u003cspan pulumi-lang-nodejs=\"`0`\" pulumi-lang-dotnet=\"`0`\" pulumi-lang-go=\"`0`\" pulumi-lang-python=\"`0`\" pulumi-lang-yaml=\"`0`\" pulumi-lang-java=\"`0`\" pulumi-lang-hcl=\"`0`\"\u003e`0`\u003c/span\u003e. Example: \u003cspan pulumi-lang-nodejs=\"`100`\" pulumi-lang-dotnet=\"`100`\" pulumi-lang-go=\"`100`\" pulumi-lang-python=\"`100`\" pulumi-lang-yaml=\"`100`\" pulumi-lang-java=\"`100`\" pulumi-lang-hcl=\"`100`\"\u003e`100`\u003c/span\u003e.\n"
                 },
                 "producerMaxRequestSize": {
                     "type": "integer",
-                    "description": "The maximum request size in bytes.\n"
+                    "description": "The maximum request size in bytes. Default is \u003cspan pulumi-lang-nodejs=\"`1048576`\" pulumi-lang-dotnet=\"`1048576`\" pulumi-lang-go=\"`1048576`\" pulumi-lang-python=\"`1048576`\" pulumi-lang-yaml=\"`1048576`\" pulumi-lang-java=\"`1048576`\" pulumi-lang-hcl=\"`1048576`\"\u003e`1048576`\u003c/span\u003e (1MiB).\n"
                 },
                 "producerRequestTimeoutMs": {
                     "type": "integer",
-                    "description": "The maximum time the client will wait for a response to a request. Example: \u003cspan pulumi-lang-nodejs=\"`30000`\" pulumi-lang-dotnet=\"`30000`\" pulumi-lang-go=\"`30000`\" pulumi-lang-python=\"`30000`\" pulumi-lang-yaml=\"`30000`\" pulumi-lang-java=\"`30000`\" pulumi-lang-hcl=\"`30000`\"\u003e`30000`\u003c/span\u003e.\n"
+                    "description": "The maximum time the client will wait for a response to a request. Default is \u003cspan pulumi-lang-nodejs=\"`30000`\" pulumi-lang-dotnet=\"`30000`\" pulumi-lang-go=\"`30000`\" pulumi-lang-python=\"`30000`\" pulumi-lang-yaml=\"`30000`\" pulumi-lang-java=\"`30000`\" pulumi-lang-hcl=\"`30000`\"\u003e`30000`\u003c/span\u003e (30s).\n"
                 },
                 "producerSendBufferBytes": {
                     "type": "integer",
-                    "description": "The size of the TCP send buffer (SO_SNDBUF) to use when sending data. -1 uses the OS default. Example: \u003cspan pulumi-lang-nodejs=\"`131072`\" pulumi-lang-dotnet=\"`131072`\" pulumi-lang-go=\"`131072`\" pulumi-lang-python=\"`131072`\" pulumi-lang-yaml=\"`131072`\" pulumi-lang-java=\"`131072`\" pulumi-lang-hcl=\"`131072`\"\u003e`131072`\u003c/span\u003e.\n"
+                    "description": "The size of the TCP send buffer (SO_SNDBUF) to use when sending data. Default is \u003cspan pulumi-lang-nodejs=\"`131072`\" pulumi-lang-dotnet=\"`131072`\" pulumi-lang-go=\"`131072`\" pulumi-lang-python=\"`131072`\" pulumi-lang-yaml=\"`131072`\" pulumi-lang-java=\"`131072`\" pulumi-lang-hcl=\"`131072`\"\u003e`131072`\u003c/span\u003e (128KiB). `-1` uses the OS default.\n"
                 }
             },
             "type": "object"
@@ -12405,6 +12481,10 @@
                     "$ref": "#/types/aiven:index/getKafkaConnectKafkaConnectUserConfigSecretProviderAws:getKafkaConnectKafkaConnectUserConfigSecretProviderAws",
                     "description": "AWS secret provider configuration\n"
                 },
+                "azure": {
+                    "$ref": "#/types/aiven:index/getKafkaConnectKafkaConnectUserConfigSecretProviderAzure:getKafkaConnectKafkaConnectUserConfigSecretProviderAzure",
+                    "description": "Azure KeyVault secret provider configuration\n"
+                },
                 "env": {
                     "$ref": "#/types/aiven:index/getKafkaConnectKafkaConnectUserConfigSecretProviderEnv:getKafkaConnectKafkaConnectUserConfigSecretProviderEnv",
                     "description": "ENV secret provider configuration\n"
@@ -12452,6 +12532,36 @@
             "required": [
                 "authMethod",
                 "region"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "aiven:index/getKafkaConnectKafkaConnectUserConfigSecretProviderAzure:getKafkaConnectKafkaConnectUserConfigSecretProviderAzure": {
+            "properties": {
+                "authMethod": {
+                    "type": "string",
+                    "description": "Enum: \u003cspan pulumi-lang-nodejs=\"`credentials`\" pulumi-lang-dotnet=\"`Credentials`\" pulumi-lang-go=\"`credentials`\" pulumi-lang-python=\"`credentials`\" pulumi-lang-yaml=\"`credentials`\" pulumi-lang-java=\"`credentials`\" pulumi-lang-hcl=\"`credentials`\"\u003e`credentials`\u003c/span\u003e. Auth method of the Azure KeyVault secret provider.\n"
+                },
+                "clientId": {
+                    "type": "string",
+                    "description": "Azure client ID for the service principal.\n"
+                },
+                "secret": {
+                    "type": "string",
+                    "description": "Azure client secret for the service principal.\n",
+                    "secret": true
+                },
+                "tenantId": {
+                    "type": "string",
+                    "description": "Azure tenant ID for the service principal.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "authMethod"
             ],
             "language": {
                 "nodejs": {
@@ -12778,6 +12888,13 @@
                 "letsencryptSaslPrivatelink": {
                     "type": "boolean",
                     "description": "Use a Let's Encrypt certificate authority (CA) for Kafka SASL authentication via Privatelink. (Default: False).\n"
+                },
+                "preferredZones": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of preferred zone IDs for service node placement. Nodes will be placed in these zones when available. If a specified zone is unavailable (e.g., due to capacity constraints), nodes will be placed in other available zones to maintain the configured number of zones for availability. Invalid zone IDs are rejected at configuration time. Zone IDs are cloud-specific: AWS uses zone IDs like `euc1-az1`, GCP uses zone names like `europe-west1-a`, and Azure uses `location/zone` format like `germanywestcentral/1`. If\u003cspan pulumi-lang-nodejs=\" singleZone \" pulumi-lang-dotnet=\" SingleZone \" pulumi-lang-go=\" singleZone \" pulumi-lang-python=\" single_zone \" pulumi-lang-yaml=\" singleZone \" pulumi-lang-java=\" singleZone \" pulumi-lang-hcl=\" single_zone \"\u003e singleZone \u003c/span\u003eis enabled with an availability_zone, that setting takes precedence over preferred_zones.Changes take effect on next node recreation (e.g., maintenance or plan change). For Kafka professional plans, nodes outside preferred zones are automatically rebalanced once per day.\n"
                 },
                 "privateAccess": {
                     "$ref": "#/types/aiven:index/getKafkaKafkaUserConfigPrivateAccess:getKafkaKafkaUserConfigPrivateAccess",
@@ -13264,6 +13381,10 @@
                     "$ref": "#/types/aiven:index/getKafkaKafkaUserConfigKafkaConnectSecretProviderAws:getKafkaKafkaUserConfigKafkaConnectSecretProviderAws",
                     "description": "AWS secret provider configuration\n"
                 },
+                "azure": {
+                    "$ref": "#/types/aiven:index/getKafkaKafkaUserConfigKafkaConnectSecretProviderAzure:getKafkaKafkaUserConfigKafkaConnectSecretProviderAzure",
+                    "description": "Azure KeyVault secret provider configuration\n"
+                },
                 "env": {
                     "$ref": "#/types/aiven:index/getKafkaKafkaUserConfigKafkaConnectSecretProviderEnv:getKafkaKafkaUserConfigKafkaConnectSecretProviderEnv",
                     "description": "ENV secret provider configuration\n"
@@ -13311,6 +13432,36 @@
             "required": [
                 "authMethod",
                 "region"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "aiven:index/getKafkaKafkaUserConfigKafkaConnectSecretProviderAzure:getKafkaKafkaUserConfigKafkaConnectSecretProviderAzure": {
+            "properties": {
+                "authMethod": {
+                    "type": "string",
+                    "description": "Enum: \u003cspan pulumi-lang-nodejs=\"`credentials`\" pulumi-lang-dotnet=\"`Credentials`\" pulumi-lang-go=\"`credentials`\" pulumi-lang-python=\"`credentials`\" pulumi-lang-yaml=\"`credentials`\" pulumi-lang-java=\"`credentials`\" pulumi-lang-hcl=\"`credentials`\"\u003e`credentials`\u003c/span\u003e. Auth method of the Azure KeyVault secret provider.\n"
+                },
+                "clientId": {
+                    "type": "string",
+                    "description": "Azure client ID for the service principal.\n"
+                },
+                "secret": {
+                    "type": "string",
+                    "description": "Azure client secret for the service principal.\n",
+                    "secret": true
+                },
+                "tenantId": {
+                    "type": "string",
+                    "description": "Azure tenant ID for the service principal.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "authMethod"
             ],
             "language": {
                 "nodejs": {
@@ -13380,6 +13531,13 @@
         },
         "aiven:index/getKafkaKafkaUserConfigKafkaDiskless:getKafkaKafkaUserConfigKafkaDiskless": {
             "properties": {
+                "autoDisklessTopicRegexes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The regexes of topics to auto enable diskless. Topics matching any of the regexes will be created as diskless topics.\n"
+                },
                 "enabled": {
                     "type": "boolean",
                     "description": "Whether to enable the Diskless functionality.\n"
@@ -14470,7 +14628,7 @@
                 },
                 "binlogRetentionPeriod": {
                     "type": "integer",
-                    "description": "The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default for example if using the MySQL Debezium Kafka connector. Example: \u003cspan pulumi-lang-nodejs=\"`600`\" pulumi-lang-dotnet=\"`600`\" pulumi-lang-go=\"`600`\" pulumi-lang-python=\"`600`\" pulumi-lang-yaml=\"`600`\" pulumi-lang-java=\"`600`\" pulumi-lang-hcl=\"`600`\"\u003e`600`\u003c/span\u003e.\n"
+                    "description": "Warning: reducing this value can make a large batch of binary logs eligible for purge at once. Depending on the volume, this can sometimes stall the MySQL commit path and block writes until the purge completes. To stay on the safe side, prefer lowering the value gradually in small decrements during a low-traffic window rather than dropping it drastically in one step. Example: \u003cspan pulumi-lang-nodejs=\"`600`\" pulumi-lang-dotnet=\"`600`\" pulumi-lang-go=\"`600`\" pulumi-lang-python=\"`600`\" pulumi-lang-yaml=\"`600`\" pulumi-lang-java=\"`600`\" pulumi-lang-hcl=\"`600`\"\u003e`600`\u003c/span\u003e.\n"
                 },
                 "ipFilterObjects": {
                     "type": "array",
@@ -15122,7 +15280,7 @@
                 },
                 "opensearchVersion": {
                     "type": "string",
-                    "description": "Enum: \u003cspan pulumi-lang-nodejs=\"`1`\" pulumi-lang-dotnet=\"`1`\" pulumi-lang-go=\"`1`\" pulumi-lang-python=\"`1`\" pulumi-lang-yaml=\"`1`\" pulumi-lang-java=\"`1`\" pulumi-lang-hcl=\"`1`\"\u003e`1`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`2`\" pulumi-lang-dotnet=\"`2`\" pulumi-lang-go=\"`2`\" pulumi-lang-python=\"`2`\" pulumi-lang-yaml=\"`2`\" pulumi-lang-java=\"`2`\" pulumi-lang-hcl=\"`2`\"\u003e`2`\u003c/span\u003e, `2.19`, `3.3`, and newer. OpenSearch version.\n"
+                    "description": "Enum: \u003cspan pulumi-lang-nodejs=\"`1`\" pulumi-lang-dotnet=\"`1`\" pulumi-lang-go=\"`1`\" pulumi-lang-python=\"`1`\" pulumi-lang-yaml=\"`1`\" pulumi-lang-java=\"`1`\" pulumi-lang-hcl=\"`1`\"\u003e`1`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`2`\" pulumi-lang-dotnet=\"`2`\" pulumi-lang-go=\"`2`\" pulumi-lang-python=\"`2`\" pulumi-lang-yaml=\"`2`\" pulumi-lang-java=\"`2`\" pulumi-lang-hcl=\"`2`\"\u003e`2`\u003c/span\u003e, `2.19`, `3.3`, `3.6`, and newer. OpenSearch version.\n"
                 },
                 "privateAccess": {
                     "$ref": "#/types/aiven:index/getOpenSearchOpensearchUserConfigPrivateAccess:getOpenSearchOpensearchUserConfigPrivateAccess",
@@ -19448,35 +19606,39 @@
                 },
                 "consumerFetchMaxBytes": {
                     "type": "integer",
-                    "description": "The maximum amount of data the server should return for a fetch request.\n"
+                    "description": "The maximum amount of data the server should return for a fetch request. Default is \u003cspan pulumi-lang-nodejs=\"`52428800`\" pulumi-lang-dotnet=\"`52428800`\" pulumi-lang-go=\"`52428800`\" pulumi-lang-python=\"`52428800`\" pulumi-lang-yaml=\"`52428800`\" pulumi-lang-java=\"`52428800`\" pulumi-lang-hcl=\"`52428800`\"\u003e`52428800`\u003c/span\u003e (50MiB).\n"
+                },
+                "consumerFetchMaxWaitMs": {
+                    "type": "integer",
+                    "description": "The maximum amount of time the server will block before answering the fetch request if there isn't sufficient data to immediately satisfy \u003cspan pulumi-lang-nodejs=\"`consumerFetchMinBytes`\" pulumi-lang-dotnet=\"`ConsumerFetchMinBytes`\" pulumi-lang-go=\"`consumerFetchMinBytes`\" pulumi-lang-python=\"`consumer_fetch_min_bytes`\" pulumi-lang-yaml=\"`consumerFetchMinBytes`\" pulumi-lang-java=\"`consumerFetchMinBytes`\" pulumi-lang-hcl=\"`consumer_fetch_min_bytes`\"\u003e`consumerFetchMinBytes`\u003c/span\u003e. Default is \u003cspan pulumi-lang-nodejs=\"`500`\" pulumi-lang-dotnet=\"`500`\" pulumi-lang-go=\"`500`\" pulumi-lang-python=\"`500`\" pulumi-lang-yaml=\"`500`\" pulumi-lang-java=\"`500`\" pulumi-lang-hcl=\"`500`\"\u003e`500`\u003c/span\u003e.\n"
                 },
                 "consumerFetchMinBytes": {
                     "type": "integer",
-                    "description": "The minimum amount of data the server should return for a fetch request. Example: \u003cspan pulumi-lang-nodejs=\"`1024`\" pulumi-lang-dotnet=\"`1024`\" pulumi-lang-go=\"`1024`\" pulumi-lang-python=\"`1024`\" pulumi-lang-yaml=\"`1024`\" pulumi-lang-java=\"`1024`\" pulumi-lang-hcl=\"`1024`\"\u003e`1024`\u003c/span\u003e.\n"
+                    "description": "The minimum amount of data the server should return for a fetch request. Default is \u003cspan pulumi-lang-nodejs=\"`1`\" pulumi-lang-dotnet=\"`1`\" pulumi-lang-go=\"`1`\" pulumi-lang-python=\"`1`\" pulumi-lang-yaml=\"`1`\" pulumi-lang-java=\"`1`\" pulumi-lang-hcl=\"`1`\"\u003e`1`\u003c/span\u003e. Example: \u003cspan pulumi-lang-nodejs=\"`1024`\" pulumi-lang-dotnet=\"`1024`\" pulumi-lang-go=\"`1024`\" pulumi-lang-python=\"`1024`\" pulumi-lang-yaml=\"`1024`\" pulumi-lang-java=\"`1024`\" pulumi-lang-hcl=\"`1024`\"\u003e`1024`\u003c/span\u003e.\n"
                 },
                 "consumerMaxPartitionFetchBytes": {
                     "type": "integer",
-                    "description": "The maximum amount of data per partition the server will return.\n"
+                    "description": "The maximum amount of data per partition the server will return. Default is \u003cspan pulumi-lang-nodejs=\"`1048576`\" pulumi-lang-dotnet=\"`1048576`\" pulumi-lang-go=\"`1048576`\" pulumi-lang-python=\"`1048576`\" pulumi-lang-yaml=\"`1048576`\" pulumi-lang-java=\"`1048576`\" pulumi-lang-hcl=\"`1048576`\"\u003e`1048576`\u003c/span\u003e (1MiB).\n"
                 },
                 "consumerMaxPollRecords": {
                     "type": "integer",
-                    "description": "Set consumer max.poll.records. The default is 500. Example: \u003cspan pulumi-lang-nodejs=\"`500`\" pulumi-lang-dotnet=\"`500`\" pulumi-lang-go=\"`500`\" pulumi-lang-python=\"`500`\" pulumi-lang-yaml=\"`500`\" pulumi-lang-java=\"`500`\" pulumi-lang-hcl=\"`500`\"\u003e`500`\u003c/span\u003e.\n"
+                    "description": "Set consumer max.poll.records. Default is \u003cspan pulumi-lang-nodejs=\"`500`\" pulumi-lang-dotnet=\"`500`\" pulumi-lang-go=\"`500`\" pulumi-lang-python=\"`500`\" pulumi-lang-yaml=\"`500`\" pulumi-lang-java=\"`500`\" pulumi-lang-hcl=\"`500`\"\u003e`500`\u003c/span\u003e.\n"
                 },
                 "consumerReceiveBufferBytes": {
                     "type": "integer",
-                    "description": "The size of the TCP receive buffer (SO_RCVBUF) to use when reading data. -1 uses the OS default. Example: \u003cspan pulumi-lang-nodejs=\"`65536`\" pulumi-lang-dotnet=\"`65536`\" pulumi-lang-go=\"`65536`\" pulumi-lang-python=\"`65536`\" pulumi-lang-yaml=\"`65536`\" pulumi-lang-java=\"`65536`\" pulumi-lang-hcl=\"`65536`\"\u003e`65536`\u003c/span\u003e.\n"
+                    "description": "The size of the TCP receive buffer (SO_RCVBUF) to use when reading data. Default is \u003cspan pulumi-lang-nodejs=\"`65536`\" pulumi-lang-dotnet=\"`65536`\" pulumi-lang-go=\"`65536`\" pulumi-lang-python=\"`65536`\" pulumi-lang-yaml=\"`65536`\" pulumi-lang-java=\"`65536`\" pulumi-lang-hcl=\"`65536`\"\u003e`65536`\u003c/span\u003e (64KiB). `-1` uses the OS default.\n"
                 },
                 "consumerRequestTimeoutMs": {
                     "type": "integer",
-                    "description": "The maximum time the client will wait for a response to a request. Example: \u003cspan pulumi-lang-nodejs=\"`30000`\" pulumi-lang-dotnet=\"`30000`\" pulumi-lang-go=\"`30000`\" pulumi-lang-python=\"`30000`\" pulumi-lang-yaml=\"`30000`\" pulumi-lang-java=\"`30000`\" pulumi-lang-hcl=\"`30000`\"\u003e`30000`\u003c/span\u003e.\n"
+                    "description": "The maximum time the client will wait for a response to a request. Default is \u003cspan pulumi-lang-nodejs=\"`30000`\" pulumi-lang-dotnet=\"`30000`\" pulumi-lang-go=\"`30000`\" pulumi-lang-python=\"`30000`\" pulumi-lang-yaml=\"`30000`\" pulumi-lang-java=\"`30000`\" pulumi-lang-hcl=\"`30000`\"\u003e`30000`\u003c/span\u003e (30s).\n"
                 },
                 "producerBatchSize": {
                     "type": "integer",
-                    "description": "The batch size in bytes producer will attempt to collect before publishing to broker. Example: \u003cspan pulumi-lang-nodejs=\"`1024`\" pulumi-lang-dotnet=\"`1024`\" pulumi-lang-go=\"`1024`\" pulumi-lang-python=\"`1024`\" pulumi-lang-yaml=\"`1024`\" pulumi-lang-java=\"`1024`\" pulumi-lang-hcl=\"`1024`\"\u003e`1024`\u003c/span\u003e.\n"
+                    "description": "The batch size in bytes producer will attempt to collect before publishing to broker. Default is \u003cspan pulumi-lang-nodejs=\"`16384`\" pulumi-lang-dotnet=\"`16384`\" pulumi-lang-go=\"`16384`\" pulumi-lang-python=\"`16384`\" pulumi-lang-yaml=\"`16384`\" pulumi-lang-java=\"`16384`\" pulumi-lang-hcl=\"`16384`\"\u003e`16384`\u003c/span\u003e (16KiB).\n"
                 },
                 "producerBufferMemory": {
                     "type": "integer",
-                    "description": "The amount of bytes producer can use for buffering data before publishing to broker.\n"
+                    "description": "The amount of bytes producer can use for buffering data before publishing to broker. Default is \u003cspan pulumi-lang-nodejs=\"`33554432`\" pulumi-lang-dotnet=\"`33554432`\" pulumi-lang-go=\"`33554432`\" pulumi-lang-python=\"`33554432`\" pulumi-lang-yaml=\"`33554432`\" pulumi-lang-java=\"`33554432`\" pulumi-lang-hcl=\"`33554432`\"\u003e`33554432`\u003c/span\u003e (32MiB).\n"
                 },
                 "producerCompressionType": {
                     "type": "string",
@@ -19484,19 +19646,19 @@
                 },
                 "producerLingerMs": {
                     "type": "integer",
-                    "description": "The linger time (ms) for waiting new data to arrive for publishing. Example: \u003cspan pulumi-lang-nodejs=\"`100`\" pulumi-lang-dotnet=\"`100`\" pulumi-lang-go=\"`100`\" pulumi-lang-python=\"`100`\" pulumi-lang-yaml=\"`100`\" pulumi-lang-java=\"`100`\" pulumi-lang-hcl=\"`100`\"\u003e`100`\u003c/span\u003e.\n"
+                    "description": "The linger time (ms) for waiting new data to arrive for publishing. Default is \u003cspan pulumi-lang-nodejs=\"`0`\" pulumi-lang-dotnet=\"`0`\" pulumi-lang-go=\"`0`\" pulumi-lang-python=\"`0`\" pulumi-lang-yaml=\"`0`\" pulumi-lang-java=\"`0`\" pulumi-lang-hcl=\"`0`\"\u003e`0`\u003c/span\u003e. Example: \u003cspan pulumi-lang-nodejs=\"`100`\" pulumi-lang-dotnet=\"`100`\" pulumi-lang-go=\"`100`\" pulumi-lang-python=\"`100`\" pulumi-lang-yaml=\"`100`\" pulumi-lang-java=\"`100`\" pulumi-lang-hcl=\"`100`\"\u003e`100`\u003c/span\u003e.\n"
                 },
                 "producerMaxRequestSize": {
                     "type": "integer",
-                    "description": "The maximum request size in bytes.\n"
+                    "description": "The maximum request size in bytes. Default is \u003cspan pulumi-lang-nodejs=\"`1048576`\" pulumi-lang-dotnet=\"`1048576`\" pulumi-lang-go=\"`1048576`\" pulumi-lang-python=\"`1048576`\" pulumi-lang-yaml=\"`1048576`\" pulumi-lang-java=\"`1048576`\" pulumi-lang-hcl=\"`1048576`\"\u003e`1048576`\u003c/span\u003e (1MiB).\n"
                 },
                 "producerRequestTimeoutMs": {
                     "type": "integer",
-                    "description": "The maximum time the client will wait for a response to a request. Example: \u003cspan pulumi-lang-nodejs=\"`30000`\" pulumi-lang-dotnet=\"`30000`\" pulumi-lang-go=\"`30000`\" pulumi-lang-python=\"`30000`\" pulumi-lang-yaml=\"`30000`\" pulumi-lang-java=\"`30000`\" pulumi-lang-hcl=\"`30000`\"\u003e`30000`\u003c/span\u003e.\n"
+                    "description": "The maximum time the client will wait for a response to a request. Default is \u003cspan pulumi-lang-nodejs=\"`30000`\" pulumi-lang-dotnet=\"`30000`\" pulumi-lang-go=\"`30000`\" pulumi-lang-python=\"`30000`\" pulumi-lang-yaml=\"`30000`\" pulumi-lang-java=\"`30000`\" pulumi-lang-hcl=\"`30000`\"\u003e`30000`\u003c/span\u003e (30s).\n"
                 },
                 "producerSendBufferBytes": {
                     "type": "integer",
-                    "description": "The size of the TCP send buffer (SO_SNDBUF) to use when sending data. -1 uses the OS default. Example: \u003cspan pulumi-lang-nodejs=\"`131072`\" pulumi-lang-dotnet=\"`131072`\" pulumi-lang-go=\"`131072`\" pulumi-lang-python=\"`131072`\" pulumi-lang-yaml=\"`131072`\" pulumi-lang-java=\"`131072`\" pulumi-lang-hcl=\"`131072`\"\u003e`131072`\u003c/span\u003e.\n"
+                    "description": "The size of the TCP send buffer (SO_SNDBUF) to use when sending data. Default is \u003cspan pulumi-lang-nodejs=\"`131072`\" pulumi-lang-dotnet=\"`131072`\" pulumi-lang-go=\"`131072`\" pulumi-lang-python=\"`131072`\" pulumi-lang-yaml=\"`131072`\" pulumi-lang-java=\"`131072`\" pulumi-lang-hcl=\"`131072`\"\u003e`131072`\u003c/span\u003e (128KiB). `-1` uses the OS default.\n"
                 }
             },
             "type": "object"
@@ -26201,7 +26363,7 @@
             "properties": {
                 "accessData": {
                     "$ref": "#/types/aiven:index/GovernanceAccessAccessData:GovernanceAccessAccessData",
-                    "description": "Required property. access type specific data. Changing this property forces recreation of the resource.\n"
+                    "description": "access type specific data. Changing this property forces recreation of the resource.\n"
                 },
                 "accessId": {
                     "type": "string",
@@ -26237,7 +26399,7 @@
             "inputProperties": {
                 "accessData": {
                     "$ref": "#/types/aiven:index/GovernanceAccessAccessData:GovernanceAccessAccessData",
-                    "description": "Required property. access type specific data. Changing this property forces recreation of the resource.\n"
+                    "description": "access type specific data. Changing this property forces recreation of the resource.\n"
                 },
                 "accessName": {
                     "type": "string",
@@ -26270,7 +26432,7 @@
                 "properties": {
                     "accessData": {
                         "$ref": "#/types/aiven:index/GovernanceAccessAccessData:GovernanceAccessAccessData",
-                        "description": "Required property. access type specific data. Changing this property forces recreation of the resource.\n"
+                        "description": "access type specific data. Changing this property forces recreation of the resource.\n"
                     },
                     "accessId": {
                         "type": "string",
@@ -31340,14 +31502,14 @@
                     "items": {
                         "$ref": "#/types/aiven:index/OrganizationBillingGroupBillingContactEmail:OrganizationBillingGroupBillingContactEmail"
                     },
-                    "description": "Required property. List of billing contact emails.\n"
+                    "description": "List of billing contact emails.\n"
                 },
                 "billingEmails": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/aiven:index/OrganizationBillingGroupBillingEmail:OrganizationBillingGroupBillingEmail"
                     },
-                    "description": "Required property. List of billing contact emails.\n"
+                    "description": "List of billing contact emails.\n"
                 },
                 "billingGroupId": {
                     "type": "string",
@@ -31371,7 +31533,7 @@
                 },
                 "paymentMethod": {
                     "$ref": "#/types/aiven:index/OrganizationBillingGroupPaymentMethod:OrganizationBillingGroupPaymentMethod",
-                    "description": "Required property. Payment method.\n"
+                    "description": "Payment method.\n"
                 },
                 "shippingAddressId": {
                     "type": "string",
@@ -31406,14 +31568,14 @@
                     "items": {
                         "$ref": "#/types/aiven:index/OrganizationBillingGroupBillingContactEmail:OrganizationBillingGroupBillingContactEmail"
                     },
-                    "description": "Required property. List of billing contact emails.\n"
+                    "description": "List of billing contact emails.\n"
                 },
                 "billingEmails": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/aiven:index/OrganizationBillingGroupBillingEmail:OrganizationBillingGroupBillingEmail"
                     },
-                    "description": "Required property. List of billing contact emails.\n"
+                    "description": "List of billing contact emails.\n"
                 },
                 "billingGroupName": {
                     "type": "string",
@@ -31429,7 +31591,7 @@
                 },
                 "paymentMethod": {
                     "$ref": "#/types/aiven:index/OrganizationBillingGroupPaymentMethod:OrganizationBillingGroupPaymentMethod",
-                    "description": "Required property. Payment method.\n"
+                    "description": "Payment method.\n"
                 },
                 "shippingAddressId": {
                     "type": "string",
@@ -31464,14 +31626,14 @@
                         "items": {
                             "$ref": "#/types/aiven:index/OrganizationBillingGroupBillingContactEmail:OrganizationBillingGroupBillingContactEmail"
                         },
-                        "description": "Required property. List of billing contact emails.\n"
+                        "description": "List of billing contact emails.\n"
                     },
                     "billingEmails": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/aiven:index/OrganizationBillingGroupBillingEmail:OrganizationBillingGroupBillingEmail"
                         },
-                        "description": "Required property. List of billing contact emails.\n"
+                        "description": "List of billing contact emails.\n"
                     },
                     "billingGroupId": {
                         "type": "string",
@@ -31495,7 +31657,7 @@
                     },
                     "paymentMethod": {
                         "$ref": "#/types/aiven:index/OrganizationBillingGroupPaymentMethod:OrganizationBillingGroupPaymentMethod",
-                        "description": "Required property. Payment method.\n"
+                        "description": "Payment method.\n"
                     },
                     "shippingAddressId": {
                         "type": "string",
@@ -31592,7 +31754,7 @@
                     "items": {
                         "$ref": "#/types/aiven:index/OrganizationPermissionPermission:OrganizationPermissionPermission"
                     },
-                    "description": "Required property. List of roles to set.\n"
+                    "description": "List of roles to set.\n"
                 },
                 "resourceId": {
                     "type": "string",
@@ -31622,7 +31784,7 @@
                     "items": {
                         "$ref": "#/types/aiven:index/OrganizationPermissionPermission:OrganizationPermissionPermission"
                     },
-                    "description": "Required property. List of roles to set.\n"
+                    "description": "List of roles to set.\n"
                 },
                 "resourceId": {
                     "type": "string",
@@ -31654,7 +31816,7 @@
                         "items": {
                             "$ref": "#/types/aiven:index/OrganizationPermissionPermission:OrganizationPermissionPermission"
                         },
-                        "description": "Required property. List of roles to set.\n"
+                        "description": "List of roles to set.\n"
                     },
                     "resourceId": {
                         "type": "string",
