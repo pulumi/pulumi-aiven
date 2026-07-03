@@ -82,14 +82,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="aiven:index/governanceAccess:GovernanceAccess")
 public class GovernanceAccess extends com.pulumi.resources.CustomResource {
     /**
-     * Required property. access type specific data. Changing this property forces recreation of the resource.
+     * access type specific data. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="accessData", refs={GovernanceAccessAccessData.class}, tree="[0]")
     private Output<GovernanceAccessAccessData> accessData;
 
     /**
-     * @return Required property. access type specific data. Changing this property forces recreation of the resource.
+     * @return access type specific data. Changing this property forces recreation of the resource.
      * 
      */
     public Output<GovernanceAccessAccessData> accessData() {

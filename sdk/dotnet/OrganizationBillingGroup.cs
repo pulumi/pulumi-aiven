@@ -70,13 +70,13 @@ namespace Pulumi.Aiven
         public Output<string> BillingAddressId { get; private set; } = null!;
 
         /// <summary>
-        /// Required property. List of billing contact emails.
+        /// List of billing contact emails.
         /// </summary>
         [Output("billingContactEmails")]
         public Output<ImmutableArray<Outputs.OrganizationBillingGroupBillingContactEmail>> BillingContactEmails { get; private set; } = null!;
 
         /// <summary>
-        /// Required property. List of billing contact emails.
+        /// List of billing contact emails.
         /// </summary>
         [Output("billingEmails")]
         public Output<ImmutableArray<Outputs.OrganizationBillingGroupBillingEmail>> BillingEmails { get; private set; } = null!;
@@ -112,7 +112,7 @@ namespace Pulumi.Aiven
         public Output<string> OrganizationId { get; private set; } = null!;
 
         /// <summary>
-        /// Required property. Payment method.
+        /// Payment method.
         /// </summary>
         [Output("paymentMethod")]
         public Output<Outputs.OrganizationBillingGroupPaymentMethod> PaymentMethod { get; private set; } = null!;
@@ -188,7 +188,7 @@ namespace Pulumi.Aiven
         private InputList<Inputs.OrganizationBillingGroupBillingContactEmailArgs>? _billingContactEmails;
 
         /// <summary>
-        /// Required property. List of billing contact emails.
+        /// List of billing contact emails.
         /// </summary>
         public InputList<Inputs.OrganizationBillingGroupBillingContactEmailArgs> BillingContactEmails
         {
@@ -200,7 +200,7 @@ namespace Pulumi.Aiven
         private InputList<Inputs.OrganizationBillingGroupBillingEmailArgs>? _billingEmails;
 
         /// <summary>
-        /// Required property. List of billing contact emails.
+        /// List of billing contact emails.
         /// </summary>
         public InputList<Inputs.OrganizationBillingGroupBillingEmailArgs> BillingEmails
         {
@@ -227,7 +227,7 @@ namespace Pulumi.Aiven
         public Input<string> OrganizationId { get; set; } = null!;
 
         /// <summary>
-        /// Required property. Payment method.
+        /// Payment method.
         /// </summary>
         [Input("paymentMethod", required: true)]
         public Input<Inputs.OrganizationBillingGroupPaymentMethodArgs> PaymentMethod { get; set; } = null!;
@@ -265,7 +265,7 @@ namespace Pulumi.Aiven
         private InputList<Inputs.OrganizationBillingGroupBillingContactEmailGetArgs>? _billingContactEmails;
 
         /// <summary>
-        /// Required property. List of billing contact emails.
+        /// List of billing contact emails.
         /// </summary>
         public InputList<Inputs.OrganizationBillingGroupBillingContactEmailGetArgs> BillingContactEmails
         {
@@ -277,7 +277,7 @@ namespace Pulumi.Aiven
         private InputList<Inputs.OrganizationBillingGroupBillingEmailGetArgs>? _billingEmails;
 
         /// <summary>
-        /// Required property. List of billing contact emails.
+        /// List of billing contact emails.
         /// </summary>
         public InputList<Inputs.OrganizationBillingGroupBillingEmailGetArgs> BillingEmails
         {
@@ -316,7 +316,7 @@ namespace Pulumi.Aiven
         public Input<string>? OrganizationId { get; set; }
 
         /// <summary>
-        /// Required property. Payment method.
+        /// Payment method.
         /// </summary>
         [Input("paymentMethod")]
         public Input<Inputs.OrganizationBillingGroupPaymentMethodGetArgs>? PaymentMethod { get; set; }

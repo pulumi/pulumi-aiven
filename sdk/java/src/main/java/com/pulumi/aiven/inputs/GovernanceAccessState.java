@@ -18,14 +18,14 @@ public final class GovernanceAccessState extends com.pulumi.resources.ResourceAr
     public static final GovernanceAccessState Empty = new GovernanceAccessState();
 
     /**
-     * Required property. access type specific data. Changing this property forces recreation of the resource.
+     * access type specific data. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="accessData")
     private @Nullable Output<GovernanceAccessAccessDataArgs> accessData;
 
     /**
-     * @return Required property. access type specific data. Changing this property forces recreation of the resource.
+     * @return access type specific data. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<GovernanceAccessAccessDataArgs>> accessData() {
@@ -145,7 +145,7 @@ public final class GovernanceAccessState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param accessData Required property. access type specific data. Changing this property forces recreation of the resource.
+         * @param accessData access type specific data. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -156,7 +156,7 @@ public final class GovernanceAccessState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param accessData Required property. access type specific data. Changing this property forces recreation of the resource.
+         * @param accessData access type specific data. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 

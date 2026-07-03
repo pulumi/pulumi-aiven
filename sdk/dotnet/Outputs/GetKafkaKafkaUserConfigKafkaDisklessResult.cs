@@ -14,13 +14,21 @@ namespace Pulumi.Aiven.Outputs
     public sealed class GetKafkaKafkaUserConfigKafkaDisklessResult
     {
         /// <summary>
+        /// The regexes of topics to auto enable diskless. Topics matching any of the regexes will be created as diskless topics.
+        /// </summary>
+        public readonly ImmutableArray<string> AutoDisklessTopicRegexes;
+        /// <summary>
         /// Whether to enable the Diskless functionality.
         /// </summary>
         public readonly bool Enabled;
 
         [OutputConstructor]
-        private GetKafkaKafkaUserConfigKafkaDisklessResult(bool enabled)
+        private GetKafkaKafkaUserConfigKafkaDisklessResult(
+            ImmutableArray<string> autoDisklessTopicRegexes,
+
+            bool enabled)
         {
+            AutoDisklessTopicRegexes = autoDisklessTopicRegexes;
             Enabled = enabled;
         }
     }

@@ -12,6 +12,18 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class KafkaKafkaUserConfigKafkaDisklessGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("autoDisklessTopicRegexes")]
+        private InputList<string>? _autoDisklessTopicRegexes;
+
+        /// <summary>
+        /// The regexes of topics to auto enable diskless. Topics matching any of the regexes will be created as diskless topics.
+        /// </summary>
+        public InputList<string> AutoDisklessTopicRegexes
+        {
+            get => _autoDisklessTopicRegexes ?? (_autoDisklessTopicRegexes = new InputList<string>());
+            set => _autoDisklessTopicRegexes = value;
+        }
+
         /// <summary>
         /// Whether to enable the Diskless functionality.
         /// </summary>

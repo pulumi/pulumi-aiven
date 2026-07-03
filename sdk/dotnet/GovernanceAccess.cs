@@ -63,7 +63,7 @@ namespace Pulumi.Aiven
     public partial class GovernanceAccess : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Required property. access type specific data. Changing this property forces recreation of the resource.
+        /// access type specific data. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("accessData")]
         public Output<Outputs.GovernanceAccessAccessData> AccessData { get; private set; } = null!;
@@ -148,7 +148,7 @@ namespace Pulumi.Aiven
     public sealed class GovernanceAccessArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required property. access type specific data. Changing this property forces recreation of the resource.
+        /// access type specific data. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("accessData", required: true)]
         public Input<Inputs.GovernanceAccessAccessDataArgs> AccessData { get; set; } = null!;
@@ -189,7 +189,7 @@ namespace Pulumi.Aiven
     public sealed class GovernanceAccessState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required property. access type specific data. Changing this property forces recreation of the resource.
+        /// access type specific data. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("accessData")]
         public Input<Inputs.GovernanceAccessAccessDataGetArgs>? AccessData { get; set; }

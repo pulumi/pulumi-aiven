@@ -170,6 +170,11 @@ public final class KafkaKafkaUserConfig {
      */
     private @Nullable Boolean letsencryptSaslPrivatelink;
     /**
+     * @return List of preferred zone IDs for service node placement. Nodes will be placed in these zones when available. If a specified zone is unavailable (e.g., due to capacity constraints), nodes will be placed in other available zones to maintain the configured number of zones for availability. Invalid zone IDs are rejected at configuration time. Zone IDs are cloud-specific: AWS uses zone IDs like `euc1-az1`, GCP uses zone names like `europe-west1-a`, and Azure uses `location/zone` format like `germanywestcentral/1`. If single*zone is enabled with an availability*zone, that setting takes precedence over preferred_zones.Changes take effect on next node recreation (e.g., maintenance or plan change). For Kafka professional plans, nodes outside preferred zones are automatically rebalanced once per day.
+     * 
+     */
+    private @Nullable List<String> preferredZones;
+    /**
      * @return Allow access to selected service ports from private networks
      * 
      */
@@ -412,6 +417,13 @@ public final class KafkaKafkaUserConfig {
         return Optional.ofNullable(this.letsencryptSaslPrivatelink);
     }
     /**
+     * @return List of preferred zone IDs for service node placement. Nodes will be placed in these zones when available. If a specified zone is unavailable (e.g., due to capacity constraints), nodes will be placed in other available zones to maintain the configured number of zones for availability. Invalid zone IDs are rejected at configuration time. Zone IDs are cloud-specific: AWS uses zone IDs like `euc1-az1`, GCP uses zone names like `europe-west1-a`, and Azure uses `location/zone` format like `germanywestcentral/1`. If single*zone is enabled with an availability*zone, that setting takes precedence over preferred_zones.Changes take effect on next node recreation (e.g., maintenance or plan change). For Kafka professional plans, nodes outside preferred zones are automatically rebalanced once per day.
+     * 
+     */
+    public List<String> preferredZones() {
+        return this.preferredZones == null ? List.of() : this.preferredZones;
+    }
+    /**
      * @return Allow access to selected service ports from private networks
      * 
      */
@@ -517,6 +529,7 @@ public final class KafkaKafkaUserConfig {
         private @Nullable String kafkaVersion;
         private @Nullable Boolean letsencryptSasl;
         private @Nullable Boolean letsencryptSaslPrivatelink;
+        private @Nullable List<String> preferredZones;
         private @Nullable KafkaKafkaUserConfigPrivateAccess privateAccess;
         private @Nullable KafkaKafkaUserConfigPrivatelinkAccess privatelinkAccess;
         private @Nullable KafkaKafkaUserConfigPublicAccess publicAccess;
@@ -556,6 +569,7 @@ public final class KafkaKafkaUserConfig {
     	      this.kafkaVersion = defaults.kafkaVersion;
     	      this.letsencryptSasl = defaults.letsencryptSasl;
     	      this.letsencryptSaslPrivatelink = defaults.letsencryptSaslPrivatelink;
+    	      this.preferredZones = defaults.preferredZones;
     	      this.privateAccess = defaults.privateAccess;
     	      this.privatelinkAccess = defaults.privatelinkAccess;
     	      this.publicAccess = defaults.publicAccess;
@@ -743,6 +757,15 @@ public final class KafkaKafkaUserConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder preferredZones(@Nullable List<String> preferredZones) {
+
+            this.preferredZones = preferredZones;
+            return this;
+        }
+        public Builder preferredZones(String... preferredZones) {
+            return preferredZones(List.of(preferredZones));
+        }
+        @CustomType.Setter
         public Builder privateAccess(@Nullable KafkaKafkaUserConfigPrivateAccess privateAccess) {
 
             this.privateAccess = privateAccess;
@@ -833,6 +856,7 @@ public final class KafkaKafkaUserConfig {
             _resultValue.kafkaVersion = kafkaVersion;
             _resultValue.letsencryptSasl = letsencryptSasl;
             _resultValue.letsencryptSaslPrivatelink = letsencryptSaslPrivatelink;
+            _resultValue.preferredZones = preferredZones;
             _resultValue.privateAccess = privateAccess;
             _resultValue.privatelinkAccess = privatelinkAccess;
             _resultValue.publicAccess = publicAccess;

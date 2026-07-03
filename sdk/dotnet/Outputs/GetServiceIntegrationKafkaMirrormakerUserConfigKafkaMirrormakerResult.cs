@@ -18,35 +18,39 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? ConsumerAutoOffsetReset;
         /// <summary>
-        /// The maximum amount of data the server should return for a fetch request.
+        /// The maximum amount of data the server should return for a fetch request. Default is `52428800` (50MiB).
         /// </summary>
         public readonly int? ConsumerFetchMaxBytes;
         /// <summary>
-        /// The minimum amount of data the server should return for a fetch request. Example: `1024`.
+        /// The maximum amount of time the server will block before answering the fetch request if there isn't sufficient data to immediately satisfy `ConsumerFetchMinBytes`. Default is `500`.
+        /// </summary>
+        public readonly int? ConsumerFetchMaxWaitMs;
+        /// <summary>
+        /// The minimum amount of data the server should return for a fetch request. Default is `1`. Example: `1024`.
         /// </summary>
         public readonly int? ConsumerFetchMinBytes;
         /// <summary>
-        /// The maximum amount of data per partition the server will return.
+        /// The maximum amount of data per partition the server will return. Default is `1048576` (1MiB).
         /// </summary>
         public readonly int? ConsumerMaxPartitionFetchBytes;
         /// <summary>
-        /// Set consumer max.poll.records. The default is 500. Example: `500`.
+        /// Set consumer max.poll.records. Default is `500`.
         /// </summary>
         public readonly int? ConsumerMaxPollRecords;
         /// <summary>
-        /// The size of the TCP receive buffer (SO_RCVBUF) to use when reading data. -1 uses the OS default. Example: `65536`.
+        /// The size of the TCP receive buffer (SO_RCVBUF) to use when reading data. Default is `65536` (64KiB). `-1` uses the OS default.
         /// </summary>
         public readonly int? ConsumerReceiveBufferBytes;
         /// <summary>
-        /// The maximum time the client will wait for a response to a request. Example: `30000`.
+        /// The maximum time the client will wait for a response to a request. Default is `30000` (30s).
         /// </summary>
         public readonly int? ConsumerRequestTimeoutMs;
         /// <summary>
-        /// The batch size in bytes producer will attempt to collect before publishing to broker. Example: `1024`.
+        /// The batch size in bytes producer will attempt to collect before publishing to broker. Default is `16384` (16KiB).
         /// </summary>
         public readonly int? ProducerBatchSize;
         /// <summary>
-        /// The amount of bytes producer can use for buffering data before publishing to broker.
+        /// The amount of bytes producer can use for buffering data before publishing to broker. Default is `33554432` (32MiB).
         /// </summary>
         public readonly int? ProducerBufferMemory;
         /// <summary>
@@ -54,19 +58,19 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? ProducerCompressionType;
         /// <summary>
-        /// The linger time (ms) for waiting new data to arrive for publishing. Example: `100`.
+        /// The linger time (ms) for waiting new data to arrive for publishing. Default is `0`. Example: `100`.
         /// </summary>
         public readonly int? ProducerLingerMs;
         /// <summary>
-        /// The maximum request size in bytes.
+        /// The maximum request size in bytes. Default is `1048576` (1MiB).
         /// </summary>
         public readonly int? ProducerMaxRequestSize;
         /// <summary>
-        /// The maximum time the client will wait for a response to a request. Example: `30000`.
+        /// The maximum time the client will wait for a response to a request. Default is `30000` (30s).
         /// </summary>
         public readonly int? ProducerRequestTimeoutMs;
         /// <summary>
-        /// The size of the TCP send buffer (SO_SNDBUF) to use when sending data. -1 uses the OS default. Example: `131072`.
+        /// The size of the TCP send buffer (SO_SNDBUF) to use when sending data. Default is `131072` (128KiB). `-1` uses the OS default.
         /// </summary>
         public readonly int? ProducerSendBufferBytes;
 
@@ -75,6 +79,8 @@ namespace Pulumi.Aiven.Outputs
             string? consumerAutoOffsetReset,
 
             int? consumerFetchMaxBytes,
+
+            int? consumerFetchMaxWaitMs,
 
             int? consumerFetchMinBytes,
 
@@ -102,6 +108,7 @@ namespace Pulumi.Aiven.Outputs
         {
             ConsumerAutoOffsetReset = consumerAutoOffsetReset;
             ConsumerFetchMaxBytes = consumerFetchMaxBytes;
+            ConsumerFetchMaxWaitMs = consumerFetchMaxWaitMs;
             ConsumerFetchMinBytes = consumerFetchMinBytes;
             ConsumerMaxPartitionFetchBytes = consumerMaxPartitionFetchBytes;
             ConsumerMaxPollRecords = consumerMaxPollRecords;

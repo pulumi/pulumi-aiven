@@ -100,6 +100,7 @@ __all__ = [
     'KafkaConnectKafkaConnectUserConfigPublicAccess',
     'KafkaConnectKafkaConnectUserConfigSecretProvider',
     'KafkaConnectKafkaConnectUserConfigSecretProviderAws',
+    'KafkaConnectKafkaConnectUserConfigSecretProviderAzure',
     'KafkaConnectKafkaConnectUserConfigSecretProviderEnv',
     'KafkaConnectKafkaConnectUserConfigSecretProviderVault',
     'KafkaConnectServiceIntegration',
@@ -118,6 +119,7 @@ __all__ = [
     'KafkaKafkaUserConfigKafkaConnectPluginVersion',
     'KafkaKafkaUserConfigKafkaConnectSecretProvider',
     'KafkaKafkaUserConfigKafkaConnectSecretProviderAws',
+    'KafkaKafkaUserConfigKafkaConnectSecretProviderAzure',
     'KafkaKafkaUserConfigKafkaConnectSecretProviderEnv',
     'KafkaKafkaUserConfigKafkaConnectSecretProviderVault',
     'KafkaKafkaUserConfigKafkaDiskless',
@@ -398,6 +400,7 @@ __all__ = [
     'GetKafkaConnectKafkaConnectUserConfigPublicAccessResult',
     'GetKafkaConnectKafkaConnectUserConfigSecretProviderResult',
     'GetKafkaConnectKafkaConnectUserConfigSecretProviderAwsResult',
+    'GetKafkaConnectKafkaConnectUserConfigSecretProviderAzureResult',
     'GetKafkaConnectKafkaConnectUserConfigSecretProviderEnvResult',
     'GetKafkaConnectKafkaConnectUserConfigSecretProviderVaultResult',
     'GetKafkaConnectServiceIntegrationResult',
@@ -416,6 +419,7 @@ __all__ = [
     'GetKafkaKafkaUserConfigKafkaConnectPluginVersionResult',
     'GetKafkaKafkaUserConfigKafkaConnectSecretProviderResult',
     'GetKafkaKafkaUserConfigKafkaConnectSecretProviderAwsResult',
+    'GetKafkaKafkaUserConfigKafkaConnectSecretProviderAzureResult',
     'GetKafkaKafkaUserConfigKafkaConnectSecretProviderEnvResult',
     'GetKafkaKafkaUserConfigKafkaConnectSecretProviderVaultResult',
     'GetKafkaKafkaUserConfigKafkaDisklessResult',
@@ -4401,7 +4405,7 @@ class GovernanceAccessAccessData(dict):
                  service_name: _builtins.str,
                  username: Optional[_builtins.str] = None):
         """
-        :param Sequence['GovernanceAccessAccessDataAclArgs'] acls: Required property. Acls. Changing this property forces recreation of the resource.
+        :param Sequence['GovernanceAccessAccessDataAclArgs'] acls: Acls. Changing this property forces recreation of the resource.
         :param _builtins.str project_name: Project name. Changing this property forces recreation of the resource.
         :param _builtins.str service_name: Service name. Changing this property forces recreation of the resource.
         :param _builtins.str username: The service username assigned to the access. Changing this property forces recreation of the resource.
@@ -4416,7 +4420,7 @@ class GovernanceAccessAccessData(dict):
     @pulumi.getter
     def acls(self) -> Sequence['outputs.GovernanceAccessAccessDataAcl']:
         """
-        Required property. Acls. Changing this property forces recreation of the resource.
+        Acls. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "acls")
 
@@ -7563,17 +7567,21 @@ class KafkaConnectKafkaConnectUserConfigSecretProvider(dict):
     def __init__(__self__, *,
                  name: _builtins.str,
                  aws: Optional['outputs.KafkaConnectKafkaConnectUserConfigSecretProviderAws'] = None,
+                 azure: Optional['outputs.KafkaConnectKafkaConnectUserConfigSecretProviderAzure'] = None,
                  env: Optional['outputs.KafkaConnectKafkaConnectUserConfigSecretProviderEnv'] = None,
                  vault: Optional['outputs.KafkaConnectKafkaConnectUserConfigSecretProviderVault'] = None):
         """
         :param _builtins.str name: Name of the secret provider. Used to reference secrets in connector config.
         :param 'KafkaConnectKafkaConnectUserConfigSecretProviderAwsArgs' aws: AWS secret provider configuration
+        :param 'KafkaConnectKafkaConnectUserConfigSecretProviderAzureArgs' azure: Azure KeyVault secret provider configuration
         :param 'KafkaConnectKafkaConnectUserConfigSecretProviderEnvArgs' env: ENV secret provider configuration
         :param 'KafkaConnectKafkaConnectUserConfigSecretProviderVaultArgs' vault: Vault secret provider configuration
         """
         pulumi.set(__self__, "name", name)
         if aws is not None:
             pulumi.set(__self__, "aws", aws)
+        if azure is not None:
+            pulumi.set(__self__, "azure", azure)
         if env is not None:
             pulumi.set(__self__, "env", env)
         if vault is not None:
@@ -7594,6 +7602,14 @@ class KafkaConnectKafkaConnectUserConfigSecretProvider(dict):
         AWS secret provider configuration
         """
         return pulumi.get(self, "aws")
+
+    @_builtins.property
+    @pulumi.getter
+    def azure(self) -> Optional['outputs.KafkaConnectKafkaConnectUserConfigSecretProviderAzure']:
+        """
+        Azure KeyVault secret provider configuration
+        """
+        return pulumi.get(self, "azure")
 
     @_builtins.property
     @pulumi.getter
@@ -7684,6 +7700,81 @@ class KafkaConnectKafkaConnectUserConfigSecretProviderAws(dict):
         Secret key used to authenticate with aws.
         """
         return pulumi.get(self, "secret_key")
+
+
+@pulumi.output_type
+class KafkaConnectKafkaConnectUserConfigSecretProviderAzure(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authMethod":
+            suggest = "auth_method"
+        elif key == "clientId":
+            suggest = "client_id"
+        elif key == "tenantId":
+            suggest = "tenant_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in KafkaConnectKafkaConnectUserConfigSecretProviderAzure. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        KafkaConnectKafkaConnectUserConfigSecretProviderAzure.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        KafkaConnectKafkaConnectUserConfigSecretProviderAzure.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 auth_method: _builtins.str,
+                 client_id: Optional[_builtins.str] = None,
+                 secret: Optional[_builtins.str] = None,
+                 tenant_id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str auth_method: Enum: `credentials`. Auth method of the Azure KeyVault secret provider.
+        :param _builtins.str client_id: Azure client ID for the service principal.
+        :param _builtins.str secret: Azure client secret for the service principal.
+        :param _builtins.str tenant_id: Azure tenant ID for the service principal.
+        """
+        pulumi.set(__self__, "auth_method", auth_method)
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
+        if secret is not None:
+            pulumi.set(__self__, "secret", secret)
+        if tenant_id is not None:
+            pulumi.set(__self__, "tenant_id", tenant_id)
+
+    @_builtins.property
+    @pulumi.getter(name="authMethod")
+    def auth_method(self) -> _builtins.str:
+        """
+        Enum: `credentials`. Auth method of the Azure KeyVault secret provider.
+        """
+        return pulumi.get(self, "auth_method")
+
+    @_builtins.property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> Optional[_builtins.str]:
+        """
+        Azure client ID for the service principal.
+        """
+        return pulumi.get(self, "client_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def secret(self) -> Optional[_builtins.str]:
+        """
+        Azure client secret for the service principal.
+        """
+        return pulumi.get(self, "secret")
+
+    @_builtins.property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> Optional[_builtins.str]:
+        """
+        Azure tenant ID for the service principal.
+        """
+        return pulumi.get(self, "tenant_id")
 
 
 @pulumi.output_type
@@ -8087,6 +8178,8 @@ class KafkaKafkaUserConfig(dict):
             suggest = "letsencrypt_sasl"
         elif key == "letsencryptSaslPrivatelink":
             suggest = "letsencrypt_sasl_privatelink"
+        elif key == "preferredZones":
+            suggest = "preferred_zones"
         elif key == "privateAccess":
             suggest = "private_access"
         elif key == "privatelinkAccess":
@@ -8146,6 +8239,7 @@ class KafkaKafkaUserConfig(dict):
                  kafka_version: Optional[_builtins.str] = None,
                  letsencrypt_sasl: Optional[_builtins.bool] = None,
                  letsencrypt_sasl_privatelink: Optional[_builtins.bool] = None,
+                 preferred_zones: Optional[Sequence[_builtins.str]] = None,
                  private_access: Optional['outputs.KafkaKafkaUserConfigPrivateAccess'] = None,
                  privatelink_access: Optional['outputs.KafkaKafkaUserConfigPrivatelinkAccess'] = None,
                  public_access: Optional['outputs.KafkaKafkaUserConfigPublicAccess'] = None,
@@ -8183,6 +8277,7 @@ class KafkaKafkaUserConfig(dict):
         :param _builtins.str kafka_version: Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, `4.1`, `4.2`, and newer. Kafka major version.
         :param _builtins.bool letsencrypt_sasl: Use a Let's Encrypt certificate authority (CA) for Kafka SASL authentication. (Default: False).
         :param _builtins.bool letsencrypt_sasl_privatelink: Use a Let's Encrypt certificate authority (CA) for Kafka SASL authentication via Privatelink. (Default: False).
+        :param Sequence[_builtins.str] preferred_zones: List of preferred zone IDs for service node placement. Nodes will be placed in these zones when available. If a specified zone is unavailable (e.g., due to capacity constraints), nodes will be placed in other available zones to maintain the configured number of zones for availability. Invalid zone IDs are rejected at configuration time. Zone IDs are cloud-specific: AWS uses zone IDs like `euc1-az1`, GCP uses zone names like `europe-west1-a`, and Azure uses `location/zone` format like `germanywestcentral/1`. If single*zone is enabled with an availability*zone, that setting takes precedence over preferred_zones.Changes take effect on next node recreation (e.g., maintenance or plan change). For Kafka professional plans, nodes outside preferred zones are automatically rebalanced once per day.
         :param 'KafkaKafkaUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks
         :param 'KafkaKafkaUserConfigPrivatelinkAccessArgs' privatelink_access: Allow access to selected service components through Privatelink
         :param 'KafkaKafkaUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet
@@ -8246,6 +8341,8 @@ class KafkaKafkaUserConfig(dict):
             pulumi.set(__self__, "letsencrypt_sasl", letsencrypt_sasl)
         if letsencrypt_sasl_privatelink is not None:
             pulumi.set(__self__, "letsencrypt_sasl_privatelink", letsencrypt_sasl_privatelink)
+        if preferred_zones is not None:
+            pulumi.set(__self__, "preferred_zones", preferred_zones)
         if private_access is not None:
             pulumi.set(__self__, "private_access", private_access)
         if privatelink_access is not None:
@@ -8476,6 +8573,14 @@ class KafkaKafkaUserConfig(dict):
         Use a Let's Encrypt certificate authority (CA) for Kafka SASL authentication via Privatelink. (Default: False).
         """
         return pulumi.get(self, "letsencrypt_sasl_privatelink")
+
+    @_builtins.property
+    @pulumi.getter(name="preferredZones")
+    def preferred_zones(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of preferred zone IDs for service node placement. Nodes will be placed in these zones when available. If a specified zone is unavailable (e.g., due to capacity constraints), nodes will be placed in other available zones to maintain the configured number of zones for availability. Invalid zone IDs are rejected at configuration time. Zone IDs are cloud-specific: AWS uses zone IDs like `euc1-az1`, GCP uses zone names like `europe-west1-a`, and Azure uses `location/zone` format like `germanywestcentral/1`. If single*zone is enabled with an availability*zone, that setting takes precedence over preferred_zones.Changes take effect on next node recreation (e.g., maintenance or plan change). For Kafka professional plans, nodes outside preferred zones are automatically rebalanced once per day.
+        """
+        return pulumi.get(self, "preferred_zones")
 
     @_builtins.property
     @pulumi.getter(name="privateAccess")
@@ -9949,17 +10054,21 @@ class KafkaKafkaUserConfigKafkaConnectSecretProvider(dict):
     def __init__(__self__, *,
                  name: _builtins.str,
                  aws: Optional['outputs.KafkaKafkaUserConfigKafkaConnectSecretProviderAws'] = None,
+                 azure: Optional['outputs.KafkaKafkaUserConfigKafkaConnectSecretProviderAzure'] = None,
                  env: Optional['outputs.KafkaKafkaUserConfigKafkaConnectSecretProviderEnv'] = None,
                  vault: Optional['outputs.KafkaKafkaUserConfigKafkaConnectSecretProviderVault'] = None):
         """
         :param _builtins.str name: Name of the secret provider. Used to reference secrets in connector config.
         :param 'KafkaKafkaUserConfigKafkaConnectSecretProviderAwsArgs' aws: AWS secret provider configuration
+        :param 'KafkaKafkaUserConfigKafkaConnectSecretProviderAzureArgs' azure: Azure KeyVault secret provider configuration
         :param 'KafkaKafkaUserConfigKafkaConnectSecretProviderEnvArgs' env: ENV secret provider configuration
         :param 'KafkaKafkaUserConfigKafkaConnectSecretProviderVaultArgs' vault: Vault secret provider configuration
         """
         pulumi.set(__self__, "name", name)
         if aws is not None:
             pulumi.set(__self__, "aws", aws)
+        if azure is not None:
+            pulumi.set(__self__, "azure", azure)
         if env is not None:
             pulumi.set(__self__, "env", env)
         if vault is not None:
@@ -9980,6 +10089,14 @@ class KafkaKafkaUserConfigKafkaConnectSecretProvider(dict):
         AWS secret provider configuration
         """
         return pulumi.get(self, "aws")
+
+    @_builtins.property
+    @pulumi.getter
+    def azure(self) -> Optional['outputs.KafkaKafkaUserConfigKafkaConnectSecretProviderAzure']:
+        """
+        Azure KeyVault secret provider configuration
+        """
+        return pulumi.get(self, "azure")
 
     @_builtins.property
     @pulumi.getter
@@ -10070,6 +10187,81 @@ class KafkaKafkaUserConfigKafkaConnectSecretProviderAws(dict):
         Secret key used to authenticate with aws.
         """
         return pulumi.get(self, "secret_key")
+
+
+@pulumi.output_type
+class KafkaKafkaUserConfigKafkaConnectSecretProviderAzure(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authMethod":
+            suggest = "auth_method"
+        elif key == "clientId":
+            suggest = "client_id"
+        elif key == "tenantId":
+            suggest = "tenant_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in KafkaKafkaUserConfigKafkaConnectSecretProviderAzure. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        KafkaKafkaUserConfigKafkaConnectSecretProviderAzure.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        KafkaKafkaUserConfigKafkaConnectSecretProviderAzure.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 auth_method: _builtins.str,
+                 client_id: Optional[_builtins.str] = None,
+                 secret: Optional[_builtins.str] = None,
+                 tenant_id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str auth_method: Enum: `credentials`. Auth method of the Azure KeyVault secret provider.
+        :param _builtins.str client_id: Azure client ID for the service principal.
+        :param _builtins.str secret: Azure client secret for the service principal.
+        :param _builtins.str tenant_id: Azure tenant ID for the service principal.
+        """
+        pulumi.set(__self__, "auth_method", auth_method)
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
+        if secret is not None:
+            pulumi.set(__self__, "secret", secret)
+        if tenant_id is not None:
+            pulumi.set(__self__, "tenant_id", tenant_id)
+
+    @_builtins.property
+    @pulumi.getter(name="authMethod")
+    def auth_method(self) -> _builtins.str:
+        """
+        Enum: `credentials`. Auth method of the Azure KeyVault secret provider.
+        """
+        return pulumi.get(self, "auth_method")
+
+    @_builtins.property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> Optional[_builtins.str]:
+        """
+        Azure client ID for the service principal.
+        """
+        return pulumi.get(self, "client_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def secret(self) -> Optional[_builtins.str]:
+        """
+        Azure client secret for the service principal.
+        """
+        return pulumi.get(self, "secret")
+
+    @_builtins.property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> Optional[_builtins.str]:
+        """
+        Azure tenant ID for the service principal.
+        """
+        return pulumi.get(self, "tenant_id")
 
 
 @pulumi.output_type
@@ -10192,12 +10384,33 @@ class KafkaKafkaUserConfigKafkaConnectSecretProviderVault(dict):
 
 @pulumi.output_type
 class KafkaKafkaUserConfigKafkaDiskless(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "autoDisklessTopicRegexes":
+            suggest = "auto_diskless_topic_regexes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in KafkaKafkaUserConfigKafkaDiskless. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        KafkaKafkaUserConfigKafkaDiskless.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        KafkaKafkaUserConfigKafkaDiskless.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
-                 enabled: _builtins.bool):
+                 enabled: _builtins.bool,
+                 auto_diskless_topic_regexes: Optional[Sequence[_builtins.str]] = None):
         """
         :param _builtins.bool enabled: Whether to enable the Diskless functionality.
+        :param Sequence[_builtins.str] auto_diskless_topic_regexes: The regexes of topics to auto enable diskless. Topics matching any of the regexes will be created as diskless topics.
         """
         pulumi.set(__self__, "enabled", enabled)
+        if auto_diskless_topic_regexes is not None:
+            pulumi.set(__self__, "auto_diskless_topic_regexes", auto_diskless_topic_regexes)
 
     @_builtins.property
     @pulumi.getter
@@ -10206,6 +10419,14 @@ class KafkaKafkaUserConfigKafkaDiskless(dict):
         Whether to enable the Diskless functionality.
         """
         return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="autoDisklessTopicRegexes")
+    def auto_diskless_topic_regexes(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The regexes of topics to auto enable diskless. Topics matching any of the regexes will be created as diskless topics.
+        """
+        return pulumi.get(self, "auto_diskless_topic_regexes")
 
 
 @pulumi.output_type
@@ -12702,7 +12923,7 @@ class MySqlMysqlUserConfig(dict):
         :param _builtins.str admin_username: Custom username for admin user. This must be set only when a new service is being created. Example: `avnadmin`.
         :param _builtins.int backup_hour: The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Default: `0`.
         :param _builtins.int backup_minute: The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Default: `0`.
-        :param _builtins.int binlog_retention_period: The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default for example if using the MySQL Debezium Kafka connector. Example: `600`.
+        :param _builtins.int binlog_retention_period: Warning: reducing this value can make a large batch of binary logs eligible for purge at once. Depending on the volume, this can sometimes stall the MySQL commit path and block writes until the purge completes. To stay on the safe side, prefer lowering the value gradually in small decrements during a low-traffic window rather than dropping it drastically in one step. Example: `600`.
         :param Sequence['MySqlMysqlUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         :param Sequence[_builtins.str] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         :param Sequence[_builtins.str] ip_filters: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
@@ -12806,7 +13027,7 @@ class MySqlMysqlUserConfig(dict):
     @pulumi.getter(name="binlogRetentionPeriod")
     def binlog_retention_period(self) -> Optional[_builtins.int]:
         """
-        The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default for example if using the MySQL Debezium Kafka connector. Example: `600`.
+        Warning: reducing this value can make a large batch of binary logs eligible for purge at once. Depending on the volume, this can sometimes stall the MySQL commit path and block writes until the purge completes. To stay on the safe side, prefer lowering the value gradually in small decrements during a low-traffic window rather than dropping it drastically in one step. Example: `600`.
         """
         return pulumi.get(self, "binlog_retention_period")
 
@@ -14418,7 +14639,7 @@ class OpenSearchOpensearchUserConfig(dict):
         :param 'OpenSearchOpensearchUserConfigOpenidArgs' openid: OpenSearch OpenID Connect Configuration
         :param 'OpenSearchOpensearchUserConfigOpensearchArgs' opensearch: OpenSearch settings
         :param 'OpenSearchOpensearchUserConfigOpensearchDashboardsArgs' opensearch_dashboards: OpenSearch Dashboards settings
-        :param _builtins.str opensearch_version: Enum: `1`, `2`, `2.19`, `3.3`, and newer. OpenSearch version.
+        :param _builtins.str opensearch_version: Enum: `1`, `2`, `2.19`, `3.3`, `3.6`, and newer. OpenSearch version.
         :param 'OpenSearchOpensearchUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks
         :param 'OpenSearchOpensearchUserConfigPrivatelinkAccessArgs' privatelink_access: Allow access to selected service components through Privatelink
         :param _builtins.str project_to_fork_from: Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
@@ -14628,7 +14849,7 @@ class OpenSearchOpensearchUserConfig(dict):
     @pulumi.getter(name="opensearchVersion")
     def opensearch_version(self) -> Optional[_builtins.str]:
         """
-        Enum: `1`, `2`, `2.19`, `3.3`, and newer. OpenSearch version.
+        Enum: `1`, `2`, `2.19`, `3.3`, `3.6`, and newer. OpenSearch version.
         """
         return pulumi.get(self, "opensearch_version")
 
@@ -25959,6 +26180,8 @@ class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker(dict):
             suggest = "consumer_auto_offset_reset"
         elif key == "consumerFetchMaxBytes":
             suggest = "consumer_fetch_max_bytes"
+        elif key == "consumerFetchMaxWaitMs":
+            suggest = "consumer_fetch_max_wait_ms"
         elif key == "consumerFetchMinBytes":
             suggest = "consumer_fetch_min_bytes"
         elif key == "consumerMaxPartitionFetchBytes":
@@ -25998,6 +26221,7 @@ class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker(dict):
     def __init__(__self__, *,
                  consumer_auto_offset_reset: Optional[_builtins.str] = None,
                  consumer_fetch_max_bytes: Optional[_builtins.int] = None,
+                 consumer_fetch_max_wait_ms: Optional[_builtins.int] = None,
                  consumer_fetch_min_bytes: Optional[_builtins.int] = None,
                  consumer_max_partition_fetch_bytes: Optional[_builtins.int] = None,
                  consumer_max_poll_records: Optional[_builtins.int] = None,
@@ -26012,24 +26236,27 @@ class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker(dict):
                  producer_send_buffer_bytes: Optional[_builtins.int] = None):
         """
         :param _builtins.str consumer_auto_offset_reset: Enum: `earliest`, `latest`. Set where consumer starts to consume data. Value `earliest`: Start replication from the earliest offset. Value `latest`: Start replication from the latest offset. Default is `earliest`.
-        :param _builtins.int consumer_fetch_max_bytes: The maximum amount of data the server should return for a fetch request.
-        :param _builtins.int consumer_fetch_min_bytes: The minimum amount of data the server should return for a fetch request. Example: `1024`.
-        :param _builtins.int consumer_max_partition_fetch_bytes: The maximum amount of data per partition the server will return.
-        :param _builtins.int consumer_max_poll_records: Set consumer max.poll.records. The default is 500. Example: `500`.
-        :param _builtins.int consumer_receive_buffer_bytes: The size of the TCP receive buffer (SO_RCVBUF) to use when reading data. -1 uses the OS default. Example: `65536`.
-        :param _builtins.int consumer_request_timeout_ms: The maximum time the client will wait for a response to a request. Example: `30000`.
-        :param _builtins.int producer_batch_size: The batch size in bytes producer will attempt to collect before publishing to broker. Example: `1024`.
-        :param _builtins.int producer_buffer_memory: The amount of bytes producer can use for buffering data before publishing to broker.
+        :param _builtins.int consumer_fetch_max_bytes: The maximum amount of data the server should return for a fetch request. Default is `52428800` (50MiB).
+        :param _builtins.int consumer_fetch_max_wait_ms: The maximum amount of time the server will block before answering the fetch request if there isn't sufficient data to immediately satisfy `consumer_fetch_min_bytes`. Default is `500`.
+        :param _builtins.int consumer_fetch_min_bytes: The minimum amount of data the server should return for a fetch request. Default is `1`. Example: `1024`.
+        :param _builtins.int consumer_max_partition_fetch_bytes: The maximum amount of data per partition the server will return. Default is `1048576` (1MiB).
+        :param _builtins.int consumer_max_poll_records: Set consumer max.poll.records. Default is `500`.
+        :param _builtins.int consumer_receive_buffer_bytes: The size of the TCP receive buffer (SO_RCVBUF) to use when reading data. Default is `65536` (64KiB). `-1` uses the OS default.
+        :param _builtins.int consumer_request_timeout_ms: The maximum time the client will wait for a response to a request. Default is `30000` (30s).
+        :param _builtins.int producer_batch_size: The batch size in bytes producer will attempt to collect before publishing to broker. Default is `16384` (16KiB).
+        :param _builtins.int producer_buffer_memory: The amount of bytes producer can use for buffering data before publishing to broker. Default is `33554432` (32MiB).
         :param _builtins.str producer_compression_type: Enum: `gzip`, `lz4`, `none`, `snappy`, `zstd`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
-        :param _builtins.int producer_linger_ms: The linger time (ms) for waiting new data to arrive for publishing. Example: `100`.
-        :param _builtins.int producer_max_request_size: The maximum request size in bytes.
-        :param _builtins.int producer_request_timeout_ms: The maximum time the client will wait for a response to a request. Example: `30000`.
-        :param _builtins.int producer_send_buffer_bytes: The size of the TCP send buffer (SO_SNDBUF) to use when sending data. -1 uses the OS default. Example: `131072`.
+        :param _builtins.int producer_linger_ms: The linger time (ms) for waiting new data to arrive for publishing. Default is `0`. Example: `100`.
+        :param _builtins.int producer_max_request_size: The maximum request size in bytes. Default is `1048576` (1MiB).
+        :param _builtins.int producer_request_timeout_ms: The maximum time the client will wait for a response to a request. Default is `30000` (30s).
+        :param _builtins.int producer_send_buffer_bytes: The size of the TCP send buffer (SO_SNDBUF) to use when sending data. Default is `131072` (128KiB). `-1` uses the OS default.
         """
         if consumer_auto_offset_reset is not None:
             pulumi.set(__self__, "consumer_auto_offset_reset", consumer_auto_offset_reset)
         if consumer_fetch_max_bytes is not None:
             pulumi.set(__self__, "consumer_fetch_max_bytes", consumer_fetch_max_bytes)
+        if consumer_fetch_max_wait_ms is not None:
+            pulumi.set(__self__, "consumer_fetch_max_wait_ms", consumer_fetch_max_wait_ms)
         if consumer_fetch_min_bytes is not None:
             pulumi.set(__self__, "consumer_fetch_min_bytes", consumer_fetch_min_bytes)
         if consumer_max_partition_fetch_bytes is not None:
@@ -26067,15 +26294,23 @@ class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker(dict):
     @pulumi.getter(name="consumerFetchMaxBytes")
     def consumer_fetch_max_bytes(self) -> Optional[_builtins.int]:
         """
-        The maximum amount of data the server should return for a fetch request.
+        The maximum amount of data the server should return for a fetch request. Default is `52428800` (50MiB).
         """
         return pulumi.get(self, "consumer_fetch_max_bytes")
+
+    @_builtins.property
+    @pulumi.getter(name="consumerFetchMaxWaitMs")
+    def consumer_fetch_max_wait_ms(self) -> Optional[_builtins.int]:
+        """
+        The maximum amount of time the server will block before answering the fetch request if there isn't sufficient data to immediately satisfy `consumer_fetch_min_bytes`. Default is `500`.
+        """
+        return pulumi.get(self, "consumer_fetch_max_wait_ms")
 
     @_builtins.property
     @pulumi.getter(name="consumerFetchMinBytes")
     def consumer_fetch_min_bytes(self) -> Optional[_builtins.int]:
         """
-        The minimum amount of data the server should return for a fetch request. Example: `1024`.
+        The minimum amount of data the server should return for a fetch request. Default is `1`. Example: `1024`.
         """
         return pulumi.get(self, "consumer_fetch_min_bytes")
 
@@ -26083,7 +26318,7 @@ class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker(dict):
     @pulumi.getter(name="consumerMaxPartitionFetchBytes")
     def consumer_max_partition_fetch_bytes(self) -> Optional[_builtins.int]:
         """
-        The maximum amount of data per partition the server will return.
+        The maximum amount of data per partition the server will return. Default is `1048576` (1MiB).
         """
         return pulumi.get(self, "consumer_max_partition_fetch_bytes")
 
@@ -26091,7 +26326,7 @@ class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker(dict):
     @pulumi.getter(name="consumerMaxPollRecords")
     def consumer_max_poll_records(self) -> Optional[_builtins.int]:
         """
-        Set consumer max.poll.records. The default is 500. Example: `500`.
+        Set consumer max.poll.records. Default is `500`.
         """
         return pulumi.get(self, "consumer_max_poll_records")
 
@@ -26099,7 +26334,7 @@ class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker(dict):
     @pulumi.getter(name="consumerReceiveBufferBytes")
     def consumer_receive_buffer_bytes(self) -> Optional[_builtins.int]:
         """
-        The size of the TCP receive buffer (SO_RCVBUF) to use when reading data. -1 uses the OS default. Example: `65536`.
+        The size of the TCP receive buffer (SO_RCVBUF) to use when reading data. Default is `65536` (64KiB). `-1` uses the OS default.
         """
         return pulumi.get(self, "consumer_receive_buffer_bytes")
 
@@ -26107,7 +26342,7 @@ class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker(dict):
     @pulumi.getter(name="consumerRequestTimeoutMs")
     def consumer_request_timeout_ms(self) -> Optional[_builtins.int]:
         """
-        The maximum time the client will wait for a response to a request. Example: `30000`.
+        The maximum time the client will wait for a response to a request. Default is `30000` (30s).
         """
         return pulumi.get(self, "consumer_request_timeout_ms")
 
@@ -26115,7 +26350,7 @@ class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker(dict):
     @pulumi.getter(name="producerBatchSize")
     def producer_batch_size(self) -> Optional[_builtins.int]:
         """
-        The batch size in bytes producer will attempt to collect before publishing to broker. Example: `1024`.
+        The batch size in bytes producer will attempt to collect before publishing to broker. Default is `16384` (16KiB).
         """
         return pulumi.get(self, "producer_batch_size")
 
@@ -26123,7 +26358,7 @@ class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker(dict):
     @pulumi.getter(name="producerBufferMemory")
     def producer_buffer_memory(self) -> Optional[_builtins.int]:
         """
-        The amount of bytes producer can use for buffering data before publishing to broker.
+        The amount of bytes producer can use for buffering data before publishing to broker. Default is `33554432` (32MiB).
         """
         return pulumi.get(self, "producer_buffer_memory")
 
@@ -26139,7 +26374,7 @@ class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker(dict):
     @pulumi.getter(name="producerLingerMs")
     def producer_linger_ms(self) -> Optional[_builtins.int]:
         """
-        The linger time (ms) for waiting new data to arrive for publishing. Example: `100`.
+        The linger time (ms) for waiting new data to arrive for publishing. Default is `0`. Example: `100`.
         """
         return pulumi.get(self, "producer_linger_ms")
 
@@ -26147,7 +26382,7 @@ class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker(dict):
     @pulumi.getter(name="producerMaxRequestSize")
     def producer_max_request_size(self) -> Optional[_builtins.int]:
         """
-        The maximum request size in bytes.
+        The maximum request size in bytes. Default is `1048576` (1MiB).
         """
         return pulumi.get(self, "producer_max_request_size")
 
@@ -26155,7 +26390,7 @@ class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker(dict):
     @pulumi.getter(name="producerRequestTimeoutMs")
     def producer_request_timeout_ms(self) -> Optional[_builtins.int]:
         """
-        The maximum time the client will wait for a response to a request. Example: `30000`.
+        The maximum time the client will wait for a response to a request. Default is `30000` (30s).
         """
         return pulumi.get(self, "producer_request_timeout_ms")
 
@@ -26163,7 +26398,7 @@ class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker(dict):
     @pulumi.getter(name="producerSendBufferBytes")
     def producer_send_buffer_bytes(self) -> Optional[_builtins.int]:
         """
-        The size of the TCP send buffer (SO_SNDBUF) to use when sending data. -1 uses the OS default. Example: `131072`.
+        The size of the TCP send buffer (SO_SNDBUF) to use when sending data. Default is `131072` (128KiB). `-1` uses the OS default.
         """
         return pulumi.get(self, "producer_send_buffer_bytes")
 
@@ -33505,17 +33740,21 @@ class GetKafkaConnectKafkaConnectUserConfigSecretProviderResult(dict):
     def __init__(__self__, *,
                  name: _builtins.str,
                  aws: Optional['outputs.GetKafkaConnectKafkaConnectUserConfigSecretProviderAwsResult'] = None,
+                 azure: Optional['outputs.GetKafkaConnectKafkaConnectUserConfigSecretProviderAzureResult'] = None,
                  env: Optional['outputs.GetKafkaConnectKafkaConnectUserConfigSecretProviderEnvResult'] = None,
                  vault: Optional['outputs.GetKafkaConnectKafkaConnectUserConfigSecretProviderVaultResult'] = None):
         """
         :param _builtins.str name: Name of the secret provider. Used to reference secrets in connector config.
         :param 'GetKafkaConnectKafkaConnectUserConfigSecretProviderAwsArgs' aws: AWS secret provider configuration
+        :param 'GetKafkaConnectKafkaConnectUserConfigSecretProviderAzureArgs' azure: Azure KeyVault secret provider configuration
         :param 'GetKafkaConnectKafkaConnectUserConfigSecretProviderEnvArgs' env: ENV secret provider configuration
         :param 'GetKafkaConnectKafkaConnectUserConfigSecretProviderVaultArgs' vault: Vault secret provider configuration
         """
         pulumi.set(__self__, "name", name)
         if aws is not None:
             pulumi.set(__self__, "aws", aws)
+        if azure is not None:
+            pulumi.set(__self__, "azure", azure)
         if env is not None:
             pulumi.set(__self__, "env", env)
         if vault is not None:
@@ -33536,6 +33775,14 @@ class GetKafkaConnectKafkaConnectUserConfigSecretProviderResult(dict):
         AWS secret provider configuration
         """
         return pulumi.get(self, "aws")
+
+    @_builtins.property
+    @pulumi.getter
+    def azure(self) -> Optional['outputs.GetKafkaConnectKafkaConnectUserConfigSecretProviderAzureResult']:
+        """
+        Azure KeyVault secret provider configuration
+        """
+        return pulumi.get(self, "azure")
 
     @_builtins.property
     @pulumi.getter
@@ -33605,6 +33852,60 @@ class GetKafkaConnectKafkaConnectUserConfigSecretProviderAwsResult(dict):
         Secret key used to authenticate with aws.
         """
         return pulumi.get(self, "secret_key")
+
+
+@pulumi.output_type
+class GetKafkaConnectKafkaConnectUserConfigSecretProviderAzureResult(dict):
+    def __init__(__self__, *,
+                 auth_method: _builtins.str,
+                 client_id: Optional[_builtins.str] = None,
+                 secret: Optional[_builtins.str] = None,
+                 tenant_id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str auth_method: Enum: `credentials`. Auth method of the Azure KeyVault secret provider.
+        :param _builtins.str client_id: Azure client ID for the service principal.
+        :param _builtins.str secret: Azure client secret for the service principal.
+        :param _builtins.str tenant_id: Azure tenant ID for the service principal.
+        """
+        pulumi.set(__self__, "auth_method", auth_method)
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
+        if secret is not None:
+            pulumi.set(__self__, "secret", secret)
+        if tenant_id is not None:
+            pulumi.set(__self__, "tenant_id", tenant_id)
+
+    @_builtins.property
+    @pulumi.getter(name="authMethod")
+    def auth_method(self) -> _builtins.str:
+        """
+        Enum: `credentials`. Auth method of the Azure KeyVault secret provider.
+        """
+        return pulumi.get(self, "auth_method")
+
+    @_builtins.property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> Optional[_builtins.str]:
+        """
+        Azure client ID for the service principal.
+        """
+        return pulumi.get(self, "client_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def secret(self) -> Optional[_builtins.str]:
+        """
+        Azure client secret for the service principal.
+        """
+        return pulumi.get(self, "secret")
+
+    @_builtins.property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> Optional[_builtins.str]:
+        """
+        Azure tenant ID for the service principal.
+        """
+        return pulumi.get(self, "tenant_id")
 
 
 @pulumi.output_type
@@ -33909,6 +34210,7 @@ class GetKafkaKafkaUserConfigResult(dict):
                  kafka_version: Optional[_builtins.str] = None,
                  letsencrypt_sasl: Optional[_builtins.bool] = None,
                  letsencrypt_sasl_privatelink: Optional[_builtins.bool] = None,
+                 preferred_zones: Optional[Sequence[_builtins.str]] = None,
                  private_access: Optional['outputs.GetKafkaKafkaUserConfigPrivateAccessResult'] = None,
                  privatelink_access: Optional['outputs.GetKafkaKafkaUserConfigPrivatelinkAccessResult'] = None,
                  public_access: Optional['outputs.GetKafkaKafkaUserConfigPublicAccessResult'] = None,
@@ -33946,6 +34248,7 @@ class GetKafkaKafkaUserConfigResult(dict):
         :param _builtins.str kafka_version: Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, `4.1`, `4.2`, and newer. Kafka major version.
         :param _builtins.bool letsencrypt_sasl: Use a Let's Encrypt certificate authority (CA) for Kafka SASL authentication. (Default: False).
         :param _builtins.bool letsencrypt_sasl_privatelink: Use a Let's Encrypt certificate authority (CA) for Kafka SASL authentication via Privatelink. (Default: False).
+        :param Sequence[_builtins.str] preferred_zones: List of preferred zone IDs for service node placement. Nodes will be placed in these zones when available. If a specified zone is unavailable (e.g., due to capacity constraints), nodes will be placed in other available zones to maintain the configured number of zones for availability. Invalid zone IDs are rejected at configuration time. Zone IDs are cloud-specific: AWS uses zone IDs like `euc1-az1`, GCP uses zone names like `europe-west1-a`, and Azure uses `location/zone` format like `germanywestcentral/1`. If single_zone is enabled with an availability_zone, that setting takes precedence over preferred_zones.Changes take effect on next node recreation (e.g., maintenance or plan change). For Kafka professional plans, nodes outside preferred zones are automatically rebalanced once per day.
         :param 'GetKafkaKafkaUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks
         :param 'GetKafkaKafkaUserConfigPrivatelinkAccessArgs' privatelink_access: Allow access to selected service components through Privatelink
         :param 'GetKafkaKafkaUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet
@@ -34009,6 +34312,8 @@ class GetKafkaKafkaUserConfigResult(dict):
             pulumi.set(__self__, "letsencrypt_sasl", letsencrypt_sasl)
         if letsencrypt_sasl_privatelink is not None:
             pulumi.set(__self__, "letsencrypt_sasl_privatelink", letsencrypt_sasl_privatelink)
+        if preferred_zones is not None:
+            pulumi.set(__self__, "preferred_zones", preferred_zones)
         if private_access is not None:
             pulumi.set(__self__, "private_access", private_access)
         if privatelink_access is not None:
@@ -34239,6 +34544,14 @@ class GetKafkaKafkaUserConfigResult(dict):
         Use a Let's Encrypt certificate authority (CA) for Kafka SASL authentication via Privatelink. (Default: False).
         """
         return pulumi.get(self, "letsencrypt_sasl_privatelink")
+
+    @_builtins.property
+    @pulumi.getter(name="preferredZones")
+    def preferred_zones(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of preferred zone IDs for service node placement. Nodes will be placed in these zones when available. If a specified zone is unavailable (e.g., due to capacity constraints), nodes will be placed in other available zones to maintain the configured number of zones for availability. Invalid zone IDs are rejected at configuration time. Zone IDs are cloud-specific: AWS uses zone IDs like `euc1-az1`, GCP uses zone names like `europe-west1-a`, and Azure uses `location/zone` format like `germanywestcentral/1`. If single_zone is enabled with an availability_zone, that setting takes precedence over preferred_zones.Changes take effect on next node recreation (e.g., maintenance or plan change). For Kafka professional plans, nodes outside preferred zones are automatically rebalanced once per day.
+        """
+        return pulumi.get(self, "preferred_zones")
 
     @_builtins.property
     @pulumi.getter(name="privateAccess")
@@ -35482,17 +35795,21 @@ class GetKafkaKafkaUserConfigKafkaConnectSecretProviderResult(dict):
     def __init__(__self__, *,
                  name: _builtins.str,
                  aws: Optional['outputs.GetKafkaKafkaUserConfigKafkaConnectSecretProviderAwsResult'] = None,
+                 azure: Optional['outputs.GetKafkaKafkaUserConfigKafkaConnectSecretProviderAzureResult'] = None,
                  env: Optional['outputs.GetKafkaKafkaUserConfigKafkaConnectSecretProviderEnvResult'] = None,
                  vault: Optional['outputs.GetKafkaKafkaUserConfigKafkaConnectSecretProviderVaultResult'] = None):
         """
         :param _builtins.str name: Name of the secret provider. Used to reference secrets in connector config.
         :param 'GetKafkaKafkaUserConfigKafkaConnectSecretProviderAwsArgs' aws: AWS secret provider configuration
+        :param 'GetKafkaKafkaUserConfigKafkaConnectSecretProviderAzureArgs' azure: Azure KeyVault secret provider configuration
         :param 'GetKafkaKafkaUserConfigKafkaConnectSecretProviderEnvArgs' env: ENV secret provider configuration
         :param 'GetKafkaKafkaUserConfigKafkaConnectSecretProviderVaultArgs' vault: Vault secret provider configuration
         """
         pulumi.set(__self__, "name", name)
         if aws is not None:
             pulumi.set(__self__, "aws", aws)
+        if azure is not None:
+            pulumi.set(__self__, "azure", azure)
         if env is not None:
             pulumi.set(__self__, "env", env)
         if vault is not None:
@@ -35513,6 +35830,14 @@ class GetKafkaKafkaUserConfigKafkaConnectSecretProviderResult(dict):
         AWS secret provider configuration
         """
         return pulumi.get(self, "aws")
+
+    @_builtins.property
+    @pulumi.getter
+    def azure(self) -> Optional['outputs.GetKafkaKafkaUserConfigKafkaConnectSecretProviderAzureResult']:
+        """
+        Azure KeyVault secret provider configuration
+        """
+        return pulumi.get(self, "azure")
 
     @_builtins.property
     @pulumi.getter
@@ -35582,6 +35907,60 @@ class GetKafkaKafkaUserConfigKafkaConnectSecretProviderAwsResult(dict):
         Secret key used to authenticate with aws.
         """
         return pulumi.get(self, "secret_key")
+
+
+@pulumi.output_type
+class GetKafkaKafkaUserConfigKafkaConnectSecretProviderAzureResult(dict):
+    def __init__(__self__, *,
+                 auth_method: _builtins.str,
+                 client_id: Optional[_builtins.str] = None,
+                 secret: Optional[_builtins.str] = None,
+                 tenant_id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str auth_method: Enum: `credentials`. Auth method of the Azure KeyVault secret provider.
+        :param _builtins.str client_id: Azure client ID for the service principal.
+        :param _builtins.str secret: Azure client secret for the service principal.
+        :param _builtins.str tenant_id: Azure tenant ID for the service principal.
+        """
+        pulumi.set(__self__, "auth_method", auth_method)
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
+        if secret is not None:
+            pulumi.set(__self__, "secret", secret)
+        if tenant_id is not None:
+            pulumi.set(__self__, "tenant_id", tenant_id)
+
+    @_builtins.property
+    @pulumi.getter(name="authMethod")
+    def auth_method(self) -> _builtins.str:
+        """
+        Enum: `credentials`. Auth method of the Azure KeyVault secret provider.
+        """
+        return pulumi.get(self, "auth_method")
+
+    @_builtins.property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> Optional[_builtins.str]:
+        """
+        Azure client ID for the service principal.
+        """
+        return pulumi.get(self, "client_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def secret(self) -> Optional[_builtins.str]:
+        """
+        Azure client secret for the service principal.
+        """
+        return pulumi.get(self, "secret")
+
+    @_builtins.property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> Optional[_builtins.str]:
+        """
+        Azure tenant ID for the service principal.
+        """
+        return pulumi.get(self, "tenant_id")
 
 
 @pulumi.output_type
@@ -35682,11 +36061,15 @@ class GetKafkaKafkaUserConfigKafkaConnectSecretProviderVaultResult(dict):
 @pulumi.output_type
 class GetKafkaKafkaUserConfigKafkaDisklessResult(dict):
     def __init__(__self__, *,
-                 enabled: _builtins.bool):
+                 enabled: _builtins.bool,
+                 auto_diskless_topic_regexes: Optional[Sequence[_builtins.str]] = None):
         """
         :param _builtins.bool enabled: Whether to enable the Diskless functionality.
+        :param Sequence[_builtins.str] auto_diskless_topic_regexes: The regexes of topics to auto enable diskless. Topics matching any of the regexes will be created as diskless topics.
         """
         pulumi.set(__self__, "enabled", enabled)
+        if auto_diskless_topic_regexes is not None:
+            pulumi.set(__self__, "auto_diskless_topic_regexes", auto_diskless_topic_regexes)
 
     @_builtins.property
     @pulumi.getter
@@ -35695,6 +36078,14 @@ class GetKafkaKafkaUserConfigKafkaDisklessResult(dict):
         Whether to enable the Diskless functionality.
         """
         return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="autoDisklessTopicRegexes")
+    def auto_diskless_topic_regexes(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        The regexes of topics to auto enable diskless. Topics matching any of the regexes will be created as diskless topics.
+        """
+        return pulumi.get(self, "auto_diskless_topic_regexes")
 
 
 @pulumi.output_type
@@ -37774,7 +38165,7 @@ class GetMySqlMysqlUserConfigResult(dict):
         :param _builtins.str admin_username: Custom username for admin user. This must be set only when a new service is being created. Example: `avnadmin`.
         :param _builtins.int backup_hour: The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Default: `0`.
         :param _builtins.int backup_minute: The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Default: `0`.
-        :param _builtins.int binlog_retention_period: The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default for example if using the MySQL Debezium Kafka connector. Example: `600`.
+        :param _builtins.int binlog_retention_period: Warning: reducing this value can make a large batch of binary logs eligible for purge at once. Depending on the volume, this can sometimes stall the MySQL commit path and block writes until the purge completes. To stay on the safe side, prefer lowering the value gradually in small decrements during a low-traffic window rather than dropping it drastically in one step. Example: `600`.
         :param Sequence['GetMySqlMysqlUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         :param Sequence[_builtins.str] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         :param Sequence[_builtins.str] ip_filters: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
@@ -37878,7 +38269,7 @@ class GetMySqlMysqlUserConfigResult(dict):
     @pulumi.getter(name="binlogRetentionPeriod")
     def binlog_retention_period(self) -> Optional[_builtins.int]:
         """
-        The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default for example if using the MySQL Debezium Kafka connector. Example: `600`.
+        Warning: reducing this value can make a large batch of binary logs eligible for purge at once. Depending on the volume, this can sometimes stall the MySQL commit path and block writes until the purge completes. To stay on the safe side, prefer lowering the value gradually in small decrements during a low-traffic window rather than dropping it drastically in one step. Example: `600`.
         """
         return pulumi.get(self, "binlog_retention_period")
 
@@ -39124,7 +39515,7 @@ class GetOpenSearchOpensearchUserConfigResult(dict):
         :param 'GetOpenSearchOpensearchUserConfigOpenidArgs' openid: OpenSearch OpenID Connect Configuration
         :param 'GetOpenSearchOpensearchUserConfigOpensearchArgs' opensearch: OpenSearch settings
         :param 'GetOpenSearchOpensearchUserConfigOpensearchDashboardsArgs' opensearch_dashboards: OpenSearch Dashboards settings
-        :param _builtins.str opensearch_version: Enum: `1`, `2`, `2.19`, `3.3`, and newer. OpenSearch version.
+        :param _builtins.str opensearch_version: Enum: `1`, `2`, `2.19`, `3.3`, `3.6`, and newer. OpenSearch version.
         :param 'GetOpenSearchOpensearchUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks
         :param 'GetOpenSearchOpensearchUserConfigPrivatelinkAccessArgs' privatelink_access: Allow access to selected service components through Privatelink
         :param _builtins.str project_to_fork_from: Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
@@ -39334,7 +39725,7 @@ class GetOpenSearchOpensearchUserConfigResult(dict):
     @pulumi.getter(name="opensearchVersion")
     def opensearch_version(self) -> Optional[_builtins.str]:
         """
-        Enum: `1`, `2`, `2.19`, `3.3`, and newer. OpenSearch version.
+        Enum: `1`, `2`, `2.19`, `3.3`, `3.6`, and newer. OpenSearch version.
         """
         return pulumi.get(self, "opensearch_version")
 
@@ -48568,6 +48959,7 @@ class GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerResult(dict
     def __init__(__self__, *,
                  consumer_auto_offset_reset: Optional[_builtins.str] = None,
                  consumer_fetch_max_bytes: Optional[_builtins.int] = None,
+                 consumer_fetch_max_wait_ms: Optional[_builtins.int] = None,
                  consumer_fetch_min_bytes: Optional[_builtins.int] = None,
                  consumer_max_partition_fetch_bytes: Optional[_builtins.int] = None,
                  consumer_max_poll_records: Optional[_builtins.int] = None,
@@ -48582,24 +48974,27 @@ class GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerResult(dict
                  producer_send_buffer_bytes: Optional[_builtins.int] = None):
         """
         :param _builtins.str consumer_auto_offset_reset: Enum: `earliest`, `latest`. Set where consumer starts to consume data. Value `earliest`: Start replication from the earliest offset. Value `latest`: Start replication from the latest offset. Default is `earliest`.
-        :param _builtins.int consumer_fetch_max_bytes: The maximum amount of data the server should return for a fetch request.
-        :param _builtins.int consumer_fetch_min_bytes: The minimum amount of data the server should return for a fetch request. Example: `1024`.
-        :param _builtins.int consumer_max_partition_fetch_bytes: The maximum amount of data per partition the server will return.
-        :param _builtins.int consumer_max_poll_records: Set consumer max.poll.records. The default is 500. Example: `500`.
-        :param _builtins.int consumer_receive_buffer_bytes: The size of the TCP receive buffer (SO_RCVBUF) to use when reading data. -1 uses the OS default. Example: `65536`.
-        :param _builtins.int consumer_request_timeout_ms: The maximum time the client will wait for a response to a request. Example: `30000`.
-        :param _builtins.int producer_batch_size: The batch size in bytes producer will attempt to collect before publishing to broker. Example: `1024`.
-        :param _builtins.int producer_buffer_memory: The amount of bytes producer can use for buffering data before publishing to broker.
+        :param _builtins.int consumer_fetch_max_bytes: The maximum amount of data the server should return for a fetch request. Default is `52428800` (50MiB).
+        :param _builtins.int consumer_fetch_max_wait_ms: The maximum amount of time the server will block before answering the fetch request if there isn't sufficient data to immediately satisfy `consumer_fetch_min_bytes`. Default is `500`.
+        :param _builtins.int consumer_fetch_min_bytes: The minimum amount of data the server should return for a fetch request. Default is `1`. Example: `1024`.
+        :param _builtins.int consumer_max_partition_fetch_bytes: The maximum amount of data per partition the server will return. Default is `1048576` (1MiB).
+        :param _builtins.int consumer_max_poll_records: Set consumer max.poll.records. Default is `500`.
+        :param _builtins.int consumer_receive_buffer_bytes: The size of the TCP receive buffer (SO_RCVBUF) to use when reading data. Default is `65536` (64KiB). `-1` uses the OS default.
+        :param _builtins.int consumer_request_timeout_ms: The maximum time the client will wait for a response to a request. Default is `30000` (30s).
+        :param _builtins.int producer_batch_size: The batch size in bytes producer will attempt to collect before publishing to broker. Default is `16384` (16KiB).
+        :param _builtins.int producer_buffer_memory: The amount of bytes producer can use for buffering data before publishing to broker. Default is `33554432` (32MiB).
         :param _builtins.str producer_compression_type: Enum: `gzip`, `lz4`, `none`, `snappy`, `zstd`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
-        :param _builtins.int producer_linger_ms: The linger time (ms) for waiting new data to arrive for publishing. Example: `100`.
-        :param _builtins.int producer_max_request_size: The maximum request size in bytes.
-        :param _builtins.int producer_request_timeout_ms: The maximum time the client will wait for a response to a request. Example: `30000`.
-        :param _builtins.int producer_send_buffer_bytes: The size of the TCP send buffer (SO_SNDBUF) to use when sending data. -1 uses the OS default. Example: `131072`.
+        :param _builtins.int producer_linger_ms: The linger time (ms) for waiting new data to arrive for publishing. Default is `0`. Example: `100`.
+        :param _builtins.int producer_max_request_size: The maximum request size in bytes. Default is `1048576` (1MiB).
+        :param _builtins.int producer_request_timeout_ms: The maximum time the client will wait for a response to a request. Default is `30000` (30s).
+        :param _builtins.int producer_send_buffer_bytes: The size of the TCP send buffer (SO_SNDBUF) to use when sending data. Default is `131072` (128KiB). `-1` uses the OS default.
         """
         if consumer_auto_offset_reset is not None:
             pulumi.set(__self__, "consumer_auto_offset_reset", consumer_auto_offset_reset)
         if consumer_fetch_max_bytes is not None:
             pulumi.set(__self__, "consumer_fetch_max_bytes", consumer_fetch_max_bytes)
+        if consumer_fetch_max_wait_ms is not None:
+            pulumi.set(__self__, "consumer_fetch_max_wait_ms", consumer_fetch_max_wait_ms)
         if consumer_fetch_min_bytes is not None:
             pulumi.set(__self__, "consumer_fetch_min_bytes", consumer_fetch_min_bytes)
         if consumer_max_partition_fetch_bytes is not None:
@@ -48637,15 +49032,23 @@ class GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerResult(dict
     @pulumi.getter(name="consumerFetchMaxBytes")
     def consumer_fetch_max_bytes(self) -> Optional[_builtins.int]:
         """
-        The maximum amount of data the server should return for a fetch request.
+        The maximum amount of data the server should return for a fetch request. Default is `52428800` (50MiB).
         """
         return pulumi.get(self, "consumer_fetch_max_bytes")
+
+    @_builtins.property
+    @pulumi.getter(name="consumerFetchMaxWaitMs")
+    def consumer_fetch_max_wait_ms(self) -> Optional[_builtins.int]:
+        """
+        The maximum amount of time the server will block before answering the fetch request if there isn't sufficient data to immediately satisfy `consumer_fetch_min_bytes`. Default is `500`.
+        """
+        return pulumi.get(self, "consumer_fetch_max_wait_ms")
 
     @_builtins.property
     @pulumi.getter(name="consumerFetchMinBytes")
     def consumer_fetch_min_bytes(self) -> Optional[_builtins.int]:
         """
-        The minimum amount of data the server should return for a fetch request. Example: `1024`.
+        The minimum amount of data the server should return for a fetch request. Default is `1`. Example: `1024`.
         """
         return pulumi.get(self, "consumer_fetch_min_bytes")
 
@@ -48653,7 +49056,7 @@ class GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerResult(dict
     @pulumi.getter(name="consumerMaxPartitionFetchBytes")
     def consumer_max_partition_fetch_bytes(self) -> Optional[_builtins.int]:
         """
-        The maximum amount of data per partition the server will return.
+        The maximum amount of data per partition the server will return. Default is `1048576` (1MiB).
         """
         return pulumi.get(self, "consumer_max_partition_fetch_bytes")
 
@@ -48661,7 +49064,7 @@ class GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerResult(dict
     @pulumi.getter(name="consumerMaxPollRecords")
     def consumer_max_poll_records(self) -> Optional[_builtins.int]:
         """
-        Set consumer max.poll.records. The default is 500. Example: `500`.
+        Set consumer max.poll.records. Default is `500`.
         """
         return pulumi.get(self, "consumer_max_poll_records")
 
@@ -48669,7 +49072,7 @@ class GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerResult(dict
     @pulumi.getter(name="consumerReceiveBufferBytes")
     def consumer_receive_buffer_bytes(self) -> Optional[_builtins.int]:
         """
-        The size of the TCP receive buffer (SO_RCVBUF) to use when reading data. -1 uses the OS default. Example: `65536`.
+        The size of the TCP receive buffer (SO_RCVBUF) to use when reading data. Default is `65536` (64KiB). `-1` uses the OS default.
         """
         return pulumi.get(self, "consumer_receive_buffer_bytes")
 
@@ -48677,7 +49080,7 @@ class GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerResult(dict
     @pulumi.getter(name="consumerRequestTimeoutMs")
     def consumer_request_timeout_ms(self) -> Optional[_builtins.int]:
         """
-        The maximum time the client will wait for a response to a request. Example: `30000`.
+        The maximum time the client will wait for a response to a request. Default is `30000` (30s).
         """
         return pulumi.get(self, "consumer_request_timeout_ms")
 
@@ -48685,7 +49088,7 @@ class GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerResult(dict
     @pulumi.getter(name="producerBatchSize")
     def producer_batch_size(self) -> Optional[_builtins.int]:
         """
-        The batch size in bytes producer will attempt to collect before publishing to broker. Example: `1024`.
+        The batch size in bytes producer will attempt to collect before publishing to broker. Default is `16384` (16KiB).
         """
         return pulumi.get(self, "producer_batch_size")
 
@@ -48693,7 +49096,7 @@ class GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerResult(dict
     @pulumi.getter(name="producerBufferMemory")
     def producer_buffer_memory(self) -> Optional[_builtins.int]:
         """
-        The amount of bytes producer can use for buffering data before publishing to broker.
+        The amount of bytes producer can use for buffering data before publishing to broker. Default is `33554432` (32MiB).
         """
         return pulumi.get(self, "producer_buffer_memory")
 
@@ -48709,7 +49112,7 @@ class GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerResult(dict
     @pulumi.getter(name="producerLingerMs")
     def producer_linger_ms(self) -> Optional[_builtins.int]:
         """
-        The linger time (ms) for waiting new data to arrive for publishing. Example: `100`.
+        The linger time (ms) for waiting new data to arrive for publishing. Default is `0`. Example: `100`.
         """
         return pulumi.get(self, "producer_linger_ms")
 
@@ -48717,7 +49120,7 @@ class GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerResult(dict
     @pulumi.getter(name="producerMaxRequestSize")
     def producer_max_request_size(self) -> Optional[_builtins.int]:
         """
-        The maximum request size in bytes.
+        The maximum request size in bytes. Default is `1048576` (1MiB).
         """
         return pulumi.get(self, "producer_max_request_size")
 
@@ -48725,7 +49128,7 @@ class GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerResult(dict
     @pulumi.getter(name="producerRequestTimeoutMs")
     def producer_request_timeout_ms(self) -> Optional[_builtins.int]:
         """
-        The maximum time the client will wait for a response to a request. Example: `30000`.
+        The maximum time the client will wait for a response to a request. Default is `30000` (30s).
         """
         return pulumi.get(self, "producer_request_timeout_ms")
 
@@ -48733,7 +49136,7 @@ class GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerResult(dict
     @pulumi.getter(name="producerSendBufferBytes")
     def producer_send_buffer_bytes(self) -> Optional[_builtins.int]:
         """
-        The size of the TCP send buffer (SO_SNDBUF) to use when sending data. -1 uses the OS default. Example: `131072`.
+        The size of the TCP send buffer (SO_SNDBUF) to use when sending data. Default is `131072` (128KiB). `-1` uses the OS default.
         """
         return pulumi.get(self, "producer_send_buffer_bytes")
 

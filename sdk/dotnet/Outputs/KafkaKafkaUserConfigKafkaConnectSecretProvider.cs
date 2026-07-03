@@ -18,6 +18,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.KafkaKafkaUserConfigKafkaConnectSecretProviderAws? Aws;
         /// <summary>
+        /// Azure KeyVault secret provider configuration
+        /// </summary>
+        public readonly Outputs.KafkaKafkaUserConfigKafkaConnectSecretProviderAzure? Azure;
+        /// <summary>
         /// ENV secret provider configuration
         /// </summary>
         public readonly Outputs.KafkaKafkaUserConfigKafkaConnectSecretProviderEnv? Env;
@@ -34,6 +38,8 @@ namespace Pulumi.Aiven.Outputs
         private KafkaKafkaUserConfigKafkaConnectSecretProvider(
             Outputs.KafkaKafkaUserConfigKafkaConnectSecretProviderAws? aws,
 
+            Outputs.KafkaKafkaUserConfigKafkaConnectSecretProviderAzure? azure,
+
             Outputs.KafkaKafkaUserConfigKafkaConnectSecretProviderEnv? env,
 
             string name,
@@ -41,6 +47,7 @@ namespace Pulumi.Aiven.Outputs
             Outputs.KafkaKafkaUserConfigKafkaConnectSecretProviderVault? vault)
         {
             Aws = aws;
+            Azure = azure;
             Env = env;
             Name = name;
             Vault = vault;

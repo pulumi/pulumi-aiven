@@ -73,7 +73,7 @@ export class GovernanceAccess extends pulumi.CustomResource {
     }
 
     /**
-     * Required property. access type specific data. Changing this property forces recreation of the resource.
+     * access type specific data. Changing this property forces recreation of the resource.
      */
     declare public readonly accessData: pulumi.Output<outputs.GovernanceAccessAccessData>;
     /**
@@ -150,7 +150,7 @@ export class GovernanceAccess extends pulumi.CustomResource {
  */
 export interface GovernanceAccessState {
     /**
-     * Required property. access type specific data. Changing this property forces recreation of the resource.
+     * access type specific data. Changing this property forces recreation of the resource.
      */
     accessData?: pulumi.Input<inputs.GovernanceAccessAccessData | undefined>;
     /**
@@ -181,7 +181,7 @@ export interface GovernanceAccessState {
  */
 export interface GovernanceAccessArgs {
     /**
-     * Required property. access type specific data. Changing this property forces recreation of the resource.
+     * access type specific data. Changing this property forces recreation of the resource.
      */
     accessData: pulumi.Input<inputs.GovernanceAccessAccessData>;
     /**

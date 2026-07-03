@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GovernanceAccessAccessData {
     /**
-     * @return Required property. Acls. Changing this property forces recreation of the resource.
+     * @return Acls. Changing this property forces recreation of the resource.
      * 
      */
     private List<GovernanceAccessAccessDataAcl> acls;
@@ -37,7 +37,7 @@ public final class GovernanceAccessAccessData {
 
     private GovernanceAccessAccessData() {}
     /**
-     * @return Required property. Acls. Changing this property forces recreation of the resource.
+     * @return Acls. Changing this property forces recreation of the resource.
      * 
      */
     public List<GovernanceAccessAccessDataAcl> acls() {

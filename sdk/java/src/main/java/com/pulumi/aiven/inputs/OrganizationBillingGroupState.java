@@ -36,14 +36,14 @@ public final class OrganizationBillingGroupState extends com.pulumi.resources.Re
     }
 
     /**
-     * Required property. List of billing contact emails.
+     * List of billing contact emails.
      * 
      */
     @Import(name="billingContactEmails")
     private @Nullable Output<List<OrganizationBillingGroupBillingContactEmailArgs>> billingContactEmails;
 
     /**
-     * @return Required property. List of billing contact emails.
+     * @return List of billing contact emails.
      * 
      */
     public Optional<Output<List<OrganizationBillingGroupBillingContactEmailArgs>>> billingContactEmails() {
@@ -51,14 +51,14 @@ public final class OrganizationBillingGroupState extends com.pulumi.resources.Re
     }
 
     /**
-     * Required property. List of billing contact emails.
+     * List of billing contact emails.
      * 
      */
     @Import(name="billingEmails")
     private @Nullable Output<List<OrganizationBillingGroupBillingEmailArgs>> billingEmails;
 
     /**
-     * @return Required property. List of billing contact emails.
+     * @return List of billing contact emails.
      * 
      */
     public Optional<Output<List<OrganizationBillingGroupBillingEmailArgs>>> billingEmails() {
@@ -141,14 +141,14 @@ public final class OrganizationBillingGroupState extends com.pulumi.resources.Re
     }
 
     /**
-     * Required property. Payment method.
+     * Payment method.
      * 
      */
     @Import(name="paymentMethod")
     private @Nullable Output<OrganizationBillingGroupPaymentMethodArgs> paymentMethod;
 
     /**
-     * @return Required property. Payment method.
+     * @return Payment method.
      * 
      */
     public Optional<Output<OrganizationBillingGroupPaymentMethodArgs>> paymentMethod() {
@@ -249,7 +249,7 @@ public final class OrganizationBillingGroupState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param billingContactEmails Required property. List of billing contact emails.
+         * @param billingContactEmails List of billing contact emails.
          * 
          * @return builder
          * 
@@ -260,7 +260,7 @@ public final class OrganizationBillingGroupState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param billingContactEmails Required property. List of billing contact emails.
+         * @param billingContactEmails List of billing contact emails.
          * 
          * @return builder
          * 
@@ -270,7 +270,7 @@ public final class OrganizationBillingGroupState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param billingContactEmails Required property. List of billing contact emails.
+         * @param billingContactEmails List of billing contact emails.
          * 
          * @return builder
          * 
@@ -280,7 +280,7 @@ public final class OrganizationBillingGroupState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param billingEmails Required property. List of billing contact emails.
+         * @param billingEmails List of billing contact emails.
          * 
          * @return builder
          * 
@@ -291,7 +291,7 @@ public final class OrganizationBillingGroupState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param billingEmails Required property. List of billing contact emails.
+         * @param billingEmails List of billing contact emails.
          * 
          * @return builder
          * 
@@ -301,7 +301,7 @@ public final class OrganizationBillingGroupState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param billingEmails Required property. List of billing contact emails.
+         * @param billingEmails List of billing contact emails.
          * 
          * @return builder
          * 
@@ -416,7 +416,7 @@ public final class OrganizationBillingGroupState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param paymentMethod Required property. Payment method.
+         * @param paymentMethod Payment method.
          * 
          * @return builder
          * 
@@ -427,7 +427,7 @@ public final class OrganizationBillingGroupState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param paymentMethod Required property. Payment method.
+         * @param paymentMethod Payment method.
          * 
          * @return builder
          * 

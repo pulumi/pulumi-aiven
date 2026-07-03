@@ -627,6 +627,9 @@
                                             "aws": {
                                                 "maxItemsOne": true
                                             },
+                                            "azure": {
+                                                "maxItemsOne": true
+                                            },
                                             "env": {
                                                 "maxItemsOne": true
                                             },
@@ -637,13 +640,23 @@
                                     }
                                 },
                                 "kafka_diskless": {
-                                    "maxItemsOne": true
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "auto_diskless_topic_regexes": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
                                 },
                                 "kafka_rest_config": {
                                     "maxItemsOne": true
                                 },
                                 "kafka_sasl_mechanisms": {
                                     "maxItemsOne": true
+                                },
+                                "preferred_zones": {
+                                    "maxItemsOne": false
                                 },
                                 "private_access": {
                                     "maxItemsOne": true
@@ -743,6 +756,9 @@
                                     "elem": {
                                         "fields": {
                                             "aws": {
+                                                "maxItemsOne": true
+                                            },
+                                            "azure": {
                                                 "maxItemsOne": true
                                             },
                                             "env": {
@@ -2386,6 +2402,9 @@
                                             "aws": {
                                                 "maxItemsOne": true
                                             },
+                                            "azure": {
+                                                "maxItemsOne": true
+                                            },
                                             "env": {
                                                 "maxItemsOne": true
                                             },
@@ -2396,13 +2415,23 @@
                                     }
                                 },
                                 "kafka_diskless": {
-                                    "maxItemsOne": true
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "auto_diskless_topic_regexes": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
                                 },
                                 "kafka_rest_config": {
                                     "maxItemsOne": true
                                 },
                                 "kafka_sasl_mechanisms": {
                                     "maxItemsOne": true
+                                },
+                                "preferred_zones": {
+                                    "maxItemsOne": false
                                 },
                                 "private_access": {
                                     "maxItemsOne": true
@@ -2502,6 +2531,9 @@
                                     "elem": {
                                         "fields": {
                                             "aws": {
+                                                "maxItemsOne": true
+                                            },
+                                            "azure": {
                                                 "maxItemsOne": true
                                             },
                                             "env": {

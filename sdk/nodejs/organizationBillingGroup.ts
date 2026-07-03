@@ -74,11 +74,11 @@ export class OrganizationBillingGroup extends pulumi.CustomResource {
      */
     declare public readonly billingAddressId: pulumi.Output<string>;
     /**
-     * Required property. List of billing contact emails.
+     * List of billing contact emails.
      */
     declare public readonly billingContactEmails: pulumi.Output<outputs.OrganizationBillingGroupBillingContactEmail[]>;
     /**
-     * Required property. List of billing contact emails.
+     * List of billing contact emails.
      */
     declare public readonly billingEmails: pulumi.Output<outputs.OrganizationBillingGroupBillingEmail[]>;
     /**
@@ -102,7 +102,7 @@ export class OrganizationBillingGroup extends pulumi.CustomResource {
      */
     declare public readonly organizationId: pulumi.Output<string>;
     /**
-     * Required property. Payment method.
+     * Payment method.
      */
     declare public readonly paymentMethod: pulumi.Output<outputs.OrganizationBillingGroupPaymentMethod>;
     /**
@@ -190,11 +190,11 @@ export interface OrganizationBillingGroupState {
      */
     billingAddressId?: pulumi.Input<string | undefined>;
     /**
-     * Required property. List of billing contact emails.
+     * List of billing contact emails.
      */
     billingContactEmails?: pulumi.Input<pulumi.Input<inputs.OrganizationBillingGroupBillingContactEmail>[] | undefined>;
     /**
-     * Required property. List of billing contact emails.
+     * List of billing contact emails.
      */
     billingEmails?: pulumi.Input<pulumi.Input<inputs.OrganizationBillingGroupBillingEmail>[] | undefined>;
     /**
@@ -218,7 +218,7 @@ export interface OrganizationBillingGroupState {
      */
     organizationId?: pulumi.Input<string | undefined>;
     /**
-     * Required property. Payment method.
+     * Payment method.
      */
     paymentMethod?: pulumi.Input<inputs.OrganizationBillingGroupPaymentMethod | undefined>;
     /**
@@ -241,11 +241,11 @@ export interface OrganizationBillingGroupArgs {
      */
     billingAddressId: pulumi.Input<string>;
     /**
-     * Required property. List of billing contact emails.
+     * List of billing contact emails.
      */
     billingContactEmails: pulumi.Input<pulumi.Input<inputs.OrganizationBillingGroupBillingContactEmail>[]>;
     /**
-     * Required property. List of billing contact emails.
+     * List of billing contact emails.
      */
     billingEmails: pulumi.Input<pulumi.Input<inputs.OrganizationBillingGroupBillingEmail>[]>;
     /**
@@ -261,7 +261,7 @@ export interface OrganizationBillingGroupArgs {
      */
     organizationId: pulumi.Input<string>;
     /**
-     * Required property. Payment method.
+     * Payment method.
      */
     paymentMethod: pulumi.Input<inputs.OrganizationBillingGroupPaymentMethod>;
     /**

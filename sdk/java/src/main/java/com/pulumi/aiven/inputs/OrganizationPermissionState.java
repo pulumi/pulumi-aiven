@@ -34,14 +34,14 @@ public final class OrganizationPermissionState extends com.pulumi.resources.Reso
     }
 
     /**
-     * Required property. List of roles to set.
+     * List of roles to set.
      * 
      */
     @Import(name="permissions")
     private @Nullable Output<List<OrganizationPermissionPermissionArgs>> permissions;
 
     /**
-     * @return Required property. List of roles to set.
+     * @return List of roles to set.
      * 
      */
     public Optional<Output<List<OrganizationPermissionPermissionArgs>>> permissions() {
@@ -135,7 +135,7 @@ public final class OrganizationPermissionState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param permissions Required property. List of roles to set.
+         * @param permissions List of roles to set.
          * 
          * @return builder
          * 
@@ -146,7 +146,7 @@ public final class OrganizationPermissionState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param permissions Required property. List of roles to set.
+         * @param permissions List of roles to set.
          * 
          * @return builder
          * 
@@ -156,7 +156,7 @@ public final class OrganizationPermissionState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param permissions Required property. List of roles to set.
+         * @param permissions List of roles to set.
          * 
          * @return builder
          * 

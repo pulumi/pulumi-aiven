@@ -118,6 +118,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? LetsencryptSaslPrivatelink;
         /// <summary>
+        /// List of preferred zone IDs for service node placement. Nodes will be placed in these zones when available. If a specified zone is unavailable (e.g., due to capacity constraints), nodes will be placed in other available zones to maintain the configured number of zones for availability. Invalid zone IDs are rejected at configuration time. Zone IDs are cloud-specific: AWS uses zone IDs like `euc1-az1`, GCP uses zone names like `europe-west1-a`, and Azure uses `location/zone` format like `germanywestcentral/1`. If SingleZone is enabled with an availability_zone, that setting takes precedence over preferred_zones.Changes take effect on next node recreation (e.g., maintenance or plan change). For Kafka professional plans, nodes outside preferred zones are automatically rebalanced once per day.
+        /// </summary>
+        public readonly ImmutableArray<string> PreferredZones;
+        /// <summary>
         /// Allow access to selected service ports from private networks
         /// </summary>
         public readonly Outputs.GetKafkaKafkaUserConfigPrivateAccessResult? PrivateAccess;
@@ -212,6 +216,8 @@ namespace Pulumi.Aiven.Outputs
 
             bool? letsencryptSaslPrivatelink,
 
+            ImmutableArray<string> preferredZones,
+
             Outputs.GetKafkaKafkaUserConfigPrivateAccessResult? privateAccess,
 
             Outputs.GetKafkaKafkaUserConfigPrivatelinkAccessResult? privatelinkAccess,
@@ -258,6 +264,7 @@ namespace Pulumi.Aiven.Outputs
             KafkaVersion = kafkaVersion;
             LetsencryptSasl = letsencryptSasl;
             LetsencryptSaslPrivatelink = letsencryptSaslPrivatelink;
+            PreferredZones = preferredZones;
             PrivateAccess = privateAccess;
             PrivatelinkAccess = privatelinkAccess;
             PublicAccess = publicAccess;
