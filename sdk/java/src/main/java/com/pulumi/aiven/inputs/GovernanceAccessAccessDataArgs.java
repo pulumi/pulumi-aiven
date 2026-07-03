@@ -19,14 +19,14 @@ public final class GovernanceAccessAccessDataArgs extends com.pulumi.resources.R
     public static final GovernanceAccessAccessDataArgs Empty = new GovernanceAccessAccessDataArgs();
 
     /**
-     * Required property. Acls. Changing this property forces recreation of the resource.
+     * Acls. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="acls", required=true)
     private Output<List<GovernanceAccessAccessDataAclArgs>> acls;
 
     /**
-     * @return Required property. Acls. Changing this property forces recreation of the resource.
+     * @return Acls. Changing this property forces recreation of the resource.
      * 
      */
     public Output<List<GovernanceAccessAccessDataAclArgs>> acls() {
@@ -106,7 +106,7 @@ public final class GovernanceAccessAccessDataArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param acls Required property. Acls. Changing this property forces recreation of the resource.
+         * @param acls Acls. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -117,7 +117,7 @@ public final class GovernanceAccessAccessDataArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param acls Required property. Acls. Changing this property forces recreation of the resource.
+         * @param acls Acls. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -127,7 +127,7 @@ public final class GovernanceAccessAccessDataArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param acls Required property. Acls. Changing this property forces recreation of the resource.
+         * @param acls Acls. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 

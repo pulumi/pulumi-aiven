@@ -205,6 +205,18 @@ namespace Pulumi.Aiven.Inputs
         [Input("letsencryptSaslPrivatelink")]
         public Input<bool>? LetsencryptSaslPrivatelink { get; set; }
 
+        [Input("preferredZones")]
+        private InputList<string>? _preferredZones;
+
+        /// <summary>
+        /// List of preferred zone IDs for service node placement. Nodes will be placed in these zones when available. If a specified zone is unavailable (e.g., due to capacity constraints), nodes will be placed in other available zones to maintain the configured number of zones for availability. Invalid zone IDs are rejected at configuration time. Zone IDs are cloud-specific: AWS uses zone IDs like `euc1-az1`, GCP uses zone names like `europe-west1-a`, and Azure uses `location/zone` format like `germanywestcentral/1`. If single*zone is enabled with an availability*zone, that setting takes precedence over preferred_zones.Changes take effect on next node recreation (e.g., maintenance or plan change). For Kafka professional plans, nodes outside preferred zones are automatically rebalanced once per day.
+        /// </summary>
+        public InputList<string> PreferredZones
+        {
+            get => _preferredZones ?? (_preferredZones = new InputList<string>());
+            set => _preferredZones = value;
+        }
+
         /// <summary>
         /// Allow access to selected service ports from private networks
         /// </summary>

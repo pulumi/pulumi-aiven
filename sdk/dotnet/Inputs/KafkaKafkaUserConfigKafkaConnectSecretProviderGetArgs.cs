@@ -19,6 +19,12 @@ namespace Pulumi.Aiven.Inputs
         public Input<Inputs.KafkaKafkaUserConfigKafkaConnectSecretProviderAwsGetArgs>? Aws { get; set; }
 
         /// <summary>
+        /// Azure KeyVault secret provider configuration
+        /// </summary>
+        [Input("azure")]
+        public Input<Inputs.KafkaKafkaUserConfigKafkaConnectSecretProviderAzureGetArgs>? Azure { get; set; }
+
+        /// <summary>
         /// ENV secret provider configuration
         /// </summary>
         [Input("env")]

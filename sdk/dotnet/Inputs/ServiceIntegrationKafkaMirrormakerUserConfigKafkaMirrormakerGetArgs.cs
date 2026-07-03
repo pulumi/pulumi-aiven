@@ -19,49 +19,55 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? ConsumerAutoOffsetReset { get; set; }
 
         /// <summary>
-        /// The maximum amount of data the server should return for a fetch request.
+        /// The maximum amount of data the server should return for a fetch request. Default is `52428800` (50MiB).
         /// </summary>
         [Input("consumerFetchMaxBytes")]
         public Input<int>? ConsumerFetchMaxBytes { get; set; }
 
         /// <summary>
-        /// The minimum amount of data the server should return for a fetch request. Example: `1024`.
+        /// The maximum amount of time the server will block before answering the fetch request if there isn't sufficient data to immediately satisfy `ConsumerFetchMinBytes`. Default is `500`.
+        /// </summary>
+        [Input("consumerFetchMaxWaitMs")]
+        public Input<int>? ConsumerFetchMaxWaitMs { get; set; }
+
+        /// <summary>
+        /// The minimum amount of data the server should return for a fetch request. Default is `1`. Example: `1024`.
         /// </summary>
         [Input("consumerFetchMinBytes")]
         public Input<int>? ConsumerFetchMinBytes { get; set; }
 
         /// <summary>
-        /// The maximum amount of data per partition the server will return.
+        /// The maximum amount of data per partition the server will return. Default is `1048576` (1MiB).
         /// </summary>
         [Input("consumerMaxPartitionFetchBytes")]
         public Input<int>? ConsumerMaxPartitionFetchBytes { get; set; }
 
         /// <summary>
-        /// Set consumer max.poll.records. The default is 500. Example: `500`.
+        /// Set consumer max.poll.records. Default is `500`.
         /// </summary>
         [Input("consumerMaxPollRecords")]
         public Input<int>? ConsumerMaxPollRecords { get; set; }
 
         /// <summary>
-        /// The size of the TCP receive buffer (SO_RCVBUF) to use when reading data. -1 uses the OS default. Example: `65536`.
+        /// The size of the TCP receive buffer (SO_RCVBUF) to use when reading data. Default is `65536` (64KiB). `-1` uses the OS default.
         /// </summary>
         [Input("consumerReceiveBufferBytes")]
         public Input<int>? ConsumerReceiveBufferBytes { get; set; }
 
         /// <summary>
-        /// The maximum time the client will wait for a response to a request. Example: `30000`.
+        /// The maximum time the client will wait for a response to a request. Default is `30000` (30s).
         /// </summary>
         [Input("consumerRequestTimeoutMs")]
         public Input<int>? ConsumerRequestTimeoutMs { get; set; }
 
         /// <summary>
-        /// The batch size in bytes producer will attempt to collect before publishing to broker. Example: `1024`.
+        /// The batch size in bytes producer will attempt to collect before publishing to broker. Default is `16384` (16KiB).
         /// </summary>
         [Input("producerBatchSize")]
         public Input<int>? ProducerBatchSize { get; set; }
 
         /// <summary>
-        /// The amount of bytes producer can use for buffering data before publishing to broker.
+        /// The amount of bytes producer can use for buffering data before publishing to broker. Default is `33554432` (32MiB).
         /// </summary>
         [Input("producerBufferMemory")]
         public Input<int>? ProducerBufferMemory { get; set; }
@@ -73,25 +79,25 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? ProducerCompressionType { get; set; }
 
         /// <summary>
-        /// The linger time (ms) for waiting new data to arrive for publishing. Example: `100`.
+        /// The linger time (ms) for waiting new data to arrive for publishing. Default is `0`. Example: `100`.
         /// </summary>
         [Input("producerLingerMs")]
         public Input<int>? ProducerLingerMs { get; set; }
 
         /// <summary>
-        /// The maximum request size in bytes.
+        /// The maximum request size in bytes. Default is `1048576` (1MiB).
         /// </summary>
         [Input("producerMaxRequestSize")]
         public Input<int>? ProducerMaxRequestSize { get; set; }
 
         /// <summary>
-        /// The maximum time the client will wait for a response to a request. Example: `30000`.
+        /// The maximum time the client will wait for a response to a request. Default is `30000` (30s).
         /// </summary>
         [Input("producerRequestTimeoutMs")]
         public Input<int>? ProducerRequestTimeoutMs { get; set; }
 
         /// <summary>
-        /// The size of the TCP send buffer (SO_SNDBUF) to use when sending data. -1 uses the OS default. Example: `131072`.
+        /// The size of the TCP send buffer (SO_SNDBUF) to use when sending data. Default is `131072` (128KiB). `-1` uses the OS default.
         /// </summary>
         [Input("producerSendBufferBytes")]
         public Input<int>? ProducerSendBufferBytes { get; set; }

@@ -69,9 +69,9 @@ type OrganizationBillingGroup struct {
 
 	// Billing address ID. Maximum length: `36`.
 	BillingAddressId pulumi.StringOutput `pulumi:"billingAddressId"`
-	// Required property. List of billing contact emails.
+	// List of billing contact emails.
 	BillingContactEmails OrganizationBillingGroupBillingContactEmailArrayOutput `pulumi:"billingContactEmails"`
-	// Required property. List of billing contact emails.
+	// List of billing contact emails.
 	BillingEmails OrganizationBillingGroupBillingEmailArrayOutput `pulumi:"billingEmails"`
 	// Billing group ID.
 	BillingGroupId pulumi.StringOutput `pulumi:"billingGroupId"`
@@ -83,7 +83,7 @@ type OrganizationBillingGroup struct {
 	CustomInvoiceText pulumi.StringPtrOutput `pulumi:"customInvoiceText"`
 	// ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
 	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
-	// Required property. Payment method.
+	// Payment method.
 	PaymentMethod OrganizationBillingGroupPaymentMethodOutput `pulumi:"paymentMethod"`
 	// Shipping address ID. Maximum length: `36`.
 	ShippingAddressId pulumi.StringOutput                       `pulumi:"shippingAddressId"`
@@ -145,9 +145,9 @@ func GetOrganizationBillingGroup(ctx *pulumi.Context,
 type organizationBillingGroupState struct {
 	// Billing address ID. Maximum length: `36`.
 	BillingAddressId *string `pulumi:"billingAddressId"`
-	// Required property. List of billing contact emails.
+	// List of billing contact emails.
 	BillingContactEmails []OrganizationBillingGroupBillingContactEmail `pulumi:"billingContactEmails"`
-	// Required property. List of billing contact emails.
+	// List of billing contact emails.
 	BillingEmails []OrganizationBillingGroupBillingEmail `pulumi:"billingEmails"`
 	// Billing group ID.
 	BillingGroupId *string `pulumi:"billingGroupId"`
@@ -159,7 +159,7 @@ type organizationBillingGroupState struct {
 	CustomInvoiceText *string `pulumi:"customInvoiceText"`
 	// ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
 	OrganizationId *string `pulumi:"organizationId"`
-	// Required property. Payment method.
+	// Payment method.
 	PaymentMethod *OrganizationBillingGroupPaymentMethod `pulumi:"paymentMethod"`
 	// Shipping address ID. Maximum length: `36`.
 	ShippingAddressId *string                           `pulumi:"shippingAddressId"`
@@ -171,9 +171,9 @@ type organizationBillingGroupState struct {
 type OrganizationBillingGroupState struct {
 	// Billing address ID. Maximum length: `36`.
 	BillingAddressId pulumi.StringPtrInput
-	// Required property. List of billing contact emails.
+	// List of billing contact emails.
 	BillingContactEmails OrganizationBillingGroupBillingContactEmailArrayInput
-	// Required property. List of billing contact emails.
+	// List of billing contact emails.
 	BillingEmails OrganizationBillingGroupBillingEmailArrayInput
 	// Billing group ID.
 	BillingGroupId pulumi.StringPtrInput
@@ -185,7 +185,7 @@ type OrganizationBillingGroupState struct {
 	CustomInvoiceText pulumi.StringPtrInput
 	// ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
 	OrganizationId pulumi.StringPtrInput
-	// Required property. Payment method.
+	// Payment method.
 	PaymentMethod OrganizationBillingGroupPaymentMethodPtrInput
 	// Shipping address ID. Maximum length: `36`.
 	ShippingAddressId pulumi.StringPtrInput
@@ -201,9 +201,9 @@ func (OrganizationBillingGroupState) ElementType() reflect.Type {
 type organizationBillingGroupArgs struct {
 	// Billing address ID. Maximum length: `36`.
 	BillingAddressId string `pulumi:"billingAddressId"`
-	// Required property. List of billing contact emails.
+	// List of billing contact emails.
 	BillingContactEmails []OrganizationBillingGroupBillingContactEmail `pulumi:"billingContactEmails"`
-	// Required property. List of billing contact emails.
+	// List of billing contact emails.
 	BillingEmails []OrganizationBillingGroupBillingEmail `pulumi:"billingEmails"`
 	// Billing Group Name. Length must be between `1` and `128`.
 	BillingGroupName string `pulumi:"billingGroupName"`
@@ -211,7 +211,7 @@ type organizationBillingGroupArgs struct {
 	CustomInvoiceText *string `pulumi:"customInvoiceText"`
 	// ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
 	OrganizationId string `pulumi:"organizationId"`
-	// Required property. Payment method.
+	// Payment method.
 	PaymentMethod OrganizationBillingGroupPaymentMethod `pulumi:"paymentMethod"`
 	// Shipping address ID. Maximum length: `36`.
 	ShippingAddressId string                            `pulumi:"shippingAddressId"`
@@ -224,9 +224,9 @@ type organizationBillingGroupArgs struct {
 type OrganizationBillingGroupArgs struct {
 	// Billing address ID. Maximum length: `36`.
 	BillingAddressId pulumi.StringInput
-	// Required property. List of billing contact emails.
+	// List of billing contact emails.
 	BillingContactEmails OrganizationBillingGroupBillingContactEmailArrayInput
-	// Required property. List of billing contact emails.
+	// List of billing contact emails.
 	BillingEmails OrganizationBillingGroupBillingEmailArrayInput
 	// Billing Group Name. Length must be between `1` and `128`.
 	BillingGroupName pulumi.StringInput
@@ -234,7 +234,7 @@ type OrganizationBillingGroupArgs struct {
 	CustomInvoiceText pulumi.StringPtrInput
 	// ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
 	OrganizationId pulumi.StringInput
-	// Required property. Payment method.
+	// Payment method.
 	PaymentMethod OrganizationBillingGroupPaymentMethodInput
 	// Shipping address ID. Maximum length: `36`.
 	ShippingAddressId pulumi.StringInput
@@ -335,14 +335,14 @@ func (o OrganizationBillingGroupOutput) BillingAddressId() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationBillingGroup) pulumi.StringOutput { return v.BillingAddressId }).(pulumi.StringOutput)
 }
 
-// Required property. List of billing contact emails.
+// List of billing contact emails.
 func (o OrganizationBillingGroupOutput) BillingContactEmails() OrganizationBillingGroupBillingContactEmailArrayOutput {
 	return o.ApplyT(func(v *OrganizationBillingGroup) OrganizationBillingGroupBillingContactEmailArrayOutput {
 		return v.BillingContactEmails
 	}).(OrganizationBillingGroupBillingContactEmailArrayOutput)
 }
 
-// Required property. List of billing contact emails.
+// List of billing contact emails.
 func (o OrganizationBillingGroupOutput) BillingEmails() OrganizationBillingGroupBillingEmailArrayOutput {
 	return o.ApplyT(func(v *OrganizationBillingGroup) OrganizationBillingGroupBillingEmailArrayOutput {
 		return v.BillingEmails
@@ -374,7 +374,7 @@ func (o OrganizationBillingGroupOutput) OrganizationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationBillingGroup) pulumi.StringOutput { return v.OrganizationId }).(pulumi.StringOutput)
 }
 
-// Required property. Payment method.
+// Payment method.
 func (o OrganizationBillingGroupOutput) PaymentMethod() OrganizationBillingGroupPaymentMethodOutput {
 	return o.ApplyT(func(v *OrganizationBillingGroup) OrganizationBillingGroupPaymentMethodOutput { return v.PaymentMethod }).(OrganizationBillingGroupPaymentMethodOutput)
 }

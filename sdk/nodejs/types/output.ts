@@ -2710,6 +2710,10 @@ export interface GetKafkaConnectKafkaConnectUserConfigSecretProvider {
      */
     aws?: outputs.GetKafkaConnectKafkaConnectUserConfigSecretProviderAws;
     /**
+     * Azure KeyVault secret provider configuration
+     */
+    azure?: outputs.GetKafkaConnectKafkaConnectUserConfigSecretProviderAzure;
+    /**
      * ENV secret provider configuration
      */
     env?: outputs.GetKafkaConnectKafkaConnectUserConfigSecretProviderEnv;
@@ -2740,6 +2744,25 @@ export interface GetKafkaConnectKafkaConnectUserConfigSecretProviderAws {
      * Secret key used to authenticate with aws.
      */
     secretKey?: string;
+}
+
+export interface GetKafkaConnectKafkaConnectUserConfigSecretProviderAzure {
+    /**
+     * Enum: `credentials`. Auth method of the Azure KeyVault secret provider.
+     */
+    authMethod: string;
+    /**
+     * Azure client ID for the service principal.
+     */
+    clientId?: string;
+    /**
+     * Azure client secret for the service principal.
+     */
+    secret?: string;
+    /**
+     * Azure tenant ID for the service principal.
+     */
+    tenantId?: string;
 }
 
 export interface GetKafkaConnectKafkaConnectUserConfigSecretProviderEnv {
@@ -2952,6 +2975,10 @@ export interface GetKafkaKafkaUserConfig {
      * Use a Let's Encrypt certificate authority (CA) for Kafka SASL authentication via Privatelink. (Default: False).
      */
     letsencryptSaslPrivatelink?: boolean;
+    /**
+     * List of preferred zone IDs for service node placement. Nodes will be placed in these zones when available. If a specified zone is unavailable (e.g., due to capacity constraints), nodes will be placed in other available zones to maintain the configured number of zones for availability. Invalid zone IDs are rejected at configuration time. Zone IDs are cloud-specific: AWS uses zone IDs like `euc1-az1`, GCP uses zone names like `europe-west1-a`, and Azure uses `location/zone` format like `germanywestcentral/1`. If singleZone is enabled with an availability_zone, that setting takes precedence over preferred_zones.Changes take effect on next node recreation (e.g., maintenance or plan change). For Kafka professional plans, nodes outside preferred zones are automatically rebalanced once per day.
+     */
+    preferredZones?: string[];
     /**
      * Allow access to selected service ports from private networks
      */
@@ -3392,6 +3419,10 @@ export interface GetKafkaKafkaUserConfigKafkaConnectSecretProvider {
      */
     aws?: outputs.GetKafkaKafkaUserConfigKafkaConnectSecretProviderAws;
     /**
+     * Azure KeyVault secret provider configuration
+     */
+    azure?: outputs.GetKafkaKafkaUserConfigKafkaConnectSecretProviderAzure;
+    /**
      * ENV secret provider configuration
      */
     env?: outputs.GetKafkaKafkaUserConfigKafkaConnectSecretProviderEnv;
@@ -3422,6 +3453,25 @@ export interface GetKafkaKafkaUserConfigKafkaConnectSecretProviderAws {
      * Secret key used to authenticate with aws.
      */
     secretKey?: string;
+}
+
+export interface GetKafkaKafkaUserConfigKafkaConnectSecretProviderAzure {
+    /**
+     * Enum: `credentials`. Auth method of the Azure KeyVault secret provider.
+     */
+    authMethod: string;
+    /**
+     * Azure client ID for the service principal.
+     */
+    clientId?: string;
+    /**
+     * Azure client secret for the service principal.
+     */
+    secret?: string;
+    /**
+     * Azure tenant ID for the service principal.
+     */
+    tenantId?: string;
 }
 
 export interface GetKafkaKafkaUserConfigKafkaConnectSecretProviderEnv {
@@ -3459,6 +3509,10 @@ export interface GetKafkaKafkaUserConfigKafkaConnectSecretProviderVault {
 }
 
 export interface GetKafkaKafkaUserConfigKafkaDiskless {
+    /**
+     * The regexes of topics to auto enable diskless. Topics matching any of the regexes will be created as diskless topics.
+     */
+    autoDisklessTopicRegexes?: string[];
     /**
      * Whether to enable the Diskless functionality.
      */
@@ -4228,7 +4282,7 @@ export interface GetMySqlMysqlUserConfig {
      */
     backupMinute?: number;
     /**
-     * The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default for example if using the MySQL Debezium Kafka connector. Example: `600`.
+     * Warning: reducing this value can make a large batch of binary logs eligible for purge at once. Depending on the volume, this can sometimes stall the MySQL commit path and block writes until the purge completes. To stay on the safe side, prefer lowering the value gradually in small decrements during a low-traffic window rather than dropping it drastically in one step. Example: `600`.
      */
     binlogRetentionPeriod?: number;
     /**
@@ -4743,7 +4797,7 @@ export interface GetOpenSearchOpensearchUserConfig {
      */
     opensearchDashboards?: outputs.GetOpenSearchOpensearchUserConfigOpensearchDashboards;
     /**
-     * Enum: `1`, `2`, `2.19`, `3.3`, and newer. OpenSearch version.
+     * Enum: `1`, `2`, `2.19`, `3.3`, `3.6`, and newer. OpenSearch version.
      */
     opensearchVersion?: string;
     /**
@@ -8013,35 +8067,39 @@ export interface GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker
      */
     consumerAutoOffsetReset?: string;
     /**
-     * The maximum amount of data the server should return for a fetch request.
+     * The maximum amount of data the server should return for a fetch request. Default is `52428800` (50MiB).
      */
     consumerFetchMaxBytes?: number;
     /**
-     * The minimum amount of data the server should return for a fetch request. Example: `1024`.
+     * The maximum amount of time the server will block before answering the fetch request if there isn't sufficient data to immediately satisfy `consumerFetchMinBytes`. Default is `500`.
+     */
+    consumerFetchMaxWaitMs?: number;
+    /**
+     * The minimum amount of data the server should return for a fetch request. Default is `1`. Example: `1024`.
      */
     consumerFetchMinBytes?: number;
     /**
-     * The maximum amount of data per partition the server will return.
+     * The maximum amount of data per partition the server will return. Default is `1048576` (1MiB).
      */
     consumerMaxPartitionFetchBytes?: number;
     /**
-     * Set consumer max.poll.records. The default is 500. Example: `500`.
+     * Set consumer max.poll.records. Default is `500`.
      */
     consumerMaxPollRecords?: number;
     /**
-     * The size of the TCP receive buffer (SO_RCVBUF) to use when reading data. -1 uses the OS default. Example: `65536`.
+     * The size of the TCP receive buffer (SO_RCVBUF) to use when reading data. Default is `65536` (64KiB). `-1` uses the OS default.
      */
     consumerReceiveBufferBytes?: number;
     /**
-     * The maximum time the client will wait for a response to a request. Example: `30000`.
+     * The maximum time the client will wait for a response to a request. Default is `30000` (30s).
      */
     consumerRequestTimeoutMs?: number;
     /**
-     * The batch size in bytes producer will attempt to collect before publishing to broker. Example: `1024`.
+     * The batch size in bytes producer will attempt to collect before publishing to broker. Default is `16384` (16KiB).
      */
     producerBatchSize?: number;
     /**
-     * The amount of bytes producer can use for buffering data before publishing to broker.
+     * The amount of bytes producer can use for buffering data before publishing to broker. Default is `33554432` (32MiB).
      */
     producerBufferMemory?: number;
     /**
@@ -8049,19 +8107,19 @@ export interface GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker
      */
     producerCompressionType?: string;
     /**
-     * The linger time (ms) for waiting new data to arrive for publishing. Example: `100`.
+     * The linger time (ms) for waiting new data to arrive for publishing. Default is `0`. Example: `100`.
      */
     producerLingerMs?: number;
     /**
-     * The maximum request size in bytes.
+     * The maximum request size in bytes. Default is `1048576` (1MiB).
      */
     producerMaxRequestSize?: number;
     /**
-     * The maximum time the client will wait for a response to a request. Example: `30000`.
+     * The maximum time the client will wait for a response to a request. Default is `30000` (30s).
      */
     producerRequestTimeoutMs?: number;
     /**
-     * The size of the TCP send buffer (SO_SNDBUF) to use when sending data. -1 uses the OS default. Example: `131072`.
+     * The size of the TCP send buffer (SO_SNDBUF) to use when sending data. Default is `131072` (128KiB). `-1` uses the OS default.
      */
     producerSendBufferBytes?: number;
 }
@@ -9027,7 +9085,7 @@ export interface GetValkeyValkeyUserConfigPublicAccess {
 
 export interface GovernanceAccessAccessData {
     /**
-     * Required property. Acls. Changing this property forces recreation of the resource.
+     * Acls. Changing this property forces recreation of the resource.
      */
     acls: outputs.GovernanceAccessAccessDataAcl[];
     /**
@@ -9927,6 +9985,10 @@ export interface KafkaConnectKafkaConnectUserConfigSecretProvider {
      */
     aws?: outputs.KafkaConnectKafkaConnectUserConfigSecretProviderAws;
     /**
+     * Azure KeyVault secret provider configuration
+     */
+    azure?: outputs.KafkaConnectKafkaConnectUserConfigSecretProviderAzure;
+    /**
      * ENV secret provider configuration
      */
     env?: outputs.KafkaConnectKafkaConnectUserConfigSecretProviderEnv;
@@ -9957,6 +10019,25 @@ export interface KafkaConnectKafkaConnectUserConfigSecretProviderAws {
      * Secret key used to authenticate with aws.
      */
     secretKey?: string;
+}
+
+export interface KafkaConnectKafkaConnectUserConfigSecretProviderAzure {
+    /**
+     * Enum: `credentials`. Auth method of the Azure KeyVault secret provider.
+     */
+    authMethod: string;
+    /**
+     * Azure client ID for the service principal.
+     */
+    clientId?: string;
+    /**
+     * Azure client secret for the service principal.
+     */
+    secret?: string;
+    /**
+     * Azure tenant ID for the service principal.
+     */
+    tenantId?: string;
 }
 
 export interface KafkaConnectKafkaConnectUserConfigSecretProviderEnv {
@@ -10169,6 +10250,10 @@ export interface KafkaKafkaUserConfig {
      * Use a Let's Encrypt certificate authority (CA) for Kafka SASL authentication via Privatelink. (Default: False).
      */
     letsencryptSaslPrivatelink?: boolean;
+    /**
+     * List of preferred zone IDs for service node placement. Nodes will be placed in these zones when available. If a specified zone is unavailable (e.g., due to capacity constraints), nodes will be placed in other available zones to maintain the configured number of zones for availability. Invalid zone IDs are rejected at configuration time. Zone IDs are cloud-specific: AWS uses zone IDs like `euc1-az1`, GCP uses zone names like `europe-west1-a`, and Azure uses `location/zone` format like `germanywestcentral/1`. If single*zone is enabled with an availability*zone, that setting takes precedence over preferred_zones.Changes take effect on next node recreation (e.g., maintenance or plan change). For Kafka professional plans, nodes outside preferred zones are automatically rebalanced once per day.
+     */
+    preferredZones?: string[];
     /**
      * Allow access to selected service ports from private networks
      */
@@ -10609,6 +10694,10 @@ export interface KafkaKafkaUserConfigKafkaConnectSecretProvider {
      */
     aws?: outputs.KafkaKafkaUserConfigKafkaConnectSecretProviderAws;
     /**
+     * Azure KeyVault secret provider configuration
+     */
+    azure?: outputs.KafkaKafkaUserConfigKafkaConnectSecretProviderAzure;
+    /**
      * ENV secret provider configuration
      */
     env?: outputs.KafkaKafkaUserConfigKafkaConnectSecretProviderEnv;
@@ -10639,6 +10728,25 @@ export interface KafkaKafkaUserConfigKafkaConnectSecretProviderAws {
      * Secret key used to authenticate with aws.
      */
     secretKey?: string;
+}
+
+export interface KafkaKafkaUserConfigKafkaConnectSecretProviderAzure {
+    /**
+     * Enum: `credentials`. Auth method of the Azure KeyVault secret provider.
+     */
+    authMethod: string;
+    /**
+     * Azure client ID for the service principal.
+     */
+    clientId?: string;
+    /**
+     * Azure client secret for the service principal.
+     */
+    secret?: string;
+    /**
+     * Azure tenant ID for the service principal.
+     */
+    tenantId?: string;
 }
 
 export interface KafkaKafkaUserConfigKafkaConnectSecretProviderEnv {
@@ -10676,6 +10784,10 @@ export interface KafkaKafkaUserConfigKafkaConnectSecretProviderVault {
 }
 
 export interface KafkaKafkaUserConfigKafkaDiskless {
+    /**
+     * The regexes of topics to auto enable diskless. Topics matching any of the regexes will be created as diskless topics.
+     */
+    autoDisklessTopicRegexes?: string[];
     /**
      * Whether to enable the Diskless functionality.
      */
@@ -11393,7 +11505,7 @@ export interface MySqlMysqlUserConfig {
      */
     backupMinute?: number;
     /**
-     * The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default for example if using the MySQL Debezium Kafka connector. Example: `600`.
+     * Warning: reducing this value can make a large batch of binary logs eligible for purge at once. Depending on the volume, this can sometimes stall the MySQL commit path and block writes until the purge completes. To stay on the safe side, prefer lowering the value gradually in small decrements during a low-traffic window rather than dropping it drastically in one step. Example: `600`.
      */
     binlogRetentionPeriod?: number;
     /**
@@ -11944,7 +12056,7 @@ export interface OpenSearchOpensearchUserConfig {
      */
     opensearchDashboards?: outputs.OpenSearchOpensearchUserConfigOpensearchDashboards;
     /**
-     * Enum: `1`, `2`, `2.19`, `3.3`, and newer. OpenSearch version.
+     * Enum: `1`, `2`, `2.19`, `3.3`, `3.6`, and newer. OpenSearch version.
      */
     opensearchVersion?: string;
     /**
@@ -15200,35 +15312,39 @@ export interface ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker {
      */
     consumerAutoOffsetReset?: string;
     /**
-     * The maximum amount of data the server should return for a fetch request.
+     * The maximum amount of data the server should return for a fetch request. Default is `52428800` (50MiB).
      */
     consumerFetchMaxBytes?: number;
     /**
-     * The minimum amount of data the server should return for a fetch request. Example: `1024`.
+     * The maximum amount of time the server will block before answering the fetch request if there isn't sufficient data to immediately satisfy `consumerFetchMinBytes`. Default is `500`.
+     */
+    consumerFetchMaxWaitMs?: number;
+    /**
+     * The minimum amount of data the server should return for a fetch request. Default is `1`. Example: `1024`.
      */
     consumerFetchMinBytes?: number;
     /**
-     * The maximum amount of data per partition the server will return.
+     * The maximum amount of data per partition the server will return. Default is `1048576` (1MiB).
      */
     consumerMaxPartitionFetchBytes?: number;
     /**
-     * Set consumer max.poll.records. The default is 500. Example: `500`.
+     * Set consumer max.poll.records. Default is `500`.
      */
     consumerMaxPollRecords?: number;
     /**
-     * The size of the TCP receive buffer (SO_RCVBUF) to use when reading data. -1 uses the OS default. Example: `65536`.
+     * The size of the TCP receive buffer (SO_RCVBUF) to use when reading data. Default is `65536` (64KiB). `-1` uses the OS default.
      */
     consumerReceiveBufferBytes?: number;
     /**
-     * The maximum time the client will wait for a response to a request. Example: `30000`.
+     * The maximum time the client will wait for a response to a request. Default is `30000` (30s).
      */
     consumerRequestTimeoutMs?: number;
     /**
-     * The batch size in bytes producer will attempt to collect before publishing to broker. Example: `1024`.
+     * The batch size in bytes producer will attempt to collect before publishing to broker. Default is `16384` (16KiB).
      */
     producerBatchSize?: number;
     /**
-     * The amount of bytes producer can use for buffering data before publishing to broker.
+     * The amount of bytes producer can use for buffering data before publishing to broker. Default is `33554432` (32MiB).
      */
     producerBufferMemory?: number;
     /**
@@ -15236,19 +15352,19 @@ export interface ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker {
      */
     producerCompressionType?: string;
     /**
-     * The linger time (ms) for waiting new data to arrive for publishing. Example: `100`.
+     * The linger time (ms) for waiting new data to arrive for publishing. Default is `0`. Example: `100`.
      */
     producerLingerMs?: number;
     /**
-     * The maximum request size in bytes.
+     * The maximum request size in bytes. Default is `1048576` (1MiB).
      */
     producerMaxRequestSize?: number;
     /**
-     * The maximum time the client will wait for a response to a request. Example: `30000`.
+     * The maximum time the client will wait for a response to a request. Default is `30000` (30s).
      */
     producerRequestTimeoutMs?: number;
     /**
-     * The size of the TCP send buffer (SO_SNDBUF) to use when sending data. -1 uses the OS default. Example: `131072`.
+     * The size of the TCP send buffer (SO_SNDBUF) to use when sending data. Default is `131072` (128KiB). `-1` uses the OS default.
      */
     producerSendBufferBytes?: number;
 }

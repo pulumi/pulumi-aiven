@@ -2891,7 +2891,7 @@ export interface GetServicePlanTimeoutsArgs {
 
 export interface GovernanceAccessAccessData {
     /**
-     * Required property. Acls. Changing this property forces recreation of the resource.
+     * Acls. Changing this property forces recreation of the resource.
      */
     acls: pulumi.Input<pulumi.Input<inputs.GovernanceAccessAccessDataAcl>[]>;
     /**
@@ -3791,6 +3791,10 @@ export interface KafkaConnectKafkaConnectUserConfigSecretProvider {
      */
     aws?: pulumi.Input<inputs.KafkaConnectKafkaConnectUserConfigSecretProviderAws | undefined>;
     /**
+     * Azure KeyVault secret provider configuration
+     */
+    azure?: pulumi.Input<inputs.KafkaConnectKafkaConnectUserConfigSecretProviderAzure | undefined>;
+    /**
      * ENV secret provider configuration
      */
     env?: pulumi.Input<inputs.KafkaConnectKafkaConnectUserConfigSecretProviderEnv | undefined>;
@@ -3821,6 +3825,25 @@ export interface KafkaConnectKafkaConnectUserConfigSecretProviderAws {
      * Secret key used to authenticate with aws.
      */
     secretKey?: pulumi.Input<string | undefined>;
+}
+
+export interface KafkaConnectKafkaConnectUserConfigSecretProviderAzure {
+    /**
+     * Enum: `credentials`. Auth method of the Azure KeyVault secret provider.
+     */
+    authMethod: pulumi.Input<string>;
+    /**
+     * Azure client ID for the service principal.
+     */
+    clientId?: pulumi.Input<string | undefined>;
+    /**
+     * Azure client secret for the service principal.
+     */
+    secret?: pulumi.Input<string | undefined>;
+    /**
+     * Azure tenant ID for the service principal.
+     */
+    tenantId?: pulumi.Input<string | undefined>;
 }
 
 export interface KafkaConnectKafkaConnectUserConfigSecretProviderEnv {
@@ -4033,6 +4056,10 @@ export interface KafkaKafkaUserConfig {
      * Use a Let's Encrypt certificate authority (CA) for Kafka SASL authentication via Privatelink. (Default: False).
      */
     letsencryptSaslPrivatelink?: pulumi.Input<boolean | undefined>;
+    /**
+     * List of preferred zone IDs for service node placement. Nodes will be placed in these zones when available. If a specified zone is unavailable (e.g., due to capacity constraints), nodes will be placed in other available zones to maintain the configured number of zones for availability. Invalid zone IDs are rejected at configuration time. Zone IDs are cloud-specific: AWS uses zone IDs like `euc1-az1`, GCP uses zone names like `europe-west1-a`, and Azure uses `location/zone` format like `germanywestcentral/1`. If single*zone is enabled with an availability*zone, that setting takes precedence over preferred_zones.Changes take effect on next node recreation (e.g., maintenance or plan change). For Kafka professional plans, nodes outside preferred zones are automatically rebalanced once per day.
+     */
+    preferredZones?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Allow access to selected service ports from private networks
      */
@@ -4473,6 +4500,10 @@ export interface KafkaKafkaUserConfigKafkaConnectSecretProvider {
      */
     aws?: pulumi.Input<inputs.KafkaKafkaUserConfigKafkaConnectSecretProviderAws | undefined>;
     /**
+     * Azure KeyVault secret provider configuration
+     */
+    azure?: pulumi.Input<inputs.KafkaKafkaUserConfigKafkaConnectSecretProviderAzure | undefined>;
+    /**
      * ENV secret provider configuration
      */
     env?: pulumi.Input<inputs.KafkaKafkaUserConfigKafkaConnectSecretProviderEnv | undefined>;
@@ -4503,6 +4534,25 @@ export interface KafkaKafkaUserConfigKafkaConnectSecretProviderAws {
      * Secret key used to authenticate with aws.
      */
     secretKey?: pulumi.Input<string | undefined>;
+}
+
+export interface KafkaKafkaUserConfigKafkaConnectSecretProviderAzure {
+    /**
+     * Enum: `credentials`. Auth method of the Azure KeyVault secret provider.
+     */
+    authMethod: pulumi.Input<string>;
+    /**
+     * Azure client ID for the service principal.
+     */
+    clientId?: pulumi.Input<string | undefined>;
+    /**
+     * Azure client secret for the service principal.
+     */
+    secret?: pulumi.Input<string | undefined>;
+    /**
+     * Azure tenant ID for the service principal.
+     */
+    tenantId?: pulumi.Input<string | undefined>;
 }
 
 export interface KafkaKafkaUserConfigKafkaConnectSecretProviderEnv {
@@ -4540,6 +4590,10 @@ export interface KafkaKafkaUserConfigKafkaConnectSecretProviderVault {
 }
 
 export interface KafkaKafkaUserConfigKafkaDiskless {
+    /**
+     * The regexes of topics to auto enable diskless. Topics matching any of the regexes will be created as diskless topics.
+     */
+    autoDisklessTopicRegexes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether to enable the Diskless functionality.
      */
@@ -5257,7 +5311,7 @@ export interface MySqlMysqlUserConfig {
      */
     backupMinute?: pulumi.Input<number | undefined>;
     /**
-     * The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default for example if using the MySQL Debezium Kafka connector. Example: `600`.
+     * Warning: reducing this value can make a large batch of binary logs eligible for purge at once. Depending on the volume, this can sometimes stall the MySQL commit path and block writes until the purge completes. To stay on the safe side, prefer lowering the value gradually in small decrements during a low-traffic window rather than dropping it drastically in one step. Example: `600`.
      */
     binlogRetentionPeriod?: pulumi.Input<number | undefined>;
     /**
@@ -5808,7 +5862,7 @@ export interface OpenSearchOpensearchUserConfig {
      */
     opensearchDashboards?: pulumi.Input<inputs.OpenSearchOpensearchUserConfigOpensearchDashboards | undefined>;
     /**
-     * Enum: `1`, `2`, `2.19`, `3.3`, and newer. OpenSearch version.
+     * Enum: `1`, `2`, `2.19`, `3.3`, `3.6`, and newer. OpenSearch version.
      */
     opensearchVersion?: pulumi.Input<string | undefined>;
     /**
@@ -9064,35 +9118,39 @@ export interface ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker {
      */
     consumerAutoOffsetReset?: pulumi.Input<string | undefined>;
     /**
-     * The maximum amount of data the server should return for a fetch request.
+     * The maximum amount of data the server should return for a fetch request. Default is `52428800` (50MiB).
      */
     consumerFetchMaxBytes?: pulumi.Input<number | undefined>;
     /**
-     * The minimum amount of data the server should return for a fetch request. Example: `1024`.
+     * The maximum amount of time the server will block before answering the fetch request if there isn't sufficient data to immediately satisfy `consumerFetchMinBytes`. Default is `500`.
+     */
+    consumerFetchMaxWaitMs?: pulumi.Input<number | undefined>;
+    /**
+     * The minimum amount of data the server should return for a fetch request. Default is `1`. Example: `1024`.
      */
     consumerFetchMinBytes?: pulumi.Input<number | undefined>;
     /**
-     * The maximum amount of data per partition the server will return.
+     * The maximum amount of data per partition the server will return. Default is `1048576` (1MiB).
      */
     consumerMaxPartitionFetchBytes?: pulumi.Input<number | undefined>;
     /**
-     * Set consumer max.poll.records. The default is 500. Example: `500`.
+     * Set consumer max.poll.records. Default is `500`.
      */
     consumerMaxPollRecords?: pulumi.Input<number | undefined>;
     /**
-     * The size of the TCP receive buffer (SO_RCVBUF) to use when reading data. -1 uses the OS default. Example: `65536`.
+     * The size of the TCP receive buffer (SO_RCVBUF) to use when reading data. Default is `65536` (64KiB). `-1` uses the OS default.
      */
     consumerReceiveBufferBytes?: pulumi.Input<number | undefined>;
     /**
-     * The maximum time the client will wait for a response to a request. Example: `30000`.
+     * The maximum time the client will wait for a response to a request. Default is `30000` (30s).
      */
     consumerRequestTimeoutMs?: pulumi.Input<number | undefined>;
     /**
-     * The batch size in bytes producer will attempt to collect before publishing to broker. Example: `1024`.
+     * The batch size in bytes producer will attempt to collect before publishing to broker. Default is `16384` (16KiB).
      */
     producerBatchSize?: pulumi.Input<number | undefined>;
     /**
-     * The amount of bytes producer can use for buffering data before publishing to broker.
+     * The amount of bytes producer can use for buffering data before publishing to broker. Default is `33554432` (32MiB).
      */
     producerBufferMemory?: pulumi.Input<number | undefined>;
     /**
@@ -9100,19 +9158,19 @@ export interface ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker {
      */
     producerCompressionType?: pulumi.Input<string | undefined>;
     /**
-     * The linger time (ms) for waiting new data to arrive for publishing. Example: `100`.
+     * The linger time (ms) for waiting new data to arrive for publishing. Default is `0`. Example: `100`.
      */
     producerLingerMs?: pulumi.Input<number | undefined>;
     /**
-     * The maximum request size in bytes.
+     * The maximum request size in bytes. Default is `1048576` (1MiB).
      */
     producerMaxRequestSize?: pulumi.Input<number | undefined>;
     /**
-     * The maximum time the client will wait for a response to a request. Example: `30000`.
+     * The maximum time the client will wait for a response to a request. Default is `30000` (30s).
      */
     producerRequestTimeoutMs?: pulumi.Input<number | undefined>;
     /**
-     * The size of the TCP send buffer (SO_SNDBUF) to use when sending data. -1 uses the OS default. Example: `131072`.
+     * The size of the TCP send buffer (SO_SNDBUF) to use when sending data. Default is `131072` (128KiB). `-1` uses the OS default.
      */
     producerSendBufferBytes?: pulumi.Input<number | undefined>;
 }

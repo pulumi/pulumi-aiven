@@ -35,11 +35,11 @@ class OrganizationBillingGroupArgs:
         The set of arguments for constructing a OrganizationBillingGroup resource.
 
         :param pulumi.Input[_builtins.str] billing_address_id: Billing address ID. Maximum length: `36`.
-        :param pulumi.Input[Sequence[pulumi.Input['OrganizationBillingGroupBillingContactEmailArgs']]] billing_contact_emails: Required property. List of billing contact emails.
-        :param pulumi.Input[Sequence[pulumi.Input['OrganizationBillingGroupBillingEmailArgs']]] billing_emails: Required property. List of billing contact emails.
+        :param pulumi.Input[Sequence[pulumi.Input['OrganizationBillingGroupBillingContactEmailArgs']]] billing_contact_emails: List of billing contact emails.
+        :param pulumi.Input[Sequence[pulumi.Input['OrganizationBillingGroupBillingEmailArgs']]] billing_emails: List of billing contact emails.
         :param pulumi.Input[_builtins.str] billing_group_name: Billing Group Name. Length must be between `1` and `128`.
         :param pulumi.Input[_builtins.str] organization_id: ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
-        :param pulumi.Input['OrganizationBillingGroupPaymentMethodArgs'] payment_method: Required property. Payment method.
+        :param pulumi.Input['OrganizationBillingGroupPaymentMethodArgs'] payment_method: Payment method.
         :param pulumi.Input[_builtins.str] shipping_address_id: Shipping address ID. Maximum length: `36`.
         :param pulumi.Input[_builtins.str] custom_invoice_text: Extra billing text. Maximum length: `256`.
         :param pulumi.Input[_builtins.str] vat_id: VAT ID.
@@ -74,7 +74,7 @@ class OrganizationBillingGroupArgs:
     @pulumi.getter(name="billingContactEmails")
     def billing_contact_emails(self) -> pulumi.Input[Sequence[pulumi.Input['OrganizationBillingGroupBillingContactEmailArgs']]]:
         """
-        Required property. List of billing contact emails.
+        List of billing contact emails.
         """
         return pulumi.get(self, "billing_contact_emails")
 
@@ -86,7 +86,7 @@ class OrganizationBillingGroupArgs:
     @pulumi.getter(name="billingEmails")
     def billing_emails(self) -> pulumi.Input[Sequence[pulumi.Input['OrganizationBillingGroupBillingEmailArgs']]]:
         """
-        Required property. List of billing contact emails.
+        List of billing contact emails.
         """
         return pulumi.get(self, "billing_emails")
 
@@ -122,7 +122,7 @@ class OrganizationBillingGroupArgs:
     @pulumi.getter(name="paymentMethod")
     def payment_method(self) -> pulumi.Input['OrganizationBillingGroupPaymentMethodArgs']:
         """
-        Required property. Payment method.
+        Payment method.
         """
         return pulumi.get(self, "payment_method")
 
@@ -195,14 +195,14 @@ class _OrganizationBillingGroupState:
         Input properties used for looking up and filtering OrganizationBillingGroup resources.
 
         :param pulumi.Input[_builtins.str] billing_address_id: Billing address ID. Maximum length: `36`.
-        :param pulumi.Input[Sequence[pulumi.Input['OrganizationBillingGroupBillingContactEmailArgs']]] billing_contact_emails: Required property. List of billing contact emails.
-        :param pulumi.Input[Sequence[pulumi.Input['OrganizationBillingGroupBillingEmailArgs']]] billing_emails: Required property. List of billing contact emails.
+        :param pulumi.Input[Sequence[pulumi.Input['OrganizationBillingGroupBillingContactEmailArgs']]] billing_contact_emails: List of billing contact emails.
+        :param pulumi.Input[Sequence[pulumi.Input['OrganizationBillingGroupBillingEmailArgs']]] billing_emails: List of billing contact emails.
         :param pulumi.Input[_builtins.str] billing_group_id: Billing group ID.
         :param pulumi.Input[_builtins.str] billing_group_name: Billing Group Name. Length must be between `1` and `128`.
         :param pulumi.Input[_builtins.str] create_time: The date when this billing group was created.
         :param pulumi.Input[_builtins.str] custom_invoice_text: Extra billing text. Maximum length: `256`.
         :param pulumi.Input[_builtins.str] organization_id: ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
-        :param pulumi.Input['OrganizationBillingGroupPaymentMethodArgs'] payment_method: Required property. Payment method.
+        :param pulumi.Input['OrganizationBillingGroupPaymentMethodArgs'] payment_method: Payment method.
         :param pulumi.Input[_builtins.str] shipping_address_id: Shipping address ID. Maximum length: `36`.
         :param pulumi.Input[_builtins.str] vat_id: VAT ID.
         """
@@ -247,7 +247,7 @@ class _OrganizationBillingGroupState:
     @pulumi.getter(name="billingContactEmails")
     def billing_contact_emails(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OrganizationBillingGroupBillingContactEmailArgs']]]]:
         """
-        Required property. List of billing contact emails.
+        List of billing contact emails.
         """
         return pulumi.get(self, "billing_contact_emails")
 
@@ -259,7 +259,7 @@ class _OrganizationBillingGroupState:
     @pulumi.getter(name="billingEmails")
     def billing_emails(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OrganizationBillingGroupBillingEmailArgs']]]]:
         """
-        Required property. List of billing contact emails.
+        List of billing contact emails.
         """
         return pulumi.get(self, "billing_emails")
 
@@ -331,7 +331,7 @@ class _OrganizationBillingGroupState:
     @pulumi.getter(name="paymentMethod")
     def payment_method(self) -> pulumi.Input[Optional['OrganizationBillingGroupPaymentMethodArgs']]:
         """
-        Required property. Payment method.
+        Payment method.
         """
         return pulumi.get(self, "payment_method")
 
@@ -428,12 +428,12 @@ class OrganizationBillingGroup(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] billing_address_id: Billing address ID. Maximum length: `36`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['OrganizationBillingGroupBillingContactEmailArgs', 'OrganizationBillingGroupBillingContactEmailArgsDict']]]] billing_contact_emails: Required property. List of billing contact emails.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['OrganizationBillingGroupBillingEmailArgs', 'OrganizationBillingGroupBillingEmailArgsDict']]]] billing_emails: Required property. List of billing contact emails.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OrganizationBillingGroupBillingContactEmailArgs', 'OrganizationBillingGroupBillingContactEmailArgsDict']]]] billing_contact_emails: List of billing contact emails.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OrganizationBillingGroupBillingEmailArgs', 'OrganizationBillingGroupBillingEmailArgsDict']]]] billing_emails: List of billing contact emails.
         :param pulumi.Input[_builtins.str] billing_group_name: Billing Group Name. Length must be between `1` and `128`.
         :param pulumi.Input[_builtins.str] custom_invoice_text: Extra billing text. Maximum length: `256`.
         :param pulumi.Input[_builtins.str] organization_id: ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[Union['OrganizationBillingGroupPaymentMethodArgs', 'OrganizationBillingGroupPaymentMethodArgsDict']] payment_method: Required property. Payment method.
+        :param pulumi.Input[Union['OrganizationBillingGroupPaymentMethodArgs', 'OrganizationBillingGroupPaymentMethodArgsDict']] payment_method: Payment method.
         :param pulumi.Input[_builtins.str] shipping_address_id: Shipping address ID. Maximum length: `36`.
         :param pulumi.Input[_builtins.str] vat_id: VAT ID.
         """
@@ -568,14 +568,14 @@ class OrganizationBillingGroup(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] billing_address_id: Billing address ID. Maximum length: `36`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['OrganizationBillingGroupBillingContactEmailArgs', 'OrganizationBillingGroupBillingContactEmailArgsDict']]]] billing_contact_emails: Required property. List of billing contact emails.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['OrganizationBillingGroupBillingEmailArgs', 'OrganizationBillingGroupBillingEmailArgsDict']]]] billing_emails: Required property. List of billing contact emails.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OrganizationBillingGroupBillingContactEmailArgs', 'OrganizationBillingGroupBillingContactEmailArgsDict']]]] billing_contact_emails: List of billing contact emails.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OrganizationBillingGroupBillingEmailArgs', 'OrganizationBillingGroupBillingEmailArgsDict']]]] billing_emails: List of billing contact emails.
         :param pulumi.Input[_builtins.str] billing_group_id: Billing group ID.
         :param pulumi.Input[_builtins.str] billing_group_name: Billing Group Name. Length must be between `1` and `128`.
         :param pulumi.Input[_builtins.str] create_time: The date when this billing group was created.
         :param pulumi.Input[_builtins.str] custom_invoice_text: Extra billing text. Maximum length: `256`.
         :param pulumi.Input[_builtins.str] organization_id: ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[Union['OrganizationBillingGroupPaymentMethodArgs', 'OrganizationBillingGroupPaymentMethodArgsDict']] payment_method: Required property. Payment method.
+        :param pulumi.Input[Union['OrganizationBillingGroupPaymentMethodArgs', 'OrganizationBillingGroupPaymentMethodArgsDict']] payment_method: Payment method.
         :param pulumi.Input[_builtins.str] shipping_address_id: Shipping address ID. Maximum length: `36`.
         :param pulumi.Input[_builtins.str] vat_id: VAT ID.
         """
@@ -609,7 +609,7 @@ class OrganizationBillingGroup(pulumi.CustomResource):
     @pulumi.getter(name="billingContactEmails")
     def billing_contact_emails(self) -> pulumi.Output[Sequence['outputs.OrganizationBillingGroupBillingContactEmail']]:
         """
-        Required property. List of billing contact emails.
+        List of billing contact emails.
         """
         return pulumi.get(self, "billing_contact_emails")
 
@@ -617,7 +617,7 @@ class OrganizationBillingGroup(pulumi.CustomResource):
     @pulumi.getter(name="billingEmails")
     def billing_emails(self) -> pulumi.Output[Sequence['outputs.OrganizationBillingGroupBillingEmail']]:
         """
-        Required property. List of billing contact emails.
+        List of billing contact emails.
         """
         return pulumi.get(self, "billing_emails")
 
@@ -665,7 +665,7 @@ class OrganizationBillingGroup(pulumi.CustomResource):
     @pulumi.getter(name="paymentMethod")
     def payment_method(self) -> pulumi.Output['outputs.OrganizationBillingGroupPaymentMethod']:
         """
-        Required property. Payment method.
+        Payment method.
         """
         return pulumi.get(self, "payment_method")
 

@@ -6,10 +6,18 @@ package com.pulumi.aiven.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
+import java.lang.String;
+import java.util.List;
 import java.util.Objects;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class KafkaKafkaUserConfigKafkaDiskless {
+    /**
+     * @return The regexes of topics to auto enable diskless. Topics matching any of the regexes will be created as diskless topics.
+     * 
+     */
+    private @Nullable List<String> autoDisklessTopicRegexes;
     /**
      * @return Whether to enable the Diskless functionality.
      * 
@@ -17,6 +25,13 @@ public final class KafkaKafkaUserConfigKafkaDiskless {
     private Boolean enabled;
 
     private KafkaKafkaUserConfigKafkaDiskless() {}
+    /**
+     * @return The regexes of topics to auto enable diskless. Topics matching any of the regexes will be created as diskless topics.
+     * 
+     */
+    public List<String> autoDisklessTopicRegexes() {
+        return this.autoDisklessTopicRegexes == null ? List.of() : this.autoDisklessTopicRegexes;
+    }
     /**
      * @return Whether to enable the Diskless functionality.
      * 
@@ -34,13 +49,24 @@ public final class KafkaKafkaUserConfigKafkaDiskless {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<String> autoDisklessTopicRegexes;
         private Boolean enabled;
         public Builder() {}
         public Builder(KafkaKafkaUserConfigKafkaDiskless defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.autoDisklessTopicRegexes = defaults.autoDisklessTopicRegexes;
     	      this.enabled = defaults.enabled;
         }
 
+        @CustomType.Setter
+        public Builder autoDisklessTopicRegexes(@Nullable List<String> autoDisklessTopicRegexes) {
+
+            this.autoDisklessTopicRegexes = autoDisklessTopicRegexes;
+            return this;
+        }
+        public Builder autoDisklessTopicRegexes(String... autoDisklessTopicRegexes) {
+            return autoDisklessTopicRegexes(List.of(autoDisklessTopicRegexes));
+        }
         @CustomType.Setter
         public Builder enabled(Boolean enabled) {
             if (enabled == null) {
@@ -51,6 +77,7 @@ public final class KafkaKafkaUserConfigKafkaDiskless {
         }
         public KafkaKafkaUserConfigKafkaDiskless build() {
             final var _resultValue = new KafkaKafkaUserConfigKafkaDiskless();
+            _resultValue.autoDisklessTopicRegexes = autoDisklessTopicRegexes;
             _resultValue.enabled = enabled;
             return _resultValue;
         }

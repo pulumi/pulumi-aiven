@@ -97,28 +97,28 @@ public class OrganizationBillingGroup extends com.pulumi.resources.CustomResourc
         return this.billingAddressId;
     }
     /**
-     * Required property. List of billing contact emails.
+     * List of billing contact emails.
      * 
      */
     @Export(name="billingContactEmails", refs={List.class,OrganizationBillingGroupBillingContactEmail.class}, tree="[0,1]")
     private Output<List<OrganizationBillingGroupBillingContactEmail>> billingContactEmails;
 
     /**
-     * @return Required property. List of billing contact emails.
+     * @return List of billing contact emails.
      * 
      */
     public Output<List<OrganizationBillingGroupBillingContactEmail>> billingContactEmails() {
         return this.billingContactEmails;
     }
     /**
-     * Required property. List of billing contact emails.
+     * List of billing contact emails.
      * 
      */
     @Export(name="billingEmails", refs={List.class,OrganizationBillingGroupBillingEmail.class}, tree="[0,1]")
     private Output<List<OrganizationBillingGroupBillingEmail>> billingEmails;
 
     /**
-     * @return Required property. List of billing contact emails.
+     * @return List of billing contact emails.
      * 
      */
     public Output<List<OrganizationBillingGroupBillingEmail>> billingEmails() {
@@ -195,14 +195,14 @@ public class OrganizationBillingGroup extends com.pulumi.resources.CustomResourc
         return this.organizationId;
     }
     /**
-     * Required property. Payment method.
+     * Payment method.
      * 
      */
     @Export(name="paymentMethod", refs={OrganizationBillingGroupPaymentMethod.class}, tree="[0]")
     private Output<OrganizationBillingGroupPaymentMethod> paymentMethod;
 
     /**
-     * @return Required property. Payment method.
+     * @return Payment method.
      * 
      */
     public Output<OrganizationBillingGroupPaymentMethod> paymentMethod() {

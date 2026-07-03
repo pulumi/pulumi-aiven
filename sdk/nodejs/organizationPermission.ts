@@ -66,7 +66,7 @@ export class OrganizationPermission extends pulumi.CustomResource {
      */
     declare public readonly organizationId: pulumi.Output<string>;
     /**
-     * Required property. List of roles to set.
+     * List of roles to set.
      */
     declare public readonly permissions: pulumi.Output<outputs.OrganizationPermissionPermission[]>;
     /**
@@ -131,7 +131,7 @@ export interface OrganizationPermissionState {
      */
     organizationId?: pulumi.Input<string | undefined>;
     /**
-     * Required property. List of roles to set.
+     * List of roles to set.
      */
     permissions?: pulumi.Input<pulumi.Input<inputs.OrganizationPermissionPermission>[] | undefined>;
     /**
@@ -154,7 +154,7 @@ export interface OrganizationPermissionArgs {
      */
     organizationId: pulumi.Input<string>;
     /**
-     * Required property. List of roles to set.
+     * List of roles to set.
      */
     permissions: pulumi.Input<pulumi.Input<inputs.OrganizationPermissionPermission>[]>;
     /**

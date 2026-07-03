@@ -13,6 +13,499 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetOrganizationBillingGroupListBillingGroup struct {
+	// Billing address ID.
+	BillingAddressId string `pulumi:"billingAddressId"`
+	// List of billing contact emails.
+	BillingContactEmails []GetOrganizationBillingGroupListBillingGroupBillingContactEmail `pulumi:"billingContactEmails"`
+	// List of billing contact emails.
+	BillingEmails []GetOrganizationBillingGroupListBillingGroupBillingEmail `pulumi:"billingEmails"`
+	// Billing group ID.
+	BillingGroupId string `pulumi:"billingGroupId"`
+	// Billing Group Name.
+	BillingGroupName string `pulumi:"billingGroupName"`
+	// The date when this billing group was created.
+	CreateTime string `pulumi:"createTime"`
+	// Extra billing text.
+	CustomInvoiceText string `pulumi:"customInvoiceText"`
+	// Organization ID.
+	OrganizationId string `pulumi:"organizationId"`
+	// Payment method.
+	PaymentMethods []GetOrganizationBillingGroupListBillingGroupPaymentMethod `pulumi:"paymentMethods"`
+	// Shipping address ID.
+	ShippingAddressId string `pulumi:"shippingAddressId"`
+	// VAT ID.
+	VatId string `pulumi:"vatId"`
+}
+
+// GetOrganizationBillingGroupListBillingGroupInput is an input type that accepts GetOrganizationBillingGroupListBillingGroupArgs and GetOrganizationBillingGroupListBillingGroupOutput values.
+// You can construct a concrete instance of `GetOrganizationBillingGroupListBillingGroupInput` via:
+//
+//	GetOrganizationBillingGroupListBillingGroupArgs{...}
+type GetOrganizationBillingGroupListBillingGroupInput interface {
+	pulumi.Input
+
+	ToGetOrganizationBillingGroupListBillingGroupOutput() GetOrganizationBillingGroupListBillingGroupOutput
+	ToGetOrganizationBillingGroupListBillingGroupOutputWithContext(context.Context) GetOrganizationBillingGroupListBillingGroupOutput
+}
+
+type GetOrganizationBillingGroupListBillingGroupArgs struct {
+	// Billing address ID.
+	BillingAddressId pulumi.StringInput `pulumi:"billingAddressId"`
+	// List of billing contact emails.
+	BillingContactEmails GetOrganizationBillingGroupListBillingGroupBillingContactEmailArrayInput `pulumi:"billingContactEmails"`
+	// List of billing contact emails.
+	BillingEmails GetOrganizationBillingGroupListBillingGroupBillingEmailArrayInput `pulumi:"billingEmails"`
+	// Billing group ID.
+	BillingGroupId pulumi.StringInput `pulumi:"billingGroupId"`
+	// Billing Group Name.
+	BillingGroupName pulumi.StringInput `pulumi:"billingGroupName"`
+	// The date when this billing group was created.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// Extra billing text.
+	CustomInvoiceText pulumi.StringInput `pulumi:"customInvoiceText"`
+	// Organization ID.
+	OrganizationId pulumi.StringInput `pulumi:"organizationId"`
+	// Payment method.
+	PaymentMethods GetOrganizationBillingGroupListBillingGroupPaymentMethodArrayInput `pulumi:"paymentMethods"`
+	// Shipping address ID.
+	ShippingAddressId pulumi.StringInput `pulumi:"shippingAddressId"`
+	// VAT ID.
+	VatId pulumi.StringInput `pulumi:"vatId"`
+}
+
+func (GetOrganizationBillingGroupListBillingGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationBillingGroupListBillingGroup)(nil)).Elem()
+}
+
+func (i GetOrganizationBillingGroupListBillingGroupArgs) ToGetOrganizationBillingGroupListBillingGroupOutput() GetOrganizationBillingGroupListBillingGroupOutput {
+	return i.ToGetOrganizationBillingGroupListBillingGroupOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationBillingGroupListBillingGroupArgs) ToGetOrganizationBillingGroupListBillingGroupOutputWithContext(ctx context.Context) GetOrganizationBillingGroupListBillingGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationBillingGroupListBillingGroupOutput)
+}
+
+// GetOrganizationBillingGroupListBillingGroupArrayInput is an input type that accepts GetOrganizationBillingGroupListBillingGroupArray and GetOrganizationBillingGroupListBillingGroupArrayOutput values.
+// You can construct a concrete instance of `GetOrganizationBillingGroupListBillingGroupArrayInput` via:
+//
+//	GetOrganizationBillingGroupListBillingGroupArray{ GetOrganizationBillingGroupListBillingGroupArgs{...} }
+type GetOrganizationBillingGroupListBillingGroupArrayInput interface {
+	pulumi.Input
+
+	ToGetOrganizationBillingGroupListBillingGroupArrayOutput() GetOrganizationBillingGroupListBillingGroupArrayOutput
+	ToGetOrganizationBillingGroupListBillingGroupArrayOutputWithContext(context.Context) GetOrganizationBillingGroupListBillingGroupArrayOutput
+}
+
+type GetOrganizationBillingGroupListBillingGroupArray []GetOrganizationBillingGroupListBillingGroupInput
+
+func (GetOrganizationBillingGroupListBillingGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOrganizationBillingGroupListBillingGroup)(nil)).Elem()
+}
+
+func (i GetOrganizationBillingGroupListBillingGroupArray) ToGetOrganizationBillingGroupListBillingGroupArrayOutput() GetOrganizationBillingGroupListBillingGroupArrayOutput {
+	return i.ToGetOrganizationBillingGroupListBillingGroupArrayOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationBillingGroupListBillingGroupArray) ToGetOrganizationBillingGroupListBillingGroupArrayOutputWithContext(ctx context.Context) GetOrganizationBillingGroupListBillingGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationBillingGroupListBillingGroupArrayOutput)
+}
+
+type GetOrganizationBillingGroupListBillingGroupOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationBillingGroupListBillingGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationBillingGroupListBillingGroup)(nil)).Elem()
+}
+
+func (o GetOrganizationBillingGroupListBillingGroupOutput) ToGetOrganizationBillingGroupListBillingGroupOutput() GetOrganizationBillingGroupListBillingGroupOutput {
+	return o
+}
+
+func (o GetOrganizationBillingGroupListBillingGroupOutput) ToGetOrganizationBillingGroupListBillingGroupOutputWithContext(ctx context.Context) GetOrganizationBillingGroupListBillingGroupOutput {
+	return o
+}
+
+// Billing address ID.
+func (o GetOrganizationBillingGroupListBillingGroupOutput) BillingAddressId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationBillingGroupListBillingGroup) string { return v.BillingAddressId }).(pulumi.StringOutput)
+}
+
+// List of billing contact emails.
+func (o GetOrganizationBillingGroupListBillingGroupOutput) BillingContactEmails() GetOrganizationBillingGroupListBillingGroupBillingContactEmailArrayOutput {
+	return o.ApplyT(func(v GetOrganizationBillingGroupListBillingGroup) []GetOrganizationBillingGroupListBillingGroupBillingContactEmail {
+		return v.BillingContactEmails
+	}).(GetOrganizationBillingGroupListBillingGroupBillingContactEmailArrayOutput)
+}
+
+// List of billing contact emails.
+func (o GetOrganizationBillingGroupListBillingGroupOutput) BillingEmails() GetOrganizationBillingGroupListBillingGroupBillingEmailArrayOutput {
+	return o.ApplyT(func(v GetOrganizationBillingGroupListBillingGroup) []GetOrganizationBillingGroupListBillingGroupBillingEmail {
+		return v.BillingEmails
+	}).(GetOrganizationBillingGroupListBillingGroupBillingEmailArrayOutput)
+}
+
+// Billing group ID.
+func (o GetOrganizationBillingGroupListBillingGroupOutput) BillingGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationBillingGroupListBillingGroup) string { return v.BillingGroupId }).(pulumi.StringOutput)
+}
+
+// Billing Group Name.
+func (o GetOrganizationBillingGroupListBillingGroupOutput) BillingGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationBillingGroupListBillingGroup) string { return v.BillingGroupName }).(pulumi.StringOutput)
+}
+
+// The date when this billing group was created.
+func (o GetOrganizationBillingGroupListBillingGroupOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationBillingGroupListBillingGroup) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Extra billing text.
+func (o GetOrganizationBillingGroupListBillingGroupOutput) CustomInvoiceText() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationBillingGroupListBillingGroup) string { return v.CustomInvoiceText }).(pulumi.StringOutput)
+}
+
+// Organization ID.
+func (o GetOrganizationBillingGroupListBillingGroupOutput) OrganizationId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationBillingGroupListBillingGroup) string { return v.OrganizationId }).(pulumi.StringOutput)
+}
+
+// Payment method.
+func (o GetOrganizationBillingGroupListBillingGroupOutput) PaymentMethods() GetOrganizationBillingGroupListBillingGroupPaymentMethodArrayOutput {
+	return o.ApplyT(func(v GetOrganizationBillingGroupListBillingGroup) []GetOrganizationBillingGroupListBillingGroupPaymentMethod {
+		return v.PaymentMethods
+	}).(GetOrganizationBillingGroupListBillingGroupPaymentMethodArrayOutput)
+}
+
+// Shipping address ID.
+func (o GetOrganizationBillingGroupListBillingGroupOutput) ShippingAddressId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationBillingGroupListBillingGroup) string { return v.ShippingAddressId }).(pulumi.StringOutput)
+}
+
+// VAT ID.
+func (o GetOrganizationBillingGroupListBillingGroupOutput) VatId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationBillingGroupListBillingGroup) string { return v.VatId }).(pulumi.StringOutput)
+}
+
+type GetOrganizationBillingGroupListBillingGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationBillingGroupListBillingGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOrganizationBillingGroupListBillingGroup)(nil)).Elem()
+}
+
+func (o GetOrganizationBillingGroupListBillingGroupArrayOutput) ToGetOrganizationBillingGroupListBillingGroupArrayOutput() GetOrganizationBillingGroupListBillingGroupArrayOutput {
+	return o
+}
+
+func (o GetOrganizationBillingGroupListBillingGroupArrayOutput) ToGetOrganizationBillingGroupListBillingGroupArrayOutputWithContext(ctx context.Context) GetOrganizationBillingGroupListBillingGroupArrayOutput {
+	return o
+}
+
+func (o GetOrganizationBillingGroupListBillingGroupArrayOutput) Index(i pulumi.IntInput) GetOrganizationBillingGroupListBillingGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetOrganizationBillingGroupListBillingGroup {
+		return vs[0].([]GetOrganizationBillingGroupListBillingGroup)[vs[1].(int)]
+	}).(GetOrganizationBillingGroupListBillingGroupOutput)
+}
+
+type GetOrganizationBillingGroupListBillingGroupBillingContactEmail struct {
+	// Email.
+	Email string `pulumi:"email"`
+}
+
+// GetOrganizationBillingGroupListBillingGroupBillingContactEmailInput is an input type that accepts GetOrganizationBillingGroupListBillingGroupBillingContactEmailArgs and GetOrganizationBillingGroupListBillingGroupBillingContactEmailOutput values.
+// You can construct a concrete instance of `GetOrganizationBillingGroupListBillingGroupBillingContactEmailInput` via:
+//
+//	GetOrganizationBillingGroupListBillingGroupBillingContactEmailArgs{...}
+type GetOrganizationBillingGroupListBillingGroupBillingContactEmailInput interface {
+	pulumi.Input
+
+	ToGetOrganizationBillingGroupListBillingGroupBillingContactEmailOutput() GetOrganizationBillingGroupListBillingGroupBillingContactEmailOutput
+	ToGetOrganizationBillingGroupListBillingGroupBillingContactEmailOutputWithContext(context.Context) GetOrganizationBillingGroupListBillingGroupBillingContactEmailOutput
+}
+
+type GetOrganizationBillingGroupListBillingGroupBillingContactEmailArgs struct {
+	// Email.
+	Email pulumi.StringInput `pulumi:"email"`
+}
+
+func (GetOrganizationBillingGroupListBillingGroupBillingContactEmailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationBillingGroupListBillingGroupBillingContactEmail)(nil)).Elem()
+}
+
+func (i GetOrganizationBillingGroupListBillingGroupBillingContactEmailArgs) ToGetOrganizationBillingGroupListBillingGroupBillingContactEmailOutput() GetOrganizationBillingGroupListBillingGroupBillingContactEmailOutput {
+	return i.ToGetOrganizationBillingGroupListBillingGroupBillingContactEmailOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationBillingGroupListBillingGroupBillingContactEmailArgs) ToGetOrganizationBillingGroupListBillingGroupBillingContactEmailOutputWithContext(ctx context.Context) GetOrganizationBillingGroupListBillingGroupBillingContactEmailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationBillingGroupListBillingGroupBillingContactEmailOutput)
+}
+
+// GetOrganizationBillingGroupListBillingGroupBillingContactEmailArrayInput is an input type that accepts GetOrganizationBillingGroupListBillingGroupBillingContactEmailArray and GetOrganizationBillingGroupListBillingGroupBillingContactEmailArrayOutput values.
+// You can construct a concrete instance of `GetOrganizationBillingGroupListBillingGroupBillingContactEmailArrayInput` via:
+//
+//	GetOrganizationBillingGroupListBillingGroupBillingContactEmailArray{ GetOrganizationBillingGroupListBillingGroupBillingContactEmailArgs{...} }
+type GetOrganizationBillingGroupListBillingGroupBillingContactEmailArrayInput interface {
+	pulumi.Input
+
+	ToGetOrganizationBillingGroupListBillingGroupBillingContactEmailArrayOutput() GetOrganizationBillingGroupListBillingGroupBillingContactEmailArrayOutput
+	ToGetOrganizationBillingGroupListBillingGroupBillingContactEmailArrayOutputWithContext(context.Context) GetOrganizationBillingGroupListBillingGroupBillingContactEmailArrayOutput
+}
+
+type GetOrganizationBillingGroupListBillingGroupBillingContactEmailArray []GetOrganizationBillingGroupListBillingGroupBillingContactEmailInput
+
+func (GetOrganizationBillingGroupListBillingGroupBillingContactEmailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOrganizationBillingGroupListBillingGroupBillingContactEmail)(nil)).Elem()
+}
+
+func (i GetOrganizationBillingGroupListBillingGroupBillingContactEmailArray) ToGetOrganizationBillingGroupListBillingGroupBillingContactEmailArrayOutput() GetOrganizationBillingGroupListBillingGroupBillingContactEmailArrayOutput {
+	return i.ToGetOrganizationBillingGroupListBillingGroupBillingContactEmailArrayOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationBillingGroupListBillingGroupBillingContactEmailArray) ToGetOrganizationBillingGroupListBillingGroupBillingContactEmailArrayOutputWithContext(ctx context.Context) GetOrganizationBillingGroupListBillingGroupBillingContactEmailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationBillingGroupListBillingGroupBillingContactEmailArrayOutput)
+}
+
+type GetOrganizationBillingGroupListBillingGroupBillingContactEmailOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationBillingGroupListBillingGroupBillingContactEmailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationBillingGroupListBillingGroupBillingContactEmail)(nil)).Elem()
+}
+
+func (o GetOrganizationBillingGroupListBillingGroupBillingContactEmailOutput) ToGetOrganizationBillingGroupListBillingGroupBillingContactEmailOutput() GetOrganizationBillingGroupListBillingGroupBillingContactEmailOutput {
+	return o
+}
+
+func (o GetOrganizationBillingGroupListBillingGroupBillingContactEmailOutput) ToGetOrganizationBillingGroupListBillingGroupBillingContactEmailOutputWithContext(ctx context.Context) GetOrganizationBillingGroupListBillingGroupBillingContactEmailOutput {
+	return o
+}
+
+// Email.
+func (o GetOrganizationBillingGroupListBillingGroupBillingContactEmailOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationBillingGroupListBillingGroupBillingContactEmail) string { return v.Email }).(pulumi.StringOutput)
+}
+
+type GetOrganizationBillingGroupListBillingGroupBillingContactEmailArrayOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationBillingGroupListBillingGroupBillingContactEmailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOrganizationBillingGroupListBillingGroupBillingContactEmail)(nil)).Elem()
+}
+
+func (o GetOrganizationBillingGroupListBillingGroupBillingContactEmailArrayOutput) ToGetOrganizationBillingGroupListBillingGroupBillingContactEmailArrayOutput() GetOrganizationBillingGroupListBillingGroupBillingContactEmailArrayOutput {
+	return o
+}
+
+func (o GetOrganizationBillingGroupListBillingGroupBillingContactEmailArrayOutput) ToGetOrganizationBillingGroupListBillingGroupBillingContactEmailArrayOutputWithContext(ctx context.Context) GetOrganizationBillingGroupListBillingGroupBillingContactEmailArrayOutput {
+	return o
+}
+
+func (o GetOrganizationBillingGroupListBillingGroupBillingContactEmailArrayOutput) Index(i pulumi.IntInput) GetOrganizationBillingGroupListBillingGroupBillingContactEmailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetOrganizationBillingGroupListBillingGroupBillingContactEmail {
+		return vs[0].([]GetOrganizationBillingGroupListBillingGroupBillingContactEmail)[vs[1].(int)]
+	}).(GetOrganizationBillingGroupListBillingGroupBillingContactEmailOutput)
+}
+
+type GetOrganizationBillingGroupListBillingGroupBillingEmail struct {
+	// Email.
+	Email string `pulumi:"email"`
+}
+
+// GetOrganizationBillingGroupListBillingGroupBillingEmailInput is an input type that accepts GetOrganizationBillingGroupListBillingGroupBillingEmailArgs and GetOrganizationBillingGroupListBillingGroupBillingEmailOutput values.
+// You can construct a concrete instance of `GetOrganizationBillingGroupListBillingGroupBillingEmailInput` via:
+//
+//	GetOrganizationBillingGroupListBillingGroupBillingEmailArgs{...}
+type GetOrganizationBillingGroupListBillingGroupBillingEmailInput interface {
+	pulumi.Input
+
+	ToGetOrganizationBillingGroupListBillingGroupBillingEmailOutput() GetOrganizationBillingGroupListBillingGroupBillingEmailOutput
+	ToGetOrganizationBillingGroupListBillingGroupBillingEmailOutputWithContext(context.Context) GetOrganizationBillingGroupListBillingGroupBillingEmailOutput
+}
+
+type GetOrganizationBillingGroupListBillingGroupBillingEmailArgs struct {
+	// Email.
+	Email pulumi.StringInput `pulumi:"email"`
+}
+
+func (GetOrganizationBillingGroupListBillingGroupBillingEmailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationBillingGroupListBillingGroupBillingEmail)(nil)).Elem()
+}
+
+func (i GetOrganizationBillingGroupListBillingGroupBillingEmailArgs) ToGetOrganizationBillingGroupListBillingGroupBillingEmailOutput() GetOrganizationBillingGroupListBillingGroupBillingEmailOutput {
+	return i.ToGetOrganizationBillingGroupListBillingGroupBillingEmailOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationBillingGroupListBillingGroupBillingEmailArgs) ToGetOrganizationBillingGroupListBillingGroupBillingEmailOutputWithContext(ctx context.Context) GetOrganizationBillingGroupListBillingGroupBillingEmailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationBillingGroupListBillingGroupBillingEmailOutput)
+}
+
+// GetOrganizationBillingGroupListBillingGroupBillingEmailArrayInput is an input type that accepts GetOrganizationBillingGroupListBillingGroupBillingEmailArray and GetOrganizationBillingGroupListBillingGroupBillingEmailArrayOutput values.
+// You can construct a concrete instance of `GetOrganizationBillingGroupListBillingGroupBillingEmailArrayInput` via:
+//
+//	GetOrganizationBillingGroupListBillingGroupBillingEmailArray{ GetOrganizationBillingGroupListBillingGroupBillingEmailArgs{...} }
+type GetOrganizationBillingGroupListBillingGroupBillingEmailArrayInput interface {
+	pulumi.Input
+
+	ToGetOrganizationBillingGroupListBillingGroupBillingEmailArrayOutput() GetOrganizationBillingGroupListBillingGroupBillingEmailArrayOutput
+	ToGetOrganizationBillingGroupListBillingGroupBillingEmailArrayOutputWithContext(context.Context) GetOrganizationBillingGroupListBillingGroupBillingEmailArrayOutput
+}
+
+type GetOrganizationBillingGroupListBillingGroupBillingEmailArray []GetOrganizationBillingGroupListBillingGroupBillingEmailInput
+
+func (GetOrganizationBillingGroupListBillingGroupBillingEmailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOrganizationBillingGroupListBillingGroupBillingEmail)(nil)).Elem()
+}
+
+func (i GetOrganizationBillingGroupListBillingGroupBillingEmailArray) ToGetOrganizationBillingGroupListBillingGroupBillingEmailArrayOutput() GetOrganizationBillingGroupListBillingGroupBillingEmailArrayOutput {
+	return i.ToGetOrganizationBillingGroupListBillingGroupBillingEmailArrayOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationBillingGroupListBillingGroupBillingEmailArray) ToGetOrganizationBillingGroupListBillingGroupBillingEmailArrayOutputWithContext(ctx context.Context) GetOrganizationBillingGroupListBillingGroupBillingEmailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationBillingGroupListBillingGroupBillingEmailArrayOutput)
+}
+
+type GetOrganizationBillingGroupListBillingGroupBillingEmailOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationBillingGroupListBillingGroupBillingEmailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationBillingGroupListBillingGroupBillingEmail)(nil)).Elem()
+}
+
+func (o GetOrganizationBillingGroupListBillingGroupBillingEmailOutput) ToGetOrganizationBillingGroupListBillingGroupBillingEmailOutput() GetOrganizationBillingGroupListBillingGroupBillingEmailOutput {
+	return o
+}
+
+func (o GetOrganizationBillingGroupListBillingGroupBillingEmailOutput) ToGetOrganizationBillingGroupListBillingGroupBillingEmailOutputWithContext(ctx context.Context) GetOrganizationBillingGroupListBillingGroupBillingEmailOutput {
+	return o
+}
+
+// Email.
+func (o GetOrganizationBillingGroupListBillingGroupBillingEmailOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationBillingGroupListBillingGroupBillingEmail) string { return v.Email }).(pulumi.StringOutput)
+}
+
+type GetOrganizationBillingGroupListBillingGroupBillingEmailArrayOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationBillingGroupListBillingGroupBillingEmailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOrganizationBillingGroupListBillingGroupBillingEmail)(nil)).Elem()
+}
+
+func (o GetOrganizationBillingGroupListBillingGroupBillingEmailArrayOutput) ToGetOrganizationBillingGroupListBillingGroupBillingEmailArrayOutput() GetOrganizationBillingGroupListBillingGroupBillingEmailArrayOutput {
+	return o
+}
+
+func (o GetOrganizationBillingGroupListBillingGroupBillingEmailArrayOutput) ToGetOrganizationBillingGroupListBillingGroupBillingEmailArrayOutputWithContext(ctx context.Context) GetOrganizationBillingGroupListBillingGroupBillingEmailArrayOutput {
+	return o
+}
+
+func (o GetOrganizationBillingGroupListBillingGroupBillingEmailArrayOutput) Index(i pulumi.IntInput) GetOrganizationBillingGroupListBillingGroupBillingEmailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetOrganizationBillingGroupListBillingGroupBillingEmail {
+		return vs[0].([]GetOrganizationBillingGroupListBillingGroupBillingEmail)[vs[1].(int)]
+	}).(GetOrganizationBillingGroupListBillingGroupBillingEmailOutput)
+}
+
+type GetOrganizationBillingGroupListBillingGroupPaymentMethod struct {
+	// Payment method ID.
+	PaymentMethodId string `pulumi:"paymentMethodId"`
+	// An enumeration. The possible values are `awsSubscription`, `azureSubscription`, `bankTransfer`, `creditCard`, `custom` and `gcpSubscription`.
+	PaymentMethodType string `pulumi:"paymentMethodType"`
+}
+
+// GetOrganizationBillingGroupListBillingGroupPaymentMethodInput is an input type that accepts GetOrganizationBillingGroupListBillingGroupPaymentMethodArgs and GetOrganizationBillingGroupListBillingGroupPaymentMethodOutput values.
+// You can construct a concrete instance of `GetOrganizationBillingGroupListBillingGroupPaymentMethodInput` via:
+//
+//	GetOrganizationBillingGroupListBillingGroupPaymentMethodArgs{...}
+type GetOrganizationBillingGroupListBillingGroupPaymentMethodInput interface {
+	pulumi.Input
+
+	ToGetOrganizationBillingGroupListBillingGroupPaymentMethodOutput() GetOrganizationBillingGroupListBillingGroupPaymentMethodOutput
+	ToGetOrganizationBillingGroupListBillingGroupPaymentMethodOutputWithContext(context.Context) GetOrganizationBillingGroupListBillingGroupPaymentMethodOutput
+}
+
+type GetOrganizationBillingGroupListBillingGroupPaymentMethodArgs struct {
+	// Payment method ID.
+	PaymentMethodId pulumi.StringInput `pulumi:"paymentMethodId"`
+	// An enumeration. The possible values are `awsSubscription`, `azureSubscription`, `bankTransfer`, `creditCard`, `custom` and `gcpSubscription`.
+	PaymentMethodType pulumi.StringInput `pulumi:"paymentMethodType"`
+}
+
+func (GetOrganizationBillingGroupListBillingGroupPaymentMethodArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationBillingGroupListBillingGroupPaymentMethod)(nil)).Elem()
+}
+
+func (i GetOrganizationBillingGroupListBillingGroupPaymentMethodArgs) ToGetOrganizationBillingGroupListBillingGroupPaymentMethodOutput() GetOrganizationBillingGroupListBillingGroupPaymentMethodOutput {
+	return i.ToGetOrganizationBillingGroupListBillingGroupPaymentMethodOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationBillingGroupListBillingGroupPaymentMethodArgs) ToGetOrganizationBillingGroupListBillingGroupPaymentMethodOutputWithContext(ctx context.Context) GetOrganizationBillingGroupListBillingGroupPaymentMethodOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationBillingGroupListBillingGroupPaymentMethodOutput)
+}
+
+// GetOrganizationBillingGroupListBillingGroupPaymentMethodArrayInput is an input type that accepts GetOrganizationBillingGroupListBillingGroupPaymentMethodArray and GetOrganizationBillingGroupListBillingGroupPaymentMethodArrayOutput values.
+// You can construct a concrete instance of `GetOrganizationBillingGroupListBillingGroupPaymentMethodArrayInput` via:
+//
+//	GetOrganizationBillingGroupListBillingGroupPaymentMethodArray{ GetOrganizationBillingGroupListBillingGroupPaymentMethodArgs{...} }
+type GetOrganizationBillingGroupListBillingGroupPaymentMethodArrayInput interface {
+	pulumi.Input
+
+	ToGetOrganizationBillingGroupListBillingGroupPaymentMethodArrayOutput() GetOrganizationBillingGroupListBillingGroupPaymentMethodArrayOutput
+	ToGetOrganizationBillingGroupListBillingGroupPaymentMethodArrayOutputWithContext(context.Context) GetOrganizationBillingGroupListBillingGroupPaymentMethodArrayOutput
+}
+
+type GetOrganizationBillingGroupListBillingGroupPaymentMethodArray []GetOrganizationBillingGroupListBillingGroupPaymentMethodInput
+
+func (GetOrganizationBillingGroupListBillingGroupPaymentMethodArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOrganizationBillingGroupListBillingGroupPaymentMethod)(nil)).Elem()
+}
+
+func (i GetOrganizationBillingGroupListBillingGroupPaymentMethodArray) ToGetOrganizationBillingGroupListBillingGroupPaymentMethodArrayOutput() GetOrganizationBillingGroupListBillingGroupPaymentMethodArrayOutput {
+	return i.ToGetOrganizationBillingGroupListBillingGroupPaymentMethodArrayOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationBillingGroupListBillingGroupPaymentMethodArray) ToGetOrganizationBillingGroupListBillingGroupPaymentMethodArrayOutputWithContext(ctx context.Context) GetOrganizationBillingGroupListBillingGroupPaymentMethodArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationBillingGroupListBillingGroupPaymentMethodArrayOutput)
+}
+
+type GetOrganizationBillingGroupListBillingGroupPaymentMethodOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationBillingGroupListBillingGroupPaymentMethodOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationBillingGroupListBillingGroupPaymentMethod)(nil)).Elem()
+}
+
+func (o GetOrganizationBillingGroupListBillingGroupPaymentMethodOutput) ToGetOrganizationBillingGroupListBillingGroupPaymentMethodOutput() GetOrganizationBillingGroupListBillingGroupPaymentMethodOutput {
+	return o
+}
+
+func (o GetOrganizationBillingGroupListBillingGroupPaymentMethodOutput) ToGetOrganizationBillingGroupListBillingGroupPaymentMethodOutputWithContext(ctx context.Context) GetOrganizationBillingGroupListBillingGroupPaymentMethodOutput {
+	return o
+}
+
+// Payment method ID.
+func (o GetOrganizationBillingGroupListBillingGroupPaymentMethodOutput) PaymentMethodId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationBillingGroupListBillingGroupPaymentMethod) string { return v.PaymentMethodId }).(pulumi.StringOutput)
+}
+
+// An enumeration. The possible values are `awsSubscription`, `azureSubscription`, `bankTransfer`, `creditCard`, `custom` and `gcpSubscription`.
+func (o GetOrganizationBillingGroupListBillingGroupPaymentMethodOutput) PaymentMethodType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationBillingGroupListBillingGroupPaymentMethod) string { return v.PaymentMethodType }).(pulumi.StringOutput)
+}
+
+type GetOrganizationBillingGroupListBillingGroupPaymentMethodArrayOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationBillingGroupListBillingGroupPaymentMethodArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOrganizationBillingGroupListBillingGroupPaymentMethod)(nil)).Elem()
+}
+
+func (o GetOrganizationBillingGroupListBillingGroupPaymentMethodArrayOutput) ToGetOrganizationBillingGroupListBillingGroupPaymentMethodArrayOutput() GetOrganizationBillingGroupListBillingGroupPaymentMethodArrayOutput {
+	return o
+}
+
+func (o GetOrganizationBillingGroupListBillingGroupPaymentMethodArrayOutput) ToGetOrganizationBillingGroupListBillingGroupPaymentMethodArrayOutputWithContext(ctx context.Context) GetOrganizationBillingGroupListBillingGroupPaymentMethodArrayOutput {
+	return o
+}
+
+func (o GetOrganizationBillingGroupListBillingGroupPaymentMethodArrayOutput) Index(i pulumi.IntInput) GetOrganizationBillingGroupListBillingGroupPaymentMethodOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetOrganizationBillingGroupListBillingGroupPaymentMethod {
+		return vs[0].([]GetOrganizationBillingGroupListBillingGroupPaymentMethod)[vs[1].(int)]
+	}).(GetOrganizationBillingGroupListBillingGroupPaymentMethodOutput)
+}
+
 type GetOrganizationBillingGroupListTimeouts struct {
 	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
 	Read *string `pulumi:"read"`
@@ -13787,31 +14280,33 @@ func (o GetServiceIntegrationKafkaMirrormakerUserConfigArrayOutput) Index(i pulu
 type GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker struct {
 	// Enum: `earliest`, `latest`. Set where consumer starts to consume data. Value `earliest`: Start replication from the earliest offset. Value `latest`: Start replication from the latest offset. Default is `earliest`.
 	ConsumerAutoOffsetReset *string `pulumi:"consumerAutoOffsetReset"`
-	// The maximum amount of data the server should return for a fetch request.
+	// The maximum amount of data the server should return for a fetch request. Default is `52428800` (50MiB).
 	ConsumerFetchMaxBytes *int `pulumi:"consumerFetchMaxBytes"`
-	// The minimum amount of data the server should return for a fetch request. Example: `1024`.
+	// The maximum amount of time the server will block before answering the fetch request if there isn't sufficient data to immediately satisfy `consumerFetchMinBytes`. Default is `500`.
+	ConsumerFetchMaxWaitMs *int `pulumi:"consumerFetchMaxWaitMs"`
+	// The minimum amount of data the server should return for a fetch request. Default is `1`. Example: `1024`.
 	ConsumerFetchMinBytes *int `pulumi:"consumerFetchMinBytes"`
-	// The maximum amount of data per partition the server will return.
+	// The maximum amount of data per partition the server will return. Default is `1048576` (1MiB).
 	ConsumerMaxPartitionFetchBytes *int `pulumi:"consumerMaxPartitionFetchBytes"`
-	// Set consumer max.poll.records. The default is 500. Example: `500`.
+	// Set consumer max.poll.records. Default is `500`.
 	ConsumerMaxPollRecords *int `pulumi:"consumerMaxPollRecords"`
-	// The size of the TCP receive buffer (SO_RCVBUF) to use when reading data. -1 uses the OS default. Example: `65536`.
+	// The size of the TCP receive buffer (SO_RCVBUF) to use when reading data. Default is `65536` (64KiB). `-1` uses the OS default.
 	ConsumerReceiveBufferBytes *int `pulumi:"consumerReceiveBufferBytes"`
-	// The maximum time the client will wait for a response to a request. Example: `30000`.
+	// The maximum time the client will wait for a response to a request. Default is `30000` (30s).
 	ConsumerRequestTimeoutMs *int `pulumi:"consumerRequestTimeoutMs"`
-	// The batch size in bytes producer will attempt to collect before publishing to broker. Example: `1024`.
+	// The batch size in bytes producer will attempt to collect before publishing to broker. Default is `16384` (16KiB).
 	ProducerBatchSize *int `pulumi:"producerBatchSize"`
-	// The amount of bytes producer can use for buffering data before publishing to broker.
+	// The amount of bytes producer can use for buffering data before publishing to broker. Default is `33554432` (32MiB).
 	ProducerBufferMemory *int `pulumi:"producerBufferMemory"`
 	// Enum: `gzip`, `lz4`, `none`, `snappy`, `zstd`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
 	ProducerCompressionType *string `pulumi:"producerCompressionType"`
-	// The linger time (ms) for waiting new data to arrive for publishing. Example: `100`.
+	// The linger time (ms) for waiting new data to arrive for publishing. Default is `0`. Example: `100`.
 	ProducerLingerMs *int `pulumi:"producerLingerMs"`
-	// The maximum request size in bytes.
+	// The maximum request size in bytes. Default is `1048576` (1MiB).
 	ProducerMaxRequestSize *int `pulumi:"producerMaxRequestSize"`
-	// The maximum time the client will wait for a response to a request. Example: `30000`.
+	// The maximum time the client will wait for a response to a request. Default is `30000` (30s).
 	ProducerRequestTimeoutMs *int `pulumi:"producerRequestTimeoutMs"`
-	// The size of the TCP send buffer (SO_SNDBUF) to use when sending data. -1 uses the OS default. Example: `131072`.
+	// The size of the TCP send buffer (SO_SNDBUF) to use when sending data. Default is `131072` (128KiB). `-1` uses the OS default.
 	ProducerSendBufferBytes *int `pulumi:"producerSendBufferBytes"`
 }
 
@@ -13829,31 +14324,33 @@ type GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerInput interf
 type GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerArgs struct {
 	// Enum: `earliest`, `latest`. Set where consumer starts to consume data. Value `earliest`: Start replication from the earliest offset. Value `latest`: Start replication from the latest offset. Default is `earliest`.
 	ConsumerAutoOffsetReset pulumi.StringPtrInput `pulumi:"consumerAutoOffsetReset"`
-	// The maximum amount of data the server should return for a fetch request.
+	// The maximum amount of data the server should return for a fetch request. Default is `52428800` (50MiB).
 	ConsumerFetchMaxBytes pulumi.IntPtrInput `pulumi:"consumerFetchMaxBytes"`
-	// The minimum amount of data the server should return for a fetch request. Example: `1024`.
+	// The maximum amount of time the server will block before answering the fetch request if there isn't sufficient data to immediately satisfy `consumerFetchMinBytes`. Default is `500`.
+	ConsumerFetchMaxWaitMs pulumi.IntPtrInput `pulumi:"consumerFetchMaxWaitMs"`
+	// The minimum amount of data the server should return for a fetch request. Default is `1`. Example: `1024`.
 	ConsumerFetchMinBytes pulumi.IntPtrInput `pulumi:"consumerFetchMinBytes"`
-	// The maximum amount of data per partition the server will return.
+	// The maximum amount of data per partition the server will return. Default is `1048576` (1MiB).
 	ConsumerMaxPartitionFetchBytes pulumi.IntPtrInput `pulumi:"consumerMaxPartitionFetchBytes"`
-	// Set consumer max.poll.records. The default is 500. Example: `500`.
+	// Set consumer max.poll.records. Default is `500`.
 	ConsumerMaxPollRecords pulumi.IntPtrInput `pulumi:"consumerMaxPollRecords"`
-	// The size of the TCP receive buffer (SO_RCVBUF) to use when reading data. -1 uses the OS default. Example: `65536`.
+	// The size of the TCP receive buffer (SO_RCVBUF) to use when reading data. Default is `65536` (64KiB). `-1` uses the OS default.
 	ConsumerReceiveBufferBytes pulumi.IntPtrInput `pulumi:"consumerReceiveBufferBytes"`
-	// The maximum time the client will wait for a response to a request. Example: `30000`.
+	// The maximum time the client will wait for a response to a request. Default is `30000` (30s).
 	ConsumerRequestTimeoutMs pulumi.IntPtrInput `pulumi:"consumerRequestTimeoutMs"`
-	// The batch size in bytes producer will attempt to collect before publishing to broker. Example: `1024`.
+	// The batch size in bytes producer will attempt to collect before publishing to broker. Default is `16384` (16KiB).
 	ProducerBatchSize pulumi.IntPtrInput `pulumi:"producerBatchSize"`
-	// The amount of bytes producer can use for buffering data before publishing to broker.
+	// The amount of bytes producer can use for buffering data before publishing to broker. Default is `33554432` (32MiB).
 	ProducerBufferMemory pulumi.IntPtrInput `pulumi:"producerBufferMemory"`
 	// Enum: `gzip`, `lz4`, `none`, `snappy`, `zstd`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
 	ProducerCompressionType pulumi.StringPtrInput `pulumi:"producerCompressionType"`
-	// The linger time (ms) for waiting new data to arrive for publishing. Example: `100`.
+	// The linger time (ms) for waiting new data to arrive for publishing. Default is `0`. Example: `100`.
 	ProducerLingerMs pulumi.IntPtrInput `pulumi:"producerLingerMs"`
-	// The maximum request size in bytes.
+	// The maximum request size in bytes. Default is `1048576` (1MiB).
 	ProducerMaxRequestSize pulumi.IntPtrInput `pulumi:"producerMaxRequestSize"`
-	// The maximum time the client will wait for a response to a request. Example: `30000`.
+	// The maximum time the client will wait for a response to a request. Default is `30000` (30s).
 	ProducerRequestTimeoutMs pulumi.IntPtrInput `pulumi:"producerRequestTimeoutMs"`
-	// The size of the TCP send buffer (SO_SNDBUF) to use when sending data. -1 uses the OS default. Example: `131072`.
+	// The size of the TCP send buffer (SO_SNDBUF) to use when sending data. Default is `131072` (128KiB). `-1` uses the OS default.
 	ProducerSendBufferBytes pulumi.IntPtrInput `pulumi:"producerSendBufferBytes"`
 }
 
@@ -13941,56 +14438,63 @@ func (o GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerOutput) C
 	}).(pulumi.StringPtrOutput)
 }
 
-// The maximum amount of data the server should return for a fetch request.
+// The maximum amount of data the server should return for a fetch request. Default is `52428800` (50MiB).
 func (o GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerOutput) ConsumerFetchMaxBytes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker) *int {
 		return v.ConsumerFetchMaxBytes
 	}).(pulumi.IntPtrOutput)
 }
 
-// The minimum amount of data the server should return for a fetch request. Example: `1024`.
+// The maximum amount of time the server will block before answering the fetch request if there isn't sufficient data to immediately satisfy `consumerFetchMinBytes`. Default is `500`.
+func (o GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerOutput) ConsumerFetchMaxWaitMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker) *int {
+		return v.ConsumerFetchMaxWaitMs
+	}).(pulumi.IntPtrOutput)
+}
+
+// The minimum amount of data the server should return for a fetch request. Default is `1`. Example: `1024`.
 func (o GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerOutput) ConsumerFetchMinBytes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker) *int {
 		return v.ConsumerFetchMinBytes
 	}).(pulumi.IntPtrOutput)
 }
 
-// The maximum amount of data per partition the server will return.
+// The maximum amount of data per partition the server will return. Default is `1048576` (1MiB).
 func (o GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerOutput) ConsumerMaxPartitionFetchBytes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker) *int {
 		return v.ConsumerMaxPartitionFetchBytes
 	}).(pulumi.IntPtrOutput)
 }
 
-// Set consumer max.poll.records. The default is 500. Example: `500`.
+// Set consumer max.poll.records. Default is `500`.
 func (o GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerOutput) ConsumerMaxPollRecords() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker) *int {
 		return v.ConsumerMaxPollRecords
 	}).(pulumi.IntPtrOutput)
 }
 
-// The size of the TCP receive buffer (SO_RCVBUF) to use when reading data. -1 uses the OS default. Example: `65536`.
+// The size of the TCP receive buffer (SO_RCVBUF) to use when reading data. Default is `65536` (64KiB). `-1` uses the OS default.
 func (o GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerOutput) ConsumerReceiveBufferBytes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker) *int {
 		return v.ConsumerReceiveBufferBytes
 	}).(pulumi.IntPtrOutput)
 }
 
-// The maximum time the client will wait for a response to a request. Example: `30000`.
+// The maximum time the client will wait for a response to a request. Default is `30000` (30s).
 func (o GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerOutput) ConsumerRequestTimeoutMs() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker) *int {
 		return v.ConsumerRequestTimeoutMs
 	}).(pulumi.IntPtrOutput)
 }
 
-// The batch size in bytes producer will attempt to collect before publishing to broker. Example: `1024`.
+// The batch size in bytes producer will attempt to collect before publishing to broker. Default is `16384` (16KiB).
 func (o GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerOutput) ProducerBatchSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker) *int {
 		return v.ProducerBatchSize
 	}).(pulumi.IntPtrOutput)
 }
 
-// The amount of bytes producer can use for buffering data before publishing to broker.
+// The amount of bytes producer can use for buffering data before publishing to broker. Default is `33554432` (32MiB).
 func (o GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerOutput) ProducerBufferMemory() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker) *int {
 		return v.ProducerBufferMemory
@@ -14004,28 +14508,28 @@ func (o GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerOutput) P
 	}).(pulumi.StringPtrOutput)
 }
 
-// The linger time (ms) for waiting new data to arrive for publishing. Example: `100`.
+// The linger time (ms) for waiting new data to arrive for publishing. Default is `0`. Example: `100`.
 func (o GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerOutput) ProducerLingerMs() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker) *int {
 		return v.ProducerLingerMs
 	}).(pulumi.IntPtrOutput)
 }
 
-// The maximum request size in bytes.
+// The maximum request size in bytes. Default is `1048576` (1MiB).
 func (o GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerOutput) ProducerMaxRequestSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker) *int {
 		return v.ProducerMaxRequestSize
 	}).(pulumi.IntPtrOutput)
 }
 
-// The maximum time the client will wait for a response to a request. Example: `30000`.
+// The maximum time the client will wait for a response to a request. Default is `30000` (30s).
 func (o GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerOutput) ProducerRequestTimeoutMs() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker) *int {
 		return v.ProducerRequestTimeoutMs
 	}).(pulumi.IntPtrOutput)
 }
 
-// The size of the TCP send buffer (SO_SNDBUF) to use when sending data. -1 uses the OS default. Example: `131072`.
+// The size of the TCP send buffer (SO_SNDBUF) to use when sending data. Default is `131072` (128KiB). `-1` uses the OS default.
 func (o GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerOutput) ProducerSendBufferBytes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker) *int {
 		return v.ProducerSendBufferBytes
@@ -14066,7 +14570,7 @@ func (o GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// The maximum amount of data the server should return for a fetch request.
+// The maximum amount of data the server should return for a fetch request. Default is `52428800` (50MiB).
 func (o GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) ConsumerFetchMaxBytes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker) *int {
 		if v == nil {
@@ -14076,7 +14580,17 @@ func (o GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput
 	}).(pulumi.IntPtrOutput)
 }
 
-// The minimum amount of data the server should return for a fetch request. Example: `1024`.
+// The maximum amount of time the server will block before answering the fetch request if there isn't sufficient data to immediately satisfy `consumerFetchMinBytes`. Default is `500`.
+func (o GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) ConsumerFetchMaxWaitMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ConsumerFetchMaxWaitMs
+	}).(pulumi.IntPtrOutput)
+}
+
+// The minimum amount of data the server should return for a fetch request. Default is `1`. Example: `1024`.
 func (o GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) ConsumerFetchMinBytes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker) *int {
 		if v == nil {
@@ -14086,7 +14600,7 @@ func (o GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput
 	}).(pulumi.IntPtrOutput)
 }
 
-// The maximum amount of data per partition the server will return.
+// The maximum amount of data per partition the server will return. Default is `1048576` (1MiB).
 func (o GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) ConsumerMaxPartitionFetchBytes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker) *int {
 		if v == nil {
@@ -14096,7 +14610,7 @@ func (o GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput
 	}).(pulumi.IntPtrOutput)
 }
 
-// Set consumer max.poll.records. The default is 500. Example: `500`.
+// Set consumer max.poll.records. Default is `500`.
 func (o GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) ConsumerMaxPollRecords() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker) *int {
 		if v == nil {
@@ -14106,7 +14620,7 @@ func (o GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput
 	}).(pulumi.IntPtrOutput)
 }
 
-// The size of the TCP receive buffer (SO_RCVBUF) to use when reading data. -1 uses the OS default. Example: `65536`.
+// The size of the TCP receive buffer (SO_RCVBUF) to use when reading data. Default is `65536` (64KiB). `-1` uses the OS default.
 func (o GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) ConsumerReceiveBufferBytes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker) *int {
 		if v == nil {
@@ -14116,7 +14630,7 @@ func (o GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput
 	}).(pulumi.IntPtrOutput)
 }
 
-// The maximum time the client will wait for a response to a request. Example: `30000`.
+// The maximum time the client will wait for a response to a request. Default is `30000` (30s).
 func (o GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) ConsumerRequestTimeoutMs() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker) *int {
 		if v == nil {
@@ -14126,7 +14640,7 @@ func (o GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput
 	}).(pulumi.IntPtrOutput)
 }
 
-// The batch size in bytes producer will attempt to collect before publishing to broker. Example: `1024`.
+// The batch size in bytes producer will attempt to collect before publishing to broker. Default is `16384` (16KiB).
 func (o GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) ProducerBatchSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker) *int {
 		if v == nil {
@@ -14136,7 +14650,7 @@ func (o GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput
 	}).(pulumi.IntPtrOutput)
 }
 
-// The amount of bytes producer can use for buffering data before publishing to broker.
+// The amount of bytes producer can use for buffering data before publishing to broker. Default is `33554432` (32MiB).
 func (o GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) ProducerBufferMemory() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker) *int {
 		if v == nil {
@@ -14156,7 +14670,7 @@ func (o GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// The linger time (ms) for waiting new data to arrive for publishing. Example: `100`.
+// The linger time (ms) for waiting new data to arrive for publishing. Default is `0`. Example: `100`.
 func (o GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) ProducerLingerMs() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker) *int {
 		if v == nil {
@@ -14166,7 +14680,7 @@ func (o GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput
 	}).(pulumi.IntPtrOutput)
 }
 
-// The maximum request size in bytes.
+// The maximum request size in bytes. Default is `1048576` (1MiB).
 func (o GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) ProducerMaxRequestSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker) *int {
 		if v == nil {
@@ -14176,7 +14690,7 @@ func (o GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput
 	}).(pulumi.IntPtrOutput)
 }
 
-// The maximum time the client will wait for a response to a request. Example: `30000`.
+// The maximum time the client will wait for a response to a request. Default is `30000` (30s).
 func (o GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) ProducerRequestTimeoutMs() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker) *int {
 		if v == nil {
@@ -14186,7 +14700,7 @@ func (o GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput
 	}).(pulumi.IntPtrOutput)
 }
 
-// The size of the TCP send buffer (SO_SNDBUF) to use when sending data. -1 uses the OS default. Example: `131072`.
+// The size of the TCP send buffer (SO_SNDBUF) to use when sending data. Default is `131072` (128KiB). `-1` uses the OS default.
 func (o GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) ProducerSendBufferBytes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker) *int {
 		if v == nil {
@@ -20776,6 +21290,14 @@ func (o GetValkeyValkeyUserConfigPublicAccessPtrOutput) Valkey() pulumi.BoolPtrO
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationBillingGroupListBillingGroupInput)(nil)).Elem(), GetOrganizationBillingGroupListBillingGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationBillingGroupListBillingGroupArrayInput)(nil)).Elem(), GetOrganizationBillingGroupListBillingGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationBillingGroupListBillingGroupBillingContactEmailInput)(nil)).Elem(), GetOrganizationBillingGroupListBillingGroupBillingContactEmailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationBillingGroupListBillingGroupBillingContactEmailArrayInput)(nil)).Elem(), GetOrganizationBillingGroupListBillingGroupBillingContactEmailArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationBillingGroupListBillingGroupBillingEmailInput)(nil)).Elem(), GetOrganizationBillingGroupListBillingGroupBillingEmailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationBillingGroupListBillingGroupBillingEmailArrayInput)(nil)).Elem(), GetOrganizationBillingGroupListBillingGroupBillingEmailArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationBillingGroupListBillingGroupPaymentMethodInput)(nil)).Elem(), GetOrganizationBillingGroupListBillingGroupPaymentMethodArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationBillingGroupListBillingGroupPaymentMethodArrayInput)(nil)).Elem(), GetOrganizationBillingGroupListBillingGroupPaymentMethodArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationBillingGroupListTimeoutsInput)(nil)).Elem(), GetOrganizationBillingGroupListTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationBillingGroupListTimeoutsPtrInput)(nil)).Elem(), GetOrganizationBillingGroupListTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationBillingGroupPaymentMethodInput)(nil)).Elem(), GetOrganizationBillingGroupPaymentMethodArgs{})
@@ -21028,6 +21550,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPrivatelinkAccessPtrInput)(nil)).Elem(), GetValkeyValkeyUserConfigPrivatelinkAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPublicAccessInput)(nil)).Elem(), GetValkeyValkeyUserConfigPublicAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPublicAccessPtrInput)(nil)).Elem(), GetValkeyValkeyUserConfigPublicAccessArgs{})
+	pulumi.RegisterOutputType(GetOrganizationBillingGroupListBillingGroupOutput{})
+	pulumi.RegisterOutputType(GetOrganizationBillingGroupListBillingGroupArrayOutput{})
+	pulumi.RegisterOutputType(GetOrganizationBillingGroupListBillingGroupBillingContactEmailOutput{})
+	pulumi.RegisterOutputType(GetOrganizationBillingGroupListBillingGroupBillingContactEmailArrayOutput{})
+	pulumi.RegisterOutputType(GetOrganizationBillingGroupListBillingGroupBillingEmailOutput{})
+	pulumi.RegisterOutputType(GetOrganizationBillingGroupListBillingGroupBillingEmailArrayOutput{})
+	pulumi.RegisterOutputType(GetOrganizationBillingGroupListBillingGroupPaymentMethodOutput{})
+	pulumi.RegisterOutputType(GetOrganizationBillingGroupListBillingGroupPaymentMethodArrayOutput{})
 	pulumi.RegisterOutputType(GetOrganizationBillingGroupListTimeoutsOutput{})
 	pulumi.RegisterOutputType(GetOrganizationBillingGroupListTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(GetOrganizationBillingGroupPaymentMethodOutput{})

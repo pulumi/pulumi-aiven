@@ -4,6 +4,7 @@
 package com.pulumi.aiven.inputs;
 
 import com.pulumi.aiven.inputs.KafkaKafkaUserConfigKafkaConnectSecretProviderAwsArgs;
+import com.pulumi.aiven.inputs.KafkaKafkaUserConfigKafkaConnectSecretProviderAzureArgs;
 import com.pulumi.aiven.inputs.KafkaKafkaUserConfigKafkaConnectSecretProviderEnvArgs;
 import com.pulumi.aiven.inputs.KafkaKafkaUserConfigKafkaConnectSecretProviderVaultArgs;
 import com.pulumi.core.Output;
@@ -32,6 +33,21 @@ public final class KafkaKafkaUserConfigKafkaConnectSecretProviderArgs extends co
      */
     public Optional<Output<KafkaKafkaUserConfigKafkaConnectSecretProviderAwsArgs>> aws() {
         return Optional.ofNullable(this.aws);
+    }
+
+    /**
+     * Azure KeyVault secret provider configuration
+     * 
+     */
+    @Import(name="azure")
+    private @Nullable Output<KafkaKafkaUserConfigKafkaConnectSecretProviderAzureArgs> azure;
+
+    /**
+     * @return Azure KeyVault secret provider configuration
+     * 
+     */
+    public Optional<Output<KafkaKafkaUserConfigKafkaConnectSecretProviderAzureArgs>> azure() {
+        return Optional.ofNullable(this.azure);
     }
 
     /**
@@ -83,6 +99,7 @@ public final class KafkaKafkaUserConfigKafkaConnectSecretProviderArgs extends co
 
     private KafkaKafkaUserConfigKafkaConnectSecretProviderArgs(KafkaKafkaUserConfigKafkaConnectSecretProviderArgs $) {
         this.aws = $.aws;
+        this.azure = $.azure;
         this.env = $.env;
         this.name = $.name;
         this.vault = $.vault;
@@ -125,6 +142,27 @@ public final class KafkaKafkaUserConfigKafkaConnectSecretProviderArgs extends co
          */
         public Builder aws(KafkaKafkaUserConfigKafkaConnectSecretProviderAwsArgs aws) {
             return aws(Output.of(aws));
+        }
+
+        /**
+         * @param azure Azure KeyVault secret provider configuration
+         * 
+         * @return builder
+         * 
+         */
+        public Builder azure(@Nullable Output<KafkaKafkaUserConfigKafkaConnectSecretProviderAzureArgs> azure) {
+            $.azure = azure;
+            return this;
+        }
+
+        /**
+         * @param azure Azure KeyVault secret provider configuration
+         * 
+         * @return builder
+         * 
+         */
+        public Builder azure(KafkaKafkaUserConfigKafkaConnectSecretProviderAzureArgs azure) {
+            return azure(Output.of(azure));
         }
 
         /**

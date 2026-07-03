@@ -61,7 +61,7 @@ type OrganizationPermission struct {
 
 	// ID of an organization. Changing this property forces recreation of the resource.
 	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
-	// Required property. List of roles to set.
+	// List of roles to set.
 	Permissions OrganizationPermissionPermissionArrayOutput `pulumi:"permissions"`
 	// The ID of the organization, unit, or project to grant permissions for. The project ID is the name of the project. Changing this property forces recreation of the resource.
 	ResourceId pulumi.StringOutput `pulumi:"resourceId"`
@@ -114,7 +114,7 @@ func GetOrganizationPermission(ctx *pulumi.Context,
 type organizationPermissionState struct {
 	// ID of an organization. Changing this property forces recreation of the resource.
 	OrganizationId *string `pulumi:"organizationId"`
-	// Required property. List of roles to set.
+	// List of roles to set.
 	Permissions []OrganizationPermissionPermission `pulumi:"permissions"`
 	// The ID of the organization, unit, or project to grant permissions for. The project ID is the name of the project. Changing this property forces recreation of the resource.
 	ResourceId *string `pulumi:"resourceId"`
@@ -126,7 +126,7 @@ type organizationPermissionState struct {
 type OrganizationPermissionState struct {
 	// ID of an organization. Changing this property forces recreation of the resource.
 	OrganizationId pulumi.StringPtrInput
-	// Required property. List of roles to set.
+	// List of roles to set.
 	Permissions OrganizationPermissionPermissionArrayInput
 	// The ID of the organization, unit, or project to grant permissions for. The project ID is the name of the project. Changing this property forces recreation of the resource.
 	ResourceId pulumi.StringPtrInput
@@ -142,7 +142,7 @@ func (OrganizationPermissionState) ElementType() reflect.Type {
 type organizationPermissionArgs struct {
 	// ID of an organization. Changing this property forces recreation of the resource.
 	OrganizationId string `pulumi:"organizationId"`
-	// Required property. List of roles to set.
+	// List of roles to set.
 	Permissions []OrganizationPermissionPermission `pulumi:"permissions"`
 	// The ID of the organization, unit, or project to grant permissions for. The project ID is the name of the project. Changing this property forces recreation of the resource.
 	ResourceId string `pulumi:"resourceId"`
@@ -155,7 +155,7 @@ type organizationPermissionArgs struct {
 type OrganizationPermissionArgs struct {
 	// ID of an organization. Changing this property forces recreation of the resource.
 	OrganizationId pulumi.StringInput
-	// Required property. List of roles to set.
+	// List of roles to set.
 	Permissions OrganizationPermissionPermissionArrayInput
 	// The ID of the organization, unit, or project to grant permissions for. The project ID is the name of the project. Changing this property forces recreation of the resource.
 	ResourceId pulumi.StringInput
@@ -256,7 +256,7 @@ func (o OrganizationPermissionOutput) OrganizationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationPermission) pulumi.StringOutput { return v.OrganizationId }).(pulumi.StringOutput)
 }
 
-// Required property. List of roles to set.
+// List of roles to set.
 func (o OrganizationPermissionOutput) Permissions() OrganizationPermissionPermissionArrayOutput {
 	return o.ApplyT(func(v *OrganizationPermission) OrganizationPermissionPermissionArrayOutput { return v.Permissions }).(OrganizationPermissionPermissionArrayOutput)
 }

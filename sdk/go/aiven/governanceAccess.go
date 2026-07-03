@@ -68,7 +68,7 @@ import (
 type GovernanceAccess struct {
 	pulumi.CustomResourceState
 
-	// Required property. access type specific data. Changing this property forces recreation of the resource.
+	// access type specific data. Changing this property forces recreation of the resource.
 	AccessData GovernanceAccessAccessDataOutput `pulumi:"accessData"`
 	// The ID of the access.
 	AccessId pulumi.StringOutput `pulumi:"accessId"`
@@ -125,7 +125,7 @@ func GetGovernanceAccess(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering GovernanceAccess resources.
 type governanceAccessState struct {
-	// Required property. access type specific data. Changing this property forces recreation of the resource.
+	// access type specific data. Changing this property forces recreation of the resource.
 	AccessData *GovernanceAccessAccessData `pulumi:"accessData"`
 	// The ID of the access.
 	AccessId *string `pulumi:"accessId"`
@@ -141,7 +141,7 @@ type governanceAccessState struct {
 }
 
 type GovernanceAccessState struct {
-	// Required property. access type specific data. Changing this property forces recreation of the resource.
+	// access type specific data. Changing this property forces recreation of the resource.
 	AccessData GovernanceAccessAccessDataPtrInput
 	// The ID of the access.
 	AccessId pulumi.StringPtrInput
@@ -161,7 +161,7 @@ func (GovernanceAccessState) ElementType() reflect.Type {
 }
 
 type governanceAccessArgs struct {
-	// Required property. access type specific data. Changing this property forces recreation of the resource.
+	// access type specific data. Changing this property forces recreation of the resource.
 	AccessData GovernanceAccessAccessData `pulumi:"accessData"`
 	// Label to describe the access. Changing this property forces recreation of the resource.
 	AccessName string `pulumi:"accessName"`
@@ -176,7 +176,7 @@ type governanceAccessArgs struct {
 
 // The set of arguments for constructing a GovernanceAccess resource.
 type GovernanceAccessArgs struct {
-	// Required property. access type specific data. Changing this property forces recreation of the resource.
+	// access type specific data. Changing this property forces recreation of the resource.
 	AccessData GovernanceAccessAccessDataInput
 	// Label to describe the access. Changing this property forces recreation of the resource.
 	AccessName pulumi.StringInput
@@ -276,7 +276,7 @@ func (o GovernanceAccessOutput) ToGovernanceAccessOutputWithContext(ctx context.
 	return o
 }
 
-// Required property. access type specific data. Changing this property forces recreation of the resource.
+// access type specific data. Changing this property forces recreation of the resource.
 func (o GovernanceAccessOutput) AccessData() GovernanceAccessAccessDataOutput {
 	return o.ApplyT(func(v *GovernanceAccess) GovernanceAccessAccessDataOutput { return v.AccessData }).(GovernanceAccessAccessDataOutput)
 }

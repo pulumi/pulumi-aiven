@@ -16,7 +16,7 @@ namespace Pulumi.Aiven.Inputs
         private InputList<Inputs.GovernanceAccessAccessDataAclGetArgs>? _acls;
 
         /// <summary>
-        /// Required property. Acls. Changing this property forces recreation of the resource.
+        /// Acls. Changing this property forces recreation of the resource.
         /// </summary>
         public InputList<Inputs.GovernanceAccessAccessDataAclGetArgs> Acls
         {

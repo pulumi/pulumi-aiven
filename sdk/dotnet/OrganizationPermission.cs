@@ -60,7 +60,7 @@ namespace Pulumi.Aiven
         public Output<string> OrganizationId { get; private set; } = null!;
 
         /// <summary>
-        /// Required property. List of roles to set.
+        /// List of roles to set.
         /// </summary>
         [Output("permissions")]
         public Output<ImmutableArray<Outputs.OrganizationPermissionPermission>> Permissions { get; private set; } = null!;
@@ -136,7 +136,7 @@ namespace Pulumi.Aiven
         private InputList<Inputs.OrganizationPermissionPermissionArgs>? _permissions;
 
         /// <summary>
-        /// Required property. List of roles to set.
+        /// List of roles to set.
         /// </summary>
         public InputList<Inputs.OrganizationPermissionPermissionArgs> Permissions
         {
@@ -177,7 +177,7 @@ namespace Pulumi.Aiven
         private InputList<Inputs.OrganizationPermissionPermissionGetArgs>? _permissions;
 
         /// <summary>
-        /// Required property. List of roles to set.
+        /// List of roles to set.
         /// </summary>
         public InputList<Inputs.OrganizationPermissionPermissionGetArgs> Permissions
         {

@@ -14,7 +14,7 @@ namespace Pulumi.Aiven.Outputs
     public sealed class GovernanceAccessAccessData
     {
         /// <summary>
-        /// Required property. Acls. Changing this property forces recreation of the resource.
+        /// Acls. Changing this property forces recreation of the resource.
         /// </summary>
         public readonly ImmutableArray<Outputs.GovernanceAccessAccessDataAcl> Acls;
         /// <summary>

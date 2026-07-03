@@ -47,7 +47,7 @@ public final class MySqlMysqlUserConfig {
      */
     private @Nullable Integer backupMinute;
     /**
-     * @return The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default for example if using the MySQL Debezium Kafka connector. Example: `600`.
+     * @return Warning: reducing this value can make a large batch of binary logs eligible for purge at once. Depending on the volume, this can sometimes stall the MySQL commit path and block writes until the purge completes. To stay on the safe side, prefer lowering the value gradually in small decrements during a low-traffic window rather than dropping it drastically in one step. Example: `600`.
      * 
      */
     private @Nullable Integer binlogRetentionPeriod;
@@ -168,7 +168,7 @@ public final class MySqlMysqlUserConfig {
         return Optional.ofNullable(this.backupMinute);
     }
     /**
-     * @return The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default for example if using the MySQL Debezium Kafka connector. Example: `600`.
+     * @return Warning: reducing this value can make a large batch of binary logs eligible for purge at once. Depending on the volume, this can sometimes stall the MySQL commit path and block writes until the purge completes. To stay on the safe side, prefer lowering the value gradually in small decrements during a low-traffic window rather than dropping it drastically in one step. Example: `600`.
      * 
      */
     public Optional<Integer> binlogRetentionPeriod() {

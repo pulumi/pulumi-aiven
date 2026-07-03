@@ -7,12 +7,31 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
+import java.lang.String;
+import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class KafkaKafkaUserConfigKafkaDisklessArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final KafkaKafkaUserConfigKafkaDisklessArgs Empty = new KafkaKafkaUserConfigKafkaDisklessArgs();
+
+    /**
+     * The regexes of topics to auto enable diskless. Topics matching any of the regexes will be created as diskless topics.
+     * 
+     */
+    @Import(name="autoDisklessTopicRegexes")
+    private @Nullable Output<List<String>> autoDisklessTopicRegexes;
+
+    /**
+     * @return The regexes of topics to auto enable diskless. Topics matching any of the regexes will be created as diskless topics.
+     * 
+     */
+    public Optional<Output<List<String>>> autoDisklessTopicRegexes() {
+        return Optional.ofNullable(this.autoDisklessTopicRegexes);
+    }
 
     /**
      * Whether to enable the Diskless functionality.
@@ -32,6 +51,7 @@ public final class KafkaKafkaUserConfigKafkaDisklessArgs extends com.pulumi.reso
     private KafkaKafkaUserConfigKafkaDisklessArgs() {}
 
     private KafkaKafkaUserConfigKafkaDisklessArgs(KafkaKafkaUserConfigKafkaDisklessArgs $) {
+        this.autoDisklessTopicRegexes = $.autoDisklessTopicRegexes;
         this.enabled = $.enabled;
     }
 
@@ -51,6 +71,37 @@ public final class KafkaKafkaUserConfigKafkaDisklessArgs extends com.pulumi.reso
 
         public Builder(KafkaKafkaUserConfigKafkaDisklessArgs defaults) {
             $ = new KafkaKafkaUserConfigKafkaDisklessArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param autoDisklessTopicRegexes The regexes of topics to auto enable diskless. Topics matching any of the regexes will be created as diskless topics.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoDisklessTopicRegexes(@Nullable Output<List<String>> autoDisklessTopicRegexes) {
+            $.autoDisklessTopicRegexes = autoDisklessTopicRegexes;
+            return this;
+        }
+
+        /**
+         * @param autoDisklessTopicRegexes The regexes of topics to auto enable diskless. Topics matching any of the regexes will be created as diskless topics.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoDisklessTopicRegexes(List<String> autoDisklessTopicRegexes) {
+            return autoDisklessTopicRegexes(Output.of(autoDisklessTopicRegexes));
+        }
+
+        /**
+         * @param autoDisklessTopicRegexes The regexes of topics to auto enable diskless. Topics matching any of the regexes will be created as diskless topics.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoDisklessTopicRegexes(String... autoDisklessTopicRegexes) {
+            return autoDisklessTopicRegexes(List.of(autoDisklessTopicRegexes));
         }
 
         /**

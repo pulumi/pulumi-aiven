@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.aiven.outputs.KafkaKafkaUserConfigKafkaConnectSecretProviderAws;
+import com.pulumi.aiven.outputs.KafkaKafkaUserConfigKafkaConnectSecretProviderAzure;
 import com.pulumi.aiven.outputs.KafkaKafkaUserConfigKafkaConnectSecretProviderEnv;
 import com.pulumi.aiven.outputs.KafkaKafkaUserConfigKafkaConnectSecretProviderVault;
 import com.pulumi.core.annotations.CustomType;
@@ -20,6 +21,11 @@ public final class KafkaKafkaUserConfigKafkaConnectSecretProvider {
      * 
      */
     private @Nullable KafkaKafkaUserConfigKafkaConnectSecretProviderAws aws;
+    /**
+     * @return Azure KeyVault secret provider configuration
+     * 
+     */
+    private @Nullable KafkaKafkaUserConfigKafkaConnectSecretProviderAzure azure;
     /**
      * @return ENV secret provider configuration
      * 
@@ -43,6 +49,13 @@ public final class KafkaKafkaUserConfigKafkaConnectSecretProvider {
      */
     public Optional<KafkaKafkaUserConfigKafkaConnectSecretProviderAws> aws() {
         return Optional.ofNullable(this.aws);
+    }
+    /**
+     * @return Azure KeyVault secret provider configuration
+     * 
+     */
+    public Optional<KafkaKafkaUserConfigKafkaConnectSecretProviderAzure> azure() {
+        return Optional.ofNullable(this.azure);
     }
     /**
      * @return ENV secret provider configuration
@@ -76,6 +89,7 @@ public final class KafkaKafkaUserConfigKafkaConnectSecretProvider {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable KafkaKafkaUserConfigKafkaConnectSecretProviderAws aws;
+        private @Nullable KafkaKafkaUserConfigKafkaConnectSecretProviderAzure azure;
         private @Nullable KafkaKafkaUserConfigKafkaConnectSecretProviderEnv env;
         private String name;
         private @Nullable KafkaKafkaUserConfigKafkaConnectSecretProviderVault vault;
@@ -83,6 +97,7 @@ public final class KafkaKafkaUserConfigKafkaConnectSecretProvider {
         public Builder(KafkaKafkaUserConfigKafkaConnectSecretProvider defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.aws = defaults.aws;
+    	      this.azure = defaults.azure;
     	      this.env = defaults.env;
     	      this.name = defaults.name;
     	      this.vault = defaults.vault;
@@ -92,6 +107,12 @@ public final class KafkaKafkaUserConfigKafkaConnectSecretProvider {
         public Builder aws(@Nullable KafkaKafkaUserConfigKafkaConnectSecretProviderAws aws) {
 
             this.aws = aws;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder azure(@Nullable KafkaKafkaUserConfigKafkaConnectSecretProviderAzure azure) {
+
+            this.azure = azure;
             return this;
         }
         @CustomType.Setter
@@ -117,6 +138,7 @@ public final class KafkaKafkaUserConfigKafkaConnectSecretProvider {
         public KafkaKafkaUserConfigKafkaConnectSecretProvider build() {
             final var _resultValue = new KafkaKafkaUserConfigKafkaConnectSecretProvider();
             _resultValue.aws = aws;
+            _resultValue.azure = azure;
             _resultValue.env = env;
             _resultValue.name = name;
             _resultValue.vault = vault;
