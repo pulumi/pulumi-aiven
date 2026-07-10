@@ -95,7 +95,7 @@ publishing {
                 inceptionYear = "2022"
                 name = "pulumi-aiven"
                 packaging = "jar"
-                description = "A Pulumi package for creating and managing Aiven cloud resources."
+                description = $/A Pulumi package for creating and managing Aiven cloud resources./$
 
                 url = "https://github.com/pulumi/pulumi-aiven"
 

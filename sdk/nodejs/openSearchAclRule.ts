@@ -56,16 +56,16 @@ import * as utilities from "./utilities";
  *         permission: "readwrite",
  *     },
  * ];
- * const osAclRule: aiven.OpenSearchAclRule[] = [];
+ * const osAclRule: {[key: string]: aiven.OpenSearchAclRule} = {};
  * pulumi.all(aclRules.map((v, k) => [k, v] as const).reduce((__obj, [i, v]) => ({ ...__obj, [String(i)]: v }), {})).apply(rangeBody => {
  *     for (const range of Object.entries(rangeBody).sort().map(([k, v]) => ({key: k, value: v}))) {
- *         osAclRule.push(new aiven.OpenSearchAclRule(`os_acl_rule-${range.key}`, {
+ *         osAclRule[range.key] = new aiven.OpenSearchAclRule(`os_acl_rule-${range.key}`, {
  *             project: exampleProject.project,
  *             serviceName: exampleOpensearch.serviceName,
  *             username: range.value.username,
  *             index: range.value.index,
  *             permission: range.value.permission,
- *         }));
+ *         });
  *     }
  * });
  * ```

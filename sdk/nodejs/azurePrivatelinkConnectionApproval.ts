@@ -15,8 +15,8 @@ import * as utilities from "./utilities";
  * import * as azurerm from "@pulumi/azurerm";
  *
  * const staticIps: aiven.StaticIp[] = [];
- * for (const range = {value: 0}; range.value < 2; range.value++) {
- *     staticIps.push(new aiven.StaticIp(`static_ips-${range.value}`, {
+ * for (let range = 0; range < 2; range++) {
+ *     staticIps.push(new aiven.StaticIp(`static_ips-${range}`, {
  *         project: projectId,
  *         cloudName: region,
  *     }));
