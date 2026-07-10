@@ -181,9 +181,9 @@ class AzurePrivatelinkConnectionApproval(pulumi.CustomResource):
         import pulumi_aiven as aiven
         import pulumi_azurerm as azurerm
 
-        static_ips: list[Any] = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            static_ips.append(aiven.StaticIp(f"static_ips-{range['value']}",
+        static_ips: list[aiven.StaticIp] = []
+        for static_ips_range in [{"value": i} for i in range(0, 2)]:
+            static_ips.append(aiven.StaticIp(f"static_ips-{static_ips_range['value']}",
                 project=project_id,
                 cloud_name=region))
         default = aiven.Pg("default",
@@ -253,9 +253,9 @@ class AzurePrivatelinkConnectionApproval(pulumi.CustomResource):
         import pulumi_aiven as aiven
         import pulumi_azurerm as azurerm
 
-        static_ips: list[Any] = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            static_ips.append(aiven.StaticIp(f"static_ips-{range['value']}",
+        static_ips: list[aiven.StaticIp] = []
+        for static_ips_range in [{"value": i} for i in range(0, 2)]:
+            static_ips.append(aiven.StaticIp(f"static_ips-{static_ips_range['value']}",
                 project=project_id,
                 cloud_name=region))
         default = aiven.Pg("default",

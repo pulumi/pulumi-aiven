@@ -251,15 +251,15 @@ class OpenSearchAclRule(pulumi.CustomResource):
                 "permission": "readwrite",
             },
         ]
-        os_acl_rule: list[Any] = []
+        os_acl_rule: dict[str, aiven.OpenSearchAclRule] = {}
         def create_os_acl_rule(range_body):
-            for range in [{"key": k, "value": v} for [k, v] in sorted((range_body).items())]:
-                os_acl_rule.append(aiven.OpenSearchAclRule(f"os_acl_rule-{range['key']}",
+            for os_acl_rule_range in [{"key": k, "value": v} for [k, v] in sorted((range_body).items())]:
+                os_acl_rule[os_acl_rule_range['key']] = aiven.OpenSearchAclRule(f"os_acl_rule-{os_acl_rule_range['key']}",
                     project=example_project["project"],
                     service_name=example_opensearch["serviceName"],
-                    username=range["value"]["username"],
-                    index=range["value"]["index"],
-                    permission=range["value"]["permission"]))
+                    username=os_acl_rule_range["value"]["username"],
+                    index=os_acl_rule_range["value"]["index"],
+                    permission=os_acl_rule_range["value"]["permission"])
 
         pulumi.Output.all({str(i): v for i, v in enumerate(acl_rules)}).apply(lambda resolved_outputs: create_os_acl_rule(resolved_outputs[0]))
         ```
@@ -335,15 +335,15 @@ class OpenSearchAclRule(pulumi.CustomResource):
                 "permission": "readwrite",
             },
         ]
-        os_acl_rule: list[Any] = []
+        os_acl_rule: dict[str, aiven.OpenSearchAclRule] = {}
         def create_os_acl_rule(range_body):
-            for range in [{"key": k, "value": v} for [k, v] in sorted((range_body).items())]:
-                os_acl_rule.append(aiven.OpenSearchAclRule(f"os_acl_rule-{range['key']}",
+            for os_acl_rule_range in [{"key": k, "value": v} for [k, v] in sorted((range_body).items())]:
+                os_acl_rule[os_acl_rule_range['key']] = aiven.OpenSearchAclRule(f"os_acl_rule-{os_acl_rule_range['key']}",
                     project=example_project["project"],
                     service_name=example_opensearch["serviceName"],
-                    username=range["value"]["username"],
-                    index=range["value"]["index"],
-                    permission=range["value"]["permission"]))
+                    username=os_acl_rule_range["value"]["username"],
+                    index=os_acl_rule_range["value"]["index"],
+                    permission=os_acl_rule_range["value"]["permission"])
 
         pulumi.Output.all({str(i): v for i, v in enumerate(acl_rules)}).apply(lambda resolved_outputs: create_os_acl_rule(resolved_outputs[0]))
         ```
