@@ -55,10 +55,6 @@ export interface GetExternalIdentityResult {
      */
     readonly externalUserId: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * The Aiven user ID.
      */
     readonly internalUserId: string;

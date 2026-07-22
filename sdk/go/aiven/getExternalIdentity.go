@@ -43,8 +43,6 @@ type GetExternalIdentityResult struct {
 	ExternalServiceName string `pulumi:"externalServiceName"`
 	// The user's ID on the external service. For GitHub, this is their GitHub username.
 	ExternalUserId string `pulumi:"externalUserId"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// The Aiven user ID.
 	InternalUserId string `pulumi:"internalUserId"`
 	// The ID of the Aiven organization that the user is part of.
@@ -99,11 +97,6 @@ func (o GetExternalIdentityResultOutput) ExternalServiceName() pulumi.StringOutp
 // The user's ID on the external service. For GitHub, this is their GitHub username.
 func (o GetExternalIdentityResultOutput) ExternalUserId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetExternalIdentityResult) string { return v.ExternalUserId }).(pulumi.StringOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetExternalIdentityResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetExternalIdentityResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The Aiven user ID.

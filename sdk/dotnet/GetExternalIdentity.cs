@@ -117,10 +117,6 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string ExternalUserId;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// The Aiven user ID.
         /// </summary>
         public readonly string InternalUserId;
@@ -135,15 +131,12 @@ namespace Pulumi.Aiven
 
             string externalUserId,
 
-            string id,
-
             string internalUserId,
 
             string organizationId)
         {
             ExternalServiceName = externalServiceName;
             ExternalUserId = externalUserId;
-            Id = id;
             InternalUserId = internalUserId;
             OrganizationId = organizationId;
         }

@@ -21,11 +21,6 @@ public final class GetExternalIdentityResult {
      */
     private String externalUserId;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return The Aiven user ID.
      * 
      */
@@ -50,13 +45,6 @@ public final class GetExternalIdentityResult {
      */
     public String externalUserId() {
         return this.externalUserId;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return The Aiven user ID.
@@ -84,7 +72,6 @@ public final class GetExternalIdentityResult {
     public static final class Builder {
         private String externalServiceName;
         private String externalUserId;
-        private String id;
         private String internalUserId;
         private String organizationId;
         public Builder() {}
@@ -92,7 +79,6 @@ public final class GetExternalIdentityResult {
     	      Objects.requireNonNull(defaults);
     	      this.externalServiceName = defaults.externalServiceName;
     	      this.externalUserId = defaults.externalUserId;
-    	      this.id = defaults.id;
     	      this.internalUserId = defaults.internalUserId;
     	      this.organizationId = defaults.organizationId;
         }
@@ -111,14 +97,6 @@ public final class GetExternalIdentityResult {
               throw new MissingRequiredPropertyException("GetExternalIdentityResult", "externalUserId");
             }
             this.externalUserId = externalUserId;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetExternalIdentityResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -141,7 +119,6 @@ public final class GetExternalIdentityResult {
             final var _resultValue = new GetExternalIdentityResult();
             _resultValue.externalServiceName = externalServiceName;
             _resultValue.externalUserId = externalUserId;
-            _resultValue.id = id;
             _resultValue.internalUserId = internalUserId;
             _resultValue.organizationId = organizationId;
             return _resultValue;
