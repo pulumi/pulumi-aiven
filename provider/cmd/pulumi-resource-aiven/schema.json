@@ -37414,10 +37414,6 @@
                         "description": "The user's ID on the external service. For GitHub, this is their GitHub username.\n",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
-                        "type": "string"
-                    },
                     "internalUserId": {
                         "description": "The Aiven user ID.\n",
                         "type": "string"
@@ -37431,8 +37427,7 @@
                     "externalServiceName",
                     "externalUserId",
                     "internalUserId",
-                    "organizationId",
-                    "id"
+                    "organizationId"
                 ],
                 "type": "object"
             }
