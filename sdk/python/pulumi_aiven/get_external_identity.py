@@ -26,16 +26,13 @@ class GetExternalIdentityResult:
     """
     A collection of values returned by getExternalIdentity.
     """
-    def __init__(__self__, external_service_name=None, external_user_id=None, id=None, internal_user_id=None, organization_id=None):
+    def __init__(__self__, external_service_name=None, external_user_id=None, internal_user_id=None, organization_id=None):
         if external_service_name and not isinstance(external_service_name, str):
             raise TypeError("Expected argument 'external_service_name' to be a str")
         pulumi.set(__self__, "external_service_name", external_service_name)
         if external_user_id and not isinstance(external_user_id, str):
             raise TypeError("Expected argument 'external_user_id' to be a str")
         pulumi.set(__self__, "external_user_id", external_user_id)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if internal_user_id and not isinstance(internal_user_id, str):
             raise TypeError("Expected argument 'internal_user_id' to be a str")
         pulumi.set(__self__, "internal_user_id", internal_user_id)
@@ -58,14 +55,6 @@ class GetExternalIdentityResult:
         The user's ID on the external service. For GitHub, this is their GitHub username.
         """
         return pulumi.get(self, "external_user_id")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="internalUserId")
@@ -92,7 +81,6 @@ class AwaitableGetExternalIdentityResult(GetExternalIdentityResult):
         return GetExternalIdentityResult(
             external_service_name=self.external_service_name,
             external_user_id=self.external_user_id,
-            id=self.id,
             internal_user_id=self.internal_user_id,
             organization_id=self.organization_id)
 
@@ -125,7 +113,6 @@ def get_external_identity(external_service_name: Optional[_builtins.str] = None,
     return AwaitableGetExternalIdentityResult(
         external_service_name=pulumi.get(__ret__, 'external_service_name'),
         external_user_id=pulumi.get(__ret__, 'external_user_id'),
-        id=pulumi.get(__ret__, 'id'),
         internal_user_id=pulumi.get(__ret__, 'internal_user_id'),
         organization_id=pulumi.get(__ret__, 'organization_id'))
 def get_external_identity_output(external_service_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -155,6 +142,5 @@ def get_external_identity_output(external_service_name: pulumi.Input[Optional[_b
     return __ret__.apply(lambda __response__: GetExternalIdentityResult(
         external_service_name=pulumi.get(__response__, 'external_service_name'),
         external_user_id=pulumi.get(__response__, 'external_user_id'),
-        id=pulumi.get(__response__, 'id'),
         internal_user_id=pulumi.get(__response__, 'internal_user_id'),
         organization_id=pulumi.get(__response__, 'organization_id')))
