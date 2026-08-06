@@ -72,7 +72,7 @@ import (
 //				Project:               pulumi.Any(exampleProject.Project),
 //				IntegrationType:       pulumi.String("autoscaler"),
 //				SourceServiceName:     pulumi.Any(examplePg.ServiceName),
-//				DestinationEndpointId: autoscalerEndpoint.ID(),
+//				DestinationEndpointId: autoscalerEndpoint.ID().ToIDOutput().ToStringOutput(),
 //			})
 //			if err != nil {
 //				return err
