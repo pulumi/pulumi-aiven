@@ -37,7 +37,7 @@ import (
 //				return err
 //			}
 //			_, err = aiven.NewAwsVpcPeeringConnection(ctx, "aws_to_aiven_peering", &aiven.AwsVpcPeeringConnectionArgs{
-//				VpcId:        exampleVpc.ID(),
+//				VpcId:        exampleVpc.ID().ToIDOutput().ToStringOutput(),
 //				AwsAccountId: pulumi.Any(awsId),
 //				AwsVpcId:     pulumi.String("vpc-1a2b3c4d5e6f7g8h9"),
 //				AwsVpcRegion: pulumi.String("aws-us-east-2"),

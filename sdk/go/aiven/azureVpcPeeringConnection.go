@@ -37,7 +37,7 @@ import (
 //				return err
 //			}
 //			_, err = aiven.NewAzureVpcPeeringConnection(ctx, "azure_to_aiven_peering", &aiven.AzureVpcPeeringConnectionArgs{
-//				VpcId:               exampleVpc.ID(),
+//				VpcId:               exampleVpc.ID().ToIDOutput().ToStringOutput(),
 //				AzureSubscriptionId: pulumi.String("00000000-0000-0000-0000-000000000000"),
 //				PeerResourceGroup:   pulumi.String("example-resource-group"),
 //				VnetName:            pulumi.String("example-vnet"),
