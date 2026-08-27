@@ -82,12 +82,8 @@ type LookupOpenSearchAclRuleResult struct {
 }
 
 func LookupOpenSearchAclRuleOutput(ctx *pulumi.Context, args LookupOpenSearchAclRuleOutputArgs, opts ...pulumi.InvokeOption) LookupOpenSearchAclRuleResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupOpenSearchAclRuleResultOutput, error) {
-			args := v.(LookupOpenSearchAclRuleArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("aiven:index/getOpenSearchAclRule:getOpenSearchAclRule", args, LookupOpenSearchAclRuleResultOutput{}, options).(LookupOpenSearchAclRuleResultOutput), nil
-		}).(LookupOpenSearchAclRuleResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("aiven:index/getOpenSearchAclRule:getOpenSearchAclRule", args, LookupOpenSearchAclRuleResultOutput{}, options).(LookupOpenSearchAclRuleResultOutput)
 }
 
 // A collection of arguments for invoking getOpenSearchAclRule.

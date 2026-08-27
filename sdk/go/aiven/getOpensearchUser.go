@@ -79,12 +79,8 @@ type LookupOpensearchUserResult struct {
 }
 
 func LookupOpensearchUserOutput(ctx *pulumi.Context, args LookupOpensearchUserOutputArgs, opts ...pulumi.InvokeOption) LookupOpensearchUserResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupOpensearchUserResultOutput, error) {
-			args := v.(LookupOpensearchUserArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("aiven:index/getOpensearchUser:getOpensearchUser", args, LookupOpensearchUserResultOutput{}, options).(LookupOpensearchUserResultOutput), nil
-		}).(LookupOpensearchUserResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("aiven:index/getOpensearchUser:getOpensearchUser", args, LookupOpensearchUserResultOutput{}, options).(LookupOpensearchUserResultOutput)
 }
 
 // A collection of arguments for invoking getOpensearchUser.

@@ -89,12 +89,8 @@ type LookupKafkaConnectorResult struct {
 }
 
 func LookupKafkaConnectorOutput(ctx *pulumi.Context, args LookupKafkaConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupKafkaConnectorResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupKafkaConnectorResultOutput, error) {
-			args := v.(LookupKafkaConnectorArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("aiven:index/getKafkaConnector:getKafkaConnector", args, LookupKafkaConnectorResultOutput{}, options).(LookupKafkaConnectorResultOutput), nil
-		}).(LookupKafkaConnectorResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("aiven:index/getKafkaConnector:getKafkaConnector", args, LookupKafkaConnectorResultOutput{}, options).(LookupKafkaConnectorResultOutput)
 }
 
 // A collection of arguments for invoking getKafkaConnector.

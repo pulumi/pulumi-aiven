@@ -47,12 +47,8 @@ type GetServicePlanListResult struct {
 }
 
 func GetServicePlanListOutput(ctx *pulumi.Context, args GetServicePlanListOutputArgs, opts ...pulumi.InvokeOption) GetServicePlanListResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetServicePlanListResultOutput, error) {
-			args := v.(GetServicePlanListArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("aiven:index/getServicePlanList:getServicePlanList", args, GetServicePlanListResultOutput{}, options).(GetServicePlanListResultOutput), nil
-		}).(GetServicePlanListResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("aiven:index/getServicePlanList:getServicePlanList", args, GetServicePlanListResultOutput{}, options).(GetServicePlanListResultOutput)
 }
 
 // A collection of arguments for invoking getServicePlanList.

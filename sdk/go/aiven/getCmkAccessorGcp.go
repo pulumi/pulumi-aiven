@@ -67,12 +67,8 @@ type GetCmkAccessorGcpResult struct {
 }
 
 func GetCmkAccessorGcpOutput(ctx *pulumi.Context, args GetCmkAccessorGcpOutputArgs, opts ...pulumi.InvokeOption) GetCmkAccessorGcpResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetCmkAccessorGcpResultOutput, error) {
-			args := v.(GetCmkAccessorGcpArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("aiven:index/getCmkAccessorGcp:getCmkAccessorGcp", args, GetCmkAccessorGcpResultOutput{}, options).(GetCmkAccessorGcpResultOutput), nil
-		}).(GetCmkAccessorGcpResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("aiven:index/getCmkAccessorGcp:getCmkAccessorGcp", args, GetCmkAccessorGcpResultOutput{}, options).(GetCmkAccessorGcpResultOutput)
 }
 
 // A collection of arguments for invoking getCmkAccessorGcp.

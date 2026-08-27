@@ -62,12 +62,8 @@ type LookupAwsOrgVpcPeeringConnectionResult struct {
 }
 
 func LookupAwsOrgVpcPeeringConnectionOutput(ctx *pulumi.Context, args LookupAwsOrgVpcPeeringConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupAwsOrgVpcPeeringConnectionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAwsOrgVpcPeeringConnectionResultOutput, error) {
-			args := v.(LookupAwsOrgVpcPeeringConnectionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("aiven:index/getAwsOrgVpcPeeringConnection:getAwsOrgVpcPeeringConnection", args, LookupAwsOrgVpcPeeringConnectionResultOutput{}, options).(LookupAwsOrgVpcPeeringConnectionResultOutput), nil
-		}).(LookupAwsOrgVpcPeeringConnectionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("aiven:index/getAwsOrgVpcPeeringConnection:getAwsOrgVpcPeeringConnection", args, LookupAwsOrgVpcPeeringConnectionResultOutput{}, options).(LookupAwsOrgVpcPeeringConnectionResultOutput)
 }
 
 // A collection of arguments for invoking getAwsOrgVpcPeeringConnection.

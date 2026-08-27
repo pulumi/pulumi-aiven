@@ -69,12 +69,8 @@ type GetOrganizationBillingGroupListResult struct {
 }
 
 func GetOrganizationBillingGroupListOutput(ctx *pulumi.Context, args GetOrganizationBillingGroupListOutputArgs, opts ...pulumi.InvokeOption) GetOrganizationBillingGroupListResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetOrganizationBillingGroupListResultOutput, error) {
-			args := v.(GetOrganizationBillingGroupListArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("aiven:index/getOrganizationBillingGroupList:getOrganizationBillingGroupList", args, GetOrganizationBillingGroupListResultOutput{}, options).(GetOrganizationBillingGroupListResultOutput), nil
-		}).(GetOrganizationBillingGroupListResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("aiven:index/getOrganizationBillingGroupList:getOrganizationBillingGroupList", args, GetOrganizationBillingGroupListResultOutput{}, options).(GetOrganizationBillingGroupListResultOutput)
 }
 
 // A collection of arguments for invoking getOrganizationBillingGroupList.

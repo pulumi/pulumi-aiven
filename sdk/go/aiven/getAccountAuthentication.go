@@ -76,12 +76,8 @@ type LookupAccountAuthenticationResult struct {
 }
 
 func LookupAccountAuthenticationOutput(ctx *pulumi.Context, args LookupAccountAuthenticationOutputArgs, opts ...pulumi.InvokeOption) LookupAccountAuthenticationResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAccountAuthenticationResultOutput, error) {
-			args := v.(LookupAccountAuthenticationArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("aiven:index/getAccountAuthentication:getAccountAuthentication", args, LookupAccountAuthenticationResultOutput{}, options).(LookupAccountAuthenticationResultOutput), nil
-		}).(LookupAccountAuthenticationResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("aiven:index/getAccountAuthentication:getAccountAuthentication", args, LookupAccountAuthenticationResultOutput{}, options).(LookupAccountAuthenticationResultOutput)
 }
 
 // A collection of arguments for invoking getAccountAuthentication.

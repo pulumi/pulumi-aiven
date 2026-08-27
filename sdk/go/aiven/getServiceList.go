@@ -45,12 +45,8 @@ type GetServiceListResult struct {
 }
 
 func GetServiceListOutput(ctx *pulumi.Context, args GetServiceListOutputArgs, opts ...pulumi.InvokeOption) GetServiceListResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetServiceListResultOutput, error) {
-			args := v.(GetServiceListArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("aiven:index/getServiceList:getServiceList", args, GetServiceListResultOutput{}, options).(GetServiceListResultOutput), nil
-		}).(GetServiceListResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("aiven:index/getServiceList:getServiceList", args, GetServiceListResultOutput{}, options).(GetServiceListResultOutput)
 }
 
 // A collection of arguments for invoking getServiceList.

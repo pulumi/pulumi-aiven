@@ -124,12 +124,8 @@ type LookupOpenSearchResult struct {
 }
 
 func LookupOpenSearchOutput(ctx *pulumi.Context, args LookupOpenSearchOutputArgs, opts ...pulumi.InvokeOption) LookupOpenSearchResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupOpenSearchResultOutput, error) {
-			args := v.(LookupOpenSearchArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("aiven:index/getOpenSearch:getOpenSearch", args, LookupOpenSearchResultOutput{}, options).(LookupOpenSearchResultOutput), nil
-		}).(LookupOpenSearchResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("aiven:index/getOpenSearch:getOpenSearch", args, LookupOpenSearchResultOutput{}, options).(LookupOpenSearchResultOutput)
 }
 
 // A collection of arguments for invoking getOpenSearch.

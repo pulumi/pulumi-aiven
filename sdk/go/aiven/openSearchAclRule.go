@@ -16,6 +16,96 @@ import (
 //
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			osUser1, err := aiven.NewOpensearchUser(ctx, "os_user_1", &aiven.OpensearchUserArgs{
+//				Project:     pulumi.Any(exampleProject.Project),
+//				ServiceName: pulumi.Any(exampleOpensearch.ServiceName),
+//				Username:    pulumi.String("documentation-user-1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			osUser2, err := aiven.NewOpensearchUser(ctx, "os_user_2", &aiven.OpensearchUserArgs{
+//				Project:     pulumi.Any(exampleProject.Project),
+//				ServiceName: pulumi.Any(exampleOpensearch.ServiceName),
+//				Username:    pulumi.String("documentation-user-2"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = aiven.NewOpenSearchAclConfig(ctx, "os_acls_config", &aiven.OpenSearchAclConfigArgs{
+//				Project:     pulumi.Any(exampleProject.Project),
+//				ServiceName: pulumi.Any(exampleOpensearch.ServiceName),
+//				Enabled:     pulumi.Bool(true),
+//				ExtendedAcl: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			aclRules := []map[string]interface{}{
+//				map[string]interface{}{
+//					"username":   osUser1.Username,
+//					"index":      "index2",
+//					"permission": "readwrite",
+//				},
+//				map[string]interface{}{
+//					"username":   osUser1.Username,
+//					"index":      "index3",
+//					"permission": "read",
+//				},
+//				map[string]interface{}{
+//					"username":   osUser1.Username,
+//					"index":      "index5",
+//					"permission": "deny",
+//				},
+//				map[string]interface{}{
+//					"username":   osUser2.Username,
+//					"index":      "index3",
+//					"permission": "write",
+//				},
+//				map[string]interface{}{
+//					"username":   osUser2.Username,
+//					"index":      "index7",
+//					"permission": "readwrite",
+//				},
+//			}
+//			forResult0 := map[string]map[string]interface{}{}
+//			for i, v := range aclRules {
+//				forResult0[i] = v
+//			}
+//			var osAclRule []*aiven.OpenSearchAclRule
+//			for key0, val0 := range forResult0 {
+//				__res, err := aiven.NewOpenSearchAclRule(ctx, fmt.Sprintf("os_acl_rule-%v", key0), &aiven.OpenSearchAclRuleArgs{
+//					Project:     pulumi.Any(exampleProject.Project),
+//					ServiceName: pulumi.Any(exampleOpensearch.ServiceName),
+//					Username:    pulumi.String(val0),
+//					Index:       pulumi.String(val0),
+//					Permission:  pulumi.String(val0),
+//				})
+//				if err != nil {
+//					return err
+//				}
+//				osAclRule = append(osAclRule, __res)
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh

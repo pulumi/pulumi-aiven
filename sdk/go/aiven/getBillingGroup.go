@@ -102,12 +102,8 @@ type LookupBillingGroupResult struct {
 }
 
 func LookupBillingGroupOutput(ctx *pulumi.Context, args LookupBillingGroupOutputArgs, opts ...pulumi.InvokeOption) LookupBillingGroupResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupBillingGroupResultOutput, error) {
-			args := v.(LookupBillingGroupArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("aiven:index/getBillingGroup:getBillingGroup", args, LookupBillingGroupResultOutput{}, options).(LookupBillingGroupResultOutput), nil
-		}).(LookupBillingGroupResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("aiven:index/getBillingGroup:getBillingGroup", args, LookupBillingGroupResultOutput{}, options).(LookupBillingGroupResultOutput)
 }
 
 // A collection of arguments for invoking getBillingGroup.

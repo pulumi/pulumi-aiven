@@ -86,12 +86,8 @@ type LookupOrganizationAddressResult struct {
 }
 
 func LookupOrganizationAddressOutput(ctx *pulumi.Context, args LookupOrganizationAddressOutputArgs, opts ...pulumi.InvokeOption) LookupOrganizationAddressResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupOrganizationAddressResultOutput, error) {
-			args := v.(LookupOrganizationAddressArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("aiven:index/getOrganizationAddress:getOrganizationAddress", args, LookupOrganizationAddressResultOutput{}, options).(LookupOrganizationAddressResultOutput), nil
-		}).(LookupOrganizationAddressResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("aiven:index/getOrganizationAddress:getOrganizationAddress", args, LookupOrganizationAddressResultOutput{}, options).(LookupOrganizationAddressResultOutput)
 }
 
 // A collection of arguments for invoking getOrganizationAddress.

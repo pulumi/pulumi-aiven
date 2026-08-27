@@ -16,6 +16,99 @@ import (
 //
 // ## Example Usage
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
+//	"github.com/pulumi/pulumi-azurerm/sdk/go/azurerm"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			var staticIps []*aiven.StaticIp
+//			for index := 0; index < 2; index++ {
+//				key0 := index
+//				__res, err := aiven.NewStaticIp(ctx, fmt.Sprintf("static_ips-%v", key0), &aiven.StaticIpArgs{
+//					Project:   pulumi.Any(projectId),
+//					CloudName: pulumi.Any(region),
+//				})
+//				if err != nil {
+//					return err
+//				}
+//				staticIps = append(staticIps, __res)
+//			}
+//			var forResult0 pulumi.StringArray
+//			for _, sip := range staticIps {
+//				forResult0 = append(forResult0, sip.StaticIpAddressId)
+//			}
+//			_default, err := aiven.NewPg(ctx, "default", &aiven.PgArgs{
+//				ServiceName:  pulumi.String("postgres"),
+//				Project:      pulumi.Any(aivenProjectId),
+//				ProjectVpcId: pulumi.Any(aivenProjectVpcId),
+//				CloudName:    pulumi.Any(region),
+//				Plan:         pulumi.Any(plan),
+//				StaticIps:    forResult0,
+//				PgUserConfig: &aiven.PgPgUserConfigArgs{
+//					PgVersion: pulumi.String("13"),
+//					StaticIps: pulumi.Bool(true),
+//					PrivatelinkAccess: &aiven.PgPgUserConfigPrivatelinkAccessArgs{
+//						Pg:        pulumi.Bool(true),
+//						Pgbouncer: pulumi.Bool(true),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			privatelink, err := aiven.NewAzurePrivatelink(ctx, "privatelink", &aiven.AzurePrivatelinkArgs{
+//				Project:     pulumi.Any(aivenProjectId),
+//				ServiceName: _default.Name,
+//				UserSubscriptionIds: pulumi.StringArray{
+//					azureSubscriptionId,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			endpoint, err := azurerm.NewPrivateEndpoint(ctx, "endpoint", &azurerm.PrivateEndpointArgs{
+//				Name:              "postgres-endpoint",
+//				Location:          region,
+//				ResourceGroupName: azureResourceGroup.Name,
+//				SubnetId:          azureSubnetId,
+//				PrivateServiceConnection: []map[string]interface{}{
+//					map[string]interface{}{
+//						"name":                        _default.Name,
+//						"privateConnectionResourceId": privatelink.AzureServiceId,
+//						"isManualConnection":          true,
+//						"requestMessage":              _default.Name,
+//					},
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				privatelink,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = aiven.NewAzurePrivatelinkConnectionApproval(ctx, "approval", &aiven.AzurePrivatelinkConnectionApprovalArgs{
+//				Project:           pulumi.Any(aivenProjectId),
+//				ServiceName:       _default.ServiceName,
+//				EndpointIpAddress: endpoint.PrivateServiceConnection[0].PrivateIpAddress,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh

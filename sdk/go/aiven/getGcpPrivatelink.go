@@ -74,12 +74,8 @@ type LookupGcpPrivatelinkResult struct {
 }
 
 func LookupGcpPrivatelinkOutput(ctx *pulumi.Context, args LookupGcpPrivatelinkOutputArgs, opts ...pulumi.InvokeOption) LookupGcpPrivatelinkResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupGcpPrivatelinkResultOutput, error) {
-			args := v.(LookupGcpPrivatelinkArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("aiven:index/getGcpPrivatelink:getGcpPrivatelink", args, LookupGcpPrivatelinkResultOutput{}, options).(LookupGcpPrivatelinkResultOutput), nil
-		}).(LookupGcpPrivatelinkResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("aiven:index/getGcpPrivatelink:getGcpPrivatelink", args, LookupGcpPrivatelinkResultOutput{}, options).(LookupGcpPrivatelinkResultOutput)
 }
 
 // A collection of arguments for invoking getGcpPrivatelink.

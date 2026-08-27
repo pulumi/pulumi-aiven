@@ -67,12 +67,8 @@ type GetCmkAccessorAzureResult struct {
 }
 
 func GetCmkAccessorAzureOutput(ctx *pulumi.Context, args GetCmkAccessorAzureOutputArgs, opts ...pulumi.InvokeOption) GetCmkAccessorAzureResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetCmkAccessorAzureResultOutput, error) {
-			args := v.(GetCmkAccessorAzureArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("aiven:index/getCmkAccessorAzure:getCmkAccessorAzure", args, GetCmkAccessorAzureResultOutput{}, options).(GetCmkAccessorAzureResultOutput), nil
-		}).(GetCmkAccessorAzureResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("aiven:index/getCmkAccessorAzure:getCmkAccessorAzure", args, GetCmkAccessorAzureResultOutput{}, options).(GetCmkAccessorAzureResultOutput)
 }
 
 // A collection of arguments for invoking getCmkAccessorAzure.

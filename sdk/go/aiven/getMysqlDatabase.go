@@ -79,12 +79,8 @@ type LookupMysqlDatabaseResult struct {
 }
 
 func LookupMysqlDatabaseOutput(ctx *pulumi.Context, args LookupMysqlDatabaseOutputArgs, opts ...pulumi.InvokeOption) LookupMysqlDatabaseResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupMysqlDatabaseResultOutput, error) {
-			args := v.(LookupMysqlDatabaseArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("aiven:index/getMysqlDatabase:getMysqlDatabase", args, LookupMysqlDatabaseResultOutput{}, options).(LookupMysqlDatabaseResultOutput), nil
-		}).(LookupMysqlDatabaseResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("aiven:index/getMysqlDatabase:getMysqlDatabase", args, LookupMysqlDatabaseResultOutput{}, options).(LookupMysqlDatabaseResultOutput)
 }
 
 // A collection of arguments for invoking getMysqlDatabase.

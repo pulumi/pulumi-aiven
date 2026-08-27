@@ -74,12 +74,8 @@ type LookupAwsPrivatelinkResult struct {
 }
 
 func LookupAwsPrivatelinkOutput(ctx *pulumi.Context, args LookupAwsPrivatelinkOutputArgs, opts ...pulumi.InvokeOption) LookupAwsPrivatelinkResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAwsPrivatelinkResultOutput, error) {
-			args := v.(LookupAwsPrivatelinkArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("aiven:index/getAwsPrivatelink:getAwsPrivatelink", args, LookupAwsPrivatelinkResultOutput{}, options).(LookupAwsPrivatelinkResultOutput), nil
-		}).(LookupAwsPrivatelinkResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("aiven:index/getAwsPrivatelink:getAwsPrivatelink", args, LookupAwsPrivatelinkResultOutput{}, options).(LookupAwsPrivatelinkResultOutput)
 }
 
 // A collection of arguments for invoking getAwsPrivatelink.

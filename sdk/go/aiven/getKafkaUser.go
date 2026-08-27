@@ -81,12 +81,8 @@ type LookupKafkaUserResult struct {
 }
 
 func LookupKafkaUserOutput(ctx *pulumi.Context, args LookupKafkaUserOutputArgs, opts ...pulumi.InvokeOption) LookupKafkaUserResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupKafkaUserResultOutput, error) {
-			args := v.(LookupKafkaUserArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("aiven:index/getKafkaUser:getKafkaUser", args, LookupKafkaUserResultOutput{}, options).(LookupKafkaUserResultOutput), nil
-		}).(LookupKafkaUserResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("aiven:index/getKafkaUser:getKafkaUser", args, LookupKafkaUserResultOutput{}, options).(LookupKafkaUserResultOutput)
 }
 
 // A collection of arguments for invoking getKafkaUser.

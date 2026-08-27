@@ -74,12 +74,8 @@ type GetKafkaTopicListResult struct {
 }
 
 func GetKafkaTopicListOutput(ctx *pulumi.Context, args GetKafkaTopicListOutputArgs, opts ...pulumi.InvokeOption) GetKafkaTopicListResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetKafkaTopicListResultOutput, error) {
-			args := v.(GetKafkaTopicListArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("aiven:index/getKafkaTopicList:getKafkaTopicList", args, GetKafkaTopicListResultOutput{}, options).(GetKafkaTopicListResultOutput), nil
-		}).(GetKafkaTopicListResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("aiven:index/getKafkaTopicList:getKafkaTopicList", args, GetKafkaTopicListResultOutput{}, options).(GetKafkaTopicListResultOutput)
 }
 
 // A collection of arguments for invoking getKafkaTopicList.

@@ -124,12 +124,8 @@ type LookupThanosResult struct {
 }
 
 func LookupThanosOutput(ctx *pulumi.Context, args LookupThanosOutputArgs, opts ...pulumi.InvokeOption) LookupThanosResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupThanosResultOutput, error) {
-			args := v.(LookupThanosArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("aiven:index/getThanos:getThanos", args, LookupThanosResultOutput{}, options).(LookupThanosResultOutput), nil
-		}).(LookupThanosResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("aiven:index/getThanos:getThanos", args, LookupThanosResultOutput{}, options).(LookupThanosResultOutput)
 }
 
 // A collection of arguments for invoking getThanos.

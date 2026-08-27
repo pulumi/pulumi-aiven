@@ -87,12 +87,8 @@ type LookupKafkaSchemaRegistryAclResult struct {
 }
 
 func LookupKafkaSchemaRegistryAclOutput(ctx *pulumi.Context, args LookupKafkaSchemaRegistryAclOutputArgs, opts ...pulumi.InvokeOption) LookupKafkaSchemaRegistryAclResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupKafkaSchemaRegistryAclResultOutput, error) {
-			args := v.(LookupKafkaSchemaRegistryAclArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("aiven:index/getKafkaSchemaRegistryAcl:getKafkaSchemaRegistryAcl", args, LookupKafkaSchemaRegistryAclResultOutput{}, options).(LookupKafkaSchemaRegistryAclResultOutput), nil
-		}).(LookupKafkaSchemaRegistryAclResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("aiven:index/getKafkaSchemaRegistryAcl:getKafkaSchemaRegistryAcl", args, LookupKafkaSchemaRegistryAclResultOutput{}, options).(LookupKafkaSchemaRegistryAclResultOutput)
 }
 
 // A collection of arguments for invoking getKafkaSchemaRegistryAcl.

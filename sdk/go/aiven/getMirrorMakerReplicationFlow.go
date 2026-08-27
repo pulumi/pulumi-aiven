@@ -104,12 +104,8 @@ type LookupMirrorMakerReplicationFlowResult struct {
 }
 
 func LookupMirrorMakerReplicationFlowOutput(ctx *pulumi.Context, args LookupMirrorMakerReplicationFlowOutputArgs, opts ...pulumi.InvokeOption) LookupMirrorMakerReplicationFlowResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupMirrorMakerReplicationFlowResultOutput, error) {
-			args := v.(LookupMirrorMakerReplicationFlowArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("aiven:index/getMirrorMakerReplicationFlow:getMirrorMakerReplicationFlow", args, LookupMirrorMakerReplicationFlowResultOutput{}, options).(LookupMirrorMakerReplicationFlowResultOutput), nil
-		}).(LookupMirrorMakerReplicationFlowResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("aiven:index/getMirrorMakerReplicationFlow:getMirrorMakerReplicationFlow", args, LookupMirrorMakerReplicationFlowResultOutput{}, options).(LookupMirrorMakerReplicationFlowResultOutput)
 }
 
 // A collection of arguments for invoking getMirrorMakerReplicationFlow.

@@ -79,12 +79,8 @@ type LookupGcpVpcPeeringConnectionResult struct {
 }
 
 func LookupGcpVpcPeeringConnectionOutput(ctx *pulumi.Context, args LookupGcpVpcPeeringConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupGcpVpcPeeringConnectionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupGcpVpcPeeringConnectionResultOutput, error) {
-			args := v.(LookupGcpVpcPeeringConnectionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("aiven:index/getGcpVpcPeeringConnection:getGcpVpcPeeringConnection", args, LookupGcpVpcPeeringConnectionResultOutput{}, options).(LookupGcpVpcPeeringConnectionResultOutput), nil
-		}).(LookupGcpVpcPeeringConnectionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("aiven:index/getGcpVpcPeeringConnection:getGcpVpcPeeringConnection", args, LookupGcpVpcPeeringConnectionResultOutput{}, options).(LookupGcpVpcPeeringConnectionResultOutput)
 }
 
 // A collection of arguments for invoking getGcpVpcPeeringConnection.

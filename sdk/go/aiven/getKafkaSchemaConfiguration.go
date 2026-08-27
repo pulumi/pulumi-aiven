@@ -81,12 +81,8 @@ type LookupKafkaSchemaConfigurationResult struct {
 }
 
 func LookupKafkaSchemaConfigurationOutput(ctx *pulumi.Context, args LookupKafkaSchemaConfigurationOutputArgs, opts ...pulumi.InvokeOption) LookupKafkaSchemaConfigurationResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupKafkaSchemaConfigurationResultOutput, error) {
-			args := v.(LookupKafkaSchemaConfigurationArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("aiven:index/getKafkaSchemaConfiguration:getKafkaSchemaConfiguration", args, LookupKafkaSchemaConfigurationResultOutput{}, options).(LookupKafkaSchemaConfigurationResultOutput), nil
-		}).(LookupKafkaSchemaConfigurationResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("aiven:index/getKafkaSchemaConfiguration:getKafkaSchemaConfiguration", args, LookupKafkaSchemaConfigurationResultOutput{}, options).(LookupKafkaSchemaConfigurationResultOutput)
 }
 
 // A collection of arguments for invoking getKafkaSchemaConfiguration.

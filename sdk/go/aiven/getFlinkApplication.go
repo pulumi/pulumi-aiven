@@ -87,12 +87,8 @@ type LookupFlinkApplicationResult struct {
 }
 
 func LookupFlinkApplicationOutput(ctx *pulumi.Context, args LookupFlinkApplicationOutputArgs, opts ...pulumi.InvokeOption) LookupFlinkApplicationResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupFlinkApplicationResultOutput, error) {
-			args := v.(LookupFlinkApplicationArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("aiven:index/getFlinkApplication:getFlinkApplication", args, LookupFlinkApplicationResultOutput{}, options).(LookupFlinkApplicationResultOutput), nil
-		}).(LookupFlinkApplicationResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("aiven:index/getFlinkApplication:getFlinkApplication", args, LookupFlinkApplicationResultOutput{}, options).(LookupFlinkApplicationResultOutput)
 }
 
 // A collection of arguments for invoking getFlinkApplication.

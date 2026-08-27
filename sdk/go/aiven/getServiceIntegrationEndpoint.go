@@ -112,12 +112,8 @@ type LookupServiceIntegrationEndpointResult struct {
 }
 
 func LookupServiceIntegrationEndpointOutput(ctx *pulumi.Context, args LookupServiceIntegrationEndpointOutputArgs, opts ...pulumi.InvokeOption) LookupServiceIntegrationEndpointResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupServiceIntegrationEndpointResultOutput, error) {
-			args := v.(LookupServiceIntegrationEndpointArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("aiven:index/getServiceIntegrationEndpoint:getServiceIntegrationEndpoint", args, LookupServiceIntegrationEndpointResultOutput{}, options).(LookupServiceIntegrationEndpointResultOutput), nil
-		}).(LookupServiceIntegrationEndpointResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("aiven:index/getServiceIntegrationEndpoint:getServiceIntegrationEndpoint", args, LookupServiceIntegrationEndpointResultOutput{}, options).(LookupServiceIntegrationEndpointResultOutput)
 }
 
 // A collection of arguments for invoking getServiceIntegrationEndpoint.

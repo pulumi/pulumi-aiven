@@ -72,12 +72,8 @@ type LookupOpenSearchAclConfigResult struct {
 }
 
 func LookupOpenSearchAclConfigOutput(ctx *pulumi.Context, args LookupOpenSearchAclConfigOutputArgs, opts ...pulumi.InvokeOption) LookupOpenSearchAclConfigResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupOpenSearchAclConfigResultOutput, error) {
-			args := v.(LookupOpenSearchAclConfigArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("aiven:index/getOpenSearchAclConfig:getOpenSearchAclConfig", args, LookupOpenSearchAclConfigResultOutput{}, options).(LookupOpenSearchAclConfigResultOutput), nil
-		}).(LookupOpenSearchAclConfigResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("aiven:index/getOpenSearchAclConfig:getOpenSearchAclConfig", args, LookupOpenSearchAclConfigResultOutput{}, options).(LookupOpenSearchAclConfigResultOutput)
 }
 
 // A collection of arguments for invoking getOpenSearchAclConfig.

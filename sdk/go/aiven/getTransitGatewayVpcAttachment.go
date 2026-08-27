@@ -83,12 +83,8 @@ type LookupTransitGatewayVpcAttachmentResult struct {
 }
 
 func LookupTransitGatewayVpcAttachmentOutput(ctx *pulumi.Context, args LookupTransitGatewayVpcAttachmentOutputArgs, opts ...pulumi.InvokeOption) LookupTransitGatewayVpcAttachmentResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupTransitGatewayVpcAttachmentResultOutput, error) {
-			args := v.(LookupTransitGatewayVpcAttachmentArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("aiven:index/getTransitGatewayVpcAttachment:getTransitGatewayVpcAttachment", args, LookupTransitGatewayVpcAttachmentResultOutput{}, options).(LookupTransitGatewayVpcAttachmentResultOutput), nil
-		}).(LookupTransitGatewayVpcAttachmentResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("aiven:index/getTransitGatewayVpcAttachment:getTransitGatewayVpcAttachment", args, LookupTransitGatewayVpcAttachmentResultOutput{}, options).(LookupTransitGatewayVpcAttachmentResultOutput)
 }
 
 // A collection of arguments for invoking getTransitGatewayVpcAttachment.

@@ -69,12 +69,8 @@ type GetOrganizationPaymentMethodListResult struct {
 }
 
 func GetOrganizationPaymentMethodListOutput(ctx *pulumi.Context, args GetOrganizationPaymentMethodListOutputArgs, opts ...pulumi.InvokeOption) GetOrganizationPaymentMethodListResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetOrganizationPaymentMethodListResultOutput, error) {
-			args := v.(GetOrganizationPaymentMethodListArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("aiven:index/getOrganizationPaymentMethodList:getOrganizationPaymentMethodList", args, GetOrganizationPaymentMethodListResultOutput{}, options).(GetOrganizationPaymentMethodListResultOutput), nil
-		}).(GetOrganizationPaymentMethodListResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("aiven:index/getOrganizationPaymentMethodList:getOrganizationPaymentMethodList", args, GetOrganizationPaymentMethodListResultOutput{}, options).(GetOrganizationPaymentMethodListResultOutput)
 }
 
 // A collection of arguments for invoking getOrganizationPaymentMethodList.
