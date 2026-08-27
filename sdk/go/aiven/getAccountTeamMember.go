@@ -59,12 +59,8 @@ type LookupAccountTeamMemberResult struct {
 }
 
 func LookupAccountTeamMemberOutput(ctx *pulumi.Context, args LookupAccountTeamMemberOutputArgs, opts ...pulumi.InvokeOption) LookupAccountTeamMemberResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAccountTeamMemberResultOutput, error) {
-			args := v.(LookupAccountTeamMemberArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("aiven:index/getAccountTeamMember:getAccountTeamMember", args, LookupAccountTeamMemberResultOutput{}, options).(LookupAccountTeamMemberResultOutput), nil
-		}).(LookupAccountTeamMemberResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("aiven:index/getAccountTeamMember:getAccountTeamMember", args, LookupAccountTeamMemberResultOutput{}, options).(LookupAccountTeamMemberResultOutput)
 }
 
 // A collection of arguments for invoking getAccountTeamMember.

@@ -54,12 +54,8 @@ type LookupOrganizationVpcResult struct {
 }
 
 func LookupOrganizationVpcOutput(ctx *pulumi.Context, args LookupOrganizationVpcOutputArgs, opts ...pulumi.InvokeOption) LookupOrganizationVpcResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupOrganizationVpcResultOutput, error) {
-			args := v.(LookupOrganizationVpcArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("aiven:index/getOrganizationVpc:getOrganizationVpc", args, LookupOrganizationVpcResultOutput{}, options).(LookupOrganizationVpcResultOutput), nil
-		}).(LookupOrganizationVpcResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("aiven:index/getOrganizationVpc:getOrganizationVpc", args, LookupOrganizationVpcResultOutput{}, options).(LookupOrganizationVpcResultOutput)
 }
 
 // A collection of arguments for invoking getOrganizationVpc.

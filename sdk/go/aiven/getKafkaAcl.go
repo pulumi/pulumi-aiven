@@ -85,12 +85,8 @@ type LookupKafkaAclResult struct {
 }
 
 func LookupKafkaAclOutput(ctx *pulumi.Context, args LookupKafkaAclOutputArgs, opts ...pulumi.InvokeOption) LookupKafkaAclResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupKafkaAclResultOutput, error) {
-			args := v.(LookupKafkaAclArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("aiven:index/getKafkaAcl:getKafkaAcl", args, LookupKafkaAclResultOutput{}, options).(LookupKafkaAclResultOutput), nil
-		}).(LookupKafkaAclResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("aiven:index/getKafkaAcl:getKafkaAcl", args, LookupKafkaAclResultOutput{}, options).(LookupKafkaAclResultOutput)
 }
 
 // A collection of arguments for invoking getKafkaAcl.

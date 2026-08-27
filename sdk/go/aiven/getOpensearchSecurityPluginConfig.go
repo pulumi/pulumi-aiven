@@ -78,12 +78,8 @@ type LookupOpensearchSecurityPluginConfigResult struct {
 }
 
 func LookupOpensearchSecurityPluginConfigOutput(ctx *pulumi.Context, args LookupOpensearchSecurityPluginConfigOutputArgs, opts ...pulumi.InvokeOption) LookupOpensearchSecurityPluginConfigResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupOpensearchSecurityPluginConfigResultOutput, error) {
-			args := v.(LookupOpensearchSecurityPluginConfigArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("aiven:index/getOpensearchSecurityPluginConfig:getOpensearchSecurityPluginConfig", args, LookupOpensearchSecurityPluginConfigResultOutput{}, options).(LookupOpensearchSecurityPluginConfigResultOutput), nil
-		}).(LookupOpensearchSecurityPluginConfigResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("aiven:index/getOpensearchSecurityPluginConfig:getOpensearchSecurityPluginConfig", args, LookupOpensearchSecurityPluginConfigResultOutput{}, options).(LookupOpensearchSecurityPluginConfigResultOutput)
 }
 
 // A collection of arguments for invoking getOpensearchSecurityPluginConfig.

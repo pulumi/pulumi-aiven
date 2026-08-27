@@ -54,12 +54,8 @@ type LookupOrganizationUserResult struct {
 }
 
 func LookupOrganizationUserOutput(ctx *pulumi.Context, args LookupOrganizationUserOutputArgs, opts ...pulumi.InvokeOption) LookupOrganizationUserResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupOrganizationUserResultOutput, error) {
-			args := v.(LookupOrganizationUserArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("aiven:index/getOrganizationUser:getOrganizationUser", args, LookupOrganizationUserResultOutput{}, options).(LookupOrganizationUserResultOutput), nil
-		}).(LookupOrganizationUserResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("aiven:index/getOrganizationUser:getOrganizationUser", args, LookupOrganizationUserResultOutput{}, options).(LookupOrganizationUserResultOutput)
 }
 
 // A collection of arguments for invoking getOrganizationUser.

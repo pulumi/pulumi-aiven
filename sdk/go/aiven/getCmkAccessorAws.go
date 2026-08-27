@@ -67,12 +67,8 @@ type GetCmkAccessorAwsResult struct {
 }
 
 func GetCmkAccessorAwsOutput(ctx *pulumi.Context, args GetCmkAccessorAwsOutputArgs, opts ...pulumi.InvokeOption) GetCmkAccessorAwsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetCmkAccessorAwsResultOutput, error) {
-			args := v.(GetCmkAccessorAwsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("aiven:index/getCmkAccessorAws:getCmkAccessorAws", args, GetCmkAccessorAwsResultOutput{}, options).(GetCmkAccessorAwsResultOutput), nil
-		}).(GetCmkAccessorAwsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("aiven:index/getCmkAccessorAws:getCmkAccessorAws", args, GetCmkAccessorAwsResultOutput{}, options).(GetCmkAccessorAwsResultOutput)
 }
 
 // A collection of arguments for invoking getCmkAccessorAws.

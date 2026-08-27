@@ -69,12 +69,8 @@ type GetCmkAccessorOciResult struct {
 }
 
 func GetCmkAccessorOciOutput(ctx *pulumi.Context, args GetCmkAccessorOciOutputArgs, opts ...pulumi.InvokeOption) GetCmkAccessorOciResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetCmkAccessorOciResultOutput, error) {
-			args := v.(GetCmkAccessorOciArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("aiven:index/getCmkAccessorOci:getCmkAccessorOci", args, GetCmkAccessorOciResultOutput{}, options).(GetCmkAccessorOciResultOutput), nil
-		}).(GetCmkAccessorOciResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("aiven:index/getCmkAccessorOci:getCmkAccessorOci", args, GetCmkAccessorOciResultOutput{}, options).(GetCmkAccessorOciResultOutput)
 }
 
 // A collection of arguments for invoking getCmkAccessorOci.

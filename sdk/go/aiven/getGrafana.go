@@ -124,12 +124,8 @@ type LookupGrafanaResult struct {
 }
 
 func LookupGrafanaOutput(ctx *pulumi.Context, args LookupGrafanaOutputArgs, opts ...pulumi.InvokeOption) LookupGrafanaResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupGrafanaResultOutput, error) {
-			args := v.(LookupGrafanaArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("aiven:index/getGrafana:getGrafana", args, LookupGrafanaResultOutput{}, options).(LookupGrafanaResultOutput), nil
-		}).(LookupGrafanaResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("aiven:index/getGrafana:getGrafana", args, LookupGrafanaResultOutput{}, options).(LookupGrafanaResultOutput)
 }
 
 // A collection of arguments for invoking getGrafana.

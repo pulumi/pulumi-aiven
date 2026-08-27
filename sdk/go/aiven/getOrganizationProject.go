@@ -84,12 +84,8 @@ type LookupOrganizationProjectResult struct {
 }
 
 func LookupOrganizationProjectOutput(ctx *pulumi.Context, args LookupOrganizationProjectOutputArgs, opts ...pulumi.InvokeOption) LookupOrganizationProjectResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupOrganizationProjectResultOutput, error) {
-			args := v.(LookupOrganizationProjectArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("aiven:index/getOrganizationProject:getOrganizationProject", args, LookupOrganizationProjectResultOutput{}, options).(LookupOrganizationProjectResultOutput), nil
-		}).(LookupOrganizationProjectResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("aiven:index/getOrganizationProject:getOrganizationProject", args, LookupOrganizationProjectResultOutput{}, options).(LookupOrganizationProjectResultOutput)
 }
 
 // A collection of arguments for invoking getOrganizationProject.

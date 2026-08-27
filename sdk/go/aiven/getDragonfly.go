@@ -124,12 +124,8 @@ type LookupDragonflyResult struct {
 }
 
 func LookupDragonflyOutput(ctx *pulumi.Context, args LookupDragonflyOutputArgs, opts ...pulumi.InvokeOption) LookupDragonflyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDragonflyResultOutput, error) {
-			args := v.(LookupDragonflyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("aiven:index/getDragonfly:getDragonfly", args, LookupDragonflyResultOutput{}, options).(LookupDragonflyResultOutput), nil
-		}).(LookupDragonflyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("aiven:index/getDragonfly:getDragonfly", args, LookupDragonflyResultOutput{}, options).(LookupDragonflyResultOutput)
 }
 
 // A collection of arguments for invoking getDragonfly.

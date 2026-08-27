@@ -83,12 +83,8 @@ type LookupPgDatabaseResult struct {
 }
 
 func LookupPgDatabaseOutput(ctx *pulumi.Context, args LookupPgDatabaseOutputArgs, opts ...pulumi.InvokeOption) LookupPgDatabaseResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupPgDatabaseResultOutput, error) {
-			args := v.(LookupPgDatabaseArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("aiven:index/getPgDatabase:getPgDatabase", args, LookupPgDatabaseResultOutput{}, options).(LookupPgDatabaseResultOutput), nil
-		}).(LookupPgDatabaseResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("aiven:index/getPgDatabase:getPgDatabase", args, LookupPgDatabaseResultOutput{}, options).(LookupPgDatabaseResultOutput)
 }
 
 // A collection of arguments for invoking getPgDatabase.

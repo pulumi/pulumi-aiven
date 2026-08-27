@@ -94,12 +94,8 @@ type LookupFlinkApplicationVersionResult struct {
 }
 
 func LookupFlinkApplicationVersionOutput(ctx *pulumi.Context, args LookupFlinkApplicationVersionOutputArgs, opts ...pulumi.InvokeOption) LookupFlinkApplicationVersionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupFlinkApplicationVersionResultOutput, error) {
-			args := v.(LookupFlinkApplicationVersionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("aiven:index/getFlinkApplicationVersion:getFlinkApplicationVersion", args, LookupFlinkApplicationVersionResultOutput{}, options).(LookupFlinkApplicationVersionResultOutput), nil
-		}).(LookupFlinkApplicationVersionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("aiven:index/getFlinkApplicationVersion:getFlinkApplicationVersion", args, LookupFlinkApplicationVersionResultOutput{}, options).(LookupFlinkApplicationVersionResultOutput)
 }
 
 // A collection of arguments for invoking getFlinkApplicationVersion.

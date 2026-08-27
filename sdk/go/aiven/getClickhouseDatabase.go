@@ -79,12 +79,8 @@ type LookupClickhouseDatabaseResult struct {
 }
 
 func LookupClickhouseDatabaseOutput(ctx *pulumi.Context, args LookupClickhouseDatabaseOutputArgs, opts ...pulumi.InvokeOption) LookupClickhouseDatabaseResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupClickhouseDatabaseResultOutput, error) {
-			args := v.(LookupClickhouseDatabaseArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("aiven:index/getClickhouseDatabase:getClickhouseDatabase", args, LookupClickhouseDatabaseResultOutput{}, options).(LookupClickhouseDatabaseResultOutput), nil
-		}).(LookupClickhouseDatabaseResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("aiven:index/getClickhouseDatabase:getClickhouseDatabase", args, LookupClickhouseDatabaseResultOutput{}, options).(LookupClickhouseDatabaseResultOutput)
 }
 
 // A collection of arguments for invoking getClickhouseDatabase.

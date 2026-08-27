@@ -83,12 +83,8 @@ type LookupClickhouseUserResult struct {
 }
 
 func LookupClickhouseUserOutput(ctx *pulumi.Context, args LookupClickhouseUserOutputArgs, opts ...pulumi.InvokeOption) LookupClickhouseUserResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupClickhouseUserResultOutput, error) {
-			args := v.(LookupClickhouseUserArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("aiven:index/getClickhouseUser:getClickhouseUser", args, LookupClickhouseUserResultOutput{}, options).(LookupClickhouseUserResultOutput), nil
-		}).(LookupClickhouseUserResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("aiven:index/getClickhouseUser:getClickhouseUser", args, LookupClickhouseUserResultOutput{}, options).(LookupClickhouseUserResultOutput)
 }
 
 // A collection of arguments for invoking getClickhouseUser.

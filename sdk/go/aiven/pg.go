@@ -47,7 +47,7 @@ import (
 //				ServiceName:           pulumi.String("example-postgres-service"),
 //				MaintenanceWindowDow:  pulumi.String("monday"),
 //				MaintenanceWindowTime: pulumi.String("10:00:00"),
-//				StaticIps:             pulumi.StringArray(invokeToset.Result),
+//				StaticIps:             invokeToset.Result.(pulumi.StringArray),
 //				PgUserConfig: &aiven.PgPgUserConfigArgs{
 //					StaticIps: pulumi.Bool(true),
 //					PublicAccess: &aiven.PgPgUserConfigPublicAccessArgs{
