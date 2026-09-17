@@ -35,6 +35,7 @@ import (
 //				ExtendWhenUsed: pulumi.Bool(false),
 //				IpAllowlists: pulumi.StringArray{
 //					pulumi.String("192.168.0.0/24"),
+//					pulumi.String("2001:db8::/32"),
 //				},
 //				MaxAgeSeconds: pulumi.Int(600),
 //				Scopes: pulumi.StringArray{

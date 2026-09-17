@@ -3,10 +3,13 @@
 
 package com.pulumi.aiven.inputs;
 
+import com.pulumi.aiven.inputs.GetOrganizationUserGroupTimeouts;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetOrganizationUserGroupPlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -14,40 +17,64 @@ public final class GetOrganizationUserGroupPlainArgs extends com.pulumi.resource
     public static final GetOrganizationUserGroupPlainArgs Empty = new GetOrganizationUserGroupPlainArgs();
 
     /**
-     * The name of the user group. Changing this property forces recreation of the resource.
+     * ID of the user group. Exactly one of the fields must be specified: `groupId` or `name`.
      * 
      */
-    @Import(name="name", required=true)
-    private String name;
+    @Import(name="groupId")
+    private @Nullable String groupId;
 
     /**
-     * @return The name of the user group. Changing this property forces recreation of the resource.
+     * @return ID of the user group. Exactly one of the fields must be specified: `groupId` or `name`.
      * 
      */
-    public String name() {
-        return this.name;
+    public Optional<String> groupId() {
+        return Optional.ofNullable(this.groupId);
     }
 
     /**
-     * The ID of the organization. Changing this property forces recreation of the resource.
+     * User Group Name. Exactly one of the fields must be specified: `groupId` or `name`.
+     * 
+     */
+    @Import(name="name")
+    private @Nullable String name;
+
+    /**
+     * @return User Group Name. Exactly one of the fields must be specified: `groupId` or `name`.
+     * 
+     */
+    public Optional<String> name() {
+        return Optional.ofNullable(this.name);
+    }
+
+    /**
+     * ID of an organization.
      * 
      */
     @Import(name="organizationId", required=true)
     private String organizationId;
 
     /**
-     * @return The ID of the organization. Changing this property forces recreation of the resource.
+     * @return ID of an organization.
      * 
      */
     public String organizationId() {
         return this.organizationId;
     }
 
+    @Import(name="timeouts")
+    private @Nullable GetOrganizationUserGroupTimeouts timeouts;
+
+    public Optional<GetOrganizationUserGroupTimeouts> timeouts() {
+        return Optional.ofNullable(this.timeouts);
+    }
+
     private GetOrganizationUserGroupPlainArgs() {}
 
     private GetOrganizationUserGroupPlainArgs(GetOrganizationUserGroupPlainArgs $) {
+        this.groupId = $.groupId;
         this.name = $.name;
         this.organizationId = $.organizationId;
+        this.timeouts = $.timeouts;
     }
 
     public static Builder builder() {
@@ -69,18 +96,29 @@ public final class GetOrganizationUserGroupPlainArgs extends com.pulumi.resource
         }
 
         /**
-         * @param name The name of the user group. Changing this property forces recreation of the resource.
+         * @param groupId ID of the user group. Exactly one of the fields must be specified: `groupId` or `name`.
          * 
          * @return builder
          * 
          */
-        public Builder name(String name) {
+        public Builder groupId(@Nullable String groupId) {
+            $.groupId = groupId;
+            return this;
+        }
+
+        /**
+         * @param name User Group Name. Exactly one of the fields must be specified: `groupId` or `name`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(@Nullable String name) {
             $.name = name;
             return this;
         }
 
         /**
-         * @param organizationId The ID of the organization. Changing this property forces recreation of the resource.
+         * @param organizationId ID of an organization.
          * 
          * @return builder
          * 
@@ -90,10 +128,12 @@ public final class GetOrganizationUserGroupPlainArgs extends com.pulumi.resource
             return this;
         }
 
+        public Builder timeouts(@Nullable GetOrganizationUserGroupTimeouts timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
         public GetOrganizationUserGroupPlainArgs build() {
-            if ($.name == null) {
-                throw new MissingRequiredPropertyException("GetOrganizationUserGroupPlainArgs", "name");
-            }
             if ($.organizationId == null) {
                 throw new MissingRequiredPropertyException("GetOrganizationUserGroupPlainArgs", "organizationId");
             }

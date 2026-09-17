@@ -12,28 +12,85 @@ namespace Pulumi.Aiven
     public static class GetAzureOrgVpcPeeringConnection
     {
         /// <summary>
-        /// Gets information about about an Azure VPC peering connection.
+        /// Gets information about an Azure VPC peering connection.
         /// 
-        /// **This resource is in the beta stage and may change without notice.** Set
-        /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Aiven.GetAzureOrgVpcPeeringConnection.Invoke(new()
+        ///     {
+        ///         OrganizationId = "org1a23f456789",
+        ///         OrganizationVpcId = "1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+        ///         AzureSubscriptionId = "12345678-1234-1234-1234-123456789012",
+        ///         VnetName = "my-vnet",
+        ///         PeerResourceGroup = "my-resource-group",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetAzureOrgVpcPeeringConnectionResult> InvokeAsync(GetAzureOrgVpcPeeringConnectionArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAzureOrgVpcPeeringConnectionResult>("aiven:index/getAzureOrgVpcPeeringConnection:getAzureOrgVpcPeeringConnection", args ?? new GetAzureOrgVpcPeeringConnectionArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Gets information about about an Azure VPC peering connection.
+        /// Gets information about an Azure VPC peering connection.
         /// 
-        /// **This resource is in the beta stage and may change without notice.** Set
-        /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Aiven.GetAzureOrgVpcPeeringConnection.Invoke(new()
+        ///     {
+        ///         OrganizationId = "org1a23f456789",
+        ///         OrganizationVpcId = "1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+        ///         AzureSubscriptionId = "12345678-1234-1234-1234-123456789012",
+        ///         VnetName = "my-vnet",
+        ///         PeerResourceGroup = "my-resource-group",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetAzureOrgVpcPeeringConnectionResult> Invoke(GetAzureOrgVpcPeeringConnectionInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAzureOrgVpcPeeringConnectionResult>("aiven:index/getAzureOrgVpcPeeringConnection:getAzureOrgVpcPeeringConnection", args ?? new GetAzureOrgVpcPeeringConnectionInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Gets information about about an Azure VPC peering connection.
+        /// Gets information about an Azure VPC peering connection.
         /// 
-        /// **This resource is in the beta stage and may change without notice.** Set
-        /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Aiven.GetAzureOrgVpcPeeringConnection.Invoke(new()
+        ///     {
+        ///         OrganizationId = "org1a23f456789",
+        ///         OrganizationVpcId = "1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+        ///         AzureSubscriptionId = "12345678-1234-1234-1234-123456789012",
+        ///         VnetName = "my-vnet",
+        ///         PeerResourceGroup = "my-resource-group",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetAzureOrgVpcPeeringConnectionResult> Invoke(GetAzureOrgVpcPeeringConnectionInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetAzureOrgVpcPeeringConnectionResult>("aiven:index/getAzureOrgVpcPeeringConnection:getAzureOrgVpcPeeringConnection", args ?? new GetAzureOrgVpcPeeringConnectionInvokeArgs(), options.WithDefaults());
@@ -43,31 +100,34 @@ namespace Pulumi.Aiven
     public sealed class GetAzureOrgVpcPeeringConnectionArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The ID of the Azure subscription in UUID4 format. Changing this property forces recreation of the resource.
+        /// The ID of the Azure subscription in UUID4 format.
         /// </summary>
         [Input("azureSubscriptionId", required: true)]
         public string AzureSubscriptionId { get; set; } = null!;
 
         /// <summary>
-        /// Identifier of the organization.
+        /// ID of an organization.
         /// </summary>
         [Input("organizationId", required: true)]
         public string OrganizationId { get; set; } = null!;
 
         /// <summary>
-        /// Identifier of the organization VPC.
+        /// Organization VPC ID.
         /// </summary>
         [Input("organizationVpcId", required: true)]
         public string OrganizationVpcId { get; set; } = null!;
 
         /// <summary>
-        /// The name of the Azure resource group associated with the VNet. Changing this property forces recreation of the resource.
+        /// The name of the Azure resource group associated with the VNet.
         /// </summary>
         [Input("peerResourceGroup", required: true)]
         public string PeerResourceGroup { get; set; } = null!;
 
+        [Input("timeouts")]
+        public Inputs.GetAzureOrgVpcPeeringConnectionTimeoutsArgs? Timeouts { get; set; }
+
         /// <summary>
-        /// The name of the Azure VNet. Changing this property forces recreation of the resource.
+        /// The name of the Azure VNet.
         /// </summary>
         [Input("vnetName", required: true)]
         public string VnetName { get; set; } = null!;
@@ -81,31 +141,34 @@ namespace Pulumi.Aiven
     public sealed class GetAzureOrgVpcPeeringConnectionInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The ID of the Azure subscription in UUID4 format. Changing this property forces recreation of the resource.
+        /// The ID of the Azure subscription in UUID4 format.
         /// </summary>
         [Input("azureSubscriptionId", required: true)]
         public Input<string> AzureSubscriptionId { get; set; } = null!;
 
         /// <summary>
-        /// Identifier of the organization.
+        /// ID of an organization.
         /// </summary>
         [Input("organizationId", required: true)]
         public Input<string> OrganizationId { get; set; } = null!;
 
         /// <summary>
-        /// Identifier of the organization VPC.
+        /// Organization VPC ID.
         /// </summary>
         [Input("organizationVpcId", required: true)]
         public Input<string> OrganizationVpcId { get; set; } = null!;
 
         /// <summary>
-        /// The name of the Azure resource group associated with the VNet. Changing this property forces recreation of the resource.
+        /// The name of the Azure resource group associated with the VNet.
         /// </summary>
         [Input("peerResourceGroup", required: true)]
         public Input<string> PeerResourceGroup { get; set; } = null!;
 
+        [Input("timeouts")]
+        public Input<Inputs.GetAzureOrgVpcPeeringConnectionTimeoutsInputArgs>? Timeouts { get; set; }
+
         /// <summary>
-        /// The name of the Azure VNet. Changing this property forces recreation of the resource.
+        /// The name of the Azure VNet.
         /// </summary>
         [Input("vnetName", required: true)]
         public Input<string> VnetName { get; set; } = null!;
@@ -121,43 +184,44 @@ namespace Pulumi.Aiven
     public sealed class GetAzureOrgVpcPeeringConnectionResult
     {
         /// <summary>
-        /// The ID of the Azure subscription in UUID4 format. Changing this property forces recreation of the resource.
+        /// The ID of the Azure subscription in UUID4 format.
         /// </summary>
         public readonly string AzureSubscriptionId;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// Resource ID composed as: `organization_id/organization_vpc_id/azure_subscription_id/vnet_name/peer_resource_group`.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Identifier of the organization.
+        /// ID of an organization.
         /// </summary>
         public readonly string OrganizationId;
         /// <summary>
-        /// Identifier of the organization VPC.
+        /// Organization VPC ID.
         /// </summary>
         public readonly string OrganizationVpcId;
         /// <summary>
-        /// The ID of the Azure app that is allowed to create a peering to the Azure Virtual Network (VNet) in UUID4 format. Changing this property forces recreation of the resource.
+        /// The ID of the Azure app that is allowed to create a peering to the Azure Virtual Network (VNet) in UUID4 format.
         /// </summary>
         public readonly string PeerAzureAppId;
         /// <summary>
-        /// The Azure tenant ID in UUID4 format. Changing this property forces recreation of the resource.
+        /// The Azure tenant ID in UUID4 format.
         /// </summary>
         public readonly string PeerAzureTenantId;
         /// <summary>
-        /// The name of the Azure resource group associated with the VNet. Changing this property forces recreation of the resource.
+        /// The name of the Azure resource group associated with the VNet.
         /// </summary>
         public readonly string PeerResourceGroup;
         /// <summary>
-        /// The ID of the cloud provider for the peering connection.
+        /// Organization peering connection ID.
         /// </summary>
         public readonly string PeeringConnectionId;
         /// <summary>
-        /// State of the peering connection
+        /// State of the peering connection. The possible values are `ACTIVE`, `APPROVED`, `APPROVED_PEER_REQUESTED`, `DELETED`, `DELETED_BY_PEER`, `DELETING`, `ERROR`, `INVALID_SPECIFICATION`, `PENDING_PEER` and `REJECTED_BY_PEER`.
         /// </summary>
         public readonly string State;
+        public readonly Outputs.GetAzureOrgVpcPeeringConnectionTimeoutsResult? Timeouts;
         /// <summary>
-        /// The name of the Azure VNet. Changing this property forces recreation of the resource.
+        /// The name of the Azure VNet.
         /// </summary>
         public readonly string VnetName;
 
@@ -181,6 +245,8 @@ namespace Pulumi.Aiven
 
             string state,
 
+            Outputs.GetAzureOrgVpcPeeringConnectionTimeoutsResult? timeouts,
+
             string vnetName)
         {
             AzureSubscriptionId = azureSubscriptionId;
@@ -192,6 +258,7 @@ namespace Pulumi.Aiven
             PeerResourceGroup = peerResourceGroup;
             PeeringConnectionId = peeringConnectionId;
             State = state;
+            Timeouts = timeouts;
             VnetName = vnetName;
         }
     }

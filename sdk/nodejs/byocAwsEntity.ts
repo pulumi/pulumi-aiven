@@ -9,8 +9,8 @@ import * as utilities from "./utilities";
 /**
  * Creates and manages a BYOC custom cloud environment on AWS.
  *
- * **This resource is in the beta stage and may change without notice.** Set
- * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+ * > **Beta resource**
+ * This resource is in the beta stage and may change without notice. Set the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
  *
  * ## Example Usage
  *
@@ -19,17 +19,17 @@ import * as utilities from "./utilities";
  * import * as aiven from "@pulumi/aiven";
  *
  * const example = new aiven.ByocAwsEntity("example", {
+ *     contactEmails: [{
+ *         email: "jane@example.com",
+ *         realName: "Jane Smith",
+ *         role: "admin",
+ *     }],
  *     organizationId: "org1a23f456789",
  *     cloudProvider: "aws",
  *     cloudRegion: "eu-west-1",
  *     deploymentModel: "standard",
  *     displayName: "byoc-cloud-prod-eu-west-1",
  *     reservedCidr: "192.168.6.0/24",
- *     contactEmails: [{
- *         email: "jane@example.com",
- *         realName: "Jane Smith",
- *         role: "admin",
- *     }],
  *     tags: {
  *         foo: "foo",
  *     },

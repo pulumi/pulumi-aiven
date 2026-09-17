@@ -3,10 +3,13 @@
 
 package com.pulumi.aiven.inputs;
 
+import com.pulumi.aiven.inputs.GetAzurePrivatelinkTimeouts;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetAzurePrivatelinkPlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -14,14 +17,14 @@ public final class GetAzurePrivatelinkPlainArgs extends com.pulumi.resources.Inv
     public static final GetAzurePrivatelinkPlainArgs Empty = new GetAzurePrivatelinkPlainArgs();
 
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name.
      * 
      */
     @Import(name="project", required=true)
     private String project;
 
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name.
      * 
      */
     public String project() {
@@ -29,18 +32,25 @@ public final class GetAzurePrivatelinkPlainArgs extends com.pulumi.resources.Inv
     }
 
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name.
      * 
      */
     @Import(name="serviceName", required=true)
     private String serviceName;
 
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service name.
      * 
      */
     public String serviceName() {
         return this.serviceName;
+    }
+
+    @Import(name="timeouts")
+    private @Nullable GetAzurePrivatelinkTimeouts timeouts;
+
+    public Optional<GetAzurePrivatelinkTimeouts> timeouts() {
+        return Optional.ofNullable(this.timeouts);
     }
 
     private GetAzurePrivatelinkPlainArgs() {}
@@ -48,6 +58,7 @@ public final class GetAzurePrivatelinkPlainArgs extends com.pulumi.resources.Inv
     private GetAzurePrivatelinkPlainArgs(GetAzurePrivatelinkPlainArgs $) {
         this.project = $.project;
         this.serviceName = $.serviceName;
+        this.timeouts = $.timeouts;
     }
 
     public static Builder builder() {
@@ -69,7 +80,7 @@ public final class GetAzurePrivatelinkPlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param project The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param project Project name.
          * 
          * @return builder
          * 
@@ -80,13 +91,18 @@ public final class GetAzurePrivatelinkPlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param serviceName The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param serviceName Service name.
          * 
          * @return builder
          * 
          */
         public Builder serviceName(String serviceName) {
             $.serviceName = serviceName;
+            return this;
+        }
+
+        public Builder timeouts(@Nullable GetAzurePrivatelinkTimeouts timeouts) {
+            $.timeouts = timeouts;
             return this;
         }
 

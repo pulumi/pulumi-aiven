@@ -29,15 +29,15 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.NewFlink(ctx, "example_flink", &aiven.FlinkArgs{
+//				FlinkUserConfig: &aiven.FlinkFlinkUserConfigArgs{
+//					FlinkVersion: pulumi.String("1.19"),
+//				},
 //				Project:               pulumi.Any(exampleProject.Project),
 //				CloudName:             pulumi.String("google-europe-west1"),
 //				Plan:                  pulumi.String("business-4"),
 //				ServiceName:           pulumi.String("example-flink-service"),
 //				MaintenanceWindowDow:  pulumi.String("monday"),
 //				MaintenanceWindowTime: pulumi.String("10:00:00"),
-//				FlinkUserConfig: &aiven.FlinkFlinkUserConfigArgs{
-//					FlinkVersion: pulumi.String("1.19"),
-//				},
 //			})
 //			if err != nil {
 //				return err

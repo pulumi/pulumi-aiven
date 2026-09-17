@@ -24,10 +24,10 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var main = Aiven.GetGcpPrivatelink.Invoke(new()
+        ///     var example = Aiven.GetGcpPrivatelink.Invoke(new()
         ///     {
-        ///         Project = exampleProject.Project,
-        ///         ServiceName = exampleKafka.ServiceName,
+        ///         Project = "my-project",
+        ///         ServiceName = "foo",
         ///     });
         /// 
         /// });
@@ -49,10 +49,10 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var main = Aiven.GetGcpPrivatelink.Invoke(new()
+        ///     var example = Aiven.GetGcpPrivatelink.Invoke(new()
         ///     {
-        ///         Project = exampleProject.Project,
-        ///         ServiceName = exampleKafka.ServiceName,
+        ///         Project = "my-project",
+        ///         ServiceName = "foo",
         ///     });
         /// 
         /// });
@@ -74,10 +74,10 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var main = Aiven.GetGcpPrivatelink.Invoke(new()
+        ///     var example = Aiven.GetGcpPrivatelink.Invoke(new()
         ///     {
-        ///         Project = exampleProject.Project,
-        ///         ServiceName = exampleKafka.ServiceName,
+        ///         Project = "my-project",
+        ///         ServiceName = "foo",
         ///     });
         /// 
         /// });
@@ -91,16 +91,19 @@ namespace Pulumi.Aiven
     public sealed class GetGcpPrivatelinkArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name.
         /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service name.
         /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
+
+        [Input("timeouts")]
+        public Inputs.GetGcpPrivatelinkTimeoutsArgs? Timeouts { get; set; }
 
         public GetGcpPrivatelinkArgs()
         {
@@ -111,16 +114,19 @@ namespace Pulumi.Aiven
     public sealed class GetGcpPrivatelinkInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service name.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
+
+        [Input("timeouts")]
+        public Input<Inputs.GetGcpPrivatelinkTimeoutsInputArgs>? Timeouts { get; set; }
 
         public GetGcpPrivatelinkInvokeArgs()
         {
@@ -137,25 +143,26 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string GoogleServiceAttachment;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// Resource ID composed as: `project/service_name`.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Printable result of the Google Cloud Private Service Connect request.
+        /// Legacy response message retained for backward compatibility. **Deprecated**: This attribute is retained only for compatibility with state created by older provider versions and is no longer populated.
         /// </summary>
         public readonly string Message;
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name.
         /// </summary>
         public readonly string Project;
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service name.
         /// </summary>
         public readonly string ServiceName;
         /// <summary>
-        /// The state of the Private Service Connect resource.
+        /// The state of the Private Service Connect resource. The possible values are `Active`, `Creating` and `Deleting`.
         /// </summary>
         public readonly string State;
+        public readonly Outputs.GetGcpPrivatelinkTimeoutsResult? Timeouts;
 
         [OutputConstructor]
         private GetGcpPrivatelinkResult(
@@ -169,7 +176,9 @@ namespace Pulumi.Aiven
 
             string serviceName,
 
-            string state)
+            string state,
+
+            Outputs.GetGcpPrivatelinkTimeoutsResult? timeouts)
         {
             GoogleServiceAttachment = googleServiceAttachment;
             Id = id;
@@ -177,6 +186,7 @@ namespace Pulumi.Aiven
             Project = project;
             ServiceName = serviceName;
             State = state;
+            Timeouts = timeouts;
         }
     }
 }

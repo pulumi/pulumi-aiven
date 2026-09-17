@@ -114,6 +114,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? GoogleAnalyticsUaId;
         /// <summary>
+        /// Enum: `11`, and newer. Grafana major version.
+        /// </summary>
+        public readonly string? GrafanaVersion;
+        /// <summary>
         /// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         /// </summary>
         public readonly ImmutableArray<Outputs.GrafanaGrafanaUserConfigIpFilterObject> IpFilterObjects;
@@ -242,6 +246,8 @@ namespace Pulumi.Aiven.Outputs
 
             string? googleAnalyticsUaId,
 
+            string? grafanaVersion,
+
             ImmutableArray<Outputs.GrafanaGrafanaUserConfigIpFilterObject> ipFilterObjects,
 
             ImmutableArray<string> ipFilterStrings,
@@ -305,6 +311,7 @@ namespace Pulumi.Aiven.Outputs
             EditorsCanAdmin = editorsCanAdmin;
             ExternalImageStorage = externalImageStorage;
             GoogleAnalyticsUaId = googleAnalyticsUaId;
+            GrafanaVersion = grafanaVersion;
             IpFilterObjects = ipFilterObjects;
             IpFilterStrings = ipFilterStrings;
             IpFilters = ipFilters;

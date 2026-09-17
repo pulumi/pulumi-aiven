@@ -16,18 +16,18 @@ import * as utilities from "./utilities";
  * import * as aiven from "@pulumi/aiven";
  *
  * const exampleMirrormaker = new aiven.KafkaMirrorMaker("example_mirrormaker", {
- *     project: exampleProject.project,
- *     cloudName: "google-europe-west1",
- *     plan: "startup-4",
- *     serviceName: "example-mirrormaker-service",
  *     kafkaMirrormakerUserConfig: {
- *         ipFilters: ["0.0.0.0/0"],
  *         kafkaMirrormaker: {
  *             refreshGroupsIntervalSeconds: 600,
  *             refreshTopicsEnabled: true,
  *             refreshTopicsIntervalSeconds: 600,
  *         },
+ *         ipFilters: ["0.0.0.0/0"],
  *     },
+ *     project: exampleProject.project,
+ *     cloudName: "google-europe-west1",
+ *     plan: "startup-4",
+ *     serviceName: "example-mirrormaker-service",
  * });
  * ```
  *

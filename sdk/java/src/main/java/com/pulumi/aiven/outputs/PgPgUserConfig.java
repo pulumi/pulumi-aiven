@@ -131,6 +131,11 @@ public final class PgPgUserConfig {
      */
     private @Nullable Boolean pgStatMonitorEnable;
     /**
+     * @return Enable the pg*stat*plans extension. Changing this parameter causes a service restart. Tracks execution plans for SQL queries. Default: `false`.
+     * 
+     */
+    private @Nullable Boolean pgStatPlansEnable;
+    /**
      * @return Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`, `17`, `18`, and newer. PostgreSQL major version.
      * 
      */
@@ -360,6 +365,13 @@ public final class PgPgUserConfig {
         return Optional.ofNullable(this.pgStatMonitorEnable);
     }
     /**
+     * @return Enable the pg*stat*plans extension. Changing this parameter causes a service restart. Tracks execution plans for SQL queries. Default: `false`.
+     * 
+     */
+    public Optional<Boolean> pgStatPlansEnable() {
+        return Optional.ofNullable(this.pgStatPlansEnable);
+    }
+    /**
      * @return Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`, `17`, `18`, and newer. PostgreSQL major version.
      * 
      */
@@ -510,6 +522,7 @@ public final class PgPgUserConfig {
         private @Nullable Boolean pgReadReplica;
         private @Nullable String pgServiceToForkFrom;
         private @Nullable Boolean pgStatMonitorEnable;
+        private @Nullable Boolean pgStatPlansEnable;
         private @Nullable String pgVersion;
         private @Nullable PgPgUserConfigPgaudit pgaudit;
         private @Nullable PgPgUserConfigPgbouncer pgbouncer;
@@ -550,6 +563,7 @@ public final class PgPgUserConfig {
     	      this.pgReadReplica = defaults.pgReadReplica;
     	      this.pgServiceToForkFrom = defaults.pgServiceToForkFrom;
     	      this.pgStatMonitorEnable = defaults.pgStatMonitorEnable;
+    	      this.pgStatPlansEnable = defaults.pgStatPlansEnable;
     	      this.pgVersion = defaults.pgVersion;
     	      this.pgaudit = defaults.pgaudit;
     	      this.pgbouncer = defaults.pgbouncer;
@@ -694,6 +708,12 @@ public final class PgPgUserConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder pgStatPlansEnable(@Nullable Boolean pgStatPlansEnable) {
+
+            this.pgStatPlansEnable = pgStatPlansEnable;
+            return this;
+        }
+        @CustomType.Setter
         public Builder pgVersion(@Nullable String pgVersion) {
 
             this.pgVersion = pgVersion;
@@ -825,6 +845,7 @@ public final class PgPgUserConfig {
             _resultValue.pgReadReplica = pgReadReplica;
             _resultValue.pgServiceToForkFrom = pgServiceToForkFrom;
             _resultValue.pgStatMonitorEnable = pgStatMonitorEnable;
+            _resultValue.pgStatPlansEnable = pgStatPlansEnable;
             _resultValue.pgVersion = pgVersion;
             _resultValue.pgaudit = pgaudit;
             _resultValue.pgbouncer = pgbouncer;

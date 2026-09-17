@@ -7,10 +7,10 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Creates and manages an [Aiven for Apache Flink® jar application](https://aiven.io/docs/products/flink/howto/create-jar-application).
+ * Creates and manages an [Aiven for Apache Flink® jar application](https://aiven.io/docs/products/flink/howto/create-jar-application). Requires the `aiven.Flink` service to have `flink_user_config.custom_code` enabled, which allows uploading and deploying custom JARs. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
  *
- * **This resource is in the beta stage and may change without notice.** Set
- * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+ * > **Beta resource in limited availability**
+ * This feature is in the limited availability stage and may change without notice. To enable this feature, contact the [sales team](http://aiven.io/contact). Once it's enabled, set the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
  *
  * ## Example Usage
  *
@@ -18,21 +18,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const example = new aiven.Flink("example", {
- *     project: exampleAivenProject.project,
- *     serviceName: "example-flink-service",
- *     cloudName: "google-europe-west1",
- *     plan: "business-4",
- *     maintenanceWindowDow: "monday",
- *     maintenanceWindowTime: "04:00:00",
- *     flinkUserConfig: {
- *         customCode: true,
- *     },
- * });
- * const exampleFlinkJarApplication = new aiven.FlinkJarApplication("example", {
- *     project: example.project,
- *     serviceName: example.serviceName,
- *     name: "example-app-jar",
+ * const example = new aiven.FlinkJarApplication("example", {
+ *     project: "my-project",
+ *     serviceName: "my-application",
+ *     name: "TestJob",
  * });
  * ```
  *
@@ -102,6 +91,7 @@ export class FlinkJarApplication extends pulumi.CustomResource {
      * Service name. Changing this property forces recreation of the resource.
      */
     declare public readonly serviceName: pulumi.Output<string>;
+    declare public readonly timeouts: pulumi.Output<outputs.FlinkJarApplicationTimeouts | undefined>;
     /**
      * The update timestamp of this entity in ISO 8601 format, always in UTC.
      */
@@ -132,6 +122,7 @@ export class FlinkJarApplication extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["project"] = state?.project;
             resourceInputs["serviceName"] = state?.serviceName;
+            resourceInputs["timeouts"] = state?.timeouts;
             resourceInputs["updatedAt"] = state?.updatedAt;
             resourceInputs["updatedBy"] = state?.updatedBy;
         } else {
@@ -145,6 +136,7 @@ export class FlinkJarApplication extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["project"] = args?.project;
             resourceInputs["serviceName"] = args?.serviceName;
+            resourceInputs["timeouts"] = args?.timeouts;
             resourceInputs["applicationId"] = undefined /*out*/;
             resourceInputs["applicationVersions"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
@@ -194,6 +186,7 @@ export interface FlinkJarApplicationState {
      * Service name. Changing this property forces recreation of the resource.
      */
     serviceName?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.FlinkJarApplicationTimeouts | undefined>;
     /**
      * The update timestamp of this entity in ISO 8601 format, always in UTC.
      */
@@ -220,4 +213,5 @@ export interface FlinkJarApplicationArgs {
      * Service name. Changing this property forces recreation of the resource.
      */
     serviceName: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.FlinkJarApplicationTimeouts | undefined>;
 }

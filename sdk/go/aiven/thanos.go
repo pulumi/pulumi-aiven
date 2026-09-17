@@ -29,16 +29,16 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.NewThanos(ctx, "example_thanos", &aiven.ThanosArgs{
-//				Project:     pulumi.Any(exampleProject.Project),
-//				Plan:        pulumi.String("startup-4"),
-//				CloudName:   pulumi.String("google-europe-west1"),
-//				ServiceName: pulumi.String("example-thanos-service"),
 //				ThanosUserConfig: &aiven.ThanosThanosUserConfigArgs{
 //					Compactor: &aiven.ThanosThanosUserConfigCompactorArgs{
 //						RetentionDays: pulumi.Int(30),
 //					},
 //					ObjectStorageUsageAlertThresholdGb: pulumi.Int(10),
 //				},
+//				Project:     pulumi.Any(exampleProject.Project),
+//				Plan:        pulumi.String("startup-4"),
+//				CloudName:   pulumi.String("google-europe-west1"),
+//				ServiceName: pulumi.String("example-thanos-service"),
 //			})
 //			if err != nil {
 //				return err

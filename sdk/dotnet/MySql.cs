@@ -24,15 +24,8 @@ namespace Pulumi.Aiven
     /// {
     ///     var exampleMysql = new Aiven.MySql("example_mysql", new()
     ///     {
-    ///         Project = exampleProject.Project,
-    ///         CloudName = "google-europe-west1",
-    ///         Plan = "business-4",
-    ///         ServiceName = "example-mysql",
-    ///         MaintenanceWindowDow = "monday",
-    ///         MaintenanceWindowTime = "10:00:00",
     ///         MysqlUserConfig = new Aiven.Inputs.MySqlMysqlUserConfigArgs
     ///         {
-    ///             MysqlVersion = "8",
     ///             Mysql = new Aiven.Inputs.MySqlMysqlUserConfigMysqlArgs
     ///             {
     ///                 SqlMode = "ANSI,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION,NO_ZERO_DATE,NO_ZERO_IN_DATE",
@@ -42,7 +35,14 @@ namespace Pulumi.Aiven
     ///             {
     ///                 Mysql = true,
     ///             },
+    ///             MysqlVersion = "8",
     ///         },
+    ///         Project = exampleProject.Project,
+    ///         CloudName = "google-europe-west1",
+    ///         Plan = "business-4",
+    ///         ServiceName = "example-mysql",
+    ///         MaintenanceWindowDow = "monday",
+    ///         MaintenanceWindowTime = "10:00:00",
     ///     });
     /// 
     /// });

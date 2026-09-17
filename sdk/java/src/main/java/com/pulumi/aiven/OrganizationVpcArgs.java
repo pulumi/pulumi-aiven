@@ -3,11 +3,14 @@
 
 package com.pulumi.aiven;
 
+import com.pulumi.aiven.inputs.OrganizationVpcTimeoutsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class OrganizationVpcArgs extends com.pulumi.resources.ResourceArgs {
@@ -30,14 +33,29 @@ public final class OrganizationVpcArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Network address range used by the VPC. For example, `192.168.0.0/24`.
+     * User defined display name for this VPC. Maximum length: `64`.
+     * 
+     */
+    @Import(name="displayName")
+    private @Nullable Output<String> displayName;
+
+    /**
+     * @return User defined display name for this VPC. Maximum length: `64`.
+     * 
+     */
+    public Optional<Output<String>> displayName() {
+        return Optional.ofNullable(this.displayName);
+    }
+
+    /**
+     * Network address range used by the VPC. For example, `192.168.0.0/24`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="networkCidr", required=true)
     private Output<String> networkCidr;
 
     /**
-     * @return Network address range used by the VPC. For example, `192.168.0.0/24`.
+     * @return Network address range used by the VPC. For example, `192.168.0.0/24`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> networkCidr() {
@@ -45,26 +63,35 @@ public final class OrganizationVpcArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The ID of the organization.
+     * ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="organizationId", required=true)
     private Output<String> organizationId;
 
     /**
-     * @return The ID of the organization.
+     * @return ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> organizationId() {
         return this.organizationId;
     }
 
+    @Import(name="timeouts")
+    private @Nullable Output<OrganizationVpcTimeoutsArgs> timeouts;
+
+    public Optional<Output<OrganizationVpcTimeoutsArgs>> timeouts() {
+        return Optional.ofNullable(this.timeouts);
+    }
+
     private OrganizationVpcArgs() {}
 
     private OrganizationVpcArgs(OrganizationVpcArgs $) {
         this.cloudName = $.cloudName;
+        this.displayName = $.displayName;
         this.networkCidr = $.networkCidr;
         this.organizationId = $.organizationId;
+        this.timeouts = $.timeouts;
     }
 
     public static Builder builder() {
@@ -107,7 +134,28 @@ public final class OrganizationVpcArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param networkCidr Network address range used by the VPC. For example, `192.168.0.0/24`.
+         * @param displayName User defined display name for this VPC. Maximum length: `64`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder displayName(@Nullable Output<String> displayName) {
+            $.displayName = displayName;
+            return this;
+        }
+
+        /**
+         * @param displayName User defined display name for this VPC. Maximum length: `64`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder displayName(String displayName) {
+            return displayName(Output.of(displayName));
+        }
+
+        /**
+         * @param networkCidr Network address range used by the VPC. For example, `192.168.0.0/24`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -118,7 +166,7 @@ public final class OrganizationVpcArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param networkCidr Network address range used by the VPC. For example, `192.168.0.0/24`.
+         * @param networkCidr Network address range used by the VPC. For example, `192.168.0.0/24`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -128,7 +176,7 @@ public final class OrganizationVpcArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param organizationId The ID of the organization.
+         * @param organizationId ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -139,13 +187,22 @@ public final class OrganizationVpcArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param organizationId The ID of the organization.
+         * @param organizationId ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
          */
         public Builder organizationId(String organizationId) {
             return organizationId(Output.of(organizationId));
+        }
+
+        public Builder timeouts(@Nullable Output<OrganizationVpcTimeoutsArgs> timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
+        public Builder timeouts(OrganizationVpcTimeoutsArgs timeouts) {
+            return timeouts(Output.of(timeouts));
         }
 
         public OrganizationVpcArgs build() {

@@ -67,7 +67,7 @@ type LookupServiceIntegrationEndpointResult struct {
 	EndpointConfig map[string]string `pulumi:"endpointConfig"`
 	// Name of the service integration endpoint.
 	EndpointName string `pulumi:"endpointName"`
-	// The type of service integration endpoint. The possible values are `autoscaler`, `datadog`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalAwsS3`, `externalAzureBlobStorage`, `externalClickhouse`, `externalElasticsearchLogs`, `externalGoogleCloudBigquery`, `externalGoogleCloudLogging`, `externalKafka`, `externalMysql`, `externalObjectStorageConfig`, `externalOpensearchLogs`, `externalPostgresql`, `externalPrometheus`, `externalRedis`, `externalSchemaRegistry`, `externalSumologicLogs`, `jolokia`, `prometheus` and `rsyslog`.
+	// The type of service integration endpoint. The possible values are `autoscaler`, `datadog`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalAwsS3`, `externalAzureBlobStorage`, `externalClickhouse`, `externalElasticsearchLogs`, `externalGoogleCloudBigquery`, `externalGoogleCloudLogging`, `externalKafka`, `externalMysql`, `externalObjectStorageConfig`, `externalOpensearchLogs`, `externalPostgresql`, `externalPrometheus`, `externalRedis`, `externalSchemaRegistry`, `externalSumologicLogs`, `jolokia`, `opentelemetry`, `prometheus` and `rsyslog`.
 	EndpointType string `pulumi:"endpointType"`
 	// ExternalAwsCloudwatchLogs user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	ExternalAwsCloudwatchLogsUserConfigs []GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig `pulumi:"externalAwsCloudwatchLogsUserConfigs"`
@@ -103,6 +103,8 @@ type LookupServiceIntegrationEndpointResult struct {
 	Id string `pulumi:"id"`
 	// Jolokia user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	JolokiaUserConfigs []GetServiceIntegrationEndpointJolokiaUserConfig `pulumi:"jolokiaUserConfigs"`
+	// Opentelemetry user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+	OpentelemetryUserConfigs []GetServiceIntegrationEndpointOpentelemetryUserConfig `pulumi:"opentelemetryUserConfigs"`
 	// Project the service integration endpoint is in.
 	Project string `pulumi:"project"`
 	// Prometheus user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
@@ -167,7 +169,7 @@ func (o LookupServiceIntegrationEndpointResultOutput) EndpointName() pulumi.Stri
 	return o.ApplyT(func(v LookupServiceIntegrationEndpointResult) string { return v.EndpointName }).(pulumi.StringOutput)
 }
 
-// The type of service integration endpoint. The possible values are `autoscaler`, `datadog`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalAwsS3`, `externalAzureBlobStorage`, `externalClickhouse`, `externalElasticsearchLogs`, `externalGoogleCloudBigquery`, `externalGoogleCloudLogging`, `externalKafka`, `externalMysql`, `externalObjectStorageConfig`, `externalOpensearchLogs`, `externalPostgresql`, `externalPrometheus`, `externalRedis`, `externalSchemaRegistry`, `externalSumologicLogs`, `jolokia`, `prometheus` and `rsyslog`.
+// The type of service integration endpoint. The possible values are `autoscaler`, `datadog`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalAwsS3`, `externalAzureBlobStorage`, `externalClickhouse`, `externalElasticsearchLogs`, `externalGoogleCloudBigquery`, `externalGoogleCloudLogging`, `externalKafka`, `externalMysql`, `externalObjectStorageConfig`, `externalOpensearchLogs`, `externalPostgresql`, `externalPrometheus`, `externalRedis`, `externalSchemaRegistry`, `externalSumologicLogs`, `jolokia`, `opentelemetry`, `prometheus` and `rsyslog`.
 func (o LookupServiceIntegrationEndpointResultOutput) EndpointType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceIntegrationEndpointResult) string { return v.EndpointType }).(pulumi.StringOutput)
 }
@@ -287,6 +289,13 @@ func (o LookupServiceIntegrationEndpointResultOutput) JolokiaUserConfigs() GetSe
 	return o.ApplyT(func(v LookupServiceIntegrationEndpointResult) []GetServiceIntegrationEndpointJolokiaUserConfig {
 		return v.JolokiaUserConfigs
 	}).(GetServiceIntegrationEndpointJolokiaUserConfigArrayOutput)
+}
+
+// Opentelemetry user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+func (o LookupServiceIntegrationEndpointResultOutput) OpentelemetryUserConfigs() GetServiceIntegrationEndpointOpentelemetryUserConfigArrayOutput {
+	return o.ApplyT(func(v LookupServiceIntegrationEndpointResult) []GetServiceIntegrationEndpointOpentelemetryUserConfig {
+		return v.OpentelemetryUserConfigs
+	}).(GetServiceIntegrationEndpointOpentelemetryUserConfigArrayOutput)
 }
 
 // Project the service integration endpoint is in.

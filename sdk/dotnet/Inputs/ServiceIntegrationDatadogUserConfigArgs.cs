@@ -19,6 +19,24 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? DatadogDbmEnabled { get; set; }
 
         /// <summary>
+        /// Enable collection of PL/pgSQL function metrics from pg*stat*user_functions. Requires `TrackFunctions` to be set to `Pl` or `All` in the service configuration.
+        /// </summary>
+        [Input("datadogFunctionMetricsEnabled")]
+        public Input<bool>? DatadogFunctionMetricsEnabled { get; set; }
+
+        [Input("datadogPgRelations")]
+        private InputList<Inputs.ServiceIntegrationDatadogUserConfigDatadogPgRelationArgs>? _datadogPgRelations;
+
+        /// <summary>
+        /// Relations to collect PostgreSQL relation metrics for, such as table size, index statistics, row counts, vacuum ages and locks. No relation metrics are collected when unset
+        /// </summary>
+        public InputList<Inputs.ServiceIntegrationDatadogUserConfigDatadogPgRelationArgs> DatadogPgRelations
+        {
+            get => _datadogPgRelations ?? (_datadogPgRelations = new InputList<Inputs.ServiceIntegrationDatadogUserConfigDatadogPgRelationArgs>());
+            set => _datadogPgRelations = value;
+        }
+
+        /// <summary>
         /// Enable Datadog PgBouncer Metric Tracking.
         /// </summary>
         [Input("datadogPgbouncerEnabled")]

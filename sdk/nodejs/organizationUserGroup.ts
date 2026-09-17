@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -14,16 +16,16 @@ import * as utilities from "./utilities";
  * import * as aiven from "@pulumi/aiven";
  *
  * const example = new aiven.OrganizationUserGroup("example", {
- *     description: "Example group of users.",
- *     organizationId: main.id,
- *     name: "Example group",
+ *     organizationId: "org1a23f456789",
+ *     description: "The group of admins for the organization",
+ *     name: "Admin Users",
  * });
  * ```
  *
  * ## Import
  *
  * ```sh
- * $ pulumi import aiven:index/organizationUserGroup:OrganizationUserGroup example ORGANIZATION_ID/USER_GROUP_ID
+ * $ pulumi import aiven:index/organizationUserGroup:OrganizationUserGroup example ORGANIZATION_ID/GROUP_ID
  * ```
  */
 export class OrganizationUserGroup extends pulumi.CustomResource {
@@ -55,27 +57,32 @@ export class OrganizationUserGroup extends pulumi.CustomResource {
     }
 
     /**
-     * Time of creation.
+     * User group creation time.
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
-     * The description of the user group. Changing this property forces recreation of the resource.
+     * Description. Maximum length: `4096`.
      */
     declare public readonly description: pulumi.Output<string>;
     /**
-     * The ID of the user group.
+     * ID of the user group.
      */
     declare public /*out*/ readonly groupId: pulumi.Output<string>;
     /**
-     * The name of the user group. Changing this property forces recreation of the resource.
+     * Managed By Scim.
+     */
+    declare public /*out*/ readonly managedByScim: pulumi.Output<boolean>;
+    /**
+     * User Group Name. Maximum length: `128`.
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * The ID of the organization. Changing this property forces recreation of the resource.
+     * ID of an organization. Changing this property forces recreation of the resource.
      */
     declare public readonly organizationId: pulumi.Output<string>;
+    declare public readonly timeouts: pulumi.Output<outputs.OrganizationUserGroupTimeouts | undefined>;
     /**
-     * Time of last update.
+     * User group last update time.
      */
     declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
@@ -95,8 +102,10 @@ export class OrganizationUserGroup extends pulumi.CustomResource {
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["description"] = state?.description;
             resourceInputs["groupId"] = state?.groupId;
+            resourceInputs["managedByScim"] = state?.managedByScim;
             resourceInputs["name"] = state?.name;
             resourceInputs["organizationId"] = state?.organizationId;
+            resourceInputs["timeouts"] = state?.timeouts;
             resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as OrganizationUserGroupArgs | undefined;
@@ -109,8 +118,10 @@ export class OrganizationUserGroup extends pulumi.CustomResource {
             resourceInputs["description"] = args?.description;
             resourceInputs["name"] = args?.name;
             resourceInputs["organizationId"] = args?.organizationId;
+            resourceInputs["timeouts"] = args?.timeouts;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["groupId"] = undefined /*out*/;
+            resourceInputs["managedByScim"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -123,27 +134,32 @@ export class OrganizationUserGroup extends pulumi.CustomResource {
  */
 export interface OrganizationUserGroupState {
     /**
-     * Time of creation.
+     * User group creation time.
      */
     createTime?: pulumi.Input<string | undefined>;
     /**
-     * The description of the user group. Changing this property forces recreation of the resource.
+     * Description. Maximum length: `4096`.
      */
     description?: pulumi.Input<string | undefined>;
     /**
-     * The ID of the user group.
+     * ID of the user group.
      */
     groupId?: pulumi.Input<string | undefined>;
     /**
-     * The name of the user group. Changing this property forces recreation of the resource.
+     * Managed By Scim.
+     */
+    managedByScim?: pulumi.Input<boolean | undefined>;
+    /**
+     * User Group Name. Maximum length: `128`.
      */
     name?: pulumi.Input<string | undefined>;
     /**
-     * The ID of the organization. Changing this property forces recreation of the resource.
+     * ID of an organization. Changing this property forces recreation of the resource.
      */
     organizationId?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.OrganizationUserGroupTimeouts | undefined>;
     /**
-     * Time of last update.
+     * User group last update time.
      */
     updateTime?: pulumi.Input<string | undefined>;
 }
@@ -153,15 +169,16 @@ export interface OrganizationUserGroupState {
  */
 export interface OrganizationUserGroupArgs {
     /**
-     * The description of the user group. Changing this property forces recreation of the resource.
+     * Description. Maximum length: `4096`.
      */
     description: pulumi.Input<string>;
     /**
-     * The name of the user group. Changing this property forces recreation of the resource.
+     * User Group Name. Maximum length: `128`.
      */
     name?: pulumi.Input<string | undefined>;
     /**
-     * The ID of the organization. Changing this property forces recreation of the resource.
+     * ID of an organization. Changing this property forces recreation of the resource.
      */
     organizationId: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.OrganizationUserGroupTimeouts | undefined>;
 }

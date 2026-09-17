@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetGcpOrgVpcPeeringConnectionResult',
@@ -26,7 +28,7 @@ class GetGcpOrgVpcPeeringConnectionResult:
     """
     A collection of values returned by getGcpOrgVpcPeeringConnection.
     """
-    def __init__(__self__, gcp_project_id=None, id=None, organization_id=None, organization_vpc_id=None, peer_vpc=None, self_link=None, state=None):
+    def __init__(__self__, gcp_project_id=None, id=None, organization_id=None, organization_vpc_id=None, peer_vpc=None, self_link=None, state=None, timeouts=None):
         if gcp_project_id and not isinstance(gcp_project_id, str):
             raise TypeError("Expected argument 'gcp_project_id' to be a str")
         pulumi.set(__self__, "gcp_project_id", gcp_project_id)
@@ -48,12 +50,15 @@ class GetGcpOrgVpcPeeringConnectionResult:
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
+        if timeouts and not isinstance(timeouts, dict):
+            raise TypeError("Expected argument 'timeouts' to be a dict")
+        pulumi.set(__self__, "timeouts", timeouts)
 
     @_builtins.property
     @pulumi.getter(name="gcpProjectId")
     def gcp_project_id(self) -> _builtins.str:
         """
-        Google Cloud project ID. Changing this property forces recreation of the resource.
+        Google Cloud project ID.
         """
         return pulumi.get(self, "gcp_project_id")
 
@@ -61,7 +66,7 @@ class GetGcpOrgVpcPeeringConnectionResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The provider-assigned unique ID for this managed resource.
+        Resource ID composed as: `organization_id/organization_vpc_id/gcp_project_id/peer_vpc`.
         """
         return pulumi.get(self, "id")
 
@@ -69,7 +74,7 @@ class GetGcpOrgVpcPeeringConnectionResult:
     @pulumi.getter(name="organizationId")
     def organization_id(self) -> _builtins.str:
         """
-        Identifier of the organization.
+        ID of an organization.
         """
         return pulumi.get(self, "organization_id")
 
@@ -77,7 +82,7 @@ class GetGcpOrgVpcPeeringConnectionResult:
     @pulumi.getter(name="organizationVpcId")
     def organization_vpc_id(self) -> _builtins.str:
         """
-        Identifier of the organization VPC.
+        Organization VPC ID.
         """
         return pulumi.get(self, "organization_vpc_id")
 
@@ -85,7 +90,7 @@ class GetGcpOrgVpcPeeringConnectionResult:
     @pulumi.getter(name="peerVpc")
     def peer_vpc(self) -> _builtins.str:
         """
-        Google Cloud VPC network name. Changing this property forces recreation of the resource.
+        Google Cloud VPC network name.
         """
         return pulumi.get(self, "peer_vpc")
 
@@ -101,9 +106,14 @@ class GetGcpOrgVpcPeeringConnectionResult:
     @pulumi.getter
     def state(self) -> _builtins.str:
         """
-        State of the peering connection.
+        State of the peering connection. The possible values are `ACTIVE`, `APPROVED`, `APPROVED_PEER_REQUESTED`, `DELETED`, `DELETED_BY_PEER`, `DELETING`, `ERROR`, `INVALID_SPECIFICATION`, `PENDING_PEER` and `REJECTED_BY_PEER`.
         """
         return pulumi.get(self, "state")
+
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> Optional['outputs.GetGcpOrgVpcPeeringConnectionTimeoutsResult']:
+        return pulumi.get(self, "timeouts")
 
 
 class AwaitableGetGcpOrgVpcPeeringConnectionResult(GetGcpOrgVpcPeeringConnectionResult):
@@ -118,31 +128,43 @@ class AwaitableGetGcpOrgVpcPeeringConnectionResult(GetGcpOrgVpcPeeringConnection
             organization_vpc_id=self.organization_vpc_id,
             peer_vpc=self.peer_vpc,
             self_link=self.self_link,
-            state=self.state)
+            state=self.state,
+            timeouts=self.timeouts)
 
 
 def get_gcp_org_vpc_peering_connection(gcp_project_id: Optional[_builtins.str] = None,
                                        organization_id: Optional[_builtins.str] = None,
                                        organization_vpc_id: Optional[_builtins.str] = None,
                                        peer_vpc: Optional[_builtins.str] = None,
+                                       timeouts: Optional[Union['GetGcpOrgVpcPeeringConnectionTimeoutsArgs', 'GetGcpOrgVpcPeeringConnectionTimeoutsArgsDict']] = None,
                                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGcpOrgVpcPeeringConnectionResult:
     """
     The GCP VPC Peering Connection data source provides information about the existing Aiven VPC Peering Connection.
 
-    **This resource is in the beta stage and may change without notice.** Set
-    the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    example = aiven.get_gcp_org_vpc_peering_connection(organization_id="org1a23f456789",
+        organization_vpc_id="1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+        gcp_project_id="my-gcp-project",
+        peer_vpc="my-vpc")
+    ```
 
 
-    :param _builtins.str gcp_project_id: Google Cloud project ID. Changing this property forces recreation of the resource.
-    :param _builtins.str organization_id: Identifier of the organization.
-    :param _builtins.str organization_vpc_id: Identifier of the organization VPC.
-    :param _builtins.str peer_vpc: Google Cloud VPC network name. Changing this property forces recreation of the resource.
+    :param _builtins.str gcp_project_id: Google Cloud project ID.
+    :param _builtins.str organization_id: ID of an organization.
+    :param _builtins.str organization_vpc_id: Organization VPC ID.
+    :param _builtins.str peer_vpc: Google Cloud VPC network name.
     """
     __args__ = dict()
     __args__['gcpProjectId'] = gcp_project_id
     __args__['organizationId'] = organization_id
     __args__['organizationVpcId'] = organization_vpc_id
     __args__['peerVpc'] = peer_vpc
+    __args__['timeouts'] = timeouts
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('aiven:index/getGcpOrgVpcPeeringConnection:getGcpOrgVpcPeeringConnection', __args__, opts=opts, typ=GetGcpOrgVpcPeeringConnectionResult).value
 
@@ -153,29 +175,41 @@ def get_gcp_org_vpc_peering_connection(gcp_project_id: Optional[_builtins.str] =
         organization_vpc_id=pulumi.get(__ret__, 'organization_vpc_id'),
         peer_vpc=pulumi.get(__ret__, 'peer_vpc'),
         self_link=pulumi.get(__ret__, 'self_link'),
-        state=pulumi.get(__ret__, 'state'))
+        state=pulumi.get(__ret__, 'state'),
+        timeouts=pulumi.get(__ret__, 'timeouts'))
 def get_gcp_org_vpc_peering_connection_output(gcp_project_id: pulumi.Input[Optional[_builtins.str]] = None,
                                               organization_id: pulumi.Input[Optional[_builtins.str]] = None,
                                               organization_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                                               peer_vpc: pulumi.Input[Optional[_builtins.str]] = None,
+                                              timeouts: pulumi.Input[Optional[Optional[Union['GetGcpOrgVpcPeeringConnectionTimeoutsArgs', 'GetGcpOrgVpcPeeringConnectionTimeoutsArgsDict']]]] = None,
                                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGcpOrgVpcPeeringConnectionResult]:
     """
     The GCP VPC Peering Connection data source provides information about the existing Aiven VPC Peering Connection.
 
-    **This resource is in the beta stage and may change without notice.** Set
-    the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    example = aiven.get_gcp_org_vpc_peering_connection(organization_id="org1a23f456789",
+        organization_vpc_id="1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+        gcp_project_id="my-gcp-project",
+        peer_vpc="my-vpc")
+    ```
 
 
-    :param _builtins.str gcp_project_id: Google Cloud project ID. Changing this property forces recreation of the resource.
-    :param _builtins.str organization_id: Identifier of the organization.
-    :param _builtins.str organization_vpc_id: Identifier of the organization VPC.
-    :param _builtins.str peer_vpc: Google Cloud VPC network name. Changing this property forces recreation of the resource.
+    :param _builtins.str gcp_project_id: Google Cloud project ID.
+    :param _builtins.str organization_id: ID of an organization.
+    :param _builtins.str organization_vpc_id: Organization VPC ID.
+    :param _builtins.str peer_vpc: Google Cloud VPC network name.
     """
     __args__ = dict()
     __args__['gcpProjectId'] = gcp_project_id
     __args__['organizationId'] = organization_id
     __args__['organizationVpcId'] = organization_vpc_id
     __args__['peerVpc'] = peer_vpc
+    __args__['timeouts'] = timeouts
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('aiven:index/getGcpOrgVpcPeeringConnection:getGcpOrgVpcPeeringConnection', __args__, opts=opts, typ=GetGcpOrgVpcPeeringConnectionResult)
     return __ret__.apply(lambda __response__: GetGcpOrgVpcPeeringConnectionResult(
@@ -185,4 +219,5 @@ def get_gcp_org_vpc_peering_connection_output(gcp_project_id: pulumi.Input[Optio
         organization_vpc_id=pulumi.get(__response__, 'organization_vpc_id'),
         peer_vpc=pulumi.get(__response__, 'peer_vpc'),
         self_link=pulumi.get(__response__, 'self_link'),
-        state=pulumi.get(__response__, 'state')))
+        state=pulumi.get(__response__, 'state'),
+        timeouts=pulumi.get(__response__, 'timeouts')))

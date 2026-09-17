@@ -53,16 +53,16 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var exampleThanos = new Thanos("exampleThanos", ThanosArgs.builder()
- *             .project(exampleProject.project())
- *             .plan("startup-4")
- *             .cloudName("google-europe-west1")
- *             .serviceName("example-thanos-service")
  *             .thanosUserConfig(ThanosThanosUserConfigArgs.builder()
  *                 .compactor(ThanosThanosUserConfigCompactorArgs.builder()
  *                     .retentionDays(30)
  *                     .build())
  *                 .objectStorageUsageAlertThresholdGb(10)
  *                 .build())
+ *             .project(exampleProject.project())
+ *             .plan("startup-4")
+ *             .cloudName("google-europe-west1")
+ *             .serviceName("example-thanos-service")
  *             .build());
  * 
  *     }

@@ -6,18 +6,19 @@ package com.pulumi.aiven;
 import com.pulumi.aiven.KafkaAclArgs;
 import com.pulumi.aiven.Utilities;
 import com.pulumi.aiven.inputs.KafkaAclState;
+import com.pulumi.aiven.outputs.KafkaAclTimeouts;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Creates and manages Aiven [access control lists](https://aiven.io/docs/products/kafka/concepts/acl) (ACLs) for an Aiven for Apache Kafka® service. ACLs control access to Kafka topics, consumer groups,
- * clusters, and Schema Registry.
+ * Creates and manages Aiven [access control lists](https://aiven.io/docs/products/kafka/concepts/acl) (ACLs) for an Aiven for Apache Kafka® service. ACLs control access to Kafka topics, consumer groups, clusters, and Schema Registry.
  * 
- * Aiven ACLs provide simplified topic-level control with basic permissions and wildcard support. For more advanced access control, you can use Kafka-native ACLs.
+ * Aiven ACLs provide simplified topic-level control with basic permissions and wildcard support. For more advanced access control, you can use Kafka-native ACLs. If this resource is missing (for example, after a service power off), it&#39;s removed from the state and a new create plan is generated.
  * 
  * ## Example Usage
  * 
@@ -43,12 +44,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleAcl = new KafkaAcl("exampleAcl", KafkaAclArgs.builder()
- *             .project(exampleProject.project())
- *             .serviceName(exampleKafka.serviceName())
- *             .topic("example-topic")
- *             .permission("admin")
- *             .username("example-user")
+ *         var example = new KafkaAcl("example", KafkaAclArgs.builder()
+ *             .project("my-project")
+ *             .serviceName("my-kafka")
+ *             .permission("readwrite")
+ *             .topic("top*")
+ *             .username("admin*")
  *             .build());
  * 
  *     }
@@ -59,7 +60,7 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import aiven:index/kafkaAcl:KafkaAcl example_acl PROJECT/SERVICE_NAME/ID
+ * $ pulumi import aiven:index/kafkaAcl:KafkaAcl example PROJECT/SERVICE_NAME/ACL_ID
  * ```
  * 
  */
@@ -80,70 +81,76 @@ public class KafkaAcl extends com.pulumi.resources.CustomResource {
         return this.aclId;
     }
     /**
-     * Permissions to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
+     * Permission of an Aiven Kafka ACL entry, as opposed to a Kafka-native one. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="permission", refs={String.class}, tree="[0]")
     private Output<String> permission;
 
     /**
-     * @return Permissions to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
+     * @return Permission of an Aiven Kafka ACL entry, as opposed to a Kafka-native one. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> permission() {
         return this.permission;
     }
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> project() {
         return this.project;
     }
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service name. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> serviceName() {
         return this.serviceName;
     }
+    @Export(name="timeouts", refs={KafkaAclTimeouts.class}, tree="[0]")
+    private Output</* @Nullable */ KafkaAclTimeouts> timeouts;
+
+    public Output<Optional<KafkaAclTimeouts>> timeouts() {
+        return Codegen.optional(this.timeouts);
+    }
     /**
-     * Topics that the permissions apply to. Changing this property forces recreation of the resource.
+     * Topic name pattern. Length must be between `1` and `249`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="topic", refs={String.class}, tree="[0]")
     private Output<String> topic;
 
     /**
-     * @return Topics that the permissions apply to. Changing this property forces recreation of the resource.
+     * @return Topic name pattern. Length must be between `1` and `249`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> topic() {
         return this.topic;
     }
     /**
-     * Usernames to grant permissions to. Changing this property forces recreation of the resource.
+     * Username. Length must be between `1` and `64`. Must match pattern: `^[-._*?A-Za-z0-9]+$`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="username", refs={String.class}, tree="[0]")
     private Output<String> username;
 
     /**
-     * @return Usernames to grant permissions to. Changing this property forces recreation of the resource.
+     * @return Username. Length must be between `1` and `64`. Must match pattern: `^[-._*?A-Za-z0-9]+$`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> username() {

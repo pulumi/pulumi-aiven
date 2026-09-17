@@ -84,15 +84,15 @@ import javax.annotation.Nullable;
  * 
  *         // Use disk autoscaler with a PostgreSQL service
  *         var autoscalerEndpoint = new ServiceIntegrationEndpoint("autoscalerEndpoint", ServiceIntegrationEndpointArgs.builder()
- *             .project(exampleProject.project())
- *             .endpointName("disk-autoscaler-200GiB")
- *             .endpointType("autoscaler")
  *             .autoscalerUserConfig(ServiceIntegrationEndpointAutoscalerUserConfigArgs.builder()
  *                 .autoscalings(ServiceIntegrationEndpointAutoscalerUserConfigAutoscalingArgs.builder()
  *                     .capGb(200)
  *                     .type("autoscale_disk")
  *                     .build())
  *                 .build())
+ *             .project(exampleProject.project())
+ *             .endpointName("disk-autoscaler-200GiB")
+ *             .endpointType("autoscaler")
  *             .build());
  * 
  *         var autoscalerIntegration = new ServiceIntegration("autoscalerIntegration", ServiceIntegrationArgs.builder()
@@ -299,14 +299,14 @@ public class ServiceIntegration extends com.pulumi.resources.CustomResource {
         return this.integrationId;
     }
     /**
-     * Type of the service integration. The possible values are `alertmanager`, `autoscaler`, `caching`, `clickhouseCredentials`, `clickhouseKafka`, `clickhousePostgresql`, `dashboard`, `datadog`, `datahubMetadataIngestion`, `datasource`, `disasterRecovery`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalElasticsearchLogs`, `externalGoogleCloudLogging`, `externalOpensearchLogs`, `flink`, `flinkExternalBigquery`, `flinkExternalKafka`, `flinkExternalPostgresql`, `internalConnectivity`, `jolokia`, `kafkaConnect`, `kafkaConnectPostgresql`, `kafkaLogs`, `kafkaMirrormaker`, `logs`, `metrics`, `opensearchCrossClusterReplication`, `opensearchCrossClusterSearch`, `prometheus`, `readReplica`, `rsyslog`, `schemaRegistryProxy`, `serviceComposition`, `stresstester`, `thanosDistributedQuery`, `thanosMigrate`, `thanosObjectStorage`, `thanoscompactor`, `thanosquery`, `thanosruler`, `thanosstore`, `vector` and `vmalert`.
+     * Type of the service integration. The possible values are `alertmanager`, `autoscaler`, `caching`, `clickhouseCredentials`, `clickhouseKafka`, `clickhousePostgresql`, `dashboard`, `datadog`, `datahubMetadataIngestion`, `datasource`, `disasterRecovery`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalElasticsearchLogs`, `externalGoogleCloudLogging`, `externalOpensearchLogs`, `flink`, `flinkExternalBigquery`, `flinkExternalKafka`, `flinkExternalPostgresql`, `internalConnectivity`, `jolokia`, `kafkaConnect`, `kafkaConnectPostgresql`, `kafkaLogs`, `kafkaMirrormaker`, `logs`, `metrics`, `opensearchCrossClusterReplication`, `opensearchCrossClusterSearch`, `opentelemetry`, `prometheus`, `readReplica`, `rsyslog`, `schemaRegistryProxy`, `serviceComposition`, `stresstester`, `thanosDistributedQuery`, `thanosMigrate`, `thanosObjectStorage`, `thanoscompactor`, `thanosquery`, `thanosruler`, `thanosstore`, `vector` and `vmalert`.
      * 
      */
     @Export(name="integrationType", refs={String.class}, tree="[0]")
     private Output<String> integrationType;
 
     /**
-     * @return Type of the service integration. The possible values are `alertmanager`, `autoscaler`, `caching`, `clickhouseCredentials`, `clickhouseKafka`, `clickhousePostgresql`, `dashboard`, `datadog`, `datahubMetadataIngestion`, `datasource`, `disasterRecovery`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalElasticsearchLogs`, `externalGoogleCloudLogging`, `externalOpensearchLogs`, `flink`, `flinkExternalBigquery`, `flinkExternalKafka`, `flinkExternalPostgresql`, `internalConnectivity`, `jolokia`, `kafkaConnect`, `kafkaConnectPostgresql`, `kafkaLogs`, `kafkaMirrormaker`, `logs`, `metrics`, `opensearchCrossClusterReplication`, `opensearchCrossClusterSearch`, `prometheus`, `readReplica`, `rsyslog`, `schemaRegistryProxy`, `serviceComposition`, `stresstester`, `thanosDistributedQuery`, `thanosMigrate`, `thanosObjectStorage`, `thanoscompactor`, `thanosquery`, `thanosruler`, `thanosstore`, `vector` and `vmalert`.
+     * @return Type of the service integration. The possible values are `alertmanager`, `autoscaler`, `caching`, `clickhouseCredentials`, `clickhouseKafka`, `clickhousePostgresql`, `dashboard`, `datadog`, `datahubMetadataIngestion`, `datasource`, `disasterRecovery`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalElasticsearchLogs`, `externalGoogleCloudLogging`, `externalOpensearchLogs`, `flink`, `flinkExternalBigquery`, `flinkExternalKafka`, `flinkExternalPostgresql`, `internalConnectivity`, `jolokia`, `kafkaConnect`, `kafkaConnectPostgresql`, `kafkaLogs`, `kafkaMirrormaker`, `logs`, `metrics`, `opensearchCrossClusterReplication`, `opensearchCrossClusterSearch`, `opentelemetry`, `prometheus`, `readReplica`, `rsyslog`, `schemaRegistryProxy`, `serviceComposition`, `stresstester`, `thanosDistributedQuery`, `thanosMigrate`, `thanosObjectStorage`, `thanoscompactor`, `thanosquery`, `thanosruler`, `thanosstore`, `vector` and `vmalert`.
      * 
      */
     public Output<String> integrationType() {

@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['AwsOrgVpcPeeringConnectionArgs', 'AwsOrgVpcPeeringConnection']
 
@@ -23,27 +25,30 @@ class AwsOrgVpcPeeringConnectionArgs:
                  aws_vpc_id: pulumi.Input[_builtins.str],
                  aws_vpc_region: pulumi.Input[_builtins.str],
                  organization_id: pulumi.Input[_builtins.str],
-                 organization_vpc_id: pulumi.Input[_builtins.str]):
+                 organization_vpc_id: pulumi.Input[_builtins.str],
+                 timeouts: pulumi.Input[Optional['AwsOrgVpcPeeringConnectionTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a AwsOrgVpcPeeringConnection resource.
 
-        :param pulumi.Input[_builtins.str] aws_account_id: AWS account ID. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] aws_vpc_id: AWS VPC ID. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] aws_vpc_region: The AWS region of the peered VPC. For example, `eu-central-1`.
-        :param pulumi.Input[_builtins.str] organization_id: Identifier of the organization.
-        :param pulumi.Input[_builtins.str] organization_vpc_id: Identifier of the organization VPC.
+        :param pulumi.Input[_builtins.str] aws_account_id: AWS account ID. Maximum length: `1024`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] aws_vpc_id: AWS VPC ID. Maximum length: `1024`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] aws_vpc_region: The AWS region of the peered VPC. For example, `eu-central-1`. Maximum length: `1024`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] organization_id: ID of an organization. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] organization_vpc_id: Organization VPC ID. Changing this property forces recreation of the resource.
         """
         pulumi.set(__self__, "aws_account_id", aws_account_id)
         pulumi.set(__self__, "aws_vpc_id", aws_vpc_id)
         pulumi.set(__self__, "aws_vpc_region", aws_vpc_region)
         pulumi.set(__self__, "organization_id", organization_id)
         pulumi.set(__self__, "organization_vpc_id", organization_vpc_id)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
 
     @_builtins.property
     @pulumi.getter(name="awsAccountId")
     def aws_account_id(self) -> pulumi.Input[_builtins.str]:
         """
-        AWS account ID. Changing this property forces recreation of the resource.
+        AWS account ID. Maximum length: `1024`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "aws_account_id")
 
@@ -55,7 +60,7 @@ class AwsOrgVpcPeeringConnectionArgs:
     @pulumi.getter(name="awsVpcId")
     def aws_vpc_id(self) -> pulumi.Input[_builtins.str]:
         """
-        AWS VPC ID. Changing this property forces recreation of the resource.
+        AWS VPC ID. Maximum length: `1024`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "aws_vpc_id")
 
@@ -67,7 +72,7 @@ class AwsOrgVpcPeeringConnectionArgs:
     @pulumi.getter(name="awsVpcRegion")
     def aws_vpc_region(self) -> pulumi.Input[_builtins.str]:
         """
-        The AWS region of the peered VPC. For example, `eu-central-1`.
+        The AWS region of the peered VPC. For example, `eu-central-1`. Maximum length: `1024`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "aws_vpc_region")
 
@@ -79,7 +84,7 @@ class AwsOrgVpcPeeringConnectionArgs:
     @pulumi.getter(name="organizationId")
     def organization_id(self) -> pulumi.Input[_builtins.str]:
         """
-        Identifier of the organization.
+        ID of an organization. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "organization_id")
 
@@ -91,13 +96,22 @@ class AwsOrgVpcPeeringConnectionArgs:
     @pulumi.getter(name="organizationVpcId")
     def organization_vpc_id(self) -> pulumi.Input[_builtins.str]:
         """
-        Identifier of the organization VPC.
+        Organization VPC ID. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "organization_vpc_id")
 
     @organization_vpc_id.setter
     def organization_vpc_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "organization_vpc_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> pulumi.Input[Optional['AwsOrgVpcPeeringConnectionTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: pulumi.Input[Optional['AwsOrgVpcPeeringConnectionTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
 
 
 @pulumi.input_type
@@ -110,17 +124,18 @@ class _AwsOrgVpcPeeringConnectionState:
                  organization_id: pulumi.Input[Optional[_builtins.str]] = None,
                  organization_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  peering_connection_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 state: pulumi.Input[Optional[_builtins.str]] = None):
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional['AwsOrgVpcPeeringConnectionTimeoutsArgs']] = None):
         """
         Input properties used for looking up and filtering AwsOrgVpcPeeringConnection resources.
 
-        :param pulumi.Input[_builtins.str] aws_account_id: AWS account ID. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] aws_vpc_id: AWS VPC ID. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] aws_account_id: AWS account ID. Maximum length: `1024`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] aws_vpc_id: AWS VPC ID. Maximum length: `1024`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] aws_vpc_peering_connection_id: The ID of the AWS VPC peering connection.
-        :param pulumi.Input[_builtins.str] aws_vpc_region: The AWS region of the peered VPC. For example, `eu-central-1`.
-        :param pulumi.Input[_builtins.str] organization_id: Identifier of the organization.
-        :param pulumi.Input[_builtins.str] organization_vpc_id: Identifier of the organization VPC.
-        :param pulumi.Input[_builtins.str] peering_connection_id: The ID of the peering connection.
+        :param pulumi.Input[_builtins.str] aws_vpc_region: The AWS region of the peered VPC. For example, `eu-central-1`. Maximum length: `1024`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] organization_id: ID of an organization. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] organization_vpc_id: Organization VPC ID. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] peering_connection_id: Organization peering connection ID.
         :param pulumi.Input[_builtins.str] state: State of the peering connection. The possible values are `ACTIVE`, `APPROVED`, `APPROVED_PEER_REQUESTED`, `DELETED`, `DELETED_BY_PEER`, `DELETING`, `ERROR`, `INVALID_SPECIFICATION`, `PENDING_PEER` and `REJECTED_BY_PEER`.
         """
         if aws_account_id is not None:
@@ -139,12 +154,14 @@ class _AwsOrgVpcPeeringConnectionState:
             pulumi.set(__self__, "peering_connection_id", peering_connection_id)
         if state is not None:
             pulumi.set(__self__, "state", state)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
 
     @_builtins.property
     @pulumi.getter(name="awsAccountId")
     def aws_account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        AWS account ID. Changing this property forces recreation of the resource.
+        AWS account ID. Maximum length: `1024`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "aws_account_id")
 
@@ -156,7 +173,7 @@ class _AwsOrgVpcPeeringConnectionState:
     @pulumi.getter(name="awsVpcId")
     def aws_vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        AWS VPC ID. Changing this property forces recreation of the resource.
+        AWS VPC ID. Maximum length: `1024`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "aws_vpc_id")
 
@@ -180,7 +197,7 @@ class _AwsOrgVpcPeeringConnectionState:
     @pulumi.getter(name="awsVpcRegion")
     def aws_vpc_region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The AWS region of the peered VPC. For example, `eu-central-1`.
+        The AWS region of the peered VPC. For example, `eu-central-1`. Maximum length: `1024`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "aws_vpc_region")
 
@@ -192,7 +209,7 @@ class _AwsOrgVpcPeeringConnectionState:
     @pulumi.getter(name="organizationId")
     def organization_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Identifier of the organization.
+        ID of an organization. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "organization_id")
 
@@ -204,7 +221,7 @@ class _AwsOrgVpcPeeringConnectionState:
     @pulumi.getter(name="organizationVpcId")
     def organization_vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Identifier of the organization VPC.
+        Organization VPC ID. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "organization_vpc_id")
 
@@ -216,7 +233,7 @@ class _AwsOrgVpcPeeringConnectionState:
     @pulumi.getter(name="peeringConnectionId")
     def peering_connection_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The ID of the peering connection.
+        Organization peering connection ID.
         """
         return pulumi.get(self, "peering_connection_id")
 
@@ -236,6 +253,15 @@ class _AwsOrgVpcPeeringConnectionState:
     def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> pulumi.Input[Optional['AwsOrgVpcPeeringConnectionTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: pulumi.Input[Optional['AwsOrgVpcPeeringConnectionTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
+
 
 @pulumi.type_token("aiven:index/awsOrgVpcPeeringConnection:AwsOrgVpcPeeringConnection")
 class AwsOrgVpcPeeringConnection(pulumi.CustomResource):
@@ -248,12 +274,10 @@ class AwsOrgVpcPeeringConnection(pulumi.CustomResource):
                  aws_vpc_region: pulumi.Input[Optional[_builtins.str]] = None,
                  organization_id: pulumi.Input[Optional[_builtins.str]] = None,
                  organization_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['AwsOrgVpcPeeringConnectionTimeoutsArgs', 'AwsOrgVpcPeeringConnectionTimeoutsArgsDict']]] = None,
                  __props__=None):
         """
-        Creates and manages an AWS VPC peering connection with an Aiven Organization VPC.
-
-        **This resource is in the beta stage and may change without notice.** Set
-        the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+        Creates and manages an AWS VPC peering connection with an Aiven Organization VPC. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
 
         ## Example Usage
 
@@ -261,32 +285,28 @@ class AwsOrgVpcPeeringConnection(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        example_vpc = aiven.OrganizationVpc("example_vpc",
-            organization_id=example["id"],
-            cloud_name="aws-eu-central-1",
-            network_cidr="10.0.0.0/24")
-        example_peering = aiven.AwsOrgVpcPeeringConnection("example_peering",
-            organization_id=example_vpc.organization_id,
-            organization_vpc_id=example_vpc.organization_vpc_id,
-            aws_account_id=aws_id,
-            aws_vpc_id="vpc-1a2b3c4d5e6f7g8h9",
-            aws_vpc_region="aws-us-east-2")
+        example = aiven.AwsOrgVpcPeeringConnection("example",
+            organization_id="org1a23f456789",
+            organization_vpc_id="1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+            aws_account_id="123456789012",
+            aws_vpc_id="vpc-2f09a348",
+            aws_vpc_region="us-east-1")
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/awsOrgVpcPeeringConnection:AwsOrgVpcPeeringConnection example ORGANIZATION_ID/ORGANIZATION_VPC_ID/AWS_ACCOUNT_ID/AWS_VPC_ID/AWS_REGION
+        $ pulumi import aiven:index/awsOrgVpcPeeringConnection:AwsOrgVpcPeeringConnection example ORGANIZATION_ID/ORGANIZATION_VPC_ID/AWS_ACCOUNT_ID/AWS_VPC_ID/AWS_VPC_REGION
         ```
 
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] aws_account_id: AWS account ID. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] aws_vpc_id: AWS VPC ID. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] aws_vpc_region: The AWS region of the peered VPC. For example, `eu-central-1`.
-        :param pulumi.Input[_builtins.str] organization_id: Identifier of the organization.
-        :param pulumi.Input[_builtins.str] organization_vpc_id: Identifier of the organization VPC.
+        :param pulumi.Input[_builtins.str] aws_account_id: AWS account ID. Maximum length: `1024`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] aws_vpc_id: AWS VPC ID. Maximum length: `1024`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] aws_vpc_region: The AWS region of the peered VPC. For example, `eu-central-1`. Maximum length: `1024`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] organization_id: ID of an organization. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] organization_vpc_id: Organization VPC ID. Changing this property forces recreation of the resource.
         """
         ...
     @overload
@@ -295,10 +315,7 @@ class AwsOrgVpcPeeringConnection(pulumi.CustomResource):
                  args: AwsOrgVpcPeeringConnectionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates and manages an AWS VPC peering connection with an Aiven Organization VPC.
-
-        **This resource is in the beta stage and may change without notice.** Set
-        the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+        Creates and manages an AWS VPC peering connection with an Aiven Organization VPC. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
 
         ## Example Usage
 
@@ -306,22 +323,18 @@ class AwsOrgVpcPeeringConnection(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        example_vpc = aiven.OrganizationVpc("example_vpc",
-            organization_id=example["id"],
-            cloud_name="aws-eu-central-1",
-            network_cidr="10.0.0.0/24")
-        example_peering = aiven.AwsOrgVpcPeeringConnection("example_peering",
-            organization_id=example_vpc.organization_id,
-            organization_vpc_id=example_vpc.organization_vpc_id,
-            aws_account_id=aws_id,
-            aws_vpc_id="vpc-1a2b3c4d5e6f7g8h9",
-            aws_vpc_region="aws-us-east-2")
+        example = aiven.AwsOrgVpcPeeringConnection("example",
+            organization_id="org1a23f456789",
+            organization_vpc_id="1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+            aws_account_id="123456789012",
+            aws_vpc_id="vpc-2f09a348",
+            aws_vpc_region="us-east-1")
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/awsOrgVpcPeeringConnection:AwsOrgVpcPeeringConnection example ORGANIZATION_ID/ORGANIZATION_VPC_ID/AWS_ACCOUNT_ID/AWS_VPC_ID/AWS_REGION
+        $ pulumi import aiven:index/awsOrgVpcPeeringConnection:AwsOrgVpcPeeringConnection example ORGANIZATION_ID/ORGANIZATION_VPC_ID/AWS_ACCOUNT_ID/AWS_VPC_ID/AWS_VPC_REGION
         ```
 
 
@@ -345,6 +358,7 @@ class AwsOrgVpcPeeringConnection(pulumi.CustomResource):
                  aws_vpc_region: pulumi.Input[Optional[_builtins.str]] = None,
                  organization_id: pulumi.Input[Optional[_builtins.str]] = None,
                  organization_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['AwsOrgVpcPeeringConnectionTimeoutsArgs', 'AwsOrgVpcPeeringConnectionTimeoutsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -369,6 +383,7 @@ class AwsOrgVpcPeeringConnection(pulumi.CustomResource):
             if organization_vpc_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organization_vpc_id'")
             __props__.__dict__["organization_vpc_id"] = organization_vpc_id
+            __props__.__dict__["timeouts"] = timeouts
             __props__.__dict__["aws_vpc_peering_connection_id"] = None
             __props__.__dict__["peering_connection_id"] = None
             __props__.__dict__["state"] = None
@@ -389,7 +404,8 @@ class AwsOrgVpcPeeringConnection(pulumi.CustomResource):
             organization_id: pulumi.Input[Optional[_builtins.str]] = None,
             organization_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
             peering_connection_id: pulumi.Input[Optional[_builtins.str]] = None,
-            state: pulumi.Input[Optional[_builtins.str]] = None) -> 'AwsOrgVpcPeeringConnection':
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['AwsOrgVpcPeeringConnectionTimeoutsArgs', 'AwsOrgVpcPeeringConnectionTimeoutsArgsDict']]] = None) -> 'AwsOrgVpcPeeringConnection':
         """
         Get an existing AwsOrgVpcPeeringConnection resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -397,13 +413,13 @@ class AwsOrgVpcPeeringConnection(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] aws_account_id: AWS account ID. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] aws_vpc_id: AWS VPC ID. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] aws_account_id: AWS account ID. Maximum length: `1024`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] aws_vpc_id: AWS VPC ID. Maximum length: `1024`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] aws_vpc_peering_connection_id: The ID of the AWS VPC peering connection.
-        :param pulumi.Input[_builtins.str] aws_vpc_region: The AWS region of the peered VPC. For example, `eu-central-1`.
-        :param pulumi.Input[_builtins.str] organization_id: Identifier of the organization.
-        :param pulumi.Input[_builtins.str] organization_vpc_id: Identifier of the organization VPC.
-        :param pulumi.Input[_builtins.str] peering_connection_id: The ID of the peering connection.
+        :param pulumi.Input[_builtins.str] aws_vpc_region: The AWS region of the peered VPC. For example, `eu-central-1`. Maximum length: `1024`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] organization_id: ID of an organization. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] organization_vpc_id: Organization VPC ID. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] peering_connection_id: Organization peering connection ID.
         :param pulumi.Input[_builtins.str] state: State of the peering connection. The possible values are `ACTIVE`, `APPROVED`, `APPROVED_PEER_REQUESTED`, `DELETED`, `DELETED_BY_PEER`, `DELETING`, `ERROR`, `INVALID_SPECIFICATION`, `PENDING_PEER` and `REJECTED_BY_PEER`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -418,13 +434,14 @@ class AwsOrgVpcPeeringConnection(pulumi.CustomResource):
         __props__.__dict__["organization_vpc_id"] = organization_vpc_id
         __props__.__dict__["peering_connection_id"] = peering_connection_id
         __props__.__dict__["state"] = state
+        __props__.__dict__["timeouts"] = timeouts
         return AwsOrgVpcPeeringConnection(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
     @pulumi.getter(name="awsAccountId")
     def aws_account_id(self) -> pulumi.Output[_builtins.str]:
         """
-        AWS account ID. Changing this property forces recreation of the resource.
+        AWS account ID. Maximum length: `1024`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "aws_account_id")
 
@@ -432,7 +449,7 @@ class AwsOrgVpcPeeringConnection(pulumi.CustomResource):
     @pulumi.getter(name="awsVpcId")
     def aws_vpc_id(self) -> pulumi.Output[_builtins.str]:
         """
-        AWS VPC ID. Changing this property forces recreation of the resource.
+        AWS VPC ID. Maximum length: `1024`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "aws_vpc_id")
 
@@ -448,7 +465,7 @@ class AwsOrgVpcPeeringConnection(pulumi.CustomResource):
     @pulumi.getter(name="awsVpcRegion")
     def aws_vpc_region(self) -> pulumi.Output[_builtins.str]:
         """
-        The AWS region of the peered VPC. For example, `eu-central-1`.
+        The AWS region of the peered VPC. For example, `eu-central-1`. Maximum length: `1024`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "aws_vpc_region")
 
@@ -456,7 +473,7 @@ class AwsOrgVpcPeeringConnection(pulumi.CustomResource):
     @pulumi.getter(name="organizationId")
     def organization_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Identifier of the organization.
+        ID of an organization. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "organization_id")
 
@@ -464,7 +481,7 @@ class AwsOrgVpcPeeringConnection(pulumi.CustomResource):
     @pulumi.getter(name="organizationVpcId")
     def organization_vpc_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Identifier of the organization VPC.
+        Organization VPC ID. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "organization_vpc_id")
 
@@ -472,7 +489,7 @@ class AwsOrgVpcPeeringConnection(pulumi.CustomResource):
     @pulumi.getter(name="peeringConnectionId")
     def peering_connection_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The ID of the peering connection.
+        Organization peering connection ID.
         """
         return pulumi.get(self, "peering_connection_id")
 
@@ -483,4 +500,9 @@ class AwsOrgVpcPeeringConnection(pulumi.CustomResource):
         State of the peering connection. The possible values are `ACTIVE`, `APPROVED`, `APPROVED_PEER_REQUESTED`, `DELETED`, `DELETED_BY_PEER`, `DELETING`, `ERROR`, `INVALID_SPECIFICATION`, `PENDING_PEER` and `REJECTED_BY_PEER`.
         """
         return pulumi.get(self, "state")
+
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> pulumi.Output[Optional['outputs.AwsOrgVpcPeeringConnectionTimeouts']]:
+        return pulumi.get(self, "timeouts")
 

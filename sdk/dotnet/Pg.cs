@@ -25,6 +25,20 @@ namespace Pulumi.Aiven
     /// {
     ///     var examplePostgres = new Aiven.Pg("example_postgres", new()
     ///     {
+    ///         PgUserConfig = new Aiven.Inputs.PgPgUserConfigArgs
+    ///         {
+    ///             PublicAccess = new Aiven.Inputs.PgPgUserConfigPublicAccessArgs
+    ///             {
+    ///                 Pg = true,
+    ///                 Prometheus = false,
+    ///             },
+    ///             Pg = new Aiven.Inputs.PgPgUserConfigPgArgs
+    ///             {
+    ///                 IdleInTransactionSessionTimeout = 900,
+    ///                 LogMinDurationStatement = -1,
+    ///             },
+    ///             StaticIps = true,
+    ///         },
     ///         Project = exampleProject.Project,
     ///         CloudName = "google-europe-west1",
     ///         Plan = "startup-4",
@@ -41,20 +55,6 @@ namespace Pulumi.Aiven
     ///                 ips[3].StaticIpAddressId,
     ///             },
     ///         }).Result,
-    ///         PgUserConfig = new Aiven.Inputs.PgPgUserConfigArgs
-    ///         {
-    ///             StaticIps = true,
-    ///             PublicAccess = new Aiven.Inputs.PgPgUserConfigPublicAccessArgs
-    ///             {
-    ///                 Pg = true,
-    ///                 Prometheus = false,
-    ///             },
-    ///             Pg = new Aiven.Inputs.PgPgUserConfigPgArgs
-    ///             {
-    ///                 IdleInTransactionSessionTimeout = 900,
-    ///                 LogMinDurationStatement = -1,
-    ///             },
-    ///         },
     ///     });
     /// 
     /// });

@@ -47,9 +47,6 @@ import (
 //			}
 //			// Grant privileges to the example role.
 //			_, err = aiven.NewClickhouseGrant(ctx, "role_privileges", &aiven.ClickhouseGrantArgs{
-//				Project:     pulumi.Any(exampleProject.Project),
-//				ServiceName: pulumi.Any(exampleClickhouse.ServiceName),
-//				Role:        exampleRole.Role,
 //				PrivilegeGrants: aiven.ClickhouseGrantPrivilegeGrantArray{
 //					&aiven.ClickhouseGrantPrivilegeGrantArgs{
 //						Privilege: pulumi.String("INSERT"),
@@ -69,6 +66,9 @@ import (
 //						Database:  pulumi.String("*"),
 //					},
 //				},
+//				Project:     pulumi.Any(exampleProject.Project),
+//				ServiceName: pulumi.Any(exampleClickhouse.ServiceName),
+//				Role:        exampleRole.Role,
 //			})
 //			if err != nil {
 //				return err
@@ -83,14 +83,14 @@ import (
 //				return err
 //			}
 //			_, err = aiven.NewClickhouseGrant(ctx, "user_role_assignment", &aiven.ClickhouseGrantArgs{
-//				Project:     pulumi.Any(exampleProject.Project),
-//				ServiceName: pulumi.Any(exampleClickhouse.ServiceName),
-//				User:        exampleUser.Username,
 //				RoleGrants: aiven.ClickhouseGrantRoleGrantArray{
 //					&aiven.ClickhouseGrantRoleGrantArgs{
 //						Role: exampleRole.Role,
 //					},
 //				},
+//				Project:     pulumi.Any(exampleProject.Project),
+//				ServiceName: pulumi.Any(exampleClickhouse.ServiceName),
+//				User:        exampleUser.Username,
 //			})
 //			if err != nil {
 //				return err

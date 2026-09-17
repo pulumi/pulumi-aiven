@@ -229,10 +229,12 @@ class ByocAwsProvision(pulumi.CustomResource):
                  timeouts: pulumi.Input[Optional[Union['ByocAwsProvisionTimeoutsArgs', 'ByocAwsProvisionTimeoutsArgsDict']]] = None,
                  __props__=None):
         """
-        Provisions a BYOC custom cloud environment by handing Aiven the IAM role ARN created in the customer AWS account. Transitions the environment from `draft` to `active` so services can be deployed into it. Create this resource after the customer-side AWS infrastructure (IAM role, VPC, subnets, security groups, buckets) has been defined.
+        Provisions a BYOC custom cloud environment by handing Aiven the IAM role ARN created in the customer AWS account. Transitions the environment from `draft` to `active` so services can be deployed into it.
 
-        **This resource is in the beta stage and may change without notice.** Set
-        the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+        Create this resource after the customer-side AWS infrastructure (IAM role, VPC, subnets, security groups, buckets) has been defined.
+
+        > **Beta resource**
+        This resource is in the beta stage and may change without notice. Set the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
 
         ## Example Usage
 
@@ -266,10 +268,12 @@ class ByocAwsProvision(pulumi.CustomResource):
                  args: ByocAwsProvisionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provisions a BYOC custom cloud environment by handing Aiven the IAM role ARN created in the customer AWS account. Transitions the environment from `draft` to `active` so services can be deployed into it. Create this resource after the customer-side AWS infrastructure (IAM role, VPC, subnets, security groups, buckets) has been defined.
+        Provisions a BYOC custom cloud environment by handing Aiven the IAM role ARN created in the customer AWS account. Transitions the environment from `draft` to `active` so services can be deployed into it.
 
-        **This resource is in the beta stage and may change without notice.** Set
-        the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+        Create this resource after the customer-side AWS infrastructure (IAM role, VPC, subnets, security groups, buckets) has been defined.
+
+        > **Beta resource**
+        This resource is in the beta stage and may change without notice. Set the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
 
         ## Example Usage
 

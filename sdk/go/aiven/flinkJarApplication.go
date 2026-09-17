@@ -12,10 +12,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates and manages an [Aiven for Apache Flink® jar application](https://aiven.io/docs/products/flink/howto/create-jar-application).
+// Creates and manages an [Aiven for Apache Flink® jar application](https://aiven.io/docs/products/flink/howto/create-jar-application). Requires the `Flink` service to have `flink_user_config.custom_code` enabled, which allows uploading and deploying custom JARs. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
 //
-// **This resource is in the beta stage and may change without notice.** Set
-// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+// > **Beta resource in limited availability**
+// This feature is in the limited availability stage and may change without notice. To enable this feature, contact the [sales team](http://aiven.io/contact). Once it's enabled, set the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
 //
 // ## Example Usage
 //
@@ -31,24 +31,10 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := aiven.NewFlink(ctx, "example", &aiven.FlinkArgs{
-//				Project:               pulumi.Any(exampleAivenProject.Project),
-//				ServiceName:           pulumi.String("example-flink-service"),
-//				CloudName:             pulumi.String("google-europe-west1"),
-//				Plan:                  pulumi.String("business-4"),
-//				MaintenanceWindowDow:  pulumi.String("monday"),
-//				MaintenanceWindowTime: pulumi.String("04:00:00"),
-//				FlinkUserConfig: &aiven.FlinkFlinkUserConfigArgs{
-//					CustomCode: pulumi.Bool(true),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = aiven.NewFlinkJarApplication(ctx, "example", &aiven.FlinkJarApplicationArgs{
-//				Project:     example.Project,
-//				ServiceName: example.ServiceName,
-//				Name:        pulumi.String("example-app-jar"),
+//			_, err := aiven.NewFlinkJarApplication(ctx, "example", &aiven.FlinkJarApplicationArgs{
+//				Project:     pulumi.String("my-project"),
+//				ServiceName: pulumi.String("my-application"),
+//				Name:        pulumi.String("TestJob"),
 //			})
 //			if err != nil {
 //				return err
@@ -82,7 +68,8 @@ type FlinkJarApplication struct {
 	// Project name. Changing this property forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Service name. Changing this property forces recreation of the resource.
-	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
+	ServiceName pulumi.StringOutput                  `pulumi:"serviceName"`
+	Timeouts    FlinkJarApplicationTimeoutsPtrOutput `pulumi:"timeouts"`
 	// The update timestamp of this entity in ISO 8601 format, always in UTC.
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
 	// The latest updater of this entity.
@@ -140,7 +127,8 @@ type flinkJarApplicationState struct {
 	// Project name. Changing this property forces recreation of the resource.
 	Project *string `pulumi:"project"`
 	// Service name. Changing this property forces recreation of the resource.
-	ServiceName *string `pulumi:"serviceName"`
+	ServiceName *string                      `pulumi:"serviceName"`
+	Timeouts    *FlinkJarApplicationTimeouts `pulumi:"timeouts"`
 	// The update timestamp of this entity in ISO 8601 format, always in UTC.
 	UpdatedAt *string `pulumi:"updatedAt"`
 	// The latest updater of this entity.
@@ -164,6 +152,7 @@ type FlinkJarApplicationState struct {
 	Project pulumi.StringPtrInput
 	// Service name. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringPtrInput
+	Timeouts    FlinkJarApplicationTimeoutsPtrInput
 	// The update timestamp of this entity in ISO 8601 format, always in UTC.
 	UpdatedAt pulumi.StringPtrInput
 	// The latest updater of this entity.
@@ -180,7 +169,8 @@ type flinkJarApplicationArgs struct {
 	// Project name. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
 	// Service name. Changing this property forces recreation of the resource.
-	ServiceName string `pulumi:"serviceName"`
+	ServiceName string                       `pulumi:"serviceName"`
+	Timeouts    *FlinkJarApplicationTimeouts `pulumi:"timeouts"`
 }
 
 // The set of arguments for constructing a FlinkJarApplication resource.
@@ -191,6 +181,7 @@ type FlinkJarApplicationArgs struct {
 	Project pulumi.StringInput
 	// Service name. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringInput
+	Timeouts    FlinkJarApplicationTimeoutsPtrInput
 }
 
 func (FlinkJarApplicationArgs) ElementType() reflect.Type {
@@ -322,6 +313,10 @@ func (o FlinkJarApplicationOutput) Project() pulumi.StringOutput {
 // Service name. Changing this property forces recreation of the resource.
 func (o FlinkJarApplicationOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlinkJarApplication) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+func (o FlinkJarApplicationOutput) Timeouts() FlinkJarApplicationTimeoutsPtrOutput {
+	return o.ApplyT(func(v *FlinkJarApplication) FlinkJarApplicationTimeoutsPtrOutput { return v.Timeouts }).(FlinkJarApplicationTimeoutsPtrOutput)
 }
 
 // The update timestamp of this entity in ISO 8601 format, always in UTC.

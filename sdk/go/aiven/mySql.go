@@ -29,14 +29,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.NewMySql(ctx, "example_mysql", &aiven.MySqlArgs{
-//				Project:               pulumi.Any(exampleProject.Project),
-//				CloudName:             pulumi.String("google-europe-west1"),
-//				Plan:                  pulumi.String("business-4"),
-//				ServiceName:           pulumi.String("example-mysql"),
-//				MaintenanceWindowDow:  pulumi.String("monday"),
-//				MaintenanceWindowTime: pulumi.String("10:00:00"),
 //				MysqlUserConfig: &aiven.MySqlMysqlUserConfigArgs{
-//					MysqlVersion: pulumi.String("8"),
 //					Mysql: &aiven.MySqlMysqlUserConfigMysqlArgs{
 //						SqlMode:              pulumi.String("ANSI,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION,NO_ZERO_DATE,NO_ZERO_IN_DATE"),
 //						SqlRequirePrimaryKey: pulumi.Bool(true),
@@ -44,7 +37,14 @@ import (
 //					PublicAccess: &aiven.MySqlMysqlUserConfigPublicAccessArgs{
 //						Mysql: pulumi.Bool(true),
 //					},
+//					MysqlVersion: pulumi.String("8"),
 //				},
+//				Project:               pulumi.Any(exampleProject.Project),
+//				CloudName:             pulumi.String("google-europe-west1"),
+//				Plan:                  pulumi.String("business-4"),
+//				ServiceName:           pulumi.String("example-mysql"),
+//				MaintenanceWindowDow:  pulumi.String("monday"),
+//				MaintenanceWindowTime: pulumi.String("10:00:00"),
 //			})
 //			if err != nil {
 //				return err

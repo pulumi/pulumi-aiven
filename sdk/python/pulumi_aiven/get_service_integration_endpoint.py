@@ -27,7 +27,7 @@ class GetServiceIntegrationEndpointResult:
     """
     A collection of values returned by getServiceIntegrationEndpoint.
     """
-    def __init__(__self__, autoscaler_user_configs=None, datadog_user_configs=None, endpoint_config=None, endpoint_name=None, endpoint_type=None, external_aws_cloudwatch_logs_user_configs=None, external_aws_cloudwatch_metrics_user_configs=None, external_aws_s3_user_configs=None, external_azure_blob_storage_user_configs=None, external_clickhouse_user_configs=None, external_elasticsearch_logs_user_configs=None, external_google_cloud_bigqueries=None, external_google_cloud_logging_user_configs=None, external_kafka_user_configs=None, external_mysql_user_configs=None, external_object_storage_config_user_configs=None, external_opensearch_logs_user_configs=None, external_postgresqls=None, external_prometheus_user_configs=None, external_schema_registry_user_configs=None, id=None, jolokia_user_configs=None, project=None, prometheus_user_configs=None, rsyslog_user_configs=None):
+    def __init__(__self__, autoscaler_user_configs=None, datadog_user_configs=None, endpoint_config=None, endpoint_name=None, endpoint_type=None, external_aws_cloudwatch_logs_user_configs=None, external_aws_cloudwatch_metrics_user_configs=None, external_aws_s3_user_configs=None, external_azure_blob_storage_user_configs=None, external_clickhouse_user_configs=None, external_elasticsearch_logs_user_configs=None, external_google_cloud_bigqueries=None, external_google_cloud_logging_user_configs=None, external_kafka_user_configs=None, external_mysql_user_configs=None, external_object_storage_config_user_configs=None, external_opensearch_logs_user_configs=None, external_postgresqls=None, external_prometheus_user_configs=None, external_schema_registry_user_configs=None, id=None, jolokia_user_configs=None, opentelemetry_user_configs=None, project=None, prometheus_user_configs=None, rsyslog_user_configs=None):
         if autoscaler_user_configs and not isinstance(autoscaler_user_configs, list):
             raise TypeError("Expected argument 'autoscaler_user_configs' to be a list")
         pulumi.set(__self__, "autoscaler_user_configs", autoscaler_user_configs)
@@ -94,6 +94,9 @@ class GetServiceIntegrationEndpointResult:
         if jolokia_user_configs and not isinstance(jolokia_user_configs, list):
             raise TypeError("Expected argument 'jolokia_user_configs' to be a list")
         pulumi.set(__self__, "jolokia_user_configs", jolokia_user_configs)
+        if opentelemetry_user_configs and not isinstance(opentelemetry_user_configs, list):
+            raise TypeError("Expected argument 'opentelemetry_user_configs' to be a list")
+        pulumi.set(__self__, "opentelemetry_user_configs", opentelemetry_user_configs)
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
@@ -140,7 +143,7 @@ class GetServiceIntegrationEndpointResult:
     @pulumi.getter(name="endpointType")
     def endpoint_type(self) -> _builtins.str:
         """
-        The type of service integration endpoint. The possible values are `autoscaler`, `datadog`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_aws_s3`, `external_azure_blob_storage`, `external_clickhouse`, `external_elasticsearch_logs`, `external_google_cloud_bigquery`, `external_google_cloud_logging`, `external_kafka`, `external_mysql`, `external_object_storage_config`, `external_opensearch_logs`, `external_postgresql`, `external_prometheus`, `external_redis`, `external_schema_registry`, `external_sumologic_logs`, `jolokia`, `prometheus` and `rsyslog`.
+        The type of service integration endpoint. The possible values are `autoscaler`, `datadog`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_aws_s3`, `external_azure_blob_storage`, `external_clickhouse`, `external_elasticsearch_logs`, `external_google_cloud_bigquery`, `external_google_cloud_logging`, `external_kafka`, `external_mysql`, `external_object_storage_config`, `external_opensearch_logs`, `external_postgresql`, `external_prometheus`, `external_redis`, `external_schema_registry`, `external_sumologic_logs`, `jolokia`, `opentelemetry`, `prometheus` and `rsyslog`.
         """
         return pulumi.get(self, "endpoint_type")
 
@@ -281,6 +284,14 @@ class GetServiceIntegrationEndpointResult:
         return pulumi.get(self, "jolokia_user_configs")
 
     @_builtins.property
+    @pulumi.getter(name="opentelemetryUserConfigs")
+    def opentelemetry_user_configs(self) -> Sequence['outputs.GetServiceIntegrationEndpointOpentelemetryUserConfigResult']:
+        """
+        Opentelemetry user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        """
+        return pulumi.get(self, "opentelemetry_user_configs")
+
+    @_builtins.property
     @pulumi.getter
     def project(self) -> _builtins.str:
         """
@@ -333,6 +344,7 @@ class AwaitableGetServiceIntegrationEndpointResult(GetServiceIntegrationEndpoint
             external_schema_registry_user_configs=self.external_schema_registry_user_configs,
             id=self.id,
             jolokia_user_configs=self.jolokia_user_configs,
+            opentelemetry_user_configs=self.opentelemetry_user_configs,
             project=self.project,
             prometheus_user_configs=self.prometheus_user_configs,
             rsyslog_user_configs=self.rsyslog_user_configs)
@@ -387,6 +399,7 @@ def get_service_integration_endpoint(endpoint_name: Optional[_builtins.str] = No
         external_schema_registry_user_configs=pulumi.get(__ret__, 'external_schema_registry_user_configs'),
         id=pulumi.get(__ret__, 'id'),
         jolokia_user_configs=pulumi.get(__ret__, 'jolokia_user_configs'),
+        opentelemetry_user_configs=pulumi.get(__ret__, 'opentelemetry_user_configs'),
         project=pulumi.get(__ret__, 'project'),
         prometheus_user_configs=pulumi.get(__ret__, 'prometheus_user_configs'),
         rsyslog_user_configs=pulumi.get(__ret__, 'rsyslog_user_configs'))
@@ -438,6 +451,7 @@ def get_service_integration_endpoint_output(endpoint_name: pulumi.Input[Optional
         external_schema_registry_user_configs=pulumi.get(__response__, 'external_schema_registry_user_configs'),
         id=pulumi.get(__response__, 'id'),
         jolokia_user_configs=pulumi.get(__response__, 'jolokia_user_configs'),
+        opentelemetry_user_configs=pulumi.get(__response__, 'opentelemetry_user_configs'),
         project=pulumi.get(__response__, 'project'),
         prometheus_user_configs=pulumi.get(__response__, 'prometheus_user_configs'),
         rsyslog_user_configs=pulumi.get(__response__, 'rsyslog_user_configs')))

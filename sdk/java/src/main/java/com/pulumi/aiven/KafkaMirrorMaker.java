@@ -52,18 +52,18 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var exampleMirrormaker = new KafkaMirrorMaker("exampleMirrormaker", KafkaMirrorMakerArgs.builder()
- *             .project(exampleProject.project())
- *             .cloudName("google-europe-west1")
- *             .plan("startup-4")
- *             .serviceName("example-mirrormaker-service")
  *             .kafkaMirrormakerUserConfig(KafkaMirrorMakerKafkaMirrormakerUserConfigArgs.builder()
- *                 .ipFilters("0.0.0.0/0")
  *                 .kafkaMirrormaker(KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs.builder()
  *                     .refreshGroupsIntervalSeconds(600)
  *                     .refreshTopicsEnabled(true)
  *                     .refreshTopicsIntervalSeconds(600)
  *                     .build())
+ *                 .ipFilters("0.0.0.0/0")
  *                 .build())
+ *             .project(exampleProject.project())
+ *             .cloudName("google-europe-west1")
+ *             .plan("startup-4")
+ *             .serviceName("example-mirrormaker-service")
  *             .build());
  * 
  *     }

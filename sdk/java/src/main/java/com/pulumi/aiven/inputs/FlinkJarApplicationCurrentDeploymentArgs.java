@@ -123,14 +123,14 @@ public final class FlinkJarApplicationCurrentDeploymentArgs extends com.pulumi.r
     }
 
     /**
-     * Reading of Flink parallel execution documentation is recommended before setting this value to other than 1. Please do not set this value higher than (total number of nodes x number_of_task_slots), or every new job created will fail.
+     * Reading of Flink parallel execution documentation is recommended before setting this value to other than 1. Please do not set this value higher than (total number of nodes x number*of*task_slots), or every new job created will fail.
      * 
      */
     @Import(name="parallelism")
     private @Nullable Output<Integer> parallelism;
 
     /**
-     * @return Reading of Flink parallel execution documentation is recommended before setting this value to other than 1. Please do not set this value higher than (total number of nodes x number_of_task_slots), or every new job created will fail.
+     * @return Reading of Flink parallel execution documentation is recommended before setting this value to other than 1. Please do not set this value higher than (total number of nodes x number*of*task_slots), or every new job created will fail.
      * 
      */
     public Optional<Output<Integer>> parallelism() {
@@ -380,7 +380,7 @@ public final class FlinkJarApplicationCurrentDeploymentArgs extends com.pulumi.r
         }
 
         /**
-         * @param parallelism Reading of Flink parallel execution documentation is recommended before setting this value to other than 1. Please do not set this value higher than (total number of nodes x number_of_task_slots), or every new job created will fail.
+         * @param parallelism Reading of Flink parallel execution documentation is recommended before setting this value to other than 1. Please do not set this value higher than (total number of nodes x number*of*task_slots), or every new job created will fail.
          * 
          * @return builder
          * 
@@ -391,7 +391,7 @@ public final class FlinkJarApplicationCurrentDeploymentArgs extends com.pulumi.r
         }
 
         /**
-         * @param parallelism Reading of Flink parallel execution documentation is recommended before setting this value to other than 1. Please do not set this value higher than (total number of nodes x number_of_task_slots), or every new job created will fail.
+         * @param parallelism Reading of Flink parallel execution documentation is recommended before setting this value to other than 1. Please do not set this value higher than (total number of nodes x number*of*task_slots), or every new job created will fail.
          * 
          * @return builder
          * 

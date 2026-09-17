@@ -28,9 +28,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.GetKafkaUser(ctx, &aiven.LookupKafkaUserArgs{
-//				ServiceName: exampleKafka.ServiceName,
-//				Project:     exampleProject.Project,
-//				Username:    "example-kafka-user",
+//				Project:     "my-project",
+//				ServiceName: "my-kafka",
+//				Username:    "testuser",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -52,31 +52,35 @@ func LookupKafkaUser(ctx *pulumi.Context, args *LookupKafkaUserArgs, opts ...pul
 
 // A collection of arguments for invoking getKafkaUser.
 type LookupKafkaUserArgs struct {
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name.
 	Project string `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName string `pulumi:"serviceName"`
-	// Name of the Kafka service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Service name.
+	ServiceName string                `pulumi:"serviceName"`
+	Timeouts    *GetKafkaUserTimeouts `pulumi:"timeouts"`
+	// Account username.
 	Username string `pulumi:"username"`
 }
 
 // A collection of values returned by getKafkaUser.
 type LookupKafkaUserResult struct {
-	// Access certificate for the user.
+	// Access certificate for TLS client authentication.
 	AccessCert string `pulumi:"accessCert"`
-	// Access certificate key for the user.
+	// Access key for TLS client authentication.
 	AccessKey string `pulumi:"accessKey"`
-	// The provider-assigned unique ID for this managed resource.
+	// Resource ID composed as: `project/service_name/username`.
 	Id string `pulumi:"id"`
-	// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+	// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`.
 	Password string `pulumi:"password"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. 'unknown' is reported when the hash is missing or uses an unrecognised format. The possible values are `md5`, `scram-sha-256` and `unknown`.
+	PasswordEncryptionType string `pulumi:"passwordEncryptionType"`
+	// Project name.
 	Project string `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName string `pulumi:"serviceName"`
-	// User account type, such as primary or regular account.
+	// Service name.
+	ServiceName string                `pulumi:"serviceName"`
+	Timeouts    *GetKafkaUserTimeouts `pulumi:"timeouts"`
+	// Account type.
 	Type string `pulumi:"type"`
-	// Name of the Kafka service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Account username.
 	Username string `pulumi:"username"`
 }
 
@@ -87,11 +91,12 @@ func LookupKafkaUserOutput(ctx *pulumi.Context, args LookupKafkaUserOutputArgs, 
 
 // A collection of arguments for invoking getKafkaUser.
 type LookupKafkaUserOutputArgs struct {
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name.
 	Project pulumi.StringInput `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName pulumi.StringInput `pulumi:"serviceName"`
-	// Name of the Kafka service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Service name.
+	ServiceName pulumi.StringInput           `pulumi:"serviceName"`
+	Timeouts    GetKafkaUserTimeoutsPtrInput `pulumi:"timeouts"`
+	// Account username.
 	Username pulumi.StringInput `pulumi:"username"`
 }
 
@@ -114,42 +119,51 @@ func (o LookupKafkaUserResultOutput) ToLookupKafkaUserResultOutputWithContext(ct
 	return o
 }
 
-// Access certificate for the user.
+// Access certificate for TLS client authentication.
 func (o LookupKafkaUserResultOutput) AccessCert() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaUserResult) string { return v.AccessCert }).(pulumi.StringOutput)
 }
 
-// Access certificate key for the user.
+// Access key for TLS client authentication.
 func (o LookupKafkaUserResultOutput) AccessKey() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaUserResult) string { return v.AccessKey }).(pulumi.StringOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// Resource ID composed as: `project/service_name/username`.
 func (o LookupKafkaUserResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaUserResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`.
 func (o LookupKafkaUserResultOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaUserResult) string { return v.Password }).(pulumi.StringOutput)
 }
 
-// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. 'unknown' is reported when the hash is missing or uses an unrecognised format. The possible values are `md5`, `scram-sha-256` and `unknown`.
+func (o LookupKafkaUserResultOutput) PasswordEncryptionType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKafkaUserResult) string { return v.PasswordEncryptionType }).(pulumi.StringOutput)
+}
+
+// Project name.
 func (o LookupKafkaUserResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaUserResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
-// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// Service name.
 func (o LookupKafkaUserResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaUserResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// User account type, such as primary or regular account.
+func (o LookupKafkaUserResultOutput) Timeouts() GetKafkaUserTimeoutsPtrOutput {
+	return o.ApplyT(func(v LookupKafkaUserResult) *GetKafkaUserTimeouts { return v.Timeouts }).(GetKafkaUserTimeoutsPtrOutput)
+}
+
+// Account type.
 func (o LookupKafkaUserResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaUserResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// Name of the Kafka service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// Account username.
 func (o LookupKafkaUserResultOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaUserResult) string { return v.Username }).(pulumi.StringOutput)
 }

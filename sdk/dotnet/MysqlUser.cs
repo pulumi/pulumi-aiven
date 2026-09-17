@@ -69,6 +69,12 @@ namespace Pulumi.Aiven
         public Output<string> Password { get; private set; } = null!;
 
         /// <summary>
+        /// The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. 'unknown' is reported when the hash is missing or uses an unrecognised format. The possible values are `Md5`, `scram-sha-256` and `Unknown`.
+        /// </summary>
+        [Output("passwordEncryptionType")]
+        public Output<string> PasswordEncryptionType { get; private set; } = null!;
+
+        /// <summary>
         /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
         /// The password of the service user (write-only, not stored in state). The field is required with `PasswordWoVersion`. The field conflicts with `Password`. Length must be between `8` and `256`.
         /// </summary>
@@ -288,6 +294,12 @@ namespace Pulumi.Aiven
                 _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        /// <summary>
+        /// The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. 'unknown' is reported when the hash is missing or uses an unrecognised format. The possible values are `Md5`, `scram-sha-256` and `Unknown`.
+        /// </summary>
+        [Input("passwordEncryptionType")]
+        public Input<string>? PasswordEncryptionType { get; set; }
 
         [Input("passwordWo")]
         private Input<string>? _passwordWo;

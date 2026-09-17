@@ -447,10 +447,7 @@ class FlinkJarApplicationDeployment(pulumi.CustomResource):
                  version_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
-        Creates and manages the deployment of an Aiven for Apache Flink® application.
-
-        **This resource is in the beta stage and may change without notice.** Set
-        the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+        Creates and manages the deployment of an Aiven for Apache Flink® application. This feature is in the limited availability stage and may change without notice. To enable this feature, contact the [sales team](http://aiven.io/contact). Once it's enabled, set the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
 
         ## Example Usage
 
@@ -459,15 +456,15 @@ class FlinkJarApplicationDeployment(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         example = aiven.Flink("example",
+            flink_user_config={
+                "custom_code": True,
+            },
             project=example_aiven_project["project"],
             service_name="example-flink-service",
             cloud_name="google-europe-west1",
             plan="business-4",
             maintenance_window_dow="monday",
-            maintenance_window_time="04:00:00",
-            flink_user_config={
-                "custom_code": True,
-            })
+            maintenance_window_time="04:00:00")
         example_flink_jar_application = aiven.FlinkJarApplication("example",
             project=example.project,
             service_name=example.service_name,
@@ -510,10 +507,7 @@ class FlinkJarApplicationDeployment(pulumi.CustomResource):
                  args: FlinkJarApplicationDeploymentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates and manages the deployment of an Aiven for Apache Flink® application.
-
-        **This resource is in the beta stage and may change without notice.** Set
-        the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+        Creates and manages the deployment of an Aiven for Apache Flink® application. This feature is in the limited availability stage and may change without notice. To enable this feature, contact the [sales team](http://aiven.io/contact). Once it's enabled, set the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
 
         ## Example Usage
 
@@ -522,15 +516,15 @@ class FlinkJarApplicationDeployment(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         example = aiven.Flink("example",
+            flink_user_config={
+                "custom_code": True,
+            },
             project=example_aiven_project["project"],
             service_name="example-flink-service",
             cloud_name="google-europe-west1",
             plan="business-4",
             maintenance_window_dow="monday",
-            maintenance_window_time="04:00:00",
-            flink_user_config={
-                "custom_code": True,
-            })
+            maintenance_window_time="04:00:00")
         example_flink_jar_application = aiven.FlinkJarApplication("example",
             project=example.project,
             service_name=example.service_name,

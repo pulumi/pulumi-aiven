@@ -3,41 +3,50 @@
 
 package com.pulumi.aiven.outputs;
 
+import com.pulumi.aiven.outputs.GetValkeyUserTimeouts;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetValkeyUserResult {
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Resource ID composed as: `project/service_name/username`.
      * 
      */
     private String id;
     /**
-     * @return The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+     * @return The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`.
      * 
      */
     private String password;
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. &#39;unknown&#39; is reported when the hash is missing or uses an unrecognised format. The possible values are `md5`, `scram-sha-256` and `unknown`.
+     * 
+     */
+    private String passwordEncryptionType;
+    /**
+     * @return Project name.
      * 
      */
     private String project;
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service name.
      * 
      */
     private String serviceName;
+    private @Nullable GetValkeyUserTimeouts timeouts;
     /**
-     * @return User account type, such as primary or regular account.
+     * @return Account type.
      * 
      */
     private String type;
     /**
-     * @return Name of the Valkey service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service username.
      * 
      */
     private String username;
@@ -57,49 +66,59 @@ public final class GetValkeyUserResult {
      */
     private List<String> valkeyAclCommands;
     /**
-     * @return Key access rules. Entries are defined as standard glob patterns. The field is required with `valkeyAclCategories` and `valkeyAclKeys`.
+     * @return Key access rules. Entries are defined as standard glob patterns. The field is required with `valkeyAclCategories` and `valkeyAclCommands`.
      * 
      */
     private List<String> valkeyAclKeys;
 
     private GetValkeyUserResult() {}
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Resource ID composed as: `project/service_name/username`.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+     * @return The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`.
      * 
      */
     public String password() {
         return this.password;
     }
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. &#39;unknown&#39; is reported when the hash is missing or uses an unrecognised format. The possible values are `md5`, `scram-sha-256` and `unknown`.
+     * 
+     */
+    public String passwordEncryptionType() {
+        return this.passwordEncryptionType;
+    }
+    /**
+     * @return Project name.
      * 
      */
     public String project() {
         return this.project;
     }
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service name.
      * 
      */
     public String serviceName() {
         return this.serviceName;
     }
+    public Optional<GetValkeyUserTimeouts> timeouts() {
+        return Optional.ofNullable(this.timeouts);
+    }
     /**
-     * @return User account type, such as primary or regular account.
+     * @return Account type.
      * 
      */
     public String type() {
         return this.type;
     }
     /**
-     * @return Name of the Valkey service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service username.
      * 
      */
     public String username() {
@@ -127,7 +146,7 @@ public final class GetValkeyUserResult {
         return this.valkeyAclCommands;
     }
     /**
-     * @return Key access rules. Entries are defined as standard glob patterns. The field is required with `valkeyAclCategories` and `valkeyAclKeys`.
+     * @return Key access rules. Entries are defined as standard glob patterns. The field is required with `valkeyAclCategories` and `valkeyAclCommands`.
      * 
      */
     public List<String> valkeyAclKeys() {
@@ -145,8 +164,10 @@ public final class GetValkeyUserResult {
     public static final class Builder {
         private String id;
         private String password;
+        private String passwordEncryptionType;
         private String project;
         private String serviceName;
+        private @Nullable GetValkeyUserTimeouts timeouts;
         private String type;
         private String username;
         private List<String> valkeyAclCategories;
@@ -158,8 +179,10 @@ public final class GetValkeyUserResult {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
     	      this.password = defaults.password;
+    	      this.passwordEncryptionType = defaults.passwordEncryptionType;
     	      this.project = defaults.project;
     	      this.serviceName = defaults.serviceName;
+    	      this.timeouts = defaults.timeouts;
     	      this.type = defaults.type;
     	      this.username = defaults.username;
     	      this.valkeyAclCategories = defaults.valkeyAclCategories;
@@ -185,6 +208,14 @@ public final class GetValkeyUserResult {
             return this;
         }
         @CustomType.Setter
+        public Builder passwordEncryptionType(String passwordEncryptionType) {
+            if (passwordEncryptionType == null) {
+              throw new MissingRequiredPropertyException("GetValkeyUserResult", "passwordEncryptionType");
+            }
+            this.passwordEncryptionType = passwordEncryptionType;
+            return this;
+        }
+        @CustomType.Setter
         public Builder project(String project) {
             if (project == null) {
               throw new MissingRequiredPropertyException("GetValkeyUserResult", "project");
@@ -198,6 +229,12 @@ public final class GetValkeyUserResult {
               throw new MissingRequiredPropertyException("GetValkeyUserResult", "serviceName");
             }
             this.serviceName = serviceName;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder timeouts(@Nullable GetValkeyUserTimeouts timeouts) {
+
+            this.timeouts = timeouts;
             return this;
         }
         @CustomType.Setter
@@ -264,8 +301,10 @@ public final class GetValkeyUserResult {
             final var _resultValue = new GetValkeyUserResult();
             _resultValue.id = id;
             _resultValue.password = password;
+            _resultValue.passwordEncryptionType = passwordEncryptionType;
             _resultValue.project = project;
             _resultValue.serviceName = serviceName;
+            _resultValue.timeouts = timeouts;
             _resultValue.type = type;
             _resultValue.username = username;
             _resultValue.valkeyAclCategories = valkeyAclCategories;

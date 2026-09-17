@@ -2,10 +2,12 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Creates and manages an Azure Private Link for [selected Aiven services](https://aiven.io/docs/platform/howto/use-azure-privatelink) in a VPC.
+ * Creates and manages an Azure Private Link for [selected Aiven services](https://aiven.io/docs/platform/howto/use-azure-privatelink) in a VPC. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
  *
  * ## Example Usage
  *
@@ -13,17 +15,17 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const main = new aiven.AzurePrivatelink("main", {
- *     project: exampleProject.project,
- *     serviceName: exampleKafka.serviceName,
- *     userSubscriptionIds: ["00000000-0000-0000-0000-000000000000"],
+ * const example = new aiven.AzurePrivatelink("example", {
+ *     project: "my-project",
+ *     serviceName: "foo",
+ *     userSubscriptionIds: ["adcf7194-d877-4505-a47a-91fefd96e3b8"],
  * });
  * ```
  *
  * ## Import
  *
  * ```sh
- * $ pulumi import aiven:index/azurePrivatelink:AzurePrivatelink main PROJECT/SERVICE_NAME
+ * $ pulumi import aiven:index/azurePrivatelink:AzurePrivatelink example PROJECT/SERVICE_NAME
  * ```
  */
 export class AzurePrivatelink extends pulumi.CustomResource {
@@ -55,31 +57,34 @@ export class AzurePrivatelink extends pulumi.CustomResource {
     }
 
     /**
-     * The Azure Private Link service alias.
+     * Azure Privatelink service alias.
      */
     declare public /*out*/ readonly azureServiceAlias: pulumi.Output<string>;
     /**
-     * The Azure Private Link service ID.
+     * Azure Privatelink service ID.
      */
     declare public /*out*/ readonly azureServiceId: pulumi.Output<string>;
     /**
-     * Printable result of the Azure Private Link request.
+     * Legacy response message retained for backward compatibility. **Deprecated**: This attribute is retained only for compatibility with state created by older provider versions and is no longer populated.
+     *
+     * @deprecated This attribute is retained only for compatibility with state created by older provider versions and is no longer populated.
      */
     declare public /*out*/ readonly message: pulumi.Output<string>;
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name. Changing this property forces recreation of the resource.
      */
     declare public readonly project: pulumi.Output<string>;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name. Changing this property forces recreation of the resource.
      */
     declare public readonly serviceName: pulumi.Output<string>;
     /**
-     * The state of the Private Link resource.
+     * Privatelink resource state. The possible values are `active`, `creating` and `deleting`.
      */
     declare public /*out*/ readonly state: pulumi.Output<string>;
+    declare public readonly timeouts: pulumi.Output<outputs.AzurePrivatelinkTimeouts | undefined>;
     /**
-     * A list of allowed subscription IDs. Maximum length: `16`.
+     * IDs of Azure subscriptions allowed to connect to the service.
      */
     declare public readonly userSubscriptionIds: pulumi.Output<string[]>;
 
@@ -102,6 +107,7 @@ export class AzurePrivatelink extends pulumi.CustomResource {
             resourceInputs["project"] = state?.project;
             resourceInputs["serviceName"] = state?.serviceName;
             resourceInputs["state"] = state?.state;
+            resourceInputs["timeouts"] = state?.timeouts;
             resourceInputs["userSubscriptionIds"] = state?.userSubscriptionIds;
         } else {
             const args = argsOrState as AzurePrivatelinkArgs | undefined;
@@ -116,6 +122,7 @@ export class AzurePrivatelink extends pulumi.CustomResource {
             }
             resourceInputs["project"] = args?.project;
             resourceInputs["serviceName"] = args?.serviceName;
+            resourceInputs["timeouts"] = args?.timeouts;
             resourceInputs["userSubscriptionIds"] = args?.userSubscriptionIds;
             resourceInputs["azureServiceAlias"] = undefined /*out*/;
             resourceInputs["azureServiceId"] = undefined /*out*/;
@@ -132,31 +139,34 @@ export class AzurePrivatelink extends pulumi.CustomResource {
  */
 export interface AzurePrivatelinkState {
     /**
-     * The Azure Private Link service alias.
+     * Azure Privatelink service alias.
      */
     azureServiceAlias?: pulumi.Input<string | undefined>;
     /**
-     * The Azure Private Link service ID.
+     * Azure Privatelink service ID.
      */
     azureServiceId?: pulumi.Input<string | undefined>;
     /**
-     * Printable result of the Azure Private Link request.
+     * Legacy response message retained for backward compatibility. **Deprecated**: This attribute is retained only for compatibility with state created by older provider versions and is no longer populated.
+     *
+     * @deprecated This attribute is retained only for compatibility with state created by older provider versions and is no longer populated.
      */
     message?: pulumi.Input<string | undefined>;
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name. Changing this property forces recreation of the resource.
      */
     project?: pulumi.Input<string | undefined>;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name. Changing this property forces recreation of the resource.
      */
     serviceName?: pulumi.Input<string | undefined>;
     /**
-     * The state of the Private Link resource.
+     * Privatelink resource state. The possible values are `active`, `creating` and `deleting`.
      */
     state?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.AzurePrivatelinkTimeouts | undefined>;
     /**
-     * A list of allowed subscription IDs. Maximum length: `16`.
+     * IDs of Azure subscriptions allowed to connect to the service.
      */
     userSubscriptionIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
@@ -166,15 +176,16 @@ export interface AzurePrivatelinkState {
  */
 export interface AzurePrivatelinkArgs {
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name. Changing this property forces recreation of the resource.
      */
     project: pulumi.Input<string>;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name. Changing this property forces recreation of the resource.
      */
     serviceName: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.AzurePrivatelinkTimeouts | undefined>;
     /**
-     * A list of allowed subscription IDs. Maximum length: `16`.
+     * IDs of Azure subscriptions allowed to connect to the service.
      */
     userSubscriptionIds: pulumi.Input<pulumi.Input<string>[]>;
 }

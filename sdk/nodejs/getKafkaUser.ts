@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -13,10 +15,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const exampleServiceUser = aiven.getKafkaUser({
- *     serviceName: exampleKafka.serviceName,
- *     project: exampleProject.project,
- *     username: "example-kafka-user",
+ * const example = aiven.getKafkaUser({
+ *     project: "my-project",
+ *     serviceName: "my-kafka",
+ *     username: "testuser",
  * });
  * ```
  */
@@ -25,6 +27,7 @@ export function getKafkaUser(args: GetKafkaUserArgs, opts?: pulumi.InvokeOptions
     return pulumi.runtime.invoke("aiven:index/getKafkaUser:getKafkaUser", {
         "project": args.project,
         "serviceName": args.serviceName,
+        "timeouts": args.timeouts,
         "username": args.username,
     }, opts);
 }
@@ -34,15 +37,16 @@ export function getKafkaUser(args: GetKafkaUserArgs, opts?: pulumi.InvokeOptions
  */
 export interface GetKafkaUserArgs {
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name.
      */
     project: string;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name.
      */
     serviceName: string;
+    timeouts?: inputs.GetKafkaUserTimeouts;
     /**
-     * Name of the Kafka service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Account username.
      */
     username: string;
 }
@@ -52,35 +56,40 @@ export interface GetKafkaUserArgs {
  */
 export interface GetKafkaUserResult {
     /**
-     * Access certificate for the user.
+     * Access certificate for TLS client authentication.
      */
     readonly accessCert: string;
     /**
-     * Access certificate key for the user.
+     * Access key for TLS client authentication.
      */
     readonly accessKey: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * Resource ID composed as: `project/service_name/username`.
      */
     readonly id: string;
     /**
-     * The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+     * The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`.
      */
     readonly password: string;
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. 'unknown' is reported when the hash is missing or uses an unrecognised format. The possible values are `md5`, `scram-sha-256` and `unknown`.
+     */
+    readonly passwordEncryptionType: string;
+    /**
+     * Project name.
      */
     readonly project: string;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name.
      */
     readonly serviceName: string;
+    readonly timeouts?: outputs.GetKafkaUserTimeouts;
     /**
-     * User account type, such as primary or regular account.
+     * Account type.
      */
     readonly type: string;
     /**
-     * Name of the Kafka service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Account username.
      */
     readonly username: string;
 }
@@ -93,10 +102,10 @@ export interface GetKafkaUserResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const exampleServiceUser = aiven.getKafkaUser({
- *     serviceName: exampleKafka.serviceName,
- *     project: exampleProject.project,
- *     username: "example-kafka-user",
+ * const example = aiven.getKafkaUser({
+ *     project: "my-project",
+ *     serviceName: "my-kafka",
+ *     username: "testuser",
  * });
  * ```
  */
@@ -105,6 +114,7 @@ export function getKafkaUserOutput(args: GetKafkaUserOutputArgs, opts?: pulumi.I
     return pulumi.runtime.invokeOutput("aiven:index/getKafkaUser:getKafkaUser", {
         "project": args.project,
         "serviceName": args.serviceName,
+        "timeouts": args.timeouts,
         "username": args.username,
     }, opts);
 }
@@ -114,15 +124,16 @@ export function getKafkaUserOutput(args: GetKafkaUserOutputArgs, opts?: pulumi.I
  */
 export interface GetKafkaUserOutputArgs {
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name.
      */
     project: pulumi.Input<string>;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name.
      */
     serviceName: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.GetKafkaUserTimeoutsArgs | undefined>;
     /**
-     * Name of the Kafka service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Account username.
      */
     username: pulumi.Input<string>;
 }

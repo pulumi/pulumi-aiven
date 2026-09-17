@@ -29,9 +29,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.NewOrganizationUserGroup(ctx, "example", &aiven.OrganizationUserGroupArgs{
-//				Description:    pulumi.String("Example group of users."),
-//				OrganizationId: pulumi.Any(main.Id),
-//				Name:           pulumi.String("Example group"),
+//				OrganizationId: pulumi.String("org1a23f456789"),
+//				Description:    pulumi.String("The group of admins for the organization"),
+//				Name:           pulumi.String("Admin Users"),
 //			})
 //			if err != nil {
 //				return err
@@ -45,22 +45,25 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import aiven:index/organizationUserGroup:OrganizationUserGroup example ORGANIZATION_ID/USER_GROUP_ID
+// $ pulumi import aiven:index/organizationUserGroup:OrganizationUserGroup example ORGANIZATION_ID/GROUP_ID
 // ```
 type OrganizationUserGroup struct {
 	pulumi.CustomResourceState
 
-	// Time of creation.
+	// User group creation time.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// The description of the user group. Changing this property forces recreation of the resource.
+	// Description. Maximum length: `4096`.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// The ID of the user group.
+	// ID of the user group.
 	GroupId pulumi.StringOutput `pulumi:"groupId"`
-	// The name of the user group. Changing this property forces recreation of the resource.
+	// Managed By Scim.
+	ManagedByScim pulumi.BoolOutput `pulumi:"managedByScim"`
+	// User Group Name. Maximum length: `128`.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The ID of the organization. Changing this property forces recreation of the resource.
-	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
-	// Time of last update.
+	// ID of an organization. Changing this property forces recreation of the resource.
+	OrganizationId pulumi.StringOutput                    `pulumi:"organizationId"`
+	Timeouts       OrganizationUserGroupTimeoutsPtrOutput `pulumi:"timeouts"`
+	// User group last update time.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
@@ -100,32 +103,38 @@ func GetOrganizationUserGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering OrganizationUserGroup resources.
 type organizationUserGroupState struct {
-	// Time of creation.
+	// User group creation time.
 	CreateTime *string `pulumi:"createTime"`
-	// The description of the user group. Changing this property forces recreation of the resource.
+	// Description. Maximum length: `4096`.
 	Description *string `pulumi:"description"`
-	// The ID of the user group.
+	// ID of the user group.
 	GroupId *string `pulumi:"groupId"`
-	// The name of the user group. Changing this property forces recreation of the resource.
+	// Managed By Scim.
+	ManagedByScim *bool `pulumi:"managedByScim"`
+	// User Group Name. Maximum length: `128`.
 	Name *string `pulumi:"name"`
-	// The ID of the organization. Changing this property forces recreation of the resource.
-	OrganizationId *string `pulumi:"organizationId"`
-	// Time of last update.
+	// ID of an organization. Changing this property forces recreation of the resource.
+	OrganizationId *string                        `pulumi:"organizationId"`
+	Timeouts       *OrganizationUserGroupTimeouts `pulumi:"timeouts"`
+	// User group last update time.
 	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type OrganizationUserGroupState struct {
-	// Time of creation.
+	// User group creation time.
 	CreateTime pulumi.StringPtrInput
-	// The description of the user group. Changing this property forces recreation of the resource.
+	// Description. Maximum length: `4096`.
 	Description pulumi.StringPtrInput
-	// The ID of the user group.
+	// ID of the user group.
 	GroupId pulumi.StringPtrInput
-	// The name of the user group. Changing this property forces recreation of the resource.
+	// Managed By Scim.
+	ManagedByScim pulumi.BoolPtrInput
+	// User Group Name. Maximum length: `128`.
 	Name pulumi.StringPtrInput
-	// The ID of the organization. Changing this property forces recreation of the resource.
+	// ID of an organization. Changing this property forces recreation of the resource.
 	OrganizationId pulumi.StringPtrInput
-	// Time of last update.
+	Timeouts       OrganizationUserGroupTimeoutsPtrInput
+	// User group last update time.
 	UpdateTime pulumi.StringPtrInput
 }
 
@@ -134,22 +143,24 @@ func (OrganizationUserGroupState) ElementType() reflect.Type {
 }
 
 type organizationUserGroupArgs struct {
-	// The description of the user group. Changing this property forces recreation of the resource.
+	// Description. Maximum length: `4096`.
 	Description string `pulumi:"description"`
-	// The name of the user group. Changing this property forces recreation of the resource.
+	// User Group Name. Maximum length: `128`.
 	Name *string `pulumi:"name"`
-	// The ID of the organization. Changing this property forces recreation of the resource.
-	OrganizationId string `pulumi:"organizationId"`
+	// ID of an organization. Changing this property forces recreation of the resource.
+	OrganizationId string                         `pulumi:"organizationId"`
+	Timeouts       *OrganizationUserGroupTimeouts `pulumi:"timeouts"`
 }
 
 // The set of arguments for constructing a OrganizationUserGroup resource.
 type OrganizationUserGroupArgs struct {
-	// The description of the user group. Changing this property forces recreation of the resource.
+	// Description. Maximum length: `4096`.
 	Description pulumi.StringInput
-	// The name of the user group. Changing this property forces recreation of the resource.
+	// User Group Name. Maximum length: `128`.
 	Name pulumi.StringPtrInput
-	// The ID of the organization. Changing this property forces recreation of the resource.
+	// ID of an organization. Changing this property forces recreation of the resource.
 	OrganizationId pulumi.StringInput
+	Timeouts       OrganizationUserGroupTimeoutsPtrInput
 }
 
 func (OrganizationUserGroupArgs) ElementType() reflect.Type {
@@ -239,32 +250,41 @@ func (o OrganizationUserGroupOutput) ToOrganizationUserGroupOutputWithContext(ct
 	return o
 }
 
-// Time of creation.
+// User group creation time.
 func (o OrganizationUserGroupOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationUserGroup) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// The description of the user group. Changing this property forces recreation of the resource.
+// Description. Maximum length: `4096`.
 func (o OrganizationUserGroupOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationUserGroup) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-// The ID of the user group.
+// ID of the user group.
 func (o OrganizationUserGroupOutput) GroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationUserGroup) pulumi.StringOutput { return v.GroupId }).(pulumi.StringOutput)
 }
 
-// The name of the user group. Changing this property forces recreation of the resource.
+// Managed By Scim.
+func (o OrganizationUserGroupOutput) ManagedByScim() pulumi.BoolOutput {
+	return o.ApplyT(func(v *OrganizationUserGroup) pulumi.BoolOutput { return v.ManagedByScim }).(pulumi.BoolOutput)
+}
+
+// User Group Name. Maximum length: `128`.
 func (o OrganizationUserGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationUserGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The ID of the organization. Changing this property forces recreation of the resource.
+// ID of an organization. Changing this property forces recreation of the resource.
 func (o OrganizationUserGroupOutput) OrganizationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationUserGroup) pulumi.StringOutput { return v.OrganizationId }).(pulumi.StringOutput)
 }
 
-// Time of last update.
+func (o OrganizationUserGroupOutput) Timeouts() OrganizationUserGroupTimeoutsPtrOutput {
+	return o.ApplyT(func(v *OrganizationUserGroup) OrganizationUserGroupTimeoutsPtrOutput { return v.Timeouts }).(OrganizationUserGroupTimeoutsPtrOutput)
+}
+
+// User group last update time.
 func (o OrganizationUserGroupOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationUserGroup) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }

@@ -13,6 +13,4297 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTask struct {
+	// The maximum number of search tasks to cancel in a single iteration of the observer thread. Default is 5.0.
+	CancellationBurst *float64 `pulumi:"cancellationBurst"`
+	// The maximum number of search tasks to cancel per millisecond of elapsed time. Default is 0.003.
+	CancellationRate *float64 `pulumi:"cancellationRate"`
+	// The maximum number of search tasks to cancel, as a percentage of successful search task completions. Default is 0.1.
+	CancellationRatio *float64 `pulumi:"cancellationRatio"`
+	// The CPU usage threshold (in milliseconds) required for an individual parent task before it is considered for cancellation. Default is 30000.
+	CpuTimeMillisThreshold *int `pulumi:"cpuTimeMillisThreshold"`
+	// The elapsed time threshold (in milliseconds) required for an individual parent task before it is considered for cancellation. Default is 45000.
+	ElapsedTimeMillisThreshold *int `pulumi:"elapsedTimeMillisThreshold"`
+	// The window size used to calculate the rolling average of the heap usage for the completed parent tasks. Default is 10.
+	HeapMovingAverageWindowSize *int `pulumi:"heapMovingAverageWindowSize"`
+	// The heap usage threshold (as a percentage) required for an individual parent task before it is considered for cancellation. Default is 0.2.
+	HeapPercentThreshold *float64 `pulumi:"heapPercentThreshold"`
+	// The heap usage variance required for an individual parent task before it is considered for cancellation. A task is considered for cancellation when taskHeapUsage is greater than or equal to heapUsageMovingAverage * variance. Default is 2.0.
+	HeapVariance *float64 `pulumi:"heapVariance"`
+	// The heap usage threshold (as a percentage) required for the sum of heap usages of all search tasks before cancellation is applied. Default is 0.5.
+	TotalHeapPercentThreshold *float64 `pulumi:"totalHeapPercentThreshold"`
+}
+
+// GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskInput is an input type that accepts GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskArgs and GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskOutput values.
+// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskInput` via:
+//
+//	GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskArgs{...}
+type GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskOutput
+	ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskOutput
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskArgs struct {
+	// The maximum number of search tasks to cancel in a single iteration of the observer thread. Default is 5.0.
+	CancellationBurst pulumi.Float64PtrInput `pulumi:"cancellationBurst"`
+	// The maximum number of search tasks to cancel per millisecond of elapsed time. Default is 0.003.
+	CancellationRate pulumi.Float64PtrInput `pulumi:"cancellationRate"`
+	// The maximum number of search tasks to cancel, as a percentage of successful search task completions. Default is 0.1.
+	CancellationRatio pulumi.Float64PtrInput `pulumi:"cancellationRatio"`
+	// The CPU usage threshold (in milliseconds) required for an individual parent task before it is considered for cancellation. Default is 30000.
+	CpuTimeMillisThreshold pulumi.IntPtrInput `pulumi:"cpuTimeMillisThreshold"`
+	// The elapsed time threshold (in milliseconds) required for an individual parent task before it is considered for cancellation. Default is 45000.
+	ElapsedTimeMillisThreshold pulumi.IntPtrInput `pulumi:"elapsedTimeMillisThreshold"`
+	// The window size used to calculate the rolling average of the heap usage for the completed parent tasks. Default is 10.
+	HeapMovingAverageWindowSize pulumi.IntPtrInput `pulumi:"heapMovingAverageWindowSize"`
+	// The heap usage threshold (as a percentage) required for an individual parent task before it is considered for cancellation. Default is 0.2.
+	HeapPercentThreshold pulumi.Float64PtrInput `pulumi:"heapPercentThreshold"`
+	// The heap usage variance required for an individual parent task before it is considered for cancellation. A task is considered for cancellation when taskHeapUsage is greater than or equal to heapUsageMovingAverage * variance. Default is 2.0.
+	HeapVariance pulumi.Float64PtrInput `pulumi:"heapVariance"`
+	// The heap usage threshold (as a percentage) required for the sum of heap usages of all search tasks before cancellation is applied. Default is 0.5.
+	TotalHeapPercentThreshold pulumi.Float64PtrInput `pulumi:"totalHeapPercentThreshold"`
+}
+
+func (GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTask)(nil)).Elem()
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskArgs) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskArgs) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskOutput)
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskArgs) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskPtrOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskPtrOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskArgs) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskOutput).ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskPtrOutputWithContext(ctx)
+}
+
+// GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskPtrInput is an input type that accepts GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskArgs, GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskPtr and GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskPtrOutput values.
+// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskPtrInput` via:
+//
+//	        GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskPtrInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskPtrOutput
+	ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskPtrOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskPtrOutput
+}
+
+type getOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskPtrType GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskArgs
+
+func GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskPtr(v *GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskArgs) GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskPtrInput {
+	return (*getOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskPtrType)(v)
+}
+
+func (*getOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTask)(nil)).Elem()
+}
+
+func (i *getOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskPtrType) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskPtrOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskPtrOutputWithContext(context.Background())
+}
+
+func (i *getOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskPtrType) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskPtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTask)(nil)).Elem()
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskOutput) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskOutput) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskOutput) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskPtrOutput {
+	return o.ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskPtrOutputWithContext(context.Background())
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskOutput) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTask) *GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTask {
+		return &v
+	}).(GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskPtrOutput)
+}
+
+// The maximum number of search tasks to cancel in a single iteration of the observer thread. Default is 5.0.
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskOutput) CancellationBurst() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTask) *float64 {
+		return v.CancellationBurst
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The maximum number of search tasks to cancel per millisecond of elapsed time. Default is 0.003.
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskOutput) CancellationRate() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTask) *float64 {
+		return v.CancellationRate
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The maximum number of search tasks to cancel, as a percentage of successful search task completions. Default is 0.1.
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskOutput) CancellationRatio() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTask) *float64 {
+		return v.CancellationRatio
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The CPU usage threshold (in milliseconds) required for an individual parent task before it is considered for cancellation. Default is 30000.
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskOutput) CpuTimeMillisThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTask) *int {
+		return v.CpuTimeMillisThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// The elapsed time threshold (in milliseconds) required for an individual parent task before it is considered for cancellation. Default is 45000.
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskOutput) ElapsedTimeMillisThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTask) *int {
+		return v.ElapsedTimeMillisThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// The window size used to calculate the rolling average of the heap usage for the completed parent tasks. Default is 10.
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskOutput) HeapMovingAverageWindowSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTask) *int {
+		return v.HeapMovingAverageWindowSize
+	}).(pulumi.IntPtrOutput)
+}
+
+// The heap usage threshold (as a percentage) required for an individual parent task before it is considered for cancellation. Default is 0.2.
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskOutput) HeapPercentThreshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTask) *float64 {
+		return v.HeapPercentThreshold
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The heap usage variance required for an individual parent task before it is considered for cancellation. A task is considered for cancellation when taskHeapUsage is greater than or equal to heapUsageMovingAverage * variance. Default is 2.0.
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskOutput) HeapVariance() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTask) *float64 {
+		return v.HeapVariance
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The heap usage threshold (as a percentage) required for the sum of heap usages of all search tasks before cancellation is applied. Default is 0.5.
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskOutput) TotalHeapPercentThreshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTask) *float64 {
+		return v.TotalHeapPercentThreshold
+	}).(pulumi.Float64PtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskPtrOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTask)(nil)).Elem()
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskPtrOutput) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskPtrOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskPtrOutput) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskPtrOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskPtrOutput) Elem() GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTask) GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTask {
+		if v != nil {
+			return *v
+		}
+		var ret GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTask
+		return ret
+	}).(GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskOutput)
+}
+
+// The maximum number of search tasks to cancel in a single iteration of the observer thread. Default is 5.0.
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskPtrOutput) CancellationBurst() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTask) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.CancellationBurst
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The maximum number of search tasks to cancel per millisecond of elapsed time. Default is 0.003.
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskPtrOutput) CancellationRate() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTask) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.CancellationRate
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The maximum number of search tasks to cancel, as a percentage of successful search task completions. Default is 0.1.
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskPtrOutput) CancellationRatio() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTask) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.CancellationRatio
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The CPU usage threshold (in milliseconds) required for an individual parent task before it is considered for cancellation. Default is 30000.
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskPtrOutput) CpuTimeMillisThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTask) *int {
+		if v == nil {
+			return nil
+		}
+		return v.CpuTimeMillisThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// The elapsed time threshold (in milliseconds) required for an individual parent task before it is considered for cancellation. Default is 45000.
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskPtrOutput) ElapsedTimeMillisThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTask) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ElapsedTimeMillisThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// The window size used to calculate the rolling average of the heap usage for the completed parent tasks. Default is 10.
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskPtrOutput) HeapMovingAverageWindowSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTask) *int {
+		if v == nil {
+			return nil
+		}
+		return v.HeapMovingAverageWindowSize
+	}).(pulumi.IntPtrOutput)
+}
+
+// The heap usage threshold (as a percentage) required for an individual parent task before it is considered for cancellation. Default is 0.2.
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskPtrOutput) HeapPercentThreshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTask) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.HeapPercentThreshold
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The heap usage variance required for an individual parent task before it is considered for cancellation. A task is considered for cancellation when taskHeapUsage is greater than or equal to heapUsageMovingAverage * variance. Default is 2.0.
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskPtrOutput) HeapVariance() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTask) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.HeapVariance
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The heap usage threshold (as a percentage) required for the sum of heap usages of all search tasks before cancellation is applied. Default is 0.5.
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskPtrOutput) TotalHeapPercentThreshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTask) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.TotalHeapPercentThreshold
+	}).(pulumi.Float64PtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueries struct {
+	// Top N queries monitoring by CPU
+	Cpu *GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpu `pulumi:"cpu"`
+	// Top N queries monitoring by latency
+	Latency *GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatency `pulumi:"latency"`
+	// Top N queries monitoring by memory
+	Memory *GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemory `pulumi:"memory"`
+}
+
+// GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesInput is an input type that accepts GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesArgs and GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesOutput values.
+// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesInput` via:
+//
+//	GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesArgs{...}
+type GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesOutput
+	ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesOutput
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesArgs struct {
+	// Top N queries monitoring by CPU
+	Cpu GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuPtrInput `pulumi:"cpu"`
+	// Top N queries monitoring by latency
+	Latency GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyPtrInput `pulumi:"latency"`
+	// Top N queries monitoring by memory
+	Memory GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryPtrInput `pulumi:"memory"`
+}
+
+func (GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueries)(nil)).Elem()
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesArgs) ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesArgs) ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesOutput)
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesArgs) ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesPtrOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesPtrOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesArgs) ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesOutput).ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesPtrOutputWithContext(ctx)
+}
+
+// GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesPtrInput is an input type that accepts GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesArgs, GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesPtr and GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesPtrOutput values.
+// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesPtrInput` via:
+//
+//	        GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesPtrInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesPtrOutput
+	ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesPtrOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesPtrOutput
+}
+
+type getOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesPtrType GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesArgs
+
+func GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesPtr(v *GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesArgs) GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesPtrInput {
+	return (*getOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesPtrType)(v)
+}
+
+func (*getOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueries)(nil)).Elem()
+}
+
+func (i *getOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesPtrType) ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesPtrOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesPtrOutputWithContext(context.Background())
+}
+
+func (i *getOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesPtrType) ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesPtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueries)(nil)).Elem()
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesOutput) ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesOutput) ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesOutput) ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesPtrOutput {
+	return o.ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesPtrOutputWithContext(context.Background())
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesOutput) ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueries) *GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueries {
+		return &v
+	}).(GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesPtrOutput)
+}
+
+// Top N queries monitoring by CPU
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesOutput) Cpu() GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueries) *GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpu {
+		return v.Cpu
+	}).(GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuPtrOutput)
+}
+
+// Top N queries monitoring by latency
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesOutput) Latency() GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueries) *GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatency {
+		return v.Latency
+	}).(GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyPtrOutput)
+}
+
+// Top N queries monitoring by memory
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesOutput) Memory() GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueries) *GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemory {
+		return v.Memory
+	}).(GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryPtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesPtrOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueries)(nil)).Elem()
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesPtrOutput) ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesPtrOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesPtrOutput) ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesPtrOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesPtrOutput) Elem() GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueries) GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueries {
+		if v != nil {
+			return *v
+		}
+		var ret GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueries
+		return ret
+	}).(GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesOutput)
+}
+
+// Top N queries monitoring by CPU
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesPtrOutput) Cpu() GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueries) *GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpu {
+		if v == nil {
+			return nil
+		}
+		return v.Cpu
+	}).(GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuPtrOutput)
+}
+
+// Top N queries monitoring by latency
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesPtrOutput) Latency() GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueries) *GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatency {
+		if v == nil {
+			return nil
+		}
+		return v.Latency
+	}).(GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyPtrOutput)
+}
+
+// Top N queries monitoring by memory
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesPtrOutput) Memory() GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueries) *GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemory {
+		if v == nil {
+			return nil
+		}
+		return v.Memory
+	}).(GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryPtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpu struct {
+	// Enable or disable top N query monitoring by the metric. Default: `false`.
+	Enabled *bool `pulumi:"enabled"`
+	// Specify the value of N for the top N queries by the metric.
+	TopNSize *int `pulumi:"topNSize"`
+	// Configure the window size of the top N queries. The value should be a time value with unit, e.g. 1m, 5s, 1h.
+	WindowSize *string `pulumi:"windowSize"`
+}
+
+// GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuInput is an input type that accepts GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuArgs and GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuOutput values.
+// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuInput` via:
+//
+//	GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuArgs{...}
+type GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuOutput
+	ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuOutput
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuArgs struct {
+	// Enable or disable top N query monitoring by the metric. Default: `false`.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Specify the value of N for the top N queries by the metric.
+	TopNSize pulumi.IntPtrInput `pulumi:"topNSize"`
+	// Configure the window size of the top N queries. The value should be a time value with unit, e.g. 1m, 5s, 1h.
+	WindowSize pulumi.StringPtrInput `pulumi:"windowSize"`
+}
+
+func (GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpu)(nil)).Elem()
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuArgs) ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuArgs) ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuOutput)
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuArgs) ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuPtrOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuPtrOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuArgs) ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuOutput).ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuPtrOutputWithContext(ctx)
+}
+
+// GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuPtrInput is an input type that accepts GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuArgs, GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuPtr and GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuPtrOutput values.
+// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuPtrInput` via:
+//
+//	        GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuPtrInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuPtrOutput
+	ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuPtrOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuPtrOutput
+}
+
+type getOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuPtrType GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuArgs
+
+func GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuPtr(v *GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuArgs) GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuPtrInput {
+	return (*getOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuPtrType)(v)
+}
+
+func (*getOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpu)(nil)).Elem()
+}
+
+func (i *getOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuPtrType) ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuPtrOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuPtrOutputWithContext(context.Background())
+}
+
+func (i *getOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuPtrType) ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuPtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpu)(nil)).Elem()
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuOutput) ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuOutput) ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuOutput) ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuPtrOutput {
+	return o.ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuPtrOutputWithContext(context.Background())
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuOutput) ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpu) *GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpu {
+		return &v
+	}).(GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuPtrOutput)
+}
+
+// Enable or disable top N query monitoring by the metric. Default: `false`.
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpu) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Specify the value of N for the top N queries by the metric.
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuOutput) TopNSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpu) *int { return v.TopNSize }).(pulumi.IntPtrOutput)
+}
+
+// Configure the window size of the top N queries. The value should be a time value with unit, e.g. 1m, 5s, 1h.
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuOutput) WindowSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpu) *string {
+		return v.WindowSize
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuPtrOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpu)(nil)).Elem()
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuPtrOutput) ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuPtrOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuPtrOutput) ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuPtrOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuPtrOutput) Elem() GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpu) GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpu {
+		if v != nil {
+			return *v
+		}
+		var ret GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpu
+		return ret
+	}).(GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuOutput)
+}
+
+// Enable or disable top N query monitoring by the metric. Default: `false`.
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpu) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specify the value of N for the top N queries by the metric.
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuPtrOutput) TopNSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpu) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TopNSize
+	}).(pulumi.IntPtrOutput)
+}
+
+// Configure the window size of the top N queries. The value should be a time value with unit, e.g. 1m, 5s, 1h.
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuPtrOutput) WindowSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpu) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WindowSize
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatency struct {
+	// Enable or disable top N query monitoring by the metric. Default: `false`.
+	Enabled *bool `pulumi:"enabled"`
+	// Specify the value of N for the top N queries by the metric.
+	TopNSize *int `pulumi:"topNSize"`
+	// Configure the window size of the top N queries. The value should be a time value with unit, e.g. 1m, 5s, 1h.
+	WindowSize *string `pulumi:"windowSize"`
+}
+
+// GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyInput is an input type that accepts GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyArgs and GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyOutput values.
+// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyInput` via:
+//
+//	GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyArgs{...}
+type GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyOutput
+	ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyOutput
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyArgs struct {
+	// Enable or disable top N query monitoring by the metric. Default: `false`.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Specify the value of N for the top N queries by the metric.
+	TopNSize pulumi.IntPtrInput `pulumi:"topNSize"`
+	// Configure the window size of the top N queries. The value should be a time value with unit, e.g. 1m, 5s, 1h.
+	WindowSize pulumi.StringPtrInput `pulumi:"windowSize"`
+}
+
+func (GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatency)(nil)).Elem()
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyArgs) ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyArgs) ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyOutput)
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyArgs) ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyPtrOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyPtrOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyArgs) ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyOutput).ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyPtrOutputWithContext(ctx)
+}
+
+// GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyPtrInput is an input type that accepts GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyArgs, GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyPtr and GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyPtrOutput values.
+// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyPtrInput` via:
+//
+//	        GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyPtrInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyPtrOutput
+	ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyPtrOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyPtrOutput
+}
+
+type getOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyPtrType GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyArgs
+
+func GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyPtr(v *GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyArgs) GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyPtrInput {
+	return (*getOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyPtrType)(v)
+}
+
+func (*getOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatency)(nil)).Elem()
+}
+
+func (i *getOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyPtrType) ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyPtrOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyPtrOutputWithContext(context.Background())
+}
+
+func (i *getOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyPtrType) ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyPtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatency)(nil)).Elem()
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyOutput) ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyOutput) ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyOutput) ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyPtrOutput {
+	return o.ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyPtrOutputWithContext(context.Background())
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyOutput) ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatency) *GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatency {
+		return &v
+	}).(GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyPtrOutput)
+}
+
+// Enable or disable top N query monitoring by the metric. Default: `false`.
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatency) *bool {
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specify the value of N for the top N queries by the metric.
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyOutput) TopNSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatency) *int {
+		return v.TopNSize
+	}).(pulumi.IntPtrOutput)
+}
+
+// Configure the window size of the top N queries. The value should be a time value with unit, e.g. 1m, 5s, 1h.
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyOutput) WindowSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatency) *string {
+		return v.WindowSize
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyPtrOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatency)(nil)).Elem()
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyPtrOutput) ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyPtrOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyPtrOutput) ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyPtrOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyPtrOutput) Elem() GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatency) GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatency {
+		if v != nil {
+			return *v
+		}
+		var ret GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatency
+		return ret
+	}).(GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyOutput)
+}
+
+// Enable or disable top N query monitoring by the metric. Default: `false`.
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatency) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specify the value of N for the top N queries by the metric.
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyPtrOutput) TopNSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatency) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TopNSize
+	}).(pulumi.IntPtrOutput)
+}
+
+// Configure the window size of the top N queries. The value should be a time value with unit, e.g. 1m, 5s, 1h.
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyPtrOutput) WindowSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatency) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WindowSize
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemory struct {
+	// Enable or disable top N query monitoring by the metric. Default: `false`.
+	Enabled *bool `pulumi:"enabled"`
+	// Specify the value of N for the top N queries by the metric.
+	TopNSize *int `pulumi:"topNSize"`
+	// Configure the window size of the top N queries. The value should be a time value with unit, e.g. 1m, 5s, 1h.
+	WindowSize *string `pulumi:"windowSize"`
+}
+
+// GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryInput is an input type that accepts GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryArgs and GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryOutput values.
+// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryInput` via:
+//
+//	GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryArgs{...}
+type GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryOutput
+	ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryOutput
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryArgs struct {
+	// Enable or disable top N query monitoring by the metric. Default: `false`.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Specify the value of N for the top N queries by the metric.
+	TopNSize pulumi.IntPtrInput `pulumi:"topNSize"`
+	// Configure the window size of the top N queries. The value should be a time value with unit, e.g. 1m, 5s, 1h.
+	WindowSize pulumi.StringPtrInput `pulumi:"windowSize"`
+}
+
+func (GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemory)(nil)).Elem()
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryArgs) ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryArgs) ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryOutput)
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryArgs) ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryPtrOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryPtrOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryArgs) ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryOutput).ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryPtrOutputWithContext(ctx)
+}
+
+// GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryPtrInput is an input type that accepts GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryArgs, GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryPtr and GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryPtrOutput values.
+// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryPtrInput` via:
+//
+//	        GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryPtrInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryPtrOutput
+	ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryPtrOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryPtrOutput
+}
+
+type getOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryPtrType GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryArgs
+
+func GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryPtr(v *GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryArgs) GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryPtrInput {
+	return (*getOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryPtrType)(v)
+}
+
+func (*getOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemory)(nil)).Elem()
+}
+
+func (i *getOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryPtrType) ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryPtrOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryPtrOutputWithContext(context.Background())
+}
+
+func (i *getOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryPtrType) ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryPtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemory)(nil)).Elem()
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryOutput) ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryOutput) ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryOutput) ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryPtrOutput {
+	return o.ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryPtrOutputWithContext(context.Background())
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryOutput) ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemory) *GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemory {
+		return &v
+	}).(GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryPtrOutput)
+}
+
+// Enable or disable top N query monitoring by the metric. Default: `false`.
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemory) *bool {
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specify the value of N for the top N queries by the metric.
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryOutput) TopNSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemory) *int {
+		return v.TopNSize
+	}).(pulumi.IntPtrOutput)
+}
+
+// Configure the window size of the top N queries. The value should be a time value with unit, e.g. 1m, 5s, 1h.
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryOutput) WindowSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemory) *string {
+		return v.WindowSize
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryPtrOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemory)(nil)).Elem()
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryPtrOutput) ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryPtrOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryPtrOutput) ToGetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryPtrOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryPtrOutput) Elem() GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemory) GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemory {
+		if v != nil {
+			return *v
+		}
+		var ret GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemory
+		return ret
+	}).(GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryOutput)
+}
+
+// Enable or disable top N query monitoring by the metric. Default: `false`.
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemory) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specify the value of N for the top N queries by the metric.
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryPtrOutput) TopNSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemory) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TopNSize
+	}).(pulumi.IntPtrOutput)
+}
+
+// Configure the window size of the top N queries. The value should be a time value with unit, e.g. 1m, 5s, 1h.
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryPtrOutput) WindowSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemory) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WindowSize
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchSegrep struct {
+	// The maximum number of indexing checkpoints that a replica shard can fall behind when copying from primary. Once `segrep.pressure.checkpoint.limit` is breached along with `segrep.pressure.time.limit`, the segment replication backpressure mechanism is initiated. Default is 4 checkpoints. Default: `4`.
+	PressureCheckpointLimit *int `pulumi:"pressureCheckpointLimit"`
+	// Enables the segment replication backpressure mechanism. Default is false. Default: `false`.
+	PressureEnabled *bool `pulumi:"pressureEnabled"`
+	// The maximum number of stale replica shards that can exist in a replication group. Once `segrep.pressure.replica.stale.limit` is breached, the segment replication backpressure mechanism is initiated. Default is .5, which is 50% of a replication group. Default: `0.5`.
+	PressureReplicaStaleLimit *float64 `pulumi:"pressureReplicaStaleLimit"`
+	// The maximum amount of time that a replica shard can take to copy from the primary shard. Once segrep.pressure.time.limit is breached along with segrep.pressure.checkpoint.limit, the segment replication backpressure mechanism is initiated. Default is 5 minutes. Default: `5m`.
+	PressureTimeLimit *string `pulumi:"pressureTimeLimit"`
+}
+
+// GetOpenSearchOpensearchUserConfigOpensearchSegrepInput is an input type that accepts GetOpenSearchOpensearchUserConfigOpensearchSegrepArgs and GetOpenSearchOpensearchUserConfigOpensearchSegrepOutput values.
+// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigOpensearchSegrepInput` via:
+//
+//	GetOpenSearchOpensearchUserConfigOpensearchSegrepArgs{...}
+type GetOpenSearchOpensearchUserConfigOpensearchSegrepInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchOpensearchUserConfigOpensearchSegrepOutput() GetOpenSearchOpensearchUserConfigOpensearchSegrepOutput
+	ToGetOpenSearchOpensearchUserConfigOpensearchSegrepOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigOpensearchSegrepOutput
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchSegrepArgs struct {
+	// The maximum number of indexing checkpoints that a replica shard can fall behind when copying from primary. Once `segrep.pressure.checkpoint.limit` is breached along with `segrep.pressure.time.limit`, the segment replication backpressure mechanism is initiated. Default is 4 checkpoints. Default: `4`.
+	PressureCheckpointLimit pulumi.IntPtrInput `pulumi:"pressureCheckpointLimit"`
+	// Enables the segment replication backpressure mechanism. Default is false. Default: `false`.
+	PressureEnabled pulumi.BoolPtrInput `pulumi:"pressureEnabled"`
+	// The maximum number of stale replica shards that can exist in a replication group. Once `segrep.pressure.replica.stale.limit` is breached, the segment replication backpressure mechanism is initiated. Default is .5, which is 50% of a replication group. Default: `0.5`.
+	PressureReplicaStaleLimit pulumi.Float64PtrInput `pulumi:"pressureReplicaStaleLimit"`
+	// The maximum amount of time that a replica shard can take to copy from the primary shard. Once segrep.pressure.time.limit is breached along with segrep.pressure.checkpoint.limit, the segment replication backpressure mechanism is initiated. Default is 5 minutes. Default: `5m`.
+	PressureTimeLimit pulumi.StringPtrInput `pulumi:"pressureTimeLimit"`
+}
+
+func (GetOpenSearchOpensearchUserConfigOpensearchSegrepArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchSegrep)(nil)).Elem()
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchSegrepArgs) ToGetOpenSearchOpensearchUserConfigOpensearchSegrepOutput() GetOpenSearchOpensearchUserConfigOpensearchSegrepOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpensearchSegrepOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchSegrepArgs) ToGetOpenSearchOpensearchUserConfigOpensearchSegrepOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchSegrepOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchSegrepOutput)
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchSegrepArgs) ToGetOpenSearchOpensearchUserConfigOpensearchSegrepPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchSegrepPtrOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpensearchSegrepPtrOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchSegrepArgs) ToGetOpenSearchOpensearchUserConfigOpensearchSegrepPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchSegrepPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchSegrepOutput).ToGetOpenSearchOpensearchUserConfigOpensearchSegrepPtrOutputWithContext(ctx)
+}
+
+// GetOpenSearchOpensearchUserConfigOpensearchSegrepPtrInput is an input type that accepts GetOpenSearchOpensearchUserConfigOpensearchSegrepArgs, GetOpenSearchOpensearchUserConfigOpensearchSegrepPtr and GetOpenSearchOpensearchUserConfigOpensearchSegrepPtrOutput values.
+// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigOpensearchSegrepPtrInput` via:
+//
+//	        GetOpenSearchOpensearchUserConfigOpensearchSegrepArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetOpenSearchOpensearchUserConfigOpensearchSegrepPtrInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchOpensearchUserConfigOpensearchSegrepPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchSegrepPtrOutput
+	ToGetOpenSearchOpensearchUserConfigOpensearchSegrepPtrOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigOpensearchSegrepPtrOutput
+}
+
+type getOpenSearchOpensearchUserConfigOpensearchSegrepPtrType GetOpenSearchOpensearchUserConfigOpensearchSegrepArgs
+
+func GetOpenSearchOpensearchUserConfigOpensearchSegrepPtr(v *GetOpenSearchOpensearchUserConfigOpensearchSegrepArgs) GetOpenSearchOpensearchUserConfigOpensearchSegrepPtrInput {
+	return (*getOpenSearchOpensearchUserConfigOpensearchSegrepPtrType)(v)
+}
+
+func (*getOpenSearchOpensearchUserConfigOpensearchSegrepPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigOpensearchSegrep)(nil)).Elem()
+}
+
+func (i *getOpenSearchOpensearchUserConfigOpensearchSegrepPtrType) ToGetOpenSearchOpensearchUserConfigOpensearchSegrepPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchSegrepPtrOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpensearchSegrepPtrOutputWithContext(context.Background())
+}
+
+func (i *getOpenSearchOpensearchUserConfigOpensearchSegrepPtrType) ToGetOpenSearchOpensearchUserConfigOpensearchSegrepPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchSegrepPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchSegrepPtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchSegrepOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchOpensearchUserConfigOpensearchSegrepOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchSegrep)(nil)).Elem()
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchSegrepOutput) ToGetOpenSearchOpensearchUserConfigOpensearchSegrepOutput() GetOpenSearchOpensearchUserConfigOpensearchSegrepOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchSegrepOutput) ToGetOpenSearchOpensearchUserConfigOpensearchSegrepOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchSegrepOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchSegrepOutput) ToGetOpenSearchOpensearchUserConfigOpensearchSegrepPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchSegrepPtrOutput {
+	return o.ToGetOpenSearchOpensearchUserConfigOpensearchSegrepPtrOutputWithContext(context.Background())
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchSegrepOutput) ToGetOpenSearchOpensearchUserConfigOpensearchSegrepPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchSegrepPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetOpenSearchOpensearchUserConfigOpensearchSegrep) *GetOpenSearchOpensearchUserConfigOpensearchSegrep {
+		return &v
+	}).(GetOpenSearchOpensearchUserConfigOpensearchSegrepPtrOutput)
+}
+
+// The maximum number of indexing checkpoints that a replica shard can fall behind when copying from primary. Once `segrep.pressure.checkpoint.limit` is breached along with `segrep.pressure.time.limit`, the segment replication backpressure mechanism is initiated. Default is 4 checkpoints. Default: `4`.
+func (o GetOpenSearchOpensearchUserConfigOpensearchSegrepOutput) PressureCheckpointLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchSegrep) *int { return v.PressureCheckpointLimit }).(pulumi.IntPtrOutput)
+}
+
+// Enables the segment replication backpressure mechanism. Default is false. Default: `false`.
+func (o GetOpenSearchOpensearchUserConfigOpensearchSegrepOutput) PressureEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchSegrep) *bool { return v.PressureEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The maximum number of stale replica shards that can exist in a replication group. Once `segrep.pressure.replica.stale.limit` is breached, the segment replication backpressure mechanism is initiated. Default is .5, which is 50% of a replication group. Default: `0.5`.
+func (o GetOpenSearchOpensearchUserConfigOpensearchSegrepOutput) PressureReplicaStaleLimit() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchSegrep) *float64 { return v.PressureReplicaStaleLimit }).(pulumi.Float64PtrOutput)
+}
+
+// The maximum amount of time that a replica shard can take to copy from the primary shard. Once segrep.pressure.time.limit is breached along with segrep.pressure.checkpoint.limit, the segment replication backpressure mechanism is initiated. Default is 5 minutes. Default: `5m`.
+func (o GetOpenSearchOpensearchUserConfigOpensearchSegrepOutput) PressureTimeLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchSegrep) *string { return v.PressureTimeLimit }).(pulumi.StringPtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchSegrepPtrOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchOpensearchUserConfigOpensearchSegrepPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigOpensearchSegrep)(nil)).Elem()
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchSegrepPtrOutput) ToGetOpenSearchOpensearchUserConfigOpensearchSegrepPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchSegrepPtrOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchSegrepPtrOutput) ToGetOpenSearchOpensearchUserConfigOpensearchSegrepPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchSegrepPtrOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchSegrepPtrOutput) Elem() GetOpenSearchOpensearchUserConfigOpensearchSegrepOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchSegrep) GetOpenSearchOpensearchUserConfigOpensearchSegrep {
+		if v != nil {
+			return *v
+		}
+		var ret GetOpenSearchOpensearchUserConfigOpensearchSegrep
+		return ret
+	}).(GetOpenSearchOpensearchUserConfigOpensearchSegrepOutput)
+}
+
+// The maximum number of indexing checkpoints that a replica shard can fall behind when copying from primary. Once `segrep.pressure.checkpoint.limit` is breached along with `segrep.pressure.time.limit`, the segment replication backpressure mechanism is initiated. Default is 4 checkpoints. Default: `4`.
+func (o GetOpenSearchOpensearchUserConfigOpensearchSegrepPtrOutput) PressureCheckpointLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchSegrep) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PressureCheckpointLimit
+	}).(pulumi.IntPtrOutput)
+}
+
+// Enables the segment replication backpressure mechanism. Default is false. Default: `false`.
+func (o GetOpenSearchOpensearchUserConfigOpensearchSegrepPtrOutput) PressureEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchSegrep) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.PressureEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The maximum number of stale replica shards that can exist in a replication group. Once `segrep.pressure.replica.stale.limit` is breached, the segment replication backpressure mechanism is initiated. Default is .5, which is 50% of a replication group. Default: `0.5`.
+func (o GetOpenSearchOpensearchUserConfigOpensearchSegrepPtrOutput) PressureReplicaStaleLimit() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchSegrep) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.PressureReplicaStaleLimit
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The maximum amount of time that a replica shard can take to copy from the primary shard. Once segrep.pressure.time.limit is breached along with segrep.pressure.checkpoint.limit, the segment replication backpressure mechanism is initiated. Default is 5 minutes. Default: `5m`.
+func (o GetOpenSearchOpensearchUserConfigOpensearchSegrepPtrOutput) PressureTimeLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchSegrep) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PressureTimeLimit
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressure struct {
+	// Enable or disable shard indexing backpressure. Default is false.
+	Enabled *bool `pulumi:"enabled"`
+	// Run shard indexing backpressure in shadow mode or enforced mode. In shadow mode (value set as false), shard indexing backpressure tracks all granular-level metrics, but it doesn’t actually reject any indexing requests. In enforced mode (value set as true), shard indexing backpressure rejects any requests to the cluster that might cause a dip in its performance. Default is false.
+	Enforced *bool `pulumi:"enforced"`
+	// Operating factor
+	OperatingFactor *GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactor `pulumi:"operatingFactor"`
+	// Primary parameter
+	PrimaryParameter *GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameter `pulumi:"primaryParameter"`
+}
+
+// GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureInput is an input type that accepts GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureArgs and GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOutput values.
+// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureInput` via:
+//
+//	GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureArgs{...}
+type GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOutput() GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOutput
+	ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOutput
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureArgs struct {
+	// Enable or disable shard indexing backpressure. Default is false.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Run shard indexing backpressure in shadow mode or enforced mode. In shadow mode (value set as false), shard indexing backpressure tracks all granular-level metrics, but it doesn’t actually reject any indexing requests. In enforced mode (value set as true), shard indexing backpressure rejects any requests to the cluster that might cause a dip in its performance. Default is false.
+	Enforced pulumi.BoolPtrInput `pulumi:"enforced"`
+	// Operating factor
+	OperatingFactor GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorPtrInput `pulumi:"operatingFactor"`
+	// Primary parameter
+	PrimaryParameter GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterPtrInput `pulumi:"primaryParameter"`
+}
+
+func (GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressure)(nil)).Elem()
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureArgs) ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOutput() GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureArgs) ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOutput)
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureArgs) ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePtrOutput() GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePtrOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePtrOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureArgs) ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOutput).ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePtrOutputWithContext(ctx)
+}
+
+// GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePtrInput is an input type that accepts GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureArgs, GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePtr and GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePtrOutput values.
+// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePtrInput` via:
+//
+//	        GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePtrInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePtrOutput() GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePtrOutput
+	ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePtrOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePtrOutput
+}
+
+type getOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePtrType GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureArgs
+
+func GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePtr(v *GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureArgs) GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePtrInput {
+	return (*getOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePtrType)(v)
+}
+
+func (*getOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressure)(nil)).Elem()
+}
+
+func (i *getOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePtrType) ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePtrOutput() GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePtrOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePtrOutputWithContext(context.Background())
+}
+
+func (i *getOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePtrType) ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressure)(nil)).Elem()
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOutput) ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOutput() GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOutput) ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOutput) ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePtrOutput() GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePtrOutput {
+	return o.ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePtrOutputWithContext(context.Background())
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOutput) ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressure) *GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressure {
+		return &v
+	}).(GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePtrOutput)
+}
+
+// Enable or disable shard indexing backpressure. Default is false.
+func (o GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressure) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Run shard indexing backpressure in shadow mode or enforced mode. In shadow mode (value set as false), shard indexing backpressure tracks all granular-level metrics, but it doesn’t actually reject any indexing requests. In enforced mode (value set as true), shard indexing backpressure rejects any requests to the cluster that might cause a dip in its performance. Default is false.
+func (o GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOutput) Enforced() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressure) *bool { return v.Enforced }).(pulumi.BoolPtrOutput)
+}
+
+// Operating factor
+func (o GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOutput) OperatingFactor() GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressure) *GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactor {
+		return v.OperatingFactor
+	}).(GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorPtrOutput)
+}
+
+// Primary parameter
+func (o GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOutput) PrimaryParameter() GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressure) *GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameter {
+		return v.PrimaryParameter
+	}).(GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterPtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePtrOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressure)(nil)).Elem()
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePtrOutput) ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePtrOutput() GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePtrOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePtrOutput) ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePtrOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePtrOutput) Elem() GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressure) GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressure {
+		if v != nil {
+			return *v
+		}
+		var ret GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressure
+		return ret
+	}).(GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOutput)
+}
+
+// Enable or disable shard indexing backpressure. Default is false.
+func (o GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressure) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Run shard indexing backpressure in shadow mode or enforced mode. In shadow mode (value set as false), shard indexing backpressure tracks all granular-level metrics, but it doesn’t actually reject any indexing requests. In enforced mode (value set as true), shard indexing backpressure rejects any requests to the cluster that might cause a dip in its performance. Default is false.
+func (o GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePtrOutput) Enforced() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressure) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enforced
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Operating factor
+func (o GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePtrOutput) OperatingFactor() GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressure) *GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactor {
+		if v == nil {
+			return nil
+		}
+		return v.OperatingFactor
+	}).(GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorPtrOutput)
+}
+
+// Primary parameter
+func (o GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePtrOutput) PrimaryParameter() GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressure) *GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameter {
+		if v == nil {
+			return nil
+		}
+		return v.PrimaryParameter
+	}).(GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterPtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactor struct {
+	// Specify the lower occupancy limit of the allocated quota of memory for the shard. If the total memory usage of a shard is below this limit, shard indexing backpressure decreases the current allocated memory for that shard. Default is 0.75.
+	Lower *float64 `pulumi:"lower"`
+	// Specify the optimal occupancy of the allocated quota of memory for the shard. If the total memory usage of a shard is at this level, shard indexing backpressure doesn’t change the current allocated memory for that shard. Default is 0.85.
+	Optimal *float64 `pulumi:"optimal"`
+	// Specify the upper occupancy limit of the allocated quota of memory for the shard. If the total memory usage of a shard is above this limit, shard indexing backpressure increases the current allocated memory for that shard. Default is 0.95.
+	Upper *float64 `pulumi:"upper"`
+}
+
+// GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorInput is an input type that accepts GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorArgs and GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorOutput values.
+// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorInput` via:
+//
+//	GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorArgs{...}
+type GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorOutput() GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorOutput
+	ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorOutput
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorArgs struct {
+	// Specify the lower occupancy limit of the allocated quota of memory for the shard. If the total memory usage of a shard is below this limit, shard indexing backpressure decreases the current allocated memory for that shard. Default is 0.75.
+	Lower pulumi.Float64PtrInput `pulumi:"lower"`
+	// Specify the optimal occupancy of the allocated quota of memory for the shard. If the total memory usage of a shard is at this level, shard indexing backpressure doesn’t change the current allocated memory for that shard. Default is 0.85.
+	Optimal pulumi.Float64PtrInput `pulumi:"optimal"`
+	// Specify the upper occupancy limit of the allocated quota of memory for the shard. If the total memory usage of a shard is above this limit, shard indexing backpressure increases the current allocated memory for that shard. Default is 0.95.
+	Upper pulumi.Float64PtrInput `pulumi:"upper"`
+}
+
+func (GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactor)(nil)).Elem()
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorArgs) ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorOutput() GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorArgs) ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorOutput)
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorArgs) ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorPtrOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorPtrOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorArgs) ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorOutput).ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorPtrOutputWithContext(ctx)
+}
+
+// GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorPtrInput is an input type that accepts GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorArgs, GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorPtr and GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorPtrOutput values.
+// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorPtrInput` via:
+//
+//	        GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorPtrInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorPtrOutput
+	ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorPtrOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorPtrOutput
+}
+
+type getOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorPtrType GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorArgs
+
+func GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorPtr(v *GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorArgs) GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorPtrInput {
+	return (*getOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorPtrType)(v)
+}
+
+func (*getOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactor)(nil)).Elem()
+}
+
+func (i *getOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorPtrType) ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorPtrOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorPtrOutputWithContext(context.Background())
+}
+
+func (i *getOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorPtrType) ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorPtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactor)(nil)).Elem()
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorOutput) ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorOutput() GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorOutput) ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorOutput) ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorPtrOutput {
+	return o.ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorPtrOutputWithContext(context.Background())
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorOutput) ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactor) *GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactor {
+		return &v
+	}).(GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorPtrOutput)
+}
+
+// Specify the lower occupancy limit of the allocated quota of memory for the shard. If the total memory usage of a shard is below this limit, shard indexing backpressure decreases the current allocated memory for that shard. Default is 0.75.
+func (o GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorOutput) Lower() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactor) *float64 {
+		return v.Lower
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Specify the optimal occupancy of the allocated quota of memory for the shard. If the total memory usage of a shard is at this level, shard indexing backpressure doesn’t change the current allocated memory for that shard. Default is 0.85.
+func (o GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorOutput) Optimal() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactor) *float64 {
+		return v.Optimal
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Specify the upper occupancy limit of the allocated quota of memory for the shard. If the total memory usage of a shard is above this limit, shard indexing backpressure increases the current allocated memory for that shard. Default is 0.95.
+func (o GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorOutput) Upper() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactor) *float64 {
+		return v.Upper
+	}).(pulumi.Float64PtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorPtrOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactor)(nil)).Elem()
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorPtrOutput) ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorPtrOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorPtrOutput) ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorPtrOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorPtrOutput) Elem() GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactor) GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactor {
+		if v != nil {
+			return *v
+		}
+		var ret GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactor
+		return ret
+	}).(GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorOutput)
+}
+
+// Specify the lower occupancy limit of the allocated quota of memory for the shard. If the total memory usage of a shard is below this limit, shard indexing backpressure decreases the current allocated memory for that shard. Default is 0.75.
+func (o GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorPtrOutput) Lower() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactor) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Lower
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Specify the optimal occupancy of the allocated quota of memory for the shard. If the total memory usage of a shard is at this level, shard indexing backpressure doesn’t change the current allocated memory for that shard. Default is 0.85.
+func (o GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorPtrOutput) Optimal() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactor) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Optimal
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Specify the upper occupancy limit of the allocated quota of memory for the shard. If the total memory usage of a shard is above this limit, shard indexing backpressure increases the current allocated memory for that shard. Default is 0.95.
+func (o GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorPtrOutput) Upper() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactor) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Upper
+	}).(pulumi.Float64PtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameter struct {
+	Node  *GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNode  `pulumi:"node"`
+	Shard *GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShard `pulumi:"shard"`
+}
+
+// GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterInput is an input type that accepts GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterArgs and GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterOutput values.
+// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterInput` via:
+//
+//	GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterArgs{...}
+type GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterOutput() GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterOutput
+	ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterOutput
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterArgs struct {
+	Node  GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodePtrInput  `pulumi:"node"`
+	Shard GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardPtrInput `pulumi:"shard"`
+}
+
+func (GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameter)(nil)).Elem()
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterArgs) ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterOutput() GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterArgs) ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterOutput)
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterArgs) ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterPtrOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterPtrOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterArgs) ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterOutput).ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterPtrOutputWithContext(ctx)
+}
+
+// GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterPtrInput is an input type that accepts GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterArgs, GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterPtr and GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterPtrOutput values.
+// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterPtrInput` via:
+//
+//	        GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterPtrInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterPtrOutput
+	ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterPtrOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterPtrOutput
+}
+
+type getOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterPtrType GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterArgs
+
+func GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterPtr(v *GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterArgs) GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterPtrInput {
+	return (*getOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterPtrType)(v)
+}
+
+func (*getOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameter)(nil)).Elem()
+}
+
+func (i *getOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterPtrType) ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterPtrOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterPtrOutputWithContext(context.Background())
+}
+
+func (i *getOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterPtrType) ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterPtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameter)(nil)).Elem()
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterOutput) ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterOutput() GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterOutput) ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterOutput) ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterPtrOutput {
+	return o.ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterPtrOutputWithContext(context.Background())
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterOutput) ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameter) *GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameter {
+		return &v
+	}).(GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterPtrOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterOutput) Node() GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodePtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameter) *GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNode {
+		return v.Node
+	}).(GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodePtrOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterOutput) Shard() GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameter) *GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShard {
+		return v.Shard
+	}).(GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardPtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterPtrOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameter)(nil)).Elem()
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterPtrOutput) ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterPtrOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterPtrOutput) ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterPtrOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterPtrOutput) Elem() GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameter) GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameter {
+		if v != nil {
+			return *v
+		}
+		var ret GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameter
+		return ret
+	}).(GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterPtrOutput) Node() GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodePtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameter) *GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNode {
+		if v == nil {
+			return nil
+		}
+		return v.Node
+	}).(GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodePtrOutput)
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterPtrOutput) Shard() GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameter) *GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShard {
+		if v == nil {
+			return nil
+		}
+		return v.Shard
+	}).(GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardPtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNode struct {
+	// Define the percentage of the node-level memory threshold that acts as a soft indicator for strain on a node. Default is 0.7.
+	SoftLimit *float64 `pulumi:"softLimit"`
+}
+
+// GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodeInput is an input type that accepts GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodeArgs and GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodeOutput values.
+// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodeInput` via:
+//
+//	GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodeArgs{...}
+type GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodeInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodeOutput() GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodeOutput
+	ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodeOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodeOutput
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodeArgs struct {
+	// Define the percentage of the node-level memory threshold that acts as a soft indicator for strain on a node. Default is 0.7.
+	SoftLimit pulumi.Float64PtrInput `pulumi:"softLimit"`
+}
+
+func (GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNode)(nil)).Elem()
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodeArgs) ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodeOutput() GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodeOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodeOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodeArgs) ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodeOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodeOutput)
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodeArgs) ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodePtrOutput() GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodePtrOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodePtrOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodeArgs) ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodePtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodeOutput).ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodePtrOutputWithContext(ctx)
+}
+
+// GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodePtrInput is an input type that accepts GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodeArgs, GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodePtr and GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodePtrOutput values.
+// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodePtrInput` via:
+//
+//	        GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodeArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodePtrInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodePtrOutput() GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodePtrOutput
+	ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodePtrOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodePtrOutput
+}
+
+type getOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodePtrType GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodeArgs
+
+func GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodePtr(v *GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodeArgs) GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodePtrInput {
+	return (*getOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodePtrType)(v)
+}
+
+func (*getOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNode)(nil)).Elem()
+}
+
+func (i *getOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodePtrType) ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodePtrOutput() GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodePtrOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodePtrOutputWithContext(context.Background())
+}
+
+func (i *getOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodePtrType) ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodePtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodePtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodeOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNode)(nil)).Elem()
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodeOutput) ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodeOutput() GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodeOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodeOutput) ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodeOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodeOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodeOutput) ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodePtrOutput() GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodePtrOutput {
+	return o.ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodePtrOutputWithContext(context.Background())
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodeOutput) ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodePtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNode) *GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNode {
+		return &v
+	}).(GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodePtrOutput)
+}
+
+// Define the percentage of the node-level memory threshold that acts as a soft indicator for strain on a node. Default is 0.7.
+func (o GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodeOutput) SoftLimit() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNode) *float64 {
+		return v.SoftLimit
+	}).(pulumi.Float64PtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodePtrOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNode)(nil)).Elem()
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodePtrOutput) ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodePtrOutput() GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodePtrOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodePtrOutput) ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodePtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodePtrOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodePtrOutput) Elem() GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodeOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNode) GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNode {
+		if v != nil {
+			return *v
+		}
+		var ret GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNode
+		return ret
+	}).(GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodeOutput)
+}
+
+// Define the percentage of the node-level memory threshold that acts as a soft indicator for strain on a node. Default is 0.7.
+func (o GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodePtrOutput) SoftLimit() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNode) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.SoftLimit
+	}).(pulumi.Float64PtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShard struct {
+	// Specify the minimum assigned quota for a new shard in any role (coordinator, primary, or replica). Shard indexing backpressure increases or decreases this allocated quota based on the inflow of traffic for the shard. Default is 0.001.
+	MinLimit *float64 `pulumi:"minLimit"`
+}
+
+// GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardInput is an input type that accepts GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardArgs and GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardOutput values.
+// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardInput` via:
+//
+//	GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardArgs{...}
+type GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardOutput() GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardOutput
+	ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardOutput
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardArgs struct {
+	// Specify the minimum assigned quota for a new shard in any role (coordinator, primary, or replica). Shard indexing backpressure increases or decreases this allocated quota based on the inflow of traffic for the shard. Default is 0.001.
+	MinLimit pulumi.Float64PtrInput `pulumi:"minLimit"`
+}
+
+func (GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShard)(nil)).Elem()
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardArgs) ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardOutput() GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardArgs) ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardOutput)
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardArgs) ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardPtrOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardPtrOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardArgs) ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardOutput).ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardPtrOutputWithContext(ctx)
+}
+
+// GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardPtrInput is an input type that accepts GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardArgs, GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardPtr and GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardPtrOutput values.
+// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardPtrInput` via:
+//
+//	        GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardPtrInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardPtrOutput
+	ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardPtrOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardPtrOutput
+}
+
+type getOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardPtrType GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardArgs
+
+func GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardPtr(v *GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardArgs) GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardPtrInput {
+	return (*getOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardPtrType)(v)
+}
+
+func (*getOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShard)(nil)).Elem()
+}
+
+func (i *getOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardPtrType) ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardPtrOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardPtrOutputWithContext(context.Background())
+}
+
+func (i *getOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardPtrType) ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardPtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShard)(nil)).Elem()
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardOutput) ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardOutput() GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardOutput) ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardOutput) ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardPtrOutput {
+	return o.ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardPtrOutputWithContext(context.Background())
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardOutput) ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShard) *GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShard {
+		return &v
+	}).(GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardPtrOutput)
+}
+
+// Specify the minimum assigned quota for a new shard in any role (coordinator, primary, or replica). Shard indexing backpressure increases or decreases this allocated quota based on the inflow of traffic for the shard. Default is 0.001.
+func (o GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardOutput) MinLimit() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShard) *float64 {
+		return v.MinLimit
+	}).(pulumi.Float64PtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardPtrOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShard)(nil)).Elem()
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardPtrOutput) ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardPtrOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardPtrOutput) ToGetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardPtrOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardPtrOutput) Elem() GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShard) GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShard {
+		if v != nil {
+			return *v
+		}
+		var ret GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShard
+		return ret
+	}).(GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardOutput)
+}
+
+// Specify the minimum assigned quota for a new shard in any role (coordinator, primary, or replica). Shard indexing backpressure increases or decreases this allocated quota based on the inflow of traffic for the shard. Default is 0.001.
+func (o GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardPtrOutput) MinLimit() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShard) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.MinLimit
+	}).(pulumi.Float64PtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigPrivateAccess struct {
+	// Allow clients to connect to opensearch with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+	Opensearch *bool `pulumi:"opensearch"`
+	// Allow clients to connect to opensearchDashboards with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+	OpensearchDashboards *bool `pulumi:"opensearchDashboards"`
+	// Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+	Prometheus *bool `pulumi:"prometheus"`
+}
+
+// GetOpenSearchOpensearchUserConfigPrivateAccessInput is an input type that accepts GetOpenSearchOpensearchUserConfigPrivateAccessArgs and GetOpenSearchOpensearchUserConfigPrivateAccessOutput values.
+// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigPrivateAccessInput` via:
+//
+//	GetOpenSearchOpensearchUserConfigPrivateAccessArgs{...}
+type GetOpenSearchOpensearchUserConfigPrivateAccessInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchOpensearchUserConfigPrivateAccessOutput() GetOpenSearchOpensearchUserConfigPrivateAccessOutput
+	ToGetOpenSearchOpensearchUserConfigPrivateAccessOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigPrivateAccessOutput
+}
+
+type GetOpenSearchOpensearchUserConfigPrivateAccessArgs struct {
+	// Allow clients to connect to opensearch with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+	Opensearch pulumi.BoolPtrInput `pulumi:"opensearch"`
+	// Allow clients to connect to opensearchDashboards with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+	OpensearchDashboards pulumi.BoolPtrInput `pulumi:"opensearchDashboards"`
+	// Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+	Prometheus pulumi.BoolPtrInput `pulumi:"prometheus"`
+}
+
+func (GetOpenSearchOpensearchUserConfigPrivateAccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigPrivateAccess)(nil)).Elem()
+}
+
+func (i GetOpenSearchOpensearchUserConfigPrivateAccessArgs) ToGetOpenSearchOpensearchUserConfigPrivateAccessOutput() GetOpenSearchOpensearchUserConfigPrivateAccessOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigPrivateAccessOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchOpensearchUserConfigPrivateAccessArgs) ToGetOpenSearchOpensearchUserConfigPrivateAccessOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigPrivateAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigPrivateAccessOutput)
+}
+
+func (i GetOpenSearchOpensearchUserConfigPrivateAccessArgs) ToGetOpenSearchOpensearchUserConfigPrivateAccessPtrOutput() GetOpenSearchOpensearchUserConfigPrivateAccessPtrOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigPrivateAccessPtrOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchOpensearchUserConfigPrivateAccessArgs) ToGetOpenSearchOpensearchUserConfigPrivateAccessPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigPrivateAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigPrivateAccessOutput).ToGetOpenSearchOpensearchUserConfigPrivateAccessPtrOutputWithContext(ctx)
+}
+
+// GetOpenSearchOpensearchUserConfigPrivateAccessPtrInput is an input type that accepts GetOpenSearchOpensearchUserConfigPrivateAccessArgs, GetOpenSearchOpensearchUserConfigPrivateAccessPtr and GetOpenSearchOpensearchUserConfigPrivateAccessPtrOutput values.
+// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigPrivateAccessPtrInput` via:
+//
+//	        GetOpenSearchOpensearchUserConfigPrivateAccessArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetOpenSearchOpensearchUserConfigPrivateAccessPtrInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchOpensearchUserConfigPrivateAccessPtrOutput() GetOpenSearchOpensearchUserConfigPrivateAccessPtrOutput
+	ToGetOpenSearchOpensearchUserConfigPrivateAccessPtrOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigPrivateAccessPtrOutput
+}
+
+type getOpenSearchOpensearchUserConfigPrivateAccessPtrType GetOpenSearchOpensearchUserConfigPrivateAccessArgs
+
+func GetOpenSearchOpensearchUserConfigPrivateAccessPtr(v *GetOpenSearchOpensearchUserConfigPrivateAccessArgs) GetOpenSearchOpensearchUserConfigPrivateAccessPtrInput {
+	return (*getOpenSearchOpensearchUserConfigPrivateAccessPtrType)(v)
+}
+
+func (*getOpenSearchOpensearchUserConfigPrivateAccessPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigPrivateAccess)(nil)).Elem()
+}
+
+func (i *getOpenSearchOpensearchUserConfigPrivateAccessPtrType) ToGetOpenSearchOpensearchUserConfigPrivateAccessPtrOutput() GetOpenSearchOpensearchUserConfigPrivateAccessPtrOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigPrivateAccessPtrOutputWithContext(context.Background())
+}
+
+func (i *getOpenSearchOpensearchUserConfigPrivateAccessPtrType) ToGetOpenSearchOpensearchUserConfigPrivateAccessPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigPrivateAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigPrivateAccessPtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigPrivateAccessOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchOpensearchUserConfigPrivateAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigPrivateAccess)(nil)).Elem()
+}
+
+func (o GetOpenSearchOpensearchUserConfigPrivateAccessOutput) ToGetOpenSearchOpensearchUserConfigPrivateAccessOutput() GetOpenSearchOpensearchUserConfigPrivateAccessOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigPrivateAccessOutput) ToGetOpenSearchOpensearchUserConfigPrivateAccessOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigPrivateAccessOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigPrivateAccessOutput) ToGetOpenSearchOpensearchUserConfigPrivateAccessPtrOutput() GetOpenSearchOpensearchUserConfigPrivateAccessPtrOutput {
+	return o.ToGetOpenSearchOpensearchUserConfigPrivateAccessPtrOutputWithContext(context.Background())
+}
+
+func (o GetOpenSearchOpensearchUserConfigPrivateAccessOutput) ToGetOpenSearchOpensearchUserConfigPrivateAccessPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigPrivateAccessPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetOpenSearchOpensearchUserConfigPrivateAccess) *GetOpenSearchOpensearchUserConfigPrivateAccess {
+		return &v
+	}).(GetOpenSearchOpensearchUserConfigPrivateAccessPtrOutput)
+}
+
+// Allow clients to connect to opensearch with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+func (o GetOpenSearchOpensearchUserConfigPrivateAccessOutput) Opensearch() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigPrivateAccess) *bool { return v.Opensearch }).(pulumi.BoolPtrOutput)
+}
+
+// Allow clients to connect to opensearchDashboards with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+func (o GetOpenSearchOpensearchUserConfigPrivateAccessOutput) OpensearchDashboards() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigPrivateAccess) *bool { return v.OpensearchDashboards }).(pulumi.BoolPtrOutput)
+}
+
+// Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+func (o GetOpenSearchOpensearchUserConfigPrivateAccessOutput) Prometheus() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigPrivateAccess) *bool { return v.Prometheus }).(pulumi.BoolPtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigPrivateAccessPtrOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchOpensearchUserConfigPrivateAccessPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigPrivateAccess)(nil)).Elem()
+}
+
+func (o GetOpenSearchOpensearchUserConfigPrivateAccessPtrOutput) ToGetOpenSearchOpensearchUserConfigPrivateAccessPtrOutput() GetOpenSearchOpensearchUserConfigPrivateAccessPtrOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigPrivateAccessPtrOutput) ToGetOpenSearchOpensearchUserConfigPrivateAccessPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigPrivateAccessPtrOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigPrivateAccessPtrOutput) Elem() GetOpenSearchOpensearchUserConfigPrivateAccessOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigPrivateAccess) GetOpenSearchOpensearchUserConfigPrivateAccess {
+		if v != nil {
+			return *v
+		}
+		var ret GetOpenSearchOpensearchUserConfigPrivateAccess
+		return ret
+	}).(GetOpenSearchOpensearchUserConfigPrivateAccessOutput)
+}
+
+// Allow clients to connect to opensearch with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+func (o GetOpenSearchOpensearchUserConfigPrivateAccessPtrOutput) Opensearch() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigPrivateAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Opensearch
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Allow clients to connect to opensearchDashboards with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+func (o GetOpenSearchOpensearchUserConfigPrivateAccessPtrOutput) OpensearchDashboards() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigPrivateAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.OpensearchDashboards
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+func (o GetOpenSearchOpensearchUserConfigPrivateAccessPtrOutput) Prometheus() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigPrivateAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Prometheus
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigPrivatelinkAccess struct {
+	// Enable opensearch.
+	Opensearch *bool `pulumi:"opensearch"`
+	// Enable opensearch_dashboards.
+	OpensearchDashboards *bool `pulumi:"opensearchDashboards"`
+	// Enable prometheus.
+	Prometheus *bool `pulumi:"prometheus"`
+}
+
+// GetOpenSearchOpensearchUserConfigPrivatelinkAccessInput is an input type that accepts GetOpenSearchOpensearchUserConfigPrivatelinkAccessArgs and GetOpenSearchOpensearchUserConfigPrivatelinkAccessOutput values.
+// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigPrivatelinkAccessInput` via:
+//
+//	GetOpenSearchOpensearchUserConfigPrivatelinkAccessArgs{...}
+type GetOpenSearchOpensearchUserConfigPrivatelinkAccessInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchOpensearchUserConfigPrivatelinkAccessOutput() GetOpenSearchOpensearchUserConfigPrivatelinkAccessOutput
+	ToGetOpenSearchOpensearchUserConfigPrivatelinkAccessOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigPrivatelinkAccessOutput
+}
+
+type GetOpenSearchOpensearchUserConfigPrivatelinkAccessArgs struct {
+	// Enable opensearch.
+	Opensearch pulumi.BoolPtrInput `pulumi:"opensearch"`
+	// Enable opensearch_dashboards.
+	OpensearchDashboards pulumi.BoolPtrInput `pulumi:"opensearchDashboards"`
+	// Enable prometheus.
+	Prometheus pulumi.BoolPtrInput `pulumi:"prometheus"`
+}
+
+func (GetOpenSearchOpensearchUserConfigPrivatelinkAccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigPrivatelinkAccess)(nil)).Elem()
+}
+
+func (i GetOpenSearchOpensearchUserConfigPrivatelinkAccessArgs) ToGetOpenSearchOpensearchUserConfigPrivatelinkAccessOutput() GetOpenSearchOpensearchUserConfigPrivatelinkAccessOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigPrivatelinkAccessOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchOpensearchUserConfigPrivatelinkAccessArgs) ToGetOpenSearchOpensearchUserConfigPrivatelinkAccessOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigPrivatelinkAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigPrivatelinkAccessOutput)
+}
+
+func (i GetOpenSearchOpensearchUserConfigPrivatelinkAccessArgs) ToGetOpenSearchOpensearchUserConfigPrivatelinkAccessPtrOutput() GetOpenSearchOpensearchUserConfigPrivatelinkAccessPtrOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigPrivatelinkAccessPtrOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchOpensearchUserConfigPrivatelinkAccessArgs) ToGetOpenSearchOpensearchUserConfigPrivatelinkAccessPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigPrivatelinkAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigPrivatelinkAccessOutput).ToGetOpenSearchOpensearchUserConfigPrivatelinkAccessPtrOutputWithContext(ctx)
+}
+
+// GetOpenSearchOpensearchUserConfigPrivatelinkAccessPtrInput is an input type that accepts GetOpenSearchOpensearchUserConfigPrivatelinkAccessArgs, GetOpenSearchOpensearchUserConfigPrivatelinkAccessPtr and GetOpenSearchOpensearchUserConfigPrivatelinkAccessPtrOutput values.
+// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigPrivatelinkAccessPtrInput` via:
+//
+//	        GetOpenSearchOpensearchUserConfigPrivatelinkAccessArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetOpenSearchOpensearchUserConfigPrivatelinkAccessPtrInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchOpensearchUserConfigPrivatelinkAccessPtrOutput() GetOpenSearchOpensearchUserConfigPrivatelinkAccessPtrOutput
+	ToGetOpenSearchOpensearchUserConfigPrivatelinkAccessPtrOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigPrivatelinkAccessPtrOutput
+}
+
+type getOpenSearchOpensearchUserConfigPrivatelinkAccessPtrType GetOpenSearchOpensearchUserConfigPrivatelinkAccessArgs
+
+func GetOpenSearchOpensearchUserConfigPrivatelinkAccessPtr(v *GetOpenSearchOpensearchUserConfigPrivatelinkAccessArgs) GetOpenSearchOpensearchUserConfigPrivatelinkAccessPtrInput {
+	return (*getOpenSearchOpensearchUserConfigPrivatelinkAccessPtrType)(v)
+}
+
+func (*getOpenSearchOpensearchUserConfigPrivatelinkAccessPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigPrivatelinkAccess)(nil)).Elem()
+}
+
+func (i *getOpenSearchOpensearchUserConfigPrivatelinkAccessPtrType) ToGetOpenSearchOpensearchUserConfigPrivatelinkAccessPtrOutput() GetOpenSearchOpensearchUserConfigPrivatelinkAccessPtrOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigPrivatelinkAccessPtrOutputWithContext(context.Background())
+}
+
+func (i *getOpenSearchOpensearchUserConfigPrivatelinkAccessPtrType) ToGetOpenSearchOpensearchUserConfigPrivatelinkAccessPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigPrivatelinkAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigPrivatelinkAccessPtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigPrivatelinkAccessOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchOpensearchUserConfigPrivatelinkAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigPrivatelinkAccess)(nil)).Elem()
+}
+
+func (o GetOpenSearchOpensearchUserConfigPrivatelinkAccessOutput) ToGetOpenSearchOpensearchUserConfigPrivatelinkAccessOutput() GetOpenSearchOpensearchUserConfigPrivatelinkAccessOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigPrivatelinkAccessOutput) ToGetOpenSearchOpensearchUserConfigPrivatelinkAccessOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigPrivatelinkAccessOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigPrivatelinkAccessOutput) ToGetOpenSearchOpensearchUserConfigPrivatelinkAccessPtrOutput() GetOpenSearchOpensearchUserConfigPrivatelinkAccessPtrOutput {
+	return o.ToGetOpenSearchOpensearchUserConfigPrivatelinkAccessPtrOutputWithContext(context.Background())
+}
+
+func (o GetOpenSearchOpensearchUserConfigPrivatelinkAccessOutput) ToGetOpenSearchOpensearchUserConfigPrivatelinkAccessPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigPrivatelinkAccessPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetOpenSearchOpensearchUserConfigPrivatelinkAccess) *GetOpenSearchOpensearchUserConfigPrivatelinkAccess {
+		return &v
+	}).(GetOpenSearchOpensearchUserConfigPrivatelinkAccessPtrOutput)
+}
+
+// Enable opensearch.
+func (o GetOpenSearchOpensearchUserConfigPrivatelinkAccessOutput) Opensearch() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigPrivatelinkAccess) *bool { return v.Opensearch }).(pulumi.BoolPtrOutput)
+}
+
+// Enable opensearch_dashboards.
+func (o GetOpenSearchOpensearchUserConfigPrivatelinkAccessOutput) OpensearchDashboards() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigPrivatelinkAccess) *bool { return v.OpensearchDashboards }).(pulumi.BoolPtrOutput)
+}
+
+// Enable prometheus.
+func (o GetOpenSearchOpensearchUserConfigPrivatelinkAccessOutput) Prometheus() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigPrivatelinkAccess) *bool { return v.Prometheus }).(pulumi.BoolPtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigPrivatelinkAccessPtrOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchOpensearchUserConfigPrivatelinkAccessPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigPrivatelinkAccess)(nil)).Elem()
+}
+
+func (o GetOpenSearchOpensearchUserConfigPrivatelinkAccessPtrOutput) ToGetOpenSearchOpensearchUserConfigPrivatelinkAccessPtrOutput() GetOpenSearchOpensearchUserConfigPrivatelinkAccessPtrOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigPrivatelinkAccessPtrOutput) ToGetOpenSearchOpensearchUserConfigPrivatelinkAccessPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigPrivatelinkAccessPtrOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigPrivatelinkAccessPtrOutput) Elem() GetOpenSearchOpensearchUserConfigPrivatelinkAccessOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigPrivatelinkAccess) GetOpenSearchOpensearchUserConfigPrivatelinkAccess {
+		if v != nil {
+			return *v
+		}
+		var ret GetOpenSearchOpensearchUserConfigPrivatelinkAccess
+		return ret
+	}).(GetOpenSearchOpensearchUserConfigPrivatelinkAccessOutput)
+}
+
+// Enable opensearch.
+func (o GetOpenSearchOpensearchUserConfigPrivatelinkAccessPtrOutput) Opensearch() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigPrivatelinkAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Opensearch
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Enable opensearch_dashboards.
+func (o GetOpenSearchOpensearchUserConfigPrivatelinkAccessPtrOutput) OpensearchDashboards() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigPrivatelinkAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.OpensearchDashboards
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Enable prometheus.
+func (o GetOpenSearchOpensearchUserConfigPrivatelinkAccessPtrOutput) Prometheus() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigPrivatelinkAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Prometheus
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigPublicAccess struct {
+	// Allow clients to connect to opensearch from the public internet for service nodes that are in a project VPC or another type of private network.
+	Opensearch *bool `pulumi:"opensearch"`
+	// Allow clients to connect to opensearchDashboards from the public internet for service nodes that are in a project VPC or another type of private network.
+	OpensearchDashboards *bool `pulumi:"opensearchDashboards"`
+	// Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
+	Prometheus *bool `pulumi:"prometheus"`
+}
+
+// GetOpenSearchOpensearchUserConfigPublicAccessInput is an input type that accepts GetOpenSearchOpensearchUserConfigPublicAccessArgs and GetOpenSearchOpensearchUserConfigPublicAccessOutput values.
+// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigPublicAccessInput` via:
+//
+//	GetOpenSearchOpensearchUserConfigPublicAccessArgs{...}
+type GetOpenSearchOpensearchUserConfigPublicAccessInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchOpensearchUserConfigPublicAccessOutput() GetOpenSearchOpensearchUserConfigPublicAccessOutput
+	ToGetOpenSearchOpensearchUserConfigPublicAccessOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigPublicAccessOutput
+}
+
+type GetOpenSearchOpensearchUserConfigPublicAccessArgs struct {
+	// Allow clients to connect to opensearch from the public internet for service nodes that are in a project VPC or another type of private network.
+	Opensearch pulumi.BoolPtrInput `pulumi:"opensearch"`
+	// Allow clients to connect to opensearchDashboards from the public internet for service nodes that are in a project VPC or another type of private network.
+	OpensearchDashboards pulumi.BoolPtrInput `pulumi:"opensearchDashboards"`
+	// Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
+	Prometheus pulumi.BoolPtrInput `pulumi:"prometheus"`
+}
+
+func (GetOpenSearchOpensearchUserConfigPublicAccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigPublicAccess)(nil)).Elem()
+}
+
+func (i GetOpenSearchOpensearchUserConfigPublicAccessArgs) ToGetOpenSearchOpensearchUserConfigPublicAccessOutput() GetOpenSearchOpensearchUserConfigPublicAccessOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigPublicAccessOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchOpensearchUserConfigPublicAccessArgs) ToGetOpenSearchOpensearchUserConfigPublicAccessOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigPublicAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigPublicAccessOutput)
+}
+
+func (i GetOpenSearchOpensearchUserConfigPublicAccessArgs) ToGetOpenSearchOpensearchUserConfigPublicAccessPtrOutput() GetOpenSearchOpensearchUserConfigPublicAccessPtrOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigPublicAccessPtrOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchOpensearchUserConfigPublicAccessArgs) ToGetOpenSearchOpensearchUserConfigPublicAccessPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigPublicAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigPublicAccessOutput).ToGetOpenSearchOpensearchUserConfigPublicAccessPtrOutputWithContext(ctx)
+}
+
+// GetOpenSearchOpensearchUserConfigPublicAccessPtrInput is an input type that accepts GetOpenSearchOpensearchUserConfigPublicAccessArgs, GetOpenSearchOpensearchUserConfigPublicAccessPtr and GetOpenSearchOpensearchUserConfigPublicAccessPtrOutput values.
+// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigPublicAccessPtrInput` via:
+//
+//	        GetOpenSearchOpensearchUserConfigPublicAccessArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetOpenSearchOpensearchUserConfigPublicAccessPtrInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchOpensearchUserConfigPublicAccessPtrOutput() GetOpenSearchOpensearchUserConfigPublicAccessPtrOutput
+	ToGetOpenSearchOpensearchUserConfigPublicAccessPtrOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigPublicAccessPtrOutput
+}
+
+type getOpenSearchOpensearchUserConfigPublicAccessPtrType GetOpenSearchOpensearchUserConfigPublicAccessArgs
+
+func GetOpenSearchOpensearchUserConfigPublicAccessPtr(v *GetOpenSearchOpensearchUserConfigPublicAccessArgs) GetOpenSearchOpensearchUserConfigPublicAccessPtrInput {
+	return (*getOpenSearchOpensearchUserConfigPublicAccessPtrType)(v)
+}
+
+func (*getOpenSearchOpensearchUserConfigPublicAccessPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigPublicAccess)(nil)).Elem()
+}
+
+func (i *getOpenSearchOpensearchUserConfigPublicAccessPtrType) ToGetOpenSearchOpensearchUserConfigPublicAccessPtrOutput() GetOpenSearchOpensearchUserConfigPublicAccessPtrOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigPublicAccessPtrOutputWithContext(context.Background())
+}
+
+func (i *getOpenSearchOpensearchUserConfigPublicAccessPtrType) ToGetOpenSearchOpensearchUserConfigPublicAccessPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigPublicAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigPublicAccessPtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigPublicAccessOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchOpensearchUserConfigPublicAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigPublicAccess)(nil)).Elem()
+}
+
+func (o GetOpenSearchOpensearchUserConfigPublicAccessOutput) ToGetOpenSearchOpensearchUserConfigPublicAccessOutput() GetOpenSearchOpensearchUserConfigPublicAccessOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigPublicAccessOutput) ToGetOpenSearchOpensearchUserConfigPublicAccessOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigPublicAccessOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigPublicAccessOutput) ToGetOpenSearchOpensearchUserConfigPublicAccessPtrOutput() GetOpenSearchOpensearchUserConfigPublicAccessPtrOutput {
+	return o.ToGetOpenSearchOpensearchUserConfigPublicAccessPtrOutputWithContext(context.Background())
+}
+
+func (o GetOpenSearchOpensearchUserConfigPublicAccessOutput) ToGetOpenSearchOpensearchUserConfigPublicAccessPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigPublicAccessPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetOpenSearchOpensearchUserConfigPublicAccess) *GetOpenSearchOpensearchUserConfigPublicAccess {
+		return &v
+	}).(GetOpenSearchOpensearchUserConfigPublicAccessPtrOutput)
+}
+
+// Allow clients to connect to opensearch from the public internet for service nodes that are in a project VPC or another type of private network.
+func (o GetOpenSearchOpensearchUserConfigPublicAccessOutput) Opensearch() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigPublicAccess) *bool { return v.Opensearch }).(pulumi.BoolPtrOutput)
+}
+
+// Allow clients to connect to opensearchDashboards from the public internet for service nodes that are in a project VPC or another type of private network.
+func (o GetOpenSearchOpensearchUserConfigPublicAccessOutput) OpensearchDashboards() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigPublicAccess) *bool { return v.OpensearchDashboards }).(pulumi.BoolPtrOutput)
+}
+
+// Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
+func (o GetOpenSearchOpensearchUserConfigPublicAccessOutput) Prometheus() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigPublicAccess) *bool { return v.Prometheus }).(pulumi.BoolPtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigPublicAccessPtrOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchOpensearchUserConfigPublicAccessPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigPublicAccess)(nil)).Elem()
+}
+
+func (o GetOpenSearchOpensearchUserConfigPublicAccessPtrOutput) ToGetOpenSearchOpensearchUserConfigPublicAccessPtrOutput() GetOpenSearchOpensearchUserConfigPublicAccessPtrOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigPublicAccessPtrOutput) ToGetOpenSearchOpensearchUserConfigPublicAccessPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigPublicAccessPtrOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigPublicAccessPtrOutput) Elem() GetOpenSearchOpensearchUserConfigPublicAccessOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigPublicAccess) GetOpenSearchOpensearchUserConfigPublicAccess {
+		if v != nil {
+			return *v
+		}
+		var ret GetOpenSearchOpensearchUserConfigPublicAccess
+		return ret
+	}).(GetOpenSearchOpensearchUserConfigPublicAccessOutput)
+}
+
+// Allow clients to connect to opensearch from the public internet for service nodes that are in a project VPC or another type of private network.
+func (o GetOpenSearchOpensearchUserConfigPublicAccessPtrOutput) Opensearch() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigPublicAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Opensearch
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Allow clients to connect to opensearchDashboards from the public internet for service nodes that are in a project VPC or another type of private network.
+func (o GetOpenSearchOpensearchUserConfigPublicAccessPtrOutput) OpensearchDashboards() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigPublicAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.OpensearchDashboards
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
+func (o GetOpenSearchOpensearchUserConfigPublicAccessPtrOutput) Prometheus() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigPublicAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Prometheus
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigS3Migration struct {
+	// AWS Access key.
+	AccessKey string `pulumi:"accessKey"`
+	// The path to the repository data within its container. The value of this setting should not start or end with a /.
+	BasePath string `pulumi:"basePath"`
+	// S3 bucket name.
+	Bucket string `pulumi:"bucket"`
+	// Big files can be broken down into chunks during snapshotting if needed. Should be the same as for the 3rd party repository.
+	ChunkSize *string `pulumi:"chunkSize"`
+	// When set to true metadata files are stored in compressed format.
+	Compress *bool `pulumi:"compress"`
+	// The S3 service endpoint to connect to. If you are using an S3-compatible service then you should set this to the service’s endpoint.
+	Endpoint *string `pulumi:"endpoint"`
+	// Whether to restore aliases alongside their associated indexes. Default is true.
+	IncludeAliases *bool `pulumi:"includeAliases"`
+	// A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. Example: `metrics*,logs*,data-20240823`.
+	Indices string `pulumi:"indices"`
+	// Throttles the restore rate per node. Defaults to unlimited. Note that if the recovery settings for managed services are set, this value is overridden by the recovery settings. Value should be a byte size with unit, e.g. 40mb, 100kb, 1gb.
+	MaxRestoreBytesPerSec *string `pulumi:"maxRestoreBytesPerSec"`
+	// Throttles the snapshot rate per node. Defaults to 40mb. Note that if the recovery settings for managed services are set, this value is overridden by the recovery settings. Value should be a byte size with unit, e.g. 40mb, 100kb, 1gb.
+	MaxSnapshotBytesPerSec *string `pulumi:"maxSnapshotBytesPerSec"`
+	// Whether the repository is read-only. Default: `true`.
+	Readonly *bool `pulumi:"readonly"`
+	// S3 region.
+	Region string `pulumi:"region"`
+	// If true, restore the cluster state. Defaults to false.
+	RestoreGlobalState *bool `pulumi:"restoreGlobalState"`
+	// AWS secret key.
+	SecretKey string `pulumi:"secretKey"`
+	// When set to true files are encrypted on server side.
+	ServerSideEncryption *bool `pulumi:"serverSideEncryption"`
+	// The snapshot name to restore from.
+	SnapshotName string `pulumi:"snapshotName"`
+}
+
+// GetOpenSearchOpensearchUserConfigS3MigrationInput is an input type that accepts GetOpenSearchOpensearchUserConfigS3MigrationArgs and GetOpenSearchOpensearchUserConfigS3MigrationOutput values.
+// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigS3MigrationInput` via:
+//
+//	GetOpenSearchOpensearchUserConfigS3MigrationArgs{...}
+type GetOpenSearchOpensearchUserConfigS3MigrationInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchOpensearchUserConfigS3MigrationOutput() GetOpenSearchOpensearchUserConfigS3MigrationOutput
+	ToGetOpenSearchOpensearchUserConfigS3MigrationOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigS3MigrationOutput
+}
+
+type GetOpenSearchOpensearchUserConfigS3MigrationArgs struct {
+	// AWS Access key.
+	AccessKey pulumi.StringInput `pulumi:"accessKey"`
+	// The path to the repository data within its container. The value of this setting should not start or end with a /.
+	BasePath pulumi.StringInput `pulumi:"basePath"`
+	// S3 bucket name.
+	Bucket pulumi.StringInput `pulumi:"bucket"`
+	// Big files can be broken down into chunks during snapshotting if needed. Should be the same as for the 3rd party repository.
+	ChunkSize pulumi.StringPtrInput `pulumi:"chunkSize"`
+	// When set to true metadata files are stored in compressed format.
+	Compress pulumi.BoolPtrInput `pulumi:"compress"`
+	// The S3 service endpoint to connect to. If you are using an S3-compatible service then you should set this to the service’s endpoint.
+	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
+	// Whether to restore aliases alongside their associated indexes. Default is true.
+	IncludeAliases pulumi.BoolPtrInput `pulumi:"includeAliases"`
+	// A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. Example: `metrics*,logs*,data-20240823`.
+	Indices pulumi.StringInput `pulumi:"indices"`
+	// Throttles the restore rate per node. Defaults to unlimited. Note that if the recovery settings for managed services are set, this value is overridden by the recovery settings. Value should be a byte size with unit, e.g. 40mb, 100kb, 1gb.
+	MaxRestoreBytesPerSec pulumi.StringPtrInput `pulumi:"maxRestoreBytesPerSec"`
+	// Throttles the snapshot rate per node. Defaults to 40mb. Note that if the recovery settings for managed services are set, this value is overridden by the recovery settings. Value should be a byte size with unit, e.g. 40mb, 100kb, 1gb.
+	MaxSnapshotBytesPerSec pulumi.StringPtrInput `pulumi:"maxSnapshotBytesPerSec"`
+	// Whether the repository is read-only. Default: `true`.
+	Readonly pulumi.BoolPtrInput `pulumi:"readonly"`
+	// S3 region.
+	Region pulumi.StringInput `pulumi:"region"`
+	// If true, restore the cluster state. Defaults to false.
+	RestoreGlobalState pulumi.BoolPtrInput `pulumi:"restoreGlobalState"`
+	// AWS secret key.
+	SecretKey pulumi.StringInput `pulumi:"secretKey"`
+	// When set to true files are encrypted on server side.
+	ServerSideEncryption pulumi.BoolPtrInput `pulumi:"serverSideEncryption"`
+	// The snapshot name to restore from.
+	SnapshotName pulumi.StringInput `pulumi:"snapshotName"`
+}
+
+func (GetOpenSearchOpensearchUserConfigS3MigrationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigS3Migration)(nil)).Elem()
+}
+
+func (i GetOpenSearchOpensearchUserConfigS3MigrationArgs) ToGetOpenSearchOpensearchUserConfigS3MigrationOutput() GetOpenSearchOpensearchUserConfigS3MigrationOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigS3MigrationOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchOpensearchUserConfigS3MigrationArgs) ToGetOpenSearchOpensearchUserConfigS3MigrationOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigS3MigrationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigS3MigrationOutput)
+}
+
+func (i GetOpenSearchOpensearchUserConfigS3MigrationArgs) ToGetOpenSearchOpensearchUserConfigS3MigrationPtrOutput() GetOpenSearchOpensearchUserConfigS3MigrationPtrOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigS3MigrationPtrOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchOpensearchUserConfigS3MigrationArgs) ToGetOpenSearchOpensearchUserConfigS3MigrationPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigS3MigrationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigS3MigrationOutput).ToGetOpenSearchOpensearchUserConfigS3MigrationPtrOutputWithContext(ctx)
+}
+
+// GetOpenSearchOpensearchUserConfigS3MigrationPtrInput is an input type that accepts GetOpenSearchOpensearchUserConfigS3MigrationArgs, GetOpenSearchOpensearchUserConfigS3MigrationPtr and GetOpenSearchOpensearchUserConfigS3MigrationPtrOutput values.
+// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigS3MigrationPtrInput` via:
+//
+//	        GetOpenSearchOpensearchUserConfigS3MigrationArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetOpenSearchOpensearchUserConfigS3MigrationPtrInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchOpensearchUserConfigS3MigrationPtrOutput() GetOpenSearchOpensearchUserConfigS3MigrationPtrOutput
+	ToGetOpenSearchOpensearchUserConfigS3MigrationPtrOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigS3MigrationPtrOutput
+}
+
+type getOpenSearchOpensearchUserConfigS3MigrationPtrType GetOpenSearchOpensearchUserConfigS3MigrationArgs
+
+func GetOpenSearchOpensearchUserConfigS3MigrationPtr(v *GetOpenSearchOpensearchUserConfigS3MigrationArgs) GetOpenSearchOpensearchUserConfigS3MigrationPtrInput {
+	return (*getOpenSearchOpensearchUserConfigS3MigrationPtrType)(v)
+}
+
+func (*getOpenSearchOpensearchUserConfigS3MigrationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigS3Migration)(nil)).Elem()
+}
+
+func (i *getOpenSearchOpensearchUserConfigS3MigrationPtrType) ToGetOpenSearchOpensearchUserConfigS3MigrationPtrOutput() GetOpenSearchOpensearchUserConfigS3MigrationPtrOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigS3MigrationPtrOutputWithContext(context.Background())
+}
+
+func (i *getOpenSearchOpensearchUserConfigS3MigrationPtrType) ToGetOpenSearchOpensearchUserConfigS3MigrationPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigS3MigrationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigS3MigrationPtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigS3MigrationOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchOpensearchUserConfigS3MigrationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigS3Migration)(nil)).Elem()
+}
+
+func (o GetOpenSearchOpensearchUserConfigS3MigrationOutput) ToGetOpenSearchOpensearchUserConfigS3MigrationOutput() GetOpenSearchOpensearchUserConfigS3MigrationOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigS3MigrationOutput) ToGetOpenSearchOpensearchUserConfigS3MigrationOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigS3MigrationOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigS3MigrationOutput) ToGetOpenSearchOpensearchUserConfigS3MigrationPtrOutput() GetOpenSearchOpensearchUserConfigS3MigrationPtrOutput {
+	return o.ToGetOpenSearchOpensearchUserConfigS3MigrationPtrOutputWithContext(context.Background())
+}
+
+func (o GetOpenSearchOpensearchUserConfigS3MigrationOutput) ToGetOpenSearchOpensearchUserConfigS3MigrationPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigS3MigrationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetOpenSearchOpensearchUserConfigS3Migration) *GetOpenSearchOpensearchUserConfigS3Migration {
+		return &v
+	}).(GetOpenSearchOpensearchUserConfigS3MigrationPtrOutput)
+}
+
+// AWS Access key.
+func (o GetOpenSearchOpensearchUserConfigS3MigrationOutput) AccessKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigS3Migration) string { return v.AccessKey }).(pulumi.StringOutput)
+}
+
+// The path to the repository data within its container. The value of this setting should not start or end with a /.
+func (o GetOpenSearchOpensearchUserConfigS3MigrationOutput) BasePath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigS3Migration) string { return v.BasePath }).(pulumi.StringOutput)
+}
+
+// S3 bucket name.
+func (o GetOpenSearchOpensearchUserConfigS3MigrationOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigS3Migration) string { return v.Bucket }).(pulumi.StringOutput)
+}
+
+// Big files can be broken down into chunks during snapshotting if needed. Should be the same as for the 3rd party repository.
+func (o GetOpenSearchOpensearchUserConfigS3MigrationOutput) ChunkSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigS3Migration) *string { return v.ChunkSize }).(pulumi.StringPtrOutput)
+}
+
+// When set to true metadata files are stored in compressed format.
+func (o GetOpenSearchOpensearchUserConfigS3MigrationOutput) Compress() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigS3Migration) *bool { return v.Compress }).(pulumi.BoolPtrOutput)
+}
+
+// The S3 service endpoint to connect to. If you are using an S3-compatible service then you should set this to the service’s endpoint.
+func (o GetOpenSearchOpensearchUserConfigS3MigrationOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigS3Migration) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
+}
+
+// Whether to restore aliases alongside their associated indexes. Default is true.
+func (o GetOpenSearchOpensearchUserConfigS3MigrationOutput) IncludeAliases() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigS3Migration) *bool { return v.IncludeAliases }).(pulumi.BoolPtrOutput)
+}
+
+// A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. Example: `metrics*,logs*,data-20240823`.
+func (o GetOpenSearchOpensearchUserConfigS3MigrationOutput) Indices() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigS3Migration) string { return v.Indices }).(pulumi.StringOutput)
+}
+
+// Throttles the restore rate per node. Defaults to unlimited. Note that if the recovery settings for managed services are set, this value is overridden by the recovery settings. Value should be a byte size with unit, e.g. 40mb, 100kb, 1gb.
+func (o GetOpenSearchOpensearchUserConfigS3MigrationOutput) MaxRestoreBytesPerSec() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigS3Migration) *string { return v.MaxRestoreBytesPerSec }).(pulumi.StringPtrOutput)
+}
+
+// Throttles the snapshot rate per node. Defaults to 40mb. Note that if the recovery settings for managed services are set, this value is overridden by the recovery settings. Value should be a byte size with unit, e.g. 40mb, 100kb, 1gb.
+func (o GetOpenSearchOpensearchUserConfigS3MigrationOutput) MaxSnapshotBytesPerSec() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigS3Migration) *string { return v.MaxSnapshotBytesPerSec }).(pulumi.StringPtrOutput)
+}
+
+// Whether the repository is read-only. Default: `true`.
+func (o GetOpenSearchOpensearchUserConfigS3MigrationOutput) Readonly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigS3Migration) *bool { return v.Readonly }).(pulumi.BoolPtrOutput)
+}
+
+// S3 region.
+func (o GetOpenSearchOpensearchUserConfigS3MigrationOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigS3Migration) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// If true, restore the cluster state. Defaults to false.
+func (o GetOpenSearchOpensearchUserConfigS3MigrationOutput) RestoreGlobalState() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigS3Migration) *bool { return v.RestoreGlobalState }).(pulumi.BoolPtrOutput)
+}
+
+// AWS secret key.
+func (o GetOpenSearchOpensearchUserConfigS3MigrationOutput) SecretKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigS3Migration) string { return v.SecretKey }).(pulumi.StringOutput)
+}
+
+// When set to true files are encrypted on server side.
+func (o GetOpenSearchOpensearchUserConfigS3MigrationOutput) ServerSideEncryption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigS3Migration) *bool { return v.ServerSideEncryption }).(pulumi.BoolPtrOutput)
+}
+
+// The snapshot name to restore from.
+func (o GetOpenSearchOpensearchUserConfigS3MigrationOutput) SnapshotName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigS3Migration) string { return v.SnapshotName }).(pulumi.StringOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigS3MigrationPtrOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchOpensearchUserConfigS3MigrationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigS3Migration)(nil)).Elem()
+}
+
+func (o GetOpenSearchOpensearchUserConfigS3MigrationPtrOutput) ToGetOpenSearchOpensearchUserConfigS3MigrationPtrOutput() GetOpenSearchOpensearchUserConfigS3MigrationPtrOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigS3MigrationPtrOutput) ToGetOpenSearchOpensearchUserConfigS3MigrationPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigS3MigrationPtrOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigS3MigrationPtrOutput) Elem() GetOpenSearchOpensearchUserConfigS3MigrationOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigS3Migration) GetOpenSearchOpensearchUserConfigS3Migration {
+		if v != nil {
+			return *v
+		}
+		var ret GetOpenSearchOpensearchUserConfigS3Migration
+		return ret
+	}).(GetOpenSearchOpensearchUserConfigS3MigrationOutput)
+}
+
+// AWS Access key.
+func (o GetOpenSearchOpensearchUserConfigS3MigrationPtrOutput) AccessKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigS3Migration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AccessKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// The path to the repository data within its container. The value of this setting should not start or end with a /.
+func (o GetOpenSearchOpensearchUserConfigS3MigrationPtrOutput) BasePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigS3Migration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.BasePath
+	}).(pulumi.StringPtrOutput)
+}
+
+// S3 bucket name.
+func (o GetOpenSearchOpensearchUserConfigS3MigrationPtrOutput) Bucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigS3Migration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Bucket
+	}).(pulumi.StringPtrOutput)
+}
+
+// Big files can be broken down into chunks during snapshotting if needed. Should be the same as for the 3rd party repository.
+func (o GetOpenSearchOpensearchUserConfigS3MigrationPtrOutput) ChunkSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigS3Migration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ChunkSize
+	}).(pulumi.StringPtrOutput)
+}
+
+// When set to true metadata files are stored in compressed format.
+func (o GetOpenSearchOpensearchUserConfigS3MigrationPtrOutput) Compress() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigS3Migration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Compress
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The S3 service endpoint to connect to. If you are using an S3-compatible service then you should set this to the service’s endpoint.
+func (o GetOpenSearchOpensearchUserConfigS3MigrationPtrOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigS3Migration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Endpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to restore aliases alongside their associated indexes. Default is true.
+func (o GetOpenSearchOpensearchUserConfigS3MigrationPtrOutput) IncludeAliases() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigS3Migration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IncludeAliases
+	}).(pulumi.BoolPtrOutput)
+}
+
+// A comma-delimited list of indices to restore from the snapshot. Multi-index syntax is supported. Example: `metrics*,logs*,data-20240823`.
+func (o GetOpenSearchOpensearchUserConfigS3MigrationPtrOutput) Indices() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigS3Migration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Indices
+	}).(pulumi.StringPtrOutput)
+}
+
+// Throttles the restore rate per node. Defaults to unlimited. Note that if the recovery settings for managed services are set, this value is overridden by the recovery settings. Value should be a byte size with unit, e.g. 40mb, 100kb, 1gb.
+func (o GetOpenSearchOpensearchUserConfigS3MigrationPtrOutput) MaxRestoreBytesPerSec() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigS3Migration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxRestoreBytesPerSec
+	}).(pulumi.StringPtrOutput)
+}
+
+// Throttles the snapshot rate per node. Defaults to 40mb. Note that if the recovery settings for managed services are set, this value is overridden by the recovery settings. Value should be a byte size with unit, e.g. 40mb, 100kb, 1gb.
+func (o GetOpenSearchOpensearchUserConfigS3MigrationPtrOutput) MaxSnapshotBytesPerSec() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigS3Migration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxSnapshotBytesPerSec
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether the repository is read-only. Default: `true`.
+func (o GetOpenSearchOpensearchUserConfigS3MigrationPtrOutput) Readonly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigS3Migration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Readonly
+	}).(pulumi.BoolPtrOutput)
+}
+
+// S3 region.
+func (o GetOpenSearchOpensearchUserConfigS3MigrationPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigS3Migration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+// If true, restore the cluster state. Defaults to false.
+func (o GetOpenSearchOpensearchUserConfigS3MigrationPtrOutput) RestoreGlobalState() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigS3Migration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RestoreGlobalState
+	}).(pulumi.BoolPtrOutput)
+}
+
+// AWS secret key.
+func (o GetOpenSearchOpensearchUserConfigS3MigrationPtrOutput) SecretKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigS3Migration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SecretKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// When set to true files are encrypted on server side.
+func (o GetOpenSearchOpensearchUserConfigS3MigrationPtrOutput) ServerSideEncryption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigS3Migration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ServerSideEncryption
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The snapshot name to restore from.
+func (o GetOpenSearchOpensearchUserConfigS3MigrationPtrOutput) SnapshotName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigS3Migration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SnapshotName
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigSaml struct {
+	// Enables or disables SAML-based authentication for OpenSearch. When enabled, users can authenticate using SAML with an Identity Provider. Default: `true`.
+	Enabled bool `pulumi:"enabled"`
+	// The unique identifier for the Identity Provider (IdP) entity that is used for SAML authentication. This value is typically provided by the IdP. Example: `test-idp-entity-id`.
+	IdpEntityId string `pulumi:"idpEntityId"`
+	// The URL of the SAML metadata for the Identity Provider (IdP). This is used to configure SAML-based authentication with the IdP. Example: `https://test-account.okta.com/app/exk491jujcVc83LEX697/sso/saml/metadata`.
+	IdpMetadataUrl string `pulumi:"idpMetadataUrl"`
+	// This parameter specifies the PEM-encoded root certificate authority (CA) content for the SAML identity provider (IdP) server verification. The root CA content is used to verify the SSL/TLS certificate presented by the server. Example: `-----BEGIN CERTIFICATE-----
+	// ...
+	// -----END CERTIFICATE-----
+	// `.
+	IdpPemtrustedcasContent *string `pulumi:"idpPemtrustedcasContent"`
+	// Optional. Specifies the attribute in the SAML response where role information is stored, if available. Role attributes are not required for SAML authentication, but can be included in SAML assertions by most Identity Providers (IdPs) to determine user access levels or permissions. Example: `RoleName`.
+	RolesKey *string `pulumi:"rolesKey"`
+	// The unique identifier for the Service Provider (SP) entity that is used for SAML authentication. This value is typically provided by the SP. Example: `test-sp-entity-id`.
+	SpEntityId string `pulumi:"spEntityId"`
+	// Optional. Specifies the attribute in the SAML response where the subject identifier is stored. If not configured, the NameID attribute is used by default. Example: `NameID`.
+	SubjectKey *string `pulumi:"subjectKey"`
+}
+
+// GetOpenSearchOpensearchUserConfigSamlInput is an input type that accepts GetOpenSearchOpensearchUserConfigSamlArgs and GetOpenSearchOpensearchUserConfigSamlOutput values.
+// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigSamlInput` via:
+//
+//	GetOpenSearchOpensearchUserConfigSamlArgs{...}
+type GetOpenSearchOpensearchUserConfigSamlInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchOpensearchUserConfigSamlOutput() GetOpenSearchOpensearchUserConfigSamlOutput
+	ToGetOpenSearchOpensearchUserConfigSamlOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigSamlOutput
+}
+
+type GetOpenSearchOpensearchUserConfigSamlArgs struct {
+	// Enables or disables SAML-based authentication for OpenSearch. When enabled, users can authenticate using SAML with an Identity Provider. Default: `true`.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// The unique identifier for the Identity Provider (IdP) entity that is used for SAML authentication. This value is typically provided by the IdP. Example: `test-idp-entity-id`.
+	IdpEntityId pulumi.StringInput `pulumi:"idpEntityId"`
+	// The URL of the SAML metadata for the Identity Provider (IdP). This is used to configure SAML-based authentication with the IdP. Example: `https://test-account.okta.com/app/exk491jujcVc83LEX697/sso/saml/metadata`.
+	IdpMetadataUrl pulumi.StringInput `pulumi:"idpMetadataUrl"`
+	// This parameter specifies the PEM-encoded root certificate authority (CA) content for the SAML identity provider (IdP) server verification. The root CA content is used to verify the SSL/TLS certificate presented by the server. Example: `-----BEGIN CERTIFICATE-----
+	// ...
+	// -----END CERTIFICATE-----
+	// `.
+	IdpPemtrustedcasContent pulumi.StringPtrInput `pulumi:"idpPemtrustedcasContent"`
+	// Optional. Specifies the attribute in the SAML response where role information is stored, if available. Role attributes are not required for SAML authentication, but can be included in SAML assertions by most Identity Providers (IdPs) to determine user access levels or permissions. Example: `RoleName`.
+	RolesKey pulumi.StringPtrInput `pulumi:"rolesKey"`
+	// The unique identifier for the Service Provider (SP) entity that is used for SAML authentication. This value is typically provided by the SP. Example: `test-sp-entity-id`.
+	SpEntityId pulumi.StringInput `pulumi:"spEntityId"`
+	// Optional. Specifies the attribute in the SAML response where the subject identifier is stored. If not configured, the NameID attribute is used by default. Example: `NameID`.
+	SubjectKey pulumi.StringPtrInput `pulumi:"subjectKey"`
+}
+
+func (GetOpenSearchOpensearchUserConfigSamlArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigSaml)(nil)).Elem()
+}
+
+func (i GetOpenSearchOpensearchUserConfigSamlArgs) ToGetOpenSearchOpensearchUserConfigSamlOutput() GetOpenSearchOpensearchUserConfigSamlOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigSamlOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchOpensearchUserConfigSamlArgs) ToGetOpenSearchOpensearchUserConfigSamlOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigSamlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigSamlOutput)
+}
+
+func (i GetOpenSearchOpensearchUserConfigSamlArgs) ToGetOpenSearchOpensearchUserConfigSamlPtrOutput() GetOpenSearchOpensearchUserConfigSamlPtrOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigSamlPtrOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchOpensearchUserConfigSamlArgs) ToGetOpenSearchOpensearchUserConfigSamlPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigSamlPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigSamlOutput).ToGetOpenSearchOpensearchUserConfigSamlPtrOutputWithContext(ctx)
+}
+
+// GetOpenSearchOpensearchUserConfigSamlPtrInput is an input type that accepts GetOpenSearchOpensearchUserConfigSamlArgs, GetOpenSearchOpensearchUserConfigSamlPtr and GetOpenSearchOpensearchUserConfigSamlPtrOutput values.
+// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigSamlPtrInput` via:
+//
+//	        GetOpenSearchOpensearchUserConfigSamlArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetOpenSearchOpensearchUserConfigSamlPtrInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchOpensearchUserConfigSamlPtrOutput() GetOpenSearchOpensearchUserConfigSamlPtrOutput
+	ToGetOpenSearchOpensearchUserConfigSamlPtrOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigSamlPtrOutput
+}
+
+type getOpenSearchOpensearchUserConfigSamlPtrType GetOpenSearchOpensearchUserConfigSamlArgs
+
+func GetOpenSearchOpensearchUserConfigSamlPtr(v *GetOpenSearchOpensearchUserConfigSamlArgs) GetOpenSearchOpensearchUserConfigSamlPtrInput {
+	return (*getOpenSearchOpensearchUserConfigSamlPtrType)(v)
+}
+
+func (*getOpenSearchOpensearchUserConfigSamlPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigSaml)(nil)).Elem()
+}
+
+func (i *getOpenSearchOpensearchUserConfigSamlPtrType) ToGetOpenSearchOpensearchUserConfigSamlPtrOutput() GetOpenSearchOpensearchUserConfigSamlPtrOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigSamlPtrOutputWithContext(context.Background())
+}
+
+func (i *getOpenSearchOpensearchUserConfigSamlPtrType) ToGetOpenSearchOpensearchUserConfigSamlPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigSamlPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigSamlPtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigSamlOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchOpensearchUserConfigSamlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigSaml)(nil)).Elem()
+}
+
+func (o GetOpenSearchOpensearchUserConfigSamlOutput) ToGetOpenSearchOpensearchUserConfigSamlOutput() GetOpenSearchOpensearchUserConfigSamlOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigSamlOutput) ToGetOpenSearchOpensearchUserConfigSamlOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigSamlOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigSamlOutput) ToGetOpenSearchOpensearchUserConfigSamlPtrOutput() GetOpenSearchOpensearchUserConfigSamlPtrOutput {
+	return o.ToGetOpenSearchOpensearchUserConfigSamlPtrOutputWithContext(context.Background())
+}
+
+func (o GetOpenSearchOpensearchUserConfigSamlOutput) ToGetOpenSearchOpensearchUserConfigSamlPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigSamlPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetOpenSearchOpensearchUserConfigSaml) *GetOpenSearchOpensearchUserConfigSaml {
+		return &v
+	}).(GetOpenSearchOpensearchUserConfigSamlPtrOutput)
+}
+
+// Enables or disables SAML-based authentication for OpenSearch. When enabled, users can authenticate using SAML with an Identity Provider. Default: `true`.
+func (o GetOpenSearchOpensearchUserConfigSamlOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigSaml) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// The unique identifier for the Identity Provider (IdP) entity that is used for SAML authentication. This value is typically provided by the IdP. Example: `test-idp-entity-id`.
+func (o GetOpenSearchOpensearchUserConfigSamlOutput) IdpEntityId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigSaml) string { return v.IdpEntityId }).(pulumi.StringOutput)
+}
+
+// The URL of the SAML metadata for the Identity Provider (IdP). This is used to configure SAML-based authentication with the IdP. Example: `https://test-account.okta.com/app/exk491jujcVc83LEX697/sso/saml/metadata`.
+func (o GetOpenSearchOpensearchUserConfigSamlOutput) IdpMetadataUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigSaml) string { return v.IdpMetadataUrl }).(pulumi.StringOutput)
+}
+
+// This parameter specifies the PEM-encoded root certificate authority (CA) content for the SAML identity provider (IdP) server verification. The root CA content is used to verify the SSL/TLS certificate presented by the server. Example: `-----BEGIN CERTIFICATE-----
+// ...
+// -----END CERTIFICATE-----
+// `.
+func (o GetOpenSearchOpensearchUserConfigSamlOutput) IdpPemtrustedcasContent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigSaml) *string { return v.IdpPemtrustedcasContent }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Specifies the attribute in the SAML response where role information is stored, if available. Role attributes are not required for SAML authentication, but can be included in SAML assertions by most Identity Providers (IdPs) to determine user access levels or permissions. Example: `RoleName`.
+func (o GetOpenSearchOpensearchUserConfigSamlOutput) RolesKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigSaml) *string { return v.RolesKey }).(pulumi.StringPtrOutput)
+}
+
+// The unique identifier for the Service Provider (SP) entity that is used for SAML authentication. This value is typically provided by the SP. Example: `test-sp-entity-id`.
+func (o GetOpenSearchOpensearchUserConfigSamlOutput) SpEntityId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigSaml) string { return v.SpEntityId }).(pulumi.StringOutput)
+}
+
+// Optional. Specifies the attribute in the SAML response where the subject identifier is stored. If not configured, the NameID attribute is used by default. Example: `NameID`.
+func (o GetOpenSearchOpensearchUserConfigSamlOutput) SubjectKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigSaml) *string { return v.SubjectKey }).(pulumi.StringPtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigSamlPtrOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchOpensearchUserConfigSamlPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigSaml)(nil)).Elem()
+}
+
+func (o GetOpenSearchOpensearchUserConfigSamlPtrOutput) ToGetOpenSearchOpensearchUserConfigSamlPtrOutput() GetOpenSearchOpensearchUserConfigSamlPtrOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigSamlPtrOutput) ToGetOpenSearchOpensearchUserConfigSamlPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigSamlPtrOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigSamlPtrOutput) Elem() GetOpenSearchOpensearchUserConfigSamlOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigSaml) GetOpenSearchOpensearchUserConfigSaml {
+		if v != nil {
+			return *v
+		}
+		var ret GetOpenSearchOpensearchUserConfigSaml
+		return ret
+	}).(GetOpenSearchOpensearchUserConfigSamlOutput)
+}
+
+// Enables or disables SAML-based authentication for OpenSearch. When enabled, users can authenticate using SAML with an Identity Provider. Default: `true`.
+func (o GetOpenSearchOpensearchUserConfigSamlPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigSaml) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The unique identifier for the Identity Provider (IdP) entity that is used for SAML authentication. This value is typically provided by the IdP. Example: `test-idp-entity-id`.
+func (o GetOpenSearchOpensearchUserConfigSamlPtrOutput) IdpEntityId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigSaml) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.IdpEntityId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The URL of the SAML metadata for the Identity Provider (IdP). This is used to configure SAML-based authentication with the IdP. Example: `https://test-account.okta.com/app/exk491jujcVc83LEX697/sso/saml/metadata`.
+func (o GetOpenSearchOpensearchUserConfigSamlPtrOutput) IdpMetadataUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigSaml) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.IdpMetadataUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// This parameter specifies the PEM-encoded root certificate authority (CA) content for the SAML identity provider (IdP) server verification. The root CA content is used to verify the SSL/TLS certificate presented by the server. Example: `-----BEGIN CERTIFICATE-----
+// ...
+// -----END CERTIFICATE-----
+// `.
+func (o GetOpenSearchOpensearchUserConfigSamlPtrOutput) IdpPemtrustedcasContent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigSaml) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdpPemtrustedcasContent
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Specifies the attribute in the SAML response where role information is stored, if available. Role attributes are not required for SAML authentication, but can be included in SAML assertions by most Identity Providers (IdPs) to determine user access levels or permissions. Example: `RoleName`.
+func (o GetOpenSearchOpensearchUserConfigSamlPtrOutput) RolesKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigSaml) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RolesKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// The unique identifier for the Service Provider (SP) entity that is used for SAML authentication. This value is typically provided by the SP. Example: `test-sp-entity-id`.
+func (o GetOpenSearchOpensearchUserConfigSamlPtrOutput) SpEntityId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigSaml) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SpEntityId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Specifies the attribute in the SAML response where the subject identifier is stored. If not configured, the NameID attribute is used by default. Example: `NameID`.
+func (o GetOpenSearchOpensearchUserConfigSamlPtrOutput) SubjectKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigSaml) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SubjectKey
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetOpenSearchServiceIntegration struct {
+	// Type of the service integration
+	IntegrationType string `pulumi:"integrationType"`
+	// Name of the source service
+	SourceServiceName string `pulumi:"sourceServiceName"`
+}
+
+// GetOpenSearchServiceIntegrationInput is an input type that accepts GetOpenSearchServiceIntegrationArgs and GetOpenSearchServiceIntegrationOutput values.
+// You can construct a concrete instance of `GetOpenSearchServiceIntegrationInput` via:
+//
+//	GetOpenSearchServiceIntegrationArgs{...}
+type GetOpenSearchServiceIntegrationInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchServiceIntegrationOutput() GetOpenSearchServiceIntegrationOutput
+	ToGetOpenSearchServiceIntegrationOutputWithContext(context.Context) GetOpenSearchServiceIntegrationOutput
+}
+
+type GetOpenSearchServiceIntegrationArgs struct {
+	// Type of the service integration
+	IntegrationType pulumi.StringInput `pulumi:"integrationType"`
+	// Name of the source service
+	SourceServiceName pulumi.StringInput `pulumi:"sourceServiceName"`
+}
+
+func (GetOpenSearchServiceIntegrationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchServiceIntegration)(nil)).Elem()
+}
+
+func (i GetOpenSearchServiceIntegrationArgs) ToGetOpenSearchServiceIntegrationOutput() GetOpenSearchServiceIntegrationOutput {
+	return i.ToGetOpenSearchServiceIntegrationOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchServiceIntegrationArgs) ToGetOpenSearchServiceIntegrationOutputWithContext(ctx context.Context) GetOpenSearchServiceIntegrationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchServiceIntegrationOutput)
+}
+
+// GetOpenSearchServiceIntegrationArrayInput is an input type that accepts GetOpenSearchServiceIntegrationArray and GetOpenSearchServiceIntegrationArrayOutput values.
+// You can construct a concrete instance of `GetOpenSearchServiceIntegrationArrayInput` via:
+//
+//	GetOpenSearchServiceIntegrationArray{ GetOpenSearchServiceIntegrationArgs{...} }
+type GetOpenSearchServiceIntegrationArrayInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchServiceIntegrationArrayOutput() GetOpenSearchServiceIntegrationArrayOutput
+	ToGetOpenSearchServiceIntegrationArrayOutputWithContext(context.Context) GetOpenSearchServiceIntegrationArrayOutput
+}
+
+type GetOpenSearchServiceIntegrationArray []GetOpenSearchServiceIntegrationInput
+
+func (GetOpenSearchServiceIntegrationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOpenSearchServiceIntegration)(nil)).Elem()
+}
+
+func (i GetOpenSearchServiceIntegrationArray) ToGetOpenSearchServiceIntegrationArrayOutput() GetOpenSearchServiceIntegrationArrayOutput {
+	return i.ToGetOpenSearchServiceIntegrationArrayOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchServiceIntegrationArray) ToGetOpenSearchServiceIntegrationArrayOutputWithContext(ctx context.Context) GetOpenSearchServiceIntegrationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchServiceIntegrationArrayOutput)
+}
+
+type GetOpenSearchServiceIntegrationOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchServiceIntegrationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchServiceIntegration)(nil)).Elem()
+}
+
+func (o GetOpenSearchServiceIntegrationOutput) ToGetOpenSearchServiceIntegrationOutput() GetOpenSearchServiceIntegrationOutput {
+	return o
+}
+
+func (o GetOpenSearchServiceIntegrationOutput) ToGetOpenSearchServiceIntegrationOutputWithContext(ctx context.Context) GetOpenSearchServiceIntegrationOutput {
+	return o
+}
+
+// Type of the service integration
+func (o GetOpenSearchServiceIntegrationOutput) IntegrationType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOpenSearchServiceIntegration) string { return v.IntegrationType }).(pulumi.StringOutput)
+}
+
+// Name of the source service
+func (o GetOpenSearchServiceIntegrationOutput) SourceServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOpenSearchServiceIntegration) string { return v.SourceServiceName }).(pulumi.StringOutput)
+}
+
+type GetOpenSearchServiceIntegrationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchServiceIntegrationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOpenSearchServiceIntegration)(nil)).Elem()
+}
+
+func (o GetOpenSearchServiceIntegrationArrayOutput) ToGetOpenSearchServiceIntegrationArrayOutput() GetOpenSearchServiceIntegrationArrayOutput {
+	return o
+}
+
+func (o GetOpenSearchServiceIntegrationArrayOutput) ToGetOpenSearchServiceIntegrationArrayOutputWithContext(ctx context.Context) GetOpenSearchServiceIntegrationArrayOutput {
+	return o
+}
+
+func (o GetOpenSearchServiceIntegrationArrayOutput) Index(i pulumi.IntInput) GetOpenSearchServiceIntegrationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetOpenSearchServiceIntegration {
+		return vs[0].([]GetOpenSearchServiceIntegration)[vs[1].(int)]
+	}).(GetOpenSearchServiceIntegrationOutput)
+}
+
+type GetOpenSearchTag struct {
+	// Service tag key
+	Key string `pulumi:"key"`
+	// Service tag value
+	Value string `pulumi:"value"`
+}
+
+// GetOpenSearchTagInput is an input type that accepts GetOpenSearchTagArgs and GetOpenSearchTagOutput values.
+// You can construct a concrete instance of `GetOpenSearchTagInput` via:
+//
+//	GetOpenSearchTagArgs{...}
+type GetOpenSearchTagInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchTagOutput() GetOpenSearchTagOutput
+	ToGetOpenSearchTagOutputWithContext(context.Context) GetOpenSearchTagOutput
+}
+
+type GetOpenSearchTagArgs struct {
+	// Service tag key
+	Key pulumi.StringInput `pulumi:"key"`
+	// Service tag value
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetOpenSearchTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchTag)(nil)).Elem()
+}
+
+func (i GetOpenSearchTagArgs) ToGetOpenSearchTagOutput() GetOpenSearchTagOutput {
+	return i.ToGetOpenSearchTagOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchTagArgs) ToGetOpenSearchTagOutputWithContext(ctx context.Context) GetOpenSearchTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchTagOutput)
+}
+
+// GetOpenSearchTagArrayInput is an input type that accepts GetOpenSearchTagArray and GetOpenSearchTagArrayOutput values.
+// You can construct a concrete instance of `GetOpenSearchTagArrayInput` via:
+//
+//	GetOpenSearchTagArray{ GetOpenSearchTagArgs{...} }
+type GetOpenSearchTagArrayInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchTagArrayOutput() GetOpenSearchTagArrayOutput
+	ToGetOpenSearchTagArrayOutputWithContext(context.Context) GetOpenSearchTagArrayOutput
+}
+
+type GetOpenSearchTagArray []GetOpenSearchTagInput
+
+func (GetOpenSearchTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOpenSearchTag)(nil)).Elem()
+}
+
+func (i GetOpenSearchTagArray) ToGetOpenSearchTagArrayOutput() GetOpenSearchTagArrayOutput {
+	return i.ToGetOpenSearchTagArrayOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchTagArray) ToGetOpenSearchTagArrayOutputWithContext(ctx context.Context) GetOpenSearchTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchTagArrayOutput)
+}
+
+type GetOpenSearchTagOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchTag)(nil)).Elem()
+}
+
+func (o GetOpenSearchTagOutput) ToGetOpenSearchTagOutput() GetOpenSearchTagOutput {
+	return o
+}
+
+func (o GetOpenSearchTagOutput) ToGetOpenSearchTagOutputWithContext(ctx context.Context) GetOpenSearchTagOutput {
+	return o
+}
+
+// Service tag key
+func (o GetOpenSearchTagOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOpenSearchTag) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Service tag value
+func (o GetOpenSearchTagOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOpenSearchTag) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetOpenSearchTagArrayOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOpenSearchTag)(nil)).Elem()
+}
+
+func (o GetOpenSearchTagArrayOutput) ToGetOpenSearchTagArrayOutput() GetOpenSearchTagArrayOutput {
+	return o
+}
+
+func (o GetOpenSearchTagArrayOutput) ToGetOpenSearchTagArrayOutputWithContext(ctx context.Context) GetOpenSearchTagArrayOutput {
+	return o
+}
+
+func (o GetOpenSearchTagArrayOutput) Index(i pulumi.IntInput) GetOpenSearchTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetOpenSearchTag {
+		return vs[0].([]GetOpenSearchTag)[vs[1].(int)]
+	}).(GetOpenSearchTagOutput)
+}
+
+type GetOpenSearchTechEmail struct {
+	// An email address to contact for technical issues
+	Email string `pulumi:"email"`
+}
+
+// GetOpenSearchTechEmailInput is an input type that accepts GetOpenSearchTechEmailArgs and GetOpenSearchTechEmailOutput values.
+// You can construct a concrete instance of `GetOpenSearchTechEmailInput` via:
+//
+//	GetOpenSearchTechEmailArgs{...}
+type GetOpenSearchTechEmailInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchTechEmailOutput() GetOpenSearchTechEmailOutput
+	ToGetOpenSearchTechEmailOutputWithContext(context.Context) GetOpenSearchTechEmailOutput
+}
+
+type GetOpenSearchTechEmailArgs struct {
+	// An email address to contact for technical issues
+	Email pulumi.StringInput `pulumi:"email"`
+}
+
+func (GetOpenSearchTechEmailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchTechEmail)(nil)).Elem()
+}
+
+func (i GetOpenSearchTechEmailArgs) ToGetOpenSearchTechEmailOutput() GetOpenSearchTechEmailOutput {
+	return i.ToGetOpenSearchTechEmailOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchTechEmailArgs) ToGetOpenSearchTechEmailOutputWithContext(ctx context.Context) GetOpenSearchTechEmailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchTechEmailOutput)
+}
+
+// GetOpenSearchTechEmailArrayInput is an input type that accepts GetOpenSearchTechEmailArray and GetOpenSearchTechEmailArrayOutput values.
+// You can construct a concrete instance of `GetOpenSearchTechEmailArrayInput` via:
+//
+//	GetOpenSearchTechEmailArray{ GetOpenSearchTechEmailArgs{...} }
+type GetOpenSearchTechEmailArrayInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchTechEmailArrayOutput() GetOpenSearchTechEmailArrayOutput
+	ToGetOpenSearchTechEmailArrayOutputWithContext(context.Context) GetOpenSearchTechEmailArrayOutput
+}
+
+type GetOpenSearchTechEmailArray []GetOpenSearchTechEmailInput
+
+func (GetOpenSearchTechEmailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOpenSearchTechEmail)(nil)).Elem()
+}
+
+func (i GetOpenSearchTechEmailArray) ToGetOpenSearchTechEmailArrayOutput() GetOpenSearchTechEmailArrayOutput {
+	return i.ToGetOpenSearchTechEmailArrayOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchTechEmailArray) ToGetOpenSearchTechEmailArrayOutputWithContext(ctx context.Context) GetOpenSearchTechEmailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchTechEmailArrayOutput)
+}
+
+type GetOpenSearchTechEmailOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchTechEmailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchTechEmail)(nil)).Elem()
+}
+
+func (o GetOpenSearchTechEmailOutput) ToGetOpenSearchTechEmailOutput() GetOpenSearchTechEmailOutput {
+	return o
+}
+
+func (o GetOpenSearchTechEmailOutput) ToGetOpenSearchTechEmailOutputWithContext(ctx context.Context) GetOpenSearchTechEmailOutput {
+	return o
+}
+
+// An email address to contact for technical issues
+func (o GetOpenSearchTechEmailOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOpenSearchTechEmail) string { return v.Email }).(pulumi.StringOutput)
+}
+
+type GetOpenSearchTechEmailArrayOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchTechEmailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOpenSearchTechEmail)(nil)).Elem()
+}
+
+func (o GetOpenSearchTechEmailArrayOutput) ToGetOpenSearchTechEmailArrayOutput() GetOpenSearchTechEmailArrayOutput {
+	return o
+}
+
+func (o GetOpenSearchTechEmailArrayOutput) ToGetOpenSearchTechEmailArrayOutputWithContext(ctx context.Context) GetOpenSearchTechEmailArrayOutput {
+	return o
+}
+
+func (o GetOpenSearchTechEmailArrayOutput) Index(i pulumi.IntInput) GetOpenSearchTechEmailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetOpenSearchTechEmail {
+		return vs[0].([]GetOpenSearchTechEmail)[vs[1].(int)]
+	}).(GetOpenSearchTechEmailOutput)
+}
+
+type GetOpensearchSecurityPluginConfigTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Read *string `pulumi:"read"`
+}
+
+// GetOpensearchSecurityPluginConfigTimeoutsInput is an input type that accepts GetOpensearchSecurityPluginConfigTimeoutsArgs and GetOpensearchSecurityPluginConfigTimeoutsOutput values.
+// You can construct a concrete instance of `GetOpensearchSecurityPluginConfigTimeoutsInput` via:
+//
+//	GetOpensearchSecurityPluginConfigTimeoutsArgs{...}
+type GetOpensearchSecurityPluginConfigTimeoutsInput interface {
+	pulumi.Input
+
+	ToGetOpensearchSecurityPluginConfigTimeoutsOutput() GetOpensearchSecurityPluginConfigTimeoutsOutput
+	ToGetOpensearchSecurityPluginConfigTimeoutsOutputWithContext(context.Context) GetOpensearchSecurityPluginConfigTimeoutsOutput
+}
+
+type GetOpensearchSecurityPluginConfigTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Read pulumi.StringPtrInput `pulumi:"read"`
+}
+
+func (GetOpensearchSecurityPluginConfigTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpensearchSecurityPluginConfigTimeouts)(nil)).Elem()
+}
+
+func (i GetOpensearchSecurityPluginConfigTimeoutsArgs) ToGetOpensearchSecurityPluginConfigTimeoutsOutput() GetOpensearchSecurityPluginConfigTimeoutsOutput {
+	return i.ToGetOpensearchSecurityPluginConfigTimeoutsOutputWithContext(context.Background())
+}
+
+func (i GetOpensearchSecurityPluginConfigTimeoutsArgs) ToGetOpensearchSecurityPluginConfigTimeoutsOutputWithContext(ctx context.Context) GetOpensearchSecurityPluginConfigTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpensearchSecurityPluginConfigTimeoutsOutput)
+}
+
+func (i GetOpensearchSecurityPluginConfigTimeoutsArgs) ToGetOpensearchSecurityPluginConfigTimeoutsPtrOutput() GetOpensearchSecurityPluginConfigTimeoutsPtrOutput {
+	return i.ToGetOpensearchSecurityPluginConfigTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i GetOpensearchSecurityPluginConfigTimeoutsArgs) ToGetOpensearchSecurityPluginConfigTimeoutsPtrOutputWithContext(ctx context.Context) GetOpensearchSecurityPluginConfigTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpensearchSecurityPluginConfigTimeoutsOutput).ToGetOpensearchSecurityPluginConfigTimeoutsPtrOutputWithContext(ctx)
+}
+
+// GetOpensearchSecurityPluginConfigTimeoutsPtrInput is an input type that accepts GetOpensearchSecurityPluginConfigTimeoutsArgs, GetOpensearchSecurityPluginConfigTimeoutsPtr and GetOpensearchSecurityPluginConfigTimeoutsPtrOutput values.
+// You can construct a concrete instance of `GetOpensearchSecurityPluginConfigTimeoutsPtrInput` via:
+//
+//	        GetOpensearchSecurityPluginConfigTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetOpensearchSecurityPluginConfigTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToGetOpensearchSecurityPluginConfigTimeoutsPtrOutput() GetOpensearchSecurityPluginConfigTimeoutsPtrOutput
+	ToGetOpensearchSecurityPluginConfigTimeoutsPtrOutputWithContext(context.Context) GetOpensearchSecurityPluginConfigTimeoutsPtrOutput
+}
+
+type getOpensearchSecurityPluginConfigTimeoutsPtrType GetOpensearchSecurityPluginConfigTimeoutsArgs
+
+func GetOpensearchSecurityPluginConfigTimeoutsPtr(v *GetOpensearchSecurityPluginConfigTimeoutsArgs) GetOpensearchSecurityPluginConfigTimeoutsPtrInput {
+	return (*getOpensearchSecurityPluginConfigTimeoutsPtrType)(v)
+}
+
+func (*getOpensearchSecurityPluginConfigTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOpensearchSecurityPluginConfigTimeouts)(nil)).Elem()
+}
+
+func (i *getOpensearchSecurityPluginConfigTimeoutsPtrType) ToGetOpensearchSecurityPluginConfigTimeoutsPtrOutput() GetOpensearchSecurityPluginConfigTimeoutsPtrOutput {
+	return i.ToGetOpensearchSecurityPluginConfigTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *getOpensearchSecurityPluginConfigTimeoutsPtrType) ToGetOpensearchSecurityPluginConfigTimeoutsPtrOutputWithContext(ctx context.Context) GetOpensearchSecurityPluginConfigTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpensearchSecurityPluginConfigTimeoutsPtrOutput)
+}
+
+type GetOpensearchSecurityPluginConfigTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (GetOpensearchSecurityPluginConfigTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpensearchSecurityPluginConfigTimeouts)(nil)).Elem()
+}
+
+func (o GetOpensearchSecurityPluginConfigTimeoutsOutput) ToGetOpensearchSecurityPluginConfigTimeoutsOutput() GetOpensearchSecurityPluginConfigTimeoutsOutput {
+	return o
+}
+
+func (o GetOpensearchSecurityPluginConfigTimeoutsOutput) ToGetOpensearchSecurityPluginConfigTimeoutsOutputWithContext(ctx context.Context) GetOpensearchSecurityPluginConfigTimeoutsOutput {
+	return o
+}
+
+func (o GetOpensearchSecurityPluginConfigTimeoutsOutput) ToGetOpensearchSecurityPluginConfigTimeoutsPtrOutput() GetOpensearchSecurityPluginConfigTimeoutsPtrOutput {
+	return o.ToGetOpensearchSecurityPluginConfigTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o GetOpensearchSecurityPluginConfigTimeoutsOutput) ToGetOpensearchSecurityPluginConfigTimeoutsPtrOutputWithContext(ctx context.Context) GetOpensearchSecurityPluginConfigTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetOpensearchSecurityPluginConfigTimeouts) *GetOpensearchSecurityPluginConfigTimeouts {
+		return &v
+	}).(GetOpensearchSecurityPluginConfigTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o GetOpensearchSecurityPluginConfigTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOpensearchSecurityPluginConfigTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+type GetOpensearchSecurityPluginConfigTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetOpensearchSecurityPluginConfigTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOpensearchSecurityPluginConfigTimeouts)(nil)).Elem()
+}
+
+func (o GetOpensearchSecurityPluginConfigTimeoutsPtrOutput) ToGetOpensearchSecurityPluginConfigTimeoutsPtrOutput() GetOpensearchSecurityPluginConfigTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetOpensearchSecurityPluginConfigTimeoutsPtrOutput) ToGetOpensearchSecurityPluginConfigTimeoutsPtrOutputWithContext(ctx context.Context) GetOpensearchSecurityPluginConfigTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetOpensearchSecurityPluginConfigTimeoutsPtrOutput) Elem() GetOpensearchSecurityPluginConfigTimeoutsOutput {
+	return o.ApplyT(func(v *GetOpensearchSecurityPluginConfigTimeouts) GetOpensearchSecurityPluginConfigTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret GetOpensearchSecurityPluginConfigTimeouts
+		return ret
+	}).(GetOpensearchSecurityPluginConfigTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o GetOpensearchSecurityPluginConfigTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOpensearchSecurityPluginConfigTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetOpensearchUserTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Read *string `pulumi:"read"`
+}
+
+// GetOpensearchUserTimeoutsInput is an input type that accepts GetOpensearchUserTimeoutsArgs and GetOpensearchUserTimeoutsOutput values.
+// You can construct a concrete instance of `GetOpensearchUserTimeoutsInput` via:
+//
+//	GetOpensearchUserTimeoutsArgs{...}
+type GetOpensearchUserTimeoutsInput interface {
+	pulumi.Input
+
+	ToGetOpensearchUserTimeoutsOutput() GetOpensearchUserTimeoutsOutput
+	ToGetOpensearchUserTimeoutsOutputWithContext(context.Context) GetOpensearchUserTimeoutsOutput
+}
+
+type GetOpensearchUserTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Read pulumi.StringPtrInput `pulumi:"read"`
+}
+
+func (GetOpensearchUserTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpensearchUserTimeouts)(nil)).Elem()
+}
+
+func (i GetOpensearchUserTimeoutsArgs) ToGetOpensearchUserTimeoutsOutput() GetOpensearchUserTimeoutsOutput {
+	return i.ToGetOpensearchUserTimeoutsOutputWithContext(context.Background())
+}
+
+func (i GetOpensearchUserTimeoutsArgs) ToGetOpensearchUserTimeoutsOutputWithContext(ctx context.Context) GetOpensearchUserTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpensearchUserTimeoutsOutput)
+}
+
+func (i GetOpensearchUserTimeoutsArgs) ToGetOpensearchUserTimeoutsPtrOutput() GetOpensearchUserTimeoutsPtrOutput {
+	return i.ToGetOpensearchUserTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i GetOpensearchUserTimeoutsArgs) ToGetOpensearchUserTimeoutsPtrOutputWithContext(ctx context.Context) GetOpensearchUserTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpensearchUserTimeoutsOutput).ToGetOpensearchUserTimeoutsPtrOutputWithContext(ctx)
+}
+
+// GetOpensearchUserTimeoutsPtrInput is an input type that accepts GetOpensearchUserTimeoutsArgs, GetOpensearchUserTimeoutsPtr and GetOpensearchUserTimeoutsPtrOutput values.
+// You can construct a concrete instance of `GetOpensearchUserTimeoutsPtrInput` via:
+//
+//	        GetOpensearchUserTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetOpensearchUserTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToGetOpensearchUserTimeoutsPtrOutput() GetOpensearchUserTimeoutsPtrOutput
+	ToGetOpensearchUserTimeoutsPtrOutputWithContext(context.Context) GetOpensearchUserTimeoutsPtrOutput
+}
+
+type getOpensearchUserTimeoutsPtrType GetOpensearchUserTimeoutsArgs
+
+func GetOpensearchUserTimeoutsPtr(v *GetOpensearchUserTimeoutsArgs) GetOpensearchUserTimeoutsPtrInput {
+	return (*getOpensearchUserTimeoutsPtrType)(v)
+}
+
+func (*getOpensearchUserTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOpensearchUserTimeouts)(nil)).Elem()
+}
+
+func (i *getOpensearchUserTimeoutsPtrType) ToGetOpensearchUserTimeoutsPtrOutput() GetOpensearchUserTimeoutsPtrOutput {
+	return i.ToGetOpensearchUserTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *getOpensearchUserTimeoutsPtrType) ToGetOpensearchUserTimeoutsPtrOutputWithContext(ctx context.Context) GetOpensearchUserTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpensearchUserTimeoutsPtrOutput)
+}
+
+type GetOpensearchUserTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (GetOpensearchUserTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpensearchUserTimeouts)(nil)).Elem()
+}
+
+func (o GetOpensearchUserTimeoutsOutput) ToGetOpensearchUserTimeoutsOutput() GetOpensearchUserTimeoutsOutput {
+	return o
+}
+
+func (o GetOpensearchUserTimeoutsOutput) ToGetOpensearchUserTimeoutsOutputWithContext(ctx context.Context) GetOpensearchUserTimeoutsOutput {
+	return o
+}
+
+func (o GetOpensearchUserTimeoutsOutput) ToGetOpensearchUserTimeoutsPtrOutput() GetOpensearchUserTimeoutsPtrOutput {
+	return o.ToGetOpensearchUserTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o GetOpensearchUserTimeoutsOutput) ToGetOpensearchUserTimeoutsPtrOutputWithContext(ctx context.Context) GetOpensearchUserTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetOpensearchUserTimeouts) *GetOpensearchUserTimeouts {
+		return &v
+	}).(GetOpensearchUserTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o GetOpensearchUserTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOpensearchUserTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+type GetOpensearchUserTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetOpensearchUserTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOpensearchUserTimeouts)(nil)).Elem()
+}
+
+func (o GetOpensearchUserTimeoutsPtrOutput) ToGetOpensearchUserTimeoutsPtrOutput() GetOpensearchUserTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetOpensearchUserTimeoutsPtrOutput) ToGetOpensearchUserTimeoutsPtrOutputWithContext(ctx context.Context) GetOpensearchUserTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetOpensearchUserTimeoutsPtrOutput) Elem() GetOpensearchUserTimeoutsOutput {
+	return o.ApplyT(func(v *GetOpensearchUserTimeouts) GetOpensearchUserTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret GetOpensearchUserTimeouts
+		return ret
+	}).(GetOpensearchUserTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o GetOpensearchUserTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOpensearchUserTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetOrganizationAddressTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Read *string `pulumi:"read"`
+}
+
+// GetOrganizationAddressTimeoutsInput is an input type that accepts GetOrganizationAddressTimeoutsArgs and GetOrganizationAddressTimeoutsOutput values.
+// You can construct a concrete instance of `GetOrganizationAddressTimeoutsInput` via:
+//
+//	GetOrganizationAddressTimeoutsArgs{...}
+type GetOrganizationAddressTimeoutsInput interface {
+	pulumi.Input
+
+	ToGetOrganizationAddressTimeoutsOutput() GetOrganizationAddressTimeoutsOutput
+	ToGetOrganizationAddressTimeoutsOutputWithContext(context.Context) GetOrganizationAddressTimeoutsOutput
+}
+
+type GetOrganizationAddressTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Read pulumi.StringPtrInput `pulumi:"read"`
+}
+
+func (GetOrganizationAddressTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationAddressTimeouts)(nil)).Elem()
+}
+
+func (i GetOrganizationAddressTimeoutsArgs) ToGetOrganizationAddressTimeoutsOutput() GetOrganizationAddressTimeoutsOutput {
+	return i.ToGetOrganizationAddressTimeoutsOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationAddressTimeoutsArgs) ToGetOrganizationAddressTimeoutsOutputWithContext(ctx context.Context) GetOrganizationAddressTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationAddressTimeoutsOutput)
+}
+
+func (i GetOrganizationAddressTimeoutsArgs) ToGetOrganizationAddressTimeoutsPtrOutput() GetOrganizationAddressTimeoutsPtrOutput {
+	return i.ToGetOrganizationAddressTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationAddressTimeoutsArgs) ToGetOrganizationAddressTimeoutsPtrOutputWithContext(ctx context.Context) GetOrganizationAddressTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationAddressTimeoutsOutput).ToGetOrganizationAddressTimeoutsPtrOutputWithContext(ctx)
+}
+
+// GetOrganizationAddressTimeoutsPtrInput is an input type that accepts GetOrganizationAddressTimeoutsArgs, GetOrganizationAddressTimeoutsPtr and GetOrganizationAddressTimeoutsPtrOutput values.
+// You can construct a concrete instance of `GetOrganizationAddressTimeoutsPtrInput` via:
+//
+//	        GetOrganizationAddressTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetOrganizationAddressTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToGetOrganizationAddressTimeoutsPtrOutput() GetOrganizationAddressTimeoutsPtrOutput
+	ToGetOrganizationAddressTimeoutsPtrOutputWithContext(context.Context) GetOrganizationAddressTimeoutsPtrOutput
+}
+
+type getOrganizationAddressTimeoutsPtrType GetOrganizationAddressTimeoutsArgs
+
+func GetOrganizationAddressTimeoutsPtr(v *GetOrganizationAddressTimeoutsArgs) GetOrganizationAddressTimeoutsPtrInput {
+	return (*getOrganizationAddressTimeoutsPtrType)(v)
+}
+
+func (*getOrganizationAddressTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOrganizationAddressTimeouts)(nil)).Elem()
+}
+
+func (i *getOrganizationAddressTimeoutsPtrType) ToGetOrganizationAddressTimeoutsPtrOutput() GetOrganizationAddressTimeoutsPtrOutput {
+	return i.ToGetOrganizationAddressTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *getOrganizationAddressTimeoutsPtrType) ToGetOrganizationAddressTimeoutsPtrOutputWithContext(ctx context.Context) GetOrganizationAddressTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationAddressTimeoutsPtrOutput)
+}
+
+type GetOrganizationAddressTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationAddressTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationAddressTimeouts)(nil)).Elem()
+}
+
+func (o GetOrganizationAddressTimeoutsOutput) ToGetOrganizationAddressTimeoutsOutput() GetOrganizationAddressTimeoutsOutput {
+	return o
+}
+
+func (o GetOrganizationAddressTimeoutsOutput) ToGetOrganizationAddressTimeoutsOutputWithContext(ctx context.Context) GetOrganizationAddressTimeoutsOutput {
+	return o
+}
+
+func (o GetOrganizationAddressTimeoutsOutput) ToGetOrganizationAddressTimeoutsPtrOutput() GetOrganizationAddressTimeoutsPtrOutput {
+	return o.ToGetOrganizationAddressTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o GetOrganizationAddressTimeoutsOutput) ToGetOrganizationAddressTimeoutsPtrOutputWithContext(ctx context.Context) GetOrganizationAddressTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetOrganizationAddressTimeouts) *GetOrganizationAddressTimeouts {
+		return &v
+	}).(GetOrganizationAddressTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o GetOrganizationAddressTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOrganizationAddressTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+type GetOrganizationAddressTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationAddressTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOrganizationAddressTimeouts)(nil)).Elem()
+}
+
+func (o GetOrganizationAddressTimeoutsPtrOutput) ToGetOrganizationAddressTimeoutsPtrOutput() GetOrganizationAddressTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetOrganizationAddressTimeoutsPtrOutput) ToGetOrganizationAddressTimeoutsPtrOutputWithContext(ctx context.Context) GetOrganizationAddressTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetOrganizationAddressTimeoutsPtrOutput) Elem() GetOrganizationAddressTimeoutsOutput {
+	return o.ApplyT(func(v *GetOrganizationAddressTimeouts) GetOrganizationAddressTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret GetOrganizationAddressTimeouts
+		return ret
+	}).(GetOrganizationAddressTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o GetOrganizationAddressTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOrganizationAddressTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetOrganizationApplicationUserTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Read *string `pulumi:"read"`
+}
+
+// GetOrganizationApplicationUserTimeoutsInput is an input type that accepts GetOrganizationApplicationUserTimeoutsArgs and GetOrganizationApplicationUserTimeoutsOutput values.
+// You can construct a concrete instance of `GetOrganizationApplicationUserTimeoutsInput` via:
+//
+//	GetOrganizationApplicationUserTimeoutsArgs{...}
+type GetOrganizationApplicationUserTimeoutsInput interface {
+	pulumi.Input
+
+	ToGetOrganizationApplicationUserTimeoutsOutput() GetOrganizationApplicationUserTimeoutsOutput
+	ToGetOrganizationApplicationUserTimeoutsOutputWithContext(context.Context) GetOrganizationApplicationUserTimeoutsOutput
+}
+
+type GetOrganizationApplicationUserTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Read pulumi.StringPtrInput `pulumi:"read"`
+}
+
+func (GetOrganizationApplicationUserTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationApplicationUserTimeouts)(nil)).Elem()
+}
+
+func (i GetOrganizationApplicationUserTimeoutsArgs) ToGetOrganizationApplicationUserTimeoutsOutput() GetOrganizationApplicationUserTimeoutsOutput {
+	return i.ToGetOrganizationApplicationUserTimeoutsOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationApplicationUserTimeoutsArgs) ToGetOrganizationApplicationUserTimeoutsOutputWithContext(ctx context.Context) GetOrganizationApplicationUserTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationApplicationUserTimeoutsOutput)
+}
+
+func (i GetOrganizationApplicationUserTimeoutsArgs) ToGetOrganizationApplicationUserTimeoutsPtrOutput() GetOrganizationApplicationUserTimeoutsPtrOutput {
+	return i.ToGetOrganizationApplicationUserTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationApplicationUserTimeoutsArgs) ToGetOrganizationApplicationUserTimeoutsPtrOutputWithContext(ctx context.Context) GetOrganizationApplicationUserTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationApplicationUserTimeoutsOutput).ToGetOrganizationApplicationUserTimeoutsPtrOutputWithContext(ctx)
+}
+
+// GetOrganizationApplicationUserTimeoutsPtrInput is an input type that accepts GetOrganizationApplicationUserTimeoutsArgs, GetOrganizationApplicationUserTimeoutsPtr and GetOrganizationApplicationUserTimeoutsPtrOutput values.
+// You can construct a concrete instance of `GetOrganizationApplicationUserTimeoutsPtrInput` via:
+//
+//	        GetOrganizationApplicationUserTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetOrganizationApplicationUserTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToGetOrganizationApplicationUserTimeoutsPtrOutput() GetOrganizationApplicationUserTimeoutsPtrOutput
+	ToGetOrganizationApplicationUserTimeoutsPtrOutputWithContext(context.Context) GetOrganizationApplicationUserTimeoutsPtrOutput
+}
+
+type getOrganizationApplicationUserTimeoutsPtrType GetOrganizationApplicationUserTimeoutsArgs
+
+func GetOrganizationApplicationUserTimeoutsPtr(v *GetOrganizationApplicationUserTimeoutsArgs) GetOrganizationApplicationUserTimeoutsPtrInput {
+	return (*getOrganizationApplicationUserTimeoutsPtrType)(v)
+}
+
+func (*getOrganizationApplicationUserTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOrganizationApplicationUserTimeouts)(nil)).Elem()
+}
+
+func (i *getOrganizationApplicationUserTimeoutsPtrType) ToGetOrganizationApplicationUserTimeoutsPtrOutput() GetOrganizationApplicationUserTimeoutsPtrOutput {
+	return i.ToGetOrganizationApplicationUserTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *getOrganizationApplicationUserTimeoutsPtrType) ToGetOrganizationApplicationUserTimeoutsPtrOutputWithContext(ctx context.Context) GetOrganizationApplicationUserTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationApplicationUserTimeoutsPtrOutput)
+}
+
+type GetOrganizationApplicationUserTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationApplicationUserTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationApplicationUserTimeouts)(nil)).Elem()
+}
+
+func (o GetOrganizationApplicationUserTimeoutsOutput) ToGetOrganizationApplicationUserTimeoutsOutput() GetOrganizationApplicationUserTimeoutsOutput {
+	return o
+}
+
+func (o GetOrganizationApplicationUserTimeoutsOutput) ToGetOrganizationApplicationUserTimeoutsOutputWithContext(ctx context.Context) GetOrganizationApplicationUserTimeoutsOutput {
+	return o
+}
+
+func (o GetOrganizationApplicationUserTimeoutsOutput) ToGetOrganizationApplicationUserTimeoutsPtrOutput() GetOrganizationApplicationUserTimeoutsPtrOutput {
+	return o.ToGetOrganizationApplicationUserTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o GetOrganizationApplicationUserTimeoutsOutput) ToGetOrganizationApplicationUserTimeoutsPtrOutputWithContext(ctx context.Context) GetOrganizationApplicationUserTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetOrganizationApplicationUserTimeouts) *GetOrganizationApplicationUserTimeouts {
+		return &v
+	}).(GetOrganizationApplicationUserTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o GetOrganizationApplicationUserTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOrganizationApplicationUserTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+type GetOrganizationApplicationUserTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationApplicationUserTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOrganizationApplicationUserTimeouts)(nil)).Elem()
+}
+
+func (o GetOrganizationApplicationUserTimeoutsPtrOutput) ToGetOrganizationApplicationUserTimeoutsPtrOutput() GetOrganizationApplicationUserTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetOrganizationApplicationUserTimeoutsPtrOutput) ToGetOrganizationApplicationUserTimeoutsPtrOutputWithContext(ctx context.Context) GetOrganizationApplicationUserTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetOrganizationApplicationUserTimeoutsPtrOutput) Elem() GetOrganizationApplicationUserTimeoutsOutput {
+	return o.ApplyT(func(v *GetOrganizationApplicationUserTimeouts) GetOrganizationApplicationUserTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret GetOrganizationApplicationUserTimeouts
+		return ret
+	}).(GetOrganizationApplicationUserTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o GetOrganizationApplicationUserTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOrganizationApplicationUserTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetOrganizationBillingGroupBillingContactEmail struct {
+	// Email.
+	Email string `pulumi:"email"`
+}
+
+// GetOrganizationBillingGroupBillingContactEmailInput is an input type that accepts GetOrganizationBillingGroupBillingContactEmailArgs and GetOrganizationBillingGroupBillingContactEmailOutput values.
+// You can construct a concrete instance of `GetOrganizationBillingGroupBillingContactEmailInput` via:
+//
+//	GetOrganizationBillingGroupBillingContactEmailArgs{...}
+type GetOrganizationBillingGroupBillingContactEmailInput interface {
+	pulumi.Input
+
+	ToGetOrganizationBillingGroupBillingContactEmailOutput() GetOrganizationBillingGroupBillingContactEmailOutput
+	ToGetOrganizationBillingGroupBillingContactEmailOutputWithContext(context.Context) GetOrganizationBillingGroupBillingContactEmailOutput
+}
+
+type GetOrganizationBillingGroupBillingContactEmailArgs struct {
+	// Email.
+	Email pulumi.StringInput `pulumi:"email"`
+}
+
+func (GetOrganizationBillingGroupBillingContactEmailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationBillingGroupBillingContactEmail)(nil)).Elem()
+}
+
+func (i GetOrganizationBillingGroupBillingContactEmailArgs) ToGetOrganizationBillingGroupBillingContactEmailOutput() GetOrganizationBillingGroupBillingContactEmailOutput {
+	return i.ToGetOrganizationBillingGroupBillingContactEmailOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationBillingGroupBillingContactEmailArgs) ToGetOrganizationBillingGroupBillingContactEmailOutputWithContext(ctx context.Context) GetOrganizationBillingGroupBillingContactEmailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationBillingGroupBillingContactEmailOutput)
+}
+
+// GetOrganizationBillingGroupBillingContactEmailArrayInput is an input type that accepts GetOrganizationBillingGroupBillingContactEmailArray and GetOrganizationBillingGroupBillingContactEmailArrayOutput values.
+// You can construct a concrete instance of `GetOrganizationBillingGroupBillingContactEmailArrayInput` via:
+//
+//	GetOrganizationBillingGroupBillingContactEmailArray{ GetOrganizationBillingGroupBillingContactEmailArgs{...} }
+type GetOrganizationBillingGroupBillingContactEmailArrayInput interface {
+	pulumi.Input
+
+	ToGetOrganizationBillingGroupBillingContactEmailArrayOutput() GetOrganizationBillingGroupBillingContactEmailArrayOutput
+	ToGetOrganizationBillingGroupBillingContactEmailArrayOutputWithContext(context.Context) GetOrganizationBillingGroupBillingContactEmailArrayOutput
+}
+
+type GetOrganizationBillingGroupBillingContactEmailArray []GetOrganizationBillingGroupBillingContactEmailInput
+
+func (GetOrganizationBillingGroupBillingContactEmailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOrganizationBillingGroupBillingContactEmail)(nil)).Elem()
+}
+
+func (i GetOrganizationBillingGroupBillingContactEmailArray) ToGetOrganizationBillingGroupBillingContactEmailArrayOutput() GetOrganizationBillingGroupBillingContactEmailArrayOutput {
+	return i.ToGetOrganizationBillingGroupBillingContactEmailArrayOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationBillingGroupBillingContactEmailArray) ToGetOrganizationBillingGroupBillingContactEmailArrayOutputWithContext(ctx context.Context) GetOrganizationBillingGroupBillingContactEmailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationBillingGroupBillingContactEmailArrayOutput)
+}
+
+type GetOrganizationBillingGroupBillingContactEmailOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationBillingGroupBillingContactEmailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationBillingGroupBillingContactEmail)(nil)).Elem()
+}
+
+func (o GetOrganizationBillingGroupBillingContactEmailOutput) ToGetOrganizationBillingGroupBillingContactEmailOutput() GetOrganizationBillingGroupBillingContactEmailOutput {
+	return o
+}
+
+func (o GetOrganizationBillingGroupBillingContactEmailOutput) ToGetOrganizationBillingGroupBillingContactEmailOutputWithContext(ctx context.Context) GetOrganizationBillingGroupBillingContactEmailOutput {
+	return o
+}
+
+// Email.
+func (o GetOrganizationBillingGroupBillingContactEmailOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationBillingGroupBillingContactEmail) string { return v.Email }).(pulumi.StringOutput)
+}
+
+type GetOrganizationBillingGroupBillingContactEmailArrayOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationBillingGroupBillingContactEmailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOrganizationBillingGroupBillingContactEmail)(nil)).Elem()
+}
+
+func (o GetOrganizationBillingGroupBillingContactEmailArrayOutput) ToGetOrganizationBillingGroupBillingContactEmailArrayOutput() GetOrganizationBillingGroupBillingContactEmailArrayOutput {
+	return o
+}
+
+func (o GetOrganizationBillingGroupBillingContactEmailArrayOutput) ToGetOrganizationBillingGroupBillingContactEmailArrayOutputWithContext(ctx context.Context) GetOrganizationBillingGroupBillingContactEmailArrayOutput {
+	return o
+}
+
+func (o GetOrganizationBillingGroupBillingContactEmailArrayOutput) Index(i pulumi.IntInput) GetOrganizationBillingGroupBillingContactEmailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetOrganizationBillingGroupBillingContactEmail {
+		return vs[0].([]GetOrganizationBillingGroupBillingContactEmail)[vs[1].(int)]
+	}).(GetOrganizationBillingGroupBillingContactEmailOutput)
+}
+
+type GetOrganizationBillingGroupBillingEmail struct {
+	// Email.
+	Email string `pulumi:"email"`
+}
+
+// GetOrganizationBillingGroupBillingEmailInput is an input type that accepts GetOrganizationBillingGroupBillingEmailArgs and GetOrganizationBillingGroupBillingEmailOutput values.
+// You can construct a concrete instance of `GetOrganizationBillingGroupBillingEmailInput` via:
+//
+//	GetOrganizationBillingGroupBillingEmailArgs{...}
+type GetOrganizationBillingGroupBillingEmailInput interface {
+	pulumi.Input
+
+	ToGetOrganizationBillingGroupBillingEmailOutput() GetOrganizationBillingGroupBillingEmailOutput
+	ToGetOrganizationBillingGroupBillingEmailOutputWithContext(context.Context) GetOrganizationBillingGroupBillingEmailOutput
+}
+
+type GetOrganizationBillingGroupBillingEmailArgs struct {
+	// Email.
+	Email pulumi.StringInput `pulumi:"email"`
+}
+
+func (GetOrganizationBillingGroupBillingEmailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationBillingGroupBillingEmail)(nil)).Elem()
+}
+
+func (i GetOrganizationBillingGroupBillingEmailArgs) ToGetOrganizationBillingGroupBillingEmailOutput() GetOrganizationBillingGroupBillingEmailOutput {
+	return i.ToGetOrganizationBillingGroupBillingEmailOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationBillingGroupBillingEmailArgs) ToGetOrganizationBillingGroupBillingEmailOutputWithContext(ctx context.Context) GetOrganizationBillingGroupBillingEmailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationBillingGroupBillingEmailOutput)
+}
+
+// GetOrganizationBillingGroupBillingEmailArrayInput is an input type that accepts GetOrganizationBillingGroupBillingEmailArray and GetOrganizationBillingGroupBillingEmailArrayOutput values.
+// You can construct a concrete instance of `GetOrganizationBillingGroupBillingEmailArrayInput` via:
+//
+//	GetOrganizationBillingGroupBillingEmailArray{ GetOrganizationBillingGroupBillingEmailArgs{...} }
+type GetOrganizationBillingGroupBillingEmailArrayInput interface {
+	pulumi.Input
+
+	ToGetOrganizationBillingGroupBillingEmailArrayOutput() GetOrganizationBillingGroupBillingEmailArrayOutput
+	ToGetOrganizationBillingGroupBillingEmailArrayOutputWithContext(context.Context) GetOrganizationBillingGroupBillingEmailArrayOutput
+}
+
+type GetOrganizationBillingGroupBillingEmailArray []GetOrganizationBillingGroupBillingEmailInput
+
+func (GetOrganizationBillingGroupBillingEmailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOrganizationBillingGroupBillingEmail)(nil)).Elem()
+}
+
+func (i GetOrganizationBillingGroupBillingEmailArray) ToGetOrganizationBillingGroupBillingEmailArrayOutput() GetOrganizationBillingGroupBillingEmailArrayOutput {
+	return i.ToGetOrganizationBillingGroupBillingEmailArrayOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationBillingGroupBillingEmailArray) ToGetOrganizationBillingGroupBillingEmailArrayOutputWithContext(ctx context.Context) GetOrganizationBillingGroupBillingEmailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationBillingGroupBillingEmailArrayOutput)
+}
+
+type GetOrganizationBillingGroupBillingEmailOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationBillingGroupBillingEmailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationBillingGroupBillingEmail)(nil)).Elem()
+}
+
+func (o GetOrganizationBillingGroupBillingEmailOutput) ToGetOrganizationBillingGroupBillingEmailOutput() GetOrganizationBillingGroupBillingEmailOutput {
+	return o
+}
+
+func (o GetOrganizationBillingGroupBillingEmailOutput) ToGetOrganizationBillingGroupBillingEmailOutputWithContext(ctx context.Context) GetOrganizationBillingGroupBillingEmailOutput {
+	return o
+}
+
+// Email.
+func (o GetOrganizationBillingGroupBillingEmailOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOrganizationBillingGroupBillingEmail) string { return v.Email }).(pulumi.StringOutput)
+}
+
+type GetOrganizationBillingGroupBillingEmailArrayOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationBillingGroupBillingEmailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOrganizationBillingGroupBillingEmail)(nil)).Elem()
+}
+
+func (o GetOrganizationBillingGroupBillingEmailArrayOutput) ToGetOrganizationBillingGroupBillingEmailArrayOutput() GetOrganizationBillingGroupBillingEmailArrayOutput {
+	return o
+}
+
+func (o GetOrganizationBillingGroupBillingEmailArrayOutput) ToGetOrganizationBillingGroupBillingEmailArrayOutputWithContext(ctx context.Context) GetOrganizationBillingGroupBillingEmailArrayOutput {
+	return o
+}
+
+func (o GetOrganizationBillingGroupBillingEmailArrayOutput) Index(i pulumi.IntInput) GetOrganizationBillingGroupBillingEmailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetOrganizationBillingGroupBillingEmail {
+		return vs[0].([]GetOrganizationBillingGroupBillingEmail)[vs[1].(int)]
+	}).(GetOrganizationBillingGroupBillingEmailOutput)
+}
+
 type GetOrganizationBillingGroupListBillingGroup struct {
 	// Billing address ID.
 	BillingAddressId string `pulumi:"billingAddressId"`
@@ -2238,6 +6529,143 @@ func (o GetOrganizationUserGroupMemberListTimeoutsPtrOutput) Read() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetOrganizationUserGroupTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Read *string `pulumi:"read"`
+}
+
+// GetOrganizationUserGroupTimeoutsInput is an input type that accepts GetOrganizationUserGroupTimeoutsArgs and GetOrganizationUserGroupTimeoutsOutput values.
+// You can construct a concrete instance of `GetOrganizationUserGroupTimeoutsInput` via:
+//
+//	GetOrganizationUserGroupTimeoutsArgs{...}
+type GetOrganizationUserGroupTimeoutsInput interface {
+	pulumi.Input
+
+	ToGetOrganizationUserGroupTimeoutsOutput() GetOrganizationUserGroupTimeoutsOutput
+	ToGetOrganizationUserGroupTimeoutsOutputWithContext(context.Context) GetOrganizationUserGroupTimeoutsOutput
+}
+
+type GetOrganizationUserGroupTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Read pulumi.StringPtrInput `pulumi:"read"`
+}
+
+func (GetOrganizationUserGroupTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationUserGroupTimeouts)(nil)).Elem()
+}
+
+func (i GetOrganizationUserGroupTimeoutsArgs) ToGetOrganizationUserGroupTimeoutsOutput() GetOrganizationUserGroupTimeoutsOutput {
+	return i.ToGetOrganizationUserGroupTimeoutsOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationUserGroupTimeoutsArgs) ToGetOrganizationUserGroupTimeoutsOutputWithContext(ctx context.Context) GetOrganizationUserGroupTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationUserGroupTimeoutsOutput)
+}
+
+func (i GetOrganizationUserGroupTimeoutsArgs) ToGetOrganizationUserGroupTimeoutsPtrOutput() GetOrganizationUserGroupTimeoutsPtrOutput {
+	return i.ToGetOrganizationUserGroupTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationUserGroupTimeoutsArgs) ToGetOrganizationUserGroupTimeoutsPtrOutputWithContext(ctx context.Context) GetOrganizationUserGroupTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationUserGroupTimeoutsOutput).ToGetOrganizationUserGroupTimeoutsPtrOutputWithContext(ctx)
+}
+
+// GetOrganizationUserGroupTimeoutsPtrInput is an input type that accepts GetOrganizationUserGroupTimeoutsArgs, GetOrganizationUserGroupTimeoutsPtr and GetOrganizationUserGroupTimeoutsPtrOutput values.
+// You can construct a concrete instance of `GetOrganizationUserGroupTimeoutsPtrInput` via:
+//
+//	        GetOrganizationUserGroupTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetOrganizationUserGroupTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToGetOrganizationUserGroupTimeoutsPtrOutput() GetOrganizationUserGroupTimeoutsPtrOutput
+	ToGetOrganizationUserGroupTimeoutsPtrOutputWithContext(context.Context) GetOrganizationUserGroupTimeoutsPtrOutput
+}
+
+type getOrganizationUserGroupTimeoutsPtrType GetOrganizationUserGroupTimeoutsArgs
+
+func GetOrganizationUserGroupTimeoutsPtr(v *GetOrganizationUserGroupTimeoutsArgs) GetOrganizationUserGroupTimeoutsPtrInput {
+	return (*getOrganizationUserGroupTimeoutsPtrType)(v)
+}
+
+func (*getOrganizationUserGroupTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOrganizationUserGroupTimeouts)(nil)).Elem()
+}
+
+func (i *getOrganizationUserGroupTimeoutsPtrType) ToGetOrganizationUserGroupTimeoutsPtrOutput() GetOrganizationUserGroupTimeoutsPtrOutput {
+	return i.ToGetOrganizationUserGroupTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *getOrganizationUserGroupTimeoutsPtrType) ToGetOrganizationUserGroupTimeoutsPtrOutputWithContext(ctx context.Context) GetOrganizationUserGroupTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationUserGroupTimeoutsPtrOutput)
+}
+
+type GetOrganizationUserGroupTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationUserGroupTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationUserGroupTimeouts)(nil)).Elem()
+}
+
+func (o GetOrganizationUserGroupTimeoutsOutput) ToGetOrganizationUserGroupTimeoutsOutput() GetOrganizationUserGroupTimeoutsOutput {
+	return o
+}
+
+func (o GetOrganizationUserGroupTimeoutsOutput) ToGetOrganizationUserGroupTimeoutsOutputWithContext(ctx context.Context) GetOrganizationUserGroupTimeoutsOutput {
+	return o
+}
+
+func (o GetOrganizationUserGroupTimeoutsOutput) ToGetOrganizationUserGroupTimeoutsPtrOutput() GetOrganizationUserGroupTimeoutsPtrOutput {
+	return o.ToGetOrganizationUserGroupTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o GetOrganizationUserGroupTimeoutsOutput) ToGetOrganizationUserGroupTimeoutsPtrOutputWithContext(ctx context.Context) GetOrganizationUserGroupTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetOrganizationUserGroupTimeouts) *GetOrganizationUserGroupTimeouts {
+		return &v
+	}).(GetOrganizationUserGroupTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o GetOrganizationUserGroupTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOrganizationUserGroupTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+type GetOrganizationUserGroupTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationUserGroupTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOrganizationUserGroupTimeouts)(nil)).Elem()
+}
+
+func (o GetOrganizationUserGroupTimeoutsPtrOutput) ToGetOrganizationUserGroupTimeoutsPtrOutput() GetOrganizationUserGroupTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetOrganizationUserGroupTimeoutsPtrOutput) ToGetOrganizationUserGroupTimeoutsPtrOutputWithContext(ctx context.Context) GetOrganizationUserGroupTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetOrganizationUserGroupTimeoutsPtrOutput) Elem() GetOrganizationUserGroupTimeoutsOutput {
+	return o.ApplyT(func(v *GetOrganizationUserGroupTimeouts) GetOrganizationUserGroupTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret GetOrganizationUserGroupTimeouts
+		return ret
+	}).(GetOrganizationUserGroupTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o GetOrganizationUserGroupTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOrganizationUserGroupTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetOrganizationUserListTimeouts struct {
 	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
 	Read *string `pulumi:"read"`
@@ -2693,6 +7121,143 @@ func (o GetOrganizationUserListUserUserInfoArrayOutput) Index(i pulumi.IntInput)
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetOrganizationUserListUserUserInfo {
 		return vs[0].([]GetOrganizationUserListUserUserInfo)[vs[1].(int)]
 	}).(GetOrganizationUserListUserUserInfoOutput)
+}
+
+type GetOrganizationVpcTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Read *string `pulumi:"read"`
+}
+
+// GetOrganizationVpcTimeoutsInput is an input type that accepts GetOrganizationVpcTimeoutsArgs and GetOrganizationVpcTimeoutsOutput values.
+// You can construct a concrete instance of `GetOrganizationVpcTimeoutsInput` via:
+//
+//	GetOrganizationVpcTimeoutsArgs{...}
+type GetOrganizationVpcTimeoutsInput interface {
+	pulumi.Input
+
+	ToGetOrganizationVpcTimeoutsOutput() GetOrganizationVpcTimeoutsOutput
+	ToGetOrganizationVpcTimeoutsOutputWithContext(context.Context) GetOrganizationVpcTimeoutsOutput
+}
+
+type GetOrganizationVpcTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Read pulumi.StringPtrInput `pulumi:"read"`
+}
+
+func (GetOrganizationVpcTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationVpcTimeouts)(nil)).Elem()
+}
+
+func (i GetOrganizationVpcTimeoutsArgs) ToGetOrganizationVpcTimeoutsOutput() GetOrganizationVpcTimeoutsOutput {
+	return i.ToGetOrganizationVpcTimeoutsOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationVpcTimeoutsArgs) ToGetOrganizationVpcTimeoutsOutputWithContext(ctx context.Context) GetOrganizationVpcTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationVpcTimeoutsOutput)
+}
+
+func (i GetOrganizationVpcTimeoutsArgs) ToGetOrganizationVpcTimeoutsPtrOutput() GetOrganizationVpcTimeoutsPtrOutput {
+	return i.ToGetOrganizationVpcTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i GetOrganizationVpcTimeoutsArgs) ToGetOrganizationVpcTimeoutsPtrOutputWithContext(ctx context.Context) GetOrganizationVpcTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationVpcTimeoutsOutput).ToGetOrganizationVpcTimeoutsPtrOutputWithContext(ctx)
+}
+
+// GetOrganizationVpcTimeoutsPtrInput is an input type that accepts GetOrganizationVpcTimeoutsArgs, GetOrganizationVpcTimeoutsPtr and GetOrganizationVpcTimeoutsPtrOutput values.
+// You can construct a concrete instance of `GetOrganizationVpcTimeoutsPtrInput` via:
+//
+//	        GetOrganizationVpcTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetOrganizationVpcTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToGetOrganizationVpcTimeoutsPtrOutput() GetOrganizationVpcTimeoutsPtrOutput
+	ToGetOrganizationVpcTimeoutsPtrOutputWithContext(context.Context) GetOrganizationVpcTimeoutsPtrOutput
+}
+
+type getOrganizationVpcTimeoutsPtrType GetOrganizationVpcTimeoutsArgs
+
+func GetOrganizationVpcTimeoutsPtr(v *GetOrganizationVpcTimeoutsArgs) GetOrganizationVpcTimeoutsPtrInput {
+	return (*getOrganizationVpcTimeoutsPtrType)(v)
+}
+
+func (*getOrganizationVpcTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOrganizationVpcTimeouts)(nil)).Elem()
+}
+
+func (i *getOrganizationVpcTimeoutsPtrType) ToGetOrganizationVpcTimeoutsPtrOutput() GetOrganizationVpcTimeoutsPtrOutput {
+	return i.ToGetOrganizationVpcTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *getOrganizationVpcTimeoutsPtrType) ToGetOrganizationVpcTimeoutsPtrOutputWithContext(ctx context.Context) GetOrganizationVpcTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOrganizationVpcTimeoutsPtrOutput)
+}
+
+type GetOrganizationVpcTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationVpcTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOrganizationVpcTimeouts)(nil)).Elem()
+}
+
+func (o GetOrganizationVpcTimeoutsOutput) ToGetOrganizationVpcTimeoutsOutput() GetOrganizationVpcTimeoutsOutput {
+	return o
+}
+
+func (o GetOrganizationVpcTimeoutsOutput) ToGetOrganizationVpcTimeoutsOutputWithContext(ctx context.Context) GetOrganizationVpcTimeoutsOutput {
+	return o
+}
+
+func (o GetOrganizationVpcTimeoutsOutput) ToGetOrganizationVpcTimeoutsPtrOutput() GetOrganizationVpcTimeoutsPtrOutput {
+	return o.ToGetOrganizationVpcTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o GetOrganizationVpcTimeoutsOutput) ToGetOrganizationVpcTimeoutsPtrOutputWithContext(ctx context.Context) GetOrganizationVpcTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetOrganizationVpcTimeouts) *GetOrganizationVpcTimeouts {
+		return &v
+	}).(GetOrganizationVpcTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o GetOrganizationVpcTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOrganizationVpcTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+type GetOrganizationVpcTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetOrganizationVpcTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOrganizationVpcTimeouts)(nil)).Elem()
+}
+
+func (o GetOrganizationVpcTimeoutsPtrOutput) ToGetOrganizationVpcTimeoutsPtrOutput() GetOrganizationVpcTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetOrganizationVpcTimeoutsPtrOutput) ToGetOrganizationVpcTimeoutsPtrOutputWithContext(ctx context.Context) GetOrganizationVpcTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetOrganizationVpcTimeoutsPtrOutput) Elem() GetOrganizationVpcTimeoutsOutput {
+	return o.ApplyT(func(v *GetOrganizationVpcTimeouts) GetOrganizationVpcTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret GetOrganizationVpcTimeouts
+		return ret
+	}).(GetOrganizationVpcTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o GetOrganizationVpcTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOrganizationVpcTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetOrganizationalUnitTimeouts struct {
@@ -3552,6 +8117,8 @@ type GetPgPgUserConfig struct {
 	PgServiceToForkFrom *string `pulumi:"pgServiceToForkFrom"`
 	// Enable the pgStatMonitor extension. Changing this parameter causes a service restart. When this extension is enabled, pgStatStatements results for utility commands are unreliable. Default: `false`.
 	PgStatMonitorEnable *bool `pulumi:"pgStatMonitorEnable"`
+	// Enable the pgStatPlans extension. Changing this parameter causes a service restart. Tracks execution plans for SQL queries. Default: `false`.
+	PgStatPlansEnable *bool `pulumi:"pgStatPlansEnable"`
 	// Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`, `17`, `18`, and newer. PostgreSQL major version.
 	PgVersion *string `pulumi:"pgVersion"`
 	// System-wide settings for the pgaudit extension
@@ -3643,6 +8210,8 @@ type GetPgPgUserConfigArgs struct {
 	PgServiceToForkFrom pulumi.StringPtrInput `pulumi:"pgServiceToForkFrom"`
 	// Enable the pgStatMonitor extension. Changing this parameter causes a service restart. When this extension is enabled, pgStatStatements results for utility commands are unreliable. Default: `false`.
 	PgStatMonitorEnable pulumi.BoolPtrInput `pulumi:"pgStatMonitorEnable"`
+	// Enable the pgStatPlans extension. Changing this parameter causes a service restart. Tracks execution plans for SQL queries. Default: `false`.
+	PgStatPlansEnable pulumi.BoolPtrInput `pulumi:"pgStatPlansEnable"`
 	// Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`, `17`, `18`, and newer. PostgreSQL major version.
 	PgVersion pulumi.StringPtrInput `pulumi:"pgVersion"`
 	// System-wide settings for the pgaudit extension
@@ -3828,6 +8397,11 @@ func (o GetPgPgUserConfigOutput) PgServiceToForkFrom() pulumi.StringPtrOutput {
 // Enable the pgStatMonitor extension. Changing this parameter causes a service restart. When this extension is enabled, pgStatStatements results for utility commands are unreliable. Default: `false`.
 func (o GetPgPgUserConfigOutput) PgStatMonitorEnable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfig) *bool { return v.PgStatMonitorEnable }).(pulumi.BoolPtrOutput)
+}
+
+// Enable the pgStatPlans extension. Changing this parameter causes a service restart. Tracks execution plans for SQL queries. Default: `false`.
+func (o GetPgPgUserConfigOutput) PgStatPlansEnable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfig) *bool { return v.PgStatPlansEnable }).(pulumi.BoolPtrOutput)
 }
 
 // Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`, `17`, `18`, and newer. PostgreSQL major version.
@@ -4375,7 +8949,7 @@ type GetPgPgUserConfigPg struct {
 	IoMaxConcurrency *int `pulumi:"ioMaxConcurrency"`
 	// Enum: `ioUring`, `sync`, `worker`. EXPERIMENTAL: Controls the maximum number of I/O operations that one process can execute simultaneously. Version 18 and up only. Changing this parameter causes a service restart. Default: `worker`.
 	IoMethod *string `pulumi:"ioMethod"`
-	// EXPERIMENTAL: Number of IO worker processes, for io_method=worker. Version 18 and up only. Changing this parameter causes a service restart. Default: `3`.
+	// EXPERIMENTAL: Number of IO worker processes, for io_method=worker. Version 18 and up only.
 	IoWorkers *int `pulumi:"ioWorkers"`
 	// Controls system-wide use of Just-in-Time Compilation (JIT).
 	Jit *bool `pulumi:"jit"`
@@ -4427,10 +9001,12 @@ type GetPgPgUserConfigPg struct {
 	PgPartmanBgwDotInterval *int `pulumi:"pgPartmanBgwDotInterval"`
 	// Controls which role to use for pg_partman's scheduled background tasks. Example: `myrolename`.
 	PgPartmanBgwDotRole *string `pulumi:"pgPartmanBgwDotRole"`
-	// Enables or disables query plan monitoring. Changing this parameter causes a service restart. Only available for PostgreSQL 13+.
+	// Enables or disables query plan monitoring. Only available for PostgreSQL 13+.
 	PgStatMonitorDotPgsmEnableQueryPlan *bool `pulumi:"pgStatMonitorDotPgsmEnableQueryPlan"`
 	// Sets the maximum number of buckets. Changing this parameter causes a service restart. Only available for PostgreSQL 13+. Example: `10`.
 	PgStatMonitorDotPgsmMaxBuckets *int `pulumi:"pgStatMonitorDotPgsmMaxBuckets"`
+	// Enum: `all`, `none`, `top`. Controls which statements' plans are tracked. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable plan tracking. The default is `top`.
+	PgStatPlansDotTrack *string `pulumi:"pgStatPlansDotTrack"`
 	// Enum: `all`, `none`, `top`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default is `top`.
 	PgStatStatementsDotTrack *string `pulumi:"pgStatStatementsDotTrack"`
 	// Enum: `local`, `off`, `on`, `remoteApply`, `remoteWrite`. Sets the current transaction's synchronization level. The default is `off`. This setting takes precedence over `synchronousReplication`.
@@ -4505,7 +9081,7 @@ type GetPgPgUserConfigPgArgs struct {
 	IoMaxConcurrency pulumi.IntPtrInput `pulumi:"ioMaxConcurrency"`
 	// Enum: `ioUring`, `sync`, `worker`. EXPERIMENTAL: Controls the maximum number of I/O operations that one process can execute simultaneously. Version 18 and up only. Changing this parameter causes a service restart. Default: `worker`.
 	IoMethod pulumi.StringPtrInput `pulumi:"ioMethod"`
-	// EXPERIMENTAL: Number of IO worker processes, for io_method=worker. Version 18 and up only. Changing this parameter causes a service restart. Default: `3`.
+	// EXPERIMENTAL: Number of IO worker processes, for io_method=worker. Version 18 and up only.
 	IoWorkers pulumi.IntPtrInput `pulumi:"ioWorkers"`
 	// Controls system-wide use of Just-in-Time Compilation (JIT).
 	Jit pulumi.BoolPtrInput `pulumi:"jit"`
@@ -4557,10 +9133,12 @@ type GetPgPgUserConfigPgArgs struct {
 	PgPartmanBgwDotInterval pulumi.IntPtrInput `pulumi:"pgPartmanBgwDotInterval"`
 	// Controls which role to use for pg_partman's scheduled background tasks. Example: `myrolename`.
 	PgPartmanBgwDotRole pulumi.StringPtrInput `pulumi:"pgPartmanBgwDotRole"`
-	// Enables or disables query plan monitoring. Changing this parameter causes a service restart. Only available for PostgreSQL 13+.
+	// Enables or disables query plan monitoring. Only available for PostgreSQL 13+.
 	PgStatMonitorDotPgsmEnableQueryPlan pulumi.BoolPtrInput `pulumi:"pgStatMonitorDotPgsmEnableQueryPlan"`
 	// Sets the maximum number of buckets. Changing this parameter causes a service restart. Only available for PostgreSQL 13+. Example: `10`.
 	PgStatMonitorDotPgsmMaxBuckets pulumi.IntPtrInput `pulumi:"pgStatMonitorDotPgsmMaxBuckets"`
+	// Enum: `all`, `none`, `top`. Controls which statements' plans are tracked. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable plan tracking. The default is `top`.
+	PgStatPlansDotTrack pulumi.StringPtrInput `pulumi:"pgStatPlansDotTrack"`
 	// Enum: `all`, `none`, `top`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default is `top`.
 	PgStatStatementsDotTrack pulumi.StringPtrInput `pulumi:"pgStatStatementsDotTrack"`
 	// Enum: `local`, `off`, `on`, `remoteApply`, `remoteWrite`. Sets the current transaction's synchronization level. The default is `off`. This setting takes precedence over `synchronousReplication`.
@@ -4760,7 +9338,7 @@ func (o GetPgPgUserConfigPgOutput) IoMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *string { return v.IoMethod }).(pulumi.StringPtrOutput)
 }
 
-// EXPERIMENTAL: Number of IO worker processes, for io_method=worker. Version 18 and up only. Changing this parameter causes a service restart. Default: `3`.
+// EXPERIMENTAL: Number of IO worker processes, for io_method=worker. Version 18 and up only.
 func (o GetPgPgUserConfigPgOutput) IoWorkers() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.IoWorkers }).(pulumi.IntPtrOutput)
 }
@@ -4890,7 +9468,7 @@ func (o GetPgPgUserConfigPgOutput) PgPartmanBgwDotRole() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *string { return v.PgPartmanBgwDotRole }).(pulumi.StringPtrOutput)
 }
 
-// Enables or disables query plan monitoring. Changing this parameter causes a service restart. Only available for PostgreSQL 13+.
+// Enables or disables query plan monitoring. Only available for PostgreSQL 13+.
 func (o GetPgPgUserConfigPgOutput) PgStatMonitorDotPgsmEnableQueryPlan() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *bool { return v.PgStatMonitorDotPgsmEnableQueryPlan }).(pulumi.BoolPtrOutput)
 }
@@ -4898,6 +9476,11 @@ func (o GetPgPgUserConfigPgOutput) PgStatMonitorDotPgsmEnableQueryPlan() pulumi.
 // Sets the maximum number of buckets. Changing this parameter causes a service restart. Only available for PostgreSQL 13+. Example: `10`.
 func (o GetPgPgUserConfigPgOutput) PgStatMonitorDotPgsmMaxBuckets() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPg) *int { return v.PgStatMonitorDotPgsmMaxBuckets }).(pulumi.IntPtrOutput)
+}
+
+// Enum: `all`, `none`, `top`. Controls which statements' plans are tracked. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable plan tracking. The default is `top`.
+func (o GetPgPgUserConfigPgOutput) PgStatPlansDotTrack() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPg) *string { return v.PgStatPlansDotTrack }).(pulumi.StringPtrOutput)
 }
 
 // Enum: `all`, `none`, `top`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default is `top`.
@@ -5174,7 +9757,7 @@ func (o GetPgPgUserConfigPgPtrOutput) IoMethod() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// EXPERIMENTAL: Number of IO worker processes, for io_method=worker. Version 18 and up only. Changing this parameter causes a service restart. Default: `3`.
+// EXPERIMENTAL: Number of IO worker processes, for io_method=worker. Version 18 and up only.
 func (o GetPgPgUserConfigPgPtrOutput) IoWorkers() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) *int {
 		if v == nil {
@@ -5434,7 +10017,7 @@ func (o GetPgPgUserConfigPgPtrOutput) PgPartmanBgwDotRole() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// Enables or disables query plan monitoring. Changing this parameter causes a service restart. Only available for PostgreSQL 13+.
+// Enables or disables query plan monitoring. Only available for PostgreSQL 13+.
 func (o GetPgPgUserConfigPgPtrOutput) PgStatMonitorDotPgsmEnableQueryPlan() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPg) *bool {
 		if v == nil {
@@ -5452,6 +10035,16 @@ func (o GetPgPgUserConfigPgPtrOutput) PgStatMonitorDotPgsmMaxBuckets() pulumi.In
 		}
 		return v.PgStatMonitorDotPgsmMaxBuckets
 	}).(pulumi.IntPtrOutput)
+}
+
+// Enum: `all`, `none`, `top`. Controls which statements' plans are tracked. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable plan tracking. The default is `top`.
+func (o GetPgPgUserConfigPgPtrOutput) PgStatPlansDotTrack() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPg) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PgStatPlansDotTrack
+	}).(pulumi.StringPtrOutput)
 }
 
 // Enum: `all`, `none`, `top`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default is `top`.
@@ -6206,10 +10799,14 @@ type GetPgPgUserConfigPgbouncer struct {
 	MaxPreparedStatements *int `pulumi:"maxPreparedStatements"`
 	// Add more server connections to pool if below this number. Improves behavior when usual load comes suddenly back after period of total inactivity. The value is effectively capped at the pool size. Default: `0`.
 	MinPoolSize *int `pulumi:"minPoolSize"`
+	// If connection and login don’t finish in this amount of time, the connection will be closed. (seconds).
+	ServerConnectTimeout *float64 `pulumi:"serverConnectTimeout"`
 	// If a server connection has been idle more than this many seconds it will be dropped. If 0 then timeout is disabled. (seconds). Default: `600`.
 	ServerIdleTimeout *int `pulumi:"serverIdleTimeout"`
 	// The pooler will close an unused server connection that has been connected longer than this. (seconds). Default: `3600`.
 	ServerLifetime *int `pulumi:"serverLifetime"`
+	// If login to the server failed, because of failure to connect or from authentication, the pooler waits this much before retrying to connect. During the waiting interval, new clients trying to connect to the failing server will get an error immediately without another connection attempt. (seconds).
+	ServerLoginRetry *float64 `pulumi:"serverLoginRetry"`
 	// Run serverResetQuery (DISCARD ALL) in all pooling modes. Default: `false`.
 	ServerResetQueryAlways *bool `pulumi:"serverResetQueryAlways"`
 }
@@ -6240,10 +10837,14 @@ type GetPgPgUserConfigPgbouncerArgs struct {
 	MaxPreparedStatements pulumi.IntPtrInput `pulumi:"maxPreparedStatements"`
 	// Add more server connections to pool if below this number. Improves behavior when usual load comes suddenly back after period of total inactivity. The value is effectively capped at the pool size. Default: `0`.
 	MinPoolSize pulumi.IntPtrInput `pulumi:"minPoolSize"`
+	// If connection and login don’t finish in this amount of time, the connection will be closed. (seconds).
+	ServerConnectTimeout pulumi.Float64PtrInput `pulumi:"serverConnectTimeout"`
 	// If a server connection has been idle more than this many seconds it will be dropped. If 0 then timeout is disabled. (seconds). Default: `600`.
 	ServerIdleTimeout pulumi.IntPtrInput `pulumi:"serverIdleTimeout"`
 	// The pooler will close an unused server connection that has been connected longer than this. (seconds). Default: `3600`.
 	ServerLifetime pulumi.IntPtrInput `pulumi:"serverLifetime"`
+	// If login to the server failed, because of failure to connect or from authentication, the pooler waits this much before retrying to connect. During the waiting interval, new clients trying to connect to the failing server will get an error immediately without another connection attempt. (seconds).
+	ServerLoginRetry pulumi.Float64PtrInput `pulumi:"serverLoginRetry"`
 	// Run serverResetQuery (DISCARD ALL) in all pooling modes. Default: `false`.
 	ServerResetQueryAlways pulumi.BoolPtrInput `pulumi:"serverResetQueryAlways"`
 }
@@ -6360,6 +10961,11 @@ func (o GetPgPgUserConfigPgbouncerOutput) MinPoolSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPgbouncer) *int { return v.MinPoolSize }).(pulumi.IntPtrOutput)
 }
 
+// If connection and login don’t finish in this amount of time, the connection will be closed. (seconds).
+func (o GetPgPgUserConfigPgbouncerOutput) ServerConnectTimeout() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPgbouncer) *float64 { return v.ServerConnectTimeout }).(pulumi.Float64PtrOutput)
+}
+
 // If a server connection has been idle more than this many seconds it will be dropped. If 0 then timeout is disabled. (seconds). Default: `600`.
 func (o GetPgPgUserConfigPgbouncerOutput) ServerIdleTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPgbouncer) *int { return v.ServerIdleTimeout }).(pulumi.IntPtrOutput)
@@ -6368,6 +10974,11 @@ func (o GetPgPgUserConfigPgbouncerOutput) ServerIdleTimeout() pulumi.IntPtrOutpu
 // The pooler will close an unused server connection that has been connected longer than this. (seconds). Default: `3600`.
 func (o GetPgPgUserConfigPgbouncerOutput) ServerLifetime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfigPgbouncer) *int { return v.ServerLifetime }).(pulumi.IntPtrOutput)
+}
+
+// If login to the server failed, because of failure to connect or from authentication, the pooler waits this much before retrying to connect. During the waiting interval, new clients trying to connect to the failing server will get an error immediately without another connection attempt. (seconds).
+func (o GetPgPgUserConfigPgbouncerOutput) ServerLoginRetry() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetPgPgUserConfigPgbouncer) *float64 { return v.ServerLoginRetry }).(pulumi.Float64PtrOutput)
 }
 
 // Run serverResetQuery (DISCARD ALL) in all pooling modes. Default: `false`.
@@ -6469,6 +11080,16 @@ func (o GetPgPgUserConfigPgbouncerPtrOutput) MinPoolSize() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// If connection and login don’t finish in this amount of time, the connection will be closed. (seconds).
+func (o GetPgPgUserConfigPgbouncerPtrOutput) ServerConnectTimeout() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPgbouncer) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.ServerConnectTimeout
+	}).(pulumi.Float64PtrOutput)
+}
+
 // If a server connection has been idle more than this many seconds it will be dropped. If 0 then timeout is disabled. (seconds). Default: `600`.
 func (o GetPgPgUserConfigPgbouncerPtrOutput) ServerIdleTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetPgPgUserConfigPgbouncer) *int {
@@ -6487,6 +11108,16 @@ func (o GetPgPgUserConfigPgbouncerPtrOutput) ServerLifetime() pulumi.IntPtrOutpu
 		}
 		return v.ServerLifetime
 	}).(pulumi.IntPtrOutput)
+}
+
+// If login to the server failed, because of failure to connect or from authentication, the pooler waits this much before retrying to connect. During the waiting interval, new clients trying to connect to the failing server will get an error immediately without another connection attempt. (seconds).
+func (o GetPgPgUserConfigPgbouncerPtrOutput) ServerLoginRetry() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GetPgPgUserConfigPgbouncer) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.ServerLoginRetry
+	}).(pulumi.Float64PtrOutput)
 }
 
 // Run serverResetQuery (DISCARD ALL) in all pooling modes. Default: `false`.
@@ -9411,6 +14042,10 @@ func (o GetServiceIntegrationClickhousePostgresqlUserConfigDatabaseArrayOutput) 
 type GetServiceIntegrationDatadogUserConfig struct {
 	// Enable Datadog Database Monitoring.
 	DatadogDbmEnabled *bool `pulumi:"datadogDbmEnabled"`
+	// Enable collection of PL/pgSQL function metrics from pg_stat_user_functions. Requires `trackFunctions` to be set to `pl` or `all` in the service configuration.
+	DatadogFunctionMetricsEnabled *bool `pulumi:"datadogFunctionMetricsEnabled"`
+	// Relations to collect PostgreSQL relation metrics for, such as table size, index statistics, row counts, vacuum ages and locks. No relation metrics are collected when unset
+	DatadogPgRelations []GetServiceIntegrationDatadogUserConfigDatadogPgRelation `pulumi:"datadogPgRelations"`
 	// Enable Datadog PgBouncer Metric Tracking.
 	DatadogPgbouncerEnabled *bool `pulumi:"datadogPgbouncerEnabled"`
 	// Custom tags provided by user
@@ -9449,6 +14084,10 @@ type GetServiceIntegrationDatadogUserConfigInput interface {
 type GetServiceIntegrationDatadogUserConfigArgs struct {
 	// Enable Datadog Database Monitoring.
 	DatadogDbmEnabled pulumi.BoolPtrInput `pulumi:"datadogDbmEnabled"`
+	// Enable collection of PL/pgSQL function metrics from pg_stat_user_functions. Requires `trackFunctions` to be set to `pl` or `all` in the service configuration.
+	DatadogFunctionMetricsEnabled pulumi.BoolPtrInput `pulumi:"datadogFunctionMetricsEnabled"`
+	// Relations to collect PostgreSQL relation metrics for, such as table size, index statistics, row counts, vacuum ages and locks. No relation metrics are collected when unset
+	DatadogPgRelations GetServiceIntegrationDatadogUserConfigDatadogPgRelationArrayInput `pulumi:"datadogPgRelations"`
 	// Enable Datadog PgBouncer Metric Tracking.
 	DatadogPgbouncerEnabled pulumi.BoolPtrInput `pulumi:"datadogPgbouncerEnabled"`
 	// Custom tags provided by user
@@ -9527,6 +14166,18 @@ func (o GetServiceIntegrationDatadogUserConfigOutput) ToGetServiceIntegrationDat
 // Enable Datadog Database Monitoring.
 func (o GetServiceIntegrationDatadogUserConfigOutput) DatadogDbmEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetServiceIntegrationDatadogUserConfig) *bool { return v.DatadogDbmEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Enable collection of PL/pgSQL function metrics from pg_stat_user_functions. Requires `trackFunctions` to be set to `pl` or `all` in the service configuration.
+func (o GetServiceIntegrationDatadogUserConfigOutput) DatadogFunctionMetricsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationDatadogUserConfig) *bool { return v.DatadogFunctionMetricsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Relations to collect PostgreSQL relation metrics for, such as table size, index statistics, row counts, vacuum ages and locks. No relation metrics are collected when unset
+func (o GetServiceIntegrationDatadogUserConfigOutput) DatadogPgRelations() GetServiceIntegrationDatadogUserConfigDatadogPgRelationArrayOutput {
+	return o.ApplyT(func(v GetServiceIntegrationDatadogUserConfig) []GetServiceIntegrationDatadogUserConfigDatadogPgRelation {
+		return v.DatadogPgRelations
+	}).(GetServiceIntegrationDatadogUserConfigDatadogPgRelationArrayOutput)
 }
 
 // Enable Datadog PgBouncer Metric Tracking.
@@ -9608,6 +14259,130 @@ func (o GetServiceIntegrationDatadogUserConfigArrayOutput) Index(i pulumi.IntInp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceIntegrationDatadogUserConfig {
 		return vs[0].([]GetServiceIntegrationDatadogUserConfig)[vs[1].(int)]
 	}).(GetServiceIntegrationDatadogUserConfigOutput)
+}
+
+type GetServiceIntegrationDatadogUserConfigDatadogPgRelation struct {
+	// Name of a single relation to collect metrics for. Example: `orders`.
+	RelationName *string `pulumi:"relationName"`
+	// Regular expression matching the names of the relations to collect metrics for. Example: `^orders_.*`.
+	RelationRegex *string `pulumi:"relationRegex"`
+	// Only collect lock metrics for these relation kinds. Applies to ordinary tables when unset. Accepted values are the `relkind` values of `pgClass`: `r` (ordinary table), `i` (index), `S` (sequence), `t` (TOAST table), `m` (materialized view), `c` (composite type), `f` (foreign table), `p` (partitioned table).
+	Relkinds []string `pulumi:"relkinds"`
+	// Only collect metrics for relations in these schemas. Applies to all schemas when unset.
+	Schemas []string `pulumi:"schemas"`
+}
+
+// GetServiceIntegrationDatadogUserConfigDatadogPgRelationInput is an input type that accepts GetServiceIntegrationDatadogUserConfigDatadogPgRelationArgs and GetServiceIntegrationDatadogUserConfigDatadogPgRelationOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationDatadogUserConfigDatadogPgRelationInput` via:
+//
+//	GetServiceIntegrationDatadogUserConfigDatadogPgRelationArgs{...}
+type GetServiceIntegrationDatadogUserConfigDatadogPgRelationInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationDatadogUserConfigDatadogPgRelationOutput() GetServiceIntegrationDatadogUserConfigDatadogPgRelationOutput
+	ToGetServiceIntegrationDatadogUserConfigDatadogPgRelationOutputWithContext(context.Context) GetServiceIntegrationDatadogUserConfigDatadogPgRelationOutput
+}
+
+type GetServiceIntegrationDatadogUserConfigDatadogPgRelationArgs struct {
+	// Name of a single relation to collect metrics for. Example: `orders`.
+	RelationName pulumi.StringPtrInput `pulumi:"relationName"`
+	// Regular expression matching the names of the relations to collect metrics for. Example: `^orders_.*`.
+	RelationRegex pulumi.StringPtrInput `pulumi:"relationRegex"`
+	// Only collect lock metrics for these relation kinds. Applies to ordinary tables when unset. Accepted values are the `relkind` values of `pgClass`: `r` (ordinary table), `i` (index), `S` (sequence), `t` (TOAST table), `m` (materialized view), `c` (composite type), `f` (foreign table), `p` (partitioned table).
+	Relkinds pulumi.StringArrayInput `pulumi:"relkinds"`
+	// Only collect metrics for relations in these schemas. Applies to all schemas when unset.
+	Schemas pulumi.StringArrayInput `pulumi:"schemas"`
+}
+
+func (GetServiceIntegrationDatadogUserConfigDatadogPgRelationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationDatadogUserConfigDatadogPgRelation)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationDatadogUserConfigDatadogPgRelationArgs) ToGetServiceIntegrationDatadogUserConfigDatadogPgRelationOutput() GetServiceIntegrationDatadogUserConfigDatadogPgRelationOutput {
+	return i.ToGetServiceIntegrationDatadogUserConfigDatadogPgRelationOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationDatadogUserConfigDatadogPgRelationArgs) ToGetServiceIntegrationDatadogUserConfigDatadogPgRelationOutputWithContext(ctx context.Context) GetServiceIntegrationDatadogUserConfigDatadogPgRelationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationDatadogUserConfigDatadogPgRelationOutput)
+}
+
+// GetServiceIntegrationDatadogUserConfigDatadogPgRelationArrayInput is an input type that accepts GetServiceIntegrationDatadogUserConfigDatadogPgRelationArray and GetServiceIntegrationDatadogUserConfigDatadogPgRelationArrayOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationDatadogUserConfigDatadogPgRelationArrayInput` via:
+//
+//	GetServiceIntegrationDatadogUserConfigDatadogPgRelationArray{ GetServiceIntegrationDatadogUserConfigDatadogPgRelationArgs{...} }
+type GetServiceIntegrationDatadogUserConfigDatadogPgRelationArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationDatadogUserConfigDatadogPgRelationArrayOutput() GetServiceIntegrationDatadogUserConfigDatadogPgRelationArrayOutput
+	ToGetServiceIntegrationDatadogUserConfigDatadogPgRelationArrayOutputWithContext(context.Context) GetServiceIntegrationDatadogUserConfigDatadogPgRelationArrayOutput
+}
+
+type GetServiceIntegrationDatadogUserConfigDatadogPgRelationArray []GetServiceIntegrationDatadogUserConfigDatadogPgRelationInput
+
+func (GetServiceIntegrationDatadogUserConfigDatadogPgRelationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationDatadogUserConfigDatadogPgRelation)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationDatadogUserConfigDatadogPgRelationArray) ToGetServiceIntegrationDatadogUserConfigDatadogPgRelationArrayOutput() GetServiceIntegrationDatadogUserConfigDatadogPgRelationArrayOutput {
+	return i.ToGetServiceIntegrationDatadogUserConfigDatadogPgRelationArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationDatadogUserConfigDatadogPgRelationArray) ToGetServiceIntegrationDatadogUserConfigDatadogPgRelationArrayOutputWithContext(ctx context.Context) GetServiceIntegrationDatadogUserConfigDatadogPgRelationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationDatadogUserConfigDatadogPgRelationArrayOutput)
+}
+
+type GetServiceIntegrationDatadogUserConfigDatadogPgRelationOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationDatadogUserConfigDatadogPgRelationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationDatadogUserConfigDatadogPgRelation)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationDatadogUserConfigDatadogPgRelationOutput) ToGetServiceIntegrationDatadogUserConfigDatadogPgRelationOutput() GetServiceIntegrationDatadogUserConfigDatadogPgRelationOutput {
+	return o
+}
+
+func (o GetServiceIntegrationDatadogUserConfigDatadogPgRelationOutput) ToGetServiceIntegrationDatadogUserConfigDatadogPgRelationOutputWithContext(ctx context.Context) GetServiceIntegrationDatadogUserConfigDatadogPgRelationOutput {
+	return o
+}
+
+// Name of a single relation to collect metrics for. Example: `orders`.
+func (o GetServiceIntegrationDatadogUserConfigDatadogPgRelationOutput) RelationName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationDatadogUserConfigDatadogPgRelation) *string { return v.RelationName }).(pulumi.StringPtrOutput)
+}
+
+// Regular expression matching the names of the relations to collect metrics for. Example: `^orders_.*`.
+func (o GetServiceIntegrationDatadogUserConfigDatadogPgRelationOutput) RelationRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationDatadogUserConfigDatadogPgRelation) *string { return v.RelationRegex }).(pulumi.StringPtrOutput)
+}
+
+// Only collect lock metrics for these relation kinds. Applies to ordinary tables when unset. Accepted values are the `relkind` values of `pgClass`: `r` (ordinary table), `i` (index), `S` (sequence), `t` (TOAST table), `m` (materialized view), `c` (composite type), `f` (foreign table), `p` (partitioned table).
+func (o GetServiceIntegrationDatadogUserConfigDatadogPgRelationOutput) Relkinds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServiceIntegrationDatadogUserConfigDatadogPgRelation) []string { return v.Relkinds }).(pulumi.StringArrayOutput)
+}
+
+// Only collect metrics for relations in these schemas. Applies to all schemas when unset.
+func (o GetServiceIntegrationDatadogUserConfigDatadogPgRelationOutput) Schemas() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServiceIntegrationDatadogUserConfigDatadogPgRelation) []string { return v.Schemas }).(pulumi.StringArrayOutput)
+}
+
+type GetServiceIntegrationDatadogUserConfigDatadogPgRelationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationDatadogUserConfigDatadogPgRelationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationDatadogUserConfigDatadogPgRelation)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationDatadogUserConfigDatadogPgRelationArrayOutput) ToGetServiceIntegrationDatadogUserConfigDatadogPgRelationArrayOutput() GetServiceIntegrationDatadogUserConfigDatadogPgRelationArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationDatadogUserConfigDatadogPgRelationArrayOutput) ToGetServiceIntegrationDatadogUserConfigDatadogPgRelationArrayOutputWithContext(ctx context.Context) GetServiceIntegrationDatadogUserConfigDatadogPgRelationArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationDatadogUserConfigDatadogPgRelationArrayOutput) Index(i pulumi.IntInput) GetServiceIntegrationDatadogUserConfigDatadogPgRelationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceIntegrationDatadogUserConfigDatadogPgRelation {
+		return vs[0].([]GetServiceIntegrationDatadogUserConfigDatadogPgRelation)[vs[1].(int)]
+	}).(GetServiceIntegrationDatadogUserConfigDatadogPgRelationOutput)
 }
 
 type GetServiceIntegrationDatadogUserConfigDatadogTag struct {
@@ -12734,6 +17509,148 @@ func (o GetServiceIntegrationEndpointJolokiaUserConfigArrayOutput) Index(i pulum
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceIntegrationEndpointJolokiaUserConfig {
 		return vs[0].([]GetServiceIntegrationEndpointJolokiaUserConfig)[vs[1].(int)]
 	}).(GetServiceIntegrationEndpointJolokiaUserConfigOutput)
+}
+
+type GetServiceIntegrationEndpointOpentelemetryUserConfig struct {
+	// Resource attributes to attach to every exported metric.
+	Attributes map[string]string `pulumi:"attributes"`
+	// Enum: `gzip`, `none`. Payload compression.
+	Compression string `pulumi:"compression"`
+	// Enum: `json`, `protobuf`. Encoding used for exported metrics. Leave unset to use telegraf's default.
+	EncodingType *string `pulumi:"encodingType"`
+	// Additional gRPC metadata headers sent with every export request.
+	Headers map[string]string `pulumi:"headers"`
+	// Either a bare `host:port` (OTLP/gRPC, no URL scheme) or an `http://`/`https://` URL (OTLP/HTTP). Example: `otel-collector.example.avns.net:4317`.
+	ServiceAddress string `pulumi:"serviceAddress"`
+	// Connection timeout in seconds. Example: `10`.
+	Timeout int `pulumi:"timeout"`
+}
+
+// GetServiceIntegrationEndpointOpentelemetryUserConfigInput is an input type that accepts GetServiceIntegrationEndpointOpentelemetryUserConfigArgs and GetServiceIntegrationEndpointOpentelemetryUserConfigOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationEndpointOpentelemetryUserConfigInput` via:
+//
+//	GetServiceIntegrationEndpointOpentelemetryUserConfigArgs{...}
+type GetServiceIntegrationEndpointOpentelemetryUserConfigInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationEndpointOpentelemetryUserConfigOutput() GetServiceIntegrationEndpointOpentelemetryUserConfigOutput
+	ToGetServiceIntegrationEndpointOpentelemetryUserConfigOutputWithContext(context.Context) GetServiceIntegrationEndpointOpentelemetryUserConfigOutput
+}
+
+type GetServiceIntegrationEndpointOpentelemetryUserConfigArgs struct {
+	// Resource attributes to attach to every exported metric.
+	Attributes pulumi.StringMapInput `pulumi:"attributes"`
+	// Enum: `gzip`, `none`. Payload compression.
+	Compression pulumi.StringInput `pulumi:"compression"`
+	// Enum: `json`, `protobuf`. Encoding used for exported metrics. Leave unset to use telegraf's default.
+	EncodingType pulumi.StringPtrInput `pulumi:"encodingType"`
+	// Additional gRPC metadata headers sent with every export request.
+	Headers pulumi.StringMapInput `pulumi:"headers"`
+	// Either a bare `host:port` (OTLP/gRPC, no URL scheme) or an `http://`/`https://` URL (OTLP/HTTP). Example: `otel-collector.example.avns.net:4317`.
+	ServiceAddress pulumi.StringInput `pulumi:"serviceAddress"`
+	// Connection timeout in seconds. Example: `10`.
+	Timeout pulumi.IntInput `pulumi:"timeout"`
+}
+
+func (GetServiceIntegrationEndpointOpentelemetryUserConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationEndpointOpentelemetryUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationEndpointOpentelemetryUserConfigArgs) ToGetServiceIntegrationEndpointOpentelemetryUserConfigOutput() GetServiceIntegrationEndpointOpentelemetryUserConfigOutput {
+	return i.ToGetServiceIntegrationEndpointOpentelemetryUserConfigOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationEndpointOpentelemetryUserConfigArgs) ToGetServiceIntegrationEndpointOpentelemetryUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointOpentelemetryUserConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationEndpointOpentelemetryUserConfigOutput)
+}
+
+// GetServiceIntegrationEndpointOpentelemetryUserConfigArrayInput is an input type that accepts GetServiceIntegrationEndpointOpentelemetryUserConfigArray and GetServiceIntegrationEndpointOpentelemetryUserConfigArrayOutput values.
+// You can construct a concrete instance of `GetServiceIntegrationEndpointOpentelemetryUserConfigArrayInput` via:
+//
+//	GetServiceIntegrationEndpointOpentelemetryUserConfigArray{ GetServiceIntegrationEndpointOpentelemetryUserConfigArgs{...} }
+type GetServiceIntegrationEndpointOpentelemetryUserConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceIntegrationEndpointOpentelemetryUserConfigArrayOutput() GetServiceIntegrationEndpointOpentelemetryUserConfigArrayOutput
+	ToGetServiceIntegrationEndpointOpentelemetryUserConfigArrayOutputWithContext(context.Context) GetServiceIntegrationEndpointOpentelemetryUserConfigArrayOutput
+}
+
+type GetServiceIntegrationEndpointOpentelemetryUserConfigArray []GetServiceIntegrationEndpointOpentelemetryUserConfigInput
+
+func (GetServiceIntegrationEndpointOpentelemetryUserConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationEndpointOpentelemetryUserConfig)(nil)).Elem()
+}
+
+func (i GetServiceIntegrationEndpointOpentelemetryUserConfigArray) ToGetServiceIntegrationEndpointOpentelemetryUserConfigArrayOutput() GetServiceIntegrationEndpointOpentelemetryUserConfigArrayOutput {
+	return i.ToGetServiceIntegrationEndpointOpentelemetryUserConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceIntegrationEndpointOpentelemetryUserConfigArray) ToGetServiceIntegrationEndpointOpentelemetryUserConfigArrayOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointOpentelemetryUserConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceIntegrationEndpointOpentelemetryUserConfigArrayOutput)
+}
+
+type GetServiceIntegrationEndpointOpentelemetryUserConfigOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationEndpointOpentelemetryUserConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceIntegrationEndpointOpentelemetryUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationEndpointOpentelemetryUserConfigOutput) ToGetServiceIntegrationEndpointOpentelemetryUserConfigOutput() GetServiceIntegrationEndpointOpentelemetryUserConfigOutput {
+	return o
+}
+
+func (o GetServiceIntegrationEndpointOpentelemetryUserConfigOutput) ToGetServiceIntegrationEndpointOpentelemetryUserConfigOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointOpentelemetryUserConfigOutput {
+	return o
+}
+
+// Resource attributes to attach to every exported metric.
+func (o GetServiceIntegrationEndpointOpentelemetryUserConfigOutput) Attributes() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointOpentelemetryUserConfig) map[string]string { return v.Attributes }).(pulumi.StringMapOutput)
+}
+
+// Enum: `gzip`, `none`. Payload compression.
+func (o GetServiceIntegrationEndpointOpentelemetryUserConfigOutput) Compression() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointOpentelemetryUserConfig) string { return v.Compression }).(pulumi.StringOutput)
+}
+
+// Enum: `json`, `protobuf`. Encoding used for exported metrics. Leave unset to use telegraf's default.
+func (o GetServiceIntegrationEndpointOpentelemetryUserConfigOutput) EncodingType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointOpentelemetryUserConfig) *string { return v.EncodingType }).(pulumi.StringPtrOutput)
+}
+
+// Additional gRPC metadata headers sent with every export request.
+func (o GetServiceIntegrationEndpointOpentelemetryUserConfigOutput) Headers() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointOpentelemetryUserConfig) map[string]string { return v.Headers }).(pulumi.StringMapOutput)
+}
+
+// Either a bare `host:port` (OTLP/gRPC, no URL scheme) or an `http://`/`https://` URL (OTLP/HTTP). Example: `otel-collector.example.avns.net:4317`.
+func (o GetServiceIntegrationEndpointOpentelemetryUserConfigOutput) ServiceAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointOpentelemetryUserConfig) string { return v.ServiceAddress }).(pulumi.StringOutput)
+}
+
+// Connection timeout in seconds. Example: `10`.
+func (o GetServiceIntegrationEndpointOpentelemetryUserConfigOutput) Timeout() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointOpentelemetryUserConfig) int { return v.Timeout }).(pulumi.IntOutput)
+}
+
+type GetServiceIntegrationEndpointOpentelemetryUserConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceIntegrationEndpointOpentelemetryUserConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceIntegrationEndpointOpentelemetryUserConfig)(nil)).Elem()
+}
+
+func (o GetServiceIntegrationEndpointOpentelemetryUserConfigArrayOutput) ToGetServiceIntegrationEndpointOpentelemetryUserConfigArrayOutput() GetServiceIntegrationEndpointOpentelemetryUserConfigArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationEndpointOpentelemetryUserConfigArrayOutput) ToGetServiceIntegrationEndpointOpentelemetryUserConfigArrayOutputWithContext(ctx context.Context) GetServiceIntegrationEndpointOpentelemetryUserConfigArrayOutput {
+	return o
+}
+
+func (o GetServiceIntegrationEndpointOpentelemetryUserConfigArrayOutput) Index(i pulumi.IntInput) GetServiceIntegrationEndpointOpentelemetryUserConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceIntegrationEndpointOpentelemetryUserConfig {
+		return vs[0].([]GetServiceIntegrationEndpointOpentelemetryUserConfig)[vs[1].(int)]
+	}).(GetServiceIntegrationEndpointOpentelemetryUserConfigOutput)
 }
 
 type GetServiceIntegrationEndpointPrometheusUserConfig struct {
@@ -19936,6 +24853,143 @@ func (o GetValkeyTechEmailArrayOutput) Index(i pulumi.IntInput) GetValkeyTechEma
 	}).(GetValkeyTechEmailOutput)
 }
 
+type GetValkeyUserTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Read *string `pulumi:"read"`
+}
+
+// GetValkeyUserTimeoutsInput is an input type that accepts GetValkeyUserTimeoutsArgs and GetValkeyUserTimeoutsOutput values.
+// You can construct a concrete instance of `GetValkeyUserTimeoutsInput` via:
+//
+//	GetValkeyUserTimeoutsArgs{...}
+type GetValkeyUserTimeoutsInput interface {
+	pulumi.Input
+
+	ToGetValkeyUserTimeoutsOutput() GetValkeyUserTimeoutsOutput
+	ToGetValkeyUserTimeoutsOutputWithContext(context.Context) GetValkeyUserTimeoutsOutput
+}
+
+type GetValkeyUserTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Read pulumi.StringPtrInput `pulumi:"read"`
+}
+
+func (GetValkeyUserTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetValkeyUserTimeouts)(nil)).Elem()
+}
+
+func (i GetValkeyUserTimeoutsArgs) ToGetValkeyUserTimeoutsOutput() GetValkeyUserTimeoutsOutput {
+	return i.ToGetValkeyUserTimeoutsOutputWithContext(context.Background())
+}
+
+func (i GetValkeyUserTimeoutsArgs) ToGetValkeyUserTimeoutsOutputWithContext(ctx context.Context) GetValkeyUserTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetValkeyUserTimeoutsOutput)
+}
+
+func (i GetValkeyUserTimeoutsArgs) ToGetValkeyUserTimeoutsPtrOutput() GetValkeyUserTimeoutsPtrOutput {
+	return i.ToGetValkeyUserTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i GetValkeyUserTimeoutsArgs) ToGetValkeyUserTimeoutsPtrOutputWithContext(ctx context.Context) GetValkeyUserTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetValkeyUserTimeoutsOutput).ToGetValkeyUserTimeoutsPtrOutputWithContext(ctx)
+}
+
+// GetValkeyUserTimeoutsPtrInput is an input type that accepts GetValkeyUserTimeoutsArgs, GetValkeyUserTimeoutsPtr and GetValkeyUserTimeoutsPtrOutput values.
+// You can construct a concrete instance of `GetValkeyUserTimeoutsPtrInput` via:
+//
+//	        GetValkeyUserTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetValkeyUserTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToGetValkeyUserTimeoutsPtrOutput() GetValkeyUserTimeoutsPtrOutput
+	ToGetValkeyUserTimeoutsPtrOutputWithContext(context.Context) GetValkeyUserTimeoutsPtrOutput
+}
+
+type getValkeyUserTimeoutsPtrType GetValkeyUserTimeoutsArgs
+
+func GetValkeyUserTimeoutsPtr(v *GetValkeyUserTimeoutsArgs) GetValkeyUserTimeoutsPtrInput {
+	return (*getValkeyUserTimeoutsPtrType)(v)
+}
+
+func (*getValkeyUserTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetValkeyUserTimeouts)(nil)).Elem()
+}
+
+func (i *getValkeyUserTimeoutsPtrType) ToGetValkeyUserTimeoutsPtrOutput() GetValkeyUserTimeoutsPtrOutput {
+	return i.ToGetValkeyUserTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *getValkeyUserTimeoutsPtrType) ToGetValkeyUserTimeoutsPtrOutputWithContext(ctx context.Context) GetValkeyUserTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetValkeyUserTimeoutsPtrOutput)
+}
+
+type GetValkeyUserTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (GetValkeyUserTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetValkeyUserTimeouts)(nil)).Elem()
+}
+
+func (o GetValkeyUserTimeoutsOutput) ToGetValkeyUserTimeoutsOutput() GetValkeyUserTimeoutsOutput {
+	return o
+}
+
+func (o GetValkeyUserTimeoutsOutput) ToGetValkeyUserTimeoutsOutputWithContext(ctx context.Context) GetValkeyUserTimeoutsOutput {
+	return o
+}
+
+func (o GetValkeyUserTimeoutsOutput) ToGetValkeyUserTimeoutsPtrOutput() GetValkeyUserTimeoutsPtrOutput {
+	return o.ToGetValkeyUserTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o GetValkeyUserTimeoutsOutput) ToGetValkeyUserTimeoutsPtrOutputWithContext(ctx context.Context) GetValkeyUserTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetValkeyUserTimeouts) *GetValkeyUserTimeouts {
+		return &v
+	}).(GetValkeyUserTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o GetValkeyUserTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetValkeyUserTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+type GetValkeyUserTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetValkeyUserTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetValkeyUserTimeouts)(nil)).Elem()
+}
+
+func (o GetValkeyUserTimeoutsPtrOutput) ToGetValkeyUserTimeoutsPtrOutput() GetValkeyUserTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetValkeyUserTimeoutsPtrOutput) ToGetValkeyUserTimeoutsPtrOutputWithContext(ctx context.Context) GetValkeyUserTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetValkeyUserTimeoutsPtrOutput) Elem() GetValkeyUserTimeoutsOutput {
+	return o.ApplyT(func(v *GetValkeyUserTimeouts) GetValkeyUserTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret GetValkeyUserTimeouts
+		return ret
+	}).(GetValkeyUserTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o GetValkeyUserTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetValkeyUserTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetValkeyValkey struct {
 	// Valkey password.
 	Password string `pulumi:"password"`
@@ -20101,6 +25155,8 @@ type GetValkeyValkeyUserConfig struct {
 	ValkeyAclChannelsDefault *string `pulumi:"valkeyAclChannelsDefault"`
 	// Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency. Default: `1`.
 	ValkeyActiveExpireEffort *int `pulumi:"valkeyActiveExpireEffort"`
+	// Enable active memory defragmentation. When enabled, Valkey relocates objects off sparsely-used memory pages to reduce fragmentation and return memory to the operating system. Defragmentation runs on the main thread and consumes CPU, so it may increase latency under load. Default: `false`.
+	ValkeyActivedefrag *bool `pulumi:"valkeyActivedefrag"`
 	// Set Valkey IO thread count. Changing this will cause a restart of the Valkey service. Example: `1`.
 	ValkeyIoThreads *int `pulumi:"valkeyIoThreads"`
 	// LFU maxmemory-policy counter decay time in minutes. Default: `1`.
@@ -20121,7 +25177,7 @@ type GetValkeyValkeyUserConfig struct {
 	ValkeySsl *bool `pulumi:"valkeySsl"`
 	// Valkey idle connection timeout in seconds. Default: `300`.
 	ValkeyTimeout *int `pulumi:"valkeyTimeout"`
-	// Enum: `8.1`, `9.0`, and newer. Valkey major version.
+	// Enum: `8.1`, `9.0`, `9.1`, and newer. Valkey major version.
 	ValkeyVersion *string `pulumi:"valkeyVersion"`
 }
 
@@ -20177,6 +25233,8 @@ type GetValkeyValkeyUserConfigArgs struct {
 	ValkeyAclChannelsDefault pulumi.StringPtrInput `pulumi:"valkeyAclChannelsDefault"`
 	// Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency. Default: `1`.
 	ValkeyActiveExpireEffort pulumi.IntPtrInput `pulumi:"valkeyActiveExpireEffort"`
+	// Enable active memory defragmentation. When enabled, Valkey relocates objects off sparsely-used memory pages to reduce fragmentation and return memory to the operating system. Defragmentation runs on the main thread and consumes CPU, so it may increase latency under load. Default: `false`.
+	ValkeyActivedefrag pulumi.BoolPtrInput `pulumi:"valkeyActivedefrag"`
 	// Set Valkey IO thread count. Changing this will cause a restart of the Valkey service. Example: `1`.
 	ValkeyIoThreads pulumi.IntPtrInput `pulumi:"valkeyIoThreads"`
 	// LFU maxmemory-policy counter decay time in minutes. Default: `1`.
@@ -20197,7 +25255,7 @@ type GetValkeyValkeyUserConfigArgs struct {
 	ValkeySsl pulumi.BoolPtrInput `pulumi:"valkeySsl"`
 	// Valkey idle connection timeout in seconds. Default: `300`.
 	ValkeyTimeout pulumi.IntPtrInput `pulumi:"valkeyTimeout"`
-	// Enum: `8.1`, `9.0`, and newer. Valkey major version.
+	// Enum: `8.1`, `9.0`, `9.1`, and newer. Valkey major version.
 	ValkeyVersion pulumi.StringPtrInput `pulumi:"valkeyVersion"`
 }
 
@@ -20351,6 +25409,11 @@ func (o GetValkeyValkeyUserConfigOutput) ValkeyActiveExpireEffort() pulumi.IntPt
 	return o.ApplyT(func(v GetValkeyValkeyUserConfig) *int { return v.ValkeyActiveExpireEffort }).(pulumi.IntPtrOutput)
 }
 
+// Enable active memory defragmentation. When enabled, Valkey relocates objects off sparsely-used memory pages to reduce fragmentation and return memory to the operating system. Defragmentation runs on the main thread and consumes CPU, so it may increase latency under load. Default: `false`.
+func (o GetValkeyValkeyUserConfigOutput) ValkeyActivedefrag() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetValkeyValkeyUserConfig) *bool { return v.ValkeyActivedefrag }).(pulumi.BoolPtrOutput)
+}
+
 // Set Valkey IO thread count. Changing this will cause a restart of the Valkey service. Example: `1`.
 func (o GetValkeyValkeyUserConfigOutput) ValkeyIoThreads() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetValkeyValkeyUserConfig) *int { return v.ValkeyIoThreads }).(pulumi.IntPtrOutput)
@@ -20401,7 +25464,7 @@ func (o GetValkeyValkeyUserConfigOutput) ValkeyTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetValkeyValkeyUserConfig) *int { return v.ValkeyTimeout }).(pulumi.IntPtrOutput)
 }
 
-// Enum: `8.1`, `9.0`, and newer. Valkey major version.
+// Enum: `8.1`, `9.0`, `9.1`, and newer. Valkey major version.
 func (o GetValkeyValkeyUserConfigOutput) ValkeyVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetValkeyValkeyUserConfig) *string { return v.ValkeyVersion }).(pulumi.StringPtrOutput)
 }
@@ -21290,6 +26353,56 @@ func (o GetValkeyValkeyUserConfigPublicAccessPtrOutput) Valkey() pulumi.BoolPtrO
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskPtrInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesPtrInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuPtrInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyPtrInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryPtrInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchSegrepInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchSegrepArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchSegrepPtrInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchSegrepArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePtrInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorPtrInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterPtrInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodeInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodePtrInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardPtrInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigPrivateAccessInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigPrivateAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigPrivateAccessPtrInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigPrivateAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigPrivatelinkAccessInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigPrivatelinkAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigPrivatelinkAccessPtrInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigPrivatelinkAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigPublicAccessInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigPublicAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigPublicAccessPtrInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigPublicAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigS3MigrationInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigS3MigrationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigS3MigrationPtrInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigS3MigrationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigSamlInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigSamlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigSamlPtrInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigSamlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchServiceIntegrationInput)(nil)).Elem(), GetOpenSearchServiceIntegrationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchServiceIntegrationArrayInput)(nil)).Elem(), GetOpenSearchServiceIntegrationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchTagInput)(nil)).Elem(), GetOpenSearchTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchTagArrayInput)(nil)).Elem(), GetOpenSearchTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchTechEmailInput)(nil)).Elem(), GetOpenSearchTechEmailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchTechEmailArrayInput)(nil)).Elem(), GetOpenSearchTechEmailArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpensearchSecurityPluginConfigTimeoutsInput)(nil)).Elem(), GetOpensearchSecurityPluginConfigTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpensearchSecurityPluginConfigTimeoutsPtrInput)(nil)).Elem(), GetOpensearchSecurityPluginConfigTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpensearchUserTimeoutsInput)(nil)).Elem(), GetOpensearchUserTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpensearchUserTimeoutsPtrInput)(nil)).Elem(), GetOpensearchUserTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationAddressTimeoutsInput)(nil)).Elem(), GetOrganizationAddressTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationAddressTimeoutsPtrInput)(nil)).Elem(), GetOrganizationAddressTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationApplicationUserTimeoutsInput)(nil)).Elem(), GetOrganizationApplicationUserTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationApplicationUserTimeoutsPtrInput)(nil)).Elem(), GetOrganizationApplicationUserTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationBillingGroupBillingContactEmailInput)(nil)).Elem(), GetOrganizationBillingGroupBillingContactEmailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationBillingGroupBillingContactEmailArrayInput)(nil)).Elem(), GetOrganizationBillingGroupBillingContactEmailArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationBillingGroupBillingEmailInput)(nil)).Elem(), GetOrganizationBillingGroupBillingEmailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationBillingGroupBillingEmailArrayInput)(nil)).Elem(), GetOrganizationBillingGroupBillingEmailArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationBillingGroupListBillingGroupInput)(nil)).Elem(), GetOrganizationBillingGroupListBillingGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationBillingGroupListBillingGroupArrayInput)(nil)).Elem(), GetOrganizationBillingGroupListBillingGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationBillingGroupListBillingGroupBillingContactEmailInput)(nil)).Elem(), GetOrganizationBillingGroupListBillingGroupBillingContactEmailArgs{})
@@ -21324,12 +26437,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationUserGroupMemberListMemberUserInfoArrayInput)(nil)).Elem(), GetOrganizationUserGroupMemberListMemberUserInfoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationUserGroupMemberListTimeoutsInput)(nil)).Elem(), GetOrganizationUserGroupMemberListTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationUserGroupMemberListTimeoutsPtrInput)(nil)).Elem(), GetOrganizationUserGroupMemberListTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationUserGroupTimeoutsInput)(nil)).Elem(), GetOrganizationUserGroupTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationUserGroupTimeoutsPtrInput)(nil)).Elem(), GetOrganizationUserGroupTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationUserListTimeoutsInput)(nil)).Elem(), GetOrganizationUserListTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationUserListTimeoutsPtrInput)(nil)).Elem(), GetOrganizationUserListTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationUserListUserInput)(nil)).Elem(), GetOrganizationUserListUserArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationUserListUserArrayInput)(nil)).Elem(), GetOrganizationUserListUserArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationUserListUserUserInfoInput)(nil)).Elem(), GetOrganizationUserListUserUserInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationUserListUserUserInfoArrayInput)(nil)).Elem(), GetOrganizationUserListUserUserInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationVpcTimeoutsInput)(nil)).Elem(), GetOrganizationVpcTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationVpcTimeoutsPtrInput)(nil)).Elem(), GetOrganizationVpcTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationalUnitTimeoutsInput)(nil)).Elem(), GetOrganizationalUnitTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationalUnitTimeoutsPtrInput)(nil)).Elem(), GetOrganizationalUnitTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPgComponentInput)(nil)).Elem(), GetPgComponentArgs{})
@@ -21398,6 +26515,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationClickhousePostgresqlUserConfigDatabaseArrayInput)(nil)).Elem(), GetServiceIntegrationClickhousePostgresqlUserConfigDatabaseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationDatadogUserConfigInput)(nil)).Elem(), GetServiceIntegrationDatadogUserConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationDatadogUserConfigArrayInput)(nil)).Elem(), GetServiceIntegrationDatadogUserConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationDatadogUserConfigDatadogPgRelationInput)(nil)).Elem(), GetServiceIntegrationDatadogUserConfigDatadogPgRelationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationDatadogUserConfigDatadogPgRelationArrayInput)(nil)).Elem(), GetServiceIntegrationDatadogUserConfigDatadogPgRelationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationDatadogUserConfigDatadogTagInput)(nil)).Elem(), GetServiceIntegrationDatadogUserConfigDatadogTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationDatadogUserConfigDatadogTagArrayInput)(nil)).Elem(), GetServiceIntegrationDatadogUserConfigDatadogTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationDatadogUserConfigOpensearchInput)(nil)).Elem(), GetServiceIntegrationDatadogUserConfigOpensearchArgs{})
@@ -21444,6 +26563,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigArrayInput)(nil)).Elem(), GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointJolokiaUserConfigInput)(nil)).Elem(), GetServiceIntegrationEndpointJolokiaUserConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointJolokiaUserConfigArrayInput)(nil)).Elem(), GetServiceIntegrationEndpointJolokiaUserConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointOpentelemetryUserConfigInput)(nil)).Elem(), GetServiceIntegrationEndpointOpentelemetryUserConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointOpentelemetryUserConfigArrayInput)(nil)).Elem(), GetServiceIntegrationEndpointOpentelemetryUserConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointPrometheusUserConfigInput)(nil)).Elem(), GetServiceIntegrationEndpointPrometheusUserConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointPrometheusUserConfigArrayInput)(nil)).Elem(), GetServiceIntegrationEndpointPrometheusUserConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceIntegrationEndpointRsyslogUserConfigInput)(nil)).Elem(), GetServiceIntegrationEndpointRsyslogUserConfigArgs{})
@@ -21536,6 +26657,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyTagArrayInput)(nil)).Elem(), GetValkeyTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyTechEmailInput)(nil)).Elem(), GetValkeyTechEmailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyTechEmailArrayInput)(nil)).Elem(), GetValkeyTechEmailArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyUserTimeoutsInput)(nil)).Elem(), GetValkeyUserTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyUserTimeoutsPtrInput)(nil)).Elem(), GetValkeyUserTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyInput)(nil)).Elem(), GetValkeyValkeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyArrayInput)(nil)).Elem(), GetValkeyValkeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigInput)(nil)).Elem(), GetValkeyValkeyUserConfigArgs{})
@@ -21550,6 +26673,56 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPrivatelinkAccessPtrInput)(nil)).Elem(), GetValkeyValkeyUserConfigPrivatelinkAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPublicAccessInput)(nil)).Elem(), GetValkeyValkeyUserConfigPublicAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPublicAccessPtrInput)(nil)).Elem(), GetValkeyValkeyUserConfigPublicAccessArgs{})
+	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskPtrOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesPtrOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesCpuPtrOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesLatencyPtrOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesMemoryPtrOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchSegrepOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchSegrepPtrOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePtrOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressureOperatingFactorPtrOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterPtrOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodeOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterNodePtrOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchShardIndexingPressurePrimaryParameterShardPtrOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigPrivateAccessOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigPrivateAccessPtrOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigPrivatelinkAccessOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigPrivatelinkAccessPtrOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigPublicAccessOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigPublicAccessPtrOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigS3MigrationOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigS3MigrationPtrOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigSamlOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigSamlPtrOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchServiceIntegrationOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchServiceIntegrationArrayOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchTagOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchTagArrayOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchTechEmailOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchTechEmailArrayOutput{})
+	pulumi.RegisterOutputType(GetOpensearchSecurityPluginConfigTimeoutsOutput{})
+	pulumi.RegisterOutputType(GetOpensearchSecurityPluginConfigTimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(GetOpensearchUserTimeoutsOutput{})
+	pulumi.RegisterOutputType(GetOpensearchUserTimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(GetOrganizationAddressTimeoutsOutput{})
+	pulumi.RegisterOutputType(GetOrganizationAddressTimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(GetOrganizationApplicationUserTimeoutsOutput{})
+	pulumi.RegisterOutputType(GetOrganizationApplicationUserTimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(GetOrganizationBillingGroupBillingContactEmailOutput{})
+	pulumi.RegisterOutputType(GetOrganizationBillingGroupBillingContactEmailArrayOutput{})
+	pulumi.RegisterOutputType(GetOrganizationBillingGroupBillingEmailOutput{})
+	pulumi.RegisterOutputType(GetOrganizationBillingGroupBillingEmailArrayOutput{})
 	pulumi.RegisterOutputType(GetOrganizationBillingGroupListBillingGroupOutput{})
 	pulumi.RegisterOutputType(GetOrganizationBillingGroupListBillingGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetOrganizationBillingGroupListBillingGroupBillingContactEmailOutput{})
@@ -21584,12 +26757,16 @@ func init() {
 	pulumi.RegisterOutputType(GetOrganizationUserGroupMemberListMemberUserInfoArrayOutput{})
 	pulumi.RegisterOutputType(GetOrganizationUserGroupMemberListTimeoutsOutput{})
 	pulumi.RegisterOutputType(GetOrganizationUserGroupMemberListTimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(GetOrganizationUserGroupTimeoutsOutput{})
+	pulumi.RegisterOutputType(GetOrganizationUserGroupTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(GetOrganizationUserListTimeoutsOutput{})
 	pulumi.RegisterOutputType(GetOrganizationUserListTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(GetOrganizationUserListUserOutput{})
 	pulumi.RegisterOutputType(GetOrganizationUserListUserArrayOutput{})
 	pulumi.RegisterOutputType(GetOrganizationUserListUserUserInfoOutput{})
 	pulumi.RegisterOutputType(GetOrganizationUserListUserUserInfoArrayOutput{})
+	pulumi.RegisterOutputType(GetOrganizationVpcTimeoutsOutput{})
+	pulumi.RegisterOutputType(GetOrganizationVpcTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(GetOrganizationalUnitTimeoutsOutput{})
 	pulumi.RegisterOutputType(GetOrganizationalUnitTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(GetPgComponentOutput{})
@@ -21658,6 +26835,8 @@ func init() {
 	pulumi.RegisterOutputType(GetServiceIntegrationClickhousePostgresqlUserConfigDatabaseArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationDatadogUserConfigOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationDatadogUserConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationDatadogUserConfigDatadogPgRelationOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationDatadogUserConfigDatadogPgRelationArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationDatadogUserConfigDatadogTagOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationDatadogUserConfigDatadogTagArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationDatadogUserConfigOpensearchOutput{})
@@ -21704,6 +26883,8 @@ func init() {
 	pulumi.RegisterOutputType(GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationEndpointJolokiaUserConfigOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationEndpointJolokiaUserConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationEndpointOpentelemetryUserConfigOutput{})
+	pulumi.RegisterOutputType(GetServiceIntegrationEndpointOpentelemetryUserConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationEndpointPrometheusUserConfigOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationEndpointPrometheusUserConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceIntegrationEndpointRsyslogUserConfigOutput{})
@@ -21796,6 +26977,8 @@ func init() {
 	pulumi.RegisterOutputType(GetValkeyTagArrayOutput{})
 	pulumi.RegisterOutputType(GetValkeyTechEmailOutput{})
 	pulumi.RegisterOutputType(GetValkeyTechEmailArrayOutput{})
+	pulumi.RegisterOutputType(GetValkeyUserTimeoutsOutput{})
+	pulumi.RegisterOutputType(GetValkeyUserTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(GetValkeyValkeyOutput{})
 	pulumi.RegisterOutputType(GetValkeyValkeyArrayOutput{})
 	pulumi.RegisterOutputType(GetValkeyValkeyUserConfigOutput{})

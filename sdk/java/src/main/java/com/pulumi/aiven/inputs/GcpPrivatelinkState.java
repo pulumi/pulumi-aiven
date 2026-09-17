@@ -3,6 +3,7 @@
 
 package com.pulumi.aiven.inputs;
 
+import com.pulumi.aiven.inputs.GcpPrivatelinkTimeoutsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
@@ -31,29 +32,37 @@ public final class GcpPrivatelinkState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Printable result of the Google Cloud Private Service Connect request.
+     * Legacy response message retained for backward compatibility. **Deprecated**: This attribute is retained only for compatibility with state created by older provider versions and is no longer populated.
+     * 
+     * @deprecated
+     * This attribute is retained only for compatibility with state created by older provider versions and is no longer populated.
      * 
      */
+    @Deprecated /* This attribute is retained only for compatibility with state created by older provider versions and is no longer populated. */
     @Import(name="message")
     private @Nullable Output<String> message;
 
     /**
-     * @return Printable result of the Google Cloud Private Service Connect request.
+     * @return Legacy response message retained for backward compatibility. **Deprecated**: This attribute is retained only for compatibility with state created by older provider versions and is no longer populated.
+     * 
+     * @deprecated
+     * This attribute is retained only for compatibility with state created by older provider versions and is no longer populated.
      * 
      */
+    @Deprecated /* This attribute is retained only for compatibility with state created by older provider versions and is no longer populated. */
     public Optional<Output<String>> message() {
         return Optional.ofNullable(this.message);
     }
 
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="project")
     private @Nullable Output<String> project;
 
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> project() {
@@ -61,14 +70,14 @@ public final class GcpPrivatelinkState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="serviceName")
     private @Nullable Output<String> serviceName;
 
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service name. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> serviceName() {
@@ -76,18 +85,25 @@ public final class GcpPrivatelinkState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The state of the Private Service Connect resource.
+     * The state of the Private Service Connect resource. The possible values are `active`, `creating` and `deleting`.
      * 
      */
     @Import(name="state")
     private @Nullable Output<String> state;
 
     /**
-     * @return The state of the Private Service Connect resource.
+     * @return The state of the Private Service Connect resource. The possible values are `active`, `creating` and `deleting`.
      * 
      */
     public Optional<Output<String>> state() {
         return Optional.ofNullable(this.state);
+    }
+
+    @Import(name="timeouts")
+    private @Nullable Output<GcpPrivatelinkTimeoutsArgs> timeouts;
+
+    public Optional<Output<GcpPrivatelinkTimeoutsArgs>> timeouts() {
+        return Optional.ofNullable(this.timeouts);
     }
 
     private GcpPrivatelinkState() {}
@@ -98,6 +114,7 @@ public final class GcpPrivatelinkState extends com.pulumi.resources.ResourceArgs
         this.project = $.project;
         this.serviceName = $.serviceName;
         this.state = $.state;
+        this.timeouts = $.timeouts;
     }
 
     public static Builder builder() {
@@ -140,28 +157,36 @@ public final class GcpPrivatelinkState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param message Printable result of the Google Cloud Private Service Connect request.
+         * @param message Legacy response message retained for backward compatibility. **Deprecated**: This attribute is retained only for compatibility with state created by older provider versions and is no longer populated.
          * 
          * @return builder
          * 
+         * @deprecated
+         * This attribute is retained only for compatibility with state created by older provider versions and is no longer populated.
+         * 
          */
+        @Deprecated /* This attribute is retained only for compatibility with state created by older provider versions and is no longer populated. */
         public Builder message(@Nullable Output<String> message) {
             $.message = message;
             return this;
         }
 
         /**
-         * @param message Printable result of the Google Cloud Private Service Connect request.
+         * @param message Legacy response message retained for backward compatibility. **Deprecated**: This attribute is retained only for compatibility with state created by older provider versions and is no longer populated.
          * 
          * @return builder
          * 
+         * @deprecated
+         * This attribute is retained only for compatibility with state created by older provider versions and is no longer populated.
+         * 
          */
+        @Deprecated /* This attribute is retained only for compatibility with state created by older provider versions and is no longer populated. */
         public Builder message(String message) {
             return message(Output.of(message));
         }
 
         /**
-         * @param project The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param project Project name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -172,7 +197,7 @@ public final class GcpPrivatelinkState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param project The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param project Project name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -182,7 +207,7 @@ public final class GcpPrivatelinkState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param serviceName The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param serviceName Service name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -193,7 +218,7 @@ public final class GcpPrivatelinkState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param serviceName The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param serviceName Service name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -203,7 +228,7 @@ public final class GcpPrivatelinkState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param state The state of the Private Service Connect resource.
+         * @param state The state of the Private Service Connect resource. The possible values are `active`, `creating` and `deleting`.
          * 
          * @return builder
          * 
@@ -214,13 +239,22 @@ public final class GcpPrivatelinkState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param state The state of the Private Service Connect resource.
+         * @param state The state of the Private Service Connect resource. The possible values are `active`, `creating` and `deleting`.
          * 
          * @return builder
          * 
          */
         public Builder state(String state) {
             return state(Output.of(state));
+        }
+
+        public Builder timeouts(@Nullable Output<GcpPrivatelinkTimeoutsArgs> timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
+        public Builder timeouts(GcpPrivatelinkTimeoutsArgs timeouts) {
+            return timeouts(Output.of(timeouts));
         }
 
         public GcpPrivatelinkState build() {

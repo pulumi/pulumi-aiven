@@ -28,6 +28,7 @@ namespace Pulumi.Aiven
     ///         AddressLines = new[]
     ///         {
     ///             "Street 1",
+    ///             "Street 2",
     ///         },
     ///         City = "Helsinki",
     ///         CountryCode = "FI",

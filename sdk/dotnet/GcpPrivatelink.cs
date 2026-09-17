@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// Creates and manages a Google Private Service Connect for an Aiven service in a VPC.
+    /// Creates and manages a Google Private Service Connect for an Aiven service in a VPC. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
     /// 
     /// ## Example Usage
     /// 
@@ -22,10 +22,10 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var main = new Aiven.GcpPrivatelink("main", new()
+    ///     var example = new Aiven.GcpPrivatelink("example", new()
     ///     {
-    ///         Project = exampleProject.Project,
-    ///         ServiceName = exampleKafka.ServiceName,
+    ///         Project = "my-project",
+    ///         ServiceName = "foo",
     ///     });
     /// 
     /// });
@@ -34,7 +34,7 @@ namespace Pulumi.Aiven
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import aiven:index/gcpPrivatelink:GcpPrivatelink main PROJECT/SERVICE_NAME
+    /// $ pulumi import aiven:index/gcpPrivatelink:GcpPrivatelink example PROJECT/SERVICE_NAME
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/gcpPrivatelink:GcpPrivatelink")]
@@ -47,28 +47,31 @@ namespace Pulumi.Aiven
         public Output<string> GoogleServiceAttachment { get; private set; } = null!;
 
         /// <summary>
-        /// Printable result of the Google Cloud Private Service Connect request.
+        /// Legacy response message retained for backward compatibility. **Deprecated**: This attribute is retained only for compatibility with state created by older provider versions and is no longer populated.
         /// </summary>
         [Output("message")]
         public Output<string> Message { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service name. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// The state of the Private Service Connect resource.
+        /// The state of the Private Service Connect resource. The possible values are `Active`, `Creating` and `Deleting`.
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
+
+        [Output("timeouts")]
+        public Output<Outputs.GcpPrivatelinkTimeouts?> Timeouts { get; private set; } = null!;
 
 
         /// <summary>
@@ -117,16 +120,19 @@ namespace Pulumi.Aiven
     public sealed class GcpPrivatelinkArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service name. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
+
+        [Input("timeouts")]
+        public Input<Inputs.GcpPrivatelinkTimeoutsArgs>? Timeouts { get; set; }
 
         public GcpPrivatelinkArgs()
         {
@@ -143,28 +149,31 @@ namespace Pulumi.Aiven
         public Input<string>? GoogleServiceAttachment { get; set; }
 
         /// <summary>
-        /// Printable result of the Google Cloud Private Service Connect request.
+        /// Legacy response message retained for backward compatibility. **Deprecated**: This attribute is retained only for compatibility with state created by older provider versions and is no longer populated.
         /// </summary>
         [Input("message")]
         public Input<string>? Message { get; set; }
 
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service name. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 
         /// <summary>
-        /// The state of the Private Service Connect resource.
+        /// The state of the Private Service Connect resource. The possible values are `Active`, `Creating` and `Deleting`.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
+
+        [Input("timeouts")]
+        public Input<Inputs.GcpPrivatelinkTimeoutsGetArgs>? Timeouts { get; set; }
 
         public GcpPrivatelinkState()
         {

@@ -29,12 +29,6 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.NewKafkaTopic(ctx, "example", &aiven.KafkaTopicArgs{
-//				Project:          pulumi.String("my-project"),
-//				ServiceName:      pulumi.String("my-kafka"),
-//				TopicName:        pulumi.String("mytopic"),
-//				Partitions:       pulumi.Int(3),
-//				Replication:      pulumi.Int(3),
-//				OwnerUserGroupId: pulumi.String("ug22ba494e096"),
 //				Config: &aiven.KafkaTopicConfigArgs{
 //					CleanupPolicy:                   pulumi.String("delete"),
 //					CompressionType:                 pulumi.String("zstd"),
@@ -73,6 +67,12 @@ import (
 //						Value: pulumi.String("My tag value, value."),
 //					},
 //				},
+//				Project:          pulumi.String("my-project"),
+//				ServiceName:      pulumi.String("my-kafka"),
+//				TopicName:        pulumi.String("mytopic"),
+//				Partitions:       pulumi.Int(3),
+//				Replication:      pulumi.Int(3),
+//				OwnerUserGroupId: pulumi.String("ug22ba494e096"),
 //				TopicDescription: pulumi.String("Platform events"),
 //			})
 //			if err != nil {

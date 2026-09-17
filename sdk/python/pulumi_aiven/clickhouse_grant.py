@@ -263,9 +263,6 @@ class ClickhouseGrant(pulumi.CustomResource):
             role="example-role")
         # Grant privileges to the example role.
         role_privileges = aiven.ClickhouseGrant("role_privileges",
-            project=example_project["project"],
-            service_name=example_clickhouse["serviceName"],
-            role=example_role.role,
             privilege_grants=[
                 {
                     "privilege": "INSERT",
@@ -284,19 +281,22 @@ class ClickhouseGrant(pulumi.CustomResource):
                     "privilege": "SYSTEM DROP CACHE",
                     "database": "*",
                 },
-            ])
+            ],
+            project=example_project["project"],
+            service_name=example_clickhouse["serviceName"],
+            role=example_role.role)
         # Grant the role to the user.
         example_user = aiven.ClickhouseUser("example_user",
             project=example_project["project"],
             service_name=example_clickhouse["serviceName"],
             username="example-user")
         user_role_assignment = aiven.ClickhouseGrant("user_role_assignment",
-            project=example_project["project"],
-            service_name=example_clickhouse["serviceName"],
-            user=example_user.username,
             role_grants=[{
                 "role": example_role.role,
-            }])
+            }],
+            project=example_project["project"],
+            service_name=example_clickhouse["serviceName"],
+            user=example_user.username)
         ```
 
         ## Import
@@ -345,9 +345,6 @@ class ClickhouseGrant(pulumi.CustomResource):
             role="example-role")
         # Grant privileges to the example role.
         role_privileges = aiven.ClickhouseGrant("role_privileges",
-            project=example_project["project"],
-            service_name=example_clickhouse["serviceName"],
-            role=example_role.role,
             privilege_grants=[
                 {
                     "privilege": "INSERT",
@@ -366,19 +363,22 @@ class ClickhouseGrant(pulumi.CustomResource):
                     "privilege": "SYSTEM DROP CACHE",
                     "database": "*",
                 },
-            ])
+            ],
+            project=example_project["project"],
+            service_name=example_clickhouse["serviceName"],
+            role=example_role.role)
         # Grant the role to the user.
         example_user = aiven.ClickhouseUser("example_user",
             project=example_project["project"],
             service_name=example_clickhouse["serviceName"],
             username="example-user")
         user_role_assignment = aiven.ClickhouseGrant("user_role_assignment",
-            project=example_project["project"],
-            service_name=example_clickhouse["serviceName"],
-            user=example_user.username,
             role_grants=[{
                 "role": example_role.role,
-            }])
+            }],
+            project=example_project["project"],
+            service_name=example_clickhouse["serviceName"],
+            user=example_user.username)
         ```
 
         ## Import

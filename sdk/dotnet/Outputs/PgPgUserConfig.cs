@@ -90,6 +90,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? PgStatMonitorEnable;
         /// <summary>
+        /// Enable the pg*stat*plans extension. Changing this parameter causes a service restart. Tracks execution plans for SQL queries. Default: `False`.
+        /// </summary>
+        public readonly bool? PgStatPlansEnable;
+        /// <summary>
         /// Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`, `17`, `18`, and newer. PostgreSQL major version.
         /// </summary>
         public readonly string? PgVersion;
@@ -199,6 +203,8 @@ namespace Pulumi.Aiven.Outputs
 
             bool? pgStatMonitorEnable,
 
+            bool? pgStatPlansEnable,
+
             string? pgVersion,
 
             Outputs.PgPgUserConfigPgaudit? pgaudit,
@@ -254,6 +260,7 @@ namespace Pulumi.Aiven.Outputs
             PgReadReplica = pgReadReplica;
             PgServiceToForkFrom = pgServiceToForkFrom;
             PgStatMonitorEnable = pgStatMonitorEnable;
+            PgStatPlansEnable = pgStatPlansEnable;
             PgVersion = pgVersion;
             Pgaudit = pgaudit;
             Pgbouncer = pgbouncer;

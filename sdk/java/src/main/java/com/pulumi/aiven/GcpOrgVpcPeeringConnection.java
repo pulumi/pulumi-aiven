@@ -6,18 +6,17 @@ package com.pulumi.aiven;
 import com.pulumi.aiven.GcpOrgVpcPeeringConnectionArgs;
 import com.pulumi.aiven.Utilities;
 import com.pulumi.aiven.inputs.GcpOrgVpcPeeringConnectionState;
+import com.pulumi.aiven.outputs.GcpOrgVpcPeeringConnectionTimeouts;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Creates and manages a Google Cloud VPC peering connection.
- * 
- * **This resource is in the beta stage and may change without notice.** Set
- * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+ * Creates and manages a Google Cloud VPC peering connection. If this resource is missing (for example, after a service power off), it&#39;s removed from the state and a new create plan is generated.
  * 
  * ## Example Usage
  * 
@@ -28,8 +27,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.aiven.OrganizationVpc;
- * import com.pulumi.aiven.OrganizationVpcArgs;
  * import com.pulumi.aiven.GcpOrgVpcPeeringConnection;
  * import com.pulumi.aiven.GcpOrgVpcPeeringConnectionArgs;
  * import java.util.ArrayList;
@@ -45,17 +42,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleVpc = new OrganizationVpc("exampleVpc", OrganizationVpcArgs.builder()
- *             .organizationId(exampleAivenOrganization.id())
- *             .cloudName("google-europe-west10")
- *             .networkCidr("10.0.0.0/24")
- *             .build());
- * 
  *         var example = new GcpOrgVpcPeeringConnection("example", GcpOrgVpcPeeringConnectionArgs.builder()
- *             .organizationId(exampleVpc.organizationId())
- *             .organizationVpcId(exampleVpc.organizationVpcId())
- *             .gcpProjectId("my-gcp-project-123")
- *             .peerVpc("my-vpc-network")
+ *             .organizationId("org1a23f456789")
+ *             .organizationVpcId("1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d")
+ *             .gcpProjectId("my-gcp-project")
+ *             .peerVpc("my-vpc")
  *             .build());
  * 
  *     }
@@ -66,63 +57,63 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import aiven:index/gcpOrgVpcPeeringConnection:GcpOrgVpcPeeringConnection example ORGANIZATION_ID/ORGANIZATION_VPC_ID/GCP_PROJECT_ID/VPC_NAME
+ * $ pulumi import aiven:index/gcpOrgVpcPeeringConnection:GcpOrgVpcPeeringConnection example ORGANIZATION_ID/ORGANIZATION_VPC_ID/GCP_PROJECT_ID/PEER_VPC
  * ```
  * 
  */
 @ResourceType(type="aiven:index/gcpOrgVpcPeeringConnection:GcpOrgVpcPeeringConnection")
 public class GcpOrgVpcPeeringConnection extends com.pulumi.resources.CustomResource {
     /**
-     * Google Cloud project ID. Changing this property forces recreation of the resource.
+     * Google Cloud project ID. Maximum length: `1024`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="gcpProjectId", refs={String.class}, tree="[0]")
     private Output<String> gcpProjectId;
 
     /**
-     * @return Google Cloud project ID. Changing this property forces recreation of the resource.
+     * @return Google Cloud project ID. Maximum length: `1024`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> gcpProjectId() {
         return this.gcpProjectId;
     }
     /**
-     * Identifier of the organization.
+     * ID of an organization. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="organizationId", refs={String.class}, tree="[0]")
     private Output<String> organizationId;
 
     /**
-     * @return Identifier of the organization.
+     * @return ID of an organization. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> organizationId() {
         return this.organizationId;
     }
     /**
-     * Identifier of the organization VPC.
+     * Organization VPC ID. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="organizationVpcId", refs={String.class}, tree="[0]")
     private Output<String> organizationVpcId;
 
     /**
-     * @return Identifier of the organization VPC.
+     * @return Organization VPC ID. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> organizationVpcId() {
         return this.organizationVpcId;
     }
     /**
-     * Google Cloud VPC network name. Changing this property forces recreation of the resource.
+     * Google Cloud VPC network name. Maximum length: `1024`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="peerVpc", refs={String.class}, tree="[0]")
     private Output<String> peerVpc;
 
     /**
-     * @return Google Cloud VPC network name. Changing this property forces recreation of the resource.
+     * @return Google Cloud VPC network name. Maximum length: `1024`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> peerVpc() {
@@ -143,18 +134,24 @@ public class GcpOrgVpcPeeringConnection extends com.pulumi.resources.CustomResou
         return this.selfLink;
     }
     /**
-     * State of the peering connection.
+     * State of the peering connection. The possible values are `ACTIVE`, `APPROVED`, `APPROVED_PEER_REQUESTED`, `DELETED`, `DELETED_BY_PEER`, `DELETING`, `ERROR`, `INVALID_SPECIFICATION`, `PENDING_PEER` and `REJECTED_BY_PEER`.
      * 
      */
     @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**
-     * @return State of the peering connection.
+     * @return State of the peering connection. The possible values are `ACTIVE`, `APPROVED`, `APPROVED_PEER_REQUESTED`, `DELETED`, `DELETED_BY_PEER`, `DELETING`, `ERROR`, `INVALID_SPECIFICATION`, `PENDING_PEER` and `REJECTED_BY_PEER`.
      * 
      */
     public Output<String> state() {
         return this.state;
+    }
+    @Export(name="timeouts", refs={GcpOrgVpcPeeringConnectionTimeouts.class}, tree="[0]")
+    private Output</* @Nullable */ GcpOrgVpcPeeringConnectionTimeouts> timeouts;
+
+    public Output<Optional<GcpOrgVpcPeeringConnectionTimeouts>> timeouts() {
+        return Codegen.optional(this.timeouts);
     }
 
     /**

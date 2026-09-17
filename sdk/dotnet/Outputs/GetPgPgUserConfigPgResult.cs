@@ -94,7 +94,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? IoMethod;
         /// <summary>
-        /// EXPERIMENTAL: Number of IO worker processes, for io_method=worker. Version 18 and up only. Changing this parameter causes a service restart. Default: `3`.
+        /// EXPERIMENTAL: Number of IO worker processes, for io_method=worker. Version 18 and up only.
         /// </summary>
         public readonly int? IoWorkers;
         /// <summary>
@@ -198,13 +198,17 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? PgPartmanBgwDotRole;
         /// <summary>
-        /// Enables or disables query plan monitoring. Changing this parameter causes a service restart. Only available for PostgreSQL 13+.
+        /// Enables or disables query plan monitoring. Only available for PostgreSQL 13+.
         /// </summary>
         public readonly bool? PgStatMonitorDotPgsmEnableQueryPlan;
         /// <summary>
         /// Sets the maximum number of buckets. Changing this parameter causes a service restart. Only available for PostgreSQL 13+. Example: `10`.
         /// </summary>
         public readonly int? PgStatMonitorDotPgsmMaxBuckets;
+        /// <summary>
+        /// Enum: `All`, `None`, `Top`. Controls which statements' plans are tracked. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable plan tracking. The default is `Top`.
+        /// </summary>
+        public readonly string? PgStatPlansDotTrack;
         /// <summary>
         /// Enum: `All`, `None`, `Top`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default is `Top`.
         /// </summary>
@@ -344,6 +348,8 @@ namespace Pulumi.Aiven.Outputs
 
             int? pgStatMonitorDotPgsmMaxBuckets,
 
+            string? pgStatPlansDotTrack,
+
             string? pgStatStatementsDotTrack,
 
             string? synchronousCommit,
@@ -412,6 +418,7 @@ namespace Pulumi.Aiven.Outputs
             PgPartmanBgwDotRole = pgPartmanBgwDotRole;
             PgStatMonitorDotPgsmEnableQueryPlan = pgStatMonitorDotPgsmEnableQueryPlan;
             PgStatMonitorDotPgsmMaxBuckets = pgStatMonitorDotPgsmMaxBuckets;
+            PgStatPlansDotTrack = pgStatPlansDotTrack;
             PgStatStatementsDotTrack = pgStatStatementsDotTrack;
             SynchronousCommit = synchronousCommit;
             TempFileLimit = tempFileLimit;

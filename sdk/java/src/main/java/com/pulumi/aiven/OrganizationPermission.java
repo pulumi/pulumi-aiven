@@ -18,7 +18,13 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Grants [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to a principal for a resource. Permissions can be granted at the organization, organizational unit, and project level. Unit-level permissions aren&#39;t shown in the Aiven Console. To assign permissions to multiple users and groups on the same combination of organization ID, resource ID and resource type, don&#39;t use multiple `aiven.OrganizationPermission` resources. Instead, use multiple permission blocks as in the example usage. **Do not use the `aiven.ProjectUser` or `aiven.OrganizationGroupProject` resources with this resource**. By default, Aiven Terraform Provider validates whether the resource already exists in the Aiven API. This validation prevents you from managing permissions for a specific resource using multiple `aiven.OrganizationGroupProject` resources, which leads to overwrites and conflicts. In case of a conflict, you can import the resource using the `pulumi import` command to continue managing it. Alternatively, you can disable this validation by setting the `AIVEN_ORGANIZATION_PERMISSION_VALIDATE_CONFLICT` environment variable to `false`, which will cause Terraform to override the remote state.
+ * Grants [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to a principal for a resource. Permissions can be granted at the organization, organizational unit, and project level. Unit-level permissions aren&#39;t shown in the Aiven Console.
+ * 
+ * To assign permissions to multiple users and groups on the same combination of organization ID, resource ID and resource type, don&#39;t use multiple `aiven.OrganizationPermission` resources. Instead, use multiple permission blocks as in the example usage.
+ * 
+ * **Do not use the `aiven.ProjectUser` or `aiven.OrganizationGroupProject` resources with this resource**.
+ * 
+ * By default, Aiven Terraform Provider validates whether the resource already exists in the Aiven API. This validation prevents you from managing permissions for a specific resource using multiple `aiven.OrganizationGroupProject` resources, which leads to overwrites and conflicts. In case of a conflict, you can import the resource using the `pulumi import` command to continue managing it. Alternatively, you can disable this validation by setting the `AIVEN_ORGANIZATION_PERMISSION_VALIDATE_CONFLICT` environment variable to `false`, which will cause Terraform to override the remote state.
  * 
  * ## Example Usage
  * 
@@ -46,14 +52,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new OrganizationPermission("example", OrganizationPermissionArgs.builder()
- *             .organizationId("org1a23f456789")
- *             .resourceType("organization")
- *             .resourceId("foo")
  *             .permissions(OrganizationPermissionPermissionArgs.builder()
  *                 .principalId("u12345")
  *                 .permissions("read_only")
  *                 .principalType("user")
  *                 .build())
+ *             .organizationId("org1a23f456789")
+ *             .resourceType("organization")
+ *             .resourceId("foo")
  *             .build());
  * 
  *     }

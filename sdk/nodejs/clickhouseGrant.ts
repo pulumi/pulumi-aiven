@@ -31,9 +31,6 @@ import * as utilities from "./utilities";
  * });
  * // Grant privileges to the example role.
  * const rolePrivileges = new aiven.ClickhouseGrant("role_privileges", {
- *     project: exampleProject.project,
- *     serviceName: exampleClickhouse.serviceName,
- *     role: exampleRole.role,
  *     privilegeGrants: [
  *         {
  *             privilege: "INSERT",
@@ -53,6 +50,9 @@ import * as utilities from "./utilities";
  *             database: "*",
  *         },
  *     ],
+ *     project: exampleProject.project,
+ *     serviceName: exampleClickhouse.serviceName,
+ *     role: exampleRole.role,
  * });
  * // Grant the role to the user.
  * const exampleUser = new aiven.ClickhouseUser("example_user", {
@@ -61,12 +61,12 @@ import * as utilities from "./utilities";
  *     username: "example-user",
  * });
  * const userRoleAssignment = new aiven.ClickhouseGrant("user_role_assignment", {
- *     project: exampleProject.project,
- *     serviceName: exampleClickhouse.serviceName,
- *     user: exampleUser.username,
  *     roleGrants: [{
  *         role: exampleRole.role,
  *     }],
+ *     project: exampleProject.project,
+ *     serviceName: exampleClickhouse.serviceName,
+ *     user: exampleUser.username,
  * });
  * ```
  *

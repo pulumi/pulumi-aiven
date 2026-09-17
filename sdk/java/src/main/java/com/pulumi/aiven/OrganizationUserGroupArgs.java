@@ -3,6 +3,7 @@
 
 package com.pulumi.aiven;
 
+import com.pulumi.aiven.inputs.OrganizationUserGroupTimeoutsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -17,14 +18,14 @@ public final class OrganizationUserGroupArgs extends com.pulumi.resources.Resour
     public static final OrganizationUserGroupArgs Empty = new OrganizationUserGroupArgs();
 
     /**
-     * The description of the user group. Changing this property forces recreation of the resource.
+     * Description. Maximum length: `4096`.
      * 
      */
     @Import(name="description", required=true)
     private Output<String> description;
 
     /**
-     * @return The description of the user group. Changing this property forces recreation of the resource.
+     * @return Description. Maximum length: `4096`.
      * 
      */
     public Output<String> description() {
@@ -32,14 +33,14 @@ public final class OrganizationUserGroupArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * The name of the user group. Changing this property forces recreation of the resource.
+     * User Group Name. Maximum length: `128`.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the user group. Changing this property forces recreation of the resource.
+     * @return User Group Name. Maximum length: `128`.
      * 
      */
     public Optional<Output<String>> name() {
@@ -47,18 +48,25 @@ public final class OrganizationUserGroupArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * The ID of the organization. Changing this property forces recreation of the resource.
+     * ID of an organization. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="organizationId", required=true)
     private Output<String> organizationId;
 
     /**
-     * @return The ID of the organization. Changing this property forces recreation of the resource.
+     * @return ID of an organization. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> organizationId() {
         return this.organizationId;
+    }
+
+    @Import(name="timeouts")
+    private @Nullable Output<OrganizationUserGroupTimeoutsArgs> timeouts;
+
+    public Optional<Output<OrganizationUserGroupTimeoutsArgs>> timeouts() {
+        return Optional.ofNullable(this.timeouts);
     }
 
     private OrganizationUserGroupArgs() {}
@@ -67,6 +75,7 @@ public final class OrganizationUserGroupArgs extends com.pulumi.resources.Resour
         this.description = $.description;
         this.name = $.name;
         this.organizationId = $.organizationId;
+        this.timeouts = $.timeouts;
     }
 
     public static Builder builder() {
@@ -88,7 +97,7 @@ public final class OrganizationUserGroupArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param description The description of the user group. Changing this property forces recreation of the resource.
+         * @param description Description. Maximum length: `4096`.
          * 
          * @return builder
          * 
@@ -99,7 +108,7 @@ public final class OrganizationUserGroupArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param description The description of the user group. Changing this property forces recreation of the resource.
+         * @param description Description. Maximum length: `4096`.
          * 
          * @return builder
          * 
@@ -109,7 +118,7 @@ public final class OrganizationUserGroupArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param name The name of the user group. Changing this property forces recreation of the resource.
+         * @param name User Group Name. Maximum length: `128`.
          * 
          * @return builder
          * 
@@ -120,7 +129,7 @@ public final class OrganizationUserGroupArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param name The name of the user group. Changing this property forces recreation of the resource.
+         * @param name User Group Name. Maximum length: `128`.
          * 
          * @return builder
          * 
@@ -130,7 +139,7 @@ public final class OrganizationUserGroupArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param organizationId The ID of the organization. Changing this property forces recreation of the resource.
+         * @param organizationId ID of an organization. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -141,13 +150,22 @@ public final class OrganizationUserGroupArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param organizationId The ID of the organization. Changing this property forces recreation of the resource.
+         * @param organizationId ID of an organization. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
          */
         public Builder organizationId(String organizationId) {
             return organizationId(Output.of(organizationId));
+        }
+
+        public Builder timeouts(@Nullable Output<OrganizationUserGroupTimeoutsArgs> timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
+        public Builder timeouts(OrganizationUserGroupTimeoutsArgs timeouts) {
+            return timeouts(Output.of(timeouts));
         }
 
         public OrganizationUserGroupArgs build() {

@@ -10,10 +10,12 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// Provisions a BYOC custom cloud environment by handing Aiven the IAM role ARN created in the customer AWS account. Transitions the environment from `Draft` to `Active` so services can be deployed into it. Create this resource after the customer-side AWS infrastructure (IAM role, VPC, subnets, security groups, buckets) has been defined.
+    /// Provisions a BYOC custom cloud environment by handing Aiven the IAM role ARN created in the customer AWS account. Transitions the environment from `Draft` to `Active` so services can be deployed into it.
     /// 
-    /// **This resource is in the beta stage and may change without notice.** Set
-    /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+    /// Create this resource after the customer-side AWS infrastructure (IAM role, VPC, subnets, security groups, buckets) has been defined.
+    /// 
+    /// &gt; **Beta resource**
+    /// This resource is in the beta stage and may change without notice. Set the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
     /// 
     /// ## Example Usage
     /// 

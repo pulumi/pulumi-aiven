@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// Creates and manages an [AWS PrivateLink for Aiven services](https://aiven.io/docs/platform/howto/use-aws-privatelinks) in a VPC.
+    /// Creates and manages an [AWS PrivateLink for Aiven services](https://aiven.io/docs/platform/howto/use-aws-privatelinks) in a VPC. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
     /// 
     /// ## Example Usage
     /// 
@@ -22,13 +22,17 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var main = new Aiven.AwsPrivatelink("main", new()
+    ///     var example = new Aiven.AwsPrivatelink("example", new()
     ///     {
-    ///         Project = exampleProject.Project,
-    ///         ServiceName = exampleKafka.ServiceName,
+    ///         Project = "my-project",
+    ///         ServiceName = "foo",
     ///         Principals = new[]
     ///         {
-    ///             "arn:aws:iam::012345678901:user/mwf",
+    ///             "arn:aws:iam::012345678901:root",
+    ///         },
+    ///         SupportedRegions = new[]
+    ///         {
+    ///             "eu-west-1",
     ///         },
     ///     });
     /// 
@@ -38,41 +42,56 @@ namespace Pulumi.Aiven
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import aiven:index/awsPrivatelink:AwsPrivatelink main PROJECT/SERVICE_NAME
+    /// $ pulumi import aiven:index/awsPrivatelink:AwsPrivatelink example PROJECT/SERVICE_NAME
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/awsPrivatelink:AwsPrivatelink")]
     public partial class AwsPrivatelink : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// AWS service ID.
+        /// AWS VPC endpoint service ID.
         /// </summary>
         [Output("awsServiceId")]
         public Output<string> AwsServiceId { get; private set; } = null!;
 
         /// <summary>
-        /// AWS service name.
+        /// AWS VPC endpoint service name.
         /// </summary>
         [Output("awsServiceName")]
         public Output<string> AwsServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// List of the ARNs of the AWS accounts or IAM users allowed to connect to the VPC endpoint.
+        /// ARNs of principals allowed connecting to the service.
         /// </summary>
         [Output("principals")]
         public Output<ImmutableArray<string>> Principals { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service name. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
+
+        /// <summary>
+        /// Privatelink resource state. The possible values are `Active`, `Creating` and `Deleting`.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
+        /// Allow new connections to the endpoint from these regions, in addition to the region the endpoint is in.
+        /// </summary>
+        [Output("supportedRegions")]
+        public Output<ImmutableArray<string>> SupportedRegions { get; private set; } = null!;
+
+        [Output("timeouts")]
+        public Output<Outputs.AwsPrivatelinkTimeouts?> Timeouts { get; private set; } = null!;
 
 
         /// <summary>
@@ -124,7 +143,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _principals;
 
         /// <summary>
-        /// List of the ARNs of the AWS accounts or IAM users allowed to connect to the VPC endpoint.
+        /// ARNs of principals allowed connecting to the service.
         /// </summary>
         public InputList<string> Principals
         {
@@ -133,16 +152,31 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service name. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
+
+        [Input("supportedRegions")]
+        private InputList<string>? _supportedRegions;
+
+        /// <summary>
+        /// Allow new connections to the endpoint from these regions, in addition to the region the endpoint is in.
+        /// </summary>
+        public InputList<string> SupportedRegions
+        {
+            get => _supportedRegions ?? (_supportedRegions = new InputList<string>());
+            set => _supportedRegions = value;
+        }
+
+        [Input("timeouts")]
+        public Input<Inputs.AwsPrivatelinkTimeoutsArgs>? Timeouts { get; set; }
 
         public AwsPrivatelinkArgs()
         {
@@ -153,13 +187,13 @@ namespace Pulumi.Aiven
     public sealed class AwsPrivatelinkState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// AWS service ID.
+        /// AWS VPC endpoint service ID.
         /// </summary>
         [Input("awsServiceId")]
         public Input<string>? AwsServiceId { get; set; }
 
         /// <summary>
-        /// AWS service name.
+        /// AWS VPC endpoint service name.
         /// </summary>
         [Input("awsServiceName")]
         public Input<string>? AwsServiceName { get; set; }
@@ -168,7 +202,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _principals;
 
         /// <summary>
-        /// List of the ARNs of the AWS accounts or IAM users allowed to connect to the VPC endpoint.
+        /// ARNs of principals allowed connecting to the service.
         /// </summary>
         public InputList<string> Principals
         {
@@ -177,16 +211,37 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service name. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
+
+        /// <summary>
+        /// Privatelink resource state. The possible values are `Active`, `Creating` and `Deleting`.
+        /// </summary>
+        [Input("state")]
+        public Input<string>? State { get; set; }
+
+        [Input("supportedRegions")]
+        private InputList<string>? _supportedRegions;
+
+        /// <summary>
+        /// Allow new connections to the endpoint from these regions, in addition to the region the endpoint is in.
+        /// </summary>
+        public InputList<string> SupportedRegions
+        {
+            get => _supportedRegions ?? (_supportedRegions = new InputList<string>());
+            set => _supportedRegions = value;
+        }
+
+        [Input("timeouts")]
+        public Input<Inputs.AwsPrivatelinkTimeoutsGetArgs>? Timeouts { get; set; }
 
         public AwsPrivatelinkState()
         {

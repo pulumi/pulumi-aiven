@@ -2,13 +2,12 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Creates and manages a VPC for an Aiven organization.
- *
- * **This resource is in the beta stage and may change without notice.** Set
- * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+ * Creates and manages a VPC for an Aiven organization. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
  *
  * ## Example Usage
  *
@@ -16,10 +15,11 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const exampleVpc = new aiven.OrganizationVpc("example_vpc", {
- *     organizationId: example.id,
- *     cloudName: "aws-eu-central-1",
+ * const example = new aiven.OrganizationVpc("example", {
+ *     organizationId: "org1a23f456789",
+ *     cloudName: "aws-eu-west-1",
  *     networkCidr: "10.0.0.0/24",
+ *     displayName: "My organization VPC",
  * });
  * ```
  *
@@ -62,15 +62,19 @@ export class OrganizationVpc extends pulumi.CustomResource {
      */
     declare public readonly cloudName: pulumi.Output<string>;
     /**
-     * Time of creation of the VPC.
+     * VPC creation timestamp.
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
-     * Network address range used by the VPC. For example, `192.168.0.0/24`.
+     * User defined display name for this VPC. Maximum length: `64`.
+     */
+    declare public readonly displayName: pulumi.Output<string>;
+    /**
+     * Network address range used by the VPC. For example, `192.168.0.0/24`. Changing this property forces recreation of the resource.
      */
     declare public readonly networkCidr: pulumi.Output<string>;
     /**
-     * The ID of the organization.
+     * ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
      */
     declare public readonly organizationId: pulumi.Output<string>;
     /**
@@ -81,8 +85,9 @@ export class OrganizationVpc extends pulumi.CustomResource {
      * State of the VPC. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
      */
     declare public /*out*/ readonly state: pulumi.Output<string>;
+    declare public readonly timeouts: pulumi.Output<outputs.OrganizationVpcTimeouts | undefined>;
     /**
-     * Time of the last update of the VPC.
+     * Timestamp of last change to VPC.
      */
     declare public /*out*/ readonly updateTime: pulumi.Output<string>;
 
@@ -101,10 +106,12 @@ export class OrganizationVpc extends pulumi.CustomResource {
             const state = argsOrState as OrganizationVpcState | undefined;
             resourceInputs["cloudName"] = state?.cloudName;
             resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["displayName"] = state?.displayName;
             resourceInputs["networkCidr"] = state?.networkCidr;
             resourceInputs["organizationId"] = state?.organizationId;
             resourceInputs["organizationVpcId"] = state?.organizationVpcId;
             resourceInputs["state"] = state?.state;
+            resourceInputs["timeouts"] = state?.timeouts;
             resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as OrganizationVpcArgs | undefined;
@@ -118,8 +125,10 @@ export class OrganizationVpc extends pulumi.CustomResource {
                 throw new Error("Missing required property 'organizationId'");
             }
             resourceInputs["cloudName"] = args?.cloudName;
+            resourceInputs["displayName"] = args?.displayName;
             resourceInputs["networkCidr"] = args?.networkCidr;
             resourceInputs["organizationId"] = args?.organizationId;
+            resourceInputs["timeouts"] = args?.timeouts;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["organizationVpcId"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
@@ -139,15 +148,19 @@ export interface OrganizationVpcState {
      */
     cloudName?: pulumi.Input<string | undefined>;
     /**
-     * Time of creation of the VPC.
+     * VPC creation timestamp.
      */
     createTime?: pulumi.Input<string | undefined>;
     /**
-     * Network address range used by the VPC. For example, `192.168.0.0/24`.
+     * User defined display name for this VPC. Maximum length: `64`.
+     */
+    displayName?: pulumi.Input<string | undefined>;
+    /**
+     * Network address range used by the VPC. For example, `192.168.0.0/24`. Changing this property forces recreation of the resource.
      */
     networkCidr?: pulumi.Input<string | undefined>;
     /**
-     * The ID of the organization.
+     * ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
      */
     organizationId?: pulumi.Input<string | undefined>;
     /**
@@ -158,8 +171,9 @@ export interface OrganizationVpcState {
      * State of the VPC. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
      */
     state?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.OrganizationVpcTimeouts | undefined>;
     /**
-     * Time of the last update of the VPC.
+     * Timestamp of last change to VPC.
      */
     updateTime?: pulumi.Input<string | undefined>;
 }
@@ -173,11 +187,16 @@ export interface OrganizationVpcArgs {
      */
     cloudName: pulumi.Input<string>;
     /**
-     * Network address range used by the VPC. For example, `192.168.0.0/24`.
+     * User defined display name for this VPC. Maximum length: `64`.
+     */
+    displayName?: pulumi.Input<string | undefined>;
+    /**
+     * Network address range used by the VPC. For example, `192.168.0.0/24`. Changing this property forces recreation of the resource.
      */
     networkCidr: pulumi.Input<string>;
     /**
-     * The ID of the organization.
+     * ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
      */
     organizationId: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.OrganizationVpcTimeouts | undefined>;
 }

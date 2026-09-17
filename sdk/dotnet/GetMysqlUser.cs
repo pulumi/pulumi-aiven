@@ -174,6 +174,10 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string Password;
         /// <summary>
+        /// The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. 'unknown' is reported when the hash is missing or uses an unrecognised format. The possible values are `Md5`, `scram-sha-256` and `Unknown`.
+        /// </summary>
+        public readonly string PasswordEncryptionType;
+        /// <summary>
         /// Project name.
         /// </summary>
         public readonly string Project;
@@ -203,6 +207,8 @@ namespace Pulumi.Aiven
 
             string password,
 
+            string passwordEncryptionType,
+
             string project,
 
             string serviceName,
@@ -218,6 +224,7 @@ namespace Pulumi.Aiven
             Authentication = authentication;
             Id = id;
             Password = password;
+            PasswordEncryptionType = passwordEncryptionType;
             Project = project;
             ServiceName = serviceName;
             Timeouts = timeouts;

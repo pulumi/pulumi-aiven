@@ -187,35 +187,35 @@ class AzurePrivatelinkConnectionApproval(pulumi.CustomResource):
                 project=project_id,
                 cloud_name=region))
         default = aiven.Pg("default",
+            pg_user_config={
+                "privatelink_access": {
+                    "pg": True,
+                    "pgbouncer": True,
+                },
+                "pg_version": "13",
+                "static_ips": True,
+            },
             service_name="postgres",
             project=aiven_project_id,
             project_vpc_id=aiven_project_vpc_id,
             cloud_name=region,
             plan=plan,
-            static_ips=[sip.static_ip_address_id for sip in static_ips],
-            pg_user_config={
-                "pg_version": "13",
-                "static_ips": True,
-                "privatelink_access": {
-                    "pg": True,
-                    "pgbouncer": True,
-                },
-            })
+            static_ips=[sip.static_ip_address_id for sip in static_ips])
         privatelink = aiven.AzurePrivatelink("privatelink",
             project=aiven_project_id,
             service_name=default.name,
             user_subscription_ids=[azure_subscription_id])
         endpoint = azurerm.PrivateEndpoint("endpoint",
-            name=postgres-endpoint,
-            location=region,
-            resource_group_name=azure_resource_group.name,
-            subnet_id=azure_subnet_id,
             private_service_connection=[{
                 name: default.name,
                 privateConnectionResourceId: privatelink.azure_service_id,
                 isManualConnection: True,
                 requestMessage: default.name,
             }],
+            name=postgres-endpoint,
+            location=region,
+            resource_group_name=azure_resource_group.name,
+            subnet_id=azure_subnet_id,
             opts = pulumi.ResourceOptions(depends_on=[privatelink]))
         approval = aiven.AzurePrivatelinkConnectionApproval("approval",
             project=aiven_project_id,
@@ -259,35 +259,35 @@ class AzurePrivatelinkConnectionApproval(pulumi.CustomResource):
                 project=project_id,
                 cloud_name=region))
         default = aiven.Pg("default",
+            pg_user_config={
+                "privatelink_access": {
+                    "pg": True,
+                    "pgbouncer": True,
+                },
+                "pg_version": "13",
+                "static_ips": True,
+            },
             service_name="postgres",
             project=aiven_project_id,
             project_vpc_id=aiven_project_vpc_id,
             cloud_name=region,
             plan=plan,
-            static_ips=[sip.static_ip_address_id for sip in static_ips],
-            pg_user_config={
-                "pg_version": "13",
-                "static_ips": True,
-                "privatelink_access": {
-                    "pg": True,
-                    "pgbouncer": True,
-                },
-            })
+            static_ips=[sip.static_ip_address_id for sip in static_ips])
         privatelink = aiven.AzurePrivatelink("privatelink",
             project=aiven_project_id,
             service_name=default.name,
             user_subscription_ids=[azure_subscription_id])
         endpoint = azurerm.PrivateEndpoint("endpoint",
-            name=postgres-endpoint,
-            location=region,
-            resource_group_name=azure_resource_group.name,
-            subnet_id=azure_subnet_id,
             private_service_connection=[{
                 name: default.name,
                 privateConnectionResourceId: privatelink.azure_service_id,
                 isManualConnection: True,
                 requestMessage: default.name,
             }],
+            name=postgres-endpoint,
+            location=region,
+            resource_group_name=azure_resource_group.name,
+            subnet_id=azure_subnet_id,
             opts = pulumi.ResourceOptions(depends_on=[privatelink]))
         approval = aiven.AzurePrivatelinkConnectionApproval("approval",
             project=aiven_project_id,

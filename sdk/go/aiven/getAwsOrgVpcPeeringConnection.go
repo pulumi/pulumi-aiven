@@ -13,8 +13,35 @@ import (
 
 // Gets information about an AWS VPC peering connection.
 //
-// **This resource is in the beta stage and may change without notice.** Set
-// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := aiven.GetAwsOrgVpcPeeringConnection(ctx, &aiven.LookupAwsOrgVpcPeeringConnectionArgs{
+//				OrganizationId:    "org1a23f456789",
+//				OrganizationVpcId: "1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+//				AwsAccountId:      "123456789012",
+//				AwsVpcId:          "vpc-2f09a348",
+//				AwsVpcRegion:      "us-east-1",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupAwsOrgVpcPeeringConnection(ctx *pulumi.Context, args *LookupAwsOrgVpcPeeringConnectionArgs, opts ...pulumi.InvokeOption) (*LookupAwsOrgVpcPeeringConnectionResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAwsOrgVpcPeeringConnectionResult
@@ -27,38 +54,40 @@ func LookupAwsOrgVpcPeeringConnection(ctx *pulumi.Context, args *LookupAwsOrgVpc
 
 // A collection of arguments for invoking getAwsOrgVpcPeeringConnection.
 type LookupAwsOrgVpcPeeringConnectionArgs struct {
-	// AWS account ID. Changing this property forces recreation of the resource.
+	// AWS account ID.
 	AwsAccountId string `pulumi:"awsAccountId"`
-	// AWS VPC ID. Changing this property forces recreation of the resource.
+	// AWS VPC ID.
 	AwsVpcId string `pulumi:"awsVpcId"`
 	// The AWS region of the peered VPC. For example, `eu-central-1`.
 	AwsVpcRegion string `pulumi:"awsVpcRegion"`
-	// Identifier of the organization.
+	// ID of an organization.
 	OrganizationId string `pulumi:"organizationId"`
-	// Identifier of the organization VPC.
-	OrganizationVpcId string `pulumi:"organizationVpcId"`
+	// Organization VPC ID.
+	OrganizationVpcId string                                 `pulumi:"organizationVpcId"`
+	Timeouts          *GetAwsOrgVpcPeeringConnectionTimeouts `pulumi:"timeouts"`
 }
 
 // A collection of values returned by getAwsOrgVpcPeeringConnection.
 type LookupAwsOrgVpcPeeringConnectionResult struct {
-	// AWS account ID. Changing this property forces recreation of the resource.
+	// AWS account ID.
 	AwsAccountId string `pulumi:"awsAccountId"`
-	// AWS VPC ID. Changing this property forces recreation of the resource.
+	// AWS VPC ID.
 	AwsVpcId string `pulumi:"awsVpcId"`
 	// The ID of the AWS VPC peering connection.
 	AwsVpcPeeringConnectionId string `pulumi:"awsVpcPeeringConnectionId"`
 	// The AWS region of the peered VPC. For example, `eu-central-1`.
 	AwsVpcRegion string `pulumi:"awsVpcRegion"`
-	// The provider-assigned unique ID for this managed resource.
+	// Resource ID composed as: `organization_id/organization_vpc_id/aws_account_id/aws_vpc_id/aws_vpc_region`.
 	Id string `pulumi:"id"`
-	// Identifier of the organization.
+	// ID of an organization.
 	OrganizationId string `pulumi:"organizationId"`
-	// Identifier of the organization VPC.
+	// Organization VPC ID.
 	OrganizationVpcId string `pulumi:"organizationVpcId"`
-	// The ID of the peering connection.
+	// Organization peering connection ID.
 	PeeringConnectionId string `pulumi:"peeringConnectionId"`
 	// State of the peering connection. The possible values are `ACTIVE`, `APPROVED`, `APPROVED_PEER_REQUESTED`, `DELETED`, `DELETED_BY_PEER`, `DELETING`, `ERROR`, `INVALID_SPECIFICATION`, `PENDING_PEER` and `REJECTED_BY_PEER`.
-	State string `pulumi:"state"`
+	State    string                                 `pulumi:"state"`
+	Timeouts *GetAwsOrgVpcPeeringConnectionTimeouts `pulumi:"timeouts"`
 }
 
 func LookupAwsOrgVpcPeeringConnectionOutput(ctx *pulumi.Context, args LookupAwsOrgVpcPeeringConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupAwsOrgVpcPeeringConnectionResultOutput {
@@ -68,16 +97,17 @@ func LookupAwsOrgVpcPeeringConnectionOutput(ctx *pulumi.Context, args LookupAwsO
 
 // A collection of arguments for invoking getAwsOrgVpcPeeringConnection.
 type LookupAwsOrgVpcPeeringConnectionOutputArgs struct {
-	// AWS account ID. Changing this property forces recreation of the resource.
+	// AWS account ID.
 	AwsAccountId pulumi.StringInput `pulumi:"awsAccountId"`
-	// AWS VPC ID. Changing this property forces recreation of the resource.
+	// AWS VPC ID.
 	AwsVpcId pulumi.StringInput `pulumi:"awsVpcId"`
 	// The AWS region of the peered VPC. For example, `eu-central-1`.
 	AwsVpcRegion pulumi.StringInput `pulumi:"awsVpcRegion"`
-	// Identifier of the organization.
+	// ID of an organization.
 	OrganizationId pulumi.StringInput `pulumi:"organizationId"`
-	// Identifier of the organization VPC.
-	OrganizationVpcId pulumi.StringInput `pulumi:"organizationVpcId"`
+	// Organization VPC ID.
+	OrganizationVpcId pulumi.StringInput                            `pulumi:"organizationVpcId"`
+	Timeouts          GetAwsOrgVpcPeeringConnectionTimeoutsPtrInput `pulumi:"timeouts"`
 }
 
 func (LookupAwsOrgVpcPeeringConnectionOutputArgs) ElementType() reflect.Type {
@@ -99,12 +129,12 @@ func (o LookupAwsOrgVpcPeeringConnectionResultOutput) ToLookupAwsOrgVpcPeeringCo
 	return o
 }
 
-// AWS account ID. Changing this property forces recreation of the resource.
+// AWS account ID.
 func (o LookupAwsOrgVpcPeeringConnectionResultOutput) AwsAccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAwsOrgVpcPeeringConnectionResult) string { return v.AwsAccountId }).(pulumi.StringOutput)
 }
 
-// AWS VPC ID. Changing this property forces recreation of the resource.
+// AWS VPC ID.
 func (o LookupAwsOrgVpcPeeringConnectionResultOutput) AwsVpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAwsOrgVpcPeeringConnectionResult) string { return v.AwsVpcId }).(pulumi.StringOutput)
 }
@@ -119,22 +149,22 @@ func (o LookupAwsOrgVpcPeeringConnectionResultOutput) AwsVpcRegion() pulumi.Stri
 	return o.ApplyT(func(v LookupAwsOrgVpcPeeringConnectionResult) string { return v.AwsVpcRegion }).(pulumi.StringOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// Resource ID composed as: `organization_id/organization_vpc_id/aws_account_id/aws_vpc_id/aws_vpc_region`.
 func (o LookupAwsOrgVpcPeeringConnectionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAwsOrgVpcPeeringConnectionResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Identifier of the organization.
+// ID of an organization.
 func (o LookupAwsOrgVpcPeeringConnectionResultOutput) OrganizationId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAwsOrgVpcPeeringConnectionResult) string { return v.OrganizationId }).(pulumi.StringOutput)
 }
 
-// Identifier of the organization VPC.
+// Organization VPC ID.
 func (o LookupAwsOrgVpcPeeringConnectionResultOutput) OrganizationVpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAwsOrgVpcPeeringConnectionResult) string { return v.OrganizationVpcId }).(pulumi.StringOutput)
 }
 
-// The ID of the peering connection.
+// Organization peering connection ID.
 func (o LookupAwsOrgVpcPeeringConnectionResultOutput) PeeringConnectionId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAwsOrgVpcPeeringConnectionResult) string { return v.PeeringConnectionId }).(pulumi.StringOutput)
 }
@@ -142,6 +172,12 @@ func (o LookupAwsOrgVpcPeeringConnectionResultOutput) PeeringConnectionId() pulu
 // State of the peering connection. The possible values are `ACTIVE`, `APPROVED`, `APPROVED_PEER_REQUESTED`, `DELETED`, `DELETED_BY_PEER`, `DELETING`, `ERROR`, `INVALID_SPECIFICATION`, `PENDING_PEER` and `REJECTED_BY_PEER`.
 func (o LookupAwsOrgVpcPeeringConnectionResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAwsOrgVpcPeeringConnectionResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+func (o LookupAwsOrgVpcPeeringConnectionResultOutput) Timeouts() GetAwsOrgVpcPeeringConnectionTimeoutsPtrOutput {
+	return o.ApplyT(func(v LookupAwsOrgVpcPeeringConnectionResult) *GetAwsOrgVpcPeeringConnectionTimeouts {
+		return v.Timeouts
+	}).(GetAwsOrgVpcPeeringConnectionTimeoutsPtrOutput)
 }
 
 func init() {

@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['OrganizationVpcArgs', 'OrganizationVpc']
 
@@ -21,17 +23,24 @@ class OrganizationVpcArgs:
     def __init__(__self__, *,
                  cloud_name: pulumi.Input[_builtins.str],
                  network_cidr: pulumi.Input[_builtins.str],
-                 organization_id: pulumi.Input[_builtins.str]):
+                 organization_id: pulumi.Input[_builtins.str],
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional['OrganizationVpcTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a OrganizationVpc resource.
 
         :param pulumi.Input[_builtins.str] cloud_name: The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] network_cidr: Network address range used by the VPC. For example, `192.168.0.0/24`.
-        :param pulumi.Input[_builtins.str] organization_id: The ID of the organization.
+        :param pulumi.Input[_builtins.str] network_cidr: Network address range used by the VPC. For example, `192.168.0.0/24`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] organization_id: ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] display_name: User defined display name for this VPC. Maximum length: `64`.
         """
         pulumi.set(__self__, "cloud_name", cloud_name)
         pulumi.set(__self__, "network_cidr", network_cidr)
         pulumi.set(__self__, "organization_id", organization_id)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
 
     @_builtins.property
     @pulumi.getter(name="cloudName")
@@ -49,7 +58,7 @@ class OrganizationVpcArgs:
     @pulumi.getter(name="networkCidr")
     def network_cidr(self) -> pulumi.Input[_builtins.str]:
         """
-        Network address range used by the VPC. For example, `192.168.0.0/24`.
+        Network address range used by the VPC. For example, `192.168.0.0/24`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "network_cidr")
 
@@ -61,7 +70,7 @@ class OrganizationVpcArgs:
     @pulumi.getter(name="organizationId")
     def organization_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The ID of the organization.
+        ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "organization_id")
 
@@ -69,32 +78,58 @@ class OrganizationVpcArgs:
     def organization_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "organization_id", value)
 
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        User defined display name for this VPC. Maximum length: `64`.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "display_name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> pulumi.Input[Optional['OrganizationVpcTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: pulumi.Input[Optional['OrganizationVpcTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
+
 
 @pulumi.input_type
 class _OrganizationVpcState:
     def __init__(__self__, *,
                  cloud_name: pulumi.Input[Optional[_builtins.str]] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  network_cidr: pulumi.Input[Optional[_builtins.str]] = None,
                  organization_id: pulumi.Input[Optional[_builtins.str]] = None,
                  organization_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  state: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional['OrganizationVpcTimeoutsArgs']] = None,
                  update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OrganizationVpc resources.
 
         :param pulumi.Input[_builtins.str] cloud_name: The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] create_time: Time of creation of the VPC.
-        :param pulumi.Input[_builtins.str] network_cidr: Network address range used by the VPC. For example, `192.168.0.0/24`.
-        :param pulumi.Input[_builtins.str] organization_id: The ID of the organization.
+        :param pulumi.Input[_builtins.str] create_time: VPC creation timestamp.
+        :param pulumi.Input[_builtins.str] display_name: User defined display name for this VPC. Maximum length: `64`.
+        :param pulumi.Input[_builtins.str] network_cidr: Network address range used by the VPC. For example, `192.168.0.0/24`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] organization_id: ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] organization_vpc_id: The ID of the Aiven Organization VPC.
         :param pulumi.Input[_builtins.str] state: State of the VPC. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
-        :param pulumi.Input[_builtins.str] update_time: Time of the last update of the VPC.
+        :param pulumi.Input[_builtins.str] update_time: Timestamp of last change to VPC.
         """
         if cloud_name is not None:
             pulumi.set(__self__, "cloud_name", cloud_name)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
         if network_cidr is not None:
             pulumi.set(__self__, "network_cidr", network_cidr)
         if organization_id is not None:
@@ -103,6 +138,8 @@ class _OrganizationVpcState:
             pulumi.set(__self__, "organization_vpc_id", organization_vpc_id)
         if state is not None:
             pulumi.set(__self__, "state", state)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
 
@@ -122,7 +159,7 @@ class _OrganizationVpcState:
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Time of creation of the VPC.
+        VPC creation timestamp.
         """
         return pulumi.get(self, "create_time")
 
@@ -131,10 +168,22 @@ class _OrganizationVpcState:
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        User defined display name for this VPC. Maximum length: `64`.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "display_name", value)
+
+    @_builtins.property
     @pulumi.getter(name="networkCidr")
     def network_cidr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Network address range used by the VPC. For example, `192.168.0.0/24`.
+        Network address range used by the VPC. For example, `192.168.0.0/24`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "network_cidr")
 
@@ -146,7 +195,7 @@ class _OrganizationVpcState:
     @pulumi.getter(name="organizationId")
     def organization_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The ID of the organization.
+        ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "organization_id")
 
@@ -179,10 +228,19 @@ class _OrganizationVpcState:
         pulumi.set(self, "state", value)
 
     @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> pulumi.Input[Optional['OrganizationVpcTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: pulumi.Input[Optional['OrganizationVpcTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
+
+    @_builtins.property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Time of the last update of the VPC.
+        Timestamp of last change to VPC.
         """
         return pulumi.get(self, "update_time")
 
@@ -198,14 +256,13 @@ class OrganizationVpc(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cloud_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  network_cidr: pulumi.Input[Optional[_builtins.str]] = None,
                  organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['OrganizationVpcTimeoutsArgs', 'OrganizationVpcTimeoutsArgsDict']]] = None,
                  __props__=None):
         """
-        Creates and manages a VPC for an Aiven organization.
-
-        **This resource is in the beta stage and may change without notice.** Set
-        the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+        Creates and manages a VPC for an Aiven organization. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
 
         ## Example Usage
 
@@ -213,10 +270,11 @@ class OrganizationVpc(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        example_vpc = aiven.OrganizationVpc("example_vpc",
-            organization_id=example["id"],
-            cloud_name="aws-eu-central-1",
-            network_cidr="10.0.0.0/24")
+        example = aiven.OrganizationVpc("example",
+            organization_id="org1a23f456789",
+            cloud_name="aws-eu-west-1",
+            network_cidr="10.0.0.0/24",
+            display_name="My organization VPC")
         ```
 
         ## Import
@@ -229,8 +287,9 @@ class OrganizationVpc(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cloud_name: The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] network_cidr: Network address range used by the VPC. For example, `192.168.0.0/24`.
-        :param pulumi.Input[_builtins.str] organization_id: The ID of the organization.
+        :param pulumi.Input[_builtins.str] display_name: User defined display name for this VPC. Maximum length: `64`.
+        :param pulumi.Input[_builtins.str] network_cidr: Network address range used by the VPC. For example, `192.168.0.0/24`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] organization_id: ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
         """
         ...
     @overload
@@ -239,10 +298,7 @@ class OrganizationVpc(pulumi.CustomResource):
                  args: OrganizationVpcArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates and manages a VPC for an Aiven organization.
-
-        **This resource is in the beta stage and may change without notice.** Set
-        the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+        Creates and manages a VPC for an Aiven organization. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
 
         ## Example Usage
 
@@ -250,10 +306,11 @@ class OrganizationVpc(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        example_vpc = aiven.OrganizationVpc("example_vpc",
-            organization_id=example["id"],
-            cloud_name="aws-eu-central-1",
-            network_cidr="10.0.0.0/24")
+        example = aiven.OrganizationVpc("example",
+            organization_id="org1a23f456789",
+            cloud_name="aws-eu-west-1",
+            network_cidr="10.0.0.0/24",
+            display_name="My organization VPC")
         ```
 
         ## Import
@@ -279,8 +336,10 @@ class OrganizationVpc(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cloud_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  network_cidr: pulumi.Input[Optional[_builtins.str]] = None,
                  organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['OrganizationVpcTimeoutsArgs', 'OrganizationVpcTimeoutsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -293,12 +352,14 @@ class OrganizationVpc(pulumi.CustomResource):
             if cloud_name is None and not opts.urn:
                 raise TypeError("Missing required property 'cloud_name'")
             __props__.__dict__["cloud_name"] = cloud_name
+            __props__.__dict__["display_name"] = display_name
             if network_cidr is None and not opts.urn:
                 raise TypeError("Missing required property 'network_cidr'")
             __props__.__dict__["network_cidr"] = network_cidr
             if organization_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organization_id'")
             __props__.__dict__["organization_id"] = organization_id
+            __props__.__dict__["timeouts"] = timeouts
             __props__.__dict__["create_time"] = None
             __props__.__dict__["organization_vpc_id"] = None
             __props__.__dict__["state"] = None
@@ -315,10 +376,12 @@ class OrganizationVpc(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             cloud_name: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
             network_cidr: pulumi.Input[Optional[_builtins.str]] = None,
             organization_id: pulumi.Input[Optional[_builtins.str]] = None,
             organization_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['OrganizationVpcTimeoutsArgs', 'OrganizationVpcTimeoutsArgsDict']]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'OrganizationVpc':
         """
         Get an existing OrganizationVpc resource's state with the given name, id, and optional extra
@@ -328,12 +391,13 @@ class OrganizationVpc(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cloud_name: The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] create_time: Time of creation of the VPC.
-        :param pulumi.Input[_builtins.str] network_cidr: Network address range used by the VPC. For example, `192.168.0.0/24`.
-        :param pulumi.Input[_builtins.str] organization_id: The ID of the organization.
+        :param pulumi.Input[_builtins.str] create_time: VPC creation timestamp.
+        :param pulumi.Input[_builtins.str] display_name: User defined display name for this VPC. Maximum length: `64`.
+        :param pulumi.Input[_builtins.str] network_cidr: Network address range used by the VPC. For example, `192.168.0.0/24`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] organization_id: ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] organization_vpc_id: The ID of the Aiven Organization VPC.
         :param pulumi.Input[_builtins.str] state: State of the VPC. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
-        :param pulumi.Input[_builtins.str] update_time: Time of the last update of the VPC.
+        :param pulumi.Input[_builtins.str] update_time: Timestamp of last change to VPC.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -341,10 +405,12 @@ class OrganizationVpc(pulumi.CustomResource):
 
         __props__.__dict__["cloud_name"] = cloud_name
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["display_name"] = display_name
         __props__.__dict__["network_cidr"] = network_cidr
         __props__.__dict__["organization_id"] = organization_id
         __props__.__dict__["organization_vpc_id"] = organization_vpc_id
         __props__.__dict__["state"] = state
+        __props__.__dict__["timeouts"] = timeouts
         __props__.__dict__["update_time"] = update_time
         return OrganizationVpc(resource_name, opts=opts, __props__=__props__)
 
@@ -360,15 +426,23 @@ class OrganizationVpc(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:
         """
-        Time of creation of the VPC.
+        VPC creation timestamp.
         """
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Output[_builtins.str]:
+        """
+        User defined display name for this VPC. Maximum length: `64`.
+        """
+        return pulumi.get(self, "display_name")
 
     @_builtins.property
     @pulumi.getter(name="networkCidr")
     def network_cidr(self) -> pulumi.Output[_builtins.str]:
         """
-        Network address range used by the VPC. For example, `192.168.0.0/24`.
+        Network address range used by the VPC. For example, `192.168.0.0/24`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "network_cidr")
 
@@ -376,7 +450,7 @@ class OrganizationVpc(pulumi.CustomResource):
     @pulumi.getter(name="organizationId")
     def organization_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The ID of the organization.
+        ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "organization_id")
 
@@ -397,10 +471,15 @@ class OrganizationVpc(pulumi.CustomResource):
         return pulumi.get(self, "state")
 
     @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> pulumi.Output[Optional['outputs.OrganizationVpcTimeouts']]:
+        return pulumi.get(self, "timeouts")
+
+    @_builtins.property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> pulumi.Output[_builtins.str]:
         """
-        Time of the last update of the VPC.
+        Timestamp of last change to VPC.
         """
         return pulumi.get(self, "update_time")
 

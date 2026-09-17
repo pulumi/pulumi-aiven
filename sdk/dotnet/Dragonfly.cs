@@ -24,14 +24,14 @@ namespace Pulumi.Aiven
     /// {
     ///     var exampleDragonfly = new Aiven.Dragonfly("example_dragonfly", new()
     ///     {
-    ///         Project = exampleProject.Project,
-    ///         Plan = "startup-4",
-    ///         CloudName = "google-europe-west1",
-    ///         ServiceName = "example-dragonfly-service",
     ///         DragonflyUserConfig = new Aiven.Inputs.DragonflyDragonflyUserConfigArgs
     ///         {
     ///             CacheMode = true,
     ///         },
+    ///         Project = exampleProject.Project,
+    ///         Plan = "startup-4",
+    ///         CloudName = "google-europe-west1",
+    ///         ServiceName = "example-dragonfly-service",
     ///     });
     /// 
     /// });

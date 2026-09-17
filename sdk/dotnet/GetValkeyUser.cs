@@ -12,19 +12,79 @@ namespace Pulumi.Aiven
     public static class GetValkeyUser
     {
         /// <summary>
-        /// The Valkey User data source provides information about the existing Aiven for Valkey user.
+        /// Gets information about an Aiven for Valkey™ service user.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Aiven.GetValkeyUser.Invoke(new()
+        ///     {
+        ///         Project = "my-project",
+        ///         ServiceName = "my-valkey",
+        ///         Username = "testuser",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetValkeyUserResult> InvokeAsync(GetValkeyUserArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetValkeyUserResult>("aiven:index/getValkeyUser:getValkeyUser", args ?? new GetValkeyUserArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The Valkey User data source provides information about the existing Aiven for Valkey user.
+        /// Gets information about an Aiven for Valkey™ service user.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Aiven.GetValkeyUser.Invoke(new()
+        ///     {
+        ///         Project = "my-project",
+        ///         ServiceName = "my-valkey",
+        ///         Username = "testuser",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetValkeyUserResult> Invoke(GetValkeyUserInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetValkeyUserResult>("aiven:index/getValkeyUser:getValkeyUser", args ?? new GetValkeyUserInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The Valkey User data source provides information about the existing Aiven for Valkey user.
+        /// Gets information about an Aiven for Valkey™ service user.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Aiven.GetValkeyUser.Invoke(new()
+        ///     {
+        ///         Project = "my-project",
+        ///         ServiceName = "my-valkey",
+        ///         Username = "testuser",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetValkeyUserResult> Invoke(GetValkeyUserInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetValkeyUserResult>("aiven:index/getValkeyUser:getValkeyUser", args ?? new GetValkeyUserInvokeArgs(), options.WithDefaults());
@@ -34,19 +94,22 @@ namespace Pulumi.Aiven
     public sealed class GetValkeyUserArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name.
         /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service name.
         /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
+        [Input("timeouts")]
+        public Inputs.GetValkeyUserTimeoutsArgs? Timeouts { get; set; }
+
         /// <summary>
-        /// Name of the Valkey service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service username.
         /// </summary>
         [Input("username", required: true)]
         public string Username { get; set; } = null!;
@@ -60,19 +123,22 @@ namespace Pulumi.Aiven
     public sealed class GetValkeyUserInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service name.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
+        [Input("timeouts")]
+        public Input<Inputs.GetValkeyUserTimeoutsInputArgs>? Timeouts { get; set; }
+
         /// <summary>
-        /// Name of the Valkey service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service username.
         /// </summary>
         [Input("username", required: true)]
         public Input<string> Username { get; set; } = null!;
@@ -88,27 +154,32 @@ namespace Pulumi.Aiven
     public sealed class GetValkeyUserResult
     {
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// Resource ID composed as: `project/service_name/username`.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+        /// The password of the service user (auto-generated if not provided). The field conflicts with `PasswordWo`.
         /// </summary>
         public readonly string Password;
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. 'unknown' is reported when the hash is missing or uses an unrecognised format. The possible values are `Md5`, `scram-sha-256` and `Unknown`.
+        /// </summary>
+        public readonly string PasswordEncryptionType;
+        /// <summary>
+        /// Project name.
         /// </summary>
         public readonly string Project;
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service name.
         /// </summary>
         public readonly string ServiceName;
+        public readonly Outputs.GetValkeyUserTimeoutsResult? Timeouts;
         /// <summary>
-        /// User account type, such as primary or regular account.
+        /// Account type.
         /// </summary>
         public readonly string Type;
         /// <summary>
-        /// Name of the Valkey service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service username.
         /// </summary>
         public readonly string Username;
         /// <summary>
@@ -124,7 +195,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly ImmutableArray<string> ValkeyAclCommands;
         /// <summary>
-        /// Key access rules. Entries are defined as standard glob patterns. The field is required with `ValkeyAclCategories` and `ValkeyAclKeys`.
+        /// Key access rules. Entries are defined as standard glob patterns. The field is required with `ValkeyAclCategories` and `ValkeyAclCommands`.
         /// </summary>
         public readonly ImmutableArray<string> ValkeyAclKeys;
 
@@ -134,9 +205,13 @@ namespace Pulumi.Aiven
 
             string password,
 
+            string passwordEncryptionType,
+
             string project,
 
             string serviceName,
+
+            Outputs.GetValkeyUserTimeoutsResult? timeouts,
 
             string type,
 
@@ -152,8 +227,10 @@ namespace Pulumi.Aiven
         {
             Id = id;
             Password = password;
+            PasswordEncryptionType = passwordEncryptionType;
             Project = project;
             ServiceName = serviceName;
+            Timeouts = timeouts;
             Type = type;
             Username = username;
             ValkeyAclCategories = valkeyAclCategories;

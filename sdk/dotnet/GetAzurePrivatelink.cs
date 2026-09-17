@@ -24,10 +24,10 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var main = Aiven.GetAzurePrivatelink.Invoke(new()
+        ///     var example = Aiven.GetAzurePrivatelink.Invoke(new()
         ///     {
-        ///         Project = exampleProject.Project,
-        ///         ServiceName = exampleKafka.ServiceName,
+        ///         Project = "my-project",
+        ///         ServiceName = "foo",
         ///     });
         /// 
         /// });
@@ -49,10 +49,10 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var main = Aiven.GetAzurePrivatelink.Invoke(new()
+        ///     var example = Aiven.GetAzurePrivatelink.Invoke(new()
         ///     {
-        ///         Project = exampleProject.Project,
-        ///         ServiceName = exampleKafka.ServiceName,
+        ///         Project = "my-project",
+        ///         ServiceName = "foo",
         ///     });
         /// 
         /// });
@@ -74,10 +74,10 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var main = Aiven.GetAzurePrivatelink.Invoke(new()
+        ///     var example = Aiven.GetAzurePrivatelink.Invoke(new()
         ///     {
-        ///         Project = exampleProject.Project,
-        ///         ServiceName = exampleKafka.ServiceName,
+        ///         Project = "my-project",
+        ///         ServiceName = "foo",
         ///     });
         /// 
         /// });
@@ -91,16 +91,19 @@ namespace Pulumi.Aiven
     public sealed class GetAzurePrivatelinkArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name.
         /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service name.
         /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
+
+        [Input("timeouts")]
+        public Inputs.GetAzurePrivatelinkTimeoutsArgs? Timeouts { get; set; }
 
         public GetAzurePrivatelinkArgs()
         {
@@ -111,16 +114,19 @@ namespace Pulumi.Aiven
     public sealed class GetAzurePrivatelinkInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service name.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
+
+        [Input("timeouts")]
+        public Input<Inputs.GetAzurePrivatelinkTimeoutsInputArgs>? Timeouts { get; set; }
 
         public GetAzurePrivatelinkInvokeArgs()
         {
@@ -133,35 +139,36 @@ namespace Pulumi.Aiven
     public sealed class GetAzurePrivatelinkResult
     {
         /// <summary>
-        /// The Azure Private Link service alias.
+        /// Azure Privatelink service alias.
         /// </summary>
         public readonly string AzureServiceAlias;
         /// <summary>
-        /// The Azure Private Link service ID.
+        /// Azure Privatelink service ID.
         /// </summary>
         public readonly string AzureServiceId;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// Resource ID composed as: `project/service_name`.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Printable result of the Azure Private Link request.
+        /// Legacy response message retained for backward compatibility. **Deprecated**: This attribute is retained only for compatibility with state created by older provider versions and is no longer populated.
         /// </summary>
         public readonly string Message;
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name.
         /// </summary>
         public readonly string Project;
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service name.
         /// </summary>
         public readonly string ServiceName;
         /// <summary>
-        /// The state of the Private Link resource.
+        /// Privatelink resource state. The possible values are `Active`, `Creating` and `Deleting`.
         /// </summary>
         public readonly string State;
+        public readonly Outputs.GetAzurePrivatelinkTimeoutsResult? Timeouts;
         /// <summary>
-        /// A list of allowed subscription IDs. Maximum length: `16`.
+        /// IDs of Azure subscriptions allowed to connect to the service.
         /// </summary>
         public readonly ImmutableArray<string> UserSubscriptionIds;
 
@@ -181,6 +188,8 @@ namespace Pulumi.Aiven
 
             string state,
 
+            Outputs.GetAzurePrivatelinkTimeoutsResult? timeouts,
+
             ImmutableArray<string> userSubscriptionIds)
         {
             AzureServiceAlias = azureServiceAlias;
@@ -190,6 +199,7 @@ namespace Pulumi.Aiven
             Project = project;
             ServiceName = serviceName;
             State = state;
+            Timeouts = timeouts;
             UserSubscriptionIds = userSubscriptionIds;
         }
     }

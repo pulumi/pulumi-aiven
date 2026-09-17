@@ -3,10 +3,13 @@
 
 package com.pulumi.aiven.inputs;
 
+import com.pulumi.aiven.inputs.GetAwsPrivatelinkTimeouts;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetAwsPrivatelinkPlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -14,14 +17,14 @@ public final class GetAwsPrivatelinkPlainArgs extends com.pulumi.resources.Invok
     public static final GetAwsPrivatelinkPlainArgs Empty = new GetAwsPrivatelinkPlainArgs();
 
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name.
      * 
      */
     @Import(name="project", required=true)
     private String project;
 
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name.
      * 
      */
     public String project() {
@@ -29,18 +32,25 @@ public final class GetAwsPrivatelinkPlainArgs extends com.pulumi.resources.Invok
     }
 
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name.
      * 
      */
     @Import(name="serviceName", required=true)
     private String serviceName;
 
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service name.
      * 
      */
     public String serviceName() {
         return this.serviceName;
+    }
+
+    @Import(name="timeouts")
+    private @Nullable GetAwsPrivatelinkTimeouts timeouts;
+
+    public Optional<GetAwsPrivatelinkTimeouts> timeouts() {
+        return Optional.ofNullable(this.timeouts);
     }
 
     private GetAwsPrivatelinkPlainArgs() {}
@@ -48,6 +58,7 @@ public final class GetAwsPrivatelinkPlainArgs extends com.pulumi.resources.Invok
     private GetAwsPrivatelinkPlainArgs(GetAwsPrivatelinkPlainArgs $) {
         this.project = $.project;
         this.serviceName = $.serviceName;
+        this.timeouts = $.timeouts;
     }
 
     public static Builder builder() {
@@ -69,7 +80,7 @@ public final class GetAwsPrivatelinkPlainArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param project The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param project Project name.
          * 
          * @return builder
          * 
@@ -80,13 +91,18 @@ public final class GetAwsPrivatelinkPlainArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param serviceName The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param serviceName Service name.
          * 
          * @return builder
          * 
          */
         public Builder serviceName(String serviceName) {
             $.serviceName = serviceName;
+            return this;
+        }
+
+        public Builder timeouts(@Nullable GetAwsPrivatelinkTimeouts timeouts) {
+            $.timeouts = timeouts;
             return this;
         }
 

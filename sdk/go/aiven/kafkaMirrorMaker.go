@@ -29,20 +29,20 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.NewKafkaMirrorMaker(ctx, "example_mirrormaker", &aiven.KafkaMirrorMakerArgs{
-//				Project:     pulumi.Any(exampleProject.Project),
-//				CloudName:   pulumi.String("google-europe-west1"),
-//				Plan:        pulumi.String("startup-4"),
-//				ServiceName: pulumi.String("example-mirrormaker-service"),
 //				KafkaMirrormakerUserConfig: &aiven.KafkaMirrorMakerKafkaMirrormakerUserConfigArgs{
-//					IpFilters: pulumi.StringArray{
-//						pulumi.String("0.0.0.0/0"),
-//					},
 //					KafkaMirrormaker: &aiven.KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs{
 //						RefreshGroupsIntervalSeconds: pulumi.Int(600),
 //						RefreshTopicsEnabled:         pulumi.Bool(true),
 //						RefreshTopicsIntervalSeconds: pulumi.Int(600),
 //					},
+//					IpFilters: pulumi.StringArray{
+//						pulumi.String("0.0.0.0/0"),
+//					},
 //				},
+//				Project:     pulumi.Any(exampleProject.Project),
+//				CloudName:   pulumi.String("google-europe-west1"),
+//				Plan:        pulumi.String("startup-4"),
+//				ServiceName: pulumi.String("example-mirrormaker-service"),
 //			})
 //			if err != nil {
 //				return err

@@ -22,7 +22,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? FileSize;
         /// <summary>
-        /// Indicates whether the uploaded .jar file has been verified by the system and deployment ready. The possible values are `INITIAL`, `READY` and `FAILED`.
+        /// Indicates whether the uploaded .jar file has been verified by the system and deployment ready. The possible values are `FAILED`, `INITIAL` and `READY`.
         /// </summary>
         public readonly string? FileStatus;
         /// <summary>
@@ -30,7 +30,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? Url;
         /// <summary>
-        /// In the case FileStatus is FAILED, the error code of the failure. The possible values are `1`, `2` and `3`.
+        /// In the case FileStatus is FAILED, the error code of the failure. The possible values are `1`, `2`, `3` and `4`.
         /// </summary>
         public readonly int? VerifyErrorCode;
         /// <summary>

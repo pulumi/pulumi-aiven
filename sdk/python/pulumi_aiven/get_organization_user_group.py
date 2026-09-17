@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetOrganizationUserGroupResult',
@@ -26,7 +28,7 @@ class GetOrganizationUserGroupResult:
     """
     A collection of values returned by getOrganizationUserGroup.
     """
-    def __init__(__self__, create_time=None, description=None, group_id=None, id=None, name=None, organization_id=None, update_time=None):
+    def __init__(__self__, create_time=None, description=None, group_id=None, id=None, managed_by_scim=None, name=None, organization_id=None, timeouts=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -39,12 +41,18 @@ class GetOrganizationUserGroupResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if managed_by_scim and not isinstance(managed_by_scim, bool):
+            raise TypeError("Expected argument 'managed_by_scim' to be a bool")
+        pulumi.set(__self__, "managed_by_scim", managed_by_scim)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
         if organization_id and not isinstance(organization_id, str):
             raise TypeError("Expected argument 'organization_id' to be a str")
         pulumi.set(__self__, "organization_id", organization_id)
+        if timeouts and not isinstance(timeouts, dict):
+            raise TypeError("Expected argument 'timeouts' to be a dict")
+        pulumi.set(__self__, "timeouts", timeouts)
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
@@ -53,7 +61,7 @@ class GetOrganizationUserGroupResult:
     @pulumi.getter(name="createTime")
     def create_time(self) -> _builtins.str:
         """
-        Time of creation.
+        User group creation time.
         """
         return pulumi.get(self, "create_time")
 
@@ -61,7 +69,7 @@ class GetOrganizationUserGroupResult:
     @pulumi.getter
     def description(self) -> _builtins.str:
         """
-        The description of the user group. Changing this property forces recreation of the resource.
+        Description.
         """
         return pulumi.get(self, "description")
 
@@ -69,7 +77,7 @@ class GetOrganizationUserGroupResult:
     @pulumi.getter(name="groupId")
     def group_id(self) -> _builtins.str:
         """
-        The ID of the user group.
+        ID of the user group. Exactly one of the fields must be specified: `group_id` or `name`.
         """
         return pulumi.get(self, "group_id")
 
@@ -77,15 +85,23 @@ class GetOrganizationUserGroupResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The provider-assigned unique ID for this managed resource.
+        Resource ID composed as: `organization_id/group_id`.
         """
         return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="managedByScim")
+    def managed_by_scim(self) -> _builtins.bool:
+        """
+        Managed By Scim.
+        """
+        return pulumi.get(self, "managed_by_scim")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        The name of the user group. Changing this property forces recreation of the resource.
+        User Group Name. Exactly one of the fields must be specified: `group_id` or `name`.
         """
         return pulumi.get(self, "name")
 
@@ -93,15 +109,20 @@ class GetOrganizationUserGroupResult:
     @pulumi.getter(name="organizationId")
     def organization_id(self) -> _builtins.str:
         """
-        The ID of the organization. Changing this property forces recreation of the resource.
+        ID of an organization.
         """
         return pulumi.get(self, "organization_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> Optional['outputs.GetOrganizationUserGroupTimeoutsResult']:
+        return pulumi.get(self, "timeouts")
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> _builtins.str:
         """
-        Time of last update.
+        User group last update time.
         """
         return pulumi.get(self, "update_time")
 
@@ -116,13 +137,17 @@ class AwaitableGetOrganizationUserGroupResult(GetOrganizationUserGroupResult):
             description=self.description,
             group_id=self.group_id,
             id=self.id,
+            managed_by_scim=self.managed_by_scim,
             name=self.name,
             organization_id=self.organization_id,
+            timeouts=self.timeouts,
             update_time=self.update_time)
 
 
-def get_organization_user_group(name: Optional[_builtins.str] = None,
+def get_organization_user_group(group_id: Optional[_builtins.str] = None,
+                                name: Optional[_builtins.str] = None,
                                 organization_id: Optional[_builtins.str] = None,
+                                timeouts: Optional[Union['GetOrganizationUserGroupTimeoutsArgs', 'GetOrganizationUserGroupTimeoutsArgsDict']] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOrganizationUserGroupResult:
     """
     Gets information about an existing user group in an organization.
@@ -133,17 +158,20 @@ def get_organization_user_group(name: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    example = aiven.get_organization_user_group(name="Example group",
-        organization_id=main["id"])
+    example = aiven.get_organization_user_group(organization_id="org1a23f456789",
+        group_id="foo")
     ```
 
 
-    :param _builtins.str name: The name of the user group. Changing this property forces recreation of the resource.
-    :param _builtins.str organization_id: The ID of the organization. Changing this property forces recreation of the resource.
+    :param _builtins.str group_id: ID of the user group. Exactly one of the fields must be specified: `group_id` or `name`.
+    :param _builtins.str name: User Group Name. Exactly one of the fields must be specified: `group_id` or `name`.
+    :param _builtins.str organization_id: ID of an organization.
     """
     __args__ = dict()
+    __args__['groupId'] = group_id
     __args__['name'] = name
     __args__['organizationId'] = organization_id
+    __args__['timeouts'] = timeouts
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('aiven:index/getOrganizationUserGroup:getOrganizationUserGroup', __args__, opts=opts, typ=GetOrganizationUserGroupResult).value
 
@@ -152,11 +180,15 @@ def get_organization_user_group(name: Optional[_builtins.str] = None,
         description=pulumi.get(__ret__, 'description'),
         group_id=pulumi.get(__ret__, 'group_id'),
         id=pulumi.get(__ret__, 'id'),
+        managed_by_scim=pulumi.get(__ret__, 'managed_by_scim'),
         name=pulumi.get(__ret__, 'name'),
         organization_id=pulumi.get(__ret__, 'organization_id'),
+        timeouts=pulumi.get(__ret__, 'timeouts'),
         update_time=pulumi.get(__ret__, 'update_time'))
-def get_organization_user_group_output(name: pulumi.Input[Optional[_builtins.str]] = None,
+def get_organization_user_group_output(group_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                       name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                        organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                       timeouts: pulumi.Input[Optional[Optional[Union['GetOrganizationUserGroupTimeoutsArgs', 'GetOrganizationUserGroupTimeoutsArgsDict']]]] = None,
                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOrganizationUserGroupResult]:
     """
     Gets information about an existing user group in an organization.
@@ -167,17 +199,20 @@ def get_organization_user_group_output(name: pulumi.Input[Optional[_builtins.str
     import pulumi
     import pulumi_aiven as aiven
 
-    example = aiven.get_organization_user_group(name="Example group",
-        organization_id=main["id"])
+    example = aiven.get_organization_user_group(organization_id="org1a23f456789",
+        group_id="foo")
     ```
 
 
-    :param _builtins.str name: The name of the user group. Changing this property forces recreation of the resource.
-    :param _builtins.str organization_id: The ID of the organization. Changing this property forces recreation of the resource.
+    :param _builtins.str group_id: ID of the user group. Exactly one of the fields must be specified: `group_id` or `name`.
+    :param _builtins.str name: User Group Name. Exactly one of the fields must be specified: `group_id` or `name`.
+    :param _builtins.str organization_id: ID of an organization.
     """
     __args__ = dict()
+    __args__['groupId'] = group_id
     __args__['name'] = name
     __args__['organizationId'] = organization_id
+    __args__['timeouts'] = timeouts
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('aiven:index/getOrganizationUserGroup:getOrganizationUserGroup', __args__, opts=opts, typ=GetOrganizationUserGroupResult)
     return __ret__.apply(lambda __response__: GetOrganizationUserGroupResult(
@@ -185,6 +220,8 @@ def get_organization_user_group_output(name: pulumi.Input[Optional[_builtins.str
         description=pulumi.get(__response__, 'description'),
         group_id=pulumi.get(__response__, 'group_id'),
         id=pulumi.get(__response__, 'id'),
+        managed_by_scim=pulumi.get(__response__, 'managed_by_scim'),
         name=pulumi.get(__response__, 'name'),
         organization_id=pulumi.get(__response__, 'organization_id'),
+        timeouts=pulumi.get(__response__, 'timeouts'),
         update_time=pulumi.get(__response__, 'update_time')))

@@ -2,13 +2,12 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Creates and manages an AWS VPC peering connection with an Aiven Organization VPC.
- *
- * **This resource is in the beta stage and may change without notice.** Set
- * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+ * Creates and manages an AWS VPC peering connection with an Aiven Organization VPC. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
  *
  * ## Example Usage
  *
@@ -16,24 +15,19 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const exampleVpc = new aiven.OrganizationVpc("example_vpc", {
- *     organizationId: example.id,
- *     cloudName: "aws-eu-central-1",
- *     networkCidr: "10.0.0.0/24",
- * });
- * const examplePeering = new aiven.AwsOrgVpcPeeringConnection("example_peering", {
- *     organizationId: exampleVpc.organizationId,
- *     organizationVpcId: exampleVpc.organizationVpcId,
- *     awsAccountId: awsId,
- *     awsVpcId: "vpc-1a2b3c4d5e6f7g8h9",
- *     awsVpcRegion: "aws-us-east-2",
+ * const example = new aiven.AwsOrgVpcPeeringConnection("example", {
+ *     organizationId: "org1a23f456789",
+ *     organizationVpcId: "1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+ *     awsAccountId: "123456789012",
+ *     awsVpcId: "vpc-2f09a348",
+ *     awsVpcRegion: "us-east-1",
  * });
  * ```
  *
  * ## Import
  *
  * ```sh
- * $ pulumi import aiven:index/awsOrgVpcPeeringConnection:AwsOrgVpcPeeringConnection example ORGANIZATION_ID/ORGANIZATION_VPC_ID/AWS_ACCOUNT_ID/AWS_VPC_ID/AWS_REGION
+ * $ pulumi import aiven:index/awsOrgVpcPeeringConnection:AwsOrgVpcPeeringConnection example ORGANIZATION_ID/ORGANIZATION_VPC_ID/AWS_ACCOUNT_ID/AWS_VPC_ID/AWS_VPC_REGION
  * ```
  */
 export class AwsOrgVpcPeeringConnection extends pulumi.CustomResource {
@@ -65,11 +59,11 @@ export class AwsOrgVpcPeeringConnection extends pulumi.CustomResource {
     }
 
     /**
-     * AWS account ID. Changing this property forces recreation of the resource.
+     * AWS account ID. Maximum length: `1024`. Changing this property forces recreation of the resource.
      */
     declare public readonly awsAccountId: pulumi.Output<string>;
     /**
-     * AWS VPC ID. Changing this property forces recreation of the resource.
+     * AWS VPC ID. Maximum length: `1024`. Changing this property forces recreation of the resource.
      */
     declare public readonly awsVpcId: pulumi.Output<string>;
     /**
@@ -77,25 +71,26 @@ export class AwsOrgVpcPeeringConnection extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly awsVpcPeeringConnectionId: pulumi.Output<string>;
     /**
-     * The AWS region of the peered VPC. For example, `eu-central-1`.
+     * The AWS region of the peered VPC. For example, `eu-central-1`. Maximum length: `1024`. Changing this property forces recreation of the resource.
      */
     declare public readonly awsVpcRegion: pulumi.Output<string>;
     /**
-     * Identifier of the organization.
+     * ID of an organization. Changing this property forces recreation of the resource.
      */
     declare public readonly organizationId: pulumi.Output<string>;
     /**
-     * Identifier of the organization VPC.
+     * Organization VPC ID. Changing this property forces recreation of the resource.
      */
     declare public readonly organizationVpcId: pulumi.Output<string>;
     /**
-     * The ID of the peering connection.
+     * Organization peering connection ID.
      */
     declare public /*out*/ readonly peeringConnectionId: pulumi.Output<string>;
     /**
      * State of the peering connection. The possible values are `ACTIVE`, `APPROVED`, `APPROVED_PEER_REQUESTED`, `DELETED`, `DELETED_BY_PEER`, `DELETING`, `ERROR`, `INVALID_SPECIFICATION`, `PENDING_PEER` and `REJECTED_BY_PEER`.
      */
     declare public /*out*/ readonly state: pulumi.Output<string>;
+    declare public readonly timeouts: pulumi.Output<outputs.AwsOrgVpcPeeringConnectionTimeouts | undefined>;
 
     /**
      * Create a AwsOrgVpcPeeringConnection resource with the given unique name, arguments, and options.
@@ -118,6 +113,7 @@ export class AwsOrgVpcPeeringConnection extends pulumi.CustomResource {
             resourceInputs["organizationVpcId"] = state?.organizationVpcId;
             resourceInputs["peeringConnectionId"] = state?.peeringConnectionId;
             resourceInputs["state"] = state?.state;
+            resourceInputs["timeouts"] = state?.timeouts;
         } else {
             const args = argsOrState as AwsOrgVpcPeeringConnectionArgs | undefined;
             if (args?.awsAccountId === undefined && !opts.urn) {
@@ -140,6 +136,7 @@ export class AwsOrgVpcPeeringConnection extends pulumi.CustomResource {
             resourceInputs["awsVpcRegion"] = args?.awsVpcRegion;
             resourceInputs["organizationId"] = args?.organizationId;
             resourceInputs["organizationVpcId"] = args?.organizationVpcId;
+            resourceInputs["timeouts"] = args?.timeouts;
             resourceInputs["awsVpcPeeringConnectionId"] = undefined /*out*/;
             resourceInputs["peeringConnectionId"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
@@ -154,11 +151,11 @@ export class AwsOrgVpcPeeringConnection extends pulumi.CustomResource {
  */
 export interface AwsOrgVpcPeeringConnectionState {
     /**
-     * AWS account ID. Changing this property forces recreation of the resource.
+     * AWS account ID. Maximum length: `1024`. Changing this property forces recreation of the resource.
      */
     awsAccountId?: pulumi.Input<string | undefined>;
     /**
-     * AWS VPC ID. Changing this property forces recreation of the resource.
+     * AWS VPC ID. Maximum length: `1024`. Changing this property forces recreation of the resource.
      */
     awsVpcId?: pulumi.Input<string | undefined>;
     /**
@@ -166,25 +163,26 @@ export interface AwsOrgVpcPeeringConnectionState {
      */
     awsVpcPeeringConnectionId?: pulumi.Input<string | undefined>;
     /**
-     * The AWS region of the peered VPC. For example, `eu-central-1`.
+     * The AWS region of the peered VPC. For example, `eu-central-1`. Maximum length: `1024`. Changing this property forces recreation of the resource.
      */
     awsVpcRegion?: pulumi.Input<string | undefined>;
     /**
-     * Identifier of the organization.
+     * ID of an organization. Changing this property forces recreation of the resource.
      */
     organizationId?: pulumi.Input<string | undefined>;
     /**
-     * Identifier of the organization VPC.
+     * Organization VPC ID. Changing this property forces recreation of the resource.
      */
     organizationVpcId?: pulumi.Input<string | undefined>;
     /**
-     * The ID of the peering connection.
+     * Organization peering connection ID.
      */
     peeringConnectionId?: pulumi.Input<string | undefined>;
     /**
      * State of the peering connection. The possible values are `ACTIVE`, `APPROVED`, `APPROVED_PEER_REQUESTED`, `DELETED`, `DELETED_BY_PEER`, `DELETING`, `ERROR`, `INVALID_SPECIFICATION`, `PENDING_PEER` and `REJECTED_BY_PEER`.
      */
     state?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.AwsOrgVpcPeeringConnectionTimeouts | undefined>;
 }
 
 /**
@@ -192,23 +190,24 @@ export interface AwsOrgVpcPeeringConnectionState {
  */
 export interface AwsOrgVpcPeeringConnectionArgs {
     /**
-     * AWS account ID. Changing this property forces recreation of the resource.
+     * AWS account ID. Maximum length: `1024`. Changing this property forces recreation of the resource.
      */
     awsAccountId: pulumi.Input<string>;
     /**
-     * AWS VPC ID. Changing this property forces recreation of the resource.
+     * AWS VPC ID. Maximum length: `1024`. Changing this property forces recreation of the resource.
      */
     awsVpcId: pulumi.Input<string>;
     /**
-     * The AWS region of the peered VPC. For example, `eu-central-1`.
+     * The AWS region of the peered VPC. For example, `eu-central-1`. Maximum length: `1024`. Changing this property forces recreation of the resource.
      */
     awsVpcRegion: pulumi.Input<string>;
     /**
-     * Identifier of the organization.
+     * ID of an organization. Changing this property forces recreation of the resource.
      */
     organizationId: pulumi.Input<string>;
     /**
-     * Identifier of the organization VPC.
+     * Organization VPC ID. Changing this property forces recreation of the resource.
      */
     organizationVpcId: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.AwsOrgVpcPeeringConnectionTimeouts | undefined>;
 }

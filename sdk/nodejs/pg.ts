@@ -17,6 +17,17 @@ import * as utilities from "./utilities";
  * import * as std from "@pulumi/std";
  *
  * const examplePostgres = new aiven.Pg("example_postgres", {
+ *     pgUserConfig: {
+ *         publicAccess: {
+ *             pg: true,
+ *             prometheus: false,
+ *         },
+ *         pg: {
+ *             idleInTransactionSessionTimeout: 900,
+ *             logMinDurationStatement: -1,
+ *         },
+ *         staticIps: true,
+ *     },
  *     project: exampleProject.project,
  *     cloudName: "google-europe-west1",
  *     plan: "startup-4",
@@ -31,16 +42,10 @@ import * as utilities from "./utilities";
  *             ips[3].staticIpAddressId,
  *         ],
  *     }).result,
- *     pgUserConfig: {
- *         staticIps: true,
- *         publicAccess: {
- *             pg: true,
- *             prometheus: false,
- *         },
- *         pg: {
- *             idleInTransactionSessionTimeout: 900,
- *             logMinDurationStatement: -1,
- *         },
+ * }, {
+ *     customTimeouts: {
+ *         create: "20m",
+ *         update: "15m",
  *     },
  * });
  * ```

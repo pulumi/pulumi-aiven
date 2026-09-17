@@ -3,10 +3,13 @@
 
 package com.pulumi.aiven.inputs;
 
+import com.pulumi.aiven.inputs.GetValkeyUserTimeouts;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetValkeyUserPlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -14,14 +17,14 @@ public final class GetValkeyUserPlainArgs extends com.pulumi.resources.InvokeArg
     public static final GetValkeyUserPlainArgs Empty = new GetValkeyUserPlainArgs();
 
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name.
      * 
      */
     @Import(name="project", required=true)
     private String project;
 
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name.
      * 
      */
     public String project() {
@@ -29,29 +32,36 @@ public final class GetValkeyUserPlainArgs extends com.pulumi.resources.InvokeArg
     }
 
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name.
      * 
      */
     @Import(name="serviceName", required=true)
     private String serviceName;
 
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service name.
      * 
      */
     public String serviceName() {
         return this.serviceName;
     }
 
+    @Import(name="timeouts")
+    private @Nullable GetValkeyUserTimeouts timeouts;
+
+    public Optional<GetValkeyUserTimeouts> timeouts() {
+        return Optional.ofNullable(this.timeouts);
+    }
+
     /**
-     * Name of the Valkey service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service username.
      * 
      */
     @Import(name="username", required=true)
     private String username;
 
     /**
-     * @return Name of the Valkey service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service username.
      * 
      */
     public String username() {
@@ -63,6 +73,7 @@ public final class GetValkeyUserPlainArgs extends com.pulumi.resources.InvokeArg
     private GetValkeyUserPlainArgs(GetValkeyUserPlainArgs $) {
         this.project = $.project;
         this.serviceName = $.serviceName;
+        this.timeouts = $.timeouts;
         this.username = $.username;
     }
 
@@ -85,7 +96,7 @@ public final class GetValkeyUserPlainArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param project The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param project Project name.
          * 
          * @return builder
          * 
@@ -96,7 +107,7 @@ public final class GetValkeyUserPlainArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param serviceName The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param serviceName Service name.
          * 
          * @return builder
          * 
@@ -106,8 +117,13 @@ public final class GetValkeyUserPlainArgs extends com.pulumi.resources.InvokeArg
             return this;
         }
 
+        public Builder timeouts(@Nullable GetValkeyUserTimeouts timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
         /**
-         * @param username Name of the Valkey service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param username Service username.
          * 
          * @return builder
          * 

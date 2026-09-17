@@ -29,9 +29,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.NewOrganizationBillingGroup(ctx, "example", &aiven.OrganizationBillingGroupArgs{
-//				OrganizationId:    pulumi.String("org1a23f456789"),
-//				BillingAddressId:  pulumi.String("addr4b1ff1ceeaa"),
-//				ShippingAddressId: pulumi.String("addr4b1ff1ceeaa"),
+//				PaymentMethod: &aiven.OrganizationBillingGroupPaymentMethodArgs{
+//					PaymentMethodId:   pulumi.String("pm4b1ff1ceeaa"),
+//					PaymentMethodType: pulumi.String("credit_card"),
+//				},
 //				BillingContactEmails: aiven.OrganizationBillingGroupBillingContactEmailArray{
 //					&aiven.OrganizationBillingGroupBillingContactEmailArgs{
 //						Email: pulumi.String("jane@example.com"),
@@ -42,11 +43,10 @@ import (
 //						Email: pulumi.String("jane@example.com"),
 //					},
 //				},
-//				BillingGroupName: pulumi.String("Default billing group for the organization"),
-//				PaymentMethod: &aiven.OrganizationBillingGroupPaymentMethodArgs{
-//					PaymentMethodId:   pulumi.String("pm4b1ff1ceeaa"),
-//					PaymentMethodType: pulumi.String("credit_card"),
-//				},
+//				OrganizationId:    pulumi.String("org1a23f456789"),
+//				BillingAddressId:  pulumi.String("addr4b1ff1ceeaa"),
+//				ShippingAddressId: pulumi.String("addr4b1ff1ceeaa"),
+//				BillingGroupName:  pulumi.String("Default billing group for the organization"),
 //				VatId:             pulumi.String("FI12345678"),
 //				CustomInvoiceText: pulumi.String("Extra billing text"),
 //			})

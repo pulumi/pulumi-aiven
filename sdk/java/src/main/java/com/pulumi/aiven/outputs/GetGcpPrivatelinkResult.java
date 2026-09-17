@@ -3,10 +3,13 @@
 
 package com.pulumi.aiven.outputs;
 
+import com.pulumi.aiven.outputs.GetGcpPrivatelinkTimeouts;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetGcpPrivatelinkResult {
@@ -16,30 +19,35 @@ public final class GetGcpPrivatelinkResult {
      */
     private String googleServiceAttachment;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Resource ID composed as: `project/service_name`.
      * 
      */
     private String id;
     /**
-     * @return Printable result of the Google Cloud Private Service Connect request.
+     * @return Legacy response message retained for backward compatibility. **Deprecated**: This attribute is retained only for compatibility with state created by older provider versions and is no longer populated.
+     * 
+     * @deprecated
+     * This attribute is retained only for compatibility with state created by older provider versions and is no longer populated.
      * 
      */
+    @Deprecated /* This attribute is retained only for compatibility with state created by older provider versions and is no longer populated. */
     private String message;
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name.
      * 
      */
     private String project;
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service name.
      * 
      */
     private String serviceName;
     /**
-     * @return The state of the Private Service Connect resource.
+     * @return The state of the Private Service Connect resource. The possible values are `active`, `creating` and `deleting`.
      * 
      */
     private String state;
+    private @Nullable GetGcpPrivatelinkTimeouts timeouts;
 
     private GetGcpPrivatelinkResult() {}
     /**
@@ -50,39 +58,46 @@ public final class GetGcpPrivatelinkResult {
         return this.googleServiceAttachment;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Resource ID composed as: `project/service_name`.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return Printable result of the Google Cloud Private Service Connect request.
+     * @return Legacy response message retained for backward compatibility. **Deprecated**: This attribute is retained only for compatibility with state created by older provider versions and is no longer populated.
+     * 
+     * @deprecated
+     * This attribute is retained only for compatibility with state created by older provider versions and is no longer populated.
      * 
      */
+    @Deprecated /* This attribute is retained only for compatibility with state created by older provider versions and is no longer populated. */
     public String message() {
         return this.message;
     }
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name.
      * 
      */
     public String project() {
         return this.project;
     }
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service name.
      * 
      */
     public String serviceName() {
         return this.serviceName;
     }
     /**
-     * @return The state of the Private Service Connect resource.
+     * @return The state of the Private Service Connect resource. The possible values are `active`, `creating` and `deleting`.
      * 
      */
     public String state() {
         return this.state;
+    }
+    public Optional<GetGcpPrivatelinkTimeouts> timeouts() {
+        return Optional.ofNullable(this.timeouts);
     }
 
     public static Builder builder() {
@@ -100,6 +115,7 @@ public final class GetGcpPrivatelinkResult {
         private String project;
         private String serviceName;
         private String state;
+        private @Nullable GetGcpPrivatelinkTimeouts timeouts;
         public Builder() {}
         public Builder(GetGcpPrivatelinkResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -109,6 +125,7 @@ public final class GetGcpPrivatelinkResult {
     	      this.project = defaults.project;
     	      this.serviceName = defaults.serviceName;
     	      this.state = defaults.state;
+    	      this.timeouts = defaults.timeouts;
         }
 
         @CustomType.Setter
@@ -159,6 +176,12 @@ public final class GetGcpPrivatelinkResult {
             this.state = state;
             return this;
         }
+        @CustomType.Setter
+        public Builder timeouts(@Nullable GetGcpPrivatelinkTimeouts timeouts) {
+
+            this.timeouts = timeouts;
+            return this;
+        }
         public GetGcpPrivatelinkResult build() {
             final var _resultValue = new GetGcpPrivatelinkResult();
             _resultValue.googleServiceAttachment = googleServiceAttachment;
@@ -167,6 +190,7 @@ public final class GetGcpPrivatelinkResult {
             _resultValue.project = project;
             _resultValue.serviceName = serviceName;
             _resultValue.state = state;
+            _resultValue.timeouts = timeouts;
             return _resultValue;
         }
     }

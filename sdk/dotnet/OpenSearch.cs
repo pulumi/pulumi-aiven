@@ -24,12 +24,6 @@ namespace Pulumi.Aiven
     /// {
     ///     var exampleOpensearch = new Aiven.OpenSearch("example_opensearch", new()
     ///     {
-    ///         Project = exampleProject.Project,
-    ///         CloudName = "google-europe-west1",
-    ///         Plan = "startup-4",
-    ///         ServiceName = "example-opensearch",
-    ///         MaintenanceWindowDow = "monday",
-    ///         MaintenanceWindowTime = "10:00:00",
     ///         OpensearchUserConfig = new Aiven.Inputs.OpenSearchOpensearchUserConfigArgs
     ///         {
     ///             OpensearchDashboards = new Aiven.Inputs.OpenSearchOpensearchUserConfigOpensearchDashboardsArgs
@@ -43,6 +37,12 @@ namespace Pulumi.Aiven
     ///                 OpensearchDashboards = true,
     ///             },
     ///         },
+    ///         Project = exampleProject.Project,
+    ///         CloudName = "google-europe-west1",
+    ///         Plan = "startup-4",
+    ///         ServiceName = "example-opensearch",
+    ///         MaintenanceWindowDow = "monday",
+    ///         MaintenanceWindowTime = "10:00:00",
     ///     });
     /// 
     /// });

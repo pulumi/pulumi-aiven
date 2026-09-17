@@ -14,6 +14,10 @@ namespace Pulumi.Aiven.Outputs
     public sealed class GetMySqlMysqlUserConfigMysqlResult
     {
         /// <summary>
+        /// When enabled, the server automatically grants the EXECUTE and ALTER ROUTINE privileges to the creator of a stored routine and drops them when the routine is dropped.
+        /// </summary>
+        public readonly bool? AutomaticSpPrivileges;
+        /// <summary>
         /// The number of seconds that the mysqld server waits for a connect packet before responding with Bad handshake. Example: `10`.
         /// </summary>
         public readonly int? ConnectTimeout;
@@ -21,6 +25,18 @@ namespace Pulumi.Aiven.Outputs
         /// Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or `SYSTEM` to use the MySQL server default. Example: `+03:00`.
         /// </summary>
         public readonly string? DefaultTimeZone;
+        /// <summary>
+        /// Number of digits by which to increase the scale of the result of division operations performed with the / operator. Default is 4. Example: `6`.
+        /// </summary>
+        public readonly int? DivPrecisionIncrement;
+        /// <summary>
+        /// Whether optimizer JSON output such as EXPLAIN FORMAT=JSON adds end markers that repeat a structure's key near its closing bracket, making large JSON structures easier to read.
+        /// </summary>
+        public readonly bool? EndMarkersInJson;
+        /// <summary>
+        /// The number of equality ranges in a query at or above which the optimizer switches from index dives to index statistics when estimating the number of qualifying rows. 0 means always use index dives. Default is 200. Example: `100`.
+        /// </summary>
+        public readonly int? EqRangeIndexDiveLimit;
         /// <summary>
         /// The maximum permitted result length in bytes for the GROUP_CONCAT() function. Example: `1024`.
         /// </summary>
@@ -42,13 +58,33 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? InnodbFlushNeighbors;
         /// <summary>
+        /// Whether stopword processing is applied when creating or rebuilding an InnoDB FULLTEXT index. Enabled by default.
+        /// </summary>
+        public readonly bool? InnodbFtEnableStopword;
+        /// <summary>
+        /// Maximum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service. Example: `60`.
+        /// </summary>
+        public readonly int? InnodbFtMaxTokenSize;
+        /// <summary>
         /// Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service. Example: `3`.
         /// </summary>
         public readonly int? InnodbFtMinTokenSize;
         /// <summary>
+        /// Number of words processed during each OPTIMIZE TABLE operation on an InnoDB FULLTEXT index. Default is 2000. Example: `4000`.
+        /// </summary>
+        public readonly int? InnodbFtNumWordOptimize;
+        /// <summary>
+        /// Maximum memory in bytes used per query for the InnoDB FULLTEXT search query result cache. Aiven sizes this automatically based on the service plan's memory; setting a value overrides the calculated default.
+        /// </summary>
+        public readonly int? InnodbFtResultCacheLimit;
+        /// <summary>
         /// This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables. Example: `db_name/table_name`.
         /// </summary>
         public readonly string? InnodbFtServerStopwordTable;
+        /// <summary>
+        /// This option is used to specify your own InnoDB FULLTEXT index stopword list for specific InnoDB tables. Example: `db_name/table_name`.
+        /// </summary>
+        public readonly string? InnodbFtUserStopwordTable;
         /// <summary>
         /// The number of I/O operations per second (IOPS) available to InnoDB background tasks, such as flushing pages from the buffer pool and merging data from the change buffer. Set this to a value appropriate for the underlying storage; it must not exceed innodb_io_capacity_max. Example: `2000`.
         /// </summary>
@@ -69,6 +105,10 @@ namespace Pulumi.Aiven.Outputs
         /// The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
         /// </summary>
         public readonly int? InnodbOnlineAlterLogMaxSize;
+        /// <summary>
+        /// When enabled, OPTIMIZE TABLE on InnoDB tables only updates the FULLTEXT index instead of rebuilding the table. Intended to be enabled temporarily during FULLTEXT index maintenance and disabled afterwards; while enabled, OPTIMIZE TABLE does not reclaim table space.
+        /// </summary>
+        public readonly bool? InnodbOptimizeFulltextOnly;
         /// <summary>
         /// When enabled, information about all deadlocks in InnoDB user transactions is recorded in the error log. Disabled by default.
         /// </summary>
@@ -114,9 +154,25 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? MaxAllowedPacket;
         /// <summary>
+        /// The maximum permitted number of simultaneous client connections. Lower this to reserve memory for other work. The value cannot exceed the limit provided by your service plan. Upgrading the plan does not raise a value you have set explicitly, so increase it yourself after an upgrade. Example: `200`.
+        /// </summary>
+        public readonly int? MaxConnections;
+        /// <summary>
+        /// Execution timeout in milliseconds for read-only top-level SELECT statements. 0 (the default) means no timeout. Example: `15000`.
+        /// </summary>
+        public readonly int? MaxExecutionTime;
+        /// <summary>
         /// Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M).
         /// </summary>
         public readonly int? MaxHeapTableSize;
+        /// <summary>
+        /// Limit on the assumed maximum number of index seeks when looking up rows based on a key. Lowering this value causes the optimizer to prefer index lookups over table scans. Example: `100`.
+        /// </summary>
+        public readonly int? MaxSeeksForKey;
+        /// <summary>
+        /// The maximum number of simultaneous connections permitted to any single user account. 0, the default, means no per-account limit. Any other value must be at least 10 below max_connections, so that monitoring and your own admin sessions can still connect when an application saturates its own limit. Aiven's replication and management connections are unaffected however low you set this. Example: `50`.
+        /// </summary>
+        public readonly int? MaxUserConnections;
         /// <summary>
         /// Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service. Example: `16384`.
         /// </summary>
@@ -129,6 +185,18 @@ namespace Pulumi.Aiven.Outputs
         /// The number of seconds to wait for a block to be written to a connection before aborting the write. Example: `30`.
         /// </summary>
         public readonly int? NetWriteTimeout;
+        /// <summary>
+        /// Controls the heuristics applied during query optimization to prune less-promising partial plans from the optimizer search space. 0 disables heuristics (exhaustive search); 1 prunes plans based on the number of rows retrieved. Example: `1`.
+        /// </summary>
+        public readonly int? OptimizerPruneLevel;
+        /// <summary>
+        /// Maximum depth of search performed by the query optimizer when choosing a join order. Larger values produce better plans for joins over many tables but take longer to compile; 0 lets the optimizer choose the depth automatically. Example: `62`.
+        /// </summary>
+        public readonly int? OptimizerSearchDepth;
+        /// <summary>
+        /// Comma-separated list of optimizer flag assignments in the form flag=on|off|default, or the single value `Default` to reset all flags. Flags not listed keep their current values. Controls query optimizer behaviors such as index merge, hash join and semijoin strategies. Example: `batched_key_access=on,mrr_cost_based=off`.
+        /// </summary>
+        public readonly string? OptimizerSwitch;
         /// <summary>
         /// The number of rows per thread in the EventsStatementsHistory table. Changing this parameter will lead to a restart of the MySQL service.
         /// </summary>
@@ -161,12 +229,24 @@ namespace Pulumi.Aiven.Outputs
         /// The number of seconds the server waits for activity on a noninteractive connection before closing it. Example: `28800`.
         /// </summary>
         public readonly int? WaitTimeout;
+        /// <summary>
+        /// Whether window functions are computed to high precision. Disabling this trades exactness for speed in window function evaluation.
+        /// </summary>
+        public readonly bool? WindowingUseHighPrecision;
 
         [OutputConstructor]
         private GetMySqlMysqlUserConfigMysqlResult(
+            bool? automaticSpPrivileges,
+
             int? connectTimeout,
 
             string? defaultTimeZone,
+
+            int? divPrecisionIncrement,
+
+            bool? endMarkersInJson,
+
+            int? eqRangeIndexDiveLimit,
 
             int? groupConcatMaxLen,
 
@@ -178,9 +258,19 @@ namespace Pulumi.Aiven.Outputs
 
             int? innodbFlushNeighbors,
 
+            bool? innodbFtEnableStopword,
+
+            int? innodbFtMaxTokenSize,
+
             int? innodbFtMinTokenSize,
 
+            int? innodbFtNumWordOptimize,
+
+            int? innodbFtResultCacheLimit,
+
             string? innodbFtServerStopwordTable,
+
+            string? innodbFtUserStopwordTable,
 
             int? innodbIoCapacity,
 
@@ -191,6 +281,8 @@ namespace Pulumi.Aiven.Outputs
             int? innodbLogBufferSize,
 
             int? innodbOnlineAlterLogMaxSize,
+
+            bool? innodbOptimizeFulltextOnly,
 
             bool? innodbPrintAllDeadlocks,
 
@@ -214,13 +306,27 @@ namespace Pulumi.Aiven.Outputs
 
             int? maxAllowedPacket,
 
+            int? maxConnections,
+
+            int? maxExecutionTime,
+
             int? maxHeapTableSize,
+
+            int? maxSeeksForKey,
+
+            int? maxUserConnections,
 
             int? netBufferLength,
 
             int? netReadTimeout,
 
             int? netWriteTimeout,
+
+            int? optimizerPruneLevel,
+
+            int? optimizerSearchDepth,
+
+            string? optimizerSwitch,
 
             int? performanceSchemaEventsStatementsHistorySize,
 
@@ -236,22 +342,34 @@ namespace Pulumi.Aiven.Outputs
 
             int? tmpTableSize,
 
-            int? waitTimeout)
+            int? waitTimeout,
+
+            bool? windowingUseHighPrecision)
         {
+            AutomaticSpPrivileges = automaticSpPrivileges;
             ConnectTimeout = connectTimeout;
             DefaultTimeZone = defaultTimeZone;
+            DivPrecisionIncrement = divPrecisionIncrement;
+            EndMarkersInJson = endMarkersInJson;
+            EqRangeIndexDiveLimit = eqRangeIndexDiveLimit;
             GroupConcatMaxLen = groupConcatMaxLen;
             InformationSchemaStatsExpiry = informationSchemaStatsExpiry;
             InnodbAdaptiveHashIndex = innodbAdaptiveHashIndex;
             InnodbChangeBufferMaxSize = innodbChangeBufferMaxSize;
             InnodbFlushNeighbors = innodbFlushNeighbors;
+            InnodbFtEnableStopword = innodbFtEnableStopword;
+            InnodbFtMaxTokenSize = innodbFtMaxTokenSize;
             InnodbFtMinTokenSize = innodbFtMinTokenSize;
+            InnodbFtNumWordOptimize = innodbFtNumWordOptimize;
+            InnodbFtResultCacheLimit = innodbFtResultCacheLimit;
             InnodbFtServerStopwordTable = innodbFtServerStopwordTable;
+            InnodbFtUserStopwordTable = innodbFtUserStopwordTable;
             InnodbIoCapacity = innodbIoCapacity;
             InnodbIoCapacityMax = innodbIoCapacityMax;
             InnodbLockWaitTimeout = innodbLockWaitTimeout;
             InnodbLogBufferSize = innodbLogBufferSize;
             InnodbOnlineAlterLogMaxSize = innodbOnlineAlterLogMaxSize;
+            InnodbOptimizeFulltextOnly = innodbOptimizeFulltextOnly;
             InnodbPrintAllDeadlocks = innodbPrintAllDeadlocks;
             InnodbReadIoThreads = innodbReadIoThreads;
             InnodbRollbackOnTimeout = innodbRollbackOnTimeout;
@@ -263,10 +381,17 @@ namespace Pulumi.Aiven.Outputs
             LongQueryTime = longQueryTime;
             LowerCaseTableNames = lowerCaseTableNames;
             MaxAllowedPacket = maxAllowedPacket;
+            MaxConnections = maxConnections;
+            MaxExecutionTime = maxExecutionTime;
             MaxHeapTableSize = maxHeapTableSize;
+            MaxSeeksForKey = maxSeeksForKey;
+            MaxUserConnections = maxUserConnections;
             NetBufferLength = netBufferLength;
             NetReadTimeout = netReadTimeout;
             NetWriteTimeout = netWriteTimeout;
+            OptimizerPruneLevel = optimizerPruneLevel;
+            OptimizerSearchDepth = optimizerSearchDepth;
+            OptimizerSwitch = optimizerSwitch;
             PerformanceSchemaEventsStatementsHistorySize = performanceSchemaEventsStatementsHistorySize;
             RelayLogSpaceLimit = relayLogSpaceLimit;
             SlowQueryLog = slowQueryLog;
@@ -275,6 +400,7 @@ namespace Pulumi.Aiven.Outputs
             SqlRequirePrimaryKey = sqlRequirePrimaryKey;
             TmpTableSize = tmpTableSize;
             WaitTimeout = waitTimeout;
+            WindowingUseHighPrecision = windowingUseHighPrecision;
         }
     }
 }

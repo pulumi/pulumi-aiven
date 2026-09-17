@@ -42,10 +42,6 @@ namespace Pulumi.Aiven
     ///     // Create a Kafka Connect service.
     ///     var exampleKafkaConnect = new Aiven.KafkaConnect("example_kafka_connect", new()
     ///     {
-    ///         Project = exampleProject.Project,
-    ///         CloudName = "google-europe-west1",
-    ///         Plan = "startup-4",
-    ///         ServiceName = "example-connect-service",
     ///         KafkaConnectUserConfig = new Aiven.Inputs.KafkaConnectKafkaConnectUserConfigArgs
     ///         {
     ///             KafkaConnect = new Aiven.Inputs.KafkaConnectKafkaConnectUserConfigKafkaConnectArgs
@@ -57,15 +53,15 @@ namespace Pulumi.Aiven
     ///                 KafkaConnect = true,
     ///             },
     ///         },
+    ///         Project = exampleProject.Project,
+    ///         CloudName = "google-europe-west1",
+    ///         Plan = "startup-4",
+    ///         ServiceName = "example-connect-service",
     ///     });
     /// 
     ///     // Integrate the Kafka and Kafka Connect services.
     ///     var kafkaConnectIntegration = new Aiven.ServiceIntegration("kafka_connect_integration", new()
     ///     {
-    ///         Project = exampleProject.Project,
-    ///         IntegrationType = "kafka_connect",
-    ///         SourceServiceName = exampleKafka.ServiceName,
-    ///         DestinationServiceName = exampleKafkaConnect.ServiceName,
     ///         KafkaConnectUserConfig = new Aiven.Inputs.ServiceIntegrationKafkaConnectUserConfigArgs
     ///         {
     ///             KafkaConnect = new Aiven.Inputs.ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs
@@ -75,6 +71,10 @@ namespace Pulumi.Aiven
     ///                 OffsetStorageTopic = "__connect_offsets",
     ///             },
     ///         },
+    ///         Project = exampleProject.Project,
+    ///         IntegrationType = "kafka_connect",
+    ///         SourceServiceName = exampleKafka.ServiceName,
+    ///         DestinationServiceName = exampleKafkaConnect.ServiceName,
     ///     });
     /// 
     /// });

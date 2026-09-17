@@ -819,12 +819,6 @@ class OpenSearch(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         example_opensearch = aiven.OpenSearch("example_opensearch",
-            project=example_project["project"],
-            cloud_name="google-europe-west1",
-            plan="startup-4",
-            service_name="example-opensearch",
-            maintenance_window_dow="monday",
-            maintenance_window_time="10:00:00",
             opensearch_user_config={
                 "opensearch_dashboards": {
                     "enabled": True,
@@ -834,7 +828,13 @@ class OpenSearch(pulumi.CustomResource):
                     "opensearch": True,
                     "opensearch_dashboards": True,
                 },
-            })
+            },
+            project=example_project["project"],
+            cloud_name="google-europe-west1",
+            plan="startup-4",
+            service_name="example-opensearch",
+            maintenance_window_dow="monday",
+            maintenance_window_time="10:00:00")
         ```
 
         ## Import
@@ -880,12 +880,6 @@ class OpenSearch(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         example_opensearch = aiven.OpenSearch("example_opensearch",
-            project=example_project["project"],
-            cloud_name="google-europe-west1",
-            plan="startup-4",
-            service_name="example-opensearch",
-            maintenance_window_dow="monday",
-            maintenance_window_time="10:00:00",
             opensearch_user_config={
                 "opensearch_dashboards": {
                     "enabled": True,
@@ -895,7 +889,13 @@ class OpenSearch(pulumi.CustomResource):
                     "opensearch": True,
                     "opensearch_dashboards": True,
                 },
-            })
+            },
+            project=example_project["project"],
+            cloud_name="google-europe-west1",
+            plan="startup-4",
+            service_name="example-opensearch",
+            maintenance_window_dow="monday",
+            maintenance_window_time="10:00:00")
         ```
 
         ## Import

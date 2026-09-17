@@ -45,7 +45,9 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var example = new OrganizationAddress("example", OrganizationAddressArgs.builder()
  *             .organizationId("org1a23f456789")
- *             .addressLines("Street 1")
+ *             .addressLines(            
+ *                 "Street 1",
+ *                 "Street 2")
  *             .city("Helsinki")
  *             .countryCode("FI")
  *             .name("Aiven Oy")

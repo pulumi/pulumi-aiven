@@ -52,13 +52,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var exampleValkey = new Valkey("exampleValkey", ValkeyArgs.builder()
+ *             .valkeyUserConfig(ValkeyValkeyUserConfigArgs.builder()
+ *                 .valkeyMaxmemoryPolicy("allkeys-random")
+ *                 .build())
  *             .project(exampleProject.project())
  *             .plan("startup-4")
  *             .cloudName("google-europe-west1")
  *             .serviceName("example-valkey-service")
- *             .valkeyUserConfig(ValkeyValkeyUserConfigArgs.builder()
- *                 .valkeyMaxmemoryPolicy("allkeys-random")
- *                 .build())
  *             .build());
  * 
  *     }

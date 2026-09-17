@@ -28,8 +28,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.GetOrganizationUserGroup(ctx, &aiven.LookupOrganizationUserGroupArgs{
-//				Name:           "Example group",
-//				OrganizationId: main.Id,
+//				OrganizationId: "org1a23f456789",
+//				GroupId:        pulumi.StringRef("foo"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -51,27 +51,33 @@ func LookupOrganizationUserGroup(ctx *pulumi.Context, args *LookupOrganizationUs
 
 // A collection of arguments for invoking getOrganizationUserGroup.
 type LookupOrganizationUserGroupArgs struct {
-	// The name of the user group. Changing this property forces recreation of the resource.
-	Name string `pulumi:"name"`
-	// The ID of the organization. Changing this property forces recreation of the resource.
-	OrganizationId string `pulumi:"organizationId"`
+	// ID of the user group. Exactly one of the fields must be specified: `groupId` or `name`.
+	GroupId *string `pulumi:"groupId"`
+	// User Group Name. Exactly one of the fields must be specified: `groupId` or `name`.
+	Name *string `pulumi:"name"`
+	// ID of an organization.
+	OrganizationId string                            `pulumi:"organizationId"`
+	Timeouts       *GetOrganizationUserGroupTimeouts `pulumi:"timeouts"`
 }
 
 // A collection of values returned by getOrganizationUserGroup.
 type LookupOrganizationUserGroupResult struct {
-	// Time of creation.
+	// User group creation time.
 	CreateTime string `pulumi:"createTime"`
-	// The description of the user group. Changing this property forces recreation of the resource.
+	// Description.
 	Description string `pulumi:"description"`
-	// The ID of the user group.
+	// ID of the user group. Exactly one of the fields must be specified: `groupId` or `name`.
 	GroupId string `pulumi:"groupId"`
-	// The provider-assigned unique ID for this managed resource.
+	// Resource ID composed as: `organization_id/group_id`.
 	Id string `pulumi:"id"`
-	// The name of the user group. Changing this property forces recreation of the resource.
+	// Managed By Scim.
+	ManagedByScim bool `pulumi:"managedByScim"`
+	// User Group Name. Exactly one of the fields must be specified: `groupId` or `name`.
 	Name string `pulumi:"name"`
-	// The ID of the organization. Changing this property forces recreation of the resource.
-	OrganizationId string `pulumi:"organizationId"`
-	// Time of last update.
+	// ID of an organization.
+	OrganizationId string                            `pulumi:"organizationId"`
+	Timeouts       *GetOrganizationUserGroupTimeouts `pulumi:"timeouts"`
+	// User group last update time.
 	UpdateTime string `pulumi:"updateTime"`
 }
 
@@ -82,10 +88,13 @@ func LookupOrganizationUserGroupOutput(ctx *pulumi.Context, args LookupOrganizat
 
 // A collection of arguments for invoking getOrganizationUserGroup.
 type LookupOrganizationUserGroupOutputArgs struct {
-	// The name of the user group. Changing this property forces recreation of the resource.
-	Name pulumi.StringInput `pulumi:"name"`
-	// The ID of the organization. Changing this property forces recreation of the resource.
-	OrganizationId pulumi.StringInput `pulumi:"organizationId"`
+	// ID of the user group. Exactly one of the fields must be specified: `groupId` or `name`.
+	GroupId pulumi.StringPtrInput `pulumi:"groupId"`
+	// User Group Name. Exactly one of the fields must be specified: `groupId` or `name`.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// ID of an organization.
+	OrganizationId pulumi.StringInput                       `pulumi:"organizationId"`
+	Timeouts       GetOrganizationUserGroupTimeoutsPtrInput `pulumi:"timeouts"`
 }
 
 func (LookupOrganizationUserGroupOutputArgs) ElementType() reflect.Type {
@@ -107,37 +116,46 @@ func (o LookupOrganizationUserGroupResultOutput) ToLookupOrganizationUserGroupRe
 	return o
 }
 
-// Time of creation.
+// User group creation time.
 func (o LookupOrganizationUserGroupResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationUserGroupResult) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// The description of the user group. Changing this property forces recreation of the resource.
+// Description.
 func (o LookupOrganizationUserGroupResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationUserGroupResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// The ID of the user group.
+// ID of the user group. Exactly one of the fields must be specified: `groupId` or `name`.
 func (o LookupOrganizationUserGroupResultOutput) GroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationUserGroupResult) string { return v.GroupId }).(pulumi.StringOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// Resource ID composed as: `organization_id/group_id`.
 func (o LookupOrganizationUserGroupResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationUserGroupResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The name of the user group. Changing this property forces recreation of the resource.
+// Managed By Scim.
+func (o LookupOrganizationUserGroupResultOutput) ManagedByScim() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupOrganizationUserGroupResult) bool { return v.ManagedByScim }).(pulumi.BoolOutput)
+}
+
+// User Group Name. Exactly one of the fields must be specified: `groupId` or `name`.
 func (o LookupOrganizationUserGroupResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationUserGroupResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The ID of the organization. Changing this property forces recreation of the resource.
+// ID of an organization.
 func (o LookupOrganizationUserGroupResultOutput) OrganizationId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationUserGroupResult) string { return v.OrganizationId }).(pulumi.StringOutput)
 }
 
-// Time of last update.
+func (o LookupOrganizationUserGroupResultOutput) Timeouts() GetOrganizationUserGroupTimeoutsPtrOutput {
+	return o.ApplyT(func(v LookupOrganizationUserGroupResult) *GetOrganizationUserGroupTimeouts { return v.Timeouts }).(GetOrganizationUserGroupTimeoutsPtrOutput)
+}
+
+// User group last update time.
 func (o LookupOrganizationUserGroupResultOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationUserGroupResult) string { return v.UpdateTime }).(pulumi.StringOutput)
 }

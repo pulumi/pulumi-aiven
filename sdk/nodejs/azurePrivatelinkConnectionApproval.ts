@@ -22,20 +22,20 @@ import * as utilities from "./utilities";
  *     }));
  * }
  * const _default = new aiven.Pg("default", {
+ *     pgUserConfig: {
+ *         privatelinkAccess: {
+ *             pg: true,
+ *             pgbouncer: true,
+ *         },
+ *         pgVersion: "13",
+ *         staticIps: true,
+ *     },
  *     serviceName: "postgres",
  *     project: aivenProjectId,
  *     projectVpcId: aivenProjectVpcId,
  *     cloudName: region,
  *     plan: plan,
  *     staticIps: staticIps.map(sip => (sip.staticIpAddressId)),
- *     pgUserConfig: {
- *         pgVersion: "13",
- *         staticIps: true,
- *         privatelinkAccess: {
- *             pg: true,
- *             pgbouncer: true,
- *         },
- *     },
  * });
  * const privatelink = new aiven.AzurePrivatelink("privatelink", {
  *     project: aivenProjectId,
@@ -43,16 +43,16 @@ import * as utilities from "./utilities";
  *     userSubscriptionIds: [azureSubscriptionId],
  * });
  * const endpoint = new azurerm.index.PrivateEndpoint("endpoint", {
- *     name: "postgres-endpoint",
- *     location: region,
- *     resourceGroupName: azureResourceGroup.name,
- *     subnetId: azureSubnetId,
  *     privateServiceConnection: [{
  *         name: _default.name,
  *         privateConnectionResourceId: privatelink.azureServiceId,
  *         isManualConnection: true,
  *         requestMessage: _default.name,
  *     }],
+ *     name: "postgres-endpoint",
+ *     location: region,
+ *     resourceGroupName: azureResourceGroup.name,
+ *     subnetId: azureSubnetId,
  * }, {
  *     dependsOn: [privatelink],
  * });

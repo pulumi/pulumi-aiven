@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetAwsPrivatelinkResult',
@@ -26,7 +28,7 @@ class GetAwsPrivatelinkResult:
     """
     A collection of values returned by getAwsPrivatelink.
     """
-    def __init__(__self__, aws_service_id=None, aws_service_name=None, id=None, principals=None, project=None, service_name=None):
+    def __init__(__self__, aws_service_id=None, aws_service_name=None, id=None, principals=None, project=None, service_name=None, state=None, supported_regions=None, timeouts=None):
         if aws_service_id and not isinstance(aws_service_id, str):
             raise TypeError("Expected argument 'aws_service_id' to be a str")
         pulumi.set(__self__, "aws_service_id", aws_service_id)
@@ -45,12 +47,21 @@ class GetAwsPrivatelinkResult:
         if service_name and not isinstance(service_name, str):
             raise TypeError("Expected argument 'service_name' to be a str")
         pulumi.set(__self__, "service_name", service_name)
+        if state and not isinstance(state, str):
+            raise TypeError("Expected argument 'state' to be a str")
+        pulumi.set(__self__, "state", state)
+        if supported_regions and not isinstance(supported_regions, list):
+            raise TypeError("Expected argument 'supported_regions' to be a list")
+        pulumi.set(__self__, "supported_regions", supported_regions)
+        if timeouts and not isinstance(timeouts, dict):
+            raise TypeError("Expected argument 'timeouts' to be a dict")
+        pulumi.set(__self__, "timeouts", timeouts)
 
     @_builtins.property
     @pulumi.getter(name="awsServiceId")
     def aws_service_id(self) -> _builtins.str:
         """
-        AWS service ID.
+        AWS VPC endpoint service ID.
         """
         return pulumi.get(self, "aws_service_id")
 
@@ -58,7 +69,7 @@ class GetAwsPrivatelinkResult:
     @pulumi.getter(name="awsServiceName")
     def aws_service_name(self) -> _builtins.str:
         """
-        AWS service name.
+        AWS VPC endpoint service name.
         """
         return pulumi.get(self, "aws_service_name")
 
@@ -66,7 +77,7 @@ class GetAwsPrivatelinkResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The provider-assigned unique ID for this managed resource.
+        Resource ID composed as: `project/service_name`.
         """
         return pulumi.get(self, "id")
 
@@ -74,7 +85,7 @@ class GetAwsPrivatelinkResult:
     @pulumi.getter
     def principals(self) -> Sequence[_builtins.str]:
         """
-        List of the ARNs of the AWS accounts or IAM users allowed to connect to the VPC endpoint.
+        ARNs of principals allowed connecting to the service.
         """
         return pulumi.get(self, "principals")
 
@@ -82,7 +93,7 @@ class GetAwsPrivatelinkResult:
     @pulumi.getter
     def project(self) -> _builtins.str:
         """
-        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Project name.
         """
         return pulumi.get(self, "project")
 
@@ -90,9 +101,30 @@ class GetAwsPrivatelinkResult:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> _builtins.str:
         """
-        The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Service name.
         """
         return pulumi.get(self, "service_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> _builtins.str:
+        """
+        Privatelink resource state. The possible values are `active`, `creating` and `deleting`.
+        """
+        return pulumi.get(self, "state")
+
+    @_builtins.property
+    @pulumi.getter(name="supportedRegions")
+    def supported_regions(self) -> Sequence[_builtins.str]:
+        """
+        Allow new connections to the endpoint from these regions, in addition to the region the endpoint is in.
+        """
+        return pulumi.get(self, "supported_regions")
+
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> Optional['outputs.GetAwsPrivatelinkTimeoutsResult']:
+        return pulumi.get(self, "timeouts")
 
 
 class AwaitableGetAwsPrivatelinkResult(GetAwsPrivatelinkResult):
@@ -106,11 +138,15 @@ class AwaitableGetAwsPrivatelinkResult(GetAwsPrivatelinkResult):
             id=self.id,
             principals=self.principals,
             project=self.project,
-            service_name=self.service_name)
+            service_name=self.service_name,
+            state=self.state,
+            supported_regions=self.supported_regions,
+            timeouts=self.timeouts)
 
 
 def get_aws_privatelink(project: Optional[_builtins.str] = None,
                         service_name: Optional[_builtins.str] = None,
+                        timeouts: Optional[Union['GetAwsPrivatelinkTimeoutsArgs', 'GetAwsPrivatelinkTimeoutsArgsDict']] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAwsPrivatelinkResult:
     """
     Gets information about an AWS PrivateLink connection for an Aiven service.
@@ -121,17 +157,18 @@ def get_aws_privatelink(project: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    main = aiven.get_aws_privatelink(project=example_project["project"],
-        service_name=example_kafka["serviceName"])
+    example = aiven.get_aws_privatelink(project="my-project",
+        service_name="foo")
     ```
 
 
-    :param _builtins.str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param _builtins.str service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+    :param _builtins.str project: Project name.
+    :param _builtins.str service_name: Service name.
     """
     __args__ = dict()
     __args__['project'] = project
     __args__['serviceName'] = service_name
+    __args__['timeouts'] = timeouts
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('aiven:index/getAwsPrivatelink:getAwsPrivatelink', __args__, opts=opts, typ=GetAwsPrivatelinkResult).value
 
@@ -141,9 +178,13 @@ def get_aws_privatelink(project: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         principals=pulumi.get(__ret__, 'principals'),
         project=pulumi.get(__ret__, 'project'),
-        service_name=pulumi.get(__ret__, 'service_name'))
+        service_name=pulumi.get(__ret__, 'service_name'),
+        state=pulumi.get(__ret__, 'state'),
+        supported_regions=pulumi.get(__ret__, 'supported_regions'),
+        timeouts=pulumi.get(__ret__, 'timeouts'))
 def get_aws_privatelink_output(project: pulumi.Input[Optional[_builtins.str]] = None,
                                service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                               timeouts: pulumi.Input[Optional[Optional[Union['GetAwsPrivatelinkTimeoutsArgs', 'GetAwsPrivatelinkTimeoutsArgsDict']]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAwsPrivatelinkResult]:
     """
     Gets information about an AWS PrivateLink connection for an Aiven service.
@@ -154,17 +195,18 @@ def get_aws_privatelink_output(project: pulumi.Input[Optional[_builtins.str]] = 
     import pulumi
     import pulumi_aiven as aiven
 
-    main = aiven.get_aws_privatelink(project=example_project["project"],
-        service_name=example_kafka["serviceName"])
+    example = aiven.get_aws_privatelink(project="my-project",
+        service_name="foo")
     ```
 
 
-    :param _builtins.str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param _builtins.str service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+    :param _builtins.str project: Project name.
+    :param _builtins.str service_name: Service name.
     """
     __args__ = dict()
     __args__['project'] = project
     __args__['serviceName'] = service_name
+    __args__['timeouts'] = timeouts
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('aiven:index/getAwsPrivatelink:getAwsPrivatelink', __args__, opts=opts, typ=GetAwsPrivatelinkResult)
     return __ret__.apply(lambda __response__: GetAwsPrivatelinkResult(
@@ -173,4 +215,7 @@ def get_aws_privatelink_output(project: pulumi.Input[Optional[_builtins.str]] = 
         id=pulumi.get(__response__, 'id'),
         principals=pulumi.get(__response__, 'principals'),
         project=pulumi.get(__response__, 'project'),
-        service_name=pulumi.get(__response__, 'service_name')))
+        service_name=pulumi.get(__response__, 'service_name'),
+        state=pulumi.get(__response__, 'state'),
+        supported_regions=pulumi.get(__response__, 'supported_regions'),
+        timeouts=pulumi.get(__response__, 'timeouts')))

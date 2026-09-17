@@ -111,6 +111,20 @@ public class PgUser extends com.pulumi.resources.CustomResource {
         return this.password;
     }
     /**
+     * The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. &#39;unknown&#39; is reported when the hash is missing or uses an unrecognised format. The possible values are `md5`, `scram-sha-256` and `unknown`.
+     * 
+     */
+    @Export(name="passwordEncryptionType", refs={String.class}, tree="[0]")
+    private Output<String> passwordEncryptionType;
+
+    /**
+     * @return The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. &#39;unknown&#39; is reported when the hash is missing or uses an unrecognised format. The possible values are `md5`, `scram-sha-256` and `unknown`.
+     * 
+     */
+    public Output<String> passwordEncryptionType() {
+        return this.passwordEncryptionType;
+    }
+    /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Length must be between `8` and `256`.
      * 

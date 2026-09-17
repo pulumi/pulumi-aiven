@@ -16,18 +16,18 @@ import * as utilities from "./utilities";
  * import * as aiven from "@pulumi/aiven";
  *
  * const exampleGrafana = new aiven.Grafana("example_grafana", {
+ *     grafanaUserConfig: {
+ *         publicAccess: {
+ *             grafana: true,
+ *         },
+ *         alertingEnabled: true,
+ *     },
  *     project: exampleProject.project,
  *     cloudName: "google-europe-west1",
  *     plan: "startup-1",
  *     serviceName: "example-grafana-service",
  *     maintenanceWindowDow: "monday",
  *     maintenanceWindowTime: "10:00:00",
- *     grafanaUserConfig: {
- *         alertingEnabled: true,
- *         publicAccess: {
- *             grafana: true,
- *         },
- *     },
  * });
  * ```
  *

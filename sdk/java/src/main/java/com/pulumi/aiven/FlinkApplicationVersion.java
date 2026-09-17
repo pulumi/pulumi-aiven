@@ -56,12 +56,6 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var main = new FlinkApplicationVersion("main", FlinkApplicationVersionArgs.builder()
- *             .project(exampleProject.project())
- *             .serviceName(exampleFlink.serviceName())
- *             .applicationId(exampleApp.applicationId())
- *             .statement("""
- *     INSERT INTO kafka_known_pizza SELECT * FROM kafka_pizza WHERE shop LIKE '%Luigis Pizza%'
- *             """)
  *             .sinks(FlinkApplicationVersionSinkArgs.builder()
  *                 .createTable("""
  *       CREATE TABLE kafka_known_pizza (
@@ -92,6 +86,12 @@ import javax.annotation.Nullable;
  *                 """)
  *                 .integrationId(flinkToKafka.integrationId())
  *                 .build())
+ *             .project(exampleProject.project())
+ *             .serviceName(exampleFlink.serviceName())
+ *             .applicationId(exampleApp.applicationId())
+ *             .statement("""
+ *     INSERT INTO kafka_known_pizza SELECT * FROM kafka_pizza WHERE shop LIKE '%Luigis Pizza%'
+ *             """)
  *             .build());
  * 
  *     }

@@ -21,10 +21,6 @@ import * as utilities from "./utilities";
  *     name: "example-app",
  * });
  * const main = new aiven.FlinkApplicationVersion("main", {
- *     project: exampleProject.project,
- *     serviceName: exampleFlink.serviceName,
- *     applicationId: exampleApp.applicationId,
- *     statement: "    INSERT INTO kafka_known_pizza SELECT * FROM kafka_pizza WHERE shop LIKE '%Luigis Pizza%'\n",
  *     sinks: [{
  *         createTable: `      CREATE TABLE kafka_known_pizza (
  *         shop STRING,
@@ -53,6 +49,10 @@ import * as utilities from "./utilities";
  * `,
  *         integrationId: flinkToKafka.integrationId,
  *     }],
+ *     project: exampleProject.project,
+ *     serviceName: exampleFlink.serviceName,
+ *     applicationId: exampleApp.applicationId,
+ *     statement: "    INSERT INTO kafka_known_pizza SELECT * FROM kafka_pizza WHERE shop LIKE '%Luigis Pizza%'\n",
  * });
  * const mainFlinkApplicationDeployment = new aiven.FlinkApplicationDeployment("main", {
  *     project: exampleProject.project,

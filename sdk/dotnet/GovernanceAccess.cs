@@ -12,8 +12,8 @@ namespace Pulumi.Aiven
     /// <summary>
     /// Request access to an Apache Kafka topic in Aiven for Apache Kafka® Governance. [Governance](https://aiven.io/docs/products/kafka/howto/governance) helps you manage your Kafka clusters securely and efficiently through structured policies, roles, and processes. You can manage approval workflows using Terraform and GitHub Actions.
     /// 
-    /// **This resource is in the beta stage and may change without notice.** Set
-    /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+    /// &gt; **Beta resource**
+    /// This resource is in the beta stage and may change without notice. Set the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
     /// 
     /// ## Example Usage
     /// 
@@ -27,7 +27,6 @@ namespace Pulumi.Aiven
     /// {
     ///     var example = new Aiven.GovernanceAccess("example", new()
     ///     {
-    ///         OrganizationId = "org1a23f456789",
     ///         AccessData = new Aiven.Inputs.GovernanceAccessAccessDataArgs
     ///         {
     ///             Acls = new[]
@@ -45,6 +44,7 @@ namespace Pulumi.Aiven
     ///             ServiceName = "service-1",
     ///             Username = "api3",
     ///         },
+    ///         OrganizationId = "org1a23f456789",
     ///         AccessName = "My Access",
     ///         AccessType = "KAFKA",
     ///         OwnerUserGroupId = "ug22ba494e096",

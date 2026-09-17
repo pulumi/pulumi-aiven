@@ -3,6 +3,7 @@
 
 package com.pulumi.aiven.inputs;
 
+import com.pulumi.aiven.inputs.KafkaUserTimeoutsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
@@ -17,14 +18,14 @@ public final class KafkaUserState extends com.pulumi.resources.ResourceArgs {
     public static final KafkaUserState Empty = new KafkaUserState();
 
     /**
-     * Access certificate for the user.
+     * Access certificate for TLS client authentication.
      * 
      */
     @Import(name="accessCert")
     private @Nullable Output<String> accessCert;
 
     /**
-     * @return Access certificate for the user.
+     * @return Access certificate for TLS client authentication.
      * 
      */
     public Optional<Output<String>> accessCert() {
@@ -32,14 +33,14 @@ public final class KafkaUserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Access certificate key for the user.
+     * Access key for TLS client authentication.
      * 
      */
     @Import(name="accessKey")
     private @Nullable Output<String> accessKey;
 
     /**
-     * @return Access certificate key for the user.
+     * @return Access key for TLS client authentication.
      * 
      */
     public Optional<Output<String>> accessKey() {
@@ -47,14 +48,14 @@ public final class KafkaUserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+     * The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
      * 
      */
     @Import(name="password")
     private @Nullable Output<String> password;
 
     /**
-     * @return The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+     * @return The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
      * 
      */
     public Optional<Output<String>> password() {
@@ -62,8 +63,23 @@ public final class KafkaUserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. &#39;unknown&#39; is reported when the hash is missing or uses an unrecognised format. The possible values are `md5`, `scram-sha-256` and `unknown`.
+     * 
+     */
+    @Import(name="passwordEncryptionType")
+    private @Nullable Output<String> passwordEncryptionType;
+
+    /**
+     * @return The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. &#39;unknown&#39; is reported when the hash is missing or uses an unrecognised format. The possible values are `md5`, `scram-sha-256` and `unknown`.
+     * 
+     */
+    public Optional<Output<String>> passwordEncryptionType() {
+        return Optional.ofNullable(this.passwordEncryptionType);
+    }
+
+    /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
+     * The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Length must be between `8` and `256`.
      * 
      */
     @Import(name="passwordWo")
@@ -71,7 +87,7 @@ public final class KafkaUserState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
+     * The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Length must be between `8` and `256`.
      * 
      */
     public Optional<Output<String>> passwordWo() {
@@ -79,14 +95,14 @@ public final class KafkaUserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Version number for `passwordWo`. Increment this to rotate the password. Must be &gt;= 1.
+     * Version number for `passwordWo`. Increment this to rotate the password. The field is required with `passwordWo`. Minimum value: `1`.
      * 
      */
     @Import(name="passwordWoVersion")
     private @Nullable Output<Integer> passwordWoVersion;
 
     /**
-     * @return Version number for `passwordWo`. Increment this to rotate the password. Must be &gt;= 1.
+     * @return Version number for `passwordWo`. Increment this to rotate the password. The field is required with `passwordWo`. Minimum value: `1`.
      * 
      */
     public Optional<Output<Integer>> passwordWoVersion() {
@@ -94,14 +110,14 @@ public final class KafkaUserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="project")
     private @Nullable Output<String> project;
 
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> project() {
@@ -109,29 +125,36 @@ public final class KafkaUserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="serviceName")
     private @Nullable Output<String> serviceName;
 
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service name. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> serviceName() {
         return Optional.ofNullable(this.serviceName);
     }
 
+    @Import(name="timeouts")
+    private @Nullable Output<KafkaUserTimeoutsArgs> timeouts;
+
+    public Optional<Output<KafkaUserTimeoutsArgs>> timeouts() {
+        return Optional.ofNullable(this.timeouts);
+    }
+
     /**
-     * User account type, such as primary or regular account.
+     * Account type.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return User account type, such as primary or regular account.
+     * @return Account type.
      * 
      */
     public Optional<Output<String>> type() {
@@ -139,14 +162,14 @@ public final class KafkaUserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the Kafka service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Account username. Maximum length: `64`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="username")
     private @Nullable Output<String> username;
 
     /**
-     * @return Name of the Kafka service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Account username. Maximum length: `64`. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> username() {
@@ -159,10 +182,12 @@ public final class KafkaUserState extends com.pulumi.resources.ResourceArgs {
         this.accessCert = $.accessCert;
         this.accessKey = $.accessKey;
         this.password = $.password;
+        this.passwordEncryptionType = $.passwordEncryptionType;
         this.passwordWo = $.passwordWo;
         this.passwordWoVersion = $.passwordWoVersion;
         this.project = $.project;
         this.serviceName = $.serviceName;
+        this.timeouts = $.timeouts;
         this.type = $.type;
         this.username = $.username;
     }
@@ -186,7 +211,7 @@ public final class KafkaUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessCert Access certificate for the user.
+         * @param accessCert Access certificate for TLS client authentication.
          * 
          * @return builder
          * 
@@ -197,7 +222,7 @@ public final class KafkaUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessCert Access certificate for the user.
+         * @param accessCert Access certificate for TLS client authentication.
          * 
          * @return builder
          * 
@@ -207,7 +232,7 @@ public final class KafkaUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessKey Access certificate key for the user.
+         * @param accessKey Access key for TLS client authentication.
          * 
          * @return builder
          * 
@@ -218,7 +243,7 @@ public final class KafkaUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessKey Access certificate key for the user.
+         * @param accessKey Access key for TLS client authentication.
          * 
          * @return builder
          * 
@@ -228,7 +253,7 @@ public final class KafkaUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param password The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+         * @param password The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
          * 
          * @return builder
          * 
@@ -239,7 +264,7 @@ public final class KafkaUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param password The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+         * @param password The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
          * 
          * @return builder
          * 
@@ -249,8 +274,29 @@ public final class KafkaUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param passwordEncryptionType The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. &#39;unknown&#39; is reported when the hash is missing or uses an unrecognised format. The possible values are `md5`, `scram-sha-256` and `unknown`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder passwordEncryptionType(@Nullable Output<String> passwordEncryptionType) {
+            $.passwordEncryptionType = passwordEncryptionType;
+            return this;
+        }
+
+        /**
+         * @param passwordEncryptionType The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. &#39;unknown&#39; is reported when the hash is missing or uses an unrecognised format. The possible values are `md5`, `scram-sha-256` and `unknown`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder passwordEncryptionType(String passwordEncryptionType) {
+            return passwordEncryptionType(Output.of(passwordEncryptionType));
+        }
+
+        /**
          * @param passwordWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-         * The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
+         * The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Length must be between `8` and `256`.
          * 
          * @return builder
          * 
@@ -262,7 +308,7 @@ public final class KafkaUserState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param passwordWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-         * The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
+         * The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Length must be between `8` and `256`.
          * 
          * @return builder
          * 
@@ -272,7 +318,7 @@ public final class KafkaUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param passwordWoVersion Version number for `passwordWo`. Increment this to rotate the password. Must be &gt;= 1.
+         * @param passwordWoVersion Version number for `passwordWo`. Increment this to rotate the password. The field is required with `passwordWo`. Minimum value: `1`.
          * 
          * @return builder
          * 
@@ -283,7 +329,7 @@ public final class KafkaUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param passwordWoVersion Version number for `passwordWo`. Increment this to rotate the password. Must be &gt;= 1.
+         * @param passwordWoVersion Version number for `passwordWo`. Increment this to rotate the password. The field is required with `passwordWo`. Minimum value: `1`.
          * 
          * @return builder
          * 
@@ -293,7 +339,7 @@ public final class KafkaUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param project Project name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -304,7 +350,7 @@ public final class KafkaUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param project Project name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -314,7 +360,7 @@ public final class KafkaUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceName The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param serviceName Service name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -325,7 +371,7 @@ public final class KafkaUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceName The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param serviceName Service name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -334,8 +380,17 @@ public final class KafkaUserState extends com.pulumi.resources.ResourceArgs {
             return serviceName(Output.of(serviceName));
         }
 
+        public Builder timeouts(@Nullable Output<KafkaUserTimeoutsArgs> timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
+        public Builder timeouts(KafkaUserTimeoutsArgs timeouts) {
+            return timeouts(Output.of(timeouts));
+        }
+
         /**
-         * @param type User account type, such as primary or regular account.
+         * @param type Account type.
          * 
          * @return builder
          * 
@@ -346,7 +401,7 @@ public final class KafkaUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type User account type, such as primary or regular account.
+         * @param type Account type.
          * 
          * @return builder
          * 
@@ -356,7 +411,7 @@ public final class KafkaUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param username Name of the Kafka service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param username Account username. Maximum length: `64`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -367,7 +422,7 @@ public final class KafkaUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param username Name of the Kafka service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param username Account username. Maximum length: `64`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 

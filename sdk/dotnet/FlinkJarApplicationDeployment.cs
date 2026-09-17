@@ -10,10 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// Creates and manages the deployment of an Aiven for Apache Flink® application.
-    /// 
-    /// **This resource is in the beta stage and may change without notice.** Set
-    /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+    /// Creates and manages the deployment of an Aiven for Apache Flink® application. This feature is in the limited availability stage and may change without notice. To enable this feature, contact the [sales team](http://aiven.io/contact). Once it's enabled, set the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
     /// 
     /// ## Example Usage
     /// 
@@ -27,16 +24,16 @@ namespace Pulumi.Aiven
     /// {
     ///     var example = new Aiven.Flink("example", new()
     ///     {
+    ///         FlinkUserConfig = new Aiven.Inputs.FlinkFlinkUserConfigArgs
+    ///         {
+    ///             CustomCode = true,
+    ///         },
     ///         Project = exampleAivenProject.Project,
     ///         ServiceName = "example-flink-service",
     ///         CloudName = "google-europe-west1",
     ///         Plan = "business-4",
     ///         MaintenanceWindowDow = "monday",
     ///         MaintenanceWindowTime = "04:00:00",
-    ///         FlinkUserConfig = new Aiven.Inputs.FlinkFlinkUserConfigArgs
-    ///         {
-    ///             CustomCode = true,
-    ///         },
     ///     });
     /// 
     ///     var exampleFlinkJarApplication = new Aiven.FlinkJarApplication("example", new()

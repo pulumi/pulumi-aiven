@@ -3,6 +3,7 @@
 
 package com.pulumi.aiven;
 
+import com.pulumi.aiven.inputs.KafkaNativeAclTimeoutsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -17,14 +18,14 @@ public final class KafkaNativeAclArgs extends com.pulumi.resources.ResourceArgs 
     public static final KafkaNativeAclArgs Empty = new KafkaNativeAclArgs();
 
     /**
-     * The IP address from which a principal is allowed or denied access to the resource. Use `*` for all hosts. Maximum length: `256`. Changing this property forces recreation of the resource.
+     * the host or `*` for all hosts. Maximum length: `256`. The default value is `*`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="host")
     private @Nullable Output<String> host;
 
     /**
-     * @return The IP address from which a principal is allowed or denied access to the resource. Use `*` for all hosts. Maximum length: `256`. Changing this property forces recreation of the resource.
+     * @return the host or `*` for all hosts. Maximum length: `256`. The default value is `*`. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> host() {
@@ -32,14 +33,14 @@ public final class KafkaNativeAclArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The action that a principal is allowed or denied on the Kafka resource. The possible values are `All`, `Alter`, `AlterConfigs`, `ClusterAction`, `Create`, `CreateTokens`, `Delete`, `Describe`, `DescribeConfigs`, `DescribeTokens`, `IdempotentWrite`, `Read` and `Write`. Changing this property forces recreation of the resource.
+     * Kafka ACL operation represents an operation which an ACL grants or denies permission to perform. The possible values are `All`, `Alter`, `AlterConfigs`, `ClusterAction`, `Create`, `CreateTokens`, `Delete`, `Describe`, `DescribeConfigs`, `DescribeTokens`, `IdempotentWrite`, `Read` and `Write`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="operation", required=true)
     private Output<String> operation;
 
     /**
-     * @return The action that a principal is allowed or denied on the Kafka resource. The possible values are `All`, `Alter`, `AlterConfigs`, `ClusterAction`, `Create`, `CreateTokens`, `Delete`, `Describe`, `DescribeConfigs`, `DescribeTokens`, `IdempotentWrite`, `Read` and `Write`. Changing this property forces recreation of the resource.
+     * @return Kafka ACL operation represents an operation which an ACL grants or denies permission to perform. The possible values are `All`, `Alter`, `AlterConfigs`, `ClusterAction`, `Create`, `CreateTokens`, `Delete`, `Describe`, `DescribeConfigs`, `DescribeTokens`, `IdempotentWrite`, `Read` and `Write`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> operation() {
@@ -47,14 +48,14 @@ public final class KafkaNativeAclArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Resource pattern used to match specified resources. The possible values are `LITERAL` and `PREFIXED`. Changing this property forces recreation of the resource.
+     * How a Kafka-native ACL matches its resource name. The possible values are `LITERAL` and `PREFIXED`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="patternType", required=true)
     private Output<String> patternType;
 
     /**
-     * @return Resource pattern used to match specified resources. The possible values are `LITERAL` and `PREFIXED`. Changing this property forces recreation of the resource.
+     * @return How a Kafka-native ACL matches its resource name. The possible values are `LITERAL` and `PREFIXED`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> patternType() {
@@ -62,14 +63,14 @@ public final class KafkaNativeAclArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Specifies whether the action is explicitly allowed or denied for the principal on the specified resource. The possible values are `ALLOW` and `DENY`. Changing this property forces recreation of the resource.
+     * Whether a Kafka-native ACL allows or denies its operation. The possible values are `ALLOW` and `DENY`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="permissionType", required=true)
     private Output<String> permissionType;
 
     /**
-     * @return Specifies whether the action is explicitly allowed or denied for the principal on the specified resource. The possible values are `ALLOW` and `DENY`. Changing this property forces recreation of the resource.
+     * @return Whether a Kafka-native ACL allows or denies its operation. The possible values are `ALLOW` and `DENY`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> permissionType() {
@@ -77,14 +78,14 @@ public final class KafkaNativeAclArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Identities in `user:name` format that the permissions apply to. The `name` supports wildcards. Maximum length: `256`. Changing this property forces recreation of the resource.
+     * principal is in &#39;principalType:name&#39; format. Maximum length: `256`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="principal", required=true)
     private Output<String> principal;
 
     /**
-     * @return Identities in `user:name` format that the permissions apply to. The `name` supports wildcards. Maximum length: `256`. Changing this property forces recreation of the resource.
+     * @return principal is in &#39;principalType:name&#39; format. Maximum length: `256`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> principal() {
@@ -92,14 +93,14 @@ public final class KafkaNativeAclArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="project", required=true)
     private Output<String> project;
 
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> project() {
@@ -107,14 +108,14 @@ public final class KafkaNativeAclArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The name of the Kafka resource the permission applies to, such as the topic name or group ID. Maximum length: `256`. Changing this property forces recreation of the resource.
+     * Resource pattern used to match specified resources. Maximum length: `256`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="resourceName", required=true)
     private Output<String> resourceName;
 
     /**
-     * @return The name of the Kafka resource the permission applies to, such as the topic name or group ID. Maximum length: `256`. Changing this property forces recreation of the resource.
+     * @return Resource pattern used to match specified resources. Maximum length: `256`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> resourceName() {
@@ -122,14 +123,14 @@ public final class KafkaNativeAclArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The type of Kafka resource. The possible values are `Cluster`, `DelegationToken`, `Group`, `Topic`, `TransactionalId` and `User`. Changing this property forces recreation of the resource.
+     * Kafka ACL resource type represents a type of resource which an ACL can be applied to. The possible values are `Cluster`, `DelegationToken`, `Group`, `Topic`, `TransactionalId` and `User`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="resourceType", required=true)
     private Output<String> resourceType;
 
     /**
-     * @return The type of Kafka resource. The possible values are `Cluster`, `DelegationToken`, `Group`, `Topic`, `TransactionalId` and `User`. Changing this property forces recreation of the resource.
+     * @return Kafka ACL resource type represents a type of resource which an ACL can be applied to. The possible values are `Cluster`, `DelegationToken`, `Group`, `Topic`, `TransactionalId` and `User`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> resourceType() {
@@ -137,18 +138,25 @@ public final class KafkaNativeAclArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="serviceName", required=true)
     private Output<String> serviceName;
 
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service name. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> serviceName() {
         return this.serviceName;
+    }
+
+    @Import(name="timeouts")
+    private @Nullable Output<KafkaNativeAclTimeoutsArgs> timeouts;
+
+    public Optional<Output<KafkaNativeAclTimeoutsArgs>> timeouts() {
+        return Optional.ofNullable(this.timeouts);
     }
 
     private KafkaNativeAclArgs() {}
@@ -163,6 +171,7 @@ public final class KafkaNativeAclArgs extends com.pulumi.resources.ResourceArgs 
         this.resourceName = $.resourceName;
         this.resourceType = $.resourceType;
         this.serviceName = $.serviceName;
+        this.timeouts = $.timeouts;
     }
 
     public static Builder builder() {
@@ -184,7 +193,7 @@ public final class KafkaNativeAclArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param host The IP address from which a principal is allowed or denied access to the resource. Use `*` for all hosts. Maximum length: `256`. Changing this property forces recreation of the resource.
+         * @param host the host or `*` for all hosts. Maximum length: `256`. The default value is `*`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -195,7 +204,7 @@ public final class KafkaNativeAclArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param host The IP address from which a principal is allowed or denied access to the resource. Use `*` for all hosts. Maximum length: `256`. Changing this property forces recreation of the resource.
+         * @param host the host or `*` for all hosts. Maximum length: `256`. The default value is `*`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -205,7 +214,7 @@ public final class KafkaNativeAclArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param operation The action that a principal is allowed or denied on the Kafka resource. The possible values are `All`, `Alter`, `AlterConfigs`, `ClusterAction`, `Create`, `CreateTokens`, `Delete`, `Describe`, `DescribeConfigs`, `DescribeTokens`, `IdempotentWrite`, `Read` and `Write`. Changing this property forces recreation of the resource.
+         * @param operation Kafka ACL operation represents an operation which an ACL grants or denies permission to perform. The possible values are `All`, `Alter`, `AlterConfigs`, `ClusterAction`, `Create`, `CreateTokens`, `Delete`, `Describe`, `DescribeConfigs`, `DescribeTokens`, `IdempotentWrite`, `Read` and `Write`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -216,7 +225,7 @@ public final class KafkaNativeAclArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param operation The action that a principal is allowed or denied on the Kafka resource. The possible values are `All`, `Alter`, `AlterConfigs`, `ClusterAction`, `Create`, `CreateTokens`, `Delete`, `Describe`, `DescribeConfigs`, `DescribeTokens`, `IdempotentWrite`, `Read` and `Write`. Changing this property forces recreation of the resource.
+         * @param operation Kafka ACL operation represents an operation which an ACL grants or denies permission to perform. The possible values are `All`, `Alter`, `AlterConfigs`, `ClusterAction`, `Create`, `CreateTokens`, `Delete`, `Describe`, `DescribeConfigs`, `DescribeTokens`, `IdempotentWrite`, `Read` and `Write`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -226,7 +235,7 @@ public final class KafkaNativeAclArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param patternType Resource pattern used to match specified resources. The possible values are `LITERAL` and `PREFIXED`. Changing this property forces recreation of the resource.
+         * @param patternType How a Kafka-native ACL matches its resource name. The possible values are `LITERAL` and `PREFIXED`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -237,7 +246,7 @@ public final class KafkaNativeAclArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param patternType Resource pattern used to match specified resources. The possible values are `LITERAL` and `PREFIXED`. Changing this property forces recreation of the resource.
+         * @param patternType How a Kafka-native ACL matches its resource name. The possible values are `LITERAL` and `PREFIXED`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -247,7 +256,7 @@ public final class KafkaNativeAclArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param permissionType Specifies whether the action is explicitly allowed or denied for the principal on the specified resource. The possible values are `ALLOW` and `DENY`. Changing this property forces recreation of the resource.
+         * @param permissionType Whether a Kafka-native ACL allows or denies its operation. The possible values are `ALLOW` and `DENY`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -258,7 +267,7 @@ public final class KafkaNativeAclArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param permissionType Specifies whether the action is explicitly allowed or denied for the principal on the specified resource. The possible values are `ALLOW` and `DENY`. Changing this property forces recreation of the resource.
+         * @param permissionType Whether a Kafka-native ACL allows or denies its operation. The possible values are `ALLOW` and `DENY`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -268,7 +277,7 @@ public final class KafkaNativeAclArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param principal Identities in `user:name` format that the permissions apply to. The `name` supports wildcards. Maximum length: `256`. Changing this property forces recreation of the resource.
+         * @param principal principal is in &#39;principalType:name&#39; format. Maximum length: `256`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -279,7 +288,7 @@ public final class KafkaNativeAclArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param principal Identities in `user:name` format that the permissions apply to. The `name` supports wildcards. Maximum length: `256`. Changing this property forces recreation of the resource.
+         * @param principal principal is in &#39;principalType:name&#39; format. Maximum length: `256`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -289,7 +298,7 @@ public final class KafkaNativeAclArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param project The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param project Project name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -300,7 +309,7 @@ public final class KafkaNativeAclArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param project The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param project Project name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -310,7 +319,7 @@ public final class KafkaNativeAclArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param resourceName The name of the Kafka resource the permission applies to, such as the topic name or group ID. Maximum length: `256`. Changing this property forces recreation of the resource.
+         * @param resourceName Resource pattern used to match specified resources. Maximum length: `256`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -321,7 +330,7 @@ public final class KafkaNativeAclArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param resourceName The name of the Kafka resource the permission applies to, such as the topic name or group ID. Maximum length: `256`. Changing this property forces recreation of the resource.
+         * @param resourceName Resource pattern used to match specified resources. Maximum length: `256`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -331,7 +340,7 @@ public final class KafkaNativeAclArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param resourceType The type of Kafka resource. The possible values are `Cluster`, `DelegationToken`, `Group`, `Topic`, `TransactionalId` and `User`. Changing this property forces recreation of the resource.
+         * @param resourceType Kafka ACL resource type represents a type of resource which an ACL can be applied to. The possible values are `Cluster`, `DelegationToken`, `Group`, `Topic`, `TransactionalId` and `User`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -342,7 +351,7 @@ public final class KafkaNativeAclArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param resourceType The type of Kafka resource. The possible values are `Cluster`, `DelegationToken`, `Group`, `Topic`, `TransactionalId` and `User`. Changing this property forces recreation of the resource.
+         * @param resourceType Kafka ACL resource type represents a type of resource which an ACL can be applied to. The possible values are `Cluster`, `DelegationToken`, `Group`, `Topic`, `TransactionalId` and `User`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -352,7 +361,7 @@ public final class KafkaNativeAclArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param serviceName The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param serviceName Service name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -363,13 +372,22 @@ public final class KafkaNativeAclArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param serviceName The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param serviceName Service name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
          */
         public Builder serviceName(String serviceName) {
             return serviceName(Output.of(serviceName));
+        }
+
+        public Builder timeouts(@Nullable Output<KafkaNativeAclTimeoutsArgs> timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
+        public Builder timeouts(KafkaNativeAclTimeoutsArgs timeouts) {
+            return timeouts(Output.of(timeouts));
         }
 
         public KafkaNativeAclArgs build() {

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// Creates and manages an Aiven for Apache Kafka® service user.
+    /// Creates and manages an Aiven for Apache Kafka® service user. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
     /// 
     /// ## Example Usage
     /// 
@@ -22,12 +22,13 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleServiceUser = new Aiven.KafkaUser("example_service_user", new()
+    ///     var example = new Aiven.KafkaUser("example", new()
     ///     {
-    ///         ServiceName = exampleKafka.ServiceName,
-    ///         Project = exampleProject.Project,
-    ///         Username = "example-kafka-user",
-    ///         Password = serviceUserPw,
+    ///         Project = "my-project",
+    ///         ServiceName = "my-kafka",
+    ///         Username = "testuser",
+    ///         PasswordWo = "password123",
+    ///         PasswordWoVersion = 1,
     ///     });
     /// 
     /// });
@@ -36,63 +37,72 @@ namespace Pulumi.Aiven
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import aiven:index/kafkaUser:KafkaUser example_user PROJECT/SERVICE_NAME/USERNAME
+    /// $ pulumi import aiven:index/kafkaUser:KafkaUser example PROJECT/SERVICE_NAME/USERNAME
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/kafkaUser:KafkaUser")]
     public partial class KafkaUser : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Access certificate for the user.
+        /// Access certificate for TLS client authentication.
         /// </summary>
         [Output("accessCert")]
         public Output<string> AccessCert { get; private set; } = null!;
 
         /// <summary>
-        /// Access certificate key for the user.
+        /// Access key for TLS client authentication.
         /// </summary>
         [Output("accessKey")]
         public Output<string> AccessKey { get; private set; } = null!;
 
         /// <summary>
-        /// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+        /// The password of the service user (auto-generated if not provided). The field conflicts with `PasswordWo`. Length must be between `8` and `256`.
         /// </summary>
         [Output("password")]
         public Output<string> Password { get; private set; } = null!;
 
         /// <summary>
+        /// The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. 'unknown' is reported when the hash is missing or uses an unrecognised format. The possible values are `Md5`, `scram-sha-256` and `Unknown`.
+        /// </summary>
+        [Output("passwordEncryptionType")]
+        public Output<string> PasswordEncryptionType { get; private set; } = null!;
+
+        /// <summary>
         /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-        /// The password of the service user (write-only, not stored in state). Must be used with `PasswordWoVersion`. Must be 8-256 characters.
+        /// The password of the service user (write-only, not stored in state). The field is required with `PasswordWoVersion`. The field conflicts with `Password`. Length must be between `8` and `256`.
         /// </summary>
         [Output("passwordWo")]
         public Output<string?> PasswordWo { get; private set; } = null!;
 
         /// <summary>
-        /// Version number for `PasswordWo`. Increment this to rotate the password. Must be &gt;= 1.
+        /// Version number for `PasswordWo`. Increment this to rotate the password. The field is required with `PasswordWo`. Minimum value: `1`.
         /// </summary>
         [Output("passwordWoVersion")]
         public Output<int?> PasswordWoVersion { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service name. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
 
+        [Output("timeouts")]
+        public Output<Outputs.KafkaUserTimeouts?> Timeouts { get; private set; } = null!;
+
         /// <summary>
-        /// User account type, such as primary or regular account.
+        /// Account type.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the Kafka service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Account username. Maximum length: `64`. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("username")]
         public Output<string> Username { get; private set; } = null!;
@@ -154,7 +164,7 @@ namespace Pulumi.Aiven
         private Input<string>? _password;
 
         /// <summary>
-        /// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+        /// The password of the service user (auto-generated if not provided). The field conflicts with `PasswordWo`. Length must be between `8` and `256`.
         /// </summary>
         public Input<string>? Password
         {
@@ -171,7 +181,7 @@ namespace Pulumi.Aiven
 
         /// <summary>
         /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-        /// The password of the service user (write-only, not stored in state). Must be used with `PasswordWoVersion`. Must be 8-256 characters.
+        /// The password of the service user (write-only, not stored in state). The field is required with `PasswordWoVersion`. The field conflicts with `Password`. Length must be between `8` and `256`.
         /// </summary>
         public Input<string>? PasswordWo
         {
@@ -184,25 +194,28 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// Version number for `PasswordWo`. Increment this to rotate the password. Must be &gt;= 1.
+        /// Version number for `PasswordWo`. Increment this to rotate the password. The field is required with `PasswordWo`. Minimum value: `1`.
         /// </summary>
         [Input("passwordWoVersion")]
         public Input<int>? PasswordWoVersion { get; set; }
 
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service name. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
+        [Input("timeouts")]
+        public Input<Inputs.KafkaUserTimeoutsArgs>? Timeouts { get; set; }
+
         /// <summary>
-        /// Name of the Kafka service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Account username. Maximum length: `64`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("username", required: true)]
         public Input<string> Username { get; set; } = null!;
@@ -219,7 +232,7 @@ namespace Pulumi.Aiven
         private Input<string>? _accessCert;
 
         /// <summary>
-        /// Access certificate for the user.
+        /// Access certificate for TLS client authentication.
         /// </summary>
         public Input<string>? AccessCert
         {
@@ -235,7 +248,7 @@ namespace Pulumi.Aiven
         private Input<string>? _accessKey;
 
         /// <summary>
-        /// Access certificate key for the user.
+        /// Access key for TLS client authentication.
         /// </summary>
         public Input<string>? AccessKey
         {
@@ -251,7 +264,7 @@ namespace Pulumi.Aiven
         private Input<string>? _password;
 
         /// <summary>
-        /// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+        /// The password of the service user (auto-generated if not provided). The field conflicts with `PasswordWo`. Length must be between `8` and `256`.
         /// </summary>
         public Input<string>? Password
         {
@@ -263,12 +276,18 @@ namespace Pulumi.Aiven
             }
         }
 
+        /// <summary>
+        /// The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. 'unknown' is reported when the hash is missing or uses an unrecognised format. The possible values are `Md5`, `scram-sha-256` and `Unknown`.
+        /// </summary>
+        [Input("passwordEncryptionType")]
+        public Input<string>? PasswordEncryptionType { get; set; }
+
         [Input("passwordWo")]
         private Input<string>? _passwordWo;
 
         /// <summary>
         /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-        /// The password of the service user (write-only, not stored in state). Must be used with `PasswordWoVersion`. Must be 8-256 characters.
+        /// The password of the service user (write-only, not stored in state). The field is required with `PasswordWoVersion`. The field conflicts with `Password`. Length must be between `8` and `256`.
         /// </summary>
         public Input<string>? PasswordWo
         {
@@ -281,31 +300,34 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// Version number for `PasswordWo`. Increment this to rotate the password. Must be &gt;= 1.
+        /// Version number for `PasswordWo`. Increment this to rotate the password. The field is required with `PasswordWo`. Minimum value: `1`.
         /// </summary>
         [Input("passwordWoVersion")]
         public Input<int>? PasswordWoVersion { get; set; }
 
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service name. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 
+        [Input("timeouts")]
+        public Input<Inputs.KafkaUserTimeoutsGetArgs>? Timeouts { get; set; }
+
         /// <summary>
-        /// User account type, such as primary or regular account.
+        /// Account type.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// Name of the Kafka service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Account username. Maximum length: `64`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }

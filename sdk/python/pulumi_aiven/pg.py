@@ -821,6 +821,17 @@ class Pg(pulumi.CustomResource):
         import pulumi_std as std
 
         example_postgres = aiven.Pg("example_postgres",
+            pg_user_config={
+                "public_access": {
+                    "pg": True,
+                    "prometheus": False,
+                },
+                "pg": {
+                    "idle_in_transaction_session_timeout": 900,
+                    "log_min_duration_statement": -1,
+                },
+                "static_ips": True,
+            },
             project=example_project["project"],
             cloud_name="google-europe-west1",
             plan="startup-4",
@@ -833,17 +844,7 @@ class Pg(pulumi.CustomResource):
                 ips[2]["staticIpAddressId"],
                 ips[3]["staticIpAddressId"],
             ])["result"],
-            pg_user_config={
-                "static_ips": True,
-                "public_access": {
-                    "pg": True,
-                    "prometheus": False,
-                },
-                "pg": {
-                    "idle_in_transaction_session_timeout": 900,
-                    "log_min_duration_statement": -1,
-                },
-            })
+            opts = pulumi.ResourceOptions(custom_timeouts=pulumi.CustomTimeouts(create="20m", update="15m")))
         ```
 
         ## Import
@@ -890,6 +891,17 @@ class Pg(pulumi.CustomResource):
         import pulumi_std as std
 
         example_postgres = aiven.Pg("example_postgres",
+            pg_user_config={
+                "public_access": {
+                    "pg": True,
+                    "prometheus": False,
+                },
+                "pg": {
+                    "idle_in_transaction_session_timeout": 900,
+                    "log_min_duration_statement": -1,
+                },
+                "static_ips": True,
+            },
             project=example_project["project"],
             cloud_name="google-europe-west1",
             plan="startup-4",
@@ -902,17 +914,7 @@ class Pg(pulumi.CustomResource):
                 ips[2]["staticIpAddressId"],
                 ips[3]["staticIpAddressId"],
             ])["result"],
-            pg_user_config={
-                "static_ips": True,
-                "public_access": {
-                    "pg": True,
-                    "prometheus": False,
-                },
-                "pg": {
-                    "idle_in_transaction_session_timeout": 900,
-                    "log_min_duration_statement": -1,
-                },
-            })
+            opts = pulumi.ResourceOptions(custom_timeouts=pulumi.CustomTimeouts(create="20m", update="15m")))
         ```
 
         ## Import

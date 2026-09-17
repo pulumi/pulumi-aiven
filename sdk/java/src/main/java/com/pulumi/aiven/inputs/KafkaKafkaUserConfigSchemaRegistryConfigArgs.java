@@ -47,6 +47,66 @@ public final class KafkaKafkaUserConfigSchemaRegistryConfigArgs extends com.pulu
     }
 
     /**
+     * If enabled, the Schema Registry validates OAuth2/OIDC JWT bearer tokens on incoming requests. Requires the OIDC provider settings under the `kafka` configuration (`saslOauthbearerJwksEndpointUrl` and related). Defaults to `false`.
+     * 
+     */
+    @Import(name="saslOauthbearerAuthenticationEnabled")
+    private @Nullable Output<Boolean> saslOauthbearerAuthenticationEnabled;
+
+    /**
+     * @return If enabled, the Schema Registry validates OAuth2/OIDC JWT bearer tokens on incoming requests. Requires the OIDC provider settings under the `kafka` configuration (`saslOauthbearerJwksEndpointUrl` and related). Defaults to `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> saslOauthbearerAuthenticationEnabled() {
+        return Optional.ofNullable(this.saslOauthbearerAuthenticationEnabled);
+    }
+
+    /**
+     * If enabled, the Schema Registry enforces role-based authorization derived from the JWT roles claim. Requires `saslOauthbearerAuthenticationEnabled` to be enabled. Defaults to `false`.
+     * 
+     */
+    @Import(name="saslOauthbearerAuthorizationEnabled")
+    private @Nullable Output<Boolean> saslOauthbearerAuthorizationEnabled;
+
+    /**
+     * @return If enabled, the Schema Registry enforces role-based authorization derived from the JWT roles claim. Requires `saslOauthbearerAuthenticationEnabled` to be enabled. Defaults to `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> saslOauthbearerAuthorizationEnabled() {
+        return Optional.ofNullable(this.saslOauthbearerAuthorizationEnabled);
+    }
+
+    /**
+     * JSON object mapping HTTP methods to the list of roles allowed to perform them on the Schema Registry, provided as a JSON-encoded string. Role names use the `karapace.` prefix, e.g. `karapace.schema:read`. Defaults to `{&#34;GET&#34;: [&#34;karapace.schema:read&#34;, &#34;karapace.subject:read&#34;], &#34;POST&#34;: [], &#34;PUT&#34;: [], &#34;DELETE&#34;: []}`.
+     * 
+     */
+    @Import(name="saslOauthbearerMethodRoles")
+    private @Nullable Output<String> saslOauthbearerMethodRoles;
+
+    /**
+     * @return JSON object mapping HTTP methods to the list of roles allowed to perform them on the Schema Registry, provided as a JSON-encoded string. Role names use the `karapace.` prefix, e.g. `karapace.schema:read`. Defaults to `{&#34;GET&#34;: [&#34;karapace.schema:read&#34;, &#34;karapace.subject:read&#34;], &#34;POST&#34;: [], &#34;PUT&#34;: [], &#34;DELETE&#34;: []}`.
+     * 
+     */
+    public Optional<Output<String>> saslOauthbearerMethodRoles() {
+        return Optional.ofNullable(this.saslOauthbearerMethodRoles);
+    }
+
+    /**
+     * JSON path used to extract the roles claim from the JWT for Schema Registry authorization. Defaults to `resource_access.karapace.roles`.
+     * 
+     */
+    @Import(name="saslOauthbearerRolesClaimPath")
+    private @Nullable Output<String> saslOauthbearerRolesClaimPath;
+
+    /**
+     * @return JSON path used to extract the roles claim from the JWT for Schema Registry authorization. Defaults to `resource_access.karapace.roles`.
+     * 
+     */
+    public Optional<Output<String>> saslOauthbearerRolesClaimPath() {
+        return Optional.ofNullable(this.saslOauthbearerRolesClaimPath);
+    }
+
+    /**
      * If enabled, causes the Karapace schema-registry service to shutdown when there are invalid schema records in the `_schemas` topic. Defaults to `false`.
      * 
      */
@@ -81,6 +141,10 @@ public final class KafkaKafkaUserConfigSchemaRegistryConfigArgs extends com.pulu
     private KafkaKafkaUserConfigSchemaRegistryConfigArgs(KafkaKafkaUserConfigSchemaRegistryConfigArgs $) {
         this.leaderEligibility = $.leaderEligibility;
         this.retriableErrorsSilenced = $.retriableErrorsSilenced;
+        this.saslOauthbearerAuthenticationEnabled = $.saslOauthbearerAuthenticationEnabled;
+        this.saslOauthbearerAuthorizationEnabled = $.saslOauthbearerAuthorizationEnabled;
+        this.saslOauthbearerMethodRoles = $.saslOauthbearerMethodRoles;
+        this.saslOauthbearerRolesClaimPath = $.saslOauthbearerRolesClaimPath;
         this.schemaReaderStrictMode = $.schemaReaderStrictMode;
         this.topicName = $.topicName;
     }
@@ -143,6 +207,90 @@ public final class KafkaKafkaUserConfigSchemaRegistryConfigArgs extends com.pulu
          */
         public Builder retriableErrorsSilenced(Boolean retriableErrorsSilenced) {
             return retriableErrorsSilenced(Output.of(retriableErrorsSilenced));
+        }
+
+        /**
+         * @param saslOauthbearerAuthenticationEnabled If enabled, the Schema Registry validates OAuth2/OIDC JWT bearer tokens on incoming requests. Requires the OIDC provider settings under the `kafka` configuration (`saslOauthbearerJwksEndpointUrl` and related). Defaults to `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder saslOauthbearerAuthenticationEnabled(@Nullable Output<Boolean> saslOauthbearerAuthenticationEnabled) {
+            $.saslOauthbearerAuthenticationEnabled = saslOauthbearerAuthenticationEnabled;
+            return this;
+        }
+
+        /**
+         * @param saslOauthbearerAuthenticationEnabled If enabled, the Schema Registry validates OAuth2/OIDC JWT bearer tokens on incoming requests. Requires the OIDC provider settings under the `kafka` configuration (`saslOauthbearerJwksEndpointUrl` and related). Defaults to `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder saslOauthbearerAuthenticationEnabled(Boolean saslOauthbearerAuthenticationEnabled) {
+            return saslOauthbearerAuthenticationEnabled(Output.of(saslOauthbearerAuthenticationEnabled));
+        }
+
+        /**
+         * @param saslOauthbearerAuthorizationEnabled If enabled, the Schema Registry enforces role-based authorization derived from the JWT roles claim. Requires `saslOauthbearerAuthenticationEnabled` to be enabled. Defaults to `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder saslOauthbearerAuthorizationEnabled(@Nullable Output<Boolean> saslOauthbearerAuthorizationEnabled) {
+            $.saslOauthbearerAuthorizationEnabled = saslOauthbearerAuthorizationEnabled;
+            return this;
+        }
+
+        /**
+         * @param saslOauthbearerAuthorizationEnabled If enabled, the Schema Registry enforces role-based authorization derived from the JWT roles claim. Requires `saslOauthbearerAuthenticationEnabled` to be enabled. Defaults to `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder saslOauthbearerAuthorizationEnabled(Boolean saslOauthbearerAuthorizationEnabled) {
+            return saslOauthbearerAuthorizationEnabled(Output.of(saslOauthbearerAuthorizationEnabled));
+        }
+
+        /**
+         * @param saslOauthbearerMethodRoles JSON object mapping HTTP methods to the list of roles allowed to perform them on the Schema Registry, provided as a JSON-encoded string. Role names use the `karapace.` prefix, e.g. `karapace.schema:read`. Defaults to `{&#34;GET&#34;: [&#34;karapace.schema:read&#34;, &#34;karapace.subject:read&#34;], &#34;POST&#34;: [], &#34;PUT&#34;: [], &#34;DELETE&#34;: []}`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder saslOauthbearerMethodRoles(@Nullable Output<String> saslOauthbearerMethodRoles) {
+            $.saslOauthbearerMethodRoles = saslOauthbearerMethodRoles;
+            return this;
+        }
+
+        /**
+         * @param saslOauthbearerMethodRoles JSON object mapping HTTP methods to the list of roles allowed to perform them on the Schema Registry, provided as a JSON-encoded string. Role names use the `karapace.` prefix, e.g. `karapace.schema:read`. Defaults to `{&#34;GET&#34;: [&#34;karapace.schema:read&#34;, &#34;karapace.subject:read&#34;], &#34;POST&#34;: [], &#34;PUT&#34;: [], &#34;DELETE&#34;: []}`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder saslOauthbearerMethodRoles(String saslOauthbearerMethodRoles) {
+            return saslOauthbearerMethodRoles(Output.of(saslOauthbearerMethodRoles));
+        }
+
+        /**
+         * @param saslOauthbearerRolesClaimPath JSON path used to extract the roles claim from the JWT for Schema Registry authorization. Defaults to `resource_access.karapace.roles`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder saslOauthbearerRolesClaimPath(@Nullable Output<String> saslOauthbearerRolesClaimPath) {
+            $.saslOauthbearerRolesClaimPath = saslOauthbearerRolesClaimPath;
+            return this;
+        }
+
+        /**
+         * @param saslOauthbearerRolesClaimPath JSON path used to extract the roles claim from the JWT for Schema Registry authorization. Defaults to `resource_access.karapace.roles`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder saslOauthbearerRolesClaimPath(String saslOauthbearerRolesClaimPath) {
+            return saslOauthbearerRolesClaimPath(Output.of(saslOauthbearerRolesClaimPath));
         }
 
         /**

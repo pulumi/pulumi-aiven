@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -13,9 +15,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const main = aiven.getAzurePrivatelink({
- *     project: exampleProject.project,
- *     serviceName: exampleKafka.serviceName,
+ * const example = aiven.getAzurePrivatelink({
+ *     project: "my-project",
+ *     serviceName: "foo",
  * });
  * ```
  */
@@ -24,6 +26,7 @@ export function getAzurePrivatelink(args: GetAzurePrivatelinkArgs, opts?: pulumi
     return pulumi.runtime.invoke("aiven:index/getAzurePrivatelink:getAzurePrivatelink", {
         "project": args.project,
         "serviceName": args.serviceName,
+        "timeouts": args.timeouts,
     }, opts);
 }
 
@@ -32,13 +35,14 @@ export function getAzurePrivatelink(args: GetAzurePrivatelinkArgs, opts?: pulumi
  */
 export interface GetAzurePrivatelinkArgs {
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name.
      */
     project: string;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name.
      */
     serviceName: string;
+    timeouts?: inputs.GetAzurePrivatelinkTimeouts;
 }
 
 /**
@@ -46,35 +50,38 @@ export interface GetAzurePrivatelinkArgs {
  */
 export interface GetAzurePrivatelinkResult {
     /**
-     * The Azure Private Link service alias.
+     * Azure Privatelink service alias.
      */
     readonly azureServiceAlias: string;
     /**
-     * The Azure Private Link service ID.
+     * Azure Privatelink service ID.
      */
     readonly azureServiceId: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * Resource ID composed as: `project/service_name`.
      */
     readonly id: string;
     /**
-     * Printable result of the Azure Private Link request.
+     * Legacy response message retained for backward compatibility. **Deprecated**: This attribute is retained only for compatibility with state created by older provider versions and is no longer populated.
+     *
+     * @deprecated This attribute is retained only for compatibility with state created by older provider versions and is no longer populated.
      */
     readonly message: string;
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name.
      */
     readonly project: string;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name.
      */
     readonly serviceName: string;
     /**
-     * The state of the Private Link resource.
+     * Privatelink resource state. The possible values are `active`, `creating` and `deleting`.
      */
     readonly state: string;
+    readonly timeouts?: outputs.GetAzurePrivatelinkTimeouts;
     /**
-     * A list of allowed subscription IDs. Maximum length: `16`.
+     * IDs of Azure subscriptions allowed to connect to the service.
      */
     readonly userSubscriptionIds: string[];
 }
@@ -87,9 +94,9 @@ export interface GetAzurePrivatelinkResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const main = aiven.getAzurePrivatelink({
- *     project: exampleProject.project,
- *     serviceName: exampleKafka.serviceName,
+ * const example = aiven.getAzurePrivatelink({
+ *     project: "my-project",
+ *     serviceName: "foo",
  * });
  * ```
  */
@@ -98,6 +105,7 @@ export function getAzurePrivatelinkOutput(args: GetAzurePrivatelinkOutputArgs, o
     return pulumi.runtime.invokeOutput("aiven:index/getAzurePrivatelink:getAzurePrivatelink", {
         "project": args.project,
         "serviceName": args.serviceName,
+        "timeouts": args.timeouts,
     }, opts);
 }
 
@@ -106,11 +114,12 @@ export function getAzurePrivatelinkOutput(args: GetAzurePrivatelinkOutputArgs, o
  */
 export interface GetAzurePrivatelinkOutputArgs {
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name.
      */
     project: pulumi.Input<string>;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name.
      */
     serviceName: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.GetAzurePrivatelinkTimeoutsArgs | undefined>;
 }

@@ -14,8 +14,27 @@ namespace Pulumi.Aiven
         /// <summary>
         /// Gets information about an AWS VPC peering connection.
         /// 
-        /// **This resource is in the beta stage and may change without notice.** Set
-        /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Aiven.GetAwsOrgVpcPeeringConnection.Invoke(new()
+        ///     {
+        ///         OrganizationId = "org1a23f456789",
+        ///         OrganizationVpcId = "1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+        ///         AwsAccountId = "123456789012",
+        ///         AwsVpcId = "vpc-2f09a348",
+        ///         AwsVpcRegion = "us-east-1",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetAwsOrgVpcPeeringConnectionResult> InvokeAsync(GetAwsOrgVpcPeeringConnectionArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAwsOrgVpcPeeringConnectionResult>("aiven:index/getAwsOrgVpcPeeringConnection:getAwsOrgVpcPeeringConnection", args ?? new GetAwsOrgVpcPeeringConnectionArgs(), options.WithDefaults());
@@ -23,8 +42,27 @@ namespace Pulumi.Aiven
         /// <summary>
         /// Gets information about an AWS VPC peering connection.
         /// 
-        /// **This resource is in the beta stage and may change without notice.** Set
-        /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Aiven.GetAwsOrgVpcPeeringConnection.Invoke(new()
+        ///     {
+        ///         OrganizationId = "org1a23f456789",
+        ///         OrganizationVpcId = "1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+        ///         AwsAccountId = "123456789012",
+        ///         AwsVpcId = "vpc-2f09a348",
+        ///         AwsVpcRegion = "us-east-1",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetAwsOrgVpcPeeringConnectionResult> Invoke(GetAwsOrgVpcPeeringConnectionInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAwsOrgVpcPeeringConnectionResult>("aiven:index/getAwsOrgVpcPeeringConnection:getAwsOrgVpcPeeringConnection", args ?? new GetAwsOrgVpcPeeringConnectionInvokeArgs(), options.WithDefaults());
@@ -32,8 +70,27 @@ namespace Pulumi.Aiven
         /// <summary>
         /// Gets information about an AWS VPC peering connection.
         /// 
-        /// **This resource is in the beta stage and may change without notice.** Set
-        /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Aiven.GetAwsOrgVpcPeeringConnection.Invoke(new()
+        ///     {
+        ///         OrganizationId = "org1a23f456789",
+        ///         OrganizationVpcId = "1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+        ///         AwsAccountId = "123456789012",
+        ///         AwsVpcId = "vpc-2f09a348",
+        ///         AwsVpcRegion = "us-east-1",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetAwsOrgVpcPeeringConnectionResult> Invoke(GetAwsOrgVpcPeeringConnectionInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetAwsOrgVpcPeeringConnectionResult>("aiven:index/getAwsOrgVpcPeeringConnection:getAwsOrgVpcPeeringConnection", args ?? new GetAwsOrgVpcPeeringConnectionInvokeArgs(), options.WithDefaults());
@@ -43,13 +100,13 @@ namespace Pulumi.Aiven
     public sealed class GetAwsOrgVpcPeeringConnectionArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// AWS account ID. Changing this property forces recreation of the resource.
+        /// AWS account ID.
         /// </summary>
         [Input("awsAccountId", required: true)]
         public string AwsAccountId { get; set; } = null!;
 
         /// <summary>
-        /// AWS VPC ID. Changing this property forces recreation of the resource.
+        /// AWS VPC ID.
         /// </summary>
         [Input("awsVpcId", required: true)]
         public string AwsVpcId { get; set; } = null!;
@@ -61,16 +118,19 @@ namespace Pulumi.Aiven
         public string AwsVpcRegion { get; set; } = null!;
 
         /// <summary>
-        /// Identifier of the organization.
+        /// ID of an organization.
         /// </summary>
         [Input("organizationId", required: true)]
         public string OrganizationId { get; set; } = null!;
 
         /// <summary>
-        /// Identifier of the organization VPC.
+        /// Organization VPC ID.
         /// </summary>
         [Input("organizationVpcId", required: true)]
         public string OrganizationVpcId { get; set; } = null!;
+
+        [Input("timeouts")]
+        public Inputs.GetAwsOrgVpcPeeringConnectionTimeoutsArgs? Timeouts { get; set; }
 
         public GetAwsOrgVpcPeeringConnectionArgs()
         {
@@ -81,13 +141,13 @@ namespace Pulumi.Aiven
     public sealed class GetAwsOrgVpcPeeringConnectionInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// AWS account ID. Changing this property forces recreation of the resource.
+        /// AWS account ID.
         /// </summary>
         [Input("awsAccountId", required: true)]
         public Input<string> AwsAccountId { get; set; } = null!;
 
         /// <summary>
-        /// AWS VPC ID. Changing this property forces recreation of the resource.
+        /// AWS VPC ID.
         /// </summary>
         [Input("awsVpcId", required: true)]
         public Input<string> AwsVpcId { get; set; } = null!;
@@ -99,16 +159,19 @@ namespace Pulumi.Aiven
         public Input<string> AwsVpcRegion { get; set; } = null!;
 
         /// <summary>
-        /// Identifier of the organization.
+        /// ID of an organization.
         /// </summary>
         [Input("organizationId", required: true)]
         public Input<string> OrganizationId { get; set; } = null!;
 
         /// <summary>
-        /// Identifier of the organization VPC.
+        /// Organization VPC ID.
         /// </summary>
         [Input("organizationVpcId", required: true)]
         public Input<string> OrganizationVpcId { get; set; } = null!;
+
+        [Input("timeouts")]
+        public Input<Inputs.GetAwsOrgVpcPeeringConnectionTimeoutsInputArgs>? Timeouts { get; set; }
 
         public GetAwsOrgVpcPeeringConnectionInvokeArgs()
         {
@@ -121,11 +184,11 @@ namespace Pulumi.Aiven
     public sealed class GetAwsOrgVpcPeeringConnectionResult
     {
         /// <summary>
-        /// AWS account ID. Changing this property forces recreation of the resource.
+        /// AWS account ID.
         /// </summary>
         public readonly string AwsAccountId;
         /// <summary>
-        /// AWS VPC ID. Changing this property forces recreation of the resource.
+        /// AWS VPC ID.
         /// </summary>
         public readonly string AwsVpcId;
         /// <summary>
@@ -137,25 +200,26 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string AwsVpcRegion;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// Resource ID composed as: `organization_id/organization_vpc_id/aws_account_id/aws_vpc_id/aws_vpc_region`.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Identifier of the organization.
+        /// ID of an organization.
         /// </summary>
         public readonly string OrganizationId;
         /// <summary>
-        /// Identifier of the organization VPC.
+        /// Organization VPC ID.
         /// </summary>
         public readonly string OrganizationVpcId;
         /// <summary>
-        /// The ID of the peering connection.
+        /// Organization peering connection ID.
         /// </summary>
         public readonly string PeeringConnectionId;
         /// <summary>
         /// State of the peering connection. The possible values are `ACTIVE`, `APPROVED`, `APPROVED_PEER_REQUESTED`, `DELETED`, `DELETED_BY_PEER`, `DELETING`, `ERROR`, `INVALID_SPECIFICATION`, `PENDING_PEER` and `REJECTED_BY_PEER`.
         /// </summary>
         public readonly string State;
+        public readonly Outputs.GetAwsOrgVpcPeeringConnectionTimeoutsResult? Timeouts;
 
         [OutputConstructor]
         private GetAwsOrgVpcPeeringConnectionResult(
@@ -175,7 +239,9 @@ namespace Pulumi.Aiven
 
             string peeringConnectionId,
 
-            string state)
+            string state,
+
+            Outputs.GetAwsOrgVpcPeeringConnectionTimeoutsResult? timeouts)
         {
             AwsAccountId = awsAccountId;
             AwsVpcId = awsVpcId;
@@ -186,6 +252,7 @@ namespace Pulumi.Aiven
             OrganizationVpcId = organizationVpcId;
             PeeringConnectionId = peeringConnectionId;
             State = state;
+            Timeouts = timeouts;
         }
     }
 }

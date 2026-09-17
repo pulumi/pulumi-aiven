@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetGcpPrivatelinkResult',
@@ -26,7 +28,7 @@ class GetGcpPrivatelinkResult:
     """
     A collection of values returned by getGcpPrivatelink.
     """
-    def __init__(__self__, google_service_attachment=None, id=None, message=None, project=None, service_name=None, state=None):
+    def __init__(__self__, google_service_attachment=None, id=None, message=None, project=None, service_name=None, state=None, timeouts=None):
         if google_service_attachment and not isinstance(google_service_attachment, str):
             raise TypeError("Expected argument 'google_service_attachment' to be a str")
         pulumi.set(__self__, "google_service_attachment", google_service_attachment)
@@ -45,6 +47,9 @@ class GetGcpPrivatelinkResult:
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
+        if timeouts and not isinstance(timeouts, dict):
+            raise TypeError("Expected argument 'timeouts' to be a dict")
+        pulumi.set(__self__, "timeouts", timeouts)
 
     @_builtins.property
     @pulumi.getter(name="googleServiceAttachment")
@@ -58,15 +63,16 @@ class GetGcpPrivatelinkResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The provider-assigned unique ID for this managed resource.
+        Resource ID composed as: `project/service_name`.
         """
         return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""This attribute is retained only for compatibility with state created by older provider versions and is no longer populated.""")
     def message(self) -> _builtins.str:
         """
-        Printable result of the Google Cloud Private Service Connect request.
+        Legacy response message retained for backward compatibility. **Deprecated**: This attribute is retained only for compatibility with state created by older provider versions and is no longer populated.
         """
         return pulumi.get(self, "message")
 
@@ -74,7 +80,7 @@ class GetGcpPrivatelinkResult:
     @pulumi.getter
     def project(self) -> _builtins.str:
         """
-        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Project name.
         """
         return pulumi.get(self, "project")
 
@@ -82,7 +88,7 @@ class GetGcpPrivatelinkResult:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> _builtins.str:
         """
-        The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Service name.
         """
         return pulumi.get(self, "service_name")
 
@@ -90,9 +96,14 @@ class GetGcpPrivatelinkResult:
     @pulumi.getter
     def state(self) -> _builtins.str:
         """
-        The state of the Private Service Connect resource.
+        The state of the Private Service Connect resource. The possible values are `active`, `creating` and `deleting`.
         """
         return pulumi.get(self, "state")
+
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> Optional['outputs.GetGcpPrivatelinkTimeoutsResult']:
+        return pulumi.get(self, "timeouts")
 
 
 class AwaitableGetGcpPrivatelinkResult(GetGcpPrivatelinkResult):
@@ -106,11 +117,13 @@ class AwaitableGetGcpPrivatelinkResult(GetGcpPrivatelinkResult):
             message=self.message,
             project=self.project,
             service_name=self.service_name,
-            state=self.state)
+            state=self.state,
+            timeouts=self.timeouts)
 
 
 def get_gcp_privatelink(project: Optional[_builtins.str] = None,
                         service_name: Optional[_builtins.str] = None,
+                        timeouts: Optional[Union['GetGcpPrivatelinkTimeoutsArgs', 'GetGcpPrivatelinkTimeoutsArgsDict']] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGcpPrivatelinkResult:
     """
     Gets information about a Google Private Service Connect connection for an Aiven service.
@@ -121,17 +134,18 @@ def get_gcp_privatelink(project: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    main = aiven.get_gcp_privatelink(project=example_project["project"],
-        service_name=example_kafka["serviceName"])
+    example = aiven.get_gcp_privatelink(project="my-project",
+        service_name="foo")
     ```
 
 
-    :param _builtins.str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param _builtins.str service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+    :param _builtins.str project: Project name.
+    :param _builtins.str service_name: Service name.
     """
     __args__ = dict()
     __args__['project'] = project
     __args__['serviceName'] = service_name
+    __args__['timeouts'] = timeouts
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('aiven:index/getGcpPrivatelink:getGcpPrivatelink', __args__, opts=opts, typ=GetGcpPrivatelinkResult).value
 
@@ -141,9 +155,11 @@ def get_gcp_privatelink(project: Optional[_builtins.str] = None,
         message=pulumi.get(__ret__, 'message'),
         project=pulumi.get(__ret__, 'project'),
         service_name=pulumi.get(__ret__, 'service_name'),
-        state=pulumi.get(__ret__, 'state'))
+        state=pulumi.get(__ret__, 'state'),
+        timeouts=pulumi.get(__ret__, 'timeouts'))
 def get_gcp_privatelink_output(project: pulumi.Input[Optional[_builtins.str]] = None,
                                service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                               timeouts: pulumi.Input[Optional[Optional[Union['GetGcpPrivatelinkTimeoutsArgs', 'GetGcpPrivatelinkTimeoutsArgsDict']]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGcpPrivatelinkResult]:
     """
     Gets information about a Google Private Service Connect connection for an Aiven service.
@@ -154,17 +170,18 @@ def get_gcp_privatelink_output(project: pulumi.Input[Optional[_builtins.str]] = 
     import pulumi
     import pulumi_aiven as aiven
 
-    main = aiven.get_gcp_privatelink(project=example_project["project"],
-        service_name=example_kafka["serviceName"])
+    example = aiven.get_gcp_privatelink(project="my-project",
+        service_name="foo")
     ```
 
 
-    :param _builtins.str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param _builtins.str service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+    :param _builtins.str project: Project name.
+    :param _builtins.str service_name: Service name.
     """
     __args__ = dict()
     __args__['project'] = project
     __args__['serviceName'] = service_name
+    __args__['timeouts'] = timeouts
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('aiven:index/getGcpPrivatelink:getGcpPrivatelink', __args__, opts=opts, typ=GetGcpPrivatelinkResult)
     return __ret__.apply(lambda __response__: GetGcpPrivatelinkResult(
@@ -173,4 +190,5 @@ def get_gcp_privatelink_output(project: pulumi.Input[Optional[_builtins.str]] = 
         message=pulumi.get(__response__, 'message'),
         project=pulumi.get(__response__, 'project'),
         service_name=pulumi.get(__response__, 'service_name'),
-        state=pulumi.get(__response__, 'state')))
+        state=pulumi.get(__response__, 'state'),
+        timeouts=pulumi.get(__response__, 'timeouts')))

@@ -10,10 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// Creates and manages an Azure VPC peering connection with an Aiven VPC.
-    /// 
-    /// **This resource is in the beta stage and may change without notice.** Set
-    /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+    /// Creates and manages an Azure VPC peering connection with an Aiven VPC. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
     /// 
     /// ## Example Usage
     /// 
@@ -25,17 +22,10 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleVpc = new Aiven.OrganizationVpc("example_vpc", new()
+    ///     var example = new Aiven.AzureOrgVpcPeeringConnection("example", new()
     ///     {
-    ///         OrganizationId = example.Id,
-    ///         CloudName = "azure-germany-westcentral",
-    ///         NetworkCidr = "10.0.0.0/24",
-    ///     });
-    /// 
-    ///     var examplePeering = new Aiven.AzureOrgVpcPeeringConnection("example_peering", new()
-    ///     {
-    ///         OrganizationId = exampleVpc.OrganizationId,
-    ///         OrganizationVpcId = exampleVpc.OrganizationVpcId,
+    ///         OrganizationId = "org1a23f456789",
+    ///         OrganizationVpcId = "1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
     ///         AzureSubscriptionId = "12345678-1234-1234-1234-123456789012",
     ///         VnetName = "my-vnet",
     ///         PeerResourceGroup = "my-resource-group",
@@ -49,62 +39,65 @@ namespace Pulumi.Aiven
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import aiven:index/azureOrgVpcPeeringConnection:AzureOrgVpcPeeringConnection example ORGANIZATION_ID/ORGANIZATION_VPC_ID/AZURE_SUBSCRIPTION_ID/VNET_NAME/RESOURCE_GROUP
+    /// $ pulumi import aiven:index/azureOrgVpcPeeringConnection:AzureOrgVpcPeeringConnection example ORGANIZATION_ID/ORGANIZATION_VPC_ID/AZURE_SUBSCRIPTION_ID/VNET_NAME/PEER_RESOURCE_GROUP
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/azureOrgVpcPeeringConnection:AzureOrgVpcPeeringConnection")]
     public partial class AzureOrgVpcPeeringConnection : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The ID of the Azure subscription in UUID4 format. Changing this property forces recreation of the resource.
+        /// The ID of the Azure subscription in UUID4 format. Maximum length: `1024`. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("azureSubscriptionId")]
         public Output<string> AzureSubscriptionId { get; private set; } = null!;
 
         /// <summary>
-        /// Identifier of the organization.
+        /// ID of an organization. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("organizationId")]
         public Output<string> OrganizationId { get; private set; } = null!;
 
         /// <summary>
-        /// Identifier of the organization VPC.
+        /// Organization VPC ID. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("organizationVpcId")]
         public Output<string> OrganizationVpcId { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the Azure app that is allowed to create a peering to the Azure Virtual Network (VNet) in UUID4 format. Changing this property forces recreation of the resource.
+        /// The ID of the Azure app that is allowed to create a peering to the Azure Virtual Network (VNet) in UUID4 format. Maximum length: `1024`. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("peerAzureAppId")]
         public Output<string> PeerAzureAppId { get; private set; } = null!;
 
         /// <summary>
-        /// The Azure tenant ID in UUID4 format. Changing this property forces recreation of the resource.
+        /// The Azure tenant ID in UUID4 format. Maximum length: `1024`. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("peerAzureTenantId")]
         public Output<string> PeerAzureTenantId { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the Azure resource group associated with the VNet. Changing this property forces recreation of the resource.
+        /// The name of the Azure resource group associated with the VNet. Maximum length: `1024`. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("peerResourceGroup")]
         public Output<string> PeerResourceGroup { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the cloud provider for the peering connection.
+        /// Organization peering connection ID.
         /// </summary>
         [Output("peeringConnectionId")]
         public Output<string> PeeringConnectionId { get; private set; } = null!;
 
         /// <summary>
-        /// State of the peering connection
+        /// State of the peering connection. The possible values are `ACTIVE`, `APPROVED`, `APPROVED_PEER_REQUESTED`, `DELETED`, `DELETED_BY_PEER`, `DELETING`, `ERROR`, `INVALID_SPECIFICATION`, `PENDING_PEER` and `REJECTED_BY_PEER`.
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
 
+        [Output("timeouts")]
+        public Output<Outputs.AzureOrgVpcPeeringConnectionTimeouts?> Timeouts { get; private set; } = null!;
+
         /// <summary>
-        /// The name of the Azure VNet. Changing this property forces recreation of the resource.
+        /// The name of the Azure VNet. Maximum length: `1024`. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("vnetName")]
         public Output<string> VnetName { get; private set; } = null!;
@@ -156,43 +149,46 @@ namespace Pulumi.Aiven
     public sealed class AzureOrgVpcPeeringConnectionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the Azure subscription in UUID4 format. Changing this property forces recreation of the resource.
+        /// The ID of the Azure subscription in UUID4 format. Maximum length: `1024`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("azureSubscriptionId", required: true)]
         public Input<string> AzureSubscriptionId { get; set; } = null!;
 
         /// <summary>
-        /// Identifier of the organization.
+        /// ID of an organization. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("organizationId", required: true)]
         public Input<string> OrganizationId { get; set; } = null!;
 
         /// <summary>
-        /// Identifier of the organization VPC.
+        /// Organization VPC ID. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("organizationVpcId", required: true)]
         public Input<string> OrganizationVpcId { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the Azure app that is allowed to create a peering to the Azure Virtual Network (VNet) in UUID4 format. Changing this property forces recreation of the resource.
+        /// The ID of the Azure app that is allowed to create a peering to the Azure Virtual Network (VNet) in UUID4 format. Maximum length: `1024`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("peerAzureAppId", required: true)]
         public Input<string> PeerAzureAppId { get; set; } = null!;
 
         /// <summary>
-        /// The Azure tenant ID in UUID4 format. Changing this property forces recreation of the resource.
+        /// The Azure tenant ID in UUID4 format. Maximum length: `1024`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("peerAzureTenantId", required: true)]
         public Input<string> PeerAzureTenantId { get; set; } = null!;
 
         /// <summary>
-        /// The name of the Azure resource group associated with the VNet. Changing this property forces recreation of the resource.
+        /// The name of the Azure resource group associated with the VNet. Maximum length: `1024`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("peerResourceGroup", required: true)]
         public Input<string> PeerResourceGroup { get; set; } = null!;
 
+        [Input("timeouts")]
+        public Input<Inputs.AzureOrgVpcPeeringConnectionTimeoutsArgs>? Timeouts { get; set; }
+
         /// <summary>
-        /// The name of the Azure VNet. Changing this property forces recreation of the resource.
+        /// The name of the Azure VNet. Maximum length: `1024`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("vnetName", required: true)]
         public Input<string> VnetName { get; set; } = null!;
@@ -206,55 +202,58 @@ namespace Pulumi.Aiven
     public sealed class AzureOrgVpcPeeringConnectionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the Azure subscription in UUID4 format. Changing this property forces recreation of the resource.
+        /// The ID of the Azure subscription in UUID4 format. Maximum length: `1024`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("azureSubscriptionId")]
         public Input<string>? AzureSubscriptionId { get; set; }
 
         /// <summary>
-        /// Identifier of the organization.
+        /// ID of an organization. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("organizationId")]
         public Input<string>? OrganizationId { get; set; }
 
         /// <summary>
-        /// Identifier of the organization VPC.
+        /// Organization VPC ID. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("organizationVpcId")]
         public Input<string>? OrganizationVpcId { get; set; }
 
         /// <summary>
-        /// The ID of the Azure app that is allowed to create a peering to the Azure Virtual Network (VNet) in UUID4 format. Changing this property forces recreation of the resource.
+        /// The ID of the Azure app that is allowed to create a peering to the Azure Virtual Network (VNet) in UUID4 format. Maximum length: `1024`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("peerAzureAppId")]
         public Input<string>? PeerAzureAppId { get; set; }
 
         /// <summary>
-        /// The Azure tenant ID in UUID4 format. Changing this property forces recreation of the resource.
+        /// The Azure tenant ID in UUID4 format. Maximum length: `1024`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("peerAzureTenantId")]
         public Input<string>? PeerAzureTenantId { get; set; }
 
         /// <summary>
-        /// The name of the Azure resource group associated with the VNet. Changing this property forces recreation of the resource.
+        /// The name of the Azure resource group associated with the VNet. Maximum length: `1024`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("peerResourceGroup")]
         public Input<string>? PeerResourceGroup { get; set; }
 
         /// <summary>
-        /// The ID of the cloud provider for the peering connection.
+        /// Organization peering connection ID.
         /// </summary>
         [Input("peeringConnectionId")]
         public Input<string>? PeeringConnectionId { get; set; }
 
         /// <summary>
-        /// State of the peering connection
+        /// State of the peering connection. The possible values are `ACTIVE`, `APPROVED`, `APPROVED_PEER_REQUESTED`, `DELETED`, `DELETED_BY_PEER`, `DELETING`, `ERROR`, `INVALID_SPECIFICATION`, `PENDING_PEER` and `REJECTED_BY_PEER`.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
 
+        [Input("timeouts")]
+        public Input<Inputs.AzureOrgVpcPeeringConnectionTimeoutsGetArgs>? Timeouts { get; set; }
+
         /// <summary>
-        /// The name of the Azure VNet. Changing this property forces recreation of the resource.
+        /// The name of the Azure VNet. Maximum length: `1024`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("vnetName")]
         public Input<string>? VnetName { get; set; }

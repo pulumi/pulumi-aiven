@@ -2,16 +2,32 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The Valkey User data source provides information about the existing Aiven for Valkey user.
+ * Gets information about an Aiven for Valkey™ service user.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const example = aiven.getValkeyUser({
+ *     project: "my-project",
+ *     serviceName: "my-valkey",
+ *     username: "testuser",
+ * });
+ * ```
  */
 export function getValkeyUser(args: GetValkeyUserArgs, opts?: pulumi.InvokeOptions): Promise<GetValkeyUserResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getValkeyUser:getValkeyUser", {
         "project": args.project,
         "serviceName": args.serviceName,
+        "timeouts": args.timeouts,
         "username": args.username,
     }, opts);
 }
@@ -21,15 +37,16 @@ export function getValkeyUser(args: GetValkeyUserArgs, opts?: pulumi.InvokeOptio
  */
 export interface GetValkeyUserArgs {
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name.
      */
     project: string;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name.
      */
     serviceName: string;
+    timeouts?: inputs.GetValkeyUserTimeouts;
     /**
-     * Name of the Valkey service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service username.
      */
     username: string;
 }
@@ -39,27 +56,32 @@ export interface GetValkeyUserArgs {
  */
 export interface GetValkeyUserResult {
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * Resource ID composed as: `project/service_name/username`.
      */
     readonly id: string;
     /**
-     * The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+     * The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`.
      */
     readonly password: string;
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. 'unknown' is reported when the hash is missing or uses an unrecognised format. The possible values are `md5`, `scram-sha-256` and `unknown`.
+     */
+    readonly passwordEncryptionType: string;
+    /**
+     * Project name.
      */
     readonly project: string;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name.
      */
     readonly serviceName: string;
+    readonly timeouts?: outputs.GetValkeyUserTimeouts;
     /**
-     * User account type, such as primary or regular account.
+     * Account type.
      */
     readonly type: string;
     /**
-     * Name of the Valkey service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service username.
      */
     readonly username: string;
     /**
@@ -75,18 +97,32 @@ export interface GetValkeyUserResult {
      */
     readonly valkeyAclCommands: string[];
     /**
-     * Key access rules. Entries are defined as standard glob patterns. The field is required with `valkeyAclCategories` and `valkeyAclKeys`.
+     * Key access rules. Entries are defined as standard glob patterns. The field is required with `valkeyAclCategories` and `valkeyAclCommands`.
      */
     readonly valkeyAclKeys: string[];
 }
 /**
- * The Valkey User data source provides information about the existing Aiven for Valkey user.
+ * Gets information about an Aiven for Valkey™ service user.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const example = aiven.getValkeyUser({
+ *     project: "my-project",
+ *     serviceName: "my-valkey",
+ *     username: "testuser",
+ * });
+ * ```
  */
 export function getValkeyUserOutput(args: GetValkeyUserOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetValkeyUserResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("aiven:index/getValkeyUser:getValkeyUser", {
         "project": args.project,
         "serviceName": args.serviceName,
+        "timeouts": args.timeouts,
         "username": args.username,
     }, opts);
 }
@@ -96,15 +132,16 @@ export function getValkeyUserOutput(args: GetValkeyUserOutputArgs, opts?: pulumi
  */
 export interface GetValkeyUserOutputArgs {
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name.
      */
     project: pulumi.Input<string>;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name.
      */
     serviceName: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.GetValkeyUserTimeoutsArgs | undefined>;
     /**
-     * Name of the Valkey service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service username.
      */
     username: pulumi.Input<string>;
 }

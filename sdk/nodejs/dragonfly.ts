@@ -16,13 +16,13 @@ import * as utilities from "./utilities";
  * import * as aiven from "@pulumi/aiven";
  *
  * const exampleDragonfly = new aiven.Dragonfly("example_dragonfly", {
+ *     dragonflyUserConfig: {
+ *         cacheMode: true,
+ *     },
  *     project: exampleProject.project,
  *     plan: "startup-4",
  *     cloudName: "google-europe-west1",
  *     serviceName: "example-dragonfly-service",
- *     dragonflyUserConfig: {
- *         cacheMode: true,
- *     },
  * });
  * ```
  *

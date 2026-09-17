@@ -3,11 +3,14 @@
 
 package com.pulumi.aiven;
 
+import com.pulumi.aiven.inputs.AwsOrgVpcPeeringConnectionTimeoutsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class AwsOrgVpcPeeringConnectionArgs extends com.pulumi.resources.ResourceArgs {
@@ -15,14 +18,14 @@ public final class AwsOrgVpcPeeringConnectionArgs extends com.pulumi.resources.R
     public static final AwsOrgVpcPeeringConnectionArgs Empty = new AwsOrgVpcPeeringConnectionArgs();
 
     /**
-     * AWS account ID. Changing this property forces recreation of the resource.
+     * AWS account ID. Maximum length: `1024`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="awsAccountId", required=true)
     private Output<String> awsAccountId;
 
     /**
-     * @return AWS account ID. Changing this property forces recreation of the resource.
+     * @return AWS account ID. Maximum length: `1024`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> awsAccountId() {
@@ -30,14 +33,14 @@ public final class AwsOrgVpcPeeringConnectionArgs extends com.pulumi.resources.R
     }
 
     /**
-     * AWS VPC ID. Changing this property forces recreation of the resource.
+     * AWS VPC ID. Maximum length: `1024`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="awsVpcId", required=true)
     private Output<String> awsVpcId;
 
     /**
-     * @return AWS VPC ID. Changing this property forces recreation of the resource.
+     * @return AWS VPC ID. Maximum length: `1024`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> awsVpcId() {
@@ -45,14 +48,14 @@ public final class AwsOrgVpcPeeringConnectionArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The AWS region of the peered VPC. For example, `eu-central-1`.
+     * The AWS region of the peered VPC. For example, `eu-central-1`. Maximum length: `1024`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="awsVpcRegion", required=true)
     private Output<String> awsVpcRegion;
 
     /**
-     * @return The AWS region of the peered VPC. For example, `eu-central-1`.
+     * @return The AWS region of the peered VPC. For example, `eu-central-1`. Maximum length: `1024`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> awsVpcRegion() {
@@ -60,14 +63,14 @@ public final class AwsOrgVpcPeeringConnectionArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Identifier of the organization.
+     * ID of an organization. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="organizationId", required=true)
     private Output<String> organizationId;
 
     /**
-     * @return Identifier of the organization.
+     * @return ID of an organization. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> organizationId() {
@@ -75,18 +78,25 @@ public final class AwsOrgVpcPeeringConnectionArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Identifier of the organization VPC.
+     * Organization VPC ID. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="organizationVpcId", required=true)
     private Output<String> organizationVpcId;
 
     /**
-     * @return Identifier of the organization VPC.
+     * @return Organization VPC ID. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> organizationVpcId() {
         return this.organizationVpcId;
+    }
+
+    @Import(name="timeouts")
+    private @Nullable Output<AwsOrgVpcPeeringConnectionTimeoutsArgs> timeouts;
+
+    public Optional<Output<AwsOrgVpcPeeringConnectionTimeoutsArgs>> timeouts() {
+        return Optional.ofNullable(this.timeouts);
     }
 
     private AwsOrgVpcPeeringConnectionArgs() {}
@@ -97,6 +107,7 @@ public final class AwsOrgVpcPeeringConnectionArgs extends com.pulumi.resources.R
         this.awsVpcRegion = $.awsVpcRegion;
         this.organizationId = $.organizationId;
         this.organizationVpcId = $.organizationVpcId;
+        this.timeouts = $.timeouts;
     }
 
     public static Builder builder() {
@@ -118,7 +129,7 @@ public final class AwsOrgVpcPeeringConnectionArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param awsAccountId AWS account ID. Changing this property forces recreation of the resource.
+         * @param awsAccountId AWS account ID. Maximum length: `1024`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -129,7 +140,7 @@ public final class AwsOrgVpcPeeringConnectionArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param awsAccountId AWS account ID. Changing this property forces recreation of the resource.
+         * @param awsAccountId AWS account ID. Maximum length: `1024`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -139,7 +150,7 @@ public final class AwsOrgVpcPeeringConnectionArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param awsVpcId AWS VPC ID. Changing this property forces recreation of the resource.
+         * @param awsVpcId AWS VPC ID. Maximum length: `1024`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -150,7 +161,7 @@ public final class AwsOrgVpcPeeringConnectionArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param awsVpcId AWS VPC ID. Changing this property forces recreation of the resource.
+         * @param awsVpcId AWS VPC ID. Maximum length: `1024`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -160,7 +171,7 @@ public final class AwsOrgVpcPeeringConnectionArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param awsVpcRegion The AWS region of the peered VPC. For example, `eu-central-1`.
+         * @param awsVpcRegion The AWS region of the peered VPC. For example, `eu-central-1`. Maximum length: `1024`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -171,7 +182,7 @@ public final class AwsOrgVpcPeeringConnectionArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param awsVpcRegion The AWS region of the peered VPC. For example, `eu-central-1`.
+         * @param awsVpcRegion The AWS region of the peered VPC. For example, `eu-central-1`. Maximum length: `1024`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -181,7 +192,7 @@ public final class AwsOrgVpcPeeringConnectionArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param organizationId Identifier of the organization.
+         * @param organizationId ID of an organization. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -192,7 +203,7 @@ public final class AwsOrgVpcPeeringConnectionArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param organizationId Identifier of the organization.
+         * @param organizationId ID of an organization. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -202,7 +213,7 @@ public final class AwsOrgVpcPeeringConnectionArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param organizationVpcId Identifier of the organization VPC.
+         * @param organizationVpcId Organization VPC ID. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -213,13 +224,22 @@ public final class AwsOrgVpcPeeringConnectionArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param organizationVpcId Identifier of the organization VPC.
+         * @param organizationVpcId Organization VPC ID. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
          */
         public Builder organizationVpcId(String organizationVpcId) {
             return organizationVpcId(Output.of(organizationVpcId));
+        }
+
+        public Builder timeouts(@Nullable Output<AwsOrgVpcPeeringConnectionTimeoutsArgs> timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
+        public Builder timeouts(AwsOrgVpcPeeringConnectionTimeoutsArgs timeouts) {
+            return timeouts(Output.of(timeouts));
         }
 
         public AwsOrgVpcPeeringConnectionArgs build() {

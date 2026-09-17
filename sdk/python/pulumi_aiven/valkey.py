@@ -819,13 +819,13 @@ class Valkey(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         example_valkey = aiven.Valkey("example_valkey",
+            valkey_user_config={
+                "valkey_maxmemory_policy": "allkeys-random",
+            },
             project=example_project["project"],
             plan="startup-4",
             cloud_name="google-europe-west1",
-            service_name="example-valkey-service",
-            valkey_user_config={
-                "valkey_maxmemory_policy": "allkeys-random",
-            })
+            service_name="example-valkey-service")
         ```
 
         ## Import
@@ -871,13 +871,13 @@ class Valkey(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         example_valkey = aiven.Valkey("example_valkey",
+            valkey_user_config={
+                "valkey_maxmemory_policy": "allkeys-random",
+            },
             project=example_project["project"],
             plan="startup-4",
             cloud_name="google-europe-west1",
-            service_name="example-valkey-service",
-            valkey_user_config={
-                "valkey_maxmemory_policy": "allkeys-random",
-            })
+            service_name="example-valkey-service")
         ```
 
         ## Import

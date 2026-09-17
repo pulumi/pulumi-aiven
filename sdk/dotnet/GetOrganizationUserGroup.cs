@@ -26,8 +26,8 @@ namespace Pulumi.Aiven
         /// {
         ///     var example = Aiven.GetOrganizationUserGroup.Invoke(new()
         ///     {
-        ///         Name = "Example group",
-        ///         OrganizationId = main.Id,
+        ///         OrganizationId = "org1a23f456789",
+        ///         GroupId = "foo",
         ///     });
         /// 
         /// });
@@ -51,8 +51,8 @@ namespace Pulumi.Aiven
         /// {
         ///     var example = Aiven.GetOrganizationUserGroup.Invoke(new()
         ///     {
-        ///         Name = "Example group",
-        ///         OrganizationId = main.Id,
+        ///         OrganizationId = "org1a23f456789",
+        ///         GroupId = "foo",
         ///     });
         /// 
         /// });
@@ -76,8 +76,8 @@ namespace Pulumi.Aiven
         /// {
         ///     var example = Aiven.GetOrganizationUserGroup.Invoke(new()
         ///     {
-        ///         Name = "Example group",
-        ///         OrganizationId = main.Id,
+        ///         OrganizationId = "org1a23f456789",
+        ///         GroupId = "foo",
         ///     });
         /// 
         /// });
@@ -91,16 +91,25 @@ namespace Pulumi.Aiven
     public sealed class GetOrganizationUserGroupArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the user group. Changing this property forces recreation of the resource.
+        /// ID of the user group. Exactly one of the fields must be specified: `GroupId` or `Name`.
         /// </summary>
-        [Input("name", required: true)]
-        public string Name { get; set; } = null!;
+        [Input("groupId")]
+        public string? GroupId { get; set; }
 
         /// <summary>
-        /// The ID of the organization. Changing this property forces recreation of the resource.
+        /// User Group Name. Exactly one of the fields must be specified: `GroupId` or `Name`.
+        /// </summary>
+        [Input("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
+        /// ID of an organization.
         /// </summary>
         [Input("organizationId", required: true)]
         public string OrganizationId { get; set; } = null!;
+
+        [Input("timeouts")]
+        public Inputs.GetOrganizationUserGroupTimeoutsArgs? Timeouts { get; set; }
 
         public GetOrganizationUserGroupArgs()
         {
@@ -111,16 +120,25 @@ namespace Pulumi.Aiven
     public sealed class GetOrganizationUserGroupInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the user group. Changing this property forces recreation of the resource.
+        /// ID of the user group. Exactly one of the fields must be specified: `GroupId` or `Name`.
         /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
+        [Input("groupId")]
+        public Input<string>? GroupId { get; set; }
 
         /// <summary>
-        /// The ID of the organization. Changing this property forces recreation of the resource.
+        /// User Group Name. Exactly one of the fields must be specified: `GroupId` or `Name`.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// ID of an organization.
         /// </summary>
         [Input("organizationId", required: true)]
         public Input<string> OrganizationId { get; set; } = null!;
+
+        [Input("timeouts")]
+        public Input<Inputs.GetOrganizationUserGroupTimeoutsInputArgs>? Timeouts { get; set; }
 
         public GetOrganizationUserGroupInvokeArgs()
         {
@@ -133,31 +151,36 @@ namespace Pulumi.Aiven
     public sealed class GetOrganizationUserGroupResult
     {
         /// <summary>
-        /// Time of creation.
+        /// User group creation time.
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// The description of the user group. Changing this property forces recreation of the resource.
+        /// Description.
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// The ID of the user group.
+        /// ID of the user group. Exactly one of the fields must be specified: `GroupId` or `Name`.
         /// </summary>
         public readonly string GroupId;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// Resource ID composed as: `organization_id/group_id`.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The name of the user group. Changing this property forces recreation of the resource.
+        /// Managed By Scim.
+        /// </summary>
+        public readonly bool ManagedByScim;
+        /// <summary>
+        /// User Group Name. Exactly one of the fields must be specified: `GroupId` or `Name`.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The ID of the organization. Changing this property forces recreation of the resource.
+        /// ID of an organization.
         /// </summary>
         public readonly string OrganizationId;
+        public readonly Outputs.GetOrganizationUserGroupTimeoutsResult? Timeouts;
         /// <summary>
-        /// Time of last update.
+        /// User group last update time.
         /// </summary>
         public readonly string UpdateTime;
 
@@ -171,9 +194,13 @@ namespace Pulumi.Aiven
 
             string id,
 
+            bool managedByScim,
+
             string name,
 
             string organizationId,
+
+            Outputs.GetOrganizationUserGroupTimeoutsResult? timeouts,
 
             string updateTime)
         {
@@ -181,8 +208,10 @@ namespace Pulumi.Aiven
             Description = description;
             GroupId = groupId;
             Id = id;
+            ManagedByScim = managedByScim;
             Name = name;
             OrganizationId = organizationId;
+            Timeouts = timeouts;
             UpdateTime = updateTime;
         }
     }

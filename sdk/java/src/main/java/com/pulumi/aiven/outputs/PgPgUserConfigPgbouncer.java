@@ -5,6 +5,7 @@ package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
+import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -50,6 +51,11 @@ public final class PgPgUserConfigPgbouncer {
      */
     private @Nullable Integer minPoolSize;
     /**
+     * @return If connection and login don’t finish in this amount of time, the connection will be closed. (seconds).
+     * 
+     */
+    private @Nullable Double serverConnectTimeout;
+    /**
      * @return If a server connection has been idle more than this many seconds it will be dropped. If 0 then timeout is disabled. (seconds). Default: `600`.
      * 
      */
@@ -59,6 +65,11 @@ public final class PgPgUserConfigPgbouncer {
      * 
      */
     private @Nullable Integer serverLifetime;
+    /**
+     * @return If login to the server failed, because of failure to connect or from authentication, the pooler waits this much before retrying to connect. During the waiting interval, new clients trying to connect to the failing server will get an error immediately without another connection attempt. (seconds).
+     * 
+     */
+    private @Nullable Double serverLoginRetry;
     /**
      * @return Run server*reset*query (DISCARD ALL) in all pooling modes. Default: `false`.
      * 
@@ -116,6 +127,13 @@ public final class PgPgUserConfigPgbouncer {
         return Optional.ofNullable(this.minPoolSize);
     }
     /**
+     * @return If connection and login don’t finish in this amount of time, the connection will be closed. (seconds).
+     * 
+     */
+    public Optional<Double> serverConnectTimeout() {
+        return Optional.ofNullable(this.serverConnectTimeout);
+    }
+    /**
      * @return If a server connection has been idle more than this many seconds it will be dropped. If 0 then timeout is disabled. (seconds). Default: `600`.
      * 
      */
@@ -128,6 +146,13 @@ public final class PgPgUserConfigPgbouncer {
      */
     public Optional<Integer> serverLifetime() {
         return Optional.ofNullable(this.serverLifetime);
+    }
+    /**
+     * @return If login to the server failed, because of failure to connect or from authentication, the pooler waits this much before retrying to connect. During the waiting interval, new clients trying to connect to the failing server will get an error immediately without another connection attempt. (seconds).
+     * 
+     */
+    public Optional<Double> serverLoginRetry() {
+        return Optional.ofNullable(this.serverLoginRetry);
     }
     /**
      * @return Run server*reset*query (DISCARD ALL) in all pooling modes. Default: `false`.
@@ -153,8 +178,10 @@ public final class PgPgUserConfigPgbouncer {
         private @Nullable List<String> ignoreStartupParameters;
         private @Nullable Integer maxPreparedStatements;
         private @Nullable Integer minPoolSize;
+        private @Nullable Double serverConnectTimeout;
         private @Nullable Integer serverIdleTimeout;
         private @Nullable Integer serverLifetime;
+        private @Nullable Double serverLoginRetry;
         private @Nullable Boolean serverResetQueryAlways;
         public Builder() {}
         public Builder(PgPgUserConfigPgbouncer defaults) {
@@ -166,8 +193,10 @@ public final class PgPgUserConfigPgbouncer {
     	      this.ignoreStartupParameters = defaults.ignoreStartupParameters;
     	      this.maxPreparedStatements = defaults.maxPreparedStatements;
     	      this.minPoolSize = defaults.minPoolSize;
+    	      this.serverConnectTimeout = defaults.serverConnectTimeout;
     	      this.serverIdleTimeout = defaults.serverIdleTimeout;
     	      this.serverLifetime = defaults.serverLifetime;
+    	      this.serverLoginRetry = defaults.serverLoginRetry;
     	      this.serverResetQueryAlways = defaults.serverResetQueryAlways;
         }
 
@@ -217,6 +246,12 @@ public final class PgPgUserConfigPgbouncer {
             return this;
         }
         @CustomType.Setter
+        public Builder serverConnectTimeout(@Nullable Double serverConnectTimeout) {
+
+            this.serverConnectTimeout = serverConnectTimeout;
+            return this;
+        }
+        @CustomType.Setter
         public Builder serverIdleTimeout(@Nullable Integer serverIdleTimeout) {
 
             this.serverIdleTimeout = serverIdleTimeout;
@@ -226,6 +261,12 @@ public final class PgPgUserConfigPgbouncer {
         public Builder serverLifetime(@Nullable Integer serverLifetime) {
 
             this.serverLifetime = serverLifetime;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder serverLoginRetry(@Nullable Double serverLoginRetry) {
+
+            this.serverLoginRetry = serverLoginRetry;
             return this;
         }
         @CustomType.Setter
@@ -243,8 +284,10 @@ public final class PgPgUserConfigPgbouncer {
             _resultValue.ignoreStartupParameters = ignoreStartupParameters;
             _resultValue.maxPreparedStatements = maxPreparedStatements;
             _resultValue.minPoolSize = minPoolSize;
+            _resultValue.serverConnectTimeout = serverConnectTimeout;
             _resultValue.serverIdleTimeout = serverIdleTimeout;
             _resultValue.serverLifetime = serverLifetime;
+            _resultValue.serverLoginRetry = serverLoginRetry;
             _resultValue.serverResetQueryAlways = serverResetQueryAlways;
             return _resultValue;
         }

@@ -2,13 +2,14 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Creates and manages Kafka-native [access control lists](https://aiven.io/docs/products/kafka/concepts/acl) (ACLs) for an Aiven for Apache Kafka® service. ACLs control access to Kafka topics, consumer groups,
- * clusters, and Schema Registry.
+ * Creates and manages Kafka-native [access control lists](https://aiven.io/docs/products/kafka/concepts/acl) (ACLs) for an Aiven for Apache Kafka® service. ACLs control access to Kafka topics, consumer groups, clusters, and Schema Registry.
  *
- * Kafka-native ACLs provide advanced resource-level access control with fine-grained permissions, including `ALLOW` and `DENY` rules. For simplified topic-level control you can use Aiven ACLs.
+ * Kafka-native ACLs provide advanced resource-level access control with fine-grained permissions, including `ALLOW` and `DENY` rules. For simplified topic-level control you can use Aiven ACLs. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
  *
  * ## Example Usage
  *
@@ -16,23 +17,23 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const exampleAcl = new aiven.KafkaNativeAcl("example_acl", {
- *     project: exampleProject.project,
- *     serviceName: exampleKafka.serviceName,
- *     resourceType: "Topic",
- *     resourceName: "example-topic",
- *     principal: "User:example-user",
+ * const example = new aiven.KafkaNativeAcl("example", {
+ *     project: "my-project",
+ *     serviceName: "my-kafka",
  *     operation: "Read",
  *     patternType: "LITERAL",
  *     permissionType: "ALLOW",
- *     host: "198.51.100.0",
+ *     principal: "User:alice",
+ *     resourceName: "consumer-group-1.",
+ *     resourceType: "Topic",
+ *     host: "*",
  * });
  * ```
  *
  * ## Import
  *
  * ```sh
- * $ pulumi import aiven:index/kafkaNativeAcl:KafkaNativeAcl example_acl PROJECT/SERVICE_NAME/ID
+ * $ pulumi import aiven:index/kafkaNativeAcl:KafkaNativeAcl example PROJECT/SERVICE_NAME/ACL_ID
  * ```
  */
 export class KafkaNativeAcl extends pulumi.CustomResource {
@@ -64,41 +65,46 @@ export class KafkaNativeAcl extends pulumi.CustomResource {
     }
 
     /**
-     * The IP address from which a principal is allowed or denied access to the resource. Use `*` for all hosts. Maximum length: `256`. Changing this property forces recreation of the resource.
+     * Kafka ACL ID.
+     */
+    declare public /*out*/ readonly aclId: pulumi.Output<string>;
+    /**
+     * the host or `*` for all hosts. Maximum length: `256`. The default value is `*`. Changing this property forces recreation of the resource.
      */
     declare public readonly host: pulumi.Output<string>;
     /**
-     * The action that a principal is allowed or denied on the Kafka resource. The possible values are `All`, `Alter`, `AlterConfigs`, `ClusterAction`, `Create`, `CreateTokens`, `Delete`, `Describe`, `DescribeConfigs`, `DescribeTokens`, `IdempotentWrite`, `Read` and `Write`. Changing this property forces recreation of the resource.
+     * Kafka ACL operation represents an operation which an ACL grants or denies permission to perform. The possible values are `All`, `Alter`, `AlterConfigs`, `ClusterAction`, `Create`, `CreateTokens`, `Delete`, `Describe`, `DescribeConfigs`, `DescribeTokens`, `IdempotentWrite`, `Read` and `Write`. Changing this property forces recreation of the resource.
      */
     declare public readonly operation: pulumi.Output<string>;
     /**
-     * Resource pattern used to match specified resources. The possible values are `LITERAL` and `PREFIXED`. Changing this property forces recreation of the resource.
+     * How a Kafka-native ACL matches its resource name. The possible values are `LITERAL` and `PREFIXED`. Changing this property forces recreation of the resource.
      */
     declare public readonly patternType: pulumi.Output<string>;
     /**
-     * Specifies whether the action is explicitly allowed or denied for the principal on the specified resource. The possible values are `ALLOW` and `DENY`. Changing this property forces recreation of the resource.
+     * Whether a Kafka-native ACL allows or denies its operation. The possible values are `ALLOW` and `DENY`. Changing this property forces recreation of the resource.
      */
     declare public readonly permissionType: pulumi.Output<string>;
     /**
-     * Identities in `user:name` format that the permissions apply to. The `name` supports wildcards. Maximum length: `256`. Changing this property forces recreation of the resource.
+     * principal is in 'principalType:name' format. Maximum length: `256`. Changing this property forces recreation of the resource.
      */
     declare public readonly principal: pulumi.Output<string>;
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name. Changing this property forces recreation of the resource.
      */
     declare public readonly project: pulumi.Output<string>;
     /**
-     * The name of the Kafka resource the permission applies to, such as the topic name or group ID. Maximum length: `256`. Changing this property forces recreation of the resource.
+     * Resource pattern used to match specified resources. Maximum length: `256`. Changing this property forces recreation of the resource.
      */
     declare public readonly resourceName: pulumi.Output<string>;
     /**
-     * The type of Kafka resource. The possible values are `Cluster`, `DelegationToken`, `Group`, `Topic`, `TransactionalId` and `User`. Changing this property forces recreation of the resource.
+     * Kafka ACL resource type represents a type of resource which an ACL can be applied to. The possible values are `Cluster`, `DelegationToken`, `Group`, `Topic`, `TransactionalId` and `User`. Changing this property forces recreation of the resource.
      */
     declare public readonly resourceType: pulumi.Output<string>;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name. Changing this property forces recreation of the resource.
      */
     declare public readonly serviceName: pulumi.Output<string>;
+    declare public readonly timeouts: pulumi.Output<outputs.KafkaNativeAclTimeouts | undefined>;
 
     /**
      * Create a KafkaNativeAcl resource with the given unique name, arguments, and options.
@@ -113,6 +119,7 @@ export class KafkaNativeAcl extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as KafkaNativeAclState | undefined;
+            resourceInputs["aclId"] = state?.aclId;
             resourceInputs["host"] = state?.host;
             resourceInputs["operation"] = state?.operation;
             resourceInputs["patternType"] = state?.patternType;
@@ -122,6 +129,7 @@ export class KafkaNativeAcl extends pulumi.CustomResource {
             resourceInputs["resourceName"] = state?.resourceName;
             resourceInputs["resourceType"] = state?.resourceType;
             resourceInputs["serviceName"] = state?.serviceName;
+            resourceInputs["timeouts"] = state?.timeouts;
         } else {
             const args = argsOrState as KafkaNativeAclArgs | undefined;
             if (args?.operation === undefined && !opts.urn) {
@@ -157,6 +165,8 @@ export class KafkaNativeAcl extends pulumi.CustomResource {
             resourceInputs["resourceName"] = args?.resourceName;
             resourceInputs["resourceType"] = args?.resourceType;
             resourceInputs["serviceName"] = args?.serviceName;
+            resourceInputs["timeouts"] = args?.timeouts;
+            resourceInputs["aclId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(KafkaNativeAcl.__pulumiType, name, resourceInputs, opts);
@@ -168,41 +178,46 @@ export class KafkaNativeAcl extends pulumi.CustomResource {
  */
 export interface KafkaNativeAclState {
     /**
-     * The IP address from which a principal is allowed or denied access to the resource. Use `*` for all hosts. Maximum length: `256`. Changing this property forces recreation of the resource.
+     * Kafka ACL ID.
+     */
+    aclId?: pulumi.Input<string | undefined>;
+    /**
+     * the host or `*` for all hosts. Maximum length: `256`. The default value is `*`. Changing this property forces recreation of the resource.
      */
     host?: pulumi.Input<string | undefined>;
     /**
-     * The action that a principal is allowed or denied on the Kafka resource. The possible values are `All`, `Alter`, `AlterConfigs`, `ClusterAction`, `Create`, `CreateTokens`, `Delete`, `Describe`, `DescribeConfigs`, `DescribeTokens`, `IdempotentWrite`, `Read` and `Write`. Changing this property forces recreation of the resource.
+     * Kafka ACL operation represents an operation which an ACL grants or denies permission to perform. The possible values are `All`, `Alter`, `AlterConfigs`, `ClusterAction`, `Create`, `CreateTokens`, `Delete`, `Describe`, `DescribeConfigs`, `DescribeTokens`, `IdempotentWrite`, `Read` and `Write`. Changing this property forces recreation of the resource.
      */
     operation?: pulumi.Input<string | undefined>;
     /**
-     * Resource pattern used to match specified resources. The possible values are `LITERAL` and `PREFIXED`. Changing this property forces recreation of the resource.
+     * How a Kafka-native ACL matches its resource name. The possible values are `LITERAL` and `PREFIXED`. Changing this property forces recreation of the resource.
      */
     patternType?: pulumi.Input<string | undefined>;
     /**
-     * Specifies whether the action is explicitly allowed or denied for the principal on the specified resource. The possible values are `ALLOW` and `DENY`. Changing this property forces recreation of the resource.
+     * Whether a Kafka-native ACL allows or denies its operation. The possible values are `ALLOW` and `DENY`. Changing this property forces recreation of the resource.
      */
     permissionType?: pulumi.Input<string | undefined>;
     /**
-     * Identities in `user:name` format that the permissions apply to. The `name` supports wildcards. Maximum length: `256`. Changing this property forces recreation of the resource.
+     * principal is in 'principalType:name' format. Maximum length: `256`. Changing this property forces recreation of the resource.
      */
     principal?: pulumi.Input<string | undefined>;
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name. Changing this property forces recreation of the resource.
      */
     project?: pulumi.Input<string | undefined>;
     /**
-     * The name of the Kafka resource the permission applies to, such as the topic name or group ID. Maximum length: `256`. Changing this property forces recreation of the resource.
+     * Resource pattern used to match specified resources. Maximum length: `256`. Changing this property forces recreation of the resource.
      */
     resourceName?: pulumi.Input<string | undefined>;
     /**
-     * The type of Kafka resource. The possible values are `Cluster`, `DelegationToken`, `Group`, `Topic`, `TransactionalId` and `User`. Changing this property forces recreation of the resource.
+     * Kafka ACL resource type represents a type of resource which an ACL can be applied to. The possible values are `Cluster`, `DelegationToken`, `Group`, `Topic`, `TransactionalId` and `User`. Changing this property forces recreation of the resource.
      */
     resourceType?: pulumi.Input<string | undefined>;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name. Changing this property forces recreation of the resource.
      */
     serviceName?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.KafkaNativeAclTimeouts | undefined>;
 }
 
 /**
@@ -210,39 +225,40 @@ export interface KafkaNativeAclState {
  */
 export interface KafkaNativeAclArgs {
     /**
-     * The IP address from which a principal is allowed or denied access to the resource. Use `*` for all hosts. Maximum length: `256`. Changing this property forces recreation of the resource.
+     * the host or `*` for all hosts. Maximum length: `256`. The default value is `*`. Changing this property forces recreation of the resource.
      */
     host?: pulumi.Input<string | undefined>;
     /**
-     * The action that a principal is allowed or denied on the Kafka resource. The possible values are `All`, `Alter`, `AlterConfigs`, `ClusterAction`, `Create`, `CreateTokens`, `Delete`, `Describe`, `DescribeConfigs`, `DescribeTokens`, `IdempotentWrite`, `Read` and `Write`. Changing this property forces recreation of the resource.
+     * Kafka ACL operation represents an operation which an ACL grants or denies permission to perform. The possible values are `All`, `Alter`, `AlterConfigs`, `ClusterAction`, `Create`, `CreateTokens`, `Delete`, `Describe`, `DescribeConfigs`, `DescribeTokens`, `IdempotentWrite`, `Read` and `Write`. Changing this property forces recreation of the resource.
      */
     operation: pulumi.Input<string>;
     /**
-     * Resource pattern used to match specified resources. The possible values are `LITERAL` and `PREFIXED`. Changing this property forces recreation of the resource.
+     * How a Kafka-native ACL matches its resource name. The possible values are `LITERAL` and `PREFIXED`. Changing this property forces recreation of the resource.
      */
     patternType: pulumi.Input<string>;
     /**
-     * Specifies whether the action is explicitly allowed or denied for the principal on the specified resource. The possible values are `ALLOW` and `DENY`. Changing this property forces recreation of the resource.
+     * Whether a Kafka-native ACL allows or denies its operation. The possible values are `ALLOW` and `DENY`. Changing this property forces recreation of the resource.
      */
     permissionType: pulumi.Input<string>;
     /**
-     * Identities in `user:name` format that the permissions apply to. The `name` supports wildcards. Maximum length: `256`. Changing this property forces recreation of the resource.
+     * principal is in 'principalType:name' format. Maximum length: `256`. Changing this property forces recreation of the resource.
      */
     principal: pulumi.Input<string>;
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name. Changing this property forces recreation of the resource.
      */
     project: pulumi.Input<string>;
     /**
-     * The name of the Kafka resource the permission applies to, such as the topic name or group ID. Maximum length: `256`. Changing this property forces recreation of the resource.
+     * Resource pattern used to match specified resources. Maximum length: `256`. Changing this property forces recreation of the resource.
      */
     resourceName: pulumi.Input<string>;
     /**
-     * The type of Kafka resource. The possible values are `Cluster`, `DelegationToken`, `Group`, `Topic`, `TransactionalId` and `User`. Changing this property forces recreation of the resource.
+     * Kafka ACL resource type represents a type of resource which an ACL can be applied to. The possible values are `Cluster`, `DelegationToken`, `Group`, `Topic`, `TransactionalId` and `User`. Changing this property forces recreation of the resource.
      */
     resourceType: pulumi.Input<string>;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name. Changing this property forces recreation of the resource.
      */
     serviceName: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.KafkaNativeAclTimeouts | undefined>;
 }

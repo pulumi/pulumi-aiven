@@ -10,10 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// Creates and manages an AWS VPC peering connection with an Aiven Organization VPC.
-    /// 
-    /// **This resource is in the beta stage and may change without notice.** Set
-    /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+    /// Creates and manages an AWS VPC peering connection with an Aiven Organization VPC. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
     /// 
     /// ## Example Usage
     /// 
@@ -25,20 +22,13 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleVpc = new Aiven.OrganizationVpc("example_vpc", new()
+    ///     var example = new Aiven.AwsOrgVpcPeeringConnection("example", new()
     ///     {
-    ///         OrganizationId = example.Id,
-    ///         CloudName = "aws-eu-central-1",
-    ///         NetworkCidr = "10.0.0.0/24",
-    ///     });
-    /// 
-    ///     var examplePeering = new Aiven.AwsOrgVpcPeeringConnection("example_peering", new()
-    ///     {
-    ///         OrganizationId = exampleVpc.OrganizationId,
-    ///         OrganizationVpcId = exampleVpc.OrganizationVpcId,
-    ///         AwsAccountId = awsId,
-    ///         AwsVpcId = "vpc-1a2b3c4d5e6f7g8h9",
-    ///         AwsVpcRegion = "aws-us-east-2",
+    ///         OrganizationId = "org1a23f456789",
+    ///         OrganizationVpcId = "1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+    ///         AwsAccountId = "123456789012",
+    ///         AwsVpcId = "vpc-2f09a348",
+    ///         AwsVpcRegion = "us-east-1",
     ///     });
     /// 
     /// });
@@ -47,20 +37,20 @@ namespace Pulumi.Aiven
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import aiven:index/awsOrgVpcPeeringConnection:AwsOrgVpcPeeringConnection example ORGANIZATION_ID/ORGANIZATION_VPC_ID/AWS_ACCOUNT_ID/AWS_VPC_ID/AWS_REGION
+    /// $ pulumi import aiven:index/awsOrgVpcPeeringConnection:AwsOrgVpcPeeringConnection example ORGANIZATION_ID/ORGANIZATION_VPC_ID/AWS_ACCOUNT_ID/AWS_VPC_ID/AWS_VPC_REGION
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/awsOrgVpcPeeringConnection:AwsOrgVpcPeeringConnection")]
     public partial class AwsOrgVpcPeeringConnection : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// AWS account ID. Changing this property forces recreation of the resource.
+        /// AWS account ID. Maximum length: `1024`. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("awsAccountId")]
         public Output<string> AwsAccountId { get; private set; } = null!;
 
         /// <summary>
-        /// AWS VPC ID. Changing this property forces recreation of the resource.
+        /// AWS VPC ID. Maximum length: `1024`. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("awsVpcId")]
         public Output<string> AwsVpcId { get; private set; } = null!;
@@ -72,25 +62,25 @@ namespace Pulumi.Aiven
         public Output<string> AwsVpcPeeringConnectionId { get; private set; } = null!;
 
         /// <summary>
-        /// The AWS region of the peered VPC. For example, `eu-central-1`.
+        /// The AWS region of the peered VPC. For example, `eu-central-1`. Maximum length: `1024`. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("awsVpcRegion")]
         public Output<string> AwsVpcRegion { get; private set; } = null!;
 
         /// <summary>
-        /// Identifier of the organization.
+        /// ID of an organization. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("organizationId")]
         public Output<string> OrganizationId { get; private set; } = null!;
 
         /// <summary>
-        /// Identifier of the organization VPC.
+        /// Organization VPC ID. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("organizationVpcId")]
         public Output<string> OrganizationVpcId { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the peering connection.
+        /// Organization peering connection ID.
         /// </summary>
         [Output("peeringConnectionId")]
         public Output<string> PeeringConnectionId { get; private set; } = null!;
@@ -100,6 +90,9 @@ namespace Pulumi.Aiven
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
+
+        [Output("timeouts")]
+        public Output<Outputs.AwsOrgVpcPeeringConnectionTimeouts?> Timeouts { get; private set; } = null!;
 
 
         /// <summary>
@@ -148,34 +141,37 @@ namespace Pulumi.Aiven
     public sealed class AwsOrgVpcPeeringConnectionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// AWS account ID. Changing this property forces recreation of the resource.
+        /// AWS account ID. Maximum length: `1024`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("awsAccountId", required: true)]
         public Input<string> AwsAccountId { get; set; } = null!;
 
         /// <summary>
-        /// AWS VPC ID. Changing this property forces recreation of the resource.
+        /// AWS VPC ID. Maximum length: `1024`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("awsVpcId", required: true)]
         public Input<string> AwsVpcId { get; set; } = null!;
 
         /// <summary>
-        /// The AWS region of the peered VPC. For example, `eu-central-1`.
+        /// The AWS region of the peered VPC. For example, `eu-central-1`. Maximum length: `1024`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("awsVpcRegion", required: true)]
         public Input<string> AwsVpcRegion { get; set; } = null!;
 
         /// <summary>
-        /// Identifier of the organization.
+        /// ID of an organization. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("organizationId", required: true)]
         public Input<string> OrganizationId { get; set; } = null!;
 
         /// <summary>
-        /// Identifier of the organization VPC.
+        /// Organization VPC ID. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("organizationVpcId", required: true)]
         public Input<string> OrganizationVpcId { get; set; } = null!;
+
+        [Input("timeouts")]
+        public Input<Inputs.AwsOrgVpcPeeringConnectionTimeoutsArgs>? Timeouts { get; set; }
 
         public AwsOrgVpcPeeringConnectionArgs()
         {
@@ -186,13 +182,13 @@ namespace Pulumi.Aiven
     public sealed class AwsOrgVpcPeeringConnectionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// AWS account ID. Changing this property forces recreation of the resource.
+        /// AWS account ID. Maximum length: `1024`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("awsAccountId")]
         public Input<string>? AwsAccountId { get; set; }
 
         /// <summary>
-        /// AWS VPC ID. Changing this property forces recreation of the resource.
+        /// AWS VPC ID. Maximum length: `1024`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("awsVpcId")]
         public Input<string>? AwsVpcId { get; set; }
@@ -204,25 +200,25 @@ namespace Pulumi.Aiven
         public Input<string>? AwsVpcPeeringConnectionId { get; set; }
 
         /// <summary>
-        /// The AWS region of the peered VPC. For example, `eu-central-1`.
+        /// The AWS region of the peered VPC. For example, `eu-central-1`. Maximum length: `1024`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("awsVpcRegion")]
         public Input<string>? AwsVpcRegion { get; set; }
 
         /// <summary>
-        /// Identifier of the organization.
+        /// ID of an organization. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("organizationId")]
         public Input<string>? OrganizationId { get; set; }
 
         /// <summary>
-        /// Identifier of the organization VPC.
+        /// Organization VPC ID. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("organizationVpcId")]
         public Input<string>? OrganizationVpcId { get; set; }
 
         /// <summary>
-        /// The ID of the peering connection.
+        /// Organization peering connection ID.
         /// </summary>
         [Input("peeringConnectionId")]
         public Input<string>? PeeringConnectionId { get; set; }
@@ -232,6 +228,9 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
+
+        [Input("timeouts")]
+        public Input<Inputs.AwsOrgVpcPeeringConnectionTimeoutsGetArgs>? Timeouts { get; set; }
 
         public AwsOrgVpcPeeringConnectionState()
         {

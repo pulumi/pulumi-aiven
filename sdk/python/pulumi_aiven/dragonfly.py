@@ -819,13 +819,13 @@ class Dragonfly(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         example_dragonfly = aiven.Dragonfly("example_dragonfly",
+            dragonfly_user_config={
+                "cache_mode": True,
+            },
             project=example_project["project"],
             plan="startup-4",
             cloud_name="google-europe-west1",
-            service_name="example-dragonfly-service",
-            dragonfly_user_config={
-                "cache_mode": True,
-            })
+            service_name="example-dragonfly-service")
         ```
 
         ## Import
@@ -871,13 +871,13 @@ class Dragonfly(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         example_dragonfly = aiven.Dragonfly("example_dragonfly",
+            dragonfly_user_config={
+                "cache_mode": True,
+            },
             project=example_project["project"],
             plan="startup-4",
             cloud_name="google-europe-west1",
-            service_name="example-dragonfly-service",
-            dragonfly_user_config={
-                "cache_mode": True,
-            })
+            service_name="example-dragonfly-service")
         ```
 
         ## Import

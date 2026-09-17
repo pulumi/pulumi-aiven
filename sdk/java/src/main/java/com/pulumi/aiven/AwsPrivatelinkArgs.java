@@ -3,12 +3,15 @@
 
 package com.pulumi.aiven;
 
+import com.pulumi.aiven.inputs.AwsPrivatelinkTimeoutsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class AwsPrivatelinkArgs extends com.pulumi.resources.ResourceArgs {
@@ -16,14 +19,14 @@ public final class AwsPrivatelinkArgs extends com.pulumi.resources.ResourceArgs 
     public static final AwsPrivatelinkArgs Empty = new AwsPrivatelinkArgs();
 
     /**
-     * List of the ARNs of the AWS accounts or IAM users allowed to connect to the VPC endpoint.
+     * ARNs of principals allowed connecting to the service.
      * 
      */
     @Import(name="principals", required=true)
     private Output<List<String>> principals;
 
     /**
-     * @return List of the ARNs of the AWS accounts or IAM users allowed to connect to the VPC endpoint.
+     * @return ARNs of principals allowed connecting to the service.
      * 
      */
     public Output<List<String>> principals() {
@@ -31,14 +34,14 @@ public final class AwsPrivatelinkArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="project", required=true)
     private Output<String> project;
 
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> project() {
@@ -46,18 +49,40 @@ public final class AwsPrivatelinkArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="serviceName", required=true)
     private Output<String> serviceName;
 
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service name. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> serviceName() {
         return this.serviceName;
+    }
+
+    /**
+     * Allow new connections to the endpoint from these regions, in addition to the region the endpoint is in.
+     * 
+     */
+    @Import(name="supportedRegions")
+    private @Nullable Output<List<String>> supportedRegions;
+
+    /**
+     * @return Allow new connections to the endpoint from these regions, in addition to the region the endpoint is in.
+     * 
+     */
+    public Optional<Output<List<String>>> supportedRegions() {
+        return Optional.ofNullable(this.supportedRegions);
+    }
+
+    @Import(name="timeouts")
+    private @Nullable Output<AwsPrivatelinkTimeoutsArgs> timeouts;
+
+    public Optional<Output<AwsPrivatelinkTimeoutsArgs>> timeouts() {
+        return Optional.ofNullable(this.timeouts);
     }
 
     private AwsPrivatelinkArgs() {}
@@ -66,6 +91,8 @@ public final class AwsPrivatelinkArgs extends com.pulumi.resources.ResourceArgs 
         this.principals = $.principals;
         this.project = $.project;
         this.serviceName = $.serviceName;
+        this.supportedRegions = $.supportedRegions;
+        this.timeouts = $.timeouts;
     }
 
     public static Builder builder() {
@@ -87,7 +114,7 @@ public final class AwsPrivatelinkArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param principals List of the ARNs of the AWS accounts or IAM users allowed to connect to the VPC endpoint.
+         * @param principals ARNs of principals allowed connecting to the service.
          * 
          * @return builder
          * 
@@ -98,7 +125,7 @@ public final class AwsPrivatelinkArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param principals List of the ARNs of the AWS accounts or IAM users allowed to connect to the VPC endpoint.
+         * @param principals ARNs of principals allowed connecting to the service.
          * 
          * @return builder
          * 
@@ -108,7 +135,7 @@ public final class AwsPrivatelinkArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param principals List of the ARNs of the AWS accounts or IAM users allowed to connect to the VPC endpoint.
+         * @param principals ARNs of principals allowed connecting to the service.
          * 
          * @return builder
          * 
@@ -118,7 +145,7 @@ public final class AwsPrivatelinkArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param project The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param project Project name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -129,7 +156,7 @@ public final class AwsPrivatelinkArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param project The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param project Project name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -139,7 +166,7 @@ public final class AwsPrivatelinkArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param serviceName The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param serviceName Service name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -150,13 +177,53 @@ public final class AwsPrivatelinkArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param serviceName The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param serviceName Service name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
          */
         public Builder serviceName(String serviceName) {
             return serviceName(Output.of(serviceName));
+        }
+
+        /**
+         * @param supportedRegions Allow new connections to the endpoint from these regions, in addition to the region the endpoint is in.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder supportedRegions(@Nullable Output<List<String>> supportedRegions) {
+            $.supportedRegions = supportedRegions;
+            return this;
+        }
+
+        /**
+         * @param supportedRegions Allow new connections to the endpoint from these regions, in addition to the region the endpoint is in.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder supportedRegions(List<String> supportedRegions) {
+            return supportedRegions(Output.of(supportedRegions));
+        }
+
+        /**
+         * @param supportedRegions Allow new connections to the endpoint from these regions, in addition to the region the endpoint is in.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder supportedRegions(String... supportedRegions) {
+            return supportedRegions(List.of(supportedRegions));
+        }
+
+        public Builder timeouts(@Nullable Output<AwsPrivatelinkTimeoutsArgs> timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
+        public Builder timeouts(AwsPrivatelinkTimeoutsArgs timeouts) {
+            return timeouts(Output.of(timeouts));
         }
 
         public AwsPrivatelinkArgs build() {

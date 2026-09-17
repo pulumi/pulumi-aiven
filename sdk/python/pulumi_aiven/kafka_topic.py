@@ -411,12 +411,6 @@ class KafkaTopic(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         example = aiven.KafkaTopic("example",
-            project="my-project",
-            service_name="my-kafka",
-            topic_name="mytopic",
-            partitions=3,
-            replication=3,
-            owner_user_group_id="ug22ba494e096",
             config={
                 "cleanup_policy": "delete",
                 "compression_type": "zstd",
@@ -453,6 +447,12 @@ class KafkaTopic(pulumi.CustomResource):
                 "key": "My-tag_key",
                 "value": "My tag value, value.",
             }],
+            project="my-project",
+            service_name="my-kafka",
+            topic_name="mytopic",
+            partitions=3,
+            replication=3,
+            owner_user_group_id="ug22ba494e096",
             topic_description="Platform events")
         ```
 
@@ -492,12 +492,6 @@ class KafkaTopic(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         example = aiven.KafkaTopic("example",
-            project="my-project",
-            service_name="my-kafka",
-            topic_name="mytopic",
-            partitions=3,
-            replication=3,
-            owner_user_group_id="ug22ba494e096",
             config={
                 "cleanup_policy": "delete",
                 "compression_type": "zstd",
@@ -534,6 +528,12 @@ class KafkaTopic(pulumi.CustomResource):
                 "key": "My-tag_key",
                 "value": "My tag value, value.",
             }],
+            project="my-project",
+            service_name="my-kafka",
+            topic_name="mytopic",
+            partitions=3,
+            replication=3,
+            owner_user_group_id="ug22ba494e096",
             topic_description="Platform events")
         ```
 

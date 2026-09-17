@@ -49,7 +49,7 @@ public final class FlinkJarApplicationCurrentDeployment {
      */
     private @Nullable String lastSavepoint;
     /**
-     * @return Reading of Flink parallel execution documentation is recommended before setting this value to other than 1. Please do not set this value higher than (total number of nodes x number_of_task_slots), or every new job created will fail.
+     * @return Reading of Flink parallel execution documentation is recommended before setting this value to other than 1. Please do not set this value higher than (total number of nodes x number*of*task_slots), or every new job created will fail.
      * 
      */
     private @Nullable Integer parallelism;
@@ -125,7 +125,7 @@ public final class FlinkJarApplicationCurrentDeployment {
         return Optional.ofNullable(this.lastSavepoint);
     }
     /**
-     * @return Reading of Flink parallel execution documentation is recommended before setting this value to other than 1. Please do not set this value higher than (total number of nodes x number_of_task_slots), or every new job created will fail.
+     * @return Reading of Flink parallel execution documentation is recommended before setting this value to other than 1. Please do not set this value higher than (total number of nodes x number*of*task_slots), or every new job created will fail.
      * 
      */
     public Optional<Integer> parallelism() {

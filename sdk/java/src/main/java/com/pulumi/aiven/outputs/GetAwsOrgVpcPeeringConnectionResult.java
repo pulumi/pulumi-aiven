@@ -3,20 +3,23 @@
 
 package com.pulumi.aiven.outputs;
 
+import com.pulumi.aiven.outputs.GetAwsOrgVpcPeeringConnectionTimeouts;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAwsOrgVpcPeeringConnectionResult {
     /**
-     * @return AWS account ID. Changing this property forces recreation of the resource.
+     * @return AWS account ID.
      * 
      */
     private String awsAccountId;
     /**
-     * @return AWS VPC ID. Changing this property forces recreation of the resource.
+     * @return AWS VPC ID.
      * 
      */
     private String awsVpcId;
@@ -31,22 +34,22 @@ public final class GetAwsOrgVpcPeeringConnectionResult {
      */
     private String awsVpcRegion;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Resource ID composed as: `organization_id/organization_vpc_id/aws_account_id/aws_vpc_id/aws_vpc_region`.
      * 
      */
     private String id;
     /**
-     * @return Identifier of the organization.
+     * @return ID of an organization.
      * 
      */
     private String organizationId;
     /**
-     * @return Identifier of the organization VPC.
+     * @return Organization VPC ID.
      * 
      */
     private String organizationVpcId;
     /**
-     * @return The ID of the peering connection.
+     * @return Organization peering connection ID.
      * 
      */
     private String peeringConnectionId;
@@ -55,17 +58,18 @@ public final class GetAwsOrgVpcPeeringConnectionResult {
      * 
      */
     private String state;
+    private @Nullable GetAwsOrgVpcPeeringConnectionTimeouts timeouts;
 
     private GetAwsOrgVpcPeeringConnectionResult() {}
     /**
-     * @return AWS account ID. Changing this property forces recreation of the resource.
+     * @return AWS account ID.
      * 
      */
     public String awsAccountId() {
         return this.awsAccountId;
     }
     /**
-     * @return AWS VPC ID. Changing this property forces recreation of the resource.
+     * @return AWS VPC ID.
      * 
      */
     public String awsVpcId() {
@@ -86,28 +90,28 @@ public final class GetAwsOrgVpcPeeringConnectionResult {
         return this.awsVpcRegion;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Resource ID composed as: `organization_id/organization_vpc_id/aws_account_id/aws_vpc_id/aws_vpc_region`.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return Identifier of the organization.
+     * @return ID of an organization.
      * 
      */
     public String organizationId() {
         return this.organizationId;
     }
     /**
-     * @return Identifier of the organization VPC.
+     * @return Organization VPC ID.
      * 
      */
     public String organizationVpcId() {
         return this.organizationVpcId;
     }
     /**
-     * @return The ID of the peering connection.
+     * @return Organization peering connection ID.
      * 
      */
     public String peeringConnectionId() {
@@ -119,6 +123,9 @@ public final class GetAwsOrgVpcPeeringConnectionResult {
      */
     public String state() {
         return this.state;
+    }
+    public Optional<GetAwsOrgVpcPeeringConnectionTimeouts> timeouts() {
+        return Optional.ofNullable(this.timeouts);
     }
 
     public static Builder builder() {
@@ -139,6 +146,7 @@ public final class GetAwsOrgVpcPeeringConnectionResult {
         private String organizationVpcId;
         private String peeringConnectionId;
         private String state;
+        private @Nullable GetAwsOrgVpcPeeringConnectionTimeouts timeouts;
         public Builder() {}
         public Builder(GetAwsOrgVpcPeeringConnectionResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -151,6 +159,7 @@ public final class GetAwsOrgVpcPeeringConnectionResult {
     	      this.organizationVpcId = defaults.organizationVpcId;
     	      this.peeringConnectionId = defaults.peeringConnectionId;
     	      this.state = defaults.state;
+    	      this.timeouts = defaults.timeouts;
         }
 
         @CustomType.Setter
@@ -225,6 +234,12 @@ public final class GetAwsOrgVpcPeeringConnectionResult {
             this.state = state;
             return this;
         }
+        @CustomType.Setter
+        public Builder timeouts(@Nullable GetAwsOrgVpcPeeringConnectionTimeouts timeouts) {
+
+            this.timeouts = timeouts;
+            return this;
+        }
         public GetAwsOrgVpcPeeringConnectionResult build() {
             final var _resultValue = new GetAwsOrgVpcPeeringConnectionResult();
             _resultValue.awsAccountId = awsAccountId;
@@ -236,6 +251,7 @@ public final class GetAwsOrgVpcPeeringConnectionResult {
             _resultValue.organizationVpcId = organizationVpcId;
             _resultValue.peeringConnectionId = peeringConnectionId;
             _resultValue.state = state;
+            _resultValue.timeouts = timeouts;
             return _resultValue;
         }
     }

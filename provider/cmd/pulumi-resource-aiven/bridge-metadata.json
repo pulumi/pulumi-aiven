@@ -36,6 +36,9 @@
                 "fields": {
                     "principals": {
                         "maxItemsOne": false
+                    },
+                    "supported_regions": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -739,6 +742,9 @@
                                 "plugin_versions": {
                                     "maxItemsOne": false
                                 },
+                                "preferred_zones": {
+                                    "maxItemsOne": false
+                                },
                                 "private_access": {
                                     "maxItemsOne": true
                                 },
@@ -821,6 +827,9 @@
                                 },
                                 "kafka_mirrormaker": {
                                     "maxItemsOne": true
+                                },
+                                "preferred_zones": {
+                                    "maxItemsOne": false
                                 },
                                 "sasl_oauthbearer_allowed_urls": {
                                     "maxItemsOne": false
@@ -1069,6 +1078,9 @@
                                             },
                                             "disk_watermarks": {
                                                 "maxItemsOne": true
+                                            },
+                                            "ml_commons_trusted_connector_endpoints_regex": {
+                                                "maxItemsOne": false
                                             },
                                             "reindex_remote_whitelist": {
                                                 "maxItemsOne": false
@@ -1479,6 +1491,19 @@
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
+                                "datadog_pg_relations": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "relkind": {
+                                                "maxItemsOne": false
+                                            },
+                                            "schemas": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
                                 "datadog_tags": {
                                     "maxItemsOne": false
                                 },
@@ -1706,6 +1731,9 @@
                     "jolokia_user_config": {
                         "maxItemsOne": true
                     },
+                    "opentelemetry_user_config": {
+                        "maxItemsOne": true
+                    },
                     "prometheus_user_config": {
                         "maxItemsOne": true
                     },
@@ -1915,6 +1943,9 @@
                 "majorVersion": 6,
                 "fields": {
                     "principals": {
+                        "maxItemsOne": false
+                    },
+                    "supported_regions": {
                         "maxItemsOne": false
                     }
                 }
@@ -2514,6 +2545,9 @@
                                 "plugin_versions": {
                                     "maxItemsOne": false
                                 },
+                                "preferred_zones": {
+                                    "maxItemsOne": false
+                                },
                                 "private_access": {
                                     "maxItemsOne": true
                                 },
@@ -2596,6 +2630,9 @@
                                 },
                                 "kafka_mirrormaker": {
                                     "maxItemsOne": true
+                                },
+                                "preferred_zones": {
+                                    "maxItemsOne": false
                                 },
                                 "sasl_oauthbearer_allowed_urls": {
                                     "maxItemsOne": false
@@ -2857,6 +2894,9 @@
                                             },
                                             "disk_watermarks": {
                                                 "maxItemsOne": true
+                                            },
+                                            "ml_commons_trusted_connector_endpoints_regex": {
+                                                "maxItemsOne": false
                                             },
                                             "reindex_remote_whitelist": {
                                                 "maxItemsOne": false
@@ -3307,6 +3347,19 @@
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
+                                "datadog_pg_relations": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "relkind": {
+                                                "maxItemsOne": false
+                                            },
+                                            "schemas": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
                                 "datadog_tags": {
                                     "maxItemsOne": false
                                 },
@@ -3534,6 +3587,9 @@
                     "jolokia_user_config": {
                         "maxItemsOne": false
                     },
+                    "opentelemetry_user_config": {
+                        "maxItemsOne": false
+                    },
                     "prometheus_user_config": {
                         "maxItemsOne": false
                     },
@@ -3744,6 +3800,10 @@
     },
     "default-resource-schema-fixups": {
         "resources": {
+            "aiven_aws_org_vpc_peering_connection": {},
+            "aiven_aws_privatelink": {},
+            "aiven_azure_org_vpc_peering_connection": {},
+            "aiven_azure_privatelink": {},
             "aiven_billing_group": {},
             "aiven_byoc_aws_entity": {},
             "aiven_byoc_aws_provision": {},
@@ -3754,9 +3814,16 @@
             "aiven_connection_pool": {},
             "aiven_flink_application": {},
             "aiven_flink_application_deployment": {},
+            "aiven_flink_jar_application": {},
+            "aiven_gcp_org_vpc_peering_connection": {},
+            "aiven_gcp_privatelink": {},
             "aiven_governance_access": {},
+            "aiven_kafka_acl": {},
+            "aiven_kafka_native_acl": {},
             "aiven_kafka_schema_registry_acl": {},
             "aiven_kafka_topic": {},
+            "aiven_kafka_user": {},
+            "aiven_mirrormaker_replication_flow": {},
             "aiven_mysql_database": {},
             "aiven_mysql_user": {},
             "aiven_opensearch_security_plugin_config": {},
@@ -3769,13 +3836,16 @@
             "aiven_organization_group_project": {},
             "aiven_organization_permission": {},
             "aiven_organization_project": {},
+            "aiven_organization_user_group": {},
             "aiven_organization_user_group_member": {},
+            "aiven_organization_vpc": {},
             "aiven_organizational_unit": {},
             "aiven_pg_database": {},
             "aiven_pg_user": {},
             "aiven_project_vpc": {},
             "aiven_static_ip": {},
-            "aiven_upgrade_step": {}
+            "aiven_upgrade_step": {},
+            "aiven_valkey_user": {}
         }
     },
     "mux": {
@@ -3785,11 +3855,11 @@
             "aiven:index/accountTeam:AccountTeam": 0,
             "aiven:index/accountTeamMember:AccountTeamMember": 0,
             "aiven:index/accountTeamProject:AccountTeamProject": 0,
-            "aiven:index/awsOrgVpcPeeringConnection:AwsOrgVpcPeeringConnection": 0,
-            "aiven:index/awsPrivatelink:AwsPrivatelink": 0,
+            "aiven:index/awsOrgVpcPeeringConnection:AwsOrgVpcPeeringConnection": 1,
+            "aiven:index/awsPrivatelink:AwsPrivatelink": 1,
             "aiven:index/awsVpcPeeringConnection:AwsVpcPeeringConnection": 0,
-            "aiven:index/azureOrgVpcPeeringConnection:AzureOrgVpcPeeringConnection": 0,
-            "aiven:index/azurePrivatelink:AzurePrivatelink": 0,
+            "aiven:index/azureOrgVpcPeeringConnection:AzureOrgVpcPeeringConnection": 1,
+            "aiven:index/azurePrivatelink:AzurePrivatelink": 1,
             "aiven:index/azurePrivatelinkConnectionApproval:AzurePrivatelinkConnectionApproval": 0,
             "aiven:index/azureVpcPeeringConnection:AzureVpcPeeringConnection": 0,
             "aiven:index/billingGroup:BillingGroup": 1,
@@ -3808,28 +3878,28 @@
             "aiven:index/flinkApplication:FlinkApplication": 1,
             "aiven:index/flinkApplicationDeployment:FlinkApplicationDeployment": 1,
             "aiven:index/flinkApplicationVersion:FlinkApplicationVersion": 0,
-            "aiven:index/flinkJarApplication:FlinkJarApplication": 0,
+            "aiven:index/flinkJarApplication:FlinkJarApplication": 1,
             "aiven:index/flinkJarApplicationDeployment:FlinkJarApplicationDeployment": 0,
             "aiven:index/flinkJarApplicationVersion:FlinkJarApplicationVersion": 0,
-            "aiven:index/gcpOrgVpcPeeringConnection:GcpOrgVpcPeeringConnection": 0,
-            "aiven:index/gcpPrivatelink:GcpPrivatelink": 0,
+            "aiven:index/gcpOrgVpcPeeringConnection:GcpOrgVpcPeeringConnection": 1,
+            "aiven:index/gcpPrivatelink:GcpPrivatelink": 1,
             "aiven:index/gcpPrivatelinkConnectionApproval:GcpPrivatelinkConnectionApproval": 0,
             "aiven:index/gcpVpcPeeringConnection:GcpVpcPeeringConnection": 0,
             "aiven:index/governanceAccess:GovernanceAccess": 1,
             "aiven:index/grafana:Grafana": 0,
             "aiven:index/kafka:Kafka": 0,
-            "aiven:index/kafkaAcl:KafkaAcl": 0,
+            "aiven:index/kafkaAcl:KafkaAcl": 1,
             "aiven:index/kafkaConnect:KafkaConnect": 0,
             "aiven:index/kafkaConnector:KafkaConnector": 0,
             "aiven:index/kafkaMirrorMaker:KafkaMirrorMaker": 0,
-            "aiven:index/kafkaNativeAcl:KafkaNativeAcl": 0,
+            "aiven:index/kafkaNativeAcl:KafkaNativeAcl": 1,
             "aiven:index/kafkaQuota:KafkaQuota": 0,
             "aiven:index/kafkaSchema:KafkaSchema": 0,
             "aiven:index/kafkaSchemaConfiguration:KafkaSchemaConfiguration": 0,
             "aiven:index/kafkaSchemaRegistryAcl:KafkaSchemaRegistryAcl": 1,
             "aiven:index/kafkaTopic:KafkaTopic": 1,
-            "aiven:index/kafkaUser:KafkaUser": 0,
-            "aiven:index/mirrorMakerReplicationFlow:MirrorMakerReplicationFlow": 0,
+            "aiven:index/kafkaUser:KafkaUser": 1,
+            "aiven:index/mirrorMakerReplicationFlow:MirrorMakerReplicationFlow": 1,
             "aiven:index/mySql:MySql": 0,
             "aiven:index/mysqlDatabase:MysqlDatabase": 1,
             "aiven:index/mysqlUser:MysqlUser": 1,
@@ -3847,9 +3917,9 @@
             "aiven:index/organizationPermission:OrganizationPermission": 1,
             "aiven:index/organizationProject:OrganizationProject": 1,
             "aiven:index/organizationUser:OrganizationUser": 0,
-            "aiven:index/organizationUserGroup:OrganizationUserGroup": 0,
+            "aiven:index/organizationUserGroup:OrganizationUserGroup": 1,
             "aiven:index/organizationUserGroupMember:OrganizationUserGroupMember": 1,
-            "aiven:index/organizationVpc:OrganizationVpc": 0,
+            "aiven:index/organizationVpc:OrganizationVpc": 1,
             "aiven:index/organizationalUnit:OrganizationalUnit": 1,
             "aiven:index/pg:Pg": 0,
             "aiven:index/pgDatabase:PgDatabase": 1,
@@ -3864,7 +3934,7 @@
             "aiven:index/transitGatewayVpcAttachment:TransitGatewayVpcAttachment": 0,
             "aiven:index/upgradeStep:UpgradeStep": 1,
             "aiven:index/valkey:Valkey": 0,
-            "aiven:index/valkeyUser:ValkeyUser": 0
+            "aiven:index/valkeyUser:ValkeyUser": 1
         },
         "functions": {
             "aiven:index/getAccount:getAccount": 0,
@@ -3872,11 +3942,11 @@
             "aiven:index/getAccountTeam:getAccountTeam": 0,
             "aiven:index/getAccountTeamMember:getAccountTeamMember": 0,
             "aiven:index/getAccountTeamProject:getAccountTeamProject": 0,
-            "aiven:index/getAwsOrgVpcPeeringConnection:getAwsOrgVpcPeeringConnection": 0,
-            "aiven:index/getAwsPrivatelink:getAwsPrivatelink": 0,
+            "aiven:index/getAwsOrgVpcPeeringConnection:getAwsOrgVpcPeeringConnection": 1,
+            "aiven:index/getAwsPrivatelink:getAwsPrivatelink": 1,
             "aiven:index/getAwsVpcPeeringConnection:getAwsVpcPeeringConnection": 0,
-            "aiven:index/getAzureOrgVpcPeeringConnection:getAzureOrgVpcPeeringConnection": 0,
-            "aiven:index/getAzurePrivatelink:getAzurePrivatelink": 0,
+            "aiven:index/getAzureOrgVpcPeeringConnection:getAzureOrgVpcPeeringConnection": 1,
+            "aiven:index/getAzurePrivatelink:getAzurePrivatelink": 1,
             "aiven:index/getAzureVpcPeeringConnection:getAzureVpcPeeringConnection": 0,
             "aiven:index/getBillingGroup:getBillingGroup": 1,
             "aiven:index/getClickhouse:getClickhouse": 0,
@@ -3892,12 +3962,12 @@
             "aiven:index/getFlink:getFlink": 0,
             "aiven:index/getFlinkApplication:getFlinkApplication": 1,
             "aiven:index/getFlinkApplicationVersion:getFlinkApplicationVersion": 0,
-            "aiven:index/getGcpOrgVpcPeeringConnection:getGcpOrgVpcPeeringConnection": 0,
-            "aiven:index/getGcpPrivatelink:getGcpPrivatelink": 0,
+            "aiven:index/getGcpOrgVpcPeeringConnection:getGcpOrgVpcPeeringConnection": 1,
+            "aiven:index/getGcpPrivatelink:getGcpPrivatelink": 1,
             "aiven:index/getGcpVpcPeeringConnection:getGcpVpcPeeringConnection": 0,
             "aiven:index/getGrafana:getGrafana": 0,
             "aiven:index/getKafka:getKafka": 0,
-            "aiven:index/getKafkaAcl:getKafkaAcl": 0,
+            "aiven:index/getKafkaAcl:getKafkaAcl": 1,
             "aiven:index/getKafkaConnect:getKafkaConnect": 0,
             "aiven:index/getKafkaConnector:getKafkaConnector": 0,
             "aiven:index/getKafkaMirrorMaker:getKafkaMirrorMaker": 0,
@@ -3906,8 +3976,8 @@
             "aiven:index/getKafkaSchemaRegistryAcl:getKafkaSchemaRegistryAcl": 1,
             "aiven:index/getKafkaTopic:getKafkaTopic": 1,
             "aiven:index/getKafkaTopicList:getKafkaTopicList": 1,
-            "aiven:index/getKafkaUser:getKafkaUser": 0,
-            "aiven:index/getMirrorMakerReplicationFlow:getMirrorMakerReplicationFlow": 0,
+            "aiven:index/getKafkaUser:getKafkaUser": 1,
+            "aiven:index/getMirrorMakerReplicationFlow:getMirrorMakerReplicationFlow": 1,
             "aiven:index/getMySql:getMySql": 0,
             "aiven:index/getMysqlDatabase:getMysqlDatabase": 1,
             "aiven:index/getMysqlUser:getMysqlUser": 1,
@@ -3924,11 +3994,11 @@
             "aiven:index/getOrganizationPaymentMethodList:getOrganizationPaymentMethodList": 1,
             "aiven:index/getOrganizationProject:getOrganizationProject": 1,
             "aiven:index/getOrganizationUser:getOrganizationUser": 0,
-            "aiven:index/getOrganizationUserGroup:getOrganizationUserGroup": 0,
+            "aiven:index/getOrganizationUserGroup:getOrganizationUserGroup": 1,
             "aiven:index/getOrganizationUserGroupList:getOrganizationUserGroupList": 1,
             "aiven:index/getOrganizationUserGroupMemberList:getOrganizationUserGroupMemberList": 1,
             "aiven:index/getOrganizationUserList:getOrganizationUserList": 1,
-            "aiven:index/getOrganizationVpc:getOrganizationVpc": 0,
+            "aiven:index/getOrganizationVpc:getOrganizationVpc": 1,
             "aiven:index/getOrganizationalUnit:getOrganizationalUnit": 1,
             "aiven:index/getPg:getPg": 0,
             "aiven:index/getPgDatabase:getPgDatabase": 1,
@@ -3945,7 +4015,7 @@
             "aiven:index/getThanos:getThanos": 0,
             "aiven:index/getTransitGatewayVpcAttachment:getTransitGatewayVpcAttachment": 0,
             "aiven:index/getValkey:getValkey": 0,
-            "aiven:index/getValkeyUser:getValkeyUser": 0
+            "aiven:index/getValkeyUser:getValkeyUser": 1
         }
     },
     "renames": {

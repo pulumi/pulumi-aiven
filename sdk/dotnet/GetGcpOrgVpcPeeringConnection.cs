@@ -14,8 +14,26 @@ namespace Pulumi.Aiven
         /// <summary>
         /// The GCP VPC Peering Connection data source provides information about the existing Aiven VPC Peering Connection.
         /// 
-        /// **This resource is in the beta stage and may change without notice.** Set
-        /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Aiven.GetGcpOrgVpcPeeringConnection.Invoke(new()
+        ///     {
+        ///         OrganizationId = "org1a23f456789",
+        ///         OrganizationVpcId = "1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+        ///         GcpProjectId = "my-gcp-project",
+        ///         PeerVpc = "my-vpc",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetGcpOrgVpcPeeringConnectionResult> InvokeAsync(GetGcpOrgVpcPeeringConnectionArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGcpOrgVpcPeeringConnectionResult>("aiven:index/getGcpOrgVpcPeeringConnection:getGcpOrgVpcPeeringConnection", args ?? new GetGcpOrgVpcPeeringConnectionArgs(), options.WithDefaults());
@@ -23,8 +41,26 @@ namespace Pulumi.Aiven
         /// <summary>
         /// The GCP VPC Peering Connection data source provides information about the existing Aiven VPC Peering Connection.
         /// 
-        /// **This resource is in the beta stage and may change without notice.** Set
-        /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Aiven.GetGcpOrgVpcPeeringConnection.Invoke(new()
+        ///     {
+        ///         OrganizationId = "org1a23f456789",
+        ///         OrganizationVpcId = "1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+        ///         GcpProjectId = "my-gcp-project",
+        ///         PeerVpc = "my-vpc",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetGcpOrgVpcPeeringConnectionResult> Invoke(GetGcpOrgVpcPeeringConnectionInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGcpOrgVpcPeeringConnectionResult>("aiven:index/getGcpOrgVpcPeeringConnection:getGcpOrgVpcPeeringConnection", args ?? new GetGcpOrgVpcPeeringConnectionInvokeArgs(), options.WithDefaults());
@@ -32,8 +68,26 @@ namespace Pulumi.Aiven
         /// <summary>
         /// The GCP VPC Peering Connection data source provides information about the existing Aiven VPC Peering Connection.
         /// 
-        /// **This resource is in the beta stage and may change without notice.** Set
-        /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Aiven.GetGcpOrgVpcPeeringConnection.Invoke(new()
+        ///     {
+        ///         OrganizationId = "org1a23f456789",
+        ///         OrganizationVpcId = "1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+        ///         GcpProjectId = "my-gcp-project",
+        ///         PeerVpc = "my-vpc",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetGcpOrgVpcPeeringConnectionResult> Invoke(GetGcpOrgVpcPeeringConnectionInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetGcpOrgVpcPeeringConnectionResult>("aiven:index/getGcpOrgVpcPeeringConnection:getGcpOrgVpcPeeringConnection", args ?? new GetGcpOrgVpcPeeringConnectionInvokeArgs(), options.WithDefaults());
@@ -43,28 +97,31 @@ namespace Pulumi.Aiven
     public sealed class GetGcpOrgVpcPeeringConnectionArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Google Cloud project ID. Changing this property forces recreation of the resource.
+        /// Google Cloud project ID.
         /// </summary>
         [Input("gcpProjectId", required: true)]
         public string GcpProjectId { get; set; } = null!;
 
         /// <summary>
-        /// Identifier of the organization.
+        /// ID of an organization.
         /// </summary>
         [Input("organizationId", required: true)]
         public string OrganizationId { get; set; } = null!;
 
         /// <summary>
-        /// Identifier of the organization VPC.
+        /// Organization VPC ID.
         /// </summary>
         [Input("organizationVpcId", required: true)]
         public string OrganizationVpcId { get; set; } = null!;
 
         /// <summary>
-        /// Google Cloud VPC network name. Changing this property forces recreation of the resource.
+        /// Google Cloud VPC network name.
         /// </summary>
         [Input("peerVpc", required: true)]
         public string PeerVpc { get; set; } = null!;
+
+        [Input("timeouts")]
+        public Inputs.GetGcpOrgVpcPeeringConnectionTimeoutsArgs? Timeouts { get; set; }
 
         public GetGcpOrgVpcPeeringConnectionArgs()
         {
@@ -75,28 +132,31 @@ namespace Pulumi.Aiven
     public sealed class GetGcpOrgVpcPeeringConnectionInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Google Cloud project ID. Changing this property forces recreation of the resource.
+        /// Google Cloud project ID.
         /// </summary>
         [Input("gcpProjectId", required: true)]
         public Input<string> GcpProjectId { get; set; } = null!;
 
         /// <summary>
-        /// Identifier of the organization.
+        /// ID of an organization.
         /// </summary>
         [Input("organizationId", required: true)]
         public Input<string> OrganizationId { get; set; } = null!;
 
         /// <summary>
-        /// Identifier of the organization VPC.
+        /// Organization VPC ID.
         /// </summary>
         [Input("organizationVpcId", required: true)]
         public Input<string> OrganizationVpcId { get; set; } = null!;
 
         /// <summary>
-        /// Google Cloud VPC network name. Changing this property forces recreation of the resource.
+        /// Google Cloud VPC network name.
         /// </summary>
         [Input("peerVpc", required: true)]
         public Input<string> PeerVpc { get; set; } = null!;
+
+        [Input("timeouts")]
+        public Input<Inputs.GetGcpOrgVpcPeeringConnectionTimeoutsInputArgs>? Timeouts { get; set; }
 
         public GetGcpOrgVpcPeeringConnectionInvokeArgs()
         {
@@ -109,23 +169,23 @@ namespace Pulumi.Aiven
     public sealed class GetGcpOrgVpcPeeringConnectionResult
     {
         /// <summary>
-        /// Google Cloud project ID. Changing this property forces recreation of the resource.
+        /// Google Cloud project ID.
         /// </summary>
         public readonly string GcpProjectId;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// Resource ID composed as: `organization_id/organization_vpc_id/gcp_project_id/peer_vpc`.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Identifier of the organization.
+        /// ID of an organization.
         /// </summary>
         public readonly string OrganizationId;
         /// <summary>
-        /// Identifier of the organization VPC.
+        /// Organization VPC ID.
         /// </summary>
         public readonly string OrganizationVpcId;
         /// <summary>
-        /// Google Cloud VPC network name. Changing this property forces recreation of the resource.
+        /// Google Cloud VPC network name.
         /// </summary>
         public readonly string PeerVpc;
         /// <summary>
@@ -133,9 +193,10 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string SelfLink;
         /// <summary>
-        /// State of the peering connection.
+        /// State of the peering connection. The possible values are `ACTIVE`, `APPROVED`, `APPROVED_PEER_REQUESTED`, `DELETED`, `DELETED_BY_PEER`, `DELETING`, `ERROR`, `INVALID_SPECIFICATION`, `PENDING_PEER` and `REJECTED_BY_PEER`.
         /// </summary>
         public readonly string State;
+        public readonly Outputs.GetGcpOrgVpcPeeringConnectionTimeoutsResult? Timeouts;
 
         [OutputConstructor]
         private GetGcpOrgVpcPeeringConnectionResult(
@@ -151,7 +212,9 @@ namespace Pulumi.Aiven
 
             string selfLink,
 
-            string state)
+            string state,
+
+            Outputs.GetGcpOrgVpcPeeringConnectionTimeoutsResult? timeouts)
         {
             GcpProjectId = gcpProjectId;
             Id = id;
@@ -160,6 +223,7 @@ namespace Pulumi.Aiven
             PeerVpc = peerVpc;
             SelfLink = selfLink;
             State = state;
+            Timeouts = timeouts;
         }
     }
 }

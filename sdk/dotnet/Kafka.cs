@@ -24,18 +24,8 @@ namespace Pulumi.Aiven
     /// {
     ///     var exampleKafka = new Aiven.Kafka("example_kafka", new()
     ///     {
-    ///         Project = exampleProject.Project,
-    ///         CloudName = "google-europe-west1",
-    ///         Plan = "business-4",
-    ///         ServiceName = "example-kafka",
-    ///         MaintenanceWindowDow = "monday",
-    ///         MaintenanceWindowTime = "10:00:00",
     ///         KafkaUserConfig = new Aiven.Inputs.KafkaKafkaUserConfigArgs
     ///         {
-    ///             KafkaRest = true,
-    ///             KafkaConnect = true,
-    ///             SchemaRegistry = true,
-    ///             KafkaVersion = "3.8",
     ///             Kafka = new Aiven.Inputs.KafkaKafkaUserConfigKafkaArgs
     ///             {
     ///                 GroupMaxSessionTimeoutMs = 70000,
@@ -46,7 +36,17 @@ namespace Pulumi.Aiven
     ///                 KafkaRest = true,
     ///                 KafkaConnect = true,
     ///             },
+    ///             KafkaRest = true,
+    ///             KafkaConnect = true,
+    ///             SchemaRegistry = true,
+    ///             KafkaVersion = "3.8",
     ///         },
+    ///         Project = exampleProject.Project,
+    ///         CloudName = "google-europe-west1",
+    ///         Plan = "business-4",
+    ///         ServiceName = "example-kafka",
+    ///         MaintenanceWindowDow = "monday",
+    ///         MaintenanceWindowTime = "10:00:00",
     ///     });
     /// 
     /// });

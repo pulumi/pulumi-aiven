@@ -6,15 +6,17 @@ package com.pulumi.aiven;
 import com.pulumi.aiven.GcpPrivatelinkArgs;
 import com.pulumi.aiven.Utilities;
 import com.pulumi.aiven.inputs.GcpPrivatelinkState;
+import com.pulumi.aiven.outputs.GcpPrivatelinkTimeouts;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Creates and manages a Google Private Service Connect for an Aiven service in a VPC.
+ * Creates and manages a Google Private Service Connect for an Aiven service in a VPC. If this resource is missing (for example, after a service power off), it&#39;s removed from the state and a new create plan is generated.
  * 
  * ## Example Usage
  * 
@@ -40,9 +42,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var main = new GcpPrivatelink("main", GcpPrivatelinkArgs.builder()
- *             .project(exampleProject.project())
- *             .serviceName(exampleKafka.serviceName())
+ *         var example = new GcpPrivatelink("example", GcpPrivatelinkArgs.builder()
+ *             .project("my-project")
+ *             .serviceName("foo")
  *             .build());
  * 
  *     }
@@ -53,7 +55,7 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import aiven:index/gcpPrivatelink:GcpPrivatelink main PROJECT/SERVICE_NAME
+ * $ pulumi import aiven:index/gcpPrivatelink:GcpPrivatelink example PROJECT/SERVICE_NAME
  * ```
  * 
  */
@@ -74,60 +76,70 @@ public class GcpPrivatelink extends com.pulumi.resources.CustomResource {
         return this.googleServiceAttachment;
     }
     /**
-     * Printable result of the Google Cloud Private Service Connect request.
+     * Legacy response message retained for backward compatibility. **Deprecated**: This attribute is retained only for compatibility with state created by older provider versions and is no longer populated.
+     * 
+     * @deprecated
+     * This attribute is retained only for compatibility with state created by older provider versions and is no longer populated.
      * 
      */
+    @Deprecated /* This attribute is retained only for compatibility with state created by older provider versions and is no longer populated. */
     @Export(name="message", refs={String.class}, tree="[0]")
     private Output<String> message;
 
     /**
-     * @return Printable result of the Google Cloud Private Service Connect request.
+     * @return Legacy response message retained for backward compatibility. **Deprecated**: This attribute is retained only for compatibility with state created by older provider versions and is no longer populated.
      * 
      */
     public Output<String> message() {
         return this.message;
     }
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> project() {
         return this.project;
     }
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service name. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> serviceName() {
         return this.serviceName;
     }
     /**
-     * The state of the Private Service Connect resource.
+     * The state of the Private Service Connect resource. The possible values are `active`, `creating` and `deleting`.
      * 
      */
     @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**
-     * @return The state of the Private Service Connect resource.
+     * @return The state of the Private Service Connect resource. The possible values are `active`, `creating` and `deleting`.
      * 
      */
     public Output<String> state() {
         return this.state;
+    }
+    @Export(name="timeouts", refs={GcpPrivatelinkTimeouts.class}, tree="[0]")
+    private Output</* @Nullable */ GcpPrivatelinkTimeouts> timeouts;
+
+    public Output<Optional<GcpPrivatelinkTimeouts>> timeouts() {
+        return Codegen.optional(this.timeouts);
     }
 
     /**

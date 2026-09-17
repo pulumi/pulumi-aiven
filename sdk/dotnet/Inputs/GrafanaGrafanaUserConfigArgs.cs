@@ -162,6 +162,12 @@ namespace Pulumi.Aiven.Inputs
         [Input("googleAnalyticsUaId")]
         public Input<string>? GoogleAnalyticsUaId { get; set; }
 
+        /// <summary>
+        /// Enum: `11`, and newer. Grafana major version.
+        /// </summary>
+        [Input("grafanaVersion")]
+        public Input<string>? GrafanaVersion { get; set; }
+
         [Input("ipFilterObjects")]
         private InputList<Inputs.GrafanaGrafanaUserConfigIpFilterObjectArgs>? _ipFilterObjects;
 

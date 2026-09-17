@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates and manages a Google Private Service Connect for an Aiven service in a VPC.
+// Creates and manages a Google Private Service Connect for an Aiven service in a VPC. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
 //
 // ## Example Usage
 //
@@ -28,9 +28,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewGcpPrivatelink(ctx, "main", &aiven.GcpPrivatelinkArgs{
-//				Project:     pulumi.Any(exampleProject.Project),
-//				ServiceName: pulumi.Any(exampleKafka.ServiceName),
+//			_, err := aiven.NewGcpPrivatelink(ctx, "example", &aiven.GcpPrivatelinkArgs{
+//				Project:     pulumi.String("my-project"),
+//				ServiceName: pulumi.String("foo"),
 //			})
 //			if err != nil {
 //				return err
@@ -44,21 +44,24 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import aiven:index/gcpPrivatelink:GcpPrivatelink main PROJECT/SERVICE_NAME
+// $ pulumi import aiven:index/gcpPrivatelink:GcpPrivatelink example PROJECT/SERVICE_NAME
 // ```
 type GcpPrivatelink struct {
 	pulumi.CustomResourceState
 
 	// Google Private Service Connect service attachment.
 	GoogleServiceAttachment pulumi.StringOutput `pulumi:"googleServiceAttachment"`
-	// Printable result of the Google Cloud Private Service Connect request.
+	// Legacy response message retained for backward compatibility. **Deprecated**: This attribute is retained only for compatibility with state created by older provider versions and is no longer populated.
+	//
+	// Deprecated: This attribute is retained only for compatibility with state created by older provider versions and is no longer populated.
 	Message pulumi.StringOutput `pulumi:"message"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Service name. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// The state of the Private Service Connect resource.
-	State pulumi.StringOutput `pulumi:"state"`
+	// The state of the Private Service Connect resource. The possible values are `active`, `creating` and `deleting`.
+	State    pulumi.StringOutput             `pulumi:"state"`
+	Timeouts GcpPrivatelinkTimeoutsPtrOutput `pulumi:"timeouts"`
 }
 
 // NewGcpPrivatelink registers a new resource with the given unique name, arguments, and options.
@@ -99,27 +102,33 @@ func GetGcpPrivatelink(ctx *pulumi.Context,
 type gcpPrivatelinkState struct {
 	// Google Private Service Connect service attachment.
 	GoogleServiceAttachment *string `pulumi:"googleServiceAttachment"`
-	// Printable result of the Google Cloud Private Service Connect request.
+	// Legacy response message retained for backward compatibility. **Deprecated**: This attribute is retained only for compatibility with state created by older provider versions and is no longer populated.
+	//
+	// Deprecated: This attribute is retained only for compatibility with state created by older provider versions and is no longer populated.
 	Message *string `pulumi:"message"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project *string `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Service name. Changing this property forces recreation of the resource.
 	ServiceName *string `pulumi:"serviceName"`
-	// The state of the Private Service Connect resource.
-	State *string `pulumi:"state"`
+	// The state of the Private Service Connect resource. The possible values are `active`, `creating` and `deleting`.
+	State    *string                 `pulumi:"state"`
+	Timeouts *GcpPrivatelinkTimeouts `pulumi:"timeouts"`
 }
 
 type GcpPrivatelinkState struct {
 	// Google Private Service Connect service attachment.
 	GoogleServiceAttachment pulumi.StringPtrInput
-	// Printable result of the Google Cloud Private Service Connect request.
+	// Legacy response message retained for backward compatibility. **Deprecated**: This attribute is retained only for compatibility with state created by older provider versions and is no longer populated.
+	//
+	// Deprecated: This attribute is retained only for compatibility with state created by older provider versions and is no longer populated.
 	Message pulumi.StringPtrInput
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project pulumi.StringPtrInput
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Service name. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringPtrInput
-	// The state of the Private Service Connect resource.
-	State pulumi.StringPtrInput
+	// The state of the Private Service Connect resource. The possible values are `active`, `creating` and `deleting`.
+	State    pulumi.StringPtrInput
+	Timeouts GcpPrivatelinkTimeoutsPtrInput
 }
 
 func (GcpPrivatelinkState) ElementType() reflect.Type {
@@ -127,18 +136,20 @@ func (GcpPrivatelinkState) ElementType() reflect.Type {
 }
 
 type gcpPrivatelinkArgs struct {
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName string `pulumi:"serviceName"`
+	// Service name. Changing this property forces recreation of the resource.
+	ServiceName string                  `pulumi:"serviceName"`
+	Timeouts    *GcpPrivatelinkTimeouts `pulumi:"timeouts"`
 }
 
 // The set of arguments for constructing a GcpPrivatelink resource.
 type GcpPrivatelinkArgs struct {
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Service name. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringInput
+	Timeouts    GcpPrivatelinkTimeoutsPtrInput
 }
 
 func (GcpPrivatelinkArgs) ElementType() reflect.Type {
@@ -233,24 +244,30 @@ func (o GcpPrivatelinkOutput) GoogleServiceAttachment() pulumi.StringOutput {
 	return o.ApplyT(func(v *GcpPrivatelink) pulumi.StringOutput { return v.GoogleServiceAttachment }).(pulumi.StringOutput)
 }
 
-// Printable result of the Google Cloud Private Service Connect request.
+// Legacy response message retained for backward compatibility. **Deprecated**: This attribute is retained only for compatibility with state created by older provider versions and is no longer populated.
+//
+// Deprecated: This attribute is retained only for compatibility with state created by older provider versions and is no longer populated.
 func (o GcpPrivatelinkOutput) Message() pulumi.StringOutput {
 	return o.ApplyT(func(v *GcpPrivatelink) pulumi.StringOutput { return v.Message }).(pulumi.StringOutput)
 }
 
-// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// Project name. Changing this property forces recreation of the resource.
 func (o GcpPrivatelinkOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *GcpPrivatelink) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// Service name. Changing this property forces recreation of the resource.
 func (o GcpPrivatelinkOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *GcpPrivatelink) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// The state of the Private Service Connect resource.
+// The state of the Private Service Connect resource. The possible values are `active`, `creating` and `deleting`.
 func (o GcpPrivatelinkOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *GcpPrivatelink) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+func (o GcpPrivatelinkOutput) Timeouts() GcpPrivatelinkTimeoutsPtrOutput {
+	return o.ApplyT(func(v *GcpPrivatelink) GcpPrivatelinkTimeoutsPtrOutput { return v.Timeouts }).(GcpPrivatelinkTimeoutsPtrOutput)
 }
 
 type GcpPrivatelinkArrayOutput struct{ *pulumi.OutputState }

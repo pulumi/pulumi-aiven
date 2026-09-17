@@ -28,6 +28,106 @@ export interface AccountAuthenticationSamlFieldMapping {
     realName?: pulumi.Input<string | undefined>;
 }
 
+export interface AwsOrgVpcPeeringConnectionTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: pulumi.Input<string | undefined>;
+    /**
+     * Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+     *
+     * @deprecated Use operation-specific timeouts instead. This field will be removed in the next major version.
+     */
+    default?: pulumi.Input<string | undefined>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: pulumi.Input<string | undefined>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string | undefined>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: pulumi.Input<string | undefined>;
+}
+
+export interface AwsPrivatelinkTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: pulumi.Input<string | undefined>;
+    /**
+     * Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+     *
+     * @deprecated Use operation-specific timeouts instead. This field will be removed in the next major version.
+     */
+    default?: pulumi.Input<string | undefined>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: pulumi.Input<string | undefined>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string | undefined>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: pulumi.Input<string | undefined>;
+}
+
+export interface AzureOrgVpcPeeringConnectionTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: pulumi.Input<string | undefined>;
+    /**
+     * Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+     *
+     * @deprecated Use operation-specific timeouts instead. This field will be removed in the next major version.
+     */
+    default?: pulumi.Input<string | undefined>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: pulumi.Input<string | undefined>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string | undefined>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: pulumi.Input<string | undefined>;
+}
+
+export interface AzurePrivatelinkTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: pulumi.Input<string | undefined>;
+    /**
+     * Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+     *
+     * @deprecated Use operation-specific timeouts instead. This field will be removed in the next major version.
+     */
+    default?: pulumi.Input<string | undefined>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: pulumi.Input<string | undefined>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string | undefined>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: pulumi.Input<string | undefined>;
+}
+
 export interface BillingGroupTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
@@ -148,7 +248,7 @@ export interface ClickhouseClickhouseUserConfig {
      */
     backupMinute?: pulumi.Input<number | undefined>;
     /**
-     * Enum: `25.3`, `25.8`, and newer. ClickHouse major version.
+     * Enum: `25.3`, `25.8`, `26.3`, and newer. ClickHouse major version.
      */
     clickhouseVersion?: pulumi.Input<string | undefined>;
     /**
@@ -987,7 +1087,7 @@ export interface FlinkJarApplicationApplicationVersionFileInfo {
      */
     fileSize?: pulumi.Input<number | undefined>;
     /**
-     * Indicates whether the uploaded .jar file has been verified by the system and deployment ready. The possible values are `INITIAL`, `READY` and `FAILED`.
+     * Indicates whether the uploaded .jar file has been verified by the system and deployment ready. The possible values are `FAILED`, `INITIAL` and `READY`.
      */
     fileStatus?: pulumi.Input<string | undefined>;
     /**
@@ -995,7 +1095,7 @@ export interface FlinkJarApplicationApplicationVersionFileInfo {
      */
     url?: pulumi.Input<string | undefined>;
     /**
-     * In the case fileStatus is FAILED, the error code of the failure. The possible values are `1`, `2` and `3`.
+     * In the case fileStatus is FAILED, the error code of the failure. The possible values are `1`, `2`, `3` and `4`.
      */
     verifyErrorCode?: pulumi.Input<number | undefined>;
     /**
@@ -1034,7 +1134,7 @@ export interface FlinkJarApplicationCurrentDeployment {
      */
     lastSavepoint?: pulumi.Input<string | undefined>;
     /**
-     * Reading of Flink parallel execution documentation is recommended before setting this value to other than 1. Please do not set this value higher than (total number of nodes x number_of_task_slots), or every new job created will fail.
+     * Reading of Flink parallel execution documentation is recommended before setting this value to other than 1. Please do not set this value higher than (total number of nodes x number*of*task_slots), or every new job created will fail.
      */
     parallelism?: pulumi.Input<number | undefined>;
     /**
@@ -1053,6 +1153,31 @@ export interface FlinkJarApplicationCurrentDeployment {
      * ApplicationVersion ID.
      */
     versionId?: pulumi.Input<string | undefined>;
+}
+
+export interface FlinkJarApplicationTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: pulumi.Input<string | undefined>;
+    /**
+     * Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+     *
+     * @deprecated Use operation-specific timeouts instead. This field will be removed in the next major version.
+     */
+    default?: pulumi.Input<string | undefined>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: pulumi.Input<string | undefined>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string | undefined>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: pulumi.Input<string | undefined>;
 }
 
 export interface FlinkJarApplicationVersionFileInfo {
@@ -1109,6 +1234,112 @@ export interface FlinkTechEmail {
      * An email address to contact for technical issues
      */
     email: pulumi.Input<string>;
+}
+
+export interface GcpOrgVpcPeeringConnectionTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: pulumi.Input<string | undefined>;
+    /**
+     * Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+     *
+     * @deprecated Use operation-specific timeouts instead. This field will be removed in the next major version.
+     */
+    default?: pulumi.Input<string | undefined>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: pulumi.Input<string | undefined>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string | undefined>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: pulumi.Input<string | undefined>;
+}
+
+export interface GcpPrivatelinkTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: pulumi.Input<string | undefined>;
+    /**
+     * Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+     *
+     * @deprecated Use operation-specific timeouts instead. This field will be removed in the next major version.
+     */
+    default?: pulumi.Input<string | undefined>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: pulumi.Input<string | undefined>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string | undefined>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: pulumi.Input<string | undefined>;
+}
+
+export interface GetAwsOrgVpcPeeringConnectionTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: string;
+}
+
+export interface GetAwsOrgVpcPeeringConnectionTimeoutsArgs {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: pulumi.Input<string | undefined>;
+}
+
+export interface GetAwsPrivatelinkTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: string;
+}
+
+export interface GetAwsPrivatelinkTimeoutsArgs {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: pulumi.Input<string | undefined>;
+}
+
+export interface GetAzureOrgVpcPeeringConnectionTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: string;
+}
+
+export interface GetAzureOrgVpcPeeringConnectionTimeoutsArgs {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: pulumi.Input<string | undefined>;
+}
+
+export interface GetAzurePrivatelinkTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: string;
+}
+
+export interface GetAzurePrivatelinkTimeoutsArgs {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: pulumi.Input<string | undefined>;
 }
 
 export interface GetBillingGroupTimeouts {
@@ -1231,6 +1462,48 @@ export interface GetFlinkApplicationTimeouts {
 }
 
 export interface GetFlinkApplicationTimeoutsArgs {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: pulumi.Input<string | undefined>;
+}
+
+export interface GetGcpOrgVpcPeeringConnectionTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: string;
+}
+
+export interface GetGcpOrgVpcPeeringConnectionTimeoutsArgs {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: pulumi.Input<string | undefined>;
+}
+
+export interface GetGcpPrivatelinkTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: string;
+}
+
+export interface GetGcpPrivatelinkTimeoutsArgs {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: pulumi.Input<string | undefined>;
+}
+
+export interface GetKafkaAclTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: string;
+}
+
+export interface GetKafkaAclTimeoutsArgs {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
@@ -1673,6 +1946,34 @@ export interface GetKafkaTopicTimeouts {
 }
 
 export interface GetKafkaTopicTimeoutsArgs {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: pulumi.Input<string | undefined>;
+}
+
+export interface GetKafkaUserTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: string;
+}
+
+export interface GetKafkaUserTimeoutsArgs {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: pulumi.Input<string | undefined>;
+}
+
+export interface GetMirrorMakerReplicationFlowTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: string;
+}
+
+export interface GetMirrorMakerReplicationFlowTimeoutsArgs {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
@@ -2285,6 +2586,20 @@ export interface GetOrganizationUserGroupMemberListTimeoutsArgs {
     read?: pulumi.Input<string | undefined>;
 }
 
+export interface GetOrganizationUserGroupTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: string;
+}
+
+export interface GetOrganizationUserGroupTimeoutsArgs {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: pulumi.Input<string | undefined>;
+}
+
 export interface GetOrganizationUserListTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
@@ -2437,6 +2752,20 @@ export interface GetOrganizationUserListUserUserInfoArgs {
      * User Email.
      */
     userEmail?: pulumi.Input<string | undefined>;
+}
+
+export interface GetOrganizationVpcTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: string;
+}
+
+export interface GetOrganizationVpcTimeoutsArgs {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: pulumi.Input<string | undefined>;
 }
 
 export interface GetOrganizationalUnitTimeouts {
@@ -2889,6 +3218,20 @@ export interface GetServicePlanTimeoutsArgs {
     read?: pulumi.Input<string | undefined>;
 }
 
+export interface GetValkeyUserTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: string;
+}
+
+export interface GetValkeyUserTimeoutsArgs {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: pulumi.Input<string | undefined>;
+}
+
 export interface GovernanceAccessAccessData {
     /**
      * Acls. Changing this property forces recreation of the resource.
@@ -3113,6 +3456,10 @@ export interface GrafanaGrafanaUserConfig {
      * Google Analytics ID. Example: `UA-123456-4`.
      */
     googleAnalyticsUaId?: pulumi.Input<string | undefined>;
+    /**
+     * Enum: `11`, and newer. Grafana major version.
+     */
+    grafanaVersion?: pulumi.Input<string | undefined>;
     /**
      * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      */
@@ -3506,6 +3853,31 @@ export interface GrafanaTechEmail {
     email: pulumi.Input<string>;
 }
 
+export interface KafkaAclTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: pulumi.Input<string | undefined>;
+    /**
+     * Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+     *
+     * @deprecated Use operation-specific timeouts instead. This field will be removed in the next major version.
+     */
+    default?: pulumi.Input<string | undefined>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: pulumi.Input<string | undefined>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string | undefined>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: pulumi.Input<string | undefined>;
+}
+
 export interface KafkaComponent {
     /**
      * Service component name
@@ -3625,6 +3997,10 @@ export interface KafkaConnectKafkaConnectUserConfig {
      * The plugin selected by the user
      */
     pluginVersions?: pulumi.Input<pulumi.Input<inputs.KafkaConnectKafkaConnectUserConfigPluginVersion>[] | undefined>;
+    /**
+     * List of preferred zone IDs for service node placement. Nodes will be placed in these zones when available. If a specified zone is unavailable (e.g., due to capacity constraints), nodes will be placed in other available zones to maintain the configured number of zones for availability. Invalid zone IDs are rejected at configuration time. Zone IDs are cloud-specific: AWS uses zone IDs like `euc1-az1`, GCP uses zone names like `europe-west1-a`, and Azure uses `location/zone` format like `germanywestcentral/1`. If single*zone is enabled with an availability*zone, that setting takes precedence over preferred_zones. Changes take effect on next node recreation (e.g., maintenance or plan change). For eligible plans, nodes outside preferred zones are automatically rebalanced once per day.
+     */
+    preferredZones?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Allow access to selected service ports from private networks
      */
@@ -4049,6 +4425,10 @@ export interface KafkaKafkaUserConfig {
      */
     kafkaVersion?: pulumi.Input<string | undefined>;
     /**
+     * Pin a specific installed Karapace version on this service. Leave null/unset to auto-follow the newest installed version.
+     */
+    karapaceVersion?: pulumi.Input<string | undefined>;
+    /**
      * Use a Let's Encrypt certificate authority (CA) for Kafka SASL authentication. (Default: False).
      */
     letsencryptSasl?: pulumi.Input<boolean | undefined>;
@@ -4057,7 +4437,7 @@ export interface KafkaKafkaUserConfig {
      */
     letsencryptSaslPrivatelink?: pulumi.Input<boolean | undefined>;
     /**
-     * List of preferred zone IDs for service node placement. Nodes will be placed in these zones when available. If a specified zone is unavailable (e.g., due to capacity constraints), nodes will be placed in other available zones to maintain the configured number of zones for availability. Invalid zone IDs are rejected at configuration time. Zone IDs are cloud-specific: AWS uses zone IDs like `euc1-az1`, GCP uses zone names like `europe-west1-a`, and Azure uses `location/zone` format like `germanywestcentral/1`. If single*zone is enabled with an availability*zone, that setting takes precedence over preferred_zones.Changes take effect on next node recreation (e.g., maintenance or plan change). For Kafka professional plans, nodes outside preferred zones are automatically rebalanced once per day.
+     * List of preferred zone IDs for service node placement. Nodes will be placed in these zones when available. If a specified zone is unavailable (e.g., due to capacity constraints), nodes will be placed in other available zones to maintain the configured number of zones for availability. Invalid zone IDs are rejected at configuration time. Zone IDs are cloud-specific: AWS uses zone IDs like `euc1-az1`, GCP uses zone names like `europe-west1-a`, and Azure uses `location/zone` format like `germanywestcentral/1`. If single*zone is enabled with an availability*zone, that setting takes precedence over preferred_zones. Changes take effect on next node recreation (e.g., maintenance or plan change). For eligible plans, nodes outside preferred zones are automatically rebalanced once per day.
      */
     preferredZones?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -4745,6 +5125,22 @@ export interface KafkaKafkaUserConfigSchemaRegistryConfig {
      */
     retriableErrorsSilenced?: pulumi.Input<boolean | undefined>;
     /**
+     * If enabled, the Schema Registry validates OAuth2/OIDC JWT bearer tokens on incoming requests. Requires the OIDC provider settings under the `kafka` configuration (`saslOauthbearerJwksEndpointUrl` and related). Defaults to `false`.
+     */
+    saslOauthbearerAuthenticationEnabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * If enabled, the Schema Registry enforces role-based authorization derived from the JWT roles claim. Requires `saslOauthbearerAuthenticationEnabled` to be enabled. Defaults to `false`.
+     */
+    saslOauthbearerAuthorizationEnabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * JSON object mapping HTTP methods to the list of roles allowed to perform them on the Schema Registry, provided as a JSON-encoded string. Role names use the `karapace.` prefix, e.g. `karapace.schema:read`. Defaults to `{"GET": ["karapace.schema:read", "karapace.subject:read"], "POST": [], "PUT": [], "DELETE": []}`.
+     */
+    saslOauthbearerMethodRoles?: pulumi.Input<string | undefined>;
+    /**
+     * JSON path used to extract the roles claim from the JWT for Schema Registry authorization. Defaults to `resource_access.karapace.roles`.
+     */
+    saslOauthbearerRolesClaimPath?: pulumi.Input<string | undefined>;
+    /**
      * If enabled, causes the Karapace schema-registry service to shutdown when there are invalid schema records in the `_schemas` topic. Defaults to `false`.
      */
     schemaReaderStrictMode?: pulumi.Input<boolean | undefined>;
@@ -4856,6 +5252,10 @@ export interface KafkaMirrorMakerKafkaMirrormakerUserConfig {
      */
     kafkaMirrormaker?: pulumi.Input<inputs.KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker | undefined>;
     /**
+     * List of preferred zone IDs for service node placement. Nodes will be placed in these zones when available. If a specified zone is unavailable (e.g., due to capacity constraints), nodes will be placed in other available zones to maintain the configured number of zones for availability. Invalid zone IDs are rejected at configuration time. Zone IDs are cloud-specific: AWS uses zone IDs like `euc1-az1`, GCP uses zone names like `europe-west1-a`, and Azure uses `location/zone` format like `germanywestcentral/1`. If single*zone is enabled with an availability*zone, that setting takes precedence over preferred_zones. Changes take effect on next node recreation (e.g., maintenance or plan change). For eligible plans, nodes outside preferred zones are automatically rebalanced once per day.
+     */
+    preferredZones?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
      * List of allowed URLs for SASL OAUTHBEARER authentication. Only HTTPS URLs are allowed for security reasons.
      */
     saslOauthbearerAllowedUrls?: pulumi.Input<pulumi.Input<string>[] | undefined>;
@@ -4966,6 +5366,31 @@ export interface KafkaMirrorMakerTechEmail {
      * An email address to contact for technical issues
      */
     email: pulumi.Input<string>;
+}
+
+export interface KafkaNativeAclTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: pulumi.Input<string | undefined>;
+    /**
+     * Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+     *
+     * @deprecated Use operation-specific timeouts instead. This field will be removed in the next major version.
+     */
+    default?: pulumi.Input<string | undefined>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: pulumi.Input<string | undefined>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string | undefined>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: pulumi.Input<string | undefined>;
 }
 
 export interface KafkaSchemaReference {
@@ -5172,6 +5597,56 @@ export interface KafkaTopicTag {
 }
 
 export interface KafkaTopicTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: pulumi.Input<string | undefined>;
+    /**
+     * Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+     *
+     * @deprecated Use operation-specific timeouts instead. This field will be removed in the next major version.
+     */
+    default?: pulumi.Input<string | undefined>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: pulumi.Input<string | undefined>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string | undefined>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: pulumi.Input<string | undefined>;
+}
+
+export interface KafkaUserTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: pulumi.Input<string | undefined>;
+    /**
+     * Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+     *
+     * @deprecated Use operation-specific timeouts instead. This field will be removed in the next major version.
+     */
+    default?: pulumi.Input<string | undefined>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: pulumi.Input<string | undefined>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string | undefined>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: pulumi.Input<string | undefined>;
+}
+
+export interface MirrorMakerReplicationFlowTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
@@ -5438,6 +5913,10 @@ export interface MySqlMysqlUserConfigMigration {
 
 export interface MySqlMysqlUserConfigMysql {
     /**
+     * When enabled, the server automatically grants the EXECUTE and ALTER ROUTINE privileges to the creator of a stored routine and drops them when the routine is dropped.
+     */
+    automaticSpPrivileges?: pulumi.Input<boolean | undefined>;
+    /**
      * The number of seconds that the mysqld server waits for a connect packet before responding with Bad handshake. Example: `10`.
      */
     connectTimeout?: pulumi.Input<number | undefined>;
@@ -5445,6 +5924,18 @@ export interface MySqlMysqlUserConfigMysql {
      * Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or `SYSTEM` to use the MySQL server default. Example: `+03:00`.
      */
     defaultTimeZone?: pulumi.Input<string | undefined>;
+    /**
+     * Number of digits by which to increase the scale of the result of division operations performed with the / operator. Default is 4. Example: `6`.
+     */
+    divPrecisionIncrement?: pulumi.Input<number | undefined>;
+    /**
+     * Whether optimizer JSON output such as EXPLAIN FORMAT=JSON adds end markers that repeat a structure's key near its closing bracket, making large JSON structures easier to read.
+     */
+    endMarkersInJson?: pulumi.Input<boolean | undefined>;
+    /**
+     * The number of equality ranges in a query at or above which the optimizer switches from index dives to index statistics when estimating the number of qualifying rows. 0 means always use index dives. Default is 200. Example: `100`.
+     */
+    eqRangeIndexDiveLimit?: pulumi.Input<number | undefined>;
     /**
      * The maximum permitted result length in bytes for the GROUP_CONCAT() function. Example: `1024`.
      */
@@ -5466,13 +5957,33 @@ export interface MySqlMysqlUserConfigMysql {
      */
     innodbFlushNeighbors?: pulumi.Input<number | undefined>;
     /**
+     * Whether stopword processing is applied when creating or rebuilding an InnoDB FULLTEXT index. Enabled by default.
+     */
+    innodbFtEnableStopword?: pulumi.Input<boolean | undefined>;
+    /**
+     * Maximum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service. Example: `60`.
+     */
+    innodbFtMaxTokenSize?: pulumi.Input<number | undefined>;
+    /**
      * Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service. Example: `3`.
      */
     innodbFtMinTokenSize?: pulumi.Input<number | undefined>;
     /**
+     * Number of words processed during each OPTIMIZE TABLE operation on an InnoDB FULLTEXT index. Default is 2000. Example: `4000`.
+     */
+    innodbFtNumWordOptimize?: pulumi.Input<number | undefined>;
+    /**
+     * Maximum memory in bytes used per query for the InnoDB FULLTEXT search query result cache. Aiven sizes this automatically based on the service plan's memory; setting a value overrides the calculated default.
+     */
+    innodbFtResultCacheLimit?: pulumi.Input<number | undefined>;
+    /**
      * This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables. Example: `db_name/table_name`.
      */
     innodbFtServerStopwordTable?: pulumi.Input<string | undefined>;
+    /**
+     * This option is used to specify your own InnoDB FULLTEXT index stopword list for specific InnoDB tables. Example: `db_name/table_name`.
+     */
+    innodbFtUserStopwordTable?: pulumi.Input<string | undefined>;
     /**
      * The number of I/O operations per second (IOPS) available to InnoDB background tasks, such as flushing pages from the buffer pool and merging data from the change buffer. Set this to a value appropriate for the underlying storage; it must not exceed innodb*io*capacity_max. Example: `2000`.
      */
@@ -5493,6 +6004,10 @@ export interface MySqlMysqlUserConfigMysql {
      * The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
      */
     innodbOnlineAlterLogMaxSize?: pulumi.Input<number | undefined>;
+    /**
+     * When enabled, OPTIMIZE TABLE on InnoDB tables only updates the FULLTEXT index instead of rebuilding the table. Intended to be enabled temporarily during FULLTEXT index maintenance and disabled afterwards; while enabled, OPTIMIZE TABLE does not reclaim table space.
+     */
+    innodbOptimizeFulltextOnly?: pulumi.Input<boolean | undefined>;
     /**
      * When enabled, information about all deadlocks in InnoDB user transactions is recorded in the error log. Disabled by default.
      */
@@ -5538,9 +6053,25 @@ export interface MySqlMysqlUserConfigMysql {
      */
     maxAllowedPacket?: pulumi.Input<number | undefined>;
     /**
+     * The maximum permitted number of simultaneous client connections. Lower this to reserve memory for other work. The value cannot exceed the limit provided by your service plan. Upgrading the plan does not raise a value you have set explicitly, so increase it yourself after an upgrade. Example: `200`.
+     */
+    maxConnections?: pulumi.Input<number | undefined>;
+    /**
+     * Execution timeout in milliseconds for read-only top-level SELECT statements. 0 (the default) means no timeout. Example: `15000`.
+     */
+    maxExecutionTime?: pulumi.Input<number | undefined>;
+    /**
      * Limits the size of internal in-memory tables. Also set tmp*table*size. Default is 16777216 (16M).
      */
     maxHeapTableSize?: pulumi.Input<number | undefined>;
+    /**
+     * Limit on the assumed maximum number of index seeks when looking up rows based on a key. Lowering this value causes the optimizer to prefer index lookups over table scans. Example: `100`.
+     */
+    maxSeeksForKey?: pulumi.Input<number | undefined>;
+    /**
+     * The maximum number of simultaneous connections permitted to any single user account. 0, the default, means no per-account limit. Any other value must be at least 10 below max_connections, so that monitoring and your own admin sessions can still connect when an application saturates its own limit. Aiven's replication and management connections are unaffected however low you set this. Example: `50`.
+     */
+    maxUserConnections?: pulumi.Input<number | undefined>;
     /**
      * Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service. Example: `16384`.
      */
@@ -5553,6 +6084,18 @@ export interface MySqlMysqlUserConfigMysql {
      * The number of seconds to wait for a block to be written to a connection before aborting the write. Example: `30`.
      */
     netWriteTimeout?: pulumi.Input<number | undefined>;
+    /**
+     * Controls the heuristics applied during query optimization to prune less-promising partial plans from the optimizer search space. 0 disables heuristics (exhaustive search); 1 prunes plans based on the number of rows retrieved. Example: `1`.
+     */
+    optimizerPruneLevel?: pulumi.Input<number | undefined>;
+    /**
+     * Maximum depth of search performed by the query optimizer when choosing a join order. Larger values produce better plans for joins over many tables but take longer to compile; 0 lets the optimizer choose the depth automatically. Example: `62`.
+     */
+    optimizerSearchDepth?: pulumi.Input<number | undefined>;
+    /**
+     * Comma-separated list of optimizer flag assignments in the form flag=on|off|default, or the single value `default` to reset all flags. Flags not listed keep their current values. Controls query optimizer behaviors such as index merge, hash join and semijoin strategies. Example: `batched_key_access=on,mrr_cost_based=off`.
+     */
+    optimizerSwitch?: pulumi.Input<string | undefined>;
     /**
      * The number of rows per thread in the events*statements*history table. Changing this parameter will lead to a restart of the MySQL service.
      */
@@ -5585,6 +6128,10 @@ export interface MySqlMysqlUserConfigMysql {
      * The number of seconds the server waits for activity on a noninteractive connection before closing it. Example: `28800`.
      */
     waitTimeout?: pulumi.Input<number | undefined>;
+    /**
+     * Whether window functions are computed to high precision. Disabling this trades exactness for speed in window function evaluation.
+     */
+    windowingUseHighPrecision?: pulumi.Input<boolean | undefined>;
 }
 
 export interface MySqlMysqlUserConfigMysqlIncrementalBackup {
@@ -6317,6 +6864,10 @@ export interface OpenSearchOpensearchUserConfigOpensearch {
      */
     knnMemoryCircuitBreakerLimit?: pulumi.Input<number | undefined>;
     /**
+     * When set to true, the setting allows admins to control access and permissions to the connector API using backend_roles. Defaults to false.
+     */
+    mlCommonsConnectorAccessControlEnabled?: pulumi.Input<boolean | undefined>;
+    /**
      * Enable or disable model access control for ML Commons. When enabled, access to ML models is controlled by security permissions. Defaults to false.
      */
     mlCommonsModelAccessControlEnabled?: pulumi.Input<boolean | undefined>;
@@ -6328,6 +6879,10 @@ export interface OpenSearchOpensearchUserConfigOpensearch {
      * Enable or disable running ML Commons tasks only on ML nodes. When enabled, ML tasks will only execute on nodes designated as ML nodes. Defaults to true.
      */
     mlCommonsOnlyRunOnMlNode?: pulumi.Input<boolean | undefined>;
+    /**
+     * Adds the trusted endpoints to the cluster settings. Supports Java regex expressions.
+     */
+    mlCommonsTrustedConnectorEndpointsRegexes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Defines a limit of how much total remote data can be referenced as a ratio of the size of the disk reserved for the file cache. This is designed to be a safeguard to prevent oversubscribing a cluster. Defaults to 5gb. Requires restarting all OpenSearch nodes.
      */
@@ -7182,7 +7737,7 @@ export interface OrganizationPermissionPermission {
      */
     createTime?: pulumi.Input<string | undefined>;
     /**
-     * List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant". The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:sustainability:read`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `readOnly`, `role:organization:admin`, `role:project:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:metrics:read`, `service:secrets:read` and `service:users:write`.
+     * List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant". The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:event_logs:read`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:sustainability:read`, `organization:users:write`, `project:ai_gateway_keys:read`, `project:ai_gateway_keys:write`, `project:audit_logs:read`, `project:event_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `readOnly`, `role:organization:admin`, `role:project:admin`, `role:project:read`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:metrics:read`, `service:secrets:read` and `service:users:write`.
      */
     permissions: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -7272,6 +7827,56 @@ export interface OrganizationUserGroupMemberTimeouts {
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
     create?: pulumi.Input<string | undefined>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: pulumi.Input<string | undefined>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string | undefined>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: pulumi.Input<string | undefined>;
+}
+
+export interface OrganizationUserGroupTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: pulumi.Input<string | undefined>;
+    /**
+     * Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+     *
+     * @deprecated Use operation-specific timeouts instead. This field will be removed in the next major version.
+     */
+    default?: pulumi.Input<string | undefined>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: pulumi.Input<string | undefined>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string | undefined>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: pulumi.Input<string | undefined>;
+}
+
+export interface OrganizationVpcTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: pulumi.Input<string | undefined>;
+    /**
+     * Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+     *
+     * @deprecated Use operation-specific timeouts instead. This field will be removed in the next major version.
+     */
+    default?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
      */
@@ -7549,6 +8154,10 @@ export interface PgPgUserConfig {
      */
     pgStatMonitorEnable?: pulumi.Input<boolean | undefined>;
     /**
+     * Enable the pg*stat*plans extension. Changing this parameter causes a service restart. Tracks execution plans for SQL queries. Default: `false`.
+     */
+    pgStatPlansEnable?: pulumi.Input<boolean | undefined>;
+    /**
      * Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`, `17`, `18`, and newer. PostgreSQL major version.
      */
     pgVersion?: pulumi.Input<string | undefined>;
@@ -7751,7 +8360,7 @@ export interface PgPgUserConfigPg {
      */
     ioMethod?: pulumi.Input<string | undefined>;
     /**
-     * EXPERIMENTAL: Number of IO worker processes, for io_method=worker. Version 18 and up only. Changing this parameter causes a service restart. Default: `3`.
+     * EXPERIMENTAL: Number of IO worker processes, for io_method=worker. Version 18 and up only.
      */
     ioWorkers?: pulumi.Input<number | undefined>;
     /**
@@ -7855,13 +8464,17 @@ export interface PgPgUserConfigPg {
      */
     pgPartmanBgwDotRole?: pulumi.Input<string | undefined>;
     /**
-     * Enables or disables query plan monitoring. Changing this parameter causes a service restart. Only available for PostgreSQL 13+.
+     * Enables or disables query plan monitoring. Only available for PostgreSQL 13+.
      */
     pgStatMonitorDotPgsmEnableQueryPlan?: pulumi.Input<boolean | undefined>;
     /**
      * Sets the maximum number of buckets. Changing this parameter causes a service restart. Only available for PostgreSQL 13+. Example: `10`.
      */
     pgStatMonitorDotPgsmMaxBuckets?: pulumi.Input<number | undefined>;
+    /**
+     * Enum: `all`, `none`, `top`. Controls which statements' plans are tracked. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable plan tracking. The default is `top`.
+     */
+    pgStatPlansDotTrack?: pulumi.Input<string | undefined>;
     /**
      * Enum: `all`, `none`, `top`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default is `top`.
      */
@@ -8026,6 +8639,10 @@ export interface PgPgUserConfigPgbouncer {
      */
     minPoolSize?: pulumi.Input<number | undefined>;
     /**
+     * If connection and login don’t finish in this amount of time, the connection will be closed. (seconds).
+     */
+    serverConnectTimeout?: pulumi.Input<number | undefined>;
+    /**
      * If a server connection has been idle more than this many seconds it will be dropped. If 0 then timeout is disabled. (seconds). Default: `600`.
      */
     serverIdleTimeout?: pulumi.Input<number | undefined>;
@@ -8033,6 +8650,10 @@ export interface PgPgUserConfigPgbouncer {
      * The pooler will close an unused server connection that has been connected longer than this. (seconds). Default: `3600`.
      */
     serverLifetime?: pulumi.Input<number | undefined>;
+    /**
+     * If login to the server failed, because of failure to connect or from authentication, the pooler waits this much before retrying to connect. During the waiting interval, new clients trying to connect to the failing server will get an error immediately without another connection attempt. (seconds).
+     */
+    serverLoginRetry?: pulumi.Input<number | undefined>;
     /**
      * Run server*reset*query (DISCARD ALL) in all pooling modes. Default: `false`.
      */
@@ -8404,6 +9025,14 @@ export interface ServiceIntegrationDatadogUserConfig {
      */
     datadogDbmEnabled?: pulumi.Input<boolean | undefined>;
     /**
+     * Enable collection of PL/pgSQL function metrics from pg*stat*user_functions. Requires `trackFunctions` to be set to `pl` or `all` in the service configuration.
+     */
+    datadogFunctionMetricsEnabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * Relations to collect PostgreSQL relation metrics for, such as table size, index statistics, row counts, vacuum ages and locks. No relation metrics are collected when unset
+     */
+    datadogPgRelations?: pulumi.Input<pulumi.Input<inputs.ServiceIntegrationDatadogUserConfigDatadogPgRelation>[] | undefined>;
+    /**
      * Enable Datadog PgBouncer Metric Tracking.
      */
     datadogPgbouncerEnabled?: pulumi.Input<boolean | undefined>;
@@ -8447,6 +9076,25 @@ export interface ServiceIntegrationDatadogUserConfig {
      * Datadog Redis Options
      */
     redis?: pulumi.Input<inputs.ServiceIntegrationDatadogUserConfigRedis | undefined>;
+}
+
+export interface ServiceIntegrationDatadogUserConfigDatadogPgRelation {
+    /**
+     * Name of a single relation to collect metrics for. Example: `orders`.
+     */
+    relationName?: pulumi.Input<string | undefined>;
+    /**
+     * Regular expression matching the names of the relations to collect metrics for. Example: `^orders_.*`.
+     */
+    relationRegex?: pulumi.Input<string | undefined>;
+    /**
+     * Only collect lock metrics for these relation kinds. Applies to ordinary tables when unset. Accepted values are the `relkind` values of `pgClass`: `r` (ordinary table), `i` (index), `S` (sequence), `t` (TOAST table), `m` (materialized view), `c` (composite type), `f` (foreign table), `p` (partitioned table).
+     */
+    relkinds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Only collect metrics for relations in these schemas. Applies to all schemas when unset.
+     */
+    schemas?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface ServiceIntegrationDatadogUserConfigDatadogTag {
@@ -8934,6 +9582,33 @@ export interface ServiceIntegrationEndpointJolokiaUserConfig {
      * Jolokia basic authentication username. Example: `jol48k51`.
      */
     basicAuthUsername?: pulumi.Input<string | undefined>;
+}
+
+export interface ServiceIntegrationEndpointOpentelemetryUserConfig {
+    /**
+     * Resource attributes to attach to every exported metric.
+     */
+    attributes?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Enum: `gzip`, `none`. Payload compression.
+     */
+    compression: pulumi.Input<string>;
+    /**
+     * Enum: `json`, `protobuf`. Encoding used for exported metrics. Leave unset to use telegraf's default.
+     */
+    encodingType?: pulumi.Input<string | undefined>;
+    /**
+     * Additional gRPC metadata headers sent with every export request.
+     */
+    headers?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Either a bare `host:port` (OTLP/gRPC, no URL scheme) or an `http://`/`https://` URL (OTLP/HTTP). Example: `otel-collector.example.avns.net:4317`.
+     */
+    serviceAddress: pulumi.Input<string>;
+    /**
+     * Connection timeout in seconds. Example: `10`.
+     */
+    timeout: pulumi.Input<number>;
 }
 
 export interface ServiceIntegrationEndpointPrometheusUserConfig {
@@ -9754,6 +10429,31 @@ export interface ValkeyTechEmail {
     email: pulumi.Input<string>;
 }
 
+export interface ValkeyUserTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: pulumi.Input<string | undefined>;
+    /**
+     * Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+     *
+     * @deprecated Use operation-specific timeouts instead. This field will be removed in the next major version.
+     */
+    default?: pulumi.Input<string | undefined>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: pulumi.Input<string | undefined>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string | undefined>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: pulumi.Input<string | undefined>;
+}
+
 export interface ValkeyValkey {
     /**
      * Valkey password.
@@ -9853,6 +10553,10 @@ export interface ValkeyValkeyUserConfig {
      */
     valkeyActiveExpireEffort?: pulumi.Input<number | undefined>;
     /**
+     * Enable active memory defragmentation. When enabled, Valkey relocates objects off sparsely-used memory pages to reduce fragmentation and return memory to the operating system. Defragmentation runs on the main thread and consumes CPU, so it may increase latency under load. Default: `false`.
+     */
+    valkeyActivedefrag?: pulumi.Input<boolean | undefined>;
+    /**
      * Set Valkey IO thread count. Changing this will cause a restart of the Valkey service. Example: `1`.
      */
     valkeyIoThreads?: pulumi.Input<number | undefined>;
@@ -9893,7 +10597,7 @@ export interface ValkeyValkeyUserConfig {
      */
     valkeyTimeout?: pulumi.Input<number | undefined>;
     /**
-     * Enum: `8.1`, `9.0`, and newer. Valkey major version.
+     * Enum: `8.1`, `9.0`, `9.1`, and newer. Valkey major version.
      */
     valkeyVersion?: pulumi.Input<string | undefined>;
 }

@@ -3,94 +3,114 @@
 
 package com.pulumi.aiven.outputs;
 
+import com.pulumi.aiven.outputs.GetOrganizationUserGroupTimeouts;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetOrganizationUserGroupResult {
     /**
-     * @return Time of creation.
+     * @return User group creation time.
      * 
      */
     private String createTime;
     /**
-     * @return The description of the user group. Changing this property forces recreation of the resource.
+     * @return Description.
      * 
      */
     private String description;
     /**
-     * @return The ID of the user group.
+     * @return ID of the user group. Exactly one of the fields must be specified: `groupId` or `name`.
      * 
      */
     private String groupId;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Resource ID composed as: `organization_id/group_id`.
      * 
      */
     private String id;
     /**
-     * @return The name of the user group. Changing this property forces recreation of the resource.
+     * @return Managed By Scim.
+     * 
+     */
+    private Boolean managedByScim;
+    /**
+     * @return User Group Name. Exactly one of the fields must be specified: `groupId` or `name`.
      * 
      */
     private String name;
     /**
-     * @return The ID of the organization. Changing this property forces recreation of the resource.
+     * @return ID of an organization.
      * 
      */
     private String organizationId;
+    private @Nullable GetOrganizationUserGroupTimeouts timeouts;
     /**
-     * @return Time of last update.
+     * @return User group last update time.
      * 
      */
     private String updateTime;
 
     private GetOrganizationUserGroupResult() {}
     /**
-     * @return Time of creation.
+     * @return User group creation time.
      * 
      */
     public String createTime() {
         return this.createTime;
     }
     /**
-     * @return The description of the user group. Changing this property forces recreation of the resource.
+     * @return Description.
      * 
      */
     public String description() {
         return this.description;
     }
     /**
-     * @return The ID of the user group.
+     * @return ID of the user group. Exactly one of the fields must be specified: `groupId` or `name`.
      * 
      */
     public String groupId() {
         return this.groupId;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Resource ID composed as: `organization_id/group_id`.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return The name of the user group. Changing this property forces recreation of the resource.
+     * @return Managed By Scim.
+     * 
+     */
+    public Boolean managedByScim() {
+        return this.managedByScim;
+    }
+    /**
+     * @return User Group Name. Exactly one of the fields must be specified: `groupId` or `name`.
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return The ID of the organization. Changing this property forces recreation of the resource.
+     * @return ID of an organization.
      * 
      */
     public String organizationId() {
         return this.organizationId;
     }
+    public Optional<GetOrganizationUserGroupTimeouts> timeouts() {
+        return Optional.ofNullable(this.timeouts);
+    }
     /**
-     * @return Time of last update.
+     * @return User group last update time.
      * 
      */
     public String updateTime() {
@@ -110,8 +130,10 @@ public final class GetOrganizationUserGroupResult {
         private String description;
         private String groupId;
         private String id;
+        private Boolean managedByScim;
         private String name;
         private String organizationId;
+        private @Nullable GetOrganizationUserGroupTimeouts timeouts;
         private String updateTime;
         public Builder() {}
         public Builder(GetOrganizationUserGroupResult defaults) {
@@ -120,8 +142,10 @@ public final class GetOrganizationUserGroupResult {
     	      this.description = defaults.description;
     	      this.groupId = defaults.groupId;
     	      this.id = defaults.id;
+    	      this.managedByScim = defaults.managedByScim;
     	      this.name = defaults.name;
     	      this.organizationId = defaults.organizationId;
+    	      this.timeouts = defaults.timeouts;
     	      this.updateTime = defaults.updateTime;
         }
 
@@ -158,6 +182,14 @@ public final class GetOrganizationUserGroupResult {
             return this;
         }
         @CustomType.Setter
+        public Builder managedByScim(Boolean managedByScim) {
+            if (managedByScim == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationUserGroupResult", "managedByScim");
+            }
+            this.managedByScim = managedByScim;
+            return this;
+        }
+        @CustomType.Setter
         public Builder name(String name) {
             if (name == null) {
               throw new MissingRequiredPropertyException("GetOrganizationUserGroupResult", "name");
@@ -174,6 +206,12 @@ public final class GetOrganizationUserGroupResult {
             return this;
         }
         @CustomType.Setter
+        public Builder timeouts(@Nullable GetOrganizationUserGroupTimeouts timeouts) {
+
+            this.timeouts = timeouts;
+            return this;
+        }
+        @CustomType.Setter
         public Builder updateTime(String updateTime) {
             if (updateTime == null) {
               throw new MissingRequiredPropertyException("GetOrganizationUserGroupResult", "updateTime");
@@ -187,8 +225,10 @@ public final class GetOrganizationUserGroupResult {
             _resultValue.description = description;
             _resultValue.groupId = groupId;
             _resultValue.id = id;
+            _resultValue.managedByScim = managedByScim;
             _resultValue.name = name;
             _resultValue.organizationId = organizationId;
+            _resultValue.timeouts = timeouts;
             _resultValue.updateTime = updateTime;
             return _resultValue;
         }

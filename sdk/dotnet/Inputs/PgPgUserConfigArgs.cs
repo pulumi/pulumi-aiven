@@ -156,6 +156,12 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? PgStatMonitorEnable { get; set; }
 
         /// <summary>
+        /// Enable the pg*stat*plans extension. Changing this parameter causes a service restart. Tracks execution plans for SQL queries. Default: `False`.
+        /// </summary>
+        [Input("pgStatPlansEnable")]
+        public Input<bool>? PgStatPlansEnable { get; set; }
+
+        /// <summary>
         /// Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`, `17`, `18`, and newer. PostgreSQL major version.
         /// </summary>
         [Input("pgVersion")]

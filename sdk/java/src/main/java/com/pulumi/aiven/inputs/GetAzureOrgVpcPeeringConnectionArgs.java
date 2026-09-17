@@ -3,11 +3,14 @@
 
 package com.pulumi.aiven.inputs;
 
+import com.pulumi.aiven.inputs.GetAzureOrgVpcPeeringConnectionTimeoutsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetAzureOrgVpcPeeringConnectionArgs extends com.pulumi.resources.InvokeArgs {
@@ -15,14 +18,14 @@ public final class GetAzureOrgVpcPeeringConnectionArgs extends com.pulumi.resour
     public static final GetAzureOrgVpcPeeringConnectionArgs Empty = new GetAzureOrgVpcPeeringConnectionArgs();
 
     /**
-     * The ID of the Azure subscription in UUID4 format. Changing this property forces recreation of the resource.
+     * The ID of the Azure subscription in UUID4 format.
      * 
      */
     @Import(name="azureSubscriptionId", required=true)
     private Output<String> azureSubscriptionId;
 
     /**
-     * @return The ID of the Azure subscription in UUID4 format. Changing this property forces recreation of the resource.
+     * @return The ID of the Azure subscription in UUID4 format.
      * 
      */
     public Output<String> azureSubscriptionId() {
@@ -30,14 +33,14 @@ public final class GetAzureOrgVpcPeeringConnectionArgs extends com.pulumi.resour
     }
 
     /**
-     * Identifier of the organization.
+     * ID of an organization.
      * 
      */
     @Import(name="organizationId", required=true)
     private Output<String> organizationId;
 
     /**
-     * @return Identifier of the organization.
+     * @return ID of an organization.
      * 
      */
     public Output<String> organizationId() {
@@ -45,14 +48,14 @@ public final class GetAzureOrgVpcPeeringConnectionArgs extends com.pulumi.resour
     }
 
     /**
-     * Identifier of the organization VPC.
+     * Organization VPC ID.
      * 
      */
     @Import(name="organizationVpcId", required=true)
     private Output<String> organizationVpcId;
 
     /**
-     * @return Identifier of the organization VPC.
+     * @return Organization VPC ID.
      * 
      */
     public Output<String> organizationVpcId() {
@@ -60,29 +63,36 @@ public final class GetAzureOrgVpcPeeringConnectionArgs extends com.pulumi.resour
     }
 
     /**
-     * The name of the Azure resource group associated with the VNet. Changing this property forces recreation of the resource.
+     * The name of the Azure resource group associated with the VNet.
      * 
      */
     @Import(name="peerResourceGroup", required=true)
     private Output<String> peerResourceGroup;
 
     /**
-     * @return The name of the Azure resource group associated with the VNet. Changing this property forces recreation of the resource.
+     * @return The name of the Azure resource group associated with the VNet.
      * 
      */
     public Output<String> peerResourceGroup() {
         return this.peerResourceGroup;
     }
 
+    @Import(name="timeouts")
+    private @Nullable Output<GetAzureOrgVpcPeeringConnectionTimeoutsArgs> timeouts;
+
+    public Optional<Output<GetAzureOrgVpcPeeringConnectionTimeoutsArgs>> timeouts() {
+        return Optional.ofNullable(this.timeouts);
+    }
+
     /**
-     * The name of the Azure VNet. Changing this property forces recreation of the resource.
+     * The name of the Azure VNet.
      * 
      */
     @Import(name="vnetName", required=true)
     private Output<String> vnetName;
 
     /**
-     * @return The name of the Azure VNet. Changing this property forces recreation of the resource.
+     * @return The name of the Azure VNet.
      * 
      */
     public Output<String> vnetName() {
@@ -96,6 +106,7 @@ public final class GetAzureOrgVpcPeeringConnectionArgs extends com.pulumi.resour
         this.organizationId = $.organizationId;
         this.organizationVpcId = $.organizationVpcId;
         this.peerResourceGroup = $.peerResourceGroup;
+        this.timeouts = $.timeouts;
         this.vnetName = $.vnetName;
     }
 
@@ -118,7 +129,7 @@ public final class GetAzureOrgVpcPeeringConnectionArgs extends com.pulumi.resour
         }
 
         /**
-         * @param azureSubscriptionId The ID of the Azure subscription in UUID4 format. Changing this property forces recreation of the resource.
+         * @param azureSubscriptionId The ID of the Azure subscription in UUID4 format.
          * 
          * @return builder
          * 
@@ -129,7 +140,7 @@ public final class GetAzureOrgVpcPeeringConnectionArgs extends com.pulumi.resour
         }
 
         /**
-         * @param azureSubscriptionId The ID of the Azure subscription in UUID4 format. Changing this property forces recreation of the resource.
+         * @param azureSubscriptionId The ID of the Azure subscription in UUID4 format.
          * 
          * @return builder
          * 
@@ -139,7 +150,7 @@ public final class GetAzureOrgVpcPeeringConnectionArgs extends com.pulumi.resour
         }
 
         /**
-         * @param organizationId Identifier of the organization.
+         * @param organizationId ID of an organization.
          * 
          * @return builder
          * 
@@ -150,7 +161,7 @@ public final class GetAzureOrgVpcPeeringConnectionArgs extends com.pulumi.resour
         }
 
         /**
-         * @param organizationId Identifier of the organization.
+         * @param organizationId ID of an organization.
          * 
          * @return builder
          * 
@@ -160,7 +171,7 @@ public final class GetAzureOrgVpcPeeringConnectionArgs extends com.pulumi.resour
         }
 
         /**
-         * @param organizationVpcId Identifier of the organization VPC.
+         * @param organizationVpcId Organization VPC ID.
          * 
          * @return builder
          * 
@@ -171,7 +182,7 @@ public final class GetAzureOrgVpcPeeringConnectionArgs extends com.pulumi.resour
         }
 
         /**
-         * @param organizationVpcId Identifier of the organization VPC.
+         * @param organizationVpcId Organization VPC ID.
          * 
          * @return builder
          * 
@@ -181,7 +192,7 @@ public final class GetAzureOrgVpcPeeringConnectionArgs extends com.pulumi.resour
         }
 
         /**
-         * @param peerResourceGroup The name of the Azure resource group associated with the VNet. Changing this property forces recreation of the resource.
+         * @param peerResourceGroup The name of the Azure resource group associated with the VNet.
          * 
          * @return builder
          * 
@@ -192,7 +203,7 @@ public final class GetAzureOrgVpcPeeringConnectionArgs extends com.pulumi.resour
         }
 
         /**
-         * @param peerResourceGroup The name of the Azure resource group associated with the VNet. Changing this property forces recreation of the resource.
+         * @param peerResourceGroup The name of the Azure resource group associated with the VNet.
          * 
          * @return builder
          * 
@@ -201,8 +212,17 @@ public final class GetAzureOrgVpcPeeringConnectionArgs extends com.pulumi.resour
             return peerResourceGroup(Output.of(peerResourceGroup));
         }
 
+        public Builder timeouts(@Nullable Output<GetAzureOrgVpcPeeringConnectionTimeoutsArgs> timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
+        public Builder timeouts(GetAzureOrgVpcPeeringConnectionTimeoutsArgs timeouts) {
+            return timeouts(Output.of(timeouts));
+        }
+
         /**
-         * @param vnetName The name of the Azure VNet. Changing this property forces recreation of the resource.
+         * @param vnetName The name of the Azure VNet.
          * 
          * @return builder
          * 
@@ -213,7 +233,7 @@ public final class GetAzureOrgVpcPeeringConnectionArgs extends com.pulumi.resour
         }
 
         /**
-         * @param vnetName The name of the Azure VNet. Changing this property forces recreation of the resource.
+         * @param vnetName The name of the Azure VNet.
          * 
          * @return builder
          * 

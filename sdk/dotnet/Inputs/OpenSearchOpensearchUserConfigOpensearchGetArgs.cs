@@ -233,6 +233,12 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? KnnMemoryCircuitBreakerLimit { get; set; }
 
         /// <summary>
+        /// When set to true, the setting allows admins to control access and permissions to the connector API using backend_roles. Defaults to false.
+        /// </summary>
+        [Input("mlCommonsConnectorAccessControlEnabled")]
+        public Input<bool>? MlCommonsConnectorAccessControlEnabled { get; set; }
+
+        /// <summary>
         /// Enable or disable model access control for ML Commons. When enabled, access to ML models is controlled by security permissions. Defaults to false.
         /// </summary>
         [Input("mlCommonsModelAccessControlEnabled")]
@@ -249,6 +255,18 @@ namespace Pulumi.Aiven.Inputs
         /// </summary>
         [Input("mlCommonsOnlyRunOnMlNode")]
         public Input<bool>? MlCommonsOnlyRunOnMlNode { get; set; }
+
+        [Input("mlCommonsTrustedConnectorEndpointsRegexes")]
+        private InputList<string>? _mlCommonsTrustedConnectorEndpointsRegexes;
+
+        /// <summary>
+        /// Adds the trusted endpoints to the cluster settings. Supports Java regex expressions.
+        /// </summary>
+        public InputList<string> MlCommonsTrustedConnectorEndpointsRegexes
+        {
+            get => _mlCommonsTrustedConnectorEndpointsRegexes ?? (_mlCommonsTrustedConnectorEndpointsRegexes = new InputList<string>());
+            set => _mlCommonsTrustedConnectorEndpointsRegexes = value;
+        }
 
         /// <summary>
         /// Defines a limit of how much total remote data can be referenced as a ratio of the size of the disk reserved for the file cache. This is designed to be a safeguard to prevent oversubscribing a cluster. Defaults to 5gb. Requires restarting all OpenSearch nodes.

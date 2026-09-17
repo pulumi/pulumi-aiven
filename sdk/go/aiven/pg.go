@@ -41,15 +41,7 @@ import (
 //				return err
 //			}
 //			_, err = aiven.NewPg(ctx, "example_postgres", &aiven.PgArgs{
-//				Project:               pulumi.Any(exampleProject.Project),
-//				CloudName:             pulumi.String("google-europe-west1"),
-//				Plan:                  pulumi.String("startup-4"),
-//				ServiceName:           pulumi.String("example-postgres-service"),
-//				MaintenanceWindowDow:  pulumi.String("monday"),
-//				MaintenanceWindowTime: pulumi.String("10:00:00"),
-//				StaticIps:             invokeToset.Result.(pulumi.StringArray),
 //				PgUserConfig: &aiven.PgPgUserConfigArgs{
-//					StaticIps: pulumi.Bool(true),
 //					PublicAccess: &aiven.PgPgUserConfigPublicAccessArgs{
 //						Pg:         pulumi.Bool(true),
 //						Prometheus: pulumi.Bool(false),
@@ -58,8 +50,16 @@ import (
 //						IdleInTransactionSessionTimeout: pulumi.Int(900),
 //						LogMinDurationStatement:         pulumi.Int(-1),
 //					},
+//					StaticIps: pulumi.Bool(true),
 //				},
-//			})
+//				Project:               pulumi.Any(exampleProject.Project),
+//				CloudName:             pulumi.String("google-europe-west1"),
+//				Plan:                  pulumi.String("startup-4"),
+//				ServiceName:           pulumi.String("example-postgres-service"),
+//				MaintenanceWindowDow:  pulumi.String("monday"),
+//				MaintenanceWindowTime: pulumi.String("10:00:00"),
+//				StaticIps:             invokeToset.Result.(pulumi.StringArray),
+//			}, pulumi.Timeouts(&pulumi.CustomTimeouts{Create: "20m", Update: "15m"}))
 //			if err != nil {
 //				return err
 //			}

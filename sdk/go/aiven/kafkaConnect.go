@@ -48,10 +48,6 @@ import (
 //			}
 //			// Create a Kafka Connect service.
 //			exampleKafkaConnect, err := aiven.NewKafkaConnect(ctx, "example_kafka_connect", &aiven.KafkaConnectArgs{
-//				Project:     pulumi.Any(exampleProject.Project),
-//				CloudName:   pulumi.String("google-europe-west1"),
-//				Plan:        pulumi.String("startup-4"),
-//				ServiceName: pulumi.String("example-connect-service"),
 //				KafkaConnectUserConfig: &aiven.KafkaConnectKafkaConnectUserConfigArgs{
 //					KafkaConnect: &aiven.KafkaConnectKafkaConnectUserConfigKafkaConnectArgs{
 //						ConsumerIsolationLevel: pulumi.String("read_committed"),
@@ -60,16 +56,16 @@ import (
 //						KafkaConnect: pulumi.Bool(true),
 //					},
 //				},
+//				Project:     pulumi.Any(exampleProject.Project),
+//				CloudName:   pulumi.String("google-europe-west1"),
+//				Plan:        pulumi.String("startup-4"),
+//				ServiceName: pulumi.String("example-connect-service"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			// Integrate the Kafka and Kafka Connect services.
 //			_, err = aiven.NewServiceIntegration(ctx, "kafka_connect_integration", &aiven.ServiceIntegrationArgs{
-//				Project:                pulumi.Any(exampleProject.Project),
-//				IntegrationType:        pulumi.String("kafka_connect"),
-//				SourceServiceName:      exampleKafka.ServiceName,
-//				DestinationServiceName: exampleKafkaConnect.ServiceName,
 //				KafkaConnectUserConfig: &aiven.ServiceIntegrationKafkaConnectUserConfigArgs{
 //					KafkaConnect: &aiven.ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs{
 //						GroupId:            pulumi.String("connect"),
@@ -77,6 +73,10 @@ import (
 //						OffsetStorageTopic: pulumi.String("__connect_offsets"),
 //					},
 //				},
+//				Project:                pulumi.Any(exampleProject.Project),
+//				IntegrationType:        pulumi.String("kafka_connect"),
+//				SourceServiceName:      exampleKafka.ServiceName,
+//				DestinationServiceName: exampleKafkaConnect.ServiceName,
 //			})
 //			if err != nil {
 //				return err

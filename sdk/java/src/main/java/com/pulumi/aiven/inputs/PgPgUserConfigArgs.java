@@ -333,6 +333,21 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * Enable the pg*stat*plans extension. Changing this parameter causes a service restart. Tracks execution plans for SQL queries. Default: `false`.
+     * 
+     */
+    @Import(name="pgStatPlansEnable")
+    private @Nullable Output<Boolean> pgStatPlansEnable;
+
+    /**
+     * @return Enable the pg*stat*plans extension. Changing this parameter causes a service restart. Tracks execution plans for SQL queries. Default: `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> pgStatPlansEnable() {
+        return Optional.ofNullable(this.pgStatPlansEnable);
+    }
+
+    /**
      * Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`, `17`, `18`, and newer. PostgreSQL major version.
      * 
      */
@@ -616,6 +631,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         this.pgReadReplica = $.pgReadReplica;
         this.pgServiceToForkFrom = $.pgServiceToForkFrom;
         this.pgStatMonitorEnable = $.pgStatMonitorEnable;
+        this.pgStatPlansEnable = $.pgStatPlansEnable;
         this.pgVersion = $.pgVersion;
         this.pgaudit = $.pgaudit;
         this.pgbouncer = $.pgbouncer;
@@ -1101,6 +1117,27 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder pgStatMonitorEnable(Boolean pgStatMonitorEnable) {
             return pgStatMonitorEnable(Output.of(pgStatMonitorEnable));
+        }
+
+        /**
+         * @param pgStatPlansEnable Enable the pg*stat*plans extension. Changing this parameter causes a service restart. Tracks execution plans for SQL queries. Default: `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pgStatPlansEnable(@Nullable Output<Boolean> pgStatPlansEnable) {
+            $.pgStatPlansEnable = pgStatPlansEnable;
+            return this;
+        }
+
+        /**
+         * @param pgStatPlansEnable Enable the pg*stat*plans extension. Changing this parameter causes a service restart. Tracks execution plans for SQL queries. Default: `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pgStatPlansEnable(Boolean pgStatPlansEnable) {
+            return pgStatPlansEnable(Output.of(pgStatPlansEnable));
         }
 
         /**

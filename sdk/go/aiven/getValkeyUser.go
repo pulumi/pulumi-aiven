@@ -11,7 +11,35 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Valkey User data source provides information about the existing Aiven for Valkey user.
+// Gets information about an Aiven for Valkey™ service user.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := aiven.GetValkeyUser(ctx, &aiven.LookupValkeyUserArgs{
+//				Project:     "my-project",
+//				ServiceName: "my-valkey",
+//				Username:    "testuser",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupValkeyUser(ctx *pulumi.Context, args *LookupValkeyUserArgs, opts ...pulumi.InvokeOption) (*LookupValkeyUserResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupValkeyUserResult
@@ -24,27 +52,31 @@ func LookupValkeyUser(ctx *pulumi.Context, args *LookupValkeyUserArgs, opts ...p
 
 // A collection of arguments for invoking getValkeyUser.
 type LookupValkeyUserArgs struct {
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name.
 	Project string `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName string `pulumi:"serviceName"`
-	// Name of the Valkey service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Service name.
+	ServiceName string                 `pulumi:"serviceName"`
+	Timeouts    *GetValkeyUserTimeouts `pulumi:"timeouts"`
+	// Service username.
 	Username string `pulumi:"username"`
 }
 
 // A collection of values returned by getValkeyUser.
 type LookupValkeyUserResult struct {
-	// The provider-assigned unique ID for this managed resource.
+	// Resource ID composed as: `project/service_name/username`.
 	Id string `pulumi:"id"`
-	// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+	// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`.
 	Password string `pulumi:"password"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. 'unknown' is reported when the hash is missing or uses an unrecognised format. The possible values are `md5`, `scram-sha-256` and `unknown`.
+	PasswordEncryptionType string `pulumi:"passwordEncryptionType"`
+	// Project name.
 	Project string `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName string `pulumi:"serviceName"`
-	// User account type, such as primary or regular account.
+	// Service name.
+	ServiceName string                 `pulumi:"serviceName"`
+	Timeouts    *GetValkeyUserTimeouts `pulumi:"timeouts"`
+	// Account type.
 	Type string `pulumi:"type"`
-	// Name of the Valkey service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Service username.
 	Username string `pulumi:"username"`
 	// Allow or disallow command categories. To allow a category use the prefix `+@` and to disallow use `-@`. See the [Valkey documentation](https://valkey.io/topics/acl/) for details on the ACL feature. The field is required with `valkeyAclCommands` and `valkeyAclKeys`.
 	ValkeyAclCategories []string `pulumi:"valkeyAclCategories"`
@@ -52,7 +84,7 @@ type LookupValkeyUserResult struct {
 	ValkeyAclChannels []string `pulumi:"valkeyAclChannels"`
 	// Defines rules for individual commands. To allow a command use the prefix `+` and to disallow use `-`. The field is required with `valkeyAclCategories` and `valkeyAclKeys`.
 	ValkeyAclCommands []string `pulumi:"valkeyAclCommands"`
-	// Key access rules. Entries are defined as standard glob patterns. The field is required with `valkeyAclCategories` and `valkeyAclKeys`.
+	// Key access rules. Entries are defined as standard glob patterns. The field is required with `valkeyAclCategories` and `valkeyAclCommands`.
 	ValkeyAclKeys []string `pulumi:"valkeyAclKeys"`
 }
 
@@ -63,11 +95,12 @@ func LookupValkeyUserOutput(ctx *pulumi.Context, args LookupValkeyUserOutputArgs
 
 // A collection of arguments for invoking getValkeyUser.
 type LookupValkeyUserOutputArgs struct {
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name.
 	Project pulumi.StringInput `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName pulumi.StringInput `pulumi:"serviceName"`
-	// Name of the Valkey service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Service name.
+	ServiceName pulumi.StringInput            `pulumi:"serviceName"`
+	Timeouts    GetValkeyUserTimeoutsPtrInput `pulumi:"timeouts"`
+	// Service username.
 	Username pulumi.StringInput `pulumi:"username"`
 }
 
@@ -90,32 +123,41 @@ func (o LookupValkeyUserResultOutput) ToLookupValkeyUserResultOutputWithContext(
 	return o
 }
 
-// The provider-assigned unique ID for this managed resource.
+// Resource ID composed as: `project/service_name/username`.
 func (o LookupValkeyUserResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupValkeyUserResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`.
 func (o LookupValkeyUserResultOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupValkeyUserResult) string { return v.Password }).(pulumi.StringOutput)
 }
 
-// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. 'unknown' is reported when the hash is missing or uses an unrecognised format. The possible values are `md5`, `scram-sha-256` and `unknown`.
+func (o LookupValkeyUserResultOutput) PasswordEncryptionType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupValkeyUserResult) string { return v.PasswordEncryptionType }).(pulumi.StringOutput)
+}
+
+// Project name.
 func (o LookupValkeyUserResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupValkeyUserResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
-// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// Service name.
 func (o LookupValkeyUserResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupValkeyUserResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// User account type, such as primary or regular account.
+func (o LookupValkeyUserResultOutput) Timeouts() GetValkeyUserTimeoutsPtrOutput {
+	return o.ApplyT(func(v LookupValkeyUserResult) *GetValkeyUserTimeouts { return v.Timeouts }).(GetValkeyUserTimeoutsPtrOutput)
+}
+
+// Account type.
 func (o LookupValkeyUserResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupValkeyUserResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// Name of the Valkey service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// Service username.
 func (o LookupValkeyUserResultOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupValkeyUserResult) string { return v.Username }).(pulumi.StringOutput)
 }
@@ -135,7 +177,7 @@ func (o LookupValkeyUserResultOutput) ValkeyAclCommands() pulumi.StringArrayOutp
 	return o.ApplyT(func(v LookupValkeyUserResult) []string { return v.ValkeyAclCommands }).(pulumi.StringArrayOutput)
 }
 
-// Key access rules. Entries are defined as standard glob patterns. The field is required with `valkeyAclCategories` and `valkeyAclKeys`.
+// Key access rules. Entries are defined as standard glob patterns. The field is required with `valkeyAclCategories` and `valkeyAclCommands`.
 func (o LookupValkeyUserResultOutput) ValkeyAclKeys() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupValkeyUserResult) []string { return v.ValkeyAclKeys }).(pulumi.StringArrayOutput)
 }

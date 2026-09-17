@@ -20,7 +20,10 @@ import * as utilities from "./utilities";
  *     userId: "foo",
  *     description: "Integration client Alpha",
  *     extendWhenUsed: false,
- *     ipAllowlists: ["192.168.0.0/24"],
+ *     ipAllowlists: [
+ *         "192.168.0.0/24",
+ *         "2001:db8::/32",
+ *     ],
  *     maxAgeSeconds: 600,
  *     scopes: ["user:read"],
  * });

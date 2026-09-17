@@ -6,18 +6,17 @@ package com.pulumi.aiven;
 import com.pulumi.aiven.OrganizationVpcArgs;
 import com.pulumi.aiven.Utilities;
 import com.pulumi.aiven.inputs.OrganizationVpcState;
+import com.pulumi.aiven.outputs.OrganizationVpcTimeouts;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Creates and manages a VPC for an Aiven organization.
- * 
- * **This resource is in the beta stage and may change without notice.** Set
- * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+ * Creates and manages a VPC for an Aiven organization. If this resource is missing (for example, after a service power off), it&#39;s removed from the state and a new create plan is generated.
  * 
  * ## Example Usage
  * 
@@ -43,10 +42,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleVpc = new OrganizationVpc("exampleVpc", OrganizationVpcArgs.builder()
- *             .organizationId(example.id())
- *             .cloudName("aws-eu-central-1")
+ *         var example = new OrganizationVpc("example", OrganizationVpcArgs.builder()
+ *             .organizationId("org1a23f456789")
+ *             .cloudName("aws-eu-west-1")
  *             .networkCidr("10.0.0.0/24")
+ *             .displayName("My organization VPC")
  *             .build());
  * 
  *     }
@@ -78,42 +78,56 @@ public class OrganizationVpc extends com.pulumi.resources.CustomResource {
         return this.cloudName;
     }
     /**
-     * Time of creation of the VPC.
+     * VPC creation timestamp.
      * 
      */
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
-     * @return Time of creation of the VPC.
+     * @return VPC creation timestamp.
      * 
      */
     public Output<String> createTime() {
         return this.createTime;
     }
     /**
-     * Network address range used by the VPC. For example, `192.168.0.0/24`.
+     * User defined display name for this VPC. Maximum length: `64`.
+     * 
+     */
+    @Export(name="displayName", refs={String.class}, tree="[0]")
+    private Output<String> displayName;
+
+    /**
+     * @return User defined display name for this VPC. Maximum length: `64`.
+     * 
+     */
+    public Output<String> displayName() {
+        return this.displayName;
+    }
+    /**
+     * Network address range used by the VPC. For example, `192.168.0.0/24`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="networkCidr", refs={String.class}, tree="[0]")
     private Output<String> networkCidr;
 
     /**
-     * @return Network address range used by the VPC. For example, `192.168.0.0/24`.
+     * @return Network address range used by the VPC. For example, `192.168.0.0/24`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> networkCidr() {
         return this.networkCidr;
     }
     /**
-     * The ID of the organization.
+     * ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="organizationId", refs={String.class}, tree="[0]")
     private Output<String> organizationId;
 
     /**
-     * @return The ID of the organization.
+     * @return ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> organizationId() {
@@ -147,15 +161,21 @@ public class OrganizationVpc extends com.pulumi.resources.CustomResource {
     public Output<String> state() {
         return this.state;
     }
+    @Export(name="timeouts", refs={OrganizationVpcTimeouts.class}, tree="[0]")
+    private Output</* @Nullable */ OrganizationVpcTimeouts> timeouts;
+
+    public Output<Optional<OrganizationVpcTimeouts>> timeouts() {
+        return Codegen.optional(this.timeouts);
+    }
     /**
-     * Time of the last update of the VPC.
+     * Timestamp of last change to VPC.
      * 
      */
     @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**
-     * @return Time of the last update of the VPC.
+     * @return Timestamp of last change to VPC.
      * 
      */
     public Output<String> updateTime() {

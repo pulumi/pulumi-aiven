@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['AzurePrivatelinkArgs', 'AzurePrivatelink']
 
@@ -21,23 +23,26 @@ class AzurePrivatelinkArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[_builtins.str],
                  service_name: pulumi.Input[_builtins.str],
-                 user_subscription_ids: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+                 user_subscription_ids: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
+                 timeouts: pulumi.Input[Optional['AzurePrivatelinkTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a AzurePrivatelink resource.
 
-        :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] user_subscription_ids: A list of allowed subscription IDs. Maximum length: `16`.
+        :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] service_name: Service name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] user_subscription_ids: IDs of Azure subscriptions allowed to connect to the service.
         """
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "service_name", service_name)
         pulumi.set(__self__, "user_subscription_ids", user_subscription_ids)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
 
     @_builtins.property
     @pulumi.getter
     def project(self) -> pulumi.Input[_builtins.str]:
         """
-        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Project name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -49,7 +54,7 @@ class AzurePrivatelinkArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[_builtins.str]:
         """
-        The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Service name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
@@ -61,13 +66,22 @@ class AzurePrivatelinkArgs:
     @pulumi.getter(name="userSubscriptionIds")
     def user_subscription_ids(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
         """
-        A list of allowed subscription IDs. Maximum length: `16`.
+        IDs of Azure subscriptions allowed to connect to the service.
         """
         return pulumi.get(self, "user_subscription_ids")
 
     @user_subscription_ids.setter
     def user_subscription_ids(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
         pulumi.set(self, "user_subscription_ids", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> pulumi.Input[Optional['AzurePrivatelinkTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: pulumi.Input[Optional['AzurePrivatelinkTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
 
 
 @pulumi.input_type
@@ -79,22 +93,26 @@ class _AzurePrivatelinkState:
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  service_name: pulumi.Input[Optional[_builtins.str]] = None,
                  state: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional['AzurePrivatelinkTimeoutsArgs']] = None,
                  user_subscription_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering AzurePrivatelink resources.
 
-        :param pulumi.Input[_builtins.str] azure_service_alias: The Azure Private Link service alias.
-        :param pulumi.Input[_builtins.str] azure_service_id: The Azure Private Link service ID.
-        :param pulumi.Input[_builtins.str] message: Printable result of the Azure Private Link request.
-        :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] state: The state of the Private Link resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] user_subscription_ids: A list of allowed subscription IDs. Maximum length: `16`.
+        :param pulumi.Input[_builtins.str] azure_service_alias: Azure Privatelink service alias.
+        :param pulumi.Input[_builtins.str] azure_service_id: Azure Privatelink service ID.
+        :param pulumi.Input[_builtins.str] message: Legacy response message retained for backward compatibility. **Deprecated**: This attribute is retained only for compatibility with state created by older provider versions and is no longer populated.
+        :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] service_name: Service name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] state: Privatelink resource state. The possible values are `active`, `creating` and `deleting`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] user_subscription_ids: IDs of Azure subscriptions allowed to connect to the service.
         """
         if azure_service_alias is not None:
             pulumi.set(__self__, "azure_service_alias", azure_service_alias)
         if azure_service_id is not None:
             pulumi.set(__self__, "azure_service_id", azure_service_id)
+        if message is not None:
+            warnings.warn("""This attribute is retained only for compatibility with state created by older provider versions and is no longer populated.""", DeprecationWarning)
+            pulumi.log.warn("""message is deprecated: This attribute is retained only for compatibility with state created by older provider versions and is no longer populated.""")
         if message is not None:
             pulumi.set(__self__, "message", message)
         if project is not None:
@@ -103,6 +121,8 @@ class _AzurePrivatelinkState:
             pulumi.set(__self__, "service_name", service_name)
         if state is not None:
             pulumi.set(__self__, "state", state)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
         if user_subscription_ids is not None:
             pulumi.set(__self__, "user_subscription_ids", user_subscription_ids)
 
@@ -110,7 +130,7 @@ class _AzurePrivatelinkState:
     @pulumi.getter(name="azureServiceAlias")
     def azure_service_alias(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The Azure Private Link service alias.
+        Azure Privatelink service alias.
         """
         return pulumi.get(self, "azure_service_alias")
 
@@ -122,7 +142,7 @@ class _AzurePrivatelinkState:
     @pulumi.getter(name="azureServiceId")
     def azure_service_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The Azure Private Link service ID.
+        Azure Privatelink service ID.
         """
         return pulumi.get(self, "azure_service_id")
 
@@ -132,9 +152,10 @@ class _AzurePrivatelinkState:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""This attribute is retained only for compatibility with state created by older provider versions and is no longer populated.""")
     def message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Printable result of the Azure Private Link request.
+        Legacy response message retained for backward compatibility. **Deprecated**: This attribute is retained only for compatibility with state created by older provider versions and is no longer populated.
         """
         return pulumi.get(self, "message")
 
@@ -146,7 +167,7 @@ class _AzurePrivatelinkState:
     @pulumi.getter
     def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Project name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -158,7 +179,7 @@ class _AzurePrivatelinkState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Service name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
@@ -170,7 +191,7 @@ class _AzurePrivatelinkState:
     @pulumi.getter
     def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The state of the Private Link resource.
+        Privatelink resource state. The possible values are `active`, `creating` and `deleting`.
         """
         return pulumi.get(self, "state")
 
@@ -179,10 +200,19 @@ class _AzurePrivatelinkState:
         pulumi.set(self, "state", value)
 
     @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> pulumi.Input[Optional['AzurePrivatelinkTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: pulumi.Input[Optional['AzurePrivatelinkTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
+
+    @_builtins.property
     @pulumi.getter(name="userSubscriptionIds")
     def user_subscription_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        A list of allowed subscription IDs. Maximum length: `16`.
+        IDs of Azure subscriptions allowed to connect to the service.
         """
         return pulumi.get(self, "user_subscription_ids")
 
@@ -199,10 +229,11 @@ class AzurePrivatelink(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['AzurePrivatelinkTimeoutsArgs', 'AzurePrivatelinkTimeoutsArgsDict']]] = None,
                  user_subscription_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
-        Creates and manages an Azure Private Link for [selected Aiven services](https://aiven.io/docs/platform/howto/use-azure-privatelink) in a VPC.
+        Creates and manages an Azure Private Link for [selected Aiven services](https://aiven.io/docs/platform/howto/use-azure-privatelink) in a VPC. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
 
         ## Example Usage
 
@@ -210,24 +241,24 @@ class AzurePrivatelink(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        main = aiven.AzurePrivatelink("main",
-            project=example_project["project"],
-            service_name=example_kafka["serviceName"],
-            user_subscription_ids=["00000000-0000-0000-0000-000000000000"])
+        example = aiven.AzurePrivatelink("example",
+            project="my-project",
+            service_name="foo",
+            user_subscription_ids=["adcf7194-d877-4505-a47a-91fefd96e3b8"])
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/azurePrivatelink:AzurePrivatelink main PROJECT/SERVICE_NAME
+        $ pulumi import aiven:index/azurePrivatelink:AzurePrivatelink example PROJECT/SERVICE_NAME
         ```
 
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] user_subscription_ids: A list of allowed subscription IDs. Maximum length: `16`.
+        :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] service_name: Service name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] user_subscription_ids: IDs of Azure subscriptions allowed to connect to the service.
         """
         ...
     @overload
@@ -236,7 +267,7 @@ class AzurePrivatelink(pulumi.CustomResource):
                  args: AzurePrivatelinkArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates and manages an Azure Private Link for [selected Aiven services](https://aiven.io/docs/platform/howto/use-azure-privatelink) in a VPC.
+        Creates and manages an Azure Private Link for [selected Aiven services](https://aiven.io/docs/platform/howto/use-azure-privatelink) in a VPC. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
 
         ## Example Usage
 
@@ -244,16 +275,16 @@ class AzurePrivatelink(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        main = aiven.AzurePrivatelink("main",
-            project=example_project["project"],
-            service_name=example_kafka["serviceName"],
-            user_subscription_ids=["00000000-0000-0000-0000-000000000000"])
+        example = aiven.AzurePrivatelink("example",
+            project="my-project",
+            service_name="foo",
+            user_subscription_ids=["adcf7194-d877-4505-a47a-91fefd96e3b8"])
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/azurePrivatelink:AzurePrivatelink main PROJECT/SERVICE_NAME
+        $ pulumi import aiven:index/azurePrivatelink:AzurePrivatelink example PROJECT/SERVICE_NAME
         ```
 
 
@@ -274,6 +305,7 @@ class AzurePrivatelink(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['AzurePrivatelinkTimeoutsArgs', 'AzurePrivatelinkTimeoutsArgsDict']]] = None,
                  user_subscription_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -290,6 +322,7 @@ class AzurePrivatelink(pulumi.CustomResource):
             if service_name is None and not opts.urn:
                 raise TypeError("Missing required property 'service_name'")
             __props__.__dict__["service_name"] = service_name
+            __props__.__dict__["timeouts"] = timeouts
             if user_subscription_ids is None and not opts.urn:
                 raise TypeError("Missing required property 'user_subscription_ids'")
             __props__.__dict__["user_subscription_ids"] = user_subscription_ids
@@ -313,6 +346,7 @@ class AzurePrivatelink(pulumi.CustomResource):
             project: pulumi.Input[Optional[_builtins.str]] = None,
             service_name: pulumi.Input[Optional[_builtins.str]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['AzurePrivatelinkTimeoutsArgs', 'AzurePrivatelinkTimeoutsArgsDict']]] = None,
             user_subscription_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'AzurePrivatelink':
         """
         Get an existing AzurePrivatelink resource's state with the given name, id, and optional extra
@@ -321,13 +355,13 @@ class AzurePrivatelink(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] azure_service_alias: The Azure Private Link service alias.
-        :param pulumi.Input[_builtins.str] azure_service_id: The Azure Private Link service ID.
-        :param pulumi.Input[_builtins.str] message: Printable result of the Azure Private Link request.
-        :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] state: The state of the Private Link resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] user_subscription_ids: A list of allowed subscription IDs. Maximum length: `16`.
+        :param pulumi.Input[_builtins.str] azure_service_alias: Azure Privatelink service alias.
+        :param pulumi.Input[_builtins.str] azure_service_id: Azure Privatelink service ID.
+        :param pulumi.Input[_builtins.str] message: Legacy response message retained for backward compatibility. **Deprecated**: This attribute is retained only for compatibility with state created by older provider versions and is no longer populated.
+        :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] service_name: Service name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] state: Privatelink resource state. The possible values are `active`, `creating` and `deleting`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] user_subscription_ids: IDs of Azure subscriptions allowed to connect to the service.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -339,6 +373,7 @@ class AzurePrivatelink(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["service_name"] = service_name
         __props__.__dict__["state"] = state
+        __props__.__dict__["timeouts"] = timeouts
         __props__.__dict__["user_subscription_ids"] = user_subscription_ids
         return AzurePrivatelink(resource_name, opts=opts, __props__=__props__)
 
@@ -346,7 +381,7 @@ class AzurePrivatelink(pulumi.CustomResource):
     @pulumi.getter(name="azureServiceAlias")
     def azure_service_alias(self) -> pulumi.Output[_builtins.str]:
         """
-        The Azure Private Link service alias.
+        Azure Privatelink service alias.
         """
         return pulumi.get(self, "azure_service_alias")
 
@@ -354,15 +389,16 @@ class AzurePrivatelink(pulumi.CustomResource):
     @pulumi.getter(name="azureServiceId")
     def azure_service_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The Azure Private Link service ID.
+        Azure Privatelink service ID.
         """
         return pulumi.get(self, "azure_service_id")
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""This attribute is retained only for compatibility with state created by older provider versions and is no longer populated.""")
     def message(self) -> pulumi.Output[_builtins.str]:
         """
-        Printable result of the Azure Private Link request.
+        Legacy response message retained for backward compatibility. **Deprecated**: This attribute is retained only for compatibility with state created by older provider versions and is no longer populated.
         """
         return pulumi.get(self, "message")
 
@@ -370,7 +406,7 @@ class AzurePrivatelink(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Project name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -378,7 +414,7 @@ class AzurePrivatelink(pulumi.CustomResource):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Service name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
@@ -386,15 +422,20 @@ class AzurePrivatelink(pulumi.CustomResource):
     @pulumi.getter
     def state(self) -> pulumi.Output[_builtins.str]:
         """
-        The state of the Private Link resource.
+        Privatelink resource state. The possible values are `active`, `creating` and `deleting`.
         """
         return pulumi.get(self, "state")
+
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> pulumi.Output[Optional['outputs.AzurePrivatelinkTimeouts']]:
+        return pulumi.get(self, "timeouts")
 
     @_builtins.property
     @pulumi.getter(name="userSubscriptionIds")
     def user_subscription_ids(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        A list of allowed subscription IDs. Maximum length: `16`.
+        IDs of Azure subscriptions allowed to connect to the service.
         """
         return pulumi.get(self, "user_subscription_ids")
 

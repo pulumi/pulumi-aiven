@@ -3,8 +3,10 @@
 
 package com.pulumi.aiven.inputs;
 
+import com.pulumi.aiven.inputs.OrganizationUserGroupTimeoutsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,14 +18,14 @@ public final class OrganizationUserGroupState extends com.pulumi.resources.Resou
     public static final OrganizationUserGroupState Empty = new OrganizationUserGroupState();
 
     /**
-     * Time of creation.
+     * User group creation time.
      * 
      */
     @Import(name="createTime")
     private @Nullable Output<String> createTime;
 
     /**
-     * @return Time of creation.
+     * @return User group creation time.
      * 
      */
     public Optional<Output<String>> createTime() {
@@ -31,14 +33,14 @@ public final class OrganizationUserGroupState extends com.pulumi.resources.Resou
     }
 
     /**
-     * The description of the user group. Changing this property forces recreation of the resource.
+     * Description. Maximum length: `4096`.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of the user group. Changing this property forces recreation of the resource.
+     * @return Description. Maximum length: `4096`.
      * 
      */
     public Optional<Output<String>> description() {
@@ -46,14 +48,14 @@ public final class OrganizationUserGroupState extends com.pulumi.resources.Resou
     }
 
     /**
-     * The ID of the user group.
+     * ID of the user group.
      * 
      */
     @Import(name="groupId")
     private @Nullable Output<String> groupId;
 
     /**
-     * @return The ID of the user group.
+     * @return ID of the user group.
      * 
      */
     public Optional<Output<String>> groupId() {
@@ -61,14 +63,29 @@ public final class OrganizationUserGroupState extends com.pulumi.resources.Resou
     }
 
     /**
-     * The name of the user group. Changing this property forces recreation of the resource.
+     * Managed By Scim.
+     * 
+     */
+    @Import(name="managedByScim")
+    private @Nullable Output<Boolean> managedByScim;
+
+    /**
+     * @return Managed By Scim.
+     * 
+     */
+    public Optional<Output<Boolean>> managedByScim() {
+        return Optional.ofNullable(this.managedByScim);
+    }
+
+    /**
+     * User Group Name. Maximum length: `128`.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the user group. Changing this property forces recreation of the resource.
+     * @return User Group Name. Maximum length: `128`.
      * 
      */
     public Optional<Output<String>> name() {
@@ -76,29 +93,36 @@ public final class OrganizationUserGroupState extends com.pulumi.resources.Resou
     }
 
     /**
-     * The ID of the organization. Changing this property forces recreation of the resource.
+     * ID of an organization. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="organizationId")
     private @Nullable Output<String> organizationId;
 
     /**
-     * @return The ID of the organization. Changing this property forces recreation of the resource.
+     * @return ID of an organization. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> organizationId() {
         return Optional.ofNullable(this.organizationId);
     }
 
+    @Import(name="timeouts")
+    private @Nullable Output<OrganizationUserGroupTimeoutsArgs> timeouts;
+
+    public Optional<Output<OrganizationUserGroupTimeoutsArgs>> timeouts() {
+        return Optional.ofNullable(this.timeouts);
+    }
+
     /**
-     * Time of last update.
+     * User group last update time.
      * 
      */
     @Import(name="updateTime")
     private @Nullable Output<String> updateTime;
 
     /**
-     * @return Time of last update.
+     * @return User group last update time.
      * 
      */
     public Optional<Output<String>> updateTime() {
@@ -111,8 +135,10 @@ public final class OrganizationUserGroupState extends com.pulumi.resources.Resou
         this.createTime = $.createTime;
         this.description = $.description;
         this.groupId = $.groupId;
+        this.managedByScim = $.managedByScim;
         this.name = $.name;
         this.organizationId = $.organizationId;
+        this.timeouts = $.timeouts;
         this.updateTime = $.updateTime;
     }
 
@@ -135,7 +161,7 @@ public final class OrganizationUserGroupState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param createTime Time of creation.
+         * @param createTime User group creation time.
          * 
          * @return builder
          * 
@@ -146,7 +172,7 @@ public final class OrganizationUserGroupState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param createTime Time of creation.
+         * @param createTime User group creation time.
          * 
          * @return builder
          * 
@@ -156,7 +182,7 @@ public final class OrganizationUserGroupState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param description The description of the user group. Changing this property forces recreation of the resource.
+         * @param description Description. Maximum length: `4096`.
          * 
          * @return builder
          * 
@@ -167,7 +193,7 @@ public final class OrganizationUserGroupState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param description The description of the user group. Changing this property forces recreation of the resource.
+         * @param description Description. Maximum length: `4096`.
          * 
          * @return builder
          * 
@@ -177,7 +203,7 @@ public final class OrganizationUserGroupState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param groupId The ID of the user group.
+         * @param groupId ID of the user group.
          * 
          * @return builder
          * 
@@ -188,7 +214,7 @@ public final class OrganizationUserGroupState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param groupId The ID of the user group.
+         * @param groupId ID of the user group.
          * 
          * @return builder
          * 
@@ -198,7 +224,28 @@ public final class OrganizationUserGroupState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param name The name of the user group. Changing this property forces recreation of the resource.
+         * @param managedByScim Managed By Scim.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder managedByScim(@Nullable Output<Boolean> managedByScim) {
+            $.managedByScim = managedByScim;
+            return this;
+        }
+
+        /**
+         * @param managedByScim Managed By Scim.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder managedByScim(Boolean managedByScim) {
+            return managedByScim(Output.of(managedByScim));
+        }
+
+        /**
+         * @param name User Group Name. Maximum length: `128`.
          * 
          * @return builder
          * 
@@ -209,7 +256,7 @@ public final class OrganizationUserGroupState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param name The name of the user group. Changing this property forces recreation of the resource.
+         * @param name User Group Name. Maximum length: `128`.
          * 
          * @return builder
          * 
@@ -219,7 +266,7 @@ public final class OrganizationUserGroupState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param organizationId The ID of the organization. Changing this property forces recreation of the resource.
+         * @param organizationId ID of an organization. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -230,7 +277,7 @@ public final class OrganizationUserGroupState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param organizationId The ID of the organization. Changing this property forces recreation of the resource.
+         * @param organizationId ID of an organization. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -239,8 +286,17 @@ public final class OrganizationUserGroupState extends com.pulumi.resources.Resou
             return organizationId(Output.of(organizationId));
         }
 
+        public Builder timeouts(@Nullable Output<OrganizationUserGroupTimeoutsArgs> timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
+        public Builder timeouts(OrganizationUserGroupTimeoutsArgs timeouts) {
+            return timeouts(Output.of(timeouts));
+        }
+
         /**
-         * @param updateTime Time of last update.
+         * @param updateTime User group last update time.
          * 
          * @return builder
          * 
@@ -251,7 +307,7 @@ public final class OrganizationUserGroupState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param updateTime Time of last update.
+         * @param updateTime User group last update time.
          * 
          * @return builder
          * 

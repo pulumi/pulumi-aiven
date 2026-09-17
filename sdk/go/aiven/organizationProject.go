@@ -29,17 +29,17 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.NewOrganizationProject(ctx, "example", &aiven.OrganizationProjectArgs{
-//				OrganizationId: pulumi.String("org1234abcd"),
-//				ProjectId:      pulumi.String("project-1"),
-//				BillingGroupId: pulumi.String("721bf796-1d89-402d-9195-425a23c4efdc"),
-//				ParentId:       pulumi.String("a3fd7a594e01"),
-//				BasePort:       pulumi.Int(10000),
 //				Tags: aiven.OrganizationProjectTagArray{
 //					&aiven.OrganizationProjectTagArgs{
 //						Key:   pulumi.String("foo"),
 //						Value: pulumi.String("foo"),
 //					},
 //				},
+//				OrganizationId: pulumi.String("org1234abcd"),
+//				ProjectId:      pulumi.String("project-1"),
+//				BillingGroupId: pulumi.String("721bf796-1d89-402d-9195-425a23c4efdc"),
+//				ParentId:       pulumi.String("a3fd7a594e01"),
+//				BasePort:       pulumi.Int(10000),
 //				TechnicalEmails: pulumi.StringArray{
 //					pulumi.String("foo@example.com"),
 //				},

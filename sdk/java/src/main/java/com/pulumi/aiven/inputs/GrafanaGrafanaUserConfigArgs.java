@@ -406,6 +406,21 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
+     * Enum: `11`, and newer. Grafana major version.
+     * 
+     */
+    @Import(name="grafanaVersion")
+    private @Nullable Output<String> grafanaVersion;
+
+    /**
+     * @return Enum: `11`, and newer. Grafana major version.
+     * 
+     */
+    public Optional<Output<String>> grafanaVersion() {
+        return Optional.ofNullable(this.grafanaVersion);
+    }
+
+    /**
      * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      * 
      */
@@ -726,6 +741,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         this.editorsCanAdmin = $.editorsCanAdmin;
         this.externalImageStorage = $.externalImageStorage;
         this.googleAnalyticsUaId = $.googleAnalyticsUaId;
+        this.grafanaVersion = $.grafanaVersion;
         this.ipFilterObjects = $.ipFilterObjects;
         this.ipFilterStrings = $.ipFilterStrings;
         this.ipFilters = $.ipFilters;
@@ -1288,6 +1304,27 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
          */
         public Builder googleAnalyticsUaId(String googleAnalyticsUaId) {
             return googleAnalyticsUaId(Output.of(googleAnalyticsUaId));
+        }
+
+        /**
+         * @param grafanaVersion Enum: `11`, and newer. Grafana major version.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder grafanaVersion(@Nullable Output<String> grafanaVersion) {
+            $.grafanaVersion = grafanaVersion;
+            return this;
+        }
+
+        /**
+         * @param grafanaVersion Enum: `11`, and newer. Grafana major version.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder grafanaVersion(String grafanaVersion) {
+            return grafanaVersion(Output.of(grafanaVersion));
         }
 
         /**

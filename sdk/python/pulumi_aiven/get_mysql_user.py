@@ -28,7 +28,7 @@ class GetMysqlUserResult:
     """
     A collection of values returned by getMysqlUser.
     """
-    def __init__(__self__, access_cert=None, access_key=None, authentication=None, id=None, password=None, project=None, service_name=None, timeouts=None, type=None, username=None):
+    def __init__(__self__, access_cert=None, access_key=None, authentication=None, id=None, password=None, password_encryption_type=None, project=None, service_name=None, timeouts=None, type=None, username=None):
         if access_cert and not isinstance(access_cert, str):
             raise TypeError("Expected argument 'access_cert' to be a str")
         pulumi.set(__self__, "access_cert", access_cert)
@@ -44,6 +44,9 @@ class GetMysqlUserResult:
         if password and not isinstance(password, str):
             raise TypeError("Expected argument 'password' to be a str")
         pulumi.set(__self__, "password", password)
+        if password_encryption_type and not isinstance(password_encryption_type, str):
+            raise TypeError("Expected argument 'password_encryption_type' to be a str")
+        pulumi.set(__self__, "password_encryption_type", password_encryption_type)
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
@@ -101,6 +104,14 @@ class GetMysqlUserResult:
         return pulumi.get(self, "password")
 
     @_builtins.property
+    @pulumi.getter(name="passwordEncryptionType")
+    def password_encryption_type(self) -> _builtins.str:
+        """
+        The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. 'unknown' is reported when the hash is missing or uses an unrecognised format. The possible values are `md5`, `scram-sha-256` and `unknown`.
+        """
+        return pulumi.get(self, "password_encryption_type")
+
+    @_builtins.property
     @pulumi.getter
     def project(self) -> _builtins.str:
         """
@@ -149,6 +160,7 @@ class AwaitableGetMysqlUserResult(GetMysqlUserResult):
             authentication=self.authentication,
             id=self.id,
             password=self.password,
+            password_encryption_type=self.password_encryption_type,
             project=self.project,
             service_name=self.service_name,
             timeouts=self.timeouts,
@@ -194,6 +206,7 @@ def get_mysql_user(project: Optional[_builtins.str] = None,
         authentication=pulumi.get(__ret__, 'authentication'),
         id=pulumi.get(__ret__, 'id'),
         password=pulumi.get(__ret__, 'password'),
+        password_encryption_type=pulumi.get(__ret__, 'password_encryption_type'),
         project=pulumi.get(__ret__, 'project'),
         service_name=pulumi.get(__ret__, 'service_name'),
         timeouts=pulumi.get(__ret__, 'timeouts'),
@@ -236,6 +249,7 @@ def get_mysql_user_output(project: pulumi.Input[Optional[_builtins.str]] = None,
         authentication=pulumi.get(__response__, 'authentication'),
         id=pulumi.get(__response__, 'id'),
         password=pulumi.get(__response__, 'password'),
+        password_encryption_type=pulumi.get(__response__, 'password_encryption_type'),
         project=pulumi.get(__response__, 'project'),
         service_name=pulumi.get(__response__, 'service_name'),
         timeouts=pulumi.get(__response__, 'timeouts'),

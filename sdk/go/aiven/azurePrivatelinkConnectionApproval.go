@@ -48,20 +48,20 @@ import (
 //				forResult0 = append(forResult0, sip.StaticIpAddressId)
 //			}
 //			_default, err := aiven.NewPg(ctx, "default", &aiven.PgArgs{
+//				PgUserConfig: &aiven.PgPgUserConfigArgs{
+//					PrivatelinkAccess: &aiven.PgPgUserConfigPrivatelinkAccessArgs{
+//						Pg:        pulumi.Bool(true),
+//						Pgbouncer: pulumi.Bool(true),
+//					},
+//					PgVersion: pulumi.String("13"),
+//					StaticIps: pulumi.Bool(true),
+//				},
 //				ServiceName:  pulumi.String("postgres"),
 //				Project:      pulumi.Any(aivenProjectId),
 //				ProjectVpcId: pulumi.Any(aivenProjectVpcId),
 //				CloudName:    pulumi.Any(region),
 //				Plan:         pulumi.Any(plan),
 //				StaticIps:    forResult0,
-//				PgUserConfig: &aiven.PgPgUserConfigArgs{
-//					PgVersion: pulumi.String("13"),
-//					StaticIps: pulumi.Bool(true),
-//					PrivatelinkAccess: &aiven.PgPgUserConfigPrivatelinkAccessArgs{
-//						Pg:        pulumi.Bool(true),
-//						Pgbouncer: pulumi.Bool(true),
-//					},
-//				},
 //			})
 //			if err != nil {
 //				return err
@@ -77,10 +77,6 @@ import (
 //				return err
 //			}
 //			endpoint, err := azurerm.NewPrivateEndpoint(ctx, "endpoint", &azurerm.PrivateEndpointArgs{
-//				Name:              "postgres-endpoint",
-//				Location:          region,
-//				ResourceGroupName: azureResourceGroup.Name,
-//				SubnetId:          azureSubnetId,
 //				PrivateServiceConnection: []map[string]interface{}{
 //					map[string]interface{}{
 //						"name":                        _default.Name,
@@ -89,6 +85,10 @@ import (
 //						"requestMessage":              _default.Name,
 //					},
 //				},
+//				Name:              "postgres-endpoint",
+//				Location:          region,
+//				ResourceGroupName: azureResourceGroup.Name,
+//				SubnetId:          azureSubnetId,
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				privatelink,
 //			}))

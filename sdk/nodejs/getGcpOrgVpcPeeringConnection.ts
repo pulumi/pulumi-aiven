@@ -2,13 +2,26 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
  * The GCP VPC Peering Connection data source provides information about the existing Aiven VPC Peering Connection.
  *
- * **This resource is in the beta stage and may change without notice.** Set
- * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const example = aiven.getGcpOrgVpcPeeringConnection({
+ *     organizationId: "org1a23f456789",
+ *     organizationVpcId: "1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+ *     gcpProjectId: "my-gcp-project",
+ *     peerVpc: "my-vpc",
+ * });
+ * ```
  */
 export function getGcpOrgVpcPeeringConnection(args: GetGcpOrgVpcPeeringConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetGcpOrgVpcPeeringConnectionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -17,6 +30,7 @@ export function getGcpOrgVpcPeeringConnection(args: GetGcpOrgVpcPeeringConnectio
         "organizationId": args.organizationId,
         "organizationVpcId": args.organizationVpcId,
         "peerVpc": args.peerVpc,
+        "timeouts": args.timeouts,
     }, opts);
 }
 
@@ -25,21 +39,22 @@ export function getGcpOrgVpcPeeringConnection(args: GetGcpOrgVpcPeeringConnectio
  */
 export interface GetGcpOrgVpcPeeringConnectionArgs {
     /**
-     * Google Cloud project ID. Changing this property forces recreation of the resource.
+     * Google Cloud project ID.
      */
     gcpProjectId: string;
     /**
-     * Identifier of the organization.
+     * ID of an organization.
      */
     organizationId: string;
     /**
-     * Identifier of the organization VPC.
+     * Organization VPC ID.
      */
     organizationVpcId: string;
     /**
-     * Google Cloud VPC network name. Changing this property forces recreation of the resource.
+     * Google Cloud VPC network name.
      */
     peerVpc: string;
+    timeouts?: inputs.GetGcpOrgVpcPeeringConnectionTimeouts;
 }
 
 /**
@@ -47,23 +62,23 @@ export interface GetGcpOrgVpcPeeringConnectionArgs {
  */
 export interface GetGcpOrgVpcPeeringConnectionResult {
     /**
-     * Google Cloud project ID. Changing this property forces recreation of the resource.
+     * Google Cloud project ID.
      */
     readonly gcpProjectId: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * Resource ID composed as: `organization_id/organization_vpc_id/gcp_project_id/peer_vpc`.
      */
     readonly id: string;
     /**
-     * Identifier of the organization.
+     * ID of an organization.
      */
     readonly organizationId: string;
     /**
-     * Identifier of the organization VPC.
+     * Organization VPC ID.
      */
     readonly organizationVpcId: string;
     /**
-     * Google Cloud VPC network name. Changing this property forces recreation of the resource.
+     * Google Cloud VPC network name.
      */
     readonly peerVpc: string;
     /**
@@ -71,15 +86,27 @@ export interface GetGcpOrgVpcPeeringConnectionResult {
      */
     readonly selfLink: string;
     /**
-     * State of the peering connection.
+     * State of the peering connection. The possible values are `ACTIVE`, `APPROVED`, `APPROVED_PEER_REQUESTED`, `DELETED`, `DELETED_BY_PEER`, `DELETING`, `ERROR`, `INVALID_SPECIFICATION`, `PENDING_PEER` and `REJECTED_BY_PEER`.
      */
     readonly state: string;
+    readonly timeouts?: outputs.GetGcpOrgVpcPeeringConnectionTimeouts;
 }
 /**
  * The GCP VPC Peering Connection data source provides information about the existing Aiven VPC Peering Connection.
  *
- * **This resource is in the beta stage and may change without notice.** Set
- * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const example = aiven.getGcpOrgVpcPeeringConnection({
+ *     organizationId: "org1a23f456789",
+ *     organizationVpcId: "1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+ *     gcpProjectId: "my-gcp-project",
+ *     peerVpc: "my-vpc",
+ * });
+ * ```
  */
 export function getGcpOrgVpcPeeringConnectionOutput(args: GetGcpOrgVpcPeeringConnectionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGcpOrgVpcPeeringConnectionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -88,6 +115,7 @@ export function getGcpOrgVpcPeeringConnectionOutput(args: GetGcpOrgVpcPeeringCon
         "organizationId": args.organizationId,
         "organizationVpcId": args.organizationVpcId,
         "peerVpc": args.peerVpc,
+        "timeouts": args.timeouts,
     }, opts);
 }
 
@@ -96,19 +124,20 @@ export function getGcpOrgVpcPeeringConnectionOutput(args: GetGcpOrgVpcPeeringCon
  */
 export interface GetGcpOrgVpcPeeringConnectionOutputArgs {
     /**
-     * Google Cloud project ID. Changing this property forces recreation of the resource.
+     * Google Cloud project ID.
      */
     gcpProjectId: pulumi.Input<string>;
     /**
-     * Identifier of the organization.
+     * ID of an organization.
      */
     organizationId: pulumi.Input<string>;
     /**
-     * Identifier of the organization VPC.
+     * Organization VPC ID.
      */
     organizationVpcId: pulumi.Input<string>;
     /**
-     * Google Cloud VPC network name. Changing this property forces recreation of the resource.
+     * Google Cloud VPC network name.
      */
     peerVpc: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.GetGcpOrgVpcPeeringConnectionTimeoutsArgs | undefined>;
 }

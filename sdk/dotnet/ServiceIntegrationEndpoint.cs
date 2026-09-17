@@ -37,9 +37,6 @@ namespace Pulumi.Aiven
     ///     // Disk autoscaler endpoint
     ///     var autoscalerEndpoint = new Aiven.ServiceIntegrationEndpoint("autoscaler_endpoint", new()
     ///     {
-    ///         Project = exampleProject.Project,
-    ///         EndpointName = "disk-autoscaler-200GiB",
-    ///         EndpointType = "autoscaler",
     ///         AutoscalerUserConfig = new Aiven.Inputs.ServiceIntegrationEndpointAutoscalerUserConfigArgs
     ///         {
     ///             Autoscalings = new[]
@@ -51,6 +48,9 @@ namespace Pulumi.Aiven
     ///                 },
     ///             },
     ///         },
+    ///         Project = exampleProject.Project,
+    ///         EndpointName = "disk-autoscaler-200GiB",
+    ///         EndpointType = "autoscaler",
     ///     });
     /// 
     /// });
@@ -90,7 +90,7 @@ namespace Pulumi.Aiven
         public Output<string> EndpointName { get; private set; } = null!;
 
         /// <summary>
-        /// The type of service integration endpoint. The possible values are `Autoscaler`, `Datadog`, `ExternalAwsCloudwatchLogs`, `ExternalAwsCloudwatchMetrics`, `ExternalAwsS3`, `ExternalAzureBlobStorage`, `ExternalClickhouse`, `ExternalElasticsearchLogs`, `ExternalGoogleCloudBigquery`, `ExternalGoogleCloudLogging`, `ExternalKafka`, `ExternalMysql`, `ExternalObjectStorageConfig`, `ExternalOpensearchLogs`, `ExternalPostgresql`, `ExternalPrometheus`, `ExternalRedis`, `ExternalSchemaRegistry`, `ExternalSumologicLogs`, `Jolokia`, `Prometheus` and `Rsyslog`.
+        /// The type of service integration endpoint. The possible values are `Autoscaler`, `Datadog`, `ExternalAwsCloudwatchLogs`, `ExternalAwsCloudwatchMetrics`, `ExternalAwsS3`, `ExternalAzureBlobStorage`, `ExternalClickhouse`, `ExternalElasticsearchLogs`, `ExternalGoogleCloudBigquery`, `ExternalGoogleCloudLogging`, `ExternalKafka`, `ExternalMysql`, `ExternalObjectStorageConfig`, `ExternalOpensearchLogs`, `ExternalPostgresql`, `ExternalPrometheus`, `ExternalRedis`, `ExternalSchemaRegistry`, `ExternalSumologicLogs`, `Jolokia`, `Opentelemetry`, `Prometheus` and `Rsyslog`.
         /// </summary>
         [Output("endpointType")]
         public Output<string> EndpointType { get; private set; } = null!;
@@ -192,6 +192,12 @@ namespace Pulumi.Aiven
         public Output<Outputs.ServiceIntegrationEndpointJolokiaUserConfig?> JolokiaUserConfig { get; private set; } = null!;
 
         /// <summary>
+        /// Opentelemetry user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        /// </summary>
+        [Output("opentelemetryUserConfig")]
+        public Output<Outputs.ServiceIntegrationEndpointOpentelemetryUserConfig?> OpentelemetryUserConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Project the service integration endpoint is in.
         /// </summary>
         [Output("project")]
@@ -274,7 +280,7 @@ namespace Pulumi.Aiven
         public Input<string> EndpointName { get; set; } = null!;
 
         /// <summary>
-        /// The type of service integration endpoint. The possible values are `Autoscaler`, `Datadog`, `ExternalAwsCloudwatchLogs`, `ExternalAwsCloudwatchMetrics`, `ExternalAwsS3`, `ExternalAzureBlobStorage`, `ExternalClickhouse`, `ExternalElasticsearchLogs`, `ExternalGoogleCloudBigquery`, `ExternalGoogleCloudLogging`, `ExternalKafka`, `ExternalMysql`, `ExternalObjectStorageConfig`, `ExternalOpensearchLogs`, `ExternalPostgresql`, `ExternalPrometheus`, `ExternalRedis`, `ExternalSchemaRegistry`, `ExternalSumologicLogs`, `Jolokia`, `Prometheus` and `Rsyslog`.
+        /// The type of service integration endpoint. The possible values are `Autoscaler`, `Datadog`, `ExternalAwsCloudwatchLogs`, `ExternalAwsCloudwatchMetrics`, `ExternalAwsS3`, `ExternalAzureBlobStorage`, `ExternalClickhouse`, `ExternalElasticsearchLogs`, `ExternalGoogleCloudBigquery`, `ExternalGoogleCloudLogging`, `ExternalKafka`, `ExternalMysql`, `ExternalObjectStorageConfig`, `ExternalOpensearchLogs`, `ExternalPostgresql`, `ExternalPrometheus`, `ExternalRedis`, `ExternalSchemaRegistry`, `ExternalSumologicLogs`, `Jolokia`, `Opentelemetry`, `Prometheus` and `Rsyslog`.
         /// </summary>
         [Input("endpointType", required: true)]
         public Input<string> EndpointType { get; set; } = null!;
@@ -376,6 +382,12 @@ namespace Pulumi.Aiven
         public Input<Inputs.ServiceIntegrationEndpointJolokiaUserConfigArgs>? JolokiaUserConfig { get; set; }
 
         /// <summary>
+        /// Opentelemetry user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        /// </summary>
+        [Input("opentelemetryUserConfig")]
+        public Input<Inputs.ServiceIntegrationEndpointOpentelemetryUserConfigArgs>? OpentelemetryUserConfig { get; set; }
+
+        /// <summary>
         /// Project the service integration endpoint is in.
         /// </summary>
         [Input("project", required: true)]
@@ -432,7 +444,7 @@ namespace Pulumi.Aiven
         public Input<string>? EndpointName { get; set; }
 
         /// <summary>
-        /// The type of service integration endpoint. The possible values are `Autoscaler`, `Datadog`, `ExternalAwsCloudwatchLogs`, `ExternalAwsCloudwatchMetrics`, `ExternalAwsS3`, `ExternalAzureBlobStorage`, `ExternalClickhouse`, `ExternalElasticsearchLogs`, `ExternalGoogleCloudBigquery`, `ExternalGoogleCloudLogging`, `ExternalKafka`, `ExternalMysql`, `ExternalObjectStorageConfig`, `ExternalOpensearchLogs`, `ExternalPostgresql`, `ExternalPrometheus`, `ExternalRedis`, `ExternalSchemaRegistry`, `ExternalSumologicLogs`, `Jolokia`, `Prometheus` and `Rsyslog`.
+        /// The type of service integration endpoint. The possible values are `Autoscaler`, `Datadog`, `ExternalAwsCloudwatchLogs`, `ExternalAwsCloudwatchMetrics`, `ExternalAwsS3`, `ExternalAzureBlobStorage`, `ExternalClickhouse`, `ExternalElasticsearchLogs`, `ExternalGoogleCloudBigquery`, `ExternalGoogleCloudLogging`, `ExternalKafka`, `ExternalMysql`, `ExternalObjectStorageConfig`, `ExternalOpensearchLogs`, `ExternalPostgresql`, `ExternalPrometheus`, `ExternalRedis`, `ExternalSchemaRegistry`, `ExternalSumologicLogs`, `Jolokia`, `Opentelemetry`, `Prometheus` and `Rsyslog`.
         /// </summary>
         [Input("endpointType")]
         public Input<string>? EndpointType { get; set; }
@@ -532,6 +544,12 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("jolokiaUserConfig")]
         public Input<Inputs.ServiceIntegrationEndpointJolokiaUserConfigGetArgs>? JolokiaUserConfig { get; set; }
+
+        /// <summary>
+        /// Opentelemetry user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        /// </summary>
+        [Input("opentelemetryUserConfig")]
+        public Input<Inputs.ServiceIntegrationEndpointOpentelemetryUserConfigGetArgs>? OpentelemetryUserConfig { get; set; }
 
         /// <summary>
         /// Project the service integration endpoint is in.

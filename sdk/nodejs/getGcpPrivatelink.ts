@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -13,9 +15,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const main = aiven.getGcpPrivatelink({
- *     project: exampleProject.project,
- *     serviceName: exampleKafka.serviceName,
+ * const example = aiven.getGcpPrivatelink({
+ *     project: "my-project",
+ *     serviceName: "foo",
  * });
  * ```
  */
@@ -24,6 +26,7 @@ export function getGcpPrivatelink(args: GetGcpPrivatelinkArgs, opts?: pulumi.Inv
     return pulumi.runtime.invoke("aiven:index/getGcpPrivatelink:getGcpPrivatelink", {
         "project": args.project,
         "serviceName": args.serviceName,
+        "timeouts": args.timeouts,
     }, opts);
 }
 
@@ -32,13 +35,14 @@ export function getGcpPrivatelink(args: GetGcpPrivatelinkArgs, opts?: pulumi.Inv
  */
 export interface GetGcpPrivatelinkArgs {
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name.
      */
     project: string;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name.
      */
     serviceName: string;
+    timeouts?: inputs.GetGcpPrivatelinkTimeouts;
 }
 
 /**
@@ -50,25 +54,28 @@ export interface GetGcpPrivatelinkResult {
      */
     readonly googleServiceAttachment: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * Resource ID composed as: `project/service_name`.
      */
     readonly id: string;
     /**
-     * Printable result of the Google Cloud Private Service Connect request.
+     * Legacy response message retained for backward compatibility. **Deprecated**: This attribute is retained only for compatibility with state created by older provider versions and is no longer populated.
+     *
+     * @deprecated This attribute is retained only for compatibility with state created by older provider versions and is no longer populated.
      */
     readonly message: string;
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name.
      */
     readonly project: string;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name.
      */
     readonly serviceName: string;
     /**
-     * The state of the Private Service Connect resource.
+     * The state of the Private Service Connect resource. The possible values are `active`, `creating` and `deleting`.
      */
     readonly state: string;
+    readonly timeouts?: outputs.GetGcpPrivatelinkTimeouts;
 }
 /**
  * Gets information about a Google Private Service Connect connection for an Aiven service.
@@ -79,9 +86,9 @@ export interface GetGcpPrivatelinkResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const main = aiven.getGcpPrivatelink({
- *     project: exampleProject.project,
- *     serviceName: exampleKafka.serviceName,
+ * const example = aiven.getGcpPrivatelink({
+ *     project: "my-project",
+ *     serviceName: "foo",
  * });
  * ```
  */
@@ -90,6 +97,7 @@ export function getGcpPrivatelinkOutput(args: GetGcpPrivatelinkOutputArgs, opts?
     return pulumi.runtime.invokeOutput("aiven:index/getGcpPrivatelink:getGcpPrivatelink", {
         "project": args.project,
         "serviceName": args.serviceName,
+        "timeouts": args.timeouts,
     }, opts);
 }
 
@@ -98,11 +106,12 @@ export function getGcpPrivatelinkOutput(args: GetGcpPrivatelinkOutputArgs, opts?
  */
 export interface GetGcpPrivatelinkOutputArgs {
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name.
      */
     project: pulumi.Input<string>;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name.
      */
     serviceName: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.GetGcpPrivatelinkTimeoutsArgs | undefined>;
 }

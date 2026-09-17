@@ -6,6 +6,7 @@ package com.pulumi.aiven;
 import com.pulumi.aiven.KafkaUserArgs;
 import com.pulumi.aiven.Utilities;
 import com.pulumi.aiven.inputs.KafkaUserState;
+import com.pulumi.aiven.outputs.KafkaUserTimeouts;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -17,7 +18,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Creates and manages an Aiven for Apache Kafka® service user.
+ * Creates and manages an Aiven for Apache Kafka® service user. If this resource is missing (for example, after a service power off), it&#39;s removed from the state and a new create plan is generated.
  * 
  * ## Example Usage
  * 
@@ -43,11 +44,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleServiceUser = new KafkaUser("exampleServiceUser", KafkaUserArgs.builder()
- *             .serviceName(exampleKafka.serviceName())
- *             .project(exampleProject.project())
- *             .username("example-kafka-user")
- *             .password(serviceUserPw)
+ *         var example = new KafkaUser("example", KafkaUserArgs.builder()
+ *             .project("my-project")
+ *             .serviceName("my-kafka")
+ *             .username("testuser")
+ *             .passwordWo("password123")
+ *             .passwordWoVersion(1)
  *             .build());
  * 
  *     }
@@ -58,57 +60,71 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import aiven:index/kafkaUser:KafkaUser example_user PROJECT/SERVICE_NAME/USERNAME
+ * $ pulumi import aiven:index/kafkaUser:KafkaUser example PROJECT/SERVICE_NAME/USERNAME
  * ```
  * 
  */
 @ResourceType(type="aiven:index/kafkaUser:KafkaUser")
 public class KafkaUser extends com.pulumi.resources.CustomResource {
     /**
-     * Access certificate for the user.
+     * Access certificate for TLS client authentication.
      * 
      */
     @Export(name="accessCert", refs={String.class}, tree="[0]")
     private Output<String> accessCert;
 
     /**
-     * @return Access certificate for the user.
+     * @return Access certificate for TLS client authentication.
      * 
      */
     public Output<String> accessCert() {
         return this.accessCert;
     }
     /**
-     * Access certificate key for the user.
+     * Access key for TLS client authentication.
      * 
      */
     @Export(name="accessKey", refs={String.class}, tree="[0]")
     private Output<String> accessKey;
 
     /**
-     * @return Access certificate key for the user.
+     * @return Access key for TLS client authentication.
      * 
      */
     public Output<String> accessKey() {
         return this.accessKey;
     }
     /**
-     * The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+     * The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
      * 
      */
     @Export(name="password", refs={String.class}, tree="[0]")
     private Output<String> password;
 
     /**
-     * @return The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+     * @return The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
      * 
      */
     public Output<String> password() {
         return this.password;
     }
     /**
+     * The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. &#39;unknown&#39; is reported when the hash is missing or uses an unrecognised format. The possible values are `md5`, `scram-sha-256` and `unknown`.
+     * 
+     */
+    @Export(name="passwordEncryptionType", refs={String.class}, tree="[0]")
+    private Output<String> passwordEncryptionType;
+
+    /**
+     * @return The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. &#39;unknown&#39; is reported when the hash is missing or uses an unrecognised format. The possible values are `md5`, `scram-sha-256` and `unknown`.
+     * 
+     */
+    public Output<String> passwordEncryptionType() {
+        return this.passwordEncryptionType;
+    }
+    /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
+     * The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Length must be between `8` and `256`.
      * 
      */
     @Export(name="passwordWo", refs={String.class}, tree="[0]")
@@ -116,77 +132,83 @@ public class KafkaUser extends com.pulumi.resources.CustomResource {
 
     /**
      * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-     * The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
+     * The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Length must be between `8` and `256`.
      * 
      */
     public Output<Optional<String>> passwordWo() {
         return Codegen.optional(this.passwordWo);
     }
     /**
-     * Version number for `passwordWo`. Increment this to rotate the password. Must be &gt;= 1.
+     * Version number for `passwordWo`. Increment this to rotate the password. The field is required with `passwordWo`. Minimum value: `1`.
      * 
      */
     @Export(name="passwordWoVersion", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> passwordWoVersion;
 
     /**
-     * @return Version number for `passwordWo`. Increment this to rotate the password. Must be &gt;= 1.
+     * @return Version number for `passwordWo`. Increment this to rotate the password. The field is required with `passwordWo`. Minimum value: `1`.
      * 
      */
     public Output<Optional<Integer>> passwordWoVersion() {
         return Codegen.optional(this.passwordWoVersion);
     }
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> project() {
         return this.project;
     }
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service name. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> serviceName() {
         return this.serviceName;
     }
+    @Export(name="timeouts", refs={KafkaUserTimeouts.class}, tree="[0]")
+    private Output</* @Nullable */ KafkaUserTimeouts> timeouts;
+
+    public Output<Optional<KafkaUserTimeouts>> timeouts() {
+        return Codegen.optional(this.timeouts);
+    }
     /**
-     * User account type, such as primary or regular account.
+     * Account type.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return User account type, such as primary or regular account.
+     * @return Account type.
      * 
      */
     public Output<String> type() {
         return this.type;
     }
     /**
-     * Name of the Kafka service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Account username. Maximum length: `64`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="username", refs={String.class}, tree="[0]")
     private Output<String> username;
 
     /**
-     * @return Name of the Kafka service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Account username. Maximum length: `64`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> username() {

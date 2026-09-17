@@ -14,8 +14,24 @@ namespace Pulumi.Aiven
         /// <summary>
         /// Gets information about an existing VPC in an Aiven organization.
         /// 
-        /// **This resource is in the beta stage and may change without notice.** Set
-        /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Aiven.GetOrganizationVpc.Invoke(new()
+        ///     {
+        ///         OrganizationId = "org1a23f456789",
+        ///         OrganizationVpcId = "1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetOrganizationVpcResult> InvokeAsync(GetOrganizationVpcArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationVpcResult>("aiven:index/getOrganizationVpc:getOrganizationVpc", args ?? new GetOrganizationVpcArgs(), options.WithDefaults());
@@ -23,8 +39,24 @@ namespace Pulumi.Aiven
         /// <summary>
         /// Gets information about an existing VPC in an Aiven organization.
         /// 
-        /// **This resource is in the beta stage and may change without notice.** Set
-        /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Aiven.GetOrganizationVpc.Invoke(new()
+        ///     {
+        ///         OrganizationId = "org1a23f456789",
+        ///         OrganizationVpcId = "1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetOrganizationVpcResult> Invoke(GetOrganizationVpcInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetOrganizationVpcResult>("aiven:index/getOrganizationVpc:getOrganizationVpc", args ?? new GetOrganizationVpcInvokeArgs(), options.WithDefaults());
@@ -32,8 +64,24 @@ namespace Pulumi.Aiven
         /// <summary>
         /// Gets information about an existing VPC in an Aiven organization.
         /// 
-        /// **This resource is in the beta stage and may change without notice.** Set
-        /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Aiven.GetOrganizationVpc.Invoke(new()
+        ///     {
+        ///         OrganizationId = "org1a23f456789",
+        ///         OrganizationVpcId = "1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetOrganizationVpcResult> Invoke(GetOrganizationVpcInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetOrganizationVpcResult>("aiven:index/getOrganizationVpc:getOrganizationVpc", args ?? new GetOrganizationVpcInvokeArgs(), options.WithDefaults());
@@ -43,7 +91,7 @@ namespace Pulumi.Aiven
     public sealed class GetOrganizationVpcArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The ID of the organization.
+        /// ID of an organization.
         /// </summary>
         [Input("organizationId", required: true)]
         public string OrganizationId { get; set; } = null!;
@@ -54,6 +102,9 @@ namespace Pulumi.Aiven
         [Input("organizationVpcId", required: true)]
         public string OrganizationVpcId { get; set; } = null!;
 
+        [Input("timeouts")]
+        public Inputs.GetOrganizationVpcTimeoutsArgs? Timeouts { get; set; }
+
         public GetOrganizationVpcArgs()
         {
         }
@@ -63,7 +114,7 @@ namespace Pulumi.Aiven
     public sealed class GetOrganizationVpcInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The ID of the organization.
+        /// ID of an organization.
         /// </summary>
         [Input("organizationId", required: true)]
         public Input<string> OrganizationId { get; set; } = null!;
@@ -73,6 +124,9 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("organizationVpcId", required: true)]
         public Input<string> OrganizationVpcId { get; set; } = null!;
+
+        [Input("timeouts")]
+        public Input<Inputs.GetOrganizationVpcTimeoutsInputArgs>? Timeouts { get; set; }
 
         public GetOrganizationVpcInvokeArgs()
         {
@@ -85,15 +139,19 @@ namespace Pulumi.Aiven
     public sealed class GetOrganizationVpcResult
     {
         /// <summary>
-        /// The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.
+        /// The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`.
         /// </summary>
         public readonly string CloudName;
         /// <summary>
-        /// Time of creation of the VPC.
+        /// VPC creation timestamp.
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// User defined display name for this VPC.
+        /// </summary>
+        public readonly string DisplayName;
+        /// <summary>
+        /// Resource ID composed as: `organization_id/organization_vpc_id`.
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -101,7 +159,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string NetworkCidr;
         /// <summary>
-        /// The ID of the organization.
+        /// ID of an organization.
         /// </summary>
         public readonly string OrganizationId;
         /// <summary>
@@ -112,8 +170,9 @@ namespace Pulumi.Aiven
         /// State of the VPC. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
         /// </summary>
         public readonly string State;
+        public readonly Outputs.GetOrganizationVpcTimeoutsResult? Timeouts;
         /// <summary>
-        /// Time of the last update of the VPC.
+        /// Timestamp of last change to VPC.
         /// </summary>
         public readonly string UpdateTime;
 
@@ -122,6 +181,8 @@ namespace Pulumi.Aiven
             string cloudName,
 
             string createTime,
+
+            string displayName,
 
             string id,
 
@@ -133,15 +194,19 @@ namespace Pulumi.Aiven
 
             string state,
 
+            Outputs.GetOrganizationVpcTimeoutsResult? timeouts,
+
             string updateTime)
         {
             CloudName = cloudName;
             CreateTime = createTime;
+            DisplayName = displayName;
             Id = id;
             NetworkCidr = networkCidr;
             OrganizationId = organizationId;
             OrganizationVpcId = organizationVpcId;
             State = state;
+            Timeouts = timeouts;
             UpdateTime = updateTime;
         }
     }

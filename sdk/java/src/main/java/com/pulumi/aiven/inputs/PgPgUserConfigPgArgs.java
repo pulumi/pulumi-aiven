@@ -319,14 +319,14 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * EXPERIMENTAL: Number of IO worker processes, for io_method=worker. Version 18 and up only. Changing this parameter causes a service restart. Default: `3`.
+     * EXPERIMENTAL: Number of IO worker processes, for io_method=worker. Version 18 and up only.
      * 
      */
     @Import(name="ioWorkers")
     private @Nullable Output<Integer> ioWorkers;
 
     /**
-     * @return EXPERIMENTAL: Number of IO worker processes, for io_method=worker. Version 18 and up only. Changing this parameter causes a service restart. Default: `3`.
+     * @return EXPERIMENTAL: Number of IO worker processes, for io_method=worker. Version 18 and up only.
      * 
      */
     public Optional<Output<Integer>> ioWorkers() {
@@ -709,14 +709,14 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Enables or disables query plan monitoring. Changing this parameter causes a service restart. Only available for PostgreSQL 13+.
+     * Enables or disables query plan monitoring. Only available for PostgreSQL 13+.
      * 
      */
     @Import(name="pgStatMonitorDotPgsmEnableQueryPlan")
     private @Nullable Output<Boolean> pgStatMonitorDotPgsmEnableQueryPlan;
 
     /**
-     * @return Enables or disables query plan monitoring. Changing this parameter causes a service restart. Only available for PostgreSQL 13+.
+     * @return Enables or disables query plan monitoring. Only available for PostgreSQL 13+.
      * 
      */
     public Optional<Output<Boolean>> pgStatMonitorDotPgsmEnableQueryPlan() {
@@ -736,6 +736,21 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
      */
     public Optional<Output<Integer>> pgStatMonitorDotPgsmMaxBuckets() {
         return Optional.ofNullable(this.pgStatMonitorDotPgsmMaxBuckets);
+    }
+
+    /**
+     * Enum: `all`, `none`, `top`. Controls which statements&#39; plans are tracked. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable plan tracking. The default is `top`.
+     * 
+     */
+    @Import(name="pgStatPlansDotTrack")
+    private @Nullable Output<String> pgStatPlansDotTrack;
+
+    /**
+     * @return Enum: `all`, `none`, `top`. Controls which statements&#39; plans are tracked. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable plan tracking. The default is `top`.
+     * 
+     */
+    public Optional<Output<String>> pgStatPlansDotTrack() {
+        return Optional.ofNullable(this.pgStatPlansDotTrack);
     }
 
     /**
@@ -939,6 +954,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         this.pgPartmanBgwDotRole = $.pgPartmanBgwDotRole;
         this.pgStatMonitorDotPgsmEnableQueryPlan = $.pgStatMonitorDotPgsmEnableQueryPlan;
         this.pgStatMonitorDotPgsmMaxBuckets = $.pgStatMonitorDotPgsmMaxBuckets;
+        this.pgStatPlansDotTrack = $.pgStatPlansDotTrack;
         this.pgStatStatementsDotTrack = $.pgStatStatementsDotTrack;
         this.synchronousCommit = $.synchronousCommit;
         this.tempFileLimit = $.tempFileLimit;
@@ -1390,7 +1406,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param ioWorkers EXPERIMENTAL: Number of IO worker processes, for io_method=worker. Version 18 and up only. Changing this parameter causes a service restart. Default: `3`.
+         * @param ioWorkers EXPERIMENTAL: Number of IO worker processes, for io_method=worker. Version 18 and up only.
          * 
          * @return builder
          * 
@@ -1401,7 +1417,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param ioWorkers EXPERIMENTAL: Number of IO worker processes, for io_method=worker. Version 18 and up only. Changing this parameter causes a service restart. Default: `3`.
+         * @param ioWorkers EXPERIMENTAL: Number of IO worker processes, for io_method=worker. Version 18 and up only.
          * 
          * @return builder
          * 
@@ -1936,7 +1952,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param pgStatMonitorDotPgsmEnableQueryPlan Enables or disables query plan monitoring. Changing this parameter causes a service restart. Only available for PostgreSQL 13+.
+         * @param pgStatMonitorDotPgsmEnableQueryPlan Enables or disables query plan monitoring. Only available for PostgreSQL 13+.
          * 
          * @return builder
          * 
@@ -1947,7 +1963,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param pgStatMonitorDotPgsmEnableQueryPlan Enables or disables query plan monitoring. Changing this parameter causes a service restart. Only available for PostgreSQL 13+.
+         * @param pgStatMonitorDotPgsmEnableQueryPlan Enables or disables query plan monitoring. Only available for PostgreSQL 13+.
          * 
          * @return builder
          * 
@@ -1975,6 +1991,27 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder pgStatMonitorDotPgsmMaxBuckets(Integer pgStatMonitorDotPgsmMaxBuckets) {
             return pgStatMonitorDotPgsmMaxBuckets(Output.of(pgStatMonitorDotPgsmMaxBuckets));
+        }
+
+        /**
+         * @param pgStatPlansDotTrack Enum: `all`, `none`, `top`. Controls which statements&#39; plans are tracked. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable plan tracking. The default is `top`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pgStatPlansDotTrack(@Nullable Output<String> pgStatPlansDotTrack) {
+            $.pgStatPlansDotTrack = pgStatPlansDotTrack;
+            return this;
+        }
+
+        /**
+         * @param pgStatPlansDotTrack Enum: `all`, `none`, `top`. Controls which statements&#39; plans are tracked. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable plan tracking. The default is `top`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pgStatPlansDotTrack(String pgStatPlansDotTrack) {
+            return pgStatPlansDotTrack(Output.of(pgStatPlansDotTrack));
         }
 
         /**

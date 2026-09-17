@@ -13,8 +13,34 @@ import (
 
 // The GCP VPC Peering Connection data source provides information about the existing Aiven VPC Peering Connection.
 //
-// **This resource is in the beta stage and may change without notice.** Set
-// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := aiven.GetGcpOrgVpcPeeringConnection(ctx, &aiven.LookupGcpOrgVpcPeeringConnectionArgs{
+//				OrganizationId:    "org1a23f456789",
+//				OrganizationVpcId: "1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+//				GcpProjectId:      "my-gcp-project",
+//				PeerVpc:           "my-vpc",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupGcpOrgVpcPeeringConnection(ctx *pulumi.Context, args *LookupGcpOrgVpcPeeringConnectionArgs, opts ...pulumi.InvokeOption) (*LookupGcpOrgVpcPeeringConnectionResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupGcpOrgVpcPeeringConnectionResult
@@ -27,32 +53,34 @@ func LookupGcpOrgVpcPeeringConnection(ctx *pulumi.Context, args *LookupGcpOrgVpc
 
 // A collection of arguments for invoking getGcpOrgVpcPeeringConnection.
 type LookupGcpOrgVpcPeeringConnectionArgs struct {
-	// Google Cloud project ID. Changing this property forces recreation of the resource.
+	// Google Cloud project ID.
 	GcpProjectId string `pulumi:"gcpProjectId"`
-	// Identifier of the organization.
+	// ID of an organization.
 	OrganizationId string `pulumi:"organizationId"`
-	// Identifier of the organization VPC.
+	// Organization VPC ID.
 	OrganizationVpcId string `pulumi:"organizationVpcId"`
-	// Google Cloud VPC network name. Changing this property forces recreation of the resource.
-	PeerVpc string `pulumi:"peerVpc"`
+	// Google Cloud VPC network name.
+	PeerVpc  string                                 `pulumi:"peerVpc"`
+	Timeouts *GetGcpOrgVpcPeeringConnectionTimeouts `pulumi:"timeouts"`
 }
 
 // A collection of values returned by getGcpOrgVpcPeeringConnection.
 type LookupGcpOrgVpcPeeringConnectionResult struct {
-	// Google Cloud project ID. Changing this property forces recreation of the resource.
+	// Google Cloud project ID.
 	GcpProjectId string `pulumi:"gcpProjectId"`
-	// The provider-assigned unique ID for this managed resource.
+	// Resource ID composed as: `organization_id/organization_vpc_id/gcp_project_id/peer_vpc`.
 	Id string `pulumi:"id"`
-	// Identifier of the organization.
+	// ID of an organization.
 	OrganizationId string `pulumi:"organizationId"`
-	// Identifier of the organization VPC.
+	// Organization VPC ID.
 	OrganizationVpcId string `pulumi:"organizationVpcId"`
-	// Google Cloud VPC network name. Changing this property forces recreation of the resource.
+	// Google Cloud VPC network name.
 	PeerVpc string `pulumi:"peerVpc"`
 	// Computed Google Cloud network peering link.
 	SelfLink string `pulumi:"selfLink"`
-	// State of the peering connection.
-	State string `pulumi:"state"`
+	// State of the peering connection. The possible values are `ACTIVE`, `APPROVED`, `APPROVED_PEER_REQUESTED`, `DELETED`, `DELETED_BY_PEER`, `DELETING`, `ERROR`, `INVALID_SPECIFICATION`, `PENDING_PEER` and `REJECTED_BY_PEER`.
+	State    string                                 `pulumi:"state"`
+	Timeouts *GetGcpOrgVpcPeeringConnectionTimeouts `pulumi:"timeouts"`
 }
 
 func LookupGcpOrgVpcPeeringConnectionOutput(ctx *pulumi.Context, args LookupGcpOrgVpcPeeringConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupGcpOrgVpcPeeringConnectionResultOutput {
@@ -62,14 +90,15 @@ func LookupGcpOrgVpcPeeringConnectionOutput(ctx *pulumi.Context, args LookupGcpO
 
 // A collection of arguments for invoking getGcpOrgVpcPeeringConnection.
 type LookupGcpOrgVpcPeeringConnectionOutputArgs struct {
-	// Google Cloud project ID. Changing this property forces recreation of the resource.
+	// Google Cloud project ID.
 	GcpProjectId pulumi.StringInput `pulumi:"gcpProjectId"`
-	// Identifier of the organization.
+	// ID of an organization.
 	OrganizationId pulumi.StringInput `pulumi:"organizationId"`
-	// Identifier of the organization VPC.
+	// Organization VPC ID.
 	OrganizationVpcId pulumi.StringInput `pulumi:"organizationVpcId"`
-	// Google Cloud VPC network name. Changing this property forces recreation of the resource.
-	PeerVpc pulumi.StringInput `pulumi:"peerVpc"`
+	// Google Cloud VPC network name.
+	PeerVpc  pulumi.StringInput                            `pulumi:"peerVpc"`
+	Timeouts GetGcpOrgVpcPeeringConnectionTimeoutsPtrInput `pulumi:"timeouts"`
 }
 
 func (LookupGcpOrgVpcPeeringConnectionOutputArgs) ElementType() reflect.Type {
@@ -91,27 +120,27 @@ func (o LookupGcpOrgVpcPeeringConnectionResultOutput) ToLookupGcpOrgVpcPeeringCo
 	return o
 }
 
-// Google Cloud project ID. Changing this property forces recreation of the resource.
+// Google Cloud project ID.
 func (o LookupGcpOrgVpcPeeringConnectionResultOutput) GcpProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGcpOrgVpcPeeringConnectionResult) string { return v.GcpProjectId }).(pulumi.StringOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// Resource ID composed as: `organization_id/organization_vpc_id/gcp_project_id/peer_vpc`.
 func (o LookupGcpOrgVpcPeeringConnectionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGcpOrgVpcPeeringConnectionResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Identifier of the organization.
+// ID of an organization.
 func (o LookupGcpOrgVpcPeeringConnectionResultOutput) OrganizationId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGcpOrgVpcPeeringConnectionResult) string { return v.OrganizationId }).(pulumi.StringOutput)
 }
 
-// Identifier of the organization VPC.
+// Organization VPC ID.
 func (o LookupGcpOrgVpcPeeringConnectionResultOutput) OrganizationVpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGcpOrgVpcPeeringConnectionResult) string { return v.OrganizationVpcId }).(pulumi.StringOutput)
 }
 
-// Google Cloud VPC network name. Changing this property forces recreation of the resource.
+// Google Cloud VPC network name.
 func (o LookupGcpOrgVpcPeeringConnectionResultOutput) PeerVpc() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGcpOrgVpcPeeringConnectionResult) string { return v.PeerVpc }).(pulumi.StringOutput)
 }
@@ -121,9 +150,15 @@ func (o LookupGcpOrgVpcPeeringConnectionResultOutput) SelfLink() pulumi.StringOu
 	return o.ApplyT(func(v LookupGcpOrgVpcPeeringConnectionResult) string { return v.SelfLink }).(pulumi.StringOutput)
 }
 
-// State of the peering connection.
+// State of the peering connection. The possible values are `ACTIVE`, `APPROVED`, `APPROVED_PEER_REQUESTED`, `DELETED`, `DELETED_BY_PEER`, `DELETING`, `ERROR`, `INVALID_SPECIFICATION`, `PENDING_PEER` and `REJECTED_BY_PEER`.
 func (o LookupGcpOrgVpcPeeringConnectionResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGcpOrgVpcPeeringConnectionResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+func (o LookupGcpOrgVpcPeeringConnectionResultOutput) Timeouts() GetGcpOrgVpcPeeringConnectionTimeoutsPtrOutput {
+	return o.ApplyT(func(v LookupGcpOrgVpcPeeringConnectionResult) *GetGcpOrgVpcPeeringConnectionTimeouts {
+		return v.Timeouts
+	}).(GetGcpOrgVpcPeeringConnectionTimeoutsPtrOutput)
 }
 
 func init() {

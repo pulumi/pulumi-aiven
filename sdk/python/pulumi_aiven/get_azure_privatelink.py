@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetAzurePrivatelinkResult',
@@ -26,7 +28,7 @@ class GetAzurePrivatelinkResult:
     """
     A collection of values returned by getAzurePrivatelink.
     """
-    def __init__(__self__, azure_service_alias=None, azure_service_id=None, id=None, message=None, project=None, service_name=None, state=None, user_subscription_ids=None):
+    def __init__(__self__, azure_service_alias=None, azure_service_id=None, id=None, message=None, project=None, service_name=None, state=None, timeouts=None, user_subscription_ids=None):
         if azure_service_alias and not isinstance(azure_service_alias, str):
             raise TypeError("Expected argument 'azure_service_alias' to be a str")
         pulumi.set(__self__, "azure_service_alias", azure_service_alias)
@@ -48,6 +50,9 @@ class GetAzurePrivatelinkResult:
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
+        if timeouts and not isinstance(timeouts, dict):
+            raise TypeError("Expected argument 'timeouts' to be a dict")
+        pulumi.set(__self__, "timeouts", timeouts)
         if user_subscription_ids and not isinstance(user_subscription_ids, list):
             raise TypeError("Expected argument 'user_subscription_ids' to be a list")
         pulumi.set(__self__, "user_subscription_ids", user_subscription_ids)
@@ -56,7 +61,7 @@ class GetAzurePrivatelinkResult:
     @pulumi.getter(name="azureServiceAlias")
     def azure_service_alias(self) -> _builtins.str:
         """
-        The Azure Private Link service alias.
+        Azure Privatelink service alias.
         """
         return pulumi.get(self, "azure_service_alias")
 
@@ -64,7 +69,7 @@ class GetAzurePrivatelinkResult:
     @pulumi.getter(name="azureServiceId")
     def azure_service_id(self) -> _builtins.str:
         """
-        The Azure Private Link service ID.
+        Azure Privatelink service ID.
         """
         return pulumi.get(self, "azure_service_id")
 
@@ -72,15 +77,16 @@ class GetAzurePrivatelinkResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The provider-assigned unique ID for this managed resource.
+        Resource ID composed as: `project/service_name`.
         """
         return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""This attribute is retained only for compatibility with state created by older provider versions and is no longer populated.""")
     def message(self) -> _builtins.str:
         """
-        Printable result of the Azure Private Link request.
+        Legacy response message retained for backward compatibility. **Deprecated**: This attribute is retained only for compatibility with state created by older provider versions and is no longer populated.
         """
         return pulumi.get(self, "message")
 
@@ -88,7 +94,7 @@ class GetAzurePrivatelinkResult:
     @pulumi.getter
     def project(self) -> _builtins.str:
         """
-        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Project name.
         """
         return pulumi.get(self, "project")
 
@@ -96,7 +102,7 @@ class GetAzurePrivatelinkResult:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> _builtins.str:
         """
-        The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Service name.
         """
         return pulumi.get(self, "service_name")
 
@@ -104,15 +110,20 @@ class GetAzurePrivatelinkResult:
     @pulumi.getter
     def state(self) -> _builtins.str:
         """
-        The state of the Private Link resource.
+        Privatelink resource state. The possible values are `active`, `creating` and `deleting`.
         """
         return pulumi.get(self, "state")
+
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> Optional['outputs.GetAzurePrivatelinkTimeoutsResult']:
+        return pulumi.get(self, "timeouts")
 
     @_builtins.property
     @pulumi.getter(name="userSubscriptionIds")
     def user_subscription_ids(self) -> Sequence[_builtins.str]:
         """
-        A list of allowed subscription IDs. Maximum length: `16`.
+        IDs of Azure subscriptions allowed to connect to the service.
         """
         return pulumi.get(self, "user_subscription_ids")
 
@@ -130,11 +141,13 @@ class AwaitableGetAzurePrivatelinkResult(GetAzurePrivatelinkResult):
             project=self.project,
             service_name=self.service_name,
             state=self.state,
+            timeouts=self.timeouts,
             user_subscription_ids=self.user_subscription_ids)
 
 
 def get_azure_privatelink(project: Optional[_builtins.str] = None,
                           service_name: Optional[_builtins.str] = None,
+                          timeouts: Optional[Union['GetAzurePrivatelinkTimeoutsArgs', 'GetAzurePrivatelinkTimeoutsArgsDict']] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAzurePrivatelinkResult:
     """
     Gets information about an Azure Private Link connection for an Aiven service.
@@ -145,17 +158,18 @@ def get_azure_privatelink(project: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    main = aiven.get_azure_privatelink(project=example_project["project"],
-        service_name=example_kafka["serviceName"])
+    example = aiven.get_azure_privatelink(project="my-project",
+        service_name="foo")
     ```
 
 
-    :param _builtins.str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param _builtins.str service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+    :param _builtins.str project: Project name.
+    :param _builtins.str service_name: Service name.
     """
     __args__ = dict()
     __args__['project'] = project
     __args__['serviceName'] = service_name
+    __args__['timeouts'] = timeouts
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('aiven:index/getAzurePrivatelink:getAzurePrivatelink', __args__, opts=opts, typ=GetAzurePrivatelinkResult).value
 
@@ -167,9 +181,11 @@ def get_azure_privatelink(project: Optional[_builtins.str] = None,
         project=pulumi.get(__ret__, 'project'),
         service_name=pulumi.get(__ret__, 'service_name'),
         state=pulumi.get(__ret__, 'state'),
+        timeouts=pulumi.get(__ret__, 'timeouts'),
         user_subscription_ids=pulumi.get(__ret__, 'user_subscription_ids'))
 def get_azure_privatelink_output(project: pulumi.Input[Optional[_builtins.str]] = None,
                                  service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                                 timeouts: pulumi.Input[Optional[Optional[Union['GetAzurePrivatelinkTimeoutsArgs', 'GetAzurePrivatelinkTimeoutsArgsDict']]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAzurePrivatelinkResult]:
     """
     Gets information about an Azure Private Link connection for an Aiven service.
@@ -180,17 +196,18 @@ def get_azure_privatelink_output(project: pulumi.Input[Optional[_builtins.str]] 
     import pulumi
     import pulumi_aiven as aiven
 
-    main = aiven.get_azure_privatelink(project=example_project["project"],
-        service_name=example_kafka["serviceName"])
+    example = aiven.get_azure_privatelink(project="my-project",
+        service_name="foo")
     ```
 
 
-    :param _builtins.str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param _builtins.str service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+    :param _builtins.str project: Project name.
+    :param _builtins.str service_name: Service name.
     """
     __args__ = dict()
     __args__['project'] = project
     __args__['serviceName'] = service_name
+    __args__['timeouts'] = timeouts
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('aiven:index/getAzurePrivatelink:getAzurePrivatelink', __args__, opts=opts, typ=GetAzurePrivatelinkResult)
     return __ret__.apply(lambda __response__: GetAzurePrivatelinkResult(
@@ -201,4 +218,5 @@ def get_azure_privatelink_output(project: pulumi.Input[Optional[_builtins.str]] 
         project=pulumi.get(__response__, 'project'),
         service_name=pulumi.get(__response__, 'service_name'),
         state=pulumi.get(__response__, 'state'),
+        timeouts=pulumi.get(__response__, 'timeouts'),
         user_subscription_ids=pulumi.get(__response__, 'user_subscription_ids')))

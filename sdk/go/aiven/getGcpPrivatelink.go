@@ -28,8 +28,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.GetGcpPrivatelink(ctx, &aiven.LookupGcpPrivatelinkArgs{
-//				Project:     exampleProject.Project,
-//				ServiceName: exampleKafka.ServiceName,
+//				Project:     "my-project",
+//				ServiceName: "foo",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -51,26 +51,30 @@ func LookupGcpPrivatelink(ctx *pulumi.Context, args *LookupGcpPrivatelinkArgs, o
 
 // A collection of arguments for invoking getGcpPrivatelink.
 type LookupGcpPrivatelinkArgs struct {
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name.
 	Project string `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName string `pulumi:"serviceName"`
+	// Service name.
+	ServiceName string                     `pulumi:"serviceName"`
+	Timeouts    *GetGcpPrivatelinkTimeouts `pulumi:"timeouts"`
 }
 
 // A collection of values returned by getGcpPrivatelink.
 type LookupGcpPrivatelinkResult struct {
 	// Google Private Service Connect service attachment.
 	GoogleServiceAttachment string `pulumi:"googleServiceAttachment"`
-	// The provider-assigned unique ID for this managed resource.
+	// Resource ID composed as: `project/service_name`.
 	Id string `pulumi:"id"`
-	// Printable result of the Google Cloud Private Service Connect request.
+	// Legacy response message retained for backward compatibility. **Deprecated**: This attribute is retained only for compatibility with state created by older provider versions and is no longer populated.
+	//
+	// Deprecated: This attribute is retained only for compatibility with state created by older provider versions and is no longer populated.
 	Message string `pulumi:"message"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name.
 	Project string `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Service name.
 	ServiceName string `pulumi:"serviceName"`
-	// The state of the Private Service Connect resource.
-	State string `pulumi:"state"`
+	// The state of the Private Service Connect resource. The possible values are `active`, `creating` and `deleting`.
+	State    string                     `pulumi:"state"`
+	Timeouts *GetGcpPrivatelinkTimeouts `pulumi:"timeouts"`
 }
 
 func LookupGcpPrivatelinkOutput(ctx *pulumi.Context, args LookupGcpPrivatelinkOutputArgs, opts ...pulumi.InvokeOption) LookupGcpPrivatelinkResultOutput {
@@ -80,10 +84,11 @@ func LookupGcpPrivatelinkOutput(ctx *pulumi.Context, args LookupGcpPrivatelinkOu
 
 // A collection of arguments for invoking getGcpPrivatelink.
 type LookupGcpPrivatelinkOutputArgs struct {
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name.
 	Project pulumi.StringInput `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName pulumi.StringInput `pulumi:"serviceName"`
+	// Service name.
+	ServiceName pulumi.StringInput                `pulumi:"serviceName"`
+	Timeouts    GetGcpPrivatelinkTimeoutsPtrInput `pulumi:"timeouts"`
 }
 
 func (LookupGcpPrivatelinkOutputArgs) ElementType() reflect.Type {
@@ -110,29 +115,35 @@ func (o LookupGcpPrivatelinkResultOutput) GoogleServiceAttachment() pulumi.Strin
 	return o.ApplyT(func(v LookupGcpPrivatelinkResult) string { return v.GoogleServiceAttachment }).(pulumi.StringOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// Resource ID composed as: `project/service_name`.
 func (o LookupGcpPrivatelinkResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGcpPrivatelinkResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Printable result of the Google Cloud Private Service Connect request.
+// Legacy response message retained for backward compatibility. **Deprecated**: This attribute is retained only for compatibility with state created by older provider versions and is no longer populated.
+//
+// Deprecated: This attribute is retained only for compatibility with state created by older provider versions and is no longer populated.
 func (o LookupGcpPrivatelinkResultOutput) Message() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGcpPrivatelinkResult) string { return v.Message }).(pulumi.StringOutput)
 }
 
-// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// Project name.
 func (o LookupGcpPrivatelinkResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGcpPrivatelinkResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
-// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// Service name.
 func (o LookupGcpPrivatelinkResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGcpPrivatelinkResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// The state of the Private Service Connect resource.
+// The state of the Private Service Connect resource. The possible values are `active`, `creating` and `deleting`.
 func (o LookupGcpPrivatelinkResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGcpPrivatelinkResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+func (o LookupGcpPrivatelinkResultOutput) Timeouts() GetGcpPrivatelinkTimeoutsPtrOutput {
+	return o.ApplyT(func(v LookupGcpPrivatelinkResult) *GetGcpPrivatelinkTimeouts { return v.Timeouts }).(GetGcpPrivatelinkTimeoutsPtrOutput)
 }
 
 func init() {

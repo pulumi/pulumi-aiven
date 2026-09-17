@@ -29,17 +29,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.NewKafka(ctx, "example_kafka", &aiven.KafkaArgs{
-//				Project:               pulumi.Any(exampleProject.Project),
-//				CloudName:             pulumi.String("google-europe-west1"),
-//				Plan:                  pulumi.String("business-4"),
-//				ServiceName:           pulumi.String("example-kafka"),
-//				MaintenanceWindowDow:  pulumi.String("monday"),
-//				MaintenanceWindowTime: pulumi.String("10:00:00"),
 //				KafkaUserConfig: &aiven.KafkaKafkaUserConfigArgs{
-//					KafkaRest:      pulumi.Bool(true),
-//					KafkaConnect:   pulumi.Bool(true),
-//					SchemaRegistry: pulumi.Bool(true),
-//					KafkaVersion:   pulumi.String("3.8"),
 //					Kafka: &aiven.KafkaKafkaUserConfigKafkaArgs{
 //						GroupMaxSessionTimeoutMs: pulumi.Int(70000),
 //						LogRetentionBytes:        pulumi.Int(1000000000),
@@ -48,7 +38,17 @@ import (
 //						KafkaRest:    pulumi.Bool(true),
 //						KafkaConnect: pulumi.Bool(true),
 //					},
+//					KafkaRest:      pulumi.Bool(true),
+//					KafkaConnect:   pulumi.Bool(true),
+//					SchemaRegistry: pulumi.Bool(true),
+//					KafkaVersion:   pulumi.String("3.8"),
 //				},
+//				Project:               pulumi.Any(exampleProject.Project),
+//				CloudName:             pulumi.String("google-europe-west1"),
+//				Plan:                  pulumi.String("business-4"),
+//				ServiceName:           pulumi.String("example-kafka"),
+//				MaintenanceWindowDow:  pulumi.String("monday"),
+//				MaintenanceWindowTime: pulumi.String("10:00:00"),
 //			})
 //			if err != nil {
 //				return err

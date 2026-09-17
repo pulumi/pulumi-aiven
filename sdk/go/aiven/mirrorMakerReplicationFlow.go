@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates and manages an [Aiven for Apache Kafka® MirrorMaker 2](https://aiven.io/docs/products/kafka/kafka-mirrormaker) replication flow.
+// Creates and manages an [Aiven for Apache Kafka® MirrorMaker 2](https://aiven.io/docs/products/kafka/kafka-mirrormaker) replication flow. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
 //
 // ## Example Usage
 //
@@ -28,12 +28,30 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewMirrorMakerReplicationFlow(ctx, "example_replication_flow", &aiven.MirrorMakerReplicationFlowArgs{
-//				Project:       pulumi.Any(exampleProject.Project),
-//				ServiceName:   pulumi.Any(exampleKafka.ServiceName),
-//				SourceCluster: pulumi.Any(source.ServiceName),
-//				TargetCluster: pulumi.Any(target.ServiceName),
+//			_, err := aiven.NewMirrorMakerReplicationFlow(ctx, "example", &aiven.MirrorMakerReplicationFlowArgs{
+//				Project:       pulumi.String("my-project"),
+//				ServiceName:   pulumi.String("foo"),
+//				SourceCluster: pulumi.String("kafka-abc"),
+//				TargetCluster: pulumi.String("kafka-abc"),
 //				Enable:        pulumi.Bool(true),
+//				ConfigPropertiesExcludes: pulumi.StringArray{
+//					pulumi.String("follower.replication.throttled.replicas"),
+//					pulumi.String("leader.replication.throttled.replicas"),
+//					pulumi.String("message.timestamp.difference.max.ms"),
+//					pulumi.String("message.timestamp.type"),
+//					pulumi.String("unclean.leader.election.enable"),
+//					pulumi.String("min.insync.replicas"),
+//				},
+//				EmitBackwardHeartbeatsEnabled:   pulumi.Bool(false),
+//				EmitHeartbeatsEnabled:           pulumi.Bool(false),
+//				ExactlyOnceDeliveryEnabled:      pulumi.Bool(false),
+//				FollowerFetchingEnabled:         pulumi.Bool(true),
+//				OffsetLagMax:                    pulumi.Int(42),
+//				OffsetSyncsTopicLocation:        pulumi.String("source"),
+//				ReplicationFactor:               pulumi.Int(1),
+//				ReplicationPolicyClass:          pulumi.String("org.apache.kafka.connect.mirror.DefaultReplicationPolicy"),
+//				SyncGroupOffsetsEnabled:         pulumi.Bool(false),
+//				SyncGroupOffsetsIntervalSeconds: pulumi.Int(1),
 //				Topics: pulumi.StringArray{
 //					pulumi.String(".*"),
 //				},
@@ -41,14 +59,6 @@ import (
 //					pulumi.String(".*[\\-\\.]internal"),
 //					pulumi.String(".*\\.replica"),
 //					pulumi.String("__.*"),
-//				},
-//				ConfigPropertiesExcludes: pulumi.StringArray{
-//					pulumi.String("follower\\.replication\\.throttled\\.replicas"),
-//					pulumi.String("leader\\.replication\\.throttled\\.replicas"),
-//					pulumi.String("message\\.timestamp\\.difference\\.max\\.ms"),
-//					pulumi.String("message\\.timestamp\\.type"),
-//					pulumi.String("unclean\\.leader\\.election\\.enable"),
-//					pulumi.String("min\\.insync\\.replicas"),
 //				},
 //			})
 //			if err != nil {
@@ -63,44 +73,47 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import aiven:index/mirrorMakerReplicationFlow:MirrorMakerReplicationFlow example_replication_flow PROJECT/SERVICE_NAME/SOURCE_CLUSTER/TARGET_CLUSTER
+// $ pulumi import aiven:index/mirrorMakerReplicationFlow:MirrorMakerReplicationFlow example PROJECT/SERVICE_NAME/SOURCE_CLUSTER/TARGET_CLUSTER
 // ```
 type MirrorMakerReplicationFlow struct {
 	pulumi.CustomResourceState
 
-	// List of topic configuration properties and regular expressions to not replicate. The properties that are not replicated by default are: `follower.replication.throttled.replicas`, `leader.replication.throttled.replicas`, `message.timestamp.difference.max.ms`, `message.timestamp.type`, `unclean.leader.election.enable`, and `min.insync.replicas`. Setting this overrides the defaults. For example, to enable replication for 'min.insync.replicas' and 'unclean.leader.election.enable' set this to: ["follower\\.replication\\.throttled\\.replicas", "leader\\.replication\\.throttled\\.replicas", "message\\.timestamp\\.difference\\.max\\.ms",  "message\\.timestamp\\.type"]
+	// List of topic configuration properties and/or regexes that should not be replicated. If omitted, MirrorMaker will use default list of exclusions. For stability reasons, we always include the `unclean.leader.election.enable` field in the excluded parameters. If you have specific requirements for this configuration, please reach out to our support team for assistance.
 	ConfigPropertiesExcludes pulumi.StringArrayOutput `pulumi:"configPropertiesExcludes"`
-	// Enables emitting heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
-	EmitBackwardHeartbeatsEnabled pulumi.BoolPtrOutput `pulumi:"emitBackwardHeartbeatsEnabled"`
-	// Enables emitting heartbeats to the target cluster. The default value is `false`.
-	EmitHeartbeatsEnabled pulumi.BoolPtrOutput `pulumi:"emitHeartbeatsEnabled"`
-	// Enables replication flow for a service.
+	// Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
+	EmitBackwardHeartbeatsEnabled pulumi.BoolOutput `pulumi:"emitBackwardHeartbeatsEnabled"`
+	// Whether to emit heartbeats to the target cluster. The default value is `false`.
+	EmitHeartbeatsEnabled pulumi.BoolOutput `pulumi:"emitHeartbeatsEnabled"`
+	// Is replication flow enabled.
 	Enable pulumi.BoolOutput `pulumi:"enable"`
-	// Enables exactly-once message delivery. Set this to `enabled` for new replications. The default value is `false`.
-	ExactlyOnceDeliveryEnabled pulumi.BoolPtrOutput `pulumi:"exactlyOnceDeliveryEnabled"`
-	// Assigns a Rack ID based on the availability-zone to enable follower fetching and rack awareness per replication flow. Defaults to enabled by the service for new flows, but is left unchanged for existing ones when not set.
+	// Whether to enable exactly-once message delivery. We recommend you set this to enabled for new replications. The default value is `false`.
+	ExactlyOnceDeliveryEnabled pulumi.BoolOutput `pulumi:"exactlyOnceDeliveryEnabled"`
+	// Assigns a Rack ID based on the availability-zone to enable follower fetching and rack awareness per replication flow.
 	FollowerFetchingEnabled pulumi.BoolOutput `pulumi:"followerFetchingEnabled"`
-	// Offset syncs topic location. The possible values are `source` and `target`.
+	// How out-of-sync a remote partition can be before it is resynced (default: 100).
+	OffsetLagMax pulumi.IntOutput `pulumi:"offsetLagMax"`
+	// The location of the offset-syncs topic. The possible values are `source` and `target`.
 	OffsetSyncsTopicLocation pulumi.StringOutput `pulumi:"offsetSyncsTopicLocation"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Replication factor, `>= 1`.
-	ReplicationFactor pulumi.IntPtrOutput `pulumi:"replicationFactor"`
-	// Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
+	// Replication factor used when creating the remote topics. If the replication factor surpasses the number of nodes in the target cluster, topic creation will fail. Minimum value: `1`.
+	ReplicationFactor pulumi.IntOutput `pulumi:"replicationFactor"`
+	// Class which defines the remote topic naming convention. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`.
 	ReplicationPolicyClass pulumi.StringOutput `pulumi:"replicationPolicyClass"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Service name. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// Source cluster alias. Maximum length: `128`.
+	// The alias of the source cluster to use in this replication flow. Can contain the following symbols: ASCII alphanumerics, `.`, `_`, and `-`. Maximum length: `128`. Changing this property forces recreation of the resource.
 	SourceCluster pulumi.StringOutput `pulumi:"sourceCluster"`
-	// Sync consumer group offsets. The default value is `false`.
-	SyncGroupOffsetsEnabled pulumi.BoolPtrOutput `pulumi:"syncGroupOffsetsEnabled"`
-	// Frequency of consumer group offset sync. The default value is `1`.
-	SyncGroupOffsetsIntervalSeconds pulumi.IntPtrOutput `pulumi:"syncGroupOffsetsIntervalSeconds"`
-	// Target cluster alias. Maximum length: `128`.
-	TargetCluster pulumi.StringOutput `pulumi:"targetCluster"`
-	// The topics to include in the replica defined by a [list of regular expressions in Java format](https://aiven.io/docs/products/kafka/kafka-mirrormaker/concepts/replication-flow-topics-regex).
+	// Whether to periodically write the translated offsets of replicated consumer groups (in the source cluster) to _*consumer*offsets topic in target cluster, as long as no active consumers in that group are connected to the target cluster. The default value is `false`.
+	SyncGroupOffsetsEnabled pulumi.BoolOutput `pulumi:"syncGroupOffsetsEnabled"`
+	// Frequency at which consumer group offsets are synced (default: 60, every minute). Minimum value: `1`. The default value is `1`.
+	SyncGroupOffsetsIntervalSeconds pulumi.IntOutput `pulumi:"syncGroupOffsetsIntervalSeconds"`
+	// The alias of the target cluster to use in this replication flow. Can contain the following symbols: ASCII alphanumerics, `.`, `_`, and `-`. Maximum length: `128`. Changing this property forces recreation of the resource.
+	TargetCluster pulumi.StringOutput                         `pulumi:"targetCluster"`
+	Timeouts      MirrorMakerReplicationFlowTimeoutsPtrOutput `pulumi:"timeouts"`
+	// Topic names and regular expressions that match topic names that should be replicated. MirrorMaker will replicate these topics if they are not matched by `topicsBlacklist`. The topics to include are defined by a [list of regular expressions in Java format](https://aiven.io/docs/products/kafka/kafka-mirrormaker/concepts/replication-flow-topics-regex).
 	Topics pulumi.StringArrayOutput `pulumi:"topics"`
-	// The topics to exclude from the replica defined by a [list of regular expressions in Java format](https://aiven.io/docs/products/kafka/kafka-mirrormaker/concepts/replication-flow-topics-regex).
+	// Topic names and regular expressions that match topic names that should not be replicated. MirrorMaker will not replicate these topics even if they are matched by `topics`. The topics to exclude are defined by a [list of regular expressions in Java format](https://aiven.io/docs/products/kafka/kafka-mirrormaker/concepts/replication-flow-topics-regex).
 	TopicsBlacklists pulumi.StringArrayOutput `pulumi:"topicsBlacklists"`
 }
 
@@ -114,14 +127,8 @@ func NewMirrorMakerReplicationFlow(ctx *pulumi.Context,
 	if args.Enable == nil {
 		return nil, errors.New("invalid value for required argument 'Enable'")
 	}
-	if args.OffsetSyncsTopicLocation == nil {
-		return nil, errors.New("invalid value for required argument 'OffsetSyncsTopicLocation'")
-	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
-	}
-	if args.ReplicationPolicyClass == nil {
-		return nil, errors.New("invalid value for required argument 'ReplicationPolicyClass'")
 	}
 	if args.ServiceName == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceName'")
@@ -155,76 +162,82 @@ func GetMirrorMakerReplicationFlow(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering MirrorMakerReplicationFlow resources.
 type mirrorMakerReplicationFlowState struct {
-	// List of topic configuration properties and regular expressions to not replicate. The properties that are not replicated by default are: `follower.replication.throttled.replicas`, `leader.replication.throttled.replicas`, `message.timestamp.difference.max.ms`, `message.timestamp.type`, `unclean.leader.election.enable`, and `min.insync.replicas`. Setting this overrides the defaults. For example, to enable replication for 'min.insync.replicas' and 'unclean.leader.election.enable' set this to: ["follower\\.replication\\.throttled\\.replicas", "leader\\.replication\\.throttled\\.replicas", "message\\.timestamp\\.difference\\.max\\.ms",  "message\\.timestamp\\.type"]
+	// List of topic configuration properties and/or regexes that should not be replicated. If omitted, MirrorMaker will use default list of exclusions. For stability reasons, we always include the `unclean.leader.election.enable` field in the excluded parameters. If you have specific requirements for this configuration, please reach out to our support team for assistance.
 	ConfigPropertiesExcludes []string `pulumi:"configPropertiesExcludes"`
-	// Enables emitting heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
+	// Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
 	EmitBackwardHeartbeatsEnabled *bool `pulumi:"emitBackwardHeartbeatsEnabled"`
-	// Enables emitting heartbeats to the target cluster. The default value is `false`.
+	// Whether to emit heartbeats to the target cluster. The default value is `false`.
 	EmitHeartbeatsEnabled *bool `pulumi:"emitHeartbeatsEnabled"`
-	// Enables replication flow for a service.
+	// Is replication flow enabled.
 	Enable *bool `pulumi:"enable"`
-	// Enables exactly-once message delivery. Set this to `enabled` for new replications. The default value is `false`.
+	// Whether to enable exactly-once message delivery. We recommend you set this to enabled for new replications. The default value is `false`.
 	ExactlyOnceDeliveryEnabled *bool `pulumi:"exactlyOnceDeliveryEnabled"`
-	// Assigns a Rack ID based on the availability-zone to enable follower fetching and rack awareness per replication flow. Defaults to enabled by the service for new flows, but is left unchanged for existing ones when not set.
+	// Assigns a Rack ID based on the availability-zone to enable follower fetching and rack awareness per replication flow.
 	FollowerFetchingEnabled *bool `pulumi:"followerFetchingEnabled"`
-	// Offset syncs topic location. The possible values are `source` and `target`.
+	// How out-of-sync a remote partition can be before it is resynced (default: 100).
+	OffsetLagMax *int `pulumi:"offsetLagMax"`
+	// The location of the offset-syncs topic. The possible values are `source` and `target`.
 	OffsetSyncsTopicLocation *string `pulumi:"offsetSyncsTopicLocation"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project *string `pulumi:"project"`
-	// Replication factor, `>= 1`.
+	// Replication factor used when creating the remote topics. If the replication factor surpasses the number of nodes in the target cluster, topic creation will fail. Minimum value: `1`.
 	ReplicationFactor *int `pulumi:"replicationFactor"`
-	// Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
+	// Class which defines the remote topic naming convention. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`.
 	ReplicationPolicyClass *string `pulumi:"replicationPolicyClass"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Service name. Changing this property forces recreation of the resource.
 	ServiceName *string `pulumi:"serviceName"`
-	// Source cluster alias. Maximum length: `128`.
+	// The alias of the source cluster to use in this replication flow. Can contain the following symbols: ASCII alphanumerics, `.`, `_`, and `-`. Maximum length: `128`. Changing this property forces recreation of the resource.
 	SourceCluster *string `pulumi:"sourceCluster"`
-	// Sync consumer group offsets. The default value is `false`.
+	// Whether to periodically write the translated offsets of replicated consumer groups (in the source cluster) to _*consumer*offsets topic in target cluster, as long as no active consumers in that group are connected to the target cluster. The default value is `false`.
 	SyncGroupOffsetsEnabled *bool `pulumi:"syncGroupOffsetsEnabled"`
-	// Frequency of consumer group offset sync. The default value is `1`.
+	// Frequency at which consumer group offsets are synced (default: 60, every minute). Minimum value: `1`. The default value is `1`.
 	SyncGroupOffsetsIntervalSeconds *int `pulumi:"syncGroupOffsetsIntervalSeconds"`
-	// Target cluster alias. Maximum length: `128`.
-	TargetCluster *string `pulumi:"targetCluster"`
-	// The topics to include in the replica defined by a [list of regular expressions in Java format](https://aiven.io/docs/products/kafka/kafka-mirrormaker/concepts/replication-flow-topics-regex).
+	// The alias of the target cluster to use in this replication flow. Can contain the following symbols: ASCII alphanumerics, `.`, `_`, and `-`. Maximum length: `128`. Changing this property forces recreation of the resource.
+	TargetCluster *string                             `pulumi:"targetCluster"`
+	Timeouts      *MirrorMakerReplicationFlowTimeouts `pulumi:"timeouts"`
+	// Topic names and regular expressions that match topic names that should be replicated. MirrorMaker will replicate these topics if they are not matched by `topicsBlacklist`. The topics to include are defined by a [list of regular expressions in Java format](https://aiven.io/docs/products/kafka/kafka-mirrormaker/concepts/replication-flow-topics-regex).
 	Topics []string `pulumi:"topics"`
-	// The topics to exclude from the replica defined by a [list of regular expressions in Java format](https://aiven.io/docs/products/kafka/kafka-mirrormaker/concepts/replication-flow-topics-regex).
+	// Topic names and regular expressions that match topic names that should not be replicated. MirrorMaker will not replicate these topics even if they are matched by `topics`. The topics to exclude are defined by a [list of regular expressions in Java format](https://aiven.io/docs/products/kafka/kafka-mirrormaker/concepts/replication-flow-topics-regex).
 	TopicsBlacklists []string `pulumi:"topicsBlacklists"`
 }
 
 type MirrorMakerReplicationFlowState struct {
-	// List of topic configuration properties and regular expressions to not replicate. The properties that are not replicated by default are: `follower.replication.throttled.replicas`, `leader.replication.throttled.replicas`, `message.timestamp.difference.max.ms`, `message.timestamp.type`, `unclean.leader.election.enable`, and `min.insync.replicas`. Setting this overrides the defaults. For example, to enable replication for 'min.insync.replicas' and 'unclean.leader.election.enable' set this to: ["follower\\.replication\\.throttled\\.replicas", "leader\\.replication\\.throttled\\.replicas", "message\\.timestamp\\.difference\\.max\\.ms",  "message\\.timestamp\\.type"]
+	// List of topic configuration properties and/or regexes that should not be replicated. If omitted, MirrorMaker will use default list of exclusions. For stability reasons, we always include the `unclean.leader.election.enable` field in the excluded parameters. If you have specific requirements for this configuration, please reach out to our support team for assistance.
 	ConfigPropertiesExcludes pulumi.StringArrayInput
-	// Enables emitting heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
+	// Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
 	EmitBackwardHeartbeatsEnabled pulumi.BoolPtrInput
-	// Enables emitting heartbeats to the target cluster. The default value is `false`.
+	// Whether to emit heartbeats to the target cluster. The default value is `false`.
 	EmitHeartbeatsEnabled pulumi.BoolPtrInput
-	// Enables replication flow for a service.
+	// Is replication flow enabled.
 	Enable pulumi.BoolPtrInput
-	// Enables exactly-once message delivery. Set this to `enabled` for new replications. The default value is `false`.
+	// Whether to enable exactly-once message delivery. We recommend you set this to enabled for new replications. The default value is `false`.
 	ExactlyOnceDeliveryEnabled pulumi.BoolPtrInput
-	// Assigns a Rack ID based on the availability-zone to enable follower fetching and rack awareness per replication flow. Defaults to enabled by the service for new flows, but is left unchanged for existing ones when not set.
+	// Assigns a Rack ID based on the availability-zone to enable follower fetching and rack awareness per replication flow.
 	FollowerFetchingEnabled pulumi.BoolPtrInput
-	// Offset syncs topic location. The possible values are `source` and `target`.
+	// How out-of-sync a remote partition can be before it is resynced (default: 100).
+	OffsetLagMax pulumi.IntPtrInput
+	// The location of the offset-syncs topic. The possible values are `source` and `target`.
 	OffsetSyncsTopicLocation pulumi.StringPtrInput
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project pulumi.StringPtrInput
-	// Replication factor, `>= 1`.
+	// Replication factor used when creating the remote topics. If the replication factor surpasses the number of nodes in the target cluster, topic creation will fail. Minimum value: `1`.
 	ReplicationFactor pulumi.IntPtrInput
-	// Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
+	// Class which defines the remote topic naming convention. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`.
 	ReplicationPolicyClass pulumi.StringPtrInput
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Service name. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringPtrInput
-	// Source cluster alias. Maximum length: `128`.
+	// The alias of the source cluster to use in this replication flow. Can contain the following symbols: ASCII alphanumerics, `.`, `_`, and `-`. Maximum length: `128`. Changing this property forces recreation of the resource.
 	SourceCluster pulumi.StringPtrInput
-	// Sync consumer group offsets. The default value is `false`.
+	// Whether to periodically write the translated offsets of replicated consumer groups (in the source cluster) to _*consumer*offsets topic in target cluster, as long as no active consumers in that group are connected to the target cluster. The default value is `false`.
 	SyncGroupOffsetsEnabled pulumi.BoolPtrInput
-	// Frequency of consumer group offset sync. The default value is `1`.
+	// Frequency at which consumer group offsets are synced (default: 60, every minute). Minimum value: `1`. The default value is `1`.
 	SyncGroupOffsetsIntervalSeconds pulumi.IntPtrInput
-	// Target cluster alias. Maximum length: `128`.
+	// The alias of the target cluster to use in this replication flow. Can contain the following symbols: ASCII alphanumerics, `.`, `_`, and `-`. Maximum length: `128`. Changing this property forces recreation of the resource.
 	TargetCluster pulumi.StringPtrInput
-	// The topics to include in the replica defined by a [list of regular expressions in Java format](https://aiven.io/docs/products/kafka/kafka-mirrormaker/concepts/replication-flow-topics-regex).
+	Timeouts      MirrorMakerReplicationFlowTimeoutsPtrInput
+	// Topic names and regular expressions that match topic names that should be replicated. MirrorMaker will replicate these topics if they are not matched by `topicsBlacklist`. The topics to include are defined by a [list of regular expressions in Java format](https://aiven.io/docs/products/kafka/kafka-mirrormaker/concepts/replication-flow-topics-regex).
 	Topics pulumi.StringArrayInput
-	// The topics to exclude from the replica defined by a [list of regular expressions in Java format](https://aiven.io/docs/products/kafka/kafka-mirrormaker/concepts/replication-flow-topics-regex).
+	// Topic names and regular expressions that match topic names that should not be replicated. MirrorMaker will not replicate these topics even if they are matched by `topics`. The topics to exclude are defined by a [list of regular expressions in Java format](https://aiven.io/docs/products/kafka/kafka-mirrormaker/concepts/replication-flow-topics-regex).
 	TopicsBlacklists pulumi.StringArrayInput
 }
 
@@ -233,77 +246,83 @@ func (MirrorMakerReplicationFlowState) ElementType() reflect.Type {
 }
 
 type mirrorMakerReplicationFlowArgs struct {
-	// List of topic configuration properties and regular expressions to not replicate. The properties that are not replicated by default are: `follower.replication.throttled.replicas`, `leader.replication.throttled.replicas`, `message.timestamp.difference.max.ms`, `message.timestamp.type`, `unclean.leader.election.enable`, and `min.insync.replicas`. Setting this overrides the defaults. For example, to enable replication for 'min.insync.replicas' and 'unclean.leader.election.enable' set this to: ["follower\\.replication\\.throttled\\.replicas", "leader\\.replication\\.throttled\\.replicas", "message\\.timestamp\\.difference\\.max\\.ms",  "message\\.timestamp\\.type"]
+	// List of topic configuration properties and/or regexes that should not be replicated. If omitted, MirrorMaker will use default list of exclusions. For stability reasons, we always include the `unclean.leader.election.enable` field in the excluded parameters. If you have specific requirements for this configuration, please reach out to our support team for assistance.
 	ConfigPropertiesExcludes []string `pulumi:"configPropertiesExcludes"`
-	// Enables emitting heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
+	// Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
 	EmitBackwardHeartbeatsEnabled *bool `pulumi:"emitBackwardHeartbeatsEnabled"`
-	// Enables emitting heartbeats to the target cluster. The default value is `false`.
+	// Whether to emit heartbeats to the target cluster. The default value is `false`.
 	EmitHeartbeatsEnabled *bool `pulumi:"emitHeartbeatsEnabled"`
-	// Enables replication flow for a service.
+	// Is replication flow enabled.
 	Enable bool `pulumi:"enable"`
-	// Enables exactly-once message delivery. Set this to `enabled` for new replications. The default value is `false`.
+	// Whether to enable exactly-once message delivery. We recommend you set this to enabled for new replications. The default value is `false`.
 	ExactlyOnceDeliveryEnabled *bool `pulumi:"exactlyOnceDeliveryEnabled"`
-	// Assigns a Rack ID based on the availability-zone to enable follower fetching and rack awareness per replication flow. Defaults to enabled by the service for new flows, but is left unchanged for existing ones when not set.
+	// Assigns a Rack ID based on the availability-zone to enable follower fetching and rack awareness per replication flow.
 	FollowerFetchingEnabled *bool `pulumi:"followerFetchingEnabled"`
-	// Offset syncs topic location. The possible values are `source` and `target`.
-	OffsetSyncsTopicLocation string `pulumi:"offsetSyncsTopicLocation"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// How out-of-sync a remote partition can be before it is resynced (default: 100).
+	OffsetLagMax *int `pulumi:"offsetLagMax"`
+	// The location of the offset-syncs topic. The possible values are `source` and `target`.
+	OffsetSyncsTopicLocation *string `pulumi:"offsetSyncsTopicLocation"`
+	// Project name. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
-	// Replication factor, `>= 1`.
+	// Replication factor used when creating the remote topics. If the replication factor surpasses the number of nodes in the target cluster, topic creation will fail. Minimum value: `1`.
 	ReplicationFactor *int `pulumi:"replicationFactor"`
-	// Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
-	ReplicationPolicyClass string `pulumi:"replicationPolicyClass"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Class which defines the remote topic naming convention. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`.
+	ReplicationPolicyClass *string `pulumi:"replicationPolicyClass"`
+	// Service name. Changing this property forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
-	// Source cluster alias. Maximum length: `128`.
+	// The alias of the source cluster to use in this replication flow. Can contain the following symbols: ASCII alphanumerics, `.`, `_`, and `-`. Maximum length: `128`. Changing this property forces recreation of the resource.
 	SourceCluster string `pulumi:"sourceCluster"`
-	// Sync consumer group offsets. The default value is `false`.
+	// Whether to periodically write the translated offsets of replicated consumer groups (in the source cluster) to _*consumer*offsets topic in target cluster, as long as no active consumers in that group are connected to the target cluster. The default value is `false`.
 	SyncGroupOffsetsEnabled *bool `pulumi:"syncGroupOffsetsEnabled"`
-	// Frequency of consumer group offset sync. The default value is `1`.
+	// Frequency at which consumer group offsets are synced (default: 60, every minute). Minimum value: `1`. The default value is `1`.
 	SyncGroupOffsetsIntervalSeconds *int `pulumi:"syncGroupOffsetsIntervalSeconds"`
-	// Target cluster alias. Maximum length: `128`.
-	TargetCluster string `pulumi:"targetCluster"`
-	// The topics to include in the replica defined by a [list of regular expressions in Java format](https://aiven.io/docs/products/kafka/kafka-mirrormaker/concepts/replication-flow-topics-regex).
+	// The alias of the target cluster to use in this replication flow. Can contain the following symbols: ASCII alphanumerics, `.`, `_`, and `-`. Maximum length: `128`. Changing this property forces recreation of the resource.
+	TargetCluster string                              `pulumi:"targetCluster"`
+	Timeouts      *MirrorMakerReplicationFlowTimeouts `pulumi:"timeouts"`
+	// Topic names and regular expressions that match topic names that should be replicated. MirrorMaker will replicate these topics if they are not matched by `topicsBlacklist`. The topics to include are defined by a [list of regular expressions in Java format](https://aiven.io/docs/products/kafka/kafka-mirrormaker/concepts/replication-flow-topics-regex).
 	Topics []string `pulumi:"topics"`
-	// The topics to exclude from the replica defined by a [list of regular expressions in Java format](https://aiven.io/docs/products/kafka/kafka-mirrormaker/concepts/replication-flow-topics-regex).
+	// Topic names and regular expressions that match topic names that should not be replicated. MirrorMaker will not replicate these topics even if they are matched by `topics`. The topics to exclude are defined by a [list of regular expressions in Java format](https://aiven.io/docs/products/kafka/kafka-mirrormaker/concepts/replication-flow-topics-regex).
 	TopicsBlacklists []string `pulumi:"topicsBlacklists"`
 }
 
 // The set of arguments for constructing a MirrorMakerReplicationFlow resource.
 type MirrorMakerReplicationFlowArgs struct {
-	// List of topic configuration properties and regular expressions to not replicate. The properties that are not replicated by default are: `follower.replication.throttled.replicas`, `leader.replication.throttled.replicas`, `message.timestamp.difference.max.ms`, `message.timestamp.type`, `unclean.leader.election.enable`, and `min.insync.replicas`. Setting this overrides the defaults. For example, to enable replication for 'min.insync.replicas' and 'unclean.leader.election.enable' set this to: ["follower\\.replication\\.throttled\\.replicas", "leader\\.replication\\.throttled\\.replicas", "message\\.timestamp\\.difference\\.max\\.ms",  "message\\.timestamp\\.type"]
+	// List of topic configuration properties and/or regexes that should not be replicated. If omitted, MirrorMaker will use default list of exclusions. For stability reasons, we always include the `unclean.leader.election.enable` field in the excluded parameters. If you have specific requirements for this configuration, please reach out to our support team for assistance.
 	ConfigPropertiesExcludes pulumi.StringArrayInput
-	// Enables emitting heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
+	// Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
 	EmitBackwardHeartbeatsEnabled pulumi.BoolPtrInput
-	// Enables emitting heartbeats to the target cluster. The default value is `false`.
+	// Whether to emit heartbeats to the target cluster. The default value is `false`.
 	EmitHeartbeatsEnabled pulumi.BoolPtrInput
-	// Enables replication flow for a service.
+	// Is replication flow enabled.
 	Enable pulumi.BoolInput
-	// Enables exactly-once message delivery. Set this to `enabled` for new replications. The default value is `false`.
+	// Whether to enable exactly-once message delivery. We recommend you set this to enabled for new replications. The default value is `false`.
 	ExactlyOnceDeliveryEnabled pulumi.BoolPtrInput
-	// Assigns a Rack ID based on the availability-zone to enable follower fetching and rack awareness per replication flow. Defaults to enabled by the service for new flows, but is left unchanged for existing ones when not set.
+	// Assigns a Rack ID based on the availability-zone to enable follower fetching and rack awareness per replication flow.
 	FollowerFetchingEnabled pulumi.BoolPtrInput
-	// Offset syncs topic location. The possible values are `source` and `target`.
-	OffsetSyncsTopicLocation pulumi.StringInput
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// How out-of-sync a remote partition can be before it is resynced (default: 100).
+	OffsetLagMax pulumi.IntPtrInput
+	// The location of the offset-syncs topic. The possible values are `source` and `target`.
+	OffsetSyncsTopicLocation pulumi.StringPtrInput
+	// Project name. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput
-	// Replication factor, `>= 1`.
+	// Replication factor used when creating the remote topics. If the replication factor surpasses the number of nodes in the target cluster, topic creation will fail. Minimum value: `1`.
 	ReplicationFactor pulumi.IntPtrInput
-	// Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
-	ReplicationPolicyClass pulumi.StringInput
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Class which defines the remote topic naming convention. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`.
+	ReplicationPolicyClass pulumi.StringPtrInput
+	// Service name. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringInput
-	// Source cluster alias. Maximum length: `128`.
+	// The alias of the source cluster to use in this replication flow. Can contain the following symbols: ASCII alphanumerics, `.`, `_`, and `-`. Maximum length: `128`. Changing this property forces recreation of the resource.
 	SourceCluster pulumi.StringInput
-	// Sync consumer group offsets. The default value is `false`.
+	// Whether to periodically write the translated offsets of replicated consumer groups (in the source cluster) to _*consumer*offsets topic in target cluster, as long as no active consumers in that group are connected to the target cluster. The default value is `false`.
 	SyncGroupOffsetsEnabled pulumi.BoolPtrInput
-	// Frequency of consumer group offset sync. The default value is `1`.
+	// Frequency at which consumer group offsets are synced (default: 60, every minute). Minimum value: `1`. The default value is `1`.
 	SyncGroupOffsetsIntervalSeconds pulumi.IntPtrInput
-	// Target cluster alias. Maximum length: `128`.
+	// The alias of the target cluster to use in this replication flow. Can contain the following symbols: ASCII alphanumerics, `.`, `_`, and `-`. Maximum length: `128`. Changing this property forces recreation of the resource.
 	TargetCluster pulumi.StringInput
-	// The topics to include in the replica defined by a [list of regular expressions in Java format](https://aiven.io/docs/products/kafka/kafka-mirrormaker/concepts/replication-flow-topics-regex).
+	Timeouts      MirrorMakerReplicationFlowTimeoutsPtrInput
+	// Topic names and regular expressions that match topic names that should be replicated. MirrorMaker will replicate these topics if they are not matched by `topicsBlacklist`. The topics to include are defined by a [list of regular expressions in Java format](https://aiven.io/docs/products/kafka/kafka-mirrormaker/concepts/replication-flow-topics-regex).
 	Topics pulumi.StringArrayInput
-	// The topics to exclude from the replica defined by a [list of regular expressions in Java format](https://aiven.io/docs/products/kafka/kafka-mirrormaker/concepts/replication-flow-topics-regex).
+	// Topic names and regular expressions that match topic names that should not be replicated. MirrorMaker will not replicate these topics even if they are matched by `topics`. The topics to exclude are defined by a [list of regular expressions in Java format](https://aiven.io/docs/products/kafka/kafka-mirrormaker/concepts/replication-flow-topics-regex).
 	TopicsBlacklists pulumi.StringArrayInput
 }
 
@@ -394,87 +413,96 @@ func (o MirrorMakerReplicationFlowOutput) ToMirrorMakerReplicationFlowOutputWith
 	return o
 }
 
-// List of topic configuration properties and regular expressions to not replicate. The properties that are not replicated by default are: `follower.replication.throttled.replicas`, `leader.replication.throttled.replicas`, `message.timestamp.difference.max.ms`, `message.timestamp.type`, `unclean.leader.election.enable`, and `min.insync.replicas`. Setting this overrides the defaults. For example, to enable replication for 'min.insync.replicas' and 'unclean.leader.election.enable' set this to: ["follower\\.replication\\.throttled\\.replicas", "leader\\.replication\\.throttled\\.replicas", "message\\.timestamp\\.difference\\.max\\.ms",  "message\\.timestamp\\.type"]
+// List of topic configuration properties and/or regexes that should not be replicated. If omitted, MirrorMaker will use default list of exclusions. For stability reasons, we always include the `unclean.leader.election.enable` field in the excluded parameters. If you have specific requirements for this configuration, please reach out to our support team for assistance.
 func (o MirrorMakerReplicationFlowOutput) ConfigPropertiesExcludes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *MirrorMakerReplicationFlow) pulumi.StringArrayOutput { return v.ConfigPropertiesExcludes }).(pulumi.StringArrayOutput)
 }
 
-// Enables emitting heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
-func (o MirrorMakerReplicationFlowOutput) EmitBackwardHeartbeatsEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *MirrorMakerReplicationFlow) pulumi.BoolPtrOutput { return v.EmitBackwardHeartbeatsEnabled }).(pulumi.BoolPtrOutput)
+// Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
+func (o MirrorMakerReplicationFlowOutput) EmitBackwardHeartbeatsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *MirrorMakerReplicationFlow) pulumi.BoolOutput { return v.EmitBackwardHeartbeatsEnabled }).(pulumi.BoolOutput)
 }
 
-// Enables emitting heartbeats to the target cluster. The default value is `false`.
-func (o MirrorMakerReplicationFlowOutput) EmitHeartbeatsEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *MirrorMakerReplicationFlow) pulumi.BoolPtrOutput { return v.EmitHeartbeatsEnabled }).(pulumi.BoolPtrOutput)
+// Whether to emit heartbeats to the target cluster. The default value is `false`.
+func (o MirrorMakerReplicationFlowOutput) EmitHeartbeatsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *MirrorMakerReplicationFlow) pulumi.BoolOutput { return v.EmitHeartbeatsEnabled }).(pulumi.BoolOutput)
 }
 
-// Enables replication flow for a service.
+// Is replication flow enabled.
 func (o MirrorMakerReplicationFlowOutput) Enable() pulumi.BoolOutput {
 	return o.ApplyT(func(v *MirrorMakerReplicationFlow) pulumi.BoolOutput { return v.Enable }).(pulumi.BoolOutput)
 }
 
-// Enables exactly-once message delivery. Set this to `enabled` for new replications. The default value is `false`.
-func (o MirrorMakerReplicationFlowOutput) ExactlyOnceDeliveryEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *MirrorMakerReplicationFlow) pulumi.BoolPtrOutput { return v.ExactlyOnceDeliveryEnabled }).(pulumi.BoolPtrOutput)
+// Whether to enable exactly-once message delivery. We recommend you set this to enabled for new replications. The default value is `false`.
+func (o MirrorMakerReplicationFlowOutput) ExactlyOnceDeliveryEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *MirrorMakerReplicationFlow) pulumi.BoolOutput { return v.ExactlyOnceDeliveryEnabled }).(pulumi.BoolOutput)
 }
 
-// Assigns a Rack ID based on the availability-zone to enable follower fetching and rack awareness per replication flow. Defaults to enabled by the service for new flows, but is left unchanged for existing ones when not set.
+// Assigns a Rack ID based on the availability-zone to enable follower fetching and rack awareness per replication flow.
 func (o MirrorMakerReplicationFlowOutput) FollowerFetchingEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *MirrorMakerReplicationFlow) pulumi.BoolOutput { return v.FollowerFetchingEnabled }).(pulumi.BoolOutput)
 }
 
-// Offset syncs topic location. The possible values are `source` and `target`.
+// How out-of-sync a remote partition can be before it is resynced (default: 100).
+func (o MirrorMakerReplicationFlowOutput) OffsetLagMax() pulumi.IntOutput {
+	return o.ApplyT(func(v *MirrorMakerReplicationFlow) pulumi.IntOutput { return v.OffsetLagMax }).(pulumi.IntOutput)
+}
+
+// The location of the offset-syncs topic. The possible values are `source` and `target`.
 func (o MirrorMakerReplicationFlowOutput) OffsetSyncsTopicLocation() pulumi.StringOutput {
 	return o.ApplyT(func(v *MirrorMakerReplicationFlow) pulumi.StringOutput { return v.OffsetSyncsTopicLocation }).(pulumi.StringOutput)
 }
 
-// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// Project name. Changing this property forces recreation of the resource.
 func (o MirrorMakerReplicationFlowOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *MirrorMakerReplicationFlow) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// Replication factor, `>= 1`.
-func (o MirrorMakerReplicationFlowOutput) ReplicationFactor() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *MirrorMakerReplicationFlow) pulumi.IntPtrOutput { return v.ReplicationFactor }).(pulumi.IntPtrOutput)
+// Replication factor used when creating the remote topics. If the replication factor surpasses the number of nodes in the target cluster, topic creation will fail. Minimum value: `1`.
+func (o MirrorMakerReplicationFlowOutput) ReplicationFactor() pulumi.IntOutput {
+	return o.ApplyT(func(v *MirrorMakerReplicationFlow) pulumi.IntOutput { return v.ReplicationFactor }).(pulumi.IntOutput)
 }
 
-// Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
+// Class which defines the remote topic naming convention. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`.
 func (o MirrorMakerReplicationFlowOutput) ReplicationPolicyClass() pulumi.StringOutput {
 	return o.ApplyT(func(v *MirrorMakerReplicationFlow) pulumi.StringOutput { return v.ReplicationPolicyClass }).(pulumi.StringOutput)
 }
 
-// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// Service name. Changing this property forces recreation of the resource.
 func (o MirrorMakerReplicationFlowOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *MirrorMakerReplicationFlow) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// Source cluster alias. Maximum length: `128`.
+// The alias of the source cluster to use in this replication flow. Can contain the following symbols: ASCII alphanumerics, `.`, `_`, and `-`. Maximum length: `128`. Changing this property forces recreation of the resource.
 func (o MirrorMakerReplicationFlowOutput) SourceCluster() pulumi.StringOutput {
 	return o.ApplyT(func(v *MirrorMakerReplicationFlow) pulumi.StringOutput { return v.SourceCluster }).(pulumi.StringOutput)
 }
 
-// Sync consumer group offsets. The default value is `false`.
-func (o MirrorMakerReplicationFlowOutput) SyncGroupOffsetsEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *MirrorMakerReplicationFlow) pulumi.BoolPtrOutput { return v.SyncGroupOffsetsEnabled }).(pulumi.BoolPtrOutput)
+// Whether to periodically write the translated offsets of replicated consumer groups (in the source cluster) to _*consumer*offsets topic in target cluster, as long as no active consumers in that group are connected to the target cluster. The default value is `false`.
+func (o MirrorMakerReplicationFlowOutput) SyncGroupOffsetsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *MirrorMakerReplicationFlow) pulumi.BoolOutput { return v.SyncGroupOffsetsEnabled }).(pulumi.BoolOutput)
 }
 
-// Frequency of consumer group offset sync. The default value is `1`.
-func (o MirrorMakerReplicationFlowOutput) SyncGroupOffsetsIntervalSeconds() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *MirrorMakerReplicationFlow) pulumi.IntPtrOutput { return v.SyncGroupOffsetsIntervalSeconds }).(pulumi.IntPtrOutput)
+// Frequency at which consumer group offsets are synced (default: 60, every minute). Minimum value: `1`. The default value is `1`.
+func (o MirrorMakerReplicationFlowOutput) SyncGroupOffsetsIntervalSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v *MirrorMakerReplicationFlow) pulumi.IntOutput { return v.SyncGroupOffsetsIntervalSeconds }).(pulumi.IntOutput)
 }
 
-// Target cluster alias. Maximum length: `128`.
+// The alias of the target cluster to use in this replication flow. Can contain the following symbols: ASCII alphanumerics, `.`, `_`, and `-`. Maximum length: `128`. Changing this property forces recreation of the resource.
 func (o MirrorMakerReplicationFlowOutput) TargetCluster() pulumi.StringOutput {
 	return o.ApplyT(func(v *MirrorMakerReplicationFlow) pulumi.StringOutput { return v.TargetCluster }).(pulumi.StringOutput)
 }
 
-// The topics to include in the replica defined by a [list of regular expressions in Java format](https://aiven.io/docs/products/kafka/kafka-mirrormaker/concepts/replication-flow-topics-regex).
+func (o MirrorMakerReplicationFlowOutput) Timeouts() MirrorMakerReplicationFlowTimeoutsPtrOutput {
+	return o.ApplyT(func(v *MirrorMakerReplicationFlow) MirrorMakerReplicationFlowTimeoutsPtrOutput { return v.Timeouts }).(MirrorMakerReplicationFlowTimeoutsPtrOutput)
+}
+
+// Topic names and regular expressions that match topic names that should be replicated. MirrorMaker will replicate these topics if they are not matched by `topicsBlacklist`. The topics to include are defined by a [list of regular expressions in Java format](https://aiven.io/docs/products/kafka/kafka-mirrormaker/concepts/replication-flow-topics-regex).
 func (o MirrorMakerReplicationFlowOutput) Topics() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *MirrorMakerReplicationFlow) pulumi.StringArrayOutput { return v.Topics }).(pulumi.StringArrayOutput)
 }
 
-// The topics to exclude from the replica defined by a [list of regular expressions in Java format](https://aiven.io/docs/products/kafka/kafka-mirrormaker/concepts/replication-flow-topics-regex).
+// Topic names and regular expressions that match topic names that should not be replicated. MirrorMaker will not replicate these topics even if they are matched by `topics`. The topics to exclude are defined by a [list of regular expressions in Java format](https://aiven.io/docs/products/kafka/kafka-mirrormaker/concepts/replication-flow-topics-regex).
 func (o MirrorMakerReplicationFlowOutput) TopicsBlacklists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *MirrorMakerReplicationFlow) pulumi.StringArrayOutput { return v.TopicsBlacklists }).(pulumi.StringArrayOutput)
 }

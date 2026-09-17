@@ -24,20 +24,20 @@ namespace Pulumi.Aiven
     /// {
     ///     var exampleGrafana = new Aiven.Grafana("example_grafana", new()
     ///     {
+    ///         GrafanaUserConfig = new Aiven.Inputs.GrafanaGrafanaUserConfigArgs
+    ///         {
+    ///             PublicAccess = new Aiven.Inputs.GrafanaGrafanaUserConfigPublicAccessArgs
+    ///             {
+    ///                 Grafana = true,
+    ///             },
+    ///             AlertingEnabled = true,
+    ///         },
     ///         Project = exampleProject.Project,
     ///         CloudName = "google-europe-west1",
     ///         Plan = "startup-1",
     ///         ServiceName = "example-grafana-service",
     ///         MaintenanceWindowDow = "monday",
     ///         MaintenanceWindowTime = "10:00:00",
-    ///         GrafanaUserConfig = new Aiven.Inputs.GrafanaGrafanaUserConfigArgs
-    ///         {
-    ///             AlertingEnabled = true,
-    ///             PublicAccess = new Aiven.Inputs.GrafanaGrafanaUserConfigPublicAccessArgs
-    ///             {
-    ///                 Grafana = true,
-    ///             },
-    ///         },
     ///     });
     /// 
     /// });

@@ -24,6 +24,7 @@ import com.pulumi.aiven.outputs.ServiceIntegrationEndpointExternalPostgresql;
 import com.pulumi.aiven.outputs.ServiceIntegrationEndpointExternalPrometheusUserConfig;
 import com.pulumi.aiven.outputs.ServiceIntegrationEndpointExternalSchemaRegistryUserConfig;
 import com.pulumi.aiven.outputs.ServiceIntegrationEndpointJolokiaUserConfig;
+import com.pulumi.aiven.outputs.ServiceIntegrationEndpointOpentelemetryUserConfig;
 import com.pulumi.aiven.outputs.ServiceIntegrationEndpointPrometheusUserConfig;
 import com.pulumi.aiven.outputs.ServiceIntegrationEndpointRsyslogUserConfig;
 import com.pulumi.core.Output;
@@ -77,15 +78,15 @@ import javax.annotation.Nullable;
  * 
  *         // Disk autoscaler endpoint
  *         var autoscalerEndpoint = new ServiceIntegrationEndpoint("autoscalerEndpoint", ServiceIntegrationEndpointArgs.builder()
- *             .project(exampleProject.project())
- *             .endpointName("disk-autoscaler-200GiB")
- *             .endpointType("autoscaler")
  *             .autoscalerUserConfig(ServiceIntegrationEndpointAutoscalerUserConfigArgs.builder()
  *                 .autoscalings(ServiceIntegrationEndpointAutoscalerUserConfigAutoscalingArgs.builder()
  *                     .capGb(200)
  *                     .type("autoscale_disk")
  *                     .build())
  *                 .build())
+ *             .project(exampleProject.project())
+ *             .endpointName("disk-autoscaler-200GiB")
+ *             .endpointType("autoscaler")
  *             .build());
  * 
  *     }
@@ -159,14 +160,14 @@ public class ServiceIntegrationEndpoint extends com.pulumi.resources.CustomResou
         return this.endpointName;
     }
     /**
-     * The type of service integration endpoint. The possible values are `autoscaler`, `datadog`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalAwsS3`, `externalAzureBlobStorage`, `externalClickhouse`, `externalElasticsearchLogs`, `externalGoogleCloudBigquery`, `externalGoogleCloudLogging`, `externalKafka`, `externalMysql`, `externalObjectStorageConfig`, `externalOpensearchLogs`, `externalPostgresql`, `externalPrometheus`, `externalRedis`, `externalSchemaRegistry`, `externalSumologicLogs`, `jolokia`, `prometheus` and `rsyslog`.
+     * The type of service integration endpoint. The possible values are `autoscaler`, `datadog`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalAwsS3`, `externalAzureBlobStorage`, `externalClickhouse`, `externalElasticsearchLogs`, `externalGoogleCloudBigquery`, `externalGoogleCloudLogging`, `externalKafka`, `externalMysql`, `externalObjectStorageConfig`, `externalOpensearchLogs`, `externalPostgresql`, `externalPrometheus`, `externalRedis`, `externalSchemaRegistry`, `externalSumologicLogs`, `jolokia`, `opentelemetry`, `prometheus` and `rsyslog`.
      * 
      */
     @Export(name="endpointType", refs={String.class}, tree="[0]")
     private Output<String> endpointType;
 
     /**
-     * @return The type of service integration endpoint. The possible values are `autoscaler`, `datadog`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalAwsS3`, `externalAzureBlobStorage`, `externalClickhouse`, `externalElasticsearchLogs`, `externalGoogleCloudBigquery`, `externalGoogleCloudLogging`, `externalKafka`, `externalMysql`, `externalObjectStorageConfig`, `externalOpensearchLogs`, `externalPostgresql`, `externalPrometheus`, `externalRedis`, `externalSchemaRegistry`, `externalSumologicLogs`, `jolokia`, `prometheus` and `rsyslog`.
+     * @return The type of service integration endpoint. The possible values are `autoscaler`, `datadog`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalAwsS3`, `externalAzureBlobStorage`, `externalClickhouse`, `externalElasticsearchLogs`, `externalGoogleCloudBigquery`, `externalGoogleCloudLogging`, `externalKafka`, `externalMysql`, `externalObjectStorageConfig`, `externalOpensearchLogs`, `externalPostgresql`, `externalPrometheus`, `externalRedis`, `externalSchemaRegistry`, `externalSumologicLogs`, `jolokia`, `opentelemetry`, `prometheus` and `rsyslog`.
      * 
      */
     public Output<String> endpointType() {
@@ -395,6 +396,20 @@ public class ServiceIntegrationEndpoint extends com.pulumi.resources.CustomResou
      */
     public Output<Optional<ServiceIntegrationEndpointJolokiaUserConfig>> jolokiaUserConfig() {
         return Codegen.optional(this.jolokiaUserConfig);
+    }
+    /**
+     * Opentelemetry user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
+     * 
+     */
+    @Export(name="opentelemetryUserConfig", refs={ServiceIntegrationEndpointOpentelemetryUserConfig.class}, tree="[0]")
+    private Output</* @Nullable */ ServiceIntegrationEndpointOpentelemetryUserConfig> opentelemetryUserConfig;
+
+    /**
+     * @return Opentelemetry user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
+     * 
+     */
+    public Output<Optional<ServiceIntegrationEndpointOpentelemetryUserConfig>> opentelemetryUserConfig() {
+        return Codegen.optional(this.opentelemetryUserConfig);
     }
     /**
      * Project the service integration endpoint is in.

@@ -27,15 +27,15 @@ import * as utilities from "./utilities";
  * });
  * // Disk autoscaler endpoint
  * const autoscalerEndpoint = new aiven.ServiceIntegrationEndpoint("autoscaler_endpoint", {
- *     project: exampleProject.project,
- *     endpointName: "disk-autoscaler-200GiB",
- *     endpointType: "autoscaler",
  *     autoscalerUserConfig: {
  *         autoscalings: [{
  *             capGb: 200,
  *             type: "autoscale_disk",
  *         }],
  *     },
+ *     project: exampleProject.project,
+ *     endpointName: "disk-autoscaler-200GiB",
+ *     endpointType: "autoscaler",
  * });
  * ```
  *
@@ -90,7 +90,7 @@ export class ServiceIntegrationEndpoint extends pulumi.CustomResource {
      */
     declare public readonly endpointName: pulumi.Output<string>;
     /**
-     * The type of service integration endpoint. The possible values are `autoscaler`, `datadog`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalAwsS3`, `externalAzureBlobStorage`, `externalClickhouse`, `externalElasticsearchLogs`, `externalGoogleCloudBigquery`, `externalGoogleCloudLogging`, `externalKafka`, `externalMysql`, `externalObjectStorageConfig`, `externalOpensearchLogs`, `externalPostgresql`, `externalPrometheus`, `externalRedis`, `externalSchemaRegistry`, `externalSumologicLogs`, `jolokia`, `prometheus` and `rsyslog`.
+     * The type of service integration endpoint. The possible values are `autoscaler`, `datadog`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalAwsS3`, `externalAzureBlobStorage`, `externalClickhouse`, `externalElasticsearchLogs`, `externalGoogleCloudBigquery`, `externalGoogleCloudLogging`, `externalKafka`, `externalMysql`, `externalObjectStorageConfig`, `externalOpensearchLogs`, `externalPostgresql`, `externalPrometheus`, `externalRedis`, `externalSchemaRegistry`, `externalSumologicLogs`, `jolokia`, `opentelemetry`, `prometheus` and `rsyslog`.
      */
     declare public readonly endpointType: pulumi.Output<string>;
     /**
@@ -158,6 +158,10 @@ export class ServiceIntegrationEndpoint extends pulumi.CustomResource {
      */
     declare public readonly jolokiaUserConfig: pulumi.Output<outputs.ServiceIntegrationEndpointJolokiaUserConfig | undefined>;
     /**
+     * Opentelemetry user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+     */
+    declare public readonly opentelemetryUserConfig: pulumi.Output<outputs.ServiceIntegrationEndpointOpentelemetryUserConfig | undefined>;
+    /**
      * Project the service integration endpoint is in.
      */
     declare public readonly project: pulumi.Output<string>;
@@ -204,6 +208,7 @@ export class ServiceIntegrationEndpoint extends pulumi.CustomResource {
             resourceInputs["externalPrometheusUserConfig"] = state?.externalPrometheusUserConfig;
             resourceInputs["externalSchemaRegistryUserConfig"] = state?.externalSchemaRegistryUserConfig;
             resourceInputs["jolokiaUserConfig"] = state?.jolokiaUserConfig;
+            resourceInputs["opentelemetryUserConfig"] = state?.opentelemetryUserConfig;
             resourceInputs["project"] = state?.project;
             resourceInputs["prometheusUserConfig"] = state?.prometheusUserConfig;
             resourceInputs["rsyslogUserConfig"] = state?.rsyslogUserConfig;
@@ -238,6 +243,7 @@ export class ServiceIntegrationEndpoint extends pulumi.CustomResource {
             resourceInputs["externalPrometheusUserConfig"] = args?.externalPrometheusUserConfig;
             resourceInputs["externalSchemaRegistryUserConfig"] = args?.externalSchemaRegistryUserConfig;
             resourceInputs["jolokiaUserConfig"] = args?.jolokiaUserConfig;
+            resourceInputs["opentelemetryUserConfig"] = args?.opentelemetryUserConfig;
             resourceInputs["project"] = args?.project;
             resourceInputs["prometheusUserConfig"] = args?.prometheusUserConfig;
             resourceInputs["rsyslogUserConfig"] = args?.rsyslogUserConfig;
@@ -269,7 +275,7 @@ export interface ServiceIntegrationEndpointState {
      */
     endpointName?: pulumi.Input<string | undefined>;
     /**
-     * The type of service integration endpoint. The possible values are `autoscaler`, `datadog`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalAwsS3`, `externalAzureBlobStorage`, `externalClickhouse`, `externalElasticsearchLogs`, `externalGoogleCloudBigquery`, `externalGoogleCloudLogging`, `externalKafka`, `externalMysql`, `externalObjectStorageConfig`, `externalOpensearchLogs`, `externalPostgresql`, `externalPrometheus`, `externalRedis`, `externalSchemaRegistry`, `externalSumologicLogs`, `jolokia`, `prometheus` and `rsyslog`.
+     * The type of service integration endpoint. The possible values are `autoscaler`, `datadog`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalAwsS3`, `externalAzureBlobStorage`, `externalClickhouse`, `externalElasticsearchLogs`, `externalGoogleCloudBigquery`, `externalGoogleCloudLogging`, `externalKafka`, `externalMysql`, `externalObjectStorageConfig`, `externalOpensearchLogs`, `externalPostgresql`, `externalPrometheus`, `externalRedis`, `externalSchemaRegistry`, `externalSumologicLogs`, `jolokia`, `opentelemetry`, `prometheus` and `rsyslog`.
      */
     endpointType?: pulumi.Input<string | undefined>;
     /**
@@ -337,6 +343,10 @@ export interface ServiceIntegrationEndpointState {
      */
     jolokiaUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointJolokiaUserConfig | undefined>;
     /**
+     * Opentelemetry user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+     */
+    opentelemetryUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointOpentelemetryUserConfig | undefined>;
+    /**
      * Project the service integration endpoint is in.
      */
     project?: pulumi.Input<string | undefined>;
@@ -367,7 +377,7 @@ export interface ServiceIntegrationEndpointArgs {
      */
     endpointName: pulumi.Input<string>;
     /**
-     * The type of service integration endpoint. The possible values are `autoscaler`, `datadog`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalAwsS3`, `externalAzureBlobStorage`, `externalClickhouse`, `externalElasticsearchLogs`, `externalGoogleCloudBigquery`, `externalGoogleCloudLogging`, `externalKafka`, `externalMysql`, `externalObjectStorageConfig`, `externalOpensearchLogs`, `externalPostgresql`, `externalPrometheus`, `externalRedis`, `externalSchemaRegistry`, `externalSumologicLogs`, `jolokia`, `prometheus` and `rsyslog`.
+     * The type of service integration endpoint. The possible values are `autoscaler`, `datadog`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalAwsS3`, `externalAzureBlobStorage`, `externalClickhouse`, `externalElasticsearchLogs`, `externalGoogleCloudBigquery`, `externalGoogleCloudLogging`, `externalKafka`, `externalMysql`, `externalObjectStorageConfig`, `externalOpensearchLogs`, `externalPostgresql`, `externalPrometheus`, `externalRedis`, `externalSchemaRegistry`, `externalSumologicLogs`, `jolokia`, `opentelemetry`, `prometheus` and `rsyslog`.
      */
     endpointType: pulumi.Input<string>;
     /**
@@ -434,6 +444,10 @@ export interface ServiceIntegrationEndpointArgs {
      * Jolokia user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
     jolokiaUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointJolokiaUserConfig | undefined>;
+    /**
+     * Opentelemetry user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+     */
+    opentelemetryUserConfig?: pulumi.Input<inputs.ServiceIntegrationEndpointOpentelemetryUserConfig | undefined>;
     /**
      * Project the service integration endpoint is in.
      */

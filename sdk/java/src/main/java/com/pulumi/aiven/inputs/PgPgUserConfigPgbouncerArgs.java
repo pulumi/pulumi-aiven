@@ -6,6 +6,7 @@ package com.pulumi.aiven.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -124,6 +125,21 @@ public final class PgPgUserConfigPgbouncerArgs extends com.pulumi.resources.Reso
     }
 
     /**
+     * If connection and login don’t finish in this amount of time, the connection will be closed. (seconds).
+     * 
+     */
+    @Import(name="serverConnectTimeout")
+    private @Nullable Output<Double> serverConnectTimeout;
+
+    /**
+     * @return If connection and login don’t finish in this amount of time, the connection will be closed. (seconds).
+     * 
+     */
+    public Optional<Output<Double>> serverConnectTimeout() {
+        return Optional.ofNullable(this.serverConnectTimeout);
+    }
+
+    /**
      * If a server connection has been idle more than this many seconds it will be dropped. If 0 then timeout is disabled. (seconds). Default: `600`.
      * 
      */
@@ -154,6 +170,21 @@ public final class PgPgUserConfigPgbouncerArgs extends com.pulumi.resources.Reso
     }
 
     /**
+     * If login to the server failed, because of failure to connect or from authentication, the pooler waits this much before retrying to connect. During the waiting interval, new clients trying to connect to the failing server will get an error immediately without another connection attempt. (seconds).
+     * 
+     */
+    @Import(name="serverLoginRetry")
+    private @Nullable Output<Double> serverLoginRetry;
+
+    /**
+     * @return If login to the server failed, because of failure to connect or from authentication, the pooler waits this much before retrying to connect. During the waiting interval, new clients trying to connect to the failing server will get an error immediately without another connection attempt. (seconds).
+     * 
+     */
+    public Optional<Output<Double>> serverLoginRetry() {
+        return Optional.ofNullable(this.serverLoginRetry);
+    }
+
+    /**
      * Run server*reset*query (DISCARD ALL) in all pooling modes. Default: `false`.
      * 
      */
@@ -178,8 +209,10 @@ public final class PgPgUserConfigPgbouncerArgs extends com.pulumi.resources.Reso
         this.ignoreStartupParameters = $.ignoreStartupParameters;
         this.maxPreparedStatements = $.maxPreparedStatements;
         this.minPoolSize = $.minPoolSize;
+        this.serverConnectTimeout = $.serverConnectTimeout;
         this.serverIdleTimeout = $.serverIdleTimeout;
         this.serverLifetime = $.serverLifetime;
+        this.serverLoginRetry = $.serverLoginRetry;
         this.serverResetQueryAlways = $.serverResetQueryAlways;
     }
 
@@ -359,6 +392,27 @@ public final class PgPgUserConfigPgbouncerArgs extends com.pulumi.resources.Reso
         }
 
         /**
+         * @param serverConnectTimeout If connection and login don’t finish in this amount of time, the connection will be closed. (seconds).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serverConnectTimeout(@Nullable Output<Double> serverConnectTimeout) {
+            $.serverConnectTimeout = serverConnectTimeout;
+            return this;
+        }
+
+        /**
+         * @param serverConnectTimeout If connection and login don’t finish in this amount of time, the connection will be closed. (seconds).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serverConnectTimeout(Double serverConnectTimeout) {
+            return serverConnectTimeout(Output.of(serverConnectTimeout));
+        }
+
+        /**
          * @param serverIdleTimeout If a server connection has been idle more than this many seconds it will be dropped. If 0 then timeout is disabled. (seconds). Default: `600`.
          * 
          * @return builder
@@ -398,6 +452,27 @@ public final class PgPgUserConfigPgbouncerArgs extends com.pulumi.resources.Reso
          */
         public Builder serverLifetime(Integer serverLifetime) {
             return serverLifetime(Output.of(serverLifetime));
+        }
+
+        /**
+         * @param serverLoginRetry If login to the server failed, because of failure to connect or from authentication, the pooler waits this much before retrying to connect. During the waiting interval, new clients trying to connect to the failing server will get an error immediately without another connection attempt. (seconds).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serverLoginRetry(@Nullable Output<Double> serverLoginRetry) {
+            $.serverLoginRetry = serverLoginRetry;
+            return this;
+        }
+
+        /**
+         * @param serverLoginRetry If login to the server failed, because of failure to connect or from authentication, the pooler waits this much before retrying to connect. During the waiting interval, new clients trying to connect to the failing server will get an error immediately without another connection attempt. (seconds).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serverLoginRetry(Double serverLoginRetry) {
+            return serverLoginRetry(Output.of(serverLoginRetry));
         }
 
         /**

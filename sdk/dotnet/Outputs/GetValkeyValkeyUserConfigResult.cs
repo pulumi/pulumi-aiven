@@ -90,6 +90,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? ValkeyActiveExpireEffort;
         /// <summary>
+        /// Enable active memory defragmentation. When enabled, Valkey relocates objects off sparsely-used memory pages to reduce fragmentation and return memory to the operating system. Defragmentation runs on the main thread and consumes CPU, so it may increase latency under load. Default: `False`.
+        /// </summary>
+        public readonly bool? ValkeyActivedefrag;
+        /// <summary>
         /// Set Valkey IO thread count. Changing this will cause a restart of the Valkey service. Example: `1`.
         /// </summary>
         public readonly int? ValkeyIoThreads;
@@ -130,7 +134,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? ValkeyTimeout;
         /// <summary>
-        /// Enum: `8.1`, `9.0`, and newer. Valkey major version.
+        /// Enum: `8.1`, `9.0`, `9.1`, and newer. Valkey major version.
         /// </summary>
         public readonly string? ValkeyVersion;
 
@@ -174,6 +178,8 @@ namespace Pulumi.Aiven.Outputs
 
             int? valkeyActiveExpireEffort,
 
+            bool? valkeyActivedefrag,
+
             int? valkeyIoThreads,
 
             int? valkeyLfuDecayTime,
@@ -215,6 +221,7 @@ namespace Pulumi.Aiven.Outputs
             StaticIps = staticIps;
             ValkeyAclChannelsDefault = valkeyAclChannelsDefault;
             ValkeyActiveExpireEffort = valkeyActiveExpireEffort;
+            ValkeyActivedefrag = valkeyActivedefrag;
             ValkeyIoThreads = valkeyIoThreads;
             ValkeyLfuDecayTime = valkeyLfuDecayTime;
             ValkeyLfuLogFactor = valkeyLfuLogFactor;

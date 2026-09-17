@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['OrganizationUserGroupArgs', 'OrganizationUserGroup']
 
@@ -21,24 +23,27 @@ class OrganizationUserGroupArgs:
     def __init__(__self__, *,
                  description: pulumi.Input[_builtins.str],
                  organization_id: pulumi.Input[_builtins.str],
-                 name: pulumi.Input[Optional[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional['OrganizationUserGroupTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a OrganizationUserGroup resource.
 
-        :param pulumi.Input[_builtins.str] description: The description of the user group. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] organization_id: The ID of the organization. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] name: The name of the user group. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] description: Description. Maximum length: `4096`.
+        :param pulumi.Input[_builtins.str] organization_id: ID of an organization. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] name: User Group Name. Maximum length: `128`.
         """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "organization_id", organization_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
 
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Input[_builtins.str]:
         """
-        The description of the user group. Changing this property forces recreation of the resource.
+        Description. Maximum length: `4096`.
         """
         return pulumi.get(self, "description")
 
@@ -50,7 +55,7 @@ class OrganizationUserGroupArgs:
     @pulumi.getter(name="organizationId")
     def organization_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The ID of the organization. Changing this property forces recreation of the resource.
+        ID of an organization. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "organization_id")
 
@@ -62,13 +67,22 @@ class OrganizationUserGroupArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The name of the user group. Changing this property forces recreation of the resource.
+        User Group Name. Maximum length: `128`.
         """
         return pulumi.get(self, "name")
 
     @name.setter
     def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> pulumi.Input[Optional['OrganizationUserGroupTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: pulumi.Input[Optional['OrganizationUserGroupTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
 
 
 @pulumi.input_type
@@ -77,18 +91,21 @@ class _OrganizationUserGroupState:
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 managed_by_scim: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional['OrganizationUserGroupTimeoutsArgs']] = None,
                  update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OrganizationUserGroup resources.
 
-        :param pulumi.Input[_builtins.str] create_time: Time of creation.
-        :param pulumi.Input[_builtins.str] description: The description of the user group. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] group_id: The ID of the user group.
-        :param pulumi.Input[_builtins.str] name: The name of the user group. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] organization_id: The ID of the organization. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] update_time: Time of last update.
+        :param pulumi.Input[_builtins.str] create_time: User group creation time.
+        :param pulumi.Input[_builtins.str] description: Description. Maximum length: `4096`.
+        :param pulumi.Input[_builtins.str] group_id: ID of the user group.
+        :param pulumi.Input[_builtins.bool] managed_by_scim: Managed By Scim.
+        :param pulumi.Input[_builtins.str] name: User Group Name. Maximum length: `128`.
+        :param pulumi.Input[_builtins.str] organization_id: ID of an organization. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] update_time: User group last update time.
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
@@ -96,10 +113,14 @@ class _OrganizationUserGroupState:
             pulumi.set(__self__, "description", description)
         if group_id is not None:
             pulumi.set(__self__, "group_id", group_id)
+        if managed_by_scim is not None:
+            pulumi.set(__self__, "managed_by_scim", managed_by_scim)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if organization_id is not None:
             pulumi.set(__self__, "organization_id", organization_id)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
 
@@ -107,7 +128,7 @@ class _OrganizationUserGroupState:
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Time of creation.
+        User group creation time.
         """
         return pulumi.get(self, "create_time")
 
@@ -119,7 +140,7 @@ class _OrganizationUserGroupState:
     @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The description of the user group. Changing this property forces recreation of the resource.
+        Description. Maximum length: `4096`.
         """
         return pulumi.get(self, "description")
 
@@ -131,7 +152,7 @@ class _OrganizationUserGroupState:
     @pulumi.getter(name="groupId")
     def group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The ID of the user group.
+        ID of the user group.
         """
         return pulumi.get(self, "group_id")
 
@@ -140,10 +161,22 @@ class _OrganizationUserGroupState:
         pulumi.set(self, "group_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="managedByScim")
+    def managed_by_scim(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Managed By Scim.
+        """
+        return pulumi.get(self, "managed_by_scim")
+
+    @managed_by_scim.setter
+    def managed_by_scim(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "managed_by_scim", value)
+
+    @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The name of the user group. Changing this property forces recreation of the resource.
+        User Group Name. Maximum length: `128`.
         """
         return pulumi.get(self, "name")
 
@@ -155,7 +188,7 @@ class _OrganizationUserGroupState:
     @pulumi.getter(name="organizationId")
     def organization_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The ID of the organization. Changing this property forces recreation of the resource.
+        ID of an organization. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "organization_id")
 
@@ -164,10 +197,19 @@ class _OrganizationUserGroupState:
         pulumi.set(self, "organization_id", value)
 
     @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> pulumi.Input[Optional['OrganizationUserGroupTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: pulumi.Input[Optional['OrganizationUserGroupTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
+
+    @_builtins.property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Time of last update.
+        User group last update time.
         """
         return pulumi.get(self, "update_time")
 
@@ -185,6 +227,7 @@ class OrganizationUserGroup(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['OrganizationUserGroupTimeoutsArgs', 'OrganizationUserGroupTimeoutsArgsDict']]] = None,
                  __props__=None):
         """
         Creates and manages a [user group](https://aiven.io/docs/platform/howto/list-groups) in an organization.
@@ -196,23 +239,23 @@ class OrganizationUserGroup(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         example = aiven.OrganizationUserGroup("example",
-            description="Example group of users.",
-            organization_id=main["id"],
-            name="Example group")
+            organization_id="org1a23f456789",
+            description="The group of admins for the organization",
+            name="Admin Users")
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/organizationUserGroup:OrganizationUserGroup example ORGANIZATION_ID/USER_GROUP_ID
+        $ pulumi import aiven:index/organizationUserGroup:OrganizationUserGroup example ORGANIZATION_ID/GROUP_ID
         ```
 
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] description: The description of the user group. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] name: The name of the user group. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] organization_id: The ID of the organization. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] description: Description. Maximum length: `4096`.
+        :param pulumi.Input[_builtins.str] name: User Group Name. Maximum length: `128`.
+        :param pulumi.Input[_builtins.str] organization_id: ID of an organization. Changing this property forces recreation of the resource.
         """
         ...
     @overload
@@ -230,15 +273,15 @@ class OrganizationUserGroup(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         example = aiven.OrganizationUserGroup("example",
-            description="Example group of users.",
-            organization_id=main["id"],
-            name="Example group")
+            organization_id="org1a23f456789",
+            description="The group of admins for the organization",
+            name="Admin Users")
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/organizationUserGroup:OrganizationUserGroup example ORGANIZATION_ID/USER_GROUP_ID
+        $ pulumi import aiven:index/organizationUserGroup:OrganizationUserGroup example ORGANIZATION_ID/GROUP_ID
         ```
 
 
@@ -260,6 +303,7 @@ class OrganizationUserGroup(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['OrganizationUserGroupTimeoutsArgs', 'OrganizationUserGroupTimeoutsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -276,8 +320,10 @@ class OrganizationUserGroup(pulumi.CustomResource):
             if organization_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organization_id'")
             __props__.__dict__["organization_id"] = organization_id
+            __props__.__dict__["timeouts"] = timeouts
             __props__.__dict__["create_time"] = None
             __props__.__dict__["group_id"] = None
+            __props__.__dict__["managed_by_scim"] = None
             __props__.__dict__["update_time"] = None
         super(OrganizationUserGroup, __self__).__init__(
             'aiven:index/organizationUserGroup:OrganizationUserGroup',
@@ -292,8 +338,10 @@ class OrganizationUserGroup(pulumi.CustomResource):
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            managed_by_scim: pulumi.Input[Optional[_builtins.bool]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['OrganizationUserGroupTimeoutsArgs', 'OrganizationUserGroupTimeoutsArgsDict']]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'OrganizationUserGroup':
         """
         Get an existing OrganizationUserGroup resource's state with the given name, id, and optional extra
@@ -302,12 +350,13 @@ class OrganizationUserGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] create_time: Time of creation.
-        :param pulumi.Input[_builtins.str] description: The description of the user group. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] group_id: The ID of the user group.
-        :param pulumi.Input[_builtins.str] name: The name of the user group. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] organization_id: The ID of the organization. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] update_time: Time of last update.
+        :param pulumi.Input[_builtins.str] create_time: User group creation time.
+        :param pulumi.Input[_builtins.str] description: Description. Maximum length: `4096`.
+        :param pulumi.Input[_builtins.str] group_id: ID of the user group.
+        :param pulumi.Input[_builtins.bool] managed_by_scim: Managed By Scim.
+        :param pulumi.Input[_builtins.str] name: User Group Name. Maximum length: `128`.
+        :param pulumi.Input[_builtins.str] organization_id: ID of an organization. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] update_time: User group last update time.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -316,8 +365,10 @@ class OrganizationUserGroup(pulumi.CustomResource):
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
         __props__.__dict__["group_id"] = group_id
+        __props__.__dict__["managed_by_scim"] = managed_by_scim
         __props__.__dict__["name"] = name
         __props__.__dict__["organization_id"] = organization_id
+        __props__.__dict__["timeouts"] = timeouts
         __props__.__dict__["update_time"] = update_time
         return OrganizationUserGroup(resource_name, opts=opts, __props__=__props__)
 
@@ -325,7 +376,7 @@ class OrganizationUserGroup(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:
         """
-        Time of creation.
+        User group creation time.
         """
         return pulumi.get(self, "create_time")
 
@@ -333,7 +384,7 @@ class OrganizationUserGroup(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[_builtins.str]:
         """
-        The description of the user group. Changing this property forces recreation of the resource.
+        Description. Maximum length: `4096`.
         """
         return pulumi.get(self, "description")
 
@@ -341,15 +392,23 @@ class OrganizationUserGroup(pulumi.CustomResource):
     @pulumi.getter(name="groupId")
     def group_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The ID of the user group.
+        ID of the user group.
         """
         return pulumi.get(self, "group_id")
+
+    @_builtins.property
+    @pulumi.getter(name="managedByScim")
+    def managed_by_scim(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Managed By Scim.
+        """
+        return pulumi.get(self, "managed_by_scim")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the user group. Changing this property forces recreation of the resource.
+        User Group Name. Maximum length: `128`.
         """
         return pulumi.get(self, "name")
 
@@ -357,15 +416,20 @@ class OrganizationUserGroup(pulumi.CustomResource):
     @pulumi.getter(name="organizationId")
     def organization_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The ID of the organization. Changing this property forces recreation of the resource.
+        ID of an organization. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "organization_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> pulumi.Output[Optional['outputs.OrganizationUserGroupTimeouts']]:
+        return pulumi.get(self, "timeouts")
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> pulumi.Output[_builtins.str]:
         """
-        Time of last update.
+        User group last update time.
         """
         return pulumi.get(self, "update_time")
 

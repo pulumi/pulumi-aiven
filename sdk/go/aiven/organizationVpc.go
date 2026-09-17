@@ -12,10 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates and manages a VPC for an Aiven organization.
-//
-// **This resource is in the beta stage and may change without notice.** Set
-// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+// Creates and manages a VPC for an Aiven organization. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
 //
 // ## Example Usage
 //
@@ -31,10 +28,11 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewOrganizationVpc(ctx, "example_vpc", &aiven.OrganizationVpcArgs{
-//				OrganizationId: pulumi.Any(example.Id),
-//				CloudName:      pulumi.String("aws-eu-central-1"),
+//			_, err := aiven.NewOrganizationVpc(ctx, "example", &aiven.OrganizationVpcArgs{
+//				OrganizationId: pulumi.String("org1a23f456789"),
+//				CloudName:      pulumi.String("aws-eu-west-1"),
 //				NetworkCidr:    pulumi.String("10.0.0.0/24"),
+//				DisplayName:    pulumi.String("My organization VPC"),
 //			})
 //			if err != nil {
 //				return err
@@ -55,17 +53,20 @@ type OrganizationVpc struct {
 
 	// The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.
 	CloudName pulumi.StringOutput `pulumi:"cloudName"`
-	// Time of creation of the VPC.
+	// VPC creation timestamp.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// Network address range used by the VPC. For example, `192.168.0.0/24`.
+	// User defined display name for this VPC. Maximum length: `64`.
+	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// Network address range used by the VPC. For example, `192.168.0.0/24`. Changing this property forces recreation of the resource.
 	NetworkCidr pulumi.StringOutput `pulumi:"networkCidr"`
-	// The ID of the organization.
+	// ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
 	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
 	// The ID of the Aiven Organization VPC.
 	OrganizationVpcId pulumi.StringOutput `pulumi:"organizationVpcId"`
 	// State of the VPC. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
-	State pulumi.StringOutput `pulumi:"state"`
-	// Time of the last update of the VPC.
+	State    pulumi.StringOutput              `pulumi:"state"`
+	Timeouts OrganizationVpcTimeoutsPtrOutput `pulumi:"timeouts"`
+	// Timestamp of last change to VPC.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
@@ -110,34 +111,40 @@ func GetOrganizationVpc(ctx *pulumi.Context,
 type organizationVpcState struct {
 	// The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.
 	CloudName *string `pulumi:"cloudName"`
-	// Time of creation of the VPC.
+	// VPC creation timestamp.
 	CreateTime *string `pulumi:"createTime"`
-	// Network address range used by the VPC. For example, `192.168.0.0/24`.
+	// User defined display name for this VPC. Maximum length: `64`.
+	DisplayName *string `pulumi:"displayName"`
+	// Network address range used by the VPC. For example, `192.168.0.0/24`. Changing this property forces recreation of the resource.
 	NetworkCidr *string `pulumi:"networkCidr"`
-	// The ID of the organization.
+	// ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
 	OrganizationId *string `pulumi:"organizationId"`
 	// The ID of the Aiven Organization VPC.
 	OrganizationVpcId *string `pulumi:"organizationVpcId"`
 	// State of the VPC. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
-	State *string `pulumi:"state"`
-	// Time of the last update of the VPC.
+	State    *string                  `pulumi:"state"`
+	Timeouts *OrganizationVpcTimeouts `pulumi:"timeouts"`
+	// Timestamp of last change to VPC.
 	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type OrganizationVpcState struct {
 	// The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.
 	CloudName pulumi.StringPtrInput
-	// Time of creation of the VPC.
+	// VPC creation timestamp.
 	CreateTime pulumi.StringPtrInput
-	// Network address range used by the VPC. For example, `192.168.0.0/24`.
+	// User defined display name for this VPC. Maximum length: `64`.
+	DisplayName pulumi.StringPtrInput
+	// Network address range used by the VPC. For example, `192.168.0.0/24`. Changing this property forces recreation of the resource.
 	NetworkCidr pulumi.StringPtrInput
-	// The ID of the organization.
+	// ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
 	OrganizationId pulumi.StringPtrInput
 	// The ID of the Aiven Organization VPC.
 	OrganizationVpcId pulumi.StringPtrInput
 	// State of the VPC. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
-	State pulumi.StringPtrInput
-	// Time of the last update of the VPC.
+	State    pulumi.StringPtrInput
+	Timeouts OrganizationVpcTimeoutsPtrInput
+	// Timestamp of last change to VPC.
 	UpdateTime pulumi.StringPtrInput
 }
 
@@ -148,20 +155,26 @@ func (OrganizationVpcState) ElementType() reflect.Type {
 type organizationVpcArgs struct {
 	// The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.
 	CloudName string `pulumi:"cloudName"`
-	// Network address range used by the VPC. For example, `192.168.0.0/24`.
+	// User defined display name for this VPC. Maximum length: `64`.
+	DisplayName *string `pulumi:"displayName"`
+	// Network address range used by the VPC. For example, `192.168.0.0/24`. Changing this property forces recreation of the resource.
 	NetworkCidr string `pulumi:"networkCidr"`
-	// The ID of the organization.
-	OrganizationId string `pulumi:"organizationId"`
+	// ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
+	OrganizationId string                   `pulumi:"organizationId"`
+	Timeouts       *OrganizationVpcTimeouts `pulumi:"timeouts"`
 }
 
 // The set of arguments for constructing a OrganizationVpc resource.
 type OrganizationVpcArgs struct {
 	// The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.
 	CloudName pulumi.StringInput
-	// Network address range used by the VPC. For example, `192.168.0.0/24`.
+	// User defined display name for this VPC. Maximum length: `64`.
+	DisplayName pulumi.StringPtrInput
+	// Network address range used by the VPC. For example, `192.168.0.0/24`. Changing this property forces recreation of the resource.
 	NetworkCidr pulumi.StringInput
-	// The ID of the organization.
+	// ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
 	OrganizationId pulumi.StringInput
+	Timeouts       OrganizationVpcTimeoutsPtrInput
 }
 
 func (OrganizationVpcArgs) ElementType() reflect.Type {
@@ -256,17 +269,22 @@ func (o OrganizationVpcOutput) CloudName() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationVpc) pulumi.StringOutput { return v.CloudName }).(pulumi.StringOutput)
 }
 
-// Time of creation of the VPC.
+// VPC creation timestamp.
 func (o OrganizationVpcOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationVpc) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Network address range used by the VPC. For example, `192.168.0.0/24`.
+// User defined display name for this VPC. Maximum length: `64`.
+func (o OrganizationVpcOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *OrganizationVpc) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Network address range used by the VPC. For example, `192.168.0.0/24`. Changing this property forces recreation of the resource.
 func (o OrganizationVpcOutput) NetworkCidr() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationVpc) pulumi.StringOutput { return v.NetworkCidr }).(pulumi.StringOutput)
 }
 
-// The ID of the organization.
+// ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
 func (o OrganizationVpcOutput) OrganizationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationVpc) pulumi.StringOutput { return v.OrganizationId }).(pulumi.StringOutput)
 }
@@ -281,7 +299,11 @@ func (o OrganizationVpcOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationVpc) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
-// Time of the last update of the VPC.
+func (o OrganizationVpcOutput) Timeouts() OrganizationVpcTimeoutsPtrOutput {
+	return o.ApplyT(func(v *OrganizationVpc) OrganizationVpcTimeoutsPtrOutput { return v.Timeouts }).(OrganizationVpcTimeoutsPtrOutput)
+}
+
+// Timestamp of last change to VPC.
 func (o OrganizationVpcOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationVpc) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }

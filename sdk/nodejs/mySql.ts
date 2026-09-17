@@ -16,14 +16,7 @@ import * as utilities from "./utilities";
  * import * as aiven from "@pulumi/aiven";
  *
  * const exampleMysql = new aiven.MySql("example_mysql", {
- *     project: exampleProject.project,
- *     cloudName: "google-europe-west1",
- *     plan: "business-4",
- *     serviceName: "example-mysql",
- *     maintenanceWindowDow: "monday",
- *     maintenanceWindowTime: "10:00:00",
  *     mysqlUserConfig: {
- *         mysqlVersion: "8",
  *         mysql: {
  *             sqlMode: "ANSI,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION,NO_ZERO_DATE,NO_ZERO_IN_DATE",
  *             sqlRequirePrimaryKey: true,
@@ -31,7 +24,14 @@ import * as utilities from "./utilities";
  *         publicAccess: {
  *             mysql: true,
  *         },
+ *         mysqlVersion: "8",
  *     },
+ *     project: exampleProject.project,
+ *     cloudName: "google-europe-west1",
+ *     plan: "business-4",
+ *     serviceName: "example-mysql",
+ *     maintenanceWindowDow: "monday",
+ *     maintenanceWindowTime: "10:00:00",
  * });
  * ```
  *

@@ -24,13 +24,11 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleAcl = Aiven.GetKafkaAcl.Invoke(new()
+        ///     var example = Aiven.GetKafkaAcl.Invoke(new()
         ///     {
-        ///         Project = exampleProject.Project,
-        ///         ServiceName = exampleKafka.ServiceName,
-        ///         Topic = "example-topic",
-        ///         Permission = "admin",
-        ///         Username = "example-user",
+        ///         Project = "my-project",
+        ///         ServiceName = "my-kafka",
+        ///         AclId = "foo",
         ///     });
         /// 
         /// });
@@ -52,13 +50,11 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleAcl = Aiven.GetKafkaAcl.Invoke(new()
+        ///     var example = Aiven.GetKafkaAcl.Invoke(new()
         ///     {
-        ///         Project = exampleProject.Project,
-        ///         ServiceName = exampleKafka.ServiceName,
-        ///         Topic = "example-topic",
-        ///         Permission = "admin",
-        ///         Username = "example-user",
+        ///         Project = "my-project",
+        ///         ServiceName = "my-kafka",
+        ///         AclId = "foo",
         ///     });
         /// 
         /// });
@@ -80,13 +76,11 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleAcl = Aiven.GetKafkaAcl.Invoke(new()
+        ///     var example = Aiven.GetKafkaAcl.Invoke(new()
         ///     {
-        ///         Project = exampleProject.Project,
-        ///         ServiceName = exampleKafka.ServiceName,
-        ///         Topic = "example-topic",
-        ///         Permission = "admin",
-        ///         Username = "example-user",
+        ///         Project = "my-project",
+        ///         ServiceName = "my-kafka",
+        ///         AclId = "foo",
         ///     });
         /// 
         /// });
@@ -100,34 +94,43 @@ namespace Pulumi.Aiven
     public sealed class GetKafkaAclArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Permissions to grant. The possible values are `Admin`, `Read`, `Readwrite` and `Write`. Changing this property forces recreation of the resource.
+        /// Kafka ACL ID. Provide either `AclId`, or all of `Permission`, `Topic` and `Username` together.
         /// </summary>
-        [Input("permission", required: true)]
-        public string Permission { get; set; } = null!;
+        [Input("aclId")]
+        public string? AclId { get; set; }
 
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Permission of an Aiven Kafka ACL entry, as opposed to a Kafka-native one. The possible values are `Admin`, `Read`, `Readwrite` and `Write`. Provide either `AclId`, or all of `Permission`, `Topic` and `Username` together.
+        /// </summary>
+        [Input("permission")]
+        public string? Permission { get; set; }
+
+        /// <summary>
+        /// Project name.
         /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service name.
         /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
-        /// <summary>
-        /// Topics that the permissions apply to. Changing this property forces recreation of the resource.
-        /// </summary>
-        [Input("topic", required: true)]
-        public string Topic { get; set; } = null!;
+        [Input("timeouts")]
+        public Inputs.GetKafkaAclTimeoutsArgs? Timeouts { get; set; }
 
         /// <summary>
-        /// Usernames to grant permissions to. Changing this property forces recreation of the resource.
+        /// Topic name pattern. Provide either `AclId`, or all of `Permission`, `Topic` and `Username` together.
         /// </summary>
-        [Input("username", required: true)]
-        public string Username { get; set; } = null!;
+        [Input("topic")]
+        public string? Topic { get; set; }
+
+        /// <summary>
+        /// Username. Provide either `AclId`, or all of `Permission`, `Topic` and `Username` together.
+        /// </summary>
+        [Input("username")]
+        public string? Username { get; set; }
 
         public GetKafkaAclArgs()
         {
@@ -138,34 +141,43 @@ namespace Pulumi.Aiven
     public sealed class GetKafkaAclInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Permissions to grant. The possible values are `Admin`, `Read`, `Readwrite` and `Write`. Changing this property forces recreation of the resource.
+        /// Kafka ACL ID. Provide either `AclId`, or all of `Permission`, `Topic` and `Username` together.
         /// </summary>
-        [Input("permission", required: true)]
-        public Input<string> Permission { get; set; } = null!;
+        [Input("aclId")]
+        public Input<string>? AclId { get; set; }
 
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Permission of an Aiven Kafka ACL entry, as opposed to a Kafka-native one. The possible values are `Admin`, `Read`, `Readwrite` and `Write`. Provide either `AclId`, or all of `Permission`, `Topic` and `Username` together.
+        /// </summary>
+        [Input("permission")]
+        public Input<string>? Permission { get; set; }
+
+        /// <summary>
+        /// Project name.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service name.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
-        /// <summary>
-        /// Topics that the permissions apply to. Changing this property forces recreation of the resource.
-        /// </summary>
-        [Input("topic", required: true)]
-        public Input<string> Topic { get; set; } = null!;
+        [Input("timeouts")]
+        public Input<Inputs.GetKafkaAclTimeoutsInputArgs>? Timeouts { get; set; }
 
         /// <summary>
-        /// Usernames to grant permissions to. Changing this property forces recreation of the resource.
+        /// Topic name pattern. Provide either `AclId`, or all of `Permission`, `Topic` and `Username` together.
         /// </summary>
-        [Input("username", required: true)]
-        public Input<string> Username { get; set; } = null!;
+        [Input("topic")]
+        public Input<string>? Topic { get; set; }
+
+        /// <summary>
+        /// Username. Provide either `AclId`, or all of `Permission`, `Topic` and `Username` together.
+        /// </summary>
+        [Input("username")]
+        public Input<string>? Username { get; set; }
 
         public GetKafkaAclInvokeArgs()
         {
@@ -178,31 +190,32 @@ namespace Pulumi.Aiven
     public sealed class GetKafkaAclResult
     {
         /// <summary>
-        /// Kafka ACL ID.
+        /// Kafka ACL ID. Provide either `AclId`, or all of `Permission`, `Topic` and `Username` together.
         /// </summary>
         public readonly string AclId;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// Resource ID composed as: `project/service_name/acl_id`.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Permissions to grant. The possible values are `Admin`, `Read`, `Readwrite` and `Write`. Changing this property forces recreation of the resource.
+        /// Permission of an Aiven Kafka ACL entry, as opposed to a Kafka-native one. The possible values are `Admin`, `Read`, `Readwrite` and `Write`. Provide either `AclId`, or all of `Permission`, `Topic` and `Username` together.
         /// </summary>
         public readonly string Permission;
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name.
         /// </summary>
         public readonly string Project;
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service name.
         /// </summary>
         public readonly string ServiceName;
+        public readonly Outputs.GetKafkaAclTimeoutsResult? Timeouts;
         /// <summary>
-        /// Topics that the permissions apply to. Changing this property forces recreation of the resource.
+        /// Topic name pattern. Provide either `AclId`, or all of `Permission`, `Topic` and `Username` together.
         /// </summary>
         public readonly string Topic;
         /// <summary>
-        /// Usernames to grant permissions to. Changing this property forces recreation of the resource.
+        /// Username. Provide either `AclId`, or all of `Permission`, `Topic` and `Username` together.
         /// </summary>
         public readonly string Username;
 
@@ -218,6 +231,8 @@ namespace Pulumi.Aiven
 
             string serviceName,
 
+            Outputs.GetKafkaAclTimeoutsResult? timeouts,
+
             string topic,
 
             string username)
@@ -227,6 +242,7 @@ namespace Pulumi.Aiven
             Permission = permission;
             Project = project;
             ServiceName = serviceName;
+            Timeouts = timeouts;
             Topic = topic;
             Username = username;
         }

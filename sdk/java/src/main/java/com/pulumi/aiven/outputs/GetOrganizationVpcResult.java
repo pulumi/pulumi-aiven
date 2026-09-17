@@ -3,25 +3,33 @@
 
 package com.pulumi.aiven.outputs;
 
+import com.pulumi.aiven.outputs.GetOrganizationVpcTimeouts;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetOrganizationVpcResult {
     /**
-     * @return The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.
+     * @return The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`.
      * 
      */
     private String cloudName;
     /**
-     * @return Time of creation of the VPC.
+     * @return VPC creation timestamp.
      * 
      */
     private String createTime;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return User defined display name for this VPC.
+     * 
+     */
+    private String displayName;
+    /**
+     * @return Resource ID composed as: `organization_id/organization_vpc_id`.
      * 
      */
     private String id;
@@ -31,7 +39,7 @@ public final class GetOrganizationVpcResult {
      */
     private String networkCidr;
     /**
-     * @return The ID of the organization.
+     * @return ID of an organization.
      * 
      */
     private String organizationId;
@@ -45,29 +53,37 @@ public final class GetOrganizationVpcResult {
      * 
      */
     private String state;
+    private @Nullable GetOrganizationVpcTimeouts timeouts;
     /**
-     * @return Time of the last update of the VPC.
+     * @return Timestamp of last change to VPC.
      * 
      */
     private String updateTime;
 
     private GetOrganizationVpcResult() {}
     /**
-     * @return The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.
+     * @return The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`.
      * 
      */
     public String cloudName() {
         return this.cloudName;
     }
     /**
-     * @return Time of creation of the VPC.
+     * @return VPC creation timestamp.
      * 
      */
     public String createTime() {
         return this.createTime;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return User defined display name for this VPC.
+     * 
+     */
+    public String displayName() {
+        return this.displayName;
+    }
+    /**
+     * @return Resource ID composed as: `organization_id/organization_vpc_id`.
      * 
      */
     public String id() {
@@ -81,7 +97,7 @@ public final class GetOrganizationVpcResult {
         return this.networkCidr;
     }
     /**
-     * @return The ID of the organization.
+     * @return ID of an organization.
      * 
      */
     public String organizationId() {
@@ -101,8 +117,11 @@ public final class GetOrganizationVpcResult {
     public String state() {
         return this.state;
     }
+    public Optional<GetOrganizationVpcTimeouts> timeouts() {
+        return Optional.ofNullable(this.timeouts);
+    }
     /**
-     * @return Time of the last update of the VPC.
+     * @return Timestamp of last change to VPC.
      * 
      */
     public String updateTime() {
@@ -120,22 +139,26 @@ public final class GetOrganizationVpcResult {
     public static final class Builder {
         private String cloudName;
         private String createTime;
+        private String displayName;
         private String id;
         private String networkCidr;
         private String organizationId;
         private String organizationVpcId;
         private String state;
+        private @Nullable GetOrganizationVpcTimeouts timeouts;
         private String updateTime;
         public Builder() {}
         public Builder(GetOrganizationVpcResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cloudName = defaults.cloudName;
     	      this.createTime = defaults.createTime;
+    	      this.displayName = defaults.displayName;
     	      this.id = defaults.id;
     	      this.networkCidr = defaults.networkCidr;
     	      this.organizationId = defaults.organizationId;
     	      this.organizationVpcId = defaults.organizationVpcId;
     	      this.state = defaults.state;
+    	      this.timeouts = defaults.timeouts;
     	      this.updateTime = defaults.updateTime;
         }
 
@@ -153,6 +176,14 @@ public final class GetOrganizationVpcResult {
               throw new MissingRequiredPropertyException("GetOrganizationVpcResult", "createTime");
             }
             this.createTime = createTime;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder displayName(String displayName) {
+            if (displayName == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationVpcResult", "displayName");
+            }
+            this.displayName = displayName;
             return this;
         }
         @CustomType.Setter
@@ -196,6 +227,12 @@ public final class GetOrganizationVpcResult {
             return this;
         }
         @CustomType.Setter
+        public Builder timeouts(@Nullable GetOrganizationVpcTimeouts timeouts) {
+
+            this.timeouts = timeouts;
+            return this;
+        }
+        @CustomType.Setter
         public Builder updateTime(String updateTime) {
             if (updateTime == null) {
               throw new MissingRequiredPropertyException("GetOrganizationVpcResult", "updateTime");
@@ -207,11 +244,13 @@ public final class GetOrganizationVpcResult {
             final var _resultValue = new GetOrganizationVpcResult();
             _resultValue.cloudName = cloudName;
             _resultValue.createTime = createTime;
+            _resultValue.displayName = displayName;
             _resultValue.id = id;
             _resultValue.networkCidr = networkCidr;
             _resultValue.organizationId = organizationId;
             _resultValue.organizationVpcId = organizationVpcId;
             _resultValue.state = state;
+            _resultValue.timeouts = timeouts;
             _resultValue.updateTime = updateTime;
             return _resultValue;
         }

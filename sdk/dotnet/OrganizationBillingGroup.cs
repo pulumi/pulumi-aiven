@@ -24,9 +24,11 @@ namespace Pulumi.Aiven
     /// {
     ///     var example = new Aiven.OrganizationBillingGroup("example", new()
     ///     {
-    ///         OrganizationId = "org1a23f456789",
-    ///         BillingAddressId = "addr4b1ff1ceeaa",
-    ///         ShippingAddressId = "addr4b1ff1ceeaa",
+    ///         PaymentMethod = new Aiven.Inputs.OrganizationBillingGroupPaymentMethodArgs
+    ///         {
+    ///             PaymentMethodId = "pm4b1ff1ceeaa",
+    ///             PaymentMethodType = "credit_card",
+    ///         },
     ///         BillingContactEmails = new[]
     ///         {
     ///             new Aiven.Inputs.OrganizationBillingGroupBillingContactEmailArgs
@@ -41,12 +43,10 @@ namespace Pulumi.Aiven
     ///                 Email = "jane@example.com",
     ///             },
     ///         },
+    ///         OrganizationId = "org1a23f456789",
+    ///         BillingAddressId = "addr4b1ff1ceeaa",
+    ///         ShippingAddressId = "addr4b1ff1ceeaa",
     ///         BillingGroupName = "Default billing group for the organization",
-    ///         PaymentMethod = new Aiven.Inputs.OrganizationBillingGroupPaymentMethodArgs
-    ///         {
-    ///             PaymentMethodId = "pm4b1ff1ceeaa",
-    ///             PaymentMethodType = "credit_card",
-    ///         },
     ///         VatId = "FI12345678",
     ///         CustomInvoiceText = "Extra billing text",
     ///     });

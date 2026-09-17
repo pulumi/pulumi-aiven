@@ -3,12 +3,15 @@
 
 package com.pulumi.aiven;
 
+import com.pulumi.aiven.inputs.AzurePrivatelinkTimeoutsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class AzurePrivatelinkArgs extends com.pulumi.resources.ResourceArgs {
@@ -16,14 +19,14 @@ public final class AzurePrivatelinkArgs extends com.pulumi.resources.ResourceArg
     public static final AzurePrivatelinkArgs Empty = new AzurePrivatelinkArgs();
 
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="project", required=true)
     private Output<String> project;
 
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> project() {
@@ -31,29 +34,36 @@ public final class AzurePrivatelinkArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="serviceName", required=true)
     private Output<String> serviceName;
 
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service name. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> serviceName() {
         return this.serviceName;
     }
 
+    @Import(name="timeouts")
+    private @Nullable Output<AzurePrivatelinkTimeoutsArgs> timeouts;
+
+    public Optional<Output<AzurePrivatelinkTimeoutsArgs>> timeouts() {
+        return Optional.ofNullable(this.timeouts);
+    }
+
     /**
-     * A list of allowed subscription IDs. Maximum length: `16`.
+     * IDs of Azure subscriptions allowed to connect to the service.
      * 
      */
     @Import(name="userSubscriptionIds", required=true)
     private Output<List<String>> userSubscriptionIds;
 
     /**
-     * @return A list of allowed subscription IDs. Maximum length: `16`.
+     * @return IDs of Azure subscriptions allowed to connect to the service.
      * 
      */
     public Output<List<String>> userSubscriptionIds() {
@@ -65,6 +75,7 @@ public final class AzurePrivatelinkArgs extends com.pulumi.resources.ResourceArg
     private AzurePrivatelinkArgs(AzurePrivatelinkArgs $) {
         this.project = $.project;
         this.serviceName = $.serviceName;
+        this.timeouts = $.timeouts;
         this.userSubscriptionIds = $.userSubscriptionIds;
     }
 
@@ -87,7 +98,7 @@ public final class AzurePrivatelinkArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param project The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param project Project name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -98,7 +109,7 @@ public final class AzurePrivatelinkArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param project The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param project Project name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -108,7 +119,7 @@ public final class AzurePrivatelinkArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param serviceName The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param serviceName Service name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -119,7 +130,7 @@ public final class AzurePrivatelinkArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param serviceName The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param serviceName Service name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -128,8 +139,17 @@ public final class AzurePrivatelinkArgs extends com.pulumi.resources.ResourceArg
             return serviceName(Output.of(serviceName));
         }
 
+        public Builder timeouts(@Nullable Output<AzurePrivatelinkTimeoutsArgs> timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
+        public Builder timeouts(AzurePrivatelinkTimeoutsArgs timeouts) {
+            return timeouts(Output.of(timeouts));
+        }
+
         /**
-         * @param userSubscriptionIds A list of allowed subscription IDs. Maximum length: `16`.
+         * @param userSubscriptionIds IDs of Azure subscriptions allowed to connect to the service.
          * 
          * @return builder
          * 
@@ -140,7 +160,7 @@ public final class AzurePrivatelinkArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param userSubscriptionIds A list of allowed subscription IDs. Maximum length: `16`.
+         * @param userSubscriptionIds IDs of Azure subscriptions allowed to connect to the service.
          * 
          * @return builder
          * 
@@ -150,7 +170,7 @@ public final class AzurePrivatelinkArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param userSubscriptionIds A list of allowed subscription IDs. Maximum length: `16`.
+         * @param userSubscriptionIds IDs of Azure subscriptions allowed to connect to the service.
          * 
          * @return builder
          * 

@@ -31,6 +31,7 @@ namespace Pulumi.Aiven
     ///         IpAllowlists = new[]
     ///         {
     ///             "192.168.0.0/24",
+    ///             "2001:db8::/32",
     ///         },
     ///         MaxAgeSeconds = 600,
     ///         Scopes = new[]

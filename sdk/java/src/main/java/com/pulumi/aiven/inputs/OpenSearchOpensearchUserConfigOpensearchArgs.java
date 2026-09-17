@@ -553,6 +553,21 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
     }
 
     /**
+     * When set to true, the setting allows admins to control access and permissions to the connector API using backend_roles. Defaults to false.
+     * 
+     */
+    @Import(name="mlCommonsConnectorAccessControlEnabled")
+    private @Nullable Output<Boolean> mlCommonsConnectorAccessControlEnabled;
+
+    /**
+     * @return When set to true, the setting allows admins to control access and permissions to the connector API using backend_roles. Defaults to false.
+     * 
+     */
+    public Optional<Output<Boolean>> mlCommonsConnectorAccessControlEnabled() {
+        return Optional.ofNullable(this.mlCommonsConnectorAccessControlEnabled);
+    }
+
+    /**
      * Enable or disable model access control for ML Commons. When enabled, access to ML models is controlled by security permissions. Defaults to false.
      * 
      */
@@ -595,6 +610,21 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
      */
     public Optional<Output<Boolean>> mlCommonsOnlyRunOnMlNode() {
         return Optional.ofNullable(this.mlCommonsOnlyRunOnMlNode);
+    }
+
+    /**
+     * Adds the trusted endpoints to the cluster settings. Supports Java regex expressions.
+     * 
+     */
+    @Import(name="mlCommonsTrustedConnectorEndpointsRegexes")
+    private @Nullable Output<List<String>> mlCommonsTrustedConnectorEndpointsRegexes;
+
+    /**
+     * @return Adds the trusted endpoints to the cluster settings. Supports Java regex expressions.
+     * 
+     */
+    public Optional<Output<List<String>>> mlCommonsTrustedConnectorEndpointsRegexes() {
+        return Optional.ofNullable(this.mlCommonsTrustedConnectorEndpointsRegexes);
     }
 
     /**
@@ -950,9 +980,11 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         this.ismHistoryRolloverRetentionPeriod = $.ismHistoryRolloverRetentionPeriod;
         this.knnMemoryCircuitBreakerEnabled = $.knnMemoryCircuitBreakerEnabled;
         this.knnMemoryCircuitBreakerLimit = $.knnMemoryCircuitBreakerLimit;
+        this.mlCommonsConnectorAccessControlEnabled = $.mlCommonsConnectorAccessControlEnabled;
         this.mlCommonsModelAccessControlEnabled = $.mlCommonsModelAccessControlEnabled;
         this.mlCommonsNativeMemoryThreshold = $.mlCommonsNativeMemoryThreshold;
         this.mlCommonsOnlyRunOnMlNode = $.mlCommonsOnlyRunOnMlNode;
+        this.mlCommonsTrustedConnectorEndpointsRegexes = $.mlCommonsTrustedConnectorEndpointsRegexes;
         this.nodeSearchCacheSize = $.nodeSearchCacheSize;
         this.overrideMainResponseVersion = $.overrideMainResponseVersion;
         this.pluginsAlertingFilterByBackendRoles = $.pluginsAlertingFilterByBackendRoles;
@@ -1728,6 +1760,27 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         }
 
         /**
+         * @param mlCommonsConnectorAccessControlEnabled When set to true, the setting allows admins to control access and permissions to the connector API using backend_roles. Defaults to false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mlCommonsConnectorAccessControlEnabled(@Nullable Output<Boolean> mlCommonsConnectorAccessControlEnabled) {
+            $.mlCommonsConnectorAccessControlEnabled = mlCommonsConnectorAccessControlEnabled;
+            return this;
+        }
+
+        /**
+         * @param mlCommonsConnectorAccessControlEnabled When set to true, the setting allows admins to control access and permissions to the connector API using backend_roles. Defaults to false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mlCommonsConnectorAccessControlEnabled(Boolean mlCommonsConnectorAccessControlEnabled) {
+            return mlCommonsConnectorAccessControlEnabled(Output.of(mlCommonsConnectorAccessControlEnabled));
+        }
+
+        /**
          * @param mlCommonsModelAccessControlEnabled Enable or disable model access control for ML Commons. When enabled, access to ML models is controlled by security permissions. Defaults to false.
          * 
          * @return builder
@@ -1788,6 +1841,37 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
          */
         public Builder mlCommonsOnlyRunOnMlNode(Boolean mlCommonsOnlyRunOnMlNode) {
             return mlCommonsOnlyRunOnMlNode(Output.of(mlCommonsOnlyRunOnMlNode));
+        }
+
+        /**
+         * @param mlCommonsTrustedConnectorEndpointsRegexes Adds the trusted endpoints to the cluster settings. Supports Java regex expressions.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mlCommonsTrustedConnectorEndpointsRegexes(@Nullable Output<List<String>> mlCommonsTrustedConnectorEndpointsRegexes) {
+            $.mlCommonsTrustedConnectorEndpointsRegexes = mlCommonsTrustedConnectorEndpointsRegexes;
+            return this;
+        }
+
+        /**
+         * @param mlCommonsTrustedConnectorEndpointsRegexes Adds the trusted endpoints to the cluster settings. Supports Java regex expressions.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mlCommonsTrustedConnectorEndpointsRegexes(List<String> mlCommonsTrustedConnectorEndpointsRegexes) {
+            return mlCommonsTrustedConnectorEndpointsRegexes(Output.of(mlCommonsTrustedConnectorEndpointsRegexes));
+        }
+
+        /**
+         * @param mlCommonsTrustedConnectorEndpointsRegexes Adds the trusted endpoints to the cluster settings. Supports Java regex expressions.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mlCommonsTrustedConnectorEndpointsRegexes(String... mlCommonsTrustedConnectorEndpointsRegexes) {
+            return mlCommonsTrustedConnectorEndpointsRegexes(List.of(mlCommonsTrustedConnectorEndpointsRegexes));
         }
 
         /**

@@ -3,6 +3,7 @@
 
 package com.pulumi.aiven.inputs;
 
+import com.pulumi.aiven.inputs.ServiceIntegrationDatadogUserConfigDatadogPgRelationArgs;
 import com.pulumi.aiven.inputs.ServiceIntegrationDatadogUserConfigDatadogTagArgs;
 import com.pulumi.aiven.inputs.ServiceIntegrationDatadogUserConfigOpensearchArgs;
 import com.pulumi.aiven.inputs.ServiceIntegrationDatadogUserConfigRedisArgs;
@@ -34,6 +35,36 @@ public final class ServiceIntegrationDatadogUserConfigArgs extends com.pulumi.re
      */
     public Optional<Output<Boolean>> datadogDbmEnabled() {
         return Optional.ofNullable(this.datadogDbmEnabled);
+    }
+
+    /**
+     * Enable collection of PL/pgSQL function metrics from pg*stat*user_functions. Requires `trackFunctions` to be set to `pl` or `all` in the service configuration.
+     * 
+     */
+    @Import(name="datadogFunctionMetricsEnabled")
+    private @Nullable Output<Boolean> datadogFunctionMetricsEnabled;
+
+    /**
+     * @return Enable collection of PL/pgSQL function metrics from pg*stat*user_functions. Requires `trackFunctions` to be set to `pl` or `all` in the service configuration.
+     * 
+     */
+    public Optional<Output<Boolean>> datadogFunctionMetricsEnabled() {
+        return Optional.ofNullable(this.datadogFunctionMetricsEnabled);
+    }
+
+    /**
+     * Relations to collect PostgreSQL relation metrics for, such as table size, index statistics, row counts, vacuum ages and locks. No relation metrics are collected when unset
+     * 
+     */
+    @Import(name="datadogPgRelations")
+    private @Nullable Output<List<ServiceIntegrationDatadogUserConfigDatadogPgRelationArgs>> datadogPgRelations;
+
+    /**
+     * @return Relations to collect PostgreSQL relation metrics for, such as table size, index statistics, row counts, vacuum ages and locks. No relation metrics are collected when unset
+     * 
+     */
+    public Optional<Output<List<ServiceIntegrationDatadogUserConfigDatadogPgRelationArgs>>> datadogPgRelations() {
+        return Optional.ofNullable(this.datadogPgRelations);
     }
 
     /**
@@ -205,6 +236,8 @@ public final class ServiceIntegrationDatadogUserConfigArgs extends com.pulumi.re
 
     private ServiceIntegrationDatadogUserConfigArgs(ServiceIntegrationDatadogUserConfigArgs $) {
         this.datadogDbmEnabled = $.datadogDbmEnabled;
+        this.datadogFunctionMetricsEnabled = $.datadogFunctionMetricsEnabled;
+        this.datadogPgRelations = $.datadogPgRelations;
         this.datadogPgbouncerEnabled = $.datadogPgbouncerEnabled;
         this.datadogTags = $.datadogTags;
         this.excludeConsumerGroups = $.excludeConsumerGroups;
@@ -255,6 +288,58 @@ public final class ServiceIntegrationDatadogUserConfigArgs extends com.pulumi.re
          */
         public Builder datadogDbmEnabled(Boolean datadogDbmEnabled) {
             return datadogDbmEnabled(Output.of(datadogDbmEnabled));
+        }
+
+        /**
+         * @param datadogFunctionMetricsEnabled Enable collection of PL/pgSQL function metrics from pg*stat*user_functions. Requires `trackFunctions` to be set to `pl` or `all` in the service configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder datadogFunctionMetricsEnabled(@Nullable Output<Boolean> datadogFunctionMetricsEnabled) {
+            $.datadogFunctionMetricsEnabled = datadogFunctionMetricsEnabled;
+            return this;
+        }
+
+        /**
+         * @param datadogFunctionMetricsEnabled Enable collection of PL/pgSQL function metrics from pg*stat*user_functions. Requires `trackFunctions` to be set to `pl` or `all` in the service configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder datadogFunctionMetricsEnabled(Boolean datadogFunctionMetricsEnabled) {
+            return datadogFunctionMetricsEnabled(Output.of(datadogFunctionMetricsEnabled));
+        }
+
+        /**
+         * @param datadogPgRelations Relations to collect PostgreSQL relation metrics for, such as table size, index statistics, row counts, vacuum ages and locks. No relation metrics are collected when unset
+         * 
+         * @return builder
+         * 
+         */
+        public Builder datadogPgRelations(@Nullable Output<List<ServiceIntegrationDatadogUserConfigDatadogPgRelationArgs>> datadogPgRelations) {
+            $.datadogPgRelations = datadogPgRelations;
+            return this;
+        }
+
+        /**
+         * @param datadogPgRelations Relations to collect PostgreSQL relation metrics for, such as table size, index statistics, row counts, vacuum ages and locks. No relation metrics are collected when unset
+         * 
+         * @return builder
+         * 
+         */
+        public Builder datadogPgRelations(List<ServiceIntegrationDatadogUserConfigDatadogPgRelationArgs> datadogPgRelations) {
+            return datadogPgRelations(Output.of(datadogPgRelations));
+        }
+
+        /**
+         * @param datadogPgRelations Relations to collect PostgreSQL relation metrics for, such as table size, index statistics, row counts, vacuum ages and locks. No relation metrics are collected when unset
+         * 
+         * @return builder
+         * 
+         */
+        public Builder datadogPgRelations(ServiceIntegrationDatadogUserConfigDatadogPgRelationArgs... datadogPgRelations) {
+            return datadogPgRelations(List.of(datadogPgRelations));
         }
 
         /**

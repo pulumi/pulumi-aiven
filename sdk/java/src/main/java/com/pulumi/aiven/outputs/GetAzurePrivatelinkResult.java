@@ -3,107 +3,122 @@
 
 package com.pulumi.aiven.outputs;
 
+import com.pulumi.aiven.outputs.GetAzurePrivatelinkTimeouts;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAzurePrivatelinkResult {
     /**
-     * @return The Azure Private Link service alias.
+     * @return Azure Privatelink service alias.
      * 
      */
     private String azureServiceAlias;
     /**
-     * @return The Azure Private Link service ID.
+     * @return Azure Privatelink service ID.
      * 
      */
     private String azureServiceId;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Resource ID composed as: `project/service_name`.
      * 
      */
     private String id;
     /**
-     * @return Printable result of the Azure Private Link request.
+     * @return Legacy response message retained for backward compatibility. **Deprecated**: This attribute is retained only for compatibility with state created by older provider versions and is no longer populated.
+     * 
+     * @deprecated
+     * This attribute is retained only for compatibility with state created by older provider versions and is no longer populated.
      * 
      */
+    @Deprecated /* This attribute is retained only for compatibility with state created by older provider versions and is no longer populated. */
     private String message;
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name.
      * 
      */
     private String project;
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service name.
      * 
      */
     private String serviceName;
     /**
-     * @return The state of the Private Link resource.
+     * @return Privatelink resource state. The possible values are `active`, `creating` and `deleting`.
      * 
      */
     private String state;
+    private @Nullable GetAzurePrivatelinkTimeouts timeouts;
     /**
-     * @return A list of allowed subscription IDs. Maximum length: `16`.
+     * @return IDs of Azure subscriptions allowed to connect to the service.
      * 
      */
     private List<String> userSubscriptionIds;
 
     private GetAzurePrivatelinkResult() {}
     /**
-     * @return The Azure Private Link service alias.
+     * @return Azure Privatelink service alias.
      * 
      */
     public String azureServiceAlias() {
         return this.azureServiceAlias;
     }
     /**
-     * @return The Azure Private Link service ID.
+     * @return Azure Privatelink service ID.
      * 
      */
     public String azureServiceId() {
         return this.azureServiceId;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Resource ID composed as: `project/service_name`.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return Printable result of the Azure Private Link request.
+     * @return Legacy response message retained for backward compatibility. **Deprecated**: This attribute is retained only for compatibility with state created by older provider versions and is no longer populated.
+     * 
+     * @deprecated
+     * This attribute is retained only for compatibility with state created by older provider versions and is no longer populated.
      * 
      */
+    @Deprecated /* This attribute is retained only for compatibility with state created by older provider versions and is no longer populated. */
     public String message() {
         return this.message;
     }
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name.
      * 
      */
     public String project() {
         return this.project;
     }
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service name.
      * 
      */
     public String serviceName() {
         return this.serviceName;
     }
     /**
-     * @return The state of the Private Link resource.
+     * @return Privatelink resource state. The possible values are `active`, `creating` and `deleting`.
      * 
      */
     public String state() {
         return this.state;
     }
+    public Optional<GetAzurePrivatelinkTimeouts> timeouts() {
+        return Optional.ofNullable(this.timeouts);
+    }
     /**
-     * @return A list of allowed subscription IDs. Maximum length: `16`.
+     * @return IDs of Azure subscriptions allowed to connect to the service.
      * 
      */
     public List<String> userSubscriptionIds() {
@@ -126,6 +141,7 @@ public final class GetAzurePrivatelinkResult {
         private String project;
         private String serviceName;
         private String state;
+        private @Nullable GetAzurePrivatelinkTimeouts timeouts;
         private List<String> userSubscriptionIds;
         public Builder() {}
         public Builder(GetAzurePrivatelinkResult defaults) {
@@ -137,6 +153,7 @@ public final class GetAzurePrivatelinkResult {
     	      this.project = defaults.project;
     	      this.serviceName = defaults.serviceName;
     	      this.state = defaults.state;
+    	      this.timeouts = defaults.timeouts;
     	      this.userSubscriptionIds = defaults.userSubscriptionIds;
         }
 
@@ -197,6 +214,12 @@ public final class GetAzurePrivatelinkResult {
             return this;
         }
         @CustomType.Setter
+        public Builder timeouts(@Nullable GetAzurePrivatelinkTimeouts timeouts) {
+
+            this.timeouts = timeouts;
+            return this;
+        }
+        @CustomType.Setter
         public Builder userSubscriptionIds(List<String> userSubscriptionIds) {
             if (userSubscriptionIds == null) {
               throw new MissingRequiredPropertyException("GetAzurePrivatelinkResult", "userSubscriptionIds");
@@ -216,6 +239,7 @@ public final class GetAzurePrivatelinkResult {
             _resultValue.project = project;
             _resultValue.serviceName = serviceName;
             _resultValue.state = state;
+            _resultValue.timeouts = timeouts;
             _resultValue.userSubscriptionIds = userSubscriptionIds;
             return _resultValue;
         }

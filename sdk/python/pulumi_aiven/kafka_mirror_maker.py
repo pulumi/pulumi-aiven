@@ -786,18 +786,18 @@ class KafkaMirrorMaker(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         example_mirrormaker = aiven.KafkaMirrorMaker("example_mirrormaker",
-            project=example_project["project"],
-            cloud_name="google-europe-west1",
-            plan="startup-4",
-            service_name="example-mirrormaker-service",
             kafka_mirrormaker_user_config={
-                "ip_filters": ["0.0.0.0/0"],
                 "kafka_mirrormaker": {
                     "refresh_groups_interval_seconds": 600,
                     "refresh_topics_enabled": True,
                     "refresh_topics_interval_seconds": 600,
                 },
-            })
+                "ip_filters": ["0.0.0.0/0"],
+            },
+            project=example_project["project"],
+            cloud_name="google-europe-west1",
+            plan="startup-4",
+            service_name="example-mirrormaker-service")
         ```
 
         ## Import
@@ -842,18 +842,18 @@ class KafkaMirrorMaker(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         example_mirrormaker = aiven.KafkaMirrorMaker("example_mirrormaker",
-            project=example_project["project"],
-            cloud_name="google-europe-west1",
-            plan="startup-4",
-            service_name="example-mirrormaker-service",
             kafka_mirrormaker_user_config={
-                "ip_filters": ["0.0.0.0/0"],
                 "kafka_mirrormaker": {
                     "refresh_groups_interval_seconds": 600,
                     "refresh_topics_enabled": True,
                     "refresh_topics_interval_seconds": 600,
                 },
-            })
+                "ip_filters": ["0.0.0.0/0"],
+            },
+            project=example_project["project"],
+            cloud_name="google-europe-west1",
+            plan="startup-4",
+            service_name="example-mirrormaker-service")
         ```
 
         ## Import

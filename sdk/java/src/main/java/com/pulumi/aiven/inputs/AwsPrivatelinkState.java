@@ -3,6 +3,7 @@
 
 package com.pulumi.aiven.inputs;
 
+import com.pulumi.aiven.inputs.AwsPrivatelinkTimeoutsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
@@ -17,14 +18,14 @@ public final class AwsPrivatelinkState extends com.pulumi.resources.ResourceArgs
     public static final AwsPrivatelinkState Empty = new AwsPrivatelinkState();
 
     /**
-     * AWS service ID.
+     * AWS VPC endpoint service ID.
      * 
      */
     @Import(name="awsServiceId")
     private @Nullable Output<String> awsServiceId;
 
     /**
-     * @return AWS service ID.
+     * @return AWS VPC endpoint service ID.
      * 
      */
     public Optional<Output<String>> awsServiceId() {
@@ -32,14 +33,14 @@ public final class AwsPrivatelinkState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * AWS service name.
+     * AWS VPC endpoint service name.
      * 
      */
     @Import(name="awsServiceName")
     private @Nullable Output<String> awsServiceName;
 
     /**
-     * @return AWS service name.
+     * @return AWS VPC endpoint service name.
      * 
      */
     public Optional<Output<String>> awsServiceName() {
@@ -47,14 +48,14 @@ public final class AwsPrivatelinkState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * List of the ARNs of the AWS accounts or IAM users allowed to connect to the VPC endpoint.
+     * ARNs of principals allowed connecting to the service.
      * 
      */
     @Import(name="principals")
     private @Nullable Output<List<String>> principals;
 
     /**
-     * @return List of the ARNs of the AWS accounts or IAM users allowed to connect to the VPC endpoint.
+     * @return ARNs of principals allowed connecting to the service.
      * 
      */
     public Optional<Output<List<String>>> principals() {
@@ -62,14 +63,14 @@ public final class AwsPrivatelinkState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="project")
     private @Nullable Output<String> project;
 
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> project() {
@@ -77,18 +78,55 @@ public final class AwsPrivatelinkState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="serviceName")
     private @Nullable Output<String> serviceName;
 
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service name. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> serviceName() {
         return Optional.ofNullable(this.serviceName);
+    }
+
+    /**
+     * Privatelink resource state. The possible values are `active`, `creating` and `deleting`.
+     * 
+     */
+    @Import(name="state")
+    private @Nullable Output<String> state;
+
+    /**
+     * @return Privatelink resource state. The possible values are `active`, `creating` and `deleting`.
+     * 
+     */
+    public Optional<Output<String>> state() {
+        return Optional.ofNullable(this.state);
+    }
+
+    /**
+     * Allow new connections to the endpoint from these regions, in addition to the region the endpoint is in.
+     * 
+     */
+    @Import(name="supportedRegions")
+    private @Nullable Output<List<String>> supportedRegions;
+
+    /**
+     * @return Allow new connections to the endpoint from these regions, in addition to the region the endpoint is in.
+     * 
+     */
+    public Optional<Output<List<String>>> supportedRegions() {
+        return Optional.ofNullable(this.supportedRegions);
+    }
+
+    @Import(name="timeouts")
+    private @Nullable Output<AwsPrivatelinkTimeoutsArgs> timeouts;
+
+    public Optional<Output<AwsPrivatelinkTimeoutsArgs>> timeouts() {
+        return Optional.ofNullable(this.timeouts);
     }
 
     private AwsPrivatelinkState() {}
@@ -99,6 +137,9 @@ public final class AwsPrivatelinkState extends com.pulumi.resources.ResourceArgs
         this.principals = $.principals;
         this.project = $.project;
         this.serviceName = $.serviceName;
+        this.state = $.state;
+        this.supportedRegions = $.supportedRegions;
+        this.timeouts = $.timeouts;
     }
 
     public static Builder builder() {
@@ -120,7 +161,7 @@ public final class AwsPrivatelinkState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param awsServiceId AWS service ID.
+         * @param awsServiceId AWS VPC endpoint service ID.
          * 
          * @return builder
          * 
@@ -131,7 +172,7 @@ public final class AwsPrivatelinkState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param awsServiceId AWS service ID.
+         * @param awsServiceId AWS VPC endpoint service ID.
          * 
          * @return builder
          * 
@@ -141,7 +182,7 @@ public final class AwsPrivatelinkState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param awsServiceName AWS service name.
+         * @param awsServiceName AWS VPC endpoint service name.
          * 
          * @return builder
          * 
@@ -152,7 +193,7 @@ public final class AwsPrivatelinkState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param awsServiceName AWS service name.
+         * @param awsServiceName AWS VPC endpoint service name.
          * 
          * @return builder
          * 
@@ -162,7 +203,7 @@ public final class AwsPrivatelinkState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param principals List of the ARNs of the AWS accounts or IAM users allowed to connect to the VPC endpoint.
+         * @param principals ARNs of principals allowed connecting to the service.
          * 
          * @return builder
          * 
@@ -173,7 +214,7 @@ public final class AwsPrivatelinkState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param principals List of the ARNs of the AWS accounts or IAM users allowed to connect to the VPC endpoint.
+         * @param principals ARNs of principals allowed connecting to the service.
          * 
          * @return builder
          * 
@@ -183,7 +224,7 @@ public final class AwsPrivatelinkState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param principals List of the ARNs of the AWS accounts or IAM users allowed to connect to the VPC endpoint.
+         * @param principals ARNs of principals allowed connecting to the service.
          * 
          * @return builder
          * 
@@ -193,7 +234,7 @@ public final class AwsPrivatelinkState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param project The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param project Project name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -204,7 +245,7 @@ public final class AwsPrivatelinkState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param project The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param project Project name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -214,7 +255,7 @@ public final class AwsPrivatelinkState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param serviceName The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param serviceName Service name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -225,13 +266,74 @@ public final class AwsPrivatelinkState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param serviceName The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param serviceName Service name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
          */
         public Builder serviceName(String serviceName) {
             return serviceName(Output.of(serviceName));
+        }
+
+        /**
+         * @param state Privatelink resource state. The possible values are `active`, `creating` and `deleting`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder state(@Nullable Output<String> state) {
+            $.state = state;
+            return this;
+        }
+
+        /**
+         * @param state Privatelink resource state. The possible values are `active`, `creating` and `deleting`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder state(String state) {
+            return state(Output.of(state));
+        }
+
+        /**
+         * @param supportedRegions Allow new connections to the endpoint from these regions, in addition to the region the endpoint is in.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder supportedRegions(@Nullable Output<List<String>> supportedRegions) {
+            $.supportedRegions = supportedRegions;
+            return this;
+        }
+
+        /**
+         * @param supportedRegions Allow new connections to the endpoint from these regions, in addition to the region the endpoint is in.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder supportedRegions(List<String> supportedRegions) {
+            return supportedRegions(Output.of(supportedRegions));
+        }
+
+        /**
+         * @param supportedRegions Allow new connections to the endpoint from these regions, in addition to the region the endpoint is in.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder supportedRegions(String... supportedRegions) {
+            return supportedRegions(List.of(supportedRegions));
+        }
+
+        public Builder timeouts(@Nullable Output<AwsPrivatelinkTimeoutsArgs> timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
+        public Builder timeouts(AwsPrivatelinkTimeoutsArgs timeouts) {
+            return timeouts(Output.of(timeouts));
         }
 
         public AwsPrivatelinkState build() {

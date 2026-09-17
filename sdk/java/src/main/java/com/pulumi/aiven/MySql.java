@@ -54,14 +54,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var exampleMysql = new MySql("exampleMysql", MySqlArgs.builder()
- *             .project(exampleProject.project())
- *             .cloudName("google-europe-west1")
- *             .plan("business-4")
- *             .serviceName("example-mysql")
- *             .maintenanceWindowDow("monday")
- *             .maintenanceWindowTime("10:00:00")
  *             .mysqlUserConfig(MySqlMysqlUserConfigArgs.builder()
- *                 .mysqlVersion("8")
  *                 .mysql(MySqlMysqlUserConfigMysqlArgs.builder()
  *                     .sqlMode("ANSI,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION,NO_ZERO_DATE,NO_ZERO_IN_DATE")
  *                     .sqlRequirePrimaryKey(true)
@@ -69,7 +62,14 @@ import javax.annotation.Nullable;
  *                 .publicAccess(MySqlMysqlUserConfigPublicAccessArgs.builder()
  *                     .mysql(true)
  *                     .build())
+ *                 .mysqlVersion("8")
  *                 .build())
+ *             .project(exampleProject.project())
+ *             .cloudName("google-europe-west1")
+ *             .plan("business-4")
+ *             .serviceName("example-mysql")
+ *             .maintenanceWindowDow("monday")
+ *             .maintenanceWindowTime("10:00:00")
  *             .build());
  * 
  *     }

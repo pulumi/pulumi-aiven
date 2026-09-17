@@ -17,10 +17,7 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 /**
- * Creates and manages an Aiven for Apache Flink® jar application version.
- * 
- * **This resource is in the beta stage and may change without notice.** Set
- * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+ * Creates and manages an Aiven for Apache Flink® jar application version. This feature is in the limited availability stage and may change without notice. To enable this feature, contact the [sales team](http://aiven.io/contact). Once it&#39;s enabled, set the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
  * 
  * ## Example Usage
  * 
@@ -52,15 +49,15 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new Flink("example", FlinkArgs.builder()
+ *             .flinkUserConfig(FlinkFlinkUserConfigArgs.builder()
+ *                 .customCode(true)
+ *                 .build())
  *             .project(exampleAivenProject.project())
  *             .serviceName("example-flink-service")
  *             .cloudName("google-europe-west1")
  *             .plan("business-4")
  *             .maintenanceWindowDow("monday")
  *             .maintenanceWindowTime("04:00:00")
- *             .flinkUserConfig(FlinkFlinkUserConfigArgs.builder()
- *                 .customCode(true)
- *                 .build())
  *             .build());
  * 
  *         var exampleFlinkJarApplication = new FlinkJarApplication("exampleFlinkJarApplication", FlinkJarApplicationArgs.builder()

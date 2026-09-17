@@ -12,8 +12,8 @@ namespace Pulumi.Aiven
     /// <summary>
     /// Creates and manages a BYOC custom cloud environment on AWS.
     /// 
-    /// **This resource is in the beta stage and may change without notice.** Set
-    /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+    /// &gt; **Beta resource**
+    /// This resource is in the beta stage and may change without notice. Set the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
     /// 
     /// ## Example Usage
     /// 
@@ -27,12 +27,6 @@ namespace Pulumi.Aiven
     /// {
     ///     var example = new Aiven.ByocAwsEntity("example", new()
     ///     {
-    ///         OrganizationId = "org1a23f456789",
-    ///         CloudProvider = "aws",
-    ///         CloudRegion = "eu-west-1",
-    ///         DeploymentModel = "standard",
-    ///         DisplayName = "byoc-cloud-prod-eu-west-1",
-    ///         ReservedCidr = "192.168.6.0/24",
     ///         ContactEmails = new[]
     ///         {
     ///             new Aiven.Inputs.ByocAwsEntityContactEmailArgs
@@ -42,6 +36,12 @@ namespace Pulumi.Aiven
     ///                 Role = "admin",
     ///             },
     ///         },
+    ///         OrganizationId = "org1a23f456789",
+    ///         CloudProvider = "aws",
+    ///         CloudRegion = "eu-west-1",
+    ///         DeploymentModel = "standard",
+    ///         DisplayName = "byoc-cloud-prod-eu-west-1",
+    ///         ReservedCidr = "192.168.6.0/24",
     ///         Tags = 
     ///         {
     ///             { "foo", "foo" },

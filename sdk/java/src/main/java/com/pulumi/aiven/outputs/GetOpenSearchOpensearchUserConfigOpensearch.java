@@ -197,6 +197,11 @@ public final class GetOpenSearchOpensearchUserConfigOpensearch {
      */
     private @Nullable Integer knnMemoryCircuitBreakerLimit;
     /**
+     * @return When set to true, the setting allows admins to control access and permissions to the connector API using backend_roles. Defaults to false.
+     * 
+     */
+    private @Nullable Boolean mlCommonsConnectorAccessControlEnabled;
+    /**
      * @return Enable or disable model access control for ML Commons. When enabled, access to ML models is controlled by security permissions. Defaults to false.
      * 
      */
@@ -211,6 +216,11 @@ public final class GetOpenSearchOpensearchUserConfigOpensearch {
      * 
      */
     private @Nullable Boolean mlCommonsOnlyRunOnMlNode;
+    /**
+     * @return Adds the trusted endpoints to the cluster settings. Supports Java regex expressions.
+     * 
+     */
+    private @Nullable List<String> mlCommonsTrustedConnectorEndpointsRegexes;
     /**
      * @return Defines a limit of how much total remote data can be referenced as a ratio of the size of the disk reserved for the file cache. This is designed to be a safeguard to prevent oversubscribing a cluster. Defaults to 5gb. Requires restarting all OpenSearch nodes.
      * 
@@ -560,6 +570,13 @@ public final class GetOpenSearchOpensearchUserConfigOpensearch {
         return Optional.ofNullable(this.knnMemoryCircuitBreakerLimit);
     }
     /**
+     * @return When set to true, the setting allows admins to control access and permissions to the connector API using backend_roles. Defaults to false.
+     * 
+     */
+    public Optional<Boolean> mlCommonsConnectorAccessControlEnabled() {
+        return Optional.ofNullable(this.mlCommonsConnectorAccessControlEnabled);
+    }
+    /**
      * @return Enable or disable model access control for ML Commons. When enabled, access to ML models is controlled by security permissions. Defaults to false.
      * 
      */
@@ -579,6 +596,13 @@ public final class GetOpenSearchOpensearchUserConfigOpensearch {
      */
     public Optional<Boolean> mlCommonsOnlyRunOnMlNode() {
         return Optional.ofNullable(this.mlCommonsOnlyRunOnMlNode);
+    }
+    /**
+     * @return Adds the trusted endpoints to the cluster settings. Supports Java regex expressions.
+     * 
+     */
+    public List<String> mlCommonsTrustedConnectorEndpointsRegexes() {
+        return this.mlCommonsTrustedConnectorEndpointsRegexes == null ? List.of() : this.mlCommonsTrustedConnectorEndpointsRegexes;
     }
     /**
      * @return Defines a limit of how much total remote data can be referenced as a ratio of the size of the disk reserved for the file cache. This is designed to be a safeguard to prevent oversubscribing a cluster. Defaults to 5gb. Requires restarting all OpenSearch nodes.
@@ -772,9 +796,11 @@ public final class GetOpenSearchOpensearchUserConfigOpensearch {
         private @Nullable Integer ismHistoryRolloverRetentionPeriod;
         private @Nullable Boolean knnMemoryCircuitBreakerEnabled;
         private @Nullable Integer knnMemoryCircuitBreakerLimit;
+        private @Nullable Boolean mlCommonsConnectorAccessControlEnabled;
         private @Nullable Boolean mlCommonsModelAccessControlEnabled;
         private @Nullable Integer mlCommonsNativeMemoryThreshold;
         private @Nullable Boolean mlCommonsOnlyRunOnMlNode;
+        private @Nullable List<String> mlCommonsTrustedConnectorEndpointsRegexes;
         private @Nullable String nodeSearchCacheSize;
         private @Nullable Boolean overrideMainResponseVersion;
         private @Nullable Boolean pluginsAlertingFilterByBackendRoles;
@@ -836,9 +862,11 @@ public final class GetOpenSearchOpensearchUserConfigOpensearch {
     	      this.ismHistoryRolloverRetentionPeriod = defaults.ismHistoryRolloverRetentionPeriod;
     	      this.knnMemoryCircuitBreakerEnabled = defaults.knnMemoryCircuitBreakerEnabled;
     	      this.knnMemoryCircuitBreakerLimit = defaults.knnMemoryCircuitBreakerLimit;
+    	      this.mlCommonsConnectorAccessControlEnabled = defaults.mlCommonsConnectorAccessControlEnabled;
     	      this.mlCommonsModelAccessControlEnabled = defaults.mlCommonsModelAccessControlEnabled;
     	      this.mlCommonsNativeMemoryThreshold = defaults.mlCommonsNativeMemoryThreshold;
     	      this.mlCommonsOnlyRunOnMlNode = defaults.mlCommonsOnlyRunOnMlNode;
+    	      this.mlCommonsTrustedConnectorEndpointsRegexes = defaults.mlCommonsTrustedConnectorEndpointsRegexes;
     	      this.nodeSearchCacheSize = defaults.nodeSearchCacheSize;
     	      this.overrideMainResponseVersion = defaults.overrideMainResponseVersion;
     	      this.pluginsAlertingFilterByBackendRoles = defaults.pluginsAlertingFilterByBackendRoles;
@@ -1080,6 +1108,12 @@ public final class GetOpenSearchOpensearchUserConfigOpensearch {
             return this;
         }
         @CustomType.Setter
+        public Builder mlCommonsConnectorAccessControlEnabled(@Nullable Boolean mlCommonsConnectorAccessControlEnabled) {
+
+            this.mlCommonsConnectorAccessControlEnabled = mlCommonsConnectorAccessControlEnabled;
+            return this;
+        }
+        @CustomType.Setter
         public Builder mlCommonsModelAccessControlEnabled(@Nullable Boolean mlCommonsModelAccessControlEnabled) {
 
             this.mlCommonsModelAccessControlEnabled = mlCommonsModelAccessControlEnabled;
@@ -1096,6 +1130,15 @@ public final class GetOpenSearchOpensearchUserConfigOpensearch {
 
             this.mlCommonsOnlyRunOnMlNode = mlCommonsOnlyRunOnMlNode;
             return this;
+        }
+        @CustomType.Setter
+        public Builder mlCommonsTrustedConnectorEndpointsRegexes(@Nullable List<String> mlCommonsTrustedConnectorEndpointsRegexes) {
+
+            this.mlCommonsTrustedConnectorEndpointsRegexes = mlCommonsTrustedConnectorEndpointsRegexes;
+            return this;
+        }
+        public Builder mlCommonsTrustedConnectorEndpointsRegexes(String... mlCommonsTrustedConnectorEndpointsRegexes) {
+            return mlCommonsTrustedConnectorEndpointsRegexes(List.of(mlCommonsTrustedConnectorEndpointsRegexes));
         }
         @CustomType.Setter
         public Builder nodeSearchCacheSize(@Nullable String nodeSearchCacheSize) {
@@ -1270,9 +1313,11 @@ public final class GetOpenSearchOpensearchUserConfigOpensearch {
             _resultValue.ismHistoryRolloverRetentionPeriod = ismHistoryRolloverRetentionPeriod;
             _resultValue.knnMemoryCircuitBreakerEnabled = knnMemoryCircuitBreakerEnabled;
             _resultValue.knnMemoryCircuitBreakerLimit = knnMemoryCircuitBreakerLimit;
+            _resultValue.mlCommonsConnectorAccessControlEnabled = mlCommonsConnectorAccessControlEnabled;
             _resultValue.mlCommonsModelAccessControlEnabled = mlCommonsModelAccessControlEnabled;
             _resultValue.mlCommonsNativeMemoryThreshold = mlCommonsNativeMemoryThreshold;
             _resultValue.mlCommonsOnlyRunOnMlNode = mlCommonsOnlyRunOnMlNode;
+            _resultValue.mlCommonsTrustedConnectorEndpointsRegexes = mlCommonsTrustedConnectorEndpointsRegexes;
             _resultValue.nodeSearchCacheSize = nodeSearchCacheSize;
             _resultValue.overrideMainResponseVersion = overrideMainResponseVersion;
             _resultValue.pluginsAlertingFilterByBackendRoles = pluginsAlertingFilterByBackendRoles;
