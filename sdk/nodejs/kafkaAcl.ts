@@ -2,13 +2,14 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Creates and manages Aiven [access control lists](https://aiven.io/docs/products/kafka/concepts/acl) (ACLs) for an Aiven for Apache Kafka® service. ACLs control access to Kafka topics, consumer groups,
- * clusters, and Schema Registry.
+ * Creates and manages Aiven [access control lists](https://aiven.io/docs/products/kafka/concepts/acl) (ACLs) for an Aiven for Apache Kafka® service. ACLs control access to Kafka topics, consumer groups, clusters, and Schema Registry.
  *
- * Aiven ACLs provide simplified topic-level control with basic permissions and wildcard support. For more advanced access control, you can use Kafka-native ACLs.
+ * Aiven ACLs provide simplified topic-level control with basic permissions and wildcard support. For more advanced access control, you can use Kafka-native ACLs. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
  *
  * ## Example Usage
  *
@@ -16,19 +17,19 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const exampleAcl = new aiven.KafkaAcl("example_acl", {
- *     project: exampleProject.project,
- *     serviceName: exampleKafka.serviceName,
- *     topic: "example-topic",
- *     permission: "admin",
- *     username: "example-user",
+ * const example = new aiven.KafkaAcl("example", {
+ *     project: "my-project",
+ *     serviceName: "my-kafka",
+ *     permission: "readwrite",
+ *     topic: "top*",
+ *     username: "admin*",
  * });
  * ```
  *
  * ## Import
  *
  * ```sh
- * $ pulumi import aiven:index/kafkaAcl:KafkaAcl example_acl PROJECT/SERVICE_NAME/ID
+ * $ pulumi import aiven:index/kafkaAcl:KafkaAcl example PROJECT/SERVICE_NAME/ACL_ID
  * ```
  */
 export class KafkaAcl extends pulumi.CustomResource {
@@ -64,23 +65,24 @@ export class KafkaAcl extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly aclId: pulumi.Output<string>;
     /**
-     * Permissions to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
+     * Permission of an Aiven Kafka ACL entry, as opposed to a Kafka-native one. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
      */
     declare public readonly permission: pulumi.Output<string>;
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name. Changing this property forces recreation of the resource.
      */
     declare public readonly project: pulumi.Output<string>;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name. Changing this property forces recreation of the resource.
      */
     declare public readonly serviceName: pulumi.Output<string>;
+    declare public readonly timeouts: pulumi.Output<outputs.KafkaAclTimeouts | undefined>;
     /**
-     * Topics that the permissions apply to. Changing this property forces recreation of the resource.
+     * Topic name pattern. Length must be between `1` and `249`. Changing this property forces recreation of the resource.
      */
     declare public readonly topic: pulumi.Output<string>;
     /**
-     * Usernames to grant permissions to. Changing this property forces recreation of the resource.
+     * Username. Length must be between `1` and `64`. Must match pattern: `^[-._*?A-Za-z0-9]+$`. Changing this property forces recreation of the resource.
      */
     declare public readonly username: pulumi.Output<string>;
 
@@ -101,6 +103,7 @@ export class KafkaAcl extends pulumi.CustomResource {
             resourceInputs["permission"] = state?.permission;
             resourceInputs["project"] = state?.project;
             resourceInputs["serviceName"] = state?.serviceName;
+            resourceInputs["timeouts"] = state?.timeouts;
             resourceInputs["topic"] = state?.topic;
             resourceInputs["username"] = state?.username;
         } else {
@@ -123,6 +126,7 @@ export class KafkaAcl extends pulumi.CustomResource {
             resourceInputs["permission"] = args?.permission;
             resourceInputs["project"] = args?.project;
             resourceInputs["serviceName"] = args?.serviceName;
+            resourceInputs["timeouts"] = args?.timeouts;
             resourceInputs["topic"] = args?.topic;
             resourceInputs["username"] = args?.username;
             resourceInputs["aclId"] = undefined /*out*/;
@@ -141,23 +145,24 @@ export interface KafkaAclState {
      */
     aclId?: pulumi.Input<string | undefined>;
     /**
-     * Permissions to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
+     * Permission of an Aiven Kafka ACL entry, as opposed to a Kafka-native one. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
      */
     permission?: pulumi.Input<string | undefined>;
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name. Changing this property forces recreation of the resource.
      */
     project?: pulumi.Input<string | undefined>;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name. Changing this property forces recreation of the resource.
      */
     serviceName?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.KafkaAclTimeouts | undefined>;
     /**
-     * Topics that the permissions apply to. Changing this property forces recreation of the resource.
+     * Topic name pattern. Length must be between `1` and `249`. Changing this property forces recreation of the resource.
      */
     topic?: pulumi.Input<string | undefined>;
     /**
-     * Usernames to grant permissions to. Changing this property forces recreation of the resource.
+     * Username. Length must be between `1` and `64`. Must match pattern: `^[-._*?A-Za-z0-9]+$`. Changing this property forces recreation of the resource.
      */
     username?: pulumi.Input<string | undefined>;
 }
@@ -167,23 +172,24 @@ export interface KafkaAclState {
  */
 export interface KafkaAclArgs {
     /**
-     * Permissions to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
+     * Permission of an Aiven Kafka ACL entry, as opposed to a Kafka-native one. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
      */
     permission: pulumi.Input<string>;
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name. Changing this property forces recreation of the resource.
      */
     project: pulumi.Input<string>;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name. Changing this property forces recreation of the resource.
      */
     serviceName: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.KafkaAclTimeouts | undefined>;
     /**
-     * Topics that the permissions apply to. Changing this property forces recreation of the resource.
+     * Topic name pattern. Length must be between `1` and `249`. Changing this property forces recreation of the resource.
      */
     topic: pulumi.Input<string>;
     /**
-     * Usernames to grant permissions to. Changing this property forces recreation of the resource.
+     * Username. Length must be between `1` and `64`. Must match pattern: `^[-._*?A-Za-z0-9]+$`. Changing this property forces recreation of the resource.
      */
     username: pulumi.Input<string>;
 }

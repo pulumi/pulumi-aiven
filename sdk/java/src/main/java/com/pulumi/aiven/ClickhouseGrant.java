@@ -67,9 +67,6 @@ import javax.annotation.Nullable;
  * 
  *         // Grant privileges to the example role.
  *         var rolePrivileges = new ClickhouseGrant("rolePrivileges", ClickhouseGrantArgs.builder()
- *             .project(exampleProject.project())
- *             .serviceName(exampleClickhouse.serviceName())
- *             .role(exampleRole.role())
  *             .privilegeGrants(            
  *                 ClickhouseGrantPrivilegeGrantArgs.builder()
  *                     .privilege("INSERT")
@@ -88,6 +85,9 @@ import javax.annotation.Nullable;
  *                     .privilege("SYSTEM DROP CACHE")
  *                     .database("*")
  *                     .build())
+ *             .project(exampleProject.project())
+ *             .serviceName(exampleClickhouse.serviceName())
+ *             .role(exampleRole.role())
  *             .build());
  * 
  *         // Grant the role to the user.
@@ -98,12 +98,12 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var userRoleAssignment = new ClickhouseGrant("userRoleAssignment", ClickhouseGrantArgs.builder()
- *             .project(exampleProject.project())
- *             .serviceName(exampleClickhouse.serviceName())
- *             .user(exampleUser.username())
  *             .roleGrants(ClickhouseGrantRoleGrantArgs.builder()
  *                 .role(exampleRole.role())
  *                 .build())
+ *             .project(exampleProject.project())
+ *             .serviceName(exampleClickhouse.serviceName())
+ *             .user(exampleUser.username())
  *             .build());
  * 
  *     }

@@ -2,19 +2,31 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
  * Gets information about an existing VPC in an Aiven organization.
  *
- * **This resource is in the beta stage and may change without notice.** Set
- * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const example = aiven.getOrganizationVpc({
+ *     organizationId: "org1a23f456789",
+ *     organizationVpcId: "1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+ * });
+ * ```
  */
 export function getOrganizationVpc(args: GetOrganizationVpcArgs, opts?: pulumi.InvokeOptions): Promise<GetOrganizationVpcResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getOrganizationVpc:getOrganizationVpc", {
         "organizationId": args.organizationId,
         "organizationVpcId": args.organizationVpcId,
+        "timeouts": args.timeouts,
     }, opts);
 }
 
@@ -23,13 +35,14 @@ export function getOrganizationVpc(args: GetOrganizationVpcArgs, opts?: pulumi.I
  */
 export interface GetOrganizationVpcArgs {
     /**
-     * The ID of the organization.
+     * ID of an organization.
      */
     organizationId: string;
     /**
      * The ID of the Aiven Organization VPC.
      */
     organizationVpcId: string;
+    timeouts?: inputs.GetOrganizationVpcTimeouts;
 }
 
 /**
@@ -37,15 +50,19 @@ export interface GetOrganizationVpcArgs {
  */
 export interface GetOrganizationVpcResult {
     /**
-     * The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.
+     * The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`.
      */
     readonly cloudName: string;
     /**
-     * Time of creation of the VPC.
+     * VPC creation timestamp.
      */
     readonly createTime: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * User defined display name for this VPC.
+     */
+    readonly displayName: string;
+    /**
+     * Resource ID composed as: `organization_id/organization_vpc_id`.
      */
     readonly id: string;
     /**
@@ -53,7 +70,7 @@ export interface GetOrganizationVpcResult {
      */
     readonly networkCidr: string;
     /**
-     * The ID of the organization.
+     * ID of an organization.
      */
     readonly organizationId: string;
     /**
@@ -64,22 +81,33 @@ export interface GetOrganizationVpcResult {
      * State of the VPC. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
      */
     readonly state: string;
+    readonly timeouts?: outputs.GetOrganizationVpcTimeouts;
     /**
-     * Time of the last update of the VPC.
+     * Timestamp of last change to VPC.
      */
     readonly updateTime: string;
 }
 /**
  * Gets information about an existing VPC in an Aiven organization.
  *
- * **This resource is in the beta stage and may change without notice.** Set
- * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const example = aiven.getOrganizationVpc({
+ *     organizationId: "org1a23f456789",
+ *     organizationVpcId: "1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+ * });
+ * ```
  */
 export function getOrganizationVpcOutput(args: GetOrganizationVpcOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOrganizationVpcResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("aiven:index/getOrganizationVpc:getOrganizationVpc", {
         "organizationId": args.organizationId,
         "organizationVpcId": args.organizationVpcId,
+        "timeouts": args.timeouts,
     }, opts);
 }
 
@@ -88,11 +116,12 @@ export function getOrganizationVpcOutput(args: GetOrganizationVpcOutputArgs, opt
  */
 export interface GetOrganizationVpcOutputArgs {
     /**
-     * The ID of the organization.
+     * ID of an organization.
      */
     organizationId: pulumi.Input<string>;
     /**
      * The ID of the Aiven Organization VPC.
      */
     organizationVpcId: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.GetOrganizationVpcTimeoutsArgs | undefined>;
 }

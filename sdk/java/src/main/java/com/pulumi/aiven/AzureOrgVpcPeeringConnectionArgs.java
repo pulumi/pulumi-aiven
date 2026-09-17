@@ -3,11 +3,14 @@
 
 package com.pulumi.aiven;
 
+import com.pulumi.aiven.inputs.AzureOrgVpcPeeringConnectionTimeoutsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class AzureOrgVpcPeeringConnectionArgs extends com.pulumi.resources.ResourceArgs {
@@ -15,14 +18,14 @@ public final class AzureOrgVpcPeeringConnectionArgs extends com.pulumi.resources
     public static final AzureOrgVpcPeeringConnectionArgs Empty = new AzureOrgVpcPeeringConnectionArgs();
 
     /**
-     * The ID of the Azure subscription in UUID4 format. Changing this property forces recreation of the resource.
+     * The ID of the Azure subscription in UUID4 format. Maximum length: `1024`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="azureSubscriptionId", required=true)
     private Output<String> azureSubscriptionId;
 
     /**
-     * @return The ID of the Azure subscription in UUID4 format. Changing this property forces recreation of the resource.
+     * @return The ID of the Azure subscription in UUID4 format. Maximum length: `1024`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> azureSubscriptionId() {
@@ -30,14 +33,14 @@ public final class AzureOrgVpcPeeringConnectionArgs extends com.pulumi.resources
     }
 
     /**
-     * Identifier of the organization.
+     * ID of an organization. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="organizationId", required=true)
     private Output<String> organizationId;
 
     /**
-     * @return Identifier of the organization.
+     * @return ID of an organization. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> organizationId() {
@@ -45,14 +48,14 @@ public final class AzureOrgVpcPeeringConnectionArgs extends com.pulumi.resources
     }
 
     /**
-     * Identifier of the organization VPC.
+     * Organization VPC ID. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="organizationVpcId", required=true)
     private Output<String> organizationVpcId;
 
     /**
-     * @return Identifier of the organization VPC.
+     * @return Organization VPC ID. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> organizationVpcId() {
@@ -60,14 +63,14 @@ public final class AzureOrgVpcPeeringConnectionArgs extends com.pulumi.resources
     }
 
     /**
-     * The ID of the Azure app that is allowed to create a peering to the Azure Virtual Network (VNet) in UUID4 format. Changing this property forces recreation of the resource.
+     * The ID of the Azure app that is allowed to create a peering to the Azure Virtual Network (VNet) in UUID4 format. Maximum length: `1024`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="peerAzureAppId", required=true)
     private Output<String> peerAzureAppId;
 
     /**
-     * @return The ID of the Azure app that is allowed to create a peering to the Azure Virtual Network (VNet) in UUID4 format. Changing this property forces recreation of the resource.
+     * @return The ID of the Azure app that is allowed to create a peering to the Azure Virtual Network (VNet) in UUID4 format. Maximum length: `1024`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> peerAzureAppId() {
@@ -75,14 +78,14 @@ public final class AzureOrgVpcPeeringConnectionArgs extends com.pulumi.resources
     }
 
     /**
-     * The Azure tenant ID in UUID4 format. Changing this property forces recreation of the resource.
+     * The Azure tenant ID in UUID4 format. Maximum length: `1024`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="peerAzureTenantId", required=true)
     private Output<String> peerAzureTenantId;
 
     /**
-     * @return The Azure tenant ID in UUID4 format. Changing this property forces recreation of the resource.
+     * @return The Azure tenant ID in UUID4 format. Maximum length: `1024`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> peerAzureTenantId() {
@@ -90,29 +93,36 @@ public final class AzureOrgVpcPeeringConnectionArgs extends com.pulumi.resources
     }
 
     /**
-     * The name of the Azure resource group associated with the VNet. Changing this property forces recreation of the resource.
+     * The name of the Azure resource group associated with the VNet. Maximum length: `1024`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="peerResourceGroup", required=true)
     private Output<String> peerResourceGroup;
 
     /**
-     * @return The name of the Azure resource group associated with the VNet. Changing this property forces recreation of the resource.
+     * @return The name of the Azure resource group associated with the VNet. Maximum length: `1024`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> peerResourceGroup() {
         return this.peerResourceGroup;
     }
 
+    @Import(name="timeouts")
+    private @Nullable Output<AzureOrgVpcPeeringConnectionTimeoutsArgs> timeouts;
+
+    public Optional<Output<AzureOrgVpcPeeringConnectionTimeoutsArgs>> timeouts() {
+        return Optional.ofNullable(this.timeouts);
+    }
+
     /**
-     * The name of the Azure VNet. Changing this property forces recreation of the resource.
+     * The name of the Azure VNet. Maximum length: `1024`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="vnetName", required=true)
     private Output<String> vnetName;
 
     /**
-     * @return The name of the Azure VNet. Changing this property forces recreation of the resource.
+     * @return The name of the Azure VNet. Maximum length: `1024`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> vnetName() {
@@ -128,6 +138,7 @@ public final class AzureOrgVpcPeeringConnectionArgs extends com.pulumi.resources
         this.peerAzureAppId = $.peerAzureAppId;
         this.peerAzureTenantId = $.peerAzureTenantId;
         this.peerResourceGroup = $.peerResourceGroup;
+        this.timeouts = $.timeouts;
         this.vnetName = $.vnetName;
     }
 
@@ -150,7 +161,7 @@ public final class AzureOrgVpcPeeringConnectionArgs extends com.pulumi.resources
         }
 
         /**
-         * @param azureSubscriptionId The ID of the Azure subscription in UUID4 format. Changing this property forces recreation of the resource.
+         * @param azureSubscriptionId The ID of the Azure subscription in UUID4 format. Maximum length: `1024`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -161,7 +172,7 @@ public final class AzureOrgVpcPeeringConnectionArgs extends com.pulumi.resources
         }
 
         /**
-         * @param azureSubscriptionId The ID of the Azure subscription in UUID4 format. Changing this property forces recreation of the resource.
+         * @param azureSubscriptionId The ID of the Azure subscription in UUID4 format. Maximum length: `1024`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -171,7 +182,7 @@ public final class AzureOrgVpcPeeringConnectionArgs extends com.pulumi.resources
         }
 
         /**
-         * @param organizationId Identifier of the organization.
+         * @param organizationId ID of an organization. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -182,7 +193,7 @@ public final class AzureOrgVpcPeeringConnectionArgs extends com.pulumi.resources
         }
 
         /**
-         * @param organizationId Identifier of the organization.
+         * @param organizationId ID of an organization. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -192,7 +203,7 @@ public final class AzureOrgVpcPeeringConnectionArgs extends com.pulumi.resources
         }
 
         /**
-         * @param organizationVpcId Identifier of the organization VPC.
+         * @param organizationVpcId Organization VPC ID. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -203,7 +214,7 @@ public final class AzureOrgVpcPeeringConnectionArgs extends com.pulumi.resources
         }
 
         /**
-         * @param organizationVpcId Identifier of the organization VPC.
+         * @param organizationVpcId Organization VPC ID. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -213,7 +224,7 @@ public final class AzureOrgVpcPeeringConnectionArgs extends com.pulumi.resources
         }
 
         /**
-         * @param peerAzureAppId The ID of the Azure app that is allowed to create a peering to the Azure Virtual Network (VNet) in UUID4 format. Changing this property forces recreation of the resource.
+         * @param peerAzureAppId The ID of the Azure app that is allowed to create a peering to the Azure Virtual Network (VNet) in UUID4 format. Maximum length: `1024`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -224,7 +235,7 @@ public final class AzureOrgVpcPeeringConnectionArgs extends com.pulumi.resources
         }
 
         /**
-         * @param peerAzureAppId The ID of the Azure app that is allowed to create a peering to the Azure Virtual Network (VNet) in UUID4 format. Changing this property forces recreation of the resource.
+         * @param peerAzureAppId The ID of the Azure app that is allowed to create a peering to the Azure Virtual Network (VNet) in UUID4 format. Maximum length: `1024`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -234,7 +245,7 @@ public final class AzureOrgVpcPeeringConnectionArgs extends com.pulumi.resources
         }
 
         /**
-         * @param peerAzureTenantId The Azure tenant ID in UUID4 format. Changing this property forces recreation of the resource.
+         * @param peerAzureTenantId The Azure tenant ID in UUID4 format. Maximum length: `1024`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -245,7 +256,7 @@ public final class AzureOrgVpcPeeringConnectionArgs extends com.pulumi.resources
         }
 
         /**
-         * @param peerAzureTenantId The Azure tenant ID in UUID4 format. Changing this property forces recreation of the resource.
+         * @param peerAzureTenantId The Azure tenant ID in UUID4 format. Maximum length: `1024`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -255,7 +266,7 @@ public final class AzureOrgVpcPeeringConnectionArgs extends com.pulumi.resources
         }
 
         /**
-         * @param peerResourceGroup The name of the Azure resource group associated with the VNet. Changing this property forces recreation of the resource.
+         * @param peerResourceGroup The name of the Azure resource group associated with the VNet. Maximum length: `1024`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -266,7 +277,7 @@ public final class AzureOrgVpcPeeringConnectionArgs extends com.pulumi.resources
         }
 
         /**
-         * @param peerResourceGroup The name of the Azure resource group associated with the VNet. Changing this property forces recreation of the resource.
+         * @param peerResourceGroup The name of the Azure resource group associated with the VNet. Maximum length: `1024`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -275,8 +286,17 @@ public final class AzureOrgVpcPeeringConnectionArgs extends com.pulumi.resources
             return peerResourceGroup(Output.of(peerResourceGroup));
         }
 
+        public Builder timeouts(@Nullable Output<AzureOrgVpcPeeringConnectionTimeoutsArgs> timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
+        public Builder timeouts(AzureOrgVpcPeeringConnectionTimeoutsArgs timeouts) {
+            return timeouts(Output.of(timeouts));
+        }
+
         /**
-         * @param vnetName The name of the Azure VNet. Changing this property forces recreation of the resource.
+         * @param vnetName The name of the Azure VNet. Maximum length: `1024`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -287,7 +307,7 @@ public final class AzureOrgVpcPeeringConnectionArgs extends com.pulumi.resources
         }
 
         /**
-         * @param vnetName The name of the Azure VNet. Changing this property forces recreation of the resource.
+         * @param vnetName The name of the Azure VNet. Maximum length: `1024`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 

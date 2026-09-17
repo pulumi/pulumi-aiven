@@ -35,6 +35,11 @@ public final class GetPgUserResult {
      */
     private String password;
     /**
+     * @return The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. &#39;unknown&#39; is reported when the hash is missing or uses an unrecognised format. The possible values are `md5`, `scram-sha-256` and `unknown`.
+     * 
+     */
+    private String passwordEncryptionType;
+    /**
      * @return Allows replication. For the default avnadmin user this attribute is required and is always `true`.
      * 
      */
@@ -91,6 +96,13 @@ public final class GetPgUserResult {
         return this.password;
     }
     /**
+     * @return The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. &#39;unknown&#39; is reported when the hash is missing or uses an unrecognised format. The possible values are `md5`, `scram-sha-256` and `unknown`.
+     * 
+     */
+    public String passwordEncryptionType() {
+        return this.passwordEncryptionType;
+    }
+    /**
      * @return Allows replication. For the default avnadmin user this attribute is required and is always `true`.
      * 
      */
@@ -142,6 +154,7 @@ public final class GetPgUserResult {
         private String accessKey;
         private String id;
         private String password;
+        private String passwordEncryptionType;
         private Boolean pgAllowReplication;
         private String project;
         private String serviceName;
@@ -155,6 +168,7 @@ public final class GetPgUserResult {
     	      this.accessKey = defaults.accessKey;
     	      this.id = defaults.id;
     	      this.password = defaults.password;
+    	      this.passwordEncryptionType = defaults.passwordEncryptionType;
     	      this.pgAllowReplication = defaults.pgAllowReplication;
     	      this.project = defaults.project;
     	      this.serviceName = defaults.serviceName;
@@ -193,6 +207,14 @@ public final class GetPgUserResult {
               throw new MissingRequiredPropertyException("GetPgUserResult", "password");
             }
             this.password = password;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder passwordEncryptionType(String passwordEncryptionType) {
+            if (passwordEncryptionType == null) {
+              throw new MissingRequiredPropertyException("GetPgUserResult", "passwordEncryptionType");
+            }
+            this.passwordEncryptionType = passwordEncryptionType;
             return this;
         }
         @CustomType.Setter
@@ -247,6 +269,7 @@ public final class GetPgUserResult {
             _resultValue.accessKey = accessKey;
             _resultValue.id = id;
             _resultValue.password = password;
+            _resultValue.passwordEncryptionType = passwordEncryptionType;
             _resultValue.pgAllowReplication = pgAllowReplication;
             _resultValue.project = project;
             _resultValue.serviceName = serviceName;

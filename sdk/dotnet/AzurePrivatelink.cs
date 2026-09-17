@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// Creates and manages an Azure Private Link for [selected Aiven services](https://aiven.io/docs/platform/howto/use-azure-privatelink) in a VPC.
+    /// Creates and manages an Azure Private Link for [selected Aiven services](https://aiven.io/docs/platform/howto/use-azure-privatelink) in a VPC. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
     /// 
     /// ## Example Usage
     /// 
@@ -22,13 +22,13 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var main = new Aiven.AzurePrivatelink("main", new()
+    ///     var example = new Aiven.AzurePrivatelink("example", new()
     ///     {
-    ///         Project = exampleProject.Project,
-    ///         ServiceName = exampleKafka.ServiceName,
+    ///         Project = "my-project",
+    ///         ServiceName = "foo",
     ///         UserSubscriptionIds = new[]
     ///         {
-    ///             "00000000-0000-0000-0000-000000000000",
+    ///             "adcf7194-d877-4505-a47a-91fefd96e3b8",
     ///         },
     ///     });
     /// 
@@ -38,50 +38,53 @@ namespace Pulumi.Aiven
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import aiven:index/azurePrivatelink:AzurePrivatelink main PROJECT/SERVICE_NAME
+    /// $ pulumi import aiven:index/azurePrivatelink:AzurePrivatelink example PROJECT/SERVICE_NAME
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/azurePrivatelink:AzurePrivatelink")]
     public partial class AzurePrivatelink : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The Azure Private Link service alias.
+        /// Azure Privatelink service alias.
         /// </summary>
         [Output("azureServiceAlias")]
         public Output<string> AzureServiceAlias { get; private set; } = null!;
 
         /// <summary>
-        /// The Azure Private Link service ID.
+        /// Azure Privatelink service ID.
         /// </summary>
         [Output("azureServiceId")]
         public Output<string> AzureServiceId { get; private set; } = null!;
 
         /// <summary>
-        /// Printable result of the Azure Private Link request.
+        /// Legacy response message retained for backward compatibility. **Deprecated**: This attribute is retained only for compatibility with state created by older provider versions and is no longer populated.
         /// </summary>
         [Output("message")]
         public Output<string> Message { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service name. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// The state of the Private Link resource.
+        /// Privatelink resource state. The possible values are `Active`, `Creating` and `Deleting`.
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
 
+        [Output("timeouts")]
+        public Output<Outputs.AzurePrivatelinkTimeouts?> Timeouts { get; private set; } = null!;
+
         /// <summary>
-        /// A list of allowed subscription IDs. Maximum length: `16`.
+        /// IDs of Azure subscriptions allowed to connect to the service.
         /// </summary>
         [Output("userSubscriptionIds")]
         public Output<ImmutableArray<string>> UserSubscriptionIds { get; private set; } = null!;
@@ -133,22 +136,25 @@ namespace Pulumi.Aiven
     public sealed class AzurePrivatelinkArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service name. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
+
+        [Input("timeouts")]
+        public Input<Inputs.AzurePrivatelinkTimeoutsArgs>? Timeouts { get; set; }
 
         [Input("userSubscriptionIds", required: true)]
         private InputList<string>? _userSubscriptionIds;
 
         /// <summary>
-        /// A list of allowed subscription IDs. Maximum length: `16`.
+        /// IDs of Azure subscriptions allowed to connect to the service.
         /// </summary>
         public InputList<string> UserSubscriptionIds
         {
@@ -165,46 +171,49 @@ namespace Pulumi.Aiven
     public sealed class AzurePrivatelinkState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Azure Private Link service alias.
+        /// Azure Privatelink service alias.
         /// </summary>
         [Input("azureServiceAlias")]
         public Input<string>? AzureServiceAlias { get; set; }
 
         /// <summary>
-        /// The Azure Private Link service ID.
+        /// Azure Privatelink service ID.
         /// </summary>
         [Input("azureServiceId")]
         public Input<string>? AzureServiceId { get; set; }
 
         /// <summary>
-        /// Printable result of the Azure Private Link request.
+        /// Legacy response message retained for backward compatibility. **Deprecated**: This attribute is retained only for compatibility with state created by older provider versions and is no longer populated.
         /// </summary>
         [Input("message")]
         public Input<string>? Message { get; set; }
 
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service name. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 
         /// <summary>
-        /// The state of the Private Link resource.
+        /// Privatelink resource state. The possible values are `Active`, `Creating` and `Deleting`.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
+
+        [Input("timeouts")]
+        public Input<Inputs.AzurePrivatelinkTimeoutsGetArgs>? Timeouts { get; set; }
 
         [Input("userSubscriptionIds")]
         private InputList<string>? _userSubscriptionIds;
 
         /// <summary>
-        /// A list of allowed subscription IDs. Maximum length: `16`.
+        /// IDs of Azure subscriptions allowed to connect to the service.
         /// </summary>
         public InputList<string> UserSubscriptionIds
         {

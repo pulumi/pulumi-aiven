@@ -3,11 +3,14 @@
 
 package com.pulumi.aiven;
 
+import com.pulumi.aiven.inputs.KafkaAclTimeoutsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class KafkaAclArgs extends com.pulumi.resources.ResourceArgs {
@@ -15,14 +18,14 @@ public final class KafkaAclArgs extends com.pulumi.resources.ResourceArgs {
     public static final KafkaAclArgs Empty = new KafkaAclArgs();
 
     /**
-     * Permissions to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
+     * Permission of an Aiven Kafka ACL entry, as opposed to a Kafka-native one. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="permission", required=true)
     private Output<String> permission;
 
     /**
-     * @return Permissions to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
+     * @return Permission of an Aiven Kafka ACL entry, as opposed to a Kafka-native one. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> permission() {
@@ -30,14 +33,14 @@ public final class KafkaAclArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="project", required=true)
     private Output<String> project;
 
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> project() {
@@ -45,29 +48,36 @@ public final class KafkaAclArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="serviceName", required=true)
     private Output<String> serviceName;
 
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service name. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> serviceName() {
         return this.serviceName;
     }
 
+    @Import(name="timeouts")
+    private @Nullable Output<KafkaAclTimeoutsArgs> timeouts;
+
+    public Optional<Output<KafkaAclTimeoutsArgs>> timeouts() {
+        return Optional.ofNullable(this.timeouts);
+    }
+
     /**
-     * Topics that the permissions apply to. Changing this property forces recreation of the resource.
+     * Topic name pattern. Length must be between `1` and `249`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="topic", required=true)
     private Output<String> topic;
 
     /**
-     * @return Topics that the permissions apply to. Changing this property forces recreation of the resource.
+     * @return Topic name pattern. Length must be between `1` and `249`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> topic() {
@@ -75,14 +85,14 @@ public final class KafkaAclArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Usernames to grant permissions to. Changing this property forces recreation of the resource.
+     * Username. Length must be between `1` and `64`. Must match pattern: `^[-._*?A-Za-z0-9]+$`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="username", required=true)
     private Output<String> username;
 
     /**
-     * @return Usernames to grant permissions to. Changing this property forces recreation of the resource.
+     * @return Username. Length must be between `1` and `64`. Must match pattern: `^[-._*?A-Za-z0-9]+$`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> username() {
@@ -95,6 +105,7 @@ public final class KafkaAclArgs extends com.pulumi.resources.ResourceArgs {
         this.permission = $.permission;
         this.project = $.project;
         this.serviceName = $.serviceName;
+        this.timeouts = $.timeouts;
         this.topic = $.topic;
         this.username = $.username;
     }
@@ -118,7 +129,7 @@ public final class KafkaAclArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param permission Permissions to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
+         * @param permission Permission of an Aiven Kafka ACL entry, as opposed to a Kafka-native one. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -129,7 +140,7 @@ public final class KafkaAclArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param permission Permissions to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
+         * @param permission Permission of an Aiven Kafka ACL entry, as opposed to a Kafka-native one. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -139,7 +150,7 @@ public final class KafkaAclArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param project Project name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -150,7 +161,7 @@ public final class KafkaAclArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param project Project name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -160,7 +171,7 @@ public final class KafkaAclArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceName The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param serviceName Service name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -171,7 +182,7 @@ public final class KafkaAclArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceName The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param serviceName Service name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -180,8 +191,17 @@ public final class KafkaAclArgs extends com.pulumi.resources.ResourceArgs {
             return serviceName(Output.of(serviceName));
         }
 
+        public Builder timeouts(@Nullable Output<KafkaAclTimeoutsArgs> timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
+        public Builder timeouts(KafkaAclTimeoutsArgs timeouts) {
+            return timeouts(Output.of(timeouts));
+        }
+
         /**
-         * @param topic Topics that the permissions apply to. Changing this property forces recreation of the resource.
+         * @param topic Topic name pattern. Length must be between `1` and `249`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -192,7 +212,7 @@ public final class KafkaAclArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param topic Topics that the permissions apply to. Changing this property forces recreation of the resource.
+         * @param topic Topic name pattern. Length must be between `1` and `249`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -202,7 +222,7 @@ public final class KafkaAclArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param username Usernames to grant permissions to. Changing this property forces recreation of the resource.
+         * @param username Username. Length must be between `1` and `64`. Must match pattern: `^[-._*?A-Za-z0-9]+$`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -213,7 +233,7 @@ public final class KafkaAclArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param username Usernames to grant permissions to. Changing this property forces recreation of the resource.
+         * @param username Username. Length must be between `1` and `64`. Must match pattern: `^[-._*?A-Za-z0-9]+$`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 

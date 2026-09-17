@@ -47,15 +47,15 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var example = new OrganizationProject("example", OrganizationProjectArgs.builder()
+ *             .tags(OrganizationProjectTagArgs.builder()
+ *                 .key("foo")
+ *                 .value("foo")
+ *                 .build())
  *             .organizationId("org1234abcd")
  *             .projectId("project-1")
  *             .billingGroupId("721bf796-1d89-402d-9195-425a23c4efdc")
  *             .parentId("a3fd7a594e01")
  *             .basePort(10000)
- *             .tags(OrganizationProjectTagArgs.builder()
- *                 .key("foo")
- *                 .value("foo")
- *                 .build())
  *             .technicalEmails("foo}{@literal @}{@code example.com")
  *             .build());
  * 

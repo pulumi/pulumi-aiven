@@ -3,6 +3,7 @@
 
 package com.pulumi.aiven.inputs;
 
+import com.pulumi.aiven.inputs.OrganizationVpcTimeoutsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
@@ -31,14 +32,14 @@ public final class OrganizationVpcState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Time of creation of the VPC.
+     * VPC creation timestamp.
      * 
      */
     @Import(name="createTime")
     private @Nullable Output<String> createTime;
 
     /**
-     * @return Time of creation of the VPC.
+     * @return VPC creation timestamp.
      * 
      */
     public Optional<Output<String>> createTime() {
@@ -46,14 +47,29 @@ public final class OrganizationVpcState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Network address range used by the VPC. For example, `192.168.0.0/24`.
+     * User defined display name for this VPC. Maximum length: `64`.
+     * 
+     */
+    @Import(name="displayName")
+    private @Nullable Output<String> displayName;
+
+    /**
+     * @return User defined display name for this VPC. Maximum length: `64`.
+     * 
+     */
+    public Optional<Output<String>> displayName() {
+        return Optional.ofNullable(this.displayName);
+    }
+
+    /**
+     * Network address range used by the VPC. For example, `192.168.0.0/24`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="networkCidr")
     private @Nullable Output<String> networkCidr;
 
     /**
-     * @return Network address range used by the VPC. For example, `192.168.0.0/24`.
+     * @return Network address range used by the VPC. For example, `192.168.0.0/24`. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> networkCidr() {
@@ -61,14 +77,14 @@ public final class OrganizationVpcState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The ID of the organization.
+     * ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="organizationId")
     private @Nullable Output<String> organizationId;
 
     /**
-     * @return The ID of the organization.
+     * @return ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> organizationId() {
@@ -105,15 +121,22 @@ public final class OrganizationVpcState extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.state);
     }
 
+    @Import(name="timeouts")
+    private @Nullable Output<OrganizationVpcTimeoutsArgs> timeouts;
+
+    public Optional<Output<OrganizationVpcTimeoutsArgs>> timeouts() {
+        return Optional.ofNullable(this.timeouts);
+    }
+
     /**
-     * Time of the last update of the VPC.
+     * Timestamp of last change to VPC.
      * 
      */
     @Import(name="updateTime")
     private @Nullable Output<String> updateTime;
 
     /**
-     * @return Time of the last update of the VPC.
+     * @return Timestamp of last change to VPC.
      * 
      */
     public Optional<Output<String>> updateTime() {
@@ -125,10 +148,12 @@ public final class OrganizationVpcState extends com.pulumi.resources.ResourceArg
     private OrganizationVpcState(OrganizationVpcState $) {
         this.cloudName = $.cloudName;
         this.createTime = $.createTime;
+        this.displayName = $.displayName;
         this.networkCidr = $.networkCidr;
         this.organizationId = $.organizationId;
         this.organizationVpcId = $.organizationVpcId;
         this.state = $.state;
+        this.timeouts = $.timeouts;
         this.updateTime = $.updateTime;
     }
 
@@ -172,7 +197,7 @@ public final class OrganizationVpcState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param createTime Time of creation of the VPC.
+         * @param createTime VPC creation timestamp.
          * 
          * @return builder
          * 
@@ -183,7 +208,7 @@ public final class OrganizationVpcState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param createTime Time of creation of the VPC.
+         * @param createTime VPC creation timestamp.
          * 
          * @return builder
          * 
@@ -193,7 +218,28 @@ public final class OrganizationVpcState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param networkCidr Network address range used by the VPC. For example, `192.168.0.0/24`.
+         * @param displayName User defined display name for this VPC. Maximum length: `64`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder displayName(@Nullable Output<String> displayName) {
+            $.displayName = displayName;
+            return this;
+        }
+
+        /**
+         * @param displayName User defined display name for this VPC. Maximum length: `64`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder displayName(String displayName) {
+            return displayName(Output.of(displayName));
+        }
+
+        /**
+         * @param networkCidr Network address range used by the VPC. For example, `192.168.0.0/24`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -204,7 +250,7 @@ public final class OrganizationVpcState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param networkCidr Network address range used by the VPC. For example, `192.168.0.0/24`.
+         * @param networkCidr Network address range used by the VPC. For example, `192.168.0.0/24`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -214,7 +260,7 @@ public final class OrganizationVpcState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param organizationId The ID of the organization.
+         * @param organizationId ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -225,7 +271,7 @@ public final class OrganizationVpcState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param organizationId The ID of the organization.
+         * @param organizationId ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -276,8 +322,17 @@ public final class OrganizationVpcState extends com.pulumi.resources.ResourceArg
             return state(Output.of(state));
         }
 
+        public Builder timeouts(@Nullable Output<OrganizationVpcTimeoutsArgs> timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
+        public Builder timeouts(OrganizationVpcTimeoutsArgs timeouts) {
+            return timeouts(Output.of(timeouts));
+        }
+
         /**
-         * @param updateTime Time of the last update of the VPC.
+         * @param updateTime Timestamp of last change to VPC.
          * 
          * @return builder
          * 
@@ -288,7 +343,7 @@ public final class OrganizationVpcState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param updateTime Time of the last update of the VPC.
+         * @param updateTime Timestamp of last change to VPC.
          * 
          * @return builder
          * 

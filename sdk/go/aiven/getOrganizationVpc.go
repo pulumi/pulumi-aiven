@@ -13,8 +13,32 @@ import (
 
 // Gets information about an existing VPC in an Aiven organization.
 //
-// **This resource is in the beta stage and may change without notice.** Set
-// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := aiven.GetOrganizationVpc(ctx, &aiven.LookupOrganizationVpcArgs{
+//				OrganizationId:    "org1a23f456789",
+//				OrganizationVpcId: "1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupOrganizationVpc(ctx *pulumi.Context, args *LookupOrganizationVpcArgs, opts ...pulumi.InvokeOption) (*LookupOrganizationVpcResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupOrganizationVpcResult
@@ -27,29 +51,33 @@ func LookupOrganizationVpc(ctx *pulumi.Context, args *LookupOrganizationVpcArgs,
 
 // A collection of arguments for invoking getOrganizationVpc.
 type LookupOrganizationVpcArgs struct {
-	// The ID of the organization.
+	// ID of an organization.
 	OrganizationId string `pulumi:"organizationId"`
 	// The ID of the Aiven Organization VPC.
-	OrganizationVpcId string `pulumi:"organizationVpcId"`
+	OrganizationVpcId string                      `pulumi:"organizationVpcId"`
+	Timeouts          *GetOrganizationVpcTimeouts `pulumi:"timeouts"`
 }
 
 // A collection of values returned by getOrganizationVpc.
 type LookupOrganizationVpcResult struct {
-	// The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.
+	// The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`.
 	CloudName string `pulumi:"cloudName"`
-	// Time of creation of the VPC.
+	// VPC creation timestamp.
 	CreateTime string `pulumi:"createTime"`
-	// The provider-assigned unique ID for this managed resource.
+	// User defined display name for this VPC.
+	DisplayName string `pulumi:"displayName"`
+	// Resource ID composed as: `organization_id/organization_vpc_id`.
 	Id string `pulumi:"id"`
 	// Network address range used by the VPC. For example, `192.168.0.0/24`.
 	NetworkCidr string `pulumi:"networkCidr"`
-	// The ID of the organization.
+	// ID of an organization.
 	OrganizationId string `pulumi:"organizationId"`
 	// The ID of the Aiven Organization VPC.
 	OrganizationVpcId string `pulumi:"organizationVpcId"`
 	// State of the VPC. The possible values are `ACTIVE`, `APPROVED`, `DELETED` and `DELETING`.
-	State string `pulumi:"state"`
-	// Time of the last update of the VPC.
+	State    string                      `pulumi:"state"`
+	Timeouts *GetOrganizationVpcTimeouts `pulumi:"timeouts"`
+	// Timestamp of last change to VPC.
 	UpdateTime string `pulumi:"updateTime"`
 }
 
@@ -60,10 +88,11 @@ func LookupOrganizationVpcOutput(ctx *pulumi.Context, args LookupOrganizationVpc
 
 // A collection of arguments for invoking getOrganizationVpc.
 type LookupOrganizationVpcOutputArgs struct {
-	// The ID of the organization.
+	// ID of an organization.
 	OrganizationId pulumi.StringInput `pulumi:"organizationId"`
 	// The ID of the Aiven Organization VPC.
-	OrganizationVpcId pulumi.StringInput `pulumi:"organizationVpcId"`
+	OrganizationVpcId pulumi.StringInput                 `pulumi:"organizationVpcId"`
+	Timeouts          GetOrganizationVpcTimeoutsPtrInput `pulumi:"timeouts"`
 }
 
 func (LookupOrganizationVpcOutputArgs) ElementType() reflect.Type {
@@ -85,17 +114,22 @@ func (o LookupOrganizationVpcResultOutput) ToLookupOrganizationVpcResultOutputWi
 	return o
 }
 
-// The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.
+// The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`.
 func (o LookupOrganizationVpcResultOutput) CloudName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationVpcResult) string { return v.CloudName }).(pulumi.StringOutput)
 }
 
-// Time of creation of the VPC.
+// VPC creation timestamp.
 func (o LookupOrganizationVpcResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationVpcResult) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// User defined display name for this VPC.
+func (o LookupOrganizationVpcResultOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOrganizationVpcResult) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Resource ID composed as: `organization_id/organization_vpc_id`.
 func (o LookupOrganizationVpcResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationVpcResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -105,7 +139,7 @@ func (o LookupOrganizationVpcResultOutput) NetworkCidr() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationVpcResult) string { return v.NetworkCidr }).(pulumi.StringOutput)
 }
 
-// The ID of the organization.
+// ID of an organization.
 func (o LookupOrganizationVpcResultOutput) OrganizationId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationVpcResult) string { return v.OrganizationId }).(pulumi.StringOutput)
 }
@@ -120,7 +154,11 @@ func (o LookupOrganizationVpcResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationVpcResult) string { return v.State }).(pulumi.StringOutput)
 }
 
-// Time of the last update of the VPC.
+func (o LookupOrganizationVpcResultOutput) Timeouts() GetOrganizationVpcTimeoutsPtrOutput {
+	return o.ApplyT(func(v LookupOrganizationVpcResult) *GetOrganizationVpcTimeouts { return v.Timeouts }).(GetOrganizationVpcTimeoutsPtrOutput)
+}
+
+// Timestamp of last change to VPC.
 func (o LookupOrganizationVpcResultOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationVpcResult) string { return v.UpdateTime }).(pulumi.StringOutput)
 }

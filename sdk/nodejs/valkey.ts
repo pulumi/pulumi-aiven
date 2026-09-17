@@ -16,13 +16,13 @@ import * as utilities from "./utilities";
  * import * as aiven from "@pulumi/aiven";
  *
  * const exampleValkey = new aiven.Valkey("example_valkey", {
+ *     valkeyUserConfig: {
+ *         valkeyMaxmemoryPolicy: "allkeys-random",
+ *     },
  *     project: exampleProject.project,
  *     plan: "startup-4",
  *     cloudName: "google-europe-west1",
  *     serviceName: "example-valkey-service",
- *     valkeyUserConfig: {
- *         valkeyMaxmemoryPolicy: "allkeys-random",
- *     },
  * });
  * ```
  *

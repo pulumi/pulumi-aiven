@@ -17,7 +17,10 @@ import * as utilities from "./utilities";
  *
  * const example = new aiven.OrganizationAddress("example", {
  *     organizationId: "org1a23f456789",
- *     addressLines: ["Street 1"],
+ *     addressLines: [
+ *         "Street 1",
+ *         "Street 2",
+ *     ],
  *     city: "Helsinki",
  *     countryCode: "FI",
  *     name: "Aiven Oy",

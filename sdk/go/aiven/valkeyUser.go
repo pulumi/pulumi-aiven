@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates and manages an [Aiven for Valkey™](https://aiven.io/docs/products/valkey) service user.
+// Creates and manages an [Aiven for Valkey™](https://aiven.io/docs/products/valkey) service user. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
 //
 // ## Example Usage
 //
@@ -28,38 +28,18 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// Example user with read-only access for analytics
-//			_, err := aiven.NewValkeyUser(ctx, "read_analytics", &aiven.ValkeyUserArgs{
-//				Project:     pulumi.Any(exampleProject.Project),
-//				ServiceName: pulumi.Any(exampleValkey.ServiceName),
-//				Username:    pulumi.String("example-analytics-reader"),
-//				Password:    pulumi.Any(valkeyUserPw),
-//				ValkeyAclCategories: pulumi.StringArray{
-//					pulumi.String("+@read"),
-//				},
-//				ValkeyAclCommands: pulumi.StringArray{
-//					pulumi.String("+get"),
-//					pulumi.String("+set"),
-//					pulumi.String("+mget"),
-//					pulumi.String("+hget"),
-//					pulumi.String("+zrange"),
-//				},
-//				ValkeyAclKeys: pulumi.StringArray{
-//					pulumi.String("analytics:*"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// Example user with restricted write access for session management
-//			_, err = aiven.NewValkeyUser(ctx, "manage_sessions", &aiven.ValkeyUserArgs{
-//				Project:     pulumi.Any(exampleProject.Project),
-//				ServiceName: pulumi.Any(exampleValkey.ServiceName),
-//				Username:    pulumi.String("example-session-manager"),
-//				Password:    pulumi.Any(valkeyUserPw),
+//			_, err := aiven.NewValkeyUser(ctx, "example", &aiven.ValkeyUserArgs{
+//				Project:           pulumi.String("my-project"),
+//				ServiceName:       pulumi.String("my-valkey"),
+//				Username:          pulumi.String("testuser"),
+//				PasswordWo:        pulumi.String("password123"),
+//				PasswordWoVersion: pulumi.Int(1),
 //				ValkeyAclCategories: pulumi.StringArray{
 //					pulumi.String("+@write"),
 //					pulumi.String("+@keyspace"),
+//				},
+//				ValkeyAclChannels: pulumi.StringArray{
+//					pulumi.String("some*chan"),
 //				},
 //				ValkeyAclCommands: pulumi.StringArray{
 //					pulumi.String("+set"),
@@ -84,25 +64,28 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import aiven:index/valkeyUser:ValkeyUser example_valkey PROJECT/SERVICE_NAME/USERNAME
+// $ pulumi import aiven:index/valkeyUser:ValkeyUser example PROJECT/SERVICE_NAME/USERNAME
 // ```
 type ValkeyUser struct {
 	pulumi.CustomResourceState
 
-	// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+	// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
 	Password pulumi.StringOutput `pulumi:"password"`
+	// The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. 'unknown' is reported when the hash is missing or uses an unrecognised format. The possible values are `md5`, `scram-sha-256` and `unknown`.
+	PasswordEncryptionType pulumi.StringOutput `pulumi:"passwordEncryptionType"`
 	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-	// The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
+	// The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Length must be between `8` and `256`.
 	PasswordWo pulumi.StringPtrOutput `pulumi:"passwordWo"`
-	// Version number for `passwordWo`. Increment this to rotate the password. Must be >= 1.
+	// Version number for `passwordWo`. Increment this to rotate the password. The field is required with `passwordWo`. Minimum value: `1`.
 	PasswordWoVersion pulumi.IntPtrOutput `pulumi:"passwordWoVersion"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// User account type, such as primary or regular account.
+	// Service name. Changing this property forces recreation of the resource.
+	ServiceName pulumi.StringOutput         `pulumi:"serviceName"`
+	Timeouts    ValkeyUserTimeoutsPtrOutput `pulumi:"timeouts"`
+	// Account type.
 	Type pulumi.StringOutput `pulumi:"type"`
-	// Name of the Valkey service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Service username. Maximum length: `64`. Must match pattern: `^[_A-Za-z0-9][-._A-Za-z0-9]{0,63}$`. Changing this property forces recreation of the resource.
 	Username pulumi.StringOutput `pulumi:"username"`
 	// Allow or disallow command categories. To allow a category use the prefix `+@` and to disallow use `-@`. See the [Valkey documentation](https://valkey.io/topics/acl/) for details on the ACL feature. The field is required with `valkeyAclCommands` and `valkeyAclKeys`.
 	ValkeyAclCategories pulumi.StringArrayOutput `pulumi:"valkeyAclCategories"`
@@ -110,7 +93,7 @@ type ValkeyUser struct {
 	ValkeyAclChannels pulumi.StringArrayOutput `pulumi:"valkeyAclChannels"`
 	// Defines rules for individual commands. To allow a command use the prefix `+` and to disallow use `-`. The field is required with `valkeyAclCategories` and `valkeyAclKeys`.
 	ValkeyAclCommands pulumi.StringArrayOutput `pulumi:"valkeyAclCommands"`
-	// Key access rules. Entries are defined as standard glob patterns. The field is required with `valkeyAclCategories` and `valkeyAclKeys`.
+	// Key access rules. Entries are defined as standard glob patterns. The field is required with `valkeyAclCategories` and `valkeyAclCommands`.
 	ValkeyAclKeys pulumi.StringArrayOutput `pulumi:"valkeyAclKeys"`
 }
 
@@ -164,20 +147,23 @@ func GetValkeyUser(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ValkeyUser resources.
 type valkeyUserState struct {
-	// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+	// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
 	Password *string `pulumi:"password"`
+	// The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. 'unknown' is reported when the hash is missing or uses an unrecognised format. The possible values are `md5`, `scram-sha-256` and `unknown`.
+	PasswordEncryptionType *string `pulumi:"passwordEncryptionType"`
 	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-	// The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
+	// The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Length must be between `8` and `256`.
 	PasswordWo *string `pulumi:"passwordWo"`
-	// Version number for `passwordWo`. Increment this to rotate the password. Must be >= 1.
+	// Version number for `passwordWo`. Increment this to rotate the password. The field is required with `passwordWo`. Minimum value: `1`.
 	PasswordWoVersion *int `pulumi:"passwordWoVersion"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project *string `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName *string `pulumi:"serviceName"`
-	// User account type, such as primary or regular account.
+	// Service name. Changing this property forces recreation of the resource.
+	ServiceName *string             `pulumi:"serviceName"`
+	Timeouts    *ValkeyUserTimeouts `pulumi:"timeouts"`
+	// Account type.
 	Type *string `pulumi:"type"`
-	// Name of the Valkey service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Service username. Maximum length: `64`. Must match pattern: `^[_A-Za-z0-9][-._A-Za-z0-9]{0,63}$`. Changing this property forces recreation of the resource.
 	Username *string `pulumi:"username"`
 	// Allow or disallow command categories. To allow a category use the prefix `+@` and to disallow use `-@`. See the [Valkey documentation](https://valkey.io/topics/acl/) for details on the ACL feature. The field is required with `valkeyAclCommands` and `valkeyAclKeys`.
 	ValkeyAclCategories []string `pulumi:"valkeyAclCategories"`
@@ -185,25 +171,28 @@ type valkeyUserState struct {
 	ValkeyAclChannels []string `pulumi:"valkeyAclChannels"`
 	// Defines rules for individual commands. To allow a command use the prefix `+` and to disallow use `-`. The field is required with `valkeyAclCategories` and `valkeyAclKeys`.
 	ValkeyAclCommands []string `pulumi:"valkeyAclCommands"`
-	// Key access rules. Entries are defined as standard glob patterns. The field is required with `valkeyAclCategories` and `valkeyAclKeys`.
+	// Key access rules. Entries are defined as standard glob patterns. The field is required with `valkeyAclCategories` and `valkeyAclCommands`.
 	ValkeyAclKeys []string `pulumi:"valkeyAclKeys"`
 }
 
 type ValkeyUserState struct {
-	// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+	// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
 	Password pulumi.StringPtrInput
+	// The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. 'unknown' is reported when the hash is missing or uses an unrecognised format. The possible values are `md5`, `scram-sha-256` and `unknown`.
+	PasswordEncryptionType pulumi.StringPtrInput
 	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-	// The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
+	// The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Length must be between `8` and `256`.
 	PasswordWo pulumi.StringPtrInput
-	// Version number for `passwordWo`. Increment this to rotate the password. Must be >= 1.
+	// Version number for `passwordWo`. Increment this to rotate the password. The field is required with `passwordWo`. Minimum value: `1`.
 	PasswordWoVersion pulumi.IntPtrInput
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project pulumi.StringPtrInput
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Service name. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringPtrInput
-	// User account type, such as primary or regular account.
+	Timeouts    ValkeyUserTimeoutsPtrInput
+	// Account type.
 	Type pulumi.StringPtrInput
-	// Name of the Valkey service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Service username. Maximum length: `64`. Must match pattern: `^[_A-Za-z0-9][-._A-Za-z0-9]{0,63}$`. Changing this property forces recreation of the resource.
 	Username pulumi.StringPtrInput
 	// Allow or disallow command categories. To allow a category use the prefix `+@` and to disallow use `-@`. See the [Valkey documentation](https://valkey.io/topics/acl/) for details on the ACL feature. The field is required with `valkeyAclCommands` and `valkeyAclKeys`.
 	ValkeyAclCategories pulumi.StringArrayInput
@@ -211,7 +200,7 @@ type ValkeyUserState struct {
 	ValkeyAclChannels pulumi.StringArrayInput
 	// Defines rules for individual commands. To allow a command use the prefix `+` and to disallow use `-`. The field is required with `valkeyAclCategories` and `valkeyAclKeys`.
 	ValkeyAclCommands pulumi.StringArrayInput
-	// Key access rules. Entries are defined as standard glob patterns. The field is required with `valkeyAclCategories` and `valkeyAclKeys`.
+	// Key access rules. Entries are defined as standard glob patterns. The field is required with `valkeyAclCategories` and `valkeyAclCommands`.
 	ValkeyAclKeys pulumi.StringArrayInput
 }
 
@@ -220,18 +209,19 @@ func (ValkeyUserState) ElementType() reflect.Type {
 }
 
 type valkeyUserArgs struct {
-	// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+	// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
 	Password *string `pulumi:"password"`
 	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-	// The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
+	// The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Length must be between `8` and `256`.
 	PasswordWo *string `pulumi:"passwordWo"`
-	// Version number for `passwordWo`. Increment this to rotate the password. Must be >= 1.
+	// Version number for `passwordWo`. Increment this to rotate the password. The field is required with `passwordWo`. Minimum value: `1`.
 	PasswordWoVersion *int `pulumi:"passwordWoVersion"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName string `pulumi:"serviceName"`
-	// Name of the Valkey service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Service name. Changing this property forces recreation of the resource.
+	ServiceName string              `pulumi:"serviceName"`
+	Timeouts    *ValkeyUserTimeouts `pulumi:"timeouts"`
+	// Service username. Maximum length: `64`. Must match pattern: `^[_A-Za-z0-9][-._A-Za-z0-9]{0,63}$`. Changing this property forces recreation of the resource.
 	Username string `pulumi:"username"`
 	// Allow or disallow command categories. To allow a category use the prefix `+@` and to disallow use `-@`. See the [Valkey documentation](https://valkey.io/topics/acl/) for details on the ACL feature. The field is required with `valkeyAclCommands` and `valkeyAclKeys`.
 	ValkeyAclCategories []string `pulumi:"valkeyAclCategories"`
@@ -239,24 +229,25 @@ type valkeyUserArgs struct {
 	ValkeyAclChannels []string `pulumi:"valkeyAclChannels"`
 	// Defines rules for individual commands. To allow a command use the prefix `+` and to disallow use `-`. The field is required with `valkeyAclCategories` and `valkeyAclKeys`.
 	ValkeyAclCommands []string `pulumi:"valkeyAclCommands"`
-	// Key access rules. Entries are defined as standard glob patterns. The field is required with `valkeyAclCategories` and `valkeyAclKeys`.
+	// Key access rules. Entries are defined as standard glob patterns. The field is required with `valkeyAclCategories` and `valkeyAclCommands`.
 	ValkeyAclKeys []string `pulumi:"valkeyAclKeys"`
 }
 
 // The set of arguments for constructing a ValkeyUser resource.
 type ValkeyUserArgs struct {
-	// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+	// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
 	Password pulumi.StringPtrInput
 	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-	// The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
+	// The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Length must be between `8` and `256`.
 	PasswordWo pulumi.StringPtrInput
-	// Version number for `passwordWo`. Increment this to rotate the password. Must be >= 1.
+	// Version number for `passwordWo`. Increment this to rotate the password. The field is required with `passwordWo`. Minimum value: `1`.
 	PasswordWoVersion pulumi.IntPtrInput
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Service name. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringInput
-	// Name of the Valkey service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	Timeouts    ValkeyUserTimeoutsPtrInput
+	// Service username. Maximum length: `64`. Must match pattern: `^[_A-Za-z0-9][-._A-Za-z0-9]{0,63}$`. Changing this property forces recreation of the resource.
 	Username pulumi.StringInput
 	// Allow or disallow command categories. To allow a category use the prefix `+@` and to disallow use `-@`. See the [Valkey documentation](https://valkey.io/topics/acl/) for details on the ACL feature. The field is required with `valkeyAclCommands` and `valkeyAclKeys`.
 	ValkeyAclCategories pulumi.StringArrayInput
@@ -264,7 +255,7 @@ type ValkeyUserArgs struct {
 	ValkeyAclChannels pulumi.StringArrayInput
 	// Defines rules for individual commands. To allow a command use the prefix `+` and to disallow use `-`. The field is required with `valkeyAclCategories` and `valkeyAclKeys`.
 	ValkeyAclCommands pulumi.StringArrayInput
-	// Key access rules. Entries are defined as standard glob patterns. The field is required with `valkeyAclCategories` and `valkeyAclKeys`.
+	// Key access rules. Entries are defined as standard glob patterns. The field is required with `valkeyAclCategories` and `valkeyAclCommands`.
 	ValkeyAclKeys pulumi.StringArrayInput
 }
 
@@ -355,38 +346,47 @@ func (o ValkeyUserOutput) ToValkeyUserOutputWithContext(ctx context.Context) Val
 	return o
 }
 
-// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
 func (o ValkeyUserOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v *ValkeyUser) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
 }
 
+// The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. 'unknown' is reported when the hash is missing or uses an unrecognised format. The possible values are `md5`, `scram-sha-256` and `unknown`.
+func (o ValkeyUserOutput) PasswordEncryptionType() pulumi.StringOutput {
+	return o.ApplyT(func(v *ValkeyUser) pulumi.StringOutput { return v.PasswordEncryptionType }).(pulumi.StringOutput)
+}
+
 // **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-// The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
+// The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Length must be between `8` and `256`.
 func (o ValkeyUserOutput) PasswordWo() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ValkeyUser) pulumi.StringPtrOutput { return v.PasswordWo }).(pulumi.StringPtrOutput)
 }
 
-// Version number for `passwordWo`. Increment this to rotate the password. Must be >= 1.
+// Version number for `passwordWo`. Increment this to rotate the password. The field is required with `passwordWo`. Minimum value: `1`.
 func (o ValkeyUserOutput) PasswordWoVersion() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ValkeyUser) pulumi.IntPtrOutput { return v.PasswordWoVersion }).(pulumi.IntPtrOutput)
 }
 
-// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// Project name. Changing this property forces recreation of the resource.
 func (o ValkeyUserOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *ValkeyUser) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// Service name. Changing this property forces recreation of the resource.
 func (o ValkeyUserOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ValkeyUser) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// User account type, such as primary or regular account.
+func (o ValkeyUserOutput) Timeouts() ValkeyUserTimeoutsPtrOutput {
+	return o.ApplyT(func(v *ValkeyUser) ValkeyUserTimeoutsPtrOutput { return v.Timeouts }).(ValkeyUserTimeoutsPtrOutput)
+}
+
+// Account type.
 func (o ValkeyUserOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *ValkeyUser) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// Name of the Valkey service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// Service username. Maximum length: `64`. Must match pattern: `^[_A-Za-z0-9][-._A-Za-z0-9]{0,63}$`. Changing this property forces recreation of the resource.
 func (o ValkeyUserOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v *ValkeyUser) pulumi.StringOutput { return v.Username }).(pulumi.StringOutput)
 }
@@ -406,7 +406,7 @@ func (o ValkeyUserOutput) ValkeyAclCommands() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ValkeyUser) pulumi.StringArrayOutput { return v.ValkeyAclCommands }).(pulumi.StringArrayOutput)
 }
 
-// Key access rules. Entries are defined as standard glob patterns. The field is required with `valkeyAclCategories` and `valkeyAclKeys`.
+// Key access rules. Entries are defined as standard glob patterns. The field is required with `valkeyAclCategories` and `valkeyAclCommands`.
 func (o ValkeyUserOutput) ValkeyAclKeys() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ValkeyUser) pulumi.StringArrayOutput { return v.ValkeyAclKeys }).(pulumi.StringArrayOutput)
 }

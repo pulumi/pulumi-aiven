@@ -47,9 +47,6 @@ namespace Pulumi.Aiven
     ///     // Use disk autoscaler with a PostgreSQL service
     ///     var autoscalerEndpoint = new Aiven.ServiceIntegrationEndpoint("autoscaler_endpoint", new()
     ///     {
-    ///         Project = exampleProject.Project,
-    ///         EndpointName = "disk-autoscaler-200GiB",
-    ///         EndpointType = "autoscaler",
     ///         AutoscalerUserConfig = new Aiven.Inputs.ServiceIntegrationEndpointAutoscalerUserConfigArgs
     ///         {
     ///             Autoscalings = new[]
@@ -61,6 +58,9 @@ namespace Pulumi.Aiven
     ///                 },
     ///             },
     ///         },
+    ///         Project = exampleProject.Project,
+    ///         EndpointName = "disk-autoscaler-200GiB",
+    ///         EndpointType = "autoscaler",
     ///     });
     /// 
     ///     var autoscalerIntegration = new Aiven.ServiceIntegration("autoscaler_integration", new()
@@ -162,7 +162,7 @@ namespace Pulumi.Aiven
         public Output<string> IntegrationId { get; private set; } = null!;
 
         /// <summary>
-        /// Type of the service integration. The possible values are `Alertmanager`, `Autoscaler`, `Caching`, `ClickhouseCredentials`, `ClickhouseKafka`, `ClickhousePostgresql`, `Dashboard`, `Datadog`, `DatahubMetadataIngestion`, `Datasource`, `DisasterRecovery`, `ExternalAwsCloudwatchLogs`, `ExternalAwsCloudwatchMetrics`, `ExternalElasticsearchLogs`, `ExternalGoogleCloudLogging`, `ExternalOpensearchLogs`, `Flink`, `FlinkExternalBigquery`, `FlinkExternalKafka`, `FlinkExternalPostgresql`, `InternalConnectivity`, `Jolokia`, `KafkaConnect`, `KafkaConnectPostgresql`, `KafkaLogs`, `KafkaMirrormaker`, `Logs`, `Metrics`, `OpensearchCrossClusterReplication`, `OpensearchCrossClusterSearch`, `Prometheus`, `ReadReplica`, `Rsyslog`, `SchemaRegistryProxy`, `ServiceComposition`, `Stresstester`, `ThanosDistributedQuery`, `ThanosMigrate`, `ThanosObjectStorage`, `Thanoscompactor`, `Thanosquery`, `Thanosruler`, `Thanosstore`, `Vector` and `Vmalert`.
+        /// Type of the service integration. The possible values are `Alertmanager`, `Autoscaler`, `Caching`, `ClickhouseCredentials`, `ClickhouseKafka`, `ClickhousePostgresql`, `Dashboard`, `Datadog`, `DatahubMetadataIngestion`, `Datasource`, `DisasterRecovery`, `ExternalAwsCloudwatchLogs`, `ExternalAwsCloudwatchMetrics`, `ExternalElasticsearchLogs`, `ExternalGoogleCloudLogging`, `ExternalOpensearchLogs`, `Flink`, `FlinkExternalBigquery`, `FlinkExternalKafka`, `FlinkExternalPostgresql`, `InternalConnectivity`, `Jolokia`, `KafkaConnect`, `KafkaConnectPostgresql`, `KafkaLogs`, `KafkaMirrormaker`, `Logs`, `Metrics`, `OpensearchCrossClusterReplication`, `OpensearchCrossClusterSearch`, `Opentelemetry`, `Prometheus`, `ReadReplica`, `Rsyslog`, `SchemaRegistryProxy`, `ServiceComposition`, `Stresstester`, `ThanosDistributedQuery`, `ThanosMigrate`, `ThanosObjectStorage`, `Thanoscompactor`, `Thanosquery`, `Thanosruler`, `Thanosstore`, `Vector` and `Vmalert`.
         /// </summary>
         [Output("integrationType")]
         public Output<string> IntegrationType { get; private set; } = null!;
@@ -352,7 +352,7 @@ namespace Pulumi.Aiven
         public Input<Inputs.ServiceIntegrationFlinkExternalPostgresqlUserConfigArgs>? FlinkExternalPostgresqlUserConfig { get; set; }
 
         /// <summary>
-        /// Type of the service integration. The possible values are `Alertmanager`, `Autoscaler`, `Caching`, `ClickhouseCredentials`, `ClickhouseKafka`, `ClickhousePostgresql`, `Dashboard`, `Datadog`, `DatahubMetadataIngestion`, `Datasource`, `DisasterRecovery`, `ExternalAwsCloudwatchLogs`, `ExternalAwsCloudwatchMetrics`, `ExternalElasticsearchLogs`, `ExternalGoogleCloudLogging`, `ExternalOpensearchLogs`, `Flink`, `FlinkExternalBigquery`, `FlinkExternalKafka`, `FlinkExternalPostgresql`, `InternalConnectivity`, `Jolokia`, `KafkaConnect`, `KafkaConnectPostgresql`, `KafkaLogs`, `KafkaMirrormaker`, `Logs`, `Metrics`, `OpensearchCrossClusterReplication`, `OpensearchCrossClusterSearch`, `Prometheus`, `ReadReplica`, `Rsyslog`, `SchemaRegistryProxy`, `ServiceComposition`, `Stresstester`, `ThanosDistributedQuery`, `ThanosMigrate`, `ThanosObjectStorage`, `Thanoscompactor`, `Thanosquery`, `Thanosruler`, `Thanosstore`, `Vector` and `Vmalert`.
+        /// Type of the service integration. The possible values are `Alertmanager`, `Autoscaler`, `Caching`, `ClickhouseCredentials`, `ClickhouseKafka`, `ClickhousePostgresql`, `Dashboard`, `Datadog`, `DatahubMetadataIngestion`, `Datasource`, `DisasterRecovery`, `ExternalAwsCloudwatchLogs`, `ExternalAwsCloudwatchMetrics`, `ExternalElasticsearchLogs`, `ExternalGoogleCloudLogging`, `ExternalOpensearchLogs`, `Flink`, `FlinkExternalBigquery`, `FlinkExternalKafka`, `FlinkExternalPostgresql`, `InternalConnectivity`, `Jolokia`, `KafkaConnect`, `KafkaConnectPostgresql`, `KafkaLogs`, `KafkaMirrormaker`, `Logs`, `Metrics`, `OpensearchCrossClusterReplication`, `OpensearchCrossClusterSearch`, `Opentelemetry`, `Prometheus`, `ReadReplica`, `Rsyslog`, `SchemaRegistryProxy`, `ServiceComposition`, `Stresstester`, `ThanosDistributedQuery`, `ThanosMigrate`, `ThanosObjectStorage`, `Thanoscompactor`, `Thanosquery`, `Thanosruler`, `Thanosstore`, `Vector` and `Vmalert`.
         /// </summary>
         [Input("integrationType", required: true)]
         public Input<string> IntegrationType { get; set; } = null!;
@@ -510,7 +510,7 @@ namespace Pulumi.Aiven
         public Input<string>? IntegrationId { get; set; }
 
         /// <summary>
-        /// Type of the service integration. The possible values are `Alertmanager`, `Autoscaler`, `Caching`, `ClickhouseCredentials`, `ClickhouseKafka`, `ClickhousePostgresql`, `Dashboard`, `Datadog`, `DatahubMetadataIngestion`, `Datasource`, `DisasterRecovery`, `ExternalAwsCloudwatchLogs`, `ExternalAwsCloudwatchMetrics`, `ExternalElasticsearchLogs`, `ExternalGoogleCloudLogging`, `ExternalOpensearchLogs`, `Flink`, `FlinkExternalBigquery`, `FlinkExternalKafka`, `FlinkExternalPostgresql`, `InternalConnectivity`, `Jolokia`, `KafkaConnect`, `KafkaConnectPostgresql`, `KafkaLogs`, `KafkaMirrormaker`, `Logs`, `Metrics`, `OpensearchCrossClusterReplication`, `OpensearchCrossClusterSearch`, `Prometheus`, `ReadReplica`, `Rsyslog`, `SchemaRegistryProxy`, `ServiceComposition`, `Stresstester`, `ThanosDistributedQuery`, `ThanosMigrate`, `ThanosObjectStorage`, `Thanoscompactor`, `Thanosquery`, `Thanosruler`, `Thanosstore`, `Vector` and `Vmalert`.
+        /// Type of the service integration. The possible values are `Alertmanager`, `Autoscaler`, `Caching`, `ClickhouseCredentials`, `ClickhouseKafka`, `ClickhousePostgresql`, `Dashboard`, `Datadog`, `DatahubMetadataIngestion`, `Datasource`, `DisasterRecovery`, `ExternalAwsCloudwatchLogs`, `ExternalAwsCloudwatchMetrics`, `ExternalElasticsearchLogs`, `ExternalGoogleCloudLogging`, `ExternalOpensearchLogs`, `Flink`, `FlinkExternalBigquery`, `FlinkExternalKafka`, `FlinkExternalPostgresql`, `InternalConnectivity`, `Jolokia`, `KafkaConnect`, `KafkaConnectPostgresql`, `KafkaLogs`, `KafkaMirrormaker`, `Logs`, `Metrics`, `OpensearchCrossClusterReplication`, `OpensearchCrossClusterSearch`, `Opentelemetry`, `Prometheus`, `ReadReplica`, `Rsyslog`, `SchemaRegistryProxy`, `ServiceComposition`, `Stresstester`, `ThanosDistributedQuery`, `ThanosMigrate`, `ThanosObjectStorage`, `Thanoscompactor`, `Thanosquery`, `Thanosruler`, `Thanosstore`, `Vector` and `Vmalert`.
         /// </summary>
         [Input("integrationType")]
         public Input<string>? IntegrationType { get; set; }

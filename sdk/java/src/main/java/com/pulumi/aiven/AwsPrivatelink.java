@@ -6,16 +6,18 @@ package com.pulumi.aiven;
 import com.pulumi.aiven.AwsPrivatelinkArgs;
 import com.pulumi.aiven.Utilities;
 import com.pulumi.aiven.inputs.AwsPrivatelinkState;
+import com.pulumi.aiven.outputs.AwsPrivatelinkTimeouts;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Creates and manages an [AWS PrivateLink for Aiven services](https://aiven.io/docs/platform/howto/use-aws-privatelinks) in a VPC.
+ * Creates and manages an [AWS PrivateLink for Aiven services](https://aiven.io/docs/platform/howto/use-aws-privatelinks) in a VPC. If this resource is missing (for example, after a service power off), it&#39;s removed from the state and a new create plan is generated.
  * 
  * ## Example Usage
  * 
@@ -41,10 +43,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var main = new AwsPrivatelink("main", AwsPrivatelinkArgs.builder()
- *             .project(exampleProject.project())
- *             .serviceName(exampleKafka.serviceName())
- *             .principals("arn:aws:iam::012345678901:user/mwf")
+ *         var example = new AwsPrivatelink("example", AwsPrivatelinkArgs.builder()
+ *             .project("my-project")
+ *             .serviceName("foo")
+ *             .principals("arn:aws:iam::012345678901:root")
+ *             .supportedRegions("eu-west-1")
  *             .build());
  * 
  *     }
@@ -55,81 +58,115 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import aiven:index/awsPrivatelink:AwsPrivatelink main PROJECT/SERVICE_NAME
+ * $ pulumi import aiven:index/awsPrivatelink:AwsPrivatelink example PROJECT/SERVICE_NAME
  * ```
  * 
  */
 @ResourceType(type="aiven:index/awsPrivatelink:AwsPrivatelink")
 public class AwsPrivatelink extends com.pulumi.resources.CustomResource {
     /**
-     * AWS service ID.
+     * AWS VPC endpoint service ID.
      * 
      */
     @Export(name="awsServiceId", refs={String.class}, tree="[0]")
     private Output<String> awsServiceId;
 
     /**
-     * @return AWS service ID.
+     * @return AWS VPC endpoint service ID.
      * 
      */
     public Output<String> awsServiceId() {
         return this.awsServiceId;
     }
     /**
-     * AWS service name.
+     * AWS VPC endpoint service name.
      * 
      */
     @Export(name="awsServiceName", refs={String.class}, tree="[0]")
     private Output<String> awsServiceName;
 
     /**
-     * @return AWS service name.
+     * @return AWS VPC endpoint service name.
      * 
      */
     public Output<String> awsServiceName() {
         return this.awsServiceName;
     }
     /**
-     * List of the ARNs of the AWS accounts or IAM users allowed to connect to the VPC endpoint.
+     * ARNs of principals allowed connecting to the service.
      * 
      */
     @Export(name="principals", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> principals;
 
     /**
-     * @return List of the ARNs of the AWS accounts or IAM users allowed to connect to the VPC endpoint.
+     * @return ARNs of principals allowed connecting to the service.
      * 
      */
     public Output<List<String>> principals() {
         return this.principals;
     }
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> project() {
         return this.project;
     }
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service name. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> serviceName() {
         return this.serviceName;
+    }
+    /**
+     * Privatelink resource state. The possible values are `active`, `creating` and `deleting`.
+     * 
+     */
+    @Export(name="state", refs={String.class}, tree="[0]")
+    private Output<String> state;
+
+    /**
+     * @return Privatelink resource state. The possible values are `active`, `creating` and `deleting`.
+     * 
+     */
+    public Output<String> state() {
+        return this.state;
+    }
+    /**
+     * Allow new connections to the endpoint from these regions, in addition to the region the endpoint is in.
+     * 
+     */
+    @Export(name="supportedRegions", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> supportedRegions;
+
+    /**
+     * @return Allow new connections to the endpoint from these regions, in addition to the region the endpoint is in.
+     * 
+     */
+    public Output<Optional<List<String>>> supportedRegions() {
+        return Codegen.optional(this.supportedRegions);
+    }
+    @Export(name="timeouts", refs={AwsPrivatelinkTimeouts.class}, tree="[0]")
+    private Output</* @Nullable */ AwsPrivatelinkTimeouts> timeouts;
+
+    public Output<Optional<AwsPrivatelinkTimeouts>> timeouts() {
+        return Codegen.optional(this.timeouts);
     }
 
     /**

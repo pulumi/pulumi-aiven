@@ -17,6 +17,10 @@ from . import outputs
 
 __all__ = [
     'AccountAuthenticationSamlFieldMapping',
+    'AwsOrgVpcPeeringConnectionTimeouts',
+    'AwsPrivatelinkTimeouts',
+    'AzureOrgVpcPeeringConnectionTimeouts',
+    'AzurePrivatelinkTimeouts',
     'BillingGroupTimeouts',
     'ByocAwsEntityContactEmail',
     'ByocAwsEntityTimeouts',
@@ -64,10 +68,13 @@ __all__ = [
     'FlinkJarApplicationApplicationVersion',
     'FlinkJarApplicationApplicationVersionFileInfo',
     'FlinkJarApplicationCurrentDeployment',
+    'FlinkJarApplicationTimeouts',
     'FlinkJarApplicationVersionFileInfo',
     'FlinkServiceIntegration',
     'FlinkTag',
     'FlinkTechEmail',
+    'GcpOrgVpcPeeringConnectionTimeouts',
+    'GcpPrivatelinkTimeouts',
     'GovernanceAccessAccessData',
     'GovernanceAccessAccessDataAcl',
     'GovernanceAccessTimeouts',
@@ -89,6 +96,7 @@ __all__ = [
     'GrafanaServiceIntegration',
     'GrafanaTag',
     'GrafanaTechEmail',
+    'KafkaAclTimeouts',
     'KafkaComponent',
     'KafkaConnectComponent',
     'KafkaConnectKafkaConnectUserConfig',
@@ -139,6 +147,7 @@ __all__ = [
     'KafkaMirrorMakerServiceIntegration',
     'KafkaMirrorMakerTag',
     'KafkaMirrorMakerTechEmail',
+    'KafkaNativeAclTimeouts',
     'KafkaSchemaReference',
     'KafkaSchemaRegistryAclTimeouts',
     'KafkaServiceIntegration',
@@ -147,6 +156,8 @@ __all__ = [
     'KafkaTopicConfig',
     'KafkaTopicTag',
     'KafkaTopicTimeouts',
+    'KafkaUserTimeouts',
+    'MirrorMakerReplicationFlowTimeouts',
     'MySqlComponent',
     'MySqlMysql',
     'MySqlMysqlParam',
@@ -222,6 +233,8 @@ __all__ = [
     'OrganizationProjectTimeouts',
     'OrganizationTimeouts',
     'OrganizationUserGroupMemberTimeouts',
+    'OrganizationUserGroupTimeouts',
+    'OrganizationVpcTimeouts',
     'OrganizationalUnitTimeouts',
     'PgComponent',
     'PgDatabaseTimeouts',
@@ -256,6 +269,7 @@ __all__ = [
     'ServiceIntegrationClickhousePostgresqlUserConfig',
     'ServiceIntegrationClickhousePostgresqlUserConfigDatabase',
     'ServiceIntegrationDatadogUserConfig',
+    'ServiceIntegrationDatadogUserConfigDatadogPgRelation',
     'ServiceIntegrationDatadogUserConfigDatadogTag',
     'ServiceIntegrationDatadogUserConfigOpensearch',
     'ServiceIntegrationDatadogUserConfigRedis',
@@ -279,6 +293,7 @@ __all__ = [
     'ServiceIntegrationEndpointExternalPrometheusUserConfig',
     'ServiceIntegrationEndpointExternalSchemaRegistryUserConfig',
     'ServiceIntegrationEndpointJolokiaUserConfig',
+    'ServiceIntegrationEndpointOpentelemetryUserConfig',
     'ServiceIntegrationEndpointPrometheusUserConfig',
     'ServiceIntegrationEndpointRsyslogUserConfig',
     'ServiceIntegrationExternalAwsCloudwatchLogsUserConfig',
@@ -320,6 +335,7 @@ __all__ = [
     'ValkeyServiceIntegration',
     'ValkeyTag',
     'ValkeyTechEmail',
+    'ValkeyUserTimeouts',
     'ValkeyValkey',
     'ValkeyValkeyUserConfig',
     'ValkeyValkeyUserConfigIpFilterObject',
@@ -328,6 +344,10 @@ __all__ = [
     'ValkeyValkeyUserConfigPrivatelinkAccess',
     'ValkeyValkeyUserConfigPublicAccess',
     'GetAccountAuthenticationSamlFieldMappingResult',
+    'GetAwsOrgVpcPeeringConnectionTimeoutsResult',
+    'GetAwsPrivatelinkTimeoutsResult',
+    'GetAzureOrgVpcPeeringConnectionTimeoutsResult',
+    'GetAzurePrivatelinkTimeoutsResult',
     'GetBillingGroupTimeoutsResult',
     'GetClickhouseClickhouseResult',
     'GetClickhouseClickhouseUserConfigResult',
@@ -371,6 +391,8 @@ __all__ = [
     'GetFlinkServiceIntegrationResult',
     'GetFlinkTagResult',
     'GetFlinkTechEmailResult',
+    'GetGcpOrgVpcPeeringConnectionTimeoutsResult',
+    'GetGcpPrivatelinkTimeoutsResult',
     'GetGrafanaComponentResult',
     'GetGrafanaGrafanaResult',
     'GetGrafanaGrafanaUserConfigResult',
@@ -389,6 +411,7 @@ __all__ = [
     'GetGrafanaServiceIntegrationResult',
     'GetGrafanaTagResult',
     'GetGrafanaTechEmailResult',
+    'GetKafkaAclTimeoutsResult',
     'GetKafkaComponentResult',
     'GetKafkaConnectComponentResult',
     'GetKafkaConnectKafkaConnectUserConfigResult',
@@ -451,6 +474,8 @@ __all__ = [
     'GetKafkaTopicListTopicTagResult',
     'GetKafkaTopicTagResult',
     'GetKafkaTopicTimeoutsResult',
+    'GetKafkaUserTimeoutsResult',
+    'GetMirrorMakerReplicationFlowTimeoutsResult',
     'GetMySqlComponentResult',
     'GetMySqlMysqlResult',
     'GetMySqlMysqlParamResult',
@@ -533,9 +558,11 @@ __all__ = [
     'GetOrganizationUserGroupMemberListMemberResult',
     'GetOrganizationUserGroupMemberListMemberUserInfoResult',
     'GetOrganizationUserGroupMemberListTimeoutsResult',
+    'GetOrganizationUserGroupTimeoutsResult',
     'GetOrganizationUserListTimeoutsResult',
     'GetOrganizationUserListUserResult',
     'GetOrganizationUserListUserUserInfoResult',
+    'GetOrganizationVpcTimeoutsResult',
     'GetOrganizationalUnitTimeoutsResult',
     'GetPgComponentResult',
     'GetPgDatabaseTimeoutsResult',
@@ -570,6 +597,7 @@ __all__ = [
     'GetServiceIntegrationClickhousePostgresqlUserConfigResult',
     'GetServiceIntegrationClickhousePostgresqlUserConfigDatabaseResult',
     'GetServiceIntegrationDatadogUserConfigResult',
+    'GetServiceIntegrationDatadogUserConfigDatadogPgRelationResult',
     'GetServiceIntegrationDatadogUserConfigDatadogTagResult',
     'GetServiceIntegrationDatadogUserConfigOpensearchResult',
     'GetServiceIntegrationDatadogUserConfigRedisResult',
@@ -593,6 +621,7 @@ __all__ = [
     'GetServiceIntegrationEndpointExternalPrometheusUserConfigResult',
     'GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigResult',
     'GetServiceIntegrationEndpointJolokiaUserConfigResult',
+    'GetServiceIntegrationEndpointOpentelemetryUserConfigResult',
     'GetServiceIntegrationEndpointPrometheusUserConfigResult',
     'GetServiceIntegrationEndpointRsyslogUserConfigResult',
     'GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigResult',
@@ -639,6 +668,7 @@ __all__ = [
     'GetValkeyServiceIntegrationResult',
     'GetValkeyTagResult',
     'GetValkeyTechEmailResult',
+    'GetValkeyUserTimeoutsResult',
     'GetValkeyValkeyResult',
     'GetValkeyValkeyUserConfigResult',
     'GetValkeyValkeyUserConfigIpFilterObjectResult',
@@ -734,6 +764,278 @@ class AccountAuthenticationSamlFieldMapping(dict):
         Field name for user's full name. If specified, first*name and last*name mappings are ignored
         """
         return pulumi.get(self, "real_name")
+
+
+@pulumi.output_type
+class AwsOrgVpcPeeringConnectionTimeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[_builtins.str] = None,
+                 default: Optional[_builtins.str] = None,
+                 delete: Optional[_builtins.str] = None,
+                 read: Optional[_builtins.str] = None,
+                 update: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param _builtins.str default: Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+        :param _builtins.str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param _builtins.str update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if default is not None:
+            pulumi.set(__self__, "default", default)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @_builtins.property
+    @pulumi.getter
+    @_utilities.deprecated("""Use operation-specific timeouts instead. This field will be removed in the next major version.""")
+    def default(self) -> Optional[_builtins.str]:
+        """
+        Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+        """
+        return pulumi.get(self, "default")
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+
+@pulumi.output_type
+class AwsPrivatelinkTimeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[_builtins.str] = None,
+                 default: Optional[_builtins.str] = None,
+                 delete: Optional[_builtins.str] = None,
+                 read: Optional[_builtins.str] = None,
+                 update: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param _builtins.str default: Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+        :param _builtins.str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param _builtins.str update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if default is not None:
+            pulumi.set(__self__, "default", default)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @_builtins.property
+    @pulumi.getter
+    @_utilities.deprecated("""Use operation-specific timeouts instead. This field will be removed in the next major version.""")
+    def default(self) -> Optional[_builtins.str]:
+        """
+        Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+        """
+        return pulumi.get(self, "default")
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+
+@pulumi.output_type
+class AzureOrgVpcPeeringConnectionTimeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[_builtins.str] = None,
+                 default: Optional[_builtins.str] = None,
+                 delete: Optional[_builtins.str] = None,
+                 read: Optional[_builtins.str] = None,
+                 update: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param _builtins.str default: Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+        :param _builtins.str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param _builtins.str update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if default is not None:
+            pulumi.set(__self__, "default", default)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @_builtins.property
+    @pulumi.getter
+    @_utilities.deprecated("""Use operation-specific timeouts instead. This field will be removed in the next major version.""")
+    def default(self) -> Optional[_builtins.str]:
+        """
+        Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+        """
+        return pulumi.get(self, "default")
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+
+@pulumi.output_type
+class AzurePrivatelinkTimeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[_builtins.str] = None,
+                 default: Optional[_builtins.str] = None,
+                 delete: Optional[_builtins.str] = None,
+                 read: Optional[_builtins.str] = None,
+                 update: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param _builtins.str default: Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+        :param _builtins.str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param _builtins.str update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if default is not None:
+            pulumi.set(__self__, "default", default)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @_builtins.property
+    @pulumi.getter
+    @_utilities.deprecated("""Use operation-specific timeouts instead. This field will be removed in the next major version.""")
+    def default(self) -> Optional[_builtins.str]:
+        """
+        Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+        """
+        return pulumi.get(self, "default")
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
 
 
 @pulumi.output_type
@@ -1126,7 +1428,7 @@ class ClickhouseClickhouseUserConfig(dict):
         :param _builtins.str additional_backup_regions: Additional Cloud Regions for Backup Replication.
         :param _builtins.int backup_hour: The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
         :param _builtins.int backup_minute: The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
-        :param _builtins.str clickhouse_version: Enum: `25.3`, `25.8`, and newer. ClickHouse major version.
+        :param _builtins.str clickhouse_version: Enum: `25.3`, `25.8`, `26.3`, and newer. ClickHouse major version.
         :param _builtins.bool enable_ipv6: Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
         :param Sequence['ClickhouseClickhouseUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         :param Sequence[_builtins.str] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
@@ -1211,7 +1513,7 @@ class ClickhouseClickhouseUserConfig(dict):
     @pulumi.getter(name="clickhouseVersion")
     def clickhouse_version(self) -> Optional[_builtins.str]:
         """
-        Enum: `25.3`, `25.8`, and newer. ClickHouse major version.
+        Enum: `25.3`, `25.8`, `26.3`, and newer. ClickHouse major version.
         """
         return pulumi.get(self, "clickhouse_version")
 
@@ -3928,9 +4230,9 @@ class FlinkJarApplicationApplicationVersionFileInfo(dict):
         """
         :param _builtins.str file_sha256: sha256 of the file if known.
         :param _builtins.int file_size: The size of the file in bytes.
-        :param _builtins.str file_status: Indicates whether the uploaded .jar file has been verified by the system and deployment ready. The possible values are `INITIAL`, `READY` and `FAILED`.
+        :param _builtins.str file_status: Indicates whether the uploaded .jar file has been verified by the system and deployment ready. The possible values are `FAILED`, `INITIAL` and `READY`.
         :param _builtins.str url: The pre-signed url of the bucket where the .jar file is uploaded. Becomes null when the JarApplicationVersion is ready or failed.
-        :param _builtins.int verify_error_code: In the case file_status is FAILED, the error code of the failure. The possible values are `1`, `2` and `3`.
+        :param _builtins.int verify_error_code: In the case file_status is FAILED, the error code of the failure. The possible values are `1`, `2`, `3` and `4`.
         :param _builtins.str verify_error_message: In the case file_status is FAILED, may contain details about the failure.
         """
         if file_sha256 is not None:
@@ -3966,7 +4268,7 @@ class FlinkJarApplicationApplicationVersionFileInfo(dict):
     @pulumi.getter(name="fileStatus")
     def file_status(self) -> Optional[_builtins.str]:
         """
-        Indicates whether the uploaded .jar file has been verified by the system and deployment ready. The possible values are `INITIAL`, `READY` and `FAILED`.
+        Indicates whether the uploaded .jar file has been verified by the system and deployment ready. The possible values are `FAILED`, `INITIAL` and `READY`.
         """
         return pulumi.get(self, "file_status")
 
@@ -3982,7 +4284,7 @@ class FlinkJarApplicationApplicationVersionFileInfo(dict):
     @pulumi.getter(name="verifyErrorCode")
     def verify_error_code(self) -> Optional[_builtins.int]:
         """
-        In the case file_status is FAILED, the error code of the failure. The possible values are `1`, `2` and `3`.
+        In the case file_status is FAILED, the error code of the failure. The possible values are `1`, `2`, `3` and `4`.
         """
         return pulumi.get(self, "verify_error_code")
 
@@ -4051,7 +4353,7 @@ class FlinkJarApplicationCurrentDeployment(dict):
         :param _builtins.str id: Deployment ID.
         :param _builtins.str job_id: Job ID.
         :param _builtins.str last_savepoint: Job savepoint.
-        :param _builtins.int parallelism: Reading of Flink parallel execution documentation is recommended before setting this value to other than 1. Please do not set this value higher than (total number of nodes x number_of_task_slots), or every new job created will fail.
+        :param _builtins.int parallelism: Reading of Flink parallel execution documentation is recommended before setting this value to other than 1. Please do not set this value higher than (total number of nodes x number*of*task_slots), or every new job created will fail.
         :param Sequence[_builtins.str] program_args: Arguments to pass during Flink job submission through the programArgsList parameter.
         :param _builtins.str starting_savepoint: Job savepoint.
         :param _builtins.str status: Deployment status. The possible values are `CANCELED`, `CANCELLING`, `CANCELLING_REQUESTED`, `CREATED`, `DELETE_REQUESTED`, `DELETING`, `FAILED`, `FAILING`, `FINISHED`, `INITIALIZING`, `RECONCILING`, `RESTARTING`, `RUNNING`, `SAVING`, `SAVING_AND_STOP`, `SAVING_AND_STOP_REQUESTED` and `SUSPENDED`.
@@ -4142,7 +4444,7 @@ class FlinkJarApplicationCurrentDeployment(dict):
     @pulumi.getter
     def parallelism(self) -> Optional[_builtins.int]:
         """
-        Reading of Flink parallel execution documentation is recommended before setting this value to other than 1. Please do not set this value higher than (total number of nodes x number_of_task_slots), or every new job created will fail.
+        Reading of Flink parallel execution documentation is recommended before setting this value to other than 1. Please do not set this value higher than (total number of nodes x number*of*task_slots), or every new job created will fail.
         """
         return pulumi.get(self, "parallelism")
 
@@ -4177,6 +4479,74 @@ class FlinkJarApplicationCurrentDeployment(dict):
         ApplicationVersion ID.
         """
         return pulumi.get(self, "version_id")
+
+
+@pulumi.output_type
+class FlinkJarApplicationTimeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[_builtins.str] = None,
+                 default: Optional[_builtins.str] = None,
+                 delete: Optional[_builtins.str] = None,
+                 read: Optional[_builtins.str] = None,
+                 update: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param _builtins.str default: Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+        :param _builtins.str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param _builtins.str update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if default is not None:
+            pulumi.set(__self__, "default", default)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @_builtins.property
+    @pulumi.getter
+    @_utilities.deprecated("""Use operation-specific timeouts instead. This field will be removed in the next major version.""")
+    def default(self) -> Optional[_builtins.str]:
+        """
+        Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+        """
+        return pulumi.get(self, "default")
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
 
 
 @pulumi.output_type
@@ -4376,6 +4746,142 @@ class FlinkTechEmail(dict):
         An email address to contact for technical issues
         """
         return pulumi.get(self, "email")
+
+
+@pulumi.output_type
+class GcpOrgVpcPeeringConnectionTimeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[_builtins.str] = None,
+                 default: Optional[_builtins.str] = None,
+                 delete: Optional[_builtins.str] = None,
+                 read: Optional[_builtins.str] = None,
+                 update: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param _builtins.str default: Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+        :param _builtins.str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param _builtins.str update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if default is not None:
+            pulumi.set(__self__, "default", default)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @_builtins.property
+    @pulumi.getter
+    @_utilities.deprecated("""Use operation-specific timeouts instead. This field will be removed in the next major version.""")
+    def default(self) -> Optional[_builtins.str]:
+        """
+        Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+        """
+        return pulumi.get(self, "default")
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+
+@pulumi.output_type
+class GcpPrivatelinkTimeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[_builtins.str] = None,
+                 default: Optional[_builtins.str] = None,
+                 delete: Optional[_builtins.str] = None,
+                 read: Optional[_builtins.str] = None,
+                 update: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param _builtins.str default: Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+        :param _builtins.str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param _builtins.str update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if default is not None:
+            pulumi.set(__self__, "default", default)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @_builtins.property
+    @pulumi.getter
+    @_utilities.deprecated("""Use operation-specific timeouts instead. This field will be removed in the next major version.""")
+    def default(self) -> Optional[_builtins.str]:
+        """
+        Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+        """
+        return pulumi.get(self, "default")
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
 
 
 @pulumi.output_type
@@ -4850,6 +5356,8 @@ class GrafanaGrafanaUserConfig(dict):
             suggest = "external_image_storage"
         elif key == "googleAnalyticsUaId":
             suggest = "google_analytics_ua_id"
+        elif key == "grafanaVersion":
+            suggest = "grafana_version"
         elif key == "ipFilterObjects":
             suggest = "ip_filter_objects"
         elif key == "ipFilterStrings":
@@ -4924,6 +5432,7 @@ class GrafanaGrafanaUserConfig(dict):
                  editors_can_admin: Optional[_builtins.bool] = None,
                  external_image_storage: Optional['outputs.GrafanaGrafanaUserConfigExternalImageStorage'] = None,
                  google_analytics_ua_id: Optional[_builtins.str] = None,
+                 grafana_version: Optional[_builtins.str] = None,
                  ip_filter_objects: Optional[Sequence['outputs.GrafanaGrafanaUserConfigIpFilterObject']] = None,
                  ip_filter_strings: Optional[Sequence[_builtins.str]] = None,
                  ip_filters: Optional[Sequence[_builtins.str]] = None,
@@ -4969,6 +5478,7 @@ class GrafanaGrafanaUserConfig(dict):
         :param _builtins.bool editors_can_admin: Editors can manage folders, teams and dashboards created by them.
         :param 'GrafanaGrafanaUserConfigExternalImageStorageArgs' external_image_storage: External image store settings
         :param _builtins.str google_analytics_ua_id: Google Analytics ID. Example: `UA-123456-4`.
+        :param _builtins.str grafana_version: Enum: `11`, and newer. Grafana major version.
         :param Sequence['GrafanaGrafanaUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         :param Sequence[_builtins.str] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         :param Sequence[_builtins.str] ip_filters: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
@@ -5039,6 +5549,8 @@ class GrafanaGrafanaUserConfig(dict):
             pulumi.set(__self__, "external_image_storage", external_image_storage)
         if google_analytics_ua_id is not None:
             pulumi.set(__self__, "google_analytics_ua_id", google_analytics_ua_id)
+        if grafana_version is not None:
+            pulumi.set(__self__, "grafana_version", grafana_version)
         if ip_filter_objects is not None:
             pulumi.set(__self__, "ip_filter_objects", ip_filter_objects)
         if ip_filter_strings is not None:
@@ -5277,6 +5789,14 @@ class GrafanaGrafanaUserConfig(dict):
         Google Analytics ID. Example: `UA-123456-4`.
         """
         return pulumi.get(self, "google_analytics_ua_id")
+
+    @_builtins.property
+    @pulumi.getter(name="grafanaVersion")
+    def grafana_version(self) -> Optional[_builtins.str]:
+        """
+        Enum: `11`, and newer. Grafana major version.
+        """
+        return pulumi.get(self, "grafana_version")
 
     @_builtins.property
     @pulumi.getter(name="ipFilterObjects")
@@ -6551,6 +7071,74 @@ class GrafanaTechEmail(dict):
 
 
 @pulumi.output_type
+class KafkaAclTimeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[_builtins.str] = None,
+                 default: Optional[_builtins.str] = None,
+                 delete: Optional[_builtins.str] = None,
+                 read: Optional[_builtins.str] = None,
+                 update: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param _builtins.str default: Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+        :param _builtins.str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param _builtins.str update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if default is not None:
+            pulumi.set(__self__, "default", default)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @_builtins.property
+    @pulumi.getter
+    @_utilities.deprecated("""Use operation-specific timeouts instead. This field will be removed in the next major version.""")
+    def default(self) -> Optional[_builtins.str]:
+        """
+        Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+        """
+        return pulumi.get(self, "default")
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+
+@pulumi.output_type
 class KafkaComponent(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -6869,6 +7457,8 @@ class KafkaConnectKafkaConnectUserConfig(dict):
             suggest = "kafka_connect"
         elif key == "pluginVersions":
             suggest = "plugin_versions"
+        elif key == "preferredZones":
+            suggest = "preferred_zones"
         elif key == "privateAccess":
             suggest = "private_access"
         elif key == "privatelinkAccess":
@@ -6903,6 +7493,7 @@ class KafkaConnectKafkaConnectUserConfig(dict):
                  ip_filters: Optional[Sequence[_builtins.str]] = None,
                  kafka_connect: Optional['outputs.KafkaConnectKafkaConnectUserConfigKafkaConnect'] = None,
                  plugin_versions: Optional[Sequence['outputs.KafkaConnectKafkaConnectUserConfigPluginVersion']] = None,
+                 preferred_zones: Optional[Sequence[_builtins.str]] = None,
                  private_access: Optional['outputs.KafkaConnectKafkaConnectUserConfigPrivateAccess'] = None,
                  privatelink_access: Optional['outputs.KafkaConnectKafkaConnectUserConfigPrivatelinkAccess'] = None,
                  public_access: Optional['outputs.KafkaConnectKafkaConnectUserConfigPublicAccess'] = None,
@@ -6918,6 +7509,7 @@ class KafkaConnectKafkaConnectUserConfig(dict):
         :param Sequence[_builtins.str] ip_filters: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         :param 'KafkaConnectKafkaConnectUserConfigKafkaConnectArgs' kafka_connect: Kafka Connect configuration values
         :param Sequence['KafkaConnectKafkaConnectUserConfigPluginVersionArgs'] plugin_versions: The plugin selected by the user
+        :param Sequence[_builtins.str] preferred_zones: List of preferred zone IDs for service node placement. Nodes will be placed in these zones when available. If a specified zone is unavailable (e.g., due to capacity constraints), nodes will be placed in other available zones to maintain the configured number of zones for availability. Invalid zone IDs are rejected at configuration time. Zone IDs are cloud-specific: AWS uses zone IDs like `euc1-az1`, GCP uses zone names like `europe-west1-a`, and Azure uses `location/zone` format like `germanywestcentral/1`. If single*zone is enabled with an availability*zone, that setting takes precedence over preferred_zones. Changes take effect on next node recreation (e.g., maintenance or plan change). For eligible plans, nodes outside preferred zones are automatically rebalanced once per day.
         :param 'KafkaConnectKafkaConnectUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks
         :param 'KafkaConnectKafkaConnectUserConfigPrivatelinkAccessArgs' privatelink_access: Allow access to selected service components through Privatelink
         :param 'KafkaConnectKafkaConnectUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet
@@ -6940,6 +7532,8 @@ class KafkaConnectKafkaConnectUserConfig(dict):
             pulumi.set(__self__, "kafka_connect", kafka_connect)
         if plugin_versions is not None:
             pulumi.set(__self__, "plugin_versions", plugin_versions)
+        if preferred_zones is not None:
+            pulumi.set(__self__, "preferred_zones", preferred_zones)
         if private_access is not None:
             pulumi.set(__self__, "private_access", private_access)
         if privatelink_access is not None:
@@ -7012,6 +7606,14 @@ class KafkaConnectKafkaConnectUserConfig(dict):
         The plugin selected by the user
         """
         return pulumi.get(self, "plugin_versions")
+
+    @_builtins.property
+    @pulumi.getter(name="preferredZones")
+    def preferred_zones(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of preferred zone IDs for service node placement. Nodes will be placed in these zones when available. If a specified zone is unavailable (e.g., due to capacity constraints), nodes will be placed in other available zones to maintain the configured number of zones for availability. Invalid zone IDs are rejected at configuration time. Zone IDs are cloud-specific: AWS uses zone IDs like `euc1-az1`, GCP uses zone names like `europe-west1-a`, and Azure uses `location/zone` format like `germanywestcentral/1`. If single*zone is enabled with an availability*zone, that setting takes precedence over preferred_zones. Changes take effect on next node recreation (e.g., maintenance or plan change). For eligible plans, nodes outside preferred zones are automatically rebalanced once per day.
+        """
+        return pulumi.get(self, "preferred_zones")
 
     @_builtins.property
     @pulumi.getter(name="privateAccess")
@@ -8174,6 +8776,8 @@ class KafkaKafkaUserConfig(dict):
             suggest = "kafka_sasl_mechanisms"
         elif key == "kafkaVersion":
             suggest = "kafka_version"
+        elif key == "karapaceVersion":
+            suggest = "karapace_version"
         elif key == "letsencryptSasl":
             suggest = "letsencrypt_sasl"
         elif key == "letsencryptSaslPrivatelink":
@@ -8237,6 +8841,7 @@ class KafkaKafkaUserConfig(dict):
                  kafka_rest_config: Optional['outputs.KafkaKafkaUserConfigKafkaRestConfig'] = None,
                  kafka_sasl_mechanisms: Optional['outputs.KafkaKafkaUserConfigKafkaSaslMechanisms'] = None,
                  kafka_version: Optional[_builtins.str] = None,
+                 karapace_version: Optional[_builtins.str] = None,
                  letsencrypt_sasl: Optional[_builtins.bool] = None,
                  letsencrypt_sasl_privatelink: Optional[_builtins.bool] = None,
                  preferred_zones: Optional[Sequence[_builtins.str]] = None,
@@ -8275,9 +8880,10 @@ class KafkaKafkaUserConfig(dict):
         :param 'KafkaKafkaUserConfigKafkaRestConfigArgs' kafka_rest_config: Kafka REST configuration
         :param 'KafkaKafkaUserConfigKafkaSaslMechanismsArgs' kafka_sasl_mechanisms: Kafka SASL mechanisms
         :param _builtins.str kafka_version: Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, `4.1`, `4.2`, and newer. Kafka major version.
+        :param _builtins.str karapace_version: Pin a specific installed Karapace version on this service. Leave null/unset to auto-follow the newest installed version.
         :param _builtins.bool letsencrypt_sasl: Use a Let's Encrypt certificate authority (CA) for Kafka SASL authentication. (Default: False).
         :param _builtins.bool letsencrypt_sasl_privatelink: Use a Let's Encrypt certificate authority (CA) for Kafka SASL authentication via Privatelink. (Default: False).
-        :param Sequence[_builtins.str] preferred_zones: List of preferred zone IDs for service node placement. Nodes will be placed in these zones when available. If a specified zone is unavailable (e.g., due to capacity constraints), nodes will be placed in other available zones to maintain the configured number of zones for availability. Invalid zone IDs are rejected at configuration time. Zone IDs are cloud-specific: AWS uses zone IDs like `euc1-az1`, GCP uses zone names like `europe-west1-a`, and Azure uses `location/zone` format like `germanywestcentral/1`. If single*zone is enabled with an availability*zone, that setting takes precedence over preferred_zones.Changes take effect on next node recreation (e.g., maintenance or plan change). For Kafka professional plans, nodes outside preferred zones are automatically rebalanced once per day.
+        :param Sequence[_builtins.str] preferred_zones: List of preferred zone IDs for service node placement. Nodes will be placed in these zones when available. If a specified zone is unavailable (e.g., due to capacity constraints), nodes will be placed in other available zones to maintain the configured number of zones for availability. Invalid zone IDs are rejected at configuration time. Zone IDs are cloud-specific: AWS uses zone IDs like `euc1-az1`, GCP uses zone names like `europe-west1-a`, and Azure uses `location/zone` format like `germanywestcentral/1`. If single*zone is enabled with an availability*zone, that setting takes precedence over preferred_zones. Changes take effect on next node recreation (e.g., maintenance or plan change). For eligible plans, nodes outside preferred zones are automatically rebalanced once per day.
         :param 'KafkaKafkaUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks
         :param 'KafkaKafkaUserConfigPrivatelinkAccessArgs' privatelink_access: Allow access to selected service components through Privatelink
         :param 'KafkaKafkaUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet
@@ -8337,6 +8943,8 @@ class KafkaKafkaUserConfig(dict):
             pulumi.set(__self__, "kafka_sasl_mechanisms", kafka_sasl_mechanisms)
         if kafka_version is not None:
             pulumi.set(__self__, "kafka_version", kafka_version)
+        if karapace_version is not None:
+            pulumi.set(__self__, "karapace_version", karapace_version)
         if letsencrypt_sasl is not None:
             pulumi.set(__self__, "letsencrypt_sasl", letsencrypt_sasl)
         if letsencrypt_sasl_privatelink is not None:
@@ -8559,6 +9167,14 @@ class KafkaKafkaUserConfig(dict):
         return pulumi.get(self, "kafka_version")
 
     @_builtins.property
+    @pulumi.getter(name="karapaceVersion")
+    def karapace_version(self) -> Optional[_builtins.str]:
+        """
+        Pin a specific installed Karapace version on this service. Leave null/unset to auto-follow the newest installed version.
+        """
+        return pulumi.get(self, "karapace_version")
+
+    @_builtins.property
     @pulumi.getter(name="letsencryptSasl")
     def letsencrypt_sasl(self) -> Optional[_builtins.bool]:
         """
@@ -8578,7 +9194,7 @@ class KafkaKafkaUserConfig(dict):
     @pulumi.getter(name="preferredZones")
     def preferred_zones(self) -> Optional[Sequence[_builtins.str]]:
         """
-        List of preferred zone IDs for service node placement. Nodes will be placed in these zones when available. If a specified zone is unavailable (e.g., due to capacity constraints), nodes will be placed in other available zones to maintain the configured number of zones for availability. Invalid zone IDs are rejected at configuration time. Zone IDs are cloud-specific: AWS uses zone IDs like `euc1-az1`, GCP uses zone names like `europe-west1-a`, and Azure uses `location/zone` format like `germanywestcentral/1`. If single*zone is enabled with an availability*zone, that setting takes precedence over preferred_zones.Changes take effect on next node recreation (e.g., maintenance or plan change). For Kafka professional plans, nodes outside preferred zones are automatically rebalanced once per day.
+        List of preferred zone IDs for service node placement. Nodes will be placed in these zones when available. If a specified zone is unavailable (e.g., due to capacity constraints), nodes will be placed in other available zones to maintain the configured number of zones for availability. Invalid zone IDs are rejected at configuration time. Zone IDs are cloud-specific: AWS uses zone IDs like `euc1-az1`, GCP uses zone names like `europe-west1-a`, and Azure uses `location/zone` format like `germanywestcentral/1`. If single*zone is enabled with an availability*zone, that setting takes precedence over preferred_zones. Changes take effect on next node recreation (e.g., maintenance or plan change). For eligible plans, nodes outside preferred zones are automatically rebalanced once per day.
         """
         return pulumi.get(self, "preferred_zones")
 
@@ -10952,6 +11568,14 @@ class KafkaKafkaUserConfigSchemaRegistryConfig(dict):
             suggest = "leader_eligibility"
         elif key == "retriableErrorsSilenced":
             suggest = "retriable_errors_silenced"
+        elif key == "saslOauthbearerAuthenticationEnabled":
+            suggest = "sasl_oauthbearer_authentication_enabled"
+        elif key == "saslOauthbearerAuthorizationEnabled":
+            suggest = "sasl_oauthbearer_authorization_enabled"
+        elif key == "saslOauthbearerMethodRoles":
+            suggest = "sasl_oauthbearer_method_roles"
+        elif key == "saslOauthbearerRolesClaimPath":
+            suggest = "sasl_oauthbearer_roles_claim_path"
         elif key == "schemaReaderStrictMode":
             suggest = "schema_reader_strict_mode"
         elif key == "topicName":
@@ -10971,11 +11595,19 @@ class KafkaKafkaUserConfigSchemaRegistryConfig(dict):
     def __init__(__self__, *,
                  leader_eligibility: Optional[_builtins.bool] = None,
                  retriable_errors_silenced: Optional[_builtins.bool] = None,
+                 sasl_oauthbearer_authentication_enabled: Optional[_builtins.bool] = None,
+                 sasl_oauthbearer_authorization_enabled: Optional[_builtins.bool] = None,
+                 sasl_oauthbearer_method_roles: Optional[_builtins.str] = None,
+                 sasl_oauthbearer_roles_claim_path: Optional[_builtins.str] = None,
                  schema_reader_strict_mode: Optional[_builtins.bool] = None,
                  topic_name: Optional[_builtins.str] = None):
         """
         :param _builtins.bool leader_eligibility: If true, Karapace / Schema Registry on the service nodes can participate in leader election. It might be needed to disable this when the schemas topic is replicated to a secondary cluster and Karapace / Schema Registry there must not participate in leader election. Defaults to `true`.
         :param _builtins.bool retriable_errors_silenced: If enabled, kafka errors which can be retried or custom errors specified for the service will not be raised, instead, a warning log is emitted. This will denoise issue tracking systems, i.e. sentry. Defaults to `true`.
+        :param _builtins.bool sasl_oauthbearer_authentication_enabled: If enabled, the Schema Registry validates OAuth2/OIDC JWT bearer tokens on incoming requests. Requires the OIDC provider settings under the `kafka` configuration (`sasl_oauthbearer_jwks_endpoint_url` and related). Defaults to `false`.
+        :param _builtins.bool sasl_oauthbearer_authorization_enabled: If enabled, the Schema Registry enforces role-based authorization derived from the JWT roles claim. Requires `sasl_oauthbearer_authentication_enabled` to be enabled. Defaults to `false`.
+        :param _builtins.str sasl_oauthbearer_method_roles: JSON object mapping HTTP methods to the list of roles allowed to perform them on the Schema Registry, provided as a JSON-encoded string. Role names use the `karapace.` prefix, e.g. `karapace.schema:read`. Defaults to `{"GET": ["karapace.schema:read", "karapace.subject:read"], "POST": [], "PUT": [], "DELETE": []}`.
+        :param _builtins.str sasl_oauthbearer_roles_claim_path: JSON path used to extract the roles claim from the JWT for Schema Registry authorization. Defaults to `resource_access.karapace.roles`.
         :param _builtins.bool schema_reader_strict_mode: If enabled, causes the Karapace schema-registry service to shutdown when there are invalid schema records in the `_schemas` topic. Defaults to `false`.
         :param _builtins.str topic_name: The durable single partition topic that acts as the durable log for the data. This topic must be compacted to avoid losing data due to retention policy. Please note that changing this configuration in an existing Schema Registry / Karapace setup leads to previous schemas being inaccessible, data encoded with them potentially unreadable and schema ID sequence put out of order. It's only possible to do the switch while Schema Registry / Karapace is disabled. Defaults to `_schemas`.
         """
@@ -10983,6 +11615,14 @@ class KafkaKafkaUserConfigSchemaRegistryConfig(dict):
             pulumi.set(__self__, "leader_eligibility", leader_eligibility)
         if retriable_errors_silenced is not None:
             pulumi.set(__self__, "retriable_errors_silenced", retriable_errors_silenced)
+        if sasl_oauthbearer_authentication_enabled is not None:
+            pulumi.set(__self__, "sasl_oauthbearer_authentication_enabled", sasl_oauthbearer_authentication_enabled)
+        if sasl_oauthbearer_authorization_enabled is not None:
+            pulumi.set(__self__, "sasl_oauthbearer_authorization_enabled", sasl_oauthbearer_authorization_enabled)
+        if sasl_oauthbearer_method_roles is not None:
+            pulumi.set(__self__, "sasl_oauthbearer_method_roles", sasl_oauthbearer_method_roles)
+        if sasl_oauthbearer_roles_claim_path is not None:
+            pulumi.set(__self__, "sasl_oauthbearer_roles_claim_path", sasl_oauthbearer_roles_claim_path)
         if schema_reader_strict_mode is not None:
             pulumi.set(__self__, "schema_reader_strict_mode", schema_reader_strict_mode)
         if topic_name is not None:
@@ -11003,6 +11643,38 @@ class KafkaKafkaUserConfigSchemaRegistryConfig(dict):
         If enabled, kafka errors which can be retried or custom errors specified for the service will not be raised, instead, a warning log is emitted. This will denoise issue tracking systems, i.e. sentry. Defaults to `true`.
         """
         return pulumi.get(self, "retriable_errors_silenced")
+
+    @_builtins.property
+    @pulumi.getter(name="saslOauthbearerAuthenticationEnabled")
+    def sasl_oauthbearer_authentication_enabled(self) -> Optional[_builtins.bool]:
+        """
+        If enabled, the Schema Registry validates OAuth2/OIDC JWT bearer tokens on incoming requests. Requires the OIDC provider settings under the `kafka` configuration (`sasl_oauthbearer_jwks_endpoint_url` and related). Defaults to `false`.
+        """
+        return pulumi.get(self, "sasl_oauthbearer_authentication_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="saslOauthbearerAuthorizationEnabled")
+    def sasl_oauthbearer_authorization_enabled(self) -> Optional[_builtins.bool]:
+        """
+        If enabled, the Schema Registry enforces role-based authorization derived from the JWT roles claim. Requires `sasl_oauthbearer_authentication_enabled` to be enabled. Defaults to `false`.
+        """
+        return pulumi.get(self, "sasl_oauthbearer_authorization_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="saslOauthbearerMethodRoles")
+    def sasl_oauthbearer_method_roles(self) -> Optional[_builtins.str]:
+        """
+        JSON object mapping HTTP methods to the list of roles allowed to perform them on the Schema Registry, provided as a JSON-encoded string. Role names use the `karapace.` prefix, e.g. `karapace.schema:read`. Defaults to `{"GET": ["karapace.schema:read", "karapace.subject:read"], "POST": [], "PUT": [], "DELETE": []}`.
+        """
+        return pulumi.get(self, "sasl_oauthbearer_method_roles")
+
+    @_builtins.property
+    @pulumi.getter(name="saslOauthbearerRolesClaimPath")
+    def sasl_oauthbearer_roles_claim_path(self) -> Optional[_builtins.str]:
+        """
+        JSON path used to extract the roles claim from the JWT for Schema Registry authorization. Defaults to `resource_access.karapace.roles`.
+        """
+        return pulumi.get(self, "sasl_oauthbearer_roles_claim_path")
 
     @_builtins.property
     @pulumi.getter(name="schemaReaderStrictMode")
@@ -11303,6 +11975,8 @@ class KafkaMirrorMakerKafkaMirrormakerUserConfig(dict):
             suggest = "ip_filters"
         elif key == "kafkaMirrormaker":
             suggest = "kafka_mirrormaker"
+        elif key == "preferredZones":
+            suggest = "preferred_zones"
         elif key == "saslOauthbearerAllowedUrls":
             suggest = "sasl_oauthbearer_allowed_urls"
         elif key == "serviceLog":
@@ -11327,6 +12001,7 @@ class KafkaMirrorMakerKafkaMirrormakerUserConfig(dict):
                  ip_filter_strings: Optional[Sequence[_builtins.str]] = None,
                  ip_filters: Optional[Sequence[_builtins.str]] = None,
                  kafka_mirrormaker: Optional['outputs.KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker'] = None,
+                 preferred_zones: Optional[Sequence[_builtins.str]] = None,
                  sasl_oauthbearer_allowed_urls: Optional[Sequence[_builtins.str]] = None,
                  service_log: Optional[_builtins.bool] = None,
                  static_ips: Optional[_builtins.bool] = None):
@@ -11336,6 +12011,7 @@ class KafkaMirrorMakerKafkaMirrormakerUserConfig(dict):
         :param Sequence[_builtins.str] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         :param Sequence[_builtins.str] ip_filters: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         :param 'KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs' kafka_mirrormaker: Kafka MirrorMaker configuration values
+        :param Sequence[_builtins.str] preferred_zones: List of preferred zone IDs for service node placement. Nodes will be placed in these zones when available. If a specified zone is unavailable (e.g., due to capacity constraints), nodes will be placed in other available zones to maintain the configured number of zones for availability. Invalid zone IDs are rejected at configuration time. Zone IDs are cloud-specific: AWS uses zone IDs like `euc1-az1`, GCP uses zone names like `europe-west1-a`, and Azure uses `location/zone` format like `germanywestcentral/1`. If single*zone is enabled with an availability*zone, that setting takes precedence over preferred_zones. Changes take effect on next node recreation (e.g., maintenance or plan change). For eligible plans, nodes outside preferred zones are automatically rebalanced once per day.
         :param Sequence[_builtins.str] sasl_oauthbearer_allowed_urls: List of allowed URLs for SASL OAUTHBEARER authentication. Only HTTPS URLs are allowed for security reasons.
         :param _builtins.bool service_log: Store logs for the service so that they are available in the HTTP API and console.
         :param _builtins.bool static_ips: Use static public IP addresses.
@@ -11350,6 +12026,8 @@ class KafkaMirrorMakerKafkaMirrormakerUserConfig(dict):
             pulumi.set(__self__, "ip_filters", ip_filters)
         if kafka_mirrormaker is not None:
             pulumi.set(__self__, "kafka_mirrormaker", kafka_mirrormaker)
+        if preferred_zones is not None:
+            pulumi.set(__self__, "preferred_zones", preferred_zones)
         if sasl_oauthbearer_allowed_urls is not None:
             pulumi.set(__self__, "sasl_oauthbearer_allowed_urls", sasl_oauthbearer_allowed_urls)
         if service_log is not None:
@@ -11398,6 +12076,14 @@ class KafkaMirrorMakerKafkaMirrormakerUserConfig(dict):
         Kafka MirrorMaker configuration values
         """
         return pulumi.get(self, "kafka_mirrormaker")
+
+    @_builtins.property
+    @pulumi.getter(name="preferredZones")
+    def preferred_zones(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of preferred zone IDs for service node placement. Nodes will be placed in these zones when available. If a specified zone is unavailable (e.g., due to capacity constraints), nodes will be placed in other available zones to maintain the configured number of zones for availability. Invalid zone IDs are rejected at configuration time. Zone IDs are cloud-specific: AWS uses zone IDs like `euc1-az1`, GCP uses zone names like `europe-west1-a`, and Azure uses `location/zone` format like `germanywestcentral/1`. If single*zone is enabled with an availability*zone, that setting takes precedence over preferred_zones. Changes take effect on next node recreation (e.g., maintenance or plan change). For eligible plans, nodes outside preferred zones are automatically rebalanced once per day.
+        """
+        return pulumi.get(self, "preferred_zones")
 
     @_builtins.property
     @pulumi.getter(name="saslOauthbearerAllowedUrls")
@@ -11763,6 +12449,74 @@ class KafkaMirrorMakerTechEmail(dict):
         An email address to contact for technical issues
         """
         return pulumi.get(self, "email")
+
+
+@pulumi.output_type
+class KafkaNativeAclTimeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[_builtins.str] = None,
+                 default: Optional[_builtins.str] = None,
+                 delete: Optional[_builtins.str] = None,
+                 read: Optional[_builtins.str] = None,
+                 update: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param _builtins.str default: Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+        :param _builtins.str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param _builtins.str update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if default is not None:
+            pulumi.set(__self__, "default", default)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @_builtins.property
+    @pulumi.getter
+    @_utilities.deprecated("""Use operation-specific timeouts instead. This field will be removed in the next major version.""")
+    def default(self) -> Optional[_builtins.str]:
+        """
+        Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+        """
+        return pulumi.get(self, "default")
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
 
 
 @pulumi.output_type
@@ -12440,6 +13194,142 @@ class KafkaTopicTag(dict):
 
 @pulumi.output_type
 class KafkaTopicTimeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[_builtins.str] = None,
+                 default: Optional[_builtins.str] = None,
+                 delete: Optional[_builtins.str] = None,
+                 read: Optional[_builtins.str] = None,
+                 update: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param _builtins.str default: Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+        :param _builtins.str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param _builtins.str update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if default is not None:
+            pulumi.set(__self__, "default", default)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @_builtins.property
+    @pulumi.getter
+    @_utilities.deprecated("""Use operation-specific timeouts instead. This field will be removed in the next major version.""")
+    def default(self) -> Optional[_builtins.str]:
+        """
+        Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+        """
+        return pulumi.get(self, "default")
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+
+@pulumi.output_type
+class KafkaUserTimeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[_builtins.str] = None,
+                 default: Optional[_builtins.str] = None,
+                 delete: Optional[_builtins.str] = None,
+                 read: Optional[_builtins.str] = None,
+                 update: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param _builtins.str default: Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+        :param _builtins.str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param _builtins.str update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if default is not None:
+            pulumi.set(__self__, "default", default)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @_builtins.property
+    @pulumi.getter
+    @_utilities.deprecated("""Use operation-specific timeouts instead. This field will be removed in the next major version.""")
+    def default(self) -> Optional[_builtins.str]:
+        """
+        Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+        """
+        return pulumi.get(self, "default")
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+
+@pulumi.output_type
+class MirrorMakerReplicationFlowTimeouts(dict):
     def __init__(__self__, *,
                  create: Optional[_builtins.str] = None,
                  default: Optional[_builtins.str] = None,
@@ -13348,10 +14238,18 @@ class MySqlMysqlUserConfigMysql(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "connectTimeout":
+        if key == "automaticSpPrivileges":
+            suggest = "automatic_sp_privileges"
+        elif key == "connectTimeout":
             suggest = "connect_timeout"
         elif key == "defaultTimeZone":
             suggest = "default_time_zone"
+        elif key == "divPrecisionIncrement":
+            suggest = "div_precision_increment"
+        elif key == "endMarkersInJson":
+            suggest = "end_markers_in_json"
+        elif key == "eqRangeIndexDiveLimit":
+            suggest = "eq_range_index_dive_limit"
         elif key == "groupConcatMaxLen":
             suggest = "group_concat_max_len"
         elif key == "informationSchemaStatsExpiry":
@@ -13362,10 +14260,20 @@ class MySqlMysqlUserConfigMysql(dict):
             suggest = "innodb_change_buffer_max_size"
         elif key == "innodbFlushNeighbors":
             suggest = "innodb_flush_neighbors"
+        elif key == "innodbFtEnableStopword":
+            suggest = "innodb_ft_enable_stopword"
+        elif key == "innodbFtMaxTokenSize":
+            suggest = "innodb_ft_max_token_size"
         elif key == "innodbFtMinTokenSize":
             suggest = "innodb_ft_min_token_size"
+        elif key == "innodbFtNumWordOptimize":
+            suggest = "innodb_ft_num_word_optimize"
+        elif key == "innodbFtResultCacheLimit":
+            suggest = "innodb_ft_result_cache_limit"
         elif key == "innodbFtServerStopwordTable":
             suggest = "innodb_ft_server_stopword_table"
+        elif key == "innodbFtUserStopwordTable":
+            suggest = "innodb_ft_user_stopword_table"
         elif key == "innodbIoCapacity":
             suggest = "innodb_io_capacity"
         elif key == "innodbIoCapacityMax":
@@ -13376,6 +14284,8 @@ class MySqlMysqlUserConfigMysql(dict):
             suggest = "innodb_log_buffer_size"
         elif key == "innodbOnlineAlterLogMaxSize":
             suggest = "innodb_online_alter_log_max_size"
+        elif key == "innodbOptimizeFulltextOnly":
+            suggest = "innodb_optimize_fulltext_only"
         elif key == "innodbPrintAllDeadlocks":
             suggest = "innodb_print_all_deadlocks"
         elif key == "innodbReadIoThreads":
@@ -13398,14 +14308,28 @@ class MySqlMysqlUserConfigMysql(dict):
             suggest = "lower_case_table_names"
         elif key == "maxAllowedPacket":
             suggest = "max_allowed_packet"
+        elif key == "maxConnections":
+            suggest = "max_connections"
+        elif key == "maxExecutionTime":
+            suggest = "max_execution_time"
         elif key == "maxHeapTableSize":
             suggest = "max_heap_table_size"
+        elif key == "maxSeeksForKey":
+            suggest = "max_seeks_for_key"
+        elif key == "maxUserConnections":
+            suggest = "max_user_connections"
         elif key == "netBufferLength":
             suggest = "net_buffer_length"
         elif key == "netReadTimeout":
             suggest = "net_read_timeout"
         elif key == "netWriteTimeout":
             suggest = "net_write_timeout"
+        elif key == "optimizerPruneLevel":
+            suggest = "optimizer_prune_level"
+        elif key == "optimizerSearchDepth":
+            suggest = "optimizer_search_depth"
+        elif key == "optimizerSwitch":
+            suggest = "optimizer_switch"
         elif key == "performanceSchemaEventsStatementsHistorySize":
             suggest = "performance_schema_events_statements_history_size"
         elif key == "relayLogSpaceLimit":
@@ -13422,6 +14346,8 @@ class MySqlMysqlUserConfigMysql(dict):
             suggest = "tmp_table_size"
         elif key == "waitTimeout":
             suggest = "wait_timeout"
+        elif key == "windowingUseHighPrecision":
+            suggest = "windowing_use_high_precision"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in MySqlMysqlUserConfigMysql. Access the value via the '{suggest}' property getter instead.")
@@ -13435,20 +14361,30 @@ class MySqlMysqlUserConfigMysql(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 automatic_sp_privileges: Optional[_builtins.bool] = None,
                  connect_timeout: Optional[_builtins.int] = None,
                  default_time_zone: Optional[_builtins.str] = None,
+                 div_precision_increment: Optional[_builtins.int] = None,
+                 end_markers_in_json: Optional[_builtins.bool] = None,
+                 eq_range_index_dive_limit: Optional[_builtins.int] = None,
                  group_concat_max_len: Optional[_builtins.int] = None,
                  information_schema_stats_expiry: Optional[_builtins.int] = None,
                  innodb_adaptive_hash_index: Optional[_builtins.bool] = None,
                  innodb_change_buffer_max_size: Optional[_builtins.int] = None,
                  innodb_flush_neighbors: Optional[_builtins.int] = None,
+                 innodb_ft_enable_stopword: Optional[_builtins.bool] = None,
+                 innodb_ft_max_token_size: Optional[_builtins.int] = None,
                  innodb_ft_min_token_size: Optional[_builtins.int] = None,
+                 innodb_ft_num_word_optimize: Optional[_builtins.int] = None,
+                 innodb_ft_result_cache_limit: Optional[_builtins.int] = None,
                  innodb_ft_server_stopword_table: Optional[_builtins.str] = None,
+                 innodb_ft_user_stopword_table: Optional[_builtins.str] = None,
                  innodb_io_capacity: Optional[_builtins.int] = None,
                  innodb_io_capacity_max: Optional[_builtins.int] = None,
                  innodb_lock_wait_timeout: Optional[_builtins.int] = None,
                  innodb_log_buffer_size: Optional[_builtins.int] = None,
                  innodb_online_alter_log_max_size: Optional[_builtins.int] = None,
+                 innodb_optimize_fulltext_only: Optional[_builtins.bool] = None,
                  innodb_print_all_deadlocks: Optional[_builtins.bool] = None,
                  innodb_read_io_threads: Optional[_builtins.int] = None,
                  innodb_rollback_on_timeout: Optional[_builtins.bool] = None,
@@ -13460,10 +14396,17 @@ class MySqlMysqlUserConfigMysql(dict):
                  long_query_time: Optional[_builtins.float] = None,
                  lower_case_table_names: Optional[_builtins.int] = None,
                  max_allowed_packet: Optional[_builtins.int] = None,
+                 max_connections: Optional[_builtins.int] = None,
+                 max_execution_time: Optional[_builtins.int] = None,
                  max_heap_table_size: Optional[_builtins.int] = None,
+                 max_seeks_for_key: Optional[_builtins.int] = None,
+                 max_user_connections: Optional[_builtins.int] = None,
                  net_buffer_length: Optional[_builtins.int] = None,
                  net_read_timeout: Optional[_builtins.int] = None,
                  net_write_timeout: Optional[_builtins.int] = None,
+                 optimizer_prune_level: Optional[_builtins.int] = None,
+                 optimizer_search_depth: Optional[_builtins.int] = None,
+                 optimizer_switch: Optional[_builtins.str] = None,
                  performance_schema_events_statements_history_size: Optional[_builtins.int] = None,
                  relay_log_space_limit: Optional[_builtins.int] = None,
                  slow_query_log: Optional[_builtins.bool] = None,
@@ -13471,22 +14414,33 @@ class MySqlMysqlUserConfigMysql(dict):
                  sql_mode: Optional[_builtins.str] = None,
                  sql_require_primary_key: Optional[_builtins.bool] = None,
                  tmp_table_size: Optional[_builtins.int] = None,
-                 wait_timeout: Optional[_builtins.int] = None):
+                 wait_timeout: Optional[_builtins.int] = None,
+                 windowing_use_high_precision: Optional[_builtins.bool] = None):
         """
+        :param _builtins.bool automatic_sp_privileges: When enabled, the server automatically grants the EXECUTE and ALTER ROUTINE privileges to the creator of a stored routine and drops them when the routine is dropped.
         :param _builtins.int connect_timeout: The number of seconds that the mysqld server waits for a connect packet before responding with Bad handshake. Example: `10`.
         :param _builtins.str default_time_zone: Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or `SYSTEM` to use the MySQL server default. Example: `+03:00`.
+        :param _builtins.int div_precision_increment: Number of digits by which to increase the scale of the result of division operations performed with the / operator. Default is 4. Example: `6`.
+        :param _builtins.bool end_markers_in_json: Whether optimizer JSON output such as EXPLAIN FORMAT=JSON adds end markers that repeat a structure's key near its closing bracket, making large JSON structures easier to read.
+        :param _builtins.int eq_range_index_dive_limit: The number of equality ranges in a query at or above which the optimizer switches from index dives to index statistics when estimating the number of qualifying rows. 0 means always use index dives. Default is 200. Example: `100`.
         :param _builtins.int group_concat_max_len: The maximum permitted result length in bytes for the GROUP_CONCAT() function. Example: `1024`.
         :param _builtins.int information_schema_stats_expiry: The time, in seconds, before cached statistics expire. Example: `86400`.
         :param _builtins.bool innodb_adaptive_hash_index: Whether InnoDB adaptive hash indexing is enabled. The optimal setting is workload-dependent: it speeds up lookups for some workloads but its internal latch can become a contention point under high concurrency, in which case disabling it can improve throughput.
         :param _builtins.int innodb_change_buffer_max_size: Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25. Example: `30`.
         :param _builtins.int innodb_flush_neighbors: Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent. Example: `0`.
+        :param _builtins.bool innodb_ft_enable_stopword: Whether stopword processing is applied when creating or rebuilding an InnoDB FULLTEXT index. Enabled by default.
+        :param _builtins.int innodb_ft_max_token_size: Maximum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service. Example: `60`.
         :param _builtins.int innodb_ft_min_token_size: Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service. Example: `3`.
+        :param _builtins.int innodb_ft_num_word_optimize: Number of words processed during each OPTIMIZE TABLE operation on an InnoDB FULLTEXT index. Default is 2000. Example: `4000`.
+        :param _builtins.int innodb_ft_result_cache_limit: Maximum memory in bytes used per query for the InnoDB FULLTEXT search query result cache. Aiven sizes this automatically based on the service plan's memory; setting a value overrides the calculated default.
         :param _builtins.str innodb_ft_server_stopword_table: This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables. Example: `db_name/table_name`.
+        :param _builtins.str innodb_ft_user_stopword_table: This option is used to specify your own InnoDB FULLTEXT index stopword list for specific InnoDB tables. Example: `db_name/table_name`.
         :param _builtins.int innodb_io_capacity: The number of I/O operations per second (IOPS) available to InnoDB background tasks, such as flushing pages from the buffer pool and merging data from the change buffer. Set this to a value appropriate for the underlying storage; it must not exceed innodb*io*capacity_max. Example: `2000`.
         :param _builtins.int innodb_io_capacity_max: The maximum number of I/O operations per second (IOPS) that InnoDB background tasks may perform when flushing falls behind. Defaults to twice innodb*io*capacity (minimum 2000). This must be greater than or equal to innodb*io*capacity.
         :param _builtins.int innodb_lock_wait_timeout: The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120. Example: `50`.
         :param _builtins.int innodb_log_buffer_size: The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
         :param _builtins.int innodb_online_alter_log_max_size: The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
+        :param _builtins.bool innodb_optimize_fulltext_only: When enabled, OPTIMIZE TABLE on InnoDB tables only updates the FULLTEXT index instead of rebuilding the table. Intended to be enabled temporarily during FULLTEXT index maintenance and disabled afterwards; while enabled, OPTIMIZE TABLE does not reclaim table space.
         :param _builtins.bool innodb_print_all_deadlocks: When enabled, information about all deadlocks in InnoDB user transactions is recorded in the error log. Disabled by default.
         :param _builtins.int innodb_read_io_threads: The number of I/O threads for read operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service. Example: `10`.
         :param _builtins.bool innodb_rollback_on_timeout: When enabled a transaction timeout causes InnoDB to abort and roll back the entire transaction. Changing this parameter will lead to a restart of the MySQL service.
@@ -13498,10 +14452,17 @@ class MySqlMysqlUserConfigMysql(dict):
         :param _builtins.float long_query_time: The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Example: `10`.
         :param _builtins.int lower_case_table_names: Enum: `0`, `1`. Sets how table and database names are stored and compared. 0 = case-sensitive (default), 1 = names stored lowercase, comparisons are case-insensitive. This option can only be set when creating the service and cannot be changed later. See https://dev.mysql.com/doc/refman/8.0/en/identifier-case-sensitivity.html for details.
         :param _builtins.int max_allowed_packet: Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
+        :param _builtins.int max_connections: The maximum permitted number of simultaneous client connections. Lower this to reserve memory for other work. The value cannot exceed the limit provided by your service plan. Upgrading the plan does not raise a value you have set explicitly, so increase it yourself after an upgrade. Example: `200`.
+        :param _builtins.int max_execution_time: Execution timeout in milliseconds for read-only top-level SELECT statements. 0 (the default) means no timeout. Example: `15000`.
         :param _builtins.int max_heap_table_size: Limits the size of internal in-memory tables. Also set tmp*table*size. Default is 16777216 (16M).
+        :param _builtins.int max_seeks_for_key: Limit on the assumed maximum number of index seeks when looking up rows based on a key. Lowering this value causes the optimizer to prefer index lookups over table scans. Example: `100`.
+        :param _builtins.int max_user_connections: The maximum number of simultaneous connections permitted to any single user account. 0, the default, means no per-account limit. Any other value must be at least 10 below max_connections, so that monitoring and your own admin sessions can still connect when an application saturates its own limit. Aiven's replication and management connections are unaffected however low you set this. Example: `50`.
         :param _builtins.int net_buffer_length: Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service. Example: `16384`.
         :param _builtins.int net_read_timeout: The number of seconds to wait for more data from a connection before aborting the read. Example: `30`.
         :param _builtins.int net_write_timeout: The number of seconds to wait for a block to be written to a connection before aborting the write. Example: `30`.
+        :param _builtins.int optimizer_prune_level: Controls the heuristics applied during query optimization to prune less-promising partial plans from the optimizer search space. 0 disables heuristics (exhaustive search); 1 prunes plans based on the number of rows retrieved. Example: `1`.
+        :param _builtins.int optimizer_search_depth: Maximum depth of search performed by the query optimizer when choosing a join order. Larger values produce better plans for joins over many tables but take longer to compile; 0 lets the optimizer choose the depth automatically. Example: `62`.
+        :param _builtins.str optimizer_switch: Comma-separated list of optimizer flag assignments in the form flag=on|off|default, or the single value `default` to reset all flags. Flags not listed keep their current values. Controls query optimizer behaviors such as index merge, hash join and semijoin strategies. Example: `batched_key_access=on,mrr_cost_based=off`.
         :param _builtins.int performance_schema_events_statements_history_size: The number of rows per thread in the events*statements*history table. Changing this parameter will lead to a restart of the MySQL service.
         :param _builtins.int relay_log_space_limit: The maximum amount of space in bytes to use for all relay logs while replicating from an external migration source. When the limit is reached, the replication I/O thread stops fetching relay log events until the SQL thread has caught up. Raise this to give a large migration a bigger relay-log budget; ensure the service disk is sized accordingly. The setting applies only on the node replicating from the external source; standby nodes always use the Aiven-managed default (the smaller of 5 GiB and 30% of the service disk), which is also used when this option is left unset. Changing this parameter will lead to a restart of the MySQL service.
         :param _builtins.bool slow_query_log: Slow query log enables capturing of slow queries. Setting slow*query*log to false also truncates the mysql.slow_log table.
@@ -13510,11 +14471,20 @@ class MySqlMysqlUserConfigMysql(dict):
         :param _builtins.bool sql_require_primary_key: Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them.
         :param _builtins.int tmp_table_size: Limits the size of internal in-memory tables. Also set max*heap*table_size. Default is 16777216 (16M).
         :param _builtins.int wait_timeout: The number of seconds the server waits for activity on a noninteractive connection before closing it. Example: `28800`.
+        :param _builtins.bool windowing_use_high_precision: Whether window functions are computed to high precision. Disabling this trades exactness for speed in window function evaluation.
         """
+        if automatic_sp_privileges is not None:
+            pulumi.set(__self__, "automatic_sp_privileges", automatic_sp_privileges)
         if connect_timeout is not None:
             pulumi.set(__self__, "connect_timeout", connect_timeout)
         if default_time_zone is not None:
             pulumi.set(__self__, "default_time_zone", default_time_zone)
+        if div_precision_increment is not None:
+            pulumi.set(__self__, "div_precision_increment", div_precision_increment)
+        if end_markers_in_json is not None:
+            pulumi.set(__self__, "end_markers_in_json", end_markers_in_json)
+        if eq_range_index_dive_limit is not None:
+            pulumi.set(__self__, "eq_range_index_dive_limit", eq_range_index_dive_limit)
         if group_concat_max_len is not None:
             pulumi.set(__self__, "group_concat_max_len", group_concat_max_len)
         if information_schema_stats_expiry is not None:
@@ -13525,10 +14495,20 @@ class MySqlMysqlUserConfigMysql(dict):
             pulumi.set(__self__, "innodb_change_buffer_max_size", innodb_change_buffer_max_size)
         if innodb_flush_neighbors is not None:
             pulumi.set(__self__, "innodb_flush_neighbors", innodb_flush_neighbors)
+        if innodb_ft_enable_stopword is not None:
+            pulumi.set(__self__, "innodb_ft_enable_stopword", innodb_ft_enable_stopword)
+        if innodb_ft_max_token_size is not None:
+            pulumi.set(__self__, "innodb_ft_max_token_size", innodb_ft_max_token_size)
         if innodb_ft_min_token_size is not None:
             pulumi.set(__self__, "innodb_ft_min_token_size", innodb_ft_min_token_size)
+        if innodb_ft_num_word_optimize is not None:
+            pulumi.set(__self__, "innodb_ft_num_word_optimize", innodb_ft_num_word_optimize)
+        if innodb_ft_result_cache_limit is not None:
+            pulumi.set(__self__, "innodb_ft_result_cache_limit", innodb_ft_result_cache_limit)
         if innodb_ft_server_stopword_table is not None:
             pulumi.set(__self__, "innodb_ft_server_stopword_table", innodb_ft_server_stopword_table)
+        if innodb_ft_user_stopword_table is not None:
+            pulumi.set(__self__, "innodb_ft_user_stopword_table", innodb_ft_user_stopword_table)
         if innodb_io_capacity is not None:
             pulumi.set(__self__, "innodb_io_capacity", innodb_io_capacity)
         if innodb_io_capacity_max is not None:
@@ -13539,6 +14519,8 @@ class MySqlMysqlUserConfigMysql(dict):
             pulumi.set(__self__, "innodb_log_buffer_size", innodb_log_buffer_size)
         if innodb_online_alter_log_max_size is not None:
             pulumi.set(__self__, "innodb_online_alter_log_max_size", innodb_online_alter_log_max_size)
+        if innodb_optimize_fulltext_only is not None:
+            pulumi.set(__self__, "innodb_optimize_fulltext_only", innodb_optimize_fulltext_only)
         if innodb_print_all_deadlocks is not None:
             pulumi.set(__self__, "innodb_print_all_deadlocks", innodb_print_all_deadlocks)
         if innodb_read_io_threads is not None:
@@ -13561,14 +14543,28 @@ class MySqlMysqlUserConfigMysql(dict):
             pulumi.set(__self__, "lower_case_table_names", lower_case_table_names)
         if max_allowed_packet is not None:
             pulumi.set(__self__, "max_allowed_packet", max_allowed_packet)
+        if max_connections is not None:
+            pulumi.set(__self__, "max_connections", max_connections)
+        if max_execution_time is not None:
+            pulumi.set(__self__, "max_execution_time", max_execution_time)
         if max_heap_table_size is not None:
             pulumi.set(__self__, "max_heap_table_size", max_heap_table_size)
+        if max_seeks_for_key is not None:
+            pulumi.set(__self__, "max_seeks_for_key", max_seeks_for_key)
+        if max_user_connections is not None:
+            pulumi.set(__self__, "max_user_connections", max_user_connections)
         if net_buffer_length is not None:
             pulumi.set(__self__, "net_buffer_length", net_buffer_length)
         if net_read_timeout is not None:
             pulumi.set(__self__, "net_read_timeout", net_read_timeout)
         if net_write_timeout is not None:
             pulumi.set(__self__, "net_write_timeout", net_write_timeout)
+        if optimizer_prune_level is not None:
+            pulumi.set(__self__, "optimizer_prune_level", optimizer_prune_level)
+        if optimizer_search_depth is not None:
+            pulumi.set(__self__, "optimizer_search_depth", optimizer_search_depth)
+        if optimizer_switch is not None:
+            pulumi.set(__self__, "optimizer_switch", optimizer_switch)
         if performance_schema_events_statements_history_size is not None:
             pulumi.set(__self__, "performance_schema_events_statements_history_size", performance_schema_events_statements_history_size)
         if relay_log_space_limit is not None:
@@ -13585,6 +14581,16 @@ class MySqlMysqlUserConfigMysql(dict):
             pulumi.set(__self__, "tmp_table_size", tmp_table_size)
         if wait_timeout is not None:
             pulumi.set(__self__, "wait_timeout", wait_timeout)
+        if windowing_use_high_precision is not None:
+            pulumi.set(__self__, "windowing_use_high_precision", windowing_use_high_precision)
+
+    @_builtins.property
+    @pulumi.getter(name="automaticSpPrivileges")
+    def automatic_sp_privileges(self) -> Optional[_builtins.bool]:
+        """
+        When enabled, the server automatically grants the EXECUTE and ALTER ROUTINE privileges to the creator of a stored routine and drops them when the routine is dropped.
+        """
+        return pulumi.get(self, "automatic_sp_privileges")
 
     @_builtins.property
     @pulumi.getter(name="connectTimeout")
@@ -13601,6 +14607,30 @@ class MySqlMysqlUserConfigMysql(dict):
         Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or `SYSTEM` to use the MySQL server default. Example: `+03:00`.
         """
         return pulumi.get(self, "default_time_zone")
+
+    @_builtins.property
+    @pulumi.getter(name="divPrecisionIncrement")
+    def div_precision_increment(self) -> Optional[_builtins.int]:
+        """
+        Number of digits by which to increase the scale of the result of division operations performed with the / operator. Default is 4. Example: `6`.
+        """
+        return pulumi.get(self, "div_precision_increment")
+
+    @_builtins.property
+    @pulumi.getter(name="endMarkersInJson")
+    def end_markers_in_json(self) -> Optional[_builtins.bool]:
+        """
+        Whether optimizer JSON output such as EXPLAIN FORMAT=JSON adds end markers that repeat a structure's key near its closing bracket, making large JSON structures easier to read.
+        """
+        return pulumi.get(self, "end_markers_in_json")
+
+    @_builtins.property
+    @pulumi.getter(name="eqRangeIndexDiveLimit")
+    def eq_range_index_dive_limit(self) -> Optional[_builtins.int]:
+        """
+        The number of equality ranges in a query at or above which the optimizer switches from index dives to index statistics when estimating the number of qualifying rows. 0 means always use index dives. Default is 200. Example: `100`.
+        """
+        return pulumi.get(self, "eq_range_index_dive_limit")
 
     @_builtins.property
     @pulumi.getter(name="groupConcatMaxLen")
@@ -13643,6 +14673,22 @@ class MySqlMysqlUserConfigMysql(dict):
         return pulumi.get(self, "innodb_flush_neighbors")
 
     @_builtins.property
+    @pulumi.getter(name="innodbFtEnableStopword")
+    def innodb_ft_enable_stopword(self) -> Optional[_builtins.bool]:
+        """
+        Whether stopword processing is applied when creating or rebuilding an InnoDB FULLTEXT index. Enabled by default.
+        """
+        return pulumi.get(self, "innodb_ft_enable_stopword")
+
+    @_builtins.property
+    @pulumi.getter(name="innodbFtMaxTokenSize")
+    def innodb_ft_max_token_size(self) -> Optional[_builtins.int]:
+        """
+        Maximum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service. Example: `60`.
+        """
+        return pulumi.get(self, "innodb_ft_max_token_size")
+
+    @_builtins.property
     @pulumi.getter(name="innodbFtMinTokenSize")
     def innodb_ft_min_token_size(self) -> Optional[_builtins.int]:
         """
@@ -13651,12 +14697,36 @@ class MySqlMysqlUserConfigMysql(dict):
         return pulumi.get(self, "innodb_ft_min_token_size")
 
     @_builtins.property
+    @pulumi.getter(name="innodbFtNumWordOptimize")
+    def innodb_ft_num_word_optimize(self) -> Optional[_builtins.int]:
+        """
+        Number of words processed during each OPTIMIZE TABLE operation on an InnoDB FULLTEXT index. Default is 2000. Example: `4000`.
+        """
+        return pulumi.get(self, "innodb_ft_num_word_optimize")
+
+    @_builtins.property
+    @pulumi.getter(name="innodbFtResultCacheLimit")
+    def innodb_ft_result_cache_limit(self) -> Optional[_builtins.int]:
+        """
+        Maximum memory in bytes used per query for the InnoDB FULLTEXT search query result cache. Aiven sizes this automatically based on the service plan's memory; setting a value overrides the calculated default.
+        """
+        return pulumi.get(self, "innodb_ft_result_cache_limit")
+
+    @_builtins.property
     @pulumi.getter(name="innodbFtServerStopwordTable")
     def innodb_ft_server_stopword_table(self) -> Optional[_builtins.str]:
         """
         This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables. Example: `db_name/table_name`.
         """
         return pulumi.get(self, "innodb_ft_server_stopword_table")
+
+    @_builtins.property
+    @pulumi.getter(name="innodbFtUserStopwordTable")
+    def innodb_ft_user_stopword_table(self) -> Optional[_builtins.str]:
+        """
+        This option is used to specify your own InnoDB FULLTEXT index stopword list for specific InnoDB tables. Example: `db_name/table_name`.
+        """
+        return pulumi.get(self, "innodb_ft_user_stopword_table")
 
     @_builtins.property
     @pulumi.getter(name="innodbIoCapacity")
@@ -13697,6 +14767,14 @@ class MySqlMysqlUserConfigMysql(dict):
         The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
         """
         return pulumi.get(self, "innodb_online_alter_log_max_size")
+
+    @_builtins.property
+    @pulumi.getter(name="innodbOptimizeFulltextOnly")
+    def innodb_optimize_fulltext_only(self) -> Optional[_builtins.bool]:
+        """
+        When enabled, OPTIMIZE TABLE on InnoDB tables only updates the FULLTEXT index instead of rebuilding the table. Intended to be enabled temporarily during FULLTEXT index maintenance and disabled afterwards; while enabled, OPTIMIZE TABLE does not reclaim table space.
+        """
+        return pulumi.get(self, "innodb_optimize_fulltext_only")
 
     @_builtins.property
     @pulumi.getter(name="innodbPrintAllDeadlocks")
@@ -13787,12 +14865,44 @@ class MySqlMysqlUserConfigMysql(dict):
         return pulumi.get(self, "max_allowed_packet")
 
     @_builtins.property
+    @pulumi.getter(name="maxConnections")
+    def max_connections(self) -> Optional[_builtins.int]:
+        """
+        The maximum permitted number of simultaneous client connections. Lower this to reserve memory for other work. The value cannot exceed the limit provided by your service plan. Upgrading the plan does not raise a value you have set explicitly, so increase it yourself after an upgrade. Example: `200`.
+        """
+        return pulumi.get(self, "max_connections")
+
+    @_builtins.property
+    @pulumi.getter(name="maxExecutionTime")
+    def max_execution_time(self) -> Optional[_builtins.int]:
+        """
+        Execution timeout in milliseconds for read-only top-level SELECT statements. 0 (the default) means no timeout. Example: `15000`.
+        """
+        return pulumi.get(self, "max_execution_time")
+
+    @_builtins.property
     @pulumi.getter(name="maxHeapTableSize")
     def max_heap_table_size(self) -> Optional[_builtins.int]:
         """
         Limits the size of internal in-memory tables. Also set tmp*table*size. Default is 16777216 (16M).
         """
         return pulumi.get(self, "max_heap_table_size")
+
+    @_builtins.property
+    @pulumi.getter(name="maxSeeksForKey")
+    def max_seeks_for_key(self) -> Optional[_builtins.int]:
+        """
+        Limit on the assumed maximum number of index seeks when looking up rows based on a key. Lowering this value causes the optimizer to prefer index lookups over table scans. Example: `100`.
+        """
+        return pulumi.get(self, "max_seeks_for_key")
+
+    @_builtins.property
+    @pulumi.getter(name="maxUserConnections")
+    def max_user_connections(self) -> Optional[_builtins.int]:
+        """
+        The maximum number of simultaneous connections permitted to any single user account. 0, the default, means no per-account limit. Any other value must be at least 10 below max_connections, so that monitoring and your own admin sessions can still connect when an application saturates its own limit. Aiven's replication and management connections are unaffected however low you set this. Example: `50`.
+        """
+        return pulumi.get(self, "max_user_connections")
 
     @_builtins.property
     @pulumi.getter(name="netBufferLength")
@@ -13817,6 +14927,30 @@ class MySqlMysqlUserConfigMysql(dict):
         The number of seconds to wait for a block to be written to a connection before aborting the write. Example: `30`.
         """
         return pulumi.get(self, "net_write_timeout")
+
+    @_builtins.property
+    @pulumi.getter(name="optimizerPruneLevel")
+    def optimizer_prune_level(self) -> Optional[_builtins.int]:
+        """
+        Controls the heuristics applied during query optimization to prune less-promising partial plans from the optimizer search space. 0 disables heuristics (exhaustive search); 1 prunes plans based on the number of rows retrieved. Example: `1`.
+        """
+        return pulumi.get(self, "optimizer_prune_level")
+
+    @_builtins.property
+    @pulumi.getter(name="optimizerSearchDepth")
+    def optimizer_search_depth(self) -> Optional[_builtins.int]:
+        """
+        Maximum depth of search performed by the query optimizer when choosing a join order. Larger values produce better plans for joins over many tables but take longer to compile; 0 lets the optimizer choose the depth automatically. Example: `62`.
+        """
+        return pulumi.get(self, "optimizer_search_depth")
+
+    @_builtins.property
+    @pulumi.getter(name="optimizerSwitch")
+    def optimizer_switch(self) -> Optional[_builtins.str]:
+        """
+        Comma-separated list of optimizer flag assignments in the form flag=on|off|default, or the single value `default` to reset all flags. Flags not listed keep their current values. Controls query optimizer behaviors such as index merge, hash join and semijoin strategies. Example: `batched_key_access=on,mrr_cost_based=off`.
+        """
+        return pulumi.get(self, "optimizer_switch")
 
     @_builtins.property
     @pulumi.getter(name="performanceSchemaEventsStatementsHistorySize")
@@ -13881,6 +15015,14 @@ class MySqlMysqlUserConfigMysql(dict):
         The number of seconds the server waits for activity on a noninteractive connection before closing it. Example: `28800`.
         """
         return pulumi.get(self, "wait_timeout")
+
+    @_builtins.property
+    @pulumi.getter(name="windowingUseHighPrecision")
+    def windowing_use_high_precision(self) -> Optional[_builtins.bool]:
+        """
+        Whether window functions are computed to high precision. Disabling this trades exactness for speed in window function evaluation.
+        """
+        return pulumi.get(self, "windowing_use_high_precision")
 
 
 @pulumi.output_type
@@ -15975,12 +17117,16 @@ class OpenSearchOpensearchUserConfigOpensearch(dict):
             suggest = "knn_memory_circuit_breaker_enabled"
         elif key == "knnMemoryCircuitBreakerLimit":
             suggest = "knn_memory_circuit_breaker_limit"
+        elif key == "mlCommonsConnectorAccessControlEnabled":
+            suggest = "ml_commons_connector_access_control_enabled"
         elif key == "mlCommonsModelAccessControlEnabled":
             suggest = "ml_commons_model_access_control_enabled"
         elif key == "mlCommonsNativeMemoryThreshold":
             suggest = "ml_commons_native_memory_threshold"
         elif key == "mlCommonsOnlyRunOnMlNode":
             suggest = "ml_commons_only_run_on_ml_node"
+        elif key == "mlCommonsTrustedConnectorEndpointsRegexes":
+            suggest = "ml_commons_trusted_connector_endpoints_regexes"
         elif key == "nodeSearchCacheSize":
             suggest = "node_search_cache_size"
         elif key == "overrideMainResponseVersion":
@@ -16072,9 +17218,11 @@ class OpenSearchOpensearchUserConfigOpensearch(dict):
                  ism_history_rollover_retention_period: Optional[_builtins.int] = None,
                  knn_memory_circuit_breaker_enabled: Optional[_builtins.bool] = None,
                  knn_memory_circuit_breaker_limit: Optional[_builtins.int] = None,
+                 ml_commons_connector_access_control_enabled: Optional[_builtins.bool] = None,
                  ml_commons_model_access_control_enabled: Optional[_builtins.bool] = None,
                  ml_commons_native_memory_threshold: Optional[_builtins.int] = None,
                  ml_commons_only_run_on_ml_node: Optional[_builtins.bool] = None,
+                 ml_commons_trusted_connector_endpoints_regexes: Optional[Sequence[_builtins.str]] = None,
                  node_search_cache_size: Optional[_builtins.str] = None,
                  override_main_response_version: Optional[_builtins.bool] = None,
                  plugins_alerting_filter_by_backend_roles: Optional[_builtins.bool] = None,
@@ -16132,9 +17280,11 @@ class OpenSearchOpensearchUserConfigOpensearch(dict):
         :param _builtins.int ism_history_rollover_retention_period: How long audit history indices are kept in days. Example: `30`.
         :param _builtins.bool knn_memory_circuit_breaker_enabled: Enable or disable KNN memory circuit breaker. Defaults to true.
         :param _builtins.int knn_memory_circuit_breaker_limit: Maximum amount of memory in percentage that can be used for the KNN index. Defaults to 50% of the JVM heap size. 0 is used to set it to null which can be used to invalidate caches.
+        :param _builtins.bool ml_commons_connector_access_control_enabled: When set to true, the setting allows admins to control access and permissions to the connector API using backend_roles. Defaults to false.
         :param _builtins.bool ml_commons_model_access_control_enabled: Enable or disable model access control for ML Commons. When enabled, access to ML models is controlled by security permissions. Defaults to false.
         :param _builtins.int ml_commons_native_memory_threshold: Native memory threshold percentage for ML Commons. Controls the maximum percentage of native memory that can be used by ML Commons operations. Defaults to 90%.
         :param _builtins.bool ml_commons_only_run_on_ml_node: Enable or disable running ML Commons tasks only on ML nodes. When enabled, ML tasks will only execute on nodes designated as ML nodes. Defaults to true.
+        :param Sequence[_builtins.str] ml_commons_trusted_connector_endpoints_regexes: Adds the trusted endpoints to the cluster settings. Supports Java regex expressions.
         :param _builtins.str node_search_cache_size: Defines a limit of how much total remote data can be referenced as a ratio of the size of the disk reserved for the file cache. This is designed to be a safeguard to prevent oversubscribing a cluster. Defaults to 5gb. Requires restarting all OpenSearch nodes.
         :param _builtins.bool override_main_response_version: Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default is false. Deprecated and ignored for service version 3.3 and higher.
         :param _builtins.bool plugins_alerting_filter_by_backend_roles: Enable or disable filtering of alerting by backend roles. Requires Security plugin. Defaults to false.
@@ -16228,12 +17378,16 @@ class OpenSearchOpensearchUserConfigOpensearch(dict):
             pulumi.set(__self__, "knn_memory_circuit_breaker_enabled", knn_memory_circuit_breaker_enabled)
         if knn_memory_circuit_breaker_limit is not None:
             pulumi.set(__self__, "knn_memory_circuit_breaker_limit", knn_memory_circuit_breaker_limit)
+        if ml_commons_connector_access_control_enabled is not None:
+            pulumi.set(__self__, "ml_commons_connector_access_control_enabled", ml_commons_connector_access_control_enabled)
         if ml_commons_model_access_control_enabled is not None:
             pulumi.set(__self__, "ml_commons_model_access_control_enabled", ml_commons_model_access_control_enabled)
         if ml_commons_native_memory_threshold is not None:
             pulumi.set(__self__, "ml_commons_native_memory_threshold", ml_commons_native_memory_threshold)
         if ml_commons_only_run_on_ml_node is not None:
             pulumi.set(__self__, "ml_commons_only_run_on_ml_node", ml_commons_only_run_on_ml_node)
+        if ml_commons_trusted_connector_endpoints_regexes is not None:
+            pulumi.set(__self__, "ml_commons_trusted_connector_endpoints_regexes", ml_commons_trusted_connector_endpoints_regexes)
         if node_search_cache_size is not None:
             pulumi.set(__self__, "node_search_cache_size", node_search_cache_size)
         if override_main_response_version is not None:
@@ -16562,6 +17716,14 @@ class OpenSearchOpensearchUserConfigOpensearch(dict):
         return pulumi.get(self, "knn_memory_circuit_breaker_limit")
 
     @_builtins.property
+    @pulumi.getter(name="mlCommonsConnectorAccessControlEnabled")
+    def ml_commons_connector_access_control_enabled(self) -> Optional[_builtins.bool]:
+        """
+        When set to true, the setting allows admins to control access and permissions to the connector API using backend_roles. Defaults to false.
+        """
+        return pulumi.get(self, "ml_commons_connector_access_control_enabled")
+
+    @_builtins.property
     @pulumi.getter(name="mlCommonsModelAccessControlEnabled")
     def ml_commons_model_access_control_enabled(self) -> Optional[_builtins.bool]:
         """
@@ -16584,6 +17746,14 @@ class OpenSearchOpensearchUserConfigOpensearch(dict):
         Enable or disable running ML Commons tasks only on ML nodes. When enabled, ML tasks will only execute on nodes designated as ML nodes. Defaults to true.
         """
         return pulumi.get(self, "ml_commons_only_run_on_ml_node")
+
+    @_builtins.property
+    @pulumi.getter(name="mlCommonsTrustedConnectorEndpointsRegexes")
+    def ml_commons_trusted_connector_endpoints_regexes(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Adds the trusted endpoints to the cluster settings. Supports Java regex expressions.
+        """
+        return pulumi.get(self, "ml_commons_trusted_connector_endpoints_regexes")
 
     @_builtins.property
     @pulumi.getter(name="nodeSearchCacheSize")
@@ -19526,7 +20696,7 @@ class OrganizationPermissionPermission(dict):
                  create_time: Optional[_builtins.str] = None,
                  update_time: Optional[_builtins.str] = None):
         """
-        :param Sequence[_builtins.str] permissions: List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant". The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:sustainability:read`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:project:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:metrics:read`, `service:secrets:read` and `service:users:write`.
+        :param Sequence[_builtins.str] permissions: List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant". The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:event_logs:read`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:sustainability:read`, `organization:users:write`, `project:ai_gateway_keys:read`, `project:ai_gateway_keys:write`, `project:audit_logs:read`, `project:event_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:project:admin`, `role:project:read`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:metrics:read`, `service:secrets:read` and `service:users:write`.
         :param _builtins.str principal_id: ID of the user or group to grant permissions to. Only active users who have accepted an [invite](https://aiven.io/docs/platform/howto/manage-org-users) to join the organization can be granted permissions.
         :param _builtins.str principal_type: An enumeration. The possible values are `user` and `user_group`.
         :param _builtins.str create_time: Create Time.
@@ -19544,7 +20714,7 @@ class OrganizationPermissionPermission(dict):
     @pulumi.getter
     def permissions(self) -> Sequence[_builtins.str]:
         """
-        List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant". The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:audit_logs:read`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:sustainability:read`, `organization:users:write`, `project:audit_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:project:admin`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:metrics:read`, `service:secrets:read` and `service:users:write`.
+        List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant". The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:event_logs:read`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:sustainability:read`, `organization:users:write`, `project:ai_gateway_keys:read`, `project:ai_gateway_keys:write`, `project:audit_logs:read`, `project:event_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:project:admin`, `role:project:read`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:metrics:read`, `service:secrets:read` and `service:users:write`.
         """
         return pulumi.get(self, "permissions")
 
@@ -19804,6 +20974,142 @@ class OrganizationUserGroupMemberTimeouts(dict):
         A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
         """
         return pulumi.get(self, "create")
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+
+@pulumi.output_type
+class OrganizationUserGroupTimeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[_builtins.str] = None,
+                 default: Optional[_builtins.str] = None,
+                 delete: Optional[_builtins.str] = None,
+                 read: Optional[_builtins.str] = None,
+                 update: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param _builtins.str default: Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+        :param _builtins.str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param _builtins.str update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if default is not None:
+            pulumi.set(__self__, "default", default)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @_builtins.property
+    @pulumi.getter
+    @_utilities.deprecated("""Use operation-specific timeouts instead. This field will be removed in the next major version.""")
+    def default(self) -> Optional[_builtins.str]:
+        """
+        Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+        """
+        return pulumi.get(self, "default")
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+
+@pulumi.output_type
+class OrganizationVpcTimeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[_builtins.str] = None,
+                 default: Optional[_builtins.str] = None,
+                 delete: Optional[_builtins.str] = None,
+                 read: Optional[_builtins.str] = None,
+                 update: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param _builtins.str default: Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+        :param _builtins.str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param _builtins.str update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if default is not None:
+            pulumi.set(__self__, "default", default)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @_builtins.property
+    @pulumi.getter
+    @_utilities.deprecated("""Use operation-specific timeouts instead. This field will be removed in the next major version.""")
+    def default(self) -> Optional[_builtins.str]:
+        """
+        Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+        """
+        return pulumi.get(self, "default")
 
     @_builtins.property
     @pulumi.getter
@@ -20450,6 +21756,8 @@ class PgPgUserConfig(dict):
             suggest = "pg_service_to_fork_from"
         elif key == "pgStatMonitorEnable":
             suggest = "pg_stat_monitor_enable"
+        elif key == "pgStatPlansEnable":
+            suggest = "pg_stat_plans_enable"
         elif key == "pgVersion":
             suggest = "pg_version"
         elif key == "privateAccess":
@@ -20508,6 +21816,7 @@ class PgPgUserConfig(dict):
                  pg_read_replica: Optional[_builtins.bool] = None,
                  pg_service_to_fork_from: Optional[_builtins.str] = None,
                  pg_stat_monitor_enable: Optional[_builtins.bool] = None,
+                 pg_stat_plans_enable: Optional[_builtins.bool] = None,
                  pg_version: Optional[_builtins.str] = None,
                  pgaudit: Optional['outputs.PgPgUserConfigPgaudit'] = None,
                  pgbouncer: Optional['outputs.PgPgUserConfigPgbouncer'] = None,
@@ -20546,6 +21855,7 @@ class PgPgUserConfig(dict):
         :param _builtins.bool pg_read_replica: Should the service which is being forked be a read replica (deprecated, use read_replica service integration instead).
         :param _builtins.str pg_service_to_fork_from: Name of the PG Service from which to fork (deprecated, use service*to*fork_from). This has effect only when a new service is being created. Example: `anotherservicename`.
         :param _builtins.bool pg_stat_monitor_enable: Enable the pg*stat*monitor extension. Changing this parameter causes a service restart. When this extension is enabled, pg*stat*statements results for utility commands are unreliable. Default: `false`.
+        :param _builtins.bool pg_stat_plans_enable: Enable the pg*stat*plans extension. Changing this parameter causes a service restart. Tracks execution plans for SQL queries. Default: `false`.
         :param _builtins.str pg_version: Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`, `17`, `18`, and newer. PostgreSQL major version.
         :param 'PgPgUserConfigPgauditArgs' pgaudit: System-wide settings for the pgaudit extension
         :param 'PgPgUserConfigPgbouncerArgs' pgbouncer: PGBouncer connection pooling settings
@@ -20602,6 +21912,8 @@ class PgPgUserConfig(dict):
             pulumi.set(__self__, "pg_service_to_fork_from", pg_service_to_fork_from)
         if pg_stat_monitor_enable is not None:
             pulumi.set(__self__, "pg_stat_monitor_enable", pg_stat_monitor_enable)
+        if pg_stat_plans_enable is not None:
+            pulumi.set(__self__, "pg_stat_plans_enable", pg_stat_plans_enable)
         if pg_version is not None:
             pulumi.set(__self__, "pg_version", pg_version)
         if pgaudit is not None:
@@ -20792,6 +22104,14 @@ class PgPgUserConfig(dict):
         Enable the pg*stat*monitor extension. Changing this parameter causes a service restart. When this extension is enabled, pg*stat*statements results for utility commands are unreliable. Default: `false`.
         """
         return pulumi.get(self, "pg_stat_monitor_enable")
+
+    @_builtins.property
+    @pulumi.getter(name="pgStatPlansEnable")
+    def pg_stat_plans_enable(self) -> Optional[_builtins.bool]:
+        """
+        Enable the pg*stat*plans extension. Changing this parameter causes a service restart. Tracks execution plans for SQL queries. Default: `false`.
+        """
+        return pulumi.get(self, "pg_stat_plans_enable")
 
     @_builtins.property
     @pulumi.getter(name="pgVersion")
@@ -21196,6 +22516,8 @@ class PgPgUserConfigPg(dict):
             suggest = "pg_stat_monitor_dot_pgsm_enable_query_plan"
         elif key == "pgStatMonitorDotPgsmMaxBuckets":
             suggest = "pg_stat_monitor_dot_pgsm_max_buckets"
+        elif key == "pgStatPlansDotTrack":
+            suggest = "pg_stat_plans_dot_track"
         elif key == "pgStatStatementsDotTrack":
             suggest = "pg_stat_statements_dot_track"
         elif key == "synchronousCommit":
@@ -21275,6 +22597,7 @@ class PgPgUserConfigPg(dict):
                  pg_partman_bgw_dot_role: Optional[_builtins.str] = None,
                  pg_stat_monitor_dot_pgsm_enable_query_plan: Optional[_builtins.bool] = None,
                  pg_stat_monitor_dot_pgsm_max_buckets: Optional[_builtins.int] = None,
+                 pg_stat_plans_dot_track: Optional[_builtins.str] = None,
                  pg_stat_statements_dot_track: Optional[_builtins.str] = None,
                  synchronous_commit: Optional[_builtins.str] = None,
                  temp_file_limit: Optional[_builtins.int] = None,
@@ -21306,7 +22629,7 @@ class PgPgUserConfigPg(dict):
         :param _builtins.int io_max_combine_limit: EXPERIMENTAL: Controls the largest I/O size in operations that combine I/O in 8kB units, and silently limits the user-settable parameter io*combine*limit. Version 18 and up only. Changing this parameter causes a service restart. Default: `16`.
         :param _builtins.int io_max_concurrency: EXPERIMENTAL: Controls the maximum number of I/O operations that one process can execute simultaneously. Version 18 and up only. Changing this parameter causes a service restart. Default: `-1`.
         :param _builtins.str io_method: Enum: `io_uring`, `sync`, `worker`. EXPERIMENTAL: Controls the maximum number of I/O operations that one process can execute simultaneously. Version 18 and up only. Changing this parameter causes a service restart. Default: `worker`.
-        :param _builtins.int io_workers: EXPERIMENTAL: Number of IO worker processes, for io_method=worker. Version 18 and up only. Changing this parameter causes a service restart. Default: `3`.
+        :param _builtins.int io_workers: EXPERIMENTAL: Number of IO worker processes, for io_method=worker. Version 18 and up only.
         :param _builtins.bool jit: Controls system-wide use of Just-in-Time Compilation (JIT).
         :param _builtins.int log_autovacuum_min_duration: Causes each action executed by autovacuum to be logged if it ran for at least the specified number of milliseconds. Setting this to zero logs all autovacuum actions. Minus-one disables logging autovacuum actions. The default is `1000`.
         :param _builtins.str log_error_verbosity: Enum: `DEFAULT`, `TERSE`, `VERBOSE`. Controls the amount of detail written in the server log for each message that is logged.
@@ -21332,8 +22655,9 @@ class PgPgUserConfigPg(dict):
         :param _builtins.str password_encryption: Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords.
         :param _builtins.int pg_partman_bgw_dot_interval: Sets the time interval in seconds to run pg_partman's scheduled tasks. The default is `3600`. Example: `3600`.
         :param _builtins.str pg_partman_bgw_dot_role: Controls which role to use for pg_partman's scheduled background tasks. Example: `myrolename`.
-        :param _builtins.bool pg_stat_monitor_dot_pgsm_enable_query_plan: Enables or disables query plan monitoring. Changing this parameter causes a service restart. Only available for PostgreSQL 13+.
+        :param _builtins.bool pg_stat_monitor_dot_pgsm_enable_query_plan: Enables or disables query plan monitoring. Only available for PostgreSQL 13+.
         :param _builtins.int pg_stat_monitor_dot_pgsm_max_buckets: Sets the maximum number of buckets. Changing this parameter causes a service restart. Only available for PostgreSQL 13+. Example: `10`.
+        :param _builtins.str pg_stat_plans_dot_track: Enum: `all`, `none`, `top`. Controls which statements' plans are tracked. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable plan tracking. The default is `top`.
         :param _builtins.str pg_stat_statements_dot_track: Enum: `all`, `none`, `top`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default is `top`.
         :param _builtins.str synchronous_commit: Enum: `local`, `off`, `on`, `remote_apply`, `remote_write`. Sets the current transaction's synchronization level. The default is `off`. This setting takes precedence over `synchronous_replication`.
         :param _builtins.int temp_file_limit: PostgreSQL temporary file limit in KiB, -1 for unlimited.
@@ -21441,6 +22765,8 @@ class PgPgUserConfigPg(dict):
             pulumi.set(__self__, "pg_stat_monitor_dot_pgsm_enable_query_plan", pg_stat_monitor_dot_pgsm_enable_query_plan)
         if pg_stat_monitor_dot_pgsm_max_buckets is not None:
             pulumi.set(__self__, "pg_stat_monitor_dot_pgsm_max_buckets", pg_stat_monitor_dot_pgsm_max_buckets)
+        if pg_stat_plans_dot_track is not None:
+            pulumi.set(__self__, "pg_stat_plans_dot_track", pg_stat_plans_dot_track)
         if pg_stat_statements_dot_track is not None:
             pulumi.set(__self__, "pg_stat_statements_dot_track", pg_stat_statements_dot_track)
         if synchronous_commit is not None:
@@ -21626,7 +22952,7 @@ class PgPgUserConfigPg(dict):
     @pulumi.getter(name="ioWorkers")
     def io_workers(self) -> Optional[_builtins.int]:
         """
-        EXPERIMENTAL: Number of IO worker processes, for io_method=worker. Version 18 and up only. Changing this parameter causes a service restart. Default: `3`.
+        EXPERIMENTAL: Number of IO worker processes, for io_method=worker. Version 18 and up only.
         """
         return pulumi.get(self, "io_workers")
 
@@ -21834,7 +23160,7 @@ class PgPgUserConfigPg(dict):
     @pulumi.getter(name="pgStatMonitorDotPgsmEnableQueryPlan")
     def pg_stat_monitor_dot_pgsm_enable_query_plan(self) -> Optional[_builtins.bool]:
         """
-        Enables or disables query plan monitoring. Changing this parameter causes a service restart. Only available for PostgreSQL 13+.
+        Enables or disables query plan monitoring. Only available for PostgreSQL 13+.
         """
         return pulumi.get(self, "pg_stat_monitor_dot_pgsm_enable_query_plan")
 
@@ -21845,6 +23171,14 @@ class PgPgUserConfigPg(dict):
         Sets the maximum number of buckets. Changing this parameter causes a service restart. Only available for PostgreSQL 13+. Example: `10`.
         """
         return pulumi.get(self, "pg_stat_monitor_dot_pgsm_max_buckets")
+
+    @_builtins.property
+    @pulumi.getter(name="pgStatPlansDotTrack")
+    def pg_stat_plans_dot_track(self) -> Optional[_builtins.str]:
+        """
+        Enum: `all`, `none`, `top`. Controls which statements' plans are tracked. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable plan tracking. The default is `top`.
+        """
+        return pulumi.get(self, "pg_stat_plans_dot_track")
 
     @_builtins.property
     @pulumi.getter(name="pgStatStatementsDotTrack")
@@ -22255,10 +23589,14 @@ class PgPgUserConfigPgbouncer(dict):
             suggest = "max_prepared_statements"
         elif key == "minPoolSize":
             suggest = "min_pool_size"
+        elif key == "serverConnectTimeout":
+            suggest = "server_connect_timeout"
         elif key == "serverIdleTimeout":
             suggest = "server_idle_timeout"
         elif key == "serverLifetime":
             suggest = "server_lifetime"
+        elif key == "serverLoginRetry":
+            suggest = "server_login_retry"
         elif key == "serverResetQueryAlways":
             suggest = "server_reset_query_always"
 
@@ -22281,8 +23619,10 @@ class PgPgUserConfigPgbouncer(dict):
                  ignore_startup_parameters: Optional[Sequence[_builtins.str]] = None,
                  max_prepared_statements: Optional[_builtins.int] = None,
                  min_pool_size: Optional[_builtins.int] = None,
+                 server_connect_timeout: Optional[_builtins.float] = None,
                  server_idle_timeout: Optional[_builtins.int] = None,
                  server_lifetime: Optional[_builtins.int] = None,
+                 server_login_retry: Optional[_builtins.float] = None,
                  server_reset_query_always: Optional[_builtins.bool] = None):
         """
         :param _builtins.int autodb_idle_timeout: If the automatically created database pools have been unused this many seconds, they are freed. If 0 then timeout is disabled. (seconds). Default: `3600`.
@@ -22292,8 +23632,10 @@ class PgPgUserConfigPgbouncer(dict):
         :param Sequence[_builtins.str] ignore_startup_parameters: List of parameters to ignore when given in startup packet.
         :param _builtins.int max_prepared_statements: PgBouncer tracks protocol-level named prepared statements related commands sent by the client in transaction and statement pooling modes when max*prepared*statements is set to a non-zero value. Setting it to 0 disables prepared statements. max*prepared*statements defaults to 100, and its maximum is 3000. Default: `100`.
         :param _builtins.int min_pool_size: Add more server connections to pool if below this number. Improves behavior when usual load comes suddenly back after period of total inactivity. The value is effectively capped at the pool size. Default: `0`.
+        :param _builtins.float server_connect_timeout: If connection and login don’t finish in this amount of time, the connection will be closed. (seconds).
         :param _builtins.int server_idle_timeout: If a server connection has been idle more than this many seconds it will be dropped. If 0 then timeout is disabled. (seconds). Default: `600`.
         :param _builtins.int server_lifetime: The pooler will close an unused server connection that has been connected longer than this. (seconds). Default: `3600`.
+        :param _builtins.float server_login_retry: If login to the server failed, because of failure to connect or from authentication, the pooler waits this much before retrying to connect. During the waiting interval, new clients trying to connect to the failing server will get an error immediately without another connection attempt. (seconds).
         :param _builtins.bool server_reset_query_always: Run server*reset*query (DISCARD ALL) in all pooling modes. Default: `false`.
         """
         if autodb_idle_timeout is not None:
@@ -22310,10 +23652,14 @@ class PgPgUserConfigPgbouncer(dict):
             pulumi.set(__self__, "max_prepared_statements", max_prepared_statements)
         if min_pool_size is not None:
             pulumi.set(__self__, "min_pool_size", min_pool_size)
+        if server_connect_timeout is not None:
+            pulumi.set(__self__, "server_connect_timeout", server_connect_timeout)
         if server_idle_timeout is not None:
             pulumi.set(__self__, "server_idle_timeout", server_idle_timeout)
         if server_lifetime is not None:
             pulumi.set(__self__, "server_lifetime", server_lifetime)
+        if server_login_retry is not None:
+            pulumi.set(__self__, "server_login_retry", server_login_retry)
         if server_reset_query_always is not None:
             pulumi.set(__self__, "server_reset_query_always", server_reset_query_always)
 
@@ -22374,6 +23720,14 @@ class PgPgUserConfigPgbouncer(dict):
         return pulumi.get(self, "min_pool_size")
 
     @_builtins.property
+    @pulumi.getter(name="serverConnectTimeout")
+    def server_connect_timeout(self) -> Optional[_builtins.float]:
+        """
+        If connection and login don’t finish in this amount of time, the connection will be closed. (seconds).
+        """
+        return pulumi.get(self, "server_connect_timeout")
+
+    @_builtins.property
     @pulumi.getter(name="serverIdleTimeout")
     def server_idle_timeout(self) -> Optional[_builtins.int]:
         """
@@ -22388,6 +23742,14 @@ class PgPgUserConfigPgbouncer(dict):
         The pooler will close an unused server connection that has been connected longer than this. (seconds). Default: `3600`.
         """
         return pulumi.get(self, "server_lifetime")
+
+    @_builtins.property
+    @pulumi.getter(name="serverLoginRetry")
+    def server_login_retry(self) -> Optional[_builtins.float]:
+        """
+        If login to the server failed, because of failure to connect or from authentication, the pooler waits this much before retrying to connect. During the waiting interval, new clients trying to connect to the failing server will get an error immediately without another connection attempt. (seconds).
+        """
+        return pulumi.get(self, "server_login_retry")
 
     @_builtins.property
     @pulumi.getter(name="serverResetQueryAlways")
@@ -23569,6 +24931,10 @@ class ServiceIntegrationDatadogUserConfig(dict):
         suggest = None
         if key == "datadogDbmEnabled":
             suggest = "datadog_dbm_enabled"
+        elif key == "datadogFunctionMetricsEnabled":
+            suggest = "datadog_function_metrics_enabled"
+        elif key == "datadogPgRelations":
+            suggest = "datadog_pg_relations"
         elif key == "datadogPgbouncerEnabled":
             suggest = "datadog_pgbouncer_enabled"
         elif key == "datadogTags":
@@ -23601,6 +24967,8 @@ class ServiceIntegrationDatadogUserConfig(dict):
 
     def __init__(__self__, *,
                  datadog_dbm_enabled: Optional[_builtins.bool] = None,
+                 datadog_function_metrics_enabled: Optional[_builtins.bool] = None,
+                 datadog_pg_relations: Optional[Sequence['outputs.ServiceIntegrationDatadogUserConfigDatadogPgRelation']] = None,
                  datadog_pgbouncer_enabled: Optional[_builtins.bool] = None,
                  datadog_tags: Optional[Sequence['outputs.ServiceIntegrationDatadogUserConfigDatadogTag']] = None,
                  exclude_consumer_groups: Optional[Sequence[_builtins.str]] = None,
@@ -23614,6 +24982,8 @@ class ServiceIntegrationDatadogUserConfig(dict):
                  redis: Optional['outputs.ServiceIntegrationDatadogUserConfigRedis'] = None):
         """
         :param _builtins.bool datadog_dbm_enabled: Enable Datadog Database Monitoring.
+        :param _builtins.bool datadog_function_metrics_enabled: Enable collection of PL/pgSQL function metrics from pg*stat*user_functions. Requires `track_functions` to be set to `pl` or `all` in the service configuration.
+        :param Sequence['ServiceIntegrationDatadogUserConfigDatadogPgRelationArgs'] datadog_pg_relations: Relations to collect PostgreSQL relation metrics for, such as table size, index statistics, row counts, vacuum ages and locks. No relation metrics are collected when unset
         :param _builtins.bool datadog_pgbouncer_enabled: Enable Datadog PgBouncer Metric Tracking.
         :param Sequence['ServiceIntegrationDatadogUserConfigDatadogTagArgs'] datadog_tags: Custom tags provided by user
         :param Sequence[_builtins.str] exclude_consumer_groups: List of custom metrics.
@@ -23628,6 +24998,10 @@ class ServiceIntegrationDatadogUserConfig(dict):
         """
         if datadog_dbm_enabled is not None:
             pulumi.set(__self__, "datadog_dbm_enabled", datadog_dbm_enabled)
+        if datadog_function_metrics_enabled is not None:
+            pulumi.set(__self__, "datadog_function_metrics_enabled", datadog_function_metrics_enabled)
+        if datadog_pg_relations is not None:
+            pulumi.set(__self__, "datadog_pg_relations", datadog_pg_relations)
         if datadog_pgbouncer_enabled is not None:
             pulumi.set(__self__, "datadog_pgbouncer_enabled", datadog_pgbouncer_enabled)
         if datadog_tags is not None:
@@ -23658,6 +25032,22 @@ class ServiceIntegrationDatadogUserConfig(dict):
         Enable Datadog Database Monitoring.
         """
         return pulumi.get(self, "datadog_dbm_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="datadogFunctionMetricsEnabled")
+    def datadog_function_metrics_enabled(self) -> Optional[_builtins.bool]:
+        """
+        Enable collection of PL/pgSQL function metrics from pg*stat*user_functions. Requires `track_functions` to be set to `pl` or `all` in the service configuration.
+        """
+        return pulumi.get(self, "datadog_function_metrics_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="datadogPgRelations")
+    def datadog_pg_relations(self) -> Optional[Sequence['outputs.ServiceIntegrationDatadogUserConfigDatadogPgRelation']]:
+        """
+        Relations to collect PostgreSQL relation metrics for, such as table size, index statistics, row counts, vacuum ages and locks. No relation metrics are collected when unset
+        """
+        return pulumi.get(self, "datadog_pg_relations")
 
     @_builtins.property
     @pulumi.getter(name="datadogPgbouncerEnabled")
@@ -23746,6 +25136,80 @@ class ServiceIntegrationDatadogUserConfig(dict):
         Datadog Redis Options
         """
         return pulumi.get(self, "redis")
+
+
+@pulumi.output_type
+class ServiceIntegrationDatadogUserConfigDatadogPgRelation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "relationName":
+            suggest = "relation_name"
+        elif key == "relationRegex":
+            suggest = "relation_regex"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceIntegrationDatadogUserConfigDatadogPgRelation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceIntegrationDatadogUserConfigDatadogPgRelation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceIntegrationDatadogUserConfigDatadogPgRelation.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 relation_name: Optional[_builtins.str] = None,
+                 relation_regex: Optional[_builtins.str] = None,
+                 relkinds: Optional[Sequence[_builtins.str]] = None,
+                 schemas: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str relation_name: Name of a single relation to collect metrics for. Example: `orders`.
+        :param _builtins.str relation_regex: Regular expression matching the names of the relations to collect metrics for. Example: `^orders_.*`.
+        :param Sequence[_builtins.str] relkinds: Only collect lock metrics for these relation kinds. Applies to ordinary tables when unset. Accepted values are the `relkind` values of `pg_class`: `r` (ordinary table), `i` (index), `S` (sequence), `t` (TOAST table), `m` (materialized view), `c` (composite type), `f` (foreign table), `p` (partitioned table).
+        :param Sequence[_builtins.str] schemas: Only collect metrics for relations in these schemas. Applies to all schemas when unset.
+        """
+        if relation_name is not None:
+            pulumi.set(__self__, "relation_name", relation_name)
+        if relation_regex is not None:
+            pulumi.set(__self__, "relation_regex", relation_regex)
+        if relkinds is not None:
+            pulumi.set(__self__, "relkinds", relkinds)
+        if schemas is not None:
+            pulumi.set(__self__, "schemas", schemas)
+
+    @_builtins.property
+    @pulumi.getter(name="relationName")
+    def relation_name(self) -> Optional[_builtins.str]:
+        """
+        Name of a single relation to collect metrics for. Example: `orders`.
+        """
+        return pulumi.get(self, "relation_name")
+
+    @_builtins.property
+    @pulumi.getter(name="relationRegex")
+    def relation_regex(self) -> Optional[_builtins.str]:
+        """
+        Regular expression matching the names of the relations to collect metrics for. Example: `^orders_.*`.
+        """
+        return pulumi.get(self, "relation_regex")
+
+    @_builtins.property
+    @pulumi.getter
+    def relkinds(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Only collect lock metrics for these relation kinds. Applies to ordinary tables when unset. Accepted values are the `relkind` values of `pg_class`: `r` (ordinary table), `i` (index), `S` (sequence), `t` (TOAST table), `m` (materialized view), `c` (composite type), `f` (foreign table), `p` (partitioned table).
+        """
+        return pulumi.get(self, "relkinds")
+
+    @_builtins.property
+    @pulumi.getter
+    def schemas(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Only collect metrics for relations in these schemas. Applies to all schemas when unset.
+        """
+        return pulumi.get(self, "schemas")
 
 
 @pulumi.output_type
@@ -25499,6 +26963,101 @@ class ServiceIntegrationEndpointJolokiaUserConfig(dict):
         Jolokia basic authentication username. Example: `jol48k51`.
         """
         return pulumi.get(self, "basic_auth_username")
+
+
+@pulumi.output_type
+class ServiceIntegrationEndpointOpentelemetryUserConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serviceAddress":
+            suggest = "service_address"
+        elif key == "encodingType":
+            suggest = "encoding_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceIntegrationEndpointOpentelemetryUserConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceIntegrationEndpointOpentelemetryUserConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceIntegrationEndpointOpentelemetryUserConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 compression: _builtins.str,
+                 service_address: _builtins.str,
+                 timeout: _builtins.int,
+                 attributes: Optional[Mapping[str, _builtins.str]] = None,
+                 encoding_type: Optional[_builtins.str] = None,
+                 headers: Optional[Mapping[str, _builtins.str]] = None):
+        """
+        :param _builtins.str compression: Enum: `gzip`, `none`. Payload compression.
+        :param _builtins.str service_address: Either a bare `host:port` (OTLP/gRPC, no URL scheme) or an `http://`/`https://` URL (OTLP/HTTP). Example: `otel-collector.example.avns.net:4317`.
+        :param _builtins.int timeout: Connection timeout in seconds. Example: `10`.
+        :param Mapping[str, _builtins.str] attributes: Resource attributes to attach to every exported metric.
+        :param _builtins.str encoding_type: Enum: `json`, `protobuf`. Encoding used for exported metrics. Leave unset to use telegraf's default.
+        :param Mapping[str, _builtins.str] headers: Additional gRPC metadata headers sent with every export request.
+        """
+        pulumi.set(__self__, "compression", compression)
+        pulumi.set(__self__, "service_address", service_address)
+        pulumi.set(__self__, "timeout", timeout)
+        if attributes is not None:
+            pulumi.set(__self__, "attributes", attributes)
+        if encoding_type is not None:
+            pulumi.set(__self__, "encoding_type", encoding_type)
+        if headers is not None:
+            pulumi.set(__self__, "headers", headers)
+
+    @_builtins.property
+    @pulumi.getter
+    def compression(self) -> _builtins.str:
+        """
+        Enum: `gzip`, `none`. Payload compression.
+        """
+        return pulumi.get(self, "compression")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAddress")
+    def service_address(self) -> _builtins.str:
+        """
+        Either a bare `host:port` (OTLP/gRPC, no URL scheme) or an `http://`/`https://` URL (OTLP/HTTP). Example: `otel-collector.example.avns.net:4317`.
+        """
+        return pulumi.get(self, "service_address")
+
+    @_builtins.property
+    @pulumi.getter
+    def timeout(self) -> _builtins.int:
+        """
+        Connection timeout in seconds. Example: `10`.
+        """
+        return pulumi.get(self, "timeout")
+
+    @_builtins.property
+    @pulumi.getter
+    def attributes(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        Resource attributes to attach to every exported metric.
+        """
+        return pulumi.get(self, "attributes")
+
+    @_builtins.property
+    @pulumi.getter(name="encodingType")
+    def encoding_type(self) -> Optional[_builtins.str]:
+        """
+        Enum: `json`, `protobuf`. Encoding used for exported metrics. Leave unset to use telegraf's default.
+        """
+        return pulumi.get(self, "encoding_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def headers(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        Additional gRPC metadata headers sent with every export request.
+        """
+        return pulumi.get(self, "headers")
 
 
 @pulumi.output_type
@@ -28491,6 +30050,74 @@ class ValkeyTechEmail(dict):
 
 
 @pulumi.output_type
+class ValkeyUserTimeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[_builtins.str] = None,
+                 default: Optional[_builtins.str] = None,
+                 delete: Optional[_builtins.str] = None,
+                 read: Optional[_builtins.str] = None,
+                 update: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param _builtins.str default: Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+        :param _builtins.str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param _builtins.str update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if default is not None:
+            pulumi.set(__self__, "default", default)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @_builtins.property
+    @pulumi.getter
+    @_utilities.deprecated("""Use operation-specific timeouts instead. This field will be removed in the next major version.""")
+    def default(self) -> Optional[_builtins.str]:
+        """
+        Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+        """
+        return pulumi.get(self, "default")
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+
+@pulumi.output_type
 class ValkeyValkey(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -28605,6 +30232,8 @@ class ValkeyValkeyUserConfig(dict):
             suggest = "valkey_acl_channels_default"
         elif key == "valkeyActiveExpireEffort":
             suggest = "valkey_active_expire_effort"
+        elif key == "valkeyActivedefrag":
+            suggest = "valkey_activedefrag"
         elif key == "valkeyIoThreads":
             suggest = "valkey_io_threads"
         elif key == "valkeyLfuDecayTime":
@@ -28659,6 +30288,7 @@ class ValkeyValkeyUserConfig(dict):
                  static_ips: Optional[_builtins.bool] = None,
                  valkey_acl_channels_default: Optional[_builtins.str] = None,
                  valkey_active_expire_effort: Optional[_builtins.int] = None,
+                 valkey_activedefrag: Optional[_builtins.bool] = None,
                  valkey_io_threads: Optional[_builtins.int] = None,
                  valkey_lfu_decay_time: Optional[_builtins.int] = None,
                  valkey_lfu_log_factor: Optional[_builtins.int] = None,
@@ -28690,6 +30320,7 @@ class ValkeyValkeyUserConfig(dict):
         :param _builtins.bool static_ips: Use static public IP addresses.
         :param _builtins.str valkey_acl_channels_default: Enum: `allchannels`, `resetchannels`. Determines default pub/sub channels' ACL for new users if ACL is not supplied. When this option is not defined, all_channels is assumed to keep backward compatibility. This option doesn't affect Valkey configuration acl-pubsub-default.
         :param _builtins.int valkey_active_expire_effort: Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency. Default: `1`.
+        :param _builtins.bool valkey_activedefrag: Enable active memory defragmentation. When enabled, Valkey relocates objects off sparsely-used memory pages to reduce fragmentation and return memory to the operating system. Defragmentation runs on the main thread and consumes CPU, so it may increase latency under load. Default: `false`.
         :param _builtins.int valkey_io_threads: Set Valkey IO thread count. Changing this will cause a restart of the Valkey service. Example: `1`.
         :param _builtins.int valkey_lfu_decay_time: LFU maxmemory-policy counter decay time in minutes. Default: `1`.
         :param _builtins.int valkey_lfu_log_factor: Counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory-policies. Default: `10`.
@@ -28700,7 +30331,7 @@ class ValkeyValkeyUserConfig(dict):
         :param _builtins.int valkey_pubsub_client_output_buffer_limit: Set output buffer limit for pub / sub clients in MB. The value is the hard limit, the soft limit is 1/4 of the hard limit. When setting the limit, be mindful of the available memory in the selected service plan. Example: `64`.
         :param _builtins.bool valkey_ssl: Require SSL to access Valkey. Default: `true`.
         :param _builtins.int valkey_timeout: Valkey idle connection timeout in seconds. Default: `300`.
-        :param _builtins.str valkey_version: Enum: `8.1`, `9.0`, and newer. Valkey major version.
+        :param _builtins.str valkey_version: Enum: `8.1`, `9.0`, `9.1`, and newer. Valkey major version.
         """
         if additional_backup_regions is not None:
             pulumi.set(__self__, "additional_backup_regions", additional_backup_regions)
@@ -28740,6 +30371,8 @@ class ValkeyValkeyUserConfig(dict):
             pulumi.set(__self__, "valkey_acl_channels_default", valkey_acl_channels_default)
         if valkey_active_expire_effort is not None:
             pulumi.set(__self__, "valkey_active_expire_effort", valkey_active_expire_effort)
+        if valkey_activedefrag is not None:
+            pulumi.set(__self__, "valkey_activedefrag", valkey_activedefrag)
         if valkey_io_threads is not None:
             pulumi.set(__self__, "valkey_io_threads", valkey_io_threads)
         if valkey_lfu_decay_time is not None:
@@ -28917,6 +30550,14 @@ class ValkeyValkeyUserConfig(dict):
         return pulumi.get(self, "valkey_active_expire_effort")
 
     @_builtins.property
+    @pulumi.getter(name="valkeyActivedefrag")
+    def valkey_activedefrag(self) -> Optional[_builtins.bool]:
+        """
+        Enable active memory defragmentation. When enabled, Valkey relocates objects off sparsely-used memory pages to reduce fragmentation and return memory to the operating system. Defragmentation runs on the main thread and consumes CPU, so it may increase latency under load. Default: `false`.
+        """
+        return pulumi.get(self, "valkey_activedefrag")
+
+    @_builtins.property
     @pulumi.getter(name="valkeyIoThreads")
     def valkey_io_threads(self) -> Optional[_builtins.int]:
         """
@@ -29000,7 +30641,7 @@ class ValkeyValkeyUserConfig(dict):
     @pulumi.getter(name="valkeyVersion")
     def valkey_version(self) -> Optional[_builtins.str]:
         """
-        Enum: `8.1`, `9.0`, and newer. Valkey major version.
+        Enum: `8.1`, `9.0`, `9.1`, and newer. Valkey major version.
         """
         return pulumi.get(self, "valkey_version")
 
@@ -29328,6 +30969,82 @@ class GetAccountAuthenticationSamlFieldMappingResult(dict):
 
 
 @pulumi.output_type
+class GetAwsOrgVpcPeeringConnectionTimeoutsResult(dict):
+    def __init__(__self__, *,
+                 read: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "read")
+
+
+@pulumi.output_type
+class GetAwsPrivatelinkTimeoutsResult(dict):
+    def __init__(__self__, *,
+                 read: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "read")
+
+
+@pulumi.output_type
+class GetAzureOrgVpcPeeringConnectionTimeoutsResult(dict):
+    def __init__(__self__, *,
+                 read: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "read")
+
+
+@pulumi.output_type
+class GetAzurePrivatelinkTimeoutsResult(dict):
+    def __init__(__self__, *,
+                 read: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "read")
+
+
+@pulumi.output_type
 class GetBillingGroupTimeoutsResult(dict):
     def __init__(__self__, *,
                  read: Optional[_builtins.str] = None):
@@ -29390,7 +31107,7 @@ class GetClickhouseClickhouseUserConfigResult(dict):
         :param _builtins.str additional_backup_regions: Additional Cloud Regions for Backup Replication.
         :param _builtins.int backup_hour: The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
         :param _builtins.int backup_minute: The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
-        :param _builtins.str clickhouse_version: Enum: `25.3`, `25.8`, and newer. ClickHouse major version.
+        :param _builtins.str clickhouse_version: Enum: `25.3`, `25.8`, `26.3`, and newer. ClickHouse major version.
         :param _builtins.bool enable_ipv6: Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
         :param Sequence['GetClickhouseClickhouseUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         :param Sequence[_builtins.str] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
@@ -29475,7 +31192,7 @@ class GetClickhouseClickhouseUserConfigResult(dict):
     @pulumi.getter(name="clickhouseVersion")
     def clickhouse_version(self) -> Optional[_builtins.str]:
         """
-        Enum: `25.3`, `25.8`, and newer. ClickHouse major version.
+        Enum: `25.3`, `25.8`, `26.3`, and newer. ClickHouse major version.
         """
         return pulumi.get(self, "clickhouse_version")
 
@@ -31400,6 +33117,44 @@ class GetFlinkTechEmailResult(dict):
 
 
 @pulumi.output_type
+class GetGcpOrgVpcPeeringConnectionTimeoutsResult(dict):
+    def __init__(__self__, *,
+                 read: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "read")
+
+
+@pulumi.output_type
+class GetGcpPrivatelinkTimeoutsResult(dict):
+    def __init__(__self__, *,
+                 read: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "read")
+
+
+@pulumi.output_type
 class GetGrafanaComponentResult(dict):
     def __init__(__self__, *,
                  component: _builtins.str,
@@ -31562,6 +33317,7 @@ class GetGrafanaGrafanaUserConfigResult(dict):
                  editors_can_admin: Optional[_builtins.bool] = None,
                  external_image_storage: Optional['outputs.GetGrafanaGrafanaUserConfigExternalImageStorageResult'] = None,
                  google_analytics_ua_id: Optional[_builtins.str] = None,
+                 grafana_version: Optional[_builtins.str] = None,
                  ip_filter_objects: Optional[Sequence['outputs.GetGrafanaGrafanaUserConfigIpFilterObjectResult']] = None,
                  ip_filter_strings: Optional[Sequence[_builtins.str]] = None,
                  ip_filters: Optional[Sequence[_builtins.str]] = None,
@@ -31607,6 +33363,7 @@ class GetGrafanaGrafanaUserConfigResult(dict):
         :param _builtins.bool editors_can_admin: Editors can manage folders, teams and dashboards created by them.
         :param 'GetGrafanaGrafanaUserConfigExternalImageStorageArgs' external_image_storage: External image store settings
         :param _builtins.str google_analytics_ua_id: Google Analytics ID. Example: `UA-123456-4`.
+        :param _builtins.str grafana_version: Enum: `11`, and newer. Grafana major version.
         :param Sequence['GetGrafanaGrafanaUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         :param Sequence[_builtins.str] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         :param Sequence[_builtins.str] ip_filters: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
@@ -31677,6 +33434,8 @@ class GetGrafanaGrafanaUserConfigResult(dict):
             pulumi.set(__self__, "external_image_storage", external_image_storage)
         if google_analytics_ua_id is not None:
             pulumi.set(__self__, "google_analytics_ua_id", google_analytics_ua_id)
+        if grafana_version is not None:
+            pulumi.set(__self__, "grafana_version", grafana_version)
         if ip_filter_objects is not None:
             pulumi.set(__self__, "ip_filter_objects", ip_filter_objects)
         if ip_filter_strings is not None:
@@ -31915,6 +33674,14 @@ class GetGrafanaGrafanaUserConfigResult(dict):
         Google Analytics ID. Example: `UA-123456-4`.
         """
         return pulumi.get(self, "google_analytics_ua_id")
+
+    @_builtins.property
+    @pulumi.getter(name="grafanaVersion")
+    def grafana_version(self) -> Optional[_builtins.str]:
+        """
+        Enum: `11`, and newer. Grafana major version.
+        """
+        return pulumi.get(self, "grafana_version")
 
     @_builtins.property
     @pulumi.getter(name="ipFilterObjects")
@@ -32950,6 +34717,25 @@ class GetGrafanaTechEmailResult(dict):
 
 
 @pulumi.output_type
+class GetKafkaAclTimeoutsResult(dict):
+    def __init__(__self__, *,
+                 read: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "read")
+
+
+@pulumi.output_type
 class GetKafkaComponentResult(dict):
     def __init__(__self__, *,
                  component: _builtins.str,
@@ -33193,6 +34979,7 @@ class GetKafkaConnectKafkaConnectUserConfigResult(dict):
                  ip_filters: Optional[Sequence[_builtins.str]] = None,
                  kafka_connect: Optional['outputs.GetKafkaConnectKafkaConnectUserConfigKafkaConnectResult'] = None,
                  plugin_versions: Optional[Sequence['outputs.GetKafkaConnectKafkaConnectUserConfigPluginVersionResult']] = None,
+                 preferred_zones: Optional[Sequence[_builtins.str]] = None,
                  private_access: Optional['outputs.GetKafkaConnectKafkaConnectUserConfigPrivateAccessResult'] = None,
                  privatelink_access: Optional['outputs.GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccessResult'] = None,
                  public_access: Optional['outputs.GetKafkaConnectKafkaConnectUserConfigPublicAccessResult'] = None,
@@ -33208,6 +34995,7 @@ class GetKafkaConnectKafkaConnectUserConfigResult(dict):
         :param Sequence[_builtins.str] ip_filters: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         :param 'GetKafkaConnectKafkaConnectUserConfigKafkaConnectArgs' kafka_connect: Kafka Connect configuration values
         :param Sequence['GetKafkaConnectKafkaConnectUserConfigPluginVersionArgs'] plugin_versions: The plugin selected by the user
+        :param Sequence[_builtins.str] preferred_zones: List of preferred zone IDs for service node placement. Nodes will be placed in these zones when available. If a specified zone is unavailable (e.g., due to capacity constraints), nodes will be placed in other available zones to maintain the configured number of zones for availability. Invalid zone IDs are rejected at configuration time. Zone IDs are cloud-specific: AWS uses zone IDs like `euc1-az1`, GCP uses zone names like `europe-west1-a`, and Azure uses `location/zone` format like `germanywestcentral/1`. If single_zone is enabled with an availability_zone, that setting takes precedence over preferred_zones. Changes take effect on next node recreation (e.g., maintenance or plan change). For eligible plans, nodes outside preferred zones are automatically rebalanced once per day.
         :param 'GetKafkaConnectKafkaConnectUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks
         :param 'GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccessArgs' privatelink_access: Allow access to selected service components through Privatelink
         :param 'GetKafkaConnectKafkaConnectUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet
@@ -33230,6 +35018,8 @@ class GetKafkaConnectKafkaConnectUserConfigResult(dict):
             pulumi.set(__self__, "kafka_connect", kafka_connect)
         if plugin_versions is not None:
             pulumi.set(__self__, "plugin_versions", plugin_versions)
+        if preferred_zones is not None:
+            pulumi.set(__self__, "preferred_zones", preferred_zones)
         if private_access is not None:
             pulumi.set(__self__, "private_access", private_access)
         if privatelink_access is not None:
@@ -33302,6 +35092,14 @@ class GetKafkaConnectKafkaConnectUserConfigResult(dict):
         The plugin selected by the user
         """
         return pulumi.get(self, "plugin_versions")
+
+    @_builtins.property
+    @pulumi.getter(name="preferredZones")
+    def preferred_zones(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of preferred zone IDs for service node placement. Nodes will be placed in these zones when available. If a specified zone is unavailable (e.g., due to capacity constraints), nodes will be placed in other available zones to maintain the configured number of zones for availability. Invalid zone IDs are rejected at configuration time. Zone IDs are cloud-specific: AWS uses zone IDs like `euc1-az1`, GCP uses zone names like `europe-west1-a`, and Azure uses `location/zone` format like `germanywestcentral/1`. If single_zone is enabled with an availability_zone, that setting takes precedence over preferred_zones. Changes take effect on next node recreation (e.g., maintenance or plan change). For eligible plans, nodes outside preferred zones are automatically rebalanced once per day.
+        """
+        return pulumi.get(self, "preferred_zones")
 
     @_builtins.property
     @pulumi.getter(name="privateAccess")
@@ -34208,6 +36006,7 @@ class GetKafkaKafkaUserConfigResult(dict):
                  kafka_rest_config: Optional['outputs.GetKafkaKafkaUserConfigKafkaRestConfigResult'] = None,
                  kafka_sasl_mechanisms: Optional['outputs.GetKafkaKafkaUserConfigKafkaSaslMechanismsResult'] = None,
                  kafka_version: Optional[_builtins.str] = None,
+                 karapace_version: Optional[_builtins.str] = None,
                  letsencrypt_sasl: Optional[_builtins.bool] = None,
                  letsencrypt_sasl_privatelink: Optional[_builtins.bool] = None,
                  preferred_zones: Optional[Sequence[_builtins.str]] = None,
@@ -34246,9 +36045,10 @@ class GetKafkaKafkaUserConfigResult(dict):
         :param 'GetKafkaKafkaUserConfigKafkaRestConfigArgs' kafka_rest_config: Kafka REST configuration
         :param 'GetKafkaKafkaUserConfigKafkaSaslMechanismsArgs' kafka_sasl_mechanisms: Kafka SASL mechanisms
         :param _builtins.str kafka_version: Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, `4.1`, `4.2`, and newer. Kafka major version.
+        :param _builtins.str karapace_version: Pin a specific installed Karapace version on this service. Leave null/unset to auto-follow the newest installed version.
         :param _builtins.bool letsencrypt_sasl: Use a Let's Encrypt certificate authority (CA) for Kafka SASL authentication. (Default: False).
         :param _builtins.bool letsencrypt_sasl_privatelink: Use a Let's Encrypt certificate authority (CA) for Kafka SASL authentication via Privatelink. (Default: False).
-        :param Sequence[_builtins.str] preferred_zones: List of preferred zone IDs for service node placement. Nodes will be placed in these zones when available. If a specified zone is unavailable (e.g., due to capacity constraints), nodes will be placed in other available zones to maintain the configured number of zones for availability. Invalid zone IDs are rejected at configuration time. Zone IDs are cloud-specific: AWS uses zone IDs like `euc1-az1`, GCP uses zone names like `europe-west1-a`, and Azure uses `location/zone` format like `germanywestcentral/1`. If single_zone is enabled with an availability_zone, that setting takes precedence over preferred_zones.Changes take effect on next node recreation (e.g., maintenance or plan change). For Kafka professional plans, nodes outside preferred zones are automatically rebalanced once per day.
+        :param Sequence[_builtins.str] preferred_zones: List of preferred zone IDs for service node placement. Nodes will be placed in these zones when available. If a specified zone is unavailable (e.g., due to capacity constraints), nodes will be placed in other available zones to maintain the configured number of zones for availability. Invalid zone IDs are rejected at configuration time. Zone IDs are cloud-specific: AWS uses zone IDs like `euc1-az1`, GCP uses zone names like `europe-west1-a`, and Azure uses `location/zone` format like `germanywestcentral/1`. If single_zone is enabled with an availability_zone, that setting takes precedence over preferred_zones. Changes take effect on next node recreation (e.g., maintenance or plan change). For eligible plans, nodes outside preferred zones are automatically rebalanced once per day.
         :param 'GetKafkaKafkaUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks
         :param 'GetKafkaKafkaUserConfigPrivatelinkAccessArgs' privatelink_access: Allow access to selected service components through Privatelink
         :param 'GetKafkaKafkaUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet
@@ -34308,6 +36108,8 @@ class GetKafkaKafkaUserConfigResult(dict):
             pulumi.set(__self__, "kafka_sasl_mechanisms", kafka_sasl_mechanisms)
         if kafka_version is not None:
             pulumi.set(__self__, "kafka_version", kafka_version)
+        if karapace_version is not None:
+            pulumi.set(__self__, "karapace_version", karapace_version)
         if letsencrypt_sasl is not None:
             pulumi.set(__self__, "letsencrypt_sasl", letsencrypt_sasl)
         if letsencrypt_sasl_privatelink is not None:
@@ -34530,6 +36332,14 @@ class GetKafkaKafkaUserConfigResult(dict):
         return pulumi.get(self, "kafka_version")
 
     @_builtins.property
+    @pulumi.getter(name="karapaceVersion")
+    def karapace_version(self) -> Optional[_builtins.str]:
+        """
+        Pin a specific installed Karapace version on this service. Leave null/unset to auto-follow the newest installed version.
+        """
+        return pulumi.get(self, "karapace_version")
+
+    @_builtins.property
     @pulumi.getter(name="letsencryptSasl")
     def letsencrypt_sasl(self) -> Optional[_builtins.bool]:
         """
@@ -34549,7 +36359,7 @@ class GetKafkaKafkaUserConfigResult(dict):
     @pulumi.getter(name="preferredZones")
     def preferred_zones(self) -> Optional[Sequence[_builtins.str]]:
         """
-        List of preferred zone IDs for service node placement. Nodes will be placed in these zones when available. If a specified zone is unavailable (e.g., due to capacity constraints), nodes will be placed in other available zones to maintain the configured number of zones for availability. Invalid zone IDs are rejected at configuration time. Zone IDs are cloud-specific: AWS uses zone IDs like `euc1-az1`, GCP uses zone names like `europe-west1-a`, and Azure uses `location/zone` format like `germanywestcentral/1`. If single_zone is enabled with an availability_zone, that setting takes precedence over preferred_zones.Changes take effect on next node recreation (e.g., maintenance or plan change). For Kafka professional plans, nodes outside preferred zones are automatically rebalanced once per day.
+        List of preferred zone IDs for service node placement. Nodes will be placed in these zones when available. If a specified zone is unavailable (e.g., due to capacity constraints), nodes will be placed in other available zones to maintain the configured number of zones for availability. Invalid zone IDs are rejected at configuration time. Zone IDs are cloud-specific: AWS uses zone IDs like `euc1-az1`, GCP uses zone names like `europe-west1-a`, and Azure uses `location/zone` format like `germanywestcentral/1`. If single_zone is enabled with an availability_zone, that setting takes precedence over preferred_zones. Changes take effect on next node recreation (e.g., maintenance or plan change). For eligible plans, nodes outside preferred zones are automatically rebalanced once per day.
         """
         return pulumi.get(self, "preferred_zones")
 
@@ -36488,11 +38298,19 @@ class GetKafkaKafkaUserConfigSchemaRegistryConfigResult(dict):
     def __init__(__self__, *,
                  leader_eligibility: Optional[_builtins.bool] = None,
                  retriable_errors_silenced: Optional[_builtins.bool] = None,
+                 sasl_oauthbearer_authentication_enabled: Optional[_builtins.bool] = None,
+                 sasl_oauthbearer_authorization_enabled: Optional[_builtins.bool] = None,
+                 sasl_oauthbearer_method_roles: Optional[_builtins.str] = None,
+                 sasl_oauthbearer_roles_claim_path: Optional[_builtins.str] = None,
                  schema_reader_strict_mode: Optional[_builtins.bool] = None,
                  topic_name: Optional[_builtins.str] = None):
         """
         :param _builtins.bool leader_eligibility: If true, Karapace / Schema Registry on the service nodes can participate in leader election. It might be needed to disable this when the schemas topic is replicated to a secondary cluster and Karapace / Schema Registry there must not participate in leader election. Defaults to `true`.
         :param _builtins.bool retriable_errors_silenced: If enabled, kafka errors which can be retried or custom errors specified for the service will not be raised, instead, a warning log is emitted. This will denoise issue tracking systems, i.e. sentry. Defaults to `true`.
+        :param _builtins.bool sasl_oauthbearer_authentication_enabled: If enabled, the Schema Registry validates OAuth2/OIDC JWT bearer tokens on incoming requests. Requires the OIDC provider settings under the `kafka` configuration (`sasl_oauthbearer_jwks_endpoint_url` and related). Defaults to `false`.
+        :param _builtins.bool sasl_oauthbearer_authorization_enabled: If enabled, the Schema Registry enforces role-based authorization derived from the JWT roles claim. Requires `sasl_oauthbearer_authentication_enabled` to be enabled. Defaults to `false`.
+        :param _builtins.str sasl_oauthbearer_method_roles: JSON object mapping HTTP methods to the list of roles allowed to perform them on the Schema Registry, provided as a JSON-encoded string. Role names use the `karapace.` prefix, e.g. `karapace.schema:read`. Defaults to `{"GET": ["karapace.schema:read", "karapace.subject:read"], "POST": [], "PUT": [], "DELETE": []}`.
+        :param _builtins.str sasl_oauthbearer_roles_claim_path: JSON path used to extract the roles claim from the JWT for Schema Registry authorization. Defaults to `resource_access.karapace.roles`.
         :param _builtins.bool schema_reader_strict_mode: If enabled, causes the Karapace schema-registry service to shutdown when there are invalid schema records in the `_schemas` topic. Defaults to `false`.
         :param _builtins.str topic_name: The durable single partition topic that acts as the durable log for the data. This topic must be compacted to avoid losing data due to retention policy. Please note that changing this configuration in an existing Schema Registry / Karapace setup leads to previous schemas being inaccessible, data encoded with them potentially unreadable and schema ID sequence put out of order. It's only possible to do the switch while Schema Registry / Karapace is disabled. Defaults to `_schemas`.
         """
@@ -36500,6 +38318,14 @@ class GetKafkaKafkaUserConfigSchemaRegistryConfigResult(dict):
             pulumi.set(__self__, "leader_eligibility", leader_eligibility)
         if retriable_errors_silenced is not None:
             pulumi.set(__self__, "retriable_errors_silenced", retriable_errors_silenced)
+        if sasl_oauthbearer_authentication_enabled is not None:
+            pulumi.set(__self__, "sasl_oauthbearer_authentication_enabled", sasl_oauthbearer_authentication_enabled)
+        if sasl_oauthbearer_authorization_enabled is not None:
+            pulumi.set(__self__, "sasl_oauthbearer_authorization_enabled", sasl_oauthbearer_authorization_enabled)
+        if sasl_oauthbearer_method_roles is not None:
+            pulumi.set(__self__, "sasl_oauthbearer_method_roles", sasl_oauthbearer_method_roles)
+        if sasl_oauthbearer_roles_claim_path is not None:
+            pulumi.set(__self__, "sasl_oauthbearer_roles_claim_path", sasl_oauthbearer_roles_claim_path)
         if schema_reader_strict_mode is not None:
             pulumi.set(__self__, "schema_reader_strict_mode", schema_reader_strict_mode)
         if topic_name is not None:
@@ -36520,6 +38346,38 @@ class GetKafkaKafkaUserConfigSchemaRegistryConfigResult(dict):
         If enabled, kafka errors which can be retried or custom errors specified for the service will not be raised, instead, a warning log is emitted. This will denoise issue tracking systems, i.e. sentry. Defaults to `true`.
         """
         return pulumi.get(self, "retriable_errors_silenced")
+
+    @_builtins.property
+    @pulumi.getter(name="saslOauthbearerAuthenticationEnabled")
+    def sasl_oauthbearer_authentication_enabled(self) -> Optional[_builtins.bool]:
+        """
+        If enabled, the Schema Registry validates OAuth2/OIDC JWT bearer tokens on incoming requests. Requires the OIDC provider settings under the `kafka` configuration (`sasl_oauthbearer_jwks_endpoint_url` and related). Defaults to `false`.
+        """
+        return pulumi.get(self, "sasl_oauthbearer_authentication_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="saslOauthbearerAuthorizationEnabled")
+    def sasl_oauthbearer_authorization_enabled(self) -> Optional[_builtins.bool]:
+        """
+        If enabled, the Schema Registry enforces role-based authorization derived from the JWT roles claim. Requires `sasl_oauthbearer_authentication_enabled` to be enabled. Defaults to `false`.
+        """
+        return pulumi.get(self, "sasl_oauthbearer_authorization_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="saslOauthbearerMethodRoles")
+    def sasl_oauthbearer_method_roles(self) -> Optional[_builtins.str]:
+        """
+        JSON object mapping HTTP methods to the list of roles allowed to perform them on the Schema Registry, provided as a JSON-encoded string. Role names use the `karapace.` prefix, e.g. `karapace.schema:read`. Defaults to `{"GET": ["karapace.schema:read", "karapace.subject:read"], "POST": [], "PUT": [], "DELETE": []}`.
+        """
+        return pulumi.get(self, "sasl_oauthbearer_method_roles")
+
+    @_builtins.property
+    @pulumi.getter(name="saslOauthbearerRolesClaimPath")
+    def sasl_oauthbearer_roles_claim_path(self) -> Optional[_builtins.str]:
+        """
+        JSON path used to extract the roles claim from the JWT for Schema Registry authorization. Defaults to `resource_access.karapace.roles`.
+        """
+        return pulumi.get(self, "sasl_oauthbearer_roles_claim_path")
 
     @_builtins.property
     @pulumi.getter(name="schemaReaderStrictMode")
@@ -36746,6 +38604,7 @@ class GetKafkaMirrorMakerKafkaMirrormakerUserConfigResult(dict):
                  ip_filter_strings: Optional[Sequence[_builtins.str]] = None,
                  ip_filters: Optional[Sequence[_builtins.str]] = None,
                  kafka_mirrormaker: Optional['outputs.GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerResult'] = None,
+                 preferred_zones: Optional[Sequence[_builtins.str]] = None,
                  sasl_oauthbearer_allowed_urls: Optional[Sequence[_builtins.str]] = None,
                  service_log: Optional[_builtins.bool] = None,
                  static_ips: Optional[_builtins.bool] = None):
@@ -36755,6 +38614,7 @@ class GetKafkaMirrorMakerKafkaMirrormakerUserConfigResult(dict):
         :param Sequence[_builtins.str] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         :param Sequence[_builtins.str] ip_filters: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         :param 'GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs' kafka_mirrormaker: Kafka MirrorMaker configuration values
+        :param Sequence[_builtins.str] preferred_zones: List of preferred zone IDs for service node placement. Nodes will be placed in these zones when available. If a specified zone is unavailable (e.g., due to capacity constraints), nodes will be placed in other available zones to maintain the configured number of zones for availability. Invalid zone IDs are rejected at configuration time. Zone IDs are cloud-specific: AWS uses zone IDs like `euc1-az1`, GCP uses zone names like `europe-west1-a`, and Azure uses `location/zone` format like `germanywestcentral/1`. If single_zone is enabled with an availability_zone, that setting takes precedence over preferred_zones. Changes take effect on next node recreation (e.g., maintenance or plan change). For eligible plans, nodes outside preferred zones are automatically rebalanced once per day.
         :param Sequence[_builtins.str] sasl_oauthbearer_allowed_urls: List of allowed URLs for SASL OAUTHBEARER authentication. Only HTTPS URLs are allowed for security reasons.
         :param _builtins.bool service_log: Store logs for the service so that they are available in the HTTP API and console.
         :param _builtins.bool static_ips: Use static public IP addresses.
@@ -36769,6 +38629,8 @@ class GetKafkaMirrorMakerKafkaMirrormakerUserConfigResult(dict):
             pulumi.set(__self__, "ip_filters", ip_filters)
         if kafka_mirrormaker is not None:
             pulumi.set(__self__, "kafka_mirrormaker", kafka_mirrormaker)
+        if preferred_zones is not None:
+            pulumi.set(__self__, "preferred_zones", preferred_zones)
         if sasl_oauthbearer_allowed_urls is not None:
             pulumi.set(__self__, "sasl_oauthbearer_allowed_urls", sasl_oauthbearer_allowed_urls)
         if service_log is not None:
@@ -36817,6 +38679,14 @@ class GetKafkaMirrorMakerKafkaMirrormakerUserConfigResult(dict):
         Kafka MirrorMaker configuration values
         """
         return pulumi.get(self, "kafka_mirrormaker")
+
+    @_builtins.property
+    @pulumi.getter(name="preferredZones")
+    def preferred_zones(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of preferred zone IDs for service node placement. Nodes will be placed in these zones when available. If a specified zone is unavailable (e.g., due to capacity constraints), nodes will be placed in other available zones to maintain the configured number of zones for availability. Invalid zone IDs are rejected at configuration time. Zone IDs are cloud-specific: AWS uses zone IDs like `euc1-az1`, GCP uses zone names like `europe-west1-a`, and Azure uses `location/zone` format like `germanywestcentral/1`. If single_zone is enabled with an availability_zone, that setting takes precedence over preferred_zones. Changes take effect on next node recreation (e.g., maintenance or plan change). For eligible plans, nodes outside preferred zones are automatically rebalanced once per day.
+        """
+        return pulumi.get(self, "preferred_zones")
 
     @_builtins.property
     @pulumi.getter(name="saslOauthbearerAllowedUrls")
@@ -37884,6 +39754,44 @@ class GetKafkaTopicTimeoutsResult(dict):
 
 
 @pulumi.output_type
+class GetKafkaUserTimeoutsResult(dict):
+    def __init__(__self__, *,
+                 read: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "read")
+
+
+@pulumi.output_type
+class GetMirrorMakerReplicationFlowTimeoutsResult(dict):
+    def __init__(__self__, *,
+                 read: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "read")
+
+
+@pulumi.output_type
 class GetMySqlComponentResult(dict):
     def __init__(__self__, *,
                  component: _builtins.str,
@@ -38565,20 +40473,30 @@ class GetMySqlMysqlUserConfigMigrationResult(dict):
 @pulumi.output_type
 class GetMySqlMysqlUserConfigMysqlResult(dict):
     def __init__(__self__, *,
+                 automatic_sp_privileges: Optional[_builtins.bool] = None,
                  connect_timeout: Optional[_builtins.int] = None,
                  default_time_zone: Optional[_builtins.str] = None,
+                 div_precision_increment: Optional[_builtins.int] = None,
+                 end_markers_in_json: Optional[_builtins.bool] = None,
+                 eq_range_index_dive_limit: Optional[_builtins.int] = None,
                  group_concat_max_len: Optional[_builtins.int] = None,
                  information_schema_stats_expiry: Optional[_builtins.int] = None,
                  innodb_adaptive_hash_index: Optional[_builtins.bool] = None,
                  innodb_change_buffer_max_size: Optional[_builtins.int] = None,
                  innodb_flush_neighbors: Optional[_builtins.int] = None,
+                 innodb_ft_enable_stopword: Optional[_builtins.bool] = None,
+                 innodb_ft_max_token_size: Optional[_builtins.int] = None,
                  innodb_ft_min_token_size: Optional[_builtins.int] = None,
+                 innodb_ft_num_word_optimize: Optional[_builtins.int] = None,
+                 innodb_ft_result_cache_limit: Optional[_builtins.int] = None,
                  innodb_ft_server_stopword_table: Optional[_builtins.str] = None,
+                 innodb_ft_user_stopword_table: Optional[_builtins.str] = None,
                  innodb_io_capacity: Optional[_builtins.int] = None,
                  innodb_io_capacity_max: Optional[_builtins.int] = None,
                  innodb_lock_wait_timeout: Optional[_builtins.int] = None,
                  innodb_log_buffer_size: Optional[_builtins.int] = None,
                  innodb_online_alter_log_max_size: Optional[_builtins.int] = None,
+                 innodb_optimize_fulltext_only: Optional[_builtins.bool] = None,
                  innodb_print_all_deadlocks: Optional[_builtins.bool] = None,
                  innodb_read_io_threads: Optional[_builtins.int] = None,
                  innodb_rollback_on_timeout: Optional[_builtins.bool] = None,
@@ -38590,10 +40508,17 @@ class GetMySqlMysqlUserConfigMysqlResult(dict):
                  long_query_time: Optional[_builtins.float] = None,
                  lower_case_table_names: Optional[_builtins.int] = None,
                  max_allowed_packet: Optional[_builtins.int] = None,
+                 max_connections: Optional[_builtins.int] = None,
+                 max_execution_time: Optional[_builtins.int] = None,
                  max_heap_table_size: Optional[_builtins.int] = None,
+                 max_seeks_for_key: Optional[_builtins.int] = None,
+                 max_user_connections: Optional[_builtins.int] = None,
                  net_buffer_length: Optional[_builtins.int] = None,
                  net_read_timeout: Optional[_builtins.int] = None,
                  net_write_timeout: Optional[_builtins.int] = None,
+                 optimizer_prune_level: Optional[_builtins.int] = None,
+                 optimizer_search_depth: Optional[_builtins.int] = None,
+                 optimizer_switch: Optional[_builtins.str] = None,
                  performance_schema_events_statements_history_size: Optional[_builtins.int] = None,
                  relay_log_space_limit: Optional[_builtins.int] = None,
                  slow_query_log: Optional[_builtins.bool] = None,
@@ -38601,22 +40526,33 @@ class GetMySqlMysqlUserConfigMysqlResult(dict):
                  sql_mode: Optional[_builtins.str] = None,
                  sql_require_primary_key: Optional[_builtins.bool] = None,
                  tmp_table_size: Optional[_builtins.int] = None,
-                 wait_timeout: Optional[_builtins.int] = None):
+                 wait_timeout: Optional[_builtins.int] = None,
+                 windowing_use_high_precision: Optional[_builtins.bool] = None):
         """
+        :param _builtins.bool automatic_sp_privileges: When enabled, the server automatically grants the EXECUTE and ALTER ROUTINE privileges to the creator of a stored routine and drops them when the routine is dropped.
         :param _builtins.int connect_timeout: The number of seconds that the mysqld server waits for a connect packet before responding with Bad handshake. Example: `10`.
         :param _builtins.str default_time_zone: Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or `SYSTEM` to use the MySQL server default. Example: `+03:00`.
+        :param _builtins.int div_precision_increment: Number of digits by which to increase the scale of the result of division operations performed with the / operator. Default is 4. Example: `6`.
+        :param _builtins.bool end_markers_in_json: Whether optimizer JSON output such as EXPLAIN FORMAT=JSON adds end markers that repeat a structure's key near its closing bracket, making large JSON structures easier to read.
+        :param _builtins.int eq_range_index_dive_limit: The number of equality ranges in a query at or above which the optimizer switches from index dives to index statistics when estimating the number of qualifying rows. 0 means always use index dives. Default is 200. Example: `100`.
         :param _builtins.int group_concat_max_len: The maximum permitted result length in bytes for the GROUP_CONCAT() function. Example: `1024`.
         :param _builtins.int information_schema_stats_expiry: The time, in seconds, before cached statistics expire. Example: `86400`.
         :param _builtins.bool innodb_adaptive_hash_index: Whether InnoDB adaptive hash indexing is enabled. The optimal setting is workload-dependent: it speeds up lookups for some workloads but its internal latch can become a contention point under high concurrency, in which case disabling it can improve throughput.
         :param _builtins.int innodb_change_buffer_max_size: Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25. Example: `30`.
         :param _builtins.int innodb_flush_neighbors: Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent. Example: `0`.
+        :param _builtins.bool innodb_ft_enable_stopword: Whether stopword processing is applied when creating or rebuilding an InnoDB FULLTEXT index. Enabled by default.
+        :param _builtins.int innodb_ft_max_token_size: Maximum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service. Example: `60`.
         :param _builtins.int innodb_ft_min_token_size: Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service. Example: `3`.
+        :param _builtins.int innodb_ft_num_word_optimize: Number of words processed during each OPTIMIZE TABLE operation on an InnoDB FULLTEXT index. Default is 2000. Example: `4000`.
+        :param _builtins.int innodb_ft_result_cache_limit: Maximum memory in bytes used per query for the InnoDB FULLTEXT search query result cache. Aiven sizes this automatically based on the service plan's memory; setting a value overrides the calculated default.
         :param _builtins.str innodb_ft_server_stopword_table: This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables. Example: `db_name/table_name`.
+        :param _builtins.str innodb_ft_user_stopword_table: This option is used to specify your own InnoDB FULLTEXT index stopword list for specific InnoDB tables. Example: `db_name/table_name`.
         :param _builtins.int innodb_io_capacity: The number of I/O operations per second (IOPS) available to InnoDB background tasks, such as flushing pages from the buffer pool and merging data from the change buffer. Set this to a value appropriate for the underlying storage; it must not exceed innodb_io_capacity_max. Example: `2000`.
         :param _builtins.int innodb_io_capacity_max: The maximum number of I/O operations per second (IOPS) that InnoDB background tasks may perform when flushing falls behind. Defaults to twice innodb_io_capacity (minimum 2000). This must be greater than or equal to innodb_io_capacity.
         :param _builtins.int innodb_lock_wait_timeout: The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120. Example: `50`.
         :param _builtins.int innodb_log_buffer_size: The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
         :param _builtins.int innodb_online_alter_log_max_size: The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
+        :param _builtins.bool innodb_optimize_fulltext_only: When enabled, OPTIMIZE TABLE on InnoDB tables only updates the FULLTEXT index instead of rebuilding the table. Intended to be enabled temporarily during FULLTEXT index maintenance and disabled afterwards; while enabled, OPTIMIZE TABLE does not reclaim table space.
         :param _builtins.bool innodb_print_all_deadlocks: When enabled, information about all deadlocks in InnoDB user transactions is recorded in the error log. Disabled by default.
         :param _builtins.int innodb_read_io_threads: The number of I/O threads for read operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service. Example: `10`.
         :param _builtins.bool innodb_rollback_on_timeout: When enabled a transaction timeout causes InnoDB to abort and roll back the entire transaction. Changing this parameter will lead to a restart of the MySQL service.
@@ -38628,10 +40564,17 @@ class GetMySqlMysqlUserConfigMysqlResult(dict):
         :param _builtins.float long_query_time: The slow_query_logs work as SQL statements that take more than long_query_time seconds to execute. Example: `10`.
         :param _builtins.int lower_case_table_names: Enum: `0`, `1`. Sets how table and database names are stored and compared. 0 = case-sensitive (default), 1 = names stored lowercase, comparisons are case-insensitive. This option can only be set when creating the service and cannot be changed later. See https://dev.mysql.com/doc/refman/8.0/en/identifier-case-sensitivity.html for details.
         :param _builtins.int max_allowed_packet: Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
+        :param _builtins.int max_connections: The maximum permitted number of simultaneous client connections. Lower this to reserve memory for other work. The value cannot exceed the limit provided by your service plan. Upgrading the plan does not raise a value you have set explicitly, so increase it yourself after an upgrade. Example: `200`.
+        :param _builtins.int max_execution_time: Execution timeout in milliseconds for read-only top-level SELECT statements. 0 (the default) means no timeout. Example: `15000`.
         :param _builtins.int max_heap_table_size: Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M).
+        :param _builtins.int max_seeks_for_key: Limit on the assumed maximum number of index seeks when looking up rows based on a key. Lowering this value causes the optimizer to prefer index lookups over table scans. Example: `100`.
+        :param _builtins.int max_user_connections: The maximum number of simultaneous connections permitted to any single user account. 0, the default, means no per-account limit. Any other value must be at least 10 below max_connections, so that monitoring and your own admin sessions can still connect when an application saturates its own limit. Aiven's replication and management connections are unaffected however low you set this. Example: `50`.
         :param _builtins.int net_buffer_length: Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service. Example: `16384`.
         :param _builtins.int net_read_timeout: The number of seconds to wait for more data from a connection before aborting the read. Example: `30`.
         :param _builtins.int net_write_timeout: The number of seconds to wait for a block to be written to a connection before aborting the write. Example: `30`.
+        :param _builtins.int optimizer_prune_level: Controls the heuristics applied during query optimization to prune less-promising partial plans from the optimizer search space. 0 disables heuristics (exhaustive search); 1 prunes plans based on the number of rows retrieved. Example: `1`.
+        :param _builtins.int optimizer_search_depth: Maximum depth of search performed by the query optimizer when choosing a join order. Larger values produce better plans for joins over many tables but take longer to compile; 0 lets the optimizer choose the depth automatically. Example: `62`.
+        :param _builtins.str optimizer_switch: Comma-separated list of optimizer flag assignments in the form flag=on|off|default, or the single value `default` to reset all flags. Flags not listed keep their current values. Controls query optimizer behaviors such as index merge, hash join and semijoin strategies. Example: `batched_key_access=on,mrr_cost_based=off`.
         :param _builtins.int performance_schema_events_statements_history_size: The number of rows per thread in the events_statements_history table. Changing this parameter will lead to a restart of the MySQL service.
         :param _builtins.int relay_log_space_limit: The maximum amount of space in bytes to use for all relay logs while replicating from an external migration source. When the limit is reached, the replication I/O thread stops fetching relay log events until the SQL thread has caught up. Raise this to give a large migration a bigger relay-log budget; ensure the service disk is sized accordingly. The setting applies only on the node replicating from the external source; standby nodes always use the Aiven-managed default (the smaller of 5 GiB and 30% of the service disk), which is also used when this option is left unset. Changing this parameter will lead to a restart of the MySQL service.
         :param _builtins.bool slow_query_log: Slow query log enables capturing of slow queries. Setting slow_query_log to false also truncates the mysql.slow_log table.
@@ -38640,11 +40583,20 @@ class GetMySqlMysqlUserConfigMysqlResult(dict):
         :param _builtins.bool sql_require_primary_key: Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them.
         :param _builtins.int tmp_table_size: Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M).
         :param _builtins.int wait_timeout: The number of seconds the server waits for activity on a noninteractive connection before closing it. Example: `28800`.
+        :param _builtins.bool windowing_use_high_precision: Whether window functions are computed to high precision. Disabling this trades exactness for speed in window function evaluation.
         """
+        if automatic_sp_privileges is not None:
+            pulumi.set(__self__, "automatic_sp_privileges", automatic_sp_privileges)
         if connect_timeout is not None:
             pulumi.set(__self__, "connect_timeout", connect_timeout)
         if default_time_zone is not None:
             pulumi.set(__self__, "default_time_zone", default_time_zone)
+        if div_precision_increment is not None:
+            pulumi.set(__self__, "div_precision_increment", div_precision_increment)
+        if end_markers_in_json is not None:
+            pulumi.set(__self__, "end_markers_in_json", end_markers_in_json)
+        if eq_range_index_dive_limit is not None:
+            pulumi.set(__self__, "eq_range_index_dive_limit", eq_range_index_dive_limit)
         if group_concat_max_len is not None:
             pulumi.set(__self__, "group_concat_max_len", group_concat_max_len)
         if information_schema_stats_expiry is not None:
@@ -38655,10 +40607,20 @@ class GetMySqlMysqlUserConfigMysqlResult(dict):
             pulumi.set(__self__, "innodb_change_buffer_max_size", innodb_change_buffer_max_size)
         if innodb_flush_neighbors is not None:
             pulumi.set(__self__, "innodb_flush_neighbors", innodb_flush_neighbors)
+        if innodb_ft_enable_stopword is not None:
+            pulumi.set(__self__, "innodb_ft_enable_stopword", innodb_ft_enable_stopword)
+        if innodb_ft_max_token_size is not None:
+            pulumi.set(__self__, "innodb_ft_max_token_size", innodb_ft_max_token_size)
         if innodb_ft_min_token_size is not None:
             pulumi.set(__self__, "innodb_ft_min_token_size", innodb_ft_min_token_size)
+        if innodb_ft_num_word_optimize is not None:
+            pulumi.set(__self__, "innodb_ft_num_word_optimize", innodb_ft_num_word_optimize)
+        if innodb_ft_result_cache_limit is not None:
+            pulumi.set(__self__, "innodb_ft_result_cache_limit", innodb_ft_result_cache_limit)
         if innodb_ft_server_stopword_table is not None:
             pulumi.set(__self__, "innodb_ft_server_stopword_table", innodb_ft_server_stopword_table)
+        if innodb_ft_user_stopword_table is not None:
+            pulumi.set(__self__, "innodb_ft_user_stopword_table", innodb_ft_user_stopword_table)
         if innodb_io_capacity is not None:
             pulumi.set(__self__, "innodb_io_capacity", innodb_io_capacity)
         if innodb_io_capacity_max is not None:
@@ -38669,6 +40631,8 @@ class GetMySqlMysqlUserConfigMysqlResult(dict):
             pulumi.set(__self__, "innodb_log_buffer_size", innodb_log_buffer_size)
         if innodb_online_alter_log_max_size is not None:
             pulumi.set(__self__, "innodb_online_alter_log_max_size", innodb_online_alter_log_max_size)
+        if innodb_optimize_fulltext_only is not None:
+            pulumi.set(__self__, "innodb_optimize_fulltext_only", innodb_optimize_fulltext_only)
         if innodb_print_all_deadlocks is not None:
             pulumi.set(__self__, "innodb_print_all_deadlocks", innodb_print_all_deadlocks)
         if innodb_read_io_threads is not None:
@@ -38691,14 +40655,28 @@ class GetMySqlMysqlUserConfigMysqlResult(dict):
             pulumi.set(__self__, "lower_case_table_names", lower_case_table_names)
         if max_allowed_packet is not None:
             pulumi.set(__self__, "max_allowed_packet", max_allowed_packet)
+        if max_connections is not None:
+            pulumi.set(__self__, "max_connections", max_connections)
+        if max_execution_time is not None:
+            pulumi.set(__self__, "max_execution_time", max_execution_time)
         if max_heap_table_size is not None:
             pulumi.set(__self__, "max_heap_table_size", max_heap_table_size)
+        if max_seeks_for_key is not None:
+            pulumi.set(__self__, "max_seeks_for_key", max_seeks_for_key)
+        if max_user_connections is not None:
+            pulumi.set(__self__, "max_user_connections", max_user_connections)
         if net_buffer_length is not None:
             pulumi.set(__self__, "net_buffer_length", net_buffer_length)
         if net_read_timeout is not None:
             pulumi.set(__self__, "net_read_timeout", net_read_timeout)
         if net_write_timeout is not None:
             pulumi.set(__self__, "net_write_timeout", net_write_timeout)
+        if optimizer_prune_level is not None:
+            pulumi.set(__self__, "optimizer_prune_level", optimizer_prune_level)
+        if optimizer_search_depth is not None:
+            pulumi.set(__self__, "optimizer_search_depth", optimizer_search_depth)
+        if optimizer_switch is not None:
+            pulumi.set(__self__, "optimizer_switch", optimizer_switch)
         if performance_schema_events_statements_history_size is not None:
             pulumi.set(__self__, "performance_schema_events_statements_history_size", performance_schema_events_statements_history_size)
         if relay_log_space_limit is not None:
@@ -38715,6 +40693,16 @@ class GetMySqlMysqlUserConfigMysqlResult(dict):
             pulumi.set(__self__, "tmp_table_size", tmp_table_size)
         if wait_timeout is not None:
             pulumi.set(__self__, "wait_timeout", wait_timeout)
+        if windowing_use_high_precision is not None:
+            pulumi.set(__self__, "windowing_use_high_precision", windowing_use_high_precision)
+
+    @_builtins.property
+    @pulumi.getter(name="automaticSpPrivileges")
+    def automatic_sp_privileges(self) -> Optional[_builtins.bool]:
+        """
+        When enabled, the server automatically grants the EXECUTE and ALTER ROUTINE privileges to the creator of a stored routine and drops them when the routine is dropped.
+        """
+        return pulumi.get(self, "automatic_sp_privileges")
 
     @_builtins.property
     @pulumi.getter(name="connectTimeout")
@@ -38731,6 +40719,30 @@ class GetMySqlMysqlUserConfigMysqlResult(dict):
         Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or `SYSTEM` to use the MySQL server default. Example: `+03:00`.
         """
         return pulumi.get(self, "default_time_zone")
+
+    @_builtins.property
+    @pulumi.getter(name="divPrecisionIncrement")
+    def div_precision_increment(self) -> Optional[_builtins.int]:
+        """
+        Number of digits by which to increase the scale of the result of division operations performed with the / operator. Default is 4. Example: `6`.
+        """
+        return pulumi.get(self, "div_precision_increment")
+
+    @_builtins.property
+    @pulumi.getter(name="endMarkersInJson")
+    def end_markers_in_json(self) -> Optional[_builtins.bool]:
+        """
+        Whether optimizer JSON output such as EXPLAIN FORMAT=JSON adds end markers that repeat a structure's key near its closing bracket, making large JSON structures easier to read.
+        """
+        return pulumi.get(self, "end_markers_in_json")
+
+    @_builtins.property
+    @pulumi.getter(name="eqRangeIndexDiveLimit")
+    def eq_range_index_dive_limit(self) -> Optional[_builtins.int]:
+        """
+        The number of equality ranges in a query at or above which the optimizer switches from index dives to index statistics when estimating the number of qualifying rows. 0 means always use index dives. Default is 200. Example: `100`.
+        """
+        return pulumi.get(self, "eq_range_index_dive_limit")
 
     @_builtins.property
     @pulumi.getter(name="groupConcatMaxLen")
@@ -38773,6 +40785,22 @@ class GetMySqlMysqlUserConfigMysqlResult(dict):
         return pulumi.get(self, "innodb_flush_neighbors")
 
     @_builtins.property
+    @pulumi.getter(name="innodbFtEnableStopword")
+    def innodb_ft_enable_stopword(self) -> Optional[_builtins.bool]:
+        """
+        Whether stopword processing is applied when creating or rebuilding an InnoDB FULLTEXT index. Enabled by default.
+        """
+        return pulumi.get(self, "innodb_ft_enable_stopword")
+
+    @_builtins.property
+    @pulumi.getter(name="innodbFtMaxTokenSize")
+    def innodb_ft_max_token_size(self) -> Optional[_builtins.int]:
+        """
+        Maximum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service. Example: `60`.
+        """
+        return pulumi.get(self, "innodb_ft_max_token_size")
+
+    @_builtins.property
     @pulumi.getter(name="innodbFtMinTokenSize")
     def innodb_ft_min_token_size(self) -> Optional[_builtins.int]:
         """
@@ -38781,12 +40809,36 @@ class GetMySqlMysqlUserConfigMysqlResult(dict):
         return pulumi.get(self, "innodb_ft_min_token_size")
 
     @_builtins.property
+    @pulumi.getter(name="innodbFtNumWordOptimize")
+    def innodb_ft_num_word_optimize(self) -> Optional[_builtins.int]:
+        """
+        Number of words processed during each OPTIMIZE TABLE operation on an InnoDB FULLTEXT index. Default is 2000. Example: `4000`.
+        """
+        return pulumi.get(self, "innodb_ft_num_word_optimize")
+
+    @_builtins.property
+    @pulumi.getter(name="innodbFtResultCacheLimit")
+    def innodb_ft_result_cache_limit(self) -> Optional[_builtins.int]:
+        """
+        Maximum memory in bytes used per query for the InnoDB FULLTEXT search query result cache. Aiven sizes this automatically based on the service plan's memory; setting a value overrides the calculated default.
+        """
+        return pulumi.get(self, "innodb_ft_result_cache_limit")
+
+    @_builtins.property
     @pulumi.getter(name="innodbFtServerStopwordTable")
     def innodb_ft_server_stopword_table(self) -> Optional[_builtins.str]:
         """
         This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables. Example: `db_name/table_name`.
         """
         return pulumi.get(self, "innodb_ft_server_stopword_table")
+
+    @_builtins.property
+    @pulumi.getter(name="innodbFtUserStopwordTable")
+    def innodb_ft_user_stopword_table(self) -> Optional[_builtins.str]:
+        """
+        This option is used to specify your own InnoDB FULLTEXT index stopword list for specific InnoDB tables. Example: `db_name/table_name`.
+        """
+        return pulumi.get(self, "innodb_ft_user_stopword_table")
 
     @_builtins.property
     @pulumi.getter(name="innodbIoCapacity")
@@ -38827,6 +40879,14 @@ class GetMySqlMysqlUserConfigMysqlResult(dict):
         The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
         """
         return pulumi.get(self, "innodb_online_alter_log_max_size")
+
+    @_builtins.property
+    @pulumi.getter(name="innodbOptimizeFulltextOnly")
+    def innodb_optimize_fulltext_only(self) -> Optional[_builtins.bool]:
+        """
+        When enabled, OPTIMIZE TABLE on InnoDB tables only updates the FULLTEXT index instead of rebuilding the table. Intended to be enabled temporarily during FULLTEXT index maintenance and disabled afterwards; while enabled, OPTIMIZE TABLE does not reclaim table space.
+        """
+        return pulumi.get(self, "innodb_optimize_fulltext_only")
 
     @_builtins.property
     @pulumi.getter(name="innodbPrintAllDeadlocks")
@@ -38917,12 +40977,44 @@ class GetMySqlMysqlUserConfigMysqlResult(dict):
         return pulumi.get(self, "max_allowed_packet")
 
     @_builtins.property
+    @pulumi.getter(name="maxConnections")
+    def max_connections(self) -> Optional[_builtins.int]:
+        """
+        The maximum permitted number of simultaneous client connections. Lower this to reserve memory for other work. The value cannot exceed the limit provided by your service plan. Upgrading the plan does not raise a value you have set explicitly, so increase it yourself after an upgrade. Example: `200`.
+        """
+        return pulumi.get(self, "max_connections")
+
+    @_builtins.property
+    @pulumi.getter(name="maxExecutionTime")
+    def max_execution_time(self) -> Optional[_builtins.int]:
+        """
+        Execution timeout in milliseconds for read-only top-level SELECT statements. 0 (the default) means no timeout. Example: `15000`.
+        """
+        return pulumi.get(self, "max_execution_time")
+
+    @_builtins.property
     @pulumi.getter(name="maxHeapTableSize")
     def max_heap_table_size(self) -> Optional[_builtins.int]:
         """
         Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M).
         """
         return pulumi.get(self, "max_heap_table_size")
+
+    @_builtins.property
+    @pulumi.getter(name="maxSeeksForKey")
+    def max_seeks_for_key(self) -> Optional[_builtins.int]:
+        """
+        Limit on the assumed maximum number of index seeks when looking up rows based on a key. Lowering this value causes the optimizer to prefer index lookups over table scans. Example: `100`.
+        """
+        return pulumi.get(self, "max_seeks_for_key")
+
+    @_builtins.property
+    @pulumi.getter(name="maxUserConnections")
+    def max_user_connections(self) -> Optional[_builtins.int]:
+        """
+        The maximum number of simultaneous connections permitted to any single user account. 0, the default, means no per-account limit. Any other value must be at least 10 below max_connections, so that monitoring and your own admin sessions can still connect when an application saturates its own limit. Aiven's replication and management connections are unaffected however low you set this. Example: `50`.
+        """
+        return pulumi.get(self, "max_user_connections")
 
     @_builtins.property
     @pulumi.getter(name="netBufferLength")
@@ -38947,6 +41039,30 @@ class GetMySqlMysqlUserConfigMysqlResult(dict):
         The number of seconds to wait for a block to be written to a connection before aborting the write. Example: `30`.
         """
         return pulumi.get(self, "net_write_timeout")
+
+    @_builtins.property
+    @pulumi.getter(name="optimizerPruneLevel")
+    def optimizer_prune_level(self) -> Optional[_builtins.int]:
+        """
+        Controls the heuristics applied during query optimization to prune less-promising partial plans from the optimizer search space. 0 disables heuristics (exhaustive search); 1 prunes plans based on the number of rows retrieved. Example: `1`.
+        """
+        return pulumi.get(self, "optimizer_prune_level")
+
+    @_builtins.property
+    @pulumi.getter(name="optimizerSearchDepth")
+    def optimizer_search_depth(self) -> Optional[_builtins.int]:
+        """
+        Maximum depth of search performed by the query optimizer when choosing a join order. Larger values produce better plans for joins over many tables but take longer to compile; 0 lets the optimizer choose the depth automatically. Example: `62`.
+        """
+        return pulumi.get(self, "optimizer_search_depth")
+
+    @_builtins.property
+    @pulumi.getter(name="optimizerSwitch")
+    def optimizer_switch(self) -> Optional[_builtins.str]:
+        """
+        Comma-separated list of optimizer flag assignments in the form flag=on|off|default, or the single value `default` to reset all flags. Flags not listed keep their current values. Controls query optimizer behaviors such as index merge, hash join and semijoin strategies. Example: `batched_key_access=on,mrr_cost_based=off`.
+        """
+        return pulumi.get(self, "optimizer_switch")
 
     @_builtins.property
     @pulumi.getter(name="performanceSchemaEventsStatementsHistorySize")
@@ -39011,6 +41127,14 @@ class GetMySqlMysqlUserConfigMysqlResult(dict):
         The number of seconds the server waits for activity on a noninteractive connection before closing it. Example: `28800`.
         """
         return pulumi.get(self, "wait_timeout")
+
+    @_builtins.property
+    @pulumi.getter(name="windowingUseHighPrecision")
+    def windowing_use_high_precision(self) -> Optional[_builtins.bool]:
+        """
+        Whether window functions are computed to high precision. Disabling this trades exactness for speed in window function evaluation.
+        """
+        return pulumi.get(self, "windowing_use_high_precision")
 
 
 @pulumi.output_type
@@ -40622,9 +42746,11 @@ class GetOpenSearchOpensearchUserConfigOpensearchResult(dict):
                  ism_history_rollover_retention_period: Optional[_builtins.int] = None,
                  knn_memory_circuit_breaker_enabled: Optional[_builtins.bool] = None,
                  knn_memory_circuit_breaker_limit: Optional[_builtins.int] = None,
+                 ml_commons_connector_access_control_enabled: Optional[_builtins.bool] = None,
                  ml_commons_model_access_control_enabled: Optional[_builtins.bool] = None,
                  ml_commons_native_memory_threshold: Optional[_builtins.int] = None,
                  ml_commons_only_run_on_ml_node: Optional[_builtins.bool] = None,
+                 ml_commons_trusted_connector_endpoints_regexes: Optional[Sequence[_builtins.str]] = None,
                  node_search_cache_size: Optional[_builtins.str] = None,
                  override_main_response_version: Optional[_builtins.bool] = None,
                  plugins_alerting_filter_by_backend_roles: Optional[_builtins.bool] = None,
@@ -40682,9 +42808,11 @@ class GetOpenSearchOpensearchUserConfigOpensearchResult(dict):
         :param _builtins.int ism_history_rollover_retention_period: How long audit history indices are kept in days. Example: `30`.
         :param _builtins.bool knn_memory_circuit_breaker_enabled: Enable or disable KNN memory circuit breaker. Defaults to true.
         :param _builtins.int knn_memory_circuit_breaker_limit: Maximum amount of memory in percentage that can be used for the KNN index. Defaults to 50% of the JVM heap size. 0 is used to set it to null which can be used to invalidate caches.
+        :param _builtins.bool ml_commons_connector_access_control_enabled: When set to true, the setting allows admins to control access and permissions to the connector API using backend_roles. Defaults to false.
         :param _builtins.bool ml_commons_model_access_control_enabled: Enable or disable model access control for ML Commons. When enabled, access to ML models is controlled by security permissions. Defaults to false.
         :param _builtins.int ml_commons_native_memory_threshold: Native memory threshold percentage for ML Commons. Controls the maximum percentage of native memory that can be used by ML Commons operations. Defaults to 90%.
         :param _builtins.bool ml_commons_only_run_on_ml_node: Enable or disable running ML Commons tasks only on ML nodes. When enabled, ML tasks will only execute on nodes designated as ML nodes. Defaults to true.
+        :param Sequence[_builtins.str] ml_commons_trusted_connector_endpoints_regexes: Adds the trusted endpoints to the cluster settings. Supports Java regex expressions.
         :param _builtins.str node_search_cache_size: Defines a limit of how much total remote data can be referenced as a ratio of the size of the disk reserved for the file cache. This is designed to be a safeguard to prevent oversubscribing a cluster. Defaults to 5gb. Requires restarting all OpenSearch nodes.
         :param _builtins.bool override_main_response_version: Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default is false. Deprecated and ignored for service version 3.3 and higher.
         :param _builtins.bool plugins_alerting_filter_by_backend_roles: Enable or disable filtering of alerting by backend roles. Requires Security plugin. Defaults to false.
@@ -40778,12 +42906,16 @@ class GetOpenSearchOpensearchUserConfigOpensearchResult(dict):
             pulumi.set(__self__, "knn_memory_circuit_breaker_enabled", knn_memory_circuit_breaker_enabled)
         if knn_memory_circuit_breaker_limit is not None:
             pulumi.set(__self__, "knn_memory_circuit_breaker_limit", knn_memory_circuit_breaker_limit)
+        if ml_commons_connector_access_control_enabled is not None:
+            pulumi.set(__self__, "ml_commons_connector_access_control_enabled", ml_commons_connector_access_control_enabled)
         if ml_commons_model_access_control_enabled is not None:
             pulumi.set(__self__, "ml_commons_model_access_control_enabled", ml_commons_model_access_control_enabled)
         if ml_commons_native_memory_threshold is not None:
             pulumi.set(__self__, "ml_commons_native_memory_threshold", ml_commons_native_memory_threshold)
         if ml_commons_only_run_on_ml_node is not None:
             pulumi.set(__self__, "ml_commons_only_run_on_ml_node", ml_commons_only_run_on_ml_node)
+        if ml_commons_trusted_connector_endpoints_regexes is not None:
+            pulumi.set(__self__, "ml_commons_trusted_connector_endpoints_regexes", ml_commons_trusted_connector_endpoints_regexes)
         if node_search_cache_size is not None:
             pulumi.set(__self__, "node_search_cache_size", node_search_cache_size)
         if override_main_response_version is not None:
@@ -41112,6 +43244,14 @@ class GetOpenSearchOpensearchUserConfigOpensearchResult(dict):
         return pulumi.get(self, "knn_memory_circuit_breaker_limit")
 
     @_builtins.property
+    @pulumi.getter(name="mlCommonsConnectorAccessControlEnabled")
+    def ml_commons_connector_access_control_enabled(self) -> Optional[_builtins.bool]:
+        """
+        When set to true, the setting allows admins to control access and permissions to the connector API using backend_roles. Defaults to false.
+        """
+        return pulumi.get(self, "ml_commons_connector_access_control_enabled")
+
+    @_builtins.property
     @pulumi.getter(name="mlCommonsModelAccessControlEnabled")
     def ml_commons_model_access_control_enabled(self) -> Optional[_builtins.bool]:
         """
@@ -41134,6 +43274,14 @@ class GetOpenSearchOpensearchUserConfigOpensearchResult(dict):
         Enable or disable running ML Commons tasks only on ML nodes. When enabled, ML tasks will only execute on nodes designated as ML nodes. Defaults to true.
         """
         return pulumi.get(self, "ml_commons_only_run_on_ml_node")
+
+    @_builtins.property
+    @pulumi.getter(name="mlCommonsTrustedConnectorEndpointsRegexes")
+    def ml_commons_trusted_connector_endpoints_regexes(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Adds the trusted endpoints to the cluster settings. Supports Java regex expressions.
+        """
+        return pulumi.get(self, "ml_commons_trusted_connector_endpoints_regexes")
 
     @_builtins.property
     @pulumi.getter(name="nodeSearchCacheSize")
@@ -43799,6 +45947,25 @@ class GetOrganizationUserGroupMemberListTimeoutsResult(dict):
 
 
 @pulumi.output_type
+class GetOrganizationUserGroupTimeoutsResult(dict):
+    def __init__(__self__, *,
+                 read: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "read")
+
+
+@pulumi.output_type
 class GetOrganizationUserListTimeoutsResult(dict):
     def __init__(__self__, *,
                  read: Optional[_builtins.str] = None):
@@ -44006,6 +46173,25 @@ class GetOrganizationUserListUserUserInfoResult(dict):
         User Email.
         """
         return pulumi.get(self, "user_email")
+
+
+@pulumi.output_type
+class GetOrganizationVpcTimeoutsResult(dict):
+    def __init__(__self__, *,
+                 read: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "read")
 
 
 @pulumi.output_type
@@ -44420,6 +46606,7 @@ class GetPgPgUserConfigResult(dict):
                  pg_read_replica: Optional[_builtins.bool] = None,
                  pg_service_to_fork_from: Optional[_builtins.str] = None,
                  pg_stat_monitor_enable: Optional[_builtins.bool] = None,
+                 pg_stat_plans_enable: Optional[_builtins.bool] = None,
                  pg_version: Optional[_builtins.str] = None,
                  pgaudit: Optional['outputs.GetPgPgUserConfigPgauditResult'] = None,
                  pgbouncer: Optional['outputs.GetPgPgUserConfigPgbouncerResult'] = None,
@@ -44458,6 +46645,7 @@ class GetPgPgUserConfigResult(dict):
         :param _builtins.bool pg_read_replica: Should the service which is being forked be a read replica (deprecated, use read_replica service integration instead).
         :param _builtins.str pg_service_to_fork_from: Name of the PG Service from which to fork (deprecated, use service_to_fork_from). This has effect only when a new service is being created. Example: `anotherservicename`.
         :param _builtins.bool pg_stat_monitor_enable: Enable the pg_stat_monitor extension. Changing this parameter causes a service restart. When this extension is enabled, pg_stat_statements results for utility commands are unreliable. Default: `false`.
+        :param _builtins.bool pg_stat_plans_enable: Enable the pg_stat_plans extension. Changing this parameter causes a service restart. Tracks execution plans for SQL queries. Default: `false`.
         :param _builtins.str pg_version: Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`, `17`, `18`, and newer. PostgreSQL major version.
         :param 'GetPgPgUserConfigPgauditArgs' pgaudit: System-wide settings for the pgaudit extension
         :param 'GetPgPgUserConfigPgbouncerArgs' pgbouncer: PGBouncer connection pooling settings
@@ -44514,6 +46702,8 @@ class GetPgPgUserConfigResult(dict):
             pulumi.set(__self__, "pg_service_to_fork_from", pg_service_to_fork_from)
         if pg_stat_monitor_enable is not None:
             pulumi.set(__self__, "pg_stat_monitor_enable", pg_stat_monitor_enable)
+        if pg_stat_plans_enable is not None:
+            pulumi.set(__self__, "pg_stat_plans_enable", pg_stat_plans_enable)
         if pg_version is not None:
             pulumi.set(__self__, "pg_version", pg_version)
         if pgaudit is not None:
@@ -44704,6 +46894,14 @@ class GetPgPgUserConfigResult(dict):
         Enable the pg_stat_monitor extension. Changing this parameter causes a service restart. When this extension is enabled, pg_stat_statements results for utility commands are unreliable. Default: `false`.
         """
         return pulumi.get(self, "pg_stat_monitor_enable")
+
+    @_builtins.property
+    @pulumi.getter(name="pgStatPlansEnable")
+    def pg_stat_plans_enable(self) -> Optional[_builtins.bool]:
+        """
+        Enable the pg_stat_plans extension. Changing this parameter causes a service restart. Tracks execution plans for SQL queries. Default: `false`.
+        """
+        return pulumi.get(self, "pg_stat_plans_enable")
 
     @_builtins.property
     @pulumi.getter(name="pgVersion")
@@ -45041,6 +47239,7 @@ class GetPgPgUserConfigPgResult(dict):
                  pg_partman_bgw_dot_role: Optional[_builtins.str] = None,
                  pg_stat_monitor_dot_pgsm_enable_query_plan: Optional[_builtins.bool] = None,
                  pg_stat_monitor_dot_pgsm_max_buckets: Optional[_builtins.int] = None,
+                 pg_stat_plans_dot_track: Optional[_builtins.str] = None,
                  pg_stat_statements_dot_track: Optional[_builtins.str] = None,
                  synchronous_commit: Optional[_builtins.str] = None,
                  temp_file_limit: Optional[_builtins.int] = None,
@@ -45072,7 +47271,7 @@ class GetPgPgUserConfigPgResult(dict):
         :param _builtins.int io_max_combine_limit: EXPERIMENTAL: Controls the largest I/O size in operations that combine I/O in 8kB units, and silently limits the user-settable parameter io_combine_limit. Version 18 and up only. Changing this parameter causes a service restart. Default: `16`.
         :param _builtins.int io_max_concurrency: EXPERIMENTAL: Controls the maximum number of I/O operations that one process can execute simultaneously. Version 18 and up only. Changing this parameter causes a service restart. Default: `-1`.
         :param _builtins.str io_method: Enum: `io_uring`, `sync`, `worker`. EXPERIMENTAL: Controls the maximum number of I/O operations that one process can execute simultaneously. Version 18 and up only. Changing this parameter causes a service restart. Default: `worker`.
-        :param _builtins.int io_workers: EXPERIMENTAL: Number of IO worker processes, for io_method=worker. Version 18 and up only. Changing this parameter causes a service restart. Default: `3`.
+        :param _builtins.int io_workers: EXPERIMENTAL: Number of IO worker processes, for io_method=worker. Version 18 and up only.
         :param _builtins.bool jit: Controls system-wide use of Just-in-Time Compilation (JIT).
         :param _builtins.int log_autovacuum_min_duration: Causes each action executed by autovacuum to be logged if it ran for at least the specified number of milliseconds. Setting this to zero logs all autovacuum actions. Minus-one disables logging autovacuum actions. The default is `1000`.
         :param _builtins.str log_error_verbosity: Enum: `DEFAULT`, `TERSE`, `VERBOSE`. Controls the amount of detail written in the server log for each message that is logged.
@@ -45098,8 +47297,9 @@ class GetPgPgUserConfigPgResult(dict):
         :param _builtins.str password_encryption: Enum: `md5`, `scram-sha-256`. Chooses the algorithm for encrypting passwords.
         :param _builtins.int pg_partman_bgw_dot_interval: Sets the time interval in seconds to run pg_partman's scheduled tasks. The default is `3600`. Example: `3600`.
         :param _builtins.str pg_partman_bgw_dot_role: Controls which role to use for pg_partman's scheduled background tasks. Example: `myrolename`.
-        :param _builtins.bool pg_stat_monitor_dot_pgsm_enable_query_plan: Enables or disables query plan monitoring. Changing this parameter causes a service restart. Only available for PostgreSQL 13+.
+        :param _builtins.bool pg_stat_monitor_dot_pgsm_enable_query_plan: Enables or disables query plan monitoring. Only available for PostgreSQL 13+.
         :param _builtins.int pg_stat_monitor_dot_pgsm_max_buckets: Sets the maximum number of buckets. Changing this parameter causes a service restart. Only available for PostgreSQL 13+. Example: `10`.
+        :param _builtins.str pg_stat_plans_dot_track: Enum: `all`, `none`, `top`. Controls which statements' plans are tracked. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable plan tracking. The default is `top`.
         :param _builtins.str pg_stat_statements_dot_track: Enum: `all`, `none`, `top`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default is `top`.
         :param _builtins.str synchronous_commit: Enum: `local`, `off`, `on`, `remote_apply`, `remote_write`. Sets the current transaction's synchronization level. The default is `off`. This setting takes precedence over `synchronous_replication`.
         :param _builtins.int temp_file_limit: PostgreSQL temporary file limit in KiB, -1 for unlimited.
@@ -45207,6 +47407,8 @@ class GetPgPgUserConfigPgResult(dict):
             pulumi.set(__self__, "pg_stat_monitor_dot_pgsm_enable_query_plan", pg_stat_monitor_dot_pgsm_enable_query_plan)
         if pg_stat_monitor_dot_pgsm_max_buckets is not None:
             pulumi.set(__self__, "pg_stat_monitor_dot_pgsm_max_buckets", pg_stat_monitor_dot_pgsm_max_buckets)
+        if pg_stat_plans_dot_track is not None:
+            pulumi.set(__self__, "pg_stat_plans_dot_track", pg_stat_plans_dot_track)
         if pg_stat_statements_dot_track is not None:
             pulumi.set(__self__, "pg_stat_statements_dot_track", pg_stat_statements_dot_track)
         if synchronous_commit is not None:
@@ -45392,7 +47594,7 @@ class GetPgPgUserConfigPgResult(dict):
     @pulumi.getter(name="ioWorkers")
     def io_workers(self) -> Optional[_builtins.int]:
         """
-        EXPERIMENTAL: Number of IO worker processes, for io_method=worker. Version 18 and up only. Changing this parameter causes a service restart. Default: `3`.
+        EXPERIMENTAL: Number of IO worker processes, for io_method=worker. Version 18 and up only.
         """
         return pulumi.get(self, "io_workers")
 
@@ -45600,7 +47802,7 @@ class GetPgPgUserConfigPgResult(dict):
     @pulumi.getter(name="pgStatMonitorDotPgsmEnableQueryPlan")
     def pg_stat_monitor_dot_pgsm_enable_query_plan(self) -> Optional[_builtins.bool]:
         """
-        Enables or disables query plan monitoring. Changing this parameter causes a service restart. Only available for PostgreSQL 13+.
+        Enables or disables query plan monitoring. Only available for PostgreSQL 13+.
         """
         return pulumi.get(self, "pg_stat_monitor_dot_pgsm_enable_query_plan")
 
@@ -45611,6 +47813,14 @@ class GetPgPgUserConfigPgResult(dict):
         Sets the maximum number of buckets. Changing this parameter causes a service restart. Only available for PostgreSQL 13+. Example: `10`.
         """
         return pulumi.get(self, "pg_stat_monitor_dot_pgsm_max_buckets")
+
+    @_builtins.property
+    @pulumi.getter(name="pgStatPlansDotTrack")
+    def pg_stat_plans_dot_track(self) -> Optional[_builtins.str]:
+        """
+        Enum: `all`, `none`, `top`. Controls which statements' plans are tracked. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable plan tracking. The default is `top`.
+        """
+        return pulumi.get(self, "pg_stat_plans_dot_track")
 
     @_builtins.property
     @pulumi.getter(name="pgStatStatementsDotTrack")
@@ -45950,8 +48160,10 @@ class GetPgPgUserConfigPgbouncerResult(dict):
                  ignore_startup_parameters: Optional[Sequence[_builtins.str]] = None,
                  max_prepared_statements: Optional[_builtins.int] = None,
                  min_pool_size: Optional[_builtins.int] = None,
+                 server_connect_timeout: Optional[_builtins.float] = None,
                  server_idle_timeout: Optional[_builtins.int] = None,
                  server_lifetime: Optional[_builtins.int] = None,
+                 server_login_retry: Optional[_builtins.float] = None,
                  server_reset_query_always: Optional[_builtins.bool] = None):
         """
         :param _builtins.int autodb_idle_timeout: If the automatically created database pools have been unused this many seconds, they are freed. If 0 then timeout is disabled. (seconds). Default: `3600`.
@@ -45961,8 +48173,10 @@ class GetPgPgUserConfigPgbouncerResult(dict):
         :param Sequence[_builtins.str] ignore_startup_parameters: List of parameters to ignore when given in startup packet.
         :param _builtins.int max_prepared_statements: PgBouncer tracks protocol-level named prepared statements related commands sent by the client in transaction and statement pooling modes when max_prepared_statements is set to a non-zero value. Setting it to 0 disables prepared statements. max_prepared_statements defaults to 100, and its maximum is 3000. Default: `100`.
         :param _builtins.int min_pool_size: Add more server connections to pool if below this number. Improves behavior when usual load comes suddenly back after period of total inactivity. The value is effectively capped at the pool size. Default: `0`.
+        :param _builtins.float server_connect_timeout: If connection and login don’t finish in this amount of time, the connection will be closed. (seconds).
         :param _builtins.int server_idle_timeout: If a server connection has been idle more than this many seconds it will be dropped. If 0 then timeout is disabled. (seconds). Default: `600`.
         :param _builtins.int server_lifetime: The pooler will close an unused server connection that has been connected longer than this. (seconds). Default: `3600`.
+        :param _builtins.float server_login_retry: If login to the server failed, because of failure to connect or from authentication, the pooler waits this much before retrying to connect. During the waiting interval, new clients trying to connect to the failing server will get an error immediately without another connection attempt. (seconds).
         :param _builtins.bool server_reset_query_always: Run server_reset_query (DISCARD ALL) in all pooling modes. Default: `false`.
         """
         if autodb_idle_timeout is not None:
@@ -45979,10 +48193,14 @@ class GetPgPgUserConfigPgbouncerResult(dict):
             pulumi.set(__self__, "max_prepared_statements", max_prepared_statements)
         if min_pool_size is not None:
             pulumi.set(__self__, "min_pool_size", min_pool_size)
+        if server_connect_timeout is not None:
+            pulumi.set(__self__, "server_connect_timeout", server_connect_timeout)
         if server_idle_timeout is not None:
             pulumi.set(__self__, "server_idle_timeout", server_idle_timeout)
         if server_lifetime is not None:
             pulumi.set(__self__, "server_lifetime", server_lifetime)
+        if server_login_retry is not None:
+            pulumi.set(__self__, "server_login_retry", server_login_retry)
         if server_reset_query_always is not None:
             pulumi.set(__self__, "server_reset_query_always", server_reset_query_always)
 
@@ -46043,6 +48261,14 @@ class GetPgPgUserConfigPgbouncerResult(dict):
         return pulumi.get(self, "min_pool_size")
 
     @_builtins.property
+    @pulumi.getter(name="serverConnectTimeout")
+    def server_connect_timeout(self) -> Optional[_builtins.float]:
+        """
+        If connection and login don’t finish in this amount of time, the connection will be closed. (seconds).
+        """
+        return pulumi.get(self, "server_connect_timeout")
+
+    @_builtins.property
     @pulumi.getter(name="serverIdleTimeout")
     def server_idle_timeout(self) -> Optional[_builtins.int]:
         """
@@ -46057,6 +48283,14 @@ class GetPgPgUserConfigPgbouncerResult(dict):
         The pooler will close an unused server connection that has been connected longer than this. (seconds). Default: `3600`.
         """
         return pulumi.get(self, "server_lifetime")
+
+    @_builtins.property
+    @pulumi.getter(name="serverLoginRetry")
+    def server_login_retry(self) -> Optional[_builtins.float]:
+        """
+        If login to the server failed, because of failure to connect or from authentication, the pooler waits this much before retrying to connect. During the waiting interval, new clients trying to connect to the failing server will get an error immediately without another connection attempt. (seconds).
+        """
+        return pulumi.get(self, "server_login_retry")
 
     @_builtins.property
     @pulumi.getter(name="serverResetQueryAlways")
@@ -46977,6 +49211,8 @@ class GetServiceIntegrationClickhousePostgresqlUserConfigDatabaseResult(dict):
 class GetServiceIntegrationDatadogUserConfigResult(dict):
     def __init__(__self__, *,
                  datadog_dbm_enabled: Optional[_builtins.bool] = None,
+                 datadog_function_metrics_enabled: Optional[_builtins.bool] = None,
+                 datadog_pg_relations: Optional[Sequence['outputs.GetServiceIntegrationDatadogUserConfigDatadogPgRelationResult']] = None,
                  datadog_pgbouncer_enabled: Optional[_builtins.bool] = None,
                  datadog_tags: Optional[Sequence['outputs.GetServiceIntegrationDatadogUserConfigDatadogTagResult']] = None,
                  exclude_consumer_groups: Optional[Sequence[_builtins.str]] = None,
@@ -46990,6 +49226,8 @@ class GetServiceIntegrationDatadogUserConfigResult(dict):
                  redis: Optional['outputs.GetServiceIntegrationDatadogUserConfigRedisResult'] = None):
         """
         :param _builtins.bool datadog_dbm_enabled: Enable Datadog Database Monitoring.
+        :param _builtins.bool datadog_function_metrics_enabled: Enable collection of PL/pgSQL function metrics from pg_stat_user_functions. Requires `track_functions` to be set to `pl` or `all` in the service configuration.
+        :param Sequence['GetServiceIntegrationDatadogUserConfigDatadogPgRelationArgs'] datadog_pg_relations: Relations to collect PostgreSQL relation metrics for, such as table size, index statistics, row counts, vacuum ages and locks. No relation metrics are collected when unset
         :param _builtins.bool datadog_pgbouncer_enabled: Enable Datadog PgBouncer Metric Tracking.
         :param Sequence['GetServiceIntegrationDatadogUserConfigDatadogTagArgs'] datadog_tags: Custom tags provided by user
         :param Sequence[_builtins.str] exclude_consumer_groups: List of custom metrics.
@@ -47004,6 +49242,10 @@ class GetServiceIntegrationDatadogUserConfigResult(dict):
         """
         if datadog_dbm_enabled is not None:
             pulumi.set(__self__, "datadog_dbm_enabled", datadog_dbm_enabled)
+        if datadog_function_metrics_enabled is not None:
+            pulumi.set(__self__, "datadog_function_metrics_enabled", datadog_function_metrics_enabled)
+        if datadog_pg_relations is not None:
+            pulumi.set(__self__, "datadog_pg_relations", datadog_pg_relations)
         if datadog_pgbouncer_enabled is not None:
             pulumi.set(__self__, "datadog_pgbouncer_enabled", datadog_pgbouncer_enabled)
         if datadog_tags is not None:
@@ -47034,6 +49276,22 @@ class GetServiceIntegrationDatadogUserConfigResult(dict):
         Enable Datadog Database Monitoring.
         """
         return pulumi.get(self, "datadog_dbm_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="datadogFunctionMetricsEnabled")
+    def datadog_function_metrics_enabled(self) -> Optional[_builtins.bool]:
+        """
+        Enable collection of PL/pgSQL function metrics from pg_stat_user_functions. Requires `track_functions` to be set to `pl` or `all` in the service configuration.
+        """
+        return pulumi.get(self, "datadog_function_metrics_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="datadogPgRelations")
+    def datadog_pg_relations(self) -> Optional[Sequence['outputs.GetServiceIntegrationDatadogUserConfigDatadogPgRelationResult']]:
+        """
+        Relations to collect PostgreSQL relation metrics for, such as table size, index statistics, row counts, vacuum ages and locks. No relation metrics are collected when unset
+        """
+        return pulumi.get(self, "datadog_pg_relations")
 
     @_builtins.property
     @pulumi.getter(name="datadogPgbouncerEnabled")
@@ -47122,6 +49380,61 @@ class GetServiceIntegrationDatadogUserConfigResult(dict):
         Datadog Redis Options
         """
         return pulumi.get(self, "redis")
+
+
+@pulumi.output_type
+class GetServiceIntegrationDatadogUserConfigDatadogPgRelationResult(dict):
+    def __init__(__self__, *,
+                 relation_name: Optional[_builtins.str] = None,
+                 relation_regex: Optional[_builtins.str] = None,
+                 relkinds: Optional[Sequence[_builtins.str]] = None,
+                 schemas: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str relation_name: Name of a single relation to collect metrics for. Example: `orders`.
+        :param _builtins.str relation_regex: Regular expression matching the names of the relations to collect metrics for. Example: `^orders_.*`.
+        :param Sequence[_builtins.str] relkinds: Only collect lock metrics for these relation kinds. Applies to ordinary tables when unset. Accepted values are the `relkind` values of `pg_class`: `r` (ordinary table), `i` (index), `S` (sequence), `t` (TOAST table), `m` (materialized view), `c` (composite type), `f` (foreign table), `p` (partitioned table).
+        :param Sequence[_builtins.str] schemas: Only collect metrics for relations in these schemas. Applies to all schemas when unset.
+        """
+        if relation_name is not None:
+            pulumi.set(__self__, "relation_name", relation_name)
+        if relation_regex is not None:
+            pulumi.set(__self__, "relation_regex", relation_regex)
+        if relkinds is not None:
+            pulumi.set(__self__, "relkinds", relkinds)
+        if schemas is not None:
+            pulumi.set(__self__, "schemas", schemas)
+
+    @_builtins.property
+    @pulumi.getter(name="relationName")
+    def relation_name(self) -> Optional[_builtins.str]:
+        """
+        Name of a single relation to collect metrics for. Example: `orders`.
+        """
+        return pulumi.get(self, "relation_name")
+
+    @_builtins.property
+    @pulumi.getter(name="relationRegex")
+    def relation_regex(self) -> Optional[_builtins.str]:
+        """
+        Regular expression matching the names of the relations to collect metrics for. Example: `^orders_.*`.
+        """
+        return pulumi.get(self, "relation_regex")
+
+    @_builtins.property
+    @pulumi.getter
+    def relkinds(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Only collect lock metrics for these relation kinds. Applies to ordinary tables when unset. Accepted values are the `relkind` values of `pg_class`: `r` (ordinary table), `i` (index), `S` (sequence), `t` (TOAST table), `m` (materialized view), `c` (composite type), `f` (foreign table), `p` (partitioned table).
+        """
+        return pulumi.get(self, "relkinds")
+
+    @_builtins.property
+    @pulumi.getter
+    def schemas(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Only collect metrics for relations in these schemas. Applies to all schemas when unset.
+        """
+        return pulumi.get(self, "schemas")
 
 
 @pulumi.output_type
@@ -48468,6 +50781,82 @@ class GetServiceIntegrationEndpointJolokiaUserConfigResult(dict):
         Jolokia basic authentication username. Example: `jol48k51`.
         """
         return pulumi.get(self, "basic_auth_username")
+
+
+@pulumi.output_type
+class GetServiceIntegrationEndpointOpentelemetryUserConfigResult(dict):
+    def __init__(__self__, *,
+                 compression: _builtins.str,
+                 service_address: _builtins.str,
+                 timeout: _builtins.int,
+                 attributes: Optional[Mapping[str, _builtins.str]] = None,
+                 encoding_type: Optional[_builtins.str] = None,
+                 headers: Optional[Mapping[str, _builtins.str]] = None):
+        """
+        :param _builtins.str compression: Enum: `gzip`, `none`. Payload compression.
+        :param _builtins.str service_address: Either a bare `host:port` (OTLP/gRPC, no URL scheme) or an `http://`/`https://` URL (OTLP/HTTP). Example: `otel-collector.example.avns.net:4317`.
+        :param _builtins.int timeout: Connection timeout in seconds. Example: `10`.
+        :param Mapping[str, _builtins.str] attributes: Resource attributes to attach to every exported metric.
+        :param _builtins.str encoding_type: Enum: `json`, `protobuf`. Encoding used for exported metrics. Leave unset to use telegraf's default.
+        :param Mapping[str, _builtins.str] headers: Additional gRPC metadata headers sent with every export request.
+        """
+        pulumi.set(__self__, "compression", compression)
+        pulumi.set(__self__, "service_address", service_address)
+        pulumi.set(__self__, "timeout", timeout)
+        if attributes is not None:
+            pulumi.set(__self__, "attributes", attributes)
+        if encoding_type is not None:
+            pulumi.set(__self__, "encoding_type", encoding_type)
+        if headers is not None:
+            pulumi.set(__self__, "headers", headers)
+
+    @_builtins.property
+    @pulumi.getter
+    def compression(self) -> _builtins.str:
+        """
+        Enum: `gzip`, `none`. Payload compression.
+        """
+        return pulumi.get(self, "compression")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAddress")
+    def service_address(self) -> _builtins.str:
+        """
+        Either a bare `host:port` (OTLP/gRPC, no URL scheme) or an `http://`/`https://` URL (OTLP/HTTP). Example: `otel-collector.example.avns.net:4317`.
+        """
+        return pulumi.get(self, "service_address")
+
+    @_builtins.property
+    @pulumi.getter
+    def timeout(self) -> _builtins.int:
+        """
+        Connection timeout in seconds. Example: `10`.
+        """
+        return pulumi.get(self, "timeout")
+
+    @_builtins.property
+    @pulumi.getter
+    def attributes(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        Resource attributes to attach to every exported metric.
+        """
+        return pulumi.get(self, "attributes")
+
+    @_builtins.property
+    @pulumi.getter(name="encodingType")
+    def encoding_type(self) -> Optional[_builtins.str]:
+        """
+        Enum: `json`, `protobuf`. Encoding used for exported metrics. Leave unset to use telegraf's default.
+        """
+        return pulumi.get(self, "encoding_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def headers(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        Additional gRPC metadata headers sent with every export request.
+        """
+        return pulumi.get(self, "headers")
 
 
 @pulumi.output_type
@@ -51188,6 +53577,25 @@ class GetValkeyTechEmailResult(dict):
 
 
 @pulumi.output_type
+class GetValkeyUserTimeoutsResult(dict):
+    def __init__(__self__, *,
+                 read: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "read")
+
+
+@pulumi.output_type
 class GetValkeyValkeyResult(dict):
     def __init__(__self__, *,
                  password: _builtins.str,
@@ -51260,6 +53668,7 @@ class GetValkeyValkeyUserConfigResult(dict):
                  static_ips: Optional[_builtins.bool] = None,
                  valkey_acl_channels_default: Optional[_builtins.str] = None,
                  valkey_active_expire_effort: Optional[_builtins.int] = None,
+                 valkey_activedefrag: Optional[_builtins.bool] = None,
                  valkey_io_threads: Optional[_builtins.int] = None,
                  valkey_lfu_decay_time: Optional[_builtins.int] = None,
                  valkey_lfu_log_factor: Optional[_builtins.int] = None,
@@ -51291,6 +53700,7 @@ class GetValkeyValkeyUserConfigResult(dict):
         :param _builtins.bool static_ips: Use static public IP addresses.
         :param _builtins.str valkey_acl_channels_default: Enum: `allchannels`, `resetchannels`. Determines default pub/sub channels' ACL for new users if ACL is not supplied. When this option is not defined, all_channels is assumed to keep backward compatibility. This option doesn't affect Valkey configuration acl-pubsub-default.
         :param _builtins.int valkey_active_expire_effort: Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency. Default: `1`.
+        :param _builtins.bool valkey_activedefrag: Enable active memory defragmentation. When enabled, Valkey relocates objects off sparsely-used memory pages to reduce fragmentation and return memory to the operating system. Defragmentation runs on the main thread and consumes CPU, so it may increase latency under load. Default: `false`.
         :param _builtins.int valkey_io_threads: Set Valkey IO thread count. Changing this will cause a restart of the Valkey service. Example: `1`.
         :param _builtins.int valkey_lfu_decay_time: LFU maxmemory-policy counter decay time in minutes. Default: `1`.
         :param _builtins.int valkey_lfu_log_factor: Counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory-policies. Default: `10`.
@@ -51301,7 +53711,7 @@ class GetValkeyValkeyUserConfigResult(dict):
         :param _builtins.int valkey_pubsub_client_output_buffer_limit: Set output buffer limit for pub / sub clients in MB. The value is the hard limit, the soft limit is 1/4 of the hard limit. When setting the limit, be mindful of the available memory in the selected service plan. Example: `64`.
         :param _builtins.bool valkey_ssl: Require SSL to access Valkey. Default: `true`.
         :param _builtins.int valkey_timeout: Valkey idle connection timeout in seconds. Default: `300`.
-        :param _builtins.str valkey_version: Enum: `8.1`, `9.0`, and newer. Valkey major version.
+        :param _builtins.str valkey_version: Enum: `8.1`, `9.0`, `9.1`, and newer. Valkey major version.
         """
         if additional_backup_regions is not None:
             pulumi.set(__self__, "additional_backup_regions", additional_backup_regions)
@@ -51341,6 +53751,8 @@ class GetValkeyValkeyUserConfigResult(dict):
             pulumi.set(__self__, "valkey_acl_channels_default", valkey_acl_channels_default)
         if valkey_active_expire_effort is not None:
             pulumi.set(__self__, "valkey_active_expire_effort", valkey_active_expire_effort)
+        if valkey_activedefrag is not None:
+            pulumi.set(__self__, "valkey_activedefrag", valkey_activedefrag)
         if valkey_io_threads is not None:
             pulumi.set(__self__, "valkey_io_threads", valkey_io_threads)
         if valkey_lfu_decay_time is not None:
@@ -51518,6 +53930,14 @@ class GetValkeyValkeyUserConfigResult(dict):
         return pulumi.get(self, "valkey_active_expire_effort")
 
     @_builtins.property
+    @pulumi.getter(name="valkeyActivedefrag")
+    def valkey_activedefrag(self) -> Optional[_builtins.bool]:
+        """
+        Enable active memory defragmentation. When enabled, Valkey relocates objects off sparsely-used memory pages to reduce fragmentation and return memory to the operating system. Defragmentation runs on the main thread and consumes CPU, so it may increase latency under load. Default: `false`.
+        """
+        return pulumi.get(self, "valkey_activedefrag")
+
+    @_builtins.property
     @pulumi.getter(name="valkeyIoThreads")
     def valkey_io_threads(self) -> Optional[_builtins.int]:
         """
@@ -51601,7 +54021,7 @@ class GetValkeyValkeyUserConfigResult(dict):
     @pulumi.getter(name="valkeyVersion")
     def valkey_version(self) -> Optional[_builtins.str]:
         """
-        Enum: `8.1`, `9.0`, and newer. Valkey major version.
+        Enum: `8.1`, `9.0`, `9.1`, and newer. Valkey major version.
         """
         return pulumi.get(self, "valkey_version")
 

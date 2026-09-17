@@ -2,13 +2,27 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
  * Gets information about an AWS VPC peering connection.
  *
- * **This resource is in the beta stage and may change without notice.** Set
- * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const example = aiven.getAwsOrgVpcPeeringConnection({
+ *     organizationId: "org1a23f456789",
+ *     organizationVpcId: "1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+ *     awsAccountId: "123456789012",
+ *     awsVpcId: "vpc-2f09a348",
+ *     awsVpcRegion: "us-east-1",
+ * });
+ * ```
  */
 export function getAwsOrgVpcPeeringConnection(args: GetAwsOrgVpcPeeringConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetAwsOrgVpcPeeringConnectionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -18,6 +32,7 @@ export function getAwsOrgVpcPeeringConnection(args: GetAwsOrgVpcPeeringConnectio
         "awsVpcRegion": args.awsVpcRegion,
         "organizationId": args.organizationId,
         "organizationVpcId": args.organizationVpcId,
+        "timeouts": args.timeouts,
     }, opts);
 }
 
@@ -26,11 +41,11 @@ export function getAwsOrgVpcPeeringConnection(args: GetAwsOrgVpcPeeringConnectio
  */
 export interface GetAwsOrgVpcPeeringConnectionArgs {
     /**
-     * AWS account ID. Changing this property forces recreation of the resource.
+     * AWS account ID.
      */
     awsAccountId: string;
     /**
-     * AWS VPC ID. Changing this property forces recreation of the resource.
+     * AWS VPC ID.
      */
     awsVpcId: string;
     /**
@@ -38,13 +53,14 @@ export interface GetAwsOrgVpcPeeringConnectionArgs {
      */
     awsVpcRegion: string;
     /**
-     * Identifier of the organization.
+     * ID of an organization.
      */
     organizationId: string;
     /**
-     * Identifier of the organization VPC.
+     * Organization VPC ID.
      */
     organizationVpcId: string;
+    timeouts?: inputs.GetAwsOrgVpcPeeringConnectionTimeouts;
 }
 
 /**
@@ -52,11 +68,11 @@ export interface GetAwsOrgVpcPeeringConnectionArgs {
  */
 export interface GetAwsOrgVpcPeeringConnectionResult {
     /**
-     * AWS account ID. Changing this property forces recreation of the resource.
+     * AWS account ID.
      */
     readonly awsAccountId: string;
     /**
-     * AWS VPC ID. Changing this property forces recreation of the resource.
+     * AWS VPC ID.
      */
     readonly awsVpcId: string;
     /**
@@ -68,31 +84,44 @@ export interface GetAwsOrgVpcPeeringConnectionResult {
      */
     readonly awsVpcRegion: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * Resource ID composed as: `organization_id/organization_vpc_id/aws_account_id/aws_vpc_id/aws_vpc_region`.
      */
     readonly id: string;
     /**
-     * Identifier of the organization.
+     * ID of an organization.
      */
     readonly organizationId: string;
     /**
-     * Identifier of the organization VPC.
+     * Organization VPC ID.
      */
     readonly organizationVpcId: string;
     /**
-     * The ID of the peering connection.
+     * Organization peering connection ID.
      */
     readonly peeringConnectionId: string;
     /**
      * State of the peering connection. The possible values are `ACTIVE`, `APPROVED`, `APPROVED_PEER_REQUESTED`, `DELETED`, `DELETED_BY_PEER`, `DELETING`, `ERROR`, `INVALID_SPECIFICATION`, `PENDING_PEER` and `REJECTED_BY_PEER`.
      */
     readonly state: string;
+    readonly timeouts?: outputs.GetAwsOrgVpcPeeringConnectionTimeouts;
 }
 /**
  * Gets information about an AWS VPC peering connection.
  *
- * **This resource is in the beta stage and may change without notice.** Set
- * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const example = aiven.getAwsOrgVpcPeeringConnection({
+ *     organizationId: "org1a23f456789",
+ *     organizationVpcId: "1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+ *     awsAccountId: "123456789012",
+ *     awsVpcId: "vpc-2f09a348",
+ *     awsVpcRegion: "us-east-1",
+ * });
+ * ```
  */
 export function getAwsOrgVpcPeeringConnectionOutput(args: GetAwsOrgVpcPeeringConnectionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAwsOrgVpcPeeringConnectionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -102,6 +131,7 @@ export function getAwsOrgVpcPeeringConnectionOutput(args: GetAwsOrgVpcPeeringCon
         "awsVpcRegion": args.awsVpcRegion,
         "organizationId": args.organizationId,
         "organizationVpcId": args.organizationVpcId,
+        "timeouts": args.timeouts,
     }, opts);
 }
 
@@ -110,11 +140,11 @@ export function getAwsOrgVpcPeeringConnectionOutput(args: GetAwsOrgVpcPeeringCon
  */
 export interface GetAwsOrgVpcPeeringConnectionOutputArgs {
     /**
-     * AWS account ID. Changing this property forces recreation of the resource.
+     * AWS account ID.
      */
     awsAccountId: pulumi.Input<string>;
     /**
-     * AWS VPC ID. Changing this property forces recreation of the resource.
+     * AWS VPC ID.
      */
     awsVpcId: pulumi.Input<string>;
     /**
@@ -122,11 +152,12 @@ export interface GetAwsOrgVpcPeeringConnectionOutputArgs {
      */
     awsVpcRegion: pulumi.Input<string>;
     /**
-     * Identifier of the organization.
+     * ID of an organization.
      */
     organizationId: pulumi.Input<string>;
     /**
-     * Identifier of the organization VPC.
+     * Organization VPC ID.
      */
     organizationVpcId: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.GetAwsOrgVpcPeeringConnectionTimeoutsArgs | undefined>;
 }

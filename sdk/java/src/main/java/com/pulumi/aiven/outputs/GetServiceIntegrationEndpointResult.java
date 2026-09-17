@@ -21,6 +21,7 @@ import com.pulumi.aiven.outputs.GetServiceIntegrationEndpointExternalPostgresql;
 import com.pulumi.aiven.outputs.GetServiceIntegrationEndpointExternalPrometheusUserConfig;
 import com.pulumi.aiven.outputs.GetServiceIntegrationEndpointExternalSchemaRegistryUserConfig;
 import com.pulumi.aiven.outputs.GetServiceIntegrationEndpointJolokiaUserConfig;
+import com.pulumi.aiven.outputs.GetServiceIntegrationEndpointOpentelemetryUserConfig;
 import com.pulumi.aiven.outputs.GetServiceIntegrationEndpointPrometheusUserConfig;
 import com.pulumi.aiven.outputs.GetServiceIntegrationEndpointRsyslogUserConfig;
 import com.pulumi.core.annotations.CustomType;
@@ -53,7 +54,7 @@ public final class GetServiceIntegrationEndpointResult {
      */
     private String endpointName;
     /**
-     * @return The type of service integration endpoint. The possible values are `autoscaler`, `datadog`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalAwsS3`, `externalAzureBlobStorage`, `externalClickhouse`, `externalElasticsearchLogs`, `externalGoogleCloudBigquery`, `externalGoogleCloudLogging`, `externalKafka`, `externalMysql`, `externalObjectStorageConfig`, `externalOpensearchLogs`, `externalPostgresql`, `externalPrometheus`, `externalRedis`, `externalSchemaRegistry`, `externalSumologicLogs`, `jolokia`, `prometheus` and `rsyslog`.
+     * @return The type of service integration endpoint. The possible values are `autoscaler`, `datadog`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalAwsS3`, `externalAzureBlobStorage`, `externalClickhouse`, `externalElasticsearchLogs`, `externalGoogleCloudBigquery`, `externalGoogleCloudLogging`, `externalKafka`, `externalMysql`, `externalObjectStorageConfig`, `externalOpensearchLogs`, `externalPostgresql`, `externalPrometheus`, `externalRedis`, `externalSchemaRegistry`, `externalSumologicLogs`, `jolokia`, `opentelemetry`, `prometheus` and `rsyslog`.
      * 
      */
     private String endpointType;
@@ -143,6 +144,11 @@ public final class GetServiceIntegrationEndpointResult {
      */
     private List<GetServiceIntegrationEndpointJolokiaUserConfig> jolokiaUserConfigs;
     /**
+     * @return Opentelemetry user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
+     * 
+     */
+    private List<GetServiceIntegrationEndpointOpentelemetryUserConfig> opentelemetryUserConfigs;
+    /**
      * @return Project the service integration endpoint is in.
      * 
      */
@@ -188,7 +194,7 @@ public final class GetServiceIntegrationEndpointResult {
         return this.endpointName;
     }
     /**
-     * @return The type of service integration endpoint. The possible values are `autoscaler`, `datadog`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalAwsS3`, `externalAzureBlobStorage`, `externalClickhouse`, `externalElasticsearchLogs`, `externalGoogleCloudBigquery`, `externalGoogleCloudLogging`, `externalKafka`, `externalMysql`, `externalObjectStorageConfig`, `externalOpensearchLogs`, `externalPostgresql`, `externalPrometheus`, `externalRedis`, `externalSchemaRegistry`, `externalSumologicLogs`, `jolokia`, `prometheus` and `rsyslog`.
+     * @return The type of service integration endpoint. The possible values are `autoscaler`, `datadog`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalAwsS3`, `externalAzureBlobStorage`, `externalClickhouse`, `externalElasticsearchLogs`, `externalGoogleCloudBigquery`, `externalGoogleCloudLogging`, `externalKafka`, `externalMysql`, `externalObjectStorageConfig`, `externalOpensearchLogs`, `externalPostgresql`, `externalPrometheus`, `externalRedis`, `externalSchemaRegistry`, `externalSumologicLogs`, `jolokia`, `opentelemetry`, `prometheus` and `rsyslog`.
      * 
      */
     public String endpointType() {
@@ -314,6 +320,13 @@ public final class GetServiceIntegrationEndpointResult {
         return this.jolokiaUserConfigs;
     }
     /**
+     * @return Opentelemetry user configurable settings. **Warning:** There&#39;s no way to reset advanced configuration options to default. Options that you add cannot be removed later
+     * 
+     */
+    public List<GetServiceIntegrationEndpointOpentelemetryUserConfig> opentelemetryUserConfigs() {
+        return this.opentelemetryUserConfigs;
+    }
+    /**
      * @return Project the service integration endpoint is in.
      * 
      */
@@ -366,6 +379,7 @@ public final class GetServiceIntegrationEndpointResult {
         private List<GetServiceIntegrationEndpointExternalSchemaRegistryUserConfig> externalSchemaRegistryUserConfigs;
         private String id;
         private List<GetServiceIntegrationEndpointJolokiaUserConfig> jolokiaUserConfigs;
+        private List<GetServiceIntegrationEndpointOpentelemetryUserConfig> opentelemetryUserConfigs;
         private String project;
         private List<GetServiceIntegrationEndpointPrometheusUserConfig> prometheusUserConfigs;
         private List<GetServiceIntegrationEndpointRsyslogUserConfig> rsyslogUserConfigs;
@@ -394,6 +408,7 @@ public final class GetServiceIntegrationEndpointResult {
     	      this.externalSchemaRegistryUserConfigs = defaults.externalSchemaRegistryUserConfigs;
     	      this.id = defaults.id;
     	      this.jolokiaUserConfigs = defaults.jolokiaUserConfigs;
+    	      this.opentelemetryUserConfigs = defaults.opentelemetryUserConfigs;
     	      this.project = defaults.project;
     	      this.prometheusUserConfigs = defaults.prometheusUserConfigs;
     	      this.rsyslogUserConfigs = defaults.rsyslogUserConfigs;
@@ -630,6 +645,17 @@ public final class GetServiceIntegrationEndpointResult {
             return jolokiaUserConfigs(List.of(jolokiaUserConfigs));
         }
         @CustomType.Setter
+        public Builder opentelemetryUserConfigs(List<GetServiceIntegrationEndpointOpentelemetryUserConfig> opentelemetryUserConfigs) {
+            if (opentelemetryUserConfigs == null) {
+              throw new MissingRequiredPropertyException("GetServiceIntegrationEndpointResult", "opentelemetryUserConfigs");
+            }
+            this.opentelemetryUserConfigs = opentelemetryUserConfigs;
+            return this;
+        }
+        public Builder opentelemetryUserConfigs(GetServiceIntegrationEndpointOpentelemetryUserConfig... opentelemetryUserConfigs) {
+            return opentelemetryUserConfigs(List.of(opentelemetryUserConfigs));
+        }
+        @CustomType.Setter
         public Builder project(String project) {
             if (project == null) {
               throw new MissingRequiredPropertyException("GetServiceIntegrationEndpointResult", "project");
@@ -683,6 +709,7 @@ public final class GetServiceIntegrationEndpointResult {
             _resultValue.externalSchemaRegistryUserConfigs = externalSchemaRegistryUserConfigs;
             _resultValue.id = id;
             _resultValue.jolokiaUserConfigs = jolokiaUserConfigs;
+            _resultValue.opentelemetryUserConfigs = opentelemetryUserConfigs;
             _resultValue.project = project;
             _resultValue.prometheusUserConfigs = prometheusUserConfigs;
             _resultValue.rsyslogUserConfigs = rsyslogUserConfigs;

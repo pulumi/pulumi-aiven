@@ -29,12 +29,6 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.NewOpenSearch(ctx, "example_opensearch", &aiven.OpenSearchArgs{
-//				Project:               pulumi.Any(exampleProject.Project),
-//				CloudName:             pulumi.String("google-europe-west1"),
-//				Plan:                  pulumi.String("startup-4"),
-//				ServiceName:           pulumi.String("example-opensearch"),
-//				MaintenanceWindowDow:  pulumi.String("monday"),
-//				MaintenanceWindowTime: pulumi.String("10:00:00"),
 //				OpensearchUserConfig: &aiven.OpenSearchOpensearchUserConfigArgs{
 //					OpensearchDashboards: &aiven.OpenSearchOpensearchUserConfigOpensearchDashboardsArgs{
 //						Enabled:                  pulumi.Bool(true),
@@ -45,6 +39,12 @@ import (
 //						OpensearchDashboards: pulumi.Bool(true),
 //					},
 //				},
+//				Project:               pulumi.Any(exampleProject.Project),
+//				CloudName:             pulumi.String("google-europe-west1"),
+//				Plan:                  pulumi.String("startup-4"),
+//				ServiceName:           pulumi.String("example-opensearch"),
+//				MaintenanceWindowDow:  pulumi.String("monday"),
+//				MaintenanceWindowTime: pulumi.String("10:00:00"),
 //			})
 //			if err != nil {
 //				return err

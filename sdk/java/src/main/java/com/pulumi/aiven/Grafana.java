@@ -53,18 +53,18 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var exampleGrafana = new Grafana("exampleGrafana", GrafanaArgs.builder()
+ *             .grafanaUserConfig(GrafanaGrafanaUserConfigArgs.builder()
+ *                 .publicAccess(GrafanaGrafanaUserConfigPublicAccessArgs.builder()
+ *                     .grafana(true)
+ *                     .build())
+ *                 .alertingEnabled(true)
+ *                 .build())
  *             .project(exampleProject.project())
  *             .cloudName("google-europe-west1")
  *             .plan("startup-1")
  *             .serviceName("example-grafana-service")
  *             .maintenanceWindowDow("monday")
  *             .maintenanceWindowTime("10:00:00")
- *             .grafanaUserConfig(GrafanaGrafanaUserConfigArgs.builder()
- *                 .alertingEnabled(true)
- *                 .publicAccess(GrafanaGrafanaUserConfigPublicAccessArgs.builder()
- *                     .grafana(true)
- *                     .build())
- *                 .build())
  *             .build());
  * 
  *     }

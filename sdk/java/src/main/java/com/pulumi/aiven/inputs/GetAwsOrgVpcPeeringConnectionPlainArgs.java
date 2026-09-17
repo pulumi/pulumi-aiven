@@ -3,10 +3,13 @@
 
 package com.pulumi.aiven.inputs;
 
+import com.pulumi.aiven.inputs.GetAwsOrgVpcPeeringConnectionTimeouts;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetAwsOrgVpcPeeringConnectionPlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -14,14 +17,14 @@ public final class GetAwsOrgVpcPeeringConnectionPlainArgs extends com.pulumi.res
     public static final GetAwsOrgVpcPeeringConnectionPlainArgs Empty = new GetAwsOrgVpcPeeringConnectionPlainArgs();
 
     /**
-     * AWS account ID. Changing this property forces recreation of the resource.
+     * AWS account ID.
      * 
      */
     @Import(name="awsAccountId", required=true)
     private String awsAccountId;
 
     /**
-     * @return AWS account ID. Changing this property forces recreation of the resource.
+     * @return AWS account ID.
      * 
      */
     public String awsAccountId() {
@@ -29,14 +32,14 @@ public final class GetAwsOrgVpcPeeringConnectionPlainArgs extends com.pulumi.res
     }
 
     /**
-     * AWS VPC ID. Changing this property forces recreation of the resource.
+     * AWS VPC ID.
      * 
      */
     @Import(name="awsVpcId", required=true)
     private String awsVpcId;
 
     /**
-     * @return AWS VPC ID. Changing this property forces recreation of the resource.
+     * @return AWS VPC ID.
      * 
      */
     public String awsVpcId() {
@@ -59,14 +62,14 @@ public final class GetAwsOrgVpcPeeringConnectionPlainArgs extends com.pulumi.res
     }
 
     /**
-     * Identifier of the organization.
+     * ID of an organization.
      * 
      */
     @Import(name="organizationId", required=true)
     private String organizationId;
 
     /**
-     * @return Identifier of the organization.
+     * @return ID of an organization.
      * 
      */
     public String organizationId() {
@@ -74,18 +77,25 @@ public final class GetAwsOrgVpcPeeringConnectionPlainArgs extends com.pulumi.res
     }
 
     /**
-     * Identifier of the organization VPC.
+     * Organization VPC ID.
      * 
      */
     @Import(name="organizationVpcId", required=true)
     private String organizationVpcId;
 
     /**
-     * @return Identifier of the organization VPC.
+     * @return Organization VPC ID.
      * 
      */
     public String organizationVpcId() {
         return this.organizationVpcId;
+    }
+
+    @Import(name="timeouts")
+    private @Nullable GetAwsOrgVpcPeeringConnectionTimeouts timeouts;
+
+    public Optional<GetAwsOrgVpcPeeringConnectionTimeouts> timeouts() {
+        return Optional.ofNullable(this.timeouts);
     }
 
     private GetAwsOrgVpcPeeringConnectionPlainArgs() {}
@@ -96,6 +106,7 @@ public final class GetAwsOrgVpcPeeringConnectionPlainArgs extends com.pulumi.res
         this.awsVpcRegion = $.awsVpcRegion;
         this.organizationId = $.organizationId;
         this.organizationVpcId = $.organizationVpcId;
+        this.timeouts = $.timeouts;
     }
 
     public static Builder builder() {
@@ -117,7 +128,7 @@ public final class GetAwsOrgVpcPeeringConnectionPlainArgs extends com.pulumi.res
         }
 
         /**
-         * @param awsAccountId AWS account ID. Changing this property forces recreation of the resource.
+         * @param awsAccountId AWS account ID.
          * 
          * @return builder
          * 
@@ -128,7 +139,7 @@ public final class GetAwsOrgVpcPeeringConnectionPlainArgs extends com.pulumi.res
         }
 
         /**
-         * @param awsVpcId AWS VPC ID. Changing this property forces recreation of the resource.
+         * @param awsVpcId AWS VPC ID.
          * 
          * @return builder
          * 
@@ -150,7 +161,7 @@ public final class GetAwsOrgVpcPeeringConnectionPlainArgs extends com.pulumi.res
         }
 
         /**
-         * @param organizationId Identifier of the organization.
+         * @param organizationId ID of an organization.
          * 
          * @return builder
          * 
@@ -161,13 +172,18 @@ public final class GetAwsOrgVpcPeeringConnectionPlainArgs extends com.pulumi.res
         }
 
         /**
-         * @param organizationVpcId Identifier of the organization VPC.
+         * @param organizationVpcId Organization VPC ID.
          * 
          * @return builder
          * 
          */
         public Builder organizationVpcId(String organizationVpcId) {
             $.organizationVpcId = organizationVpcId;
+            return this;
+        }
+
+        public Builder timeouts(@Nullable GetAwsOrgVpcPeeringConnectionTimeouts timeouts) {
+            $.timeouts = timeouts;
             return this;
         }
 

@@ -354,7 +354,10 @@ class OrganizationAddress(pulumi.CustomResource):
 
         example = aiven.OrganizationAddress("example",
             organization_id="org1a23f456789",
-            address_lines=["Street 1"],
+            address_lines=[
+                "Street 1",
+                "Street 2",
+            ],
             city="Helsinki",
             country_code="FI",
             name="Aiven Oy",
@@ -396,7 +399,10 @@ class OrganizationAddress(pulumi.CustomResource):
 
         example = aiven.OrganizationAddress("example",
             organization_id="org1a23f456789",
-            address_lines=["Street 1"],
+            address_lines=[
+                "Street 1",
+                "Street 2",
+            ],
             city="Helsinki",
             country_code="FI",
             name="Aiven Oy",

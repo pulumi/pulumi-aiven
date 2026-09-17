@@ -54,12 +54,6 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var exampleOpensearch = new OpenSearch("exampleOpensearch", OpenSearchArgs.builder()
- *             .project(exampleProject.project())
- *             .cloudName("google-europe-west1")
- *             .plan("startup-4")
- *             .serviceName("example-opensearch")
- *             .maintenanceWindowDow("monday")
- *             .maintenanceWindowTime("10:00:00")
  *             .opensearchUserConfig(OpenSearchOpensearchUserConfigArgs.builder()
  *                 .opensearchDashboards(OpenSearchOpensearchUserConfigOpensearchDashboardsArgs.builder()
  *                     .enabled(true)
@@ -70,6 +64,12 @@ import javax.annotation.Nullable;
  *                     .opensearchDashboards(true)
  *                     .build())
  *                 .build())
+ *             .project(exampleProject.project())
+ *             .cloudName("google-europe-west1")
+ *             .plan("startup-4")
+ *             .serviceName("example-opensearch")
+ *             .maintenanceWindowDow("monday")
+ *             .maintenanceWindowTime("10:00:00")
  *             .build());
  * 
  *     }

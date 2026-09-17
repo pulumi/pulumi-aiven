@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -13,9 +15,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const main = aiven.getAwsPrivatelink({
- *     project: exampleProject.project,
- *     serviceName: exampleKafka.serviceName,
+ * const example = aiven.getAwsPrivatelink({
+ *     project: "my-project",
+ *     serviceName: "foo",
  * });
  * ```
  */
@@ -24,6 +26,7 @@ export function getAwsPrivatelink(args: GetAwsPrivatelinkArgs, opts?: pulumi.Inv
     return pulumi.runtime.invoke("aiven:index/getAwsPrivatelink:getAwsPrivatelink", {
         "project": args.project,
         "serviceName": args.serviceName,
+        "timeouts": args.timeouts,
     }, opts);
 }
 
@@ -32,13 +35,14 @@ export function getAwsPrivatelink(args: GetAwsPrivatelinkArgs, opts?: pulumi.Inv
  */
 export interface GetAwsPrivatelinkArgs {
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name.
      */
     project: string;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name.
      */
     serviceName: string;
+    timeouts?: inputs.GetAwsPrivatelinkTimeouts;
 }
 
 /**
@@ -46,29 +50,38 @@ export interface GetAwsPrivatelinkArgs {
  */
 export interface GetAwsPrivatelinkResult {
     /**
-     * AWS service ID.
+     * AWS VPC endpoint service ID.
      */
     readonly awsServiceId: string;
     /**
-     * AWS service name.
+     * AWS VPC endpoint service name.
      */
     readonly awsServiceName: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * Resource ID composed as: `project/service_name`.
      */
     readonly id: string;
     /**
-     * List of the ARNs of the AWS accounts or IAM users allowed to connect to the VPC endpoint.
+     * ARNs of principals allowed connecting to the service.
      */
     readonly principals: string[];
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name.
      */
     readonly project: string;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name.
      */
     readonly serviceName: string;
+    /**
+     * Privatelink resource state. The possible values are `active`, `creating` and `deleting`.
+     */
+    readonly state: string;
+    /**
+     * Allow new connections to the endpoint from these regions, in addition to the region the endpoint is in.
+     */
+    readonly supportedRegions: string[];
+    readonly timeouts?: outputs.GetAwsPrivatelinkTimeouts;
 }
 /**
  * Gets information about an AWS PrivateLink connection for an Aiven service.
@@ -79,9 +92,9 @@ export interface GetAwsPrivatelinkResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const main = aiven.getAwsPrivatelink({
- *     project: exampleProject.project,
- *     serviceName: exampleKafka.serviceName,
+ * const example = aiven.getAwsPrivatelink({
+ *     project: "my-project",
+ *     serviceName: "foo",
  * });
  * ```
  */
@@ -90,6 +103,7 @@ export function getAwsPrivatelinkOutput(args: GetAwsPrivatelinkOutputArgs, opts?
     return pulumi.runtime.invokeOutput("aiven:index/getAwsPrivatelink:getAwsPrivatelink", {
         "project": args.project,
         "serviceName": args.serviceName,
+        "timeouts": args.timeouts,
     }, opts);
 }
 
@@ -98,11 +112,12 @@ export function getAwsPrivatelinkOutput(args: GetAwsPrivatelinkOutputArgs, opts?
  */
 export interface GetAwsPrivatelinkOutputArgs {
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name.
      */
     project: pulumi.Input<string>;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name.
      */
     serviceName: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.GetAwsPrivatelinkTimeoutsArgs | undefined>;
 }

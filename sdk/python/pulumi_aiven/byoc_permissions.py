@@ -197,10 +197,14 @@ class ByocPermissions(pulumi.CustomResource):
                  timeouts: pulumi.Input[Optional[Union['ByocPermissionsTimeoutsArgs', 'ByocPermissionsTimeoutsArgsDict']]] = None,
                  __props__=None):
         """
-        Manages permissions for a BYOC custom cloud environment, which accounts and projects can use the cloud to deploy services. Note! The \\`accounts\\` and \\`projects\\` lists are authoritative. This differs from the \\`avn byoc cloud permissions add\\`, which merges into the existing set. Create this resource after \\`aiven_byoc_aws_entity\\` and \\`aiven_byoc_aws_provision\\` so the custom cloud environment is active before permissions are granted.
+        Manages permissions for a BYOC custom cloud environment, which accounts and projects can use the cloud to deploy services.
 
-        **This resource is in the beta stage and may change without notice.** Set
-        the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
+        Note! The `accounts` and `projects` lists are authoritative. This differs from the `avn byoc cloud permissions add`, which merges into the existing set.
+
+        Create this resource after `ByocAwsEntity` and `ByocAwsProvision` so the custom cloud environment is active before permissions are granted. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
+
+        > **Beta resource**
+        This resource is in the beta stage and may change without notice. Set the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
 
         ## Example Usage
 
@@ -211,8 +215,14 @@ class ByocPermissions(pulumi.CustomResource):
         example = aiven.ByocPermissions("example",
             organization_id="org1a23f456789",
             custom_cloud_environment_id="1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
-            accounts=["a22ba494e096"],
-            projects=["project-prod"])
+            accounts=[
+                "a22ba494e096",
+                "a441b467e067",
+            ],
+            projects=[
+                "project-prod",
+                "project-dev",
+            ])
         ```
 
         ## Import
@@ -236,10 +246,14 @@ class ByocPermissions(pulumi.CustomResource):
                  args: ByocPermissionsArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages permissions for a BYOC custom cloud environment, which accounts and projects can use the cloud to deploy services. Note! The \\`accounts\\` and \\`projects\\` lists are authoritative. This differs from the \\`avn byoc cloud permissions add\\`, which merges into the existing set. Create this resource after \\`aiven_byoc_aws_entity\\` and \\`aiven_byoc_aws_provision\\` so the custom cloud environment is active before permissions are granted.
+        Manages permissions for a BYOC custom cloud environment, which accounts and projects can use the cloud to deploy services.
 
-        **This resource is in the beta stage and may change without notice.** Set
-        the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
+        Note! The `accounts` and `projects` lists are authoritative. This differs from the `avn byoc cloud permissions add`, which merges into the existing set.
+
+        Create this resource after `ByocAwsEntity` and `ByocAwsProvision` so the custom cloud environment is active before permissions are granted. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
+
+        > **Beta resource**
+        This resource is in the beta stage and may change without notice. Set the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
 
         ## Example Usage
 
@@ -250,8 +264,14 @@ class ByocPermissions(pulumi.CustomResource):
         example = aiven.ByocPermissions("example",
             organization_id="org1a23f456789",
             custom_cloud_environment_id="1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
-            accounts=["a22ba494e096"],
-            projects=["project-prod"])
+            accounts=[
+                "a22ba494e096",
+                "a441b467e067",
+            ],
+            projects=[
+                "project-prod",
+                "project-dev",
+            ])
         ```
 
         ## Import

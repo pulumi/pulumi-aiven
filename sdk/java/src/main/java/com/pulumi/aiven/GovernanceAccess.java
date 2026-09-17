@@ -19,8 +19,8 @@ import javax.annotation.Nullable;
 /**
  * Request access to an Apache Kafka topic in Aiven for Apache Kafka® Governance. [Governance](https://aiven.io/docs/products/kafka/howto/governance) helps you manage your Kafka clusters securely and efficiently through structured policies, roles, and processes. You can manage approval workflows using Terraform and GitHub Actions.
  * 
- * **This resource is in the beta stage and may change without notice.** Set
- * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+ * &gt; **Beta resource**
+ * This resource is in the beta stage and may change without notice. Set the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
  * 
  * ## Example Usage
  * 
@@ -49,7 +49,6 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new GovernanceAccess("example", GovernanceAccessArgs.builder()
- *             .organizationId("org1a23f456789")
  *             .accessData(GovernanceAccessAccessDataArgs.builder()
  *                 .acls(GovernanceAccessAccessDataAclArgs.builder()
  *                     .operation("Write")
@@ -62,6 +61,7 @@ import javax.annotation.Nullable;
  *                 .serviceName("service-1")
  *                 .username("api3")
  *                 .build())
+ *             .organizationId("org1a23f456789")
  *             .accessName("My Access")
  *             .accessType("KAFKA")
  *             .ownerUserGroupId("ug22ba494e096")

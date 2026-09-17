@@ -3,130 +3,137 @@
 
 package com.pulumi.aiven.outputs;
 
+import com.pulumi.aiven.outputs.GetAzureOrgVpcPeeringConnectionTimeouts;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAzureOrgVpcPeeringConnectionResult {
     /**
-     * @return The ID of the Azure subscription in UUID4 format. Changing this property forces recreation of the resource.
+     * @return The ID of the Azure subscription in UUID4 format.
      * 
      */
     private String azureSubscriptionId;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Resource ID composed as: `organization_id/organization_vpc_id/azure_subscription_id/vnet_name/peer_resource_group`.
      * 
      */
     private String id;
     /**
-     * @return Identifier of the organization.
+     * @return ID of an organization.
      * 
      */
     private String organizationId;
     /**
-     * @return Identifier of the organization VPC.
+     * @return Organization VPC ID.
      * 
      */
     private String organizationVpcId;
     /**
-     * @return The ID of the Azure app that is allowed to create a peering to the Azure Virtual Network (VNet) in UUID4 format. Changing this property forces recreation of the resource.
+     * @return The ID of the Azure app that is allowed to create a peering to the Azure Virtual Network (VNet) in UUID4 format.
      * 
      */
     private String peerAzureAppId;
     /**
-     * @return The Azure tenant ID in UUID4 format. Changing this property forces recreation of the resource.
+     * @return The Azure tenant ID in UUID4 format.
      * 
      */
     private String peerAzureTenantId;
     /**
-     * @return The name of the Azure resource group associated with the VNet. Changing this property forces recreation of the resource.
+     * @return The name of the Azure resource group associated with the VNet.
      * 
      */
     private String peerResourceGroup;
     /**
-     * @return The ID of the cloud provider for the peering connection.
+     * @return Organization peering connection ID.
      * 
      */
     private String peeringConnectionId;
     /**
-     * @return State of the peering connection
+     * @return State of the peering connection. The possible values are `ACTIVE`, `APPROVED`, `APPROVED_PEER_REQUESTED`, `DELETED`, `DELETED_BY_PEER`, `DELETING`, `ERROR`, `INVALID_SPECIFICATION`, `PENDING_PEER` and `REJECTED_BY_PEER`.
      * 
      */
     private String state;
+    private @Nullable GetAzureOrgVpcPeeringConnectionTimeouts timeouts;
     /**
-     * @return The name of the Azure VNet. Changing this property forces recreation of the resource.
+     * @return The name of the Azure VNet.
      * 
      */
     private String vnetName;
 
     private GetAzureOrgVpcPeeringConnectionResult() {}
     /**
-     * @return The ID of the Azure subscription in UUID4 format. Changing this property forces recreation of the resource.
+     * @return The ID of the Azure subscription in UUID4 format.
      * 
      */
     public String azureSubscriptionId() {
         return this.azureSubscriptionId;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Resource ID composed as: `organization_id/organization_vpc_id/azure_subscription_id/vnet_name/peer_resource_group`.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return Identifier of the organization.
+     * @return ID of an organization.
      * 
      */
     public String organizationId() {
         return this.organizationId;
     }
     /**
-     * @return Identifier of the organization VPC.
+     * @return Organization VPC ID.
      * 
      */
     public String organizationVpcId() {
         return this.organizationVpcId;
     }
     /**
-     * @return The ID of the Azure app that is allowed to create a peering to the Azure Virtual Network (VNet) in UUID4 format. Changing this property forces recreation of the resource.
+     * @return The ID of the Azure app that is allowed to create a peering to the Azure Virtual Network (VNet) in UUID4 format.
      * 
      */
     public String peerAzureAppId() {
         return this.peerAzureAppId;
     }
     /**
-     * @return The Azure tenant ID in UUID4 format. Changing this property forces recreation of the resource.
+     * @return The Azure tenant ID in UUID4 format.
      * 
      */
     public String peerAzureTenantId() {
         return this.peerAzureTenantId;
     }
     /**
-     * @return The name of the Azure resource group associated with the VNet. Changing this property forces recreation of the resource.
+     * @return The name of the Azure resource group associated with the VNet.
      * 
      */
     public String peerResourceGroup() {
         return this.peerResourceGroup;
     }
     /**
-     * @return The ID of the cloud provider for the peering connection.
+     * @return Organization peering connection ID.
      * 
      */
     public String peeringConnectionId() {
         return this.peeringConnectionId;
     }
     /**
-     * @return State of the peering connection
+     * @return State of the peering connection. The possible values are `ACTIVE`, `APPROVED`, `APPROVED_PEER_REQUESTED`, `DELETED`, `DELETED_BY_PEER`, `DELETING`, `ERROR`, `INVALID_SPECIFICATION`, `PENDING_PEER` and `REJECTED_BY_PEER`.
      * 
      */
     public String state() {
         return this.state;
     }
+    public Optional<GetAzureOrgVpcPeeringConnectionTimeouts> timeouts() {
+        return Optional.ofNullable(this.timeouts);
+    }
     /**
-     * @return The name of the Azure VNet. Changing this property forces recreation of the resource.
+     * @return The name of the Azure VNet.
      * 
      */
     public String vnetName() {
@@ -151,6 +158,7 @@ public final class GetAzureOrgVpcPeeringConnectionResult {
         private String peerResourceGroup;
         private String peeringConnectionId;
         private String state;
+        private @Nullable GetAzureOrgVpcPeeringConnectionTimeouts timeouts;
         private String vnetName;
         public Builder() {}
         public Builder(GetAzureOrgVpcPeeringConnectionResult defaults) {
@@ -164,6 +172,7 @@ public final class GetAzureOrgVpcPeeringConnectionResult {
     	      this.peerResourceGroup = defaults.peerResourceGroup;
     	      this.peeringConnectionId = defaults.peeringConnectionId;
     	      this.state = defaults.state;
+    	      this.timeouts = defaults.timeouts;
     	      this.vnetName = defaults.vnetName;
         }
 
@@ -240,6 +249,12 @@ public final class GetAzureOrgVpcPeeringConnectionResult {
             return this;
         }
         @CustomType.Setter
+        public Builder timeouts(@Nullable GetAzureOrgVpcPeeringConnectionTimeouts timeouts) {
+
+            this.timeouts = timeouts;
+            return this;
+        }
+        @CustomType.Setter
         public Builder vnetName(String vnetName) {
             if (vnetName == null) {
               throw new MissingRequiredPropertyException("GetAzureOrgVpcPeeringConnectionResult", "vnetName");
@@ -258,6 +273,7 @@ public final class GetAzureOrgVpcPeeringConnectionResult {
             _resultValue.peerResourceGroup = peerResourceGroup;
             _resultValue.peeringConnectionId = peeringConnectionId;
             _resultValue.state = state;
+            _resultValue.timeouts = timeouts;
             _resultValue.vnetName = vnetName;
             return _resultValue;
         }

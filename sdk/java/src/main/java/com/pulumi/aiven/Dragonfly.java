@@ -52,13 +52,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var exampleDragonfly = new Dragonfly("exampleDragonfly", DragonflyArgs.builder()
+ *             .dragonflyUserConfig(DragonflyDragonflyUserConfigArgs.builder()
+ *                 .cacheMode(true)
+ *                 .build())
  *             .project(exampleProject.project())
  *             .plan("startup-4")
  *             .cloudName("google-europe-west1")
  *             .serviceName("example-dragonfly-service")
- *             .dragonflyUserConfig(DragonflyDragonflyUserConfigArgs.builder()
- *                 .cacheMode(true)
- *                 .build())
  *             .build());
  * 
  *     }

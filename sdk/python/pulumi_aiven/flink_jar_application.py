@@ -23,7 +23,8 @@ class FlinkJarApplicationArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[_builtins.str],
                  service_name: pulumi.Input[_builtins.str],
-                 name: pulumi.Input[Optional[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional['FlinkJarApplicationTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a FlinkJarApplication resource.
 
@@ -35,6 +36,8 @@ class FlinkJarApplicationArgs:
         pulumi.set(__self__, "service_name", service_name)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
 
     @_builtins.property
     @pulumi.getter
@@ -72,6 +75,15 @@ class FlinkJarApplicationArgs:
     def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> pulumi.Input[Optional['FlinkJarApplicationTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: pulumi.Input[Optional['FlinkJarApplicationTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
+
 
 @pulumi.input_type
 class _FlinkJarApplicationState:
@@ -84,6 +96,7 @@ class _FlinkJarApplicationState:
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional['FlinkJarApplicationTimeoutsArgs']] = None,
                  updated_at: pulumi.Input[Optional[_builtins.str]] = None,
                  updated_by: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -116,6 +129,8 @@ class _FlinkJarApplicationState:
             pulumi.set(__self__, "project", project)
         if service_name is not None:
             pulumi.set(__self__, "service_name", service_name)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
         if updated_at is not None:
             pulumi.set(__self__, "updated_at", updated_at)
         if updated_by is not None:
@@ -218,6 +233,15 @@ class _FlinkJarApplicationState:
         pulumi.set(self, "service_name", value)
 
     @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> pulumi.Input[Optional['FlinkJarApplicationTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: pulumi.Input[Optional['FlinkJarApplicationTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
+
+    @_builtins.property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -251,12 +275,13 @@ class FlinkJarApplication(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['FlinkJarApplicationTimeoutsArgs', 'FlinkJarApplicationTimeoutsArgsDict']]] = None,
                  __props__=None):
         """
-        Creates and manages an [Aiven for Apache Flink® jar application](https://aiven.io/docs/products/flink/howto/create-jar-application).
+        Creates and manages an [Aiven for Apache Flink® jar application](https://aiven.io/docs/products/flink/howto/create-jar-application). Requires the `Flink` service to have `flink_user_config.custom_code` enabled, which allows uploading and deploying custom JARs. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
 
-        **This resource is in the beta stage and may change without notice.** Set
-        the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+        > **Beta resource in limited availability**
+        This feature is in the limited availability stage and may change without notice. To enable this feature, contact the [sales team](http://aiven.io/contact). Once it's enabled, set the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
 
         ## Example Usage
 
@@ -264,20 +289,10 @@ class FlinkJarApplication(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        example = aiven.Flink("example",
-            project=example_aiven_project["project"],
-            service_name="example-flink-service",
-            cloud_name="google-europe-west1",
-            plan="business-4",
-            maintenance_window_dow="monday",
-            maintenance_window_time="04:00:00",
-            flink_user_config={
-                "custom_code": True,
-            })
-        example_flink_jar_application = aiven.FlinkJarApplication("example",
-            project=example.project,
-            service_name=example.service_name,
-            name="example-app-jar")
+        example = aiven.FlinkJarApplication("example",
+            project="my-project",
+            service_name="my-application",
+            name="TestJob")
         ```
 
         ## Import
@@ -300,10 +315,10 @@ class FlinkJarApplication(pulumi.CustomResource):
                  args: FlinkJarApplicationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates and manages an [Aiven for Apache Flink® jar application](https://aiven.io/docs/products/flink/howto/create-jar-application).
+        Creates and manages an [Aiven for Apache Flink® jar application](https://aiven.io/docs/products/flink/howto/create-jar-application). Requires the `Flink` service to have `flink_user_config.custom_code` enabled, which allows uploading and deploying custom JARs. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
 
-        **This resource is in the beta stage and may change without notice.** Set
-        the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+        > **Beta resource in limited availability**
+        This feature is in the limited availability stage and may change without notice. To enable this feature, contact the [sales team](http://aiven.io/contact). Once it's enabled, set the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
 
         ## Example Usage
 
@@ -311,20 +326,10 @@ class FlinkJarApplication(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        example = aiven.Flink("example",
-            project=example_aiven_project["project"],
-            service_name="example-flink-service",
-            cloud_name="google-europe-west1",
-            plan="business-4",
-            maintenance_window_dow="monday",
-            maintenance_window_time="04:00:00",
-            flink_user_config={
-                "custom_code": True,
-            })
-        example_flink_jar_application = aiven.FlinkJarApplication("example",
-            project=example.project,
-            service_name=example.service_name,
-            name="example-app-jar")
+        example = aiven.FlinkJarApplication("example",
+            project="my-project",
+            service_name="my-application",
+            name="TestJob")
         ```
 
         ## Import
@@ -352,6 +357,7 @@ class FlinkJarApplication(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['FlinkJarApplicationTimeoutsArgs', 'FlinkJarApplicationTimeoutsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -368,6 +374,7 @@ class FlinkJarApplication(pulumi.CustomResource):
             if service_name is None and not opts.urn:
                 raise TypeError("Missing required property 'service_name'")
             __props__.__dict__["service_name"] = service_name
+            __props__.__dict__["timeouts"] = timeouts
             __props__.__dict__["application_id"] = None
             __props__.__dict__["application_versions"] = None
             __props__.__dict__["created_at"] = None
@@ -393,6 +400,7 @@ class FlinkJarApplication(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             service_name: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['FlinkJarApplicationTimeoutsArgs', 'FlinkJarApplicationTimeoutsArgsDict']]] = None,
             updated_at: pulumi.Input[Optional[_builtins.str]] = None,
             updated_by: pulumi.Input[Optional[_builtins.str]] = None) -> 'FlinkJarApplication':
         """
@@ -425,6 +433,7 @@ class FlinkJarApplication(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["service_name"] = service_name
+        __props__.__dict__["timeouts"] = timeouts
         __props__.__dict__["updated_at"] = updated_at
         __props__.__dict__["updated_by"] = updated_by
         return FlinkJarApplication(resource_name, opts=opts, __props__=__props__)
@@ -492,6 +501,11 @@ class FlinkJarApplication(pulumi.CustomResource):
         Service name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> pulumi.Output[Optional['outputs.FlinkJarApplicationTimeouts']]:
+        return pulumi.get(self, "timeouts")
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")

@@ -41,6 +41,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.aiven.inputs.PgPgUserConfigPublicAccessArgs;
  * import com.pulumi.aiven.inputs.PgPgUserConfigPgArgs;
  * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import com.pulumi.resources.CustomTimeouts;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -55,6 +57,17 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var examplePostgres = new Pg("examplePostgres", PgArgs.builder()
+ *             .pgUserConfig(PgPgUserConfigArgs.builder()
+ *                 .publicAccess(PgPgUserConfigPublicAccessArgs.builder()
+ *                     .pg(true)
+ *                     .prometheus(false)
+ *                     .build())
+ *                 .pg(PgPgUserConfigPgArgs.builder()
+ *                     .idleInTransactionSessionTimeout(900)
+ *                     .logMinDurationStatement(-1)
+ *                     .build())
+ *                 .staticIps(true)
+ *                 .build())
  *             .project(exampleProject.project())
  *             .cloudName("google-europe-west1")
  *             .plan("startup-4")
@@ -66,18 +79,12 @@ import javax.annotation.Nullable;
  *                 ips[1].staticIpAddressId(),
  *                 ips[2].staticIpAddressId(),
  *                 ips[3].staticIpAddressId()))).result())
- *             .pgUserConfig(PgPgUserConfigArgs.builder()
- *                 .staticIps(true)
- *                 .publicAccess(PgPgUserConfigPublicAccessArgs.builder()
- *                     .pg(true)
- *                     .prometheus(false)
- *                     .build())
- *                 .pg(PgPgUserConfigPgArgs.builder()
- *                     .idleInTransactionSessionTimeout(900)
- *                     .logMinDurationStatement(-1)
- *                     .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .customTimeouts(CustomTimeouts.builder()
+ *                     .create(CustomTimeouts.parseTimeoutString("20m"))
+ *                     .update(CustomTimeouts.parseTimeoutString("15m"))
  *                 .build())
- *             .build());
+ *                 .build());
  * 
  *     }
  * }

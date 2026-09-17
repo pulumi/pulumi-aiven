@@ -31,11 +31,6 @@ namespace Pulumi.Aiven
     /// 
     ///     var main = new Aiven.FlinkApplicationVersion("main", new()
     ///     {
-    ///         Project = exampleProject.Project,
-    ///         ServiceName = exampleFlink.ServiceName,
-    ///         ApplicationId = exampleApp.ApplicationId,
-    ///         Statement = @"    INSERT INTO kafka_known_pizza SELECT * FROM kafka_pizza WHERE shop LIKE '%Luigis Pizza%'
-    /// ",
     ///         Sinks = new[]
     ///         {
     ///             new Aiven.Inputs.FlinkApplicationVersionSinkArgs
@@ -72,6 +67,11 @@ namespace Pulumi.Aiven
     ///                 IntegrationId = flinkToKafka.IntegrationId,
     ///             },
     ///         },
+    ///         Project = exampleProject.Project,
+    ///         ServiceName = exampleFlink.ServiceName,
+    ///         ApplicationId = exampleApp.ApplicationId,
+    ///         Statement = @"    INSERT INTO kafka_known_pizza SELECT * FROM kafka_pizza WHERE shop LIKE '%Luigis Pizza%'
+    /// ",
     ///     });
     /// 
     ///     var mainFlinkApplicationDeployment = new Aiven.FlinkApplicationDeployment("main", new()

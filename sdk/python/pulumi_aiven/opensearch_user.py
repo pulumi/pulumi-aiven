@@ -138,6 +138,7 @@ class OpensearchUserArgs:
 class _OpensearchUserState:
     def __init__(__self__, *,
                  password: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_encryption_type: pulumi.Input[Optional[_builtins.str]] = None,
                  password_wo: pulumi.Input[Optional[_builtins.str]] = None,
                  password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -149,6 +150,7 @@ class _OpensearchUserState:
         Input properties used for looking up and filtering OpensearchUser resources.
 
         :param pulumi.Input[_builtins.str] password: The password of the service user (auto-generated if not provided). The field conflicts with `password_wo`. Length must be between `8` and `256`.
+        :param pulumi.Input[_builtins.str] password_encryption_type: The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. 'unknown' is reported when the hash is missing or uses an unrecognised format. The possible values are `md5`, `scram-sha-256` and `unknown`.
         :param pulumi.Input[_builtins.str] password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
                The password of the service user (write-only, not stored in state). The field is required with `password_wo_version`. The field conflicts with `password`. Length must be between `8` and `256`.
         :param pulumi.Input[_builtins.int] password_wo_version: Version number for `password_wo`. Increment this to rotate the password. Must be >= 1. The field is required with `password_wo`. Minimum value: `1`.
@@ -159,6 +161,8 @@ class _OpensearchUserState:
         """
         if password is not None:
             pulumi.set(__self__, "password", password)
+        if password_encryption_type is not None:
+            pulumi.set(__self__, "password_encryption_type", password_encryption_type)
         if password_wo is not None:
             pulumi.set(__self__, "password_wo", password_wo)
         if password_wo_version is not None:
@@ -185,6 +189,18 @@ class _OpensearchUserState:
     @password.setter
     def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
+
+    @_builtins.property
+    @pulumi.getter(name="passwordEncryptionType")
+    def password_encryption_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. 'unknown' is reported when the hash is missing or uses an unrecognised format. The possible values are `md5`, `scram-sha-256` and `unknown`.
+        """
+        return pulumi.get(self, "password_encryption_type")
+
+    @password_encryption_type.setter
+    def password_encryption_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "password_encryption_type", value)
 
     @_builtins.property
     @pulumi.getter(name="passwordWo")
@@ -391,6 +407,7 @@ class OpensearchUser(pulumi.CustomResource):
             if username is None and not opts.urn:
                 raise TypeError("Missing required property 'username'")
             __props__.__dict__["username"] = username
+            __props__.__dict__["password_encryption_type"] = None
             __props__.__dict__["type"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password", "passwordWo"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
@@ -405,6 +422,7 @@ class OpensearchUser(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             password: pulumi.Input[Optional[_builtins.str]] = None,
+            password_encryption_type: pulumi.Input[Optional[_builtins.str]] = None,
             password_wo: pulumi.Input[Optional[_builtins.str]] = None,
             password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -420,6 +438,7 @@ class OpensearchUser(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] password: The password of the service user (auto-generated if not provided). The field conflicts with `password_wo`. Length must be between `8` and `256`.
+        :param pulumi.Input[_builtins.str] password_encryption_type: The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. 'unknown' is reported when the hash is missing or uses an unrecognised format. The possible values are `md5`, `scram-sha-256` and `unknown`.
         :param pulumi.Input[_builtins.str] password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
                The password of the service user (write-only, not stored in state). The field is required with `password_wo_version`. The field conflicts with `password`. Length must be between `8` and `256`.
         :param pulumi.Input[_builtins.int] password_wo_version: Version number for `password_wo`. Increment this to rotate the password. Must be >= 1. The field is required with `password_wo`. Minimum value: `1`.
@@ -433,6 +452,7 @@ class OpensearchUser(pulumi.CustomResource):
         __props__ = _OpensearchUserState.__new__(_OpensearchUserState)
 
         __props__.__dict__["password"] = password
+        __props__.__dict__["password_encryption_type"] = password_encryption_type
         __props__.__dict__["password_wo"] = password_wo
         __props__.__dict__["password_wo_version"] = password_wo_version
         __props__.__dict__["project"] = project
@@ -449,6 +469,14 @@ class OpensearchUser(pulumi.CustomResource):
         The password of the service user (auto-generated if not provided). The field conflicts with `password_wo`. Length must be between `8` and `256`.
         """
         return pulumi.get(self, "password")
+
+    @_builtins.property
+    @pulumi.getter(name="passwordEncryptionType")
+    def password_encryption_type(self) -> pulumi.Output[_builtins.str]:
+        """
+        The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. 'unknown' is reported when the hash is missing or uses an unrecognised format. The possible values are `md5`, `scram-sha-256` and `unknown`.
+        """
+        return pulumi.get(self, "password_encryption_type")
 
     @_builtins.property
     @pulumi.getter(name="passwordWo")

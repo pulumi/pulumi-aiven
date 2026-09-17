@@ -3,94 +3,101 @@
 
 package com.pulumi.aiven.outputs;
 
+import com.pulumi.aiven.outputs.GetKafkaAclTimeouts;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetKafkaAclResult {
     /**
-     * @return Kafka ACL ID.
+     * @return Kafka ACL ID. Provide either `aclId`, or all of `permission`, `topic` and `username` together.
      * 
      */
     private String aclId;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Resource ID composed as: `project/service_name/acl_id`.
      * 
      */
     private String id;
     /**
-     * @return Permissions to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
+     * @return Permission of an Aiven Kafka ACL entry, as opposed to a Kafka-native one. The possible values are `admin`, `read`, `readwrite` and `write`. Provide either `aclId`, or all of `permission`, `topic` and `username` together.
      * 
      */
     private String permission;
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name.
      * 
      */
     private String project;
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service name.
      * 
      */
     private String serviceName;
+    private @Nullable GetKafkaAclTimeouts timeouts;
     /**
-     * @return Topics that the permissions apply to. Changing this property forces recreation of the resource.
+     * @return Topic name pattern. Provide either `aclId`, or all of `permission`, `topic` and `username` together.
      * 
      */
     private String topic;
     /**
-     * @return Usernames to grant permissions to. Changing this property forces recreation of the resource.
+     * @return Username. Provide either `aclId`, or all of `permission`, `topic` and `username` together.
      * 
      */
     private String username;
 
     private GetKafkaAclResult() {}
     /**
-     * @return Kafka ACL ID.
+     * @return Kafka ACL ID. Provide either `aclId`, or all of `permission`, `topic` and `username` together.
      * 
      */
     public String aclId() {
         return this.aclId;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Resource ID composed as: `project/service_name/acl_id`.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return Permissions to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
+     * @return Permission of an Aiven Kafka ACL entry, as opposed to a Kafka-native one. The possible values are `admin`, `read`, `readwrite` and `write`. Provide either `aclId`, or all of `permission`, `topic` and `username` together.
      * 
      */
     public String permission() {
         return this.permission;
     }
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name.
      * 
      */
     public String project() {
         return this.project;
     }
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service name.
      * 
      */
     public String serviceName() {
         return this.serviceName;
     }
+    public Optional<GetKafkaAclTimeouts> timeouts() {
+        return Optional.ofNullable(this.timeouts);
+    }
     /**
-     * @return Topics that the permissions apply to. Changing this property forces recreation of the resource.
+     * @return Topic name pattern. Provide either `aclId`, or all of `permission`, `topic` and `username` together.
      * 
      */
     public String topic() {
         return this.topic;
     }
     /**
-     * @return Usernames to grant permissions to. Changing this property forces recreation of the resource.
+     * @return Username. Provide either `aclId`, or all of `permission`, `topic` and `username` together.
      * 
      */
     public String username() {
@@ -111,6 +118,7 @@ public final class GetKafkaAclResult {
         private String permission;
         private String project;
         private String serviceName;
+        private @Nullable GetKafkaAclTimeouts timeouts;
         private String topic;
         private String username;
         public Builder() {}
@@ -121,6 +129,7 @@ public final class GetKafkaAclResult {
     	      this.permission = defaults.permission;
     	      this.project = defaults.project;
     	      this.serviceName = defaults.serviceName;
+    	      this.timeouts = defaults.timeouts;
     	      this.topic = defaults.topic;
     	      this.username = defaults.username;
         }
@@ -166,6 +175,12 @@ public final class GetKafkaAclResult {
             return this;
         }
         @CustomType.Setter
+        public Builder timeouts(@Nullable GetKafkaAclTimeouts timeouts) {
+
+            this.timeouts = timeouts;
+            return this;
+        }
+        @CustomType.Setter
         public Builder topic(String topic) {
             if (topic == null) {
               throw new MissingRequiredPropertyException("GetKafkaAclResult", "topic");
@@ -188,6 +203,7 @@ public final class GetKafkaAclResult {
             _resultValue.permission = permission;
             _resultValue.project = project;
             _resultValue.serviceName = serviceName;
+            _resultValue.timeouts = timeouts;
             _resultValue.topic = topic;
             _resultValue.username = username;
             return _resultValue;

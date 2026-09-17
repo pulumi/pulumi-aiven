@@ -537,8 +537,8 @@ class ByocAwsEntity(pulumi.CustomResource):
         """
         Creates and manages a BYOC custom cloud environment on AWS.
 
-        **This resource is in the beta stage and may change without notice.** Set
-        the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+        > **Beta resource**
+        This resource is in the beta stage and may change without notice. Set the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
 
         ## Example Usage
 
@@ -547,17 +547,17 @@ class ByocAwsEntity(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         example = aiven.ByocAwsEntity("example",
+            contact_emails=[{
+                "email": "jane@example.com",
+                "real_name": "Jane Smith",
+                "role": "admin",
+            }],
             organization_id="org1a23f456789",
             cloud_provider="aws",
             cloud_region="eu-west-1",
             deployment_model="standard",
             display_name="byoc-cloud-prod-eu-west-1",
             reserved_cidr="192.168.6.0/24",
-            contact_emails=[{
-                "email": "jane@example.com",
-                "real_name": "Jane Smith",
-                "role": "admin",
-            }],
             tags={
                 "foo": "foo",
             })
@@ -590,8 +590,8 @@ class ByocAwsEntity(pulumi.CustomResource):
         """
         Creates and manages a BYOC custom cloud environment on AWS.
 
-        **This resource is in the beta stage and may change without notice.** Set
-        the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+        > **Beta resource**
+        This resource is in the beta stage and may change without notice. Set the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
 
         ## Example Usage
 
@@ -600,17 +600,17 @@ class ByocAwsEntity(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         example = aiven.ByocAwsEntity("example",
+            contact_emails=[{
+                "email": "jane@example.com",
+                "real_name": "Jane Smith",
+                "role": "admin",
+            }],
             organization_id="org1a23f456789",
             cloud_provider="aws",
             cloud_region="eu-west-1",
             deployment_model="standard",
             display_name="byoc-cloud-prod-eu-west-1",
             reserved_cidr="192.168.6.0/24",
-            contact_emails=[{
-                "email": "jane@example.com",
-                "real_name": "Jane Smith",
-                "role": "admin",
-            }],
             tags={
                 "foo": "foo",
             })

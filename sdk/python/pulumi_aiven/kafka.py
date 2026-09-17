@@ -893,17 +893,7 @@ class Kafka(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         example_kafka = aiven.Kafka("example_kafka",
-            project=example_project["project"],
-            cloud_name="google-europe-west1",
-            plan="business-4",
-            service_name="example-kafka",
-            maintenance_window_dow="monday",
-            maintenance_window_time="10:00:00",
             kafka_user_config={
-                "kafka_rest": True,
-                "kafka_connect": True,
-                "schema_registry": True,
-                "kafka_version": "3.8",
                 "kafka": {
                     "group_max_session_timeout_ms": 70000,
                     "log_retention_bytes": 1000000000,
@@ -912,7 +902,17 @@ class Kafka(pulumi.CustomResource):
                     "kafka_rest": True,
                     "kafka_connect": True,
                 },
-            })
+                "kafka_rest": True,
+                "kafka_connect": True,
+                "schema_registry": True,
+                "kafka_version": "3.8",
+            },
+            project=example_project["project"],
+            cloud_name="google-europe-west1",
+            plan="business-4",
+            service_name="example-kafka",
+            maintenance_window_dow="monday",
+            maintenance_window_time="10:00:00")
         ```
 
         ## Import
@@ -960,17 +960,7 @@ class Kafka(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         example_kafka = aiven.Kafka("example_kafka",
-            project=example_project["project"],
-            cloud_name="google-europe-west1",
-            plan="business-4",
-            service_name="example-kafka",
-            maintenance_window_dow="monday",
-            maintenance_window_time="10:00:00",
             kafka_user_config={
-                "kafka_rest": True,
-                "kafka_connect": True,
-                "schema_registry": True,
-                "kafka_version": "3.8",
                 "kafka": {
                     "group_max_session_timeout_ms": 70000,
                     "log_retention_bytes": 1000000000,
@@ -979,7 +969,17 @@ class Kafka(pulumi.CustomResource):
                     "kafka_rest": True,
                     "kafka_connect": True,
                 },
-            })
+                "kafka_rest": True,
+                "kafka_connect": True,
+                "schema_registry": True,
+                "kafka_version": "3.8",
+            },
+            project=example_project["project"],
+            cloud_name="google-europe-west1",
+            plan="business-4",
+            service_name="example-kafka",
+            maintenance_window_dow="monday",
+            maintenance_window_time="10:00:00")
         ```
 
         ## Import

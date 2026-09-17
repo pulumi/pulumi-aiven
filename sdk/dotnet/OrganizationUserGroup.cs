@@ -24,9 +24,9 @@ namespace Pulumi.Aiven
     /// {
     ///     var example = new Aiven.OrganizationUserGroup("example", new()
     ///     {
-    ///         Description = "Example group of users.",
-    ///         OrganizationId = main.Id,
-    ///         Name = "Example group",
+    ///         OrganizationId = "org1a23f456789",
+    ///         Description = "The group of admins for the organization",
+    ///         Name = "Admin Users",
     ///     });
     /// 
     /// });
@@ -35,44 +35,53 @@ namespace Pulumi.Aiven
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import aiven:index/organizationUserGroup:OrganizationUserGroup example ORGANIZATION_ID/USER_GROUP_ID
+    /// $ pulumi import aiven:index/organizationUserGroup:OrganizationUserGroup example ORGANIZATION_ID/GROUP_ID
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/organizationUserGroup:OrganizationUserGroup")]
     public partial class OrganizationUserGroup : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Time of creation.
+        /// User group creation time.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// The description of the user group. Changing this property forces recreation of the resource.
+        /// Description. Maximum length: `4096`.
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the user group.
+        /// ID of the user group.
         /// </summary>
         [Output("groupId")]
         public Output<string> GroupId { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the user group. Changing this property forces recreation of the resource.
+        /// Managed By Scim.
+        /// </summary>
+        [Output("managedByScim")]
+        public Output<bool> ManagedByScim { get; private set; } = null!;
+
+        /// <summary>
+        /// User Group Name. Maximum length: `128`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the organization. Changing this property forces recreation of the resource.
+        /// ID of an organization. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("organizationId")]
         public Output<string> OrganizationId { get; private set; } = null!;
 
+        [Output("timeouts")]
+        public Output<Outputs.OrganizationUserGroupTimeouts?> Timeouts { get; private set; } = null!;
+
         /// <summary>
-        /// Time of last update.
+        /// User group last update time.
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
@@ -124,22 +133,25 @@ namespace Pulumi.Aiven
     public sealed class OrganizationUserGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The description of the user group. Changing this property forces recreation of the resource.
+        /// Description. Maximum length: `4096`.
         /// </summary>
         [Input("description", required: true)]
         public Input<string> Description { get; set; } = null!;
 
         /// <summary>
-        /// The name of the user group. Changing this property forces recreation of the resource.
+        /// User Group Name. Maximum length: `128`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The ID of the organization. Changing this property forces recreation of the resource.
+        /// ID of an organization. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("organizationId", required: true)]
         public Input<string> OrganizationId { get; set; } = null!;
+
+        [Input("timeouts")]
+        public Input<Inputs.OrganizationUserGroupTimeoutsArgs>? Timeouts { get; set; }
 
         public OrganizationUserGroupArgs()
         {
@@ -150,37 +162,46 @@ namespace Pulumi.Aiven
     public sealed class OrganizationUserGroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Time of creation.
+        /// User group creation time.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// The description of the user group. Changing this property forces recreation of the resource.
+        /// Description. Maximum length: `4096`.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The ID of the user group.
+        /// ID of the user group.
         /// </summary>
         [Input("groupId")]
         public Input<string>? GroupId { get; set; }
 
         /// <summary>
-        /// The name of the user group. Changing this property forces recreation of the resource.
+        /// Managed By Scim.
+        /// </summary>
+        [Input("managedByScim")]
+        public Input<bool>? ManagedByScim { get; set; }
+
+        /// <summary>
+        /// User Group Name. Maximum length: `128`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The ID of the organization. Changing this property forces recreation of the resource.
+        /// ID of an organization. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("organizationId")]
         public Input<string>? OrganizationId { get; set; }
 
+        [Input("timeouts")]
+        public Input<Inputs.OrganizationUserGroupTimeoutsGetArgs>? Timeouts { get; set; }
+
         /// <summary>
-        /// Time of last update.
+        /// User group last update time.
         /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }

@@ -47,14 +47,14 @@ public final class FlinkJarApplicationApplicationVersionFileInfoArgs extends com
     }
 
     /**
-     * Indicates whether the uploaded .jar file has been verified by the system and deployment ready. The possible values are `INITIAL`, `READY` and `FAILED`.
+     * Indicates whether the uploaded .jar file has been verified by the system and deployment ready. The possible values are `FAILED`, `INITIAL` and `READY`.
      * 
      */
     @Import(name="fileStatus")
     private @Nullable Output<String> fileStatus;
 
     /**
-     * @return Indicates whether the uploaded .jar file has been verified by the system and deployment ready. The possible values are `INITIAL`, `READY` and `FAILED`.
+     * @return Indicates whether the uploaded .jar file has been verified by the system and deployment ready. The possible values are `FAILED`, `INITIAL` and `READY`.
      * 
      */
     public Optional<Output<String>> fileStatus() {
@@ -77,14 +77,14 @@ public final class FlinkJarApplicationApplicationVersionFileInfoArgs extends com
     }
 
     /**
-     * In the case fileStatus is FAILED, the error code of the failure. The possible values are `1`, `2` and `3`.
+     * In the case fileStatus is FAILED, the error code of the failure. The possible values are `1`, `2`, `3` and `4`.
      * 
      */
     @Import(name="verifyErrorCode")
     private @Nullable Output<Integer> verifyErrorCode;
 
     /**
-     * @return In the case fileStatus is FAILED, the error code of the failure. The possible values are `1`, `2` and `3`.
+     * @return In the case fileStatus is FAILED, the error code of the failure. The possible values are `1`, `2`, `3` and `4`.
      * 
      */
     public Optional<Output<Integer>> verifyErrorCode() {
@@ -178,7 +178,7 @@ public final class FlinkJarApplicationApplicationVersionFileInfoArgs extends com
         }
 
         /**
-         * @param fileStatus Indicates whether the uploaded .jar file has been verified by the system and deployment ready. The possible values are `INITIAL`, `READY` and `FAILED`.
+         * @param fileStatus Indicates whether the uploaded .jar file has been verified by the system and deployment ready. The possible values are `FAILED`, `INITIAL` and `READY`.
          * 
          * @return builder
          * 
@@ -189,7 +189,7 @@ public final class FlinkJarApplicationApplicationVersionFileInfoArgs extends com
         }
 
         /**
-         * @param fileStatus Indicates whether the uploaded .jar file has been verified by the system and deployment ready. The possible values are `INITIAL`, `READY` and `FAILED`.
+         * @param fileStatus Indicates whether the uploaded .jar file has been verified by the system and deployment ready. The possible values are `FAILED`, `INITIAL` and `READY`.
          * 
          * @return builder
          * 
@@ -220,7 +220,7 @@ public final class FlinkJarApplicationApplicationVersionFileInfoArgs extends com
         }
 
         /**
-         * @param verifyErrorCode In the case fileStatus is FAILED, the error code of the failure. The possible values are `1`, `2` and `3`.
+         * @param verifyErrorCode In the case fileStatus is FAILED, the error code of the failure. The possible values are `1`, `2`, `3` and `4`.
          * 
          * @return builder
          * 
@@ -231,7 +231,7 @@ public final class FlinkJarApplicationApplicationVersionFileInfoArgs extends com
         }
 
         /**
-         * @param verifyErrorCode In the case fileStatus is FAILED, the error code of the failure. The possible values are `1`, `2` and `3`.
+         * @param verifyErrorCode In the case fileStatus is FAILED, the error code of the failure. The possible values are `1`, `2`, `3` and `4`.
          * 
          * @return builder
          * 

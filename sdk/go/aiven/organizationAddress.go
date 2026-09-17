@@ -32,6 +32,7 @@ import (
 //				OrganizationId: pulumi.String("org1a23f456789"),
 //				AddressLines: pulumi.StringArray{
 //					pulumi.String("Street 1"),
+//					pulumi.String("Street 2"),
 //				},
 //				City:        pulumi.String("Helsinki"),
 //				CountryCode: pulumi.String("FI"),

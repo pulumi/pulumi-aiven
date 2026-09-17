@@ -54,17 +54,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var exampleKafka = new Kafka("exampleKafka", KafkaArgs.builder()
- *             .project(exampleProject.project())
- *             .cloudName("google-europe-west1")
- *             .plan("business-4")
- *             .serviceName("example-kafka")
- *             .maintenanceWindowDow("monday")
- *             .maintenanceWindowTime("10:00:00")
  *             .kafkaUserConfig(KafkaKafkaUserConfigArgs.builder()
- *                 .kafkaRest(true)
- *                 .kafkaConnect(true)
- *                 .schemaRegistry(true)
- *                 .kafkaVersion("3.8")
  *                 .kafka(KafkaKafkaUserConfigKafkaArgs.builder()
  *                     .groupMaxSessionTimeoutMs(70000)
  *                     .logRetentionBytes(1000000000)
@@ -73,7 +63,17 @@ import javax.annotation.Nullable;
  *                     .kafkaRest(true)
  *                     .kafkaConnect(true)
  *                     .build())
+ *                 .kafkaRest(true)
+ *                 .kafkaConnect(true)
+ *                 .schemaRegistry(true)
+ *                 .kafkaVersion("3.8")
  *                 .build())
+ *             .project(exampleProject.project())
+ *             .cloudName("google-europe-west1")
+ *             .plan("business-4")
+ *             .serviceName("example-kafka")
+ *             .maintenanceWindowDow("monday")
+ *             .maintenanceWindowTime("10:00:00")
  *             .build());
  * 
  *     }

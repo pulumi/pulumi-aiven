@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates and manages an Aiven for Apache Kafka® service user.
+// Creates and manages an Aiven for Apache Kafka® service user. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
 //
 // ## Example Usage
 //
@@ -28,11 +28,12 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewKafkaUser(ctx, "example_service_user", &aiven.KafkaUserArgs{
-//				ServiceName: pulumi.Any(exampleKafka.ServiceName),
-//				Project:     pulumi.Any(exampleProject.Project),
-//				Username:    pulumi.String("example-kafka-user"),
-//				Password:    pulumi.Any(serviceUserPw),
+//			_, err := aiven.NewKafkaUser(ctx, "example", &aiven.KafkaUserArgs{
+//				Project:           pulumi.String("my-project"),
+//				ServiceName:       pulumi.String("my-kafka"),
+//				Username:          pulumi.String("testuser"),
+//				PasswordWo:        pulumi.String("password123"),
+//				PasswordWoVersion: pulumi.Int(1),
 //			})
 //			if err != nil {
 //				return err
@@ -46,29 +47,32 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import aiven:index/kafkaUser:KafkaUser example_user PROJECT/SERVICE_NAME/USERNAME
+// $ pulumi import aiven:index/kafkaUser:KafkaUser example PROJECT/SERVICE_NAME/USERNAME
 // ```
 type KafkaUser struct {
 	pulumi.CustomResourceState
 
-	// Access certificate for the user.
+	// Access certificate for TLS client authentication.
 	AccessCert pulumi.StringOutput `pulumi:"accessCert"`
-	// Access certificate key for the user.
+	// Access key for TLS client authentication.
 	AccessKey pulumi.StringOutput `pulumi:"accessKey"`
-	// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+	// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
 	Password pulumi.StringOutput `pulumi:"password"`
+	// The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. 'unknown' is reported when the hash is missing or uses an unrecognised format. The possible values are `md5`, `scram-sha-256` and `unknown`.
+	PasswordEncryptionType pulumi.StringOutput `pulumi:"passwordEncryptionType"`
 	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-	// The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
+	// The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Length must be between `8` and `256`.
 	PasswordWo pulumi.StringPtrOutput `pulumi:"passwordWo"`
-	// Version number for `passwordWo`. Increment this to rotate the password. Must be >= 1.
+	// Version number for `passwordWo`. Increment this to rotate the password. The field is required with `passwordWo`. Minimum value: `1`.
 	PasswordWoVersion pulumi.IntPtrOutput `pulumi:"passwordWoVersion"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// User account type, such as primary or regular account.
+	// Service name. Changing this property forces recreation of the resource.
+	ServiceName pulumi.StringOutput        `pulumi:"serviceName"`
+	Timeouts    KafkaUserTimeoutsPtrOutput `pulumi:"timeouts"`
+	// Account type.
 	Type pulumi.StringOutput `pulumi:"type"`
-	// Name of the Kafka service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Account username. Maximum length: `64`. Changing this property forces recreation of the resource.
 	Username pulumi.StringOutput `pulumi:"username"`
 }
 
@@ -124,46 +128,52 @@ func GetKafkaUser(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering KafkaUser resources.
 type kafkaUserState struct {
-	// Access certificate for the user.
+	// Access certificate for TLS client authentication.
 	AccessCert *string `pulumi:"accessCert"`
-	// Access certificate key for the user.
+	// Access key for TLS client authentication.
 	AccessKey *string `pulumi:"accessKey"`
-	// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+	// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
 	Password *string `pulumi:"password"`
+	// The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. 'unknown' is reported when the hash is missing or uses an unrecognised format. The possible values are `md5`, `scram-sha-256` and `unknown`.
+	PasswordEncryptionType *string `pulumi:"passwordEncryptionType"`
 	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-	// The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
+	// The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Length must be between `8` and `256`.
 	PasswordWo *string `pulumi:"passwordWo"`
-	// Version number for `passwordWo`. Increment this to rotate the password. Must be >= 1.
+	// Version number for `passwordWo`. Increment this to rotate the password. The field is required with `passwordWo`. Minimum value: `1`.
 	PasswordWoVersion *int `pulumi:"passwordWoVersion"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project *string `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName *string `pulumi:"serviceName"`
-	// User account type, such as primary or regular account.
+	// Service name. Changing this property forces recreation of the resource.
+	ServiceName *string            `pulumi:"serviceName"`
+	Timeouts    *KafkaUserTimeouts `pulumi:"timeouts"`
+	// Account type.
 	Type *string `pulumi:"type"`
-	// Name of the Kafka service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Account username. Maximum length: `64`. Changing this property forces recreation of the resource.
 	Username *string `pulumi:"username"`
 }
 
 type KafkaUserState struct {
-	// Access certificate for the user.
+	// Access certificate for TLS client authentication.
 	AccessCert pulumi.StringPtrInput
-	// Access certificate key for the user.
+	// Access key for TLS client authentication.
 	AccessKey pulumi.StringPtrInput
-	// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+	// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
 	Password pulumi.StringPtrInput
+	// The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. 'unknown' is reported when the hash is missing or uses an unrecognised format. The possible values are `md5`, `scram-sha-256` and `unknown`.
+	PasswordEncryptionType pulumi.StringPtrInput
 	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-	// The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
+	// The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Length must be between `8` and `256`.
 	PasswordWo pulumi.StringPtrInput
-	// Version number for `passwordWo`. Increment this to rotate the password. Must be >= 1.
+	// Version number for `passwordWo`. Increment this to rotate the password. The field is required with `passwordWo`. Minimum value: `1`.
 	PasswordWoVersion pulumi.IntPtrInput
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project pulumi.StringPtrInput
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Service name. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringPtrInput
-	// User account type, such as primary or regular account.
+	Timeouts    KafkaUserTimeoutsPtrInput
+	// Account type.
 	Type pulumi.StringPtrInput
-	// Name of the Kafka service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Account username. Maximum length: `64`. Changing this property forces recreation of the resource.
 	Username pulumi.StringPtrInput
 }
 
@@ -172,35 +182,37 @@ func (KafkaUserState) ElementType() reflect.Type {
 }
 
 type kafkaUserArgs struct {
-	// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+	// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
 	Password *string `pulumi:"password"`
 	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-	// The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
+	// The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Length must be between `8` and `256`.
 	PasswordWo *string `pulumi:"passwordWo"`
-	// Version number for `passwordWo`. Increment this to rotate the password. Must be >= 1.
+	// Version number for `passwordWo`. Increment this to rotate the password. The field is required with `passwordWo`. Minimum value: `1`.
 	PasswordWoVersion *int `pulumi:"passwordWoVersion"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName string `pulumi:"serviceName"`
-	// Name of the Kafka service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Service name. Changing this property forces recreation of the resource.
+	ServiceName string             `pulumi:"serviceName"`
+	Timeouts    *KafkaUserTimeouts `pulumi:"timeouts"`
+	// Account username. Maximum length: `64`. Changing this property forces recreation of the resource.
 	Username string `pulumi:"username"`
 }
 
 // The set of arguments for constructing a KafkaUser resource.
 type KafkaUserArgs struct {
-	// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+	// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
 	Password pulumi.StringPtrInput
 	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-	// The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
+	// The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Length must be between `8` and `256`.
 	PasswordWo pulumi.StringPtrInput
-	// Version number for `passwordWo`. Increment this to rotate the password. Must be >= 1.
+	// Version number for `passwordWo`. Increment this to rotate the password. The field is required with `passwordWo`. Minimum value: `1`.
 	PasswordWoVersion pulumi.IntPtrInput
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Service name. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringInput
-	// Name of the Kafka service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	Timeouts    KafkaUserTimeoutsPtrInput
+	// Account username. Maximum length: `64`. Changing this property forces recreation of the resource.
 	Username pulumi.StringInput
 }
 
@@ -291,48 +303,57 @@ func (o KafkaUserOutput) ToKafkaUserOutputWithContext(ctx context.Context) Kafka
 	return o
 }
 
-// Access certificate for the user.
+// Access certificate for TLS client authentication.
 func (o KafkaUserOutput) AccessCert() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaUser) pulumi.StringOutput { return v.AccessCert }).(pulumi.StringOutput)
 }
 
-// Access certificate key for the user.
+// Access key for TLS client authentication.
 func (o KafkaUserOutput) AccessKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaUser) pulumi.StringOutput { return v.AccessKey }).(pulumi.StringOutput)
 }
 
-// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
 func (o KafkaUserOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaUser) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
 }
 
+// The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. 'unknown' is reported when the hash is missing or uses an unrecognised format. The possible values are `md5`, `scram-sha-256` and `unknown`.
+func (o KafkaUserOutput) PasswordEncryptionType() pulumi.StringOutput {
+	return o.ApplyT(func(v *KafkaUser) pulumi.StringOutput { return v.PasswordEncryptionType }).(pulumi.StringOutput)
+}
+
 // **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-// The password of the service user (write-only, not stored in state). Must be used with `passwordWoVersion`. Must be 8-256 characters.
+// The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Length must be between `8` and `256`.
 func (o KafkaUserOutput) PasswordWo() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaUser) pulumi.StringPtrOutput { return v.PasswordWo }).(pulumi.StringPtrOutput)
 }
 
-// Version number for `passwordWo`. Increment this to rotate the password. Must be >= 1.
+// Version number for `passwordWo`. Increment this to rotate the password. The field is required with `passwordWo`. Minimum value: `1`.
 func (o KafkaUserOutput) PasswordWoVersion() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *KafkaUser) pulumi.IntPtrOutput { return v.PasswordWoVersion }).(pulumi.IntPtrOutput)
 }
 
-// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// Project name. Changing this property forces recreation of the resource.
 func (o KafkaUserOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaUser) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// Service name. Changing this property forces recreation of the resource.
 func (o KafkaUserOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaUser) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// User account type, such as primary or regular account.
+func (o KafkaUserOutput) Timeouts() KafkaUserTimeoutsPtrOutput {
+	return o.ApplyT(func(v *KafkaUser) KafkaUserTimeoutsPtrOutput { return v.Timeouts }).(KafkaUserTimeoutsPtrOutput)
+}
+
+// Account type.
 func (o KafkaUserOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaUser) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// Name of the Kafka service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// Account username. Maximum length: `64`. Changing this property forces recreation of the resource.
 func (o KafkaUserOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaUser) pulumi.StringOutput { return v.Username }).(pulumi.StringOutput)
 }

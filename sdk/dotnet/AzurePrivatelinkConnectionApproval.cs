@@ -35,6 +35,16 @@ namespace Pulumi.Aiven
     ///     }
     ///     var @default = new Aiven.Pg("default", new()
     ///     {
+    ///         PgUserConfig = new Aiven.Inputs.PgPgUserConfigArgs
+    ///         {
+    ///             PrivatelinkAccess = new Aiven.Inputs.PgPgUserConfigPrivatelinkAccessArgs
+    ///             {
+    ///                 Pg = true,
+    ///                 Pgbouncer = true,
+    ///             },
+    ///             PgVersion = "13",
+    ///             StaticIps = true,
+    ///         },
     ///         ServiceName = "postgres",
     ///         Project = aivenProjectId,
     ///         ProjectVpcId = aivenProjectVpcId,
@@ -44,16 +54,6 @@ namespace Pulumi.Aiven
     ///         {
     ///             return sip.StaticIpAddressId;
     ///         }).ToList(),
-    ///         PgUserConfig = new Aiven.Inputs.PgPgUserConfigArgs
-    ///         {
-    ///             PgVersion = "13",
-    ///             StaticIps = true,
-    ///             PrivatelinkAccess = new Aiven.Inputs.PgPgUserConfigPrivatelinkAccessArgs
-    ///             {
-    ///                 Pg = true,
-    ///                 Pgbouncer = true,
-    ///             },
-    ///         },
     ///     });
     /// 
     ///     var privatelink = new Aiven.AzurePrivatelink("privatelink", new()
@@ -68,10 +68,6 @@ namespace Pulumi.Aiven
     /// 
     ///     var endpoint = new Azurerm.PrivateEndpoint("endpoint", new()
     ///     {
-    ///         Name = "postgres-endpoint",
-    ///         Location = region,
-    ///         ResourceGroupName = azureResourceGroup.Name,
-    ///         SubnetId = azureSubnetId,
     ///         PrivateServiceConnection = new[]
     ///         {
     ///             
@@ -82,6 +78,10 @@ namespace Pulumi.Aiven
     ///                 { "requestMessage", @default.Name },
     ///             },
     ///         },
+    ///         Name = "postgres-endpoint",
+    ///         Location = region,
+    ///         ResourceGroupName = azureResourceGroup.Name,
+    ///         SubnetId = azureSubnetId,
     ///     }, new CustomResourceOptions
     ///     {
     ///         DependsOn =

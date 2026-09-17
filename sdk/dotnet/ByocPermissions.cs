@@ -10,10 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// Manages permissions for a BYOC custom cloud environment, which accounts and projects can use the cloud to deploy services. Note! The \`accounts\` and \`projects\` lists are authoritative. This differs from the \`avn byoc cloud permissions add\`, which merges into the existing set. Create this resource after \`aiven_byoc_aws_entity\` and \`aiven_byoc_aws_provision\` so the custom cloud environment is active before permissions are granted.
+    /// Manages permissions for a BYOC custom cloud environment, which accounts and projects can use the cloud to deploy services.
     /// 
-    /// **This resource is in the beta stage and may change without notice.** Set
-    /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
+    /// Note! The `Accounts` and `Projects` lists are authoritative. This differs from the `avn byoc cloud permissions add`, which merges into the existing set.
+    /// 
+    /// Create this resource after `aiven.ByocAwsEntity` and `aiven.ByocAwsProvision` so the custom cloud environment is active before permissions are granted. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
+    /// 
+    /// &gt; **Beta resource**
+    /// This resource is in the beta stage and may change without notice. Set the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
     /// 
     /// ## Example Usage
     /// 
@@ -32,10 +36,12 @@ namespace Pulumi.Aiven
     ///         Accounts = new[]
     ///         {
     ///             "a22ba494e096",
+    ///             "a441b467e067",
     ///         },
     ///         Projects = new[]
     ///         {
     ///             "project-prod",
+    ///             "project-dev",
     ///         },
     ///     });
     /// 

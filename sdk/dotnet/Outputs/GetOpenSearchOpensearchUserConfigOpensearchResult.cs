@@ -152,6 +152,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? KnnMemoryCircuitBreakerLimit;
         /// <summary>
+        /// When set to true, the setting allows admins to control access and permissions to the connector API using backend_roles. Defaults to false.
+        /// </summary>
+        public readonly bool? MlCommonsConnectorAccessControlEnabled;
+        /// <summary>
         /// Enable or disable model access control for ML Commons. When enabled, access to ML models is controlled by security permissions. Defaults to false.
         /// </summary>
         public readonly bool? MlCommonsModelAccessControlEnabled;
@@ -163,6 +167,10 @@ namespace Pulumi.Aiven.Outputs
         /// Enable or disable running ML Commons tasks only on ML nodes. When enabled, ML tasks will only execute on nodes designated as ML nodes. Defaults to true.
         /// </summary>
         public readonly bool? MlCommonsOnlyRunOnMlNode;
+        /// <summary>
+        /// Adds the trusted endpoints to the cluster settings. Supports Java regex expressions.
+        /// </summary>
+        public readonly ImmutableArray<string> MlCommonsTrustedConnectorEndpointsRegexes;
         /// <summary>
         /// Defines a limit of how much total remote data can be referenced as a ratio of the size of the disk reserved for the file cache. This is designed to be a safeguard to prevent oversubscribing a cluster. Defaults to 5gb. Requires restarting all OpenSearch nodes.
         /// </summary>
@@ -320,11 +328,15 @@ namespace Pulumi.Aiven.Outputs
 
             int? knnMemoryCircuitBreakerLimit,
 
+            bool? mlCommonsConnectorAccessControlEnabled,
+
             bool? mlCommonsModelAccessControlEnabled,
 
             int? mlCommonsNativeMemoryThreshold,
 
             bool? mlCommonsOnlyRunOnMlNode,
+
+            ImmutableArray<string> mlCommonsTrustedConnectorEndpointsRegexes,
 
             string? nodeSearchCacheSize,
 
@@ -406,9 +418,11 @@ namespace Pulumi.Aiven.Outputs
             IsmHistoryRolloverRetentionPeriod = ismHistoryRolloverRetentionPeriod;
             KnnMemoryCircuitBreakerEnabled = knnMemoryCircuitBreakerEnabled;
             KnnMemoryCircuitBreakerLimit = knnMemoryCircuitBreakerLimit;
+            MlCommonsConnectorAccessControlEnabled = mlCommonsConnectorAccessControlEnabled;
             MlCommonsModelAccessControlEnabled = mlCommonsModelAccessControlEnabled;
             MlCommonsNativeMemoryThreshold = mlCommonsNativeMemoryThreshold;
             MlCommonsOnlyRunOnMlNode = mlCommonsOnlyRunOnMlNode;
+            MlCommonsTrustedConnectorEndpointsRegexes = mlCommonsTrustedConnectorEndpointsRegexes;
             NodeSearchCacheSize = nodeSearchCacheSize;
             OverrideMainResponseVersion = overrideMainResponseVersion;
             PluginsAlertingFilterByBackendRoles = pluginsAlertingFilterByBackendRoles;

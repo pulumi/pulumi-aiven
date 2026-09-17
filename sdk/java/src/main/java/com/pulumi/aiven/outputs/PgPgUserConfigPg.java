@@ -115,7 +115,7 @@ public final class PgPgUserConfigPg {
      */
     private @Nullable String ioMethod;
     /**
-     * @return EXPERIMENTAL: Number of IO worker processes, for io_method=worker. Version 18 and up only. Changing this parameter causes a service restart. Default: `3`.
+     * @return EXPERIMENTAL: Number of IO worker processes, for io_method=worker. Version 18 and up only.
      * 
      */
     private @Nullable Integer ioWorkers;
@@ -245,7 +245,7 @@ public final class PgPgUserConfigPg {
      */
     private @Nullable String pgPartmanBgwDotRole;
     /**
-     * @return Enables or disables query plan monitoring. Changing this parameter causes a service restart. Only available for PostgreSQL 13+.
+     * @return Enables or disables query plan monitoring. Only available for PostgreSQL 13+.
      * 
      */
     private @Nullable Boolean pgStatMonitorDotPgsmEnableQueryPlan;
@@ -254,6 +254,11 @@ public final class PgPgUserConfigPg {
      * 
      */
     private @Nullable Integer pgStatMonitorDotPgsmMaxBuckets;
+    /**
+     * @return Enum: `all`, `none`, `top`. Controls which statements&#39; plans are tracked. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable plan tracking. The default is `top`.
+     * 
+     */
+    private @Nullable String pgStatPlansDotTrack;
     /**
      * @return Enum: `all`, `none`, `top`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default is `top`.
      * 
@@ -447,7 +452,7 @@ public final class PgPgUserConfigPg {
         return Optional.ofNullable(this.ioMethod);
     }
     /**
-     * @return EXPERIMENTAL: Number of IO worker processes, for io_method=worker. Version 18 and up only. Changing this parameter causes a service restart. Default: `3`.
+     * @return EXPERIMENTAL: Number of IO worker processes, for io_method=worker. Version 18 and up only.
      * 
      */
     public Optional<Integer> ioWorkers() {
@@ -629,7 +634,7 @@ public final class PgPgUserConfigPg {
         return Optional.ofNullable(this.pgPartmanBgwDotRole);
     }
     /**
-     * @return Enables or disables query plan monitoring. Changing this parameter causes a service restart. Only available for PostgreSQL 13+.
+     * @return Enables or disables query plan monitoring. Only available for PostgreSQL 13+.
      * 
      */
     public Optional<Boolean> pgStatMonitorDotPgsmEnableQueryPlan() {
@@ -641,6 +646,13 @@ public final class PgPgUserConfigPg {
      */
     public Optional<Integer> pgStatMonitorDotPgsmMaxBuckets() {
         return Optional.ofNullable(this.pgStatMonitorDotPgsmMaxBuckets);
+    }
+    /**
+     * @return Enum: `all`, `none`, `top`. Controls which statements&#39; plans are tracked. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable plan tracking. The default is `top`.
+     * 
+     */
+    public Optional<String> pgStatPlansDotTrack() {
+        return Optional.ofNullable(this.pgStatPlansDotTrack);
     }
     /**
      * @return Enum: `all`, `none`, `top`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default is `top`.
@@ -770,6 +782,7 @@ public final class PgPgUserConfigPg {
         private @Nullable String pgPartmanBgwDotRole;
         private @Nullable Boolean pgStatMonitorDotPgsmEnableQueryPlan;
         private @Nullable Integer pgStatMonitorDotPgsmMaxBuckets;
+        private @Nullable String pgStatPlansDotTrack;
         private @Nullable String pgStatStatementsDotTrack;
         private @Nullable String synchronousCommit;
         private @Nullable Integer tempFileLimit;
@@ -831,6 +844,7 @@ public final class PgPgUserConfigPg {
     	      this.pgPartmanBgwDotRole = defaults.pgPartmanBgwDotRole;
     	      this.pgStatMonitorDotPgsmEnableQueryPlan = defaults.pgStatMonitorDotPgsmEnableQueryPlan;
     	      this.pgStatMonitorDotPgsmMaxBuckets = defaults.pgStatMonitorDotPgsmMaxBuckets;
+    	      this.pgStatPlansDotTrack = defaults.pgStatPlansDotTrack;
     	      this.pgStatStatementsDotTrack = defaults.pgStatStatementsDotTrack;
     	      this.synchronousCommit = defaults.synchronousCommit;
     	      this.tempFileLimit = defaults.tempFileLimit;
@@ -1132,6 +1146,12 @@ public final class PgPgUserConfigPg {
             return this;
         }
         @CustomType.Setter
+        public Builder pgStatPlansDotTrack(@Nullable String pgStatPlansDotTrack) {
+
+            this.pgStatPlansDotTrack = pgStatPlansDotTrack;
+            return this;
+        }
+        @CustomType.Setter
         public Builder pgStatStatementsDotTrack(@Nullable String pgStatStatementsDotTrack) {
 
             this.pgStatStatementsDotTrack = pgStatStatementsDotTrack;
@@ -1241,6 +1261,7 @@ public final class PgPgUserConfigPg {
             _resultValue.pgPartmanBgwDotRole = pgPartmanBgwDotRole;
             _resultValue.pgStatMonitorDotPgsmEnableQueryPlan = pgStatMonitorDotPgsmEnableQueryPlan;
             _resultValue.pgStatMonitorDotPgsmMaxBuckets = pgStatMonitorDotPgsmMaxBuckets;
+            _resultValue.pgStatPlansDotTrack = pgStatPlansDotTrack;
             _resultValue.pgStatStatementsDotTrack = pgStatStatementsDotTrack;
             _resultValue.synchronousCommit = synchronousCommit;
             _resultValue.tempFileLimit = tempFileLimit;

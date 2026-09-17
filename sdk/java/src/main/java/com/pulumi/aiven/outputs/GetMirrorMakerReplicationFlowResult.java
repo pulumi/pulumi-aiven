@@ -3,6 +3,7 @@
 
 package com.pulumi.aiven.outputs;
 
+import com.pulumi.aiven.outputs.GetMirrorMakerReplicationFlowTimeouts;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
@@ -10,222 +11,240 @@ import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetMirrorMakerReplicationFlowResult {
     /**
-     * @return List of topic configuration properties and regular expressions to not replicate. The properties that are not replicated by default are: `follower.replication.throttled.replicas`, `leader.replication.throttled.replicas`, `message.timestamp.difference.max.ms`, `message.timestamp.type`, `unclean.leader.election.enable`, and `min.insync.replicas`. Setting this overrides the defaults. For example, to enable replication for &#39;min.insync.replicas&#39; and &#39;unclean.leader.election.enable&#39; set this to: [&#34;follower\\.replication\\.throttled\\.replicas&#34;, &#34;leader\\.replication\\.throttled\\.replicas&#34;, &#34;message\\.timestamp\\.difference\\.max\\.ms&#34;,  &#34;message\\.timestamp\\.type&#34;]
+     * @return List of topic configuration properties and/or regexes that should not be replicated. If omitted, MirrorMaker will use default list of exclusions. For stability reasons, we always include the `unclean.leader.election.enable` field in the excluded parameters. If you have specific requirements for this configuration, please reach out to our support team for assistance.
      * 
      */
     private List<String> configPropertiesExcludes;
     /**
-     * @return Enables emitting heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
+     * @return Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
      * 
      */
     private Boolean emitBackwardHeartbeatsEnabled;
     /**
-     * @return Enables emitting heartbeats to the target cluster. The default value is `false`.
+     * @return Whether to emit heartbeats to the target cluster. The default value is `false`.
      * 
      */
     private Boolean emitHeartbeatsEnabled;
     /**
-     * @return Enables replication flow for a service.
+     * @return Is replication flow enabled.
      * 
      */
     private Boolean enable;
     /**
-     * @return Enables exactly-once message delivery. Set this to `enabled` for new replications. The default value is `false`.
+     * @return Whether to enable exactly-once message delivery. We recommend you set this to enabled for new replications. The default value is `false`.
      * 
      */
     private Boolean exactlyOnceDeliveryEnabled;
     /**
-     * @return Assigns a Rack ID based on the availability-zone to enable follower fetching and rack awareness per replication flow. Defaults to enabled by the service for new flows, but is left unchanged for existing ones when not set.
+     * @return Assigns a Rack ID based on the availability-zone to enable follower fetching and rack awareness per replication flow.
      * 
      */
     private Boolean followerFetchingEnabled;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Resource ID composed as: `project/service_name/source_cluster/target_cluster`.
      * 
      */
     private String id;
     /**
-     * @return Offset syncs topic location. The possible values are `source` and `target`.
+     * @return How out-of-sync a remote partition can be before it is resynced (default: 100).
+     * 
+     */
+    private Integer offsetLagMax;
+    /**
+     * @return The location of the offset-syncs topic. The possible values are `source` and `target`.
      * 
      */
     private String offsetSyncsTopicLocation;
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name.
      * 
      */
     private String project;
     /**
-     * @return Replication factor, `&gt;= 1`.
+     * @return Replication factor used when creating the remote topics. If the replication factor surpasses the number of nodes in the target cluster, topic creation will fail.
      * 
      */
     private Integer replicationFactor;
     /**
-     * @return Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
+     * @return Class which defines the remote topic naming convention. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`.
      * 
      */
     private String replicationPolicyClass;
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service name.
      * 
      */
     private String serviceName;
     /**
-     * @return Source cluster alias. Maximum length: `128`.
+     * @return The alias of the source cluster to use in this replication flow. Can contain the following symbols: ASCII alphanumerics, `.`, `_`, and `-`.
      * 
      */
     private String sourceCluster;
     /**
-     * @return Sync consumer group offsets. The default value is `false`.
+     * @return Whether to periodically write the translated offsets of replicated consumer groups (in the source cluster) to _*consumer*offsets topic in target cluster, as long as no active consumers in that group are connected to the target cluster. The default value is `false`.
      * 
      */
     private Boolean syncGroupOffsetsEnabled;
     /**
-     * @return Frequency of consumer group offset sync. The default value is `1`.
+     * @return Frequency at which consumer group offsets are synced (default: 60, every minute). The default value is `1`.
      * 
      */
     private Integer syncGroupOffsetsIntervalSeconds;
     /**
-     * @return Target cluster alias. Maximum length: `128`.
+     * @return The alias of the target cluster to use in this replication flow. Can contain the following symbols: ASCII alphanumerics, `.`, `_`, and `-`.
      * 
      */
     private String targetCluster;
+    private @Nullable GetMirrorMakerReplicationFlowTimeouts timeouts;
     /**
-     * @return The topics to include in the replica defined by a [list of regular expressions in Java format](https://aiven.io/docs/products/kafka/kafka-mirrormaker/concepts/replication-flow-topics-regex).
+     * @return Topic names and regular expressions that match topic names that should be replicated. MirrorMaker will replicate these topics if they are not matched by `topicsBlacklist`. The topics to include are defined by a [list of regular expressions in Java format](https://aiven.io/docs/products/kafka/kafka-mirrormaker/concepts/replication-flow-topics-regex).
      * 
      */
     private List<String> topics;
     /**
-     * @return The topics to exclude from the replica defined by a [list of regular expressions in Java format](https://aiven.io/docs/products/kafka/kafka-mirrormaker/concepts/replication-flow-topics-regex).
+     * @return Topic names and regular expressions that match topic names that should not be replicated. MirrorMaker will not replicate these topics even if they are matched by `topics`. The topics to exclude are defined by a [list of regular expressions in Java format](https://aiven.io/docs/products/kafka/kafka-mirrormaker/concepts/replication-flow-topics-regex).
      * 
      */
     private List<String> topicsBlacklists;
 
     private GetMirrorMakerReplicationFlowResult() {}
     /**
-     * @return List of topic configuration properties and regular expressions to not replicate. The properties that are not replicated by default are: `follower.replication.throttled.replicas`, `leader.replication.throttled.replicas`, `message.timestamp.difference.max.ms`, `message.timestamp.type`, `unclean.leader.election.enable`, and `min.insync.replicas`. Setting this overrides the defaults. For example, to enable replication for &#39;min.insync.replicas&#39; and &#39;unclean.leader.election.enable&#39; set this to: [&#34;follower\\.replication\\.throttled\\.replicas&#34;, &#34;leader\\.replication\\.throttled\\.replicas&#34;, &#34;message\\.timestamp\\.difference\\.max\\.ms&#34;,  &#34;message\\.timestamp\\.type&#34;]
+     * @return List of topic configuration properties and/or regexes that should not be replicated. If omitted, MirrorMaker will use default list of exclusions. For stability reasons, we always include the `unclean.leader.election.enable` field in the excluded parameters. If you have specific requirements for this configuration, please reach out to our support team for assistance.
      * 
      */
     public List<String> configPropertiesExcludes() {
         return this.configPropertiesExcludes;
     }
     /**
-     * @return Enables emitting heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
+     * @return Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
      * 
      */
     public Boolean emitBackwardHeartbeatsEnabled() {
         return this.emitBackwardHeartbeatsEnabled;
     }
     /**
-     * @return Enables emitting heartbeats to the target cluster. The default value is `false`.
+     * @return Whether to emit heartbeats to the target cluster. The default value is `false`.
      * 
      */
     public Boolean emitHeartbeatsEnabled() {
         return this.emitHeartbeatsEnabled;
     }
     /**
-     * @return Enables replication flow for a service.
+     * @return Is replication flow enabled.
      * 
      */
     public Boolean enable() {
         return this.enable;
     }
     /**
-     * @return Enables exactly-once message delivery. Set this to `enabled` for new replications. The default value is `false`.
+     * @return Whether to enable exactly-once message delivery. We recommend you set this to enabled for new replications. The default value is `false`.
      * 
      */
     public Boolean exactlyOnceDeliveryEnabled() {
         return this.exactlyOnceDeliveryEnabled;
     }
     /**
-     * @return Assigns a Rack ID based on the availability-zone to enable follower fetching and rack awareness per replication flow. Defaults to enabled by the service for new flows, but is left unchanged for existing ones when not set.
+     * @return Assigns a Rack ID based on the availability-zone to enable follower fetching and rack awareness per replication flow.
      * 
      */
     public Boolean followerFetchingEnabled() {
         return this.followerFetchingEnabled;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Resource ID composed as: `project/service_name/source_cluster/target_cluster`.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return Offset syncs topic location. The possible values are `source` and `target`.
+     * @return How out-of-sync a remote partition can be before it is resynced (default: 100).
+     * 
+     */
+    public Integer offsetLagMax() {
+        return this.offsetLagMax;
+    }
+    /**
+     * @return The location of the offset-syncs topic. The possible values are `source` and `target`.
      * 
      */
     public String offsetSyncsTopicLocation() {
         return this.offsetSyncsTopicLocation;
     }
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name.
      * 
      */
     public String project() {
         return this.project;
     }
     /**
-     * @return Replication factor, `&gt;= 1`.
+     * @return Replication factor used when creating the remote topics. If the replication factor surpasses the number of nodes in the target cluster, topic creation will fail.
      * 
      */
     public Integer replicationFactor() {
         return this.replicationFactor;
     }
     /**
-     * @return Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
+     * @return Class which defines the remote topic naming convention. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`.
      * 
      */
     public String replicationPolicyClass() {
         return this.replicationPolicyClass;
     }
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service name.
      * 
      */
     public String serviceName() {
         return this.serviceName;
     }
     /**
-     * @return Source cluster alias. Maximum length: `128`.
+     * @return The alias of the source cluster to use in this replication flow. Can contain the following symbols: ASCII alphanumerics, `.`, `_`, and `-`.
      * 
      */
     public String sourceCluster() {
         return this.sourceCluster;
     }
     /**
-     * @return Sync consumer group offsets. The default value is `false`.
+     * @return Whether to periodically write the translated offsets of replicated consumer groups (in the source cluster) to _*consumer*offsets topic in target cluster, as long as no active consumers in that group are connected to the target cluster. The default value is `false`.
      * 
      */
     public Boolean syncGroupOffsetsEnabled() {
         return this.syncGroupOffsetsEnabled;
     }
     /**
-     * @return Frequency of consumer group offset sync. The default value is `1`.
+     * @return Frequency at which consumer group offsets are synced (default: 60, every minute). The default value is `1`.
      * 
      */
     public Integer syncGroupOffsetsIntervalSeconds() {
         return this.syncGroupOffsetsIntervalSeconds;
     }
     /**
-     * @return Target cluster alias. Maximum length: `128`.
+     * @return The alias of the target cluster to use in this replication flow. Can contain the following symbols: ASCII alphanumerics, `.`, `_`, and `-`.
      * 
      */
     public String targetCluster() {
         return this.targetCluster;
     }
+    public Optional<GetMirrorMakerReplicationFlowTimeouts> timeouts() {
+        return Optional.ofNullable(this.timeouts);
+    }
     /**
-     * @return The topics to include in the replica defined by a [list of regular expressions in Java format](https://aiven.io/docs/products/kafka/kafka-mirrormaker/concepts/replication-flow-topics-regex).
+     * @return Topic names and regular expressions that match topic names that should be replicated. MirrorMaker will replicate these topics if they are not matched by `topicsBlacklist`. The topics to include are defined by a [list of regular expressions in Java format](https://aiven.io/docs/products/kafka/kafka-mirrormaker/concepts/replication-flow-topics-regex).
      * 
      */
     public List<String> topics() {
         return this.topics;
     }
     /**
-     * @return The topics to exclude from the replica defined by a [list of regular expressions in Java format](https://aiven.io/docs/products/kafka/kafka-mirrormaker/concepts/replication-flow-topics-regex).
+     * @return Topic names and regular expressions that match topic names that should not be replicated. MirrorMaker will not replicate these topics even if they are matched by `topics`. The topics to exclude are defined by a [list of regular expressions in Java format](https://aiven.io/docs/products/kafka/kafka-mirrormaker/concepts/replication-flow-topics-regex).
      * 
      */
     public List<String> topicsBlacklists() {
@@ -248,6 +267,7 @@ public final class GetMirrorMakerReplicationFlowResult {
         private Boolean exactlyOnceDeliveryEnabled;
         private Boolean followerFetchingEnabled;
         private String id;
+        private Integer offsetLagMax;
         private String offsetSyncsTopicLocation;
         private String project;
         private Integer replicationFactor;
@@ -257,6 +277,7 @@ public final class GetMirrorMakerReplicationFlowResult {
         private Boolean syncGroupOffsetsEnabled;
         private Integer syncGroupOffsetsIntervalSeconds;
         private String targetCluster;
+        private @Nullable GetMirrorMakerReplicationFlowTimeouts timeouts;
         private List<String> topics;
         private List<String> topicsBlacklists;
         public Builder() {}
@@ -269,6 +290,7 @@ public final class GetMirrorMakerReplicationFlowResult {
     	      this.exactlyOnceDeliveryEnabled = defaults.exactlyOnceDeliveryEnabled;
     	      this.followerFetchingEnabled = defaults.followerFetchingEnabled;
     	      this.id = defaults.id;
+    	      this.offsetLagMax = defaults.offsetLagMax;
     	      this.offsetSyncsTopicLocation = defaults.offsetSyncsTopicLocation;
     	      this.project = defaults.project;
     	      this.replicationFactor = defaults.replicationFactor;
@@ -278,6 +300,7 @@ public final class GetMirrorMakerReplicationFlowResult {
     	      this.syncGroupOffsetsEnabled = defaults.syncGroupOffsetsEnabled;
     	      this.syncGroupOffsetsIntervalSeconds = defaults.syncGroupOffsetsIntervalSeconds;
     	      this.targetCluster = defaults.targetCluster;
+    	      this.timeouts = defaults.timeouts;
     	      this.topics = defaults.topics;
     	      this.topicsBlacklists = defaults.topicsBlacklists;
         }
@@ -339,6 +362,14 @@ public final class GetMirrorMakerReplicationFlowResult {
               throw new MissingRequiredPropertyException("GetMirrorMakerReplicationFlowResult", "id");
             }
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder offsetLagMax(Integer offsetLagMax) {
+            if (offsetLagMax == null) {
+              throw new MissingRequiredPropertyException("GetMirrorMakerReplicationFlowResult", "offsetLagMax");
+            }
+            this.offsetLagMax = offsetLagMax;
             return this;
         }
         @CustomType.Setter
@@ -414,6 +445,12 @@ public final class GetMirrorMakerReplicationFlowResult {
             return this;
         }
         @CustomType.Setter
+        public Builder timeouts(@Nullable GetMirrorMakerReplicationFlowTimeouts timeouts) {
+
+            this.timeouts = timeouts;
+            return this;
+        }
+        @CustomType.Setter
         public Builder topics(List<String> topics) {
             if (topics == null) {
               throw new MissingRequiredPropertyException("GetMirrorMakerReplicationFlowResult", "topics");
@@ -444,6 +481,7 @@ public final class GetMirrorMakerReplicationFlowResult {
             _resultValue.exactlyOnceDeliveryEnabled = exactlyOnceDeliveryEnabled;
             _resultValue.followerFetchingEnabled = followerFetchingEnabled;
             _resultValue.id = id;
+            _resultValue.offsetLagMax = offsetLagMax;
             _resultValue.offsetSyncsTopicLocation = offsetSyncsTopicLocation;
             _resultValue.project = project;
             _resultValue.replicationFactor = replicationFactor;
@@ -453,6 +491,7 @@ public final class GetMirrorMakerReplicationFlowResult {
             _resultValue.syncGroupOffsetsEnabled = syncGroupOffsetsEnabled;
             _resultValue.syncGroupOffsetsIntervalSeconds = syncGroupOffsetsIntervalSeconds;
             _resultValue.targetCluster = targetCluster;
+            _resultValue.timeouts = timeouts;
             _resultValue.topics = topics;
             _resultValue.topicsBlacklists = topicsBlacklists;
             return _resultValue;

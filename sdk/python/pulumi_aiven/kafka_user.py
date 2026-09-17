@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['KafkaUserArgs', 'KafkaUser']
 
@@ -24,17 +26,18 @@ class KafkaUserArgs:
                  username: pulumi.Input[_builtins.str],
                  password: pulumi.Input[Optional[_builtins.str]] = None,
                  password_wo: pulumi.Input[Optional[_builtins.str]] = None,
-                 password_wo_version: pulumi.Input[Optional[_builtins.int]] = None):
+                 password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 timeouts: pulumi.Input[Optional['KafkaUserTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a KafkaUser resource.
 
-        :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] username: Name of the Kafka service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] password: The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+        :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] service_name: Service name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] username: Account username. Maximum length: `64`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] password: The password of the service user (auto-generated if not provided). The field conflicts with `password_wo`. Length must be between `8` and `256`.
         :param pulumi.Input[_builtins.str] password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-               The password of the service user (write-only, not stored in state). Must be used with `password_wo_version`. Must be 8-256 characters.
-        :param pulumi.Input[_builtins.int] password_wo_version: Version number for `password_wo`. Increment this to rotate the password. Must be >= 1.
+               The password of the service user (write-only, not stored in state). The field is required with `password_wo_version`. The field conflicts with `password`. Length must be between `8` and `256`.
+        :param pulumi.Input[_builtins.int] password_wo_version: Version number for `password_wo`. Increment this to rotate the password. The field is required with `password_wo`. Minimum value: `1`.
         """
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "service_name", service_name)
@@ -45,12 +48,14 @@ class KafkaUserArgs:
             pulumi.set(__self__, "password_wo", password_wo)
         if password_wo_version is not None:
             pulumi.set(__self__, "password_wo_version", password_wo_version)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
 
     @_builtins.property
     @pulumi.getter
     def project(self) -> pulumi.Input[_builtins.str]:
         """
-        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Project name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -62,7 +67,7 @@ class KafkaUserArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[_builtins.str]:
         """
-        The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Service name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
@@ -74,7 +79,7 @@ class KafkaUserArgs:
     @pulumi.getter
     def username(self) -> pulumi.Input[_builtins.str]:
         """
-        Name of the Kafka service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Account username. Maximum length: `64`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "username")
 
@@ -86,7 +91,7 @@ class KafkaUserArgs:
     @pulumi.getter
     def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+        The password of the service user (auto-generated if not provided). The field conflicts with `password_wo`. Length must be between `8` and `256`.
         """
         return pulumi.get(self, "password")
 
@@ -99,7 +104,7 @@ class KafkaUserArgs:
     def password_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-        The password of the service user (write-only, not stored in state). Must be used with `password_wo_version`. Must be 8-256 characters.
+        The password of the service user (write-only, not stored in state). The field is required with `password_wo_version`. The field conflicts with `password`. Length must be between `8` and `256`.
         """
         return pulumi.get(self, "password_wo")
 
@@ -111,13 +116,22 @@ class KafkaUserArgs:
     @pulumi.getter(name="passwordWoVersion")
     def password_wo_version(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Version number for `password_wo`. Increment this to rotate the password. Must be >= 1.
+        Version number for `password_wo`. Increment this to rotate the password. The field is required with `password_wo`. Minimum value: `1`.
         """
         return pulumi.get(self, "password_wo_version")
 
     @password_wo_version.setter
     def password_wo_version(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "password_wo_version", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> pulumi.Input[Optional['KafkaUserTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: pulumi.Input[Optional['KafkaUserTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
 
 
 @pulumi.input_type
@@ -126,25 +140,28 @@ class _KafkaUserState:
                  access_cert: pulumi.Input[Optional[_builtins.str]] = None,
                  access_key: pulumi.Input[Optional[_builtins.str]] = None,
                  password: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_encryption_type: pulumi.Input[Optional[_builtins.str]] = None,
                  password_wo: pulumi.Input[Optional[_builtins.str]] = None,
                  password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional['KafkaUserTimeoutsArgs']] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  username: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering KafkaUser resources.
 
-        :param pulumi.Input[_builtins.str] access_cert: Access certificate for the user.
-        :param pulumi.Input[_builtins.str] access_key: Access certificate key for the user.
-        :param pulumi.Input[_builtins.str] password: The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+        :param pulumi.Input[_builtins.str] access_cert: Access certificate for TLS client authentication.
+        :param pulumi.Input[_builtins.str] access_key: Access key for TLS client authentication.
+        :param pulumi.Input[_builtins.str] password: The password of the service user (auto-generated if not provided). The field conflicts with `password_wo`. Length must be between `8` and `256`.
+        :param pulumi.Input[_builtins.str] password_encryption_type: The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. 'unknown' is reported when the hash is missing or uses an unrecognised format. The possible values are `md5`, `scram-sha-256` and `unknown`.
         :param pulumi.Input[_builtins.str] password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-               The password of the service user (write-only, not stored in state). Must be used with `password_wo_version`. Must be 8-256 characters.
-        :param pulumi.Input[_builtins.int] password_wo_version: Version number for `password_wo`. Increment this to rotate the password. Must be >= 1.
-        :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] type: User account type, such as primary or regular account.
-        :param pulumi.Input[_builtins.str] username: Name of the Kafka service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+               The password of the service user (write-only, not stored in state). The field is required with `password_wo_version`. The field conflicts with `password`. Length must be between `8` and `256`.
+        :param pulumi.Input[_builtins.int] password_wo_version: Version number for `password_wo`. Increment this to rotate the password. The field is required with `password_wo`. Minimum value: `1`.
+        :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] service_name: Service name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] type: Account type.
+        :param pulumi.Input[_builtins.str] username: Account username. Maximum length: `64`. Changing this property forces recreation of the resource.
         """
         if access_cert is not None:
             pulumi.set(__self__, "access_cert", access_cert)
@@ -152,6 +169,8 @@ class _KafkaUserState:
             pulumi.set(__self__, "access_key", access_key)
         if password is not None:
             pulumi.set(__self__, "password", password)
+        if password_encryption_type is not None:
+            pulumi.set(__self__, "password_encryption_type", password_encryption_type)
         if password_wo is not None:
             pulumi.set(__self__, "password_wo", password_wo)
         if password_wo_version is not None:
@@ -160,6 +179,8 @@ class _KafkaUserState:
             pulumi.set(__self__, "project", project)
         if service_name is not None:
             pulumi.set(__self__, "service_name", service_name)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
         if type is not None:
             pulumi.set(__self__, "type", type)
         if username is not None:
@@ -169,7 +190,7 @@ class _KafkaUserState:
     @pulumi.getter(name="accessCert")
     def access_cert(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Access certificate for the user.
+        Access certificate for TLS client authentication.
         """
         return pulumi.get(self, "access_cert")
 
@@ -181,7 +202,7 @@ class _KafkaUserState:
     @pulumi.getter(name="accessKey")
     def access_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Access certificate key for the user.
+        Access key for TLS client authentication.
         """
         return pulumi.get(self, "access_key")
 
@@ -193,7 +214,7 @@ class _KafkaUserState:
     @pulumi.getter
     def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+        The password of the service user (auto-generated if not provided). The field conflicts with `password_wo`. Length must be between `8` and `256`.
         """
         return pulumi.get(self, "password")
 
@@ -202,11 +223,23 @@ class _KafkaUserState:
         pulumi.set(self, "password", value)
 
     @_builtins.property
+    @pulumi.getter(name="passwordEncryptionType")
+    def password_encryption_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. 'unknown' is reported when the hash is missing or uses an unrecognised format. The possible values are `md5`, `scram-sha-256` and `unknown`.
+        """
+        return pulumi.get(self, "password_encryption_type")
+
+    @password_encryption_type.setter
+    def password_encryption_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "password_encryption_type", value)
+
+    @_builtins.property
     @pulumi.getter(name="passwordWo")
     def password_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-        The password of the service user (write-only, not stored in state). Must be used with `password_wo_version`. Must be 8-256 characters.
+        The password of the service user (write-only, not stored in state). The field is required with `password_wo_version`. The field conflicts with `password`. Length must be between `8` and `256`.
         """
         return pulumi.get(self, "password_wo")
 
@@ -218,7 +251,7 @@ class _KafkaUserState:
     @pulumi.getter(name="passwordWoVersion")
     def password_wo_version(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Version number for `password_wo`. Increment this to rotate the password. Must be >= 1.
+        Version number for `password_wo`. Increment this to rotate the password. The field is required with `password_wo`. Minimum value: `1`.
         """
         return pulumi.get(self, "password_wo_version")
 
@@ -230,7 +263,7 @@ class _KafkaUserState:
     @pulumi.getter
     def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Project name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -242,7 +275,7 @@ class _KafkaUserState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Service name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
@@ -252,9 +285,18 @@ class _KafkaUserState:
 
     @_builtins.property
     @pulumi.getter
+    def timeouts(self) -> pulumi.Input[Optional['KafkaUserTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: pulumi.Input[Optional['KafkaUserTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
+
+    @_builtins.property
+    @pulumi.getter
     def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        User account type, such as primary or regular account.
+        Account type.
         """
         return pulumi.get(self, "type")
 
@@ -266,7 +308,7 @@ class _KafkaUserState:
     @pulumi.getter
     def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Name of the Kafka service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Account username. Maximum length: `64`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "username")
 
@@ -286,10 +328,11 @@ class KafkaUser(pulumi.CustomResource):
                  password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['KafkaUserTimeoutsArgs', 'KafkaUserTimeoutsArgsDict']]] = None,
                  username: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
-        Creates and manages an Aiven for Apache Kafka® service user.
+        Creates and manages an Aiven for Apache Kafka® service user. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
 
         ## Example Usage
 
@@ -297,29 +340,30 @@ class KafkaUser(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        example_service_user = aiven.KafkaUser("example_service_user",
-            service_name=example_kafka["serviceName"],
-            project=example_project["project"],
-            username="example-kafka-user",
-            password=service_user_pw)
+        example = aiven.KafkaUser("example",
+            project="my-project",
+            service_name="my-kafka",
+            username="testuser",
+            password_wo="password123",
+            password_wo_version=1)
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/kafkaUser:KafkaUser example_user PROJECT/SERVICE_NAME/USERNAME
+        $ pulumi import aiven:index/kafkaUser:KafkaUser example PROJECT/SERVICE_NAME/USERNAME
         ```
 
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] password: The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+        :param pulumi.Input[_builtins.str] password: The password of the service user (auto-generated if not provided). The field conflicts with `password_wo`. Length must be between `8` and `256`.
         :param pulumi.Input[_builtins.str] password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-               The password of the service user (write-only, not stored in state). Must be used with `password_wo_version`. Must be 8-256 characters.
-        :param pulumi.Input[_builtins.int] password_wo_version: Version number for `password_wo`. Increment this to rotate the password. Must be >= 1.
-        :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] username: Name of the Kafka service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+               The password of the service user (write-only, not stored in state). The field is required with `password_wo_version`. The field conflicts with `password`. Length must be between `8` and `256`.
+        :param pulumi.Input[_builtins.int] password_wo_version: Version number for `password_wo`. Increment this to rotate the password. The field is required with `password_wo`. Minimum value: `1`.
+        :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] service_name: Service name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] username: Account username. Maximum length: `64`. Changing this property forces recreation of the resource.
         """
         ...
     @overload
@@ -328,7 +372,7 @@ class KafkaUser(pulumi.CustomResource):
                  args: KafkaUserArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates and manages an Aiven for Apache Kafka® service user.
+        Creates and manages an Aiven for Apache Kafka® service user. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
 
         ## Example Usage
 
@@ -336,17 +380,18 @@ class KafkaUser(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        example_service_user = aiven.KafkaUser("example_service_user",
-            service_name=example_kafka["serviceName"],
-            project=example_project["project"],
-            username="example-kafka-user",
-            password=service_user_pw)
+        example = aiven.KafkaUser("example",
+            project="my-project",
+            service_name="my-kafka",
+            username="testuser",
+            password_wo="password123",
+            password_wo_version=1)
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/kafkaUser:KafkaUser example_user PROJECT/SERVICE_NAME/USERNAME
+        $ pulumi import aiven:index/kafkaUser:KafkaUser example PROJECT/SERVICE_NAME/USERNAME
         ```
 
 
@@ -370,6 +415,7 @@ class KafkaUser(pulumi.CustomResource):
                  password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['KafkaUserTimeoutsArgs', 'KafkaUserTimeoutsArgsDict']]] = None,
                  username: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -389,11 +435,13 @@ class KafkaUser(pulumi.CustomResource):
             if service_name is None and not opts.urn:
                 raise TypeError("Missing required property 'service_name'")
             __props__.__dict__["service_name"] = service_name
+            __props__.__dict__["timeouts"] = timeouts
             if username is None and not opts.urn:
                 raise TypeError("Missing required property 'username'")
             __props__.__dict__["username"] = username
             __props__.__dict__["access_cert"] = None
             __props__.__dict__["access_key"] = None
+            __props__.__dict__["password_encryption_type"] = None
             __props__.__dict__["type"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["accessCert", "accessKey", "password", "passwordWo"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
@@ -410,10 +458,12 @@ class KafkaUser(pulumi.CustomResource):
             access_cert: pulumi.Input[Optional[_builtins.str]] = None,
             access_key: pulumi.Input[Optional[_builtins.str]] = None,
             password: pulumi.Input[Optional[_builtins.str]] = None,
+            password_encryption_type: pulumi.Input[Optional[_builtins.str]] = None,
             password_wo: pulumi.Input[Optional[_builtins.str]] = None,
             password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             service_name: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['KafkaUserTimeoutsArgs', 'KafkaUserTimeoutsArgsDict']]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None,
             username: pulumi.Input[Optional[_builtins.str]] = None) -> 'KafkaUser':
         """
@@ -423,16 +473,17 @@ class KafkaUser(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] access_cert: Access certificate for the user.
-        :param pulumi.Input[_builtins.str] access_key: Access certificate key for the user.
-        :param pulumi.Input[_builtins.str] password: The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+        :param pulumi.Input[_builtins.str] access_cert: Access certificate for TLS client authentication.
+        :param pulumi.Input[_builtins.str] access_key: Access key for TLS client authentication.
+        :param pulumi.Input[_builtins.str] password: The password of the service user (auto-generated if not provided). The field conflicts with `password_wo`. Length must be between `8` and `256`.
+        :param pulumi.Input[_builtins.str] password_encryption_type: The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. 'unknown' is reported when the hash is missing or uses an unrecognised format. The possible values are `md5`, `scram-sha-256` and `unknown`.
         :param pulumi.Input[_builtins.str] password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-               The password of the service user (write-only, not stored in state). Must be used with `password_wo_version`. Must be 8-256 characters.
-        :param pulumi.Input[_builtins.int] password_wo_version: Version number for `password_wo`. Increment this to rotate the password. Must be >= 1.
-        :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] type: User account type, such as primary or regular account.
-        :param pulumi.Input[_builtins.str] username: Name of the Kafka service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+               The password of the service user (write-only, not stored in state). The field is required with `password_wo_version`. The field conflicts with `password`. Length must be between `8` and `256`.
+        :param pulumi.Input[_builtins.int] password_wo_version: Version number for `password_wo`. Increment this to rotate the password. The field is required with `password_wo`. Minimum value: `1`.
+        :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] service_name: Service name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] type: Account type.
+        :param pulumi.Input[_builtins.str] username: Account username. Maximum length: `64`. Changing this property forces recreation of the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -441,10 +492,12 @@ class KafkaUser(pulumi.CustomResource):
         __props__.__dict__["access_cert"] = access_cert
         __props__.__dict__["access_key"] = access_key
         __props__.__dict__["password"] = password
+        __props__.__dict__["password_encryption_type"] = password_encryption_type
         __props__.__dict__["password_wo"] = password_wo
         __props__.__dict__["password_wo_version"] = password_wo_version
         __props__.__dict__["project"] = project
         __props__.__dict__["service_name"] = service_name
+        __props__.__dict__["timeouts"] = timeouts
         __props__.__dict__["type"] = type
         __props__.__dict__["username"] = username
         return KafkaUser(resource_name, opts=opts, __props__=__props__)
@@ -453,7 +506,7 @@ class KafkaUser(pulumi.CustomResource):
     @pulumi.getter(name="accessCert")
     def access_cert(self) -> pulumi.Output[_builtins.str]:
         """
-        Access certificate for the user.
+        Access certificate for TLS client authentication.
         """
         return pulumi.get(self, "access_cert")
 
@@ -461,7 +514,7 @@ class KafkaUser(pulumi.CustomResource):
     @pulumi.getter(name="accessKey")
     def access_key(self) -> pulumi.Output[_builtins.str]:
         """
-        Access certificate key for the user.
+        Access key for TLS client authentication.
         """
         return pulumi.get(self, "access_key")
 
@@ -469,16 +522,24 @@ class KafkaUser(pulumi.CustomResource):
     @pulumi.getter
     def password(self) -> pulumi.Output[_builtins.str]:
         """
-        The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+        The password of the service user (auto-generated if not provided). The field conflicts with `password_wo`. Length must be between `8` and `256`.
         """
         return pulumi.get(self, "password")
+
+    @_builtins.property
+    @pulumi.getter(name="passwordEncryptionType")
+    def password_encryption_type(self) -> pulumi.Output[_builtins.str]:
+        """
+        The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. 'unknown' is reported when the hash is missing or uses an unrecognised format. The possible values are `md5`, `scram-sha-256` and `unknown`.
+        """
+        return pulumi.get(self, "password_encryption_type")
 
     @_builtins.property
     @pulumi.getter(name="passwordWo")
     def password_wo(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-        The password of the service user (write-only, not stored in state). Must be used with `password_wo_version`. Must be 8-256 characters.
+        The password of the service user (write-only, not stored in state). The field is required with `password_wo_version`. The field conflicts with `password`. Length must be between `8` and `256`.
         """
         return pulumi.get(self, "password_wo")
 
@@ -486,7 +547,7 @@ class KafkaUser(pulumi.CustomResource):
     @pulumi.getter(name="passwordWoVersion")
     def password_wo_version(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        Version number for `password_wo`. Increment this to rotate the password. Must be >= 1.
+        Version number for `password_wo`. Increment this to rotate the password. The field is required with `password_wo`. Minimum value: `1`.
         """
         return pulumi.get(self, "password_wo_version")
 
@@ -494,7 +555,7 @@ class KafkaUser(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Project name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -502,15 +563,20 @@ class KafkaUser(pulumi.CustomResource):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Service name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
     @_builtins.property
     @pulumi.getter
+    def timeouts(self) -> pulumi.Output[Optional['outputs.KafkaUserTimeouts']]:
+        return pulumi.get(self, "timeouts")
+
+    @_builtins.property
+    @pulumi.getter
     def type(self) -> pulumi.Output[_builtins.str]:
         """
-        User account type, such as primary or regular account.
+        Account type.
         """
         return pulumi.get(self, "type")
 
@@ -518,7 +584,7 @@ class KafkaUser(pulumi.CustomResource):
     @pulumi.getter
     def username(self) -> pulumi.Output[_builtins.str]:
         """
-        Name of the Kafka service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Account username. Maximum length: `64`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "username")
 

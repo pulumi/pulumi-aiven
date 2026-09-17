@@ -6,11 +6,14 @@ package com.pulumi.aiven;
 import com.pulumi.aiven.OrganizationUserGroupArgs;
 import com.pulumi.aiven.Utilities;
 import com.pulumi.aiven.inputs.OrganizationUserGroupState;
+import com.pulumi.aiven.outputs.OrganizationUserGroupTimeouts;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -41,9 +44,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new OrganizationUserGroup("example", OrganizationUserGroupArgs.builder()
- *             .description("Example group of users.")
- *             .organizationId(main.id())
- *             .name("Example group")
+ *             .organizationId("org1a23f456789")
+ *             .description("The group of admins for the organization")
+ *             .name("Admin Users")
  *             .build());
  * 
  *     }
@@ -54,91 +57,111 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import aiven:index/organizationUserGroup:OrganizationUserGroup example ORGANIZATION_ID/USER_GROUP_ID
+ * $ pulumi import aiven:index/organizationUserGroup:OrganizationUserGroup example ORGANIZATION_ID/GROUP_ID
  * ```
  * 
  */
 @ResourceType(type="aiven:index/organizationUserGroup:OrganizationUserGroup")
 public class OrganizationUserGroup extends com.pulumi.resources.CustomResource {
     /**
-     * Time of creation.
+     * User group creation time.
      * 
      */
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
-     * @return Time of creation.
+     * @return User group creation time.
      * 
      */
     public Output<String> createTime() {
         return this.createTime;
     }
     /**
-     * The description of the user group. Changing this property forces recreation of the resource.
+     * Description. Maximum length: `4096`.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
-     * @return The description of the user group. Changing this property forces recreation of the resource.
+     * @return Description. Maximum length: `4096`.
      * 
      */
     public Output<String> description() {
         return this.description;
     }
     /**
-     * The ID of the user group.
+     * ID of the user group.
      * 
      */
     @Export(name="groupId", refs={String.class}, tree="[0]")
     private Output<String> groupId;
 
     /**
-     * @return The ID of the user group.
+     * @return ID of the user group.
      * 
      */
     public Output<String> groupId() {
         return this.groupId;
     }
     /**
-     * The name of the user group. Changing this property forces recreation of the resource.
+     * Managed By Scim.
+     * 
+     */
+    @Export(name="managedByScim", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> managedByScim;
+
+    /**
+     * @return Managed By Scim.
+     * 
+     */
+    public Output<Boolean> managedByScim() {
+        return this.managedByScim;
+    }
+    /**
+     * User Group Name. Maximum length: `128`.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The name of the user group. Changing this property forces recreation of the resource.
+     * @return User Group Name. Maximum length: `128`.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * The ID of the organization. Changing this property forces recreation of the resource.
+     * ID of an organization. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="organizationId", refs={String.class}, tree="[0]")
     private Output<String> organizationId;
 
     /**
-     * @return The ID of the organization. Changing this property forces recreation of the resource.
+     * @return ID of an organization. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> organizationId() {
         return this.organizationId;
     }
+    @Export(name="timeouts", refs={OrganizationUserGroupTimeouts.class}, tree="[0]")
+    private Output</* @Nullable */ OrganizationUserGroupTimeouts> timeouts;
+
+    public Output<Optional<OrganizationUserGroupTimeouts>> timeouts() {
+        return Codegen.optional(this.timeouts);
+    }
     /**
-     * Time of last update.
+     * User group last update time.
      * 
      */
     @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**
-     * @return Time of last update.
+     * @return User group last update time.
      * 
      */
     public Output<String> updateTime() {

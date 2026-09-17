@@ -37,10 +37,6 @@ import (
 //				return err
 //			}
 //			main, err := aiven.NewFlinkApplicationVersion(ctx, "main", &aiven.FlinkApplicationVersionArgs{
-//				Project:       pulumi.Any(exampleProject.Project),
-//				ServiceName:   pulumi.Any(exampleFlink.ServiceName),
-//				ApplicationId: exampleApp.ApplicationId,
-//				Statement:     pulumi.String("    INSERT INTO kafka_known_pizza SELECT * FROM kafka_pizza WHERE shop LIKE '%Luigis Pizza%'\n"),
 //				Sinks: aiven.FlinkApplicationVersionSinkArray{
 //					&aiven.FlinkApplicationVersionSinkArgs{
 //						CreateTable: pulumi.String(`      CREATE TABLE kafka_known_pizza (
@@ -77,6 +73,10 @@ import (
 //						IntegrationId: pulumi.Any(flinkToKafka.IntegrationId),
 //					},
 //				},
+//				Project:       pulumi.Any(exampleProject.Project),
+//				ServiceName:   pulumi.Any(exampleFlink.ServiceName),
+//				ApplicationId: exampleApp.ApplicationId,
+//				Statement:     pulumi.String("    INSERT INTO kafka_known_pizza SELECT * FROM kafka_pizza WHERE shop LIKE '%Luigis Pizza%'\n"),
 //			})
 //			if err != nil {
 //				return err

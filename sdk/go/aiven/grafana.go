@@ -29,18 +29,18 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.NewGrafana(ctx, "example_grafana", &aiven.GrafanaArgs{
+//				GrafanaUserConfig: &aiven.GrafanaGrafanaUserConfigArgs{
+//					PublicAccess: &aiven.GrafanaGrafanaUserConfigPublicAccessArgs{
+//						Grafana: pulumi.Bool(true),
+//					},
+//					AlertingEnabled: pulumi.Bool(true),
+//				},
 //				Project:               pulumi.Any(exampleProject.Project),
 //				CloudName:             pulumi.String("google-europe-west1"),
 //				Plan:                  pulumi.String("startup-1"),
 //				ServiceName:           pulumi.String("example-grafana-service"),
 //				MaintenanceWindowDow:  pulumi.String("monday"),
 //				MaintenanceWindowTime: pulumi.String("10:00:00"),
-//				GrafanaUserConfig: &aiven.GrafanaGrafanaUserConfigArgs{
-//					AlertingEnabled: pulumi.Bool(true),
-//					PublicAccess: &aiven.GrafanaGrafanaUserConfigPublicAccessArgs{
-//						Grafana: pulumi.Bool(true),
-//					},
-//				},
 //			})
 //			if err != nil {
 //				return err

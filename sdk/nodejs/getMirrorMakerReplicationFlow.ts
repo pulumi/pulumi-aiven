@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -13,11 +15,11 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const exampleReplicationFlow = aiven.getMirrorMakerReplicationFlow({
- *     project: exampleProject.project,
- *     serviceName: exampleKafka.serviceName,
- *     sourceCluster: source.serviceName,
- *     targetCluster: target.serviceName,
+ * const example = aiven.getMirrorMakerReplicationFlow({
+ *     project: "my-project",
+ *     serviceName: "foo",
+ *     sourceCluster: "kafka-abc",
+ *     targetCluster: "kafka-abc",
  * });
  * ```
  */
@@ -28,6 +30,7 @@ export function getMirrorMakerReplicationFlow(args: GetMirrorMakerReplicationFlo
         "serviceName": args.serviceName,
         "sourceCluster": args.sourceCluster,
         "targetCluster": args.targetCluster,
+        "timeouts": args.timeouts,
     }, opts);
 }
 
@@ -36,21 +39,22 @@ export function getMirrorMakerReplicationFlow(args: GetMirrorMakerReplicationFlo
  */
 export interface GetMirrorMakerReplicationFlowArgs {
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name.
      */
     project: string;
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name.
      */
     serviceName: string;
     /**
-     * Source cluster alias. Maximum length: `128`.
+     * The alias of the source cluster to use in this replication flow. Can contain the following symbols: ASCII alphanumerics, `.`, `_`, and `-`.
      */
     sourceCluster: string;
     /**
-     * Target cluster alias. Maximum length: `128`.
+     * The alias of the target cluster to use in this replication flow. Can contain the following symbols: ASCII alphanumerics, `.`, `_`, and `-`.
      */
     targetCluster: string;
+    timeouts?: inputs.GetMirrorMakerReplicationFlowTimeouts;
 }
 
 /**
@@ -58,75 +62,80 @@ export interface GetMirrorMakerReplicationFlowArgs {
  */
 export interface GetMirrorMakerReplicationFlowResult {
     /**
-     * List of topic configuration properties and regular expressions to not replicate. The properties that are not replicated by default are: `follower.replication.throttled.replicas`, `leader.replication.throttled.replicas`, `message.timestamp.difference.max.ms`, `message.timestamp.type`, `unclean.leader.election.enable`, and `min.insync.replicas`. Setting this overrides the defaults. For example, to enable replication for 'min.insync.replicas' and 'unclean.leader.election.enable' set this to: ["follower\\.replication\\.throttled\\.replicas", "leader\\.replication\\.throttled\\.replicas", "message\\.timestamp\\.difference\\.max\\.ms",  "message\\.timestamp\\.type"]
+     * List of topic configuration properties and/or regexes that should not be replicated. If omitted, MirrorMaker will use default list of exclusions. For stability reasons, we always include the `unclean.leader.election.enable` field in the excluded parameters. If you have specific requirements for this configuration, please reach out to our support team for assistance.
      */
     readonly configPropertiesExcludes: string[];
     /**
-     * Enables emitting heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
+     * Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
      */
     readonly emitBackwardHeartbeatsEnabled: boolean;
     /**
-     * Enables emitting heartbeats to the target cluster. The default value is `false`.
+     * Whether to emit heartbeats to the target cluster. The default value is `false`.
      */
     readonly emitHeartbeatsEnabled: boolean;
     /**
-     * Enables replication flow for a service.
+     * Is replication flow enabled.
      */
     readonly enable: boolean;
     /**
-     * Enables exactly-once message delivery. Set this to `enabled` for new replications. The default value is `false`.
+     * Whether to enable exactly-once message delivery. We recommend you set this to enabled for new replications. The default value is `false`.
      */
     readonly exactlyOnceDeliveryEnabled: boolean;
     /**
-     * Assigns a Rack ID based on the availability-zone to enable follower fetching and rack awareness per replication flow. Defaults to enabled by the service for new flows, but is left unchanged for existing ones when not set.
+     * Assigns a Rack ID based on the availability-zone to enable follower fetching and rack awareness per replication flow.
      */
     readonly followerFetchingEnabled: boolean;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * Resource ID composed as: `project/service_name/source_cluster/target_cluster`.
      */
     readonly id: string;
     /**
-     * Offset syncs topic location. The possible values are `source` and `target`.
+     * How out-of-sync a remote partition can be before it is resynced (default: 100).
+     */
+    readonly offsetLagMax: number;
+    /**
+     * The location of the offset-syncs topic. The possible values are `source` and `target`.
      */
     readonly offsetSyncsTopicLocation: string;
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name.
      */
     readonly project: string;
     /**
-     * Replication factor, `>= 1`.
+     * Replication factor used when creating the remote topics. If the replication factor surpasses the number of nodes in the target cluster, topic creation will fail.
      */
     readonly replicationFactor: number;
     /**
-     * Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
+     * Class which defines the remote topic naming convention. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`.
      */
     readonly replicationPolicyClass: string;
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name.
      */
     readonly serviceName: string;
     /**
-     * Source cluster alias. Maximum length: `128`.
+     * The alias of the source cluster to use in this replication flow. Can contain the following symbols: ASCII alphanumerics, `.`, `_`, and `-`.
      */
     readonly sourceCluster: string;
     /**
-     * Sync consumer group offsets. The default value is `false`.
+     * Whether to periodically write the translated offsets of replicated consumer groups (in the source cluster) to _*consumer*offsets topic in target cluster, as long as no active consumers in that group are connected to the target cluster. The default value is `false`.
      */
     readonly syncGroupOffsetsEnabled: boolean;
     /**
-     * Frequency of consumer group offset sync. The default value is `1`.
+     * Frequency at which consumer group offsets are synced (default: 60, every minute). The default value is `1`.
      */
     readonly syncGroupOffsetsIntervalSeconds: number;
     /**
-     * Target cluster alias. Maximum length: `128`.
+     * The alias of the target cluster to use in this replication flow. Can contain the following symbols: ASCII alphanumerics, `.`, `_`, and `-`.
      */
     readonly targetCluster: string;
+    readonly timeouts?: outputs.GetMirrorMakerReplicationFlowTimeouts;
     /**
-     * The topics to include in the replica defined by a [list of regular expressions in Java format](https://aiven.io/docs/products/kafka/kafka-mirrormaker/concepts/replication-flow-topics-regex).
+     * Topic names and regular expressions that match topic names that should be replicated. MirrorMaker will replicate these topics if they are not matched by `topicsBlacklist`. The topics to include are defined by a [list of regular expressions in Java format](https://aiven.io/docs/products/kafka/kafka-mirrormaker/concepts/replication-flow-topics-regex).
      */
     readonly topics: string[];
     /**
-     * The topics to exclude from the replica defined by a [list of regular expressions in Java format](https://aiven.io/docs/products/kafka/kafka-mirrormaker/concepts/replication-flow-topics-regex).
+     * Topic names and regular expressions that match topic names that should not be replicated. MirrorMaker will not replicate these topics even if they are matched by `topics`. The topics to exclude are defined by a [list of regular expressions in Java format](https://aiven.io/docs/products/kafka/kafka-mirrormaker/concepts/replication-flow-topics-regex).
      */
     readonly topicsBlacklists: string[];
 }
@@ -139,11 +148,11 @@ export interface GetMirrorMakerReplicationFlowResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const exampleReplicationFlow = aiven.getMirrorMakerReplicationFlow({
- *     project: exampleProject.project,
- *     serviceName: exampleKafka.serviceName,
- *     sourceCluster: source.serviceName,
- *     targetCluster: target.serviceName,
+ * const example = aiven.getMirrorMakerReplicationFlow({
+ *     project: "my-project",
+ *     serviceName: "foo",
+ *     sourceCluster: "kafka-abc",
+ *     targetCluster: "kafka-abc",
  * });
  * ```
  */
@@ -154,6 +163,7 @@ export function getMirrorMakerReplicationFlowOutput(args: GetMirrorMakerReplicat
         "serviceName": args.serviceName,
         "sourceCluster": args.sourceCluster,
         "targetCluster": args.targetCluster,
+        "timeouts": args.timeouts,
     }, opts);
 }
 
@@ -162,19 +172,20 @@ export function getMirrorMakerReplicationFlowOutput(args: GetMirrorMakerReplicat
  */
 export interface GetMirrorMakerReplicationFlowOutputArgs {
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name.
      */
     project: pulumi.Input<string>;
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name.
      */
     serviceName: pulumi.Input<string>;
     /**
-     * Source cluster alias. Maximum length: `128`.
+     * The alias of the source cluster to use in this replication flow. Can contain the following symbols: ASCII alphanumerics, `.`, `_`, and `-`.
      */
     sourceCluster: pulumi.Input<string>;
     /**
-     * Target cluster alias. Maximum length: `128`.
+     * The alias of the target cluster to use in this replication flow. Can contain the following symbols: ASCII alphanumerics, `.`, `_`, and `-`.
      */
     targetCluster: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.GetMirrorMakerReplicationFlowTimeoutsArgs | undefined>;
 }

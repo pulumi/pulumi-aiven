@@ -3,6 +3,7 @@
 
 package com.pulumi.aiven;
 
+import com.pulumi.aiven.inputs.FlinkJarApplicationTimeoutsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -61,12 +62,20 @@ public final class FlinkJarApplicationArgs extends com.pulumi.resources.Resource
         return this.serviceName;
     }
 
+    @Import(name="timeouts")
+    private @Nullable Output<FlinkJarApplicationTimeoutsArgs> timeouts;
+
+    public Optional<Output<FlinkJarApplicationTimeoutsArgs>> timeouts() {
+        return Optional.ofNullable(this.timeouts);
+    }
+
     private FlinkJarApplicationArgs() {}
 
     private FlinkJarApplicationArgs(FlinkJarApplicationArgs $) {
         this.name = $.name;
         this.project = $.project;
         this.serviceName = $.serviceName;
+        this.timeouts = $.timeouts;
     }
 
     public static Builder builder() {
@@ -148,6 +157,15 @@ public final class FlinkJarApplicationArgs extends com.pulumi.resources.Resource
          */
         public Builder serviceName(String serviceName) {
             return serviceName(Output.of(serviceName));
+        }
+
+        public Builder timeouts(@Nullable Output<FlinkJarApplicationTimeoutsArgs> timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
+        public Builder timeouts(FlinkJarApplicationTimeoutsArgs timeouts) {
+            return timeouts(Output.of(timeouts));
         }
 
         public FlinkJarApplicationArgs build() {

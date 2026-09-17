@@ -23,7 +23,7 @@ public final class FlinkJarApplicationApplicationVersionFileInfo {
      */
     private @Nullable Integer fileSize;
     /**
-     * @return Indicates whether the uploaded .jar file has been verified by the system and deployment ready. The possible values are `INITIAL`, `READY` and `FAILED`.
+     * @return Indicates whether the uploaded .jar file has been verified by the system and deployment ready. The possible values are `FAILED`, `INITIAL` and `READY`.
      * 
      */
     private @Nullable String fileStatus;
@@ -33,7 +33,7 @@ public final class FlinkJarApplicationApplicationVersionFileInfo {
      */
     private @Nullable String url;
     /**
-     * @return In the case fileStatus is FAILED, the error code of the failure. The possible values are `1`, `2` and `3`.
+     * @return In the case fileStatus is FAILED, the error code of the failure. The possible values are `1`, `2`, `3` and `4`.
      * 
      */
     private @Nullable Integer verifyErrorCode;
@@ -59,7 +59,7 @@ public final class FlinkJarApplicationApplicationVersionFileInfo {
         return Optional.ofNullable(this.fileSize);
     }
     /**
-     * @return Indicates whether the uploaded .jar file has been verified by the system and deployment ready. The possible values are `INITIAL`, `READY` and `FAILED`.
+     * @return Indicates whether the uploaded .jar file has been verified by the system and deployment ready. The possible values are `FAILED`, `INITIAL` and `READY`.
      * 
      */
     public Optional<String> fileStatus() {
@@ -73,7 +73,7 @@ public final class FlinkJarApplicationApplicationVersionFileInfo {
         return Optional.ofNullable(this.url);
     }
     /**
-     * @return In the case fileStatus is FAILED, the error code of the failure. The possible values are `1`, `2` and `3`.
+     * @return In the case fileStatus is FAILED, the error code of the failure. The possible values are `1`, `2`, `3` and `4`.
      * 
      */
     public Optional<Integer> verifyErrorCode() {

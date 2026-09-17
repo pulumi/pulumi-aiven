@@ -10,10 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// Creates and manages a VPC for an Aiven organization.
-    /// 
-    /// **This resource is in the beta stage and may change without notice.** Set
-    /// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+    /// Creates and manages a VPC for an Aiven organization. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
     /// 
     /// ## Example Usage
     /// 
@@ -25,11 +22,12 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleVpc = new Aiven.OrganizationVpc("example_vpc", new()
+    ///     var example = new Aiven.OrganizationVpc("example", new()
     ///     {
-    ///         OrganizationId = example.Id,
-    ///         CloudName = "aws-eu-central-1",
+    ///         OrganizationId = "org1a23f456789",
+    ///         CloudName = "aws-eu-west-1",
     ///         NetworkCidr = "10.0.0.0/24",
+    ///         DisplayName = "My organization VPC",
     ///     });
     /// 
     /// });
@@ -51,19 +49,25 @@ namespace Pulumi.Aiven
         public Output<string> CloudName { get; private set; } = null!;
 
         /// <summary>
-        /// Time of creation of the VPC.
+        /// VPC creation timestamp.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Network address range used by the VPC. For example, `192.168.0.0/24`.
+        /// User defined display name for this VPC. Maximum length: `64`.
+        /// </summary>
+        [Output("displayName")]
+        public Output<string> DisplayName { get; private set; } = null!;
+
+        /// <summary>
+        /// Network address range used by the VPC. For example, `192.168.0.0/24`. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("networkCidr")]
         public Output<string> NetworkCidr { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the organization.
+        /// ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("organizationId")]
         public Output<string> OrganizationId { get; private set; } = null!;
@@ -80,8 +84,11 @@ namespace Pulumi.Aiven
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
 
+        [Output("timeouts")]
+        public Output<Outputs.OrganizationVpcTimeouts?> Timeouts { get; private set; } = null!;
+
         /// <summary>
-        /// Time of the last update of the VPC.
+        /// Timestamp of last change to VPC.
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
@@ -139,16 +146,25 @@ namespace Pulumi.Aiven
         public Input<string> CloudName { get; set; } = null!;
 
         /// <summary>
-        /// Network address range used by the VPC. For example, `192.168.0.0/24`.
+        /// User defined display name for this VPC. Maximum length: `64`.
+        /// </summary>
+        [Input("displayName")]
+        public Input<string>? DisplayName { get; set; }
+
+        /// <summary>
+        /// Network address range used by the VPC. For example, `192.168.0.0/24`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("networkCidr", required: true)]
         public Input<string> NetworkCidr { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the organization.
+        /// ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("organizationId", required: true)]
         public Input<string> OrganizationId { get; set; } = null!;
+
+        [Input("timeouts")]
+        public Input<Inputs.OrganizationVpcTimeoutsArgs>? Timeouts { get; set; }
 
         public OrganizationVpcArgs()
         {
@@ -165,19 +181,25 @@ namespace Pulumi.Aiven
         public Input<string>? CloudName { get; set; }
 
         /// <summary>
-        /// Time of creation of the VPC.
+        /// VPC creation timestamp.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Network address range used by the VPC. For example, `192.168.0.0/24`.
+        /// User defined display name for this VPC. Maximum length: `64`.
+        /// </summary>
+        [Input("displayName")]
+        public Input<string>? DisplayName { get; set; }
+
+        /// <summary>
+        /// Network address range used by the VPC. For example, `192.168.0.0/24`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("networkCidr")]
         public Input<string>? NetworkCidr { get; set; }
 
         /// <summary>
-        /// The ID of the organization.
+        /// ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("organizationId")]
         public Input<string>? OrganizationId { get; set; }
@@ -194,8 +216,11 @@ namespace Pulumi.Aiven
         [Input("state")]
         public Input<string>? State { get; set; }
 
+        [Input("timeouts")]
+        public Input<Inputs.OrganizationVpcTimeoutsGetArgs>? Timeouts { get; set; }
+
         /// <summary>
-        /// Time of the last update of the VPC.
+        /// Timestamp of last change to VPC.
         /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }

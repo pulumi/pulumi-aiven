@@ -25,7 +25,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? FileSize { get; set; }
 
         /// <summary>
-        /// Indicates whether the uploaded .jar file has been verified by the system and deployment ready. The possible values are `INITIAL`, `READY` and `FAILED`.
+        /// Indicates whether the uploaded .jar file has been verified by the system and deployment ready. The possible values are `FAILED`, `INITIAL` and `READY`.
         /// </summary>
         [Input("fileStatus")]
         public Input<string>? FileStatus { get; set; }
@@ -37,7 +37,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? Url { get; set; }
 
         /// <summary>
-        /// In the case FileStatus is FAILED, the error code of the failure. The possible values are `1`, `2` and `3`.
+        /// In the case FileStatus is FAILED, the error code of the failure. The possible values are `1`, `2`, `3` and `4`.
         /// </summary>
         [Input("verifyErrorCode")]
         public Input<int>? VerifyErrorCode { get; set; }

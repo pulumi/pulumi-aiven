@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetOrganizationVpcResult',
@@ -26,13 +28,16 @@ class GetOrganizationVpcResult:
     """
     A collection of values returned by getOrganizationVpc.
     """
-    def __init__(__self__, cloud_name=None, create_time=None, id=None, network_cidr=None, organization_id=None, organization_vpc_id=None, state=None, update_time=None):
+    def __init__(__self__, cloud_name=None, create_time=None, display_name=None, id=None, network_cidr=None, organization_id=None, organization_vpc_id=None, state=None, timeouts=None, update_time=None):
         if cloud_name and not isinstance(cloud_name, str):
             raise TypeError("Expected argument 'cloud_name' to be a str")
         pulumi.set(__self__, "cloud_name", cloud_name)
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
+        if display_name and not isinstance(display_name, str):
+            raise TypeError("Expected argument 'display_name' to be a str")
+        pulumi.set(__self__, "display_name", display_name)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -48,6 +53,9 @@ class GetOrganizationVpcResult:
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
+        if timeouts and not isinstance(timeouts, dict):
+            raise TypeError("Expected argument 'timeouts' to be a dict")
+        pulumi.set(__self__, "timeouts", timeouts)
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
@@ -56,7 +64,7 @@ class GetOrganizationVpcResult:
     @pulumi.getter(name="cloudName")
     def cloud_name(self) -> _builtins.str:
         """
-        The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.
+        The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`.
         """
         return pulumi.get(self, "cloud_name")
 
@@ -64,15 +72,23 @@ class GetOrganizationVpcResult:
     @pulumi.getter(name="createTime")
     def create_time(self) -> _builtins.str:
         """
-        Time of creation of the VPC.
+        VPC creation timestamp.
         """
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> _builtins.str:
+        """
+        User defined display name for this VPC.
+        """
+        return pulumi.get(self, "display_name")
 
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The provider-assigned unique ID for this managed resource.
+        Resource ID composed as: `organization_id/organization_vpc_id`.
         """
         return pulumi.get(self, "id")
 
@@ -88,7 +104,7 @@ class GetOrganizationVpcResult:
     @pulumi.getter(name="organizationId")
     def organization_id(self) -> _builtins.str:
         """
-        The ID of the organization.
+        ID of an organization.
         """
         return pulumi.get(self, "organization_id")
 
@@ -109,10 +125,15 @@ class GetOrganizationVpcResult:
         return pulumi.get(self, "state")
 
     @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> Optional['outputs.GetOrganizationVpcTimeoutsResult']:
+        return pulumi.get(self, "timeouts")
+
+    @_builtins.property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> _builtins.str:
         """
-        Time of the last update of the VPC.
+        Timestamp of last change to VPC.
         """
         return pulumi.get(self, "update_time")
 
@@ -125,66 +146,90 @@ class AwaitableGetOrganizationVpcResult(GetOrganizationVpcResult):
         return GetOrganizationVpcResult(
             cloud_name=self.cloud_name,
             create_time=self.create_time,
+            display_name=self.display_name,
             id=self.id,
             network_cidr=self.network_cidr,
             organization_id=self.organization_id,
             organization_vpc_id=self.organization_vpc_id,
             state=self.state,
+            timeouts=self.timeouts,
             update_time=self.update_time)
 
 
 def get_organization_vpc(organization_id: Optional[_builtins.str] = None,
                          organization_vpc_id: Optional[_builtins.str] = None,
+                         timeouts: Optional[Union['GetOrganizationVpcTimeoutsArgs', 'GetOrganizationVpcTimeoutsArgsDict']] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOrganizationVpcResult:
     """
     Gets information about an existing VPC in an Aiven organization.
 
-    **This resource is in the beta stage and may change without notice.** Set
-    the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    example = aiven.get_organization_vpc(organization_id="org1a23f456789",
+        organization_vpc_id="1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d")
+    ```
 
 
-    :param _builtins.str organization_id: The ID of the organization.
+    :param _builtins.str organization_id: ID of an organization.
     :param _builtins.str organization_vpc_id: The ID of the Aiven Organization VPC.
     """
     __args__ = dict()
     __args__['organizationId'] = organization_id
     __args__['organizationVpcId'] = organization_vpc_id
+    __args__['timeouts'] = timeouts
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('aiven:index/getOrganizationVpc:getOrganizationVpc', __args__, opts=opts, typ=GetOrganizationVpcResult).value
 
     return AwaitableGetOrganizationVpcResult(
         cloud_name=pulumi.get(__ret__, 'cloud_name'),
         create_time=pulumi.get(__ret__, 'create_time'),
+        display_name=pulumi.get(__ret__, 'display_name'),
         id=pulumi.get(__ret__, 'id'),
         network_cidr=pulumi.get(__ret__, 'network_cidr'),
         organization_id=pulumi.get(__ret__, 'organization_id'),
         organization_vpc_id=pulumi.get(__ret__, 'organization_vpc_id'),
         state=pulumi.get(__ret__, 'state'),
+        timeouts=pulumi.get(__ret__, 'timeouts'),
         update_time=pulumi.get(__ret__, 'update_time'))
 def get_organization_vpc_output(organization_id: pulumi.Input[Optional[_builtins.str]] = None,
                                 organization_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                timeouts: pulumi.Input[Optional[Optional[Union['GetOrganizationVpcTimeoutsArgs', 'GetOrganizationVpcTimeoutsArgsDict']]]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOrganizationVpcResult]:
     """
     Gets information about an existing VPC in an Aiven organization.
 
-    **This resource is in the beta stage and may change without notice.** Set
-    the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    example = aiven.get_organization_vpc(organization_id="org1a23f456789",
+        organization_vpc_id="1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d")
+    ```
 
 
-    :param _builtins.str organization_id: The ID of the organization.
+    :param _builtins.str organization_id: ID of an organization.
     :param _builtins.str organization_vpc_id: The ID of the Aiven Organization VPC.
     """
     __args__ = dict()
     __args__['organizationId'] = organization_id
     __args__['organizationVpcId'] = organization_vpc_id
+    __args__['timeouts'] = timeouts
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('aiven:index/getOrganizationVpc:getOrganizationVpc', __args__, opts=opts, typ=GetOrganizationVpcResult)
     return __ret__.apply(lambda __response__: GetOrganizationVpcResult(
         cloud_name=pulumi.get(__response__, 'cloud_name'),
         create_time=pulumi.get(__response__, 'create_time'),
+        display_name=pulumi.get(__response__, 'display_name'),
         id=pulumi.get(__response__, 'id'),
         network_cidr=pulumi.get(__response__, 'network_cidr'),
         organization_id=pulumi.get(__response__, 'organization_id'),
         organization_vpc_id=pulumi.get(__response__, 'organization_vpc_id'),
         state=pulumi.get(__response__, 'state'),
+        timeouts=pulumi.get(__response__, 'timeouts'),
         update_time=pulumi.get(__response__, 'update_time')))

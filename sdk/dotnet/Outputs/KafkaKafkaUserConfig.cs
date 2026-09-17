@@ -110,6 +110,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? KafkaVersion;
         /// <summary>
+        /// Pin a specific installed Karapace version on this service. Leave null/unset to auto-follow the newest installed version.
+        /// </summary>
+        public readonly string? KarapaceVersion;
+        /// <summary>
         /// Use a Let's Encrypt certificate authority (CA) for Kafka SASL authentication. (Default: False).
         /// </summary>
         public readonly bool? LetsencryptSasl;
@@ -118,7 +122,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? LetsencryptSaslPrivatelink;
         /// <summary>
-        /// List of preferred zone IDs for service node placement. Nodes will be placed in these zones when available. If a specified zone is unavailable (e.g., due to capacity constraints), nodes will be placed in other available zones to maintain the configured number of zones for availability. Invalid zone IDs are rejected at configuration time. Zone IDs are cloud-specific: AWS uses zone IDs like `euc1-az1`, GCP uses zone names like `europe-west1-a`, and Azure uses `location/zone` format like `germanywestcentral/1`. If single*zone is enabled with an availability*zone, that setting takes precedence over preferred_zones.Changes take effect on next node recreation (e.g., maintenance or plan change). For Kafka professional plans, nodes outside preferred zones are automatically rebalanced once per day.
+        /// List of preferred zone IDs for service node placement. Nodes will be placed in these zones when available. If a specified zone is unavailable (e.g., due to capacity constraints), nodes will be placed in other available zones to maintain the configured number of zones for availability. Invalid zone IDs are rejected at configuration time. Zone IDs are cloud-specific: AWS uses zone IDs like `euc1-az1`, GCP uses zone names like `europe-west1-a`, and Azure uses `location/zone` format like `germanywestcentral/1`. If single*zone is enabled with an availability*zone, that setting takes precedence over preferred_zones. Changes take effect on next node recreation (e.g., maintenance or plan change). For eligible plans, nodes outside preferred zones are automatically rebalanced once per day.
         /// </summary>
         public readonly ImmutableArray<string> PreferredZones;
         /// <summary>
@@ -212,6 +216,8 @@ namespace Pulumi.Aiven.Outputs
 
             string? kafkaVersion,
 
+            string? karapaceVersion,
+
             bool? letsencryptSasl,
 
             bool? letsencryptSaslPrivatelink,
@@ -262,6 +268,7 @@ namespace Pulumi.Aiven.Outputs
             KafkaRestConfig = kafkaRestConfig;
             KafkaSaslMechanisms = kafkaSaslMechanisms;
             KafkaVersion = kafkaVersion;
+            KarapaceVersion = karapaceVersion;
             LetsencryptSasl = letsencryptSasl;
             LetsencryptSaslPrivatelink = letsencryptSaslPrivatelink;
             PreferredZones = preferredZones;

@@ -76,6 +76,10 @@ export interface GetMysqlUserResult {
      */
     readonly password: string;
     /**
+     * The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. 'unknown' is reported when the hash is missing or uses an unrecognised format. The possible values are `md5`, `scram-sha-256` and `unknown`.
+     */
+    readonly passwordEncryptionType: string;
+    /**
      * Project name.
      */
     readonly project: string;

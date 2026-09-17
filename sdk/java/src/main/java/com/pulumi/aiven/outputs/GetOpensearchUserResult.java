@@ -24,6 +24,11 @@ public final class GetOpensearchUserResult {
      */
     private String password;
     /**
+     * @return The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. &#39;unknown&#39; is reported when the hash is missing or uses an unrecognised format. The possible values are `md5`, `scram-sha-256` and `unknown`.
+     * 
+     */
+    private String passwordEncryptionType;
+    /**
      * @return Project name.
      * 
      */
@@ -59,6 +64,13 @@ public final class GetOpensearchUserResult {
      */
     public String password() {
         return this.password;
+    }
+    /**
+     * @return The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. &#39;unknown&#39; is reported when the hash is missing or uses an unrecognised format. The possible values are `md5`, `scram-sha-256` and `unknown`.
+     * 
+     */
+    public String passwordEncryptionType() {
+        return this.passwordEncryptionType;
     }
     /**
      * @return Project name.
@@ -103,6 +115,7 @@ public final class GetOpensearchUserResult {
     public static final class Builder {
         private String id;
         private String password;
+        private String passwordEncryptionType;
         private String project;
         private String serviceName;
         private @Nullable GetOpensearchUserTimeouts timeouts;
@@ -113,6 +126,7 @@ public final class GetOpensearchUserResult {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
     	      this.password = defaults.password;
+    	      this.passwordEncryptionType = defaults.passwordEncryptionType;
     	      this.project = defaults.project;
     	      this.serviceName = defaults.serviceName;
     	      this.timeouts = defaults.timeouts;
@@ -134,6 +148,14 @@ public final class GetOpensearchUserResult {
               throw new MissingRequiredPropertyException("GetOpensearchUserResult", "password");
             }
             this.password = password;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder passwordEncryptionType(String passwordEncryptionType) {
+            if (passwordEncryptionType == null) {
+              throw new MissingRequiredPropertyException("GetOpensearchUserResult", "passwordEncryptionType");
+            }
+            this.passwordEncryptionType = passwordEncryptionType;
             return this;
         }
         @CustomType.Setter
@@ -178,6 +200,7 @@ public final class GetOpensearchUserResult {
             final var _resultValue = new GetOpensearchUserResult();
             _resultValue.id = id;
             _resultValue.password = password;
+            _resultValue.passwordEncryptionType = passwordEncryptionType;
             _resultValue.project = project;
             _resultValue.serviceName = serviceName;
             _resultValue.timeouts = timeouts;

@@ -22,8 +22,8 @@ import javax.annotation.Nullable;
 /**
  * Creates and manages a BYOC custom cloud environment on AWS.
  * 
- * **This resource is in the beta stage and may change without notice.** Set
- * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+ * &gt; **Beta resource**
+ * This resource is in the beta stage and may change without notice. Set the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
  * 
  * ## Example Usage
  * 
@@ -51,17 +51,17 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var example = new ByocAwsEntity("example", ByocAwsEntityArgs.builder()
+ *             .contactEmails(ByocAwsEntityContactEmailArgs.builder()
+ *                 .email("jane}{@literal @}{@code example.com")
+ *                 .realName("Jane Smith")
+ *                 .role("admin")
+ *                 .build())
  *             .organizationId("org1a23f456789")
  *             .cloudProvider("aws")
  *             .cloudRegion("eu-west-1")
  *             .deploymentModel("standard")
  *             .displayName("byoc-cloud-prod-eu-west-1")
  *             .reservedCidr("192.168.6.0/24")
- *             .contactEmails(ByocAwsEntityContactEmailArgs.builder()
- *                 .email("jane}{@literal @}{@code example.com")
- *                 .realName("Jane Smith")
- *                 .role("admin")
- *                 .build())
  *             .tags(Map.of("foo", "foo"))
  *             .build());
  * 

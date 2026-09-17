@@ -170,6 +170,10 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string Password;
         /// <summary>
+        /// The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. 'unknown' is reported when the hash is missing or uses an unrecognised format. The possible values are `Md5`, `scram-sha-256` and `Unknown`.
+        /// </summary>
+        public readonly string PasswordEncryptionType;
+        /// <summary>
         /// Allows replication. For the default avnadmin user this attribute is required and is always `True`.
         /// </summary>
         public readonly bool PgAllowReplication;
@@ -201,6 +205,8 @@ namespace Pulumi.Aiven
 
             string password,
 
+            string passwordEncryptionType,
+
             bool pgAllowReplication,
 
             string project,
@@ -217,6 +223,7 @@ namespace Pulumi.Aiven
             AccessKey = accessKey;
             Id = id;
             Password = password;
+            PasswordEncryptionType = passwordEncryptionType;
             PgAllowReplication = pgAllowReplication;
             Project = project;
             ServiceName = serviceName;

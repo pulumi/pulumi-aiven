@@ -18,6 +18,14 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? DatadogDbmEnabled;
         /// <summary>
+        /// Enable collection of PL/pgSQL function metrics from pg_stat_user_functions. Requires `TrackFunctions` to be set to `Pl` or `All` in the service configuration.
+        /// </summary>
+        public readonly bool? DatadogFunctionMetricsEnabled;
+        /// <summary>
+        /// Relations to collect PostgreSQL relation metrics for, such as table size, index statistics, row counts, vacuum ages and locks. No relation metrics are collected when unset
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetServiceIntegrationDatadogUserConfigDatadogPgRelationResult> DatadogPgRelations;
+        /// <summary>
         /// Enable Datadog PgBouncer Metric Tracking.
         /// </summary>
         public readonly bool? DatadogPgbouncerEnabled;
@@ -66,6 +74,10 @@ namespace Pulumi.Aiven.Outputs
         private GetServiceIntegrationDatadogUserConfigResult(
             bool? datadogDbmEnabled,
 
+            bool? datadogFunctionMetricsEnabled,
+
+            ImmutableArray<Outputs.GetServiceIntegrationDatadogUserConfigDatadogPgRelationResult> datadogPgRelations,
+
             bool? datadogPgbouncerEnabled,
 
             ImmutableArray<Outputs.GetServiceIntegrationDatadogUserConfigDatadogTagResult> datadogTags,
@@ -89,6 +101,8 @@ namespace Pulumi.Aiven.Outputs
             Outputs.GetServiceIntegrationDatadogUserConfigRedisResult? redis)
         {
             DatadogDbmEnabled = datadogDbmEnabled;
+            DatadogFunctionMetricsEnabled = datadogFunctionMetricsEnabled;
+            DatadogPgRelations = datadogPgRelations;
             DatadogPgbouncerEnabled = datadogPgbouncerEnabled;
             DatadogTags = datadogTags;
             ExcludeConsumerGroups = excludeConsumerGroups;

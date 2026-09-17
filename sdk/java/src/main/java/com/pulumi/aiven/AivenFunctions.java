@@ -742,8 +742,42 @@ public final class AivenFunctions {
     /**
      * Gets information about an AWS VPC peering connection.
      * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetAwsOrgVpcPeeringConnectionArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getAwsOrgVpcPeeringConnection(GetAwsOrgVpcPeeringConnectionArgs.builder()
+     *             .organizationId("org1a23f456789")
+     *             .organizationVpcId("1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d")
+     *             .awsAccountId("123456789012")
+     *             .awsVpcId("vpc-2f09a348")
+     *             .awsVpcRegion("us-east-1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetAwsOrgVpcPeeringConnectionResult> getAwsOrgVpcPeeringConnection(GetAwsOrgVpcPeeringConnectionArgs args) {
@@ -752,8 +786,42 @@ public final class AivenFunctions {
     /**
      * Gets information about an AWS VPC peering connection.
      * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetAwsOrgVpcPeeringConnectionArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getAwsOrgVpcPeeringConnection(GetAwsOrgVpcPeeringConnectionArgs.builder()
+     *             .organizationId("org1a23f456789")
+     *             .organizationVpcId("1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d")
+     *             .awsAccountId("123456789012")
+     *             .awsVpcId("vpc-2f09a348")
+     *             .awsVpcRegion("us-east-1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetAwsOrgVpcPeeringConnectionResult> getAwsOrgVpcPeeringConnectionPlain(GetAwsOrgVpcPeeringConnectionPlainArgs args) {
@@ -762,8 +830,42 @@ public final class AivenFunctions {
     /**
      * Gets information about an AWS VPC peering connection.
      * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetAwsOrgVpcPeeringConnectionArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getAwsOrgVpcPeeringConnection(GetAwsOrgVpcPeeringConnectionArgs.builder()
+     *             .organizationId("org1a23f456789")
+     *             .organizationVpcId("1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d")
+     *             .awsAccountId("123456789012")
+     *             .awsVpcId("vpc-2f09a348")
+     *             .awsVpcRegion("us-east-1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetAwsOrgVpcPeeringConnectionResult> getAwsOrgVpcPeeringConnection(GetAwsOrgVpcPeeringConnectionArgs args, InvokeOptions options) {
@@ -772,8 +874,42 @@ public final class AivenFunctions {
     /**
      * Gets information about an AWS VPC peering connection.
      * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetAwsOrgVpcPeeringConnectionArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getAwsOrgVpcPeeringConnection(GetAwsOrgVpcPeeringConnectionArgs.builder()
+     *             .organizationId("org1a23f456789")
+     *             .organizationVpcId("1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d")
+     *             .awsAccountId("123456789012")
+     *             .awsVpcId("vpc-2f09a348")
+     *             .awsVpcRegion("us-east-1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetAwsOrgVpcPeeringConnectionResult> getAwsOrgVpcPeeringConnection(GetAwsOrgVpcPeeringConnectionArgs args, InvokeOutputOptions options) {
@@ -782,8 +918,42 @@ public final class AivenFunctions {
     /**
      * Gets information about an AWS VPC peering connection.
      * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetAwsOrgVpcPeeringConnectionArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getAwsOrgVpcPeeringConnection(GetAwsOrgVpcPeeringConnectionArgs.builder()
+     *             .organizationId("org1a23f456789")
+     *             .organizationVpcId("1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d")
+     *             .awsAccountId("123456789012")
+     *             .awsVpcId("vpc-2f09a348")
+     *             .awsVpcRegion("us-east-1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetAwsOrgVpcPeeringConnectionResult> getAwsOrgVpcPeeringConnectionPlain(GetAwsOrgVpcPeeringConnectionPlainArgs args, InvokeOptions options) {
@@ -816,9 +986,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var main = AivenFunctions.getAwsPrivatelink(GetAwsPrivatelinkArgs.builder()
-     *             .project(exampleProject.project())
-     *             .serviceName(exampleKafka.serviceName())
+     *         final var example = AivenFunctions.getAwsPrivatelink(GetAwsPrivatelinkArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("foo")
      *             .build());
      * 
      *     }
@@ -857,9 +1027,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var main = AivenFunctions.getAwsPrivatelink(GetAwsPrivatelinkArgs.builder()
-     *             .project(exampleProject.project())
-     *             .serviceName(exampleKafka.serviceName())
+     *         final var example = AivenFunctions.getAwsPrivatelink(GetAwsPrivatelinkArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("foo")
      *             .build());
      * 
      *     }
@@ -898,9 +1068,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var main = AivenFunctions.getAwsPrivatelink(GetAwsPrivatelinkArgs.builder()
-     *             .project(exampleProject.project())
-     *             .serviceName(exampleKafka.serviceName())
+     *         final var example = AivenFunctions.getAwsPrivatelink(GetAwsPrivatelinkArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("foo")
      *             .build());
      * 
      *     }
@@ -939,9 +1109,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var main = AivenFunctions.getAwsPrivatelink(GetAwsPrivatelinkArgs.builder()
-     *             .project(exampleProject.project())
-     *             .serviceName(exampleKafka.serviceName())
+     *         final var example = AivenFunctions.getAwsPrivatelink(GetAwsPrivatelinkArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("foo")
      *             .build());
      * 
      *     }
@@ -980,9 +1150,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var main = AivenFunctions.getAwsPrivatelink(GetAwsPrivatelinkArgs.builder()
-     *             .project(exampleProject.project())
-     *             .serviceName(exampleKafka.serviceName())
+     *         final var example = AivenFunctions.getAwsPrivatelink(GetAwsPrivatelinkArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("foo")
      *             .build());
      * 
      *     }
@@ -1250,50 +1420,220 @@ public final class AivenFunctions {
         return Deployment.getInstance().invokeAsync("aiven:index/getAwsVpcPeeringConnection:getAwsVpcPeeringConnection", TypeShape.of(GetAwsVpcPeeringConnectionResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Gets information about about an Azure VPC peering connection.
+     * Gets information about an Azure VPC peering connection.
      * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetAzureOrgVpcPeeringConnectionArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getAzureOrgVpcPeeringConnection(GetAzureOrgVpcPeeringConnectionArgs.builder()
+     *             .organizationId("org1a23f456789")
+     *             .organizationVpcId("1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d")
+     *             .azureSubscriptionId("12345678-1234-1234-1234-123456789012")
+     *             .vnetName("my-vnet")
+     *             .peerResourceGroup("my-resource-group")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetAzureOrgVpcPeeringConnectionResult> getAzureOrgVpcPeeringConnection(GetAzureOrgVpcPeeringConnectionArgs args) {
         return getAzureOrgVpcPeeringConnection(args, InvokeOptions.Empty);
     }
     /**
-     * Gets information about about an Azure VPC peering connection.
+     * Gets information about an Azure VPC peering connection.
      * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetAzureOrgVpcPeeringConnectionArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getAzureOrgVpcPeeringConnection(GetAzureOrgVpcPeeringConnectionArgs.builder()
+     *             .organizationId("org1a23f456789")
+     *             .organizationVpcId("1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d")
+     *             .azureSubscriptionId("12345678-1234-1234-1234-123456789012")
+     *             .vnetName("my-vnet")
+     *             .peerResourceGroup("my-resource-group")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetAzureOrgVpcPeeringConnectionResult> getAzureOrgVpcPeeringConnectionPlain(GetAzureOrgVpcPeeringConnectionPlainArgs args) {
         return getAzureOrgVpcPeeringConnectionPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Gets information about about an Azure VPC peering connection.
+     * Gets information about an Azure VPC peering connection.
      * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetAzureOrgVpcPeeringConnectionArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getAzureOrgVpcPeeringConnection(GetAzureOrgVpcPeeringConnectionArgs.builder()
+     *             .organizationId("org1a23f456789")
+     *             .organizationVpcId("1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d")
+     *             .azureSubscriptionId("12345678-1234-1234-1234-123456789012")
+     *             .vnetName("my-vnet")
+     *             .peerResourceGroup("my-resource-group")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetAzureOrgVpcPeeringConnectionResult> getAzureOrgVpcPeeringConnection(GetAzureOrgVpcPeeringConnectionArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getAzureOrgVpcPeeringConnection:getAzureOrgVpcPeeringConnection", TypeShape.of(GetAzureOrgVpcPeeringConnectionResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Gets information about about an Azure VPC peering connection.
+     * Gets information about an Azure VPC peering connection.
      * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetAzureOrgVpcPeeringConnectionArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getAzureOrgVpcPeeringConnection(GetAzureOrgVpcPeeringConnectionArgs.builder()
+     *             .organizationId("org1a23f456789")
+     *             .organizationVpcId("1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d")
+     *             .azureSubscriptionId("12345678-1234-1234-1234-123456789012")
+     *             .vnetName("my-vnet")
+     *             .peerResourceGroup("my-resource-group")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetAzureOrgVpcPeeringConnectionResult> getAzureOrgVpcPeeringConnection(GetAzureOrgVpcPeeringConnectionArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getAzureOrgVpcPeeringConnection:getAzureOrgVpcPeeringConnection", TypeShape.of(GetAzureOrgVpcPeeringConnectionResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Gets information about about an Azure VPC peering connection.
+     * Gets information about an Azure VPC peering connection.
      * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetAzureOrgVpcPeeringConnectionArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getAzureOrgVpcPeeringConnection(GetAzureOrgVpcPeeringConnectionArgs.builder()
+     *             .organizationId("org1a23f456789")
+     *             .organizationVpcId("1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d")
+     *             .azureSubscriptionId("12345678-1234-1234-1234-123456789012")
+     *             .vnetName("my-vnet")
+     *             .peerResourceGroup("my-resource-group")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetAzureOrgVpcPeeringConnectionResult> getAzureOrgVpcPeeringConnectionPlain(GetAzureOrgVpcPeeringConnectionPlainArgs args, InvokeOptions options) {
@@ -1326,9 +1666,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var main = AivenFunctions.getAzurePrivatelink(GetAzurePrivatelinkArgs.builder()
-     *             .project(exampleProject.project())
-     *             .serviceName(exampleKafka.serviceName())
+     *         final var example = AivenFunctions.getAzurePrivatelink(GetAzurePrivatelinkArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("foo")
      *             .build());
      * 
      *     }
@@ -1367,9 +1707,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var main = AivenFunctions.getAzurePrivatelink(GetAzurePrivatelinkArgs.builder()
-     *             .project(exampleProject.project())
-     *             .serviceName(exampleKafka.serviceName())
+     *         final var example = AivenFunctions.getAzurePrivatelink(GetAzurePrivatelinkArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("foo")
      *             .build());
      * 
      *     }
@@ -1408,9 +1748,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var main = AivenFunctions.getAzurePrivatelink(GetAzurePrivatelinkArgs.builder()
-     *             .project(exampleProject.project())
-     *             .serviceName(exampleKafka.serviceName())
+     *         final var example = AivenFunctions.getAzurePrivatelink(GetAzurePrivatelinkArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("foo")
      *             .build());
      * 
      *     }
@@ -1449,9 +1789,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var main = AivenFunctions.getAzurePrivatelink(GetAzurePrivatelinkArgs.builder()
-     *             .project(exampleProject.project())
-     *             .serviceName(exampleKafka.serviceName())
+     *         final var example = AivenFunctions.getAzurePrivatelink(GetAzurePrivatelinkArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("foo")
      *             .build());
      * 
      *     }
@@ -1490,9 +1830,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var main = AivenFunctions.getAzurePrivatelink(GetAzurePrivatelinkArgs.builder()
-     *             .project(exampleProject.project())
-     *             .serviceName(exampleKafka.serviceName())
+     *         final var example = AivenFunctions.getAzurePrivatelink(GetAzurePrivatelinkArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("foo")
      *             .build());
      * 
      *     }
@@ -4467,8 +4807,41 @@ public final class AivenFunctions {
     /**
      * The GCP VPC Peering Connection data source provides information about the existing Aiven VPC Peering Connection.
      * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetGcpOrgVpcPeeringConnectionArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getGcpOrgVpcPeeringConnection(GetGcpOrgVpcPeeringConnectionArgs.builder()
+     *             .organizationId("org1a23f456789")
+     *             .organizationVpcId("1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d")
+     *             .gcpProjectId("my-gcp-project")
+     *             .peerVpc("my-vpc")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetGcpOrgVpcPeeringConnectionResult> getGcpOrgVpcPeeringConnection(GetGcpOrgVpcPeeringConnectionArgs args) {
@@ -4477,8 +4850,41 @@ public final class AivenFunctions {
     /**
      * The GCP VPC Peering Connection data source provides information about the existing Aiven VPC Peering Connection.
      * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetGcpOrgVpcPeeringConnectionArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getGcpOrgVpcPeeringConnection(GetGcpOrgVpcPeeringConnectionArgs.builder()
+     *             .organizationId("org1a23f456789")
+     *             .organizationVpcId("1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d")
+     *             .gcpProjectId("my-gcp-project")
+     *             .peerVpc("my-vpc")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetGcpOrgVpcPeeringConnectionResult> getGcpOrgVpcPeeringConnectionPlain(GetGcpOrgVpcPeeringConnectionPlainArgs args) {
@@ -4487,8 +4893,41 @@ public final class AivenFunctions {
     /**
      * The GCP VPC Peering Connection data source provides information about the existing Aiven VPC Peering Connection.
      * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetGcpOrgVpcPeeringConnectionArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getGcpOrgVpcPeeringConnection(GetGcpOrgVpcPeeringConnectionArgs.builder()
+     *             .organizationId("org1a23f456789")
+     *             .organizationVpcId("1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d")
+     *             .gcpProjectId("my-gcp-project")
+     *             .peerVpc("my-vpc")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetGcpOrgVpcPeeringConnectionResult> getGcpOrgVpcPeeringConnection(GetGcpOrgVpcPeeringConnectionArgs args, InvokeOptions options) {
@@ -4497,8 +4936,41 @@ public final class AivenFunctions {
     /**
      * The GCP VPC Peering Connection data source provides information about the existing Aiven VPC Peering Connection.
      * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetGcpOrgVpcPeeringConnectionArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getGcpOrgVpcPeeringConnection(GetGcpOrgVpcPeeringConnectionArgs.builder()
+     *             .organizationId("org1a23f456789")
+     *             .organizationVpcId("1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d")
+     *             .gcpProjectId("my-gcp-project")
+     *             .peerVpc("my-vpc")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetGcpOrgVpcPeeringConnectionResult> getGcpOrgVpcPeeringConnection(GetGcpOrgVpcPeeringConnectionArgs args, InvokeOutputOptions options) {
@@ -4507,8 +4979,41 @@ public final class AivenFunctions {
     /**
      * The GCP VPC Peering Connection data source provides information about the existing Aiven VPC Peering Connection.
      * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetGcpOrgVpcPeeringConnectionArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getGcpOrgVpcPeeringConnection(GetGcpOrgVpcPeeringConnectionArgs.builder()
+     *             .organizationId("org1a23f456789")
+     *             .organizationVpcId("1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d")
+     *             .gcpProjectId("my-gcp-project")
+     *             .peerVpc("my-vpc")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetGcpOrgVpcPeeringConnectionResult> getGcpOrgVpcPeeringConnectionPlain(GetGcpOrgVpcPeeringConnectionPlainArgs args, InvokeOptions options) {
@@ -4541,9 +5046,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var main = AivenFunctions.getGcpPrivatelink(GetGcpPrivatelinkArgs.builder()
-     *             .project(exampleProject.project())
-     *             .serviceName(exampleKafka.serviceName())
+     *         final var example = AivenFunctions.getGcpPrivatelink(GetGcpPrivatelinkArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("foo")
      *             .build());
      * 
      *     }
@@ -4582,9 +5087,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var main = AivenFunctions.getGcpPrivatelink(GetGcpPrivatelinkArgs.builder()
-     *             .project(exampleProject.project())
-     *             .serviceName(exampleKafka.serviceName())
+     *         final var example = AivenFunctions.getGcpPrivatelink(GetGcpPrivatelinkArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("foo")
      *             .build());
      * 
      *     }
@@ -4623,9 +5128,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var main = AivenFunctions.getGcpPrivatelink(GetGcpPrivatelinkArgs.builder()
-     *             .project(exampleProject.project())
-     *             .serviceName(exampleKafka.serviceName())
+     *         final var example = AivenFunctions.getGcpPrivatelink(GetGcpPrivatelinkArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("foo")
      *             .build());
      * 
      *     }
@@ -4664,9 +5169,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var main = AivenFunctions.getGcpPrivatelink(GetGcpPrivatelinkArgs.builder()
-     *             .project(exampleProject.project())
-     *             .serviceName(exampleKafka.serviceName())
+     *         final var example = AivenFunctions.getGcpPrivatelink(GetGcpPrivatelinkArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("foo")
      *             .build());
      * 
      *     }
@@ -4705,9 +5210,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var main = AivenFunctions.getGcpPrivatelink(GetGcpPrivatelinkArgs.builder()
-     *             .project(exampleProject.project())
-     *             .serviceName(exampleKafka.serviceName())
+     *         final var example = AivenFunctions.getGcpPrivatelink(GetGcpPrivatelinkArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("foo")
      *             .build());
      * 
      *     }
@@ -5366,12 +5871,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleAcl = AivenFunctions.getKafkaAcl(GetKafkaAclArgs.builder()
-     *             .project(exampleProject.project())
-     *             .serviceName(exampleKafka.serviceName())
-     *             .topic("example-topic")
-     *             .permission("admin")
-     *             .username("example-user")
+     *         final var example = AivenFunctions.getKafkaAcl(GetKafkaAclArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("my-kafka")
+     *             .aclId("foo")
      *             .build());
      * 
      *     }
@@ -5410,12 +5913,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleAcl = AivenFunctions.getKafkaAcl(GetKafkaAclArgs.builder()
-     *             .project(exampleProject.project())
-     *             .serviceName(exampleKafka.serviceName())
-     *             .topic("example-topic")
-     *             .permission("admin")
-     *             .username("example-user")
+     *         final var example = AivenFunctions.getKafkaAcl(GetKafkaAclArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("my-kafka")
+     *             .aclId("foo")
      *             .build());
      * 
      *     }
@@ -5454,12 +5955,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleAcl = AivenFunctions.getKafkaAcl(GetKafkaAclArgs.builder()
-     *             .project(exampleProject.project())
-     *             .serviceName(exampleKafka.serviceName())
-     *             .topic("example-topic")
-     *             .permission("admin")
-     *             .username("example-user")
+     *         final var example = AivenFunctions.getKafkaAcl(GetKafkaAclArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("my-kafka")
+     *             .aclId("foo")
      *             .build());
      * 
      *     }
@@ -5498,12 +5997,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleAcl = AivenFunctions.getKafkaAcl(GetKafkaAclArgs.builder()
-     *             .project(exampleProject.project())
-     *             .serviceName(exampleKafka.serviceName())
-     *             .topic("example-topic")
-     *             .permission("admin")
-     *             .username("example-user")
+     *         final var example = AivenFunctions.getKafkaAcl(GetKafkaAclArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("my-kafka")
+     *             .aclId("foo")
      *             .build());
      * 
      *     }
@@ -5542,12 +6039,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleAcl = AivenFunctions.getKafkaAcl(GetKafkaAclArgs.builder()
-     *             .project(exampleProject.project())
-     *             .serviceName(exampleKafka.serviceName())
-     *             .topic("example-topic")
-     *             .permission("admin")
-     *             .username("example-user")
+     *         final var example = AivenFunctions.getKafkaAcl(GetKafkaAclArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("my-kafka")
+     *             .aclId("foo")
      *             .build());
      * 
      *     }
@@ -7246,10 +7741,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleServiceUser = AivenFunctions.getKafkaUser(GetKafkaUserArgs.builder()
-     *             .serviceName(exampleKafka.serviceName())
-     *             .project(exampleProject.project())
-     *             .username("example-kafka-user")
+     *         final var example = AivenFunctions.getKafkaUser(GetKafkaUserArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("my-kafka")
+     *             .username("testuser")
      *             .build());
      * 
      *     }
@@ -7288,10 +7783,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleServiceUser = AivenFunctions.getKafkaUser(GetKafkaUserArgs.builder()
-     *             .serviceName(exampleKafka.serviceName())
-     *             .project(exampleProject.project())
-     *             .username("example-kafka-user")
+     *         final var example = AivenFunctions.getKafkaUser(GetKafkaUserArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("my-kafka")
+     *             .username("testuser")
      *             .build());
      * 
      *     }
@@ -7330,10 +7825,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleServiceUser = AivenFunctions.getKafkaUser(GetKafkaUserArgs.builder()
-     *             .serviceName(exampleKafka.serviceName())
-     *             .project(exampleProject.project())
-     *             .username("example-kafka-user")
+     *         final var example = AivenFunctions.getKafkaUser(GetKafkaUserArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("my-kafka")
+     *             .username("testuser")
      *             .build());
      * 
      *     }
@@ -7372,10 +7867,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleServiceUser = AivenFunctions.getKafkaUser(GetKafkaUserArgs.builder()
-     *             .serviceName(exampleKafka.serviceName())
-     *             .project(exampleProject.project())
-     *             .username("example-kafka-user")
+     *         final var example = AivenFunctions.getKafkaUser(GetKafkaUserArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("my-kafka")
+     *             .username("testuser")
      *             .build());
      * 
      *     }
@@ -7414,10 +7909,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleServiceUser = AivenFunctions.getKafkaUser(GetKafkaUserArgs.builder()
-     *             .serviceName(exampleKafka.serviceName())
-     *             .project(exampleProject.project())
-     *             .username("example-kafka-user")
+     *         final var example = AivenFunctions.getKafkaUser(GetKafkaUserArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("my-kafka")
+     *             .username("testuser")
      *             .build());
      * 
      *     }
@@ -7456,11 +7951,11 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleReplicationFlow = AivenFunctions.getMirrorMakerReplicationFlow(GetMirrorMakerReplicationFlowArgs.builder()
-     *             .project(exampleProject.project())
-     *             .serviceName(exampleKafka.serviceName())
-     *             .sourceCluster(source.serviceName())
-     *             .targetCluster(target.serviceName())
+     *         final var example = AivenFunctions.getMirrorMakerReplicationFlow(GetMirrorMakerReplicationFlowArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("foo")
+     *             .sourceCluster("kafka-abc")
+     *             .targetCluster("kafka-abc")
      *             .build());
      * 
      *     }
@@ -7499,11 +7994,11 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleReplicationFlow = AivenFunctions.getMirrorMakerReplicationFlow(GetMirrorMakerReplicationFlowArgs.builder()
-     *             .project(exampleProject.project())
-     *             .serviceName(exampleKafka.serviceName())
-     *             .sourceCluster(source.serviceName())
-     *             .targetCluster(target.serviceName())
+     *         final var example = AivenFunctions.getMirrorMakerReplicationFlow(GetMirrorMakerReplicationFlowArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("foo")
+     *             .sourceCluster("kafka-abc")
+     *             .targetCluster("kafka-abc")
      *             .build());
      * 
      *     }
@@ -7542,11 +8037,11 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleReplicationFlow = AivenFunctions.getMirrorMakerReplicationFlow(GetMirrorMakerReplicationFlowArgs.builder()
-     *             .project(exampleProject.project())
-     *             .serviceName(exampleKafka.serviceName())
-     *             .sourceCluster(source.serviceName())
-     *             .targetCluster(target.serviceName())
+     *         final var example = AivenFunctions.getMirrorMakerReplicationFlow(GetMirrorMakerReplicationFlowArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("foo")
+     *             .sourceCluster("kafka-abc")
+     *             .targetCluster("kafka-abc")
      *             .build());
      * 
      *     }
@@ -7585,11 +8080,11 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleReplicationFlow = AivenFunctions.getMirrorMakerReplicationFlow(GetMirrorMakerReplicationFlowArgs.builder()
-     *             .project(exampleProject.project())
-     *             .serviceName(exampleKafka.serviceName())
-     *             .sourceCluster(source.serviceName())
-     *             .targetCluster(target.serviceName())
+     *         final var example = AivenFunctions.getMirrorMakerReplicationFlow(GetMirrorMakerReplicationFlowArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("foo")
+     *             .sourceCluster("kafka-abc")
+     *             .targetCluster("kafka-abc")
      *             .build());
      * 
      *     }
@@ -7628,11 +8123,11 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var exampleReplicationFlow = AivenFunctions.getMirrorMakerReplicationFlow(GetMirrorMakerReplicationFlowArgs.builder()
-     *             .project(exampleProject.project())
-     *             .serviceName(exampleKafka.serviceName())
-     *             .sourceCluster(source.serviceName())
-     *             .targetCluster(target.serviceName())
+     *         final var example = AivenFunctions.getMirrorMakerReplicationFlow(GetMirrorMakerReplicationFlowArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("foo")
+     *             .sourceCluster("kafka-abc")
+     *             .targetCluster("kafka-abc")
      *             .build());
      * 
      *     }
@@ -10737,8 +11232,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AivenFunctions.getOrganizationUserGroup(GetOrganizationUserGroupArgs.builder()
-     *             .name("Example group")
-     *             .organizationId(main.id())
+     *             .organizationId("org1a23f456789")
+     *             .groupId("foo")
      *             .build());
      * 
      *     }
@@ -10778,8 +11273,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AivenFunctions.getOrganizationUserGroup(GetOrganizationUserGroupArgs.builder()
-     *             .name("Example group")
-     *             .organizationId(main.id())
+     *             .organizationId("org1a23f456789")
+     *             .groupId("foo")
      *             .build());
      * 
      *     }
@@ -10819,8 +11314,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AivenFunctions.getOrganizationUserGroup(GetOrganizationUserGroupArgs.builder()
-     *             .name("Example group")
-     *             .organizationId(main.id())
+     *             .organizationId("org1a23f456789")
+     *             .groupId("foo")
      *             .build());
      * 
      *     }
@@ -10860,8 +11355,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AivenFunctions.getOrganizationUserGroup(GetOrganizationUserGroupArgs.builder()
-     *             .name("Example group")
-     *             .organizationId(main.id())
+     *             .organizationId("org1a23f456789")
+     *             .groupId("foo")
      *             .build());
      * 
      *     }
@@ -10901,8 +11396,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AivenFunctions.getOrganizationUserGroup(GetOrganizationUserGroupArgs.builder()
-     *             .name("Example group")
-     *             .organizationId(main.id())
+     *             .organizationId("org1a23f456789")
+     *             .groupId("foo")
      *             .build());
      * 
      *     }
@@ -11602,8 +12097,39 @@ public final class AivenFunctions {
     /**
      * Gets information about an existing VPC in an Aiven organization.
      * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetOrganizationVpcArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getOrganizationVpc(GetOrganizationVpcArgs.builder()
+     *             .organizationId("org1a23f456789")
+     *             .organizationVpcId("1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetOrganizationVpcResult> getOrganizationVpc(GetOrganizationVpcArgs args) {
@@ -11612,8 +12138,39 @@ public final class AivenFunctions {
     /**
      * Gets information about an existing VPC in an Aiven organization.
      * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetOrganizationVpcArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getOrganizationVpc(GetOrganizationVpcArgs.builder()
+     *             .organizationId("org1a23f456789")
+     *             .organizationVpcId("1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetOrganizationVpcResult> getOrganizationVpcPlain(GetOrganizationVpcPlainArgs args) {
@@ -11622,8 +12179,39 @@ public final class AivenFunctions {
     /**
      * Gets information about an existing VPC in an Aiven organization.
      * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetOrganizationVpcArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getOrganizationVpc(GetOrganizationVpcArgs.builder()
+     *             .organizationId("org1a23f456789")
+     *             .organizationVpcId("1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetOrganizationVpcResult> getOrganizationVpc(GetOrganizationVpcArgs args, InvokeOptions options) {
@@ -11632,8 +12220,39 @@ public final class AivenFunctions {
     /**
      * Gets information about an existing VPC in an Aiven organization.
      * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetOrganizationVpcArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getOrganizationVpc(GetOrganizationVpcArgs.builder()
+     *             .organizationId("org1a23f456789")
+     *             .organizationVpcId("1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetOrganizationVpcResult> getOrganizationVpc(GetOrganizationVpcArgs args, InvokeOutputOptions options) {
@@ -11642,8 +12261,39 @@ public final class AivenFunctions {
     /**
      * Gets information about an existing VPC in an Aiven organization.
      * 
-     * **This resource is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetOrganizationVpcArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getOrganizationVpc(GetOrganizationVpcArgs.builder()
+     *             .organizationId("org1a23f456789")
+     *             .organizationVpcId("1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetOrganizationVpcResult> getOrganizationVpcPlain(GetOrganizationVpcPlainArgs args, InvokeOptions options) {
@@ -13969,8 +14619,8 @@ public final class AivenFunctions {
     /**
      * Gets detailed information about a specific service plan, including specifications and pricing for a cloud region.
      * 
-     * **This data source is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the data source.
+     * &gt; **Beta data source**
+     * This data source is in the beta stage and may change without notice. Set the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the data source.
      * 
      */
     public static Output<GetServicePlanResult> getServicePlan(GetServicePlanArgs args) {
@@ -13979,8 +14629,8 @@ public final class AivenFunctions {
     /**
      * Gets detailed information about a specific service plan, including specifications and pricing for a cloud region.
      * 
-     * **This data source is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the data source.
+     * &gt; **Beta data source**
+     * This data source is in the beta stage and may change without notice. Set the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the data source.
      * 
      */
     public static CompletableFuture<GetServicePlanResult> getServicePlanPlain(GetServicePlanPlainArgs args) {
@@ -13989,8 +14639,8 @@ public final class AivenFunctions {
     /**
      * Gets detailed information about a specific service plan, including specifications and pricing for a cloud region.
      * 
-     * **This data source is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the data source.
+     * &gt; **Beta data source**
+     * This data source is in the beta stage and may change without notice. Set the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the data source.
      * 
      */
     public static Output<GetServicePlanResult> getServicePlan(GetServicePlanArgs args, InvokeOptions options) {
@@ -13999,8 +14649,8 @@ public final class AivenFunctions {
     /**
      * Gets detailed information about a specific service plan, including specifications and pricing for a cloud region.
      * 
-     * **This data source is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the data source.
+     * &gt; **Beta data source**
+     * This data source is in the beta stage and may change without notice. Set the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the data source.
      * 
      */
     public static Output<GetServicePlanResult> getServicePlan(GetServicePlanArgs args, InvokeOutputOptions options) {
@@ -14009,8 +14659,8 @@ public final class AivenFunctions {
     /**
      * Gets detailed information about a specific service plan, including specifications and pricing for a cloud region.
      * 
-     * **This data source is in the beta stage and may change without notice.** Set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the data source.
+     * &gt; **Beta data source**
+     * This data source is in the beta stage and may change without notice. Set the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the data source.
      * 
      */
     public static CompletableFuture<GetServicePlanResult> getServicePlanPlain(GetServicePlanPlainArgs args, InvokeOptions options) {
@@ -14672,35 +15322,210 @@ public final class AivenFunctions {
         return Deployment.getInstance().invokeAsync("aiven:index/getValkey:getValkey", TypeShape.of(GetValkeyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The Valkey User data source provides information about the existing Aiven for Valkey user.
+     * Gets information about an Aiven for Valkey™ service user.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetValkeyUserArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getValkeyUser(GetValkeyUserArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("my-valkey")
+     *             .username("testuser")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetValkeyUserResult> getValkeyUser(GetValkeyUserArgs args) {
         return getValkeyUser(args, InvokeOptions.Empty);
     }
     /**
-     * The Valkey User data source provides information about the existing Aiven for Valkey user.
+     * Gets information about an Aiven for Valkey™ service user.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetValkeyUserArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getValkeyUser(GetValkeyUserArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("my-valkey")
+     *             .username("testuser")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetValkeyUserResult> getValkeyUserPlain(GetValkeyUserPlainArgs args) {
         return getValkeyUserPlain(args, InvokeOptions.Empty);
     }
     /**
-     * The Valkey User data source provides information about the existing Aiven for Valkey user.
+     * Gets information about an Aiven for Valkey™ service user.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetValkeyUserArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getValkeyUser(GetValkeyUserArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("my-valkey")
+     *             .username("testuser")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetValkeyUserResult> getValkeyUser(GetValkeyUserArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getValkeyUser:getValkeyUser", TypeShape.of(GetValkeyUserResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The Valkey User data source provides information about the existing Aiven for Valkey user.
+     * Gets information about an Aiven for Valkey™ service user.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetValkeyUserArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getValkeyUser(GetValkeyUserArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("my-valkey")
+     *             .username("testuser")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static Output<GetValkeyUserResult> getValkeyUser(GetValkeyUserArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getValkeyUser:getValkeyUser", TypeShape.of(GetValkeyUserResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The Valkey User data source provides information about the existing Aiven for Valkey user.
+     * Gets information about an Aiven for Valkey™ service user.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetValkeyUserArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AivenFunctions.getValkeyUser(GetValkeyUserArgs.builder()
+     *             .project("my-project")
+     *             .serviceName("my-valkey")
+     *             .username("testuser")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetValkeyUserResult> getValkeyUserPlain(GetValkeyUserPlainArgs args, InvokeOptions options) {

@@ -819,16 +819,16 @@ class Thanos(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         example_thanos = aiven.Thanos("example_thanos",
-            project=example_project["project"],
-            plan="startup-4",
-            cloud_name="google-europe-west1",
-            service_name="example-thanos-service",
             thanos_user_config={
                 "compactor": {
                     "retention_days": 30,
                 },
                 "object_storage_usage_alert_threshold_gb": 10,
-            })
+            },
+            project=example_project["project"],
+            plan="startup-4",
+            cloud_name="google-europe-west1",
+            service_name="example-thanos-service")
         ```
 
         ## Import
@@ -874,16 +874,16 @@ class Thanos(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         example_thanos = aiven.Thanos("example_thanos",
-            project=example_project["project"],
-            plan="startup-4",
-            cloud_name="google-europe-west1",
-            service_name="example-thanos-service",
             thanos_user_config={
                 "compactor": {
                     "retention_days": 30,
                 },
                 "object_storage_usage_alert_threshold_gb": 10,
-            })
+            },
+            project=example_project["project"],
+            plan="startup-4",
+            cloud_name="google-europe-west1",
+            service_name="example-thanos-service")
         ```
 
         ## Import

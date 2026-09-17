@@ -78,6 +78,21 @@ public final class MysqlUserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. &#39;unknown&#39; is reported when the hash is missing or uses an unrecognised format. The possible values are `md5`, `scram-sha-256` and `unknown`.
+     * 
+     */
+    @Import(name="passwordEncryptionType")
+    private @Nullable Output<String> passwordEncryptionType;
+
+    /**
+     * @return The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. &#39;unknown&#39; is reported when the hash is missing or uses an unrecognised format. The possible values are `md5`, `scram-sha-256` and `unknown`.
+     * 
+     */
+    public Optional<Output<String>> passwordEncryptionType() {
+        return Optional.ofNullable(this.passwordEncryptionType);
+    }
+
+    /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Length must be between `8` and `256`.
      * 
@@ -183,6 +198,7 @@ public final class MysqlUserState extends com.pulumi.resources.ResourceArgs {
         this.accessKey = $.accessKey;
         this.authentication = $.authentication;
         this.password = $.password;
+        this.passwordEncryptionType = $.passwordEncryptionType;
         this.passwordWo = $.passwordWo;
         this.passwordWoVersion = $.passwordWoVersion;
         this.project = $.project;
@@ -292,6 +308,27 @@ public final class MysqlUserState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder password(String password) {
             return password(Output.of(password));
+        }
+
+        /**
+         * @param passwordEncryptionType The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. &#39;unknown&#39; is reported when the hash is missing or uses an unrecognised format. The possible values are `md5`, `scram-sha-256` and `unknown`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder passwordEncryptionType(@Nullable Output<String> passwordEncryptionType) {
+            $.passwordEncryptionType = passwordEncryptionType;
+            return this;
+        }
+
+        /**
+         * @param passwordEncryptionType The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. &#39;unknown&#39; is reported when the hash is missing or uses an unrecognised format. The possible values are `md5`, `scram-sha-256` and `unknown`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder passwordEncryptionType(String passwordEncryptionType) {
+            return passwordEncryptionType(Output.of(passwordEncryptionType));
         }
 
         /**

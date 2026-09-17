@@ -16,12 +16,6 @@ import * as utilities from "./utilities";
  * import * as aiven from "@pulumi/aiven";
  *
  * const exampleOpensearch = new aiven.OpenSearch("example_opensearch", {
- *     project: exampleProject.project,
- *     cloudName: "google-europe-west1",
- *     plan: "startup-4",
- *     serviceName: "example-opensearch",
- *     maintenanceWindowDow: "monday",
- *     maintenanceWindowTime: "10:00:00",
  *     opensearchUserConfig: {
  *         opensearchDashboards: {
  *             enabled: true,
@@ -32,6 +26,12 @@ import * as utilities from "./utilities";
  *             opensearchDashboards: true,
  *         },
  *     },
+ *     project: exampleProject.project,
+ *     cloudName: "google-europe-west1",
+ *     plan: "startup-4",
+ *     serviceName: "example-opensearch",
+ *     maintenanceWindowDow: "monday",
+ *     maintenanceWindowTime: "10:00:00",
  * });
  * ```
  *

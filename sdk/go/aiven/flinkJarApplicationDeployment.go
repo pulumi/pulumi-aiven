@@ -12,10 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates and manages the deployment of an Aiven for Apache Flink® application.
-//
-// **This resource is in the beta stage and may change without notice.** Set
-// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+// Creates and manages the deployment of an Aiven for Apache Flink® application. This feature is in the limited availability stage and may change without notice. To enable this feature, contact the [sales team](http://aiven.io/contact). Once it's enabled, set the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
 //
 // ## Example Usage
 //
@@ -32,15 +29,15 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			example, err := aiven.NewFlink(ctx, "example", &aiven.FlinkArgs{
+//				FlinkUserConfig: &aiven.FlinkFlinkUserConfigArgs{
+//					CustomCode: pulumi.Bool(true),
+//				},
 //				Project:               pulumi.Any(exampleAivenProject.Project),
 //				ServiceName:           pulumi.String("example-flink-service"),
 //				CloudName:             pulumi.String("google-europe-west1"),
 //				Plan:                  pulumi.String("business-4"),
 //				MaintenanceWindowDow:  pulumi.String("monday"),
 //				MaintenanceWindowTime: pulumi.String("04:00:00"),
-//				FlinkUserConfig: &aiven.FlinkFlinkUserConfigArgs{
-//					CustomCode: pulumi.Bool(true),
-//				},
 //			})
 //			if err != nil {
 //				return err

@@ -76,6 +76,10 @@ export class MysqlUser extends pulumi.CustomResource {
      */
     declare public readonly password: pulumi.Output<string>;
     /**
+     * The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. 'unknown' is reported when the hash is missing or uses an unrecognised format. The possible values are `md5`, `scram-sha-256` and `unknown`.
+     */
+    declare public /*out*/ readonly passwordEncryptionType: pulumi.Output<string>;
+    /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Length must be between `8` and `256`.
      */
@@ -119,6 +123,7 @@ export class MysqlUser extends pulumi.CustomResource {
             resourceInputs["accessKey"] = state?.accessKey;
             resourceInputs["authentication"] = state?.authentication;
             resourceInputs["password"] = state?.password;
+            resourceInputs["passwordEncryptionType"] = state?.passwordEncryptionType;
             resourceInputs["passwordWo"] = state?.passwordWo;
             resourceInputs["passwordWoVersion"] = state?.passwordWoVersion;
             resourceInputs["project"] = state?.project;
@@ -147,6 +152,7 @@ export class MysqlUser extends pulumi.CustomResource {
             resourceInputs["username"] = args?.username;
             resourceInputs["accessCert"] = undefined /*out*/;
             resourceInputs["accessKey"] = undefined /*out*/;
+            resourceInputs["passwordEncryptionType"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -176,6 +182,10 @@ export interface MysqlUserState {
      * The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
      */
     password?: pulumi.Input<string | undefined>;
+    /**
+     * The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. 'unknown' is reported when the hash is missing or uses an unrecognised format. The possible values are `md5`, `scram-sha-256` and `unknown`.
+     */
+    passwordEncryptionType?: pulumi.Input<string | undefined>;
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * The password of the service user (write-only, not stored in state). The field is required with `passwordWoVersion`. The field conflicts with `password`. Length must be between `8` and `256`.

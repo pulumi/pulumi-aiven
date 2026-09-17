@@ -820,18 +820,18 @@ class Grafana(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         example_grafana = aiven.Grafana("example_grafana",
+            grafana_user_config={
+                "public_access": {
+                    "grafana": True,
+                },
+                "alerting_enabled": True,
+            },
             project=example_project["project"],
             cloud_name="google-europe-west1",
             plan="startup-1",
             service_name="example-grafana-service",
             maintenance_window_dow="monday",
-            maintenance_window_time="10:00:00",
-            grafana_user_config={
-                "alerting_enabled": True,
-                "public_access": {
-                    "grafana": True,
-                },
-            })
+            maintenance_window_time="10:00:00")
         ```
 
         ## Import
@@ -877,18 +877,18 @@ class Grafana(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         example_grafana = aiven.Grafana("example_grafana",
+            grafana_user_config={
+                "public_access": {
+                    "grafana": True,
+                },
+                "alerting_enabled": True,
+            },
             project=example_project["project"],
             cloud_name="google-europe-west1",
             plan="startup-1",
             service_name="example-grafana-service",
             maintenance_window_dow="monday",
-            maintenance_window_time="10:00:00",
-            grafana_user_config={
-                "alerting_enabled": True,
-                "public_access": {
-                    "grafana": True,
-                },
-            })
+            maintenance_window_time="10:00:00")
         ```
 
         ## Import

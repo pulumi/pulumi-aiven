@@ -157,6 +157,7 @@ class _MysqlUserState:
                  access_key: pulumi.Input[Optional[_builtins.str]] = None,
                  authentication: pulumi.Input[Optional[_builtins.str]] = None,
                  password: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_encryption_type: pulumi.Input[Optional[_builtins.str]] = None,
                  password_wo: pulumi.Input[Optional[_builtins.str]] = None,
                  password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -171,6 +172,7 @@ class _MysqlUserState:
         :param pulumi.Input[_builtins.str] access_key: Access key for TLS client authentication.
         :param pulumi.Input[_builtins.str] authentication: Service specific authentication details. Currently only used for MySQL where accepted options are 'mysql_native_password' and 'caching_sha2_password', latter being default when this is not explicitly set. The possible values are `caching_sha2_password` and `mysql_native_password`.
         :param pulumi.Input[_builtins.str] password: The password of the service user (auto-generated if not provided). The field conflicts with `password_wo`. Length must be between `8` and `256`.
+        :param pulumi.Input[_builtins.str] password_encryption_type: The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. 'unknown' is reported when the hash is missing or uses an unrecognised format. The possible values are `md5`, `scram-sha-256` and `unknown`.
         :param pulumi.Input[_builtins.str] password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
                The password of the service user (write-only, not stored in state). The field is required with `password_wo_version`. The field conflicts with `password`. Length must be between `8` and `256`.
         :param pulumi.Input[_builtins.int] password_wo_version: Version number for `password_wo`. Increment this to rotate the password. The field is required with `password_wo`. Minimum value: `1`.
@@ -187,6 +189,8 @@ class _MysqlUserState:
             pulumi.set(__self__, "authentication", authentication)
         if password is not None:
             pulumi.set(__self__, "password", password)
+        if password_encryption_type is not None:
+            pulumi.set(__self__, "password_encryption_type", password_encryption_type)
         if password_wo is not None:
             pulumi.set(__self__, "password_wo", password_wo)
         if password_wo_version is not None:
@@ -249,6 +253,18 @@ class _MysqlUserState:
     @password.setter
     def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
+
+    @_builtins.property
+    @pulumi.getter(name="passwordEncryptionType")
+    def password_encryption_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. 'unknown' is reported when the hash is missing or uses an unrecognised format. The possible values are `md5`, `scram-sha-256` and `unknown`.
+        """
+        return pulumi.get(self, "password_encryption_type")
+
+    @password_encryption_type.setter
+    def password_encryption_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "password_encryption_type", value)
 
     @_builtins.property
     @pulumi.getter(name="passwordWo")
@@ -463,6 +479,7 @@ class MysqlUser(pulumi.CustomResource):
             __props__.__dict__["username"] = username
             __props__.__dict__["access_cert"] = None
             __props__.__dict__["access_key"] = None
+            __props__.__dict__["password_encryption_type"] = None
             __props__.__dict__["type"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["accessCert", "accessKey", "password", "passwordWo"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
@@ -480,6 +497,7 @@ class MysqlUser(pulumi.CustomResource):
             access_key: pulumi.Input[Optional[_builtins.str]] = None,
             authentication: pulumi.Input[Optional[_builtins.str]] = None,
             password: pulumi.Input[Optional[_builtins.str]] = None,
+            password_encryption_type: pulumi.Input[Optional[_builtins.str]] = None,
             password_wo: pulumi.Input[Optional[_builtins.str]] = None,
             password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -498,6 +516,7 @@ class MysqlUser(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] access_key: Access key for TLS client authentication.
         :param pulumi.Input[_builtins.str] authentication: Service specific authentication details. Currently only used for MySQL where accepted options are 'mysql_native_password' and 'caching_sha2_password', latter being default when this is not explicitly set. The possible values are `caching_sha2_password` and `mysql_native_password`.
         :param pulumi.Input[_builtins.str] password: The password of the service user (auto-generated if not provided). The field conflicts with `password_wo`. Length must be between `8` and `256`.
+        :param pulumi.Input[_builtins.str] password_encryption_type: The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. 'unknown' is reported when the hash is missing or uses an unrecognised format. The possible values are `md5`, `scram-sha-256` and `unknown`.
         :param pulumi.Input[_builtins.str] password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
                The password of the service user (write-only, not stored in state). The field is required with `password_wo_version`. The field conflicts with `password`. Length must be between `8` and `256`.
         :param pulumi.Input[_builtins.int] password_wo_version: Version number for `password_wo`. Increment this to rotate the password. The field is required with `password_wo`. Minimum value: `1`.
@@ -514,6 +533,7 @@ class MysqlUser(pulumi.CustomResource):
         __props__.__dict__["access_key"] = access_key
         __props__.__dict__["authentication"] = authentication
         __props__.__dict__["password"] = password
+        __props__.__dict__["password_encryption_type"] = password_encryption_type
         __props__.__dict__["password_wo"] = password_wo
         __props__.__dict__["password_wo_version"] = password_wo_version
         __props__.__dict__["project"] = project
@@ -554,6 +574,14 @@ class MysqlUser(pulumi.CustomResource):
         The password of the service user (auto-generated if not provided). The field conflicts with `password_wo`. Length must be between `8` and `256`.
         """
         return pulumi.get(self, "password")
+
+    @_builtins.property
+    @pulumi.getter(name="passwordEncryptionType")
+    def password_encryption_type(self) -> pulumi.Output[_builtins.str]:
+        """
+        The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. 'unknown' is reported when the hash is missing or uses an unrecognised format. The possible values are `md5`, `scram-sha-256` and `unknown`.
+        """
+        return pulumi.get(self, "password_encryption_type")
 
     @_builtins.property
     @pulumi.getter(name="passwordWo")

@@ -52,15 +52,15 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var exampleFlink = new Flink("exampleFlink", FlinkArgs.builder()
+ *             .flinkUserConfig(FlinkFlinkUserConfigArgs.builder()
+ *                 .flinkVersion("1.19")
+ *                 .build())
  *             .project(exampleProject.project())
  *             .cloudName("google-europe-west1")
  *             .plan("business-4")
  *             .serviceName("example-flink-service")
  *             .maintenanceWindowDow("monday")
  *             .maintenanceWindowTime("10:00:00")
- *             .flinkUserConfig(FlinkFlinkUserConfigArgs.builder()
- *                 .flinkVersion("1.19")
- *                 .build())
  *             .build());
  * 
  *     }

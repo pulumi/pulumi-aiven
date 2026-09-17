@@ -28,11 +28,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.GetKafkaAcl(ctx, &aiven.LookupKafkaAclArgs{
-//				Project:     exampleProject.Project,
-//				ServiceName: exampleKafka.ServiceName,
-//				Topic:       "example-topic",
-//				Permission:  "admin",
-//				Username:    "example-user",
+//				Project:     "my-project",
+//				ServiceName: "my-kafka",
+//				AclId:       pulumi.StringRef("foo"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -54,33 +52,37 @@ func LookupKafkaAcl(ctx *pulumi.Context, args *LookupKafkaAclArgs, opts ...pulum
 
 // A collection of arguments for invoking getKafkaAcl.
 type LookupKafkaAclArgs struct {
-	// Permissions to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
-	Permission string `pulumi:"permission"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Kafka ACL ID. Provide either `aclId`, or all of `permission`, `topic` and `username` together.
+	AclId *string `pulumi:"aclId"`
+	// Permission of an Aiven Kafka ACL entry, as opposed to a Kafka-native one. The possible values are `admin`, `read`, `readwrite` and `write`. Provide either `aclId`, or all of `permission`, `topic` and `username` together.
+	Permission *string `pulumi:"permission"`
+	// Project name.
 	Project string `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName string `pulumi:"serviceName"`
-	// Topics that the permissions apply to. Changing this property forces recreation of the resource.
-	Topic string `pulumi:"topic"`
-	// Usernames to grant permissions to. Changing this property forces recreation of the resource.
-	Username string `pulumi:"username"`
+	// Service name.
+	ServiceName string               `pulumi:"serviceName"`
+	Timeouts    *GetKafkaAclTimeouts `pulumi:"timeouts"`
+	// Topic name pattern. Provide either `aclId`, or all of `permission`, `topic` and `username` together.
+	Topic *string `pulumi:"topic"`
+	// Username. Provide either `aclId`, or all of `permission`, `topic` and `username` together.
+	Username *string `pulumi:"username"`
 }
 
 // A collection of values returned by getKafkaAcl.
 type LookupKafkaAclResult struct {
-	// Kafka ACL ID.
+	// Kafka ACL ID. Provide either `aclId`, or all of `permission`, `topic` and `username` together.
 	AclId string `pulumi:"aclId"`
-	// The provider-assigned unique ID for this managed resource.
+	// Resource ID composed as: `project/service_name/acl_id`.
 	Id string `pulumi:"id"`
-	// Permissions to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
+	// Permission of an Aiven Kafka ACL entry, as opposed to a Kafka-native one. The possible values are `admin`, `read`, `readwrite` and `write`. Provide either `aclId`, or all of `permission`, `topic` and `username` together.
 	Permission string `pulumi:"permission"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name.
 	Project string `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName string `pulumi:"serviceName"`
-	// Topics that the permissions apply to. Changing this property forces recreation of the resource.
+	// Service name.
+	ServiceName string               `pulumi:"serviceName"`
+	Timeouts    *GetKafkaAclTimeouts `pulumi:"timeouts"`
+	// Topic name pattern. Provide either `aclId`, or all of `permission`, `topic` and `username` together.
 	Topic string `pulumi:"topic"`
-	// Usernames to grant permissions to. Changing this property forces recreation of the resource.
+	// Username. Provide either `aclId`, or all of `permission`, `topic` and `username` together.
 	Username string `pulumi:"username"`
 }
 
@@ -91,16 +93,19 @@ func LookupKafkaAclOutput(ctx *pulumi.Context, args LookupKafkaAclOutputArgs, op
 
 // A collection of arguments for invoking getKafkaAcl.
 type LookupKafkaAclOutputArgs struct {
-	// Permissions to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
-	Permission pulumi.StringInput `pulumi:"permission"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Kafka ACL ID. Provide either `aclId`, or all of `permission`, `topic` and `username` together.
+	AclId pulumi.StringPtrInput `pulumi:"aclId"`
+	// Permission of an Aiven Kafka ACL entry, as opposed to a Kafka-native one. The possible values are `admin`, `read`, `readwrite` and `write`. Provide either `aclId`, or all of `permission`, `topic` and `username` together.
+	Permission pulumi.StringPtrInput `pulumi:"permission"`
+	// Project name.
 	Project pulumi.StringInput `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName pulumi.StringInput `pulumi:"serviceName"`
-	// Topics that the permissions apply to. Changing this property forces recreation of the resource.
-	Topic pulumi.StringInput `pulumi:"topic"`
-	// Usernames to grant permissions to. Changing this property forces recreation of the resource.
-	Username pulumi.StringInput `pulumi:"username"`
+	// Service name.
+	ServiceName pulumi.StringInput          `pulumi:"serviceName"`
+	Timeouts    GetKafkaAclTimeoutsPtrInput `pulumi:"timeouts"`
+	// Topic name pattern. Provide either `aclId`, or all of `permission`, `topic` and `username` together.
+	Topic pulumi.StringPtrInput `pulumi:"topic"`
+	// Username. Provide either `aclId`, or all of `permission`, `topic` and `username` together.
+	Username pulumi.StringPtrInput `pulumi:"username"`
 }
 
 func (LookupKafkaAclOutputArgs) ElementType() reflect.Type {
@@ -122,37 +127,41 @@ func (o LookupKafkaAclResultOutput) ToLookupKafkaAclResultOutputWithContext(ctx 
 	return o
 }
 
-// Kafka ACL ID.
+// Kafka ACL ID. Provide either `aclId`, or all of `permission`, `topic` and `username` together.
 func (o LookupKafkaAclResultOutput) AclId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaAclResult) string { return v.AclId }).(pulumi.StringOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// Resource ID composed as: `project/service_name/acl_id`.
 func (o LookupKafkaAclResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaAclResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Permissions to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
+// Permission of an Aiven Kafka ACL entry, as opposed to a Kafka-native one. The possible values are `admin`, `read`, `readwrite` and `write`. Provide either `aclId`, or all of `permission`, `topic` and `username` together.
 func (o LookupKafkaAclResultOutput) Permission() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaAclResult) string { return v.Permission }).(pulumi.StringOutput)
 }
 
-// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// Project name.
 func (o LookupKafkaAclResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaAclResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
-// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// Service name.
 func (o LookupKafkaAclResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaAclResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// Topics that the permissions apply to. Changing this property forces recreation of the resource.
+func (o LookupKafkaAclResultOutput) Timeouts() GetKafkaAclTimeoutsPtrOutput {
+	return o.ApplyT(func(v LookupKafkaAclResult) *GetKafkaAclTimeouts { return v.Timeouts }).(GetKafkaAclTimeoutsPtrOutput)
+}
+
+// Topic name pattern. Provide either `aclId`, or all of `permission`, `topic` and `username` together.
 func (o LookupKafkaAclResultOutput) Topic() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaAclResult) string { return v.Topic }).(pulumi.StringOutput)
 }
 
-// Usernames to grant permissions to. Changing this property forces recreation of the resource.
+// Username. Provide either `aclId`, or all of `permission`, `topic` and `username` together.
 func (o LookupKafkaAclResultOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaAclResult) string { return v.Username }).(pulumi.StringOutput)
 }

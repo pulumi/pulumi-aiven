@@ -3,35 +3,38 @@
 
 package com.pulumi.aiven.outputs;
 
+import com.pulumi.aiven.outputs.GetGcpOrgVpcPeeringConnectionTimeouts;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetGcpOrgVpcPeeringConnectionResult {
     /**
-     * @return Google Cloud project ID. Changing this property forces recreation of the resource.
+     * @return Google Cloud project ID.
      * 
      */
     private String gcpProjectId;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Resource ID composed as: `organization_id/organization_vpc_id/gcp_project_id/peer_vpc`.
      * 
      */
     private String id;
     /**
-     * @return Identifier of the organization.
+     * @return ID of an organization.
      * 
      */
     private String organizationId;
     /**
-     * @return Identifier of the organization VPC.
+     * @return Organization VPC ID.
      * 
      */
     private String organizationVpcId;
     /**
-     * @return Google Cloud VPC network name. Changing this property forces recreation of the resource.
+     * @return Google Cloud VPC network name.
      * 
      */
     private String peerVpc;
@@ -41,42 +44,43 @@ public final class GetGcpOrgVpcPeeringConnectionResult {
      */
     private String selfLink;
     /**
-     * @return State of the peering connection.
+     * @return State of the peering connection. The possible values are `ACTIVE`, `APPROVED`, `APPROVED_PEER_REQUESTED`, `DELETED`, `DELETED_BY_PEER`, `DELETING`, `ERROR`, `INVALID_SPECIFICATION`, `PENDING_PEER` and `REJECTED_BY_PEER`.
      * 
      */
     private String state;
+    private @Nullable GetGcpOrgVpcPeeringConnectionTimeouts timeouts;
 
     private GetGcpOrgVpcPeeringConnectionResult() {}
     /**
-     * @return Google Cloud project ID. Changing this property forces recreation of the resource.
+     * @return Google Cloud project ID.
      * 
      */
     public String gcpProjectId() {
         return this.gcpProjectId;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Resource ID composed as: `organization_id/organization_vpc_id/gcp_project_id/peer_vpc`.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return Identifier of the organization.
+     * @return ID of an organization.
      * 
      */
     public String organizationId() {
         return this.organizationId;
     }
     /**
-     * @return Identifier of the organization VPC.
+     * @return Organization VPC ID.
      * 
      */
     public String organizationVpcId() {
         return this.organizationVpcId;
     }
     /**
-     * @return Google Cloud VPC network name. Changing this property forces recreation of the resource.
+     * @return Google Cloud VPC network name.
      * 
      */
     public String peerVpc() {
@@ -90,11 +94,14 @@ public final class GetGcpOrgVpcPeeringConnectionResult {
         return this.selfLink;
     }
     /**
-     * @return State of the peering connection.
+     * @return State of the peering connection. The possible values are `ACTIVE`, `APPROVED`, `APPROVED_PEER_REQUESTED`, `DELETED`, `DELETED_BY_PEER`, `DELETING`, `ERROR`, `INVALID_SPECIFICATION`, `PENDING_PEER` and `REJECTED_BY_PEER`.
      * 
      */
     public String state() {
         return this.state;
+    }
+    public Optional<GetGcpOrgVpcPeeringConnectionTimeouts> timeouts() {
+        return Optional.ofNullable(this.timeouts);
     }
 
     public static Builder builder() {
@@ -113,6 +120,7 @@ public final class GetGcpOrgVpcPeeringConnectionResult {
         private String peerVpc;
         private String selfLink;
         private String state;
+        private @Nullable GetGcpOrgVpcPeeringConnectionTimeouts timeouts;
         public Builder() {}
         public Builder(GetGcpOrgVpcPeeringConnectionResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -123,6 +131,7 @@ public final class GetGcpOrgVpcPeeringConnectionResult {
     	      this.peerVpc = defaults.peerVpc;
     	      this.selfLink = defaults.selfLink;
     	      this.state = defaults.state;
+    	      this.timeouts = defaults.timeouts;
         }
 
         @CustomType.Setter
@@ -181,6 +190,12 @@ public final class GetGcpOrgVpcPeeringConnectionResult {
             this.state = state;
             return this;
         }
+        @CustomType.Setter
+        public Builder timeouts(@Nullable GetGcpOrgVpcPeeringConnectionTimeouts timeouts) {
+
+            this.timeouts = timeouts;
+            return this;
+        }
         public GetGcpOrgVpcPeeringConnectionResult build() {
             final var _resultValue = new GetGcpOrgVpcPeeringConnectionResult();
             _resultValue.gcpProjectId = gcpProjectId;
@@ -190,6 +205,7 @@ public final class GetGcpOrgVpcPeeringConnectionResult {
             _resultValue.peerVpc = peerVpc;
             _resultValue.selfLink = selfLink;
             _resultValue.state = state;
+            _resultValue.timeouts = timeouts;
             return _resultValue;
         }
     }

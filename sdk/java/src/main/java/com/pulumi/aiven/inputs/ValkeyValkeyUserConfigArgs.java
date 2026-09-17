@@ -317,6 +317,21 @@ public final class ValkeyValkeyUserConfigArgs extends com.pulumi.resources.Resou
     }
 
     /**
+     * Enable active memory defragmentation. When enabled, Valkey relocates objects off sparsely-used memory pages to reduce fragmentation and return memory to the operating system. Defragmentation runs on the main thread and consumes CPU, so it may increase latency under load. Default: `false`.
+     * 
+     */
+    @Import(name="valkeyActivedefrag")
+    private @Nullable Output<Boolean> valkeyActivedefrag;
+
+    /**
+     * @return Enable active memory defragmentation. When enabled, Valkey relocates objects off sparsely-used memory pages to reduce fragmentation and return memory to the operating system. Defragmentation runs on the main thread and consumes CPU, so it may increase latency under load. Default: `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> valkeyActivedefrag() {
+        return Optional.ofNullable(this.valkeyActivedefrag);
+    }
+
+    /**
      * Set Valkey IO thread count. Changing this will cause a restart of the Valkey service. Example: `1`.
      * 
      */
@@ -467,14 +482,14 @@ public final class ValkeyValkeyUserConfigArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Enum: `8.1`, `9.0`, and newer. Valkey major version.
+     * Enum: `8.1`, `9.0`, `9.1`, and newer. Valkey major version.
      * 
      */
     @Import(name="valkeyVersion")
     private @Nullable Output<String> valkeyVersion;
 
     /**
-     * @return Enum: `8.1`, `9.0`, and newer. Valkey major version.
+     * @return Enum: `8.1`, `9.0`, `9.1`, and newer. Valkey major version.
      * 
      */
     public Optional<Output<String>> valkeyVersion() {
@@ -503,6 +518,7 @@ public final class ValkeyValkeyUserConfigArgs extends com.pulumi.resources.Resou
         this.staticIps = $.staticIps;
         this.valkeyAclChannelsDefault = $.valkeyAclChannelsDefault;
         this.valkeyActiveExpireEffort = $.valkeyActiveExpireEffort;
+        this.valkeyActivedefrag = $.valkeyActivedefrag;
         this.valkeyIoThreads = $.valkeyIoThreads;
         this.valkeyLfuDecayTime = $.valkeyLfuDecayTime;
         this.valkeyLfuLogFactor = $.valkeyLfuLogFactor;
@@ -976,6 +992,27 @@ public final class ValkeyValkeyUserConfigArgs extends com.pulumi.resources.Resou
         }
 
         /**
+         * @param valkeyActivedefrag Enable active memory defragmentation. When enabled, Valkey relocates objects off sparsely-used memory pages to reduce fragmentation and return memory to the operating system. Defragmentation runs on the main thread and consumes CPU, so it may increase latency under load. Default: `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder valkeyActivedefrag(@Nullable Output<Boolean> valkeyActivedefrag) {
+            $.valkeyActivedefrag = valkeyActivedefrag;
+            return this;
+        }
+
+        /**
+         * @param valkeyActivedefrag Enable active memory defragmentation. When enabled, Valkey relocates objects off sparsely-used memory pages to reduce fragmentation and return memory to the operating system. Defragmentation runs on the main thread and consumes CPU, so it may increase latency under load. Default: `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder valkeyActivedefrag(Boolean valkeyActivedefrag) {
+            return valkeyActivedefrag(Output.of(valkeyActivedefrag));
+        }
+
+        /**
          * @param valkeyIoThreads Set Valkey IO thread count. Changing this will cause a restart of the Valkey service. Example: `1`.
          * 
          * @return builder
@@ -1186,7 +1223,7 @@ public final class ValkeyValkeyUserConfigArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param valkeyVersion Enum: `8.1`, `9.0`, and newer. Valkey major version.
+         * @param valkeyVersion Enum: `8.1`, `9.0`, `9.1`, and newer. Valkey major version.
          * 
          * @return builder
          * 
@@ -1197,7 +1234,7 @@ public final class ValkeyValkeyUserConfigArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param valkeyVersion Enum: `8.1`, `9.0`, and newer. Valkey major version.
+         * @param valkeyVersion Enum: `8.1`, `9.0`, `9.1`, and newer. Valkey major version.
          * 
          * @return builder
          * 

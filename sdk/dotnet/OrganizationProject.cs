@@ -24,11 +24,6 @@ namespace Pulumi.Aiven
     /// {
     ///     var example = new Aiven.OrganizationProject("example", new()
     ///     {
-    ///         OrganizationId = "org1234abcd",
-    ///         ProjectId = "project-1",
-    ///         BillingGroupId = "721bf796-1d89-402d-9195-425a23c4efdc",
-    ///         ParentId = "a3fd7a594e01",
-    ///         BasePort = 10000,
     ///         Tags = new[]
     ///         {
     ///             new Aiven.Inputs.OrganizationProjectTagArgs
@@ -37,6 +32,11 @@ namespace Pulumi.Aiven
     ///                 Value = "foo",
     ///             },
     ///         },
+    ///         OrganizationId = "org1234abcd",
+    ///         ProjectId = "project-1",
+    ///         BillingGroupId = "721bf796-1d89-402d-9195-425a23c4efdc",
+    ///         ParentId = "a3fd7a594e01",
+    ///         BasePort = 10000,
     ///         TechnicalEmails = new[]
     ///         {
     ///             "foo@example.com",

@@ -801,10 +801,6 @@ class KafkaConnect(pulumi.CustomResource):
             plan="startup-4")
         # Create a Kafka Connect service.
         example_kafka_connect = aiven.KafkaConnect("example_kafka_connect",
-            project=example_project["project"],
-            cloud_name="google-europe-west1",
-            plan="startup-4",
-            service_name="example-connect-service",
             kafka_connect_user_config={
                 "kafka_connect": {
                     "consumer_isolation_level": "read_committed",
@@ -812,20 +808,24 @@ class KafkaConnect(pulumi.CustomResource):
                 "public_access": {
                     "kafka_connect": True,
                 },
-            })
+            },
+            project=example_project["project"],
+            cloud_name="google-europe-west1",
+            plan="startup-4",
+            service_name="example-connect-service")
         # Integrate the Kafka and Kafka Connect services.
         kafka_connect_integration = aiven.ServiceIntegration("kafka_connect_integration",
-            project=example_project["project"],
-            integration_type="kafka_connect",
-            source_service_name=example_kafka.service_name,
-            destination_service_name=example_kafka_connect.service_name,
             kafka_connect_user_config={
                 "kafka_connect": {
                     "group_id": "connect",
                     "status_storage_topic": "__connect_status",
                     "offset_storage_topic": "__connect_offsets",
                 },
-            })
+            },
+            project=example_project["project"],
+            integration_type="kafka_connect",
+            source_service_name=example_kafka.service_name,
+            destination_service_name=example_kafka_connect.service_name)
         ```
 
         ## Import
@@ -885,10 +885,6 @@ class KafkaConnect(pulumi.CustomResource):
             plan="startup-4")
         # Create a Kafka Connect service.
         example_kafka_connect = aiven.KafkaConnect("example_kafka_connect",
-            project=example_project["project"],
-            cloud_name="google-europe-west1",
-            plan="startup-4",
-            service_name="example-connect-service",
             kafka_connect_user_config={
                 "kafka_connect": {
                     "consumer_isolation_level": "read_committed",
@@ -896,20 +892,24 @@ class KafkaConnect(pulumi.CustomResource):
                 "public_access": {
                     "kafka_connect": True,
                 },
-            })
+            },
+            project=example_project["project"],
+            cloud_name="google-europe-west1",
+            plan="startup-4",
+            service_name="example-connect-service")
         # Integrate the Kafka and Kafka Connect services.
         kafka_connect_integration = aiven.ServiceIntegration("kafka_connect_integration",
-            project=example_project["project"],
-            integration_type="kafka_connect",
-            source_service_name=example_kafka.service_name,
-            destination_service_name=example_kafka_connect.service_name,
             kafka_connect_user_config={
                 "kafka_connect": {
                     "group_id": "connect",
                     "status_storage_topic": "__connect_status",
                     "offset_storage_topic": "__connect_offsets",
                 },
-            })
+            },
+            project=example_project["project"],
+            integration_type="kafka_connect",
+            source_service_name=example_kafka.service_name,
+            destination_service_name=example_kafka_connect.service_name)
         ```
 
         ## Import

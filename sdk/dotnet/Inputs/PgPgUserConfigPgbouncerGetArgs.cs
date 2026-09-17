@@ -61,6 +61,12 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? MinPoolSize { get; set; }
 
         /// <summary>
+        /// If connection and login don’t finish in this amount of time, the connection will be closed. (seconds).
+        /// </summary>
+        [Input("serverConnectTimeout")]
+        public Input<double>? ServerConnectTimeout { get; set; }
+
+        /// <summary>
         /// If a server connection has been idle more than this many seconds it will be dropped. If 0 then timeout is disabled. (seconds). Default: `600`.
         /// </summary>
         [Input("serverIdleTimeout")]
@@ -71,6 +77,12 @@ namespace Pulumi.Aiven.Inputs
         /// </summary>
         [Input("serverLifetime")]
         public Input<int>? ServerLifetime { get; set; }
+
+        /// <summary>
+        /// If login to the server failed, because of failure to connect or from authentication, the pooler waits this much before retrying to connect. During the waiting interval, new clients trying to connect to the failing server will get an error immediately without another connection attempt. (seconds).
+        /// </summary>
+        [Input("serverLoginRetry")]
+        public Input<double>? ServerLoginRetry { get; set; }
 
         /// <summary>
         /// Run server*reset*query (DISCARD ALL) in all pooling modes. Default: `False`.

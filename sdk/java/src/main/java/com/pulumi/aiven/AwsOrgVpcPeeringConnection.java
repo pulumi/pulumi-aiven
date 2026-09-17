@@ -6,18 +6,17 @@ package com.pulumi.aiven;
 import com.pulumi.aiven.AwsOrgVpcPeeringConnectionArgs;
 import com.pulumi.aiven.Utilities;
 import com.pulumi.aiven.inputs.AwsOrgVpcPeeringConnectionState;
+import com.pulumi.aiven.outputs.AwsOrgVpcPeeringConnectionTimeouts;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Creates and manages an AWS VPC peering connection with an Aiven Organization VPC.
- * 
- * **This resource is in the beta stage and may change without notice.** Set
- * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+ * Creates and manages an AWS VPC peering connection with an Aiven Organization VPC. If this resource is missing (for example, after a service power off), it&#39;s removed from the state and a new create plan is generated.
  * 
  * ## Example Usage
  * 
@@ -28,8 +27,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.aiven.OrganizationVpc;
- * import com.pulumi.aiven.OrganizationVpcArgs;
  * import com.pulumi.aiven.AwsOrgVpcPeeringConnection;
  * import com.pulumi.aiven.AwsOrgVpcPeeringConnectionArgs;
  * import java.util.ArrayList;
@@ -45,18 +42,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleVpc = new OrganizationVpc("exampleVpc", OrganizationVpcArgs.builder()
- *             .organizationId(example.id())
- *             .cloudName("aws-eu-central-1")
- *             .networkCidr("10.0.0.0/24")
- *             .build());
- * 
- *         var examplePeering = new AwsOrgVpcPeeringConnection("examplePeering", AwsOrgVpcPeeringConnectionArgs.builder()
- *             .organizationId(exampleVpc.organizationId())
- *             .organizationVpcId(exampleVpc.organizationVpcId())
- *             .awsAccountId(awsId)
- *             .awsVpcId("vpc-1a2b3c4d5e6f7g8h9")
- *             .awsVpcRegion("aws-us-east-2")
+ *         var example = new AwsOrgVpcPeeringConnection("example", AwsOrgVpcPeeringConnectionArgs.builder()
+ *             .organizationId("org1a23f456789")
+ *             .organizationVpcId("1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d")
+ *             .awsAccountId("123456789012")
+ *             .awsVpcId("vpc-2f09a348")
+ *             .awsVpcRegion("us-east-1")
  *             .build());
  * 
  *     }
@@ -67,35 +58,35 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import aiven:index/awsOrgVpcPeeringConnection:AwsOrgVpcPeeringConnection example ORGANIZATION_ID/ORGANIZATION_VPC_ID/AWS_ACCOUNT_ID/AWS_VPC_ID/AWS_REGION
+ * $ pulumi import aiven:index/awsOrgVpcPeeringConnection:AwsOrgVpcPeeringConnection example ORGANIZATION_ID/ORGANIZATION_VPC_ID/AWS_ACCOUNT_ID/AWS_VPC_ID/AWS_VPC_REGION
  * ```
  * 
  */
 @ResourceType(type="aiven:index/awsOrgVpcPeeringConnection:AwsOrgVpcPeeringConnection")
 public class AwsOrgVpcPeeringConnection extends com.pulumi.resources.CustomResource {
     /**
-     * AWS account ID. Changing this property forces recreation of the resource.
+     * AWS account ID. Maximum length: `1024`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="awsAccountId", refs={String.class}, tree="[0]")
     private Output<String> awsAccountId;
 
     /**
-     * @return AWS account ID. Changing this property forces recreation of the resource.
+     * @return AWS account ID. Maximum length: `1024`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> awsAccountId() {
         return this.awsAccountId;
     }
     /**
-     * AWS VPC ID. Changing this property forces recreation of the resource.
+     * AWS VPC ID. Maximum length: `1024`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="awsVpcId", refs={String.class}, tree="[0]")
     private Output<String> awsVpcId;
 
     /**
-     * @return AWS VPC ID. Changing this property forces recreation of the resource.
+     * @return AWS VPC ID. Maximum length: `1024`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> awsVpcId() {
@@ -116,56 +107,56 @@ public class AwsOrgVpcPeeringConnection extends com.pulumi.resources.CustomResou
         return this.awsVpcPeeringConnectionId;
     }
     /**
-     * The AWS region of the peered VPC. For example, `eu-central-1`.
+     * The AWS region of the peered VPC. For example, `eu-central-1`. Maximum length: `1024`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="awsVpcRegion", refs={String.class}, tree="[0]")
     private Output<String> awsVpcRegion;
 
     /**
-     * @return The AWS region of the peered VPC. For example, `eu-central-1`.
+     * @return The AWS region of the peered VPC. For example, `eu-central-1`. Maximum length: `1024`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> awsVpcRegion() {
         return this.awsVpcRegion;
     }
     /**
-     * Identifier of the organization.
+     * ID of an organization. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="organizationId", refs={String.class}, tree="[0]")
     private Output<String> organizationId;
 
     /**
-     * @return Identifier of the organization.
+     * @return ID of an organization. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> organizationId() {
         return this.organizationId;
     }
     /**
-     * Identifier of the organization VPC.
+     * Organization VPC ID. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="organizationVpcId", refs={String.class}, tree="[0]")
     private Output<String> organizationVpcId;
 
     /**
-     * @return Identifier of the organization VPC.
+     * @return Organization VPC ID. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> organizationVpcId() {
         return this.organizationVpcId;
     }
     /**
-     * The ID of the peering connection.
+     * Organization peering connection ID.
      * 
      */
     @Export(name="peeringConnectionId", refs={String.class}, tree="[0]")
     private Output<String> peeringConnectionId;
 
     /**
-     * @return The ID of the peering connection.
+     * @return Organization peering connection ID.
      * 
      */
     public Output<String> peeringConnectionId() {
@@ -184,6 +175,12 @@ public class AwsOrgVpcPeeringConnection extends com.pulumi.resources.CustomResou
      */
     public Output<String> state() {
         return this.state;
+    }
+    @Export(name="timeouts", refs={AwsOrgVpcPeeringConnectionTimeouts.class}, tree="[0]")
+    private Output</* @Nullable */ AwsOrgVpcPeeringConnectionTimeouts> timeouts;
+
+    public Output<Optional<AwsOrgVpcPeeringConnectionTimeouts>> timeouts() {
+        return Codegen.optional(this.timeouts);
     }
 
     /**

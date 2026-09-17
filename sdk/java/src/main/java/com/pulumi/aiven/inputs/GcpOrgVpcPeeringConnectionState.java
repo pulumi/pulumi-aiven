@@ -3,6 +3,7 @@
 
 package com.pulumi.aiven.inputs;
 
+import com.pulumi.aiven.inputs.GcpOrgVpcPeeringConnectionTimeoutsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
@@ -16,14 +17,14 @@ public final class GcpOrgVpcPeeringConnectionState extends com.pulumi.resources.
     public static final GcpOrgVpcPeeringConnectionState Empty = new GcpOrgVpcPeeringConnectionState();
 
     /**
-     * Google Cloud project ID. Changing this property forces recreation of the resource.
+     * Google Cloud project ID. Maximum length: `1024`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="gcpProjectId")
     private @Nullable Output<String> gcpProjectId;
 
     /**
-     * @return Google Cloud project ID. Changing this property forces recreation of the resource.
+     * @return Google Cloud project ID. Maximum length: `1024`. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> gcpProjectId() {
@@ -31,14 +32,14 @@ public final class GcpOrgVpcPeeringConnectionState extends com.pulumi.resources.
     }
 
     /**
-     * Identifier of the organization.
+     * ID of an organization. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="organizationId")
     private @Nullable Output<String> organizationId;
 
     /**
-     * @return Identifier of the organization.
+     * @return ID of an organization. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> organizationId() {
@@ -46,14 +47,14 @@ public final class GcpOrgVpcPeeringConnectionState extends com.pulumi.resources.
     }
 
     /**
-     * Identifier of the organization VPC.
+     * Organization VPC ID. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="organizationVpcId")
     private @Nullable Output<String> organizationVpcId;
 
     /**
-     * @return Identifier of the organization VPC.
+     * @return Organization VPC ID. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> organizationVpcId() {
@@ -61,14 +62,14 @@ public final class GcpOrgVpcPeeringConnectionState extends com.pulumi.resources.
     }
 
     /**
-     * Google Cloud VPC network name. Changing this property forces recreation of the resource.
+     * Google Cloud VPC network name. Maximum length: `1024`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="peerVpc")
     private @Nullable Output<String> peerVpc;
 
     /**
-     * @return Google Cloud VPC network name. Changing this property forces recreation of the resource.
+     * @return Google Cloud VPC network name. Maximum length: `1024`. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> peerVpc() {
@@ -91,18 +92,25 @@ public final class GcpOrgVpcPeeringConnectionState extends com.pulumi.resources.
     }
 
     /**
-     * State of the peering connection.
+     * State of the peering connection. The possible values are `ACTIVE`, `APPROVED`, `APPROVED_PEER_REQUESTED`, `DELETED`, `DELETED_BY_PEER`, `DELETING`, `ERROR`, `INVALID_SPECIFICATION`, `PENDING_PEER` and `REJECTED_BY_PEER`.
      * 
      */
     @Import(name="state")
     private @Nullable Output<String> state;
 
     /**
-     * @return State of the peering connection.
+     * @return State of the peering connection. The possible values are `ACTIVE`, `APPROVED`, `APPROVED_PEER_REQUESTED`, `DELETED`, `DELETED_BY_PEER`, `DELETING`, `ERROR`, `INVALID_SPECIFICATION`, `PENDING_PEER` and `REJECTED_BY_PEER`.
      * 
      */
     public Optional<Output<String>> state() {
         return Optional.ofNullable(this.state);
+    }
+
+    @Import(name="timeouts")
+    private @Nullable Output<GcpOrgVpcPeeringConnectionTimeoutsArgs> timeouts;
+
+    public Optional<Output<GcpOrgVpcPeeringConnectionTimeoutsArgs>> timeouts() {
+        return Optional.ofNullable(this.timeouts);
     }
 
     private GcpOrgVpcPeeringConnectionState() {}
@@ -114,6 +122,7 @@ public final class GcpOrgVpcPeeringConnectionState extends com.pulumi.resources.
         this.peerVpc = $.peerVpc;
         this.selfLink = $.selfLink;
         this.state = $.state;
+        this.timeouts = $.timeouts;
     }
 
     public static Builder builder() {
@@ -135,7 +144,7 @@ public final class GcpOrgVpcPeeringConnectionState extends com.pulumi.resources.
         }
 
         /**
-         * @param gcpProjectId Google Cloud project ID. Changing this property forces recreation of the resource.
+         * @param gcpProjectId Google Cloud project ID. Maximum length: `1024`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -146,7 +155,7 @@ public final class GcpOrgVpcPeeringConnectionState extends com.pulumi.resources.
         }
 
         /**
-         * @param gcpProjectId Google Cloud project ID. Changing this property forces recreation of the resource.
+         * @param gcpProjectId Google Cloud project ID. Maximum length: `1024`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -156,7 +165,7 @@ public final class GcpOrgVpcPeeringConnectionState extends com.pulumi.resources.
         }
 
         /**
-         * @param organizationId Identifier of the organization.
+         * @param organizationId ID of an organization. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -167,7 +176,7 @@ public final class GcpOrgVpcPeeringConnectionState extends com.pulumi.resources.
         }
 
         /**
-         * @param organizationId Identifier of the organization.
+         * @param organizationId ID of an organization. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -177,7 +186,7 @@ public final class GcpOrgVpcPeeringConnectionState extends com.pulumi.resources.
         }
 
         /**
-         * @param organizationVpcId Identifier of the organization VPC.
+         * @param organizationVpcId Organization VPC ID. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -188,7 +197,7 @@ public final class GcpOrgVpcPeeringConnectionState extends com.pulumi.resources.
         }
 
         /**
-         * @param organizationVpcId Identifier of the organization VPC.
+         * @param organizationVpcId Organization VPC ID. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -198,7 +207,7 @@ public final class GcpOrgVpcPeeringConnectionState extends com.pulumi.resources.
         }
 
         /**
-         * @param peerVpc Google Cloud VPC network name. Changing this property forces recreation of the resource.
+         * @param peerVpc Google Cloud VPC network name. Maximum length: `1024`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -209,7 +218,7 @@ public final class GcpOrgVpcPeeringConnectionState extends com.pulumi.resources.
         }
 
         /**
-         * @param peerVpc Google Cloud VPC network name. Changing this property forces recreation of the resource.
+         * @param peerVpc Google Cloud VPC network name. Maximum length: `1024`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -240,7 +249,7 @@ public final class GcpOrgVpcPeeringConnectionState extends com.pulumi.resources.
         }
 
         /**
-         * @param state State of the peering connection.
+         * @param state State of the peering connection. The possible values are `ACTIVE`, `APPROVED`, `APPROVED_PEER_REQUESTED`, `DELETED`, `DELETED_BY_PEER`, `DELETING`, `ERROR`, `INVALID_SPECIFICATION`, `PENDING_PEER` and `REJECTED_BY_PEER`.
          * 
          * @return builder
          * 
@@ -251,13 +260,22 @@ public final class GcpOrgVpcPeeringConnectionState extends com.pulumi.resources.
         }
 
         /**
-         * @param state State of the peering connection.
+         * @param state State of the peering connection. The possible values are `ACTIVE`, `APPROVED`, `APPROVED_PEER_REQUESTED`, `DELETED`, `DELETED_BY_PEER`, `DELETING`, `ERROR`, `INVALID_SPECIFICATION`, `PENDING_PEER` and `REJECTED_BY_PEER`.
          * 
          * @return builder
          * 
          */
         public Builder state(String state) {
             return state(Output.of(state));
+        }
+
+        public Builder timeouts(@Nullable Output<GcpOrgVpcPeeringConnectionTimeoutsArgs> timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
+        public Builder timeouts(GcpOrgVpcPeeringConnectionTimeoutsArgs timeouts) {
+            return timeouts(Output.of(timeouts));
         }
 
         public GcpOrgVpcPeeringConnectionState build() {

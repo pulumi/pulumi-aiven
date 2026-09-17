@@ -3,11 +3,14 @@
 
 package com.pulumi.aiven.inputs;
 
+import com.pulumi.aiven.inputs.GetAwsOrgVpcPeeringConnectionTimeoutsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetAwsOrgVpcPeeringConnectionArgs extends com.pulumi.resources.InvokeArgs {
@@ -15,14 +18,14 @@ public final class GetAwsOrgVpcPeeringConnectionArgs extends com.pulumi.resource
     public static final GetAwsOrgVpcPeeringConnectionArgs Empty = new GetAwsOrgVpcPeeringConnectionArgs();
 
     /**
-     * AWS account ID. Changing this property forces recreation of the resource.
+     * AWS account ID.
      * 
      */
     @Import(name="awsAccountId", required=true)
     private Output<String> awsAccountId;
 
     /**
-     * @return AWS account ID. Changing this property forces recreation of the resource.
+     * @return AWS account ID.
      * 
      */
     public Output<String> awsAccountId() {
@@ -30,14 +33,14 @@ public final class GetAwsOrgVpcPeeringConnectionArgs extends com.pulumi.resource
     }
 
     /**
-     * AWS VPC ID. Changing this property forces recreation of the resource.
+     * AWS VPC ID.
      * 
      */
     @Import(name="awsVpcId", required=true)
     private Output<String> awsVpcId;
 
     /**
-     * @return AWS VPC ID. Changing this property forces recreation of the resource.
+     * @return AWS VPC ID.
      * 
      */
     public Output<String> awsVpcId() {
@@ -60,14 +63,14 @@ public final class GetAwsOrgVpcPeeringConnectionArgs extends com.pulumi.resource
     }
 
     /**
-     * Identifier of the organization.
+     * ID of an organization.
      * 
      */
     @Import(name="organizationId", required=true)
     private Output<String> organizationId;
 
     /**
-     * @return Identifier of the organization.
+     * @return ID of an organization.
      * 
      */
     public Output<String> organizationId() {
@@ -75,18 +78,25 @@ public final class GetAwsOrgVpcPeeringConnectionArgs extends com.pulumi.resource
     }
 
     /**
-     * Identifier of the organization VPC.
+     * Organization VPC ID.
      * 
      */
     @Import(name="organizationVpcId", required=true)
     private Output<String> organizationVpcId;
 
     /**
-     * @return Identifier of the organization VPC.
+     * @return Organization VPC ID.
      * 
      */
     public Output<String> organizationVpcId() {
         return this.organizationVpcId;
+    }
+
+    @Import(name="timeouts")
+    private @Nullable Output<GetAwsOrgVpcPeeringConnectionTimeoutsArgs> timeouts;
+
+    public Optional<Output<GetAwsOrgVpcPeeringConnectionTimeoutsArgs>> timeouts() {
+        return Optional.ofNullable(this.timeouts);
     }
 
     private GetAwsOrgVpcPeeringConnectionArgs() {}
@@ -97,6 +107,7 @@ public final class GetAwsOrgVpcPeeringConnectionArgs extends com.pulumi.resource
         this.awsVpcRegion = $.awsVpcRegion;
         this.organizationId = $.organizationId;
         this.organizationVpcId = $.organizationVpcId;
+        this.timeouts = $.timeouts;
     }
 
     public static Builder builder() {
@@ -118,7 +129,7 @@ public final class GetAwsOrgVpcPeeringConnectionArgs extends com.pulumi.resource
         }
 
         /**
-         * @param awsAccountId AWS account ID. Changing this property forces recreation of the resource.
+         * @param awsAccountId AWS account ID.
          * 
          * @return builder
          * 
@@ -129,7 +140,7 @@ public final class GetAwsOrgVpcPeeringConnectionArgs extends com.pulumi.resource
         }
 
         /**
-         * @param awsAccountId AWS account ID. Changing this property forces recreation of the resource.
+         * @param awsAccountId AWS account ID.
          * 
          * @return builder
          * 
@@ -139,7 +150,7 @@ public final class GetAwsOrgVpcPeeringConnectionArgs extends com.pulumi.resource
         }
 
         /**
-         * @param awsVpcId AWS VPC ID. Changing this property forces recreation of the resource.
+         * @param awsVpcId AWS VPC ID.
          * 
          * @return builder
          * 
@@ -150,7 +161,7 @@ public final class GetAwsOrgVpcPeeringConnectionArgs extends com.pulumi.resource
         }
 
         /**
-         * @param awsVpcId AWS VPC ID. Changing this property forces recreation of the resource.
+         * @param awsVpcId AWS VPC ID.
          * 
          * @return builder
          * 
@@ -181,7 +192,7 @@ public final class GetAwsOrgVpcPeeringConnectionArgs extends com.pulumi.resource
         }
 
         /**
-         * @param organizationId Identifier of the organization.
+         * @param organizationId ID of an organization.
          * 
          * @return builder
          * 
@@ -192,7 +203,7 @@ public final class GetAwsOrgVpcPeeringConnectionArgs extends com.pulumi.resource
         }
 
         /**
-         * @param organizationId Identifier of the organization.
+         * @param organizationId ID of an organization.
          * 
          * @return builder
          * 
@@ -202,7 +213,7 @@ public final class GetAwsOrgVpcPeeringConnectionArgs extends com.pulumi.resource
         }
 
         /**
-         * @param organizationVpcId Identifier of the organization VPC.
+         * @param organizationVpcId Organization VPC ID.
          * 
          * @return builder
          * 
@@ -213,13 +224,22 @@ public final class GetAwsOrgVpcPeeringConnectionArgs extends com.pulumi.resource
         }
 
         /**
-         * @param organizationVpcId Identifier of the organization VPC.
+         * @param organizationVpcId Organization VPC ID.
          * 
          * @return builder
          * 
          */
         public Builder organizationVpcId(String organizationVpcId) {
             return organizationVpcId(Output.of(organizationVpcId));
+        }
+
+        public Builder timeouts(@Nullable Output<GetAwsOrgVpcPeeringConnectionTimeoutsArgs> timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
+        public Builder timeouts(GetAwsOrgVpcPeeringConnectionTimeoutsArgs timeouts) {
+            return timeouts(Output.of(timeouts));
         }
 
         public GetAwsOrgVpcPeeringConnectionArgs build() {

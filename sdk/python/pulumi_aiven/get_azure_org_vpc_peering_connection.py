@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetAzureOrgVpcPeeringConnectionResult',
@@ -26,7 +28,7 @@ class GetAzureOrgVpcPeeringConnectionResult:
     """
     A collection of values returned by getAzureOrgVpcPeeringConnection.
     """
-    def __init__(__self__, azure_subscription_id=None, id=None, organization_id=None, organization_vpc_id=None, peer_azure_app_id=None, peer_azure_tenant_id=None, peer_resource_group=None, peering_connection_id=None, state=None, vnet_name=None):
+    def __init__(__self__, azure_subscription_id=None, id=None, organization_id=None, organization_vpc_id=None, peer_azure_app_id=None, peer_azure_tenant_id=None, peer_resource_group=None, peering_connection_id=None, state=None, timeouts=None, vnet_name=None):
         if azure_subscription_id and not isinstance(azure_subscription_id, str):
             raise TypeError("Expected argument 'azure_subscription_id' to be a str")
         pulumi.set(__self__, "azure_subscription_id", azure_subscription_id)
@@ -54,6 +56,9 @@ class GetAzureOrgVpcPeeringConnectionResult:
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
+        if timeouts and not isinstance(timeouts, dict):
+            raise TypeError("Expected argument 'timeouts' to be a dict")
+        pulumi.set(__self__, "timeouts", timeouts)
         if vnet_name and not isinstance(vnet_name, str):
             raise TypeError("Expected argument 'vnet_name' to be a str")
         pulumi.set(__self__, "vnet_name", vnet_name)
@@ -62,7 +67,7 @@ class GetAzureOrgVpcPeeringConnectionResult:
     @pulumi.getter(name="azureSubscriptionId")
     def azure_subscription_id(self) -> _builtins.str:
         """
-        The ID of the Azure subscription in UUID4 format. Changing this property forces recreation of the resource.
+        The ID of the Azure subscription in UUID4 format.
         """
         return pulumi.get(self, "azure_subscription_id")
 
@@ -70,7 +75,7 @@ class GetAzureOrgVpcPeeringConnectionResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The provider-assigned unique ID for this managed resource.
+        Resource ID composed as: `organization_id/organization_vpc_id/azure_subscription_id/vnet_name/peer_resource_group`.
         """
         return pulumi.get(self, "id")
 
@@ -78,7 +83,7 @@ class GetAzureOrgVpcPeeringConnectionResult:
     @pulumi.getter(name="organizationId")
     def organization_id(self) -> _builtins.str:
         """
-        Identifier of the organization.
+        ID of an organization.
         """
         return pulumi.get(self, "organization_id")
 
@@ -86,7 +91,7 @@ class GetAzureOrgVpcPeeringConnectionResult:
     @pulumi.getter(name="organizationVpcId")
     def organization_vpc_id(self) -> _builtins.str:
         """
-        Identifier of the organization VPC.
+        Organization VPC ID.
         """
         return pulumi.get(self, "organization_vpc_id")
 
@@ -94,7 +99,7 @@ class GetAzureOrgVpcPeeringConnectionResult:
     @pulumi.getter(name="peerAzureAppId")
     def peer_azure_app_id(self) -> _builtins.str:
         """
-        The ID of the Azure app that is allowed to create a peering to the Azure Virtual Network (VNet) in UUID4 format. Changing this property forces recreation of the resource.
+        The ID of the Azure app that is allowed to create a peering to the Azure Virtual Network (VNet) in UUID4 format.
         """
         return pulumi.get(self, "peer_azure_app_id")
 
@@ -102,7 +107,7 @@ class GetAzureOrgVpcPeeringConnectionResult:
     @pulumi.getter(name="peerAzureTenantId")
     def peer_azure_tenant_id(self) -> _builtins.str:
         """
-        The Azure tenant ID in UUID4 format. Changing this property forces recreation of the resource.
+        The Azure tenant ID in UUID4 format.
         """
         return pulumi.get(self, "peer_azure_tenant_id")
 
@@ -110,7 +115,7 @@ class GetAzureOrgVpcPeeringConnectionResult:
     @pulumi.getter(name="peerResourceGroup")
     def peer_resource_group(self) -> _builtins.str:
         """
-        The name of the Azure resource group associated with the VNet. Changing this property forces recreation of the resource.
+        The name of the Azure resource group associated with the VNet.
         """
         return pulumi.get(self, "peer_resource_group")
 
@@ -118,7 +123,7 @@ class GetAzureOrgVpcPeeringConnectionResult:
     @pulumi.getter(name="peeringConnectionId")
     def peering_connection_id(self) -> _builtins.str:
         """
-        The ID of the cloud provider for the peering connection.
+        Organization peering connection ID.
         """
         return pulumi.get(self, "peering_connection_id")
 
@@ -126,15 +131,20 @@ class GetAzureOrgVpcPeeringConnectionResult:
     @pulumi.getter
     def state(self) -> _builtins.str:
         """
-        State of the peering connection
+        State of the peering connection. The possible values are `ACTIVE`, `APPROVED`, `APPROVED_PEER_REQUESTED`, `DELETED`, `DELETED_BY_PEER`, `DELETING`, `ERROR`, `INVALID_SPECIFICATION`, `PENDING_PEER` and `REJECTED_BY_PEER`.
         """
         return pulumi.get(self, "state")
+
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> Optional['outputs.GetAzureOrgVpcPeeringConnectionTimeoutsResult']:
+        return pulumi.get(self, "timeouts")
 
     @_builtins.property
     @pulumi.getter(name="vnetName")
     def vnet_name(self) -> _builtins.str:
         """
-        The name of the Azure VNet. Changing this property forces recreation of the resource.
+        The name of the Azure VNet.
         """
         return pulumi.get(self, "vnet_name")
 
@@ -154,6 +164,7 @@ class AwaitableGetAzureOrgVpcPeeringConnectionResult(GetAzureOrgVpcPeeringConnec
             peer_resource_group=self.peer_resource_group,
             peering_connection_id=self.peering_connection_id,
             state=self.state,
+            timeouts=self.timeouts,
             vnet_name=self.vnet_name)
 
 
@@ -161,26 +172,38 @@ def get_azure_org_vpc_peering_connection(azure_subscription_id: Optional[_builti
                                          organization_id: Optional[_builtins.str] = None,
                                          organization_vpc_id: Optional[_builtins.str] = None,
                                          peer_resource_group: Optional[_builtins.str] = None,
+                                         timeouts: Optional[Union['GetAzureOrgVpcPeeringConnectionTimeoutsArgs', 'GetAzureOrgVpcPeeringConnectionTimeoutsArgsDict']] = None,
                                          vnet_name: Optional[_builtins.str] = None,
                                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAzureOrgVpcPeeringConnectionResult:
     """
-    Gets information about about an Azure VPC peering connection.
+    Gets information about an Azure VPC peering connection.
 
-    **This resource is in the beta stage and may change without notice.** Set
-    the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    example = aiven.get_azure_org_vpc_peering_connection(organization_id="org1a23f456789",
+        organization_vpc_id="1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+        azure_subscription_id="12345678-1234-1234-1234-123456789012",
+        vnet_name="my-vnet",
+        peer_resource_group="my-resource-group")
+    ```
 
 
-    :param _builtins.str azure_subscription_id: The ID of the Azure subscription in UUID4 format. Changing this property forces recreation of the resource.
-    :param _builtins.str organization_id: Identifier of the organization.
-    :param _builtins.str organization_vpc_id: Identifier of the organization VPC.
-    :param _builtins.str peer_resource_group: The name of the Azure resource group associated with the VNet. Changing this property forces recreation of the resource.
-    :param _builtins.str vnet_name: The name of the Azure VNet. Changing this property forces recreation of the resource.
+    :param _builtins.str azure_subscription_id: The ID of the Azure subscription in UUID4 format.
+    :param _builtins.str organization_id: ID of an organization.
+    :param _builtins.str organization_vpc_id: Organization VPC ID.
+    :param _builtins.str peer_resource_group: The name of the Azure resource group associated with the VNet.
+    :param _builtins.str vnet_name: The name of the Azure VNet.
     """
     __args__ = dict()
     __args__['azureSubscriptionId'] = azure_subscription_id
     __args__['organizationId'] = organization_id
     __args__['organizationVpcId'] = organization_vpc_id
     __args__['peerResourceGroup'] = peer_resource_group
+    __args__['timeouts'] = timeouts
     __args__['vnetName'] = vnet_name
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('aiven:index/getAzureOrgVpcPeeringConnection:getAzureOrgVpcPeeringConnection', __args__, opts=opts, typ=GetAzureOrgVpcPeeringConnectionResult).value
@@ -195,31 +218,44 @@ def get_azure_org_vpc_peering_connection(azure_subscription_id: Optional[_builti
         peer_resource_group=pulumi.get(__ret__, 'peer_resource_group'),
         peering_connection_id=pulumi.get(__ret__, 'peering_connection_id'),
         state=pulumi.get(__ret__, 'state'),
+        timeouts=pulumi.get(__ret__, 'timeouts'),
         vnet_name=pulumi.get(__ret__, 'vnet_name'))
 def get_azure_org_vpc_peering_connection_output(azure_subscription_id: pulumi.Input[Optional[_builtins.str]] = None,
                                                 organization_id: pulumi.Input[Optional[_builtins.str]] = None,
                                                 organization_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                                                 peer_resource_group: pulumi.Input[Optional[_builtins.str]] = None,
+                                                timeouts: pulumi.Input[Optional[Optional[Union['GetAzureOrgVpcPeeringConnectionTimeoutsArgs', 'GetAzureOrgVpcPeeringConnectionTimeoutsArgsDict']]]] = None,
                                                 vnet_name: pulumi.Input[Optional[_builtins.str]] = None,
                                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAzureOrgVpcPeeringConnectionResult]:
     """
-    Gets information about about an Azure VPC peering connection.
+    Gets information about an Azure VPC peering connection.
 
-    **This resource is in the beta stage and may change without notice.** Set
-    the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    example = aiven.get_azure_org_vpc_peering_connection(organization_id="org1a23f456789",
+        organization_vpc_id="1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+        azure_subscription_id="12345678-1234-1234-1234-123456789012",
+        vnet_name="my-vnet",
+        peer_resource_group="my-resource-group")
+    ```
 
 
-    :param _builtins.str azure_subscription_id: The ID of the Azure subscription in UUID4 format. Changing this property forces recreation of the resource.
-    :param _builtins.str organization_id: Identifier of the organization.
-    :param _builtins.str organization_vpc_id: Identifier of the organization VPC.
-    :param _builtins.str peer_resource_group: The name of the Azure resource group associated with the VNet. Changing this property forces recreation of the resource.
-    :param _builtins.str vnet_name: The name of the Azure VNet. Changing this property forces recreation of the resource.
+    :param _builtins.str azure_subscription_id: The ID of the Azure subscription in UUID4 format.
+    :param _builtins.str organization_id: ID of an organization.
+    :param _builtins.str organization_vpc_id: Organization VPC ID.
+    :param _builtins.str peer_resource_group: The name of the Azure resource group associated with the VNet.
+    :param _builtins.str vnet_name: The name of the Azure VNet.
     """
     __args__ = dict()
     __args__['azureSubscriptionId'] = azure_subscription_id
     __args__['organizationId'] = organization_id
     __args__['organizationVpcId'] = organization_vpc_id
     __args__['peerResourceGroup'] = peer_resource_group
+    __args__['timeouts'] = timeouts
     __args__['vnetName'] = vnet_name
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('aiven:index/getAzureOrgVpcPeeringConnection:getAzureOrgVpcPeeringConnection', __args__, opts=opts, typ=GetAzureOrgVpcPeeringConnectionResult)
@@ -233,4 +269,5 @@ def get_azure_org_vpc_peering_connection_output(azure_subscription_id: pulumi.In
         peer_resource_group=pulumi.get(__response__, 'peer_resource_group'),
         peering_connection_id=pulumi.get(__response__, 'peering_connection_id'),
         state=pulumi.get(__response__, 'state'),
+        timeouts=pulumi.get(__response__, 'timeouts'),
         vnet_name=pulumi.get(__response__, 'vnet_name')))

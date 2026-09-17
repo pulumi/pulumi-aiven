@@ -14,8 +14,8 @@ import (
 
 // Creates and manages a BYOC custom cloud environment on AWS.
 //
-// **This resource is in the beta stage and may change without notice.** Set
-// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+// > **Beta resource**
+// This resource is in the beta stage and may change without notice. Set the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
 //
 // ## Example Usage
 //
@@ -32,12 +32,6 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.NewByocAwsEntity(ctx, "example", &aiven.ByocAwsEntityArgs{
-//				OrganizationId:  pulumi.String("org1a23f456789"),
-//				CloudProvider:   pulumi.String("aws"),
-//				CloudRegion:     pulumi.String("eu-west-1"),
-//				DeploymentModel: pulumi.String("standard"),
-//				DisplayName:     pulumi.String("byoc-cloud-prod-eu-west-1"),
-//				ReservedCidr:    pulumi.String("192.168.6.0/24"),
 //				ContactEmails: aiven.ByocAwsEntityContactEmailArray{
 //					&aiven.ByocAwsEntityContactEmailArgs{
 //						Email:    pulumi.String("jane@example.com"),
@@ -45,6 +39,12 @@ import (
 //						Role:     pulumi.String("admin"),
 //					},
 //				},
+//				OrganizationId:  pulumi.String("org1a23f456789"),
+//				CloudProvider:   pulumi.String("aws"),
+//				CloudRegion:     pulumi.String("eu-west-1"),
+//				DeploymentModel: pulumi.String("standard"),
+//				DisplayName:     pulumi.String("byoc-cloud-prod-eu-west-1"),
+//				ReservedCidr:    pulumi.String("192.168.6.0/24"),
 //				Tags: pulumi.StringMap{
 //					"foo": pulumi.String("foo"),
 //				},

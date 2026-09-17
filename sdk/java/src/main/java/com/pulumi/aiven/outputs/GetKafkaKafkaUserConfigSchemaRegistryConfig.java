@@ -23,6 +23,26 @@ public final class GetKafkaKafkaUserConfigSchemaRegistryConfig {
      */
     private @Nullable Boolean retriableErrorsSilenced;
     /**
+     * @return If enabled, the Schema Registry validates OAuth2/OIDC JWT bearer tokens on incoming requests. Requires the OIDC provider settings under the `kafka` configuration (`saslOauthbearerJwksEndpointUrl` and related). Defaults to `false`.
+     * 
+     */
+    private @Nullable Boolean saslOauthbearerAuthenticationEnabled;
+    /**
+     * @return If enabled, the Schema Registry enforces role-based authorization derived from the JWT roles claim. Requires `saslOauthbearerAuthenticationEnabled` to be enabled. Defaults to `false`.
+     * 
+     */
+    private @Nullable Boolean saslOauthbearerAuthorizationEnabled;
+    /**
+     * @return JSON object mapping HTTP methods to the list of roles allowed to perform them on the Schema Registry, provided as a JSON-encoded string. Role names use the `karapace.` prefix, e.g. `karapace.schema:read`. Defaults to `{&#34;GET&#34;: [&#34;karapace.schema:read&#34;, &#34;karapace.subject:read&#34;], &#34;POST&#34;: [], &#34;PUT&#34;: [], &#34;DELETE&#34;: []}`.
+     * 
+     */
+    private @Nullable String saslOauthbearerMethodRoles;
+    /**
+     * @return JSON path used to extract the roles claim from the JWT for Schema Registry authorization. Defaults to `resource_access.karapace.roles`.
+     * 
+     */
+    private @Nullable String saslOauthbearerRolesClaimPath;
+    /**
      * @return If enabled, causes the Karapace schema-registry service to shutdown when there are invalid schema records in the `_schemas` topic. Defaults to `false`.
      * 
      */
@@ -47,6 +67,34 @@ public final class GetKafkaKafkaUserConfigSchemaRegistryConfig {
      */
     public Optional<Boolean> retriableErrorsSilenced() {
         return Optional.ofNullable(this.retriableErrorsSilenced);
+    }
+    /**
+     * @return If enabled, the Schema Registry validates OAuth2/OIDC JWT bearer tokens on incoming requests. Requires the OIDC provider settings under the `kafka` configuration (`saslOauthbearerJwksEndpointUrl` and related). Defaults to `false`.
+     * 
+     */
+    public Optional<Boolean> saslOauthbearerAuthenticationEnabled() {
+        return Optional.ofNullable(this.saslOauthbearerAuthenticationEnabled);
+    }
+    /**
+     * @return If enabled, the Schema Registry enforces role-based authorization derived from the JWT roles claim. Requires `saslOauthbearerAuthenticationEnabled` to be enabled. Defaults to `false`.
+     * 
+     */
+    public Optional<Boolean> saslOauthbearerAuthorizationEnabled() {
+        return Optional.ofNullable(this.saslOauthbearerAuthorizationEnabled);
+    }
+    /**
+     * @return JSON object mapping HTTP methods to the list of roles allowed to perform them on the Schema Registry, provided as a JSON-encoded string. Role names use the `karapace.` prefix, e.g. `karapace.schema:read`. Defaults to `{&#34;GET&#34;: [&#34;karapace.schema:read&#34;, &#34;karapace.subject:read&#34;], &#34;POST&#34;: [], &#34;PUT&#34;: [], &#34;DELETE&#34;: []}`.
+     * 
+     */
+    public Optional<String> saslOauthbearerMethodRoles() {
+        return Optional.ofNullable(this.saslOauthbearerMethodRoles);
+    }
+    /**
+     * @return JSON path used to extract the roles claim from the JWT for Schema Registry authorization. Defaults to `resource_access.karapace.roles`.
+     * 
+     */
+    public Optional<String> saslOauthbearerRolesClaimPath() {
+        return Optional.ofNullable(this.saslOauthbearerRolesClaimPath);
     }
     /**
      * @return If enabled, causes the Karapace schema-registry service to shutdown when there are invalid schema records in the `_schemas` topic. Defaults to `false`.
@@ -74,6 +122,10 @@ public final class GetKafkaKafkaUserConfigSchemaRegistryConfig {
     public static final class Builder {
         private @Nullable Boolean leaderEligibility;
         private @Nullable Boolean retriableErrorsSilenced;
+        private @Nullable Boolean saslOauthbearerAuthenticationEnabled;
+        private @Nullable Boolean saslOauthbearerAuthorizationEnabled;
+        private @Nullable String saslOauthbearerMethodRoles;
+        private @Nullable String saslOauthbearerRolesClaimPath;
         private @Nullable Boolean schemaReaderStrictMode;
         private @Nullable String topicName;
         public Builder() {}
@@ -81,6 +133,10 @@ public final class GetKafkaKafkaUserConfigSchemaRegistryConfig {
     	      Objects.requireNonNull(defaults);
     	      this.leaderEligibility = defaults.leaderEligibility;
     	      this.retriableErrorsSilenced = defaults.retriableErrorsSilenced;
+    	      this.saslOauthbearerAuthenticationEnabled = defaults.saslOauthbearerAuthenticationEnabled;
+    	      this.saslOauthbearerAuthorizationEnabled = defaults.saslOauthbearerAuthorizationEnabled;
+    	      this.saslOauthbearerMethodRoles = defaults.saslOauthbearerMethodRoles;
+    	      this.saslOauthbearerRolesClaimPath = defaults.saslOauthbearerRolesClaimPath;
     	      this.schemaReaderStrictMode = defaults.schemaReaderStrictMode;
     	      this.topicName = defaults.topicName;
         }
@@ -95,6 +151,30 @@ public final class GetKafkaKafkaUserConfigSchemaRegistryConfig {
         public Builder retriableErrorsSilenced(@Nullable Boolean retriableErrorsSilenced) {
 
             this.retriableErrorsSilenced = retriableErrorsSilenced;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder saslOauthbearerAuthenticationEnabled(@Nullable Boolean saslOauthbearerAuthenticationEnabled) {
+
+            this.saslOauthbearerAuthenticationEnabled = saslOauthbearerAuthenticationEnabled;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder saslOauthbearerAuthorizationEnabled(@Nullable Boolean saslOauthbearerAuthorizationEnabled) {
+
+            this.saslOauthbearerAuthorizationEnabled = saslOauthbearerAuthorizationEnabled;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder saslOauthbearerMethodRoles(@Nullable String saslOauthbearerMethodRoles) {
+
+            this.saslOauthbearerMethodRoles = saslOauthbearerMethodRoles;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder saslOauthbearerRolesClaimPath(@Nullable String saslOauthbearerRolesClaimPath) {
+
+            this.saslOauthbearerRolesClaimPath = saslOauthbearerRolesClaimPath;
             return this;
         }
         @CustomType.Setter
@@ -113,6 +193,10 @@ public final class GetKafkaKafkaUserConfigSchemaRegistryConfig {
             final var _resultValue = new GetKafkaKafkaUserConfigSchemaRegistryConfig();
             _resultValue.leaderEligibility = leaderEligibility;
             _resultValue.retriableErrorsSilenced = retriableErrorsSilenced;
+            _resultValue.saslOauthbearerAuthenticationEnabled = saslOauthbearerAuthenticationEnabled;
+            _resultValue.saslOauthbearerAuthorizationEnabled = saslOauthbearerAuthorizationEnabled;
+            _resultValue.saslOauthbearerMethodRoles = saslOauthbearerMethodRoles;
+            _resultValue.saslOauthbearerRolesClaimPath = saslOauthbearerRolesClaimPath;
             _resultValue.schemaReaderStrictMode = schemaReaderStrictMode;
             _resultValue.topicName = topicName;
             return _resultValue;

@@ -24,16 +24,16 @@ namespace Pulumi.Aiven
     /// {
     ///     var exampleFlink = new Aiven.Flink("example_flink", new()
     ///     {
+    ///         FlinkUserConfig = new Aiven.Inputs.FlinkFlinkUserConfigArgs
+    ///         {
+    ///             FlinkVersion = "1.19",
+    ///         },
     ///         Project = exampleProject.Project,
     ///         CloudName = "google-europe-west1",
     ///         Plan = "business-4",
     ///         ServiceName = "example-flink-service",
     ///         MaintenanceWindowDow = "monday",
     ///         MaintenanceWindowTime = "10:00:00",
-    ///         FlinkUserConfig = new Aiven.Inputs.FlinkFlinkUserConfigArgs
-    ///         {
-    ///             FlinkVersion = "1.19",
-    ///         },
     ///     });
     /// 
     /// });

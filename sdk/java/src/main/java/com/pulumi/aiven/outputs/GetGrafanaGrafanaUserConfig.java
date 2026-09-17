@@ -152,6 +152,11 @@ public final class GetGrafanaGrafanaUserConfig {
      */
     private @Nullable String googleAnalyticsUaId;
     /**
+     * @return Enum: `11`, and newer. Grafana major version.
+     * 
+     */
+    private @Nullable String grafanaVersion;
+    /**
      * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      * 
      */
@@ -428,6 +433,13 @@ public final class GetGrafanaGrafanaUserConfig {
         return Optional.ofNullable(this.googleAnalyticsUaId);
     }
     /**
+     * @return Enum: `11`, and newer. Grafana major version.
+     * 
+     */
+    public Optional<String> grafanaVersion() {
+        return Optional.ofNullable(this.grafanaVersion);
+    }
+    /**
      * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      * 
      */
@@ -599,6 +611,7 @@ public final class GetGrafanaGrafanaUserConfig {
         private @Nullable Boolean editorsCanAdmin;
         private @Nullable GetGrafanaGrafanaUserConfigExternalImageStorage externalImageStorage;
         private @Nullable String googleAnalyticsUaId;
+        private @Nullable String grafanaVersion;
         private @Nullable List<GetGrafanaGrafanaUserConfigIpFilterObject> ipFilterObjects;
         private @Nullable List<String> ipFilterStrings;
         private @Nullable List<String> ipFilters;
@@ -646,6 +659,7 @@ public final class GetGrafanaGrafanaUserConfig {
     	      this.editorsCanAdmin = defaults.editorsCanAdmin;
     	      this.externalImageStorage = defaults.externalImageStorage;
     	      this.googleAnalyticsUaId = defaults.googleAnalyticsUaId;
+    	      this.grafanaVersion = defaults.grafanaVersion;
     	      this.ipFilterObjects = defaults.ipFilterObjects;
     	      this.ipFilterStrings = defaults.ipFilterStrings;
     	      this.ipFilters = defaults.ipFilters;
@@ -818,6 +832,12 @@ public final class GetGrafanaGrafanaUserConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder grafanaVersion(@Nullable String grafanaVersion) {
+
+            this.grafanaVersion = grafanaVersion;
+            return this;
+        }
+        @CustomType.Setter
         public Builder ipFilterObjects(@Nullable List<GetGrafanaGrafanaUserConfigIpFilterObject> ipFilterObjects) {
 
             this.ipFilterObjects = ipFilterObjects;
@@ -967,6 +987,7 @@ public final class GetGrafanaGrafanaUserConfig {
             _resultValue.editorsCanAdmin = editorsCanAdmin;
             _resultValue.externalImageStorage = externalImageStorage;
             _resultValue.googleAnalyticsUaId = googleAnalyticsUaId;
+            _resultValue.grafanaVersion = grafanaVersion;
             _resultValue.ipFilterObjects = ipFilterObjects;
             _resultValue.ipFilterStrings = ipFilterStrings;
             _resultValue.ipFilters = ipFilters;

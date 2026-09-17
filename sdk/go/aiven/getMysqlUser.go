@@ -73,6 +73,8 @@ type LookupMysqlUserResult struct {
 	Id string `pulumi:"id"`
 	// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`.
 	Password string `pulumi:"password"`
+	// The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. 'unknown' is reported when the hash is missing or uses an unrecognised format. The possible values are `md5`, `scram-sha-256` and `unknown`.
+	PasswordEncryptionType string `pulumi:"passwordEncryptionType"`
 	// Project name.
 	Project string `pulumi:"project"`
 	// The name of the MySQL® service user.
@@ -142,6 +144,11 @@ func (o LookupMysqlUserResultOutput) Id() pulumi.StringOutput {
 // The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`.
 func (o LookupMysqlUserResultOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMysqlUserResult) string { return v.Password }).(pulumi.StringOutput)
+}
+
+// The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. 'unknown' is reported when the hash is missing or uses an unrecognised format. The possible values are `md5`, `scram-sha-256` and `unknown`.
+func (o LookupMysqlUserResultOutput) PasswordEncryptionType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMysqlUserResult) string { return v.PasswordEncryptionType }).(pulumi.StringOutput)
 }
 
 // Project name.

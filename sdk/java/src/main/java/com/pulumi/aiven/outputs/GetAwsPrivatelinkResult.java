@@ -3,87 +3,118 @@
 
 package com.pulumi.aiven.outputs;
 
+import com.pulumi.aiven.outputs.GetAwsPrivatelinkTimeouts;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAwsPrivatelinkResult {
     /**
-     * @return AWS service ID.
+     * @return AWS VPC endpoint service ID.
      * 
      */
     private String awsServiceId;
     /**
-     * @return AWS service name.
+     * @return AWS VPC endpoint service name.
      * 
      */
     private String awsServiceName;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Resource ID composed as: `project/service_name`.
      * 
      */
     private String id;
     /**
-     * @return List of the ARNs of the AWS accounts or IAM users allowed to connect to the VPC endpoint.
+     * @return ARNs of principals allowed connecting to the service.
      * 
      */
     private List<String> principals;
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name.
      * 
      */
     private String project;
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service name.
      * 
      */
     private String serviceName;
+    /**
+     * @return Privatelink resource state. The possible values are `active`, `creating` and `deleting`.
+     * 
+     */
+    private String state;
+    /**
+     * @return Allow new connections to the endpoint from these regions, in addition to the region the endpoint is in.
+     * 
+     */
+    private List<String> supportedRegions;
+    private @Nullable GetAwsPrivatelinkTimeouts timeouts;
 
     private GetAwsPrivatelinkResult() {}
     /**
-     * @return AWS service ID.
+     * @return AWS VPC endpoint service ID.
      * 
      */
     public String awsServiceId() {
         return this.awsServiceId;
     }
     /**
-     * @return AWS service name.
+     * @return AWS VPC endpoint service name.
      * 
      */
     public String awsServiceName() {
         return this.awsServiceName;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Resource ID composed as: `project/service_name`.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return List of the ARNs of the AWS accounts or IAM users allowed to connect to the VPC endpoint.
+     * @return ARNs of principals allowed connecting to the service.
      * 
      */
     public List<String> principals() {
         return this.principals;
     }
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name.
      * 
      */
     public String project() {
         return this.project;
     }
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service name.
      * 
      */
     public String serviceName() {
         return this.serviceName;
+    }
+    /**
+     * @return Privatelink resource state. The possible values are `active`, `creating` and `deleting`.
+     * 
+     */
+    public String state() {
+        return this.state;
+    }
+    /**
+     * @return Allow new connections to the endpoint from these regions, in addition to the region the endpoint is in.
+     * 
+     */
+    public List<String> supportedRegions() {
+        return this.supportedRegions;
+    }
+    public Optional<GetAwsPrivatelinkTimeouts> timeouts() {
+        return Optional.ofNullable(this.timeouts);
     }
 
     public static Builder builder() {
@@ -101,6 +132,9 @@ public final class GetAwsPrivatelinkResult {
         private List<String> principals;
         private String project;
         private String serviceName;
+        private String state;
+        private List<String> supportedRegions;
+        private @Nullable GetAwsPrivatelinkTimeouts timeouts;
         public Builder() {}
         public Builder(GetAwsPrivatelinkResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -110,6 +144,9 @@ public final class GetAwsPrivatelinkResult {
     	      this.principals = defaults.principals;
     	      this.project = defaults.project;
     	      this.serviceName = defaults.serviceName;
+    	      this.state = defaults.state;
+    	      this.supportedRegions = defaults.supportedRegions;
+    	      this.timeouts = defaults.timeouts;
         }
 
         @CustomType.Setter
@@ -163,6 +200,31 @@ public final class GetAwsPrivatelinkResult {
             this.serviceName = serviceName;
             return this;
         }
+        @CustomType.Setter
+        public Builder state(String state) {
+            if (state == null) {
+              throw new MissingRequiredPropertyException("GetAwsPrivatelinkResult", "state");
+            }
+            this.state = state;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder supportedRegions(List<String> supportedRegions) {
+            if (supportedRegions == null) {
+              throw new MissingRequiredPropertyException("GetAwsPrivatelinkResult", "supportedRegions");
+            }
+            this.supportedRegions = supportedRegions;
+            return this;
+        }
+        public Builder supportedRegions(String... supportedRegions) {
+            return supportedRegions(List.of(supportedRegions));
+        }
+        @CustomType.Setter
+        public Builder timeouts(@Nullable GetAwsPrivatelinkTimeouts timeouts) {
+
+            this.timeouts = timeouts;
+            return this;
+        }
         public GetAwsPrivatelinkResult build() {
             final var _resultValue = new GetAwsPrivatelinkResult();
             _resultValue.awsServiceId = awsServiceId;
@@ -171,6 +233,9 @@ public final class GetAwsPrivatelinkResult {
             _resultValue.principals = principals;
             _resultValue.project = project;
             _resultValue.serviceName = serviceName;
+            _resultValue.state = state;
+            _resultValue.supportedRegions = supportedRegions;
+            _resultValue.timeouts = timeouts;
             return _resultValue;
         }
     }

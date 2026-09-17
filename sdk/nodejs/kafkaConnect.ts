@@ -32,10 +32,6 @@ import * as utilities from "./utilities";
  * });
  * // Create a Kafka Connect service.
  * const exampleKafkaConnect = new aiven.KafkaConnect("example_kafka_connect", {
- *     project: exampleProject.project,
- *     cloudName: "google-europe-west1",
- *     plan: "startup-4",
- *     serviceName: "example-connect-service",
  *     kafkaConnectUserConfig: {
  *         kafkaConnect: {
  *             consumerIsolationLevel: "read_committed",
@@ -44,13 +40,13 @@ import * as utilities from "./utilities";
  *             kafkaConnect: true,
  *         },
  *     },
+ *     project: exampleProject.project,
+ *     cloudName: "google-europe-west1",
+ *     plan: "startup-4",
+ *     serviceName: "example-connect-service",
  * });
  * // Integrate the Kafka and Kafka Connect services.
  * const kafkaConnectIntegration = new aiven.ServiceIntegration("kafka_connect_integration", {
- *     project: exampleProject.project,
- *     integrationType: "kafka_connect",
- *     sourceServiceName: exampleKafka.serviceName,
- *     destinationServiceName: exampleKafkaConnect.serviceName,
  *     kafkaConnectUserConfig: {
  *         kafkaConnect: {
  *             groupId: "connect",
@@ -58,6 +54,10 @@ import * as utilities from "./utilities";
  *             offsetStorageTopic: "__connect_offsets",
  *         },
  *     },
+ *     project: exampleProject.project,
+ *     integrationType: "kafka_connect",
+ *     sourceServiceName: exampleKafka.serviceName,
+ *     destinationServiceName: exampleKafkaConnect.serviceName,
  * });
  * ```
  *

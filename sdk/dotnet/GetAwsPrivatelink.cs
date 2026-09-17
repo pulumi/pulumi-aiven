@@ -24,10 +24,10 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var main = Aiven.GetAwsPrivatelink.Invoke(new()
+        ///     var example = Aiven.GetAwsPrivatelink.Invoke(new()
         ///     {
-        ///         Project = exampleProject.Project,
-        ///         ServiceName = exampleKafka.ServiceName,
+        ///         Project = "my-project",
+        ///         ServiceName = "foo",
         ///     });
         /// 
         /// });
@@ -49,10 +49,10 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var main = Aiven.GetAwsPrivatelink.Invoke(new()
+        ///     var example = Aiven.GetAwsPrivatelink.Invoke(new()
         ///     {
-        ///         Project = exampleProject.Project,
-        ///         ServiceName = exampleKafka.ServiceName,
+        ///         Project = "my-project",
+        ///         ServiceName = "foo",
         ///     });
         /// 
         /// });
@@ -74,10 +74,10 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var main = Aiven.GetAwsPrivatelink.Invoke(new()
+        ///     var example = Aiven.GetAwsPrivatelink.Invoke(new()
         ///     {
-        ///         Project = exampleProject.Project,
-        ///         ServiceName = exampleKafka.ServiceName,
+        ///         Project = "my-project",
+        ///         ServiceName = "foo",
         ///     });
         /// 
         /// });
@@ -91,16 +91,19 @@ namespace Pulumi.Aiven
     public sealed class GetAwsPrivatelinkArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name.
         /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service name.
         /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
+
+        [Input("timeouts")]
+        public Inputs.GetAwsPrivatelinkTimeoutsArgs? Timeouts { get; set; }
 
         public GetAwsPrivatelinkArgs()
         {
@@ -111,16 +114,19 @@ namespace Pulumi.Aiven
     public sealed class GetAwsPrivatelinkInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service name.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
+
+        [Input("timeouts")]
+        public Input<Inputs.GetAwsPrivatelinkTimeoutsInputArgs>? Timeouts { get; set; }
 
         public GetAwsPrivatelinkInvokeArgs()
         {
@@ -133,29 +139,38 @@ namespace Pulumi.Aiven
     public sealed class GetAwsPrivatelinkResult
     {
         /// <summary>
-        /// AWS service ID.
+        /// AWS VPC endpoint service ID.
         /// </summary>
         public readonly string AwsServiceId;
         /// <summary>
-        /// AWS service name.
+        /// AWS VPC endpoint service name.
         /// </summary>
         public readonly string AwsServiceName;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// Resource ID composed as: `project/service_name`.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// List of the ARNs of the AWS accounts or IAM users allowed to connect to the VPC endpoint.
+        /// ARNs of principals allowed connecting to the service.
         /// </summary>
         public readonly ImmutableArray<string> Principals;
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name.
         /// </summary>
         public readonly string Project;
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service name.
         /// </summary>
         public readonly string ServiceName;
+        /// <summary>
+        /// Privatelink resource state. The possible values are `Active`, `Creating` and `Deleting`.
+        /// </summary>
+        public readonly string State;
+        /// <summary>
+        /// Allow new connections to the endpoint from these regions, in addition to the region the endpoint is in.
+        /// </summary>
+        public readonly ImmutableArray<string> SupportedRegions;
+        public readonly Outputs.GetAwsPrivatelinkTimeoutsResult? Timeouts;
 
         [OutputConstructor]
         private GetAwsPrivatelinkResult(
@@ -169,7 +184,13 @@ namespace Pulumi.Aiven
 
             string project,
 
-            string serviceName)
+            string serviceName,
+
+            string state,
+
+            ImmutableArray<string> supportedRegions,
+
+            Outputs.GetAwsPrivatelinkTimeoutsResult? timeouts)
         {
             AwsServiceId = awsServiceId;
             AwsServiceName = awsServiceName;
@@ -177,6 +198,9 @@ namespace Pulumi.Aiven
             Principals = principals;
             Project = project;
             ServiceName = serviceName;
+            State = state;
+            SupportedRegions = supportedRegions;
+            Timeouts = timeouts;
         }
     }
 }

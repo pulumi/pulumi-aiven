@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetMirrorMakerReplicationFlowResult',
@@ -26,7 +28,7 @@ class GetMirrorMakerReplicationFlowResult:
     """
     A collection of values returned by getMirrorMakerReplicationFlow.
     """
-    def __init__(__self__, config_properties_excludes=None, emit_backward_heartbeats_enabled=None, emit_heartbeats_enabled=None, enable=None, exactly_once_delivery_enabled=None, follower_fetching_enabled=None, id=None, offset_syncs_topic_location=None, project=None, replication_factor=None, replication_policy_class=None, service_name=None, source_cluster=None, sync_group_offsets_enabled=None, sync_group_offsets_interval_seconds=None, target_cluster=None, topics=None, topics_blacklists=None):
+    def __init__(__self__, config_properties_excludes=None, emit_backward_heartbeats_enabled=None, emit_heartbeats_enabled=None, enable=None, exactly_once_delivery_enabled=None, follower_fetching_enabled=None, id=None, offset_lag_max=None, offset_syncs_topic_location=None, project=None, replication_factor=None, replication_policy_class=None, service_name=None, source_cluster=None, sync_group_offsets_enabled=None, sync_group_offsets_interval_seconds=None, target_cluster=None, timeouts=None, topics=None, topics_blacklists=None):
         if config_properties_excludes and not isinstance(config_properties_excludes, list):
             raise TypeError("Expected argument 'config_properties_excludes' to be a list")
         pulumi.set(__self__, "config_properties_excludes", config_properties_excludes)
@@ -48,6 +50,9 @@ class GetMirrorMakerReplicationFlowResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if offset_lag_max and not isinstance(offset_lag_max, int):
+            raise TypeError("Expected argument 'offset_lag_max' to be a int")
+        pulumi.set(__self__, "offset_lag_max", offset_lag_max)
         if offset_syncs_topic_location and not isinstance(offset_syncs_topic_location, str):
             raise TypeError("Expected argument 'offset_syncs_topic_location' to be a str")
         pulumi.set(__self__, "offset_syncs_topic_location", offset_syncs_topic_location)
@@ -75,6 +80,9 @@ class GetMirrorMakerReplicationFlowResult:
         if target_cluster and not isinstance(target_cluster, str):
             raise TypeError("Expected argument 'target_cluster' to be a str")
         pulumi.set(__self__, "target_cluster", target_cluster)
+        if timeouts and not isinstance(timeouts, dict):
+            raise TypeError("Expected argument 'timeouts' to be a dict")
+        pulumi.set(__self__, "timeouts", timeouts)
         if topics and not isinstance(topics, list):
             raise TypeError("Expected argument 'topics' to be a list")
         pulumi.set(__self__, "topics", topics)
@@ -86,7 +94,7 @@ class GetMirrorMakerReplicationFlowResult:
     @pulumi.getter(name="configPropertiesExcludes")
     def config_properties_excludes(self) -> Sequence[_builtins.str]:
         """
-        List of topic configuration properties and regular expressions to not replicate. The properties that are not replicated by default are: `follower.replication.throttled.replicas`, `leader.replication.throttled.replicas`, `message.timestamp.difference.max.ms`, `message.timestamp.type`, `unclean.leader.election.enable`, and `min.insync.replicas`. Setting this overrides the defaults. For example, to enable replication for 'min.insync.replicas' and 'unclean.leader.election.enable' set this to: ["follower\\\\.replication\\\\.throttled\\\\.replicas", "leader\\\\.replication\\\\.throttled\\\\.replicas", "message\\\\.timestamp\\\\.difference\\\\.max\\\\.ms",  "message\\\\.timestamp\\\\.type"]
+        List of topic configuration properties and/or regexes that should not be replicated. If omitted, MirrorMaker will use default list of exclusions. For stability reasons, we always include the `unclean.leader.election.enable` field in the excluded parameters. If you have specific requirements for this configuration, please reach out to our support team for assistance.
         """
         return pulumi.get(self, "config_properties_excludes")
 
@@ -94,7 +102,7 @@ class GetMirrorMakerReplicationFlowResult:
     @pulumi.getter(name="emitBackwardHeartbeatsEnabled")
     def emit_backward_heartbeats_enabled(self) -> _builtins.bool:
         """
-        Enables emitting heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
+        Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
         """
         return pulumi.get(self, "emit_backward_heartbeats_enabled")
 
@@ -102,7 +110,7 @@ class GetMirrorMakerReplicationFlowResult:
     @pulumi.getter(name="emitHeartbeatsEnabled")
     def emit_heartbeats_enabled(self) -> _builtins.bool:
         """
-        Enables emitting heartbeats to the target cluster. The default value is `false`.
+        Whether to emit heartbeats to the target cluster. The default value is `false`.
         """
         return pulumi.get(self, "emit_heartbeats_enabled")
 
@@ -110,7 +118,7 @@ class GetMirrorMakerReplicationFlowResult:
     @pulumi.getter
     def enable(self) -> _builtins.bool:
         """
-        Enables replication flow for a service.
+        Is replication flow enabled.
         """
         return pulumi.get(self, "enable")
 
@@ -118,7 +126,7 @@ class GetMirrorMakerReplicationFlowResult:
     @pulumi.getter(name="exactlyOnceDeliveryEnabled")
     def exactly_once_delivery_enabled(self) -> _builtins.bool:
         """
-        Enables exactly-once message delivery. Set this to `enabled` for new replications. The default value is `false`.
+        Whether to enable exactly-once message delivery. We recommend you set this to enabled for new replications. The default value is `false`.
         """
         return pulumi.get(self, "exactly_once_delivery_enabled")
 
@@ -126,7 +134,7 @@ class GetMirrorMakerReplicationFlowResult:
     @pulumi.getter(name="followerFetchingEnabled")
     def follower_fetching_enabled(self) -> _builtins.bool:
         """
-        Assigns a Rack ID based on the availability-zone to enable follower fetching and rack awareness per replication flow. Defaults to enabled by the service for new flows, but is left unchanged for existing ones when not set.
+        Assigns a Rack ID based on the availability-zone to enable follower fetching and rack awareness per replication flow.
         """
         return pulumi.get(self, "follower_fetching_enabled")
 
@@ -134,15 +142,23 @@ class GetMirrorMakerReplicationFlowResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The provider-assigned unique ID for this managed resource.
+        Resource ID composed as: `project/service_name/source_cluster/target_cluster`.
         """
         return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="offsetLagMax")
+    def offset_lag_max(self) -> _builtins.int:
+        """
+        How out-of-sync a remote partition can be before it is resynced (default: 100).
+        """
+        return pulumi.get(self, "offset_lag_max")
 
     @_builtins.property
     @pulumi.getter(name="offsetSyncsTopicLocation")
     def offset_syncs_topic_location(self) -> _builtins.str:
         """
-        Offset syncs topic location. The possible values are `source` and `target`.
+        The location of the offset-syncs topic. The possible values are `source` and `target`.
         """
         return pulumi.get(self, "offset_syncs_topic_location")
 
@@ -150,7 +166,7 @@ class GetMirrorMakerReplicationFlowResult:
     @pulumi.getter
     def project(self) -> _builtins.str:
         """
-        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Project name.
         """
         return pulumi.get(self, "project")
 
@@ -158,7 +174,7 @@ class GetMirrorMakerReplicationFlowResult:
     @pulumi.getter(name="replicationFactor")
     def replication_factor(self) -> _builtins.int:
         """
-        Replication factor, `>= 1`.
+        Replication factor used when creating the remote topics. If the replication factor surpasses the number of nodes in the target cluster, topic creation will fail.
         """
         return pulumi.get(self, "replication_factor")
 
@@ -166,7 +182,7 @@ class GetMirrorMakerReplicationFlowResult:
     @pulumi.getter(name="replicationPolicyClass")
     def replication_policy_class(self) -> _builtins.str:
         """
-        Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
+        Class which defines the remote topic naming convention. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`.
         """
         return pulumi.get(self, "replication_policy_class")
 
@@ -174,7 +190,7 @@ class GetMirrorMakerReplicationFlowResult:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> _builtins.str:
         """
-        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Service name.
         """
         return pulumi.get(self, "service_name")
 
@@ -182,7 +198,7 @@ class GetMirrorMakerReplicationFlowResult:
     @pulumi.getter(name="sourceCluster")
     def source_cluster(self) -> _builtins.str:
         """
-        Source cluster alias. Maximum length: `128`.
+        The alias of the source cluster to use in this replication flow. Can contain the following symbols: ASCII alphanumerics, `.`, `_`, and `-`.
         """
         return pulumi.get(self, "source_cluster")
 
@@ -190,7 +206,7 @@ class GetMirrorMakerReplicationFlowResult:
     @pulumi.getter(name="syncGroupOffsetsEnabled")
     def sync_group_offsets_enabled(self) -> _builtins.bool:
         """
-        Sync consumer group offsets. The default value is `false`.
+        Whether to periodically write the translated offsets of replicated consumer groups (in the source cluster) to _*consumer*offsets topic in target cluster, as long as no active consumers in that group are connected to the target cluster. The default value is `false`.
         """
         return pulumi.get(self, "sync_group_offsets_enabled")
 
@@ -198,7 +214,7 @@ class GetMirrorMakerReplicationFlowResult:
     @pulumi.getter(name="syncGroupOffsetsIntervalSeconds")
     def sync_group_offsets_interval_seconds(self) -> _builtins.int:
         """
-        Frequency of consumer group offset sync. The default value is `1`.
+        Frequency at which consumer group offsets are synced (default: 60, every minute). The default value is `1`.
         """
         return pulumi.get(self, "sync_group_offsets_interval_seconds")
 
@@ -206,15 +222,20 @@ class GetMirrorMakerReplicationFlowResult:
     @pulumi.getter(name="targetCluster")
     def target_cluster(self) -> _builtins.str:
         """
-        Target cluster alias. Maximum length: `128`.
+        The alias of the target cluster to use in this replication flow. Can contain the following symbols: ASCII alphanumerics, `.`, `_`, and `-`.
         """
         return pulumi.get(self, "target_cluster")
 
     @_builtins.property
     @pulumi.getter
+    def timeouts(self) -> Optional['outputs.GetMirrorMakerReplicationFlowTimeoutsResult']:
+        return pulumi.get(self, "timeouts")
+
+    @_builtins.property
+    @pulumi.getter
     def topics(self) -> Sequence[_builtins.str]:
         """
-        The topics to include in the replica defined by a [list of regular expressions in Java format](https://aiven.io/docs/products/kafka/kafka-mirrormaker/concepts/replication-flow-topics-regex).
+        Topic names and regular expressions that match topic names that should be replicated. MirrorMaker will replicate these topics if they are not matched by `topics_blacklist`. The topics to include are defined by a [list of regular expressions in Java format](https://aiven.io/docs/products/kafka/kafka-mirrormaker/concepts/replication-flow-topics-regex).
         """
         return pulumi.get(self, "topics")
 
@@ -222,7 +243,7 @@ class GetMirrorMakerReplicationFlowResult:
     @pulumi.getter(name="topicsBlacklists")
     def topics_blacklists(self) -> Sequence[_builtins.str]:
         """
-        The topics to exclude from the replica defined by a [list of regular expressions in Java format](https://aiven.io/docs/products/kafka/kafka-mirrormaker/concepts/replication-flow-topics-regex).
+        Topic names and regular expressions that match topic names that should not be replicated. MirrorMaker will not replicate these topics even if they are matched by `topics`. The topics to exclude are defined by a [list of regular expressions in Java format](https://aiven.io/docs/products/kafka/kafka-mirrormaker/concepts/replication-flow-topics-regex).
         """
         return pulumi.get(self, "topics_blacklists")
 
@@ -240,6 +261,7 @@ class AwaitableGetMirrorMakerReplicationFlowResult(GetMirrorMakerReplicationFlow
             exactly_once_delivery_enabled=self.exactly_once_delivery_enabled,
             follower_fetching_enabled=self.follower_fetching_enabled,
             id=self.id,
+            offset_lag_max=self.offset_lag_max,
             offset_syncs_topic_location=self.offset_syncs_topic_location,
             project=self.project,
             replication_factor=self.replication_factor,
@@ -249,6 +271,7 @@ class AwaitableGetMirrorMakerReplicationFlowResult(GetMirrorMakerReplicationFlow
             sync_group_offsets_enabled=self.sync_group_offsets_enabled,
             sync_group_offsets_interval_seconds=self.sync_group_offsets_interval_seconds,
             target_cluster=self.target_cluster,
+            timeouts=self.timeouts,
             topics=self.topics,
             topics_blacklists=self.topics_blacklists)
 
@@ -257,6 +280,7 @@ def get_mirror_maker_replication_flow(project: Optional[_builtins.str] = None,
                                       service_name: Optional[_builtins.str] = None,
                                       source_cluster: Optional[_builtins.str] = None,
                                       target_cluster: Optional[_builtins.str] = None,
+                                      timeouts: Optional[Union['GetMirrorMakerReplicationFlowTimeoutsArgs', 'GetMirrorMakerReplicationFlowTimeoutsArgsDict']] = None,
                                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMirrorMakerReplicationFlowResult:
     """
     Gets information about an [Aiven for Apache Kafka® MirrorMaker 2](https://aiven.io/docs/products/kafka/kafka-mirrormaker) replication flow.
@@ -267,23 +291,24 @@ def get_mirror_maker_replication_flow(project: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    example_replication_flow = aiven.get_mirror_maker_replication_flow(project=example_project["project"],
-        service_name=example_kafka["serviceName"],
-        source_cluster=source["serviceName"],
-        target_cluster=target["serviceName"])
+    example = aiven.get_mirror_maker_replication_flow(project="my-project",
+        service_name="foo",
+        source_cluster="kafka-abc",
+        target_cluster="kafka-abc")
     ```
 
 
-    :param _builtins.str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param _builtins.str service_name: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param _builtins.str source_cluster: Source cluster alias. Maximum length: `128`.
-    :param _builtins.str target_cluster: Target cluster alias. Maximum length: `128`.
+    :param _builtins.str project: Project name.
+    :param _builtins.str service_name: Service name.
+    :param _builtins.str source_cluster: The alias of the source cluster to use in this replication flow. Can contain the following symbols: ASCII alphanumerics, `.`, `_`, and `-`.
+    :param _builtins.str target_cluster: The alias of the target cluster to use in this replication flow. Can contain the following symbols: ASCII alphanumerics, `.`, `_`, and `-`.
     """
     __args__ = dict()
     __args__['project'] = project
     __args__['serviceName'] = service_name
     __args__['sourceCluster'] = source_cluster
     __args__['targetCluster'] = target_cluster
+    __args__['timeouts'] = timeouts
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('aiven:index/getMirrorMakerReplicationFlow:getMirrorMakerReplicationFlow', __args__, opts=opts, typ=GetMirrorMakerReplicationFlowResult).value
 
@@ -295,6 +320,7 @@ def get_mirror_maker_replication_flow(project: Optional[_builtins.str] = None,
         exactly_once_delivery_enabled=pulumi.get(__ret__, 'exactly_once_delivery_enabled'),
         follower_fetching_enabled=pulumi.get(__ret__, 'follower_fetching_enabled'),
         id=pulumi.get(__ret__, 'id'),
+        offset_lag_max=pulumi.get(__ret__, 'offset_lag_max'),
         offset_syncs_topic_location=pulumi.get(__ret__, 'offset_syncs_topic_location'),
         project=pulumi.get(__ret__, 'project'),
         replication_factor=pulumi.get(__ret__, 'replication_factor'),
@@ -304,12 +330,14 @@ def get_mirror_maker_replication_flow(project: Optional[_builtins.str] = None,
         sync_group_offsets_enabled=pulumi.get(__ret__, 'sync_group_offsets_enabled'),
         sync_group_offsets_interval_seconds=pulumi.get(__ret__, 'sync_group_offsets_interval_seconds'),
         target_cluster=pulumi.get(__ret__, 'target_cluster'),
+        timeouts=pulumi.get(__ret__, 'timeouts'),
         topics=pulumi.get(__ret__, 'topics'),
         topics_blacklists=pulumi.get(__ret__, 'topics_blacklists'))
 def get_mirror_maker_replication_flow_output(project: pulumi.Input[Optional[_builtins.str]] = None,
                                              service_name: pulumi.Input[Optional[_builtins.str]] = None,
                                              source_cluster: pulumi.Input[Optional[_builtins.str]] = None,
                                              target_cluster: pulumi.Input[Optional[_builtins.str]] = None,
+                                             timeouts: pulumi.Input[Optional[Optional[Union['GetMirrorMakerReplicationFlowTimeoutsArgs', 'GetMirrorMakerReplicationFlowTimeoutsArgsDict']]]] = None,
                                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMirrorMakerReplicationFlowResult]:
     """
     Gets information about an [Aiven for Apache Kafka® MirrorMaker 2](https://aiven.io/docs/products/kafka/kafka-mirrormaker) replication flow.
@@ -320,23 +348,24 @@ def get_mirror_maker_replication_flow_output(project: pulumi.Input[Optional[_bui
     import pulumi
     import pulumi_aiven as aiven
 
-    example_replication_flow = aiven.get_mirror_maker_replication_flow(project=example_project["project"],
-        service_name=example_kafka["serviceName"],
-        source_cluster=source["serviceName"],
-        target_cluster=target["serviceName"])
+    example = aiven.get_mirror_maker_replication_flow(project="my-project",
+        service_name="foo",
+        source_cluster="kafka-abc",
+        target_cluster="kafka-abc")
     ```
 
 
-    :param _builtins.str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param _builtins.str service_name: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param _builtins.str source_cluster: Source cluster alias. Maximum length: `128`.
-    :param _builtins.str target_cluster: Target cluster alias. Maximum length: `128`.
+    :param _builtins.str project: Project name.
+    :param _builtins.str service_name: Service name.
+    :param _builtins.str source_cluster: The alias of the source cluster to use in this replication flow. Can contain the following symbols: ASCII alphanumerics, `.`, `_`, and `-`.
+    :param _builtins.str target_cluster: The alias of the target cluster to use in this replication flow. Can contain the following symbols: ASCII alphanumerics, `.`, `_`, and `-`.
     """
     __args__ = dict()
     __args__['project'] = project
     __args__['serviceName'] = service_name
     __args__['sourceCluster'] = source_cluster
     __args__['targetCluster'] = target_cluster
+    __args__['timeouts'] = timeouts
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('aiven:index/getMirrorMakerReplicationFlow:getMirrorMakerReplicationFlow', __args__, opts=opts, typ=GetMirrorMakerReplicationFlowResult)
     return __ret__.apply(lambda __response__: GetMirrorMakerReplicationFlowResult(
@@ -347,6 +376,7 @@ def get_mirror_maker_replication_flow_output(project: pulumi.Input[Optional[_bui
         exactly_once_delivery_enabled=pulumi.get(__response__, 'exactly_once_delivery_enabled'),
         follower_fetching_enabled=pulumi.get(__response__, 'follower_fetching_enabled'),
         id=pulumi.get(__response__, 'id'),
+        offset_lag_max=pulumi.get(__response__, 'offset_lag_max'),
         offset_syncs_topic_location=pulumi.get(__response__, 'offset_syncs_topic_location'),
         project=pulumi.get(__response__, 'project'),
         replication_factor=pulumi.get(__response__, 'replication_factor'),
@@ -356,5 +386,6 @@ def get_mirror_maker_replication_flow_output(project: pulumi.Input[Optional[_bui
         sync_group_offsets_enabled=pulumi.get(__response__, 'sync_group_offsets_enabled'),
         sync_group_offsets_interval_seconds=pulumi.get(__response__, 'sync_group_offsets_interval_seconds'),
         target_cluster=pulumi.get(__response__, 'target_cluster'),
+        timeouts=pulumi.get(__response__, 'timeouts'),
         topics=pulumi.get(__response__, 'topics'),
         topics_blacklists=pulumi.get(__response__, 'topics_blacklists')))

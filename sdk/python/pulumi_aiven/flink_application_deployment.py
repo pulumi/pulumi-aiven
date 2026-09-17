@@ -357,10 +357,6 @@ class FlinkApplicationDeployment(pulumi.CustomResource):
             service_name="example-flink-service",
             name="example-app")
         main = aiven.FlinkApplicationVersion("main",
-            project=example_project["project"],
-            service_name=example_flink["serviceName"],
-            application_id=example_app.application_id,
-            statement="    INSERT INTO kafka_known_pizza SELECT * FROM kafka_pizza WHERE shop LIKE '%Luigis Pizza%'\\n",
             sinks=[{
                 "create_table": \"\"\"      CREATE TABLE kafka_known_pizza (
                 shop STRING,
@@ -388,7 +384,11 @@ class FlinkApplicationDeployment(pulumi.CustomResource):
               )
         \"\"\",
                 "integration_id": flink_to_kafka["integrationId"],
-            }])
+            }],
+            project=example_project["project"],
+            service_name=example_flink["serviceName"],
+            application_id=example_app.application_id,
+            statement="    INSERT INTO kafka_known_pizza SELECT * FROM kafka_pizza WHERE shop LIKE '%Luigis Pizza%'\\n")
         main_flink_application_deployment = aiven.FlinkApplicationDeployment("main",
             project=example_project["project"],
             service_name=example_flink["serviceName"],
@@ -433,10 +433,6 @@ class FlinkApplicationDeployment(pulumi.CustomResource):
             service_name="example-flink-service",
             name="example-app")
         main = aiven.FlinkApplicationVersion("main",
-            project=example_project["project"],
-            service_name=example_flink["serviceName"],
-            application_id=example_app.application_id,
-            statement="    INSERT INTO kafka_known_pizza SELECT * FROM kafka_pizza WHERE shop LIKE '%Luigis Pizza%'\\n",
             sinks=[{
                 "create_table": \"\"\"      CREATE TABLE kafka_known_pizza (
                 shop STRING,
@@ -464,7 +460,11 @@ class FlinkApplicationDeployment(pulumi.CustomResource):
               )
         \"\"\",
                 "integration_id": flink_to_kafka["integrationId"],
-            }])
+            }],
+            project=example_project["project"],
+            service_name=example_flink["serviceName"],
+            application_id=example_app.application_id,
+            statement="    INSERT INTO kafka_known_pizza SELECT * FROM kafka_pizza WHERE shop LIKE '%Luigis Pizza%'\\n")
         main_flink_application_deployment = aiven.FlinkApplicationDeployment("main",
             project=example_project["project"],
             service_name=example_flink["serviceName"],

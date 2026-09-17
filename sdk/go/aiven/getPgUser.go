@@ -71,6 +71,8 @@ type LookupPgUserResult struct {
 	Id string `pulumi:"id"`
 	// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`.
 	Password string `pulumi:"password"`
+	// The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. 'unknown' is reported when the hash is missing or uses an unrecognised format. The possible values are `md5`, `scram-sha-256` and `unknown`.
+	PasswordEncryptionType string `pulumi:"passwordEncryptionType"`
 	// Allows replication. For the default avnadmin user this attribute is required and is always `true`.
 	PgAllowReplication bool `pulumi:"pgAllowReplication"`
 	// Project name.
@@ -137,6 +139,11 @@ func (o LookupPgUserResultOutput) Id() pulumi.StringOutput {
 // The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`.
 func (o LookupPgUserResultOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPgUserResult) string { return v.Password }).(pulumi.StringOutput)
+}
+
+// The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. 'unknown' is reported when the hash is missing or uses an unrecognised format. The possible values are `md5`, `scram-sha-256` and `unknown`.
+func (o LookupPgUserResultOutput) PasswordEncryptionType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPgUserResult) string { return v.PasswordEncryptionType }).(pulumi.StringOutput)
 }
 
 // Allows replication. For the default avnadmin user this attribute is required and is always `true`.

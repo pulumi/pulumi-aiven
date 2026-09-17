@@ -16,16 +16,16 @@ import * as utilities from "./utilities";
  * import * as aiven from "@pulumi/aiven";
  *
  * const exampleThanos = new aiven.Thanos("example_thanos", {
- *     project: exampleProject.project,
- *     plan: "startup-4",
- *     cloudName: "google-europe-west1",
- *     serviceName: "example-thanos-service",
  *     thanosUserConfig: {
  *         compactor: {
  *             retentionDays: 30,
  *         },
  *         objectStorageUsageAlertThresholdGb: 10,
  *     },
+ *     project: exampleProject.project,
+ *     plan: "startup-4",
+ *     cloudName: "google-europe-west1",
+ *     serviceName: "example-thanos-service",
  * });
  * ```
  *

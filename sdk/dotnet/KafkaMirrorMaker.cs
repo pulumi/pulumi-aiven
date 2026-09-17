@@ -24,23 +24,23 @@ namespace Pulumi.Aiven
     /// {
     ///     var exampleMirrormaker = new Aiven.KafkaMirrorMaker("example_mirrormaker", new()
     ///     {
-    ///         Project = exampleProject.Project,
-    ///         CloudName = "google-europe-west1",
-    ///         Plan = "startup-4",
-    ///         ServiceName = "example-mirrormaker-service",
     ///         KafkaMirrormakerUserConfig = new Aiven.Inputs.KafkaMirrorMakerKafkaMirrormakerUserConfigArgs
     ///         {
-    ///             IpFilters = new[]
-    ///             {
-    ///                 "0.0.0.0/0",
-    ///             },
     ///             KafkaMirrormaker = new Aiven.Inputs.KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs
     ///             {
     ///                 RefreshGroupsIntervalSeconds = 600,
     ///                 RefreshTopicsEnabled = true,
     ///                 RefreshTopicsIntervalSeconds = 600,
     ///             },
+    ///             IpFilters = new[]
+    ///             {
+    ///                 "0.0.0.0/0",
+    ///             },
     ///         },
+    ///         Project = exampleProject.Project,
+    ///         CloudName = "google-europe-west1",
+    ///         Plan = "startup-4",
+    ///         ServiceName = "example-mirrormaker-service",
     ///     });
     /// 
     /// });

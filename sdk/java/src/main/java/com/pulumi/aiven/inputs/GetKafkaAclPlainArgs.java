@@ -3,10 +3,13 @@
 
 package com.pulumi.aiven.inputs;
 
+import com.pulumi.aiven.inputs.GetKafkaAclTimeouts;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetKafkaAclPlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -14,29 +17,44 @@ public final class GetKafkaAclPlainArgs extends com.pulumi.resources.InvokeArgs 
     public static final GetKafkaAclPlainArgs Empty = new GetKafkaAclPlainArgs();
 
     /**
-     * Permissions to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
+     * Kafka ACL ID. Provide either `aclId`, or all of `permission`, `topic` and `username` together.
      * 
      */
-    @Import(name="permission", required=true)
-    private String permission;
+    @Import(name="aclId")
+    private @Nullable String aclId;
 
     /**
-     * @return Permissions to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
+     * @return Kafka ACL ID. Provide either `aclId`, or all of `permission`, `topic` and `username` together.
      * 
      */
-    public String permission() {
-        return this.permission;
+    public Optional<String> aclId() {
+        return Optional.ofNullable(this.aclId);
     }
 
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Permission of an Aiven Kafka ACL entry, as opposed to a Kafka-native one. The possible values are `admin`, `read`, `readwrite` and `write`. Provide either `aclId`, or all of `permission`, `topic` and `username` together.
+     * 
+     */
+    @Import(name="permission")
+    private @Nullable String permission;
+
+    /**
+     * @return Permission of an Aiven Kafka ACL entry, as opposed to a Kafka-native one. The possible values are `admin`, `read`, `readwrite` and `write`. Provide either `aclId`, or all of `permission`, `topic` and `username` together.
+     * 
+     */
+    public Optional<String> permission() {
+        return Optional.ofNullable(this.permission);
+    }
+
+    /**
+     * Project name.
      * 
      */
     @Import(name="project", required=true)
     private String project;
 
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Project name.
      * 
      */
     public String project() {
@@ -44,56 +62,65 @@ public final class GetKafkaAclPlainArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name.
      * 
      */
     @Import(name="serviceName", required=true)
     private String serviceName;
 
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Service name.
      * 
      */
     public String serviceName() {
         return this.serviceName;
     }
 
-    /**
-     * Topics that the permissions apply to. Changing this property forces recreation of the resource.
-     * 
-     */
-    @Import(name="topic", required=true)
-    private String topic;
+    @Import(name="timeouts")
+    private @Nullable GetKafkaAclTimeouts timeouts;
 
-    /**
-     * @return Topics that the permissions apply to. Changing this property forces recreation of the resource.
-     * 
-     */
-    public String topic() {
-        return this.topic;
+    public Optional<GetKafkaAclTimeouts> timeouts() {
+        return Optional.ofNullable(this.timeouts);
     }
 
     /**
-     * Usernames to grant permissions to. Changing this property forces recreation of the resource.
+     * Topic name pattern. Provide either `aclId`, or all of `permission`, `topic` and `username` together.
      * 
      */
-    @Import(name="username", required=true)
-    private String username;
+    @Import(name="topic")
+    private @Nullable String topic;
 
     /**
-     * @return Usernames to grant permissions to. Changing this property forces recreation of the resource.
+     * @return Topic name pattern. Provide either `aclId`, or all of `permission`, `topic` and `username` together.
      * 
      */
-    public String username() {
-        return this.username;
+    public Optional<String> topic() {
+        return Optional.ofNullable(this.topic);
+    }
+
+    /**
+     * Username. Provide either `aclId`, or all of `permission`, `topic` and `username` together.
+     * 
+     */
+    @Import(name="username")
+    private @Nullable String username;
+
+    /**
+     * @return Username. Provide either `aclId`, or all of `permission`, `topic` and `username` together.
+     * 
+     */
+    public Optional<String> username() {
+        return Optional.ofNullable(this.username);
     }
 
     private GetKafkaAclPlainArgs() {}
 
     private GetKafkaAclPlainArgs(GetKafkaAclPlainArgs $) {
+        this.aclId = $.aclId;
         this.permission = $.permission;
         this.project = $.project;
         this.serviceName = $.serviceName;
+        this.timeouts = $.timeouts;
         this.topic = $.topic;
         this.username = $.username;
     }
@@ -117,18 +144,29 @@ public final class GetKafkaAclPlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param permission Permissions to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
+         * @param aclId Kafka ACL ID. Provide either `aclId`, or all of `permission`, `topic` and `username` together.
          * 
          * @return builder
          * 
          */
-        public Builder permission(String permission) {
+        public Builder aclId(@Nullable String aclId) {
+            $.aclId = aclId;
+            return this;
+        }
+
+        /**
+         * @param permission Permission of an Aiven Kafka ACL entry, as opposed to a Kafka-native one. The possible values are `admin`, `read`, `readwrite` and `write`. Provide either `aclId`, or all of `permission`, `topic` and `username` together.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder permission(@Nullable String permission) {
             $.permission = permission;
             return this;
         }
 
         /**
-         * @param project The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param project Project name.
          * 
          * @return builder
          * 
@@ -139,7 +177,7 @@ public final class GetKafkaAclPlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param serviceName The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param serviceName Service name.
          * 
          * @return builder
          * 
@@ -149,43 +187,39 @@ public final class GetKafkaAclPlainArgs extends com.pulumi.resources.InvokeArgs 
             return this;
         }
 
+        public Builder timeouts(@Nullable GetKafkaAclTimeouts timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
         /**
-         * @param topic Topics that the permissions apply to. Changing this property forces recreation of the resource.
+         * @param topic Topic name pattern. Provide either `aclId`, or all of `permission`, `topic` and `username` together.
          * 
          * @return builder
          * 
          */
-        public Builder topic(String topic) {
+        public Builder topic(@Nullable String topic) {
             $.topic = topic;
             return this;
         }
 
         /**
-         * @param username Usernames to grant permissions to. Changing this property forces recreation of the resource.
+         * @param username Username. Provide either `aclId`, or all of `permission`, `topic` and `username` together.
          * 
          * @return builder
          * 
          */
-        public Builder username(String username) {
+        public Builder username(@Nullable String username) {
             $.username = username;
             return this;
         }
 
         public GetKafkaAclPlainArgs build() {
-            if ($.permission == null) {
-                throw new MissingRequiredPropertyException("GetKafkaAclPlainArgs", "permission");
-            }
             if ($.project == null) {
                 throw new MissingRequiredPropertyException("GetKafkaAclPlainArgs", "project");
             }
             if ($.serviceName == null) {
                 throw new MissingRequiredPropertyException("GetKafkaAclPlainArgs", "serviceName");
-            }
-            if ($.topic == null) {
-                throw new MissingRequiredPropertyException("GetKafkaAclPlainArgs", "topic");
-            }
-            if ($.username == null) {
-                throw new MissingRequiredPropertyException("GetKafkaAclPlainArgs", "username");
             }
             return $;
         }

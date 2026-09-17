@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -14,16 +16,18 @@ import * as utilities from "./utilities";
  * import * as aiven from "@pulumi/aiven";
  *
  * const example = aiven.getOrganizationUserGroup({
- *     name: "Example group",
- *     organizationId: main.id,
+ *     organizationId: "org1a23f456789",
+ *     groupId: "foo",
  * });
  * ```
  */
 export function getOrganizationUserGroup(args: GetOrganizationUserGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetOrganizationUserGroupResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getOrganizationUserGroup:getOrganizationUserGroup", {
+        "groupId": args.groupId,
         "name": args.name,
         "organizationId": args.organizationId,
+        "timeouts": args.timeouts,
     }, opts);
 }
 
@@ -32,13 +36,18 @@ export function getOrganizationUserGroup(args: GetOrganizationUserGroupArgs, opt
  */
 export interface GetOrganizationUserGroupArgs {
     /**
-     * The name of the user group. Changing this property forces recreation of the resource.
+     * ID of the user group. Exactly one of the fields must be specified: `groupId` or `name`.
      */
-    name: string;
+    groupId?: string;
     /**
-     * The ID of the organization. Changing this property forces recreation of the resource.
+     * User Group Name. Exactly one of the fields must be specified: `groupId` or `name`.
+     */
+    name?: string;
+    /**
+     * ID of an organization.
      */
     organizationId: string;
+    timeouts?: inputs.GetOrganizationUserGroupTimeouts;
 }
 
 /**
@@ -46,31 +55,36 @@ export interface GetOrganizationUserGroupArgs {
  */
 export interface GetOrganizationUserGroupResult {
     /**
-     * Time of creation.
+     * User group creation time.
      */
     readonly createTime: string;
     /**
-     * The description of the user group. Changing this property forces recreation of the resource.
+     * Description.
      */
     readonly description: string;
     /**
-     * The ID of the user group.
+     * ID of the user group. Exactly one of the fields must be specified: `groupId` or `name`.
      */
     readonly groupId: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * Resource ID composed as: `organization_id/group_id`.
      */
     readonly id: string;
     /**
-     * The name of the user group. Changing this property forces recreation of the resource.
+     * Managed By Scim.
+     */
+    readonly managedByScim: boolean;
+    /**
+     * User Group Name. Exactly one of the fields must be specified: `groupId` or `name`.
      */
     readonly name: string;
     /**
-     * The ID of the organization. Changing this property forces recreation of the resource.
+     * ID of an organization.
      */
     readonly organizationId: string;
+    readonly timeouts?: outputs.GetOrganizationUserGroupTimeouts;
     /**
-     * Time of last update.
+     * User group last update time.
      */
     readonly updateTime: string;
 }
@@ -84,16 +98,18 @@ export interface GetOrganizationUserGroupResult {
  * import * as aiven from "@pulumi/aiven";
  *
  * const example = aiven.getOrganizationUserGroup({
- *     name: "Example group",
- *     organizationId: main.id,
+ *     organizationId: "org1a23f456789",
+ *     groupId: "foo",
  * });
  * ```
  */
 export function getOrganizationUserGroupOutput(args: GetOrganizationUserGroupOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOrganizationUserGroupResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("aiven:index/getOrganizationUserGroup:getOrganizationUserGroup", {
+        "groupId": args.groupId,
         "name": args.name,
         "organizationId": args.organizationId,
+        "timeouts": args.timeouts,
     }, opts);
 }
 
@@ -102,11 +118,16 @@ export function getOrganizationUserGroupOutput(args: GetOrganizationUserGroupOut
  */
 export interface GetOrganizationUserGroupOutputArgs {
     /**
-     * The name of the user group. Changing this property forces recreation of the resource.
+     * ID of the user group. Exactly one of the fields must be specified: `groupId` or `name`.
      */
-    name: pulumi.Input<string>;
+    groupId?: pulumi.Input<string | undefined>;
     /**
-     * The ID of the organization. Changing this property forces recreation of the resource.
+     * User Group Name. Exactly one of the fields must be specified: `groupId` or `name`.
+     */
+    name?: pulumi.Input<string | undefined>;
+    /**
+     * ID of an organization.
      */
     organizationId: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.GetOrganizationUserGroupTimeoutsArgs | undefined>;
 }

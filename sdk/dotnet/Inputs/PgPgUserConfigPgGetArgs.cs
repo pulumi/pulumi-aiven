@@ -133,7 +133,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? IoMethod { get; set; }
 
         /// <summary>
-        /// EXPERIMENTAL: Number of IO worker processes, for io_method=worker. Version 18 and up only. Changing this parameter causes a service restart. Default: `3`.
+        /// EXPERIMENTAL: Number of IO worker processes, for io_method=worker. Version 18 and up only.
         /// </summary>
         [Input("ioWorkers")]
         public Input<int>? IoWorkers { get; set; }
@@ -289,7 +289,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? PgPartmanBgwDotRole { get; set; }
 
         /// <summary>
-        /// Enables or disables query plan monitoring. Changing this parameter causes a service restart. Only available for PostgreSQL 13+.
+        /// Enables or disables query plan monitoring. Only available for PostgreSQL 13+.
         /// </summary>
         [Input("pgStatMonitorDotPgsmEnableQueryPlan")]
         public Input<bool>? PgStatMonitorDotPgsmEnableQueryPlan { get; set; }
@@ -299,6 +299,12 @@ namespace Pulumi.Aiven.Inputs
         /// </summary>
         [Input("pgStatMonitorDotPgsmMaxBuckets")]
         public Input<int>? PgStatMonitorDotPgsmMaxBuckets { get; set; }
+
+        /// <summary>
+        /// Enum: `All`, `None`, `Top`. Controls which statements' plans are tracked. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable plan tracking. The default is `Top`.
+        /// </summary>
+        [Input("pgStatPlansDotTrack")]
+        public Input<string>? PgStatPlansDotTrack { get; set; }
 
         /// <summary>
         /// Enum: `All`, `None`, `Top`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default is `Top`.

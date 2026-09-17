@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['ValkeyUserArgs', 'ValkeyUser']
 
@@ -25,6 +27,7 @@ class ValkeyUserArgs:
                  password: pulumi.Input[Optional[_builtins.str]] = None,
                  password_wo: pulumi.Input[Optional[_builtins.str]] = None,
                  password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 timeouts: pulumi.Input[Optional['ValkeyUserTimeoutsArgs']] = None,
                  valkey_acl_categories: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  valkey_acl_channels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  valkey_acl_commands: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -32,17 +35,17 @@ class ValkeyUserArgs:
         """
         The set of arguments for constructing a ValkeyUser resource.
 
-        :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] username: Name of the Valkey service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] password: The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+        :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] service_name: Service name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] username: Service username. Maximum length: `64`. Must match pattern: `^[_A-Za-z0-9][-._A-Za-z0-9]{0,63}$`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] password: The password of the service user (auto-generated if not provided). The field conflicts with `password_wo`. Length must be between `8` and `256`.
         :param pulumi.Input[_builtins.str] password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-               The password of the service user (write-only, not stored in state). Must be used with `password_wo_version`. Must be 8-256 characters.
-        :param pulumi.Input[_builtins.int] password_wo_version: Version number for `password_wo`. Increment this to rotate the password. Must be >= 1.
+               The password of the service user (write-only, not stored in state). The field is required with `password_wo_version`. The field conflicts with `password`. Length must be between `8` and `256`.
+        :param pulumi.Input[_builtins.int] password_wo_version: Version number for `password_wo`. Increment this to rotate the password. The field is required with `password_wo`. Minimum value: `1`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] valkey_acl_categories: Allow or disallow command categories. To allow a category use the prefix `+@` and to disallow use `-@`. See the [Valkey documentation](https://valkey.io/topics/acl/) for details on the ACL feature. The field is required with `valkey_acl_commands` and `valkey_acl_keys`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] valkey_acl_channels: Allows and disallows access to pub/sub channels. Entries are defined as standard glob patterns.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] valkey_acl_commands: Defines rules for individual commands. To allow a command use the prefix `+` and to disallow use `-`. The field is required with `valkey_acl_categories` and `valkey_acl_keys`.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] valkey_acl_keys: Key access rules. Entries are defined as standard glob patterns. The field is required with `valkey_acl_categories` and `valkey_acl_keys`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] valkey_acl_keys: Key access rules. Entries are defined as standard glob patterns. The field is required with `valkey_acl_categories` and `valkey_acl_commands`.
         """
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "service_name", service_name)
@@ -53,6 +56,8 @@ class ValkeyUserArgs:
             pulumi.set(__self__, "password_wo", password_wo)
         if password_wo_version is not None:
             pulumi.set(__self__, "password_wo_version", password_wo_version)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
         if valkey_acl_categories is not None:
             pulumi.set(__self__, "valkey_acl_categories", valkey_acl_categories)
         if valkey_acl_channels is not None:
@@ -66,7 +71,7 @@ class ValkeyUserArgs:
     @pulumi.getter
     def project(self) -> pulumi.Input[_builtins.str]:
         """
-        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Project name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -78,7 +83,7 @@ class ValkeyUserArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[_builtins.str]:
         """
-        The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Service name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
@@ -90,7 +95,7 @@ class ValkeyUserArgs:
     @pulumi.getter
     def username(self) -> pulumi.Input[_builtins.str]:
         """
-        Name of the Valkey service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Service username. Maximum length: `64`. Must match pattern: `^[_A-Za-z0-9][-._A-Za-z0-9]{0,63}$`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "username")
 
@@ -102,7 +107,7 @@ class ValkeyUserArgs:
     @pulumi.getter
     def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+        The password of the service user (auto-generated if not provided). The field conflicts with `password_wo`. Length must be between `8` and `256`.
         """
         return pulumi.get(self, "password")
 
@@ -115,7 +120,7 @@ class ValkeyUserArgs:
     def password_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-        The password of the service user (write-only, not stored in state). Must be used with `password_wo_version`. Must be 8-256 characters.
+        The password of the service user (write-only, not stored in state). The field is required with `password_wo_version`. The field conflicts with `password`. Length must be between `8` and `256`.
         """
         return pulumi.get(self, "password_wo")
 
@@ -127,13 +132,22 @@ class ValkeyUserArgs:
     @pulumi.getter(name="passwordWoVersion")
     def password_wo_version(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Version number for `password_wo`. Increment this to rotate the password. Must be >= 1.
+        Version number for `password_wo`. Increment this to rotate the password. The field is required with `password_wo`. Minimum value: `1`.
         """
         return pulumi.get(self, "password_wo_version")
 
     @password_wo_version.setter
     def password_wo_version(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "password_wo_version", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> pulumi.Input[Optional['ValkeyUserTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: pulumi.Input[Optional['ValkeyUserTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
 
     @_builtins.property
     @pulumi.getter(name="valkeyAclCategories")
@@ -175,7 +189,7 @@ class ValkeyUserArgs:
     @pulumi.getter(name="valkeyAclKeys")
     def valkey_acl_keys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Key access rules. Entries are defined as standard glob patterns. The field is required with `valkey_acl_categories` and `valkey_acl_keys`.
+        Key access rules. Entries are defined as standard glob patterns. The field is required with `valkey_acl_categories` and `valkey_acl_commands`.
         """
         return pulumi.get(self, "valkey_acl_keys")
 
@@ -188,10 +202,12 @@ class ValkeyUserArgs:
 class _ValkeyUserState:
     def __init__(__self__, *,
                  password: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_encryption_type: pulumi.Input[Optional[_builtins.str]] = None,
                  password_wo: pulumi.Input[Optional[_builtins.str]] = None,
                  password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional['ValkeyUserTimeoutsArgs']] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  username: pulumi.Input[Optional[_builtins.str]] = None,
                  valkey_acl_categories: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -201,21 +217,24 @@ class _ValkeyUserState:
         """
         Input properties used for looking up and filtering ValkeyUser resources.
 
-        :param pulumi.Input[_builtins.str] password: The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+        :param pulumi.Input[_builtins.str] password: The password of the service user (auto-generated if not provided). The field conflicts with `password_wo`. Length must be between `8` and `256`.
+        :param pulumi.Input[_builtins.str] password_encryption_type: The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. 'unknown' is reported when the hash is missing or uses an unrecognised format. The possible values are `md5`, `scram-sha-256` and `unknown`.
         :param pulumi.Input[_builtins.str] password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-               The password of the service user (write-only, not stored in state). Must be used with `password_wo_version`. Must be 8-256 characters.
-        :param pulumi.Input[_builtins.int] password_wo_version: Version number for `password_wo`. Increment this to rotate the password. Must be >= 1.
-        :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] type: User account type, such as primary or regular account.
-        :param pulumi.Input[_builtins.str] username: Name of the Valkey service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+               The password of the service user (write-only, not stored in state). The field is required with `password_wo_version`. The field conflicts with `password`. Length must be between `8` and `256`.
+        :param pulumi.Input[_builtins.int] password_wo_version: Version number for `password_wo`. Increment this to rotate the password. The field is required with `password_wo`. Minimum value: `1`.
+        :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] service_name: Service name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] type: Account type.
+        :param pulumi.Input[_builtins.str] username: Service username. Maximum length: `64`. Must match pattern: `^[_A-Za-z0-9][-._A-Za-z0-9]{0,63}$`. Changing this property forces recreation of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] valkey_acl_categories: Allow or disallow command categories. To allow a category use the prefix `+@` and to disallow use `-@`. See the [Valkey documentation](https://valkey.io/topics/acl/) for details on the ACL feature. The field is required with `valkey_acl_commands` and `valkey_acl_keys`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] valkey_acl_channels: Allows and disallows access to pub/sub channels. Entries are defined as standard glob patterns.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] valkey_acl_commands: Defines rules for individual commands. To allow a command use the prefix `+` and to disallow use `-`. The field is required with `valkey_acl_categories` and `valkey_acl_keys`.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] valkey_acl_keys: Key access rules. Entries are defined as standard glob patterns. The field is required with `valkey_acl_categories` and `valkey_acl_keys`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] valkey_acl_keys: Key access rules. Entries are defined as standard glob patterns. The field is required with `valkey_acl_categories` and `valkey_acl_commands`.
         """
         if password is not None:
             pulumi.set(__self__, "password", password)
+        if password_encryption_type is not None:
+            pulumi.set(__self__, "password_encryption_type", password_encryption_type)
         if password_wo is not None:
             pulumi.set(__self__, "password_wo", password_wo)
         if password_wo_version is not None:
@@ -224,6 +243,8 @@ class _ValkeyUserState:
             pulumi.set(__self__, "project", project)
         if service_name is not None:
             pulumi.set(__self__, "service_name", service_name)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
         if type is not None:
             pulumi.set(__self__, "type", type)
         if username is not None:
@@ -241,7 +262,7 @@ class _ValkeyUserState:
     @pulumi.getter
     def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+        The password of the service user (auto-generated if not provided). The field conflicts with `password_wo`. Length must be between `8` and `256`.
         """
         return pulumi.get(self, "password")
 
@@ -250,11 +271,23 @@ class _ValkeyUserState:
         pulumi.set(self, "password", value)
 
     @_builtins.property
+    @pulumi.getter(name="passwordEncryptionType")
+    def password_encryption_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. 'unknown' is reported when the hash is missing or uses an unrecognised format. The possible values are `md5`, `scram-sha-256` and `unknown`.
+        """
+        return pulumi.get(self, "password_encryption_type")
+
+    @password_encryption_type.setter
+    def password_encryption_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "password_encryption_type", value)
+
+    @_builtins.property
     @pulumi.getter(name="passwordWo")
     def password_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-        The password of the service user (write-only, not stored in state). Must be used with `password_wo_version`. Must be 8-256 characters.
+        The password of the service user (write-only, not stored in state). The field is required with `password_wo_version`. The field conflicts with `password`. Length must be between `8` and `256`.
         """
         return pulumi.get(self, "password_wo")
 
@@ -266,7 +299,7 @@ class _ValkeyUserState:
     @pulumi.getter(name="passwordWoVersion")
     def password_wo_version(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Version number for `password_wo`. Increment this to rotate the password. Must be >= 1.
+        Version number for `password_wo`. Increment this to rotate the password. The field is required with `password_wo`. Minimum value: `1`.
         """
         return pulumi.get(self, "password_wo_version")
 
@@ -278,7 +311,7 @@ class _ValkeyUserState:
     @pulumi.getter
     def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Project name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -290,7 +323,7 @@ class _ValkeyUserState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Service name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
@@ -300,9 +333,18 @@ class _ValkeyUserState:
 
     @_builtins.property
     @pulumi.getter
+    def timeouts(self) -> pulumi.Input[Optional['ValkeyUserTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: pulumi.Input[Optional['ValkeyUserTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
+
+    @_builtins.property
+    @pulumi.getter
     def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        User account type, such as primary or regular account.
+        Account type.
         """
         return pulumi.get(self, "type")
 
@@ -314,7 +356,7 @@ class _ValkeyUserState:
     @pulumi.getter
     def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Name of the Valkey service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Service username. Maximum length: `64`. Must match pattern: `^[_A-Za-z0-9][-._A-Za-z0-9]{0,63}$`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "username")
 
@@ -362,7 +404,7 @@ class _ValkeyUserState:
     @pulumi.getter(name="valkeyAclKeys")
     def valkey_acl_keys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Key access rules. Entries are defined as standard glob patterns. The field is required with `valkey_acl_categories` and `valkey_acl_keys`.
+        Key access rules. Entries are defined as standard glob patterns. The field is required with `valkey_acl_categories` and `valkey_acl_commands`.
         """
         return pulumi.get(self, "valkey_acl_keys")
 
@@ -382,6 +424,7 @@ class ValkeyUser(pulumi.CustomResource):
                  password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['ValkeyUserTimeoutsArgs', 'ValkeyUserTimeoutsArgsDict']]] = None,
                  username: pulumi.Input[Optional[_builtins.str]] = None,
                  valkey_acl_categories: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  valkey_acl_channels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -389,7 +432,7 @@ class ValkeyUser(pulumi.CustomResource):
                  valkey_acl_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
-        Creates and manages an [Aiven for Valkey™](https://aiven.io/docs/products/valkey) service user.
+        Creates and manages an [Aiven for Valkey™](https://aiven.io/docs/products/valkey) service user. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
 
         ## Example Usage
 
@@ -397,31 +440,17 @@ class ValkeyUser(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        # Example user with read-only access for analytics
-        read_analytics = aiven.ValkeyUser("read_analytics",
-            project=example_project["project"],
-            service_name=example_valkey["serviceName"],
-            username="example-analytics-reader",
-            password=valkey_user_pw,
-            valkey_acl_categories=["+@read"],
-            valkey_acl_commands=[
-                "+get",
-                "+set",
-                "+mget",
-                "+hget",
-                "+zrange",
-            ],
-            valkey_acl_keys=["analytics:*"])
-        # Example user with restricted write access for session management
-        manage_sessions = aiven.ValkeyUser("manage_sessions",
-            project=example_project["project"],
-            service_name=example_valkey["serviceName"],
-            username="example-session-manager",
-            password=valkey_user_pw,
+        example = aiven.ValkeyUser("example",
+            project="my-project",
+            service_name="my-valkey",
+            username="testuser",
+            password_wo="password123",
+            password_wo_version=1,
             valkey_acl_categories=[
                 "+@write",
                 "+@keyspace",
             ],
+            valkey_acl_channels=["some*chan"],
             valkey_acl_commands=[
                 "+set",
                 "+del",
@@ -435,23 +464,23 @@ class ValkeyUser(pulumi.CustomResource):
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/valkeyUser:ValkeyUser example_valkey PROJECT/SERVICE_NAME/USERNAME
+        $ pulumi import aiven:index/valkeyUser:ValkeyUser example PROJECT/SERVICE_NAME/USERNAME
         ```
 
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] password: The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+        :param pulumi.Input[_builtins.str] password: The password of the service user (auto-generated if not provided). The field conflicts with `password_wo`. Length must be between `8` and `256`.
         :param pulumi.Input[_builtins.str] password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-               The password of the service user (write-only, not stored in state). Must be used with `password_wo_version`. Must be 8-256 characters.
-        :param pulumi.Input[_builtins.int] password_wo_version: Version number for `password_wo`. Increment this to rotate the password. Must be >= 1.
-        :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] username: Name of the Valkey service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+               The password of the service user (write-only, not stored in state). The field is required with `password_wo_version`. The field conflicts with `password`. Length must be between `8` and `256`.
+        :param pulumi.Input[_builtins.int] password_wo_version: Version number for `password_wo`. Increment this to rotate the password. The field is required with `password_wo`. Minimum value: `1`.
+        :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] service_name: Service name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] username: Service username. Maximum length: `64`. Must match pattern: `^[_A-Za-z0-9][-._A-Za-z0-9]{0,63}$`. Changing this property forces recreation of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] valkey_acl_categories: Allow or disallow command categories. To allow a category use the prefix `+@` and to disallow use `-@`. See the [Valkey documentation](https://valkey.io/topics/acl/) for details on the ACL feature. The field is required with `valkey_acl_commands` and `valkey_acl_keys`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] valkey_acl_channels: Allows and disallows access to pub/sub channels. Entries are defined as standard glob patterns.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] valkey_acl_commands: Defines rules for individual commands. To allow a command use the prefix `+` and to disallow use `-`. The field is required with `valkey_acl_categories` and `valkey_acl_keys`.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] valkey_acl_keys: Key access rules. Entries are defined as standard glob patterns. The field is required with `valkey_acl_categories` and `valkey_acl_keys`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] valkey_acl_keys: Key access rules. Entries are defined as standard glob patterns. The field is required with `valkey_acl_categories` and `valkey_acl_commands`.
         """
         ...
     @overload
@@ -460,7 +489,7 @@ class ValkeyUser(pulumi.CustomResource):
                  args: ValkeyUserArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates and manages an [Aiven for Valkey™](https://aiven.io/docs/products/valkey) service user.
+        Creates and manages an [Aiven for Valkey™](https://aiven.io/docs/products/valkey) service user. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
 
         ## Example Usage
 
@@ -468,31 +497,17 @@ class ValkeyUser(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        # Example user with read-only access for analytics
-        read_analytics = aiven.ValkeyUser("read_analytics",
-            project=example_project["project"],
-            service_name=example_valkey["serviceName"],
-            username="example-analytics-reader",
-            password=valkey_user_pw,
-            valkey_acl_categories=["+@read"],
-            valkey_acl_commands=[
-                "+get",
-                "+set",
-                "+mget",
-                "+hget",
-                "+zrange",
-            ],
-            valkey_acl_keys=["analytics:*"])
-        # Example user with restricted write access for session management
-        manage_sessions = aiven.ValkeyUser("manage_sessions",
-            project=example_project["project"],
-            service_name=example_valkey["serviceName"],
-            username="example-session-manager",
-            password=valkey_user_pw,
+        example = aiven.ValkeyUser("example",
+            project="my-project",
+            service_name="my-valkey",
+            username="testuser",
+            password_wo="password123",
+            password_wo_version=1,
             valkey_acl_categories=[
                 "+@write",
                 "+@keyspace",
             ],
+            valkey_acl_channels=["some*chan"],
             valkey_acl_commands=[
                 "+set",
                 "+del",
@@ -506,7 +521,7 @@ class ValkeyUser(pulumi.CustomResource):
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/valkeyUser:ValkeyUser example_valkey PROJECT/SERVICE_NAME/USERNAME
+        $ pulumi import aiven:index/valkeyUser:ValkeyUser example PROJECT/SERVICE_NAME/USERNAME
         ```
 
 
@@ -530,6 +545,7 @@ class ValkeyUser(pulumi.CustomResource):
                  password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['ValkeyUserTimeoutsArgs', 'ValkeyUserTimeoutsArgsDict']]] = None,
                  username: pulumi.Input[Optional[_builtins.str]] = None,
                  valkey_acl_categories: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  valkey_acl_channels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -553,6 +569,7 @@ class ValkeyUser(pulumi.CustomResource):
             if service_name is None and not opts.urn:
                 raise TypeError("Missing required property 'service_name'")
             __props__.__dict__["service_name"] = service_name
+            __props__.__dict__["timeouts"] = timeouts
             if username is None and not opts.urn:
                 raise TypeError("Missing required property 'username'")
             __props__.__dict__["username"] = username
@@ -560,6 +577,7 @@ class ValkeyUser(pulumi.CustomResource):
             __props__.__dict__["valkey_acl_channels"] = valkey_acl_channels
             __props__.__dict__["valkey_acl_commands"] = valkey_acl_commands
             __props__.__dict__["valkey_acl_keys"] = valkey_acl_keys
+            __props__.__dict__["password_encryption_type"] = None
             __props__.__dict__["type"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password", "passwordWo"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
@@ -574,10 +592,12 @@ class ValkeyUser(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             password: pulumi.Input[Optional[_builtins.str]] = None,
+            password_encryption_type: pulumi.Input[Optional[_builtins.str]] = None,
             password_wo: pulumi.Input[Optional[_builtins.str]] = None,
             password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             service_name: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['ValkeyUserTimeoutsArgs', 'ValkeyUserTimeoutsArgsDict']]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None,
             username: pulumi.Input[Optional[_builtins.str]] = None,
             valkey_acl_categories: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -591,28 +611,31 @@ class ValkeyUser(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] password: The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+        :param pulumi.Input[_builtins.str] password: The password of the service user (auto-generated if not provided). The field conflicts with `password_wo`. Length must be between `8` and `256`.
+        :param pulumi.Input[_builtins.str] password_encryption_type: The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. 'unknown' is reported when the hash is missing or uses an unrecognised format. The possible values are `md5`, `scram-sha-256` and `unknown`.
         :param pulumi.Input[_builtins.str] password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-               The password of the service user (write-only, not stored in state). Must be used with `password_wo_version`. Must be 8-256 characters.
-        :param pulumi.Input[_builtins.int] password_wo_version: Version number for `password_wo`. Increment this to rotate the password. Must be >= 1.
-        :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] type: User account type, such as primary or regular account.
-        :param pulumi.Input[_builtins.str] username: Name of the Valkey service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+               The password of the service user (write-only, not stored in state). The field is required with `password_wo_version`. The field conflicts with `password`. Length must be between `8` and `256`.
+        :param pulumi.Input[_builtins.int] password_wo_version: Version number for `password_wo`. Increment this to rotate the password. The field is required with `password_wo`. Minimum value: `1`.
+        :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] service_name: Service name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] type: Account type.
+        :param pulumi.Input[_builtins.str] username: Service username. Maximum length: `64`. Must match pattern: `^[_A-Za-z0-9][-._A-Za-z0-9]{0,63}$`. Changing this property forces recreation of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] valkey_acl_categories: Allow or disallow command categories. To allow a category use the prefix `+@` and to disallow use `-@`. See the [Valkey documentation](https://valkey.io/topics/acl/) for details on the ACL feature. The field is required with `valkey_acl_commands` and `valkey_acl_keys`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] valkey_acl_channels: Allows and disallows access to pub/sub channels. Entries are defined as standard glob patterns.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] valkey_acl_commands: Defines rules for individual commands. To allow a command use the prefix `+` and to disallow use `-`. The field is required with `valkey_acl_categories` and `valkey_acl_keys`.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] valkey_acl_keys: Key access rules. Entries are defined as standard glob patterns. The field is required with `valkey_acl_categories` and `valkey_acl_keys`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] valkey_acl_keys: Key access rules. Entries are defined as standard glob patterns. The field is required with `valkey_acl_categories` and `valkey_acl_commands`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _ValkeyUserState.__new__(_ValkeyUserState)
 
         __props__.__dict__["password"] = password
+        __props__.__dict__["password_encryption_type"] = password_encryption_type
         __props__.__dict__["password_wo"] = password_wo
         __props__.__dict__["password_wo_version"] = password_wo_version
         __props__.__dict__["project"] = project
         __props__.__dict__["service_name"] = service_name
+        __props__.__dict__["timeouts"] = timeouts
         __props__.__dict__["type"] = type
         __props__.__dict__["username"] = username
         __props__.__dict__["valkey_acl_categories"] = valkey_acl_categories
@@ -625,16 +648,24 @@ class ValkeyUser(pulumi.CustomResource):
     @pulumi.getter
     def password(self) -> pulumi.Output[_builtins.str]:
         """
-        The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+        The password of the service user (auto-generated if not provided). The field conflicts with `password_wo`. Length must be between `8` and `256`.
         """
         return pulumi.get(self, "password")
+
+    @_builtins.property
+    @pulumi.getter(name="passwordEncryptionType")
+    def password_encryption_type(self) -> pulumi.Output[_builtins.str]:
+        """
+        The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. 'unknown' is reported when the hash is missing or uses an unrecognised format. The possible values are `md5`, `scram-sha-256` and `unknown`.
+        """
+        return pulumi.get(self, "password_encryption_type")
 
     @_builtins.property
     @pulumi.getter(name="passwordWo")
     def password_wo(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-        The password of the service user (write-only, not stored in state). Must be used with `password_wo_version`. Must be 8-256 characters.
+        The password of the service user (write-only, not stored in state). The field is required with `password_wo_version`. The field conflicts with `password`. Length must be between `8` and `256`.
         """
         return pulumi.get(self, "password_wo")
 
@@ -642,7 +673,7 @@ class ValkeyUser(pulumi.CustomResource):
     @pulumi.getter(name="passwordWoVersion")
     def password_wo_version(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        Version number for `password_wo`. Increment this to rotate the password. Must be >= 1.
+        Version number for `password_wo`. Increment this to rotate the password. The field is required with `password_wo`. Minimum value: `1`.
         """
         return pulumi.get(self, "password_wo_version")
 
@@ -650,7 +681,7 @@ class ValkeyUser(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Project name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -658,15 +689,20 @@ class ValkeyUser(pulumi.CustomResource):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Service name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
     @_builtins.property
     @pulumi.getter
+    def timeouts(self) -> pulumi.Output[Optional['outputs.ValkeyUserTimeouts']]:
+        return pulumi.get(self, "timeouts")
+
+    @_builtins.property
+    @pulumi.getter
     def type(self) -> pulumi.Output[_builtins.str]:
         """
-        User account type, such as primary or regular account.
+        Account type.
         """
         return pulumi.get(self, "type")
 
@@ -674,7 +710,7 @@ class ValkeyUser(pulumi.CustomResource):
     @pulumi.getter
     def username(self) -> pulumi.Output[_builtins.str]:
         """
-        Name of the Valkey service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Service username. Maximum length: `64`. Must match pattern: `^[_A-Za-z0-9][-._A-Za-z0-9]{0,63}$`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "username")
 
@@ -706,7 +742,7 @@ class ValkeyUser(pulumi.CustomResource):
     @pulumi.getter(name="valkeyAclKeys")
     def valkey_acl_keys(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
-        Key access rules. Entries are defined as standard glob patterns. The field is required with `valkey_acl_categories` and `valkey_acl_keys`.
+        Key access rules. Entries are defined as standard glob patterns. The field is required with `valkey_acl_categories` and `valkey_acl_commands`.
         """
         return pulumi.get(self, "valkey_acl_keys")
 

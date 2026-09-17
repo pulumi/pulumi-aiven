@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['KafkaNativeAclArgs', 'KafkaNativeAcl']
 
@@ -27,19 +29,20 @@ class KafkaNativeAclArgs:
                  resource_name: pulumi.Input[_builtins.str],
                  resource_type: pulumi.Input[_builtins.str],
                  service_name: pulumi.Input[_builtins.str],
-                 host: pulumi.Input[Optional[_builtins.str]] = None):
+                 host: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional['KafkaNativeAclTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a KafkaNativeAcl resource.
 
-        :param pulumi.Input[_builtins.str] operation: The action that a principal is allowed or denied on the Kafka resource. The possible values are `All`, `Alter`, `AlterConfigs`, `ClusterAction`, `Create`, `CreateTokens`, `Delete`, `Describe`, `DescribeConfigs`, `DescribeTokens`, `IdempotentWrite`, `Read` and `Write`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] pattern_type: Resource pattern used to match specified resources. The possible values are `LITERAL` and `PREFIXED`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] permission_type: Specifies whether the action is explicitly allowed or denied for the principal on the specified resource. The possible values are `ALLOW` and `DENY`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] principal: Identities in `user:name` format that the permissions apply to. The `name` supports wildcards. Maximum length: `256`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] resource_name: The name of the Kafka resource the permission applies to, such as the topic name or group ID. Maximum length: `256`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] resource_type: The type of Kafka resource. The possible values are `Cluster`, `DelegationToken`, `Group`, `Topic`, `TransactionalId` and `User`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] host: The IP address from which a principal is allowed or denied access to the resource. Use `*` for all hosts. Maximum length: `256`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] operation: Kafka ACL operation represents an operation which an ACL grants or denies permission to perform. The possible values are `All`, `Alter`, `AlterConfigs`, `ClusterAction`, `Create`, `CreateTokens`, `Delete`, `Describe`, `DescribeConfigs`, `DescribeTokens`, `IdempotentWrite`, `Read` and `Write`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] pattern_type: How a Kafka-native ACL matches its resource name. The possible values are `LITERAL` and `PREFIXED`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] permission_type: Whether a Kafka-native ACL allows or denies its operation. The possible values are `ALLOW` and `DENY`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] principal: principal is in 'principalType:name' format. Maximum length: `256`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] resource_name: Resource pattern used to match specified resources. Maximum length: `256`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] resource_type: Kafka ACL resource type represents a type of resource which an ACL can be applied to. The possible values are `Cluster`, `DelegationToken`, `Group`, `Topic`, `TransactionalId` and `User`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] service_name: Service name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] host: the host or `*` for all hosts. Maximum length: `256`. The default value is `*`. Changing this property forces recreation of the resource.
         """
         pulumi.set(__self__, "operation", operation)
         pulumi.set(__self__, "pattern_type", pattern_type)
@@ -51,12 +54,14 @@ class KafkaNativeAclArgs:
         pulumi.set(__self__, "service_name", service_name)
         if host is not None:
             pulumi.set(__self__, "host", host)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
 
     @_builtins.property
     @pulumi.getter
     def operation(self) -> pulumi.Input[_builtins.str]:
         """
-        The action that a principal is allowed or denied on the Kafka resource. The possible values are `All`, `Alter`, `AlterConfigs`, `ClusterAction`, `Create`, `CreateTokens`, `Delete`, `Describe`, `DescribeConfigs`, `DescribeTokens`, `IdempotentWrite`, `Read` and `Write`. Changing this property forces recreation of the resource.
+        Kafka ACL operation represents an operation which an ACL grants or denies permission to perform. The possible values are `All`, `Alter`, `AlterConfigs`, `ClusterAction`, `Create`, `CreateTokens`, `Delete`, `Describe`, `DescribeConfigs`, `DescribeTokens`, `IdempotentWrite`, `Read` and `Write`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "operation")
 
@@ -68,7 +73,7 @@ class KafkaNativeAclArgs:
     @pulumi.getter(name="patternType")
     def pattern_type(self) -> pulumi.Input[_builtins.str]:
         """
-        Resource pattern used to match specified resources. The possible values are `LITERAL` and `PREFIXED`. Changing this property forces recreation of the resource.
+        How a Kafka-native ACL matches its resource name. The possible values are `LITERAL` and `PREFIXED`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "pattern_type")
 
@@ -80,7 +85,7 @@ class KafkaNativeAclArgs:
     @pulumi.getter(name="permissionType")
     def permission_type(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies whether the action is explicitly allowed or denied for the principal on the specified resource. The possible values are `ALLOW` and `DENY`. Changing this property forces recreation of the resource.
+        Whether a Kafka-native ACL allows or denies its operation. The possible values are `ALLOW` and `DENY`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "permission_type")
 
@@ -92,7 +97,7 @@ class KafkaNativeAclArgs:
     @pulumi.getter
     def principal(self) -> pulumi.Input[_builtins.str]:
         """
-        Identities in `user:name` format that the permissions apply to. The `name` supports wildcards. Maximum length: `256`. Changing this property forces recreation of the resource.
+        principal is in 'principalType:name' format. Maximum length: `256`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "principal")
 
@@ -104,7 +109,7 @@ class KafkaNativeAclArgs:
     @pulumi.getter
     def project(self) -> pulumi.Input[_builtins.str]:
         """
-        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Project name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -116,7 +121,7 @@ class KafkaNativeAclArgs:
     @pulumi.getter(name="resourceName")
     def resource_name(self) -> pulumi.Input[_builtins.str]:
         """
-        The name of the Kafka resource the permission applies to, such as the topic name or group ID. Maximum length: `256`. Changing this property forces recreation of the resource.
+        Resource pattern used to match specified resources. Maximum length: `256`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "resource_name")
 
@@ -128,7 +133,7 @@ class KafkaNativeAclArgs:
     @pulumi.getter(name="resourceType")
     def resource_type(self) -> pulumi.Input[_builtins.str]:
         """
-        The type of Kafka resource. The possible values are `Cluster`, `DelegationToken`, `Group`, `Topic`, `TransactionalId` and `User`. Changing this property forces recreation of the resource.
+        Kafka ACL resource type represents a type of resource which an ACL can be applied to. The possible values are `Cluster`, `DelegationToken`, `Group`, `Topic`, `TransactionalId` and `User`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "resource_type")
 
@@ -140,7 +145,7 @@ class KafkaNativeAclArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[_builtins.str]:
         """
-        The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Service name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
@@ -152,7 +157,7 @@ class KafkaNativeAclArgs:
     @pulumi.getter
     def host(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The IP address from which a principal is allowed or denied access to the resource. Use `*` for all hosts. Maximum length: `256`. Changing this property forces recreation of the resource.
+        the host or `*` for all hosts. Maximum length: `256`. The default value is `*`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "host")
 
@@ -160,10 +165,20 @@ class KafkaNativeAclArgs:
     def host(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> pulumi.Input[Optional['KafkaNativeAclTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: pulumi.Input[Optional['KafkaNativeAclTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
+
 
 @pulumi.input_type
 class _KafkaNativeAclState:
     def __init__(__self__, *,
+                 acl_id: pulumi.Input[Optional[_builtins.str]] = None,
                  host: pulumi.Input[Optional[_builtins.str]] = None,
                  operation: pulumi.Input[Optional[_builtins.str]] = None,
                  pattern_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -172,20 +187,24 @@ class _KafkaNativeAclState:
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_name: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 service_name: pulumi.Input[Optional[_builtins.str]] = None):
+                 service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional['KafkaNativeAclTimeoutsArgs']] = None):
         """
         Input properties used for looking up and filtering KafkaNativeAcl resources.
 
-        :param pulumi.Input[_builtins.str] host: The IP address from which a principal is allowed or denied access to the resource. Use `*` for all hosts. Maximum length: `256`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] operation: The action that a principal is allowed or denied on the Kafka resource. The possible values are `All`, `Alter`, `AlterConfigs`, `ClusterAction`, `Create`, `CreateTokens`, `Delete`, `Describe`, `DescribeConfigs`, `DescribeTokens`, `IdempotentWrite`, `Read` and `Write`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] pattern_type: Resource pattern used to match specified resources. The possible values are `LITERAL` and `PREFIXED`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] permission_type: Specifies whether the action is explicitly allowed or denied for the principal on the specified resource. The possible values are `ALLOW` and `DENY`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] principal: Identities in `user:name` format that the permissions apply to. The `name` supports wildcards. Maximum length: `256`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] resource_name: The name of the Kafka resource the permission applies to, such as the topic name or group ID. Maximum length: `256`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] resource_type: The type of Kafka resource. The possible values are `Cluster`, `DelegationToken`, `Group`, `Topic`, `TransactionalId` and `User`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] acl_id: Kafka ACL ID.
+        :param pulumi.Input[_builtins.str] host: the host or `*` for all hosts. Maximum length: `256`. The default value is `*`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] operation: Kafka ACL operation represents an operation which an ACL grants or denies permission to perform. The possible values are `All`, `Alter`, `AlterConfigs`, `ClusterAction`, `Create`, `CreateTokens`, `Delete`, `Describe`, `DescribeConfigs`, `DescribeTokens`, `IdempotentWrite`, `Read` and `Write`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] pattern_type: How a Kafka-native ACL matches its resource name. The possible values are `LITERAL` and `PREFIXED`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] permission_type: Whether a Kafka-native ACL allows or denies its operation. The possible values are `ALLOW` and `DENY`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] principal: principal is in 'principalType:name' format. Maximum length: `256`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] resource_name: Resource pattern used to match specified resources. Maximum length: `256`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] resource_type: Kafka ACL resource type represents a type of resource which an ACL can be applied to. The possible values are `Cluster`, `DelegationToken`, `Group`, `Topic`, `TransactionalId` and `User`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] service_name: Service name. Changing this property forces recreation of the resource.
         """
+        if acl_id is not None:
+            pulumi.set(__self__, "acl_id", acl_id)
         if host is not None:
             pulumi.set(__self__, "host", host)
         if operation is not None:
@@ -204,12 +223,26 @@ class _KafkaNativeAclState:
             pulumi.set(__self__, "resource_type", resource_type)
         if service_name is not None:
             pulumi.set(__self__, "service_name", service_name)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
+
+    @_builtins.property
+    @pulumi.getter(name="aclId")
+    def acl_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Kafka ACL ID.
+        """
+        return pulumi.get(self, "acl_id")
+
+    @acl_id.setter
+    def acl_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "acl_id", value)
 
     @_builtins.property
     @pulumi.getter
     def host(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The IP address from which a principal is allowed or denied access to the resource. Use `*` for all hosts. Maximum length: `256`. Changing this property forces recreation of the resource.
+        the host or `*` for all hosts. Maximum length: `256`. The default value is `*`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "host")
 
@@ -221,7 +254,7 @@ class _KafkaNativeAclState:
     @pulumi.getter
     def operation(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The action that a principal is allowed or denied on the Kafka resource. The possible values are `All`, `Alter`, `AlterConfigs`, `ClusterAction`, `Create`, `CreateTokens`, `Delete`, `Describe`, `DescribeConfigs`, `DescribeTokens`, `IdempotentWrite`, `Read` and `Write`. Changing this property forces recreation of the resource.
+        Kafka ACL operation represents an operation which an ACL grants or denies permission to perform. The possible values are `All`, `Alter`, `AlterConfigs`, `ClusterAction`, `Create`, `CreateTokens`, `Delete`, `Describe`, `DescribeConfigs`, `DescribeTokens`, `IdempotentWrite`, `Read` and `Write`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "operation")
 
@@ -233,7 +266,7 @@ class _KafkaNativeAclState:
     @pulumi.getter(name="patternType")
     def pattern_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Resource pattern used to match specified resources. The possible values are `LITERAL` and `PREFIXED`. Changing this property forces recreation of the resource.
+        How a Kafka-native ACL matches its resource name. The possible values are `LITERAL` and `PREFIXED`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "pattern_type")
 
@@ -245,7 +278,7 @@ class _KafkaNativeAclState:
     @pulumi.getter(name="permissionType")
     def permission_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Specifies whether the action is explicitly allowed or denied for the principal on the specified resource. The possible values are `ALLOW` and `DENY`. Changing this property forces recreation of the resource.
+        Whether a Kafka-native ACL allows or denies its operation. The possible values are `ALLOW` and `DENY`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "permission_type")
 
@@ -257,7 +290,7 @@ class _KafkaNativeAclState:
     @pulumi.getter
     def principal(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Identities in `user:name` format that the permissions apply to. The `name` supports wildcards. Maximum length: `256`. Changing this property forces recreation of the resource.
+        principal is in 'principalType:name' format. Maximum length: `256`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "principal")
 
@@ -269,7 +302,7 @@ class _KafkaNativeAclState:
     @pulumi.getter
     def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Project name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -281,7 +314,7 @@ class _KafkaNativeAclState:
     @pulumi.getter(name="resourceName")
     def resource_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The name of the Kafka resource the permission applies to, such as the topic name or group ID. Maximum length: `256`. Changing this property forces recreation of the resource.
+        Resource pattern used to match specified resources. Maximum length: `256`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "resource_name")
 
@@ -293,7 +326,7 @@ class _KafkaNativeAclState:
     @pulumi.getter(name="resourceType")
     def resource_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The type of Kafka resource. The possible values are `Cluster`, `DelegationToken`, `Group`, `Topic`, `TransactionalId` and `User`. Changing this property forces recreation of the resource.
+        Kafka ACL resource type represents a type of resource which an ACL can be applied to. The possible values are `Cluster`, `DelegationToken`, `Group`, `Topic`, `TransactionalId` and `User`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "resource_type")
 
@@ -305,13 +338,22 @@ class _KafkaNativeAclState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Service name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
     def service_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> pulumi.Input[Optional['KafkaNativeAclTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: pulumi.Input[Optional['KafkaNativeAclTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
 
 
 @pulumi.type_token("aiven:index/kafkaNativeAcl:KafkaNativeAcl")
@@ -329,12 +371,12 @@ class KafkaNativeAcl(pulumi.CustomResource):
                  resource_name_: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_type: pulumi.Input[Optional[_builtins.str]] = None,
                  service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['KafkaNativeAclTimeoutsArgs', 'KafkaNativeAclTimeoutsArgsDict']]] = None,
                  __props__=None):
         """
-        Creates and manages Kafka-native [access control lists](https://aiven.io/docs/products/kafka/concepts/acl) (ACLs) for an Aiven for Apache Kafka® service. ACLs control access to Kafka topics, consumer groups,
-        clusters, and Schema Registry.
+        Creates and manages Kafka-native [access control lists](https://aiven.io/docs/products/kafka/concepts/acl) (ACLs) for an Aiven for Apache Kafka® service. ACLs control access to Kafka topics, consumer groups, clusters, and Schema Registry.
 
-        Kafka-native ACLs provide advanced resource-level access control with fine-grained permissions, including `ALLOW` and `DENY` rules. For simplified topic-level control you can use Aiven ACLs.
+        Kafka-native ACLs provide advanced resource-level access control with fine-grained permissions, including `ALLOW` and `DENY` rules. For simplified topic-level control you can use Aiven ACLs. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
 
         ## Example Usage
 
@@ -342,36 +384,36 @@ class KafkaNativeAcl(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        example_acl = aiven.KafkaNativeAcl("example_acl",
-            project=example_project["project"],
-            service_name=example_kafka["serviceName"],
-            resource_type="Topic",
-            resource_name_="example-topic",
-            principal="User:example-user",
+        example = aiven.KafkaNativeAcl("example",
+            project="my-project",
+            service_name="my-kafka",
             operation="Read",
             pattern_type="LITERAL",
             permission_type="ALLOW",
-            host="198.51.100.0")
+            principal="User:alice",
+            resource_name_="consumer-group-1.",
+            resource_type="Topic",
+            host="*")
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/kafkaNativeAcl:KafkaNativeAcl example_acl PROJECT/SERVICE_NAME/ID
+        $ pulumi import aiven:index/kafkaNativeAcl:KafkaNativeAcl example PROJECT/SERVICE_NAME/ACL_ID
         ```
 
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] host: The IP address from which a principal is allowed or denied access to the resource. Use `*` for all hosts. Maximum length: `256`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] operation: The action that a principal is allowed or denied on the Kafka resource. The possible values are `All`, `Alter`, `AlterConfigs`, `ClusterAction`, `Create`, `CreateTokens`, `Delete`, `Describe`, `DescribeConfigs`, `DescribeTokens`, `IdempotentWrite`, `Read` and `Write`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] pattern_type: Resource pattern used to match specified resources. The possible values are `LITERAL` and `PREFIXED`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] permission_type: Specifies whether the action is explicitly allowed or denied for the principal on the specified resource. The possible values are `ALLOW` and `DENY`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] principal: Identities in `user:name` format that the permissions apply to. The `name` supports wildcards. Maximum length: `256`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] resource_name_: The name of the Kafka resource the permission applies to, such as the topic name or group ID. Maximum length: `256`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] resource_type: The type of Kafka resource. The possible values are `Cluster`, `DelegationToken`, `Group`, `Topic`, `TransactionalId` and `User`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] host: the host or `*` for all hosts. Maximum length: `256`. The default value is `*`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] operation: Kafka ACL operation represents an operation which an ACL grants or denies permission to perform. The possible values are `All`, `Alter`, `AlterConfigs`, `ClusterAction`, `Create`, `CreateTokens`, `Delete`, `Describe`, `DescribeConfigs`, `DescribeTokens`, `IdempotentWrite`, `Read` and `Write`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] pattern_type: How a Kafka-native ACL matches its resource name. The possible values are `LITERAL` and `PREFIXED`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] permission_type: Whether a Kafka-native ACL allows or denies its operation. The possible values are `ALLOW` and `DENY`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] principal: principal is in 'principalType:name' format. Maximum length: `256`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] resource_name_: Resource pattern used to match specified resources. Maximum length: `256`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] resource_type: Kafka ACL resource type represents a type of resource which an ACL can be applied to. The possible values are `Cluster`, `DelegationToken`, `Group`, `Topic`, `TransactionalId` and `User`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] service_name: Service name. Changing this property forces recreation of the resource.
         """
         ...
     @overload
@@ -380,10 +422,9 @@ class KafkaNativeAcl(pulumi.CustomResource):
                  args: KafkaNativeAclArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates and manages Kafka-native [access control lists](https://aiven.io/docs/products/kafka/concepts/acl) (ACLs) for an Aiven for Apache Kafka® service. ACLs control access to Kafka topics, consumer groups,
-        clusters, and Schema Registry.
+        Creates and manages Kafka-native [access control lists](https://aiven.io/docs/products/kafka/concepts/acl) (ACLs) for an Aiven for Apache Kafka® service. ACLs control access to Kafka topics, consumer groups, clusters, and Schema Registry.
 
-        Kafka-native ACLs provide advanced resource-level access control with fine-grained permissions, including `ALLOW` and `DENY` rules. For simplified topic-level control you can use Aiven ACLs.
+        Kafka-native ACLs provide advanced resource-level access control with fine-grained permissions, including `ALLOW` and `DENY` rules. For simplified topic-level control you can use Aiven ACLs. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
 
         ## Example Usage
 
@@ -391,22 +432,22 @@ class KafkaNativeAcl(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        example_acl = aiven.KafkaNativeAcl("example_acl",
-            project=example_project["project"],
-            service_name=example_kafka["serviceName"],
-            resource_type="Topic",
-            resource_name_="example-topic",
-            principal="User:example-user",
+        example = aiven.KafkaNativeAcl("example",
+            project="my-project",
+            service_name="my-kafka",
             operation="Read",
             pattern_type="LITERAL",
             permission_type="ALLOW",
-            host="198.51.100.0")
+            principal="User:alice",
+            resource_name_="consumer-group-1.",
+            resource_type="Topic",
+            host="*")
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/kafkaNativeAcl:KafkaNativeAcl example_acl PROJECT/SERVICE_NAME/ID
+        $ pulumi import aiven:index/kafkaNativeAcl:KafkaNativeAcl example PROJECT/SERVICE_NAME/ACL_ID
         ```
 
 
@@ -434,6 +475,7 @@ class KafkaNativeAcl(pulumi.CustomResource):
                  resource_name_: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_type: pulumi.Input[Optional[_builtins.str]] = None,
                  service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['KafkaNativeAclTimeoutsArgs', 'KafkaNativeAclTimeoutsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -468,6 +510,8 @@ class KafkaNativeAcl(pulumi.CustomResource):
             if service_name is None and not opts.urn:
                 raise TypeError("Missing required property 'service_name'")
             __props__.__dict__["service_name"] = service_name
+            __props__.__dict__["timeouts"] = timeouts
+            __props__.__dict__["acl_id"] = None
         super(KafkaNativeAcl, __self__).__init__(
             'aiven:index/kafkaNativeAcl:KafkaNativeAcl',
             resource_name,
@@ -478,6 +522,7 @@ class KafkaNativeAcl(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            acl_id: pulumi.Input[Optional[_builtins.str]] = None,
             host: pulumi.Input[Optional[_builtins.str]] = None,
             operation: pulumi.Input[Optional[_builtins.str]] = None,
             pattern_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -486,7 +531,8 @@ class KafkaNativeAcl(pulumi.CustomResource):
             project: pulumi.Input[Optional[_builtins.str]] = None,
             resource_name_: pulumi.Input[Optional[_builtins.str]] = None,
             resource_type: pulumi.Input[Optional[_builtins.str]] = None,
-            service_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'KafkaNativeAcl':
+            service_name: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['KafkaNativeAclTimeoutsArgs', 'KafkaNativeAclTimeoutsArgsDict']]] = None) -> 'KafkaNativeAcl':
         """
         Get an existing KafkaNativeAcl resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -494,20 +540,22 @@ class KafkaNativeAcl(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] host: The IP address from which a principal is allowed or denied access to the resource. Use `*` for all hosts. Maximum length: `256`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] operation: The action that a principal is allowed or denied on the Kafka resource. The possible values are `All`, `Alter`, `AlterConfigs`, `ClusterAction`, `Create`, `CreateTokens`, `Delete`, `Describe`, `DescribeConfigs`, `DescribeTokens`, `IdempotentWrite`, `Read` and `Write`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] pattern_type: Resource pattern used to match specified resources. The possible values are `LITERAL` and `PREFIXED`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] permission_type: Specifies whether the action is explicitly allowed or denied for the principal on the specified resource. The possible values are `ALLOW` and `DENY`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] principal: Identities in `user:name` format that the permissions apply to. The `name` supports wildcards. Maximum length: `256`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] resource_name_: The name of the Kafka resource the permission applies to, such as the topic name or group ID. Maximum length: `256`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] resource_type: The type of Kafka resource. The possible values are `Cluster`, `DelegationToken`, `Group`, `Topic`, `TransactionalId` and `User`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] acl_id: Kafka ACL ID.
+        :param pulumi.Input[_builtins.str] host: the host or `*` for all hosts. Maximum length: `256`. The default value is `*`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] operation: Kafka ACL operation represents an operation which an ACL grants or denies permission to perform. The possible values are `All`, `Alter`, `AlterConfigs`, `ClusterAction`, `Create`, `CreateTokens`, `Delete`, `Describe`, `DescribeConfigs`, `DescribeTokens`, `IdempotentWrite`, `Read` and `Write`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] pattern_type: How a Kafka-native ACL matches its resource name. The possible values are `LITERAL` and `PREFIXED`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] permission_type: Whether a Kafka-native ACL allows or denies its operation. The possible values are `ALLOW` and `DENY`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] principal: principal is in 'principalType:name' format. Maximum length: `256`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] resource_name_: Resource pattern used to match specified resources. Maximum length: `256`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] resource_type: Kafka ACL resource type represents a type of resource which an ACL can be applied to. The possible values are `Cluster`, `DelegationToken`, `Group`, `Topic`, `TransactionalId` and `User`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] service_name: Service name. Changing this property forces recreation of the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _KafkaNativeAclState.__new__(_KafkaNativeAclState)
 
+        __props__.__dict__["acl_id"] = acl_id
         __props__.__dict__["host"] = host
         __props__.__dict__["operation"] = operation
         __props__.__dict__["pattern_type"] = pattern_type
@@ -517,13 +565,22 @@ class KafkaNativeAcl(pulumi.CustomResource):
         __props__.__dict__["resource_name"] = resource_name_
         __props__.__dict__["resource_type"] = resource_type
         __props__.__dict__["service_name"] = service_name
+        __props__.__dict__["timeouts"] = timeouts
         return KafkaNativeAcl(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="aclId")
+    def acl_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        Kafka ACL ID.
+        """
+        return pulumi.get(self, "acl_id")
 
     @_builtins.property
     @pulumi.getter
     def host(self) -> pulumi.Output[_builtins.str]:
         """
-        The IP address from which a principal is allowed or denied access to the resource. Use `*` for all hosts. Maximum length: `256`. Changing this property forces recreation of the resource.
+        the host or `*` for all hosts. Maximum length: `256`. The default value is `*`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "host")
 
@@ -531,7 +588,7 @@ class KafkaNativeAcl(pulumi.CustomResource):
     @pulumi.getter
     def operation(self) -> pulumi.Output[_builtins.str]:
         """
-        The action that a principal is allowed or denied on the Kafka resource. The possible values are `All`, `Alter`, `AlterConfigs`, `ClusterAction`, `Create`, `CreateTokens`, `Delete`, `Describe`, `DescribeConfigs`, `DescribeTokens`, `IdempotentWrite`, `Read` and `Write`. Changing this property forces recreation of the resource.
+        Kafka ACL operation represents an operation which an ACL grants or denies permission to perform. The possible values are `All`, `Alter`, `AlterConfigs`, `ClusterAction`, `Create`, `CreateTokens`, `Delete`, `Describe`, `DescribeConfigs`, `DescribeTokens`, `IdempotentWrite`, `Read` and `Write`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "operation")
 
@@ -539,7 +596,7 @@ class KafkaNativeAcl(pulumi.CustomResource):
     @pulumi.getter(name="patternType")
     def pattern_type(self) -> pulumi.Output[_builtins.str]:
         """
-        Resource pattern used to match specified resources. The possible values are `LITERAL` and `PREFIXED`. Changing this property forces recreation of the resource.
+        How a Kafka-native ACL matches its resource name. The possible values are `LITERAL` and `PREFIXED`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "pattern_type")
 
@@ -547,7 +604,7 @@ class KafkaNativeAcl(pulumi.CustomResource):
     @pulumi.getter(name="permissionType")
     def permission_type(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies whether the action is explicitly allowed or denied for the principal on the specified resource. The possible values are `ALLOW` and `DENY`. Changing this property forces recreation of the resource.
+        Whether a Kafka-native ACL allows or denies its operation. The possible values are `ALLOW` and `DENY`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "permission_type")
 
@@ -555,7 +612,7 @@ class KafkaNativeAcl(pulumi.CustomResource):
     @pulumi.getter
     def principal(self) -> pulumi.Output[_builtins.str]:
         """
-        Identities in `user:name` format that the permissions apply to. The `name` supports wildcards. Maximum length: `256`. Changing this property forces recreation of the resource.
+        principal is in 'principalType:name' format. Maximum length: `256`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "principal")
 
@@ -563,7 +620,7 @@ class KafkaNativeAcl(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Project name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -571,7 +628,7 @@ class KafkaNativeAcl(pulumi.CustomResource):
     @pulumi.getter(name="resourceName")
     def resource_name(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the Kafka resource the permission applies to, such as the topic name or group ID. Maximum length: `256`. Changing this property forces recreation of the resource.
+        Resource pattern used to match specified resources. Maximum length: `256`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "resource_name")
 
@@ -579,7 +636,7 @@ class KafkaNativeAcl(pulumi.CustomResource):
     @pulumi.getter(name="resourceType")
     def resource_type(self) -> pulumi.Output[_builtins.str]:
         """
-        The type of Kafka resource. The possible values are `Cluster`, `DelegationToken`, `Group`, `Topic`, `TransactionalId` and `User`. Changing this property forces recreation of the resource.
+        Kafka ACL resource type represents a type of resource which an ACL can be applied to. The possible values are `Cluster`, `DelegationToken`, `Group`, `Topic`, `TransactionalId` and `User`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "resource_type")
 
@@ -587,7 +644,12 @@ class KafkaNativeAcl(pulumi.CustomResource):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Service name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> pulumi.Output[Optional['outputs.KafkaNativeAclTimeouts']]:
+        return pulumi.get(self, "timeouts")
 

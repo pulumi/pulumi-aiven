@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetKafkaAclResult',
@@ -26,7 +28,7 @@ class GetKafkaAclResult:
     """
     A collection of values returned by getKafkaAcl.
     """
-    def __init__(__self__, acl_id=None, id=None, permission=None, project=None, service_name=None, topic=None, username=None):
+    def __init__(__self__, acl_id=None, id=None, permission=None, project=None, service_name=None, timeouts=None, topic=None, username=None):
         if acl_id and not isinstance(acl_id, str):
             raise TypeError("Expected argument 'acl_id' to be a str")
         pulumi.set(__self__, "acl_id", acl_id)
@@ -42,6 +44,9 @@ class GetKafkaAclResult:
         if service_name and not isinstance(service_name, str):
             raise TypeError("Expected argument 'service_name' to be a str")
         pulumi.set(__self__, "service_name", service_name)
+        if timeouts and not isinstance(timeouts, dict):
+            raise TypeError("Expected argument 'timeouts' to be a dict")
+        pulumi.set(__self__, "timeouts", timeouts)
         if topic and not isinstance(topic, str):
             raise TypeError("Expected argument 'topic' to be a str")
         pulumi.set(__self__, "topic", topic)
@@ -53,7 +58,7 @@ class GetKafkaAclResult:
     @pulumi.getter(name="aclId")
     def acl_id(self) -> _builtins.str:
         """
-        Kafka ACL ID.
+        Kafka ACL ID. Provide either `acl_id`, or all of `permission`, `topic` and `username` together.
         """
         return pulumi.get(self, "acl_id")
 
@@ -61,7 +66,7 @@ class GetKafkaAclResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The provider-assigned unique ID for this managed resource.
+        Resource ID composed as: `project/service_name/acl_id`.
         """
         return pulumi.get(self, "id")
 
@@ -69,7 +74,7 @@ class GetKafkaAclResult:
     @pulumi.getter
     def permission(self) -> _builtins.str:
         """
-        Permissions to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
+        Permission of an Aiven Kafka ACL entry, as opposed to a Kafka-native one. The possible values are `admin`, `read`, `readwrite` and `write`. Provide either `acl_id`, or all of `permission`, `topic` and `username` together.
         """
         return pulumi.get(self, "permission")
 
@@ -77,7 +82,7 @@ class GetKafkaAclResult:
     @pulumi.getter
     def project(self) -> _builtins.str:
         """
-        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Project name.
         """
         return pulumi.get(self, "project")
 
@@ -85,15 +90,20 @@ class GetKafkaAclResult:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> _builtins.str:
         """
-        The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Service name.
         """
         return pulumi.get(self, "service_name")
 
     @_builtins.property
     @pulumi.getter
+    def timeouts(self) -> Optional['outputs.GetKafkaAclTimeoutsResult']:
+        return pulumi.get(self, "timeouts")
+
+    @_builtins.property
+    @pulumi.getter
     def topic(self) -> _builtins.str:
         """
-        Topics that the permissions apply to. Changing this property forces recreation of the resource.
+        Topic name pattern. Provide either `acl_id`, or all of `permission`, `topic` and `username` together.
         """
         return pulumi.get(self, "topic")
 
@@ -101,7 +111,7 @@ class GetKafkaAclResult:
     @pulumi.getter
     def username(self) -> _builtins.str:
         """
-        Usernames to grant permissions to. Changing this property forces recreation of the resource.
+        Username. Provide either `acl_id`, or all of `permission`, `topic` and `username` together.
         """
         return pulumi.get(self, "username")
 
@@ -117,13 +127,16 @@ class AwaitableGetKafkaAclResult(GetKafkaAclResult):
             permission=self.permission,
             project=self.project,
             service_name=self.service_name,
+            timeouts=self.timeouts,
             topic=self.topic,
             username=self.username)
 
 
-def get_kafka_acl(permission: Optional[_builtins.str] = None,
+def get_kafka_acl(acl_id: Optional[_builtins.str] = None,
+                  permission: Optional[_builtins.str] = None,
                   project: Optional[_builtins.str] = None,
                   service_name: Optional[_builtins.str] = None,
+                  timeouts: Optional[Union['GetKafkaAclTimeoutsArgs', 'GetKafkaAclTimeoutsArgsDict']] = None,
                   topic: Optional[_builtins.str] = None,
                   username: Optional[_builtins.str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKafkaAclResult:
@@ -136,24 +149,25 @@ def get_kafka_acl(permission: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    example_acl = aiven.get_kafka_acl(project=example_project["project"],
-        service_name=example_kafka["serviceName"],
-        topic="example-topic",
-        permission="admin",
-        username="example-user")
+    example = aiven.get_kafka_acl(project="my-project",
+        service_name="my-kafka",
+        acl_id="foo")
     ```
 
 
-    :param _builtins.str permission: Permissions to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
-    :param _builtins.str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param _builtins.str service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param _builtins.str topic: Topics that the permissions apply to. Changing this property forces recreation of the resource.
-    :param _builtins.str username: Usernames to grant permissions to. Changing this property forces recreation of the resource.
+    :param _builtins.str acl_id: Kafka ACL ID. Provide either `acl_id`, or all of `permission`, `topic` and `username` together.
+    :param _builtins.str permission: Permission of an Aiven Kafka ACL entry, as opposed to a Kafka-native one. The possible values are `admin`, `read`, `readwrite` and `write`. Provide either `acl_id`, or all of `permission`, `topic` and `username` together.
+    :param _builtins.str project: Project name.
+    :param _builtins.str service_name: Service name.
+    :param _builtins.str topic: Topic name pattern. Provide either `acl_id`, or all of `permission`, `topic` and `username` together.
+    :param _builtins.str username: Username. Provide either `acl_id`, or all of `permission`, `topic` and `username` together.
     """
     __args__ = dict()
+    __args__['aclId'] = acl_id
     __args__['permission'] = permission
     __args__['project'] = project
     __args__['serviceName'] = service_name
+    __args__['timeouts'] = timeouts
     __args__['topic'] = topic
     __args__['username'] = username
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -165,13 +179,16 @@ def get_kafka_acl(permission: Optional[_builtins.str] = None,
         permission=pulumi.get(__ret__, 'permission'),
         project=pulumi.get(__ret__, 'project'),
         service_name=pulumi.get(__ret__, 'service_name'),
+        timeouts=pulumi.get(__ret__, 'timeouts'),
         topic=pulumi.get(__ret__, 'topic'),
         username=pulumi.get(__ret__, 'username'))
-def get_kafka_acl_output(permission: pulumi.Input[Optional[_builtins.str]] = None,
+def get_kafka_acl_output(acl_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                         permission: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                          project: pulumi.Input[Optional[_builtins.str]] = None,
                          service_name: pulumi.Input[Optional[_builtins.str]] = None,
-                         topic: pulumi.Input[Optional[_builtins.str]] = None,
-                         username: pulumi.Input[Optional[_builtins.str]] = None,
+                         timeouts: pulumi.Input[Optional[Optional[Union['GetKafkaAclTimeoutsArgs', 'GetKafkaAclTimeoutsArgsDict']]]] = None,
+                         topic: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                         username: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKafkaAclResult]:
     """
     Gets information about an ACL entry for an Aiven for Apache Kafka® service.
@@ -182,24 +199,25 @@ def get_kafka_acl_output(permission: pulumi.Input[Optional[_builtins.str]] = Non
     import pulumi
     import pulumi_aiven as aiven
 
-    example_acl = aiven.get_kafka_acl(project=example_project["project"],
-        service_name=example_kafka["serviceName"],
-        topic="example-topic",
-        permission="admin",
-        username="example-user")
+    example = aiven.get_kafka_acl(project="my-project",
+        service_name="my-kafka",
+        acl_id="foo")
     ```
 
 
-    :param _builtins.str permission: Permissions to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
-    :param _builtins.str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param _builtins.str service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param _builtins.str topic: Topics that the permissions apply to. Changing this property forces recreation of the resource.
-    :param _builtins.str username: Usernames to grant permissions to. Changing this property forces recreation of the resource.
+    :param _builtins.str acl_id: Kafka ACL ID. Provide either `acl_id`, or all of `permission`, `topic` and `username` together.
+    :param _builtins.str permission: Permission of an Aiven Kafka ACL entry, as opposed to a Kafka-native one. The possible values are `admin`, `read`, `readwrite` and `write`. Provide either `acl_id`, or all of `permission`, `topic` and `username` together.
+    :param _builtins.str project: Project name.
+    :param _builtins.str service_name: Service name.
+    :param _builtins.str topic: Topic name pattern. Provide either `acl_id`, or all of `permission`, `topic` and `username` together.
+    :param _builtins.str username: Username. Provide either `acl_id`, or all of `permission`, `topic` and `username` together.
     """
     __args__ = dict()
+    __args__['aclId'] = acl_id
     __args__['permission'] = permission
     __args__['project'] = project
     __args__['serviceName'] = service_name
+    __args__['timeouts'] = timeouts
     __args__['topic'] = topic
     __args__['username'] = username
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -210,5 +228,6 @@ def get_kafka_acl_output(permission: pulumi.Input[Optional[_builtins.str]] = Non
         permission=pulumi.get(__response__, 'permission'),
         project=pulumi.get(__response__, 'project'),
         service_name=pulumi.get(__response__, 'service_name'),
+        timeouts=pulumi.get(__response__, 'timeouts'),
         topic=pulumi.get(__response__, 'topic'),
         username=pulumi.get(__response__, 'username')))

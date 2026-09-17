@@ -3,11 +3,14 @@
 
 package com.pulumi.aiven.inputs;
 
+import com.pulumi.aiven.inputs.GetOrganizationVpcTimeoutsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetOrganizationVpcArgs extends com.pulumi.resources.InvokeArgs {
@@ -15,14 +18,14 @@ public final class GetOrganizationVpcArgs extends com.pulumi.resources.InvokeArg
     public static final GetOrganizationVpcArgs Empty = new GetOrganizationVpcArgs();
 
     /**
-     * The ID of the organization.
+     * ID of an organization.
      * 
      */
     @Import(name="organizationId", required=true)
     private Output<String> organizationId;
 
     /**
-     * @return The ID of the organization.
+     * @return ID of an organization.
      * 
      */
     public Output<String> organizationId() {
@@ -44,11 +47,19 @@ public final class GetOrganizationVpcArgs extends com.pulumi.resources.InvokeArg
         return this.organizationVpcId;
     }
 
+    @Import(name="timeouts")
+    private @Nullable Output<GetOrganizationVpcTimeoutsArgs> timeouts;
+
+    public Optional<Output<GetOrganizationVpcTimeoutsArgs>> timeouts() {
+        return Optional.ofNullable(this.timeouts);
+    }
+
     private GetOrganizationVpcArgs() {}
 
     private GetOrganizationVpcArgs(GetOrganizationVpcArgs $) {
         this.organizationId = $.organizationId;
         this.organizationVpcId = $.organizationVpcId;
+        this.timeouts = $.timeouts;
     }
 
     public static Builder builder() {
@@ -70,7 +81,7 @@ public final class GetOrganizationVpcArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param organizationId The ID of the organization.
+         * @param organizationId ID of an organization.
          * 
          * @return builder
          * 
@@ -81,7 +92,7 @@ public final class GetOrganizationVpcArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param organizationId The ID of the organization.
+         * @param organizationId ID of an organization.
          * 
          * @return builder
          * 
@@ -109,6 +120,15 @@ public final class GetOrganizationVpcArgs extends com.pulumi.resources.InvokeArg
          */
         public Builder organizationVpcId(String organizationVpcId) {
             return organizationVpcId(Output.of(organizationVpcId));
+        }
+
+        public Builder timeouts(@Nullable Output<GetOrganizationVpcTimeoutsArgs> timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
+        public Builder timeouts(GetOrganizationVpcTimeoutsArgs timeouts) {
+            return timeouts(Output.of(timeouts));
         }
 
         public GetOrganizationVpcArgs build() {

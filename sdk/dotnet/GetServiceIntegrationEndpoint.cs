@@ -149,7 +149,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string EndpointName;
         /// <summary>
-        /// The type of service integration endpoint. The possible values are `Autoscaler`, `Datadog`, `ExternalAwsCloudwatchLogs`, `ExternalAwsCloudwatchMetrics`, `ExternalAwsS3`, `ExternalAzureBlobStorage`, `ExternalClickhouse`, `ExternalElasticsearchLogs`, `ExternalGoogleCloudBigquery`, `ExternalGoogleCloudLogging`, `ExternalKafka`, `ExternalMysql`, `ExternalObjectStorageConfig`, `ExternalOpensearchLogs`, `ExternalPostgresql`, `ExternalPrometheus`, `ExternalRedis`, `ExternalSchemaRegistry`, `ExternalSumologicLogs`, `Jolokia`, `Prometheus` and `Rsyslog`.
+        /// The type of service integration endpoint. The possible values are `Autoscaler`, `Datadog`, `ExternalAwsCloudwatchLogs`, `ExternalAwsCloudwatchMetrics`, `ExternalAwsS3`, `ExternalAzureBlobStorage`, `ExternalClickhouse`, `ExternalElasticsearchLogs`, `ExternalGoogleCloudBigquery`, `ExternalGoogleCloudLogging`, `ExternalKafka`, `ExternalMysql`, `ExternalObjectStorageConfig`, `ExternalOpensearchLogs`, `ExternalPostgresql`, `ExternalPrometheus`, `ExternalRedis`, `ExternalSchemaRegistry`, `ExternalSumologicLogs`, `Jolokia`, `Opentelemetry`, `Prometheus` and `Rsyslog`.
         /// </summary>
         public readonly string EndpointType;
         /// <summary>
@@ -221,6 +221,10 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationEndpointJolokiaUserConfigResult> JolokiaUserConfigs;
         /// <summary>
+        /// Opentelemetry user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetServiceIntegrationEndpointOpentelemetryUserConfigResult> OpentelemetryUserConfigs;
+        /// <summary>
         /// Project the service integration endpoint is in.
         /// </summary>
         public readonly string Project;
@@ -279,6 +283,8 @@ namespace Pulumi.Aiven
 
             ImmutableArray<Outputs.GetServiceIntegrationEndpointJolokiaUserConfigResult> jolokiaUserConfigs,
 
+            ImmutableArray<Outputs.GetServiceIntegrationEndpointOpentelemetryUserConfigResult> opentelemetryUserConfigs,
+
             string project,
 
             ImmutableArray<Outputs.GetServiceIntegrationEndpointPrometheusUserConfigResult> prometheusUserConfigs,
@@ -307,6 +313,7 @@ namespace Pulumi.Aiven
             ExternalSchemaRegistryUserConfigs = externalSchemaRegistryUserConfigs;
             Id = id;
             JolokiaUserConfigs = jolokiaUserConfigs;
+            OpentelemetryUserConfigs = opentelemetryUserConfigs;
             Project = project;
             PrometheusUserConfigs = prometheusUserConfigs;
             RsyslogUserConfigs = rsyslogUserConfigs;

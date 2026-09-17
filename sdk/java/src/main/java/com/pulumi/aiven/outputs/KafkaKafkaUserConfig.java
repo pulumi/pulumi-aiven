@@ -160,6 +160,11 @@ public final class KafkaKafkaUserConfig {
      */
     private @Nullable String kafkaVersion;
     /**
+     * @return Pin a specific installed Karapace version on this service. Leave null/unset to auto-follow the newest installed version.
+     * 
+     */
+    private @Nullable String karapaceVersion;
+    /**
      * @return Use a Let&#39;s Encrypt certificate authority (CA) for Kafka SASL authentication. (Default: False).
      * 
      */
@@ -170,7 +175,7 @@ public final class KafkaKafkaUserConfig {
      */
     private @Nullable Boolean letsencryptSaslPrivatelink;
     /**
-     * @return List of preferred zone IDs for service node placement. Nodes will be placed in these zones when available. If a specified zone is unavailable (e.g., due to capacity constraints), nodes will be placed in other available zones to maintain the configured number of zones for availability. Invalid zone IDs are rejected at configuration time. Zone IDs are cloud-specific: AWS uses zone IDs like `euc1-az1`, GCP uses zone names like `europe-west1-a`, and Azure uses `location/zone` format like `germanywestcentral/1`. If single*zone is enabled with an availability*zone, that setting takes precedence over preferred_zones.Changes take effect on next node recreation (e.g., maintenance or plan change). For Kafka professional plans, nodes outside preferred zones are automatically rebalanced once per day.
+     * @return List of preferred zone IDs for service node placement. Nodes will be placed in these zones when available. If a specified zone is unavailable (e.g., due to capacity constraints), nodes will be placed in other available zones to maintain the configured number of zones for availability. Invalid zone IDs are rejected at configuration time. Zone IDs are cloud-specific: AWS uses zone IDs like `euc1-az1`, GCP uses zone names like `europe-west1-a`, and Azure uses `location/zone` format like `germanywestcentral/1`. If single*zone is enabled with an availability*zone, that setting takes precedence over preferred_zones. Changes take effect on next node recreation (e.g., maintenance or plan change). For eligible plans, nodes outside preferred zones are automatically rebalanced once per day.
      * 
      */
     private @Nullable List<String> preferredZones;
@@ -403,6 +408,13 @@ public final class KafkaKafkaUserConfig {
         return Optional.ofNullable(this.kafkaVersion);
     }
     /**
+     * @return Pin a specific installed Karapace version on this service. Leave null/unset to auto-follow the newest installed version.
+     * 
+     */
+    public Optional<String> karapaceVersion() {
+        return Optional.ofNullable(this.karapaceVersion);
+    }
+    /**
      * @return Use a Let&#39;s Encrypt certificate authority (CA) for Kafka SASL authentication. (Default: False).
      * 
      */
@@ -417,7 +429,7 @@ public final class KafkaKafkaUserConfig {
         return Optional.ofNullable(this.letsencryptSaslPrivatelink);
     }
     /**
-     * @return List of preferred zone IDs for service node placement. Nodes will be placed in these zones when available. If a specified zone is unavailable (e.g., due to capacity constraints), nodes will be placed in other available zones to maintain the configured number of zones for availability. Invalid zone IDs are rejected at configuration time. Zone IDs are cloud-specific: AWS uses zone IDs like `euc1-az1`, GCP uses zone names like `europe-west1-a`, and Azure uses `location/zone` format like `germanywestcentral/1`. If single*zone is enabled with an availability*zone, that setting takes precedence over preferred_zones.Changes take effect on next node recreation (e.g., maintenance or plan change). For Kafka professional plans, nodes outside preferred zones are automatically rebalanced once per day.
+     * @return List of preferred zone IDs for service node placement. Nodes will be placed in these zones when available. If a specified zone is unavailable (e.g., due to capacity constraints), nodes will be placed in other available zones to maintain the configured number of zones for availability. Invalid zone IDs are rejected at configuration time. Zone IDs are cloud-specific: AWS uses zone IDs like `euc1-az1`, GCP uses zone names like `europe-west1-a`, and Azure uses `location/zone` format like `germanywestcentral/1`. If single*zone is enabled with an availability*zone, that setting takes precedence over preferred_zones. Changes take effect on next node recreation (e.g., maintenance or plan change). For eligible plans, nodes outside preferred zones are automatically rebalanced once per day.
      * 
      */
     public List<String> preferredZones() {
@@ -527,6 +539,7 @@ public final class KafkaKafkaUserConfig {
         private @Nullable KafkaKafkaUserConfigKafkaRestConfig kafkaRestConfig;
         private @Nullable KafkaKafkaUserConfigKafkaSaslMechanisms kafkaSaslMechanisms;
         private @Nullable String kafkaVersion;
+        private @Nullable String karapaceVersion;
         private @Nullable Boolean letsencryptSasl;
         private @Nullable Boolean letsencryptSaslPrivatelink;
         private @Nullable List<String> preferredZones;
@@ -567,6 +580,7 @@ public final class KafkaKafkaUserConfig {
     	      this.kafkaRestConfig = defaults.kafkaRestConfig;
     	      this.kafkaSaslMechanisms = defaults.kafkaSaslMechanisms;
     	      this.kafkaVersion = defaults.kafkaVersion;
+    	      this.karapaceVersion = defaults.karapaceVersion;
     	      this.letsencryptSasl = defaults.letsencryptSasl;
     	      this.letsencryptSaslPrivatelink = defaults.letsencryptSaslPrivatelink;
     	      this.preferredZones = defaults.preferredZones;
@@ -745,6 +759,12 @@ public final class KafkaKafkaUserConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder karapaceVersion(@Nullable String karapaceVersion) {
+
+            this.karapaceVersion = karapaceVersion;
+            return this;
+        }
+        @CustomType.Setter
         public Builder letsencryptSasl(@Nullable Boolean letsencryptSasl) {
 
             this.letsencryptSasl = letsencryptSasl;
@@ -854,6 +874,7 @@ public final class KafkaKafkaUserConfig {
             _resultValue.kafkaRestConfig = kafkaRestConfig;
             _resultValue.kafkaSaslMechanisms = kafkaSaslMechanisms;
             _resultValue.kafkaVersion = kafkaVersion;
+            _resultValue.karapaceVersion = karapaceVersion;
             _resultValue.letsencryptSasl = letsencryptSasl;
             _resultValue.letsencryptSaslPrivatelink = letsencryptSaslPrivatelink;
             _resultValue.preferredZones = preferredZones;

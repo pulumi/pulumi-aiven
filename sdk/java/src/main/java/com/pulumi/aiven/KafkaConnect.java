@@ -76,10 +76,6 @@ import javax.annotation.Nullable;
  * 
  *         // Create a Kafka Connect service.
  *         var exampleKafkaConnect = new KafkaConnect("exampleKafkaConnect", KafkaConnectArgs.builder()
- *             .project(exampleProject.project())
- *             .cloudName("google-europe-west1")
- *             .plan("startup-4")
- *             .serviceName("example-connect-service")
  *             .kafkaConnectUserConfig(KafkaConnectKafkaConnectUserConfigArgs.builder()
  *                 .kafkaConnect(KafkaConnectKafkaConnectUserConfigKafkaConnectArgs.builder()
  *                     .consumerIsolationLevel("read_committed")
@@ -88,14 +84,14 @@ import javax.annotation.Nullable;
  *                     .kafkaConnect(true)
  *                     .build())
  *                 .build())
+ *             .project(exampleProject.project())
+ *             .cloudName("google-europe-west1")
+ *             .plan("startup-4")
+ *             .serviceName("example-connect-service")
  *             .build());
  * 
  *         // Integrate the Kafka and Kafka Connect services.
  *         var kafkaConnectIntegration = new ServiceIntegration("kafkaConnectIntegration", ServiceIntegrationArgs.builder()
- *             .project(exampleProject.project())
- *             .integrationType("kafka_connect")
- *             .sourceServiceName(exampleKafka.serviceName())
- *             .destinationServiceName(exampleKafkaConnect.serviceName())
  *             .kafkaConnectUserConfig(ServiceIntegrationKafkaConnectUserConfigArgs.builder()
  *                 .kafkaConnect(ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs.builder()
  *                     .groupId("connect")
@@ -103,6 +99,10 @@ import javax.annotation.Nullable;
  *                     .offsetStorageTopic("__connect_offsets")
  *                     .build())
  *                 .build())
+ *             .project(exampleProject.project())
+ *             .integrationType("kafka_connect")
+ *             .sourceServiceName(exampleKafka.serviceName())
+ *             .destinationServiceName(exampleKafkaConnect.serviceName())
  *             .build());
  * 
  *     }

@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetAwsOrgVpcPeeringConnectionResult',
@@ -26,7 +28,7 @@ class GetAwsOrgVpcPeeringConnectionResult:
     """
     A collection of values returned by getAwsOrgVpcPeeringConnection.
     """
-    def __init__(__self__, aws_account_id=None, aws_vpc_id=None, aws_vpc_peering_connection_id=None, aws_vpc_region=None, id=None, organization_id=None, organization_vpc_id=None, peering_connection_id=None, state=None):
+    def __init__(__self__, aws_account_id=None, aws_vpc_id=None, aws_vpc_peering_connection_id=None, aws_vpc_region=None, id=None, organization_id=None, organization_vpc_id=None, peering_connection_id=None, state=None, timeouts=None):
         if aws_account_id and not isinstance(aws_account_id, str):
             raise TypeError("Expected argument 'aws_account_id' to be a str")
         pulumi.set(__self__, "aws_account_id", aws_account_id)
@@ -54,12 +56,15 @@ class GetAwsOrgVpcPeeringConnectionResult:
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
+        if timeouts and not isinstance(timeouts, dict):
+            raise TypeError("Expected argument 'timeouts' to be a dict")
+        pulumi.set(__self__, "timeouts", timeouts)
 
     @_builtins.property
     @pulumi.getter(name="awsAccountId")
     def aws_account_id(self) -> _builtins.str:
         """
-        AWS account ID. Changing this property forces recreation of the resource.
+        AWS account ID.
         """
         return pulumi.get(self, "aws_account_id")
 
@@ -67,7 +72,7 @@ class GetAwsOrgVpcPeeringConnectionResult:
     @pulumi.getter(name="awsVpcId")
     def aws_vpc_id(self) -> _builtins.str:
         """
-        AWS VPC ID. Changing this property forces recreation of the resource.
+        AWS VPC ID.
         """
         return pulumi.get(self, "aws_vpc_id")
 
@@ -91,7 +96,7 @@ class GetAwsOrgVpcPeeringConnectionResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The provider-assigned unique ID for this managed resource.
+        Resource ID composed as: `organization_id/organization_vpc_id/aws_account_id/aws_vpc_id/aws_vpc_region`.
         """
         return pulumi.get(self, "id")
 
@@ -99,7 +104,7 @@ class GetAwsOrgVpcPeeringConnectionResult:
     @pulumi.getter(name="organizationId")
     def organization_id(self) -> _builtins.str:
         """
-        Identifier of the organization.
+        ID of an organization.
         """
         return pulumi.get(self, "organization_id")
 
@@ -107,7 +112,7 @@ class GetAwsOrgVpcPeeringConnectionResult:
     @pulumi.getter(name="organizationVpcId")
     def organization_vpc_id(self) -> _builtins.str:
         """
-        Identifier of the organization VPC.
+        Organization VPC ID.
         """
         return pulumi.get(self, "organization_vpc_id")
 
@@ -115,7 +120,7 @@ class GetAwsOrgVpcPeeringConnectionResult:
     @pulumi.getter(name="peeringConnectionId")
     def peering_connection_id(self) -> _builtins.str:
         """
-        The ID of the peering connection.
+        Organization peering connection ID.
         """
         return pulumi.get(self, "peering_connection_id")
 
@@ -126,6 +131,11 @@ class GetAwsOrgVpcPeeringConnectionResult:
         State of the peering connection. The possible values are `ACTIVE`, `APPROVED`, `APPROVED_PEER_REQUESTED`, `DELETED`, `DELETED_BY_PEER`, `DELETING`, `ERROR`, `INVALID_SPECIFICATION`, `PENDING_PEER` and `REJECTED_BY_PEER`.
         """
         return pulumi.get(self, "state")
+
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> Optional['outputs.GetAwsOrgVpcPeeringConnectionTimeoutsResult']:
+        return pulumi.get(self, "timeouts")
 
 
 class AwaitableGetAwsOrgVpcPeeringConnectionResult(GetAwsOrgVpcPeeringConnectionResult):
@@ -142,7 +152,8 @@ class AwaitableGetAwsOrgVpcPeeringConnectionResult(GetAwsOrgVpcPeeringConnection
             organization_id=self.organization_id,
             organization_vpc_id=self.organization_vpc_id,
             peering_connection_id=self.peering_connection_id,
-            state=self.state)
+            state=self.state,
+            timeouts=self.timeouts)
 
 
 def get_aws_org_vpc_peering_connection(aws_account_id: Optional[_builtins.str] = None,
@@ -150,19 +161,30 @@ def get_aws_org_vpc_peering_connection(aws_account_id: Optional[_builtins.str] =
                                        aws_vpc_region: Optional[_builtins.str] = None,
                                        organization_id: Optional[_builtins.str] = None,
                                        organization_vpc_id: Optional[_builtins.str] = None,
+                                       timeouts: Optional[Union['GetAwsOrgVpcPeeringConnectionTimeoutsArgs', 'GetAwsOrgVpcPeeringConnectionTimeoutsArgsDict']] = None,
                                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAwsOrgVpcPeeringConnectionResult:
     """
     Gets information about an AWS VPC peering connection.
 
-    **This resource is in the beta stage and may change without notice.** Set
-    the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    example = aiven.get_aws_org_vpc_peering_connection(organization_id="org1a23f456789",
+        organization_vpc_id="1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+        aws_account_id="123456789012",
+        aws_vpc_id="vpc-2f09a348",
+        aws_vpc_region="us-east-1")
+    ```
 
 
-    :param _builtins.str aws_account_id: AWS account ID. Changing this property forces recreation of the resource.
-    :param _builtins.str aws_vpc_id: AWS VPC ID. Changing this property forces recreation of the resource.
+    :param _builtins.str aws_account_id: AWS account ID.
+    :param _builtins.str aws_vpc_id: AWS VPC ID.
     :param _builtins.str aws_vpc_region: The AWS region of the peered VPC. For example, `eu-central-1`.
-    :param _builtins.str organization_id: Identifier of the organization.
-    :param _builtins.str organization_vpc_id: Identifier of the organization VPC.
+    :param _builtins.str organization_id: ID of an organization.
+    :param _builtins.str organization_vpc_id: Organization VPC ID.
     """
     __args__ = dict()
     __args__['awsAccountId'] = aws_account_id
@@ -170,6 +192,7 @@ def get_aws_org_vpc_peering_connection(aws_account_id: Optional[_builtins.str] =
     __args__['awsVpcRegion'] = aws_vpc_region
     __args__['organizationId'] = organization_id
     __args__['organizationVpcId'] = organization_vpc_id
+    __args__['timeouts'] = timeouts
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('aiven:index/getAwsOrgVpcPeeringConnection:getAwsOrgVpcPeeringConnection', __args__, opts=opts, typ=GetAwsOrgVpcPeeringConnectionResult).value
 
@@ -182,25 +205,37 @@ def get_aws_org_vpc_peering_connection(aws_account_id: Optional[_builtins.str] =
         organization_id=pulumi.get(__ret__, 'organization_id'),
         organization_vpc_id=pulumi.get(__ret__, 'organization_vpc_id'),
         peering_connection_id=pulumi.get(__ret__, 'peering_connection_id'),
-        state=pulumi.get(__ret__, 'state'))
+        state=pulumi.get(__ret__, 'state'),
+        timeouts=pulumi.get(__ret__, 'timeouts'))
 def get_aws_org_vpc_peering_connection_output(aws_account_id: pulumi.Input[Optional[_builtins.str]] = None,
                                               aws_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                                               aws_vpc_region: pulumi.Input[Optional[_builtins.str]] = None,
                                               organization_id: pulumi.Input[Optional[_builtins.str]] = None,
                                               organization_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                              timeouts: pulumi.Input[Optional[Optional[Union['GetAwsOrgVpcPeeringConnectionTimeoutsArgs', 'GetAwsOrgVpcPeeringConnectionTimeoutsArgsDict']]]] = None,
                                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAwsOrgVpcPeeringConnectionResult]:
     """
     Gets information about an AWS VPC peering connection.
 
-    **This resource is in the beta stage and may change without notice.** Set
-    the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    example = aiven.get_aws_org_vpc_peering_connection(organization_id="org1a23f456789",
+        organization_vpc_id="1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+        aws_account_id="123456789012",
+        aws_vpc_id="vpc-2f09a348",
+        aws_vpc_region="us-east-1")
+    ```
 
 
-    :param _builtins.str aws_account_id: AWS account ID. Changing this property forces recreation of the resource.
-    :param _builtins.str aws_vpc_id: AWS VPC ID. Changing this property forces recreation of the resource.
+    :param _builtins.str aws_account_id: AWS account ID.
+    :param _builtins.str aws_vpc_id: AWS VPC ID.
     :param _builtins.str aws_vpc_region: The AWS region of the peered VPC. For example, `eu-central-1`.
-    :param _builtins.str organization_id: Identifier of the organization.
-    :param _builtins.str organization_vpc_id: Identifier of the organization VPC.
+    :param _builtins.str organization_id: ID of an organization.
+    :param _builtins.str organization_vpc_id: Organization VPC ID.
     """
     __args__ = dict()
     __args__['awsAccountId'] = aws_account_id
@@ -208,6 +243,7 @@ def get_aws_org_vpc_peering_connection_output(aws_account_id: pulumi.Input[Optio
     __args__['awsVpcRegion'] = aws_vpc_region
     __args__['organizationId'] = organization_id
     __args__['organizationVpcId'] = organization_vpc_id
+    __args__['timeouts'] = timeouts
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('aiven:index/getAwsOrgVpcPeeringConnection:getAwsOrgVpcPeeringConnection', __args__, opts=opts, typ=GetAwsOrgVpcPeeringConnectionResult)
     return __ret__.apply(lambda __response__: GetAwsOrgVpcPeeringConnectionResult(
@@ -219,4 +255,5 @@ def get_aws_org_vpc_peering_connection_output(aws_account_id: pulumi.Input[Optio
         organization_id=pulumi.get(__response__, 'organization_id'),
         organization_vpc_id=pulumi.get(__response__, 'organization_vpc_id'),
         peering_connection_id=pulumi.get(__response__, 'peering_connection_id'),
-        state=pulumi.get(__response__, 'state')))
+        state=pulumi.get(__response__, 'state'),
+        timeouts=pulumi.get(__response__, 'timeouts')))

@@ -29,13 +29,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.NewValkey(ctx, "example_valkey", &aiven.ValkeyArgs{
+//				ValkeyUserConfig: &aiven.ValkeyValkeyUserConfigArgs{
+//					ValkeyMaxmemoryPolicy: pulumi.String("allkeys-random"),
+//				},
 //				Project:     pulumi.Any(exampleProject.Project),
 //				Plan:        pulumi.String("startup-4"),
 //				CloudName:   pulumi.String("google-europe-west1"),
 //				ServiceName: pulumi.String("example-valkey-service"),
-//				ValkeyUserConfig: &aiven.ValkeyValkeyUserConfigArgs{
-//					ValkeyMaxmemoryPolicy: pulumi.String("allkeys-random"),
-//				},
 //			})
 //			if err != nil {
 //				return err

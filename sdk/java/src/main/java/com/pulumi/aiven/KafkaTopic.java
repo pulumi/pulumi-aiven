@@ -50,12 +50,6 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new KafkaTopic("example", KafkaTopicArgs.builder()
- *             .project("my-project")
- *             .serviceName("my-kafka")
- *             .topicName("mytopic")
- *             .partitions(3)
- *             .replication(3)
- *             .ownerUserGroupId("ug22ba494e096")
  *             .config(KafkaTopicConfigArgs.builder()
  *                 .cleanupPolicy("delete")
  *                 .compressionType("zstd")
@@ -92,6 +86,12 @@ import javax.annotation.Nullable;
  *                 .key("My-tag_key")
  *                 .value("My tag value, value.")
  *                 .build())
+ *             .project("my-project")
+ *             .serviceName("my-kafka")
+ *             .topicName("mytopic")
+ *             .partitions(3)
+ *             .replication(3)
+ *             .ownerUserGroupId("ug22ba494e096")
  *             .topicDescription("Platform events")
  *             .build());
  * 

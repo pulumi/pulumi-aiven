@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetValkeyUserResult',
@@ -26,19 +28,25 @@ class GetValkeyUserResult:
     """
     A collection of values returned by getValkeyUser.
     """
-    def __init__(__self__, id=None, password=None, project=None, service_name=None, type=None, username=None, valkey_acl_categories=None, valkey_acl_channels=None, valkey_acl_commands=None, valkey_acl_keys=None):
+    def __init__(__self__, id=None, password=None, password_encryption_type=None, project=None, service_name=None, timeouts=None, type=None, username=None, valkey_acl_categories=None, valkey_acl_channels=None, valkey_acl_commands=None, valkey_acl_keys=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
         if password and not isinstance(password, str):
             raise TypeError("Expected argument 'password' to be a str")
         pulumi.set(__self__, "password", password)
+        if password_encryption_type and not isinstance(password_encryption_type, str):
+            raise TypeError("Expected argument 'password_encryption_type' to be a str")
+        pulumi.set(__self__, "password_encryption_type", password_encryption_type)
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
         if service_name and not isinstance(service_name, str):
             raise TypeError("Expected argument 'service_name' to be a str")
         pulumi.set(__self__, "service_name", service_name)
+        if timeouts and not isinstance(timeouts, dict):
+            raise TypeError("Expected argument 'timeouts' to be a dict")
+        pulumi.set(__self__, "timeouts", timeouts)
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
         pulumi.set(__self__, "type", type)
@@ -62,7 +70,7 @@ class GetValkeyUserResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The provider-assigned unique ID for this managed resource.
+        Resource ID composed as: `project/service_name/username`.
         """
         return pulumi.get(self, "id")
 
@@ -70,15 +78,23 @@ class GetValkeyUserResult:
     @pulumi.getter
     def password(self) -> _builtins.str:
         """
-        The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+        The password of the service user (auto-generated if not provided). The field conflicts with `password_wo`.
         """
         return pulumi.get(self, "password")
+
+    @_builtins.property
+    @pulumi.getter(name="passwordEncryptionType")
+    def password_encryption_type(self) -> _builtins.str:
+        """
+        The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. 'unknown' is reported when the hash is missing or uses an unrecognised format. The possible values are `md5`, `scram-sha-256` and `unknown`.
+        """
+        return pulumi.get(self, "password_encryption_type")
 
     @_builtins.property
     @pulumi.getter
     def project(self) -> _builtins.str:
         """
-        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Project name.
         """
         return pulumi.get(self, "project")
 
@@ -86,15 +102,20 @@ class GetValkeyUserResult:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> _builtins.str:
         """
-        The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Service name.
         """
         return pulumi.get(self, "service_name")
 
     @_builtins.property
     @pulumi.getter
+    def timeouts(self) -> Optional['outputs.GetValkeyUserTimeoutsResult']:
+        return pulumi.get(self, "timeouts")
+
+    @_builtins.property
+    @pulumi.getter
     def type(self) -> _builtins.str:
         """
-        User account type, such as primary or regular account.
+        Account type.
         """
         return pulumi.get(self, "type")
 
@@ -102,7 +123,7 @@ class GetValkeyUserResult:
     @pulumi.getter
     def username(self) -> _builtins.str:
         """
-        Name of the Valkey service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Service username.
         """
         return pulumi.get(self, "username")
 
@@ -134,7 +155,7 @@ class GetValkeyUserResult:
     @pulumi.getter(name="valkeyAclKeys")
     def valkey_acl_keys(self) -> Sequence[_builtins.str]:
         """
-        Key access rules. Entries are defined as standard glob patterns. The field is required with `valkey_acl_categories` and `valkey_acl_keys`.
+        Key access rules. Entries are defined as standard glob patterns. The field is required with `valkey_acl_categories` and `valkey_acl_commands`.
         """
         return pulumi.get(self, "valkey_acl_keys")
 
@@ -147,8 +168,10 @@ class AwaitableGetValkeyUserResult(GetValkeyUserResult):
         return GetValkeyUserResult(
             id=self.id,
             password=self.password,
+            password_encryption_type=self.password_encryption_type,
             project=self.project,
             service_name=self.service_name,
+            timeouts=self.timeouts,
             type=self.type,
             username=self.username,
             valkey_acl_categories=self.valkey_acl_categories,
@@ -159,19 +182,32 @@ class AwaitableGetValkeyUserResult(GetValkeyUserResult):
 
 def get_valkey_user(project: Optional[_builtins.str] = None,
                     service_name: Optional[_builtins.str] = None,
+                    timeouts: Optional[Union['GetValkeyUserTimeoutsArgs', 'GetValkeyUserTimeoutsArgsDict']] = None,
                     username: Optional[_builtins.str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetValkeyUserResult:
     """
-    The Valkey User data source provides information about the existing Aiven for Valkey user.
+    Gets information about an Aiven for Valkey™ service user.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    example = aiven.get_valkey_user(project="my-project",
+        service_name="my-valkey",
+        username="testuser")
+    ```
 
 
-    :param _builtins.str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param _builtins.str service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param _builtins.str username: Name of the Valkey service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+    :param _builtins.str project: Project name.
+    :param _builtins.str service_name: Service name.
+    :param _builtins.str username: Service username.
     """
     __args__ = dict()
     __args__['project'] = project
     __args__['serviceName'] = service_name
+    __args__['timeouts'] = timeouts
     __args__['username'] = username
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('aiven:index/getValkeyUser:getValkeyUser', __args__, opts=opts, typ=GetValkeyUserResult).value
@@ -179,8 +215,10 @@ def get_valkey_user(project: Optional[_builtins.str] = None,
     return AwaitableGetValkeyUserResult(
         id=pulumi.get(__ret__, 'id'),
         password=pulumi.get(__ret__, 'password'),
+        password_encryption_type=pulumi.get(__ret__, 'password_encryption_type'),
         project=pulumi.get(__ret__, 'project'),
         service_name=pulumi.get(__ret__, 'service_name'),
+        timeouts=pulumi.get(__ret__, 'timeouts'),
         type=pulumi.get(__ret__, 'type'),
         username=pulumi.get(__ret__, 'username'),
         valkey_acl_categories=pulumi.get(__ret__, 'valkey_acl_categories'),
@@ -189,27 +227,42 @@ def get_valkey_user(project: Optional[_builtins.str] = None,
         valkey_acl_keys=pulumi.get(__ret__, 'valkey_acl_keys'))
 def get_valkey_user_output(project: pulumi.Input[Optional[_builtins.str]] = None,
                            service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                           timeouts: pulumi.Input[Optional[Optional[Union['GetValkeyUserTimeoutsArgs', 'GetValkeyUserTimeoutsArgsDict']]]] = None,
                            username: pulumi.Input[Optional[_builtins.str]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetValkeyUserResult]:
     """
-    The Valkey User data source provides information about the existing Aiven for Valkey user.
+    Gets information about an Aiven for Valkey™ service user.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    example = aiven.get_valkey_user(project="my-project",
+        service_name="my-valkey",
+        username="testuser")
+    ```
 
 
-    :param _builtins.str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param _builtins.str service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param _builtins.str username: Name of the Valkey service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+    :param _builtins.str project: Project name.
+    :param _builtins.str service_name: Service name.
+    :param _builtins.str username: Service username.
     """
     __args__ = dict()
     __args__['project'] = project
     __args__['serviceName'] = service_name
+    __args__['timeouts'] = timeouts
     __args__['username'] = username
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('aiven:index/getValkeyUser:getValkeyUser', __args__, opts=opts, typ=GetValkeyUserResult)
     return __ret__.apply(lambda __response__: GetValkeyUserResult(
         id=pulumi.get(__response__, 'id'),
         password=pulumi.get(__response__, 'password'),
+        password_encryption_type=pulumi.get(__response__, 'password_encryption_type'),
         project=pulumi.get(__response__, 'project'),
         service_name=pulumi.get(__response__, 'service_name'),
+        timeouts=pulumi.get(__response__, 'timeouts'),
         type=pulumi.get(__response__, 'type'),
         username=pulumi.get(__response__, 'username'),
         valkey_acl_categories=pulumi.get(__response__, 'valkey_acl_categories'),

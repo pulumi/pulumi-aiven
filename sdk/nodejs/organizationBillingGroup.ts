@@ -16,20 +16,20 @@ import * as utilities from "./utilities";
  * import * as aiven from "@pulumi/aiven";
  *
  * const example = new aiven.OrganizationBillingGroup("example", {
- *     organizationId: "org1a23f456789",
- *     billingAddressId: "addr4b1ff1ceeaa",
- *     shippingAddressId: "addr4b1ff1ceeaa",
+ *     paymentMethod: {
+ *         paymentMethodId: "pm4b1ff1ceeaa",
+ *         paymentMethodType: "credit_card",
+ *     },
  *     billingContactEmails: [{
  *         email: "jane@example.com",
  *     }],
  *     billingEmails: [{
  *         email: "jane@example.com",
  *     }],
+ *     organizationId: "org1a23f456789",
+ *     billingAddressId: "addr4b1ff1ceeaa",
+ *     shippingAddressId: "addr4b1ff1ceeaa",
  *     billingGroupName: "Default billing group for the organization",
- *     paymentMethod: {
- *         paymentMethodId: "pm4b1ff1ceeaa",
- *         paymentMethodType: "credit_card",
- *     },
  *     vatId: "FI12345678",
  *     customInvoiceText: "Extra billing text",
  * });

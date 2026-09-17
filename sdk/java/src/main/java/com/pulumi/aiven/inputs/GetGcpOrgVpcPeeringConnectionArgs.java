@@ -3,11 +3,14 @@
 
 package com.pulumi.aiven.inputs;
 
+import com.pulumi.aiven.inputs.GetGcpOrgVpcPeeringConnectionTimeoutsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetGcpOrgVpcPeeringConnectionArgs extends com.pulumi.resources.InvokeArgs {
@@ -15,14 +18,14 @@ public final class GetGcpOrgVpcPeeringConnectionArgs extends com.pulumi.resource
     public static final GetGcpOrgVpcPeeringConnectionArgs Empty = new GetGcpOrgVpcPeeringConnectionArgs();
 
     /**
-     * Google Cloud project ID. Changing this property forces recreation of the resource.
+     * Google Cloud project ID.
      * 
      */
     @Import(name="gcpProjectId", required=true)
     private Output<String> gcpProjectId;
 
     /**
-     * @return Google Cloud project ID. Changing this property forces recreation of the resource.
+     * @return Google Cloud project ID.
      * 
      */
     public Output<String> gcpProjectId() {
@@ -30,14 +33,14 @@ public final class GetGcpOrgVpcPeeringConnectionArgs extends com.pulumi.resource
     }
 
     /**
-     * Identifier of the organization.
+     * ID of an organization.
      * 
      */
     @Import(name="organizationId", required=true)
     private Output<String> organizationId;
 
     /**
-     * @return Identifier of the organization.
+     * @return ID of an organization.
      * 
      */
     public Output<String> organizationId() {
@@ -45,14 +48,14 @@ public final class GetGcpOrgVpcPeeringConnectionArgs extends com.pulumi.resource
     }
 
     /**
-     * Identifier of the organization VPC.
+     * Organization VPC ID.
      * 
      */
     @Import(name="organizationVpcId", required=true)
     private Output<String> organizationVpcId;
 
     /**
-     * @return Identifier of the organization VPC.
+     * @return Organization VPC ID.
      * 
      */
     public Output<String> organizationVpcId() {
@@ -60,18 +63,25 @@ public final class GetGcpOrgVpcPeeringConnectionArgs extends com.pulumi.resource
     }
 
     /**
-     * Google Cloud VPC network name. Changing this property forces recreation of the resource.
+     * Google Cloud VPC network name.
      * 
      */
     @Import(name="peerVpc", required=true)
     private Output<String> peerVpc;
 
     /**
-     * @return Google Cloud VPC network name. Changing this property forces recreation of the resource.
+     * @return Google Cloud VPC network name.
      * 
      */
     public Output<String> peerVpc() {
         return this.peerVpc;
+    }
+
+    @Import(name="timeouts")
+    private @Nullable Output<GetGcpOrgVpcPeeringConnectionTimeoutsArgs> timeouts;
+
+    public Optional<Output<GetGcpOrgVpcPeeringConnectionTimeoutsArgs>> timeouts() {
+        return Optional.ofNullable(this.timeouts);
     }
 
     private GetGcpOrgVpcPeeringConnectionArgs() {}
@@ -81,6 +91,7 @@ public final class GetGcpOrgVpcPeeringConnectionArgs extends com.pulumi.resource
         this.organizationId = $.organizationId;
         this.organizationVpcId = $.organizationVpcId;
         this.peerVpc = $.peerVpc;
+        this.timeouts = $.timeouts;
     }
 
     public static Builder builder() {
@@ -102,7 +113,7 @@ public final class GetGcpOrgVpcPeeringConnectionArgs extends com.pulumi.resource
         }
 
         /**
-         * @param gcpProjectId Google Cloud project ID. Changing this property forces recreation of the resource.
+         * @param gcpProjectId Google Cloud project ID.
          * 
          * @return builder
          * 
@@ -113,7 +124,7 @@ public final class GetGcpOrgVpcPeeringConnectionArgs extends com.pulumi.resource
         }
 
         /**
-         * @param gcpProjectId Google Cloud project ID. Changing this property forces recreation of the resource.
+         * @param gcpProjectId Google Cloud project ID.
          * 
          * @return builder
          * 
@@ -123,7 +134,7 @@ public final class GetGcpOrgVpcPeeringConnectionArgs extends com.pulumi.resource
         }
 
         /**
-         * @param organizationId Identifier of the organization.
+         * @param organizationId ID of an organization.
          * 
          * @return builder
          * 
@@ -134,7 +145,7 @@ public final class GetGcpOrgVpcPeeringConnectionArgs extends com.pulumi.resource
         }
 
         /**
-         * @param organizationId Identifier of the organization.
+         * @param organizationId ID of an organization.
          * 
          * @return builder
          * 
@@ -144,7 +155,7 @@ public final class GetGcpOrgVpcPeeringConnectionArgs extends com.pulumi.resource
         }
 
         /**
-         * @param organizationVpcId Identifier of the organization VPC.
+         * @param organizationVpcId Organization VPC ID.
          * 
          * @return builder
          * 
@@ -155,7 +166,7 @@ public final class GetGcpOrgVpcPeeringConnectionArgs extends com.pulumi.resource
         }
 
         /**
-         * @param organizationVpcId Identifier of the organization VPC.
+         * @param organizationVpcId Organization VPC ID.
          * 
          * @return builder
          * 
@@ -165,7 +176,7 @@ public final class GetGcpOrgVpcPeeringConnectionArgs extends com.pulumi.resource
         }
 
         /**
-         * @param peerVpc Google Cloud VPC network name. Changing this property forces recreation of the resource.
+         * @param peerVpc Google Cloud VPC network name.
          * 
          * @return builder
          * 
@@ -176,13 +187,22 @@ public final class GetGcpOrgVpcPeeringConnectionArgs extends com.pulumi.resource
         }
 
         /**
-         * @param peerVpc Google Cloud VPC network name. Changing this property forces recreation of the resource.
+         * @param peerVpc Google Cloud VPC network name.
          * 
          * @return builder
          * 
          */
         public Builder peerVpc(String peerVpc) {
             return peerVpc(Output.of(peerVpc));
+        }
+
+        public Builder timeouts(@Nullable Output<GetGcpOrgVpcPeeringConnectionTimeoutsArgs> timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
+        public Builder timeouts(GetGcpOrgVpcPeeringConnectionTimeoutsArgs timeouts) {
+            return timeouts(Output.of(timeouts));
         }
 
         public GetGcpOrgVpcPeeringConnectionArgs build() {

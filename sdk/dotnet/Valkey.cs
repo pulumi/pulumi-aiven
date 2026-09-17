@@ -24,14 +24,14 @@ namespace Pulumi.Aiven
     /// {
     ///     var exampleValkey = new Aiven.Valkey("example_valkey", new()
     ///     {
-    ///         Project = exampleProject.Project,
-    ///         Plan = "startup-4",
-    ///         CloudName = "google-europe-west1",
-    ///         ServiceName = "example-valkey-service",
     ///         ValkeyUserConfig = new Aiven.Inputs.ValkeyValkeyUserConfigArgs
     ///         {
     ///             ValkeyMaxmemoryPolicy = "allkeys-random",
     ///         },
+    ///         Project = exampleProject.Project,
+    ///         Plan = "startup-4",
+    ///         CloudName = "google-europe-west1",
+    ///         ServiceName = "example-valkey-service",
     ///     });
     /// 
     /// });

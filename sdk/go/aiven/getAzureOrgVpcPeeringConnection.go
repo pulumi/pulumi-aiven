@@ -11,10 +11,37 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Gets information about about an Azure VPC peering connection.
+// Gets information about an Azure VPC peering connection.
 //
-// **This resource is in the beta stage and may change without notice.** Set
-// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := aiven.GetAzureOrgVpcPeeringConnection(ctx, &aiven.LookupAzureOrgVpcPeeringConnectionArgs{
+//				OrganizationId:      "org1a23f456789",
+//				OrganizationVpcId:   "1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+//				AzureSubscriptionId: "12345678-1234-1234-1234-123456789012",
+//				VnetName:            "my-vnet",
+//				PeerResourceGroup:   "my-resource-group",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupAzureOrgVpcPeeringConnection(ctx *pulumi.Context, args *LookupAzureOrgVpcPeeringConnectionArgs, opts ...pulumi.InvokeOption) (*LookupAzureOrgVpcPeeringConnectionResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAzureOrgVpcPeeringConnectionResult
@@ -27,39 +54,41 @@ func LookupAzureOrgVpcPeeringConnection(ctx *pulumi.Context, args *LookupAzureOr
 
 // A collection of arguments for invoking getAzureOrgVpcPeeringConnection.
 type LookupAzureOrgVpcPeeringConnectionArgs struct {
-	// The ID of the Azure subscription in UUID4 format. Changing this property forces recreation of the resource.
+	// The ID of the Azure subscription in UUID4 format.
 	AzureSubscriptionId string `pulumi:"azureSubscriptionId"`
-	// Identifier of the organization.
+	// ID of an organization.
 	OrganizationId string `pulumi:"organizationId"`
-	// Identifier of the organization VPC.
+	// Organization VPC ID.
 	OrganizationVpcId string `pulumi:"organizationVpcId"`
-	// The name of the Azure resource group associated with the VNet. Changing this property forces recreation of the resource.
-	PeerResourceGroup string `pulumi:"peerResourceGroup"`
-	// The name of the Azure VNet. Changing this property forces recreation of the resource.
+	// The name of the Azure resource group associated with the VNet.
+	PeerResourceGroup string                                   `pulumi:"peerResourceGroup"`
+	Timeouts          *GetAzureOrgVpcPeeringConnectionTimeouts `pulumi:"timeouts"`
+	// The name of the Azure VNet.
 	VnetName string `pulumi:"vnetName"`
 }
 
 // A collection of values returned by getAzureOrgVpcPeeringConnection.
 type LookupAzureOrgVpcPeeringConnectionResult struct {
-	// The ID of the Azure subscription in UUID4 format. Changing this property forces recreation of the resource.
+	// The ID of the Azure subscription in UUID4 format.
 	AzureSubscriptionId string `pulumi:"azureSubscriptionId"`
-	// The provider-assigned unique ID for this managed resource.
+	// Resource ID composed as: `organization_id/organization_vpc_id/azure_subscription_id/vnet_name/peer_resource_group`.
 	Id string `pulumi:"id"`
-	// Identifier of the organization.
+	// ID of an organization.
 	OrganizationId string `pulumi:"organizationId"`
-	// Identifier of the organization VPC.
+	// Organization VPC ID.
 	OrganizationVpcId string `pulumi:"organizationVpcId"`
-	// The ID of the Azure app that is allowed to create a peering to the Azure Virtual Network (VNet) in UUID4 format. Changing this property forces recreation of the resource.
+	// The ID of the Azure app that is allowed to create a peering to the Azure Virtual Network (VNet) in UUID4 format.
 	PeerAzureAppId string `pulumi:"peerAzureAppId"`
-	// The Azure tenant ID in UUID4 format. Changing this property forces recreation of the resource.
+	// The Azure tenant ID in UUID4 format.
 	PeerAzureTenantId string `pulumi:"peerAzureTenantId"`
-	// The name of the Azure resource group associated with the VNet. Changing this property forces recreation of the resource.
+	// The name of the Azure resource group associated with the VNet.
 	PeerResourceGroup string `pulumi:"peerResourceGroup"`
-	// The ID of the cloud provider for the peering connection.
+	// Organization peering connection ID.
 	PeeringConnectionId string `pulumi:"peeringConnectionId"`
-	// State of the peering connection
-	State string `pulumi:"state"`
-	// The name of the Azure VNet. Changing this property forces recreation of the resource.
+	// State of the peering connection. The possible values are `ACTIVE`, `APPROVED`, `APPROVED_PEER_REQUESTED`, `DELETED`, `DELETED_BY_PEER`, `DELETING`, `ERROR`, `INVALID_SPECIFICATION`, `PENDING_PEER` and `REJECTED_BY_PEER`.
+	State    string                                   `pulumi:"state"`
+	Timeouts *GetAzureOrgVpcPeeringConnectionTimeouts `pulumi:"timeouts"`
+	// The name of the Azure VNet.
 	VnetName string `pulumi:"vnetName"`
 }
 
@@ -70,15 +99,16 @@ func LookupAzureOrgVpcPeeringConnectionOutput(ctx *pulumi.Context, args LookupAz
 
 // A collection of arguments for invoking getAzureOrgVpcPeeringConnection.
 type LookupAzureOrgVpcPeeringConnectionOutputArgs struct {
-	// The ID of the Azure subscription in UUID4 format. Changing this property forces recreation of the resource.
+	// The ID of the Azure subscription in UUID4 format.
 	AzureSubscriptionId pulumi.StringInput `pulumi:"azureSubscriptionId"`
-	// Identifier of the organization.
+	// ID of an organization.
 	OrganizationId pulumi.StringInput `pulumi:"organizationId"`
-	// Identifier of the organization VPC.
+	// Organization VPC ID.
 	OrganizationVpcId pulumi.StringInput `pulumi:"organizationVpcId"`
-	// The name of the Azure resource group associated with the VNet. Changing this property forces recreation of the resource.
-	PeerResourceGroup pulumi.StringInput `pulumi:"peerResourceGroup"`
-	// The name of the Azure VNet. Changing this property forces recreation of the resource.
+	// The name of the Azure resource group associated with the VNet.
+	PeerResourceGroup pulumi.StringInput                              `pulumi:"peerResourceGroup"`
+	Timeouts          GetAzureOrgVpcPeeringConnectionTimeoutsPtrInput `pulumi:"timeouts"`
+	// The name of the Azure VNet.
 	VnetName pulumi.StringInput `pulumi:"vnetName"`
 }
 
@@ -101,52 +131,58 @@ func (o LookupAzureOrgVpcPeeringConnectionResultOutput) ToLookupAzureOrgVpcPeeri
 	return o
 }
 
-// The ID of the Azure subscription in UUID4 format. Changing this property forces recreation of the resource.
+// The ID of the Azure subscription in UUID4 format.
 func (o LookupAzureOrgVpcPeeringConnectionResultOutput) AzureSubscriptionId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAzureOrgVpcPeeringConnectionResult) string { return v.AzureSubscriptionId }).(pulumi.StringOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// Resource ID composed as: `organization_id/organization_vpc_id/azure_subscription_id/vnet_name/peer_resource_group`.
 func (o LookupAzureOrgVpcPeeringConnectionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAzureOrgVpcPeeringConnectionResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Identifier of the organization.
+// ID of an organization.
 func (o LookupAzureOrgVpcPeeringConnectionResultOutput) OrganizationId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAzureOrgVpcPeeringConnectionResult) string { return v.OrganizationId }).(pulumi.StringOutput)
 }
 
-// Identifier of the organization VPC.
+// Organization VPC ID.
 func (o LookupAzureOrgVpcPeeringConnectionResultOutput) OrganizationVpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAzureOrgVpcPeeringConnectionResult) string { return v.OrganizationVpcId }).(pulumi.StringOutput)
 }
 
-// The ID of the Azure app that is allowed to create a peering to the Azure Virtual Network (VNet) in UUID4 format. Changing this property forces recreation of the resource.
+// The ID of the Azure app that is allowed to create a peering to the Azure Virtual Network (VNet) in UUID4 format.
 func (o LookupAzureOrgVpcPeeringConnectionResultOutput) PeerAzureAppId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAzureOrgVpcPeeringConnectionResult) string { return v.PeerAzureAppId }).(pulumi.StringOutput)
 }
 
-// The Azure tenant ID in UUID4 format. Changing this property forces recreation of the resource.
+// The Azure tenant ID in UUID4 format.
 func (o LookupAzureOrgVpcPeeringConnectionResultOutput) PeerAzureTenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAzureOrgVpcPeeringConnectionResult) string { return v.PeerAzureTenantId }).(pulumi.StringOutput)
 }
 
-// The name of the Azure resource group associated with the VNet. Changing this property forces recreation of the resource.
+// The name of the Azure resource group associated with the VNet.
 func (o LookupAzureOrgVpcPeeringConnectionResultOutput) PeerResourceGroup() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAzureOrgVpcPeeringConnectionResult) string { return v.PeerResourceGroup }).(pulumi.StringOutput)
 }
 
-// The ID of the cloud provider for the peering connection.
+// Organization peering connection ID.
 func (o LookupAzureOrgVpcPeeringConnectionResultOutput) PeeringConnectionId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAzureOrgVpcPeeringConnectionResult) string { return v.PeeringConnectionId }).(pulumi.StringOutput)
 }
 
-// State of the peering connection
+// State of the peering connection. The possible values are `ACTIVE`, `APPROVED`, `APPROVED_PEER_REQUESTED`, `DELETED`, `DELETED_BY_PEER`, `DELETING`, `ERROR`, `INVALID_SPECIFICATION`, `PENDING_PEER` and `REJECTED_BY_PEER`.
 func (o LookupAzureOrgVpcPeeringConnectionResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAzureOrgVpcPeeringConnectionResult) string { return v.State }).(pulumi.StringOutput)
 }
 
-// The name of the Azure VNet. Changing this property forces recreation of the resource.
+func (o LookupAzureOrgVpcPeeringConnectionResultOutput) Timeouts() GetAzureOrgVpcPeeringConnectionTimeoutsPtrOutput {
+	return o.ApplyT(func(v LookupAzureOrgVpcPeeringConnectionResult) *GetAzureOrgVpcPeeringConnectionTimeouts {
+		return v.Timeouts
+	}).(GetAzureOrgVpcPeeringConnectionTimeoutsPtrOutput)
+}
+
+// The name of the Azure VNet.
 func (o LookupAzureOrgVpcPeeringConnectionResultOutput) VnetName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAzureOrgVpcPeeringConnectionResult) string { return v.VnetName }).(pulumi.StringOutput)
 }

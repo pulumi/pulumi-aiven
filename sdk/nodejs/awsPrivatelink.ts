@@ -2,10 +2,12 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Creates and manages an [AWS PrivateLink for Aiven services](https://aiven.io/docs/platform/howto/use-aws-privatelinks) in a VPC.
+ * Creates and manages an [AWS PrivateLink for Aiven services](https://aiven.io/docs/platform/howto/use-aws-privatelinks) in a VPC. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
  *
  * ## Example Usage
  *
@@ -13,17 +15,18 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const main = new aiven.AwsPrivatelink("main", {
- *     project: exampleProject.project,
- *     serviceName: exampleKafka.serviceName,
- *     principals: ["arn:aws:iam::012345678901:user/mwf"],
+ * const example = new aiven.AwsPrivatelink("example", {
+ *     project: "my-project",
+ *     serviceName: "foo",
+ *     principals: ["arn:aws:iam::012345678901:root"],
+ *     supportedRegions: ["eu-west-1"],
  * });
  * ```
  *
  * ## Import
  *
  * ```sh
- * $ pulumi import aiven:index/awsPrivatelink:AwsPrivatelink main PROJECT/SERVICE_NAME
+ * $ pulumi import aiven:index/awsPrivatelink:AwsPrivatelink example PROJECT/SERVICE_NAME
  * ```
  */
 export class AwsPrivatelink extends pulumi.CustomResource {
@@ -55,25 +58,34 @@ export class AwsPrivatelink extends pulumi.CustomResource {
     }
 
     /**
-     * AWS service ID.
+     * AWS VPC endpoint service ID.
      */
     declare public /*out*/ readonly awsServiceId: pulumi.Output<string>;
     /**
-     * AWS service name.
+     * AWS VPC endpoint service name.
      */
     declare public /*out*/ readonly awsServiceName: pulumi.Output<string>;
     /**
-     * List of the ARNs of the AWS accounts or IAM users allowed to connect to the VPC endpoint.
+     * ARNs of principals allowed connecting to the service.
      */
     declare public readonly principals: pulumi.Output<string[]>;
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name. Changing this property forces recreation of the resource.
      */
     declare public readonly project: pulumi.Output<string>;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name. Changing this property forces recreation of the resource.
      */
     declare public readonly serviceName: pulumi.Output<string>;
+    /**
+     * Privatelink resource state. The possible values are `active`, `creating` and `deleting`.
+     */
+    declare public /*out*/ readonly state: pulumi.Output<string>;
+    /**
+     * Allow new connections to the endpoint from these regions, in addition to the region the endpoint is in.
+     */
+    declare public readonly supportedRegions: pulumi.Output<string[] | undefined>;
+    declare public readonly timeouts: pulumi.Output<outputs.AwsPrivatelinkTimeouts | undefined>;
 
     /**
      * Create a AwsPrivatelink resource with the given unique name, arguments, and options.
@@ -93,6 +105,9 @@ export class AwsPrivatelink extends pulumi.CustomResource {
             resourceInputs["principals"] = state?.principals;
             resourceInputs["project"] = state?.project;
             resourceInputs["serviceName"] = state?.serviceName;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["supportedRegions"] = state?.supportedRegions;
+            resourceInputs["timeouts"] = state?.timeouts;
         } else {
             const args = argsOrState as AwsPrivatelinkArgs | undefined;
             if (args?.principals === undefined && !opts.urn) {
@@ -107,8 +122,11 @@ export class AwsPrivatelink extends pulumi.CustomResource {
             resourceInputs["principals"] = args?.principals;
             resourceInputs["project"] = args?.project;
             resourceInputs["serviceName"] = args?.serviceName;
+            resourceInputs["supportedRegions"] = args?.supportedRegions;
+            resourceInputs["timeouts"] = args?.timeouts;
             resourceInputs["awsServiceId"] = undefined /*out*/;
             resourceInputs["awsServiceName"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AwsPrivatelink.__pulumiType, name, resourceInputs, opts);
@@ -120,25 +138,34 @@ export class AwsPrivatelink extends pulumi.CustomResource {
  */
 export interface AwsPrivatelinkState {
     /**
-     * AWS service ID.
+     * AWS VPC endpoint service ID.
      */
     awsServiceId?: pulumi.Input<string | undefined>;
     /**
-     * AWS service name.
+     * AWS VPC endpoint service name.
      */
     awsServiceName?: pulumi.Input<string | undefined>;
     /**
-     * List of the ARNs of the AWS accounts or IAM users allowed to connect to the VPC endpoint.
+     * ARNs of principals allowed connecting to the service.
      */
     principals?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name. Changing this property forces recreation of the resource.
      */
     project?: pulumi.Input<string | undefined>;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name. Changing this property forces recreation of the resource.
      */
     serviceName?: pulumi.Input<string | undefined>;
+    /**
+     * Privatelink resource state. The possible values are `active`, `creating` and `deleting`.
+     */
+    state?: pulumi.Input<string | undefined>;
+    /**
+     * Allow new connections to the endpoint from these regions, in addition to the region the endpoint is in.
+     */
+    supportedRegions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    timeouts?: pulumi.Input<inputs.AwsPrivatelinkTimeouts | undefined>;
 }
 
 /**
@@ -146,15 +173,20 @@ export interface AwsPrivatelinkState {
  */
 export interface AwsPrivatelinkArgs {
     /**
-     * List of the ARNs of the AWS accounts or IAM users allowed to connect to the VPC endpoint.
+     * ARNs of principals allowed connecting to the service.
      */
     principals: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name. Changing this property forces recreation of the resource.
      */
     project: pulumi.Input<string>;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name. Changing this property forces recreation of the resource.
      */
     serviceName: pulumi.Input<string>;
+    /**
+     * Allow new connections to the endpoint from these regions, in addition to the region the endpoint is in.
+     */
+    supportedRegions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    timeouts?: pulumi.Input<inputs.AwsPrivatelinkTimeouts | undefined>;
 }

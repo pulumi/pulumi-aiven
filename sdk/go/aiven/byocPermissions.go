@@ -12,10 +12,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Manages permissions for a BYOC custom cloud environment, which accounts and projects can use the cloud to deploy services. Note! The \`accounts\` and \`projects\` lists are authoritative. This differs from the \`avn byoc cloud permissions add\`, which merges into the existing set. Create this resource after \`aiven_byoc_aws_entity\` and \`aiven_byoc_aws_provision\` so the custom cloud environment is active before permissions are granted.
+// Manages permissions for a BYOC custom cloud environment, which accounts and projects can use the cloud to deploy services.
 //
-// **This resource is in the beta stage and may change without notice.** Set
-// the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
+// Note! The `accounts` and `projects` lists are authoritative. This differs from the `avn byoc cloud permissions add`, which merges into the existing set.
+//
+// Create this resource after `ByocAwsEntity` and `ByocAwsProvision` so the custom cloud environment is active before permissions are granted. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
+//
+// > **Beta resource**
+// This resource is in the beta stage and may change without notice. Set the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
 //
 // ## Example Usage
 //
@@ -36,9 +40,11 @@ import (
 //				CustomCloudEnvironmentId: pulumi.String("1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d"),
 //				Accounts: pulumi.StringArray{
 //					pulumi.String("a22ba494e096"),
+//					pulumi.String("a441b467e067"),
 //				},
 //				Projects: pulumi.StringArray{
 //					pulumi.String("project-prod"),
+//					pulumi.String("project-dev"),
 //				},
 //			})
 //			if err != nil {

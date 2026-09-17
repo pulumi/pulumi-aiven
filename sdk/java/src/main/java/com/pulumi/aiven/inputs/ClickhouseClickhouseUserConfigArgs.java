@@ -79,14 +79,14 @@ public final class ClickhouseClickhouseUserConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * Enum: `25.3`, `25.8`, and newer. ClickHouse major version.
+     * Enum: `25.3`, `25.8`, `26.3`, and newer. ClickHouse major version.
      * 
      */
     @Import(name="clickhouseVersion")
     private @Nullable Output<String> clickhouseVersion;
 
     /**
-     * @return Enum: `25.3`, `25.8`, and newer. ClickHouse major version.
+     * @return Enum: `25.3`, `25.8`, `26.3`, and newer. ClickHouse major version.
      * 
      */
     public Optional<Output<String>> clickhouseVersion() {
@@ -440,7 +440,7 @@ public final class ClickhouseClickhouseUserConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param clickhouseVersion Enum: `25.3`, `25.8`, and newer. ClickHouse major version.
+         * @param clickhouseVersion Enum: `25.3`, `25.8`, `26.3`, and newer. ClickHouse major version.
          * 
          * @return builder
          * 
@@ -451,7 +451,7 @@ public final class ClickhouseClickhouseUserConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param clickhouseVersion Enum: `25.3`, `25.8`, and newer. ClickHouse major version.
+         * @param clickhouseVersion Enum: `25.3`, `25.8`, `26.3`, and newer. ClickHouse major version.
          * 
          * @return builder
          * 

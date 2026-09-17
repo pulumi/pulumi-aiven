@@ -5,6 +5,7 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.aiven.inputs.FlinkJarApplicationApplicationVersionArgs;
 import com.pulumi.aiven.inputs.FlinkJarApplicationCurrentDeploymentArgs;
+import com.pulumi.aiven.inputs.FlinkJarApplicationTimeoutsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
@@ -138,6 +139,13 @@ public final class FlinkJarApplicationState extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.serviceName);
     }
 
+    @Import(name="timeouts")
+    private @Nullable Output<FlinkJarApplicationTimeoutsArgs> timeouts;
+
+    public Optional<Output<FlinkJarApplicationTimeoutsArgs>> timeouts() {
+        return Optional.ofNullable(this.timeouts);
+    }
+
     /**
      * The update timestamp of this entity in ISO 8601 format, always in UTC.
      * 
@@ -179,6 +187,7 @@ public final class FlinkJarApplicationState extends com.pulumi.resources.Resourc
         this.name = $.name;
         this.project = $.project;
         this.serviceName = $.serviceName;
+        this.timeouts = $.timeouts;
         this.updatedAt = $.updatedAt;
         this.updatedBy = $.updatedBy;
     }
@@ -387,6 +396,15 @@ public final class FlinkJarApplicationState extends com.pulumi.resources.Resourc
          */
         public Builder serviceName(String serviceName) {
             return serviceName(Output.of(serviceName));
+        }
+
+        public Builder timeouts(@Nullable Output<FlinkJarApplicationTimeoutsArgs> timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
+        public Builder timeouts(FlinkJarApplicationTimeoutsArgs timeouts) {
+            return timeouts(Output.of(timeouts));
         }
 
         /**

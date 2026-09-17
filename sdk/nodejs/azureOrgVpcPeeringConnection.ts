@@ -2,13 +2,12 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Creates and manages an Azure VPC peering connection with an Aiven VPC.
- *
- * **This resource is in the beta stage and may change without notice.** Set
- * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+ * Creates and manages an Azure VPC peering connection with an Aiven VPC. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
  *
  * ## Example Usage
  *
@@ -16,14 +15,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const exampleVpc = new aiven.OrganizationVpc("example_vpc", {
- *     organizationId: example.id,
- *     cloudName: "azure-germany-westcentral",
- *     networkCidr: "10.0.0.0/24",
- * });
- * const examplePeering = new aiven.AzureOrgVpcPeeringConnection("example_peering", {
- *     organizationId: exampleVpc.organizationId,
- *     organizationVpcId: exampleVpc.organizationVpcId,
+ * const example = new aiven.AzureOrgVpcPeeringConnection("example", {
+ *     organizationId: "org1a23f456789",
+ *     organizationVpcId: "1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
  *     azureSubscriptionId: "12345678-1234-1234-1234-123456789012",
  *     vnetName: "my-vnet",
  *     peerResourceGroup: "my-resource-group",
@@ -35,7 +29,7 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * ```sh
- * $ pulumi import aiven:index/azureOrgVpcPeeringConnection:AzureOrgVpcPeeringConnection example ORGANIZATION_ID/ORGANIZATION_VPC_ID/AZURE_SUBSCRIPTION_ID/VNET_NAME/RESOURCE_GROUP
+ * $ pulumi import aiven:index/azureOrgVpcPeeringConnection:AzureOrgVpcPeeringConnection example ORGANIZATION_ID/ORGANIZATION_VPC_ID/AZURE_SUBSCRIPTION_ID/VNET_NAME/PEER_RESOURCE_GROUP
  * ```
  */
 export class AzureOrgVpcPeeringConnection extends pulumi.CustomResource {
@@ -67,39 +61,40 @@ export class AzureOrgVpcPeeringConnection extends pulumi.CustomResource {
     }
 
     /**
-     * The ID of the Azure subscription in UUID4 format. Changing this property forces recreation of the resource.
+     * The ID of the Azure subscription in UUID4 format. Maximum length: `1024`. Changing this property forces recreation of the resource.
      */
     declare public readonly azureSubscriptionId: pulumi.Output<string>;
     /**
-     * Identifier of the organization.
+     * ID of an organization. Changing this property forces recreation of the resource.
      */
     declare public readonly organizationId: pulumi.Output<string>;
     /**
-     * Identifier of the organization VPC.
+     * Organization VPC ID. Changing this property forces recreation of the resource.
      */
     declare public readonly organizationVpcId: pulumi.Output<string>;
     /**
-     * The ID of the Azure app that is allowed to create a peering to the Azure Virtual Network (VNet) in UUID4 format. Changing this property forces recreation of the resource.
+     * The ID of the Azure app that is allowed to create a peering to the Azure Virtual Network (VNet) in UUID4 format. Maximum length: `1024`. Changing this property forces recreation of the resource.
      */
     declare public readonly peerAzureAppId: pulumi.Output<string>;
     /**
-     * The Azure tenant ID in UUID4 format. Changing this property forces recreation of the resource.
+     * The Azure tenant ID in UUID4 format. Maximum length: `1024`. Changing this property forces recreation of the resource.
      */
     declare public readonly peerAzureTenantId: pulumi.Output<string>;
     /**
-     * The name of the Azure resource group associated with the VNet. Changing this property forces recreation of the resource.
+     * The name of the Azure resource group associated with the VNet. Maximum length: `1024`. Changing this property forces recreation of the resource.
      */
     declare public readonly peerResourceGroup: pulumi.Output<string>;
     /**
-     * The ID of the cloud provider for the peering connection.
+     * Organization peering connection ID.
      */
     declare public /*out*/ readonly peeringConnectionId: pulumi.Output<string>;
     /**
-     * State of the peering connection
+     * State of the peering connection. The possible values are `ACTIVE`, `APPROVED`, `APPROVED_PEER_REQUESTED`, `DELETED`, `DELETED_BY_PEER`, `DELETING`, `ERROR`, `INVALID_SPECIFICATION`, `PENDING_PEER` and `REJECTED_BY_PEER`.
      */
     declare public /*out*/ readonly state: pulumi.Output<string>;
+    declare public readonly timeouts: pulumi.Output<outputs.AzureOrgVpcPeeringConnectionTimeouts | undefined>;
     /**
-     * The name of the Azure VNet. Changing this property forces recreation of the resource.
+     * The name of the Azure VNet. Maximum length: `1024`. Changing this property forces recreation of the resource.
      */
     declare public readonly vnetName: pulumi.Output<string>;
 
@@ -124,6 +119,7 @@ export class AzureOrgVpcPeeringConnection extends pulumi.CustomResource {
             resourceInputs["peerResourceGroup"] = state?.peerResourceGroup;
             resourceInputs["peeringConnectionId"] = state?.peeringConnectionId;
             resourceInputs["state"] = state?.state;
+            resourceInputs["timeouts"] = state?.timeouts;
             resourceInputs["vnetName"] = state?.vnetName;
         } else {
             const args = argsOrState as AzureOrgVpcPeeringConnectionArgs | undefined;
@@ -154,6 +150,7 @@ export class AzureOrgVpcPeeringConnection extends pulumi.CustomResource {
             resourceInputs["peerAzureAppId"] = args?.peerAzureAppId;
             resourceInputs["peerAzureTenantId"] = args?.peerAzureTenantId;
             resourceInputs["peerResourceGroup"] = args?.peerResourceGroup;
+            resourceInputs["timeouts"] = args?.timeouts;
             resourceInputs["vnetName"] = args?.vnetName;
             resourceInputs["peeringConnectionId"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
@@ -168,39 +165,40 @@ export class AzureOrgVpcPeeringConnection extends pulumi.CustomResource {
  */
 export interface AzureOrgVpcPeeringConnectionState {
     /**
-     * The ID of the Azure subscription in UUID4 format. Changing this property forces recreation of the resource.
+     * The ID of the Azure subscription in UUID4 format. Maximum length: `1024`. Changing this property forces recreation of the resource.
      */
     azureSubscriptionId?: pulumi.Input<string | undefined>;
     /**
-     * Identifier of the organization.
+     * ID of an organization. Changing this property forces recreation of the resource.
      */
     organizationId?: pulumi.Input<string | undefined>;
     /**
-     * Identifier of the organization VPC.
+     * Organization VPC ID. Changing this property forces recreation of the resource.
      */
     organizationVpcId?: pulumi.Input<string | undefined>;
     /**
-     * The ID of the Azure app that is allowed to create a peering to the Azure Virtual Network (VNet) in UUID4 format. Changing this property forces recreation of the resource.
+     * The ID of the Azure app that is allowed to create a peering to the Azure Virtual Network (VNet) in UUID4 format. Maximum length: `1024`. Changing this property forces recreation of the resource.
      */
     peerAzureAppId?: pulumi.Input<string | undefined>;
     /**
-     * The Azure tenant ID in UUID4 format. Changing this property forces recreation of the resource.
+     * The Azure tenant ID in UUID4 format. Maximum length: `1024`. Changing this property forces recreation of the resource.
      */
     peerAzureTenantId?: pulumi.Input<string | undefined>;
     /**
-     * The name of the Azure resource group associated with the VNet. Changing this property forces recreation of the resource.
+     * The name of the Azure resource group associated with the VNet. Maximum length: `1024`. Changing this property forces recreation of the resource.
      */
     peerResourceGroup?: pulumi.Input<string | undefined>;
     /**
-     * The ID of the cloud provider for the peering connection.
+     * Organization peering connection ID.
      */
     peeringConnectionId?: pulumi.Input<string | undefined>;
     /**
-     * State of the peering connection
+     * State of the peering connection. The possible values are `ACTIVE`, `APPROVED`, `APPROVED_PEER_REQUESTED`, `DELETED`, `DELETED_BY_PEER`, `DELETING`, `ERROR`, `INVALID_SPECIFICATION`, `PENDING_PEER` and `REJECTED_BY_PEER`.
      */
     state?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.AzureOrgVpcPeeringConnectionTimeouts | undefined>;
     /**
-     * The name of the Azure VNet. Changing this property forces recreation of the resource.
+     * The name of the Azure VNet. Maximum length: `1024`. Changing this property forces recreation of the resource.
      */
     vnetName?: pulumi.Input<string | undefined>;
 }
@@ -210,31 +208,32 @@ export interface AzureOrgVpcPeeringConnectionState {
  */
 export interface AzureOrgVpcPeeringConnectionArgs {
     /**
-     * The ID of the Azure subscription in UUID4 format. Changing this property forces recreation of the resource.
+     * The ID of the Azure subscription in UUID4 format. Maximum length: `1024`. Changing this property forces recreation of the resource.
      */
     azureSubscriptionId: pulumi.Input<string>;
     /**
-     * Identifier of the organization.
+     * ID of an organization. Changing this property forces recreation of the resource.
      */
     organizationId: pulumi.Input<string>;
     /**
-     * Identifier of the organization VPC.
+     * Organization VPC ID. Changing this property forces recreation of the resource.
      */
     organizationVpcId: pulumi.Input<string>;
     /**
-     * The ID of the Azure app that is allowed to create a peering to the Azure Virtual Network (VNet) in UUID4 format. Changing this property forces recreation of the resource.
+     * The ID of the Azure app that is allowed to create a peering to the Azure Virtual Network (VNet) in UUID4 format. Maximum length: `1024`. Changing this property forces recreation of the resource.
      */
     peerAzureAppId: pulumi.Input<string>;
     /**
-     * The Azure tenant ID in UUID4 format. Changing this property forces recreation of the resource.
+     * The Azure tenant ID in UUID4 format. Maximum length: `1024`. Changing this property forces recreation of the resource.
      */
     peerAzureTenantId: pulumi.Input<string>;
     /**
-     * The name of the Azure resource group associated with the VNet. Changing this property forces recreation of the resource.
+     * The name of the Azure resource group associated with the VNet. Maximum length: `1024`. Changing this property forces recreation of the resource.
      */
     peerResourceGroup: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.AzureOrgVpcPeeringConnectionTimeouts | undefined>;
     /**
-     * The name of the Azure VNet. Changing this property forces recreation of the resource.
+     * The name of the Azure VNet. Maximum length: `1024`. Changing this property forces recreation of the resource.
      */
     vnetName: pulumi.Input<string>;
 }

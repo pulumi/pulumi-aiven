@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -13,21 +15,21 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const exampleAcl = aiven.getKafkaAcl({
- *     project: exampleProject.project,
- *     serviceName: exampleKafka.serviceName,
- *     topic: "example-topic",
- *     permission: "admin",
- *     username: "example-user",
+ * const example = aiven.getKafkaAcl({
+ *     project: "my-project",
+ *     serviceName: "my-kafka",
+ *     aclId: "foo",
  * });
  * ```
  */
 export function getKafkaAcl(args: GetKafkaAclArgs, opts?: pulumi.InvokeOptions): Promise<GetKafkaAclResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getKafkaAcl:getKafkaAcl", {
+        "aclId": args.aclId,
         "permission": args.permission,
         "project": args.project,
         "serviceName": args.serviceName,
+        "timeouts": args.timeouts,
         "topic": args.topic,
         "username": args.username,
     }, opts);
@@ -38,25 +40,30 @@ export function getKafkaAcl(args: GetKafkaAclArgs, opts?: pulumi.InvokeOptions):
  */
 export interface GetKafkaAclArgs {
     /**
-     * Permissions to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
+     * Kafka ACL ID. Provide either `aclId`, or all of `permission`, `topic` and `username` together.
      */
-    permission: string;
+    aclId?: string;
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Permission of an Aiven Kafka ACL entry, as opposed to a Kafka-native one. The possible values are `admin`, `read`, `readwrite` and `write`. Provide either `aclId`, or all of `permission`, `topic` and `username` together.
+     */
+    permission?: string;
+    /**
+     * Project name.
      */
     project: string;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name.
      */
     serviceName: string;
+    timeouts?: inputs.GetKafkaAclTimeouts;
     /**
-     * Topics that the permissions apply to. Changing this property forces recreation of the resource.
+     * Topic name pattern. Provide either `aclId`, or all of `permission`, `topic` and `username` together.
      */
-    topic: string;
+    topic?: string;
     /**
-     * Usernames to grant permissions to. Changing this property forces recreation of the resource.
+     * Username. Provide either `aclId`, or all of `permission`, `topic` and `username` together.
      */
-    username: string;
+    username?: string;
 }
 
 /**
@@ -64,31 +71,32 @@ export interface GetKafkaAclArgs {
  */
 export interface GetKafkaAclResult {
     /**
-     * Kafka ACL ID.
+     * Kafka ACL ID. Provide either `aclId`, or all of `permission`, `topic` and `username` together.
      */
     readonly aclId: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * Resource ID composed as: `project/service_name/acl_id`.
      */
     readonly id: string;
     /**
-     * Permissions to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
+     * Permission of an Aiven Kafka ACL entry, as opposed to a Kafka-native one. The possible values are `admin`, `read`, `readwrite` and `write`. Provide either `aclId`, or all of `permission`, `topic` and `username` together.
      */
     readonly permission: string;
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name.
      */
     readonly project: string;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name.
      */
     readonly serviceName: string;
+    readonly timeouts?: outputs.GetKafkaAclTimeouts;
     /**
-     * Topics that the permissions apply to. Changing this property forces recreation of the resource.
+     * Topic name pattern. Provide either `aclId`, or all of `permission`, `topic` and `username` together.
      */
     readonly topic: string;
     /**
-     * Usernames to grant permissions to. Changing this property forces recreation of the resource.
+     * Username. Provide either `aclId`, or all of `permission`, `topic` and `username` together.
      */
     readonly username: string;
 }
@@ -101,21 +109,21 @@ export interface GetKafkaAclResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const exampleAcl = aiven.getKafkaAcl({
- *     project: exampleProject.project,
- *     serviceName: exampleKafka.serviceName,
- *     topic: "example-topic",
- *     permission: "admin",
- *     username: "example-user",
+ * const example = aiven.getKafkaAcl({
+ *     project: "my-project",
+ *     serviceName: "my-kafka",
+ *     aclId: "foo",
  * });
  * ```
  */
 export function getKafkaAclOutput(args: GetKafkaAclOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetKafkaAclResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("aiven:index/getKafkaAcl:getKafkaAcl", {
+        "aclId": args.aclId,
         "permission": args.permission,
         "project": args.project,
         "serviceName": args.serviceName,
+        "timeouts": args.timeouts,
         "topic": args.topic,
         "username": args.username,
     }, opts);
@@ -126,23 +134,28 @@ export function getKafkaAclOutput(args: GetKafkaAclOutputArgs, opts?: pulumi.Inv
  */
 export interface GetKafkaAclOutputArgs {
     /**
-     * Permissions to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
+     * Kafka ACL ID. Provide either `aclId`, or all of `permission`, `topic` and `username` together.
      */
-    permission: pulumi.Input<string>;
+    aclId?: pulumi.Input<string | undefined>;
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Permission of an Aiven Kafka ACL entry, as opposed to a Kafka-native one. The possible values are `admin`, `read`, `readwrite` and `write`. Provide either `aclId`, or all of `permission`, `topic` and `username` together.
+     */
+    permission?: pulumi.Input<string | undefined>;
+    /**
+     * Project name.
      */
     project: pulumi.Input<string>;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name.
      */
     serviceName: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.GetKafkaAclTimeoutsArgs | undefined>;
     /**
-     * Topics that the permissions apply to. Changing this property forces recreation of the resource.
+     * Topic name pattern. Provide either `aclId`, or all of `permission`, `topic` and `username` together.
      */
-    topic: pulumi.Input<string>;
+    topic?: pulumi.Input<string | undefined>;
     /**
-     * Usernames to grant permissions to. Changing this property forces recreation of the resource.
+     * Username. Provide either `aclId`, or all of `permission`, `topic` and `username` together.
      */
-    username: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }

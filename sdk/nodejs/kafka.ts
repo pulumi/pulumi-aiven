@@ -16,17 +16,7 @@ import * as utilities from "./utilities";
  * import * as aiven from "@pulumi/aiven";
  *
  * const exampleKafka = new aiven.Kafka("example_kafka", {
- *     project: exampleProject.project,
- *     cloudName: "google-europe-west1",
- *     plan: "business-4",
- *     serviceName: "example-kafka",
- *     maintenanceWindowDow: "monday",
- *     maintenanceWindowTime: "10:00:00",
  *     kafkaUserConfig: {
- *         kafkaRest: true,
- *         kafkaConnect: true,
- *         schemaRegistry: true,
- *         kafkaVersion: "3.8",
  *         kafka: {
  *             groupMaxSessionTimeoutMs: 70000,
  *             logRetentionBytes: 1000000000,
@@ -35,7 +25,17 @@ import * as utilities from "./utilities";
  *             kafkaRest: true,
  *             kafkaConnect: true,
  *         },
+ *         kafkaRest: true,
+ *         kafkaConnect: true,
+ *         schemaRegistry: true,
+ *         kafkaVersion: "3.8",
  *     },
+ *     project: exampleProject.project,
+ *     cloudName: "google-europe-west1",
+ *     plan: "business-4",
+ *     serviceName: "example-kafka",
+ *     maintenanceWindowDow: "monday",
+ *     maintenanceWindowTime: "10:00:00",
  * });
  * ```
  *

@@ -6,18 +6,17 @@ package com.pulumi.aiven;
 import com.pulumi.aiven.AzureOrgVpcPeeringConnectionArgs;
 import com.pulumi.aiven.Utilities;
 import com.pulumi.aiven.inputs.AzureOrgVpcPeeringConnectionState;
+import com.pulumi.aiven.outputs.AzureOrgVpcPeeringConnectionTimeouts;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Creates and manages an Azure VPC peering connection with an Aiven VPC.
- * 
- * **This resource is in the beta stage and may change without notice.** Set
- * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+ * Creates and manages an Azure VPC peering connection with an Aiven VPC. If this resource is missing (for example, after a service power off), it&#39;s removed from the state and a new create plan is generated.
  * 
  * ## Example Usage
  * 
@@ -28,8 +27,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.aiven.OrganizationVpc;
- * import com.pulumi.aiven.OrganizationVpcArgs;
  * import com.pulumi.aiven.AzureOrgVpcPeeringConnection;
  * import com.pulumi.aiven.AzureOrgVpcPeeringConnectionArgs;
  * import java.util.ArrayList;
@@ -45,15 +42,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleVpc = new OrganizationVpc("exampleVpc", OrganizationVpcArgs.builder()
- *             .organizationId(example.id())
- *             .cloudName("azure-germany-westcentral")
- *             .networkCidr("10.0.0.0/24")
- *             .build());
- * 
- *         var examplePeering = new AzureOrgVpcPeeringConnection("examplePeering", AzureOrgVpcPeeringConnectionArgs.builder()
- *             .organizationId(exampleVpc.organizationId())
- *             .organizationVpcId(exampleVpc.organizationVpcId())
+ *         var example = new AzureOrgVpcPeeringConnection("example", AzureOrgVpcPeeringConnectionArgs.builder()
+ *             .organizationId("org1a23f456789")
+ *             .organizationVpcId("1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d")
  *             .azureSubscriptionId("12345678-1234-1234-1234-123456789012")
  *             .vnetName("my-vnet")
  *             .peerResourceGroup("my-resource-group")
@@ -69,133 +60,139 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import aiven:index/azureOrgVpcPeeringConnection:AzureOrgVpcPeeringConnection example ORGANIZATION_ID/ORGANIZATION_VPC_ID/AZURE_SUBSCRIPTION_ID/VNET_NAME/RESOURCE_GROUP
+ * $ pulumi import aiven:index/azureOrgVpcPeeringConnection:AzureOrgVpcPeeringConnection example ORGANIZATION_ID/ORGANIZATION_VPC_ID/AZURE_SUBSCRIPTION_ID/VNET_NAME/PEER_RESOURCE_GROUP
  * ```
  * 
  */
 @ResourceType(type="aiven:index/azureOrgVpcPeeringConnection:AzureOrgVpcPeeringConnection")
 public class AzureOrgVpcPeeringConnection extends com.pulumi.resources.CustomResource {
     /**
-     * The ID of the Azure subscription in UUID4 format. Changing this property forces recreation of the resource.
+     * The ID of the Azure subscription in UUID4 format. Maximum length: `1024`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="azureSubscriptionId", refs={String.class}, tree="[0]")
     private Output<String> azureSubscriptionId;
 
     /**
-     * @return The ID of the Azure subscription in UUID4 format. Changing this property forces recreation of the resource.
+     * @return The ID of the Azure subscription in UUID4 format. Maximum length: `1024`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> azureSubscriptionId() {
         return this.azureSubscriptionId;
     }
     /**
-     * Identifier of the organization.
+     * ID of an organization. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="organizationId", refs={String.class}, tree="[0]")
     private Output<String> organizationId;
 
     /**
-     * @return Identifier of the organization.
+     * @return ID of an organization. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> organizationId() {
         return this.organizationId;
     }
     /**
-     * Identifier of the organization VPC.
+     * Organization VPC ID. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="organizationVpcId", refs={String.class}, tree="[0]")
     private Output<String> organizationVpcId;
 
     /**
-     * @return Identifier of the organization VPC.
+     * @return Organization VPC ID. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> organizationVpcId() {
         return this.organizationVpcId;
     }
     /**
-     * The ID of the Azure app that is allowed to create a peering to the Azure Virtual Network (VNet) in UUID4 format. Changing this property forces recreation of the resource.
+     * The ID of the Azure app that is allowed to create a peering to the Azure Virtual Network (VNet) in UUID4 format. Maximum length: `1024`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="peerAzureAppId", refs={String.class}, tree="[0]")
     private Output<String> peerAzureAppId;
 
     /**
-     * @return The ID of the Azure app that is allowed to create a peering to the Azure Virtual Network (VNet) in UUID4 format. Changing this property forces recreation of the resource.
+     * @return The ID of the Azure app that is allowed to create a peering to the Azure Virtual Network (VNet) in UUID4 format. Maximum length: `1024`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> peerAzureAppId() {
         return this.peerAzureAppId;
     }
     /**
-     * The Azure tenant ID in UUID4 format. Changing this property forces recreation of the resource.
+     * The Azure tenant ID in UUID4 format. Maximum length: `1024`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="peerAzureTenantId", refs={String.class}, tree="[0]")
     private Output<String> peerAzureTenantId;
 
     /**
-     * @return The Azure tenant ID in UUID4 format. Changing this property forces recreation of the resource.
+     * @return The Azure tenant ID in UUID4 format. Maximum length: `1024`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> peerAzureTenantId() {
         return this.peerAzureTenantId;
     }
     /**
-     * The name of the Azure resource group associated with the VNet. Changing this property forces recreation of the resource.
+     * The name of the Azure resource group associated with the VNet. Maximum length: `1024`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="peerResourceGroup", refs={String.class}, tree="[0]")
     private Output<String> peerResourceGroup;
 
     /**
-     * @return The name of the Azure resource group associated with the VNet. Changing this property forces recreation of the resource.
+     * @return The name of the Azure resource group associated with the VNet. Maximum length: `1024`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> peerResourceGroup() {
         return this.peerResourceGroup;
     }
     /**
-     * The ID of the cloud provider for the peering connection.
+     * Organization peering connection ID.
      * 
      */
     @Export(name="peeringConnectionId", refs={String.class}, tree="[0]")
     private Output<String> peeringConnectionId;
 
     /**
-     * @return The ID of the cloud provider for the peering connection.
+     * @return Organization peering connection ID.
      * 
      */
     public Output<String> peeringConnectionId() {
         return this.peeringConnectionId;
     }
     /**
-     * State of the peering connection
+     * State of the peering connection. The possible values are `ACTIVE`, `APPROVED`, `APPROVED_PEER_REQUESTED`, `DELETED`, `DELETED_BY_PEER`, `DELETING`, `ERROR`, `INVALID_SPECIFICATION`, `PENDING_PEER` and `REJECTED_BY_PEER`.
      * 
      */
     @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**
-     * @return State of the peering connection
+     * @return State of the peering connection. The possible values are `ACTIVE`, `APPROVED`, `APPROVED_PEER_REQUESTED`, `DELETED`, `DELETED_BY_PEER`, `DELETING`, `ERROR`, `INVALID_SPECIFICATION`, `PENDING_PEER` and `REJECTED_BY_PEER`.
      * 
      */
     public Output<String> state() {
         return this.state;
     }
+    @Export(name="timeouts", refs={AzureOrgVpcPeeringConnectionTimeouts.class}, tree="[0]")
+    private Output</* @Nullable */ AzureOrgVpcPeeringConnectionTimeouts> timeouts;
+
+    public Output<Optional<AzureOrgVpcPeeringConnectionTimeouts>> timeouts() {
+        return Codegen.optional(this.timeouts);
+    }
     /**
-     * The name of the Azure VNet. Changing this property forces recreation of the resource.
+     * The name of the Azure VNet. Maximum length: `1024`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="vnetName", refs={String.class}, tree="[0]")
     private Output<String> vnetName;
 
     /**
-     * @return The name of the Azure VNet. Changing this property forces recreation of the resource.
+     * @return The name of the Azure VNet. Maximum length: `1024`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> vnetName() {

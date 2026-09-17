@@ -2,10 +2,12 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Creates and manages a Google Private Service Connect for an Aiven service in a VPC.
+ * Creates and manages a Google Private Service Connect for an Aiven service in a VPC. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
  *
  * ## Example Usage
  *
@@ -13,16 +15,16 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const main = new aiven.GcpPrivatelink("main", {
- *     project: exampleProject.project,
- *     serviceName: exampleKafka.serviceName,
+ * const example = new aiven.GcpPrivatelink("example", {
+ *     project: "my-project",
+ *     serviceName: "foo",
  * });
  * ```
  *
  * ## Import
  *
  * ```sh
- * $ pulumi import aiven:index/gcpPrivatelink:GcpPrivatelink main PROJECT/SERVICE_NAME
+ * $ pulumi import aiven:index/gcpPrivatelink:GcpPrivatelink example PROJECT/SERVICE_NAME
  * ```
  */
 export class GcpPrivatelink extends pulumi.CustomResource {
@@ -58,21 +60,24 @@ export class GcpPrivatelink extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly googleServiceAttachment: pulumi.Output<string>;
     /**
-     * Printable result of the Google Cloud Private Service Connect request.
+     * Legacy response message retained for backward compatibility. **Deprecated**: This attribute is retained only for compatibility with state created by older provider versions and is no longer populated.
+     *
+     * @deprecated This attribute is retained only for compatibility with state created by older provider versions and is no longer populated.
      */
     declare public /*out*/ readonly message: pulumi.Output<string>;
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name. Changing this property forces recreation of the resource.
      */
     declare public readonly project: pulumi.Output<string>;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name. Changing this property forces recreation of the resource.
      */
     declare public readonly serviceName: pulumi.Output<string>;
     /**
-     * The state of the Private Service Connect resource.
+     * The state of the Private Service Connect resource. The possible values are `active`, `creating` and `deleting`.
      */
     declare public /*out*/ readonly state: pulumi.Output<string>;
+    declare public readonly timeouts: pulumi.Output<outputs.GcpPrivatelinkTimeouts | undefined>;
 
     /**
      * Create a GcpPrivatelink resource with the given unique name, arguments, and options.
@@ -92,6 +97,7 @@ export class GcpPrivatelink extends pulumi.CustomResource {
             resourceInputs["project"] = state?.project;
             resourceInputs["serviceName"] = state?.serviceName;
             resourceInputs["state"] = state?.state;
+            resourceInputs["timeouts"] = state?.timeouts;
         } else {
             const args = argsOrState as GcpPrivatelinkArgs | undefined;
             if (args?.project === undefined && !opts.urn) {
@@ -102,6 +108,7 @@ export class GcpPrivatelink extends pulumi.CustomResource {
             }
             resourceInputs["project"] = args?.project;
             resourceInputs["serviceName"] = args?.serviceName;
+            resourceInputs["timeouts"] = args?.timeouts;
             resourceInputs["googleServiceAttachment"] = undefined /*out*/;
             resourceInputs["message"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
@@ -120,21 +127,24 @@ export interface GcpPrivatelinkState {
      */
     googleServiceAttachment?: pulumi.Input<string | undefined>;
     /**
-     * Printable result of the Google Cloud Private Service Connect request.
+     * Legacy response message retained for backward compatibility. **Deprecated**: This attribute is retained only for compatibility with state created by older provider versions and is no longer populated.
+     *
+     * @deprecated This attribute is retained only for compatibility with state created by older provider versions and is no longer populated.
      */
     message?: pulumi.Input<string | undefined>;
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name. Changing this property forces recreation of the resource.
      */
     project?: pulumi.Input<string | undefined>;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name. Changing this property forces recreation of the resource.
      */
     serviceName?: pulumi.Input<string | undefined>;
     /**
-     * The state of the Private Service Connect resource.
+     * The state of the Private Service Connect resource. The possible values are `active`, `creating` and `deleting`.
      */
     state?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.GcpPrivatelinkTimeouts | undefined>;
 }
 
 /**
@@ -142,11 +152,12 @@ export interface GcpPrivatelinkState {
  */
 export interface GcpPrivatelinkArgs {
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Project name. Changing this property forces recreation of the resource.
      */
     project: pulumi.Input<string>;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Service name. Changing this property forces recreation of the resource.
      */
     serviceName: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.GcpPrivatelinkTimeouts | undefined>;
 }

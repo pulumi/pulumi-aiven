@@ -24,12 +24,6 @@ namespace Pulumi.Aiven
     /// {
     ///     var example = new Aiven.KafkaTopic("example", new()
     ///     {
-    ///         Project = "my-project",
-    ///         ServiceName = "my-kafka",
-    ///         TopicName = "mytopic",
-    ///         Partitions = 3,
-    ///         Replication = 3,
-    ///         OwnerUserGroupId = "ug22ba494e096",
     ///         Config = new Aiven.Inputs.KafkaTopicConfigArgs
     ///         {
     ///             CleanupPolicy = "delete",
@@ -71,6 +65,12 @@ namespace Pulumi.Aiven
     ///                 Value = "My tag value, value.",
     ///             },
     ///         },
+    ///         Project = "my-project",
+    ///         ServiceName = "my-kafka",
+    ///         TopicName = "mytopic",
+    ///         Partitions = 3,
+    ///         Replication = 3,
+    ///         OwnerUserGroupId = "ug22ba494e096",
     ///         TopicDescription = "Platform events",
     ///     });
     /// 

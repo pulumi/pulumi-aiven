@@ -41,7 +41,7 @@ public final class GetClickhouseClickhouseUserConfig {
      */
     private @Nullable Integer backupMinute;
     /**
-     * @return Enum: `25.3`, `25.8`, and newer. ClickHouse major version.
+     * @return Enum: `25.3`, `25.8`, `26.3`, and newer. ClickHouse major version.
      * 
      */
     private @Nullable String clickhouseVersion;
@@ -152,7 +152,7 @@ public final class GetClickhouseClickhouseUserConfig {
         return Optional.ofNullable(this.backupMinute);
     }
     /**
-     * @return Enum: `25.3`, `25.8`, and newer. ClickHouse major version.
+     * @return Enum: `25.3`, `25.8`, `26.3`, and newer. ClickHouse major version.
      * 
      */
     public Optional<String> clickhouseVersion() {

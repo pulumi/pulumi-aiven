@@ -2,13 +2,27 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Gets information about about an Azure VPC peering connection.
+ * Gets information about an Azure VPC peering connection.
  *
- * **This resource is in the beta stage and may change without notice.** Set
- * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const example = aiven.getAzureOrgVpcPeeringConnection({
+ *     organizationId: "org1a23f456789",
+ *     organizationVpcId: "1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+ *     azureSubscriptionId: "12345678-1234-1234-1234-123456789012",
+ *     vnetName: "my-vnet",
+ *     peerResourceGroup: "my-resource-group",
+ * });
+ * ```
  */
 export function getAzureOrgVpcPeeringConnection(args: GetAzureOrgVpcPeeringConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetAzureOrgVpcPeeringConnectionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -17,6 +31,7 @@ export function getAzureOrgVpcPeeringConnection(args: GetAzureOrgVpcPeeringConne
         "organizationId": args.organizationId,
         "organizationVpcId": args.organizationVpcId,
         "peerResourceGroup": args.peerResourceGroup,
+        "timeouts": args.timeouts,
         "vnetName": args.vnetName,
     }, opts);
 }
@@ -26,23 +41,24 @@ export function getAzureOrgVpcPeeringConnection(args: GetAzureOrgVpcPeeringConne
  */
 export interface GetAzureOrgVpcPeeringConnectionArgs {
     /**
-     * The ID of the Azure subscription in UUID4 format. Changing this property forces recreation of the resource.
+     * The ID of the Azure subscription in UUID4 format.
      */
     azureSubscriptionId: string;
     /**
-     * Identifier of the organization.
+     * ID of an organization.
      */
     organizationId: string;
     /**
-     * Identifier of the organization VPC.
+     * Organization VPC ID.
      */
     organizationVpcId: string;
     /**
-     * The name of the Azure resource group associated with the VNet. Changing this property forces recreation of the resource.
+     * The name of the Azure resource group associated with the VNet.
      */
     peerResourceGroup: string;
+    timeouts?: inputs.GetAzureOrgVpcPeeringConnectionTimeouts;
     /**
-     * The name of the Azure VNet. Changing this property forces recreation of the resource.
+     * The name of the Azure VNet.
      */
     vnetName: string;
 }
@@ -52,51 +68,64 @@ export interface GetAzureOrgVpcPeeringConnectionArgs {
  */
 export interface GetAzureOrgVpcPeeringConnectionResult {
     /**
-     * The ID of the Azure subscription in UUID4 format. Changing this property forces recreation of the resource.
+     * The ID of the Azure subscription in UUID4 format.
      */
     readonly azureSubscriptionId: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * Resource ID composed as: `organization_id/organization_vpc_id/azure_subscription_id/vnet_name/peer_resource_group`.
      */
     readonly id: string;
     /**
-     * Identifier of the organization.
+     * ID of an organization.
      */
     readonly organizationId: string;
     /**
-     * Identifier of the organization VPC.
+     * Organization VPC ID.
      */
     readonly organizationVpcId: string;
     /**
-     * The ID of the Azure app that is allowed to create a peering to the Azure Virtual Network (VNet) in UUID4 format. Changing this property forces recreation of the resource.
+     * The ID of the Azure app that is allowed to create a peering to the Azure Virtual Network (VNet) in UUID4 format.
      */
     readonly peerAzureAppId: string;
     /**
-     * The Azure tenant ID in UUID4 format. Changing this property forces recreation of the resource.
+     * The Azure tenant ID in UUID4 format.
      */
     readonly peerAzureTenantId: string;
     /**
-     * The name of the Azure resource group associated with the VNet. Changing this property forces recreation of the resource.
+     * The name of the Azure resource group associated with the VNet.
      */
     readonly peerResourceGroup: string;
     /**
-     * The ID of the cloud provider for the peering connection.
+     * Organization peering connection ID.
      */
     readonly peeringConnectionId: string;
     /**
-     * State of the peering connection
+     * State of the peering connection. The possible values are `ACTIVE`, `APPROVED`, `APPROVED_PEER_REQUESTED`, `DELETED`, `DELETED_BY_PEER`, `DELETING`, `ERROR`, `INVALID_SPECIFICATION`, `PENDING_PEER` and `REJECTED_BY_PEER`.
      */
     readonly state: string;
+    readonly timeouts?: outputs.GetAzureOrgVpcPeeringConnectionTimeouts;
     /**
-     * The name of the Azure VNet. Changing this property forces recreation of the resource.
+     * The name of the Azure VNet.
      */
     readonly vnetName: string;
 }
 /**
- * Gets information about about an Azure VPC peering connection.
+ * Gets information about an Azure VPC peering connection.
  *
- * **This resource is in the beta stage and may change without notice.** Set
- * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const example = aiven.getAzureOrgVpcPeeringConnection({
+ *     organizationId: "org1a23f456789",
+ *     organizationVpcId: "1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+ *     azureSubscriptionId: "12345678-1234-1234-1234-123456789012",
+ *     vnetName: "my-vnet",
+ *     peerResourceGroup: "my-resource-group",
+ * });
+ * ```
  */
 export function getAzureOrgVpcPeeringConnectionOutput(args: GetAzureOrgVpcPeeringConnectionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAzureOrgVpcPeeringConnectionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -105,6 +134,7 @@ export function getAzureOrgVpcPeeringConnectionOutput(args: GetAzureOrgVpcPeerin
         "organizationId": args.organizationId,
         "organizationVpcId": args.organizationVpcId,
         "peerResourceGroup": args.peerResourceGroup,
+        "timeouts": args.timeouts,
         "vnetName": args.vnetName,
     }, opts);
 }
@@ -114,23 +144,24 @@ export function getAzureOrgVpcPeeringConnectionOutput(args: GetAzureOrgVpcPeerin
  */
 export interface GetAzureOrgVpcPeeringConnectionOutputArgs {
     /**
-     * The ID of the Azure subscription in UUID4 format. Changing this property forces recreation of the resource.
+     * The ID of the Azure subscription in UUID4 format.
      */
     azureSubscriptionId: pulumi.Input<string>;
     /**
-     * Identifier of the organization.
+     * ID of an organization.
      */
     organizationId: pulumi.Input<string>;
     /**
-     * Identifier of the organization VPC.
+     * Organization VPC ID.
      */
     organizationVpcId: pulumi.Input<string>;
     /**
-     * The name of the Azure resource group associated with the VNet. Changing this property forces recreation of the resource.
+     * The name of the Azure resource group associated with the VNet.
      */
     peerResourceGroup: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.GetAzureOrgVpcPeeringConnectionTimeoutsArgs | undefined>;
     /**
-     * The name of the Azure VNet. Changing this property forces recreation of the resource.
+     * The name of the Azure VNet.
      */
     vnetName: pulumi.Input<string>;
 }

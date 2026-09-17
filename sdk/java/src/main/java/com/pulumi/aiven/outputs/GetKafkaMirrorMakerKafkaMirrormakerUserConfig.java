@@ -49,6 +49,11 @@ public final class GetKafkaMirrorMakerKafkaMirrormakerUserConfig {
      */
     private @Nullable GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker kafkaMirrormaker;
     /**
+     * @return List of preferred zone IDs for service node placement. Nodes will be placed in these zones when available. If a specified zone is unavailable (e.g., due to capacity constraints), nodes will be placed in other available zones to maintain the configured number of zones for availability. Invalid zone IDs are rejected at configuration time. Zone IDs are cloud-specific: AWS uses zone IDs like `euc1-az1`, GCP uses zone names like `europe-west1-a`, and Azure uses `location/zone` format like `germanywestcentral/1`. If singleZone is enabled with an availability_zone, that setting takes precedence over preferred_zones. Changes take effect on next node recreation (e.g., maintenance or plan change). For eligible plans, nodes outside preferred zones are automatically rebalanced once per day.
+     * 
+     */
+    private @Nullable List<String> preferredZones;
+    /**
      * @return List of allowed URLs for SASL OAUTHBEARER authentication. Only HTTPS URLs are allowed for security reasons.
      * 
      */
@@ -109,6 +114,13 @@ public final class GetKafkaMirrorMakerKafkaMirrormakerUserConfig {
         return Optional.ofNullable(this.kafkaMirrormaker);
     }
     /**
+     * @return List of preferred zone IDs for service node placement. Nodes will be placed in these zones when available. If a specified zone is unavailable (e.g., due to capacity constraints), nodes will be placed in other available zones to maintain the configured number of zones for availability. Invalid zone IDs are rejected at configuration time. Zone IDs are cloud-specific: AWS uses zone IDs like `euc1-az1`, GCP uses zone names like `europe-west1-a`, and Azure uses `location/zone` format like `germanywestcentral/1`. If singleZone is enabled with an availability_zone, that setting takes precedence over preferred_zones. Changes take effect on next node recreation (e.g., maintenance or plan change). For eligible plans, nodes outside preferred zones are automatically rebalanced once per day.
+     * 
+     */
+    public List<String> preferredZones() {
+        return this.preferredZones == null ? List.of() : this.preferredZones;
+    }
+    /**
      * @return List of allowed URLs for SASL OAUTHBEARER authentication. Only HTTPS URLs are allowed for security reasons.
      * 
      */
@@ -144,6 +156,7 @@ public final class GetKafkaMirrorMakerKafkaMirrormakerUserConfig {
         private @Nullable List<String> ipFilterStrings;
         private @Nullable List<String> ipFilters;
         private @Nullable GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker kafkaMirrormaker;
+        private @Nullable List<String> preferredZones;
         private @Nullable List<String> saslOauthbearerAllowedUrls;
         private @Nullable Boolean serviceLog;
         private @Nullable Boolean staticIps;
@@ -155,6 +168,7 @@ public final class GetKafkaMirrorMakerKafkaMirrormakerUserConfig {
     	      this.ipFilterStrings = defaults.ipFilterStrings;
     	      this.ipFilters = defaults.ipFilters;
     	      this.kafkaMirrormaker = defaults.kafkaMirrormaker;
+    	      this.preferredZones = defaults.preferredZones;
     	      this.saslOauthbearerAllowedUrls = defaults.saslOauthbearerAllowedUrls;
     	      this.serviceLog = defaults.serviceLog;
     	      this.staticIps = defaults.staticIps;
@@ -200,6 +214,15 @@ public final class GetKafkaMirrorMakerKafkaMirrormakerUserConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder preferredZones(@Nullable List<String> preferredZones) {
+
+            this.preferredZones = preferredZones;
+            return this;
+        }
+        public Builder preferredZones(String... preferredZones) {
+            return preferredZones(List.of(preferredZones));
+        }
+        @CustomType.Setter
         public Builder saslOauthbearerAllowedUrls(@Nullable List<String> saslOauthbearerAllowedUrls) {
 
             this.saslOauthbearerAllowedUrls = saslOauthbearerAllowedUrls;
@@ -227,6 +250,7 @@ public final class GetKafkaMirrorMakerKafkaMirrormakerUserConfig {
             _resultValue.ipFilterStrings = ipFilterStrings;
             _resultValue.ipFilters = ipFilters;
             _resultValue.kafkaMirrormaker = kafkaMirrormaker;
+            _resultValue.preferredZones = preferredZones;
             _resultValue.saslOauthbearerAllowedUrls = saslOauthbearerAllowedUrls;
             _resultValue.serviceLog = serviceLog;
             _resultValue.staticIps = staticIps;

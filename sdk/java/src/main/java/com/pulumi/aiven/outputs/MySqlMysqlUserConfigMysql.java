@@ -15,6 +15,11 @@ import javax.annotation.Nullable;
 @CustomType
 public final class MySqlMysqlUserConfigMysql {
     /**
+     * @return When enabled, the server automatically grants the EXECUTE and ALTER ROUTINE privileges to the creator of a stored routine and drops them when the routine is dropped.
+     * 
+     */
+    private @Nullable Boolean automaticSpPrivileges;
+    /**
      * @return The number of seconds that the mysqld server waits for a connect packet before responding with Bad handshake. Example: `10`.
      * 
      */
@@ -24,6 +29,21 @@ public final class MySqlMysqlUserConfigMysql {
      * 
      */
     private @Nullable String defaultTimeZone;
+    /**
+     * @return Number of digits by which to increase the scale of the result of division operations performed with the / operator. Default is 4. Example: `6`.
+     * 
+     */
+    private @Nullable Integer divPrecisionIncrement;
+    /**
+     * @return Whether optimizer JSON output such as EXPLAIN FORMAT=JSON adds end markers that repeat a structure&#39;s key near its closing bracket, making large JSON structures easier to read.
+     * 
+     */
+    private @Nullable Boolean endMarkersInJson;
+    /**
+     * @return The number of equality ranges in a query at or above which the optimizer switches from index dives to index statistics when estimating the number of qualifying rows. 0 means always use index dives. Default is 200. Example: `100`.
+     * 
+     */
+    private @Nullable Integer eqRangeIndexDiveLimit;
     /**
      * @return The maximum permitted result length in bytes for the GROUP_CONCAT() function. Example: `1024`.
      * 
@@ -50,15 +70,40 @@ public final class MySqlMysqlUserConfigMysql {
      */
     private @Nullable Integer innodbFlushNeighbors;
     /**
+     * @return Whether stopword processing is applied when creating or rebuilding an InnoDB FULLTEXT index. Enabled by default.
+     * 
+     */
+    private @Nullable Boolean innodbFtEnableStopword;
+    /**
+     * @return Maximum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service. Example: `60`.
+     * 
+     */
+    private @Nullable Integer innodbFtMaxTokenSize;
+    /**
      * @return Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service. Example: `3`.
      * 
      */
     private @Nullable Integer innodbFtMinTokenSize;
     /**
+     * @return Number of words processed during each OPTIMIZE TABLE operation on an InnoDB FULLTEXT index. Default is 2000. Example: `4000`.
+     * 
+     */
+    private @Nullable Integer innodbFtNumWordOptimize;
+    /**
+     * @return Maximum memory in bytes used per query for the InnoDB FULLTEXT search query result cache. Aiven sizes this automatically based on the service plan&#39;s memory; setting a value overrides the calculated default.
+     * 
+     */
+    private @Nullable Integer innodbFtResultCacheLimit;
+    /**
      * @return This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables. Example: `db_name/table_name`.
      * 
      */
     private @Nullable String innodbFtServerStopwordTable;
+    /**
+     * @return This option is used to specify your own InnoDB FULLTEXT index stopword list for specific InnoDB tables. Example: `db_name/table_name`.
+     * 
+     */
+    private @Nullable String innodbFtUserStopwordTable;
     /**
      * @return The number of I/O operations per second (IOPS) available to InnoDB background tasks, such as flushing pages from the buffer pool and merging data from the change buffer. Set this to a value appropriate for the underlying storage; it must not exceed innodb*io*capacity_max. Example: `2000`.
      * 
@@ -84,6 +129,11 @@ public final class MySqlMysqlUserConfigMysql {
      * 
      */
     private @Nullable Integer innodbOnlineAlterLogMaxSize;
+    /**
+     * @return When enabled, OPTIMIZE TABLE on InnoDB tables only updates the FULLTEXT index instead of rebuilding the table. Intended to be enabled temporarily during FULLTEXT index maintenance and disabled afterwards; while enabled, OPTIMIZE TABLE does not reclaim table space.
+     * 
+     */
+    private @Nullable Boolean innodbOptimizeFulltextOnly;
     /**
      * @return When enabled, information about all deadlocks in InnoDB user transactions is recorded in the error log. Disabled by default.
      * 
@@ -140,10 +190,30 @@ public final class MySqlMysqlUserConfigMysql {
      */
     private @Nullable Integer maxAllowedPacket;
     /**
+     * @return The maximum permitted number of simultaneous client connections. Lower this to reserve memory for other work. The value cannot exceed the limit provided by your service plan. Upgrading the plan does not raise a value you have set explicitly, so increase it yourself after an upgrade. Example: `200`.
+     * 
+     */
+    private @Nullable Integer maxConnections;
+    /**
+     * @return Execution timeout in milliseconds for read-only top-level SELECT statements. 0 (the default) means no timeout. Example: `15000`.
+     * 
+     */
+    private @Nullable Integer maxExecutionTime;
+    /**
      * @return Limits the size of internal in-memory tables. Also set tmp*table*size. Default is 16777216 (16M).
      * 
      */
     private @Nullable Integer maxHeapTableSize;
+    /**
+     * @return Limit on the assumed maximum number of index seeks when looking up rows based on a key. Lowering this value causes the optimizer to prefer index lookups over table scans. Example: `100`.
+     * 
+     */
+    private @Nullable Integer maxSeeksForKey;
+    /**
+     * @return The maximum number of simultaneous connections permitted to any single user account. 0, the default, means no per-account limit. Any other value must be at least 10 below max_connections, so that monitoring and your own admin sessions can still connect when an application saturates its own limit. Aiven&#39;s replication and management connections are unaffected however low you set this. Example: `50`.
+     * 
+     */
+    private @Nullable Integer maxUserConnections;
     /**
      * @return Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service. Example: `16384`.
      * 
@@ -159,6 +229,21 @@ public final class MySqlMysqlUserConfigMysql {
      * 
      */
     private @Nullable Integer netWriteTimeout;
+    /**
+     * @return Controls the heuristics applied during query optimization to prune less-promising partial plans from the optimizer search space. 0 disables heuristics (exhaustive search); 1 prunes plans based on the number of rows retrieved. Example: `1`.
+     * 
+     */
+    private @Nullable Integer optimizerPruneLevel;
+    /**
+     * @return Maximum depth of search performed by the query optimizer when choosing a join order. Larger values produce better plans for joins over many tables but take longer to compile; 0 lets the optimizer choose the depth automatically. Example: `62`.
+     * 
+     */
+    private @Nullable Integer optimizerSearchDepth;
+    /**
+     * @return Comma-separated list of optimizer flag assignments in the form flag=on|off|default, or the single value `default` to reset all flags. Flags not listed keep their current values. Controls query optimizer behaviors such as index merge, hash join and semijoin strategies. Example: `batched_key_access=on,mrr_cost_based=off`.
+     * 
+     */
+    private @Nullable String optimizerSwitch;
     /**
      * @return The number of rows per thread in the events*statements*history table. Changing this parameter will lead to a restart of the MySQL service.
      * 
@@ -199,8 +284,20 @@ public final class MySqlMysqlUserConfigMysql {
      * 
      */
     private @Nullable Integer waitTimeout;
+    /**
+     * @return Whether window functions are computed to high precision. Disabling this trades exactness for speed in window function evaluation.
+     * 
+     */
+    private @Nullable Boolean windowingUseHighPrecision;
 
     private MySqlMysqlUserConfigMysql() {}
+    /**
+     * @return When enabled, the server automatically grants the EXECUTE and ALTER ROUTINE privileges to the creator of a stored routine and drops them when the routine is dropped.
+     * 
+     */
+    public Optional<Boolean> automaticSpPrivileges() {
+        return Optional.ofNullable(this.automaticSpPrivileges);
+    }
     /**
      * @return The number of seconds that the mysqld server waits for a connect packet before responding with Bad handshake. Example: `10`.
      * 
@@ -214,6 +311,27 @@ public final class MySqlMysqlUserConfigMysql {
      */
     public Optional<String> defaultTimeZone() {
         return Optional.ofNullable(this.defaultTimeZone);
+    }
+    /**
+     * @return Number of digits by which to increase the scale of the result of division operations performed with the / operator. Default is 4. Example: `6`.
+     * 
+     */
+    public Optional<Integer> divPrecisionIncrement() {
+        return Optional.ofNullable(this.divPrecisionIncrement);
+    }
+    /**
+     * @return Whether optimizer JSON output such as EXPLAIN FORMAT=JSON adds end markers that repeat a structure&#39;s key near its closing bracket, making large JSON structures easier to read.
+     * 
+     */
+    public Optional<Boolean> endMarkersInJson() {
+        return Optional.ofNullable(this.endMarkersInJson);
+    }
+    /**
+     * @return The number of equality ranges in a query at or above which the optimizer switches from index dives to index statistics when estimating the number of qualifying rows. 0 means always use index dives. Default is 200. Example: `100`.
+     * 
+     */
+    public Optional<Integer> eqRangeIndexDiveLimit() {
+        return Optional.ofNullable(this.eqRangeIndexDiveLimit);
     }
     /**
      * @return The maximum permitted result length in bytes for the GROUP_CONCAT() function. Example: `1024`.
@@ -251,6 +369,20 @@ public final class MySqlMysqlUserConfigMysql {
         return Optional.ofNullable(this.innodbFlushNeighbors);
     }
     /**
+     * @return Whether stopword processing is applied when creating or rebuilding an InnoDB FULLTEXT index. Enabled by default.
+     * 
+     */
+    public Optional<Boolean> innodbFtEnableStopword() {
+        return Optional.ofNullable(this.innodbFtEnableStopword);
+    }
+    /**
+     * @return Maximum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service. Example: `60`.
+     * 
+     */
+    public Optional<Integer> innodbFtMaxTokenSize() {
+        return Optional.ofNullable(this.innodbFtMaxTokenSize);
+    }
+    /**
      * @return Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service. Example: `3`.
      * 
      */
@@ -258,11 +390,32 @@ public final class MySqlMysqlUserConfigMysql {
         return Optional.ofNullable(this.innodbFtMinTokenSize);
     }
     /**
+     * @return Number of words processed during each OPTIMIZE TABLE operation on an InnoDB FULLTEXT index. Default is 2000. Example: `4000`.
+     * 
+     */
+    public Optional<Integer> innodbFtNumWordOptimize() {
+        return Optional.ofNullable(this.innodbFtNumWordOptimize);
+    }
+    /**
+     * @return Maximum memory in bytes used per query for the InnoDB FULLTEXT search query result cache. Aiven sizes this automatically based on the service plan&#39;s memory; setting a value overrides the calculated default.
+     * 
+     */
+    public Optional<Integer> innodbFtResultCacheLimit() {
+        return Optional.ofNullable(this.innodbFtResultCacheLimit);
+    }
+    /**
      * @return This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables. Example: `db_name/table_name`.
      * 
      */
     public Optional<String> innodbFtServerStopwordTable() {
         return Optional.ofNullable(this.innodbFtServerStopwordTable);
+    }
+    /**
+     * @return This option is used to specify your own InnoDB FULLTEXT index stopword list for specific InnoDB tables. Example: `db_name/table_name`.
+     * 
+     */
+    public Optional<String> innodbFtUserStopwordTable() {
+        return Optional.ofNullable(this.innodbFtUserStopwordTable);
     }
     /**
      * @return The number of I/O operations per second (IOPS) available to InnoDB background tasks, such as flushing pages from the buffer pool and merging data from the change buffer. Set this to a value appropriate for the underlying storage; it must not exceed innodb*io*capacity_max. Example: `2000`.
@@ -298,6 +451,13 @@ public final class MySqlMysqlUserConfigMysql {
      */
     public Optional<Integer> innodbOnlineAlterLogMaxSize() {
         return Optional.ofNullable(this.innodbOnlineAlterLogMaxSize);
+    }
+    /**
+     * @return When enabled, OPTIMIZE TABLE on InnoDB tables only updates the FULLTEXT index instead of rebuilding the table. Intended to be enabled temporarily during FULLTEXT index maintenance and disabled afterwards; while enabled, OPTIMIZE TABLE does not reclaim table space.
+     * 
+     */
+    public Optional<Boolean> innodbOptimizeFulltextOnly() {
+        return Optional.ofNullable(this.innodbOptimizeFulltextOnly);
     }
     /**
      * @return When enabled, information about all deadlocks in InnoDB user transactions is recorded in the error log. Disabled by default.
@@ -377,11 +537,39 @@ public final class MySqlMysqlUserConfigMysql {
         return Optional.ofNullable(this.maxAllowedPacket);
     }
     /**
+     * @return The maximum permitted number of simultaneous client connections. Lower this to reserve memory for other work. The value cannot exceed the limit provided by your service plan. Upgrading the plan does not raise a value you have set explicitly, so increase it yourself after an upgrade. Example: `200`.
+     * 
+     */
+    public Optional<Integer> maxConnections() {
+        return Optional.ofNullable(this.maxConnections);
+    }
+    /**
+     * @return Execution timeout in milliseconds for read-only top-level SELECT statements. 0 (the default) means no timeout. Example: `15000`.
+     * 
+     */
+    public Optional<Integer> maxExecutionTime() {
+        return Optional.ofNullable(this.maxExecutionTime);
+    }
+    /**
      * @return Limits the size of internal in-memory tables. Also set tmp*table*size. Default is 16777216 (16M).
      * 
      */
     public Optional<Integer> maxHeapTableSize() {
         return Optional.ofNullable(this.maxHeapTableSize);
+    }
+    /**
+     * @return Limit on the assumed maximum number of index seeks when looking up rows based on a key. Lowering this value causes the optimizer to prefer index lookups over table scans. Example: `100`.
+     * 
+     */
+    public Optional<Integer> maxSeeksForKey() {
+        return Optional.ofNullable(this.maxSeeksForKey);
+    }
+    /**
+     * @return The maximum number of simultaneous connections permitted to any single user account. 0, the default, means no per-account limit. Any other value must be at least 10 below max_connections, so that monitoring and your own admin sessions can still connect when an application saturates its own limit. Aiven&#39;s replication and management connections are unaffected however low you set this. Example: `50`.
+     * 
+     */
+    public Optional<Integer> maxUserConnections() {
+        return Optional.ofNullable(this.maxUserConnections);
     }
     /**
      * @return Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service. Example: `16384`.
@@ -403,6 +591,27 @@ public final class MySqlMysqlUserConfigMysql {
      */
     public Optional<Integer> netWriteTimeout() {
         return Optional.ofNullable(this.netWriteTimeout);
+    }
+    /**
+     * @return Controls the heuristics applied during query optimization to prune less-promising partial plans from the optimizer search space. 0 disables heuristics (exhaustive search); 1 prunes plans based on the number of rows retrieved. Example: `1`.
+     * 
+     */
+    public Optional<Integer> optimizerPruneLevel() {
+        return Optional.ofNullable(this.optimizerPruneLevel);
+    }
+    /**
+     * @return Maximum depth of search performed by the query optimizer when choosing a join order. Larger values produce better plans for joins over many tables but take longer to compile; 0 lets the optimizer choose the depth automatically. Example: `62`.
+     * 
+     */
+    public Optional<Integer> optimizerSearchDepth() {
+        return Optional.ofNullable(this.optimizerSearchDepth);
+    }
+    /**
+     * @return Comma-separated list of optimizer flag assignments in the form flag=on|off|default, or the single value `default` to reset all flags. Flags not listed keep their current values. Controls query optimizer behaviors such as index merge, hash join and semijoin strategies. Example: `batched_key_access=on,mrr_cost_based=off`.
+     * 
+     */
+    public Optional<String> optimizerSwitch() {
+        return Optional.ofNullable(this.optimizerSwitch);
     }
     /**
      * @return The number of rows per thread in the events*statements*history table. Changing this parameter will lead to a restart of the MySQL service.
@@ -460,6 +669,13 @@ public final class MySqlMysqlUserConfigMysql {
     public Optional<Integer> waitTimeout() {
         return Optional.ofNullable(this.waitTimeout);
     }
+    /**
+     * @return Whether window functions are computed to high precision. Disabling this trades exactness for speed in window function evaluation.
+     * 
+     */
+    public Optional<Boolean> windowingUseHighPrecision() {
+        return Optional.ofNullable(this.windowingUseHighPrecision);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -470,20 +686,30 @@ public final class MySqlMysqlUserConfigMysql {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Boolean automaticSpPrivileges;
         private @Nullable Integer connectTimeout;
         private @Nullable String defaultTimeZone;
+        private @Nullable Integer divPrecisionIncrement;
+        private @Nullable Boolean endMarkersInJson;
+        private @Nullable Integer eqRangeIndexDiveLimit;
         private @Nullable Integer groupConcatMaxLen;
         private @Nullable Integer informationSchemaStatsExpiry;
         private @Nullable Boolean innodbAdaptiveHashIndex;
         private @Nullable Integer innodbChangeBufferMaxSize;
         private @Nullable Integer innodbFlushNeighbors;
+        private @Nullable Boolean innodbFtEnableStopword;
+        private @Nullable Integer innodbFtMaxTokenSize;
         private @Nullable Integer innodbFtMinTokenSize;
+        private @Nullable Integer innodbFtNumWordOptimize;
+        private @Nullable Integer innodbFtResultCacheLimit;
         private @Nullable String innodbFtServerStopwordTable;
+        private @Nullable String innodbFtUserStopwordTable;
         private @Nullable Integer innodbIoCapacity;
         private @Nullable Integer innodbIoCapacityMax;
         private @Nullable Integer innodbLockWaitTimeout;
         private @Nullable Integer innodbLogBufferSize;
         private @Nullable Integer innodbOnlineAlterLogMaxSize;
+        private @Nullable Boolean innodbOptimizeFulltextOnly;
         private @Nullable Boolean innodbPrintAllDeadlocks;
         private @Nullable Integer innodbReadIoThreads;
         private @Nullable Boolean innodbRollbackOnTimeout;
@@ -495,10 +721,17 @@ public final class MySqlMysqlUserConfigMysql {
         private @Nullable Double longQueryTime;
         private @Nullable Integer lowerCaseTableNames;
         private @Nullable Integer maxAllowedPacket;
+        private @Nullable Integer maxConnections;
+        private @Nullable Integer maxExecutionTime;
         private @Nullable Integer maxHeapTableSize;
+        private @Nullable Integer maxSeeksForKey;
+        private @Nullable Integer maxUserConnections;
         private @Nullable Integer netBufferLength;
         private @Nullable Integer netReadTimeout;
         private @Nullable Integer netWriteTimeout;
+        private @Nullable Integer optimizerPruneLevel;
+        private @Nullable Integer optimizerSearchDepth;
+        private @Nullable String optimizerSwitch;
         private @Nullable Integer performanceSchemaEventsStatementsHistorySize;
         private @Nullable Integer relayLogSpaceLimit;
         private @Nullable Boolean slowQueryLog;
@@ -507,23 +740,34 @@ public final class MySqlMysqlUserConfigMysql {
         private @Nullable Boolean sqlRequirePrimaryKey;
         private @Nullable Integer tmpTableSize;
         private @Nullable Integer waitTimeout;
+        private @Nullable Boolean windowingUseHighPrecision;
         public Builder() {}
         public Builder(MySqlMysqlUserConfigMysql defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.automaticSpPrivileges = defaults.automaticSpPrivileges;
     	      this.connectTimeout = defaults.connectTimeout;
     	      this.defaultTimeZone = defaults.defaultTimeZone;
+    	      this.divPrecisionIncrement = defaults.divPrecisionIncrement;
+    	      this.endMarkersInJson = defaults.endMarkersInJson;
+    	      this.eqRangeIndexDiveLimit = defaults.eqRangeIndexDiveLimit;
     	      this.groupConcatMaxLen = defaults.groupConcatMaxLen;
     	      this.informationSchemaStatsExpiry = defaults.informationSchemaStatsExpiry;
     	      this.innodbAdaptiveHashIndex = defaults.innodbAdaptiveHashIndex;
     	      this.innodbChangeBufferMaxSize = defaults.innodbChangeBufferMaxSize;
     	      this.innodbFlushNeighbors = defaults.innodbFlushNeighbors;
+    	      this.innodbFtEnableStopword = defaults.innodbFtEnableStopword;
+    	      this.innodbFtMaxTokenSize = defaults.innodbFtMaxTokenSize;
     	      this.innodbFtMinTokenSize = defaults.innodbFtMinTokenSize;
+    	      this.innodbFtNumWordOptimize = defaults.innodbFtNumWordOptimize;
+    	      this.innodbFtResultCacheLimit = defaults.innodbFtResultCacheLimit;
     	      this.innodbFtServerStopwordTable = defaults.innodbFtServerStopwordTable;
+    	      this.innodbFtUserStopwordTable = defaults.innodbFtUserStopwordTable;
     	      this.innodbIoCapacity = defaults.innodbIoCapacity;
     	      this.innodbIoCapacityMax = defaults.innodbIoCapacityMax;
     	      this.innodbLockWaitTimeout = defaults.innodbLockWaitTimeout;
     	      this.innodbLogBufferSize = defaults.innodbLogBufferSize;
     	      this.innodbOnlineAlterLogMaxSize = defaults.innodbOnlineAlterLogMaxSize;
+    	      this.innodbOptimizeFulltextOnly = defaults.innodbOptimizeFulltextOnly;
     	      this.innodbPrintAllDeadlocks = defaults.innodbPrintAllDeadlocks;
     	      this.innodbReadIoThreads = defaults.innodbReadIoThreads;
     	      this.innodbRollbackOnTimeout = defaults.innodbRollbackOnTimeout;
@@ -535,10 +779,17 @@ public final class MySqlMysqlUserConfigMysql {
     	      this.longQueryTime = defaults.longQueryTime;
     	      this.lowerCaseTableNames = defaults.lowerCaseTableNames;
     	      this.maxAllowedPacket = defaults.maxAllowedPacket;
+    	      this.maxConnections = defaults.maxConnections;
+    	      this.maxExecutionTime = defaults.maxExecutionTime;
     	      this.maxHeapTableSize = defaults.maxHeapTableSize;
+    	      this.maxSeeksForKey = defaults.maxSeeksForKey;
+    	      this.maxUserConnections = defaults.maxUserConnections;
     	      this.netBufferLength = defaults.netBufferLength;
     	      this.netReadTimeout = defaults.netReadTimeout;
     	      this.netWriteTimeout = defaults.netWriteTimeout;
+    	      this.optimizerPruneLevel = defaults.optimizerPruneLevel;
+    	      this.optimizerSearchDepth = defaults.optimizerSearchDepth;
+    	      this.optimizerSwitch = defaults.optimizerSwitch;
     	      this.performanceSchemaEventsStatementsHistorySize = defaults.performanceSchemaEventsStatementsHistorySize;
     	      this.relayLogSpaceLimit = defaults.relayLogSpaceLimit;
     	      this.slowQueryLog = defaults.slowQueryLog;
@@ -547,8 +798,15 @@ public final class MySqlMysqlUserConfigMysql {
     	      this.sqlRequirePrimaryKey = defaults.sqlRequirePrimaryKey;
     	      this.tmpTableSize = defaults.tmpTableSize;
     	      this.waitTimeout = defaults.waitTimeout;
+    	      this.windowingUseHighPrecision = defaults.windowingUseHighPrecision;
         }
 
+        @CustomType.Setter
+        public Builder automaticSpPrivileges(@Nullable Boolean automaticSpPrivileges) {
+
+            this.automaticSpPrivileges = automaticSpPrivileges;
+            return this;
+        }
         @CustomType.Setter
         public Builder connectTimeout(@Nullable Integer connectTimeout) {
 
@@ -559,6 +817,24 @@ public final class MySqlMysqlUserConfigMysql {
         public Builder defaultTimeZone(@Nullable String defaultTimeZone) {
 
             this.defaultTimeZone = defaultTimeZone;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder divPrecisionIncrement(@Nullable Integer divPrecisionIncrement) {
+
+            this.divPrecisionIncrement = divPrecisionIncrement;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder endMarkersInJson(@Nullable Boolean endMarkersInJson) {
+
+            this.endMarkersInJson = endMarkersInJson;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder eqRangeIndexDiveLimit(@Nullable Integer eqRangeIndexDiveLimit) {
+
+            this.eqRangeIndexDiveLimit = eqRangeIndexDiveLimit;
             return this;
         }
         @CustomType.Setter
@@ -592,15 +868,45 @@ public final class MySqlMysqlUserConfigMysql {
             return this;
         }
         @CustomType.Setter
+        public Builder innodbFtEnableStopword(@Nullable Boolean innodbFtEnableStopword) {
+
+            this.innodbFtEnableStopword = innodbFtEnableStopword;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder innodbFtMaxTokenSize(@Nullable Integer innodbFtMaxTokenSize) {
+
+            this.innodbFtMaxTokenSize = innodbFtMaxTokenSize;
+            return this;
+        }
+        @CustomType.Setter
         public Builder innodbFtMinTokenSize(@Nullable Integer innodbFtMinTokenSize) {
 
             this.innodbFtMinTokenSize = innodbFtMinTokenSize;
             return this;
         }
         @CustomType.Setter
+        public Builder innodbFtNumWordOptimize(@Nullable Integer innodbFtNumWordOptimize) {
+
+            this.innodbFtNumWordOptimize = innodbFtNumWordOptimize;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder innodbFtResultCacheLimit(@Nullable Integer innodbFtResultCacheLimit) {
+
+            this.innodbFtResultCacheLimit = innodbFtResultCacheLimit;
+            return this;
+        }
+        @CustomType.Setter
         public Builder innodbFtServerStopwordTable(@Nullable String innodbFtServerStopwordTable) {
 
             this.innodbFtServerStopwordTable = innodbFtServerStopwordTable;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder innodbFtUserStopwordTable(@Nullable String innodbFtUserStopwordTable) {
+
+            this.innodbFtUserStopwordTable = innodbFtUserStopwordTable;
             return this;
         }
         @CustomType.Setter
@@ -631,6 +937,12 @@ public final class MySqlMysqlUserConfigMysql {
         public Builder innodbOnlineAlterLogMaxSize(@Nullable Integer innodbOnlineAlterLogMaxSize) {
 
             this.innodbOnlineAlterLogMaxSize = innodbOnlineAlterLogMaxSize;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder innodbOptimizeFulltextOnly(@Nullable Boolean innodbOptimizeFulltextOnly) {
+
+            this.innodbOptimizeFulltextOnly = innodbOptimizeFulltextOnly;
             return this;
         }
         @CustomType.Setter
@@ -700,9 +1012,33 @@ public final class MySqlMysqlUserConfigMysql {
             return this;
         }
         @CustomType.Setter
+        public Builder maxConnections(@Nullable Integer maxConnections) {
+
+            this.maxConnections = maxConnections;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder maxExecutionTime(@Nullable Integer maxExecutionTime) {
+
+            this.maxExecutionTime = maxExecutionTime;
+            return this;
+        }
+        @CustomType.Setter
         public Builder maxHeapTableSize(@Nullable Integer maxHeapTableSize) {
 
             this.maxHeapTableSize = maxHeapTableSize;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder maxSeeksForKey(@Nullable Integer maxSeeksForKey) {
+
+            this.maxSeeksForKey = maxSeeksForKey;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder maxUserConnections(@Nullable Integer maxUserConnections) {
+
+            this.maxUserConnections = maxUserConnections;
             return this;
         }
         @CustomType.Setter
@@ -721,6 +1057,24 @@ public final class MySqlMysqlUserConfigMysql {
         public Builder netWriteTimeout(@Nullable Integer netWriteTimeout) {
 
             this.netWriteTimeout = netWriteTimeout;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder optimizerPruneLevel(@Nullable Integer optimizerPruneLevel) {
+
+            this.optimizerPruneLevel = optimizerPruneLevel;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder optimizerSearchDepth(@Nullable Integer optimizerSearchDepth) {
+
+            this.optimizerSearchDepth = optimizerSearchDepth;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder optimizerSwitch(@Nullable String optimizerSwitch) {
+
+            this.optimizerSwitch = optimizerSwitch;
             return this;
         }
         @CustomType.Setter
@@ -771,22 +1125,38 @@ public final class MySqlMysqlUserConfigMysql {
             this.waitTimeout = waitTimeout;
             return this;
         }
+        @CustomType.Setter
+        public Builder windowingUseHighPrecision(@Nullable Boolean windowingUseHighPrecision) {
+
+            this.windowingUseHighPrecision = windowingUseHighPrecision;
+            return this;
+        }
         public MySqlMysqlUserConfigMysql build() {
             final var _resultValue = new MySqlMysqlUserConfigMysql();
+            _resultValue.automaticSpPrivileges = automaticSpPrivileges;
             _resultValue.connectTimeout = connectTimeout;
             _resultValue.defaultTimeZone = defaultTimeZone;
+            _resultValue.divPrecisionIncrement = divPrecisionIncrement;
+            _resultValue.endMarkersInJson = endMarkersInJson;
+            _resultValue.eqRangeIndexDiveLimit = eqRangeIndexDiveLimit;
             _resultValue.groupConcatMaxLen = groupConcatMaxLen;
             _resultValue.informationSchemaStatsExpiry = informationSchemaStatsExpiry;
             _resultValue.innodbAdaptiveHashIndex = innodbAdaptiveHashIndex;
             _resultValue.innodbChangeBufferMaxSize = innodbChangeBufferMaxSize;
             _resultValue.innodbFlushNeighbors = innodbFlushNeighbors;
+            _resultValue.innodbFtEnableStopword = innodbFtEnableStopword;
+            _resultValue.innodbFtMaxTokenSize = innodbFtMaxTokenSize;
             _resultValue.innodbFtMinTokenSize = innodbFtMinTokenSize;
+            _resultValue.innodbFtNumWordOptimize = innodbFtNumWordOptimize;
+            _resultValue.innodbFtResultCacheLimit = innodbFtResultCacheLimit;
             _resultValue.innodbFtServerStopwordTable = innodbFtServerStopwordTable;
+            _resultValue.innodbFtUserStopwordTable = innodbFtUserStopwordTable;
             _resultValue.innodbIoCapacity = innodbIoCapacity;
             _resultValue.innodbIoCapacityMax = innodbIoCapacityMax;
             _resultValue.innodbLockWaitTimeout = innodbLockWaitTimeout;
             _resultValue.innodbLogBufferSize = innodbLogBufferSize;
             _resultValue.innodbOnlineAlterLogMaxSize = innodbOnlineAlterLogMaxSize;
+            _resultValue.innodbOptimizeFulltextOnly = innodbOptimizeFulltextOnly;
             _resultValue.innodbPrintAllDeadlocks = innodbPrintAllDeadlocks;
             _resultValue.innodbReadIoThreads = innodbReadIoThreads;
             _resultValue.innodbRollbackOnTimeout = innodbRollbackOnTimeout;
@@ -798,10 +1168,17 @@ public final class MySqlMysqlUserConfigMysql {
             _resultValue.longQueryTime = longQueryTime;
             _resultValue.lowerCaseTableNames = lowerCaseTableNames;
             _resultValue.maxAllowedPacket = maxAllowedPacket;
+            _resultValue.maxConnections = maxConnections;
+            _resultValue.maxExecutionTime = maxExecutionTime;
             _resultValue.maxHeapTableSize = maxHeapTableSize;
+            _resultValue.maxSeeksForKey = maxSeeksForKey;
+            _resultValue.maxUserConnections = maxUserConnections;
             _resultValue.netBufferLength = netBufferLength;
             _resultValue.netReadTimeout = netReadTimeout;
             _resultValue.netWriteTimeout = netWriteTimeout;
+            _resultValue.optimizerPruneLevel = optimizerPruneLevel;
+            _resultValue.optimizerSearchDepth = optimizerSearchDepth;
+            _resultValue.optimizerSwitch = optimizerSwitch;
             _resultValue.performanceSchemaEventsStatementsHistorySize = performanceSchemaEventsStatementsHistorySize;
             _resultValue.relayLogSpaceLimit = relayLogSpaceLimit;
             _resultValue.slowQueryLog = slowQueryLog;
@@ -810,6 +1187,7 @@ public final class MySqlMysqlUserConfigMysql {
             _resultValue.sqlRequirePrimaryKey = sqlRequirePrimaryKey;
             _resultValue.tmpTableSize = tmpTableSize;
             _resultValue.waitTimeout = waitTimeout;
+            _resultValue.windowingUseHighPrecision = windowingUseHighPrecision;
             return _resultValue;
         }
     }

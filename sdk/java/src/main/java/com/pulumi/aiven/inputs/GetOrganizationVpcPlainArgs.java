@@ -3,10 +3,13 @@
 
 package com.pulumi.aiven.inputs;
 
+import com.pulumi.aiven.inputs.GetOrganizationVpcTimeouts;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetOrganizationVpcPlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -14,14 +17,14 @@ public final class GetOrganizationVpcPlainArgs extends com.pulumi.resources.Invo
     public static final GetOrganizationVpcPlainArgs Empty = new GetOrganizationVpcPlainArgs();
 
     /**
-     * The ID of the organization.
+     * ID of an organization.
      * 
      */
     @Import(name="organizationId", required=true)
     private String organizationId;
 
     /**
-     * @return The ID of the organization.
+     * @return ID of an organization.
      * 
      */
     public String organizationId() {
@@ -43,11 +46,19 @@ public final class GetOrganizationVpcPlainArgs extends com.pulumi.resources.Invo
         return this.organizationVpcId;
     }
 
+    @Import(name="timeouts")
+    private @Nullable GetOrganizationVpcTimeouts timeouts;
+
+    public Optional<GetOrganizationVpcTimeouts> timeouts() {
+        return Optional.ofNullable(this.timeouts);
+    }
+
     private GetOrganizationVpcPlainArgs() {}
 
     private GetOrganizationVpcPlainArgs(GetOrganizationVpcPlainArgs $) {
         this.organizationId = $.organizationId;
         this.organizationVpcId = $.organizationVpcId;
+        this.timeouts = $.timeouts;
     }
 
     public static Builder builder() {
@@ -69,7 +80,7 @@ public final class GetOrganizationVpcPlainArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param organizationId The ID of the organization.
+         * @param organizationId ID of an organization.
          * 
          * @return builder
          * 
@@ -87,6 +98,11 @@ public final class GetOrganizationVpcPlainArgs extends com.pulumi.resources.Invo
          */
         public Builder organizationVpcId(String organizationVpcId) {
             $.organizationVpcId = organizationVpcId;
+            return this;
+        }
+
+        public Builder timeouts(@Nullable GetOrganizationVpcTimeouts timeouts) {
+            $.timeouts = timeouts;
             return this;
         }
 

@@ -64,7 +64,7 @@ export interface GetServiceIntegrationEndpointResult {
      */
     readonly endpointName: string;
     /**
-     * The type of service integration endpoint. The possible values are `autoscaler`, `datadog`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalAwsS3`, `externalAzureBlobStorage`, `externalClickhouse`, `externalElasticsearchLogs`, `externalGoogleCloudBigquery`, `externalGoogleCloudLogging`, `externalKafka`, `externalMysql`, `externalObjectStorageConfig`, `externalOpensearchLogs`, `externalPostgresql`, `externalPrometheus`, `externalRedis`, `externalSchemaRegistry`, `externalSumologicLogs`, `jolokia`, `prometheus` and `rsyslog`.
+     * The type of service integration endpoint. The possible values are `autoscaler`, `datadog`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalAwsS3`, `externalAzureBlobStorage`, `externalClickhouse`, `externalElasticsearchLogs`, `externalGoogleCloudBigquery`, `externalGoogleCloudLogging`, `externalKafka`, `externalMysql`, `externalObjectStorageConfig`, `externalOpensearchLogs`, `externalPostgresql`, `externalPrometheus`, `externalRedis`, `externalSchemaRegistry`, `externalSumologicLogs`, `jolokia`, `opentelemetry`, `prometheus` and `rsyslog`.
      */
     readonly endpointType: string;
     /**
@@ -135,6 +135,10 @@ export interface GetServiceIntegrationEndpointResult {
      * Jolokia user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
      */
     readonly jolokiaUserConfigs: outputs.GetServiceIntegrationEndpointJolokiaUserConfig[];
+    /**
+     * Opentelemetry user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+     */
+    readonly opentelemetryUserConfigs: outputs.GetServiceIntegrationEndpointOpentelemetryUserConfig[];
     /**
      * Project the service integration endpoint is in.
      */

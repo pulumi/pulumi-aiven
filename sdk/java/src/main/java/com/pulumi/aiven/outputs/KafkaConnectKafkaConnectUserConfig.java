@@ -64,6 +64,11 @@ public final class KafkaConnectKafkaConnectUserConfig {
      */
     private @Nullable List<KafkaConnectKafkaConnectUserConfigPluginVersion> pluginVersions;
     /**
+     * @return List of preferred zone IDs for service node placement. Nodes will be placed in these zones when available. If a specified zone is unavailable (e.g., due to capacity constraints), nodes will be placed in other available zones to maintain the configured number of zones for availability. Invalid zone IDs are rejected at configuration time. Zone IDs are cloud-specific: AWS uses zone IDs like `euc1-az1`, GCP uses zone names like `europe-west1-a`, and Azure uses `location/zone` format like `germanywestcentral/1`. If single*zone is enabled with an availability*zone, that setting takes precedence over preferred_zones. Changes take effect on next node recreation (e.g., maintenance or plan change). For eligible plans, nodes outside preferred zones are automatically rebalanced once per day.
+     * 
+     */
+    private @Nullable List<String> preferredZones;
+    /**
      * @return Allow access to selected service ports from private networks
      * 
      */
@@ -158,6 +163,13 @@ public final class KafkaConnectKafkaConnectUserConfig {
         return this.pluginVersions == null ? List.of() : this.pluginVersions;
     }
     /**
+     * @return List of preferred zone IDs for service node placement. Nodes will be placed in these zones when available. If a specified zone is unavailable (e.g., due to capacity constraints), nodes will be placed in other available zones to maintain the configured number of zones for availability. Invalid zone IDs are rejected at configuration time. Zone IDs are cloud-specific: AWS uses zone IDs like `euc1-az1`, GCP uses zone names like `europe-west1-a`, and Azure uses `location/zone` format like `germanywestcentral/1`. If single*zone is enabled with an availability*zone, that setting takes precedence over preferred_zones. Changes take effect on next node recreation (e.g., maintenance or plan change). For eligible plans, nodes outside preferred zones are automatically rebalanced once per day.
+     * 
+     */
+    public List<String> preferredZones() {
+        return this.preferredZones == null ? List.of() : this.preferredZones;
+    }
+    /**
      * @return Allow access to selected service ports from private networks
      * 
      */
@@ -223,6 +235,7 @@ public final class KafkaConnectKafkaConnectUserConfig {
         private @Nullable List<String> ipFilters;
         private @Nullable KafkaConnectKafkaConnectUserConfigKafkaConnect kafkaConnect;
         private @Nullable List<KafkaConnectKafkaConnectUserConfigPluginVersion> pluginVersions;
+        private @Nullable List<String> preferredZones;
         private @Nullable KafkaConnectKafkaConnectUserConfigPrivateAccess privateAccess;
         private @Nullable KafkaConnectKafkaConnectUserConfigPrivatelinkAccess privatelinkAccess;
         private @Nullable KafkaConnectKafkaConnectUserConfigPublicAccess publicAccess;
@@ -240,6 +253,7 @@ public final class KafkaConnectKafkaConnectUserConfig {
     	      this.ipFilters = defaults.ipFilters;
     	      this.kafkaConnect = defaults.kafkaConnect;
     	      this.pluginVersions = defaults.pluginVersions;
+    	      this.preferredZones = defaults.preferredZones;
     	      this.privateAccess = defaults.privateAccess;
     	      this.privatelinkAccess = defaults.privatelinkAccess;
     	      this.publicAccess = defaults.publicAccess;
@@ -307,6 +321,15 @@ public final class KafkaConnectKafkaConnectUserConfig {
             return pluginVersions(List.of(pluginVersions));
         }
         @CustomType.Setter
+        public Builder preferredZones(@Nullable List<String> preferredZones) {
+
+            this.preferredZones = preferredZones;
+            return this;
+        }
+        public Builder preferredZones(String... preferredZones) {
+            return preferredZones(List.of(preferredZones));
+        }
+        @CustomType.Setter
         public Builder privateAccess(@Nullable KafkaConnectKafkaConnectUserConfigPrivateAccess privateAccess) {
 
             this.privateAccess = privateAccess;
@@ -363,6 +386,7 @@ public final class KafkaConnectKafkaConnectUserConfig {
             _resultValue.ipFilters = ipFilters;
             _resultValue.kafkaConnect = kafkaConnect;
             _resultValue.pluginVersions = pluginVersions;
+            _resultValue.preferredZones = preferredZones;
             _resultValue.privateAccess = privateAccess;
             _resultValue.privatelinkAccess = privatelinkAccess;
             _resultValue.publicAccess = publicAccess;

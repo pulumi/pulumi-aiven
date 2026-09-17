@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetKafkaUserResult',
@@ -26,7 +28,7 @@ class GetKafkaUserResult:
     """
     A collection of values returned by getKafkaUser.
     """
-    def __init__(__self__, access_cert=None, access_key=None, id=None, password=None, project=None, service_name=None, type=None, username=None):
+    def __init__(__self__, access_cert=None, access_key=None, id=None, password=None, password_encryption_type=None, project=None, service_name=None, timeouts=None, type=None, username=None):
         if access_cert and not isinstance(access_cert, str):
             raise TypeError("Expected argument 'access_cert' to be a str")
         pulumi.set(__self__, "access_cert", access_cert)
@@ -39,12 +41,18 @@ class GetKafkaUserResult:
         if password and not isinstance(password, str):
             raise TypeError("Expected argument 'password' to be a str")
         pulumi.set(__self__, "password", password)
+        if password_encryption_type and not isinstance(password_encryption_type, str):
+            raise TypeError("Expected argument 'password_encryption_type' to be a str")
+        pulumi.set(__self__, "password_encryption_type", password_encryption_type)
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
         if service_name and not isinstance(service_name, str):
             raise TypeError("Expected argument 'service_name' to be a str")
         pulumi.set(__self__, "service_name", service_name)
+        if timeouts and not isinstance(timeouts, dict):
+            raise TypeError("Expected argument 'timeouts' to be a dict")
+        pulumi.set(__self__, "timeouts", timeouts)
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
         pulumi.set(__self__, "type", type)
@@ -56,7 +64,7 @@ class GetKafkaUserResult:
     @pulumi.getter(name="accessCert")
     def access_cert(self) -> _builtins.str:
         """
-        Access certificate for the user.
+        Access certificate for TLS client authentication.
         """
         return pulumi.get(self, "access_cert")
 
@@ -64,7 +72,7 @@ class GetKafkaUserResult:
     @pulumi.getter(name="accessKey")
     def access_key(self) -> _builtins.str:
         """
-        Access certificate key for the user.
+        Access key for TLS client authentication.
         """
         return pulumi.get(self, "access_key")
 
@@ -72,7 +80,7 @@ class GetKafkaUserResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The provider-assigned unique ID for this managed resource.
+        Resource ID composed as: `project/service_name/username`.
         """
         return pulumi.get(self, "id")
 
@@ -80,15 +88,23 @@ class GetKafkaUserResult:
     @pulumi.getter
     def password(self) -> _builtins.str:
         """
-        The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+        The password of the service user (auto-generated if not provided). The field conflicts with `password_wo`.
         """
         return pulumi.get(self, "password")
+
+    @_builtins.property
+    @pulumi.getter(name="passwordEncryptionType")
+    def password_encryption_type(self) -> _builtins.str:
+        """
+        The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. 'unknown' is reported when the hash is missing or uses an unrecognised format. The possible values are `md5`, `scram-sha-256` and `unknown`.
+        """
+        return pulumi.get(self, "password_encryption_type")
 
     @_builtins.property
     @pulumi.getter
     def project(self) -> _builtins.str:
         """
-        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Project name.
         """
         return pulumi.get(self, "project")
 
@@ -96,15 +112,20 @@ class GetKafkaUserResult:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> _builtins.str:
         """
-        The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Service name.
         """
         return pulumi.get(self, "service_name")
 
     @_builtins.property
     @pulumi.getter
+    def timeouts(self) -> Optional['outputs.GetKafkaUserTimeoutsResult']:
+        return pulumi.get(self, "timeouts")
+
+    @_builtins.property
+    @pulumi.getter
     def type(self) -> _builtins.str:
         """
-        User account type, such as primary or regular account.
+        Account type.
         """
         return pulumi.get(self, "type")
 
@@ -112,7 +133,7 @@ class GetKafkaUserResult:
     @pulumi.getter
     def username(self) -> _builtins.str:
         """
-        Name of the Kafka service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        Account username.
         """
         return pulumi.get(self, "username")
 
@@ -127,14 +148,17 @@ class AwaitableGetKafkaUserResult(GetKafkaUserResult):
             access_key=self.access_key,
             id=self.id,
             password=self.password,
+            password_encryption_type=self.password_encryption_type,
             project=self.project,
             service_name=self.service_name,
+            timeouts=self.timeouts,
             type=self.type,
             username=self.username)
 
 
 def get_kafka_user(project: Optional[_builtins.str] = None,
                    service_name: Optional[_builtins.str] = None,
+                   timeouts: Optional[Union['GetKafkaUserTimeoutsArgs', 'GetKafkaUserTimeoutsArgsDict']] = None,
                    username: Optional[_builtins.str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKafkaUserResult:
     """
@@ -146,19 +170,20 @@ def get_kafka_user(project: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    example_service_user = aiven.get_kafka_user(service_name=example_kafka["serviceName"],
-        project=example_project["project"],
-        username="example-kafka-user")
+    example = aiven.get_kafka_user(project="my-project",
+        service_name="my-kafka",
+        username="testuser")
     ```
 
 
-    :param _builtins.str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param _builtins.str service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param _builtins.str username: Name of the Kafka service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+    :param _builtins.str project: Project name.
+    :param _builtins.str service_name: Service name.
+    :param _builtins.str username: Account username.
     """
     __args__ = dict()
     __args__['project'] = project
     __args__['serviceName'] = service_name
+    __args__['timeouts'] = timeouts
     __args__['username'] = username
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('aiven:index/getKafkaUser:getKafkaUser', __args__, opts=opts, typ=GetKafkaUserResult).value
@@ -168,12 +193,15 @@ def get_kafka_user(project: Optional[_builtins.str] = None,
         access_key=pulumi.get(__ret__, 'access_key'),
         id=pulumi.get(__ret__, 'id'),
         password=pulumi.get(__ret__, 'password'),
+        password_encryption_type=pulumi.get(__ret__, 'password_encryption_type'),
         project=pulumi.get(__ret__, 'project'),
         service_name=pulumi.get(__ret__, 'service_name'),
+        timeouts=pulumi.get(__ret__, 'timeouts'),
         type=pulumi.get(__ret__, 'type'),
         username=pulumi.get(__ret__, 'username'))
 def get_kafka_user_output(project: pulumi.Input[Optional[_builtins.str]] = None,
                           service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                          timeouts: pulumi.Input[Optional[Optional[Union['GetKafkaUserTimeoutsArgs', 'GetKafkaUserTimeoutsArgsDict']]]] = None,
                           username: pulumi.Input[Optional[_builtins.str]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKafkaUserResult]:
     """
@@ -185,19 +213,20 @@ def get_kafka_user_output(project: pulumi.Input[Optional[_builtins.str]] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    example_service_user = aiven.get_kafka_user(service_name=example_kafka["serviceName"],
-        project=example_project["project"],
-        username="example-kafka-user")
+    example = aiven.get_kafka_user(project="my-project",
+        service_name="my-kafka",
+        username="testuser")
     ```
 
 
-    :param _builtins.str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param _builtins.str service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param _builtins.str username: Name of the Kafka service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+    :param _builtins.str project: Project name.
+    :param _builtins.str service_name: Service name.
+    :param _builtins.str username: Account username.
     """
     __args__ = dict()
     __args__['project'] = project
     __args__['serviceName'] = service_name
+    __args__['timeouts'] = timeouts
     __args__['username'] = username
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('aiven:index/getKafkaUser:getKafkaUser', __args__, opts=opts, typ=GetKafkaUserResult)
@@ -206,7 +235,9 @@ def get_kafka_user_output(project: pulumi.Input[Optional[_builtins.str]] = None,
         access_key=pulumi.get(__response__, 'access_key'),
         id=pulumi.get(__response__, 'id'),
         password=pulumi.get(__response__, 'password'),
+        password_encryption_type=pulumi.get(__response__, 'password_encryption_type'),
         project=pulumi.get(__response__, 'project'),
         service_name=pulumi.get(__response__, 'service_name'),
+        timeouts=pulumi.get(__response__, 'timeouts'),
         type=pulumi.get(__response__, 'type'),
         username=pulumi.get(__response__, 'username')))

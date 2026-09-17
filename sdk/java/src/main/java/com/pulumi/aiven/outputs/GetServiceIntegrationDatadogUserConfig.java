@@ -3,6 +3,7 @@
 
 package com.pulumi.aiven.outputs;
 
+import com.pulumi.aiven.outputs.GetServiceIntegrationDatadogUserConfigDatadogPgRelation;
 import com.pulumi.aiven.outputs.GetServiceIntegrationDatadogUserConfigDatadogTag;
 import com.pulumi.aiven.outputs.GetServiceIntegrationDatadogUserConfigOpensearch;
 import com.pulumi.aiven.outputs.GetServiceIntegrationDatadogUserConfigRedis;
@@ -22,6 +23,16 @@ public final class GetServiceIntegrationDatadogUserConfig {
      * 
      */
     private @Nullable Boolean datadogDbmEnabled;
+    /**
+     * @return Enable collection of PL/pgSQL function metrics from pg_stat_user_functions. Requires `trackFunctions` to be set to `pl` or `all` in the service configuration.
+     * 
+     */
+    private @Nullable Boolean datadogFunctionMetricsEnabled;
+    /**
+     * @return Relations to collect PostgreSQL relation metrics for, such as table size, index statistics, row counts, vacuum ages and locks. No relation metrics are collected when unset
+     * 
+     */
+    private @Nullable List<GetServiceIntegrationDatadogUserConfigDatadogPgRelation> datadogPgRelations;
     /**
      * @return Enable Datadog PgBouncer Metric Tracking.
      * 
@@ -85,6 +96,20 @@ public final class GetServiceIntegrationDatadogUserConfig {
      */
     public Optional<Boolean> datadogDbmEnabled() {
         return Optional.ofNullable(this.datadogDbmEnabled);
+    }
+    /**
+     * @return Enable collection of PL/pgSQL function metrics from pg_stat_user_functions. Requires `trackFunctions` to be set to `pl` or `all` in the service configuration.
+     * 
+     */
+    public Optional<Boolean> datadogFunctionMetricsEnabled() {
+        return Optional.ofNullable(this.datadogFunctionMetricsEnabled);
+    }
+    /**
+     * @return Relations to collect PostgreSQL relation metrics for, such as table size, index statistics, row counts, vacuum ages and locks. No relation metrics are collected when unset
+     * 
+     */
+    public List<GetServiceIntegrationDatadogUserConfigDatadogPgRelation> datadogPgRelations() {
+        return this.datadogPgRelations == null ? List.of() : this.datadogPgRelations;
     }
     /**
      * @return Enable Datadog PgBouncer Metric Tracking.
@@ -174,6 +199,8 @@ public final class GetServiceIntegrationDatadogUserConfig {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean datadogDbmEnabled;
+        private @Nullable Boolean datadogFunctionMetricsEnabled;
+        private @Nullable List<GetServiceIntegrationDatadogUserConfigDatadogPgRelation> datadogPgRelations;
         private @Nullable Boolean datadogPgbouncerEnabled;
         private @Nullable List<GetServiceIntegrationDatadogUserConfigDatadogTag> datadogTags;
         private @Nullable List<String> excludeConsumerGroups;
@@ -189,6 +216,8 @@ public final class GetServiceIntegrationDatadogUserConfig {
         public Builder(GetServiceIntegrationDatadogUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.datadogDbmEnabled = defaults.datadogDbmEnabled;
+    	      this.datadogFunctionMetricsEnabled = defaults.datadogFunctionMetricsEnabled;
+    	      this.datadogPgRelations = defaults.datadogPgRelations;
     	      this.datadogPgbouncerEnabled = defaults.datadogPgbouncerEnabled;
     	      this.datadogTags = defaults.datadogTags;
     	      this.excludeConsumerGroups = defaults.excludeConsumerGroups;
@@ -207,6 +236,21 @@ public final class GetServiceIntegrationDatadogUserConfig {
 
             this.datadogDbmEnabled = datadogDbmEnabled;
             return this;
+        }
+        @CustomType.Setter
+        public Builder datadogFunctionMetricsEnabled(@Nullable Boolean datadogFunctionMetricsEnabled) {
+
+            this.datadogFunctionMetricsEnabled = datadogFunctionMetricsEnabled;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder datadogPgRelations(@Nullable List<GetServiceIntegrationDatadogUserConfigDatadogPgRelation> datadogPgRelations) {
+
+            this.datadogPgRelations = datadogPgRelations;
+            return this;
+        }
+        public Builder datadogPgRelations(GetServiceIntegrationDatadogUserConfigDatadogPgRelation... datadogPgRelations) {
+            return datadogPgRelations(List.of(datadogPgRelations));
         }
         @CustomType.Setter
         public Builder datadogPgbouncerEnabled(@Nullable Boolean datadogPgbouncerEnabled) {
@@ -298,6 +342,8 @@ public final class GetServiceIntegrationDatadogUserConfig {
         public GetServiceIntegrationDatadogUserConfig build() {
             final var _resultValue = new GetServiceIntegrationDatadogUserConfig();
             _resultValue.datadogDbmEnabled = datadogDbmEnabled;
+            _resultValue.datadogFunctionMetricsEnabled = datadogFunctionMetricsEnabled;
+            _resultValue.datadogPgRelations = datadogPgRelations;
             _resultValue.datadogPgbouncerEnabled = datadogPgbouncerEnabled;
             _resultValue.datadogTags = datadogTags;
             _resultValue.excludeConsumerGroups = excludeConsumerGroups;

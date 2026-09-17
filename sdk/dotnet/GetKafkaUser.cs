@@ -24,11 +24,11 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleServiceUser = Aiven.GetKafkaUser.Invoke(new()
+        ///     var example = Aiven.GetKafkaUser.Invoke(new()
         ///     {
-        ///         ServiceName = exampleKafka.ServiceName,
-        ///         Project = exampleProject.Project,
-        ///         Username = "example-kafka-user",
+        ///         Project = "my-project",
+        ///         ServiceName = "my-kafka",
+        ///         Username = "testuser",
         ///     });
         /// 
         /// });
@@ -50,11 +50,11 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleServiceUser = Aiven.GetKafkaUser.Invoke(new()
+        ///     var example = Aiven.GetKafkaUser.Invoke(new()
         ///     {
-        ///         ServiceName = exampleKafka.ServiceName,
-        ///         Project = exampleProject.Project,
-        ///         Username = "example-kafka-user",
+        ///         Project = "my-project",
+        ///         ServiceName = "my-kafka",
+        ///         Username = "testuser",
         ///     });
         /// 
         /// });
@@ -76,11 +76,11 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleServiceUser = Aiven.GetKafkaUser.Invoke(new()
+        ///     var example = Aiven.GetKafkaUser.Invoke(new()
         ///     {
-        ///         ServiceName = exampleKafka.ServiceName,
-        ///         Project = exampleProject.Project,
-        ///         Username = "example-kafka-user",
+        ///         Project = "my-project",
+        ///         ServiceName = "my-kafka",
+        ///         Username = "testuser",
         ///     });
         /// 
         /// });
@@ -94,19 +94,22 @@ namespace Pulumi.Aiven
     public sealed class GetKafkaUserArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name.
         /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service name.
         /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
+        [Input("timeouts")]
+        public Inputs.GetKafkaUserTimeoutsArgs? Timeouts { get; set; }
+
         /// <summary>
-        /// Name of the Kafka service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Account username.
         /// </summary>
         [Input("username", required: true)]
         public string Username { get; set; } = null!;
@@ -120,19 +123,22 @@ namespace Pulumi.Aiven
     public sealed class GetKafkaUserInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Project name.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service name.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
+        [Input("timeouts")]
+        public Input<Inputs.GetKafkaUserTimeoutsInputArgs>? Timeouts { get; set; }
+
         /// <summary>
-        /// Name of the Kafka service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Account username.
         /// </summary>
         [Input("username", required: true)]
         public Input<string> Username { get; set; } = null!;
@@ -148,35 +154,40 @@ namespace Pulumi.Aiven
     public sealed class GetKafkaUserResult
     {
         /// <summary>
-        /// Access certificate for the user.
+        /// Access certificate for TLS client authentication.
         /// </summary>
         public readonly string AccessCert;
         /// <summary>
-        /// Access certificate key for the user.
+        /// Access key for TLS client authentication.
         /// </summary>
         public readonly string AccessKey;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// Resource ID composed as: `project/service_name/username`.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The password of the service user (auto-generated if not provided). Must be 8-256 characters if specified.
+        /// The password of the service user (auto-generated if not provided). The field conflicts with `PasswordWo`.
         /// </summary>
         public readonly string Password;
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. 'unknown' is reported when the hash is missing or uses an unrecognised format. The possible values are `Md5`, `scram-sha-256` and `Unknown`.
+        /// </summary>
+        public readonly string PasswordEncryptionType;
+        /// <summary>
+        /// Project name.
         /// </summary>
         public readonly string Project;
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Service name.
         /// </summary>
         public readonly string ServiceName;
+        public readonly Outputs.GetKafkaUserTimeoutsResult? Timeouts;
         /// <summary>
-        /// User account type, such as primary or regular account.
+        /// Account type.
         /// </summary>
         public readonly string Type;
         /// <summary>
-        /// Name of the Kafka service user. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Account username.
         /// </summary>
         public readonly string Username;
 
@@ -190,9 +201,13 @@ namespace Pulumi.Aiven
 
             string password,
 
+            string passwordEncryptionType,
+
             string project,
 
             string serviceName,
+
+            Outputs.GetKafkaUserTimeoutsResult? timeouts,
 
             string type,
 
@@ -202,8 +217,10 @@ namespace Pulumi.Aiven
             AccessKey = accessKey;
             Id = id;
             Password = password;
+            PasswordEncryptionType = passwordEncryptionType;
             Project = project;
             ServiceName = serviceName;
+            Timeouts = timeouts;
             Type = type;
             Username = username;
         }

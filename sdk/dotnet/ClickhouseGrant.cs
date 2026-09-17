@@ -41,9 +41,6 @@ namespace Pulumi.Aiven
     ///     // Grant privileges to the example role.
     ///     var rolePrivileges = new Aiven.ClickhouseGrant("role_privileges", new()
     ///     {
-    ///         Project = exampleProject.Project,
-    ///         ServiceName = exampleClickhouse.ServiceName,
-    ///         Role = exampleRole.Role,
     ///         PrivilegeGrants = new[]
     ///         {
     ///             new Aiven.Inputs.ClickhouseGrantPrivilegeGrantArgs
@@ -68,6 +65,9 @@ namespace Pulumi.Aiven
     ///                 Database = "*",
     ///             },
     ///         },
+    ///         Project = exampleProject.Project,
+    ///         ServiceName = exampleClickhouse.ServiceName,
+    ///         Role = exampleRole.Role,
     ///     });
     /// 
     ///     // Grant the role to the user.
@@ -80,9 +80,6 @@ namespace Pulumi.Aiven
     /// 
     ///     var userRoleAssignment = new Aiven.ClickhouseGrant("user_role_assignment", new()
     ///     {
-    ///         Project = exampleProject.Project,
-    ///         ServiceName = exampleClickhouse.ServiceName,
-    ///         User = exampleUser.Username,
     ///         RoleGrants = new[]
     ///         {
     ///             new Aiven.Inputs.ClickhouseGrantRoleGrantArgs
@@ -90,6 +87,9 @@ namespace Pulumi.Aiven
     ///                 Role = exampleRole.Role,
     ///             },
     ///         },
+    ///         Project = exampleProject.Project,
+    ///         ServiceName = exampleClickhouse.ServiceName,
+    ///         User = exampleUser.Username,
     ///     });
     /// 
     /// });

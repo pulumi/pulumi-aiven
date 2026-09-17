@@ -16,12 +16,6 @@ import * as utilities from "./utilities";
  * import * as aiven from "@pulumi/aiven";
  *
  * const example = new aiven.KafkaTopic("example", {
- *     project: "my-project",
- *     serviceName: "my-kafka",
- *     topicName: "mytopic",
- *     partitions: 3,
- *     replication: 3,
- *     ownerUserGroupId: "ug22ba494e096",
  *     config: {
  *         cleanupPolicy: "delete",
  *         compressionType: "zstd",
@@ -58,6 +52,12 @@ import * as utilities from "./utilities";
  *         key: "My-tag_key",
  *         value: "My tag value, value.",
  *     }],
+ *     project: "my-project",
+ *     serviceName: "my-kafka",
+ *     topicName: "mytopic",
+ *     partitions: 3,
+ *     replication: 3,
+ *     ownerUserGroupId: "ug22ba494e096",
  *     topicDescription: "Platform events",
  * });
  * ```

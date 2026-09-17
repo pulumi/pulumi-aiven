@@ -33,9 +33,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.aiven.OrganizationBillingGroup;
  * import com.pulumi.aiven.OrganizationBillingGroupArgs;
+ * import com.pulumi.aiven.inputs.OrganizationBillingGroupPaymentMethodArgs;
  * import com.pulumi.aiven.inputs.OrganizationBillingGroupBillingContactEmailArgs;
  * import com.pulumi.aiven.inputs.OrganizationBillingGroupBillingEmailArgs;
- * import com.pulumi.aiven.inputs.OrganizationBillingGroupPaymentMethodArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -50,20 +50,20 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var example = new OrganizationBillingGroup("example", OrganizationBillingGroupArgs.builder()
- *             .organizationId("org1a23f456789")
- *             .billingAddressId("addr4b1ff1ceeaa")
- *             .shippingAddressId("addr4b1ff1ceeaa")
+ *             .paymentMethod(OrganizationBillingGroupPaymentMethodArgs.builder()
+ *                 .paymentMethodId("pm4b1ff1ceeaa")
+ *                 .paymentMethodType("credit_card")
+ *                 .build())
  *             .billingContactEmails(OrganizationBillingGroupBillingContactEmailArgs.builder()
  *                 .email("jane}{@literal @}{@code example.com")
  *                 .build())
  *             .billingEmails(OrganizationBillingGroupBillingEmailArgs.builder()
  *                 .email("jane}{@literal @}{@code example.com")
  *                 .build())
+ *             .organizationId("org1a23f456789")
+ *             .billingAddressId("addr4b1ff1ceeaa")
+ *             .shippingAddressId("addr4b1ff1ceeaa")
  *             .billingGroupName("Default billing group for the organization")
- *             .paymentMethod(OrganizationBillingGroupPaymentMethodArgs.builder()
- *                 .paymentMethodId("pm4b1ff1ceeaa")
- *                 .paymentMethodType("credit_card")
- *                 .build())
  *             .vatId("FI12345678")
  *             .customInvoiceText("Extra billing text")
  *             .build());

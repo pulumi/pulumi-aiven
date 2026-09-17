@@ -29,13 +29,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.NewDragonfly(ctx, "example_dragonfly", &aiven.DragonflyArgs{
+//				DragonflyUserConfig: &aiven.DragonflyDragonflyUserConfigArgs{
+//					CacheMode: pulumi.Bool(true),
+//				},
 //				Project:     pulumi.Any(exampleProject.Project),
 //				Plan:        pulumi.String("startup-4"),
 //				CloudName:   pulumi.String("google-europe-west1"),
 //				ServiceName: pulumi.String("example-dragonfly-service"),
-//				DragonflyUserConfig: &aiven.DragonflyDragonflyUserConfigArgs{
-//					CacheMode: pulumi.Bool(true),
-//				},
 //			})
 //			if err != nil {
 //				return err

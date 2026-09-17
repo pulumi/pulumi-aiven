@@ -471,7 +471,10 @@ class OrganizationApplicationUserToken(pulumi.CustomResource):
             user_id="foo",
             description="Integration client Alpha",
             extend_when_used=False,
-            ip_allowlists=["192.168.0.0/24"],
+            ip_allowlists=[
+                "192.168.0.0/24",
+                "2001:db8::/32",
+            ],
             max_age_seconds=600,
             scopes=["user:read"])
         ```
@@ -513,7 +516,10 @@ class OrganizationApplicationUserToken(pulumi.CustomResource):
             user_id="foo",
             description="Integration client Alpha",
             extend_when_used=False,
-            ip_allowlists=["192.168.0.0/24"],
+            ip_allowlists=[
+                "192.168.0.0/24",
+                "2001:db8::/32",
+            ],
             max_age_seconds=600,
             scopes=["user:read"])
         ```

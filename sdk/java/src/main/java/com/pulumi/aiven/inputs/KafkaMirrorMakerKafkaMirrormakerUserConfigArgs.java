@@ -111,6 +111,21 @@ public final class KafkaMirrorMakerKafkaMirrormakerUserConfigArgs extends com.pu
     }
 
     /**
+     * List of preferred zone IDs for service node placement. Nodes will be placed in these zones when available. If a specified zone is unavailable (e.g., due to capacity constraints), nodes will be placed in other available zones to maintain the configured number of zones for availability. Invalid zone IDs are rejected at configuration time. Zone IDs are cloud-specific: AWS uses zone IDs like `euc1-az1`, GCP uses zone names like `europe-west1-a`, and Azure uses `location/zone` format like `germanywestcentral/1`. If single*zone is enabled with an availability*zone, that setting takes precedence over preferred_zones. Changes take effect on next node recreation (e.g., maintenance or plan change). For eligible plans, nodes outside preferred zones are automatically rebalanced once per day.
+     * 
+     */
+    @Import(name="preferredZones")
+    private @Nullable Output<List<String>> preferredZones;
+
+    /**
+     * @return List of preferred zone IDs for service node placement. Nodes will be placed in these zones when available. If a specified zone is unavailable (e.g., due to capacity constraints), nodes will be placed in other available zones to maintain the configured number of zones for availability. Invalid zone IDs are rejected at configuration time. Zone IDs are cloud-specific: AWS uses zone IDs like `euc1-az1`, GCP uses zone names like `europe-west1-a`, and Azure uses `location/zone` format like `germanywestcentral/1`. If single*zone is enabled with an availability*zone, that setting takes precedence over preferred_zones. Changes take effect on next node recreation (e.g., maintenance or plan change). For eligible plans, nodes outside preferred zones are automatically rebalanced once per day.
+     * 
+     */
+    public Optional<Output<List<String>>> preferredZones() {
+        return Optional.ofNullable(this.preferredZones);
+    }
+
+    /**
      * List of allowed URLs for SASL OAUTHBEARER authentication. Only HTTPS URLs are allowed for security reasons.
      * 
      */
@@ -163,6 +178,7 @@ public final class KafkaMirrorMakerKafkaMirrormakerUserConfigArgs extends com.pu
         this.ipFilterStrings = $.ipFilterStrings;
         this.ipFilters = $.ipFilters;
         this.kafkaMirrormaker = $.kafkaMirrormaker;
+        this.preferredZones = $.preferredZones;
         this.saslOauthbearerAllowedUrls = $.saslOauthbearerAllowedUrls;
         this.serviceLog = $.serviceLog;
         this.staticIps = $.staticIps;
@@ -339,6 +355,37 @@ public final class KafkaMirrorMakerKafkaMirrormakerUserConfigArgs extends com.pu
          */
         public Builder kafkaMirrormaker(KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs kafkaMirrormaker) {
             return kafkaMirrormaker(Output.of(kafkaMirrormaker));
+        }
+
+        /**
+         * @param preferredZones List of preferred zone IDs for service node placement. Nodes will be placed in these zones when available. If a specified zone is unavailable (e.g., due to capacity constraints), nodes will be placed in other available zones to maintain the configured number of zones for availability. Invalid zone IDs are rejected at configuration time. Zone IDs are cloud-specific: AWS uses zone IDs like `euc1-az1`, GCP uses zone names like `europe-west1-a`, and Azure uses `location/zone` format like `germanywestcentral/1`. If single*zone is enabled with an availability*zone, that setting takes precedence over preferred_zones. Changes take effect on next node recreation (e.g., maintenance or plan change). For eligible plans, nodes outside preferred zones are automatically rebalanced once per day.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder preferredZones(@Nullable Output<List<String>> preferredZones) {
+            $.preferredZones = preferredZones;
+            return this;
+        }
+
+        /**
+         * @param preferredZones List of preferred zone IDs for service node placement. Nodes will be placed in these zones when available. If a specified zone is unavailable (e.g., due to capacity constraints), nodes will be placed in other available zones to maintain the configured number of zones for availability. Invalid zone IDs are rejected at configuration time. Zone IDs are cloud-specific: AWS uses zone IDs like `euc1-az1`, GCP uses zone names like `europe-west1-a`, and Azure uses `location/zone` format like `germanywestcentral/1`. If single*zone is enabled with an availability*zone, that setting takes precedence over preferred_zones. Changes take effect on next node recreation (e.g., maintenance or plan change). For eligible plans, nodes outside preferred zones are automatically rebalanced once per day.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder preferredZones(List<String> preferredZones) {
+            return preferredZones(Output.of(preferredZones));
+        }
+
+        /**
+         * @param preferredZones List of preferred zone IDs for service node placement. Nodes will be placed in these zones when available. If a specified zone is unavailable (e.g., due to capacity constraints), nodes will be placed in other available zones to maintain the configured number of zones for availability. Invalid zone IDs are rejected at configuration time. Zone IDs are cloud-specific: AWS uses zone IDs like `euc1-az1`, GCP uses zone names like `europe-west1-a`, and Azure uses `location/zone` format like `germanywestcentral/1`. If single*zone is enabled with an availability*zone, that setting takes precedence over preferred_zones. Changes take effect on next node recreation (e.g., maintenance or plan change). For eligible plans, nodes outside preferred zones are automatically rebalanced once per day.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder preferredZones(String... preferredZones) {
+            return preferredZones(List.of(preferredZones));
         }
 
         /**

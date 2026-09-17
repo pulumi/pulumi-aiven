@@ -22,6 +22,22 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? RetriableErrorsSilenced;
         /// <summary>
+        /// If enabled, the Schema Registry validates OAuth2/OIDC JWT bearer tokens on incoming requests. Requires the OIDC provider settings under the `Kafka` configuration (`SaslOauthbearerJwksEndpointUrl` and related). Defaults to `False`.
+        /// </summary>
+        public readonly bool? SaslOauthbearerAuthenticationEnabled;
+        /// <summary>
+        /// If enabled, the Schema Registry enforces role-based authorization derived from the JWT roles claim. Requires `SaslOauthbearerAuthenticationEnabled` to be enabled. Defaults to `False`.
+        /// </summary>
+        public readonly bool? SaslOauthbearerAuthorizationEnabled;
+        /// <summary>
+        /// JSON object mapping HTTP methods to the list of roles allowed to perform them on the Schema Registry, provided as a JSON-encoded string. Role names use the `karapace.` prefix, e.g. `karapace.schema:read`. Defaults to `{"GET": ["karapace.schema:read", "karapace.subject:read"], "POST": [], "PUT": [], "DELETE": []}`.
+        /// </summary>
+        public readonly string? SaslOauthbearerMethodRoles;
+        /// <summary>
+        /// JSON path used to extract the roles claim from the JWT for Schema Registry authorization. Defaults to `resource_access.karapace.roles`.
+        /// </summary>
+        public readonly string? SaslOauthbearerRolesClaimPath;
+        /// <summary>
         /// If enabled, causes the Karapace schema-registry service to shutdown when there are invalid schema records in the `_schemas` topic. Defaults to `False`.
         /// </summary>
         public readonly bool? SchemaReaderStrictMode;
@@ -36,12 +52,24 @@ namespace Pulumi.Aiven.Outputs
 
             bool? retriableErrorsSilenced,
 
+            bool? saslOauthbearerAuthenticationEnabled,
+
+            bool? saslOauthbearerAuthorizationEnabled,
+
+            string? saslOauthbearerMethodRoles,
+
+            string? saslOauthbearerRolesClaimPath,
+
             bool? schemaReaderStrictMode,
 
             string? topicName)
         {
             LeaderEligibility = leaderEligibility;
             RetriableErrorsSilenced = retriableErrorsSilenced;
+            SaslOauthbearerAuthenticationEnabled = saslOauthbearerAuthenticationEnabled;
+            SaslOauthbearerAuthorizationEnabled = saslOauthbearerAuthorizationEnabled;
+            SaslOauthbearerMethodRoles = saslOauthbearerMethodRoles;
+            SaslOauthbearerRolesClaimPath = saslOauthbearerRolesClaimPath;
             SchemaReaderStrictMode = schemaReaderStrictMode;
             TopicName = topicName;
         }

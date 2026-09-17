@@ -16,15 +16,15 @@ import * as utilities from "./utilities";
  * import * as aiven from "@pulumi/aiven";
  *
  * const exampleFlink = new aiven.Flink("example_flink", {
+ *     flinkUserConfig: {
+ *         flinkVersion: "1.19",
+ *     },
  *     project: exampleProject.project,
  *     cloudName: "google-europe-west1",
  *     plan: "business-4",
  *     serviceName: "example-flink-service",
  *     maintenanceWindowDow: "monday",
  *     maintenanceWindowTime: "10:00:00",
- *     flinkUserConfig: {
- *         flinkVersion: "1.19",
- *     },
  * });
  * ```
  *

@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates and manages an [AWS PrivateLink for Aiven services](https://aiven.io/docs/platform/howto/use-aws-privatelinks) in a VPC.
+// Creates and manages an [AWS PrivateLink for Aiven services](https://aiven.io/docs/platform/howto/use-aws-privatelinks) in a VPC. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
 //
 // ## Example Usage
 //
@@ -28,11 +28,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewAwsPrivatelink(ctx, "main", &aiven.AwsPrivatelinkArgs{
-//				Project:     pulumi.Any(exampleProject.Project),
-//				ServiceName: pulumi.Any(exampleKafka.ServiceName),
+//			_, err := aiven.NewAwsPrivatelink(ctx, "example", &aiven.AwsPrivatelinkArgs{
+//				Project:     pulumi.String("my-project"),
+//				ServiceName: pulumi.String("foo"),
 //				Principals: pulumi.StringArray{
-//					pulumi.String("arn:aws:iam::012345678901:user/mwf"),
+//					pulumi.String("arn:aws:iam::012345678901:root"),
+//				},
+//				SupportedRegions: pulumi.StringArray{
+//					pulumi.String("eu-west-1"),
 //				},
 //			})
 //			if err != nil {
@@ -47,21 +50,26 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import aiven:index/awsPrivatelink:AwsPrivatelink main PROJECT/SERVICE_NAME
+// $ pulumi import aiven:index/awsPrivatelink:AwsPrivatelink example PROJECT/SERVICE_NAME
 // ```
 type AwsPrivatelink struct {
 	pulumi.CustomResourceState
 
-	// AWS service ID.
+	// AWS VPC endpoint service ID.
 	AwsServiceId pulumi.StringOutput `pulumi:"awsServiceId"`
-	// AWS service name.
+	// AWS VPC endpoint service name.
 	AwsServiceName pulumi.StringOutput `pulumi:"awsServiceName"`
-	// List of the ARNs of the AWS accounts or IAM users allowed to connect to the VPC endpoint.
+	// ARNs of principals allowed connecting to the service.
 	Principals pulumi.StringArrayOutput `pulumi:"principals"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Service name. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
+	// Privatelink resource state. The possible values are `active`, `creating` and `deleting`.
+	State pulumi.StringOutput `pulumi:"state"`
+	// Allow new connections to the endpoint from these regions, in addition to the region the endpoint is in.
+	SupportedRegions pulumi.StringArrayOutput        `pulumi:"supportedRegions"`
+	Timeouts         AwsPrivatelinkTimeoutsPtrOutput `pulumi:"timeouts"`
 }
 
 // NewAwsPrivatelink registers a new resource with the given unique name, arguments, and options.
@@ -103,29 +111,39 @@ func GetAwsPrivatelink(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AwsPrivatelink resources.
 type awsPrivatelinkState struct {
-	// AWS service ID.
+	// AWS VPC endpoint service ID.
 	AwsServiceId *string `pulumi:"awsServiceId"`
-	// AWS service name.
+	// AWS VPC endpoint service name.
 	AwsServiceName *string `pulumi:"awsServiceName"`
-	// List of the ARNs of the AWS accounts or IAM users allowed to connect to the VPC endpoint.
+	// ARNs of principals allowed connecting to the service.
 	Principals []string `pulumi:"principals"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project *string `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Service name. Changing this property forces recreation of the resource.
 	ServiceName *string `pulumi:"serviceName"`
+	// Privatelink resource state. The possible values are `active`, `creating` and `deleting`.
+	State *string `pulumi:"state"`
+	// Allow new connections to the endpoint from these regions, in addition to the region the endpoint is in.
+	SupportedRegions []string                `pulumi:"supportedRegions"`
+	Timeouts         *AwsPrivatelinkTimeouts `pulumi:"timeouts"`
 }
 
 type AwsPrivatelinkState struct {
-	// AWS service ID.
+	// AWS VPC endpoint service ID.
 	AwsServiceId pulumi.StringPtrInput
-	// AWS service name.
+	// AWS VPC endpoint service name.
 	AwsServiceName pulumi.StringPtrInput
-	// List of the ARNs of the AWS accounts or IAM users allowed to connect to the VPC endpoint.
+	// ARNs of principals allowed connecting to the service.
 	Principals pulumi.StringArrayInput
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project pulumi.StringPtrInput
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Service name. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringPtrInput
+	// Privatelink resource state. The possible values are `active`, `creating` and `deleting`.
+	State pulumi.StringPtrInput
+	// Allow new connections to the endpoint from these regions, in addition to the region the endpoint is in.
+	SupportedRegions pulumi.StringArrayInput
+	Timeouts         AwsPrivatelinkTimeoutsPtrInput
 }
 
 func (AwsPrivatelinkState) ElementType() reflect.Type {
@@ -133,22 +151,28 @@ func (AwsPrivatelinkState) ElementType() reflect.Type {
 }
 
 type awsPrivatelinkArgs struct {
-	// List of the ARNs of the AWS accounts or IAM users allowed to connect to the VPC endpoint.
+	// ARNs of principals allowed connecting to the service.
 	Principals []string `pulumi:"principals"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Service name. Changing this property forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
+	// Allow new connections to the endpoint from these regions, in addition to the region the endpoint is in.
+	SupportedRegions []string                `pulumi:"supportedRegions"`
+	Timeouts         *AwsPrivatelinkTimeouts `pulumi:"timeouts"`
 }
 
 // The set of arguments for constructing a AwsPrivatelink resource.
 type AwsPrivatelinkArgs struct {
-	// List of the ARNs of the AWS accounts or IAM users allowed to connect to the VPC endpoint.
+	// ARNs of principals allowed connecting to the service.
 	Principals pulumi.StringArrayInput
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Project name. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// Service name. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringInput
+	// Allow new connections to the endpoint from these regions, in addition to the region the endpoint is in.
+	SupportedRegions pulumi.StringArrayInput
+	Timeouts         AwsPrivatelinkTimeoutsPtrInput
 }
 
 func (AwsPrivatelinkArgs) ElementType() reflect.Type {
@@ -238,29 +262,43 @@ func (o AwsPrivatelinkOutput) ToAwsPrivatelinkOutputWithContext(ctx context.Cont
 	return o
 }
 
-// AWS service ID.
+// AWS VPC endpoint service ID.
 func (o AwsPrivatelinkOutput) AwsServiceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AwsPrivatelink) pulumi.StringOutput { return v.AwsServiceId }).(pulumi.StringOutput)
 }
 
-// AWS service name.
+// AWS VPC endpoint service name.
 func (o AwsPrivatelinkOutput) AwsServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *AwsPrivatelink) pulumi.StringOutput { return v.AwsServiceName }).(pulumi.StringOutput)
 }
 
-// List of the ARNs of the AWS accounts or IAM users allowed to connect to the VPC endpoint.
+// ARNs of principals allowed connecting to the service.
 func (o AwsPrivatelinkOutput) Principals() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AwsPrivatelink) pulumi.StringArrayOutput { return v.Principals }).(pulumi.StringArrayOutput)
 }
 
-// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// Project name. Changing this property forces recreation of the resource.
 func (o AwsPrivatelinkOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *AwsPrivatelink) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// Service name. Changing this property forces recreation of the resource.
 func (o AwsPrivatelinkOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *AwsPrivatelink) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+// Privatelink resource state. The possible values are `active`, `creating` and `deleting`.
+func (o AwsPrivatelinkOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *AwsPrivatelink) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// Allow new connections to the endpoint from these regions, in addition to the region the endpoint is in.
+func (o AwsPrivatelinkOutput) SupportedRegions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AwsPrivatelink) pulumi.StringArrayOutput { return v.SupportedRegions }).(pulumi.StringArrayOutput)
+}
+
+func (o AwsPrivatelinkOutput) Timeouts() AwsPrivatelinkTimeoutsPtrOutput {
+	return o.ApplyT(func(v *AwsPrivatelink) AwsPrivatelinkTimeoutsPtrOutput { return v.Timeouts }).(AwsPrivatelinkTimeoutsPtrOutput)
 }
 
 type AwsPrivatelinkArrayOutput struct{ *pulumi.OutputState }

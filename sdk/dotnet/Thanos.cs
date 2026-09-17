@@ -24,10 +24,6 @@ namespace Pulumi.Aiven
     /// {
     ///     var exampleThanos = new Aiven.Thanos("example_thanos", new()
     ///     {
-    ///         Project = exampleProject.Project,
-    ///         Plan = "startup-4",
-    ///         CloudName = "google-europe-west1",
-    ///         ServiceName = "example-thanos-service",
     ///         ThanosUserConfig = new Aiven.Inputs.ThanosThanosUserConfigArgs
     ///         {
     ///             Compactor = new Aiven.Inputs.ThanosThanosUserConfigCompactorArgs
@@ -36,6 +32,10 @@ namespace Pulumi.Aiven
     ///             },
     ///             ObjectStorageUsageAlertThresholdGb = 10,
     ///         },
+    ///         Project = exampleProject.Project,
+    ///         Plan = "startup-4",
+    ///         CloudName = "google-europe-west1",
+    ///         ServiceName = "example-thanos-service",
     ///     });
     /// 
     /// });
