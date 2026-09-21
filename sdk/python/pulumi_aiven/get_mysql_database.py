@@ -112,7 +112,7 @@ class AwaitableGetMysqlDatabaseResult(GetMysqlDatabaseResult):
 def get_mysql_database(database_name: Optional[_builtins.str] = None,
                        project: Optional[_builtins.str] = None,
                        service_name: Optional[_builtins.str] = None,
-                       timeouts: Optional[Union['GetMysqlDatabaseTimeoutsArgs', 'GetMysqlDatabaseTimeoutsArgsDict']] = None,
+                       timeouts: Optional[Union['GetMysqlDatabaseTimeoutsArgs', 'GetMysqlDatabaseTimeoutsArgsDict', 'outputs.GetMysqlDatabaseTimeoutsResult']] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMysqlDatabaseResult:
     """
     Gets information about an Aiven for MySQL® database.
@@ -151,7 +151,7 @@ def get_mysql_database(database_name: Optional[_builtins.str] = None,
 def get_mysql_database_output(database_name: pulumi.Input[Optional[_builtins.str]] = None,
                               project: pulumi.Input[Optional[_builtins.str]] = None,
                               service_name: pulumi.Input[Optional[_builtins.str]] = None,
-                              timeouts: pulumi.Input[Optional[Optional[Union['GetMysqlDatabaseTimeoutsArgs', 'GetMysqlDatabaseTimeoutsArgsDict']]]] = None,
+                              timeouts: pulumi.Input[Optional[Optional[Union['GetMysqlDatabaseTimeoutsArgs', 'GetMysqlDatabaseTimeoutsArgsDict', 'outputs.GetMysqlDatabaseTimeoutsResult']]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMysqlDatabaseResult]:
     """
     Gets information about an Aiven for MySQL® database.

@@ -159,7 +159,7 @@ class AwaitableGetConnectionPoolResult(GetConnectionPoolResult):
 def get_connection_pool(pool_name: Optional[_builtins.str] = None,
                         project: Optional[_builtins.str] = None,
                         service_name: Optional[_builtins.str] = None,
-                        timeouts: Optional[Union['GetConnectionPoolTimeoutsArgs', 'GetConnectionPoolTimeoutsArgsDict']] = None,
+                        timeouts: Optional[Union['GetConnectionPoolTimeoutsArgs', 'GetConnectionPoolTimeoutsArgsDict', 'outputs.GetConnectionPoolTimeoutsResult']] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetConnectionPoolResult:
     """
     Gets information about a connection pool in an Aiven for PostgreSQL® service.
@@ -202,7 +202,7 @@ def get_connection_pool(pool_name: Optional[_builtins.str] = None,
 def get_connection_pool_output(pool_name: pulumi.Input[Optional[_builtins.str]] = None,
                                project: pulumi.Input[Optional[_builtins.str]] = None,
                                service_name: pulumi.Input[Optional[_builtins.str]] = None,
-                               timeouts: pulumi.Input[Optional[Optional[Union['GetConnectionPoolTimeoutsArgs', 'GetConnectionPoolTimeoutsArgsDict']]]] = None,
+                               timeouts: pulumi.Input[Optional[Optional[Union['GetConnectionPoolTimeoutsArgs', 'GetConnectionPoolTimeoutsArgsDict', 'outputs.GetConnectionPoolTimeoutsResult']]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetConnectionPoolResult]:
     """
     Gets information about a connection pool in an Aiven for PostgreSQL® service.

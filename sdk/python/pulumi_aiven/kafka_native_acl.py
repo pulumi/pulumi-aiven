@@ -371,7 +371,7 @@ class KafkaNativeAcl(pulumi.CustomResource):
                  resource_name_: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_type: pulumi.Input[Optional[_builtins.str]] = None,
                  service_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['KafkaNativeAclTimeoutsArgs', 'KafkaNativeAclTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['KafkaNativeAclTimeoutsArgs', 'KafkaNativeAclTimeoutsArgsDict', 'outputs.KafkaNativeAclTimeouts']]] = None,
                  __props__=None):
         """
         Creates and manages Kafka-native [access control lists](https://aiven.io/docs/products/kafka/concepts/acl) (ACLs) for an Aiven for Apache Kafka® service. ACLs control access to Kafka topics, consumer groups, clusters, and Schema Registry.
@@ -475,7 +475,7 @@ class KafkaNativeAcl(pulumi.CustomResource):
                  resource_name_: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_type: pulumi.Input[Optional[_builtins.str]] = None,
                  service_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['KafkaNativeAclTimeoutsArgs', 'KafkaNativeAclTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['KafkaNativeAclTimeoutsArgs', 'KafkaNativeAclTimeoutsArgsDict', 'outputs.KafkaNativeAclTimeouts']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -532,7 +532,7 @@ class KafkaNativeAcl(pulumi.CustomResource):
             resource_name_: pulumi.Input[Optional[_builtins.str]] = None,
             resource_type: pulumi.Input[Optional[_builtins.str]] = None,
             service_name: pulumi.Input[Optional[_builtins.str]] = None,
-            timeouts: pulumi.Input[Optional[Union['KafkaNativeAclTimeoutsArgs', 'KafkaNativeAclTimeoutsArgsDict']]] = None) -> 'KafkaNativeAcl':
+            timeouts: pulumi.Input[Optional[Union['KafkaNativeAclTimeoutsArgs', 'KafkaNativeAclTimeoutsArgsDict', 'outputs.KafkaNativeAclTimeouts']]] = None) -> 'KafkaNativeAcl':
         """
         Get an existing KafkaNativeAcl resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

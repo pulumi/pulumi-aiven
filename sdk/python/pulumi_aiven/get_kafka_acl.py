@@ -136,7 +136,7 @@ def get_kafka_acl(acl_id: Optional[_builtins.str] = None,
                   permission: Optional[_builtins.str] = None,
                   project: Optional[_builtins.str] = None,
                   service_name: Optional[_builtins.str] = None,
-                  timeouts: Optional[Union['GetKafkaAclTimeoutsArgs', 'GetKafkaAclTimeoutsArgsDict']] = None,
+                  timeouts: Optional[Union['GetKafkaAclTimeoutsArgs', 'GetKafkaAclTimeoutsArgsDict', 'outputs.GetKafkaAclTimeoutsResult']] = None,
                   topic: Optional[_builtins.str] = None,
                   username: Optional[_builtins.str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKafkaAclResult:
@@ -186,7 +186,7 @@ def get_kafka_acl_output(acl_id: pulumi.Input[Optional[Optional[_builtins.str]]]
                          permission: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                          project: pulumi.Input[Optional[_builtins.str]] = None,
                          service_name: pulumi.Input[Optional[_builtins.str]] = None,
-                         timeouts: pulumi.Input[Optional[Optional[Union['GetKafkaAclTimeoutsArgs', 'GetKafkaAclTimeoutsArgsDict']]]] = None,
+                         timeouts: pulumi.Input[Optional[Optional[Union['GetKafkaAclTimeoutsArgs', 'GetKafkaAclTimeoutsArgsDict', 'outputs.GetKafkaAclTimeoutsResult']]]] = None,
                          topic: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                          username: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKafkaAclResult]:

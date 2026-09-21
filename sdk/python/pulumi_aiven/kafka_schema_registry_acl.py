@@ -241,7 +241,7 @@ class KafkaSchemaRegistryAcl(pulumi.CustomResource):
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  resource: pulumi.Input[Optional[_builtins.str]] = None,
                  service_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['KafkaSchemaRegistryAclTimeoutsArgs', 'KafkaSchemaRegistryAclTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['KafkaSchemaRegistryAclTimeoutsArgs', 'KafkaSchemaRegistryAclTimeoutsArgsDict', 'outputs.KafkaSchemaRegistryAclTimeouts']]] = None,
                  username: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -325,7 +325,7 @@ class KafkaSchemaRegistryAcl(pulumi.CustomResource):
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  resource: pulumi.Input[Optional[_builtins.str]] = None,
                  service_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['KafkaSchemaRegistryAclTimeoutsArgs', 'KafkaSchemaRegistryAclTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['KafkaSchemaRegistryAclTimeoutsArgs', 'KafkaSchemaRegistryAclTimeoutsArgsDict', 'outputs.KafkaSchemaRegistryAclTimeouts']]] = None,
                  username: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -368,7 +368,7 @@ class KafkaSchemaRegistryAcl(pulumi.CustomResource):
             project: pulumi.Input[Optional[_builtins.str]] = None,
             resource: pulumi.Input[Optional[_builtins.str]] = None,
             service_name: pulumi.Input[Optional[_builtins.str]] = None,
-            timeouts: pulumi.Input[Optional[Union['KafkaSchemaRegistryAclTimeoutsArgs', 'KafkaSchemaRegistryAclTimeoutsArgsDict']]] = None,
+            timeouts: pulumi.Input[Optional[Union['KafkaSchemaRegistryAclTimeoutsArgs', 'KafkaSchemaRegistryAclTimeoutsArgsDict', 'outputs.KafkaSchemaRegistryAclTimeouts']]] = None,
             username: pulumi.Input[Optional[_builtins.str]] = None) -> 'KafkaSchemaRegistryAcl':
         """
         Get an existing KafkaSchemaRegistryAcl resource's state with the given name, id, and optional extra

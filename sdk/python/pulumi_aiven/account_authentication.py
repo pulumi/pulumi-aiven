@@ -543,7 +543,7 @@ class AccountAuthentication(pulumi.CustomResource):
                  saml_certificate: pulumi.Input[Optional[_builtins.str]] = None,
                  saml_digest_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
                  saml_entity_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 saml_field_mapping: pulumi.Input[Optional[Union['AccountAuthenticationSamlFieldMappingArgs', 'AccountAuthenticationSamlFieldMappingArgsDict']]] = None,
+                 saml_field_mapping: pulumi.Input[Optional[Union['AccountAuthenticationSamlFieldMappingArgs', 'AccountAuthenticationSamlFieldMappingArgsDict', 'outputs.AccountAuthenticationSamlFieldMapping']]] = None,
                  saml_idp_login_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
                  saml_idp_url: pulumi.Input[Optional[_builtins.str]] = None,
                  saml_signature_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
@@ -574,7 +574,7 @@ class AccountAuthentication(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] saml_certificate: SAML Certificate
         :param pulumi.Input[_builtins.str] saml_digest_algorithm: Digest algorithm. This is an advanced option that typically does not need to be set.
         :param pulumi.Input[_builtins.str] saml_entity_id: SAML Entity id
-        :param pulumi.Input[Union['AccountAuthenticationSamlFieldMappingArgs', 'AccountAuthenticationSamlFieldMappingArgsDict']] saml_field_mapping: Map IdP fields
+        :param pulumi.Input[Union['AccountAuthenticationSamlFieldMappingArgs', 'AccountAuthenticationSamlFieldMappingArgsDict', 'outputs.AccountAuthenticationSamlFieldMapping']] saml_field_mapping: Map IdP fields
         :param pulumi.Input[_builtins.bool] saml_idp_login_allowed: Set to 'true' to enable IdP initiated login
         :param pulumi.Input[_builtins.str] saml_idp_url: SAML Idp URL
         :param pulumi.Input[_builtins.str] saml_signature_algorithm: Signature algorithm. This is an advanced option that typically does not need to be set.
@@ -624,7 +624,7 @@ class AccountAuthentication(pulumi.CustomResource):
                  saml_certificate: pulumi.Input[Optional[_builtins.str]] = None,
                  saml_digest_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
                  saml_entity_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 saml_field_mapping: pulumi.Input[Optional[Union['AccountAuthenticationSamlFieldMappingArgs', 'AccountAuthenticationSamlFieldMappingArgsDict']]] = None,
+                 saml_field_mapping: pulumi.Input[Optional[Union['AccountAuthenticationSamlFieldMappingArgs', 'AccountAuthenticationSamlFieldMappingArgsDict', 'outputs.AccountAuthenticationSamlFieldMapping']]] = None,
                  saml_idp_login_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
                  saml_idp_url: pulumi.Input[Optional[_builtins.str]] = None,
                  saml_signature_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
@@ -681,7 +681,7 @@ class AccountAuthentication(pulumi.CustomResource):
             saml_certificate: pulumi.Input[Optional[_builtins.str]] = None,
             saml_digest_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
             saml_entity_id: pulumi.Input[Optional[_builtins.str]] = None,
-            saml_field_mapping: pulumi.Input[Optional[Union['AccountAuthenticationSamlFieldMappingArgs', 'AccountAuthenticationSamlFieldMappingArgsDict']]] = None,
+            saml_field_mapping: pulumi.Input[Optional[Union['AccountAuthenticationSamlFieldMappingArgs', 'AccountAuthenticationSamlFieldMappingArgsDict', 'outputs.AccountAuthenticationSamlFieldMapping']]] = None,
             saml_idp_login_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
             saml_idp_url: pulumi.Input[Optional[_builtins.str]] = None,
             saml_metadata_url: pulumi.Input[Optional[_builtins.str]] = None,
@@ -706,7 +706,7 @@ class AccountAuthentication(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] saml_certificate: SAML Certificate
         :param pulumi.Input[_builtins.str] saml_digest_algorithm: Digest algorithm. This is an advanced option that typically does not need to be set.
         :param pulumi.Input[_builtins.str] saml_entity_id: SAML Entity id
-        :param pulumi.Input[Union['AccountAuthenticationSamlFieldMappingArgs', 'AccountAuthenticationSamlFieldMappingArgsDict']] saml_field_mapping: Map IdP fields
+        :param pulumi.Input[Union['AccountAuthenticationSamlFieldMappingArgs', 'AccountAuthenticationSamlFieldMappingArgsDict', 'outputs.AccountAuthenticationSamlFieldMapping']] saml_field_mapping: Map IdP fields
         :param pulumi.Input[_builtins.bool] saml_idp_login_allowed: Set to 'true' to enable IdP initiated login
         :param pulumi.Input[_builtins.str] saml_idp_url: SAML Idp URL
         :param pulumi.Input[_builtins.str] saml_metadata_url: SAML Metadata URL

@@ -227,7 +227,7 @@ class StaticIp(pulumi.CustomResource):
                  cloud_name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  termination_protection: pulumi.Input[Optional[_builtins.bool]] = None,
-                 timeouts: pulumi.Input[Optional[Union['StaticIpTimeoutsArgs', 'StaticIpTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['StaticIpTimeoutsArgs', 'StaticIpTimeoutsArgsDict', 'outputs.StaticIpTimeouts']]] = None,
                  __props__=None):
         """
         The StaticIp resource allows the creation and deletion of static ips. Please note that once a static ip is in the 'assigned' state it is bound to the node it is assigned to and cannot be deleted or disassociated until the node is recycled. Plans that would delete static ips that are in the assigned state will be blocked.
@@ -303,7 +303,7 @@ class StaticIp(pulumi.CustomResource):
                  cloud_name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  termination_protection: pulumi.Input[Optional[_builtins.bool]] = None,
-                 timeouts: pulumi.Input[Optional[Union['StaticIpTimeoutsArgs', 'StaticIpTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['StaticIpTimeoutsArgs', 'StaticIpTimeoutsArgsDict', 'outputs.StaticIpTimeouts']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -342,7 +342,7 @@ class StaticIp(pulumi.CustomResource):
             state: pulumi.Input[Optional[_builtins.str]] = None,
             static_ip_address_id: pulumi.Input[Optional[_builtins.str]] = None,
             termination_protection: pulumi.Input[Optional[_builtins.bool]] = None,
-            timeouts: pulumi.Input[Optional[Union['StaticIpTimeoutsArgs', 'StaticIpTimeoutsArgsDict']]] = None) -> 'StaticIp':
+            timeouts: pulumi.Input[Optional[Union['StaticIpTimeoutsArgs', 'StaticIpTimeoutsArgsDict', 'outputs.StaticIpTimeouts']]] = None) -> 'StaticIp':
         """
         Get an existing StaticIp resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

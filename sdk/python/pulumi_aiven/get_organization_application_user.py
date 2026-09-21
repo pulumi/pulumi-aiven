@@ -134,7 +134,7 @@ class AwaitableGetOrganizationApplicationUserResult(GetOrganizationApplicationUs
 
 
 def get_organization_application_user(organization_id: Optional[_builtins.str] = None,
-                                      timeouts: Optional[Union['GetOrganizationApplicationUserTimeoutsArgs', 'GetOrganizationApplicationUserTimeoutsArgsDict']] = None,
+                                      timeouts: Optional[Union['GetOrganizationApplicationUserTimeoutsArgs', 'GetOrganizationApplicationUserTimeoutsArgsDict', 'outputs.GetOrganizationApplicationUserTimeoutsResult']] = None,
                                       user_id: Optional[_builtins.str] = None,
                                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOrganizationApplicationUserResult:
     """
@@ -161,7 +161,7 @@ def get_organization_application_user(organization_id: Optional[_builtins.str] =
         timeouts=pulumi.get(__ret__, 'timeouts'),
         user_id=pulumi.get(__ret__, 'user_id'))
 def get_organization_application_user_output(organization_id: pulumi.Input[Optional[_builtins.str]] = None,
-                                             timeouts: pulumi.Input[Optional[Optional[Union['GetOrganizationApplicationUserTimeoutsArgs', 'GetOrganizationApplicationUserTimeoutsArgsDict']]]] = None,
+                                             timeouts: pulumi.Input[Optional[Optional[Union['GetOrganizationApplicationUserTimeoutsArgs', 'GetOrganizationApplicationUserTimeoutsArgsDict', 'outputs.GetOrganizationApplicationUserTimeoutsResult']]]] = None,
                                              user_id: pulumi.Input[Optional[_builtins.str]] = None,
                                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOrganizationApplicationUserResult]:
     """

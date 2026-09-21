@@ -238,12 +238,12 @@ class GovernanceAccess(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_data: pulumi.Input[Optional[Union['GovernanceAccessAccessDataArgs', 'GovernanceAccessAccessDataArgsDict']]] = None,
+                 access_data: pulumi.Input[Optional[Union['GovernanceAccessAccessDataArgs', 'GovernanceAccessAccessDataArgsDict', 'outputs.GovernanceAccessAccessData']]] = None,
                  access_name: pulumi.Input[Optional[_builtins.str]] = None,
                  access_type: pulumi.Input[Optional[_builtins.str]] = None,
                  organization_id: pulumi.Input[Optional[_builtins.str]] = None,
                  owner_user_group_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['GovernanceAccessTimeoutsArgs', 'GovernanceAccessTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['GovernanceAccessTimeoutsArgs', 'GovernanceAccessTimeoutsArgsDict', 'outputs.GovernanceAccessTimeouts']]] = None,
                  __props__=None):
         """
         Request access to an Apache Kafka topic in Aiven for Apache Kafka® Governance. [Governance](https://aiven.io/docs/products/kafka/howto/governance) helps you manage your Kafka clusters securely and efficiently through structured policies, roles, and processes. You can manage approval workflows using Terraform and GitHub Actions.
@@ -285,7 +285,7 @@ class GovernanceAccess(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['GovernanceAccessAccessDataArgs', 'GovernanceAccessAccessDataArgsDict']] access_data: access type specific data. Changing this property forces recreation of the resource.
+        :param pulumi.Input[Union['GovernanceAccessAccessDataArgs', 'GovernanceAccessAccessDataArgsDict', 'outputs.GovernanceAccessAccessData']] access_data: access type specific data. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] access_name: Label to describe the access. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] access_type: An enumeration. The possible value is `KAFKA`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] organization_id: ID of an organization. Changing this property forces recreation of the resource.
@@ -350,12 +350,12 @@ class GovernanceAccess(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_data: pulumi.Input[Optional[Union['GovernanceAccessAccessDataArgs', 'GovernanceAccessAccessDataArgsDict']]] = None,
+                 access_data: pulumi.Input[Optional[Union['GovernanceAccessAccessDataArgs', 'GovernanceAccessAccessDataArgsDict', 'outputs.GovernanceAccessAccessData']]] = None,
                  access_name: pulumi.Input[Optional[_builtins.str]] = None,
                  access_type: pulumi.Input[Optional[_builtins.str]] = None,
                  organization_id: pulumi.Input[Optional[_builtins.str]] = None,
                  owner_user_group_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['GovernanceAccessTimeoutsArgs', 'GovernanceAccessTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['GovernanceAccessTimeoutsArgs', 'GovernanceAccessTimeoutsArgsDict', 'outputs.GovernanceAccessTimeouts']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -390,13 +390,13 @@ class GovernanceAccess(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_data: pulumi.Input[Optional[Union['GovernanceAccessAccessDataArgs', 'GovernanceAccessAccessDataArgsDict']]] = None,
+            access_data: pulumi.Input[Optional[Union['GovernanceAccessAccessDataArgs', 'GovernanceAccessAccessDataArgsDict', 'outputs.GovernanceAccessAccessData']]] = None,
             access_id: pulumi.Input[Optional[_builtins.str]] = None,
             access_name: pulumi.Input[Optional[_builtins.str]] = None,
             access_type: pulumi.Input[Optional[_builtins.str]] = None,
             organization_id: pulumi.Input[Optional[_builtins.str]] = None,
             owner_user_group_id: pulumi.Input[Optional[_builtins.str]] = None,
-            timeouts: pulumi.Input[Optional[Union['GovernanceAccessTimeoutsArgs', 'GovernanceAccessTimeoutsArgsDict']]] = None) -> 'GovernanceAccess':
+            timeouts: pulumi.Input[Optional[Union['GovernanceAccessTimeoutsArgs', 'GovernanceAccessTimeoutsArgsDict', 'outputs.GovernanceAccessTimeouts']]] = None) -> 'GovernanceAccess':
         """
         Get an existing GovernanceAccess resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -404,7 +404,7 @@ class GovernanceAccess(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['GovernanceAccessAccessDataArgs', 'GovernanceAccessAccessDataArgsDict']] access_data: access type specific data. Changing this property forces recreation of the resource.
+        :param pulumi.Input[Union['GovernanceAccessAccessDataArgs', 'GovernanceAccessAccessDataArgsDict', 'outputs.GovernanceAccessAccessData']] access_data: access type specific data. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] access_id: The ID of the access.
         :param pulumi.Input[_builtins.str] access_name: Label to describe the access. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] access_type: An enumeration. The possible value is `KAFKA`. Changing this property forces recreation of the resource.

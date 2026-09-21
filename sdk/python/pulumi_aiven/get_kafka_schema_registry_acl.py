@@ -137,7 +137,7 @@ def get_kafka_schema_registry_acl(acl_id: Optional[_builtins.str] = None,
                                   project: Optional[_builtins.str] = None,
                                   resource: Optional[_builtins.str] = None,
                                   service_name: Optional[_builtins.str] = None,
-                                  timeouts: Optional[Union['GetKafkaSchemaRegistryAclTimeoutsArgs', 'GetKafkaSchemaRegistryAclTimeoutsArgsDict']] = None,
+                                  timeouts: Optional[Union['GetKafkaSchemaRegistryAclTimeoutsArgs', 'GetKafkaSchemaRegistryAclTimeoutsArgsDict', 'outputs.GetKafkaSchemaRegistryAclTimeoutsResult']] = None,
                                   username: Optional[_builtins.str] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKafkaSchemaRegistryAclResult:
     """
@@ -187,7 +187,7 @@ def get_kafka_schema_registry_acl_output(acl_id: pulumi.Input[Optional[Optional[
                                          project: pulumi.Input[Optional[_builtins.str]] = None,
                                          resource: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                          service_name: pulumi.Input[Optional[_builtins.str]] = None,
-                                         timeouts: pulumi.Input[Optional[Optional[Union['GetKafkaSchemaRegistryAclTimeoutsArgs', 'GetKafkaSchemaRegistryAclTimeoutsArgsDict']]]] = None,
+                                         timeouts: pulumi.Input[Optional[Optional[Union['GetKafkaSchemaRegistryAclTimeoutsArgs', 'GetKafkaSchemaRegistryAclTimeoutsArgsDict', 'outputs.GetKafkaSchemaRegistryAclTimeoutsResult']]]] = None,
                                          username: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKafkaSchemaRegistryAclResult]:
     """

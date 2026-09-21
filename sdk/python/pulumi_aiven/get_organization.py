@@ -111,7 +111,7 @@ class AwaitableGetOrganizationResult(GetOrganizationResult):
 
 def get_organization(id: Optional[_builtins.str] = None,
                      name: Optional[_builtins.str] = None,
-                     timeouts: Optional[Union['GetOrganizationTimeoutsArgs', 'GetOrganizationTimeoutsArgsDict']] = None,
+                     timeouts: Optional[Union['GetOrganizationTimeoutsArgs', 'GetOrganizationTimeoutsArgsDict', 'outputs.GetOrganizationTimeoutsResult']] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOrganizationResult:
     """
     Gets information about an organization.
@@ -145,7 +145,7 @@ def get_organization(id: Optional[_builtins.str] = None,
         update_time=pulumi.get(__ret__, 'update_time'))
 def get_organization_output(id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                             name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                            timeouts: pulumi.Input[Optional[Optional[Union['GetOrganizationTimeoutsArgs', 'GetOrganizationTimeoutsArgsDict']]]] = None,
+                            timeouts: pulumi.Input[Optional[Optional[Union['GetOrganizationTimeoutsArgs', 'GetOrganizationTimeoutsArgsDict', 'outputs.GetOrganizationTimeoutsResult']]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOrganizationResult]:
     """
     Gets information about an organization.

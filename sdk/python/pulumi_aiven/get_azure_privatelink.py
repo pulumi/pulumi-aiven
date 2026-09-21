@@ -147,7 +147,7 @@ class AwaitableGetAzurePrivatelinkResult(GetAzurePrivatelinkResult):
 
 def get_azure_privatelink(project: Optional[_builtins.str] = None,
                           service_name: Optional[_builtins.str] = None,
-                          timeouts: Optional[Union['GetAzurePrivatelinkTimeoutsArgs', 'GetAzurePrivatelinkTimeoutsArgsDict']] = None,
+                          timeouts: Optional[Union['GetAzurePrivatelinkTimeoutsArgs', 'GetAzurePrivatelinkTimeoutsArgsDict', 'outputs.GetAzurePrivatelinkTimeoutsResult']] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAzurePrivatelinkResult:
     """
     Gets information about an Azure Private Link connection for an Aiven service.
@@ -185,7 +185,7 @@ def get_azure_privatelink(project: Optional[_builtins.str] = None,
         user_subscription_ids=pulumi.get(__ret__, 'user_subscription_ids'))
 def get_azure_privatelink_output(project: pulumi.Input[Optional[_builtins.str]] = None,
                                  service_name: pulumi.Input[Optional[_builtins.str]] = None,
-                                 timeouts: pulumi.Input[Optional[Optional[Union['GetAzurePrivatelinkTimeoutsArgs', 'GetAzurePrivatelinkTimeoutsArgsDict']]]] = None,
+                                 timeouts: pulumi.Input[Optional[Optional[Union['GetAzurePrivatelinkTimeoutsArgs', 'GetAzurePrivatelinkTimeoutsArgsDict', 'outputs.GetAzurePrivatelinkTimeoutsResult']]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAzurePrivatelinkResult]:
     """
     Gets information about an Azure Private Link connection for an Aiven service.

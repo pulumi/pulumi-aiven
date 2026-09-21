@@ -134,7 +134,7 @@ class AwaitableGetClickhouseUserResult(GetClickhouseUserResult):
 
 def get_clickhouse_user(project: Optional[_builtins.str] = None,
                         service_name: Optional[_builtins.str] = None,
-                        timeouts: Optional[Union['GetClickhouseUserTimeoutsArgs', 'GetClickhouseUserTimeoutsArgsDict']] = None,
+                        timeouts: Optional[Union['GetClickhouseUserTimeoutsArgs', 'GetClickhouseUserTimeoutsArgsDict', 'outputs.GetClickhouseUserTimeoutsResult']] = None,
                         username: Optional[_builtins.str] = None,
                         uuid: Optional[_builtins.str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClickhouseUserResult:
@@ -178,7 +178,7 @@ def get_clickhouse_user(project: Optional[_builtins.str] = None,
         uuid=pulumi.get(__ret__, 'uuid'))
 def get_clickhouse_user_output(project: pulumi.Input[Optional[_builtins.str]] = None,
                                service_name: pulumi.Input[Optional[_builtins.str]] = None,
-                               timeouts: pulumi.Input[Optional[Optional[Union['GetClickhouseUserTimeoutsArgs', 'GetClickhouseUserTimeoutsArgsDict']]]] = None,
+                               timeouts: pulumi.Input[Optional[Optional[Union['GetClickhouseUserTimeoutsArgs', 'GetClickhouseUserTimeoutsArgsDict', 'outputs.GetClickhouseUserTimeoutsResult']]]] = None,
                                username: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                uuid: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetClickhouseUserResult]:

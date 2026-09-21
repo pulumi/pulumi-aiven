@@ -97,7 +97,7 @@ class AwaitableGetCmkAccessorOciResult(GetCmkAccessorOciResult):
 
 
 def get_cmk_accessor_oci(project: Optional[_builtins.str] = None,
-                         timeouts: Optional[Union['GetCmkAccessorOciTimeoutsArgs', 'GetCmkAccessorOciTimeoutsArgsDict']] = None,
+                         timeouts: Optional[Union['GetCmkAccessorOciTimeoutsArgs', 'GetCmkAccessorOciTimeoutsArgsDict', 'outputs.GetCmkAccessorOciTimeoutsResult']] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCmkAccessorOciResult:
     """
     Gets the OCI CMK accessor for an Aiven project. The accessor is used to authenticate Aiven to your Oracle Cloud Infrastructure (OCI) Vault.
@@ -127,7 +127,7 @@ def get_cmk_accessor_oci(project: Optional[_builtins.str] = None,
         project=pulumi.get(__ret__, 'project'),
         timeouts=pulumi.get(__ret__, 'timeouts'))
 def get_cmk_accessor_oci_output(project: pulumi.Input[Optional[_builtins.str]] = None,
-                                timeouts: pulumi.Input[Optional[Optional[Union['GetCmkAccessorOciTimeoutsArgs', 'GetCmkAccessorOciTimeoutsArgsDict']]]] = None,
+                                timeouts: pulumi.Input[Optional[Optional[Union['GetCmkAccessorOciTimeoutsArgs', 'GetCmkAccessorOciTimeoutsArgsDict', 'outputs.GetCmkAccessorOciTimeoutsResult']]]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCmkAccessorOciResult]:
     """
     Gets the OCI CMK accessor for an Aiven project. The accessor is used to authenticate Aiven to your Oracle Cloud Infrastructure (OCI) Vault.

@@ -226,7 +226,7 @@ class GcpOrgVpcPeeringConnection(pulumi.CustomResource):
                  organization_id: pulumi.Input[Optional[_builtins.str]] = None,
                  organization_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  peer_vpc: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['GcpOrgVpcPeeringConnectionTimeoutsArgs', 'GcpOrgVpcPeeringConnectionTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['GcpOrgVpcPeeringConnectionTimeoutsArgs', 'GcpOrgVpcPeeringConnectionTimeoutsArgsDict', 'outputs.GcpOrgVpcPeeringConnectionTimeouts']]] = None,
                  __props__=None):
         """
         Creates and manages a Google Cloud VPC peering connection. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
@@ -306,7 +306,7 @@ class GcpOrgVpcPeeringConnection(pulumi.CustomResource):
                  organization_id: pulumi.Input[Optional[_builtins.str]] = None,
                  organization_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  peer_vpc: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['GcpOrgVpcPeeringConnectionTimeoutsArgs', 'GcpOrgVpcPeeringConnectionTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['GcpOrgVpcPeeringConnectionTimeoutsArgs', 'GcpOrgVpcPeeringConnectionTimeoutsArgsDict', 'outputs.GcpOrgVpcPeeringConnectionTimeouts']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -347,7 +347,7 @@ class GcpOrgVpcPeeringConnection(pulumi.CustomResource):
             peer_vpc: pulumi.Input[Optional[_builtins.str]] = None,
             self_link: pulumi.Input[Optional[_builtins.str]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
-            timeouts: pulumi.Input[Optional[Union['GcpOrgVpcPeeringConnectionTimeoutsArgs', 'GcpOrgVpcPeeringConnectionTimeoutsArgsDict']]] = None) -> 'GcpOrgVpcPeeringConnection':
+            timeouts: pulumi.Input[Optional[Union['GcpOrgVpcPeeringConnectionTimeoutsArgs', 'GcpOrgVpcPeeringConnectionTimeoutsArgsDict', 'outputs.GcpOrgVpcPeeringConnectionTimeouts']]] = None) -> 'GcpOrgVpcPeeringConnection':
         """
         Get an existing GcpOrgVpcPeeringConnection resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

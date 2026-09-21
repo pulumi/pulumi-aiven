@@ -122,7 +122,7 @@ class AwaitableGetOrganizationalUnitResult(GetOrganizationalUnitResult):
 
 def get_organizational_unit(id: Optional[_builtins.str] = None,
                             name: Optional[_builtins.str] = None,
-                            timeouts: Optional[Union['GetOrganizationalUnitTimeoutsArgs', 'GetOrganizationalUnitTimeoutsArgsDict']] = None,
+                            timeouts: Optional[Union['GetOrganizationalUnitTimeoutsArgs', 'GetOrganizationalUnitTimeoutsArgsDict', 'outputs.GetOrganizationalUnitTimeoutsResult']] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOrganizationalUnitResult:
     """
     Gets information about an organizational unit.
@@ -157,7 +157,7 @@ def get_organizational_unit(id: Optional[_builtins.str] = None,
         update_time=pulumi.get(__ret__, 'update_time'))
 def get_organizational_unit_output(id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                    name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                                   timeouts: pulumi.Input[Optional[Optional[Union['GetOrganizationalUnitTimeoutsArgs', 'GetOrganizationalUnitTimeoutsArgsDict']]]] = None,
+                                   timeouts: pulumi.Input[Optional[Optional[Union['GetOrganizationalUnitTimeoutsArgs', 'GetOrganizationalUnitTimeoutsArgsDict', 'outputs.GetOrganizationalUnitTimeoutsResult']]]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOrganizationalUnitResult]:
     """
     Gets information about an organizational unit.

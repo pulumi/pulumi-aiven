@@ -280,7 +280,7 @@ def get_mirror_maker_replication_flow(project: Optional[_builtins.str] = None,
                                       service_name: Optional[_builtins.str] = None,
                                       source_cluster: Optional[_builtins.str] = None,
                                       target_cluster: Optional[_builtins.str] = None,
-                                      timeouts: Optional[Union['GetMirrorMakerReplicationFlowTimeoutsArgs', 'GetMirrorMakerReplicationFlowTimeoutsArgsDict']] = None,
+                                      timeouts: Optional[Union['GetMirrorMakerReplicationFlowTimeoutsArgs', 'GetMirrorMakerReplicationFlowTimeoutsArgsDict', 'outputs.GetMirrorMakerReplicationFlowTimeoutsResult']] = None,
                                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMirrorMakerReplicationFlowResult:
     """
     Gets information about an [Aiven for Apache Kafka® MirrorMaker 2](https://aiven.io/docs/products/kafka/kafka-mirrormaker) replication flow.
@@ -337,7 +337,7 @@ def get_mirror_maker_replication_flow_output(project: pulumi.Input[Optional[_bui
                                              service_name: pulumi.Input[Optional[_builtins.str]] = None,
                                              source_cluster: pulumi.Input[Optional[_builtins.str]] = None,
                                              target_cluster: pulumi.Input[Optional[_builtins.str]] = None,
-                                             timeouts: pulumi.Input[Optional[Optional[Union['GetMirrorMakerReplicationFlowTimeoutsArgs', 'GetMirrorMakerReplicationFlowTimeoutsArgsDict']]]] = None,
+                                             timeouts: pulumi.Input[Optional[Optional[Union['GetMirrorMakerReplicationFlowTimeoutsArgs', 'GetMirrorMakerReplicationFlowTimeoutsArgsDict', 'outputs.GetMirrorMakerReplicationFlowTimeoutsResult']]]] = None,
                                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMirrorMakerReplicationFlowResult]:
     """
     Gets information about an [Aiven for Apache Kafka® MirrorMaker 2](https://aiven.io/docs/products/kafka/kafka-mirrormaker) replication flow.

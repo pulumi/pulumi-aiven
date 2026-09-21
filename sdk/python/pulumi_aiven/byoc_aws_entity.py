@@ -526,13 +526,13 @@ class ByocAwsEntity(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cloud_provider: pulumi.Input[Optional[_builtins.str]] = None,
                  cloud_region: pulumi.Input[Optional[_builtins.str]] = None,
-                 contact_emails: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ByocAwsEntityContactEmailArgs', 'ByocAwsEntityContactEmailArgsDict']]]]] = None,
+                 contact_emails: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ByocAwsEntityContactEmailArgs', 'ByocAwsEntityContactEmailArgsDict', 'outputs.ByocAwsEntityContactEmail']]]]] = None,
                  deployment_model: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  organization_id: pulumi.Input[Optional[_builtins.str]] = None,
                  reserved_cidr: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 timeouts: pulumi.Input[Optional[Union['ByocAwsEntityTimeoutsArgs', 'ByocAwsEntityTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['ByocAwsEntityTimeoutsArgs', 'ByocAwsEntityTimeoutsArgsDict', 'outputs.ByocAwsEntityTimeouts']]] = None,
                  __props__=None):
         """
         Creates and manages a BYOC custom cloud environment on AWS.
@@ -574,7 +574,7 @@ class ByocAwsEntity(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cloud_provider: Cloud provider for the BYOC cloud. The possible values are `aws`, `azure`, `google` and `oracle`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] cloud_region: Cloud region for the BYOC cloud. Maximum length: `32`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ByocAwsEntityContactEmailArgs', 'ByocAwsEntityContactEmailArgsDict']]]] contact_emails: Email addresses for notifications and alerts for this BYOC cloud.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ByocAwsEntityContactEmailArgs', 'ByocAwsEntityContactEmailArgsDict', 'outputs.ByocAwsEntityContactEmail']]]] contact_emails: Email addresses for notifications and alerts for this BYOC cloud.
         :param pulumi.Input[_builtins.str] deployment_model: Deployment model for the BYOC cloud. The possible values are `direct_ipsec_ingress`, `hipaa`, `ipsec_ingress`, `pci_dss`, `standard` and `standard_public`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] display_name: Short name for this BYOC cloud. Maximum length: `64`.
         :param pulumi.Input[_builtins.str] organization_id: ID of an organization. Changing this property forces recreation of the resource.
@@ -640,13 +640,13 @@ class ByocAwsEntity(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cloud_provider: pulumi.Input[Optional[_builtins.str]] = None,
                  cloud_region: pulumi.Input[Optional[_builtins.str]] = None,
-                 contact_emails: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ByocAwsEntityContactEmailArgs', 'ByocAwsEntityContactEmailArgsDict']]]]] = None,
+                 contact_emails: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ByocAwsEntityContactEmailArgs', 'ByocAwsEntityContactEmailArgsDict', 'outputs.ByocAwsEntityContactEmail']]]]] = None,
                  deployment_model: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  organization_id: pulumi.Input[Optional[_builtins.str]] = None,
                  reserved_cidr: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 timeouts: pulumi.Input[Optional[Union['ByocAwsEntityTimeoutsArgs', 'ByocAwsEntityTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['ByocAwsEntityTimeoutsArgs', 'ByocAwsEntityTimeoutsArgsDict', 'outputs.ByocAwsEntityTimeouts']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -713,14 +713,14 @@ class ByocAwsEntity(pulumi.CustomResource):
             byoc_unique_name: pulumi.Input[Optional[_builtins.str]] = None,
             cloud_provider: pulumi.Input[Optional[_builtins.str]] = None,
             cloud_region: pulumi.Input[Optional[_builtins.str]] = None,
-            contact_emails: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ByocAwsEntityContactEmailArgs', 'ByocAwsEntityContactEmailArgsDict']]]]] = None,
+            contact_emails: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ByocAwsEntityContactEmailArgs', 'ByocAwsEntityContactEmailArgsDict', 'outputs.ByocAwsEntityContactEmail']]]]] = None,
             custom_cloud_environment_id: pulumi.Input[Optional[_builtins.str]] = None,
             deployment_model: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             organization_id: pulumi.Input[Optional[_builtins.str]] = None,
             reserved_cidr: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            timeouts: pulumi.Input[Optional[Union['ByocAwsEntityTimeoutsArgs', 'ByocAwsEntityTimeoutsArgsDict']]] = None,
+            timeouts: pulumi.Input[Optional[Union['ByocAwsEntityTimeoutsArgs', 'ByocAwsEntityTimeoutsArgsDict', 'outputs.ByocAwsEntityTimeouts']]] = None,
             use_customer_owned_storage: pulumi.Input[Optional[_builtins.bool]] = None) -> 'ByocAwsEntity':
         """
         Get an existing ByocAwsEntity resource's state with the given name, id, and optional extra
@@ -742,7 +742,7 @@ class ByocAwsEntity(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] byoc_unique_name: Name for all the resources created for the custom cloud environment.
         :param pulumi.Input[_builtins.str] cloud_provider: Cloud provider for the BYOC cloud. The possible values are `aws`, `azure`, `google` and `oracle`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] cloud_region: Cloud region for the BYOC cloud. Maximum length: `32`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ByocAwsEntityContactEmailArgs', 'ByocAwsEntityContactEmailArgsDict']]]] contact_emails: Email addresses for notifications and alerts for this BYOC cloud.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ByocAwsEntityContactEmailArgs', 'ByocAwsEntityContactEmailArgsDict', 'outputs.ByocAwsEntityContactEmail']]]] contact_emails: Email addresses for notifications and alerts for this BYOC cloud.
         :param pulumi.Input[_builtins.str] custom_cloud_environment_id: ID of a custom cloud environment.
         :param pulumi.Input[_builtins.str] deployment_model: Deployment model for the BYOC cloud. The possible values are `direct_ipsec_ingress`, `hipaa`, `ipsec_ingress`, `pci_dss`, `standard` and `standard_public`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] display_name: Short name for this BYOC cloud. Maximum length: `64`.

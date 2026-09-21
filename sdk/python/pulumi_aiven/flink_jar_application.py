@@ -275,7 +275,7 @@ class FlinkJarApplication(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  service_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['FlinkJarApplicationTimeoutsArgs', 'FlinkJarApplicationTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['FlinkJarApplicationTimeoutsArgs', 'FlinkJarApplicationTimeoutsArgsDict', 'outputs.FlinkJarApplicationTimeouts']]] = None,
                  __props__=None):
         """
         Creates and manages an [Aiven for Apache Flink® jar application](https://aiven.io/docs/products/flink/howto/create-jar-application). Requires the `Flink` service to have `flink_user_config.custom_code` enabled, which allows uploading and deploying custom JARs. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
@@ -357,7 +357,7 @@ class FlinkJarApplication(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  service_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['FlinkJarApplicationTimeoutsArgs', 'FlinkJarApplicationTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['FlinkJarApplicationTimeoutsArgs', 'FlinkJarApplicationTimeoutsArgsDict', 'outputs.FlinkJarApplicationTimeouts']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -393,14 +393,14 @@ class FlinkJarApplication(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             application_id: pulumi.Input[Optional[_builtins.str]] = None,
-            application_versions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FlinkJarApplicationApplicationVersionArgs', 'FlinkJarApplicationApplicationVersionArgsDict']]]]] = None,
+            application_versions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FlinkJarApplicationApplicationVersionArgs', 'FlinkJarApplicationApplicationVersionArgsDict', 'outputs.FlinkJarApplicationApplicationVersion']]]]] = None,
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
             created_by: pulumi.Input[Optional[_builtins.str]] = None,
-            current_deployments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FlinkJarApplicationCurrentDeploymentArgs', 'FlinkJarApplicationCurrentDeploymentArgsDict']]]]] = None,
+            current_deployments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FlinkJarApplicationCurrentDeploymentArgs', 'FlinkJarApplicationCurrentDeploymentArgsDict', 'outputs.FlinkJarApplicationCurrentDeployment']]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             service_name: pulumi.Input[Optional[_builtins.str]] = None,
-            timeouts: pulumi.Input[Optional[Union['FlinkJarApplicationTimeoutsArgs', 'FlinkJarApplicationTimeoutsArgsDict']]] = None,
+            timeouts: pulumi.Input[Optional[Union['FlinkJarApplicationTimeoutsArgs', 'FlinkJarApplicationTimeoutsArgsDict', 'outputs.FlinkJarApplicationTimeouts']]] = None,
             updated_at: pulumi.Input[Optional[_builtins.str]] = None,
             updated_by: pulumi.Input[Optional[_builtins.str]] = None) -> 'FlinkJarApplication':
         """
@@ -411,10 +411,10 @@ class FlinkJarApplication(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] application_id: Application ID.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['FlinkJarApplicationApplicationVersionArgs', 'FlinkJarApplicationApplicationVersionArgsDict']]]] application_versions: JarApplicationVersions.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FlinkJarApplicationApplicationVersionArgs', 'FlinkJarApplicationApplicationVersionArgsDict', 'outputs.FlinkJarApplicationApplicationVersion']]]] application_versions: JarApplicationVersions.
         :param pulumi.Input[_builtins.str] created_at: The creation timestamp of this entity in ISO 8601 format, always in UTC.
         :param pulumi.Input[_builtins.str] created_by: The creator of this entity.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['FlinkJarApplicationCurrentDeploymentArgs', 'FlinkJarApplicationCurrentDeploymentArgsDict']]]] current_deployments: Flink JarApplicationDeployment.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FlinkJarApplicationCurrentDeploymentArgs', 'FlinkJarApplicationCurrentDeploymentArgsDict', 'outputs.FlinkJarApplicationCurrentDeployment']]]] current_deployments: Flink JarApplicationDeployment.
         :param pulumi.Input[_builtins.str] name: Application name. Maximum length: `128`.
         :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] service_name: Service name. Changing this property forces recreation of the resource.

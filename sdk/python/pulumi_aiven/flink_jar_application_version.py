@@ -414,7 +414,7 @@ class FlinkJarApplicationVersion(pulumi.CustomResource):
             application_version_id: pulumi.Input[Optional[_builtins.str]] = None,
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
             created_by: pulumi.Input[Optional[_builtins.str]] = None,
-            file_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FlinkJarApplicationVersionFileInfoArgs', 'FlinkJarApplicationVersionFileInfoArgsDict']]]]] = None,
+            file_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FlinkJarApplicationVersionFileInfoArgs', 'FlinkJarApplicationVersionFileInfoArgsDict', 'outputs.FlinkJarApplicationVersionFileInfo']]]]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             service_name: pulumi.Input[Optional[_builtins.str]] = None,
             source: pulumi.Input[Optional[_builtins.str]] = None,
@@ -431,7 +431,7 @@ class FlinkJarApplicationVersion(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] application_version_id: ApplicationVersion ID.
         :param pulumi.Input[_builtins.str] created_at: The creation timestamp of this entity in ISO 8601 format, always in UTC.
         :param pulumi.Input[_builtins.str] created_by: The creator of this entity.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['FlinkJarApplicationVersionFileInfoArgs', 'FlinkJarApplicationVersionFileInfoArgsDict']]]] file_infos: Flink JarApplicationVersion FileInfo.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FlinkJarApplicationVersionFileInfoArgs', 'FlinkJarApplicationVersionFileInfoArgsDict', 'outputs.FlinkJarApplicationVersionFileInfo']]]] file_infos: Flink JarApplicationVersion FileInfo.
         :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] service_name: Service name. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] source: The path to the jar file to upload.

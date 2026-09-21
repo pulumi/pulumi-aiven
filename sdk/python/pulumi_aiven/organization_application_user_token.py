@@ -454,7 +454,7 @@ class OrganizationApplicationUserToken(pulumi.CustomResource):
                  max_age_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  organization_id: pulumi.Input[Optional[_builtins.str]] = None,
                  scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 timeouts: pulumi.Input[Optional[Union['OrganizationApplicationUserTokenTimeoutsArgs', 'OrganizationApplicationUserTokenTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['OrganizationApplicationUserTokenTimeoutsArgs', 'OrganizationApplicationUserTokenTimeoutsArgsDict', 'outputs.OrganizationApplicationUserTokenTimeouts']]] = None,
                  user_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -552,7 +552,7 @@ class OrganizationApplicationUserToken(pulumi.CustomResource):
                  max_age_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  organization_id: pulumi.Input[Optional[_builtins.str]] = None,
                  scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 timeouts: pulumi.Input[Optional[Union['OrganizationApplicationUserTokenTimeoutsArgs', 'OrganizationApplicationUserTokenTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['OrganizationApplicationUserTokenTimeoutsArgs', 'OrganizationApplicationUserTokenTimeoutsArgsDict', 'outputs.OrganizationApplicationUserTokenTimeouts']]] = None,
                  user_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -612,7 +612,7 @@ class OrganizationApplicationUserToken(pulumi.CustomResource):
             max_age_seconds: pulumi.Input[Optional[_builtins.int]] = None,
             organization_id: pulumi.Input[Optional[_builtins.str]] = None,
             scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            timeouts: pulumi.Input[Optional[Union['OrganizationApplicationUserTokenTimeoutsArgs', 'OrganizationApplicationUserTokenTimeoutsArgsDict']]] = None,
+            timeouts: pulumi.Input[Optional[Union['OrganizationApplicationUserTokenTimeoutsArgs', 'OrganizationApplicationUserTokenTimeoutsArgsDict', 'outputs.OrganizationApplicationUserTokenTimeouts']]] = None,
             token_prefix: pulumi.Input[Optional[_builtins.str]] = None,
             user_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'OrganizationApplicationUserToken':
         """

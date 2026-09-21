@@ -85,8 +85,8 @@ class AwaitableGetOrganizationPaymentMethodListResult(GetOrganizationPaymentMeth
 
 
 def get_organization_payment_method_list(organization_id: Optional[_builtins.str] = None,
-                                         payment_methods: Optional[Sequence[Union['GetOrganizationPaymentMethodListPaymentMethodArgs', 'GetOrganizationPaymentMethodListPaymentMethodArgsDict']]] = None,
-                                         timeouts: Optional[Union['GetOrganizationPaymentMethodListTimeoutsArgs', 'GetOrganizationPaymentMethodListTimeoutsArgsDict']] = None,
+                                         payment_methods: Optional[Sequence[Union['GetOrganizationPaymentMethodListPaymentMethodArgs', 'GetOrganizationPaymentMethodListPaymentMethodArgsDict', 'outputs.GetOrganizationPaymentMethodListPaymentMethodResult']]] = None,
+                                         timeouts: Optional[Union['GetOrganizationPaymentMethodListTimeoutsArgs', 'GetOrganizationPaymentMethodListTimeoutsArgsDict', 'outputs.GetOrganizationPaymentMethodListTimeoutsResult']] = None,
                                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOrganizationPaymentMethodListResult:
     """
     Lists payment methods for an organization.
@@ -102,7 +102,7 @@ def get_organization_payment_method_list(organization_id: Optional[_builtins.str
 
 
     :param _builtins.str organization_id: ID of an organization.
-    :param Sequence[Union['GetOrganizationPaymentMethodListPaymentMethodArgs', 'GetOrganizationPaymentMethodListPaymentMethodArgsDict']] payment_methods: Payment Methods.
+    :param Sequence[Union['GetOrganizationPaymentMethodListPaymentMethodArgs', 'GetOrganizationPaymentMethodListPaymentMethodArgsDict', 'outputs.GetOrganizationPaymentMethodListPaymentMethodResult']] payment_methods: Payment Methods.
     """
     __args__ = dict()
     __args__['organizationId'] = organization_id
@@ -117,8 +117,8 @@ def get_organization_payment_method_list(organization_id: Optional[_builtins.str
         payment_methods=pulumi.get(__ret__, 'payment_methods'),
         timeouts=pulumi.get(__ret__, 'timeouts'))
 def get_organization_payment_method_list_output(organization_id: pulumi.Input[Optional[_builtins.str]] = None,
-                                                payment_methods: pulumi.Input[Optional[Optional[Sequence[Union['GetOrganizationPaymentMethodListPaymentMethodArgs', 'GetOrganizationPaymentMethodListPaymentMethodArgsDict']]]]] = None,
-                                                timeouts: pulumi.Input[Optional[Optional[Union['GetOrganizationPaymentMethodListTimeoutsArgs', 'GetOrganizationPaymentMethodListTimeoutsArgsDict']]]] = None,
+                                                payment_methods: pulumi.Input[Optional[Optional[Sequence[Union['GetOrganizationPaymentMethodListPaymentMethodArgs', 'GetOrganizationPaymentMethodListPaymentMethodArgsDict', 'outputs.GetOrganizationPaymentMethodListPaymentMethodResult']]]]] = None,
+                                                timeouts: pulumi.Input[Optional[Optional[Union['GetOrganizationPaymentMethodListTimeoutsArgs', 'GetOrganizationPaymentMethodListTimeoutsArgsDict', 'outputs.GetOrganizationPaymentMethodListTimeoutsResult']]]] = None,
                                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOrganizationPaymentMethodListResult]:
     """
     Lists payment methods for an organization.
@@ -134,7 +134,7 @@ def get_organization_payment_method_list_output(organization_id: pulumi.Input[Op
 
 
     :param _builtins.str organization_id: ID of an organization.
-    :param Sequence[Union['GetOrganizationPaymentMethodListPaymentMethodArgs', 'GetOrganizationPaymentMethodListPaymentMethodArgsDict']] payment_methods: Payment Methods.
+    :param Sequence[Union['GetOrganizationPaymentMethodListPaymentMethodArgs', 'GetOrganizationPaymentMethodListPaymentMethodArgsDict', 'outputs.GetOrganizationPaymentMethodListPaymentMethodResult']] payment_methods: Payment Methods.
     """
     __args__ = dict()
     __args__['organizationId'] = organization_id

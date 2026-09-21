@@ -204,7 +204,7 @@ class ClickhouseDatabase(pulumi.CustomResource):
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  service_name: pulumi.Input[Optional[_builtins.str]] = None,
                  termination_protection: pulumi.Input[Optional[_builtins.bool]] = None,
-                 timeouts: pulumi.Input[Optional[Union['ClickhouseDatabaseTimeoutsArgs', 'ClickhouseDatabaseTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['ClickhouseDatabaseTimeoutsArgs', 'ClickhouseDatabaseTimeoutsArgsDict', 'outputs.ClickhouseDatabaseTimeouts']]] = None,
                  __props__=None):
         """
         Creates and manages an [Aiven for ClickHouse](https://aiven.io/docs/products/clickhouse) database. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
@@ -286,7 +286,7 @@ class ClickhouseDatabase(pulumi.CustomResource):
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  service_name: pulumi.Input[Optional[_builtins.str]] = None,
                  termination_protection: pulumi.Input[Optional[_builtins.bool]] = None,
-                 timeouts: pulumi.Input[Optional[Union['ClickhouseDatabaseTimeoutsArgs', 'ClickhouseDatabaseTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['ClickhouseDatabaseTimeoutsArgs', 'ClickhouseDatabaseTimeoutsArgsDict', 'outputs.ClickhouseDatabaseTimeouts']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -319,7 +319,7 @@ class ClickhouseDatabase(pulumi.CustomResource):
             project: pulumi.Input[Optional[_builtins.str]] = None,
             service_name: pulumi.Input[Optional[_builtins.str]] = None,
             termination_protection: pulumi.Input[Optional[_builtins.bool]] = None,
-            timeouts: pulumi.Input[Optional[Union['ClickhouseDatabaseTimeoutsArgs', 'ClickhouseDatabaseTimeoutsArgsDict']]] = None) -> 'ClickhouseDatabase':
+            timeouts: pulumi.Input[Optional[Union['ClickhouseDatabaseTimeoutsArgs', 'ClickhouseDatabaseTimeoutsArgsDict', 'outputs.ClickhouseDatabaseTimeouts']]] = None) -> 'ClickhouseDatabase':
         """
         Get an existing ClickhouseDatabase resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

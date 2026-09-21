@@ -328,7 +328,7 @@ class KafkaUser(pulumi.CustomResource):
                  password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  service_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['KafkaUserTimeoutsArgs', 'KafkaUserTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['KafkaUserTimeoutsArgs', 'KafkaUserTimeoutsArgsDict', 'outputs.KafkaUserTimeouts']]] = None,
                  username: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -415,7 +415,7 @@ class KafkaUser(pulumi.CustomResource):
                  password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  service_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['KafkaUserTimeoutsArgs', 'KafkaUserTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['KafkaUserTimeoutsArgs', 'KafkaUserTimeoutsArgsDict', 'outputs.KafkaUserTimeouts']]] = None,
                  username: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -463,7 +463,7 @@ class KafkaUser(pulumi.CustomResource):
             password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             service_name: pulumi.Input[Optional[_builtins.str]] = None,
-            timeouts: pulumi.Input[Optional[Union['KafkaUserTimeoutsArgs', 'KafkaUserTimeoutsArgsDict']]] = None,
+            timeouts: pulumi.Input[Optional[Union['KafkaUserTimeoutsArgs', 'KafkaUserTimeoutsArgsDict', 'outputs.KafkaUserTimeouts']]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None,
             username: pulumi.Input[Optional[_builtins.str]] = None) -> 'KafkaUser':
         """

@@ -274,7 +274,7 @@ class AwsOrgVpcPeeringConnection(pulumi.CustomResource):
                  aws_vpc_region: pulumi.Input[Optional[_builtins.str]] = None,
                  organization_id: pulumi.Input[Optional[_builtins.str]] = None,
                  organization_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['AwsOrgVpcPeeringConnectionTimeoutsArgs', 'AwsOrgVpcPeeringConnectionTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['AwsOrgVpcPeeringConnectionTimeoutsArgs', 'AwsOrgVpcPeeringConnectionTimeoutsArgsDict', 'outputs.AwsOrgVpcPeeringConnectionTimeouts']]] = None,
                  __props__=None):
         """
         Creates and manages an AWS VPC peering connection with an Aiven Organization VPC. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
@@ -358,7 +358,7 @@ class AwsOrgVpcPeeringConnection(pulumi.CustomResource):
                  aws_vpc_region: pulumi.Input[Optional[_builtins.str]] = None,
                  organization_id: pulumi.Input[Optional[_builtins.str]] = None,
                  organization_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['AwsOrgVpcPeeringConnectionTimeoutsArgs', 'AwsOrgVpcPeeringConnectionTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['AwsOrgVpcPeeringConnectionTimeoutsArgs', 'AwsOrgVpcPeeringConnectionTimeoutsArgsDict', 'outputs.AwsOrgVpcPeeringConnectionTimeouts']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -405,7 +405,7 @@ class AwsOrgVpcPeeringConnection(pulumi.CustomResource):
             organization_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
             peering_connection_id: pulumi.Input[Optional[_builtins.str]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
-            timeouts: pulumi.Input[Optional[Union['AwsOrgVpcPeeringConnectionTimeoutsArgs', 'AwsOrgVpcPeeringConnectionTimeoutsArgsDict']]] = None) -> 'AwsOrgVpcPeeringConnection':
+            timeouts: pulumi.Input[Optional[Union['AwsOrgVpcPeeringConnectionTimeoutsArgs', 'AwsOrgVpcPeeringConnectionTimeoutsArgsDict', 'outputs.AwsOrgVpcPeeringConnectionTimeouts']]] = None) -> 'AwsOrgVpcPeeringConnection':
         """
         Get an existing AwsOrgVpcPeeringConnection resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

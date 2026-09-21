@@ -172,7 +172,7 @@ def get_azure_org_vpc_peering_connection(azure_subscription_id: Optional[_builti
                                          organization_id: Optional[_builtins.str] = None,
                                          organization_vpc_id: Optional[_builtins.str] = None,
                                          peer_resource_group: Optional[_builtins.str] = None,
-                                         timeouts: Optional[Union['GetAzureOrgVpcPeeringConnectionTimeoutsArgs', 'GetAzureOrgVpcPeeringConnectionTimeoutsArgsDict']] = None,
+                                         timeouts: Optional[Union['GetAzureOrgVpcPeeringConnectionTimeoutsArgs', 'GetAzureOrgVpcPeeringConnectionTimeoutsArgsDict', 'outputs.GetAzureOrgVpcPeeringConnectionTimeoutsResult']] = None,
                                          vnet_name: Optional[_builtins.str] = None,
                                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAzureOrgVpcPeeringConnectionResult:
     """
@@ -224,7 +224,7 @@ def get_azure_org_vpc_peering_connection_output(azure_subscription_id: pulumi.In
                                                 organization_id: pulumi.Input[Optional[_builtins.str]] = None,
                                                 organization_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                                                 peer_resource_group: pulumi.Input[Optional[_builtins.str]] = None,
-                                                timeouts: pulumi.Input[Optional[Optional[Union['GetAzureOrgVpcPeeringConnectionTimeoutsArgs', 'GetAzureOrgVpcPeeringConnectionTimeoutsArgsDict']]]] = None,
+                                                timeouts: pulumi.Input[Optional[Optional[Union['GetAzureOrgVpcPeeringConnectionTimeoutsArgs', 'GetAzureOrgVpcPeeringConnectionTimeoutsArgsDict', 'outputs.GetAzureOrgVpcPeeringConnectionTimeoutsResult']]]] = None,
                                                 vnet_name: pulumi.Input[Optional[_builtins.str]] = None,
                                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAzureOrgVpcPeeringConnectionResult]:
     """

@@ -151,7 +151,7 @@ class Organization(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['OrganizationTimeoutsArgs', 'OrganizationTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['OrganizationTimeoutsArgs', 'OrganizationTimeoutsArgsDict', 'outputs.OrganizationTimeouts']]] = None,
                  __props__=None):
         """
         Creates and manages an [organization](https://aiven.io/docs/platform/concepts/orgs-units-projects).
@@ -217,7 +217,7 @@ class Organization(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['OrganizationTimeoutsArgs', 'OrganizationTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['OrganizationTimeoutsArgs', 'OrganizationTimeoutsArgsDict', 'outputs.OrganizationTimeouts']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -245,7 +245,7 @@ class Organization(pulumi.CustomResource):
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
-            timeouts: pulumi.Input[Optional[Union['OrganizationTimeoutsArgs', 'OrganizationTimeoutsArgsDict']]] = None,
+            timeouts: pulumi.Input[Optional[Union['OrganizationTimeoutsArgs', 'OrganizationTimeoutsArgsDict', 'outputs.OrganizationTimeouts']]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'Organization':
         """
         Get an existing Organization resource's state with the given name, id, and optional extra

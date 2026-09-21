@@ -136,7 +136,7 @@ class AwaitableGetPgDatabaseResult(GetPgDatabaseResult):
 def get_pg_database(database_name: Optional[_builtins.str] = None,
                     project: Optional[_builtins.str] = None,
                     service_name: Optional[_builtins.str] = None,
-                    timeouts: Optional[Union['GetPgDatabaseTimeoutsArgs', 'GetPgDatabaseTimeoutsArgsDict']] = None,
+                    timeouts: Optional[Union['GetPgDatabaseTimeoutsArgs', 'GetPgDatabaseTimeoutsArgsDict', 'outputs.GetPgDatabaseTimeoutsResult']] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPgDatabaseResult:
     """
     Gets information about an Aiven for PostgreSQL® database.
@@ -177,7 +177,7 @@ def get_pg_database(database_name: Optional[_builtins.str] = None,
 def get_pg_database_output(database_name: pulumi.Input[Optional[_builtins.str]] = None,
                            project: pulumi.Input[Optional[_builtins.str]] = None,
                            service_name: pulumi.Input[Optional[_builtins.str]] = None,
-                           timeouts: pulumi.Input[Optional[Optional[Union['GetPgDatabaseTimeoutsArgs', 'GetPgDatabaseTimeoutsArgsDict']]]] = None,
+                           timeouts: pulumi.Input[Optional[Optional[Union['GetPgDatabaseTimeoutsArgs', 'GetPgDatabaseTimeoutsArgsDict', 'outputs.GetPgDatabaseTimeoutsResult']]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPgDatabaseResult]:
     """
     Gets information about an Aiven for PostgreSQL® database.

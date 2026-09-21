@@ -389,15 +389,15 @@ class KafkaTopic(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: pulumi.Input[Optional[Union['KafkaTopicConfigArgs', 'KafkaTopicConfigArgsDict']]] = None,
+                 config: pulumi.Input[Optional[Union['KafkaTopicConfigArgs', 'KafkaTopicConfigArgsDict', 'outputs.KafkaTopicConfig']]] = None,
                  owner_user_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  partitions: pulumi.Input[Optional[_builtins.int]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  replication: pulumi.Input[Optional[_builtins.int]] = None,
                  service_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KafkaTopicTagArgs', 'KafkaTopicTagArgsDict']]]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KafkaTopicTagArgs', 'KafkaTopicTagArgsDict', 'outputs.KafkaTopicTag']]]]] = None,
                  termination_protection: pulumi.Input[Optional[_builtins.bool]] = None,
-                 timeouts: pulumi.Input[Optional[Union['KafkaTopicTimeoutsArgs', 'KafkaTopicTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['KafkaTopicTimeoutsArgs', 'KafkaTopicTimeoutsArgsDict', 'outputs.KafkaTopicTimeouts']]] = None,
                  topic_description: pulumi.Input[Optional[_builtins.str]] = None,
                  topic_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -465,13 +465,13 @@ class KafkaTopic(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['KafkaTopicConfigArgs', 'KafkaTopicConfigArgsDict']] config: [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics. Removing the block won't reset the topic configuration to default values. Instead, the topic will retain its last known configuration.
+        :param pulumi.Input[Union['KafkaTopicConfigArgs', 'KafkaTopicConfigArgsDict', 'outputs.KafkaTopicConfig']] config: [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics. Removing the block won't reset the topic configuration to default values. Instead, the topic will retain its last known configuration.
         :param pulumi.Input[_builtins.str] owner_user_group_id: The user group that owns this topic. Length must be between `1` and `36`.
         :param pulumi.Input[_builtins.int] partitions: Number of partitions. Value must be between `1` and `1000000`.
         :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.int] replication: Number of replicas. Minimum value: `1`.
         :param pulumi.Input[_builtins.str] service_name: Service name. Changing this property forces recreation of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['KafkaTopicTagArgs', 'KafkaTopicTagArgsDict']]]] tags: Topic tags.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['KafkaTopicTagArgs', 'KafkaTopicTagArgsDict', 'outputs.KafkaTopicTag']]]] tags: Topic tags.
         :param pulumi.Input[_builtins.bool] termination_protection: Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console**. The default value is `false`. **Deprecated**: Instead, use `prevent_destroy`
         :param pulumi.Input[_builtins.str] topic_description: Topic description. Length must be between `1` and `256`.
         :param pulumi.Input[_builtins.str] topic_name: Kafka topic name. Length must be between `1` and `249`. Changing this property forces recreation of the resource.
@@ -559,15 +559,15 @@ class KafkaTopic(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: pulumi.Input[Optional[Union['KafkaTopicConfigArgs', 'KafkaTopicConfigArgsDict']]] = None,
+                 config: pulumi.Input[Optional[Union['KafkaTopicConfigArgs', 'KafkaTopicConfigArgsDict', 'outputs.KafkaTopicConfig']]] = None,
                  owner_user_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  partitions: pulumi.Input[Optional[_builtins.int]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  replication: pulumi.Input[Optional[_builtins.int]] = None,
                  service_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KafkaTopicTagArgs', 'KafkaTopicTagArgsDict']]]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KafkaTopicTagArgs', 'KafkaTopicTagArgsDict', 'outputs.KafkaTopicTag']]]]] = None,
                  termination_protection: pulumi.Input[Optional[_builtins.bool]] = None,
-                 timeouts: pulumi.Input[Optional[Union['KafkaTopicTimeoutsArgs', 'KafkaTopicTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['KafkaTopicTimeoutsArgs', 'KafkaTopicTimeoutsArgsDict', 'outputs.KafkaTopicTimeouts']]] = None,
                  topic_description: pulumi.Input[Optional[_builtins.str]] = None,
                  topic_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -610,15 +610,15 @@ class KafkaTopic(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            config: pulumi.Input[Optional[Union['KafkaTopicConfigArgs', 'KafkaTopicConfigArgsDict']]] = None,
+            config: pulumi.Input[Optional[Union['KafkaTopicConfigArgs', 'KafkaTopicConfigArgsDict', 'outputs.KafkaTopicConfig']]] = None,
             owner_user_group_id: pulumi.Input[Optional[_builtins.str]] = None,
             partitions: pulumi.Input[Optional[_builtins.int]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             replication: pulumi.Input[Optional[_builtins.int]] = None,
             service_name: pulumi.Input[Optional[_builtins.str]] = None,
-            tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KafkaTopicTagArgs', 'KafkaTopicTagArgsDict']]]]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KafkaTopicTagArgs', 'KafkaTopicTagArgsDict', 'outputs.KafkaTopicTag']]]]] = None,
             termination_protection: pulumi.Input[Optional[_builtins.bool]] = None,
-            timeouts: pulumi.Input[Optional[Union['KafkaTopicTimeoutsArgs', 'KafkaTopicTimeoutsArgsDict']]] = None,
+            timeouts: pulumi.Input[Optional[Union['KafkaTopicTimeoutsArgs', 'KafkaTopicTimeoutsArgsDict', 'outputs.KafkaTopicTimeouts']]] = None,
             topic_description: pulumi.Input[Optional[_builtins.str]] = None,
             topic_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'KafkaTopic':
         """
@@ -628,13 +628,13 @@ class KafkaTopic(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['KafkaTopicConfigArgs', 'KafkaTopicConfigArgsDict']] config: [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics. Removing the block won't reset the topic configuration to default values. Instead, the topic will retain its last known configuration.
+        :param pulumi.Input[Union['KafkaTopicConfigArgs', 'KafkaTopicConfigArgsDict', 'outputs.KafkaTopicConfig']] config: [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics. Removing the block won't reset the topic configuration to default values. Instead, the topic will retain its last known configuration.
         :param pulumi.Input[_builtins.str] owner_user_group_id: The user group that owns this topic. Length must be between `1` and `36`.
         :param pulumi.Input[_builtins.int] partitions: Number of partitions. Value must be between `1` and `1000000`.
         :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.int] replication: Number of replicas. Minimum value: `1`.
         :param pulumi.Input[_builtins.str] service_name: Service name. Changing this property forces recreation of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['KafkaTopicTagArgs', 'KafkaTopicTagArgsDict']]]] tags: Topic tags.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['KafkaTopicTagArgs', 'KafkaTopicTagArgsDict', 'outputs.KafkaTopicTag']]]] tags: Topic tags.
         :param pulumi.Input[_builtins.bool] termination_protection: Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console**. The default value is `false`. **Deprecated**: Instead, use `prevent_destroy`
         :param pulumi.Input[_builtins.str] topic_description: Topic description. Length must be between `1` and `256`.
         :param pulumi.Input[_builtins.str] topic_name: Kafka topic name. Length must be between `1` and `249`. Changing this property forces recreation of the resource.

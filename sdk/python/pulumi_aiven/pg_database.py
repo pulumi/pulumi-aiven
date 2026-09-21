@@ -269,7 +269,7 @@ class PgDatabase(pulumi.CustomResource):
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  service_name: pulumi.Input[Optional[_builtins.str]] = None,
                  termination_protection: pulumi.Input[Optional[_builtins.bool]] = None,
-                 timeouts: pulumi.Input[Optional[Union['PgDatabaseTimeoutsArgs', 'PgDatabaseTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['PgDatabaseTimeoutsArgs', 'PgDatabaseTimeoutsArgsDict', 'outputs.PgDatabaseTimeouts']]] = None,
                  __props__=None):
         """
         Creates and manages an [Aiven for PostgreSQL®](https://aiven.io/docs/products/postgresql) database. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
@@ -355,7 +355,7 @@ class PgDatabase(pulumi.CustomResource):
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  service_name: pulumi.Input[Optional[_builtins.str]] = None,
                  termination_protection: pulumi.Input[Optional[_builtins.bool]] = None,
-                 timeouts: pulumi.Input[Optional[Union['PgDatabaseTimeoutsArgs', 'PgDatabaseTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['PgDatabaseTimeoutsArgs', 'PgDatabaseTimeoutsArgsDict', 'outputs.PgDatabaseTimeouts']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -394,7 +394,7 @@ class PgDatabase(pulumi.CustomResource):
             project: pulumi.Input[Optional[_builtins.str]] = None,
             service_name: pulumi.Input[Optional[_builtins.str]] = None,
             termination_protection: pulumi.Input[Optional[_builtins.bool]] = None,
-            timeouts: pulumi.Input[Optional[Union['PgDatabaseTimeoutsArgs', 'PgDatabaseTimeoutsArgsDict']]] = None) -> 'PgDatabase':
+            timeouts: pulumi.Input[Optional[Union['PgDatabaseTimeoutsArgs', 'PgDatabaseTimeoutsArgsDict', 'outputs.PgDatabaseTimeouts']]] = None) -> 'PgDatabase':
         """
         Get an existing PgDatabase resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

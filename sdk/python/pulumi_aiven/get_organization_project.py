@@ -158,8 +158,8 @@ class AwaitableGetOrganizationProjectResult(GetOrganizationProjectResult):
 
 def get_organization_project(organization_id: Optional[_builtins.str] = None,
                              project_id: Optional[_builtins.str] = None,
-                             tags: Optional[Sequence[Union['GetOrganizationProjectTagArgs', 'GetOrganizationProjectTagArgsDict']]] = None,
-                             timeouts: Optional[Union['GetOrganizationProjectTimeoutsArgs', 'GetOrganizationProjectTimeoutsArgsDict']] = None,
+                             tags: Optional[Sequence[Union['GetOrganizationProjectTagArgs', 'GetOrganizationProjectTagArgsDict', 'outputs.GetOrganizationProjectTagResult']]] = None,
+                             timeouts: Optional[Union['GetOrganizationProjectTimeoutsArgs', 'GetOrganizationProjectTimeoutsArgsDict', 'outputs.GetOrganizationProjectTimeoutsResult']] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOrganizationProjectResult:
     """
     Gets information about an Aiven project.
@@ -177,7 +177,7 @@ def get_organization_project(organization_id: Optional[_builtins.str] = None,
 
     :param _builtins.str organization_id: ID of an organization.
     :param _builtins.str project_id: The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It's recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource.
-    :param Sequence[Union['GetOrganizationProjectTagArgs', 'GetOrganizationProjectTagArgsDict']] tags: Tags are key-value pairs that allow you to categorize projects.
+    :param Sequence[Union['GetOrganizationProjectTagArgs', 'GetOrganizationProjectTagArgsDict', 'outputs.GetOrganizationProjectTagResult']] tags: Tags are key-value pairs that allow you to categorize projects.
     """
     __args__ = dict()
     __args__['organizationId'] = organization_id
@@ -200,8 +200,8 @@ def get_organization_project(organization_id: Optional[_builtins.str] = None,
         timeouts=pulumi.get(__ret__, 'timeouts'))
 def get_organization_project_output(organization_id: pulumi.Input[Optional[_builtins.str]] = None,
                                     project_id: pulumi.Input[Optional[_builtins.str]] = None,
-                                    tags: pulumi.Input[Optional[Optional[Sequence[Union['GetOrganizationProjectTagArgs', 'GetOrganizationProjectTagArgsDict']]]]] = None,
-                                    timeouts: pulumi.Input[Optional[Optional[Union['GetOrganizationProjectTimeoutsArgs', 'GetOrganizationProjectTimeoutsArgsDict']]]] = None,
+                                    tags: pulumi.Input[Optional[Optional[Sequence[Union['GetOrganizationProjectTagArgs', 'GetOrganizationProjectTagArgsDict', 'outputs.GetOrganizationProjectTagResult']]]]] = None,
+                                    timeouts: pulumi.Input[Optional[Optional[Union['GetOrganizationProjectTimeoutsArgs', 'GetOrganizationProjectTimeoutsArgsDict', 'outputs.GetOrganizationProjectTimeoutsResult']]]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOrganizationProjectResult]:
     """
     Gets information about an Aiven project.
@@ -219,7 +219,7 @@ def get_organization_project_output(organization_id: pulumi.Input[Optional[_buil
 
     :param _builtins.str organization_id: ID of an organization.
     :param _builtins.str project_id: The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It's recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource.
-    :param Sequence[Union['GetOrganizationProjectTagArgs', 'GetOrganizationProjectTagArgsDict']] tags: Tags are key-value pairs that allow you to categorize projects.
+    :param Sequence[Union['GetOrganizationProjectTagArgs', 'GetOrganizationProjectTagArgsDict', 'outputs.GetOrganizationProjectTagResult']] tags: Tags are key-value pairs that allow you to categorize projects.
     """
     __args__ = dict()
     __args__['organizationId'] = organization_id

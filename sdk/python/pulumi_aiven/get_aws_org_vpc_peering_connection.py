@@ -161,7 +161,7 @@ def get_aws_org_vpc_peering_connection(aws_account_id: Optional[_builtins.str] =
                                        aws_vpc_region: Optional[_builtins.str] = None,
                                        organization_id: Optional[_builtins.str] = None,
                                        organization_vpc_id: Optional[_builtins.str] = None,
-                                       timeouts: Optional[Union['GetAwsOrgVpcPeeringConnectionTimeoutsArgs', 'GetAwsOrgVpcPeeringConnectionTimeoutsArgsDict']] = None,
+                                       timeouts: Optional[Union['GetAwsOrgVpcPeeringConnectionTimeoutsArgs', 'GetAwsOrgVpcPeeringConnectionTimeoutsArgsDict', 'outputs.GetAwsOrgVpcPeeringConnectionTimeoutsResult']] = None,
                                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAwsOrgVpcPeeringConnectionResult:
     """
     Gets information about an AWS VPC peering connection.
@@ -212,7 +212,7 @@ def get_aws_org_vpc_peering_connection_output(aws_account_id: pulumi.Input[Optio
                                               aws_vpc_region: pulumi.Input[Optional[_builtins.str]] = None,
                                               organization_id: pulumi.Input[Optional[_builtins.str]] = None,
                                               organization_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
-                                              timeouts: pulumi.Input[Optional[Optional[Union['GetAwsOrgVpcPeeringConnectionTimeoutsArgs', 'GetAwsOrgVpcPeeringConnectionTimeoutsArgsDict']]]] = None,
+                                              timeouts: pulumi.Input[Optional[Optional[Union['GetAwsOrgVpcPeeringConnectionTimeoutsArgs', 'GetAwsOrgVpcPeeringConnectionTimeoutsArgsDict', 'outputs.GetAwsOrgVpcPeeringConnectionTimeoutsResult']]]] = None,
                                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAwsOrgVpcPeeringConnectionResult]:
     """
     Gets information about an AWS VPC peering connection.

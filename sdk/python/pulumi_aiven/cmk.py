@@ -259,7 +259,7 @@ class Cmk(pulumi.CustomResource):
                  default_cmk: pulumi.Input[Optional[_builtins.bool]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  resource: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['CmkTimeoutsArgs', 'CmkTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['CmkTimeoutsArgs', 'CmkTimeoutsArgsDict', 'outputs.CmkTimeouts']]] = None,
                  __props__=None):
         """
         Creates and manages [customer managed keys](https://aiven.io/docs/platform/howto/bring-your-own-key) (CMKs) for encrypting service data. Use your own CMKs from your cloud provider's key management service (KMS) to encrypt data for all services in an Aiven project. This gives you complete control over your encryption keys, meaning you can independently manage the key lifecycle and access policies.
@@ -345,7 +345,7 @@ class Cmk(pulumi.CustomResource):
                  default_cmk: pulumi.Input[Optional[_builtins.bool]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  resource: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['CmkTimeoutsArgs', 'CmkTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['CmkTimeoutsArgs', 'CmkTimeoutsArgsDict', 'outputs.CmkTimeouts']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -387,7 +387,7 @@ class Cmk(pulumi.CustomResource):
             project: pulumi.Input[Optional[_builtins.str]] = None,
             resource: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
-            timeouts: pulumi.Input[Optional[Union['CmkTimeoutsArgs', 'CmkTimeoutsArgsDict']]] = None,
+            timeouts: pulumi.Input[Optional[Union['CmkTimeoutsArgs', 'CmkTimeoutsArgsDict', 'outputs.CmkTimeouts']]] = None,
             updated_at: pulumi.Input[Optional[_builtins.str]] = None) -> 'Cmk':
         """
         Get an existing Cmk resource's state with the given name, id, and optional extra

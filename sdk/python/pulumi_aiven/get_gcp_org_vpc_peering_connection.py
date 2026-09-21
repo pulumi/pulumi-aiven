@@ -136,7 +136,7 @@ def get_gcp_org_vpc_peering_connection(gcp_project_id: Optional[_builtins.str] =
                                        organization_id: Optional[_builtins.str] = None,
                                        organization_vpc_id: Optional[_builtins.str] = None,
                                        peer_vpc: Optional[_builtins.str] = None,
-                                       timeouts: Optional[Union['GetGcpOrgVpcPeeringConnectionTimeoutsArgs', 'GetGcpOrgVpcPeeringConnectionTimeoutsArgsDict']] = None,
+                                       timeouts: Optional[Union['GetGcpOrgVpcPeeringConnectionTimeoutsArgs', 'GetGcpOrgVpcPeeringConnectionTimeoutsArgsDict', 'outputs.GetGcpOrgVpcPeeringConnectionTimeoutsResult']] = None,
                                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGcpOrgVpcPeeringConnectionResult:
     """
     The GCP VPC Peering Connection data source provides information about the existing Aiven VPC Peering Connection.
@@ -181,7 +181,7 @@ def get_gcp_org_vpc_peering_connection_output(gcp_project_id: pulumi.Input[Optio
                                               organization_id: pulumi.Input[Optional[_builtins.str]] = None,
                                               organization_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                                               peer_vpc: pulumi.Input[Optional[_builtins.str]] = None,
-                                              timeouts: pulumi.Input[Optional[Optional[Union['GetGcpOrgVpcPeeringConnectionTimeoutsArgs', 'GetGcpOrgVpcPeeringConnectionTimeoutsArgsDict']]]] = None,
+                                              timeouts: pulumi.Input[Optional[Optional[Union['GetGcpOrgVpcPeeringConnectionTimeoutsArgs', 'GetGcpOrgVpcPeeringConnectionTimeoutsArgsDict', 'outputs.GetGcpOrgVpcPeeringConnectionTimeoutsResult']]]] = None,
                                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGcpOrgVpcPeeringConnectionResult]:
     """
     The GCP VPC Peering Connection data source provides information about the existing Aiven VPC Peering Connection.

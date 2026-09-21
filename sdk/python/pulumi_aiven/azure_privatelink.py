@@ -229,7 +229,7 @@ class AzurePrivatelink(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  service_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['AzurePrivatelinkTimeoutsArgs', 'AzurePrivatelinkTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['AzurePrivatelinkTimeoutsArgs', 'AzurePrivatelinkTimeoutsArgsDict', 'outputs.AzurePrivatelinkTimeouts']]] = None,
                  user_subscription_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
@@ -305,7 +305,7 @@ class AzurePrivatelink(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  service_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['AzurePrivatelinkTimeoutsArgs', 'AzurePrivatelinkTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['AzurePrivatelinkTimeoutsArgs', 'AzurePrivatelinkTimeoutsArgsDict', 'outputs.AzurePrivatelinkTimeouts']]] = None,
                  user_subscription_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -346,7 +346,7 @@ class AzurePrivatelink(pulumi.CustomResource):
             project: pulumi.Input[Optional[_builtins.str]] = None,
             service_name: pulumi.Input[Optional[_builtins.str]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
-            timeouts: pulumi.Input[Optional[Union['AzurePrivatelinkTimeoutsArgs', 'AzurePrivatelinkTimeoutsArgsDict']]] = None,
+            timeouts: pulumi.Input[Optional[Union['AzurePrivatelinkTimeoutsArgs', 'AzurePrivatelinkTimeoutsArgsDict', 'outputs.AzurePrivatelinkTimeouts']]] = None,
             user_subscription_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'AzurePrivatelink':
         """
         Get an existing AzurePrivatelink resource's state with the given name, id, and optional extra

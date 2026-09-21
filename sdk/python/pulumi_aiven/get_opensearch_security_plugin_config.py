@@ -134,7 +134,7 @@ class AwaitableGetOpensearchSecurityPluginConfigResult(GetOpensearchSecurityPlug
 
 def get_opensearch_security_plugin_config(project: Optional[_builtins.str] = None,
                                           service_name: Optional[_builtins.str] = None,
-                                          timeouts: Optional[Union['GetOpensearchSecurityPluginConfigTimeoutsArgs', 'GetOpensearchSecurityPluginConfigTimeoutsArgsDict']] = None,
+                                          timeouts: Optional[Union['GetOpensearchSecurityPluginConfigTimeoutsArgs', 'GetOpensearchSecurityPluginConfigTimeoutsArgsDict', 'outputs.GetOpensearchSecurityPluginConfigTimeoutsResult']] = None,
                                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOpensearchSecurityPluginConfigResult:
     """
     Gets information about OpenSearch Security configuration for an Aiven for OpenSearch® service.
@@ -171,7 +171,7 @@ def get_opensearch_security_plugin_config(project: Optional[_builtins.str] = Non
         timeouts=pulumi.get(__ret__, 'timeouts'))
 def get_opensearch_security_plugin_config_output(project: pulumi.Input[Optional[_builtins.str]] = None,
                                                  service_name: pulumi.Input[Optional[_builtins.str]] = None,
-                                                 timeouts: pulumi.Input[Optional[Optional[Union['GetOpensearchSecurityPluginConfigTimeoutsArgs', 'GetOpensearchSecurityPluginConfigTimeoutsArgsDict']]]] = None,
+                                                 timeouts: pulumi.Input[Optional[Optional[Union['GetOpensearchSecurityPluginConfigTimeoutsArgs', 'GetOpensearchSecurityPluginConfigTimeoutsArgsDict', 'outputs.GetOpensearchSecurityPluginConfigTimeoutsResult']]]] = None,
                                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOpensearchSecurityPluginConfigResult]:
     """
     Gets information about OpenSearch Security configuration for an Aiven for OpenSearch® service.

@@ -203,7 +203,7 @@ class MysqlDatabase(pulumi.CustomResource):
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  service_name: pulumi.Input[Optional[_builtins.str]] = None,
                  termination_protection: pulumi.Input[Optional[_builtins.bool]] = None,
-                 timeouts: pulumi.Input[Optional[Union['MysqlDatabaseTimeoutsArgs', 'MysqlDatabaseTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['MysqlDatabaseTimeoutsArgs', 'MysqlDatabaseTimeoutsArgsDict', 'outputs.MysqlDatabaseTimeouts']]] = None,
                  __props__=None):
         """
         Creates and manages an [Aiven for MySQL®](https://aiven.io/docs/products/mysql) database. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
@@ -281,7 +281,7 @@ class MysqlDatabase(pulumi.CustomResource):
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  service_name: pulumi.Input[Optional[_builtins.str]] = None,
                  termination_protection: pulumi.Input[Optional[_builtins.bool]] = None,
-                 timeouts: pulumi.Input[Optional[Union['MysqlDatabaseTimeoutsArgs', 'MysqlDatabaseTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['MysqlDatabaseTimeoutsArgs', 'MysqlDatabaseTimeoutsArgsDict', 'outputs.MysqlDatabaseTimeouts']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -316,7 +316,7 @@ class MysqlDatabase(pulumi.CustomResource):
             project: pulumi.Input[Optional[_builtins.str]] = None,
             service_name: pulumi.Input[Optional[_builtins.str]] = None,
             termination_protection: pulumi.Input[Optional[_builtins.bool]] = None,
-            timeouts: pulumi.Input[Optional[Union['MysqlDatabaseTimeoutsArgs', 'MysqlDatabaseTimeoutsArgsDict']]] = None) -> 'MysqlDatabase':
+            timeouts: pulumi.Input[Optional[Union['MysqlDatabaseTimeoutsArgs', 'MysqlDatabaseTimeoutsArgsDict', 'outputs.MysqlDatabaseTimeouts']]] = None) -> 'MysqlDatabase':
         """
         Get an existing MysqlDatabase resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -795,18 +795,18 @@ class Dragonfly(pulumi.CustomResource):
                  cloud_name: pulumi.Input[Optional[_builtins.str]] = None,
                  cmk_id: pulumi.Input[Optional[_builtins.str]] = None,
                  disk_space: pulumi.Input[Optional[_builtins.str]] = None,
-                 dragonfly: pulumi.Input[Optional[Union['DragonflyDragonflyArgs', 'DragonflyDragonflyArgsDict']]] = None,
-                 dragonfly_user_config: pulumi.Input[Optional[Union['DragonflyDragonflyUserConfigArgs', 'DragonflyDragonflyUserConfigArgsDict']]] = None,
+                 dragonfly: pulumi.Input[Optional[Union['DragonflyDragonflyArgs', 'DragonflyDragonflyArgsDict', 'outputs.DragonflyDragonfly']]] = None,
+                 dragonfly_user_config: pulumi.Input[Optional[Union['DragonflyDragonflyUserConfigArgs', 'DragonflyDragonflyUserConfigArgsDict', 'outputs.DragonflyDragonflyUserConfig']]] = None,
                  maintenance_window_dow: pulumi.Input[Optional[_builtins.str]] = None,
                  maintenance_window_time: pulumi.Input[Optional[_builtins.str]] = None,
                  plan: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  project_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 service_integrations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DragonflyServiceIntegrationArgs', 'DragonflyServiceIntegrationArgsDict']]]]] = None,
+                 service_integrations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DragonflyServiceIntegrationArgs', 'DragonflyServiceIntegrationArgsDict', 'outputs.DragonflyServiceIntegration']]]]] = None,
                  service_name: pulumi.Input[Optional[_builtins.str]] = None,
                  static_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DragonflyTagArgs', 'DragonflyTagArgsDict']]]]] = None,
-                 tech_emails: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DragonflyTechEmailArgs', 'DragonflyTechEmailArgsDict']]]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DragonflyTagArgs', 'DragonflyTagArgsDict', 'outputs.DragonflyTag']]]]] = None,
+                 tech_emails: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DragonflyTechEmailArgs', 'DragonflyTechEmailArgsDict', 'outputs.DragonflyTechEmail']]]]] = None,
                  termination_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
@@ -841,18 +841,18 @@ class Dragonfly(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] cloud_name: The cloud provider and region the service is hosted in. The format is `provider-region`, for example: `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ per project and service. Changing this value [migrates the service to another cloud provider or region](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and includes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases may have a brief interruption during DNS propagation.
         :param pulumi.Input[_builtins.str] cmk_id: UUID of the Customer Managed Key (CMK) used to apply [bring your own key (BYOK) encryption](https://aiven.io/docs/platform/howto/bring-your-own-key) to this service's data at rest. You can register a CMK for an Aiven project using the `Cmk` resource. Removing this attribute doesn't remove the CMK association. To remove it from this service, set this attribute to the all-zero UUID `00000000-0000-0000-0000-000000000000`.
         :param pulumi.Input[_builtins.str] disk_space: Service disk space to set. Possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
-        :param pulumi.Input[Union['DragonflyDragonflyArgs', 'DragonflyDragonflyArgsDict']] dragonfly: Dragonfly server provided values
-        :param pulumi.Input[Union['DragonflyDragonflyUserConfigArgs', 'DragonflyDragonflyUserConfigArgsDict']] dragonfly_user_config: Dragonfly user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        :param pulumi.Input[Union['DragonflyDragonflyArgs', 'DragonflyDragonflyArgsDict', 'outputs.DragonflyDragonfly']] dragonfly: Dragonfly server provided values
+        :param pulumi.Input[Union['DragonflyDragonflyUserConfigArgs', 'DragonflyDragonflyUserConfigArgsDict', 'outputs.DragonflyDragonflyUserConfig']] dragonfly_user_config: Dragonfly user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input[_builtins.str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[_builtins.str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
         :param pulumi.Input[_builtins.str] plan: Defines what kind of computing resources are allocated for the service. Plan names must be lowercase alphanumeric (e.g., `business-8`, `my_plan_16`). It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seen from the [Aiven pricing page](https://aiven.io/pricing).
         :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] project_vpc_id: Specifies the VPC the service should run in. If the value is not set, the service runs on the Public Internet. When set, the value should be given as a reference to set up dependencies correctly, and the VPC must be in the same cloud and region as the service itself. The service can be freely moved to and from VPC after creation, but doing so triggers migration to new servers, so the operation can take a significant amount of time to complete if the service has a lot of data.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DragonflyServiceIntegrationArgs', 'DragonflyServiceIntegrationArgsDict']]]] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DragonflyServiceIntegrationArgs', 'DragonflyServiceIntegrationArgsDict', 'outputs.DragonflyServiceIntegration']]]] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
         :param pulumi.Input[_builtins.str] service_name: Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DragonflyTagArgs', 'DragonflyTagArgsDict']]]] tags: Tags are key-value pairs that allow you to categorize services.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DragonflyTechEmailArgs', 'DragonflyTechEmailArgsDict']]]] tech_emails: The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DragonflyTagArgs', 'DragonflyTagArgsDict', 'outputs.DragonflyTag']]]] tags: Tags are key-value pairs that allow you to categorize services.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DragonflyTechEmailArgs', 'DragonflyTechEmailArgsDict', 'outputs.DragonflyTechEmail']]]] tech_emails: The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
         :param pulumi.Input[_builtins.bool] termination_protection: Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
         """
         ...
@@ -906,18 +906,18 @@ class Dragonfly(pulumi.CustomResource):
                  cloud_name: pulumi.Input[Optional[_builtins.str]] = None,
                  cmk_id: pulumi.Input[Optional[_builtins.str]] = None,
                  disk_space: pulumi.Input[Optional[_builtins.str]] = None,
-                 dragonfly: pulumi.Input[Optional[Union['DragonflyDragonflyArgs', 'DragonflyDragonflyArgsDict']]] = None,
-                 dragonfly_user_config: pulumi.Input[Optional[Union['DragonflyDragonflyUserConfigArgs', 'DragonflyDragonflyUserConfigArgsDict']]] = None,
+                 dragonfly: pulumi.Input[Optional[Union['DragonflyDragonflyArgs', 'DragonflyDragonflyArgsDict', 'outputs.DragonflyDragonfly']]] = None,
+                 dragonfly_user_config: pulumi.Input[Optional[Union['DragonflyDragonflyUserConfigArgs', 'DragonflyDragonflyUserConfigArgsDict', 'outputs.DragonflyDragonflyUserConfig']]] = None,
                  maintenance_window_dow: pulumi.Input[Optional[_builtins.str]] = None,
                  maintenance_window_time: pulumi.Input[Optional[_builtins.str]] = None,
                  plan: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  project_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 service_integrations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DragonflyServiceIntegrationArgs', 'DragonflyServiceIntegrationArgsDict']]]]] = None,
+                 service_integrations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DragonflyServiceIntegrationArgs', 'DragonflyServiceIntegrationArgsDict', 'outputs.DragonflyServiceIntegration']]]]] = None,
                  service_name: pulumi.Input[Optional[_builtins.str]] = None,
                  static_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DragonflyTagArgs', 'DragonflyTagArgsDict']]]]] = None,
-                 tech_emails: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DragonflyTechEmailArgs', 'DragonflyTechEmailArgsDict']]]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DragonflyTagArgs', 'DragonflyTagArgsDict', 'outputs.DragonflyTag']]]]] = None,
+                 tech_emails: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DragonflyTechEmailArgs', 'DragonflyTechEmailArgsDict', 'outputs.DragonflyTechEmail']]]]] = None,
                  termination_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -979,14 +979,14 @@ class Dragonfly(pulumi.CustomResource):
             additional_disk_space: pulumi.Input[Optional[_builtins.str]] = None,
             cloud_name: pulumi.Input[Optional[_builtins.str]] = None,
             cmk_id: pulumi.Input[Optional[_builtins.str]] = None,
-            components: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DragonflyComponentArgs', 'DragonflyComponentArgsDict']]]]] = None,
+            components: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DragonflyComponentArgs', 'DragonflyComponentArgsDict', 'outputs.DragonflyComponent']]]]] = None,
             disk_space: pulumi.Input[Optional[_builtins.str]] = None,
             disk_space_cap: pulumi.Input[Optional[_builtins.str]] = None,
             disk_space_default: pulumi.Input[Optional[_builtins.str]] = None,
             disk_space_step: pulumi.Input[Optional[_builtins.str]] = None,
             disk_space_used: pulumi.Input[Optional[_builtins.str]] = None,
-            dragonfly: pulumi.Input[Optional[Union['DragonflyDragonflyArgs', 'DragonflyDragonflyArgsDict']]] = None,
-            dragonfly_user_config: pulumi.Input[Optional[Union['DragonflyDragonflyUserConfigArgs', 'DragonflyDragonflyUserConfigArgsDict']]] = None,
+            dragonfly: pulumi.Input[Optional[Union['DragonflyDragonflyArgs', 'DragonflyDragonflyArgsDict', 'outputs.DragonflyDragonfly']]] = None,
+            dragonfly_user_config: pulumi.Input[Optional[Union['DragonflyDragonflyUserConfigArgs', 'DragonflyDragonflyUserConfigArgsDict', 'outputs.DragonflyDragonflyUserConfig']]] = None,
             maintenance_window_dow: pulumi.Input[Optional[_builtins.str]] = None,
             maintenance_window_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             maintenance_window_time: pulumi.Input[Optional[_builtins.str]] = None,
@@ -994,7 +994,7 @@ class Dragonfly(pulumi.CustomResource):
             project: pulumi.Input[Optional[_builtins.str]] = None,
             project_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
             service_host: pulumi.Input[Optional[_builtins.str]] = None,
-            service_integrations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DragonflyServiceIntegrationArgs', 'DragonflyServiceIntegrationArgsDict']]]]] = None,
+            service_integrations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DragonflyServiceIntegrationArgs', 'DragonflyServiceIntegrationArgsDict', 'outputs.DragonflyServiceIntegration']]]]] = None,
             service_name: pulumi.Input[Optional[_builtins.str]] = None,
             service_password: pulumi.Input[Optional[_builtins.str]] = None,
             service_port: pulumi.Input[Optional[_builtins.int]] = None,
@@ -1003,8 +1003,8 @@ class Dragonfly(pulumi.CustomResource):
             service_username: pulumi.Input[Optional[_builtins.str]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
             static_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DragonflyTagArgs', 'DragonflyTagArgsDict']]]]] = None,
-            tech_emails: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DragonflyTechEmailArgs', 'DragonflyTechEmailArgsDict']]]]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DragonflyTagArgs', 'DragonflyTagArgsDict', 'outputs.DragonflyTag']]]]] = None,
+            tech_emails: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DragonflyTechEmailArgs', 'DragonflyTechEmailArgsDict', 'outputs.DragonflyTechEmail']]]]] = None,
             termination_protection: pulumi.Input[Optional[_builtins.bool]] = None) -> 'Dragonfly':
         """
         Get an existing Dragonfly resource's state with the given name, id, and optional extra
@@ -1016,14 +1016,14 @@ class Dragonfly(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] additional_disk_space: Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30 GiB to the default disk space defined by the `plan`. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
         :param pulumi.Input[_builtins.str] cloud_name: The cloud provider and region the service is hosted in. The format is `provider-region`, for example: `google-europe-west1`. The [available cloud regions](https://aiven.io/docs/platform/reference/list_of_clouds) can differ per project and service. Changing this value [migrates the service to another cloud provider or region](https://aiven.io/docs/platform/howto/migrate-services-cloud-region). The migration runs in the background and includes a DNS update to redirect traffic to the new region. Most services experience no downtime, but some databases may have a brief interruption during DNS propagation.
         :param pulumi.Input[_builtins.str] cmk_id: UUID of the Customer Managed Key (CMK) used to apply [bring your own key (BYOK) encryption](https://aiven.io/docs/platform/howto/bring-your-own-key) to this service's data at rest. You can register a CMK for an Aiven project using the `Cmk` resource. Removing this attribute doesn't remove the CMK association. To remove it from this service, set this attribute to the all-zero UUID `00000000-0000-0000-0000-000000000000`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DragonflyComponentArgs', 'DragonflyComponentArgsDict']]]] components: Service component information objects
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DragonflyComponentArgs', 'DragonflyComponentArgsDict', 'outputs.DragonflyComponent']]]] components: Service component information objects
         :param pulumi.Input[_builtins.str] disk_space: Service disk space to set. Possible values depend on the service type, the cloud provider and the project. Reducing will result in the service rebalancing.
         :param pulumi.Input[_builtins.str] disk_space_cap: The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
         :param pulumi.Input[_builtins.str] disk_space_default: The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `disk_space`
         :param pulumi.Input[_builtins.str] disk_space_step: The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
         :param pulumi.Input[_builtins.str] disk_space_used: The disk space that the service is currently using. This is the sum of the `plan` default disk space and `additional_disk_space` in human-readable format (for example: `90GiB`).
-        :param pulumi.Input[Union['DragonflyDragonflyArgs', 'DragonflyDragonflyArgsDict']] dragonfly: Dragonfly server provided values
-        :param pulumi.Input[Union['DragonflyDragonflyUserConfigArgs', 'DragonflyDragonflyUserConfigArgsDict']] dragonfly_user_config: Dragonfly user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
+        :param pulumi.Input[Union['DragonflyDragonflyArgs', 'DragonflyDragonflyArgsDict', 'outputs.DragonflyDragonfly']] dragonfly: Dragonfly server provided values
+        :param pulumi.Input[Union['DragonflyDragonflyUserConfigArgs', 'DragonflyDragonflyUserConfigArgsDict', 'outputs.DragonflyDragonflyUserConfig']] dragonfly_user_config: Dragonfly user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
         :param pulumi.Input[_builtins.str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[_builtins.bool] maintenance_window_enabled: Indicates whether the maintenance window is currently enabled for this service.
         :param pulumi.Input[_builtins.str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
@@ -1031,7 +1031,7 @@ class Dragonfly(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] project_vpc_id: Specifies the VPC the service should run in. If the value is not set, the service runs on the Public Internet. When set, the value should be given as a reference to set up dependencies correctly, and the VPC must be in the same cloud and region as the service itself. The service can be freely moved to and from VPC after creation, but doing so triggers migration to new servers, so the operation can take a significant amount of time to complete if the service has a lot of data.
         :param pulumi.Input[_builtins.str] service_host: The hostname of the service.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DragonflyServiceIntegrationArgs', 'DragonflyServiceIntegrationArgsDict']]]] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DragonflyServiceIntegrationArgs', 'DragonflyServiceIntegrationArgsDict', 'outputs.DragonflyServiceIntegration']]]] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
         :param pulumi.Input[_builtins.str] service_name: Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
         :param pulumi.Input[_builtins.str] service_password: Password used for connecting to the service, if applicable
         :param pulumi.Input[_builtins.int] service_port: The port of the service
@@ -1040,8 +1040,8 @@ class Dragonfly(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] service_username: Username used for connecting to the service, if applicable
         :param pulumi.Input[_builtins.str] state: Service state. Possible values are `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`. Services cannot be powered on or off with Terraform. To power a service on or off, [use the Aiven Console or Aiven CLI](https://aiven.io/docs/platform/concepts/service-power-cycle).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DragonflyTagArgs', 'DragonflyTagArgsDict']]]] tags: Tags are key-value pairs that allow you to categorize services.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DragonflyTechEmailArgs', 'DragonflyTechEmailArgsDict']]]] tech_emails: The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DragonflyTagArgs', 'DragonflyTagArgsDict', 'outputs.DragonflyTag']]]] tags: Tags are key-value pairs that allow you to categorize services.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DragonflyTechEmailArgs', 'DragonflyTechEmailArgsDict', 'outputs.DragonflyTechEmail']]]] tech_emails: The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
         :param pulumi.Input[_builtins.bool] termination_protection: Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

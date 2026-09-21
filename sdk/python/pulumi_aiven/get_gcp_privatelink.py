@@ -123,7 +123,7 @@ class AwaitableGetGcpPrivatelinkResult(GetGcpPrivatelinkResult):
 
 def get_gcp_privatelink(project: Optional[_builtins.str] = None,
                         service_name: Optional[_builtins.str] = None,
-                        timeouts: Optional[Union['GetGcpPrivatelinkTimeoutsArgs', 'GetGcpPrivatelinkTimeoutsArgsDict']] = None,
+                        timeouts: Optional[Union['GetGcpPrivatelinkTimeoutsArgs', 'GetGcpPrivatelinkTimeoutsArgsDict', 'outputs.GetGcpPrivatelinkTimeoutsResult']] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGcpPrivatelinkResult:
     """
     Gets information about a Google Private Service Connect connection for an Aiven service.
@@ -159,7 +159,7 @@ def get_gcp_privatelink(project: Optional[_builtins.str] = None,
         timeouts=pulumi.get(__ret__, 'timeouts'))
 def get_gcp_privatelink_output(project: pulumi.Input[Optional[_builtins.str]] = None,
                                service_name: pulumi.Input[Optional[_builtins.str]] = None,
-                               timeouts: pulumi.Input[Optional[Optional[Union['GetGcpPrivatelinkTimeoutsArgs', 'GetGcpPrivatelinkTimeoutsArgsDict']]]] = None,
+                               timeouts: pulumi.Input[Optional[Optional[Union['GetGcpPrivatelinkTimeoutsArgs', 'GetGcpPrivatelinkTimeoutsArgsDict', 'outputs.GetGcpPrivatelinkTimeoutsResult']]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGcpPrivatelinkResult]:
     """
     Gets information about a Google Private Service Connect connection for an Aiven service.

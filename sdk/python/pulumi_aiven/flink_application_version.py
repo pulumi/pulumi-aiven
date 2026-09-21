@@ -377,10 +377,10 @@ class FlinkApplicationVersion(pulumi.CustomResource):
                  application_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  service_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 sink: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FlinkApplicationVersionSinkArgs', 'FlinkApplicationVersionSinkArgsDict']]]]] = None,
-                 sinks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FlinkApplicationVersionSinkArgs', 'FlinkApplicationVersionSinkArgsDict']]]]] = None,
-                 source: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FlinkApplicationVersionSourceArgs', 'FlinkApplicationVersionSourceArgsDict']]]]] = None,
-                 sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FlinkApplicationVersionSourceArgs', 'FlinkApplicationVersionSourceArgsDict']]]]] = None,
+                 sink: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FlinkApplicationVersionSinkArgs', 'FlinkApplicationVersionSinkArgsDict', 'outputs.FlinkApplicationVersionSink']]]]] = None,
+                 sinks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FlinkApplicationVersionSinkArgs', 'FlinkApplicationVersionSinkArgsDict', 'outputs.FlinkApplicationVersionSink']]]]] = None,
+                 source: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FlinkApplicationVersionSourceArgs', 'FlinkApplicationVersionSourceArgsDict', 'outputs.FlinkApplicationVersionSource']]]]] = None,
+                 sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FlinkApplicationVersionSourceArgs', 'FlinkApplicationVersionSourceArgsDict', 'outputs.FlinkApplicationVersionSource']]]]] = None,
                  statement: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -443,10 +443,10 @@ class FlinkApplicationVersion(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] application_id: Application ID.
         :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['FlinkApplicationVersionSinkArgs', 'FlinkApplicationVersionSinkArgsDict']]]] sink: The sink table for the application.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['FlinkApplicationVersionSinkArgs', 'FlinkApplicationVersionSinkArgsDict']]]] sinks: Application sinks
-        :param pulumi.Input[Sequence[pulumi.Input[Union['FlinkApplicationVersionSourceArgs', 'FlinkApplicationVersionSourceArgsDict']]]] source: The source table for the application.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['FlinkApplicationVersionSourceArgs', 'FlinkApplicationVersionSourceArgsDict']]]] sources: Application sources
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FlinkApplicationVersionSinkArgs', 'FlinkApplicationVersionSinkArgsDict', 'outputs.FlinkApplicationVersionSink']]]] sink: The sink table for the application.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FlinkApplicationVersionSinkArgs', 'FlinkApplicationVersionSinkArgsDict', 'outputs.FlinkApplicationVersionSink']]]] sinks: Application sinks
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FlinkApplicationVersionSourceArgs', 'FlinkApplicationVersionSourceArgsDict', 'outputs.FlinkApplicationVersionSource']]]] source: The source table for the application.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FlinkApplicationVersionSourceArgs', 'FlinkApplicationVersionSourceArgsDict', 'outputs.FlinkApplicationVersionSource']]]] sources: Application sources
         :param pulumi.Input[_builtins.str] statement: Job SQL statement.
         """
         ...
@@ -528,10 +528,10 @@ class FlinkApplicationVersion(pulumi.CustomResource):
                  application_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  service_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 sink: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FlinkApplicationVersionSinkArgs', 'FlinkApplicationVersionSinkArgsDict']]]]] = None,
-                 sinks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FlinkApplicationVersionSinkArgs', 'FlinkApplicationVersionSinkArgsDict']]]]] = None,
-                 source: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FlinkApplicationVersionSourceArgs', 'FlinkApplicationVersionSourceArgsDict']]]]] = None,
-                 sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FlinkApplicationVersionSourceArgs', 'FlinkApplicationVersionSourceArgsDict']]]]] = None,
+                 sink: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FlinkApplicationVersionSinkArgs', 'FlinkApplicationVersionSinkArgsDict', 'outputs.FlinkApplicationVersionSink']]]]] = None,
+                 sinks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FlinkApplicationVersionSinkArgs', 'FlinkApplicationVersionSinkArgsDict', 'outputs.FlinkApplicationVersionSink']]]]] = None,
+                 source: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FlinkApplicationVersionSourceArgs', 'FlinkApplicationVersionSourceArgsDict', 'outputs.FlinkApplicationVersionSource']]]]] = None,
+                 sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FlinkApplicationVersionSourceArgs', 'FlinkApplicationVersionSourceArgsDict', 'outputs.FlinkApplicationVersionSource']]]]] = None,
                  statement: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -578,10 +578,10 @@ class FlinkApplicationVersion(pulumi.CustomResource):
             created_by: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             service_name: pulumi.Input[Optional[_builtins.str]] = None,
-            sink: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FlinkApplicationVersionSinkArgs', 'FlinkApplicationVersionSinkArgsDict']]]]] = None,
-            sinks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FlinkApplicationVersionSinkArgs', 'FlinkApplicationVersionSinkArgsDict']]]]] = None,
-            source: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FlinkApplicationVersionSourceArgs', 'FlinkApplicationVersionSourceArgsDict']]]]] = None,
-            sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FlinkApplicationVersionSourceArgs', 'FlinkApplicationVersionSourceArgsDict']]]]] = None,
+            sink: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FlinkApplicationVersionSinkArgs', 'FlinkApplicationVersionSinkArgsDict', 'outputs.FlinkApplicationVersionSink']]]]] = None,
+            sinks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FlinkApplicationVersionSinkArgs', 'FlinkApplicationVersionSinkArgsDict', 'outputs.FlinkApplicationVersionSink']]]]] = None,
+            source: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FlinkApplicationVersionSourceArgs', 'FlinkApplicationVersionSourceArgsDict', 'outputs.FlinkApplicationVersionSource']]]]] = None,
+            sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FlinkApplicationVersionSourceArgs', 'FlinkApplicationVersionSourceArgsDict', 'outputs.FlinkApplicationVersionSource']]]]] = None,
             statement: pulumi.Input[Optional[_builtins.str]] = None,
             version: pulumi.Input[Optional[_builtins.int]] = None) -> 'FlinkApplicationVersion':
         """
@@ -597,10 +597,10 @@ class FlinkApplicationVersion(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] created_by: The user who created the application.
         :param pulumi.Input[_builtins.str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['FlinkApplicationVersionSinkArgs', 'FlinkApplicationVersionSinkArgsDict']]]] sink: The sink table for the application.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['FlinkApplicationVersionSinkArgs', 'FlinkApplicationVersionSinkArgsDict']]]] sinks: Application sinks
-        :param pulumi.Input[Sequence[pulumi.Input[Union['FlinkApplicationVersionSourceArgs', 'FlinkApplicationVersionSourceArgsDict']]]] source: The source table for the application.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['FlinkApplicationVersionSourceArgs', 'FlinkApplicationVersionSourceArgsDict']]]] sources: Application sources
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FlinkApplicationVersionSinkArgs', 'FlinkApplicationVersionSinkArgsDict', 'outputs.FlinkApplicationVersionSink']]]] sink: The sink table for the application.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FlinkApplicationVersionSinkArgs', 'FlinkApplicationVersionSinkArgsDict', 'outputs.FlinkApplicationVersionSink']]]] sinks: Application sinks
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FlinkApplicationVersionSourceArgs', 'FlinkApplicationVersionSourceArgsDict', 'outputs.FlinkApplicationVersionSource']]]] source: The source table for the application.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FlinkApplicationVersionSourceArgs', 'FlinkApplicationVersionSourceArgsDict', 'outputs.FlinkApplicationVersionSource']]]] sources: Application sources
         :param pulumi.Input[_builtins.str] statement: Job SQL statement.
         :param pulumi.Input[_builtins.int] version: Application version number.
         """

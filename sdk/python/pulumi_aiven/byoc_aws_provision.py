@@ -226,7 +226,7 @@ class ByocAwsProvision(pulumi.CustomResource):
                  aws_iam_role_arn: pulumi.Input[Optional[_builtins.str]] = None,
                  custom_cloud_environment_id: pulumi.Input[Optional[_builtins.str]] = None,
                  organization_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['ByocAwsProvisionTimeoutsArgs', 'ByocAwsProvisionTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['ByocAwsProvisionTimeoutsArgs', 'ByocAwsProvisionTimeoutsArgsDict', 'outputs.ByocAwsProvisionTimeouts']]] = None,
                  __props__=None):
         """
         Provisions a BYOC custom cloud environment by handing Aiven the IAM role ARN created in the customer AWS account. Transitions the environment from `draft` to `active` so services can be deployed into it.
@@ -312,7 +312,7 @@ class ByocAwsProvision(pulumi.CustomResource):
                  aws_iam_role_arn: pulumi.Input[Optional[_builtins.str]] = None,
                  custom_cloud_environment_id: pulumi.Input[Optional[_builtins.str]] = None,
                  organization_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['ByocAwsProvisionTimeoutsArgs', 'ByocAwsProvisionTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['ByocAwsProvisionTimeoutsArgs', 'ByocAwsProvisionTimeoutsArgsDict', 'outputs.ByocAwsProvisionTimeouts']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -353,7 +353,7 @@ class ByocAwsProvision(pulumi.CustomResource):
             custom_cloud_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             organization_id: pulumi.Input[Optional[_builtins.str]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
-            timeouts: pulumi.Input[Optional[Union['ByocAwsProvisionTimeoutsArgs', 'ByocAwsProvisionTimeoutsArgsDict']]] = None) -> 'ByocAwsProvision':
+            timeouts: pulumi.Input[Optional[Union['ByocAwsProvisionTimeoutsArgs', 'ByocAwsProvisionTimeoutsArgsDict', 'outputs.ByocAwsProvisionTimeouts']]] = None) -> 'ByocAwsProvision':
         """
         Get an existing ByocAwsProvision resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

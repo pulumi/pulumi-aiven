@@ -85,7 +85,7 @@ class AwaitableGetCmkAccessorAwsResult(GetCmkAccessorAwsResult):
 
 
 def get_cmk_accessor_aws(project: Optional[_builtins.str] = None,
-                         timeouts: Optional[Union['GetCmkAccessorAwsTimeoutsArgs', 'GetCmkAccessorAwsTimeoutsArgsDict']] = None,
+                         timeouts: Optional[Union['GetCmkAccessorAwsTimeoutsArgs', 'GetCmkAccessorAwsTimeoutsArgsDict', 'outputs.GetCmkAccessorAwsTimeoutsResult']] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCmkAccessorAwsResult:
     """
     Gets the AWS CMK accessor for an Aiven project. The accessor is used to authenticate Aiven to your AWS Key Management Service (KMS).
@@ -114,7 +114,7 @@ def get_cmk_accessor_aws(project: Optional[_builtins.str] = None,
         project=pulumi.get(__ret__, 'project'),
         timeouts=pulumi.get(__ret__, 'timeouts'))
 def get_cmk_accessor_aws_output(project: pulumi.Input[Optional[_builtins.str]] = None,
-                                timeouts: pulumi.Input[Optional[Optional[Union['GetCmkAccessorAwsTimeoutsArgs', 'GetCmkAccessorAwsTimeoutsArgsDict']]]] = None,
+                                timeouts: pulumi.Input[Optional[Optional[Union['GetCmkAccessorAwsTimeoutsArgs', 'GetCmkAccessorAwsTimeoutsArgsDict', 'outputs.GetCmkAccessorAwsTimeoutsResult']]]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCmkAccessorAwsResult]:
     """
     Gets the AWS CMK accessor for an Aiven project. The accessor is used to authenticate Aiven to your AWS Key Management Service (KMS).

@@ -182,7 +182,7 @@ class AwaitableGetOrganizationAddressResult(GetOrganizationAddressResult):
 
 def get_organization_address(address_id: Optional[_builtins.str] = None,
                              organization_id: Optional[_builtins.str] = None,
-                             timeouts: Optional[Union['GetOrganizationAddressTimeoutsArgs', 'GetOrganizationAddressTimeoutsArgsDict']] = None,
+                             timeouts: Optional[Union['GetOrganizationAddressTimeoutsArgs', 'GetOrganizationAddressTimeoutsArgsDict', 'outputs.GetOrganizationAddressTimeoutsResult']] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOrganizationAddressResult:
     """
     Gets information about an organization address.
@@ -223,7 +223,7 @@ def get_organization_address(address_id: Optional[_builtins.str] = None,
         zip_code=pulumi.get(__ret__, 'zip_code'))
 def get_organization_address_output(address_id: pulumi.Input[Optional[_builtins.str]] = None,
                                     organization_id: pulumi.Input[Optional[_builtins.str]] = None,
-                                    timeouts: pulumi.Input[Optional[Optional[Union['GetOrganizationAddressTimeoutsArgs', 'GetOrganizationAddressTimeoutsArgsDict']]]] = None,
+                                    timeouts: pulumi.Input[Optional[Optional[Union['GetOrganizationAddressTimeoutsArgs', 'GetOrganizationAddressTimeoutsArgsDict', 'outputs.GetOrganizationAddressTimeoutsResult']]]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOrganizationAddressResult]:
     """
     Gets information about an organization address.

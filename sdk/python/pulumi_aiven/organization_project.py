@@ -307,9 +307,9 @@ class OrganizationProject(pulumi.CustomResource):
                  organization_id: pulumi.Input[Optional[_builtins.str]] = None,
                  parent_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OrganizationProjectTagArgs', 'OrganizationProjectTagArgsDict']]]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OrganizationProjectTagArgs', 'OrganizationProjectTagArgsDict', 'outputs.OrganizationProjectTag']]]]] = None,
                  technical_emails: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 timeouts: pulumi.Input[Optional[Union['OrganizationProjectTimeoutsArgs', 'OrganizationProjectTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['OrganizationProjectTimeoutsArgs', 'OrganizationProjectTimeoutsArgsDict', 'outputs.OrganizationProjectTimeouts']]] = None,
                  __props__=None):
         """
         Creates and manages an [Aiven project](https://aiven.io/docs/platform/concepts/orgs-units-projects#projects).
@@ -347,7 +347,7 @@ class OrganizationProject(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] organization_id: ID of an organization. Maximum length: `36`.
         :param pulumi.Input[_builtins.str] parent_id: Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.
         :param pulumi.Input[_builtins.str] project_id: The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It's recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource. Changing this property forces recreation of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['OrganizationProjectTagArgs', 'OrganizationProjectTagArgsDict']]]] tags: Tags are key-value pairs that allow you to categorize projects.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OrganizationProjectTagArgs', 'OrganizationProjectTagArgsDict', 'outputs.OrganizationProjectTag']]]] tags: Tags are key-value pairs that allow you to categorize projects.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] technical_emails: The email addresses for [project contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this project and its services. You can also set email contacts at the service level. It's good practice to keep these up-to-date to be aware of any potential issues with your project.
         """
         ...
@@ -405,9 +405,9 @@ class OrganizationProject(pulumi.CustomResource):
                  organization_id: pulumi.Input[Optional[_builtins.str]] = None,
                  parent_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OrganizationProjectTagArgs', 'OrganizationProjectTagArgsDict']]]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OrganizationProjectTagArgs', 'OrganizationProjectTagArgsDict', 'outputs.OrganizationProjectTag']]]]] = None,
                  technical_emails: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 timeouts: pulumi.Input[Optional[Union['OrganizationProjectTimeoutsArgs', 'OrganizationProjectTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['OrganizationProjectTimeoutsArgs', 'OrganizationProjectTimeoutsArgsDict', 'outputs.OrganizationProjectTimeouts']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -452,9 +452,9 @@ class OrganizationProject(pulumi.CustomResource):
             organization_id: pulumi.Input[Optional[_builtins.str]] = None,
             parent_id: pulumi.Input[Optional[_builtins.str]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
-            tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OrganizationProjectTagArgs', 'OrganizationProjectTagArgsDict']]]]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OrganizationProjectTagArgs', 'OrganizationProjectTagArgsDict', 'outputs.OrganizationProjectTag']]]]] = None,
             technical_emails: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            timeouts: pulumi.Input[Optional[Union['OrganizationProjectTimeoutsArgs', 'OrganizationProjectTimeoutsArgsDict']]] = None) -> 'OrganizationProject':
+            timeouts: pulumi.Input[Optional[Union['OrganizationProjectTimeoutsArgs', 'OrganizationProjectTimeoutsArgsDict', 'outputs.OrganizationProjectTimeouts']]] = None) -> 'OrganizationProject':
         """
         Get an existing OrganizationProject resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -468,7 +468,7 @@ class OrganizationProject(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] organization_id: ID of an organization. Maximum length: `36`.
         :param pulumi.Input[_builtins.str] parent_id: Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.
         :param pulumi.Input[_builtins.str] project_id: The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It's recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource. Changing this property forces recreation of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['OrganizationProjectTagArgs', 'OrganizationProjectTagArgsDict']]]] tags: Tags are key-value pairs that allow you to categorize projects.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OrganizationProjectTagArgs', 'OrganizationProjectTagArgsDict', 'outputs.OrganizationProjectTag']]]] tags: Tags are key-value pairs that allow you to categorize projects.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] technical_emails: The email addresses for [project contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this project and its services. You can also set email contacts at the service level. It's good practice to keep these up-to-date to be aware of any potential issues with your project.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

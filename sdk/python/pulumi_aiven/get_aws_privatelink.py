@@ -146,7 +146,7 @@ class AwaitableGetAwsPrivatelinkResult(GetAwsPrivatelinkResult):
 
 def get_aws_privatelink(project: Optional[_builtins.str] = None,
                         service_name: Optional[_builtins.str] = None,
-                        timeouts: Optional[Union['GetAwsPrivatelinkTimeoutsArgs', 'GetAwsPrivatelinkTimeoutsArgsDict']] = None,
+                        timeouts: Optional[Union['GetAwsPrivatelinkTimeoutsArgs', 'GetAwsPrivatelinkTimeoutsArgsDict', 'outputs.GetAwsPrivatelinkTimeoutsResult']] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAwsPrivatelinkResult:
     """
     Gets information about an AWS PrivateLink connection for an Aiven service.
@@ -184,7 +184,7 @@ def get_aws_privatelink(project: Optional[_builtins.str] = None,
         timeouts=pulumi.get(__ret__, 'timeouts'))
 def get_aws_privatelink_output(project: pulumi.Input[Optional[_builtins.str]] = None,
                                service_name: pulumi.Input[Optional[_builtins.str]] = None,
-                               timeouts: pulumi.Input[Optional[Optional[Union['GetAwsPrivatelinkTimeoutsArgs', 'GetAwsPrivatelinkTimeoutsArgsDict']]]] = None,
+                               timeouts: pulumi.Input[Optional[Optional[Union['GetAwsPrivatelinkTimeoutsArgs', 'GetAwsPrivatelinkTimeoutsArgsDict', 'outputs.GetAwsPrivatelinkTimeoutsResult']]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAwsPrivatelinkResult]:
     """
     Gets information about an AWS PrivateLink connection for an Aiven service.
