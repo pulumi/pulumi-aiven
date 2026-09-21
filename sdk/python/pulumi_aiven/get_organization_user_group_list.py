@@ -85,8 +85,8 @@ class AwaitableGetOrganizationUserGroupListResult(GetOrganizationUserGroupListRe
 
 
 def get_organization_user_group_list(organization_id: Optional[_builtins.str] = None,
-                                     timeouts: Optional[Union['GetOrganizationUserGroupListTimeoutsArgs', 'GetOrganizationUserGroupListTimeoutsArgsDict']] = None,
-                                     user_groups: Optional[Sequence[Union['GetOrganizationUserGroupListUserGroupArgs', 'GetOrganizationUserGroupListUserGroupArgsDict']]] = None,
+                                     timeouts: Optional[Union['GetOrganizationUserGroupListTimeoutsArgs', 'GetOrganizationUserGroupListTimeoutsArgsDict', 'outputs.GetOrganizationUserGroupListTimeoutsResult']] = None,
+                                     user_groups: Optional[Sequence[Union['GetOrganizationUserGroupListUserGroupArgs', 'GetOrganizationUserGroupListUserGroupArgsDict', 'outputs.GetOrganizationUserGroupListUserGroupResult']]] = None,
                                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOrganizationUserGroupListResult:
     """
     List all user groups within an organization.
@@ -102,7 +102,7 @@ def get_organization_user_group_list(organization_id: Optional[_builtins.str] = 
 
 
     :param _builtins.str organization_id: ID of an organization.
-    :param Sequence[Union['GetOrganizationUserGroupListUserGroupArgs', 'GetOrganizationUserGroupListUserGroupArgsDict']] user_groups: User Groups.
+    :param Sequence[Union['GetOrganizationUserGroupListUserGroupArgs', 'GetOrganizationUserGroupListUserGroupArgsDict', 'outputs.GetOrganizationUserGroupListUserGroupResult']] user_groups: User Groups.
     """
     __args__ = dict()
     __args__['organizationId'] = organization_id
@@ -117,8 +117,8 @@ def get_organization_user_group_list(organization_id: Optional[_builtins.str] = 
         timeouts=pulumi.get(__ret__, 'timeouts'),
         user_groups=pulumi.get(__ret__, 'user_groups'))
 def get_organization_user_group_list_output(organization_id: pulumi.Input[Optional[_builtins.str]] = None,
-                                            timeouts: pulumi.Input[Optional[Optional[Union['GetOrganizationUserGroupListTimeoutsArgs', 'GetOrganizationUserGroupListTimeoutsArgsDict']]]] = None,
-                                            user_groups: pulumi.Input[Optional[Optional[Sequence[Union['GetOrganizationUserGroupListUserGroupArgs', 'GetOrganizationUserGroupListUserGroupArgsDict']]]]] = None,
+                                            timeouts: pulumi.Input[Optional[Optional[Union['GetOrganizationUserGroupListTimeoutsArgs', 'GetOrganizationUserGroupListTimeoutsArgsDict', 'outputs.GetOrganizationUserGroupListTimeoutsResult']]]] = None,
+                                            user_groups: pulumi.Input[Optional[Optional[Sequence[Union['GetOrganizationUserGroupListUserGroupArgs', 'GetOrganizationUserGroupListUserGroupArgsDict', 'outputs.GetOrganizationUserGroupListUserGroupResult']]]]] = None,
                                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOrganizationUserGroupListResult]:
     """
     List all user groups within an organization.
@@ -134,7 +134,7 @@ def get_organization_user_group_list_output(organization_id: pulumi.Input[Option
 
 
     :param _builtins.str organization_id: ID of an organization.
-    :param Sequence[Union['GetOrganizationUserGroupListUserGroupArgs', 'GetOrganizationUserGroupListUserGroupArgsDict']] user_groups: User Groups.
+    :param Sequence[Union['GetOrganizationUserGroupListUserGroupArgs', 'GetOrganizationUserGroupListUserGroupArgsDict', 'outputs.GetOrganizationUserGroupListUserGroupResult']] user_groups: User Groups.
     """
     __args__ = dict()
     __args__['organizationId'] = organization_id

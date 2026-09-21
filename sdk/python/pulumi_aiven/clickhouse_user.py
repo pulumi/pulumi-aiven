@@ -296,7 +296,7 @@ class ClickhouseUser(pulumi.CustomResource):
                  password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  service_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['ClickhouseUserTimeoutsArgs', 'ClickhouseUserTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['ClickhouseUserTimeoutsArgs', 'ClickhouseUserTimeoutsArgsDict', 'outputs.ClickhouseUserTimeouts']]] = None,
                  username: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -383,7 +383,7 @@ class ClickhouseUser(pulumi.CustomResource):
                  password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  service_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['ClickhouseUserTimeoutsArgs', 'ClickhouseUserTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['ClickhouseUserTimeoutsArgs', 'ClickhouseUserTimeoutsArgsDict', 'outputs.ClickhouseUserTimeouts']]] = None,
                  username: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -427,7 +427,7 @@ class ClickhouseUser(pulumi.CustomResource):
             project: pulumi.Input[Optional[_builtins.str]] = None,
             required: pulumi.Input[Optional[_builtins.bool]] = None,
             service_name: pulumi.Input[Optional[_builtins.str]] = None,
-            timeouts: pulumi.Input[Optional[Union['ClickhouseUserTimeoutsArgs', 'ClickhouseUserTimeoutsArgsDict']]] = None,
+            timeouts: pulumi.Input[Optional[Union['ClickhouseUserTimeoutsArgs', 'ClickhouseUserTimeoutsArgsDict', 'outputs.ClickhouseUserTimeouts']]] = None,
             username: pulumi.Input[Optional[_builtins.str]] = None,
             uuid: pulumi.Input[Optional[_builtins.str]] = None) -> 'ClickhouseUser':
         """

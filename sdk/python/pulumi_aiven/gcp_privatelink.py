@@ -182,7 +182,7 @@ class GcpPrivatelink(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  service_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['GcpPrivatelinkTimeoutsArgs', 'GcpPrivatelinkTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['GcpPrivatelinkTimeoutsArgs', 'GcpPrivatelinkTimeoutsArgsDict', 'outputs.GcpPrivatelinkTimeouts']]] = None,
                  __props__=None):
         """
         Creates and manages a Google Private Service Connect for an Aiven service in a VPC. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
@@ -254,7 +254,7 @@ class GcpPrivatelink(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  service_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['GcpPrivatelinkTimeoutsArgs', 'GcpPrivatelinkTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['GcpPrivatelinkTimeoutsArgs', 'GcpPrivatelinkTimeoutsArgsDict', 'outputs.GcpPrivatelinkTimeouts']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -289,7 +289,7 @@ class GcpPrivatelink(pulumi.CustomResource):
             project: pulumi.Input[Optional[_builtins.str]] = None,
             service_name: pulumi.Input[Optional[_builtins.str]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
-            timeouts: pulumi.Input[Optional[Union['GcpPrivatelinkTimeoutsArgs', 'GcpPrivatelinkTimeoutsArgsDict']]] = None) -> 'GcpPrivatelink':
+            timeouts: pulumi.Input[Optional[Union['GcpPrivatelinkTimeoutsArgs', 'GcpPrivatelinkTimeoutsArgsDict', 'outputs.GcpPrivatelinkTimeouts']]] = None) -> 'GcpPrivatelink':
         """
         Get an existing GcpPrivatelink resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

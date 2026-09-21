@@ -112,7 +112,7 @@ class AwaitableGetClickhouseDatabaseResult(GetClickhouseDatabaseResult):
 def get_clickhouse_database(name: Optional[_builtins.str] = None,
                             project: Optional[_builtins.str] = None,
                             service_name: Optional[_builtins.str] = None,
-                            timeouts: Optional[Union['GetClickhouseDatabaseTimeoutsArgs', 'GetClickhouseDatabaseTimeoutsArgsDict']] = None,
+                            timeouts: Optional[Union['GetClickhouseDatabaseTimeoutsArgs', 'GetClickhouseDatabaseTimeoutsArgsDict', 'outputs.GetClickhouseDatabaseTimeoutsResult']] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClickhouseDatabaseResult:
     """
     Gets information about an Aiven for ClickHouse database.
@@ -151,7 +151,7 @@ def get_clickhouse_database(name: Optional[_builtins.str] = None,
 def get_clickhouse_database_output(name: pulumi.Input[Optional[_builtins.str]] = None,
                                    project: pulumi.Input[Optional[_builtins.str]] = None,
                                    service_name: pulumi.Input[Optional[_builtins.str]] = None,
-                                   timeouts: pulumi.Input[Optional[Optional[Union['GetClickhouseDatabaseTimeoutsArgs', 'GetClickhouseDatabaseTimeoutsArgsDict']]]] = None,
+                                   timeouts: pulumi.Input[Optional[Optional[Union['GetClickhouseDatabaseTimeoutsArgs', 'GetClickhouseDatabaseTimeoutsArgsDict', 'outputs.GetClickhouseDatabaseTimeoutsResult']]]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetClickhouseDatabaseResult]:
     """
     Gets information about an Aiven for ClickHouse database.

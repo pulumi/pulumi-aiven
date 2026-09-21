@@ -615,7 +615,7 @@ class BillingGroup(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  parent_id: pulumi.Input[Optional[_builtins.str]] = None,
                  state: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['BillingGroupTimeoutsArgs', 'BillingGroupTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['BillingGroupTimeoutsArgs', 'BillingGroupTimeoutsArgsDict', 'outputs.BillingGroupTimeouts']]] = None,
                  vat_id: pulumi.Input[Optional[_builtins.str]] = None,
                  zip_code: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -747,7 +747,7 @@ class BillingGroup(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  parent_id: pulumi.Input[Optional[_builtins.str]] = None,
                  state: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['BillingGroupTimeoutsArgs', 'BillingGroupTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['BillingGroupTimeoutsArgs', 'BillingGroupTimeoutsArgsDict', 'outputs.BillingGroupTimeouts']]] = None,
                  vat_id: pulumi.Input[Optional[_builtins.str]] = None,
                  zip_code: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -804,7 +804,7 @@ class BillingGroup(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             parent_id: pulumi.Input[Optional[_builtins.str]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
-            timeouts: pulumi.Input[Optional[Union['BillingGroupTimeoutsArgs', 'BillingGroupTimeoutsArgsDict']]] = None,
+            timeouts: pulumi.Input[Optional[Union['BillingGroupTimeoutsArgs', 'BillingGroupTimeoutsArgsDict', 'outputs.BillingGroupTimeouts']]] = None,
             vat_id: pulumi.Input[Optional[_builtins.str]] = None,
             zip_code: pulumi.Input[Optional[_builtins.str]] = None) -> 'BillingGroup':
         """

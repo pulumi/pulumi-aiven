@@ -308,7 +308,7 @@ class ConnectionPool(pulumi.CustomResource):
                  pool_size: pulumi.Input[Optional[_builtins.int]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  service_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['ConnectionPoolTimeoutsArgs', 'ConnectionPoolTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['ConnectionPoolTimeoutsArgs', 'ConnectionPoolTimeoutsArgsDict', 'outputs.ConnectionPoolTimeouts']]] = None,
                  username: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -400,7 +400,7 @@ class ConnectionPool(pulumi.CustomResource):
                  pool_size: pulumi.Input[Optional[_builtins.int]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  service_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['ConnectionPoolTimeoutsArgs', 'ConnectionPoolTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['ConnectionPoolTimeoutsArgs', 'ConnectionPoolTimeoutsArgsDict', 'outputs.ConnectionPoolTimeouts']]] = None,
                  username: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -447,7 +447,7 @@ class ConnectionPool(pulumi.CustomResource):
             pool_size: pulumi.Input[Optional[_builtins.int]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             service_name: pulumi.Input[Optional[_builtins.str]] = None,
-            timeouts: pulumi.Input[Optional[Union['ConnectionPoolTimeoutsArgs', 'ConnectionPoolTimeoutsArgsDict']]] = None,
+            timeouts: pulumi.Input[Optional[Union['ConnectionPoolTimeoutsArgs', 'ConnectionPoolTimeoutsArgsDict', 'outputs.ConnectionPoolTimeouts']]] = None,
             username: pulumi.Input[Optional[_builtins.str]] = None) -> 'ConnectionPool':
         """
         Get an existing ConnectionPool resource's state with the given name, id, and optional extra

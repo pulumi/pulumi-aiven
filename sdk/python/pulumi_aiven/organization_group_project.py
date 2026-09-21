@@ -162,7 +162,7 @@ class OrganizationGroupProject(pulumi.CustomResource):
                  group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  role: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['OrganizationGroupProjectTimeoutsArgs', 'OrganizationGroupProjectTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['OrganizationGroupProjectTimeoutsArgs', 'OrganizationGroupProjectTimeoutsArgsDict', 'outputs.OrganizationGroupProjectTimeouts']]] = None,
                  __props__=None):
         """
         Adds and manages a group of users as members of a project.
@@ -268,7 +268,7 @@ class OrganizationGroupProject(pulumi.CustomResource):
                  group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  role: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['OrganizationGroupProjectTimeoutsArgs', 'OrganizationGroupProjectTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['OrganizationGroupProjectTimeoutsArgs', 'OrganizationGroupProjectTimeoutsArgsDict', 'outputs.OrganizationGroupProjectTimeouts']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -301,7 +301,7 @@ class OrganizationGroupProject(pulumi.CustomResource):
             group_id: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             role: pulumi.Input[Optional[_builtins.str]] = None,
-            timeouts: pulumi.Input[Optional[Union['OrganizationGroupProjectTimeoutsArgs', 'OrganizationGroupProjectTimeoutsArgsDict']]] = None) -> 'OrganizationGroupProject':
+            timeouts: pulumi.Input[Optional[Union['OrganizationGroupProjectTimeoutsArgs', 'OrganizationGroupProjectTimeoutsArgsDict', 'outputs.OrganizationGroupProjectTimeouts']]] = None) -> 'OrganizationGroupProject':
         """
         Get an existing OrganizationGroupProject resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

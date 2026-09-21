@@ -84,9 +84,9 @@ class AwaitableGetOrganizationBillingGroupListResult(GetOrganizationBillingGroup
             timeouts=self.timeouts)
 
 
-def get_organization_billing_group_list(billing_groups: Optional[Sequence[Union['GetOrganizationBillingGroupListBillingGroupArgs', 'GetOrganizationBillingGroupListBillingGroupArgsDict']]] = None,
+def get_organization_billing_group_list(billing_groups: Optional[Sequence[Union['GetOrganizationBillingGroupListBillingGroupArgs', 'GetOrganizationBillingGroupListBillingGroupArgsDict', 'outputs.GetOrganizationBillingGroupListBillingGroupResult']]] = None,
                                         organization_id: Optional[_builtins.str] = None,
-                                        timeouts: Optional[Union['GetOrganizationBillingGroupListTimeoutsArgs', 'GetOrganizationBillingGroupListTimeoutsArgsDict']] = None,
+                                        timeouts: Optional[Union['GetOrganizationBillingGroupListTimeoutsArgs', 'GetOrganizationBillingGroupListTimeoutsArgsDict', 'outputs.GetOrganizationBillingGroupListTimeoutsResult']] = None,
                                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOrganizationBillingGroupListResult:
     """
     Lists billing groups for an organization.
@@ -101,7 +101,7 @@ def get_organization_billing_group_list(billing_groups: Optional[Sequence[Union[
     ```
 
 
-    :param Sequence[Union['GetOrganizationBillingGroupListBillingGroupArgs', 'GetOrganizationBillingGroupListBillingGroupArgsDict']] billing_groups: A list of all billing groups belonging to the organization.
+    :param Sequence[Union['GetOrganizationBillingGroupListBillingGroupArgs', 'GetOrganizationBillingGroupListBillingGroupArgsDict', 'outputs.GetOrganizationBillingGroupListBillingGroupResult']] billing_groups: A list of all billing groups belonging to the organization.
     :param _builtins.str organization_id: ID of an organization.
     """
     __args__ = dict()
@@ -116,9 +116,9 @@ def get_organization_billing_group_list(billing_groups: Optional[Sequence[Union[
         id=pulumi.get(__ret__, 'id'),
         organization_id=pulumi.get(__ret__, 'organization_id'),
         timeouts=pulumi.get(__ret__, 'timeouts'))
-def get_organization_billing_group_list_output(billing_groups: pulumi.Input[Optional[Optional[Sequence[Union['GetOrganizationBillingGroupListBillingGroupArgs', 'GetOrganizationBillingGroupListBillingGroupArgsDict']]]]] = None,
+def get_organization_billing_group_list_output(billing_groups: pulumi.Input[Optional[Optional[Sequence[Union['GetOrganizationBillingGroupListBillingGroupArgs', 'GetOrganizationBillingGroupListBillingGroupArgsDict', 'outputs.GetOrganizationBillingGroupListBillingGroupResult']]]]] = None,
                                                organization_id: pulumi.Input[Optional[_builtins.str]] = None,
-                                               timeouts: pulumi.Input[Optional[Optional[Union['GetOrganizationBillingGroupListTimeoutsArgs', 'GetOrganizationBillingGroupListTimeoutsArgsDict']]]] = None,
+                                               timeouts: pulumi.Input[Optional[Optional[Union['GetOrganizationBillingGroupListTimeoutsArgs', 'GetOrganizationBillingGroupListTimeoutsArgsDict', 'outputs.GetOrganizationBillingGroupListTimeoutsResult']]]] = None,
                                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOrganizationBillingGroupListResult]:
     """
     Lists billing groups for an organization.
@@ -133,7 +133,7 @@ def get_organization_billing_group_list_output(billing_groups: pulumi.Input[Opti
     ```
 
 
-    :param Sequence[Union['GetOrganizationBillingGroupListBillingGroupArgs', 'GetOrganizationBillingGroupListBillingGroupArgsDict']] billing_groups: A list of all billing groups belonging to the organization.
+    :param Sequence[Union['GetOrganizationBillingGroupListBillingGroupArgs', 'GetOrganizationBillingGroupListBillingGroupArgsDict', 'outputs.GetOrganizationBillingGroupListBillingGroupResult']] billing_groups: A list of all billing groups belonging to the organization.
     :param _builtins.str organization_id: ID of an organization.
     """
     __args__ = dict()

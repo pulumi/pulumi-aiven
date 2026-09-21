@@ -275,7 +275,7 @@ class UpgradeStep(pulumi.CustomResource):
                  organization_id: pulumi.Input[Optional[_builtins.str]] = None,
                  source_project_name: pulumi.Input[Optional[_builtins.str]] = None,
                  source_service_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['UpgradeStepTimeoutsArgs', 'UpgradeStepTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['UpgradeStepTimeoutsArgs', 'UpgradeStepTimeoutsArgsDict', 'outputs.UpgradeStepTimeouts']]] = None,
                  __props__=None):
         """
         Creates and manages an Aiven Upgrade Pipeline step between source and destination services.
@@ -369,7 +369,7 @@ class UpgradeStep(pulumi.CustomResource):
                  organization_id: pulumi.Input[Optional[_builtins.str]] = None,
                  source_project_name: pulumi.Input[Optional[_builtins.str]] = None,
                  source_service_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['UpgradeStepTimeoutsArgs', 'UpgradeStepTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['UpgradeStepTimeoutsArgs', 'UpgradeStepTimeoutsArgsDict', 'outputs.UpgradeStepTimeouts']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -414,7 +414,7 @@ class UpgradeStep(pulumi.CustomResource):
             source_project_name: pulumi.Input[Optional[_builtins.str]] = None,
             source_service_name: pulumi.Input[Optional[_builtins.str]] = None,
             step_id: pulumi.Input[Optional[_builtins.str]] = None,
-            timeouts: pulumi.Input[Optional[Union['UpgradeStepTimeoutsArgs', 'UpgradeStepTimeoutsArgsDict']]] = None) -> 'UpgradeStep':
+            timeouts: pulumi.Input[Optional[Union['UpgradeStepTimeoutsArgs', 'UpgradeStepTimeoutsArgsDict', 'outputs.UpgradeStepTimeouts']]] = None) -> 'UpgradeStep':
         """
         Get an existing UpgradeStep resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

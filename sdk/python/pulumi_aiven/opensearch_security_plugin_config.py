@@ -210,7 +210,7 @@ class OpensearchSecurityPluginConfig(pulumi.CustomResource):
                  admin_password: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  service_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['OpensearchSecurityPluginConfigTimeoutsArgs', 'OpensearchSecurityPluginConfigTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['OpensearchSecurityPluginConfigTimeoutsArgs', 'OpensearchSecurityPluginConfigTimeoutsArgsDict', 'outputs.OpensearchSecurityPluginConfigTimeouts']]] = None,
                  __props__=None):
         """
         Enables and manages [OpenSearch Security for an Aiven for OpenSearch® service](https://aiven.io/docs/products/opensearch/concepts/os-security).
@@ -294,7 +294,7 @@ class OpensearchSecurityPluginConfig(pulumi.CustomResource):
                  admin_password: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  service_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['OpensearchSecurityPluginConfigTimeoutsArgs', 'OpensearchSecurityPluginConfigTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['OpensearchSecurityPluginConfigTimeoutsArgs', 'OpensearchSecurityPluginConfigTimeoutsArgsDict', 'outputs.OpensearchSecurityPluginConfigTimeouts']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -335,7 +335,7 @@ class OpensearchSecurityPluginConfig(pulumi.CustomResource):
             enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             service_name: pulumi.Input[Optional[_builtins.str]] = None,
-            timeouts: pulumi.Input[Optional[Union['OpensearchSecurityPluginConfigTimeoutsArgs', 'OpensearchSecurityPluginConfigTimeoutsArgsDict']]] = None) -> 'OpensearchSecurityPluginConfig':
+            timeouts: pulumi.Input[Optional[Union['OpensearchSecurityPluginConfigTimeoutsArgs', 'OpensearchSecurityPluginConfigTimeoutsArgsDict', 'outputs.OpensearchSecurityPluginConfigTimeouts']]] = None) -> 'OpensearchSecurityPluginConfig':
         """
         Get an existing OpensearchSecurityPluginConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

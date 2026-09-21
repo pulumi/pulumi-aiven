@@ -85,7 +85,7 @@ class AwaitableGetCmkAccessorAzureResult(GetCmkAccessorAzureResult):
 
 
 def get_cmk_accessor_azure(project: Optional[_builtins.str] = None,
-                           timeouts: Optional[Union['GetCmkAccessorAzureTimeoutsArgs', 'GetCmkAccessorAzureTimeoutsArgsDict']] = None,
+                           timeouts: Optional[Union['GetCmkAccessorAzureTimeoutsArgs', 'GetCmkAccessorAzureTimeoutsArgsDict', 'outputs.GetCmkAccessorAzureTimeoutsResult']] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCmkAccessorAzureResult:
     """
     Gets the Azure CMK accessor for an Aiven project. The accessor is used to authenticate Aiven to your Azure Key Vault.
@@ -114,7 +114,7 @@ def get_cmk_accessor_azure(project: Optional[_builtins.str] = None,
         project=pulumi.get(__ret__, 'project'),
         timeouts=pulumi.get(__ret__, 'timeouts'))
 def get_cmk_accessor_azure_output(project: pulumi.Input[Optional[_builtins.str]] = None,
-                                  timeouts: pulumi.Input[Optional[Optional[Union['GetCmkAccessorAzureTimeoutsArgs', 'GetCmkAccessorAzureTimeoutsArgsDict']]]] = None,
+                                  timeouts: pulumi.Input[Optional[Optional[Union['GetCmkAccessorAzureTimeoutsArgs', 'GetCmkAccessorAzureTimeoutsArgsDict', 'outputs.GetCmkAccessorAzureTimeoutsResult']]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCmkAccessorAzureResult]:
     """
     Gets the Azure CMK accessor for an Aiven project. The accessor is used to authenticate Aiven to your Azure Key Vault.

@@ -361,7 +361,7 @@ class MysqlUser(pulumi.CustomResource):
                  password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  service_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['MysqlUserTimeoutsArgs', 'MysqlUserTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['MysqlUserTimeoutsArgs', 'MysqlUserTimeoutsArgsDict', 'outputs.MysqlUserTimeouts']]] = None,
                  username: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -452,7 +452,7 @@ class MysqlUser(pulumi.CustomResource):
                  password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  service_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['MysqlUserTimeoutsArgs', 'MysqlUserTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['MysqlUserTimeoutsArgs', 'MysqlUserTimeoutsArgsDict', 'outputs.MysqlUserTimeouts']]] = None,
                  username: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -502,7 +502,7 @@ class MysqlUser(pulumi.CustomResource):
             password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             service_name: pulumi.Input[Optional[_builtins.str]] = None,
-            timeouts: pulumi.Input[Optional[Union['MysqlUserTimeoutsArgs', 'MysqlUserTimeoutsArgsDict']]] = None,
+            timeouts: pulumi.Input[Optional[Union['MysqlUserTimeoutsArgs', 'MysqlUserTimeoutsArgsDict', 'outputs.MysqlUserTimeouts']]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None,
             username: pulumi.Input[Optional[_builtins.str]] = None) -> 'MysqlUser':
         """

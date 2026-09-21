@@ -227,7 +227,7 @@ class OrganizationUserGroup(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  organization_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['OrganizationUserGroupTimeoutsArgs', 'OrganizationUserGroupTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['OrganizationUserGroupTimeoutsArgs', 'OrganizationUserGroupTimeoutsArgsDict', 'outputs.OrganizationUserGroupTimeouts']]] = None,
                  __props__=None):
         """
         Creates and manages a [user group](https://aiven.io/docs/platform/howto/list-groups) in an organization.
@@ -303,7 +303,7 @@ class OrganizationUserGroup(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  organization_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['OrganizationUserGroupTimeoutsArgs', 'OrganizationUserGroupTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['OrganizationUserGroupTimeoutsArgs', 'OrganizationUserGroupTimeoutsArgsDict', 'outputs.OrganizationUserGroupTimeouts']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -341,7 +341,7 @@ class OrganizationUserGroup(pulumi.CustomResource):
             managed_by_scim: pulumi.Input[Optional[_builtins.bool]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             organization_id: pulumi.Input[Optional[_builtins.str]] = None,
-            timeouts: pulumi.Input[Optional[Union['OrganizationUserGroupTimeoutsArgs', 'OrganizationUserGroupTimeoutsArgsDict']]] = None,
+            timeouts: pulumi.Input[Optional[Union['OrganizationUserGroupTimeoutsArgs', 'OrganizationUserGroupTimeoutsArgsDict', 'outputs.OrganizationUserGroupTimeouts']]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'OrganizationUserGroup':
         """
         Get an existing OrganizationUserGroup resource's state with the given name, id, and optional extra

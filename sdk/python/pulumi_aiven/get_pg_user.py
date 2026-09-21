@@ -170,7 +170,7 @@ class AwaitableGetPgUserResult(GetPgUserResult):
 
 def get_pg_user(project: Optional[_builtins.str] = None,
                 service_name: Optional[_builtins.str] = None,
-                timeouts: Optional[Union['GetPgUserTimeoutsArgs', 'GetPgUserTimeoutsArgsDict']] = None,
+                timeouts: Optional[Union['GetPgUserTimeoutsArgs', 'GetPgUserTimeoutsArgsDict', 'outputs.GetPgUserTimeoutsResult']] = None,
                 username: Optional[_builtins.str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPgUserResult:
     """
@@ -214,7 +214,7 @@ def get_pg_user(project: Optional[_builtins.str] = None,
         username=pulumi.get(__ret__, 'username'))
 def get_pg_user_output(project: pulumi.Input[Optional[_builtins.str]] = None,
                        service_name: pulumi.Input[Optional[_builtins.str]] = None,
-                       timeouts: pulumi.Input[Optional[Optional[Union['GetPgUserTimeoutsArgs', 'GetPgUserTimeoutsArgsDict']]]] = None,
+                       timeouts: pulumi.Input[Optional[Optional[Union['GetPgUserTimeoutsArgs', 'GetPgUserTimeoutsArgsDict', 'outputs.GetPgUserTimeoutsResult']]]] = None,
                        username: pulumi.Input[Optional[_builtins.str]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPgUserResult]:
     """

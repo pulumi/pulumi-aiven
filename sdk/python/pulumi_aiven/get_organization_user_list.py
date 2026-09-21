@@ -86,8 +86,8 @@ class AwaitableGetOrganizationUserListResult(GetOrganizationUserListResult):
 
 def get_organization_user_list(id: Optional[_builtins.str] = None,
                                name: Optional[_builtins.str] = None,
-                               timeouts: Optional[Union['GetOrganizationUserListTimeoutsArgs', 'GetOrganizationUserListTimeoutsArgsDict']] = None,
-                               users: Optional[Sequence[Union['GetOrganizationUserListUserArgs', 'GetOrganizationUserListUserArgsDict']]] = None,
+                               timeouts: Optional[Union['GetOrganizationUserListTimeoutsArgs', 'GetOrganizationUserListTimeoutsArgsDict', 'outputs.GetOrganizationUserListTimeoutsResult']] = None,
+                               users: Optional[Sequence[Union['GetOrganizationUserListUserArgs', 'GetOrganizationUserListUserArgsDict', 'outputs.GetOrganizationUserListUserResult']]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOrganizationUserListResult:
     """
     Returns a list of [users in the organization](https://aiven.io/docs/platform/concepts/user-access-management), their profile details, and other data . This includes users you add to your organization and application users.
@@ -104,7 +104,7 @@ def get_organization_user_list(id: Optional[_builtins.str] = None,
 
     :param _builtins.str id: ID of an organization. Exactly one of the fields must be specified: `id` or `name`.
     :param _builtins.str name: The name of the organization. Exactly one of the fields must be specified: `id` or `name`.
-    :param Sequence[Union['GetOrganizationUserListUserArgs', 'GetOrganizationUserListUserArgsDict']] users: List of users of the organization.
+    :param Sequence[Union['GetOrganizationUserListUserArgs', 'GetOrganizationUserListUserArgsDict', 'outputs.GetOrganizationUserListUserResult']] users: List of users of the organization.
     """
     __args__ = dict()
     __args__['id'] = id
@@ -121,8 +121,8 @@ def get_organization_user_list(id: Optional[_builtins.str] = None,
         users=pulumi.get(__ret__, 'users'))
 def get_organization_user_list_output(id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                       name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                                      timeouts: pulumi.Input[Optional[Optional[Union['GetOrganizationUserListTimeoutsArgs', 'GetOrganizationUserListTimeoutsArgsDict']]]] = None,
-                                      users: pulumi.Input[Optional[Optional[Sequence[Union['GetOrganizationUserListUserArgs', 'GetOrganizationUserListUserArgsDict']]]]] = None,
+                                      timeouts: pulumi.Input[Optional[Optional[Union['GetOrganizationUserListTimeoutsArgs', 'GetOrganizationUserListTimeoutsArgsDict', 'outputs.GetOrganizationUserListTimeoutsResult']]]] = None,
+                                      users: pulumi.Input[Optional[Optional[Sequence[Union['GetOrganizationUserListUserArgs', 'GetOrganizationUserListUserArgsDict', 'outputs.GetOrganizationUserListUserResult']]]]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOrganizationUserListResult]:
     """
     Returns a list of [users in the organization](https://aiven.io/docs/platform/concepts/user-access-management), their profile details, and other data . This includes users you add to your organization and application users.
@@ -139,7 +139,7 @@ def get_organization_user_list_output(id: pulumi.Input[Optional[Optional[_builti
 
     :param _builtins.str id: ID of an organization. Exactly one of the fields must be specified: `id` or `name`.
     :param _builtins.str name: The name of the organization. Exactly one of the fields must be specified: `id` or `name`.
-    :param Sequence[Union['GetOrganizationUserListUserArgs', 'GetOrganizationUserListUserArgsDict']] users: List of users of the organization.
+    :param Sequence[Union['GetOrganizationUserListUserArgs', 'GetOrganizationUserListUserArgsDict', 'outputs.GetOrganizationUserListUserResult']] users: List of users of the organization.
     """
     __args__ = dict()
     __args__['id'] = id

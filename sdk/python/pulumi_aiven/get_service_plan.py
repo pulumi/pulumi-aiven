@@ -228,12 +228,12 @@ class AwaitableGetServicePlanResult(GetServicePlanResult):
             timeouts=self.timeouts)
 
 
-def get_service_plan(backup_configs: Optional[Sequence[Union['GetServicePlanBackupConfigArgs', 'GetServicePlanBackupConfigArgsDict']]] = None,
+def get_service_plan(backup_configs: Optional[Sequence[Union['GetServicePlanBackupConfigArgs', 'GetServicePlanBackupConfigArgsDict', 'outputs.GetServicePlanBackupConfigResult']]] = None,
                      cloud_name: Optional[_builtins.str] = None,
                      project: Optional[_builtins.str] = None,
                      service_plan: Optional[_builtins.str] = None,
                      service_type: Optional[_builtins.str] = None,
-                     timeouts: Optional[Union['GetServicePlanTimeoutsArgs', 'GetServicePlanTimeoutsArgsDict']] = None,
+                     timeouts: Optional[Union['GetServicePlanTimeoutsArgs', 'GetServicePlanTimeoutsArgsDict', 'outputs.GetServicePlanTimeoutsResult']] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServicePlanResult:
     """
     Gets detailed information about a specific service plan, including specifications and pricing for a cloud region.
@@ -242,7 +242,7 @@ def get_service_plan(backup_configs: Optional[Sequence[Union['GetServicePlanBack
     This data source is in the beta stage and may change without notice. Set the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the data source.
 
 
-    :param Sequence[Union['GetServicePlanBackupConfigArgs', 'GetServicePlanBackupConfigArgsDict']] backup_configs: Backup configuration for this service plan.
+    :param Sequence[Union['GetServicePlanBackupConfigArgs', 'GetServicePlanBackupConfigArgsDict', 'outputs.GetServicePlanBackupConfigResult']] backup_configs: Backup configuration for this service plan.
     :param _builtins.str cloud_name: Cloud region name.
     :param _builtins.str project: Project name.
     :param _builtins.str service_plan: Service plan name.
@@ -275,12 +275,12 @@ def get_service_plan(backup_configs: Optional[Sequence[Union['GetServicePlanBack
         service_type=pulumi.get(__ret__, 'service_type'),
         shard_count=pulumi.get(__ret__, 'shard_count'),
         timeouts=pulumi.get(__ret__, 'timeouts'))
-def get_service_plan_output(backup_configs: pulumi.Input[Optional[Optional[Sequence[Union['GetServicePlanBackupConfigArgs', 'GetServicePlanBackupConfigArgsDict']]]]] = None,
+def get_service_plan_output(backup_configs: pulumi.Input[Optional[Optional[Sequence[Union['GetServicePlanBackupConfigArgs', 'GetServicePlanBackupConfigArgsDict', 'outputs.GetServicePlanBackupConfigResult']]]]] = None,
                             cloud_name: pulumi.Input[Optional[_builtins.str]] = None,
                             project: pulumi.Input[Optional[_builtins.str]] = None,
                             service_plan: pulumi.Input[Optional[_builtins.str]] = None,
                             service_type: pulumi.Input[Optional[_builtins.str]] = None,
-                            timeouts: pulumi.Input[Optional[Optional[Union['GetServicePlanTimeoutsArgs', 'GetServicePlanTimeoutsArgsDict']]]] = None,
+                            timeouts: pulumi.Input[Optional[Optional[Union['GetServicePlanTimeoutsArgs', 'GetServicePlanTimeoutsArgsDict', 'outputs.GetServicePlanTimeoutsResult']]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServicePlanResult]:
     """
     Gets detailed information about a specific service plan, including specifications and pricing for a cloud region.
@@ -289,7 +289,7 @@ def get_service_plan_output(backup_configs: pulumi.Input[Optional[Optional[Seque
     This data source is in the beta stage and may change without notice. Set the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the data source.
 
 
-    :param Sequence[Union['GetServicePlanBackupConfigArgs', 'GetServicePlanBackupConfigArgsDict']] backup_configs: Backup configuration for this service plan.
+    :param Sequence[Union['GetServicePlanBackupConfigArgs', 'GetServicePlanBackupConfigArgsDict', 'outputs.GetServicePlanBackupConfigResult']] backup_configs: Backup configuration for this service plan.
     :param _builtins.str cloud_name: Cloud region name.
     :param _builtins.str project: Project name.
     :param _builtins.str service_plan: Service plan name.

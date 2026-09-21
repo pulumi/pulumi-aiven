@@ -158,7 +158,7 @@ class AwaitableGetOrganizationVpcResult(GetOrganizationVpcResult):
 
 def get_organization_vpc(organization_id: Optional[_builtins.str] = None,
                          organization_vpc_id: Optional[_builtins.str] = None,
-                         timeouts: Optional[Union['GetOrganizationVpcTimeoutsArgs', 'GetOrganizationVpcTimeoutsArgsDict']] = None,
+                         timeouts: Optional[Union['GetOrganizationVpcTimeoutsArgs', 'GetOrganizationVpcTimeoutsArgsDict', 'outputs.GetOrganizationVpcTimeoutsResult']] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOrganizationVpcResult:
     """
     Gets information about an existing VPC in an Aiven organization.
@@ -197,7 +197,7 @@ def get_organization_vpc(organization_id: Optional[_builtins.str] = None,
         update_time=pulumi.get(__ret__, 'update_time'))
 def get_organization_vpc_output(organization_id: pulumi.Input[Optional[_builtins.str]] = None,
                                 organization_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
-                                timeouts: pulumi.Input[Optional[Optional[Union['GetOrganizationVpcTimeoutsArgs', 'GetOrganizationVpcTimeoutsArgsDict']]]] = None,
+                                timeouts: pulumi.Input[Optional[Optional[Union['GetOrganizationVpcTimeoutsArgs', 'GetOrganizationVpcTimeoutsArgsDict', 'outputs.GetOrganizationVpcTimeoutsResult']]]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOrganizationVpcResult]:
     """
     Gets information about an existing VPC in an Aiven organization.

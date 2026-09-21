@@ -240,7 +240,7 @@ class KafkaAcl(pulumi.CustomResource):
                  permission: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  service_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['KafkaAclTimeoutsArgs', 'KafkaAclTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['KafkaAclTimeoutsArgs', 'KafkaAclTimeoutsArgsDict', 'outputs.KafkaAclTimeouts']]] = None,
                  topic: pulumi.Input[Optional[_builtins.str]] = None,
                  username: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -328,7 +328,7 @@ class KafkaAcl(pulumi.CustomResource):
                  permission: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  service_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['KafkaAclTimeoutsArgs', 'KafkaAclTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['KafkaAclTimeoutsArgs', 'KafkaAclTimeoutsArgsDict', 'outputs.KafkaAclTimeouts']]] = None,
                  topic: pulumi.Input[Optional[_builtins.str]] = None,
                  username: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -371,7 +371,7 @@ class KafkaAcl(pulumi.CustomResource):
             permission: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             service_name: pulumi.Input[Optional[_builtins.str]] = None,
-            timeouts: pulumi.Input[Optional[Union['KafkaAclTimeoutsArgs', 'KafkaAclTimeoutsArgsDict']]] = None,
+            timeouts: pulumi.Input[Optional[Union['KafkaAclTimeoutsArgs', 'KafkaAclTimeoutsArgsDict', 'outputs.KafkaAclTimeouts']]] = None,
             topic: pulumi.Input[Optional[_builtins.str]] = None,
             username: pulumi.Input[Optional[_builtins.str]] = None) -> 'KafkaAcl':
         """

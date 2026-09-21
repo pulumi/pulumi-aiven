@@ -340,7 +340,7 @@ class OrganizationAddress(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  organization_id: pulumi.Input[Optional[_builtins.str]] = None,
                  state: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['OrganizationAddressTimeoutsArgs', 'OrganizationAddressTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['OrganizationAddressTimeoutsArgs', 'OrganizationAddressTimeoutsArgsDict', 'outputs.OrganizationAddressTimeouts']]] = None,
                  zip_code: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -438,7 +438,7 @@ class OrganizationAddress(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  organization_id: pulumi.Input[Optional[_builtins.str]] = None,
                  state: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['OrganizationAddressTimeoutsArgs', 'OrganizationAddressTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['OrganizationAddressTimeoutsArgs', 'OrganizationAddressTimeoutsArgsDict', 'outputs.OrganizationAddressTimeouts']]] = None,
                  zip_code: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -486,7 +486,7 @@ class OrganizationAddress(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             organization_id: pulumi.Input[Optional[_builtins.str]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
-            timeouts: pulumi.Input[Optional[Union['OrganizationAddressTimeoutsArgs', 'OrganizationAddressTimeoutsArgsDict']]] = None,
+            timeouts: pulumi.Input[Optional[Union['OrganizationAddressTimeoutsArgs', 'OrganizationAddressTimeoutsArgsDict', 'outputs.OrganizationAddressTimeouts']]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None,
             zip_code: pulumi.Input[Optional[_builtins.str]] = None) -> 'OrganizationAddress':
         """

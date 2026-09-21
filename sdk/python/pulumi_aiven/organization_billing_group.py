@@ -380,14 +380,14 @@ class OrganizationBillingGroup(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  billing_address_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 billing_contact_emails: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OrganizationBillingGroupBillingContactEmailArgs', 'OrganizationBillingGroupBillingContactEmailArgsDict']]]]] = None,
-                 billing_emails: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OrganizationBillingGroupBillingEmailArgs', 'OrganizationBillingGroupBillingEmailArgsDict']]]]] = None,
+                 billing_contact_emails: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OrganizationBillingGroupBillingContactEmailArgs', 'OrganizationBillingGroupBillingContactEmailArgsDict', 'outputs.OrganizationBillingGroupBillingContactEmail']]]]] = None,
+                 billing_emails: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OrganizationBillingGroupBillingEmailArgs', 'OrganizationBillingGroupBillingEmailArgsDict', 'outputs.OrganizationBillingGroupBillingEmail']]]]] = None,
                  billing_group_name: pulumi.Input[Optional[_builtins.str]] = None,
                  custom_invoice_text: pulumi.Input[Optional[_builtins.str]] = None,
                  organization_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 payment_method: pulumi.Input[Optional[Union['OrganizationBillingGroupPaymentMethodArgs', 'OrganizationBillingGroupPaymentMethodArgsDict']]] = None,
+                 payment_method: pulumi.Input[Optional[Union['OrganizationBillingGroupPaymentMethodArgs', 'OrganizationBillingGroupPaymentMethodArgsDict', 'outputs.OrganizationBillingGroupPaymentMethod']]] = None,
                  shipping_address_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['OrganizationBillingGroupTimeoutsArgs', 'OrganizationBillingGroupTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['OrganizationBillingGroupTimeoutsArgs', 'OrganizationBillingGroupTimeoutsArgsDict', 'outputs.OrganizationBillingGroupTimeouts']]] = None,
                  vat_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -428,12 +428,12 @@ class OrganizationBillingGroup(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] billing_address_id: Billing address ID. Maximum length: `36`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['OrganizationBillingGroupBillingContactEmailArgs', 'OrganizationBillingGroupBillingContactEmailArgsDict']]]] billing_contact_emails: List of billing contact emails.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['OrganizationBillingGroupBillingEmailArgs', 'OrganizationBillingGroupBillingEmailArgsDict']]]] billing_emails: List of billing contact emails.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OrganizationBillingGroupBillingContactEmailArgs', 'OrganizationBillingGroupBillingContactEmailArgsDict', 'outputs.OrganizationBillingGroupBillingContactEmail']]]] billing_contact_emails: List of billing contact emails.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OrganizationBillingGroupBillingEmailArgs', 'OrganizationBillingGroupBillingEmailArgsDict', 'outputs.OrganizationBillingGroupBillingEmail']]]] billing_emails: List of billing contact emails.
         :param pulumi.Input[_builtins.str] billing_group_name: Billing Group Name. Length must be between `1` and `128`.
         :param pulumi.Input[_builtins.str] custom_invoice_text: Extra billing text. Maximum length: `256`.
         :param pulumi.Input[_builtins.str] organization_id: ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[Union['OrganizationBillingGroupPaymentMethodArgs', 'OrganizationBillingGroupPaymentMethodArgsDict']] payment_method: Payment method.
+        :param pulumi.Input[Union['OrganizationBillingGroupPaymentMethodArgs', 'OrganizationBillingGroupPaymentMethodArgsDict', 'outputs.OrganizationBillingGroupPaymentMethod']] payment_method: Payment method.
         :param pulumi.Input[_builtins.str] shipping_address_id: Shipping address ID. Maximum length: `36`.
         :param pulumi.Input[_builtins.str] vat_id: VAT ID.
         """
@@ -494,14 +494,14 @@ class OrganizationBillingGroup(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  billing_address_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 billing_contact_emails: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OrganizationBillingGroupBillingContactEmailArgs', 'OrganizationBillingGroupBillingContactEmailArgsDict']]]]] = None,
-                 billing_emails: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OrganizationBillingGroupBillingEmailArgs', 'OrganizationBillingGroupBillingEmailArgsDict']]]]] = None,
+                 billing_contact_emails: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OrganizationBillingGroupBillingContactEmailArgs', 'OrganizationBillingGroupBillingContactEmailArgsDict', 'outputs.OrganizationBillingGroupBillingContactEmail']]]]] = None,
+                 billing_emails: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OrganizationBillingGroupBillingEmailArgs', 'OrganizationBillingGroupBillingEmailArgsDict', 'outputs.OrganizationBillingGroupBillingEmail']]]]] = None,
                  billing_group_name: pulumi.Input[Optional[_builtins.str]] = None,
                  custom_invoice_text: pulumi.Input[Optional[_builtins.str]] = None,
                  organization_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 payment_method: pulumi.Input[Optional[Union['OrganizationBillingGroupPaymentMethodArgs', 'OrganizationBillingGroupPaymentMethodArgsDict']]] = None,
+                 payment_method: pulumi.Input[Optional[Union['OrganizationBillingGroupPaymentMethodArgs', 'OrganizationBillingGroupPaymentMethodArgsDict', 'outputs.OrganizationBillingGroupPaymentMethod']]] = None,
                  shipping_address_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['OrganizationBillingGroupTimeoutsArgs', 'OrganizationBillingGroupTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['OrganizationBillingGroupTimeoutsArgs', 'OrganizationBillingGroupTimeoutsArgsDict', 'outputs.OrganizationBillingGroupTimeouts']]] = None,
                  vat_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -549,16 +549,16 @@ class OrganizationBillingGroup(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             billing_address_id: pulumi.Input[Optional[_builtins.str]] = None,
-            billing_contact_emails: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OrganizationBillingGroupBillingContactEmailArgs', 'OrganizationBillingGroupBillingContactEmailArgsDict']]]]] = None,
-            billing_emails: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OrganizationBillingGroupBillingEmailArgs', 'OrganizationBillingGroupBillingEmailArgsDict']]]]] = None,
+            billing_contact_emails: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OrganizationBillingGroupBillingContactEmailArgs', 'OrganizationBillingGroupBillingContactEmailArgsDict', 'outputs.OrganizationBillingGroupBillingContactEmail']]]]] = None,
+            billing_emails: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OrganizationBillingGroupBillingEmailArgs', 'OrganizationBillingGroupBillingEmailArgsDict', 'outputs.OrganizationBillingGroupBillingEmail']]]]] = None,
             billing_group_id: pulumi.Input[Optional[_builtins.str]] = None,
             billing_group_name: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             custom_invoice_text: pulumi.Input[Optional[_builtins.str]] = None,
             organization_id: pulumi.Input[Optional[_builtins.str]] = None,
-            payment_method: pulumi.Input[Optional[Union['OrganizationBillingGroupPaymentMethodArgs', 'OrganizationBillingGroupPaymentMethodArgsDict']]] = None,
+            payment_method: pulumi.Input[Optional[Union['OrganizationBillingGroupPaymentMethodArgs', 'OrganizationBillingGroupPaymentMethodArgsDict', 'outputs.OrganizationBillingGroupPaymentMethod']]] = None,
             shipping_address_id: pulumi.Input[Optional[_builtins.str]] = None,
-            timeouts: pulumi.Input[Optional[Union['OrganizationBillingGroupTimeoutsArgs', 'OrganizationBillingGroupTimeoutsArgsDict']]] = None,
+            timeouts: pulumi.Input[Optional[Union['OrganizationBillingGroupTimeoutsArgs', 'OrganizationBillingGroupTimeoutsArgsDict', 'outputs.OrganizationBillingGroupTimeouts']]] = None,
             vat_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'OrganizationBillingGroup':
         """
         Get an existing OrganizationBillingGroup resource's state with the given name, id, and optional extra
@@ -568,14 +568,14 @@ class OrganizationBillingGroup(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] billing_address_id: Billing address ID. Maximum length: `36`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['OrganizationBillingGroupBillingContactEmailArgs', 'OrganizationBillingGroupBillingContactEmailArgsDict']]]] billing_contact_emails: List of billing contact emails.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['OrganizationBillingGroupBillingEmailArgs', 'OrganizationBillingGroupBillingEmailArgsDict']]]] billing_emails: List of billing contact emails.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OrganizationBillingGroupBillingContactEmailArgs', 'OrganizationBillingGroupBillingContactEmailArgsDict', 'outputs.OrganizationBillingGroupBillingContactEmail']]]] billing_contact_emails: List of billing contact emails.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['OrganizationBillingGroupBillingEmailArgs', 'OrganizationBillingGroupBillingEmailArgsDict', 'outputs.OrganizationBillingGroupBillingEmail']]]] billing_emails: List of billing contact emails.
         :param pulumi.Input[_builtins.str] billing_group_id: Billing group ID.
         :param pulumi.Input[_builtins.str] billing_group_name: Billing Group Name. Length must be between `1` and `128`.
         :param pulumi.Input[_builtins.str] create_time: The date when this billing group was created.
         :param pulumi.Input[_builtins.str] custom_invoice_text: Extra billing text. Maximum length: `256`.
         :param pulumi.Input[_builtins.str] organization_id: ID of an organization. Maximum length: `36`. Changing this property forces recreation of the resource.
-        :param pulumi.Input[Union['OrganizationBillingGroupPaymentMethodArgs', 'OrganizationBillingGroupPaymentMethodArgsDict']] payment_method: Payment method.
+        :param pulumi.Input[Union['OrganizationBillingGroupPaymentMethodArgs', 'OrganizationBillingGroupPaymentMethodArgsDict', 'outputs.OrganizationBillingGroupPaymentMethod']] payment_method: Payment method.
         :param pulumi.Input[_builtins.str] shipping_address_id: Shipping address ID. Maximum length: `36`.
         :param pulumi.Input[_builtins.str] vat_id: VAT ID.
         """

@@ -160,7 +160,7 @@ def get_flink_application(application_id: Optional[_builtins.str] = None,
                           name: Optional[_builtins.str] = None,
                           project: Optional[_builtins.str] = None,
                           service_name: Optional[_builtins.str] = None,
-                          timeouts: Optional[Union['GetFlinkApplicationTimeoutsArgs', 'GetFlinkApplicationTimeoutsArgsDict']] = None,
+                          timeouts: Optional[Union['GetFlinkApplicationTimeoutsArgs', 'GetFlinkApplicationTimeoutsArgsDict', 'outputs.GetFlinkApplicationTimeoutsResult']] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFlinkApplicationResult:
     """
     Gets information about an Aiven for Apache Flink® application.
@@ -206,7 +206,7 @@ def get_flink_application_output(application_id: pulumi.Input[Optional[Optional[
                                  name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                  project: pulumi.Input[Optional[_builtins.str]] = None,
                                  service_name: pulumi.Input[Optional[_builtins.str]] = None,
-                                 timeouts: pulumi.Input[Optional[Optional[Union['GetFlinkApplicationTimeoutsArgs', 'GetFlinkApplicationTimeoutsArgsDict']]]] = None,
+                                 timeouts: pulumi.Input[Optional[Optional[Union['GetFlinkApplicationTimeoutsArgs', 'GetFlinkApplicationTimeoutsArgsDict', 'outputs.GetFlinkApplicationTimeoutsResult']]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFlinkApplicationResult]:
     """
     Gets information about an Aiven for Apache Flink® application.

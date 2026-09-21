@@ -321,7 +321,7 @@ class AzureOrgVpcPeeringConnection(pulumi.CustomResource):
                  peer_azure_app_id: pulumi.Input[Optional[_builtins.str]] = None,
                  peer_azure_tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
                  peer_resource_group: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['AzureOrgVpcPeeringConnectionTimeoutsArgs', 'AzureOrgVpcPeeringConnectionTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['AzureOrgVpcPeeringConnectionTimeoutsArgs', 'AzureOrgVpcPeeringConnectionTimeoutsArgsDict', 'outputs.AzureOrgVpcPeeringConnectionTimeouts']]] = None,
                  vnet_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -413,7 +413,7 @@ class AzureOrgVpcPeeringConnection(pulumi.CustomResource):
                  peer_azure_app_id: pulumi.Input[Optional[_builtins.str]] = None,
                  peer_azure_tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
                  peer_resource_group: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['AzureOrgVpcPeeringConnectionTimeoutsArgs', 'AzureOrgVpcPeeringConnectionTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['AzureOrgVpcPeeringConnectionTimeoutsArgs', 'AzureOrgVpcPeeringConnectionTimeoutsArgsDict', 'outputs.AzureOrgVpcPeeringConnectionTimeouts']]] = None,
                  vnet_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -466,7 +466,7 @@ class AzureOrgVpcPeeringConnection(pulumi.CustomResource):
             peer_resource_group: pulumi.Input[Optional[_builtins.str]] = None,
             peering_connection_id: pulumi.Input[Optional[_builtins.str]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
-            timeouts: pulumi.Input[Optional[Union['AzureOrgVpcPeeringConnectionTimeoutsArgs', 'AzureOrgVpcPeeringConnectionTimeoutsArgsDict']]] = None,
+            timeouts: pulumi.Input[Optional[Union['AzureOrgVpcPeeringConnectionTimeoutsArgs', 'AzureOrgVpcPeeringConnectionTimeoutsArgsDict', 'outputs.AzureOrgVpcPeeringConnectionTimeouts']]] = None,
             vnet_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'AzureOrgVpcPeeringConnection':
         """
         Get an existing AzureOrgVpcPeeringConnection resource's state with the given name, id, and optional extra

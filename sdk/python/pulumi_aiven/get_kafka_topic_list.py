@@ -98,8 +98,8 @@ class AwaitableGetKafkaTopicListResult(GetKafkaTopicListResult):
 
 def get_kafka_topic_list(project: Optional[_builtins.str] = None,
                          service_name: Optional[_builtins.str] = None,
-                         timeouts: Optional[Union['GetKafkaTopicListTimeoutsArgs', 'GetKafkaTopicListTimeoutsArgsDict']] = None,
-                         topics: Optional[Sequence[Union['GetKafkaTopicListTopicArgs', 'GetKafkaTopicListTopicArgsDict']]] = None,
+                         timeouts: Optional[Union['GetKafkaTopicListTimeoutsArgs', 'GetKafkaTopicListTimeoutsArgsDict', 'outputs.GetKafkaTopicListTimeoutsResult']] = None,
+                         topics: Optional[Sequence[Union['GetKafkaTopicListTopicArgs', 'GetKafkaTopicListTopicArgsDict', 'outputs.GetKafkaTopicListTopicResult']]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKafkaTopicListResult:
     """
     Lists Kafka topics for a service.
@@ -117,7 +117,7 @@ def get_kafka_topic_list(project: Optional[_builtins.str] = None,
 
     :param _builtins.str project: Project name.
     :param _builtins.str service_name: Service name.
-    :param Sequence[Union['GetKafkaTopicListTopicArgs', 'GetKafkaTopicListTopicArgsDict']] topics: List of Kafka topics.
+    :param Sequence[Union['GetKafkaTopicListTopicArgs', 'GetKafkaTopicListTopicArgsDict', 'outputs.GetKafkaTopicListTopicResult']] topics: List of Kafka topics.
     """
     __args__ = dict()
     __args__['project'] = project
@@ -135,8 +135,8 @@ def get_kafka_topic_list(project: Optional[_builtins.str] = None,
         topics=pulumi.get(__ret__, 'topics'))
 def get_kafka_topic_list_output(project: pulumi.Input[Optional[_builtins.str]] = None,
                                 service_name: pulumi.Input[Optional[_builtins.str]] = None,
-                                timeouts: pulumi.Input[Optional[Optional[Union['GetKafkaTopicListTimeoutsArgs', 'GetKafkaTopicListTimeoutsArgsDict']]]] = None,
-                                topics: pulumi.Input[Optional[Optional[Sequence[Union['GetKafkaTopicListTopicArgs', 'GetKafkaTopicListTopicArgsDict']]]]] = None,
+                                timeouts: pulumi.Input[Optional[Optional[Union['GetKafkaTopicListTimeoutsArgs', 'GetKafkaTopicListTimeoutsArgsDict', 'outputs.GetKafkaTopicListTimeoutsResult']]]] = None,
+                                topics: pulumi.Input[Optional[Optional[Sequence[Union['GetKafkaTopicListTopicArgs', 'GetKafkaTopicListTopicArgsDict', 'outputs.GetKafkaTopicListTopicResult']]]]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKafkaTopicListResult]:
     """
     Lists Kafka topics for a service.
@@ -154,7 +154,7 @@ def get_kafka_topic_list_output(project: pulumi.Input[Optional[_builtins.str]] =
 
     :param _builtins.str project: Project name.
     :param _builtins.str service_name: Service name.
-    :param Sequence[Union['GetKafkaTopicListTopicArgs', 'GetKafkaTopicListTopicArgsDict']] topics: List of Kafka topics.
+    :param Sequence[Union['GetKafkaTopicListTopicArgs', 'GetKafkaTopicListTopicArgsDict', 'outputs.GetKafkaTopicListTopicResult']] topics: List of Kafka topics.
     """
     __args__ = dict()
     __args__['project'] = project

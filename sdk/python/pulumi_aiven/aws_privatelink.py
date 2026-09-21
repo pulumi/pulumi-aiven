@@ -243,7 +243,7 @@ class AwsPrivatelink(pulumi.CustomResource):
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  service_name: pulumi.Input[Optional[_builtins.str]] = None,
                  supported_regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 timeouts: pulumi.Input[Optional[Union['AwsPrivatelinkTimeoutsArgs', 'AwsPrivatelinkTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['AwsPrivatelinkTimeoutsArgs', 'AwsPrivatelinkTimeoutsArgsDict', 'outputs.AwsPrivatelinkTimeouts']]] = None,
                  __props__=None):
         """
         Creates and manages an [AWS PrivateLink for Aiven services](https://aiven.io/docs/platform/howto/use-aws-privatelinks) in a VPC. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
@@ -323,7 +323,7 @@ class AwsPrivatelink(pulumi.CustomResource):
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  service_name: pulumi.Input[Optional[_builtins.str]] = None,
                  supported_regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 timeouts: pulumi.Input[Optional[Union['AwsPrivatelinkTimeoutsArgs', 'AwsPrivatelinkTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['AwsPrivatelinkTimeoutsArgs', 'AwsPrivatelinkTimeoutsArgsDict', 'outputs.AwsPrivatelinkTimeouts']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -364,7 +364,7 @@ class AwsPrivatelink(pulumi.CustomResource):
             service_name: pulumi.Input[Optional[_builtins.str]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
             supported_regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            timeouts: pulumi.Input[Optional[Union['AwsPrivatelinkTimeoutsArgs', 'AwsPrivatelinkTimeoutsArgsDict']]] = None) -> 'AwsPrivatelink':
+            timeouts: pulumi.Input[Optional[Union['AwsPrivatelinkTimeoutsArgs', 'AwsPrivatelinkTimeoutsArgsDict', 'outputs.AwsPrivatelinkTimeouts']]] = None) -> 'AwsPrivatelink':
         """
         Get an existing AwsPrivatelink resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

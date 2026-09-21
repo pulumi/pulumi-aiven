@@ -361,7 +361,7 @@ class PgUser(pulumi.CustomResource):
                  pg_allow_replication: pulumi.Input[Optional[_builtins.bool]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  service_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['PgUserTimeoutsArgs', 'PgUserTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['PgUserTimeoutsArgs', 'PgUserTimeoutsArgsDict', 'outputs.PgUserTimeouts']]] = None,
                  username: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -452,7 +452,7 @@ class PgUser(pulumi.CustomResource):
                  pg_allow_replication: pulumi.Input[Optional[_builtins.bool]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  service_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['PgUserTimeoutsArgs', 'PgUserTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['PgUserTimeoutsArgs', 'PgUserTimeoutsArgsDict', 'outputs.PgUserTimeouts']]] = None,
                  username: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -502,7 +502,7 @@ class PgUser(pulumi.CustomResource):
             pg_allow_replication: pulumi.Input[Optional[_builtins.bool]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             service_name: pulumi.Input[Optional[_builtins.str]] = None,
-            timeouts: pulumi.Input[Optional[Union['PgUserTimeoutsArgs', 'PgUserTimeoutsArgsDict']]] = None,
+            timeouts: pulumi.Input[Optional[Union['PgUserTimeoutsArgs', 'PgUserTimeoutsArgsDict', 'outputs.PgUserTimeouts']]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None,
             username: pulumi.Input[Optional[_builtins.str]] = None) -> 'PgUser':
         """

@@ -182,7 +182,7 @@ class AwaitableGetValkeyUserResult(GetValkeyUserResult):
 
 def get_valkey_user(project: Optional[_builtins.str] = None,
                     service_name: Optional[_builtins.str] = None,
-                    timeouts: Optional[Union['GetValkeyUserTimeoutsArgs', 'GetValkeyUserTimeoutsArgsDict']] = None,
+                    timeouts: Optional[Union['GetValkeyUserTimeoutsArgs', 'GetValkeyUserTimeoutsArgsDict', 'outputs.GetValkeyUserTimeoutsResult']] = None,
                     username: Optional[_builtins.str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetValkeyUserResult:
     """
@@ -227,7 +227,7 @@ def get_valkey_user(project: Optional[_builtins.str] = None,
         valkey_acl_keys=pulumi.get(__ret__, 'valkey_acl_keys'))
 def get_valkey_user_output(project: pulumi.Input[Optional[_builtins.str]] = None,
                            service_name: pulumi.Input[Optional[_builtins.str]] = None,
-                           timeouts: pulumi.Input[Optional[Optional[Union['GetValkeyUserTimeoutsArgs', 'GetValkeyUserTimeoutsArgsDict']]]] = None,
+                           timeouts: pulumi.Input[Optional[Optional[Union['GetValkeyUserTimeoutsArgs', 'GetValkeyUserTimeoutsArgsDict', 'outputs.GetValkeyUserTimeoutsResult']]]] = None,
                            username: pulumi.Input[Optional[_builtins.str]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetValkeyUserResult]:
     """

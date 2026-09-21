@@ -179,7 +179,7 @@ class OrganizationalUnit(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  parent_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['OrganizationalUnitTimeoutsArgs', 'OrganizationalUnitTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['OrganizationalUnitTimeoutsArgs', 'OrganizationalUnitTimeoutsArgsDict', 'outputs.OrganizationalUnitTimeouts']]] = None,
                  __props__=None):
         """
         Creates and manages an [organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) in an Aiven organization.
@@ -251,7 +251,7 @@ class OrganizationalUnit(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  parent_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['OrganizationalUnitTimeoutsArgs', 'OrganizationalUnitTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['OrganizationalUnitTimeoutsArgs', 'OrganizationalUnitTimeoutsArgsDict', 'outputs.OrganizationalUnitTimeouts']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -283,7 +283,7 @@ class OrganizationalUnit(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             parent_id: pulumi.Input[Optional[_builtins.str]] = None,
             tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
-            timeouts: pulumi.Input[Optional[Union['OrganizationalUnitTimeoutsArgs', 'OrganizationalUnitTimeoutsArgsDict']]] = None,
+            timeouts: pulumi.Input[Optional[Union['OrganizationalUnitTimeoutsArgs', 'OrganizationalUnitTimeoutsArgsDict', 'outputs.OrganizationalUnitTimeouts']]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'OrganizationalUnit':
         """
         Get an existing OrganizationalUnit resource's state with the given name, id, and optional extra

@@ -134,7 +134,7 @@ class AwaitableGetOpensearchUserResult(GetOpensearchUserResult):
 
 def get_opensearch_user(project: Optional[_builtins.str] = None,
                         service_name: Optional[_builtins.str] = None,
-                        timeouts: Optional[Union['GetOpensearchUserTimeoutsArgs', 'GetOpensearchUserTimeoutsArgsDict']] = None,
+                        timeouts: Optional[Union['GetOpensearchUserTimeoutsArgs', 'GetOpensearchUserTimeoutsArgsDict', 'outputs.GetOpensearchUserTimeoutsResult']] = None,
                         username: Optional[_builtins.str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOpensearchUserResult:
     """
@@ -175,7 +175,7 @@ def get_opensearch_user(project: Optional[_builtins.str] = None,
         username=pulumi.get(__ret__, 'username'))
 def get_opensearch_user_output(project: pulumi.Input[Optional[_builtins.str]] = None,
                                service_name: pulumi.Input[Optional[_builtins.str]] = None,
-                               timeouts: pulumi.Input[Optional[Optional[Union['GetOpensearchUserTimeoutsArgs', 'GetOpensearchUserTimeoutsArgsDict']]]] = None,
+                               timeouts: pulumi.Input[Optional[Optional[Union['GetOpensearchUserTimeoutsArgs', 'GetOpensearchUserTimeoutsArgsDict', 'outputs.GetOpensearchUserTimeoutsResult']]]] = None,
                                username: pulumi.Input[Optional[_builtins.str]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOpensearchUserResult]:
     """

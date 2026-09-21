@@ -340,7 +340,7 @@ class FlinkApplicationDeployment(pulumi.CustomResource):
                  restart_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  service_name: pulumi.Input[Optional[_builtins.str]] = None,
                  starting_savepoint: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['FlinkApplicationDeploymentTimeoutsArgs', 'FlinkApplicationDeploymentTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['FlinkApplicationDeploymentTimeoutsArgs', 'FlinkApplicationDeploymentTimeoutsArgsDict', 'outputs.FlinkApplicationDeploymentTimeouts']]] = None,
                  version_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -500,7 +500,7 @@ class FlinkApplicationDeployment(pulumi.CustomResource):
                  restart_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  service_name: pulumi.Input[Optional[_builtins.str]] = None,
                  starting_savepoint: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['FlinkApplicationDeploymentTimeoutsArgs', 'FlinkApplicationDeploymentTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['FlinkApplicationDeploymentTimeoutsArgs', 'FlinkApplicationDeploymentTimeoutsArgsDict', 'outputs.FlinkApplicationDeploymentTimeouts']]] = None,
                  version_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -549,7 +549,7 @@ class FlinkApplicationDeployment(pulumi.CustomResource):
             restart_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             service_name: pulumi.Input[Optional[_builtins.str]] = None,
             starting_savepoint: pulumi.Input[Optional[_builtins.str]] = None,
-            timeouts: pulumi.Input[Optional[Union['FlinkApplicationDeploymentTimeoutsArgs', 'FlinkApplicationDeploymentTimeoutsArgsDict']]] = None,
+            timeouts: pulumi.Input[Optional[Union['FlinkApplicationDeploymentTimeoutsArgs', 'FlinkApplicationDeploymentTimeoutsArgsDict', 'outputs.FlinkApplicationDeploymentTimeouts']]] = None,
             version_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'FlinkApplicationDeployment':
         """
         Get an existing FlinkApplicationDeployment resource's state with the given name, id, and optional extra

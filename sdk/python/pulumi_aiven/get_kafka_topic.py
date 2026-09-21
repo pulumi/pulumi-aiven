@@ -181,11 +181,11 @@ class AwaitableGetKafkaTopicResult(GetKafkaTopicResult):
             topic_name=self.topic_name)
 
 
-def get_kafka_topic(configs: Optional[Sequence[Union['GetKafkaTopicConfigArgs', 'GetKafkaTopicConfigArgsDict']]] = None,
+def get_kafka_topic(configs: Optional[Sequence[Union['GetKafkaTopicConfigArgs', 'GetKafkaTopicConfigArgsDict', 'outputs.GetKafkaTopicConfigResult']]] = None,
                     project: Optional[_builtins.str] = None,
                     service_name: Optional[_builtins.str] = None,
-                    tags: Optional[Sequence[Union['GetKafkaTopicTagArgs', 'GetKafkaTopicTagArgsDict']]] = None,
-                    timeouts: Optional[Union['GetKafkaTopicTimeoutsArgs', 'GetKafkaTopicTimeoutsArgsDict']] = None,
+                    tags: Optional[Sequence[Union['GetKafkaTopicTagArgs', 'GetKafkaTopicTagArgsDict', 'outputs.GetKafkaTopicTagResult']]] = None,
+                    timeouts: Optional[Union['GetKafkaTopicTimeoutsArgs', 'GetKafkaTopicTimeoutsArgsDict', 'outputs.GetKafkaTopicTimeoutsResult']] = None,
                     topic_name: Optional[_builtins.str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKafkaTopicResult:
     """
@@ -203,10 +203,10 @@ def get_kafka_topic(configs: Optional[Sequence[Union['GetKafkaTopicConfigArgs', 
     ```
 
 
-    :param Sequence[Union['GetKafkaTopicConfigArgs', 'GetKafkaTopicConfigArgsDict']] configs: [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics. Removing the block won't reset the topic configuration to default values. Instead, the topic will retain its last known configuration.
+    :param Sequence[Union['GetKafkaTopicConfigArgs', 'GetKafkaTopicConfigArgsDict', 'outputs.GetKafkaTopicConfigResult']] configs: [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics. Removing the block won't reset the topic configuration to default values. Instead, the topic will retain its last known configuration.
     :param _builtins.str project: Project name.
     :param _builtins.str service_name: Service name.
-    :param Sequence[Union['GetKafkaTopicTagArgs', 'GetKafkaTopicTagArgsDict']] tags: Topic tags.
+    :param Sequence[Union['GetKafkaTopicTagArgs', 'GetKafkaTopicTagArgsDict', 'outputs.GetKafkaTopicTagResult']] tags: Topic tags.
     :param _builtins.str topic_name: Kafka topic name.
     """
     __args__ = dict()
@@ -232,11 +232,11 @@ def get_kafka_topic(configs: Optional[Sequence[Union['GetKafkaTopicConfigArgs', 
         timeouts=pulumi.get(__ret__, 'timeouts'),
         topic_description=pulumi.get(__ret__, 'topic_description'),
         topic_name=pulumi.get(__ret__, 'topic_name'))
-def get_kafka_topic_output(configs: pulumi.Input[Optional[Optional[Sequence[Union['GetKafkaTopicConfigArgs', 'GetKafkaTopicConfigArgsDict']]]]] = None,
+def get_kafka_topic_output(configs: pulumi.Input[Optional[Optional[Sequence[Union['GetKafkaTopicConfigArgs', 'GetKafkaTopicConfigArgsDict', 'outputs.GetKafkaTopicConfigResult']]]]] = None,
                            project: pulumi.Input[Optional[_builtins.str]] = None,
                            service_name: pulumi.Input[Optional[_builtins.str]] = None,
-                           tags: pulumi.Input[Optional[Optional[Sequence[Union['GetKafkaTopicTagArgs', 'GetKafkaTopicTagArgsDict']]]]] = None,
-                           timeouts: pulumi.Input[Optional[Optional[Union['GetKafkaTopicTimeoutsArgs', 'GetKafkaTopicTimeoutsArgsDict']]]] = None,
+                           tags: pulumi.Input[Optional[Optional[Sequence[Union['GetKafkaTopicTagArgs', 'GetKafkaTopicTagArgsDict', 'outputs.GetKafkaTopicTagResult']]]]] = None,
+                           timeouts: pulumi.Input[Optional[Optional[Union['GetKafkaTopicTimeoutsArgs', 'GetKafkaTopicTimeoutsArgsDict', 'outputs.GetKafkaTopicTimeoutsResult']]]] = None,
                            topic_name: pulumi.Input[Optional[_builtins.str]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKafkaTopicResult]:
     """
@@ -254,10 +254,10 @@ def get_kafka_topic_output(configs: pulumi.Input[Optional[Optional[Sequence[Unio
     ```
 
 
-    :param Sequence[Union['GetKafkaTopicConfigArgs', 'GetKafkaTopicConfigArgsDict']] configs: [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics. Removing the block won't reset the topic configuration to default values. Instead, the topic will retain its last known configuration.
+    :param Sequence[Union['GetKafkaTopicConfigArgs', 'GetKafkaTopicConfigArgsDict', 'outputs.GetKafkaTopicConfigResult']] configs: [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics. Removing the block won't reset the topic configuration to default values. Instead, the topic will retain its last known configuration.
     :param _builtins.str project: Project name.
     :param _builtins.str service_name: Service name.
-    :param Sequence[Union['GetKafkaTopicTagArgs', 'GetKafkaTopicTagArgsDict']] tags: Topic tags.
+    :param Sequence[Union['GetKafkaTopicTagArgs', 'GetKafkaTopicTagArgsDict', 'outputs.GetKafkaTopicTagResult']] tags: Topic tags.
     :param _builtins.str topic_name: Kafka topic name.
     """
     __args__ = dict()

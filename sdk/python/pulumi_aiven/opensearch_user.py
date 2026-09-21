@@ -296,7 +296,7 @@ class OpensearchUser(pulumi.CustomResource):
                  password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  service_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['OpensearchUserTimeoutsArgs', 'OpensearchUserTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['OpensearchUserTimeoutsArgs', 'OpensearchUserTimeoutsArgsDict', 'outputs.OpensearchUserTimeouts']]] = None,
                  username: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -383,7 +383,7 @@ class OpensearchUser(pulumi.CustomResource):
                  password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  service_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['OpensearchUserTimeoutsArgs', 'OpensearchUserTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['OpensearchUserTimeoutsArgs', 'OpensearchUserTimeoutsArgsDict', 'outputs.OpensearchUserTimeouts']]] = None,
                  username: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -427,7 +427,7 @@ class OpensearchUser(pulumi.CustomResource):
             password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             service_name: pulumi.Input[Optional[_builtins.str]] = None,
-            timeouts: pulumi.Input[Optional[Union['OpensearchUserTimeoutsArgs', 'OpensearchUserTimeoutsArgsDict']]] = None,
+            timeouts: pulumi.Input[Optional[Union['OpensearchUserTimeoutsArgs', 'OpensearchUserTimeoutsArgsDict', 'outputs.OpensearchUserTimeouts']]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None,
             username: pulumi.Input[Optional[_builtins.str]] = None) -> 'OpensearchUser':
         """

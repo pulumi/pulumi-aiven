@@ -259,7 +259,7 @@ class OrganizationVpc(pulumi.CustomResource):
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  network_cidr: pulumi.Input[Optional[_builtins.str]] = None,
                  organization_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['OrganizationVpcTimeoutsArgs', 'OrganizationVpcTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['OrganizationVpcTimeoutsArgs', 'OrganizationVpcTimeoutsArgsDict', 'outputs.OrganizationVpcTimeouts']]] = None,
                  __props__=None):
         """
         Creates and manages a VPC for an Aiven organization. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
@@ -339,7 +339,7 @@ class OrganizationVpc(pulumi.CustomResource):
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  network_cidr: pulumi.Input[Optional[_builtins.str]] = None,
                  organization_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['OrganizationVpcTimeoutsArgs', 'OrganizationVpcTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['OrganizationVpcTimeoutsArgs', 'OrganizationVpcTimeoutsArgsDict', 'outputs.OrganizationVpcTimeouts']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -381,7 +381,7 @@ class OrganizationVpc(pulumi.CustomResource):
             organization_id: pulumi.Input[Optional[_builtins.str]] = None,
             organization_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
-            timeouts: pulumi.Input[Optional[Union['OrganizationVpcTimeoutsArgs', 'OrganizationVpcTimeoutsArgsDict']]] = None,
+            timeouts: pulumi.Input[Optional[Union['OrganizationVpcTimeoutsArgs', 'OrganizationVpcTimeoutsArgsDict', 'outputs.OrganizationVpcTimeouts']]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'OrganizationVpc':
         """
         Get an existing OrganizationVpc resource's state with the given name, id, and optional extra

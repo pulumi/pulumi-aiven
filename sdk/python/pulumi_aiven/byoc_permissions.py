@@ -194,7 +194,7 @@ class ByocPermissions(pulumi.CustomResource):
                  custom_cloud_environment_id: pulumi.Input[Optional[_builtins.str]] = None,
                  organization_id: pulumi.Input[Optional[_builtins.str]] = None,
                  projects: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 timeouts: pulumi.Input[Optional[Union['ByocPermissionsTimeoutsArgs', 'ByocPermissionsTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['ByocPermissionsTimeoutsArgs', 'ByocPermissionsTimeoutsArgsDict', 'outputs.ByocPermissionsTimeouts']]] = None,
                  __props__=None):
         """
         Manages permissions for a BYOC custom cloud environment, which accounts and projects can use the cloud to deploy services.
@@ -300,7 +300,7 @@ class ByocPermissions(pulumi.CustomResource):
                  custom_cloud_environment_id: pulumi.Input[Optional[_builtins.str]] = None,
                  organization_id: pulumi.Input[Optional[_builtins.str]] = None,
                  projects: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 timeouts: pulumi.Input[Optional[Union['ByocPermissionsTimeoutsArgs', 'ByocPermissionsTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['ByocPermissionsTimeoutsArgs', 'ByocPermissionsTimeoutsArgsDict', 'outputs.ByocPermissionsTimeouts']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -337,7 +337,7 @@ class ByocPermissions(pulumi.CustomResource):
             custom_cloud_environment_id: pulumi.Input[Optional[_builtins.str]] = None,
             organization_id: pulumi.Input[Optional[_builtins.str]] = None,
             projects: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            timeouts: pulumi.Input[Optional[Union['ByocPermissionsTimeoutsArgs', 'ByocPermissionsTimeoutsArgsDict']]] = None) -> 'ByocPermissions':
+            timeouts: pulumi.Input[Optional[Union['ByocPermissionsTimeoutsArgs', 'ByocPermissionsTimeoutsArgsDict', 'outputs.ByocPermissionsTimeouts']]] = None) -> 'ByocPermissions':
         """
         Get an existing ByocPermissions resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

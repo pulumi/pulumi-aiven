@@ -192,12 +192,12 @@ class AwaitableGetOrganizationBillingGroupResult(GetOrganizationBillingGroupResu
             vat_id=self.vat_id)
 
 
-def get_organization_billing_group(billing_contact_emails: Optional[Sequence[Union['GetOrganizationBillingGroupBillingContactEmailArgs', 'GetOrganizationBillingGroupBillingContactEmailArgsDict']]] = None,
-                                   billing_emails: Optional[Sequence[Union['GetOrganizationBillingGroupBillingEmailArgs', 'GetOrganizationBillingGroupBillingEmailArgsDict']]] = None,
+def get_organization_billing_group(billing_contact_emails: Optional[Sequence[Union['GetOrganizationBillingGroupBillingContactEmailArgs', 'GetOrganizationBillingGroupBillingContactEmailArgsDict', 'outputs.GetOrganizationBillingGroupBillingContactEmailResult']]] = None,
+                                   billing_emails: Optional[Sequence[Union['GetOrganizationBillingGroupBillingEmailArgs', 'GetOrganizationBillingGroupBillingEmailArgsDict', 'outputs.GetOrganizationBillingGroupBillingEmailResult']]] = None,
                                    billing_group_id: Optional[_builtins.str] = None,
                                    organization_id: Optional[_builtins.str] = None,
-                                   payment_methods: Optional[Sequence[Union['GetOrganizationBillingGroupPaymentMethodArgs', 'GetOrganizationBillingGroupPaymentMethodArgsDict']]] = None,
-                                   timeouts: Optional[Union['GetOrganizationBillingGroupTimeoutsArgs', 'GetOrganizationBillingGroupTimeoutsArgsDict']] = None,
+                                   payment_methods: Optional[Sequence[Union['GetOrganizationBillingGroupPaymentMethodArgs', 'GetOrganizationBillingGroupPaymentMethodArgsDict', 'outputs.GetOrganizationBillingGroupPaymentMethodResult']]] = None,
+                                   timeouts: Optional[Union['GetOrganizationBillingGroupTimeoutsArgs', 'GetOrganizationBillingGroupTimeoutsArgsDict', 'outputs.GetOrganizationBillingGroupTimeoutsResult']] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOrganizationBillingGroupResult:
     """
     Gets information about a billing group.
@@ -213,11 +213,11 @@ def get_organization_billing_group(billing_contact_emails: Optional[Sequence[Uni
     ```
 
 
-    :param Sequence[Union['GetOrganizationBillingGroupBillingContactEmailArgs', 'GetOrganizationBillingGroupBillingContactEmailArgsDict']] billing_contact_emails: List of billing contact emails.
-    :param Sequence[Union['GetOrganizationBillingGroupBillingEmailArgs', 'GetOrganizationBillingGroupBillingEmailArgsDict']] billing_emails: List of billing contact emails.
+    :param Sequence[Union['GetOrganizationBillingGroupBillingContactEmailArgs', 'GetOrganizationBillingGroupBillingContactEmailArgsDict', 'outputs.GetOrganizationBillingGroupBillingContactEmailResult']] billing_contact_emails: List of billing contact emails.
+    :param Sequence[Union['GetOrganizationBillingGroupBillingEmailArgs', 'GetOrganizationBillingGroupBillingEmailArgsDict', 'outputs.GetOrganizationBillingGroupBillingEmailResult']] billing_emails: List of billing contact emails.
     :param _builtins.str billing_group_id: Billing group ID.
     :param _builtins.str organization_id: ID of an organization.
-    :param Sequence[Union['GetOrganizationBillingGroupPaymentMethodArgs', 'GetOrganizationBillingGroupPaymentMethodArgsDict']] payment_methods: Payment method.
+    :param Sequence[Union['GetOrganizationBillingGroupPaymentMethodArgs', 'GetOrganizationBillingGroupPaymentMethodArgsDict', 'outputs.GetOrganizationBillingGroupPaymentMethodResult']] payment_methods: Payment method.
     """
     __args__ = dict()
     __args__['billingContactEmails'] = billing_contact_emails
@@ -243,12 +243,12 @@ def get_organization_billing_group(billing_contact_emails: Optional[Sequence[Uni
         shipping_address_id=pulumi.get(__ret__, 'shipping_address_id'),
         timeouts=pulumi.get(__ret__, 'timeouts'),
         vat_id=pulumi.get(__ret__, 'vat_id'))
-def get_organization_billing_group_output(billing_contact_emails: pulumi.Input[Optional[Optional[Sequence[Union['GetOrganizationBillingGroupBillingContactEmailArgs', 'GetOrganizationBillingGroupBillingContactEmailArgsDict']]]]] = None,
-                                          billing_emails: pulumi.Input[Optional[Optional[Sequence[Union['GetOrganizationBillingGroupBillingEmailArgs', 'GetOrganizationBillingGroupBillingEmailArgsDict']]]]] = None,
+def get_organization_billing_group_output(billing_contact_emails: pulumi.Input[Optional[Optional[Sequence[Union['GetOrganizationBillingGroupBillingContactEmailArgs', 'GetOrganizationBillingGroupBillingContactEmailArgsDict', 'outputs.GetOrganizationBillingGroupBillingContactEmailResult']]]]] = None,
+                                          billing_emails: pulumi.Input[Optional[Optional[Sequence[Union['GetOrganizationBillingGroupBillingEmailArgs', 'GetOrganizationBillingGroupBillingEmailArgsDict', 'outputs.GetOrganizationBillingGroupBillingEmailResult']]]]] = None,
                                           billing_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                                           organization_id: pulumi.Input[Optional[_builtins.str]] = None,
-                                          payment_methods: pulumi.Input[Optional[Optional[Sequence[Union['GetOrganizationBillingGroupPaymentMethodArgs', 'GetOrganizationBillingGroupPaymentMethodArgsDict']]]]] = None,
-                                          timeouts: pulumi.Input[Optional[Optional[Union['GetOrganizationBillingGroupTimeoutsArgs', 'GetOrganizationBillingGroupTimeoutsArgsDict']]]] = None,
+                                          payment_methods: pulumi.Input[Optional[Optional[Sequence[Union['GetOrganizationBillingGroupPaymentMethodArgs', 'GetOrganizationBillingGroupPaymentMethodArgsDict', 'outputs.GetOrganizationBillingGroupPaymentMethodResult']]]]] = None,
+                                          timeouts: pulumi.Input[Optional[Optional[Union['GetOrganizationBillingGroupTimeoutsArgs', 'GetOrganizationBillingGroupTimeoutsArgsDict', 'outputs.GetOrganizationBillingGroupTimeoutsResult']]]] = None,
                                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOrganizationBillingGroupResult]:
     """
     Gets information about a billing group.
@@ -264,11 +264,11 @@ def get_organization_billing_group_output(billing_contact_emails: pulumi.Input[O
     ```
 
 
-    :param Sequence[Union['GetOrganizationBillingGroupBillingContactEmailArgs', 'GetOrganizationBillingGroupBillingContactEmailArgsDict']] billing_contact_emails: List of billing contact emails.
-    :param Sequence[Union['GetOrganizationBillingGroupBillingEmailArgs', 'GetOrganizationBillingGroupBillingEmailArgsDict']] billing_emails: List of billing contact emails.
+    :param Sequence[Union['GetOrganizationBillingGroupBillingContactEmailArgs', 'GetOrganizationBillingGroupBillingContactEmailArgsDict', 'outputs.GetOrganizationBillingGroupBillingContactEmailResult']] billing_contact_emails: List of billing contact emails.
+    :param Sequence[Union['GetOrganizationBillingGroupBillingEmailArgs', 'GetOrganizationBillingGroupBillingEmailArgsDict', 'outputs.GetOrganizationBillingGroupBillingEmailResult']] billing_emails: List of billing contact emails.
     :param _builtins.str billing_group_id: Billing group ID.
     :param _builtins.str organization_id: ID of an organization.
-    :param Sequence[Union['GetOrganizationBillingGroupPaymentMethodArgs', 'GetOrganizationBillingGroupPaymentMethodArgsDict']] payment_methods: Payment method.
+    :param Sequence[Union['GetOrganizationBillingGroupPaymentMethodArgs', 'GetOrganizationBillingGroupPaymentMethodArgsDict', 'outputs.GetOrganizationBillingGroupPaymentMethodResult']] payment_methods: Payment method.
     """
     __args__ = dict()
     __args__['billingContactEmails'] = billing_contact_emails

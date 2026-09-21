@@ -266,7 +266,7 @@ class AwaitableGetBillingGroupResult(GetBillingGroupResult):
 
 
 def get_billing_group(billing_group_id: Optional[_builtins.str] = None,
-                      timeouts: Optional[Union['GetBillingGroupTimeoutsArgs', 'GetBillingGroupTimeoutsArgsDict']] = None,
+                      timeouts: Optional[Union['GetBillingGroupTimeoutsArgs', 'GetBillingGroupTimeoutsArgsDict', 'outputs.GetBillingGroupTimeoutsResult']] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetBillingGroupResult:
     """
     Gets information about a billing group.
@@ -313,7 +313,7 @@ def get_billing_group(billing_group_id: Optional[_builtins.str] = None,
         vat_id=pulumi.get(__ret__, 'vat_id'),
         zip_code=pulumi.get(__ret__, 'zip_code'))
 def get_billing_group_output(billing_group_id: pulumi.Input[Optional[_builtins.str]] = None,
-                             timeouts: pulumi.Input[Optional[Optional[Union['GetBillingGroupTimeoutsArgs', 'GetBillingGroupTimeoutsArgsDict']]]] = None,
+                             timeouts: pulumi.Input[Optional[Optional[Union['GetBillingGroupTimeoutsArgs', 'GetBillingGroupTimeoutsArgsDict', 'outputs.GetBillingGroupTimeoutsResult']]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBillingGroupResult]:
     """
     Gets information about a billing group.

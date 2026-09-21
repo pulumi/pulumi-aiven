@@ -147,7 +147,7 @@ class AwaitableGetOrganizationUserGroupResult(GetOrganizationUserGroupResult):
 def get_organization_user_group(group_id: Optional[_builtins.str] = None,
                                 name: Optional[_builtins.str] = None,
                                 organization_id: Optional[_builtins.str] = None,
-                                timeouts: Optional[Union['GetOrganizationUserGroupTimeoutsArgs', 'GetOrganizationUserGroupTimeoutsArgsDict']] = None,
+                                timeouts: Optional[Union['GetOrganizationUserGroupTimeoutsArgs', 'GetOrganizationUserGroupTimeoutsArgsDict', 'outputs.GetOrganizationUserGroupTimeoutsResult']] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOrganizationUserGroupResult:
     """
     Gets information about an existing user group in an organization.
@@ -188,7 +188,7 @@ def get_organization_user_group(group_id: Optional[_builtins.str] = None,
 def get_organization_user_group_output(group_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                        name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                        organization_id: pulumi.Input[Optional[_builtins.str]] = None,
-                                       timeouts: pulumi.Input[Optional[Optional[Union['GetOrganizationUserGroupTimeoutsArgs', 'GetOrganizationUserGroupTimeoutsArgsDict']]]] = None,
+                                       timeouts: pulumi.Input[Optional[Optional[Union['GetOrganizationUserGroupTimeoutsArgs', 'GetOrganizationUserGroupTimeoutsArgsDict', 'outputs.GetOrganizationUserGroupTimeoutsResult']]]] = None,
                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOrganizationUserGroupResult]:
     """
     Gets information about an existing user group in an organization.

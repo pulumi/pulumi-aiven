@@ -97,16 +97,16 @@ class AwaitableGetServicePlanListResult(GetServicePlanListResult):
 
 
 def get_service_plan_list(project: Optional[_builtins.str] = None,
-                          service_plans: Optional[Sequence[Union['GetServicePlanListServicePlanArgs', 'GetServicePlanListServicePlanArgsDict']]] = None,
+                          service_plans: Optional[Sequence[Union['GetServicePlanListServicePlanArgs', 'GetServicePlanListServicePlanArgsDict', 'outputs.GetServicePlanListServicePlanResult']]] = None,
                           service_type: Optional[_builtins.str] = None,
-                          timeouts: Optional[Union['GetServicePlanListTimeoutsArgs', 'GetServicePlanListTimeoutsArgsDict']] = None,
+                          timeouts: Optional[Union['GetServicePlanListTimeoutsArgs', 'GetServicePlanListTimeoutsArgsDict', 'outputs.GetServicePlanListTimeoutsResult']] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServicePlanListResult:
     """
     A list of service plans for a given project and service type.
 
 
     :param _builtins.str project: Project name.
-    :param Sequence[Union['GetServicePlanListServicePlanArgs', 'GetServicePlanListServicePlanArgsDict']] service_plans: List of plans available for this type of service.
+    :param Sequence[Union['GetServicePlanListServicePlanArgs', 'GetServicePlanListServicePlanArgsDict', 'outputs.GetServicePlanListServicePlanResult']] service_plans: List of plans available for this type of service.
     :param _builtins.str service_type: Service type.
     """
     __args__ = dict()
@@ -124,16 +124,16 @@ def get_service_plan_list(project: Optional[_builtins.str] = None,
         service_type=pulumi.get(__ret__, 'service_type'),
         timeouts=pulumi.get(__ret__, 'timeouts'))
 def get_service_plan_list_output(project: pulumi.Input[Optional[_builtins.str]] = None,
-                                 service_plans: pulumi.Input[Optional[Optional[Sequence[Union['GetServicePlanListServicePlanArgs', 'GetServicePlanListServicePlanArgsDict']]]]] = None,
+                                 service_plans: pulumi.Input[Optional[Optional[Sequence[Union['GetServicePlanListServicePlanArgs', 'GetServicePlanListServicePlanArgsDict', 'outputs.GetServicePlanListServicePlanResult']]]]] = None,
                                  service_type: pulumi.Input[Optional[_builtins.str]] = None,
-                                 timeouts: pulumi.Input[Optional[Optional[Union['GetServicePlanListTimeoutsArgs', 'GetServicePlanListTimeoutsArgsDict']]]] = None,
+                                 timeouts: pulumi.Input[Optional[Optional[Union['GetServicePlanListTimeoutsArgs', 'GetServicePlanListTimeoutsArgsDict', 'outputs.GetServicePlanListTimeoutsResult']]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServicePlanListResult]:
     """
     A list of service plans for a given project and service type.
 
 
     :param _builtins.str project: Project name.
-    :param Sequence[Union['GetServicePlanListServicePlanArgs', 'GetServicePlanListServicePlanArgsDict']] service_plans: List of plans available for this type of service.
+    :param Sequence[Union['GetServicePlanListServicePlanArgs', 'GetServicePlanListServicePlanArgsDict', 'outputs.GetServicePlanListServicePlanResult']] service_plans: List of plans available for this type of service.
     :param _builtins.str service_type: Service type.
     """
     __args__ = dict()

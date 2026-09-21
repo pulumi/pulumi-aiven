@@ -136,7 +136,7 @@ class AwaitableGetProjectVpcResult(GetProjectVpcResult):
 def get_project_vpc(cloud_name: Optional[_builtins.str] = None,
                     project: Optional[_builtins.str] = None,
                     project_vpc_id: Optional[_builtins.str] = None,
-                    timeouts: Optional[Union['GetProjectVpcTimeoutsArgs', 'GetProjectVpcTimeoutsArgsDict']] = None,
+                    timeouts: Optional[Union['GetProjectVpcTimeoutsArgs', 'GetProjectVpcTimeoutsArgsDict', 'outputs.GetProjectVpcTimeoutsResult']] = None,
                     vpc_id: Optional[_builtins.str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProjectVpcResult:
     """
@@ -179,7 +179,7 @@ def get_project_vpc(cloud_name: Optional[_builtins.str] = None,
 def get_project_vpc_output(cloud_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                            project: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                            project_vpc_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                           timeouts: pulumi.Input[Optional[Optional[Union['GetProjectVpcTimeoutsArgs', 'GetProjectVpcTimeoutsArgsDict']]]] = None,
+                           timeouts: pulumi.Input[Optional[Optional[Union['GetProjectVpcTimeoutsArgs', 'GetProjectVpcTimeoutsArgsDict', 'outputs.GetProjectVpcTimeoutsResult']]]] = None,
                            vpc_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectVpcResult]:
     """

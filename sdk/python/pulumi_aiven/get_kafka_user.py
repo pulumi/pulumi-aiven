@@ -158,7 +158,7 @@ class AwaitableGetKafkaUserResult(GetKafkaUserResult):
 
 def get_kafka_user(project: Optional[_builtins.str] = None,
                    service_name: Optional[_builtins.str] = None,
-                   timeouts: Optional[Union['GetKafkaUserTimeoutsArgs', 'GetKafkaUserTimeoutsArgsDict']] = None,
+                   timeouts: Optional[Union['GetKafkaUserTimeoutsArgs', 'GetKafkaUserTimeoutsArgsDict', 'outputs.GetKafkaUserTimeoutsResult']] = None,
                    username: Optional[_builtins.str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKafkaUserResult:
     """
@@ -201,7 +201,7 @@ def get_kafka_user(project: Optional[_builtins.str] = None,
         username=pulumi.get(__ret__, 'username'))
 def get_kafka_user_output(project: pulumi.Input[Optional[_builtins.str]] = None,
                           service_name: pulumi.Input[Optional[_builtins.str]] = None,
-                          timeouts: pulumi.Input[Optional[Optional[Union['GetKafkaUserTimeoutsArgs', 'GetKafkaUserTimeoutsArgsDict']]]] = None,
+                          timeouts: pulumi.Input[Optional[Optional[Union['GetKafkaUserTimeoutsArgs', 'GetKafkaUserTimeoutsArgsDict', 'outputs.GetKafkaUserTimeoutsResult']]]] = None,
                           username: pulumi.Input[Optional[_builtins.str]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKafkaUserResult]:
     """

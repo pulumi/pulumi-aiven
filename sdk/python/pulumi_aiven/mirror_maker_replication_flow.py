@@ -653,7 +653,7 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
                  sync_group_offsets_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  sync_group_offsets_interval_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  target_cluster: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['MirrorMakerReplicationFlowTimeoutsArgs', 'MirrorMakerReplicationFlowTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['MirrorMakerReplicationFlowTimeoutsArgs', 'MirrorMakerReplicationFlowTimeoutsArgsDict', 'outputs.MirrorMakerReplicationFlowTimeouts']]] = None,
                  topics: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  topics_blacklists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
@@ -811,7 +811,7 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
                  sync_group_offsets_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  sync_group_offsets_interval_seconds: pulumi.Input[Optional[_builtins.int]] = None,
                  target_cluster: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['MirrorMakerReplicationFlowTimeoutsArgs', 'MirrorMakerReplicationFlowTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['MirrorMakerReplicationFlowTimeoutsArgs', 'MirrorMakerReplicationFlowTimeoutsArgsDict', 'outputs.MirrorMakerReplicationFlowTimeouts']]] = None,
                  topics: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  topics_blacklists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
@@ -878,7 +878,7 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
             sync_group_offsets_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             sync_group_offsets_interval_seconds: pulumi.Input[Optional[_builtins.int]] = None,
             target_cluster: pulumi.Input[Optional[_builtins.str]] = None,
-            timeouts: pulumi.Input[Optional[Union['MirrorMakerReplicationFlowTimeoutsArgs', 'MirrorMakerReplicationFlowTimeoutsArgsDict']]] = None,
+            timeouts: pulumi.Input[Optional[Union['MirrorMakerReplicationFlowTimeoutsArgs', 'MirrorMakerReplicationFlowTimeoutsArgsDict', 'outputs.MirrorMakerReplicationFlowTimeouts']]] = None,
             topics: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             topics_blacklists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'MirrorMakerReplicationFlow':
         """

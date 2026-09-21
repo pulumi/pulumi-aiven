@@ -170,7 +170,7 @@ class AwaitableGetMysqlUserResult(GetMysqlUserResult):
 
 def get_mysql_user(project: Optional[_builtins.str] = None,
                    service_name: Optional[_builtins.str] = None,
-                   timeouts: Optional[Union['GetMysqlUserTimeoutsArgs', 'GetMysqlUserTimeoutsArgsDict']] = None,
+                   timeouts: Optional[Union['GetMysqlUserTimeoutsArgs', 'GetMysqlUserTimeoutsArgsDict', 'outputs.GetMysqlUserTimeoutsResult']] = None,
                    username: Optional[_builtins.str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMysqlUserResult:
     """
@@ -214,7 +214,7 @@ def get_mysql_user(project: Optional[_builtins.str] = None,
         username=pulumi.get(__ret__, 'username'))
 def get_mysql_user_output(project: pulumi.Input[Optional[_builtins.str]] = None,
                           service_name: pulumi.Input[Optional[_builtins.str]] = None,
-                          timeouts: pulumi.Input[Optional[Optional[Union['GetMysqlUserTimeoutsArgs', 'GetMysqlUserTimeoutsArgsDict']]]] = None,
+                          timeouts: pulumi.Input[Optional[Optional[Union['GetMysqlUserTimeoutsArgs', 'GetMysqlUserTimeoutsArgsDict', 'outputs.GetMysqlUserTimeoutsResult']]]] = None,
                           username: pulumi.Input[Optional[_builtins.str]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMysqlUserResult]:
     """

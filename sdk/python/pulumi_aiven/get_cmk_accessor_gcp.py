@@ -85,7 +85,7 @@ class AwaitableGetCmkAccessorGcpResult(GetCmkAccessorGcpResult):
 
 
 def get_cmk_accessor_gcp(project: Optional[_builtins.str] = None,
-                         timeouts: Optional[Union['GetCmkAccessorGcpTimeoutsArgs', 'GetCmkAccessorGcpTimeoutsArgsDict']] = None,
+                         timeouts: Optional[Union['GetCmkAccessorGcpTimeoutsArgs', 'GetCmkAccessorGcpTimeoutsArgsDict', 'outputs.GetCmkAccessorGcpTimeoutsResult']] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCmkAccessorGcpResult:
     """
     Gets the GCP CMK accessor for an Aiven project. The accessor is used to authenticate Aiven to your Google Cloud Key Management Service (KMS).
@@ -114,7 +114,7 @@ def get_cmk_accessor_gcp(project: Optional[_builtins.str] = None,
         project=pulumi.get(__ret__, 'project'),
         timeouts=pulumi.get(__ret__, 'timeouts'))
 def get_cmk_accessor_gcp_output(project: pulumi.Input[Optional[_builtins.str]] = None,
-                                timeouts: pulumi.Input[Optional[Optional[Union['GetCmkAccessorGcpTimeoutsArgs', 'GetCmkAccessorGcpTimeoutsArgsDict']]]] = None,
+                                timeouts: pulumi.Input[Optional[Optional[Union['GetCmkAccessorGcpTimeoutsArgs', 'GetCmkAccessorGcpTimeoutsArgsDict', 'outputs.GetCmkAccessorGcpTimeoutsResult']]]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCmkAccessorGcpResult]:
     """
     Gets the GCP CMK accessor for an Aiven project. The accessor is used to authenticate Aiven to your Google Cloud Key Management Service (KMS).

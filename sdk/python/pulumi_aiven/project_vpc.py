@@ -194,7 +194,7 @@ class ProjectVpc(pulumi.CustomResource):
                  cloud_name: pulumi.Input[Optional[_builtins.str]] = None,
                  network_cidr: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['ProjectVpcTimeoutsArgs', 'ProjectVpcTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['ProjectVpcTimeoutsArgs', 'ProjectVpcTimeoutsArgsDict', 'outputs.ProjectVpcTimeouts']]] = None,
                  __props__=None):
         """
         Creates and manages a VPC for an Aiven project. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
@@ -270,7 +270,7 @@ class ProjectVpc(pulumi.CustomResource):
                  cloud_name: pulumi.Input[Optional[_builtins.str]] = None,
                  network_cidr: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['ProjectVpcTimeoutsArgs', 'ProjectVpcTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['ProjectVpcTimeoutsArgs', 'ProjectVpcTimeoutsArgsDict', 'outputs.ProjectVpcTimeouts']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -307,7 +307,7 @@ class ProjectVpc(pulumi.CustomResource):
             project: pulumi.Input[Optional[_builtins.str]] = None,
             project_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
-            timeouts: pulumi.Input[Optional[Union['ProjectVpcTimeoutsArgs', 'ProjectVpcTimeoutsArgsDict']]] = None) -> 'ProjectVpc':
+            timeouts: pulumi.Input[Optional[Union['ProjectVpcTimeoutsArgs', 'ProjectVpcTimeoutsArgsDict', 'outputs.ProjectVpcTimeouts']]] = None) -> 'ProjectVpc':
         """
         Get an existing ProjectVpc resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

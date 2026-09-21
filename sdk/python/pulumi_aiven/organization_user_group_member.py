@@ -177,7 +177,7 @@ class OrganizationUserGroupMember(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  organization_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['OrganizationUserGroupMemberTimeoutsArgs', 'OrganizationUserGroupMemberTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['OrganizationUserGroupMemberTimeoutsArgs', 'OrganizationUserGroupMemberTimeoutsArgsDict', 'outputs.OrganizationUserGroupMemberTimeouts']]] = None,
                  user_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -253,7 +253,7 @@ class OrganizationUserGroupMember(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  organization_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['OrganizationUserGroupMemberTimeoutsArgs', 'OrganizationUserGroupMemberTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['OrganizationUserGroupMemberTimeoutsArgs', 'OrganizationUserGroupMemberTimeoutsArgsDict', 'outputs.OrganizationUserGroupMemberTimeouts']]] = None,
                  user_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -288,7 +288,7 @@ class OrganizationUserGroupMember(pulumi.CustomResource):
             group_id: pulumi.Input[Optional[_builtins.str]] = None,
             last_activity_time: pulumi.Input[Optional[_builtins.str]] = None,
             organization_id: pulumi.Input[Optional[_builtins.str]] = None,
-            timeouts: pulumi.Input[Optional[Union['OrganizationUserGroupMemberTimeoutsArgs', 'OrganizationUserGroupMemberTimeoutsArgsDict']]] = None,
+            timeouts: pulumi.Input[Optional[Union['OrganizationUserGroupMemberTimeoutsArgs', 'OrganizationUserGroupMemberTimeoutsArgsDict', 'outputs.OrganizationUserGroupMemberTimeouts']]] = None,
             user_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'OrganizationUserGroupMember':
         """
         Get an existing OrganizationUserGroupMember resource's state with the given name, id, and optional extra
