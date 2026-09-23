@@ -194,7 +194,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? KafkaVersion { get; set; }
 
         /// <summary>
-        /// Pin a specific installed Karapace version on this service. Leave null/unset to auto-follow the newest installed version.
+        /// Enum: `6.2.1`, `6.2.2`, `6.2.3`, and newer. Select a Karapace version for this service, or select Latest to use the latest available version automatically. New versions become available after installation during a maintenance update.
         /// </summary>
         [Input("karapaceVersion")]
         public Input<string>? KarapaceVersion { get; set; }

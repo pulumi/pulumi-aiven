@@ -18,6 +18,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool IsClusterPlan;
         /// <summary>
+        /// True when the plan's topology is set via user config and its region price is per node.
+        /// </summary>
+        public readonly bool ManagedClusterPlan;
+        /// <summary>
         /// Maximum amount of system memory as a percentage (0-100) the service can actually use after taking into account management overhead. This is relevant for memory bound services for which some service management operations require allocating proportional amount of memory on top the basic load.
         /// </summary>
         public readonly int MaxMemoryPercent;
@@ -50,6 +54,8 @@ namespace Pulumi.Aiven.Outputs
         private GetServicePlanListServicePlanResult(
             bool isClusterPlan,
 
+            bool managedClusterPlan,
+
             int maxMemoryPercent,
 
             int nodeCount,
@@ -65,6 +71,7 @@ namespace Pulumi.Aiven.Outputs
             int shardCount)
         {
             IsClusterPlan = isClusterPlan;
+            ManagedClusterPlan = managedClusterPlan;
             MaxMemoryPercent = maxMemoryPercent;
             NodeCount = nodeCount;
             PrimaryCount = primaryCount;

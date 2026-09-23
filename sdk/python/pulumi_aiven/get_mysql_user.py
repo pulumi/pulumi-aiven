@@ -28,7 +28,7 @@ class GetMysqlUserResult:
     """
     A collection of values returned by getMysqlUser.
     """
-    def __init__(__self__, access_cert=None, access_key=None, authentication=None, id=None, password=None, password_encryption_type=None, project=None, service_name=None, timeouts=None, type=None, username=None):
+    def __init__(__self__, access_cert=None, access_key=None, authentication=None, id=None, mysql_grants=None, password=None, password_encryption_type=None, project=None, service_name=None, timeouts=None, type=None, username=None):
         if access_cert and not isinstance(access_cert, str):
             raise TypeError("Expected argument 'access_cert' to be a str")
         pulumi.set(__self__, "access_cert", access_cert)
@@ -41,6 +41,9 @@ class GetMysqlUserResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if mysql_grants and not isinstance(mysql_grants, list):
+            raise TypeError("Expected argument 'mysql_grants' to be a list")
+        pulumi.set(__self__, "mysql_grants", mysql_grants)
         if password and not isinstance(password, str):
             raise TypeError("Expected argument 'password' to be a str")
         pulumi.set(__self__, "password", password)
@@ -94,6 +97,14 @@ class GetMysqlUserResult:
         Resource ID composed as: `project/service_name/username`.
         """
         return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="mysqlGrants")
+    def mysql_grants(self) -> Sequence[_builtins.str]:
+        """
+        MySQL grants for the service user.
+        """
+        return pulumi.get(self, "mysql_grants")
 
     @_builtins.property
     @pulumi.getter
@@ -159,6 +170,7 @@ class AwaitableGetMysqlUserResult(GetMysqlUserResult):
             access_key=self.access_key,
             authentication=self.authentication,
             id=self.id,
+            mysql_grants=self.mysql_grants,
             password=self.password,
             password_encryption_type=self.password_encryption_type,
             project=self.project,
@@ -205,6 +217,7 @@ def get_mysql_user(project: Optional[_builtins.str] = None,
         access_key=pulumi.get(__ret__, 'access_key'),
         authentication=pulumi.get(__ret__, 'authentication'),
         id=pulumi.get(__ret__, 'id'),
+        mysql_grants=pulumi.get(__ret__, 'mysql_grants'),
         password=pulumi.get(__ret__, 'password'),
         password_encryption_type=pulumi.get(__ret__, 'password_encryption_type'),
         project=pulumi.get(__ret__, 'project'),
@@ -248,6 +261,7 @@ def get_mysql_user_output(project: pulumi.Input[Optional[_builtins.str]] = None,
         access_key=pulumi.get(__response__, 'access_key'),
         authentication=pulumi.get(__response__, 'authentication'),
         id=pulumi.get(__response__, 'id'),
+        mysql_grants=pulumi.get(__response__, 'mysql_grants'),
         password=pulumi.get(__response__, 'password'),
         password_encryption_type=pulumi.get(__response__, 'password_encryption_type'),
         project=pulumi.get(__response__, 'project'),

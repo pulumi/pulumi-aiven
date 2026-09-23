@@ -2,10 +2,12 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The Transit Gateway VPC Attachment resource allows the creation and management Transit Gateway VPC Attachment VPC peering connection between Aiven and AWS.
+ * Gets information about an AWS Transit Gateway VPC attachment for an Aiven project VPC.
  *
  * ## Example Usage
  *
@@ -13,10 +15,11 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const attachment = aiven.getTransitGatewayVpcAttachment({
- *     vpcId: bar.id,
- *     peerCloudAccount: "<PEER_ACCOUNT_ID>",
- *     peerVpc: "google-project1",
+ * const example = aiven.getTransitGatewayVpcAttachment({
+ *     vpcId: "example-project/example-vpc",
+ *     peerCloudAccount: "123456789012",
+ *     peerVpc: "tgw-0123456789abcdef0",
+ *     peerRegion: "us-east-1",
  * });
  * ```
  */
@@ -24,7 +27,9 @@ export function getTransitGatewayVpcAttachment(args: GetTransitGatewayVpcAttachm
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aiven:index/getTransitGatewayVpcAttachment:getTransitGatewayVpcAttachment", {
         "peerCloudAccount": args.peerCloudAccount,
+        "peerRegion": args.peerRegion,
         "peerVpc": args.peerVpc,
+        "timeouts": args.timeouts,
         "vpcId": args.vpcId,
     }, opts);
 }
@@ -34,15 +39,20 @@ export function getTransitGatewayVpcAttachment(args: GetTransitGatewayVpcAttachm
  */
 export interface GetTransitGatewayVpcAttachmentArgs {
     /**
-     * AWS account ID or GCP project ID of the peered VPC. Changing this property forces recreation of the resource.
+     * AWS account ID that owns the Transit Gateway.
      */
     peerCloudAccount: string;
     /**
-     * Transit gateway ID. Changing this property forces recreation of the resource.
+     * AWS region of the Transit Gateway. When omitted, the data source searches all regions and requires a single matching attachment.
+     */
+    peerRegion?: string;
+    /**
+     * AWS Transit Gateway ID.
      */
     peerVpc: string;
+    timeouts?: inputs.GetTransitGatewayVpcAttachmentTimeouts;
     /**
-     * The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Aiven project VPC ID in the `PROJECT/VPC_ID` format.
      */
     vpcId: string;
 }
@@ -52,44 +62,45 @@ export interface GetTransitGatewayVpcAttachmentArgs {
  */
 export interface GetTransitGatewayVpcAttachmentResult {
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * Terraform identifier for the VPC peering connection.
      */
     readonly id: string;
     /**
-     * AWS account ID or GCP project ID of the peered VPC. Changing this property forces recreation of the resource.
+     * AWS account ID that owns the Transit Gateway.
      */
     readonly peerCloudAccount: string;
     /**
-     * AWS region of the peered VPC (if not in the same region as Aiven VPC). This value can't be changed.
+     * AWS region of the Transit Gateway. When omitted, the data source searches all regions and requires a single matching attachment.
      */
     readonly peerRegion: string;
     /**
-     * Transit gateway ID. Changing this property forces recreation of the resource.
+     * AWS Transit Gateway ID.
      */
     readonly peerVpc: string;
     /**
-     * Cloud provider identifier for the peering connection if available
+     * Legacy AWS VPC peering connection ID (`pcx-*`) for ordinary AWS VPC peering connections, if available. This is not the AWS Transit Gateway attachment ID; TGW attachment details are exposed in `stateInfo`.
      */
     readonly peeringConnectionId: string;
     /**
-     * State of the peering connection
+     * Project VPC peering connection state. The possible values are `ACTIVE`, `APPROVED`, `APPROVED_PEER_REQUESTED`, `DELETED`, `DELETED_BY_PEER`, `DELETING`, `ERROR`, `INVALID_SPECIFICATION`, `PENDING_PEER` and `REJECTED_BY_PEER`.
      */
     readonly state: string;
     /**
-     * State-specific help or error information
+     * State-specific help or error information.
      */
     readonly stateInfo: {[key: string]: string};
+    readonly timeouts?: outputs.GetTransitGatewayVpcAttachmentTimeouts;
     /**
-     * List of private IPv4 ranges to route through the peering connection
+     * List of private IPv4 ranges to route through the peering connection.
      */
     readonly userPeerNetworkCidrs: string[];
     /**
-     * The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Aiven project VPC ID in the `PROJECT/VPC_ID` format.
      */
     readonly vpcId: string;
 }
 /**
- * The Transit Gateway VPC Attachment resource allows the creation and management Transit Gateway VPC Attachment VPC peering connection between Aiven and AWS.
+ * Gets information about an AWS Transit Gateway VPC attachment for an Aiven project VPC.
  *
  * ## Example Usage
  *
@@ -97,10 +108,11 @@ export interface GetTransitGatewayVpcAttachmentResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const attachment = aiven.getTransitGatewayVpcAttachment({
- *     vpcId: bar.id,
- *     peerCloudAccount: "<PEER_ACCOUNT_ID>",
- *     peerVpc: "google-project1",
+ * const example = aiven.getTransitGatewayVpcAttachment({
+ *     vpcId: "example-project/example-vpc",
+ *     peerCloudAccount: "123456789012",
+ *     peerVpc: "tgw-0123456789abcdef0",
+ *     peerRegion: "us-east-1",
  * });
  * ```
  */
@@ -108,7 +120,9 @@ export function getTransitGatewayVpcAttachmentOutput(args: GetTransitGatewayVpcA
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("aiven:index/getTransitGatewayVpcAttachment:getTransitGatewayVpcAttachment", {
         "peerCloudAccount": args.peerCloudAccount,
+        "peerRegion": args.peerRegion,
         "peerVpc": args.peerVpc,
+        "timeouts": args.timeouts,
         "vpcId": args.vpcId,
     }, opts);
 }
@@ -118,15 +132,20 @@ export function getTransitGatewayVpcAttachmentOutput(args: GetTransitGatewayVpcA
  */
 export interface GetTransitGatewayVpcAttachmentOutputArgs {
     /**
-     * AWS account ID or GCP project ID of the peered VPC. Changing this property forces recreation of the resource.
+     * AWS account ID that owns the Transit Gateway.
      */
     peerCloudAccount: pulumi.Input<string>;
     /**
-     * Transit gateway ID. Changing this property forces recreation of the resource.
+     * AWS region of the Transit Gateway. When omitted, the data source searches all regions and requires a single matching attachment.
+     */
+    peerRegion?: pulumi.Input<string | undefined>;
+    /**
+     * AWS Transit Gateway ID.
      */
     peerVpc: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.GetTransitGatewayVpcAttachmentTimeoutsArgs | undefined>;
     /**
-     * The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Aiven project VPC ID in the `PROJECT/VPC_ID` format.
      */
     vpcId: pulumi.Input<string>;
 }

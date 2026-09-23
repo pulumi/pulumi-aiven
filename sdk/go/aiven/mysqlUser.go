@@ -35,6 +35,10 @@ import (
 //				PasswordWo:        pulumi.String("password123"),
 //				PasswordWoVersion: pulumi.Int(1),
 //				Authentication:    pulumi.String("caching_sha2_password"),
+//				MysqlGrants: pulumi.StringArray{
+//					pulumi.String("SELECT"),
+//					pulumi.String("DELETE"),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -59,6 +63,8 @@ type MysqlUser struct {
 	AccessKey pulumi.StringOutput `pulumi:"accessKey"`
 	// Service specific authentication details. Currently only used for MySQL where accepted options are 'mysql_native_password' and 'caching_sha2_password', latter being default when this is not explicitly set. The possible values are `cachingSha2Password` and `mysqlNativePassword`.
 	Authentication pulumi.StringOutput `pulumi:"authentication"`
+	// MySQL grants for the service user. Changing this property forces recreation of the resource.
+	MysqlGrants pulumi.StringArrayOutput `pulumi:"mysqlGrants"`
 	// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
 	Password pulumi.StringOutput `pulumi:"password"`
 	// The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. 'unknown' is reported when the hash is missing or uses an unrecognised format. The possible values are `md5`, `scram-sha-256` and `unknown`.
@@ -137,6 +143,8 @@ type mysqlUserState struct {
 	AccessKey *string `pulumi:"accessKey"`
 	// Service specific authentication details. Currently only used for MySQL where accepted options are 'mysql_native_password' and 'caching_sha2_password', latter being default when this is not explicitly set. The possible values are `cachingSha2Password` and `mysqlNativePassword`.
 	Authentication *string `pulumi:"authentication"`
+	// MySQL grants for the service user. Changing this property forces recreation of the resource.
+	MysqlGrants []string `pulumi:"mysqlGrants"`
 	// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
 	Password *string `pulumi:"password"`
 	// The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. 'unknown' is reported when the hash is missing or uses an unrecognised format. The possible values are `md5`, `scram-sha-256` and `unknown`.
@@ -164,6 +172,8 @@ type MysqlUserState struct {
 	AccessKey pulumi.StringPtrInput
 	// Service specific authentication details. Currently only used for MySQL where accepted options are 'mysql_native_password' and 'caching_sha2_password', latter being default when this is not explicitly set. The possible values are `cachingSha2Password` and `mysqlNativePassword`.
 	Authentication pulumi.StringPtrInput
+	// MySQL grants for the service user. Changing this property forces recreation of the resource.
+	MysqlGrants pulumi.StringArrayInput
 	// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
 	Password pulumi.StringPtrInput
 	// The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. 'unknown' is reported when the hash is missing or uses an unrecognised format. The possible values are `md5`, `scram-sha-256` and `unknown`.
@@ -191,6 +201,8 @@ func (MysqlUserState) ElementType() reflect.Type {
 type mysqlUserArgs struct {
 	// Service specific authentication details. Currently only used for MySQL where accepted options are 'mysql_native_password' and 'caching_sha2_password', latter being default when this is not explicitly set. The possible values are `cachingSha2Password` and `mysqlNativePassword`.
 	Authentication *string `pulumi:"authentication"`
+	// MySQL grants for the service user. Changing this property forces recreation of the resource.
+	MysqlGrants []string `pulumi:"mysqlGrants"`
 	// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
 	Password *string `pulumi:"password"`
 	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
@@ -211,6 +223,8 @@ type mysqlUserArgs struct {
 type MysqlUserArgs struct {
 	// Service specific authentication details. Currently only used for MySQL where accepted options are 'mysql_native_password' and 'caching_sha2_password', latter being default when this is not explicitly set. The possible values are `cachingSha2Password` and `mysqlNativePassword`.
 	Authentication pulumi.StringPtrInput
+	// MySQL grants for the service user. Changing this property forces recreation of the resource.
+	MysqlGrants pulumi.StringArrayInput
 	// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
 	Password pulumi.StringPtrInput
 	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
@@ -327,6 +341,11 @@ func (o MysqlUserOutput) AccessKey() pulumi.StringOutput {
 // Service specific authentication details. Currently only used for MySQL where accepted options are 'mysql_native_password' and 'caching_sha2_password', latter being default when this is not explicitly set. The possible values are `cachingSha2Password` and `mysqlNativePassword`.
 func (o MysqlUserOutput) Authentication() pulumi.StringOutput {
 	return o.ApplyT(func(v *MysqlUser) pulumi.StringOutput { return v.Authentication }).(pulumi.StringOutput)
+}
+
+// MySQL grants for the service user. Changing this property forces recreation of the resource.
+func (o MysqlUserOutput) MysqlGrants() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *MysqlUser) pulumi.StringArrayOutput { return v.MysqlGrants }).(pulumi.StringArrayOutput)
 }
 
 // The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.

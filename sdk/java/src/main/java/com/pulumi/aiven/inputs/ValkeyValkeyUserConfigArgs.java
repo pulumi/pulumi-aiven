@@ -302,6 +302,36 @@ public final class ValkeyValkeyUserConfigArgs extends com.pulumi.resources.Resou
     }
 
     /**
+     * Minimum amount of fragmentation waste, in bytes, before active defragmentation starts. Only takes effect when `valkeyActivedefrag` is enabled.
+     * 
+     */
+    @Import(name="valkeyActiveDefragIgnoreBytes")
+    private @Nullable Output<Integer> valkeyActiveDefragIgnoreBytes;
+
+    /**
+     * @return Minimum amount of fragmentation waste, in bytes, before active defragmentation starts. Only takes effect when `valkeyActivedefrag` is enabled.
+     * 
+     */
+    public Optional<Output<Integer>> valkeyActiveDefragIgnoreBytes() {
+        return Optional.ofNullable(this.valkeyActiveDefragIgnoreBytes);
+    }
+
+    /**
+     * Minimum percentage of fragmentation before active defragmentation starts. Only takes effect when `valkeyActivedefrag` is enabled. Default: `10`.
+     * 
+     */
+    @Import(name="valkeyActiveDefragThresholdLower")
+    private @Nullable Output<Integer> valkeyActiveDefragThresholdLower;
+
+    /**
+     * @return Minimum percentage of fragmentation before active defragmentation starts. Only takes effect when `valkeyActivedefrag` is enabled. Default: `10`.
+     * 
+     */
+    public Optional<Output<Integer>> valkeyActiveDefragThresholdLower() {
+        return Optional.ofNullable(this.valkeyActiveDefragThresholdLower);
+    }
+
+    /**
      * Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency. Default: `1`.
      * 
      */
@@ -422,14 +452,14 @@ public final class ValkeyValkeyUserConfigArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Enum: `off`, `rdb`. When persistence is `rdb`, Valkey does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is `off`, no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can&#39;t be forked.
+     * Enum: `off`, `rdb`. Controls whether Valkey writes RDB dumps to disk. With `rdb`, RDB dumps are written for backups on the backup schedule and, if `frequentSnapshots` is enabled, every 10 minutes so the service can recover recent data after a restart. With `off`, no RDB dumps are written at all: backups and forking are unavailable, `frequentSnapshots` and `backupHour`/`backupMinute` have no effect, and all data is lost if the service restarts or is powered off.
      * 
      */
     @Import(name="valkeyPersistence")
     private @Nullable Output<String> valkeyPersistence;
 
     /**
-     * @return Enum: `off`, `rdb`. When persistence is `rdb`, Valkey does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is `off`, no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can&#39;t be forked.
+     * @return Enum: `off`, `rdb`. Controls whether Valkey writes RDB dumps to disk. With `rdb`, RDB dumps are written for backups on the backup schedule and, if `frequentSnapshots` is enabled, every 10 minutes so the service can recover recent data after a restart. With `off`, no RDB dumps are written at all: backups and forking are unavailable, `frequentSnapshots` and `backupHour`/`backupMinute` have no effect, and all data is lost if the service restarts or is powered off.
      * 
      */
     public Optional<Output<String>> valkeyPersistence() {
@@ -517,6 +547,8 @@ public final class ValkeyValkeyUserConfigArgs extends com.pulumi.resources.Resou
         this.serviceToForkFrom = $.serviceToForkFrom;
         this.staticIps = $.staticIps;
         this.valkeyAclChannelsDefault = $.valkeyAclChannelsDefault;
+        this.valkeyActiveDefragIgnoreBytes = $.valkeyActiveDefragIgnoreBytes;
+        this.valkeyActiveDefragThresholdLower = $.valkeyActiveDefragThresholdLower;
         this.valkeyActiveExpireEffort = $.valkeyActiveExpireEffort;
         this.valkeyActivedefrag = $.valkeyActivedefrag;
         this.valkeyIoThreads = $.valkeyIoThreads;
@@ -971,6 +1003,48 @@ public final class ValkeyValkeyUserConfigArgs extends com.pulumi.resources.Resou
         }
 
         /**
+         * @param valkeyActiveDefragIgnoreBytes Minimum amount of fragmentation waste, in bytes, before active defragmentation starts. Only takes effect when `valkeyActivedefrag` is enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder valkeyActiveDefragIgnoreBytes(@Nullable Output<Integer> valkeyActiveDefragIgnoreBytes) {
+            $.valkeyActiveDefragIgnoreBytes = valkeyActiveDefragIgnoreBytes;
+            return this;
+        }
+
+        /**
+         * @param valkeyActiveDefragIgnoreBytes Minimum amount of fragmentation waste, in bytes, before active defragmentation starts. Only takes effect when `valkeyActivedefrag` is enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder valkeyActiveDefragIgnoreBytes(Integer valkeyActiveDefragIgnoreBytes) {
+            return valkeyActiveDefragIgnoreBytes(Output.of(valkeyActiveDefragIgnoreBytes));
+        }
+
+        /**
+         * @param valkeyActiveDefragThresholdLower Minimum percentage of fragmentation before active defragmentation starts. Only takes effect when `valkeyActivedefrag` is enabled. Default: `10`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder valkeyActiveDefragThresholdLower(@Nullable Output<Integer> valkeyActiveDefragThresholdLower) {
+            $.valkeyActiveDefragThresholdLower = valkeyActiveDefragThresholdLower;
+            return this;
+        }
+
+        /**
+         * @param valkeyActiveDefragThresholdLower Minimum percentage of fragmentation before active defragmentation starts. Only takes effect when `valkeyActivedefrag` is enabled. Default: `10`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder valkeyActiveDefragThresholdLower(Integer valkeyActiveDefragThresholdLower) {
+            return valkeyActiveDefragThresholdLower(Output.of(valkeyActiveDefragThresholdLower));
+        }
+
+        /**
          * @param valkeyActiveExpireEffort Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency. Default: `1`.
          * 
          * @return builder
@@ -1139,7 +1213,7 @@ public final class ValkeyValkeyUserConfigArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param valkeyPersistence Enum: `off`, `rdb`. When persistence is `rdb`, Valkey does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is `off`, no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can&#39;t be forked.
+         * @param valkeyPersistence Enum: `off`, `rdb`. Controls whether Valkey writes RDB dumps to disk. With `rdb`, RDB dumps are written for backups on the backup schedule and, if `frequentSnapshots` is enabled, every 10 minutes so the service can recover recent data after a restart. With `off`, no RDB dumps are written at all: backups and forking are unavailable, `frequentSnapshots` and `backupHour`/`backupMinute` have no effect, and all data is lost if the service restarts or is powered off.
          * 
          * @return builder
          * 
@@ -1150,7 +1224,7 @@ public final class ValkeyValkeyUserConfigArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param valkeyPersistence Enum: `off`, `rdb`. When persistence is `rdb`, Valkey does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is `off`, no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can&#39;t be forked.
+         * @param valkeyPersistence Enum: `off`, `rdb`. Controls whether Valkey writes RDB dumps to disk. With `rdb`, RDB dumps are written for backups on the backup schedule and, if `frequentSnapshots` is enabled, every 10 minutes so the service can recover recent data after a restart. With `off`, no RDB dumps are written at all: backups and forking are unavailable, `frequentSnapshots` and `backupHour`/`backupMinute` have no effect, and all data is lost if the service restarts or is powered off.
          * 
          * @return builder
          * 

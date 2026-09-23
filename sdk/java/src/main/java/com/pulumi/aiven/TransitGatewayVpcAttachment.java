@@ -6,6 +6,7 @@ package com.pulumi.aiven;
 import com.pulumi.aiven.TransitGatewayVpcAttachmentArgs;
 import com.pulumi.aiven.Utilities;
 import com.pulumi.aiven.inputs.TransitGatewayVpcAttachmentState;
+import com.pulumi.aiven.outputs.TransitGatewayVpcAttachmentTimeouts;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -17,7 +18,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The Transit Gateway VPC Attachment resource allows the creation and management Transit Gateway VPC Attachment VPC peering connection between Aiven and AWS.
+ * Creates and manages an AWS Transit Gateway VPC attachment for an Aiven project VPC. If this resource is missing (for example, after a service power off), it&#39;s removed from the state and a new create plan is generated.
  * 
  * ## Example Usage
  * 
@@ -43,12 +44,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var attachment = new TransitGatewayVpcAttachment("attachment", TransitGatewayVpcAttachmentArgs.builder()
- *             .vpcId(bar.id())
- *             .peerCloudAccount("<PEER_ACCOUNT_ID>")
- *             .peerVpc("google-project1")
- *             .peerRegion("aws-eu-west-1")
- *             .userPeerNetworkCidrs("10.0.0.0/24")
+ *         var example = new TransitGatewayVpcAttachment("example", TransitGatewayVpcAttachmentArgs.builder()
+ *             .vpcId("example-project/example-vpc")
+ *             .peerCloudAccount("123456789012")
+ *             .peerVpc("tgw-0123456789abcdef0")
+ *             .peerRegion("us-east-1")
+ *             .userPeerNetworkCidrs("192.168.6.0/24")
  *             .build());
  * 
  *     }
@@ -58,120 +59,129 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
+ * Import is supported using one of the following formats:
+ * 
  * ```sh
- * $ pulumi import aiven:index/transitGatewayVpcAttachment:TransitGatewayVpcAttachment attachment PROJECT/VPC_ID/PEER_CLOUD_ACCOUNT/PEER_VPC/PEER_REGION
+ * $ pulumi import aiven:index/transitGatewayVpcAttachment:TransitGatewayVpcAttachment example PROJECT/VPC_ID/PEER_CLOUD_ACCOUNT/PEER_VPC
+ * $ pulumi import aiven:index/transitGatewayVpcAttachment:TransitGatewayVpcAttachment example PROJECT/VPC_ID/PEER_CLOUD_ACCOUNT/PEER_VPC/PEER_REGION
  * ```
  * 
  */
 @ResourceType(type="aiven:index/transitGatewayVpcAttachment:TransitGatewayVpcAttachment")
 public class TransitGatewayVpcAttachment extends com.pulumi.resources.CustomResource {
     /**
-     * AWS account ID or GCP project ID of the peered VPC. Changing this property forces recreation of the resource.
+     * AWS account ID that owns the Transit Gateway. Maximum length: `1024`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="peerCloudAccount", refs={String.class}, tree="[0]")
     private Output<String> peerCloudAccount;
 
     /**
-     * @return AWS account ID or GCP project ID of the peered VPC. Changing this property forces recreation of the resource.
+     * @return AWS account ID that owns the Transit Gateway. Maximum length: `1024`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> peerCloudAccount() {
         return this.peerCloudAccount;
     }
     /**
-     * AWS region of the peered VPC (if not in the same region as Aiven VPC). This value can&#39;t be changed.
+     * AWS region of the Transit Gateway. When omitted, the Aiven project VPC region is used. Maximum length: `1024`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="peerRegion", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> peerRegion;
 
     /**
-     * @return AWS region of the peered VPC (if not in the same region as Aiven VPC). This value can&#39;t be changed.
+     * @return AWS region of the Transit Gateway. When omitted, the Aiven project VPC region is used. Maximum length: `1024`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<Optional<String>> peerRegion() {
         return Codegen.optional(this.peerRegion);
     }
     /**
-     * Transit gateway ID. Changing this property forces recreation of the resource.
+     * AWS Transit Gateway ID. Maximum length: `1024`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="peerVpc", refs={String.class}, tree="[0]")
     private Output<String> peerVpc;
 
     /**
-     * @return Transit gateway ID. Changing this property forces recreation of the resource.
+     * @return AWS Transit Gateway ID. Maximum length: `1024`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> peerVpc() {
         return this.peerVpc;
     }
     /**
-     * Cloud provider identifier for the peering connection if available
+     * Legacy AWS VPC peering connection ID (`pcx-*`) for ordinary AWS VPC peering connections, if available. This is not the AWS Transit Gateway attachment ID; TGW attachment details are exposed in `stateInfo`.
      * 
      */
     @Export(name="peeringConnectionId", refs={String.class}, tree="[0]")
     private Output<String> peeringConnectionId;
 
     /**
-     * @return Cloud provider identifier for the peering connection if available
+     * @return Legacy AWS VPC peering connection ID (`pcx-*`) for ordinary AWS VPC peering connections, if available. This is not the AWS Transit Gateway attachment ID; TGW attachment details are exposed in `stateInfo`.
      * 
      */
     public Output<String> peeringConnectionId() {
         return this.peeringConnectionId;
     }
     /**
-     * State of the peering connection
+     * Project VPC peering connection state. The possible values are `ACTIVE`, `APPROVED`, `APPROVED_PEER_REQUESTED`, `DELETED`, `DELETED_BY_PEER`, `DELETING`, `ERROR`, `INVALID_SPECIFICATION`, `PENDING_PEER` and `REJECTED_BY_PEER`.
      * 
      */
     @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**
-     * @return State of the peering connection
+     * @return Project VPC peering connection state. The possible values are `ACTIVE`, `APPROVED`, `APPROVED_PEER_REQUESTED`, `DELETED`, `DELETED_BY_PEER`, `DELETING`, `ERROR`, `INVALID_SPECIFICATION`, `PENDING_PEER` and `REJECTED_BY_PEER`.
      * 
      */
     public Output<String> state() {
         return this.state;
     }
     /**
-     * State-specific help or error information
+     * State-specific help or error information.
      * 
      */
     @Export(name="stateInfo", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> stateInfo;
 
     /**
-     * @return State-specific help or error information
+     * @return State-specific help or error information.
      * 
      */
     public Output<Map<String,String>> stateInfo() {
         return this.stateInfo;
     }
+    @Export(name="timeouts", refs={TransitGatewayVpcAttachmentTimeouts.class}, tree="[0]")
+    private Output</* @Nullable */ TransitGatewayVpcAttachmentTimeouts> timeouts;
+
+    public Output<Optional<TransitGatewayVpcAttachmentTimeouts>> timeouts() {
+        return Codegen.optional(this.timeouts);
+    }
     /**
-     * List of private IPv4 ranges to route through the peering connection
+     * List of private IPv4 ranges to route through the peering connection.
      * 
      */
     @Export(name="userPeerNetworkCidrs", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> userPeerNetworkCidrs;
 
     /**
-     * @return List of private IPv4 ranges to route through the peering connection
+     * @return List of private IPv4 ranges to route through the peering connection.
      * 
      */
     public Output<List<String>> userPeerNetworkCidrs() {
         return this.userPeerNetworkCidrs;
     }
     /**
-     * The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Aiven project VPC ID in the `PROJECT/VPC_ID` format. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**
-     * @return The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Aiven project VPC ID in the `PROJECT/VPC_ID` format. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> vpcId() {

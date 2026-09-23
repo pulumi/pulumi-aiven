@@ -160,7 +160,7 @@ public final class KafkaKafkaUserConfig {
      */
     private @Nullable String kafkaVersion;
     /**
-     * @return Pin a specific installed Karapace version on this service. Leave null/unset to auto-follow the newest installed version.
+     * @return Enum: `6.2.1`, `6.2.2`, `6.2.3`, and newer. Select a Karapace version for this service, or select Latest to use the latest available version automatically. New versions become available after installation during a maintenance update.
      * 
      */
     private @Nullable String karapaceVersion;
@@ -408,7 +408,7 @@ public final class KafkaKafkaUserConfig {
         return Optional.ofNullable(this.kafkaVersion);
     }
     /**
-     * @return Pin a specific installed Karapace version on this service. Leave null/unset to auto-follow the newest installed version.
+     * @return Enum: `6.2.1`, `6.2.2`, `6.2.3`, and newer. Select a Karapace version for this service, or select Latest to use the latest available version automatically. New versions become available after installation during a maintenance update.
      * 
      */
     public Optional<String> karapaceVersion() {

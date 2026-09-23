@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// The Transit Gateway VPC Attachment resource allows the creation and management Transit Gateway VPC Attachment VPC peering connection between Aiven and AWS.
+    /// Creates and manages an AWS Transit Gateway VPC attachment for an Aiven project VPC. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
     /// 
     /// ## Example Usage
     /// 
@@ -22,15 +22,15 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var attachment = new Aiven.TransitGatewayVpcAttachment("attachment", new()
+    ///     var example = new Aiven.TransitGatewayVpcAttachment("example", new()
     ///     {
-    ///         VpcId = bar.Id,
-    ///         PeerCloudAccount = "&lt;PEER_ACCOUNT_ID&gt;",
-    ///         PeerVpc = "google-project1",
-    ///         PeerRegion = "aws-eu-west-1",
+    ///         VpcId = "example-project/example-vpc",
+    ///         PeerCloudAccount = "123456789012",
+    ///         PeerVpc = "tgw-0123456789abcdef0",
+    ///         PeerRegion = "us-east-1",
     ///         UserPeerNetworkCidrs = new[]
     ///         {
-    ///             "10.0.0.0/24",
+    ///             "192.168.6.0/24",
     ///         },
     ///     });
     /// 
@@ -39,57 +39,63 @@ namespace Pulumi.Aiven
     /// 
     /// ## Import
     /// 
+    /// Import is supported using one of the following formats:
+    /// 
     /// ```sh
-    /// $ pulumi import aiven:index/transitGatewayVpcAttachment:TransitGatewayVpcAttachment attachment PROJECT/VPC_ID/PEER_CLOUD_ACCOUNT/PEER_VPC/PEER_REGION
+    /// $ pulumi import aiven:index/transitGatewayVpcAttachment:TransitGatewayVpcAttachment example PROJECT/VPC_ID/PEER_CLOUD_ACCOUNT/PEER_VPC
+    /// $ pulumi import aiven:index/transitGatewayVpcAttachment:TransitGatewayVpcAttachment example PROJECT/VPC_ID/PEER_CLOUD_ACCOUNT/PEER_VPC/PEER_REGION
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/transitGatewayVpcAttachment:TransitGatewayVpcAttachment")]
     public partial class TransitGatewayVpcAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// AWS account ID or GCP project ID of the peered VPC. Changing this property forces recreation of the resource.
+        /// AWS account ID that owns the Transit Gateway. Maximum length: `1024`. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("peerCloudAccount")]
         public Output<string> PeerCloudAccount { get; private set; } = null!;
 
         /// <summary>
-        /// AWS region of the peered VPC (if not in the same region as Aiven VPC). This value can't be changed.
+        /// AWS region of the Transit Gateway. When omitted, the Aiven project VPC region is used. Maximum length: `1024`. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("peerRegion")]
         public Output<string?> PeerRegion { get; private set; } = null!;
 
         /// <summary>
-        /// Transit gateway ID. Changing this property forces recreation of the resource.
+        /// AWS Transit Gateway ID. Maximum length: `1024`. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("peerVpc")]
         public Output<string> PeerVpc { get; private set; } = null!;
 
         /// <summary>
-        /// Cloud provider identifier for the peering connection if available
+        /// Legacy AWS VPC peering connection ID (`pcx-*`) for ordinary AWS VPC peering connections, if available. This is not the AWS Transit Gateway attachment ID; TGW attachment details are exposed in `StateInfo`.
         /// </summary>
         [Output("peeringConnectionId")]
         public Output<string> PeeringConnectionId { get; private set; } = null!;
 
         /// <summary>
-        /// State of the peering connection
+        /// Project VPC peering connection state. The possible values are `ACTIVE`, `APPROVED`, `APPROVED_PEER_REQUESTED`, `DELETED`, `DELETED_BY_PEER`, `DELETING`, `ERROR`, `INVALID_SPECIFICATION`, `PENDING_PEER` and `REJECTED_BY_PEER`.
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// State-specific help or error information
+        /// State-specific help or error information.
         /// </summary>
         [Output("stateInfo")]
         public Output<ImmutableDictionary<string, string>> StateInfo { get; private set; } = null!;
 
+        [Output("timeouts")]
+        public Output<Outputs.TransitGatewayVpcAttachmentTimeouts?> Timeouts { get; private set; } = null!;
+
         /// <summary>
-        /// List of private IPv4 ranges to route through the peering connection
+        /// List of private IPv4 ranges to route through the peering connection.
         /// </summary>
         [Output("userPeerNetworkCidrs")]
         public Output<ImmutableArray<string>> UserPeerNetworkCidrs { get; private set; } = null!;
 
         /// <summary>
-        /// The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Aiven project VPC ID in the `PROJECT/VPC_ID` format. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("vpcId")]
         public Output<string> VpcId { get; private set; } = null!;
@@ -141,28 +147,31 @@ namespace Pulumi.Aiven
     public sealed class TransitGatewayVpcAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// AWS account ID or GCP project ID of the peered VPC. Changing this property forces recreation of the resource.
+        /// AWS account ID that owns the Transit Gateway. Maximum length: `1024`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("peerCloudAccount", required: true)]
         public Input<string> PeerCloudAccount { get; set; } = null!;
 
         /// <summary>
-        /// AWS region of the peered VPC (if not in the same region as Aiven VPC). This value can't be changed.
+        /// AWS region of the Transit Gateway. When omitted, the Aiven project VPC region is used. Maximum length: `1024`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("peerRegion")]
         public Input<string>? PeerRegion { get; set; }
 
         /// <summary>
-        /// Transit gateway ID. Changing this property forces recreation of the resource.
+        /// AWS Transit Gateway ID. Maximum length: `1024`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("peerVpc", required: true)]
         public Input<string> PeerVpc { get; set; } = null!;
 
-        [Input("userPeerNetworkCidrs", required: true)]
+        [Input("timeouts")]
+        public Input<Inputs.TransitGatewayVpcAttachmentTimeoutsArgs>? Timeouts { get; set; }
+
+        [Input("userPeerNetworkCidrs")]
         private InputList<string>? _userPeerNetworkCidrs;
 
         /// <summary>
-        /// List of private IPv4 ranges to route through the peering connection
+        /// List of private IPv4 ranges to route through the peering connection.
         /// </summary>
         public InputList<string> UserPeerNetworkCidrs
         {
@@ -171,7 +180,7 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Aiven project VPC ID in the `PROJECT/VPC_ID` format. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("vpcId", required: true)]
         public Input<string> VpcId { get; set; } = null!;
@@ -185,31 +194,31 @@ namespace Pulumi.Aiven
     public sealed class TransitGatewayVpcAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// AWS account ID or GCP project ID of the peered VPC. Changing this property forces recreation of the resource.
+        /// AWS account ID that owns the Transit Gateway. Maximum length: `1024`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("peerCloudAccount")]
         public Input<string>? PeerCloudAccount { get; set; }
 
         /// <summary>
-        /// AWS region of the peered VPC (if not in the same region as Aiven VPC). This value can't be changed.
+        /// AWS region of the Transit Gateway. When omitted, the Aiven project VPC region is used. Maximum length: `1024`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("peerRegion")]
         public Input<string>? PeerRegion { get; set; }
 
         /// <summary>
-        /// Transit gateway ID. Changing this property forces recreation of the resource.
+        /// AWS Transit Gateway ID. Maximum length: `1024`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("peerVpc")]
         public Input<string>? PeerVpc { get; set; }
 
         /// <summary>
-        /// Cloud provider identifier for the peering connection if available
+        /// Legacy AWS VPC peering connection ID (`pcx-*`) for ordinary AWS VPC peering connections, if available. This is not the AWS Transit Gateway attachment ID; TGW attachment details are exposed in `StateInfo`.
         /// </summary>
         [Input("peeringConnectionId")]
         public Input<string>? PeeringConnectionId { get; set; }
 
         /// <summary>
-        /// State of the peering connection
+        /// Project VPC peering connection state. The possible values are `ACTIVE`, `APPROVED`, `APPROVED_PEER_REQUESTED`, `DELETED`, `DELETED_BY_PEER`, `DELETING`, `ERROR`, `INVALID_SPECIFICATION`, `PENDING_PEER` and `REJECTED_BY_PEER`.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
@@ -218,7 +227,7 @@ namespace Pulumi.Aiven
         private InputMap<string>? _stateInfo;
 
         /// <summary>
-        /// State-specific help or error information
+        /// State-specific help or error information.
         /// </summary>
         public InputMap<string> StateInfo
         {
@@ -226,11 +235,14 @@ namespace Pulumi.Aiven
             set => _stateInfo = value;
         }
 
+        [Input("timeouts")]
+        public Input<Inputs.TransitGatewayVpcAttachmentTimeoutsGetArgs>? Timeouts { get; set; }
+
         [Input("userPeerNetworkCidrs")]
         private InputList<string>? _userPeerNetworkCidrs;
 
         /// <summary>
-        /// List of private IPv4 ranges to route through the peering connection
+        /// List of private IPv4 ranges to route through the peering connection.
         /// </summary>
         public InputList<string> UserPeerNetworkCidrs
         {
@@ -239,7 +251,7 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// Aiven project VPC ID in the `PROJECT/VPC_ID` format. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }

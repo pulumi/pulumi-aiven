@@ -120,7 +120,7 @@ public final class GetMySqlMysqlUserConfigMysql {
      */
     private @Nullable Integer innodbLockWaitTimeout;
     /**
-     * @return The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
+     * @return The size in bytes of the buffer that InnoDB uses to write to the log files on disk. Requests above 15% of the RAM provided by your service plan are rejected, because a larger buffer leaves less memory for the buffer pool and client connections.
      * 
      */
     private @Nullable Integer innodbLogBufferSize;
@@ -185,7 +185,7 @@ public final class GetMySqlMysqlUserConfigMysql {
      */
     private @Nullable Integer lowerCaseTableNames;
     /**
-     * @return Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
+     * @return Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M). Statements and rows larger than this are rejected with a packet too large error.
      * 
      */
     private @Nullable Integer maxAllowedPacket;
@@ -260,7 +260,7 @@ public final class GetMySqlMysqlUserConfigMysql {
      */
     private @Nullable Boolean slowQueryLog;
     /**
-     * @return Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K). Example: `262144`.
+     * @return Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K). Requests above 2% of the RAM provided by your service plan are rejected, because the buffer is allocated per session and its cost multiplies with the connection count. Example: `262144`.
      * 
      */
     private @Nullable Integer sortBufferSize;
@@ -280,7 +280,7 @@ public final class GetMySqlMysqlUserConfigMysql {
      */
     private @Nullable Integer tmpTableSize;
     /**
-     * @return The number of seconds the server waits for activity on a noninteractive connection before closing it. Example: `28800`.
+     * @return The number of seconds the server waits for activity on a noninteractive connection before closing it. Requests to set this below 30 are rejected, because a shorter timeout closes your own idle connections between statements. Example: `28800`.
      * 
      */
     private @Nullable Integer waitTimeout;
@@ -439,7 +439,7 @@ public final class GetMySqlMysqlUserConfigMysql {
         return Optional.ofNullable(this.innodbLockWaitTimeout);
     }
     /**
-     * @return The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
+     * @return The size in bytes of the buffer that InnoDB uses to write to the log files on disk. Requests above 15% of the RAM provided by your service plan are rejected, because a larger buffer leaves less memory for the buffer pool and client connections.
      * 
      */
     public Optional<Integer> innodbLogBufferSize() {
@@ -530,7 +530,7 @@ public final class GetMySqlMysqlUserConfigMysql {
         return Optional.ofNullable(this.lowerCaseTableNames);
     }
     /**
-     * @return Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
+     * @return Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M). Statements and rows larger than this are rejected with a packet too large error.
      * 
      */
     public Optional<Integer> maxAllowedPacket() {
@@ -635,7 +635,7 @@ public final class GetMySqlMysqlUserConfigMysql {
         return Optional.ofNullable(this.slowQueryLog);
     }
     /**
-     * @return Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K). Example: `262144`.
+     * @return Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K). Requests above 2% of the RAM provided by your service plan are rejected, because the buffer is allocated per session and its cost multiplies with the connection count. Example: `262144`.
      * 
      */
     public Optional<Integer> sortBufferSize() {
@@ -663,7 +663,7 @@ public final class GetMySqlMysqlUserConfigMysql {
         return Optional.ofNullable(this.tmpTableSize);
     }
     /**
-     * @return The number of seconds the server waits for activity on a noninteractive connection before closing it. Example: `28800`.
+     * @return The number of seconds the server waits for activity on a noninteractive connection before closing it. Requests to set this below 30 are rejected, because a shorter timeout closes your own idle connections between statements. Example: `28800`.
      * 
      */
     public Optional<Integer> waitTimeout() {

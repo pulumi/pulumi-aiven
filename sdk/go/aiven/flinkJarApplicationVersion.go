@@ -12,7 +12,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates and manages an Aiven for Apache Flink® jar application version. This feature is in the limited availability stage and may change without notice. To enable this feature, contact the [sales team](http://aiven.io/contact). Once it's enabled, set the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+// Creates and manages a version of an [Aiven for Apache Flink® jar application](https://aiven.io/docs/products/flink/howto/create-jar-application). The jar file is uploaded to the pre-signed URL the API returns, and editing the file creates a new version. Requires the `Flink` service to have `flink_user_config.custom_code` enabled, which allows uploading and deploying custom JARs. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
+//
+// > **Beta resource in limited availability**
+// This feature is in the limited availability stage and may change without notice. To enable this feature, contact the [sales team](http://aiven.io/contact). Once it's enabled, set the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
 //
 // ## Example Usage
 //
@@ -28,32 +31,10 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := aiven.NewFlink(ctx, "example", &aiven.FlinkArgs{
-//				FlinkUserConfig: &aiven.FlinkFlinkUserConfigArgs{
-//					CustomCode: pulumi.Bool(true),
-//				},
-//				Project:               pulumi.Any(exampleAivenProject.Project),
-//				ServiceName:           pulumi.String("example-flink-service"),
-//				CloudName:             pulumi.String("google-europe-west1"),
-//				Plan:                  pulumi.String("business-4"),
-//				MaintenanceWindowDow:  pulumi.String("monday"),
-//				MaintenanceWindowTime: pulumi.String("04:00:00"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			exampleFlinkJarApplication, err := aiven.NewFlinkJarApplication(ctx, "example", &aiven.FlinkJarApplicationArgs{
-//				Project:     example.Project,
-//				ServiceName: example.ServiceName,
-//				Name:        pulumi.String("example-app-jar"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = aiven.NewFlinkJarApplicationVersion(ctx, "example", &aiven.FlinkJarApplicationVersionArgs{
-//				Project:       example.Project,
-//				ServiceName:   example.ServiceName,
-//				ApplicationId: exampleFlinkJarApplication.ApplicationId,
+//			_, err := aiven.NewFlinkJarApplicationVersion(ctx, "example", &aiven.FlinkJarApplicationVersionArgs{
+//				Project:       pulumi.String("my-project"),
+//				ServiceName:   pulumi.String("my-application"),
+//				ApplicationId: pulumi.String("foo"),
 //				Source:        pulumi.String("./example.jar"),
 //			})
 //			if err != nil {
@@ -90,7 +71,8 @@ type FlinkJarApplicationVersion struct {
 	// The path to the jar file to upload.
 	Source pulumi.StringOutput `pulumi:"source"`
 	// The sha256 checksum of the jar file to upload.
-	SourceChecksum pulumi.StringOutput `pulumi:"sourceChecksum"`
+	SourceChecksum pulumi.StringOutput                         `pulumi:"sourceChecksum"`
+	Timeouts       FlinkJarApplicationVersionTimeoutsPtrOutput `pulumi:"timeouts"`
 	// Version number.
 	Version pulumi.IntOutput `pulumi:"version"`
 }
@@ -154,7 +136,8 @@ type flinkJarApplicationVersionState struct {
 	// The path to the jar file to upload.
 	Source *string `pulumi:"source"`
 	// The sha256 checksum of the jar file to upload.
-	SourceChecksum *string `pulumi:"sourceChecksum"`
+	SourceChecksum *string                             `pulumi:"sourceChecksum"`
+	Timeouts       *FlinkJarApplicationVersionTimeouts `pulumi:"timeouts"`
 	// Version number.
 	Version *int `pulumi:"version"`
 }
@@ -178,6 +161,7 @@ type FlinkJarApplicationVersionState struct {
 	Source pulumi.StringPtrInput
 	// The sha256 checksum of the jar file to upload.
 	SourceChecksum pulumi.StringPtrInput
+	Timeouts       FlinkJarApplicationVersionTimeoutsPtrInput
 	// Version number.
 	Version pulumi.IntPtrInput
 }
@@ -194,7 +178,8 @@ type flinkJarApplicationVersionArgs struct {
 	// Service name. Changing this property forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
 	// The path to the jar file to upload.
-	Source string `pulumi:"source"`
+	Source   string                              `pulumi:"source"`
+	Timeouts *FlinkJarApplicationVersionTimeouts `pulumi:"timeouts"`
 }
 
 // The set of arguments for constructing a FlinkJarApplicationVersion resource.
@@ -206,7 +191,8 @@ type FlinkJarApplicationVersionArgs struct {
 	// Service name. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringInput
 	// The path to the jar file to upload.
-	Source pulumi.StringInput
+	Source   pulumi.StringInput
+	Timeouts FlinkJarApplicationVersionTimeoutsPtrInput
 }
 
 func (FlinkJarApplicationVersionArgs) ElementType() reflect.Type {
@@ -339,6 +325,10 @@ func (o FlinkJarApplicationVersionOutput) Source() pulumi.StringOutput {
 // The sha256 checksum of the jar file to upload.
 func (o FlinkJarApplicationVersionOutput) SourceChecksum() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlinkJarApplicationVersion) pulumi.StringOutput { return v.SourceChecksum }).(pulumi.StringOutput)
+}
+
+func (o FlinkJarApplicationVersionOutput) Timeouts() FlinkJarApplicationVersionTimeoutsPtrOutput {
+	return o.ApplyT(func(v *FlinkJarApplicationVersion) FlinkJarApplicationVersionTimeoutsPtrOutput { return v.Timeouts }).(FlinkJarApplicationVersionTimeoutsPtrOutput)
 }
 
 // Version number.

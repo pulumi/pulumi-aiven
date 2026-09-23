@@ -24,6 +24,7 @@ class ValkeyUserArgs:
                  project: pulumi.Input[_builtins.str],
                  service_name: pulumi.Input[_builtins.str],
                  username: pulumi.Input[_builtins.str],
+                 mysql_grants: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  password: pulumi.Input[Optional[_builtins.str]] = None,
                  password_wo: pulumi.Input[Optional[_builtins.str]] = None,
                  password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
@@ -38,6 +39,7 @@ class ValkeyUserArgs:
         :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] service_name: Service name. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] username: Service username. Maximum length: `64`. Must match pattern: `^[_A-Za-z0-9][-._A-Za-z0-9]{0,63}$`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] mysql_grants: MySQL grants for the service user. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] password: The password of the service user (auto-generated if not provided). The field conflicts with `password_wo`. Length must be between `8` and `256`.
         :param pulumi.Input[_builtins.str] password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
                The password of the service user (write-only, not stored in state). The field is required with `password_wo_version`. The field conflicts with `password`. Length must be between `8` and `256`.
@@ -50,6 +52,8 @@ class ValkeyUserArgs:
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "service_name", service_name)
         pulumi.set(__self__, "username", username)
+        if mysql_grants is not None:
+            pulumi.set(__self__, "mysql_grants", mysql_grants)
         if password is not None:
             pulumi.set(__self__, "password", password)
         if password_wo is not None:
@@ -102,6 +106,18 @@ class ValkeyUserArgs:
     @username.setter
     def username(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "username", value)
+
+    @_builtins.property
+    @pulumi.getter(name="mysqlGrants")
+    def mysql_grants(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        MySQL grants for the service user. Changing this property forces recreation of the resource.
+        """
+        return pulumi.get(self, "mysql_grants")
+
+    @mysql_grants.setter
+    def mysql_grants(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "mysql_grants", value)
 
     @_builtins.property
     @pulumi.getter
@@ -201,6 +217,7 @@ class ValkeyUserArgs:
 @pulumi.input_type
 class _ValkeyUserState:
     def __init__(__self__, *,
+                 mysql_grants: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  password: pulumi.Input[Optional[_builtins.str]] = None,
                  password_encryption_type: pulumi.Input[Optional[_builtins.str]] = None,
                  password_wo: pulumi.Input[Optional[_builtins.str]] = None,
@@ -217,6 +234,7 @@ class _ValkeyUserState:
         """
         Input properties used for looking up and filtering ValkeyUser resources.
 
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] mysql_grants: MySQL grants for the service user. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] password: The password of the service user (auto-generated if not provided). The field conflicts with `password_wo`. Length must be between `8` and `256`.
         :param pulumi.Input[_builtins.str] password_encryption_type: The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. 'unknown' is reported when the hash is missing or uses an unrecognised format. The possible values are `md5`, `scram-sha-256` and `unknown`.
         :param pulumi.Input[_builtins.str] password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
@@ -231,6 +249,8 @@ class _ValkeyUserState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] valkey_acl_commands: Defines rules for individual commands. To allow a command use the prefix `+` and to disallow use `-`. The field is required with `valkey_acl_categories` and `valkey_acl_keys`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] valkey_acl_keys: Key access rules. Entries are defined as standard glob patterns. The field is required with `valkey_acl_categories` and `valkey_acl_commands`.
         """
+        if mysql_grants is not None:
+            pulumi.set(__self__, "mysql_grants", mysql_grants)
         if password is not None:
             pulumi.set(__self__, "password", password)
         if password_encryption_type is not None:
@@ -257,6 +277,18 @@ class _ValkeyUserState:
             pulumi.set(__self__, "valkey_acl_commands", valkey_acl_commands)
         if valkey_acl_keys is not None:
             pulumi.set(__self__, "valkey_acl_keys", valkey_acl_keys)
+
+    @_builtins.property
+    @pulumi.getter(name="mysqlGrants")
+    def mysql_grants(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        MySQL grants for the service user. Changing this property forces recreation of the resource.
+        """
+        return pulumi.get(self, "mysql_grants")
+
+    @mysql_grants.setter
+    def mysql_grants(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "mysql_grants", value)
 
     @_builtins.property
     @pulumi.getter
@@ -419,6 +451,7 @@ class ValkeyUser(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 mysql_grants: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  password: pulumi.Input[Optional[_builtins.str]] = None,
                  password_wo: pulumi.Input[Optional[_builtins.str]] = None,
                  password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
@@ -446,6 +479,10 @@ class ValkeyUser(pulumi.CustomResource):
             username="testuser",
             password_wo="password123",
             password_wo_version=1,
+            mysql_grants=[
+                "SELECT",
+                "DELETE",
+            ],
             valkey_acl_categories=[
                 "+@write",
                 "+@keyspace",
@@ -470,6 +507,7 @@ class ValkeyUser(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] mysql_grants: MySQL grants for the service user. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] password: The password of the service user (auto-generated if not provided). The field conflicts with `password_wo`. Length must be between `8` and `256`.
         :param pulumi.Input[_builtins.str] password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
                The password of the service user (write-only, not stored in state). The field is required with `password_wo_version`. The field conflicts with `password`. Length must be between `8` and `256`.
@@ -503,6 +541,10 @@ class ValkeyUser(pulumi.CustomResource):
             username="testuser",
             password_wo="password123",
             password_wo_version=1,
+            mysql_grants=[
+                "SELECT",
+                "DELETE",
+            ],
             valkey_acl_categories=[
                 "+@write",
                 "+@keyspace",
@@ -540,6 +582,7 @@ class ValkeyUser(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 mysql_grants: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  password: pulumi.Input[Optional[_builtins.str]] = None,
                  password_wo: pulumi.Input[Optional[_builtins.str]] = None,
                  password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
@@ -560,6 +603,7 @@ class ValkeyUser(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ValkeyUserArgs.__new__(ValkeyUserArgs)
 
+            __props__.__dict__["mysql_grants"] = mysql_grants
             __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
             __props__.__dict__["password_wo"] = None if password_wo is None else pulumi.Output.secret(password_wo)
             __props__.__dict__["password_wo_version"] = password_wo_version
@@ -591,6 +635,7 @@ class ValkeyUser(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            mysql_grants: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             password: pulumi.Input[Optional[_builtins.str]] = None,
             password_encryption_type: pulumi.Input[Optional[_builtins.str]] = None,
             password_wo: pulumi.Input[Optional[_builtins.str]] = None,
@@ -611,6 +656,7 @@ class ValkeyUser(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] mysql_grants: MySQL grants for the service user. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] password: The password of the service user (auto-generated if not provided). The field conflicts with `password_wo`. Length must be between `8` and `256`.
         :param pulumi.Input[_builtins.str] password_encryption_type: The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. 'unknown' is reported when the hash is missing or uses an unrecognised format. The possible values are `md5`, `scram-sha-256` and `unknown`.
         :param pulumi.Input[_builtins.str] password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
@@ -629,6 +675,7 @@ class ValkeyUser(pulumi.CustomResource):
 
         __props__ = _ValkeyUserState.__new__(_ValkeyUserState)
 
+        __props__.__dict__["mysql_grants"] = mysql_grants
         __props__.__dict__["password"] = password
         __props__.__dict__["password_encryption_type"] = password_encryption_type
         __props__.__dict__["password_wo"] = password_wo
@@ -643,6 +690,14 @@ class ValkeyUser(pulumi.CustomResource):
         __props__.__dict__["valkey_acl_commands"] = valkey_acl_commands
         __props__.__dict__["valkey_acl_keys"] = valkey_acl_keys
         return ValkeyUser(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="mysqlGrants")
+    def mysql_grants(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+        """
+        MySQL grants for the service user. Changing this property forces recreation of the resource.
+        """
+        return pulumi.get(self, "mysql_grants")
 
     @_builtins.property
     @pulumi.getter

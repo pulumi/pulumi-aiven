@@ -25,6 +25,7 @@ class MysqlUserArgs:
                  service_name: pulumi.Input[_builtins.str],
                  username: pulumi.Input[_builtins.str],
                  authentication: pulumi.Input[Optional[_builtins.str]] = None,
+                 mysql_grants: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  password: pulumi.Input[Optional[_builtins.str]] = None,
                  password_wo: pulumi.Input[Optional[_builtins.str]] = None,
                  password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
@@ -36,6 +37,7 @@ class MysqlUserArgs:
         :param pulumi.Input[_builtins.str] service_name: The name of the MySQL® service user. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] username: The name of the MySQL® service user. Maximum length: `64`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] authentication: Service specific authentication details. Currently only used for MySQL where accepted options are 'mysql_native_password' and 'caching_sha2_password', latter being default when this is not explicitly set. The possible values are `caching_sha2_password` and `mysql_native_password`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] mysql_grants: MySQL grants for the service user. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] password: The password of the service user (auto-generated if not provided). The field conflicts with `password_wo`. Length must be between `8` and `256`.
         :param pulumi.Input[_builtins.str] password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
                The password of the service user (write-only, not stored in state). The field is required with `password_wo_version`. The field conflicts with `password`. Length must be between `8` and `256`.
@@ -46,6 +48,8 @@ class MysqlUserArgs:
         pulumi.set(__self__, "username", username)
         if authentication is not None:
             pulumi.set(__self__, "authentication", authentication)
+        if mysql_grants is not None:
+            pulumi.set(__self__, "mysql_grants", mysql_grants)
         if password is not None:
             pulumi.set(__self__, "password", password)
         if password_wo is not None:
@@ -104,6 +108,18 @@ class MysqlUserArgs:
         pulumi.set(self, "authentication", value)
 
     @_builtins.property
+    @pulumi.getter(name="mysqlGrants")
+    def mysql_grants(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        MySQL grants for the service user. Changing this property forces recreation of the resource.
+        """
+        return pulumi.get(self, "mysql_grants")
+
+    @mysql_grants.setter
+    def mysql_grants(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "mysql_grants", value)
+
+    @_builtins.property
     @pulumi.getter
     def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -156,6 +172,7 @@ class _MysqlUserState:
                  access_cert: pulumi.Input[Optional[_builtins.str]] = None,
                  access_key: pulumi.Input[Optional[_builtins.str]] = None,
                  authentication: pulumi.Input[Optional[_builtins.str]] = None,
+                 mysql_grants: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  password: pulumi.Input[Optional[_builtins.str]] = None,
                  password_encryption_type: pulumi.Input[Optional[_builtins.str]] = None,
                  password_wo: pulumi.Input[Optional[_builtins.str]] = None,
@@ -171,6 +188,7 @@ class _MysqlUserState:
         :param pulumi.Input[_builtins.str] access_cert: Access certificate for TLS client authentication.
         :param pulumi.Input[_builtins.str] access_key: Access key for TLS client authentication.
         :param pulumi.Input[_builtins.str] authentication: Service specific authentication details. Currently only used for MySQL where accepted options are 'mysql_native_password' and 'caching_sha2_password', latter being default when this is not explicitly set. The possible values are `caching_sha2_password` and `mysql_native_password`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] mysql_grants: MySQL grants for the service user. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] password: The password of the service user (auto-generated if not provided). The field conflicts with `password_wo`. Length must be between `8` and `256`.
         :param pulumi.Input[_builtins.str] password_encryption_type: The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. 'unknown' is reported when the hash is missing or uses an unrecognised format. The possible values are `md5`, `scram-sha-256` and `unknown`.
         :param pulumi.Input[_builtins.str] password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
@@ -187,6 +205,8 @@ class _MysqlUserState:
             pulumi.set(__self__, "access_key", access_key)
         if authentication is not None:
             pulumi.set(__self__, "authentication", authentication)
+        if mysql_grants is not None:
+            pulumi.set(__self__, "mysql_grants", mysql_grants)
         if password is not None:
             pulumi.set(__self__, "password", password)
         if password_encryption_type is not None:
@@ -241,6 +261,18 @@ class _MysqlUserState:
     @authentication.setter
     def authentication(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "authentication", value)
+
+    @_builtins.property
+    @pulumi.getter(name="mysqlGrants")
+    def mysql_grants(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        MySQL grants for the service user. Changing this property forces recreation of the resource.
+        """
+        return pulumi.get(self, "mysql_grants")
+
+    @mysql_grants.setter
+    def mysql_grants(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "mysql_grants", value)
 
     @_builtins.property
     @pulumi.getter
@@ -356,6 +388,7 @@ class MysqlUser(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  authentication: pulumi.Input[Optional[_builtins.str]] = None,
+                 mysql_grants: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  password: pulumi.Input[Optional[_builtins.str]] = None,
                  password_wo: pulumi.Input[Optional[_builtins.str]] = None,
                  password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
@@ -379,7 +412,11 @@ class MysqlUser(pulumi.CustomResource):
             username="testuser",
             password_wo="password123",
             password_wo_version=1,
-            authentication="caching_sha2_password")
+            authentication="caching_sha2_password",
+            mysql_grants=[
+                "SELECT",
+                "DELETE",
+            ])
         ```
 
         ## Import
@@ -392,6 +429,7 @@ class MysqlUser(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] authentication: Service specific authentication details. Currently only used for MySQL where accepted options are 'mysql_native_password' and 'caching_sha2_password', latter being default when this is not explicitly set. The possible values are `caching_sha2_password` and `mysql_native_password`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] mysql_grants: MySQL grants for the service user. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] password: The password of the service user (auto-generated if not provided). The field conflicts with `password_wo`. Length must be between `8` and `256`.
         :param pulumi.Input[_builtins.str] password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
                The password of the service user (write-only, not stored in state). The field is required with `password_wo_version`. The field conflicts with `password`. Length must be between `8` and `256`.
@@ -421,7 +459,11 @@ class MysqlUser(pulumi.CustomResource):
             username="testuser",
             password_wo="password123",
             password_wo_version=1,
-            authentication="caching_sha2_password")
+            authentication="caching_sha2_password",
+            mysql_grants=[
+                "SELECT",
+                "DELETE",
+            ])
         ```
 
         ## Import
@@ -447,6 +489,7 @@ class MysqlUser(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  authentication: pulumi.Input[Optional[_builtins.str]] = None,
+                 mysql_grants: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  password: pulumi.Input[Optional[_builtins.str]] = None,
                  password_wo: pulumi.Input[Optional[_builtins.str]] = None,
                  password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
@@ -464,6 +507,7 @@ class MysqlUser(pulumi.CustomResource):
             __props__ = MysqlUserArgs.__new__(MysqlUserArgs)
 
             __props__.__dict__["authentication"] = authentication
+            __props__.__dict__["mysql_grants"] = mysql_grants
             __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
             __props__.__dict__["password_wo"] = None if password_wo is None else pulumi.Output.secret(password_wo)
             __props__.__dict__["password_wo_version"] = password_wo_version
@@ -496,6 +540,7 @@ class MysqlUser(pulumi.CustomResource):
             access_cert: pulumi.Input[Optional[_builtins.str]] = None,
             access_key: pulumi.Input[Optional[_builtins.str]] = None,
             authentication: pulumi.Input[Optional[_builtins.str]] = None,
+            mysql_grants: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             password: pulumi.Input[Optional[_builtins.str]] = None,
             password_encryption_type: pulumi.Input[Optional[_builtins.str]] = None,
             password_wo: pulumi.Input[Optional[_builtins.str]] = None,
@@ -515,6 +560,7 @@ class MysqlUser(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] access_cert: Access certificate for TLS client authentication.
         :param pulumi.Input[_builtins.str] access_key: Access key for TLS client authentication.
         :param pulumi.Input[_builtins.str] authentication: Service specific authentication details. Currently only used for MySQL where accepted options are 'mysql_native_password' and 'caching_sha2_password', latter being default when this is not explicitly set. The possible values are `caching_sha2_password` and `mysql_native_password`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] mysql_grants: MySQL grants for the service user. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] password: The password of the service user (auto-generated if not provided). The field conflicts with `password_wo`. Length must be between `8` and `256`.
         :param pulumi.Input[_builtins.str] password_encryption_type: The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. 'unknown' is reported when the hash is missing or uses an unrecognised format. The possible values are `md5`, `scram-sha-256` and `unknown`.
         :param pulumi.Input[_builtins.str] password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
@@ -532,6 +578,7 @@ class MysqlUser(pulumi.CustomResource):
         __props__.__dict__["access_cert"] = access_cert
         __props__.__dict__["access_key"] = access_key
         __props__.__dict__["authentication"] = authentication
+        __props__.__dict__["mysql_grants"] = mysql_grants
         __props__.__dict__["password"] = password
         __props__.__dict__["password_encryption_type"] = password_encryption_type
         __props__.__dict__["password_wo"] = password_wo
@@ -566,6 +613,14 @@ class MysqlUser(pulumi.CustomResource):
         Service specific authentication details. Currently only used for MySQL where accepted options are 'mysql_native_password' and 'caching_sha2_password', latter being default when this is not explicitly set. The possible values are `caching_sha2_password` and `mysql_native_password`.
         """
         return pulumi.get(self, "authentication")
+
+    @_builtins.property
+    @pulumi.getter(name="mysqlGrants")
+    def mysql_grants(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+        """
+        MySQL grants for the service user. Changing this property forces recreation of the resource.
+        """
+        return pulumi.get(self, "mysql_grants")
 
     @_builtins.property
     @pulumi.getter

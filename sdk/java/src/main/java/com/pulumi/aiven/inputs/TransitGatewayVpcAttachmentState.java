@@ -3,6 +3,7 @@
 
 package com.pulumi.aiven.inputs;
 
+import com.pulumi.aiven.inputs.TransitGatewayVpcAttachmentTimeoutsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
@@ -18,14 +19,14 @@ public final class TransitGatewayVpcAttachmentState extends com.pulumi.resources
     public static final TransitGatewayVpcAttachmentState Empty = new TransitGatewayVpcAttachmentState();
 
     /**
-     * AWS account ID or GCP project ID of the peered VPC. Changing this property forces recreation of the resource.
+     * AWS account ID that owns the Transit Gateway. Maximum length: `1024`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="peerCloudAccount")
     private @Nullable Output<String> peerCloudAccount;
 
     /**
-     * @return AWS account ID or GCP project ID of the peered VPC. Changing this property forces recreation of the resource.
+     * @return AWS account ID that owns the Transit Gateway. Maximum length: `1024`. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> peerCloudAccount() {
@@ -33,14 +34,14 @@ public final class TransitGatewayVpcAttachmentState extends com.pulumi.resources
     }
 
     /**
-     * AWS region of the peered VPC (if not in the same region as Aiven VPC). This value can&#39;t be changed.
+     * AWS region of the Transit Gateway. When omitted, the Aiven project VPC region is used. Maximum length: `1024`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="peerRegion")
     private @Nullable Output<String> peerRegion;
 
     /**
-     * @return AWS region of the peered VPC (if not in the same region as Aiven VPC). This value can&#39;t be changed.
+     * @return AWS region of the Transit Gateway. When omitted, the Aiven project VPC region is used. Maximum length: `1024`. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> peerRegion() {
@@ -48,14 +49,14 @@ public final class TransitGatewayVpcAttachmentState extends com.pulumi.resources
     }
 
     /**
-     * Transit gateway ID. Changing this property forces recreation of the resource.
+     * AWS Transit Gateway ID. Maximum length: `1024`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="peerVpc")
     private @Nullable Output<String> peerVpc;
 
     /**
-     * @return Transit gateway ID. Changing this property forces recreation of the resource.
+     * @return AWS Transit Gateway ID. Maximum length: `1024`. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> peerVpc() {
@@ -63,14 +64,14 @@ public final class TransitGatewayVpcAttachmentState extends com.pulumi.resources
     }
 
     /**
-     * Cloud provider identifier for the peering connection if available
+     * Legacy AWS VPC peering connection ID (`pcx-*`) for ordinary AWS VPC peering connections, if available. This is not the AWS Transit Gateway attachment ID; TGW attachment details are exposed in `stateInfo`.
      * 
      */
     @Import(name="peeringConnectionId")
     private @Nullable Output<String> peeringConnectionId;
 
     /**
-     * @return Cloud provider identifier for the peering connection if available
+     * @return Legacy AWS VPC peering connection ID (`pcx-*`) for ordinary AWS VPC peering connections, if available. This is not the AWS Transit Gateway attachment ID; TGW attachment details are exposed in `stateInfo`.
      * 
      */
     public Optional<Output<String>> peeringConnectionId() {
@@ -78,14 +79,14 @@ public final class TransitGatewayVpcAttachmentState extends com.pulumi.resources
     }
 
     /**
-     * State of the peering connection
+     * Project VPC peering connection state. The possible values are `ACTIVE`, `APPROVED`, `APPROVED_PEER_REQUESTED`, `DELETED`, `DELETED_BY_PEER`, `DELETING`, `ERROR`, `INVALID_SPECIFICATION`, `PENDING_PEER` and `REJECTED_BY_PEER`.
      * 
      */
     @Import(name="state")
     private @Nullable Output<String> state;
 
     /**
-     * @return State of the peering connection
+     * @return Project VPC peering connection state. The possible values are `ACTIVE`, `APPROVED`, `APPROVED_PEER_REQUESTED`, `DELETED`, `DELETED_BY_PEER`, `DELETING`, `ERROR`, `INVALID_SPECIFICATION`, `PENDING_PEER` and `REJECTED_BY_PEER`.
      * 
      */
     public Optional<Output<String>> state() {
@@ -93,29 +94,36 @@ public final class TransitGatewayVpcAttachmentState extends com.pulumi.resources
     }
 
     /**
-     * State-specific help or error information
+     * State-specific help or error information.
      * 
      */
     @Import(name="stateInfo")
     private @Nullable Output<Map<String,String>> stateInfo;
 
     /**
-     * @return State-specific help or error information
+     * @return State-specific help or error information.
      * 
      */
     public Optional<Output<Map<String,String>>> stateInfo() {
         return Optional.ofNullable(this.stateInfo);
     }
 
+    @Import(name="timeouts")
+    private @Nullable Output<TransitGatewayVpcAttachmentTimeoutsArgs> timeouts;
+
+    public Optional<Output<TransitGatewayVpcAttachmentTimeoutsArgs>> timeouts() {
+        return Optional.ofNullable(this.timeouts);
+    }
+
     /**
-     * List of private IPv4 ranges to route through the peering connection
+     * List of private IPv4 ranges to route through the peering connection.
      * 
      */
     @Import(name="userPeerNetworkCidrs")
     private @Nullable Output<List<String>> userPeerNetworkCidrs;
 
     /**
-     * @return List of private IPv4 ranges to route through the peering connection
+     * @return List of private IPv4 ranges to route through the peering connection.
      * 
      */
     public Optional<Output<List<String>>> userPeerNetworkCidrs() {
@@ -123,14 +131,14 @@ public final class TransitGatewayVpcAttachmentState extends com.pulumi.resources
     }
 
     /**
-     * The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Aiven project VPC ID in the `PROJECT/VPC_ID` format. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="vpcId")
     private @Nullable Output<String> vpcId;
 
     /**
-     * @return The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Aiven project VPC ID in the `PROJECT/VPC_ID` format. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> vpcId() {
@@ -146,6 +154,7 @@ public final class TransitGatewayVpcAttachmentState extends com.pulumi.resources
         this.peeringConnectionId = $.peeringConnectionId;
         this.state = $.state;
         this.stateInfo = $.stateInfo;
+        this.timeouts = $.timeouts;
         this.userPeerNetworkCidrs = $.userPeerNetworkCidrs;
         this.vpcId = $.vpcId;
     }
@@ -169,7 +178,7 @@ public final class TransitGatewayVpcAttachmentState extends com.pulumi.resources
         }
 
         /**
-         * @param peerCloudAccount AWS account ID or GCP project ID of the peered VPC. Changing this property forces recreation of the resource.
+         * @param peerCloudAccount AWS account ID that owns the Transit Gateway. Maximum length: `1024`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -180,7 +189,7 @@ public final class TransitGatewayVpcAttachmentState extends com.pulumi.resources
         }
 
         /**
-         * @param peerCloudAccount AWS account ID or GCP project ID of the peered VPC. Changing this property forces recreation of the resource.
+         * @param peerCloudAccount AWS account ID that owns the Transit Gateway. Maximum length: `1024`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -190,7 +199,7 @@ public final class TransitGatewayVpcAttachmentState extends com.pulumi.resources
         }
 
         /**
-         * @param peerRegion AWS region of the peered VPC (if not in the same region as Aiven VPC). This value can&#39;t be changed.
+         * @param peerRegion AWS region of the Transit Gateway. When omitted, the Aiven project VPC region is used. Maximum length: `1024`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -201,7 +210,7 @@ public final class TransitGatewayVpcAttachmentState extends com.pulumi.resources
         }
 
         /**
-         * @param peerRegion AWS region of the peered VPC (if not in the same region as Aiven VPC). This value can&#39;t be changed.
+         * @param peerRegion AWS region of the Transit Gateway. When omitted, the Aiven project VPC region is used. Maximum length: `1024`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -211,7 +220,7 @@ public final class TransitGatewayVpcAttachmentState extends com.pulumi.resources
         }
 
         /**
-         * @param peerVpc Transit gateway ID. Changing this property forces recreation of the resource.
+         * @param peerVpc AWS Transit Gateway ID. Maximum length: `1024`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -222,7 +231,7 @@ public final class TransitGatewayVpcAttachmentState extends com.pulumi.resources
         }
 
         /**
-         * @param peerVpc Transit gateway ID. Changing this property forces recreation of the resource.
+         * @param peerVpc AWS Transit Gateway ID. Maximum length: `1024`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -232,7 +241,7 @@ public final class TransitGatewayVpcAttachmentState extends com.pulumi.resources
         }
 
         /**
-         * @param peeringConnectionId Cloud provider identifier for the peering connection if available
+         * @param peeringConnectionId Legacy AWS VPC peering connection ID (`pcx-*`) for ordinary AWS VPC peering connections, if available. This is not the AWS Transit Gateway attachment ID; TGW attachment details are exposed in `stateInfo`.
          * 
          * @return builder
          * 
@@ -243,7 +252,7 @@ public final class TransitGatewayVpcAttachmentState extends com.pulumi.resources
         }
 
         /**
-         * @param peeringConnectionId Cloud provider identifier for the peering connection if available
+         * @param peeringConnectionId Legacy AWS VPC peering connection ID (`pcx-*`) for ordinary AWS VPC peering connections, if available. This is not the AWS Transit Gateway attachment ID; TGW attachment details are exposed in `stateInfo`.
          * 
          * @return builder
          * 
@@ -253,7 +262,7 @@ public final class TransitGatewayVpcAttachmentState extends com.pulumi.resources
         }
 
         /**
-         * @param state State of the peering connection
+         * @param state Project VPC peering connection state. The possible values are `ACTIVE`, `APPROVED`, `APPROVED_PEER_REQUESTED`, `DELETED`, `DELETED_BY_PEER`, `DELETING`, `ERROR`, `INVALID_SPECIFICATION`, `PENDING_PEER` and `REJECTED_BY_PEER`.
          * 
          * @return builder
          * 
@@ -264,7 +273,7 @@ public final class TransitGatewayVpcAttachmentState extends com.pulumi.resources
         }
 
         /**
-         * @param state State of the peering connection
+         * @param state Project VPC peering connection state. The possible values are `ACTIVE`, `APPROVED`, `APPROVED_PEER_REQUESTED`, `DELETED`, `DELETED_BY_PEER`, `DELETING`, `ERROR`, `INVALID_SPECIFICATION`, `PENDING_PEER` and `REJECTED_BY_PEER`.
          * 
          * @return builder
          * 
@@ -274,7 +283,7 @@ public final class TransitGatewayVpcAttachmentState extends com.pulumi.resources
         }
 
         /**
-         * @param stateInfo State-specific help or error information
+         * @param stateInfo State-specific help or error information.
          * 
          * @return builder
          * 
@@ -285,7 +294,7 @@ public final class TransitGatewayVpcAttachmentState extends com.pulumi.resources
         }
 
         /**
-         * @param stateInfo State-specific help or error information
+         * @param stateInfo State-specific help or error information.
          * 
          * @return builder
          * 
@@ -294,8 +303,17 @@ public final class TransitGatewayVpcAttachmentState extends com.pulumi.resources
             return stateInfo(Output.of(stateInfo));
         }
 
+        public Builder timeouts(@Nullable Output<TransitGatewayVpcAttachmentTimeoutsArgs> timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
+        public Builder timeouts(TransitGatewayVpcAttachmentTimeoutsArgs timeouts) {
+            return timeouts(Output.of(timeouts));
+        }
+
         /**
-         * @param userPeerNetworkCidrs List of private IPv4 ranges to route through the peering connection
+         * @param userPeerNetworkCidrs List of private IPv4 ranges to route through the peering connection.
          * 
          * @return builder
          * 
@@ -306,7 +324,7 @@ public final class TransitGatewayVpcAttachmentState extends com.pulumi.resources
         }
 
         /**
-         * @param userPeerNetworkCidrs List of private IPv4 ranges to route through the peering connection
+         * @param userPeerNetworkCidrs List of private IPv4 ranges to route through the peering connection.
          * 
          * @return builder
          * 
@@ -316,7 +334,7 @@ public final class TransitGatewayVpcAttachmentState extends com.pulumi.resources
         }
 
         /**
-         * @param userPeerNetworkCidrs List of private IPv4 ranges to route through the peering connection
+         * @param userPeerNetworkCidrs List of private IPv4 ranges to route through the peering connection.
          * 
          * @return builder
          * 
@@ -326,7 +344,7 @@ public final class TransitGatewayVpcAttachmentState extends com.pulumi.resources
         }
 
         /**
-         * @param vpcId The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param vpcId Aiven project VPC ID in the `PROJECT/VPC_ID` format. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -337,7 +355,7 @@ public final class TransitGatewayVpcAttachmentState extends com.pulumi.resources
         }
 
         /**
-         * @param vpcId The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param vpcId Aiven project VPC ID in the `PROJECT/VPC_ID` format. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 

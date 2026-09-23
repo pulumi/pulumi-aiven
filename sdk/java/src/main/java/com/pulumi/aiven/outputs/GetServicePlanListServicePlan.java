@@ -20,6 +20,11 @@ public final class GetServicePlanListServicePlan {
      */
     private Boolean isClusterPlan;
     /**
+     * @return True when the plan&#39;s topology is set via user config and its region price is per node.
+     * 
+     */
+    private Boolean managedClusterPlan;
+    /**
      * @return Maximum amount of system memory as a percentage (0-100) the service can actually use after taking into account management overhead. This is relevant for memory bound services for which some service management operations require allocating proportional amount of memory on top the basic load.
      * 
      */
@@ -62,6 +67,13 @@ public final class GetServicePlanListServicePlan {
      */
     public Boolean isClusterPlan() {
         return this.isClusterPlan;
+    }
+    /**
+     * @return True when the plan&#39;s topology is set via user config and its region price is per node.
+     * 
+     */
+    public Boolean managedClusterPlan() {
+        return this.managedClusterPlan;
     }
     /**
      * @return Maximum amount of system memory as a percentage (0-100) the service can actually use after taking into account management overhead. This is relevant for memory bound services for which some service management operations require allocating proportional amount of memory on top the basic load.
@@ -123,6 +135,7 @@ public final class GetServicePlanListServicePlan {
     @CustomType.Builder
     public static final class Builder {
         private Boolean isClusterPlan;
+        private Boolean managedClusterPlan;
         private Integer maxMemoryPercent;
         private Integer nodeCount;
         private Integer primaryCount;
@@ -134,6 +147,7 @@ public final class GetServicePlanListServicePlan {
         public Builder(GetServicePlanListServicePlan defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.isClusterPlan = defaults.isClusterPlan;
+    	      this.managedClusterPlan = defaults.managedClusterPlan;
     	      this.maxMemoryPercent = defaults.maxMemoryPercent;
     	      this.nodeCount = defaults.nodeCount;
     	      this.primaryCount = defaults.primaryCount;
@@ -149,6 +163,14 @@ public final class GetServicePlanListServicePlan {
               throw new MissingRequiredPropertyException("GetServicePlanListServicePlan", "isClusterPlan");
             }
             this.isClusterPlan = isClusterPlan;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder managedClusterPlan(Boolean managedClusterPlan) {
+            if (managedClusterPlan == null) {
+              throw new MissingRequiredPropertyException("GetServicePlanListServicePlan", "managedClusterPlan");
+            }
+            this.managedClusterPlan = managedClusterPlan;
             return this;
         }
         @CustomType.Setter
@@ -210,6 +232,7 @@ public final class GetServicePlanListServicePlan {
         public GetServicePlanListServicePlan build() {
             final var _resultValue = new GetServicePlanListServicePlan();
             _resultValue.isClusterPlan = isClusterPlan;
+            _resultValue.managedClusterPlan = managedClusterPlan;
             _resultValue.maxMemoryPercent = maxMemoryPercent;
             _resultValue.nodeCount = nodeCount;
             _resultValue.primaryCount = primaryCount;

@@ -890,7 +890,12 @@
             },
             "aiven_kafka_user": {
                 "current": "aiven:index/kafkaUser:KafkaUser",
-                "majorVersion": 6
+                "majorVersion": 6,
+                "fields": {
+                    "mysql_grants": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "aiven_mirrormaker_replication_flow": {
                 "current": "aiven:index/mirrorMakerReplicationFlow:MirrorMakerReplicationFlow",
@@ -990,7 +995,12 @@
             },
             "aiven_mysql_user": {
                 "current": "aiven:index/mysqlUser:MysqlUser",
-                "majorVersion": 6
+                "majorVersion": 6,
+                "fields": {
+                    "mysql_grants": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "aiven_opensearch": {
                 "current": "aiven:index/openSearch:OpenSearch",
@@ -1198,7 +1208,12 @@
             },
             "aiven_opensearch_user": {
                 "current": "aiven:index/opensearchUser:OpensearchUser",
-                "majorVersion": 6
+                "majorVersion": 6,
+                "fields": {
+                    "mysql_grants": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "aiven_organization": {
                 "current": "aiven:index/organization:Organization",
@@ -1408,7 +1423,12 @@
             },
             "aiven_pg_user": {
                 "current": "aiven:index/pgUser:PgUser",
-                "majorVersion": 6
+                "majorVersion": 6,
+                "fields": {
+                    "mysql_grants": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "aiven_project": {
                 "current": "aiven:index/project:Project",
@@ -1732,7 +1752,14 @@
                         "maxItemsOne": true
                     },
                     "opentelemetry_user_config": {
-                        "maxItemsOne": true
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "filter_measurements": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     },
                     "prometheus_user_config": {
                         "maxItemsOne": true
@@ -1893,6 +1920,9 @@
                 "current": "aiven:index/valkeyUser:ValkeyUser",
                 "majorVersion": 6,
                 "fields": {
+                    "mysql_grants": {
+                        "maxItemsOne": false
+                    },
                     "valkey_acl_categories": {
                         "maxItemsOne": false
                     },
@@ -2706,7 +2736,12 @@
             },
             "aiven_kafka_user": {
                 "current": "aiven:index/getKafkaUser:getKafkaUser",
-                "majorVersion": 6
+                "majorVersion": 6,
+                "fields": {
+                    "mysql_grants": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "aiven_mirrormaker_replication_flow": {
                 "current": "aiven:index/getMirrorMakerReplicationFlow:getMirrorMakerReplicationFlow",
@@ -2806,7 +2841,12 @@
             },
             "aiven_mysql_user": {
                 "current": "aiven:index/getMysqlUser:getMysqlUser",
-                "majorVersion": 6
+                "majorVersion": 6,
+                "fields": {
+                    "mysql_grants": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "aiven_opensearch": {
                 "current": "aiven:index/getOpenSearch:getOpenSearch",
@@ -3014,7 +3054,12 @@
             },
             "aiven_opensearch_user": {
                 "current": "aiven:index/getOpensearchUser:getOpensearchUser",
-                "majorVersion": 6
+                "majorVersion": 6,
+                "fields": {
+                    "mysql_grants": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "aiven_organization": {
                 "current": "aiven:index/getOrganization:getOrganization",
@@ -3260,7 +3305,12 @@
             },
             "aiven_pg_user": {
                 "current": "aiven:index/getPgUser:getPgUser",
-                "majorVersion": 6
+                "majorVersion": 6,
+                "fields": {
+                    "mysql_grants": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "aiven_project": {
                 "current": "aiven:index/getProject:getProject",
@@ -3588,7 +3638,14 @@
                         "maxItemsOne": false
                     },
                     "opentelemetry_user_config": {
-                        "maxItemsOne": false
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "filter_measurements": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     },
                     "prometheus_user_config": {
                         "maxItemsOne": false
@@ -3768,6 +3825,9 @@
                 "current": "aiven:index/getValkeyUser:getValkeyUser",
                 "majorVersion": 6,
                 "fields": {
+                    "mysql_grants": {
+                        "maxItemsOne": false
+                    },
                     "valkey_acl_categories": {
                         "maxItemsOne": false
                     },
@@ -3815,6 +3875,8 @@
             "aiven_flink_application": {},
             "aiven_flink_application_deployment": {},
             "aiven_flink_jar_application": {},
+            "aiven_flink_jar_application_deployment": {},
+            "aiven_flink_jar_application_version": {},
             "aiven_gcp_org_vpc_peering_connection": {},
             "aiven_gcp_privatelink": {},
             "aiven_governance_access": {},
@@ -3844,6 +3906,7 @@
             "aiven_pg_user": {},
             "aiven_project_vpc": {},
             "aiven_static_ip": {},
+            "aiven_transit_gateway_vpc_attachment": {},
             "aiven_upgrade_step": {},
             "aiven_valkey_user": {}
         }
@@ -3879,8 +3942,8 @@
             "aiven:index/flinkApplicationDeployment:FlinkApplicationDeployment": 1,
             "aiven:index/flinkApplicationVersion:FlinkApplicationVersion": 0,
             "aiven:index/flinkJarApplication:FlinkJarApplication": 1,
-            "aiven:index/flinkJarApplicationDeployment:FlinkJarApplicationDeployment": 0,
-            "aiven:index/flinkJarApplicationVersion:FlinkJarApplicationVersion": 0,
+            "aiven:index/flinkJarApplicationDeployment:FlinkJarApplicationDeployment": 1,
+            "aiven:index/flinkJarApplicationVersion:FlinkJarApplicationVersion": 1,
             "aiven:index/gcpOrgVpcPeeringConnection:GcpOrgVpcPeeringConnection": 1,
             "aiven:index/gcpPrivatelink:GcpPrivatelink": 1,
             "aiven:index/gcpPrivatelinkConnectionApproval:GcpPrivatelinkConnectionApproval": 0,
@@ -3931,7 +3994,7 @@
             "aiven:index/serviceIntegrationEndpoint:ServiceIntegrationEndpoint": 0,
             "aiven:index/staticIp:StaticIp": 1,
             "aiven:index/thanos:Thanos": 0,
-            "aiven:index/transitGatewayVpcAttachment:TransitGatewayVpcAttachment": 0,
+            "aiven:index/transitGatewayVpcAttachment:TransitGatewayVpcAttachment": 1,
             "aiven:index/upgradeStep:UpgradeStep": 1,
             "aiven:index/valkey:Valkey": 0,
             "aiven:index/valkeyUser:ValkeyUser": 1
@@ -4013,7 +4076,7 @@
             "aiven:index/getServicePlan:getServicePlan": 1,
             "aiven:index/getServicePlanList:getServicePlanList": 1,
             "aiven:index/getThanos:getThanos": 0,
-            "aiven:index/getTransitGatewayVpcAttachment:getTransitGatewayVpcAttachment": 0,
+            "aiven:index/getTransitGatewayVpcAttachment:getTransitGatewayVpcAttachment": 1,
             "aiven:index/getValkey:getValkey": 0,
             "aiven:index/getValkeyUser:getValkeyUser": 1
         }

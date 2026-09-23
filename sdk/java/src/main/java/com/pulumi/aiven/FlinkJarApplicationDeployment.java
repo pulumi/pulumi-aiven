@@ -6,6 +6,7 @@ package com.pulumi.aiven;
 import com.pulumi.aiven.FlinkJarApplicationDeploymentArgs;
 import com.pulumi.aiven.Utilities;
 import com.pulumi.aiven.inputs.FlinkJarApplicationDeploymentState;
+import com.pulumi.aiven.outputs.FlinkJarApplicationDeploymentTimeouts;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -18,7 +19,10 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Creates and manages the deployment of an Aiven for Apache Flink® application. This feature is in the limited availability stage and may change without notice. To enable this feature, contact the [sales team](http://aiven.io/contact). Once it&#39;s enabled, set the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+ * Creates and manages the deployment of an [Aiven for Apache Flink® jar application](https://aiven.io/docs/products/flink/howto/create-jar-application). If this resource is missing (for example, after a service power off), it&#39;s removed from the state and a new create plan is generated.
+ * 
+ * &gt; **Beta resource in limited availability**
+ * This feature is in the limited availability stage and may change without notice. To enable this feature, contact the [sales team](http://aiven.io/contact). Once it&#39;s enabled, set the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
  * 
  * ## Example Usage
  * 
@@ -29,13 +33,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.aiven.Flink;
- * import com.pulumi.aiven.FlinkArgs;
- * import com.pulumi.aiven.inputs.FlinkFlinkUserConfigArgs;
- * import com.pulumi.aiven.FlinkJarApplication;
- * import com.pulumi.aiven.FlinkJarApplicationArgs;
- * import com.pulumi.aiven.FlinkJarApplicationVersion;
- * import com.pulumi.aiven.FlinkJarApplicationVersionArgs;
  * import com.pulumi.aiven.FlinkJarApplicationDeployment;
  * import com.pulumi.aiven.FlinkJarApplicationDeploymentArgs;
  * import java.util.ArrayList;
@@ -51,36 +48,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Flink("example", FlinkArgs.builder()
- *             .flinkUserConfig(FlinkFlinkUserConfigArgs.builder()
- *                 .customCode(true)
- *                 .build())
- *             .project(exampleAivenProject.project())
- *             .serviceName("example-flink-service")
- *             .cloudName("google-europe-west1")
- *             .plan("business-4")
- *             .maintenanceWindowDow("monday")
- *             .maintenanceWindowTime("04:00:00")
- *             .build());
- * 
- *         var exampleFlinkJarApplication = new FlinkJarApplication("exampleFlinkJarApplication", FlinkJarApplicationArgs.builder()
- *             .project(example.project())
- *             .serviceName(example.serviceName())
- *             .name("example-app-jar")
- *             .build());
- * 
- *         var exampleFlinkJarApplicationVersion = new FlinkJarApplicationVersion("exampleFlinkJarApplicationVersion", FlinkJarApplicationVersionArgs.builder()
- *             .project(example.project())
- *             .serviceName(example.serviceName())
- *             .applicationId(exampleFlinkJarApplication.applicationId())
- *             .source("./example.jar")
- *             .build());
- * 
- *         var exampleFlinkJarApplicationDeployment = new FlinkJarApplicationDeployment("exampleFlinkJarApplicationDeployment", FlinkJarApplicationDeploymentArgs.builder()
- *             .project(example.project())
- *             .serviceName(example.serviceName())
- *             .applicationId(exampleFlinkJarApplication.applicationId())
- *             .versionId(exampleFlinkJarApplicationVersion.applicationVersionId())
+ *         var example = new FlinkJarApplicationDeployment("example", FlinkJarApplicationDeploymentArgs.builder()
+ *             .project("my-project")
+ *             .serviceName("my-application")
+ *             .applicationId("foo")
+ *             .versionId("543e420d-aa63-43e8-b8e8-294a78c600e7")
+ *             .entryClass("com.example.MyFlinkJob")
+ *             .parallelism(1)
+ *             .programArgs("example-argument")
+ *             .restartEnabled(true)
+ *             .startingSavepoint("path/to/savepoint")
  *             .build());
  * 
  *     }
@@ -154,14 +131,14 @@ public class FlinkJarApplicationDeployment extends com.pulumi.resources.CustomRe
         return this.deploymentId;
     }
     /**
-     * The fully qualified name of the entry class to pass during Flink job submission through the entryClass parameter. Maximum length: `128`.
+     * The fully qualified name of the entry class to pass during Flink job submission through the entryClass parameter. Length must be between `1` and `128`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="entryClass", refs={String.class}, tree="[0]")
     private Output<String> entryClass;
 
     /**
-     * @return The fully qualified name of the entry class to pass during Flink job submission through the entryClass parameter. Maximum length: `128`.
+     * @return The fully qualified name of the entry class to pass during Flink job submission through the entryClass parameter. Length must be between `1` and `128`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> entryClass() {
@@ -210,28 +187,28 @@ public class FlinkJarApplicationDeployment extends com.pulumi.resources.CustomRe
         return this.lastSavepoint;
     }
     /**
-     * Reading of Flink parallel execution documentation is recommended before setting this value to other than 1. Please do not set this value higher than (total number of nodes x number*of*task_slots), or every new job created will fail.
+     * Reading of Flink parallel execution documentation is recommended before setting this value to other than 1. Please do not set this value higher than (total number of nodes x number*of*task_slots), or every new job created will fail. Value must be between `1` and `128`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="parallelism", refs={Integer.class}, tree="[0]")
     private Output<Integer> parallelism;
 
     /**
-     * @return Reading of Flink parallel execution documentation is recommended before setting this value to other than 1. Please do not set this value higher than (total number of nodes x number*of*task_slots), or every new job created will fail.
+     * @return Reading of Flink parallel execution documentation is recommended before setting this value to other than 1. Please do not set this value higher than (total number of nodes x number*of*task_slots), or every new job created will fail. Value must be between `1` and `128`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<Integer> parallelism() {
         return this.parallelism;
     }
     /**
-     * Arguments to pass during Flink job submission through the programArgsList parameter.
+     * Arguments to pass during Flink job submission through the programArgsList parameter. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="programArgs", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> programArgs;
 
     /**
-     * @return Arguments to pass during Flink job submission through the programArgsList parameter.
+     * @return Arguments to pass during Flink job submission through the programArgsList parameter. Changing this property forces recreation of the resource.
      * 
      */
     public Output<List<String>> programArgs() {
@@ -256,14 +233,14 @@ public class FlinkJarApplicationDeployment extends com.pulumi.resources.CustomRe
      * 
      */
     @Export(name="restartEnabled", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> restartEnabled;
+    private Output<Boolean> restartEnabled;
 
     /**
      * @return Specifies whether a Flink Job is restarted in case it fails. Changing this property forces recreation of the resource.
      * 
      */
-    public Output<Optional<Boolean>> restartEnabled() {
-        return Codegen.optional(this.restartEnabled);
+    public Output<Boolean> restartEnabled() {
+        return this.restartEnabled;
     }
     /**
      * Service name. Changing this property forces recreation of the resource.
@@ -280,14 +257,14 @@ public class FlinkJarApplicationDeployment extends com.pulumi.resources.CustomRe
         return this.serviceName;
     }
     /**
-     * Job savepoint. Maximum length: `2048`.
+     * Job savepoint. Length must be between `1` and `2048`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="startingSavepoint", refs={String.class}, tree="[0]")
     private Output<String> startingSavepoint;
 
     /**
-     * @return Job savepoint. Maximum length: `2048`.
+     * @return Job savepoint. Length must be between `1` and `2048`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> startingSavepoint() {
@@ -307,15 +284,21 @@ public class FlinkJarApplicationDeployment extends com.pulumi.resources.CustomRe
     public Output<String> status() {
         return this.status;
     }
+    @Export(name="timeouts", refs={FlinkJarApplicationDeploymentTimeouts.class}, tree="[0]")
+    private Output</* @Nullable */ FlinkJarApplicationDeploymentTimeouts> timeouts;
+
+    public Output<Optional<FlinkJarApplicationDeploymentTimeouts>> timeouts() {
+        return Codegen.optional(this.timeouts);
+    }
     /**
-     * ApplicationVersion ID. Maximum length: `36`. Changing this property forces recreation of the resource.
+     * ApplicationVersion ID. Length must be exactly `36`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="versionId", refs={String.class}, tree="[0]")
     private Output<String> versionId;
 
     /**
-     * @return ApplicationVersion ID. Maximum length: `36`. Changing this property forces recreation of the resource.
+     * @return ApplicationVersion ID. Length must be exactly `36`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> versionId() {

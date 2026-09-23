@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -30,10 +31,20 @@ public final class GetServiceIntegrationEndpointOpentelemetryUserConfig {
      */
     private @Nullable String encodingType;
     /**
+     * @return If set, only these measurements are sent to this endpoint; everything else is dropped for this destination only, leaving every other destination (other integrations, Prometheus, etc.) unaffected. Matched after bucketing and any overrideMeasurements rename, i.e. against the final measurement name as it will appear at the destination (e.g. `kafka`, or `do.databases.kafka` if renamed). Leave unset to export every measurement, same as today. Telegraf&#39;s underlying namepass filter treats an empty list the same as unset (both export everything), so an empty list isn&#39;t accepted here -- it wouldn&#39;t do what it looks like it does.
+     * 
+     */
+    private @Nullable List<String> filterMeasurements;
+    /**
      * @return Additional gRPC metadata headers sent with every export request.
      * 
      */
     private @Nullable Map<String,String> headers;
+    /**
+     * @return Every metric belonging to a known service (mysql, postgresql, valkey -- which also covers redis, Valkey&#39;s predecessor -- opensearch, kafka) is exported here under a single bucket measurement per service -- e.g. every Kafka JMX metric, however deep its raw name, becomes measurement `kafka` (its specific identity moves into the field name instead). This map renames that bucket as a whole -- key on the bucket name (e.g. `kafka`, `postgresql`), not the metric&#39;s original raw name; it cannot target one specific metric within a bucket. Metrics outside these known services (e.g. cpu, mem, disk) are exported unchanged and can&#39;t be renamed here. The original metric name is left untouched for every other destination (other integrations, Prometheus, etc.) -- only the copy sent here is bucketed and, if listed, renamed.
+     * 
+     */
+    private @Nullable Map<String,String> overrideMeasurements;
     /**
      * @return Either a bare `host:port` (OTLP/gRPC, no URL scheme) or an `http://`/`https://` URL (OTLP/HTTP). Example: `otel-collector.example.avns.net:4317`.
      * 
@@ -68,11 +79,25 @@ public final class GetServiceIntegrationEndpointOpentelemetryUserConfig {
         return Optional.ofNullable(this.encodingType);
     }
     /**
+     * @return If set, only these measurements are sent to this endpoint; everything else is dropped for this destination only, leaving every other destination (other integrations, Prometheus, etc.) unaffected. Matched after bucketing and any overrideMeasurements rename, i.e. against the final measurement name as it will appear at the destination (e.g. `kafka`, or `do.databases.kafka` if renamed). Leave unset to export every measurement, same as today. Telegraf&#39;s underlying namepass filter treats an empty list the same as unset (both export everything), so an empty list isn&#39;t accepted here -- it wouldn&#39;t do what it looks like it does.
+     * 
+     */
+    public List<String> filterMeasurements() {
+        return this.filterMeasurements == null ? List.of() : this.filterMeasurements;
+    }
+    /**
      * @return Additional gRPC metadata headers sent with every export request.
      * 
      */
     public Map<String,String> headers() {
         return this.headers == null ? Map.of() : this.headers;
+    }
+    /**
+     * @return Every metric belonging to a known service (mysql, postgresql, valkey -- which also covers redis, Valkey&#39;s predecessor -- opensearch, kafka) is exported here under a single bucket measurement per service -- e.g. every Kafka JMX metric, however deep its raw name, becomes measurement `kafka` (its specific identity moves into the field name instead). This map renames that bucket as a whole -- key on the bucket name (e.g. `kafka`, `postgresql`), not the metric&#39;s original raw name; it cannot target one specific metric within a bucket. Metrics outside these known services (e.g. cpu, mem, disk) are exported unchanged and can&#39;t be renamed here. The original metric name is left untouched for every other destination (other integrations, Prometheus, etc.) -- only the copy sent here is bucketed and, if listed, renamed.
+     * 
+     */
+    public Map<String,String> overrideMeasurements() {
+        return this.overrideMeasurements == null ? Map.of() : this.overrideMeasurements;
     }
     /**
      * @return Either a bare `host:port` (OTLP/gRPC, no URL scheme) or an `http://`/`https://` URL (OTLP/HTTP). Example: `otel-collector.example.avns.net:4317`.
@@ -101,7 +126,9 @@ public final class GetServiceIntegrationEndpointOpentelemetryUserConfig {
         private @Nullable Map<String,String> attributes;
         private String compression;
         private @Nullable String encodingType;
+        private @Nullable List<String> filterMeasurements;
         private @Nullable Map<String,String> headers;
+        private @Nullable Map<String,String> overrideMeasurements;
         private String serviceAddress;
         private Integer timeout;
         public Builder() {}
@@ -110,7 +137,9 @@ public final class GetServiceIntegrationEndpointOpentelemetryUserConfig {
     	      this.attributes = defaults.attributes;
     	      this.compression = defaults.compression;
     	      this.encodingType = defaults.encodingType;
+    	      this.filterMeasurements = defaults.filterMeasurements;
     	      this.headers = defaults.headers;
+    	      this.overrideMeasurements = defaults.overrideMeasurements;
     	      this.serviceAddress = defaults.serviceAddress;
     	      this.timeout = defaults.timeout;
         }
@@ -136,9 +165,24 @@ public final class GetServiceIntegrationEndpointOpentelemetryUserConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder filterMeasurements(@Nullable List<String> filterMeasurements) {
+
+            this.filterMeasurements = filterMeasurements;
+            return this;
+        }
+        public Builder filterMeasurements(String... filterMeasurements) {
+            return filterMeasurements(List.of(filterMeasurements));
+        }
+        @CustomType.Setter
         public Builder headers(@Nullable Map<String,String> headers) {
 
             this.headers = headers;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder overrideMeasurements(@Nullable Map<String,String> overrideMeasurements) {
+
+            this.overrideMeasurements = overrideMeasurements;
             return this;
         }
         @CustomType.Setter
@@ -162,7 +206,9 @@ public final class GetServiceIntegrationEndpointOpentelemetryUserConfig {
             _resultValue.attributes = attributes;
             _resultValue.compression = compression;
             _resultValue.encodingType = encodingType;
+            _resultValue.filterMeasurements = filterMeasurements;
             _resultValue.headers = headers;
+            _resultValue.overrideMeasurements = overrideMeasurements;
             _resultValue.serviceAddress = serviceAddress;
             _resultValue.timeout = timeout;
             return _resultValue;

@@ -29,11 +29,15 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.NewPgUser(ctx, "example", &aiven.PgUserArgs{
-//				Project:            pulumi.String("my-project"),
-//				ServiceName:        pulumi.String("my-pg"),
-//				Username:           pulumi.String("testuser"),
-//				PasswordWo:         pulumi.String("password123"),
-//				PasswordWoVersion:  pulumi.Int(1),
+//				Project:           pulumi.String("my-project"),
+//				ServiceName:       pulumi.String("my-pg"),
+//				Username:          pulumi.String("testuser"),
+//				PasswordWo:        pulumi.String("password123"),
+//				PasswordWoVersion: pulumi.Int(1),
+//				MysqlGrants: pulumi.StringArray{
+//					pulumi.String("SELECT"),
+//					pulumi.String("DELETE"),
+//				},
 //				PgAllowReplication: pulumi.Bool(true),
 //			})
 //			if err != nil {
@@ -57,6 +61,8 @@ type PgUser struct {
 	AccessCert pulumi.StringOutput `pulumi:"accessCert"`
 	// Access key for TLS client authentication.
 	AccessKey pulumi.StringOutput `pulumi:"accessKey"`
+	// MySQL grants for the service user. Changing this property forces recreation of the resource.
+	MysqlGrants pulumi.StringArrayOutput `pulumi:"mysqlGrants"`
 	// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
 	Password pulumi.StringOutput `pulumi:"password"`
 	// The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. 'unknown' is reported when the hash is missing or uses an unrecognised format. The possible values are `md5`, `scram-sha-256` and `unknown`.
@@ -135,6 +141,8 @@ type pgUserState struct {
 	AccessCert *string `pulumi:"accessCert"`
 	// Access key for TLS client authentication.
 	AccessKey *string `pulumi:"accessKey"`
+	// MySQL grants for the service user. Changing this property forces recreation of the resource.
+	MysqlGrants []string `pulumi:"mysqlGrants"`
 	// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
 	Password *string `pulumi:"password"`
 	// The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. 'unknown' is reported when the hash is missing or uses an unrecognised format. The possible values are `md5`, `scram-sha-256` and `unknown`.
@@ -162,6 +170,8 @@ type PgUserState struct {
 	AccessCert pulumi.StringPtrInput
 	// Access key for TLS client authentication.
 	AccessKey pulumi.StringPtrInput
+	// MySQL grants for the service user. Changing this property forces recreation of the resource.
+	MysqlGrants pulumi.StringArrayInput
 	// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
 	Password pulumi.StringPtrInput
 	// The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. 'unknown' is reported when the hash is missing or uses an unrecognised format. The possible values are `md5`, `scram-sha-256` and `unknown`.
@@ -189,6 +199,8 @@ func (PgUserState) ElementType() reflect.Type {
 }
 
 type pgUserArgs struct {
+	// MySQL grants for the service user. Changing this property forces recreation of the resource.
+	MysqlGrants []string `pulumi:"mysqlGrants"`
 	// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
 	Password *string `pulumi:"password"`
 	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
@@ -209,6 +221,8 @@ type pgUserArgs struct {
 
 // The set of arguments for constructing a PgUser resource.
 type PgUserArgs struct {
+	// MySQL grants for the service user. Changing this property forces recreation of the resource.
+	MysqlGrants pulumi.StringArrayInput
 	// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
 	Password pulumi.StringPtrInput
 	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
@@ -322,6 +336,11 @@ func (o PgUserOutput) AccessCert() pulumi.StringOutput {
 // Access key for TLS client authentication.
 func (o PgUserOutput) AccessKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *PgUser) pulumi.StringOutput { return v.AccessKey }).(pulumi.StringOutput)
+}
+
+// MySQL grants for the service user. Changing this property forces recreation of the resource.
+func (o PgUserOutput) MysqlGrants() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PgUser) pulumi.StringArrayOutput { return v.MysqlGrants }).(pulumi.StringArrayOutput)
 }
 
 // The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.

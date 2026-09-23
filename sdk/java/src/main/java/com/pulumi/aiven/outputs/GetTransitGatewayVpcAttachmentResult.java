@@ -3,120 +3,127 @@
 
 package com.pulumi.aiven.outputs;
 
+import com.pulumi.aiven.outputs.GetTransitGatewayVpcAttachmentTimeouts;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetTransitGatewayVpcAttachmentResult {
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Terraform identifier for the VPC peering connection.
      * 
      */
     private String id;
     /**
-     * @return AWS account ID or GCP project ID of the peered VPC. Changing this property forces recreation of the resource.
+     * @return AWS account ID that owns the Transit Gateway.
      * 
      */
     private String peerCloudAccount;
     /**
-     * @return AWS region of the peered VPC (if not in the same region as Aiven VPC). This value can&#39;t be changed.
+     * @return AWS region of the Transit Gateway. When omitted, the data source searches all regions and requires a single matching attachment.
      * 
      */
     private String peerRegion;
     /**
-     * @return Transit gateway ID. Changing this property forces recreation of the resource.
+     * @return AWS Transit Gateway ID.
      * 
      */
     private String peerVpc;
     /**
-     * @return Cloud provider identifier for the peering connection if available
+     * @return Legacy AWS VPC peering connection ID (`pcx-*`) for ordinary AWS VPC peering connections, if available. This is not the AWS Transit Gateway attachment ID; TGW attachment details are exposed in `stateInfo`.
      * 
      */
     private String peeringConnectionId;
     /**
-     * @return State of the peering connection
+     * @return Project VPC peering connection state. The possible values are `ACTIVE`, `APPROVED`, `APPROVED_PEER_REQUESTED`, `DELETED`, `DELETED_BY_PEER`, `DELETING`, `ERROR`, `INVALID_SPECIFICATION`, `PENDING_PEER` and `REJECTED_BY_PEER`.
      * 
      */
     private String state;
     /**
-     * @return State-specific help or error information
+     * @return State-specific help or error information.
      * 
      */
     private Map<String,String> stateInfo;
+    private @Nullable GetTransitGatewayVpcAttachmentTimeouts timeouts;
     /**
-     * @return List of private IPv4 ranges to route through the peering connection
+     * @return List of private IPv4 ranges to route through the peering connection.
      * 
      */
     private List<String> userPeerNetworkCidrs;
     /**
-     * @return The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Aiven project VPC ID in the `PROJECT/VPC_ID` format.
      * 
      */
     private String vpcId;
 
     private GetTransitGatewayVpcAttachmentResult() {}
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Terraform identifier for the VPC peering connection.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return AWS account ID or GCP project ID of the peered VPC. Changing this property forces recreation of the resource.
+     * @return AWS account ID that owns the Transit Gateway.
      * 
      */
     public String peerCloudAccount() {
         return this.peerCloudAccount;
     }
     /**
-     * @return AWS region of the peered VPC (if not in the same region as Aiven VPC). This value can&#39;t be changed.
+     * @return AWS region of the Transit Gateway. When omitted, the data source searches all regions and requires a single matching attachment.
      * 
      */
     public String peerRegion() {
         return this.peerRegion;
     }
     /**
-     * @return Transit gateway ID. Changing this property forces recreation of the resource.
+     * @return AWS Transit Gateway ID.
      * 
      */
     public String peerVpc() {
         return this.peerVpc;
     }
     /**
-     * @return Cloud provider identifier for the peering connection if available
+     * @return Legacy AWS VPC peering connection ID (`pcx-*`) for ordinary AWS VPC peering connections, if available. This is not the AWS Transit Gateway attachment ID; TGW attachment details are exposed in `stateInfo`.
      * 
      */
     public String peeringConnectionId() {
         return this.peeringConnectionId;
     }
     /**
-     * @return State of the peering connection
+     * @return Project VPC peering connection state. The possible values are `ACTIVE`, `APPROVED`, `APPROVED_PEER_REQUESTED`, `DELETED`, `DELETED_BY_PEER`, `DELETING`, `ERROR`, `INVALID_SPECIFICATION`, `PENDING_PEER` and `REJECTED_BY_PEER`.
      * 
      */
     public String state() {
         return this.state;
     }
     /**
-     * @return State-specific help or error information
+     * @return State-specific help or error information.
      * 
      */
     public Map<String,String> stateInfo() {
         return this.stateInfo;
     }
+    public Optional<GetTransitGatewayVpcAttachmentTimeouts> timeouts() {
+        return Optional.ofNullable(this.timeouts);
+    }
     /**
-     * @return List of private IPv4 ranges to route through the peering connection
+     * @return List of private IPv4 ranges to route through the peering connection.
      * 
      */
     public List<String> userPeerNetworkCidrs() {
         return this.userPeerNetworkCidrs;
     }
     /**
-     * @return The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Aiven project VPC ID in the `PROJECT/VPC_ID` format.
      * 
      */
     public String vpcId() {
@@ -139,6 +146,7 @@ public final class GetTransitGatewayVpcAttachmentResult {
         private String peeringConnectionId;
         private String state;
         private Map<String,String> stateInfo;
+        private @Nullable GetTransitGatewayVpcAttachmentTimeouts timeouts;
         private List<String> userPeerNetworkCidrs;
         private String vpcId;
         public Builder() {}
@@ -151,6 +159,7 @@ public final class GetTransitGatewayVpcAttachmentResult {
     	      this.peeringConnectionId = defaults.peeringConnectionId;
     	      this.state = defaults.state;
     	      this.stateInfo = defaults.stateInfo;
+    	      this.timeouts = defaults.timeouts;
     	      this.userPeerNetworkCidrs = defaults.userPeerNetworkCidrs;
     	      this.vpcId = defaults.vpcId;
         }
@@ -212,6 +221,12 @@ public final class GetTransitGatewayVpcAttachmentResult {
             return this;
         }
         @CustomType.Setter
+        public Builder timeouts(@Nullable GetTransitGatewayVpcAttachmentTimeouts timeouts) {
+
+            this.timeouts = timeouts;
+            return this;
+        }
+        @CustomType.Setter
         public Builder userPeerNetworkCidrs(List<String> userPeerNetworkCidrs) {
             if (userPeerNetworkCidrs == null) {
               throw new MissingRequiredPropertyException("GetTransitGatewayVpcAttachmentResult", "userPeerNetworkCidrs");
@@ -239,6 +254,7 @@ public final class GetTransitGatewayVpcAttachmentResult {
             _resultValue.peeringConnectionId = peeringConnectionId;
             _resultValue.state = state;
             _resultValue.stateInfo = stateInfo;
+            _resultValue.timeouts = timeouts;
             _resultValue.userPeerNetworkCidrs = userPeerNetworkCidrs;
             _resultValue.vpcId = vpcId;
             return _resultValue;

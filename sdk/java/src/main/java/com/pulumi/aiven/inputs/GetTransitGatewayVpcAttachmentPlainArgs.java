@@ -3,10 +3,13 @@
 
 package com.pulumi.aiven.inputs;
 
+import com.pulumi.aiven.inputs.GetTransitGatewayVpcAttachmentTimeouts;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetTransitGatewayVpcAttachmentPlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -14,14 +17,14 @@ public final class GetTransitGatewayVpcAttachmentPlainArgs extends com.pulumi.re
     public static final GetTransitGatewayVpcAttachmentPlainArgs Empty = new GetTransitGatewayVpcAttachmentPlainArgs();
 
     /**
-     * AWS account ID or GCP project ID of the peered VPC. Changing this property forces recreation of the resource.
+     * AWS account ID that owns the Transit Gateway.
      * 
      */
     @Import(name="peerCloudAccount", required=true)
     private String peerCloudAccount;
 
     /**
-     * @return AWS account ID or GCP project ID of the peered VPC. Changing this property forces recreation of the resource.
+     * @return AWS account ID that owns the Transit Gateway.
      * 
      */
     public String peerCloudAccount() {
@@ -29,29 +32,51 @@ public final class GetTransitGatewayVpcAttachmentPlainArgs extends com.pulumi.re
     }
 
     /**
-     * Transit gateway ID. Changing this property forces recreation of the resource.
+     * AWS region of the Transit Gateway. When omitted, the data source searches all regions and requires a single matching attachment.
+     * 
+     */
+    @Import(name="peerRegion")
+    private @Nullable String peerRegion;
+
+    /**
+     * @return AWS region of the Transit Gateway. When omitted, the data source searches all regions and requires a single matching attachment.
+     * 
+     */
+    public Optional<String> peerRegion() {
+        return Optional.ofNullable(this.peerRegion);
+    }
+
+    /**
+     * AWS Transit Gateway ID.
      * 
      */
     @Import(name="peerVpc", required=true)
     private String peerVpc;
 
     /**
-     * @return Transit gateway ID. Changing this property forces recreation of the resource.
+     * @return AWS Transit Gateway ID.
      * 
      */
     public String peerVpc() {
         return this.peerVpc;
     }
 
+    @Import(name="timeouts")
+    private @Nullable GetTransitGatewayVpcAttachmentTimeouts timeouts;
+
+    public Optional<GetTransitGatewayVpcAttachmentTimeouts> timeouts() {
+        return Optional.ofNullable(this.timeouts);
+    }
+
     /**
-     * The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * Aiven project VPC ID in the `PROJECT/VPC_ID` format.
      * 
      */
     @Import(name="vpcId", required=true)
     private String vpcId;
 
     /**
-     * @return The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Aiven project VPC ID in the `PROJECT/VPC_ID` format.
      * 
      */
     public String vpcId() {
@@ -62,7 +87,9 @@ public final class GetTransitGatewayVpcAttachmentPlainArgs extends com.pulumi.re
 
     private GetTransitGatewayVpcAttachmentPlainArgs(GetTransitGatewayVpcAttachmentPlainArgs $) {
         this.peerCloudAccount = $.peerCloudAccount;
+        this.peerRegion = $.peerRegion;
         this.peerVpc = $.peerVpc;
+        this.timeouts = $.timeouts;
         this.vpcId = $.vpcId;
     }
 
@@ -85,7 +112,7 @@ public final class GetTransitGatewayVpcAttachmentPlainArgs extends com.pulumi.re
         }
 
         /**
-         * @param peerCloudAccount AWS account ID or GCP project ID of the peered VPC. Changing this property forces recreation of the resource.
+         * @param peerCloudAccount AWS account ID that owns the Transit Gateway.
          * 
          * @return builder
          * 
@@ -96,7 +123,18 @@ public final class GetTransitGatewayVpcAttachmentPlainArgs extends com.pulumi.re
         }
 
         /**
-         * @param peerVpc Transit gateway ID. Changing this property forces recreation of the resource.
+         * @param peerRegion AWS region of the Transit Gateway. When omitted, the data source searches all regions and requires a single matching attachment.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder peerRegion(@Nullable String peerRegion) {
+            $.peerRegion = peerRegion;
+            return this;
+        }
+
+        /**
+         * @param peerVpc AWS Transit Gateway ID.
          * 
          * @return builder
          * 
@@ -106,8 +144,13 @@ public final class GetTransitGatewayVpcAttachmentPlainArgs extends com.pulumi.re
             return this;
         }
 
+        public Builder timeouts(@Nullable GetTransitGatewayVpcAttachmentTimeouts timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
         /**
-         * @param vpcId The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param vpcId Aiven project VPC ID in the `PROJECT/VPC_ID` format.
          * 
          * @return builder
          * 

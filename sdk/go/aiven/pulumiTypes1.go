@@ -13,6 +13,694 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressure struct {
+	// Enum: `disabled`, `enforced`, `monitorOnly`. The search backpressure mode. Valid values are monitor_only, enforced, or disabled. Default is monitor_only.
+	Mode *string `pulumi:"mode"`
+	// Node duress settings
+	NodeDuress *GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuress `pulumi:"nodeDuress"`
+	// Search shard settings
+	SearchShardTask *GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTask `pulumi:"searchShardTask"`
+	// Search task settings
+	SearchTask *GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTask `pulumi:"searchTask"`
+}
+
+// GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureInput is an input type that accepts GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureArgs and GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureOutput values.
+// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureInput` via:
+//
+//	GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureArgs{...}
+type GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureOutput
+	ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureOutput
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureArgs struct {
+	// Enum: `disabled`, `enforced`, `monitorOnly`. The search backpressure mode. Valid values are monitor_only, enforced, or disabled. Default is monitor_only.
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	// Node duress settings
+	NodeDuress GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrInput `pulumi:"nodeDuress"`
+	// Search shard settings
+	SearchShardTask GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrInput `pulumi:"searchShardTask"`
+	// Search task settings
+	SearchTask GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskPtrInput `pulumi:"searchTask"`
+}
+
+func (GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressure)(nil)).Elem()
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureArgs) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureArgs) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureOutput)
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureArgs) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureArgs) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureOutput).ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrOutputWithContext(ctx)
+}
+
+// GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrInput is an input type that accepts GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureArgs, GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtr and GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrOutput values.
+// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrInput` via:
+//
+//	        GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrOutput
+	ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrOutput
+}
+
+type getOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrType GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureArgs
+
+func GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtr(v *GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureArgs) GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrInput {
+	return (*getOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrType)(v)
+}
+
+func (*getOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressure)(nil)).Elem()
+}
+
+func (i *getOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrType) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrOutputWithContext(context.Background())
+}
+
+func (i *getOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrType) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressure)(nil)).Elem()
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureOutput) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureOutput) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureOutput) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrOutput {
+	return o.ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrOutputWithContext(context.Background())
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureOutput) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressure) *GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressure {
+		return &v
+	}).(GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrOutput)
+}
+
+// Enum: `disabled`, `enforced`, `monitorOnly`. The search backpressure mode. Valid values are monitor_only, enforced, or disabled. Default is monitor_only.
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressure) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// Node duress settings
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureOutput) NodeDuress() GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressure) *GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuress {
+		return v.NodeDuress
+	}).(GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrOutput)
+}
+
+// Search shard settings
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureOutput) SearchShardTask() GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressure) *GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTask {
+		return v.SearchShardTask
+	}).(GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutput)
+}
+
+// Search task settings
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureOutput) SearchTask() GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressure) *GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTask {
+		return v.SearchTask
+	}).(GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskPtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressure)(nil)).Elem()
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrOutput) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrOutput) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrOutput) Elem() GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressure) GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressure {
+		if v != nil {
+			return *v
+		}
+		var ret GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressure
+		return ret
+	}).(GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureOutput)
+}
+
+// Enum: `disabled`, `enforced`, `monitorOnly`. The search backpressure mode. Valid values are monitor_only, enforced, or disabled. Default is monitor_only.
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressure) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Mode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Node duress settings
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrOutput) NodeDuress() GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressure) *GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuress {
+		if v == nil {
+			return nil
+		}
+		return v.NodeDuress
+	}).(GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrOutput)
+}
+
+// Search shard settings
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrOutput) SearchShardTask() GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressure) *GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTask {
+		if v == nil {
+			return nil
+		}
+		return v.SearchShardTask
+	}).(GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutput)
+}
+
+// Search task settings
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrOutput) SearchTask() GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressure) *GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTask {
+		if v == nil {
+			return nil
+		}
+		return v.SearchTask
+	}).(GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskPtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuress struct {
+	// The CPU usage threshold (as a percentage) required for a node to be considered to be under duress. Default is 0.9.
+	CpuThreshold *float64 `pulumi:"cpuThreshold"`
+	// The heap usage threshold (as a percentage) required for a node to be considered to be under duress. Default is 0.7.
+	HeapThreshold *float64 `pulumi:"heapThreshold"`
+	// The number of successive limit breaches after which the node is considered to be under duress. Default is 3.
+	NumSuccessiveBreaches *int `pulumi:"numSuccessiveBreaches"`
+}
+
+// GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressInput is an input type that accepts GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressArgs and GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressOutput values.
+// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressInput` via:
+//
+//	GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressArgs{...}
+type GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressOutput
+	ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressOutput
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressArgs struct {
+	// The CPU usage threshold (as a percentage) required for a node to be considered to be under duress. Default is 0.9.
+	CpuThreshold pulumi.Float64PtrInput `pulumi:"cpuThreshold"`
+	// The heap usage threshold (as a percentage) required for a node to be considered to be under duress. Default is 0.7.
+	HeapThreshold pulumi.Float64PtrInput `pulumi:"heapThreshold"`
+	// The number of successive limit breaches after which the node is considered to be under duress. Default is 3.
+	NumSuccessiveBreaches pulumi.IntPtrInput `pulumi:"numSuccessiveBreaches"`
+}
+
+func (GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuress)(nil)).Elem()
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressArgs) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressArgs) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressOutput)
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressArgs) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressArgs) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressOutput).ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrOutputWithContext(ctx)
+}
+
+// GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrInput is an input type that accepts GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressArgs, GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtr and GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrOutput values.
+// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrInput` via:
+//
+//	        GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrOutput
+	ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrOutput
+}
+
+type getOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrType GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressArgs
+
+func GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtr(v *GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressArgs) GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrInput {
+	return (*getOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrType)(v)
+}
+
+func (*getOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuress)(nil)).Elem()
+}
+
+func (i *getOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrType) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrOutputWithContext(context.Background())
+}
+
+func (i *getOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrType) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuress)(nil)).Elem()
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressOutput) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressOutput) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressOutput) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrOutput {
+	return o.ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrOutputWithContext(context.Background())
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressOutput) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuress) *GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuress {
+		return &v
+	}).(GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrOutput)
+}
+
+// The CPU usage threshold (as a percentage) required for a node to be considered to be under duress. Default is 0.9.
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressOutput) CpuThreshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuress) *float64 {
+		return v.CpuThreshold
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The heap usage threshold (as a percentage) required for a node to be considered to be under duress. Default is 0.7.
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressOutput) HeapThreshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuress) *float64 {
+		return v.HeapThreshold
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The number of successive limit breaches after which the node is considered to be under duress. Default is 3.
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressOutput) NumSuccessiveBreaches() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuress) *int {
+		return v.NumSuccessiveBreaches
+	}).(pulumi.IntPtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuress)(nil)).Elem()
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrOutput) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrOutput) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrOutput) Elem() GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuress) GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuress {
+		if v != nil {
+			return *v
+		}
+		var ret GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuress
+		return ret
+	}).(GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressOutput)
+}
+
+// The CPU usage threshold (as a percentage) required for a node to be considered to be under duress. Default is 0.9.
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrOutput) CpuThreshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuress) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.CpuThreshold
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The heap usage threshold (as a percentage) required for a node to be considered to be under duress. Default is 0.7.
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrOutput) HeapThreshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuress) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.HeapThreshold
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The number of successive limit breaches after which the node is considered to be under duress. Default is 3.
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrOutput) NumSuccessiveBreaches() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuress) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NumSuccessiveBreaches
+	}).(pulumi.IntPtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTask struct {
+	// The maximum number of search tasks to cancel in a single iteration of the observer thread. Default is 10.0.
+	CancellationBurst *float64 `pulumi:"cancellationBurst"`
+	// The maximum number of tasks to cancel per millisecond of elapsed time. Default is 0.003.
+	CancellationRate *float64 `pulumi:"cancellationRate"`
+	// The maximum number of tasks to cancel, as a percentage of successful task completions. Default is 0.1.
+	CancellationRatio *float64 `pulumi:"cancellationRatio"`
+	// The CPU usage threshold (in milliseconds) required for a single search shard task before it is considered for cancellation. Default is 15000.
+	CpuTimeMillisThreshold *int `pulumi:"cpuTimeMillisThreshold"`
+	// The elapsed time threshold (in milliseconds) required for a single search shard task before it is considered for cancellation. Default is 30000.
+	ElapsedTimeMillisThreshold *int `pulumi:"elapsedTimeMillisThreshold"`
+	// The number of previously completed search shard tasks to consider when calculating the rolling average of heap usage. Default is 100.
+	HeapMovingAverageWindowSize *int `pulumi:"heapMovingAverageWindowSize"`
+	// The heap usage threshold (as a percentage) required for a single search shard task before it is considered for cancellation. Default is 0.5.
+	HeapPercentThreshold *float64 `pulumi:"heapPercentThreshold"`
+	// The minimum variance required for a single search shard task’s heap usage compared to the rolling average of previously completed tasks before it is considered for cancellation. Default is 2.0.
+	HeapVariance *float64 `pulumi:"heapVariance"`
+	// The heap usage threshold (as a percentage) required for the sum of heap usages of all search shard tasks before cancellation is applied. Default is 0.5.
+	TotalHeapPercentThreshold *float64 `pulumi:"totalHeapPercentThreshold"`
+}
+
+// GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskInput is an input type that accepts GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskArgs and GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskOutput values.
+// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskInput` via:
+//
+//	GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskArgs{...}
+type GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskOutput
+	ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskOutput
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskArgs struct {
+	// The maximum number of search tasks to cancel in a single iteration of the observer thread. Default is 10.0.
+	CancellationBurst pulumi.Float64PtrInput `pulumi:"cancellationBurst"`
+	// The maximum number of tasks to cancel per millisecond of elapsed time. Default is 0.003.
+	CancellationRate pulumi.Float64PtrInput `pulumi:"cancellationRate"`
+	// The maximum number of tasks to cancel, as a percentage of successful task completions. Default is 0.1.
+	CancellationRatio pulumi.Float64PtrInput `pulumi:"cancellationRatio"`
+	// The CPU usage threshold (in milliseconds) required for a single search shard task before it is considered for cancellation. Default is 15000.
+	CpuTimeMillisThreshold pulumi.IntPtrInput `pulumi:"cpuTimeMillisThreshold"`
+	// The elapsed time threshold (in milliseconds) required for a single search shard task before it is considered for cancellation. Default is 30000.
+	ElapsedTimeMillisThreshold pulumi.IntPtrInput `pulumi:"elapsedTimeMillisThreshold"`
+	// The number of previously completed search shard tasks to consider when calculating the rolling average of heap usage. Default is 100.
+	HeapMovingAverageWindowSize pulumi.IntPtrInput `pulumi:"heapMovingAverageWindowSize"`
+	// The heap usage threshold (as a percentage) required for a single search shard task before it is considered for cancellation. Default is 0.5.
+	HeapPercentThreshold pulumi.Float64PtrInput `pulumi:"heapPercentThreshold"`
+	// The minimum variance required for a single search shard task’s heap usage compared to the rolling average of previously completed tasks before it is considered for cancellation. Default is 2.0.
+	HeapVariance pulumi.Float64PtrInput `pulumi:"heapVariance"`
+	// The heap usage threshold (as a percentage) required for the sum of heap usages of all search shard tasks before cancellation is applied. Default is 0.5.
+	TotalHeapPercentThreshold pulumi.Float64PtrInput `pulumi:"totalHeapPercentThreshold"`
+}
+
+func (GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTask)(nil)).Elem()
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskArgs) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskArgs) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskOutput)
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskArgs) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskArgs) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskOutput).ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutputWithContext(ctx)
+}
+
+// GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrInput is an input type that accepts GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskArgs, GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtr and GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutput values.
+// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrInput` via:
+//
+//	        GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutput
+	ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutput
+}
+
+type getOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrType GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskArgs
+
+func GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtr(v *GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskArgs) GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrInput {
+	return (*getOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrType)(v)
+}
+
+func (*getOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTask)(nil)).Elem()
+}
+
+func (i *getOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrType) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutputWithContext(context.Background())
+}
+
+func (i *getOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrType) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTask)(nil)).Elem()
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskOutput) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskOutput) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskOutput) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutput {
+	return o.ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutputWithContext(context.Background())
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskOutput) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTask) *GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTask {
+		return &v
+	}).(GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutput)
+}
+
+// The maximum number of search tasks to cancel in a single iteration of the observer thread. Default is 10.0.
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskOutput) CancellationBurst() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTask) *float64 {
+		return v.CancellationBurst
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The maximum number of tasks to cancel per millisecond of elapsed time. Default is 0.003.
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskOutput) CancellationRate() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTask) *float64 {
+		return v.CancellationRate
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The maximum number of tasks to cancel, as a percentage of successful task completions. Default is 0.1.
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskOutput) CancellationRatio() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTask) *float64 {
+		return v.CancellationRatio
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The CPU usage threshold (in milliseconds) required for a single search shard task before it is considered for cancellation. Default is 15000.
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskOutput) CpuTimeMillisThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTask) *int {
+		return v.CpuTimeMillisThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// The elapsed time threshold (in milliseconds) required for a single search shard task before it is considered for cancellation. Default is 30000.
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskOutput) ElapsedTimeMillisThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTask) *int {
+		return v.ElapsedTimeMillisThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of previously completed search shard tasks to consider when calculating the rolling average of heap usage. Default is 100.
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskOutput) HeapMovingAverageWindowSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTask) *int {
+		return v.HeapMovingAverageWindowSize
+	}).(pulumi.IntPtrOutput)
+}
+
+// The heap usage threshold (as a percentage) required for a single search shard task before it is considered for cancellation. Default is 0.5.
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskOutput) HeapPercentThreshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTask) *float64 {
+		return v.HeapPercentThreshold
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The minimum variance required for a single search shard task’s heap usage compared to the rolling average of previously completed tasks before it is considered for cancellation. Default is 2.0.
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskOutput) HeapVariance() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTask) *float64 {
+		return v.HeapVariance
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The heap usage threshold (as a percentage) required for the sum of heap usages of all search shard tasks before cancellation is applied. Default is 0.5.
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskOutput) TotalHeapPercentThreshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTask) *float64 {
+		return v.TotalHeapPercentThreshold
+	}).(pulumi.Float64PtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTask)(nil)).Elem()
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutput) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutput) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutput) Elem() GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTask) GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTask {
+		if v != nil {
+			return *v
+		}
+		var ret GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTask
+		return ret
+	}).(GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskOutput)
+}
+
+// The maximum number of search tasks to cancel in a single iteration of the observer thread. Default is 10.0.
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutput) CancellationBurst() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTask) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.CancellationBurst
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The maximum number of tasks to cancel per millisecond of elapsed time. Default is 0.003.
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutput) CancellationRate() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTask) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.CancellationRate
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The maximum number of tasks to cancel, as a percentage of successful task completions. Default is 0.1.
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutput) CancellationRatio() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTask) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.CancellationRatio
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The CPU usage threshold (in milliseconds) required for a single search shard task before it is considered for cancellation. Default is 15000.
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutput) CpuTimeMillisThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTask) *int {
+		if v == nil {
+			return nil
+		}
+		return v.CpuTimeMillisThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// The elapsed time threshold (in milliseconds) required for a single search shard task before it is considered for cancellation. Default is 30000.
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutput) ElapsedTimeMillisThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTask) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ElapsedTimeMillisThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of previously completed search shard tasks to consider when calculating the rolling average of heap usage. Default is 100.
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutput) HeapMovingAverageWindowSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTask) *int {
+		if v == nil {
+			return nil
+		}
+		return v.HeapMovingAverageWindowSize
+	}).(pulumi.IntPtrOutput)
+}
+
+// The heap usage threshold (as a percentage) required for a single search shard task before it is considered for cancellation. Default is 0.5.
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutput) HeapPercentThreshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTask) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.HeapPercentThreshold
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The minimum variance required for a single search shard task’s heap usage compared to the rolling average of previously completed tasks before it is considered for cancellation. Default is 2.0.
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutput) HeapVariance() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTask) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.HeapVariance
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The heap usage threshold (as a percentage) required for the sum of heap usages of all search shard tasks before cancellation is applied. Default is 0.5.
+func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutput) TotalHeapPercentThreshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTask) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.TotalHeapPercentThreshold
+	}).(pulumi.Float64PtrOutput)
+}
+
 type GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTask struct {
 	// The maximum number of search tasks to cancel in a single iteration of the observer thread. Default is 5.0.
 	CancellationBurst *float64 `pulumi:"cancellationBurst"`
@@ -17518,8 +18206,12 @@ type GetServiceIntegrationEndpointOpentelemetryUserConfig struct {
 	Compression string `pulumi:"compression"`
 	// Enum: `json`, `protobuf`. Encoding used for exported metrics. Leave unset to use telegraf's default.
 	EncodingType *string `pulumi:"encodingType"`
+	// If set, only these measurements are sent to this endpoint; everything else is dropped for this destination only, leaving every other destination (other integrations, Prometheus, etc.) unaffected. Matched after bucketing and any overrideMeasurements rename, i.e. against the final measurement name as it will appear at the destination (e.g. `kafka`, or `do.databases.kafka` if renamed). Leave unset to export every measurement, same as today. Telegraf's underlying namepass filter treats an empty list the same as unset (both export everything), so an empty list isn't accepted here -- it wouldn't do what it looks like it does.
+	FilterMeasurements []string `pulumi:"filterMeasurements"`
 	// Additional gRPC metadata headers sent with every export request.
 	Headers map[string]string `pulumi:"headers"`
+	// Every metric belonging to a known service (mysql, postgresql, valkey -- which also covers redis, Valkey's predecessor -- opensearch, kafka) is exported here under a single bucket measurement per service -- e.g. every Kafka JMX metric, however deep its raw name, becomes measurement `kafka` (its specific identity moves into the field name instead). This map renames that bucket as a whole -- key on the bucket name (e.g. `kafka`, `postgresql`), not the metric's original raw name; it cannot target one specific metric within a bucket. Metrics outside these known services (e.g. cpu, mem, disk) are exported unchanged and can't be renamed here. The original metric name is left untouched for every other destination (other integrations, Prometheus, etc.) -- only the copy sent here is bucketed and, if listed, renamed.
+	OverrideMeasurements map[string]string `pulumi:"overrideMeasurements"`
 	// Either a bare `host:port` (OTLP/gRPC, no URL scheme) or an `http://`/`https://` URL (OTLP/HTTP). Example: `otel-collector.example.avns.net:4317`.
 	ServiceAddress string `pulumi:"serviceAddress"`
 	// Connection timeout in seconds. Example: `10`.
@@ -17544,8 +18236,12 @@ type GetServiceIntegrationEndpointOpentelemetryUserConfigArgs struct {
 	Compression pulumi.StringInput `pulumi:"compression"`
 	// Enum: `json`, `protobuf`. Encoding used for exported metrics. Leave unset to use telegraf's default.
 	EncodingType pulumi.StringPtrInput `pulumi:"encodingType"`
+	// If set, only these measurements are sent to this endpoint; everything else is dropped for this destination only, leaving every other destination (other integrations, Prometheus, etc.) unaffected. Matched after bucketing and any overrideMeasurements rename, i.e. against the final measurement name as it will appear at the destination (e.g. `kafka`, or `do.databases.kafka` if renamed). Leave unset to export every measurement, same as today. Telegraf's underlying namepass filter treats an empty list the same as unset (both export everything), so an empty list isn't accepted here -- it wouldn't do what it looks like it does.
+	FilterMeasurements pulumi.StringArrayInput `pulumi:"filterMeasurements"`
 	// Additional gRPC metadata headers sent with every export request.
 	Headers pulumi.StringMapInput `pulumi:"headers"`
+	// Every metric belonging to a known service (mysql, postgresql, valkey -- which also covers redis, Valkey's predecessor -- opensearch, kafka) is exported here under a single bucket measurement per service -- e.g. every Kafka JMX metric, however deep its raw name, becomes measurement `kafka` (its specific identity moves into the field name instead). This map renames that bucket as a whole -- key on the bucket name (e.g. `kafka`, `postgresql`), not the metric's original raw name; it cannot target one specific metric within a bucket. Metrics outside these known services (e.g. cpu, mem, disk) are exported unchanged and can't be renamed here. The original metric name is left untouched for every other destination (other integrations, Prometheus, etc.) -- only the copy sent here is bucketed and, if listed, renamed.
+	OverrideMeasurements pulumi.StringMapInput `pulumi:"overrideMeasurements"`
 	// Either a bare `host:port` (OTLP/gRPC, no URL scheme) or an `http://`/`https://` URL (OTLP/HTTP). Example: `otel-collector.example.avns.net:4317`.
 	ServiceAddress pulumi.StringInput `pulumi:"serviceAddress"`
 	// Connection timeout in seconds. Example: `10`.
@@ -17618,9 +18314,21 @@ func (o GetServiceIntegrationEndpointOpentelemetryUserConfigOutput) EncodingType
 	return o.ApplyT(func(v GetServiceIntegrationEndpointOpentelemetryUserConfig) *string { return v.EncodingType }).(pulumi.StringPtrOutput)
 }
 
+// If set, only these measurements are sent to this endpoint; everything else is dropped for this destination only, leaving every other destination (other integrations, Prometheus, etc.) unaffected. Matched after bucketing and any overrideMeasurements rename, i.e. against the final measurement name as it will appear at the destination (e.g. `kafka`, or `do.databases.kafka` if renamed). Leave unset to export every measurement, same as today. Telegraf's underlying namepass filter treats an empty list the same as unset (both export everything), so an empty list isn't accepted here -- it wouldn't do what it looks like it does.
+func (o GetServiceIntegrationEndpointOpentelemetryUserConfigOutput) FilterMeasurements() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointOpentelemetryUserConfig) []string { return v.FilterMeasurements }).(pulumi.StringArrayOutput)
+}
+
 // Additional gRPC metadata headers sent with every export request.
 func (o GetServiceIntegrationEndpointOpentelemetryUserConfigOutput) Headers() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetServiceIntegrationEndpointOpentelemetryUserConfig) map[string]string { return v.Headers }).(pulumi.StringMapOutput)
+}
+
+// Every metric belonging to a known service (mysql, postgresql, valkey -- which also covers redis, Valkey's predecessor -- opensearch, kafka) is exported here under a single bucket measurement per service -- e.g. every Kafka JMX metric, however deep its raw name, becomes measurement `kafka` (its specific identity moves into the field name instead). This map renames that bucket as a whole -- key on the bucket name (e.g. `kafka`, `postgresql`), not the metric's original raw name; it cannot target one specific metric within a bucket. Metrics outside these known services (e.g. cpu, mem, disk) are exported unchanged and can't be renamed here. The original metric name is left untouched for every other destination (other integrations, Prometheus, etc.) -- only the copy sent here is bucketed and, if listed, renamed.
+func (o GetServiceIntegrationEndpointOpentelemetryUserConfigOutput) OverrideMeasurements() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointOpentelemetryUserConfig) map[string]string {
+		return v.OverrideMeasurements
+	}).(pulumi.StringMapOutput)
 }
 
 // Either a bare `host:port` (OTLP/gRPC, no URL scheme) or an `http://`/`https://` URL (OTLP/HTTP). Example: `otel-collector.example.avns.net:4317`.
@@ -21732,6 +22440,8 @@ func (o GetServicePlanBackupConfigArrayOutput) Index(i pulumi.IntInput) GetServi
 type GetServicePlanListServicePlan struct {
 	// True when the plan is a cluster plan with dedicated node groups.
 	IsClusterPlan bool `pulumi:"isClusterPlan"`
+	// True when the plan's topology is set via user config and its region price is per node.
+	ManagedClusterPlan bool `pulumi:"managedClusterPlan"`
 	// Maximum amount of system memory as a percentage (0-100) the service can actually use after taking into account management overhead. This is relevant for memory bound services for which some service management operations require allocating proportional amount of memory on top the basic load.
 	MaxMemoryPercent int `pulumi:"maxMemoryPercent"`
 	// Number of nodes in this service plan.
@@ -21762,6 +22472,8 @@ type GetServicePlanListServicePlanInput interface {
 type GetServicePlanListServicePlanArgs struct {
 	// True when the plan is a cluster plan with dedicated node groups.
 	IsClusterPlan pulumi.BoolInput `pulumi:"isClusterPlan"`
+	// True when the plan's topology is set via user config and its region price is per node.
+	ManagedClusterPlan pulumi.BoolInput `pulumi:"managedClusterPlan"`
 	// Maximum amount of system memory as a percentage (0-100) the service can actually use after taking into account management overhead. This is relevant for memory bound services for which some service management operations require allocating proportional amount of memory on top the basic load.
 	MaxMemoryPercent pulumi.IntInput `pulumi:"maxMemoryPercent"`
 	// Number of nodes in this service plan.
@@ -21832,6 +22544,11 @@ func (o GetServicePlanListServicePlanOutput) ToGetServicePlanListServicePlanOutp
 // True when the plan is a cluster plan with dedicated node groups.
 func (o GetServicePlanListServicePlanOutput) IsClusterPlan() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetServicePlanListServicePlan) bool { return v.IsClusterPlan }).(pulumi.BoolOutput)
+}
+
+// True when the plan's topology is set via user config and its region price is per node.
+func (o GetServicePlanListServicePlanOutput) ManagedClusterPlan() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetServicePlanListServicePlan) bool { return v.ManagedClusterPlan }).(pulumi.BoolOutput)
 }
 
 // Maximum amount of system memory as a percentage (0-100) the service can actually use after taking into account management overhead. This is relevant for memory bound services for which some service management operations require allocating proportional amount of memory on top the basic load.
@@ -24366,6 +25083,143 @@ func (o GetThanosThanosUserConfigQueryFrontendPtrOutput) QueryRangeAlignRangeWit
 	}).(pulumi.BoolPtrOutput)
 }
 
+type GetTransitGatewayVpcAttachmentTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Read *string `pulumi:"read"`
+}
+
+// GetTransitGatewayVpcAttachmentTimeoutsInput is an input type that accepts GetTransitGatewayVpcAttachmentTimeoutsArgs and GetTransitGatewayVpcAttachmentTimeoutsOutput values.
+// You can construct a concrete instance of `GetTransitGatewayVpcAttachmentTimeoutsInput` via:
+//
+//	GetTransitGatewayVpcAttachmentTimeoutsArgs{...}
+type GetTransitGatewayVpcAttachmentTimeoutsInput interface {
+	pulumi.Input
+
+	ToGetTransitGatewayVpcAttachmentTimeoutsOutput() GetTransitGatewayVpcAttachmentTimeoutsOutput
+	ToGetTransitGatewayVpcAttachmentTimeoutsOutputWithContext(context.Context) GetTransitGatewayVpcAttachmentTimeoutsOutput
+}
+
+type GetTransitGatewayVpcAttachmentTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Read pulumi.StringPtrInput `pulumi:"read"`
+}
+
+func (GetTransitGatewayVpcAttachmentTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTransitGatewayVpcAttachmentTimeouts)(nil)).Elem()
+}
+
+func (i GetTransitGatewayVpcAttachmentTimeoutsArgs) ToGetTransitGatewayVpcAttachmentTimeoutsOutput() GetTransitGatewayVpcAttachmentTimeoutsOutput {
+	return i.ToGetTransitGatewayVpcAttachmentTimeoutsOutputWithContext(context.Background())
+}
+
+func (i GetTransitGatewayVpcAttachmentTimeoutsArgs) ToGetTransitGatewayVpcAttachmentTimeoutsOutputWithContext(ctx context.Context) GetTransitGatewayVpcAttachmentTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTransitGatewayVpcAttachmentTimeoutsOutput)
+}
+
+func (i GetTransitGatewayVpcAttachmentTimeoutsArgs) ToGetTransitGatewayVpcAttachmentTimeoutsPtrOutput() GetTransitGatewayVpcAttachmentTimeoutsPtrOutput {
+	return i.ToGetTransitGatewayVpcAttachmentTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i GetTransitGatewayVpcAttachmentTimeoutsArgs) ToGetTransitGatewayVpcAttachmentTimeoutsPtrOutputWithContext(ctx context.Context) GetTransitGatewayVpcAttachmentTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTransitGatewayVpcAttachmentTimeoutsOutput).ToGetTransitGatewayVpcAttachmentTimeoutsPtrOutputWithContext(ctx)
+}
+
+// GetTransitGatewayVpcAttachmentTimeoutsPtrInput is an input type that accepts GetTransitGatewayVpcAttachmentTimeoutsArgs, GetTransitGatewayVpcAttachmentTimeoutsPtr and GetTransitGatewayVpcAttachmentTimeoutsPtrOutput values.
+// You can construct a concrete instance of `GetTransitGatewayVpcAttachmentTimeoutsPtrInput` via:
+//
+//	        GetTransitGatewayVpcAttachmentTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetTransitGatewayVpcAttachmentTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToGetTransitGatewayVpcAttachmentTimeoutsPtrOutput() GetTransitGatewayVpcAttachmentTimeoutsPtrOutput
+	ToGetTransitGatewayVpcAttachmentTimeoutsPtrOutputWithContext(context.Context) GetTransitGatewayVpcAttachmentTimeoutsPtrOutput
+}
+
+type getTransitGatewayVpcAttachmentTimeoutsPtrType GetTransitGatewayVpcAttachmentTimeoutsArgs
+
+func GetTransitGatewayVpcAttachmentTimeoutsPtr(v *GetTransitGatewayVpcAttachmentTimeoutsArgs) GetTransitGatewayVpcAttachmentTimeoutsPtrInput {
+	return (*getTransitGatewayVpcAttachmentTimeoutsPtrType)(v)
+}
+
+func (*getTransitGatewayVpcAttachmentTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetTransitGatewayVpcAttachmentTimeouts)(nil)).Elem()
+}
+
+func (i *getTransitGatewayVpcAttachmentTimeoutsPtrType) ToGetTransitGatewayVpcAttachmentTimeoutsPtrOutput() GetTransitGatewayVpcAttachmentTimeoutsPtrOutput {
+	return i.ToGetTransitGatewayVpcAttachmentTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *getTransitGatewayVpcAttachmentTimeoutsPtrType) ToGetTransitGatewayVpcAttachmentTimeoutsPtrOutputWithContext(ctx context.Context) GetTransitGatewayVpcAttachmentTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTransitGatewayVpcAttachmentTimeoutsPtrOutput)
+}
+
+type GetTransitGatewayVpcAttachmentTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (GetTransitGatewayVpcAttachmentTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTransitGatewayVpcAttachmentTimeouts)(nil)).Elem()
+}
+
+func (o GetTransitGatewayVpcAttachmentTimeoutsOutput) ToGetTransitGatewayVpcAttachmentTimeoutsOutput() GetTransitGatewayVpcAttachmentTimeoutsOutput {
+	return o
+}
+
+func (o GetTransitGatewayVpcAttachmentTimeoutsOutput) ToGetTransitGatewayVpcAttachmentTimeoutsOutputWithContext(ctx context.Context) GetTransitGatewayVpcAttachmentTimeoutsOutput {
+	return o
+}
+
+func (o GetTransitGatewayVpcAttachmentTimeoutsOutput) ToGetTransitGatewayVpcAttachmentTimeoutsPtrOutput() GetTransitGatewayVpcAttachmentTimeoutsPtrOutput {
+	return o.ToGetTransitGatewayVpcAttachmentTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o GetTransitGatewayVpcAttachmentTimeoutsOutput) ToGetTransitGatewayVpcAttachmentTimeoutsPtrOutputWithContext(ctx context.Context) GetTransitGatewayVpcAttachmentTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetTransitGatewayVpcAttachmentTimeouts) *GetTransitGatewayVpcAttachmentTimeouts {
+		return &v
+	}).(GetTransitGatewayVpcAttachmentTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o GetTransitGatewayVpcAttachmentTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTransitGatewayVpcAttachmentTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+type GetTransitGatewayVpcAttachmentTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetTransitGatewayVpcAttachmentTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetTransitGatewayVpcAttachmentTimeouts)(nil)).Elem()
+}
+
+func (o GetTransitGatewayVpcAttachmentTimeoutsPtrOutput) ToGetTransitGatewayVpcAttachmentTimeoutsPtrOutput() GetTransitGatewayVpcAttachmentTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetTransitGatewayVpcAttachmentTimeoutsPtrOutput) ToGetTransitGatewayVpcAttachmentTimeoutsPtrOutputWithContext(ctx context.Context) GetTransitGatewayVpcAttachmentTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetTransitGatewayVpcAttachmentTimeoutsPtrOutput) Elem() GetTransitGatewayVpcAttachmentTimeoutsOutput {
+	return o.ApplyT(func(v *GetTransitGatewayVpcAttachmentTimeouts) GetTransitGatewayVpcAttachmentTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret GetTransitGatewayVpcAttachmentTimeouts
+		return ret
+	}).(GetTransitGatewayVpcAttachmentTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o GetTransitGatewayVpcAttachmentTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetTransitGatewayVpcAttachmentTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetValkeyComponent struct {
 	// Service component name
 	Component string `pulumi:"component"`
@@ -25153,6 +26007,10 @@ type GetValkeyValkeyUserConfig struct {
 	StaticIps *bool `pulumi:"staticIps"`
 	// Enum: `allchannels`, `resetchannels`. Determines default pub/sub channels' ACL for new users if ACL is not supplied. When this option is not defined, allChannels is assumed to keep backward compatibility. This option doesn't affect Valkey configuration acl-pubsub-default.
 	ValkeyAclChannelsDefault *string `pulumi:"valkeyAclChannelsDefault"`
+	// Minimum amount of fragmentation waste, in bytes, before active defragmentation starts. Only takes effect when `valkeyActivedefrag` is enabled.
+	ValkeyActiveDefragIgnoreBytes *int `pulumi:"valkeyActiveDefragIgnoreBytes"`
+	// Minimum percentage of fragmentation before active defragmentation starts. Only takes effect when `valkeyActivedefrag` is enabled. Default: `10`.
+	ValkeyActiveDefragThresholdLower *int `pulumi:"valkeyActiveDefragThresholdLower"`
 	// Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency. Default: `1`.
 	ValkeyActiveExpireEffort *int `pulumi:"valkeyActiveExpireEffort"`
 	// Enable active memory defragmentation. When enabled, Valkey relocates objects off sparsely-used memory pages to reduce fragmentation and return memory to the operating system. Defragmentation runs on the main thread and consumes CPU, so it may increase latency under load. Default: `false`.
@@ -25169,7 +26027,7 @@ type GetValkeyValkeyUserConfig struct {
 	ValkeyNotifyKeyspaceEvents *string `pulumi:"valkeyNotifyKeyspaceEvents"`
 	// Set number of Valkey databases. Changing this will cause a restart of the Valkey service. Example: `16`.
 	ValkeyNumberOfDatabases *int `pulumi:"valkeyNumberOfDatabases"`
-	// Enum: `off`, `rdb`. When persistence is `rdb`, Valkey does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is `off`, no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
+	// Enum: `off`, `rdb`. Controls whether Valkey writes RDB dumps to disk. With `rdb`, RDB dumps are written for backups on the backup schedule and, if `frequentSnapshots` is enabled, every 10 minutes so the service can recover recent data after a restart. With `off`, no RDB dumps are written at all: backups and forking are unavailable, `frequentSnapshots` and `backupHour`/`backupMinute` have no effect, and all data is lost if the service restarts or is powered off.
 	ValkeyPersistence *string `pulumi:"valkeyPersistence"`
 	// Set output buffer limit for pub / sub clients in MB. The value is the hard limit, the soft limit is 1/4 of the hard limit. When setting the limit, be mindful of the available memory in the selected service plan. Example: `64`.
 	ValkeyPubsubClientOutputBufferLimit *int `pulumi:"valkeyPubsubClientOutputBufferLimit"`
@@ -25231,6 +26089,10 @@ type GetValkeyValkeyUserConfigArgs struct {
 	StaticIps pulumi.BoolPtrInput `pulumi:"staticIps"`
 	// Enum: `allchannels`, `resetchannels`. Determines default pub/sub channels' ACL for new users if ACL is not supplied. When this option is not defined, allChannels is assumed to keep backward compatibility. This option doesn't affect Valkey configuration acl-pubsub-default.
 	ValkeyAclChannelsDefault pulumi.StringPtrInput `pulumi:"valkeyAclChannelsDefault"`
+	// Minimum amount of fragmentation waste, in bytes, before active defragmentation starts. Only takes effect when `valkeyActivedefrag` is enabled.
+	ValkeyActiveDefragIgnoreBytes pulumi.IntPtrInput `pulumi:"valkeyActiveDefragIgnoreBytes"`
+	// Minimum percentage of fragmentation before active defragmentation starts. Only takes effect when `valkeyActivedefrag` is enabled. Default: `10`.
+	ValkeyActiveDefragThresholdLower pulumi.IntPtrInput `pulumi:"valkeyActiveDefragThresholdLower"`
 	// Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency. Default: `1`.
 	ValkeyActiveExpireEffort pulumi.IntPtrInput `pulumi:"valkeyActiveExpireEffort"`
 	// Enable active memory defragmentation. When enabled, Valkey relocates objects off sparsely-used memory pages to reduce fragmentation and return memory to the operating system. Defragmentation runs on the main thread and consumes CPU, so it may increase latency under load. Default: `false`.
@@ -25247,7 +26109,7 @@ type GetValkeyValkeyUserConfigArgs struct {
 	ValkeyNotifyKeyspaceEvents pulumi.StringPtrInput `pulumi:"valkeyNotifyKeyspaceEvents"`
 	// Set number of Valkey databases. Changing this will cause a restart of the Valkey service. Example: `16`.
 	ValkeyNumberOfDatabases pulumi.IntPtrInput `pulumi:"valkeyNumberOfDatabases"`
-	// Enum: `off`, `rdb`. When persistence is `rdb`, Valkey does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is `off`, no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
+	// Enum: `off`, `rdb`. Controls whether Valkey writes RDB dumps to disk. With `rdb`, RDB dumps are written for backups on the backup schedule and, if `frequentSnapshots` is enabled, every 10 minutes so the service can recover recent data after a restart. With `off`, no RDB dumps are written at all: backups and forking are unavailable, `frequentSnapshots` and `backupHour`/`backupMinute` have no effect, and all data is lost if the service restarts or is powered off.
 	ValkeyPersistence pulumi.StringPtrInput `pulumi:"valkeyPersistence"`
 	// Set output buffer limit for pub / sub clients in MB. The value is the hard limit, the soft limit is 1/4 of the hard limit. When setting the limit, be mindful of the available memory in the selected service plan. Example: `64`.
 	ValkeyPubsubClientOutputBufferLimit pulumi.IntPtrInput `pulumi:"valkeyPubsubClientOutputBufferLimit"`
@@ -25404,6 +26266,16 @@ func (o GetValkeyValkeyUserConfigOutput) ValkeyAclChannelsDefault() pulumi.Strin
 	return o.ApplyT(func(v GetValkeyValkeyUserConfig) *string { return v.ValkeyAclChannelsDefault }).(pulumi.StringPtrOutput)
 }
 
+// Minimum amount of fragmentation waste, in bytes, before active defragmentation starts. Only takes effect when `valkeyActivedefrag` is enabled.
+func (o GetValkeyValkeyUserConfigOutput) ValkeyActiveDefragIgnoreBytes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetValkeyValkeyUserConfig) *int { return v.ValkeyActiveDefragIgnoreBytes }).(pulumi.IntPtrOutput)
+}
+
+// Minimum percentage of fragmentation before active defragmentation starts. Only takes effect when `valkeyActivedefrag` is enabled. Default: `10`.
+func (o GetValkeyValkeyUserConfigOutput) ValkeyActiveDefragThresholdLower() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetValkeyValkeyUserConfig) *int { return v.ValkeyActiveDefragThresholdLower }).(pulumi.IntPtrOutput)
+}
+
 // Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency. Default: `1`.
 func (o GetValkeyValkeyUserConfigOutput) ValkeyActiveExpireEffort() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetValkeyValkeyUserConfig) *int { return v.ValkeyActiveExpireEffort }).(pulumi.IntPtrOutput)
@@ -25444,7 +26316,7 @@ func (o GetValkeyValkeyUserConfigOutput) ValkeyNumberOfDatabases() pulumi.IntPtr
 	return o.ApplyT(func(v GetValkeyValkeyUserConfig) *int { return v.ValkeyNumberOfDatabases }).(pulumi.IntPtrOutput)
 }
 
-// Enum: `off`, `rdb`. When persistence is `rdb`, Valkey does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is `off`, no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
+// Enum: `off`, `rdb`. Controls whether Valkey writes RDB dumps to disk. With `rdb`, RDB dumps are written for backups on the backup schedule and, if `frequentSnapshots` is enabled, every 10 minutes so the service can recover recent data after a restart. With `off`, no RDB dumps are written at all: backups and forking are unavailable, `frequentSnapshots` and `backupHour`/`backupMinute` have no effect, and all data is lost if the service restarts or is powered off.
 func (o GetValkeyValkeyUserConfigOutput) ValkeyPersistence() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetValkeyValkeyUserConfig) *string { return v.ValkeyPersistence }).(pulumi.StringPtrOutput)
 }
@@ -26353,6 +27225,12 @@ func (o GetValkeyValkeyUserConfigPublicAccessPtrOutput) Valkey() pulumi.BoolPtrO
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskPtrInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesArgs{})
@@ -26649,6 +27527,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetThanosThanosUserConfigQueryPtrInput)(nil)).Elem(), GetThanosThanosUserConfigQueryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetThanosThanosUserConfigQueryFrontendInput)(nil)).Elem(), GetThanosThanosUserConfigQueryFrontendArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetThanosThanosUserConfigQueryFrontendPtrInput)(nil)).Elem(), GetThanosThanosUserConfigQueryFrontendArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTransitGatewayVpcAttachmentTimeoutsInput)(nil)).Elem(), GetTransitGatewayVpcAttachmentTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTransitGatewayVpcAttachmentTimeoutsPtrInput)(nil)).Elem(), GetTransitGatewayVpcAttachmentTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyComponentInput)(nil)).Elem(), GetValkeyComponentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyComponentArrayInput)(nil)).Elem(), GetValkeyComponentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyServiceIntegrationInput)(nil)).Elem(), GetValkeyServiceIntegrationArgs{})
@@ -26673,6 +27553,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPrivatelinkAccessPtrInput)(nil)).Elem(), GetValkeyValkeyUserConfigPrivatelinkAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPublicAccessInput)(nil)).Elem(), GetValkeyValkeyUserConfigPublicAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPublicAccessPtrInput)(nil)).Elem(), GetValkeyValkeyUserConfigPublicAccessArgs{})
+	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskPtrOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchSearchInsightsTopQueriesOutput{})
@@ -26969,6 +27855,8 @@ func init() {
 	pulumi.RegisterOutputType(GetThanosThanosUserConfigQueryPtrOutput{})
 	pulumi.RegisterOutputType(GetThanosThanosUserConfigQueryFrontendOutput{})
 	pulumi.RegisterOutputType(GetThanosThanosUserConfigQueryFrontendPtrOutput{})
+	pulumi.RegisterOutputType(GetTransitGatewayVpcAttachmentTimeoutsOutput{})
+	pulumi.RegisterOutputType(GetTransitGatewayVpcAttachmentTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(GetValkeyComponentOutput{})
 	pulumi.RegisterOutputType(GetValkeyComponentArrayOutput{})
 	pulumi.RegisterOutputType(GetValkeyServiceIntegrationOutput{})

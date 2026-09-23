@@ -24,7 +24,8 @@ class FlinkJarApplicationVersionArgs:
                  application_id: pulumi.Input[_builtins.str],
                  project: pulumi.Input[_builtins.str],
                  service_name: pulumi.Input[_builtins.str],
-                 source: pulumi.Input[_builtins.str]):
+                 source: pulumi.Input[_builtins.str],
+                 timeouts: pulumi.Input[Optional['FlinkJarApplicationVersionTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a FlinkJarApplicationVersion resource.
 
@@ -37,6 +38,8 @@ class FlinkJarApplicationVersionArgs:
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "service_name", service_name)
         pulumi.set(__self__, "source", source)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
 
     @_builtins.property
     @pulumi.getter(name="applicationId")
@@ -86,6 +89,15 @@ class FlinkJarApplicationVersionArgs:
     def source(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "source", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> pulumi.Input[Optional['FlinkJarApplicationVersionTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: pulumi.Input[Optional['FlinkJarApplicationVersionTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
+
 
 @pulumi.input_type
 class _FlinkJarApplicationVersionState:
@@ -99,6 +111,7 @@ class _FlinkJarApplicationVersionState:
                  service_name: pulumi.Input[Optional[_builtins.str]] = None,
                  source: pulumi.Input[Optional[_builtins.str]] = None,
                  source_checksum: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional['FlinkJarApplicationVersionTimeoutsArgs']] = None,
                  version: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering FlinkJarApplicationVersion resources.
@@ -132,6 +145,8 @@ class _FlinkJarApplicationVersionState:
             pulumi.set(__self__, "source", source)
         if source_checksum is not None:
             pulumi.set(__self__, "source_checksum", source_checksum)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
         if version is not None:
             pulumi.set(__self__, "version", version)
 
@@ -245,6 +260,15 @@ class _FlinkJarApplicationVersionState:
 
     @_builtins.property
     @pulumi.getter
+    def timeouts(self) -> pulumi.Input[Optional['FlinkJarApplicationVersionTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: pulumi.Input[Optional['FlinkJarApplicationVersionTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
+
+    @_builtins.property
+    @pulumi.getter
     def version(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Version number.
@@ -266,9 +290,13 @@ class FlinkJarApplicationVersion(pulumi.CustomResource):
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  service_name: pulumi.Input[Optional[_builtins.str]] = None,
                  source: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['FlinkJarApplicationVersionTimeoutsArgs', 'FlinkJarApplicationVersionTimeoutsArgsDict', 'outputs.FlinkJarApplicationVersionTimeouts']]] = None,
                  __props__=None):
         """
-        Creates and manages an Aiven for Apache Flink® jar application version. This feature is in the limited availability stage and may change without notice. To enable this feature, contact the [sales team](http://aiven.io/contact). Once it's enabled, set the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+        Creates and manages a version of an [Aiven for Apache Flink® jar application](https://aiven.io/docs/products/flink/howto/create-jar-application). The jar file is uploaded to the pre-signed URL the API returns, and editing the file creates a new version. Requires the `Flink` service to have `flink_user_config.custom_code` enabled, which allows uploading and deploying custom JARs. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
+
+        > **Beta resource in limited availability**
+        This feature is in the limited availability stage and may change without notice. To enable this feature, contact the [sales team](http://aiven.io/contact). Once it's enabled, set the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
 
         ## Example Usage
 
@@ -276,24 +304,10 @@ class FlinkJarApplicationVersion(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        example = aiven.Flink("example",
-            flink_user_config={
-                "custom_code": True,
-            },
-            project=example_aiven_project["project"],
-            service_name="example-flink-service",
-            cloud_name="google-europe-west1",
-            plan="business-4",
-            maintenance_window_dow="monday",
-            maintenance_window_time="04:00:00")
-        example_flink_jar_application = aiven.FlinkJarApplication("example",
-            project=example.project,
-            service_name=example.service_name,
-            name="example-app-jar")
-        example_flink_jar_application_version = aiven.FlinkJarApplicationVersion("example",
-            project=example.project,
-            service_name=example.service_name,
-            application_id=example_flink_jar_application.application_id,
+        example = aiven.FlinkJarApplicationVersion("example",
+            project="my-project",
+            service_name="my-application",
+            application_id="foo",
             source="./example.jar")
         ```
 
@@ -318,7 +332,10 @@ class FlinkJarApplicationVersion(pulumi.CustomResource):
                  args: FlinkJarApplicationVersionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates and manages an Aiven for Apache Flink® jar application version. This feature is in the limited availability stage and may change without notice. To enable this feature, contact the [sales team](http://aiven.io/contact). Once it's enabled, set the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+        Creates and manages a version of an [Aiven for Apache Flink® jar application](https://aiven.io/docs/products/flink/howto/create-jar-application). The jar file is uploaded to the pre-signed URL the API returns, and editing the file creates a new version. Requires the `Flink` service to have `flink_user_config.custom_code` enabled, which allows uploading and deploying custom JARs. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
+
+        > **Beta resource in limited availability**
+        This feature is in the limited availability stage and may change without notice. To enable this feature, contact the [sales team](http://aiven.io/contact). Once it's enabled, set the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
 
         ## Example Usage
 
@@ -326,24 +343,10 @@ class FlinkJarApplicationVersion(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        example = aiven.Flink("example",
-            flink_user_config={
-                "custom_code": True,
-            },
-            project=example_aiven_project["project"],
-            service_name="example-flink-service",
-            cloud_name="google-europe-west1",
-            plan="business-4",
-            maintenance_window_dow="monday",
-            maintenance_window_time="04:00:00")
-        example_flink_jar_application = aiven.FlinkJarApplication("example",
-            project=example.project,
-            service_name=example.service_name,
-            name="example-app-jar")
-        example_flink_jar_application_version = aiven.FlinkJarApplicationVersion("example",
-            project=example.project,
-            service_name=example.service_name,
-            application_id=example_flink_jar_application.application_id,
+        example = aiven.FlinkJarApplicationVersion("example",
+            project="my-project",
+            service_name="my-application",
+            application_id="foo",
             source="./example.jar")
         ```
 
@@ -373,6 +376,7 @@ class FlinkJarApplicationVersion(pulumi.CustomResource):
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  service_name: pulumi.Input[Optional[_builtins.str]] = None,
                  source: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['FlinkJarApplicationVersionTimeoutsArgs', 'FlinkJarApplicationVersionTimeoutsArgsDict', 'outputs.FlinkJarApplicationVersionTimeouts']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -394,6 +398,7 @@ class FlinkJarApplicationVersion(pulumi.CustomResource):
             if source is None and not opts.urn:
                 raise TypeError("Missing required property 'source'")
             __props__.__dict__["source"] = source
+            __props__.__dict__["timeouts"] = timeouts
             __props__.__dict__["application_version_id"] = None
             __props__.__dict__["created_at"] = None
             __props__.__dict__["created_by"] = None
@@ -419,6 +424,7 @@ class FlinkJarApplicationVersion(pulumi.CustomResource):
             service_name: pulumi.Input[Optional[_builtins.str]] = None,
             source: pulumi.Input[Optional[_builtins.str]] = None,
             source_checksum: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['FlinkJarApplicationVersionTimeoutsArgs', 'FlinkJarApplicationVersionTimeoutsArgsDict', 'outputs.FlinkJarApplicationVersionTimeouts']]] = None,
             version: pulumi.Input[Optional[_builtins.int]] = None) -> 'FlinkJarApplicationVersion':
         """
         Get an existing FlinkJarApplicationVersion resource's state with the given name, id, and optional extra
@@ -451,6 +457,7 @@ class FlinkJarApplicationVersion(pulumi.CustomResource):
         __props__.__dict__["service_name"] = service_name
         __props__.__dict__["source"] = source
         __props__.__dict__["source_checksum"] = source_checksum
+        __props__.__dict__["timeouts"] = timeouts
         __props__.__dict__["version"] = version
         return FlinkJarApplicationVersion(resource_name, opts=opts, __props__=__props__)
 
@@ -525,6 +532,11 @@ class FlinkJarApplicationVersion(pulumi.CustomResource):
         The sha256 checksum of the jar file to upload.
         """
         return pulumi.get(self, "source_checksum")
+
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> pulumi.Output[Optional['outputs.FlinkJarApplicationVersionTimeouts']]:
+        return pulumi.get(self, "timeouts")
 
     @_builtins.property
     @pulumi.getter

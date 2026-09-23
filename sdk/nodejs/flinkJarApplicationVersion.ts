@@ -7,7 +7,10 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Creates and manages an Aiven for Apache Flink® jar application version. This feature is in the limited availability stage and may change without notice. To enable this feature, contact the [sales team](http://aiven.io/contact). Once it's enabled, set the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+ * Creates and manages a version of an [Aiven for Apache Flink® jar application](https://aiven.io/docs/products/flink/howto/create-jar-application). The jar file is uploaded to the pre-signed URL the API returns, and editing the file creates a new version. Requires the `aiven.Flink` service to have `flink_user_config.custom_code` enabled, which allows uploading and deploying custom JARs. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
+ *
+ * > **Beta resource in limited availability**
+ * This feature is in the limited availability stage and may change without notice. To enable this feature, contact the [sales team](http://aiven.io/contact). Once it's enabled, set the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
  *
  * ## Example Usage
  *
@@ -15,26 +18,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const example = new aiven.Flink("example", {
- *     flinkUserConfig: {
- *         customCode: true,
- *     },
- *     project: exampleAivenProject.project,
- *     serviceName: "example-flink-service",
- *     cloudName: "google-europe-west1",
- *     plan: "business-4",
- *     maintenanceWindowDow: "monday",
- *     maintenanceWindowTime: "04:00:00",
- * });
- * const exampleFlinkJarApplication = new aiven.FlinkJarApplication("example", {
- *     project: example.project,
- *     serviceName: example.serviceName,
- *     name: "example-app-jar",
- * });
- * const exampleFlinkJarApplicationVersion = new aiven.FlinkJarApplicationVersion("example", {
- *     project: example.project,
- *     serviceName: example.serviceName,
- *     applicationId: exampleFlinkJarApplication.applicationId,
+ * const example = new aiven.FlinkJarApplicationVersion("example", {
+ *     project: "my-project",
+ *     serviceName: "my-application",
+ *     applicationId: "foo",
  *     source: "./example.jar",
  * });
  * ```
@@ -109,6 +96,7 @@ export class FlinkJarApplicationVersion extends pulumi.CustomResource {
      * The sha256 checksum of the jar file to upload.
      */
     declare public /*out*/ readonly sourceChecksum: pulumi.Output<string>;
+    declare public readonly timeouts: pulumi.Output<outputs.FlinkJarApplicationVersionTimeouts | undefined>;
     /**
      * Version number.
      */
@@ -136,6 +124,7 @@ export class FlinkJarApplicationVersion extends pulumi.CustomResource {
             resourceInputs["serviceName"] = state?.serviceName;
             resourceInputs["source"] = state?.source;
             resourceInputs["sourceChecksum"] = state?.sourceChecksum;
+            resourceInputs["timeouts"] = state?.timeouts;
             resourceInputs["version"] = state?.version;
         } else {
             const args = argsOrState as FlinkJarApplicationVersionArgs | undefined;
@@ -155,6 +144,7 @@ export class FlinkJarApplicationVersion extends pulumi.CustomResource {
             resourceInputs["project"] = args?.project;
             resourceInputs["serviceName"] = args?.serviceName;
             resourceInputs["source"] = args?.source;
+            resourceInputs["timeouts"] = args?.timeouts;
             resourceInputs["applicationVersionId"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["createdBy"] = undefined /*out*/;
@@ -207,6 +197,7 @@ export interface FlinkJarApplicationVersionState {
      * The sha256 checksum of the jar file to upload.
      */
     sourceChecksum?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.FlinkJarApplicationVersionTimeouts | undefined>;
     /**
      * Version number.
      */
@@ -233,4 +224,5 @@ export interface FlinkJarApplicationVersionArgs {
      * The path to the jar file to upload.
      */
     source: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.FlinkJarApplicationVersionTimeouts | undefined>;
 }
