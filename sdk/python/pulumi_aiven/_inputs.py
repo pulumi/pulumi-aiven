@@ -119,10 +119,14 @@ __all__ = [
     'FlinkJarApplicationApplicationVersionFileInfoArgsDict',
     'FlinkJarApplicationCurrentDeploymentArgs',
     'FlinkJarApplicationCurrentDeploymentArgsDict',
+    'FlinkJarApplicationDeploymentTimeoutsArgs',
+    'FlinkJarApplicationDeploymentTimeoutsArgsDict',
     'FlinkJarApplicationTimeoutsArgs',
     'FlinkJarApplicationTimeoutsArgsDict',
     'FlinkJarApplicationVersionFileInfoArgs',
     'FlinkJarApplicationVersionFileInfoArgsDict',
+    'FlinkJarApplicationVersionTimeoutsArgs',
+    'FlinkJarApplicationVersionTimeoutsArgsDict',
     'FlinkServiceIntegrationArgs',
     'FlinkServiceIntegrationArgsDict',
     'FlinkTagArgs',
@@ -643,6 +647,8 @@ __all__ = [
     'ThanosThanosUserConfigQueryArgsDict',
     'ThanosThanosUserConfigQueryFrontendArgs',
     'ThanosThanosUserConfigQueryFrontendArgsDict',
+    'TransitGatewayVpcAttachmentTimeoutsArgs',
+    'TransitGatewayVpcAttachmentTimeoutsArgsDict',
     'UpgradeStepTimeoutsArgs',
     'UpgradeStepTimeoutsArgsDict',
     'ValkeyComponentArgs',
@@ -801,6 +807,8 @@ __all__ = [
     'GetServicePlanListTimeoutsArgsDict',
     'GetServicePlanTimeoutsArgs',
     'GetServicePlanTimeoutsArgsDict',
+    'GetTransitGatewayVpcAttachmentTimeoutsArgs',
+    'GetTransitGatewayVpcAttachmentTimeoutsArgsDict',
     'GetValkeyUserTimeoutsArgs',
     'GetValkeyUserTimeoutsArgsDict',
 ]
@@ -6134,6 +6142,119 @@ class FlinkJarApplicationCurrentDeploymentArgs:
         pulumi.set(self, "version_id", value)
 
 
+class FlinkJarApplicationDeploymentTimeoutsArgsDict(TypedDict):
+    create: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
+    default: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+    """
+    delete: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+    """
+    read: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+    """
+    update: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
+
+@pulumi.input_type
+class FlinkJarApplicationDeploymentTimeoutsArgs:
+    def __init__(__self__, *,
+                 create: pulumi.Input[Optional[_builtins.str]] = None,
+                 default: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete: pulumi.Input[Optional[_builtins.str]] = None,
+                 read: pulumi.Input[Optional[_builtins.str]] = None,
+                 update: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param pulumi.Input[_builtins.str] default: Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+        :param pulumi.Input[_builtins.str] delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param pulumi.Input[_builtins.str] read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param pulumi.Input[_builtins.str] update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if default is not None:
+            warnings.warn("""Use operation-specific timeouts instead. This field will be removed in the next major version.""", DeprecationWarning)
+            pulumi.log.warn("""default is deprecated: Use operation-specific timeouts instead. This field will be removed in the next major version.""")
+        if default is not None:
+            pulumi.set(__self__, "default", default)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @create.setter
+    def create(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "create", value)
+
+    @_builtins.property
+    @pulumi.getter
+    @_utilities.deprecated("""Use operation-specific timeouts instead. This field will be removed in the next major version.""")
+    def default(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+        """
+        return pulumi.get(self, "default")
+
+    @default.setter
+    def default(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "default", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @delete.setter
+    def delete(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "delete", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "read", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+    @update.setter
+    def update(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "update", value)
+
+
 class FlinkJarApplicationTimeoutsArgsDict(TypedDict):
     create: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -6266,7 +6387,7 @@ class FlinkJarApplicationVersionFileInfoArgsDict(TypedDict):
     """
     verify_error_code: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
-    In the case file_status is FAILED, the error code of the failure. The possible values are `1`, `2` and `3`.
+    In the case file_status is FAILED, the error code of the failure. The possible values are `1`, `2`, `3` and `4`.
     """
     verify_error_message: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -6287,7 +6408,7 @@ class FlinkJarApplicationVersionFileInfoArgs:
         :param pulumi.Input[_builtins.int] file_size: The size of the file in bytes.
         :param pulumi.Input[_builtins.str] file_status: Indicates whether the uploaded .jar file has been verified by the system and deployment ready. The possible values are `FAILED`, `INITIAL` and `READY`.
         :param pulumi.Input[_builtins.str] url: The pre-signed url of the bucket where the .jar file is uploaded. Becomes null when the JarApplicationVersion is ready or failed.
-        :param pulumi.Input[_builtins.int] verify_error_code: In the case file_status is FAILED, the error code of the failure. The possible values are `1`, `2` and `3`.
+        :param pulumi.Input[_builtins.int] verify_error_code: In the case file_status is FAILED, the error code of the failure. The possible values are `1`, `2`, `3` and `4`.
         :param pulumi.Input[_builtins.str] verify_error_message: In the case file_status is FAILED, may contain details about the failure.
         """
         if file_sha256 is not None:
@@ -6355,7 +6476,7 @@ class FlinkJarApplicationVersionFileInfoArgs:
     @pulumi.getter(name="verifyErrorCode")
     def verify_error_code(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        In the case file_status is FAILED, the error code of the failure. The possible values are `1`, `2` and `3`.
+        In the case file_status is FAILED, the error code of the failure. The possible values are `1`, `2`, `3` and `4`.
         """
         return pulumi.get(self, "verify_error_code")
 
@@ -6374,6 +6495,119 @@ class FlinkJarApplicationVersionFileInfoArgs:
     @verify_error_message.setter
     def verify_error_message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "verify_error_message", value)
+
+
+class FlinkJarApplicationVersionTimeoutsArgsDict(TypedDict):
+    create: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
+    default: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+    """
+    delete: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+    """
+    read: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+    """
+    update: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
+
+@pulumi.input_type
+class FlinkJarApplicationVersionTimeoutsArgs:
+    def __init__(__self__, *,
+                 create: pulumi.Input[Optional[_builtins.str]] = None,
+                 default: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete: pulumi.Input[Optional[_builtins.str]] = None,
+                 read: pulumi.Input[Optional[_builtins.str]] = None,
+                 update: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param pulumi.Input[_builtins.str] default: Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+        :param pulumi.Input[_builtins.str] delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param pulumi.Input[_builtins.str] read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param pulumi.Input[_builtins.str] update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if default is not None:
+            warnings.warn("""Use operation-specific timeouts instead. This field will be removed in the next major version.""", DeprecationWarning)
+            pulumi.log.warn("""default is deprecated: Use operation-specific timeouts instead. This field will be removed in the next major version.""")
+        if default is not None:
+            pulumi.set(__self__, "default", default)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @create.setter
+    def create(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "create", value)
+
+    @_builtins.property
+    @pulumi.getter
+    @_utilities.deprecated("""Use operation-specific timeouts instead. This field will be removed in the next major version.""")
+    def default(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+        """
+        return pulumi.get(self, "default")
+
+    @default.setter
+    def default(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "default", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @delete.setter
+    def delete(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "delete", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "read", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+    @update.setter
+    def update(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "update", value)
 
 
 class FlinkServiceIntegrationArgsDict(TypedDict):
@@ -11956,7 +12190,7 @@ class KafkaKafkaUserConfigArgsDict(TypedDict):
     """
     karapace_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    Pin a specific installed Karapace version on this service. Leave null/unset to auto-follow the newest installed version.
+    Enum: `6.2.1`, `6.2.2`, `6.2.3`, and newer. Select a Karapace version for this service, or select Latest to use the latest available version automatically. New versions become available after installation during a maintenance update.
     """
     letsencrypt_sasl: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
@@ -12077,7 +12311,7 @@ class KafkaKafkaUserConfigArgs:
         :param pulumi.Input['KafkaKafkaUserConfigKafkaRestConfigArgs'] kafka_rest_config: Kafka REST configuration
         :param pulumi.Input['KafkaKafkaUserConfigKafkaSaslMechanismsArgs'] kafka_sasl_mechanisms: Kafka SASL mechanisms
         :param pulumi.Input[_builtins.str] kafka_version: Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, `4.1`, `4.2`, and newer. Kafka major version.
-        :param pulumi.Input[_builtins.str] karapace_version: Pin a specific installed Karapace version on this service. Leave null/unset to auto-follow the newest installed version.
+        :param pulumi.Input[_builtins.str] karapace_version: Enum: `6.2.1`, `6.2.2`, `6.2.3`, and newer. Select a Karapace version for this service, or select Latest to use the latest available version automatically. New versions become available after installation during a maintenance update.
         :param pulumi.Input[_builtins.bool] letsencrypt_sasl: Use a Let's Encrypt certificate authority (CA) for Kafka SASL authentication. (Default: False).
         :param pulumi.Input[_builtins.bool] letsencrypt_sasl_privatelink: Use a Let's Encrypt certificate authority (CA) for Kafka SASL authentication via Privatelink. (Default: False).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] preferred_zones: List of preferred zone IDs for service node placement. Nodes will be placed in these zones when available. If a specified zone is unavailable (e.g., due to capacity constraints), nodes will be placed in other available zones to maintain the configured number of zones for availability. Invalid zone IDs are rejected at configuration time. Zone IDs are cloud-specific: AWS uses zone IDs like `euc1-az1`, GCP uses zone names like `europe-west1-a`, and Azure uses `location/zone` format like `germanywestcentral/1`. If single*zone is enabled with an availability*zone, that setting takes precedence over preferred_zones. Changes take effect on next node recreation (e.g., maintenance or plan change). For eligible plans, nodes outside preferred zones are automatically rebalanced once per day.
@@ -12469,7 +12703,7 @@ class KafkaKafkaUserConfigArgs:
     @pulumi.getter(name="karapaceVersion")
     def karapace_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Pin a specific installed Karapace version on this service. Leave null/unset to auto-follow the newest installed version.
+        Enum: `6.2.1`, `6.2.2`, `6.2.3`, and newer. Select a Karapace version for this service, or select Latest to use the latest available version automatically. New versions become available after installation during a maintenance update.
         """
         return pulumi.get(self, "karapace_version")
 
@@ -15684,19 +15918,19 @@ class KafkaKafkaUserConfigSchemaRegistryConfigArgsDict(TypedDict):
     """
     sasl_oauthbearer_authentication_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
-    If enabled, the Schema Registry validates OAuth2/OIDC JWT bearer tokens on incoming requests. Requires the OIDC provider settings under the `kafka` configuration (`sasl_oauthbearer_jwks_endpoint_url` and related). Defaults to `false`.
+    If enabled, the Schema Registry validates OAuth 2.0/OIDC JWT bearer tokens. Requires `sasl_oauthbearer_jwks_endpoint_url`, `sasl_oauthbearer_expected_issuer`, and `sasl_oauthbearer_expected_audience` under `kafka`. Defaults to `false`.
     """
     sasl_oauthbearer_authorization_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
-    If enabled, the Schema Registry enforces role-based authorization derived from the JWT roles claim. Requires `sasl_oauthbearer_authentication_enabled` to be enabled. Defaults to `false`.
+    If enabled, the Schema Registry enforces role-based authorization using the JWT roles claim. It also enables `sasl_oauthbearer_authentication_enabled` if it isn't already enabled. Authorization requires authentication. Defaults to `false`.
     """
     sasl_oauthbearer_method_roles: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    JSON object mapping HTTP methods to the list of roles allowed to perform them on the Schema Registry, provided as a JSON-encoded string. Role names use the `karapace.` prefix, e.g. `karapace.schema:read`. Defaults to `{"GET": ["karapace.schema:read", "karapace.subject:read"], "POST": [], "PUT": [], "DELETE": []}`.
+    Maps HTTP methods to allowed roles. Use a JSON object with `GET`, `POST`, `PUT`, and `DELETE` keys mapped to arrays of roles. Role names use the `karapace.` prefix. Example: `{"GET": ["karapace.schema:read"], "POST": [], "PUT": [], "DELETE": []}`. Example: `{"GET":["karapace.schema:read"],"POST":[],"PUT":[],"DELETE":[]}`.
     """
     sasl_oauthbearer_roles_claim_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    JSON path used to extract the roles claim from the JWT for Schema Registry authorization. Defaults to `resource_access.karapace.roles`.
+    The JSON path the Schema Registry uses to find the roles claim in the JWT. Defaults to `resource_access.karapace.roles`.
     """
     schema_reader_strict_mode: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
@@ -15721,10 +15955,10 @@ class KafkaKafkaUserConfigSchemaRegistryConfigArgs:
         """
         :param pulumi.Input[_builtins.bool] leader_eligibility: If true, Karapace / Schema Registry on the service nodes can participate in leader election. It might be needed to disable this when the schemas topic is replicated to a secondary cluster and Karapace / Schema Registry there must not participate in leader election. Defaults to `true`.
         :param pulumi.Input[_builtins.bool] retriable_errors_silenced: If enabled, kafka errors which can be retried or custom errors specified for the service will not be raised, instead, a warning log is emitted. This will denoise issue tracking systems, i.e. sentry. Defaults to `true`.
-        :param pulumi.Input[_builtins.bool] sasl_oauthbearer_authentication_enabled: If enabled, the Schema Registry validates OAuth2/OIDC JWT bearer tokens on incoming requests. Requires the OIDC provider settings under the `kafka` configuration (`sasl_oauthbearer_jwks_endpoint_url` and related). Defaults to `false`.
-        :param pulumi.Input[_builtins.bool] sasl_oauthbearer_authorization_enabled: If enabled, the Schema Registry enforces role-based authorization derived from the JWT roles claim. Requires `sasl_oauthbearer_authentication_enabled` to be enabled. Defaults to `false`.
-        :param pulumi.Input[_builtins.str] sasl_oauthbearer_method_roles: JSON object mapping HTTP methods to the list of roles allowed to perform them on the Schema Registry, provided as a JSON-encoded string. Role names use the `karapace.` prefix, e.g. `karapace.schema:read`. Defaults to `{"GET": ["karapace.schema:read", "karapace.subject:read"], "POST": [], "PUT": [], "DELETE": []}`.
-        :param pulumi.Input[_builtins.str] sasl_oauthbearer_roles_claim_path: JSON path used to extract the roles claim from the JWT for Schema Registry authorization. Defaults to `resource_access.karapace.roles`.
+        :param pulumi.Input[_builtins.bool] sasl_oauthbearer_authentication_enabled: If enabled, the Schema Registry validates OAuth 2.0/OIDC JWT bearer tokens. Requires `sasl_oauthbearer_jwks_endpoint_url`, `sasl_oauthbearer_expected_issuer`, and `sasl_oauthbearer_expected_audience` under `kafka`. Defaults to `false`.
+        :param pulumi.Input[_builtins.bool] sasl_oauthbearer_authorization_enabled: If enabled, the Schema Registry enforces role-based authorization using the JWT roles claim. It also enables `sasl_oauthbearer_authentication_enabled` if it isn't already enabled. Authorization requires authentication. Defaults to `false`.
+        :param pulumi.Input[_builtins.str] sasl_oauthbearer_method_roles: Maps HTTP methods to allowed roles. Use a JSON object with `GET`, `POST`, `PUT`, and `DELETE` keys mapped to arrays of roles. Role names use the `karapace.` prefix. Example: `{"GET": ["karapace.schema:read"], "POST": [], "PUT": [], "DELETE": []}`. Example: `{"GET":["karapace.schema:read"],"POST":[],"PUT":[],"DELETE":[]}`.
+        :param pulumi.Input[_builtins.str] sasl_oauthbearer_roles_claim_path: The JSON path the Schema Registry uses to find the roles claim in the JWT. Defaults to `resource_access.karapace.roles`.
         :param pulumi.Input[_builtins.bool] schema_reader_strict_mode: If enabled, causes the Karapace schema-registry service to shutdown when there are invalid schema records in the `_schemas` topic. Defaults to `false`.
         :param pulumi.Input[_builtins.str] topic_name: The durable single partition topic that acts as the durable log for the data. This topic must be compacted to avoid losing data due to retention policy. Please note that changing this configuration in an existing Schema Registry / Karapace setup leads to previous schemas being inaccessible, data encoded with them potentially unreadable and schema ID sequence put out of order. It's only possible to do the switch while Schema Registry / Karapace is disabled. Defaults to `_schemas`.
         """
@@ -15773,7 +16007,7 @@ class KafkaKafkaUserConfigSchemaRegistryConfigArgs:
     @pulumi.getter(name="saslOauthbearerAuthenticationEnabled")
     def sasl_oauthbearer_authentication_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        If enabled, the Schema Registry validates OAuth2/OIDC JWT bearer tokens on incoming requests. Requires the OIDC provider settings under the `kafka` configuration (`sasl_oauthbearer_jwks_endpoint_url` and related). Defaults to `false`.
+        If enabled, the Schema Registry validates OAuth 2.0/OIDC JWT bearer tokens. Requires `sasl_oauthbearer_jwks_endpoint_url`, `sasl_oauthbearer_expected_issuer`, and `sasl_oauthbearer_expected_audience` under `kafka`. Defaults to `false`.
         """
         return pulumi.get(self, "sasl_oauthbearer_authentication_enabled")
 
@@ -15785,7 +16019,7 @@ class KafkaKafkaUserConfigSchemaRegistryConfigArgs:
     @pulumi.getter(name="saslOauthbearerAuthorizationEnabled")
     def sasl_oauthbearer_authorization_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        If enabled, the Schema Registry enforces role-based authorization derived from the JWT roles claim. Requires `sasl_oauthbearer_authentication_enabled` to be enabled. Defaults to `false`.
+        If enabled, the Schema Registry enforces role-based authorization using the JWT roles claim. It also enables `sasl_oauthbearer_authentication_enabled` if it isn't already enabled. Authorization requires authentication. Defaults to `false`.
         """
         return pulumi.get(self, "sasl_oauthbearer_authorization_enabled")
 
@@ -15797,7 +16031,7 @@ class KafkaKafkaUserConfigSchemaRegistryConfigArgs:
     @pulumi.getter(name="saslOauthbearerMethodRoles")
     def sasl_oauthbearer_method_roles(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        JSON object mapping HTTP methods to the list of roles allowed to perform them on the Schema Registry, provided as a JSON-encoded string. Role names use the `karapace.` prefix, e.g. `karapace.schema:read`. Defaults to `{"GET": ["karapace.schema:read", "karapace.subject:read"], "POST": [], "PUT": [], "DELETE": []}`.
+        Maps HTTP methods to allowed roles. Use a JSON object with `GET`, `POST`, `PUT`, and `DELETE` keys mapped to arrays of roles. Role names use the `karapace.` prefix. Example: `{"GET": ["karapace.schema:read"], "POST": [], "PUT": [], "DELETE": []}`. Example: `{"GET":["karapace.schema:read"],"POST":[],"PUT":[],"DELETE":[]}`.
         """
         return pulumi.get(self, "sasl_oauthbearer_method_roles")
 
@@ -15809,7 +16043,7 @@ class KafkaKafkaUserConfigSchemaRegistryConfigArgs:
     @pulumi.getter(name="saslOauthbearerRolesClaimPath")
     def sasl_oauthbearer_roles_claim_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        JSON path used to extract the roles claim from the JWT for Schema Registry authorization. Defaults to `resource_access.karapace.roles`.
+        The JSON path the Schema Registry uses to find the roles claim in the JWT. Defaults to `resource_access.karapace.roles`.
         """
         return pulumi.get(self, "sasl_oauthbearer_roles_claim_path")
 
@@ -17311,7 +17545,7 @@ class KafkaTopicConfigArgsDict(TypedDict):
     """
     message_format_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    Specify the message format version the broker will use to append messages to the logs. The value should be a valid ApiVersion. Some examples are: 0.8.2, 0.9.0.0, 0.10.0, check ApiVersion for more details. By setting a particular message format version, the user is certifying that all the existing messages on disk are smaller or equal than the specified version. Setting this value incorrectly will cause consumers with older versions to break as they will receive messages with a format that they don't understand. Deprecated in Kafka 4.0+: this configuration is removed and any supplied value will be ignored; for services upgraded to 4.0+, the returned value may be 'None'. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.0`, `4.0-IV0`, `4.1`, `4.1-IV0`, `4.2` and `4.2-IV0`.
+    Specify the message format version the broker will use to append messages to the logs. The value should be a valid ApiVersion. Some examples are: 0.8.2, 0.9.0.0, 0.10.0, check ApiVersion for more details. By setting a particular message format version, the user is certifying that all the existing messages on disk are smaller or equal than the specified version. Setting this value incorrectly will cause consumers with older versions to break as they will receive messages with a format that they don't understand. Deprecated in Kafka 4.0+: this configuration is removed and any supplied value will be ignored; for services upgraded to 4.0+, the returned value may be 'None'. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.0`, `4.0-IV0`, `4.1`, `4.1-IV0`, `4.2`, `4.2-IV0`, `4.3` and `4.3-IV0`.
     """
     message_timestamp_after_max_ms: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -17425,7 +17659,7 @@ class KafkaTopicConfigArgs:
         :param pulumi.Input[_builtins.str] max_compaction_lag_ms: The maximum time a message will remain ineligible for compaction in the log. Only applicable for logs that are being compacted.
         :param pulumi.Input[_builtins.str] max_message_bytes: The largest record batch size allowed by Kafka (after compression if compression is enabled). If this is increased and there are consumers older than 0.10.2, the consumers' fetch size must also be increased so that the they can fetch record batches this large. In the latest message format version, records are always grouped into batches for efficiency. In previous message format versions, uncompressed records are not grouped into batches and this limit only applies to a single record in that case.
         :param pulumi.Input[_builtins.bool] message_downconversion_enable: This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests. When set to false, broker will not perform down-conversion for consumers expecting an older message format. The broker responds with UNSUPPORTED_VERSION error for consume requests from such older clients. This configuration does not apply to any message format conversion that might be required for replication to followers.
-        :param pulumi.Input[_builtins.str] message_format_version: Specify the message format version the broker will use to append messages to the logs. The value should be a valid ApiVersion. Some examples are: 0.8.2, 0.9.0.0, 0.10.0, check ApiVersion for more details. By setting a particular message format version, the user is certifying that all the existing messages on disk are smaller or equal than the specified version. Setting this value incorrectly will cause consumers with older versions to break as they will receive messages with a format that they don't understand. Deprecated in Kafka 4.0+: this configuration is removed and any supplied value will be ignored; for services upgraded to 4.0+, the returned value may be 'None'. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.0`, `4.0-IV0`, `4.1`, `4.1-IV0`, `4.2` and `4.2-IV0`.
+        :param pulumi.Input[_builtins.str] message_format_version: Specify the message format version the broker will use to append messages to the logs. The value should be a valid ApiVersion. Some examples are: 0.8.2, 0.9.0.0, 0.10.0, check ApiVersion for more details. By setting a particular message format version, the user is certifying that all the existing messages on disk are smaller or equal than the specified version. Setting this value incorrectly will cause consumers with older versions to break as they will receive messages with a format that they don't understand. Deprecated in Kafka 4.0+: this configuration is removed and any supplied value will be ignored; for services upgraded to 4.0+, the returned value may be 'None'. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.0`, `4.0-IV0`, `4.1`, `4.1-IV0`, `4.2`, `4.2-IV0`, `4.3` and `4.3-IV0`.
         :param pulumi.Input[_builtins.str] message_timestamp_after_max_ms: The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps later than the broker's timestamp.
         :param pulumi.Input[_builtins.str] message_timestamp_before_max_ms: The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps earlier than the broker's timestamp.
         :param pulumi.Input[_builtins.str] message_timestamp_difference_max_ms: The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. This configuration is ignored if message.timestamp.type=LogAppendTime.
@@ -17664,7 +17898,7 @@ class KafkaTopicConfigArgs:
     @pulumi.getter(name="messageFormatVersion")
     def message_format_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Specify the message format version the broker will use to append messages to the logs. The value should be a valid ApiVersion. Some examples are: 0.8.2, 0.9.0.0, 0.10.0, check ApiVersion for more details. By setting a particular message format version, the user is certifying that all the existing messages on disk are smaller or equal than the specified version. Setting this value incorrectly will cause consumers with older versions to break as they will receive messages with a format that they don't understand. Deprecated in Kafka 4.0+: this configuration is removed and any supplied value will be ignored; for services upgraded to 4.0+, the returned value may be 'None'. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.0`, `4.0-IV0`, `4.1`, `4.1-IV0`, `4.2` and `4.2-IV0`.
+        Specify the message format version the broker will use to append messages to the logs. The value should be a valid ApiVersion. Some examples are: 0.8.2, 0.9.0.0, 0.10.0, check ApiVersion for more details. By setting a particular message format version, the user is certifying that all the existing messages on disk are smaller or equal than the specified version. Setting this value incorrectly will cause consumers with older versions to break as they will receive messages with a format that they don't understand. Deprecated in Kafka 4.0+: this configuration is removed and any supplied value will be ignored; for services upgraded to 4.0+, the returned value may be 'None'. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.0`, `4.0-IV0`, `4.1`, `4.1-IV0`, `4.2`, `4.2-IV0`, `4.3` and `4.3-IV0`.
         """
         return pulumi.get(self, "message_format_version")
 
@@ -19494,7 +19728,7 @@ class MySqlMysqlUserConfigMysqlArgsDict(TypedDict):
     """
     innodb_log_buffer_size: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
-    The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
+    The size in bytes of the buffer that InnoDB uses to write to the log files on disk. Requests above 15% of the RAM provided by your service plan are rejected, because a larger buffer leaves less memory for the buffer pool and client connections.
     """
     innodb_online_alter_log_max_size: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
@@ -19546,7 +19780,7 @@ class MySqlMysqlUserConfigMysqlArgsDict(TypedDict):
     """
     max_allowed_packet: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
-    Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
+    Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M). Statements and rows larger than this are rejected with a packet too large error.
     """
     max_connections: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
@@ -19606,7 +19840,7 @@ class MySqlMysqlUserConfigMysqlArgsDict(TypedDict):
     """
     sort_buffer_size: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
-    Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K). Example: `262144`.
+    Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K). Requests above 2% of the RAM provided by your service plan are rejected, because the buffer is allocated per session and its cost multiplies with the connection count. Example: `262144`.
     """
     sql_mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -19622,7 +19856,7 @@ class MySqlMysqlUserConfigMysqlArgsDict(TypedDict):
     """
     wait_timeout: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
-    The number of seconds the server waits for activity on a noninteractive connection before closing it. Example: `28800`.
+    The number of seconds the server waits for activity on a noninteractive connection before closing it. Requests to set this below 30 are rejected, because a shorter timeout closes your own idle connections between statements. Example: `28800`.
     """
     windowing_use_high_precision: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
@@ -19709,7 +19943,7 @@ class MySqlMysqlUserConfigMysqlArgs:
         :param pulumi.Input[_builtins.int] innodb_io_capacity: The number of I/O operations per second (IOPS) available to InnoDB background tasks, such as flushing pages from the buffer pool and merging data from the change buffer. Set this to a value appropriate for the underlying storage; it must not exceed innodb*io*capacity_max. Example: `2000`.
         :param pulumi.Input[_builtins.int] innodb_io_capacity_max: The maximum number of I/O operations per second (IOPS) that InnoDB background tasks may perform when flushing falls behind. Defaults to twice innodb*io*capacity (minimum 2000). This must be greater than or equal to innodb*io*capacity.
         :param pulumi.Input[_builtins.int] innodb_lock_wait_timeout: The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120. Example: `50`.
-        :param pulumi.Input[_builtins.int] innodb_log_buffer_size: The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
+        :param pulumi.Input[_builtins.int] innodb_log_buffer_size: The size in bytes of the buffer that InnoDB uses to write to the log files on disk. Requests above 15% of the RAM provided by your service plan are rejected, because a larger buffer leaves less memory for the buffer pool and client connections.
         :param pulumi.Input[_builtins.int] innodb_online_alter_log_max_size: The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
         :param pulumi.Input[_builtins.bool] innodb_optimize_fulltext_only: When enabled, OPTIMIZE TABLE on InnoDB tables only updates the FULLTEXT index instead of rebuilding the table. Intended to be enabled temporarily during FULLTEXT index maintenance and disabled afterwards; while enabled, OPTIMIZE TABLE does not reclaim table space.
         :param pulumi.Input[_builtins.bool] innodb_print_all_deadlocks: When enabled, information about all deadlocks in InnoDB user transactions is recorded in the error log. Disabled by default.
@@ -19722,7 +19956,7 @@ class MySqlMysqlUserConfigMysqlArgs:
         :param pulumi.Input[_builtins.str] log_output: Enum: `INSIGHTS`, `INSIGHTS,TABLE`, `NONE`, `TABLE`. The slow log output destination when slow*query*log is ON. To enable MySQL AI Insights, choose INSIGHTS. To use MySQL AI Insights and the mysql.slow*log table at the same time, choose INSIGHTS,TABLE. To only use the mysql.slow*log table, choose TABLE. To silence slow logs, choose NONE.
         :param pulumi.Input[_builtins.float] long_query_time: The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Example: `10`.
         :param pulumi.Input[_builtins.int] lower_case_table_names: Enum: `0`, `1`. Sets how table and database names are stored and compared. 0 = case-sensitive (default), 1 = names stored lowercase, comparisons are case-insensitive. This option can only be set when creating the service and cannot be changed later. See https://dev.mysql.com/doc/refman/8.0/en/identifier-case-sensitivity.html for details.
-        :param pulumi.Input[_builtins.int] max_allowed_packet: Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
+        :param pulumi.Input[_builtins.int] max_allowed_packet: Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M). Statements and rows larger than this are rejected with a packet too large error.
         :param pulumi.Input[_builtins.int] max_connections: The maximum permitted number of simultaneous client connections. Lower this to reserve memory for other work. The value cannot exceed the limit provided by your service plan. Upgrading the plan does not raise a value you have set explicitly, so increase it yourself after an upgrade. Example: `200`.
         :param pulumi.Input[_builtins.int] max_execution_time: Execution timeout in milliseconds for read-only top-level SELECT statements. 0 (the default) means no timeout. Example: `15000`.
         :param pulumi.Input[_builtins.int] max_heap_table_size: Limits the size of internal in-memory tables. Also set tmp*table*size. Default is 16777216 (16M).
@@ -19737,11 +19971,11 @@ class MySqlMysqlUserConfigMysqlArgs:
         :param pulumi.Input[_builtins.int] performance_schema_events_statements_history_size: The number of rows per thread in the events*statements*history table. Changing this parameter will lead to a restart of the MySQL service.
         :param pulumi.Input[_builtins.int] relay_log_space_limit: The maximum amount of space in bytes to use for all relay logs while replicating from an external migration source. When the limit is reached, the replication I/O thread stops fetching relay log events until the SQL thread has caught up. Raise this to give a large migration a bigger relay-log budget; ensure the service disk is sized accordingly. The setting applies only on the node replicating from the external source; standby nodes always use the Aiven-managed default (the smaller of 5 GiB and 30% of the service disk), which is also used when this option is left unset. Changing this parameter will lead to a restart of the MySQL service.
         :param pulumi.Input[_builtins.bool] slow_query_log: Slow query log enables capturing of slow queries. Setting slow*query*log to false also truncates the mysql.slow_log table.
-        :param pulumi.Input[_builtins.int] sort_buffer_size: Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K). Example: `262144`.
+        :param pulumi.Input[_builtins.int] sort_buffer_size: Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K). Requests above 2% of the RAM provided by your service plan are rejected, because the buffer is allocated per session and its cost multiplies with the connection count. Example: `262144`.
         :param pulumi.Input[_builtins.str] sql_mode: Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned. Example: `ANSI,TRADITIONAL`.
         :param pulumi.Input[_builtins.bool] sql_require_primary_key: Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them.
         :param pulumi.Input[_builtins.int] tmp_table_size: Limits the size of internal in-memory tables. Also set max*heap*table_size. Default is 16777216 (16M).
-        :param pulumi.Input[_builtins.int] wait_timeout: The number of seconds the server waits for activity on a noninteractive connection before closing it. Example: `28800`.
+        :param pulumi.Input[_builtins.int] wait_timeout: The number of seconds the server waits for activity on a noninteractive connection before closing it. Requests to set this below 30 are rejected, because a shorter timeout closes your own idle connections between statements. Example: `28800`.
         :param pulumi.Input[_builtins.bool] windowing_use_high_precision: Whether window functions are computed to high precision. Disabling this trades exactness for speed in window function evaluation.
         """
         if automatic_sp_privileges is not None:
@@ -20111,7 +20345,7 @@ class MySqlMysqlUserConfigMysqlArgs:
     @pulumi.getter(name="innodbLogBufferSize")
     def innodb_log_buffer_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
+        The size in bytes of the buffer that InnoDB uses to write to the log files on disk. Requests above 15% of the RAM provided by your service plan are rejected, because a larger buffer leaves less memory for the buffer pool and client connections.
         """
         return pulumi.get(self, "innodb_log_buffer_size")
 
@@ -20267,7 +20501,7 @@ class MySqlMysqlUserConfigMysqlArgs:
     @pulumi.getter(name="maxAllowedPacket")
     def max_allowed_packet(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
+        Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M). Statements and rows larger than this are rejected with a packet too large error.
         """
         return pulumi.get(self, "max_allowed_packet")
 
@@ -20447,7 +20681,7 @@ class MySqlMysqlUserConfigMysqlArgs:
     @pulumi.getter(name="sortBufferSize")
     def sort_buffer_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K). Example: `262144`.
+        Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K). Requests above 2% of the RAM provided by your service plan are rejected, because the buffer is allocated per session and its cost multiplies with the connection count. Example: `262144`.
         """
         return pulumi.get(self, "sort_buffer_size")
 
@@ -20495,7 +20729,7 @@ class MySqlMysqlUserConfigMysqlArgs:
     @pulumi.getter(name="waitTimeout")
     def wait_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        The number of seconds the server waits for activity on a noninteractive connection before closing it. Example: `28800`.
+        The number of seconds the server waits for activity on a noninteractive connection before closing it. Requests to set this below 30 are rejected, because a shorter timeout closes your own idle connections between statements. Example: `28800`.
         """
         return pulumi.get(self, "wait_timeout")
 
@@ -28094,7 +28328,7 @@ class OrganizationGroupProjectTimeoutsArgs:
 class OrganizationPermissionPermissionArgsDict(TypedDict):
     permissions: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
     """
-    List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant". The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:event_logs:read`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:sustainability:read`, `organization:users:write`, `project:ai_gateway_keys:read`, `project:ai_gateway_keys:write`, `project:audit_logs:read`, `project:event_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:project:admin`, `role:project:read`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:metrics:read`, `service:secrets:read` and `service:users:write`.
+    List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant". The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:event_logs:read`, `organization:groups:read`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:sustainability:read`, `organization:users:read`, `organization:users:write`, `project:ai_gateway_keys:read`, `project:ai_gateway_keys:write`, `project:audit_logs:read`, `project:event_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:project:admin`, `role:project:manager`, `role:project:read`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:metrics:read`, `service:secrets:read` and `service:users:write`.
     """
     principal_id: pulumi.Input[_builtins.str]
     """
@@ -28122,7 +28356,7 @@ class OrganizationPermissionPermissionArgs:
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] permissions: List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant". The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:event_logs:read`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:sustainability:read`, `organization:users:write`, `project:ai_gateway_keys:read`, `project:ai_gateway_keys:write`, `project:audit_logs:read`, `project:event_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:project:admin`, `role:project:read`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:metrics:read`, `service:secrets:read` and `service:users:write`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] permissions: List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant". The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:event_logs:read`, `organization:groups:read`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:sustainability:read`, `organization:users:read`, `organization:users:write`, `project:ai_gateway_keys:read`, `project:ai_gateway_keys:write`, `project:audit_logs:read`, `project:event_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:project:admin`, `role:project:manager`, `role:project:read`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:metrics:read`, `service:secrets:read` and `service:users:write`.
         :param pulumi.Input[_builtins.str] principal_id: ID of the user or group to grant permissions to. Only active users who have accepted an [invite](https://aiven.io/docs/platform/howto/manage-org-users) to join the organization can be granted permissions.
         :param pulumi.Input[_builtins.str] principal_type: An enumeration. The possible values are `user` and `user_group`.
         :param pulumi.Input[_builtins.str] create_time: Create Time.
@@ -28140,7 +28374,7 @@ class OrganizationPermissionPermissionArgs:
     @pulumi.getter
     def permissions(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
         """
-        List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant". The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:event_logs:read`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:sustainability:read`, `organization:users:write`, `project:ai_gateway_keys:read`, `project:ai_gateway_keys:write`, `project:audit_logs:read`, `project:event_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:project:admin`, `role:project:read`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:metrics:read`, `service:secrets:read` and `service:users:write`.
+        List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant". The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:event_logs:read`, `organization:groups:read`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:sustainability:read`, `organization:users:read`, `organization:users:write`, `project:ai_gateway_keys:read`, `project:ai_gateway_keys:write`, `project:audit_logs:read`, `project:event_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:project:admin`, `role:project:manager`, `role:project:read`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:metrics:read`, `service:secrets:read` and `service:users:write`.
         """
         return pulumi.get(self, "permissions")
 
@@ -36781,9 +37015,17 @@ class ServiceIntegrationEndpointOpentelemetryUserConfigArgsDict(TypedDict):
     """
     Enum: `json`, `protobuf`. Encoding used for exported metrics. Leave unset to use telegraf's default.
     """
+    filter_measurements: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    If set, only these measurements are sent to this endpoint; everything else is dropped for this destination only, leaving every other destination (other integrations, Prometheus, etc.) unaffected. Matched after bucketing and any override_measurements rename, i.e. against the final measurement name as it will appear at the destination (e.g. `kafka`, or `do.databases.kafka` if renamed). Leave unset to export every measurement, same as today. Telegraf's underlying namepass filter treats an empty list the same as unset (both export everything), so an empty list isn't accepted here -- it wouldn't do what it looks like it does.
+    """
     headers: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     Additional gRPC metadata headers sent with every export request.
+    """
+    override_measurements: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
+    """
+    Every metric belonging to a known service (mysql, postgresql, valkey -- which also covers redis, Valkey's predecessor -- opensearch, kafka) is exported here under a single bucket measurement per service -- e.g. every Kafka JMX metric, however deep its raw name, becomes measurement `kafka` (its specific identity moves into the field name instead). This map renames that bucket as a whole -- key on the bucket name (e.g. `kafka`, `postgresql`), not the metric's original raw name; it cannot target one specific metric within a bucket. Metrics outside these known services (e.g. cpu, mem, disk) are exported unchanged and can't be renamed here. The original metric name is left untouched for every other destination (other integrations, Prometheus, etc.) -- only the copy sent here is bucketed and, if listed, renamed.
     """
 
 @pulumi.input_type
@@ -36794,14 +37036,18 @@ class ServiceIntegrationEndpointOpentelemetryUserConfigArgs:
                  timeout: pulumi.Input[_builtins.int],
                  attributes: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  encoding_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 headers: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 filter_measurements: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 headers: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 override_measurements: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] compression: Enum: `gzip`, `none`. Payload compression.
         :param pulumi.Input[_builtins.str] service_address: Either a bare `host:port` (OTLP/gRPC, no URL scheme) or an `http://`/`https://` URL (OTLP/HTTP). Example: `otel-collector.example.avns.net:4317`.
         :param pulumi.Input[_builtins.int] timeout: Connection timeout in seconds. Example: `10`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] attributes: Resource attributes to attach to every exported metric.
         :param pulumi.Input[_builtins.str] encoding_type: Enum: `json`, `protobuf`. Encoding used for exported metrics. Leave unset to use telegraf's default.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] filter_measurements: If set, only these measurements are sent to this endpoint; everything else is dropped for this destination only, leaving every other destination (other integrations, Prometheus, etc.) unaffected. Matched after bucketing and any override_measurements rename, i.e. against the final measurement name as it will appear at the destination (e.g. `kafka`, or `do.databases.kafka` if renamed). Leave unset to export every measurement, same as today. Telegraf's underlying namepass filter treats an empty list the same as unset (both export everything), so an empty list isn't accepted here -- it wouldn't do what it looks like it does.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] headers: Additional gRPC metadata headers sent with every export request.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] override_measurements: Every metric belonging to a known service (mysql, postgresql, valkey -- which also covers redis, Valkey's predecessor -- opensearch, kafka) is exported here under a single bucket measurement per service -- e.g. every Kafka JMX metric, however deep its raw name, becomes measurement `kafka` (its specific identity moves into the field name instead). This map renames that bucket as a whole -- key on the bucket name (e.g. `kafka`, `postgresql`), not the metric's original raw name; it cannot target one specific metric within a bucket. Metrics outside these known services (e.g. cpu, mem, disk) are exported unchanged and can't be renamed here. The original metric name is left untouched for every other destination (other integrations, Prometheus, etc.) -- only the copy sent here is bucketed and, if listed, renamed.
         """
         pulumi.set(__self__, "compression", compression)
         pulumi.set(__self__, "service_address", service_address)
@@ -36810,8 +37056,12 @@ class ServiceIntegrationEndpointOpentelemetryUserConfigArgs:
             pulumi.set(__self__, "attributes", attributes)
         if encoding_type is not None:
             pulumi.set(__self__, "encoding_type", encoding_type)
+        if filter_measurements is not None:
+            pulumi.set(__self__, "filter_measurements", filter_measurements)
         if headers is not None:
             pulumi.set(__self__, "headers", headers)
+        if override_measurements is not None:
+            pulumi.set(__self__, "override_measurements", override_measurements)
 
     @_builtins.property
     @pulumi.getter
@@ -36874,6 +37124,18 @@ class ServiceIntegrationEndpointOpentelemetryUserConfigArgs:
         pulumi.set(self, "encoding_type", value)
 
     @_builtins.property
+    @pulumi.getter(name="filterMeasurements")
+    def filter_measurements(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        If set, only these measurements are sent to this endpoint; everything else is dropped for this destination only, leaving every other destination (other integrations, Prometheus, etc.) unaffected. Matched after bucketing and any override_measurements rename, i.e. against the final measurement name as it will appear at the destination (e.g. `kafka`, or `do.databases.kafka` if renamed). Leave unset to export every measurement, same as today. Telegraf's underlying namepass filter treats an empty list the same as unset (both export everything), so an empty list isn't accepted here -- it wouldn't do what it looks like it does.
+        """
+        return pulumi.get(self, "filter_measurements")
+
+    @filter_measurements.setter
+    def filter_measurements(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "filter_measurements", value)
+
+    @_builtins.property
     @pulumi.getter
     def headers(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
@@ -36884,6 +37146,18 @@ class ServiceIntegrationEndpointOpentelemetryUserConfigArgs:
     @headers.setter
     def headers(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "headers", value)
+
+    @_builtins.property
+    @pulumi.getter(name="overrideMeasurements")
+    def override_measurements(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Every metric belonging to a known service (mysql, postgresql, valkey -- which also covers redis, Valkey's predecessor -- opensearch, kafka) is exported here under a single bucket measurement per service -- e.g. every Kafka JMX metric, however deep its raw name, becomes measurement `kafka` (its specific identity moves into the field name instead). This map renames that bucket as a whole -- key on the bucket name (e.g. `kafka`, `postgresql`), not the metric's original raw name; it cannot target one specific metric within a bucket. Metrics outside these known services (e.g. cpu, mem, disk) are exported unchanged and can't be renamed here. The original metric name is left untouched for every other destination (other integrations, Prometheus, etc.) -- only the copy sent here is bucketed and, if listed, renamed.
+        """
+        return pulumi.get(self, "override_measurements")
+
+    @override_measurements.setter
+    def override_measurements(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "override_measurements", value)
 
 
 class ServiceIntegrationEndpointPrometheusUserConfigArgsDict(TypedDict):
@@ -40254,6 +40528,119 @@ class ThanosThanosUserConfigQueryFrontendArgs:
         pulumi.set(self, "query_range_align_range_with_step", value)
 
 
+class TransitGatewayVpcAttachmentTimeoutsArgsDict(TypedDict):
+    create: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
+    default: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+    """
+    delete: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+    """
+    read: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+    """
+    update: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
+
+@pulumi.input_type
+class TransitGatewayVpcAttachmentTimeoutsArgs:
+    def __init__(__self__, *,
+                 create: pulumi.Input[Optional[_builtins.str]] = None,
+                 default: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete: pulumi.Input[Optional[_builtins.str]] = None,
+                 read: pulumi.Input[Optional[_builtins.str]] = None,
+                 update: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param pulumi.Input[_builtins.str] default: Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+        :param pulumi.Input[_builtins.str] delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param pulumi.Input[_builtins.str] read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param pulumi.Input[_builtins.str] update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if default is not None:
+            warnings.warn("""Use operation-specific timeouts instead. This field will be removed in the next major version.""", DeprecationWarning)
+            pulumi.log.warn("""default is deprecated: Use operation-specific timeouts instead. This field will be removed in the next major version.""")
+        if default is not None:
+            pulumi.set(__self__, "default", default)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @create.setter
+    def create(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "create", value)
+
+    @_builtins.property
+    @pulumi.getter
+    @_utilities.deprecated("""Use operation-specific timeouts instead. This field will be removed in the next major version.""")
+    def default(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+        """
+        return pulumi.get(self, "default")
+
+    @default.setter
+    def default(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "default", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @delete.setter
+    def delete(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "delete", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "read", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+    @update.setter
+    def update(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "update", value)
+
+
 class UpgradeStepTimeoutsArgsDict(TypedDict):
     create: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -40949,6 +41336,14 @@ class ValkeyValkeyUserConfigArgsDict(TypedDict):
     """
     Enum: `allchannels`, `resetchannels`. Determines default pub/sub channels' ACL for new users if ACL is not supplied. When this option is not defined, all_channels is assumed to keep backward compatibility. This option doesn't affect Valkey configuration acl-pubsub-default.
     """
+    valkey_active_defrag_ignore_bytes: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Minimum amount of fragmentation waste, in bytes, before active defragmentation starts. Only takes effect when `valkey_activedefrag` is enabled.
+    """
+    valkey_active_defrag_threshold_lower: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Minimum percentage of fragmentation before active defragmentation starts. Only takes effect when `valkey_activedefrag` is enabled. Default: `10`.
+    """
     valkey_active_expire_effort: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency. Default: `1`.
@@ -40983,7 +41378,7 @@ class ValkeyValkeyUserConfigArgsDict(TypedDict):
     """
     valkey_persistence: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    Enum: `off`, `rdb`. When persistence is `rdb`, Valkey does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is `off`, no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
+    Enum: `off`, `rdb`. Controls whether Valkey writes RDB dumps to disk. With `rdb`, RDB dumps are written for backups on the backup schedule and, if `frequent_snapshots` is enabled, every 10 minutes so the service can recover recent data after a restart. With `off`, no RDB dumps are written at all: backups and forking are unavailable, `frequent_snapshots` and `backup_hour`/`backup_minute` have no effect, and all data is lost if the service restarts or is powered off.
     """
     valkey_pubsub_client_output_buffer_limit: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
@@ -41023,6 +41418,8 @@ class ValkeyValkeyUserConfigArgs:
                  service_to_fork_from: pulumi.Input[Optional[_builtins.str]] = None,
                  static_ips: pulumi.Input[Optional[_builtins.bool]] = None,
                  valkey_acl_channels_default: pulumi.Input[Optional[_builtins.str]] = None,
+                 valkey_active_defrag_ignore_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 valkey_active_defrag_threshold_lower: pulumi.Input[Optional[_builtins.int]] = None,
                  valkey_active_expire_effort: pulumi.Input[Optional[_builtins.int]] = None,
                  valkey_activedefrag: pulumi.Input[Optional[_builtins.bool]] = None,
                  valkey_io_threads: pulumi.Input[Optional[_builtins.int]] = None,
@@ -41055,6 +41452,8 @@ class ValkeyValkeyUserConfigArgs:
         :param pulumi.Input[_builtins.str] service_to_fork_from: Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
         :param pulumi.Input[_builtins.bool] static_ips: Use static public IP addresses.
         :param pulumi.Input[_builtins.str] valkey_acl_channels_default: Enum: `allchannels`, `resetchannels`. Determines default pub/sub channels' ACL for new users if ACL is not supplied. When this option is not defined, all_channels is assumed to keep backward compatibility. This option doesn't affect Valkey configuration acl-pubsub-default.
+        :param pulumi.Input[_builtins.int] valkey_active_defrag_ignore_bytes: Minimum amount of fragmentation waste, in bytes, before active defragmentation starts. Only takes effect when `valkey_activedefrag` is enabled.
+        :param pulumi.Input[_builtins.int] valkey_active_defrag_threshold_lower: Minimum percentage of fragmentation before active defragmentation starts. Only takes effect when `valkey_activedefrag` is enabled. Default: `10`.
         :param pulumi.Input[_builtins.int] valkey_active_expire_effort: Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency. Default: `1`.
         :param pulumi.Input[_builtins.bool] valkey_activedefrag: Enable active memory defragmentation. When enabled, Valkey relocates objects off sparsely-used memory pages to reduce fragmentation and return memory to the operating system. Defragmentation runs on the main thread and consumes CPU, so it may increase latency under load. Default: `false`.
         :param pulumi.Input[_builtins.int] valkey_io_threads: Set Valkey IO thread count. Changing this will cause a restart of the Valkey service. Example: `1`.
@@ -41063,7 +41462,7 @@ class ValkeyValkeyUserConfigArgs:
         :param pulumi.Input[_builtins.str] valkey_maxmemory_policy: Enum: `allkeys-lfu`, `allkeys-lru`, `allkeys-random`, `noeviction`, `volatile-lfu`, `volatile-lru`, `volatile-random`, `volatile-ttl`. Valkey maxmemory-policy. Default: `noeviction`.
         :param pulumi.Input[_builtins.str] valkey_notify_keyspace_events: Set notify-keyspace-events option.
         :param pulumi.Input[_builtins.int] valkey_number_of_databases: Set number of Valkey databases. Changing this will cause a restart of the Valkey service. Example: `16`.
-        :param pulumi.Input[_builtins.str] valkey_persistence: Enum: `off`, `rdb`. When persistence is `rdb`, Valkey does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is `off`, no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
+        :param pulumi.Input[_builtins.str] valkey_persistence: Enum: `off`, `rdb`. Controls whether Valkey writes RDB dumps to disk. With `rdb`, RDB dumps are written for backups on the backup schedule and, if `frequent_snapshots` is enabled, every 10 minutes so the service can recover recent data after a restart. With `off`, no RDB dumps are written at all: backups and forking are unavailable, `frequent_snapshots` and `backup_hour`/`backup_minute` have no effect, and all data is lost if the service restarts or is powered off.
         :param pulumi.Input[_builtins.int] valkey_pubsub_client_output_buffer_limit: Set output buffer limit for pub / sub clients in MB. The value is the hard limit, the soft limit is 1/4 of the hard limit. When setting the limit, be mindful of the available memory in the selected service plan. Example: `64`.
         :param pulumi.Input[_builtins.bool] valkey_ssl: Require SSL to access Valkey. Default: `true`.
         :param pulumi.Input[_builtins.int] valkey_timeout: Valkey idle connection timeout in seconds. Default: `300`.
@@ -41108,6 +41507,10 @@ class ValkeyValkeyUserConfigArgs:
             pulumi.set(__self__, "static_ips", static_ips)
         if valkey_acl_channels_default is not None:
             pulumi.set(__self__, "valkey_acl_channels_default", valkey_acl_channels_default)
+        if valkey_active_defrag_ignore_bytes is not None:
+            pulumi.set(__self__, "valkey_active_defrag_ignore_bytes", valkey_active_defrag_ignore_bytes)
+        if valkey_active_defrag_threshold_lower is not None:
+            pulumi.set(__self__, "valkey_active_defrag_threshold_lower", valkey_active_defrag_threshold_lower)
         if valkey_active_expire_effort is not None:
             pulumi.set(__self__, "valkey_active_expire_effort", valkey_active_expire_effort)
         if valkey_activedefrag is not None:
@@ -41353,6 +41756,30 @@ class ValkeyValkeyUserConfigArgs:
         pulumi.set(self, "valkey_acl_channels_default", value)
 
     @_builtins.property
+    @pulumi.getter(name="valkeyActiveDefragIgnoreBytes")
+    def valkey_active_defrag_ignore_bytes(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Minimum amount of fragmentation waste, in bytes, before active defragmentation starts. Only takes effect when `valkey_activedefrag` is enabled.
+        """
+        return pulumi.get(self, "valkey_active_defrag_ignore_bytes")
+
+    @valkey_active_defrag_ignore_bytes.setter
+    def valkey_active_defrag_ignore_bytes(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "valkey_active_defrag_ignore_bytes", value)
+
+    @_builtins.property
+    @pulumi.getter(name="valkeyActiveDefragThresholdLower")
+    def valkey_active_defrag_threshold_lower(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Minimum percentage of fragmentation before active defragmentation starts. Only takes effect when `valkey_activedefrag` is enabled. Default: `10`.
+        """
+        return pulumi.get(self, "valkey_active_defrag_threshold_lower")
+
+    @valkey_active_defrag_threshold_lower.setter
+    def valkey_active_defrag_threshold_lower(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "valkey_active_defrag_threshold_lower", value)
+
+    @_builtins.property
     @pulumi.getter(name="valkeyActiveExpireEffort")
     def valkey_active_expire_effort(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
@@ -41452,7 +41879,7 @@ class ValkeyValkeyUserConfigArgs:
     @pulumi.getter(name="valkeyPersistence")
     def valkey_persistence(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Enum: `off`, `rdb`. When persistence is `rdb`, Valkey does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is `off`, no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
+        Enum: `off`, `rdb`. Controls whether Valkey writes RDB dumps to disk. With `rdb`, RDB dumps are written for backups on the backup schedule and, if `frequent_snapshots` is enabled, every 10 minutes so the service can recover recent data after a restart. With `off`, no RDB dumps are written at all: backups and forking are unavailable, `frequent_snapshots` and `backup_hour`/`backup_minute` have no effect, and all data is lost if the service restarts or is powered off.
         """
         return pulumi.get(self, "valkey_persistence")
 
@@ -42439,7 +42866,7 @@ class GetKafkaTopicConfigArgsDict(TypedDict):
     """
     message_format_version: _builtins.str
     """
-    Specify the message format version the broker will use to append messages to the logs. The value should be a valid ApiVersion. Some examples are: 0.8.2, 0.9.0.0, 0.10.0, check ApiVersion for more details. By setting a particular message format version, the user is certifying that all the existing messages on disk are smaller or equal than the specified version. Setting this value incorrectly will cause consumers with older versions to break as they will receive messages with a format that they don't understand. Deprecated in Kafka 4.0+: this configuration is removed and any supplied value will be ignored; for services upgraded to 4.0+, the returned value may be 'None'. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.0`, `4.0-IV0`, `4.1`, `4.1-IV0`, `4.2` and `4.2-IV0`.
+    Specify the message format version the broker will use to append messages to the logs. The value should be a valid ApiVersion. Some examples are: 0.8.2, 0.9.0.0, 0.10.0, check ApiVersion for more details. By setting a particular message format version, the user is certifying that all the existing messages on disk are smaller or equal than the specified version. Setting this value incorrectly will cause consumers with older versions to break as they will receive messages with a format that they don't understand. Deprecated in Kafka 4.0+: this configuration is removed and any supplied value will be ignored; for services upgraded to 4.0+, the returned value may be 'None'. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.0`, `4.0-IV0`, `4.1`, `4.1-IV0`, `4.2`, `4.2-IV0`, `4.3` and `4.3-IV0`.
     """
     message_timestamp_after_max_ms: _builtins.str
     """
@@ -42553,7 +42980,7 @@ class GetKafkaTopicConfigArgs:
         :param _builtins.str max_compaction_lag_ms: The maximum time a message will remain ineligible for compaction in the log. Only applicable for logs that are being compacted.
         :param _builtins.str max_message_bytes: The largest record batch size allowed by Kafka (after compression if compression is enabled). If this is increased and there are consumers older than 0.10.2, the consumers' fetch size must also be increased so that the they can fetch record batches this large. In the latest message format version, records are always grouped into batches for efficiency. In previous message format versions, uncompressed records are not grouped into batches and this limit only applies to a single record in that case.
         :param _builtins.bool message_downconversion_enable: This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests. When set to false, broker will not perform down-conversion for consumers expecting an older message format. The broker responds with UNSUPPORTED_VERSION error for consume requests from such older clients. This configuration does not apply to any message format conversion that might be required for replication to followers.
-        :param _builtins.str message_format_version: Specify the message format version the broker will use to append messages to the logs. The value should be a valid ApiVersion. Some examples are: 0.8.2, 0.9.0.0, 0.10.0, check ApiVersion for more details. By setting a particular message format version, the user is certifying that all the existing messages on disk are smaller or equal than the specified version. Setting this value incorrectly will cause consumers with older versions to break as they will receive messages with a format that they don't understand. Deprecated in Kafka 4.0+: this configuration is removed and any supplied value will be ignored; for services upgraded to 4.0+, the returned value may be 'None'. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.0`, `4.0-IV0`, `4.1`, `4.1-IV0`, `4.2` and `4.2-IV0`.
+        :param _builtins.str message_format_version: Specify the message format version the broker will use to append messages to the logs. The value should be a valid ApiVersion. Some examples are: 0.8.2, 0.9.0.0, 0.10.0, check ApiVersion for more details. By setting a particular message format version, the user is certifying that all the existing messages on disk are smaller or equal than the specified version. Setting this value incorrectly will cause consumers with older versions to break as they will receive messages with a format that they don't understand. Deprecated in Kafka 4.0+: this configuration is removed and any supplied value will be ignored; for services upgraded to 4.0+, the returned value may be 'None'. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.0`, `4.0-IV0`, `4.1`, `4.1-IV0`, `4.2`, `4.2-IV0`, `4.3` and `4.3-IV0`.
         :param _builtins.str message_timestamp_after_max_ms: The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps later than the broker's timestamp.
         :param _builtins.str message_timestamp_before_max_ms: The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps earlier than the broker's timestamp.
         :param _builtins.str message_timestamp_difference_max_ms: The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. This configuration is ignored if message.timestamp.type=LogAppendTime.
@@ -42762,7 +43189,7 @@ class GetKafkaTopicConfigArgs:
     @pulumi.getter(name="messageFormatVersion")
     def message_format_version(self) -> _builtins.str:
         """
-        Specify the message format version the broker will use to append messages to the logs. The value should be a valid ApiVersion. Some examples are: 0.8.2, 0.9.0.0, 0.10.0, check ApiVersion for more details. By setting a particular message format version, the user is certifying that all the existing messages on disk are smaller or equal than the specified version. Setting this value incorrectly will cause consumers with older versions to break as they will receive messages with a format that they don't understand. Deprecated in Kafka 4.0+: this configuration is removed and any supplied value will be ignored; for services upgraded to 4.0+, the returned value may be 'None'. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.0`, `4.0-IV0`, `4.1`, `4.1-IV0`, `4.2` and `4.2-IV0`.
+        Specify the message format version the broker will use to append messages to the logs. The value should be a valid ApiVersion. Some examples are: 0.8.2, 0.9.0.0, 0.10.0, check ApiVersion for more details. By setting a particular message format version, the user is certifying that all the existing messages on disk are smaller or equal than the specified version. Setting this value incorrectly will cause consumers with older versions to break as they will receive messages with a format that they don't understand. Deprecated in Kafka 4.0+: this configuration is removed and any supplied value will be ignored; for services upgraded to 4.0+, the returned value may be 'None'. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.0`, `4.0-IV0`, `4.1`, `4.1-IV0`, `4.2`, `4.2-IV0`, `4.3` and `4.3-IV0`.
         """
         return pulumi.get(self, "message_format_version")
 
@@ -45808,6 +46235,10 @@ class GetServicePlanListServicePlanArgsDict(TypedDict):
     """
     True when the plan is a cluster plan with dedicated node groups.
     """
+    managed_cluster_plan: _builtins.bool
+    """
+    True when the plan's topology is set via user config and its region price is per node.
+    """
     max_memory_percent: _builtins.int
     """
     Maximum amount of system memory as a percentage (0-100) the service can actually use after taking into account management overhead. This is relevant for memory bound services for which some service management operations require allocating proportional amount of memory on top the basic load.
@@ -45841,6 +46272,7 @@ class GetServicePlanListServicePlanArgsDict(TypedDict):
 class GetServicePlanListServicePlanArgs:
     def __init__(__self__, *,
                  is_cluster_plan: _builtins.bool,
+                 managed_cluster_plan: _builtins.bool,
                  max_memory_percent: _builtins.int,
                  node_count: _builtins.int,
                  primary_count: _builtins.int,
@@ -45850,6 +46282,7 @@ class GetServicePlanListServicePlanArgs:
                  shard_count: _builtins.int):
         """
         :param _builtins.bool is_cluster_plan: True when the plan is a cluster plan with dedicated node groups.
+        :param _builtins.bool managed_cluster_plan: True when the plan's topology is set via user config and its region price is per node.
         :param _builtins.int max_memory_percent: Maximum amount of system memory as a percentage (0-100) the service can actually use after taking into account management overhead. This is relevant for memory bound services for which some service management operations require allocating proportional amount of memory on top the basic load.
         :param _builtins.int node_count: Number of nodes in this service plan.
         :param _builtins.int primary_count: Number of primary nodes in this Valkey cluster service plan.
@@ -45859,6 +46292,7 @@ class GetServicePlanListServicePlanArgs:
         :param _builtins.int shard_count: Number of shards in this service plan.
         """
         pulumi.set(__self__, "is_cluster_plan", is_cluster_plan)
+        pulumi.set(__self__, "managed_cluster_plan", managed_cluster_plan)
         pulumi.set(__self__, "max_memory_percent", max_memory_percent)
         pulumi.set(__self__, "node_count", node_count)
         pulumi.set(__self__, "primary_count", primary_count)
@@ -45878,6 +46312,18 @@ class GetServicePlanListServicePlanArgs:
     @is_cluster_plan.setter
     def is_cluster_plan(self, value: _builtins.bool):
         pulumi.set(self, "is_cluster_plan", value)
+
+    @_builtins.property
+    @pulumi.getter(name="managedClusterPlan")
+    def managed_cluster_plan(self) -> _builtins.bool:
+        """
+        True when the plan's topology is set via user config and its region price is per node.
+        """
+        return pulumi.get(self, "managed_cluster_plan")
+
+    @managed_cluster_plan.setter
+    def managed_cluster_plan(self, value: _builtins.bool):
+        pulumi.set(self, "managed_cluster_plan", value)
 
     @_builtins.property
     @pulumi.getter(name="maxMemoryPercent")
@@ -46162,6 +46608,35 @@ class GetServicePlanTimeoutsArgsDict(TypedDict):
 
 @pulumi.input_type
 class GetServicePlanTimeoutsArgs:
+    def __init__(__self__, *,
+                 read: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "read", value)
+
+
+class GetTransitGatewayVpcAttachmentTimeoutsArgsDict(TypedDict):
+    read: NotRequired[_builtins.str]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
+
+@pulumi.input_type
+class GetTransitGatewayVpcAttachmentTimeoutsArgs:
     def __init__(__self__, *,
                  read: Optional[_builtins.str] = None):
         """

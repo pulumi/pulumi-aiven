@@ -29,6 +29,11 @@ namespace Pulumi.Aiven
     ///         Username = "testuser",
     ///         PasswordWo = "password123",
     ///         PasswordWoVersion = 1,
+    ///         MysqlGrants = new[]
+    ///         {
+    ///             "SELECT",
+    ///             "DELETE",
+    ///         },
     ///         ValkeyAclCategories = new[]
     ///         {
     ///             "+@write",
@@ -64,6 +69,12 @@ namespace Pulumi.Aiven
     [AivenResourceType("aiven:index/valkeyUser:ValkeyUser")]
     public partial class ValkeyUser : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// MySQL grants for the service user. Changing this property forces recreation of the resource.
+        /// </summary>
+        [Output("mysqlGrants")]
+        public Output<ImmutableArray<string>> MysqlGrants { get; private set; } = null!;
+
         /// <summary>
         /// The password of the service user (auto-generated if not provided). The field conflicts with `PasswordWo`. Length must be between `8` and `256`.
         /// </summary>
@@ -191,6 +202,18 @@ namespace Pulumi.Aiven
 
     public sealed class ValkeyUserArgs : global::Pulumi.ResourceArgs
     {
+        [Input("mysqlGrants")]
+        private InputList<string>? _mysqlGrants;
+
+        /// <summary>
+        /// MySQL grants for the service user. Changing this property forces recreation of the resource.
+        /// </summary>
+        public InputList<string> MysqlGrants
+        {
+            get => _mysqlGrants ?? (_mysqlGrants = new InputList<string>());
+            set => _mysqlGrants = value;
+        }
+
         [Input("password")]
         private Input<string>? _password;
 
@@ -307,6 +330,18 @@ namespace Pulumi.Aiven
 
     public sealed class ValkeyUserState : global::Pulumi.ResourceArgs
     {
+        [Input("mysqlGrants")]
+        private InputList<string>? _mysqlGrants;
+
+        /// <summary>
+        /// MySQL grants for the service user. Changing this property forces recreation of the resource.
+        /// </summary>
+        public InputList<string> MysqlGrants
+        {
+            get => _mysqlGrants ?? (_mysqlGrants = new InputList<string>());
+            set => _mysqlGrants = value;
+        }
+
         [Input("password")]
         private Input<string>? _password;
 

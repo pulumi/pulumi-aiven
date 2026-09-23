@@ -68,6 +68,10 @@ export interface GetPgUserResult {
      */
     readonly id: string;
     /**
+     * MySQL grants for the service user.
+     */
+    readonly mysqlGrants: string[];
+    /**
      * The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`.
      */
     readonly password: string;

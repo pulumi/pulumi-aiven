@@ -28,10 +28,13 @@ class GetValkeyUserResult:
     """
     A collection of values returned by getValkeyUser.
     """
-    def __init__(__self__, id=None, password=None, password_encryption_type=None, project=None, service_name=None, timeouts=None, type=None, username=None, valkey_acl_categories=None, valkey_acl_channels=None, valkey_acl_commands=None, valkey_acl_keys=None):
+    def __init__(__self__, id=None, mysql_grants=None, password=None, password_encryption_type=None, project=None, service_name=None, timeouts=None, type=None, username=None, valkey_acl_categories=None, valkey_acl_channels=None, valkey_acl_commands=None, valkey_acl_keys=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if mysql_grants and not isinstance(mysql_grants, list):
+            raise TypeError("Expected argument 'mysql_grants' to be a list")
+        pulumi.set(__self__, "mysql_grants", mysql_grants)
         if password and not isinstance(password, str):
             raise TypeError("Expected argument 'password' to be a str")
         pulumi.set(__self__, "password", password)
@@ -73,6 +76,14 @@ class GetValkeyUserResult:
         Resource ID composed as: `project/service_name/username`.
         """
         return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="mysqlGrants")
+    def mysql_grants(self) -> Sequence[_builtins.str]:
+        """
+        MySQL grants for the service user.
+        """
+        return pulumi.get(self, "mysql_grants")
 
     @_builtins.property
     @pulumi.getter
@@ -167,6 +178,7 @@ class AwaitableGetValkeyUserResult(GetValkeyUserResult):
             yield self
         return GetValkeyUserResult(
             id=self.id,
+            mysql_grants=self.mysql_grants,
             password=self.password,
             password_encryption_type=self.password_encryption_type,
             project=self.project,
@@ -214,6 +226,7 @@ def get_valkey_user(project: Optional[_builtins.str] = None,
 
     return AwaitableGetValkeyUserResult(
         id=pulumi.get(__ret__, 'id'),
+        mysql_grants=pulumi.get(__ret__, 'mysql_grants'),
         password=pulumi.get(__ret__, 'password'),
         password_encryption_type=pulumi.get(__ret__, 'password_encryption_type'),
         project=pulumi.get(__ret__, 'project'),
@@ -258,6 +271,7 @@ def get_valkey_user_output(project: pulumi.Input[Optional[_builtins.str]] = None
     __ret__ = pulumi.runtime.invoke_output('aiven:index/getValkeyUser:getValkeyUser', __args__, opts=opts, typ=GetValkeyUserResult)
     return __ret__.apply(lambda __response__: GetValkeyUserResult(
         id=pulumi.get(__response__, 'id'),
+        mysql_grants=pulumi.get(__response__, 'mysql_grants'),
         password=pulumi.get(__response__, 'password'),
         password_encryption_type=pulumi.get(__response__, 'password_encryption_type'),
         project=pulumi.get(__response__, 'project'),

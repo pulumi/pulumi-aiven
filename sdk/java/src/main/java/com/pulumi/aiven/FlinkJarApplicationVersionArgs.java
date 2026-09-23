@@ -3,11 +3,14 @@
 
 package com.pulumi.aiven;
 
+import com.pulumi.aiven.inputs.FlinkJarApplicationVersionTimeoutsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class FlinkJarApplicationVersionArgs extends com.pulumi.resources.ResourceArgs {
@@ -74,6 +77,13 @@ public final class FlinkJarApplicationVersionArgs extends com.pulumi.resources.R
         return this.source;
     }
 
+    @Import(name="timeouts")
+    private @Nullable Output<FlinkJarApplicationVersionTimeoutsArgs> timeouts;
+
+    public Optional<Output<FlinkJarApplicationVersionTimeoutsArgs>> timeouts() {
+        return Optional.ofNullable(this.timeouts);
+    }
+
     private FlinkJarApplicationVersionArgs() {}
 
     private FlinkJarApplicationVersionArgs(FlinkJarApplicationVersionArgs $) {
@@ -81,6 +91,7 @@ public final class FlinkJarApplicationVersionArgs extends com.pulumi.resources.R
         this.project = $.project;
         this.serviceName = $.serviceName;
         this.source = $.source;
+        this.timeouts = $.timeouts;
     }
 
     public static Builder builder() {
@@ -183,6 +194,15 @@ public final class FlinkJarApplicationVersionArgs extends com.pulumi.resources.R
          */
         public Builder source(String source) {
             return source(Output.of(source));
+        }
+
+        public Builder timeouts(@Nullable Output<FlinkJarApplicationVersionTimeoutsArgs> timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
+        public Builder timeouts(FlinkJarApplicationVersionTimeoutsArgs timeouts) {
+            return timeouts(Output.of(timeouts));
         }
 
         public FlinkJarApplicationVersionArgs build() {

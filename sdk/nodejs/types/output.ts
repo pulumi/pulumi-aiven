@@ -1155,6 +1155,31 @@ export interface FlinkJarApplicationCurrentDeployment {
     versionId: string;
 }
 
+export interface FlinkJarApplicationDeploymentTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: string;
+    /**
+     * Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+     *
+     * @deprecated Use operation-specific timeouts instead. This field will be removed in the next major version.
+     */
+    default?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: string;
+}
+
 export interface FlinkJarApplicationTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
@@ -1198,13 +1223,38 @@ export interface FlinkJarApplicationVersionFileInfo {
      */
     url: string;
     /**
-     * In the case fileStatus is FAILED, the error code of the failure. The possible values are `1`, `2` and `3`.
+     * In the case fileStatus is FAILED, the error code of the failure. The possible values are `1`, `2`, `3` and `4`.
      */
     verifyErrorCode: number;
     /**
      * In the case fileStatus is FAILED, may contain details about the failure.
      */
     verifyErrorMessage: string;
+}
+
+export interface FlinkJarApplicationVersionTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: string;
+    /**
+     * Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+     *
+     * @deprecated Use operation-specific timeouts instead. This field will be removed in the next major version.
+     */
+    default?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: string;
 }
 
 export interface FlinkServiceIntegration {
@@ -3200,7 +3250,7 @@ export interface GetKafkaKafkaUserConfig {
      */
     kafkaVersion?: string;
     /**
-     * Pin a specific installed Karapace version on this service. Leave null/unset to auto-follow the newest installed version.
+     * Enum: `6.2.1`, `6.2.2`, `6.2.3`, and newer. Select a Karapace version for this service, or select Latest to use the latest available version automatically. New versions become available after installation during a maintenance update.
      */
     karapaceVersion?: string;
     /**
@@ -3900,19 +3950,19 @@ export interface GetKafkaKafkaUserConfigSchemaRegistryConfig {
      */
     retriableErrorsSilenced?: boolean;
     /**
-     * If enabled, the Schema Registry validates OAuth2/OIDC JWT bearer tokens on incoming requests. Requires the OIDC provider settings under the `kafka` configuration (`saslOauthbearerJwksEndpointUrl` and related). Defaults to `false`.
+     * If enabled, the Schema Registry validates OAuth 2.0/OIDC JWT bearer tokens. Requires `saslOauthbearerJwksEndpointUrl`, `saslOauthbearerExpectedIssuer`, and `saslOauthbearerExpectedAudience` under `kafka`. Defaults to `false`.
      */
     saslOauthbearerAuthenticationEnabled?: boolean;
     /**
-     * If enabled, the Schema Registry enforces role-based authorization derived from the JWT roles claim. Requires `saslOauthbearerAuthenticationEnabled` to be enabled. Defaults to `false`.
+     * If enabled, the Schema Registry enforces role-based authorization using the JWT roles claim. It also enables `saslOauthbearerAuthenticationEnabled` if it isn't already enabled. Authorization requires authentication. Defaults to `false`.
      */
     saslOauthbearerAuthorizationEnabled?: boolean;
     /**
-     * JSON object mapping HTTP methods to the list of roles allowed to perform them on the Schema Registry, provided as a JSON-encoded string. Role names use the `karapace.` prefix, e.g. `karapace.schema:read`. Defaults to `{"GET": ["karapace.schema:read", "karapace.subject:read"], "POST": [], "PUT": [], "DELETE": []}`.
+     * Maps HTTP methods to allowed roles. Use a JSON object with `GET`, `POST`, `PUT`, and `DELETE` keys mapped to arrays of roles. Role names use the `karapace.` prefix. Example: `{"GET": ["karapace.schema:read"], "POST": [], "PUT": [], "DELETE": []}`. Example: `{"GET":["karapace.schema:read"],"POST":[],"PUT":[],"DELETE":[]}`.
      */
     saslOauthbearerMethodRoles?: string;
     /**
-     * JSON path used to extract the roles claim from the JWT for Schema Registry authorization. Defaults to `resource_access.karapace.roles`.
+     * The JSON path the Schema Registry uses to find the roles claim in the JWT. Defaults to `resource_access.karapace.roles`.
      */
     saslOauthbearerRolesClaimPath?: string;
     /**
@@ -4263,7 +4313,7 @@ export interface GetKafkaTopicConfig {
      */
     messageDownconversionEnable: boolean;
     /**
-     * Specify the message format version the broker will use to append messages to the logs. The value should be a valid ApiVersion. Some examples are: 0.8.2, 0.9.0.0, 0.10.0, check ApiVersion for more details. By setting a particular message format version, the user is certifying that all the existing messages on disk are smaller or equal than the specified version. Setting this value incorrectly will cause consumers with older versions to break as they will receive messages with a format that they don't understand. Deprecated in Kafka 4.0+: this configuration is removed and any supplied value will be ignored; for services upgraded to 4.0+, the returned value may be 'None'. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.0`, `4.0-IV0`, `4.1`, `4.1-IV0`, `4.2` and `4.2-IV0`.
+     * Specify the message format version the broker will use to append messages to the logs. The value should be a valid ApiVersion. Some examples are: 0.8.2, 0.9.0.0, 0.10.0, check ApiVersion for more details. By setting a particular message format version, the user is certifying that all the existing messages on disk are smaller or equal than the specified version. Setting this value incorrectly will cause consumers with older versions to break as they will receive messages with a format that they don't understand. Deprecated in Kafka 4.0+: this configuration is removed and any supplied value will be ignored; for services upgraded to 4.0+, the returned value may be 'None'. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.0`, `4.0-IV0`, `4.1`, `4.1-IV0`, `4.2`, `4.2-IV0`, `4.3` and `4.3-IV0`.
      */
     messageFormatVersion: string;
     /**
@@ -4763,7 +4813,7 @@ export interface GetMySqlMysqlUserConfigMysql {
      */
     innodbLockWaitTimeout?: number;
     /**
-     * The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
+     * The size in bytes of the buffer that InnoDB uses to write to the log files on disk. Requests above 15% of the RAM provided by your service plan are rejected, because a larger buffer leaves less memory for the buffer pool and client connections.
      */
     innodbLogBufferSize?: number;
     /**
@@ -4815,7 +4865,7 @@ export interface GetMySqlMysqlUserConfigMysql {
      */
     lowerCaseTableNames?: number;
     /**
-     * Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
+     * Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M). Statements and rows larger than this are rejected with a packet too large error.
      */
     maxAllowedPacket?: number;
     /**
@@ -4875,7 +4925,7 @@ export interface GetMySqlMysqlUserConfigMysql {
      */
     slowQueryLog?: boolean;
     /**
-     * Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K). Example: `262144`.
+     * Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K). Requests above 2% of the RAM provided by your service plan are rejected, because the buffer is allocated per session and its cost multiplies with the connection count. Example: `262144`.
      */
     sortBufferSize?: number;
     /**
@@ -4891,7 +4941,7 @@ export interface GetMySqlMysqlUserConfigMysql {
      */
     tmpTableSize?: number;
     /**
-     * The number of seconds the server waits for activity on a noninteractive connection before closing it. Example: `28800`.
+     * The number of seconds the server waits for activity on a noninteractive connection before closing it. Requests to set this below 30 are rejected, because a shorter timeout closes your own idle connections between statements. Example: `28800`.
      */
     waitTimeout?: number;
     /**
@@ -8306,9 +8356,17 @@ export interface GetServiceIntegrationEndpointOpentelemetryUserConfig {
      */
     encodingType?: string;
     /**
+     * If set, only these measurements are sent to this endpoint; everything else is dropped for this destination only, leaving every other destination (other integrations, Prometheus, etc.) unaffected. Matched after bucketing and any overrideMeasurements rename, i.e. against the final measurement name as it will appear at the destination (e.g. `kafka`, or `do.databases.kafka` if renamed). Leave unset to export every measurement, same as today. Telegraf's underlying namepass filter treats an empty list the same as unset (both export everything), so an empty list isn't accepted here -- it wouldn't do what it looks like it does.
+     */
+    filterMeasurements?: string[];
+    /**
      * Additional gRPC metadata headers sent with every export request.
      */
     headers?: {[key: string]: string};
+    /**
+     * Every metric belonging to a known service (mysql, postgresql, valkey -- which also covers redis, Valkey's predecessor -- opensearch, kafka) is exported here under a single bucket measurement per service -- e.g. every Kafka JMX metric, however deep its raw name, becomes measurement `kafka` (its specific identity moves into the field name instead). This map renames that bucket as a whole -- key on the bucket name (e.g. `kafka`, `postgresql`), not the metric's original raw name; it cannot target one specific metric within a bucket. Metrics outside these known services (e.g. cpu, mem, disk) are exported unchanged and can't be renamed here. The original metric name is left untouched for every other destination (other integrations, Prometheus, etc.) -- only the copy sent here is bucketed and, if listed, renamed.
+     */
+    overrideMeasurements?: {[key: string]: string};
     /**
      * Either a bare `host:port` (OTLP/gRPC, no URL scheme) or an `http://`/`https://` URL (OTLP/HTTP). Example: `otel-collector.example.avns.net:4317`.
      */
@@ -8869,6 +8927,10 @@ export interface GetServicePlanListServicePlan {
      */
     isClusterPlan: boolean;
     /**
+     * True when the plan's topology is set via user config and its region price is per node.
+     */
+    managedClusterPlan: boolean;
+    /**
      * Maximum amount of system memory as a percentage (0-100) the service can actually use after taking into account management overhead. This is relevant for memory bound services for which some service management operations require allocating proportional amount of memory on top the basic load.
      */
     maxMemoryPercent: number;
@@ -9218,6 +9280,13 @@ export interface GetThanosThanosUserConfigQueryFrontend {
     queryRangeAlignRangeWithStep?: boolean;
 }
 
+export interface GetTransitGatewayVpcAttachmentTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: string;
+}
+
 export interface GetValkeyComponent {
     /**
      * Service component name
@@ -9392,6 +9461,14 @@ export interface GetValkeyValkeyUserConfig {
      */
     valkeyAclChannelsDefault?: string;
     /**
+     * Minimum amount of fragmentation waste, in bytes, before active defragmentation starts. Only takes effect when `valkeyActivedefrag` is enabled.
+     */
+    valkeyActiveDefragIgnoreBytes?: number;
+    /**
+     * Minimum percentage of fragmentation before active defragmentation starts. Only takes effect when `valkeyActivedefrag` is enabled. Default: `10`.
+     */
+    valkeyActiveDefragThresholdLower?: number;
+    /**
      * Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency. Default: `1`.
      */
     valkeyActiveExpireEffort?: number;
@@ -9424,7 +9501,7 @@ export interface GetValkeyValkeyUserConfig {
      */
     valkeyNumberOfDatabases?: number;
     /**
-     * Enum: `off`, `rdb`. When persistence is `rdb`, Valkey does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is `off`, no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
+     * Enum: `off`, `rdb`. Controls whether Valkey writes RDB dumps to disk. With `rdb`, RDB dumps are written for backups on the backup schedule and, if `frequentSnapshots` is enabled, every 10 minutes so the service can recover recent data after a restart. With `off`, no RDB dumps are written at all: backups and forking are unavailable, `frequentSnapshots` and `backupHour`/`backupMinute` have no effect, and all data is lost if the service restarts or is powered off.
      */
     valkeyPersistence?: string;
     /**
@@ -10721,7 +10798,7 @@ export interface KafkaKafkaUserConfig {
      */
     kafkaVersion?: string;
     /**
-     * Pin a specific installed Karapace version on this service. Leave null/unset to auto-follow the newest installed version.
+     * Enum: `6.2.1`, `6.2.2`, `6.2.3`, and newer. Select a Karapace version for this service, or select Latest to use the latest available version automatically. New versions become available after installation during a maintenance update.
      */
     karapaceVersion?: string;
     /**
@@ -11421,19 +11498,19 @@ export interface KafkaKafkaUserConfigSchemaRegistryConfig {
      */
     retriableErrorsSilenced?: boolean;
     /**
-     * If enabled, the Schema Registry validates OAuth2/OIDC JWT bearer tokens on incoming requests. Requires the OIDC provider settings under the `kafka` configuration (`saslOauthbearerJwksEndpointUrl` and related). Defaults to `false`.
+     * If enabled, the Schema Registry validates OAuth 2.0/OIDC JWT bearer tokens. Requires `saslOauthbearerJwksEndpointUrl`, `saslOauthbearerExpectedIssuer`, and `saslOauthbearerExpectedAudience` under `kafka`. Defaults to `false`.
      */
     saslOauthbearerAuthenticationEnabled?: boolean;
     /**
-     * If enabled, the Schema Registry enforces role-based authorization derived from the JWT roles claim. Requires `saslOauthbearerAuthenticationEnabled` to be enabled. Defaults to `false`.
+     * If enabled, the Schema Registry enforces role-based authorization using the JWT roles claim. It also enables `saslOauthbearerAuthenticationEnabled` if it isn't already enabled. Authorization requires authentication. Defaults to `false`.
      */
     saslOauthbearerAuthorizationEnabled?: boolean;
     /**
-     * JSON object mapping HTTP methods to the list of roles allowed to perform them on the Schema Registry, provided as a JSON-encoded string. Role names use the `karapace.` prefix, e.g. `karapace.schema:read`. Defaults to `{"GET": ["karapace.schema:read", "karapace.subject:read"], "POST": [], "PUT": [], "DELETE": []}`.
+     * Maps HTTP methods to allowed roles. Use a JSON object with `GET`, `POST`, `PUT`, and `DELETE` keys mapped to arrays of roles. Role names use the `karapace.` prefix. Example: `{"GET": ["karapace.schema:read"], "POST": [], "PUT": [], "DELETE": []}`. Example: `{"GET":["karapace.schema:read"],"POST":[],"PUT":[],"DELETE":[]}`.
      */
     saslOauthbearerMethodRoles?: string;
     /**
-     * JSON path used to extract the roles claim from the JWT for Schema Registry authorization. Defaults to `resource_access.karapace.roles`.
+     * The JSON path the Schema Registry uses to find the roles claim in the JWT. Defaults to `resource_access.karapace.roles`.
      */
     saslOauthbearerRolesClaimPath?: string;
     /**
@@ -11812,7 +11889,7 @@ export interface KafkaTopicConfig {
      */
     messageDownconversionEnable: boolean;
     /**
-     * Specify the message format version the broker will use to append messages to the logs. The value should be a valid ApiVersion. Some examples are: 0.8.2, 0.9.0.0, 0.10.0, check ApiVersion for more details. By setting a particular message format version, the user is certifying that all the existing messages on disk are smaller or equal than the specified version. Setting this value incorrectly will cause consumers with older versions to break as they will receive messages with a format that they don't understand. Deprecated in Kafka 4.0+: this configuration is removed and any supplied value will be ignored; for services upgraded to 4.0+, the returned value may be 'None'. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.0`, `4.0-IV0`, `4.1`, `4.1-IV0`, `4.2` and `4.2-IV0`.
+     * Specify the message format version the broker will use to append messages to the logs. The value should be a valid ApiVersion. Some examples are: 0.8.2, 0.9.0.0, 0.10.0, check ApiVersion for more details. By setting a particular message format version, the user is certifying that all the existing messages on disk are smaller or equal than the specified version. Setting this value incorrectly will cause consumers with older versions to break as they will receive messages with a format that they don't understand. Deprecated in Kafka 4.0+: this configuration is removed and any supplied value will be ignored; for services upgraded to 4.0+, the returned value may be 'None'. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.0`, `4.0-IV0`, `4.1`, `4.1-IV0`, `4.2`, `4.2-IV0`, `4.3` and `4.3-IV0`.
      */
     messageFormatVersion: string;
     /**
@@ -12293,7 +12370,7 @@ export interface MySqlMysqlUserConfigMysql {
      */
     innodbLockWaitTimeout?: number;
     /**
-     * The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
+     * The size in bytes of the buffer that InnoDB uses to write to the log files on disk. Requests above 15% of the RAM provided by your service plan are rejected, because a larger buffer leaves less memory for the buffer pool and client connections.
      */
     innodbLogBufferSize?: number;
     /**
@@ -12345,7 +12422,7 @@ export interface MySqlMysqlUserConfigMysql {
      */
     lowerCaseTableNames?: number;
     /**
-     * Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
+     * Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M). Statements and rows larger than this are rejected with a packet too large error.
      */
     maxAllowedPacket?: number;
     /**
@@ -12405,7 +12482,7 @@ export interface MySqlMysqlUserConfigMysql {
      */
     slowQueryLog?: boolean;
     /**
-     * Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K). Example: `262144`.
+     * Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K). Requests above 2% of the RAM provided by your service plan are rejected, because the buffer is allocated per session and its cost multiplies with the connection count. Example: `262144`.
      */
     sortBufferSize?: number;
     /**
@@ -12421,7 +12498,7 @@ export interface MySqlMysqlUserConfigMysql {
      */
     tmpTableSize?: number;
     /**
-     * The number of seconds the server waits for activity on a noninteractive connection before closing it. Example: `28800`.
+     * The number of seconds the server waits for activity on a noninteractive connection before closing it. Requests to set this below 30 are rejected, because a shorter timeout closes your own idle connections between statements. Example: `28800`.
      */
     waitTimeout?: number;
     /**
@@ -14033,7 +14110,7 @@ export interface OrganizationPermissionPermission {
      */
     createTime: string;
     /**
-     * List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant". The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:event_logs:read`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:sustainability:read`, `organization:users:write`, `project:ai_gateway_keys:read`, `project:ai_gateway_keys:write`, `project:audit_logs:read`, `project:event_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `readOnly`, `role:organization:admin`, `role:project:admin`, `role:project:read`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:metrics:read`, `service:secrets:read` and `service:users:write`.
+     * List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant". The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:event_logs:read`, `organization:groups:read`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:sustainability:read`, `organization:users:read`, `organization:users:write`, `project:ai_gateway_keys:read`, `project:ai_gateway_keys:write`, `project:audit_logs:read`, `project:event_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `readOnly`, `role:organization:admin`, `role:project:admin`, `role:project:manager`, `role:project:read`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:metrics:read`, `service:secrets:read` and `service:users:write`.
      */
     permissions: string[];
     /**
@@ -15894,9 +15971,17 @@ export interface ServiceIntegrationEndpointOpentelemetryUserConfig {
      */
     encodingType?: string;
     /**
+     * If set, only these measurements are sent to this endpoint; everything else is dropped for this destination only, leaving every other destination (other integrations, Prometheus, etc.) unaffected. Matched after bucketing and any overrideMeasurements rename, i.e. against the final measurement name as it will appear at the destination (e.g. `kafka`, or `do.databases.kafka` if renamed). Leave unset to export every measurement, same as today. Telegraf's underlying namepass filter treats an empty list the same as unset (both export everything), so an empty list isn't accepted here -- it wouldn't do what it looks like it does.
+     */
+    filterMeasurements?: string[];
+    /**
      * Additional gRPC metadata headers sent with every export request.
      */
     headers?: {[key: string]: string};
+    /**
+     * Every metric belonging to a known service (mysql, postgresql, valkey -- which also covers redis, Valkey's predecessor -- opensearch, kafka) is exported here under a single bucket measurement per service -- e.g. every Kafka JMX metric, however deep its raw name, becomes measurement `kafka` (its specific identity moves into the field name instead). This map renames that bucket as a whole -- key on the bucket name (e.g. `kafka`, `postgresql`), not the metric's original raw name; it cannot target one specific metric within a bucket. Metrics outside these known services (e.g. cpu, mem, disk) are exported unchanged and can't be renamed here. The original metric name is left untouched for every other destination (other integrations, Prometheus, etc.) -- only the copy sent here is bucketed and, if listed, renamed.
+     */
+    overrideMeasurements?: {[key: string]: string};
     /**
      * Either a bare `host:port` (OTLP/gRPC, no URL scheme) or an `http://`/`https://` URL (OTLP/HTTP). Example: `otel-collector.example.avns.net:4317`.
      */
@@ -16634,6 +16719,31 @@ export interface ThanosThanosUserConfigQueryFrontend {
     queryRangeAlignRangeWithStep?: boolean;
 }
 
+export interface TransitGatewayVpcAttachmentTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: string;
+    /**
+     * Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+     *
+     * @deprecated Use operation-specific timeouts instead. This field will be removed in the next major version.
+     */
+    default?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: string;
+}
+
 export interface UpgradeStepTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
@@ -16845,6 +16955,14 @@ export interface ValkeyValkeyUserConfig {
      */
     valkeyAclChannelsDefault?: string;
     /**
+     * Minimum amount of fragmentation waste, in bytes, before active defragmentation starts. Only takes effect when `valkeyActivedefrag` is enabled.
+     */
+    valkeyActiveDefragIgnoreBytes?: number;
+    /**
+     * Minimum percentage of fragmentation before active defragmentation starts. Only takes effect when `valkeyActivedefrag` is enabled. Default: `10`.
+     */
+    valkeyActiveDefragThresholdLower?: number;
+    /**
      * Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency. Default: `1`.
      */
     valkeyActiveExpireEffort?: number;
@@ -16877,7 +16995,7 @@ export interface ValkeyValkeyUserConfig {
      */
     valkeyNumberOfDatabases?: number;
     /**
-     * Enum: `off`, `rdb`. When persistence is `rdb`, Valkey does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is `off`, no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
+     * Enum: `off`, `rdb`. Controls whether Valkey writes RDB dumps to disk. With `rdb`, RDB dumps are written for backups on the backup schedule and, if `frequentSnapshots` is enabled, every 10 minutes so the service can recover recent data after a restart. With `off`, no RDB dumps are written at all: backups and forking are unavailable, `frequentSnapshots` and `backupHour`/`backupMinute` have no effect, and all data is lost if the service restarts or is powered off.
      */
     valkeyPersistence?: string;
     /**

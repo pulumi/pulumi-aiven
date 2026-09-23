@@ -33,6 +33,21 @@ public final class GetServicePlanListServicePlan extends com.pulumi.resources.In
     }
 
     /**
+     * True when the plan&#39;s topology is set via user config and its region price is per node.
+     * 
+     */
+    @Import(name="managedClusterPlan", required=true)
+    private Boolean managedClusterPlan;
+
+    /**
+     * @return True when the plan&#39;s topology is set via user config and its region price is per node.
+     * 
+     */
+    public Boolean managedClusterPlan() {
+        return this.managedClusterPlan;
+    }
+
+    /**
      * Maximum amount of system memory as a percentage (0-100) the service can actually use after taking into account management overhead. This is relevant for memory bound services for which some service management operations require allocating proportional amount of memory on top the basic load.
      * 
      */
@@ -141,6 +156,7 @@ public final class GetServicePlanListServicePlan extends com.pulumi.resources.In
 
     private GetServicePlanListServicePlan(GetServicePlanListServicePlan $) {
         this.isClusterPlan = $.isClusterPlan;
+        this.managedClusterPlan = $.managedClusterPlan;
         this.maxMemoryPercent = $.maxMemoryPercent;
         this.nodeCount = $.nodeCount;
         this.primaryCount = $.primaryCount;
@@ -176,6 +192,17 @@ public final class GetServicePlanListServicePlan extends com.pulumi.resources.In
          */
         public Builder isClusterPlan(Boolean isClusterPlan) {
             $.isClusterPlan = isClusterPlan;
+            return this;
+        }
+
+        /**
+         * @param managedClusterPlan True when the plan&#39;s topology is set via user config and its region price is per node.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder managedClusterPlan(Boolean managedClusterPlan) {
+            $.managedClusterPlan = managedClusterPlan;
             return this;
         }
 
@@ -259,6 +286,9 @@ public final class GetServicePlanListServicePlan extends com.pulumi.resources.In
         public GetServicePlanListServicePlan build() {
             if ($.isClusterPlan == null) {
                 throw new MissingRequiredPropertyException("GetServicePlanListServicePlan", "isClusterPlan");
+            }
+            if ($.managedClusterPlan == null) {
+                throw new MissingRequiredPropertyException("GetServicePlanListServicePlan", "managedClusterPlan");
             }
             if ($.maxMemoryPercent == null) {
                 throw new MissingRequiredPropertyException("GetServicePlanListServicePlan", "maxMemoryPercent");

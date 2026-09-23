@@ -77,14 +77,14 @@ public final class FlinkJarApplicationVersionFileInfoArgs extends com.pulumi.res
     }
 
     /**
-     * In the case fileStatus is FAILED, the error code of the failure. The possible values are `1`, `2` and `3`.
+     * In the case fileStatus is FAILED, the error code of the failure. The possible values are `1`, `2`, `3` and `4`.
      * 
      */
     @Import(name="verifyErrorCode")
     private @Nullable Output<Integer> verifyErrorCode;
 
     /**
-     * @return In the case fileStatus is FAILED, the error code of the failure. The possible values are `1`, `2` and `3`.
+     * @return In the case fileStatus is FAILED, the error code of the failure. The possible values are `1`, `2`, `3` and `4`.
      * 
      */
     public Optional<Output<Integer>> verifyErrorCode() {
@@ -220,7 +220,7 @@ public final class FlinkJarApplicationVersionFileInfoArgs extends com.pulumi.res
         }
 
         /**
-         * @param verifyErrorCode In the case fileStatus is FAILED, the error code of the failure. The possible values are `1`, `2` and `3`.
+         * @param verifyErrorCode In the case fileStatus is FAILED, the error code of the failure. The possible values are `1`, `2`, `3` and `4`.
          * 
          * @return builder
          * 
@@ -231,7 +231,7 @@ public final class FlinkJarApplicationVersionFileInfoArgs extends com.pulumi.res
         }
 
         /**
-         * @param verifyErrorCode In the case fileStatus is FAILED, the error code of the failure. The possible values are `1`, `2` and `3`.
+         * @param verifyErrorCode In the case fileStatus is FAILED, the error code of the failure. The possible values are `1`, `2`, `3` and `4`.
          * 
          * @return builder
          * 

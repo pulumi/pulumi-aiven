@@ -114,6 +114,16 @@ public final class GetValkeyValkeyUserConfig {
      */
     private @Nullable String valkeyAclChannelsDefault;
     /**
+     * @return Minimum amount of fragmentation waste, in bytes, before active defragmentation starts. Only takes effect when `valkeyActivedefrag` is enabled.
+     * 
+     */
+    private @Nullable Integer valkeyActiveDefragIgnoreBytes;
+    /**
+     * @return Minimum percentage of fragmentation before active defragmentation starts. Only takes effect when `valkeyActivedefrag` is enabled. Default: `10`.
+     * 
+     */
+    private @Nullable Integer valkeyActiveDefragThresholdLower;
+    /**
      * @return Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency. Default: `1`.
      * 
      */
@@ -154,7 +164,7 @@ public final class GetValkeyValkeyUserConfig {
      */
     private @Nullable Integer valkeyNumberOfDatabases;
     /**
-     * @return Enum: `off`, `rdb`. When persistence is `rdb`, Valkey does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is `off`, no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can&#39;t be forked.
+     * @return Enum: `off`, `rdb`. Controls whether Valkey writes RDB dumps to disk. With `rdb`, RDB dumps are written for backups on the backup schedule and, if `frequentSnapshots` is enabled, every 10 minutes so the service can recover recent data after a restart. With `off`, no RDB dumps are written at all: backups and forking are unavailable, `frequentSnapshots` and `backupHour`/`backupMinute` have no effect, and all data is lost if the service restarts or is powered off.
      * 
      */
     private @Nullable String valkeyPersistence;
@@ -311,6 +321,20 @@ public final class GetValkeyValkeyUserConfig {
         return Optional.ofNullable(this.valkeyAclChannelsDefault);
     }
     /**
+     * @return Minimum amount of fragmentation waste, in bytes, before active defragmentation starts. Only takes effect when `valkeyActivedefrag` is enabled.
+     * 
+     */
+    public Optional<Integer> valkeyActiveDefragIgnoreBytes() {
+        return Optional.ofNullable(this.valkeyActiveDefragIgnoreBytes);
+    }
+    /**
+     * @return Minimum percentage of fragmentation before active defragmentation starts. Only takes effect when `valkeyActivedefrag` is enabled. Default: `10`.
+     * 
+     */
+    public Optional<Integer> valkeyActiveDefragThresholdLower() {
+        return Optional.ofNullable(this.valkeyActiveDefragThresholdLower);
+    }
+    /**
      * @return Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency. Default: `1`.
      * 
      */
@@ -367,7 +391,7 @@ public final class GetValkeyValkeyUserConfig {
         return Optional.ofNullable(this.valkeyNumberOfDatabases);
     }
     /**
-     * @return Enum: `off`, `rdb`. When persistence is `rdb`, Valkey does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is `off`, no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can&#39;t be forked.
+     * @return Enum: `off`, `rdb`. Controls whether Valkey writes RDB dumps to disk. With `rdb`, RDB dumps are written for backups on the backup schedule and, if `frequentSnapshots` is enabled, every 10 minutes so the service can recover recent data after a restart. With `off`, no RDB dumps are written at all: backups and forking are unavailable, `frequentSnapshots` and `backupHour`/`backupMinute` have no effect, and all data is lost if the service restarts or is powered off.
      * 
      */
     public Optional<String> valkeyPersistence() {
@@ -429,6 +453,8 @@ public final class GetValkeyValkeyUserConfig {
         private @Nullable String serviceToForkFrom;
         private @Nullable Boolean staticIps;
         private @Nullable String valkeyAclChannelsDefault;
+        private @Nullable Integer valkeyActiveDefragIgnoreBytes;
+        private @Nullable Integer valkeyActiveDefragThresholdLower;
         private @Nullable Integer valkeyActiveExpireEffort;
         private @Nullable Boolean valkeyActivedefrag;
         private @Nullable Integer valkeyIoThreads;
@@ -463,6 +489,8 @@ public final class GetValkeyValkeyUserConfig {
     	      this.serviceToForkFrom = defaults.serviceToForkFrom;
     	      this.staticIps = defaults.staticIps;
     	      this.valkeyAclChannelsDefault = defaults.valkeyAclChannelsDefault;
+    	      this.valkeyActiveDefragIgnoreBytes = defaults.valkeyActiveDefragIgnoreBytes;
+    	      this.valkeyActiveDefragThresholdLower = defaults.valkeyActiveDefragThresholdLower;
     	      this.valkeyActiveExpireEffort = defaults.valkeyActiveExpireEffort;
     	      this.valkeyActivedefrag = defaults.valkeyActivedefrag;
     	      this.valkeyIoThreads = defaults.valkeyIoThreads;
@@ -596,6 +624,18 @@ public final class GetValkeyValkeyUserConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder valkeyActiveDefragIgnoreBytes(@Nullable Integer valkeyActiveDefragIgnoreBytes) {
+
+            this.valkeyActiveDefragIgnoreBytes = valkeyActiveDefragIgnoreBytes;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder valkeyActiveDefragThresholdLower(@Nullable Integer valkeyActiveDefragThresholdLower) {
+
+            this.valkeyActiveDefragThresholdLower = valkeyActiveDefragThresholdLower;
+            return this;
+        }
+        @CustomType.Setter
         public Builder valkeyActiveExpireEffort(@Nullable Integer valkeyActiveExpireEffort) {
 
             this.valkeyActiveExpireEffort = valkeyActiveExpireEffort;
@@ -693,6 +733,8 @@ public final class GetValkeyValkeyUserConfig {
             _resultValue.serviceToForkFrom = serviceToForkFrom;
             _resultValue.staticIps = staticIps;
             _resultValue.valkeyAclChannelsDefault = valkeyAclChannelsDefault;
+            _resultValue.valkeyActiveDefragIgnoreBytes = valkeyActiveDefragIgnoreBytes;
+            _resultValue.valkeyActiveDefragThresholdLower = valkeyActiveDefragThresholdLower;
             _resultValue.valkeyActiveExpireEffort = valkeyActiveExpireEffort;
             _resultValue.valkeyActivedefrag = valkeyActivedefrag;
             _resultValue.valkeyIoThreads = valkeyIoThreads;

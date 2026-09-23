@@ -24,6 +24,7 @@ class PgUserArgs:
                  project: pulumi.Input[_builtins.str],
                  service_name: pulumi.Input[_builtins.str],
                  username: pulumi.Input[_builtins.str],
+                 mysql_grants: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  password: pulumi.Input[Optional[_builtins.str]] = None,
                  password_wo: pulumi.Input[Optional[_builtins.str]] = None,
                  password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
@@ -35,6 +36,7 @@ class PgUserArgs:
         :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] service_name: The name of the service. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] username: The name of the service user for this service. Maximum length: `64`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] mysql_grants: MySQL grants for the service user. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] password: The password of the service user (auto-generated if not provided). The field conflicts with `password_wo`. Length must be between `8` and `256`.
         :param pulumi.Input[_builtins.str] password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
                The password of the service user (write-only, not stored in state). The field is required with `password_wo_version`. The field conflicts with `password`. Length must be between `8` and `256`.
@@ -44,6 +46,8 @@ class PgUserArgs:
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "service_name", service_name)
         pulumi.set(__self__, "username", username)
+        if mysql_grants is not None:
+            pulumi.set(__self__, "mysql_grants", mysql_grants)
         if password is not None:
             pulumi.set(__self__, "password", password)
         if password_wo is not None:
@@ -90,6 +94,18 @@ class PgUserArgs:
     @username.setter
     def username(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "username", value)
+
+    @_builtins.property
+    @pulumi.getter(name="mysqlGrants")
+    def mysql_grants(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        MySQL grants for the service user. Changing this property forces recreation of the resource.
+        """
+        return pulumi.get(self, "mysql_grants")
+
+    @mysql_grants.setter
+    def mysql_grants(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "mysql_grants", value)
 
     @_builtins.property
     @pulumi.getter
@@ -155,6 +171,7 @@ class _PgUserState:
     def __init__(__self__, *,
                  access_cert: pulumi.Input[Optional[_builtins.str]] = None,
                  access_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 mysql_grants: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  password: pulumi.Input[Optional[_builtins.str]] = None,
                  password_encryption_type: pulumi.Input[Optional[_builtins.str]] = None,
                  password_wo: pulumi.Input[Optional[_builtins.str]] = None,
@@ -170,6 +187,7 @@ class _PgUserState:
 
         :param pulumi.Input[_builtins.str] access_cert: Access certificate for TLS client authentication.
         :param pulumi.Input[_builtins.str] access_key: Access key for TLS client authentication.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] mysql_grants: MySQL grants for the service user. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] password: The password of the service user (auto-generated if not provided). The field conflicts with `password_wo`. Length must be between `8` and `256`.
         :param pulumi.Input[_builtins.str] password_encryption_type: The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. 'unknown' is reported when the hash is missing or uses an unrecognised format. The possible values are `md5`, `scram-sha-256` and `unknown`.
         :param pulumi.Input[_builtins.str] password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
@@ -185,6 +203,8 @@ class _PgUserState:
             pulumi.set(__self__, "access_cert", access_cert)
         if access_key is not None:
             pulumi.set(__self__, "access_key", access_key)
+        if mysql_grants is not None:
+            pulumi.set(__self__, "mysql_grants", mysql_grants)
         if password is not None:
             pulumi.set(__self__, "password", password)
         if password_encryption_type is not None:
@@ -229,6 +249,18 @@ class _PgUserState:
     @access_key.setter
     def access_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_key", value)
+
+    @_builtins.property
+    @pulumi.getter(name="mysqlGrants")
+    def mysql_grants(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        MySQL grants for the service user. Changing this property forces recreation of the resource.
+        """
+        return pulumi.get(self, "mysql_grants")
+
+    @mysql_grants.setter
+    def mysql_grants(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "mysql_grants", value)
 
     @_builtins.property
     @pulumi.getter
@@ -355,6 +387,7 @@ class PgUser(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 mysql_grants: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  password: pulumi.Input[Optional[_builtins.str]] = None,
                  password_wo: pulumi.Input[Optional[_builtins.str]] = None,
                  password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
@@ -379,6 +412,10 @@ class PgUser(pulumi.CustomResource):
             username="testuser",
             password_wo="password123",
             password_wo_version=1,
+            mysql_grants=[
+                "SELECT",
+                "DELETE",
+            ],
             pg_allow_replication=True)
         ```
 
@@ -391,6 +428,7 @@ class PgUser(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] mysql_grants: MySQL grants for the service user. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] password: The password of the service user (auto-generated if not provided). The field conflicts with `password_wo`. Length must be between `8` and `256`.
         :param pulumi.Input[_builtins.str] password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
                The password of the service user (write-only, not stored in state). The field is required with `password_wo_version`. The field conflicts with `password`. Length must be between `8` and `256`.
@@ -421,6 +459,10 @@ class PgUser(pulumi.CustomResource):
             username="testuser",
             password_wo="password123",
             password_wo_version=1,
+            mysql_grants=[
+                "SELECT",
+                "DELETE",
+            ],
             pg_allow_replication=True)
         ```
 
@@ -446,6 +488,7 @@ class PgUser(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 mysql_grants: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  password: pulumi.Input[Optional[_builtins.str]] = None,
                  password_wo: pulumi.Input[Optional[_builtins.str]] = None,
                  password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
@@ -463,6 +506,7 @@ class PgUser(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = PgUserArgs.__new__(PgUserArgs)
 
+            __props__.__dict__["mysql_grants"] = mysql_grants
             __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
             __props__.__dict__["password_wo"] = None if password_wo is None else pulumi.Output.secret(password_wo)
             __props__.__dict__["password_wo_version"] = password_wo_version
@@ -495,6 +539,7 @@ class PgUser(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             access_cert: pulumi.Input[Optional[_builtins.str]] = None,
             access_key: pulumi.Input[Optional[_builtins.str]] = None,
+            mysql_grants: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             password: pulumi.Input[Optional[_builtins.str]] = None,
             password_encryption_type: pulumi.Input[Optional[_builtins.str]] = None,
             password_wo: pulumi.Input[Optional[_builtins.str]] = None,
@@ -514,6 +559,7 @@ class PgUser(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] access_cert: Access certificate for TLS client authentication.
         :param pulumi.Input[_builtins.str] access_key: Access key for TLS client authentication.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] mysql_grants: MySQL grants for the service user. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] password: The password of the service user (auto-generated if not provided). The field conflicts with `password_wo`. Length must be between `8` and `256`.
         :param pulumi.Input[_builtins.str] password_encryption_type: The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. 'unknown' is reported when the hash is missing or uses an unrecognised format. The possible values are `md5`, `scram-sha-256` and `unknown`.
         :param pulumi.Input[_builtins.str] password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
@@ -531,6 +577,7 @@ class PgUser(pulumi.CustomResource):
 
         __props__.__dict__["access_cert"] = access_cert
         __props__.__dict__["access_key"] = access_key
+        __props__.__dict__["mysql_grants"] = mysql_grants
         __props__.__dict__["password"] = password
         __props__.__dict__["password_encryption_type"] = password_encryption_type
         __props__.__dict__["password_wo"] = password_wo
@@ -558,6 +605,14 @@ class PgUser(pulumi.CustomResource):
         Access key for TLS client authentication.
         """
         return pulumi.get(self, "access_key")
+
+    @_builtins.property
+    @pulumi.getter(name="mysqlGrants")
+    def mysql_grants(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+        """
+        MySQL grants for the service user. Changing this property forces recreation of the resource.
+        """
+        return pulumi.get(self, "mysql_grants")
 
     @_builtins.property
     @pulumi.getter

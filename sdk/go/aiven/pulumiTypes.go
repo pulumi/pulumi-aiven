@@ -9448,6 +9448,227 @@ func (o FlinkJarApplicationCurrentDeploymentArrayOutput) Index(i pulumi.IntInput
 	}).(FlinkJarApplicationCurrentDeploymentOutput)
 }
 
+type FlinkJarApplicationDeploymentTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create *string `pulumi:"create"`
+	// Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+	//
+	// Deprecated: Use operation-specific timeouts instead. This field will be removed in the next major version.
+	Default *string `pulumi:"default"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete *string `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update *string `pulumi:"update"`
+}
+
+// FlinkJarApplicationDeploymentTimeoutsInput is an input type that accepts FlinkJarApplicationDeploymentTimeoutsArgs and FlinkJarApplicationDeploymentTimeoutsOutput values.
+// You can construct a concrete instance of `FlinkJarApplicationDeploymentTimeoutsInput` via:
+//
+//	FlinkJarApplicationDeploymentTimeoutsArgs{...}
+type FlinkJarApplicationDeploymentTimeoutsInput interface {
+	pulumi.Input
+
+	ToFlinkJarApplicationDeploymentTimeoutsOutput() FlinkJarApplicationDeploymentTimeoutsOutput
+	ToFlinkJarApplicationDeploymentTimeoutsOutputWithContext(context.Context) FlinkJarApplicationDeploymentTimeoutsOutput
+}
+
+type FlinkJarApplicationDeploymentTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create pulumi.StringPtrInput `pulumi:"create"`
+	// Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+	//
+	// Deprecated: Use operation-specific timeouts instead. This field will be removed in the next major version.
+	Default pulumi.StringPtrInput `pulumi:"default"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete pulumi.StringPtrInput `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update pulumi.StringPtrInput `pulumi:"update"`
+}
+
+func (FlinkJarApplicationDeploymentTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlinkJarApplicationDeploymentTimeouts)(nil)).Elem()
+}
+
+func (i FlinkJarApplicationDeploymentTimeoutsArgs) ToFlinkJarApplicationDeploymentTimeoutsOutput() FlinkJarApplicationDeploymentTimeoutsOutput {
+	return i.ToFlinkJarApplicationDeploymentTimeoutsOutputWithContext(context.Background())
+}
+
+func (i FlinkJarApplicationDeploymentTimeoutsArgs) ToFlinkJarApplicationDeploymentTimeoutsOutputWithContext(ctx context.Context) FlinkJarApplicationDeploymentTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlinkJarApplicationDeploymentTimeoutsOutput)
+}
+
+func (i FlinkJarApplicationDeploymentTimeoutsArgs) ToFlinkJarApplicationDeploymentTimeoutsPtrOutput() FlinkJarApplicationDeploymentTimeoutsPtrOutput {
+	return i.ToFlinkJarApplicationDeploymentTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i FlinkJarApplicationDeploymentTimeoutsArgs) ToFlinkJarApplicationDeploymentTimeoutsPtrOutputWithContext(ctx context.Context) FlinkJarApplicationDeploymentTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlinkJarApplicationDeploymentTimeoutsOutput).ToFlinkJarApplicationDeploymentTimeoutsPtrOutputWithContext(ctx)
+}
+
+// FlinkJarApplicationDeploymentTimeoutsPtrInput is an input type that accepts FlinkJarApplicationDeploymentTimeoutsArgs, FlinkJarApplicationDeploymentTimeoutsPtr and FlinkJarApplicationDeploymentTimeoutsPtrOutput values.
+// You can construct a concrete instance of `FlinkJarApplicationDeploymentTimeoutsPtrInput` via:
+//
+//	        FlinkJarApplicationDeploymentTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type FlinkJarApplicationDeploymentTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToFlinkJarApplicationDeploymentTimeoutsPtrOutput() FlinkJarApplicationDeploymentTimeoutsPtrOutput
+	ToFlinkJarApplicationDeploymentTimeoutsPtrOutputWithContext(context.Context) FlinkJarApplicationDeploymentTimeoutsPtrOutput
+}
+
+type flinkJarApplicationDeploymentTimeoutsPtrType FlinkJarApplicationDeploymentTimeoutsArgs
+
+func FlinkJarApplicationDeploymentTimeoutsPtr(v *FlinkJarApplicationDeploymentTimeoutsArgs) FlinkJarApplicationDeploymentTimeoutsPtrInput {
+	return (*flinkJarApplicationDeploymentTimeoutsPtrType)(v)
+}
+
+func (*flinkJarApplicationDeploymentTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FlinkJarApplicationDeploymentTimeouts)(nil)).Elem()
+}
+
+func (i *flinkJarApplicationDeploymentTimeoutsPtrType) ToFlinkJarApplicationDeploymentTimeoutsPtrOutput() FlinkJarApplicationDeploymentTimeoutsPtrOutput {
+	return i.ToFlinkJarApplicationDeploymentTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *flinkJarApplicationDeploymentTimeoutsPtrType) ToFlinkJarApplicationDeploymentTimeoutsPtrOutputWithContext(ctx context.Context) FlinkJarApplicationDeploymentTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlinkJarApplicationDeploymentTimeoutsPtrOutput)
+}
+
+type FlinkJarApplicationDeploymentTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (FlinkJarApplicationDeploymentTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlinkJarApplicationDeploymentTimeouts)(nil)).Elem()
+}
+
+func (o FlinkJarApplicationDeploymentTimeoutsOutput) ToFlinkJarApplicationDeploymentTimeoutsOutput() FlinkJarApplicationDeploymentTimeoutsOutput {
+	return o
+}
+
+func (o FlinkJarApplicationDeploymentTimeoutsOutput) ToFlinkJarApplicationDeploymentTimeoutsOutputWithContext(ctx context.Context) FlinkJarApplicationDeploymentTimeoutsOutput {
+	return o
+}
+
+func (o FlinkJarApplicationDeploymentTimeoutsOutput) ToFlinkJarApplicationDeploymentTimeoutsPtrOutput() FlinkJarApplicationDeploymentTimeoutsPtrOutput {
+	return o.ToFlinkJarApplicationDeploymentTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o FlinkJarApplicationDeploymentTimeoutsOutput) ToFlinkJarApplicationDeploymentTimeoutsPtrOutputWithContext(ctx context.Context) FlinkJarApplicationDeploymentTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FlinkJarApplicationDeploymentTimeouts) *FlinkJarApplicationDeploymentTimeouts {
+		return &v
+	}).(FlinkJarApplicationDeploymentTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o FlinkJarApplicationDeploymentTimeoutsOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlinkJarApplicationDeploymentTimeouts) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+// Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+//
+// Deprecated: Use operation-specific timeouts instead. This field will be removed in the next major version.
+func (o FlinkJarApplicationDeploymentTimeoutsOutput) Default() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlinkJarApplicationDeploymentTimeouts) *string { return v.Default }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o FlinkJarApplicationDeploymentTimeoutsOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlinkJarApplicationDeploymentTimeouts) *string { return v.Delete }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o FlinkJarApplicationDeploymentTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlinkJarApplicationDeploymentTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o FlinkJarApplicationDeploymentTimeoutsOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlinkJarApplicationDeploymentTimeouts) *string { return v.Update }).(pulumi.StringPtrOutput)
+}
+
+type FlinkJarApplicationDeploymentTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (FlinkJarApplicationDeploymentTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FlinkJarApplicationDeploymentTimeouts)(nil)).Elem()
+}
+
+func (o FlinkJarApplicationDeploymentTimeoutsPtrOutput) ToFlinkJarApplicationDeploymentTimeoutsPtrOutput() FlinkJarApplicationDeploymentTimeoutsPtrOutput {
+	return o
+}
+
+func (o FlinkJarApplicationDeploymentTimeoutsPtrOutput) ToFlinkJarApplicationDeploymentTimeoutsPtrOutputWithContext(ctx context.Context) FlinkJarApplicationDeploymentTimeoutsPtrOutput {
+	return o
+}
+
+func (o FlinkJarApplicationDeploymentTimeoutsPtrOutput) Elem() FlinkJarApplicationDeploymentTimeoutsOutput {
+	return o.ApplyT(func(v *FlinkJarApplicationDeploymentTimeouts) FlinkJarApplicationDeploymentTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret FlinkJarApplicationDeploymentTimeouts
+		return ret
+	}).(FlinkJarApplicationDeploymentTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o FlinkJarApplicationDeploymentTimeoutsPtrOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlinkJarApplicationDeploymentTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Create
+	}).(pulumi.StringPtrOutput)
+}
+
+// Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+//
+// Deprecated: Use operation-specific timeouts instead. This field will be removed in the next major version.
+func (o FlinkJarApplicationDeploymentTimeoutsPtrOutput) Default() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlinkJarApplicationDeploymentTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Default
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o FlinkJarApplicationDeploymentTimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlinkJarApplicationDeploymentTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delete
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o FlinkJarApplicationDeploymentTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlinkJarApplicationDeploymentTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o FlinkJarApplicationDeploymentTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlinkJarApplicationDeploymentTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Update
+	}).(pulumi.StringPtrOutput)
+}
+
 type FlinkJarApplicationTimeouts struct {
 	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
 	Create *string `pulumi:"create"`
@@ -9678,7 +9899,7 @@ type FlinkJarApplicationVersionFileInfo struct {
 	FileStatus *string `pulumi:"fileStatus"`
 	// The pre-signed url of the bucket where the .jar file is uploaded. Becomes null when the JarApplicationVersion is ready or failed.
 	Url *string `pulumi:"url"`
-	// In the case fileStatus is FAILED, the error code of the failure. The possible values are `1`, `2` and `3`.
+	// In the case fileStatus is FAILED, the error code of the failure. The possible values are `1`, `2`, `3` and `4`.
 	VerifyErrorCode *int `pulumi:"verifyErrorCode"`
 	// In the case fileStatus is FAILED, may contain details about the failure.
 	VerifyErrorMessage *string `pulumi:"verifyErrorMessage"`
@@ -9704,7 +9925,7 @@ type FlinkJarApplicationVersionFileInfoArgs struct {
 	FileStatus pulumi.StringPtrInput `pulumi:"fileStatus"`
 	// The pre-signed url of the bucket where the .jar file is uploaded. Becomes null when the JarApplicationVersion is ready or failed.
 	Url pulumi.StringPtrInput `pulumi:"url"`
-	// In the case fileStatus is FAILED, the error code of the failure. The possible values are `1`, `2` and `3`.
+	// In the case fileStatus is FAILED, the error code of the failure. The possible values are `1`, `2`, `3` and `4`.
 	VerifyErrorCode pulumi.IntPtrInput `pulumi:"verifyErrorCode"`
 	// In the case fileStatus is FAILED, may contain details about the failure.
 	VerifyErrorMessage pulumi.StringPtrInput `pulumi:"verifyErrorMessage"`
@@ -9781,7 +10002,7 @@ func (o FlinkJarApplicationVersionFileInfoOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlinkJarApplicationVersionFileInfo) *string { return v.Url }).(pulumi.StringPtrOutput)
 }
 
-// In the case fileStatus is FAILED, the error code of the failure. The possible values are `1`, `2` and `3`.
+// In the case fileStatus is FAILED, the error code of the failure. The possible values are `1`, `2`, `3` and `4`.
 func (o FlinkJarApplicationVersionFileInfoOutput) VerifyErrorCode() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v FlinkJarApplicationVersionFileInfo) *int { return v.VerifyErrorCode }).(pulumi.IntPtrOutput)
 }
@@ -9809,6 +10030,227 @@ func (o FlinkJarApplicationVersionFileInfoArrayOutput) Index(i pulumi.IntInput) 
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FlinkJarApplicationVersionFileInfo {
 		return vs[0].([]FlinkJarApplicationVersionFileInfo)[vs[1].(int)]
 	}).(FlinkJarApplicationVersionFileInfoOutput)
+}
+
+type FlinkJarApplicationVersionTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create *string `pulumi:"create"`
+	// Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+	//
+	// Deprecated: Use operation-specific timeouts instead. This field will be removed in the next major version.
+	Default *string `pulumi:"default"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete *string `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update *string `pulumi:"update"`
+}
+
+// FlinkJarApplicationVersionTimeoutsInput is an input type that accepts FlinkJarApplicationVersionTimeoutsArgs and FlinkJarApplicationVersionTimeoutsOutput values.
+// You can construct a concrete instance of `FlinkJarApplicationVersionTimeoutsInput` via:
+//
+//	FlinkJarApplicationVersionTimeoutsArgs{...}
+type FlinkJarApplicationVersionTimeoutsInput interface {
+	pulumi.Input
+
+	ToFlinkJarApplicationVersionTimeoutsOutput() FlinkJarApplicationVersionTimeoutsOutput
+	ToFlinkJarApplicationVersionTimeoutsOutputWithContext(context.Context) FlinkJarApplicationVersionTimeoutsOutput
+}
+
+type FlinkJarApplicationVersionTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create pulumi.StringPtrInput `pulumi:"create"`
+	// Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+	//
+	// Deprecated: Use operation-specific timeouts instead. This field will be removed in the next major version.
+	Default pulumi.StringPtrInput `pulumi:"default"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete pulumi.StringPtrInput `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update pulumi.StringPtrInput `pulumi:"update"`
+}
+
+func (FlinkJarApplicationVersionTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlinkJarApplicationVersionTimeouts)(nil)).Elem()
+}
+
+func (i FlinkJarApplicationVersionTimeoutsArgs) ToFlinkJarApplicationVersionTimeoutsOutput() FlinkJarApplicationVersionTimeoutsOutput {
+	return i.ToFlinkJarApplicationVersionTimeoutsOutputWithContext(context.Background())
+}
+
+func (i FlinkJarApplicationVersionTimeoutsArgs) ToFlinkJarApplicationVersionTimeoutsOutputWithContext(ctx context.Context) FlinkJarApplicationVersionTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlinkJarApplicationVersionTimeoutsOutput)
+}
+
+func (i FlinkJarApplicationVersionTimeoutsArgs) ToFlinkJarApplicationVersionTimeoutsPtrOutput() FlinkJarApplicationVersionTimeoutsPtrOutput {
+	return i.ToFlinkJarApplicationVersionTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i FlinkJarApplicationVersionTimeoutsArgs) ToFlinkJarApplicationVersionTimeoutsPtrOutputWithContext(ctx context.Context) FlinkJarApplicationVersionTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlinkJarApplicationVersionTimeoutsOutput).ToFlinkJarApplicationVersionTimeoutsPtrOutputWithContext(ctx)
+}
+
+// FlinkJarApplicationVersionTimeoutsPtrInput is an input type that accepts FlinkJarApplicationVersionTimeoutsArgs, FlinkJarApplicationVersionTimeoutsPtr and FlinkJarApplicationVersionTimeoutsPtrOutput values.
+// You can construct a concrete instance of `FlinkJarApplicationVersionTimeoutsPtrInput` via:
+//
+//	        FlinkJarApplicationVersionTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type FlinkJarApplicationVersionTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToFlinkJarApplicationVersionTimeoutsPtrOutput() FlinkJarApplicationVersionTimeoutsPtrOutput
+	ToFlinkJarApplicationVersionTimeoutsPtrOutputWithContext(context.Context) FlinkJarApplicationVersionTimeoutsPtrOutput
+}
+
+type flinkJarApplicationVersionTimeoutsPtrType FlinkJarApplicationVersionTimeoutsArgs
+
+func FlinkJarApplicationVersionTimeoutsPtr(v *FlinkJarApplicationVersionTimeoutsArgs) FlinkJarApplicationVersionTimeoutsPtrInput {
+	return (*flinkJarApplicationVersionTimeoutsPtrType)(v)
+}
+
+func (*flinkJarApplicationVersionTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FlinkJarApplicationVersionTimeouts)(nil)).Elem()
+}
+
+func (i *flinkJarApplicationVersionTimeoutsPtrType) ToFlinkJarApplicationVersionTimeoutsPtrOutput() FlinkJarApplicationVersionTimeoutsPtrOutput {
+	return i.ToFlinkJarApplicationVersionTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *flinkJarApplicationVersionTimeoutsPtrType) ToFlinkJarApplicationVersionTimeoutsPtrOutputWithContext(ctx context.Context) FlinkJarApplicationVersionTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlinkJarApplicationVersionTimeoutsPtrOutput)
+}
+
+type FlinkJarApplicationVersionTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (FlinkJarApplicationVersionTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlinkJarApplicationVersionTimeouts)(nil)).Elem()
+}
+
+func (o FlinkJarApplicationVersionTimeoutsOutput) ToFlinkJarApplicationVersionTimeoutsOutput() FlinkJarApplicationVersionTimeoutsOutput {
+	return o
+}
+
+func (o FlinkJarApplicationVersionTimeoutsOutput) ToFlinkJarApplicationVersionTimeoutsOutputWithContext(ctx context.Context) FlinkJarApplicationVersionTimeoutsOutput {
+	return o
+}
+
+func (o FlinkJarApplicationVersionTimeoutsOutput) ToFlinkJarApplicationVersionTimeoutsPtrOutput() FlinkJarApplicationVersionTimeoutsPtrOutput {
+	return o.ToFlinkJarApplicationVersionTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o FlinkJarApplicationVersionTimeoutsOutput) ToFlinkJarApplicationVersionTimeoutsPtrOutputWithContext(ctx context.Context) FlinkJarApplicationVersionTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FlinkJarApplicationVersionTimeouts) *FlinkJarApplicationVersionTimeouts {
+		return &v
+	}).(FlinkJarApplicationVersionTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o FlinkJarApplicationVersionTimeoutsOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlinkJarApplicationVersionTimeouts) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+// Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+//
+// Deprecated: Use operation-specific timeouts instead. This field will be removed in the next major version.
+func (o FlinkJarApplicationVersionTimeoutsOutput) Default() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlinkJarApplicationVersionTimeouts) *string { return v.Default }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o FlinkJarApplicationVersionTimeoutsOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlinkJarApplicationVersionTimeouts) *string { return v.Delete }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o FlinkJarApplicationVersionTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlinkJarApplicationVersionTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o FlinkJarApplicationVersionTimeoutsOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlinkJarApplicationVersionTimeouts) *string { return v.Update }).(pulumi.StringPtrOutput)
+}
+
+type FlinkJarApplicationVersionTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (FlinkJarApplicationVersionTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FlinkJarApplicationVersionTimeouts)(nil)).Elem()
+}
+
+func (o FlinkJarApplicationVersionTimeoutsPtrOutput) ToFlinkJarApplicationVersionTimeoutsPtrOutput() FlinkJarApplicationVersionTimeoutsPtrOutput {
+	return o
+}
+
+func (o FlinkJarApplicationVersionTimeoutsPtrOutput) ToFlinkJarApplicationVersionTimeoutsPtrOutputWithContext(ctx context.Context) FlinkJarApplicationVersionTimeoutsPtrOutput {
+	return o
+}
+
+func (o FlinkJarApplicationVersionTimeoutsPtrOutput) Elem() FlinkJarApplicationVersionTimeoutsOutput {
+	return o.ApplyT(func(v *FlinkJarApplicationVersionTimeouts) FlinkJarApplicationVersionTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret FlinkJarApplicationVersionTimeouts
+		return ret
+	}).(FlinkJarApplicationVersionTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o FlinkJarApplicationVersionTimeoutsPtrOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlinkJarApplicationVersionTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Create
+	}).(pulumi.StringPtrOutput)
+}
+
+// Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+//
+// Deprecated: Use operation-specific timeouts instead. This field will be removed in the next major version.
+func (o FlinkJarApplicationVersionTimeoutsPtrOutput) Default() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlinkJarApplicationVersionTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Default
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o FlinkJarApplicationVersionTimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlinkJarApplicationVersionTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delete
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o FlinkJarApplicationVersionTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlinkJarApplicationVersionTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o FlinkJarApplicationVersionTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlinkJarApplicationVersionTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Update
+	}).(pulumi.StringPtrOutput)
 }
 
 type FlinkServiceIntegration struct {
@@ -18923,7 +19365,7 @@ type KafkaKafkaUserConfig struct {
 	KafkaSaslMechanisms *KafkaKafkaUserConfigKafkaSaslMechanisms `pulumi:"kafkaSaslMechanisms"`
 	// Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, `4.1`, `4.2`, and newer. Kafka major version.
 	KafkaVersion *string `pulumi:"kafkaVersion"`
-	// Pin a specific installed Karapace version on this service. Leave null/unset to auto-follow the newest installed version.
+	// Enum: `6.2.1`, `6.2.2`, `6.2.3`, and newer. Select a Karapace version for this service, or select Latest to use the latest available version automatically. New versions become available after installation during a maintenance update.
 	KarapaceVersion *string `pulumi:"karapaceVersion"`
 	// Use a Let's Encrypt certificate authority (CA) for Kafka SASL authentication. (Default: False).
 	LetsencryptSasl *bool `pulumi:"letsencryptSasl"`
@@ -19017,7 +19459,7 @@ type KafkaKafkaUserConfigArgs struct {
 	KafkaSaslMechanisms KafkaKafkaUserConfigKafkaSaslMechanismsPtrInput `pulumi:"kafkaSaslMechanisms"`
 	// Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, `4.1`, `4.2`, and newer. Kafka major version.
 	KafkaVersion pulumi.StringPtrInput `pulumi:"kafkaVersion"`
-	// Pin a specific installed Karapace version on this service. Leave null/unset to auto-follow the newest installed version.
+	// Enum: `6.2.1`, `6.2.2`, `6.2.3`, and newer. Select a Karapace version for this service, or select Latest to use the latest available version automatically. New versions become available after installation during a maintenance update.
 	KarapaceVersion pulumi.StringPtrInput `pulumi:"karapaceVersion"`
 	// Use a Let's Encrypt certificate authority (CA) for Kafka SASL authentication. (Default: False).
 	LetsencryptSasl pulumi.BoolPtrInput `pulumi:"letsencryptSasl"`
@@ -19254,7 +19696,7 @@ func (o KafkaKafkaUserConfigOutput) KafkaVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfig) *string { return v.KafkaVersion }).(pulumi.StringPtrOutput)
 }
 
-// Pin a specific installed Karapace version on this service. Leave null/unset to auto-follow the newest installed version.
+// Enum: `6.2.1`, `6.2.2`, `6.2.3`, and newer. Select a Karapace version for this service, or select Latest to use the latest available version automatically. New versions become available after installation during a maintenance update.
 func (o KafkaKafkaUserConfigOutput) KarapaceVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfig) *string { return v.KarapaceVersion }).(pulumi.StringPtrOutput)
 }
@@ -19592,7 +20034,7 @@ func (o KafkaKafkaUserConfigPtrOutput) KafkaVersion() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Pin a specific installed Karapace version on this service. Leave null/unset to auto-follow the newest installed version.
+// Enum: `6.2.1`, `6.2.2`, `6.2.3`, and newer. Select a Karapace version for this service, or select Latest to use the latest available version automatically. New versions become available after installation during a maintenance update.
 func (o KafkaKafkaUserConfigPtrOutput) KarapaceVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfig) *string {
 		if v == nil {
@@ -24543,13 +24985,13 @@ type KafkaKafkaUserConfigSchemaRegistryConfig struct {
 	LeaderEligibility *bool `pulumi:"leaderEligibility"`
 	// If enabled, kafka errors which can be retried or custom errors specified for the service will not be raised, instead, a warning log is emitted. This will denoise issue tracking systems, i.e. sentry. Defaults to `true`.
 	RetriableErrorsSilenced *bool `pulumi:"retriableErrorsSilenced"`
-	// If enabled, the Schema Registry validates OAuth2/OIDC JWT bearer tokens on incoming requests. Requires the OIDC provider settings under the `kafka` configuration (`saslOauthbearerJwksEndpointUrl` and related). Defaults to `false`.
+	// If enabled, the Schema Registry validates OAuth 2.0/OIDC JWT bearer tokens. Requires `saslOauthbearerJwksEndpointUrl`, `saslOauthbearerExpectedIssuer`, and `saslOauthbearerExpectedAudience` under `kafka`. Defaults to `false`.
 	SaslOauthbearerAuthenticationEnabled *bool `pulumi:"saslOauthbearerAuthenticationEnabled"`
-	// If enabled, the Schema Registry enforces role-based authorization derived from the JWT roles claim. Requires `saslOauthbearerAuthenticationEnabled` to be enabled. Defaults to `false`.
+	// If enabled, the Schema Registry enforces role-based authorization using the JWT roles claim. It also enables `saslOauthbearerAuthenticationEnabled` if it isn't already enabled. Authorization requires authentication. Defaults to `false`.
 	SaslOauthbearerAuthorizationEnabled *bool `pulumi:"saslOauthbearerAuthorizationEnabled"`
-	// JSON object mapping HTTP methods to the list of roles allowed to perform them on the Schema Registry, provided as a JSON-encoded string. Role names use the `karapace.` prefix, e.g. `karapace.schema:read`. Defaults to `{"GET": ["karapace.schema:read", "karapace.subject:read"], "POST": [], "PUT": [], "DELETE": []}`.
+	// Maps HTTP methods to allowed roles. Use a JSON object with `GET`, `POST`, `PUT`, and `DELETE` keys mapped to arrays of roles. Role names use the `karapace.` prefix. Example: `{"GET": ["karapace.schema:read"], "POST": [], "PUT": [], "DELETE": []}`. Example: `{"GET":["karapace.schema:read"],"POST":[],"PUT":[],"DELETE":[]}`.
 	SaslOauthbearerMethodRoles *string `pulumi:"saslOauthbearerMethodRoles"`
-	// JSON path used to extract the roles claim from the JWT for Schema Registry authorization. Defaults to `resource_access.karapace.roles`.
+	// The JSON path the Schema Registry uses to find the roles claim in the JWT. Defaults to `resource_access.karapace.roles`.
 	SaslOauthbearerRolesClaimPath *string `pulumi:"saslOauthbearerRolesClaimPath"`
 	// If enabled, causes the Karapace schema-registry service to shutdown when there are invalid schema records in the `_schemas` topic. Defaults to `false`.
 	SchemaReaderStrictMode *bool `pulumi:"schemaReaderStrictMode"`
@@ -24573,13 +25015,13 @@ type KafkaKafkaUserConfigSchemaRegistryConfigArgs struct {
 	LeaderEligibility pulumi.BoolPtrInput `pulumi:"leaderEligibility"`
 	// If enabled, kafka errors which can be retried or custom errors specified for the service will not be raised, instead, a warning log is emitted. This will denoise issue tracking systems, i.e. sentry. Defaults to `true`.
 	RetriableErrorsSilenced pulumi.BoolPtrInput `pulumi:"retriableErrorsSilenced"`
-	// If enabled, the Schema Registry validates OAuth2/OIDC JWT bearer tokens on incoming requests. Requires the OIDC provider settings under the `kafka` configuration (`saslOauthbearerJwksEndpointUrl` and related). Defaults to `false`.
+	// If enabled, the Schema Registry validates OAuth 2.0/OIDC JWT bearer tokens. Requires `saslOauthbearerJwksEndpointUrl`, `saslOauthbearerExpectedIssuer`, and `saslOauthbearerExpectedAudience` under `kafka`. Defaults to `false`.
 	SaslOauthbearerAuthenticationEnabled pulumi.BoolPtrInput `pulumi:"saslOauthbearerAuthenticationEnabled"`
-	// If enabled, the Schema Registry enforces role-based authorization derived from the JWT roles claim. Requires `saslOauthbearerAuthenticationEnabled` to be enabled. Defaults to `false`.
+	// If enabled, the Schema Registry enforces role-based authorization using the JWT roles claim. It also enables `saslOauthbearerAuthenticationEnabled` if it isn't already enabled. Authorization requires authentication. Defaults to `false`.
 	SaslOauthbearerAuthorizationEnabled pulumi.BoolPtrInput `pulumi:"saslOauthbearerAuthorizationEnabled"`
-	// JSON object mapping HTTP methods to the list of roles allowed to perform them on the Schema Registry, provided as a JSON-encoded string. Role names use the `karapace.` prefix, e.g. `karapace.schema:read`. Defaults to `{"GET": ["karapace.schema:read", "karapace.subject:read"], "POST": [], "PUT": [], "DELETE": []}`.
+	// Maps HTTP methods to allowed roles. Use a JSON object with `GET`, `POST`, `PUT`, and `DELETE` keys mapped to arrays of roles. Role names use the `karapace.` prefix. Example: `{"GET": ["karapace.schema:read"], "POST": [], "PUT": [], "DELETE": []}`. Example: `{"GET":["karapace.schema:read"],"POST":[],"PUT":[],"DELETE":[]}`.
 	SaslOauthbearerMethodRoles pulumi.StringPtrInput `pulumi:"saslOauthbearerMethodRoles"`
-	// JSON path used to extract the roles claim from the JWT for Schema Registry authorization. Defaults to `resource_access.karapace.roles`.
+	// The JSON path the Schema Registry uses to find the roles claim in the JWT. Defaults to `resource_access.karapace.roles`.
 	SaslOauthbearerRolesClaimPath pulumi.StringPtrInput `pulumi:"saslOauthbearerRolesClaimPath"`
 	// If enabled, causes the Karapace schema-registry service to shutdown when there are invalid schema records in the `_schemas` topic. Defaults to `false`.
 	SchemaReaderStrictMode pulumi.BoolPtrInput `pulumi:"schemaReaderStrictMode"`
@@ -24674,22 +25116,22 @@ func (o KafkaKafkaUserConfigSchemaRegistryConfigOutput) RetriableErrorsSilenced(
 	return o.ApplyT(func(v KafkaKafkaUserConfigSchemaRegistryConfig) *bool { return v.RetriableErrorsSilenced }).(pulumi.BoolPtrOutput)
 }
 
-// If enabled, the Schema Registry validates OAuth2/OIDC JWT bearer tokens on incoming requests. Requires the OIDC provider settings under the `kafka` configuration (`saslOauthbearerJwksEndpointUrl` and related). Defaults to `false`.
+// If enabled, the Schema Registry validates OAuth 2.0/OIDC JWT bearer tokens. Requires `saslOauthbearerJwksEndpointUrl`, `saslOauthbearerExpectedIssuer`, and `saslOauthbearerExpectedAudience` under `kafka`. Defaults to `false`.
 func (o KafkaKafkaUserConfigSchemaRegistryConfigOutput) SaslOauthbearerAuthenticationEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfigSchemaRegistryConfig) *bool { return v.SaslOauthbearerAuthenticationEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// If enabled, the Schema Registry enforces role-based authorization derived from the JWT roles claim. Requires `saslOauthbearerAuthenticationEnabled` to be enabled. Defaults to `false`.
+// If enabled, the Schema Registry enforces role-based authorization using the JWT roles claim. It also enables `saslOauthbearerAuthenticationEnabled` if it isn't already enabled. Authorization requires authentication. Defaults to `false`.
 func (o KafkaKafkaUserConfigSchemaRegistryConfigOutput) SaslOauthbearerAuthorizationEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfigSchemaRegistryConfig) *bool { return v.SaslOauthbearerAuthorizationEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// JSON object mapping HTTP methods to the list of roles allowed to perform them on the Schema Registry, provided as a JSON-encoded string. Role names use the `karapace.` prefix, e.g. `karapace.schema:read`. Defaults to `{"GET": ["karapace.schema:read", "karapace.subject:read"], "POST": [], "PUT": [], "DELETE": []}`.
+// Maps HTTP methods to allowed roles. Use a JSON object with `GET`, `POST`, `PUT`, and `DELETE` keys mapped to arrays of roles. Role names use the `karapace.` prefix. Example: `{"GET": ["karapace.schema:read"], "POST": [], "PUT": [], "DELETE": []}`. Example: `{"GET":["karapace.schema:read"],"POST":[],"PUT":[],"DELETE":[]}`.
 func (o KafkaKafkaUserConfigSchemaRegistryConfigOutput) SaslOauthbearerMethodRoles() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfigSchemaRegistryConfig) *string { return v.SaslOauthbearerMethodRoles }).(pulumi.StringPtrOutput)
 }
 
-// JSON path used to extract the roles claim from the JWT for Schema Registry authorization. Defaults to `resource_access.karapace.roles`.
+// The JSON path the Schema Registry uses to find the roles claim in the JWT. Defaults to `resource_access.karapace.roles`.
 func (o KafkaKafkaUserConfigSchemaRegistryConfigOutput) SaslOauthbearerRolesClaimPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfigSchemaRegistryConfig) *string { return v.SaslOauthbearerRolesClaimPath }).(pulumi.StringPtrOutput)
 }
@@ -24748,7 +25190,7 @@ func (o KafkaKafkaUserConfigSchemaRegistryConfigPtrOutput) RetriableErrorsSilenc
 	}).(pulumi.BoolPtrOutput)
 }
 
-// If enabled, the Schema Registry validates OAuth2/OIDC JWT bearer tokens on incoming requests. Requires the OIDC provider settings under the `kafka` configuration (`saslOauthbearerJwksEndpointUrl` and related). Defaults to `false`.
+// If enabled, the Schema Registry validates OAuth 2.0/OIDC JWT bearer tokens. Requires `saslOauthbearerJwksEndpointUrl`, `saslOauthbearerExpectedIssuer`, and `saslOauthbearerExpectedAudience` under `kafka`. Defaults to `false`.
 func (o KafkaKafkaUserConfigSchemaRegistryConfigPtrOutput) SaslOauthbearerAuthenticationEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfigSchemaRegistryConfig) *bool {
 		if v == nil {
@@ -24758,7 +25200,7 @@ func (o KafkaKafkaUserConfigSchemaRegistryConfigPtrOutput) SaslOauthbearerAuthen
 	}).(pulumi.BoolPtrOutput)
 }
 
-// If enabled, the Schema Registry enforces role-based authorization derived from the JWT roles claim. Requires `saslOauthbearerAuthenticationEnabled` to be enabled. Defaults to `false`.
+// If enabled, the Schema Registry enforces role-based authorization using the JWT roles claim. It also enables `saslOauthbearerAuthenticationEnabled` if it isn't already enabled. Authorization requires authentication. Defaults to `false`.
 func (o KafkaKafkaUserConfigSchemaRegistryConfigPtrOutput) SaslOauthbearerAuthorizationEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfigSchemaRegistryConfig) *bool {
 		if v == nil {
@@ -24768,7 +25210,7 @@ func (o KafkaKafkaUserConfigSchemaRegistryConfigPtrOutput) SaslOauthbearerAuthor
 	}).(pulumi.BoolPtrOutput)
 }
 
-// JSON object mapping HTTP methods to the list of roles allowed to perform them on the Schema Registry, provided as a JSON-encoded string. Role names use the `karapace.` prefix, e.g. `karapace.schema:read`. Defaults to `{"GET": ["karapace.schema:read", "karapace.subject:read"], "POST": [], "PUT": [], "DELETE": []}`.
+// Maps HTTP methods to allowed roles. Use a JSON object with `GET`, `POST`, `PUT`, and `DELETE` keys mapped to arrays of roles. Role names use the `karapace.` prefix. Example: `{"GET": ["karapace.schema:read"], "POST": [], "PUT": [], "DELETE": []}`. Example: `{"GET":["karapace.schema:read"],"POST":[],"PUT":[],"DELETE":[]}`.
 func (o KafkaKafkaUserConfigSchemaRegistryConfigPtrOutput) SaslOauthbearerMethodRoles() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfigSchemaRegistryConfig) *string {
 		if v == nil {
@@ -24778,7 +25220,7 @@ func (o KafkaKafkaUserConfigSchemaRegistryConfigPtrOutput) SaslOauthbearerMethod
 	}).(pulumi.StringPtrOutput)
 }
 
-// JSON path used to extract the roles claim from the JWT for Schema Registry authorization. Defaults to `resource_access.karapace.roles`.
+// The JSON path the Schema Registry uses to find the roles claim in the JWT. Defaults to `resource_access.karapace.roles`.
 func (o KafkaKafkaUserConfigSchemaRegistryConfigPtrOutput) SaslOauthbearerRolesClaimPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfigSchemaRegistryConfig) *string {
 		if v == nil {
@@ -27472,7 +27914,7 @@ type KafkaTopicConfig struct {
 	MaxMessageBytes *string `pulumi:"maxMessageBytes"`
 	// This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests. When set to false, broker will not perform down-conversion for consumers expecting an older message format. The broker responds with UNSUPPORTED_VERSION error for consume requests from such older clients. This configuration does not apply to any message format conversion that might be required for replication to followers.
 	MessageDownconversionEnable *bool `pulumi:"messageDownconversionEnable"`
-	// Specify the message format version the broker will use to append messages to the logs. The value should be a valid ApiVersion. Some examples are: 0.8.2, 0.9.0.0, 0.10.0, check ApiVersion for more details. By setting a particular message format version, the user is certifying that all the existing messages on disk are smaller or equal than the specified version. Setting this value incorrectly will cause consumers with older versions to break as they will receive messages with a format that they don't understand. Deprecated in Kafka 4.0+: this configuration is removed and any supplied value will be ignored; for services upgraded to 4.0+, the returned value may be 'None'. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.0`, `4.0-IV0`, `4.1`, `4.1-IV0`, `4.2` and `4.2-IV0`.
+	// Specify the message format version the broker will use to append messages to the logs. The value should be a valid ApiVersion. Some examples are: 0.8.2, 0.9.0.0, 0.10.0, check ApiVersion for more details. By setting a particular message format version, the user is certifying that all the existing messages on disk are smaller or equal than the specified version. Setting this value incorrectly will cause consumers with older versions to break as they will receive messages with a format that they don't understand. Deprecated in Kafka 4.0+: this configuration is removed and any supplied value will be ignored; for services upgraded to 4.0+, the returned value may be 'None'. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.0`, `4.0-IV0`, `4.1`, `4.1-IV0`, `4.2`, `4.2-IV0`, `4.3` and `4.3-IV0`.
 	MessageFormatVersion *string `pulumi:"messageFormatVersion"`
 	// The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps later than the broker's timestamp.
 	MessageTimestampAfterMaxMs *string `pulumi:"messageTimestampAfterMaxMs"`
@@ -27546,7 +27988,7 @@ type KafkaTopicConfigArgs struct {
 	MaxMessageBytes pulumi.StringPtrInput `pulumi:"maxMessageBytes"`
 	// This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests. When set to false, broker will not perform down-conversion for consumers expecting an older message format. The broker responds with UNSUPPORTED_VERSION error for consume requests from such older clients. This configuration does not apply to any message format conversion that might be required for replication to followers.
 	MessageDownconversionEnable pulumi.BoolPtrInput `pulumi:"messageDownconversionEnable"`
-	// Specify the message format version the broker will use to append messages to the logs. The value should be a valid ApiVersion. Some examples are: 0.8.2, 0.9.0.0, 0.10.0, check ApiVersion for more details. By setting a particular message format version, the user is certifying that all the existing messages on disk are smaller or equal than the specified version. Setting this value incorrectly will cause consumers with older versions to break as they will receive messages with a format that they don't understand. Deprecated in Kafka 4.0+: this configuration is removed and any supplied value will be ignored; for services upgraded to 4.0+, the returned value may be 'None'. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.0`, `4.0-IV0`, `4.1`, `4.1-IV0`, `4.2` and `4.2-IV0`.
+	// Specify the message format version the broker will use to append messages to the logs. The value should be a valid ApiVersion. Some examples are: 0.8.2, 0.9.0.0, 0.10.0, check ApiVersion for more details. By setting a particular message format version, the user is certifying that all the existing messages on disk are smaller or equal than the specified version. Setting this value incorrectly will cause consumers with older versions to break as they will receive messages with a format that they don't understand. Deprecated in Kafka 4.0+: this configuration is removed and any supplied value will be ignored; for services upgraded to 4.0+, the returned value may be 'None'. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.0`, `4.0-IV0`, `4.1`, `4.1-IV0`, `4.2`, `4.2-IV0`, `4.3` and `4.3-IV0`.
 	MessageFormatVersion pulumi.StringPtrInput `pulumi:"messageFormatVersion"`
 	// The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps later than the broker's timestamp.
 	MessageTimestampAfterMaxMs pulumi.StringPtrInput `pulumi:"messageTimestampAfterMaxMs"`
@@ -27724,7 +28166,7 @@ func (o KafkaTopicConfigOutput) MessageDownconversionEnable() pulumi.BoolPtrOutp
 	return o.ApplyT(func(v KafkaTopicConfig) *bool { return v.MessageDownconversionEnable }).(pulumi.BoolPtrOutput)
 }
 
-// Specify the message format version the broker will use to append messages to the logs. The value should be a valid ApiVersion. Some examples are: 0.8.2, 0.9.0.0, 0.10.0, check ApiVersion for more details. By setting a particular message format version, the user is certifying that all the existing messages on disk are smaller or equal than the specified version. Setting this value incorrectly will cause consumers with older versions to break as they will receive messages with a format that they don't understand. Deprecated in Kafka 4.0+: this configuration is removed and any supplied value will be ignored; for services upgraded to 4.0+, the returned value may be 'None'. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.0`, `4.0-IV0`, `4.1`, `4.1-IV0`, `4.2` and `4.2-IV0`.
+// Specify the message format version the broker will use to append messages to the logs. The value should be a valid ApiVersion. Some examples are: 0.8.2, 0.9.0.0, 0.10.0, check ApiVersion for more details. By setting a particular message format version, the user is certifying that all the existing messages on disk are smaller or equal than the specified version. Setting this value incorrectly will cause consumers with older versions to break as they will receive messages with a format that they don't understand. Deprecated in Kafka 4.0+: this configuration is removed and any supplied value will be ignored; for services upgraded to 4.0+, the returned value may be 'None'. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.0`, `4.0-IV0`, `4.1`, `4.1-IV0`, `4.2`, `4.2-IV0`, `4.3` and `4.3-IV0`.
 func (o KafkaTopicConfigOutput) MessageFormatVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.MessageFormatVersion }).(pulumi.StringPtrOutput)
 }
@@ -27963,7 +28405,7 @@ func (o KafkaTopicConfigPtrOutput) MessageDownconversionEnable() pulumi.BoolPtrO
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Specify the message format version the broker will use to append messages to the logs. The value should be a valid ApiVersion. Some examples are: 0.8.2, 0.9.0.0, 0.10.0, check ApiVersion for more details. By setting a particular message format version, the user is certifying that all the existing messages on disk are smaller or equal than the specified version. Setting this value incorrectly will cause consumers with older versions to break as they will receive messages with a format that they don't understand. Deprecated in Kafka 4.0+: this configuration is removed and any supplied value will be ignored; for services upgraded to 4.0+, the returned value may be 'None'. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.0`, `4.0-IV0`, `4.1`, `4.1-IV0`, `4.2` and `4.2-IV0`.
+// Specify the message format version the broker will use to append messages to the logs. The value should be a valid ApiVersion. Some examples are: 0.8.2, 0.9.0.0, 0.10.0, check ApiVersion for more details. By setting a particular message format version, the user is certifying that all the existing messages on disk are smaller or equal than the specified version. Setting this value incorrectly will cause consumers with older versions to break as they will receive messages with a format that they don't understand. Deprecated in Kafka 4.0+: this configuration is removed and any supplied value will be ignored; for services upgraded to 4.0+, the returned value may be 'None'. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.0`, `4.0-IV0`, `4.1`, `4.1-IV0`, `4.2`, `4.2-IV0`, `4.3` and `4.3-IV0`.
 func (o KafkaTopicConfigPtrOutput) MessageFormatVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaTopicConfig) *string {
 		if v == nil {
@@ -30438,7 +30880,7 @@ type MySqlMysqlUserConfigMysql struct {
 	InnodbIoCapacityMax *int `pulumi:"innodbIoCapacityMax"`
 	// The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120. Example: `50`.
 	InnodbLockWaitTimeout *int `pulumi:"innodbLockWaitTimeout"`
-	// The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
+	// The size in bytes of the buffer that InnoDB uses to write to the log files on disk. Requests above 15% of the RAM provided by your service plan are rejected, because a larger buffer leaves less memory for the buffer pool and client connections.
 	InnodbLogBufferSize *int `pulumi:"innodbLogBufferSize"`
 	// The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
 	InnodbOnlineAlterLogMaxSize *int `pulumi:"innodbOnlineAlterLogMaxSize"`
@@ -30464,7 +30906,7 @@ type MySqlMysqlUserConfigMysql struct {
 	LongQueryTime *float64 `pulumi:"longQueryTime"`
 	// Enum: `0`, `1`. Sets how table and database names are stored and compared. 0 = case-sensitive (default), 1 = names stored lowercase, comparisons are case-insensitive. This option can only be set when creating the service and cannot be changed later. See https://dev.mysql.com/doc/refman/8.0/en/identifier-case-sensitivity.html for details.
 	LowerCaseTableNames *int `pulumi:"lowerCaseTableNames"`
-	// Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
+	// Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M). Statements and rows larger than this are rejected with a packet too large error.
 	MaxAllowedPacket *int `pulumi:"maxAllowedPacket"`
 	// The maximum permitted number of simultaneous client connections. Lower this to reserve memory for other work. The value cannot exceed the limit provided by your service plan. Upgrading the plan does not raise a value you have set explicitly, so increase it yourself after an upgrade. Example: `200`.
 	MaxConnections *int `pulumi:"maxConnections"`
@@ -30494,7 +30936,7 @@ type MySqlMysqlUserConfigMysql struct {
 	RelayLogSpaceLimit *int `pulumi:"relayLogSpaceLimit"`
 	// Slow query log enables capturing of slow queries. Setting slow*query*log to false also truncates the mysql.slow_log table.
 	SlowQueryLog *bool `pulumi:"slowQueryLog"`
-	// Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K). Example: `262144`.
+	// Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K). Requests above 2% of the RAM provided by your service plan are rejected, because the buffer is allocated per session and its cost multiplies with the connection count. Example: `262144`.
 	SortBufferSize *int `pulumi:"sortBufferSize"`
 	// Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned. Example: `ANSI,TRADITIONAL`.
 	SqlMode *string `pulumi:"sqlMode"`
@@ -30502,7 +30944,7 @@ type MySqlMysqlUserConfigMysql struct {
 	SqlRequirePrimaryKey *bool `pulumi:"sqlRequirePrimaryKey"`
 	// Limits the size of internal in-memory tables. Also set max*heap*table_size. Default is 16777216 (16M).
 	TmpTableSize *int `pulumi:"tmpTableSize"`
-	// The number of seconds the server waits for activity on a noninteractive connection before closing it. Example: `28800`.
+	// The number of seconds the server waits for activity on a noninteractive connection before closing it. Requests to set this below 30 are rejected, because a shorter timeout closes your own idle connections between statements. Example: `28800`.
 	WaitTimeout *int `pulumi:"waitTimeout"`
 	// Whether window functions are computed to high precision. Disabling this trades exactness for speed in window function evaluation.
 	WindowingUseHighPrecision *bool `pulumi:"windowingUseHighPrecision"`
@@ -30562,7 +31004,7 @@ type MySqlMysqlUserConfigMysqlArgs struct {
 	InnodbIoCapacityMax pulumi.IntPtrInput `pulumi:"innodbIoCapacityMax"`
 	// The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120. Example: `50`.
 	InnodbLockWaitTimeout pulumi.IntPtrInput `pulumi:"innodbLockWaitTimeout"`
-	// The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
+	// The size in bytes of the buffer that InnoDB uses to write to the log files on disk. Requests above 15% of the RAM provided by your service plan are rejected, because a larger buffer leaves less memory for the buffer pool and client connections.
 	InnodbLogBufferSize pulumi.IntPtrInput `pulumi:"innodbLogBufferSize"`
 	// The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
 	InnodbOnlineAlterLogMaxSize pulumi.IntPtrInput `pulumi:"innodbOnlineAlterLogMaxSize"`
@@ -30588,7 +31030,7 @@ type MySqlMysqlUserConfigMysqlArgs struct {
 	LongQueryTime pulumi.Float64PtrInput `pulumi:"longQueryTime"`
 	// Enum: `0`, `1`. Sets how table and database names are stored and compared. 0 = case-sensitive (default), 1 = names stored lowercase, comparisons are case-insensitive. This option can only be set when creating the service and cannot be changed later. See https://dev.mysql.com/doc/refman/8.0/en/identifier-case-sensitivity.html for details.
 	LowerCaseTableNames pulumi.IntPtrInput `pulumi:"lowerCaseTableNames"`
-	// Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
+	// Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M). Statements and rows larger than this are rejected with a packet too large error.
 	MaxAllowedPacket pulumi.IntPtrInput `pulumi:"maxAllowedPacket"`
 	// The maximum permitted number of simultaneous client connections. Lower this to reserve memory for other work. The value cannot exceed the limit provided by your service plan. Upgrading the plan does not raise a value you have set explicitly, so increase it yourself after an upgrade. Example: `200`.
 	MaxConnections pulumi.IntPtrInput `pulumi:"maxConnections"`
@@ -30618,7 +31060,7 @@ type MySqlMysqlUserConfigMysqlArgs struct {
 	RelayLogSpaceLimit pulumi.IntPtrInput `pulumi:"relayLogSpaceLimit"`
 	// Slow query log enables capturing of slow queries. Setting slow*query*log to false also truncates the mysql.slow_log table.
 	SlowQueryLog pulumi.BoolPtrInput `pulumi:"slowQueryLog"`
-	// Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K). Example: `262144`.
+	// Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K). Requests above 2% of the RAM provided by your service plan are rejected, because the buffer is allocated per session and its cost multiplies with the connection count. Example: `262144`.
 	SortBufferSize pulumi.IntPtrInput `pulumi:"sortBufferSize"`
 	// Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned. Example: `ANSI,TRADITIONAL`.
 	SqlMode pulumi.StringPtrInput `pulumi:"sqlMode"`
@@ -30626,7 +31068,7 @@ type MySqlMysqlUserConfigMysqlArgs struct {
 	SqlRequirePrimaryKey pulumi.BoolPtrInput `pulumi:"sqlRequirePrimaryKey"`
 	// Limits the size of internal in-memory tables. Also set max*heap*table_size. Default is 16777216 (16M).
 	TmpTableSize pulumi.IntPtrInput `pulumi:"tmpTableSize"`
-	// The number of seconds the server waits for activity on a noninteractive connection before closing it. Example: `28800`.
+	// The number of seconds the server waits for activity on a noninteractive connection before closing it. Requests to set this below 30 are rejected, because a shorter timeout closes your own idle connections between statements. Example: `28800`.
 	WaitTimeout pulumi.IntPtrInput `pulumi:"waitTimeout"`
 	// Whether window functions are computed to high precision. Disabling this trades exactness for speed in window function evaluation.
 	WindowingUseHighPrecision pulumi.BoolPtrInput `pulumi:"windowingUseHighPrecision"`
@@ -30814,7 +31256,7 @@ func (o MySqlMysqlUserConfigMysqlOutput) InnodbLockWaitTimeout() pulumi.IntPtrOu
 	return o.ApplyT(func(v MySqlMysqlUserConfigMysql) *int { return v.InnodbLockWaitTimeout }).(pulumi.IntPtrOutput)
 }
 
-// The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
+// The size in bytes of the buffer that InnoDB uses to write to the log files on disk. Requests above 15% of the RAM provided by your service plan are rejected, because a larger buffer leaves less memory for the buffer pool and client connections.
 func (o MySqlMysqlUserConfigMysqlOutput) InnodbLogBufferSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfigMysql) *int { return v.InnodbLogBufferSize }).(pulumi.IntPtrOutput)
 }
@@ -30879,7 +31321,7 @@ func (o MySqlMysqlUserConfigMysqlOutput) LowerCaseTableNames() pulumi.IntPtrOutp
 	return o.ApplyT(func(v MySqlMysqlUserConfigMysql) *int { return v.LowerCaseTableNames }).(pulumi.IntPtrOutput)
 }
 
-// Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
+// Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M). Statements and rows larger than this are rejected with a packet too large error.
 func (o MySqlMysqlUserConfigMysqlOutput) MaxAllowedPacket() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfigMysql) *int { return v.MaxAllowedPacket }).(pulumi.IntPtrOutput)
 }
@@ -30954,7 +31396,7 @@ func (o MySqlMysqlUserConfigMysqlOutput) SlowQueryLog() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfigMysql) *bool { return v.SlowQueryLog }).(pulumi.BoolPtrOutput)
 }
 
-// Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K). Example: `262144`.
+// Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K). Requests above 2% of the RAM provided by your service plan are rejected, because the buffer is allocated per session and its cost multiplies with the connection count. Example: `262144`.
 func (o MySqlMysqlUserConfigMysqlOutput) SortBufferSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfigMysql) *int { return v.SortBufferSize }).(pulumi.IntPtrOutput)
 }
@@ -30974,7 +31416,7 @@ func (o MySqlMysqlUserConfigMysqlOutput) TmpTableSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfigMysql) *int { return v.TmpTableSize }).(pulumi.IntPtrOutput)
 }
 
-// The number of seconds the server waits for activity on a noninteractive connection before closing it. Example: `28800`.
+// The number of seconds the server waits for activity on a noninteractive connection before closing it. Requests to set this below 30 are rejected, because a shorter timeout closes your own idle connections between statements. Example: `28800`.
 func (o MySqlMysqlUserConfigMysqlOutput) WaitTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfigMysql) *int { return v.WaitTimeout }).(pulumi.IntPtrOutput)
 }
@@ -31218,7 +31660,7 @@ func (o MySqlMysqlUserConfigMysqlPtrOutput) InnodbLockWaitTimeout() pulumi.IntPt
 	}).(pulumi.IntPtrOutput)
 }
 
-// The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
+// The size in bytes of the buffer that InnoDB uses to write to the log files on disk. Requests above 15% of the RAM provided by your service plan are rejected, because a larger buffer leaves less memory for the buffer pool and client connections.
 func (o MySqlMysqlUserConfigMysqlPtrOutput) InnodbLogBufferSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *MySqlMysqlUserConfigMysql) *int {
 		if v == nil {
@@ -31348,7 +31790,7 @@ func (o MySqlMysqlUserConfigMysqlPtrOutput) LowerCaseTableNames() pulumi.IntPtrO
 	}).(pulumi.IntPtrOutput)
 }
 
-// Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
+// Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M). Statements and rows larger than this are rejected with a packet too large error.
 func (o MySqlMysqlUserConfigMysqlPtrOutput) MaxAllowedPacket() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *MySqlMysqlUserConfigMysql) *int {
 		if v == nil {
@@ -31498,7 +31940,7 @@ func (o MySqlMysqlUserConfigMysqlPtrOutput) SlowQueryLog() pulumi.BoolPtrOutput 
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K). Example: `262144`.
+// Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K). Requests above 2% of the RAM provided by your service plan are rejected, because the buffer is allocated per session and its cost multiplies with the connection count. Example: `262144`.
 func (o MySqlMysqlUserConfigMysqlPtrOutput) SortBufferSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *MySqlMysqlUserConfigMysql) *int {
 		if v == nil {
@@ -31538,7 +31980,7 @@ func (o MySqlMysqlUserConfigMysqlPtrOutput) TmpTableSize() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The number of seconds the server waits for activity on a noninteractive connection before closing it. Example: `28800`.
+// The number of seconds the server waits for activity on a noninteractive connection before closing it. Requests to set this below 30 are rejected, because a shorter timeout closes your own idle connections between statements. Example: `28800`.
 func (o MySqlMysqlUserConfigMysqlPtrOutput) WaitTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *MySqlMysqlUserConfigMysql) *int {
 		if v == nil {
@@ -45147,7 +45589,7 @@ func (o OrganizationGroupProjectTimeoutsPtrOutput) Update() pulumi.StringPtrOutp
 type OrganizationPermissionPermission struct {
 	// Create Time.
 	CreateTime *string `pulumi:"createTime"`
-	// List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant". The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:event_logs:read`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:sustainability:read`, `organization:users:write`, `project:ai_gateway_keys:read`, `project:ai_gateway_keys:write`, `project:audit_logs:read`, `project:event_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `readOnly`, `role:organization:admin`, `role:project:admin`, `role:project:read`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:metrics:read`, `service:secrets:read` and `service:users:write`.
+	// List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant". The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:event_logs:read`, `organization:groups:read`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:sustainability:read`, `organization:users:read`, `organization:users:write`, `project:ai_gateway_keys:read`, `project:ai_gateway_keys:write`, `project:audit_logs:read`, `project:event_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `readOnly`, `role:organization:admin`, `role:project:admin`, `role:project:manager`, `role:project:read`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:metrics:read`, `service:secrets:read` and `service:users:write`.
 	Permissions []string `pulumi:"permissions"`
 	// ID of the user or group to grant permissions to. Only active users who have accepted an [invite](https://aiven.io/docs/platform/howto/manage-org-users) to join the organization can be granted permissions.
 	PrincipalId string `pulumi:"principalId"`
@@ -45171,7 +45613,7 @@ type OrganizationPermissionPermissionInput interface {
 type OrganizationPermissionPermissionArgs struct {
 	// Create Time.
 	CreateTime pulumi.StringPtrInput `pulumi:"createTime"`
-	// List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant". The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:event_logs:read`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:sustainability:read`, `organization:users:write`, `project:ai_gateway_keys:read`, `project:ai_gateway_keys:write`, `project:audit_logs:read`, `project:event_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `readOnly`, `role:organization:admin`, `role:project:admin`, `role:project:read`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:metrics:read`, `service:secrets:read` and `service:users:write`.
+	// List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant". The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:event_logs:read`, `organization:groups:read`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:sustainability:read`, `organization:users:read`, `organization:users:write`, `project:ai_gateway_keys:read`, `project:ai_gateway_keys:write`, `project:audit_logs:read`, `project:event_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `readOnly`, `role:organization:admin`, `role:project:admin`, `role:project:manager`, `role:project:read`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:metrics:read`, `service:secrets:read` and `service:users:write`.
 	Permissions pulumi.StringArrayInput `pulumi:"permissions"`
 	// ID of the user or group to grant permissions to. Only active users who have accepted an [invite](https://aiven.io/docs/platform/howto/manage-org-users) to join the organization can be granted permissions.
 	PrincipalId pulumi.StringInput `pulumi:"principalId"`
@@ -45237,7 +45679,7 @@ func (o OrganizationPermissionPermissionOutput) CreateTime() pulumi.StringPtrOut
 	return o.ApplyT(func(v OrganizationPermissionPermission) *string { return v.CreateTime }).(pulumi.StringPtrOutput)
 }
 
-// List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant". The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:event_logs:read`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:sustainability:read`, `organization:users:write`, `project:ai_gateway_keys:read`, `project:ai_gateway_keys:write`, `project:audit_logs:read`, `project:event_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `readOnly`, `role:organization:admin`, `role:project:admin`, `role:project:read`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:metrics:read`, `service:secrets:read` and `service:users:write`.
+// List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant". The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:event_logs:read`, `organization:groups:read`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:sustainability:read`, `organization:users:read`, `organization:users:write`, `project:ai_gateway_keys:read`, `project:ai_gateway_keys:write`, `project:audit_logs:read`, `project:event_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `readOnly`, `role:organization:admin`, `role:project:admin`, `role:project:manager`, `role:project:read`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:metrics:read`, `service:secrets:read` and `service:users:write`.
 func (o OrganizationPermissionPermissionOutput) Permissions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v OrganizationPermissionPermission) []string { return v.Permissions }).(pulumi.StringArrayOutput)
 }
@@ -59482,8 +59924,12 @@ type ServiceIntegrationEndpointOpentelemetryUserConfig struct {
 	Compression string `pulumi:"compression"`
 	// Enum: `json`, `protobuf`. Encoding used for exported metrics. Leave unset to use telegraf's default.
 	EncodingType *string `pulumi:"encodingType"`
+	// If set, only these measurements are sent to this endpoint; everything else is dropped for this destination only, leaving every other destination (other integrations, Prometheus, etc.) unaffected. Matched after bucketing and any overrideMeasurements rename, i.e. against the final measurement name as it will appear at the destination (e.g. `kafka`, or `do.databases.kafka` if renamed). Leave unset to export every measurement, same as today. Telegraf's underlying namepass filter treats an empty list the same as unset (both export everything), so an empty list isn't accepted here -- it wouldn't do what it looks like it does.
+	FilterMeasurements []string `pulumi:"filterMeasurements"`
 	// Additional gRPC metadata headers sent with every export request.
 	Headers map[string]string `pulumi:"headers"`
+	// Every metric belonging to a known service (mysql, postgresql, valkey -- which also covers redis, Valkey's predecessor -- opensearch, kafka) is exported here under a single bucket measurement per service -- e.g. every Kafka JMX metric, however deep its raw name, becomes measurement `kafka` (its specific identity moves into the field name instead). This map renames that bucket as a whole -- key on the bucket name (e.g. `kafka`, `postgresql`), not the metric's original raw name; it cannot target one specific metric within a bucket. Metrics outside these known services (e.g. cpu, mem, disk) are exported unchanged and can't be renamed here. The original metric name is left untouched for every other destination (other integrations, Prometheus, etc.) -- only the copy sent here is bucketed and, if listed, renamed.
+	OverrideMeasurements map[string]string `pulumi:"overrideMeasurements"`
 	// Either a bare `host:port` (OTLP/gRPC, no URL scheme) or an `http://`/`https://` URL (OTLP/HTTP). Example: `otel-collector.example.avns.net:4317`.
 	ServiceAddress string `pulumi:"serviceAddress"`
 	// Connection timeout in seconds. Example: `10`.
@@ -59508,8 +59954,12 @@ type ServiceIntegrationEndpointOpentelemetryUserConfigArgs struct {
 	Compression pulumi.StringInput `pulumi:"compression"`
 	// Enum: `json`, `protobuf`. Encoding used for exported metrics. Leave unset to use telegraf's default.
 	EncodingType pulumi.StringPtrInput `pulumi:"encodingType"`
+	// If set, only these measurements are sent to this endpoint; everything else is dropped for this destination only, leaving every other destination (other integrations, Prometheus, etc.) unaffected. Matched after bucketing and any overrideMeasurements rename, i.e. against the final measurement name as it will appear at the destination (e.g. `kafka`, or `do.databases.kafka` if renamed). Leave unset to export every measurement, same as today. Telegraf's underlying namepass filter treats an empty list the same as unset (both export everything), so an empty list isn't accepted here -- it wouldn't do what it looks like it does.
+	FilterMeasurements pulumi.StringArrayInput `pulumi:"filterMeasurements"`
 	// Additional gRPC metadata headers sent with every export request.
 	Headers pulumi.StringMapInput `pulumi:"headers"`
+	// Every metric belonging to a known service (mysql, postgresql, valkey -- which also covers redis, Valkey's predecessor -- opensearch, kafka) is exported here under a single bucket measurement per service -- e.g. every Kafka JMX metric, however deep its raw name, becomes measurement `kafka` (its specific identity moves into the field name instead). This map renames that bucket as a whole -- key on the bucket name (e.g. `kafka`, `postgresql`), not the metric's original raw name; it cannot target one specific metric within a bucket. Metrics outside these known services (e.g. cpu, mem, disk) are exported unchanged and can't be renamed here. The original metric name is left untouched for every other destination (other integrations, Prometheus, etc.) -- only the copy sent here is bucketed and, if listed, renamed.
+	OverrideMeasurements pulumi.StringMapInput `pulumi:"overrideMeasurements"`
 	// Either a bare `host:port` (OTLP/gRPC, no URL scheme) or an `http://`/`https://` URL (OTLP/HTTP). Example: `otel-collector.example.avns.net:4317`.
 	ServiceAddress pulumi.StringInput `pulumi:"serviceAddress"`
 	// Connection timeout in seconds. Example: `10`.
@@ -59608,9 +60058,21 @@ func (o ServiceIntegrationEndpointOpentelemetryUserConfigOutput) EncodingType() 
 	return o.ApplyT(func(v ServiceIntegrationEndpointOpentelemetryUserConfig) *string { return v.EncodingType }).(pulumi.StringPtrOutput)
 }
 
+// If set, only these measurements are sent to this endpoint; everything else is dropped for this destination only, leaving every other destination (other integrations, Prometheus, etc.) unaffected. Matched after bucketing and any overrideMeasurements rename, i.e. against the final measurement name as it will appear at the destination (e.g. `kafka`, or `do.databases.kafka` if renamed). Leave unset to export every measurement, same as today. Telegraf's underlying namepass filter treats an empty list the same as unset (both export everything), so an empty list isn't accepted here -- it wouldn't do what it looks like it does.
+func (o ServiceIntegrationEndpointOpentelemetryUserConfigOutput) FilterMeasurements() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServiceIntegrationEndpointOpentelemetryUserConfig) []string { return v.FilterMeasurements }).(pulumi.StringArrayOutput)
+}
+
 // Additional gRPC metadata headers sent with every export request.
 func (o ServiceIntegrationEndpointOpentelemetryUserConfigOutput) Headers() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointOpentelemetryUserConfig) map[string]string { return v.Headers }).(pulumi.StringMapOutput)
+}
+
+// Every metric belonging to a known service (mysql, postgresql, valkey -- which also covers redis, Valkey's predecessor -- opensearch, kafka) is exported here under a single bucket measurement per service -- e.g. every Kafka JMX metric, however deep its raw name, becomes measurement `kafka` (its specific identity moves into the field name instead). This map renames that bucket as a whole -- key on the bucket name (e.g. `kafka`, `postgresql`), not the metric's original raw name; it cannot target one specific metric within a bucket. Metrics outside these known services (e.g. cpu, mem, disk) are exported unchanged and can't be renamed here. The original metric name is left untouched for every other destination (other integrations, Prometheus, etc.) -- only the copy sent here is bucketed and, if listed, renamed.
+func (o ServiceIntegrationEndpointOpentelemetryUserConfigOutput) OverrideMeasurements() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ServiceIntegrationEndpointOpentelemetryUserConfig) map[string]string {
+		return v.OverrideMeasurements
+	}).(pulumi.StringMapOutput)
 }
 
 // Either a bare `host:port` (OTLP/gRPC, no URL scheme) or an `http://`/`https://` URL (OTLP/HTTP). Example: `otel-collector.example.avns.net:4317`.
@@ -59677,6 +60139,16 @@ func (o ServiceIntegrationEndpointOpentelemetryUserConfigPtrOutput) EncodingType
 	}).(pulumi.StringPtrOutput)
 }
 
+// If set, only these measurements are sent to this endpoint; everything else is dropped for this destination only, leaving every other destination (other integrations, Prometheus, etc.) unaffected. Matched after bucketing and any overrideMeasurements rename, i.e. against the final measurement name as it will appear at the destination (e.g. `kafka`, or `do.databases.kafka` if renamed). Leave unset to export every measurement, same as today. Telegraf's underlying namepass filter treats an empty list the same as unset (both export everything), so an empty list isn't accepted here -- it wouldn't do what it looks like it does.
+func (o ServiceIntegrationEndpointOpentelemetryUserConfigPtrOutput) FilterMeasurements() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServiceIntegrationEndpointOpentelemetryUserConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.FilterMeasurements
+	}).(pulumi.StringArrayOutput)
+}
+
 // Additional gRPC metadata headers sent with every export request.
 func (o ServiceIntegrationEndpointOpentelemetryUserConfigPtrOutput) Headers() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointOpentelemetryUserConfig) map[string]string {
@@ -59684,6 +60156,16 @@ func (o ServiceIntegrationEndpointOpentelemetryUserConfigPtrOutput) Headers() pu
 			return nil
 		}
 		return v.Headers
+	}).(pulumi.StringMapOutput)
+}
+
+// Every metric belonging to a known service (mysql, postgresql, valkey -- which also covers redis, Valkey's predecessor -- opensearch, kafka) is exported here under a single bucket measurement per service -- e.g. every Kafka JMX metric, however deep its raw name, becomes measurement `kafka` (its specific identity moves into the field name instead). This map renames that bucket as a whole -- key on the bucket name (e.g. `kafka`, `postgresql`), not the metric's original raw name; it cannot target one specific metric within a bucket. Metrics outside these known services (e.g. cpu, mem, disk) are exported unchanged and can't be renamed here. The original metric name is left untouched for every other destination (other integrations, Prometheus, etc.) -- only the copy sent here is bucketed and, if listed, renamed.
+func (o ServiceIntegrationEndpointOpentelemetryUserConfigPtrOutput) OverrideMeasurements() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ServiceIntegrationEndpointOpentelemetryUserConfig) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.OverrideMeasurements
 	}).(pulumi.StringMapOutput)
 }
 
@@ -66526,6 +67008,227 @@ func (o ThanosThanosUserConfigQueryFrontendPtrOutput) QueryRangeAlignRangeWithSt
 	}).(pulumi.BoolPtrOutput)
 }
 
+type TransitGatewayVpcAttachmentTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create *string `pulumi:"create"`
+	// Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+	//
+	// Deprecated: Use operation-specific timeouts instead. This field will be removed in the next major version.
+	Default *string `pulumi:"default"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete *string `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update *string `pulumi:"update"`
+}
+
+// TransitGatewayVpcAttachmentTimeoutsInput is an input type that accepts TransitGatewayVpcAttachmentTimeoutsArgs and TransitGatewayVpcAttachmentTimeoutsOutput values.
+// You can construct a concrete instance of `TransitGatewayVpcAttachmentTimeoutsInput` via:
+//
+//	TransitGatewayVpcAttachmentTimeoutsArgs{...}
+type TransitGatewayVpcAttachmentTimeoutsInput interface {
+	pulumi.Input
+
+	ToTransitGatewayVpcAttachmentTimeoutsOutput() TransitGatewayVpcAttachmentTimeoutsOutput
+	ToTransitGatewayVpcAttachmentTimeoutsOutputWithContext(context.Context) TransitGatewayVpcAttachmentTimeoutsOutput
+}
+
+type TransitGatewayVpcAttachmentTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create pulumi.StringPtrInput `pulumi:"create"`
+	// Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+	//
+	// Deprecated: Use operation-specific timeouts instead. This field will be removed in the next major version.
+	Default pulumi.StringPtrInput `pulumi:"default"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete pulumi.StringPtrInput `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update pulumi.StringPtrInput `pulumi:"update"`
+}
+
+func (TransitGatewayVpcAttachmentTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransitGatewayVpcAttachmentTimeouts)(nil)).Elem()
+}
+
+func (i TransitGatewayVpcAttachmentTimeoutsArgs) ToTransitGatewayVpcAttachmentTimeoutsOutput() TransitGatewayVpcAttachmentTimeoutsOutput {
+	return i.ToTransitGatewayVpcAttachmentTimeoutsOutputWithContext(context.Background())
+}
+
+func (i TransitGatewayVpcAttachmentTimeoutsArgs) ToTransitGatewayVpcAttachmentTimeoutsOutputWithContext(ctx context.Context) TransitGatewayVpcAttachmentTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransitGatewayVpcAttachmentTimeoutsOutput)
+}
+
+func (i TransitGatewayVpcAttachmentTimeoutsArgs) ToTransitGatewayVpcAttachmentTimeoutsPtrOutput() TransitGatewayVpcAttachmentTimeoutsPtrOutput {
+	return i.ToTransitGatewayVpcAttachmentTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i TransitGatewayVpcAttachmentTimeoutsArgs) ToTransitGatewayVpcAttachmentTimeoutsPtrOutputWithContext(ctx context.Context) TransitGatewayVpcAttachmentTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransitGatewayVpcAttachmentTimeoutsOutput).ToTransitGatewayVpcAttachmentTimeoutsPtrOutputWithContext(ctx)
+}
+
+// TransitGatewayVpcAttachmentTimeoutsPtrInput is an input type that accepts TransitGatewayVpcAttachmentTimeoutsArgs, TransitGatewayVpcAttachmentTimeoutsPtr and TransitGatewayVpcAttachmentTimeoutsPtrOutput values.
+// You can construct a concrete instance of `TransitGatewayVpcAttachmentTimeoutsPtrInput` via:
+//
+//	        TransitGatewayVpcAttachmentTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type TransitGatewayVpcAttachmentTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToTransitGatewayVpcAttachmentTimeoutsPtrOutput() TransitGatewayVpcAttachmentTimeoutsPtrOutput
+	ToTransitGatewayVpcAttachmentTimeoutsPtrOutputWithContext(context.Context) TransitGatewayVpcAttachmentTimeoutsPtrOutput
+}
+
+type transitGatewayVpcAttachmentTimeoutsPtrType TransitGatewayVpcAttachmentTimeoutsArgs
+
+func TransitGatewayVpcAttachmentTimeoutsPtr(v *TransitGatewayVpcAttachmentTimeoutsArgs) TransitGatewayVpcAttachmentTimeoutsPtrInput {
+	return (*transitGatewayVpcAttachmentTimeoutsPtrType)(v)
+}
+
+func (*transitGatewayVpcAttachmentTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransitGatewayVpcAttachmentTimeouts)(nil)).Elem()
+}
+
+func (i *transitGatewayVpcAttachmentTimeoutsPtrType) ToTransitGatewayVpcAttachmentTimeoutsPtrOutput() TransitGatewayVpcAttachmentTimeoutsPtrOutput {
+	return i.ToTransitGatewayVpcAttachmentTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *transitGatewayVpcAttachmentTimeoutsPtrType) ToTransitGatewayVpcAttachmentTimeoutsPtrOutputWithContext(ctx context.Context) TransitGatewayVpcAttachmentTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransitGatewayVpcAttachmentTimeoutsPtrOutput)
+}
+
+type TransitGatewayVpcAttachmentTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (TransitGatewayVpcAttachmentTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransitGatewayVpcAttachmentTimeouts)(nil)).Elem()
+}
+
+func (o TransitGatewayVpcAttachmentTimeoutsOutput) ToTransitGatewayVpcAttachmentTimeoutsOutput() TransitGatewayVpcAttachmentTimeoutsOutput {
+	return o
+}
+
+func (o TransitGatewayVpcAttachmentTimeoutsOutput) ToTransitGatewayVpcAttachmentTimeoutsOutputWithContext(ctx context.Context) TransitGatewayVpcAttachmentTimeoutsOutput {
+	return o
+}
+
+func (o TransitGatewayVpcAttachmentTimeoutsOutput) ToTransitGatewayVpcAttachmentTimeoutsPtrOutput() TransitGatewayVpcAttachmentTimeoutsPtrOutput {
+	return o.ToTransitGatewayVpcAttachmentTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o TransitGatewayVpcAttachmentTimeoutsOutput) ToTransitGatewayVpcAttachmentTimeoutsPtrOutputWithContext(ctx context.Context) TransitGatewayVpcAttachmentTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TransitGatewayVpcAttachmentTimeouts) *TransitGatewayVpcAttachmentTimeouts {
+		return &v
+	}).(TransitGatewayVpcAttachmentTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o TransitGatewayVpcAttachmentTimeoutsOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransitGatewayVpcAttachmentTimeouts) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+// Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+//
+// Deprecated: Use operation-specific timeouts instead. This field will be removed in the next major version.
+func (o TransitGatewayVpcAttachmentTimeoutsOutput) Default() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransitGatewayVpcAttachmentTimeouts) *string { return v.Default }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o TransitGatewayVpcAttachmentTimeoutsOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransitGatewayVpcAttachmentTimeouts) *string { return v.Delete }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o TransitGatewayVpcAttachmentTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransitGatewayVpcAttachmentTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o TransitGatewayVpcAttachmentTimeoutsOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransitGatewayVpcAttachmentTimeouts) *string { return v.Update }).(pulumi.StringPtrOutput)
+}
+
+type TransitGatewayVpcAttachmentTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (TransitGatewayVpcAttachmentTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransitGatewayVpcAttachmentTimeouts)(nil)).Elem()
+}
+
+func (o TransitGatewayVpcAttachmentTimeoutsPtrOutput) ToTransitGatewayVpcAttachmentTimeoutsPtrOutput() TransitGatewayVpcAttachmentTimeoutsPtrOutput {
+	return o
+}
+
+func (o TransitGatewayVpcAttachmentTimeoutsPtrOutput) ToTransitGatewayVpcAttachmentTimeoutsPtrOutputWithContext(ctx context.Context) TransitGatewayVpcAttachmentTimeoutsPtrOutput {
+	return o
+}
+
+func (o TransitGatewayVpcAttachmentTimeoutsPtrOutput) Elem() TransitGatewayVpcAttachmentTimeoutsOutput {
+	return o.ApplyT(func(v *TransitGatewayVpcAttachmentTimeouts) TransitGatewayVpcAttachmentTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret TransitGatewayVpcAttachmentTimeouts
+		return ret
+	}).(TransitGatewayVpcAttachmentTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o TransitGatewayVpcAttachmentTimeoutsPtrOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransitGatewayVpcAttachmentTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Create
+	}).(pulumi.StringPtrOutput)
+}
+
+// Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+//
+// Deprecated: Use operation-specific timeouts instead. This field will be removed in the next major version.
+func (o TransitGatewayVpcAttachmentTimeoutsPtrOutput) Default() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransitGatewayVpcAttachmentTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Default
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o TransitGatewayVpcAttachmentTimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransitGatewayVpcAttachmentTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delete
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o TransitGatewayVpcAttachmentTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransitGatewayVpcAttachmentTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o TransitGatewayVpcAttachmentTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransitGatewayVpcAttachmentTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Update
+	}).(pulumi.StringPtrOutput)
+}
+
 type UpgradeStepTimeouts struct {
 	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
 	Create *string `pulumi:"create"`
@@ -67661,6 +68364,10 @@ type ValkeyValkeyUserConfig struct {
 	StaticIps *bool `pulumi:"staticIps"`
 	// Enum: `allchannels`, `resetchannels`. Determines default pub/sub channels' ACL for new users if ACL is not supplied. When this option is not defined, allChannels is assumed to keep backward compatibility. This option doesn't affect Valkey configuration acl-pubsub-default.
 	ValkeyAclChannelsDefault *string `pulumi:"valkeyAclChannelsDefault"`
+	// Minimum amount of fragmentation waste, in bytes, before active defragmentation starts. Only takes effect when `valkeyActivedefrag` is enabled.
+	ValkeyActiveDefragIgnoreBytes *int `pulumi:"valkeyActiveDefragIgnoreBytes"`
+	// Minimum percentage of fragmentation before active defragmentation starts. Only takes effect when `valkeyActivedefrag` is enabled. Default: `10`.
+	ValkeyActiveDefragThresholdLower *int `pulumi:"valkeyActiveDefragThresholdLower"`
 	// Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency. Default: `1`.
 	ValkeyActiveExpireEffort *int `pulumi:"valkeyActiveExpireEffort"`
 	// Enable active memory defragmentation. When enabled, Valkey relocates objects off sparsely-used memory pages to reduce fragmentation and return memory to the operating system. Defragmentation runs on the main thread and consumes CPU, so it may increase latency under load. Default: `false`.
@@ -67677,7 +68384,7 @@ type ValkeyValkeyUserConfig struct {
 	ValkeyNotifyKeyspaceEvents *string `pulumi:"valkeyNotifyKeyspaceEvents"`
 	// Set number of Valkey databases. Changing this will cause a restart of the Valkey service. Example: `16`.
 	ValkeyNumberOfDatabases *int `pulumi:"valkeyNumberOfDatabases"`
-	// Enum: `off`, `rdb`. When persistence is `rdb`, Valkey does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is `off`, no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
+	// Enum: `off`, `rdb`. Controls whether Valkey writes RDB dumps to disk. With `rdb`, RDB dumps are written for backups on the backup schedule and, if `frequentSnapshots` is enabled, every 10 minutes so the service can recover recent data after a restart. With `off`, no RDB dumps are written at all: backups and forking are unavailable, `frequentSnapshots` and `backupHour`/`backupMinute` have no effect, and all data is lost if the service restarts or is powered off.
 	ValkeyPersistence *string `pulumi:"valkeyPersistence"`
 	// Set output buffer limit for pub / sub clients in MB. The value is the hard limit, the soft limit is 1/4 of the hard limit. When setting the limit, be mindful of the available memory in the selected service plan. Example: `64`.
 	ValkeyPubsubClientOutputBufferLimit *int `pulumi:"valkeyPubsubClientOutputBufferLimit"`
@@ -67739,6 +68446,10 @@ type ValkeyValkeyUserConfigArgs struct {
 	StaticIps pulumi.BoolPtrInput `pulumi:"staticIps"`
 	// Enum: `allchannels`, `resetchannels`. Determines default pub/sub channels' ACL for new users if ACL is not supplied. When this option is not defined, allChannels is assumed to keep backward compatibility. This option doesn't affect Valkey configuration acl-pubsub-default.
 	ValkeyAclChannelsDefault pulumi.StringPtrInput `pulumi:"valkeyAclChannelsDefault"`
+	// Minimum amount of fragmentation waste, in bytes, before active defragmentation starts. Only takes effect when `valkeyActivedefrag` is enabled.
+	ValkeyActiveDefragIgnoreBytes pulumi.IntPtrInput `pulumi:"valkeyActiveDefragIgnoreBytes"`
+	// Minimum percentage of fragmentation before active defragmentation starts. Only takes effect when `valkeyActivedefrag` is enabled. Default: `10`.
+	ValkeyActiveDefragThresholdLower pulumi.IntPtrInput `pulumi:"valkeyActiveDefragThresholdLower"`
 	// Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency. Default: `1`.
 	ValkeyActiveExpireEffort pulumi.IntPtrInput `pulumi:"valkeyActiveExpireEffort"`
 	// Enable active memory defragmentation. When enabled, Valkey relocates objects off sparsely-used memory pages to reduce fragmentation and return memory to the operating system. Defragmentation runs on the main thread and consumes CPU, so it may increase latency under load. Default: `false`.
@@ -67755,7 +68466,7 @@ type ValkeyValkeyUserConfigArgs struct {
 	ValkeyNotifyKeyspaceEvents pulumi.StringPtrInput `pulumi:"valkeyNotifyKeyspaceEvents"`
 	// Set number of Valkey databases. Changing this will cause a restart of the Valkey service. Example: `16`.
 	ValkeyNumberOfDatabases pulumi.IntPtrInput `pulumi:"valkeyNumberOfDatabases"`
-	// Enum: `off`, `rdb`. When persistence is `rdb`, Valkey does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is `off`, no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
+	// Enum: `off`, `rdb`. Controls whether Valkey writes RDB dumps to disk. With `rdb`, RDB dumps are written for backups on the backup schedule and, if `frequentSnapshots` is enabled, every 10 minutes so the service can recover recent data after a restart. With `off`, no RDB dumps are written at all: backups and forking are unavailable, `frequentSnapshots` and `backupHour`/`backupMinute` have no effect, and all data is lost if the service restarts or is powered off.
 	ValkeyPersistence pulumi.StringPtrInput `pulumi:"valkeyPersistence"`
 	// Set output buffer limit for pub / sub clients in MB. The value is the hard limit, the soft limit is 1/4 of the hard limit. When setting the limit, be mindful of the available memory in the selected service plan. Example: `64`.
 	ValkeyPubsubClientOutputBufferLimit pulumi.IntPtrInput `pulumi:"valkeyPubsubClientOutputBufferLimit"`
@@ -67936,6 +68647,16 @@ func (o ValkeyValkeyUserConfigOutput) ValkeyAclChannelsDefault() pulumi.StringPt
 	return o.ApplyT(func(v ValkeyValkeyUserConfig) *string { return v.ValkeyAclChannelsDefault }).(pulumi.StringPtrOutput)
 }
 
+// Minimum amount of fragmentation waste, in bytes, before active defragmentation starts. Only takes effect when `valkeyActivedefrag` is enabled.
+func (o ValkeyValkeyUserConfigOutput) ValkeyActiveDefragIgnoreBytes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ValkeyValkeyUserConfig) *int { return v.ValkeyActiveDefragIgnoreBytes }).(pulumi.IntPtrOutput)
+}
+
+// Minimum percentage of fragmentation before active defragmentation starts. Only takes effect when `valkeyActivedefrag` is enabled. Default: `10`.
+func (o ValkeyValkeyUserConfigOutput) ValkeyActiveDefragThresholdLower() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ValkeyValkeyUserConfig) *int { return v.ValkeyActiveDefragThresholdLower }).(pulumi.IntPtrOutput)
+}
+
 // Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency. Default: `1`.
 func (o ValkeyValkeyUserConfigOutput) ValkeyActiveExpireEffort() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ValkeyValkeyUserConfig) *int { return v.ValkeyActiveExpireEffort }).(pulumi.IntPtrOutput)
@@ -67976,7 +68697,7 @@ func (o ValkeyValkeyUserConfigOutput) ValkeyNumberOfDatabases() pulumi.IntPtrOut
 	return o.ApplyT(func(v ValkeyValkeyUserConfig) *int { return v.ValkeyNumberOfDatabases }).(pulumi.IntPtrOutput)
 }
 
-// Enum: `off`, `rdb`. When persistence is `rdb`, Valkey does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is `off`, no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
+// Enum: `off`, `rdb`. Controls whether Valkey writes RDB dumps to disk. With `rdb`, RDB dumps are written for backups on the backup schedule and, if `frequentSnapshots` is enabled, every 10 minutes so the service can recover recent data after a restart. With `off`, no RDB dumps are written at all: backups and forking are unavailable, `frequentSnapshots` and `backupHour`/`backupMinute` have no effect, and all data is lost if the service restarts or is powered off.
 func (o ValkeyValkeyUserConfigOutput) ValkeyPersistence() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ValkeyValkeyUserConfig) *string { return v.ValkeyPersistence }).(pulumi.StringPtrOutput)
 }
@@ -68207,6 +68928,26 @@ func (o ValkeyValkeyUserConfigPtrOutput) ValkeyAclChannelsDefault() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
+// Minimum amount of fragmentation waste, in bytes, before active defragmentation starts. Only takes effect when `valkeyActivedefrag` is enabled.
+func (o ValkeyValkeyUserConfigPtrOutput) ValkeyActiveDefragIgnoreBytes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ValkeyValkeyUserConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ValkeyActiveDefragIgnoreBytes
+	}).(pulumi.IntPtrOutput)
+}
+
+// Minimum percentage of fragmentation before active defragmentation starts. Only takes effect when `valkeyActivedefrag` is enabled. Default: `10`.
+func (o ValkeyValkeyUserConfigPtrOutput) ValkeyActiveDefragThresholdLower() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ValkeyValkeyUserConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ValkeyActiveDefragThresholdLower
+	}).(pulumi.IntPtrOutput)
+}
+
 // Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency. Default: `1`.
 func (o ValkeyValkeyUserConfigPtrOutput) ValkeyActiveExpireEffort() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ValkeyValkeyUserConfig) *int {
@@ -68287,7 +69028,7 @@ func (o ValkeyValkeyUserConfigPtrOutput) ValkeyNumberOfDatabases() pulumi.IntPtr
 	}).(pulumi.IntPtrOutput)
 }
 
-// Enum: `off`, `rdb`. When persistence is `rdb`, Valkey does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is `off`, no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
+// Enum: `off`, `rdb`. Controls whether Valkey writes RDB dumps to disk. With `rdb`, RDB dumps are written for backups on the backup schedule and, if `frequentSnapshots` is enabled, every 10 minutes so the service can recover recent data after a restart. With `off`, no RDB dumps are written at all: backups and forking are unavailable, `frequentSnapshots` and `backupHour`/`backupMinute` have no effect, and all data is lost if the service restarts or is powered off.
 func (o ValkeyValkeyUserConfigPtrOutput) ValkeyPersistence() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ValkeyValkeyUserConfig) *string {
 		if v == nil {
@@ -83428,7 +84169,7 @@ type GetKafkaKafkaUserConfig struct {
 	KafkaSaslMechanisms *GetKafkaKafkaUserConfigKafkaSaslMechanisms `pulumi:"kafkaSaslMechanisms"`
 	// Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, `4.1`, `4.2`, and newer. Kafka major version.
 	KafkaVersion *string `pulumi:"kafkaVersion"`
-	// Pin a specific installed Karapace version on this service. Leave null/unset to auto-follow the newest installed version.
+	// Enum: `6.2.1`, `6.2.2`, `6.2.3`, and newer. Select a Karapace version for this service, or select Latest to use the latest available version automatically. New versions become available after installation during a maintenance update.
 	KarapaceVersion *string `pulumi:"karapaceVersion"`
 	// Use a Let's Encrypt certificate authority (CA) for Kafka SASL authentication. (Default: False).
 	LetsencryptSasl *bool `pulumi:"letsencryptSasl"`
@@ -83522,7 +84263,7 @@ type GetKafkaKafkaUserConfigArgs struct {
 	KafkaSaslMechanisms GetKafkaKafkaUserConfigKafkaSaslMechanismsPtrInput `pulumi:"kafkaSaslMechanisms"`
 	// Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, `4.1`, `4.2`, and newer. Kafka major version.
 	KafkaVersion pulumi.StringPtrInput `pulumi:"kafkaVersion"`
-	// Pin a specific installed Karapace version on this service. Leave null/unset to auto-follow the newest installed version.
+	// Enum: `6.2.1`, `6.2.2`, `6.2.3`, and newer. Select a Karapace version for this service, or select Latest to use the latest available version automatically. New versions become available after installation during a maintenance update.
 	KarapaceVersion pulumi.StringPtrInput `pulumi:"karapaceVersion"`
 	// Use a Let's Encrypt certificate authority (CA) for Kafka SASL authentication. (Default: False).
 	LetsencryptSasl pulumi.BoolPtrInput `pulumi:"letsencryptSasl"`
@@ -83737,7 +84478,7 @@ func (o GetKafkaKafkaUserConfigOutput) KafkaVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfig) *string { return v.KafkaVersion }).(pulumi.StringPtrOutput)
 }
 
-// Pin a specific installed Karapace version on this service. Leave null/unset to auto-follow the newest installed version.
+// Enum: `6.2.1`, `6.2.2`, `6.2.3`, and newer. Select a Karapace version for this service, or select Latest to use the latest available version automatically. New versions become available after installation during a maintenance update.
 func (o GetKafkaKafkaUserConfigOutput) KarapaceVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfig) *string { return v.KarapaceVersion }).(pulumi.StringPtrOutput)
 }
@@ -88644,13 +89385,13 @@ type GetKafkaKafkaUserConfigSchemaRegistryConfig struct {
 	LeaderEligibility *bool `pulumi:"leaderEligibility"`
 	// If enabled, kafka errors which can be retried or custom errors specified for the service will not be raised, instead, a warning log is emitted. This will denoise issue tracking systems, i.e. sentry. Defaults to `true`.
 	RetriableErrorsSilenced *bool `pulumi:"retriableErrorsSilenced"`
-	// If enabled, the Schema Registry validates OAuth2/OIDC JWT bearer tokens on incoming requests. Requires the OIDC provider settings under the `kafka` configuration (`saslOauthbearerJwksEndpointUrl` and related). Defaults to `false`.
+	// If enabled, the Schema Registry validates OAuth 2.0/OIDC JWT bearer tokens. Requires `saslOauthbearerJwksEndpointUrl`, `saslOauthbearerExpectedIssuer`, and `saslOauthbearerExpectedAudience` under `kafka`. Defaults to `false`.
 	SaslOauthbearerAuthenticationEnabled *bool `pulumi:"saslOauthbearerAuthenticationEnabled"`
-	// If enabled, the Schema Registry enforces role-based authorization derived from the JWT roles claim. Requires `saslOauthbearerAuthenticationEnabled` to be enabled. Defaults to `false`.
+	// If enabled, the Schema Registry enforces role-based authorization using the JWT roles claim. It also enables `saslOauthbearerAuthenticationEnabled` if it isn't already enabled. Authorization requires authentication. Defaults to `false`.
 	SaslOauthbearerAuthorizationEnabled *bool `pulumi:"saslOauthbearerAuthorizationEnabled"`
-	// JSON object mapping HTTP methods to the list of roles allowed to perform them on the Schema Registry, provided as a JSON-encoded string. Role names use the `karapace.` prefix, e.g. `karapace.schema:read`. Defaults to `{"GET": ["karapace.schema:read", "karapace.subject:read"], "POST": [], "PUT": [], "DELETE": []}`.
+	// Maps HTTP methods to allowed roles. Use a JSON object with `GET`, `POST`, `PUT`, and `DELETE` keys mapped to arrays of roles. Role names use the `karapace.` prefix. Example: `{"GET": ["karapace.schema:read"], "POST": [], "PUT": [], "DELETE": []}`. Example: `{"GET":["karapace.schema:read"],"POST":[],"PUT":[],"DELETE":[]}`.
 	SaslOauthbearerMethodRoles *string `pulumi:"saslOauthbearerMethodRoles"`
-	// JSON path used to extract the roles claim from the JWT for Schema Registry authorization. Defaults to `resource_access.karapace.roles`.
+	// The JSON path the Schema Registry uses to find the roles claim in the JWT. Defaults to `resource_access.karapace.roles`.
 	SaslOauthbearerRolesClaimPath *string `pulumi:"saslOauthbearerRolesClaimPath"`
 	// If enabled, causes the Karapace schema-registry service to shutdown when there are invalid schema records in the `_schemas` topic. Defaults to `false`.
 	SchemaReaderStrictMode *bool `pulumi:"schemaReaderStrictMode"`
@@ -88674,13 +89415,13 @@ type GetKafkaKafkaUserConfigSchemaRegistryConfigArgs struct {
 	LeaderEligibility pulumi.BoolPtrInput `pulumi:"leaderEligibility"`
 	// If enabled, kafka errors which can be retried or custom errors specified for the service will not be raised, instead, a warning log is emitted. This will denoise issue tracking systems, i.e. sentry. Defaults to `true`.
 	RetriableErrorsSilenced pulumi.BoolPtrInput `pulumi:"retriableErrorsSilenced"`
-	// If enabled, the Schema Registry validates OAuth2/OIDC JWT bearer tokens on incoming requests. Requires the OIDC provider settings under the `kafka` configuration (`saslOauthbearerJwksEndpointUrl` and related). Defaults to `false`.
+	// If enabled, the Schema Registry validates OAuth 2.0/OIDC JWT bearer tokens. Requires `saslOauthbearerJwksEndpointUrl`, `saslOauthbearerExpectedIssuer`, and `saslOauthbearerExpectedAudience` under `kafka`. Defaults to `false`.
 	SaslOauthbearerAuthenticationEnabled pulumi.BoolPtrInput `pulumi:"saslOauthbearerAuthenticationEnabled"`
-	// If enabled, the Schema Registry enforces role-based authorization derived from the JWT roles claim. Requires `saslOauthbearerAuthenticationEnabled` to be enabled. Defaults to `false`.
+	// If enabled, the Schema Registry enforces role-based authorization using the JWT roles claim. It also enables `saslOauthbearerAuthenticationEnabled` if it isn't already enabled. Authorization requires authentication. Defaults to `false`.
 	SaslOauthbearerAuthorizationEnabled pulumi.BoolPtrInput `pulumi:"saslOauthbearerAuthorizationEnabled"`
-	// JSON object mapping HTTP methods to the list of roles allowed to perform them on the Schema Registry, provided as a JSON-encoded string. Role names use the `karapace.` prefix, e.g. `karapace.schema:read`. Defaults to `{"GET": ["karapace.schema:read", "karapace.subject:read"], "POST": [], "PUT": [], "DELETE": []}`.
+	// Maps HTTP methods to allowed roles. Use a JSON object with `GET`, `POST`, `PUT`, and `DELETE` keys mapped to arrays of roles. Role names use the `karapace.` prefix. Example: `{"GET": ["karapace.schema:read"], "POST": [], "PUT": [], "DELETE": []}`. Example: `{"GET":["karapace.schema:read"],"POST":[],"PUT":[],"DELETE":[]}`.
 	SaslOauthbearerMethodRoles pulumi.StringPtrInput `pulumi:"saslOauthbearerMethodRoles"`
-	// JSON path used to extract the roles claim from the JWT for Schema Registry authorization. Defaults to `resource_access.karapace.roles`.
+	// The JSON path the Schema Registry uses to find the roles claim in the JWT. Defaults to `resource_access.karapace.roles`.
 	SaslOauthbearerRolesClaimPath pulumi.StringPtrInput `pulumi:"saslOauthbearerRolesClaimPath"`
 	// If enabled, causes the Karapace schema-registry service to shutdown when there are invalid schema records in the `_schemas` topic. Defaults to `false`.
 	SchemaReaderStrictMode pulumi.BoolPtrInput `pulumi:"schemaReaderStrictMode"`
@@ -88775,26 +89516,26 @@ func (o GetKafkaKafkaUserConfigSchemaRegistryConfigOutput) RetriableErrorsSilenc
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigSchemaRegistryConfig) *bool { return v.RetriableErrorsSilenced }).(pulumi.BoolPtrOutput)
 }
 
-// If enabled, the Schema Registry validates OAuth2/OIDC JWT bearer tokens on incoming requests. Requires the OIDC provider settings under the `kafka` configuration (`saslOauthbearerJwksEndpointUrl` and related). Defaults to `false`.
+// If enabled, the Schema Registry validates OAuth 2.0/OIDC JWT bearer tokens. Requires `saslOauthbearerJwksEndpointUrl`, `saslOauthbearerExpectedIssuer`, and `saslOauthbearerExpectedAudience` under `kafka`. Defaults to `false`.
 func (o GetKafkaKafkaUserConfigSchemaRegistryConfigOutput) SaslOauthbearerAuthenticationEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigSchemaRegistryConfig) *bool {
 		return v.SaslOauthbearerAuthenticationEnabled
 	}).(pulumi.BoolPtrOutput)
 }
 
-// If enabled, the Schema Registry enforces role-based authorization derived from the JWT roles claim. Requires `saslOauthbearerAuthenticationEnabled` to be enabled. Defaults to `false`.
+// If enabled, the Schema Registry enforces role-based authorization using the JWT roles claim. It also enables `saslOauthbearerAuthenticationEnabled` if it isn't already enabled. Authorization requires authentication. Defaults to `false`.
 func (o GetKafkaKafkaUserConfigSchemaRegistryConfigOutput) SaslOauthbearerAuthorizationEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigSchemaRegistryConfig) *bool {
 		return v.SaslOauthbearerAuthorizationEnabled
 	}).(pulumi.BoolPtrOutput)
 }
 
-// JSON object mapping HTTP methods to the list of roles allowed to perform them on the Schema Registry, provided as a JSON-encoded string. Role names use the `karapace.` prefix, e.g. `karapace.schema:read`. Defaults to `{"GET": ["karapace.schema:read", "karapace.subject:read"], "POST": [], "PUT": [], "DELETE": []}`.
+// Maps HTTP methods to allowed roles. Use a JSON object with `GET`, `POST`, `PUT`, and `DELETE` keys mapped to arrays of roles. Role names use the `karapace.` prefix. Example: `{"GET": ["karapace.schema:read"], "POST": [], "PUT": [], "DELETE": []}`. Example: `{"GET":["karapace.schema:read"],"POST":[],"PUT":[],"DELETE":[]}`.
 func (o GetKafkaKafkaUserConfigSchemaRegistryConfigOutput) SaslOauthbearerMethodRoles() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigSchemaRegistryConfig) *string { return v.SaslOauthbearerMethodRoles }).(pulumi.StringPtrOutput)
 }
 
-// JSON path used to extract the roles claim from the JWT for Schema Registry authorization. Defaults to `resource_access.karapace.roles`.
+// The JSON path the Schema Registry uses to find the roles claim in the JWT. Defaults to `resource_access.karapace.roles`.
 func (o GetKafkaKafkaUserConfigSchemaRegistryConfigOutput) SaslOauthbearerRolesClaimPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigSchemaRegistryConfig) *string { return v.SaslOauthbearerRolesClaimPath }).(pulumi.StringPtrOutput)
 }
@@ -88853,7 +89594,7 @@ func (o GetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutput) RetriableErrorsSil
 	}).(pulumi.BoolPtrOutput)
 }
 
-// If enabled, the Schema Registry validates OAuth2/OIDC JWT bearer tokens on incoming requests. Requires the OIDC provider settings under the `kafka` configuration (`saslOauthbearerJwksEndpointUrl` and related). Defaults to `false`.
+// If enabled, the Schema Registry validates OAuth 2.0/OIDC JWT bearer tokens. Requires `saslOauthbearerJwksEndpointUrl`, `saslOauthbearerExpectedIssuer`, and `saslOauthbearerExpectedAudience` under `kafka`. Defaults to `false`.
 func (o GetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutput) SaslOauthbearerAuthenticationEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GetKafkaKafkaUserConfigSchemaRegistryConfig) *bool {
 		if v == nil {
@@ -88863,7 +89604,7 @@ func (o GetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutput) SaslOauthbearerAut
 	}).(pulumi.BoolPtrOutput)
 }
 
-// If enabled, the Schema Registry enforces role-based authorization derived from the JWT roles claim. Requires `saslOauthbearerAuthenticationEnabled` to be enabled. Defaults to `false`.
+// If enabled, the Schema Registry enforces role-based authorization using the JWT roles claim. It also enables `saslOauthbearerAuthenticationEnabled` if it isn't already enabled. Authorization requires authentication. Defaults to `false`.
 func (o GetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutput) SaslOauthbearerAuthorizationEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GetKafkaKafkaUserConfigSchemaRegistryConfig) *bool {
 		if v == nil {
@@ -88873,7 +89614,7 @@ func (o GetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutput) SaslOauthbearerAut
 	}).(pulumi.BoolPtrOutput)
 }
 
-// JSON object mapping HTTP methods to the list of roles allowed to perform them on the Schema Registry, provided as a JSON-encoded string. Role names use the `karapace.` prefix, e.g. `karapace.schema:read`. Defaults to `{"GET": ["karapace.schema:read", "karapace.subject:read"], "POST": [], "PUT": [], "DELETE": []}`.
+// Maps HTTP methods to allowed roles. Use a JSON object with `GET`, `POST`, `PUT`, and `DELETE` keys mapped to arrays of roles. Role names use the `karapace.` prefix. Example: `{"GET": ["karapace.schema:read"], "POST": [], "PUT": [], "DELETE": []}`. Example: `{"GET":["karapace.schema:read"],"POST":[],"PUT":[],"DELETE":[]}`.
 func (o GetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutput) SaslOauthbearerMethodRoles() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKafkaKafkaUserConfigSchemaRegistryConfig) *string {
 		if v == nil {
@@ -88883,7 +89624,7 @@ func (o GetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutput) SaslOauthbearerMet
 	}).(pulumi.StringPtrOutput)
 }
 
-// JSON path used to extract the roles claim from the JWT for Schema Registry authorization. Defaults to `resource_access.karapace.roles`.
+// The JSON path the Schema Registry uses to find the roles claim in the JWT. Defaults to `resource_access.karapace.roles`.
 func (o GetKafkaKafkaUserConfigSchemaRegistryConfigPtrOutput) SaslOauthbearerRolesClaimPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetKafkaKafkaUserConfigSchemaRegistryConfig) *string {
 		if v == nil {
@@ -91263,7 +92004,7 @@ type GetKafkaTopicConfig struct {
 	MaxMessageBytes string `pulumi:"maxMessageBytes"`
 	// This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests. When set to false, broker will not perform down-conversion for consumers expecting an older message format. The broker responds with UNSUPPORTED_VERSION error for consume requests from such older clients. This configuration does not apply to any message format conversion that might be required for replication to followers.
 	MessageDownconversionEnable bool `pulumi:"messageDownconversionEnable"`
-	// Specify the message format version the broker will use to append messages to the logs. The value should be a valid ApiVersion. Some examples are: 0.8.2, 0.9.0.0, 0.10.0, check ApiVersion for more details. By setting a particular message format version, the user is certifying that all the existing messages on disk are smaller or equal than the specified version. Setting this value incorrectly will cause consumers with older versions to break as they will receive messages with a format that they don't understand. Deprecated in Kafka 4.0+: this configuration is removed and any supplied value will be ignored; for services upgraded to 4.0+, the returned value may be 'None'. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.0`, `4.0-IV0`, `4.1`, `4.1-IV0`, `4.2` and `4.2-IV0`.
+	// Specify the message format version the broker will use to append messages to the logs. The value should be a valid ApiVersion. Some examples are: 0.8.2, 0.9.0.0, 0.10.0, check ApiVersion for more details. By setting a particular message format version, the user is certifying that all the existing messages on disk are smaller or equal than the specified version. Setting this value incorrectly will cause consumers with older versions to break as they will receive messages with a format that they don't understand. Deprecated in Kafka 4.0+: this configuration is removed and any supplied value will be ignored; for services upgraded to 4.0+, the returned value may be 'None'. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.0`, `4.0-IV0`, `4.1`, `4.1-IV0`, `4.2`, `4.2-IV0`, `4.3` and `4.3-IV0`.
 	MessageFormatVersion string `pulumi:"messageFormatVersion"`
 	// The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps later than the broker's timestamp.
 	MessageTimestampAfterMaxMs string `pulumi:"messageTimestampAfterMaxMs"`
@@ -91337,7 +92078,7 @@ type GetKafkaTopicConfigArgs struct {
 	MaxMessageBytes pulumi.StringInput `pulumi:"maxMessageBytes"`
 	// This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests. When set to false, broker will not perform down-conversion for consumers expecting an older message format. The broker responds with UNSUPPORTED_VERSION error for consume requests from such older clients. This configuration does not apply to any message format conversion that might be required for replication to followers.
 	MessageDownconversionEnable pulumi.BoolInput `pulumi:"messageDownconversionEnable"`
-	// Specify the message format version the broker will use to append messages to the logs. The value should be a valid ApiVersion. Some examples are: 0.8.2, 0.9.0.0, 0.10.0, check ApiVersion for more details. By setting a particular message format version, the user is certifying that all the existing messages on disk are smaller or equal than the specified version. Setting this value incorrectly will cause consumers with older versions to break as they will receive messages with a format that they don't understand. Deprecated in Kafka 4.0+: this configuration is removed and any supplied value will be ignored; for services upgraded to 4.0+, the returned value may be 'None'. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.0`, `4.0-IV0`, `4.1`, `4.1-IV0`, `4.2` and `4.2-IV0`.
+	// Specify the message format version the broker will use to append messages to the logs. The value should be a valid ApiVersion. Some examples are: 0.8.2, 0.9.0.0, 0.10.0, check ApiVersion for more details. By setting a particular message format version, the user is certifying that all the existing messages on disk are smaller or equal than the specified version. Setting this value incorrectly will cause consumers with older versions to break as they will receive messages with a format that they don't understand. Deprecated in Kafka 4.0+: this configuration is removed and any supplied value will be ignored; for services upgraded to 4.0+, the returned value may be 'None'. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.0`, `4.0-IV0`, `4.1`, `4.1-IV0`, `4.2`, `4.2-IV0`, `4.3` and `4.3-IV0`.
 	MessageFormatVersion pulumi.StringInput `pulumi:"messageFormatVersion"`
 	// The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message. If message.timestamp.type=CreateTime, a message will be rejected if the difference in timestamp exceeds this threshold. Applies only for messages with timestamps later than the broker's timestamp.
 	MessageTimestampAfterMaxMs pulumi.StringInput `pulumi:"messageTimestampAfterMaxMs"`
@@ -91489,7 +92230,7 @@ func (o GetKafkaTopicConfigOutput) MessageDownconversionEnable() pulumi.BoolOutp
 	return o.ApplyT(func(v GetKafkaTopicConfig) bool { return v.MessageDownconversionEnable }).(pulumi.BoolOutput)
 }
 
-// Specify the message format version the broker will use to append messages to the logs. The value should be a valid ApiVersion. Some examples are: 0.8.2, 0.9.0.0, 0.10.0, check ApiVersion for more details. By setting a particular message format version, the user is certifying that all the existing messages on disk are smaller or equal than the specified version. Setting this value incorrectly will cause consumers with older versions to break as they will receive messages with a format that they don't understand. Deprecated in Kafka 4.0+: this configuration is removed and any supplied value will be ignored; for services upgraded to 4.0+, the returned value may be 'None'. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.0`, `4.0-IV0`, `4.1`, `4.1-IV0`, `4.2` and `4.2-IV0`.
+// Specify the message format version the broker will use to append messages to the logs. The value should be a valid ApiVersion. Some examples are: 0.8.2, 0.9.0.0, 0.10.0, check ApiVersion for more details. By setting a particular message format version, the user is certifying that all the existing messages on disk are smaller or equal than the specified version. Setting this value incorrectly will cause consumers with older versions to break as they will receive messages with a format that they don't understand. Deprecated in Kafka 4.0+: this configuration is removed and any supplied value will be ignored; for services upgraded to 4.0+, the returned value may be 'None'. The possible values are `0.10.0`, `0.10.0-IV0`, `0.10.0-IV1`, `0.10.1`, `0.10.1-IV0`, `0.10.1-IV1`, `0.10.1-IV2`, `0.10.2`, `0.10.2-IV0`, `0.11.0`, `0.11.0-IV0`, `0.11.0-IV1`, `0.11.0-IV2`, `0.8.0`, `0.8.1`, `0.8.2`, `0.9.0`, `1.0`, `1.0-IV0`, `1.1`, `1.1-IV0`, `2.0`, `2.0-IV0`, `2.0-IV1`, `2.1`, `2.1-IV0`, `2.1-IV1`, `2.1-IV2`, `2.2`, `2.2-IV0`, `2.2-IV1`, `2.3`, `2.3-IV0`, `2.3-IV1`, `2.4`, `2.4-IV0`, `2.4-IV1`, `2.5`, `2.5-IV0`, `2.6`, `2.6-IV0`, `2.7`, `2.7-IV0`, `2.7-IV1`, `2.7-IV2`, `2.8`, `2.8-IV0`, `2.8-IV1`, `3.0`, `3.0-IV0`, `3.0-IV1`, `3.1`, `3.1-IV0`, `3.2`, `3.2-IV0`, `3.3`, `3.3-IV0`, `3.3-IV1`, `3.3-IV2`, `3.3-IV3`, `3.4`, `3.4-IV0`, `3.5`, `3.5-IV0`, `3.5-IV1`, `3.5-IV2`, `3.6`, `3.6-IV0`, `3.6-IV1`, `3.6-IV2`, `3.7`, `3.7-IV0`, `3.7-IV1`, `3.7-IV2`, `3.7-IV3`, `3.7-IV4`, `3.8`, `3.8-IV0`, `3.9`, `3.9-IV0`, `3.9-IV1`, `4.0`, `4.0-IV0`, `4.1`, `4.1-IV0`, `4.2`, `4.2-IV0`, `4.3` and `4.3-IV0`.
 func (o GetKafkaTopicConfigOutput) MessageFormatVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKafkaTopicConfig) string { return v.MessageFormatVersion }).(pulumi.StringOutput)
 }
@@ -93773,7 +94514,7 @@ type GetMySqlMysqlUserConfigMysql struct {
 	InnodbIoCapacityMax *int `pulumi:"innodbIoCapacityMax"`
 	// The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120. Example: `50`.
 	InnodbLockWaitTimeout *int `pulumi:"innodbLockWaitTimeout"`
-	// The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
+	// The size in bytes of the buffer that InnoDB uses to write to the log files on disk. Requests above 15% of the RAM provided by your service plan are rejected, because a larger buffer leaves less memory for the buffer pool and client connections.
 	InnodbLogBufferSize *int `pulumi:"innodbLogBufferSize"`
 	// The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
 	InnodbOnlineAlterLogMaxSize *int `pulumi:"innodbOnlineAlterLogMaxSize"`
@@ -93799,7 +94540,7 @@ type GetMySqlMysqlUserConfigMysql struct {
 	LongQueryTime *float64 `pulumi:"longQueryTime"`
 	// Enum: `0`, `1`. Sets how table and database names are stored and compared. 0 = case-sensitive (default), 1 = names stored lowercase, comparisons are case-insensitive. This option can only be set when creating the service and cannot be changed later. See https://dev.mysql.com/doc/refman/8.0/en/identifier-case-sensitivity.html for details.
 	LowerCaseTableNames *int `pulumi:"lowerCaseTableNames"`
-	// Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
+	// Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M). Statements and rows larger than this are rejected with a packet too large error.
 	MaxAllowedPacket *int `pulumi:"maxAllowedPacket"`
 	// The maximum permitted number of simultaneous client connections. Lower this to reserve memory for other work. The value cannot exceed the limit provided by your service plan. Upgrading the plan does not raise a value you have set explicitly, so increase it yourself after an upgrade. Example: `200`.
 	MaxConnections *int `pulumi:"maxConnections"`
@@ -93829,7 +94570,7 @@ type GetMySqlMysqlUserConfigMysql struct {
 	RelayLogSpaceLimit *int `pulumi:"relayLogSpaceLimit"`
 	// Slow query log enables capturing of slow queries. Setting slowQueryLog to false also truncates the mysql.slow_log table.
 	SlowQueryLog *bool `pulumi:"slowQueryLog"`
-	// Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K). Example: `262144`.
+	// Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K). Requests above 2% of the RAM provided by your service plan are rejected, because the buffer is allocated per session and its cost multiplies with the connection count. Example: `262144`.
 	SortBufferSize *int `pulumi:"sortBufferSize"`
 	// Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned. Example: `ANSI,TRADITIONAL`.
 	SqlMode *string `pulumi:"sqlMode"`
@@ -93837,7 +94578,7 @@ type GetMySqlMysqlUserConfigMysql struct {
 	SqlRequirePrimaryKey *bool `pulumi:"sqlRequirePrimaryKey"`
 	// Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M).
 	TmpTableSize *int `pulumi:"tmpTableSize"`
-	// The number of seconds the server waits for activity on a noninteractive connection before closing it. Example: `28800`.
+	// The number of seconds the server waits for activity on a noninteractive connection before closing it. Requests to set this below 30 are rejected, because a shorter timeout closes your own idle connections between statements. Example: `28800`.
 	WaitTimeout *int `pulumi:"waitTimeout"`
 	// Whether window functions are computed to high precision. Disabling this trades exactness for speed in window function evaluation.
 	WindowingUseHighPrecision *bool `pulumi:"windowingUseHighPrecision"`
@@ -93897,7 +94638,7 @@ type GetMySqlMysqlUserConfigMysqlArgs struct {
 	InnodbIoCapacityMax pulumi.IntPtrInput `pulumi:"innodbIoCapacityMax"`
 	// The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120. Example: `50`.
 	InnodbLockWaitTimeout pulumi.IntPtrInput `pulumi:"innodbLockWaitTimeout"`
-	// The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
+	// The size in bytes of the buffer that InnoDB uses to write to the log files on disk. Requests above 15% of the RAM provided by your service plan are rejected, because a larger buffer leaves less memory for the buffer pool and client connections.
 	InnodbLogBufferSize pulumi.IntPtrInput `pulumi:"innodbLogBufferSize"`
 	// The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
 	InnodbOnlineAlterLogMaxSize pulumi.IntPtrInput `pulumi:"innodbOnlineAlterLogMaxSize"`
@@ -93923,7 +94664,7 @@ type GetMySqlMysqlUserConfigMysqlArgs struct {
 	LongQueryTime pulumi.Float64PtrInput `pulumi:"longQueryTime"`
 	// Enum: `0`, `1`. Sets how table and database names are stored and compared. 0 = case-sensitive (default), 1 = names stored lowercase, comparisons are case-insensitive. This option can only be set when creating the service and cannot be changed later. See https://dev.mysql.com/doc/refman/8.0/en/identifier-case-sensitivity.html for details.
 	LowerCaseTableNames pulumi.IntPtrInput `pulumi:"lowerCaseTableNames"`
-	// Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
+	// Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M). Statements and rows larger than this are rejected with a packet too large error.
 	MaxAllowedPacket pulumi.IntPtrInput `pulumi:"maxAllowedPacket"`
 	// The maximum permitted number of simultaneous client connections. Lower this to reserve memory for other work. The value cannot exceed the limit provided by your service plan. Upgrading the plan does not raise a value you have set explicitly, so increase it yourself after an upgrade. Example: `200`.
 	MaxConnections pulumi.IntPtrInput `pulumi:"maxConnections"`
@@ -93953,7 +94694,7 @@ type GetMySqlMysqlUserConfigMysqlArgs struct {
 	RelayLogSpaceLimit pulumi.IntPtrInput `pulumi:"relayLogSpaceLimit"`
 	// Slow query log enables capturing of slow queries. Setting slowQueryLog to false also truncates the mysql.slow_log table.
 	SlowQueryLog pulumi.BoolPtrInput `pulumi:"slowQueryLog"`
-	// Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K). Example: `262144`.
+	// Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K). Requests above 2% of the RAM provided by your service plan are rejected, because the buffer is allocated per session and its cost multiplies with the connection count. Example: `262144`.
 	SortBufferSize pulumi.IntPtrInput `pulumi:"sortBufferSize"`
 	// Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned. Example: `ANSI,TRADITIONAL`.
 	SqlMode pulumi.StringPtrInput `pulumi:"sqlMode"`
@@ -93961,7 +94702,7 @@ type GetMySqlMysqlUserConfigMysqlArgs struct {
 	SqlRequirePrimaryKey pulumi.BoolPtrInput `pulumi:"sqlRequirePrimaryKey"`
 	// Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M).
 	TmpTableSize pulumi.IntPtrInput `pulumi:"tmpTableSize"`
-	// The number of seconds the server waits for activity on a noninteractive connection before closing it. Example: `28800`.
+	// The number of seconds the server waits for activity on a noninteractive connection before closing it. Requests to set this below 30 are rejected, because a shorter timeout closes your own idle connections between statements. Example: `28800`.
 	WaitTimeout pulumi.IntPtrInput `pulumi:"waitTimeout"`
 	// Whether window functions are computed to high precision. Disabling this trades exactness for speed in window function evaluation.
 	WindowingUseHighPrecision pulumi.BoolPtrInput `pulumi:"windowingUseHighPrecision"`
@@ -94149,7 +94890,7 @@ func (o GetMySqlMysqlUserConfigMysqlOutput) InnodbLockWaitTimeout() pulumi.IntPt
 	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *int { return v.InnodbLockWaitTimeout }).(pulumi.IntPtrOutput)
 }
 
-// The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
+// The size in bytes of the buffer that InnoDB uses to write to the log files on disk. Requests above 15% of the RAM provided by your service plan are rejected, because a larger buffer leaves less memory for the buffer pool and client connections.
 func (o GetMySqlMysqlUserConfigMysqlOutput) InnodbLogBufferSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *int { return v.InnodbLogBufferSize }).(pulumi.IntPtrOutput)
 }
@@ -94214,7 +94955,7 @@ func (o GetMySqlMysqlUserConfigMysqlOutput) LowerCaseTableNames() pulumi.IntPtrO
 	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *int { return v.LowerCaseTableNames }).(pulumi.IntPtrOutput)
 }
 
-// Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
+// Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M). Statements and rows larger than this are rejected with a packet too large error.
 func (o GetMySqlMysqlUserConfigMysqlOutput) MaxAllowedPacket() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *int { return v.MaxAllowedPacket }).(pulumi.IntPtrOutput)
 }
@@ -94289,7 +95030,7 @@ func (o GetMySqlMysqlUserConfigMysqlOutput) SlowQueryLog() pulumi.BoolPtrOutput 
 	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *bool { return v.SlowQueryLog }).(pulumi.BoolPtrOutput)
 }
 
-// Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K). Example: `262144`.
+// Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K). Requests above 2% of the RAM provided by your service plan are rejected, because the buffer is allocated per session and its cost multiplies with the connection count. Example: `262144`.
 func (o GetMySqlMysqlUserConfigMysqlOutput) SortBufferSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *int { return v.SortBufferSize }).(pulumi.IntPtrOutput)
 }
@@ -94309,7 +95050,7 @@ func (o GetMySqlMysqlUserConfigMysqlOutput) TmpTableSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *int { return v.TmpTableSize }).(pulumi.IntPtrOutput)
 }
 
-// The number of seconds the server waits for activity on a noninteractive connection before closing it. Example: `28800`.
+// The number of seconds the server waits for activity on a noninteractive connection before closing it. Requests to set this below 30 are rejected, because a shorter timeout closes your own idle connections between statements. Example: `28800`.
 func (o GetMySqlMysqlUserConfigMysqlOutput) WaitTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *int { return v.WaitTimeout }).(pulumi.IntPtrOutput)
 }
@@ -94553,7 +95294,7 @@ func (o GetMySqlMysqlUserConfigMysqlPtrOutput) InnodbLockWaitTimeout() pulumi.In
 	}).(pulumi.IntPtrOutput)
 }
 
-// The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
+// The size in bytes of the buffer that InnoDB uses to write to the log files on disk. Requests above 15% of the RAM provided by your service plan are rejected, because a larger buffer leaves less memory for the buffer pool and client connections.
 func (o GetMySqlMysqlUserConfigMysqlPtrOutput) InnodbLogBufferSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMysql) *int {
 		if v == nil {
@@ -94683,7 +95424,7 @@ func (o GetMySqlMysqlUserConfigMysqlPtrOutput) LowerCaseTableNames() pulumi.IntP
 	}).(pulumi.IntPtrOutput)
 }
 
-// Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
+// Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M). Statements and rows larger than this are rejected with a packet too large error.
 func (o GetMySqlMysqlUserConfigMysqlPtrOutput) MaxAllowedPacket() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMysql) *int {
 		if v == nil {
@@ -94833,7 +95574,7 @@ func (o GetMySqlMysqlUserConfigMysqlPtrOutput) SlowQueryLog() pulumi.BoolPtrOutp
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K). Example: `262144`.
+// Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K). Requests above 2% of the RAM provided by your service plan are rejected, because the buffer is allocated per session and its cost multiplies with the connection count. Example: `262144`.
 func (o GetMySqlMysqlUserConfigMysqlPtrOutput) SortBufferSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMysql) *int {
 		if v == nil {
@@ -94873,7 +95614,7 @@ func (o GetMySqlMysqlUserConfigMysqlPtrOutput) TmpTableSize() pulumi.IntPtrOutpu
 	}).(pulumi.IntPtrOutput)
 }
 
-// The number of seconds the server waits for activity on a noninteractive connection before closing it. Example: `28800`.
+// The number of seconds the server waits for activity on a noninteractive connection before closing it. Requests to set this below 30 are rejected, because a shorter timeout closes your own idle connections between statements. Example: `28800`.
 func (o GetMySqlMysqlUserConfigMysqlPtrOutput) WaitTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMysql) *int {
 		if v == nil {
@@ -102014,694 +102755,6 @@ func (o GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput) Segment
 	}).(pulumi.Float64PtrOutput)
 }
 
-type GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressure struct {
-	// Enum: `disabled`, `enforced`, `monitorOnly`. The search backpressure mode. Valid values are monitor_only, enforced, or disabled. Default is monitor_only.
-	Mode *string `pulumi:"mode"`
-	// Node duress settings
-	NodeDuress *GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuress `pulumi:"nodeDuress"`
-	// Search shard settings
-	SearchShardTask *GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTask `pulumi:"searchShardTask"`
-	// Search task settings
-	SearchTask *GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTask `pulumi:"searchTask"`
-}
-
-// GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureInput is an input type that accepts GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureArgs and GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureOutput values.
-// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureInput` via:
-//
-//	GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureArgs{...}
-type GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureInput interface {
-	pulumi.Input
-
-	ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureOutput
-	ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureOutput
-}
-
-type GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureArgs struct {
-	// Enum: `disabled`, `enforced`, `monitorOnly`. The search backpressure mode. Valid values are monitor_only, enforced, or disabled. Default is monitor_only.
-	Mode pulumi.StringPtrInput `pulumi:"mode"`
-	// Node duress settings
-	NodeDuress GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrInput `pulumi:"nodeDuress"`
-	// Search shard settings
-	SearchShardTask GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrInput `pulumi:"searchShardTask"`
-	// Search task settings
-	SearchTask GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskPtrInput `pulumi:"searchTask"`
-}
-
-func (GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressure)(nil)).Elem()
-}
-
-func (i GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureArgs) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureOutput {
-	return i.ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureOutputWithContext(context.Background())
-}
-
-func (i GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureArgs) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureOutput)
-}
-
-func (i GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureArgs) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrOutput {
-	return i.ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrOutputWithContext(context.Background())
-}
-
-func (i GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureArgs) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureOutput).ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrOutputWithContext(ctx)
-}
-
-// GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrInput is an input type that accepts GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureArgs, GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtr and GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrOutput values.
-// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrInput` via:
-//
-//	        GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrInput interface {
-	pulumi.Input
-
-	ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrOutput
-	ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrOutput
-}
-
-type getOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrType GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureArgs
-
-func GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtr(v *GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureArgs) GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrInput {
-	return (*getOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrType)(v)
-}
-
-func (*getOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressure)(nil)).Elem()
-}
-
-func (i *getOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrType) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrOutput {
-	return i.ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrOutputWithContext(context.Background())
-}
-
-func (i *getOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrType) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrOutput)
-}
-
-type GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureOutput struct{ *pulumi.OutputState }
-
-func (GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressure)(nil)).Elem()
-}
-
-func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureOutput) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureOutput {
-	return o
-}
-
-func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureOutput) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureOutput {
-	return o
-}
-
-func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureOutput) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrOutput {
-	return o.ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrOutputWithContext(context.Background())
-}
-
-func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureOutput) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressure) *GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressure {
-		return &v
-	}).(GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrOutput)
-}
-
-// Enum: `disabled`, `enforced`, `monitorOnly`. The search backpressure mode. Valid values are monitor_only, enforced, or disabled. Default is monitor_only.
-func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureOutput) Mode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressure) *string { return v.Mode }).(pulumi.StringPtrOutput)
-}
-
-// Node duress settings
-func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureOutput) NodeDuress() GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrOutput {
-	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressure) *GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuress {
-		return v.NodeDuress
-	}).(GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrOutput)
-}
-
-// Search shard settings
-func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureOutput) SearchShardTask() GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutput {
-	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressure) *GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTask {
-		return v.SearchShardTask
-	}).(GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutput)
-}
-
-// Search task settings
-func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureOutput) SearchTask() GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskPtrOutput {
-	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressure) *GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTask {
-		return v.SearchTask
-	}).(GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskPtrOutput)
-}
-
-type GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrOutput struct{ *pulumi.OutputState }
-
-func (GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressure)(nil)).Elem()
-}
-
-func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrOutput) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrOutput {
-	return o
-}
-
-func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrOutput) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrOutput {
-	return o
-}
-
-func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrOutput) Elem() GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureOutput {
-	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressure) GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressure {
-		if v != nil {
-			return *v
-		}
-		var ret GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressure
-		return ret
-	}).(GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureOutput)
-}
-
-// Enum: `disabled`, `enforced`, `monitorOnly`. The search backpressure mode. Valid values are monitor_only, enforced, or disabled. Default is monitor_only.
-func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrOutput) Mode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressure) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Mode
-	}).(pulumi.StringPtrOutput)
-}
-
-// Node duress settings
-func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrOutput) NodeDuress() GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrOutput {
-	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressure) *GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuress {
-		if v == nil {
-			return nil
-		}
-		return v.NodeDuress
-	}).(GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrOutput)
-}
-
-// Search shard settings
-func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrOutput) SearchShardTask() GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutput {
-	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressure) *GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTask {
-		if v == nil {
-			return nil
-		}
-		return v.SearchShardTask
-	}).(GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutput)
-}
-
-// Search task settings
-func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrOutput) SearchTask() GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskPtrOutput {
-	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressure) *GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTask {
-		if v == nil {
-			return nil
-		}
-		return v.SearchTask
-	}).(GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchTaskPtrOutput)
-}
-
-type GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuress struct {
-	// The CPU usage threshold (as a percentage) required for a node to be considered to be under duress. Default is 0.9.
-	CpuThreshold *float64 `pulumi:"cpuThreshold"`
-	// The heap usage threshold (as a percentage) required for a node to be considered to be under duress. Default is 0.7.
-	HeapThreshold *float64 `pulumi:"heapThreshold"`
-	// The number of successive limit breaches after which the node is considered to be under duress. Default is 3.
-	NumSuccessiveBreaches *int `pulumi:"numSuccessiveBreaches"`
-}
-
-// GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressInput is an input type that accepts GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressArgs and GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressOutput values.
-// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressInput` via:
-//
-//	GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressArgs{...}
-type GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressInput interface {
-	pulumi.Input
-
-	ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressOutput
-	ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressOutput
-}
-
-type GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressArgs struct {
-	// The CPU usage threshold (as a percentage) required for a node to be considered to be under duress. Default is 0.9.
-	CpuThreshold pulumi.Float64PtrInput `pulumi:"cpuThreshold"`
-	// The heap usage threshold (as a percentage) required for a node to be considered to be under duress. Default is 0.7.
-	HeapThreshold pulumi.Float64PtrInput `pulumi:"heapThreshold"`
-	// The number of successive limit breaches after which the node is considered to be under duress. Default is 3.
-	NumSuccessiveBreaches pulumi.IntPtrInput `pulumi:"numSuccessiveBreaches"`
-}
-
-func (GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuress)(nil)).Elem()
-}
-
-func (i GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressArgs) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressOutput {
-	return i.ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressOutputWithContext(context.Background())
-}
-
-func (i GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressArgs) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressOutput)
-}
-
-func (i GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressArgs) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrOutput {
-	return i.ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrOutputWithContext(context.Background())
-}
-
-func (i GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressArgs) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressOutput).ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrOutputWithContext(ctx)
-}
-
-// GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrInput is an input type that accepts GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressArgs, GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtr and GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrOutput values.
-// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrInput` via:
-//
-//	        GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrInput interface {
-	pulumi.Input
-
-	ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrOutput
-	ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrOutput
-}
-
-type getOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrType GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressArgs
-
-func GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtr(v *GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressArgs) GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrInput {
-	return (*getOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrType)(v)
-}
-
-func (*getOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuress)(nil)).Elem()
-}
-
-func (i *getOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrType) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrOutput {
-	return i.ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrOutputWithContext(context.Background())
-}
-
-func (i *getOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrType) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrOutput)
-}
-
-type GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressOutput struct{ *pulumi.OutputState }
-
-func (GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuress)(nil)).Elem()
-}
-
-func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressOutput) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressOutput {
-	return o
-}
-
-func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressOutput) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressOutput {
-	return o
-}
-
-func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressOutput) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrOutput {
-	return o.ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrOutputWithContext(context.Background())
-}
-
-func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressOutput) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuress) *GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuress {
-		return &v
-	}).(GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrOutput)
-}
-
-// The CPU usage threshold (as a percentage) required for a node to be considered to be under duress. Default is 0.9.
-func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressOutput) CpuThreshold() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuress) *float64 {
-		return v.CpuThreshold
-	}).(pulumi.Float64PtrOutput)
-}
-
-// The heap usage threshold (as a percentage) required for a node to be considered to be under duress. Default is 0.7.
-func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressOutput) HeapThreshold() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuress) *float64 {
-		return v.HeapThreshold
-	}).(pulumi.Float64PtrOutput)
-}
-
-// The number of successive limit breaches after which the node is considered to be under duress. Default is 3.
-func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressOutput) NumSuccessiveBreaches() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuress) *int {
-		return v.NumSuccessiveBreaches
-	}).(pulumi.IntPtrOutput)
-}
-
-type GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrOutput struct{ *pulumi.OutputState }
-
-func (GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuress)(nil)).Elem()
-}
-
-func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrOutput) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrOutput {
-	return o
-}
-
-func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrOutput) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrOutput {
-	return o
-}
-
-func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrOutput) Elem() GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressOutput {
-	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuress) GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuress {
-		if v != nil {
-			return *v
-		}
-		var ret GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuress
-		return ret
-	}).(GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressOutput)
-}
-
-// The CPU usage threshold (as a percentage) required for a node to be considered to be under duress. Default is 0.9.
-func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrOutput) CpuThreshold() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuress) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.CpuThreshold
-	}).(pulumi.Float64PtrOutput)
-}
-
-// The heap usage threshold (as a percentage) required for a node to be considered to be under duress. Default is 0.7.
-func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrOutput) HeapThreshold() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuress) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.HeapThreshold
-	}).(pulumi.Float64PtrOutput)
-}
-
-// The number of successive limit breaches after which the node is considered to be under duress. Default is 3.
-func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrOutput) NumSuccessiveBreaches() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuress) *int {
-		if v == nil {
-			return nil
-		}
-		return v.NumSuccessiveBreaches
-	}).(pulumi.IntPtrOutput)
-}
-
-type GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTask struct {
-	// The maximum number of search tasks to cancel in a single iteration of the observer thread. Default is 10.0.
-	CancellationBurst *float64 `pulumi:"cancellationBurst"`
-	// The maximum number of tasks to cancel per millisecond of elapsed time. Default is 0.003.
-	CancellationRate *float64 `pulumi:"cancellationRate"`
-	// The maximum number of tasks to cancel, as a percentage of successful task completions. Default is 0.1.
-	CancellationRatio *float64 `pulumi:"cancellationRatio"`
-	// The CPU usage threshold (in milliseconds) required for a single search shard task before it is considered for cancellation. Default is 15000.
-	CpuTimeMillisThreshold *int `pulumi:"cpuTimeMillisThreshold"`
-	// The elapsed time threshold (in milliseconds) required for a single search shard task before it is considered for cancellation. Default is 30000.
-	ElapsedTimeMillisThreshold *int `pulumi:"elapsedTimeMillisThreshold"`
-	// The number of previously completed search shard tasks to consider when calculating the rolling average of heap usage. Default is 100.
-	HeapMovingAverageWindowSize *int `pulumi:"heapMovingAverageWindowSize"`
-	// The heap usage threshold (as a percentage) required for a single search shard task before it is considered for cancellation. Default is 0.5.
-	HeapPercentThreshold *float64 `pulumi:"heapPercentThreshold"`
-	// The minimum variance required for a single search shard task’s heap usage compared to the rolling average of previously completed tasks before it is considered for cancellation. Default is 2.0.
-	HeapVariance *float64 `pulumi:"heapVariance"`
-	// The heap usage threshold (as a percentage) required for the sum of heap usages of all search shard tasks before cancellation is applied. Default is 0.5.
-	TotalHeapPercentThreshold *float64 `pulumi:"totalHeapPercentThreshold"`
-}
-
-// GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskInput is an input type that accepts GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskArgs and GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskOutput values.
-// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskInput` via:
-//
-//	GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskArgs{...}
-type GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskInput interface {
-	pulumi.Input
-
-	ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskOutput
-	ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskOutput
-}
-
-type GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskArgs struct {
-	// The maximum number of search tasks to cancel in a single iteration of the observer thread. Default is 10.0.
-	CancellationBurst pulumi.Float64PtrInput `pulumi:"cancellationBurst"`
-	// The maximum number of tasks to cancel per millisecond of elapsed time. Default is 0.003.
-	CancellationRate pulumi.Float64PtrInput `pulumi:"cancellationRate"`
-	// The maximum number of tasks to cancel, as a percentage of successful task completions. Default is 0.1.
-	CancellationRatio pulumi.Float64PtrInput `pulumi:"cancellationRatio"`
-	// The CPU usage threshold (in milliseconds) required for a single search shard task before it is considered for cancellation. Default is 15000.
-	CpuTimeMillisThreshold pulumi.IntPtrInput `pulumi:"cpuTimeMillisThreshold"`
-	// The elapsed time threshold (in milliseconds) required for a single search shard task before it is considered for cancellation. Default is 30000.
-	ElapsedTimeMillisThreshold pulumi.IntPtrInput `pulumi:"elapsedTimeMillisThreshold"`
-	// The number of previously completed search shard tasks to consider when calculating the rolling average of heap usage. Default is 100.
-	HeapMovingAverageWindowSize pulumi.IntPtrInput `pulumi:"heapMovingAverageWindowSize"`
-	// The heap usage threshold (as a percentage) required for a single search shard task before it is considered for cancellation. Default is 0.5.
-	HeapPercentThreshold pulumi.Float64PtrInput `pulumi:"heapPercentThreshold"`
-	// The minimum variance required for a single search shard task’s heap usage compared to the rolling average of previously completed tasks before it is considered for cancellation. Default is 2.0.
-	HeapVariance pulumi.Float64PtrInput `pulumi:"heapVariance"`
-	// The heap usage threshold (as a percentage) required for the sum of heap usages of all search shard tasks before cancellation is applied. Default is 0.5.
-	TotalHeapPercentThreshold pulumi.Float64PtrInput `pulumi:"totalHeapPercentThreshold"`
-}
-
-func (GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTask)(nil)).Elem()
-}
-
-func (i GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskArgs) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskOutput {
-	return i.ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskOutputWithContext(context.Background())
-}
-
-func (i GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskArgs) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskOutput)
-}
-
-func (i GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskArgs) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutput {
-	return i.ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutputWithContext(context.Background())
-}
-
-func (i GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskArgs) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskOutput).ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutputWithContext(ctx)
-}
-
-// GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrInput is an input type that accepts GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskArgs, GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtr and GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutput values.
-// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrInput` via:
-//
-//	        GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrInput interface {
-	pulumi.Input
-
-	ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutput
-	ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutput
-}
-
-type getOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrType GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskArgs
-
-func GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtr(v *GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskArgs) GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrInput {
-	return (*getOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrType)(v)
-}
-
-func (*getOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTask)(nil)).Elem()
-}
-
-func (i *getOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrType) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutput {
-	return i.ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutputWithContext(context.Background())
-}
-
-func (i *getOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrType) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutput)
-}
-
-type GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskOutput struct{ *pulumi.OutputState }
-
-func (GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTask)(nil)).Elem()
-}
-
-func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskOutput) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskOutput {
-	return o
-}
-
-func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskOutput) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskOutput {
-	return o
-}
-
-func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskOutput) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutput {
-	return o.ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutputWithContext(context.Background())
-}
-
-func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskOutput) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTask) *GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTask {
-		return &v
-	}).(GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutput)
-}
-
-// The maximum number of search tasks to cancel in a single iteration of the observer thread. Default is 10.0.
-func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskOutput) CancellationBurst() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTask) *float64 {
-		return v.CancellationBurst
-	}).(pulumi.Float64PtrOutput)
-}
-
-// The maximum number of tasks to cancel per millisecond of elapsed time. Default is 0.003.
-func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskOutput) CancellationRate() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTask) *float64 {
-		return v.CancellationRate
-	}).(pulumi.Float64PtrOutput)
-}
-
-// The maximum number of tasks to cancel, as a percentage of successful task completions. Default is 0.1.
-func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskOutput) CancellationRatio() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTask) *float64 {
-		return v.CancellationRatio
-	}).(pulumi.Float64PtrOutput)
-}
-
-// The CPU usage threshold (in milliseconds) required for a single search shard task before it is considered for cancellation. Default is 15000.
-func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskOutput) CpuTimeMillisThreshold() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTask) *int {
-		return v.CpuTimeMillisThreshold
-	}).(pulumi.IntPtrOutput)
-}
-
-// The elapsed time threshold (in milliseconds) required for a single search shard task before it is considered for cancellation. Default is 30000.
-func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskOutput) ElapsedTimeMillisThreshold() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTask) *int {
-		return v.ElapsedTimeMillisThreshold
-	}).(pulumi.IntPtrOutput)
-}
-
-// The number of previously completed search shard tasks to consider when calculating the rolling average of heap usage. Default is 100.
-func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskOutput) HeapMovingAverageWindowSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTask) *int {
-		return v.HeapMovingAverageWindowSize
-	}).(pulumi.IntPtrOutput)
-}
-
-// The heap usage threshold (as a percentage) required for a single search shard task before it is considered for cancellation. Default is 0.5.
-func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskOutput) HeapPercentThreshold() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTask) *float64 {
-		return v.HeapPercentThreshold
-	}).(pulumi.Float64PtrOutput)
-}
-
-// The minimum variance required for a single search shard task’s heap usage compared to the rolling average of previously completed tasks before it is considered for cancellation. Default is 2.0.
-func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskOutput) HeapVariance() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTask) *float64 {
-		return v.HeapVariance
-	}).(pulumi.Float64PtrOutput)
-}
-
-// The heap usage threshold (as a percentage) required for the sum of heap usages of all search shard tasks before cancellation is applied. Default is 0.5.
-func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskOutput) TotalHeapPercentThreshold() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTask) *float64 {
-		return v.TotalHeapPercentThreshold
-	}).(pulumi.Float64PtrOutput)
-}
-
-type GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutput struct{ *pulumi.OutputState }
-
-func (GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTask)(nil)).Elem()
-}
-
-func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutput) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutput {
-	return o
-}
-
-func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutput) ToGetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutput {
-	return o
-}
-
-func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutput) Elem() GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskOutput {
-	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTask) GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTask {
-		if v != nil {
-			return *v
-		}
-		var ret GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTask
-		return ret
-	}).(GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskOutput)
-}
-
-// The maximum number of search tasks to cancel in a single iteration of the observer thread. Default is 10.0.
-func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutput) CancellationBurst() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTask) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.CancellationBurst
-	}).(pulumi.Float64PtrOutput)
-}
-
-// The maximum number of tasks to cancel per millisecond of elapsed time. Default is 0.003.
-func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutput) CancellationRate() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTask) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.CancellationRate
-	}).(pulumi.Float64PtrOutput)
-}
-
-// The maximum number of tasks to cancel, as a percentage of successful task completions. Default is 0.1.
-func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutput) CancellationRatio() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTask) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.CancellationRatio
-	}).(pulumi.Float64PtrOutput)
-}
-
-// The CPU usage threshold (in milliseconds) required for a single search shard task before it is considered for cancellation. Default is 15000.
-func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutput) CpuTimeMillisThreshold() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTask) *int {
-		if v == nil {
-			return nil
-		}
-		return v.CpuTimeMillisThreshold
-	}).(pulumi.IntPtrOutput)
-}
-
-// The elapsed time threshold (in milliseconds) required for a single search shard task before it is considered for cancellation. Default is 30000.
-func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutput) ElapsedTimeMillisThreshold() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTask) *int {
-		if v == nil {
-			return nil
-		}
-		return v.ElapsedTimeMillisThreshold
-	}).(pulumi.IntPtrOutput)
-}
-
-// The number of previously completed search shard tasks to consider when calculating the rolling average of heap usage. Default is 100.
-func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutput) HeapMovingAverageWindowSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTask) *int {
-		if v == nil {
-			return nil
-		}
-		return v.HeapMovingAverageWindowSize
-	}).(pulumi.IntPtrOutput)
-}
-
-// The heap usage threshold (as a percentage) required for a single search shard task before it is considered for cancellation. Default is 0.5.
-func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutput) HeapPercentThreshold() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTask) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.HeapPercentThreshold
-	}).(pulumi.Float64PtrOutput)
-}
-
-// The minimum variance required for a single search shard task’s heap usage compared to the rolling average of previously completed tasks before it is considered for cancellation. Default is 2.0.
-func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutput) HeapVariance() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTask) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.HeapVariance
-	}).(pulumi.Float64PtrOutput)
-}
-
-// The heap usage threshold (as a percentage) required for the sum of heap usages of all search shard tasks before cancellation is applied. Default is 0.5.
-func (o GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutput) TotalHeapPercentThreshold() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTask) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.TotalHeapPercentThreshold
-	}).(pulumi.Float64PtrOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccountAuthenticationSamlFieldMappingInput)(nil)).Elem(), AccountAuthenticationSamlFieldMappingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccountAuthenticationSamlFieldMappingPtrInput)(nil)).Elem(), AccountAuthenticationSamlFieldMappingArgs{})
@@ -102807,10 +102860,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FlinkJarApplicationApplicationVersionFileInfoArrayInput)(nil)).Elem(), FlinkJarApplicationApplicationVersionFileInfoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FlinkJarApplicationCurrentDeploymentInput)(nil)).Elem(), FlinkJarApplicationCurrentDeploymentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FlinkJarApplicationCurrentDeploymentArrayInput)(nil)).Elem(), FlinkJarApplicationCurrentDeploymentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FlinkJarApplicationDeploymentTimeoutsInput)(nil)).Elem(), FlinkJarApplicationDeploymentTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FlinkJarApplicationDeploymentTimeoutsPtrInput)(nil)).Elem(), FlinkJarApplicationDeploymentTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FlinkJarApplicationTimeoutsInput)(nil)).Elem(), FlinkJarApplicationTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FlinkJarApplicationTimeoutsPtrInput)(nil)).Elem(), FlinkJarApplicationTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FlinkJarApplicationVersionFileInfoInput)(nil)).Elem(), FlinkJarApplicationVersionFileInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FlinkJarApplicationVersionFileInfoArrayInput)(nil)).Elem(), FlinkJarApplicationVersionFileInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FlinkJarApplicationVersionTimeoutsInput)(nil)).Elem(), FlinkJarApplicationVersionTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FlinkJarApplicationVersionTimeoutsPtrInput)(nil)).Elem(), FlinkJarApplicationVersionTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FlinkServiceIntegrationInput)(nil)).Elem(), FlinkServiceIntegrationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FlinkServiceIntegrationArrayInput)(nil)).Elem(), FlinkServiceIntegrationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FlinkTagInput)(nil)).Elem(), FlinkTagArgs{})
@@ -103331,6 +103388,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ThanosThanosUserConfigQueryPtrInput)(nil)).Elem(), ThanosThanosUserConfigQueryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ThanosThanosUserConfigQueryFrontendInput)(nil)).Elem(), ThanosThanosUserConfigQueryFrontendArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ThanosThanosUserConfigQueryFrontendPtrInput)(nil)).Elem(), ThanosThanosUserConfigQueryFrontendArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransitGatewayVpcAttachmentTimeoutsInput)(nil)).Elem(), TransitGatewayVpcAttachmentTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransitGatewayVpcAttachmentTimeoutsPtrInput)(nil)).Elem(), TransitGatewayVpcAttachmentTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UpgradeStepTimeoutsInput)(nil)).Elem(), UpgradeStepTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UpgradeStepTimeoutsPtrInput)(nil)).Elem(), UpgradeStepTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ValkeyComponentInput)(nil)).Elem(), ValkeyComponentArgs{})
@@ -103697,12 +103756,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskArgs{})
 	pulumi.RegisterOutputType(AccountAuthenticationSamlFieldMappingOutput{})
 	pulumi.RegisterOutputType(AccountAuthenticationSamlFieldMappingPtrOutput{})
 	pulumi.RegisterOutputType(AwsOrgVpcPeeringConnectionTimeoutsOutput{})
@@ -103807,10 +103860,14 @@ func init() {
 	pulumi.RegisterOutputType(FlinkJarApplicationApplicationVersionFileInfoArrayOutput{})
 	pulumi.RegisterOutputType(FlinkJarApplicationCurrentDeploymentOutput{})
 	pulumi.RegisterOutputType(FlinkJarApplicationCurrentDeploymentArrayOutput{})
+	pulumi.RegisterOutputType(FlinkJarApplicationDeploymentTimeoutsOutput{})
+	pulumi.RegisterOutputType(FlinkJarApplicationDeploymentTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(FlinkJarApplicationTimeoutsOutput{})
 	pulumi.RegisterOutputType(FlinkJarApplicationTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(FlinkJarApplicationVersionFileInfoOutput{})
 	pulumi.RegisterOutputType(FlinkJarApplicationVersionFileInfoArrayOutput{})
+	pulumi.RegisterOutputType(FlinkJarApplicationVersionTimeoutsOutput{})
+	pulumi.RegisterOutputType(FlinkJarApplicationVersionTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(FlinkServiceIntegrationOutput{})
 	pulumi.RegisterOutputType(FlinkServiceIntegrationArrayOutput{})
 	pulumi.RegisterOutputType(FlinkTagOutput{})
@@ -104331,6 +104388,8 @@ func init() {
 	pulumi.RegisterOutputType(ThanosThanosUserConfigQueryPtrOutput{})
 	pulumi.RegisterOutputType(ThanosThanosUserConfigQueryFrontendOutput{})
 	pulumi.RegisterOutputType(ThanosThanosUserConfigQueryFrontendPtrOutput{})
+	pulumi.RegisterOutputType(TransitGatewayVpcAttachmentTimeoutsOutput{})
+	pulumi.RegisterOutputType(TransitGatewayVpcAttachmentTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(UpgradeStepTimeoutsOutput{})
 	pulumi.RegisterOutputType(UpgradeStepTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(ValkeyComponentOutput{})
@@ -104697,10 +104756,4 @@ func init() {
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput{})
-	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureOutput{})
-	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrOutput{})
-	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressOutput{})
-	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressPtrOutput{})
-	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskOutput{})
-	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureSearchShardTaskPtrOutput{})
 }

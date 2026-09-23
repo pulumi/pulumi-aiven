@@ -19,6 +19,12 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool> IsClusterPlan { get; set; } = null!;
 
         /// <summary>
+        /// True when the plan's topology is set via user config and its region price is per node.
+        /// </summary>
+        [Input("managedClusterPlan", required: true)]
+        public Input<bool> ManagedClusterPlan { get; set; } = null!;
+
+        /// <summary>
         /// Maximum amount of system memory as a percentage (0-100) the service can actually use after taking into account management overhead. This is relevant for memory bound services for which some service management operations require allocating proportional amount of memory on top the basic load.
         /// </summary>
         [Input("maxMemoryPercent", required: true)]

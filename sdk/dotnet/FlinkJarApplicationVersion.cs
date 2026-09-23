@@ -10,7 +10,10 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// Creates and manages an Aiven for Apache Flink® jar application version. This feature is in the limited availability stage and may change without notice. To enable this feature, contact the [sales team](http://aiven.io/contact). Once it's enabled, set the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+    /// Creates and manages a version of an [Aiven for Apache Flink® jar application](https://aiven.io/docs/products/flink/howto/create-jar-application). The jar file is uploaded to the pre-signed URL the API returns, and editing the file creates a new version. Requires the `aiven.Flink` service to have `flink_user_config.custom_code` enabled, which allows uploading and deploying custom JARs. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
+    /// 
+    /// &gt; **Beta resource in limited availability**
+    /// This feature is in the limited availability stage and may change without notice. To enable this feature, contact the [sales team](http://aiven.io/contact). Once it's enabled, set the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
     /// 
     /// ## Example Usage
     /// 
@@ -22,32 +25,11 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Aiven.Flink("example", new()
+    ///     var example = new Aiven.FlinkJarApplicationVersion("example", new()
     ///     {
-    ///         FlinkUserConfig = new Aiven.Inputs.FlinkFlinkUserConfigArgs
-    ///         {
-    ///             CustomCode = true,
-    ///         },
-    ///         Project = exampleAivenProject.Project,
-    ///         ServiceName = "example-flink-service",
-    ///         CloudName = "google-europe-west1",
-    ///         Plan = "business-4",
-    ///         MaintenanceWindowDow = "monday",
-    ///         MaintenanceWindowTime = "04:00:00",
-    ///     });
-    /// 
-    ///     var exampleFlinkJarApplication = new Aiven.FlinkJarApplication("example", new()
-    ///     {
-    ///         Project = example.Project,
-    ///         ServiceName = example.ServiceName,
-    ///         Name = "example-app-jar",
-    ///     });
-    /// 
-    ///     var exampleFlinkJarApplicationVersion = new Aiven.FlinkJarApplicationVersion("example", new()
-    ///     {
-    ///         Project = example.Project,
-    ///         ServiceName = example.ServiceName,
-    ///         ApplicationId = exampleFlinkJarApplication.ApplicationId,
+    ///         Project = "my-project",
+    ///         ServiceName = "my-application",
+    ///         ApplicationId = "foo",
     ///         Source = "./example.jar",
     ///     });
     /// 
@@ -116,6 +98,9 @@ namespace Pulumi.Aiven
         /// </summary>
         [Output("sourceChecksum")]
         public Output<string> SourceChecksum { get; private set; } = null!;
+
+        [Output("timeouts")]
+        public Output<Outputs.FlinkJarApplicationVersionTimeouts?> Timeouts { get; private set; } = null!;
 
         /// <summary>
         /// Version number.
@@ -193,6 +178,9 @@ namespace Pulumi.Aiven
         [Input("source", required: true)]
         public Input<string> Source { get; set; } = null!;
 
+        [Input("timeouts")]
+        public Input<Inputs.FlinkJarApplicationVersionTimeoutsArgs>? Timeouts { get; set; }
+
         public FlinkJarApplicationVersionArgs()
         {
         }
@@ -260,6 +248,9 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("sourceChecksum")]
         public Input<string>? SourceChecksum { get; set; }
+
+        [Input("timeouts")]
+        public Input<Inputs.FlinkJarApplicationVersionTimeoutsGetArgs>? Timeouts { get; set; }
 
         /// <summary>
         /// Version number.

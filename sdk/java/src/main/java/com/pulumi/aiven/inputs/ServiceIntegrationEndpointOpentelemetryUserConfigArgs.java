@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -64,6 +65,21 @@ public final class ServiceIntegrationEndpointOpentelemetryUserConfigArgs extends
     }
 
     /**
+     * If set, only these measurements are sent to this endpoint; everything else is dropped for this destination only, leaving every other destination (other integrations, Prometheus, etc.) unaffected. Matched after bucketing and any overrideMeasurements rename, i.e. against the final measurement name as it will appear at the destination (e.g. `kafka`, or `do.databases.kafka` if renamed). Leave unset to export every measurement, same as today. Telegraf&#39;s underlying namepass filter treats an empty list the same as unset (both export everything), so an empty list isn&#39;t accepted here -- it wouldn&#39;t do what it looks like it does.
+     * 
+     */
+    @Import(name="filterMeasurements")
+    private @Nullable Output<List<String>> filterMeasurements;
+
+    /**
+     * @return If set, only these measurements are sent to this endpoint; everything else is dropped for this destination only, leaving every other destination (other integrations, Prometheus, etc.) unaffected. Matched after bucketing and any overrideMeasurements rename, i.e. against the final measurement name as it will appear at the destination (e.g. `kafka`, or `do.databases.kafka` if renamed). Leave unset to export every measurement, same as today. Telegraf&#39;s underlying namepass filter treats an empty list the same as unset (both export everything), so an empty list isn&#39;t accepted here -- it wouldn&#39;t do what it looks like it does.
+     * 
+     */
+    public Optional<Output<List<String>>> filterMeasurements() {
+        return Optional.ofNullable(this.filterMeasurements);
+    }
+
+    /**
      * Additional gRPC metadata headers sent with every export request.
      * 
      */
@@ -76,6 +92,21 @@ public final class ServiceIntegrationEndpointOpentelemetryUserConfigArgs extends
      */
     public Optional<Output<Map<String,String>>> headers() {
         return Optional.ofNullable(this.headers);
+    }
+
+    /**
+     * Every metric belonging to a known service (mysql, postgresql, valkey -- which also covers redis, Valkey&#39;s predecessor -- opensearch, kafka) is exported here under a single bucket measurement per service -- e.g. every Kafka JMX metric, however deep its raw name, becomes measurement `kafka` (its specific identity moves into the field name instead). This map renames that bucket as a whole -- key on the bucket name (e.g. `kafka`, `postgresql`), not the metric&#39;s original raw name; it cannot target one specific metric within a bucket. Metrics outside these known services (e.g. cpu, mem, disk) are exported unchanged and can&#39;t be renamed here. The original metric name is left untouched for every other destination (other integrations, Prometheus, etc.) -- only the copy sent here is bucketed and, if listed, renamed.
+     * 
+     */
+    @Import(name="overrideMeasurements")
+    private @Nullable Output<Map<String,String>> overrideMeasurements;
+
+    /**
+     * @return Every metric belonging to a known service (mysql, postgresql, valkey -- which also covers redis, Valkey&#39;s predecessor -- opensearch, kafka) is exported here under a single bucket measurement per service -- e.g. every Kafka JMX metric, however deep its raw name, becomes measurement `kafka` (its specific identity moves into the field name instead). This map renames that bucket as a whole -- key on the bucket name (e.g. `kafka`, `postgresql`), not the metric&#39;s original raw name; it cannot target one specific metric within a bucket. Metrics outside these known services (e.g. cpu, mem, disk) are exported unchanged and can&#39;t be renamed here. The original metric name is left untouched for every other destination (other integrations, Prometheus, etc.) -- only the copy sent here is bucketed and, if listed, renamed.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> overrideMeasurements() {
+        return Optional.ofNullable(this.overrideMeasurements);
     }
 
     /**
@@ -114,7 +145,9 @@ public final class ServiceIntegrationEndpointOpentelemetryUserConfigArgs extends
         this.attributes = $.attributes;
         this.compression = $.compression;
         this.encodingType = $.encodingType;
+        this.filterMeasurements = $.filterMeasurements;
         this.headers = $.headers;
+        this.overrideMeasurements = $.overrideMeasurements;
         this.serviceAddress = $.serviceAddress;
         this.timeout = $.timeout;
     }
@@ -201,6 +234,37 @@ public final class ServiceIntegrationEndpointOpentelemetryUserConfigArgs extends
         }
 
         /**
+         * @param filterMeasurements If set, only these measurements are sent to this endpoint; everything else is dropped for this destination only, leaving every other destination (other integrations, Prometheus, etc.) unaffected. Matched after bucketing and any overrideMeasurements rename, i.e. against the final measurement name as it will appear at the destination (e.g. `kafka`, or `do.databases.kafka` if renamed). Leave unset to export every measurement, same as today. Telegraf&#39;s underlying namepass filter treats an empty list the same as unset (both export everything), so an empty list isn&#39;t accepted here -- it wouldn&#39;t do what it looks like it does.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder filterMeasurements(@Nullable Output<List<String>> filterMeasurements) {
+            $.filterMeasurements = filterMeasurements;
+            return this;
+        }
+
+        /**
+         * @param filterMeasurements If set, only these measurements are sent to this endpoint; everything else is dropped for this destination only, leaving every other destination (other integrations, Prometheus, etc.) unaffected. Matched after bucketing and any overrideMeasurements rename, i.e. against the final measurement name as it will appear at the destination (e.g. `kafka`, or `do.databases.kafka` if renamed). Leave unset to export every measurement, same as today. Telegraf&#39;s underlying namepass filter treats an empty list the same as unset (both export everything), so an empty list isn&#39;t accepted here -- it wouldn&#39;t do what it looks like it does.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder filterMeasurements(List<String> filterMeasurements) {
+            return filterMeasurements(Output.of(filterMeasurements));
+        }
+
+        /**
+         * @param filterMeasurements If set, only these measurements are sent to this endpoint; everything else is dropped for this destination only, leaving every other destination (other integrations, Prometheus, etc.) unaffected. Matched after bucketing and any overrideMeasurements rename, i.e. against the final measurement name as it will appear at the destination (e.g. `kafka`, or `do.databases.kafka` if renamed). Leave unset to export every measurement, same as today. Telegraf&#39;s underlying namepass filter treats an empty list the same as unset (both export everything), so an empty list isn&#39;t accepted here -- it wouldn&#39;t do what it looks like it does.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder filterMeasurements(String... filterMeasurements) {
+            return filterMeasurements(List.of(filterMeasurements));
+        }
+
+        /**
          * @param headers Additional gRPC metadata headers sent with every export request.
          * 
          * @return builder
@@ -219,6 +283,27 @@ public final class ServiceIntegrationEndpointOpentelemetryUserConfigArgs extends
          */
         public Builder headers(Map<String,String> headers) {
             return headers(Output.of(headers));
+        }
+
+        /**
+         * @param overrideMeasurements Every metric belonging to a known service (mysql, postgresql, valkey -- which also covers redis, Valkey&#39;s predecessor -- opensearch, kafka) is exported here under a single bucket measurement per service -- e.g. every Kafka JMX metric, however deep its raw name, becomes measurement `kafka` (its specific identity moves into the field name instead). This map renames that bucket as a whole -- key on the bucket name (e.g. `kafka`, `postgresql`), not the metric&#39;s original raw name; it cannot target one specific metric within a bucket. Metrics outside these known services (e.g. cpu, mem, disk) are exported unchanged and can&#39;t be renamed here. The original metric name is left untouched for every other destination (other integrations, Prometheus, etc.) -- only the copy sent here is bucketed and, if listed, renamed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder overrideMeasurements(@Nullable Output<Map<String,String>> overrideMeasurements) {
+            $.overrideMeasurements = overrideMeasurements;
+            return this;
+        }
+
+        /**
+         * @param overrideMeasurements Every metric belonging to a known service (mysql, postgresql, valkey -- which also covers redis, Valkey&#39;s predecessor -- opensearch, kafka) is exported here under a single bucket measurement per service -- e.g. every Kafka JMX metric, however deep its raw name, becomes measurement `kafka` (its specific identity moves into the field name instead). This map renames that bucket as a whole -- key on the bucket name (e.g. `kafka`, `postgresql`), not the metric&#39;s original raw name; it cannot target one specific metric within a bucket. Metrics outside these known services (e.g. cpu, mem, disk) are exported unchanged and can&#39;t be renamed here. The original metric name is left untouched for every other destination (other integrations, Prometheus, etc.) -- only the copy sent here is bucketed and, if listed, renamed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder overrideMeasurements(Map<String,String> overrideMeasurements) {
+            return overrideMeasurements(Output.of(overrideMeasurements));
         }
 
         /**

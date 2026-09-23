@@ -21,6 +21,10 @@ import * as utilities from "./utilities";
  *     username: "testuser",
  *     passwordWo: "password123",
  *     passwordWoVersion: 1,
+ *     mysqlGrants: [
+ *         "SELECT",
+ *         "DELETE",
+ *     ],
  * });
  * ```
  *
@@ -58,6 +62,10 @@ export class OpensearchUser extends pulumi.CustomResource {
         return obj['__pulumiType'] === OpensearchUser.__pulumiType;
     }
 
+    /**
+     * MySQL grants for the service user. Changing this property forces recreation of the resource.
+     */
+    declare public readonly mysqlGrants: pulumi.Output<string[] | undefined>;
     /**
      * The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
      */
@@ -106,6 +114,7 @@ export class OpensearchUser extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OpensearchUserState | undefined;
+            resourceInputs["mysqlGrants"] = state?.mysqlGrants;
             resourceInputs["password"] = state?.password;
             resourceInputs["passwordEncryptionType"] = state?.passwordEncryptionType;
             resourceInputs["passwordWo"] = state?.passwordWo;
@@ -126,6 +135,7 @@ export class OpensearchUser extends pulumi.CustomResource {
             if (args?.username === undefined && !opts.urn) {
                 throw new Error("Missing required property 'username'");
             }
+            resourceInputs["mysqlGrants"] = args?.mysqlGrants;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
             resourceInputs["passwordWo"] = args?.passwordWo ? pulumi.secret(args.passwordWo) : undefined;
             resourceInputs["passwordWoVersion"] = args?.passwordWoVersion;
@@ -147,6 +157,10 @@ export class OpensearchUser extends pulumi.CustomResource {
  * Input properties used for looking up and filtering OpensearchUser resources.
  */
 export interface OpensearchUserState {
+    /**
+     * MySQL grants for the service user. Changing this property forces recreation of the resource.
+     */
+    mysqlGrants?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
      */
@@ -187,6 +201,10 @@ export interface OpensearchUserState {
  * The set of arguments for constructing a OpensearchUser resource.
  */
 export interface OpensearchUserArgs {
+    /**
+     * MySQL grants for the service user. Changing this property forces recreation of the resource.
+     */
+    mysqlGrants?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
      */

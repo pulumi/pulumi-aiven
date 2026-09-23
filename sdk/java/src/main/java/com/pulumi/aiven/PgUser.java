@@ -51,6 +51,9 @@ import javax.annotation.Nullable;
  *             .username("testuser")
  *             .passwordWo("password123")
  *             .passwordWoVersion(1)
+ *             .mysqlGrants(            
+ *                 "SELECT",
+ *                 "DELETE")
  *             .pgAllowReplication(true)
  *             .build());
  * 
@@ -95,6 +98,20 @@ public class PgUser extends com.pulumi.resources.CustomResource {
      */
     public Output<String> accessKey() {
         return this.accessKey;
+    }
+    /**
+     * MySQL grants for the service user. Changing this property forces recreation of the resource.
+     * 
+     */
+    @Export(name="mysqlGrants", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> mysqlGrants;
+
+    /**
+     * @return MySQL grants for the service user. Changing this property forces recreation of the resource.
+     * 
+     */
+    public Output<Optional<List<String>>> mysqlGrants() {
+        return Codegen.optional(this.mysqlGrants);
     }
     /**
      * The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.

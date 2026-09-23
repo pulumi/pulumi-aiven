@@ -25,25 +25,25 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? RetriableErrorsSilenced { get; set; }
 
         /// <summary>
-        /// If enabled, the Schema Registry validates OAuth2/OIDC JWT bearer tokens on incoming requests. Requires the OIDC provider settings under the `Kafka` configuration (`SaslOauthbearerJwksEndpointUrl` and related). Defaults to `False`.
+        /// If enabled, the Schema Registry validates OAuth 2.0/OIDC JWT bearer tokens. Requires `SaslOauthbearerJwksEndpointUrl`, `SaslOauthbearerExpectedIssuer`, and `SaslOauthbearerExpectedAudience` under `Kafka`. Defaults to `False`.
         /// </summary>
         [Input("saslOauthbearerAuthenticationEnabled")]
         public Input<bool>? SaslOauthbearerAuthenticationEnabled { get; set; }
 
         /// <summary>
-        /// If enabled, the Schema Registry enforces role-based authorization derived from the JWT roles claim. Requires `SaslOauthbearerAuthenticationEnabled` to be enabled. Defaults to `False`.
+        /// If enabled, the Schema Registry enforces role-based authorization using the JWT roles claim. It also enables `SaslOauthbearerAuthenticationEnabled` if it isn't already enabled. Authorization requires authentication. Defaults to `False`.
         /// </summary>
         [Input("saslOauthbearerAuthorizationEnabled")]
         public Input<bool>? SaslOauthbearerAuthorizationEnabled { get; set; }
 
         /// <summary>
-        /// JSON object mapping HTTP methods to the list of roles allowed to perform them on the Schema Registry, provided as a JSON-encoded string. Role names use the `karapace.` prefix, e.g. `karapace.schema:read`. Defaults to `{"GET": ["karapace.schema:read", "karapace.subject:read"], "POST": [], "PUT": [], "DELETE": []}`.
+        /// Maps HTTP methods to allowed roles. Use a JSON object with `GET`, `POST`, `PUT`, and `DELETE` keys mapped to arrays of roles. Role names use the `karapace.` prefix. Example: `{"GET": ["karapace.schema:read"], "POST": [], "PUT": [], "DELETE": []}`. Example: `{"GET":["karapace.schema:read"],"POST":[],"PUT":[],"DELETE":[]}`.
         /// </summary>
         [Input("saslOauthbearerMethodRoles")]
         public Input<string>? SaslOauthbearerMethodRoles { get; set; }
 
         /// <summary>
-        /// JSON path used to extract the roles claim from the JWT for Schema Registry authorization. Defaults to `resource_access.karapace.roles`.
+        /// The JSON path the Schema Registry uses to find the roles claim in the JWT. Defaults to `resource_access.karapace.roles`.
         /// </summary>
         [Input("saslOauthbearerRolesClaimPath")]
         public Input<string>? SaslOauthbearerRolesClaimPath { get; set; }

@@ -11137,26 +11137,12 @@ public final class AivenFunctions {
     /**
      * The Organization User data source provides information about the existing Aiven Organization User.
      * 
-     * &gt; **This resource is deprecated**
-     * Users cannot be invited to an organization using Terraform.
-     * Use the Aiven Console to [invite users to your organization](https://aiven.io/docs/platform/howto/manage-org-users).
-     * After the user accepts the invite you can get their information using the `aiven.OrganizationUser` data source. You can manage
-     * user access to projects with the `aiven.OrganizationUserGroup`, `aiven.OrganizationUserGroupMember`,
-     * and `aiven.OrganizationPermission` resources.
-     * 
      */
     public static Output<GetOrganizationUserResult> getOrganizationUser(GetOrganizationUserArgs args) {
         return getOrganizationUser(args, InvokeOptions.Empty);
     }
     /**
      * The Organization User data source provides information about the existing Aiven Organization User.
-     * 
-     * &gt; **This resource is deprecated**
-     * Users cannot be invited to an organization using Terraform.
-     * Use the Aiven Console to [invite users to your organization](https://aiven.io/docs/platform/howto/manage-org-users).
-     * After the user accepts the invite you can get their information using the `aiven.OrganizationUser` data source. You can manage
-     * user access to projects with the `aiven.OrganizationUserGroup`, `aiven.OrganizationUserGroupMember`,
-     * and `aiven.OrganizationPermission` resources.
      * 
      */
     public static CompletableFuture<GetOrganizationUserResult> getOrganizationUserPlain(GetOrganizationUserPlainArgs args) {
@@ -11165,13 +11151,6 @@ public final class AivenFunctions {
     /**
      * The Organization User data source provides information about the existing Aiven Organization User.
      * 
-     * &gt; **This resource is deprecated**
-     * Users cannot be invited to an organization using Terraform.
-     * Use the Aiven Console to [invite users to your organization](https://aiven.io/docs/platform/howto/manage-org-users).
-     * After the user accepts the invite you can get their information using the `aiven.OrganizationUser` data source. You can manage
-     * user access to projects with the `aiven.OrganizationUserGroup`, `aiven.OrganizationUserGroupMember`,
-     * and `aiven.OrganizationPermission` resources.
-     * 
      */
     public static Output<GetOrganizationUserResult> getOrganizationUser(GetOrganizationUserArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getOrganizationUser:getOrganizationUser", TypeShape.of(GetOrganizationUserResult.class), args, Utilities.withVersion(options));
@@ -11179,26 +11158,12 @@ public final class AivenFunctions {
     /**
      * The Organization User data source provides information about the existing Aiven Organization User.
      * 
-     * &gt; **This resource is deprecated**
-     * Users cannot be invited to an organization using Terraform.
-     * Use the Aiven Console to [invite users to your organization](https://aiven.io/docs/platform/howto/manage-org-users).
-     * After the user accepts the invite you can get their information using the `aiven.OrganizationUser` data source. You can manage
-     * user access to projects with the `aiven.OrganizationUserGroup`, `aiven.OrganizationUserGroupMember`,
-     * and `aiven.OrganizationPermission` resources.
-     * 
      */
     public static Output<GetOrganizationUserResult> getOrganizationUser(GetOrganizationUserArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getOrganizationUser:getOrganizationUser", TypeShape.of(GetOrganizationUserResult.class), args, Utilities.withVersion(options));
     }
     /**
      * The Organization User data source provides information about the existing Aiven Organization User.
-     * 
-     * &gt; **This resource is deprecated**
-     * Users cannot be invited to an organization using Terraform.
-     * Use the Aiven Console to [invite users to your organization](https://aiven.io/docs/platform/howto/manage-org-users).
-     * After the user accepts the invite you can get their information using the `aiven.OrganizationUser` data source. You can manage
-     * user access to projects with the `aiven.OrganizationUserGroup`, `aiven.OrganizationUserGroupMember`,
-     * and `aiven.OrganizationPermission` resources.
      * 
      */
     public static CompletableFuture<GetOrganizationUserResult> getOrganizationUserPlain(GetOrganizationUserPlainArgs args, InvokeOptions options) {
@@ -14907,7 +14872,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invokeAsync("aiven:index/getThanos:getThanos", TypeShape.of(GetThanosResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The Transit Gateway VPC Attachment resource allows the creation and management Transit Gateway VPC Attachment VPC peering connection between Aiven and AWS.
+     * Gets information about an AWS Transit Gateway VPC attachment for an Aiven project VPC.
      * 
      * ## Example Usage
      * 
@@ -14933,10 +14898,11 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var attachment = AivenFunctions.getTransitGatewayVpcAttachment(GetTransitGatewayVpcAttachmentArgs.builder()
-     *             .vpcId(bar.id())
-     *             .peerCloudAccount("<PEER_ACCOUNT_ID>")
-     *             .peerVpc("google-project1")
+     *         final var example = AivenFunctions.getTransitGatewayVpcAttachment(GetTransitGatewayVpcAttachmentArgs.builder()
+     *             .vpcId("example-project/example-vpc")
+     *             .peerCloudAccount("123456789012")
+     *             .peerVpc("tgw-0123456789abcdef0")
+     *             .peerRegion("us-east-1")
      *             .build());
      * 
      *     }
@@ -14949,7 +14915,7 @@ public final class AivenFunctions {
         return getTransitGatewayVpcAttachment(args, InvokeOptions.Empty);
     }
     /**
-     * The Transit Gateway VPC Attachment resource allows the creation and management Transit Gateway VPC Attachment VPC peering connection between Aiven and AWS.
+     * Gets information about an AWS Transit Gateway VPC attachment for an Aiven project VPC.
      * 
      * ## Example Usage
      * 
@@ -14975,10 +14941,11 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var attachment = AivenFunctions.getTransitGatewayVpcAttachment(GetTransitGatewayVpcAttachmentArgs.builder()
-     *             .vpcId(bar.id())
-     *             .peerCloudAccount("<PEER_ACCOUNT_ID>")
-     *             .peerVpc("google-project1")
+     *         final var example = AivenFunctions.getTransitGatewayVpcAttachment(GetTransitGatewayVpcAttachmentArgs.builder()
+     *             .vpcId("example-project/example-vpc")
+     *             .peerCloudAccount("123456789012")
+     *             .peerVpc("tgw-0123456789abcdef0")
+     *             .peerRegion("us-east-1")
      *             .build());
      * 
      *     }
@@ -14991,7 +14958,7 @@ public final class AivenFunctions {
         return getTransitGatewayVpcAttachmentPlain(args, InvokeOptions.Empty);
     }
     /**
-     * The Transit Gateway VPC Attachment resource allows the creation and management Transit Gateway VPC Attachment VPC peering connection between Aiven and AWS.
+     * Gets information about an AWS Transit Gateway VPC attachment for an Aiven project VPC.
      * 
      * ## Example Usage
      * 
@@ -15017,10 +14984,11 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var attachment = AivenFunctions.getTransitGatewayVpcAttachment(GetTransitGatewayVpcAttachmentArgs.builder()
-     *             .vpcId(bar.id())
-     *             .peerCloudAccount("<PEER_ACCOUNT_ID>")
-     *             .peerVpc("google-project1")
+     *         final var example = AivenFunctions.getTransitGatewayVpcAttachment(GetTransitGatewayVpcAttachmentArgs.builder()
+     *             .vpcId("example-project/example-vpc")
+     *             .peerCloudAccount("123456789012")
+     *             .peerVpc("tgw-0123456789abcdef0")
+     *             .peerRegion("us-east-1")
      *             .build());
      * 
      *     }
@@ -15033,7 +15001,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invoke("aiven:index/getTransitGatewayVpcAttachment:getTransitGatewayVpcAttachment", TypeShape.of(GetTransitGatewayVpcAttachmentResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The Transit Gateway VPC Attachment resource allows the creation and management Transit Gateway VPC Attachment VPC peering connection between Aiven and AWS.
+     * Gets information about an AWS Transit Gateway VPC attachment for an Aiven project VPC.
      * 
      * ## Example Usage
      * 
@@ -15059,10 +15027,11 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var attachment = AivenFunctions.getTransitGatewayVpcAttachment(GetTransitGatewayVpcAttachmentArgs.builder()
-     *             .vpcId(bar.id())
-     *             .peerCloudAccount("<PEER_ACCOUNT_ID>")
-     *             .peerVpc("google-project1")
+     *         final var example = AivenFunctions.getTransitGatewayVpcAttachment(GetTransitGatewayVpcAttachmentArgs.builder()
+     *             .vpcId("example-project/example-vpc")
+     *             .peerCloudAccount("123456789012")
+     *             .peerVpc("tgw-0123456789abcdef0")
+     *             .peerRegion("us-east-1")
      *             .build());
      * 
      *     }
@@ -15075,7 +15044,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invoke("aiven:index/getTransitGatewayVpcAttachment:getTransitGatewayVpcAttachment", TypeShape.of(GetTransitGatewayVpcAttachmentResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The Transit Gateway VPC Attachment resource allows the creation and management Transit Gateway VPC Attachment VPC peering connection between Aiven and AWS.
+     * Gets information about an AWS Transit Gateway VPC attachment for an Aiven project VPC.
      * 
      * ## Example Usage
      * 
@@ -15101,10 +15070,11 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var attachment = AivenFunctions.getTransitGatewayVpcAttachment(GetTransitGatewayVpcAttachmentArgs.builder()
-     *             .vpcId(bar.id())
-     *             .peerCloudAccount("<PEER_ACCOUNT_ID>")
-     *             .peerVpc("google-project1")
+     *         final var example = AivenFunctions.getTransitGatewayVpcAttachment(GetTransitGatewayVpcAttachmentArgs.builder()
+     *             .vpcId("example-project/example-vpc")
+     *             .peerCloudAccount("123456789012")
+     *             .peerVpc("tgw-0123456789abcdef0")
+     *             .peerRegion("us-east-1")
      *             .build());
      * 
      *     }

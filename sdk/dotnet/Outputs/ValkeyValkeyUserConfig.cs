@@ -86,6 +86,14 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? ValkeyAclChannelsDefault;
         /// <summary>
+        /// Minimum amount of fragmentation waste, in bytes, before active defragmentation starts. Only takes effect when `ValkeyActivedefrag` is enabled.
+        /// </summary>
+        public readonly int? ValkeyActiveDefragIgnoreBytes;
+        /// <summary>
+        /// Minimum percentage of fragmentation before active defragmentation starts. Only takes effect when `ValkeyActivedefrag` is enabled. Default: `10`.
+        /// </summary>
+        public readonly int? ValkeyActiveDefragThresholdLower;
+        /// <summary>
         /// Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency. Default: `1`.
         /// </summary>
         public readonly int? ValkeyActiveExpireEffort;
@@ -118,7 +126,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? ValkeyNumberOfDatabases;
         /// <summary>
-        /// Enum: `Off`, `Rdb`. When persistence is `Rdb`, Valkey does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is `Off`, no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
+        /// Enum: `Off`, `Rdb`. Controls whether Valkey writes RDB dumps to disk. With `Rdb`, RDB dumps are written for backups on the backup schedule and, if `FrequentSnapshots` is enabled, every 10 minutes so the service can recover recent data after a restart. With `Off`, no RDB dumps are written at all: backups and forking are unavailable, `FrequentSnapshots` and `BackupHour`/`BackupMinute` have no effect, and all data is lost if the service restarts or is powered off.
         /// </summary>
         public readonly string? ValkeyPersistence;
         /// <summary>
@@ -176,6 +184,10 @@ namespace Pulumi.Aiven.Outputs
 
             string? valkeyAclChannelsDefault,
 
+            int? valkeyActiveDefragIgnoreBytes,
+
+            int? valkeyActiveDefragThresholdLower,
+
             int? valkeyActiveExpireEffort,
 
             bool? valkeyActivedefrag,
@@ -220,6 +232,8 @@ namespace Pulumi.Aiven.Outputs
             ServiceToForkFrom = serviceToForkFrom;
             StaticIps = staticIps;
             ValkeyAclChannelsDefault = valkeyAclChannelsDefault;
+            ValkeyActiveDefragIgnoreBytes = valkeyActiveDefragIgnoreBytes;
+            ValkeyActiveDefragThresholdLower = valkeyActiveDefragThresholdLower;
             ValkeyActiveExpireEffort = valkeyActiveExpireEffort;
             ValkeyActivedefrag = valkeyActivedefrag;
             ValkeyIoThreads = valkeyIoThreads;

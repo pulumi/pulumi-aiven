@@ -10,7 +10,10 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// Creates and manages the deployment of an Aiven for Apache Flink® application. This feature is in the limited availability stage and may change without notice. To enable this feature, contact the [sales team](http://aiven.io/contact). Once it's enabled, set the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+    /// Creates and manages the deployment of an [Aiven for Apache Flink® jar application](https://aiven.io/docs/products/flink/howto/create-jar-application). If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
+    /// 
+    /// &gt; **Beta resource in limited availability**
+    /// This feature is in the limited availability stage and may change without notice. To enable this feature, contact the [sales team](http://aiven.io/contact). Once it's enabled, set the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
     /// 
     /// ## Example Usage
     /// 
@@ -22,41 +25,20 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Aiven.Flink("example", new()
+    ///     var example = new Aiven.FlinkJarApplicationDeployment("example", new()
     ///     {
-    ///         FlinkUserConfig = new Aiven.Inputs.FlinkFlinkUserConfigArgs
+    ///         Project = "my-project",
+    ///         ServiceName = "my-application",
+    ///         ApplicationId = "foo",
+    ///         VersionId = "543e420d-aa63-43e8-b8e8-294a78c600e7",
+    ///         EntryClass = "com.example.MyFlinkJob",
+    ///         Parallelism = 1,
+    ///         ProgramArgs = new[]
     ///         {
-    ///             CustomCode = true,
+    ///             "example-argument",
     ///         },
-    ///         Project = exampleAivenProject.Project,
-    ///         ServiceName = "example-flink-service",
-    ///         CloudName = "google-europe-west1",
-    ///         Plan = "business-4",
-    ///         MaintenanceWindowDow = "monday",
-    ///         MaintenanceWindowTime = "04:00:00",
-    ///     });
-    /// 
-    ///     var exampleFlinkJarApplication = new Aiven.FlinkJarApplication("example", new()
-    ///     {
-    ///         Project = example.Project,
-    ///         ServiceName = example.ServiceName,
-    ///         Name = "example-app-jar",
-    ///     });
-    /// 
-    ///     var exampleFlinkJarApplicationVersion = new Aiven.FlinkJarApplicationVersion("example", new()
-    ///     {
-    ///         Project = example.Project,
-    ///         ServiceName = example.ServiceName,
-    ///         ApplicationId = exampleFlinkJarApplication.ApplicationId,
-    ///         Source = "./example.jar",
-    ///     });
-    /// 
-    ///     var exampleFlinkJarApplicationDeployment = new Aiven.FlinkJarApplicationDeployment("example", new()
-    ///     {
-    ///         Project = example.Project,
-    ///         ServiceName = example.ServiceName,
-    ///         ApplicationId = exampleFlinkJarApplication.ApplicationId,
-    ///         VersionId = exampleFlinkJarApplicationVersion.ApplicationVersionId,
+    ///         RestartEnabled = true,
+    ///         StartingSavepoint = "path/to/savepoint",
     ///     });
     /// 
     /// });
@@ -96,7 +78,7 @@ namespace Pulumi.Aiven
         public Output<string> DeploymentId { get; private set; } = null!;
 
         /// <summary>
-        /// The fully qualified name of the entry class to pass during Flink job submission through the entryClass parameter. Maximum length: `128`.
+        /// The fully qualified name of the entry class to pass during Flink job submission through the entryClass parameter. Length must be between `1` and `128`. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("entryClass")]
         public Output<string> EntryClass { get; private set; } = null!;
@@ -120,13 +102,13 @@ namespace Pulumi.Aiven
         public Output<string> LastSavepoint { get; private set; } = null!;
 
         /// <summary>
-        /// Reading of Flink parallel execution documentation is recommended before setting this value to other than 1. Please do not set this value higher than (total number of nodes x number*of*task_slots), or every new job created will fail.
+        /// Reading of Flink parallel execution documentation is recommended before setting this value to other than 1. Please do not set this value higher than (total number of nodes x number*of*task_slots), or every new job created will fail. Value must be between `1` and `128`. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("parallelism")]
         public Output<int> Parallelism { get; private set; } = null!;
 
         /// <summary>
-        /// Arguments to pass during Flink job submission through the programArgsList parameter.
+        /// Arguments to pass during Flink job submission through the programArgsList parameter. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("programArgs")]
         public Output<ImmutableArray<string>> ProgramArgs { get; private set; } = null!;
@@ -141,7 +123,7 @@ namespace Pulumi.Aiven
         /// Specifies whether a Flink Job is restarted in case it fails. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("restartEnabled")]
-        public Output<bool?> RestartEnabled { get; private set; } = null!;
+        public Output<bool> RestartEnabled { get; private set; } = null!;
 
         /// <summary>
         /// Service name. Changing this property forces recreation of the resource.
@@ -150,7 +132,7 @@ namespace Pulumi.Aiven
         public Output<string> ServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// Job savepoint. Maximum length: `2048`.
+        /// Job savepoint. Length must be between `1` and `2048`. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("startingSavepoint")]
         public Output<string> StartingSavepoint { get; private set; } = null!;
@@ -161,8 +143,11 @@ namespace Pulumi.Aiven
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
+        [Output("timeouts")]
+        public Output<Outputs.FlinkJarApplicationDeploymentTimeouts?> Timeouts { get; private set; } = null!;
+
         /// <summary>
-        /// ApplicationVersion ID. Maximum length: `36`. Changing this property forces recreation of the resource.
+        /// ApplicationVersion ID. Length must be exactly `36`. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("versionId")]
         public Output<string> VersionId { get; private set; } = null!;
@@ -220,13 +205,13 @@ namespace Pulumi.Aiven
         public Input<string> ApplicationId { get; set; } = null!;
 
         /// <summary>
-        /// The fully qualified name of the entry class to pass during Flink job submission through the entryClass parameter. Maximum length: `128`.
+        /// The fully qualified name of the entry class to pass during Flink job submission through the entryClass parameter. Length must be between `1` and `128`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("entryClass")]
         public Input<string>? EntryClass { get; set; }
 
         /// <summary>
-        /// Reading of Flink parallel execution documentation is recommended before setting this value to other than 1. Please do not set this value higher than (total number of nodes x number*of*task_slots), or every new job created will fail.
+        /// Reading of Flink parallel execution documentation is recommended before setting this value to other than 1. Please do not set this value higher than (total number of nodes x number*of*task_slots), or every new job created will fail. Value must be between `1` and `128`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("parallelism")]
         public Input<int>? Parallelism { get; set; }
@@ -235,7 +220,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _programArgs;
 
         /// <summary>
-        /// Arguments to pass during Flink job submission through the programArgsList parameter.
+        /// Arguments to pass during Flink job submission through the programArgsList parameter. Changing this property forces recreation of the resource.
         /// </summary>
         public InputList<string> ProgramArgs
         {
@@ -262,13 +247,16 @@ namespace Pulumi.Aiven
         public Input<string> ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// Job savepoint. Maximum length: `2048`.
+        /// Job savepoint. Length must be between `1` and `2048`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("startingSavepoint")]
         public Input<string>? StartingSavepoint { get; set; }
 
+        [Input("timeouts")]
+        public Input<Inputs.FlinkJarApplicationDeploymentTimeoutsArgs>? Timeouts { get; set; }
+
         /// <summary>
-        /// ApplicationVersion ID. Maximum length: `36`. Changing this property forces recreation of the resource.
+        /// ApplicationVersion ID. Length must be exactly `36`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("versionId", required: true)]
         public Input<string> VersionId { get; set; } = null!;
@@ -306,7 +294,7 @@ namespace Pulumi.Aiven
         public Input<string>? DeploymentId { get; set; }
 
         /// <summary>
-        /// The fully qualified name of the entry class to pass during Flink job submission through the entryClass parameter. Maximum length: `128`.
+        /// The fully qualified name of the entry class to pass during Flink job submission through the entryClass parameter. Length must be between `1` and `128`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("entryClass")]
         public Input<string>? EntryClass { get; set; }
@@ -330,7 +318,7 @@ namespace Pulumi.Aiven
         public Input<string>? LastSavepoint { get; set; }
 
         /// <summary>
-        /// Reading of Flink parallel execution documentation is recommended before setting this value to other than 1. Please do not set this value higher than (total number of nodes x number*of*task_slots), or every new job created will fail.
+        /// Reading of Flink parallel execution documentation is recommended before setting this value to other than 1. Please do not set this value higher than (total number of nodes x number*of*task_slots), or every new job created will fail. Value must be between `1` and `128`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("parallelism")]
         public Input<int>? Parallelism { get; set; }
@@ -339,7 +327,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _programArgs;
 
         /// <summary>
-        /// Arguments to pass during Flink job submission through the programArgsList parameter.
+        /// Arguments to pass during Flink job submission through the programArgsList parameter. Changing this property forces recreation of the resource.
         /// </summary>
         public InputList<string> ProgramArgs
         {
@@ -366,7 +354,7 @@ namespace Pulumi.Aiven
         public Input<string>? ServiceName { get; set; }
 
         /// <summary>
-        /// Job savepoint. Maximum length: `2048`.
+        /// Job savepoint. Length must be between `1` and `2048`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("startingSavepoint")]
         public Input<string>? StartingSavepoint { get; set; }
@@ -377,8 +365,11 @@ namespace Pulumi.Aiven
         [Input("status")]
         public Input<string>? Status { get; set; }
 
+        [Input("timeouts")]
+        public Input<Inputs.FlinkJarApplicationDeploymentTimeoutsGetArgs>? Timeouts { get; set; }
+
         /// <summary>
-        /// ApplicationVersion ID. Maximum length: `36`. Changing this property forces recreation of the resource.
+        /// ApplicationVersion ID. Length must be exactly `36`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("versionId")]
         public Input<string>? VersionId { get; set; }

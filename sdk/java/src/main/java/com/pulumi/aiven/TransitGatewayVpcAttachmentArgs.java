@@ -3,6 +3,7 @@
 
 package com.pulumi.aiven;
 
+import com.pulumi.aiven.inputs.TransitGatewayVpcAttachmentTimeoutsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -18,14 +19,14 @@ public final class TransitGatewayVpcAttachmentArgs extends com.pulumi.resources.
     public static final TransitGatewayVpcAttachmentArgs Empty = new TransitGatewayVpcAttachmentArgs();
 
     /**
-     * AWS account ID or GCP project ID of the peered VPC. Changing this property forces recreation of the resource.
+     * AWS account ID that owns the Transit Gateway. Maximum length: `1024`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="peerCloudAccount", required=true)
     private Output<String> peerCloudAccount;
 
     /**
-     * @return AWS account ID or GCP project ID of the peered VPC. Changing this property forces recreation of the resource.
+     * @return AWS account ID that owns the Transit Gateway. Maximum length: `1024`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> peerCloudAccount() {
@@ -33,14 +34,14 @@ public final class TransitGatewayVpcAttachmentArgs extends com.pulumi.resources.
     }
 
     /**
-     * AWS region of the peered VPC (if not in the same region as Aiven VPC). This value can&#39;t be changed.
+     * AWS region of the Transit Gateway. When omitted, the Aiven project VPC region is used. Maximum length: `1024`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="peerRegion")
     private @Nullable Output<String> peerRegion;
 
     /**
-     * @return AWS region of the peered VPC (if not in the same region as Aiven VPC). This value can&#39;t be changed.
+     * @return AWS region of the Transit Gateway. When omitted, the Aiven project VPC region is used. Maximum length: `1024`. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> peerRegion() {
@@ -48,44 +49,51 @@ public final class TransitGatewayVpcAttachmentArgs extends com.pulumi.resources.
     }
 
     /**
-     * Transit gateway ID. Changing this property forces recreation of the resource.
+     * AWS Transit Gateway ID. Maximum length: `1024`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="peerVpc", required=true)
     private Output<String> peerVpc;
 
     /**
-     * @return Transit gateway ID. Changing this property forces recreation of the resource.
+     * @return AWS Transit Gateway ID. Maximum length: `1024`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> peerVpc() {
         return this.peerVpc;
     }
 
-    /**
-     * List of private IPv4 ranges to route through the peering connection
-     * 
-     */
-    @Import(name="userPeerNetworkCidrs", required=true)
-    private Output<List<String>> userPeerNetworkCidrs;
+    @Import(name="timeouts")
+    private @Nullable Output<TransitGatewayVpcAttachmentTimeoutsArgs> timeouts;
 
-    /**
-     * @return List of private IPv4 ranges to route through the peering connection
-     * 
-     */
-    public Output<List<String>> userPeerNetworkCidrs() {
-        return this.userPeerNetworkCidrs;
+    public Optional<Output<TransitGatewayVpcAttachmentTimeoutsArgs>> timeouts() {
+        return Optional.ofNullable(this.timeouts);
     }
 
     /**
-     * The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * List of private IPv4 ranges to route through the peering connection.
+     * 
+     */
+    @Import(name="userPeerNetworkCidrs")
+    private @Nullable Output<List<String>> userPeerNetworkCidrs;
+
+    /**
+     * @return List of private IPv4 ranges to route through the peering connection.
+     * 
+     */
+    public Optional<Output<List<String>>> userPeerNetworkCidrs() {
+        return Optional.ofNullable(this.userPeerNetworkCidrs);
+    }
+
+    /**
+     * Aiven project VPC ID in the `PROJECT/VPC_ID` format. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="vpcId", required=true)
     private Output<String> vpcId;
 
     /**
-     * @return The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return Aiven project VPC ID in the `PROJECT/VPC_ID` format. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> vpcId() {
@@ -98,6 +106,7 @@ public final class TransitGatewayVpcAttachmentArgs extends com.pulumi.resources.
         this.peerCloudAccount = $.peerCloudAccount;
         this.peerRegion = $.peerRegion;
         this.peerVpc = $.peerVpc;
+        this.timeouts = $.timeouts;
         this.userPeerNetworkCidrs = $.userPeerNetworkCidrs;
         this.vpcId = $.vpcId;
     }
@@ -121,7 +130,7 @@ public final class TransitGatewayVpcAttachmentArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param peerCloudAccount AWS account ID or GCP project ID of the peered VPC. Changing this property forces recreation of the resource.
+         * @param peerCloudAccount AWS account ID that owns the Transit Gateway. Maximum length: `1024`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -132,7 +141,7 @@ public final class TransitGatewayVpcAttachmentArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param peerCloudAccount AWS account ID or GCP project ID of the peered VPC. Changing this property forces recreation of the resource.
+         * @param peerCloudAccount AWS account ID that owns the Transit Gateway. Maximum length: `1024`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -142,7 +151,7 @@ public final class TransitGatewayVpcAttachmentArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param peerRegion AWS region of the peered VPC (if not in the same region as Aiven VPC). This value can&#39;t be changed.
+         * @param peerRegion AWS region of the Transit Gateway. When omitted, the Aiven project VPC region is used. Maximum length: `1024`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -153,7 +162,7 @@ public final class TransitGatewayVpcAttachmentArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param peerRegion AWS region of the peered VPC (if not in the same region as Aiven VPC). This value can&#39;t be changed.
+         * @param peerRegion AWS region of the Transit Gateway. When omitted, the Aiven project VPC region is used. Maximum length: `1024`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -163,7 +172,7 @@ public final class TransitGatewayVpcAttachmentArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param peerVpc Transit gateway ID. Changing this property forces recreation of the resource.
+         * @param peerVpc AWS Transit Gateway ID. Maximum length: `1024`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -174,7 +183,7 @@ public final class TransitGatewayVpcAttachmentArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param peerVpc Transit gateway ID. Changing this property forces recreation of the resource.
+         * @param peerVpc AWS Transit Gateway ID. Maximum length: `1024`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -183,19 +192,28 @@ public final class TransitGatewayVpcAttachmentArgs extends com.pulumi.resources.
             return peerVpc(Output.of(peerVpc));
         }
 
+        public Builder timeouts(@Nullable Output<TransitGatewayVpcAttachmentTimeoutsArgs> timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
+        public Builder timeouts(TransitGatewayVpcAttachmentTimeoutsArgs timeouts) {
+            return timeouts(Output.of(timeouts));
+        }
+
         /**
-         * @param userPeerNetworkCidrs List of private IPv4 ranges to route through the peering connection
+         * @param userPeerNetworkCidrs List of private IPv4 ranges to route through the peering connection.
          * 
          * @return builder
          * 
          */
-        public Builder userPeerNetworkCidrs(Output<List<String>> userPeerNetworkCidrs) {
+        public Builder userPeerNetworkCidrs(@Nullable Output<List<String>> userPeerNetworkCidrs) {
             $.userPeerNetworkCidrs = userPeerNetworkCidrs;
             return this;
         }
 
         /**
-         * @param userPeerNetworkCidrs List of private IPv4 ranges to route through the peering connection
+         * @param userPeerNetworkCidrs List of private IPv4 ranges to route through the peering connection.
          * 
          * @return builder
          * 
@@ -205,7 +223,7 @@ public final class TransitGatewayVpcAttachmentArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param userPeerNetworkCidrs List of private IPv4 ranges to route through the peering connection
+         * @param userPeerNetworkCidrs List of private IPv4 ranges to route through the peering connection.
          * 
          * @return builder
          * 
@@ -215,7 +233,7 @@ public final class TransitGatewayVpcAttachmentArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param vpcId The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param vpcId Aiven project VPC ID in the `PROJECT/VPC_ID` format. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -226,7 +244,7 @@ public final class TransitGatewayVpcAttachmentArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param vpcId The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param vpcId Aiven project VPC ID in the `PROJECT/VPC_ID` format. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -241,9 +259,6 @@ public final class TransitGatewayVpcAttachmentArgs extends com.pulumi.resources.
             }
             if ($.peerVpc == null) {
                 throw new MissingRequiredPropertyException("TransitGatewayVpcAttachmentArgs", "peerVpc");
-            }
-            if ($.userPeerNetworkCidrs == null) {
-                throw new MissingRequiredPropertyException("TransitGatewayVpcAttachmentArgs", "userPeerNetworkCidrs");
             }
             if ($.vpcId == null) {
                 throw new MissingRequiredPropertyException("TransitGatewayVpcAttachmentArgs", "vpcId");

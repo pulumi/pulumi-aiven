@@ -412,14 +412,14 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Pin a specific installed Karapace version on this service. Leave null/unset to auto-follow the newest installed version.
+     * Enum: `6.2.1`, `6.2.2`, `6.2.3`, and newer. Select a Karapace version for this service, or select Latest to use the latest available version automatically. New versions become available after installation during a maintenance update.
      * 
      */
     @Import(name="karapaceVersion")
     private @Nullable Output<String> karapaceVersion;
 
     /**
-     * @return Pin a specific installed Karapace version on this service. Leave null/unset to auto-follow the newest installed version.
+     * @return Enum: `6.2.1`, `6.2.2`, `6.2.3`, and newer. Select a Karapace version for this service, or select Latest to use the latest available version automatically. New versions become available after installation during a maintenance update.
      * 
      */
     public Optional<Output<String>> karapaceVersion() {
@@ -1267,7 +1267,7 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param karapaceVersion Pin a specific installed Karapace version on this service. Leave null/unset to auto-follow the newest installed version.
+         * @param karapaceVersion Enum: `6.2.1`, `6.2.2`, `6.2.3`, and newer. Select a Karapace version for this service, or select Latest to use the latest available version automatically. New versions become available after installation during a maintenance update.
          * 
          * @return builder
          * 
@@ -1278,7 +1278,7 @@ public final class KafkaKafkaUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param karapaceVersion Pin a specific installed Karapace version on this service. Leave null/unset to auto-follow the newest installed version.
+         * @param karapaceVersion Enum: `6.2.1`, `6.2.2`, `6.2.3`, and newer. Select a Karapace version for this service, or select Latest to use the latest available version automatically. New versions become available after installation during a maintenance update.
          * 
          * @return builder
          * 

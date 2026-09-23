@@ -4,6 +4,7 @@
 package com.pulumi.aiven.inputs;
 
 import com.pulumi.aiven.inputs.FlinkJarApplicationVersionFileInfoArgs;
+import com.pulumi.aiven.inputs.FlinkJarApplicationVersionTimeoutsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
@@ -153,6 +154,13 @@ public final class FlinkJarApplicationVersionState extends com.pulumi.resources.
         return Optional.ofNullable(this.sourceChecksum);
     }
 
+    @Import(name="timeouts")
+    private @Nullable Output<FlinkJarApplicationVersionTimeoutsArgs> timeouts;
+
+    public Optional<Output<FlinkJarApplicationVersionTimeoutsArgs>> timeouts() {
+        return Optional.ofNullable(this.timeouts);
+    }
+
     /**
      * Version number.
      * 
@@ -180,6 +188,7 @@ public final class FlinkJarApplicationVersionState extends com.pulumi.resources.
         this.serviceName = $.serviceName;
         this.source = $.source;
         this.sourceChecksum = $.sourceChecksum;
+        this.timeouts = $.timeouts;
         this.version = $.version;
     }
 
@@ -398,6 +407,15 @@ public final class FlinkJarApplicationVersionState extends com.pulumi.resources.
          */
         public Builder sourceChecksum(String sourceChecksum) {
             return sourceChecksum(Output.of(sourceChecksum));
+        }
+
+        public Builder timeouts(@Nullable Output<FlinkJarApplicationVersionTimeoutsArgs> timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
+        public Builder timeouts(FlinkJarApplicationVersionTimeoutsArgs timeouts) {
+            return timeouts(Output.of(timeouts));
         }
 
         /**

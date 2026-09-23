@@ -34,6 +34,21 @@ public final class GetServicePlanListServicePlanArgs extends com.pulumi.resource
     }
 
     /**
+     * True when the plan&#39;s topology is set via user config and its region price is per node.
+     * 
+     */
+    @Import(name="managedClusterPlan", required=true)
+    private Output<Boolean> managedClusterPlan;
+
+    /**
+     * @return True when the plan&#39;s topology is set via user config and its region price is per node.
+     * 
+     */
+    public Output<Boolean> managedClusterPlan() {
+        return this.managedClusterPlan;
+    }
+
+    /**
      * Maximum amount of system memory as a percentage (0-100) the service can actually use after taking into account management overhead. This is relevant for memory bound services for which some service management operations require allocating proportional amount of memory on top the basic load.
      * 
      */
@@ -142,6 +157,7 @@ public final class GetServicePlanListServicePlanArgs extends com.pulumi.resource
 
     private GetServicePlanListServicePlanArgs(GetServicePlanListServicePlanArgs $) {
         this.isClusterPlan = $.isClusterPlan;
+        this.managedClusterPlan = $.managedClusterPlan;
         this.maxMemoryPercent = $.maxMemoryPercent;
         this.nodeCount = $.nodeCount;
         this.primaryCount = $.primaryCount;
@@ -188,6 +204,27 @@ public final class GetServicePlanListServicePlanArgs extends com.pulumi.resource
          */
         public Builder isClusterPlan(Boolean isClusterPlan) {
             return isClusterPlan(Output.of(isClusterPlan));
+        }
+
+        /**
+         * @param managedClusterPlan True when the plan&#39;s topology is set via user config and its region price is per node.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder managedClusterPlan(Output<Boolean> managedClusterPlan) {
+            $.managedClusterPlan = managedClusterPlan;
+            return this;
+        }
+
+        /**
+         * @param managedClusterPlan True when the plan&#39;s topology is set via user config and its region price is per node.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder managedClusterPlan(Boolean managedClusterPlan) {
+            return managedClusterPlan(Output.of(managedClusterPlan));
         }
 
         /**
@@ -340,6 +377,9 @@ public final class GetServicePlanListServicePlanArgs extends com.pulumi.resource
         public GetServicePlanListServicePlanArgs build() {
             if ($.isClusterPlan == null) {
                 throw new MissingRequiredPropertyException("GetServicePlanListServicePlanArgs", "isClusterPlan");
+            }
+            if ($.managedClusterPlan == null) {
+                throw new MissingRequiredPropertyException("GetServicePlanListServicePlanArgs", "managedClusterPlan");
             }
             if ($.maxMemoryPercent == null) {
                 throw new MissingRequiredPropertyException("GetServicePlanListServicePlanArgs", "maxMemoryPercent");

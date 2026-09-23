@@ -24,6 +24,7 @@ class OpensearchUserArgs:
                  project: pulumi.Input[_builtins.str],
                  service_name: pulumi.Input[_builtins.str],
                  username: pulumi.Input[_builtins.str],
+                 mysql_grants: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  password: pulumi.Input[Optional[_builtins.str]] = None,
                  password_wo: pulumi.Input[Optional[_builtins.str]] = None,
                  password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
@@ -34,6 +35,7 @@ class OpensearchUserArgs:
         :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] service_name: Service name. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] username: Account username. Maximum length: `64`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] mysql_grants: MySQL grants for the service user. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] password: The password of the service user (auto-generated if not provided). The field conflicts with `password_wo`. Length must be between `8` and `256`.
         :param pulumi.Input[_builtins.str] password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
                The password of the service user (write-only, not stored in state). The field is required with `password_wo_version`. The field conflicts with `password`. Length must be between `8` and `256`.
@@ -42,6 +44,8 @@ class OpensearchUserArgs:
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "service_name", service_name)
         pulumi.set(__self__, "username", username)
+        if mysql_grants is not None:
+            pulumi.set(__self__, "mysql_grants", mysql_grants)
         if password is not None:
             pulumi.set(__self__, "password", password)
         if password_wo is not None:
@@ -86,6 +90,18 @@ class OpensearchUserArgs:
     @username.setter
     def username(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "username", value)
+
+    @_builtins.property
+    @pulumi.getter(name="mysqlGrants")
+    def mysql_grants(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        MySQL grants for the service user. Changing this property forces recreation of the resource.
+        """
+        return pulumi.get(self, "mysql_grants")
+
+    @mysql_grants.setter
+    def mysql_grants(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "mysql_grants", value)
 
     @_builtins.property
     @pulumi.getter
@@ -137,6 +153,7 @@ class OpensearchUserArgs:
 @pulumi.input_type
 class _OpensearchUserState:
     def __init__(__self__, *,
+                 mysql_grants: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  password: pulumi.Input[Optional[_builtins.str]] = None,
                  password_encryption_type: pulumi.Input[Optional[_builtins.str]] = None,
                  password_wo: pulumi.Input[Optional[_builtins.str]] = None,
@@ -149,6 +166,7 @@ class _OpensearchUserState:
         """
         Input properties used for looking up and filtering OpensearchUser resources.
 
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] mysql_grants: MySQL grants for the service user. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] password: The password of the service user (auto-generated if not provided). The field conflicts with `password_wo`. Length must be between `8` and `256`.
         :param pulumi.Input[_builtins.str] password_encryption_type: The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. 'unknown' is reported when the hash is missing or uses an unrecognised format. The possible values are `md5`, `scram-sha-256` and `unknown`.
         :param pulumi.Input[_builtins.str] password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
@@ -159,6 +177,8 @@ class _OpensearchUserState:
         :param pulumi.Input[_builtins.str] type: Account type.
         :param pulumi.Input[_builtins.str] username: Account username. Maximum length: `64`. Changing this property forces recreation of the resource.
         """
+        if mysql_grants is not None:
+            pulumi.set(__self__, "mysql_grants", mysql_grants)
         if password is not None:
             pulumi.set(__self__, "password", password)
         if password_encryption_type is not None:
@@ -177,6 +197,18 @@ class _OpensearchUserState:
             pulumi.set(__self__, "type", type)
         if username is not None:
             pulumi.set(__self__, "username", username)
+
+    @_builtins.property
+    @pulumi.getter(name="mysqlGrants")
+    def mysql_grants(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        MySQL grants for the service user. Changing this property forces recreation of the resource.
+        """
+        return pulumi.get(self, "mysql_grants")
+
+    @mysql_grants.setter
+    def mysql_grants(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "mysql_grants", value)
 
     @_builtins.property
     @pulumi.getter
@@ -291,6 +323,7 @@ class OpensearchUser(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 mysql_grants: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  password: pulumi.Input[Optional[_builtins.str]] = None,
                  password_wo: pulumi.Input[Optional[_builtins.str]] = None,
                  password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
@@ -313,7 +346,11 @@ class OpensearchUser(pulumi.CustomResource):
             service_name="my-opensearch",
             username="testuser",
             password_wo="password123",
-            password_wo_version=1)
+            password_wo_version=1,
+            mysql_grants=[
+                "SELECT",
+                "DELETE",
+            ])
         ```
 
         ## Import
@@ -325,6 +362,7 @@ class OpensearchUser(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] mysql_grants: MySQL grants for the service user. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] password: The password of the service user (auto-generated if not provided). The field conflicts with `password_wo`. Length must be between `8` and `256`.
         :param pulumi.Input[_builtins.str] password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
                The password of the service user (write-only, not stored in state). The field is required with `password_wo_version`. The field conflicts with `password`. Length must be between `8` and `256`.
@@ -353,7 +391,11 @@ class OpensearchUser(pulumi.CustomResource):
             service_name="my-opensearch",
             username="testuser",
             password_wo="password123",
-            password_wo_version=1)
+            password_wo_version=1,
+            mysql_grants=[
+                "SELECT",
+                "DELETE",
+            ])
         ```
 
         ## Import
@@ -378,6 +420,7 @@ class OpensearchUser(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 mysql_grants: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  password: pulumi.Input[Optional[_builtins.str]] = None,
                  password_wo: pulumi.Input[Optional[_builtins.str]] = None,
                  password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
@@ -394,6 +437,7 @@ class OpensearchUser(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = OpensearchUserArgs.__new__(OpensearchUserArgs)
 
+            __props__.__dict__["mysql_grants"] = mysql_grants
             __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
             __props__.__dict__["password_wo"] = None if password_wo is None else pulumi.Output.secret(password_wo)
             __props__.__dict__["password_wo_version"] = password_wo_version
@@ -421,6 +465,7 @@ class OpensearchUser(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            mysql_grants: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             password: pulumi.Input[Optional[_builtins.str]] = None,
             password_encryption_type: pulumi.Input[Optional[_builtins.str]] = None,
             password_wo: pulumi.Input[Optional[_builtins.str]] = None,
@@ -437,6 +482,7 @@ class OpensearchUser(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] mysql_grants: MySQL grants for the service user. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] password: The password of the service user (auto-generated if not provided). The field conflicts with `password_wo`. Length must be between `8` and `256`.
         :param pulumi.Input[_builtins.str] password_encryption_type: The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. 'unknown' is reported when the hash is missing or uses an unrecognised format. The possible values are `md5`, `scram-sha-256` and `unknown`.
         :param pulumi.Input[_builtins.str] password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
@@ -451,6 +497,7 @@ class OpensearchUser(pulumi.CustomResource):
 
         __props__ = _OpensearchUserState.__new__(_OpensearchUserState)
 
+        __props__.__dict__["mysql_grants"] = mysql_grants
         __props__.__dict__["password"] = password
         __props__.__dict__["password_encryption_type"] = password_encryption_type
         __props__.__dict__["password_wo"] = password_wo
@@ -461,6 +508,14 @@ class OpensearchUser(pulumi.CustomResource):
         __props__.__dict__["type"] = type
         __props__.__dict__["username"] = username
         return OpensearchUser(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="mysqlGrants")
+    def mysql_grants(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+        """
+        MySQL grants for the service user. Changing this property forces recreation of the resource.
+        """
+        return pulumi.get(self, "mysql_grants")
 
     @_builtins.property
     @pulumi.getter

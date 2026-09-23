@@ -3,6 +3,7 @@
 
 package com.pulumi.aiven.inputs;
 
+import com.pulumi.aiven.inputs.FlinkJarApplicationDeploymentTimeoutsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -79,14 +80,14 @@ public final class FlinkJarApplicationDeploymentState extends com.pulumi.resourc
     }
 
     /**
-     * The fully qualified name of the entry class to pass during Flink job submission through the entryClass parameter. Maximum length: `128`.
+     * The fully qualified name of the entry class to pass during Flink job submission through the entryClass parameter. Length must be between `1` and `128`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="entryClass")
     private @Nullable Output<String> entryClass;
 
     /**
-     * @return The fully qualified name of the entry class to pass during Flink job submission through the entryClass parameter. Maximum length: `128`.
+     * @return The fully qualified name of the entry class to pass during Flink job submission through the entryClass parameter. Length must be between `1` and `128`. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> entryClass() {
@@ -139,14 +140,14 @@ public final class FlinkJarApplicationDeploymentState extends com.pulumi.resourc
     }
 
     /**
-     * Reading of Flink parallel execution documentation is recommended before setting this value to other than 1. Please do not set this value higher than (total number of nodes x number*of*task_slots), or every new job created will fail.
+     * Reading of Flink parallel execution documentation is recommended before setting this value to other than 1. Please do not set this value higher than (total number of nodes x number*of*task_slots), or every new job created will fail. Value must be between `1` and `128`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="parallelism")
     private @Nullable Output<Integer> parallelism;
 
     /**
-     * @return Reading of Flink parallel execution documentation is recommended before setting this value to other than 1. Please do not set this value higher than (total number of nodes x number*of*task_slots), or every new job created will fail.
+     * @return Reading of Flink parallel execution documentation is recommended before setting this value to other than 1. Please do not set this value higher than (total number of nodes x number*of*task_slots), or every new job created will fail. Value must be between `1` and `128`. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<Integer>> parallelism() {
@@ -154,14 +155,14 @@ public final class FlinkJarApplicationDeploymentState extends com.pulumi.resourc
     }
 
     /**
-     * Arguments to pass during Flink job submission through the programArgsList parameter.
+     * Arguments to pass during Flink job submission through the programArgsList parameter. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="programArgs")
     private @Nullable Output<List<String>> programArgs;
 
     /**
-     * @return Arguments to pass during Flink job submission through the programArgsList parameter.
+     * @return Arguments to pass during Flink job submission through the programArgsList parameter. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<List<String>>> programArgs() {
@@ -214,14 +215,14 @@ public final class FlinkJarApplicationDeploymentState extends com.pulumi.resourc
     }
 
     /**
-     * Job savepoint. Maximum length: `2048`.
+     * Job savepoint. Length must be between `1` and `2048`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="startingSavepoint")
     private @Nullable Output<String> startingSavepoint;
 
     /**
-     * @return Job savepoint. Maximum length: `2048`.
+     * @return Job savepoint. Length must be between `1` and `2048`. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> startingSavepoint() {
@@ -243,15 +244,22 @@ public final class FlinkJarApplicationDeploymentState extends com.pulumi.resourc
         return Optional.ofNullable(this.status);
     }
 
+    @Import(name="timeouts")
+    private @Nullable Output<FlinkJarApplicationDeploymentTimeoutsArgs> timeouts;
+
+    public Optional<Output<FlinkJarApplicationDeploymentTimeoutsArgs>> timeouts() {
+        return Optional.ofNullable(this.timeouts);
+    }
+
     /**
-     * ApplicationVersion ID. Maximum length: `36`. Changing this property forces recreation of the resource.
+     * ApplicationVersion ID. Length must be exactly `36`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="versionId")
     private @Nullable Output<String> versionId;
 
     /**
-     * @return ApplicationVersion ID. Maximum length: `36`. Changing this property forces recreation of the resource.
+     * @return ApplicationVersion ID. Length must be exactly `36`. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> versionId() {
@@ -276,6 +284,7 @@ public final class FlinkJarApplicationDeploymentState extends com.pulumi.resourc
         this.serviceName = $.serviceName;
         this.startingSavepoint = $.startingSavepoint;
         this.status = $.status;
+        this.timeouts = $.timeouts;
         this.versionId = $.versionId;
     }
 
@@ -382,7 +391,7 @@ public final class FlinkJarApplicationDeploymentState extends com.pulumi.resourc
         }
 
         /**
-         * @param entryClass The fully qualified name of the entry class to pass during Flink job submission through the entryClass parameter. Maximum length: `128`.
+         * @param entryClass The fully qualified name of the entry class to pass during Flink job submission through the entryClass parameter. Length must be between `1` and `128`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -393,7 +402,7 @@ public final class FlinkJarApplicationDeploymentState extends com.pulumi.resourc
         }
 
         /**
-         * @param entryClass The fully qualified name of the entry class to pass during Flink job submission through the entryClass parameter. Maximum length: `128`.
+         * @param entryClass The fully qualified name of the entry class to pass during Flink job submission through the entryClass parameter. Length must be between `1` and `128`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -466,7 +475,7 @@ public final class FlinkJarApplicationDeploymentState extends com.pulumi.resourc
         }
 
         /**
-         * @param parallelism Reading of Flink parallel execution documentation is recommended before setting this value to other than 1. Please do not set this value higher than (total number of nodes x number*of*task_slots), or every new job created will fail.
+         * @param parallelism Reading of Flink parallel execution documentation is recommended before setting this value to other than 1. Please do not set this value higher than (total number of nodes x number*of*task_slots), or every new job created will fail. Value must be between `1` and `128`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -477,7 +486,7 @@ public final class FlinkJarApplicationDeploymentState extends com.pulumi.resourc
         }
 
         /**
-         * @param parallelism Reading of Flink parallel execution documentation is recommended before setting this value to other than 1. Please do not set this value higher than (total number of nodes x number*of*task_slots), or every new job created will fail.
+         * @param parallelism Reading of Flink parallel execution documentation is recommended before setting this value to other than 1. Please do not set this value higher than (total number of nodes x number*of*task_slots), or every new job created will fail. Value must be between `1` and `128`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -487,7 +496,7 @@ public final class FlinkJarApplicationDeploymentState extends com.pulumi.resourc
         }
 
         /**
-         * @param programArgs Arguments to pass during Flink job submission through the programArgsList parameter.
+         * @param programArgs Arguments to pass during Flink job submission through the programArgsList parameter. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -498,7 +507,7 @@ public final class FlinkJarApplicationDeploymentState extends com.pulumi.resourc
         }
 
         /**
-         * @param programArgs Arguments to pass during Flink job submission through the programArgsList parameter.
+         * @param programArgs Arguments to pass during Flink job submission through the programArgsList parameter. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -508,7 +517,7 @@ public final class FlinkJarApplicationDeploymentState extends com.pulumi.resourc
         }
 
         /**
-         * @param programArgs Arguments to pass during Flink job submission through the programArgsList parameter.
+         * @param programArgs Arguments to pass during Flink job submission through the programArgsList parameter. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -581,7 +590,7 @@ public final class FlinkJarApplicationDeploymentState extends com.pulumi.resourc
         }
 
         /**
-         * @param startingSavepoint Job savepoint. Maximum length: `2048`.
+         * @param startingSavepoint Job savepoint. Length must be between `1` and `2048`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -592,7 +601,7 @@ public final class FlinkJarApplicationDeploymentState extends com.pulumi.resourc
         }
 
         /**
-         * @param startingSavepoint Job savepoint. Maximum length: `2048`.
+         * @param startingSavepoint Job savepoint. Length must be between `1` and `2048`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -622,8 +631,17 @@ public final class FlinkJarApplicationDeploymentState extends com.pulumi.resourc
             return status(Output.of(status));
         }
 
+        public Builder timeouts(@Nullable Output<FlinkJarApplicationDeploymentTimeoutsArgs> timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
+        public Builder timeouts(FlinkJarApplicationDeploymentTimeoutsArgs timeouts) {
+            return timeouts(Output.of(timeouts));
+        }
+
         /**
-         * @param versionId ApplicationVersion ID. Maximum length: `36`. Changing this property forces recreation of the resource.
+         * @param versionId ApplicationVersion ID. Length must be exactly `36`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -634,7 +652,7 @@ public final class FlinkJarApplicationDeploymentState extends com.pulumi.resourc
         }
 
         /**
-         * @param versionId ApplicationVersion ID. Maximum length: `36`. Changing this property forces recreation of the resource.
+         * @param versionId ApplicationVersion ID. Length must be exactly `36`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 

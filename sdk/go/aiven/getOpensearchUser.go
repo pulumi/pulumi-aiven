@@ -65,6 +65,8 @@ type LookupOpensearchUserArgs struct {
 type LookupOpensearchUserResult struct {
 	// Resource ID composed as: `project/service_name/username`.
 	Id string `pulumi:"id"`
+	// MySQL grants for the service user.
+	MysqlGrants []string `pulumi:"mysqlGrants"`
 	// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`.
 	Password string `pulumi:"password"`
 	// The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. 'unknown' is reported when the hash is missing or uses an unrecognised format. The possible values are `md5`, `scram-sha-256` and `unknown`.
@@ -118,6 +120,11 @@ func (o LookupOpensearchUserResultOutput) ToLookupOpensearchUserResultOutputWith
 // Resource ID composed as: `project/service_name/username`.
 func (o LookupOpensearchUserResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOpensearchUserResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// MySQL grants for the service user.
+func (o LookupOpensearchUserResultOutput) MysqlGrants() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupOpensearchUserResult) []string { return v.MysqlGrants }).(pulumi.StringArrayOutput)
 }
 
 // The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`.

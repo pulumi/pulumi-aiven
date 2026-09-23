@@ -22,6 +22,10 @@ import * as utilities from "./utilities";
  *     passwordWo: "password123",
  *     passwordWoVersion: 1,
  *     authentication: "caching_sha2_password",
+ *     mysqlGrants: [
+ *         "SELECT",
+ *         "DELETE",
+ *     ],
  * });
  * ```
  *
@@ -71,6 +75,10 @@ export class MysqlUser extends pulumi.CustomResource {
      * Service specific authentication details. Currently only used for MySQL where accepted options are 'mysql_native_password' and 'caching_sha2_password', latter being default when this is not explicitly set. The possible values are `cachingSha2Password` and `mysqlNativePassword`.
      */
     declare public readonly authentication: pulumi.Output<string>;
+    /**
+     * MySQL grants for the service user. Changing this property forces recreation of the resource.
+     */
+    declare public readonly mysqlGrants: pulumi.Output<string[] | undefined>;
     /**
      * The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
      */
@@ -122,6 +130,7 @@ export class MysqlUser extends pulumi.CustomResource {
             resourceInputs["accessCert"] = state?.accessCert;
             resourceInputs["accessKey"] = state?.accessKey;
             resourceInputs["authentication"] = state?.authentication;
+            resourceInputs["mysqlGrants"] = state?.mysqlGrants;
             resourceInputs["password"] = state?.password;
             resourceInputs["passwordEncryptionType"] = state?.passwordEncryptionType;
             resourceInputs["passwordWo"] = state?.passwordWo;
@@ -143,6 +152,7 @@ export class MysqlUser extends pulumi.CustomResource {
                 throw new Error("Missing required property 'username'");
             }
             resourceInputs["authentication"] = args?.authentication;
+            resourceInputs["mysqlGrants"] = args?.mysqlGrants;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
             resourceInputs["passwordWo"] = args?.passwordWo ? pulumi.secret(args.passwordWo) : undefined;
             resourceInputs["passwordWoVersion"] = args?.passwordWoVersion;
@@ -178,6 +188,10 @@ export interface MysqlUserState {
      * Service specific authentication details. Currently only used for MySQL where accepted options are 'mysql_native_password' and 'caching_sha2_password', latter being default when this is not explicitly set. The possible values are `cachingSha2Password` and `mysqlNativePassword`.
      */
     authentication?: pulumi.Input<string | undefined>;
+    /**
+     * MySQL grants for the service user. Changing this property forces recreation of the resource.
+     */
+    mysqlGrants?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
      */
@@ -222,6 +236,10 @@ export interface MysqlUserArgs {
      * Service specific authentication details. Currently only used for MySQL where accepted options are 'mysql_native_password' and 'caching_sha2_password', latter being default when this is not explicitly set. The possible values are `cachingSha2Password` and `mysqlNativePassword`.
      */
     authentication?: pulumi.Input<string | undefined>;
+    /**
+     * MySQL grants for the service user. Changing this property forces recreation of the resource.
+     */
+    mysqlGrants?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
      */

@@ -334,14 +334,14 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
+     * The size in bytes of the buffer that InnoDB uses to write to the log files on disk. Requests above 15% of the RAM provided by your service plan are rejected, because a larger buffer leaves less memory for the buffer pool and client connections.
      * 
      */
     @Import(name="innodbLogBufferSize")
     private @Nullable Output<Integer> innodbLogBufferSize;
 
     /**
-     * @return The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
+     * @return The size in bytes of the buffer that InnoDB uses to write to the log files on disk. Requests above 15% of the RAM provided by your service plan are rejected, because a larger buffer leaves less memory for the buffer pool and client connections.
      * 
      */
     public Optional<Output<Integer>> innodbLogBufferSize() {
@@ -529,14 +529,14 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
+     * Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M). Statements and rows larger than this are rejected with a packet too large error.
      * 
      */
     @Import(name="maxAllowedPacket")
     private @Nullable Output<Integer> maxAllowedPacket;
 
     /**
-     * @return Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
+     * @return Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M). Statements and rows larger than this are rejected with a packet too large error.
      * 
      */
     public Optional<Output<Integer>> maxAllowedPacket() {
@@ -754,14 +754,14 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K). Example: `262144`.
+     * Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K). Requests above 2% of the RAM provided by your service plan are rejected, because the buffer is allocated per session and its cost multiplies with the connection count. Example: `262144`.
      * 
      */
     @Import(name="sortBufferSize")
     private @Nullable Output<Integer> sortBufferSize;
 
     /**
-     * @return Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K). Example: `262144`.
+     * @return Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K). Requests above 2% of the RAM provided by your service plan are rejected, because the buffer is allocated per session and its cost multiplies with the connection count. Example: `262144`.
      * 
      */
     public Optional<Output<Integer>> sortBufferSize() {
@@ -814,14 +814,14 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * The number of seconds the server waits for activity on a noninteractive connection before closing it. Example: `28800`.
+     * The number of seconds the server waits for activity on a noninteractive connection before closing it. Requests to set this below 30 are rejected, because a shorter timeout closes your own idle connections between statements. Example: `28800`.
      * 
      */
     @Import(name="waitTimeout")
     private @Nullable Output<Integer> waitTimeout;
 
     /**
-     * @return The number of seconds the server waits for activity on a noninteractive connection before closing it. Example: `28800`.
+     * @return The number of seconds the server waits for activity on a noninteractive connection before closing it. Requests to set this below 30 are rejected, because a shorter timeout closes your own idle connections between statements. Example: `28800`.
      * 
      */
     public Optional<Output<Integer>> waitTimeout() {
@@ -1363,7 +1363,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param innodbLogBufferSize The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
+         * @param innodbLogBufferSize The size in bytes of the buffer that InnoDB uses to write to the log files on disk. Requests above 15% of the RAM provided by your service plan are rejected, because a larger buffer leaves less memory for the buffer pool and client connections.
          * 
          * @return builder
          * 
@@ -1374,7 +1374,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param innodbLogBufferSize The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
+         * @param innodbLogBufferSize The size in bytes of the buffer that InnoDB uses to write to the log files on disk. Requests above 15% of the RAM provided by your service plan are rejected, because a larger buffer leaves less memory for the buffer pool and client connections.
          * 
          * @return builder
          * 
@@ -1636,7 +1636,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param maxAllowedPacket Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
+         * @param maxAllowedPacket Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M). Statements and rows larger than this are rejected with a packet too large error.
          * 
          * @return builder
          * 
@@ -1647,7 +1647,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param maxAllowedPacket Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
+         * @param maxAllowedPacket Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M). Statements and rows larger than this are rejected with a packet too large error.
          * 
          * @return builder
          * 
@@ -1951,7 +1951,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param sortBufferSize Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K). Example: `262144`.
+         * @param sortBufferSize Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K). Requests above 2% of the RAM provided by your service plan are rejected, because the buffer is allocated per session and its cost multiplies with the connection count. Example: `262144`.
          * 
          * @return builder
          * 
@@ -1962,7 +1962,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param sortBufferSize Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K). Example: `262144`.
+         * @param sortBufferSize Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K). Requests above 2% of the RAM provided by your service plan are rejected, because the buffer is allocated per session and its cost multiplies with the connection count. Example: `262144`.
          * 
          * @return builder
          * 
@@ -2035,7 +2035,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param waitTimeout The number of seconds the server waits for activity on a noninteractive connection before closing it. Example: `28800`.
+         * @param waitTimeout The number of seconds the server waits for activity on a noninteractive connection before closing it. Requests to set this below 30 are rejected, because a shorter timeout closes your own idle connections between statements. Example: `28800`.
          * 
          * @return builder
          * 
@@ -2046,7 +2046,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param waitTimeout The number of seconds the server waits for activity on a noninteractive connection before closing it. Example: `28800`.
+         * @param waitTimeout The number of seconds the server waits for activity on a noninteractive connection before closing it. Requests to set this below 30 are rejected, because a shorter timeout closes your own idle connections between statements. Example: `28800`.
          * 
          * @return builder
          * 
