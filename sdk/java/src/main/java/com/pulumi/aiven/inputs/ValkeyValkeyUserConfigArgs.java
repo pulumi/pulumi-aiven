@@ -242,6 +242,21 @@ public final class ValkeyValkeyUserConfigArgs extends com.pulumi.resources.Resou
     }
 
     /**
+     * Number of replicas per shard in the Valkey cluster. Only applies to cluster plans. Example: `1`.
+     * 
+     */
+    @Import(name="replicas")
+    private @Nullable Output<Integer> replicas;
+
+    /**
+     * @return Number of replicas per shard in the Valkey cluster. Only applies to cluster plans. Example: `1`.
+     * 
+     */
+    public Optional<Output<Integer>> replicas() {
+        return Optional.ofNullable(this.replicas);
+    }
+
+    /**
      * Store logs for the service so that they are available in the HTTP API and console.
      * 
      */
@@ -269,6 +284,21 @@ public final class ValkeyValkeyUserConfigArgs extends com.pulumi.resources.Resou
      */
     public Optional<Output<String>> serviceToForkFrom() {
         return Optional.ofNullable(this.serviceToForkFrom);
+    }
+
+    /**
+     * Number of shards (primaries) in the Valkey cluster. Required for cluster plans. Example: `3`.
+     * 
+     */
+    @Import(name="shardCount")
+    private @Nullable Output<Integer> shardCount;
+
+    /**
+     * @return Number of shards (primaries) in the Valkey cluster. Required for cluster plans. Example: `3`.
+     * 
+     */
+    public Optional<Output<Integer>> shardCount() {
+        return Optional.ofNullable(this.shardCount);
     }
 
     /**
@@ -543,8 +573,10 @@ public final class ValkeyValkeyUserConfigArgs extends com.pulumi.resources.Resou
         this.projectToForkFrom = $.projectToForkFrom;
         this.publicAccess = $.publicAccess;
         this.recoveryBasebackupName = $.recoveryBasebackupName;
+        this.replicas = $.replicas;
         this.serviceLog = $.serviceLog;
         this.serviceToForkFrom = $.serviceToForkFrom;
+        this.shardCount = $.shardCount;
         this.staticIps = $.staticIps;
         this.valkeyAclChannelsDefault = $.valkeyAclChannelsDefault;
         this.valkeyActiveDefragIgnoreBytes = $.valkeyActiveDefragIgnoreBytes;
@@ -919,6 +951,27 @@ public final class ValkeyValkeyUserConfigArgs extends com.pulumi.resources.Resou
         }
 
         /**
+         * @param replicas Number of replicas per shard in the Valkey cluster. Only applies to cluster plans. Example: `1`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder replicas(@Nullable Output<Integer> replicas) {
+            $.replicas = replicas;
+            return this;
+        }
+
+        /**
+         * @param replicas Number of replicas per shard in the Valkey cluster. Only applies to cluster plans. Example: `1`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder replicas(Integer replicas) {
+            return replicas(Output.of(replicas));
+        }
+
+        /**
          * @param serviceLog Store logs for the service so that they are available in the HTTP API and console.
          * 
          * @return builder
@@ -958,6 +1011,27 @@ public final class ValkeyValkeyUserConfigArgs extends com.pulumi.resources.Resou
          */
         public Builder serviceToForkFrom(String serviceToForkFrom) {
             return serviceToForkFrom(Output.of(serviceToForkFrom));
+        }
+
+        /**
+         * @param shardCount Number of shards (primaries) in the Valkey cluster. Required for cluster plans. Example: `3`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder shardCount(@Nullable Output<Integer> shardCount) {
+            $.shardCount = shardCount;
+            return this;
+        }
+
+        /**
+         * @param shardCount Number of shards (primaries) in the Valkey cluster. Required for cluster plans. Example: `3`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder shardCount(Integer shardCount) {
+            return shardCount(Output.of(shardCount));
         }
 
         /**

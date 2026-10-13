@@ -187,6 +187,21 @@ public final class GetOpenSearchOpensearchUserConfigOpensearch {
      */
     private @Nullable Integer ismHistoryRolloverRetentionPeriod;
     /**
+     * @return Enable or disable removing KNN graphs from the cache when they are idle. Disabled by default.
+     * 
+     */
+    private @Nullable Boolean knnCacheItemExpiryEnabled;
+    /**
+     * @return If enabled, the amount of time in minutes a KNN graph can be idle in the cache before being evicted. Example: `180`.
+     * 
+     */
+    private @Nullable Integer knnCacheItemExpiryMinutes;
+    /**
+     * @return The native memory usage, as a percentage below the KNN memory circuit breaker limit, at which a tripped circuit breaker resets. Defaults to 5%.
+     * 
+     */
+    private @Nullable Double knnCircuitBreakerUnsetPercentage;
+    /**
      * @return Enable or disable KNN memory circuit breaker. Defaults to true.
      * 
      */
@@ -202,10 +217,25 @@ public final class GetOpenSearchOpensearchUserConfigOpensearch {
      */
     private @Nullable Boolean mlCommonsConnectorAccessControlEnabled;
     /**
+     * @return Maximum number of ML models that can be deployed on a single ML node. Defaults to 10.
+     * 
+     */
+    private @Nullable Integer mlCommonsMaxModelOnNode;
+    /**
      * @return Enable or disable model access control for ML Commons. When enabled, access to ML models is controlled by security permissions. Defaults to false.
      * 
      */
     private @Nullable Boolean mlCommonsModelAccessControlEnabled;
+    /**
+     * @return For externally hosted models only: automatically deploy a model on its first predict request instead of requiring an explicit deploy call first. Defaults to true.
+     * 
+     */
+    private @Nullable Boolean mlCommonsModelAutoDeployEnable;
+    /**
+     * @return Automatically redeploy deployed or partially deployed models after ML nodes rejoin the cluster, e.g. after a node replacement. Defaults to true.
+     * 
+     */
+    private @Nullable Boolean mlCommonsModelAutoRedeployEnable;
     /**
      * @return Native memory threshold percentage for ML Commons. Controls the maximum percentage of native memory that can be used by ML Commons operations. Defaults to 90%.
      * 
@@ -556,6 +586,27 @@ public final class GetOpenSearchOpensearchUserConfigOpensearch {
         return Optional.ofNullable(this.ismHistoryRolloverRetentionPeriod);
     }
     /**
+     * @return Enable or disable removing KNN graphs from the cache when they are idle. Disabled by default.
+     * 
+     */
+    public Optional<Boolean> knnCacheItemExpiryEnabled() {
+        return Optional.ofNullable(this.knnCacheItemExpiryEnabled);
+    }
+    /**
+     * @return If enabled, the amount of time in minutes a KNN graph can be idle in the cache before being evicted. Example: `180`.
+     * 
+     */
+    public Optional<Integer> knnCacheItemExpiryMinutes() {
+        return Optional.ofNullable(this.knnCacheItemExpiryMinutes);
+    }
+    /**
+     * @return The native memory usage, as a percentage below the KNN memory circuit breaker limit, at which a tripped circuit breaker resets. Defaults to 5%.
+     * 
+     */
+    public Optional<Double> knnCircuitBreakerUnsetPercentage() {
+        return Optional.ofNullable(this.knnCircuitBreakerUnsetPercentage);
+    }
+    /**
      * @return Enable or disable KNN memory circuit breaker. Defaults to true.
      * 
      */
@@ -577,11 +628,32 @@ public final class GetOpenSearchOpensearchUserConfigOpensearch {
         return Optional.ofNullable(this.mlCommonsConnectorAccessControlEnabled);
     }
     /**
+     * @return Maximum number of ML models that can be deployed on a single ML node. Defaults to 10.
+     * 
+     */
+    public Optional<Integer> mlCommonsMaxModelOnNode() {
+        return Optional.ofNullable(this.mlCommonsMaxModelOnNode);
+    }
+    /**
      * @return Enable or disable model access control for ML Commons. When enabled, access to ML models is controlled by security permissions. Defaults to false.
      * 
      */
     public Optional<Boolean> mlCommonsModelAccessControlEnabled() {
         return Optional.ofNullable(this.mlCommonsModelAccessControlEnabled);
+    }
+    /**
+     * @return For externally hosted models only: automatically deploy a model on its first predict request instead of requiring an explicit deploy call first. Defaults to true.
+     * 
+     */
+    public Optional<Boolean> mlCommonsModelAutoDeployEnable() {
+        return Optional.ofNullable(this.mlCommonsModelAutoDeployEnable);
+    }
+    /**
+     * @return Automatically redeploy deployed or partially deployed models after ML nodes rejoin the cluster, e.g. after a node replacement. Defaults to true.
+     * 
+     */
+    public Optional<Boolean> mlCommonsModelAutoRedeployEnable() {
+        return Optional.ofNullable(this.mlCommonsModelAutoRedeployEnable);
     }
     /**
      * @return Native memory threshold percentage for ML Commons. Controls the maximum percentage of native memory that can be used by ML Commons operations. Defaults to 90%.
@@ -794,10 +866,16 @@ public final class GetOpenSearchOpensearchUserConfigOpensearch {
         private @Nullable Integer ismHistoryMaxDocs;
         private @Nullable Integer ismHistoryRolloverCheckPeriod;
         private @Nullable Integer ismHistoryRolloverRetentionPeriod;
+        private @Nullable Boolean knnCacheItemExpiryEnabled;
+        private @Nullable Integer knnCacheItemExpiryMinutes;
+        private @Nullable Double knnCircuitBreakerUnsetPercentage;
         private @Nullable Boolean knnMemoryCircuitBreakerEnabled;
         private @Nullable Integer knnMemoryCircuitBreakerLimit;
         private @Nullable Boolean mlCommonsConnectorAccessControlEnabled;
+        private @Nullable Integer mlCommonsMaxModelOnNode;
         private @Nullable Boolean mlCommonsModelAccessControlEnabled;
+        private @Nullable Boolean mlCommonsModelAutoDeployEnable;
+        private @Nullable Boolean mlCommonsModelAutoRedeployEnable;
         private @Nullable Integer mlCommonsNativeMemoryThreshold;
         private @Nullable Boolean mlCommonsOnlyRunOnMlNode;
         private @Nullable List<String> mlCommonsTrustedConnectorEndpointsRegexes;
@@ -860,10 +938,16 @@ public final class GetOpenSearchOpensearchUserConfigOpensearch {
     	      this.ismHistoryMaxDocs = defaults.ismHistoryMaxDocs;
     	      this.ismHistoryRolloverCheckPeriod = defaults.ismHistoryRolloverCheckPeriod;
     	      this.ismHistoryRolloverRetentionPeriod = defaults.ismHistoryRolloverRetentionPeriod;
+    	      this.knnCacheItemExpiryEnabled = defaults.knnCacheItemExpiryEnabled;
+    	      this.knnCacheItemExpiryMinutes = defaults.knnCacheItemExpiryMinutes;
+    	      this.knnCircuitBreakerUnsetPercentage = defaults.knnCircuitBreakerUnsetPercentage;
     	      this.knnMemoryCircuitBreakerEnabled = defaults.knnMemoryCircuitBreakerEnabled;
     	      this.knnMemoryCircuitBreakerLimit = defaults.knnMemoryCircuitBreakerLimit;
     	      this.mlCommonsConnectorAccessControlEnabled = defaults.mlCommonsConnectorAccessControlEnabled;
+    	      this.mlCommonsMaxModelOnNode = defaults.mlCommonsMaxModelOnNode;
     	      this.mlCommonsModelAccessControlEnabled = defaults.mlCommonsModelAccessControlEnabled;
+    	      this.mlCommonsModelAutoDeployEnable = defaults.mlCommonsModelAutoDeployEnable;
+    	      this.mlCommonsModelAutoRedeployEnable = defaults.mlCommonsModelAutoRedeployEnable;
     	      this.mlCommonsNativeMemoryThreshold = defaults.mlCommonsNativeMemoryThreshold;
     	      this.mlCommonsOnlyRunOnMlNode = defaults.mlCommonsOnlyRunOnMlNode;
     	      this.mlCommonsTrustedConnectorEndpointsRegexes = defaults.mlCommonsTrustedConnectorEndpointsRegexes;
@@ -1096,6 +1180,24 @@ public final class GetOpenSearchOpensearchUserConfigOpensearch {
             return this;
         }
         @CustomType.Setter
+        public Builder knnCacheItemExpiryEnabled(@Nullable Boolean knnCacheItemExpiryEnabled) {
+
+            this.knnCacheItemExpiryEnabled = knnCacheItemExpiryEnabled;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder knnCacheItemExpiryMinutes(@Nullable Integer knnCacheItemExpiryMinutes) {
+
+            this.knnCacheItemExpiryMinutes = knnCacheItemExpiryMinutes;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder knnCircuitBreakerUnsetPercentage(@Nullable Double knnCircuitBreakerUnsetPercentage) {
+
+            this.knnCircuitBreakerUnsetPercentage = knnCircuitBreakerUnsetPercentage;
+            return this;
+        }
+        @CustomType.Setter
         public Builder knnMemoryCircuitBreakerEnabled(@Nullable Boolean knnMemoryCircuitBreakerEnabled) {
 
             this.knnMemoryCircuitBreakerEnabled = knnMemoryCircuitBreakerEnabled;
@@ -1114,9 +1216,27 @@ public final class GetOpenSearchOpensearchUserConfigOpensearch {
             return this;
         }
         @CustomType.Setter
+        public Builder mlCommonsMaxModelOnNode(@Nullable Integer mlCommonsMaxModelOnNode) {
+
+            this.mlCommonsMaxModelOnNode = mlCommonsMaxModelOnNode;
+            return this;
+        }
+        @CustomType.Setter
         public Builder mlCommonsModelAccessControlEnabled(@Nullable Boolean mlCommonsModelAccessControlEnabled) {
 
             this.mlCommonsModelAccessControlEnabled = mlCommonsModelAccessControlEnabled;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder mlCommonsModelAutoDeployEnable(@Nullable Boolean mlCommonsModelAutoDeployEnable) {
+
+            this.mlCommonsModelAutoDeployEnable = mlCommonsModelAutoDeployEnable;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder mlCommonsModelAutoRedeployEnable(@Nullable Boolean mlCommonsModelAutoRedeployEnable) {
+
+            this.mlCommonsModelAutoRedeployEnable = mlCommonsModelAutoRedeployEnable;
             return this;
         }
         @CustomType.Setter
@@ -1311,10 +1431,16 @@ public final class GetOpenSearchOpensearchUserConfigOpensearch {
             _resultValue.ismHistoryMaxDocs = ismHistoryMaxDocs;
             _resultValue.ismHistoryRolloverCheckPeriod = ismHistoryRolloverCheckPeriod;
             _resultValue.ismHistoryRolloverRetentionPeriod = ismHistoryRolloverRetentionPeriod;
+            _resultValue.knnCacheItemExpiryEnabled = knnCacheItemExpiryEnabled;
+            _resultValue.knnCacheItemExpiryMinutes = knnCacheItemExpiryMinutes;
+            _resultValue.knnCircuitBreakerUnsetPercentage = knnCircuitBreakerUnsetPercentage;
             _resultValue.knnMemoryCircuitBreakerEnabled = knnMemoryCircuitBreakerEnabled;
             _resultValue.knnMemoryCircuitBreakerLimit = knnMemoryCircuitBreakerLimit;
             _resultValue.mlCommonsConnectorAccessControlEnabled = mlCommonsConnectorAccessControlEnabled;
+            _resultValue.mlCommonsMaxModelOnNode = mlCommonsMaxModelOnNode;
             _resultValue.mlCommonsModelAccessControlEnabled = mlCommonsModelAccessControlEnabled;
+            _resultValue.mlCommonsModelAutoDeployEnable = mlCommonsModelAutoDeployEnable;
+            _resultValue.mlCommonsModelAutoRedeployEnable = mlCommonsModelAutoRedeployEnable;
             _resultValue.mlCommonsNativeMemoryThreshold = mlCommonsNativeMemoryThreshold;
             _resultValue.mlCommonsOnlyRunOnMlNode = mlCommonsOnlyRunOnMlNode;
             _resultValue.mlCommonsTrustedConnectorEndpointsRegexes = mlCommonsTrustedConnectorEndpointsRegexes;

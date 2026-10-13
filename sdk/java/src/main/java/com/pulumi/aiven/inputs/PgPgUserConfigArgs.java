@@ -580,14 +580,14 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Enum: `aiven`, `timescale`. Variant of the PostgreSQL service, may affect the features that are exposed by default.
+     * Enum: `aiven`, `pgLake`, `timescale`. Variant of the PostgreSQL service, may affect the features that are exposed by default.
      * 
      */
     @Import(name="variant")
     private @Nullable Output<String> variant;
 
     /**
-     * @return Enum: `aiven`, `timescale`. Variant of the PostgreSQL service, may affect the features that are exposed by default.
+     * @return Enum: `aiven`, `pgLake`, `timescale`. Variant of the PostgreSQL service, may affect the features that are exposed by default.
      * 
      */
     public Optional<Output<String>> variant() {
@@ -1469,7 +1469,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param variant Enum: `aiven`, `timescale`. Variant of the PostgreSQL service, may affect the features that are exposed by default.
+         * @param variant Enum: `aiven`, `pgLake`, `timescale`. Variant of the PostgreSQL service, may affect the features that are exposed by default.
          * 
          * @return builder
          * 
@@ -1480,7 +1480,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param variant Enum: `aiven`, `timescale`. Variant of the PostgreSQL service, may affect the features that are exposed by default.
+         * @param variant Enum: `aiven`, `pgLake`, `timescale`. Variant of the PostgreSQL service, may affect the features that are exposed by default.
          * 
          * @return builder
          * 

@@ -3,6 +3,7 @@
 
 package com.pulumi.aiven.outputs;
 
+import com.pulumi.aiven.outputs.KafkaConnectKafkaConnectUserConfigCustomPlugin;
 import com.pulumi.aiven.outputs.KafkaConnectKafkaConnectUserConfigIpFilterObject;
 import com.pulumi.aiven.outputs.KafkaConnectKafkaConnectUserConfigKafkaConnect;
 import com.pulumi.aiven.outputs.KafkaConnectKafkaConnectUserConfigPluginVersion;
@@ -29,6 +30,11 @@ public final class KafkaConnectKafkaConnectUserConfig {
      */
     @Deprecated /* This property is deprecated. */
     private @Nullable String additionalBackupRegions;
+    /**
+     * @return Install custom plugins uploaded via the custom file service
+     * 
+     */
+    private @Nullable List<KafkaConnectKafkaConnectUserConfigCustomPlugin> customPlugins;
     /**
      * @return Allow-list of HTTPS URLs used to validate GCP credentialSource requests for Kafka Connect.
      * 
@@ -115,6 +121,13 @@ public final class KafkaConnectKafkaConnectUserConfig {
     @Deprecated /* This property is deprecated. */
     public Optional<String> additionalBackupRegions() {
         return Optional.ofNullable(this.additionalBackupRegions);
+    }
+    /**
+     * @return Install custom plugins uploaded via the custom file service
+     * 
+     */
+    public List<KafkaConnectKafkaConnectUserConfigCustomPlugin> customPlugins() {
+        return this.customPlugins == null ? List.of() : this.customPlugins;
     }
     /**
      * @return Allow-list of HTTPS URLs used to validate GCP credentialSource requests for Kafka Connect.
@@ -229,6 +242,7 @@ public final class KafkaConnectKafkaConnectUserConfig {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String additionalBackupRegions;
+        private @Nullable List<KafkaConnectKafkaConnectUserConfigCustomPlugin> customPlugins;
         private @Nullable List<String> gcpAuthAllowedUrls;
         private @Nullable List<KafkaConnectKafkaConnectUserConfigIpFilterObject> ipFilterObjects;
         private @Nullable List<String> ipFilterStrings;
@@ -247,6 +261,7 @@ public final class KafkaConnectKafkaConnectUserConfig {
         public Builder(KafkaConnectKafkaConnectUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.additionalBackupRegions = defaults.additionalBackupRegions;
+    	      this.customPlugins = defaults.customPlugins;
     	      this.gcpAuthAllowedUrls = defaults.gcpAuthAllowedUrls;
     	      this.ipFilterObjects = defaults.ipFilterObjects;
     	      this.ipFilterStrings = defaults.ipFilterStrings;
@@ -268,6 +283,15 @@ public final class KafkaConnectKafkaConnectUserConfig {
 
             this.additionalBackupRegions = additionalBackupRegions;
             return this;
+        }
+        @CustomType.Setter
+        public Builder customPlugins(@Nullable List<KafkaConnectKafkaConnectUserConfigCustomPlugin> customPlugins) {
+
+            this.customPlugins = customPlugins;
+            return this;
+        }
+        public Builder customPlugins(KafkaConnectKafkaConnectUserConfigCustomPlugin... customPlugins) {
+            return customPlugins(List.of(customPlugins));
         }
         @CustomType.Setter
         public Builder gcpAuthAllowedUrls(@Nullable List<String> gcpAuthAllowedUrls) {
@@ -380,6 +404,7 @@ public final class KafkaConnectKafkaConnectUserConfig {
         public KafkaConnectKafkaConnectUserConfig build() {
             final var _resultValue = new KafkaConnectKafkaConnectUserConfig();
             _resultValue.additionalBackupRegions = additionalBackupRegions;
+            _resultValue.customPlugins = customPlugins;
             _resultValue.gcpAuthAllowedUrls = gcpAuthAllowedUrls;
             _resultValue.ipFilterObjects = ipFilterObjects;
             _resultValue.ipFilterStrings = ipFilterStrings;

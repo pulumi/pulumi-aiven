@@ -173,6 +173,10 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly ImmutableArray<string> ConfigPropertiesExcludes;
         /// <summary>
+        /// Adds a diskless_az= hint to the replication flow's Kafka client.id so that diskless Kafka clusters serve the flow from brokers in the same availability zone.
+        /// </summary>
+        public readonly bool DisklessAzEnabled;
+        /// <summary>
         /// Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `False`.
         /// </summary>
         public readonly bool EmitBackwardHeartbeatsEnabled;
@@ -250,6 +254,8 @@ namespace Pulumi.Aiven
         private GetMirrorMakerReplicationFlowResult(
             ImmutableArray<string> configPropertiesExcludes,
 
+            bool disklessAzEnabled,
+
             bool emitBackwardHeartbeatsEnabled,
 
             bool emitHeartbeatsEnabled,
@@ -289,6 +295,7 @@ namespace Pulumi.Aiven
             ImmutableArray<string> topicsBlacklists)
         {
             ConfigPropertiesExcludes = configPropertiesExcludes;
+            DisklessAzEnabled = disklessAzEnabled;
             EmitBackwardHeartbeatsEnabled = emitBackwardHeartbeatsEnabled;
             EmitHeartbeatsEnabled = emitHeartbeatsEnabled;
             Enable = enable;

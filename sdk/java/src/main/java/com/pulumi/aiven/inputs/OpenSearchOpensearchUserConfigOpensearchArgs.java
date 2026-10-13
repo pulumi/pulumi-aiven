@@ -523,6 +523,51 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
     }
 
     /**
+     * Enable or disable removing KNN graphs from the cache when they are idle. Disabled by default.
+     * 
+     */
+    @Import(name="knnCacheItemExpiryEnabled")
+    private @Nullable Output<Boolean> knnCacheItemExpiryEnabled;
+
+    /**
+     * @return Enable or disable removing KNN graphs from the cache when they are idle. Disabled by default.
+     * 
+     */
+    public Optional<Output<Boolean>> knnCacheItemExpiryEnabled() {
+        return Optional.ofNullable(this.knnCacheItemExpiryEnabled);
+    }
+
+    /**
+     * If enabled, the amount of time in minutes a KNN graph can be idle in the cache before being evicted. Example: `180`.
+     * 
+     */
+    @Import(name="knnCacheItemExpiryMinutes")
+    private @Nullable Output<Integer> knnCacheItemExpiryMinutes;
+
+    /**
+     * @return If enabled, the amount of time in minutes a KNN graph can be idle in the cache before being evicted. Example: `180`.
+     * 
+     */
+    public Optional<Output<Integer>> knnCacheItemExpiryMinutes() {
+        return Optional.ofNullable(this.knnCacheItemExpiryMinutes);
+    }
+
+    /**
+     * The native memory usage, as a percentage below the KNN memory circuit breaker limit, at which a tripped circuit breaker resets. Defaults to 5%.
+     * 
+     */
+    @Import(name="knnCircuitBreakerUnsetPercentage")
+    private @Nullable Output<Double> knnCircuitBreakerUnsetPercentage;
+
+    /**
+     * @return The native memory usage, as a percentage below the KNN memory circuit breaker limit, at which a tripped circuit breaker resets. Defaults to 5%.
+     * 
+     */
+    public Optional<Output<Double>> knnCircuitBreakerUnsetPercentage() {
+        return Optional.ofNullable(this.knnCircuitBreakerUnsetPercentage);
+    }
+
+    /**
      * Enable or disable KNN memory circuit breaker. Defaults to true.
      * 
      */
@@ -568,6 +613,21 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
     }
 
     /**
+     * Maximum number of ML models that can be deployed on a single ML node. Defaults to 10.
+     * 
+     */
+    @Import(name="mlCommonsMaxModelOnNode")
+    private @Nullable Output<Integer> mlCommonsMaxModelOnNode;
+
+    /**
+     * @return Maximum number of ML models that can be deployed on a single ML node. Defaults to 10.
+     * 
+     */
+    public Optional<Output<Integer>> mlCommonsMaxModelOnNode() {
+        return Optional.ofNullable(this.mlCommonsMaxModelOnNode);
+    }
+
+    /**
      * Enable or disable model access control for ML Commons. When enabled, access to ML models is controlled by security permissions. Defaults to false.
      * 
      */
@@ -580,6 +640,36 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
      */
     public Optional<Output<Boolean>> mlCommonsModelAccessControlEnabled() {
         return Optional.ofNullable(this.mlCommonsModelAccessControlEnabled);
+    }
+
+    /**
+     * For externally hosted models only: automatically deploy a model on its first predict request instead of requiring an explicit deploy call first. Defaults to true.
+     * 
+     */
+    @Import(name="mlCommonsModelAutoDeployEnable")
+    private @Nullable Output<Boolean> mlCommonsModelAutoDeployEnable;
+
+    /**
+     * @return For externally hosted models only: automatically deploy a model on its first predict request instead of requiring an explicit deploy call first. Defaults to true.
+     * 
+     */
+    public Optional<Output<Boolean>> mlCommonsModelAutoDeployEnable() {
+        return Optional.ofNullable(this.mlCommonsModelAutoDeployEnable);
+    }
+
+    /**
+     * Automatically redeploy deployed or partially deployed models after ML nodes rejoin the cluster, e.g. after a node replacement. Defaults to true.
+     * 
+     */
+    @Import(name="mlCommonsModelAutoRedeployEnable")
+    private @Nullable Output<Boolean> mlCommonsModelAutoRedeployEnable;
+
+    /**
+     * @return Automatically redeploy deployed or partially deployed models after ML nodes rejoin the cluster, e.g. after a node replacement. Defaults to true.
+     * 
+     */
+    public Optional<Output<Boolean>> mlCommonsModelAutoRedeployEnable() {
+        return Optional.ofNullable(this.mlCommonsModelAutoRedeployEnable);
     }
 
     /**
@@ -978,10 +1068,16 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         this.ismHistoryMaxDocs = $.ismHistoryMaxDocs;
         this.ismHistoryRolloverCheckPeriod = $.ismHistoryRolloverCheckPeriod;
         this.ismHistoryRolloverRetentionPeriod = $.ismHistoryRolloverRetentionPeriod;
+        this.knnCacheItemExpiryEnabled = $.knnCacheItemExpiryEnabled;
+        this.knnCacheItemExpiryMinutes = $.knnCacheItemExpiryMinutes;
+        this.knnCircuitBreakerUnsetPercentage = $.knnCircuitBreakerUnsetPercentage;
         this.knnMemoryCircuitBreakerEnabled = $.knnMemoryCircuitBreakerEnabled;
         this.knnMemoryCircuitBreakerLimit = $.knnMemoryCircuitBreakerLimit;
         this.mlCommonsConnectorAccessControlEnabled = $.mlCommonsConnectorAccessControlEnabled;
+        this.mlCommonsMaxModelOnNode = $.mlCommonsMaxModelOnNode;
         this.mlCommonsModelAccessControlEnabled = $.mlCommonsModelAccessControlEnabled;
+        this.mlCommonsModelAutoDeployEnable = $.mlCommonsModelAutoDeployEnable;
+        this.mlCommonsModelAutoRedeployEnable = $.mlCommonsModelAutoRedeployEnable;
         this.mlCommonsNativeMemoryThreshold = $.mlCommonsNativeMemoryThreshold;
         this.mlCommonsOnlyRunOnMlNode = $.mlCommonsOnlyRunOnMlNode;
         this.mlCommonsTrustedConnectorEndpointsRegexes = $.mlCommonsTrustedConnectorEndpointsRegexes;
@@ -1718,6 +1814,69 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         }
 
         /**
+         * @param knnCacheItemExpiryEnabled Enable or disable removing KNN graphs from the cache when they are idle. Disabled by default.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder knnCacheItemExpiryEnabled(@Nullable Output<Boolean> knnCacheItemExpiryEnabled) {
+            $.knnCacheItemExpiryEnabled = knnCacheItemExpiryEnabled;
+            return this;
+        }
+
+        /**
+         * @param knnCacheItemExpiryEnabled Enable or disable removing KNN graphs from the cache when they are idle. Disabled by default.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder knnCacheItemExpiryEnabled(Boolean knnCacheItemExpiryEnabled) {
+            return knnCacheItemExpiryEnabled(Output.of(knnCacheItemExpiryEnabled));
+        }
+
+        /**
+         * @param knnCacheItemExpiryMinutes If enabled, the amount of time in minutes a KNN graph can be idle in the cache before being evicted. Example: `180`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder knnCacheItemExpiryMinutes(@Nullable Output<Integer> knnCacheItemExpiryMinutes) {
+            $.knnCacheItemExpiryMinutes = knnCacheItemExpiryMinutes;
+            return this;
+        }
+
+        /**
+         * @param knnCacheItemExpiryMinutes If enabled, the amount of time in minutes a KNN graph can be idle in the cache before being evicted. Example: `180`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder knnCacheItemExpiryMinutes(Integer knnCacheItemExpiryMinutes) {
+            return knnCacheItemExpiryMinutes(Output.of(knnCacheItemExpiryMinutes));
+        }
+
+        /**
+         * @param knnCircuitBreakerUnsetPercentage The native memory usage, as a percentage below the KNN memory circuit breaker limit, at which a tripped circuit breaker resets. Defaults to 5%.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder knnCircuitBreakerUnsetPercentage(@Nullable Output<Double> knnCircuitBreakerUnsetPercentage) {
+            $.knnCircuitBreakerUnsetPercentage = knnCircuitBreakerUnsetPercentage;
+            return this;
+        }
+
+        /**
+         * @param knnCircuitBreakerUnsetPercentage The native memory usage, as a percentage below the KNN memory circuit breaker limit, at which a tripped circuit breaker resets. Defaults to 5%.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder knnCircuitBreakerUnsetPercentage(Double knnCircuitBreakerUnsetPercentage) {
+            return knnCircuitBreakerUnsetPercentage(Output.of(knnCircuitBreakerUnsetPercentage));
+        }
+
+        /**
          * @param knnMemoryCircuitBreakerEnabled Enable or disable KNN memory circuit breaker. Defaults to true.
          * 
          * @return builder
@@ -1781,6 +1940,27 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         }
 
         /**
+         * @param mlCommonsMaxModelOnNode Maximum number of ML models that can be deployed on a single ML node. Defaults to 10.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mlCommonsMaxModelOnNode(@Nullable Output<Integer> mlCommonsMaxModelOnNode) {
+            $.mlCommonsMaxModelOnNode = mlCommonsMaxModelOnNode;
+            return this;
+        }
+
+        /**
+         * @param mlCommonsMaxModelOnNode Maximum number of ML models that can be deployed on a single ML node. Defaults to 10.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mlCommonsMaxModelOnNode(Integer mlCommonsMaxModelOnNode) {
+            return mlCommonsMaxModelOnNode(Output.of(mlCommonsMaxModelOnNode));
+        }
+
+        /**
          * @param mlCommonsModelAccessControlEnabled Enable or disable model access control for ML Commons. When enabled, access to ML models is controlled by security permissions. Defaults to false.
          * 
          * @return builder
@@ -1799,6 +1979,48 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
          */
         public Builder mlCommonsModelAccessControlEnabled(Boolean mlCommonsModelAccessControlEnabled) {
             return mlCommonsModelAccessControlEnabled(Output.of(mlCommonsModelAccessControlEnabled));
+        }
+
+        /**
+         * @param mlCommonsModelAutoDeployEnable For externally hosted models only: automatically deploy a model on its first predict request instead of requiring an explicit deploy call first. Defaults to true.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mlCommonsModelAutoDeployEnable(@Nullable Output<Boolean> mlCommonsModelAutoDeployEnable) {
+            $.mlCommonsModelAutoDeployEnable = mlCommonsModelAutoDeployEnable;
+            return this;
+        }
+
+        /**
+         * @param mlCommonsModelAutoDeployEnable For externally hosted models only: automatically deploy a model on its first predict request instead of requiring an explicit deploy call first. Defaults to true.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mlCommonsModelAutoDeployEnable(Boolean mlCommonsModelAutoDeployEnable) {
+            return mlCommonsModelAutoDeployEnable(Output.of(mlCommonsModelAutoDeployEnable));
+        }
+
+        /**
+         * @param mlCommonsModelAutoRedeployEnable Automatically redeploy deployed or partially deployed models after ML nodes rejoin the cluster, e.g. after a node replacement. Defaults to true.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mlCommonsModelAutoRedeployEnable(@Nullable Output<Boolean> mlCommonsModelAutoRedeployEnable) {
+            $.mlCommonsModelAutoRedeployEnable = mlCommonsModelAutoRedeployEnable;
+            return this;
+        }
+
+        /**
+         * @param mlCommonsModelAutoRedeployEnable Automatically redeploy deployed or partially deployed models after ML nodes rejoin the cluster, e.g. after a node replacement. Defaults to true.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mlCommonsModelAutoRedeployEnable(Boolean mlCommonsModelAutoRedeployEnable) {
+            return mlCommonsModelAutoRedeployEnable(Output.of(mlCommonsModelAutoRedeployEnable));
         }
 
         /**

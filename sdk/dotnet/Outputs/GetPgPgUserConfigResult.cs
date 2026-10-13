@@ -155,7 +155,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.GetPgPgUserConfigTimescaledbResult? Timescaledb;
         /// <summary>
-        /// Enum: `Aiven`, `Timescale`. Variant of the PostgreSQL service, may affect the features that are exposed by default.
+        /// Enum: `Aiven`, `PgLake`, `Timescale`. Variant of the PostgreSQL service, may affect the features that are exposed by default.
         /// </summary>
         public readonly string? Variant;
         /// <summary>

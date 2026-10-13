@@ -22,6 +22,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? DatadogFunctionMetricsEnabled;
         /// <summary>
+        /// Database the Datadog PostgreSQL check connects to. Relation metrics are collected only from this database. The main service database is used when unset. Database Monitoring collects query statistics from every database regardless of this option. Example: `Defaultdb`.
+        /// </summary>
+        public readonly string? DatadogPgDbname;
+        /// <summary>
         /// Relations to collect PostgreSQL relation metrics for, such as table size, index statistics, row counts, vacuum ages and locks. No relation metrics are collected when unset
         /// </summary>
         public readonly ImmutableArray<Outputs.ServiceIntegrationDatadogUserConfigDatadogPgRelation> DatadogPgRelations;
@@ -76,6 +80,8 @@ namespace Pulumi.Aiven.Outputs
 
             bool? datadogFunctionMetricsEnabled,
 
+            string? datadogPgDbname,
+
             ImmutableArray<Outputs.ServiceIntegrationDatadogUserConfigDatadogPgRelation> datadogPgRelations,
 
             bool? datadogPgbouncerEnabled,
@@ -102,6 +108,7 @@ namespace Pulumi.Aiven.Outputs
         {
             DatadogDbmEnabled = datadogDbmEnabled;
             DatadogFunctionMetricsEnabled = datadogFunctionMetricsEnabled;
+            DatadogPgDbname = datadogPgDbname;
             DatadogPgRelations = datadogPgRelations;
             DatadogPgbouncerEnabled = datadogPgbouncerEnabled;
             DatadogTags = datadogTags;

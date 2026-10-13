@@ -7,7 +7,6 @@ import com.pulumi.aiven.outputs.GetOpensearchUserTimeouts;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -19,11 +18,6 @@ public final class GetOpensearchUserResult {
      * 
      */
     private String id;
-    /**
-     * @return MySQL grants for the service user.
-     * 
-     */
-    private List<String> mysqlGrants;
     /**
      * @return The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`.
      * 
@@ -63,13 +57,6 @@ public final class GetOpensearchUserResult {
      */
     public String id() {
         return this.id;
-    }
-    /**
-     * @return MySQL grants for the service user.
-     * 
-     */
-    public List<String> mysqlGrants() {
-        return this.mysqlGrants;
     }
     /**
      * @return The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`.
@@ -127,7 +114,6 @@ public final class GetOpensearchUserResult {
     @CustomType.Builder
     public static final class Builder {
         private String id;
-        private List<String> mysqlGrants;
         private String password;
         private String passwordEncryptionType;
         private String project;
@@ -139,7 +125,6 @@ public final class GetOpensearchUserResult {
         public Builder(GetOpensearchUserResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
-    	      this.mysqlGrants = defaults.mysqlGrants;
     	      this.password = defaults.password;
     	      this.passwordEncryptionType = defaults.passwordEncryptionType;
     	      this.project = defaults.project;
@@ -156,17 +141,6 @@ public final class GetOpensearchUserResult {
             }
             this.id = id;
             return this;
-        }
-        @CustomType.Setter
-        public Builder mysqlGrants(List<String> mysqlGrants) {
-            if (mysqlGrants == null) {
-              throw new MissingRequiredPropertyException("GetOpensearchUserResult", "mysqlGrants");
-            }
-            this.mysqlGrants = mysqlGrants;
-            return this;
-        }
-        public Builder mysqlGrants(String... mysqlGrants) {
-            return mysqlGrants(List.of(mysqlGrants));
         }
         @CustomType.Setter
         public Builder password(String password) {
@@ -225,7 +199,6 @@ public final class GetOpensearchUserResult {
         public GetOpensearchUserResult build() {
             final var _resultValue = new GetOpensearchUserResult();
             _resultValue.id = id;
-            _resultValue.mysqlGrants = mysqlGrants;
             _resultValue.password = password;
             _resultValue.passwordEncryptionType = passwordEncryptionType;
             _resultValue.project = project;

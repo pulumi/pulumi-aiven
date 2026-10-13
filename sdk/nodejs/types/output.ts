@@ -2797,6 +2797,10 @@ export interface GetKafkaConnectKafkaConnectUserConfig {
      */
     additionalBackupRegions?: string;
     /**
+     * Install custom plugins uploaded via the custom file service
+     */
+    customPlugins?: outputs.GetKafkaConnectKafkaConnectUserConfigCustomPlugin[];
+    /**
      * Allow-list of HTTPS URLs used to validate GCP credentialSource requests for Kafka Connect.
      */
     gcpAuthAllowedUrls?: string[];
@@ -2854,6 +2858,17 @@ export interface GetKafkaConnectKafkaConnectUserConfig {
      * Use static public IP addresses.
      */
     staticIps?: boolean;
+}
+
+export interface GetKafkaConnectKafkaConnectUserConfigCustomPlugin {
+    /**
+     * The name of the custom plugin as specified during upload. Example: `my-custom-connector`.
+     */
+    pluginName: string;
+    /**
+     * The version to install. Use a semver version (e.g. `1.0.0`) or `latest` to always use the most recent version. Example: `latest`.
+     */
+    pluginVersion: string;
 }
 
 export interface GetKafkaConnectKafkaConnectUserConfigIpFilterObject {
@@ -3246,11 +3261,11 @@ export interface GetKafkaKafkaUserConfig {
      */
     kafkaSaslMechanisms?: outputs.GetKafkaKafkaUserConfigKafkaSaslMechanisms;
     /**
-     * Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, `4.1`, `4.2`, and newer. Kafka major version.
+     * Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, `4.1`, `4.2`, `4.3`, and newer. Kafka major version.
      */
     kafkaVersion?: string;
     /**
-     * Enum: `6.2.1`, `6.2.2`, `6.2.3`, and newer. Select a Karapace version for this service, or select Latest to use the latest available version automatically. New versions become available after installation during a maintenance update.
+     * Enum: `6.2.1`, `6.2.2`, `6.2.3`, `6.2.4`, and newer. Select a Karapace version for this service, or select Latest to use the latest available version automatically. New versions become available after installation during a maintenance update.
      */
     karapaceVersion?: string;
     /**
@@ -3353,6 +3368,30 @@ export interface GetKafkaKafkaUserConfigKafka {
      * Replication factor for auto-created topics (Default: 3).
      */
     defaultReplicationFactor?: number;
+    /**
+     * The heartbeat interval given to the members of a consumer group using the consumer rebalance protocol. Must be between group.consumer.min.heartbeat.interval.ms and group.consumer.max.heartbeat.interval.ms, and lower than group.consumer.session.timeout.ms. (Default: 5000 ms (5 seconds)) Requires Kafka 4.0 or later. Example: `5000`.
+     */
+    groupConsumerHeartbeatIntervalMs?: number;
+    /**
+     * The maximum heartbeat interval allowed for consumer group members using the consumer rebalance protocol. Must not be less than group.consumer.min.heartbeat.interval.ms. (Default: 15000 ms (15 seconds)) Requires Kafka 4.0 or later. Example: `15000`.
+     */
+    groupConsumerMaxHeartbeatIntervalMs?: number;
+    /**
+     * The maximum session timeout allowed for consumer group members using the consumer rebalance protocol. Must not be less than group.consumer.min.session.timeout.ms. (Default: 60000 ms (60 seconds)) Requires Kafka 4.0 or later. Example: `60000`.
+     */
+    groupConsumerMaxSessionTimeoutMs?: number;
+    /**
+     * The minimum heartbeat interval allowed for consumer group members using the consumer rebalance protocol. Must not be greater than group.consumer.max.heartbeat.interval.ms. (Default: 5000 ms (5 seconds)) Requires Kafka 4.0 or later. Example: `5000`.
+     */
+    groupConsumerMinHeartbeatIntervalMs?: number;
+    /**
+     * The minimum session timeout allowed for consumer group members using the consumer rebalance protocol. Must not be greater than group.consumer.max.session.timeout.ms. (Default: 45000 ms (45 seconds)) Requires Kafka 4.0 or later. Example: `45000`.
+     */
+    groupConsumerMinSessionTimeoutMs?: number;
+    /**
+     * The timeout used to detect consumer group member failures when using the consumer rebalance protocol. Must be between group.consumer.min.session.timeout.ms and group.consumer.max.session.timeout.ms. (Default: 45000 ms (45 seconds)) Requires Kafka 4.0 or later. Example: `45000`.
+     */
+    groupConsumerSessionTimeoutMs?: number;
     /**
      * Enum: `classic`, `classic,consumer`, `classic,consumer,share`, `classic,consumer,share,streams`, `classic,consumer,streams`, `classic,share`, `classic,streams`. The enabled consumer group rebalance protocols. Use consumer, classic, share, streams to enable Kafka share groups.
      */
@@ -4817,6 +4856,22 @@ export interface GetMySqlMysqlUserConfigMysql {
      */
     innodbLogBufferSize?: number;
     /**
+     * Percentage of dirty pages in the InnoDB buffer pool at which InnoDB starts flushing aggressively. Lowering it spreads write I/O more evenly and shortens crash recovery, at the cost of flushing pages that might have been modified again. Must stay at or above innodb_max_dirty_pages_pct_lwm. Default is 90. Example: `75`.
+     */
+    innodbMaxDirtyPagesPct?: number;
+    /**
+     * Percentage of dirty pages in the InnoDB buffer pool at which InnoDB starts pre-flushing, to keep the dirty page ratio from reaching innodb_max_dirty_pages_pct. 0 turns pre-flushing off. Cannot be set above innodb_max_dirty_pages_pct. Default is 10. Example: `10`.
+     */
+    innodbMaxDirtyPagesPctLwm?: number;
+    /**
+     * Number of outstanding transactions the InnoDB purge operation may fall behind by before INSERT, UPDATE and DELETE are delayed to let it catch up. The delay applies per row and grows with the lag, and it is capped by innodb_max_purge_lag_delay, which has to be set as well for this option to have any effect. Default is 0, which never delays anything.
+     */
+    innodbMaxPurgeLag?: number;
+    /**
+     * Cap in microseconds on the per-row delay innodbMaxPurgeLag applies to INSERT, UPDATE and DELETE. MySQL clamps the delay to this value unconditionally, so while this is 0 no delay is ever applied and innodbMaxPurgeLag on its own does nothing. Both options must be non-zero for either to take effect. Default is 0. Example: `10000`.
+     */
+    innodbMaxPurgeLagDelay?: number;
+    /**
      * The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
      */
     innodbOnlineAlterLogMaxSize?: number;
@@ -5189,7 +5244,7 @@ export interface GetOpenSearchOpensearchUserConfig {
      */
     opensearchDashboards?: outputs.GetOpenSearchOpensearchUserConfigOpensearchDashboards;
     /**
-     * Enum: `1`, `2`, `2.19`, `3.3`, `3.6`, and newer. OpenSearch version.
+     * Enum: `1`, `2`, `2.19`, `3.3`, `3.6`, `3.8`, and newer. OpenSearch version.
      */
     opensearchVersion?: string;
     /**
@@ -5636,6 +5691,18 @@ export interface GetOpenSearchOpensearchUserConfigOpensearch {
      */
     ismHistoryRolloverRetentionPeriod?: number;
     /**
+     * Enable or disable removing KNN graphs from the cache when they are idle. Disabled by default.
+     */
+    knnCacheItemExpiryEnabled?: boolean;
+    /**
+     * If enabled, the amount of time in minutes a KNN graph can be idle in the cache before being evicted. Example: `180`.
+     */
+    knnCacheItemExpiryMinutes?: number;
+    /**
+     * The native memory usage, as a percentage below the KNN memory circuit breaker limit, at which a tripped circuit breaker resets. Defaults to 5%.
+     */
+    knnCircuitBreakerUnsetPercentage?: number;
+    /**
      * Enable or disable KNN memory circuit breaker. Defaults to true.
      */
     knnMemoryCircuitBreakerEnabled?: boolean;
@@ -5648,9 +5715,21 @@ export interface GetOpenSearchOpensearchUserConfigOpensearch {
      */
     mlCommonsConnectorAccessControlEnabled?: boolean;
     /**
+     * Maximum number of ML models that can be deployed on a single ML node. Defaults to 10.
+     */
+    mlCommonsMaxModelOnNode?: number;
+    /**
      * Enable or disable model access control for ML Commons. When enabled, access to ML models is controlled by security permissions. Defaults to false.
      */
     mlCommonsModelAccessControlEnabled?: boolean;
+    /**
+     * For externally hosted models only: automatically deploy a model on its first predict request instead of requiring an explicit deploy call first. Defaults to true.
+     */
+    mlCommonsModelAutoDeployEnable?: boolean;
+    /**
+     * Automatically redeploy deployed or partially deployed models after ML nodes rejoin the cluster, e.g. after a node replacement. Defaults to true.
+     */
+    mlCommonsModelAutoRedeployEnable?: boolean;
     /**
      * Native memory threshold percentage for ML Commons. Controls the maximum percentage of native memory that can be used by ML Commons operations. Defaults to 90%.
      */
@@ -7013,7 +7092,7 @@ export interface GetPgPgUserConfig {
      */
     timescaledb?: outputs.GetPgPgUserConfigTimescaledb;
     /**
-     * Enum: `aiven`, `timescale`. Variant of the PostgreSQL service, may affect the features that are exposed by default.
+     * Enum: `aiven`, `pgLake`, `timescale`. Variant of the PostgreSQL service, may affect the features that are exposed by default.
      */
     variant?: string;
     /**
@@ -7786,6 +7865,10 @@ export interface GetServiceIntegrationDatadogUserConfig {
      * Enable collection of PL/pgSQL function metrics from pg_stat_user_functions. Requires `trackFunctions` to be set to `pl` or `all` in the service configuration.
      */
     datadogFunctionMetricsEnabled?: boolean;
+    /**
+     * Database the Datadog PostgreSQL check connects to. Relation metrics are collected only from this database. The main service database is used when unset. Database Monitoring collects query statistics from every database regardless of this option. Example: `defaultdb`.
+     */
+    datadogPgDbname?: string;
     /**
      * Relations to collect PostgreSQL relation metrics for, such as table size, index statistics, row counts, vacuum ages and locks. No relation metrics are collected when unset
      */
@@ -9445,6 +9528,10 @@ export interface GetValkeyValkeyUserConfig {
      */
     recoveryBasebackupName?: string;
     /**
+     * Number of replicas per shard in the Valkey cluster. Only applies to cluster plans. Example: `1`.
+     */
+    replicas?: number;
+    /**
      * Store logs for the service so that they are available in the HTTP API and console.
      */
     serviceLog?: boolean;
@@ -9452,6 +9539,10 @@ export interface GetValkeyValkeyUserConfig {
      * Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
      */
     serviceToForkFrom?: string;
+    /**
+     * Number of shards (primaries) in the Valkey cluster. Required for cluster plans. Example: `3`.
+     */
+    shardCount?: number;
     /**
      * Use static public IP addresses.
      */
@@ -10345,6 +10436,10 @@ export interface KafkaConnectKafkaConnectUserConfig {
      */
     additionalBackupRegions?: string;
     /**
+     * Install custom plugins uploaded via the custom file service
+     */
+    customPlugins?: outputs.KafkaConnectKafkaConnectUserConfigCustomPlugin[];
+    /**
      * Allow-list of HTTPS URLs used to validate GCP credentialSource requests for Kafka Connect.
      */
     gcpAuthAllowedUrls?: string[];
@@ -10402,6 +10497,17 @@ export interface KafkaConnectKafkaConnectUserConfig {
      * Use static public IP addresses.
      */
     staticIps?: boolean;
+}
+
+export interface KafkaConnectKafkaConnectUserConfigCustomPlugin {
+    /**
+     * The name of the custom plugin as specified during upload. Example: `my-custom-connector`.
+     */
+    pluginName: string;
+    /**
+     * The version to install. Use a semver version (e.g. `1.0.0`) or `latest` to always use the most recent version. Example: `latest`.
+     */
+    pluginVersion: string;
 }
 
 export interface KafkaConnectKafkaConnectUserConfigIpFilterObject {
@@ -10794,11 +10900,11 @@ export interface KafkaKafkaUserConfig {
      */
     kafkaSaslMechanisms?: outputs.KafkaKafkaUserConfigKafkaSaslMechanisms;
     /**
-     * Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, `4.1`, `4.2`, and newer. Kafka major version.
+     * Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, `4.1`, `4.2`, `4.3`, and newer. Kafka major version.
      */
     kafkaVersion?: string;
     /**
-     * Enum: `6.2.1`, `6.2.2`, `6.2.3`, and newer. Select a Karapace version for this service, or select Latest to use the latest available version automatically. New versions become available after installation during a maintenance update.
+     * Enum: `6.2.1`, `6.2.2`, `6.2.3`, `6.2.4`, and newer. Select a Karapace version for this service, or select Latest to use the latest available version automatically. New versions become available after installation during a maintenance update.
      */
     karapaceVersion?: string;
     /**
@@ -10901,6 +11007,30 @@ export interface KafkaKafkaUserConfigKafka {
      * Replication factor for auto-created topics (Default: 3).
      */
     defaultReplicationFactor?: number;
+    /**
+     * The heartbeat interval given to the members of a consumer group using the consumer rebalance protocol. Must be between group.consumer.min.heartbeat.interval.ms and group.consumer.max.heartbeat.interval.ms, and lower than group.consumer.session.timeout.ms. (Default: 5000 ms (5 seconds)) Requires Kafka 4.0 or later. Example: `5000`.
+     */
+    groupConsumerHeartbeatIntervalMs?: number;
+    /**
+     * The maximum heartbeat interval allowed for consumer group members using the consumer rebalance protocol. Must not be less than group.consumer.min.heartbeat.interval.ms. (Default: 15000 ms (15 seconds)) Requires Kafka 4.0 or later. Example: `15000`.
+     */
+    groupConsumerMaxHeartbeatIntervalMs?: number;
+    /**
+     * The maximum session timeout allowed for consumer group members using the consumer rebalance protocol. Must not be less than group.consumer.min.session.timeout.ms. (Default: 60000 ms (60 seconds)) Requires Kafka 4.0 or later. Example: `60000`.
+     */
+    groupConsumerMaxSessionTimeoutMs?: number;
+    /**
+     * The minimum heartbeat interval allowed for consumer group members using the consumer rebalance protocol. Must not be greater than group.consumer.max.heartbeat.interval.ms. (Default: 5000 ms (5 seconds)) Requires Kafka 4.0 or later. Example: `5000`.
+     */
+    groupConsumerMinHeartbeatIntervalMs?: number;
+    /**
+     * The minimum session timeout allowed for consumer group members using the consumer rebalance protocol. Must not be greater than group.consumer.max.session.timeout.ms. (Default: 45000 ms (45 seconds)) Requires Kafka 4.0 or later. Example: `45000`.
+     */
+    groupConsumerMinSessionTimeoutMs?: number;
+    /**
+     * The timeout used to detect consumer group member failures when using the consumer rebalance protocol. Must be between group.consumer.min.session.timeout.ms and group.consumer.max.session.timeout.ms. (Default: 45000 ms (45 seconds)) Requires Kafka 4.0 or later. Example: `45000`.
+     */
+    groupConsumerSessionTimeoutMs?: number;
     /**
      * Enum: `classic`, `classic,consumer`, `classic,consumer,share`, `classic,consumer,share,streams`, `classic,consumer,streams`, `classic,share`, `classic,streams`. The enabled consumer group rebalance protocols. Use consumer, classic, share, streams to enable Kafka share groups.
      */
@@ -12374,6 +12504,22 @@ export interface MySqlMysqlUserConfigMysql {
      */
     innodbLogBufferSize?: number;
     /**
+     * Percentage of dirty pages in the InnoDB buffer pool at which InnoDB starts flushing aggressively. Lowering it spreads write I/O more evenly and shortens crash recovery, at the cost of flushing pages that might have been modified again. Must stay at or above innodb*max*dirty*pages*pct_lwm. Default is 90. Example: `75`.
+     */
+    innodbMaxDirtyPagesPct?: number;
+    /**
+     * Percentage of dirty pages in the InnoDB buffer pool at which InnoDB starts pre-flushing, to keep the dirty page ratio from reaching innodb*max*dirty*pages*pct. 0 turns pre-flushing off. Cannot be set above innodb*max*dirty*pages*pct. Default is 10. Example: `10`.
+     */
+    innodbMaxDirtyPagesPctLwm?: number;
+    /**
+     * Number of outstanding transactions the InnoDB purge operation may fall behind by before INSERT, UPDATE and DELETE are delayed to let it catch up. The delay applies per row and grows with the lag, and it is capped by innodb*max*purge*lag*delay, which has to be set as well for this option to have any effect. Default is 0, which never delays anything.
+     */
+    innodbMaxPurgeLag?: number;
+    /**
+     * Cap in microseconds on the per-row delay innodb*max*purge*lag applies to INSERT, UPDATE and DELETE. MySQL clamps the delay to this value unconditionally, so while this is 0 no delay is ever applied and innodb*max*purge*lag on its own does nothing. Both options must be non-zero for either to take effect. Default is 0. Example: `10000`.
+     */
+    innodbMaxPurgeLagDelay?: number;
+    /**
      * The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
      */
     innodbOnlineAlterLogMaxSize?: number;
@@ -12782,7 +12928,7 @@ export interface OpenSearchOpensearchUserConfig {
      */
     opensearchDashboards?: outputs.OpenSearchOpensearchUserConfigOpensearchDashboards;
     /**
-     * Enum: `1`, `2`, `2.19`, `3.3`, `3.6`, and newer. OpenSearch version.
+     * Enum: `1`, `2`, `2.19`, `3.3`, `3.6`, `3.8`, and newer. OpenSearch version.
      */
     opensearchVersion?: string;
     /**
@@ -13229,6 +13375,18 @@ export interface OpenSearchOpensearchUserConfigOpensearch {
      */
     ismHistoryRolloverRetentionPeriod?: number;
     /**
+     * Enable or disable removing KNN graphs from the cache when they are idle. Disabled by default.
+     */
+    knnCacheItemExpiryEnabled?: boolean;
+    /**
+     * If enabled, the amount of time in minutes a KNN graph can be idle in the cache before being evicted. Example: `180`.
+     */
+    knnCacheItemExpiryMinutes?: number;
+    /**
+     * The native memory usage, as a percentage below the KNN memory circuit breaker limit, at which a tripped circuit breaker resets. Defaults to 5%.
+     */
+    knnCircuitBreakerUnsetPercentage?: number;
+    /**
      * Enable or disable KNN memory circuit breaker. Defaults to true.
      */
     knnMemoryCircuitBreakerEnabled?: boolean;
@@ -13241,9 +13399,21 @@ export interface OpenSearchOpensearchUserConfigOpensearch {
      */
     mlCommonsConnectorAccessControlEnabled?: boolean;
     /**
+     * Maximum number of ML models that can be deployed on a single ML node. Defaults to 10.
+     */
+    mlCommonsMaxModelOnNode?: number;
+    /**
      * Enable or disable model access control for ML Commons. When enabled, access to ML models is controlled by security permissions. Defaults to false.
      */
     mlCommonsModelAccessControlEnabled?: boolean;
+    /**
+     * For externally hosted models only: automatically deploy a model on its first predict request instead of requiring an explicit deploy call first. Defaults to true.
+     */
+    mlCommonsModelAutoDeployEnable?: boolean;
+    /**
+     * Automatically redeploy deployed or partially deployed models after ML nodes rejoin the cluster, e.g. after a node replacement. Defaults to true.
+     */
+    mlCommonsModelAutoRedeployEnable?: boolean;
     /**
      * Native memory threshold percentage for ML Commons. Controls the maximum percentage of native memory that can be used by ML Commons operations. Defaults to 90%.
      */
@@ -14592,7 +14762,7 @@ export interface PgPgUserConfig {
      */
     timescaledb?: outputs.PgPgUserConfigTimescaledb;
     /**
-     * Enum: `aiven`, `timescale`. Variant of the PostgreSQL service, may affect the features that are exposed by default.
+     * Enum: `aiven`, `pgLake`, `timescale`. Variant of the PostgreSQL service, may affect the features that are exposed by default.
      */
     variant?: string;
     /**
@@ -15401,6 +15571,10 @@ export interface ServiceIntegrationDatadogUserConfig {
      * Enable collection of PL/pgSQL function metrics from pg*stat*user_functions. Requires `trackFunctions` to be set to `pl` or `all` in the service configuration.
      */
     datadogFunctionMetricsEnabled?: boolean;
+    /**
+     * Database the Datadog PostgreSQL check connects to. Relation metrics are collected only from this database. The main service database is used when unset. Database Monitoring collects query statistics from every database regardless of this option. Example: `defaultdb`.
+     */
+    datadogPgDbname?: string;
     /**
      * Relations to collect PostgreSQL relation metrics for, such as table size, index statistics, row counts, vacuum ages and locks. No relation metrics are collected when unset
      */
@@ -16939,6 +17113,10 @@ export interface ValkeyValkeyUserConfig {
      */
     recoveryBasebackupName?: string;
     /**
+     * Number of replicas per shard in the Valkey cluster. Only applies to cluster plans. Example: `1`.
+     */
+    replicas?: number;
+    /**
      * Store logs for the service so that they are available in the HTTP API and console.
      */
     serviceLog?: boolean;
@@ -16946,6 +17124,10 @@ export interface ValkeyValkeyUserConfig {
      * Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
      */
     serviceToForkFrom?: string;
+    /**
+     * Number of shards (primaries) in the Valkey cluster. Required for cluster plans. Example: `3`.
+     */
+    shardCount?: number;
     /**
      * Use static public IP addresses.
      */

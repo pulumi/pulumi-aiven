@@ -34,6 +34,30 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? DefaultReplicationFactor;
         /// <summary>
+        /// The heartbeat interval given to the members of a consumer group using the consumer rebalance protocol. Must be between group.consumer.min.heartbeat.interval.ms and group.consumer.max.heartbeat.interval.ms, and lower than group.consumer.session.timeout.ms. (Default: 5000 ms (5 seconds)) Requires Kafka 4.0 or later. Example: `5000`.
+        /// </summary>
+        public readonly int? GroupConsumerHeartbeatIntervalMs;
+        /// <summary>
+        /// The maximum heartbeat interval allowed for consumer group members using the consumer rebalance protocol. Must not be less than group.consumer.min.heartbeat.interval.ms. (Default: 15000 ms (15 seconds)) Requires Kafka 4.0 or later. Example: `15000`.
+        /// </summary>
+        public readonly int? GroupConsumerMaxHeartbeatIntervalMs;
+        /// <summary>
+        /// The maximum session timeout allowed for consumer group members using the consumer rebalance protocol. Must not be less than group.consumer.min.session.timeout.ms. (Default: 60000 ms (60 seconds)) Requires Kafka 4.0 or later. Example: `60000`.
+        /// </summary>
+        public readonly int? GroupConsumerMaxSessionTimeoutMs;
+        /// <summary>
+        /// The minimum heartbeat interval allowed for consumer group members using the consumer rebalance protocol. Must not be greater than group.consumer.max.heartbeat.interval.ms. (Default: 5000 ms (5 seconds)) Requires Kafka 4.0 or later. Example: `5000`.
+        /// </summary>
+        public readonly int? GroupConsumerMinHeartbeatIntervalMs;
+        /// <summary>
+        /// The minimum session timeout allowed for consumer group members using the consumer rebalance protocol. Must not be greater than group.consumer.max.session.timeout.ms. (Default: 45000 ms (45 seconds)) Requires Kafka 4.0 or later. Example: `45000`.
+        /// </summary>
+        public readonly int? GroupConsumerMinSessionTimeoutMs;
+        /// <summary>
+        /// The timeout used to detect consumer group member failures when using the consumer rebalance protocol. Must be between group.consumer.min.session.timeout.ms and group.consumer.max.session.timeout.ms. (Default: 45000 ms (45 seconds)) Requires Kafka 4.0 or later. Example: `45000`.
+        /// </summary>
+        public readonly int? GroupConsumerSessionTimeoutMs;
+        /// <summary>
         /// Enum: `Classic`, `classic,consumer`, `classic,consumer,share`, `classic,consumer,share,streams`, `classic,consumer,streams`, `classic,share`, `classic,streams`. The enabled consumer group rebalance protocols. Use consumer, classic, share, streams to enable Kafka share groups.
         /// </summary>
         public readonly string? GroupCoordinatorRebalanceProtocols;
@@ -278,6 +302,18 @@ namespace Pulumi.Aiven.Outputs
 
             int? defaultReplicationFactor,
 
+            int? groupConsumerHeartbeatIntervalMs,
+
+            int? groupConsumerMaxHeartbeatIntervalMs,
+
+            int? groupConsumerMaxSessionTimeoutMs,
+
+            int? groupConsumerMinHeartbeatIntervalMs,
+
+            int? groupConsumerMinSessionTimeoutMs,
+
+            int? groupConsumerSessionTimeoutMs,
+
             string? groupCoordinatorRebalanceProtocols,
 
             int? groupInitialRebalanceDelayMs,
@@ -399,6 +435,12 @@ namespace Pulumi.Aiven.Outputs
             CompressionType = compressionType;
             ConnectionsMaxIdleMs = connectionsMaxIdleMs;
             DefaultReplicationFactor = defaultReplicationFactor;
+            GroupConsumerHeartbeatIntervalMs = groupConsumerHeartbeatIntervalMs;
+            GroupConsumerMaxHeartbeatIntervalMs = groupConsumerMaxHeartbeatIntervalMs;
+            GroupConsumerMaxSessionTimeoutMs = groupConsumerMaxSessionTimeoutMs;
+            GroupConsumerMinHeartbeatIntervalMs = groupConsumerMinHeartbeatIntervalMs;
+            GroupConsumerMinSessionTimeoutMs = groupConsumerMinSessionTimeoutMs;
+            GroupConsumerSessionTimeoutMs = groupConsumerSessionTimeoutMs;
             GroupCoordinatorRebalanceProtocols = groupCoordinatorRebalanceProtocols;
             GroupInitialRebalanceDelayMs = groupInitialRebalanceDelayMs;
             GroupMaxSessionTimeoutMs = groupMaxSessionTimeoutMs;

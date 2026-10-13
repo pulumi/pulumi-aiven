@@ -53,6 +53,21 @@ public final class ServiceIntegrationDatadogUserConfigArgs extends com.pulumi.re
     }
 
     /**
+     * Database the Datadog PostgreSQL check connects to. Relation metrics are collected only from this database. The main service database is used when unset. Database Monitoring collects query statistics from every database regardless of this option. Example: `defaultdb`.
+     * 
+     */
+    @Import(name="datadogPgDbname")
+    private @Nullable Output<String> datadogPgDbname;
+
+    /**
+     * @return Database the Datadog PostgreSQL check connects to. Relation metrics are collected only from this database. The main service database is used when unset. Database Monitoring collects query statistics from every database regardless of this option. Example: `defaultdb`.
+     * 
+     */
+    public Optional<Output<String>> datadogPgDbname() {
+        return Optional.ofNullable(this.datadogPgDbname);
+    }
+
+    /**
      * Relations to collect PostgreSQL relation metrics for, such as table size, index statistics, row counts, vacuum ages and locks. No relation metrics are collected when unset
      * 
      */
@@ -237,6 +252,7 @@ public final class ServiceIntegrationDatadogUserConfigArgs extends com.pulumi.re
     private ServiceIntegrationDatadogUserConfigArgs(ServiceIntegrationDatadogUserConfigArgs $) {
         this.datadogDbmEnabled = $.datadogDbmEnabled;
         this.datadogFunctionMetricsEnabled = $.datadogFunctionMetricsEnabled;
+        this.datadogPgDbname = $.datadogPgDbname;
         this.datadogPgRelations = $.datadogPgRelations;
         this.datadogPgbouncerEnabled = $.datadogPgbouncerEnabled;
         this.datadogTags = $.datadogTags;
@@ -309,6 +325,27 @@ public final class ServiceIntegrationDatadogUserConfigArgs extends com.pulumi.re
          */
         public Builder datadogFunctionMetricsEnabled(Boolean datadogFunctionMetricsEnabled) {
             return datadogFunctionMetricsEnabled(Output.of(datadogFunctionMetricsEnabled));
+        }
+
+        /**
+         * @param datadogPgDbname Database the Datadog PostgreSQL check connects to. Relation metrics are collected only from this database. The main service database is used when unset. Database Monitoring collects query statistics from every database regardless of this option. Example: `defaultdb`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder datadogPgDbname(@Nullable Output<String> datadogPgDbname) {
+            $.datadogPgDbname = datadogPgDbname;
+            return this;
+        }
+
+        /**
+         * @param datadogPgDbname Database the Datadog PostgreSQL check connects to. Relation metrics are collected only from this database. The main service database is used when unset. Database Monitoring collects query statistics from every database regardless of this option. Example: `defaultdb`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder datadogPgDbname(String datadogPgDbname) {
+            return datadogPgDbname(Output.of(datadogPgDbname));
         }
 
         /**

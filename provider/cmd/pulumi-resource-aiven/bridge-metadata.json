@@ -724,6 +724,9 @@
                                 "additional_backup_regions": {
                                     "maxItemsOne": true
                                 },
+                                "custom_plugins": {
+                                    "maxItemsOne": false
+                                },
                                 "gcp_auth_allowed_urls": {
                                     "maxItemsOne": false
                                 },
@@ -890,12 +893,7 @@
             },
             "aiven_kafka_user": {
                 "current": "aiven:index/kafkaUser:KafkaUser",
-                "majorVersion": 6,
-                "fields": {
-                    "mysql_grants": {
-                        "maxItemsOne": false
-                    }
-                }
+                "majorVersion": 6
             },
             "aiven_mirrormaker_replication_flow": {
                 "current": "aiven:index/mirrorMakerReplicationFlow:MirrorMakerReplicationFlow",
@@ -1208,12 +1206,7 @@
             },
             "aiven_opensearch_user": {
                 "current": "aiven:index/opensearchUser:OpensearchUser",
-                "majorVersion": 6,
-                "fields": {
-                    "mysql_grants": {
-                        "maxItemsOne": false
-                    }
-                }
+                "majorVersion": 6
             },
             "aiven_organization": {
                 "current": "aiven:index/organization:Organization",
@@ -1423,12 +1416,7 @@
             },
             "aiven_pg_user": {
                 "current": "aiven:index/pgUser:PgUser",
-                "majorVersion": 6,
-                "fields": {
-                    "mysql_grants": {
-                        "maxItemsOne": false
-                    }
-                }
+                "majorVersion": 6
             },
             "aiven_project": {
                 "current": "aiven:index/project:Project",
@@ -1920,9 +1908,6 @@
                 "current": "aiven:index/valkeyUser:ValkeyUser",
                 "majorVersion": 6,
                 "fields": {
-                    "mysql_grants": {
-                        "maxItemsOne": false
-                    },
                     "valkey_acl_categories": {
                         "maxItemsOne": false
                     },
@@ -2557,6 +2542,9 @@
                                 "additional_backup_regions": {
                                     "maxItemsOne": true
                                 },
+                                "custom_plugins": {
+                                    "maxItemsOne": false
+                                },
                                 "gcp_auth_allowed_urls": {
                                     "maxItemsOne": false
                                 },
@@ -2736,12 +2724,7 @@
             },
             "aiven_kafka_user": {
                 "current": "aiven:index/getKafkaUser:getKafkaUser",
-                "majorVersion": 6,
-                "fields": {
-                    "mysql_grants": {
-                        "maxItemsOne": false
-                    }
-                }
+                "majorVersion": 6
             },
             "aiven_mirrormaker_replication_flow": {
                 "current": "aiven:index/getMirrorMakerReplicationFlow:getMirrorMakerReplicationFlow",
@@ -3054,12 +3037,7 @@
             },
             "aiven_opensearch_user": {
                 "current": "aiven:index/getOpensearchUser:getOpensearchUser",
-                "majorVersion": 6,
-                "fields": {
-                    "mysql_grants": {
-                        "maxItemsOne": false
-                    }
-                }
+                "majorVersion": 6
             },
             "aiven_organization": {
                 "current": "aiven:index/getOrganization:getOrganization",
@@ -3305,12 +3283,7 @@
             },
             "aiven_pg_user": {
                 "current": "aiven:index/getPgUser:getPgUser",
-                "majorVersion": 6,
-                "fields": {
-                    "mysql_grants": {
-                        "maxItemsOne": false
-                    }
-                }
+                "majorVersion": 6
             },
             "aiven_project": {
                 "current": "aiven:index/getProject:getProject",
@@ -3825,9 +3798,6 @@
                 "current": "aiven:index/getValkeyUser:getValkeyUser",
                 "majorVersion": 6,
                 "fields": {
-                    "mysql_grants": {
-                        "maxItemsOne": false
-                    },
                     "valkey_acl_categories": {
                         "maxItemsOne": false
                     },

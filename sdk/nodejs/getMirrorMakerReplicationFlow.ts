@@ -66,6 +66,10 @@ export interface GetMirrorMakerReplicationFlowResult {
      */
     readonly configPropertiesExcludes: string[];
     /**
+     * Adds a diskless_az= hint to the replication flow's Kafka client.id so that diskless Kafka clusters serve the flow from brokers in the same availability zone.
+     */
+    readonly disklessAzEnabled: boolean;
+    /**
      * Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
      */
     readonly emitBackwardHeartbeatsEnabled: boolean;

@@ -158,10 +158,6 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// MySQL grants for the service user.
-        /// </summary>
-        public readonly ImmutableArray<string> MysqlGrants;
-        /// <summary>
         /// The password of the service user (auto-generated if not provided). The field conflicts with `PasswordWo`.
         /// </summary>
         public readonly string Password;
@@ -207,8 +203,6 @@ namespace Pulumi.Aiven
         private GetValkeyUserResult(
             string id,
 
-            ImmutableArray<string> mysqlGrants,
-
             string password,
 
             string passwordEncryptionType,
@@ -232,7 +226,6 @@ namespace Pulumi.Aiven
             ImmutableArray<string> valkeyAclKeys)
         {
             Id = id;
-            MysqlGrants = mysqlGrants;
             Password = password;
             PasswordEncryptionType = passwordEncryptionType;
             Project = project;

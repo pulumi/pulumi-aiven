@@ -22,6 +22,11 @@ public final class GetMirrorMakerReplicationFlowResult {
      */
     private List<String> configPropertiesExcludes;
     /**
+     * @return Adds a diskless_az= hint to the replication flow&#39;s Kafka client.id so that diskless Kafka clusters serve the flow from brokers in the same availability zone.
+     * 
+     */
+    private Boolean disklessAzEnabled;
+    /**
      * @return Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
      * 
      */
@@ -120,6 +125,13 @@ public final class GetMirrorMakerReplicationFlowResult {
      */
     public List<String> configPropertiesExcludes() {
         return this.configPropertiesExcludes;
+    }
+    /**
+     * @return Adds a diskless_az= hint to the replication flow&#39;s Kafka client.id so that diskless Kafka clusters serve the flow from brokers in the same availability zone.
+     * 
+     */
+    public Boolean disklessAzEnabled() {
+        return this.disklessAzEnabled;
     }
     /**
      * @return Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
@@ -261,6 +273,7 @@ public final class GetMirrorMakerReplicationFlowResult {
     @CustomType.Builder
     public static final class Builder {
         private List<String> configPropertiesExcludes;
+        private Boolean disklessAzEnabled;
         private Boolean emitBackwardHeartbeatsEnabled;
         private Boolean emitHeartbeatsEnabled;
         private Boolean enable;
@@ -284,6 +297,7 @@ public final class GetMirrorMakerReplicationFlowResult {
         public Builder(GetMirrorMakerReplicationFlowResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.configPropertiesExcludes = defaults.configPropertiesExcludes;
+    	      this.disklessAzEnabled = defaults.disklessAzEnabled;
     	      this.emitBackwardHeartbeatsEnabled = defaults.emitBackwardHeartbeatsEnabled;
     	      this.emitHeartbeatsEnabled = defaults.emitHeartbeatsEnabled;
     	      this.enable = defaults.enable;
@@ -315,6 +329,14 @@ public final class GetMirrorMakerReplicationFlowResult {
         }
         public Builder configPropertiesExcludes(String... configPropertiesExcludes) {
             return configPropertiesExcludes(List.of(configPropertiesExcludes));
+        }
+        @CustomType.Setter
+        public Builder disklessAzEnabled(Boolean disklessAzEnabled) {
+            if (disklessAzEnabled == null) {
+              throw new MissingRequiredPropertyException("GetMirrorMakerReplicationFlowResult", "disklessAzEnabled");
+            }
+            this.disklessAzEnabled = disklessAzEnabled;
+            return this;
         }
         @CustomType.Setter
         public Builder emitBackwardHeartbeatsEnabled(Boolean emitBackwardHeartbeatsEnabled) {
@@ -475,6 +497,7 @@ public final class GetMirrorMakerReplicationFlowResult {
         public GetMirrorMakerReplicationFlowResult build() {
             final var _resultValue = new GetMirrorMakerReplicationFlowResult();
             _resultValue.configPropertiesExcludes = configPropertiesExcludes;
+            _resultValue.disklessAzEnabled = disklessAzEnabled;
             _resultValue.emitBackwardHeartbeatsEnabled = emitBackwardHeartbeatsEnabled;
             _resultValue.emitHeartbeatsEnabled = emitHeartbeatsEnabled;
             _resultValue.enable = enable;

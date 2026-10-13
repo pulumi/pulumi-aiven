@@ -3,6 +3,7 @@
 
 package com.pulumi.aiven.inputs;
 
+import com.pulumi.aiven.inputs.KafkaConnectKafkaConnectUserConfigCustomPluginArgs;
 import com.pulumi.aiven.inputs.KafkaConnectKafkaConnectUserConfigIpFilterObjectArgs;
 import com.pulumi.aiven.inputs.KafkaConnectKafkaConnectUserConfigKafkaConnectArgs;
 import com.pulumi.aiven.inputs.KafkaConnectKafkaConnectUserConfigPluginVersionArgs;
@@ -45,6 +46,21 @@ public final class KafkaConnectKafkaConnectUserConfigArgs extends com.pulumi.res
     @Deprecated /* This property is deprecated. */
     public Optional<Output<String>> additionalBackupRegions() {
         return Optional.ofNullable(this.additionalBackupRegions);
+    }
+
+    /**
+     * Install custom plugins uploaded via the custom file service
+     * 
+     */
+    @Import(name="customPlugins")
+    private @Nullable Output<List<KafkaConnectKafkaConnectUserConfigCustomPluginArgs>> customPlugins;
+
+    /**
+     * @return Install custom plugins uploaded via the custom file service
+     * 
+     */
+    public Optional<Output<List<KafkaConnectKafkaConnectUserConfigCustomPluginArgs>>> customPlugins() {
+        return Optional.ofNullable(this.customPlugins);
     }
 
     /**
@@ -269,6 +285,7 @@ public final class KafkaConnectKafkaConnectUserConfigArgs extends com.pulumi.res
 
     private KafkaConnectKafkaConnectUserConfigArgs(KafkaConnectKafkaConnectUserConfigArgs $) {
         this.additionalBackupRegions = $.additionalBackupRegions;
+        this.customPlugins = $.customPlugins;
         this.gcpAuthAllowedUrls = $.gcpAuthAllowedUrls;
         this.ipFilterObjects = $.ipFilterObjects;
         this.ipFilterStrings = $.ipFilterStrings;
@@ -330,6 +347,37 @@ public final class KafkaConnectKafkaConnectUserConfigArgs extends com.pulumi.res
         @Deprecated /* This property is deprecated. */
         public Builder additionalBackupRegions(String additionalBackupRegions) {
             return additionalBackupRegions(Output.of(additionalBackupRegions));
+        }
+
+        /**
+         * @param customPlugins Install custom plugins uploaded via the custom file service
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customPlugins(@Nullable Output<List<KafkaConnectKafkaConnectUserConfigCustomPluginArgs>> customPlugins) {
+            $.customPlugins = customPlugins;
+            return this;
+        }
+
+        /**
+         * @param customPlugins Install custom plugins uploaded via the custom file service
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customPlugins(List<KafkaConnectKafkaConnectUserConfigCustomPluginArgs> customPlugins) {
+            return customPlugins(Output.of(customPlugins));
+        }
+
+        /**
+         * @param customPlugins Install custom plugins uploaded via the custom file service
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customPlugins(KafkaConnectKafkaConnectUserConfigCustomPluginArgs... customPlugins) {
+            return customPlugins(List.of(customPlugins));
         }
 
         /**

@@ -18,6 +18,18 @@ namespace Pulumi.Aiven.Inputs
         [Input("additionalBackupRegions")]
         public Input<string>? AdditionalBackupRegions { get; set; }
 
+        [Input("customPlugins")]
+        private InputList<Inputs.KafkaConnectKafkaConnectUserConfigCustomPluginArgs>? _customPlugins;
+
+        /// <summary>
+        /// Install custom plugins uploaded via the custom file service
+        /// </summary>
+        public InputList<Inputs.KafkaConnectKafkaConnectUserConfigCustomPluginArgs> CustomPlugins
+        {
+            get => _customPlugins ?? (_customPlugins = new InputList<Inputs.KafkaConnectKafkaConnectUserConfigCustomPluginArgs>());
+            set => _customPlugins = value;
+        }
+
         [Input("gcpAuthAllowedUrls")]
         private InputList<string>? _gcpAuthAllowedUrls;
 

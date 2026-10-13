@@ -34,10 +34,6 @@ import (
 //				Username:          pulumi.String("testuser"),
 //				PasswordWo:        pulumi.String("password123"),
 //				PasswordWoVersion: pulumi.Int(1),
-//				MysqlGrants: pulumi.StringArray{
-//					pulumi.String("SELECT"),
-//					pulumi.String("DELETE"),
-//				},
 //				ValkeyAclCategories: pulumi.StringArray{
 //					pulumi.String("+@write"),
 //					pulumi.String("+@keyspace"),
@@ -73,8 +69,6 @@ import (
 type ValkeyUser struct {
 	pulumi.CustomResourceState
 
-	// MySQL grants for the service user. Changing this property forces recreation of the resource.
-	MysqlGrants pulumi.StringArrayOutput `pulumi:"mysqlGrants"`
 	// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
 	Password pulumi.StringOutput `pulumi:"password"`
 	// The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. 'unknown' is reported when the hash is missing or uses an unrecognised format. The possible values are `md5`, `scram-sha-256` and `unknown`.
@@ -153,8 +147,6 @@ func GetValkeyUser(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ValkeyUser resources.
 type valkeyUserState struct {
-	// MySQL grants for the service user. Changing this property forces recreation of the resource.
-	MysqlGrants []string `pulumi:"mysqlGrants"`
 	// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
 	Password *string `pulumi:"password"`
 	// The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. 'unknown' is reported when the hash is missing or uses an unrecognised format. The possible values are `md5`, `scram-sha-256` and `unknown`.
@@ -184,8 +176,6 @@ type valkeyUserState struct {
 }
 
 type ValkeyUserState struct {
-	// MySQL grants for the service user. Changing this property forces recreation of the resource.
-	MysqlGrants pulumi.StringArrayInput
 	// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
 	Password pulumi.StringPtrInput
 	// The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. 'unknown' is reported when the hash is missing or uses an unrecognised format. The possible values are `md5`, `scram-sha-256` and `unknown`.
@@ -219,8 +209,6 @@ func (ValkeyUserState) ElementType() reflect.Type {
 }
 
 type valkeyUserArgs struct {
-	// MySQL grants for the service user. Changing this property forces recreation of the resource.
-	MysqlGrants []string `pulumi:"mysqlGrants"`
 	// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
 	Password *string `pulumi:"password"`
 	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
@@ -247,8 +235,6 @@ type valkeyUserArgs struct {
 
 // The set of arguments for constructing a ValkeyUser resource.
 type ValkeyUserArgs struct {
-	// MySQL grants for the service user. Changing this property forces recreation of the resource.
-	MysqlGrants pulumi.StringArrayInput
 	// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
 	Password pulumi.StringPtrInput
 	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
@@ -358,11 +344,6 @@ func (o ValkeyUserOutput) ToValkeyUserOutput() ValkeyUserOutput {
 
 func (o ValkeyUserOutput) ToValkeyUserOutputWithContext(ctx context.Context) ValkeyUserOutput {
 	return o
-}
-
-// MySQL grants for the service user. Changing this property forces recreation of the resource.
-func (o ValkeyUserOutput) MysqlGrants() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ValkeyUser) pulumi.StringArrayOutput { return v.MysqlGrants }).(pulumi.StringArrayOutput)
 }
 
 // The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.

@@ -125,6 +125,26 @@ public final class GetMySqlMysqlUserConfigMysql {
      */
     private @Nullable Integer innodbLogBufferSize;
     /**
+     * @return Percentage of dirty pages in the InnoDB buffer pool at which InnoDB starts flushing aggressively. Lowering it spreads write I/O more evenly and shortens crash recovery, at the cost of flushing pages that might have been modified again. Must stay at or above innodb_max_dirty_pages_pct_lwm. Default is 90. Example: `75`.
+     * 
+     */
+    private @Nullable Double innodbMaxDirtyPagesPct;
+    /**
+     * @return Percentage of dirty pages in the InnoDB buffer pool at which InnoDB starts pre-flushing, to keep the dirty page ratio from reaching innodb_max_dirty_pages_pct. 0 turns pre-flushing off. Cannot be set above innodb_max_dirty_pages_pct. Default is 10. Example: `10`.
+     * 
+     */
+    private @Nullable Double innodbMaxDirtyPagesPctLwm;
+    /**
+     * @return Number of outstanding transactions the InnoDB purge operation may fall behind by before INSERT, UPDATE and DELETE are delayed to let it catch up. The delay applies per row and grows with the lag, and it is capped by innodb_max_purge_lag_delay, which has to be set as well for this option to have any effect. Default is 0, which never delays anything.
+     * 
+     */
+    private @Nullable Integer innodbMaxPurgeLag;
+    /**
+     * @return Cap in microseconds on the per-row delay innodbMaxPurgeLag applies to INSERT, UPDATE and DELETE. MySQL clamps the delay to this value unconditionally, so while this is 0 no delay is ever applied and innodbMaxPurgeLag on its own does nothing. Both options must be non-zero for either to take effect. Default is 0. Example: `10000`.
+     * 
+     */
+    private @Nullable Integer innodbMaxPurgeLagDelay;
+    /**
      * @return The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
      * 
      */
@@ -446,6 +466,34 @@ public final class GetMySqlMysqlUserConfigMysql {
         return Optional.ofNullable(this.innodbLogBufferSize);
     }
     /**
+     * @return Percentage of dirty pages in the InnoDB buffer pool at which InnoDB starts flushing aggressively. Lowering it spreads write I/O more evenly and shortens crash recovery, at the cost of flushing pages that might have been modified again. Must stay at or above innodb_max_dirty_pages_pct_lwm. Default is 90. Example: `75`.
+     * 
+     */
+    public Optional<Double> innodbMaxDirtyPagesPct() {
+        return Optional.ofNullable(this.innodbMaxDirtyPagesPct);
+    }
+    /**
+     * @return Percentage of dirty pages in the InnoDB buffer pool at which InnoDB starts pre-flushing, to keep the dirty page ratio from reaching innodb_max_dirty_pages_pct. 0 turns pre-flushing off. Cannot be set above innodb_max_dirty_pages_pct. Default is 10. Example: `10`.
+     * 
+     */
+    public Optional<Double> innodbMaxDirtyPagesPctLwm() {
+        return Optional.ofNullable(this.innodbMaxDirtyPagesPctLwm);
+    }
+    /**
+     * @return Number of outstanding transactions the InnoDB purge operation may fall behind by before INSERT, UPDATE and DELETE are delayed to let it catch up. The delay applies per row and grows with the lag, and it is capped by innodb_max_purge_lag_delay, which has to be set as well for this option to have any effect. Default is 0, which never delays anything.
+     * 
+     */
+    public Optional<Integer> innodbMaxPurgeLag() {
+        return Optional.ofNullable(this.innodbMaxPurgeLag);
+    }
+    /**
+     * @return Cap in microseconds on the per-row delay innodbMaxPurgeLag applies to INSERT, UPDATE and DELETE. MySQL clamps the delay to this value unconditionally, so while this is 0 no delay is ever applied and innodbMaxPurgeLag on its own does nothing. Both options must be non-zero for either to take effect. Default is 0. Example: `10000`.
+     * 
+     */
+    public Optional<Integer> innodbMaxPurgeLagDelay() {
+        return Optional.ofNullable(this.innodbMaxPurgeLagDelay);
+    }
+    /**
      * @return The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
      * 
      */
@@ -708,6 +756,10 @@ public final class GetMySqlMysqlUserConfigMysql {
         private @Nullable Integer innodbIoCapacityMax;
         private @Nullable Integer innodbLockWaitTimeout;
         private @Nullable Integer innodbLogBufferSize;
+        private @Nullable Double innodbMaxDirtyPagesPct;
+        private @Nullable Double innodbMaxDirtyPagesPctLwm;
+        private @Nullable Integer innodbMaxPurgeLag;
+        private @Nullable Integer innodbMaxPurgeLagDelay;
         private @Nullable Integer innodbOnlineAlterLogMaxSize;
         private @Nullable Boolean innodbOptimizeFulltextOnly;
         private @Nullable Boolean innodbPrintAllDeadlocks;
@@ -766,6 +818,10 @@ public final class GetMySqlMysqlUserConfigMysql {
     	      this.innodbIoCapacityMax = defaults.innodbIoCapacityMax;
     	      this.innodbLockWaitTimeout = defaults.innodbLockWaitTimeout;
     	      this.innodbLogBufferSize = defaults.innodbLogBufferSize;
+    	      this.innodbMaxDirtyPagesPct = defaults.innodbMaxDirtyPagesPct;
+    	      this.innodbMaxDirtyPagesPctLwm = defaults.innodbMaxDirtyPagesPctLwm;
+    	      this.innodbMaxPurgeLag = defaults.innodbMaxPurgeLag;
+    	      this.innodbMaxPurgeLagDelay = defaults.innodbMaxPurgeLagDelay;
     	      this.innodbOnlineAlterLogMaxSize = defaults.innodbOnlineAlterLogMaxSize;
     	      this.innodbOptimizeFulltextOnly = defaults.innodbOptimizeFulltextOnly;
     	      this.innodbPrintAllDeadlocks = defaults.innodbPrintAllDeadlocks;
@@ -931,6 +987,30 @@ public final class GetMySqlMysqlUserConfigMysql {
         public Builder innodbLogBufferSize(@Nullable Integer innodbLogBufferSize) {
 
             this.innodbLogBufferSize = innodbLogBufferSize;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder innodbMaxDirtyPagesPct(@Nullable Double innodbMaxDirtyPagesPct) {
+
+            this.innodbMaxDirtyPagesPct = innodbMaxDirtyPagesPct;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder innodbMaxDirtyPagesPctLwm(@Nullable Double innodbMaxDirtyPagesPctLwm) {
+
+            this.innodbMaxDirtyPagesPctLwm = innodbMaxDirtyPagesPctLwm;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder innodbMaxPurgeLag(@Nullable Integer innodbMaxPurgeLag) {
+
+            this.innodbMaxPurgeLag = innodbMaxPurgeLag;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder innodbMaxPurgeLagDelay(@Nullable Integer innodbMaxPurgeLagDelay) {
+
+            this.innodbMaxPurgeLagDelay = innodbMaxPurgeLagDelay;
             return this;
         }
         @CustomType.Setter
@@ -1155,6 +1235,10 @@ public final class GetMySqlMysqlUserConfigMysql {
             _resultValue.innodbIoCapacityMax = innodbIoCapacityMax;
             _resultValue.innodbLockWaitTimeout = innodbLockWaitTimeout;
             _resultValue.innodbLogBufferSize = innodbLogBufferSize;
+            _resultValue.innodbMaxDirtyPagesPct = innodbMaxDirtyPagesPct;
+            _resultValue.innodbMaxDirtyPagesPctLwm = innodbMaxDirtyPagesPctLwm;
+            _resultValue.innodbMaxPurgeLag = innodbMaxPurgeLag;
+            _resultValue.innodbMaxPurgeLagDelay = innodbMaxPurgeLagDelay;
             _resultValue.innodbOnlineAlterLogMaxSize = innodbOnlineAlterLogMaxSize;
             _resultValue.innodbOptimizeFulltextOnly = innodbOptimizeFulltextOnly;
             _resultValue.innodbPrintAllDeadlocks = innodbPrintAllDeadlocks;

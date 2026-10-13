@@ -38,6 +38,7 @@ namespace Pulumi.Aiven
     ///             "unclean.leader.election.enable",
     ///             "min.insync.replicas",
     ///         },
+    ///         DisklessAzEnabled = true,
     ///         EmitBackwardHeartbeatsEnabled = false,
     ///         EmitHeartbeatsEnabled = false,
     ///         ExactlyOnceDeliveryEnabled = false,
@@ -77,6 +78,12 @@ namespace Pulumi.Aiven
         /// </summary>
         [Output("configPropertiesExcludes")]
         public Output<ImmutableArray<string>> ConfigPropertiesExcludes { get; private set; } = null!;
+
+        /// <summary>
+        /// Adds a diskless_az= hint to the replication flow's Kafka client.id so that diskless Kafka clusters serve the flow from brokers in the same availability zone.
+        /// </summary>
+        [Output("disklessAzEnabled")]
+        public Output<bool?> DisklessAzEnabled { get; private set; } = null!;
 
         /// <summary>
         /// Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `False`.
@@ -242,6 +249,12 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
+        /// Adds a diskless_az= hint to the replication flow's Kafka client.id so that diskless Kafka clusters serve the flow from brokers in the same availability zone.
+        /// </summary>
+        [Input("disklessAzEnabled")]
+        public Input<bool>? DisklessAzEnabled { get; set; }
+
+        /// <summary>
         /// Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `False`.
         /// </summary>
         [Input("emitBackwardHeartbeatsEnabled")]
@@ -377,6 +390,12 @@ namespace Pulumi.Aiven
             get => _configPropertiesExcludes ?? (_configPropertiesExcludes = new InputList<string>());
             set => _configPropertiesExcludes = value;
         }
+
+        /// <summary>
+        /// Adds a diskless_az= hint to the replication flow's Kafka client.id so that diskless Kafka clusters serve the flow from brokers in the same availability zone.
+        /// </summary>
+        [Input("disklessAzEnabled")]
+        public Input<bool>? DisklessAzEnabled { get; set; }
 
         /// <summary>
         /// Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `False`.

@@ -70,6 +70,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? RecoveryBasebackupName;
         /// <summary>
+        /// Number of replicas per shard in the Valkey cluster. Only applies to cluster plans. Example: `1`.
+        /// </summary>
+        public readonly int? Replicas;
+        /// <summary>
         /// Store logs for the service so that they are available in the HTTP API and console.
         /// </summary>
         public readonly bool? ServiceLog;
@@ -77,6 +81,10 @@ namespace Pulumi.Aiven.Outputs
         /// Name of another service to fork from. This has effect only when a new service is being created. Example: `Anotherservicename`.
         /// </summary>
         public readonly string? ServiceToForkFrom;
+        /// <summary>
+        /// Number of shards (primaries) in the Valkey cluster. Required for cluster plans. Example: `3`.
+        /// </summary>
+        public readonly int? ShardCount;
         /// <summary>
         /// Use static public IP addresses.
         /// </summary>
@@ -176,9 +184,13 @@ namespace Pulumi.Aiven.Outputs
 
             string? recoveryBasebackupName,
 
+            int? replicas,
+
             bool? serviceLog,
 
             string? serviceToForkFrom,
+
+            int? shardCount,
 
             bool? staticIps,
 
@@ -228,8 +240,10 @@ namespace Pulumi.Aiven.Outputs
             ProjectToForkFrom = projectToForkFrom;
             PublicAccess = publicAccess;
             RecoveryBasebackupName = recoveryBasebackupName;
+            Replicas = replicas;
             ServiceLog = serviceLog;
             ServiceToForkFrom = serviceToForkFrom;
+            ShardCount = shardCount;
             StaticIps = staticIps;
             ValkeyAclChannelsDefault = valkeyAclChannelsDefault;
             ValkeyActiveDefragIgnoreBytes = valkeyActiveDefragIgnoreBytes;

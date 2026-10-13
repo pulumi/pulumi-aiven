@@ -13,6 +13,381 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarks struct {
+	// The flood stage watermark for disk usage. Example: `95`.
+	FloodStage int `pulumi:"floodStage"`
+	// The high watermark for disk usage. Example: `90`.
+	High int `pulumi:"high"`
+	// The low watermark for disk usage. Example: `85`.
+	Low int `pulumi:"low"`
+}
+
+// GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksInput is an input type that accepts GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksArgs and GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutput values.
+// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksInput` via:
+//
+//	GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksArgs{...}
+type GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutput() GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutput
+	ToGetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutput
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksArgs struct {
+	// The flood stage watermark for disk usage. Example: `95`.
+	FloodStage pulumi.IntInput `pulumi:"floodStage"`
+	// The high watermark for disk usage. Example: `90`.
+	High pulumi.IntInput `pulumi:"high"`
+	// The low watermark for disk usage. Example: `85`.
+	Low pulumi.IntInput `pulumi:"low"`
+}
+
+func (GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarks)(nil)).Elem()
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksArgs) ToGetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutput() GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksArgs) ToGetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutput)
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksArgs) ToGetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksArgs) ToGetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutput).ToGetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutputWithContext(ctx)
+}
+
+// GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrInput is an input type that accepts GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksArgs, GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtr and GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput values.
+// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrInput` via:
+//
+//	        GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput
+	ToGetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput
+}
+
+type getOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrType GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksArgs
+
+func GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtr(v *GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksArgs) GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrInput {
+	return (*getOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrType)(v)
+}
+
+func (*getOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarks)(nil)).Elem()
+}
+
+func (i *getOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrType) ToGetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutputWithContext(context.Background())
+}
+
+func (i *getOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrType) ToGetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarks)(nil)).Elem()
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutput) ToGetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutput() GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutput) ToGetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutput) ToGetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput {
+	return o.ToGetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutputWithContext(context.Background())
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutput) ToGetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarks) *GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarks {
+		return &v
+	}).(GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput)
+}
+
+// The flood stage watermark for disk usage. Example: `95`.
+func (o GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutput) FloodStage() pulumi.IntOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarks) int { return v.FloodStage }).(pulumi.IntOutput)
+}
+
+// The high watermark for disk usage. Example: `90`.
+func (o GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutput) High() pulumi.IntOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarks) int { return v.High }).(pulumi.IntOutput)
+}
+
+// The low watermark for disk usage. Example: `85`.
+func (o GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutput) Low() pulumi.IntOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarks) int { return v.Low }).(pulumi.IntOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarks)(nil)).Elem()
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput) ToGetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput) ToGetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput) Elem() GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarks) GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarks {
+		if v != nil {
+			return *v
+		}
+		var ret GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarks
+		return ret
+	}).(GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutput)
+}
+
+// The flood stage watermark for disk usage. Example: `95`.
+func (o GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput) FloodStage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarks) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.FloodStage
+	}).(pulumi.IntPtrOutput)
+}
+
+// The high watermark for disk usage. Example: `90`.
+func (o GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput) High() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarks) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.High
+	}).(pulumi.IntPtrOutput)
+}
+
+// The low watermark for disk usage. Example: `85`.
+func (o GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput) Low() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarks) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Low
+	}).(pulumi.IntPtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchRemoteStore struct {
+	// The variance factor that is used together with the moving average to calculate the dynamic bytes lag threshold for activating remote segment backpressure. Defaults to 10.
+	SegmentPressureBytesLagVarianceFactor *float64 `pulumi:"segmentPressureBytesLagVarianceFactor"`
+	// The minimum consecutive failure count for activating remote segment backpressure. Defaults to 5.
+	SegmentPressureConsecutiveFailuresLimit *int `pulumi:"segmentPressureConsecutiveFailuresLimit"`
+	// Enables remote segment backpressure. Default is `true`.
+	SegmentPressureEnabled *bool `pulumi:"segmentPressureEnabled"`
+	// The variance factor that is used together with the moving average to calculate the dynamic time lag threshold for activating remote segment backpressure. Defaults to 10.
+	SegmentPressureTimeLagVarianceFactor *float64 `pulumi:"segmentPressureTimeLagVarianceFactor"`
+}
+
+// GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreInput is an input type that accepts GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreArgs and GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutput values.
+// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreInput` via:
+//
+//	GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreArgs{...}
+type GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutput() GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutput
+	ToGetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutput
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreArgs struct {
+	// The variance factor that is used together with the moving average to calculate the dynamic bytes lag threshold for activating remote segment backpressure. Defaults to 10.
+	SegmentPressureBytesLagVarianceFactor pulumi.Float64PtrInput `pulumi:"segmentPressureBytesLagVarianceFactor"`
+	// The minimum consecutive failure count for activating remote segment backpressure. Defaults to 5.
+	SegmentPressureConsecutiveFailuresLimit pulumi.IntPtrInput `pulumi:"segmentPressureConsecutiveFailuresLimit"`
+	// Enables remote segment backpressure. Default is `true`.
+	SegmentPressureEnabled pulumi.BoolPtrInput `pulumi:"segmentPressureEnabled"`
+	// The variance factor that is used together with the moving average to calculate the dynamic time lag threshold for activating remote segment backpressure. Defaults to 10.
+	SegmentPressureTimeLagVarianceFactor pulumi.Float64PtrInput `pulumi:"segmentPressureTimeLagVarianceFactor"`
+}
+
+func (GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchRemoteStore)(nil)).Elem()
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreArgs) ToGetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutput() GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreArgs) ToGetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutput)
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreArgs) ToGetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput() GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreArgs) ToGetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutput).ToGetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutputWithContext(ctx)
+}
+
+// GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrInput is an input type that accepts GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreArgs, GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtr and GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput values.
+// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrInput` via:
+//
+//	        GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput() GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput
+	ToGetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput
+}
+
+type getOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrType GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreArgs
+
+func GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtr(v *GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreArgs) GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrInput {
+	return (*getOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrType)(v)
+}
+
+func (*getOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigOpensearchRemoteStore)(nil)).Elem()
+}
+
+func (i *getOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrType) ToGetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput() GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutputWithContext(context.Background())
+}
+
+func (i *getOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrType) ToGetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchRemoteStore)(nil)).Elem()
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutput) ToGetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutput() GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutput) ToGetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutput) ToGetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput() GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput {
+	return o.ToGetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutputWithContext(context.Background())
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutput) ToGetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetOpenSearchOpensearchUserConfigOpensearchRemoteStore) *GetOpenSearchOpensearchUserConfigOpensearchRemoteStore {
+		return &v
+	}).(GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput)
+}
+
+// The variance factor that is used together with the moving average to calculate the dynamic bytes lag threshold for activating remote segment backpressure. Defaults to 10.
+func (o GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutput) SegmentPressureBytesLagVarianceFactor() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchRemoteStore) *float64 {
+		return v.SegmentPressureBytesLagVarianceFactor
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The minimum consecutive failure count for activating remote segment backpressure. Defaults to 5.
+func (o GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutput) SegmentPressureConsecutiveFailuresLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchRemoteStore) *int {
+		return v.SegmentPressureConsecutiveFailuresLimit
+	}).(pulumi.IntPtrOutput)
+}
+
+// Enables remote segment backpressure. Default is `true`.
+func (o GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutput) SegmentPressureEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchRemoteStore) *bool { return v.SegmentPressureEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The variance factor that is used together with the moving average to calculate the dynamic time lag threshold for activating remote segment backpressure. Defaults to 10.
+func (o GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutput) SegmentPressureTimeLagVarianceFactor() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchRemoteStore) *float64 {
+		return v.SegmentPressureTimeLagVarianceFactor
+	}).(pulumi.Float64PtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigOpensearchRemoteStore)(nil)).Elem()
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput) ToGetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput() GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput) ToGetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput) Elem() GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchRemoteStore) GetOpenSearchOpensearchUserConfigOpensearchRemoteStore {
+		if v != nil {
+			return *v
+		}
+		var ret GetOpenSearchOpensearchUserConfigOpensearchRemoteStore
+		return ret
+	}).(GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutput)
+}
+
+// The variance factor that is used together with the moving average to calculate the dynamic bytes lag threshold for activating remote segment backpressure. Defaults to 10.
+func (o GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput) SegmentPressureBytesLagVarianceFactor() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchRemoteStore) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.SegmentPressureBytesLagVarianceFactor
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The minimum consecutive failure count for activating remote segment backpressure. Defaults to 5.
+func (o GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput) SegmentPressureConsecutiveFailuresLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchRemoteStore) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SegmentPressureConsecutiveFailuresLimit
+	}).(pulumi.IntPtrOutput)
+}
+
+// Enables remote segment backpressure. Default is `true`.
+func (o GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput) SegmentPressureEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchRemoteStore) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SegmentPressureEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The variance factor that is used together with the moving average to calculate the dynamic time lag threshold for activating remote segment backpressure. Defaults to 10.
+func (o GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput) SegmentPressureTimeLagVarianceFactor() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchRemoteStore) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.SegmentPressureTimeLagVarianceFactor
+	}).(pulumi.Float64PtrOutput)
+}
+
 type GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressure struct {
 	// Enum: `disabled`, `enforced`, `monitorOnly`. The search backpressure mode. Valid values are monitor_only, enforced, or disabled. Default is monitor_only.
 	Mode *string `pulumi:"mode"`
@@ -8838,7 +9213,7 @@ type GetPgPgUserConfig struct {
 	SynchronousReplication *string `pulumi:"synchronousReplication"`
 	// System-wide settings for the timescaledb extension
 	Timescaledb *GetPgPgUserConfigTimescaledb `pulumi:"timescaledb"`
-	// Enum: `aiven`, `timescale`. Variant of the PostgreSQL service, may affect the features that are exposed by default.
+	// Enum: `aiven`, `pgLake`, `timescale`. Variant of the PostgreSQL service, may affect the features that are exposed by default.
 	Variant *string `pulumi:"variant"`
 	// Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. The default is 1MB + 0.075% of total RAM (up to 32MB). Example: `4`.
 	WorkMem *int `pulumi:"workMem"`
@@ -8931,7 +9306,7 @@ type GetPgPgUserConfigArgs struct {
 	SynchronousReplication pulumi.StringPtrInput `pulumi:"synchronousReplication"`
 	// System-wide settings for the timescaledb extension
 	Timescaledb GetPgPgUserConfigTimescaledbPtrInput `pulumi:"timescaledb"`
-	// Enum: `aiven`, `timescale`. Variant of the PostgreSQL service, may affect the features that are exposed by default.
+	// Enum: `aiven`, `pgLake`, `timescale`. Variant of the PostgreSQL service, may affect the features that are exposed by default.
 	Variant pulumi.StringPtrInput `pulumi:"variant"`
 	// Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. The default is 1MB + 0.075% of total RAM (up to 32MB). Example: `4`.
 	WorkMem pulumi.IntPtrInput `pulumi:"workMem"`
@@ -9171,7 +9546,7 @@ func (o GetPgPgUserConfigOutput) Timescaledb() GetPgPgUserConfigTimescaledbPtrOu
 	return o.ApplyT(func(v GetPgPgUserConfig) *GetPgPgUserConfigTimescaledb { return v.Timescaledb }).(GetPgPgUserConfigTimescaledbPtrOutput)
 }
 
-// Enum: `aiven`, `timescale`. Variant of the PostgreSQL service, may affect the features that are exposed by default.
+// Enum: `aiven`, `pgLake`, `timescale`. Variant of the PostgreSQL service, may affect the features that are exposed by default.
 func (o GetPgPgUserConfigOutput) Variant() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPgPgUserConfig) *string { return v.Variant }).(pulumi.StringPtrOutput)
 }
@@ -14732,6 +15107,8 @@ type GetServiceIntegrationDatadogUserConfig struct {
 	DatadogDbmEnabled *bool `pulumi:"datadogDbmEnabled"`
 	// Enable collection of PL/pgSQL function metrics from pg_stat_user_functions. Requires `trackFunctions` to be set to `pl` or `all` in the service configuration.
 	DatadogFunctionMetricsEnabled *bool `pulumi:"datadogFunctionMetricsEnabled"`
+	// Database the Datadog PostgreSQL check connects to. Relation metrics are collected only from this database. The main service database is used when unset. Database Monitoring collects query statistics from every database regardless of this option. Example: `defaultdb`.
+	DatadogPgDbname *string `pulumi:"datadogPgDbname"`
 	// Relations to collect PostgreSQL relation metrics for, such as table size, index statistics, row counts, vacuum ages and locks. No relation metrics are collected when unset
 	DatadogPgRelations []GetServiceIntegrationDatadogUserConfigDatadogPgRelation `pulumi:"datadogPgRelations"`
 	// Enable Datadog PgBouncer Metric Tracking.
@@ -14774,6 +15151,8 @@ type GetServiceIntegrationDatadogUserConfigArgs struct {
 	DatadogDbmEnabled pulumi.BoolPtrInput `pulumi:"datadogDbmEnabled"`
 	// Enable collection of PL/pgSQL function metrics from pg_stat_user_functions. Requires `trackFunctions` to be set to `pl` or `all` in the service configuration.
 	DatadogFunctionMetricsEnabled pulumi.BoolPtrInput `pulumi:"datadogFunctionMetricsEnabled"`
+	// Database the Datadog PostgreSQL check connects to. Relation metrics are collected only from this database. The main service database is used when unset. Database Monitoring collects query statistics from every database regardless of this option. Example: `defaultdb`.
+	DatadogPgDbname pulumi.StringPtrInput `pulumi:"datadogPgDbname"`
 	// Relations to collect PostgreSQL relation metrics for, such as table size, index statistics, row counts, vacuum ages and locks. No relation metrics are collected when unset
 	DatadogPgRelations GetServiceIntegrationDatadogUserConfigDatadogPgRelationArrayInput `pulumi:"datadogPgRelations"`
 	// Enable Datadog PgBouncer Metric Tracking.
@@ -14859,6 +15238,11 @@ func (o GetServiceIntegrationDatadogUserConfigOutput) DatadogDbmEnabled() pulumi
 // Enable collection of PL/pgSQL function metrics from pg_stat_user_functions. Requires `trackFunctions` to be set to `pl` or `all` in the service configuration.
 func (o GetServiceIntegrationDatadogUserConfigOutput) DatadogFunctionMetricsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetServiceIntegrationDatadogUserConfig) *bool { return v.DatadogFunctionMetricsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Database the Datadog PostgreSQL check connects to. Relation metrics are collected only from this database. The main service database is used when unset. Database Monitoring collects query statistics from every database regardless of this option. Example: `defaultdb`.
+func (o GetServiceIntegrationDatadogUserConfigOutput) DatadogPgDbname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationDatadogUserConfig) *string { return v.DatadogPgDbname }).(pulumi.StringPtrOutput)
 }
 
 // Relations to collect PostgreSQL relation metrics for, such as table size, index statistics, row counts, vacuum ages and locks. No relation metrics are collected when unset
@@ -25999,10 +26383,14 @@ type GetValkeyValkeyUserConfig struct {
 	PublicAccess *GetValkeyValkeyUserConfigPublicAccess `pulumi:"publicAccess"`
 	// Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
 	RecoveryBasebackupName *string `pulumi:"recoveryBasebackupName"`
+	// Number of replicas per shard in the Valkey cluster. Only applies to cluster plans. Example: `1`.
+	Replicas *int `pulumi:"replicas"`
 	// Store logs for the service so that they are available in the HTTP API and console.
 	ServiceLog *bool `pulumi:"serviceLog"`
 	// Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
 	ServiceToForkFrom *string `pulumi:"serviceToForkFrom"`
+	// Number of shards (primaries) in the Valkey cluster. Required for cluster plans. Example: `3`.
+	ShardCount *int `pulumi:"shardCount"`
 	// Use static public IP addresses.
 	StaticIps *bool `pulumi:"staticIps"`
 	// Enum: `allchannels`, `resetchannels`. Determines default pub/sub channels' ACL for new users if ACL is not supplied. When this option is not defined, allChannels is assumed to keep backward compatibility. This option doesn't affect Valkey configuration acl-pubsub-default.
@@ -26081,10 +26469,14 @@ type GetValkeyValkeyUserConfigArgs struct {
 	PublicAccess GetValkeyValkeyUserConfigPublicAccessPtrInput `pulumi:"publicAccess"`
 	// Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
 	RecoveryBasebackupName pulumi.StringPtrInput `pulumi:"recoveryBasebackupName"`
+	// Number of replicas per shard in the Valkey cluster. Only applies to cluster plans. Example: `1`.
+	Replicas pulumi.IntPtrInput `pulumi:"replicas"`
 	// Store logs for the service so that they are available in the HTTP API and console.
 	ServiceLog pulumi.BoolPtrInput `pulumi:"serviceLog"`
 	// Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
 	ServiceToForkFrom pulumi.StringPtrInput `pulumi:"serviceToForkFrom"`
+	// Number of shards (primaries) in the Valkey cluster. Required for cluster plans. Example: `3`.
+	ShardCount pulumi.IntPtrInput `pulumi:"shardCount"`
 	// Use static public IP addresses.
 	StaticIps pulumi.BoolPtrInput `pulumi:"staticIps"`
 	// Enum: `allchannels`, `resetchannels`. Determines default pub/sub channels' ACL for new users if ACL is not supplied. When this option is not defined, allChannels is assumed to keep backward compatibility. This option doesn't affect Valkey configuration acl-pubsub-default.
@@ -26246,6 +26638,11 @@ func (o GetValkeyValkeyUserConfigOutput) RecoveryBasebackupName() pulumi.StringP
 	return o.ApplyT(func(v GetValkeyValkeyUserConfig) *string { return v.RecoveryBasebackupName }).(pulumi.StringPtrOutput)
 }
 
+// Number of replicas per shard in the Valkey cluster. Only applies to cluster plans. Example: `1`.
+func (o GetValkeyValkeyUserConfigOutput) Replicas() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetValkeyValkeyUserConfig) *int { return v.Replicas }).(pulumi.IntPtrOutput)
+}
+
 // Store logs for the service so that they are available in the HTTP API and console.
 func (o GetValkeyValkeyUserConfigOutput) ServiceLog() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetValkeyValkeyUserConfig) *bool { return v.ServiceLog }).(pulumi.BoolPtrOutput)
@@ -26254,6 +26651,11 @@ func (o GetValkeyValkeyUserConfigOutput) ServiceLog() pulumi.BoolPtrOutput {
 // Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
 func (o GetValkeyValkeyUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetValkeyValkeyUserConfig) *string { return v.ServiceToForkFrom }).(pulumi.StringPtrOutput)
+}
+
+// Number of shards (primaries) in the Valkey cluster. Required for cluster plans. Example: `3`.
+func (o GetValkeyValkeyUserConfigOutput) ShardCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetValkeyValkeyUserConfig) *int { return v.ShardCount }).(pulumi.IntPtrOutput)
 }
 
 // Use static public IP addresses.
@@ -27225,6 +27627,10 @@ func (o GetValkeyValkeyUserConfigPublicAccessPtrOutput) Valkey() pulumi.BoolPtrO
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressArgs{})
@@ -27553,6 +27959,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPrivatelinkAccessPtrInput)(nil)).Elem(), GetValkeyValkeyUserConfigPrivatelinkAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPublicAccessInput)(nil)).Elem(), GetValkeyValkeyUserConfigPublicAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPublicAccessPtrInput)(nil)).Elem(), GetValkeyValkeyUserConfigPublicAccessArgs{})
+	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressurePtrOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchSearchBackpressureNodeDuressOutput{})

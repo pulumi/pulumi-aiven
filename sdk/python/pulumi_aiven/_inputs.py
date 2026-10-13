@@ -187,6 +187,8 @@ __all__ = [
     'KafkaConnectComponentArgsDict',
     'KafkaConnectKafkaConnectUserConfigArgs',
     'KafkaConnectKafkaConnectUserConfigArgsDict',
+    'KafkaConnectKafkaConnectUserConfigCustomPluginArgs',
+    'KafkaConnectKafkaConnectUserConfigCustomPluginArgsDict',
     'KafkaConnectKafkaConnectUserConfigIpFilterObjectArgs',
     'KafkaConnectKafkaConnectUserConfigIpFilterObjectArgsDict',
     'KafkaConnectKafkaConnectUserConfigKafkaConnectArgs',
@@ -10430,6 +10432,10 @@ class KafkaConnectKafkaConnectUserConfigArgsDict(TypedDict):
     """
     Additional Cloud Regions for Backup Replication.
     """
+    custom_plugins: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['KafkaConnectKafkaConnectUserConfigCustomPluginArgsDict']]]]]
+    """
+    Install custom plugins uploaded via the custom file service
+    """
     gcp_auth_allowed_urls: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Allow-list of HTTPS URLs used to validate GCP credential_source requests for Kafka Connect.
@@ -10491,6 +10497,7 @@ class KafkaConnectKafkaConnectUserConfigArgsDict(TypedDict):
 class KafkaConnectKafkaConnectUserConfigArgs:
     def __init__(__self__, *,
                  additional_backup_regions: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_plugins: pulumi.Input[Optional[Sequence[pulumi.Input['KafkaConnectKafkaConnectUserConfigCustomPluginArgs']]]] = None,
                  gcp_auth_allowed_urls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  ip_filter_objects: pulumi.Input[Optional[Sequence[pulumi.Input['KafkaConnectKafkaConnectUserConfigIpFilterObjectArgs']]]] = None,
                  ip_filter_strings: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -10507,6 +10514,7 @@ class KafkaConnectKafkaConnectUserConfigArgs:
                  static_ips: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] additional_backup_regions: Additional Cloud Regions for Backup Replication.
+        :param pulumi.Input[Sequence[pulumi.Input['KafkaConnectKafkaConnectUserConfigCustomPluginArgs']]] custom_plugins: Install custom plugins uploaded via the custom file service
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] gcp_auth_allowed_urls: Allow-list of HTTPS URLs used to validate GCP credential_source requests for Kafka Connect.
         :param pulumi.Input[Sequence[pulumi.Input['KafkaConnectKafkaConnectUserConfigIpFilterObjectArgs']]] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
@@ -10527,6 +10535,8 @@ class KafkaConnectKafkaConnectUserConfigArgs:
             pulumi.log.warn("""additional_backup_regions is deprecated: This property is deprecated.""")
         if additional_backup_regions is not None:
             pulumi.set(__self__, "additional_backup_regions", additional_backup_regions)
+        if custom_plugins is not None:
+            pulumi.set(__self__, "custom_plugins", custom_plugins)
         if gcp_auth_allowed_urls is not None:
             pulumi.set(__self__, "gcp_auth_allowed_urls", gcp_auth_allowed_urls)
         if ip_filter_objects is not None:
@@ -10571,6 +10581,18 @@ class KafkaConnectKafkaConnectUserConfigArgs:
     @additional_backup_regions.setter
     def additional_backup_regions(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "additional_backup_regions", value)
+
+    @_builtins.property
+    @pulumi.getter(name="customPlugins")
+    def custom_plugins(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['KafkaConnectKafkaConnectUserConfigCustomPluginArgs']]]]:
+        """
+        Install custom plugins uploaded via the custom file service
+        """
+        return pulumi.get(self, "custom_plugins")
+
+    @custom_plugins.setter
+    def custom_plugins(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['KafkaConnectKafkaConnectUserConfigCustomPluginArgs']]]]):
+        pulumi.set(self, "custom_plugins", value)
 
     @_builtins.property
     @pulumi.getter(name="gcpAuthAllowedUrls")
@@ -10740,6 +10762,53 @@ class KafkaConnectKafkaConnectUserConfigArgs:
     @static_ips.setter
     def static_ips(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "static_ips", value)
+
+
+class KafkaConnectKafkaConnectUserConfigCustomPluginArgsDict(TypedDict):
+    plugin_name: pulumi.Input[_builtins.str]
+    """
+    The name of the custom plugin as specified during upload. Example: `my-custom-connector`.
+    """
+    plugin_version: pulumi.Input[_builtins.str]
+    """
+    The version to install. Use a semver version (e.g. `1.0.0`) or `latest` to always use the most recent version. Example: `latest`.
+    """
+
+@pulumi.input_type
+class KafkaConnectKafkaConnectUserConfigCustomPluginArgs:
+    def __init__(__self__, *,
+                 plugin_name: pulumi.Input[_builtins.str],
+                 plugin_version: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] plugin_name: The name of the custom plugin as specified during upload. Example: `my-custom-connector`.
+        :param pulumi.Input[_builtins.str] plugin_version: The version to install. Use a semver version (e.g. `1.0.0`) or `latest` to always use the most recent version. Example: `latest`.
+        """
+        pulumi.set(__self__, "plugin_name", plugin_name)
+        pulumi.set(__self__, "plugin_version", plugin_version)
+
+    @_builtins.property
+    @pulumi.getter(name="pluginName")
+    def plugin_name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The name of the custom plugin as specified during upload. Example: `my-custom-connector`.
+        """
+        return pulumi.get(self, "plugin_name")
+
+    @plugin_name.setter
+    def plugin_name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "plugin_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pluginVersion")
+    def plugin_version(self) -> pulumi.Input[_builtins.str]:
+        """
+        The version to install. Use a semver version (e.g. `1.0.0`) or `latest` to always use the most recent version. Example: `latest`.
+        """
+        return pulumi.get(self, "plugin_version")
+
+    @plugin_version.setter
+    def plugin_version(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "plugin_version", value)
 
 
 class KafkaConnectKafkaConnectUserConfigIpFilterObjectArgsDict(TypedDict):
@@ -12186,11 +12255,11 @@ class KafkaKafkaUserConfigArgsDict(TypedDict):
     """
     kafka_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, `4.1`, `4.2`, and newer. Kafka major version.
+    Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, `4.1`, `4.2`, `4.3`, and newer. Kafka major version.
     """
     karapace_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    Enum: `6.2.1`, `6.2.2`, `6.2.3`, and newer. Select a Karapace version for this service, or select Latest to use the latest available version automatically. New versions become available after installation during a maintenance update.
+    Enum: `6.2.1`, `6.2.2`, `6.2.3`, `6.2.4`, and newer. Select a Karapace version for this service, or select Latest to use the latest available version automatically. New versions become available after installation during a maintenance update.
     """
     letsencrypt_sasl: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
@@ -12310,8 +12379,8 @@ class KafkaKafkaUserConfigArgs:
         :param pulumi.Input[_builtins.bool] kafka_rest_authorization: Enable authorization in Kafka-REST service.
         :param pulumi.Input['KafkaKafkaUserConfigKafkaRestConfigArgs'] kafka_rest_config: Kafka REST configuration
         :param pulumi.Input['KafkaKafkaUserConfigKafkaSaslMechanismsArgs'] kafka_sasl_mechanisms: Kafka SASL mechanisms
-        :param pulumi.Input[_builtins.str] kafka_version: Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, `4.1`, `4.2`, and newer. Kafka major version.
-        :param pulumi.Input[_builtins.str] karapace_version: Enum: `6.2.1`, `6.2.2`, `6.2.3`, and newer. Select a Karapace version for this service, or select Latest to use the latest available version automatically. New versions become available after installation during a maintenance update.
+        :param pulumi.Input[_builtins.str] kafka_version: Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, `4.1`, `4.2`, `4.3`, and newer. Kafka major version.
+        :param pulumi.Input[_builtins.str] karapace_version: Enum: `6.2.1`, `6.2.2`, `6.2.3`, `6.2.4`, and newer. Select a Karapace version for this service, or select Latest to use the latest available version automatically. New versions become available after installation during a maintenance update.
         :param pulumi.Input[_builtins.bool] letsencrypt_sasl: Use a Let's Encrypt certificate authority (CA) for Kafka SASL authentication. (Default: False).
         :param pulumi.Input[_builtins.bool] letsencrypt_sasl_privatelink: Use a Let's Encrypt certificate authority (CA) for Kafka SASL authentication via Privatelink. (Default: False).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] preferred_zones: List of preferred zone IDs for service node placement. Nodes will be placed in these zones when available. If a specified zone is unavailable (e.g., due to capacity constraints), nodes will be placed in other available zones to maintain the configured number of zones for availability. Invalid zone IDs are rejected at configuration time. Zone IDs are cloud-specific: AWS uses zone IDs like `euc1-az1`, GCP uses zone names like `europe-west1-a`, and Azure uses `location/zone` format like `germanywestcentral/1`. If single*zone is enabled with an availability*zone, that setting takes precedence over preferred_zones. Changes take effect on next node recreation (e.g., maintenance or plan change). For eligible plans, nodes outside preferred zones are automatically rebalanced once per day.
@@ -12691,7 +12760,7 @@ class KafkaKafkaUserConfigArgs:
     @pulumi.getter(name="kafkaVersion")
     def kafka_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, `4.1`, `4.2`, and newer. Kafka major version.
+        Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, `4.1`, `4.2`, `4.3`, and newer. Kafka major version.
         """
         return pulumi.get(self, "kafka_version")
 
@@ -12703,7 +12772,7 @@ class KafkaKafkaUserConfigArgs:
     @pulumi.getter(name="karapaceVersion")
     def karapace_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Enum: `6.2.1`, `6.2.2`, `6.2.3`, and newer. Select a Karapace version for this service, or select Latest to use the latest available version automatically. New versions become available after installation during a maintenance update.
+        Enum: `6.2.1`, `6.2.2`, `6.2.3`, `6.2.4`, and newer. Select a Karapace version for this service, or select Latest to use the latest available version automatically. New versions become available after installation during a maintenance update.
         """
         return pulumi.get(self, "karapace_version")
 
@@ -12994,6 +13063,30 @@ class KafkaKafkaUserConfigKafkaArgsDict(TypedDict):
     """
     Replication factor for auto-created topics (Default: 3).
     """
+    group_consumer_heartbeat_interval_ms: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The heartbeat interval given to the members of a consumer group using the consumer rebalance protocol. Must be between group.consumer.min.heartbeat.interval.ms and group.consumer.max.heartbeat.interval.ms, and lower than group.consumer.session.timeout.ms. (Default: 5000 ms (5 seconds)) Requires Kafka 4.0 or later. Example: `5000`.
+    """
+    group_consumer_max_heartbeat_interval_ms: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The maximum heartbeat interval allowed for consumer group members using the consumer rebalance protocol. Must not be less than group.consumer.min.heartbeat.interval.ms. (Default: 15000 ms (15 seconds)) Requires Kafka 4.0 or later. Example: `15000`.
+    """
+    group_consumer_max_session_timeout_ms: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The maximum session timeout allowed for consumer group members using the consumer rebalance protocol. Must not be less than group.consumer.min.session.timeout.ms. (Default: 60000 ms (60 seconds)) Requires Kafka 4.0 or later. Example: `60000`.
+    """
+    group_consumer_min_heartbeat_interval_ms: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The minimum heartbeat interval allowed for consumer group members using the consumer rebalance protocol. Must not be greater than group.consumer.max.heartbeat.interval.ms. (Default: 5000 ms (5 seconds)) Requires Kafka 4.0 or later. Example: `5000`.
+    """
+    group_consumer_min_session_timeout_ms: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The minimum session timeout allowed for consumer group members using the consumer rebalance protocol. Must not be greater than group.consumer.max.session.timeout.ms. (Default: 45000 ms (45 seconds)) Requires Kafka 4.0 or later. Example: `45000`.
+    """
+    group_consumer_session_timeout_ms: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The timeout used to detect consumer group member failures when using the consumer rebalance protocol. Must be between group.consumer.min.session.timeout.ms and group.consumer.max.session.timeout.ms. (Default: 45000 ms (45 seconds)) Requires Kafka 4.0 or later. Example: `45000`.
+    """
     group_coordinator_rebalance_protocols: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Enum: `classic`, `classic,consumer`, `classic,consumer,share`, `classic,consumer,share,streams`, `classic,consumer,streams`, `classic,share`, `classic,streams`. The enabled consumer group rebalance protocols. Use consumer, classic, share, streams to enable Kafka share groups.
@@ -13235,6 +13328,12 @@ class KafkaKafkaUserConfigKafkaArgs:
                  compression_type: pulumi.Input[Optional[_builtins.str]] = None,
                  connections_max_idle_ms: pulumi.Input[Optional[_builtins.int]] = None,
                  default_replication_factor: pulumi.Input[Optional[_builtins.int]] = None,
+                 group_consumer_heartbeat_interval_ms: pulumi.Input[Optional[_builtins.int]] = None,
+                 group_consumer_max_heartbeat_interval_ms: pulumi.Input[Optional[_builtins.int]] = None,
+                 group_consumer_max_session_timeout_ms: pulumi.Input[Optional[_builtins.int]] = None,
+                 group_consumer_min_heartbeat_interval_ms: pulumi.Input[Optional[_builtins.int]] = None,
+                 group_consumer_min_session_timeout_ms: pulumi.Input[Optional[_builtins.int]] = None,
+                 group_consumer_session_timeout_ms: pulumi.Input[Optional[_builtins.int]] = None,
                  group_coordinator_rebalance_protocols: pulumi.Input[Optional[_builtins.str]] = None,
                  group_initial_rebalance_delay_ms: pulumi.Input[Optional[_builtins.int]] = None,
                  group_max_session_timeout_ms: pulumi.Input[Optional[_builtins.int]] = None,
@@ -13299,6 +13398,12 @@ class KafkaKafkaUserConfigKafkaArgs:
         :param pulumi.Input[_builtins.str] compression_type: Enum: `gzip`, `lz4`, `producer`, `snappy`, `uncompressed`, `zstd`. Specify the final compression type for a given topic. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `uncompressed` which is equivalent to no compression; and `producer` which means retain the original compression codec set by the producer.(Default: producer).
         :param pulumi.Input[_builtins.int] connections_max_idle_ms: Idle connections timeout: the server socket processor threads close the connections that idle for longer than this. (Default: 600000 ms (10 minutes)). Example: `540000`.
         :param pulumi.Input[_builtins.int] default_replication_factor: Replication factor for auto-created topics (Default: 3).
+        :param pulumi.Input[_builtins.int] group_consumer_heartbeat_interval_ms: The heartbeat interval given to the members of a consumer group using the consumer rebalance protocol. Must be between group.consumer.min.heartbeat.interval.ms and group.consumer.max.heartbeat.interval.ms, and lower than group.consumer.session.timeout.ms. (Default: 5000 ms (5 seconds)) Requires Kafka 4.0 or later. Example: `5000`.
+        :param pulumi.Input[_builtins.int] group_consumer_max_heartbeat_interval_ms: The maximum heartbeat interval allowed for consumer group members using the consumer rebalance protocol. Must not be less than group.consumer.min.heartbeat.interval.ms. (Default: 15000 ms (15 seconds)) Requires Kafka 4.0 or later. Example: `15000`.
+        :param pulumi.Input[_builtins.int] group_consumer_max_session_timeout_ms: The maximum session timeout allowed for consumer group members using the consumer rebalance protocol. Must not be less than group.consumer.min.session.timeout.ms. (Default: 60000 ms (60 seconds)) Requires Kafka 4.0 or later. Example: `60000`.
+        :param pulumi.Input[_builtins.int] group_consumer_min_heartbeat_interval_ms: The minimum heartbeat interval allowed for consumer group members using the consumer rebalance protocol. Must not be greater than group.consumer.max.heartbeat.interval.ms. (Default: 5000 ms (5 seconds)) Requires Kafka 4.0 or later. Example: `5000`.
+        :param pulumi.Input[_builtins.int] group_consumer_min_session_timeout_ms: The minimum session timeout allowed for consumer group members using the consumer rebalance protocol. Must not be greater than group.consumer.max.session.timeout.ms. (Default: 45000 ms (45 seconds)) Requires Kafka 4.0 or later. Example: `45000`.
+        :param pulumi.Input[_builtins.int] group_consumer_session_timeout_ms: The timeout used to detect consumer group member failures when using the consumer rebalance protocol. Must be between group.consumer.min.session.timeout.ms and group.consumer.max.session.timeout.ms. (Default: 45000 ms (45 seconds)) Requires Kafka 4.0 or later. Example: `45000`.
         :param pulumi.Input[_builtins.str] group_coordinator_rebalance_protocols: Enum: `classic`, `classic,consumer`, `classic,consumer,share`, `classic,consumer,share,streams`, `classic,consumer,streams`, `classic,share`, `classic,streams`. The enabled consumer group rebalance protocols. Use consumer, classic, share, streams to enable Kafka share groups.
         :param pulumi.Input[_builtins.int] group_initial_rebalance_delay_ms: The amount of time, in milliseconds, the group coordinator will wait for more consumers to join a new group before performing the first rebalance. A longer delay means potentially fewer rebalances, but increases the time until processing begins. The default value for this is 3 seconds. During development and testing it might be desirable to set this to 0 in order to not delay test execution time. (Default: 3000 ms (3 seconds)). Example: `3000`.
         :param pulumi.Input[_builtins.int] group_max_session_timeout_ms: The maximum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. Default: 1800000 ms (30 minutes).
@@ -13368,6 +13473,18 @@ class KafkaKafkaUserConfigKafkaArgs:
             pulumi.set(__self__, "connections_max_idle_ms", connections_max_idle_ms)
         if default_replication_factor is not None:
             pulumi.set(__self__, "default_replication_factor", default_replication_factor)
+        if group_consumer_heartbeat_interval_ms is not None:
+            pulumi.set(__self__, "group_consumer_heartbeat_interval_ms", group_consumer_heartbeat_interval_ms)
+        if group_consumer_max_heartbeat_interval_ms is not None:
+            pulumi.set(__self__, "group_consumer_max_heartbeat_interval_ms", group_consumer_max_heartbeat_interval_ms)
+        if group_consumer_max_session_timeout_ms is not None:
+            pulumi.set(__self__, "group_consumer_max_session_timeout_ms", group_consumer_max_session_timeout_ms)
+        if group_consumer_min_heartbeat_interval_ms is not None:
+            pulumi.set(__self__, "group_consumer_min_heartbeat_interval_ms", group_consumer_min_heartbeat_interval_ms)
+        if group_consumer_min_session_timeout_ms is not None:
+            pulumi.set(__self__, "group_consumer_min_session_timeout_ms", group_consumer_min_session_timeout_ms)
+        if group_consumer_session_timeout_ms is not None:
+            pulumi.set(__self__, "group_consumer_session_timeout_ms", group_consumer_session_timeout_ms)
         if group_coordinator_rebalance_protocols is not None:
             pulumi.set(__self__, "group_coordinator_rebalance_protocols", group_coordinator_rebalance_protocols)
         if group_initial_rebalance_delay_ms is not None:
@@ -13544,6 +13661,78 @@ class KafkaKafkaUserConfigKafkaArgs:
     @default_replication_factor.setter
     def default_replication_factor(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "default_replication_factor", value)
+
+    @_builtins.property
+    @pulumi.getter(name="groupConsumerHeartbeatIntervalMs")
+    def group_consumer_heartbeat_interval_ms(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The heartbeat interval given to the members of a consumer group using the consumer rebalance protocol. Must be between group.consumer.min.heartbeat.interval.ms and group.consumer.max.heartbeat.interval.ms, and lower than group.consumer.session.timeout.ms. (Default: 5000 ms (5 seconds)) Requires Kafka 4.0 or later. Example: `5000`.
+        """
+        return pulumi.get(self, "group_consumer_heartbeat_interval_ms")
+
+    @group_consumer_heartbeat_interval_ms.setter
+    def group_consumer_heartbeat_interval_ms(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "group_consumer_heartbeat_interval_ms", value)
+
+    @_builtins.property
+    @pulumi.getter(name="groupConsumerMaxHeartbeatIntervalMs")
+    def group_consumer_max_heartbeat_interval_ms(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The maximum heartbeat interval allowed for consumer group members using the consumer rebalance protocol. Must not be less than group.consumer.min.heartbeat.interval.ms. (Default: 15000 ms (15 seconds)) Requires Kafka 4.0 or later. Example: `15000`.
+        """
+        return pulumi.get(self, "group_consumer_max_heartbeat_interval_ms")
+
+    @group_consumer_max_heartbeat_interval_ms.setter
+    def group_consumer_max_heartbeat_interval_ms(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "group_consumer_max_heartbeat_interval_ms", value)
+
+    @_builtins.property
+    @pulumi.getter(name="groupConsumerMaxSessionTimeoutMs")
+    def group_consumer_max_session_timeout_ms(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The maximum session timeout allowed for consumer group members using the consumer rebalance protocol. Must not be less than group.consumer.min.session.timeout.ms. (Default: 60000 ms (60 seconds)) Requires Kafka 4.0 or later. Example: `60000`.
+        """
+        return pulumi.get(self, "group_consumer_max_session_timeout_ms")
+
+    @group_consumer_max_session_timeout_ms.setter
+    def group_consumer_max_session_timeout_ms(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "group_consumer_max_session_timeout_ms", value)
+
+    @_builtins.property
+    @pulumi.getter(name="groupConsumerMinHeartbeatIntervalMs")
+    def group_consumer_min_heartbeat_interval_ms(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The minimum heartbeat interval allowed for consumer group members using the consumer rebalance protocol. Must not be greater than group.consumer.max.heartbeat.interval.ms. (Default: 5000 ms (5 seconds)) Requires Kafka 4.0 or later. Example: `5000`.
+        """
+        return pulumi.get(self, "group_consumer_min_heartbeat_interval_ms")
+
+    @group_consumer_min_heartbeat_interval_ms.setter
+    def group_consumer_min_heartbeat_interval_ms(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "group_consumer_min_heartbeat_interval_ms", value)
+
+    @_builtins.property
+    @pulumi.getter(name="groupConsumerMinSessionTimeoutMs")
+    def group_consumer_min_session_timeout_ms(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The minimum session timeout allowed for consumer group members using the consumer rebalance protocol. Must not be greater than group.consumer.max.session.timeout.ms. (Default: 45000 ms (45 seconds)) Requires Kafka 4.0 or later. Example: `45000`.
+        """
+        return pulumi.get(self, "group_consumer_min_session_timeout_ms")
+
+    @group_consumer_min_session_timeout_ms.setter
+    def group_consumer_min_session_timeout_ms(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "group_consumer_min_session_timeout_ms", value)
+
+    @_builtins.property
+    @pulumi.getter(name="groupConsumerSessionTimeoutMs")
+    def group_consumer_session_timeout_ms(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The timeout used to detect consumer group member failures when using the consumer rebalance protocol. Must be between group.consumer.min.session.timeout.ms and group.consumer.max.session.timeout.ms. (Default: 45000 ms (45 seconds)) Requires Kafka 4.0 or later. Example: `45000`.
+        """
+        return pulumi.get(self, "group_consumer_session_timeout_ms")
+
+    @group_consumer_session_timeout_ms.setter
+    def group_consumer_session_timeout_ms(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "group_consumer_session_timeout_ms", value)
 
     @_builtins.property
     @pulumi.getter(name="groupCoordinatorRebalanceProtocols")
@@ -19730,6 +19919,22 @@ class MySqlMysqlUserConfigMysqlArgsDict(TypedDict):
     """
     The size in bytes of the buffer that InnoDB uses to write to the log files on disk. Requests above 15% of the RAM provided by your service plan are rejected, because a larger buffer leaves less memory for the buffer pool and client connections.
     """
+    innodb_max_dirty_pages_pct: NotRequired[pulumi.Input[Optional[_builtins.float]]]
+    """
+    Percentage of dirty pages in the InnoDB buffer pool at which InnoDB starts flushing aggressively. Lowering it spreads write I/O more evenly and shortens crash recovery, at the cost of flushing pages that might have been modified again. Must stay at or above innodb*max*dirty*pages*pct_lwm. Default is 90. Example: `75`.
+    """
+    innodb_max_dirty_pages_pct_lwm: NotRequired[pulumi.Input[Optional[_builtins.float]]]
+    """
+    Percentage of dirty pages in the InnoDB buffer pool at which InnoDB starts pre-flushing, to keep the dirty page ratio from reaching innodb*max*dirty*pages*pct. 0 turns pre-flushing off. Cannot be set above innodb*max*dirty*pages*pct. Default is 10. Example: `10`.
+    """
+    innodb_max_purge_lag: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Number of outstanding transactions the InnoDB purge operation may fall behind by before INSERT, UPDATE and DELETE are delayed to let it catch up. The delay applies per row and grows with the lag, and it is capped by innodb*max*purge*lag*delay, which has to be set as well for this option to have any effect. Default is 0, which never delays anything.
+    """
+    innodb_max_purge_lag_delay: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Cap in microseconds on the per-row delay innodb*max*purge*lag applies to INSERT, UPDATE and DELETE. MySQL clamps the delay to this value unconditionally, so while this is 0 no delay is ever applied and innodb*max*purge*lag on its own does nothing. Both options must be non-zero for either to take effect. Default is 0. Example: `10000`.
+    """
     innodb_online_alter_log_max_size: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
@@ -19888,6 +20093,10 @@ class MySqlMysqlUserConfigMysqlArgs:
                  innodb_io_capacity_max: pulumi.Input[Optional[_builtins.int]] = None,
                  innodb_lock_wait_timeout: pulumi.Input[Optional[_builtins.int]] = None,
                  innodb_log_buffer_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 innodb_max_dirty_pages_pct: pulumi.Input[Optional[_builtins.float]] = None,
+                 innodb_max_dirty_pages_pct_lwm: pulumi.Input[Optional[_builtins.float]] = None,
+                 innodb_max_purge_lag: pulumi.Input[Optional[_builtins.int]] = None,
+                 innodb_max_purge_lag_delay: pulumi.Input[Optional[_builtins.int]] = None,
                  innodb_online_alter_log_max_size: pulumi.Input[Optional[_builtins.int]] = None,
                  innodb_optimize_fulltext_only: pulumi.Input[Optional[_builtins.bool]] = None,
                  innodb_print_all_deadlocks: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -19944,6 +20153,10 @@ class MySqlMysqlUserConfigMysqlArgs:
         :param pulumi.Input[_builtins.int] innodb_io_capacity_max: The maximum number of I/O operations per second (IOPS) that InnoDB background tasks may perform when flushing falls behind. Defaults to twice innodb*io*capacity (minimum 2000). This must be greater than or equal to innodb*io*capacity.
         :param pulumi.Input[_builtins.int] innodb_lock_wait_timeout: The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120. Example: `50`.
         :param pulumi.Input[_builtins.int] innodb_log_buffer_size: The size in bytes of the buffer that InnoDB uses to write to the log files on disk. Requests above 15% of the RAM provided by your service plan are rejected, because a larger buffer leaves less memory for the buffer pool and client connections.
+        :param pulumi.Input[_builtins.float] innodb_max_dirty_pages_pct: Percentage of dirty pages in the InnoDB buffer pool at which InnoDB starts flushing aggressively. Lowering it spreads write I/O more evenly and shortens crash recovery, at the cost of flushing pages that might have been modified again. Must stay at or above innodb*max*dirty*pages*pct_lwm. Default is 90. Example: `75`.
+        :param pulumi.Input[_builtins.float] innodb_max_dirty_pages_pct_lwm: Percentage of dirty pages in the InnoDB buffer pool at which InnoDB starts pre-flushing, to keep the dirty page ratio from reaching innodb*max*dirty*pages*pct. 0 turns pre-flushing off. Cannot be set above innodb*max*dirty*pages*pct. Default is 10. Example: `10`.
+        :param pulumi.Input[_builtins.int] innodb_max_purge_lag: Number of outstanding transactions the InnoDB purge operation may fall behind by before INSERT, UPDATE and DELETE are delayed to let it catch up. The delay applies per row and grows with the lag, and it is capped by innodb*max*purge*lag*delay, which has to be set as well for this option to have any effect. Default is 0, which never delays anything.
+        :param pulumi.Input[_builtins.int] innodb_max_purge_lag_delay: Cap in microseconds on the per-row delay innodb*max*purge*lag applies to INSERT, UPDATE and DELETE. MySQL clamps the delay to this value unconditionally, so while this is 0 no delay is ever applied and innodb*max*purge*lag on its own does nothing. Both options must be non-zero for either to take effect. Default is 0. Example: `10000`.
         :param pulumi.Input[_builtins.int] innodb_online_alter_log_max_size: The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
         :param pulumi.Input[_builtins.bool] innodb_optimize_fulltext_only: When enabled, OPTIMIZE TABLE on InnoDB tables only updates the FULLTEXT index instead of rebuilding the table. Intended to be enabled temporarily during FULLTEXT index maintenance and disabled afterwards; while enabled, OPTIMIZE TABLE does not reclaim table space.
         :param pulumi.Input[_builtins.bool] innodb_print_all_deadlocks: When enabled, information about all deadlocks in InnoDB user transactions is recorded in the error log. Disabled by default.
@@ -20022,6 +20235,14 @@ class MySqlMysqlUserConfigMysqlArgs:
             pulumi.set(__self__, "innodb_lock_wait_timeout", innodb_lock_wait_timeout)
         if innodb_log_buffer_size is not None:
             pulumi.set(__self__, "innodb_log_buffer_size", innodb_log_buffer_size)
+        if innodb_max_dirty_pages_pct is not None:
+            pulumi.set(__self__, "innodb_max_dirty_pages_pct", innodb_max_dirty_pages_pct)
+        if innodb_max_dirty_pages_pct_lwm is not None:
+            pulumi.set(__self__, "innodb_max_dirty_pages_pct_lwm", innodb_max_dirty_pages_pct_lwm)
+        if innodb_max_purge_lag is not None:
+            pulumi.set(__self__, "innodb_max_purge_lag", innodb_max_purge_lag)
+        if innodb_max_purge_lag_delay is not None:
+            pulumi.set(__self__, "innodb_max_purge_lag_delay", innodb_max_purge_lag_delay)
         if innodb_online_alter_log_max_size is not None:
             pulumi.set(__self__, "innodb_online_alter_log_max_size", innodb_online_alter_log_max_size)
         if innodb_optimize_fulltext_only is not None:
@@ -20352,6 +20573,54 @@ class MySqlMysqlUserConfigMysqlArgs:
     @innodb_log_buffer_size.setter
     def innodb_log_buffer_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "innodb_log_buffer_size", value)
+
+    @_builtins.property
+    @pulumi.getter(name="innodbMaxDirtyPagesPct")
+    def innodb_max_dirty_pages_pct(self) -> pulumi.Input[Optional[_builtins.float]]:
+        """
+        Percentage of dirty pages in the InnoDB buffer pool at which InnoDB starts flushing aggressively. Lowering it spreads write I/O more evenly and shortens crash recovery, at the cost of flushing pages that might have been modified again. Must stay at or above innodb*max*dirty*pages*pct_lwm. Default is 90. Example: `75`.
+        """
+        return pulumi.get(self, "innodb_max_dirty_pages_pct")
+
+    @innodb_max_dirty_pages_pct.setter
+    def innodb_max_dirty_pages_pct(self, value: pulumi.Input[Optional[_builtins.float]]):
+        pulumi.set(self, "innodb_max_dirty_pages_pct", value)
+
+    @_builtins.property
+    @pulumi.getter(name="innodbMaxDirtyPagesPctLwm")
+    def innodb_max_dirty_pages_pct_lwm(self) -> pulumi.Input[Optional[_builtins.float]]:
+        """
+        Percentage of dirty pages in the InnoDB buffer pool at which InnoDB starts pre-flushing, to keep the dirty page ratio from reaching innodb*max*dirty*pages*pct. 0 turns pre-flushing off. Cannot be set above innodb*max*dirty*pages*pct. Default is 10. Example: `10`.
+        """
+        return pulumi.get(self, "innodb_max_dirty_pages_pct_lwm")
+
+    @innodb_max_dirty_pages_pct_lwm.setter
+    def innodb_max_dirty_pages_pct_lwm(self, value: pulumi.Input[Optional[_builtins.float]]):
+        pulumi.set(self, "innodb_max_dirty_pages_pct_lwm", value)
+
+    @_builtins.property
+    @pulumi.getter(name="innodbMaxPurgeLag")
+    def innodb_max_purge_lag(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Number of outstanding transactions the InnoDB purge operation may fall behind by before INSERT, UPDATE and DELETE are delayed to let it catch up. The delay applies per row and grows with the lag, and it is capped by innodb*max*purge*lag*delay, which has to be set as well for this option to have any effect. Default is 0, which never delays anything.
+        """
+        return pulumi.get(self, "innodb_max_purge_lag")
+
+    @innodb_max_purge_lag.setter
+    def innodb_max_purge_lag(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "innodb_max_purge_lag", value)
+
+    @_builtins.property
+    @pulumi.getter(name="innodbMaxPurgeLagDelay")
+    def innodb_max_purge_lag_delay(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Cap in microseconds on the per-row delay innodb*max*purge*lag applies to INSERT, UPDATE and DELETE. MySQL clamps the delay to this value unconditionally, so while this is 0 no delay is ever applied and innodb*max*purge*lag on its own does nothing. Both options must be non-zero for either to take effect. Default is 0. Example: `10000`.
+        """
+        return pulumi.get(self, "innodb_max_purge_lag_delay")
+
+    @innodb_max_purge_lag_delay.setter
+    def innodb_max_purge_lag_delay(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "innodb_max_purge_lag_delay", value)
 
     @_builtins.property
     @pulumi.getter(name="innodbOnlineAlterLogMaxSize")
@@ -21746,7 +22015,7 @@ class OpenSearchOpensearchUserConfigArgsDict(TypedDict):
     """
     opensearch_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    Enum: `1`, `2`, `2.19`, `3.3`, `3.6`, and newer. OpenSearch version.
+    Enum: `1`, `2`, `2.19`, `3.3`, `3.6`, `3.8`, and newer. OpenSearch version.
     """
     private_access: NotRequired[pulumi.Input[Optional['OpenSearchOpensearchUserConfigPrivateAccessArgsDict']]]
     """
@@ -21838,7 +22107,7 @@ class OpenSearchOpensearchUserConfigArgs:
         :param pulumi.Input['OpenSearchOpensearchUserConfigOpenidArgs'] openid: OpenSearch OpenID Connect Configuration
         :param pulumi.Input['OpenSearchOpensearchUserConfigOpensearchArgs'] opensearch: OpenSearch settings
         :param pulumi.Input['OpenSearchOpensearchUserConfigOpensearchDashboardsArgs'] opensearch_dashboards: OpenSearch Dashboards settings
-        :param pulumi.Input[_builtins.str] opensearch_version: Enum: `1`, `2`, `2.19`, `3.3`, `3.6`, and newer. OpenSearch version.
+        :param pulumi.Input[_builtins.str] opensearch_version: Enum: `1`, `2`, `2.19`, `3.3`, `3.6`, `3.8`, and newer. OpenSearch version.
         :param pulumi.Input['OpenSearchOpensearchUserConfigPrivateAccessArgs'] private_access: Allow access to selected service ports from private networks
         :param pulumi.Input['OpenSearchOpensearchUserConfigPrivatelinkAccessArgs'] privatelink_access: Allow access to selected service components through Privatelink
         :param pulumi.Input[_builtins.str] project_to_fork_from: Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
@@ -22119,7 +22388,7 @@ class OpenSearchOpensearchUserConfigArgs:
     @pulumi.getter(name="opensearchVersion")
     def opensearch_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Enum: `1`, `2`, `2.19`, `3.3`, `3.6`, and newer. OpenSearch version.
+        Enum: `1`, `2`, `2.19`, `3.3`, `3.6`, `3.8`, and newer. OpenSearch version.
         """
         return pulumi.get(self, "opensearch_version")
 
@@ -23658,6 +23927,18 @@ class OpenSearchOpensearchUserConfigOpensearchArgsDict(TypedDict):
     """
     How long audit history indices are kept in days. Example: `30`.
     """
+    knn_cache_item_expiry_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Enable or disable removing KNN graphs from the cache when they are idle. Disabled by default.
+    """
+    knn_cache_item_expiry_minutes: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    If enabled, the amount of time in minutes a KNN graph can be idle in the cache before being evicted. Example: `180`.
+    """
+    knn_circuit_breaker_unset_percentage: NotRequired[pulumi.Input[Optional[_builtins.float]]]
+    """
+    The native memory usage, as a percentage below the KNN memory circuit breaker limit, at which a tripped circuit breaker resets. Defaults to 5%.
+    """
     knn_memory_circuit_breaker_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Enable or disable KNN memory circuit breaker. Defaults to true.
@@ -23670,9 +23951,21 @@ class OpenSearchOpensearchUserConfigOpensearchArgsDict(TypedDict):
     """
     When set to true, the setting allows admins to control access and permissions to the connector API using backend_roles. Defaults to false.
     """
+    ml_commons_max_model_on_node: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Maximum number of ML models that can be deployed on a single ML node. Defaults to 10.
+    """
     ml_commons_model_access_control_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Enable or disable model access control for ML Commons. When enabled, access to ML models is controlled by security permissions. Defaults to false.
+    """
+    ml_commons_model_auto_deploy_enable: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    For externally hosted models only: automatically deploy a model on its first predict request instead of requiring an explicit deploy call first. Defaults to true.
+    """
+    ml_commons_model_auto_redeploy_enable: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Automatically redeploy deployed or partially deployed models after ML nodes rejoin the cluster, e.g. after a node replacement. Defaults to true.
     """
     ml_commons_native_memory_threshold: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
@@ -23806,10 +24099,16 @@ class OpenSearchOpensearchUserConfigOpensearchArgs:
                  ism_history_max_docs: pulumi.Input[Optional[_builtins.int]] = None,
                  ism_history_rollover_check_period: pulumi.Input[Optional[_builtins.int]] = None,
                  ism_history_rollover_retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 knn_cache_item_expiry_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 knn_cache_item_expiry_minutes: pulumi.Input[Optional[_builtins.int]] = None,
+                 knn_circuit_breaker_unset_percentage: pulumi.Input[Optional[_builtins.float]] = None,
                  knn_memory_circuit_breaker_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  knn_memory_circuit_breaker_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  ml_commons_connector_access_control_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ml_commons_max_model_on_node: pulumi.Input[Optional[_builtins.int]] = None,
                  ml_commons_model_access_control_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ml_commons_model_auto_deploy_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ml_commons_model_auto_redeploy_enable: pulumi.Input[Optional[_builtins.bool]] = None,
                  ml_commons_native_memory_threshold: pulumi.Input[Optional[_builtins.int]] = None,
                  ml_commons_only_run_on_ml_node: pulumi.Input[Optional[_builtins.bool]] = None,
                  ml_commons_trusted_connector_endpoints_regexes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -23868,10 +24167,16 @@ class OpenSearchOpensearchUserConfigOpensearchArgs:
         :param pulumi.Input[_builtins.int] ism_history_max_docs: The maximum number of documents before rolling over the audit history index.
         :param pulumi.Input[_builtins.int] ism_history_rollover_check_period: The time between rollover checks for the audit history index in hours. Example: `8`.
         :param pulumi.Input[_builtins.int] ism_history_rollover_retention_period: How long audit history indices are kept in days. Example: `30`.
+        :param pulumi.Input[_builtins.bool] knn_cache_item_expiry_enabled: Enable or disable removing KNN graphs from the cache when they are idle. Disabled by default.
+        :param pulumi.Input[_builtins.int] knn_cache_item_expiry_minutes: If enabled, the amount of time in minutes a KNN graph can be idle in the cache before being evicted. Example: `180`.
+        :param pulumi.Input[_builtins.float] knn_circuit_breaker_unset_percentage: The native memory usage, as a percentage below the KNN memory circuit breaker limit, at which a tripped circuit breaker resets. Defaults to 5%.
         :param pulumi.Input[_builtins.bool] knn_memory_circuit_breaker_enabled: Enable or disable KNN memory circuit breaker. Defaults to true.
         :param pulumi.Input[_builtins.int] knn_memory_circuit_breaker_limit: Maximum amount of memory in percentage that can be used for the KNN index. Defaults to 50% of the JVM heap size. 0 is used to set it to null which can be used to invalidate caches.
         :param pulumi.Input[_builtins.bool] ml_commons_connector_access_control_enabled: When set to true, the setting allows admins to control access and permissions to the connector API using backend_roles. Defaults to false.
+        :param pulumi.Input[_builtins.int] ml_commons_max_model_on_node: Maximum number of ML models that can be deployed on a single ML node. Defaults to 10.
         :param pulumi.Input[_builtins.bool] ml_commons_model_access_control_enabled: Enable or disable model access control for ML Commons. When enabled, access to ML models is controlled by security permissions. Defaults to false.
+        :param pulumi.Input[_builtins.bool] ml_commons_model_auto_deploy_enable: For externally hosted models only: automatically deploy a model on its first predict request instead of requiring an explicit deploy call first. Defaults to true.
+        :param pulumi.Input[_builtins.bool] ml_commons_model_auto_redeploy_enable: Automatically redeploy deployed or partially deployed models after ML nodes rejoin the cluster, e.g. after a node replacement. Defaults to true.
         :param pulumi.Input[_builtins.int] ml_commons_native_memory_threshold: Native memory threshold percentage for ML Commons. Controls the maximum percentage of native memory that can be used by ML Commons operations. Defaults to 90%.
         :param pulumi.Input[_builtins.bool] ml_commons_only_run_on_ml_node: Enable or disable running ML Commons tasks only on ML nodes. When enabled, ML tasks will only execute on nodes designated as ML nodes. Defaults to true.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ml_commons_trusted_connector_endpoints_regexes: Adds the trusted endpoints to the cluster settings. Supports Java regex expressions.
@@ -23964,14 +24269,26 @@ class OpenSearchOpensearchUserConfigOpensearchArgs:
             pulumi.set(__self__, "ism_history_rollover_check_period", ism_history_rollover_check_period)
         if ism_history_rollover_retention_period is not None:
             pulumi.set(__self__, "ism_history_rollover_retention_period", ism_history_rollover_retention_period)
+        if knn_cache_item_expiry_enabled is not None:
+            pulumi.set(__self__, "knn_cache_item_expiry_enabled", knn_cache_item_expiry_enabled)
+        if knn_cache_item_expiry_minutes is not None:
+            pulumi.set(__self__, "knn_cache_item_expiry_minutes", knn_cache_item_expiry_minutes)
+        if knn_circuit_breaker_unset_percentage is not None:
+            pulumi.set(__self__, "knn_circuit_breaker_unset_percentage", knn_circuit_breaker_unset_percentage)
         if knn_memory_circuit_breaker_enabled is not None:
             pulumi.set(__self__, "knn_memory_circuit_breaker_enabled", knn_memory_circuit_breaker_enabled)
         if knn_memory_circuit_breaker_limit is not None:
             pulumi.set(__self__, "knn_memory_circuit_breaker_limit", knn_memory_circuit_breaker_limit)
         if ml_commons_connector_access_control_enabled is not None:
             pulumi.set(__self__, "ml_commons_connector_access_control_enabled", ml_commons_connector_access_control_enabled)
+        if ml_commons_max_model_on_node is not None:
+            pulumi.set(__self__, "ml_commons_max_model_on_node", ml_commons_max_model_on_node)
         if ml_commons_model_access_control_enabled is not None:
             pulumi.set(__self__, "ml_commons_model_access_control_enabled", ml_commons_model_access_control_enabled)
+        if ml_commons_model_auto_deploy_enable is not None:
+            pulumi.set(__self__, "ml_commons_model_auto_deploy_enable", ml_commons_model_auto_deploy_enable)
+        if ml_commons_model_auto_redeploy_enable is not None:
+            pulumi.set(__self__, "ml_commons_model_auto_redeploy_enable", ml_commons_model_auto_redeploy_enable)
         if ml_commons_native_memory_threshold is not None:
             pulumi.set(__self__, "ml_commons_native_memory_threshold", ml_commons_native_memory_threshold)
         if ml_commons_only_run_on_ml_node is not None:
@@ -24426,6 +24743,42 @@ class OpenSearchOpensearchUserConfigOpensearchArgs:
         pulumi.set(self, "ism_history_rollover_retention_period", value)
 
     @_builtins.property
+    @pulumi.getter(name="knnCacheItemExpiryEnabled")
+    def knn_cache_item_expiry_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Enable or disable removing KNN graphs from the cache when they are idle. Disabled by default.
+        """
+        return pulumi.get(self, "knn_cache_item_expiry_enabled")
+
+    @knn_cache_item_expiry_enabled.setter
+    def knn_cache_item_expiry_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "knn_cache_item_expiry_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="knnCacheItemExpiryMinutes")
+    def knn_cache_item_expiry_minutes(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        If enabled, the amount of time in minutes a KNN graph can be idle in the cache before being evicted. Example: `180`.
+        """
+        return pulumi.get(self, "knn_cache_item_expiry_minutes")
+
+    @knn_cache_item_expiry_minutes.setter
+    def knn_cache_item_expiry_minutes(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "knn_cache_item_expiry_minutes", value)
+
+    @_builtins.property
+    @pulumi.getter(name="knnCircuitBreakerUnsetPercentage")
+    def knn_circuit_breaker_unset_percentage(self) -> pulumi.Input[Optional[_builtins.float]]:
+        """
+        The native memory usage, as a percentage below the KNN memory circuit breaker limit, at which a tripped circuit breaker resets. Defaults to 5%.
+        """
+        return pulumi.get(self, "knn_circuit_breaker_unset_percentage")
+
+    @knn_circuit_breaker_unset_percentage.setter
+    def knn_circuit_breaker_unset_percentage(self, value: pulumi.Input[Optional[_builtins.float]]):
+        pulumi.set(self, "knn_circuit_breaker_unset_percentage", value)
+
+    @_builtins.property
     @pulumi.getter(name="knnMemoryCircuitBreakerEnabled")
     def knn_memory_circuit_breaker_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -24462,6 +24815,18 @@ class OpenSearchOpensearchUserConfigOpensearchArgs:
         pulumi.set(self, "ml_commons_connector_access_control_enabled", value)
 
     @_builtins.property
+    @pulumi.getter(name="mlCommonsMaxModelOnNode")
+    def ml_commons_max_model_on_node(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of ML models that can be deployed on a single ML node. Defaults to 10.
+        """
+        return pulumi.get(self, "ml_commons_max_model_on_node")
+
+    @ml_commons_max_model_on_node.setter
+    def ml_commons_max_model_on_node(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "ml_commons_max_model_on_node", value)
+
+    @_builtins.property
     @pulumi.getter(name="mlCommonsModelAccessControlEnabled")
     def ml_commons_model_access_control_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -24472,6 +24837,30 @@ class OpenSearchOpensearchUserConfigOpensearchArgs:
     @ml_commons_model_access_control_enabled.setter
     def ml_commons_model_access_control_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ml_commons_model_access_control_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="mlCommonsModelAutoDeployEnable")
+    def ml_commons_model_auto_deploy_enable(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        For externally hosted models only: automatically deploy a model on its first predict request instead of requiring an explicit deploy call first. Defaults to true.
+        """
+        return pulumi.get(self, "ml_commons_model_auto_deploy_enable")
+
+    @ml_commons_model_auto_deploy_enable.setter
+    def ml_commons_model_auto_deploy_enable(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "ml_commons_model_auto_deploy_enable", value)
+
+    @_builtins.property
+    @pulumi.getter(name="mlCommonsModelAutoRedeployEnable")
+    def ml_commons_model_auto_redeploy_enable(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Automatically redeploy deployed or partially deployed models after ML nodes rejoin the cluster, e.g. after a node replacement. Defaults to true.
+        """
+        return pulumi.get(self, "ml_commons_model_auto_redeploy_enable")
+
+    @ml_commons_model_auto_redeploy_enable.setter
+    def ml_commons_model_auto_redeploy_enable(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "ml_commons_model_auto_redeploy_enable", value)
 
     @_builtins.property
     @pulumi.getter(name="mlCommonsNativeMemoryThreshold")
@@ -30061,7 +30450,7 @@ class PgPgUserConfigArgsDict(TypedDict):
     """
     variant: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    Enum: `aiven`, `timescale`. Variant of the PostgreSQL service, may affect the features that are exposed by default.
+    Enum: `aiven`, `pg_lake`, `timescale`. Variant of the PostgreSQL service, may affect the features that are exposed by default.
     """
     work_mem: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
@@ -30145,7 +30534,7 @@ class PgPgUserConfigArgs:
         :param pulumi.Input[_builtins.bool] static_ips: Use static public IP addresses.
         :param pulumi.Input[_builtins.str] synchronous_replication: Enum: `off`, `quorum`. Use synchronous*commit instead. Any change to this setting will automatically update synchronous*commit. Setting the value to quorum changes synchronous*commit to remote*write, while setting it to off changes synchronous_commit to off.
         :param pulumi.Input['PgPgUserConfigTimescaledbArgs'] timescaledb: System-wide settings for the timescaledb extension
-        :param pulumi.Input[_builtins.str] variant: Enum: `aiven`, `timescale`. Variant of the PostgreSQL service, may affect the features that are exposed by default.
+        :param pulumi.Input[_builtins.str] variant: Enum: `aiven`, `pg_lake`, `timescale`. Variant of the PostgreSQL service, may affect the features that are exposed by default.
         :param pulumi.Input[_builtins.int] work_mem: Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. The default is 1MB + 0.075% of total RAM (up to 32MB). Example: `4`.
         """
         if additional_backup_regions is not None:
@@ -30666,7 +31055,7 @@ class PgPgUserConfigArgs:
     @pulumi.getter
     def variant(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Enum: `aiven`, `timescale`. Variant of the PostgreSQL service, may affect the features that are exposed by default.
+        Enum: `aiven`, `pg_lake`, `timescale`. Variant of the PostgreSQL service, may affect the features that are exposed by default.
         """
         return pulumi.get(self, "variant")
 
@@ -34423,6 +34812,10 @@ class ServiceIntegrationDatadogUserConfigArgsDict(TypedDict):
     """
     Enable collection of PL/pgSQL function metrics from pg*stat*user_functions. Requires `track_functions` to be set to `pl` or `all` in the service configuration.
     """
+    datadog_pg_dbname: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Database the Datadog PostgreSQL check connects to. Relation metrics are collected only from this database. The main service database is used when unset. Database Monitoring collects query statistics from every database regardless of this option. Example: `defaultdb`.
+    """
     datadog_pg_relations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServiceIntegrationDatadogUserConfigDatadogPgRelationArgsDict']]]]]
     """
     Relations to collect PostgreSQL relation metrics for, such as table size, index statistics, row counts, vacuum ages and locks. No relation metrics are collected when unset
@@ -34477,6 +34870,7 @@ class ServiceIntegrationDatadogUserConfigArgs:
     def __init__(__self__, *,
                  datadog_dbm_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  datadog_function_metrics_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 datadog_pg_dbname: pulumi.Input[Optional[_builtins.str]] = None,
                  datadog_pg_relations: pulumi.Input[Optional[Sequence[pulumi.Input['ServiceIntegrationDatadogUserConfigDatadogPgRelationArgs']]]] = None,
                  datadog_pgbouncer_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  datadog_tags: pulumi.Input[Optional[Sequence[pulumi.Input['ServiceIntegrationDatadogUserConfigDatadogTagArgs']]]] = None,
@@ -34492,6 +34886,7 @@ class ServiceIntegrationDatadogUserConfigArgs:
         """
         :param pulumi.Input[_builtins.bool] datadog_dbm_enabled: Enable Datadog Database Monitoring.
         :param pulumi.Input[_builtins.bool] datadog_function_metrics_enabled: Enable collection of PL/pgSQL function metrics from pg*stat*user_functions. Requires `track_functions` to be set to `pl` or `all` in the service configuration.
+        :param pulumi.Input[_builtins.str] datadog_pg_dbname: Database the Datadog PostgreSQL check connects to. Relation metrics are collected only from this database. The main service database is used when unset. Database Monitoring collects query statistics from every database regardless of this option. Example: `defaultdb`.
         :param pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationDatadogUserConfigDatadogPgRelationArgs']]] datadog_pg_relations: Relations to collect PostgreSQL relation metrics for, such as table size, index statistics, row counts, vacuum ages and locks. No relation metrics are collected when unset
         :param pulumi.Input[_builtins.bool] datadog_pgbouncer_enabled: Enable Datadog PgBouncer Metric Tracking.
         :param pulumi.Input[Sequence[pulumi.Input['ServiceIntegrationDatadogUserConfigDatadogTagArgs']]] datadog_tags: Custom tags provided by user
@@ -34509,6 +34904,8 @@ class ServiceIntegrationDatadogUserConfigArgs:
             pulumi.set(__self__, "datadog_dbm_enabled", datadog_dbm_enabled)
         if datadog_function_metrics_enabled is not None:
             pulumi.set(__self__, "datadog_function_metrics_enabled", datadog_function_metrics_enabled)
+        if datadog_pg_dbname is not None:
+            pulumi.set(__self__, "datadog_pg_dbname", datadog_pg_dbname)
         if datadog_pg_relations is not None:
             pulumi.set(__self__, "datadog_pg_relations", datadog_pg_relations)
         if datadog_pgbouncer_enabled is not None:
@@ -34557,6 +34954,18 @@ class ServiceIntegrationDatadogUserConfigArgs:
     @datadog_function_metrics_enabled.setter
     def datadog_function_metrics_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "datadog_function_metrics_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="datadogPgDbname")
+    def datadog_pg_dbname(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Database the Datadog PostgreSQL check connects to. Relation metrics are collected only from this database. The main service database is used when unset. Database Monitoring collects query statistics from every database regardless of this option. Example: `defaultdb`.
+        """
+        return pulumi.get(self, "datadog_pg_dbname")
+
+    @datadog_pg_dbname.setter
+    def datadog_pg_dbname(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "datadog_pg_dbname", value)
 
     @_builtins.property
     @pulumi.getter(name="datadogPgRelations")
@@ -41320,6 +41729,10 @@ class ValkeyValkeyUserConfigArgsDict(TypedDict):
     """
     Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
     """
+    replicas: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Number of replicas per shard in the Valkey cluster. Only applies to cluster plans. Example: `1`.
+    """
     service_log: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Store logs for the service so that they are available in the HTTP API and console.
@@ -41327,6 +41740,10 @@ class ValkeyValkeyUserConfigArgsDict(TypedDict):
     service_to_fork_from: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
+    """
+    shard_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Number of shards (primaries) in the Valkey cluster. Required for cluster plans. Example: `3`.
     """
     static_ips: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
@@ -41414,8 +41831,10 @@ class ValkeyValkeyUserConfigArgs:
                  project_to_fork_from: pulumi.Input[Optional[_builtins.str]] = None,
                  public_access: pulumi.Input[Optional['ValkeyValkeyUserConfigPublicAccessArgs']] = None,
                  recovery_basebackup_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 replicas: pulumi.Input[Optional[_builtins.int]] = None,
                  service_log: pulumi.Input[Optional[_builtins.bool]] = None,
                  service_to_fork_from: pulumi.Input[Optional[_builtins.str]] = None,
+                 shard_count: pulumi.Input[Optional[_builtins.int]] = None,
                  static_ips: pulumi.Input[Optional[_builtins.bool]] = None,
                  valkey_acl_channels_default: pulumi.Input[Optional[_builtins.str]] = None,
                  valkey_active_defrag_ignore_bytes: pulumi.Input[Optional[_builtins.int]] = None,
@@ -41448,8 +41867,10 @@ class ValkeyValkeyUserConfigArgs:
         :param pulumi.Input[_builtins.str] project_to_fork_from: Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
         :param pulumi.Input['ValkeyValkeyUserConfigPublicAccessArgs'] public_access: Allow access to selected service ports from the public Internet
         :param pulumi.Input[_builtins.str] recovery_basebackup_name: Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
+        :param pulumi.Input[_builtins.int] replicas: Number of replicas per shard in the Valkey cluster. Only applies to cluster plans. Example: `1`.
         :param pulumi.Input[_builtins.bool] service_log: Store logs for the service so that they are available in the HTTP API and console.
         :param pulumi.Input[_builtins.str] service_to_fork_from: Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
+        :param pulumi.Input[_builtins.int] shard_count: Number of shards (primaries) in the Valkey cluster. Required for cluster plans. Example: `3`.
         :param pulumi.Input[_builtins.bool] static_ips: Use static public IP addresses.
         :param pulumi.Input[_builtins.str] valkey_acl_channels_default: Enum: `allchannels`, `resetchannels`. Determines default pub/sub channels' ACL for new users if ACL is not supplied. When this option is not defined, all_channels is assumed to keep backward compatibility. This option doesn't affect Valkey configuration acl-pubsub-default.
         :param pulumi.Input[_builtins.int] valkey_active_defrag_ignore_bytes: Minimum amount of fragmentation waste, in bytes, before active defragmentation starts. Only takes effect when `valkey_activedefrag` is enabled.
@@ -41499,10 +41920,14 @@ class ValkeyValkeyUserConfigArgs:
             pulumi.set(__self__, "public_access", public_access)
         if recovery_basebackup_name is not None:
             pulumi.set(__self__, "recovery_basebackup_name", recovery_basebackup_name)
+        if replicas is not None:
+            pulumi.set(__self__, "replicas", replicas)
         if service_log is not None:
             pulumi.set(__self__, "service_log", service_log)
         if service_to_fork_from is not None:
             pulumi.set(__self__, "service_to_fork_from", service_to_fork_from)
+        if shard_count is not None:
+            pulumi.set(__self__, "shard_count", shard_count)
         if static_ips is not None:
             pulumi.set(__self__, "static_ips", static_ips)
         if valkey_acl_channels_default is not None:
@@ -41708,6 +42133,18 @@ class ValkeyValkeyUserConfigArgs:
         pulumi.set(self, "recovery_basebackup_name", value)
 
     @_builtins.property
+    @pulumi.getter
+    def replicas(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Number of replicas per shard in the Valkey cluster. Only applies to cluster plans. Example: `1`.
+        """
+        return pulumi.get(self, "replicas")
+
+    @replicas.setter
+    def replicas(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "replicas", value)
+
+    @_builtins.property
     @pulumi.getter(name="serviceLog")
     def service_log(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -41730,6 +42167,18 @@ class ValkeyValkeyUserConfigArgs:
     @service_to_fork_from.setter
     def service_to_fork_from(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_to_fork_from", value)
+
+    @_builtins.property
+    @pulumi.getter(name="shardCount")
+    def shard_count(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Number of shards (primaries) in the Valkey cluster. Required for cluster plans. Example: `3`.
+        """
+        return pulumi.get(self, "shard_count")
+
+    @shard_count.setter
+    def shard_count(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "shard_count", value)
 
     @_builtins.property
     @pulumi.getter(name="staticIps")

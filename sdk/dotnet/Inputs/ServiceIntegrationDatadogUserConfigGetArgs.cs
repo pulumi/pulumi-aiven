@@ -24,6 +24,12 @@ namespace Pulumi.Aiven.Inputs
         [Input("datadogFunctionMetricsEnabled")]
         public Input<bool>? DatadogFunctionMetricsEnabled { get; set; }
 
+        /// <summary>
+        /// Database the Datadog PostgreSQL check connects to. Relation metrics are collected only from this database. The main service database is used when unset. Database Monitoring collects query statistics from every database regardless of this option. Example: `Defaultdb`.
+        /// </summary>
+        [Input("datadogPgDbname")]
+        public Input<string>? DatadogPgDbname { get; set; }
+
         [Input("datadogPgRelations")]
         private InputList<Inputs.ServiceIntegrationDatadogUserConfigDatadogPgRelationGetArgs>? _datadogPgRelations;
 
