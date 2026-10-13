@@ -42,7 +42,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var foo = new GcpVpcPeeringConnection("foo", GcpVpcPeeringConnectionArgs.builder()
- *             .vpcId(vpc.id())
+ *             .vpcId(vpc.get("id"))
  *             .gcpProjectId("xxxx")
  *             .peerVpc("xxxx")
  *             .build());

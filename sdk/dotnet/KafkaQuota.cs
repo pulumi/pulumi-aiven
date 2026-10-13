@@ -30,7 +30,7 @@ namespace Pulumi.Aiven
     ///         ClientId = "example_client",
     ///         ConsumerByteRate = 1000,
     ///         ProducerByteRate = 1000,
-    ///         RequestPercentage = 50,
+    ///         RequestPercentage = 50.0,
     ///     });
     /// 
     /// });

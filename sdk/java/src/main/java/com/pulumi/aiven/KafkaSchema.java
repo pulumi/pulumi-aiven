@@ -45,8 +45,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var kafka_schema1 = new KafkaSchema("kafka-schema1", KafkaSchemaArgs.builder()
- *             .project(kafka_schemas_project1.project())
- *             .serviceName(kafka_service1.serviceName())
+ *             .project(kafka_schemas_project1.get("project"))
+ *             .serviceName(kafka_service1.get("serviceName"))
  *             .subjectName("kafka-schema1")
  *             .compatibilityLevel("FORWARD")
  *             .schema("""

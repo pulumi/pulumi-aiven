@@ -47,17 +47,17 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var kafka_os_connector = new KafkaConnector("kafka-os-connector", KafkaConnectorArgs.builder()
- *             .project(exampleProject.project())
- *             .serviceName(exampleKafka.serviceName())
+ *             .project(exampleProject.get("project"))
+ *             .serviceName(exampleKafka.get("serviceName"))
  *             .connectorName("kafka-opensearch-connector")
  *             .config(Map.ofEntries(
  *                 Map.entry("name", "kafka-opensearch-connector"),
- *                 Map.entry("topics", exampleTopic.topicName()),
+ *                 Map.entry("topics", exampleTopic.get("topicName")),
  *                 Map.entry("connector.class", "io.aiven.kafka.connect.opensearch.OpensearchSinkConnector"),
  *                 Map.entry("type.name", "os-connector"),
- *                 Map.entry("connection.url", exampleOs.serviceUri()),
- *                 Map.entry("connection.username", exampleOs.serviceUsername()),
- *                 Map.entry("connection.password", exampleOs.servicePassword())
+ *                 Map.entry("connection.url", exampleOs.get("serviceUri")),
+ *                 Map.entry("connection.username", exampleOs.get("serviceUsername")),
+ *                 Map.entry("connection.password", exampleOs.get("servicePassword"))
  *             ))
  *             .build());
  * 

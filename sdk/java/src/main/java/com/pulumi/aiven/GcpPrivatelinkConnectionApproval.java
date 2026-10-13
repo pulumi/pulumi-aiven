@@ -41,8 +41,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var approve = new GcpPrivatelinkConnectionApproval("approve", GcpPrivatelinkConnectionApprovalArgs.builder()
- *             .project(exampleProject.project())
- *             .serviceName(exampleKafka.serviceName())
+ *             .project(exampleProject.get("project"))
+ *             .serviceName(exampleKafka.get("serviceName"))
  *             .userIpAddress("10.0.0.100")
  *             .build());
  * 

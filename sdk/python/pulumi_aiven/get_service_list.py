@@ -97,7 +97,7 @@ def get_service_list(project: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    # Use the `aiven_service_list` data source to query all services in a project.
+    # Use the `aiven_service_list` function to query all services in a project.
     all_services = aiven.get_service_list(project="example-project-name")
     pulumi.export("serviceNames", [service.name for service in all_services.services])
     pulumi.export("serviceTypes", [service.service_type for service in all_services.services])
@@ -134,7 +134,7 @@ def get_service_list_output(project: pulumi.Input[Optional[_builtins.str]] = Non
     import pulumi
     import pulumi_aiven as aiven
 
-    # Use the `aiven_service_list` data source to query all services in a project.
+    # Use the `aiven_service_list` function to query all services in a project.
     all_services = aiven.get_service_list(project="example-project-name")
     pulumi.export("serviceNames", [service.name for service in all_services.services])
     pulumi.export("serviceTypes", [service.service_type for service in all_services.services])

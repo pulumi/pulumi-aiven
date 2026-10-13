@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * // Use the `aiven_service_list` data source to query all services in a project.
+ * // Use the `aiven_service_list` function to query all services in a project.
  * const allServices = aiven.getServiceList({
  *     project: "example-project-name",
  * });
@@ -76,7 +76,7 @@ export interface GetServiceListResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * // Use the `aiven_service_list` data source to query all services in a project.
+ * // Use the `aiven_service_list` function to query all services in a project.
  * const allServices = aiven.getServiceList({
  *     project: "example-project-name",
  * });

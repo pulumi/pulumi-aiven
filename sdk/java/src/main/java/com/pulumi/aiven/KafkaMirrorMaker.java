@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .ipFilters("0.0.0.0/0")
  *                 .build())
- *             .project(exampleProject.project())
+ *             .project(exampleProject.get("project"))
  *             .cloudName("google-europe-west1")
  *             .plan("startup-4")
  *             .serviceName("example-mirrormaker-service")

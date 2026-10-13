@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  *                 .schemaRegistry(true)
  *                 .kafkaVersion("3.8")
  *                 .build())
- *             .project(exampleProject.project())
+ *             .project(exampleProject.get("project"))
  *             .cloudName("google-europe-west1")
  *             .plan("business-4")
  *             .serviceName("example-kafka")

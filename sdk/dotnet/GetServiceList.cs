@@ -24,7 +24,7 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // Use the `aiven_service_list` data source to query all services in a project.
+        ///     // Use the `aiven_service_list` function to query all services in a project.
         ///     var allServices = Aiven.GetServiceList.Invoke(new()
         ///     {
         ///         Project = "example-project-name",
@@ -69,7 +69,7 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // Use the `aiven_service_list` data source to query all services in a project.
+        ///     // Use the `aiven_service_list` function to query all services in a project.
         ///     var allServices = Aiven.GetServiceList.Invoke(new()
         ///     {
         ///         Project = "example-project-name",
@@ -114,7 +114,7 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     // Use the `aiven_service_list` data source to query all services in a project.
+        ///     // Use the `aiven_service_list` function to query all services in a project.
         ///     var allServices = Aiven.GetServiceList.Invoke(new()
         ///     {
         ///         Project = "example-project-name",

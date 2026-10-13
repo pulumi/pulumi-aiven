@@ -55,7 +55,7 @@ import javax.annotation.Nullable;
  *             .dragonflyUserConfig(DragonflyDragonflyUserConfigArgs.builder()
  *                 .cacheMode(true)
  *                 .build())
- *             .project(exampleProject.project())
+ *             .project(exampleProject.get("project"))
  *             .plan("startup-4")
  *             .cloudName("google-europe-west1")
  *             .serviceName("example-dragonfly-service")

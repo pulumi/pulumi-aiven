@@ -62,8 +62,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var exampleRole = new ClickhouseRole("exampleRole", ClickhouseRoleArgs.builder()
- *             .project(exampleProject.project())
- *             .serviceName(exampleClickhouse.serviceName())
+ *             .project(exampleProject.get("project"))
+ *             .serviceName(exampleClickhouse.get("serviceName"))
  *             .role("example-role")
  *             .build());
  * 
@@ -72,12 +72,12 @@ import javax.annotation.Nullable;
  *             .privilegeGrants(            
  *                 ClickhouseGrantPrivilegeGrantArgs.builder()
  *                     .privilege("INSERT")
- *                     .database(exampleDb.name())
+ *                     .database(exampleDb.get("name"))
  *                     .table("example-table")
  *                     .build(),
  *                 ClickhouseGrantPrivilegeGrantArgs.builder()
  *                     .privilege("SELECT")
- *                     .database(exampleDb.name())
+ *                     .database(exampleDb.get("name"))
  *                     .build(),
  *                 ClickhouseGrantPrivilegeGrantArgs.builder()
  *                     .privilege("CREATE TEMPORARY TABLE")
@@ -87,15 +87,15 @@ import javax.annotation.Nullable;
  *                     .privilege("SYSTEM DROP CACHE")
  *                     .database("*")
  *                     .build())
- *             .project(exampleProject.project())
- *             .serviceName(exampleClickhouse.serviceName())
+ *             .project(exampleProject.get("project"))
+ *             .serviceName(exampleClickhouse.get("serviceName"))
  *             .role(exampleRole.role())
  *             .build());
  * 
  *         // Grant the role to the user.
  *         var exampleUser = new ClickhouseUser("exampleUser", ClickhouseUserArgs.builder()
- *             .project(exampleProject.project())
- *             .serviceName(exampleClickhouse.serviceName())
+ *             .project(exampleProject.get("project"))
+ *             .serviceName(exampleClickhouse.get("serviceName"))
  *             .username("example-user")
  *             .build());
  * 
@@ -103,8 +103,8 @@ import javax.annotation.Nullable;
  *             .roleGrants(ClickhouseGrantRoleGrantArgs.builder()
  *                 .role(exampleRole.role())
  *                 .build())
- *             .project(exampleProject.project())
- *             .serviceName(exampleClickhouse.serviceName())
+ *             .project(exampleProject.get("project"))
+ *             .serviceName(exampleClickhouse.get("serviceName"))
  *             .user(exampleUser.username())
  *             .build());
  * 
