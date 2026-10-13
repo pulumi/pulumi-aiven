@@ -36,6 +36,21 @@ public final class MirrorMakerReplicationFlowArgs extends com.pulumi.resources.R
     }
 
     /**
+     * Adds a diskless_az= hint to the replication flow&#39;s Kafka client.id so that diskless Kafka clusters serve the flow from brokers in the same availability zone.
+     * 
+     */
+    @Import(name="disklessAzEnabled")
+    private @Nullable Output<Boolean> disklessAzEnabled;
+
+    /**
+     * @return Adds a diskless_az= hint to the replication flow&#39;s Kafka client.id so that diskless Kafka clusters serve the flow from brokers in the same availability zone.
+     * 
+     */
+    public Optional<Output<Boolean>> disklessAzEnabled() {
+        return Optional.ofNullable(this.disklessAzEnabled);
+    }
+
+    /**
      * Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
      * 
      */
@@ -301,6 +316,7 @@ public final class MirrorMakerReplicationFlowArgs extends com.pulumi.resources.R
 
     private MirrorMakerReplicationFlowArgs(MirrorMakerReplicationFlowArgs $) {
         this.configPropertiesExcludes = $.configPropertiesExcludes;
+        this.disklessAzEnabled = $.disklessAzEnabled;
         this.emitBackwardHeartbeatsEnabled = $.emitBackwardHeartbeatsEnabled;
         this.emitHeartbeatsEnabled = $.emitHeartbeatsEnabled;
         this.enable = $.enable;
@@ -368,6 +384,27 @@ public final class MirrorMakerReplicationFlowArgs extends com.pulumi.resources.R
          */
         public Builder configPropertiesExcludes(String... configPropertiesExcludes) {
             return configPropertiesExcludes(List.of(configPropertiesExcludes));
+        }
+
+        /**
+         * @param disklessAzEnabled Adds a diskless_az= hint to the replication flow&#39;s Kafka client.id so that diskless Kafka clusters serve the flow from brokers in the same availability zone.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disklessAzEnabled(@Nullable Output<Boolean> disklessAzEnabled) {
+            $.disklessAzEnabled = disklessAzEnabled;
+            return this;
+        }
+
+        /**
+         * @param disklessAzEnabled Adds a diskless_az= hint to the replication flow&#39;s Kafka client.id so that diskless Kafka clusters serve the flow from brokers in the same availability zone.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disklessAzEnabled(Boolean disklessAzEnabled) {
+            return disklessAzEnabled(Output.of(disklessAzEnabled));
         }
 
         /**

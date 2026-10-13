@@ -34,10 +34,6 @@ import (
 //				Username:          pulumi.String("testuser"),
 //				PasswordWo:        pulumi.String("password123"),
 //				PasswordWoVersion: pulumi.Int(1),
-//				MysqlGrants: pulumi.StringArray{
-//					pulumi.String("SELECT"),
-//					pulumi.String("DELETE"),
-//				},
 //			})
 //			if err != nil {
 //				return err
@@ -56,8 +52,6 @@ import (
 type OpensearchUser struct {
 	pulumi.CustomResourceState
 
-	// MySQL grants for the service user. Changing this property forces recreation of the resource.
-	MysqlGrants pulumi.StringArrayOutput `pulumi:"mysqlGrants"`
 	// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
 	Password pulumi.StringOutput `pulumi:"password"`
 	// The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. 'unknown' is reported when the hash is missing or uses an unrecognised format. The possible values are `md5`, `scram-sha-256` and `unknown`.
@@ -128,8 +122,6 @@ func GetOpensearchUser(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering OpensearchUser resources.
 type opensearchUserState struct {
-	// MySQL grants for the service user. Changing this property forces recreation of the resource.
-	MysqlGrants []string `pulumi:"mysqlGrants"`
 	// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
 	Password *string `pulumi:"password"`
 	// The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. 'unknown' is reported when the hash is missing or uses an unrecognised format. The possible values are `md5`, `scram-sha-256` and `unknown`.
@@ -151,8 +143,6 @@ type opensearchUserState struct {
 }
 
 type OpensearchUserState struct {
-	// MySQL grants for the service user. Changing this property forces recreation of the resource.
-	MysqlGrants pulumi.StringArrayInput
 	// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
 	Password pulumi.StringPtrInput
 	// The password hashing algorithm used for this PostgreSQL user, derived from the stored password hash. 'unknown' is reported when the hash is missing or uses an unrecognised format. The possible values are `md5`, `scram-sha-256` and `unknown`.
@@ -178,8 +168,6 @@ func (OpensearchUserState) ElementType() reflect.Type {
 }
 
 type opensearchUserArgs struct {
-	// MySQL grants for the service user. Changing this property forces recreation of the resource.
-	MysqlGrants []string `pulumi:"mysqlGrants"`
 	// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
 	Password *string `pulumi:"password"`
 	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
@@ -198,8 +186,6 @@ type opensearchUserArgs struct {
 
 // The set of arguments for constructing a OpensearchUser resource.
 type OpensearchUserArgs struct {
-	// MySQL grants for the service user. Changing this property forces recreation of the resource.
-	MysqlGrants pulumi.StringArrayInput
 	// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
 	Password pulumi.StringPtrInput
 	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
@@ -301,11 +287,6 @@ func (o OpensearchUserOutput) ToOpensearchUserOutput() OpensearchUserOutput {
 
 func (o OpensearchUserOutput) ToOpensearchUserOutputWithContext(ctx context.Context) OpensearchUserOutput {
 	return o
-}
-
-// MySQL grants for the service user. Changing this property forces recreation of the resource.
-func (o OpensearchUserOutput) MysqlGrants() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *OpensearchUser) pulumi.StringArrayOutput { return v.MysqlGrants }).(pulumi.StringArrayOutput)
 }
 
 // The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.

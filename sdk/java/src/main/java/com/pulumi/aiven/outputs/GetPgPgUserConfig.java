@@ -212,7 +212,7 @@ public final class GetPgPgUserConfig {
      */
     private @Nullable GetPgPgUserConfigTimescaledb timescaledb;
     /**
-     * @return Enum: `aiven`, `timescale`. Variant of the PostgreSQL service, may affect the features that are exposed by default.
+     * @return Enum: `aiven`, `pgLake`, `timescale`. Variant of the PostgreSQL service, may affect the features that are exposed by default.
      * 
      */
     private @Nullable String variant;
@@ -480,7 +480,7 @@ public final class GetPgPgUserConfig {
         return Optional.ofNullable(this.timescaledb);
     }
     /**
-     * @return Enum: `aiven`, `timescale`. Variant of the PostgreSQL service, may affect the features that are exposed by default.
+     * @return Enum: `aiven`, `pgLake`, `timescale`. Variant of the PostgreSQL service, may affect the features that are exposed by default.
      * 
      */
     public Optional<String> variant() {

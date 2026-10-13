@@ -116,6 +116,12 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? RecoveryBasebackupName { get; set; }
 
         /// <summary>
+        /// Number of replicas per shard in the Valkey cluster. Only applies to cluster plans. Example: `1`.
+        /// </summary>
+        [Input("replicas")]
+        public Input<int>? Replicas { get; set; }
+
+        /// <summary>
         /// Store logs for the service so that they are available in the HTTP API and console.
         /// </summary>
         [Input("serviceLog")]
@@ -126,6 +132,12 @@ namespace Pulumi.Aiven.Inputs
         /// </summary>
         [Input("serviceToForkFrom")]
         public Input<string>? ServiceToForkFrom { get; set; }
+
+        /// <summary>
+        /// Number of shards (primaries) in the Valkey cluster. Required for cluster plans. Example: `3`.
+        /// </summary>
+        [Input("shardCount")]
+        public Input<int>? ShardCount { get; set; }
 
         /// <summary>
         /// Use static public IP addresses.

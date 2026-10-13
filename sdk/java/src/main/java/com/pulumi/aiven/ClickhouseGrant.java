@@ -26,6 +26,8 @@ import javax.annotation.Nullable;
  * * To grant a privilege on all tables of a database, omit the table and only keep the database. Don&#39;t use `table=&#34;*&#34;`.
  * * Privileges granted on ClickHouse Named Collections are not currently managed by this resource and will be ignored. If you have grants on Named Collections managed outside of Terraform, this resource will not attempt to alter them. For an example showing how to set up Named Collection access with S3 integration, see the ClickHouse S3 Integration example.
  * * Changes first revoke all grants and then reissue the remaining grants for convergence.
+ * * Since ClickHouse 25.7, source privileges such as `S3`, `URL`, `FILE`, `HDFS`, and `AZURE` are deprecated aliases. ClickHouse stores them as separate `READ` and `WRITE` privileges and reports them that way in `system.grants`.
+ *   On ClickHouse 25.7 and later, use `privilege = &#34;READ&#34;` and `privilege = &#34;WRITE&#34;` with `database = &#34;*&#34;` instead of the alias. Using the alias on these versions causes Terraform to plan a destroy and recreate on every run. Applying it revokes and re-grants the privileges without fixing the plan.
  * * Some grants overlap, which can cause the Aiven Terraform Provider to detect a change even if you haven&#39;t made modifications. For example, using both `DELETE` and `ALTER DELETE` together might cause this issue.
  *   The [ClickHouse grant privileges documentation](https://clickhouse.com/docs/sql-reference/statements/grant) has a list of ClickHouse privileges.
  * 

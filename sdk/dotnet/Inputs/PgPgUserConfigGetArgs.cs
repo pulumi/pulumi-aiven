@@ -260,7 +260,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<Inputs.PgPgUserConfigTimescaledbGetArgs>? Timescaledb { get; set; }
 
         /// <summary>
-        /// Enum: `Aiven`, `Timescale`. Variant of the PostgreSQL service, may affect the features that are exposed by default.
+        /// Enum: `Aiven`, `PgLake`, `Timescale`. Variant of the PostgreSQL service, may affect the features that are exposed by default.
         /// </summary>
         [Input("variant")]
         public Input<string>? Variant { get; set; }

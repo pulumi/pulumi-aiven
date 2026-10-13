@@ -29,6 +29,7 @@ import * as utilities from "./utilities";
  *         "unclean.leader.election.enable",
  *         "min.insync.replicas",
  *     ],
+ *     disklessAzEnabled: true,
  *     emitBackwardHeartbeatsEnabled: false,
  *     emitHeartbeatsEnabled: false,
  *     exactlyOnceDeliveryEnabled: false,
@@ -86,6 +87,10 @@ export class MirrorMakerReplicationFlow extends pulumi.CustomResource {
      * List of topic configuration properties and/or regexes that should not be replicated. If omitted, MirrorMaker will use default list of exclusions. For stability reasons, we always include the `unclean.leader.election.enable` field in the excluded parameters. If you have specific requirements for this configuration, please reach out to our support team for assistance.
      */
     declare public readonly configPropertiesExcludes: pulumi.Output<string[] | undefined>;
+    /**
+     * Adds a diskless_az= hint to the replication flow's Kafka client.id so that diskless Kafka clusters serve the flow from brokers in the same availability zone.
+     */
+    declare public readonly disklessAzEnabled: pulumi.Output<boolean | undefined>;
     /**
      * Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
      */
@@ -170,6 +175,7 @@ export class MirrorMakerReplicationFlow extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as MirrorMakerReplicationFlowState | undefined;
             resourceInputs["configPropertiesExcludes"] = state?.configPropertiesExcludes;
+            resourceInputs["disklessAzEnabled"] = state?.disklessAzEnabled;
             resourceInputs["emitBackwardHeartbeatsEnabled"] = state?.emitBackwardHeartbeatsEnabled;
             resourceInputs["emitHeartbeatsEnabled"] = state?.emitHeartbeatsEnabled;
             resourceInputs["enable"] = state?.enable;
@@ -206,6 +212,7 @@ export class MirrorMakerReplicationFlow extends pulumi.CustomResource {
                 throw new Error("Missing required property 'targetCluster'");
             }
             resourceInputs["configPropertiesExcludes"] = args?.configPropertiesExcludes;
+            resourceInputs["disklessAzEnabled"] = args?.disklessAzEnabled;
             resourceInputs["emitBackwardHeartbeatsEnabled"] = args?.emitBackwardHeartbeatsEnabled;
             resourceInputs["emitHeartbeatsEnabled"] = args?.emitHeartbeatsEnabled;
             resourceInputs["enable"] = args?.enable;
@@ -238,6 +245,10 @@ export interface MirrorMakerReplicationFlowState {
      * List of topic configuration properties and/or regexes that should not be replicated. If omitted, MirrorMaker will use default list of exclusions. For stability reasons, we always include the `unclean.leader.election.enable` field in the excluded parameters. If you have specific requirements for this configuration, please reach out to our support team for assistance.
      */
     configPropertiesExcludes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Adds a diskless_az= hint to the replication flow's Kafka client.id so that diskless Kafka clusters serve the flow from brokers in the same availability zone.
+     */
+    disklessAzEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
      */
@@ -317,6 +328,10 @@ export interface MirrorMakerReplicationFlowArgs {
      * List of topic configuration properties and/or regexes that should not be replicated. If omitted, MirrorMaker will use default list of exclusions. For stability reasons, we always include the `unclean.leader.election.enable` field in the excluded parameters. If you have specific requirements for this configuration, please reach out to our support team for assistance.
      */
     configPropertiesExcludes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Adds a diskless_az= hint to the replication flow's Kafka client.id so that diskless Kafka clusters serve the flow from brokers in the same availability zone.
+     */
+    disklessAzEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
      */

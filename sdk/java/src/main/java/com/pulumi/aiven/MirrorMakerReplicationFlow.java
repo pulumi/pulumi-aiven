@@ -58,6 +58,7 @@ import javax.annotation.Nullable;
  *                 "message.timestamp.type",
  *                 "unclean.leader.election.enable",
  *                 "min.insync.replicas")
+ *             .disklessAzEnabled(true)
  *             .emitBackwardHeartbeatsEnabled(false)
  *             .emitHeartbeatsEnabled(false)
  *             .exactlyOnceDeliveryEnabled(false)
@@ -102,6 +103,20 @@ public class MirrorMakerReplicationFlow extends com.pulumi.resources.CustomResou
      */
     public Output<Optional<List<String>>> configPropertiesExcludes() {
         return Codegen.optional(this.configPropertiesExcludes);
+    }
+    /**
+     * Adds a diskless_az= hint to the replication flow&#39;s Kafka client.id so that diskless Kafka clusters serve the flow from brokers in the same availability zone.
+     * 
+     */
+    @Export(name="disklessAzEnabled", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> disklessAzEnabled;
+
+    /**
+     * @return Adds a diskless_az= hint to the replication flow&#39;s Kafka client.id so that diskless Kafka clusters serve the flow from brokers in the same availability zone.
+     * 
+     */
+    public Output<Optional<Boolean>> disklessAzEnabled() {
+        return Codegen.optional(this.disklessAzEnabled);
     }
     /**
      * Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.

@@ -16287,6 +16287,8 @@ type KafkaConnectKafkaConnectUserConfig struct {
 	//
 	// Deprecated: This property is deprecated.
 	AdditionalBackupRegions *string `pulumi:"additionalBackupRegions"`
+	// Install custom plugins uploaded via the custom file service
+	CustomPlugins []KafkaConnectKafkaConnectUserConfigCustomPlugin `pulumi:"customPlugins"`
 	// Allow-list of HTTPS URLs used to validate GCP credentialSource requests for Kafka Connect.
 	GcpAuthAllowedUrls []string `pulumi:"gcpAuthAllowedUrls"`
 	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
@@ -16335,6 +16337,8 @@ type KafkaConnectKafkaConnectUserConfigArgs struct {
 	//
 	// Deprecated: This property is deprecated.
 	AdditionalBackupRegions pulumi.StringPtrInput `pulumi:"additionalBackupRegions"`
+	// Install custom plugins uploaded via the custom file service
+	CustomPlugins KafkaConnectKafkaConnectUserConfigCustomPluginArrayInput `pulumi:"customPlugins"`
 	// Allow-list of HTTPS URLs used to validate GCP credentialSource requests for Kafka Connect.
 	GcpAuthAllowedUrls pulumi.StringArrayInput `pulumi:"gcpAuthAllowedUrls"`
 	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
@@ -16449,6 +16453,13 @@ func (o KafkaConnectKafkaConnectUserConfigOutput) ToKafkaConnectKafkaConnectUser
 // Deprecated: This property is deprecated.
 func (o KafkaConnectKafkaConnectUserConfigOutput) AdditionalBackupRegions() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaConnectKafkaConnectUserConfig) *string { return v.AdditionalBackupRegions }).(pulumi.StringPtrOutput)
+}
+
+// Install custom plugins uploaded via the custom file service
+func (o KafkaConnectKafkaConnectUserConfigOutput) CustomPlugins() KafkaConnectKafkaConnectUserConfigCustomPluginArrayOutput {
+	return o.ApplyT(func(v KafkaConnectKafkaConnectUserConfig) []KafkaConnectKafkaConnectUserConfigCustomPlugin {
+		return v.CustomPlugins
+	}).(KafkaConnectKafkaConnectUserConfigCustomPluginArrayOutput)
 }
 
 // Allow-list of HTTPS URLs used to validate GCP credentialSource requests for Kafka Connect.
@@ -16571,6 +16582,16 @@ func (o KafkaConnectKafkaConnectUserConfigPtrOutput) AdditionalBackupRegions() p
 		}
 		return v.AdditionalBackupRegions
 	}).(pulumi.StringPtrOutput)
+}
+
+// Install custom plugins uploaded via the custom file service
+func (o KafkaConnectKafkaConnectUserConfigPtrOutput) CustomPlugins() KafkaConnectKafkaConnectUserConfigCustomPluginArrayOutput {
+	return o.ApplyT(func(v *KafkaConnectKafkaConnectUserConfig) []KafkaConnectKafkaConnectUserConfigCustomPlugin {
+		if v == nil {
+			return nil
+		}
+		return v.CustomPlugins
+	}).(KafkaConnectKafkaConnectUserConfigCustomPluginArrayOutput)
 }
 
 // Allow-list of HTTPS URLs used to validate GCP credentialSource requests for Kafka Connect.
@@ -16713,6 +16734,112 @@ func (o KafkaConnectKafkaConnectUserConfigPtrOutput) StaticIps() pulumi.BoolPtrO
 		}
 		return v.StaticIps
 	}).(pulumi.BoolPtrOutput)
+}
+
+type KafkaConnectKafkaConnectUserConfigCustomPlugin struct {
+	// The name of the custom plugin as specified during upload. Example: `my-custom-connector`.
+	PluginName string `pulumi:"pluginName"`
+	// The version to install. Use a semver version (e.g. `1.0.0`) or `latest` to always use the most recent version. Example: `latest`.
+	PluginVersion string `pulumi:"pluginVersion"`
+}
+
+// KafkaConnectKafkaConnectUserConfigCustomPluginInput is an input type that accepts KafkaConnectKafkaConnectUserConfigCustomPluginArgs and KafkaConnectKafkaConnectUserConfigCustomPluginOutput values.
+// You can construct a concrete instance of `KafkaConnectKafkaConnectUserConfigCustomPluginInput` via:
+//
+//	KafkaConnectKafkaConnectUserConfigCustomPluginArgs{...}
+type KafkaConnectKafkaConnectUserConfigCustomPluginInput interface {
+	pulumi.Input
+
+	ToKafkaConnectKafkaConnectUserConfigCustomPluginOutput() KafkaConnectKafkaConnectUserConfigCustomPluginOutput
+	ToKafkaConnectKafkaConnectUserConfigCustomPluginOutputWithContext(context.Context) KafkaConnectKafkaConnectUserConfigCustomPluginOutput
+}
+
+type KafkaConnectKafkaConnectUserConfigCustomPluginArgs struct {
+	// The name of the custom plugin as specified during upload. Example: `my-custom-connector`.
+	PluginName pulumi.StringInput `pulumi:"pluginName"`
+	// The version to install. Use a semver version (e.g. `1.0.0`) or `latest` to always use the most recent version. Example: `latest`.
+	PluginVersion pulumi.StringInput `pulumi:"pluginVersion"`
+}
+
+func (KafkaConnectKafkaConnectUserConfigCustomPluginArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KafkaConnectKafkaConnectUserConfigCustomPlugin)(nil)).Elem()
+}
+
+func (i KafkaConnectKafkaConnectUserConfigCustomPluginArgs) ToKafkaConnectKafkaConnectUserConfigCustomPluginOutput() KafkaConnectKafkaConnectUserConfigCustomPluginOutput {
+	return i.ToKafkaConnectKafkaConnectUserConfigCustomPluginOutputWithContext(context.Background())
+}
+
+func (i KafkaConnectKafkaConnectUserConfigCustomPluginArgs) ToKafkaConnectKafkaConnectUserConfigCustomPluginOutputWithContext(ctx context.Context) KafkaConnectKafkaConnectUserConfigCustomPluginOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaConnectKafkaConnectUserConfigCustomPluginOutput)
+}
+
+// KafkaConnectKafkaConnectUserConfigCustomPluginArrayInput is an input type that accepts KafkaConnectKafkaConnectUserConfigCustomPluginArray and KafkaConnectKafkaConnectUserConfigCustomPluginArrayOutput values.
+// You can construct a concrete instance of `KafkaConnectKafkaConnectUserConfigCustomPluginArrayInput` via:
+//
+//	KafkaConnectKafkaConnectUserConfigCustomPluginArray{ KafkaConnectKafkaConnectUserConfigCustomPluginArgs{...} }
+type KafkaConnectKafkaConnectUserConfigCustomPluginArrayInput interface {
+	pulumi.Input
+
+	ToKafkaConnectKafkaConnectUserConfigCustomPluginArrayOutput() KafkaConnectKafkaConnectUserConfigCustomPluginArrayOutput
+	ToKafkaConnectKafkaConnectUserConfigCustomPluginArrayOutputWithContext(context.Context) KafkaConnectKafkaConnectUserConfigCustomPluginArrayOutput
+}
+
+type KafkaConnectKafkaConnectUserConfigCustomPluginArray []KafkaConnectKafkaConnectUserConfigCustomPluginInput
+
+func (KafkaConnectKafkaConnectUserConfigCustomPluginArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KafkaConnectKafkaConnectUserConfigCustomPlugin)(nil)).Elem()
+}
+
+func (i KafkaConnectKafkaConnectUserConfigCustomPluginArray) ToKafkaConnectKafkaConnectUserConfigCustomPluginArrayOutput() KafkaConnectKafkaConnectUserConfigCustomPluginArrayOutput {
+	return i.ToKafkaConnectKafkaConnectUserConfigCustomPluginArrayOutputWithContext(context.Background())
+}
+
+func (i KafkaConnectKafkaConnectUserConfigCustomPluginArray) ToKafkaConnectKafkaConnectUserConfigCustomPluginArrayOutputWithContext(ctx context.Context) KafkaConnectKafkaConnectUserConfigCustomPluginArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaConnectKafkaConnectUserConfigCustomPluginArrayOutput)
+}
+
+type KafkaConnectKafkaConnectUserConfigCustomPluginOutput struct{ *pulumi.OutputState }
+
+func (KafkaConnectKafkaConnectUserConfigCustomPluginOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KafkaConnectKafkaConnectUserConfigCustomPlugin)(nil)).Elem()
+}
+
+func (o KafkaConnectKafkaConnectUserConfigCustomPluginOutput) ToKafkaConnectKafkaConnectUserConfigCustomPluginOutput() KafkaConnectKafkaConnectUserConfigCustomPluginOutput {
+	return o
+}
+
+func (o KafkaConnectKafkaConnectUserConfigCustomPluginOutput) ToKafkaConnectKafkaConnectUserConfigCustomPluginOutputWithContext(ctx context.Context) KafkaConnectKafkaConnectUserConfigCustomPluginOutput {
+	return o
+}
+
+// The name of the custom plugin as specified during upload. Example: `my-custom-connector`.
+func (o KafkaConnectKafkaConnectUserConfigCustomPluginOutput) PluginName() pulumi.StringOutput {
+	return o.ApplyT(func(v KafkaConnectKafkaConnectUserConfigCustomPlugin) string { return v.PluginName }).(pulumi.StringOutput)
+}
+
+// The version to install. Use a semver version (e.g. `1.0.0`) or `latest` to always use the most recent version. Example: `latest`.
+func (o KafkaConnectKafkaConnectUserConfigCustomPluginOutput) PluginVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v KafkaConnectKafkaConnectUserConfigCustomPlugin) string { return v.PluginVersion }).(pulumi.StringOutput)
+}
+
+type KafkaConnectKafkaConnectUserConfigCustomPluginArrayOutput struct{ *pulumi.OutputState }
+
+func (KafkaConnectKafkaConnectUserConfigCustomPluginArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KafkaConnectKafkaConnectUserConfigCustomPlugin)(nil)).Elem()
+}
+
+func (o KafkaConnectKafkaConnectUserConfigCustomPluginArrayOutput) ToKafkaConnectKafkaConnectUserConfigCustomPluginArrayOutput() KafkaConnectKafkaConnectUserConfigCustomPluginArrayOutput {
+	return o
+}
+
+func (o KafkaConnectKafkaConnectUserConfigCustomPluginArrayOutput) ToKafkaConnectKafkaConnectUserConfigCustomPluginArrayOutputWithContext(ctx context.Context) KafkaConnectKafkaConnectUserConfigCustomPluginArrayOutput {
+	return o
+}
+
+func (o KafkaConnectKafkaConnectUserConfigCustomPluginArrayOutput) Index(i pulumi.IntInput) KafkaConnectKafkaConnectUserConfigCustomPluginOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KafkaConnectKafkaConnectUserConfigCustomPlugin {
+		return vs[0].([]KafkaConnectKafkaConnectUserConfigCustomPlugin)[vs[1].(int)]
+	}).(KafkaConnectKafkaConnectUserConfigCustomPluginOutput)
 }
 
 type KafkaConnectKafkaConnectUserConfigIpFilterObject struct {
@@ -19363,9 +19490,9 @@ type KafkaKafkaUserConfig struct {
 	KafkaRestConfig *KafkaKafkaUserConfigKafkaRestConfig `pulumi:"kafkaRestConfig"`
 	// Kafka SASL mechanisms
 	KafkaSaslMechanisms *KafkaKafkaUserConfigKafkaSaslMechanisms `pulumi:"kafkaSaslMechanisms"`
-	// Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, `4.1`, `4.2`, and newer. Kafka major version.
+	// Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, `4.1`, `4.2`, `4.3`, and newer. Kafka major version.
 	KafkaVersion *string `pulumi:"kafkaVersion"`
-	// Enum: `6.2.1`, `6.2.2`, `6.2.3`, and newer. Select a Karapace version for this service, or select Latest to use the latest available version automatically. New versions become available after installation during a maintenance update.
+	// Enum: `6.2.1`, `6.2.2`, `6.2.3`, `6.2.4`, and newer. Select a Karapace version for this service, or select Latest to use the latest available version automatically. New versions become available after installation during a maintenance update.
 	KarapaceVersion *string `pulumi:"karapaceVersion"`
 	// Use a Let's Encrypt certificate authority (CA) for Kafka SASL authentication. (Default: False).
 	LetsencryptSasl *bool `pulumi:"letsencryptSasl"`
@@ -19457,9 +19584,9 @@ type KafkaKafkaUserConfigArgs struct {
 	KafkaRestConfig KafkaKafkaUserConfigKafkaRestConfigPtrInput `pulumi:"kafkaRestConfig"`
 	// Kafka SASL mechanisms
 	KafkaSaslMechanisms KafkaKafkaUserConfigKafkaSaslMechanismsPtrInput `pulumi:"kafkaSaslMechanisms"`
-	// Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, `4.1`, `4.2`, and newer. Kafka major version.
+	// Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, `4.1`, `4.2`, `4.3`, and newer. Kafka major version.
 	KafkaVersion pulumi.StringPtrInput `pulumi:"kafkaVersion"`
-	// Enum: `6.2.1`, `6.2.2`, `6.2.3`, and newer. Select a Karapace version for this service, or select Latest to use the latest available version automatically. New versions become available after installation during a maintenance update.
+	// Enum: `6.2.1`, `6.2.2`, `6.2.3`, `6.2.4`, and newer. Select a Karapace version for this service, or select Latest to use the latest available version automatically. New versions become available after installation during a maintenance update.
 	KarapaceVersion pulumi.StringPtrInput `pulumi:"karapaceVersion"`
 	// Use a Let's Encrypt certificate authority (CA) for Kafka SASL authentication. (Default: False).
 	LetsencryptSasl pulumi.BoolPtrInput `pulumi:"letsencryptSasl"`
@@ -19691,12 +19818,12 @@ func (o KafkaKafkaUserConfigOutput) KafkaSaslMechanisms() KafkaKafkaUserConfigKa
 	return o.ApplyT(func(v KafkaKafkaUserConfig) *KafkaKafkaUserConfigKafkaSaslMechanisms { return v.KafkaSaslMechanisms }).(KafkaKafkaUserConfigKafkaSaslMechanismsPtrOutput)
 }
 
-// Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, `4.1`, `4.2`, and newer. Kafka major version.
+// Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, `4.1`, `4.2`, `4.3`, and newer. Kafka major version.
 func (o KafkaKafkaUserConfigOutput) KafkaVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfig) *string { return v.KafkaVersion }).(pulumi.StringPtrOutput)
 }
 
-// Enum: `6.2.1`, `6.2.2`, `6.2.3`, and newer. Select a Karapace version for this service, or select Latest to use the latest available version automatically. New versions become available after installation during a maintenance update.
+// Enum: `6.2.1`, `6.2.2`, `6.2.3`, `6.2.4`, and newer. Select a Karapace version for this service, or select Latest to use the latest available version automatically. New versions become available after installation during a maintenance update.
 func (o KafkaKafkaUserConfigOutput) KarapaceVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfig) *string { return v.KarapaceVersion }).(pulumi.StringPtrOutput)
 }
@@ -20024,7 +20151,7 @@ func (o KafkaKafkaUserConfigPtrOutput) KafkaSaslMechanisms() KafkaKafkaUserConfi
 	}).(KafkaKafkaUserConfigKafkaSaslMechanismsPtrOutput)
 }
 
-// Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, `4.1`, `4.2`, and newer. Kafka major version.
+// Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, `4.1`, `4.2`, `4.3`, and newer. Kafka major version.
 func (o KafkaKafkaUserConfigPtrOutput) KafkaVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfig) *string {
 		if v == nil {
@@ -20034,7 +20161,7 @@ func (o KafkaKafkaUserConfigPtrOutput) KafkaVersion() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Enum: `6.2.1`, `6.2.2`, `6.2.3`, and newer. Select a Karapace version for this service, or select Latest to use the latest available version automatically. New versions become available after installation during a maintenance update.
+// Enum: `6.2.1`, `6.2.2`, `6.2.3`, `6.2.4`, and newer. Select a Karapace version for this service, or select Latest to use the latest available version automatically. New versions become available after installation during a maintenance update.
 func (o KafkaKafkaUserConfigPtrOutput) KarapaceVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaKafkaUserConfig) *string {
 		if v == nil {
@@ -20565,6 +20692,18 @@ type KafkaKafkaUserConfigKafka struct {
 	ConnectionsMaxIdleMs *int `pulumi:"connectionsMaxIdleMs"`
 	// Replication factor for auto-created topics (Default: 3).
 	DefaultReplicationFactor *int `pulumi:"defaultReplicationFactor"`
+	// The heartbeat interval given to the members of a consumer group using the consumer rebalance protocol. Must be between group.consumer.min.heartbeat.interval.ms and group.consumer.max.heartbeat.interval.ms, and lower than group.consumer.session.timeout.ms. (Default: 5000 ms (5 seconds)) Requires Kafka 4.0 or later. Example: `5000`.
+	GroupConsumerHeartbeatIntervalMs *int `pulumi:"groupConsumerHeartbeatIntervalMs"`
+	// The maximum heartbeat interval allowed for consumer group members using the consumer rebalance protocol. Must not be less than group.consumer.min.heartbeat.interval.ms. (Default: 15000 ms (15 seconds)) Requires Kafka 4.0 or later. Example: `15000`.
+	GroupConsumerMaxHeartbeatIntervalMs *int `pulumi:"groupConsumerMaxHeartbeatIntervalMs"`
+	// The maximum session timeout allowed for consumer group members using the consumer rebalance protocol. Must not be less than group.consumer.min.session.timeout.ms. (Default: 60000 ms (60 seconds)) Requires Kafka 4.0 or later. Example: `60000`.
+	GroupConsumerMaxSessionTimeoutMs *int `pulumi:"groupConsumerMaxSessionTimeoutMs"`
+	// The minimum heartbeat interval allowed for consumer group members using the consumer rebalance protocol. Must not be greater than group.consumer.max.heartbeat.interval.ms. (Default: 5000 ms (5 seconds)) Requires Kafka 4.0 or later. Example: `5000`.
+	GroupConsumerMinHeartbeatIntervalMs *int `pulumi:"groupConsumerMinHeartbeatIntervalMs"`
+	// The minimum session timeout allowed for consumer group members using the consumer rebalance protocol. Must not be greater than group.consumer.max.session.timeout.ms. (Default: 45000 ms (45 seconds)) Requires Kafka 4.0 or later. Example: `45000`.
+	GroupConsumerMinSessionTimeoutMs *int `pulumi:"groupConsumerMinSessionTimeoutMs"`
+	// The timeout used to detect consumer group member failures when using the consumer rebalance protocol. Must be between group.consumer.min.session.timeout.ms and group.consumer.max.session.timeout.ms. (Default: 45000 ms (45 seconds)) Requires Kafka 4.0 or later. Example: `45000`.
+	GroupConsumerSessionTimeoutMs *int `pulumi:"groupConsumerSessionTimeoutMs"`
 	// Enum: `classic`, `classic,consumer`, `classic,consumer,share`, `classic,consumer,share,streams`, `classic,consumer,streams`, `classic,share`, `classic,streams`. The enabled consumer group rebalance protocols. Use consumer, classic, share, streams to enable Kafka share groups.
 	GroupCoordinatorRebalanceProtocols *string `pulumi:"groupCoordinatorRebalanceProtocols"`
 	// The amount of time, in milliseconds, the group coordinator will wait for more consumers to join a new group before performing the first rebalance. A longer delay means potentially fewer rebalances, but increases the time until processing begins. The default value for this is 3 seconds. During development and testing it might be desirable to set this to 0 in order to not delay test execution time. (Default: 3000 ms (3 seconds)). Example: `3000`.
@@ -20705,6 +20844,18 @@ type KafkaKafkaUserConfigKafkaArgs struct {
 	ConnectionsMaxIdleMs pulumi.IntPtrInput `pulumi:"connectionsMaxIdleMs"`
 	// Replication factor for auto-created topics (Default: 3).
 	DefaultReplicationFactor pulumi.IntPtrInput `pulumi:"defaultReplicationFactor"`
+	// The heartbeat interval given to the members of a consumer group using the consumer rebalance protocol. Must be between group.consumer.min.heartbeat.interval.ms and group.consumer.max.heartbeat.interval.ms, and lower than group.consumer.session.timeout.ms. (Default: 5000 ms (5 seconds)) Requires Kafka 4.0 or later. Example: `5000`.
+	GroupConsumerHeartbeatIntervalMs pulumi.IntPtrInput `pulumi:"groupConsumerHeartbeatIntervalMs"`
+	// The maximum heartbeat interval allowed for consumer group members using the consumer rebalance protocol. Must not be less than group.consumer.min.heartbeat.interval.ms. (Default: 15000 ms (15 seconds)) Requires Kafka 4.0 or later. Example: `15000`.
+	GroupConsumerMaxHeartbeatIntervalMs pulumi.IntPtrInput `pulumi:"groupConsumerMaxHeartbeatIntervalMs"`
+	// The maximum session timeout allowed for consumer group members using the consumer rebalance protocol. Must not be less than group.consumer.min.session.timeout.ms. (Default: 60000 ms (60 seconds)) Requires Kafka 4.0 or later. Example: `60000`.
+	GroupConsumerMaxSessionTimeoutMs pulumi.IntPtrInput `pulumi:"groupConsumerMaxSessionTimeoutMs"`
+	// The minimum heartbeat interval allowed for consumer group members using the consumer rebalance protocol. Must not be greater than group.consumer.max.heartbeat.interval.ms. (Default: 5000 ms (5 seconds)) Requires Kafka 4.0 or later. Example: `5000`.
+	GroupConsumerMinHeartbeatIntervalMs pulumi.IntPtrInput `pulumi:"groupConsumerMinHeartbeatIntervalMs"`
+	// The minimum session timeout allowed for consumer group members using the consumer rebalance protocol. Must not be greater than group.consumer.max.session.timeout.ms. (Default: 45000 ms (45 seconds)) Requires Kafka 4.0 or later. Example: `45000`.
+	GroupConsumerMinSessionTimeoutMs pulumi.IntPtrInput `pulumi:"groupConsumerMinSessionTimeoutMs"`
+	// The timeout used to detect consumer group member failures when using the consumer rebalance protocol. Must be between group.consumer.min.session.timeout.ms and group.consumer.max.session.timeout.ms. (Default: 45000 ms (45 seconds)) Requires Kafka 4.0 or later. Example: `45000`.
+	GroupConsumerSessionTimeoutMs pulumi.IntPtrInput `pulumi:"groupConsumerSessionTimeoutMs"`
 	// Enum: `classic`, `classic,consumer`, `classic,consumer,share`, `classic,consumer,share,streams`, `classic,consumer,streams`, `classic,share`, `classic,streams`. The enabled consumer group rebalance protocols. Use consumer, classic, share, streams to enable Kafka share groups.
 	GroupCoordinatorRebalanceProtocols pulumi.StringPtrInput `pulumi:"groupCoordinatorRebalanceProtocols"`
 	// The amount of time, in milliseconds, the group coordinator will wait for more consumers to join a new group before performing the first rebalance. A longer delay means potentially fewer rebalances, but increases the time until processing begins. The default value for this is 3 seconds. During development and testing it might be desirable to set this to 0 in order to not delay test execution time. (Default: 3000 ms (3 seconds)). Example: `3000`.
@@ -20923,6 +21074,36 @@ func (o KafkaKafkaUserConfigKafkaOutput) ConnectionsMaxIdleMs() pulumi.IntPtrOut
 // Replication factor for auto-created topics (Default: 3).
 func (o KafkaKafkaUserConfigKafkaOutput) DefaultReplicationFactor() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfigKafka) *int { return v.DefaultReplicationFactor }).(pulumi.IntPtrOutput)
+}
+
+// The heartbeat interval given to the members of a consumer group using the consumer rebalance protocol. Must be between group.consumer.min.heartbeat.interval.ms and group.consumer.max.heartbeat.interval.ms, and lower than group.consumer.session.timeout.ms. (Default: 5000 ms (5 seconds)) Requires Kafka 4.0 or later. Example: `5000`.
+func (o KafkaKafkaUserConfigKafkaOutput) GroupConsumerHeartbeatIntervalMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v KafkaKafkaUserConfigKafka) *int { return v.GroupConsumerHeartbeatIntervalMs }).(pulumi.IntPtrOutput)
+}
+
+// The maximum heartbeat interval allowed for consumer group members using the consumer rebalance protocol. Must not be less than group.consumer.min.heartbeat.interval.ms. (Default: 15000 ms (15 seconds)) Requires Kafka 4.0 or later. Example: `15000`.
+func (o KafkaKafkaUserConfigKafkaOutput) GroupConsumerMaxHeartbeatIntervalMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v KafkaKafkaUserConfigKafka) *int { return v.GroupConsumerMaxHeartbeatIntervalMs }).(pulumi.IntPtrOutput)
+}
+
+// The maximum session timeout allowed for consumer group members using the consumer rebalance protocol. Must not be less than group.consumer.min.session.timeout.ms. (Default: 60000 ms (60 seconds)) Requires Kafka 4.0 or later. Example: `60000`.
+func (o KafkaKafkaUserConfigKafkaOutput) GroupConsumerMaxSessionTimeoutMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v KafkaKafkaUserConfigKafka) *int { return v.GroupConsumerMaxSessionTimeoutMs }).(pulumi.IntPtrOutput)
+}
+
+// The minimum heartbeat interval allowed for consumer group members using the consumer rebalance protocol. Must not be greater than group.consumer.max.heartbeat.interval.ms. (Default: 5000 ms (5 seconds)) Requires Kafka 4.0 or later. Example: `5000`.
+func (o KafkaKafkaUserConfigKafkaOutput) GroupConsumerMinHeartbeatIntervalMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v KafkaKafkaUserConfigKafka) *int { return v.GroupConsumerMinHeartbeatIntervalMs }).(pulumi.IntPtrOutput)
+}
+
+// The minimum session timeout allowed for consumer group members using the consumer rebalance protocol. Must not be greater than group.consumer.max.session.timeout.ms. (Default: 45000 ms (45 seconds)) Requires Kafka 4.0 or later. Example: `45000`.
+func (o KafkaKafkaUserConfigKafkaOutput) GroupConsumerMinSessionTimeoutMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v KafkaKafkaUserConfigKafka) *int { return v.GroupConsumerMinSessionTimeoutMs }).(pulumi.IntPtrOutput)
+}
+
+// The timeout used to detect consumer group member failures when using the consumer rebalance protocol. Must be between group.consumer.min.session.timeout.ms and group.consumer.max.session.timeout.ms. (Default: 45000 ms (45 seconds)) Requires Kafka 4.0 or later. Example: `45000`.
+func (o KafkaKafkaUserConfigKafkaOutput) GroupConsumerSessionTimeoutMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v KafkaKafkaUserConfigKafka) *int { return v.GroupConsumerSessionTimeoutMs }).(pulumi.IntPtrOutput)
 }
 
 // Enum: `classic`, `classic,consumer`, `classic,consumer,share`, `classic,consumer,share,streams`, `classic,consumer,streams`, `classic,share`, `classic,streams`. The enabled consumer group rebalance protocols. Use consumer, classic, share, streams to enable Kafka share groups.
@@ -21286,6 +21467,66 @@ func (o KafkaKafkaUserConfigKafkaPtrOutput) DefaultReplicationFactor() pulumi.In
 			return nil
 		}
 		return v.DefaultReplicationFactor
+	}).(pulumi.IntPtrOutput)
+}
+
+// The heartbeat interval given to the members of a consumer group using the consumer rebalance protocol. Must be between group.consumer.min.heartbeat.interval.ms and group.consumer.max.heartbeat.interval.ms, and lower than group.consumer.session.timeout.ms. (Default: 5000 ms (5 seconds)) Requires Kafka 4.0 or later. Example: `5000`.
+func (o KafkaKafkaUserConfigKafkaPtrOutput) GroupConsumerHeartbeatIntervalMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *KafkaKafkaUserConfigKafka) *int {
+		if v == nil {
+			return nil
+		}
+		return v.GroupConsumerHeartbeatIntervalMs
+	}).(pulumi.IntPtrOutput)
+}
+
+// The maximum heartbeat interval allowed for consumer group members using the consumer rebalance protocol. Must not be less than group.consumer.min.heartbeat.interval.ms. (Default: 15000 ms (15 seconds)) Requires Kafka 4.0 or later. Example: `15000`.
+func (o KafkaKafkaUserConfigKafkaPtrOutput) GroupConsumerMaxHeartbeatIntervalMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *KafkaKafkaUserConfigKafka) *int {
+		if v == nil {
+			return nil
+		}
+		return v.GroupConsumerMaxHeartbeatIntervalMs
+	}).(pulumi.IntPtrOutput)
+}
+
+// The maximum session timeout allowed for consumer group members using the consumer rebalance protocol. Must not be less than group.consumer.min.session.timeout.ms. (Default: 60000 ms (60 seconds)) Requires Kafka 4.0 or later. Example: `60000`.
+func (o KafkaKafkaUserConfigKafkaPtrOutput) GroupConsumerMaxSessionTimeoutMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *KafkaKafkaUserConfigKafka) *int {
+		if v == nil {
+			return nil
+		}
+		return v.GroupConsumerMaxSessionTimeoutMs
+	}).(pulumi.IntPtrOutput)
+}
+
+// The minimum heartbeat interval allowed for consumer group members using the consumer rebalance protocol. Must not be greater than group.consumer.max.heartbeat.interval.ms. (Default: 5000 ms (5 seconds)) Requires Kafka 4.0 or later. Example: `5000`.
+func (o KafkaKafkaUserConfigKafkaPtrOutput) GroupConsumerMinHeartbeatIntervalMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *KafkaKafkaUserConfigKafka) *int {
+		if v == nil {
+			return nil
+		}
+		return v.GroupConsumerMinHeartbeatIntervalMs
+	}).(pulumi.IntPtrOutput)
+}
+
+// The minimum session timeout allowed for consumer group members using the consumer rebalance protocol. Must not be greater than group.consumer.max.session.timeout.ms. (Default: 45000 ms (45 seconds)) Requires Kafka 4.0 or later. Example: `45000`.
+func (o KafkaKafkaUserConfigKafkaPtrOutput) GroupConsumerMinSessionTimeoutMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *KafkaKafkaUserConfigKafka) *int {
+		if v == nil {
+			return nil
+		}
+		return v.GroupConsumerMinSessionTimeoutMs
+	}).(pulumi.IntPtrOutput)
+}
+
+// The timeout used to detect consumer group member failures when using the consumer rebalance protocol. Must be between group.consumer.min.session.timeout.ms and group.consumer.max.session.timeout.ms. (Default: 45000 ms (45 seconds)) Requires Kafka 4.0 or later. Example: `45000`.
+func (o KafkaKafkaUserConfigKafkaPtrOutput) GroupConsumerSessionTimeoutMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *KafkaKafkaUserConfigKafka) *int {
+		if v == nil {
+			return nil
+		}
+		return v.GroupConsumerSessionTimeoutMs
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -30882,6 +31123,14 @@ type MySqlMysqlUserConfigMysql struct {
 	InnodbLockWaitTimeout *int `pulumi:"innodbLockWaitTimeout"`
 	// The size in bytes of the buffer that InnoDB uses to write to the log files on disk. Requests above 15% of the RAM provided by your service plan are rejected, because a larger buffer leaves less memory for the buffer pool and client connections.
 	InnodbLogBufferSize *int `pulumi:"innodbLogBufferSize"`
+	// Percentage of dirty pages in the InnoDB buffer pool at which InnoDB starts flushing aggressively. Lowering it spreads write I/O more evenly and shortens crash recovery, at the cost of flushing pages that might have been modified again. Must stay at or above innodb*max*dirty*pages*pct_lwm. Default is 90. Example: `75`.
+	InnodbMaxDirtyPagesPct *float64 `pulumi:"innodbMaxDirtyPagesPct"`
+	// Percentage of dirty pages in the InnoDB buffer pool at which InnoDB starts pre-flushing, to keep the dirty page ratio from reaching innodb*max*dirty*pages*pct. 0 turns pre-flushing off. Cannot be set above innodb*max*dirty*pages*pct. Default is 10. Example: `10`.
+	InnodbMaxDirtyPagesPctLwm *float64 `pulumi:"innodbMaxDirtyPagesPctLwm"`
+	// Number of outstanding transactions the InnoDB purge operation may fall behind by before INSERT, UPDATE and DELETE are delayed to let it catch up. The delay applies per row and grows with the lag, and it is capped by innodb*max*purge*lag*delay, which has to be set as well for this option to have any effect. Default is 0, which never delays anything.
+	InnodbMaxPurgeLag *int `pulumi:"innodbMaxPurgeLag"`
+	// Cap in microseconds on the per-row delay innodb*max*purge*lag applies to INSERT, UPDATE and DELETE. MySQL clamps the delay to this value unconditionally, so while this is 0 no delay is ever applied and innodb*max*purge*lag on its own does nothing. Both options must be non-zero for either to take effect. Default is 0. Example: `10000`.
+	InnodbMaxPurgeLagDelay *int `pulumi:"innodbMaxPurgeLagDelay"`
 	// The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
 	InnodbOnlineAlterLogMaxSize *int `pulumi:"innodbOnlineAlterLogMaxSize"`
 	// When enabled, OPTIMIZE TABLE on InnoDB tables only updates the FULLTEXT index instead of rebuilding the table. Intended to be enabled temporarily during FULLTEXT index maintenance and disabled afterwards; while enabled, OPTIMIZE TABLE does not reclaim table space.
@@ -31006,6 +31255,14 @@ type MySqlMysqlUserConfigMysqlArgs struct {
 	InnodbLockWaitTimeout pulumi.IntPtrInput `pulumi:"innodbLockWaitTimeout"`
 	// The size in bytes of the buffer that InnoDB uses to write to the log files on disk. Requests above 15% of the RAM provided by your service plan are rejected, because a larger buffer leaves less memory for the buffer pool and client connections.
 	InnodbLogBufferSize pulumi.IntPtrInput `pulumi:"innodbLogBufferSize"`
+	// Percentage of dirty pages in the InnoDB buffer pool at which InnoDB starts flushing aggressively. Lowering it spreads write I/O more evenly and shortens crash recovery, at the cost of flushing pages that might have been modified again. Must stay at or above innodb*max*dirty*pages*pct_lwm. Default is 90. Example: `75`.
+	InnodbMaxDirtyPagesPct pulumi.Float64PtrInput `pulumi:"innodbMaxDirtyPagesPct"`
+	// Percentage of dirty pages in the InnoDB buffer pool at which InnoDB starts pre-flushing, to keep the dirty page ratio from reaching innodb*max*dirty*pages*pct. 0 turns pre-flushing off. Cannot be set above innodb*max*dirty*pages*pct. Default is 10. Example: `10`.
+	InnodbMaxDirtyPagesPctLwm pulumi.Float64PtrInput `pulumi:"innodbMaxDirtyPagesPctLwm"`
+	// Number of outstanding transactions the InnoDB purge operation may fall behind by before INSERT, UPDATE and DELETE are delayed to let it catch up. The delay applies per row and grows with the lag, and it is capped by innodb*max*purge*lag*delay, which has to be set as well for this option to have any effect. Default is 0, which never delays anything.
+	InnodbMaxPurgeLag pulumi.IntPtrInput `pulumi:"innodbMaxPurgeLag"`
+	// Cap in microseconds on the per-row delay innodb*max*purge*lag applies to INSERT, UPDATE and DELETE. MySQL clamps the delay to this value unconditionally, so while this is 0 no delay is ever applied and innodb*max*purge*lag on its own does nothing. Both options must be non-zero for either to take effect. Default is 0. Example: `10000`.
+	InnodbMaxPurgeLagDelay pulumi.IntPtrInput `pulumi:"innodbMaxPurgeLagDelay"`
 	// The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
 	InnodbOnlineAlterLogMaxSize pulumi.IntPtrInput `pulumi:"innodbOnlineAlterLogMaxSize"`
 	// When enabled, OPTIMIZE TABLE on InnoDB tables only updates the FULLTEXT index instead of rebuilding the table. Intended to be enabled temporarily during FULLTEXT index maintenance and disabled afterwards; while enabled, OPTIMIZE TABLE does not reclaim table space.
@@ -31259,6 +31516,26 @@ func (o MySqlMysqlUserConfigMysqlOutput) InnodbLockWaitTimeout() pulumi.IntPtrOu
 // The size in bytes of the buffer that InnoDB uses to write to the log files on disk. Requests above 15% of the RAM provided by your service plan are rejected, because a larger buffer leaves less memory for the buffer pool and client connections.
 func (o MySqlMysqlUserConfigMysqlOutput) InnodbLogBufferSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v MySqlMysqlUserConfigMysql) *int { return v.InnodbLogBufferSize }).(pulumi.IntPtrOutput)
+}
+
+// Percentage of dirty pages in the InnoDB buffer pool at which InnoDB starts flushing aggressively. Lowering it spreads write I/O more evenly and shortens crash recovery, at the cost of flushing pages that might have been modified again. Must stay at or above innodb*max*dirty*pages*pct_lwm. Default is 90. Example: `75`.
+func (o MySqlMysqlUserConfigMysqlOutput) InnodbMaxDirtyPagesPct() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v MySqlMysqlUserConfigMysql) *float64 { return v.InnodbMaxDirtyPagesPct }).(pulumi.Float64PtrOutput)
+}
+
+// Percentage of dirty pages in the InnoDB buffer pool at which InnoDB starts pre-flushing, to keep the dirty page ratio from reaching innodb*max*dirty*pages*pct. 0 turns pre-flushing off. Cannot be set above innodb*max*dirty*pages*pct. Default is 10. Example: `10`.
+func (o MySqlMysqlUserConfigMysqlOutput) InnodbMaxDirtyPagesPctLwm() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v MySqlMysqlUserConfigMysql) *float64 { return v.InnodbMaxDirtyPagesPctLwm }).(pulumi.Float64PtrOutput)
+}
+
+// Number of outstanding transactions the InnoDB purge operation may fall behind by before INSERT, UPDATE and DELETE are delayed to let it catch up. The delay applies per row and grows with the lag, and it is capped by innodb*max*purge*lag*delay, which has to be set as well for this option to have any effect. Default is 0, which never delays anything.
+func (o MySqlMysqlUserConfigMysqlOutput) InnodbMaxPurgeLag() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MySqlMysqlUserConfigMysql) *int { return v.InnodbMaxPurgeLag }).(pulumi.IntPtrOutput)
+}
+
+// Cap in microseconds on the per-row delay innodb*max*purge*lag applies to INSERT, UPDATE and DELETE. MySQL clamps the delay to this value unconditionally, so while this is 0 no delay is ever applied and innodb*max*purge*lag on its own does nothing. Both options must be non-zero for either to take effect. Default is 0. Example: `10000`.
+func (o MySqlMysqlUserConfigMysqlOutput) InnodbMaxPurgeLagDelay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MySqlMysqlUserConfigMysql) *int { return v.InnodbMaxPurgeLagDelay }).(pulumi.IntPtrOutput)
 }
 
 // The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
@@ -31667,6 +31944,46 @@ func (o MySqlMysqlUserConfigMysqlPtrOutput) InnodbLogBufferSize() pulumi.IntPtrO
 			return nil
 		}
 		return v.InnodbLogBufferSize
+	}).(pulumi.IntPtrOutput)
+}
+
+// Percentage of dirty pages in the InnoDB buffer pool at which InnoDB starts flushing aggressively. Lowering it spreads write I/O more evenly and shortens crash recovery, at the cost of flushing pages that might have been modified again. Must stay at or above innodb*max*dirty*pages*pct_lwm. Default is 90. Example: `75`.
+func (o MySqlMysqlUserConfigMysqlPtrOutput) InnodbMaxDirtyPagesPct() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *MySqlMysqlUserConfigMysql) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.InnodbMaxDirtyPagesPct
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Percentage of dirty pages in the InnoDB buffer pool at which InnoDB starts pre-flushing, to keep the dirty page ratio from reaching innodb*max*dirty*pages*pct. 0 turns pre-flushing off. Cannot be set above innodb*max*dirty*pages*pct. Default is 10. Example: `10`.
+func (o MySqlMysqlUserConfigMysqlPtrOutput) InnodbMaxDirtyPagesPctLwm() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *MySqlMysqlUserConfigMysql) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.InnodbMaxDirtyPagesPctLwm
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Number of outstanding transactions the InnoDB purge operation may fall behind by before INSERT, UPDATE and DELETE are delayed to let it catch up. The delay applies per row and grows with the lag, and it is capped by innodb*max*purge*lag*delay, which has to be set as well for this option to have any effect. Default is 0, which never delays anything.
+func (o MySqlMysqlUserConfigMysqlPtrOutput) InnodbMaxPurgeLag() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MySqlMysqlUserConfigMysql) *int {
+		if v == nil {
+			return nil
+		}
+		return v.InnodbMaxPurgeLag
+	}).(pulumi.IntPtrOutput)
+}
+
+// Cap in microseconds on the per-row delay innodb*max*purge*lag applies to INSERT, UPDATE and DELETE. MySQL clamps the delay to this value unconditionally, so while this is 0 no delay is ever applied and innodb*max*purge*lag on its own does nothing. Both options must be non-zero for either to take effect. Default is 0. Example: `10000`.
+func (o MySqlMysqlUserConfigMysqlPtrOutput) InnodbMaxPurgeLagDelay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MySqlMysqlUserConfigMysql) *int {
+		if v == nil {
+			return nil
+		}
+		return v.InnodbMaxPurgeLagDelay
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -33786,7 +34103,7 @@ type OpenSearchOpensearchUserConfig struct {
 	Opensearch *OpenSearchOpensearchUserConfigOpensearch `pulumi:"opensearch"`
 	// OpenSearch Dashboards settings
 	OpensearchDashboards *OpenSearchOpensearchUserConfigOpensearchDashboards `pulumi:"opensearchDashboards"`
-	// Enum: `1`, `2`, `2.19`, `3.3`, `3.6`, and newer. OpenSearch version.
+	// Enum: `1`, `2`, `2.19`, `3.3`, `3.6`, `3.8`, and newer. OpenSearch version.
 	OpensearchVersion *string `pulumi:"opensearchVersion"`
 	// Allow access to selected service ports from private networks
 	PrivateAccess *OpenSearchOpensearchUserConfigPrivateAccess `pulumi:"privateAccess"`
@@ -33858,7 +34175,7 @@ type OpenSearchOpensearchUserConfigArgs struct {
 	Opensearch OpenSearchOpensearchUserConfigOpensearchPtrInput `pulumi:"opensearch"`
 	// OpenSearch Dashboards settings
 	OpensearchDashboards OpenSearchOpensearchUserConfigOpensearchDashboardsPtrInput `pulumi:"opensearchDashboards"`
-	// Enum: `1`, `2`, `2.19`, `3.3`, `3.6`, and newer. OpenSearch version.
+	// Enum: `1`, `2`, `2.19`, `3.3`, `3.6`, `3.8`, and newer. OpenSearch version.
 	OpensearchVersion pulumi.StringPtrInput `pulumi:"opensearchVersion"`
 	// Allow access to selected service ports from private networks
 	PrivateAccess OpenSearchOpensearchUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
@@ -34060,7 +34377,7 @@ func (o OpenSearchOpensearchUserConfigOutput) OpensearchDashboards() OpenSearchO
 	}).(OpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput)
 }
 
-// Enum: `1`, `2`, `2.19`, `3.3`, `3.6`, and newer. OpenSearch version.
+// Enum: `1`, `2`, `2.19`, `3.3`, `3.6`, `3.8`, and newer. OpenSearch version.
 func (o OpenSearchOpensearchUserConfigOutput) OpensearchVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OpenSearchOpensearchUserConfig) *string { return v.OpensearchVersion }).(pulumi.StringPtrOutput)
 }
@@ -34319,7 +34636,7 @@ func (o OpenSearchOpensearchUserConfigPtrOutput) OpensearchDashboards() OpenSear
 	}).(OpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput)
 }
 
-// Enum: `1`, `2`, `2.19`, `3.3`, `3.6`, and newer. OpenSearch version.
+// Enum: `1`, `2`, `2.19`, `3.3`, `3.6`, `3.8`, and newer. OpenSearch version.
 func (o OpenSearchOpensearchUserConfigPtrOutput) OpensearchVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OpenSearchOpensearchUserConfig) *string {
 		if v == nil {
@@ -36497,14 +36814,26 @@ type OpenSearchOpensearchUserConfigOpensearch struct {
 	IsmHistoryRolloverCheckPeriod *int `pulumi:"ismHistoryRolloverCheckPeriod"`
 	// How long audit history indices are kept in days. Example: `30`.
 	IsmHistoryRolloverRetentionPeriod *int `pulumi:"ismHistoryRolloverRetentionPeriod"`
+	// Enable or disable removing KNN graphs from the cache when they are idle. Disabled by default.
+	KnnCacheItemExpiryEnabled *bool `pulumi:"knnCacheItemExpiryEnabled"`
+	// If enabled, the amount of time in minutes a KNN graph can be idle in the cache before being evicted. Example: `180`.
+	KnnCacheItemExpiryMinutes *int `pulumi:"knnCacheItemExpiryMinutes"`
+	// The native memory usage, as a percentage below the KNN memory circuit breaker limit, at which a tripped circuit breaker resets. Defaults to 5%.
+	KnnCircuitBreakerUnsetPercentage *float64 `pulumi:"knnCircuitBreakerUnsetPercentage"`
 	// Enable or disable KNN memory circuit breaker. Defaults to true.
 	KnnMemoryCircuitBreakerEnabled *bool `pulumi:"knnMemoryCircuitBreakerEnabled"`
 	// Maximum amount of memory in percentage that can be used for the KNN index. Defaults to 50% of the JVM heap size. 0 is used to set it to null which can be used to invalidate caches.
 	KnnMemoryCircuitBreakerLimit *int `pulumi:"knnMemoryCircuitBreakerLimit"`
 	// When set to true, the setting allows admins to control access and permissions to the connector API using backend_roles. Defaults to false.
 	MlCommonsConnectorAccessControlEnabled *bool `pulumi:"mlCommonsConnectorAccessControlEnabled"`
+	// Maximum number of ML models that can be deployed on a single ML node. Defaults to 10.
+	MlCommonsMaxModelOnNode *int `pulumi:"mlCommonsMaxModelOnNode"`
 	// Enable or disable model access control for ML Commons. When enabled, access to ML models is controlled by security permissions. Defaults to false.
 	MlCommonsModelAccessControlEnabled *bool `pulumi:"mlCommonsModelAccessControlEnabled"`
+	// For externally hosted models only: automatically deploy a model on its first predict request instead of requiring an explicit deploy call first. Defaults to true.
+	MlCommonsModelAutoDeployEnable *bool `pulumi:"mlCommonsModelAutoDeployEnable"`
+	// Automatically redeploy deployed or partially deployed models after ML nodes rejoin the cluster, e.g. after a node replacement. Defaults to true.
+	MlCommonsModelAutoRedeployEnable *bool `pulumi:"mlCommonsModelAutoRedeployEnable"`
 	// Native memory threshold percentage for ML Commons. Controls the maximum percentage of native memory that can be used by ML Commons operations. Defaults to 90%.
 	MlCommonsNativeMemoryThreshold *int `pulumi:"mlCommonsNativeMemoryThreshold"`
 	// Enable or disable running ML Commons tasks only on ML nodes. When enabled, ML tasks will only execute on nodes designated as ML nodes. Defaults to true.
@@ -36633,14 +36962,26 @@ type OpenSearchOpensearchUserConfigOpensearchArgs struct {
 	IsmHistoryRolloverCheckPeriod pulumi.IntPtrInput `pulumi:"ismHistoryRolloverCheckPeriod"`
 	// How long audit history indices are kept in days. Example: `30`.
 	IsmHistoryRolloverRetentionPeriod pulumi.IntPtrInput `pulumi:"ismHistoryRolloverRetentionPeriod"`
+	// Enable or disable removing KNN graphs from the cache when they are idle. Disabled by default.
+	KnnCacheItemExpiryEnabled pulumi.BoolPtrInput `pulumi:"knnCacheItemExpiryEnabled"`
+	// If enabled, the amount of time in minutes a KNN graph can be idle in the cache before being evicted. Example: `180`.
+	KnnCacheItemExpiryMinutes pulumi.IntPtrInput `pulumi:"knnCacheItemExpiryMinutes"`
+	// The native memory usage, as a percentage below the KNN memory circuit breaker limit, at which a tripped circuit breaker resets. Defaults to 5%.
+	KnnCircuitBreakerUnsetPercentage pulumi.Float64PtrInput `pulumi:"knnCircuitBreakerUnsetPercentage"`
 	// Enable or disable KNN memory circuit breaker. Defaults to true.
 	KnnMemoryCircuitBreakerEnabled pulumi.BoolPtrInput `pulumi:"knnMemoryCircuitBreakerEnabled"`
 	// Maximum amount of memory in percentage that can be used for the KNN index. Defaults to 50% of the JVM heap size. 0 is used to set it to null which can be used to invalidate caches.
 	KnnMemoryCircuitBreakerLimit pulumi.IntPtrInput `pulumi:"knnMemoryCircuitBreakerLimit"`
 	// When set to true, the setting allows admins to control access and permissions to the connector API using backend_roles. Defaults to false.
 	MlCommonsConnectorAccessControlEnabled pulumi.BoolPtrInput `pulumi:"mlCommonsConnectorAccessControlEnabled"`
+	// Maximum number of ML models that can be deployed on a single ML node. Defaults to 10.
+	MlCommonsMaxModelOnNode pulumi.IntPtrInput `pulumi:"mlCommonsMaxModelOnNode"`
 	// Enable or disable model access control for ML Commons. When enabled, access to ML models is controlled by security permissions. Defaults to false.
 	MlCommonsModelAccessControlEnabled pulumi.BoolPtrInput `pulumi:"mlCommonsModelAccessControlEnabled"`
+	// For externally hosted models only: automatically deploy a model on its first predict request instead of requiring an explicit deploy call first. Defaults to true.
+	MlCommonsModelAutoDeployEnable pulumi.BoolPtrInput `pulumi:"mlCommonsModelAutoDeployEnable"`
+	// Automatically redeploy deployed or partially deployed models after ML nodes rejoin the cluster, e.g. after a node replacement. Defaults to true.
+	MlCommonsModelAutoRedeployEnable pulumi.BoolPtrInput `pulumi:"mlCommonsModelAutoRedeployEnable"`
 	// Native memory threshold percentage for ML Commons. Controls the maximum percentage of native memory that can be used by ML Commons operations. Defaults to 90%.
 	MlCommonsNativeMemoryThreshold pulumi.IntPtrInput `pulumi:"mlCommonsNativeMemoryThreshold"`
 	// Enable or disable running ML Commons tasks only on ML nodes. When enabled, ML tasks will only execute on nodes designated as ML nodes. Defaults to true.
@@ -36948,6 +37289,21 @@ func (o OpenSearchOpensearchUserConfigOpensearchOutput) IsmHistoryRolloverRetent
 	return o.ApplyT(func(v OpenSearchOpensearchUserConfigOpensearch) *int { return v.IsmHistoryRolloverRetentionPeriod }).(pulumi.IntPtrOutput)
 }
 
+// Enable or disable removing KNN graphs from the cache when they are idle. Disabled by default.
+func (o OpenSearchOpensearchUserConfigOpensearchOutput) KnnCacheItemExpiryEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OpenSearchOpensearchUserConfigOpensearch) *bool { return v.KnnCacheItemExpiryEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// If enabled, the amount of time in minutes a KNN graph can be idle in the cache before being evicted. Example: `180`.
+func (o OpenSearchOpensearchUserConfigOpensearchOutput) KnnCacheItemExpiryMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OpenSearchOpensearchUserConfigOpensearch) *int { return v.KnnCacheItemExpiryMinutes }).(pulumi.IntPtrOutput)
+}
+
+// The native memory usage, as a percentage below the KNN memory circuit breaker limit, at which a tripped circuit breaker resets. Defaults to 5%.
+func (o OpenSearchOpensearchUserConfigOpensearchOutput) KnnCircuitBreakerUnsetPercentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v OpenSearchOpensearchUserConfigOpensearch) *float64 { return v.KnnCircuitBreakerUnsetPercentage }).(pulumi.Float64PtrOutput)
+}
+
 // Enable or disable KNN memory circuit breaker. Defaults to true.
 func (o OpenSearchOpensearchUserConfigOpensearchOutput) KnnMemoryCircuitBreakerEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OpenSearchOpensearchUserConfigOpensearch) *bool { return v.KnnMemoryCircuitBreakerEnabled }).(pulumi.BoolPtrOutput)
@@ -36965,9 +37321,24 @@ func (o OpenSearchOpensearchUserConfigOpensearchOutput) MlCommonsConnectorAccess
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Maximum number of ML models that can be deployed on a single ML node. Defaults to 10.
+func (o OpenSearchOpensearchUserConfigOpensearchOutput) MlCommonsMaxModelOnNode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OpenSearchOpensearchUserConfigOpensearch) *int { return v.MlCommonsMaxModelOnNode }).(pulumi.IntPtrOutput)
+}
+
 // Enable or disable model access control for ML Commons. When enabled, access to ML models is controlled by security permissions. Defaults to false.
 func (o OpenSearchOpensearchUserConfigOpensearchOutput) MlCommonsModelAccessControlEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OpenSearchOpensearchUserConfigOpensearch) *bool { return v.MlCommonsModelAccessControlEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// For externally hosted models only: automatically deploy a model on its first predict request instead of requiring an explicit deploy call first. Defaults to true.
+func (o OpenSearchOpensearchUserConfigOpensearchOutput) MlCommonsModelAutoDeployEnable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OpenSearchOpensearchUserConfigOpensearch) *bool { return v.MlCommonsModelAutoDeployEnable }).(pulumi.BoolPtrOutput)
+}
+
+// Automatically redeploy deployed or partially deployed models after ML nodes rejoin the cluster, e.g. after a node replacement. Defaults to true.
+func (o OpenSearchOpensearchUserConfigOpensearchOutput) MlCommonsModelAutoRedeployEnable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OpenSearchOpensearchUserConfigOpensearch) *bool { return v.MlCommonsModelAutoRedeployEnable }).(pulumi.BoolPtrOutput)
 }
 
 // Native memory threshold percentage for ML Commons. Controls the maximum percentage of native memory that can be used by ML Commons operations. Defaults to 90%.
@@ -37467,6 +37838,36 @@ func (o OpenSearchOpensearchUserConfigOpensearchPtrOutput) IsmHistoryRolloverRet
 	}).(pulumi.IntPtrOutput)
 }
 
+// Enable or disable removing KNN graphs from the cache when they are idle. Disabled by default.
+func (o OpenSearchOpensearchUserConfigOpensearchPtrOutput) KnnCacheItemExpiryEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OpenSearchOpensearchUserConfigOpensearch) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.KnnCacheItemExpiryEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If enabled, the amount of time in minutes a KNN graph can be idle in the cache before being evicted. Example: `180`.
+func (o OpenSearchOpensearchUserConfigOpensearchPtrOutput) KnnCacheItemExpiryMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OpenSearchOpensearchUserConfigOpensearch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.KnnCacheItemExpiryMinutes
+	}).(pulumi.IntPtrOutput)
+}
+
+// The native memory usage, as a percentage below the KNN memory circuit breaker limit, at which a tripped circuit breaker resets. Defaults to 5%.
+func (o OpenSearchOpensearchUserConfigOpensearchPtrOutput) KnnCircuitBreakerUnsetPercentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *OpenSearchOpensearchUserConfigOpensearch) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.KnnCircuitBreakerUnsetPercentage
+	}).(pulumi.Float64PtrOutput)
+}
+
 // Enable or disable KNN memory circuit breaker. Defaults to true.
 func (o OpenSearchOpensearchUserConfigOpensearchPtrOutput) KnnMemoryCircuitBreakerEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OpenSearchOpensearchUserConfigOpensearch) *bool {
@@ -37497,6 +37898,16 @@ func (o OpenSearchOpensearchUserConfigOpensearchPtrOutput) MlCommonsConnectorAcc
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Maximum number of ML models that can be deployed on a single ML node. Defaults to 10.
+func (o OpenSearchOpensearchUserConfigOpensearchPtrOutput) MlCommonsMaxModelOnNode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OpenSearchOpensearchUserConfigOpensearch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MlCommonsMaxModelOnNode
+	}).(pulumi.IntPtrOutput)
+}
+
 // Enable or disable model access control for ML Commons. When enabled, access to ML models is controlled by security permissions. Defaults to false.
 func (o OpenSearchOpensearchUserConfigOpensearchPtrOutput) MlCommonsModelAccessControlEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OpenSearchOpensearchUserConfigOpensearch) *bool {
@@ -37504,6 +37915,26 @@ func (o OpenSearchOpensearchUserConfigOpensearchPtrOutput) MlCommonsModelAccessC
 			return nil
 		}
 		return v.MlCommonsModelAccessControlEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// For externally hosted models only: automatically deploy a model on its first predict request instead of requiring an explicit deploy call first. Defaults to true.
+func (o OpenSearchOpensearchUserConfigOpensearchPtrOutput) MlCommonsModelAutoDeployEnable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OpenSearchOpensearchUserConfigOpensearch) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.MlCommonsModelAutoDeployEnable
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Automatically redeploy deployed or partially deployed models after ML nodes rejoin the cluster, e.g. after a node replacement. Defaults to true.
+func (o OpenSearchOpensearchUserConfigOpensearchPtrOutput) MlCommonsModelAutoRedeployEnable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OpenSearchOpensearchUserConfigOpensearch) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.MlCommonsModelAutoRedeployEnable
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -48273,7 +48704,7 @@ type PgPgUserConfig struct {
 	SynchronousReplication *string `pulumi:"synchronousReplication"`
 	// System-wide settings for the timescaledb extension
 	Timescaledb *PgPgUserConfigTimescaledb `pulumi:"timescaledb"`
-	// Enum: `aiven`, `timescale`. Variant of the PostgreSQL service, may affect the features that are exposed by default.
+	// Enum: `aiven`, `pgLake`, `timescale`. Variant of the PostgreSQL service, may affect the features that are exposed by default.
 	Variant *string `pulumi:"variant"`
 	// Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. The default is 1MB + 0.075% of total RAM (up to 32MB). Example: `4`.
 	WorkMem *int `pulumi:"workMem"`
@@ -48366,7 +48797,7 @@ type PgPgUserConfigArgs struct {
 	SynchronousReplication pulumi.StringPtrInput `pulumi:"synchronousReplication"`
 	// System-wide settings for the timescaledb extension
 	Timescaledb PgPgUserConfigTimescaledbPtrInput `pulumi:"timescaledb"`
-	// Enum: `aiven`, `timescale`. Variant of the PostgreSQL service, may affect the features that are exposed by default.
+	// Enum: `aiven`, `pgLake`, `timescale`. Variant of the PostgreSQL service, may affect the features that are exposed by default.
 	Variant pulumi.StringPtrInput `pulumi:"variant"`
 	// Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. The default is 1MB + 0.075% of total RAM (up to 32MB). Example: `4`.
 	WorkMem pulumi.IntPtrInput `pulumi:"workMem"`
@@ -48632,7 +49063,7 @@ func (o PgPgUserConfigOutput) Timescaledb() PgPgUserConfigTimescaledbPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *PgPgUserConfigTimescaledb { return v.Timescaledb }).(PgPgUserConfigTimescaledbPtrOutput)
 }
 
-// Enum: `aiven`, `timescale`. Variant of the PostgreSQL service, may affect the features that are exposed by default.
+// Enum: `aiven`, `pgLake`, `timescale`. Variant of the PostgreSQL service, may affect the features that are exposed by default.
 func (o PgPgUserConfigOutput) Variant() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgPgUserConfig) *string { return v.Variant }).(pulumi.StringPtrOutput)
 }
@@ -49029,7 +49460,7 @@ func (o PgPgUserConfigPtrOutput) Timescaledb() PgPgUserConfigTimescaledbPtrOutpu
 	}).(PgPgUserConfigTimescaledbPtrOutput)
 }
 
-// Enum: `aiven`, `timescale`. Variant of the PostgreSQL service, may affect the features that are exposed by default.
+// Enum: `aiven`, `pgLake`, `timescale`. Variant of the PostgreSQL service, may affect the features that are exposed by default.
 func (o PgPgUserConfigPtrOutput) Variant() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgPgUserConfig) *string {
 		if v == nil {
@@ -54864,6 +55295,8 @@ type ServiceIntegrationDatadogUserConfig struct {
 	DatadogDbmEnabled *bool `pulumi:"datadogDbmEnabled"`
 	// Enable collection of PL/pgSQL function metrics from pg*stat*user_functions. Requires `trackFunctions` to be set to `pl` or `all` in the service configuration.
 	DatadogFunctionMetricsEnabled *bool `pulumi:"datadogFunctionMetricsEnabled"`
+	// Database the Datadog PostgreSQL check connects to. Relation metrics are collected only from this database. The main service database is used when unset. Database Monitoring collects query statistics from every database regardless of this option. Example: `defaultdb`.
+	DatadogPgDbname *string `pulumi:"datadogPgDbname"`
 	// Relations to collect PostgreSQL relation metrics for, such as table size, index statistics, row counts, vacuum ages and locks. No relation metrics are collected when unset
 	DatadogPgRelations []ServiceIntegrationDatadogUserConfigDatadogPgRelation `pulumi:"datadogPgRelations"`
 	// Enable Datadog PgBouncer Metric Tracking.
@@ -54906,6 +55339,8 @@ type ServiceIntegrationDatadogUserConfigArgs struct {
 	DatadogDbmEnabled pulumi.BoolPtrInput `pulumi:"datadogDbmEnabled"`
 	// Enable collection of PL/pgSQL function metrics from pg*stat*user_functions. Requires `trackFunctions` to be set to `pl` or `all` in the service configuration.
 	DatadogFunctionMetricsEnabled pulumi.BoolPtrInput `pulumi:"datadogFunctionMetricsEnabled"`
+	// Database the Datadog PostgreSQL check connects to. Relation metrics are collected only from this database. The main service database is used when unset. Database Monitoring collects query statistics from every database regardless of this option. Example: `defaultdb`.
+	DatadogPgDbname pulumi.StringPtrInput `pulumi:"datadogPgDbname"`
 	// Relations to collect PostgreSQL relation metrics for, such as table size, index statistics, row counts, vacuum ages and locks. No relation metrics are collected when unset
 	DatadogPgRelations ServiceIntegrationDatadogUserConfigDatadogPgRelationArrayInput `pulumi:"datadogPgRelations"`
 	// Enable Datadog PgBouncer Metric Tracking.
@@ -55019,6 +55454,11 @@ func (o ServiceIntegrationDatadogUserConfigOutput) DatadogFunctionMetricsEnabled
 	return o.ApplyT(func(v ServiceIntegrationDatadogUserConfig) *bool { return v.DatadogFunctionMetricsEnabled }).(pulumi.BoolPtrOutput)
 }
 
+// Database the Datadog PostgreSQL check connects to. Relation metrics are collected only from this database. The main service database is used when unset. Database Monitoring collects query statistics from every database regardless of this option. Example: `defaultdb`.
+func (o ServiceIntegrationDatadogUserConfigOutput) DatadogPgDbname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationDatadogUserConfig) *string { return v.DatadogPgDbname }).(pulumi.StringPtrOutput)
+}
+
 // Relations to collect PostgreSQL relation metrics for, such as table size, index statistics, row counts, vacuum ages and locks. No relation metrics are collected when unset
 func (o ServiceIntegrationDatadogUserConfigOutput) DatadogPgRelations() ServiceIntegrationDatadogUserConfigDatadogPgRelationArrayOutput {
 	return o.ApplyT(func(v ServiceIntegrationDatadogUserConfig) []ServiceIntegrationDatadogUserConfigDatadogPgRelation {
@@ -55127,6 +55567,16 @@ func (o ServiceIntegrationDatadogUserConfigPtrOutput) DatadogFunctionMetricsEnab
 		}
 		return v.DatadogFunctionMetricsEnabled
 	}).(pulumi.BoolPtrOutput)
+}
+
+// Database the Datadog PostgreSQL check connects to. Relation metrics are collected only from this database. The main service database is used when unset. Database Monitoring collects query statistics from every database regardless of this option. Example: `defaultdb`.
+func (o ServiceIntegrationDatadogUserConfigPtrOutput) DatadogPgDbname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationDatadogUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DatadogPgDbname
+	}).(pulumi.StringPtrOutput)
 }
 
 // Relations to collect PostgreSQL relation metrics for, such as table size, index statistics, row counts, vacuum ages and locks. No relation metrics are collected when unset
@@ -68356,10 +68806,14 @@ type ValkeyValkeyUserConfig struct {
 	PublicAccess *ValkeyValkeyUserConfigPublicAccess `pulumi:"publicAccess"`
 	// Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
 	RecoveryBasebackupName *string `pulumi:"recoveryBasebackupName"`
+	// Number of replicas per shard in the Valkey cluster. Only applies to cluster plans. Example: `1`.
+	Replicas *int `pulumi:"replicas"`
 	// Store logs for the service so that they are available in the HTTP API and console.
 	ServiceLog *bool `pulumi:"serviceLog"`
 	// Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
 	ServiceToForkFrom *string `pulumi:"serviceToForkFrom"`
+	// Number of shards (primaries) in the Valkey cluster. Required for cluster plans. Example: `3`.
+	ShardCount *int `pulumi:"shardCount"`
 	// Use static public IP addresses.
 	StaticIps *bool `pulumi:"staticIps"`
 	// Enum: `allchannels`, `resetchannels`. Determines default pub/sub channels' ACL for new users if ACL is not supplied. When this option is not defined, allChannels is assumed to keep backward compatibility. This option doesn't affect Valkey configuration acl-pubsub-default.
@@ -68438,10 +68892,14 @@ type ValkeyValkeyUserConfigArgs struct {
 	PublicAccess ValkeyValkeyUserConfigPublicAccessPtrInput `pulumi:"publicAccess"`
 	// Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
 	RecoveryBasebackupName pulumi.StringPtrInput `pulumi:"recoveryBasebackupName"`
+	// Number of replicas per shard in the Valkey cluster. Only applies to cluster plans. Example: `1`.
+	Replicas pulumi.IntPtrInput `pulumi:"replicas"`
 	// Store logs for the service so that they are available in the HTTP API and console.
 	ServiceLog pulumi.BoolPtrInput `pulumi:"serviceLog"`
 	// Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
 	ServiceToForkFrom pulumi.StringPtrInput `pulumi:"serviceToForkFrom"`
+	// Number of shards (primaries) in the Valkey cluster. Required for cluster plans. Example: `3`.
+	ShardCount pulumi.IntPtrInput `pulumi:"shardCount"`
 	// Use static public IP addresses.
 	StaticIps pulumi.BoolPtrInput `pulumi:"staticIps"`
 	// Enum: `allchannels`, `resetchannels`. Determines default pub/sub channels' ACL for new users if ACL is not supplied. When this option is not defined, allChannels is assumed to keep backward compatibility. This option doesn't affect Valkey configuration acl-pubsub-default.
@@ -68627,6 +69085,11 @@ func (o ValkeyValkeyUserConfigOutput) RecoveryBasebackupName() pulumi.StringPtrO
 	return o.ApplyT(func(v ValkeyValkeyUserConfig) *string { return v.RecoveryBasebackupName }).(pulumi.StringPtrOutput)
 }
 
+// Number of replicas per shard in the Valkey cluster. Only applies to cluster plans. Example: `1`.
+func (o ValkeyValkeyUserConfigOutput) Replicas() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ValkeyValkeyUserConfig) *int { return v.Replicas }).(pulumi.IntPtrOutput)
+}
+
 // Store logs for the service so that they are available in the HTTP API and console.
 func (o ValkeyValkeyUserConfigOutput) ServiceLog() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ValkeyValkeyUserConfig) *bool { return v.ServiceLog }).(pulumi.BoolPtrOutput)
@@ -68635,6 +69098,11 @@ func (o ValkeyValkeyUserConfigOutput) ServiceLog() pulumi.BoolPtrOutput {
 // Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
 func (o ValkeyValkeyUserConfigOutput) ServiceToForkFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ValkeyValkeyUserConfig) *string { return v.ServiceToForkFrom }).(pulumi.StringPtrOutput)
+}
+
+// Number of shards (primaries) in the Valkey cluster. Required for cluster plans. Example: `3`.
+func (o ValkeyValkeyUserConfigOutput) ShardCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ValkeyValkeyUserConfig) *int { return v.ShardCount }).(pulumi.IntPtrOutput)
 }
 
 // Use static public IP addresses.
@@ -68888,6 +69356,16 @@ func (o ValkeyValkeyUserConfigPtrOutput) RecoveryBasebackupName() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
+// Number of replicas per shard in the Valkey cluster. Only applies to cluster plans. Example: `1`.
+func (o ValkeyValkeyUserConfigPtrOutput) Replicas() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ValkeyValkeyUserConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Replicas
+	}).(pulumi.IntPtrOutput)
+}
+
 // Store logs for the service so that they are available in the HTTP API and console.
 func (o ValkeyValkeyUserConfigPtrOutput) ServiceLog() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ValkeyValkeyUserConfig) *bool {
@@ -68906,6 +69384,16 @@ func (o ValkeyValkeyUserConfigPtrOutput) ServiceToForkFrom() pulumi.StringPtrOut
 		}
 		return v.ServiceToForkFrom
 	}).(pulumi.StringPtrOutput)
+}
+
+// Number of shards (primaries) in the Valkey cluster. Required for cluster plans. Example: `3`.
+func (o ValkeyValkeyUserConfigPtrOutput) ShardCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ValkeyValkeyUserConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ShardCount
+	}).(pulumi.IntPtrOutput)
 }
 
 // Use static public IP addresses.
@@ -81273,6 +81761,8 @@ type GetKafkaConnectKafkaConnectUserConfig struct {
 	//
 	// Deprecated: This property is deprecated.
 	AdditionalBackupRegions *string `pulumi:"additionalBackupRegions"`
+	// Install custom plugins uploaded via the custom file service
+	CustomPlugins []GetKafkaConnectKafkaConnectUserConfigCustomPlugin `pulumi:"customPlugins"`
 	// Allow-list of HTTPS URLs used to validate GCP credentialSource requests for Kafka Connect.
 	GcpAuthAllowedUrls []string `pulumi:"gcpAuthAllowedUrls"`
 	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
@@ -81321,6 +81811,8 @@ type GetKafkaConnectKafkaConnectUserConfigArgs struct {
 	//
 	// Deprecated: This property is deprecated.
 	AdditionalBackupRegions pulumi.StringPtrInput `pulumi:"additionalBackupRegions"`
+	// Install custom plugins uploaded via the custom file service
+	CustomPlugins GetKafkaConnectKafkaConnectUserConfigCustomPluginArrayInput `pulumi:"customPlugins"`
 	// Allow-list of HTTPS URLs used to validate GCP credentialSource requests for Kafka Connect.
 	GcpAuthAllowedUrls pulumi.StringArrayInput `pulumi:"gcpAuthAllowedUrls"`
 	// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
@@ -81409,6 +81901,13 @@ func (o GetKafkaConnectKafkaConnectUserConfigOutput) ToGetKafkaConnectKafkaConne
 // Deprecated: This property is deprecated.
 func (o GetKafkaConnectKafkaConnectUserConfigOutput) AdditionalBackupRegions() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaConnectKafkaConnectUserConfig) *string { return v.AdditionalBackupRegions }).(pulumi.StringPtrOutput)
+}
+
+// Install custom plugins uploaded via the custom file service
+func (o GetKafkaConnectKafkaConnectUserConfigOutput) CustomPlugins() GetKafkaConnectKafkaConnectUserConfigCustomPluginArrayOutput {
+	return o.ApplyT(func(v GetKafkaConnectKafkaConnectUserConfig) []GetKafkaConnectKafkaConnectUserConfigCustomPlugin {
+		return v.CustomPlugins
+	}).(GetKafkaConnectKafkaConnectUserConfigCustomPluginArrayOutput)
 }
 
 // Allow-list of HTTPS URLs used to validate GCP credentialSource requests for Kafka Connect.
@@ -81515,6 +82014,112 @@ func (o GetKafkaConnectKafkaConnectUserConfigArrayOutput) Index(i pulumi.IntInpu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKafkaConnectKafkaConnectUserConfig {
 		return vs[0].([]GetKafkaConnectKafkaConnectUserConfig)[vs[1].(int)]
 	}).(GetKafkaConnectKafkaConnectUserConfigOutput)
+}
+
+type GetKafkaConnectKafkaConnectUserConfigCustomPlugin struct {
+	// The name of the custom plugin as specified during upload. Example: `my-custom-connector`.
+	PluginName string `pulumi:"pluginName"`
+	// The version to install. Use a semver version (e.g. `1.0.0`) or `latest` to always use the most recent version. Example: `latest`.
+	PluginVersion string `pulumi:"pluginVersion"`
+}
+
+// GetKafkaConnectKafkaConnectUserConfigCustomPluginInput is an input type that accepts GetKafkaConnectKafkaConnectUserConfigCustomPluginArgs and GetKafkaConnectKafkaConnectUserConfigCustomPluginOutput values.
+// You can construct a concrete instance of `GetKafkaConnectKafkaConnectUserConfigCustomPluginInput` via:
+//
+//	GetKafkaConnectKafkaConnectUserConfigCustomPluginArgs{...}
+type GetKafkaConnectKafkaConnectUserConfigCustomPluginInput interface {
+	pulumi.Input
+
+	ToGetKafkaConnectKafkaConnectUserConfigCustomPluginOutput() GetKafkaConnectKafkaConnectUserConfigCustomPluginOutput
+	ToGetKafkaConnectKafkaConnectUserConfigCustomPluginOutputWithContext(context.Context) GetKafkaConnectKafkaConnectUserConfigCustomPluginOutput
+}
+
+type GetKafkaConnectKafkaConnectUserConfigCustomPluginArgs struct {
+	// The name of the custom plugin as specified during upload. Example: `my-custom-connector`.
+	PluginName pulumi.StringInput `pulumi:"pluginName"`
+	// The version to install. Use a semver version (e.g. `1.0.0`) or `latest` to always use the most recent version. Example: `latest`.
+	PluginVersion pulumi.StringInput `pulumi:"pluginVersion"`
+}
+
+func (GetKafkaConnectKafkaConnectUserConfigCustomPluginArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKafkaConnectKafkaConnectUserConfigCustomPlugin)(nil)).Elem()
+}
+
+func (i GetKafkaConnectKafkaConnectUserConfigCustomPluginArgs) ToGetKafkaConnectKafkaConnectUserConfigCustomPluginOutput() GetKafkaConnectKafkaConnectUserConfigCustomPluginOutput {
+	return i.ToGetKafkaConnectKafkaConnectUserConfigCustomPluginOutputWithContext(context.Background())
+}
+
+func (i GetKafkaConnectKafkaConnectUserConfigCustomPluginArgs) ToGetKafkaConnectKafkaConnectUserConfigCustomPluginOutputWithContext(ctx context.Context) GetKafkaConnectKafkaConnectUserConfigCustomPluginOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKafkaConnectKafkaConnectUserConfigCustomPluginOutput)
+}
+
+// GetKafkaConnectKafkaConnectUserConfigCustomPluginArrayInput is an input type that accepts GetKafkaConnectKafkaConnectUserConfigCustomPluginArray and GetKafkaConnectKafkaConnectUserConfigCustomPluginArrayOutput values.
+// You can construct a concrete instance of `GetKafkaConnectKafkaConnectUserConfigCustomPluginArrayInput` via:
+//
+//	GetKafkaConnectKafkaConnectUserConfigCustomPluginArray{ GetKafkaConnectKafkaConnectUserConfigCustomPluginArgs{...} }
+type GetKafkaConnectKafkaConnectUserConfigCustomPluginArrayInput interface {
+	pulumi.Input
+
+	ToGetKafkaConnectKafkaConnectUserConfigCustomPluginArrayOutput() GetKafkaConnectKafkaConnectUserConfigCustomPluginArrayOutput
+	ToGetKafkaConnectKafkaConnectUserConfigCustomPluginArrayOutputWithContext(context.Context) GetKafkaConnectKafkaConnectUserConfigCustomPluginArrayOutput
+}
+
+type GetKafkaConnectKafkaConnectUserConfigCustomPluginArray []GetKafkaConnectKafkaConnectUserConfigCustomPluginInput
+
+func (GetKafkaConnectKafkaConnectUserConfigCustomPluginArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKafkaConnectKafkaConnectUserConfigCustomPlugin)(nil)).Elem()
+}
+
+func (i GetKafkaConnectKafkaConnectUserConfigCustomPluginArray) ToGetKafkaConnectKafkaConnectUserConfigCustomPluginArrayOutput() GetKafkaConnectKafkaConnectUserConfigCustomPluginArrayOutput {
+	return i.ToGetKafkaConnectKafkaConnectUserConfigCustomPluginArrayOutputWithContext(context.Background())
+}
+
+func (i GetKafkaConnectKafkaConnectUserConfigCustomPluginArray) ToGetKafkaConnectKafkaConnectUserConfigCustomPluginArrayOutputWithContext(ctx context.Context) GetKafkaConnectKafkaConnectUserConfigCustomPluginArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKafkaConnectKafkaConnectUserConfigCustomPluginArrayOutput)
+}
+
+type GetKafkaConnectKafkaConnectUserConfigCustomPluginOutput struct{ *pulumi.OutputState }
+
+func (GetKafkaConnectKafkaConnectUserConfigCustomPluginOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKafkaConnectKafkaConnectUserConfigCustomPlugin)(nil)).Elem()
+}
+
+func (o GetKafkaConnectKafkaConnectUserConfigCustomPluginOutput) ToGetKafkaConnectKafkaConnectUserConfigCustomPluginOutput() GetKafkaConnectKafkaConnectUserConfigCustomPluginOutput {
+	return o
+}
+
+func (o GetKafkaConnectKafkaConnectUserConfigCustomPluginOutput) ToGetKafkaConnectKafkaConnectUserConfigCustomPluginOutputWithContext(ctx context.Context) GetKafkaConnectKafkaConnectUserConfigCustomPluginOutput {
+	return o
+}
+
+// The name of the custom plugin as specified during upload. Example: `my-custom-connector`.
+func (o GetKafkaConnectKafkaConnectUserConfigCustomPluginOutput) PluginName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKafkaConnectKafkaConnectUserConfigCustomPlugin) string { return v.PluginName }).(pulumi.StringOutput)
+}
+
+// The version to install. Use a semver version (e.g. `1.0.0`) or `latest` to always use the most recent version. Example: `latest`.
+func (o GetKafkaConnectKafkaConnectUserConfigCustomPluginOutput) PluginVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKafkaConnectKafkaConnectUserConfigCustomPlugin) string { return v.PluginVersion }).(pulumi.StringOutput)
+}
+
+type GetKafkaConnectKafkaConnectUserConfigCustomPluginArrayOutput struct{ *pulumi.OutputState }
+
+func (GetKafkaConnectKafkaConnectUserConfigCustomPluginArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKafkaConnectKafkaConnectUserConfigCustomPlugin)(nil)).Elem()
+}
+
+func (o GetKafkaConnectKafkaConnectUserConfigCustomPluginArrayOutput) ToGetKafkaConnectKafkaConnectUserConfigCustomPluginArrayOutput() GetKafkaConnectKafkaConnectUserConfigCustomPluginArrayOutput {
+	return o
+}
+
+func (o GetKafkaConnectKafkaConnectUserConfigCustomPluginArrayOutput) ToGetKafkaConnectKafkaConnectUserConfigCustomPluginArrayOutputWithContext(ctx context.Context) GetKafkaConnectKafkaConnectUserConfigCustomPluginArrayOutput {
+	return o
+}
+
+func (o GetKafkaConnectKafkaConnectUserConfigCustomPluginArrayOutput) Index(i pulumi.IntInput) GetKafkaConnectKafkaConnectUserConfigCustomPluginOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKafkaConnectKafkaConnectUserConfigCustomPlugin {
+		return vs[0].([]GetKafkaConnectKafkaConnectUserConfigCustomPlugin)[vs[1].(int)]
+	}).(GetKafkaConnectKafkaConnectUserConfigCustomPluginOutput)
 }
 
 type GetKafkaConnectKafkaConnectUserConfigIpFilterObject struct {
@@ -84167,9 +84772,9 @@ type GetKafkaKafkaUserConfig struct {
 	KafkaRestConfig *GetKafkaKafkaUserConfigKafkaRestConfig `pulumi:"kafkaRestConfig"`
 	// Kafka SASL mechanisms
 	KafkaSaslMechanisms *GetKafkaKafkaUserConfigKafkaSaslMechanisms `pulumi:"kafkaSaslMechanisms"`
-	// Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, `4.1`, `4.2`, and newer. Kafka major version.
+	// Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, `4.1`, `4.2`, `4.3`, and newer. Kafka major version.
 	KafkaVersion *string `pulumi:"kafkaVersion"`
-	// Enum: `6.2.1`, `6.2.2`, `6.2.3`, and newer. Select a Karapace version for this service, or select Latest to use the latest available version automatically. New versions become available after installation during a maintenance update.
+	// Enum: `6.2.1`, `6.2.2`, `6.2.3`, `6.2.4`, and newer. Select a Karapace version for this service, or select Latest to use the latest available version automatically. New versions become available after installation during a maintenance update.
 	KarapaceVersion *string `pulumi:"karapaceVersion"`
 	// Use a Let's Encrypt certificate authority (CA) for Kafka SASL authentication. (Default: False).
 	LetsencryptSasl *bool `pulumi:"letsencryptSasl"`
@@ -84261,9 +84866,9 @@ type GetKafkaKafkaUserConfigArgs struct {
 	KafkaRestConfig GetKafkaKafkaUserConfigKafkaRestConfigPtrInput `pulumi:"kafkaRestConfig"`
 	// Kafka SASL mechanisms
 	KafkaSaslMechanisms GetKafkaKafkaUserConfigKafkaSaslMechanismsPtrInput `pulumi:"kafkaSaslMechanisms"`
-	// Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, `4.1`, `4.2`, and newer. Kafka major version.
+	// Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, `4.1`, `4.2`, `4.3`, and newer. Kafka major version.
 	KafkaVersion pulumi.StringPtrInput `pulumi:"kafkaVersion"`
-	// Enum: `6.2.1`, `6.2.2`, `6.2.3`, and newer. Select a Karapace version for this service, or select Latest to use the latest available version automatically. New versions become available after installation during a maintenance update.
+	// Enum: `6.2.1`, `6.2.2`, `6.2.3`, `6.2.4`, and newer. Select a Karapace version for this service, or select Latest to use the latest available version automatically. New versions become available after installation during a maintenance update.
 	KarapaceVersion pulumi.StringPtrInput `pulumi:"karapaceVersion"`
 	// Use a Let's Encrypt certificate authority (CA) for Kafka SASL authentication. (Default: False).
 	LetsencryptSasl pulumi.BoolPtrInput `pulumi:"letsencryptSasl"`
@@ -84473,12 +85078,12 @@ func (o GetKafkaKafkaUserConfigOutput) KafkaSaslMechanisms() GetKafkaKafkaUserCo
 	}).(GetKafkaKafkaUserConfigKafkaSaslMechanismsPtrOutput)
 }
 
-// Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, `4.1`, `4.2`, and newer. Kafka major version.
+// Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `4.0`, `4.1`, `4.2`, `4.3`, and newer. Kafka major version.
 func (o GetKafkaKafkaUserConfigOutput) KafkaVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfig) *string { return v.KafkaVersion }).(pulumi.StringPtrOutput)
 }
 
-// Enum: `6.2.1`, `6.2.2`, `6.2.3`, and newer. Select a Karapace version for this service, or select Latest to use the latest available version automatically. New versions become available after installation during a maintenance update.
+// Enum: `6.2.1`, `6.2.2`, `6.2.3`, `6.2.4`, and newer. Select a Karapace version for this service, or select Latest to use the latest available version automatically. New versions become available after installation during a maintenance update.
 func (o GetKafkaKafkaUserConfigOutput) KarapaceVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfig) *string { return v.KarapaceVersion }).(pulumi.StringPtrOutput)
 }
@@ -84961,6 +85566,18 @@ type GetKafkaKafkaUserConfigKafka struct {
 	ConnectionsMaxIdleMs *int `pulumi:"connectionsMaxIdleMs"`
 	// Replication factor for auto-created topics (Default: 3).
 	DefaultReplicationFactor *int `pulumi:"defaultReplicationFactor"`
+	// The heartbeat interval given to the members of a consumer group using the consumer rebalance protocol. Must be between group.consumer.min.heartbeat.interval.ms and group.consumer.max.heartbeat.interval.ms, and lower than group.consumer.session.timeout.ms. (Default: 5000 ms (5 seconds)) Requires Kafka 4.0 or later. Example: `5000`.
+	GroupConsumerHeartbeatIntervalMs *int `pulumi:"groupConsumerHeartbeatIntervalMs"`
+	// The maximum heartbeat interval allowed for consumer group members using the consumer rebalance protocol. Must not be less than group.consumer.min.heartbeat.interval.ms. (Default: 15000 ms (15 seconds)) Requires Kafka 4.0 or later. Example: `15000`.
+	GroupConsumerMaxHeartbeatIntervalMs *int `pulumi:"groupConsumerMaxHeartbeatIntervalMs"`
+	// The maximum session timeout allowed for consumer group members using the consumer rebalance protocol. Must not be less than group.consumer.min.session.timeout.ms. (Default: 60000 ms (60 seconds)) Requires Kafka 4.0 or later. Example: `60000`.
+	GroupConsumerMaxSessionTimeoutMs *int `pulumi:"groupConsumerMaxSessionTimeoutMs"`
+	// The minimum heartbeat interval allowed for consumer group members using the consumer rebalance protocol. Must not be greater than group.consumer.max.heartbeat.interval.ms. (Default: 5000 ms (5 seconds)) Requires Kafka 4.0 or later. Example: `5000`.
+	GroupConsumerMinHeartbeatIntervalMs *int `pulumi:"groupConsumerMinHeartbeatIntervalMs"`
+	// The minimum session timeout allowed for consumer group members using the consumer rebalance protocol. Must not be greater than group.consumer.max.session.timeout.ms. (Default: 45000 ms (45 seconds)) Requires Kafka 4.0 or later. Example: `45000`.
+	GroupConsumerMinSessionTimeoutMs *int `pulumi:"groupConsumerMinSessionTimeoutMs"`
+	// The timeout used to detect consumer group member failures when using the consumer rebalance protocol. Must be between group.consumer.min.session.timeout.ms and group.consumer.max.session.timeout.ms. (Default: 45000 ms (45 seconds)) Requires Kafka 4.0 or later. Example: `45000`.
+	GroupConsumerSessionTimeoutMs *int `pulumi:"groupConsumerSessionTimeoutMs"`
 	// Enum: `classic`, `classic,consumer`, `classic,consumer,share`, `classic,consumer,share,streams`, `classic,consumer,streams`, `classic,share`, `classic,streams`. The enabled consumer group rebalance protocols. Use consumer, classic, share, streams to enable Kafka share groups.
 	GroupCoordinatorRebalanceProtocols *string `pulumi:"groupCoordinatorRebalanceProtocols"`
 	// The amount of time, in milliseconds, the group coordinator will wait for more consumers to join a new group before performing the first rebalance. A longer delay means potentially fewer rebalances, but increases the time until processing begins. The default value for this is 3 seconds. During development and testing it might be desirable to set this to 0 in order to not delay test execution time. (Default: 3000 ms (3 seconds)). Example: `3000`.
@@ -85101,6 +85718,18 @@ type GetKafkaKafkaUserConfigKafkaArgs struct {
 	ConnectionsMaxIdleMs pulumi.IntPtrInput `pulumi:"connectionsMaxIdleMs"`
 	// Replication factor for auto-created topics (Default: 3).
 	DefaultReplicationFactor pulumi.IntPtrInput `pulumi:"defaultReplicationFactor"`
+	// The heartbeat interval given to the members of a consumer group using the consumer rebalance protocol. Must be between group.consumer.min.heartbeat.interval.ms and group.consumer.max.heartbeat.interval.ms, and lower than group.consumer.session.timeout.ms. (Default: 5000 ms (5 seconds)) Requires Kafka 4.0 or later. Example: `5000`.
+	GroupConsumerHeartbeatIntervalMs pulumi.IntPtrInput `pulumi:"groupConsumerHeartbeatIntervalMs"`
+	// The maximum heartbeat interval allowed for consumer group members using the consumer rebalance protocol. Must not be less than group.consumer.min.heartbeat.interval.ms. (Default: 15000 ms (15 seconds)) Requires Kafka 4.0 or later. Example: `15000`.
+	GroupConsumerMaxHeartbeatIntervalMs pulumi.IntPtrInput `pulumi:"groupConsumerMaxHeartbeatIntervalMs"`
+	// The maximum session timeout allowed for consumer group members using the consumer rebalance protocol. Must not be less than group.consumer.min.session.timeout.ms. (Default: 60000 ms (60 seconds)) Requires Kafka 4.0 or later. Example: `60000`.
+	GroupConsumerMaxSessionTimeoutMs pulumi.IntPtrInput `pulumi:"groupConsumerMaxSessionTimeoutMs"`
+	// The minimum heartbeat interval allowed for consumer group members using the consumer rebalance protocol. Must not be greater than group.consumer.max.heartbeat.interval.ms. (Default: 5000 ms (5 seconds)) Requires Kafka 4.0 or later. Example: `5000`.
+	GroupConsumerMinHeartbeatIntervalMs pulumi.IntPtrInput `pulumi:"groupConsumerMinHeartbeatIntervalMs"`
+	// The minimum session timeout allowed for consumer group members using the consumer rebalance protocol. Must not be greater than group.consumer.max.session.timeout.ms. (Default: 45000 ms (45 seconds)) Requires Kafka 4.0 or later. Example: `45000`.
+	GroupConsumerMinSessionTimeoutMs pulumi.IntPtrInput `pulumi:"groupConsumerMinSessionTimeoutMs"`
+	// The timeout used to detect consumer group member failures when using the consumer rebalance protocol. Must be between group.consumer.min.session.timeout.ms and group.consumer.max.session.timeout.ms. (Default: 45000 ms (45 seconds)) Requires Kafka 4.0 or later. Example: `45000`.
+	GroupConsumerSessionTimeoutMs pulumi.IntPtrInput `pulumi:"groupConsumerSessionTimeoutMs"`
 	// Enum: `classic`, `classic,consumer`, `classic,consumer,share`, `classic,consumer,share,streams`, `classic,consumer,streams`, `classic,share`, `classic,streams`. The enabled consumer group rebalance protocols. Use consumer, classic, share, streams to enable Kafka share groups.
 	GroupCoordinatorRebalanceProtocols pulumi.StringPtrInput `pulumi:"groupCoordinatorRebalanceProtocols"`
 	// The amount of time, in milliseconds, the group coordinator will wait for more consumers to join a new group before performing the first rebalance. A longer delay means potentially fewer rebalances, but increases the time until processing begins. The default value for this is 3 seconds. During development and testing it might be desirable to set this to 0 in order to not delay test execution time. (Default: 3000 ms (3 seconds)). Example: `3000`.
@@ -85319,6 +85948,36 @@ func (o GetKafkaKafkaUserConfigKafkaOutput) ConnectionsMaxIdleMs() pulumi.IntPtr
 // Replication factor for auto-created topics (Default: 3).
 func (o GetKafkaKafkaUserConfigKafkaOutput) DefaultReplicationFactor() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafka) *int { return v.DefaultReplicationFactor }).(pulumi.IntPtrOutput)
+}
+
+// The heartbeat interval given to the members of a consumer group using the consumer rebalance protocol. Must be between group.consumer.min.heartbeat.interval.ms and group.consumer.max.heartbeat.interval.ms, and lower than group.consumer.session.timeout.ms. (Default: 5000 ms (5 seconds)) Requires Kafka 4.0 or later. Example: `5000`.
+func (o GetKafkaKafkaUserConfigKafkaOutput) GroupConsumerHeartbeatIntervalMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafka) *int { return v.GroupConsumerHeartbeatIntervalMs }).(pulumi.IntPtrOutput)
+}
+
+// The maximum heartbeat interval allowed for consumer group members using the consumer rebalance protocol. Must not be less than group.consumer.min.heartbeat.interval.ms. (Default: 15000 ms (15 seconds)) Requires Kafka 4.0 or later. Example: `15000`.
+func (o GetKafkaKafkaUserConfigKafkaOutput) GroupConsumerMaxHeartbeatIntervalMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafka) *int { return v.GroupConsumerMaxHeartbeatIntervalMs }).(pulumi.IntPtrOutput)
+}
+
+// The maximum session timeout allowed for consumer group members using the consumer rebalance protocol. Must not be less than group.consumer.min.session.timeout.ms. (Default: 60000 ms (60 seconds)) Requires Kafka 4.0 or later. Example: `60000`.
+func (o GetKafkaKafkaUserConfigKafkaOutput) GroupConsumerMaxSessionTimeoutMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafka) *int { return v.GroupConsumerMaxSessionTimeoutMs }).(pulumi.IntPtrOutput)
+}
+
+// The minimum heartbeat interval allowed for consumer group members using the consumer rebalance protocol. Must not be greater than group.consumer.max.heartbeat.interval.ms. (Default: 5000 ms (5 seconds)) Requires Kafka 4.0 or later. Example: `5000`.
+func (o GetKafkaKafkaUserConfigKafkaOutput) GroupConsumerMinHeartbeatIntervalMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafka) *int { return v.GroupConsumerMinHeartbeatIntervalMs }).(pulumi.IntPtrOutput)
+}
+
+// The minimum session timeout allowed for consumer group members using the consumer rebalance protocol. Must not be greater than group.consumer.max.session.timeout.ms. (Default: 45000 ms (45 seconds)) Requires Kafka 4.0 or later. Example: `45000`.
+func (o GetKafkaKafkaUserConfigKafkaOutput) GroupConsumerMinSessionTimeoutMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafka) *int { return v.GroupConsumerMinSessionTimeoutMs }).(pulumi.IntPtrOutput)
+}
+
+// The timeout used to detect consumer group member failures when using the consumer rebalance protocol. Must be between group.consumer.min.session.timeout.ms and group.consumer.max.session.timeout.ms. (Default: 45000 ms (45 seconds)) Requires Kafka 4.0 or later. Example: `45000`.
+func (o GetKafkaKafkaUserConfigKafkaOutput) GroupConsumerSessionTimeoutMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafka) *int { return v.GroupConsumerSessionTimeoutMs }).(pulumi.IntPtrOutput)
 }
 
 // Enum: `classic`, `classic,consumer`, `classic,consumer,share`, `classic,consumer,share,streams`, `classic,consumer,streams`, `classic,share`, `classic,streams`. The enabled consumer group rebalance protocols. Use consumer, classic, share, streams to enable Kafka share groups.
@@ -85684,6 +86343,66 @@ func (o GetKafkaKafkaUserConfigKafkaPtrOutput) DefaultReplicationFactor() pulumi
 			return nil
 		}
 		return v.DefaultReplicationFactor
+	}).(pulumi.IntPtrOutput)
+}
+
+// The heartbeat interval given to the members of a consumer group using the consumer rebalance protocol. Must be between group.consumer.min.heartbeat.interval.ms and group.consumer.max.heartbeat.interval.ms, and lower than group.consumer.session.timeout.ms. (Default: 5000 ms (5 seconds)) Requires Kafka 4.0 or later. Example: `5000`.
+func (o GetKafkaKafkaUserConfigKafkaPtrOutput) GroupConsumerHeartbeatIntervalMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafka) *int {
+		if v == nil {
+			return nil
+		}
+		return v.GroupConsumerHeartbeatIntervalMs
+	}).(pulumi.IntPtrOutput)
+}
+
+// The maximum heartbeat interval allowed for consumer group members using the consumer rebalance protocol. Must not be less than group.consumer.min.heartbeat.interval.ms. (Default: 15000 ms (15 seconds)) Requires Kafka 4.0 or later. Example: `15000`.
+func (o GetKafkaKafkaUserConfigKafkaPtrOutput) GroupConsumerMaxHeartbeatIntervalMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafka) *int {
+		if v == nil {
+			return nil
+		}
+		return v.GroupConsumerMaxHeartbeatIntervalMs
+	}).(pulumi.IntPtrOutput)
+}
+
+// The maximum session timeout allowed for consumer group members using the consumer rebalance protocol. Must not be less than group.consumer.min.session.timeout.ms. (Default: 60000 ms (60 seconds)) Requires Kafka 4.0 or later. Example: `60000`.
+func (o GetKafkaKafkaUserConfigKafkaPtrOutput) GroupConsumerMaxSessionTimeoutMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafka) *int {
+		if v == nil {
+			return nil
+		}
+		return v.GroupConsumerMaxSessionTimeoutMs
+	}).(pulumi.IntPtrOutput)
+}
+
+// The minimum heartbeat interval allowed for consumer group members using the consumer rebalance protocol. Must not be greater than group.consumer.max.heartbeat.interval.ms. (Default: 5000 ms (5 seconds)) Requires Kafka 4.0 or later. Example: `5000`.
+func (o GetKafkaKafkaUserConfigKafkaPtrOutput) GroupConsumerMinHeartbeatIntervalMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafka) *int {
+		if v == nil {
+			return nil
+		}
+		return v.GroupConsumerMinHeartbeatIntervalMs
+	}).(pulumi.IntPtrOutput)
+}
+
+// The minimum session timeout allowed for consumer group members using the consumer rebalance protocol. Must not be greater than group.consumer.max.session.timeout.ms. (Default: 45000 ms (45 seconds)) Requires Kafka 4.0 or later. Example: `45000`.
+func (o GetKafkaKafkaUserConfigKafkaPtrOutput) GroupConsumerMinSessionTimeoutMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafka) *int {
+		if v == nil {
+			return nil
+		}
+		return v.GroupConsumerMinSessionTimeoutMs
+	}).(pulumi.IntPtrOutput)
+}
+
+// The timeout used to detect consumer group member failures when using the consumer rebalance protocol. Must be between group.consumer.min.session.timeout.ms and group.consumer.max.session.timeout.ms. (Default: 45000 ms (45 seconds)) Requires Kafka 4.0 or later. Example: `45000`.
+func (o GetKafkaKafkaUserConfigKafkaPtrOutput) GroupConsumerSessionTimeoutMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafka) *int {
+		if v == nil {
+			return nil
+		}
+		return v.GroupConsumerSessionTimeoutMs
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -94516,6 +95235,14 @@ type GetMySqlMysqlUserConfigMysql struct {
 	InnodbLockWaitTimeout *int `pulumi:"innodbLockWaitTimeout"`
 	// The size in bytes of the buffer that InnoDB uses to write to the log files on disk. Requests above 15% of the RAM provided by your service plan are rejected, because a larger buffer leaves less memory for the buffer pool and client connections.
 	InnodbLogBufferSize *int `pulumi:"innodbLogBufferSize"`
+	// Percentage of dirty pages in the InnoDB buffer pool at which InnoDB starts flushing aggressively. Lowering it spreads write I/O more evenly and shortens crash recovery, at the cost of flushing pages that might have been modified again. Must stay at or above innodb_max_dirty_pages_pct_lwm. Default is 90. Example: `75`.
+	InnodbMaxDirtyPagesPct *float64 `pulumi:"innodbMaxDirtyPagesPct"`
+	// Percentage of dirty pages in the InnoDB buffer pool at which InnoDB starts pre-flushing, to keep the dirty page ratio from reaching innodb_max_dirty_pages_pct. 0 turns pre-flushing off. Cannot be set above innodb_max_dirty_pages_pct. Default is 10. Example: `10`.
+	InnodbMaxDirtyPagesPctLwm *float64 `pulumi:"innodbMaxDirtyPagesPctLwm"`
+	// Number of outstanding transactions the InnoDB purge operation may fall behind by before INSERT, UPDATE and DELETE are delayed to let it catch up. The delay applies per row and grows with the lag, and it is capped by innodb_max_purge_lag_delay, which has to be set as well for this option to have any effect. Default is 0, which never delays anything.
+	InnodbMaxPurgeLag *int `pulumi:"innodbMaxPurgeLag"`
+	// Cap in microseconds on the per-row delay innodbMaxPurgeLag applies to INSERT, UPDATE and DELETE. MySQL clamps the delay to this value unconditionally, so while this is 0 no delay is ever applied and innodbMaxPurgeLag on its own does nothing. Both options must be non-zero for either to take effect. Default is 0. Example: `10000`.
+	InnodbMaxPurgeLagDelay *int `pulumi:"innodbMaxPurgeLagDelay"`
 	// The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
 	InnodbOnlineAlterLogMaxSize *int `pulumi:"innodbOnlineAlterLogMaxSize"`
 	// When enabled, OPTIMIZE TABLE on InnoDB tables only updates the FULLTEXT index instead of rebuilding the table. Intended to be enabled temporarily during FULLTEXT index maintenance and disabled afterwards; while enabled, OPTIMIZE TABLE does not reclaim table space.
@@ -94640,6 +95367,14 @@ type GetMySqlMysqlUserConfigMysqlArgs struct {
 	InnodbLockWaitTimeout pulumi.IntPtrInput `pulumi:"innodbLockWaitTimeout"`
 	// The size in bytes of the buffer that InnoDB uses to write to the log files on disk. Requests above 15% of the RAM provided by your service plan are rejected, because a larger buffer leaves less memory for the buffer pool and client connections.
 	InnodbLogBufferSize pulumi.IntPtrInput `pulumi:"innodbLogBufferSize"`
+	// Percentage of dirty pages in the InnoDB buffer pool at which InnoDB starts flushing aggressively. Lowering it spreads write I/O more evenly and shortens crash recovery, at the cost of flushing pages that might have been modified again. Must stay at or above innodb_max_dirty_pages_pct_lwm. Default is 90. Example: `75`.
+	InnodbMaxDirtyPagesPct pulumi.Float64PtrInput `pulumi:"innodbMaxDirtyPagesPct"`
+	// Percentage of dirty pages in the InnoDB buffer pool at which InnoDB starts pre-flushing, to keep the dirty page ratio from reaching innodb_max_dirty_pages_pct. 0 turns pre-flushing off. Cannot be set above innodb_max_dirty_pages_pct. Default is 10. Example: `10`.
+	InnodbMaxDirtyPagesPctLwm pulumi.Float64PtrInput `pulumi:"innodbMaxDirtyPagesPctLwm"`
+	// Number of outstanding transactions the InnoDB purge operation may fall behind by before INSERT, UPDATE and DELETE are delayed to let it catch up. The delay applies per row and grows with the lag, and it is capped by innodb_max_purge_lag_delay, which has to be set as well for this option to have any effect. Default is 0, which never delays anything.
+	InnodbMaxPurgeLag pulumi.IntPtrInput `pulumi:"innodbMaxPurgeLag"`
+	// Cap in microseconds on the per-row delay innodbMaxPurgeLag applies to INSERT, UPDATE and DELETE. MySQL clamps the delay to this value unconditionally, so while this is 0 no delay is ever applied and innodbMaxPurgeLag on its own does nothing. Both options must be non-zero for either to take effect. Default is 0. Example: `10000`.
+	InnodbMaxPurgeLagDelay pulumi.IntPtrInput `pulumi:"innodbMaxPurgeLagDelay"`
 	// The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
 	InnodbOnlineAlterLogMaxSize pulumi.IntPtrInput `pulumi:"innodbOnlineAlterLogMaxSize"`
 	// When enabled, OPTIMIZE TABLE on InnoDB tables only updates the FULLTEXT index instead of rebuilding the table. Intended to be enabled temporarily during FULLTEXT index maintenance and disabled afterwards; while enabled, OPTIMIZE TABLE does not reclaim table space.
@@ -94893,6 +95628,26 @@ func (o GetMySqlMysqlUserConfigMysqlOutput) InnodbLockWaitTimeout() pulumi.IntPt
 // The size in bytes of the buffer that InnoDB uses to write to the log files on disk. Requests above 15% of the RAM provided by your service plan are rejected, because a larger buffer leaves less memory for the buffer pool and client connections.
 func (o GetMySqlMysqlUserConfigMysqlOutput) InnodbLogBufferSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *int { return v.InnodbLogBufferSize }).(pulumi.IntPtrOutput)
+}
+
+// Percentage of dirty pages in the InnoDB buffer pool at which InnoDB starts flushing aggressively. Lowering it spreads write I/O more evenly and shortens crash recovery, at the cost of flushing pages that might have been modified again. Must stay at or above innodb_max_dirty_pages_pct_lwm. Default is 90. Example: `75`.
+func (o GetMySqlMysqlUserConfigMysqlOutput) InnodbMaxDirtyPagesPct() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *float64 { return v.InnodbMaxDirtyPagesPct }).(pulumi.Float64PtrOutput)
+}
+
+// Percentage of dirty pages in the InnoDB buffer pool at which InnoDB starts pre-flushing, to keep the dirty page ratio from reaching innodb_max_dirty_pages_pct. 0 turns pre-flushing off. Cannot be set above innodb_max_dirty_pages_pct. Default is 10. Example: `10`.
+func (o GetMySqlMysqlUserConfigMysqlOutput) InnodbMaxDirtyPagesPctLwm() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *float64 { return v.InnodbMaxDirtyPagesPctLwm }).(pulumi.Float64PtrOutput)
+}
+
+// Number of outstanding transactions the InnoDB purge operation may fall behind by before INSERT, UPDATE and DELETE are delayed to let it catch up. The delay applies per row and grows with the lag, and it is capped by innodb_max_purge_lag_delay, which has to be set as well for this option to have any effect. Default is 0, which never delays anything.
+func (o GetMySqlMysqlUserConfigMysqlOutput) InnodbMaxPurgeLag() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *int { return v.InnodbMaxPurgeLag }).(pulumi.IntPtrOutput)
+}
+
+// Cap in microseconds on the per-row delay innodbMaxPurgeLag applies to INSERT, UPDATE and DELETE. MySQL clamps the delay to this value unconditionally, so while this is 0 no delay is ever applied and innodbMaxPurgeLag on its own does nothing. Both options must be non-zero for either to take effect. Default is 0. Example: `10000`.
+func (o GetMySqlMysqlUserConfigMysqlOutput) InnodbMaxPurgeLagDelay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetMySqlMysqlUserConfigMysql) *int { return v.InnodbMaxPurgeLagDelay }).(pulumi.IntPtrOutput)
 }
 
 // The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
@@ -95301,6 +96056,46 @@ func (o GetMySqlMysqlUserConfigMysqlPtrOutput) InnodbLogBufferSize() pulumi.IntP
 			return nil
 		}
 		return v.InnodbLogBufferSize
+	}).(pulumi.IntPtrOutput)
+}
+
+// Percentage of dirty pages in the InnoDB buffer pool at which InnoDB starts flushing aggressively. Lowering it spreads write I/O more evenly and shortens crash recovery, at the cost of flushing pages that might have been modified again. Must stay at or above innodb_max_dirty_pages_pct_lwm. Default is 90. Example: `75`.
+func (o GetMySqlMysqlUserConfigMysqlPtrOutput) InnodbMaxDirtyPagesPct() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMysql) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.InnodbMaxDirtyPagesPct
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Percentage of dirty pages in the InnoDB buffer pool at which InnoDB starts pre-flushing, to keep the dirty page ratio from reaching innodb_max_dirty_pages_pct. 0 turns pre-flushing off. Cannot be set above innodb_max_dirty_pages_pct. Default is 10. Example: `10`.
+func (o GetMySqlMysqlUserConfigMysqlPtrOutput) InnodbMaxDirtyPagesPctLwm() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMysql) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.InnodbMaxDirtyPagesPctLwm
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Number of outstanding transactions the InnoDB purge operation may fall behind by before INSERT, UPDATE and DELETE are delayed to let it catch up. The delay applies per row and grows with the lag, and it is capped by innodb_max_purge_lag_delay, which has to be set as well for this option to have any effect. Default is 0, which never delays anything.
+func (o GetMySqlMysqlUserConfigMysqlPtrOutput) InnodbMaxPurgeLag() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMysql) *int {
+		if v == nil {
+			return nil
+		}
+		return v.InnodbMaxPurgeLag
+	}).(pulumi.IntPtrOutput)
+}
+
+// Cap in microseconds on the per-row delay innodbMaxPurgeLag applies to INSERT, UPDATE and DELETE. MySQL clamps the delay to this value unconditionally, so while this is 0 no delay is ever applied and innodbMaxPurgeLag on its own does nothing. Both options must be non-zero for either to take effect. Default is 0. Example: `10000`.
+func (o GetMySqlMysqlUserConfigMysqlPtrOutput) InnodbMaxPurgeLagDelay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetMySqlMysqlUserConfigMysql) *int {
+		if v == nil {
+			return nil
+		}
+		return v.InnodbMaxPurgeLagDelay
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -97252,7 +98047,7 @@ type GetOpenSearchOpensearchUserConfig struct {
 	Opensearch *GetOpenSearchOpensearchUserConfigOpensearch `pulumi:"opensearch"`
 	// OpenSearch Dashboards settings
 	OpensearchDashboards *GetOpenSearchOpensearchUserConfigOpensearchDashboards `pulumi:"opensearchDashboards"`
-	// Enum: `1`, `2`, `2.19`, `3.3`, `3.6`, and newer. OpenSearch version.
+	// Enum: `1`, `2`, `2.19`, `3.3`, `3.6`, `3.8`, and newer. OpenSearch version.
 	OpensearchVersion *string `pulumi:"opensearchVersion"`
 	// Allow access to selected service ports from private networks
 	PrivateAccess *GetOpenSearchOpensearchUserConfigPrivateAccess `pulumi:"privateAccess"`
@@ -97324,7 +98119,7 @@ type GetOpenSearchOpensearchUserConfigArgs struct {
 	Opensearch GetOpenSearchOpensearchUserConfigOpensearchPtrInput `pulumi:"opensearch"`
 	// OpenSearch Dashboards settings
 	OpensearchDashboards GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrInput `pulumi:"opensearchDashboards"`
-	// Enum: `1`, `2`, `2.19`, `3.3`, `3.6`, and newer. OpenSearch version.
+	// Enum: `1`, `2`, `2.19`, `3.3`, `3.6`, `3.8`, and newer. OpenSearch version.
 	OpensearchVersion pulumi.StringPtrInput `pulumi:"opensearchVersion"`
 	// Allow access to selected service ports from private networks
 	PrivateAccess GetOpenSearchOpensearchUserConfigPrivateAccessPtrInput `pulumi:"privateAccess"`
@@ -97502,7 +98297,7 @@ func (o GetOpenSearchOpensearchUserConfigOutput) OpensearchDashboards() GetOpenS
 	}).(GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput)
 }
 
-// Enum: `1`, `2`, `2.19`, `3.3`, `3.6`, and newer. OpenSearch version.
+// Enum: `1`, `2`, `2.19`, `3.3`, `3.6`, `3.8`, and newer. OpenSearch version.
 func (o GetOpenSearchOpensearchUserConfigOutput) OpensearchVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfig) *string { return v.OpensearchVersion }).(pulumi.StringPtrOutput)
 }
@@ -99653,14 +100448,26 @@ type GetOpenSearchOpensearchUserConfigOpensearch struct {
 	IsmHistoryRolloverCheckPeriod *int `pulumi:"ismHistoryRolloverCheckPeriod"`
 	// How long audit history indices are kept in days. Example: `30`.
 	IsmHistoryRolloverRetentionPeriod *int `pulumi:"ismHistoryRolloverRetentionPeriod"`
+	// Enable or disable removing KNN graphs from the cache when they are idle. Disabled by default.
+	KnnCacheItemExpiryEnabled *bool `pulumi:"knnCacheItemExpiryEnabled"`
+	// If enabled, the amount of time in minutes a KNN graph can be idle in the cache before being evicted. Example: `180`.
+	KnnCacheItemExpiryMinutes *int `pulumi:"knnCacheItemExpiryMinutes"`
+	// The native memory usage, as a percentage below the KNN memory circuit breaker limit, at which a tripped circuit breaker resets. Defaults to 5%.
+	KnnCircuitBreakerUnsetPercentage *float64 `pulumi:"knnCircuitBreakerUnsetPercentage"`
 	// Enable or disable KNN memory circuit breaker. Defaults to true.
 	KnnMemoryCircuitBreakerEnabled *bool `pulumi:"knnMemoryCircuitBreakerEnabled"`
 	// Maximum amount of memory in percentage that can be used for the KNN index. Defaults to 50% of the JVM heap size. 0 is used to set it to null which can be used to invalidate caches.
 	KnnMemoryCircuitBreakerLimit *int `pulumi:"knnMemoryCircuitBreakerLimit"`
 	// When set to true, the setting allows admins to control access and permissions to the connector API using backend_roles. Defaults to false.
 	MlCommonsConnectorAccessControlEnabled *bool `pulumi:"mlCommonsConnectorAccessControlEnabled"`
+	// Maximum number of ML models that can be deployed on a single ML node. Defaults to 10.
+	MlCommonsMaxModelOnNode *int `pulumi:"mlCommonsMaxModelOnNode"`
 	// Enable or disable model access control for ML Commons. When enabled, access to ML models is controlled by security permissions. Defaults to false.
 	MlCommonsModelAccessControlEnabled *bool `pulumi:"mlCommonsModelAccessControlEnabled"`
+	// For externally hosted models only: automatically deploy a model on its first predict request instead of requiring an explicit deploy call first. Defaults to true.
+	MlCommonsModelAutoDeployEnable *bool `pulumi:"mlCommonsModelAutoDeployEnable"`
+	// Automatically redeploy deployed or partially deployed models after ML nodes rejoin the cluster, e.g. after a node replacement. Defaults to true.
+	MlCommonsModelAutoRedeployEnable *bool `pulumi:"mlCommonsModelAutoRedeployEnable"`
 	// Native memory threshold percentage for ML Commons. Controls the maximum percentage of native memory that can be used by ML Commons operations. Defaults to 90%.
 	MlCommonsNativeMemoryThreshold *int `pulumi:"mlCommonsNativeMemoryThreshold"`
 	// Enable or disable running ML Commons tasks only on ML nodes. When enabled, ML tasks will only execute on nodes designated as ML nodes. Defaults to true.
@@ -99789,14 +100596,26 @@ type GetOpenSearchOpensearchUserConfigOpensearchArgs struct {
 	IsmHistoryRolloverCheckPeriod pulumi.IntPtrInput `pulumi:"ismHistoryRolloverCheckPeriod"`
 	// How long audit history indices are kept in days. Example: `30`.
 	IsmHistoryRolloverRetentionPeriod pulumi.IntPtrInput `pulumi:"ismHistoryRolloverRetentionPeriod"`
+	// Enable or disable removing KNN graphs from the cache when they are idle. Disabled by default.
+	KnnCacheItemExpiryEnabled pulumi.BoolPtrInput `pulumi:"knnCacheItemExpiryEnabled"`
+	// If enabled, the amount of time in minutes a KNN graph can be idle in the cache before being evicted. Example: `180`.
+	KnnCacheItemExpiryMinutes pulumi.IntPtrInput `pulumi:"knnCacheItemExpiryMinutes"`
+	// The native memory usage, as a percentage below the KNN memory circuit breaker limit, at which a tripped circuit breaker resets. Defaults to 5%.
+	KnnCircuitBreakerUnsetPercentage pulumi.Float64PtrInput `pulumi:"knnCircuitBreakerUnsetPercentage"`
 	// Enable or disable KNN memory circuit breaker. Defaults to true.
 	KnnMemoryCircuitBreakerEnabled pulumi.BoolPtrInput `pulumi:"knnMemoryCircuitBreakerEnabled"`
 	// Maximum amount of memory in percentage that can be used for the KNN index. Defaults to 50% of the JVM heap size. 0 is used to set it to null which can be used to invalidate caches.
 	KnnMemoryCircuitBreakerLimit pulumi.IntPtrInput `pulumi:"knnMemoryCircuitBreakerLimit"`
 	// When set to true, the setting allows admins to control access and permissions to the connector API using backend_roles. Defaults to false.
 	MlCommonsConnectorAccessControlEnabled pulumi.BoolPtrInput `pulumi:"mlCommonsConnectorAccessControlEnabled"`
+	// Maximum number of ML models that can be deployed on a single ML node. Defaults to 10.
+	MlCommonsMaxModelOnNode pulumi.IntPtrInput `pulumi:"mlCommonsMaxModelOnNode"`
 	// Enable or disable model access control for ML Commons. When enabled, access to ML models is controlled by security permissions. Defaults to false.
 	MlCommonsModelAccessControlEnabled pulumi.BoolPtrInput `pulumi:"mlCommonsModelAccessControlEnabled"`
+	// For externally hosted models only: automatically deploy a model on its first predict request instead of requiring an explicit deploy call first. Defaults to true.
+	MlCommonsModelAutoDeployEnable pulumi.BoolPtrInput `pulumi:"mlCommonsModelAutoDeployEnable"`
+	// Automatically redeploy deployed or partially deployed models after ML nodes rejoin the cluster, e.g. after a node replacement. Defaults to true.
+	MlCommonsModelAutoRedeployEnable pulumi.BoolPtrInput `pulumi:"mlCommonsModelAutoRedeployEnable"`
 	// Native memory threshold percentage for ML Commons. Controls the maximum percentage of native memory that can be used by ML Commons operations. Defaults to 90%.
 	MlCommonsNativeMemoryThreshold pulumi.IntPtrInput `pulumi:"mlCommonsNativeMemoryThreshold"`
 	// Enable or disable running ML Commons tasks only on ML nodes. When enabled, ML tasks will only execute on nodes designated as ML nodes. Defaults to true.
@@ -100106,6 +100925,23 @@ func (o GetOpenSearchOpensearchUserConfigOpensearchOutput) IsmHistoryRolloverRet
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearch) *int { return v.IsmHistoryRolloverRetentionPeriod }).(pulumi.IntPtrOutput)
 }
 
+// Enable or disable removing KNN graphs from the cache when they are idle. Disabled by default.
+func (o GetOpenSearchOpensearchUserConfigOpensearchOutput) KnnCacheItemExpiryEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearch) *bool { return v.KnnCacheItemExpiryEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// If enabled, the amount of time in minutes a KNN graph can be idle in the cache before being evicted. Example: `180`.
+func (o GetOpenSearchOpensearchUserConfigOpensearchOutput) KnnCacheItemExpiryMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearch) *int { return v.KnnCacheItemExpiryMinutes }).(pulumi.IntPtrOutput)
+}
+
+// The native memory usage, as a percentage below the KNN memory circuit breaker limit, at which a tripped circuit breaker resets. Defaults to 5%.
+func (o GetOpenSearchOpensearchUserConfigOpensearchOutput) KnnCircuitBreakerUnsetPercentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearch) *float64 {
+		return v.KnnCircuitBreakerUnsetPercentage
+	}).(pulumi.Float64PtrOutput)
+}
+
 // Enable or disable KNN memory circuit breaker. Defaults to true.
 func (o GetOpenSearchOpensearchUserConfigOpensearchOutput) KnnMemoryCircuitBreakerEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearch) *bool { return v.KnnMemoryCircuitBreakerEnabled }).(pulumi.BoolPtrOutput)
@@ -100123,9 +100959,24 @@ func (o GetOpenSearchOpensearchUserConfigOpensearchOutput) MlCommonsConnectorAcc
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Maximum number of ML models that can be deployed on a single ML node. Defaults to 10.
+func (o GetOpenSearchOpensearchUserConfigOpensearchOutput) MlCommonsMaxModelOnNode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearch) *int { return v.MlCommonsMaxModelOnNode }).(pulumi.IntPtrOutput)
+}
+
 // Enable or disable model access control for ML Commons. When enabled, access to ML models is controlled by security permissions. Defaults to false.
 func (o GetOpenSearchOpensearchUserConfigOpensearchOutput) MlCommonsModelAccessControlEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearch) *bool { return v.MlCommonsModelAccessControlEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// For externally hosted models only: automatically deploy a model on its first predict request instead of requiring an explicit deploy call first. Defaults to true.
+func (o GetOpenSearchOpensearchUserConfigOpensearchOutput) MlCommonsModelAutoDeployEnable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearch) *bool { return v.MlCommonsModelAutoDeployEnable }).(pulumi.BoolPtrOutput)
+}
+
+// Automatically redeploy deployed or partially deployed models after ML nodes rejoin the cluster, e.g. after a node replacement. Defaults to true.
+func (o GetOpenSearchOpensearchUserConfigOpensearchOutput) MlCommonsModelAutoRedeployEnable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearch) *bool { return v.MlCommonsModelAutoRedeployEnable }).(pulumi.BoolPtrOutput)
 }
 
 // Native memory threshold percentage for ML Commons. Controls the maximum percentage of native memory that can be used by ML Commons operations. Defaults to 90%.
@@ -100627,6 +101478,36 @@ func (o GetOpenSearchOpensearchUserConfigOpensearchPtrOutput) IsmHistoryRollover
 	}).(pulumi.IntPtrOutput)
 }
 
+// Enable or disable removing KNN graphs from the cache when they are idle. Disabled by default.
+func (o GetOpenSearchOpensearchUserConfigOpensearchPtrOutput) KnnCacheItemExpiryEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearch) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.KnnCacheItemExpiryEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If enabled, the amount of time in minutes a KNN graph can be idle in the cache before being evicted. Example: `180`.
+func (o GetOpenSearchOpensearchUserConfigOpensearchPtrOutput) KnnCacheItemExpiryMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.KnnCacheItemExpiryMinutes
+	}).(pulumi.IntPtrOutput)
+}
+
+// The native memory usage, as a percentage below the KNN memory circuit breaker limit, at which a tripped circuit breaker resets. Defaults to 5%.
+func (o GetOpenSearchOpensearchUserConfigOpensearchPtrOutput) KnnCircuitBreakerUnsetPercentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearch) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.KnnCircuitBreakerUnsetPercentage
+	}).(pulumi.Float64PtrOutput)
+}
+
 // Enable or disable KNN memory circuit breaker. Defaults to true.
 func (o GetOpenSearchOpensearchUserConfigOpensearchPtrOutput) KnnMemoryCircuitBreakerEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearch) *bool {
@@ -100657,6 +101538,16 @@ func (o GetOpenSearchOpensearchUserConfigOpensearchPtrOutput) MlCommonsConnector
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Maximum number of ML models that can be deployed on a single ML node. Defaults to 10.
+func (o GetOpenSearchOpensearchUserConfigOpensearchPtrOutput) MlCommonsMaxModelOnNode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MlCommonsMaxModelOnNode
+	}).(pulumi.IntPtrOutput)
+}
+
 // Enable or disable model access control for ML Commons. When enabled, access to ML models is controlled by security permissions. Defaults to false.
 func (o GetOpenSearchOpensearchUserConfigOpensearchPtrOutput) MlCommonsModelAccessControlEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearch) *bool {
@@ -100664,6 +101555,26 @@ func (o GetOpenSearchOpensearchUserConfigOpensearchPtrOutput) MlCommonsModelAcce
 			return nil
 		}
 		return v.MlCommonsModelAccessControlEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// For externally hosted models only: automatically deploy a model on its first predict request instead of requiring an explicit deploy call first. Defaults to true.
+func (o GetOpenSearchOpensearchUserConfigOpensearchPtrOutput) MlCommonsModelAutoDeployEnable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearch) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.MlCommonsModelAutoDeployEnable
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Automatically redeploy deployed or partially deployed models after ML nodes rejoin the cluster, e.g. after a node replacement. Defaults to true.
+func (o GetOpenSearchOpensearchUserConfigOpensearchPtrOutput) MlCommonsModelAutoRedeployEnable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearch) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.MlCommonsModelAutoRedeployEnable
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -102380,381 +103291,6 @@ func (o GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput) SessionT
 	}).(pulumi.StringPtrOutput)
 }
 
-type GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarks struct {
-	// The flood stage watermark for disk usage. Example: `95`.
-	FloodStage int `pulumi:"floodStage"`
-	// The high watermark for disk usage. Example: `90`.
-	High int `pulumi:"high"`
-	// The low watermark for disk usage. Example: `85`.
-	Low int `pulumi:"low"`
-}
-
-// GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksInput is an input type that accepts GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksArgs and GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutput values.
-// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksInput` via:
-//
-//	GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksArgs{...}
-type GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksInput interface {
-	pulumi.Input
-
-	ToGetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutput() GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutput
-	ToGetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutput
-}
-
-type GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksArgs struct {
-	// The flood stage watermark for disk usage. Example: `95`.
-	FloodStage pulumi.IntInput `pulumi:"floodStage"`
-	// The high watermark for disk usage. Example: `90`.
-	High pulumi.IntInput `pulumi:"high"`
-	// The low watermark for disk usage. Example: `85`.
-	Low pulumi.IntInput `pulumi:"low"`
-}
-
-func (GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarks)(nil)).Elem()
-}
-
-func (i GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksArgs) ToGetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutput() GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutput {
-	return i.ToGetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutputWithContext(context.Background())
-}
-
-func (i GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksArgs) ToGetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutput)
-}
-
-func (i GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksArgs) ToGetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput {
-	return i.ToGetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutputWithContext(context.Background())
-}
-
-func (i GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksArgs) ToGetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutput).ToGetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutputWithContext(ctx)
-}
-
-// GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrInput is an input type that accepts GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksArgs, GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtr and GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput values.
-// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrInput` via:
-//
-//	        GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrInput interface {
-	pulumi.Input
-
-	ToGetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput
-	ToGetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput
-}
-
-type getOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrType GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksArgs
-
-func GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtr(v *GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksArgs) GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrInput {
-	return (*getOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrType)(v)
-}
-
-func (*getOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarks)(nil)).Elem()
-}
-
-func (i *getOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrType) ToGetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput {
-	return i.ToGetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutputWithContext(context.Background())
-}
-
-func (i *getOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrType) ToGetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput)
-}
-
-type GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutput struct{ *pulumi.OutputState }
-
-func (GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarks)(nil)).Elem()
-}
-
-func (o GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutput) ToGetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutput() GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutput {
-	return o
-}
-
-func (o GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutput) ToGetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutput {
-	return o
-}
-
-func (o GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutput) ToGetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput {
-	return o.ToGetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutputWithContext(context.Background())
-}
-
-func (o GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutput) ToGetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarks) *GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarks {
-		return &v
-	}).(GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput)
-}
-
-// The flood stage watermark for disk usage. Example: `95`.
-func (o GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutput) FloodStage() pulumi.IntOutput {
-	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarks) int { return v.FloodStage }).(pulumi.IntOutput)
-}
-
-// The high watermark for disk usage. Example: `90`.
-func (o GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutput) High() pulumi.IntOutput {
-	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarks) int { return v.High }).(pulumi.IntOutput)
-}
-
-// The low watermark for disk usage. Example: `85`.
-func (o GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutput) Low() pulumi.IntOutput {
-	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarks) int { return v.Low }).(pulumi.IntOutput)
-}
-
-type GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput struct{ *pulumi.OutputState }
-
-func (GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarks)(nil)).Elem()
-}
-
-func (o GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput) ToGetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput {
-	return o
-}
-
-func (o GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput) ToGetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput {
-	return o
-}
-
-func (o GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput) Elem() GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutput {
-	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarks) GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarks {
-		if v != nil {
-			return *v
-		}
-		var ret GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarks
-		return ret
-	}).(GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutput)
-}
-
-// The flood stage watermark for disk usage. Example: `95`.
-func (o GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput) FloodStage() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarks) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.FloodStage
-	}).(pulumi.IntPtrOutput)
-}
-
-// The high watermark for disk usage. Example: `90`.
-func (o GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput) High() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarks) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.High
-	}).(pulumi.IntPtrOutput)
-}
-
-// The low watermark for disk usage. Example: `85`.
-func (o GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput) Low() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarks) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Low
-	}).(pulumi.IntPtrOutput)
-}
-
-type GetOpenSearchOpensearchUserConfigOpensearchRemoteStore struct {
-	// The variance factor that is used together with the moving average to calculate the dynamic bytes lag threshold for activating remote segment backpressure. Defaults to 10.
-	SegmentPressureBytesLagVarianceFactor *float64 `pulumi:"segmentPressureBytesLagVarianceFactor"`
-	// The minimum consecutive failure count for activating remote segment backpressure. Defaults to 5.
-	SegmentPressureConsecutiveFailuresLimit *int `pulumi:"segmentPressureConsecutiveFailuresLimit"`
-	// Enables remote segment backpressure. Default is `true`.
-	SegmentPressureEnabled *bool `pulumi:"segmentPressureEnabled"`
-	// The variance factor that is used together with the moving average to calculate the dynamic time lag threshold for activating remote segment backpressure. Defaults to 10.
-	SegmentPressureTimeLagVarianceFactor *float64 `pulumi:"segmentPressureTimeLagVarianceFactor"`
-}
-
-// GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreInput is an input type that accepts GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreArgs and GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutput values.
-// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreInput` via:
-//
-//	GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreArgs{...}
-type GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreInput interface {
-	pulumi.Input
-
-	ToGetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutput() GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutput
-	ToGetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutput
-}
-
-type GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreArgs struct {
-	// The variance factor that is used together with the moving average to calculate the dynamic bytes lag threshold for activating remote segment backpressure. Defaults to 10.
-	SegmentPressureBytesLagVarianceFactor pulumi.Float64PtrInput `pulumi:"segmentPressureBytesLagVarianceFactor"`
-	// The minimum consecutive failure count for activating remote segment backpressure. Defaults to 5.
-	SegmentPressureConsecutiveFailuresLimit pulumi.IntPtrInput `pulumi:"segmentPressureConsecutiveFailuresLimit"`
-	// Enables remote segment backpressure. Default is `true`.
-	SegmentPressureEnabled pulumi.BoolPtrInput `pulumi:"segmentPressureEnabled"`
-	// The variance factor that is used together with the moving average to calculate the dynamic time lag threshold for activating remote segment backpressure. Defaults to 10.
-	SegmentPressureTimeLagVarianceFactor pulumi.Float64PtrInput `pulumi:"segmentPressureTimeLagVarianceFactor"`
-}
-
-func (GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchRemoteStore)(nil)).Elem()
-}
-
-func (i GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreArgs) ToGetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutput() GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutput {
-	return i.ToGetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutputWithContext(context.Background())
-}
-
-func (i GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreArgs) ToGetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutput)
-}
-
-func (i GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreArgs) ToGetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput() GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput {
-	return i.ToGetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutputWithContext(context.Background())
-}
-
-func (i GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreArgs) ToGetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutput).ToGetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutputWithContext(ctx)
-}
-
-// GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrInput is an input type that accepts GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreArgs, GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtr and GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput values.
-// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrInput` via:
-//
-//	        GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrInput interface {
-	pulumi.Input
-
-	ToGetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput() GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput
-	ToGetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput
-}
-
-type getOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrType GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreArgs
-
-func GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtr(v *GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreArgs) GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrInput {
-	return (*getOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrType)(v)
-}
-
-func (*getOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigOpensearchRemoteStore)(nil)).Elem()
-}
-
-func (i *getOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrType) ToGetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput() GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput {
-	return i.ToGetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutputWithContext(context.Background())
-}
-
-func (i *getOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrType) ToGetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput)
-}
-
-type GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutput struct{ *pulumi.OutputState }
-
-func (GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchRemoteStore)(nil)).Elem()
-}
-
-func (o GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutput) ToGetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutput() GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutput {
-	return o
-}
-
-func (o GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutput) ToGetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutput {
-	return o
-}
-
-func (o GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutput) ToGetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput() GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput {
-	return o.ToGetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutputWithContext(context.Background())
-}
-
-func (o GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutput) ToGetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetOpenSearchOpensearchUserConfigOpensearchRemoteStore) *GetOpenSearchOpensearchUserConfigOpensearchRemoteStore {
-		return &v
-	}).(GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput)
-}
-
-// The variance factor that is used together with the moving average to calculate the dynamic bytes lag threshold for activating remote segment backpressure. Defaults to 10.
-func (o GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutput) SegmentPressureBytesLagVarianceFactor() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchRemoteStore) *float64 {
-		return v.SegmentPressureBytesLagVarianceFactor
-	}).(pulumi.Float64PtrOutput)
-}
-
-// The minimum consecutive failure count for activating remote segment backpressure. Defaults to 5.
-func (o GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutput) SegmentPressureConsecutiveFailuresLimit() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchRemoteStore) *int {
-		return v.SegmentPressureConsecutiveFailuresLimit
-	}).(pulumi.IntPtrOutput)
-}
-
-// Enables remote segment backpressure. Default is `true`.
-func (o GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutput) SegmentPressureEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchRemoteStore) *bool { return v.SegmentPressureEnabled }).(pulumi.BoolPtrOutput)
-}
-
-// The variance factor that is used together with the moving average to calculate the dynamic time lag threshold for activating remote segment backpressure. Defaults to 10.
-func (o GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutput) SegmentPressureTimeLagVarianceFactor() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchRemoteStore) *float64 {
-		return v.SegmentPressureTimeLagVarianceFactor
-	}).(pulumi.Float64PtrOutput)
-}
-
-type GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput struct{ *pulumi.OutputState }
-
-func (GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigOpensearchRemoteStore)(nil)).Elem()
-}
-
-func (o GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput) ToGetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput() GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput {
-	return o
-}
-
-func (o GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput) ToGetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput {
-	return o
-}
-
-func (o GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput) Elem() GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutput {
-	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchRemoteStore) GetOpenSearchOpensearchUserConfigOpensearchRemoteStore {
-		if v != nil {
-			return *v
-		}
-		var ret GetOpenSearchOpensearchUserConfigOpensearchRemoteStore
-		return ret
-	}).(GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutput)
-}
-
-// The variance factor that is used together with the moving average to calculate the dynamic bytes lag threshold for activating remote segment backpressure. Defaults to 10.
-func (o GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput) SegmentPressureBytesLagVarianceFactor() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchRemoteStore) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.SegmentPressureBytesLagVarianceFactor
-	}).(pulumi.Float64PtrOutput)
-}
-
-// The minimum consecutive failure count for activating remote segment backpressure. Defaults to 5.
-func (o GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput) SegmentPressureConsecutiveFailuresLimit() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchRemoteStore) *int {
-		if v == nil {
-			return nil
-		}
-		return v.SegmentPressureConsecutiveFailuresLimit
-	}).(pulumi.IntPtrOutput)
-}
-
-// Enables remote segment backpressure. Default is `true`.
-func (o GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput) SegmentPressureEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchRemoteStore) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.SegmentPressureEnabled
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The variance factor that is used together with the moving average to calculate the dynamic time lag threshold for activating remote segment backpressure. Defaults to 10.
-func (o GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput) SegmentPressureTimeLagVarianceFactor() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchRemoteStore) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.SegmentPressureTimeLagVarianceFactor
-	}).(pulumi.Float64PtrOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccountAuthenticationSamlFieldMappingInput)(nil)).Elem(), AccountAuthenticationSamlFieldMappingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccountAuthenticationSamlFieldMappingPtrInput)(nil)).Elem(), AccountAuthenticationSamlFieldMappingArgs{})
@@ -102928,6 +103464,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*KafkaConnectComponentArrayInput)(nil)).Elem(), KafkaConnectComponentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KafkaConnectKafkaConnectUserConfigInput)(nil)).Elem(), KafkaConnectKafkaConnectUserConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KafkaConnectKafkaConnectUserConfigPtrInput)(nil)).Elem(), KafkaConnectKafkaConnectUserConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KafkaConnectKafkaConnectUserConfigCustomPluginInput)(nil)).Elem(), KafkaConnectKafkaConnectUserConfigCustomPluginArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KafkaConnectKafkaConnectUserConfigCustomPluginArrayInput)(nil)).Elem(), KafkaConnectKafkaConnectUserConfigCustomPluginArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KafkaConnectKafkaConnectUserConfigIpFilterObjectInput)(nil)).Elem(), KafkaConnectKafkaConnectUserConfigIpFilterObjectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KafkaConnectKafkaConnectUserConfigIpFilterObjectArrayInput)(nil)).Elem(), KafkaConnectKafkaConnectUserConfigIpFilterObjectArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KafkaConnectKafkaConnectUserConfigKafkaConnectInput)(nil)).Elem(), KafkaConnectKafkaConnectUserConfigKafkaConnectArgs{})
@@ -103560,6 +104098,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaConnectComponentArrayInput)(nil)).Elem(), GetKafkaConnectComponentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaConnectKafkaConnectUserConfigInput)(nil)).Elem(), GetKafkaConnectKafkaConnectUserConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaConnectKafkaConnectUserConfigArrayInput)(nil)).Elem(), GetKafkaConnectKafkaConnectUserConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaConnectKafkaConnectUserConfigCustomPluginInput)(nil)).Elem(), GetKafkaConnectKafkaConnectUserConfigCustomPluginArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaConnectKafkaConnectUserConfigCustomPluginArrayInput)(nil)).Elem(), GetKafkaConnectKafkaConnectUserConfigCustomPluginArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaConnectKafkaConnectUserConfigIpFilterObjectInput)(nil)).Elem(), GetKafkaConnectKafkaConnectUserConfigIpFilterObjectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaConnectKafkaConnectUserConfigIpFilterObjectArrayInput)(nil)).Elem(), GetKafkaConnectKafkaConnectUserConfigIpFilterObjectArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKafkaConnectKafkaConnectUserConfigKafkaConnectInput)(nil)).Elem(), GetKafkaConnectKafkaConnectUserConfigKafkaConnectArgs{})
@@ -103752,10 +104292,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchDashboardsInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchDashboardsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchDashboardsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreArgs{})
 	pulumi.RegisterOutputType(AccountAuthenticationSamlFieldMappingOutput{})
 	pulumi.RegisterOutputType(AccountAuthenticationSamlFieldMappingPtrOutput{})
 	pulumi.RegisterOutputType(AwsOrgVpcPeeringConnectionTimeoutsOutput{})
@@ -103928,6 +104464,8 @@ func init() {
 	pulumi.RegisterOutputType(KafkaConnectComponentArrayOutput{})
 	pulumi.RegisterOutputType(KafkaConnectKafkaConnectUserConfigOutput{})
 	pulumi.RegisterOutputType(KafkaConnectKafkaConnectUserConfigPtrOutput{})
+	pulumi.RegisterOutputType(KafkaConnectKafkaConnectUserConfigCustomPluginOutput{})
+	pulumi.RegisterOutputType(KafkaConnectKafkaConnectUserConfigCustomPluginArrayOutput{})
 	pulumi.RegisterOutputType(KafkaConnectKafkaConnectUserConfigIpFilterObjectOutput{})
 	pulumi.RegisterOutputType(KafkaConnectKafkaConnectUserConfigIpFilterObjectArrayOutput{})
 	pulumi.RegisterOutputType(KafkaConnectKafkaConnectUserConfigKafkaConnectOutput{})
@@ -104560,6 +105098,8 @@ func init() {
 	pulumi.RegisterOutputType(GetKafkaConnectComponentArrayOutput{})
 	pulumi.RegisterOutputType(GetKafkaConnectKafkaConnectUserConfigOutput{})
 	pulumi.RegisterOutputType(GetKafkaConnectKafkaConnectUserConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetKafkaConnectKafkaConnectUserConfigCustomPluginOutput{})
+	pulumi.RegisterOutputType(GetKafkaConnectKafkaConnectUserConfigCustomPluginArrayOutput{})
 	pulumi.RegisterOutputType(GetKafkaConnectKafkaConnectUserConfigIpFilterObjectOutput{})
 	pulumi.RegisterOutputType(GetKafkaConnectKafkaConnectUserConfigIpFilterObjectArrayOutput{})
 	pulumi.RegisterOutputType(GetKafkaConnectKafkaConnectUserConfigKafkaConnectOutput{})
@@ -104752,8 +105292,4 @@ func init() {
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchDashboardsOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput{})
-	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutput{})
-	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput{})
-	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutput{})
-	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchRemoteStorePtrOutput{})
 }

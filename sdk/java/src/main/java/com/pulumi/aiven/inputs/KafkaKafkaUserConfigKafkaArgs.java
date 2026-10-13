@@ -95,6 +95,96 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
     }
 
     /**
+     * The heartbeat interval given to the members of a consumer group using the consumer rebalance protocol. Must be between group.consumer.min.heartbeat.interval.ms and group.consumer.max.heartbeat.interval.ms, and lower than group.consumer.session.timeout.ms. (Default: 5000 ms (5 seconds)) Requires Kafka 4.0 or later. Example: `5000`.
+     * 
+     */
+    @Import(name="groupConsumerHeartbeatIntervalMs")
+    private @Nullable Output<Integer> groupConsumerHeartbeatIntervalMs;
+
+    /**
+     * @return The heartbeat interval given to the members of a consumer group using the consumer rebalance protocol. Must be between group.consumer.min.heartbeat.interval.ms and group.consumer.max.heartbeat.interval.ms, and lower than group.consumer.session.timeout.ms. (Default: 5000 ms (5 seconds)) Requires Kafka 4.0 or later. Example: `5000`.
+     * 
+     */
+    public Optional<Output<Integer>> groupConsumerHeartbeatIntervalMs() {
+        return Optional.ofNullable(this.groupConsumerHeartbeatIntervalMs);
+    }
+
+    /**
+     * The maximum heartbeat interval allowed for consumer group members using the consumer rebalance protocol. Must not be less than group.consumer.min.heartbeat.interval.ms. (Default: 15000 ms (15 seconds)) Requires Kafka 4.0 or later. Example: `15000`.
+     * 
+     */
+    @Import(name="groupConsumerMaxHeartbeatIntervalMs")
+    private @Nullable Output<Integer> groupConsumerMaxHeartbeatIntervalMs;
+
+    /**
+     * @return The maximum heartbeat interval allowed for consumer group members using the consumer rebalance protocol. Must not be less than group.consumer.min.heartbeat.interval.ms. (Default: 15000 ms (15 seconds)) Requires Kafka 4.0 or later. Example: `15000`.
+     * 
+     */
+    public Optional<Output<Integer>> groupConsumerMaxHeartbeatIntervalMs() {
+        return Optional.ofNullable(this.groupConsumerMaxHeartbeatIntervalMs);
+    }
+
+    /**
+     * The maximum session timeout allowed for consumer group members using the consumer rebalance protocol. Must not be less than group.consumer.min.session.timeout.ms. (Default: 60000 ms (60 seconds)) Requires Kafka 4.0 or later. Example: `60000`.
+     * 
+     */
+    @Import(name="groupConsumerMaxSessionTimeoutMs")
+    private @Nullable Output<Integer> groupConsumerMaxSessionTimeoutMs;
+
+    /**
+     * @return The maximum session timeout allowed for consumer group members using the consumer rebalance protocol. Must not be less than group.consumer.min.session.timeout.ms. (Default: 60000 ms (60 seconds)) Requires Kafka 4.0 or later. Example: `60000`.
+     * 
+     */
+    public Optional<Output<Integer>> groupConsumerMaxSessionTimeoutMs() {
+        return Optional.ofNullable(this.groupConsumerMaxSessionTimeoutMs);
+    }
+
+    /**
+     * The minimum heartbeat interval allowed for consumer group members using the consumer rebalance protocol. Must not be greater than group.consumer.max.heartbeat.interval.ms. (Default: 5000 ms (5 seconds)) Requires Kafka 4.0 or later. Example: `5000`.
+     * 
+     */
+    @Import(name="groupConsumerMinHeartbeatIntervalMs")
+    private @Nullable Output<Integer> groupConsumerMinHeartbeatIntervalMs;
+
+    /**
+     * @return The minimum heartbeat interval allowed for consumer group members using the consumer rebalance protocol. Must not be greater than group.consumer.max.heartbeat.interval.ms. (Default: 5000 ms (5 seconds)) Requires Kafka 4.0 or later. Example: `5000`.
+     * 
+     */
+    public Optional<Output<Integer>> groupConsumerMinHeartbeatIntervalMs() {
+        return Optional.ofNullable(this.groupConsumerMinHeartbeatIntervalMs);
+    }
+
+    /**
+     * The minimum session timeout allowed for consumer group members using the consumer rebalance protocol. Must not be greater than group.consumer.max.session.timeout.ms. (Default: 45000 ms (45 seconds)) Requires Kafka 4.0 or later. Example: `45000`.
+     * 
+     */
+    @Import(name="groupConsumerMinSessionTimeoutMs")
+    private @Nullable Output<Integer> groupConsumerMinSessionTimeoutMs;
+
+    /**
+     * @return The minimum session timeout allowed for consumer group members using the consumer rebalance protocol. Must not be greater than group.consumer.max.session.timeout.ms. (Default: 45000 ms (45 seconds)) Requires Kafka 4.0 or later. Example: `45000`.
+     * 
+     */
+    public Optional<Output<Integer>> groupConsumerMinSessionTimeoutMs() {
+        return Optional.ofNullable(this.groupConsumerMinSessionTimeoutMs);
+    }
+
+    /**
+     * The timeout used to detect consumer group member failures when using the consumer rebalance protocol. Must be between group.consumer.min.session.timeout.ms and group.consumer.max.session.timeout.ms. (Default: 45000 ms (45 seconds)) Requires Kafka 4.0 or later. Example: `45000`.
+     * 
+     */
+    @Import(name="groupConsumerSessionTimeoutMs")
+    private @Nullable Output<Integer> groupConsumerSessionTimeoutMs;
+
+    /**
+     * @return The timeout used to detect consumer group member failures when using the consumer rebalance protocol. Must be between group.consumer.min.session.timeout.ms and group.consumer.max.session.timeout.ms. (Default: 45000 ms (45 seconds)) Requires Kafka 4.0 or later. Example: `45000`.
+     * 
+     */
+    public Optional<Output<Integer>> groupConsumerSessionTimeoutMs() {
+        return Optional.ofNullable(this.groupConsumerSessionTimeoutMs);
+    }
+
+    /**
      * Enum: `classic`, `classic,consumer`, `classic,consumer,share`, `classic,consumer,share,streams`, `classic,consumer,streams`, `classic,share`, `classic,streams`. The enabled consumer group rebalance protocols. Use consumer, classic, share, streams to enable Kafka share groups.
      * 
      */
@@ -972,6 +1062,12 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
         this.compressionType = $.compressionType;
         this.connectionsMaxIdleMs = $.connectionsMaxIdleMs;
         this.defaultReplicationFactor = $.defaultReplicationFactor;
+        this.groupConsumerHeartbeatIntervalMs = $.groupConsumerHeartbeatIntervalMs;
+        this.groupConsumerMaxHeartbeatIntervalMs = $.groupConsumerMaxHeartbeatIntervalMs;
+        this.groupConsumerMaxSessionTimeoutMs = $.groupConsumerMaxSessionTimeoutMs;
+        this.groupConsumerMinHeartbeatIntervalMs = $.groupConsumerMinHeartbeatIntervalMs;
+        this.groupConsumerMinSessionTimeoutMs = $.groupConsumerMinSessionTimeoutMs;
+        this.groupConsumerSessionTimeoutMs = $.groupConsumerSessionTimeoutMs;
         this.groupCoordinatorRebalanceProtocols = $.groupCoordinatorRebalanceProtocols;
         this.groupInitialRebalanceDelayMs = $.groupInitialRebalanceDelayMs;
         this.groupMaxSessionTimeoutMs = $.groupMaxSessionTimeoutMs;
@@ -1153,6 +1249,132 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
          */
         public Builder defaultReplicationFactor(Integer defaultReplicationFactor) {
             return defaultReplicationFactor(Output.of(defaultReplicationFactor));
+        }
+
+        /**
+         * @param groupConsumerHeartbeatIntervalMs The heartbeat interval given to the members of a consumer group using the consumer rebalance protocol. Must be between group.consumer.min.heartbeat.interval.ms and group.consumer.max.heartbeat.interval.ms, and lower than group.consumer.session.timeout.ms. (Default: 5000 ms (5 seconds)) Requires Kafka 4.0 or later. Example: `5000`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder groupConsumerHeartbeatIntervalMs(@Nullable Output<Integer> groupConsumerHeartbeatIntervalMs) {
+            $.groupConsumerHeartbeatIntervalMs = groupConsumerHeartbeatIntervalMs;
+            return this;
+        }
+
+        /**
+         * @param groupConsumerHeartbeatIntervalMs The heartbeat interval given to the members of a consumer group using the consumer rebalance protocol. Must be between group.consumer.min.heartbeat.interval.ms and group.consumer.max.heartbeat.interval.ms, and lower than group.consumer.session.timeout.ms. (Default: 5000 ms (5 seconds)) Requires Kafka 4.0 or later. Example: `5000`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder groupConsumerHeartbeatIntervalMs(Integer groupConsumerHeartbeatIntervalMs) {
+            return groupConsumerHeartbeatIntervalMs(Output.of(groupConsumerHeartbeatIntervalMs));
+        }
+
+        /**
+         * @param groupConsumerMaxHeartbeatIntervalMs The maximum heartbeat interval allowed for consumer group members using the consumer rebalance protocol. Must not be less than group.consumer.min.heartbeat.interval.ms. (Default: 15000 ms (15 seconds)) Requires Kafka 4.0 or later. Example: `15000`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder groupConsumerMaxHeartbeatIntervalMs(@Nullable Output<Integer> groupConsumerMaxHeartbeatIntervalMs) {
+            $.groupConsumerMaxHeartbeatIntervalMs = groupConsumerMaxHeartbeatIntervalMs;
+            return this;
+        }
+
+        /**
+         * @param groupConsumerMaxHeartbeatIntervalMs The maximum heartbeat interval allowed for consumer group members using the consumer rebalance protocol. Must not be less than group.consumer.min.heartbeat.interval.ms. (Default: 15000 ms (15 seconds)) Requires Kafka 4.0 or later. Example: `15000`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder groupConsumerMaxHeartbeatIntervalMs(Integer groupConsumerMaxHeartbeatIntervalMs) {
+            return groupConsumerMaxHeartbeatIntervalMs(Output.of(groupConsumerMaxHeartbeatIntervalMs));
+        }
+
+        /**
+         * @param groupConsumerMaxSessionTimeoutMs The maximum session timeout allowed for consumer group members using the consumer rebalance protocol. Must not be less than group.consumer.min.session.timeout.ms. (Default: 60000 ms (60 seconds)) Requires Kafka 4.0 or later. Example: `60000`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder groupConsumerMaxSessionTimeoutMs(@Nullable Output<Integer> groupConsumerMaxSessionTimeoutMs) {
+            $.groupConsumerMaxSessionTimeoutMs = groupConsumerMaxSessionTimeoutMs;
+            return this;
+        }
+
+        /**
+         * @param groupConsumerMaxSessionTimeoutMs The maximum session timeout allowed for consumer group members using the consumer rebalance protocol. Must not be less than group.consumer.min.session.timeout.ms. (Default: 60000 ms (60 seconds)) Requires Kafka 4.0 or later. Example: `60000`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder groupConsumerMaxSessionTimeoutMs(Integer groupConsumerMaxSessionTimeoutMs) {
+            return groupConsumerMaxSessionTimeoutMs(Output.of(groupConsumerMaxSessionTimeoutMs));
+        }
+
+        /**
+         * @param groupConsumerMinHeartbeatIntervalMs The minimum heartbeat interval allowed for consumer group members using the consumer rebalance protocol. Must not be greater than group.consumer.max.heartbeat.interval.ms. (Default: 5000 ms (5 seconds)) Requires Kafka 4.0 or later. Example: `5000`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder groupConsumerMinHeartbeatIntervalMs(@Nullable Output<Integer> groupConsumerMinHeartbeatIntervalMs) {
+            $.groupConsumerMinHeartbeatIntervalMs = groupConsumerMinHeartbeatIntervalMs;
+            return this;
+        }
+
+        /**
+         * @param groupConsumerMinHeartbeatIntervalMs The minimum heartbeat interval allowed for consumer group members using the consumer rebalance protocol. Must not be greater than group.consumer.max.heartbeat.interval.ms. (Default: 5000 ms (5 seconds)) Requires Kafka 4.0 or later. Example: `5000`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder groupConsumerMinHeartbeatIntervalMs(Integer groupConsumerMinHeartbeatIntervalMs) {
+            return groupConsumerMinHeartbeatIntervalMs(Output.of(groupConsumerMinHeartbeatIntervalMs));
+        }
+
+        /**
+         * @param groupConsumerMinSessionTimeoutMs The minimum session timeout allowed for consumer group members using the consumer rebalance protocol. Must not be greater than group.consumer.max.session.timeout.ms. (Default: 45000 ms (45 seconds)) Requires Kafka 4.0 or later. Example: `45000`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder groupConsumerMinSessionTimeoutMs(@Nullable Output<Integer> groupConsumerMinSessionTimeoutMs) {
+            $.groupConsumerMinSessionTimeoutMs = groupConsumerMinSessionTimeoutMs;
+            return this;
+        }
+
+        /**
+         * @param groupConsumerMinSessionTimeoutMs The minimum session timeout allowed for consumer group members using the consumer rebalance protocol. Must not be greater than group.consumer.max.session.timeout.ms. (Default: 45000 ms (45 seconds)) Requires Kafka 4.0 or later. Example: `45000`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder groupConsumerMinSessionTimeoutMs(Integer groupConsumerMinSessionTimeoutMs) {
+            return groupConsumerMinSessionTimeoutMs(Output.of(groupConsumerMinSessionTimeoutMs));
+        }
+
+        /**
+         * @param groupConsumerSessionTimeoutMs The timeout used to detect consumer group member failures when using the consumer rebalance protocol. Must be between group.consumer.min.session.timeout.ms and group.consumer.max.session.timeout.ms. (Default: 45000 ms (45 seconds)) Requires Kafka 4.0 or later. Example: `45000`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder groupConsumerSessionTimeoutMs(@Nullable Output<Integer> groupConsumerSessionTimeoutMs) {
+            $.groupConsumerSessionTimeoutMs = groupConsumerSessionTimeoutMs;
+            return this;
+        }
+
+        /**
+         * @param groupConsumerSessionTimeoutMs The timeout used to detect consumer group member failures when using the consumer rebalance protocol. Must be between group.consumer.min.session.timeout.ms and group.consumer.max.session.timeout.ms. (Default: 45000 ms (45 seconds)) Requires Kafka 4.0 or later. Example: `45000`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder groupConsumerSessionTimeoutMs(Integer groupConsumerSessionTimeoutMs) {
+            return groupConsumerSessionTimeoutMs(Output.of(groupConsumerSessionTimeoutMs));
         }
 
         /**

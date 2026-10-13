@@ -144,6 +144,18 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? IsmHistoryRolloverRetentionPeriod;
         /// <summary>
+        /// Enable or disable removing KNN graphs from the cache when they are idle. Disabled by default.
+        /// </summary>
+        public readonly bool? KnnCacheItemExpiryEnabled;
+        /// <summary>
+        /// If enabled, the amount of time in minutes a KNN graph can be idle in the cache before being evicted. Example: `180`.
+        /// </summary>
+        public readonly int? KnnCacheItemExpiryMinutes;
+        /// <summary>
+        /// The native memory usage, as a percentage below the KNN memory circuit breaker limit, at which a tripped circuit breaker resets. Defaults to 5%.
+        /// </summary>
+        public readonly double? KnnCircuitBreakerUnsetPercentage;
+        /// <summary>
         /// Enable or disable KNN memory circuit breaker. Defaults to true.
         /// </summary>
         public readonly bool? KnnMemoryCircuitBreakerEnabled;
@@ -156,9 +168,21 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? MlCommonsConnectorAccessControlEnabled;
         /// <summary>
+        /// Maximum number of ML models that can be deployed on a single ML node. Defaults to 10.
+        /// </summary>
+        public readonly int? MlCommonsMaxModelOnNode;
+        /// <summary>
         /// Enable or disable model access control for ML Commons. When enabled, access to ML models is controlled by security permissions. Defaults to false.
         /// </summary>
         public readonly bool? MlCommonsModelAccessControlEnabled;
+        /// <summary>
+        /// For externally hosted models only: automatically deploy a model on its first predict request instead of requiring an explicit deploy call first. Defaults to true.
+        /// </summary>
+        public readonly bool? MlCommonsModelAutoDeployEnable;
+        /// <summary>
+        /// Automatically redeploy deployed or partially deployed models after ML nodes rejoin the cluster, e.g. after a node replacement. Defaults to true.
+        /// </summary>
+        public readonly bool? MlCommonsModelAutoRedeployEnable;
         /// <summary>
         /// Native memory threshold percentage for ML Commons. Controls the maximum percentage of native memory that can be used by ML Commons operations. Defaults to 90%.
         /// </summary>
@@ -324,13 +348,25 @@ namespace Pulumi.Aiven.Outputs
 
             int? ismHistoryRolloverRetentionPeriod,
 
+            bool? knnCacheItemExpiryEnabled,
+
+            int? knnCacheItemExpiryMinutes,
+
+            double? knnCircuitBreakerUnsetPercentage,
+
             bool? knnMemoryCircuitBreakerEnabled,
 
             int? knnMemoryCircuitBreakerLimit,
 
             bool? mlCommonsConnectorAccessControlEnabled,
 
+            int? mlCommonsMaxModelOnNode,
+
             bool? mlCommonsModelAccessControlEnabled,
+
+            bool? mlCommonsModelAutoDeployEnable,
+
+            bool? mlCommonsModelAutoRedeployEnable,
 
             int? mlCommonsNativeMemoryThreshold,
 
@@ -416,10 +452,16 @@ namespace Pulumi.Aiven.Outputs
             IsmHistoryMaxDocs = ismHistoryMaxDocs;
             IsmHistoryRolloverCheckPeriod = ismHistoryRolloverCheckPeriod;
             IsmHistoryRolloverRetentionPeriod = ismHistoryRolloverRetentionPeriod;
+            KnnCacheItemExpiryEnabled = knnCacheItemExpiryEnabled;
+            KnnCacheItemExpiryMinutes = knnCacheItemExpiryMinutes;
+            KnnCircuitBreakerUnsetPercentage = knnCircuitBreakerUnsetPercentage;
             KnnMemoryCircuitBreakerEnabled = knnMemoryCircuitBreakerEnabled;
             KnnMemoryCircuitBreakerLimit = knnMemoryCircuitBreakerLimit;
             MlCommonsConnectorAccessControlEnabled = mlCommonsConnectorAccessControlEnabled;
+            MlCommonsMaxModelOnNode = mlCommonsMaxModelOnNode;
             MlCommonsModelAccessControlEnabled = mlCommonsModelAccessControlEnabled;
+            MlCommonsModelAutoDeployEnable = mlCommonsModelAutoDeployEnable;
+            MlCommonsModelAutoRedeployEnable = mlCommonsModelAutoRedeployEnable;
             MlCommonsNativeMemoryThreshold = mlCommonsNativeMemoryThreshold;
             MlCommonsOnlyRunOnMlNode = mlCommonsOnlyRunOnMlNode;
             MlCommonsTrustedConnectorEndpointsRegexes = mlCommonsTrustedConnectorEndpointsRegexes;

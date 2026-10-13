@@ -19,8 +19,8 @@ import javax.annotation.Nullable;
 /**
  * Creates and manages an Aiven Upgrade Pipeline step between source and destination services.
  * 
- * &gt; **Beta resource in limited availability**
- * This feature is in the limited availability stage and may change without notice. To enable this feature, contact the [sales team](http://aiven.io/contact). Once it&#39;s enabled, set the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the resource.
+ * &gt; **Limited availability resource**
+ * This resource is in the limited availability stage and may change without notice. To enable this feature, contact the [sales team](http://aiven.io/contact).
  * 
  * ## Example Usage
  * 

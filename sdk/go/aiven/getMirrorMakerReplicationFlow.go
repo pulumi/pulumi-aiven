@@ -68,6 +68,8 @@ type LookupMirrorMakerReplicationFlowArgs struct {
 type LookupMirrorMakerReplicationFlowResult struct {
 	// List of topic configuration properties and/or regexes that should not be replicated. If omitted, MirrorMaker will use default list of exclusions. For stability reasons, we always include the `unclean.leader.election.enable` field in the excluded parameters. If you have specific requirements for this configuration, please reach out to our support team for assistance.
 	ConfigPropertiesExcludes []string `pulumi:"configPropertiesExcludes"`
+	// Adds a diskless_az= hint to the replication flow's Kafka client.id so that diskless Kafka clusters serve the flow from brokers in the same availability zone.
+	DisklessAzEnabled bool `pulumi:"disklessAzEnabled"`
 	// Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
 	EmitBackwardHeartbeatsEnabled bool `pulumi:"emitBackwardHeartbeatsEnabled"`
 	// Whether to emit heartbeats to the target cluster. The default value is `false`.
@@ -147,6 +149,11 @@ func (o LookupMirrorMakerReplicationFlowResultOutput) ToLookupMirrorMakerReplica
 // List of topic configuration properties and/or regexes that should not be replicated. If omitted, MirrorMaker will use default list of exclusions. For stability reasons, we always include the `unclean.leader.election.enable` field in the excluded parameters. If you have specific requirements for this configuration, please reach out to our support team for assistance.
 func (o LookupMirrorMakerReplicationFlowResultOutput) ConfigPropertiesExcludes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupMirrorMakerReplicationFlowResult) []string { return v.ConfigPropertiesExcludes }).(pulumi.StringArrayOutput)
+}
+
+// Adds a diskless_az= hint to the replication flow's Kafka client.id so that diskless Kafka clusters serve the flow from brokers in the same availability zone.
+func (o LookupMirrorMakerReplicationFlowResultOutput) DisklessAzEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupMirrorMakerReplicationFlowResult) bool { return v.DisklessAzEnabled }).(pulumi.BoolOutput)
 }
 
 // Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.

@@ -7,7 +7,6 @@ import com.pulumi.aiven.outputs.GetKafkaUserTimeouts;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -29,11 +28,6 @@ public final class GetKafkaUserResult {
      * 
      */
     private String id;
-    /**
-     * @return MySQL grants for the service user.
-     * 
-     */
-    private List<String> mysqlGrants;
     /**
      * @return The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`.
      * 
@@ -87,13 +81,6 @@ public final class GetKafkaUserResult {
      */
     public String id() {
         return this.id;
-    }
-    /**
-     * @return MySQL grants for the service user.
-     * 
-     */
-    public List<String> mysqlGrants() {
-        return this.mysqlGrants;
     }
     /**
      * @return The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`.
@@ -153,7 +140,6 @@ public final class GetKafkaUserResult {
         private String accessCert;
         private String accessKey;
         private String id;
-        private List<String> mysqlGrants;
         private String password;
         private String passwordEncryptionType;
         private String project;
@@ -167,7 +153,6 @@ public final class GetKafkaUserResult {
     	      this.accessCert = defaults.accessCert;
     	      this.accessKey = defaults.accessKey;
     	      this.id = defaults.id;
-    	      this.mysqlGrants = defaults.mysqlGrants;
     	      this.password = defaults.password;
     	      this.passwordEncryptionType = defaults.passwordEncryptionType;
     	      this.project = defaults.project;
@@ -200,17 +185,6 @@ public final class GetKafkaUserResult {
             }
             this.id = id;
             return this;
-        }
-        @CustomType.Setter
-        public Builder mysqlGrants(List<String> mysqlGrants) {
-            if (mysqlGrants == null) {
-              throw new MissingRequiredPropertyException("GetKafkaUserResult", "mysqlGrants");
-            }
-            this.mysqlGrants = mysqlGrants;
-            return this;
-        }
-        public Builder mysqlGrants(String... mysqlGrants) {
-            return mysqlGrants(List.of(mysqlGrants));
         }
         @CustomType.Setter
         public Builder password(String password) {
@@ -271,7 +245,6 @@ public final class GetKafkaUserResult {
             _resultValue.accessCert = accessCert;
             _resultValue.accessKey = accessKey;
             _resultValue.id = id;
-            _resultValue.mysqlGrants = mysqlGrants;
             _resultValue.password = password;
             _resultValue.passwordEncryptionType = passwordEncryptionType;
             _resultValue.project = project;

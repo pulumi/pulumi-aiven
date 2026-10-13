@@ -94,6 +94,11 @@ public final class ValkeyValkeyUserConfig {
      */
     private @Nullable String recoveryBasebackupName;
     /**
+     * @return Number of replicas per shard in the Valkey cluster. Only applies to cluster plans. Example: `1`.
+     * 
+     */
+    private @Nullable Integer replicas;
+    /**
      * @return Store logs for the service so that they are available in the HTTP API and console.
      * 
      */
@@ -103,6 +108,11 @@ public final class ValkeyValkeyUserConfig {
      * 
      */
     private @Nullable String serviceToForkFrom;
+    /**
+     * @return Number of shards (primaries) in the Valkey cluster. Required for cluster plans. Example: `3`.
+     * 
+     */
+    private @Nullable Integer shardCount;
     /**
      * @return Use static public IP addresses.
      * 
@@ -293,6 +303,13 @@ public final class ValkeyValkeyUserConfig {
         return Optional.ofNullable(this.recoveryBasebackupName);
     }
     /**
+     * @return Number of replicas per shard in the Valkey cluster. Only applies to cluster plans. Example: `1`.
+     * 
+     */
+    public Optional<Integer> replicas() {
+        return Optional.ofNullable(this.replicas);
+    }
+    /**
      * @return Store logs for the service so that they are available in the HTTP API and console.
      * 
      */
@@ -305,6 +322,13 @@ public final class ValkeyValkeyUserConfig {
      */
     public Optional<String> serviceToForkFrom() {
         return Optional.ofNullable(this.serviceToForkFrom);
+    }
+    /**
+     * @return Number of shards (primaries) in the Valkey cluster. Required for cluster plans. Example: `3`.
+     * 
+     */
+    public Optional<Integer> shardCount() {
+        return Optional.ofNullable(this.shardCount);
     }
     /**
      * @return Use static public IP addresses.
@@ -449,8 +473,10 @@ public final class ValkeyValkeyUserConfig {
         private @Nullable String projectToForkFrom;
         private @Nullable ValkeyValkeyUserConfigPublicAccess publicAccess;
         private @Nullable String recoveryBasebackupName;
+        private @Nullable Integer replicas;
         private @Nullable Boolean serviceLog;
         private @Nullable String serviceToForkFrom;
+        private @Nullable Integer shardCount;
         private @Nullable Boolean staticIps;
         private @Nullable String valkeyAclChannelsDefault;
         private @Nullable Integer valkeyActiveDefragIgnoreBytes;
@@ -485,8 +511,10 @@ public final class ValkeyValkeyUserConfig {
     	      this.projectToForkFrom = defaults.projectToForkFrom;
     	      this.publicAccess = defaults.publicAccess;
     	      this.recoveryBasebackupName = defaults.recoveryBasebackupName;
+    	      this.replicas = defaults.replicas;
     	      this.serviceLog = defaults.serviceLog;
     	      this.serviceToForkFrom = defaults.serviceToForkFrom;
+    	      this.shardCount = defaults.shardCount;
     	      this.staticIps = defaults.staticIps;
     	      this.valkeyAclChannelsDefault = defaults.valkeyAclChannelsDefault;
     	      this.valkeyActiveDefragIgnoreBytes = defaults.valkeyActiveDefragIgnoreBytes;
@@ -600,6 +628,12 @@ public final class ValkeyValkeyUserConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder replicas(@Nullable Integer replicas) {
+
+            this.replicas = replicas;
+            return this;
+        }
+        @CustomType.Setter
         public Builder serviceLog(@Nullable Boolean serviceLog) {
 
             this.serviceLog = serviceLog;
@@ -609,6 +643,12 @@ public final class ValkeyValkeyUserConfig {
         public Builder serviceToForkFrom(@Nullable String serviceToForkFrom) {
 
             this.serviceToForkFrom = serviceToForkFrom;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder shardCount(@Nullable Integer shardCount) {
+
+            this.shardCount = shardCount;
             return this;
         }
         @CustomType.Setter
@@ -729,8 +769,10 @@ public final class ValkeyValkeyUserConfig {
             _resultValue.projectToForkFrom = projectToForkFrom;
             _resultValue.publicAccess = publicAccess;
             _resultValue.recoveryBasebackupName = recoveryBasebackupName;
+            _resultValue.replicas = replicas;
             _resultValue.serviceLog = serviceLog;
             _resultValue.serviceToForkFrom = serviceToForkFrom;
+            _resultValue.shardCount = shardCount;
             _resultValue.staticIps = staticIps;
             _resultValue.valkeyAclChannelsDefault = valkeyAclChannelsDefault;
             _resultValue.valkeyActiveDefragIgnoreBytes = valkeyActiveDefragIgnoreBytes;

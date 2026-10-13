@@ -28,10 +28,13 @@ class GetMirrorMakerReplicationFlowResult:
     """
     A collection of values returned by getMirrorMakerReplicationFlow.
     """
-    def __init__(__self__, config_properties_excludes=None, emit_backward_heartbeats_enabled=None, emit_heartbeats_enabled=None, enable=None, exactly_once_delivery_enabled=None, follower_fetching_enabled=None, id=None, offset_lag_max=None, offset_syncs_topic_location=None, project=None, replication_factor=None, replication_policy_class=None, service_name=None, source_cluster=None, sync_group_offsets_enabled=None, sync_group_offsets_interval_seconds=None, target_cluster=None, timeouts=None, topics=None, topics_blacklists=None):
+    def __init__(__self__, config_properties_excludes=None, diskless_az_enabled=None, emit_backward_heartbeats_enabled=None, emit_heartbeats_enabled=None, enable=None, exactly_once_delivery_enabled=None, follower_fetching_enabled=None, id=None, offset_lag_max=None, offset_syncs_topic_location=None, project=None, replication_factor=None, replication_policy_class=None, service_name=None, source_cluster=None, sync_group_offsets_enabled=None, sync_group_offsets_interval_seconds=None, target_cluster=None, timeouts=None, topics=None, topics_blacklists=None):
         if config_properties_excludes and not isinstance(config_properties_excludes, list):
             raise TypeError("Expected argument 'config_properties_excludes' to be a list")
         pulumi.set(__self__, "config_properties_excludes", config_properties_excludes)
+        if diskless_az_enabled and not isinstance(diskless_az_enabled, bool):
+            raise TypeError("Expected argument 'diskless_az_enabled' to be a bool")
+        pulumi.set(__self__, "diskless_az_enabled", diskless_az_enabled)
         if emit_backward_heartbeats_enabled and not isinstance(emit_backward_heartbeats_enabled, bool):
             raise TypeError("Expected argument 'emit_backward_heartbeats_enabled' to be a bool")
         pulumi.set(__self__, "emit_backward_heartbeats_enabled", emit_backward_heartbeats_enabled)
@@ -97,6 +100,14 @@ class GetMirrorMakerReplicationFlowResult:
         List of topic configuration properties and/or regexes that should not be replicated. If omitted, MirrorMaker will use default list of exclusions. For stability reasons, we always include the `unclean.leader.election.enable` field in the excluded parameters. If you have specific requirements for this configuration, please reach out to our support team for assistance.
         """
         return pulumi.get(self, "config_properties_excludes")
+
+    @_builtins.property
+    @pulumi.getter(name="disklessAzEnabled")
+    def diskless_az_enabled(self) -> _builtins.bool:
+        """
+        Adds a diskless_az= hint to the replication flow's Kafka client.id so that diskless Kafka clusters serve the flow from brokers in the same availability zone.
+        """
+        return pulumi.get(self, "diskless_az_enabled")
 
     @_builtins.property
     @pulumi.getter(name="emitBackwardHeartbeatsEnabled")
@@ -255,6 +266,7 @@ class AwaitableGetMirrorMakerReplicationFlowResult(GetMirrorMakerReplicationFlow
             yield self
         return GetMirrorMakerReplicationFlowResult(
             config_properties_excludes=self.config_properties_excludes,
+            diskless_az_enabled=self.diskless_az_enabled,
             emit_backward_heartbeats_enabled=self.emit_backward_heartbeats_enabled,
             emit_heartbeats_enabled=self.emit_heartbeats_enabled,
             enable=self.enable,
@@ -314,6 +326,7 @@ def get_mirror_maker_replication_flow(project: Optional[_builtins.str] = None,
 
     return AwaitableGetMirrorMakerReplicationFlowResult(
         config_properties_excludes=pulumi.get(__ret__, 'config_properties_excludes'),
+        diskless_az_enabled=pulumi.get(__ret__, 'diskless_az_enabled'),
         emit_backward_heartbeats_enabled=pulumi.get(__ret__, 'emit_backward_heartbeats_enabled'),
         emit_heartbeats_enabled=pulumi.get(__ret__, 'emit_heartbeats_enabled'),
         enable=pulumi.get(__ret__, 'enable'),
@@ -370,6 +383,7 @@ def get_mirror_maker_replication_flow_output(project: pulumi.Input[Optional[_bui
     __ret__ = pulumi.runtime.invoke_output('aiven:index/getMirrorMakerReplicationFlow:getMirrorMakerReplicationFlow', __args__, opts=opts, typ=GetMirrorMakerReplicationFlowResult)
     return __ret__.apply(lambda __response__: GetMirrorMakerReplicationFlowResult(
         config_properties_excludes=pulumi.get(__response__, 'config_properties_excludes'),
+        diskless_az_enabled=pulumi.get(__response__, 'diskless_az_enabled'),
         emit_backward_heartbeats_enabled=pulumi.get(__response__, 'emit_backward_heartbeats_enabled'),
         emit_heartbeats_enabled=pulumi.get(__response__, 'emit_heartbeats_enabled'),
         enable=pulumi.get(__response__, 'enable'),

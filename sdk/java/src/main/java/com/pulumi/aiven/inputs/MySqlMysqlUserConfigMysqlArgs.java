@@ -349,6 +349,66 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
     }
 
     /**
+     * Percentage of dirty pages in the InnoDB buffer pool at which InnoDB starts flushing aggressively. Lowering it spreads write I/O more evenly and shortens crash recovery, at the cost of flushing pages that might have been modified again. Must stay at or above innodb*max*dirty*pages*pct_lwm. Default is 90. Example: `75`.
+     * 
+     */
+    @Import(name="innodbMaxDirtyPagesPct")
+    private @Nullable Output<Double> innodbMaxDirtyPagesPct;
+
+    /**
+     * @return Percentage of dirty pages in the InnoDB buffer pool at which InnoDB starts flushing aggressively. Lowering it spreads write I/O more evenly and shortens crash recovery, at the cost of flushing pages that might have been modified again. Must stay at or above innodb*max*dirty*pages*pct_lwm. Default is 90. Example: `75`.
+     * 
+     */
+    public Optional<Output<Double>> innodbMaxDirtyPagesPct() {
+        return Optional.ofNullable(this.innodbMaxDirtyPagesPct);
+    }
+
+    /**
+     * Percentage of dirty pages in the InnoDB buffer pool at which InnoDB starts pre-flushing, to keep the dirty page ratio from reaching innodb*max*dirty*pages*pct. 0 turns pre-flushing off. Cannot be set above innodb*max*dirty*pages*pct. Default is 10. Example: `10`.
+     * 
+     */
+    @Import(name="innodbMaxDirtyPagesPctLwm")
+    private @Nullable Output<Double> innodbMaxDirtyPagesPctLwm;
+
+    /**
+     * @return Percentage of dirty pages in the InnoDB buffer pool at which InnoDB starts pre-flushing, to keep the dirty page ratio from reaching innodb*max*dirty*pages*pct. 0 turns pre-flushing off. Cannot be set above innodb*max*dirty*pages*pct. Default is 10. Example: `10`.
+     * 
+     */
+    public Optional<Output<Double>> innodbMaxDirtyPagesPctLwm() {
+        return Optional.ofNullable(this.innodbMaxDirtyPagesPctLwm);
+    }
+
+    /**
+     * Number of outstanding transactions the InnoDB purge operation may fall behind by before INSERT, UPDATE and DELETE are delayed to let it catch up. The delay applies per row and grows with the lag, and it is capped by innodb*max*purge*lag*delay, which has to be set as well for this option to have any effect. Default is 0, which never delays anything.
+     * 
+     */
+    @Import(name="innodbMaxPurgeLag")
+    private @Nullable Output<Integer> innodbMaxPurgeLag;
+
+    /**
+     * @return Number of outstanding transactions the InnoDB purge operation may fall behind by before INSERT, UPDATE and DELETE are delayed to let it catch up. The delay applies per row and grows with the lag, and it is capped by innodb*max*purge*lag*delay, which has to be set as well for this option to have any effect. Default is 0, which never delays anything.
+     * 
+     */
+    public Optional<Output<Integer>> innodbMaxPurgeLag() {
+        return Optional.ofNullable(this.innodbMaxPurgeLag);
+    }
+
+    /**
+     * Cap in microseconds on the per-row delay innodb*max*purge*lag applies to INSERT, UPDATE and DELETE. MySQL clamps the delay to this value unconditionally, so while this is 0 no delay is ever applied and innodb*max*purge*lag on its own does nothing. Both options must be non-zero for either to take effect. Default is 0. Example: `10000`.
+     * 
+     */
+    @Import(name="innodbMaxPurgeLagDelay")
+    private @Nullable Output<Integer> innodbMaxPurgeLagDelay;
+
+    /**
+     * @return Cap in microseconds on the per-row delay innodb*max*purge*lag applies to INSERT, UPDATE and DELETE. MySQL clamps the delay to this value unconditionally, so while this is 0 no delay is ever applied and innodb*max*purge*lag on its own does nothing. Both options must be non-zero for either to take effect. Default is 0. Example: `10000`.
+     * 
+     */
+    public Optional<Output<Integer>> innodbMaxPurgeLagDelay() {
+        return Optional.ofNullable(this.innodbMaxPurgeLagDelay);
+    }
+
+    /**
      * The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
      * 
      */
@@ -868,6 +928,10 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         this.innodbIoCapacityMax = $.innodbIoCapacityMax;
         this.innodbLockWaitTimeout = $.innodbLockWaitTimeout;
         this.innodbLogBufferSize = $.innodbLogBufferSize;
+        this.innodbMaxDirtyPagesPct = $.innodbMaxDirtyPagesPct;
+        this.innodbMaxDirtyPagesPctLwm = $.innodbMaxDirtyPagesPctLwm;
+        this.innodbMaxPurgeLag = $.innodbMaxPurgeLag;
+        this.innodbMaxPurgeLagDelay = $.innodbMaxPurgeLagDelay;
         this.innodbOnlineAlterLogMaxSize = $.innodbOnlineAlterLogMaxSize;
         this.innodbOptimizeFulltextOnly = $.innodbOptimizeFulltextOnly;
         this.innodbPrintAllDeadlocks = $.innodbPrintAllDeadlocks;
@@ -1381,6 +1445,90 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
          */
         public Builder innodbLogBufferSize(Integer innodbLogBufferSize) {
             return innodbLogBufferSize(Output.of(innodbLogBufferSize));
+        }
+
+        /**
+         * @param innodbMaxDirtyPagesPct Percentage of dirty pages in the InnoDB buffer pool at which InnoDB starts flushing aggressively. Lowering it spreads write I/O more evenly and shortens crash recovery, at the cost of flushing pages that might have been modified again. Must stay at or above innodb*max*dirty*pages*pct_lwm. Default is 90. Example: `75`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder innodbMaxDirtyPagesPct(@Nullable Output<Double> innodbMaxDirtyPagesPct) {
+            $.innodbMaxDirtyPagesPct = innodbMaxDirtyPagesPct;
+            return this;
+        }
+
+        /**
+         * @param innodbMaxDirtyPagesPct Percentage of dirty pages in the InnoDB buffer pool at which InnoDB starts flushing aggressively. Lowering it spreads write I/O more evenly and shortens crash recovery, at the cost of flushing pages that might have been modified again. Must stay at or above innodb*max*dirty*pages*pct_lwm. Default is 90. Example: `75`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder innodbMaxDirtyPagesPct(Double innodbMaxDirtyPagesPct) {
+            return innodbMaxDirtyPagesPct(Output.of(innodbMaxDirtyPagesPct));
+        }
+
+        /**
+         * @param innodbMaxDirtyPagesPctLwm Percentage of dirty pages in the InnoDB buffer pool at which InnoDB starts pre-flushing, to keep the dirty page ratio from reaching innodb*max*dirty*pages*pct. 0 turns pre-flushing off. Cannot be set above innodb*max*dirty*pages*pct. Default is 10. Example: `10`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder innodbMaxDirtyPagesPctLwm(@Nullable Output<Double> innodbMaxDirtyPagesPctLwm) {
+            $.innodbMaxDirtyPagesPctLwm = innodbMaxDirtyPagesPctLwm;
+            return this;
+        }
+
+        /**
+         * @param innodbMaxDirtyPagesPctLwm Percentage of dirty pages in the InnoDB buffer pool at which InnoDB starts pre-flushing, to keep the dirty page ratio from reaching innodb*max*dirty*pages*pct. 0 turns pre-flushing off. Cannot be set above innodb*max*dirty*pages*pct. Default is 10. Example: `10`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder innodbMaxDirtyPagesPctLwm(Double innodbMaxDirtyPagesPctLwm) {
+            return innodbMaxDirtyPagesPctLwm(Output.of(innodbMaxDirtyPagesPctLwm));
+        }
+
+        /**
+         * @param innodbMaxPurgeLag Number of outstanding transactions the InnoDB purge operation may fall behind by before INSERT, UPDATE and DELETE are delayed to let it catch up. The delay applies per row and grows with the lag, and it is capped by innodb*max*purge*lag*delay, which has to be set as well for this option to have any effect. Default is 0, which never delays anything.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder innodbMaxPurgeLag(@Nullable Output<Integer> innodbMaxPurgeLag) {
+            $.innodbMaxPurgeLag = innodbMaxPurgeLag;
+            return this;
+        }
+
+        /**
+         * @param innodbMaxPurgeLag Number of outstanding transactions the InnoDB purge operation may fall behind by before INSERT, UPDATE and DELETE are delayed to let it catch up. The delay applies per row and grows with the lag, and it is capped by innodb*max*purge*lag*delay, which has to be set as well for this option to have any effect. Default is 0, which never delays anything.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder innodbMaxPurgeLag(Integer innodbMaxPurgeLag) {
+            return innodbMaxPurgeLag(Output.of(innodbMaxPurgeLag));
+        }
+
+        /**
+         * @param innodbMaxPurgeLagDelay Cap in microseconds on the per-row delay innodb*max*purge*lag applies to INSERT, UPDATE and DELETE. MySQL clamps the delay to this value unconditionally, so while this is 0 no delay is ever applied and innodb*max*purge*lag on its own does nothing. Both options must be non-zero for either to take effect. Default is 0. Example: `10000`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder innodbMaxPurgeLagDelay(@Nullable Output<Integer> innodbMaxPurgeLagDelay) {
+            $.innodbMaxPurgeLagDelay = innodbMaxPurgeLagDelay;
+            return this;
+        }
+
+        /**
+         * @param innodbMaxPurgeLagDelay Cap in microseconds on the per-row delay innodb*max*purge*lag applies to INSERT, UPDATE and DELETE. MySQL clamps the delay to this value unconditionally, so while this is 0 no delay is ever applied and innodb*max*purge*lag on its own does nothing. Both options must be non-zero for either to take effect. Default is 0. Example: `10000`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder innodbMaxPurgeLagDelay(Integer innodbMaxPurgeLagDelay) {
+            return innodbMaxPurgeLagDelay(Output.of(innodbMaxPurgeLagDelay));
         }
 
         /**

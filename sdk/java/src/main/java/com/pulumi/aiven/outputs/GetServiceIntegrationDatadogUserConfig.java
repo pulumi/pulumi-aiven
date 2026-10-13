@@ -29,6 +29,11 @@ public final class GetServiceIntegrationDatadogUserConfig {
      */
     private @Nullable Boolean datadogFunctionMetricsEnabled;
     /**
+     * @return Database the Datadog PostgreSQL check connects to. Relation metrics are collected only from this database. The main service database is used when unset. Database Monitoring collects query statistics from every database regardless of this option. Example: `defaultdb`.
+     * 
+     */
+    private @Nullable String datadogPgDbname;
+    /**
      * @return Relations to collect PostgreSQL relation metrics for, such as table size, index statistics, row counts, vacuum ages and locks. No relation metrics are collected when unset
      * 
      */
@@ -103,6 +108,13 @@ public final class GetServiceIntegrationDatadogUserConfig {
      */
     public Optional<Boolean> datadogFunctionMetricsEnabled() {
         return Optional.ofNullable(this.datadogFunctionMetricsEnabled);
+    }
+    /**
+     * @return Database the Datadog PostgreSQL check connects to. Relation metrics are collected only from this database. The main service database is used when unset. Database Monitoring collects query statistics from every database regardless of this option. Example: `defaultdb`.
+     * 
+     */
+    public Optional<String> datadogPgDbname() {
+        return Optional.ofNullable(this.datadogPgDbname);
     }
     /**
      * @return Relations to collect PostgreSQL relation metrics for, such as table size, index statistics, row counts, vacuum ages and locks. No relation metrics are collected when unset
@@ -200,6 +212,7 @@ public final class GetServiceIntegrationDatadogUserConfig {
     public static final class Builder {
         private @Nullable Boolean datadogDbmEnabled;
         private @Nullable Boolean datadogFunctionMetricsEnabled;
+        private @Nullable String datadogPgDbname;
         private @Nullable List<GetServiceIntegrationDatadogUserConfigDatadogPgRelation> datadogPgRelations;
         private @Nullable Boolean datadogPgbouncerEnabled;
         private @Nullable List<GetServiceIntegrationDatadogUserConfigDatadogTag> datadogTags;
@@ -217,6 +230,7 @@ public final class GetServiceIntegrationDatadogUserConfig {
     	      Objects.requireNonNull(defaults);
     	      this.datadogDbmEnabled = defaults.datadogDbmEnabled;
     	      this.datadogFunctionMetricsEnabled = defaults.datadogFunctionMetricsEnabled;
+    	      this.datadogPgDbname = defaults.datadogPgDbname;
     	      this.datadogPgRelations = defaults.datadogPgRelations;
     	      this.datadogPgbouncerEnabled = defaults.datadogPgbouncerEnabled;
     	      this.datadogTags = defaults.datadogTags;
@@ -241,6 +255,12 @@ public final class GetServiceIntegrationDatadogUserConfig {
         public Builder datadogFunctionMetricsEnabled(@Nullable Boolean datadogFunctionMetricsEnabled) {
 
             this.datadogFunctionMetricsEnabled = datadogFunctionMetricsEnabled;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder datadogPgDbname(@Nullable String datadogPgDbname) {
+
+            this.datadogPgDbname = datadogPgDbname;
             return this;
         }
         @CustomType.Setter
@@ -343,6 +363,7 @@ public final class GetServiceIntegrationDatadogUserConfig {
             final var _resultValue = new GetServiceIntegrationDatadogUserConfig();
             _resultValue.datadogDbmEnabled = datadogDbmEnabled;
             _resultValue.datadogFunctionMetricsEnabled = datadogFunctionMetricsEnabled;
+            _resultValue.datadogPgDbname = datadogPgDbname;
             _resultValue.datadogPgRelations = datadogPgRelations;
             _resultValue.datadogPgbouncerEnabled = datadogPgbouncerEnabled;
             _resultValue.datadogTags = datadogTags;

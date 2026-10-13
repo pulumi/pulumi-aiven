@@ -41,6 +41,36 @@ public final class GetKafkaKafkaUserConfigKafka {
      */
     private @Nullable Integer defaultReplicationFactor;
     /**
+     * @return The heartbeat interval given to the members of a consumer group using the consumer rebalance protocol. Must be between group.consumer.min.heartbeat.interval.ms and group.consumer.max.heartbeat.interval.ms, and lower than group.consumer.session.timeout.ms. (Default: 5000 ms (5 seconds)) Requires Kafka 4.0 or later. Example: `5000`.
+     * 
+     */
+    private @Nullable Integer groupConsumerHeartbeatIntervalMs;
+    /**
+     * @return The maximum heartbeat interval allowed for consumer group members using the consumer rebalance protocol. Must not be less than group.consumer.min.heartbeat.interval.ms. (Default: 15000 ms (15 seconds)) Requires Kafka 4.0 or later. Example: `15000`.
+     * 
+     */
+    private @Nullable Integer groupConsumerMaxHeartbeatIntervalMs;
+    /**
+     * @return The maximum session timeout allowed for consumer group members using the consumer rebalance protocol. Must not be less than group.consumer.min.session.timeout.ms. (Default: 60000 ms (60 seconds)) Requires Kafka 4.0 or later. Example: `60000`.
+     * 
+     */
+    private @Nullable Integer groupConsumerMaxSessionTimeoutMs;
+    /**
+     * @return The minimum heartbeat interval allowed for consumer group members using the consumer rebalance protocol. Must not be greater than group.consumer.max.heartbeat.interval.ms. (Default: 5000 ms (5 seconds)) Requires Kafka 4.0 or later. Example: `5000`.
+     * 
+     */
+    private @Nullable Integer groupConsumerMinHeartbeatIntervalMs;
+    /**
+     * @return The minimum session timeout allowed for consumer group members using the consumer rebalance protocol. Must not be greater than group.consumer.max.session.timeout.ms. (Default: 45000 ms (45 seconds)) Requires Kafka 4.0 or later. Example: `45000`.
+     * 
+     */
+    private @Nullable Integer groupConsumerMinSessionTimeoutMs;
+    /**
+     * @return The timeout used to detect consumer group member failures when using the consumer rebalance protocol. Must be between group.consumer.min.session.timeout.ms and group.consumer.max.session.timeout.ms. (Default: 45000 ms (45 seconds)) Requires Kafka 4.0 or later. Example: `45000`.
+     * 
+     */
+    private @Nullable Integer groupConsumerSessionTimeoutMs;
+    /**
      * @return Enum: `classic`, `classic,consumer`, `classic,consumer,share`, `classic,consumer,share,streams`, `classic,consumer,streams`, `classic,share`, `classic,streams`. The enabled consumer group rebalance protocols. Use consumer, classic, share, streams to enable Kafka share groups.
      * 
      */
@@ -366,6 +396,48 @@ public final class GetKafkaKafkaUserConfigKafka {
      */
     public Optional<Integer> defaultReplicationFactor() {
         return Optional.ofNullable(this.defaultReplicationFactor);
+    }
+    /**
+     * @return The heartbeat interval given to the members of a consumer group using the consumer rebalance protocol. Must be between group.consumer.min.heartbeat.interval.ms and group.consumer.max.heartbeat.interval.ms, and lower than group.consumer.session.timeout.ms. (Default: 5000 ms (5 seconds)) Requires Kafka 4.0 or later. Example: `5000`.
+     * 
+     */
+    public Optional<Integer> groupConsumerHeartbeatIntervalMs() {
+        return Optional.ofNullable(this.groupConsumerHeartbeatIntervalMs);
+    }
+    /**
+     * @return The maximum heartbeat interval allowed for consumer group members using the consumer rebalance protocol. Must not be less than group.consumer.min.heartbeat.interval.ms. (Default: 15000 ms (15 seconds)) Requires Kafka 4.0 or later. Example: `15000`.
+     * 
+     */
+    public Optional<Integer> groupConsumerMaxHeartbeatIntervalMs() {
+        return Optional.ofNullable(this.groupConsumerMaxHeartbeatIntervalMs);
+    }
+    /**
+     * @return The maximum session timeout allowed for consumer group members using the consumer rebalance protocol. Must not be less than group.consumer.min.session.timeout.ms. (Default: 60000 ms (60 seconds)) Requires Kafka 4.0 or later. Example: `60000`.
+     * 
+     */
+    public Optional<Integer> groupConsumerMaxSessionTimeoutMs() {
+        return Optional.ofNullable(this.groupConsumerMaxSessionTimeoutMs);
+    }
+    /**
+     * @return The minimum heartbeat interval allowed for consumer group members using the consumer rebalance protocol. Must not be greater than group.consumer.max.heartbeat.interval.ms. (Default: 5000 ms (5 seconds)) Requires Kafka 4.0 or later. Example: `5000`.
+     * 
+     */
+    public Optional<Integer> groupConsumerMinHeartbeatIntervalMs() {
+        return Optional.ofNullable(this.groupConsumerMinHeartbeatIntervalMs);
+    }
+    /**
+     * @return The minimum session timeout allowed for consumer group members using the consumer rebalance protocol. Must not be greater than group.consumer.max.session.timeout.ms. (Default: 45000 ms (45 seconds)) Requires Kafka 4.0 or later. Example: `45000`.
+     * 
+     */
+    public Optional<Integer> groupConsumerMinSessionTimeoutMs() {
+        return Optional.ofNullable(this.groupConsumerMinSessionTimeoutMs);
+    }
+    /**
+     * @return The timeout used to detect consumer group member failures when using the consumer rebalance protocol. Must be between group.consumer.min.session.timeout.ms and group.consumer.max.session.timeout.ms. (Default: 45000 ms (45 seconds)) Requires Kafka 4.0 or later. Example: `45000`.
+     * 
+     */
+    public Optional<Integer> groupConsumerSessionTimeoutMs() {
+        return Optional.ofNullable(this.groupConsumerSessionTimeoutMs);
     }
     /**
      * @return Enum: `classic`, `classic,consumer`, `classic,consumer,share`, `classic,consumer,share,streams`, `classic,consumer,streams`, `classic,share`, `classic,streams`. The enabled consumer group rebalance protocols. Use consumer, classic, share, streams to enable Kafka share groups.
@@ -788,6 +860,12 @@ public final class GetKafkaKafkaUserConfigKafka {
         private @Nullable String compressionType;
         private @Nullable Integer connectionsMaxIdleMs;
         private @Nullable Integer defaultReplicationFactor;
+        private @Nullable Integer groupConsumerHeartbeatIntervalMs;
+        private @Nullable Integer groupConsumerMaxHeartbeatIntervalMs;
+        private @Nullable Integer groupConsumerMaxSessionTimeoutMs;
+        private @Nullable Integer groupConsumerMinHeartbeatIntervalMs;
+        private @Nullable Integer groupConsumerMinSessionTimeoutMs;
+        private @Nullable Integer groupConsumerSessionTimeoutMs;
         private @Nullable String groupCoordinatorRebalanceProtocols;
         private @Nullable Integer groupInitialRebalanceDelayMs;
         private @Nullable Integer groupMaxSessionTimeoutMs;
@@ -854,6 +932,12 @@ public final class GetKafkaKafkaUserConfigKafka {
     	      this.compressionType = defaults.compressionType;
     	      this.connectionsMaxIdleMs = defaults.connectionsMaxIdleMs;
     	      this.defaultReplicationFactor = defaults.defaultReplicationFactor;
+    	      this.groupConsumerHeartbeatIntervalMs = defaults.groupConsumerHeartbeatIntervalMs;
+    	      this.groupConsumerMaxHeartbeatIntervalMs = defaults.groupConsumerMaxHeartbeatIntervalMs;
+    	      this.groupConsumerMaxSessionTimeoutMs = defaults.groupConsumerMaxSessionTimeoutMs;
+    	      this.groupConsumerMinHeartbeatIntervalMs = defaults.groupConsumerMinHeartbeatIntervalMs;
+    	      this.groupConsumerMinSessionTimeoutMs = defaults.groupConsumerMinSessionTimeoutMs;
+    	      this.groupConsumerSessionTimeoutMs = defaults.groupConsumerSessionTimeoutMs;
     	      this.groupCoordinatorRebalanceProtocols = defaults.groupCoordinatorRebalanceProtocols;
     	      this.groupInitialRebalanceDelayMs = defaults.groupInitialRebalanceDelayMs;
     	      this.groupMaxSessionTimeoutMs = defaults.groupMaxSessionTimeoutMs;
@@ -942,6 +1026,42 @@ public final class GetKafkaKafkaUserConfigKafka {
         public Builder defaultReplicationFactor(@Nullable Integer defaultReplicationFactor) {
 
             this.defaultReplicationFactor = defaultReplicationFactor;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder groupConsumerHeartbeatIntervalMs(@Nullable Integer groupConsumerHeartbeatIntervalMs) {
+
+            this.groupConsumerHeartbeatIntervalMs = groupConsumerHeartbeatIntervalMs;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder groupConsumerMaxHeartbeatIntervalMs(@Nullable Integer groupConsumerMaxHeartbeatIntervalMs) {
+
+            this.groupConsumerMaxHeartbeatIntervalMs = groupConsumerMaxHeartbeatIntervalMs;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder groupConsumerMaxSessionTimeoutMs(@Nullable Integer groupConsumerMaxSessionTimeoutMs) {
+
+            this.groupConsumerMaxSessionTimeoutMs = groupConsumerMaxSessionTimeoutMs;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder groupConsumerMinHeartbeatIntervalMs(@Nullable Integer groupConsumerMinHeartbeatIntervalMs) {
+
+            this.groupConsumerMinHeartbeatIntervalMs = groupConsumerMinHeartbeatIntervalMs;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder groupConsumerMinSessionTimeoutMs(@Nullable Integer groupConsumerMinSessionTimeoutMs) {
+
+            this.groupConsumerMinSessionTimeoutMs = groupConsumerMinSessionTimeoutMs;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder groupConsumerSessionTimeoutMs(@Nullable Integer groupConsumerSessionTimeoutMs) {
+
+            this.groupConsumerSessionTimeoutMs = groupConsumerSessionTimeoutMs;
             return this;
         }
         @CustomType.Setter
@@ -1299,6 +1419,12 @@ public final class GetKafkaKafkaUserConfigKafka {
             _resultValue.compressionType = compressionType;
             _resultValue.connectionsMaxIdleMs = connectionsMaxIdleMs;
             _resultValue.defaultReplicationFactor = defaultReplicationFactor;
+            _resultValue.groupConsumerHeartbeatIntervalMs = groupConsumerHeartbeatIntervalMs;
+            _resultValue.groupConsumerMaxHeartbeatIntervalMs = groupConsumerMaxHeartbeatIntervalMs;
+            _resultValue.groupConsumerMaxSessionTimeoutMs = groupConsumerMaxSessionTimeoutMs;
+            _resultValue.groupConsumerMinHeartbeatIntervalMs = groupConsumerMinHeartbeatIntervalMs;
+            _resultValue.groupConsumerMinSessionTimeoutMs = groupConsumerMinSessionTimeoutMs;
+            _resultValue.groupConsumerSessionTimeoutMs = groupConsumerSessionTimeoutMs;
             _resultValue.groupCoordinatorRebalanceProtocols = groupCoordinatorRebalanceProtocols;
             _resultValue.groupInitialRebalanceDelayMs = groupInitialRebalanceDelayMs;
             _resultValue.groupMaxSessionTimeoutMs = groupMaxSessionTimeoutMs;

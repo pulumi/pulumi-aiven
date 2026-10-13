@@ -27,6 +27,7 @@ class MirrorMakerReplicationFlowArgs:
                  source_cluster: pulumi.Input[_builtins.str],
                  target_cluster: pulumi.Input[_builtins.str],
                  config_properties_excludes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 diskless_az_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  emit_backward_heartbeats_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  emit_heartbeats_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  exactly_once_delivery_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -49,6 +50,7 @@ class MirrorMakerReplicationFlowArgs:
         :param pulumi.Input[_builtins.str] source_cluster: The alias of the source cluster to use in this replication flow. Can contain the following symbols: ASCII alphanumerics, `.`, `_`, and `-`. Maximum length: `128`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] target_cluster: The alias of the target cluster to use in this replication flow. Can contain the following symbols: ASCII alphanumerics, `.`, `_`, and `-`. Maximum length: `128`. Changing this property forces recreation of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] config_properties_excludes: List of topic configuration properties and/or regexes that should not be replicated. If omitted, MirrorMaker will use default list of exclusions. For stability reasons, we always include the `unclean.leader.election.enable` field in the excluded parameters. If you have specific requirements for this configuration, please reach out to our support team for assistance.
+        :param pulumi.Input[_builtins.bool] diskless_az_enabled: Adds a diskless_az= hint to the replication flow's Kafka client.id so that diskless Kafka clusters serve the flow from brokers in the same availability zone.
         :param pulumi.Input[_builtins.bool] emit_backward_heartbeats_enabled: Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
         :param pulumi.Input[_builtins.bool] emit_heartbeats_enabled: Whether to emit heartbeats to the target cluster. The default value is `false`.
         :param pulumi.Input[_builtins.bool] exactly_once_delivery_enabled: Whether to enable exactly-once message delivery. We recommend you set this to enabled for new replications. The default value is `false`.
@@ -69,6 +71,8 @@ class MirrorMakerReplicationFlowArgs:
         pulumi.set(__self__, "target_cluster", target_cluster)
         if config_properties_excludes is not None:
             pulumi.set(__self__, "config_properties_excludes", config_properties_excludes)
+        if diskless_az_enabled is not None:
+            pulumi.set(__self__, "diskless_az_enabled", diskless_az_enabled)
         if emit_backward_heartbeats_enabled is not None:
             pulumi.set(__self__, "emit_backward_heartbeats_enabled", emit_backward_heartbeats_enabled)
         if emit_heartbeats_enabled is not None:
@@ -167,6 +171,18 @@ class MirrorMakerReplicationFlowArgs:
     @config_properties_excludes.setter
     def config_properties_excludes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "config_properties_excludes", value)
+
+    @_builtins.property
+    @pulumi.getter(name="disklessAzEnabled")
+    def diskless_az_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Adds a diskless_az= hint to the replication flow's Kafka client.id so that diskless Kafka clusters serve the flow from brokers in the same availability zone.
+        """
+        return pulumi.get(self, "diskless_az_enabled")
+
+    @diskless_az_enabled.setter
+    def diskless_az_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "diskless_az_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="emitBackwardHeartbeatsEnabled")
@@ -326,6 +342,7 @@ class MirrorMakerReplicationFlowArgs:
 class _MirrorMakerReplicationFlowState:
     def __init__(__self__, *,
                  config_properties_excludes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 diskless_az_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  emit_backward_heartbeats_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  emit_heartbeats_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -348,6 +365,7 @@ class _MirrorMakerReplicationFlowState:
         Input properties used for looking up and filtering MirrorMakerReplicationFlow resources.
 
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] config_properties_excludes: List of topic configuration properties and/or regexes that should not be replicated. If omitted, MirrorMaker will use default list of exclusions. For stability reasons, we always include the `unclean.leader.election.enable` field in the excluded parameters. If you have specific requirements for this configuration, please reach out to our support team for assistance.
+        :param pulumi.Input[_builtins.bool] diskless_az_enabled: Adds a diskless_az= hint to the replication flow's Kafka client.id so that diskless Kafka clusters serve the flow from brokers in the same availability zone.
         :param pulumi.Input[_builtins.bool] emit_backward_heartbeats_enabled: Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
         :param pulumi.Input[_builtins.bool] emit_heartbeats_enabled: Whether to emit heartbeats to the target cluster. The default value is `false`.
         :param pulumi.Input[_builtins.bool] enable: Is replication flow enabled.
@@ -368,6 +386,8 @@ class _MirrorMakerReplicationFlowState:
         """
         if config_properties_excludes is not None:
             pulumi.set(__self__, "config_properties_excludes", config_properties_excludes)
+        if diskless_az_enabled is not None:
+            pulumi.set(__self__, "diskless_az_enabled", diskless_az_enabled)
         if emit_backward_heartbeats_enabled is not None:
             pulumi.set(__self__, "emit_backward_heartbeats_enabled", emit_backward_heartbeats_enabled)
         if emit_heartbeats_enabled is not None:
@@ -416,6 +436,18 @@ class _MirrorMakerReplicationFlowState:
     @config_properties_excludes.setter
     def config_properties_excludes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "config_properties_excludes", value)
+
+    @_builtins.property
+    @pulumi.getter(name="disklessAzEnabled")
+    def diskless_az_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Adds a diskless_az= hint to the replication flow's Kafka client.id so that diskless Kafka clusters serve the flow from brokers in the same availability zone.
+        """
+        return pulumi.get(self, "diskless_az_enabled")
+
+    @diskless_az_enabled.setter
+    def diskless_az_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "diskless_az_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="emitBackwardHeartbeatsEnabled")
@@ -638,6 +670,7 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  config_properties_excludes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 diskless_az_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  emit_backward_heartbeats_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  emit_heartbeats_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -680,6 +713,7 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
                 "unclean.leader.election.enable",
                 "min.insync.replicas",
             ],
+            diskless_az_enabled=True,
             emit_backward_heartbeats_enabled=False,
             emit_heartbeats_enabled=False,
             exactly_once_delivery_enabled=False,
@@ -708,6 +742,7 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] config_properties_excludes: List of topic configuration properties and/or regexes that should not be replicated. If omitted, MirrorMaker will use default list of exclusions. For stability reasons, we always include the `unclean.leader.election.enable` field in the excluded parameters. If you have specific requirements for this configuration, please reach out to our support team for assistance.
+        :param pulumi.Input[_builtins.bool] diskless_az_enabled: Adds a diskless_az= hint to the replication flow's Kafka client.id so that diskless Kafka clusters serve the flow from brokers in the same availability zone.
         :param pulumi.Input[_builtins.bool] emit_backward_heartbeats_enabled: Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
         :param pulumi.Input[_builtins.bool] emit_heartbeats_enabled: Whether to emit heartbeats to the target cluster. The default value is `false`.
         :param pulumi.Input[_builtins.bool] enable: Is replication flow enabled.
@@ -755,6 +790,7 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
                 "unclean.leader.election.enable",
                 "min.insync.replicas",
             ],
+            diskless_az_enabled=True,
             emit_backward_heartbeats_enabled=False,
             emit_heartbeats_enabled=False,
             exactly_once_delivery_enabled=False,
@@ -796,6 +832,7 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  config_properties_excludes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 diskless_az_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  emit_backward_heartbeats_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  emit_heartbeats_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -824,6 +861,7 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
             __props__ = MirrorMakerReplicationFlowArgs.__new__(MirrorMakerReplicationFlowArgs)
 
             __props__.__dict__["config_properties_excludes"] = config_properties_excludes
+            __props__.__dict__["diskless_az_enabled"] = diskless_az_enabled
             __props__.__dict__["emit_backward_heartbeats_enabled"] = emit_backward_heartbeats_enabled
             __props__.__dict__["emit_heartbeats_enabled"] = emit_heartbeats_enabled
             if enable is None and not opts.urn:
@@ -863,6 +901,7 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             config_properties_excludes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            diskless_az_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             emit_backward_heartbeats_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             emit_heartbeats_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             enable: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -889,6 +928,7 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] config_properties_excludes: List of topic configuration properties and/or regexes that should not be replicated. If omitted, MirrorMaker will use default list of exclusions. For stability reasons, we always include the `unclean.leader.election.enable` field in the excluded parameters. If you have specific requirements for this configuration, please reach out to our support team for assistance.
+        :param pulumi.Input[_builtins.bool] diskless_az_enabled: Adds a diskless_az= hint to the replication flow's Kafka client.id so that diskless Kafka clusters serve the flow from brokers in the same availability zone.
         :param pulumi.Input[_builtins.bool] emit_backward_heartbeats_enabled: Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
         :param pulumi.Input[_builtins.bool] emit_heartbeats_enabled: Whether to emit heartbeats to the target cluster. The default value is `false`.
         :param pulumi.Input[_builtins.bool] enable: Is replication flow enabled.
@@ -912,6 +952,7 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
         __props__ = _MirrorMakerReplicationFlowState.__new__(_MirrorMakerReplicationFlowState)
 
         __props__.__dict__["config_properties_excludes"] = config_properties_excludes
+        __props__.__dict__["diskless_az_enabled"] = diskless_az_enabled
         __props__.__dict__["emit_backward_heartbeats_enabled"] = emit_backward_heartbeats_enabled
         __props__.__dict__["emit_heartbeats_enabled"] = emit_heartbeats_enabled
         __props__.__dict__["enable"] = enable
@@ -939,6 +980,14 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
         List of topic configuration properties and/or regexes that should not be replicated. If omitted, MirrorMaker will use default list of exclusions. For stability reasons, we always include the `unclean.leader.election.enable` field in the excluded parameters. If you have specific requirements for this configuration, please reach out to our support team for assistance.
         """
         return pulumi.get(self, "config_properties_excludes")
+
+    @_builtins.property
+    @pulumi.getter(name="disklessAzEnabled")
+    def diskless_az_enabled(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Adds a diskless_az= hint to the replication flow's Kafka client.id so that diskless Kafka clusters serve the flow from brokers in the same availability zone.
+        """
+        return pulumi.get(self, "diskless_az_enabled")
 
     @_builtins.property
     @pulumi.getter(name="emitBackwardHeartbeatsEnabled")

@@ -9,7 +9,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -18,21 +17,6 @@ import javax.annotation.Nullable;
 public final class KafkaUserArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final KafkaUserArgs Empty = new KafkaUserArgs();
-
-    /**
-     * MySQL grants for the service user. Changing this property forces recreation of the resource.
-     * 
-     */
-    @Import(name="mysqlGrants")
-    private @Nullable Output<List<String>> mysqlGrants;
-
-    /**
-     * @return MySQL grants for the service user. Changing this property forces recreation of the resource.
-     * 
-     */
-    public Optional<Output<List<String>>> mysqlGrants() {
-        return Optional.ofNullable(this.mysqlGrants);
-    }
 
     /**
      * The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
@@ -136,7 +120,6 @@ public final class KafkaUserArgs extends com.pulumi.resources.ResourceArgs {
     private KafkaUserArgs() {}
 
     private KafkaUserArgs(KafkaUserArgs $) {
-        this.mysqlGrants = $.mysqlGrants;
         this.password = $.password;
         this.passwordWo = $.passwordWo;
         this.passwordWoVersion = $.passwordWoVersion;
@@ -162,37 +145,6 @@ public final class KafkaUserArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(KafkaUserArgs defaults) {
             $ = new KafkaUserArgs(Objects.requireNonNull(defaults));
-        }
-
-        /**
-         * @param mysqlGrants MySQL grants for the service user. Changing this property forces recreation of the resource.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder mysqlGrants(@Nullable Output<List<String>> mysqlGrants) {
-            $.mysqlGrants = mysqlGrants;
-            return this;
-        }
-
-        /**
-         * @param mysqlGrants MySQL grants for the service user. Changing this property forces recreation of the resource.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder mysqlGrants(List<String> mysqlGrants) {
-            return mysqlGrants(Output.of(mysqlGrants));
-        }
-
-        /**
-         * @param mysqlGrants MySQL grants for the service user. Changing this property forces recreation of the resource.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder mysqlGrants(String... mysqlGrants) {
-            return mysqlGrants(List.of(mysqlGrants));
         }
 
         /**
