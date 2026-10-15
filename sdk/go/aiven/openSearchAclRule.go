@@ -55,28 +55,28 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			aclRules := []map[string]interface{}{
-//				map[string]interface{}{
+//			aclRules := []interface{}{
+//				map[string]string{
 //					"username":   osUser1.Username,
 //					"index":      "index2",
 //					"permission": "readwrite",
 //				},
-//				map[string]interface{}{
+//				map[string]string{
 //					"username":   osUser1.Username,
 //					"index":      "index3",
 //					"permission": "read",
 //				},
-//				map[string]interface{}{
+//				map[string]string{
 //					"username":   osUser1.Username,
 //					"index":      "index5",
 //					"permission": "deny",
 //				},
-//				map[string]interface{}{
+//				map[string]string{
 //					"username":   osUser2.Username,
 //					"index":      "index3",
 //					"permission": "write",
 //				},
-//				map[string]interface{}{
+//				map[string]string{
 //					"username":   osUser2.Username,
 //					"index":      "index7",
 //					"permission": "readwrite",

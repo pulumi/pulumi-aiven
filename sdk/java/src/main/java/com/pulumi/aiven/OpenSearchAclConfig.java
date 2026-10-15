@@ -47,8 +47,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var main = new OpenSearchAclConfig("main", OpenSearchAclConfigArgs.builder()
- *             .project(exampleProject.project())
- *             .serviceName(exampleOpensearch.serviceName())
+ *             .project(exampleProject.get("project"))
+ *             .serviceName(exampleOpensearch.get("serviceName"))
  *             .enabled(true)
  *             .extendedAcl(false)
  *             .build());

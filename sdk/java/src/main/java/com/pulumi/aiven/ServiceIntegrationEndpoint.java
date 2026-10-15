@@ -71,7 +71,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Datadog endpoint
  *         var exampleEndpoint = new ServiceIntegrationEndpoint("exampleEndpoint", ServiceIntegrationEndpointArgs.builder()
- *             .project(exampleProject.project())
+ *             .project(exampleProject.get("project"))
  *             .endpointName("Datadog endpoint")
  *             .endpointType("datadog")
  *             .build());
@@ -84,7 +84,7 @@ import javax.annotation.Nullable;
  *                     .type("autoscale_disk")
  *                     .build())
  *                 .build())
- *             .project(exampleProject.project())
+ *             .project(exampleProject.get("project"))
  *             .endpointName("disk-autoscaler-200GiB")
  *             .endpointType("autoscaler")
  *             .build());

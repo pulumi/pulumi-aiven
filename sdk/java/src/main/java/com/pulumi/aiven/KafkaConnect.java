@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Create a Kafka service.
  *         var exampleKafka = new Kafka("exampleKafka", KafkaArgs.builder()
- *             .project(exampleProject.project())
+ *             .project(exampleProject.get("project"))
  *             .serviceName("example-kafka-service")
  *             .cloudName("google-europe-west1")
  *             .plan("startup-4")
@@ -84,7 +84,7 @@ import javax.annotation.Nullable;
  *                     .kafkaConnect(true)
  *                     .build())
  *                 .build())
- *             .project(exampleProject.project())
+ *             .project(exampleProject.get("project"))
  *             .cloudName("google-europe-west1")
  *             .plan("startup-4")
  *             .serviceName("example-connect-service")
@@ -99,7 +99,7 @@ import javax.annotation.Nullable;
  *                     .offsetStorageTopic("__connect_offsets")
  *                     .build())
  *                 .build())
- *             .project(exampleProject.project())
+ *             .project(exampleProject.get("project"))
  *             .integrationType("kafka_connect")
  *             .sourceServiceName(exampleKafka.serviceName())
  *             .destinationServiceName(exampleKafkaConnect.serviceName())

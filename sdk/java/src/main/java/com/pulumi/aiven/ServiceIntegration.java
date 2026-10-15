@@ -76,10 +76,10 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Integrate Kafka and Thanos services for metrics
  *         var exampleIntegration = new ServiceIntegration("exampleIntegration", ServiceIntegrationArgs.builder()
- *             .project(exampleProject.project())
+ *             .project(exampleProject.get("project"))
  *             .integrationType("metrics")
- *             .sourceServiceName(exampleKafka.serviceName())
- *             .destinationServiceName(exampleThanos.serviceName())
+ *             .sourceServiceName(exampleKafka.get("serviceName"))
+ *             .destinationServiceName(exampleThanos.get("serviceName"))
  *             .build());
  * 
  *         // Use disk autoscaler with a PostgreSQL service
@@ -90,15 +90,15 @@ import javax.annotation.Nullable;
  *                     .type("autoscale_disk")
  *                     .build())
  *                 .build())
- *             .project(exampleProject.project())
+ *             .project(exampleProject.get("project"))
  *             .endpointName("disk-autoscaler-200GiB")
  *             .endpointType("autoscaler")
  *             .build());
  * 
  *         var autoscalerIntegration = new ServiceIntegration("autoscalerIntegration", ServiceIntegrationArgs.builder()
- *             .project(exampleProject.project())
+ *             .project(exampleProject.get("project"))
  *             .integrationType("autoscaler")
- *             .sourceServiceName(examplePg.serviceName())
+ *             .sourceServiceName(examplePg.get("serviceName"))
  *             .destinationEndpointId(autoscalerEndpoint.id())
  *             .build());
  * 

@@ -44,8 +44,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var exampleQuota = new KafkaQuota("exampleQuota", KafkaQuotaArgs.builder()
- *             .project(foo.project())
- *             .serviceName(exampleKafka.serviceName())
+ *             .project(foo.get("project"))
+ *             .serviceName(exampleKafka.get("serviceName"))
  *             .user("example-kafka-user")
  *             .clientId("example_client")
  *             .consumerByteRate(1000)

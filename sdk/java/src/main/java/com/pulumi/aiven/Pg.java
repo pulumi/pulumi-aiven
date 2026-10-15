@@ -68,17 +68,17 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .staticIps(true)
  *                 .build())
- *             .project(exampleProject.project())
+ *             .project(exampleProject.get("project"))
  *             .cloudName("google-europe-west1")
  *             .plan("startup-4")
  *             .serviceName("example-postgres-service")
  *             .maintenanceWindowDow("monday")
  *             .maintenanceWindowTime("10:00:00")
  *             .staticIps(StdFunctions.toset(Map.of("input", Arrays.asList(            
- *                 ips[0].staticIpAddressId(),
- *                 ips[1].staticIpAddressId(),
- *                 ips[2].staticIpAddressId(),
- *                 ips[3].staticIpAddressId()))).result())
+ *                 ips[0].get("staticIpAddressId"),
+ *                 ips[1].get("staticIpAddressId"),
+ *                 ips[2].get("staticIpAddressId"),
+ *                 ips[3].get("staticIpAddressId")))).get("result"))
  *             .build(), CustomResourceOptions.builder()
  *                 .customTimeouts(CustomTimeouts.builder()
  *                     .create(CustomTimeouts.parseTimeoutString("20m"))

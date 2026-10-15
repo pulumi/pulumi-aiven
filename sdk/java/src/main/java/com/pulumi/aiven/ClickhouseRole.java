@@ -41,8 +41,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var exampleRole = new ClickhouseRole("exampleRole", ClickhouseRoleArgs.builder()
- *             .serviceName(exampleClickhouse.serviceName())
- *             .project(exampleProject.project())
+ *             .serviceName(exampleClickhouse.get("serviceName"))
+ *             .project(exampleProject.get("project"))
  *             .role("writer")
  *             .build());
  * 

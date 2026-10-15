@@ -46,35 +46,35 @@ namespace Pulumi.Aiven
     /// 
     ///     var aclRules = new[]
     ///     {
-    ///         
+    ///         new Dictionary&lt;string, object?&gt;
     ///         {
-    ///             { "username", osUser1.Username },
-    ///             { "index", "index2" },
-    ///             { "permission", "readwrite" },
+    ///             ["username"] = osUser1.Username,
+    ///             ["index"] = "index2",
+    ///             ["permission"] = "readwrite",
     ///         },
-    ///         
+    ///         new Dictionary&lt;string, object?&gt;
     ///         {
-    ///             { "username", osUser1.Username },
-    ///             { "index", "index3" },
-    ///             { "permission", "read" },
+    ///             ["username"] = osUser1.Username,
+    ///             ["index"] = "index3",
+    ///             ["permission"] = "read",
     ///         },
-    ///         
+    ///         new Dictionary&lt;string, object?&gt;
     ///         {
-    ///             { "username", osUser1.Username },
-    ///             { "index", "index5" },
-    ///             { "permission", "deny" },
+    ///             ["username"] = osUser1.Username,
+    ///             ["index"] = "index5",
+    ///             ["permission"] = "deny",
     ///         },
-    ///         
+    ///         new Dictionary&lt;string, object?&gt;
     ///         {
-    ///             { "username", osUser2.Username },
-    ///             { "index", "index3" },
-    ///             { "permission", "write" },
+    ///             ["username"] = osUser2.Username,
+    ///             ["index"] = "index3",
+    ///             ["permission"] = "write",
     ///         },
-    ///         
+    ///         new Dictionary&lt;string, object?&gt;
     ///         {
-    ///             { "username", osUser2.Username },
-    ///             { "index", "index7" },
-    ///             { "permission", "readwrite" },
+    ///             ["username"] = osUser2.Username,
+    ///             ["index"] = "index7",
+    ///             ["permission"] = "readwrite",
     ///         },
     ///     };
     /// 

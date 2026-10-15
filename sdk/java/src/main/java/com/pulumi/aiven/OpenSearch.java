@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  *                     .opensearchDashboards(true)
  *                     .build())
  *                 .build())
- *             .project(exampleProject.project())
+ *             .project(exampleProject.get("project"))
  *             .cloudName("google-europe-west1")
  *             .plan("startup-4")
  *             .serviceName("example-opensearch")

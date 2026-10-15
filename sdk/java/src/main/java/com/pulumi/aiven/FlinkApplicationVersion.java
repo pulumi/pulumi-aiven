@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var exampleApp = new FlinkApplication("exampleApp", FlinkApplicationArgs.builder()
- *             .project(exampleProject.project())
+ *             .project(exampleProject.get("project"))
  *             .serviceName("example-flink-service")
  *             .name("example-app")
  *             .build());
@@ -69,7 +69,7 @@ import javax.annotation.Nullable;
  *         'value.format' = 'json'
  *       )
  *                 """)
- *                 .integrationId(flinkToKafka.integrationId())
+ *                 .integrationId(flinkToKafka.get("integrationId"))
  *                 .build())
  *             .sources(FlinkApplicationVersionSourceArgs.builder()
  *                 .createTable("""
@@ -84,10 +84,10 @@ import javax.annotation.Nullable;
  *         'value.format' = 'json'
  *       )
  *                 """)
- *                 .integrationId(flinkToKafka.integrationId())
+ *                 .integrationId(flinkToKafka.get("integrationId"))
  *                 .build())
- *             .project(exampleProject.project())
- *             .serviceName(exampleFlink.serviceName())
+ *             .project(exampleProject.get("project"))
+ *             .serviceName(exampleFlink.get("serviceName"))
  *             .applicationId(exampleApp.applicationId())
  *             .statement("""
  *     INSERT INTO kafka_known_pizza SELECT * FROM kafka_pizza WHERE shop LIKE '%Luigis Pizza%'
