@@ -28,9 +28,17 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewMirrorMakerReplicationFlow(ctx, "example", &aiven.MirrorMakerReplicationFlowArgs{
-//				Project:       pulumi.String("my-project"),
-//				ServiceName:   pulumi.String("foo"),
+//			exampleMirrormaker, err := aiven.NewKafkaMirrorMaker(ctx, "example_mirrormaker", &aiven.KafkaMirrorMakerArgs{
+//				Project:     pulumi.String("my-project"),
+//				Plan:        pulumi.String("startup-4"),
+//				ServiceName: pulumi.String("example-mirrormaker-service"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = aiven.NewMirrorMakerReplicationFlow(ctx, "example", &aiven.MirrorMakerReplicationFlowArgs{
+//				Project:       exampleMirrormaker.Project,
+//				ServiceName:   exampleMirrormaker.ServiceName,
 //				SourceCluster: pulumi.String("kafka-abc"),
 //				TargetCluster: pulumi.String("kafka-abc"),
 //				Enable:        pulumi.Bool(true),
@@ -82,7 +90,7 @@ type MirrorMakerReplicationFlow struct {
 	// List of topic configuration properties and/or regexes that should not be replicated. If omitted, MirrorMaker will use default list of exclusions. For stability reasons, we always include the `unclean.leader.election.enable` field in the excluded parameters. If you have specific requirements for this configuration, please reach out to our support team for assistance.
 	ConfigPropertiesExcludes pulumi.StringArrayOutput `pulumi:"configPropertiesExcludes"`
 	// Adds a diskless_az= hint to the replication flow's Kafka client.id so that diskless Kafka clusters serve the flow from brokers in the same availability zone.
-	DisklessAzEnabled pulumi.BoolPtrOutput `pulumi:"disklessAzEnabled"`
+	DisklessAzEnabled pulumi.BoolOutput `pulumi:"disklessAzEnabled"`
 	// Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
 	EmitBackwardHeartbeatsEnabled pulumi.BoolOutput `pulumi:"emitBackwardHeartbeatsEnabled"`
 	// Whether to emit heartbeats to the target cluster. The default value is `false`.
@@ -430,8 +438,8 @@ func (o MirrorMakerReplicationFlowOutput) ConfigPropertiesExcludes() pulumi.Stri
 }
 
 // Adds a diskless_az= hint to the replication flow's Kafka client.id so that diskless Kafka clusters serve the flow from brokers in the same availability zone.
-func (o MirrorMakerReplicationFlowOutput) DisklessAzEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *MirrorMakerReplicationFlow) pulumi.BoolPtrOutput { return v.DisklessAzEnabled }).(pulumi.BoolPtrOutput)
+func (o MirrorMakerReplicationFlowOutput) DisklessAzEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *MirrorMakerReplicationFlow) pulumi.BoolOutput { return v.DisklessAzEnabled }).(pulumi.BoolOutput)
 }
 
 // Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.

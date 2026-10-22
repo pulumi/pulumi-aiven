@@ -28,8 +28,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewOrganizationVpc(ctx, "example", &aiven.OrganizationVpcArgs{
-//				OrganizationId: pulumi.String("org1a23f456789"),
+//			exampleOrganization, err := aiven.NewOrganization(ctx, "example", &aiven.OrganizationArgs{
+//				Name: pulumi.String("Aiven Ltd"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = aiven.NewOrganizationVpc(ctx, "example", &aiven.OrganizationVpcArgs{
+//				OrganizationId: exampleOrganization.ID().ToIDOutput().ToStringOutput(),
 //				CloudName:      pulumi.String("aws-eu-west-1"),
 //				NetworkCidr:    pulumi.String("10.0.0.0/24"),
 //				DisplayName:    pulumi.String("My organization VPC"),

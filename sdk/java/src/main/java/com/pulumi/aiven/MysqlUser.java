@@ -29,6 +29,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.aiven.MySql;
+ * import com.pulumi.aiven.MySqlArgs;
  * import com.pulumi.aiven.MysqlUser;
  * import com.pulumi.aiven.MysqlUserArgs;
  * import java.util.ArrayList;
@@ -44,9 +46,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new MysqlUser("example", MysqlUserArgs.builder()
+ *         var exampleMysql = new MySql("exampleMysql", MySqlArgs.builder()
  *             .project("my-project")
- *             .serviceName("my-mysql")
+ *             .plan("business-4")
+ *             .serviceName("example-mysql")
+ *             .build());
+ * 
+ *         var example = new MysqlUser("example", MysqlUserArgs.builder()
+ *             .project(exampleMysql.project())
+ *             .serviceName(exampleMysql.serviceName())
  *             .username("testuser")
  *             .passwordWo("password123")
  *             .passwordWoVersion(1)

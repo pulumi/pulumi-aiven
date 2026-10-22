@@ -15,9 +15,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const example = new aiven.MysqlDatabase("example", {
+ * const exampleMysql = new aiven.MySql("example_mysql", {
  *     project: "my-project",
- *     serviceName: "my-mysql",
+ *     plan: "business-4",
+ *     serviceName: "example-mysql",
+ * });
+ * const example = new aiven.MysqlDatabase("example", {
+ *     project: exampleMysql.project,
+ *     serviceName: exampleMysql.serviceName,
  *     databaseName: "testdb",
  * });
  * ```

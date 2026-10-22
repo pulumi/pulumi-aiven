@@ -32,9 +32,17 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewOpensearchSecurityPluginConfig(ctx, "example", &aiven.OpensearchSecurityPluginConfigArgs{
-//				Project:       pulumi.String("my-project"),
-//				ServiceName:   pulumi.String("my-opensearch"),
+//			exampleOpensearch, err := aiven.NewOpenSearch(ctx, "example_opensearch", &aiven.OpenSearchArgs{
+//				Project:     pulumi.String("my-project"),
+//				Plan:        pulumi.String("startup-4"),
+//				ServiceName: pulumi.String("example-opensearch"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = aiven.NewOpensearchSecurityPluginConfig(ctx, "example", &aiven.OpensearchSecurityPluginConfigArgs{
+//				Project:       exampleOpensearch.Project,
+//				ServiceName:   exampleOpensearch.ServiceName,
 //				AdminPassword: pulumi.String("h3.2aD!z2"),
 //			})
 //			if err != nil {

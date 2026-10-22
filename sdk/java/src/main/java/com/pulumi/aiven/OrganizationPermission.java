@@ -35,6 +35,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.aiven.Organization;
+ * import com.pulumi.aiven.OrganizationArgs;
  * import com.pulumi.aiven.OrganizationPermission;
  * import com.pulumi.aiven.OrganizationPermissionArgs;
  * import com.pulumi.aiven.inputs.OrganizationPermissionPermissionArgs;
@@ -51,13 +53,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         var exampleOrganization = new Organization("exampleOrganization", OrganizationArgs.builder()
+ *             .name("Aiven Ltd")
+ *             .build());
+ * 
  *         var example = new OrganizationPermission("example", OrganizationPermissionArgs.builder()
  *             .permissions(OrganizationPermissionPermissionArgs.builder()
  *                 .principalId("u12345")
  *                 .permissions("read_only")
  *                 .principalType("user")
  *                 .build())
- *             .organizationId("org1a23f456789")
+ *             .organizationId(exampleOrganization.id())
  *             .resourceType("organization")
  *             .resourceId("foo")
  *             .build());

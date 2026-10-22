@@ -28,9 +28,17 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewKafkaUser(ctx, "example", &aiven.KafkaUserArgs{
-//				Project:           pulumi.String("my-project"),
-//				ServiceName:       pulumi.String("my-kafka"),
+//			exampleKafka, err := aiven.NewKafka(ctx, "example_kafka", &aiven.KafkaArgs{
+//				Project:     pulumi.String("my-project"),
+//				Plan:        pulumi.String("business-4"),
+//				ServiceName: pulumi.String("example-kafka"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = aiven.NewKafkaUser(ctx, "example", &aiven.KafkaUserArgs{
+//				Project:           exampleKafka.Project,
+//				ServiceName:       exampleKafka.ServiceName,
 //				Username:          pulumi.String("testuser"),
 //				PasswordWo:        pulumi.String("password123"),
 //				PasswordWoVersion: pulumi.Int(1),

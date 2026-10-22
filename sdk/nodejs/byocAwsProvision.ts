@@ -20,9 +20,18 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
+ * const exampleOrganization = new aiven.Organization("example", {name: "Aiven Ltd"});
+ * const exampleByocAwsEntity = new aiven.ByocAwsEntity("example", {
+ *     organizationId: exampleOrganization.id,
+ *     cloudProvider: "aws",
+ *     cloudRegion: "eu-west-1",
+ *     deploymentModel: "standard",
+ *     displayName: "byoc-cloud-prod-eu-west-1",
+ *     reservedCidr: "192.168.6.0/24",
+ * });
  * const example = new aiven.ByocAwsProvision("example", {
- *     organizationId: "org1a23f456789",
- *     customCloudEnvironmentId: "1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+ *     organizationId: exampleOrganization.id,
+ *     customCloudEnvironmentId: exampleByocAwsEntity.customCloudEnvironmentId,
  *     awsIamRoleArn: "arn:aws:iam::012345678901:root",
  * });
  * ```

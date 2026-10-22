@@ -28,14 +28,38 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewConnectionPool(ctx, "example", &aiven.ConnectionPoolArgs{
-//				Project:      pulumi.String("my-project"),
-//				ServiceName:  pulumi.String("foo"),
-//				PoolName:     pulumi.String("mypool-x-y-z"),
+//			examplePostgres, err := aiven.NewPg(ctx, "example_postgres", &aiven.PgArgs{
+//				Project:     pulumi.String("my-project"),
+//				Plan:        pulumi.String("startup-4"),
+//				ServiceName: pulumi.String("example-postgres-service"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			examplePgDatabase, err := aiven.NewPgDatabase(ctx, "example", &aiven.PgDatabaseArgs{
+//				Project:      examplePostgres.Project,
+//				ServiceName:  examplePostgres.ServiceName,
 //				DatabaseName: pulumi.String("testdb"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			examplePgUser, err := aiven.NewPgUser(ctx, "example", &aiven.PgUserArgs{
+//				Project:     examplePostgres.Project,
+//				ServiceName: examplePostgres.ServiceName,
+//				Username:    pulumi.String("testuser"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = aiven.NewConnectionPool(ctx, "example", &aiven.ConnectionPoolArgs{
+//				Project:      examplePostgres.Project,
+//				ServiceName:  examplePostgres.ServiceName,
+//				PoolName:     pulumi.String("mypool-x-y-z"),
+//				DatabaseName: examplePgDatabase.DatabaseName,
 //				PoolMode:     pulumi.String("transaction"),
 //				PoolSize:     pulumi.Int(10),
-//				Username:     pulumi.String("testuser"),
+//				Username:     examplePgUser.Username,
 //			})
 //			if err != nil {
 //				return err

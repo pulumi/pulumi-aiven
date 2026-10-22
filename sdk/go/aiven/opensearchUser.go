@@ -28,9 +28,17 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewOpensearchUser(ctx, "example", &aiven.OpensearchUserArgs{
-//				Project:           pulumi.String("my-project"),
-//				ServiceName:       pulumi.String("my-opensearch"),
+//			exampleOpensearch, err := aiven.NewOpenSearch(ctx, "example_opensearch", &aiven.OpenSearchArgs{
+//				Project:     pulumi.String("my-project"),
+//				Plan:        pulumi.String("startup-4"),
+//				ServiceName: pulumi.String("example-opensearch"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = aiven.NewOpensearchUser(ctx, "example", &aiven.OpensearchUserArgs{
+//				Project:           exampleOpensearch.Project,
+//				ServiceName:       exampleOpensearch.ServiceName,
 //				Username:          pulumi.String("testuser"),
 //				PasswordWo:        pulumi.String("password123"),
 //				PasswordWoVersion: pulumi.Int(1),

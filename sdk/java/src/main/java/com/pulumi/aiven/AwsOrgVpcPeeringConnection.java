@@ -27,6 +27,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.aiven.Organization;
+ * import com.pulumi.aiven.OrganizationArgs;
+ * import com.pulumi.aiven.OrganizationVpc;
+ * import com.pulumi.aiven.OrganizationVpcArgs;
  * import com.pulumi.aiven.AwsOrgVpcPeeringConnection;
  * import com.pulumi.aiven.AwsOrgVpcPeeringConnectionArgs;
  * import java.util.ArrayList;
@@ -42,9 +46,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         var exampleOrganization = new Organization("exampleOrganization", OrganizationArgs.builder()
+ *             .name("Aiven Ltd")
+ *             .build());
+ * 
+ *         var exampleOrganizationVpc = new OrganizationVpc("exampleOrganizationVpc", OrganizationVpcArgs.builder()
+ *             .organizationId(exampleOrganization.id())
+ *             .cloudName("aws-eu-west-1")
+ *             .networkCidr("10.0.0.0/24")
+ *             .build());
+ * 
  *         var example = new AwsOrgVpcPeeringConnection("example", AwsOrgVpcPeeringConnectionArgs.builder()
- *             .organizationId("org1a23f456789")
- *             .organizationVpcId("1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d")
+ *             .organizationId(exampleOrganization.id())
+ *             .organizationVpcId(exampleOrganizationVpc.organizationVpcId())
  *             .awsAccountId("123456789012")
  *             .awsVpcId("vpc-2f09a348")
  *             .awsVpcRegion("us-east-1")

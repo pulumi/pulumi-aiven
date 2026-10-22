@@ -28,7 +28,26 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewOrganizationBillingGroup(ctx, "example", &aiven.OrganizationBillingGroupArgs{
+//			exampleOrganization, err := aiven.NewOrganization(ctx, "example", &aiven.OrganizationArgs{
+//				Name: pulumi.String("Aiven Ltd"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleOrganizationAddress, err := aiven.NewOrganizationAddress(ctx, "example", &aiven.OrganizationAddressArgs{
+//				OrganizationId: exampleOrganization.ID().ToIDOutput().ToStringOutput(),
+//				AddressLines: pulumi.StringArray{
+//					pulumi.String("Street 1"),
+//					pulumi.String("Street 2"),
+//				},
+//				City:        pulumi.String("Helsinki"),
+//				CountryCode: pulumi.String("FI"),
+//				Name:        pulumi.String("Aiven Oy"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = aiven.NewOrganizationBillingGroup(ctx, "example", &aiven.OrganizationBillingGroupArgs{
 //				PaymentMethod: &aiven.OrganizationBillingGroupPaymentMethodArgs{
 //					PaymentMethodId:   pulumi.String("pm4b1ff1ceeaa"),
 //					PaymentMethodType: pulumi.String("credit_card"),
@@ -43,9 +62,9 @@ import (
 //						Email: pulumi.String("jane@example.com"),
 //					},
 //				},
-//				OrganizationId:    pulumi.String("org1a23f456789"),
-//				BillingAddressId:  pulumi.String("addr4b1ff1ceeaa"),
-//				ShippingAddressId: pulumi.String("addr4b1ff1ceeaa"),
+//				OrganizationId:    exampleOrganization.ID().ToIDOutput().ToStringOutput(),
+//				BillingAddressId:  exampleOrganizationAddress.AddressId,
+//				ShippingAddressId: exampleOrganizationAddress.AddressId,
 //				BillingGroupName:  pulumi.String("Default billing group for the organization"),
 //				VatId:             pulumi.String("FI12345678"),
 //				CustomInvoiceText: pulumi.String("Extra billing text"),

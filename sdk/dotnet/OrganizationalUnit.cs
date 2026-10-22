@@ -22,9 +22,14 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var exampleOrganization = new Aiven.Organization("example", new()
+    ///     {
+    ///         Name = "Aiven Ltd",
+    ///     });
+    /// 
     ///     var example = new Aiven.OrganizationalUnit("example", new()
     ///     {
-    ///         ParentId = "a22ba494e096",
+    ///         ParentId = exampleOrganization.Id,
     ///         Name = "Aiven Ltd",
     ///     });
     /// 

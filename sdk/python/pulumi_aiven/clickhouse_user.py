@@ -308,9 +308,13 @@ class ClickhouseUser(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        example = aiven.ClickhouseUser("example",
+        example_clickhouse = aiven.Clickhouse("example_clickhouse",
             project="my-project",
-            service_name="my-clickhouse",
+            plan="business-4",
+            service_name="example-clickhouse-service")
+        example = aiven.ClickhouseUser("example",
+            project=example_clickhouse.project,
+            service_name=example_clickhouse.service_name,
             username="alice",
             password_wo="password123",
             password_wo_version=1)
@@ -348,9 +352,13 @@ class ClickhouseUser(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        example = aiven.ClickhouseUser("example",
+        example_clickhouse = aiven.Clickhouse("example_clickhouse",
             project="my-project",
-            service_name="my-clickhouse",
+            plan="business-4",
+            service_name="example-clickhouse-service")
+        example = aiven.ClickhouseUser("example",
+            project=example_clickhouse.project,
+            service_name=example_clickhouse.service_name,
             username="alice",
             password_wo="password123",
             password_wo_version=1)

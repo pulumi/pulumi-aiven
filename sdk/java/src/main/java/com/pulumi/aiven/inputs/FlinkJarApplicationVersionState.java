@@ -95,6 +95,21 @@ public final class FlinkJarApplicationVersionState extends com.pulumi.resources.
     }
 
     /**
+     * The sha256 checksum of the uploaded jar file.
+     * 
+     */
+    @Import(name="fileSha256")
+    private @Nullable Output<String> fileSha256;
+
+    /**
+     * @return The sha256 checksum of the uploaded jar file.
+     * 
+     */
+    public Optional<Output<String>> fileSha256() {
+        return Optional.ofNullable(this.fileSha256);
+    }
+
+    /**
      * Project name. Changing this property forces recreation of the resource.
      * 
      */
@@ -139,21 +154,6 @@ public final class FlinkJarApplicationVersionState extends com.pulumi.resources.
         return Optional.ofNullable(this.source);
     }
 
-    /**
-     * The sha256 checksum of the jar file to upload.
-     * 
-     */
-    @Import(name="sourceChecksum")
-    private @Nullable Output<String> sourceChecksum;
-
-    /**
-     * @return The sha256 checksum of the jar file to upload.
-     * 
-     */
-    public Optional<Output<String>> sourceChecksum() {
-        return Optional.ofNullable(this.sourceChecksum);
-    }
-
     @Import(name="timeouts")
     private @Nullable Output<FlinkJarApplicationVersionTimeoutsArgs> timeouts;
 
@@ -184,10 +184,10 @@ public final class FlinkJarApplicationVersionState extends com.pulumi.resources.
         this.createdAt = $.createdAt;
         this.createdBy = $.createdBy;
         this.fileInfos = $.fileInfos;
+        this.fileSha256 = $.fileSha256;
         this.project = $.project;
         this.serviceName = $.serviceName;
         this.source = $.source;
-        this.sourceChecksum = $.sourceChecksum;
         this.timeouts = $.timeouts;
         this.version = $.version;
     }
@@ -326,6 +326,27 @@ public final class FlinkJarApplicationVersionState extends com.pulumi.resources.
         }
 
         /**
+         * @param fileSha256 The sha256 checksum of the uploaded jar file.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fileSha256(@Nullable Output<String> fileSha256) {
+            $.fileSha256 = fileSha256;
+            return this;
+        }
+
+        /**
+         * @param fileSha256 The sha256 checksum of the uploaded jar file.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fileSha256(String fileSha256) {
+            return fileSha256(Output.of(fileSha256));
+        }
+
+        /**
          * @param project Project name. Changing this property forces recreation of the resource.
          * 
          * @return builder
@@ -386,27 +407,6 @@ public final class FlinkJarApplicationVersionState extends com.pulumi.resources.
          */
         public Builder source(String source) {
             return source(Output.of(source));
-        }
-
-        /**
-         * @param sourceChecksum The sha256 checksum of the jar file to upload.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder sourceChecksum(@Nullable Output<String> sourceChecksum) {
-            $.sourceChecksum = sourceChecksum;
-            return this;
-        }
-
-        /**
-         * @param sourceChecksum The sha256 checksum of the jar file to upload.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder sourceChecksum(String sourceChecksum) {
-            return sourceChecksum(Output.of(sourceChecksum));
         }
 
         public Builder timeouts(@Nullable Output<FlinkJarApplicationVersionTimeoutsArgs> timeouts) {

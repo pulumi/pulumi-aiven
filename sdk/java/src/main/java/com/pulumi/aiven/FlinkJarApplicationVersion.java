@@ -33,6 +33,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.aiven.Flink;
+ * import com.pulumi.aiven.FlinkArgs;
+ * import com.pulumi.aiven.FlinkJarApplication;
+ * import com.pulumi.aiven.FlinkJarApplicationArgs;
  * import com.pulumi.aiven.FlinkJarApplicationVersion;
  * import com.pulumi.aiven.FlinkJarApplicationVersionArgs;
  * import java.util.ArrayList;
@@ -48,10 +52,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new FlinkJarApplicationVersion("example", FlinkJarApplicationVersionArgs.builder()
+ *         var exampleFlink = new Flink("exampleFlink", FlinkArgs.builder()
  *             .project("my-project")
- *             .serviceName("my-application")
- *             .applicationId("foo")
+ *             .plan("business-4")
+ *             .serviceName("example-flink-service")
+ *             .build());
+ * 
+ *         var exampleFlinkJarApplication = new FlinkJarApplication("exampleFlinkJarApplication", FlinkJarApplicationArgs.builder()
+ *             .project(exampleFlink.project())
+ *             .serviceName(exampleFlink.serviceName())
+ *             .name("TestJob")
+ *             .build());
+ * 
+ *         var example = new FlinkJarApplicationVersion("example", FlinkJarApplicationVersionArgs.builder()
+ *             .project(exampleFlink.project())
+ *             .serviceName(exampleFlink.serviceName())
+ *             .applicationId(exampleFlinkJarApplication.applicationId())
  *             .source("./example.jar")
  *             .build());
  * 
@@ -140,6 +156,20 @@ public class FlinkJarApplicationVersion extends com.pulumi.resources.CustomResou
         return this.fileInfos;
     }
     /**
+     * The sha256 checksum of the uploaded jar file.
+     * 
+     */
+    @Export(name="fileSha256", refs={String.class}, tree="[0]")
+    private Output<String> fileSha256;
+
+    /**
+     * @return The sha256 checksum of the uploaded jar file.
+     * 
+     */
+    public Output<String> fileSha256() {
+        return this.fileSha256;
+    }
+    /**
      * Project name. Changing this property forces recreation of the resource.
      * 
      */
@@ -180,20 +210,6 @@ public class FlinkJarApplicationVersion extends com.pulumi.resources.CustomResou
      */
     public Output<String> source() {
         return this.source;
-    }
-    /**
-     * The sha256 checksum of the jar file to upload.
-     * 
-     */
-    @Export(name="sourceChecksum", refs={String.class}, tree="[0]")
-    private Output<String> sourceChecksum;
-
-    /**
-     * @return The sha256 checksum of the jar file to upload.
-     * 
-     */
-    public Output<String> sourceChecksum() {
-        return this.sourceChecksum;
     }
     @Export(name="timeouts", refs={FlinkJarApplicationVersionTimeouts.class}, tree="[0]")
     private Output</* @Nullable */ FlinkJarApplicationVersionTimeouts> timeouts;

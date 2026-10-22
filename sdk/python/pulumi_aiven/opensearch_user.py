@@ -308,9 +308,13 @@ class OpensearchUser(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        example = aiven.OpensearchUser("example",
+        example_opensearch = aiven.OpenSearch("example_opensearch",
             project="my-project",
-            service_name="my-opensearch",
+            plan="startup-4",
+            service_name="example-opensearch")
+        example = aiven.OpensearchUser("example",
+            project=example_opensearch.project,
+            service_name=example_opensearch.service_name,
             username="testuser",
             password_wo="password123",
             password_wo_version=1)
@@ -348,9 +352,13 @@ class OpensearchUser(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        example = aiven.OpensearchUser("example",
+        example_opensearch = aiven.OpenSearch("example_opensearch",
             project="my-project",
-            service_name="my-opensearch",
+            plan="startup-4",
+            service_name="example-opensearch")
+        example = aiven.OpensearchUser("example",
+            project=example_opensearch.project,
+            service_name=example_opensearch.service_name,
             username="testuser",
             password_wo="password123",
             password_wo_version=1)

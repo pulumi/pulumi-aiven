@@ -289,8 +289,9 @@ class UpgradeStep(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
+        example_organization = aiven.Organization("example", name="Aiven Ltd")
         example = aiven.UpgradeStep("example",
-            organization_id="org1a23f456789",
+            organization_id=example_organization.id,
             destination_project_name="prod-project",
             destination_service_name="pg-prod",
             source_project_name="dev-project",
@@ -332,8 +333,9 @@ class UpgradeStep(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
+        example_organization = aiven.Organization("example", name="Aiven Ltd")
         example = aiven.UpgradeStep("example",
-            organization_id="org1a23f456789",
+            organization_id=example_organization.id,
             destination_project_name="prod-project",
             destination_service_name="pg-prod",
             source_project_name="dev-project",

@@ -15,15 +15,42 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
+ * const exampleOrganization = new aiven.Organization("example", {name: "Aiven Ltd"});
+ * const exampleOrganizationAddress = new aiven.OrganizationAddress("example", {
+ *     organizationId: exampleOrganization.id,
+ *     addressLines: [
+ *         "Street 1",
+ *         "Street 2",
+ *     ],
+ *     city: "Helsinki",
+ *     countryCode: "FI",
+ *     name: "Aiven Oy",
+ * });
+ * const exampleOrganizationBillingGroup = new aiven.OrganizationBillingGroup("example", {
+ *     paymentMethod: {
+ *         paymentMethodId: "pm4b1ff1ceeaa",
+ *         paymentMethodType: "credit_card",
+ *     },
+ *     billingContactEmails: [{
+ *         email: "jane@example.com",
+ *     }],
+ *     billingEmails: [{
+ *         email: "jane@example.com",
+ *     }],
+ *     organizationId: exampleOrganization.id,
+ *     billingAddressId: exampleOrganizationAddress.addressId,
+ *     shippingAddressId: exampleOrganizationAddress.addressId,
+ *     billingGroupName: "Default billing group for the organization",
+ * });
  * const example = new aiven.OrganizationProject("example", {
  *     tags: [{
  *         key: "foo",
  *         value: "foo",
  *     }],
- *     organizationId: "org1234abcd",
+ *     organizationId: exampleOrganization.id,
  *     projectId: "project-1",
- *     billingGroupId: "721bf796-1d89-402d-9195-425a23c4efdc",
- *     parentId: "a3fd7a594e01",
+ *     billingGroupId: exampleOrganizationBillingGroup.billingGroupId,
+ *     parentId: exampleOrganization.id,
  *     basePort: 10000,
  *     technicalEmails: ["foo@example.com"],
  * });
@@ -84,7 +111,7 @@ export class OrganizationProject extends pulumi.CustomResource {
      */
     declare public readonly parentId: pulumi.Output<string>;
     /**
-     * The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It's recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource. Changing this property forces recreation of the resource.
+     * The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It's recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource. Maximum length: `63`. Changing this property forces recreation of the resource.
      */
     declare public readonly projectId: pulumi.Output<string>;
     /**
@@ -175,7 +202,7 @@ export interface OrganizationProjectState {
      */
     parentId?: pulumi.Input<string | undefined>;
     /**
-     * The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It's recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource. Changing this property forces recreation of the resource.
+     * The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It's recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource. Maximum length: `63`. Changing this property forces recreation of the resource.
      */
     projectId?: pulumi.Input<string | undefined>;
     /**
@@ -210,7 +237,7 @@ export interface OrganizationProjectArgs {
      */
     parentId: pulumi.Input<string>;
     /**
-     * The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It's recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource. Changing this property forces recreation of the resource.
+     * The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It's recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource. Maximum length: `63`. Changing this property forces recreation of the resource.
      */
     projectId: pulumi.Input<string>;
     /**

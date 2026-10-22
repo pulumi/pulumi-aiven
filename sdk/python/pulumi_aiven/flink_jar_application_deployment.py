@@ -485,11 +485,24 @@ class FlinkJarApplicationDeployment(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        example = aiven.FlinkJarApplicationDeployment("example",
+        example_flink = aiven.Flink("example_flink",
             project="my-project",
-            service_name="my-application",
-            application_id="foo",
-            version_id="543e420d-aa63-43e8-b8e8-294a78c600e7",
+            plan="business-4",
+            service_name="example-flink-service")
+        example_flink_jar_application = aiven.FlinkJarApplication("example",
+            project=example_flink.project,
+            service_name=example_flink.service_name,
+            name="TestJob")
+        example_flink_jar_application_version = aiven.FlinkJarApplicationVersion("example",
+            project=example_flink.project,
+            service_name=example_flink.service_name,
+            application_id=example_flink_jar_application.application_id,
+            source="./example.jar")
+        example = aiven.FlinkJarApplicationDeployment("example",
+            project=example_flink.project,
+            service_name=example_flink.service_name,
+            application_id=example_flink_jar_application.application_id,
+            version_id=example_flink_jar_application_version.application_version_id,
             entry_class="com.example.MyFlinkJob",
             parallelism=1,
             program_args=["example-argument"],
@@ -534,11 +547,24 @@ class FlinkJarApplicationDeployment(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        example = aiven.FlinkJarApplicationDeployment("example",
+        example_flink = aiven.Flink("example_flink",
             project="my-project",
-            service_name="my-application",
-            application_id="foo",
-            version_id="543e420d-aa63-43e8-b8e8-294a78c600e7",
+            plan="business-4",
+            service_name="example-flink-service")
+        example_flink_jar_application = aiven.FlinkJarApplication("example",
+            project=example_flink.project,
+            service_name=example_flink.service_name,
+            name="TestJob")
+        example_flink_jar_application_version = aiven.FlinkJarApplicationVersion("example",
+            project=example_flink.project,
+            service_name=example_flink.service_name,
+            application_id=example_flink_jar_application.application_id,
+            source="./example.jar")
+        example = aiven.FlinkJarApplicationDeployment("example",
+            project=example_flink.project,
+            service_name=example_flink.service_name,
+            application_id=example_flink_jar_application.application_id,
+            version_id=example_flink_jar_application_version.application_version_id,
             entry_class="com.example.MyFlinkJob",
             parallelism=1,
             program_args=["example-argument"],

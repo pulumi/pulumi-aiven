@@ -15,9 +15,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const example = new aiven.MirrorMakerReplicationFlow("example", {
+ * const exampleMirrormaker = new aiven.KafkaMirrorMaker("example_mirrormaker", {
  *     project: "my-project",
- *     serviceName: "foo",
+ *     plan: "startup-4",
+ *     serviceName: "example-mirrormaker-service",
+ * });
+ * const example = new aiven.MirrorMakerReplicationFlow("example", {
+ *     project: exampleMirrormaker.project,
+ *     serviceName: exampleMirrormaker.serviceName,
  *     sourceCluster: "kafka-abc",
  *     targetCluster: "kafka-abc",
  *     enable: true,
@@ -90,7 +95,7 @@ export class MirrorMakerReplicationFlow extends pulumi.CustomResource {
     /**
      * Adds a diskless_az= hint to the replication flow's Kafka client.id so that diskless Kafka clusters serve the flow from brokers in the same availability zone.
      */
-    declare public readonly disklessAzEnabled: pulumi.Output<boolean | undefined>;
+    declare public readonly disklessAzEnabled: pulumi.Output<boolean>;
     /**
      * Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
      */

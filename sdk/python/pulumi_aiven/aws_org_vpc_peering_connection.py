@@ -285,9 +285,14 @@ class AwsOrgVpcPeeringConnection(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
+        example_organization = aiven.Organization("example", name="Aiven Ltd")
+        example_organization_vpc = aiven.OrganizationVpc("example",
+            organization_id=example_organization.id,
+            cloud_name="aws-eu-west-1",
+            network_cidr="10.0.0.0/24")
         example = aiven.AwsOrgVpcPeeringConnection("example",
-            organization_id="org1a23f456789",
-            organization_vpc_id="1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+            organization_id=example_organization.id,
+            organization_vpc_id=example_organization_vpc.organization_vpc_id,
             aws_account_id="123456789012",
             aws_vpc_id="vpc-2f09a348",
             aws_vpc_region="us-east-1")
@@ -323,9 +328,14 @@ class AwsOrgVpcPeeringConnection(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
+        example_organization = aiven.Organization("example", name="Aiven Ltd")
+        example_organization_vpc = aiven.OrganizationVpc("example",
+            organization_id=example_organization.id,
+            cloud_name="aws-eu-west-1",
+            network_cidr="10.0.0.0/24")
         example = aiven.AwsOrgVpcPeeringConnection("example",
-            organization_id="org1a23f456789",
-            organization_vpc_id="1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+            organization_id=example_organization.id,
+            organization_vpc_id=example_organization_vpc.organization_vpc_id,
             aws_account_id="123456789012",
             aws_vpc_id="vpc-2f09a348",
             aws_vpc_region="us-east-1")

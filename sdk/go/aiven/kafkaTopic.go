@@ -28,7 +28,29 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewKafkaTopic(ctx, "example", &aiven.KafkaTopicArgs{
+//			exampleKafka, err := aiven.NewKafka(ctx, "example_kafka", &aiven.KafkaArgs{
+//				Project:     pulumi.String("my-project"),
+//				Plan:        pulumi.String("business-4"),
+//				ServiceName: pulumi.String("example-kafka"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleOrganization, err := aiven.NewOrganization(ctx, "example", &aiven.OrganizationArgs{
+//				Name: pulumi.String("Aiven Ltd"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleOrganizationUserGroup, err := aiven.NewOrganizationUserGroup(ctx, "example", &aiven.OrganizationUserGroupArgs{
+//				OrganizationId: exampleOrganization.ID().ToIDOutput().ToStringOutput(),
+//				Description:    pulumi.String("The group of admins for the organization"),
+//				Name:           pulumi.String("Admin Users"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = aiven.NewKafkaTopic(ctx, "example", &aiven.KafkaTopicArgs{
 //				Config: &aiven.KafkaTopicConfigArgs{
 //					CleanupPolicy:                   pulumi.String("delete"),
 //					CompressionType:                 pulumi.String("zstd"),
@@ -67,12 +89,12 @@ import (
 //						Value: pulumi.String("My tag value, value."),
 //					},
 //				},
-//				Project:          pulumi.String("my-project"),
-//				ServiceName:      pulumi.String("my-kafka"),
+//				Project:          exampleKafka.Project,
+//				ServiceName:      exampleKafka.ServiceName,
 //				TopicName:        pulumi.String("mytopic"),
 //				Partitions:       pulumi.Int(3),
 //				Replication:      pulumi.Int(3),
-//				OwnerUserGroupId: pulumi.String("ug22ba494e096"),
+//				OwnerUserGroupId: exampleOrganizationUserGroup.GroupId,
 //				TopicDescription: pulumi.String("Platform events"),
 //			})
 //			if err != nil {

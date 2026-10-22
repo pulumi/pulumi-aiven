@@ -29,6 +29,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.aiven.Kafka;
+ * import com.pulumi.aiven.KafkaArgs;
  * import com.pulumi.aiven.KafkaNativeAcl;
  * import com.pulumi.aiven.KafkaNativeAclArgs;
  * import java.util.ArrayList;
@@ -44,9 +46,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new KafkaNativeAcl("example", KafkaNativeAclArgs.builder()
+ *         var exampleKafka = new Kafka("exampleKafka", KafkaArgs.builder()
  *             .project("my-project")
- *             .serviceName("my-kafka")
+ *             .plan("business-4")
+ *             .serviceName("example-kafka")
+ *             .build());
+ * 
+ *         var example = new KafkaNativeAcl("example", KafkaNativeAclArgs.builder()
+ *             .project(exampleKafka.project())
+ *             .serviceName(exampleKafka.serviceName())
  *             .operation("Read")
  *             .patternType("LITERAL")
  *             .permissionType("ALLOW")

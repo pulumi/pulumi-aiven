@@ -600,6 +600,11 @@ export type KafkaConnect = import("./kafkaConnect").KafkaConnect;
 export const KafkaConnect: typeof import("./kafkaConnect").KafkaConnect = null as any;
 utilities.lazyLoad(exports, ["KafkaConnect"], () => require("./kafkaConnect"));
 
+export { KafkaConnectCustomPluginFileArgs, KafkaConnectCustomPluginFileState } from "./kafkaConnectCustomPluginFile";
+export type KafkaConnectCustomPluginFile = import("./kafkaConnectCustomPluginFile").KafkaConnectCustomPluginFile;
+export const KafkaConnectCustomPluginFile: typeof import("./kafkaConnectCustomPluginFile").KafkaConnectCustomPluginFile = null as any;
+utilities.lazyLoad(exports, ["KafkaConnectCustomPluginFile"], () => require("./kafkaConnectCustomPluginFile"));
+
 export { KafkaConnectorArgs, KafkaConnectorState } from "./kafkaConnector";
 export type KafkaConnector = import("./kafkaConnector").KafkaConnector;
 export const KafkaConnector: typeof import("./kafkaConnector").KafkaConnector = null as any;
@@ -922,6 +927,8 @@ const _module = {
                 return new KafkaAcl(name, <any>undefined, { urn })
             case "aiven:index/kafkaConnect:KafkaConnect":
                 return new KafkaConnect(name, <any>undefined, { urn })
+            case "aiven:index/kafkaConnectCustomPluginFile:KafkaConnectCustomPluginFile":
+                return new KafkaConnectCustomPluginFile(name, <any>undefined, { urn })
             case "aiven:index/kafkaConnector:KafkaConnector":
                 return new KafkaConnector(name, <any>undefined, { urn })
             case "aiven:index/kafkaMirrorMaker:KafkaMirrorMaker":
@@ -1057,6 +1064,7 @@ pulumi.runtime.registerResourceModule("aiven", "index/grafana", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/kafka", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/kafkaAcl", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/kafkaConnect", _module)
+pulumi.runtime.registerResourceModule("aiven", "index/kafkaConnectCustomPluginFile", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/kafkaConnector", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/kafkaMirrorMaker", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/kafkaNativeAcl", _module)

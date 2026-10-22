@@ -28,6 +28,11 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var exampleOrganization = new Aiven.Organization("example", new()
+    ///     {
+    ///         Name = "Aiven Ltd",
+    ///     });
+    /// 
     ///     var example = new Aiven.OrganizationPermission("example", new()
     ///     {
     ///         Permissions = new[]
@@ -42,7 +47,7 @@ namespace Pulumi.Aiven
     ///                 PrincipalType = "user",
     ///             },
     ///         },
-    ///         OrganizationId = "org1a23f456789",
+    ///         OrganizationId = exampleOrganization.Id,
     ///         ResourceType = "organization",
     ///         ResourceId = "foo",
     ///     });

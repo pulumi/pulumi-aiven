@@ -15,9 +15,13 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const example = new aiven.OrganizationApplicationUserToken("example", {
+ * const exampleOrganizationApplicationUser = new aiven.OrganizationApplicationUser("example", {
  *     organizationId: "org1a23f456789",
- *     userId: "foo",
+ *     name: "devops app user",
+ * });
+ * const example = new aiven.OrganizationApplicationUserToken("example", {
+ *     organizationId: exampleOrganizationApplicationUser.organizationId,
+ *     userId: exampleOrganizationApplicationUser.userId,
  *     description: "Integration client Alpha",
  *     extendWhenUsed: false,
  *     ipAllowlists: [

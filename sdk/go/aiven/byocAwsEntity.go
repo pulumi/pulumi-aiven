@@ -31,7 +31,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewByocAwsEntity(ctx, "example", &aiven.ByocAwsEntityArgs{
+//			exampleOrganization, err := aiven.NewOrganization(ctx, "example", &aiven.OrganizationArgs{
+//				Name: pulumi.String("Aiven Ltd"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = aiven.NewByocAwsEntity(ctx, "example", &aiven.ByocAwsEntityArgs{
 //				ContactEmails: aiven.ByocAwsEntityContactEmailArray{
 //					&aiven.ByocAwsEntityContactEmailArgs{
 //						Email:    pulumi.String("jane@example.com"),
@@ -39,7 +45,7 @@ import (
 //						Role:     pulumi.String("admin"),
 //					},
 //				},
-//				OrganizationId:  pulumi.String("org1a23f456789"),
+//				OrganizationId:  exampleOrganization.ID().ToIDOutput().ToStringOutput(),
 //				CloudProvider:   pulumi.String("aws"),
 //				CloudRegion:     pulumi.String("eu-west-1"),
 //				DeploymentModel: pulumi.String("standard"),

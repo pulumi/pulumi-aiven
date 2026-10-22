@@ -32,6 +32,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.aiven.Kafka;
+ * import com.pulumi.aiven.KafkaArgs;
+ * import com.pulumi.aiven.Organization;
+ * import com.pulumi.aiven.OrganizationArgs;
+ * import com.pulumi.aiven.OrganizationUserGroup;
+ * import com.pulumi.aiven.OrganizationUserGroupArgs;
  * import com.pulumi.aiven.KafkaTopic;
  * import com.pulumi.aiven.KafkaTopicArgs;
  * import com.pulumi.aiven.inputs.KafkaTopicConfigArgs;
@@ -49,6 +55,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         var exampleKafka = new Kafka("exampleKafka", KafkaArgs.builder()
+ *             .project("my-project")
+ *             .plan("business-4")
+ *             .serviceName("example-kafka")
+ *             .build());
+ * 
+ *         var exampleOrganization = new Organization("exampleOrganization", OrganizationArgs.builder()
+ *             .name("Aiven Ltd")
+ *             .build());
+ * 
+ *         var exampleOrganizationUserGroup = new OrganizationUserGroup("exampleOrganizationUserGroup", OrganizationUserGroupArgs.builder()
+ *             .organizationId(exampleOrganization.id())
+ *             .description("The group of admins for the organization")
+ *             .name("Admin Users")
+ *             .build());
+ * 
  *         var example = new KafkaTopic("example", KafkaTopicArgs.builder()
  *             .config(KafkaTopicConfigArgs.builder()
  *                 .cleanupPolicy("delete")
@@ -86,12 +108,12 @@ import javax.annotation.Nullable;
  *                 .key("My-tag_key")
  *                 .value("My tag value, value.")
  *                 .build())
- *             .project("my-project")
- *             .serviceName("my-kafka")
+ *             .project(exampleKafka.project())
+ *             .serviceName(exampleKafka.serviceName())
  *             .topicName("mytopic")
  *             .partitions(3)
  *             .replication(3)
- *             .ownerUserGroupId("ug22ba494e096")
+ *             .ownerUserGroupId(exampleOrganizationUserGroup.groupId())
  *             .topicDescription("Platform events")
  *             .build());
  * 

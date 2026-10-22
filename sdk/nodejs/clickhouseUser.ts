@@ -15,9 +15,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const example = new aiven.ClickhouseUser("example", {
+ * const exampleClickhouse = new aiven.Clickhouse("example_clickhouse", {
  *     project: "my-project",
- *     serviceName: "my-clickhouse",
+ *     plan: "business-4",
+ *     serviceName: "example-clickhouse-service",
+ * });
+ * const example = new aiven.ClickhouseUser("example", {
+ *     project: exampleClickhouse.project,
+ *     serviceName: exampleClickhouse.serviceName,
  *     username: "alice",
  *     passwordWo: "password123",
  *     passwordWoVersion: 1,

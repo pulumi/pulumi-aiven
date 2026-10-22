@@ -320,14 +320,26 @@ class ConnectionPool(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        example = aiven.ConnectionPool("example",
+        example_postgres = aiven.Pg("example_postgres",
             project="my-project",
-            service_name="foo",
+            plan="startup-4",
+            service_name="example-postgres-service")
+        example_pg_database = aiven.PgDatabase("example",
+            project=example_postgres.project,
+            service_name=example_postgres.service_name,
+            database_name="testdb")
+        example_pg_user = aiven.PgUser("example",
+            project=example_postgres.project,
+            service_name=example_postgres.service_name,
+            username="testuser")
+        example = aiven.ConnectionPool("example",
+            project=example_postgres.project,
+            service_name=example_postgres.service_name,
             pool_name="mypool-x-y-z",
-            database_name="testdb",
+            database_name=example_pg_database.database_name,
             pool_mode="transaction",
             pool_size=10,
-            username="testuser")
+            username=example_pg_user.username)
         ```
 
         ## Import
@@ -362,14 +374,26 @@ class ConnectionPool(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        example = aiven.ConnectionPool("example",
+        example_postgres = aiven.Pg("example_postgres",
             project="my-project",
-            service_name="foo",
+            plan="startup-4",
+            service_name="example-postgres-service")
+        example_pg_database = aiven.PgDatabase("example",
+            project=example_postgres.project,
+            service_name=example_postgres.service_name,
+            database_name="testdb")
+        example_pg_user = aiven.PgUser("example",
+            project=example_postgres.project,
+            service_name=example_postgres.service_name,
+            username="testuser")
+        example = aiven.ConnectionPool("example",
+            project=example_postgres.project,
+            service_name=example_postgres.service_name,
             pool_name="mypool-x-y-z",
-            database_name="testdb",
+            database_name=example_pg_database.database_name,
             pool_mode="transaction",
             pool_size=10,
-            username="testuser")
+            username=example_pg_user.username)
         ```
 
         ## Import

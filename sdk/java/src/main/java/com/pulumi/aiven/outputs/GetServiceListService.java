@@ -39,6 +39,11 @@ public final class GetServiceListService {
      */
     private Integer diskSpaceMb;
     /**
+     * @return Timestamp when the service was first used (ISO 8601), null if it has not been used yet.
+     * 
+     */
+    private String firstUseTime;
+    /**
      * @return True when the service uses a cluster plan with dedicated node groups.
      * 
      */
@@ -139,6 +144,13 @@ public final class GetServiceListService {
      */
     public Integer diskSpaceMb() {
         return this.diskSpaceMb;
+    }
+    /**
+     * @return Timestamp when the service was first used (ISO 8601), null if it has not been used yet.
+     * 
+     */
+    public String firstUseTime() {
+        return this.firstUseTime;
     }
     /**
      * @return True when the service uses a cluster plan with dedicated node groups.
@@ -246,6 +258,7 @@ public final class GetServiceListService {
         private String cmkId;
         private String createTime;
         private Integer diskSpaceMb;
+        private String firstUseTime;
         private Boolean isClusterPlan;
         private Integer nodeCount;
         private Integer nodeCpuCount;
@@ -267,6 +280,7 @@ public final class GetServiceListService {
     	      this.cmkId = defaults.cmkId;
     	      this.createTime = defaults.createTime;
     	      this.diskSpaceMb = defaults.diskSpaceMb;
+    	      this.firstUseTime = defaults.firstUseTime;
     	      this.isClusterPlan = defaults.isClusterPlan;
     	      this.nodeCount = defaults.nodeCount;
     	      this.nodeCpuCount = defaults.nodeCpuCount;
@@ -320,6 +334,14 @@ public final class GetServiceListService {
               throw new MissingRequiredPropertyException("GetServiceListService", "diskSpaceMb");
             }
             this.diskSpaceMb = diskSpaceMb;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder firstUseTime(String firstUseTime) {
+            if (firstUseTime == null) {
+              throw new MissingRequiredPropertyException("GetServiceListService", "firstUseTime");
+            }
+            this.firstUseTime = firstUseTime;
             return this;
         }
         @CustomType.Setter
@@ -433,6 +455,7 @@ public final class GetServiceListService {
             _resultValue.cmkId = cmkId;
             _resultValue.createTime = createTime;
             _resultValue.diskSpaceMb = diskSpaceMb;
+            _resultValue.firstUseTime = firstUseTime;
             _resultValue.isClusterPlan = isClusterPlan;
             _resultValue.nodeCount = nodeCount;
             _resultValue.nodeCpuCount = nodeCpuCount;

@@ -107,10 +107,10 @@ class _FlinkJarApplicationVersionState:
                  created_at: pulumi.Input[Optional[_builtins.str]] = None,
                  created_by: pulumi.Input[Optional[_builtins.str]] = None,
                  file_infos: pulumi.Input[Optional[Sequence[pulumi.Input['FlinkJarApplicationVersionFileInfoArgs']]]] = None,
+                 file_sha256: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  service_name: pulumi.Input[Optional[_builtins.str]] = None,
                  source: pulumi.Input[Optional[_builtins.str]] = None,
-                 source_checksum: pulumi.Input[Optional[_builtins.str]] = None,
                  timeouts: pulumi.Input[Optional['FlinkJarApplicationVersionTimeoutsArgs']] = None,
                  version: pulumi.Input[Optional[_builtins.int]] = None):
         """
@@ -121,10 +121,10 @@ class _FlinkJarApplicationVersionState:
         :param pulumi.Input[_builtins.str] created_at: The creation timestamp of this entity in ISO 8601 format, always in UTC.
         :param pulumi.Input[_builtins.str] created_by: The creator of this entity.
         :param pulumi.Input[Sequence[pulumi.Input['FlinkJarApplicationVersionFileInfoArgs']]] file_infos: Flink JarApplicationVersion FileInfo.
+        :param pulumi.Input[_builtins.str] file_sha256: The sha256 checksum of the uploaded jar file.
         :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] service_name: Service name. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] source: The path to the jar file to upload.
-        :param pulumi.Input[_builtins.str] source_checksum: The sha256 checksum of the jar file to upload.
         :param pulumi.Input[_builtins.int] version: Version number.
         """
         if application_id is not None:
@@ -137,14 +137,14 @@ class _FlinkJarApplicationVersionState:
             pulumi.set(__self__, "created_by", created_by)
         if file_infos is not None:
             pulumi.set(__self__, "file_infos", file_infos)
+        if file_sha256 is not None:
+            pulumi.set(__self__, "file_sha256", file_sha256)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if service_name is not None:
             pulumi.set(__self__, "service_name", service_name)
         if source is not None:
             pulumi.set(__self__, "source", source)
-        if source_checksum is not None:
-            pulumi.set(__self__, "source_checksum", source_checksum)
         if timeouts is not None:
             pulumi.set(__self__, "timeouts", timeouts)
         if version is not None:
@@ -211,6 +211,18 @@ class _FlinkJarApplicationVersionState:
         pulumi.set(self, "file_infos", value)
 
     @_builtins.property
+    @pulumi.getter(name="fileSha256")
+    def file_sha256(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The sha256 checksum of the uploaded jar file.
+        """
+        return pulumi.get(self, "file_sha256")
+
+    @file_sha256.setter
+    def file_sha256(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "file_sha256", value)
+
+    @_builtins.property
     @pulumi.getter
     def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -245,18 +257,6 @@ class _FlinkJarApplicationVersionState:
     @source.setter
     def source(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source", value)
-
-    @_builtins.property
-    @pulumi.getter(name="sourceChecksum")
-    def source_checksum(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        The sha256 checksum of the jar file to upload.
-        """
-        return pulumi.get(self, "source_checksum")
-
-    @source_checksum.setter
-    def source_checksum(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "source_checksum", value)
 
     @_builtins.property
     @pulumi.getter
@@ -304,10 +304,18 @@ class FlinkJarApplicationVersion(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        example = aiven.FlinkJarApplicationVersion("example",
+        example_flink = aiven.Flink("example_flink",
             project="my-project",
-            service_name="my-application",
-            application_id="foo",
+            plan="business-4",
+            service_name="example-flink-service")
+        example_flink_jar_application = aiven.FlinkJarApplication("example",
+            project=example_flink.project,
+            service_name=example_flink.service_name,
+            name="TestJob")
+        example = aiven.FlinkJarApplicationVersion("example",
+            project=example_flink.project,
+            service_name=example_flink.service_name,
+            application_id=example_flink_jar_application.application_id,
             source="./example.jar")
         ```
 
@@ -343,10 +351,18 @@ class FlinkJarApplicationVersion(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        example = aiven.FlinkJarApplicationVersion("example",
+        example_flink = aiven.Flink("example_flink",
             project="my-project",
-            service_name="my-application",
-            application_id="foo",
+            plan="business-4",
+            service_name="example-flink-service")
+        example_flink_jar_application = aiven.FlinkJarApplication("example",
+            project=example_flink.project,
+            service_name=example_flink.service_name,
+            name="TestJob")
+        example = aiven.FlinkJarApplicationVersion("example",
+            project=example_flink.project,
+            service_name=example_flink.service_name,
+            application_id=example_flink_jar_application.application_id,
             source="./example.jar")
         ```
 
@@ -403,7 +419,7 @@ class FlinkJarApplicationVersion(pulumi.CustomResource):
             __props__.__dict__["created_at"] = None
             __props__.__dict__["created_by"] = None
             __props__.__dict__["file_infos"] = None
-            __props__.__dict__["source_checksum"] = None
+            __props__.__dict__["file_sha256"] = None
             __props__.__dict__["version"] = None
         super(FlinkJarApplicationVersion, __self__).__init__(
             'aiven:index/flinkJarApplicationVersion:FlinkJarApplicationVersion',
@@ -420,10 +436,10 @@ class FlinkJarApplicationVersion(pulumi.CustomResource):
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
             created_by: pulumi.Input[Optional[_builtins.str]] = None,
             file_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FlinkJarApplicationVersionFileInfoArgs', 'FlinkJarApplicationVersionFileInfoArgsDict', 'outputs.FlinkJarApplicationVersionFileInfo']]]]] = None,
+            file_sha256: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             service_name: pulumi.Input[Optional[_builtins.str]] = None,
             source: pulumi.Input[Optional[_builtins.str]] = None,
-            source_checksum: pulumi.Input[Optional[_builtins.str]] = None,
             timeouts: pulumi.Input[Optional[Union['FlinkJarApplicationVersionTimeoutsArgs', 'FlinkJarApplicationVersionTimeoutsArgsDict', 'outputs.FlinkJarApplicationVersionTimeouts']]] = None,
             version: pulumi.Input[Optional[_builtins.int]] = None) -> 'FlinkJarApplicationVersion':
         """
@@ -438,10 +454,10 @@ class FlinkJarApplicationVersion(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] created_at: The creation timestamp of this entity in ISO 8601 format, always in UTC.
         :param pulumi.Input[_builtins.str] created_by: The creator of this entity.
         :param pulumi.Input[Sequence[pulumi.Input[Union['FlinkJarApplicationVersionFileInfoArgs', 'FlinkJarApplicationVersionFileInfoArgsDict', 'outputs.FlinkJarApplicationVersionFileInfo']]]] file_infos: Flink JarApplicationVersion FileInfo.
+        :param pulumi.Input[_builtins.str] file_sha256: The sha256 checksum of the uploaded jar file.
         :param pulumi.Input[_builtins.str] project: Project name. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] service_name: Service name. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.str] source: The path to the jar file to upload.
-        :param pulumi.Input[_builtins.str] source_checksum: The sha256 checksum of the jar file to upload.
         :param pulumi.Input[_builtins.int] version: Version number.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -453,10 +469,10 @@ class FlinkJarApplicationVersion(pulumi.CustomResource):
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["created_by"] = created_by
         __props__.__dict__["file_infos"] = file_infos
+        __props__.__dict__["file_sha256"] = file_sha256
         __props__.__dict__["project"] = project
         __props__.__dict__["service_name"] = service_name
         __props__.__dict__["source"] = source
-        __props__.__dict__["source_checksum"] = source_checksum
         __props__.__dict__["timeouts"] = timeouts
         __props__.__dict__["version"] = version
         return FlinkJarApplicationVersion(resource_name, opts=opts, __props__=__props__)
@@ -502,6 +518,14 @@ class FlinkJarApplicationVersion(pulumi.CustomResource):
         return pulumi.get(self, "file_infos")
 
     @_builtins.property
+    @pulumi.getter(name="fileSha256")
+    def file_sha256(self) -> pulumi.Output[_builtins.str]:
+        """
+        The sha256 checksum of the uploaded jar file.
+        """
+        return pulumi.get(self, "file_sha256")
+
+    @_builtins.property
     @pulumi.getter
     def project(self) -> pulumi.Output[_builtins.str]:
         """
@@ -524,14 +548,6 @@ class FlinkJarApplicationVersion(pulumi.CustomResource):
         The path to the jar file to upload.
         """
         return pulumi.get(self, "source")
-
-    @_builtins.property
-    @pulumi.getter(name="sourceChecksum")
-    def source_checksum(self) -> pulumi.Output[_builtins.str]:
-        """
-        The sha256 checksum of the jar file to upload.
-        """
-        return pulumi.get(self, "source_checksum")
 
     @_builtins.property
     @pulumi.getter

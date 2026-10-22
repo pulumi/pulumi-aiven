@@ -699,9 +699,13 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        example = aiven.MirrorMakerReplicationFlow("example",
+        example_mirrormaker = aiven.KafkaMirrorMaker("example_mirrormaker",
             project="my-project",
-            service_name="foo",
+            plan="startup-4",
+            service_name="example-mirrormaker-service")
+        example = aiven.MirrorMakerReplicationFlow("example",
+            project=example_mirrormaker.project,
+            service_name=example_mirrormaker.service_name,
             source_cluster="kafka-abc",
             target_cluster="kafka-abc",
             enable=True,
@@ -776,9 +780,13 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        example = aiven.MirrorMakerReplicationFlow("example",
+        example_mirrormaker = aiven.KafkaMirrorMaker("example_mirrormaker",
             project="my-project",
-            service_name="foo",
+            plan="startup-4",
+            service_name="example-mirrormaker-service")
+        example = aiven.MirrorMakerReplicationFlow("example",
+            project=example_mirrormaker.project,
+            service_name=example_mirrormaker.service_name,
             source_cluster="kafka-abc",
             target_cluster="kafka-abc",
             enable=True,
@@ -983,7 +991,7 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="disklessAzEnabled")
-    def diskless_az_enabled(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def diskless_az_enabled(self) -> pulumi.Output[_builtins.bool]:
         """
         Adds a diskless_az= hint to the replication flow's Kafka client.id so that diskless Kafka clusters serve the flow from brokers in the same availability zone.
         """

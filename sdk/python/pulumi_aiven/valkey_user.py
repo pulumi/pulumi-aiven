@@ -440,9 +440,13 @@ class ValkeyUser(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        example = aiven.ValkeyUser("example",
+        example_valkey = aiven.Valkey("example_valkey",
             project="my-project",
-            service_name="my-valkey",
+            plan="startup-4",
+            service_name="example-valkey-service")
+        example = aiven.ValkeyUser("example",
+            project=example_valkey.project,
+            service_name=example_valkey.service_name,
             username="testuser",
             password_wo="password123",
             password_wo_version=1,
@@ -497,9 +501,13 @@ class ValkeyUser(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        example = aiven.ValkeyUser("example",
+        example_valkey = aiven.Valkey("example_valkey",
             project="my-project",
-            service_name="my-valkey",
+            plan="startup-4",
+            service_name="example-valkey-service")
+        example = aiven.ValkeyUser("example",
+            project=example_valkey.project,
+            service_name=example_valkey.service_name,
             username="testuser",
             password_wo="password123",
             password_wo_version=1,

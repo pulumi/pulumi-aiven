@@ -22,9 +22,62 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var exampleOrganization = new Aiven.Organization("example", new()
+    ///     {
+    ///         Name = "Aiven Ltd",
+    ///     });
+    /// 
+    ///     var exampleOrganizationAddress = new Aiven.OrganizationAddress("example", new()
+    ///     {
+    ///         OrganizationId = exampleOrganization.Id,
+    ///         AddressLines = new[]
+    ///         {
+    ///             "Street 1",
+    ///             "Street 2",
+    ///         },
+    ///         City = "Helsinki",
+    ///         CountryCode = "FI",
+    ///         Name = "Aiven Oy",
+    ///     });
+    /// 
+    ///     var exampleOrganizationBillingGroup = new Aiven.OrganizationBillingGroup("example", new()
+    ///     {
+    ///         PaymentMethod = new Aiven.Inputs.OrganizationBillingGroupPaymentMethodArgs
+    ///         {
+    ///             PaymentMethodId = "pm4b1ff1ceeaa",
+    ///             PaymentMethodType = "credit_card",
+    ///         },
+    ///         BillingContactEmails = new[]
+    ///         {
+    ///             new Aiven.Inputs.OrganizationBillingGroupBillingContactEmailArgs
+    ///             {
+    ///                 Email = "jane@example.com",
+    ///             },
+    ///         },
+    ///         BillingEmails = new[]
+    ///         {
+    ///             new Aiven.Inputs.OrganizationBillingGroupBillingEmailArgs
+    ///             {
+    ///                 Email = "jane@example.com",
+    ///             },
+    ///         },
+    ///         OrganizationId = exampleOrganization.Id,
+    ///         BillingAddressId = exampleOrganizationAddress.AddressId,
+    ///         ShippingAddressId = exampleOrganizationAddress.AddressId,
+    ///         BillingGroupName = "Default billing group for the organization",
+    ///     });
+    /// 
+    ///     var exampleOrganizationProject = new Aiven.OrganizationProject("example", new()
+    ///     {
+    ///         OrganizationId = exampleOrganization.Id,
+    ///         ProjectId = "project-1",
+    ///         BillingGroupId = exampleOrganizationBillingGroup.BillingGroupId,
+    ///         ParentId = exampleOrganization.Id,
+    ///     });
+    /// 
     ///     var example = new Aiven.ProjectVpc("example", new()
     ///     {
-    ///         Project = "my-project",
+    ///         Project = exampleOrganizationProject.ProjectId,
     ///         CloudName = "aws-eu-central-1",
     ///         NetworkCidr = "192.168.6.0/24",
     ///     });

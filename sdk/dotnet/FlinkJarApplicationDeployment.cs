@@ -25,12 +25,34 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Aiven.FlinkJarApplicationDeployment("example", new()
+    ///     var exampleFlink = new Aiven.Flink("example_flink", new()
     ///     {
     ///         Project = "my-project",
-    ///         ServiceName = "my-application",
-    ///         ApplicationId = "foo",
-    ///         VersionId = "543e420d-aa63-43e8-b8e8-294a78c600e7",
+    ///         Plan = "business-4",
+    ///         ServiceName = "example-flink-service",
+    ///     });
+    /// 
+    ///     var exampleFlinkJarApplication = new Aiven.FlinkJarApplication("example", new()
+    ///     {
+    ///         Project = exampleFlink.Project,
+    ///         ServiceName = exampleFlink.ServiceName,
+    ///         Name = "TestJob",
+    ///     });
+    /// 
+    ///     var exampleFlinkJarApplicationVersion = new Aiven.FlinkJarApplicationVersion("example", new()
+    ///     {
+    ///         Project = exampleFlink.Project,
+    ///         ServiceName = exampleFlink.ServiceName,
+    ///         ApplicationId = exampleFlinkJarApplication.ApplicationId,
+    ///         Source = "./example.jar",
+    ///     });
+    /// 
+    ///     var example = new Aiven.FlinkJarApplicationDeployment("example", new()
+    ///     {
+    ///         Project = exampleFlink.Project,
+    ///         ServiceName = exampleFlink.ServiceName,
+    ///         ApplicationId = exampleFlinkJarApplication.ApplicationId,
+    ///         VersionId = exampleFlinkJarApplicationVersion.ApplicationVersionId,
     ///         EntryClass = "com.example.MyFlinkJob",
     ///         Parallelism = 1,
     ///         ProgramArgs = new[]

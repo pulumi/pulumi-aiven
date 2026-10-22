@@ -33,6 +33,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.aiven.Flink;
+ * import com.pulumi.aiven.FlinkArgs;
+ * import com.pulumi.aiven.FlinkJarApplication;
+ * import com.pulumi.aiven.FlinkJarApplicationArgs;
+ * import com.pulumi.aiven.FlinkJarApplicationVersion;
+ * import com.pulumi.aiven.FlinkJarApplicationVersionArgs;
  * import com.pulumi.aiven.FlinkJarApplicationDeployment;
  * import com.pulumi.aiven.FlinkJarApplicationDeploymentArgs;
  * import java.util.ArrayList;
@@ -48,11 +54,30 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new FlinkJarApplicationDeployment("example", FlinkJarApplicationDeploymentArgs.builder()
+ *         var exampleFlink = new Flink("exampleFlink", FlinkArgs.builder()
  *             .project("my-project")
- *             .serviceName("my-application")
- *             .applicationId("foo")
- *             .versionId("543e420d-aa63-43e8-b8e8-294a78c600e7")
+ *             .plan("business-4")
+ *             .serviceName("example-flink-service")
+ *             .build());
+ * 
+ *         var exampleFlinkJarApplication = new FlinkJarApplication("exampleFlinkJarApplication", FlinkJarApplicationArgs.builder()
+ *             .project(exampleFlink.project())
+ *             .serviceName(exampleFlink.serviceName())
+ *             .name("TestJob")
+ *             .build());
+ * 
+ *         var exampleFlinkJarApplicationVersion = new FlinkJarApplicationVersion("exampleFlinkJarApplicationVersion", FlinkJarApplicationVersionArgs.builder()
+ *             .project(exampleFlink.project())
+ *             .serviceName(exampleFlink.serviceName())
+ *             .applicationId(exampleFlinkJarApplication.applicationId())
+ *             .source("./example.jar")
+ *             .build());
+ * 
+ *         var example = new FlinkJarApplicationDeployment("example", FlinkJarApplicationDeploymentArgs.builder()
+ *             .project(exampleFlink.project())
+ *             .serviceName(exampleFlink.serviceName())
+ *             .applicationId(exampleFlinkJarApplication.applicationId())
+ *             .versionId(exampleFlinkJarApplicationVersion.applicationVersionId())
  *             .entryClass("com.example.MyFlinkJob")
  *             .parallelism(1)
  *             .programArgs("example-argument")

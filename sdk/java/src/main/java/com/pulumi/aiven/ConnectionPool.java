@@ -29,6 +29,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.aiven.Pg;
+ * import com.pulumi.aiven.PgArgs;
+ * import com.pulumi.aiven.PgDatabase;
+ * import com.pulumi.aiven.PgDatabaseArgs;
+ * import com.pulumi.aiven.PgUser;
+ * import com.pulumi.aiven.PgUserArgs;
  * import com.pulumi.aiven.ConnectionPool;
  * import com.pulumi.aiven.ConnectionPoolArgs;
  * import java.util.ArrayList;
@@ -44,14 +50,32 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new ConnectionPool("example", ConnectionPoolArgs.builder()
+ *         var examplePostgres = new Pg("examplePostgres", PgArgs.builder()
  *             .project("my-project")
- *             .serviceName("foo")
- *             .poolName("mypool-x-y-z")
+ *             .plan("startup-4")
+ *             .serviceName("example-postgres-service")
+ *             .build());
+ * 
+ *         var examplePgDatabase = new PgDatabase("examplePgDatabase", PgDatabaseArgs.builder()
+ *             .project(examplePostgres.project())
+ *             .serviceName(examplePostgres.serviceName())
  *             .databaseName("testdb")
+ *             .build());
+ * 
+ *         var examplePgUser = new PgUser("examplePgUser", PgUserArgs.builder()
+ *             .project(examplePostgres.project())
+ *             .serviceName(examplePostgres.serviceName())
+ *             .username("testuser")
+ *             .build());
+ * 
+ *         var example = new ConnectionPool("example", ConnectionPoolArgs.builder()
+ *             .project(examplePostgres.project())
+ *             .serviceName(examplePostgres.serviceName())
+ *             .poolName("mypool-x-y-z")
+ *             .databaseName(examplePgDatabase.databaseName())
  *             .poolMode("transaction")
  *             .poolSize(10)
- *             .username("testuser")
+ *             .username(examplePgUser.username())
  *             .build());
  * 
  *     }

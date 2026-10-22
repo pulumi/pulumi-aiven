@@ -22,9 +22,14 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var exampleOrganization = new Aiven.Organization("example", new()
+    ///     {
+    ///         Name = "Aiven Ltd",
+    ///     });
+    /// 
     ///     var example = new Aiven.OrganizationVpc("example", new()
     ///     {
-    ///         OrganizationId = "org1a23f456789",
+    ///         OrganizationId = exampleOrganization.Id,
     ///         CloudName = "aws-eu-west-1",
     ///         NetworkCidr = "10.0.0.0/24",
     ///         DisplayName = "My organization VPC",

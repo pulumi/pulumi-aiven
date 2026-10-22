@@ -29,6 +29,19 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.aiven.Organization;
+ * import com.pulumi.aiven.OrganizationArgs;
+ * import com.pulumi.aiven.OrganizationAddress;
+ * import com.pulumi.aiven.OrganizationAddressArgs;
+ * import com.pulumi.aiven.OrganizationBillingGroup;
+ * import com.pulumi.aiven.OrganizationBillingGroupArgs;
+ * import com.pulumi.aiven.inputs.OrganizationBillingGroupPaymentMethodArgs;
+ * import com.pulumi.aiven.inputs.OrganizationBillingGroupBillingContactEmailArgs;
+ * import com.pulumi.aiven.inputs.OrganizationBillingGroupBillingEmailArgs;
+ * import com.pulumi.aiven.OrganizationProject;
+ * import com.pulumi.aiven.OrganizationProjectArgs;
+ * import com.pulumi.aiven.ProjectVpc;
+ * import com.pulumi.aiven.ProjectVpcArgs;
  * import com.pulumi.aiven.TransitGatewayVpcAttachment;
  * import com.pulumi.aiven.TransitGatewayVpcAttachmentArgs;
  * import java.util.ArrayList;
@@ -38,22 +51,66 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
+ *         var exampleOrganization = new Organization("exampleOrganization", OrganizationArgs.builder()
+ *             .name("Aiven Ltd")
+ *             .build());
+ * 
+ *         var exampleOrganizationAddress = new OrganizationAddress("exampleOrganizationAddress", OrganizationAddressArgs.builder()
+ *             .organizationId(exampleOrganization.id())
+ *             .addressLines(            
+ *                 "Street 1",
+ *                 "Street 2")
+ *             .city("Helsinki")
+ *             .countryCode("FI")
+ *             .name("Aiven Oy")
+ *             .build());
+ * 
+ *         var exampleOrganizationBillingGroup = new OrganizationBillingGroup("exampleOrganizationBillingGroup", OrganizationBillingGroupArgs.builder()
+ *             .paymentMethod(OrganizationBillingGroupPaymentMethodArgs.builder()
+ *                 .paymentMethodId("pm4b1ff1ceeaa")
+ *                 .paymentMethodType("credit_card")
+ *                 .build())
+ *             .billingContactEmails(OrganizationBillingGroupBillingContactEmailArgs.builder()
+ *                 .email("jane}{@literal @}{@code example.com")
+ *                 .build())
+ *             .billingEmails(OrganizationBillingGroupBillingEmailArgs.builder()
+ *                 .email("jane}{@literal @}{@code example.com")
+ *                 .build())
+ *             .organizationId(exampleOrganization.id())
+ *             .billingAddressId(exampleOrganizationAddress.addressId())
+ *             .shippingAddressId(exampleOrganizationAddress.addressId())
+ *             .billingGroupName("Default billing group for the organization")
+ *             .build());
+ * 
+ *         var exampleOrganizationProject = new OrganizationProject("exampleOrganizationProject", OrganizationProjectArgs.builder()
+ *             .organizationId(exampleOrganization.id())
+ *             .projectId("project-1")
+ *             .billingGroupId(exampleOrganizationBillingGroup.billingGroupId())
+ *             .parentId(exampleOrganization.id())
+ *             .build());
+ * 
+ *         var exampleProjectVpc = new ProjectVpc("exampleProjectVpc", ProjectVpcArgs.builder()
+ *             .project(exampleOrganizationProject.projectId())
+ *             .cloudName("aws-eu-central-1")
+ *             .networkCidr("192.168.6.0/24")
+ *             .build());
+ * 
  *         var example = new TransitGatewayVpcAttachment("example", TransitGatewayVpcAttachmentArgs.builder()
- *             .vpcId("example-project/example-vpc")
+ *             .vpcId(exampleProjectVpc.id())
  *             .peerCloudAccount("123456789012")
  *             .peerVpc("tgw-0123456789abcdef0")
  *             .peerRegion("us-east-1")
  *             .userPeerNetworkCidrs("192.168.6.0/24")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

@@ -31,8 +31,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewUpgradeStep(ctx, "example", &aiven.UpgradeStepArgs{
-//				OrganizationId:          pulumi.String("org1a23f456789"),
+//			exampleOrganization, err := aiven.NewOrganization(ctx, "example", &aiven.OrganizationArgs{
+//				Name: pulumi.String("Aiven Ltd"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = aiven.NewUpgradeStep(ctx, "example", &aiven.UpgradeStepArgs{
+//				OrganizationId:          exampleOrganization.ID().ToIDOutput().ToStringOutput(),
 //				DestinationProjectName:  pulumi.String("prod-project"),
 //				DestinationServiceName:  pulumi.String("pg-prod"),
 //				SourceProjectName:       pulumi.String("dev-project"),

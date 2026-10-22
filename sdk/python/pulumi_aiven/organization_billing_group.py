@@ -399,6 +399,16 @@ class OrganizationBillingGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
+        example_organization = aiven.Organization("example", name="Aiven Ltd")
+        example_organization_address = aiven.OrganizationAddress("example",
+            organization_id=example_organization.id,
+            address_lines=[
+                "Street 1",
+                "Street 2",
+            ],
+            city="Helsinki",
+            country_code="FI",
+            name="Aiven Oy")
         example = aiven.OrganizationBillingGroup("example",
             payment_method={
                 "payment_method_id": "pm4b1ff1ceeaa",
@@ -410,9 +420,9 @@ class OrganizationBillingGroup(pulumi.CustomResource):
             billing_emails=[{
                 "email": "jane@example.com",
             }],
-            organization_id="org1a23f456789",
-            billing_address_id="addr4b1ff1ceeaa",
-            shipping_address_id="addr4b1ff1ceeaa",
+            organization_id=example_organization.id,
+            billing_address_id=example_organization_address.address_id,
+            shipping_address_id=example_organization_address.address_id,
             billing_group_name="Default billing group for the organization",
             vat_id="FI12345678",
             custom_invoice_text="Extra billing text")
@@ -452,6 +462,16 @@ class OrganizationBillingGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
+        example_organization = aiven.Organization("example", name="Aiven Ltd")
+        example_organization_address = aiven.OrganizationAddress("example",
+            organization_id=example_organization.id,
+            address_lines=[
+                "Street 1",
+                "Street 2",
+            ],
+            city="Helsinki",
+            country_code="FI",
+            name="Aiven Oy")
         example = aiven.OrganizationBillingGroup("example",
             payment_method={
                 "payment_method_id": "pm4b1ff1ceeaa",
@@ -463,9 +483,9 @@ class OrganizationBillingGroup(pulumi.CustomResource):
             billing_emails=[{
                 "email": "jane@example.com",
             }],
-            organization_id="org1a23f456789",
-            billing_address_id="addr4b1ff1ceeaa",
-            shipping_address_id="addr4b1ff1ceeaa",
+            organization_id=example_organization.id,
+            billing_address_id=example_organization_address.address_id,
+            shipping_address_id=example_organization_address.address_id,
             billing_group_name="Default billing group for the organization",
             vat_id="FI12345678",
             custom_invoice_text="Extra billing text")

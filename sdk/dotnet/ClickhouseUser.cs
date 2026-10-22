@@ -22,10 +22,17 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Aiven.ClickhouseUser("example", new()
+    ///     var exampleClickhouse = new Aiven.Clickhouse("example_clickhouse", new()
     ///     {
     ///         Project = "my-project",
-    ///         ServiceName = "my-clickhouse",
+    ///         Plan = "business-4",
+    ///         ServiceName = "example-clickhouse-service",
+    ///     });
+    /// 
+    ///     var example = new Aiven.ClickhouseUser("example", new()
+    ///     {
+    ///         Project = exampleClickhouse.Project,
+    ///         ServiceName = exampleClickhouse.ServiceName,
     ///         Username = "alice",
     ///         PasswordWo = "password123",
     ///         PasswordWoVersion = 1,

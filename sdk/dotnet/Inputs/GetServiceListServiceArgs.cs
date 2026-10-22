@@ -43,6 +43,12 @@ namespace Pulumi.Aiven.Inputs
         public Input<int> DiskSpaceMb { get; set; } = null!;
 
         /// <summary>
+        /// Timestamp when the service was first used (ISO 8601), null if it has not been used yet.
+        /// </summary>
+        [Input("firstUseTime", required: true)]
+        public Input<string> FirstUseTime { get; set; } = null!;
+
+        /// <summary>
         /// True when the service uses a cluster plan with dedicated node groups.
         /// </summary>
         [Input("isClusterPlan", required: true)]

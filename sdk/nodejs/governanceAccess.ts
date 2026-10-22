@@ -18,6 +18,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
+ * const exampleOrganization = new aiven.Organization("example", {name: "Aiven Ltd"});
  * const example = new aiven.GovernanceAccess("example", {
  *     accessData: {
  *         acls: [{
@@ -31,7 +32,7 @@ import * as utilities from "./utilities";
  *         serviceName: "service-1",
  *         username: "api3",
  *     },
- *     organizationId: "org1a23f456789",
+ *     organizationId: exampleOrganization.id,
  *     accessName: "My Access",
  *     accessType: "KAFKA",
  *     ownerUserGroupId: "ug22ba494e096",

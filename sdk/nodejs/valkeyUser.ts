@@ -15,9 +15,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const example = new aiven.ValkeyUser("example", {
+ * const exampleValkey = new aiven.Valkey("example_valkey", {
  *     project: "my-project",
- *     serviceName: "my-valkey",
+ *     plan: "startup-4",
+ *     serviceName: "example-valkey-service",
+ * });
+ * const example = new aiven.ValkeyUser("example", {
+ *     project: exampleValkey.project,
+ *     serviceName: exampleValkey.serviceName,
  *     username: "testuser",
  *     passwordWo: "password123",
  *     passwordWoVersion: 1,

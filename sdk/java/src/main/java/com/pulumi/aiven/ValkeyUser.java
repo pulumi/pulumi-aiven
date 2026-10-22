@@ -29,6 +29,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.aiven.Valkey;
+ * import com.pulumi.aiven.ValkeyArgs;
  * import com.pulumi.aiven.ValkeyUser;
  * import com.pulumi.aiven.ValkeyUserArgs;
  * import java.util.ArrayList;
@@ -44,9 +46,15 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         var example = new ValkeyUser("example", ValkeyUserArgs.builder()
+ *         var exampleValkey = new Valkey("exampleValkey", ValkeyArgs.builder()
  *             .project("my-project")
- *             .serviceName("my-valkey")
+ *             .plan("startup-4")
+ *             .serviceName("example-valkey-service")
+ *             .build());
+ * 
+ *         var example = new ValkeyUser("example", ValkeyUserArgs.builder()
+ *             .project(exampleValkey.project())
+ *             .serviceName(exampleValkey.serviceName())
  *             .username("testuser")
  *             .passwordWo("password123")
  *             .passwordWoVersion(1)

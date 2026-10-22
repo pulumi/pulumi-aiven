@@ -29,10 +29,32 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var exampleOrganization = new Aiven.Organization("example", new()
+    ///     {
+    ///         Name = "Aiven Ltd",
+    ///     });
+    /// 
+    ///     var exampleByocAwsEntity = new Aiven.ByocAwsEntity("example", new()
+    ///     {
+    ///         OrganizationId = exampleOrganization.Id,
+    ///         CloudProvider = "aws",
+    ///         CloudRegion = "eu-west-1",
+    ///         DeploymentModel = "standard",
+    ///         DisplayName = "byoc-cloud-prod-eu-west-1",
+    ///         ReservedCidr = "192.168.6.0/24",
+    ///     });
+    /// 
+    ///     var exampleByocAwsProvision = new Aiven.ByocAwsProvision("example", new()
+    ///     {
+    ///         OrganizationId = exampleOrganization.Id,
+    ///         CustomCloudEnvironmentId = exampleByocAwsEntity.CustomCloudEnvironmentId,
+    ///         AwsIamRoleArn = "arn:aws:iam::012345678901:root",
+    ///     });
+    /// 
     ///     var example = new Aiven.ByocPermissions("example", new()
     ///     {
-    ///         OrganizationId = "org1a23f456789",
-    ///         CustomCloudEnvironmentId = "1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+    ///         OrganizationId = exampleOrganization.Id,
+    ///         CustomCloudEnvironmentId = exampleByocAwsProvision.CustomCloudEnvironmentId,
     ///         Accounts = new[]
     ///         {
     ///             "a22ba494e096",

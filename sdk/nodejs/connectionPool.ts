@@ -15,14 +15,29 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const example = new aiven.ConnectionPool("example", {
+ * const examplePostgres = new aiven.Pg("example_postgres", {
  *     project: "my-project",
- *     serviceName: "foo",
- *     poolName: "mypool-x-y-z",
+ *     plan: "startup-4",
+ *     serviceName: "example-postgres-service",
+ * });
+ * const examplePgDatabase = new aiven.PgDatabase("example", {
+ *     project: examplePostgres.project,
+ *     serviceName: examplePostgres.serviceName,
  *     databaseName: "testdb",
+ * });
+ * const examplePgUser = new aiven.PgUser("example", {
+ *     project: examplePostgres.project,
+ *     serviceName: examplePostgres.serviceName,
+ *     username: "testuser",
+ * });
+ * const example = new aiven.ConnectionPool("example", {
+ *     project: examplePostgres.project,
+ *     serviceName: examplePostgres.serviceName,
+ *     poolName: "mypool-x-y-z",
+ *     databaseName: examplePgDatabase.databaseName,
  *     poolMode: "transaction",
  *     poolSize: 10,
- *     username: "testuser",
+ *     username: examplePgUser.username,
  * });
  * ```
  *

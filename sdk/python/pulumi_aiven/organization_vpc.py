@@ -270,8 +270,9 @@ class OrganizationVpc(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
+        example_organization = aiven.Organization("example", name="Aiven Ltd")
         example = aiven.OrganizationVpc("example",
-            organization_id="org1a23f456789",
+            organization_id=example_organization.id,
             cloud_name="aws-eu-west-1",
             network_cidr="10.0.0.0/24",
             display_name="My organization VPC")
@@ -306,8 +307,9 @@ class OrganizationVpc(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
+        example_organization = aiven.Organization("example", name="Aiven Ltd")
         example = aiven.OrganizationVpc("example",
-            organization_id="org1a23f456789",
+            organization_id=example_organization.id,
             cloud_name="aws-eu-west-1",
             network_cidr="10.0.0.0/24",
             display_name="My organization VPC")

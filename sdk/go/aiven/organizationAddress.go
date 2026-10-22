@@ -28,8 +28,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewOrganizationAddress(ctx, "example", &aiven.OrganizationAddressArgs{
-//				OrganizationId: pulumi.String("org1a23f456789"),
+//			exampleOrganization, err := aiven.NewOrganization(ctx, "example", &aiven.OrganizationArgs{
+//				Name: pulumi.String("Aiven Ltd"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = aiven.NewOrganizationAddress(ctx, "example", &aiven.OrganizationAddressArgs{
+//				OrganizationId: exampleOrganization.ID().ToIDOutput().ToStringOutput(),
 //				AddressLines: pulumi.StringArray{
 //					pulumi.String("Street 1"),
 //					pulumi.String("Street 2"),

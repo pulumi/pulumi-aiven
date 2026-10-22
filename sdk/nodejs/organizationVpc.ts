@@ -15,8 +15,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
+ * const exampleOrganization = new aiven.Organization("example", {name: "Aiven Ltd"});
  * const example = new aiven.OrganizationVpc("example", {
- *     organizationId: "org1a23f456789",
+ *     organizationId: exampleOrganization.id,
  *     cloudName: "aws-eu-west-1",
  *     networkCidr: "10.0.0.0/24",
  *     displayName: "My organization VPC",

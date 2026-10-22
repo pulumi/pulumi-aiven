@@ -125,6 +125,7 @@ from .grafana import *
 from .kafka import *
 from .kafka_acl import *
 from .kafka_connect import *
+from .kafka_connect_custom_plugin_file import *
 from .kafka_connector import *
 from .kafka_mirror_maker import *
 from .kafka_native_acl import *
@@ -502,6 +503,14 @@ _utilities.register(
   "fqn": "pulumi_aiven",
   "classes": {
    "aiven:index/kafkaConnect:KafkaConnect": "KafkaConnect"
+  }
+ },
+ {
+  "pkg": "aiven",
+  "mod": "index/kafkaConnectCustomPluginFile",
+  "fqn": "pulumi_aiven",
+  "classes": {
+   "aiven:index/kafkaConnectCustomPluginFile:KafkaConnectCustomPluginFile": "KafkaConnectCustomPluginFile"
   }
  },
  {

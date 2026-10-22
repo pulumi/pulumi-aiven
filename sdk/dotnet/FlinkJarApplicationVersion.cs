@@ -25,11 +25,25 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Aiven.FlinkJarApplicationVersion("example", new()
+    ///     var exampleFlink = new Aiven.Flink("example_flink", new()
     ///     {
     ///         Project = "my-project",
-    ///         ServiceName = "my-application",
-    ///         ApplicationId = "foo",
+    ///         Plan = "business-4",
+    ///         ServiceName = "example-flink-service",
+    ///     });
+    /// 
+    ///     var exampleFlinkJarApplication = new Aiven.FlinkJarApplication("example", new()
+    ///     {
+    ///         Project = exampleFlink.Project,
+    ///         ServiceName = exampleFlink.ServiceName,
+    ///         Name = "TestJob",
+    ///     });
+    /// 
+    ///     var example = new Aiven.FlinkJarApplicationVersion("example", new()
+    ///     {
+    ///         Project = exampleFlink.Project,
+    ///         ServiceName = exampleFlink.ServiceName,
+    ///         ApplicationId = exampleFlinkJarApplication.ApplicationId,
     ///         Source = "./example.jar",
     ///     });
     /// 
@@ -76,6 +90,12 @@ namespace Pulumi.Aiven
         public Output<ImmutableArray<Outputs.FlinkJarApplicationVersionFileInfo>> FileInfos { get; private set; } = null!;
 
         /// <summary>
+        /// The sha256 checksum of the uploaded jar file.
+        /// </summary>
+        [Output("fileSha256")]
+        public Output<string> FileSha256 { get; private set; } = null!;
+
+        /// <summary>
         /// Project name. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("project")]
@@ -92,12 +112,6 @@ namespace Pulumi.Aiven
         /// </summary>
         [Output("source")]
         public Output<string> Source { get; private set; } = null!;
-
-        /// <summary>
-        /// The sha256 checksum of the jar file to upload.
-        /// </summary>
-        [Output("sourceChecksum")]
-        public Output<string> SourceChecksum { get; private set; } = null!;
 
         [Output("timeouts")]
         public Output<Outputs.FlinkJarApplicationVersionTimeouts?> Timeouts { get; private set; } = null!;
@@ -226,6 +240,12 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
+        /// The sha256 checksum of the uploaded jar file.
+        /// </summary>
+        [Input("fileSha256")]
+        public Input<string>? FileSha256 { get; set; }
+
+        /// <summary>
         /// Project name. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project")]
@@ -242,12 +262,6 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("source")]
         public Input<string>? Source { get; set; }
-
-        /// <summary>
-        /// The sha256 checksum of the jar file to upload.
-        /// </summary>
-        [Input("sourceChecksum")]
-        public Input<string>? SourceChecksum { get; set; }
 
         [Input("timeouts")]
         public Input<Inputs.FlinkJarApplicationVersionTimeoutsGetArgs>? Timeouts { get; set; }

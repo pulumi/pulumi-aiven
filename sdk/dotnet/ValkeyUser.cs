@@ -22,10 +22,17 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Aiven.ValkeyUser("example", new()
+    ///     var exampleValkey = new Aiven.Valkey("example_valkey", new()
     ///     {
     ///         Project = "my-project",
-    ///         ServiceName = "my-valkey",
+    ///         Plan = "startup-4",
+    ///         ServiceName = "example-valkey-service",
+    ///     });
+    /// 
+    ///     var example = new Aiven.ValkeyUser("example", new()
+    ///     {
+    ///         Project = exampleValkey.Project,
+    ///         ServiceName = exampleValkey.ServiceName,
     ///         Username = "testuser",
     ///         PasswordWo = "password123",
     ///         PasswordWoVersion = 1,

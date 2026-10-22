@@ -35,7 +35,7 @@ class OrganizationProjectArgs:
         :param pulumi.Input[_builtins.str] billing_group_id: Billing group ID to assign to the project. It's required when moving projects between organizations. Minimum length: `1`.
         :param pulumi.Input[_builtins.str] organization_id: ID of an organization. Maximum length: `36`.
         :param pulumi.Input[_builtins.str] parent_id: Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.
-        :param pulumi.Input[_builtins.str] project_id: The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It's recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] project_id: The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It's recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource. Maximum length: `63`. Changing this property forces recreation of the resource.
         :param pulumi.Input[_builtins.int] base_port: Valid port number (10000-30000) to use as a base for service port allocation. Value must be between `10000` and `30000`.
         :param pulumi.Input[Sequence[pulumi.Input['OrganizationProjectTagArgs']]] tags: Tags are key-value pairs that allow you to categorize projects.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] technical_emails: The email addresses for [project contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this project and its services. You can also set email contacts at the service level. It's good practice to keep these up-to-date to be aware of any potential issues with your project.
@@ -93,7 +93,7 @@ class OrganizationProjectArgs:
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It's recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource. Changing this property forces recreation of the resource.
+        The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It's recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource. Maximum length: `63`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project_id")
 
@@ -167,7 +167,7 @@ class _OrganizationProjectState:
         :param pulumi.Input[_builtins.str] ca_cert: PEM encoded certificate.
         :param pulumi.Input[_builtins.str] organization_id: ID of an organization. Maximum length: `36`.
         :param pulumi.Input[_builtins.str] parent_id: Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.
-        :param pulumi.Input[_builtins.str] project_id: The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It's recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] project_id: The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It's recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource. Maximum length: `63`. Changing this property forces recreation of the resource.
         :param pulumi.Input[Sequence[pulumi.Input['OrganizationProjectTagArgs']]] tags: Tags are key-value pairs that allow you to categorize projects.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] technical_emails: The email addresses for [project contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this project and its services. You can also set email contacts at the service level. It's good practice to keep these up-to-date to be aware of any potential issues with your project.
         """
@@ -254,7 +254,7 @@ class _OrganizationProjectState:
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It's recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource. Changing this property forces recreation of the resource.
+        The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It's recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource. Maximum length: `63`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project_id")
 
@@ -320,15 +320,40 @@ class OrganizationProject(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
+        example_organization = aiven.Organization("example", name="Aiven Ltd")
+        example_organization_address = aiven.OrganizationAddress("example",
+            organization_id=example_organization.id,
+            address_lines=[
+                "Street 1",
+                "Street 2",
+            ],
+            city="Helsinki",
+            country_code="FI",
+            name="Aiven Oy")
+        example_organization_billing_group = aiven.OrganizationBillingGroup("example",
+            payment_method={
+                "payment_method_id": "pm4b1ff1ceeaa",
+                "payment_method_type": "credit_card",
+            },
+            billing_contact_emails=[{
+                "email": "jane@example.com",
+            }],
+            billing_emails=[{
+                "email": "jane@example.com",
+            }],
+            organization_id=example_organization.id,
+            billing_address_id=example_organization_address.address_id,
+            shipping_address_id=example_organization_address.address_id,
+            billing_group_name="Default billing group for the organization")
         example = aiven.OrganizationProject("example",
             tags=[{
                 "key": "foo",
                 "value": "foo",
             }],
-            organization_id="org1234abcd",
+            organization_id=example_organization.id,
             project_id="project-1",
-            billing_group_id="721bf796-1d89-402d-9195-425a23c4efdc",
-            parent_id="a3fd7a594e01",
+            billing_group_id=example_organization_billing_group.billing_group_id,
+            parent_id=example_organization.id,
             base_port=10000,
             technical_emails=["foo@example.com"])
         ```
@@ -346,7 +371,7 @@ class OrganizationProject(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] billing_group_id: Billing group ID to assign to the project. It's required when moving projects between organizations. Minimum length: `1`.
         :param pulumi.Input[_builtins.str] organization_id: ID of an organization. Maximum length: `36`.
         :param pulumi.Input[_builtins.str] parent_id: Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.
-        :param pulumi.Input[_builtins.str] project_id: The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It's recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] project_id: The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It's recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource. Maximum length: `63`. Changing this property forces recreation of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OrganizationProjectTagArgs', 'OrganizationProjectTagArgsDict', 'outputs.OrganizationProjectTag']]]] tags: Tags are key-value pairs that allow you to categorize projects.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] technical_emails: The email addresses for [project contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this project and its services. You can also set email contacts at the service level. It's good practice to keep these up-to-date to be aware of any potential issues with your project.
         """
@@ -365,15 +390,40 @@ class OrganizationProject(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
+        example_organization = aiven.Organization("example", name="Aiven Ltd")
+        example_organization_address = aiven.OrganizationAddress("example",
+            organization_id=example_organization.id,
+            address_lines=[
+                "Street 1",
+                "Street 2",
+            ],
+            city="Helsinki",
+            country_code="FI",
+            name="Aiven Oy")
+        example_organization_billing_group = aiven.OrganizationBillingGroup("example",
+            payment_method={
+                "payment_method_id": "pm4b1ff1ceeaa",
+                "payment_method_type": "credit_card",
+            },
+            billing_contact_emails=[{
+                "email": "jane@example.com",
+            }],
+            billing_emails=[{
+                "email": "jane@example.com",
+            }],
+            organization_id=example_organization.id,
+            billing_address_id=example_organization_address.address_id,
+            shipping_address_id=example_organization_address.address_id,
+            billing_group_name="Default billing group for the organization")
         example = aiven.OrganizationProject("example",
             tags=[{
                 "key": "foo",
                 "value": "foo",
             }],
-            organization_id="org1234abcd",
+            organization_id=example_organization.id,
             project_id="project-1",
-            billing_group_id="721bf796-1d89-402d-9195-425a23c4efdc",
-            parent_id="a3fd7a594e01",
+            billing_group_id=example_organization_billing_group.billing_group_id,
+            parent_id=example_organization.id,
             base_port=10000,
             technical_emails=["foo@example.com"])
         ```
@@ -467,7 +517,7 @@ class OrganizationProject(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] ca_cert: PEM encoded certificate.
         :param pulumi.Input[_builtins.str] organization_id: ID of an organization. Maximum length: `36`.
         :param pulumi.Input[_builtins.str] parent_id: Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.
-        :param pulumi.Input[_builtins.str] project_id: The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It's recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource. Changing this property forces recreation of the resource.
+        :param pulumi.Input[_builtins.str] project_id: The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It's recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource. Maximum length: `63`. Changing this property forces recreation of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OrganizationProjectTagArgs', 'OrganizationProjectTagArgsDict', 'outputs.OrganizationProjectTag']]]] tags: Tags are key-value pairs that allow you to categorize projects.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] technical_emails: The email addresses for [project contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this project and its services. You can also set email contacts at the service level. It's good practice to keep these up-to-date to be aware of any potential issues with your project.
         """
@@ -530,7 +580,7 @@ class OrganizationProject(pulumi.CustomResource):
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It's recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource. Changing this property forces recreation of the resource.
+        The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It's recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource. Maximum length: `63`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project_id")
 

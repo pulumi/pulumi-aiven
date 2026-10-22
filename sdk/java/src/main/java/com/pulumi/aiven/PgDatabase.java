@@ -28,6 +28,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.aiven.Pg;
+ * import com.pulumi.aiven.PgArgs;
  * import com.pulumi.aiven.PgDatabase;
  * import com.pulumi.aiven.PgDatabaseArgs;
  * import java.util.ArrayList;
@@ -43,9 +45,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new PgDatabase("example", PgDatabaseArgs.builder()
+ *         var examplePostgres = new Pg("examplePostgres", PgArgs.builder()
  *             .project("my-project")
- *             .serviceName("my-pg")
+ *             .plan("startup-4")
+ *             .serviceName("example-postgres-service")
+ *             .build());
+ * 
+ *         var example = new PgDatabase("example", PgDatabaseArgs.builder()
+ *             .project(examplePostgres.project())
+ *             .serviceName(examplePostgres.serviceName())
  *             .databaseName("testdb")
  *             .lcCollate("en_US.UTF-8")
  *             .lcCtype("en_US.UTF-8")

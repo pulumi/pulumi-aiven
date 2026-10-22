@@ -352,8 +352,9 @@ class OrganizationAddress(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
+        example_organization = aiven.Organization("example", name="Aiven Ltd")
         example = aiven.OrganizationAddress("example",
-            organization_id="org1a23f456789",
+            organization_id=example_organization.id,
             address_lines=[
                 "Street 1",
                 "Street 2",
@@ -397,8 +398,9 @@ class OrganizationAddress(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
+        example_organization = aiven.Organization("example", name="Aiven Ltd")
         example = aiven.OrganizationAddress("example",
-            organization_id="org1a23f456789",
+            organization_id=example_organization.id,
             address_lines=[
                 "Street 1",
                 "Street 2",

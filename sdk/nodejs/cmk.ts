@@ -75,7 +75,7 @@ export class Cmk extends pulumi.CustomResource {
     /**
      * Mark the created CMK as default for all newly created services.
      */
-    declare public readonly defaultCmk: pulumi.Output<boolean | undefined>;
+    declare public readonly defaultCmk: pulumi.Output<boolean>;
     /**
      * Project name. Changing this property forces recreation of the resource.
      */

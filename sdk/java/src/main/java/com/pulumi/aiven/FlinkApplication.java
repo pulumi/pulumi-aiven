@@ -27,6 +27,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.aiven.Flink;
+ * import com.pulumi.aiven.FlinkArgs;
  * import com.pulumi.aiven.FlinkApplication;
  * import com.pulumi.aiven.FlinkApplicationArgs;
  * import java.util.ArrayList;
@@ -42,9 +44,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new FlinkApplication("example", FlinkApplicationArgs.builder()
+ *         var exampleFlink = new Flink("exampleFlink", FlinkArgs.builder()
  *             .project("my-project")
- *             .serviceName("my-application")
+ *             .plan("business-4")
+ *             .serviceName("example-flink-service")
+ *             .build());
+ * 
+ *         var example = new FlinkApplication("example", FlinkApplicationArgs.builder()
+ *             .project(exampleFlink.project())
+ *             .serviceName(exampleFlink.serviceName())
  *             .name("TestJob")
  *             .build());
  * 

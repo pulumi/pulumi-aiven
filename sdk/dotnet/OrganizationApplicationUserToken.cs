@@ -22,10 +22,16 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Aiven.OrganizationApplicationUserToken("example", new()
+    ///     var exampleOrganizationApplicationUser = new Aiven.OrganizationApplicationUser("example", new()
     ///     {
     ///         OrganizationId = "org1a23f456789",
-    ///         UserId = "foo",
+    ///         Name = "devops app user",
+    ///     });
+    /// 
+    ///     var example = new Aiven.OrganizationApplicationUserToken("example", new()
+    ///     {
+    ///         OrganizationId = exampleOrganizationApplicationUser.OrganizationId,
+    ///         UserId = exampleOrganizationApplicationUser.UserId,
     ///         Description = "Integration client Alpha",
     ///         ExtendWhenUsed = false,
     ///         IpAllowlists = new[]

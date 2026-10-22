@@ -287,8 +287,42 @@ class TransitGatewayVpcAttachment(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
+        example_organization = aiven.Organization("example", name="Aiven Ltd")
+        example_organization_address = aiven.OrganizationAddress("example",
+            organization_id=example_organization.id,
+            address_lines=[
+                "Street 1",
+                "Street 2",
+            ],
+            city="Helsinki",
+            country_code="FI",
+            name="Aiven Oy")
+        example_organization_billing_group = aiven.OrganizationBillingGroup("example",
+            payment_method={
+                "payment_method_id": "pm4b1ff1ceeaa",
+                "payment_method_type": "credit_card",
+            },
+            billing_contact_emails=[{
+                "email": "jane@example.com",
+            }],
+            billing_emails=[{
+                "email": "jane@example.com",
+            }],
+            organization_id=example_organization.id,
+            billing_address_id=example_organization_address.address_id,
+            shipping_address_id=example_organization_address.address_id,
+            billing_group_name="Default billing group for the organization")
+        example_organization_project = aiven.OrganizationProject("example",
+            organization_id=example_organization.id,
+            project_id="project-1",
+            billing_group_id=example_organization_billing_group.billing_group_id,
+            parent_id=example_organization.id)
+        example_project_vpc = aiven.ProjectVpc("example",
+            project=example_organization_project.project_id,
+            cloud_name="aws-eu-central-1",
+            network_cidr="192.168.6.0/24")
         example = aiven.TransitGatewayVpcAttachment("example",
-            vpc_id="example-project/example-vpc",
+            vpc_id=example_project_vpc.id,
             peer_cloud_account="123456789012",
             peer_vpc="tgw-0123456789abcdef0",
             peer_region="us-east-1",
@@ -328,8 +362,42 @@ class TransitGatewayVpcAttachment(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
+        example_organization = aiven.Organization("example", name="Aiven Ltd")
+        example_organization_address = aiven.OrganizationAddress("example",
+            organization_id=example_organization.id,
+            address_lines=[
+                "Street 1",
+                "Street 2",
+            ],
+            city="Helsinki",
+            country_code="FI",
+            name="Aiven Oy")
+        example_organization_billing_group = aiven.OrganizationBillingGroup("example",
+            payment_method={
+                "payment_method_id": "pm4b1ff1ceeaa",
+                "payment_method_type": "credit_card",
+            },
+            billing_contact_emails=[{
+                "email": "jane@example.com",
+            }],
+            billing_emails=[{
+                "email": "jane@example.com",
+            }],
+            organization_id=example_organization.id,
+            billing_address_id=example_organization_address.address_id,
+            shipping_address_id=example_organization_address.address_id,
+            billing_group_name="Default billing group for the organization")
+        example_organization_project = aiven.OrganizationProject("example",
+            organization_id=example_organization.id,
+            project_id="project-1",
+            billing_group_id=example_organization_billing_group.billing_group_id,
+            parent_id=example_organization.id)
+        example_project_vpc = aiven.ProjectVpc("example",
+            project=example_organization_project.project_id,
+            cloud_name="aws-eu-central-1",
+            network_cidr="192.168.6.0/24")
         example = aiven.TransitGatewayVpcAttachment("example",
-            vpc_id="example-project/example-vpc",
+            vpc_id=example_project_vpc.id,
             peer_cloud_account="123456789012",
             peer_vpc="tgw-0123456789abcdef0",
             peer_region="us-east-1",

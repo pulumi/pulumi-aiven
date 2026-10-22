@@ -24,10 +24,17 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Aiven.KafkaNativeAcl("example", new()
+    ///     var exampleKafka = new Aiven.Kafka("example_kafka", new()
     ///     {
     ///         Project = "my-project",
-    ///         ServiceName = "my-kafka",
+    ///         Plan = "business-4",
+    ///         ServiceName = "example-kafka",
+    ///     });
+    /// 
+    ///     var example = new Aiven.KafkaNativeAcl("example", new()
+    ///     {
+    ///         Project = exampleKafka.Project,
+    ///         ServiceName = exampleKafka.ServiceName,
     ///         Operation = "Read",
     ///         PatternType = "LITERAL",
     ///         PermissionType = "ALLOW",

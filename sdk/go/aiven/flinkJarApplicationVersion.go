@@ -31,10 +31,26 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewFlinkJarApplicationVersion(ctx, "example", &aiven.FlinkJarApplicationVersionArgs{
-//				Project:       pulumi.String("my-project"),
-//				ServiceName:   pulumi.String("my-application"),
-//				ApplicationId: pulumi.String("foo"),
+//			exampleFlink, err := aiven.NewFlink(ctx, "example_flink", &aiven.FlinkArgs{
+//				Project:     pulumi.String("my-project"),
+//				Plan:        pulumi.String("business-4"),
+//				ServiceName: pulumi.String("example-flink-service"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleFlinkJarApplication, err := aiven.NewFlinkJarApplication(ctx, "example", &aiven.FlinkJarApplicationArgs{
+//				Project:     exampleFlink.Project,
+//				ServiceName: exampleFlink.ServiceName,
+//				Name:        pulumi.String("TestJob"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = aiven.NewFlinkJarApplicationVersion(ctx, "example", &aiven.FlinkJarApplicationVersionArgs{
+//				Project:       exampleFlink.Project,
+//				ServiceName:   exampleFlink.ServiceName,
+//				ApplicationId: exampleFlinkJarApplication.ApplicationId,
 //				Source:        pulumi.String("./example.jar"),
 //			})
 //			if err != nil {
@@ -64,15 +80,15 @@ type FlinkJarApplicationVersion struct {
 	CreatedBy pulumi.StringOutput `pulumi:"createdBy"`
 	// Flink JarApplicationVersion FileInfo.
 	FileInfos FlinkJarApplicationVersionFileInfoArrayOutput `pulumi:"fileInfos"`
+	// The sha256 checksum of the uploaded jar file.
+	FileSha256 pulumi.StringOutput `pulumi:"fileSha256"`
 	// Project name. Changing this property forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Service name. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 	// The path to the jar file to upload.
-	Source pulumi.StringOutput `pulumi:"source"`
-	// The sha256 checksum of the jar file to upload.
-	SourceChecksum pulumi.StringOutput                         `pulumi:"sourceChecksum"`
-	Timeouts       FlinkJarApplicationVersionTimeoutsPtrOutput `pulumi:"timeouts"`
+	Source   pulumi.StringOutput                         `pulumi:"source"`
+	Timeouts FlinkJarApplicationVersionTimeoutsPtrOutput `pulumi:"timeouts"`
 	// Version number.
 	Version pulumi.IntOutput `pulumi:"version"`
 }
@@ -129,15 +145,15 @@ type flinkJarApplicationVersionState struct {
 	CreatedBy *string `pulumi:"createdBy"`
 	// Flink JarApplicationVersion FileInfo.
 	FileInfos []FlinkJarApplicationVersionFileInfo `pulumi:"fileInfos"`
+	// The sha256 checksum of the uploaded jar file.
+	FileSha256 *string `pulumi:"fileSha256"`
 	// Project name. Changing this property forces recreation of the resource.
 	Project *string `pulumi:"project"`
 	// Service name. Changing this property forces recreation of the resource.
 	ServiceName *string `pulumi:"serviceName"`
 	// The path to the jar file to upload.
-	Source *string `pulumi:"source"`
-	// The sha256 checksum of the jar file to upload.
-	SourceChecksum *string                             `pulumi:"sourceChecksum"`
-	Timeouts       *FlinkJarApplicationVersionTimeouts `pulumi:"timeouts"`
+	Source   *string                             `pulumi:"source"`
+	Timeouts *FlinkJarApplicationVersionTimeouts `pulumi:"timeouts"`
 	// Version number.
 	Version *int `pulumi:"version"`
 }
@@ -153,15 +169,15 @@ type FlinkJarApplicationVersionState struct {
 	CreatedBy pulumi.StringPtrInput
 	// Flink JarApplicationVersion FileInfo.
 	FileInfos FlinkJarApplicationVersionFileInfoArrayInput
+	// The sha256 checksum of the uploaded jar file.
+	FileSha256 pulumi.StringPtrInput
 	// Project name. Changing this property forces recreation of the resource.
 	Project pulumi.StringPtrInput
 	// Service name. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringPtrInput
 	// The path to the jar file to upload.
-	Source pulumi.StringPtrInput
-	// The sha256 checksum of the jar file to upload.
-	SourceChecksum pulumi.StringPtrInput
-	Timeouts       FlinkJarApplicationVersionTimeoutsPtrInput
+	Source   pulumi.StringPtrInput
+	Timeouts FlinkJarApplicationVersionTimeoutsPtrInput
 	// Version number.
 	Version pulumi.IntPtrInput
 }
@@ -307,6 +323,11 @@ func (o FlinkJarApplicationVersionOutput) FileInfos() FlinkJarApplicationVersion
 	return o.ApplyT(func(v *FlinkJarApplicationVersion) FlinkJarApplicationVersionFileInfoArrayOutput { return v.FileInfos }).(FlinkJarApplicationVersionFileInfoArrayOutput)
 }
 
+// The sha256 checksum of the uploaded jar file.
+func (o FlinkJarApplicationVersionOutput) FileSha256() pulumi.StringOutput {
+	return o.ApplyT(func(v *FlinkJarApplicationVersion) pulumi.StringOutput { return v.FileSha256 }).(pulumi.StringOutput)
+}
+
 // Project name. Changing this property forces recreation of the resource.
 func (o FlinkJarApplicationVersionOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlinkJarApplicationVersion) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
@@ -320,11 +341,6 @@ func (o FlinkJarApplicationVersionOutput) ServiceName() pulumi.StringOutput {
 // The path to the jar file to upload.
 func (o FlinkJarApplicationVersionOutput) Source() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlinkJarApplicationVersion) pulumi.StringOutput { return v.Source }).(pulumi.StringOutput)
-}
-
-// The sha256 checksum of the jar file to upload.
-func (o FlinkJarApplicationVersionOutput) SourceChecksum() pulumi.StringOutput {
-	return o.ApplyT(func(v *FlinkJarApplicationVersion) pulumi.StringOutput { return v.SourceChecksum }).(pulumi.StringOutput)
 }
 
 func (o FlinkJarApplicationVersionOutput) Timeouts() FlinkJarApplicationVersionTimeoutsPtrOutput {

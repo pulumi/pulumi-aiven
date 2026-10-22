@@ -25,6 +25,11 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var exampleOrganization = new Aiven.Organization("example", new()
+    ///     {
+    ///         Name = "Aiven Ltd",
+    ///     });
+    /// 
     ///     var example = new Aiven.ByocAwsEntity("example", new()
     ///     {
     ///         ContactEmails = new[]
@@ -36,7 +41,7 @@ namespace Pulumi.Aiven
     ///                 Role = "admin",
     ///             },
     ///         },
-    ///         OrganizationId = "org1a23f456789",
+    ///         OrganizationId = exampleOrganization.Id,
     ///         CloudProvider = "aws",
     ///         CloudRegion = "eu-west-1",
     ///         DeploymentModel = "standard",

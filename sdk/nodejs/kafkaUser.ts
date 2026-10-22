@@ -15,9 +15,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const example = new aiven.KafkaUser("example", {
+ * const exampleKafka = new aiven.Kafka("example_kafka", {
  *     project: "my-project",
- *     serviceName: "my-kafka",
+ *     plan: "business-4",
+ *     serviceName: "example-kafka",
+ * });
+ * const example = new aiven.KafkaUser("example", {
+ *     project: exampleKafka.project,
+ *     serviceName: exampleKafka.serviceName,
  *     username: "testuser",
  *     passwordWo: "password123",
  *     passwordWoVersion: 1,

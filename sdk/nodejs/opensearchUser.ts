@@ -15,9 +15,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const example = new aiven.OpensearchUser("example", {
+ * const exampleOpensearch = new aiven.OpenSearch("example_opensearch", {
  *     project: "my-project",
- *     serviceName: "my-opensearch",
+ *     plan: "startup-4",
+ *     serviceName: "example-opensearch",
+ * });
+ * const example = new aiven.OpensearchUser("example", {
+ *     project: exampleOpensearch.project,
+ *     serviceName: exampleOpensearch.serviceName,
  *     username: "testuser",
  *     passwordWo: "password123",
  *     passwordWoVersion: 1,

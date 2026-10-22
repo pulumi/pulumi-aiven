@@ -31,7 +31,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewGovernanceAccess(ctx, "example", &aiven.GovernanceAccessArgs{
+//			exampleOrganization, err := aiven.NewOrganization(ctx, "example", &aiven.OrganizationArgs{
+//				Name: pulumi.String("Aiven Ltd"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = aiven.NewGovernanceAccess(ctx, "example", &aiven.GovernanceAccessArgs{
 //				AccessData: &aiven.GovernanceAccessAccessDataArgs{
 //					Acls: aiven.GovernanceAccessAccessDataAclArray{
 //						&aiven.GovernanceAccessAccessDataAclArgs{
@@ -46,7 +52,7 @@ import (
 //					ServiceName: pulumi.String("service-1"),
 //					Username:    pulumi.String("api3"),
 //				},
-//				OrganizationId:   pulumi.String("org1a23f456789"),
+//				OrganizationId:   exampleOrganization.ID().ToIDOutput().ToStringOutput(),
 //				AccessName:       pulumi.String("My Access"),
 //				AccessType:       pulumi.String("KAFKA"),
 //				OwnerUserGroupId: pulumi.String("ug22ba494e096"),
