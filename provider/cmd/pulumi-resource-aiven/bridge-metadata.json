@@ -796,6 +796,15 @@
                     }
                 }
             },
+            "aiven_kafka_connect_custom_plugin_file": {
+                "current": "aiven:index/kafkaConnectCustomPluginFile:KafkaConnectCustomPluginFile",
+                "majorVersion": 6,
+                "fields": {
+                    "plugin_classes": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "aiven_kafka_connector": {
                 "current": "aiven:index/kafkaConnector:KafkaConnector",
                 "majorVersion": 6,
@@ -3851,6 +3860,7 @@
             "aiven_gcp_privatelink": {},
             "aiven_governance_access": {},
             "aiven_kafka_acl": {},
+            "aiven_kafka_connect_custom_plugin_file": {},
             "aiven_kafka_native_acl": {},
             "aiven_kafka_schema_registry_acl": {},
             "aiven_kafka_topic": {},
@@ -3923,6 +3933,7 @@
             "aiven:index/kafka:Kafka": 0,
             "aiven:index/kafkaAcl:KafkaAcl": 1,
             "aiven:index/kafkaConnect:KafkaConnect": 0,
+            "aiven:index/kafkaConnectCustomPluginFile:KafkaConnectCustomPluginFile": 1,
             "aiven:index/kafkaConnector:KafkaConnector": 0,
             "aiven:index/kafkaMirrorMaker:KafkaMirrorMaker": 0,
             "aiven:index/kafkaNativeAcl:KafkaNativeAcl": 1,
