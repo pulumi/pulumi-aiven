@@ -31,6 +31,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.aiven.Organization;
+ * import com.pulumi.aiven.OrganizationArgs;
  * import com.pulumi.aiven.GovernanceAccess;
  * import com.pulumi.aiven.GovernanceAccessArgs;
  * import com.pulumi.aiven.inputs.GovernanceAccessAccessDataArgs;
@@ -48,6 +50,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         var exampleOrganization = new Organization("exampleOrganization", OrganizationArgs.builder()
+ *             .name("Aiven Ltd")
+ *             .build());
+ * 
  *         var example = new GovernanceAccess("example", GovernanceAccessArgs.builder()
  *             .accessData(GovernanceAccessAccessDataArgs.builder()
  *                 .acls(GovernanceAccessAccessDataAclArgs.builder()
@@ -61,7 +67,7 @@ import javax.annotation.Nullable;
  *                 .serviceName("service-1")
  *                 .username("api3")
  *                 .build())
- *             .organizationId("org1a23f456789")
+ *             .organizationId(exampleOrganization.id())
  *             .accessName("My Access")
  *             .accessType("KAFKA")
  *             .ownerUserGroupId("ug22ba494e096")

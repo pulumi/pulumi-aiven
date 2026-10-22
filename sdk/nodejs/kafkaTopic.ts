@@ -15,6 +15,17 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
+ * const exampleKafka = new aiven.Kafka("example_kafka", {
+ *     project: "my-project",
+ *     plan: "business-4",
+ *     serviceName: "example-kafka",
+ * });
+ * const exampleOrganization = new aiven.Organization("example", {name: "Aiven Ltd"});
+ * const exampleOrganizationUserGroup = new aiven.OrganizationUserGroup("example", {
+ *     organizationId: exampleOrganization.id,
+ *     description: "The group of admins for the organization",
+ *     name: "Admin Users",
+ * });
  * const example = new aiven.KafkaTopic("example", {
  *     config: {
  *         cleanupPolicy: "delete",
@@ -52,12 +63,12 @@ import * as utilities from "./utilities";
  *         key: "My-tag_key",
  *         value: "My tag value, value.",
  *     }],
- *     project: "my-project",
- *     serviceName: "my-kafka",
+ *     project: exampleKafka.project,
+ *     serviceName: exampleKafka.serviceName,
  *     topicName: "mytopic",
  *     partitions: 3,
  *     replication: 3,
- *     ownerUserGroupId: "ug22ba494e096",
+ *     ownerUserGroupId: exampleOrganizationUserGroup.groupId,
  *     topicDescription: "Platform events",
  * });
  * ```

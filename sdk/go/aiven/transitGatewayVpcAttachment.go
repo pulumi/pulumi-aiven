@@ -28,8 +28,67 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewTransitGatewayVpcAttachment(ctx, "example", &aiven.TransitGatewayVpcAttachmentArgs{
-//				VpcId:            pulumi.String("example-project/example-vpc"),
+//			exampleOrganization, err := aiven.NewOrganization(ctx, "example", &aiven.OrganizationArgs{
+//				Name: pulumi.String("Aiven Ltd"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleOrganizationAddress, err := aiven.NewOrganizationAddress(ctx, "example", &aiven.OrganizationAddressArgs{
+//				OrganizationId: exampleOrganization.ID().ToIDOutput().ToStringOutput(),
+//				AddressLines: pulumi.StringArray{
+//					pulumi.String("Street 1"),
+//					pulumi.String("Street 2"),
+//				},
+//				City:        pulumi.String("Helsinki"),
+//				CountryCode: pulumi.String("FI"),
+//				Name:        pulumi.String("Aiven Oy"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleOrganizationBillingGroup, err := aiven.NewOrganizationBillingGroup(ctx, "example", &aiven.OrganizationBillingGroupArgs{
+//				PaymentMethod: &aiven.OrganizationBillingGroupPaymentMethodArgs{
+//					PaymentMethodId:   pulumi.String("pm4b1ff1ceeaa"),
+//					PaymentMethodType: pulumi.String("credit_card"),
+//				},
+//				BillingContactEmails: aiven.OrganizationBillingGroupBillingContactEmailArray{
+//					&aiven.OrganizationBillingGroupBillingContactEmailArgs{
+//						Email: pulumi.String("jane@example.com"),
+//					},
+//				},
+//				BillingEmails: aiven.OrganizationBillingGroupBillingEmailArray{
+//					&aiven.OrganizationBillingGroupBillingEmailArgs{
+//						Email: pulumi.String("jane@example.com"),
+//					},
+//				},
+//				OrganizationId:    exampleOrganization.ID().ToIDOutput().ToStringOutput(),
+//				BillingAddressId:  exampleOrganizationAddress.AddressId,
+//				ShippingAddressId: exampleOrganizationAddress.AddressId,
+//				BillingGroupName:  pulumi.String("Default billing group for the organization"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleOrganizationProject, err := aiven.NewOrganizationProject(ctx, "example", &aiven.OrganizationProjectArgs{
+//				OrganizationId: exampleOrganization.ID().ToIDOutput().ToStringOutput(),
+//				ProjectId:      pulumi.String("project-1"),
+//				BillingGroupId: exampleOrganizationBillingGroup.BillingGroupId,
+//				ParentId:       exampleOrganization.ID().ToIDOutput().ToStringOutput(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleProjectVpc, err := aiven.NewProjectVpc(ctx, "example", &aiven.ProjectVpcArgs{
+//				Project:     exampleOrganizationProject.ProjectId,
+//				CloudName:   pulumi.String("aws-eu-central-1"),
+//				NetworkCidr: pulumi.String("192.168.6.0/24"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = aiven.NewTransitGatewayVpcAttachment(ctx, "example", &aiven.TransitGatewayVpcAttachmentArgs{
+//				VpcId:            exampleProjectVpc.ID().ToIDOutput().ToStringOutput(),
 //				PeerCloudAccount: pulumi.String("123456789012"),
 //				PeerVpc:          pulumi.String("tgw-0123456789abcdef0"),
 //				PeerRegion:       pulumi.String("us-east-1"),

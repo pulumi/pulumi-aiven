@@ -15,8 +15,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
+ * const exampleOrganization = new aiven.Organization("example", {name: "Aiven Ltd"});
  * const example = new aiven.OrganizationalUnit("example", {
- *     parentId: "a22ba494e096",
+ *     parentId: exampleOrganization.id,
  *     name: "Aiven Ltd",
  * });
  * ```

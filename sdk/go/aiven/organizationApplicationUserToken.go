@@ -28,9 +28,16 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewOrganizationApplicationUserToken(ctx, "example", &aiven.OrganizationApplicationUserTokenArgs{
+//			exampleOrganizationApplicationUser, err := aiven.NewOrganizationApplicationUser(ctx, "example", &aiven.OrganizationApplicationUserArgs{
 //				OrganizationId: pulumi.String("org1a23f456789"),
-//				UserId:         pulumi.String("foo"),
+//				Name:           pulumi.String("devops app user"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = aiven.NewOrganizationApplicationUserToken(ctx, "example", &aiven.OrganizationApplicationUserTokenArgs{
+//				OrganizationId: exampleOrganizationApplicationUser.OrganizationId,
+//				UserId:         exampleOrganizationApplicationUser.UserId,
 //				Description:    pulumi.String("Integration client Alpha"),
 //				ExtendWhenUsed: pulumi.Bool(false),
 //				IpAllowlists: pulumi.StringArray{

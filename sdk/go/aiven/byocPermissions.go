@@ -35,9 +35,34 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewByocPermissions(ctx, "example", &aiven.ByocPermissionsArgs{
-//				OrganizationId:           pulumi.String("org1a23f456789"),
-//				CustomCloudEnvironmentId: pulumi.String("1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d"),
+//			exampleOrganization, err := aiven.NewOrganization(ctx, "example", &aiven.OrganizationArgs{
+//				Name: pulumi.String("Aiven Ltd"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleByocAwsEntity, err := aiven.NewByocAwsEntity(ctx, "example", &aiven.ByocAwsEntityArgs{
+//				OrganizationId:  exampleOrganization.ID().ToIDOutput().ToStringOutput(),
+//				CloudProvider:   pulumi.String("aws"),
+//				CloudRegion:     pulumi.String("eu-west-1"),
+//				DeploymentModel: pulumi.String("standard"),
+//				DisplayName:     pulumi.String("byoc-cloud-prod-eu-west-1"),
+//				ReservedCidr:    pulumi.String("192.168.6.0/24"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleByocAwsProvision, err := aiven.NewByocAwsProvision(ctx, "example", &aiven.ByocAwsProvisionArgs{
+//				OrganizationId:           exampleOrganization.ID().ToIDOutput().ToStringOutput(),
+//				CustomCloudEnvironmentId: exampleByocAwsEntity.CustomCloudEnvironmentId,
+//				AwsIamRoleArn:            pulumi.String("arn:aws:iam::012345678901:root"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = aiven.NewByocPermissions(ctx, "example", &aiven.ByocPermissionsArgs{
+//				OrganizationId:           exampleOrganization.ID().ToIDOutput().ToStringOutput(),
+//				CustomCloudEnvironmentId: exampleByocAwsProvision.CustomCloudEnvironmentId,
 //				Accounts: pulumi.StringArray{
 //					pulumi.String("a22ba494e096"),
 //					pulumi.String("a441b467e067"),

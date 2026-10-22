@@ -35,6 +35,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.aiven.Organization;
+ * import com.pulumi.aiven.OrganizationArgs;
+ * import com.pulumi.aiven.ByocAwsEntity;
+ * import com.pulumi.aiven.ByocAwsEntityArgs;
+ * import com.pulumi.aiven.ByocAwsProvision;
+ * import com.pulumi.aiven.ByocAwsProvisionArgs;
  * import com.pulumi.aiven.ByocPermissions;
  * import com.pulumi.aiven.ByocPermissionsArgs;
  * import java.util.ArrayList;
@@ -50,9 +56,28 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         var exampleOrganization = new Organization("exampleOrganization", OrganizationArgs.builder()
+ *             .name("Aiven Ltd")
+ *             .build());
+ * 
+ *         var exampleByocAwsEntity = new ByocAwsEntity("exampleByocAwsEntity", ByocAwsEntityArgs.builder()
+ *             .organizationId(exampleOrganization.id())
+ *             .cloudProvider("aws")
+ *             .cloudRegion("eu-west-1")
+ *             .deploymentModel("standard")
+ *             .displayName("byoc-cloud-prod-eu-west-1")
+ *             .reservedCidr("192.168.6.0/24")
+ *             .build());
+ * 
+ *         var exampleByocAwsProvision = new ByocAwsProvision("exampleByocAwsProvision", ByocAwsProvisionArgs.builder()
+ *             .organizationId(exampleOrganization.id())
+ *             .customCloudEnvironmentId(exampleByocAwsEntity.customCloudEnvironmentId())
+ *             .awsIamRoleArn("arn:aws:iam::012345678901:root")
+ *             .build());
+ * 
  *         var example = new ByocPermissions("example", ByocPermissionsArgs.builder()
- *             .organizationId("org1a23f456789")
- *             .customCloudEnvironmentId("1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d")
+ *             .organizationId(exampleOrganization.id())
+ *             .customCloudEnvironmentId(exampleByocAwsProvision.customCloudEnvironmentId())
  *             .accounts(            
  *                 "a22ba494e096",
  *                 "a441b467e067")

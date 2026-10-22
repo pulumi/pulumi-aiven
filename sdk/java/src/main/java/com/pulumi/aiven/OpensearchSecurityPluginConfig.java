@@ -33,6 +33,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.aiven.OpenSearch;
+ * import com.pulumi.aiven.OpenSearchArgs;
  * import com.pulumi.aiven.OpensearchSecurityPluginConfig;
  * import com.pulumi.aiven.OpensearchSecurityPluginConfigArgs;
  * import java.util.ArrayList;
@@ -48,9 +50,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new OpensearchSecurityPluginConfig("example", OpensearchSecurityPluginConfigArgs.builder()
+ *         var exampleOpensearch = new OpenSearch("exampleOpensearch", OpenSearchArgs.builder()
  *             .project("my-project")
- *             .serviceName("my-opensearch")
+ *             .plan("startup-4")
+ *             .serviceName("example-opensearch")
+ *             .build());
+ * 
+ *         var example = new OpensearchSecurityPluginConfig("example", OpensearchSecurityPluginConfigArgs.builder()
+ *             .project(exampleOpensearch.project())
+ *             .serviceName(exampleOpensearch.serviceName())
  *             .adminPassword("h3.2aD!z2")
  *             .build());
  * 

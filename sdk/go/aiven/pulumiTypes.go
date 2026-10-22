@@ -16282,6 +16282,405 @@ func (o KafkaConnectComponentArrayOutput) Index(i pulumi.IntInput) KafkaConnectC
 	}).(KafkaConnectComponentOutput)
 }
 
+type KafkaConnectCustomPluginFilePluginClass struct {
+	// Plugin author, initially populated from META-INF/MANIFEST.MF (Specification-Vendor or Implementation-Vendor) and user-updatable.
+	Author *string `pulumi:"author"`
+	// Creation timestamp in ISO 8601 format, always in UTC.
+	CreatedAt *string `pulumi:"createdAt"`
+	// Email address of the user who created this entity.
+	CreatedBy *string `pulumi:"createdBy"`
+	// Optional user-provided description of the plugin class.
+	Description *string `pulumi:"description"`
+	// URL to the plugin class documentation.
+	DocUrl *string `pulumi:"docUrl"`
+	// Fully qualified connector class name. Immutable after creation.
+	PluginClass *string `pulumi:"pluginClass"`
+	// Type of plugin class: source, sink, transformation. The possible values are `sink`, `source` and `transformation`.
+	PluginClassType *string `pulumi:"pluginClassType"`
+	// Human-readable plugin class title.
+	Title *string `pulumi:"title"`
+	// Last update timestamp in ISO 8601 format, always in UTC.
+	UpdatedAt *string `pulumi:"updatedAt"`
+	// Email address of the user who last updated this entity.
+	UpdatedBy *string `pulumi:"updatedBy"`
+}
+
+// KafkaConnectCustomPluginFilePluginClassInput is an input type that accepts KafkaConnectCustomPluginFilePluginClassArgs and KafkaConnectCustomPluginFilePluginClassOutput values.
+// You can construct a concrete instance of `KafkaConnectCustomPluginFilePluginClassInput` via:
+//
+//	KafkaConnectCustomPluginFilePluginClassArgs{...}
+type KafkaConnectCustomPluginFilePluginClassInput interface {
+	pulumi.Input
+
+	ToKafkaConnectCustomPluginFilePluginClassOutput() KafkaConnectCustomPluginFilePluginClassOutput
+	ToKafkaConnectCustomPluginFilePluginClassOutputWithContext(context.Context) KafkaConnectCustomPluginFilePluginClassOutput
+}
+
+type KafkaConnectCustomPluginFilePluginClassArgs struct {
+	// Plugin author, initially populated from META-INF/MANIFEST.MF (Specification-Vendor or Implementation-Vendor) and user-updatable.
+	Author pulumi.StringPtrInput `pulumi:"author"`
+	// Creation timestamp in ISO 8601 format, always in UTC.
+	CreatedAt pulumi.StringPtrInput `pulumi:"createdAt"`
+	// Email address of the user who created this entity.
+	CreatedBy pulumi.StringPtrInput `pulumi:"createdBy"`
+	// Optional user-provided description of the plugin class.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// URL to the plugin class documentation.
+	DocUrl pulumi.StringPtrInput `pulumi:"docUrl"`
+	// Fully qualified connector class name. Immutable after creation.
+	PluginClass pulumi.StringPtrInput `pulumi:"pluginClass"`
+	// Type of plugin class: source, sink, transformation. The possible values are `sink`, `source` and `transformation`.
+	PluginClassType pulumi.StringPtrInput `pulumi:"pluginClassType"`
+	// Human-readable plugin class title.
+	Title pulumi.StringPtrInput `pulumi:"title"`
+	// Last update timestamp in ISO 8601 format, always in UTC.
+	UpdatedAt pulumi.StringPtrInput `pulumi:"updatedAt"`
+	// Email address of the user who last updated this entity.
+	UpdatedBy pulumi.StringPtrInput `pulumi:"updatedBy"`
+}
+
+func (KafkaConnectCustomPluginFilePluginClassArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KafkaConnectCustomPluginFilePluginClass)(nil)).Elem()
+}
+
+func (i KafkaConnectCustomPluginFilePluginClassArgs) ToKafkaConnectCustomPluginFilePluginClassOutput() KafkaConnectCustomPluginFilePluginClassOutput {
+	return i.ToKafkaConnectCustomPluginFilePluginClassOutputWithContext(context.Background())
+}
+
+func (i KafkaConnectCustomPluginFilePluginClassArgs) ToKafkaConnectCustomPluginFilePluginClassOutputWithContext(ctx context.Context) KafkaConnectCustomPluginFilePluginClassOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaConnectCustomPluginFilePluginClassOutput)
+}
+
+// KafkaConnectCustomPluginFilePluginClassArrayInput is an input type that accepts KafkaConnectCustomPluginFilePluginClassArray and KafkaConnectCustomPluginFilePluginClassArrayOutput values.
+// You can construct a concrete instance of `KafkaConnectCustomPluginFilePluginClassArrayInput` via:
+//
+//	KafkaConnectCustomPluginFilePluginClassArray{ KafkaConnectCustomPluginFilePluginClassArgs{...} }
+type KafkaConnectCustomPluginFilePluginClassArrayInput interface {
+	pulumi.Input
+
+	ToKafkaConnectCustomPluginFilePluginClassArrayOutput() KafkaConnectCustomPluginFilePluginClassArrayOutput
+	ToKafkaConnectCustomPluginFilePluginClassArrayOutputWithContext(context.Context) KafkaConnectCustomPluginFilePluginClassArrayOutput
+}
+
+type KafkaConnectCustomPluginFilePluginClassArray []KafkaConnectCustomPluginFilePluginClassInput
+
+func (KafkaConnectCustomPluginFilePluginClassArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KafkaConnectCustomPluginFilePluginClass)(nil)).Elem()
+}
+
+func (i KafkaConnectCustomPluginFilePluginClassArray) ToKafkaConnectCustomPluginFilePluginClassArrayOutput() KafkaConnectCustomPluginFilePluginClassArrayOutput {
+	return i.ToKafkaConnectCustomPluginFilePluginClassArrayOutputWithContext(context.Background())
+}
+
+func (i KafkaConnectCustomPluginFilePluginClassArray) ToKafkaConnectCustomPluginFilePluginClassArrayOutputWithContext(ctx context.Context) KafkaConnectCustomPluginFilePluginClassArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaConnectCustomPluginFilePluginClassArrayOutput)
+}
+
+type KafkaConnectCustomPluginFilePluginClassOutput struct{ *pulumi.OutputState }
+
+func (KafkaConnectCustomPluginFilePluginClassOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KafkaConnectCustomPluginFilePluginClass)(nil)).Elem()
+}
+
+func (o KafkaConnectCustomPluginFilePluginClassOutput) ToKafkaConnectCustomPluginFilePluginClassOutput() KafkaConnectCustomPluginFilePluginClassOutput {
+	return o
+}
+
+func (o KafkaConnectCustomPluginFilePluginClassOutput) ToKafkaConnectCustomPluginFilePluginClassOutputWithContext(ctx context.Context) KafkaConnectCustomPluginFilePluginClassOutput {
+	return o
+}
+
+// Plugin author, initially populated from META-INF/MANIFEST.MF (Specification-Vendor or Implementation-Vendor) and user-updatable.
+func (o KafkaConnectCustomPluginFilePluginClassOutput) Author() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaConnectCustomPluginFilePluginClass) *string { return v.Author }).(pulumi.StringPtrOutput)
+}
+
+// Creation timestamp in ISO 8601 format, always in UTC.
+func (o KafkaConnectCustomPluginFilePluginClassOutput) CreatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaConnectCustomPluginFilePluginClass) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
+}
+
+// Email address of the user who created this entity.
+func (o KafkaConnectCustomPluginFilePluginClassOutput) CreatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaConnectCustomPluginFilePluginClass) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
+}
+
+// Optional user-provided description of the plugin class.
+func (o KafkaConnectCustomPluginFilePluginClassOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaConnectCustomPluginFilePluginClass) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// URL to the plugin class documentation.
+func (o KafkaConnectCustomPluginFilePluginClassOutput) DocUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaConnectCustomPluginFilePluginClass) *string { return v.DocUrl }).(pulumi.StringPtrOutput)
+}
+
+// Fully qualified connector class name. Immutable after creation.
+func (o KafkaConnectCustomPluginFilePluginClassOutput) PluginClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaConnectCustomPluginFilePluginClass) *string { return v.PluginClass }).(pulumi.StringPtrOutput)
+}
+
+// Type of plugin class: source, sink, transformation. The possible values are `sink`, `source` and `transformation`.
+func (o KafkaConnectCustomPluginFilePluginClassOutput) PluginClassType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaConnectCustomPluginFilePluginClass) *string { return v.PluginClassType }).(pulumi.StringPtrOutput)
+}
+
+// Human-readable plugin class title.
+func (o KafkaConnectCustomPluginFilePluginClassOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaConnectCustomPluginFilePluginClass) *string { return v.Title }).(pulumi.StringPtrOutput)
+}
+
+// Last update timestamp in ISO 8601 format, always in UTC.
+func (o KafkaConnectCustomPluginFilePluginClassOutput) UpdatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaConnectCustomPluginFilePluginClass) *string { return v.UpdatedAt }).(pulumi.StringPtrOutput)
+}
+
+// Email address of the user who last updated this entity.
+func (o KafkaConnectCustomPluginFilePluginClassOutput) UpdatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaConnectCustomPluginFilePluginClass) *string { return v.UpdatedBy }).(pulumi.StringPtrOutput)
+}
+
+type KafkaConnectCustomPluginFilePluginClassArrayOutput struct{ *pulumi.OutputState }
+
+func (KafkaConnectCustomPluginFilePluginClassArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KafkaConnectCustomPluginFilePluginClass)(nil)).Elem()
+}
+
+func (o KafkaConnectCustomPluginFilePluginClassArrayOutput) ToKafkaConnectCustomPluginFilePluginClassArrayOutput() KafkaConnectCustomPluginFilePluginClassArrayOutput {
+	return o
+}
+
+func (o KafkaConnectCustomPluginFilePluginClassArrayOutput) ToKafkaConnectCustomPluginFilePluginClassArrayOutputWithContext(ctx context.Context) KafkaConnectCustomPluginFilePluginClassArrayOutput {
+	return o
+}
+
+func (o KafkaConnectCustomPluginFilePluginClassArrayOutput) Index(i pulumi.IntInput) KafkaConnectCustomPluginFilePluginClassOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KafkaConnectCustomPluginFilePluginClass {
+		return vs[0].([]KafkaConnectCustomPluginFilePluginClass)[vs[1].(int)]
+	}).(KafkaConnectCustomPluginFilePluginClassOutput)
+}
+
+type KafkaConnectCustomPluginFileTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create *string `pulumi:"create"`
+	// Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+	//
+	// Deprecated: Use operation-specific timeouts instead. This field will be removed in the next major version.
+	Default *string `pulumi:"default"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete *string `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update *string `pulumi:"update"`
+}
+
+// KafkaConnectCustomPluginFileTimeoutsInput is an input type that accepts KafkaConnectCustomPluginFileTimeoutsArgs and KafkaConnectCustomPluginFileTimeoutsOutput values.
+// You can construct a concrete instance of `KafkaConnectCustomPluginFileTimeoutsInput` via:
+//
+//	KafkaConnectCustomPluginFileTimeoutsArgs{...}
+type KafkaConnectCustomPluginFileTimeoutsInput interface {
+	pulumi.Input
+
+	ToKafkaConnectCustomPluginFileTimeoutsOutput() KafkaConnectCustomPluginFileTimeoutsOutput
+	ToKafkaConnectCustomPluginFileTimeoutsOutputWithContext(context.Context) KafkaConnectCustomPluginFileTimeoutsOutput
+}
+
+type KafkaConnectCustomPluginFileTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create pulumi.StringPtrInput `pulumi:"create"`
+	// Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+	//
+	// Deprecated: Use operation-specific timeouts instead. This field will be removed in the next major version.
+	Default pulumi.StringPtrInput `pulumi:"default"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete pulumi.StringPtrInput `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update pulumi.StringPtrInput `pulumi:"update"`
+}
+
+func (KafkaConnectCustomPluginFileTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KafkaConnectCustomPluginFileTimeouts)(nil)).Elem()
+}
+
+func (i KafkaConnectCustomPluginFileTimeoutsArgs) ToKafkaConnectCustomPluginFileTimeoutsOutput() KafkaConnectCustomPluginFileTimeoutsOutput {
+	return i.ToKafkaConnectCustomPluginFileTimeoutsOutputWithContext(context.Background())
+}
+
+func (i KafkaConnectCustomPluginFileTimeoutsArgs) ToKafkaConnectCustomPluginFileTimeoutsOutputWithContext(ctx context.Context) KafkaConnectCustomPluginFileTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaConnectCustomPluginFileTimeoutsOutput)
+}
+
+func (i KafkaConnectCustomPluginFileTimeoutsArgs) ToKafkaConnectCustomPluginFileTimeoutsPtrOutput() KafkaConnectCustomPluginFileTimeoutsPtrOutput {
+	return i.ToKafkaConnectCustomPluginFileTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i KafkaConnectCustomPluginFileTimeoutsArgs) ToKafkaConnectCustomPluginFileTimeoutsPtrOutputWithContext(ctx context.Context) KafkaConnectCustomPluginFileTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaConnectCustomPluginFileTimeoutsOutput).ToKafkaConnectCustomPluginFileTimeoutsPtrOutputWithContext(ctx)
+}
+
+// KafkaConnectCustomPluginFileTimeoutsPtrInput is an input type that accepts KafkaConnectCustomPluginFileTimeoutsArgs, KafkaConnectCustomPluginFileTimeoutsPtr and KafkaConnectCustomPluginFileTimeoutsPtrOutput values.
+// You can construct a concrete instance of `KafkaConnectCustomPluginFileTimeoutsPtrInput` via:
+//
+//	        KafkaConnectCustomPluginFileTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type KafkaConnectCustomPluginFileTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToKafkaConnectCustomPluginFileTimeoutsPtrOutput() KafkaConnectCustomPluginFileTimeoutsPtrOutput
+	ToKafkaConnectCustomPluginFileTimeoutsPtrOutputWithContext(context.Context) KafkaConnectCustomPluginFileTimeoutsPtrOutput
+}
+
+type kafkaConnectCustomPluginFileTimeoutsPtrType KafkaConnectCustomPluginFileTimeoutsArgs
+
+func KafkaConnectCustomPluginFileTimeoutsPtr(v *KafkaConnectCustomPluginFileTimeoutsArgs) KafkaConnectCustomPluginFileTimeoutsPtrInput {
+	return (*kafkaConnectCustomPluginFileTimeoutsPtrType)(v)
+}
+
+func (*kafkaConnectCustomPluginFileTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KafkaConnectCustomPluginFileTimeouts)(nil)).Elem()
+}
+
+func (i *kafkaConnectCustomPluginFileTimeoutsPtrType) ToKafkaConnectCustomPluginFileTimeoutsPtrOutput() KafkaConnectCustomPluginFileTimeoutsPtrOutput {
+	return i.ToKafkaConnectCustomPluginFileTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *kafkaConnectCustomPluginFileTimeoutsPtrType) ToKafkaConnectCustomPluginFileTimeoutsPtrOutputWithContext(ctx context.Context) KafkaConnectCustomPluginFileTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KafkaConnectCustomPluginFileTimeoutsPtrOutput)
+}
+
+type KafkaConnectCustomPluginFileTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (KafkaConnectCustomPluginFileTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KafkaConnectCustomPluginFileTimeouts)(nil)).Elem()
+}
+
+func (o KafkaConnectCustomPluginFileTimeoutsOutput) ToKafkaConnectCustomPluginFileTimeoutsOutput() KafkaConnectCustomPluginFileTimeoutsOutput {
+	return o
+}
+
+func (o KafkaConnectCustomPluginFileTimeoutsOutput) ToKafkaConnectCustomPluginFileTimeoutsOutputWithContext(ctx context.Context) KafkaConnectCustomPluginFileTimeoutsOutput {
+	return o
+}
+
+func (o KafkaConnectCustomPluginFileTimeoutsOutput) ToKafkaConnectCustomPluginFileTimeoutsPtrOutput() KafkaConnectCustomPluginFileTimeoutsPtrOutput {
+	return o.ToKafkaConnectCustomPluginFileTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o KafkaConnectCustomPluginFileTimeoutsOutput) ToKafkaConnectCustomPluginFileTimeoutsPtrOutputWithContext(ctx context.Context) KafkaConnectCustomPluginFileTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KafkaConnectCustomPluginFileTimeouts) *KafkaConnectCustomPluginFileTimeouts {
+		return &v
+	}).(KafkaConnectCustomPluginFileTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o KafkaConnectCustomPluginFileTimeoutsOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaConnectCustomPluginFileTimeouts) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+// Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+//
+// Deprecated: Use operation-specific timeouts instead. This field will be removed in the next major version.
+func (o KafkaConnectCustomPluginFileTimeoutsOutput) Default() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaConnectCustomPluginFileTimeouts) *string { return v.Default }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o KafkaConnectCustomPluginFileTimeoutsOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaConnectCustomPluginFileTimeouts) *string { return v.Delete }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o KafkaConnectCustomPluginFileTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaConnectCustomPluginFileTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o KafkaConnectCustomPluginFileTimeoutsOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaConnectCustomPluginFileTimeouts) *string { return v.Update }).(pulumi.StringPtrOutput)
+}
+
+type KafkaConnectCustomPluginFileTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (KafkaConnectCustomPluginFileTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KafkaConnectCustomPluginFileTimeouts)(nil)).Elem()
+}
+
+func (o KafkaConnectCustomPluginFileTimeoutsPtrOutput) ToKafkaConnectCustomPluginFileTimeoutsPtrOutput() KafkaConnectCustomPluginFileTimeoutsPtrOutput {
+	return o
+}
+
+func (o KafkaConnectCustomPluginFileTimeoutsPtrOutput) ToKafkaConnectCustomPluginFileTimeoutsPtrOutputWithContext(ctx context.Context) KafkaConnectCustomPluginFileTimeoutsPtrOutput {
+	return o
+}
+
+func (o KafkaConnectCustomPluginFileTimeoutsPtrOutput) Elem() KafkaConnectCustomPluginFileTimeoutsOutput {
+	return o.ApplyT(func(v *KafkaConnectCustomPluginFileTimeouts) KafkaConnectCustomPluginFileTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret KafkaConnectCustomPluginFileTimeouts
+		return ret
+	}).(KafkaConnectCustomPluginFileTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o KafkaConnectCustomPluginFileTimeoutsPtrOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaConnectCustomPluginFileTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Create
+	}).(pulumi.StringPtrOutput)
+}
+
+// Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+//
+// Deprecated: Use operation-specific timeouts instead. This field will be removed in the next major version.
+func (o KafkaConnectCustomPluginFileTimeoutsPtrOutput) Default() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaConnectCustomPluginFileTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Default
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o KafkaConnectCustomPluginFileTimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaConnectCustomPluginFileTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delete
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o KafkaConnectCustomPluginFileTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaConnectCustomPluginFileTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o KafkaConnectCustomPluginFileTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaConnectCustomPluginFileTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Update
+	}).(pulumi.StringPtrOutput)
+}
+
 type KafkaConnectKafkaConnectUserConfig struct {
 	// Additional Cloud Regions for Backup Replication.
 	//
@@ -46020,7 +46419,7 @@ func (o OrganizationGroupProjectTimeoutsPtrOutput) Update() pulumi.StringPtrOutp
 type OrganizationPermissionPermission struct {
 	// Create Time.
 	CreateTime *string `pulumi:"createTime"`
-	// List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant". The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:event_logs:read`, `organization:groups:read`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:sustainability:read`, `organization:users:read`, `organization:users:write`, `project:ai_gateway_keys:read`, `project:ai_gateway_keys:write`, `project:audit_logs:read`, `project:event_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `readOnly`, `role:organization:admin`, `role:project:admin`, `role:project:manager`, `role:project:read`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:metrics:read`, `service:secrets:read` and `service:users:write`.
+	// List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant". The possible values are `admin`, `application:access:connect`, `developer`, `operator`, `organization:app_users:write`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:event_logs:read`, `organization:groups:read`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:sustainability:read`, `organization:users:read`, `organization:users:write`, `project:ai_gateway_keys:read`, `project:ai_gateway_keys:write`, `project:audit_logs:read`, `project:event_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `readOnly`, `role:organization:admin`, `role:project:admin`, `role:project:manager`, `role:project:read`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:metrics:read`, `service:secrets:read` and `service:users:write`.
 	Permissions []string `pulumi:"permissions"`
 	// ID of the user or group to grant permissions to. Only active users who have accepted an [invite](https://aiven.io/docs/platform/howto/manage-org-users) to join the organization can be granted permissions.
 	PrincipalId string `pulumi:"principalId"`
@@ -46044,7 +46443,7 @@ type OrganizationPermissionPermissionInput interface {
 type OrganizationPermissionPermissionArgs struct {
 	// Create Time.
 	CreateTime pulumi.StringPtrInput `pulumi:"createTime"`
-	// List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant". The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:event_logs:read`, `organization:groups:read`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:sustainability:read`, `organization:users:read`, `organization:users:write`, `project:ai_gateway_keys:read`, `project:ai_gateway_keys:write`, `project:audit_logs:read`, `project:event_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `readOnly`, `role:organization:admin`, `role:project:admin`, `role:project:manager`, `role:project:read`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:metrics:read`, `service:secrets:read` and `service:users:write`.
+	// List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant". The possible values are `admin`, `application:access:connect`, `developer`, `operator`, `organization:app_users:write`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:event_logs:read`, `organization:groups:read`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:sustainability:read`, `organization:users:read`, `organization:users:write`, `project:ai_gateway_keys:read`, `project:ai_gateway_keys:write`, `project:audit_logs:read`, `project:event_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `readOnly`, `role:organization:admin`, `role:project:admin`, `role:project:manager`, `role:project:read`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:metrics:read`, `service:secrets:read` and `service:users:write`.
 	Permissions pulumi.StringArrayInput `pulumi:"permissions"`
 	// ID of the user or group to grant permissions to. Only active users who have accepted an [invite](https://aiven.io/docs/platform/howto/manage-org-users) to join the organization can be granted permissions.
 	PrincipalId pulumi.StringInput `pulumi:"principalId"`
@@ -46110,7 +46509,7 @@ func (o OrganizationPermissionPermissionOutput) CreateTime() pulumi.StringPtrOut
 	return o.ApplyT(func(v OrganizationPermissionPermission) *string { return v.CreateTime }).(pulumi.StringPtrOutput)
 }
 
-// List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant". The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:event_logs:read`, `organization:groups:read`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:sustainability:read`, `organization:users:read`, `organization:users:write`, `project:ai_gateway_keys:read`, `project:ai_gateway_keys:write`, `project:audit_logs:read`, `project:event_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `readOnly`, `role:organization:admin`, `role:project:admin`, `role:project:manager`, `role:project:read`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:metrics:read`, `service:secrets:read` and `service:users:write`.
+// List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant". The possible values are `admin`, `application:access:connect`, `developer`, `operator`, `organization:app_users:write`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:event_logs:read`, `organization:groups:read`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:sustainability:read`, `organization:users:read`, `organization:users:write`, `project:ai_gateway_keys:read`, `project:ai_gateway_keys:write`, `project:audit_logs:read`, `project:event_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `readOnly`, `role:organization:admin`, `role:project:admin`, `role:project:manager`, `role:project:read`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:metrics:read`, `service:secrets:read` and `service:users:write`.
 func (o OrganizationPermissionPermissionOutput) Permissions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v OrganizationPermissionPermission) []string { return v.Permissions }).(pulumi.StringArrayOutput)
 }
@@ -102855,442 +103254,6 @@ func (o GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogPt
 	}).(GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput)
 }
 
-type GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThreshold struct {
-	// Debug threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.
-	Debug *string `pulumi:"debug"`
-	// Info threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.
-	Info *string `pulumi:"info"`
-	// Trace threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.
-	Trace *string `pulumi:"trace"`
-	// Warning threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.
-	Warn *string `pulumi:"warn"`
-}
-
-// GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdInput is an input type that accepts GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdArgs and GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutput values.
-// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdInput` via:
-//
-//	GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdArgs{...}
-type GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdInput interface {
-	pulumi.Input
-
-	ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutput() GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutput
-	ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutput
-}
-
-type GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdArgs struct {
-	// Debug threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.
-	Debug pulumi.StringPtrInput `pulumi:"debug"`
-	// Info threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.
-	Info pulumi.StringPtrInput `pulumi:"info"`
-	// Trace threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.
-	Trace pulumi.StringPtrInput `pulumi:"trace"`
-	// Warning threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.
-	Warn pulumi.StringPtrInput `pulumi:"warn"`
-}
-
-func (GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThreshold)(nil)).Elem()
-}
-
-func (i GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdArgs) ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutput() GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutput {
-	return i.ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutputWithContext(context.Background())
-}
-
-func (i GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdArgs) ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutput)
-}
-
-func (i GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdArgs) ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput {
-	return i.ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutputWithContext(context.Background())
-}
-
-func (i GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdArgs) ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutput).ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutputWithContext(ctx)
-}
-
-// GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrInput is an input type that accepts GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdArgs, GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtr and GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput values.
-// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrInput` via:
-//
-//	        GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrInput interface {
-	pulumi.Input
-
-	ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput
-	ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput
-}
-
-type getOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrType GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdArgs
-
-func GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtr(v *GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdArgs) GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrInput {
-	return (*getOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrType)(v)
-}
-
-func (*getOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThreshold)(nil)).Elem()
-}
-
-func (i *getOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrType) ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput {
-	return i.ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutputWithContext(context.Background())
-}
-
-func (i *getOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrType) ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput)
-}
-
-type GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutput struct{ *pulumi.OutputState }
-
-func (GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThreshold)(nil)).Elem()
-}
-
-func (o GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutput) ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutput() GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutput {
-	return o
-}
-
-func (o GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutput) ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutput {
-	return o
-}
-
-func (o GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutput) ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput {
-	return o.ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutputWithContext(context.Background())
-}
-
-func (o GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutput) ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThreshold) *GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThreshold {
-		return &v
-	}).(GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput)
-}
-
-// Debug threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.
-func (o GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutput) Debug() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThreshold) *string {
-		return v.Debug
-	}).(pulumi.StringPtrOutput)
-}
-
-// Info threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.
-func (o GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutput) Info() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThreshold) *string {
-		return v.Info
-	}).(pulumi.StringPtrOutput)
-}
-
-// Trace threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.
-func (o GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutput) Trace() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThreshold) *string {
-		return v.Trace
-	}).(pulumi.StringPtrOutput)
-}
-
-// Warning threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.
-func (o GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutput) Warn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThreshold) *string {
-		return v.Warn
-	}).(pulumi.StringPtrOutput)
-}
-
-type GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput struct{ *pulumi.OutputState }
-
-func (GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThreshold)(nil)).Elem()
-}
-
-func (o GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput) ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput {
-	return o
-}
-
-func (o GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput) ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput {
-	return o
-}
-
-func (o GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput) Elem() GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutput {
-	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThreshold) GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThreshold {
-		if v != nil {
-			return *v
-		}
-		var ret GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThreshold
-		return ret
-	}).(GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutput)
-}
-
-// Debug threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.
-func (o GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput) Debug() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThreshold) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Debug
-	}).(pulumi.StringPtrOutput)
-}
-
-// Info threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.
-func (o GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput) Info() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThreshold) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Info
-	}).(pulumi.StringPtrOutput)
-}
-
-// Trace threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.
-func (o GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput) Trace() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThreshold) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Trace
-	}).(pulumi.StringPtrOutput)
-}
-
-// Warning threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.
-func (o GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput) Warn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThreshold) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Warn
-	}).(pulumi.StringPtrOutput)
-}
-
-type GetOpenSearchOpensearchUserConfigOpensearchDashboards struct {
-	// Enable or disable OpenSearch Dashboards. Default: `true`.
-	Enabled *bool `pulumi:"enabled"`
-	// Limits the maximum amount of memory (in MiB) the OpenSearch Dashboards process can use. This sets the maxOldSpaceSize option of the nodejs running the OpenSearch Dashboards. Note: the memory reserved by OpenSearch Dashboards is not available for OpenSearch. Default: `128`.
-	MaxOldSpaceSize *int `pulumi:"maxOldSpaceSize"`
-	// Enable or disable multiple data sources in OpenSearch Dashboards. Default: `true`.
-	MultipleDataSourceEnabled *bool `pulumi:"multipleDataSourceEnabled"`
-	// Timeout in milliseconds for requests made by OpenSearch Dashboards towards OpenSearch. Default: `30000`.
-	OpensearchRequestTimeout *int `pulumi:"opensearchRequestTimeout"`
-	// Determines whether the session TTL resets (is “kept alive”) on each user activity. Optional. Default is true. Default: `true`.
-	SessionKeepalive *bool `pulumi:"sessionKeepalive"`
-	// Defines the time-to-live (TTL) for user sessions. The value should be a time value with unit, e.g. 1m, 5s, 1h, 3d, 100ms. Default is 1 hour. Default: `1h`.
-	SessionTtl *string `pulumi:"sessionTtl"`
-}
-
-// GetOpenSearchOpensearchUserConfigOpensearchDashboardsInput is an input type that accepts GetOpenSearchOpensearchUserConfigOpensearchDashboardsArgs and GetOpenSearchOpensearchUserConfigOpensearchDashboardsOutput values.
-// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigOpensearchDashboardsInput` via:
-//
-//	GetOpenSearchOpensearchUserConfigOpensearchDashboardsArgs{...}
-type GetOpenSearchOpensearchUserConfigOpensearchDashboardsInput interface {
-	pulumi.Input
-
-	ToGetOpenSearchOpensearchUserConfigOpensearchDashboardsOutput() GetOpenSearchOpensearchUserConfigOpensearchDashboardsOutput
-	ToGetOpenSearchOpensearchUserConfigOpensearchDashboardsOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigOpensearchDashboardsOutput
-}
-
-type GetOpenSearchOpensearchUserConfigOpensearchDashboardsArgs struct {
-	// Enable or disable OpenSearch Dashboards. Default: `true`.
-	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// Limits the maximum amount of memory (in MiB) the OpenSearch Dashboards process can use. This sets the maxOldSpaceSize option of the nodejs running the OpenSearch Dashboards. Note: the memory reserved by OpenSearch Dashboards is not available for OpenSearch. Default: `128`.
-	MaxOldSpaceSize pulumi.IntPtrInput `pulumi:"maxOldSpaceSize"`
-	// Enable or disable multiple data sources in OpenSearch Dashboards. Default: `true`.
-	MultipleDataSourceEnabled pulumi.BoolPtrInput `pulumi:"multipleDataSourceEnabled"`
-	// Timeout in milliseconds for requests made by OpenSearch Dashboards towards OpenSearch. Default: `30000`.
-	OpensearchRequestTimeout pulumi.IntPtrInput `pulumi:"opensearchRequestTimeout"`
-	// Determines whether the session TTL resets (is “kept alive”) on each user activity. Optional. Default is true. Default: `true`.
-	SessionKeepalive pulumi.BoolPtrInput `pulumi:"sessionKeepalive"`
-	// Defines the time-to-live (TTL) for user sessions. The value should be a time value with unit, e.g. 1m, 5s, 1h, 3d, 100ms. Default is 1 hour. Default: `1h`.
-	SessionTtl pulumi.StringPtrInput `pulumi:"sessionTtl"`
-}
-
-func (GetOpenSearchOpensearchUserConfigOpensearchDashboardsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchDashboards)(nil)).Elem()
-}
-
-func (i GetOpenSearchOpensearchUserConfigOpensearchDashboardsArgs) ToGetOpenSearchOpensearchUserConfigOpensearchDashboardsOutput() GetOpenSearchOpensearchUserConfigOpensearchDashboardsOutput {
-	return i.ToGetOpenSearchOpensearchUserConfigOpensearchDashboardsOutputWithContext(context.Background())
-}
-
-func (i GetOpenSearchOpensearchUserConfigOpensearchDashboardsArgs) ToGetOpenSearchOpensearchUserConfigOpensearchDashboardsOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchDashboardsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchDashboardsOutput)
-}
-
-func (i GetOpenSearchOpensearchUserConfigOpensearchDashboardsArgs) ToGetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput {
-	return i.ToGetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutputWithContext(context.Background())
-}
-
-func (i GetOpenSearchOpensearchUserConfigOpensearchDashboardsArgs) ToGetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchDashboardsOutput).ToGetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutputWithContext(ctx)
-}
-
-// GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrInput is an input type that accepts GetOpenSearchOpensearchUserConfigOpensearchDashboardsArgs, GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtr and GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput values.
-// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrInput` via:
-//
-//	        GetOpenSearchOpensearchUserConfigOpensearchDashboardsArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrInput interface {
-	pulumi.Input
-
-	ToGetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput
-	ToGetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput
-}
-
-type getOpenSearchOpensearchUserConfigOpensearchDashboardsPtrType GetOpenSearchOpensearchUserConfigOpensearchDashboardsArgs
-
-func GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtr(v *GetOpenSearchOpensearchUserConfigOpensearchDashboardsArgs) GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrInput {
-	return (*getOpenSearchOpensearchUserConfigOpensearchDashboardsPtrType)(v)
-}
-
-func (*getOpenSearchOpensearchUserConfigOpensearchDashboardsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigOpensearchDashboards)(nil)).Elem()
-}
-
-func (i *getOpenSearchOpensearchUserConfigOpensearchDashboardsPtrType) ToGetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput {
-	return i.ToGetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutputWithContext(context.Background())
-}
-
-func (i *getOpenSearchOpensearchUserConfigOpensearchDashboardsPtrType) ToGetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput)
-}
-
-type GetOpenSearchOpensearchUserConfigOpensearchDashboardsOutput struct{ *pulumi.OutputState }
-
-func (GetOpenSearchOpensearchUserConfigOpensearchDashboardsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchDashboards)(nil)).Elem()
-}
-
-func (o GetOpenSearchOpensearchUserConfigOpensearchDashboardsOutput) ToGetOpenSearchOpensearchUserConfigOpensearchDashboardsOutput() GetOpenSearchOpensearchUserConfigOpensearchDashboardsOutput {
-	return o
-}
-
-func (o GetOpenSearchOpensearchUserConfigOpensearchDashboardsOutput) ToGetOpenSearchOpensearchUserConfigOpensearchDashboardsOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchDashboardsOutput {
-	return o
-}
-
-func (o GetOpenSearchOpensearchUserConfigOpensearchDashboardsOutput) ToGetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput {
-	return o.ToGetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutputWithContext(context.Background())
-}
-
-func (o GetOpenSearchOpensearchUserConfigOpensearchDashboardsOutput) ToGetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetOpenSearchOpensearchUserConfigOpensearchDashboards) *GetOpenSearchOpensearchUserConfigOpensearchDashboards {
-		return &v
-	}).(GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput)
-}
-
-// Enable or disable OpenSearch Dashboards. Default: `true`.
-func (o GetOpenSearchOpensearchUserConfigOpensearchDashboardsOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchDashboards) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
-}
-
-// Limits the maximum amount of memory (in MiB) the OpenSearch Dashboards process can use. This sets the maxOldSpaceSize option of the nodejs running the OpenSearch Dashboards. Note: the memory reserved by OpenSearch Dashboards is not available for OpenSearch. Default: `128`.
-func (o GetOpenSearchOpensearchUserConfigOpensearchDashboardsOutput) MaxOldSpaceSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchDashboards) *int { return v.MaxOldSpaceSize }).(pulumi.IntPtrOutput)
-}
-
-// Enable or disable multiple data sources in OpenSearch Dashboards. Default: `true`.
-func (o GetOpenSearchOpensearchUserConfigOpensearchDashboardsOutput) MultipleDataSourceEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchDashboards) *bool {
-		return v.MultipleDataSourceEnabled
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Timeout in milliseconds for requests made by OpenSearch Dashboards towards OpenSearch. Default: `30000`.
-func (o GetOpenSearchOpensearchUserConfigOpensearchDashboardsOutput) OpensearchRequestTimeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchDashboards) *int { return v.OpensearchRequestTimeout }).(pulumi.IntPtrOutput)
-}
-
-// Determines whether the session TTL resets (is “kept alive”) on each user activity. Optional. Default is true. Default: `true`.
-func (o GetOpenSearchOpensearchUserConfigOpensearchDashboardsOutput) SessionKeepalive() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchDashboards) *bool { return v.SessionKeepalive }).(pulumi.BoolPtrOutput)
-}
-
-// Defines the time-to-live (TTL) for user sessions. The value should be a time value with unit, e.g. 1m, 5s, 1h, 3d, 100ms. Default is 1 hour. Default: `1h`.
-func (o GetOpenSearchOpensearchUserConfigOpensearchDashboardsOutput) SessionTtl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchDashboards) *string { return v.SessionTtl }).(pulumi.StringPtrOutput)
-}
-
-type GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput struct{ *pulumi.OutputState }
-
-func (GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigOpensearchDashboards)(nil)).Elem()
-}
-
-func (o GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput) ToGetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput {
-	return o
-}
-
-func (o GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput) ToGetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput {
-	return o
-}
-
-func (o GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput) Elem() GetOpenSearchOpensearchUserConfigOpensearchDashboardsOutput {
-	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchDashboards) GetOpenSearchOpensearchUserConfigOpensearchDashboards {
-		if v != nil {
-			return *v
-		}
-		var ret GetOpenSearchOpensearchUserConfigOpensearchDashboards
-		return ret
-	}).(GetOpenSearchOpensearchUserConfigOpensearchDashboardsOutput)
-}
-
-// Enable or disable OpenSearch Dashboards. Default: `true`.
-func (o GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchDashboards) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Enabled
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Limits the maximum amount of memory (in MiB) the OpenSearch Dashboards process can use. This sets the maxOldSpaceSize option of the nodejs running the OpenSearch Dashboards. Note: the memory reserved by OpenSearch Dashboards is not available for OpenSearch. Default: `128`.
-func (o GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput) MaxOldSpaceSize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchDashboards) *int {
-		if v == nil {
-			return nil
-		}
-		return v.MaxOldSpaceSize
-	}).(pulumi.IntPtrOutput)
-}
-
-// Enable or disable multiple data sources in OpenSearch Dashboards. Default: `true`.
-func (o GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput) MultipleDataSourceEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchDashboards) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.MultipleDataSourceEnabled
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Timeout in milliseconds for requests made by OpenSearch Dashboards towards OpenSearch. Default: `30000`.
-func (o GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput) OpensearchRequestTimeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchDashboards) *int {
-		if v == nil {
-			return nil
-		}
-		return v.OpensearchRequestTimeout
-	}).(pulumi.IntPtrOutput)
-}
-
-// Determines whether the session TTL resets (is “kept alive”) on each user activity. Optional. Default is true. Default: `true`.
-func (o GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput) SessionKeepalive() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchDashboards) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.SessionKeepalive
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Defines the time-to-live (TTL) for user sessions. The value should be a time value with unit, e.g. 1m, 5s, 1h, 3d, 100ms. Default is 1 hour. Default: `1h`.
-func (o GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput) SessionTtl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchDashboards) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SessionTtl
-	}).(pulumi.StringPtrOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccountAuthenticationSamlFieldMappingInput)(nil)).Elem(), AccountAuthenticationSamlFieldMappingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccountAuthenticationSamlFieldMappingPtrInput)(nil)).Elem(), AccountAuthenticationSamlFieldMappingArgs{})
@@ -103462,6 +103425,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*KafkaComponentArrayInput)(nil)).Elem(), KafkaComponentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KafkaConnectComponentInput)(nil)).Elem(), KafkaConnectComponentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KafkaConnectComponentArrayInput)(nil)).Elem(), KafkaConnectComponentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KafkaConnectCustomPluginFilePluginClassInput)(nil)).Elem(), KafkaConnectCustomPluginFilePluginClassArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KafkaConnectCustomPluginFilePluginClassArrayInput)(nil)).Elem(), KafkaConnectCustomPluginFilePluginClassArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KafkaConnectCustomPluginFileTimeoutsInput)(nil)).Elem(), KafkaConnectCustomPluginFileTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KafkaConnectCustomPluginFileTimeoutsPtrInput)(nil)).Elem(), KafkaConnectCustomPluginFileTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KafkaConnectKafkaConnectUserConfigInput)(nil)).Elem(), KafkaConnectKafkaConnectUserConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KafkaConnectKafkaConnectUserConfigPtrInput)(nil)).Elem(), KafkaConnectKafkaConnectUserConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KafkaConnectKafkaConnectUserConfigCustomPluginInput)(nil)).Elem(), KafkaConnectKafkaConnectUserConfigCustomPluginArgs{})
@@ -104288,10 +104255,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStorePtrInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStoreArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogPtrInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchDashboardsInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchDashboardsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchDashboardsArgs{})
 	pulumi.RegisterOutputType(AccountAuthenticationSamlFieldMappingOutput{})
 	pulumi.RegisterOutputType(AccountAuthenticationSamlFieldMappingPtrOutput{})
 	pulumi.RegisterOutputType(AwsOrgVpcPeeringConnectionTimeoutsOutput{})
@@ -104462,6 +104425,10 @@ func init() {
 	pulumi.RegisterOutputType(KafkaComponentArrayOutput{})
 	pulumi.RegisterOutputType(KafkaConnectComponentOutput{})
 	pulumi.RegisterOutputType(KafkaConnectComponentArrayOutput{})
+	pulumi.RegisterOutputType(KafkaConnectCustomPluginFilePluginClassOutput{})
+	pulumi.RegisterOutputType(KafkaConnectCustomPluginFilePluginClassArrayOutput{})
+	pulumi.RegisterOutputType(KafkaConnectCustomPluginFileTimeoutsOutput{})
+	pulumi.RegisterOutputType(KafkaConnectCustomPluginFileTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(KafkaConnectKafkaConnectUserConfigOutput{})
 	pulumi.RegisterOutputType(KafkaConnectKafkaConnectUserConfigPtrOutput{})
 	pulumi.RegisterOutputType(KafkaConnectKafkaConnectUserConfigCustomPluginOutput{})
@@ -105288,8 +105255,4 @@ func init() {
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchClusterRemoteStorePtrOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogPtrOutput{})
-	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutput{})
-	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput{})
-	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchDashboardsOutput{})
-	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput{})
 }

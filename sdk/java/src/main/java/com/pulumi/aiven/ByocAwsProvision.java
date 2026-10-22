@@ -33,6 +33,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.aiven.Organization;
+ * import com.pulumi.aiven.OrganizationArgs;
+ * import com.pulumi.aiven.ByocAwsEntity;
+ * import com.pulumi.aiven.ByocAwsEntityArgs;
  * import com.pulumi.aiven.ByocAwsProvision;
  * import com.pulumi.aiven.ByocAwsProvisionArgs;
  * import java.util.ArrayList;
@@ -48,9 +52,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         var exampleOrganization = new Organization("exampleOrganization", OrganizationArgs.builder()
+ *             .name("Aiven Ltd")
+ *             .build());
+ * 
+ *         var exampleByocAwsEntity = new ByocAwsEntity("exampleByocAwsEntity", ByocAwsEntityArgs.builder()
+ *             .organizationId(exampleOrganization.id())
+ *             .cloudProvider("aws")
+ *             .cloudRegion("eu-west-1")
+ *             .deploymentModel("standard")
+ *             .displayName("byoc-cloud-prod-eu-west-1")
+ *             .reservedCidr("192.168.6.0/24")
+ *             .build());
+ * 
  *         var example = new ByocAwsProvision("example", ByocAwsProvisionArgs.builder()
- *             .organizationId("org1a23f456789")
- *             .customCloudEnvironmentId("1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d")
+ *             .organizationId(exampleOrganization.id())
+ *             .customCloudEnvironmentId(exampleByocAwsEntity.customCloudEnvironmentId())
  *             .awsIamRoleArn("arn:aws:iam::012345678901:root")
  *             .build());
  * 

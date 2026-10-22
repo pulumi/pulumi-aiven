@@ -22,10 +22,22 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var exampleOrganization = new Aiven.Organization("example", new()
+    ///     {
+    ///         Name = "Aiven Ltd",
+    ///     });
+    /// 
+    ///     var exampleOrganizationVpc = new Aiven.OrganizationVpc("example", new()
+    ///     {
+    ///         OrganizationId = exampleOrganization.Id,
+    ///         CloudName = "aws-eu-west-1",
+    ///         NetworkCidr = "10.0.0.0/24",
+    ///     });
+    /// 
     ///     var example = new Aiven.AzureOrgVpcPeeringConnection("example", new()
     ///     {
-    ///         OrganizationId = "org1a23f456789",
-    ///         OrganizationVpcId = "1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+    ///         OrganizationId = exampleOrganization.Id,
+    ///         OrganizationVpcId = exampleOrganizationVpc.OrganizationVpcId,
     ///         AzureSubscriptionId = "12345678-1234-1234-1234-123456789012",
     ///         VnetName = "my-vnet",
     ///         PeerResourceGroup = "my-resource-group",

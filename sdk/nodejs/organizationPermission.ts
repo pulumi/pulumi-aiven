@@ -21,13 +21,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
+ * const exampleOrganization = new aiven.Organization("example", {name: "Aiven Ltd"});
  * const example = new aiven.OrganizationPermission("example", {
  *     permissions: [{
  *         principalId: "u12345",
  *         permissions: ["read_only"],
  *         principalType: "user",
  *     }],
- *     organizationId: "org1a23f456789",
+ *     organizationId: exampleOrganization.id,
  *     resourceType: "organization",
  *     resourceId: "foo",
  * });

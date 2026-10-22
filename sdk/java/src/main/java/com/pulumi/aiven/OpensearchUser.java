@@ -29,6 +29,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.aiven.OpenSearch;
+ * import com.pulumi.aiven.OpenSearchArgs;
  * import com.pulumi.aiven.OpensearchUser;
  * import com.pulumi.aiven.OpensearchUserArgs;
  * import java.util.ArrayList;
@@ -44,9 +46,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new OpensearchUser("example", OpensearchUserArgs.builder()
+ *         var exampleOpensearch = new OpenSearch("exampleOpensearch", OpenSearchArgs.builder()
  *             .project("my-project")
- *             .serviceName("my-opensearch")
+ *             .plan("startup-4")
+ *             .serviceName("example-opensearch")
+ *             .build());
+ * 
+ *         var example = new OpensearchUser("example", OpensearchUserArgs.builder()
+ *             .project(exampleOpensearch.project())
+ *             .serviceName(exampleOpensearch.serviceName())
  *             .username("testuser")
  *             .passwordWo("password123")
  *             .passwordWoVersion(1)

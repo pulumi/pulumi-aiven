@@ -28,17 +28,59 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewOrganizationProject(ctx, "example", &aiven.OrganizationProjectArgs{
+//			exampleOrganization, err := aiven.NewOrganization(ctx, "example", &aiven.OrganizationArgs{
+//				Name: pulumi.String("Aiven Ltd"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleOrganizationAddress, err := aiven.NewOrganizationAddress(ctx, "example", &aiven.OrganizationAddressArgs{
+//				OrganizationId: exampleOrganization.ID().ToIDOutput().ToStringOutput(),
+//				AddressLines: pulumi.StringArray{
+//					pulumi.String("Street 1"),
+//					pulumi.String("Street 2"),
+//				},
+//				City:        pulumi.String("Helsinki"),
+//				CountryCode: pulumi.String("FI"),
+//				Name:        pulumi.String("Aiven Oy"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleOrganizationBillingGroup, err := aiven.NewOrganizationBillingGroup(ctx, "example", &aiven.OrganizationBillingGroupArgs{
+//				PaymentMethod: &aiven.OrganizationBillingGroupPaymentMethodArgs{
+//					PaymentMethodId:   pulumi.String("pm4b1ff1ceeaa"),
+//					PaymentMethodType: pulumi.String("credit_card"),
+//				},
+//				BillingContactEmails: aiven.OrganizationBillingGroupBillingContactEmailArray{
+//					&aiven.OrganizationBillingGroupBillingContactEmailArgs{
+//						Email: pulumi.String("jane@example.com"),
+//					},
+//				},
+//				BillingEmails: aiven.OrganizationBillingGroupBillingEmailArray{
+//					&aiven.OrganizationBillingGroupBillingEmailArgs{
+//						Email: pulumi.String("jane@example.com"),
+//					},
+//				},
+//				OrganizationId:    exampleOrganization.ID().ToIDOutput().ToStringOutput(),
+//				BillingAddressId:  exampleOrganizationAddress.AddressId,
+//				ShippingAddressId: exampleOrganizationAddress.AddressId,
+//				BillingGroupName:  pulumi.String("Default billing group for the organization"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = aiven.NewOrganizationProject(ctx, "example", &aiven.OrganizationProjectArgs{
 //				Tags: aiven.OrganizationProjectTagArray{
 //					&aiven.OrganizationProjectTagArgs{
 //						Key:   pulumi.String("foo"),
 //						Value: pulumi.String("foo"),
 //					},
 //				},
-//				OrganizationId: pulumi.String("org1234abcd"),
+//				OrganizationId: exampleOrganization.ID().ToIDOutput().ToStringOutput(),
 //				ProjectId:      pulumi.String("project-1"),
-//				BillingGroupId: pulumi.String("721bf796-1d89-402d-9195-425a23c4efdc"),
-//				ParentId:       pulumi.String("a3fd7a594e01"),
+//				BillingGroupId: exampleOrganizationBillingGroup.BillingGroupId,
+//				ParentId:       exampleOrganization.ID().ToIDOutput().ToStringOutput(),
 //				BasePort:       pulumi.Int(10000),
 //				TechnicalEmails: pulumi.StringArray{
 //					pulumi.String("foo@example.com"),
@@ -71,7 +113,7 @@ type OrganizationProject struct {
 	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
 	// Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.
 	ParentId pulumi.StringOutput `pulumi:"parentId"`
-	// The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It's recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource. Changing this property forces recreation of the resource.
+	// The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It's recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource. Maximum length: `63`. Changing this property forces recreation of the resource.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
 	// Tags are key-value pairs that allow you to categorize projects.
 	Tags OrganizationProjectTagArrayOutput `pulumi:"tags"`
@@ -136,7 +178,7 @@ type organizationProjectState struct {
 	OrganizationId *string `pulumi:"organizationId"`
 	// Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.
 	ParentId *string `pulumi:"parentId"`
-	// The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It's recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource. Changing this property forces recreation of the resource.
+	// The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It's recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource. Maximum length: `63`. Changing this property forces recreation of the resource.
 	ProjectId *string `pulumi:"projectId"`
 	// Tags are key-value pairs that allow you to categorize projects.
 	Tags []OrganizationProjectTag `pulumi:"tags"`
@@ -156,7 +198,7 @@ type OrganizationProjectState struct {
 	OrganizationId pulumi.StringPtrInput
 	// Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.
 	ParentId pulumi.StringPtrInput
-	// The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It's recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource. Changing this property forces recreation of the resource.
+	// The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It's recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource. Maximum length: `63`. Changing this property forces recreation of the resource.
 	ProjectId pulumi.StringPtrInput
 	// Tags are key-value pairs that allow you to categorize projects.
 	Tags OrganizationProjectTagArrayInput
@@ -178,7 +220,7 @@ type organizationProjectArgs struct {
 	OrganizationId string `pulumi:"organizationId"`
 	// Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.
 	ParentId string `pulumi:"parentId"`
-	// The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It's recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource. Changing this property forces recreation of the resource.
+	// The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It's recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource. Maximum length: `63`. Changing this property forces recreation of the resource.
 	ProjectId string `pulumi:"projectId"`
 	// Tags are key-value pairs that allow you to categorize projects.
 	Tags []OrganizationProjectTag `pulumi:"tags"`
@@ -197,7 +239,7 @@ type OrganizationProjectArgs struct {
 	OrganizationId pulumi.StringInput
 	// Link a project to an [organization or organizational unit](https://aiven.io/docs/platform/concepts/orgs-units-projects) by using its ID. To set up proper dependencies please refer to this variable as a reference.
 	ParentId pulumi.StringInput
-	// The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It's recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource. Changing this property forces recreation of the resource.
+	// The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It's recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource. Maximum length: `63`. Changing this property forces recreation of the resource.
 	ProjectId pulumi.StringInput
 	// Tags are key-value pairs that allow you to categorize projects.
 	Tags OrganizationProjectTagArrayInput
@@ -318,7 +360,7 @@ func (o OrganizationProjectOutput) ParentId() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationProject) pulumi.StringOutput { return v.ParentId }).(pulumi.StringOutput)
 }
 
-// The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It's recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource. Changing this property forces recreation of the resource.
+// The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It's recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource. Maximum length: `63`. Changing this property forces recreation of the resource.
 func (o OrganizationProjectOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationProject) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
 }

@@ -28,9 +28,23 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewGcpOrgVpcPeeringConnection(ctx, "example", &aiven.GcpOrgVpcPeeringConnectionArgs{
-//				OrganizationId:    pulumi.String("org1a23f456789"),
-//				OrganizationVpcId: pulumi.String("1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d"),
+//			exampleOrganization, err := aiven.NewOrganization(ctx, "example", &aiven.OrganizationArgs{
+//				Name: pulumi.String("Aiven Ltd"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleOrganizationVpc, err := aiven.NewOrganizationVpc(ctx, "example", &aiven.OrganizationVpcArgs{
+//				OrganizationId: exampleOrganization.ID().ToIDOutput().ToStringOutput(),
+//				CloudName:      pulumi.String("aws-eu-west-1"),
+//				NetworkCidr:    pulumi.String("10.0.0.0/24"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = aiven.NewGcpOrgVpcPeeringConnection(ctx, "example", &aiven.GcpOrgVpcPeeringConnectionArgs{
+//				OrganizationId:    exampleOrganization.ID().ToIDOutput().ToStringOutput(),
+//				OrganizationVpcId: exampleOrganizationVpc.OrganizationVpcId,
 //				GcpProjectId:      pulumi.String("my-gcp-project"),
 //				PeerVpc:           pulumi.String("my-vpc"),
 //			})

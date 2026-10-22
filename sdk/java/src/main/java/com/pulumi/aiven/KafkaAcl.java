@@ -29,6 +29,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.aiven.Kafka;
+ * import com.pulumi.aiven.KafkaArgs;
  * import com.pulumi.aiven.KafkaAcl;
  * import com.pulumi.aiven.KafkaAclArgs;
  * import java.util.ArrayList;
@@ -44,9 +46,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new KafkaAcl("example", KafkaAclArgs.builder()
+ *         var exampleKafka = new Kafka("exampleKafka", KafkaArgs.builder()
  *             .project("my-project")
- *             .serviceName("my-kafka")
+ *             .plan("business-4")
+ *             .serviceName("example-kafka")
+ *             .build());
+ * 
+ *         var example = new KafkaAcl("example", KafkaAclArgs.builder()
+ *             .project(exampleKafka.project())
+ *             .serviceName(exampleKafka.serviceName())
  *             .permission("readwrite")
  *             .topic("top*")
  *             .username("admin*")

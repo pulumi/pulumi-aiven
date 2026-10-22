@@ -22,6 +22,24 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var exampleOrganization = new Aiven.Organization("example", new()
+    ///     {
+    ///         Name = "Aiven Ltd",
+    ///     });
+    /// 
+    ///     var exampleOrganizationAddress = new Aiven.OrganizationAddress("example", new()
+    ///     {
+    ///         OrganizationId = exampleOrganization.Id,
+    ///         AddressLines = new[]
+    ///         {
+    ///             "Street 1",
+    ///             "Street 2",
+    ///         },
+    ///         City = "Helsinki",
+    ///         CountryCode = "FI",
+    ///         Name = "Aiven Oy",
+    ///     });
+    /// 
     ///     var example = new Aiven.OrganizationBillingGroup("example", new()
     ///     {
     ///         PaymentMethod = new Aiven.Inputs.OrganizationBillingGroupPaymentMethodArgs
@@ -43,9 +61,9 @@ namespace Pulumi.Aiven
     ///                 Email = "jane@example.com",
     ///             },
     ///         },
-    ///         OrganizationId = "org1a23f456789",
-    ///         BillingAddressId = "addr4b1ff1ceeaa",
-    ///         ShippingAddressId = "addr4b1ff1ceeaa",
+    ///         OrganizationId = exampleOrganization.Id,
+    ///         BillingAddressId = exampleOrganizationAddress.AddressId,
+    ///         ShippingAddressId = exampleOrganizationAddress.AddressId,
     ///         BillingGroupName = "Default billing group for the organization",
     ///         VatId = "FI12345678",
     ///         CustomInvoiceText = "Extra billing text",

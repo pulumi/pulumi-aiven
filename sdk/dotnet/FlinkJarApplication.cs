@@ -25,10 +25,17 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Aiven.FlinkJarApplication("example", new()
+    ///     var exampleFlink = new Aiven.Flink("example_flink", new()
     ///     {
     ///         Project = "my-project",
-    ///         ServiceName = "my-application",
+    ///         Plan = "business-4",
+    ///         ServiceName = "example-flink-service",
+    ///     });
+    /// 
+    ///     var example = new Aiven.FlinkJarApplication("example", new()
+    ///     {
+    ///         Project = exampleFlink.Project,
+    ///         ServiceName = exampleFlink.ServiceName,
     ///         Name = "TestJob",
     ///     });
     /// 

@@ -15,9 +15,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const example = new aiven.PgDatabase("example", {
+ * const examplePostgres = new aiven.Pg("example_postgres", {
  *     project: "my-project",
- *     serviceName: "my-pg",
+ *     plan: "startup-4",
+ *     serviceName: "example-postgres-service",
+ * });
+ * const example = new aiven.PgDatabase("example", {
+ *     project: examplePostgres.project,
+ *     serviceName: examplePostgres.serviceName,
  *     databaseName: "testdb",
  *     lcCollate: "en_US.UTF-8",
  *     lcCtype: "en_US.UTF-8",

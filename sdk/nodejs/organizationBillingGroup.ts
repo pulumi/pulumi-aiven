@@ -15,6 +15,17 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
+ * const exampleOrganization = new aiven.Organization("example", {name: "Aiven Ltd"});
+ * const exampleOrganizationAddress = new aiven.OrganizationAddress("example", {
+ *     organizationId: exampleOrganization.id,
+ *     addressLines: [
+ *         "Street 1",
+ *         "Street 2",
+ *     ],
+ *     city: "Helsinki",
+ *     countryCode: "FI",
+ *     name: "Aiven Oy",
+ * });
  * const example = new aiven.OrganizationBillingGroup("example", {
  *     paymentMethod: {
  *         paymentMethodId: "pm4b1ff1ceeaa",
@@ -26,9 +37,9 @@ import * as utilities from "./utilities";
  *     billingEmails: [{
  *         email: "jane@example.com",
  *     }],
- *     organizationId: "org1a23f456789",
- *     billingAddressId: "addr4b1ff1ceeaa",
- *     shippingAddressId: "addr4b1ff1ceeaa",
+ *     organizationId: exampleOrganization.id,
+ *     billingAddressId: exampleOrganizationAddress.addressId,
+ *     shippingAddressId: exampleOrganizationAddress.addressId,
  *     billingGroupName: "Default billing group for the organization",
  *     vatId: "FI12345678",
  *     customInvoiceText: "Extra billing text",

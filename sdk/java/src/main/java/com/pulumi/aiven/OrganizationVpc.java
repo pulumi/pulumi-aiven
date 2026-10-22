@@ -27,6 +27,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.aiven.Organization;
+ * import com.pulumi.aiven.OrganizationArgs;
  * import com.pulumi.aiven.OrganizationVpc;
  * import com.pulumi.aiven.OrganizationVpcArgs;
  * import java.util.ArrayList;
@@ -42,8 +44,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         var exampleOrganization = new Organization("exampleOrganization", OrganizationArgs.builder()
+ *             .name("Aiven Ltd")
+ *             .build());
+ * 
  *         var example = new OrganizationVpc("example", OrganizationVpcArgs.builder()
- *             .organizationId("org1a23f456789")
+ *             .organizationId(exampleOrganization.id())
  *             .cloudName("aws-eu-west-1")
  *             .networkCidr("10.0.0.0/24")
  *             .displayName("My organization VPC")

@@ -18,11 +18,27 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const example = new aiven.FlinkJarApplicationDeployment("example", {
+ * const exampleFlink = new aiven.Flink("example_flink", {
  *     project: "my-project",
- *     serviceName: "my-application",
- *     applicationId: "foo",
- *     versionId: "543e420d-aa63-43e8-b8e8-294a78c600e7",
+ *     plan: "business-4",
+ *     serviceName: "example-flink-service",
+ * });
+ * const exampleFlinkJarApplication = new aiven.FlinkJarApplication("example", {
+ *     project: exampleFlink.project,
+ *     serviceName: exampleFlink.serviceName,
+ *     name: "TestJob",
+ * });
+ * const exampleFlinkJarApplicationVersion = new aiven.FlinkJarApplicationVersion("example", {
+ *     project: exampleFlink.project,
+ *     serviceName: exampleFlink.serviceName,
+ *     applicationId: exampleFlinkJarApplication.applicationId,
+ *     source: "./example.jar",
+ * });
+ * const example = new aiven.FlinkJarApplicationDeployment("example", {
+ *     project: exampleFlink.project,
+ *     serviceName: exampleFlink.serviceName,
+ *     applicationId: exampleFlinkJarApplication.applicationId,
+ *     versionId: exampleFlinkJarApplicationVersion.applicationVersionId,
  *     entryClass: "com.example.MyFlinkJob",
  *     parallelism: 1,
  *     programArgs: ["example-argument"],

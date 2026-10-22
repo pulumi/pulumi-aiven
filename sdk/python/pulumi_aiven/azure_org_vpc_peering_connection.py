@@ -333,9 +333,14 @@ class AzureOrgVpcPeeringConnection(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
+        example_organization = aiven.Organization("example", name="Aiven Ltd")
+        example_organization_vpc = aiven.OrganizationVpc("example",
+            organization_id=example_organization.id,
+            cloud_name="aws-eu-west-1",
+            network_cidr="10.0.0.0/24")
         example = aiven.AzureOrgVpcPeeringConnection("example",
-            organization_id="org1a23f456789",
-            organization_vpc_id="1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+            organization_id=example_organization.id,
+            organization_vpc_id=example_organization_vpc.organization_vpc_id,
             azure_subscription_id="12345678-1234-1234-1234-123456789012",
             vnet_name="my-vnet",
             peer_resource_group="my-resource-group",
@@ -375,9 +380,14 @@ class AzureOrgVpcPeeringConnection(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
+        example_organization = aiven.Organization("example", name="Aiven Ltd")
+        example_organization_vpc = aiven.OrganizationVpc("example",
+            organization_id=example_organization.id,
+            cloud_name="aws-eu-west-1",
+            network_cidr="10.0.0.0/24")
         example = aiven.AzureOrgVpcPeeringConnection("example",
-            organization_id="org1a23f456789",
-            organization_vpc_id="1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+            organization_id=example_organization.id,
+            organization_vpc_id=example_organization_vpc.organization_vpc_id,
             azure_subscription_id="12345678-1234-1234-1234-123456789012",
             vnet_name="my-vnet",
             peer_resource_group="my-resource-group",

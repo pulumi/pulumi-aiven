@@ -255,9 +255,13 @@ class KafkaAcl(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        example = aiven.KafkaAcl("example",
+        example_kafka = aiven.Kafka("example_kafka",
             project="my-project",
-            service_name="my-kafka",
+            plan="business-4",
+            service_name="example-kafka")
+        example = aiven.KafkaAcl("example",
+            project=example_kafka.project,
+            service_name=example_kafka.service_name,
             permission="readwrite",
             topic="top*",
             username="admin*")
@@ -295,9 +299,13 @@ class KafkaAcl(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        example = aiven.KafkaAcl("example",
+        example_kafka = aiven.Kafka("example_kafka",
             project="my-project",
-            service_name="my-kafka",
+            plan="business-4",
+            service_name="example-kafka")
+        example = aiven.KafkaAcl("example",
+            project=example_kafka.project,
+            service_name=example_kafka.service_name,
             permission="readwrite",
             topic="top*",
             username="admin*")

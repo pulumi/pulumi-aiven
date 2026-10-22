@@ -28,6 +28,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.aiven.Organization;
+ * import com.pulumi.aiven.OrganizationArgs;
  * import com.pulumi.aiven.OrganizationUserGroup;
  * import com.pulumi.aiven.OrganizationUserGroupArgs;
  * import java.util.ArrayList;
@@ -43,8 +45,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         var exampleOrganization = new Organization("exampleOrganization", OrganizationArgs.builder()
+ *             .name("Aiven Ltd")
+ *             .build());
+ * 
  *         var example = new OrganizationUserGroup("example", OrganizationUserGroupArgs.builder()
- *             .organizationId("org1a23f456789")
+ *             .organizationId(exampleOrganization.id())
  *             .description("The group of admins for the organization")
  *             .name("Admin Users")
  *             .build());

@@ -28,9 +28,17 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewPgUser(ctx, "example", &aiven.PgUserArgs{
-//				Project:            pulumi.String("my-project"),
-//				ServiceName:        pulumi.String("my-pg"),
+//			examplePostgres, err := aiven.NewPg(ctx, "example_postgres", &aiven.PgArgs{
+//				Project:     pulumi.String("my-project"),
+//				Plan:        pulumi.String("startup-4"),
+//				ServiceName: pulumi.String("example-postgres-service"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = aiven.NewPgUser(ctx, "example", &aiven.PgUserArgs{
+//				Project:            examplePostgres.Project,
+//				ServiceName:        examplePostgres.ServiceName,
 //				Username:           pulumi.String("testuser"),
 //				PasswordWo:         pulumi.String("password123"),
 //				PasswordWoVersion:  pulumi.Int(1),

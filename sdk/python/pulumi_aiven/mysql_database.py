@@ -214,9 +214,13 @@ class MysqlDatabase(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        example = aiven.MysqlDatabase("example",
+        example_mysql = aiven.MySql("example_mysql",
             project="my-project",
-            service_name="my-mysql",
+            plan="business-4",
+            service_name="example-mysql")
+        example = aiven.MysqlDatabase("example",
+            project=example_mysql.project,
+            service_name=example_mysql.service_name,
             database_name="testdb")
         ```
 
@@ -249,9 +253,13 @@ class MysqlDatabase(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        example = aiven.MysqlDatabase("example",
+        example_mysql = aiven.MySql("example_mysql",
             project="my-project",
-            service_name="my-mysql",
+            plan="business-4",
+            service_name="example-mysql")
+        example = aiven.MysqlDatabase("example",
+            project=example_mysql.project,
+            service_name=example_mysql.service_name,
             database_name="testdb")
         ```
 

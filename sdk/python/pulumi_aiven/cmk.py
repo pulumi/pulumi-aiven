@@ -446,7 +446,7 @@ class Cmk(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="defaultCmk")
-    def default_cmk(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def default_cmk(self) -> pulumi.Output[_builtins.bool]:
         """
         Mark the created CMK as default for all newly created services.
         """

@@ -141,6 +141,7 @@
         "kafka.ts",
         "kafkaAcl.ts",
         "kafkaConnect.ts",
+        "kafkaConnectCustomPluginFile.ts",
         "kafkaConnector.ts",
         "kafkaMirrorMaker.ts",
         "kafkaNativeAcl.ts",

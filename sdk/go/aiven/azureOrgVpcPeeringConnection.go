@@ -28,9 +28,23 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewAzureOrgVpcPeeringConnection(ctx, "example", &aiven.AzureOrgVpcPeeringConnectionArgs{
-//				OrganizationId:      pulumi.String("org1a23f456789"),
-//				OrganizationVpcId:   pulumi.String("1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d"),
+//			exampleOrganization, err := aiven.NewOrganization(ctx, "example", &aiven.OrganizationArgs{
+//				Name: pulumi.String("Aiven Ltd"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleOrganizationVpc, err := aiven.NewOrganizationVpc(ctx, "example", &aiven.OrganizationVpcArgs{
+//				OrganizationId: exampleOrganization.ID().ToIDOutput().ToStringOutput(),
+//				CloudName:      pulumi.String("aws-eu-west-1"),
+//				NetworkCidr:    pulumi.String("10.0.0.0/24"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = aiven.NewAzureOrgVpcPeeringConnection(ctx, "example", &aiven.AzureOrgVpcPeeringConnectionArgs{
+//				OrganizationId:      exampleOrganization.ID().ToIDOutput().ToStringOutput(),
+//				OrganizationVpcId:   exampleOrganizationVpc.OrganizationVpcId,
 //				AzureSubscriptionId: pulumi.String("12345678-1234-1234-1234-123456789012"),
 //				VnetName:            pulumi.String("my-vnet"),
 //				PeerResourceGroup:   pulumi.String("my-resource-group"),

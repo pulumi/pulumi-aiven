@@ -30,9 +30,17 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewKafkaNativeAcl(ctx, "example", &aiven.KafkaNativeAclArgs{
-//				Project:        pulumi.String("my-project"),
-//				ServiceName:    pulumi.String("my-kafka"),
+//			exampleKafka, err := aiven.NewKafka(ctx, "example_kafka", &aiven.KafkaArgs{
+//				Project:     pulumi.String("my-project"),
+//				Plan:        pulumi.String("business-4"),
+//				ServiceName: pulumi.String("example-kafka"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = aiven.NewKafkaNativeAcl(ctx, "example", &aiven.KafkaNativeAclArgs{
+//				Project:        exampleKafka.Project,
+//				ServiceName:    exampleKafka.ServiceName,
 //				Operation:      pulumi.String("Read"),
 //				PatternType:    pulumi.String("LITERAL"),
 //				PermissionType: pulumi.String("ALLOW"),

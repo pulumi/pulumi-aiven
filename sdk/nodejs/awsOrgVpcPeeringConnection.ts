@@ -15,9 +15,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
+ * const exampleOrganization = new aiven.Organization("example", {name: "Aiven Ltd"});
+ * const exampleOrganizationVpc = new aiven.OrganizationVpc("example", {
+ *     organizationId: exampleOrganization.id,
+ *     cloudName: "aws-eu-west-1",
+ *     networkCidr: "10.0.0.0/24",
+ * });
  * const example = new aiven.AwsOrgVpcPeeringConnection("example", {
- *     organizationId: "org1a23f456789",
- *     organizationVpcId: "1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+ *     organizationId: exampleOrganization.id,
+ *     organizationVpcId: exampleOrganizationVpc.organizationVpcId,
  *     awsAccountId: "123456789012",
  *     awsVpcId: "vpc-2f09a348",
  *     awsVpcRegion: "us-east-1",

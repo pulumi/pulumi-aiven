@@ -466,9 +466,12 @@ class OrganizationApplicationUserToken(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        example = aiven.OrganizationApplicationUserToken("example",
+        example_organization_application_user = aiven.OrganizationApplicationUser("example",
             organization_id="org1a23f456789",
-            user_id="foo",
+            name="devops app user")
+        example = aiven.OrganizationApplicationUserToken("example",
+            organization_id=example_organization_application_user.organization_id,
+            user_id=example_organization_application_user.user_id,
             description="Integration client Alpha",
             extend_when_used=False,
             ip_allowlists=[
@@ -511,9 +514,12 @@ class OrganizationApplicationUserToken(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        example = aiven.OrganizationApplicationUserToken("example",
+        example_organization_application_user = aiven.OrganizationApplicationUser("example",
             organization_id="org1a23f456789",
-            user_id="foo",
+            name="devops app user")
+        example = aiven.OrganizationApplicationUserToken("example",
+            organization_id=example_organization_application_user.organization_id,
+            user_id=example_organization_application_user.user_id,
             description="Integration client Alpha",
             extend_when_used=False,
             ip_allowlists=[

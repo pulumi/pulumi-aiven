@@ -30,6 +30,15 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.aiven.Organization;
+ * import com.pulumi.aiven.OrganizationArgs;
+ * import com.pulumi.aiven.OrganizationAddress;
+ * import com.pulumi.aiven.OrganizationAddressArgs;
+ * import com.pulumi.aiven.OrganizationBillingGroup;
+ * import com.pulumi.aiven.OrganizationBillingGroupArgs;
+ * import com.pulumi.aiven.inputs.OrganizationBillingGroupPaymentMethodArgs;
+ * import com.pulumi.aiven.inputs.OrganizationBillingGroupBillingContactEmailArgs;
+ * import com.pulumi.aiven.inputs.OrganizationBillingGroupBillingEmailArgs;
  * import com.pulumi.aiven.OrganizationProject;
  * import com.pulumi.aiven.OrganizationProjectArgs;
  * import com.pulumi.aiven.inputs.OrganizationProjectTagArgs;
@@ -46,15 +55,46 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
+ *         var exampleOrganization = new Organization("exampleOrganization", OrganizationArgs.builder()
+ *             .name("Aiven Ltd")
+ *             .build());
+ * 
+ *         var exampleOrganizationAddress = new OrganizationAddress("exampleOrganizationAddress", OrganizationAddressArgs.builder()
+ *             .organizationId(exampleOrganization.id())
+ *             .addressLines(            
+ *                 "Street 1",
+ *                 "Street 2")
+ *             .city("Helsinki")
+ *             .countryCode("FI")
+ *             .name("Aiven Oy")
+ *             .build());
+ * 
+ *         var exampleOrganizationBillingGroup = new OrganizationBillingGroup("exampleOrganizationBillingGroup", OrganizationBillingGroupArgs.builder()
+ *             .paymentMethod(OrganizationBillingGroupPaymentMethodArgs.builder()
+ *                 .paymentMethodId("pm4b1ff1ceeaa")
+ *                 .paymentMethodType("credit_card")
+ *                 .build())
+ *             .billingContactEmails(OrganizationBillingGroupBillingContactEmailArgs.builder()
+ *                 .email("jane}{@literal @}{@code example.com")
+ *                 .build())
+ *             .billingEmails(OrganizationBillingGroupBillingEmailArgs.builder()
+ *                 .email("jane}{@literal @}{@code example.com")
+ *                 .build())
+ *             .organizationId(exampleOrganization.id())
+ *             .billingAddressId(exampleOrganizationAddress.addressId())
+ *             .shippingAddressId(exampleOrganizationAddress.addressId())
+ *             .billingGroupName("Default billing group for the organization")
+ *             .build());
+ * 
  *         var example = new OrganizationProject("example", OrganizationProjectArgs.builder()
  *             .tags(OrganizationProjectTagArgs.builder()
  *                 .key("foo")
  *                 .value("foo")
  *                 .build())
- *             .organizationId("org1234abcd")
+ *             .organizationId(exampleOrganization.id())
  *             .projectId("project-1")
- *             .billingGroupId("721bf796-1d89-402d-9195-425a23c4efdc")
- *             .parentId("a3fd7a594e01")
+ *             .billingGroupId(exampleOrganizationBillingGroup.billingGroupId())
+ *             .parentId(exampleOrganization.id())
  *             .basePort(10000)
  *             .technicalEmails("foo}{@literal @}{@code example.com")
  *             .build());
@@ -144,14 +184,14 @@ public class OrganizationProject extends com.pulumi.resources.CustomResource {
         return this.parentId;
     }
     /**
-     * The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It&#39;s recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource. Changing this property forces recreation of the resource.
+     * The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It&#39;s recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource. Maximum length: `63`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="projectId", refs={String.class}, tree="[0]")
     private Output<String> projectId;
 
     /**
-     * @return The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It&#39;s recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource. Changing this property forces recreation of the resource.
+     * @return The name of the project. Names must be globally unique among all Aiven customers. Names must begin with a letter (a-z), and consist of letters, numbers, and dashes. It&#39;s recommended to use a random string or your organization name as a prefix or suffix. Changing this property forces recreation of the resource. Maximum length: `63`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> projectId() {

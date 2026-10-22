@@ -18,8 +18,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
+ * const exampleOrganization = new aiven.Organization("example", {name: "Aiven Ltd"});
  * const example = new aiven.UpgradeStep("example", {
- *     organizationId: "org1a23f456789",
+ *     organizationId: exampleOrganization.id,
  *     destinationProjectName: "prod-project",
  *     destinationServiceName: "pg-prod",
  *     sourceProjectName: "dev-project",

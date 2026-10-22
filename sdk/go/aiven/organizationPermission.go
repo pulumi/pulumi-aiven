@@ -34,7 +34,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewOrganizationPermission(ctx, "example", &aiven.OrganizationPermissionArgs{
+//			exampleOrganization, err := aiven.NewOrganization(ctx, "example", &aiven.OrganizationArgs{
+//				Name: pulumi.String("Aiven Ltd"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = aiven.NewOrganizationPermission(ctx, "example", &aiven.OrganizationPermissionArgs{
 //				Permissions: aiven.OrganizationPermissionPermissionArray{
 //					&aiven.OrganizationPermissionPermissionArgs{
 //						PrincipalId: pulumi.String("u12345"),
@@ -44,7 +50,7 @@ import (
 //						PrincipalType: pulumi.String("user"),
 //					},
 //				},
-//				OrganizationId: pulumi.String("org1a23f456789"),
+//				OrganizationId: exampleOrganization.ID().ToIDOutput().ToStringOutput(),
 //				ResourceType:   pulumi.String("organization"),
 //				ResourceId:     pulumi.String("foo"),
 //			})

@@ -15,8 +15,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
+ * const exampleOrganization = new aiven.Organization("example", {name: "Aiven Ltd"});
  * const example = new aiven.OrganizationAddress("example", {
- *     organizationId: "org1a23f456789",
+ *     organizationId: exampleOrganization.id,
  *     addressLines: [
  *         "Street 1",
  *         "Street 2",

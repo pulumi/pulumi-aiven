@@ -340,9 +340,13 @@ class KafkaUser(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        example = aiven.KafkaUser("example",
+        example_kafka = aiven.Kafka("example_kafka",
             project="my-project",
-            service_name="my-kafka",
+            plan="business-4",
+            service_name="example-kafka")
+        example = aiven.KafkaUser("example",
+            project=example_kafka.project,
+            service_name=example_kafka.service_name,
             username="testuser",
             password_wo="password123",
             password_wo_version=1)
@@ -380,9 +384,13 @@ class KafkaUser(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        example = aiven.KafkaUser("example",
+        example_kafka = aiven.Kafka("example_kafka",
             project="my-project",
-            service_name="my-kafka",
+            plan="business-4",
+            service_name="example-kafka")
+        example = aiven.KafkaUser("example",
+            project=example_kafka.project,
+            service_name=example_kafka.service_name,
             username="testuser",
             password_wo="password123",
             password_wo_version=1)

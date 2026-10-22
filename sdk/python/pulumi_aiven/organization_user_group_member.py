@@ -189,9 +189,14 @@ class OrganizationUserGroupMember(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
+        example_organization = aiven.Organization("example", name="Aiven Ltd")
+        example_organization_user_group = aiven.OrganizationUserGroup("example",
+            organization_id=example_organization.id,
+            description="The group of admins for the organization",
+            name="Admin Users")
         example = aiven.OrganizationUserGroupMember("example",
-            organization_id="org1a23f456789",
-            group_id="foo",
+            organization_id=example_organization.id,
+            group_id=example_organization_user_group.group_id,
             user_id="foo")
         ```
 
@@ -223,9 +228,14 @@ class OrganizationUserGroupMember(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
+        example_organization = aiven.Organization("example", name="Aiven Ltd")
+        example_organization_user_group = aiven.OrganizationUserGroup("example",
+            organization_id=example_organization.id,
+            description="The group of admins for the organization",
+            name="Admin Users")
         example = aiven.OrganizationUserGroupMember("example",
-            organization_id="org1a23f456789",
-            group_id="foo",
+            organization_id=example_organization.id,
+            group_id=example_organization_user_group.group_id,
             user_id="foo")
         ```
 

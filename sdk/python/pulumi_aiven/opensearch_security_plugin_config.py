@@ -225,9 +225,13 @@ class OpensearchSecurityPluginConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        example = aiven.OpensearchSecurityPluginConfig("example",
+        example_opensearch = aiven.OpenSearch("example_opensearch",
             project="my-project",
-            service_name="my-opensearch",
+            plan="startup-4",
+            service_name="example-opensearch")
+        example = aiven.OpensearchSecurityPluginConfig("example",
+            project=example_opensearch.project,
+            service_name=example_opensearch.service_name,
             admin_password="h3.2aD!z2")
         ```
 
@@ -263,9 +267,13 @@ class OpensearchSecurityPluginConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        example = aiven.OpensearchSecurityPluginConfig("example",
+        example_opensearch = aiven.OpenSearch("example_opensearch",
             project="my-project",
-            service_name="my-opensearch",
+            plan="startup-4",
+            service_name="example-opensearch")
+        example = aiven.OpensearchSecurityPluginConfig("example",
+            project=example_opensearch.project,
+            service_name=example_opensearch.service_name,
             admin_password="h3.2aD!z2")
         ```
 

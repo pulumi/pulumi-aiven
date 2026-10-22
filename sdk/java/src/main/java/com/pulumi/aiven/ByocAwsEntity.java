@@ -34,6 +34,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.aiven.Organization;
+ * import com.pulumi.aiven.OrganizationArgs;
  * import com.pulumi.aiven.ByocAwsEntity;
  * import com.pulumi.aiven.ByocAwsEntityArgs;
  * import com.pulumi.aiven.inputs.ByocAwsEntityContactEmailArgs;
@@ -50,13 +52,17 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
+ *         var exampleOrganization = new Organization("exampleOrganization", OrganizationArgs.builder()
+ *             .name("Aiven Ltd")
+ *             .build());
+ * 
  *         var example = new ByocAwsEntity("example", ByocAwsEntityArgs.builder()
  *             .contactEmails(ByocAwsEntityContactEmailArgs.builder()
  *                 .email("jane}{@literal @}{@code example.com")
  *                 .realName("Jane Smith")
  *                 .role("admin")
  *                 .build())
- *             .organizationId("org1a23f456789")
+ *             .organizationId(exampleOrganization.id())
  *             .cloudProvider("aws")
  *             .cloudRegion("eu-west-1")
  *             .deploymentModel("standard")

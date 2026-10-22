@@ -19,9 +19,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const example = new aiven.OpensearchSecurityPluginConfig("example", {
+ * const exampleOpensearch = new aiven.OpenSearch("example_opensearch", {
  *     project: "my-project",
- *     serviceName: "my-opensearch",
+ *     plan: "startup-4",
+ *     serviceName: "example-opensearch",
+ * });
+ * const example = new aiven.OpensearchSecurityPluginConfig("example", {
+ *     project: exampleOpensearch.project,
+ *     serviceName: exampleOpensearch.serviceName,
  *     adminPassword: "h3.2aD!z2",
  * });
  * ```

@@ -18,10 +18,20 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const example = new aiven.FlinkJarApplicationVersion("example", {
+ * const exampleFlink = new aiven.Flink("example_flink", {
  *     project: "my-project",
- *     serviceName: "my-application",
- *     applicationId: "foo",
+ *     plan: "business-4",
+ *     serviceName: "example-flink-service",
+ * });
+ * const exampleFlinkJarApplication = new aiven.FlinkJarApplication("example", {
+ *     project: exampleFlink.project,
+ *     serviceName: exampleFlink.serviceName,
+ *     name: "TestJob",
+ * });
+ * const example = new aiven.FlinkJarApplicationVersion("example", {
+ *     project: exampleFlink.project,
+ *     serviceName: exampleFlink.serviceName,
+ *     applicationId: exampleFlinkJarApplication.applicationId,
  *     source: "./example.jar",
  * });
  * ```
@@ -81,6 +91,10 @@ export class FlinkJarApplicationVersion extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly fileInfos: pulumi.Output<outputs.FlinkJarApplicationVersionFileInfo[]>;
     /**
+     * The sha256 checksum of the uploaded jar file.
+     */
+    declare public /*out*/ readonly fileSha256: pulumi.Output<string>;
+    /**
      * Project name. Changing this property forces recreation of the resource.
      */
     declare public readonly project: pulumi.Output<string>;
@@ -92,10 +106,6 @@ export class FlinkJarApplicationVersion extends pulumi.CustomResource {
      * The path to the jar file to upload.
      */
     declare public readonly source: pulumi.Output<string>;
-    /**
-     * The sha256 checksum of the jar file to upload.
-     */
-    declare public /*out*/ readonly sourceChecksum: pulumi.Output<string>;
     declare public readonly timeouts: pulumi.Output<outputs.FlinkJarApplicationVersionTimeouts | undefined>;
     /**
      * Version number.
@@ -120,10 +130,10 @@ export class FlinkJarApplicationVersion extends pulumi.CustomResource {
             resourceInputs["createdAt"] = state?.createdAt;
             resourceInputs["createdBy"] = state?.createdBy;
             resourceInputs["fileInfos"] = state?.fileInfos;
+            resourceInputs["fileSha256"] = state?.fileSha256;
             resourceInputs["project"] = state?.project;
             resourceInputs["serviceName"] = state?.serviceName;
             resourceInputs["source"] = state?.source;
-            resourceInputs["sourceChecksum"] = state?.sourceChecksum;
             resourceInputs["timeouts"] = state?.timeouts;
             resourceInputs["version"] = state?.version;
         } else {
@@ -149,7 +159,7 @@ export class FlinkJarApplicationVersion extends pulumi.CustomResource {
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["createdBy"] = undefined /*out*/;
             resourceInputs["fileInfos"] = undefined /*out*/;
-            resourceInputs["sourceChecksum"] = undefined /*out*/;
+            resourceInputs["fileSha256"] = undefined /*out*/;
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -182,6 +192,10 @@ export interface FlinkJarApplicationVersionState {
      */
     fileInfos?: pulumi.Input<pulumi.Input<inputs.FlinkJarApplicationVersionFileInfo>[] | undefined>;
     /**
+     * The sha256 checksum of the uploaded jar file.
+     */
+    fileSha256?: pulumi.Input<string | undefined>;
+    /**
      * Project name. Changing this property forces recreation of the resource.
      */
     project?: pulumi.Input<string | undefined>;
@@ -193,10 +207,6 @@ export interface FlinkJarApplicationVersionState {
      * The path to the jar file to upload.
      */
     source?: pulumi.Input<string | undefined>;
-    /**
-     * The sha256 checksum of the jar file to upload.
-     */
-    sourceChecksum?: pulumi.Input<string | undefined>;
     timeouts?: pulumi.Input<inputs.FlinkJarApplicationVersionTimeouts | undefined>;
     /**
      * Version number.

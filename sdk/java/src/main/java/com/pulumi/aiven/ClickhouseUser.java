@@ -30,6 +30,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.aiven.Clickhouse;
+ * import com.pulumi.aiven.ClickhouseArgs;
  * import com.pulumi.aiven.ClickhouseUser;
  * import com.pulumi.aiven.ClickhouseUserArgs;
  * import java.util.ArrayList;
@@ -45,9 +47,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new ClickhouseUser("example", ClickhouseUserArgs.builder()
+ *         var exampleClickhouse = new Clickhouse("exampleClickhouse", ClickhouseArgs.builder()
  *             .project("my-project")
- *             .serviceName("my-clickhouse")
+ *             .plan("business-4")
+ *             .serviceName("example-clickhouse-service")
+ *             .build());
+ * 
+ *         var example = new ClickhouseUser("example", ClickhouseUserArgs.builder()
+ *             .project(exampleClickhouse.project())
+ *             .serviceName(exampleClickhouse.serviceName())
  *             .username("alice")
  *             .passwordWo("password123")
  *             .passwordWoVersion(1)

@@ -15,9 +15,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const example = new aiven.KafkaSchemaRegistryAcl("example", {
+ * const exampleKafka = new aiven.Kafka("example_kafka", {
  *     project: "my-project",
- *     serviceName: "my-kafka",
+ *     plan: "business-4",
+ *     serviceName: "example-kafka",
+ * });
+ * const example = new aiven.KafkaSchemaRegistryAcl("example", {
+ *     project: exampleKafka.project,
+ *     serviceName: exampleKafka.serviceName,
  *     permission: "schema_registry_read",
  *     resource: "Config:",
  *     username: "admin*",

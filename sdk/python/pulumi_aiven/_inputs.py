@@ -185,6 +185,10 @@ __all__ = [
     'KafkaComponentArgsDict',
     'KafkaConnectComponentArgs',
     'KafkaConnectComponentArgsDict',
+    'KafkaConnectCustomPluginFilePluginClassArgs',
+    'KafkaConnectCustomPluginFilePluginClassArgsDict',
+    'KafkaConnectCustomPluginFileTimeoutsArgs',
+    'KafkaConnectCustomPluginFileTimeoutsArgsDict',
     'KafkaConnectKafkaConnectUserConfigArgs',
     'KafkaConnectKafkaConnectUserConfigArgsDict',
     'KafkaConnectKafkaConnectUserConfigCustomPluginArgs',
@@ -10425,6 +10429,328 @@ class KafkaConnectComponentArgs:
     @usage.setter
     def usage(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "usage", value)
+
+
+class KafkaConnectCustomPluginFilePluginClassArgsDict(TypedDict):
+    author: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Plugin author, initially populated from META-INF/MANIFEST.MF (Specification-Vendor or Implementation-Vendor) and user-updatable.
+    """
+    created_at: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Creation timestamp in ISO 8601 format, always in UTC.
+    """
+    created_by: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Email address of the user who created this entity.
+    """
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional user-provided description of the plugin class.
+    """
+    doc_url: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    URL to the plugin class documentation.
+    """
+    plugin_class: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Fully qualified connector class name. Immutable after creation.
+    """
+    plugin_class_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Type of plugin class: source, sink, transformation. The possible values are `sink`, `source` and `transformation`.
+    """
+    title: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Human-readable plugin class title.
+    """
+    updated_at: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Last update timestamp in ISO 8601 format, always in UTC.
+    """
+    updated_by: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Email address of the user who last updated this entity.
+    """
+
+@pulumi.input_type
+class KafkaConnectCustomPluginFilePluginClassArgs:
+    def __init__(__self__, *,
+                 author: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_by: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 doc_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 plugin_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 plugin_class_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 title: pulumi.Input[Optional[_builtins.str]] = None,
+                 updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 updated_by: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] author: Plugin author, initially populated from META-INF/MANIFEST.MF (Specification-Vendor or Implementation-Vendor) and user-updatable.
+        :param pulumi.Input[_builtins.str] created_at: Creation timestamp in ISO 8601 format, always in UTC.
+        :param pulumi.Input[_builtins.str] created_by: Email address of the user who created this entity.
+        :param pulumi.Input[_builtins.str] description: Optional user-provided description of the plugin class.
+        :param pulumi.Input[_builtins.str] doc_url: URL to the plugin class documentation.
+        :param pulumi.Input[_builtins.str] plugin_class: Fully qualified connector class name. Immutable after creation.
+        :param pulumi.Input[_builtins.str] plugin_class_type: Type of plugin class: source, sink, transformation. The possible values are `sink`, `source` and `transformation`.
+        :param pulumi.Input[_builtins.str] title: Human-readable plugin class title.
+        :param pulumi.Input[_builtins.str] updated_at: Last update timestamp in ISO 8601 format, always in UTC.
+        :param pulumi.Input[_builtins.str] updated_by: Email address of the user who last updated this entity.
+        """
+        if author is not None:
+            pulumi.set(__self__, "author", author)
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if created_by is not None:
+            pulumi.set(__self__, "created_by", created_by)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if doc_url is not None:
+            pulumi.set(__self__, "doc_url", doc_url)
+        if plugin_class is not None:
+            pulumi.set(__self__, "plugin_class", plugin_class)
+        if plugin_class_type is not None:
+            pulumi.set(__self__, "plugin_class_type", plugin_class_type)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
+        if updated_by is not None:
+            pulumi.set(__self__, "updated_by", updated_by)
+
+    @_builtins.property
+    @pulumi.getter
+    def author(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Plugin author, initially populated from META-INF/MANIFEST.MF (Specification-Vendor or Implementation-Vendor) and user-updatable.
+        """
+        return pulumi.get(self, "author")
+
+    @author.setter
+    def author(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "author", value)
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Creation timestamp in ISO 8601 format, always in UTC.
+        """
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "created_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Email address of the user who created this entity.
+        """
+        return pulumi.get(self, "created_by")
+
+    @created_by.setter
+    def created_by(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "created_by", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional user-provided description of the plugin class.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="docUrl")
+    def doc_url(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        URL to the plugin class documentation.
+        """
+        return pulumi.get(self, "doc_url")
+
+    @doc_url.setter
+    def doc_url(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "doc_url", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pluginClass")
+    def plugin_class(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Fully qualified connector class name. Immutable after creation.
+        """
+        return pulumi.get(self, "plugin_class")
+
+    @plugin_class.setter
+    def plugin_class(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "plugin_class", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pluginClassType")
+    def plugin_class_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Type of plugin class: source, sink, transformation. The possible values are `sink`, `source` and `transformation`.
+        """
+        return pulumi.get(self, "plugin_class_type")
+
+    @plugin_class_type.setter
+    def plugin_class_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "plugin_class_type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Human-readable plugin class title.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "title", value)
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Last update timestamp in ISO 8601 format, always in UTC.
+        """
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "updated_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="updatedBy")
+    def updated_by(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Email address of the user who last updated this entity.
+        """
+        return pulumi.get(self, "updated_by")
+
+    @updated_by.setter
+    def updated_by(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "updated_by", value)
+
+
+class KafkaConnectCustomPluginFileTimeoutsArgsDict(TypedDict):
+    create: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
+    default: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+    """
+    delete: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+    """
+    read: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+    """
+    update: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
+
+@pulumi.input_type
+class KafkaConnectCustomPluginFileTimeoutsArgs:
+    def __init__(__self__, *,
+                 create: pulumi.Input[Optional[_builtins.str]] = None,
+                 default: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete: pulumi.Input[Optional[_builtins.str]] = None,
+                 read: pulumi.Input[Optional[_builtins.str]] = None,
+                 update: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param pulumi.Input[_builtins.str] default: Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+        :param pulumi.Input[_builtins.str] delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param pulumi.Input[_builtins.str] read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param pulumi.Input[_builtins.str] update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if default is not None:
+            warnings.warn("""Use operation-specific timeouts instead. This field will be removed in the next major version.""", DeprecationWarning)
+            pulumi.log.warn("""default is deprecated: Use operation-specific timeouts instead. This field will be removed in the next major version.""")
+        if default is not None:
+            pulumi.set(__self__, "default", default)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @create.setter
+    def create(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "create", value)
+
+    @_builtins.property
+    @pulumi.getter
+    @_utilities.deprecated("""Use operation-specific timeouts instead. This field will be removed in the next major version.""")
+    def default(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+        """
+        return pulumi.get(self, "default")
+
+    @default.setter
+    def default(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "default", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @delete.setter
+    def delete(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "delete", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "read", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+    @update.setter
+    def update(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "update", value)
 
 
 class KafkaConnectKafkaConnectUserConfigArgsDict(TypedDict):
@@ -28717,7 +29043,7 @@ class OrganizationGroupProjectTimeoutsArgs:
 class OrganizationPermissionPermissionArgsDict(TypedDict):
     permissions: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
     """
-    List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant". The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:event_logs:read`, `organization:groups:read`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:sustainability:read`, `organization:users:read`, `organization:users:write`, `project:ai_gateway_keys:read`, `project:ai_gateway_keys:write`, `project:audit_logs:read`, `project:event_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:project:admin`, `role:project:manager`, `role:project:read`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:metrics:read`, `service:secrets:read` and `service:users:write`.
+    List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant". The possible values are `admin`, `application:access:connect`, `developer`, `operator`, `organization:app_users:write`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:event_logs:read`, `organization:groups:read`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:sustainability:read`, `organization:users:read`, `organization:users:write`, `project:ai_gateway_keys:read`, `project:ai_gateway_keys:write`, `project:audit_logs:read`, `project:event_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:project:admin`, `role:project:manager`, `role:project:read`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:metrics:read`, `service:secrets:read` and `service:users:write`.
     """
     principal_id: pulumi.Input[_builtins.str]
     """
@@ -28745,7 +29071,7 @@ class OrganizationPermissionPermissionArgs:
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] permissions: List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant". The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:event_logs:read`, `organization:groups:read`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:sustainability:read`, `organization:users:read`, `organization:users:write`, `project:ai_gateway_keys:read`, `project:ai_gateway_keys:write`, `project:audit_logs:read`, `project:event_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:project:admin`, `role:project:manager`, `role:project:read`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:metrics:read`, `service:secrets:read` and `service:users:write`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] permissions: List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant". The possible values are `admin`, `application:access:connect`, `developer`, `operator`, `organization:app_users:write`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:event_logs:read`, `organization:groups:read`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:sustainability:read`, `organization:users:read`, `organization:users:write`, `project:ai_gateway_keys:read`, `project:ai_gateway_keys:write`, `project:audit_logs:read`, `project:event_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:project:admin`, `role:project:manager`, `role:project:read`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:metrics:read`, `service:secrets:read` and `service:users:write`.
         :param pulumi.Input[_builtins.str] principal_id: ID of the user or group to grant permissions to. Only active users who have accepted an [invite](https://aiven.io/docs/platform/howto/manage-org-users) to join the organization can be granted permissions.
         :param pulumi.Input[_builtins.str] principal_type: An enumeration. The possible values are `user` and `user_group`.
         :param pulumi.Input[_builtins.str] create_time: Create Time.
@@ -28763,7 +29089,7 @@ class OrganizationPermissionPermissionArgs:
     @pulumi.getter
     def permissions(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
         """
-        List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant". The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:event_logs:read`, `organization:groups:read`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:sustainability:read`, `organization:users:read`, `organization:users:write`, `project:ai_gateway_keys:read`, `project:ai_gateway_keys:write`, `project:audit_logs:read`, `project:event_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:project:admin`, `role:project:manager`, `role:project:read`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:metrics:read`, `service:secrets:read` and `service:users:write`.
+        List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant". The possible values are `admin`, `application:access:connect`, `developer`, `operator`, `organization:app_users:write`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:event_logs:read`, `organization:groups:read`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:sustainability:read`, `organization:users:read`, `organization:users:write`, `project:ai_gateway_keys:read`, `project:ai_gateway_keys:write`, `project:audit_logs:read`, `project:event_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `read_only`, `role:organization:admin`, `role:project:admin`, `role:project:manager`, `role:project:read`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:metrics:read`, `service:secrets:read` and `service:users:write`.
         """
         return pulumi.get(self, "permissions")
 
@@ -46178,6 +46504,10 @@ class GetServiceListServiceArgsDict(TypedDict):
     """
     Megabytes of disk space for data storage.
     """
+    first_use_time: _builtins.str
+    """
+    Timestamp when the service was first used (ISO 8601), null if it has not been used yet.
+    """
     is_cluster_plan: _builtins.bool
     """
     True when the service uses a cluster plan with dedicated node groups.
@@ -46239,6 +46569,7 @@ class GetServiceListServiceArgs:
                  cmk_id: _builtins.str,
                  create_time: _builtins.str,
                  disk_space_mb: _builtins.int,
+                 first_use_time: _builtins.str,
                  is_cluster_plan: _builtins.bool,
                  node_count: _builtins.int,
                  node_cpu_count: _builtins.int,
@@ -46258,6 +46589,7 @@ class GetServiceListServiceArgs:
         :param _builtins.str cmk_id: Active Customer Managed Key identifier (CMK ID).
         :param _builtins.str create_time: Service creation timestamp (ISO 8601).
         :param _builtins.int disk_space_mb: Megabytes of disk space for data storage.
+        :param _builtins.str first_use_time: Timestamp when the service was first used (ISO 8601), null if it has not been used yet.
         :param _builtins.bool is_cluster_plan: True when the service uses a cluster plan with dedicated node groups.
         :param _builtins.int node_count: Number of service nodes in the active plan.
         :param _builtins.int node_cpu_count: Number of CPUs for each node.
@@ -46277,6 +46609,7 @@ class GetServiceListServiceArgs:
         pulumi.set(__self__, "cmk_id", cmk_id)
         pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "disk_space_mb", disk_space_mb)
+        pulumi.set(__self__, "first_use_time", first_use_time)
         pulumi.set(__self__, "is_cluster_plan", is_cluster_plan)
         pulumi.set(__self__, "node_count", node_count)
         pulumi.set(__self__, "node_cpu_count", node_cpu_count)
@@ -46350,6 +46683,18 @@ class GetServiceListServiceArgs:
     @disk_space_mb.setter
     def disk_space_mb(self, value: _builtins.int):
         pulumi.set(self, "disk_space_mb", value)
+
+    @_builtins.property
+    @pulumi.getter(name="firstUseTime")
+    def first_use_time(self) -> _builtins.str:
+        """
+        Timestamp when the service was first used (ISO 8601), null if it has not been used yet.
+        """
+        return pulumi.get(self, "first_use_time")
+
+    @first_use_time.setter
+    def first_use_time(self, value: _builtins.str):
+        pulumi.set(self, "first_use_time", value)
 
     @_builtins.property
     @pulumi.getter(name="isClusterPlan")

@@ -34,6 +34,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int DiskSpaceMb;
         /// <summary>
+        /// Timestamp when the service was first used (ISO 8601), null if it has not been used yet.
+        /// </summary>
+        public readonly string FirstUseTime;
+        /// <summary>
         /// True when the service uses a cluster plan with dedicated node groups.
         /// </summary>
         public readonly bool IsClusterPlan;
@@ -98,6 +102,8 @@ namespace Pulumi.Aiven.Outputs
 
             int diskSpaceMb,
 
+            string firstUseTime,
+
             bool isClusterPlan,
 
             int nodeCount,
@@ -129,6 +135,7 @@ namespace Pulumi.Aiven.Outputs
             CmkId = cmkId;
             CreateTime = createTime;
             DiskSpaceMb = diskSpaceMb;
+            FirstUseTime = firstUseTime;
             IsClusterPlan = isClusterPlan;
             NodeCount = nodeCount;
             NodeCpuCount = nodeCpuCount;

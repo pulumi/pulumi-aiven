@@ -238,8 +238,9 @@ class OrganizationUserGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
+        example_organization = aiven.Organization("example", name="Aiven Ltd")
         example = aiven.OrganizationUserGroup("example",
-            organization_id="org1a23f456789",
+            organization_id=example_organization.id,
             description="The group of admins for the organization",
             name="Admin Users")
         ```
@@ -272,8 +273,9 @@ class OrganizationUserGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
+        example_organization = aiven.Organization("example", name="Aiven Ltd")
         example = aiven.OrganizationUserGroup("example",
-            organization_id="org1a23f456789",
+            organization_id=example_organization.id,
             description="The group of admins for the organization",
             name="Admin Users")
         ```

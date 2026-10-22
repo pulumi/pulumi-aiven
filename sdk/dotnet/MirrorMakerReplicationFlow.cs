@@ -22,10 +22,17 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Aiven.MirrorMakerReplicationFlow("example", new()
+    ///     var exampleMirrormaker = new Aiven.KafkaMirrorMaker("example_mirrormaker", new()
     ///     {
     ///         Project = "my-project",
-    ///         ServiceName = "foo",
+    ///         Plan = "startup-4",
+    ///         ServiceName = "example-mirrormaker-service",
+    ///     });
+    /// 
+    ///     var example = new Aiven.MirrorMakerReplicationFlow("example", new()
+    ///     {
+    ///         Project = exampleMirrormaker.Project,
+    ///         ServiceName = exampleMirrormaker.ServiceName,
     ///         SourceCluster = "kafka-abc",
     ///         TargetCluster = "kafka-abc",
     ///         Enable = true,
@@ -83,7 +90,7 @@ namespace Pulumi.Aiven
         /// Adds a diskless_az= hint to the replication flow's Kafka client.id so that diskless Kafka clusters serve the flow from brokers in the same availability zone.
         /// </summary>
         [Output("disklessAzEnabled")]
-        public Output<bool?> DisklessAzEnabled { get; private set; } = null!;
+        public Output<bool> DisklessAzEnabled { get; private set; } = null!;
 
         /// <summary>
         /// Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `False`.

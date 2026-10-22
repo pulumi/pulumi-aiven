@@ -30,6 +30,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.aiven.KafkaMirrorMaker;
+ * import com.pulumi.aiven.KafkaMirrorMakerArgs;
  * import com.pulumi.aiven.MirrorMakerReplicationFlow;
  * import com.pulumi.aiven.MirrorMakerReplicationFlowArgs;
  * import java.util.ArrayList;
@@ -45,9 +47,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new MirrorMakerReplicationFlow("example", MirrorMakerReplicationFlowArgs.builder()
+ *         var exampleMirrormaker = new KafkaMirrorMaker("exampleMirrormaker", KafkaMirrorMakerArgs.builder()
  *             .project("my-project")
- *             .serviceName("foo")
+ *             .plan("startup-4")
+ *             .serviceName("example-mirrormaker-service")
+ *             .build());
+ * 
+ *         var example = new MirrorMakerReplicationFlow("example", MirrorMakerReplicationFlowArgs.builder()
+ *             .project(exampleMirrormaker.project())
+ *             .serviceName(exampleMirrormaker.serviceName())
  *             .sourceCluster("kafka-abc")
  *             .targetCluster("kafka-abc")
  *             .enable(true)
@@ -109,14 +117,14 @@ public class MirrorMakerReplicationFlow extends com.pulumi.resources.CustomResou
      * 
      */
     @Export(name="disklessAzEnabled", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> disklessAzEnabled;
+    private Output<Boolean> disklessAzEnabled;
 
     /**
      * @return Adds a diskless_az= hint to the replication flow&#39;s Kafka client.id so that diskless Kafka clusters serve the flow from brokers in the same availability zone.
      * 
      */
-    public Output<Optional<Boolean>> disklessAzEnabled() {
-        return Codegen.optional(this.disklessAzEnabled);
+    public Output<Boolean> disklessAzEnabled() {
+        return this.disklessAzEnabled;
     }
     /**
      * Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.

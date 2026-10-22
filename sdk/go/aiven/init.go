@@ -101,6 +101,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &KafkaAcl{}
 	case "aiven:index/kafkaConnect:KafkaConnect":
 		r = &KafkaConnect{}
+	case "aiven:index/kafkaConnectCustomPluginFile:KafkaConnectCustomPluginFile":
+		r = &KafkaConnectCustomPluginFile{}
 	case "aiven:index/kafkaConnector:KafkaConnector":
 		r = &KafkaConnector{}
 	case "aiven:index/kafkaMirrorMaker:KafkaMirrorMaker":
@@ -420,6 +422,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"aiven",
 		"index/kafkaConnect",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"aiven",
+		"index/kafkaConnectCustomPluginFile",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

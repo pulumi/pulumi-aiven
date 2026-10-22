@@ -31,11 +31,36 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewFlinkJarApplicationDeployment(ctx, "example", &aiven.FlinkJarApplicationDeploymentArgs{
-//				Project:       pulumi.String("my-project"),
-//				ServiceName:   pulumi.String("my-application"),
-//				ApplicationId: pulumi.String("foo"),
-//				VersionId:     pulumi.String("543e420d-aa63-43e8-b8e8-294a78c600e7"),
+//			exampleFlink, err := aiven.NewFlink(ctx, "example_flink", &aiven.FlinkArgs{
+//				Project:     pulumi.String("my-project"),
+//				Plan:        pulumi.String("business-4"),
+//				ServiceName: pulumi.String("example-flink-service"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleFlinkJarApplication, err := aiven.NewFlinkJarApplication(ctx, "example", &aiven.FlinkJarApplicationArgs{
+//				Project:     exampleFlink.Project,
+//				ServiceName: exampleFlink.ServiceName,
+//				Name:        pulumi.String("TestJob"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleFlinkJarApplicationVersion, err := aiven.NewFlinkJarApplicationVersion(ctx, "example", &aiven.FlinkJarApplicationVersionArgs{
+//				Project:       exampleFlink.Project,
+//				ServiceName:   exampleFlink.ServiceName,
+//				ApplicationId: exampleFlinkJarApplication.ApplicationId,
+//				Source:        pulumi.String("./example.jar"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = aiven.NewFlinkJarApplicationDeployment(ctx, "example", &aiven.FlinkJarApplicationDeploymentArgs{
+//				Project:       exampleFlink.Project,
+//				ServiceName:   exampleFlink.ServiceName,
+//				ApplicationId: exampleFlinkJarApplication.ApplicationId,
+//				VersionId:     exampleFlinkJarApplicationVersion.ApplicationVersionId,
 //				EntryClass:    pulumi.String("com.example.MyFlinkJob"),
 //				Parallelism:   pulumi.Int(1),
 //				ProgramArgs: pulumi.StringArray{

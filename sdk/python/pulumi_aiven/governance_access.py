@@ -257,6 +257,7 @@ class GovernanceAccess(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
+        example_organization = aiven.Organization("example", name="Aiven Ltd")
         example = aiven.GovernanceAccess("example",
             access_data={
                 "acls": [{
@@ -270,7 +271,7 @@ class GovernanceAccess(pulumi.CustomResource):
                 "service_name": "service-1",
                 "username": "api3",
             },
-            organization_id="org1a23f456789",
+            organization_id=example_organization.id,
             access_name="My Access",
             access_type="KAFKA",
             owner_user_group_id="ug22ba494e096")
@@ -309,6 +310,7 @@ class GovernanceAccess(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
+        example_organization = aiven.Organization("example", name="Aiven Ltd")
         example = aiven.GovernanceAccess("example",
             access_data={
                 "acls": [{
@@ -322,7 +324,7 @@ class GovernanceAccess(pulumi.CustomResource):
                 "service_name": "service-1",
                 "username": "api3",
             },
-            organization_id="org1a23f456789",
+            organization_id=example_organization.id,
             access_name="My Access",
             access_type="KAFKA",
             owner_user_group_id="ug22ba494e096")

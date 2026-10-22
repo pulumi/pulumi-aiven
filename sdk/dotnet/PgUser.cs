@@ -22,10 +22,17 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new Aiven.PgUser("example", new()
+    ///     var examplePostgres = new Aiven.Pg("example_postgres", new()
     ///     {
     ///         Project = "my-project",
-    ///         ServiceName = "my-pg",
+    ///         Plan = "startup-4",
+    ///         ServiceName = "example-postgres-service",
+    ///     });
+    /// 
+    ///     var example = new Aiven.PgUser("example", new()
+    ///     {
+    ///         Project = examplePostgres.Project,
+    ///         ServiceName = examplePostgres.ServiceName,
     ///         Username = "testuser",
     ///         PasswordWo = "password123",
     ///         PasswordWoVersion = 1,

@@ -211,13 +211,14 @@ class OrganizationPermission(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
+        example_organization = aiven.Organization("example", name="Aiven Ltd")
         example = aiven.OrganizationPermission("example",
             permissions=[{
                 "principal_id": "u12345",
                 "permissions": ["read_only"],
                 "principal_type": "user",
             }],
-            organization_id="org1a23f456789",
+            organization_id=example_organization.id,
             resource_type="organization",
             resource_id="foo")
         ```
@@ -257,13 +258,14 @@ class OrganizationPermission(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
+        example_organization = aiven.Organization("example", name="Aiven Ltd")
         example = aiven.OrganizationPermission("example",
             permissions=[{
                 "principal_id": "u12345",
                 "permissions": ["read_only"],
                 "principal_type": "user",
             }],
-            organization_id="org1a23f456789",
+            organization_id=example_organization.id,
             resource_type="organization",
             resource_id="foo")
         ```

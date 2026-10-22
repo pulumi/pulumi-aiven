@@ -13,6 +13,442 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThreshold struct {
+	// Debug threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.
+	Debug *string `pulumi:"debug"`
+	// Info threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.
+	Info *string `pulumi:"info"`
+	// Trace threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.
+	Trace *string `pulumi:"trace"`
+	// Warning threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.
+	Warn *string `pulumi:"warn"`
+}
+
+// GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdInput is an input type that accepts GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdArgs and GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutput values.
+// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdInput` via:
+//
+//	GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdArgs{...}
+type GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutput() GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutput
+	ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutput
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdArgs struct {
+	// Debug threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.
+	Debug pulumi.StringPtrInput `pulumi:"debug"`
+	// Info threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.
+	Info pulumi.StringPtrInput `pulumi:"info"`
+	// Trace threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.
+	Trace pulumi.StringPtrInput `pulumi:"trace"`
+	// Warning threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.
+	Warn pulumi.StringPtrInput `pulumi:"warn"`
+}
+
+func (GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThreshold)(nil)).Elem()
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdArgs) ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutput() GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdArgs) ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutput)
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdArgs) ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdArgs) ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutput).ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutputWithContext(ctx)
+}
+
+// GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrInput is an input type that accepts GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdArgs, GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtr and GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput values.
+// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrInput` via:
+//
+//	        GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput
+	ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput
+}
+
+type getOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrType GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdArgs
+
+func GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtr(v *GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdArgs) GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrInput {
+	return (*getOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrType)(v)
+}
+
+func (*getOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThreshold)(nil)).Elem()
+}
+
+func (i *getOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrType) ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutputWithContext(context.Background())
+}
+
+func (i *getOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrType) ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThreshold)(nil)).Elem()
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutput) ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutput() GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutput) ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutput) ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput {
+	return o.ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutputWithContext(context.Background())
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutput) ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThreshold) *GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThreshold {
+		return &v
+	}).(GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput)
+}
+
+// Debug threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.
+func (o GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutput) Debug() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThreshold) *string {
+		return v.Debug
+	}).(pulumi.StringPtrOutput)
+}
+
+// Info threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.
+func (o GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutput) Info() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThreshold) *string {
+		return v.Info
+	}).(pulumi.StringPtrOutput)
+}
+
+// Trace threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.
+func (o GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutput) Trace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThreshold) *string {
+		return v.Trace
+	}).(pulumi.StringPtrOutput)
+}
+
+// Warning threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.
+func (o GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutput) Warn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThreshold) *string {
+		return v.Warn
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThreshold)(nil)).Elem()
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput) ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput) ToGetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput) Elem() GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThreshold) GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThreshold {
+		if v != nil {
+			return *v
+		}
+		var ret GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThreshold
+		return ret
+	}).(GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutput)
+}
+
+// Debug threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.
+func (o GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput) Debug() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThreshold) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Debug
+	}).(pulumi.StringPtrOutput)
+}
+
+// Info threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.
+func (o GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput) Info() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThreshold) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Info
+	}).(pulumi.StringPtrOutput)
+}
+
+// Trace threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.
+func (o GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput) Trace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThreshold) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Trace
+	}).(pulumi.StringPtrOutput)
+}
+
+// Warning threshold for total request took time. The value should be in the form count and unit, where unit one of (s,m,h,d,nanos,ms,micros) or -1. Default is -1.
+func (o GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput) Warn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThreshold) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Warn
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchDashboards struct {
+	// Enable or disable OpenSearch Dashboards. Default: `true`.
+	Enabled *bool `pulumi:"enabled"`
+	// Limits the maximum amount of memory (in MiB) the OpenSearch Dashboards process can use. This sets the maxOldSpaceSize option of the nodejs running the OpenSearch Dashboards. Note: the memory reserved by OpenSearch Dashboards is not available for OpenSearch. Default: `128`.
+	MaxOldSpaceSize *int `pulumi:"maxOldSpaceSize"`
+	// Enable or disable multiple data sources in OpenSearch Dashboards. Default: `true`.
+	MultipleDataSourceEnabled *bool `pulumi:"multipleDataSourceEnabled"`
+	// Timeout in milliseconds for requests made by OpenSearch Dashboards towards OpenSearch. Default: `30000`.
+	OpensearchRequestTimeout *int `pulumi:"opensearchRequestTimeout"`
+	// Determines whether the session TTL resets (is “kept alive”) on each user activity. Optional. Default is true. Default: `true`.
+	SessionKeepalive *bool `pulumi:"sessionKeepalive"`
+	// Defines the time-to-live (TTL) for user sessions. The value should be a time value with unit, e.g. 1m, 5s, 1h, 3d, 100ms. Default is 1 hour. Default: `1h`.
+	SessionTtl *string `pulumi:"sessionTtl"`
+}
+
+// GetOpenSearchOpensearchUserConfigOpensearchDashboardsInput is an input type that accepts GetOpenSearchOpensearchUserConfigOpensearchDashboardsArgs and GetOpenSearchOpensearchUserConfigOpensearchDashboardsOutput values.
+// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigOpensearchDashboardsInput` via:
+//
+//	GetOpenSearchOpensearchUserConfigOpensearchDashboardsArgs{...}
+type GetOpenSearchOpensearchUserConfigOpensearchDashboardsInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchOpensearchUserConfigOpensearchDashboardsOutput() GetOpenSearchOpensearchUserConfigOpensearchDashboardsOutput
+	ToGetOpenSearchOpensearchUserConfigOpensearchDashboardsOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigOpensearchDashboardsOutput
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchDashboardsArgs struct {
+	// Enable or disable OpenSearch Dashboards. Default: `true`.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Limits the maximum amount of memory (in MiB) the OpenSearch Dashboards process can use. This sets the maxOldSpaceSize option of the nodejs running the OpenSearch Dashboards. Note: the memory reserved by OpenSearch Dashboards is not available for OpenSearch. Default: `128`.
+	MaxOldSpaceSize pulumi.IntPtrInput `pulumi:"maxOldSpaceSize"`
+	// Enable or disable multiple data sources in OpenSearch Dashboards. Default: `true`.
+	MultipleDataSourceEnabled pulumi.BoolPtrInput `pulumi:"multipleDataSourceEnabled"`
+	// Timeout in milliseconds for requests made by OpenSearch Dashboards towards OpenSearch. Default: `30000`.
+	OpensearchRequestTimeout pulumi.IntPtrInput `pulumi:"opensearchRequestTimeout"`
+	// Determines whether the session TTL resets (is “kept alive”) on each user activity. Optional. Default is true. Default: `true`.
+	SessionKeepalive pulumi.BoolPtrInput `pulumi:"sessionKeepalive"`
+	// Defines the time-to-live (TTL) for user sessions. The value should be a time value with unit, e.g. 1m, 5s, 1h, 3d, 100ms. Default is 1 hour. Default: `1h`.
+	SessionTtl pulumi.StringPtrInput `pulumi:"sessionTtl"`
+}
+
+func (GetOpenSearchOpensearchUserConfigOpensearchDashboardsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchDashboards)(nil)).Elem()
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchDashboardsArgs) ToGetOpenSearchOpensearchUserConfigOpensearchDashboardsOutput() GetOpenSearchOpensearchUserConfigOpensearchDashboardsOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpensearchDashboardsOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchDashboardsArgs) ToGetOpenSearchOpensearchUserConfigOpensearchDashboardsOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchDashboardsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchDashboardsOutput)
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchDashboardsArgs) ToGetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutputWithContext(context.Background())
+}
+
+func (i GetOpenSearchOpensearchUserConfigOpensearchDashboardsArgs) ToGetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchDashboardsOutput).ToGetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutputWithContext(ctx)
+}
+
+// GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrInput is an input type that accepts GetOpenSearchOpensearchUserConfigOpensearchDashboardsArgs, GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtr and GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput values.
+// You can construct a concrete instance of `GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrInput` via:
+//
+//	        GetOpenSearchOpensearchUserConfigOpensearchDashboardsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrInput interface {
+	pulumi.Input
+
+	ToGetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput
+	ToGetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutputWithContext(context.Context) GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput
+}
+
+type getOpenSearchOpensearchUserConfigOpensearchDashboardsPtrType GetOpenSearchOpensearchUserConfigOpensearchDashboardsArgs
+
+func GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtr(v *GetOpenSearchOpensearchUserConfigOpensearchDashboardsArgs) GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrInput {
+	return (*getOpenSearchOpensearchUserConfigOpensearchDashboardsPtrType)(v)
+}
+
+func (*getOpenSearchOpensearchUserConfigOpensearchDashboardsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigOpensearchDashboards)(nil)).Elem()
+}
+
+func (i *getOpenSearchOpensearchUserConfigOpensearchDashboardsPtrType) ToGetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput {
+	return i.ToGetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutputWithContext(context.Background())
+}
+
+func (i *getOpenSearchOpensearchUserConfigOpensearchDashboardsPtrType) ToGetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchDashboardsOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchOpensearchUserConfigOpensearchDashboardsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchDashboards)(nil)).Elem()
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchDashboardsOutput) ToGetOpenSearchOpensearchUserConfigOpensearchDashboardsOutput() GetOpenSearchOpensearchUserConfigOpensearchDashboardsOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchDashboardsOutput) ToGetOpenSearchOpensearchUserConfigOpensearchDashboardsOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchDashboardsOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchDashboardsOutput) ToGetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput {
+	return o.ToGetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutputWithContext(context.Background())
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchDashboardsOutput) ToGetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetOpenSearchOpensearchUserConfigOpensearchDashboards) *GetOpenSearchOpensearchUserConfigOpensearchDashboards {
+		return &v
+	}).(GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput)
+}
+
+// Enable or disable OpenSearch Dashboards. Default: `true`.
+func (o GetOpenSearchOpensearchUserConfigOpensearchDashboardsOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchDashboards) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Limits the maximum amount of memory (in MiB) the OpenSearch Dashboards process can use. This sets the maxOldSpaceSize option of the nodejs running the OpenSearch Dashboards. Note: the memory reserved by OpenSearch Dashboards is not available for OpenSearch. Default: `128`.
+func (o GetOpenSearchOpensearchUserConfigOpensearchDashboardsOutput) MaxOldSpaceSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchDashboards) *int { return v.MaxOldSpaceSize }).(pulumi.IntPtrOutput)
+}
+
+// Enable or disable multiple data sources in OpenSearch Dashboards. Default: `true`.
+func (o GetOpenSearchOpensearchUserConfigOpensearchDashboardsOutput) MultipleDataSourceEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchDashboards) *bool {
+		return v.MultipleDataSourceEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Timeout in milliseconds for requests made by OpenSearch Dashboards towards OpenSearch. Default: `30000`.
+func (o GetOpenSearchOpensearchUserConfigOpensearchDashboardsOutput) OpensearchRequestTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchDashboards) *int { return v.OpensearchRequestTimeout }).(pulumi.IntPtrOutput)
+}
+
+// Determines whether the session TTL resets (is “kept alive”) on each user activity. Optional. Default is true. Default: `true`.
+func (o GetOpenSearchOpensearchUserConfigOpensearchDashboardsOutput) SessionKeepalive() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchDashboards) *bool { return v.SessionKeepalive }).(pulumi.BoolPtrOutput)
+}
+
+// Defines the time-to-live (TTL) for user sessions. The value should be a time value with unit, e.g. 1m, 5s, 1h, 3d, 100ms. Default is 1 hour. Default: `1h`.
+func (o GetOpenSearchOpensearchUserConfigOpensearchDashboardsOutput) SessionTtl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetOpenSearchOpensearchUserConfigOpensearchDashboards) *string { return v.SessionTtl }).(pulumi.StringPtrOutput)
+}
+
+type GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetOpenSearchOpensearchUserConfigOpensearchDashboards)(nil)).Elem()
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput) ToGetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput() GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput) ToGetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutputWithContext(ctx context.Context) GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput {
+	return o
+}
+
+func (o GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput) Elem() GetOpenSearchOpensearchUserConfigOpensearchDashboardsOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchDashboards) GetOpenSearchOpensearchUserConfigOpensearchDashboards {
+		if v != nil {
+			return *v
+		}
+		var ret GetOpenSearchOpensearchUserConfigOpensearchDashboards
+		return ret
+	}).(GetOpenSearchOpensearchUserConfigOpensearchDashboardsOutput)
+}
+
+// Enable or disable OpenSearch Dashboards. Default: `true`.
+func (o GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchDashboards) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Limits the maximum amount of memory (in MiB) the OpenSearch Dashboards process can use. This sets the maxOldSpaceSize option of the nodejs running the OpenSearch Dashboards. Note: the memory reserved by OpenSearch Dashboards is not available for OpenSearch. Default: `128`.
+func (o GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput) MaxOldSpaceSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchDashboards) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxOldSpaceSize
+	}).(pulumi.IntPtrOutput)
+}
+
+// Enable or disable multiple data sources in OpenSearch Dashboards. Default: `true`.
+func (o GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput) MultipleDataSourceEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchDashboards) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.MultipleDataSourceEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Timeout in milliseconds for requests made by OpenSearch Dashboards towards OpenSearch. Default: `30000`.
+func (o GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput) OpensearchRequestTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchDashboards) *int {
+		if v == nil {
+			return nil
+		}
+		return v.OpensearchRequestTimeout
+	}).(pulumi.IntPtrOutput)
+}
+
+// Determines whether the session TTL resets (is “kept alive”) on each user activity. Optional. Default is true. Default: `true`.
+func (o GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput) SessionKeepalive() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchDashboards) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SessionKeepalive
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Defines the time-to-live (TTL) for user sessions. The value should be a time value with unit, e.g. 1m, 5s, 1h, 3d, 100ms. Default is 1 hour. Default: `1h`.
+func (o GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput) SessionTtl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetOpenSearchOpensearchUserConfigOpensearchDashboards) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SessionTtl
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarks struct {
 	// The flood stage watermark for disk usage. Example: `95`.
 	FloodStage int `pulumi:"floodStage"`
@@ -22294,6 +22730,8 @@ type GetServiceListService struct {
 	CreateTime string `pulumi:"createTime"`
 	// Megabytes of disk space for data storage.
 	DiskSpaceMb int `pulumi:"diskSpaceMb"`
+	// Timestamp when the service was first used (ISO 8601), null if it has not been used yet.
+	FirstUseTime string `pulumi:"firstUseTime"`
 	// True when the service uses a cluster plan with dedicated node groups.
 	IsClusterPlan bool `pulumi:"isClusterPlan"`
 	// Number of service nodes in the active plan.
@@ -22344,6 +22782,8 @@ type GetServiceListServiceArgs struct {
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
 	// Megabytes of disk space for data storage.
 	DiskSpaceMb pulumi.IntInput `pulumi:"diskSpaceMb"`
+	// Timestamp when the service was first used (ISO 8601), null if it has not been used yet.
+	FirstUseTime pulumi.StringInput `pulumi:"firstUseTime"`
 	// True when the service uses a cluster plan with dedicated node groups.
 	IsClusterPlan pulumi.BoolInput `pulumi:"isClusterPlan"`
 	// Number of service nodes in the active plan.
@@ -22446,6 +22886,11 @@ func (o GetServiceListServiceOutput) CreateTime() pulumi.StringOutput {
 // Megabytes of disk space for data storage.
 func (o GetServiceListServiceOutput) DiskSpaceMb() pulumi.IntOutput {
 	return o.ApplyT(func(v GetServiceListService) int { return v.DiskSpaceMb }).(pulumi.IntOutput)
+}
+
+// Timestamp when the service was first used (ISO 8601), null if it has not been used yet.
+func (o GetServiceListServiceOutput) FirstUseTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceListService) string { return v.FirstUseTime }).(pulumi.StringOutput)
 }
 
 // True when the service uses a cluster plan with dedicated node groups.
@@ -27627,6 +28072,10 @@ func (o GetValkeyValkeyUserConfigPublicAccessPtrOutput) Valkey() pulumi.BoolPtrO
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchDashboardsInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchDashboardsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchDashboardsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreInput)(nil)).Elem(), GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreArgs{})
@@ -27959,6 +28408,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPrivatelinkAccessPtrInput)(nil)).Elem(), GetValkeyValkeyUserConfigPrivatelinkAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPublicAccessInput)(nil)).Elem(), GetValkeyValkeyUserConfigPublicAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyValkeyUserConfigPublicAccessPtrInput)(nil)).Elem(), GetValkeyValkeyUserConfigPublicAccessArgs{})
+	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchClusterSearchRequestSlowlogThresholdPtrOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchDashboardsOutput{})
+	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchDashboardsPtrOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchDiskWatermarksPtrOutput{})
 	pulumi.RegisterOutputType(GetOpenSearchOpensearchUserConfigOpensearchRemoteStoreOutput{})

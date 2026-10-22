@@ -92,6 +92,21 @@ public final class GetServiceListService extends com.pulumi.resources.InvokeArgs
     }
 
     /**
+     * Timestamp when the service was first used (ISO 8601), null if it has not been used yet.
+     * 
+     */
+    @Import(name="firstUseTime", required=true)
+    private String firstUseTime;
+
+    /**
+     * @return Timestamp when the service was first used (ISO 8601), null if it has not been used yet.
+     * 
+     */
+    public String firstUseTime() {
+        return this.firstUseTime;
+    }
+
+    /**
      * True when the service uses a cluster plan with dedicated node groups.
      * 
      */
@@ -294,6 +309,7 @@ public final class GetServiceListService extends com.pulumi.resources.InvokeArgs
         this.cmkId = $.cmkId;
         this.createTime = $.createTime;
         this.diskSpaceMb = $.diskSpaceMb;
+        this.firstUseTime = $.firstUseTime;
         this.isClusterPlan = $.isClusterPlan;
         this.nodeCount = $.nodeCount;
         this.nodeCpuCount = $.nodeCpuCount;
@@ -379,6 +395,17 @@ public final class GetServiceListService extends com.pulumi.resources.InvokeArgs
          */
         public Builder diskSpaceMb(Integer diskSpaceMb) {
             $.diskSpaceMb = diskSpaceMb;
+            return this;
+        }
+
+        /**
+         * @param firstUseTime Timestamp when the service was first used (ISO 8601), null if it has not been used yet.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder firstUseTime(String firstUseTime) {
+            $.firstUseTime = firstUseTime;
             return this;
         }
 
@@ -540,6 +567,9 @@ public final class GetServiceListService extends com.pulumi.resources.InvokeArgs
             }
             if ($.diskSpaceMb == null) {
                 throw new MissingRequiredPropertyException("GetServiceListService", "diskSpaceMb");
+            }
+            if ($.firstUseTime == null) {
+                throw new MissingRequiredPropertyException("GetServiceListService", "firstUseTime");
             }
             if ($.isClusterPlan == null) {
                 throw new MissingRequiredPropertyException("GetServiceListService", "isClusterPlan");

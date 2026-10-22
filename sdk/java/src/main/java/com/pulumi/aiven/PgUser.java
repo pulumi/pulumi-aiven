@@ -30,6 +30,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.aiven.Pg;
+ * import com.pulumi.aiven.PgArgs;
  * import com.pulumi.aiven.PgUser;
  * import com.pulumi.aiven.PgUserArgs;
  * import java.util.ArrayList;
@@ -45,9 +47,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new PgUser("example", PgUserArgs.builder()
+ *         var examplePostgres = new Pg("examplePostgres", PgArgs.builder()
  *             .project("my-project")
- *             .serviceName("my-pg")
+ *             .plan("startup-4")
+ *             .serviceName("example-postgres-service")
+ *             .build());
+ * 
+ *         var example = new PgUser("example", PgUserArgs.builder()
+ *             .project(examplePostgres.project())
+ *             .serviceName(examplePostgres.serviceName())
  *             .username("testuser")
  *             .passwordWo("password123")
  *             .passwordWoVersion(1)

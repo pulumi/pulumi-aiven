@@ -93,6 +93,21 @@ public final class GetServiceListServiceArgs extends com.pulumi.resources.Resour
     }
 
     /**
+     * Timestamp when the service was first used (ISO 8601), null if it has not been used yet.
+     * 
+     */
+    @Import(name="firstUseTime", required=true)
+    private Output<String> firstUseTime;
+
+    /**
+     * @return Timestamp when the service was first used (ISO 8601), null if it has not been used yet.
+     * 
+     */
+    public Output<String> firstUseTime() {
+        return this.firstUseTime;
+    }
+
+    /**
      * True when the service uses a cluster plan with dedicated node groups.
      * 
      */
@@ -295,6 +310,7 @@ public final class GetServiceListServiceArgs extends com.pulumi.resources.Resour
         this.cmkId = $.cmkId;
         this.createTime = $.createTime;
         this.diskSpaceMb = $.diskSpaceMb;
+        this.firstUseTime = $.firstUseTime;
         this.isClusterPlan = $.isClusterPlan;
         this.nodeCount = $.nodeCount;
         this.nodeCpuCount = $.nodeCpuCount;
@@ -431,6 +447,27 @@ public final class GetServiceListServiceArgs extends com.pulumi.resources.Resour
          */
         public Builder diskSpaceMb(Integer diskSpaceMb) {
             return diskSpaceMb(Output.of(diskSpaceMb));
+        }
+
+        /**
+         * @param firstUseTime Timestamp when the service was first used (ISO 8601), null if it has not been used yet.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder firstUseTime(Output<String> firstUseTime) {
+            $.firstUseTime = firstUseTime;
+            return this;
+        }
+
+        /**
+         * @param firstUseTime Timestamp when the service was first used (ISO 8601), null if it has not been used yet.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder firstUseTime(String firstUseTime) {
+            return firstUseTime(Output.of(firstUseTime));
         }
 
         /**
@@ -721,6 +758,9 @@ public final class GetServiceListServiceArgs extends com.pulumi.resources.Resour
             }
             if ($.diskSpaceMb == null) {
                 throw new MissingRequiredPropertyException("GetServiceListServiceArgs", "diskSpaceMb");
+            }
+            if ($.firstUseTime == null) {
+                throw new MissingRequiredPropertyException("GetServiceListServiceArgs", "firstUseTime");
             }
             if ($.isClusterPlan == null) {
                 throw new MissingRequiredPropertyException("GetServiceListServiceArgs", "isClusterPlan");

@@ -212,9 +212,21 @@ class ByocPermissions(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
+        example_organization = aiven.Organization("example", name="Aiven Ltd")
+        example_byoc_aws_entity = aiven.ByocAwsEntity("example",
+            organization_id=example_organization.id,
+            cloud_provider="aws",
+            cloud_region="eu-west-1",
+            deployment_model="standard",
+            display_name="byoc-cloud-prod-eu-west-1",
+            reserved_cidr="192.168.6.0/24")
+        example_byoc_aws_provision = aiven.ByocAwsProvision("example",
+            organization_id=example_organization.id,
+            custom_cloud_environment_id=example_byoc_aws_entity.custom_cloud_environment_id,
+            aws_iam_role_arn="arn:aws:iam::012345678901:root")
         example = aiven.ByocPermissions("example",
-            organization_id="org1a23f456789",
-            custom_cloud_environment_id="1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+            organization_id=example_organization.id,
+            custom_cloud_environment_id=example_byoc_aws_provision.custom_cloud_environment_id,
             accounts=[
                 "a22ba494e096",
                 "a441b467e067",
@@ -261,9 +273,21 @@ class ByocPermissions(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
+        example_organization = aiven.Organization("example", name="Aiven Ltd")
+        example_byoc_aws_entity = aiven.ByocAwsEntity("example",
+            organization_id=example_organization.id,
+            cloud_provider="aws",
+            cloud_region="eu-west-1",
+            deployment_model="standard",
+            display_name="byoc-cloud-prod-eu-west-1",
+            reserved_cidr="192.168.6.0/24")
+        example_byoc_aws_provision = aiven.ByocAwsProvision("example",
+            organization_id=example_organization.id,
+            custom_cloud_environment_id=example_byoc_aws_entity.custom_cloud_environment_id,
+            aws_iam_role_arn="arn:aws:iam::012345678901:root")
         example = aiven.ByocPermissions("example",
-            organization_id="org1a23f456789",
-            custom_cloud_environment_id="1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+            organization_id=example_organization.id,
+            custom_cloud_environment_id=example_byoc_aws_provision.custom_cloud_environment_id,
             accounts=[
                 "a22ba494e096",
                 "a441b467e067",

@@ -546,13 +546,14 @@ class ByocAwsEntity(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
+        example_organization = aiven.Organization("example", name="Aiven Ltd")
         example = aiven.ByocAwsEntity("example",
             contact_emails=[{
                 "email": "jane@example.com",
                 "real_name": "Jane Smith",
                 "role": "admin",
             }],
-            organization_id="org1a23f456789",
+            organization_id=example_organization.id,
             cloud_provider="aws",
             cloud_region="eu-west-1",
             deployment_model="standard",
@@ -599,13 +600,14 @@ class ByocAwsEntity(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
+        example_organization = aiven.Organization("example", name="Aiven Ltd")
         example = aiven.ByocAwsEntity("example",
             contact_emails=[{
                 "email": "jane@example.com",
                 "real_name": "Jane Smith",
                 "role": "admin",
             }],
-            organization_id="org1a23f456789",
+            organization_id=example_organization.id,
             cloud_provider="aws",
             cloud_region="eu-west-1",
             deployment_model="standard",

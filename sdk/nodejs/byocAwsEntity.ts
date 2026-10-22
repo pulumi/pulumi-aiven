@@ -18,13 +18,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
+ * const exampleOrganization = new aiven.Organization("example", {name: "Aiven Ltd"});
  * const example = new aiven.ByocAwsEntity("example", {
  *     contactEmails: [{
  *         email: "jane@example.com",
  *         realName: "Jane Smith",
  *         role: "admin",
  *     }],
- *     organizationId: "org1a23f456789",
+ *     organizationId: exampleOrganization.id,
  *     cloudProvider: "aws",
  *     cloudRegion: "eu-west-1",
  *     deploymentModel: "standard",

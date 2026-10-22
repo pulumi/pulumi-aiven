@@ -22,10 +22,22 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var exampleOrganization = new Aiven.Organization("example", new()
+    ///     {
+    ///         Name = "Aiven Ltd",
+    ///     });
+    /// 
+    ///     var exampleOrganizationUserGroup = new Aiven.OrganizationUserGroup("example", new()
+    ///     {
+    ///         OrganizationId = exampleOrganization.Id,
+    ///         Description = "The group of admins for the organization",
+    ///         Name = "Admin Users",
+    ///     });
+    /// 
     ///     var example = new Aiven.OrganizationUserGroupMember("example", new()
     ///     {
-    ///         OrganizationId = "org1a23f456789",
-    ///         GroupId = "foo",
+    ///         OrganizationId = exampleOrganization.Id,
+    ///         GroupId = exampleOrganizationUserGroup.GroupId,
     ///         UserId = "foo",
     ///     });
     /// 

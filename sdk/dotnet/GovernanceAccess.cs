@@ -25,6 +25,11 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var exampleOrganization = new Aiven.Organization("example", new()
+    ///     {
+    ///         Name = "Aiven Ltd",
+    ///     });
+    /// 
     ///     var example = new Aiven.GovernanceAccess("example", new()
     ///     {
     ///         AccessData = new Aiven.Inputs.GovernanceAccessAccessDataArgs
@@ -44,7 +49,7 @@ namespace Pulumi.Aiven
     ///             ServiceName = "service-1",
     ///             Username = "api3",
     ///         },
-    ///         OrganizationId = "org1a23f456789",
+    ///         OrganizationId = exampleOrganization.Id,
     ///         AccessName = "My Access",
     ///         AccessType = "KAFKA",
     ///         OwnerUserGroupId = "ug22ba494e096",

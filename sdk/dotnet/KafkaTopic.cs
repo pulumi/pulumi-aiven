@@ -22,6 +22,25 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var exampleKafka = new Aiven.Kafka("example_kafka", new()
+    ///     {
+    ///         Project = "my-project",
+    ///         Plan = "business-4",
+    ///         ServiceName = "example-kafka",
+    ///     });
+    /// 
+    ///     var exampleOrganization = new Aiven.Organization("example", new()
+    ///     {
+    ///         Name = "Aiven Ltd",
+    ///     });
+    /// 
+    ///     var exampleOrganizationUserGroup = new Aiven.OrganizationUserGroup("example", new()
+    ///     {
+    ///         OrganizationId = exampleOrganization.Id,
+    ///         Description = "The group of admins for the organization",
+    ///         Name = "Admin Users",
+    ///     });
+    /// 
     ///     var example = new Aiven.KafkaTopic("example", new()
     ///     {
     ///         Config = new Aiven.Inputs.KafkaTopicConfigArgs
@@ -65,12 +84,12 @@ namespace Pulumi.Aiven
     ///                 Value = "My tag value, value.",
     ///             },
     ///         },
-    ///         Project = "my-project",
-    ///         ServiceName = "my-kafka",
+    ///         Project = exampleKafka.Project,
+    ///         ServiceName = exampleKafka.ServiceName,
     ///         TopicName = "mytopic",
     ///         Partitions = 3,
     ///         Replication = 3,
-    ///         OwnerUserGroupId = "ug22ba494e096",
+    ///         OwnerUserGroupId = exampleOrganizationUserGroup.GroupId,
     ///         TopicDescription = "Platform events",
     ///     });
     /// 

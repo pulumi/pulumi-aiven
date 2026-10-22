@@ -28,9 +28,17 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewValkeyUser(ctx, "example", &aiven.ValkeyUserArgs{
-//				Project:           pulumi.String("my-project"),
-//				ServiceName:       pulumi.String("my-valkey"),
+//			exampleValkey, err := aiven.NewValkey(ctx, "example_valkey", &aiven.ValkeyArgs{
+//				Project:     pulumi.String("my-project"),
+//				Plan:        pulumi.String("startup-4"),
+//				ServiceName: pulumi.String("example-valkey-service"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = aiven.NewValkeyUser(ctx, "example", &aiven.ValkeyUserArgs{
+//				Project:           exampleValkey.Project,
+//				ServiceName:       exampleValkey.ServiceName,
 //				Username:          pulumi.String("testuser"),
 //				PasswordWo:        pulumi.String("password123"),
 //				PasswordWoVersion: pulumi.Int(1),

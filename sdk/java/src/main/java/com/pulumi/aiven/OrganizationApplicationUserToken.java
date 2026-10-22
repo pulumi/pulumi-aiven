@@ -30,6 +30,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.aiven.OrganizationApplicationUser;
+ * import com.pulumi.aiven.OrganizationApplicationUserArgs;
  * import com.pulumi.aiven.OrganizationApplicationUserToken;
  * import com.pulumi.aiven.OrganizationApplicationUserTokenArgs;
  * import java.util.ArrayList;
@@ -45,9 +47,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new OrganizationApplicationUserToken("example", OrganizationApplicationUserTokenArgs.builder()
+ *         var exampleOrganizationApplicationUser = new OrganizationApplicationUser("exampleOrganizationApplicationUser", OrganizationApplicationUserArgs.builder()
  *             .organizationId("org1a23f456789")
- *             .userId("foo")
+ *             .name("devops app user")
+ *             .build());
+ * 
+ *         var example = new OrganizationApplicationUserToken("example", OrganizationApplicationUserTokenArgs.builder()
+ *             .organizationId(exampleOrganizationApplicationUser.organizationId())
+ *             .userId(exampleOrganizationApplicationUser.userId())
  *             .description("Integration client Alpha")
  *             .extendWhenUsed(false)
  *             .ipAllowlists(            

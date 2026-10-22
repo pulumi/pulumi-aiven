@@ -31,6 +31,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.aiven.Organization;
+ * import com.pulumi.aiven.OrganizationArgs;
+ * import com.pulumi.aiven.OrganizationAddress;
+ * import com.pulumi.aiven.OrganizationAddressArgs;
  * import com.pulumi.aiven.OrganizationBillingGroup;
  * import com.pulumi.aiven.OrganizationBillingGroupArgs;
  * import com.pulumi.aiven.inputs.OrganizationBillingGroupPaymentMethodArgs;
@@ -49,6 +53,20 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
+ *         var exampleOrganization = new Organization("exampleOrganization", OrganizationArgs.builder()
+ *             .name("Aiven Ltd")
+ *             .build());
+ * 
+ *         var exampleOrganizationAddress = new OrganizationAddress("exampleOrganizationAddress", OrganizationAddressArgs.builder()
+ *             .organizationId(exampleOrganization.id())
+ *             .addressLines(            
+ *                 "Street 1",
+ *                 "Street 2")
+ *             .city("Helsinki")
+ *             .countryCode("FI")
+ *             .name("Aiven Oy")
+ *             .build());
+ * 
  *         var example = new OrganizationBillingGroup("example", OrganizationBillingGroupArgs.builder()
  *             .paymentMethod(OrganizationBillingGroupPaymentMethodArgs.builder()
  *                 .paymentMethodId("pm4b1ff1ceeaa")
@@ -60,9 +78,9 @@ import javax.annotation.Nullable;
  *             .billingEmails(OrganizationBillingGroupBillingEmailArgs.builder()
  *                 .email("jane}{@literal @}{@code example.com")
  *                 .build())
- *             .organizationId("org1a23f456789")
- *             .billingAddressId("addr4b1ff1ceeaa")
- *             .shippingAddressId("addr4b1ff1ceeaa")
+ *             .organizationId(exampleOrganization.id())
+ *             .billingAddressId(exampleOrganizationAddress.addressId())
+ *             .shippingAddressId(exampleOrganizationAddress.addressId())
  *             .billingGroupName("Default billing group for the organization")
  *             .vatId("FI12345678")
  *             .customInvoiceText("Extra billing text")

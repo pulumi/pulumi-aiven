@@ -8913,6 +8913,10 @@ export interface GetServiceListService {
      */
     diskSpaceMb: number;
     /**
+     * Timestamp when the service was first used (ISO 8601), null if it has not been used yet.
+     */
+    firstUseTime: string;
+    /**
      * True when the service uses a cluster plan with dedicated node groups.
      */
     isClusterPlan: boolean;
@@ -10426,6 +10430,74 @@ export interface KafkaConnectComponent {
      * DNS usage name
      */
     usage: string;
+}
+
+export interface KafkaConnectCustomPluginFilePluginClass {
+    /**
+     * Plugin author, initially populated from META-INF/MANIFEST.MF (Specification-Vendor or Implementation-Vendor) and user-updatable.
+     */
+    author: string;
+    /**
+     * Creation timestamp in ISO 8601 format, always in UTC.
+     */
+    createdAt: string;
+    /**
+     * Email address of the user who created this entity.
+     */
+    createdBy: string;
+    /**
+     * Optional user-provided description of the plugin class.
+     */
+    description: string;
+    /**
+     * URL to the plugin class documentation.
+     */
+    docUrl: string;
+    /**
+     * Fully qualified connector class name. Immutable after creation.
+     */
+    pluginClass: string;
+    /**
+     * Type of plugin class: source, sink, transformation. The possible values are `sink`, `source` and `transformation`.
+     */
+    pluginClassType: string;
+    /**
+     * Human-readable plugin class title.
+     */
+    title: string;
+    /**
+     * Last update timestamp in ISO 8601 format, always in UTC.
+     */
+    updatedAt: string;
+    /**
+     * Email address of the user who last updated this entity.
+     */
+    updatedBy: string;
+}
+
+export interface KafkaConnectCustomPluginFileTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: string;
+    /**
+     * Timeout for all operations. Deprecated, use operation-specific timeouts instead.
+     *
+     * @deprecated Use operation-specific timeouts instead. This field will be removed in the next major version.
+     */
+    default?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: string;
 }
 
 export interface KafkaConnectKafkaConnectUserConfig {
@@ -14280,7 +14352,7 @@ export interface OrganizationPermissionPermission {
      */
     createTime: string;
     /**
-     * List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant". The possible values are `admin`, `developer`, `operator`, `organization:app_users:write`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:event_logs:read`, `organization:groups:read`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:sustainability:read`, `organization:users:read`, `organization:users:write`, `project:ai_gateway_keys:read`, `project:ai_gateway_keys:write`, `project:audit_logs:read`, `project:event_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `readOnly`, `role:organization:admin`, `role:project:admin`, `role:project:manager`, `role:project:read`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:metrics:read`, `service:secrets:read` and `service:users:write`.
+     * List of [roles and permissions](https://aiven.io/docs/platform/concepts/permissions) to grant". The possible values are `admin`, `application:access:connect`, `developer`, `operator`, `organization:app_users:write`, `organization:billing:read`, `organization:billing:write`, `organization:domains:write`, `organization:event_logs:read`, `organization:groups:read`, `organization:groups:write`, `organization:networking:read`, `organization:networking:write`, `organization:projects:write`, `organization:sustainability:read`, `organization:users:read`, `organization:users:write`, `project:ai_gateway_keys:read`, `project:ai_gateway_keys:write`, `project:audit_logs:read`, `project:event_logs:read`, `project:integrations:read`, `project:integrations:write`, `project:networking:read`, `project:networking:write`, `project:permissions:read`, `project:services:read`, `project:services:write`, `readOnly`, `role:organization:admin`, `role:project:admin`, `role:project:manager`, `role:project:read`, `role:services:maintenance`, `role:services:recover`, `service:configuration:write`, `service:data:write`, `service:logs:read`, `service:metrics:read`, `service:secrets:read` and `service:users:write`.
      */
     permissions: string[];
     /**

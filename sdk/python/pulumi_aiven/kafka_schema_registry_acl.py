@@ -253,9 +253,13 @@ class KafkaSchemaRegistryAcl(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        example = aiven.KafkaSchemaRegistryAcl("example",
+        example_kafka = aiven.Kafka("example_kafka",
             project="my-project",
-            service_name="my-kafka",
+            plan="business-4",
+            service_name="example-kafka")
+        example = aiven.KafkaSchemaRegistryAcl("example",
+            project=example_kafka.project,
+            service_name=example_kafka.service_name,
             permission="schema_registry_read",
             resource="Config:",
             username="admin*")
@@ -291,9 +295,13 @@ class KafkaSchemaRegistryAcl(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        example = aiven.KafkaSchemaRegistryAcl("example",
+        example_kafka = aiven.Kafka("example_kafka",
             project="my-project",
-            service_name="my-kafka",
+            plan="business-4",
+            service_name="example-kafka")
+        example = aiven.KafkaSchemaRegistryAcl("example",
+            project=example_kafka.project,
+            service_name=example_kafka.service_name,
             permission="schema_registry_read",
             resource="Config:",
             username="admin*")
