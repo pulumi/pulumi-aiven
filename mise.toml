@@ -1,3 +1,7 @@
+[hooks]
+# The CLI no longer bundles Java. Run on cold and warm-cache installs.
+postinstall = "pulumi plugin install language java"
+
 [tools]
 golangci-lint = "2.7.0"
 "vfox-pulumi:pulumi/pulumi-converter-terraform" = "latest"
