@@ -38,7 +38,7 @@ import (
 //				return err
 //			}
 //			_, err = aiven.NewKafkaConnectCustomPluginFile(ctx, "example", &aiven.KafkaConnectCustomPluginFileArgs{
-//				OrganizationId:  exampleOrganization.ID().ToIDOutput().ToStringOutput(),
+//				OrganizationId:  exampleOrganization.ID(),
 //				PluginName:      pulumi.String("my-custom-connectors"),
 //				PluginVersion:   pulumi.String("2.7.14"),
 //				ServiceType:     pulumi.String("kafka_connect"),

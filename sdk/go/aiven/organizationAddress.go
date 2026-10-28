@@ -35,7 +35,7 @@ import (
 //				return err
 //			}
 //			_, err = aiven.NewOrganizationAddress(ctx, "example", &aiven.OrganizationAddressArgs{
-//				OrganizationId: exampleOrganization.ID().ToIDOutput().ToStringOutput(),
+//				OrganizationId: exampleOrganization.ID(),
 //				AddressLines: pulumi.StringArray{
 //					pulumi.String("Street 1"),
 //					pulumi.String("Street 2"),

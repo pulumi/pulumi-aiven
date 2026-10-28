@@ -35,7 +35,7 @@ import (
 //				return err
 //			}
 //			exampleOrganizationVpc, err := aiven.NewOrganizationVpc(ctx, "example", &aiven.OrganizationVpcArgs{
-//				OrganizationId: exampleOrganization.ID().ToIDOutput().ToStringOutput(),
+//				OrganizationId: exampleOrganization.ID(),
 //				CloudName:      pulumi.String("aws-eu-west-1"),
 //				NetworkCidr:    pulumi.String("10.0.0.0/24"),
 //			})
@@ -43,7 +43,7 @@ import (
 //				return err
 //			}
 //			_, err = aiven.NewGcpOrgVpcPeeringConnection(ctx, "example", &aiven.GcpOrgVpcPeeringConnectionArgs{
-//				OrganizationId:    exampleOrganization.ID().ToIDOutput().ToStringOutput(),
+//				OrganizationId:    exampleOrganization.ID(),
 //				OrganizationVpcId: exampleOrganizationVpc.OrganizationVpcId,
 //				GcpProjectId:      pulumi.String("my-gcp-project"),
 //				PeerVpc:           pulumi.String("my-vpc"),

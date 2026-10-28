@@ -45,7 +45,7 @@ import (
 //						Role:     pulumi.String("admin"),
 //					},
 //				},
-//				OrganizationId:  exampleOrganization.ID().ToIDOutput().ToStringOutput(),
+//				OrganizationId:  exampleOrganization.ID(),
 //				CloudProvider:   pulumi.String("aws"),
 //				CloudRegion:     pulumi.String("eu-west-1"),
 //				DeploymentModel: pulumi.String("standard"),

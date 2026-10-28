@@ -79,21 +79,23 @@ namespace Pulumi.Aiven
     ///     };
     /// 
     ///     var osAclRule = new List&lt;Aiven.OpenSearchAclRule&gt;();
-    ///     aclRules.Select((value, i) =&gt; new { Key = i.ToString(), Value = pair.Value }).Apply(rangeBody =&gt;
+    ///     foreach (var range in aclRules.Select((value, i) =&gt; new { Key = i.ToString(), Value = pair.Value }).ToDictionary(item =&gt; {
+    ///         var i = item.Key;
+    ///         return i.ToString(System.Globalization.CultureInfo.InvariantCulture);
+    ///     }, item =&gt; {
+    ///         var v = item.Value;
+    ///         return v;
+    ///     }).Select(pair =&gt; new { pair.Key, pair.Value }))
     ///     {
-    ///         foreach (var range in rangeBody.Select(pair =&gt; new { pair.Key, pair.Value }))
+    ///         osAclRule.Add(new Aiven.OpenSearchAclRule($"os_acl_rule-{range.Key}", new()
     ///         {
-    ///             osAclRule.Add(new Aiven.OpenSearchAclRule($"os_acl_rule-{range.Key}", new()
-    ///             {
-    ///                 Project = exampleProject.Project,
-    ///                 ServiceName = exampleOpensearch.ServiceName,
-    ///                 Username = range.Value.Username,
-    ///                 Index = range.Value.Index,
-    ///                 Permission = range.Value.Permission,
-    ///             }));
-    ///         }
-    ///         return 0;
-    ///     });
+    ///             Project = exampleProject.Project,
+    ///             ServiceName = exampleOpensearch.ServiceName,
+    ///             Username = range.Value.Username,
+    ///             Index = range.Value.Index,
+    ///             Permission = range.Value.Permission,
+    ///         }));
+    ///     }
     /// });
     /// ```
     /// 

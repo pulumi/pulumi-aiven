@@ -50,7 +50,7 @@ import (
 //						PrincipalType: pulumi.String("user"),
 //					},
 //				},
-//				OrganizationId: exampleOrganization.ID().ToIDOutput().ToStringOutput(),
+//				OrganizationId: exampleOrganization.ID(),
 //				ResourceType:   pulumi.String("organization"),
 //				ResourceId:     pulumi.String("foo"),
 //			})

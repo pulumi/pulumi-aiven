@@ -35,7 +35,7 @@ import (
 //				return err
 //			}
 //			_, err = aiven.NewOrganizationalUnit(ctx, "example", &aiven.OrganizationalUnitArgs{
-//				ParentId: exampleOrganization.ID().ToIDOutput().ToStringOutput(),
+//				ParentId: exampleOrganization.ID(),
 //				Name:     pulumi.String("Aiven Ltd"),
 //			})
 //			if err != nil {

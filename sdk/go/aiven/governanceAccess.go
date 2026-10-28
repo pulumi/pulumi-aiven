@@ -52,7 +52,7 @@ import (
 //					ServiceName: pulumi.String("service-1"),
 //					Username:    pulumi.String("api3"),
 //				},
-//				OrganizationId:   exampleOrganization.ID().ToIDOutput().ToStringOutput(),
+//				OrganizationId:   exampleOrganization.ID(),
 //				AccessName:       pulumi.String("My Access"),
 //				AccessType:       pulumi.String("KAFKA"),
 //				OwnerUserGroupId: pulumi.String("ug22ba494e096"),

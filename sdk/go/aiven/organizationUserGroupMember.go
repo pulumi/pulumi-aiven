@@ -35,7 +35,7 @@ import (
 //				return err
 //			}
 //			exampleOrganizationUserGroup, err := aiven.NewOrganizationUserGroup(ctx, "example", &aiven.OrganizationUserGroupArgs{
-//				OrganizationId: exampleOrganization.ID().ToIDOutput().ToStringOutput(),
+//				OrganizationId: exampleOrganization.ID(),
 //				Description:    pulumi.String("The group of admins for the organization"),
 //				Name:           pulumi.String("Admin Users"),
 //			})
@@ -43,7 +43,7 @@ import (
 //				return err
 //			}
 //			_, err = aiven.NewOrganizationUserGroupMember(ctx, "example", &aiven.OrganizationUserGroupMemberArgs{
-//				OrganizationId: exampleOrganization.ID().ToIDOutput().ToStringOutput(),
+//				OrganizationId: exampleOrganization.ID(),
 //				GroupId:        exampleOrganizationUserGroup.GroupId,
 //				UserId:         pulumi.String("foo"),
 //			})

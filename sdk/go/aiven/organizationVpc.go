@@ -35,7 +35,7 @@ import (
 //				return err
 //			}
 //			_, err = aiven.NewOrganizationVpc(ctx, "example", &aiven.OrganizationVpcArgs{
-//				OrganizationId: exampleOrganization.ID().ToIDOutput().ToStringOutput(),
+//				OrganizationId: exampleOrganization.ID(),
 //				CloudName:      pulumi.String("aws-eu-west-1"),
 //				NetworkCidr:    pulumi.String("10.0.0.0/24"),
 //				DisplayName:    pulumi.String("My organization VPC"),
