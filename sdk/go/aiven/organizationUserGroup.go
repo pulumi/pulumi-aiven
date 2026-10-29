@@ -35,7 +35,7 @@ import (
 //				return err
 //			}
 //			_, err = aiven.NewOrganizationUserGroup(ctx, "example", &aiven.OrganizationUserGroupArgs{
-//				OrganizationId: exampleOrganization.ID().ToIDOutput().ToStringOutput(),
+//				OrganizationId: exampleOrganization.ID(),
 //				Description:    pulumi.String("The group of admins for the organization"),
 //				Name:           pulumi.String("Admin Users"),
 //			})

@@ -35,7 +35,7 @@ import (
 //				return err
 //			}
 //			exampleOrganizationVpc, err := aiven.NewOrganizationVpc(ctx, "example", &aiven.OrganizationVpcArgs{
-//				OrganizationId: exampleOrganization.ID().ToIDOutput().ToStringOutput(),
+//				OrganizationId: exampleOrganization.ID(),
 //				CloudName:      pulumi.String("aws-eu-west-1"),
 //				NetworkCidr:    pulumi.String("10.0.0.0/24"),
 //			})
@@ -43,7 +43,7 @@ import (
 //				return err
 //			}
 //			_, err = aiven.NewAzureOrgVpcPeeringConnection(ctx, "example", &aiven.AzureOrgVpcPeeringConnectionArgs{
-//				OrganizationId:      exampleOrganization.ID().ToIDOutput().ToStringOutput(),
+//				OrganizationId:      exampleOrganization.ID(),
 //				OrganizationVpcId:   exampleOrganizationVpc.OrganizationVpcId,
 //				AzureSubscriptionId: pulumi.String("12345678-1234-1234-1234-123456789012"),
 //				VnetName:            pulumi.String("my-vnet"),

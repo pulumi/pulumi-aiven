@@ -38,7 +38,7 @@ import (
 //				return err
 //			}
 //			_, err = aiven.NewUpgradeStep(ctx, "example", &aiven.UpgradeStepArgs{
-//				OrganizationId:          exampleOrganization.ID().ToIDOutput().ToStringOutput(),
+//				OrganizationId:          exampleOrganization.ID(),
 //				DestinationProjectName:  pulumi.String("prod-project"),
 //				DestinationServiceName:  pulumi.String("pg-prod"),
 //				SourceProjectName:       pulumi.String("dev-project"),

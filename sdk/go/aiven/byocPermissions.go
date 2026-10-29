@@ -42,7 +42,7 @@ import (
 //				return err
 //			}
 //			exampleByocAwsEntity, err := aiven.NewByocAwsEntity(ctx, "example", &aiven.ByocAwsEntityArgs{
-//				OrganizationId:  exampleOrganization.ID().ToIDOutput().ToStringOutput(),
+//				OrganizationId:  exampleOrganization.ID(),
 //				CloudProvider:   pulumi.String("aws"),
 //				CloudRegion:     pulumi.String("eu-west-1"),
 //				DeploymentModel: pulumi.String("standard"),
@@ -53,7 +53,7 @@ import (
 //				return err
 //			}
 //			exampleByocAwsProvision, err := aiven.NewByocAwsProvision(ctx, "example", &aiven.ByocAwsProvisionArgs{
-//				OrganizationId:           exampleOrganization.ID().ToIDOutput().ToStringOutput(),
+//				OrganizationId:           exampleOrganization.ID(),
 //				CustomCloudEnvironmentId: exampleByocAwsEntity.CustomCloudEnvironmentId,
 //				AwsIamRoleArn:            pulumi.String("arn:aws:iam::012345678901:root"),
 //			})
@@ -61,7 +61,7 @@ import (
 //				return err
 //			}
 //			_, err = aiven.NewByocPermissions(ctx, "example", &aiven.ByocPermissionsArgs{
-//				OrganizationId:           exampleOrganization.ID().ToIDOutput().ToStringOutput(),
+//				OrganizationId:           exampleOrganization.ID(),
 //				CustomCloudEnvironmentId: exampleByocAwsProvision.CustomCloudEnvironmentId,
 //				Accounts: pulumi.StringArray{
 //					pulumi.String("a22ba494e096"),

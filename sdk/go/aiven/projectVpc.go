@@ -35,7 +35,7 @@ import (
 //				return err
 //			}
 //			exampleOrganizationAddress, err := aiven.NewOrganizationAddress(ctx, "example", &aiven.OrganizationAddressArgs{
-//				OrganizationId: exampleOrganization.ID().ToIDOutput().ToStringOutput(),
+//				OrganizationId: exampleOrganization.ID(),
 //				AddressLines: pulumi.StringArray{
 //					pulumi.String("Street 1"),
 //					pulumi.String("Street 2"),
@@ -62,7 +62,7 @@ import (
 //						Email: pulumi.String("jane@example.com"),
 //					},
 //				},
-//				OrganizationId:    exampleOrganization.ID().ToIDOutput().ToStringOutput(),
+//				OrganizationId:    exampleOrganization.ID(),
 //				BillingAddressId:  exampleOrganizationAddress.AddressId,
 //				ShippingAddressId: exampleOrganizationAddress.AddressId,
 //				BillingGroupName:  pulumi.String("Default billing group for the organization"),
@@ -71,10 +71,10 @@ import (
 //				return err
 //			}
 //			exampleOrganizationProject, err := aiven.NewOrganizationProject(ctx, "example", &aiven.OrganizationProjectArgs{
-//				OrganizationId: exampleOrganization.ID().ToIDOutput().ToStringOutput(),
+//				OrganizationId: exampleOrganization.ID(),
 //				ProjectId:      pulumi.String("project-1"),
 //				BillingGroupId: exampleOrganizationBillingGroup.BillingGroupId,
-//				ParentId:       exampleOrganization.ID().ToIDOutput().ToStringOutput(),
+//				ParentId:       exampleOrganization.ID(),
 //			})
 //			if err != nil {
 //				return err
