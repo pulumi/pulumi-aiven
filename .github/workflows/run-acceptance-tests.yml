@@ -100,6 +100,10 @@ jobs:
         MISE_FETCH_REMOTE_VERSIONS_TIMEOUT: 30s
       with:
         version: 2026.10.21
+        # Shims resolve tools from the working directory's mise config, so tools
+        # launched outside the repo (e.g. `pulumi convert` in $TMPDIR) can fail.
+        # Rely on the exported tool PATH instead.
+        add_shims_to_path: false
         github_token: ${{ steps.app-auth.outputs.token }}
         cache_save: false
     - name: Install project dependencies
@@ -174,6 +178,10 @@ jobs:
         MISE_FETCH_REMOTE_VERSIONS_TIMEOUT: 30s
       with:
         version: 2026.10.21
+        # Shims resolve tools from the working directory's mise config, so tools
+        # launched outside the repo (e.g. `pulumi convert` in $TMPDIR) can fail.
+        # Rely on the exported tool PATH instead.
+        add_shims_to_path: false
         github_token: ${{ steps.app-auth.outputs.token }}
         cache_save: false
     - name: Install project dependencies
@@ -199,14 +207,6 @@ jobs:
         PROVIDER_VERSION: ${{ needs.prerequisites.outputs.version }}
     - name: Build registry docs
       run: make build_registry_docs
-    - name: DEBUG convert logs
-      if: always()
-      run: |
-        ls -la ~/.local/share/mise/installs/vfox-pulumi-pulumi-pulumi-converter-terraform/ || true
-        which -a pulumi pulumi-converter-terraform || true
-        ls -la .pulumi .pulumi/plugins || true
-        for f in .pulumi/logs/*convert*; do echo "== $f"; zcat "$f" | grep -v '"v":10' | tail -60; done || true
-        for f in .pulumi/logs/*; do echo "== $f"; done || true
     - name: Check worktree clean
       id: worktreeClean
       uses: pulumi/git-status-check-action@0d90c81496aa8d6a31d9c6a0d6297feea2f54057 # v2.0.0
