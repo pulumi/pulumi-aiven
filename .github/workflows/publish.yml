@@ -69,9 +69,15 @@ jobs:
       env:
         MISE_FETCH_REMOTE_VERSIONS_TIMEOUT: 30s
       with:
-        version: 2026.3.7
+        version: 2026.10.21
+        # Shims resolve tools from the working directory's mise config, so tools
+        # launched outside the repo (e.g. `pulumi convert` in $TMPDIR) can fail.
+        # Rely on the exported tool PATH instead.
+        add_shims_to_path: false
         github_token: ${{ steps.app-auth.outputs.token }}
         cache_save: false
+    - name: Install project dependencies
+      run: mise deps install
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@e1253824e5c10ff9df46874f81ed3ec929e19cfd # v6.3.0
       with:
@@ -170,10 +176,16 @@ jobs:
       env:
         MISE_FETCH_REMOTE_VERSIONS_TIMEOUT: 30s
       with:
-        version: 2026.3.7
+        version: 2026.10.21
+        # Shims resolve tools from the working directory's mise config, so tools
+        # launched outside the repo (e.g. `pulumi convert` in $TMPDIR) can fail.
+        # Rely on the exported tool PATH instead.
+        add_shims_to_path: false
         github_token: ${{ steps.app-auth.outputs.token }}
         # only saving the cache in the prerequisites job
         cache_save: false
+    - name: Install project dependencies
+      run: mise deps install
     - name: Setup Node
       uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
       with:
