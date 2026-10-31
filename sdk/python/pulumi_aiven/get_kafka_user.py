@@ -162,7 +162,7 @@ def get_kafka_user(project: Optional[_builtins.str] = None,
                    username: Optional[_builtins.str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKafkaUserResult:
     """
-    Gets information about an Aiven for Apache Kafka® service user.
+    Gets information about an Aiven for Apache Kafka® or Aiven for Apache Kafka® Connect service user.
 
     ## Example Usage
 
@@ -205,7 +205,7 @@ def get_kafka_user_output(project: pulumi.Input[Optional[_builtins.str]] = None,
                           username: pulumi.Input[Optional[_builtins.str]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKafkaUserResult]:
     """
-    Gets information about an Aiven for Apache Kafka® service user.
+    Gets information about an Aiven for Apache Kafka® or Aiven for Apache Kafka® Connect service user.
 
     ## Example Usage
 

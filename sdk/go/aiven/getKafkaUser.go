@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Gets information about an Aiven for Apache Kafka® service user.
+// Gets information about an Aiven for Apache Kafka® or Aiven for Apache Kafka® Connect service user.
 //
 // ## Example Usage
 //

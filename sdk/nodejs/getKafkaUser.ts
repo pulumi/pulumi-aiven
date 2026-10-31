@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Gets information about an Aiven for Apache Kafka® service user.
+ * Gets information about an Aiven for Apache Kafka® or Aiven for Apache Kafka® Connect service user.
  *
  * ## Example Usage
  *
@@ -94,7 +94,7 @@ export interface GetKafkaUserResult {
     readonly username: string;
 }
 /**
- * Gets information about an Aiven for Apache Kafka® service user.
+ * Gets information about an Aiven for Apache Kafka® or Aiven for Apache Kafka® Connect service user.
  *
  * ## Example Usage
  *
