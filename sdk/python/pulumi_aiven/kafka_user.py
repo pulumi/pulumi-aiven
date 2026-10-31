@@ -332,7 +332,7 @@ class KafkaUser(pulumi.CustomResource):
                  username: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
-        Creates and manages an Aiven for Apache Kafka® service user. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
+        Creates and manages an Aiven for Apache Kafka® or Aiven for Apache Kafka® Connect service user. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
 
         ## Example Usage
 
@@ -376,7 +376,7 @@ class KafkaUser(pulumi.CustomResource):
                  args: KafkaUserArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates and manages an Aiven for Apache Kafka® service user. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
+        Creates and manages an Aiven for Apache Kafka® or Aiven for Apache Kafka® Connect service user. If this resource is missing (for example, after a service power off), it's removed from the state and a new create plan is generated.
 
         ## Example Usage
 

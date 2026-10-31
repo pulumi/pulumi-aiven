@@ -12,7 +12,7 @@ namespace Pulumi.Aiven
     public static class GetKafkaUser
     {
         /// <summary>
-        /// Gets information about an Aiven for Apache Kafka® service user.
+        /// Gets information about an Aiven for Apache Kafka® or Aiven for Apache Kafka® Connect service user.
         /// 
         /// ## Example Usage
         /// 
@@ -38,7 +38,7 @@ namespace Pulumi.Aiven
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetKafkaUserResult>("aiven:index/getKafkaUser:getKafkaUser", args ?? new GetKafkaUserArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Gets information about an Aiven for Apache Kafka® service user.
+        /// Gets information about an Aiven for Apache Kafka® or Aiven for Apache Kafka® Connect service user.
         /// 
         /// ## Example Usage
         /// 
@@ -64,7 +64,7 @@ namespace Pulumi.Aiven
             => global::Pulumi.Deployment.Instance.Invoke<GetKafkaUserResult>("aiven:index/getKafkaUser:getKafkaUser", args ?? new GetKafkaUserInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Gets information about an Aiven for Apache Kafka® service user.
+        /// Gets information about an Aiven for Apache Kafka® or Aiven for Apache Kafka® Connect service user.
         /// 
         /// ## Example Usage
         /// 

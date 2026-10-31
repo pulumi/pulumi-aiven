@@ -7715,7 +7715,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invokeAsync("aiven:index/getKafkaTopicList:getKafkaTopicList", TypeShape.of(GetKafkaTopicListResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Gets information about an Aiven for Apache Kafka® service user.
+     * Gets information about an Aiven for Apache Kafka® or Aiven for Apache Kafka® Connect service user.
      * 
      * ## Example Usage
      * 
@@ -7757,7 +7757,7 @@ public final class AivenFunctions {
         return getKafkaUser(args, InvokeOptions.Empty);
     }
     /**
-     * Gets information about an Aiven for Apache Kafka® service user.
+     * Gets information about an Aiven for Apache Kafka® or Aiven for Apache Kafka® Connect service user.
      * 
      * ## Example Usage
      * 
@@ -7799,7 +7799,7 @@ public final class AivenFunctions {
         return getKafkaUserPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Gets information about an Aiven for Apache Kafka® service user.
+     * Gets information about an Aiven for Apache Kafka® or Aiven for Apache Kafka® Connect service user.
      * 
      * ## Example Usage
      * 
@@ -7841,7 +7841,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invoke("aiven:index/getKafkaUser:getKafkaUser", TypeShape.of(GetKafkaUserResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Gets information about an Aiven for Apache Kafka® service user.
+     * Gets information about an Aiven for Apache Kafka® or Aiven for Apache Kafka® Connect service user.
      * 
      * ## Example Usage
      * 
@@ -7883,7 +7883,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invoke("aiven:index/getKafkaUser:getKafkaUser", TypeShape.of(GetKafkaUserResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Gets information about an Aiven for Apache Kafka® service user.
+     * Gets information about an Aiven for Apache Kafka® or Aiven for Apache Kafka® Connect service user.
      * 
      * ## Example Usage
      * 
