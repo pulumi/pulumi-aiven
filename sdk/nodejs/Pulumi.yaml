@@ -1,3 +1,0 @@
-name: aiven
-description: A Pulumi resource provider for aiven.
-language: nodejs
