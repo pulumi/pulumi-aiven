@@ -199,6 +199,12 @@ func (KafkaQuotaState) ElementType() reflect.Type {
 	return reflect.TypeOf((*kafkaQuotaState)(nil)).Elem()
 }
 
+// KafkaQuotaExists checks whether an existing KafkaQuota resource with the given ID exists.
+func KafkaQuotaExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *KafkaQuotaState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("aiven:index/kafkaQuota:KafkaQuota", id, state, "", opts...)
+}
+
 type kafkaQuotaArgs struct {
 	// Represents a logical group of clients, assigned a unique name by the client application.
 	// Quotas can be applied based on user, client-id, or both.

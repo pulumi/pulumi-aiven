@@ -261,6 +261,18 @@ class KafkaSchemaConfiguration(pulumi.CustomResource):
         __props__.__dict__["service_name"] = service_name
         return KafkaSchemaConfiguration(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            compatibility_level: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            service_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["compatibilityLevel"] = compatibility_level
+        __props__["project"] = project
+        __props__["serviceName"] = service_name
+        return pulumi.runtime.exists_resource(None, 'aiven:index/kafkaSchemaConfiguration:KafkaSchemaConfiguration', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="compatibilityLevel")
     def compatibility_level(self) -> pulumi.Output[Optional[_builtins.str]]:

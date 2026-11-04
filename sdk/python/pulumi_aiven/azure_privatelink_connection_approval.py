@@ -377,6 +377,22 @@ class AzurePrivatelinkConnectionApproval(pulumi.CustomResource):
         __props__.__dict__["state"] = state
         return AzurePrivatelinkConnectionApproval(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            endpoint_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+            privatelink_connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            service_name: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["endpointIpAddress"] = endpoint_ip_address
+        __props__["privatelinkConnectionId"] = privatelink_connection_id
+        __props__["project"] = project
+        __props__["serviceName"] = service_name
+        __props__["state"] = state
+        return pulumi.runtime.exists_resource(None, 'aiven:index/azurePrivatelinkConnectionApproval:AzurePrivatelinkConnectionApproval', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="endpointIpAddress")
     def endpoint_ip_address(self) -> pulumi.Output[Optional[_builtins.str]]:

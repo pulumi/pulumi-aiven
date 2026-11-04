@@ -141,6 +141,12 @@ func (MysqlDatabaseState) ElementType() reflect.Type {
 	return reflect.TypeOf((*mysqlDatabaseState)(nil)).Elem()
 }
 
+// MysqlDatabaseExists checks whether an existing MysqlDatabase resource with the given ID exists.
+func MysqlDatabaseExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MysqlDatabaseState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("aiven:index/mysqlDatabase:MysqlDatabase", id, state, "", opts...)
+}
+
 type mysqlDatabaseArgs struct {
 	// Service database name. Maximum length: `40`. Changing this property forces recreation of the resource.
 	DatabaseName string `pulumi:"databaseName"`

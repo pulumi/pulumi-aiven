@@ -537,6 +537,26 @@ class KafkaQuota(pulumi.CustomResource):
         __props__.__dict__["user"] = user
         return KafkaQuota(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            client_id: pulumi.Input[Optional[_builtins.str]] = None,
+            consumer_byte_rate: pulumi.Input[Optional[_builtins.int]] = None,
+            producer_byte_rate: pulumi.Input[Optional[_builtins.int]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            request_percentage: pulumi.Input[Optional[_builtins.float]] = None,
+            service_name: pulumi.Input[Optional[_builtins.str]] = None,
+            user: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["clientId"] = client_id
+        __props__["consumerByteRate"] = consumer_byte_rate
+        __props__["producerByteRate"] = producer_byte_rate
+        __props__["project"] = project
+        __props__["requestPercentage"] = request_percentage
+        __props__["serviceName"] = service_name
+        __props__["user"] = user
+        return pulumi.runtime.exists_resource(None, 'aiven:index/kafkaQuota:KafkaQuota', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="clientId")
     def client_id(self) -> pulumi.Output[Optional[_builtins.str]]:

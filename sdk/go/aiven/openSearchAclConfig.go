@@ -126,6 +126,12 @@ func (OpenSearchAclConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*openSearchAclConfigState)(nil)).Elem()
 }
 
+// OpenSearchAclConfigExists checks whether an existing OpenSearchAclConfig resource with the given ID exists.
+func OpenSearchAclConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OpenSearchAclConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("aiven:index/openSearchAclConfig:OpenSearchAclConfig", id, state, "", opts...)
+}
+
 type openSearchAclConfigArgs struct {
 	// Enable OpenSearch ACLs. When disabled, authenticated service users have unrestricted access. The default value is `true`.
 	Enabled *bool `pulumi:"enabled"`

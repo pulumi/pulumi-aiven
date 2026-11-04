@@ -288,6 +288,12 @@ func (ServiceIntegrationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*serviceIntegrationState)(nil)).Elem()
 }
 
+// ServiceIntegrationExists checks whether an existing ServiceIntegration resource with the given ID exists.
+func ServiceIntegrationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ServiceIntegrationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("aiven:index/serviceIntegration:ServiceIntegration", id, state, "", opts...)
+}
+
 type serviceIntegrationArgs struct {
 	// ClickhouseCredentials user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	ClickhouseCredentialsUserConfig *ServiceIntegrationClickhouseCredentialsUserConfig `pulumi:"clickhouseCredentialsUserConfig"`

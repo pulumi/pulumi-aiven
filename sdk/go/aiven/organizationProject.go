@@ -211,6 +211,12 @@ func (OrganizationProjectState) ElementType() reflect.Type {
 	return reflect.TypeOf((*organizationProjectState)(nil)).Elem()
 }
 
+// OrganizationProjectExists checks whether an existing OrganizationProject resource with the given ID exists.
+func OrganizationProjectExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OrganizationProjectState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("aiven:index/organizationProject:OrganizationProject", id, state, "", opts...)
+}
+
 type organizationProjectArgs struct {
 	// Valid port number (10000-30000) to use as a base for service port allocation. Value must be between `10000` and `30000`.
 	BasePort *int `pulumi:"basePort"`

@@ -135,6 +135,12 @@ func (GcpPrivatelinkState) ElementType() reflect.Type {
 	return reflect.TypeOf((*gcpPrivatelinkState)(nil)).Elem()
 }
 
+// GcpPrivatelinkExists checks whether an existing GcpPrivatelink resource with the given ID exists.
+func GcpPrivatelinkExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GcpPrivatelinkState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("aiven:index/gcpPrivatelink:GcpPrivatelink", id, state, "", opts...)
+}
+
 type gcpPrivatelinkArgs struct {
 	// Project name. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`

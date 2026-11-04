@@ -432,6 +432,28 @@ class StaticIp(pulumi.CustomResource):
         __props__.__dict__["timeouts"] = timeouts
         return StaticIp(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cloud_name: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            service_name: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            static_ip_address_id: pulumi.Input[Optional[_builtins.str]] = None,
+            termination_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+            timeouts: pulumi.Input[Optional[Union['StaticIpTimeoutsArgs', 'StaticIpTimeoutsArgsDict', 'outputs.StaticIpTimeouts']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["cloudName"] = cloud_name
+        __props__["ipAddress"] = ip_address
+        __props__["project"] = project
+        __props__["serviceName"] = service_name
+        __props__["state"] = state
+        __props__["staticIpAddressId"] = static_ip_address_id
+        __props__["terminationProtection"] = termination_protection
+        __props__["timeouts"] = timeouts
+        return pulumi.runtime.exists_resource(None, 'aiven:index/staticIp:StaticIp', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="cloudName")
     def cloud_name(self) -> pulumi.Output[_builtins.str]:

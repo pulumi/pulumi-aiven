@@ -41,12 +41,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var exampleMirrormaker = new KafkaMirrorMaker("exampleMirrormaker", KafkaMirrorMakerArgs.builder()
  *             .project("my-project")
  *             .plan("startup-4")
@@ -79,13 +79,13 @@ import javax.annotation.Nullable;
  *             .syncGroupOffsetsIntervalSeconds(1)
  *             .topics(".*")
  *             .topicsBlacklists(            
- *                 ".*[\\-\\.]internal",
- *                 ".*\\.replica",
+ *                 ".*[}&#92;&#92;{@code -}&#92;&#92;{@code .]internal",
+ *                 ".*}&#92;&#92;{@code .replica",
  *                 "__.*")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

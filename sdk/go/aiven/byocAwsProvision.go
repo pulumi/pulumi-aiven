@@ -167,6 +167,12 @@ func (ByocAwsProvisionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*byocAwsProvisionState)(nil)).Elem()
 }
 
+// ByocAwsProvisionExists checks whether an existing ByocAwsProvision resource with the given ID exists.
+func ByocAwsProvisionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ByocAwsProvisionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("aiven:index/byocAwsProvision:ByocAwsProvision", id, state, "", opts...)
+}
+
 type byocAwsProvisionArgs struct {
 	// Amazon Resource Name. Maximum length: `2048`. Changing this property forces recreation of the resource.
 	AwsIamRoleArn string `pulumi:"awsIamRoleArn"`

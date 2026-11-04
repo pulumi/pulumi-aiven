@@ -153,6 +153,12 @@ func (AzurePrivatelinkState) ElementType() reflect.Type {
 	return reflect.TypeOf((*azurePrivatelinkState)(nil)).Elem()
 }
 
+// AzurePrivatelinkExists checks whether an existing AzurePrivatelink resource with the given ID exists.
+func AzurePrivatelinkExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AzurePrivatelinkState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("aiven:index/azurePrivatelink:AzurePrivatelink", id, state, "", opts...)
+}
+
 type azurePrivatelinkArgs struct {
 	// Project name. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`

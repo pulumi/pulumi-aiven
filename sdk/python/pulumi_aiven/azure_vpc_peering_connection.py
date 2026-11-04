@@ -456,6 +456,30 @@ class AzureVpcPeeringConnection(pulumi.CustomResource):
         __props__.__dict__["vpc_id"] = vpc_id
         return AzureVpcPeeringConnection(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            azure_subscription_id: pulumi.Input[Optional[_builtins.str]] = None,
+            peer_azure_app_id: pulumi.Input[Optional[_builtins.str]] = None,
+            peer_azure_tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+            peer_resource_group: pulumi.Input[Optional[_builtins.str]] = None,
+            peering_connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            state_info: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            vnet_name: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["azureSubscriptionId"] = azure_subscription_id
+        __props__["peerAzureAppId"] = peer_azure_app_id
+        __props__["peerAzureTenantId"] = peer_azure_tenant_id
+        __props__["peerResourceGroup"] = peer_resource_group
+        __props__["peeringConnectionId"] = peering_connection_id
+        __props__["state"] = state
+        __props__["stateInfo"] = state_info
+        __props__["vnetName"] = vnet_name
+        __props__["vpcId"] = vpc_id
+        return pulumi.runtime.exists_resource(None, 'aiven:index/azureVpcPeeringConnection:AzureVpcPeeringConnection', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="azureSubscriptionId")
     def azure_subscription_id(self) -> pulumi.Output[_builtins.str]:

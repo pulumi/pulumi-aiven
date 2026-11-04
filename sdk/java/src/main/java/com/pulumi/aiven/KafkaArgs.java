@@ -131,22 +131,20 @@ public final class KafkaArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy. This attribute is deprecated, use `schemaRegistry` and `kafkaRest` instead.
      * 
-     * @deprecated
-     * Usage of this field is discouraged.
+     * @deprecated Usage of this field is discouraged.
      * 
      */
-    @Deprecated /* Usage of this field is discouraged. */
+    @Deprecated
     @Import(name="karapace")
     private @Nullable Output<Boolean> karapace;
 
     /**
      * @return Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy. This attribute is deprecated, use `schemaRegistry` and `kafkaRest` instead.
      * 
-     * @deprecated
-     * Usage of this field is discouraged.
+     * @deprecated Usage of this field is discouraged.
      * 
      */
-    @Deprecated /* Usage of this field is discouraged. */
+    @Deprecated
     public Optional<Output<Boolean>> karapace() {
         return Optional.ofNullable(this.karapace);
     }
@@ -520,11 +518,10 @@ public final class KafkaArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Usage of this field is discouraged.
+         * @deprecated Usage of this field is discouraged.
          * 
          */
-        @Deprecated /* Usage of this field is discouraged. */
+        @Deprecated
         public Builder karapace(@Nullable Output<Boolean> karapace) {
             $.karapace = karapace;
             return this;
@@ -535,11 +532,10 @@ public final class KafkaArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Usage of this field is discouraged.
+         * @deprecated Usage of this field is discouraged.
          * 
          */
-        @Deprecated /* Usage of this field is discouraged. */
+        @Deprecated
         public Builder karapace(Boolean karapace) {
             return karapace(Output.of(karapace));
         }

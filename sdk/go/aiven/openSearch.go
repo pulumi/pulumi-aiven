@@ -302,6 +302,12 @@ func (OpenSearchState) ElementType() reflect.Type {
 	return reflect.TypeOf((*openSearchState)(nil)).Elem()
 }
 
+// OpenSearchExists checks whether an existing OpenSearch resource with the given ID exists.
+func OpenSearchExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OpenSearchState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("aiven:index/openSearch:OpenSearch", id, state, "", opts...)
+}
+
 type openSearchArgs struct {
 	// Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30 GiB to the default disk space defined by the `plan`. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
 	AdditionalDiskSpace *string `pulumi:"additionalDiskSpace"`

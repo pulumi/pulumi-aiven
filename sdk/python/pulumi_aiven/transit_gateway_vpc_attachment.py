@@ -509,6 +509,30 @@ class TransitGatewayVpcAttachment(pulumi.CustomResource):
         __props__.__dict__["vpc_id"] = vpc_id
         return TransitGatewayVpcAttachment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            peer_cloud_account: pulumi.Input[Optional[_builtins.str]] = None,
+            peer_region: pulumi.Input[Optional[_builtins.str]] = None,
+            peer_vpc: pulumi.Input[Optional[_builtins.str]] = None,
+            peering_connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            state_info: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            timeouts: pulumi.Input[Optional[Union['TransitGatewayVpcAttachmentTimeoutsArgs', 'TransitGatewayVpcAttachmentTimeoutsArgsDict', 'outputs.TransitGatewayVpcAttachmentTimeouts']]] = None,
+            user_peer_network_cidrs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["peerCloudAccount"] = peer_cloud_account
+        __props__["peerRegion"] = peer_region
+        __props__["peerVpc"] = peer_vpc
+        __props__["peeringConnectionId"] = peering_connection_id
+        __props__["state"] = state
+        __props__["stateInfo"] = state_info
+        __props__["timeouts"] = timeouts
+        __props__["userPeerNetworkCidrs"] = user_peer_network_cidrs
+        __props__["vpcId"] = vpc_id
+        return pulumi.runtime.exists_resource(None, 'aiven:index/transitGatewayVpcAttachment:TransitGatewayVpcAttachment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="peerCloudAccount")
     def peer_cloud_account(self) -> pulumi.Output[_builtins.str]:

@@ -20,11 +20,10 @@ public final class GetFlinkFlinkUserConfig {
     /**
      * @return Additional Cloud Regions for Backup Replication.
      * 
-     * @deprecated
-     * This property is deprecated.
+     * @deprecated This property is deprecated.
      * 
      */
-    @Deprecated /* This property is deprecated. */
+    @Deprecated
     private @Nullable String additionalBackupRegions;
     /**
      * @return Enable to upload Custom JARs for Flink applications.
@@ -49,11 +48,10 @@ public final class GetFlinkFlinkUserConfig {
     /**
      * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
-     * @deprecated
-     * Deprecated. Use `ipFilterString` instead.
+     * @deprecated Deprecated. Use `ipFilterString` instead.
      * 
      */
-    @Deprecated /* Deprecated. Use `ipFilterString` instead. */
+    @Deprecated
     private @Nullable List<String> ipFilters;
     /**
      * @return Task slots per node. For a 3 node plan, total number of task slots is 3x this value. Example: `1`.
@@ -95,11 +93,10 @@ public final class GetFlinkFlinkUserConfig {
     /**
      * @return Additional Cloud Regions for Backup Replication.
      * 
-     * @deprecated
-     * This property is deprecated.
+     * @deprecated This property is deprecated.
      * 
      */
-    @Deprecated /* This property is deprecated. */
+    @Deprecated
     public Optional<String> additionalBackupRegions() {
         return Optional.ofNullable(this.additionalBackupRegions);
     }
@@ -134,11 +131,10 @@ public final class GetFlinkFlinkUserConfig {
     /**
      * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
-     * @deprecated
-     * Deprecated. Use `ipFilterString` instead.
+     * @deprecated Deprecated. Use `ipFilterString` instead.
      * 
      */
-    @Deprecated /* Deprecated. Use `ipFilterString` instead. */
+    @Deprecated
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }

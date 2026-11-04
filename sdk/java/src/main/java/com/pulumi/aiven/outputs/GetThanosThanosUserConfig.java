@@ -30,11 +30,10 @@ public final class GetThanosThanosUserConfig {
     /**
      * @return Environmental variables.
      * 
-     * @deprecated
-     * This property is deprecated.
+     * @deprecated This property is deprecated.
      * 
      */
-    @Deprecated /* This property is deprecated. */
+    @Deprecated
     private @Nullable Map<String,String> env;
     /**
      * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
@@ -49,11 +48,10 @@ public final class GetThanosThanosUserConfig {
     /**
      * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
-     * @deprecated
-     * Deprecated. Use `ipFilterString` instead.
+     * @deprecated Deprecated. Use `ipFilterString` instead.
      * 
      */
-    @Deprecated /* Deprecated. Use `ipFilterString` instead. */
+    @Deprecated
     private @Nullable List<String> ipFilters;
     /**
      * @return After exceeding the limit a service alert is going to be raised (0 means not set).
@@ -127,11 +125,10 @@ public final class GetThanosThanosUserConfig {
     /**
      * @return Environmental variables.
      * 
-     * @deprecated
-     * This property is deprecated.
+     * @deprecated This property is deprecated.
      * 
      */
-    @Deprecated /* This property is deprecated. */
+    @Deprecated
     public Map<String,String> env() {
         return this.env == null ? Map.of() : this.env;
     }
@@ -152,11 +149,10 @@ public final class GetThanosThanosUserConfig {
     /**
      * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
-     * @deprecated
-     * Deprecated. Use `ipFilterString` instead.
+     * @deprecated Deprecated. Use `ipFilterString` instead.
      * 
      */
-    @Deprecated /* Deprecated. Use `ipFilterString` instead. */
+    @Deprecated
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }

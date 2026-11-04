@@ -21,22 +21,20 @@ public final class BillingGroupArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Account ID. Maximum length: `36`. **Deprecated**: Use `parentId` instead. This field will be removed in the next major release.
      * 
-     * @deprecated
-     * Use `parentId` instead. This field will be removed in the next major release.
+     * @deprecated Use `parentId` instead. This field will be removed in the next major release.
      * 
      */
-    @Deprecated /* Use `parentId` instead. This field will be removed in the next major release. */
+    @Deprecated
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
      * @return Account ID. Maximum length: `36`. **Deprecated**: Use `parentId` instead. This field will be removed in the next major release.
      * 
-     * @deprecated
-     * Use `parentId` instead. This field will be removed in the next major release.
+     * @deprecated Use `parentId` instead. This field will be removed in the next major release.
      * 
      */
-    @Deprecated /* Use `parentId` instead. This field will be removed in the next major release. */
+    @Deprecated
     public Optional<Output<String>> accountId() {
         return Optional.ofNullable(this.accountId);
     }
@@ -318,11 +316,10 @@ public final class BillingGroupArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Use `parentId` instead. This field will be removed in the next major release.
+         * @deprecated Use `parentId` instead. This field will be removed in the next major release.
          * 
          */
-        @Deprecated /* Use `parentId` instead. This field will be removed in the next major release. */
+        @Deprecated
         public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
@@ -333,11 +330,10 @@ public final class BillingGroupArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Use `parentId` instead. This field will be removed in the next major release.
+         * @deprecated Use `parentId` instead. This field will be removed in the next major release.
          * 
          */
-        @Deprecated /* Use `parentId` instead. This field will be removed in the next major release. */
+        @Deprecated
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
         }

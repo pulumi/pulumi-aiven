@@ -200,6 +200,12 @@ func (OpenSearchAclRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*openSearchAclRuleState)(nil)).Elem()
 }
 
+// OpenSearchAclRuleExists checks whether an existing OpenSearchAclRule resource with the given ID exists.
+func OpenSearchAclRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OpenSearchAclRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("aiven:index/openSearchAclRule:OpenSearchAclRule", id, state, "", opts...)
+}
+
 type openSearchAclRuleArgs struct {
 	// The index pattern for this ACL rule. Maximum length: `249`. Changing this property forces recreation of the resource.
 	Index string `pulumi:"index"`

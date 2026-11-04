@@ -194,6 +194,12 @@ func (AzurePrivatelinkConnectionApprovalState) ElementType() reflect.Type {
 	return reflect.TypeOf((*azurePrivatelinkConnectionApprovalState)(nil)).Elem()
 }
 
+// AzurePrivatelinkConnectionApprovalExists checks whether an existing AzurePrivatelinkConnectionApproval resource with the given ID exists.
+func AzurePrivatelinkConnectionApprovalExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AzurePrivatelinkConnectionApprovalState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("aiven:index/azurePrivatelinkConnectionApproval:AzurePrivatelinkConnectionApproval", id, state, "", opts...)
+}
+
 type azurePrivatelinkConnectionApprovalArgs struct {
 	// IP address of Azure private endpoint.
 	EndpointIpAddress *string `pulumi:"endpointIpAddress"`

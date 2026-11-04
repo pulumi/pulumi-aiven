@@ -438,6 +438,22 @@ class OpenSearchAclRule(pulumi.CustomResource):
         __props__.__dict__["username"] = username
         return OpenSearchAclRule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            index: pulumi.Input[Optional[_builtins.str]] = None,
+            permission: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            service_name: pulumi.Input[Optional[_builtins.str]] = None,
+            username: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["index"] = index
+        __props__["permission"] = permission
+        __props__["project"] = project
+        __props__["serviceName"] = service_name
+        __props__["username"] = username
+        return pulumi.runtime.exists_resource(None, 'aiven:index/openSearchAclRule:OpenSearchAclRule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def index(self) -> pulumi.Output[_builtins.str]:

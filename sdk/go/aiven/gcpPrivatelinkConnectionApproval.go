@@ -136,6 +136,12 @@ func (GcpPrivatelinkConnectionApprovalState) ElementType() reflect.Type {
 	return reflect.TypeOf((*gcpPrivatelinkConnectionApprovalState)(nil)).Elem()
 }
 
+// GcpPrivatelinkConnectionApprovalExists checks whether an existing GcpPrivatelinkConnectionApproval resource with the given ID exists.
+func GcpPrivatelinkConnectionApprovalExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GcpPrivatelinkConnectionApprovalState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("aiven:index/gcpPrivatelinkConnectionApproval:GcpPrivatelinkConnectionApproval", id, state, "", opts...)
+}
+
 type gcpPrivatelinkConnectionApprovalArgs struct {
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`

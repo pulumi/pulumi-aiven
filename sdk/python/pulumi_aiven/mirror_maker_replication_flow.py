@@ -981,6 +981,52 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
         __props__.__dict__["topics_blacklists"] = topics_blacklists
         return MirrorMakerReplicationFlow(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            config_properties_excludes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            diskless_az_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            emit_backward_heartbeats_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            emit_heartbeats_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable: pulumi.Input[Optional[_builtins.bool]] = None,
+            exactly_once_delivery_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            follower_fetching_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            offset_lag_max: pulumi.Input[Optional[_builtins.int]] = None,
+            offset_syncs_topic_location: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            replication_factor: pulumi.Input[Optional[_builtins.int]] = None,
+            replication_policy_class: pulumi.Input[Optional[_builtins.str]] = None,
+            service_name: pulumi.Input[Optional[_builtins.str]] = None,
+            source_cluster: pulumi.Input[Optional[_builtins.str]] = None,
+            sync_group_offsets_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            sync_group_offsets_interval_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+            target_cluster: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['MirrorMakerReplicationFlowTimeoutsArgs', 'MirrorMakerReplicationFlowTimeoutsArgsDict', 'outputs.MirrorMakerReplicationFlowTimeouts']]] = None,
+            topics: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            topics_blacklists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["configPropertiesExcludes"] = config_properties_excludes
+        __props__["disklessAzEnabled"] = diskless_az_enabled
+        __props__["emitBackwardHeartbeatsEnabled"] = emit_backward_heartbeats_enabled
+        __props__["emitHeartbeatsEnabled"] = emit_heartbeats_enabled
+        __props__["enable"] = enable
+        __props__["exactlyOnceDeliveryEnabled"] = exactly_once_delivery_enabled
+        __props__["followerFetchingEnabled"] = follower_fetching_enabled
+        __props__["offsetLagMax"] = offset_lag_max
+        __props__["offsetSyncsTopicLocation"] = offset_syncs_topic_location
+        __props__["project"] = project
+        __props__["replicationFactor"] = replication_factor
+        __props__["replicationPolicyClass"] = replication_policy_class
+        __props__["serviceName"] = service_name
+        __props__["sourceCluster"] = source_cluster
+        __props__["syncGroupOffsetsEnabled"] = sync_group_offsets_enabled
+        __props__["syncGroupOffsetsIntervalSeconds"] = sync_group_offsets_interval_seconds
+        __props__["targetCluster"] = target_cluster
+        __props__["timeouts"] = timeouts
+        __props__["topics"] = topics
+        __props__["topicsBlacklists"] = topics_blacklists
+        return pulumi.runtime.exists_resource(None, 'aiven:index/mirrorMakerReplicationFlow:MirrorMakerReplicationFlow', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="configPropertiesExcludes")
     def config_properties_excludes(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:

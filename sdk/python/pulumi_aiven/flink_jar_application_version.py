@@ -477,6 +477,34 @@ class FlinkJarApplicationVersion(pulumi.CustomResource):
         __props__.__dict__["version"] = version
         return FlinkJarApplicationVersion(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            application_id: pulumi.Input[Optional[_builtins.str]] = None,
+            application_version_id: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            created_by: pulumi.Input[Optional[_builtins.str]] = None,
+            file_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FlinkJarApplicationVersionFileInfoArgs', 'FlinkJarApplicationVersionFileInfoArgsDict', 'outputs.FlinkJarApplicationVersionFileInfo']]]]] = None,
+            file_sha256: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            service_name: pulumi.Input[Optional[_builtins.str]] = None,
+            source: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['FlinkJarApplicationVersionTimeoutsArgs', 'FlinkJarApplicationVersionTimeoutsArgsDict', 'outputs.FlinkJarApplicationVersionTimeouts']]] = None,
+            version: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["applicationId"] = application_id
+        __props__["applicationVersionId"] = application_version_id
+        __props__["createdAt"] = created_at
+        __props__["createdBy"] = created_by
+        __props__["fileInfos"] = file_infos
+        __props__["fileSha256"] = file_sha256
+        __props__["project"] = project
+        __props__["serviceName"] = service_name
+        __props__["source"] = source
+        __props__["timeouts"] = timeouts
+        __props__["version"] = version
+        return pulumi.runtime.exists_resource(None, 'aiven:index/flinkJarApplicationVersion:FlinkJarApplicationVersion', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="applicationId")
     def application_id(self) -> pulumi.Output[_builtins.str]:

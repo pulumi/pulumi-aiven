@@ -118,6 +118,12 @@ func (ClickhouseRoleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*clickhouseRoleState)(nil)).Elem()
 }
 
+// ClickhouseRoleExists checks whether an existing ClickhouseRole resource with the given ID exists.
+func ClickhouseRoleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ClickhouseRoleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("aiven:index/clickhouseRole:ClickhouseRole", id, state, "", opts...)
+}
+
 type clickhouseRoleArgs struct {
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`

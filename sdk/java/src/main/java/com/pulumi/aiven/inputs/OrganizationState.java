@@ -49,22 +49,20 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
     /**
      * Tenant identifier. **Deprecated**: This field is deprecated and will be removed in the next major release.
      * 
-     * @deprecated
-     * This field is deprecated and will be removed in the next major release.
+     * @deprecated This field is deprecated and will be removed in the next major release.
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in the next major release. */
+    @Deprecated
     @Import(name="tenantId")
     private @Nullable Output<String> tenantId;
 
     /**
      * @return Tenant identifier. **Deprecated**: This field is deprecated and will be removed in the next major release.
      * 
-     * @deprecated
-     * This field is deprecated and will be removed in the next major release.
+     * @deprecated This field is deprecated and will be removed in the next major release.
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in the next major release. */
+    @Deprecated
     public Optional<Output<String>> tenantId() {
         return Optional.ofNullable(this.tenantId);
     }
@@ -166,11 +164,10 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * This field is deprecated and will be removed in the next major release.
+         * @deprecated This field is deprecated and will be removed in the next major release.
          * 
          */
-        @Deprecated /* This field is deprecated and will be removed in the next major release. */
+        @Deprecated
         public Builder tenantId(@Nullable Output<String> tenantId) {
             $.tenantId = tenantId;
             return this;
@@ -181,11 +178,10 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * This field is deprecated and will be removed in the next major release.
+         * @deprecated This field is deprecated and will be removed in the next major release.
          * 
          */
-        @Deprecated /* This field is deprecated and will be removed in the next major release. */
+        @Deprecated
         public Builder tenantId(String tenantId) {
             return tenantId(Output.of(tenantId));
         }

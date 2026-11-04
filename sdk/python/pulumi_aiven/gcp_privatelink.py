@@ -315,6 +315,24 @@ class GcpPrivatelink(pulumi.CustomResource):
         __props__.__dict__["timeouts"] = timeouts
         return GcpPrivatelink(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            google_service_attachment: pulumi.Input[Optional[_builtins.str]] = None,
+            message: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            service_name: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['GcpPrivatelinkTimeoutsArgs', 'GcpPrivatelinkTimeoutsArgsDict', 'outputs.GcpPrivatelinkTimeouts']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["googleServiceAttachment"] = google_service_attachment
+        __props__["message"] = message
+        __props__["project"] = project
+        __props__["serviceName"] = service_name
+        __props__["state"] = state
+        __props__["timeouts"] = timeouts
+        return pulumi.runtime.exists_resource(None, 'aiven:index/gcpPrivatelink:GcpPrivatelink', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="googleServiceAttachment")
     def google_service_attachment(self) -> pulumi.Output[_builtins.str]:

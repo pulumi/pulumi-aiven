@@ -40,7 +40,7 @@ public final class OpenSearchOpensearchUserConfigOpenid {
      */
     private @Nullable String header;
     /**
-     * @return The HTTP header that stores the token. Typically the Authorization header with the Bearer schema: Authorization: Bearer \n\n. Optional. Default is Authorization. Example: `preferredUsername`.
+     * @return The HTTP header that stores the token. Typically the Authorization header with the Bearer schema: Authorization: Bearer &#92;n&#92;n. Optional. Default is Authorization. Example: `preferredUsername`.
      * 
      */
     private @Nullable String jwtHeader;
@@ -112,7 +112,7 @@ public final class OpenSearchOpensearchUserConfigOpenid {
         return Optional.ofNullable(this.header);
     }
     /**
-     * @return The HTTP header that stores the token. Typically the Authorization header with the Bearer schema: Authorization: Bearer \n\n. Optional. Default is Authorization. Example: `preferredUsername`.
+     * @return The HTTP header that stores the token. Typically the Authorization header with the Bearer schema: Authorization: Bearer &#92;n&#92;n. Optional. Default is Authorization. Example: `preferredUsername`.
      * 
      */
     public Optional<String> jwtHeader() {

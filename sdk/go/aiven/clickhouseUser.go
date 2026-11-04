@@ -175,6 +175,12 @@ func (ClickhouseUserState) ElementType() reflect.Type {
 	return reflect.TypeOf((*clickhouseUserState)(nil)).Elem()
 }
 
+// ClickhouseUserExists checks whether an existing ClickhouseUser resource with the given ID exists.
+func ClickhouseUserExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ClickhouseUserState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("aiven:index/clickhouseUser:ClickhouseUser", id, state, "", opts...)
+}
+
 type clickhouseUserArgs struct {
 	// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
 	Password *string `pulumi:"password"`

@@ -310,6 +310,20 @@ class OpenSearchAclConfig(pulumi.CustomResource):
         __props__.__dict__["service_name"] = service_name
         return OpenSearchAclConfig(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            extended_acl: pulumi.Input[Optional[_builtins.bool]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            service_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["enabled"] = enabled
+        __props__["extendedAcl"] = extended_acl
+        __props__["project"] = project
+        __props__["serviceName"] = service_name
+        return pulumi.runtime.exists_resource(None, 'aiven:index/openSearchAclConfig:OpenSearchAclConfig', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def enabled(self) -> pulumi.Output[Optional[_builtins.bool]]:

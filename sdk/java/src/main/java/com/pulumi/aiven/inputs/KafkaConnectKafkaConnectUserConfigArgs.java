@@ -28,22 +28,20 @@ public final class KafkaConnectKafkaConnectUserConfigArgs extends com.pulumi.res
     /**
      * Additional Cloud Regions for Backup Replication.
      * 
-     * @deprecated
-     * This property is deprecated.
+     * @deprecated This property is deprecated.
      * 
      */
-    @Deprecated /* This property is deprecated. */
+    @Deprecated
     @Import(name="additionalBackupRegions")
     private @Nullable Output<String> additionalBackupRegions;
 
     /**
      * @return Additional Cloud Regions for Backup Replication.
      * 
-     * @deprecated
-     * This property is deprecated.
+     * @deprecated This property is deprecated.
      * 
      */
-    @Deprecated /* This property is deprecated. */
+    @Deprecated
     public Optional<Output<String>> additionalBackupRegions() {
         return Optional.ofNullable(this.additionalBackupRegions);
     }
@@ -111,22 +109,20 @@ public final class KafkaConnectKafkaConnectUserConfigArgs extends com.pulumi.res
     /**
      * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
-     * @deprecated
-     * Deprecated. Use `ipFilterString` instead.
+     * @deprecated Deprecated. Use `ipFilterString` instead.
      * 
      */
-    @Deprecated /* Deprecated. Use `ipFilterString` instead. */
+    @Deprecated
     @Import(name="ipFilters")
     private @Nullable Output<List<String>> ipFilters;
 
     /**
      * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
-     * @deprecated
-     * Deprecated. Use `ipFilterString` instead.
+     * @deprecated Deprecated. Use `ipFilterString` instead.
      * 
      */
-    @Deprecated /* Deprecated. Use `ipFilterString` instead. */
+    @Deprecated
     public Optional<Output<List<String>>> ipFilters() {
         return Optional.ofNullable(this.ipFilters);
     }
@@ -237,14 +233,14 @@ public final class KafkaConnectKafkaConnectUserConfigArgs extends com.pulumi.res
     }
 
     /**
-     * Configure external secret providers in order to reference external secrets in connector configuration. Currently Hashicorp Vault (provider: vault, auth*method: token) and AWS Secrets Manager (provider: aws, auth*method: credentials) are supported. Secrets can be referenced in connector config with ${\n\n:\n\n:\n\n}
+     * Configure external secret providers in order to reference external secrets in connector configuration. Currently Hashicorp Vault (provider: vault, auth*method: token) and AWS Secrets Manager (provider: aws, auth*method: credentials) are supported. Secrets can be referenced in connector config with ${&#92;n&#92;n:&#92;n&#92;n:&#92;n&#92;n}
      * 
      */
     @Import(name="secretProviders")
     private @Nullable Output<List<KafkaConnectKafkaConnectUserConfigSecretProviderArgs>> secretProviders;
 
     /**
-     * @return Configure external secret providers in order to reference external secrets in connector configuration. Currently Hashicorp Vault (provider: vault, auth*method: token) and AWS Secrets Manager (provider: aws, auth*method: credentials) are supported. Secrets can be referenced in connector config with ${\n\n:\n\n:\n\n}
+     * @return Configure external secret providers in order to reference external secrets in connector configuration. Currently Hashicorp Vault (provider: vault, auth*method: token) and AWS Secrets Manager (provider: aws, auth*method: credentials) are supported. Secrets can be referenced in connector config with ${&#92;n&#92;n:&#92;n&#92;n:&#92;n&#92;n}
      * 
      */
     public Optional<Output<List<KafkaConnectKafkaConnectUserConfigSecretProviderArgs>>> secretProviders() {
@@ -325,11 +321,10 @@ public final class KafkaConnectKafkaConnectUserConfigArgs extends com.pulumi.res
          * 
          * @return builder
          * 
-         * @deprecated
-         * This property is deprecated.
+         * @deprecated This property is deprecated.
          * 
          */
-        @Deprecated /* This property is deprecated. */
+        @Deprecated
         public Builder additionalBackupRegions(@Nullable Output<String> additionalBackupRegions) {
             $.additionalBackupRegions = additionalBackupRegions;
             return this;
@@ -340,11 +335,10 @@ public final class KafkaConnectKafkaConnectUserConfigArgs extends com.pulumi.res
          * 
          * @return builder
          * 
-         * @deprecated
-         * This property is deprecated.
+         * @deprecated This property is deprecated.
          * 
          */
-        @Deprecated /* This property is deprecated. */
+        @Deprecated
         public Builder additionalBackupRegions(String additionalBackupRegions) {
             return additionalBackupRegions(Output.of(additionalBackupRegions));
         }
@@ -478,11 +472,10 @@ public final class KafkaConnectKafkaConnectUserConfigArgs extends com.pulumi.res
          * 
          * @return builder
          * 
-         * @deprecated
-         * Deprecated. Use `ipFilterString` instead.
+         * @deprecated Deprecated. Use `ipFilterString` instead.
          * 
          */
-        @Deprecated /* Deprecated. Use `ipFilterString` instead. */
+        @Deprecated
         public Builder ipFilters(@Nullable Output<List<String>> ipFilters) {
             $.ipFilters = ipFilters;
             return this;
@@ -493,11 +486,10 @@ public final class KafkaConnectKafkaConnectUserConfigArgs extends com.pulumi.res
          * 
          * @return builder
          * 
-         * @deprecated
-         * Deprecated. Use `ipFilterString` instead.
+         * @deprecated Deprecated. Use `ipFilterString` instead.
          * 
          */
-        @Deprecated /* Deprecated. Use `ipFilterString` instead. */
+        @Deprecated
         public Builder ipFilters(List<String> ipFilters) {
             return ipFilters(Output.of(ipFilters));
         }
@@ -507,11 +499,10 @@ public final class KafkaConnectKafkaConnectUserConfigArgs extends com.pulumi.res
          * 
          * @return builder
          * 
-         * @deprecated
-         * Deprecated. Use `ipFilterString` instead.
+         * @deprecated Deprecated. Use `ipFilterString` instead.
          * 
          */
-        @Deprecated /* Deprecated. Use `ipFilterString` instead. */
+        @Deprecated
         public Builder ipFilters(String... ipFilters) {
             return ipFilters(List.of(ipFilters));
         }
@@ -694,7 +685,7 @@ public final class KafkaConnectKafkaConnectUserConfigArgs extends com.pulumi.res
         }
 
         /**
-         * @param secretProviders Configure external secret providers in order to reference external secrets in connector configuration. Currently Hashicorp Vault (provider: vault, auth*method: token) and AWS Secrets Manager (provider: aws, auth*method: credentials) are supported. Secrets can be referenced in connector config with ${\n\n:\n\n:\n\n}
+         * @param secretProviders Configure external secret providers in order to reference external secrets in connector configuration. Currently Hashicorp Vault (provider: vault, auth*method: token) and AWS Secrets Manager (provider: aws, auth*method: credentials) are supported. Secrets can be referenced in connector config with ${&#92;n&#92;n:&#92;n&#92;n:&#92;n&#92;n}
          * 
          * @return builder
          * 
@@ -705,7 +696,7 @@ public final class KafkaConnectKafkaConnectUserConfigArgs extends com.pulumi.res
         }
 
         /**
-         * @param secretProviders Configure external secret providers in order to reference external secrets in connector configuration. Currently Hashicorp Vault (provider: vault, auth*method: token) and AWS Secrets Manager (provider: aws, auth*method: credentials) are supported. Secrets can be referenced in connector config with ${\n\n:\n\n:\n\n}
+         * @param secretProviders Configure external secret providers in order to reference external secrets in connector configuration. Currently Hashicorp Vault (provider: vault, auth*method: token) and AWS Secrets Manager (provider: aws, auth*method: credentials) are supported. Secrets can be referenced in connector config with ${&#92;n&#92;n:&#92;n&#92;n:&#92;n&#92;n}
          * 
          * @return builder
          * 
@@ -715,7 +706,7 @@ public final class KafkaConnectKafkaConnectUserConfigArgs extends com.pulumi.res
         }
 
         /**
-         * @param secretProviders Configure external secret providers in order to reference external secrets in connector configuration. Currently Hashicorp Vault (provider: vault, auth*method: token) and AWS Secrets Manager (provider: aws, auth*method: credentials) are supported. Secrets can be referenced in connector config with ${\n\n:\n\n:\n\n}
+         * @param secretProviders Configure external secret providers in order to reference external secrets in connector configuration. Currently Hashicorp Vault (provider: vault, auth*method: token) and AWS Secrets Manager (provider: aws, auth*method: credentials) are supported. Secrets can be referenced in connector config with ${&#92;n&#92;n:&#92;n&#92;n:&#92;n&#92;n}
          * 
          * @return builder
          * 

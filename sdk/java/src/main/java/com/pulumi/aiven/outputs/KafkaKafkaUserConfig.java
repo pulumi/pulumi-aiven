@@ -34,11 +34,10 @@ public final class KafkaKafkaUserConfig {
     /**
      * @return Additional Cloud Regions for Backup Replication.
      * 
-     * @deprecated
-     * This property is deprecated.
+     * @deprecated This property is deprecated.
      * 
      */
-    @Deprecated /* This property is deprecated. */
+    @Deprecated
     private @Nullable String additionalBackupRegions;
     /**
      * @return Allow access to read Kafka topic messages in the Aiven Console and REST API.
@@ -93,11 +92,10 @@ public final class KafkaKafkaUserConfig {
     /**
      * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
-     * @deprecated
-     * Deprecated. Use `ipFilterString` instead.
+     * @deprecated Deprecated. Use `ipFilterString` instead.
      * 
      */
-    @Deprecated /* Deprecated. Use `ipFilterString` instead. */
+    @Deprecated
     private @Nullable List<String> ipFilters;
     /**
      * @return Kafka broker configuration values
@@ -125,7 +123,7 @@ public final class KafkaKafkaUserConfig {
      */
     private @Nullable List<KafkaKafkaUserConfigKafkaConnectPluginVersion> kafkaConnectPluginVersions;
     /**
-     * @return Configure external secret providers in order to reference external secrets in connector configuration. Currently Hashicorp Vault (provider: vault, auth*method: token) and AWS Secrets Manager (provider: aws, auth*method: credentials) are supported. Secrets can be referenced in connector config with ${\n\n:\n\n:\n\n}
+     * @return Configure external secret providers in order to reference external secrets in connector configuration. Currently Hashicorp Vault (provider: vault, auth*method: token) and AWS Secrets Manager (provider: aws, auth*method: credentials) are supported. Secrets can be referenced in connector config with ${&#92;n&#92;n:&#92;n&#92;n:&#92;n&#92;n}
      * 
      */
     private @Nullable List<KafkaKafkaUserConfigKafkaConnectSecretProvider> kafkaConnectSecretProviders;
@@ -234,11 +232,10 @@ public final class KafkaKafkaUserConfig {
     /**
      * @return Additional Cloud Regions for Backup Replication.
      * 
-     * @deprecated
-     * This property is deprecated.
+     * @deprecated This property is deprecated.
      * 
      */
-    @Deprecated /* This property is deprecated. */
+    @Deprecated
     public Optional<String> additionalBackupRegions() {
         return Optional.ofNullable(this.additionalBackupRegions);
     }
@@ -315,11 +312,10 @@ public final class KafkaKafkaUserConfig {
     /**
      * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
-     * @deprecated
-     * Deprecated. Use `ipFilterString` instead.
+     * @deprecated Deprecated. Use `ipFilterString` instead.
      * 
      */
-    @Deprecated /* Deprecated. Use `ipFilterString` instead. */
+    @Deprecated
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
@@ -359,7 +355,7 @@ public final class KafkaKafkaUserConfig {
         return this.kafkaConnectPluginVersions == null ? List.of() : this.kafkaConnectPluginVersions;
     }
     /**
-     * @return Configure external secret providers in order to reference external secrets in connector configuration. Currently Hashicorp Vault (provider: vault, auth*method: token) and AWS Secrets Manager (provider: aws, auth*method: credentials) are supported. Secrets can be referenced in connector config with ${\n\n:\n\n:\n\n}
+     * @return Configure external secret providers in order to reference external secrets in connector configuration. Currently Hashicorp Vault (provider: vault, auth*method: token) and AWS Secrets Manager (provider: aws, auth*method: credentials) are supported. Secrets can be referenced in connector config with ${&#92;n&#92;n:&#92;n&#92;n:&#92;n&#92;n}
      * 
      */
     public List<KafkaKafkaUserConfigKafkaConnectSecretProvider> kafkaConnectSecretProviders() {

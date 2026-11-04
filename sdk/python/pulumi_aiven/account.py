@@ -360,6 +360,28 @@ class Account(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return Account(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            is_account_owner: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            owner_team_id: pulumi.Input[Optional[_builtins.str]] = None,
+            primary_billing_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["createTime"] = create_time
+        __props__["isAccountOwner"] = is_account_owner
+        __props__["name"] = name
+        __props__["ownerTeamId"] = owner_team_id
+        __props__["primaryBillingGroupId"] = primary_billing_group_id
+        __props__["tenantId"] = tenant_id
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'aiven:index/account:Account', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     @_utilities.deprecated("""The new Organization resource won't have it, use the built-in ID field instead.""")

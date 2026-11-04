@@ -15,11 +15,10 @@ public final class OpenSearchOpensearch {
     /**
      * @return URI for Kibana dashboard frontend.
      * 
-     * @deprecated
-     * This field was added by mistake and has never worked. It will be removed in future versions.
+     * @deprecated This field was added by mistake and has never worked. It will be removed in future versions.
      * 
      */
-    @Deprecated /* This field was added by mistake and has never worked. It will be removed in future versions. */
+    @Deprecated
     private @Nullable String kibanaUri;
     /**
      * @return URI for OpenSearch dashboard frontend.
@@ -46,11 +45,10 @@ public final class OpenSearchOpensearch {
     /**
      * @return URI for Kibana dashboard frontend.
      * 
-     * @deprecated
-     * This field was added by mistake and has never worked. It will be removed in future versions.
+     * @deprecated This field was added by mistake and has never worked. It will be removed in future versions.
      * 
      */
-    @Deprecated /* This field was added by mistake and has never worked. It will be removed in future versions. */
+    @Deprecated
     public Optional<String> kibanaUri() {
         return Optional.ofNullable(this.kibanaUri);
     }

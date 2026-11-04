@@ -194,6 +194,12 @@ func (ClickhouseGrantState) ElementType() reflect.Type {
 	return reflect.TypeOf((*clickhouseGrantState)(nil)).Elem()
 }
 
+// ClickhouseGrantExists checks whether an existing ClickhouseGrant resource with the given ID exists.
+func ClickhouseGrantExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ClickhouseGrantState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("aiven:index/clickhouseGrant:ClickhouseGrant", id, state, "", opts...)
+}
+
 type clickhouseGrantArgs struct {
 	// Grant privileges. Changing this property forces recreation of the resource.
 	PrivilegeGrants []ClickhouseGrantPrivilegeGrant `pulumi:"privilegeGrants"`

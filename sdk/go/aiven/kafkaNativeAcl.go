@@ -194,6 +194,12 @@ func (KafkaNativeAclState) ElementType() reflect.Type {
 	return reflect.TypeOf((*kafkaNativeAclState)(nil)).Elem()
 }
 
+// KafkaNativeAclExists checks whether an existing KafkaNativeAcl resource with the given ID exists.
+func KafkaNativeAclExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *KafkaNativeAclState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("aiven:index/kafkaNativeAcl:KafkaNativeAcl", id, state, "", opts...)
+}
+
 type kafkaNativeAclArgs struct {
 	// the host or `*` for all hosts. Maximum length: `256`. The default value is `*`. Changing this property forces recreation of the resource.
 	Host *string `pulumi:"host"`

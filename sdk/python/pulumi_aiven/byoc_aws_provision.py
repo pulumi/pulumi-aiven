@@ -399,6 +399,28 @@ class ByocAwsProvision(pulumi.CustomResource):
         __props__.__dict__["timeouts"] = timeouts
         return ByocAwsProvision(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            aiven_aws_account_principal: pulumi.Input[Optional[_builtins.str]] = None,
+            aiven_aws_assume_role_external_id: pulumi.Input[Optional[_builtins.str]] = None,
+            aws_iam_role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_cloud_environment_id: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_cloud_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['ByocAwsProvisionTimeoutsArgs', 'ByocAwsProvisionTimeoutsArgsDict', 'outputs.ByocAwsProvisionTimeouts']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["aivenAwsAccountPrincipal"] = aiven_aws_account_principal
+        __props__["aivenAwsAssumeRoleExternalId"] = aiven_aws_assume_role_external_id
+        __props__["awsIamRoleArn"] = aws_iam_role_arn
+        __props__["customCloudEnvironmentId"] = custom_cloud_environment_id
+        __props__["customCloudNames"] = custom_cloud_names
+        __props__["organizationId"] = organization_id
+        __props__["state"] = state
+        __props__["timeouts"] = timeouts
+        return pulumi.runtime.exists_resource(None, 'aiven:index/byocAwsProvision:ByocAwsProvision', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="aivenAwsAccountPrincipal")
     def aiven_aws_account_principal(self) -> pulumi.Output[_builtins.str]:

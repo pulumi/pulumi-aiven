@@ -33,22 +33,20 @@ public final class GcpOrgVpcPeeringConnectionTimeoutsArgs extends com.pulumi.res
     /**
      * Timeout for all operations. Deprecated, use operation-specific timeouts instead.
      * 
-     * @deprecated
-     * Use operation-specific timeouts instead. This field will be removed in the next major version.
+     * @deprecated Use operation-specific timeouts instead. This field will be removed in the next major version.
      * 
      */
-    @Deprecated /* Use operation-specific timeouts instead. This field will be removed in the next major version. */
+    @Deprecated
     @Import(name="default")
     private @Nullable Output<String> default_;
 
     /**
      * @return Timeout for all operations. Deprecated, use operation-specific timeouts instead.
      * 
-     * @deprecated
-     * Use operation-specific timeouts instead. This field will be removed in the next major version.
+     * @deprecated Use operation-specific timeouts instead. This field will be removed in the next major version.
      * 
      */
-    @Deprecated /* Use operation-specific timeouts instead. This field will be removed in the next major version. */
+    @Deprecated
     public Optional<Output<String>> default_() {
         return Optional.ofNullable(this.default_);
     }
@@ -152,11 +150,10 @@ public final class GcpOrgVpcPeeringConnectionTimeoutsArgs extends com.pulumi.res
          * 
          * @return builder
          * 
-         * @deprecated
-         * Use operation-specific timeouts instead. This field will be removed in the next major version.
+         * @deprecated Use operation-specific timeouts instead. This field will be removed in the next major version.
          * 
          */
-        @Deprecated /* Use operation-specific timeouts instead. This field will be removed in the next major version. */
+        @Deprecated
         public Builder default_(@Nullable Output<String> default_) {
             $.default_ = default_;
             return this;
@@ -167,11 +164,10 @@ public final class GcpOrgVpcPeeringConnectionTimeoutsArgs extends com.pulumi.res
          * 
          * @return builder
          * 
-         * @deprecated
-         * Use operation-specific timeouts instead. This field will be removed in the next major version.
+         * @deprecated Use operation-specific timeouts instead. This field will be removed in the next major version.
          * 
          */
-        @Deprecated /* Use operation-specific timeouts instead. This field will be removed in the next major version. */
+        @Deprecated
         public Builder default_(String default_) {
             return default_(Output.of(default_));
         }

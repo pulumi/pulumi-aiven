@@ -136,6 +136,12 @@ func (GcpVpcPeeringConnectionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*gcpVpcPeeringConnectionState)(nil)).Elem()
 }
 
+// GcpVpcPeeringConnectionExists checks whether an existing GcpVpcPeeringConnection resource with the given ID exists.
+func GcpVpcPeeringConnectionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GcpVpcPeeringConnectionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("aiven:index/gcpVpcPeeringConnection:GcpVpcPeeringConnection", id, state, "", opts...)
+}
+
 type gcpVpcPeeringConnectionArgs struct {
 	// Google Cloud project ID. Changing this property forces recreation of the resource.
 	GcpProjectId string `pulumi:"gcpProjectId"`

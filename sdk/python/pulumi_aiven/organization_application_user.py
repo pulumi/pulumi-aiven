@@ -357,6 +357,26 @@ class OrganizationApplicationUser(pulumi.CustomResource):
         __props__.__dict__["user_id"] = user_id
         return OrganizationApplicationUser(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            email: pulumi.Input[Optional[_builtins.str]] = None,
+            is_super_admin: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['OrganizationApplicationUserTimeoutsArgs', 'OrganizationApplicationUserTimeoutsArgsDict', 'outputs.OrganizationApplicationUserTimeouts']]] = None,
+            user_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["email"] = email
+        __props__["isSuperAdmin"] = is_super_admin
+        __props__["name"] = name
+        __props__["organizationId"] = organization_id
+        __props__["timeouts"] = timeouts
+        __props__["userId"] = user_id
+        return pulumi.runtime.exists_resource(None, 'aiven:index/organizationApplicationUser:OrganizationApplicationUser', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

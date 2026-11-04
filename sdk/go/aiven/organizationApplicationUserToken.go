@@ -222,6 +222,12 @@ func (OrganizationApplicationUserTokenState) ElementType() reflect.Type {
 	return reflect.TypeOf((*organizationApplicationUserTokenState)(nil)).Elem()
 }
 
+// OrganizationApplicationUserTokenExists checks whether an existing OrganizationApplicationUserToken resource with the given ID exists.
+func OrganizationApplicationUserTokenExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OrganizationApplicationUserTokenState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("aiven:index/organizationApplicationUserToken:OrganizationApplicationUserToken", id, state, "", opts...)
+}
+
 type organizationApplicationUserTokenArgs struct {
 	// Description. Maximum length: `1000`. Changing this property forces recreation of the resource.
 	Description *string `pulumi:"description"`

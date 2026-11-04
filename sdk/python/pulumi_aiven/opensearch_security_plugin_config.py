@@ -371,6 +371,26 @@ class OpensearchSecurityPluginConfig(pulumi.CustomResource):
         __props__.__dict__["timeouts"] = timeouts
         return OpensearchSecurityPluginConfig(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            admin_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            admin_password: pulumi.Input[Optional[_builtins.str]] = None,
+            available: pulumi.Input[Optional[_builtins.bool]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            service_name: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['OpensearchSecurityPluginConfigTimeoutsArgs', 'OpensearchSecurityPluginConfigTimeoutsArgsDict', 'outputs.OpensearchSecurityPluginConfigTimeouts']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["adminEnabled"] = admin_enabled
+        __props__["adminPassword"] = admin_password
+        __props__["available"] = available
+        __props__["enabled"] = enabled
+        __props__["project"] = project
+        __props__["serviceName"] = service_name
+        __props__["timeouts"] = timeouts
+        return pulumi.runtime.exists_resource(None, 'aiven:index/opensearchSecurityPluginConfig:OpensearchSecurityPluginConfig', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="adminEnabled")
     def admin_enabled(self) -> pulumi.Output[_builtins.bool]:

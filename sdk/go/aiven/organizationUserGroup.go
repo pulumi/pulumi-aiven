@@ -148,6 +148,12 @@ func (OrganizationUserGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*organizationUserGroupState)(nil)).Elem()
 }
 
+// OrganizationUserGroupExists checks whether an existing OrganizationUserGroup resource with the given ID exists.
+func OrganizationUserGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OrganizationUserGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("aiven:index/organizationUserGroup:OrganizationUserGroup", id, state, "", opts...)
+}
+
 type organizationUserGroupArgs struct {
 	// Description. Maximum length: `4096`.
 	Description string `pulumi:"description"`

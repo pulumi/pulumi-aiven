@@ -393,6 +393,24 @@ class ProjectVpc(pulumi.CustomResource):
         __props__.__dict__["timeouts"] = timeouts
         return ProjectVpc(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cloud_name: pulumi.Input[Optional[_builtins.str]] = None,
+            network_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            project_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['ProjectVpcTimeoutsArgs', 'ProjectVpcTimeoutsArgsDict', 'outputs.ProjectVpcTimeouts']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["cloudName"] = cloud_name
+        __props__["networkCidr"] = network_cidr
+        __props__["project"] = project
+        __props__["projectVpcId"] = project_vpc_id
+        __props__["state"] = state
+        __props__["timeouts"] = timeouts
+        return pulumi.runtime.exists_resource(None, 'aiven:index/projectVpc:ProjectVpc', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="cloudName")
     def cloud_name(self) -> pulumi.Output[_builtins.str]:

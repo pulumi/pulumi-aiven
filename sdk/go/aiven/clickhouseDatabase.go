@@ -132,6 +132,12 @@ func (ClickhouseDatabaseState) ElementType() reflect.Type {
 	return reflect.TypeOf((*clickhouseDatabaseState)(nil)).Elem()
 }
 
+// ClickhouseDatabaseExists checks whether an existing ClickhouseDatabase resource with the given ID exists.
+func ClickhouseDatabaseExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ClickhouseDatabaseState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("aiven:index/clickhouseDatabase:ClickhouseDatabase", id, state, "", opts...)
+}
+
 type clickhouseDatabaseArgs struct {
 	// Service database name. Maximum length: `40`. Changing this property forces recreation of the resource.
 	Name *string `pulumi:"name"`

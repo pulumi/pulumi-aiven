@@ -110,11 +110,10 @@ public class ClickhouseDatabase extends com.pulumi.resources.CustomResource {
     /**
      * Client-side deletion protection that prevents the resource from being deleted by Terraform. **Resource can still be deleted in the Aiven Console**. The default value is `false`. **Deprecated**: Instead, use `preventDestroy`
      * 
-     * @deprecated
-     * Instead, use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)
+     * @deprecated Instead, use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion)
      * 
      */
-    @Deprecated /* Instead, use [`preventDestroy`](https://developer.hashicorp.com/terraform/tutorials/state/resource-lifecycle#prevent-resource-deletion) */
+    @Deprecated
     @Export(name="terminationProtection", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> terminationProtection;
 

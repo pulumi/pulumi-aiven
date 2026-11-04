@@ -50,22 +50,20 @@ public final class OrganizationApplicationUserState extends com.pulumi.resources
     /**
      * Alters super admin state of the organization application user. The default value is `false`. **Deprecated**: This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `aiven.OrganizationPermission` resource.
      * 
-     * @deprecated
-     * This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `aiven.OrganizationPermission` resource.
+     * @deprecated This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `aiven.OrganizationPermission` resource.
      * 
      */
-    @Deprecated /* This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `aiven.OrganizationPermission` resource. */
+    @Deprecated
     @Import(name="isSuperAdmin")
     private @Nullable Output<Boolean> isSuperAdmin;
 
     /**
      * @return Alters super admin state of the organization application user. The default value is `false`. **Deprecated**: This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `aiven.OrganizationPermission` resource.
      * 
-     * @deprecated
-     * This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `aiven.OrganizationPermission` resource.
+     * @deprecated This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `aiven.OrganizationPermission` resource.
      * 
      */
-    @Deprecated /* This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `aiven.OrganizationPermission` resource. */
+    @Deprecated
     public Optional<Output<Boolean>> isSuperAdmin() {
         return Optional.ofNullable(this.isSuperAdmin);
     }
@@ -199,11 +197,10 @@ public final class OrganizationApplicationUserState extends com.pulumi.resources
          * 
          * @return builder
          * 
-         * @deprecated
-         * This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `aiven.OrganizationPermission` resource.
+         * @deprecated This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `aiven.OrganizationPermission` resource.
          * 
          */
-        @Deprecated /* This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `aiven.OrganizationPermission` resource. */
+        @Deprecated
         public Builder isSuperAdmin(@Nullable Output<Boolean> isSuperAdmin) {
             $.isSuperAdmin = isSuperAdmin;
             return this;
@@ -214,11 +211,10 @@ public final class OrganizationApplicationUserState extends com.pulumi.resources
          * 
          * @return builder
          * 
-         * @deprecated
-         * This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `aiven.OrganizationPermission` resource.
+         * @deprecated This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `aiven.OrganizationPermission` resource.
          * 
          */
-        @Deprecated /* This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `aiven.OrganizationPermission` resource. */
+        @Deprecated
         public Builder isSuperAdmin(Boolean isSuperAdmin) {
             return isSuperAdmin(Output.of(isSuperAdmin));
         }

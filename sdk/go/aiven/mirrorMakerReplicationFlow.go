@@ -260,6 +260,12 @@ func (MirrorMakerReplicationFlowState) ElementType() reflect.Type {
 	return reflect.TypeOf((*mirrorMakerReplicationFlowState)(nil)).Elem()
 }
 
+// MirrorMakerReplicationFlowExists checks whether an existing MirrorMakerReplicationFlow resource with the given ID exists.
+func MirrorMakerReplicationFlowExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MirrorMakerReplicationFlowState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("aiven:index/mirrorMakerReplicationFlow:MirrorMakerReplicationFlow", id, state, "", opts...)
+}
+
 type mirrorMakerReplicationFlowArgs struct {
 	// List of topic configuration properties and/or regexes that should not be replicated. If omitted, MirrorMaker will use default list of exclusions. For stability reasons, we always include the `unclean.leader.election.enable` field in the excluded parameters. If you have specific requirements for this configuration, please reach out to our support team for assistance.
 	ConfigPropertiesExcludes []string `pulumi:"configPropertiesExcludes"`

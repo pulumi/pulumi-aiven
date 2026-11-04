@@ -232,6 +232,12 @@ func (FlinkApplicationVersionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*flinkApplicationVersionState)(nil)).Elem()
 }
 
+// FlinkApplicationVersionExists checks whether an existing FlinkApplicationVersion resource with the given ID exists.
+func FlinkApplicationVersionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FlinkApplicationVersionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("aiven:index/flinkApplicationVersion:FlinkApplicationVersion", id, state, "", opts...)
+}
+
 type flinkApplicationVersionArgs struct {
 	// Application ID.
 	ApplicationId string `pulumi:"applicationId"`

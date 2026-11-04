@@ -372,6 +372,26 @@ class AwsVpcPeeringConnection(pulumi.CustomResource):
         __props__.__dict__["vpc_id"] = vpc_id
         return AwsVpcPeeringConnection(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            aws_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            aws_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            aws_vpc_peering_connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+            aws_vpc_region: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            state_info: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["awsAccountId"] = aws_account_id
+        __props__["awsVpcId"] = aws_vpc_id
+        __props__["awsVpcPeeringConnectionId"] = aws_vpc_peering_connection_id
+        __props__["awsVpcRegion"] = aws_vpc_region
+        __props__["state"] = state
+        __props__["stateInfo"] = state_info
+        __props__["vpcId"] = vpc_id
+        return pulumi.runtime.exists_resource(None, 'aiven:index/awsVpcPeeringConnection:AwsVpcPeeringConnection', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="awsAccountId")
     def aws_account_id(self) -> pulumi.Output[_builtins.str]:

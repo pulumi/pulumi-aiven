@@ -272,6 +272,12 @@ func (ServiceIntegrationEndpointState) ElementType() reflect.Type {
 	return reflect.TypeOf((*serviceIntegrationEndpointState)(nil)).Elem()
 }
 
+// ServiceIntegrationEndpointExists checks whether an existing ServiceIntegrationEndpoint resource with the given ID exists.
+func ServiceIntegrationEndpointExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ServiceIntegrationEndpointState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("aiven:index/serviceIntegrationEndpoint:ServiceIntegrationEndpoint", id, state, "", opts...)
+}
+
 type serviceIntegrationEndpointArgs struct {
 	// Autoscaler user configurable settings. **Warning:** There's no way to reset advanced configuration options to default. Options that you add cannot be removed later
 	AutoscalerUserConfig *ServiceIntegrationEndpointAutoscalerUserConfig `pulumi:"autoscalerUserConfig"`

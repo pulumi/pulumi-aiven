@@ -341,6 +341,24 @@ class GcpPrivatelinkConnectionApproval(pulumi.CustomResource):
         __props__.__dict__["user_ip_address"] = user_ip_address
         return GcpPrivatelinkConnectionApproval(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            privatelink_connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            psc_connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+            service_name: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            user_ip_address: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["privatelinkConnectionId"] = privatelink_connection_id
+        __props__["project"] = project
+        __props__["pscConnectionId"] = psc_connection_id
+        __props__["serviceName"] = service_name
+        __props__["state"] = state
+        __props__["userIpAddress"] = user_ip_address
+        return pulumi.runtime.exists_resource(None, 'aiven:index/gcpPrivatelinkConnectionApproval:GcpPrivatelinkConnectionApproval', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="privatelinkConnectionId")
     def privatelink_connection_id(self) -> pulumi.Output[_builtins.str]:

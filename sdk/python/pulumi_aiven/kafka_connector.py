@@ -468,6 +468,34 @@ class KafkaConnector(pulumi.CustomResource):
         __props__.__dict__["tasks"] = tasks
         return KafkaConnector(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            connector_name: pulumi.Input[Optional[_builtins.str]] = None,
+            plugin_author: pulumi.Input[Optional[_builtins.str]] = None,
+            plugin_class: pulumi.Input[Optional[_builtins.str]] = None,
+            plugin_doc_url: pulumi.Input[Optional[_builtins.str]] = None,
+            plugin_title: pulumi.Input[Optional[_builtins.str]] = None,
+            plugin_type: pulumi.Input[Optional[_builtins.str]] = None,
+            plugin_version: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            service_name: pulumi.Input[Optional[_builtins.str]] = None,
+            tasks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KafkaConnectorTaskArgs', 'KafkaConnectorTaskArgsDict', 'outputs.KafkaConnectorTask']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["config"] = config
+        __props__["connectorName"] = connector_name
+        __props__["pluginAuthor"] = plugin_author
+        __props__["pluginClass"] = plugin_class
+        __props__["pluginDocUrl"] = plugin_doc_url
+        __props__["pluginTitle"] = plugin_title
+        __props__["pluginType"] = plugin_type
+        __props__["pluginVersion"] = plugin_version
+        __props__["project"] = project
+        __props__["serviceName"] = service_name
+        __props__["tasks"] = tasks
+        return pulumi.runtime.exists_resource(None, 'aiven:index/kafkaConnector:KafkaConnector', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def config(self) -> pulumi.Output[Mapping[str, _builtins.str]]:

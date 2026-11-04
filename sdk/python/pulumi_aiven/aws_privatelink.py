@@ -394,6 +394,28 @@ class AwsPrivatelink(pulumi.CustomResource):
         __props__.__dict__["timeouts"] = timeouts
         return AwsPrivatelink(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            aws_service_id: pulumi.Input[Optional[_builtins.str]] = None,
+            aws_service_name: pulumi.Input[Optional[_builtins.str]] = None,
+            principals: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            service_name: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            supported_regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            timeouts: pulumi.Input[Optional[Union['AwsPrivatelinkTimeoutsArgs', 'AwsPrivatelinkTimeoutsArgsDict', 'outputs.AwsPrivatelinkTimeouts']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["awsServiceId"] = aws_service_id
+        __props__["awsServiceName"] = aws_service_name
+        __props__["principals"] = principals
+        __props__["project"] = project
+        __props__["serviceName"] = service_name
+        __props__["state"] = state
+        __props__["supportedRegions"] = supported_regions
+        __props__["timeouts"] = timeouts
+        return pulumi.runtime.exists_resource(None, 'aiven:index/awsPrivatelink:AwsPrivatelink', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="awsServiceId")
     def aws_service_id(self) -> pulumi.Output[_builtins.str]:

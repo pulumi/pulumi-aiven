@@ -189,6 +189,12 @@ func (KafkaUserState) ElementType() reflect.Type {
 	return reflect.TypeOf((*kafkaUserState)(nil)).Elem()
 }
 
+// KafkaUserExists checks whether an existing KafkaUser resource with the given ID exists.
+func KafkaUserExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *KafkaUserState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("aiven:index/kafkaUser:KafkaUser", id, state, "", opts...)
+}
+
 type kafkaUserArgs struct {
 	// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
 	Password *string `pulumi:"password"`

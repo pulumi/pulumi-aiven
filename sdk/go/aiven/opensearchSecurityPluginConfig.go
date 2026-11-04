@@ -158,6 +158,12 @@ func (OpensearchSecurityPluginConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*opensearchSecurityPluginConfigState)(nil)).Elem()
 }
 
+// OpensearchSecurityPluginConfigExists checks whether an existing OpensearchSecurityPluginConfig resource with the given ID exists.
+func OpensearchSecurityPluginConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OpensearchSecurityPluginConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("aiven:index/opensearchSecurityPluginConfig:OpensearchSecurityPluginConfig", id, state, "", opts...)
+}
+
 type opensearchSecurityPluginConfigArgs struct {
 	// Current os-sec-admin password. Length must be between `8` and `256`.
 	AdminPassword string `pulumi:"adminPassword"`

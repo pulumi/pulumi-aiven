@@ -32,11 +32,10 @@ public class Project extends com.pulumi.resources.CustomResource {
     /**
      * Link a project to an existing account using its account ID. This field is deprecated. Use `parentId` instead. To set up proper dependencies please refer to this variable as a reference.
      * 
-     * @deprecated
-     * Use parentId instead. This field will be removed in the next major release.
+     * @deprecated Use parentId instead. This field will be removed in the next major release.
      * 
      */
-    @Deprecated /* Use parentId instead. This field will be removed in the next major release. */
+    @Deprecated
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
@@ -50,11 +49,10 @@ public class Project extends com.pulumi.resources.CustomResource {
     /**
      * If parentId is set, grant account owner team admin access to the new project. The default value is `true`.
      * 
-     * @deprecated
-     * This field is deprecated and will be removed in the next major release. Currently, it will always be set to true, regardless of the value set in the manifest.
+     * @deprecated This field is deprecated and will be removed in the next major release. Currently, it will always be set to true, regardless of the value set in the manifest.
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in the next major release. Currently, it will always be set to true, regardless of the value set in the manifest. */
+    @Deprecated
     @Export(name="addAccountOwnersAdminAccess", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> addAccountOwnersAdminAccess;
 
@@ -68,11 +66,10 @@ public class Project extends com.pulumi.resources.CustomResource {
     /**
      * The number of trial or promotional credits remaining for this project.
      * 
-     * @deprecated
-     * This field is deprecated on the resource and is no longer populated. Use the `aiven.Project` data source to read this value. It will be removed in the next major release.
+     * @deprecated This field is deprecated on the resource and is no longer populated. Use the `aiven.Project` data source to read this value. It will be removed in the next major release.
      * 
      */
-    @Deprecated /* This field is deprecated on the resource and is no longer populated. Use the `aiven.Project` data source to read this value. It will be removed in the next major release. */
+    @Deprecated
     @Export(name="availableCredits", refs={String.class}, tree="[0]")
     private Output<String> availableCredits;
 
@@ -142,11 +139,10 @@ public class Project extends com.pulumi.resources.CustomResource {
     /**
      * The monthly running estimate for this project for the current billing period.
      * 
-     * @deprecated
-     * This field is deprecated on the resource and is no longer populated. Use the `aiven.Project` data source to read this value. It will be removed in the next major release.
+     * @deprecated This field is deprecated on the resource and is no longer populated. Use the `aiven.Project` data source to read this value. It will be removed in the next major release.
      * 
      */
-    @Deprecated /* This field is deprecated on the resource and is no longer populated. Use the `aiven.Project` data source to read this value. It will be removed in the next major release. */
+    @Deprecated
     @Export(name="estimatedBalance", refs={String.class}, tree="[0]")
     private Output<String> estimatedBalance;
 
@@ -230,11 +226,10 @@ public class Project extends com.pulumi.resources.CustomResource {
     /**
      * Use the same billing group that is used in source project.
      * 
-     * @deprecated
-     * This field is deprecated and will be removed in the next major release.
+     * @deprecated This field is deprecated and will be removed in the next major release.
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in the next major release. */
+    @Deprecated
     @Export(name="useSourceProjectBillingGroup", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> useSourceProjectBillingGroup;
 

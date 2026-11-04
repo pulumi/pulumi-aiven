@@ -293,6 +293,12 @@ func (ValkeyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*valkeyState)(nil)).Elem()
 }
 
+// ValkeyExists checks whether an existing Valkey resource with the given ID exists.
+func ValkeyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ValkeyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("aiven:index/valkey:Valkey", id, state, "", opts...)
+}
+
 type valkeyArgs struct {
 	// Add [disk storage](https://aiven.io/docs/platform/howto/add-storage-space) in increments of 30 GiB to the default disk space defined by the `plan`. The maximum value depends on the service type and cloud provider. Removing additional storage causes the service nodes to go through a rolling restart, and there might be a short downtime for services without an autoscaler integration or high availability capabilities. The field can be safely removed when autoscaler is enabled without causing any changes.
 	AdditionalDiskSpace *string `pulumi:"additionalDiskSpace"`

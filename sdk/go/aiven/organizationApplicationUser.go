@@ -138,6 +138,12 @@ func (OrganizationApplicationUserState) ElementType() reflect.Type {
 	return reflect.TypeOf((*organizationApplicationUserState)(nil)).Elem()
 }
 
+// OrganizationApplicationUserExists checks whether an existing OrganizationApplicationUser resource with the given ID exists.
+func OrganizationApplicationUserExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OrganizationApplicationUserState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("aiven:index/organizationApplicationUser:OrganizationApplicationUser", id, state, "", opts...)
+}
+
 type organizationApplicationUserArgs struct {
 	// Alters super admin state of the organization application user. The default value is `false`. **Deprecated**: This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `OrganizationPermission` resource.
 	//

@@ -151,6 +151,12 @@ func (OrganizationPermissionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*organizationPermissionState)(nil)).Elem()
 }
 
+// OrganizationPermissionExists checks whether an existing OrganizationPermission resource with the given ID exists.
+func OrganizationPermissionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OrganizationPermissionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("aiven:index/organizationPermission:OrganizationPermission", id, state, "", opts...)
+}
+
 type organizationPermissionArgs struct {
 	// ID of an organization. Changing this property forces recreation of the resource.
 	OrganizationId string `pulumi:"organizationId"`

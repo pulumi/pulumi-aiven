@@ -174,6 +174,12 @@ func (AzureVpcPeeringConnectionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*azureVpcPeeringConnectionState)(nil)).Elem()
 }
 
+// AzureVpcPeeringConnectionExists checks whether an existing AzureVpcPeeringConnection resource with the given ID exists.
+func AzureVpcPeeringConnectionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AzureVpcPeeringConnectionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("aiven:index/azureVpcPeeringConnection:AzureVpcPeeringConnection", id, state, "", opts...)
+}
+
 type azureVpcPeeringConnectionArgs struct {
 	// The ID of the Azure subscription in UUID4 format. Changing this property forces recreation of the resource.
 	AzureSubscriptionId string `pulumi:"azureSubscriptionId"`

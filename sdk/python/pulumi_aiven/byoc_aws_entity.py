@@ -781,6 +781,56 @@ class ByocAwsEntity(pulumi.CustomResource):
         __props__.__dict__["use_customer_owned_storage"] = use_customer_owned_storage
         return ByocAwsEntity(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            aiven_aws_account_principal: pulumi.Input[Optional[_builtins.str]] = None,
+            aiven_aws_assume_role_external_id: pulumi.Input[Optional[_builtins.str]] = None,
+            aiven_aws_object_storage_credentials_creator_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            aiven_aws_object_storage_user_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            aiven_management_cidr_blocks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            aiven_object_storage_credentials_creator_user: pulumi.Input[Optional[_builtins.str]] = None,
+            aws_subnets_bastion: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            aws_subnets_workload: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            bucket_names: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            byoc_resource_tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            byoc_unique_name: pulumi.Input[Optional[_builtins.str]] = None,
+            cloud_provider: pulumi.Input[Optional[_builtins.str]] = None,
+            cloud_region: pulumi.Input[Optional[_builtins.str]] = None,
+            contact_emails: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ByocAwsEntityContactEmailArgs', 'ByocAwsEntityContactEmailArgsDict', 'outputs.ByocAwsEntityContactEmail']]]]] = None,
+            custom_cloud_environment_id: pulumi.Input[Optional[_builtins.str]] = None,
+            deployment_model: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+            reserved_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            timeouts: pulumi.Input[Optional[Union['ByocAwsEntityTimeoutsArgs', 'ByocAwsEntityTimeoutsArgsDict', 'outputs.ByocAwsEntityTimeouts']]] = None,
+            use_customer_owned_storage: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["aivenAwsAccountPrincipal"] = aiven_aws_account_principal
+        __props__["aivenAwsAssumeRoleExternalId"] = aiven_aws_assume_role_external_id
+        __props__["aivenAwsObjectStorageCredentialsCreatorArn"] = aiven_aws_object_storage_credentials_creator_arn
+        __props__["aivenAwsObjectStorageUserArn"] = aiven_aws_object_storage_user_arn
+        __props__["aivenManagementCidrBlocks"] = aiven_management_cidr_blocks
+        __props__["aivenObjectStorageCredentialsCreatorUser"] = aiven_object_storage_credentials_creator_user
+        __props__["awsSubnetsBastion"] = aws_subnets_bastion
+        __props__["awsSubnetsWorkload"] = aws_subnets_workload
+        __props__["bucketNames"] = bucket_names
+        __props__["byocResourceTags"] = byoc_resource_tags
+        __props__["byocUniqueName"] = byoc_unique_name
+        __props__["cloudProvider"] = cloud_provider
+        __props__["cloudRegion"] = cloud_region
+        __props__["contactEmails"] = contact_emails
+        __props__["customCloudEnvironmentId"] = custom_cloud_environment_id
+        __props__["deploymentModel"] = deployment_model
+        __props__["displayName"] = display_name
+        __props__["organizationId"] = organization_id
+        __props__["reservedCidr"] = reserved_cidr
+        __props__["tags"] = tags
+        __props__["timeouts"] = timeouts
+        __props__["useCustomerOwnedStorage"] = use_customer_owned_storage
+        return pulumi.runtime.exists_resource(None, 'aiven:index/byocAwsEntity:ByocAwsEntity', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="aivenAwsAccountPrincipal")
     def aiven_aws_account_principal(self) -> pulumi.Output[_builtins.str]:

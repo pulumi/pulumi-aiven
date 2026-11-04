@@ -19,22 +19,20 @@ public final class OpenSearchOpensearchArgs extends com.pulumi.resources.Resourc
     /**
      * URI for Kibana dashboard frontend.
      * 
-     * @deprecated
-     * This field was added by mistake and has never worked. It will be removed in future versions.
+     * @deprecated This field was added by mistake and has never worked. It will be removed in future versions.
      * 
      */
-    @Deprecated /* This field was added by mistake and has never worked. It will be removed in future versions. */
+    @Deprecated
     @Import(name="kibanaUri")
     private @Nullable Output<String> kibanaUri;
 
     /**
      * @return URI for Kibana dashboard frontend.
      * 
-     * @deprecated
-     * This field was added by mistake and has never worked. It will be removed in future versions.
+     * @deprecated This field was added by mistake and has never worked. It will be removed in future versions.
      * 
      */
-    @Deprecated /* This field was added by mistake and has never worked. It will be removed in future versions. */
+    @Deprecated
     public Optional<Output<String>> kibanaUri() {
         return Optional.ofNullable(this.kibanaUri);
     }
@@ -132,11 +130,10 @@ public final class OpenSearchOpensearchArgs extends com.pulumi.resources.Resourc
          * 
          * @return builder
          * 
-         * @deprecated
-         * This field was added by mistake and has never worked. It will be removed in future versions.
+         * @deprecated This field was added by mistake and has never worked. It will be removed in future versions.
          * 
          */
-        @Deprecated /* This field was added by mistake and has never worked. It will be removed in future versions. */
+        @Deprecated
         public Builder kibanaUri(@Nullable Output<String> kibanaUri) {
             $.kibanaUri = kibanaUri;
             return this;
@@ -147,11 +144,10 @@ public final class OpenSearchOpensearchArgs extends com.pulumi.resources.Resourc
          * 
          * @return builder
          * 
-         * @deprecated
-         * This field was added by mistake and has never worked. It will be removed in future versions.
+         * @deprecated This field was added by mistake and has never worked. It will be removed in future versions.
          * 
          */
-        @Deprecated /* This field was added by mistake and has never worked. It will be removed in future versions. */
+        @Deprecated
         public Builder kibanaUri(String kibanaUri) {
             return kibanaUri(Output.of(kibanaUri));
         }

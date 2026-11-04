@@ -346,6 +346,24 @@ class AccountTeamMember(pulumi.CustomResource):
         __props__.__dict__["user_email"] = user_email
         return AccountTeamMember(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            accepted: pulumi.Input[Optional[_builtins.bool]] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            invited_by_user_email: pulumi.Input[Optional[_builtins.str]] = None,
+            team_id: pulumi.Input[Optional[_builtins.str]] = None,
+            user_email: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accepted"] = accepted
+        __props__["accountId"] = account_id
+        __props__["createTime"] = create_time
+        __props__["invitedByUserEmail"] = invited_by_user_email
+        __props__["teamId"] = team_id
+        __props__["userEmail"] = user_email
+        return pulumi.runtime.exists_resource(None, 'aiven:index/accountTeamMember:AccountTeamMember', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def accepted(self) -> pulumi.Output[_builtins.bool]:

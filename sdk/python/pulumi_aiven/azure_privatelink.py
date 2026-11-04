@@ -377,6 +377,28 @@ class AzurePrivatelink(pulumi.CustomResource):
         __props__.__dict__["user_subscription_ids"] = user_subscription_ids
         return AzurePrivatelink(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            azure_service_alias: pulumi.Input[Optional[_builtins.str]] = None,
+            azure_service_id: pulumi.Input[Optional[_builtins.str]] = None,
+            message: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            service_name: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['AzurePrivatelinkTimeoutsArgs', 'AzurePrivatelinkTimeoutsArgsDict', 'outputs.AzurePrivatelinkTimeouts']]] = None,
+            user_subscription_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["azureServiceAlias"] = azure_service_alias
+        __props__["azureServiceId"] = azure_service_id
+        __props__["message"] = message
+        __props__["project"] = project
+        __props__["serviceName"] = service_name
+        __props__["state"] = state
+        __props__["timeouts"] = timeouts
+        __props__["userSubscriptionIds"] = user_subscription_ids
+        return pulumi.runtime.exists_resource(None, 'aiven:index/azurePrivatelink:AzurePrivatelink', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="azureServiceAlias")
     def azure_service_alias(self) -> pulumi.Output[_builtins.str]:

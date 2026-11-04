@@ -14,11 +14,10 @@ public final class GetOpenSearchOpensearch {
     /**
      * @return URI for Kibana dashboard frontend.
      * 
-     * @deprecated
-     * This field was added by mistake and has never worked. It will be removed in future versions.
+     * @deprecated This field was added by mistake and has never worked. It will be removed in future versions.
      * 
      */
-    @Deprecated /* This field was added by mistake and has never worked. It will be removed in future versions. */
+    @Deprecated
     private String kibanaUri;
     /**
      * @return URI for OpenSearch dashboard frontend.
@@ -45,11 +44,10 @@ public final class GetOpenSearchOpensearch {
     /**
      * @return URI for Kibana dashboard frontend.
      * 
-     * @deprecated
-     * This field was added by mistake and has never worked. It will be removed in future versions.
+     * @deprecated This field was added by mistake and has never worked. It will be removed in future versions.
      * 
      */
-    @Deprecated /* This field was added by mistake and has never worked. It will be removed in future versions. */
+    @Deprecated
     public String kibanaUri() {
         return this.kibanaUri;
     }

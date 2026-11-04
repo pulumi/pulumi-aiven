@@ -405,6 +405,26 @@ class KafkaSchemaRegistryAcl(pulumi.CustomResource):
         __props__.__dict__["username"] = username
         return KafkaSchemaRegistryAcl(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            acl_id: pulumi.Input[Optional[_builtins.str]] = None,
+            permission: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            resource: pulumi.Input[Optional[_builtins.str]] = None,
+            service_name: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['KafkaSchemaRegistryAclTimeoutsArgs', 'KafkaSchemaRegistryAclTimeoutsArgsDict', 'outputs.KafkaSchemaRegistryAclTimeouts']]] = None,
+            username: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["aclId"] = acl_id
+        __props__["permission"] = permission
+        __props__["project"] = project
+        __props__["resource"] = resource
+        __props__["serviceName"] = service_name
+        __props__["timeouts"] = timeouts
+        __props__["username"] = username
+        return pulumi.runtime.exists_resource(None, 'aiven:index/kafkaSchemaRegistryAcl:KafkaSchemaRegistryAcl', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="aclId")
     def acl_id(self) -> pulumi.Output[_builtins.str]:

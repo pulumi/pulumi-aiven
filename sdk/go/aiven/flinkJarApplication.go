@@ -171,6 +171,12 @@ func (FlinkJarApplicationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*flinkJarApplicationState)(nil)).Elem()
 }
 
+// FlinkJarApplicationExists checks whether an existing FlinkJarApplication resource with the given ID exists.
+func FlinkJarApplicationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FlinkJarApplicationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("aiven:index/flinkJarApplication:FlinkJarApplication", id, state, "", opts...)
+}
+
 type flinkJarApplicationArgs struct {
 	// Application name. Maximum length: `128`.
 	Name *string `pulumi:"name"`

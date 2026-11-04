@@ -21,22 +21,20 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     /**
      * Link a project to an existing account using its account ID. This field is deprecated. Use `parentId` instead. To set up proper dependencies please refer to this variable as a reference.
      * 
-     * @deprecated
-     * Use parentId instead. This field will be removed in the next major release.
+     * @deprecated Use parentId instead. This field will be removed in the next major release.
      * 
      */
-    @Deprecated /* Use parentId instead. This field will be removed in the next major release. */
+    @Deprecated
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
      * @return Link a project to an existing account using its account ID. This field is deprecated. Use `parentId` instead. To set up proper dependencies please refer to this variable as a reference.
      * 
-     * @deprecated
-     * Use parentId instead. This field will be removed in the next major release.
+     * @deprecated Use parentId instead. This field will be removed in the next major release.
      * 
      */
-    @Deprecated /* Use parentId instead. This field will be removed in the next major release. */
+    @Deprecated
     public Optional<Output<String>> accountId() {
         return Optional.ofNullable(this.accountId);
     }
@@ -44,22 +42,20 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     /**
      * If parentId is set, grant account owner team admin access to the new project. The default value is `true`.
      * 
-     * @deprecated
-     * This field is deprecated and will be removed in the next major release. Currently, it will always be set to true, regardless of the value set in the manifest.
+     * @deprecated This field is deprecated and will be removed in the next major release. Currently, it will always be set to true, regardless of the value set in the manifest.
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in the next major release. Currently, it will always be set to true, regardless of the value set in the manifest. */
+    @Deprecated
     @Import(name="addAccountOwnersAdminAccess")
     private @Nullable Output<Boolean> addAccountOwnersAdminAccess;
 
     /**
      * @return If parentId is set, grant account owner team admin access to the new project. The default value is `true`.
      * 
-     * @deprecated
-     * This field is deprecated and will be removed in the next major release. Currently, it will always be set to true, regardless of the value set in the manifest.
+     * @deprecated This field is deprecated and will be removed in the next major release. Currently, it will always be set to true, regardless of the value set in the manifest.
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in the next major release. Currently, it will always be set to true, regardless of the value set in the manifest. */
+    @Deprecated
     public Optional<Output<Boolean>> addAccountOwnersAdminAccess() {
         return Optional.ofNullable(this.addAccountOwnersAdminAccess);
     }
@@ -67,22 +63,20 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     /**
      * The number of trial or promotional credits remaining for this project.
      * 
-     * @deprecated
-     * This field is deprecated on the resource and is no longer populated. Use the `aiven.Project` data source to read this value. It will be removed in the next major release.
+     * @deprecated This field is deprecated on the resource and is no longer populated. Use the `aiven.Project` data source to read this value. It will be removed in the next major release.
      * 
      */
-    @Deprecated /* This field is deprecated on the resource and is no longer populated. Use the `aiven.Project` data source to read this value. It will be removed in the next major release. */
+    @Deprecated
     @Import(name="availableCredits")
     private @Nullable Output<String> availableCredits;
 
     /**
      * @return The number of trial or promotional credits remaining for this project.
      * 
-     * @deprecated
-     * This field is deprecated on the resource and is no longer populated. Use the `aiven.Project` data source to read this value. It will be removed in the next major release.
+     * @deprecated This field is deprecated on the resource and is no longer populated. Use the `aiven.Project` data source to read this value. It will be removed in the next major release.
      * 
      */
-    @Deprecated /* This field is deprecated on the resource and is no longer populated. Use the `aiven.Project` data source to read this value. It will be removed in the next major release. */
+    @Deprecated
     public Optional<Output<String>> availableCredits() {
         return Optional.ofNullable(this.availableCredits);
     }
@@ -150,22 +144,20 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     /**
      * The monthly running estimate for this project for the current billing period.
      * 
-     * @deprecated
-     * This field is deprecated on the resource and is no longer populated. Use the `aiven.Project` data source to read this value. It will be removed in the next major release.
+     * @deprecated This field is deprecated on the resource and is no longer populated. Use the `aiven.Project` data source to read this value. It will be removed in the next major release.
      * 
      */
-    @Deprecated /* This field is deprecated on the resource and is no longer populated. Use the `aiven.Project` data source to read this value. It will be removed in the next major release. */
+    @Deprecated
     @Import(name="estimatedBalance")
     private @Nullable Output<String> estimatedBalance;
 
     /**
      * @return The monthly running estimate for this project for the current billing period.
      * 
-     * @deprecated
-     * This field is deprecated on the resource and is no longer populated. Use the `aiven.Project` data source to read this value. It will be removed in the next major release.
+     * @deprecated This field is deprecated on the resource and is no longer populated. Use the `aiven.Project` data source to read this value. It will be removed in the next major release.
      * 
      */
-    @Deprecated /* This field is deprecated on the resource and is no longer populated. Use the `aiven.Project` data source to read this value. It will be removed in the next major release. */
+    @Deprecated
     public Optional<Output<String>> estimatedBalance() {
         return Optional.ofNullable(this.estimatedBalance);
     }
@@ -248,22 +240,20 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     /**
      * Use the same billing group that is used in source project.
      * 
-     * @deprecated
-     * This field is deprecated and will be removed in the next major release.
+     * @deprecated This field is deprecated and will be removed in the next major release.
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in the next major release. */
+    @Deprecated
     @Import(name="useSourceProjectBillingGroup")
     private @Nullable Output<Boolean> useSourceProjectBillingGroup;
 
     /**
      * @return Use the same billing group that is used in source project.
      * 
-     * @deprecated
-     * This field is deprecated and will be removed in the next major release.
+     * @deprecated This field is deprecated and will be removed in the next major release.
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in the next major release. */
+    @Deprecated
     public Optional<Output<Boolean>> useSourceProjectBillingGroup() {
         return Optional.ofNullable(this.useSourceProjectBillingGroup);
     }
@@ -310,11 +300,10 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Use parentId instead. This field will be removed in the next major release.
+         * @deprecated Use parentId instead. This field will be removed in the next major release.
          * 
          */
-        @Deprecated /* Use parentId instead. This field will be removed in the next major release. */
+        @Deprecated
         public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
@@ -325,11 +314,10 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Use parentId instead. This field will be removed in the next major release.
+         * @deprecated Use parentId instead. This field will be removed in the next major release.
          * 
          */
-        @Deprecated /* Use parentId instead. This field will be removed in the next major release. */
+        @Deprecated
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
         }
@@ -339,11 +327,10 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * This field is deprecated and will be removed in the next major release. Currently, it will always be set to true, regardless of the value set in the manifest.
+         * @deprecated This field is deprecated and will be removed in the next major release. Currently, it will always be set to true, regardless of the value set in the manifest.
          * 
          */
-        @Deprecated /* This field is deprecated and will be removed in the next major release. Currently, it will always be set to true, regardless of the value set in the manifest. */
+        @Deprecated
         public Builder addAccountOwnersAdminAccess(@Nullable Output<Boolean> addAccountOwnersAdminAccess) {
             $.addAccountOwnersAdminAccess = addAccountOwnersAdminAccess;
             return this;
@@ -354,11 +341,10 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * This field is deprecated and will be removed in the next major release. Currently, it will always be set to true, regardless of the value set in the manifest.
+         * @deprecated This field is deprecated and will be removed in the next major release. Currently, it will always be set to true, regardless of the value set in the manifest.
          * 
          */
-        @Deprecated /* This field is deprecated and will be removed in the next major release. Currently, it will always be set to true, regardless of the value set in the manifest. */
+        @Deprecated
         public Builder addAccountOwnersAdminAccess(Boolean addAccountOwnersAdminAccess) {
             return addAccountOwnersAdminAccess(Output.of(addAccountOwnersAdminAccess));
         }
@@ -368,11 +354,10 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * This field is deprecated on the resource and is no longer populated. Use the `aiven.Project` data source to read this value. It will be removed in the next major release.
+         * @deprecated This field is deprecated on the resource and is no longer populated. Use the `aiven.Project` data source to read this value. It will be removed in the next major release.
          * 
          */
-        @Deprecated /* This field is deprecated on the resource and is no longer populated. Use the `aiven.Project` data source to read this value. It will be removed in the next major release. */
+        @Deprecated
         public Builder availableCredits(@Nullable Output<String> availableCredits) {
             $.availableCredits = availableCredits;
             return this;
@@ -383,11 +368,10 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * This field is deprecated on the resource and is no longer populated. Use the `aiven.Project` data source to read this value. It will be removed in the next major release.
+         * @deprecated This field is deprecated on the resource and is no longer populated. Use the `aiven.Project` data source to read this value. It will be removed in the next major release.
          * 
          */
-        @Deprecated /* This field is deprecated on the resource and is no longer populated. Use the `aiven.Project` data source to read this value. It will be removed in the next major release. */
+        @Deprecated
         public Builder availableCredits(String availableCredits) {
             return availableCredits(Output.of(availableCredits));
         }
@@ -481,11 +465,10 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * This field is deprecated on the resource and is no longer populated. Use the `aiven.Project` data source to read this value. It will be removed in the next major release.
+         * @deprecated This field is deprecated on the resource and is no longer populated. Use the `aiven.Project` data source to read this value. It will be removed in the next major release.
          * 
          */
-        @Deprecated /* This field is deprecated on the resource and is no longer populated. Use the `aiven.Project` data source to read this value. It will be removed in the next major release. */
+        @Deprecated
         public Builder estimatedBalance(@Nullable Output<String> estimatedBalance) {
             $.estimatedBalance = estimatedBalance;
             return this;
@@ -496,11 +479,10 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * This field is deprecated on the resource and is no longer populated. Use the `aiven.Project` data source to read this value. It will be removed in the next major release.
+         * @deprecated This field is deprecated on the resource and is no longer populated. Use the `aiven.Project` data source to read this value. It will be removed in the next major release.
          * 
          */
-        @Deprecated /* This field is deprecated on the resource and is no longer populated. Use the `aiven.Project` data source to read this value. It will be removed in the next major release. */
+        @Deprecated
         public Builder estimatedBalance(String estimatedBalance) {
             return estimatedBalance(Output.of(estimatedBalance));
         }
@@ -635,11 +617,10 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * This field is deprecated and will be removed in the next major release.
+         * @deprecated This field is deprecated and will be removed in the next major release.
          * 
          */
-        @Deprecated /* This field is deprecated and will be removed in the next major release. */
+        @Deprecated
         public Builder useSourceProjectBillingGroup(@Nullable Output<Boolean> useSourceProjectBillingGroup) {
             $.useSourceProjectBillingGroup = useSourceProjectBillingGroup;
             return this;
@@ -650,11 +631,10 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * This field is deprecated and will be removed in the next major release.
+         * @deprecated This field is deprecated and will be removed in the next major release.
          * 
          */
-        @Deprecated /* This field is deprecated and will be removed in the next major release. */
+        @Deprecated
         public Builder useSourceProjectBillingGroup(Boolean useSourceProjectBillingGroup) {
             return useSourceProjectBillingGroup(Output.of(useSourceProjectBillingGroup));
         }

@@ -576,6 +576,34 @@ class KafkaNativeAcl(pulumi.CustomResource):
         __props__.__dict__["timeouts"] = timeouts
         return KafkaNativeAcl(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            acl_id: pulumi.Input[Optional[_builtins.str]] = None,
+            host: pulumi.Input[Optional[_builtins.str]] = None,
+            operation: pulumi.Input[Optional[_builtins.str]] = None,
+            pattern_type: pulumi.Input[Optional[_builtins.str]] = None,
+            permission_type: pulumi.Input[Optional[_builtins.str]] = None,
+            principal: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_name_: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_type: pulumi.Input[Optional[_builtins.str]] = None,
+            service_name: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['KafkaNativeAclTimeoutsArgs', 'KafkaNativeAclTimeoutsArgsDict', 'outputs.KafkaNativeAclTimeouts']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["aclId"] = acl_id
+        __props__["host"] = host
+        __props__["operation"] = operation
+        __props__["patternType"] = pattern_type
+        __props__["permissionType"] = permission_type
+        __props__["principal"] = principal
+        __props__["project"] = project
+        __props__["resourceName"] = resource_name_
+        __props__["resourceType"] = resource_type
+        __props__["serviceName"] = service_name
+        __props__["timeouts"] = timeouts
+        return pulumi.runtime.exists_resource(None, 'aiven:index/kafkaNativeAcl:KafkaNativeAcl', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="aclId")
     def acl_id(self) -> pulumi.Output[_builtins.str]:

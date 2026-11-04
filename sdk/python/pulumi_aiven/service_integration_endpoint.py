@@ -1135,6 +1135,62 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
         __props__.__dict__["rsyslog_user_config"] = rsyslog_user_config
         return ServiceIntegrationEndpoint(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            autoscaler_user_config: pulumi.Input[Optional[Union['ServiceIntegrationEndpointAutoscalerUserConfigArgs', 'ServiceIntegrationEndpointAutoscalerUserConfigArgsDict', 'outputs.ServiceIntegrationEndpointAutoscalerUserConfig']]] = None,
+            datadog_user_config: pulumi.Input[Optional[Union['ServiceIntegrationEndpointDatadogUserConfigArgs', 'ServiceIntegrationEndpointDatadogUserConfigArgsDict', 'outputs.ServiceIntegrationEndpointDatadogUserConfig']]] = None,
+            endpoint_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            endpoint_name: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint_type: pulumi.Input[Optional[_builtins.str]] = None,
+            external_aws_cloudwatch_logs_user_config: pulumi.Input[Optional[Union['ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs', 'ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgsDict', 'outputs.ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig']]] = None,
+            external_aws_cloudwatch_metrics_user_config: pulumi.Input[Optional[Union['ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs', 'ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgsDict', 'outputs.ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig']]] = None,
+            external_aws_s3_user_config: pulumi.Input[Optional[Union['ServiceIntegrationEndpointExternalAwsS3UserConfigArgs', 'ServiceIntegrationEndpointExternalAwsS3UserConfigArgsDict', 'outputs.ServiceIntegrationEndpointExternalAwsS3UserConfig']]] = None,
+            external_azure_blob_storage_user_config: pulumi.Input[Optional[Union['ServiceIntegrationEndpointExternalAzureBlobStorageUserConfigArgs', 'ServiceIntegrationEndpointExternalAzureBlobStorageUserConfigArgsDict', 'outputs.ServiceIntegrationEndpointExternalAzureBlobStorageUserConfig']]] = None,
+            external_clickhouse_user_config: pulumi.Input[Optional[Union['ServiceIntegrationEndpointExternalClickhouseUserConfigArgs', 'ServiceIntegrationEndpointExternalClickhouseUserConfigArgsDict', 'outputs.ServiceIntegrationEndpointExternalClickhouseUserConfig']]] = None,
+            external_elasticsearch_logs_user_config: pulumi.Input[Optional[Union['ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs', 'ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgsDict', 'outputs.ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig']]] = None,
+            external_google_cloud_bigquery: pulumi.Input[Optional[Union['ServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs', 'ServiceIntegrationEndpointExternalGoogleCloudBigqueryArgsDict', 'outputs.ServiceIntegrationEndpointExternalGoogleCloudBigquery']]] = None,
+            external_google_cloud_logging_user_config: pulumi.Input[Optional[Union['ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs', 'ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgsDict', 'outputs.ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig']]] = None,
+            external_kafka_user_config: pulumi.Input[Optional[Union['ServiceIntegrationEndpointExternalKafkaUserConfigArgs', 'ServiceIntegrationEndpointExternalKafkaUserConfigArgsDict', 'outputs.ServiceIntegrationEndpointExternalKafkaUserConfig']]] = None,
+            external_mysql_user_config: pulumi.Input[Optional[Union['ServiceIntegrationEndpointExternalMysqlUserConfigArgs', 'ServiceIntegrationEndpointExternalMysqlUserConfigArgsDict', 'outputs.ServiceIntegrationEndpointExternalMysqlUserConfig']]] = None,
+            external_object_storage_config_user_config: pulumi.Input[Optional[Union['ServiceIntegrationEndpointExternalObjectStorageConfigUserConfigArgs', 'ServiceIntegrationEndpointExternalObjectStorageConfigUserConfigArgsDict', 'outputs.ServiceIntegrationEndpointExternalObjectStorageConfigUserConfig']]] = None,
+            external_opensearch_logs_user_config: pulumi.Input[Optional[Union['ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgs', 'ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgsDict', 'outputs.ServiceIntegrationEndpointExternalOpensearchLogsUserConfig']]] = None,
+            external_postgresql: pulumi.Input[Optional[Union['ServiceIntegrationEndpointExternalPostgresqlArgs', 'ServiceIntegrationEndpointExternalPostgresqlArgsDict', 'outputs.ServiceIntegrationEndpointExternalPostgresql']]] = None,
+            external_prometheus_user_config: pulumi.Input[Optional[Union['ServiceIntegrationEndpointExternalPrometheusUserConfigArgs', 'ServiceIntegrationEndpointExternalPrometheusUserConfigArgsDict', 'outputs.ServiceIntegrationEndpointExternalPrometheusUserConfig']]] = None,
+            external_schema_registry_user_config: pulumi.Input[Optional[Union['ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs', 'ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgsDict', 'outputs.ServiceIntegrationEndpointExternalSchemaRegistryUserConfig']]] = None,
+            jolokia_user_config: pulumi.Input[Optional[Union['ServiceIntegrationEndpointJolokiaUserConfigArgs', 'ServiceIntegrationEndpointJolokiaUserConfigArgsDict', 'outputs.ServiceIntegrationEndpointJolokiaUserConfig']]] = None,
+            opentelemetry_user_config: pulumi.Input[Optional[Union['ServiceIntegrationEndpointOpentelemetryUserConfigArgs', 'ServiceIntegrationEndpointOpentelemetryUserConfigArgsDict', 'outputs.ServiceIntegrationEndpointOpentelemetryUserConfig']]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            prometheus_user_config: pulumi.Input[Optional[Union['ServiceIntegrationEndpointPrometheusUserConfigArgs', 'ServiceIntegrationEndpointPrometheusUserConfigArgsDict', 'outputs.ServiceIntegrationEndpointPrometheusUserConfig']]] = None,
+            rsyslog_user_config: pulumi.Input[Optional[Union['ServiceIntegrationEndpointRsyslogUserConfigArgs', 'ServiceIntegrationEndpointRsyslogUserConfigArgsDict', 'outputs.ServiceIntegrationEndpointRsyslogUserConfig']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["autoscalerUserConfig"] = autoscaler_user_config
+        __props__["datadogUserConfig"] = datadog_user_config
+        __props__["endpointConfig"] = endpoint_config
+        __props__["endpointName"] = endpoint_name
+        __props__["endpointType"] = endpoint_type
+        __props__["externalAwsCloudwatchLogsUserConfig"] = external_aws_cloudwatch_logs_user_config
+        __props__["externalAwsCloudwatchMetricsUserConfig"] = external_aws_cloudwatch_metrics_user_config
+        __props__["externalAwsS3UserConfig"] = external_aws_s3_user_config
+        __props__["externalAzureBlobStorageUserConfig"] = external_azure_blob_storage_user_config
+        __props__["externalClickhouseUserConfig"] = external_clickhouse_user_config
+        __props__["externalElasticsearchLogsUserConfig"] = external_elasticsearch_logs_user_config
+        __props__["externalGoogleCloudBigquery"] = external_google_cloud_bigquery
+        __props__["externalGoogleCloudLoggingUserConfig"] = external_google_cloud_logging_user_config
+        __props__["externalKafkaUserConfig"] = external_kafka_user_config
+        __props__["externalMysqlUserConfig"] = external_mysql_user_config
+        __props__["externalObjectStorageConfigUserConfig"] = external_object_storage_config_user_config
+        __props__["externalOpensearchLogsUserConfig"] = external_opensearch_logs_user_config
+        __props__["externalPostgresql"] = external_postgresql
+        __props__["externalPrometheusUserConfig"] = external_prometheus_user_config
+        __props__["externalSchemaRegistryUserConfig"] = external_schema_registry_user_config
+        __props__["jolokiaUserConfig"] = jolokia_user_config
+        __props__["opentelemetryUserConfig"] = opentelemetry_user_config
+        __props__["project"] = project
+        __props__["prometheusUserConfig"] = prometheus_user_config
+        __props__["rsyslogUserConfig"] = rsyslog_user_config
+        return pulumi.runtime.exists_resource(None, 'aiven:index/serviceIntegrationEndpoint:ServiceIntegrationEndpoint', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="autoscalerUserConfig")
     def autoscaler_user_config(self) -> pulumi.Output[Optional['outputs.ServiceIntegrationEndpointAutoscalerUserConfig']]:

@@ -216,6 +216,12 @@ func (ValkeyUserState) ElementType() reflect.Type {
 	return reflect.TypeOf((*valkeyUserState)(nil)).Elem()
 }
 
+// ValkeyUserExists checks whether an existing ValkeyUser resource with the given ID exists.
+func ValkeyUserExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ValkeyUserState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("aiven:index/valkeyUser:ValkeyUser", id, state, "", opts...)
+}
+
 type valkeyUserArgs struct {
 	// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
 	Password *string `pulumi:"password"`

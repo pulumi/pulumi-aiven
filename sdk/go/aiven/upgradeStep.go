@@ -163,6 +163,12 @@ func (UpgradeStepState) ElementType() reflect.Type {
 	return reflect.TypeOf((*upgradeStepState)(nil)).Elem()
 }
 
+// UpgradeStepExists checks whether an existing UpgradeStep resource with the given ID exists.
+func UpgradeStepExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *UpgradeStepState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("aiven:index/upgradeStep:UpgradeStep", id, state, "", opts...)
+}
+
 type upgradeStepArgs struct {
 	// Days before automatic validation (defaults to 7). Minimum value: `1`.
 	AutoValidationDelayDays *int `pulumi:"autoValidationDelayDays"`

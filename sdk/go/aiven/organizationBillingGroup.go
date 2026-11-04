@@ -217,6 +217,12 @@ func (OrganizationBillingGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*organizationBillingGroupState)(nil)).Elem()
 }
 
+// OrganizationBillingGroupExists checks whether an existing OrganizationBillingGroup resource with the given ID exists.
+func OrganizationBillingGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OrganizationBillingGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("aiven:index/organizationBillingGroup:OrganizationBillingGroup", id, state, "", opts...)
+}
+
 type organizationBillingGroupArgs struct {
 	// Billing address ID. Maximum length: `36`.
 	BillingAddressId string `pulumi:"billingAddressId"`

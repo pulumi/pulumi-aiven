@@ -385,6 +385,22 @@ class ByocPermissions(pulumi.CustomResource):
         __props__.__dict__["timeouts"] = timeouts
         return ByocPermissions(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            accounts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            custom_cloud_environment_id: pulumi.Input[Optional[_builtins.str]] = None,
+            organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+            projects: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            timeouts: pulumi.Input[Optional[Union['ByocPermissionsTimeoutsArgs', 'ByocPermissionsTimeoutsArgsDict', 'outputs.ByocPermissionsTimeouts']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accounts"] = accounts
+        __props__["customCloudEnvironmentId"] = custom_cloud_environment_id
+        __props__["organizationId"] = organization_id
+        __props__["projects"] = projects
+        __props__["timeouts"] = timeouts
+        return pulumi.runtime.exists_resource(None, 'aiven:index/byocPermissions:ByocPermissions', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def accounts(self) -> pulumi.Output[Sequence[_builtins.str]]:
