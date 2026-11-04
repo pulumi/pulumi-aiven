@@ -150,6 +150,12 @@ func (AwsPrivatelinkState) ElementType() reflect.Type {
 	return reflect.TypeOf((*awsPrivatelinkState)(nil)).Elem()
 }
 
+// AwsPrivatelinkExists checks whether an existing AwsPrivatelink resource with the given ID exists.
+func AwsPrivatelinkExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AwsPrivatelinkState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("aiven:index/awsPrivatelink:AwsPrivatelink", id, state, "", opts...)
+}
+
 type awsPrivatelinkArgs struct {
 	// ARNs of principals allowed connecting to the service.
 	Principals []string `pulumi:"principals"`

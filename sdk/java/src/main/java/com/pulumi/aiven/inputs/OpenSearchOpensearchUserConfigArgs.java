@@ -186,22 +186,20 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
     /**
      * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
-     * @deprecated
-     * Deprecated. Use `ipFilterString` instead.
+     * @deprecated Deprecated. Use `ipFilterString` instead.
      * 
      */
-    @Deprecated /* Deprecated. Use `ipFilterString` instead. */
+    @Deprecated
     @Import(name="ipFilters")
     private @Nullable Output<List<String>> ipFilters;
 
     /**
      * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
-     * @deprecated
-     * Deprecated. Use `ipFilterString` instead.
+     * @deprecated Deprecated. Use `ipFilterString` instead.
      * 
      */
-    @Deprecated /* Deprecated. Use `ipFilterString` instead. */
+    @Deprecated
     public Optional<Output<List<String>>> ipFilters() {
         return Optional.ofNullable(this.ipFilters);
     }
@@ -757,11 +755,10 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
          * 
          * @return builder
          * 
-         * @deprecated
-         * Deprecated. Use `ipFilterString` instead.
+         * @deprecated Deprecated. Use `ipFilterString` instead.
          * 
          */
-        @Deprecated /* Deprecated. Use `ipFilterString` instead. */
+        @Deprecated
         public Builder ipFilters(@Nullable Output<List<String>> ipFilters) {
             $.ipFilters = ipFilters;
             return this;
@@ -772,11 +769,10 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
          * 
          * @return builder
          * 
-         * @deprecated
-         * Deprecated. Use `ipFilterString` instead.
+         * @deprecated Deprecated. Use `ipFilterString` instead.
          * 
          */
-        @Deprecated /* Deprecated. Use `ipFilterString` instead. */
+        @Deprecated
         public Builder ipFilters(List<String> ipFilters) {
             return ipFilters(Output.of(ipFilters));
         }
@@ -786,11 +782,10 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
          * 
          * @return builder
          * 
-         * @deprecated
-         * Deprecated. Use `ipFilterString` instead.
+         * @deprecated Deprecated. Use `ipFilterString` instead.
          * 
          */
-        @Deprecated /* Deprecated. Use `ipFilterString` instead. */
+        @Deprecated
         public Builder ipFilters(String... ipFilters) {
             return ipFilters(List.of(ipFilters));
         }

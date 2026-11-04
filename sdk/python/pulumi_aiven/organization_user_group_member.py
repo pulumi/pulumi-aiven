@@ -323,6 +323,22 @@ class OrganizationUserGroupMember(pulumi.CustomResource):
         __props__.__dict__["user_id"] = user_id
         return OrganizationUserGroupMember(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            last_activity_time: pulumi.Input[Optional[_builtins.str]] = None,
+            organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['OrganizationUserGroupMemberTimeoutsArgs', 'OrganizationUserGroupMemberTimeoutsArgsDict', 'outputs.OrganizationUserGroupMemberTimeouts']]] = None,
+            user_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["groupId"] = group_id
+        __props__["lastActivityTime"] = last_activity_time
+        __props__["organizationId"] = organization_id
+        __props__["timeouts"] = timeouts
+        __props__["userId"] = user_id
+        return pulumi.runtime.exists_resource(None, 'aiven:index/organizationUserGroupMember:OrganizationUserGroupMember', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="groupId")
     def group_id(self) -> pulumi.Output[_builtins.str]:

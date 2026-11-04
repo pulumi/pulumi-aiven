@@ -262,6 +262,18 @@ class ClickhouseRole(pulumi.CustomResource):
         __props__.__dict__["service_name"] = service_name
         return ClickhouseRole(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            role: pulumi.Input[Optional[_builtins.str]] = None,
+            service_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["project"] = project
+        __props__["role"] = role
+        __props__["serviceName"] = service_name
+        return pulumi.runtime.exists_resource(None, 'aiven:index/clickhouseRole:ClickhouseRole', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def project(self) -> pulumi.Output[_builtins.str]:

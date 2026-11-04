@@ -148,6 +148,12 @@ func (OrganizationGroupProjectState) ElementType() reflect.Type {
 	return reflect.TypeOf((*organizationGroupProjectState)(nil)).Elem()
 }
 
+// OrganizationGroupProjectExists checks whether an existing OrganizationGroupProject resource with the given ID exists.
+func OrganizationGroupProjectExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OrganizationGroupProjectState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("aiven:index/organizationGroupProject:OrganizationGroupProject", id, state, "", opts...)
+}
+
 type organizationGroupProjectArgs struct {
 	// The ID of the user group.
 	GroupId string `pulumi:"groupId"`

@@ -526,6 +526,34 @@ class OrganizationAddress(pulumi.CustomResource):
         __props__.__dict__["zip_code"] = zip_code
         return OrganizationAddress(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            address_id: pulumi.Input[Optional[_builtins.str]] = None,
+            address_lines: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            city: pulumi.Input[Optional[_builtins.str]] = None,
+            country_code: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['OrganizationAddressTimeoutsArgs', 'OrganizationAddressTimeoutsArgsDict', 'outputs.OrganizationAddressTimeouts']]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None,
+            zip_code: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["addressId"] = address_id
+        __props__["addressLines"] = address_lines
+        __props__["city"] = city
+        __props__["countryCode"] = country_code
+        __props__["createTime"] = create_time
+        __props__["name"] = name
+        __props__["organizationId"] = organization_id
+        __props__["state"] = state
+        __props__["timeouts"] = timeouts
+        __props__["updateTime"] = update_time
+        __props__["zipCode"] = zip_code
+        return pulumi.runtime.exists_resource(None, 'aiven:index/organizationAddress:OrganizationAddress', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="addressId")
     def address_id(self) -> pulumi.Output[_builtins.str]:

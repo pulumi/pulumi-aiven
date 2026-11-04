@@ -348,6 +348,22 @@ class MysqlDatabase(pulumi.CustomResource):
         __props__.__dict__["timeouts"] = timeouts
         return MysqlDatabase(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            database_name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            service_name: pulumi.Input[Optional[_builtins.str]] = None,
+            termination_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+            timeouts: pulumi.Input[Optional[Union['MysqlDatabaseTimeoutsArgs', 'MysqlDatabaseTimeoutsArgsDict', 'outputs.MysqlDatabaseTimeouts']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["databaseName"] = database_name
+        __props__["project"] = project
+        __props__["serviceName"] = service_name
+        __props__["terminationProtection"] = termination_protection
+        __props__["timeouts"] = timeouts
+        return pulumi.runtime.exists_resource(None, 'aiven:index/mysqlDatabase:MysqlDatabase', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="databaseName")
     def database_name(self) -> pulumi.Output[_builtins.str]:

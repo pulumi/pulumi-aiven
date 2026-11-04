@@ -132,6 +132,12 @@ func (OrganizationalUnitState) ElementType() reflect.Type {
 	return reflect.TypeOf((*organizationalUnitState)(nil)).Elem()
 }
 
+// OrganizationalUnitExists checks whether an existing OrganizationalUnit resource with the given ID exists.
+func OrganizationalUnitExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OrganizationalUnitState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("aiven:index/organizationalUnit:OrganizationalUnit", id, state, "", opts...)
+}
+
 type organizationalUnitArgs struct {
 	// The name of the organizational unit. Maximum length: `83`.
 	Name *string `pulumi:"name"`

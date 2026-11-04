@@ -170,6 +170,12 @@ func (KafkaSchemaState) ElementType() reflect.Type {
 	return reflect.TypeOf((*kafkaSchemaState)(nil)).Elem()
 }
 
+// KafkaSchemaExists checks whether an existing KafkaSchema resource with the given ID exists.
+func KafkaSchemaExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *KafkaSchemaState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("aiven:index/kafkaSchema:KafkaSchema", id, state, "", opts...)
+}
+
 type kafkaSchemaArgs struct {
 	// Kafka Schemas compatibility level. The possible values are `BACKWARD`, `BACKWARD_TRANSITIVE`, `FORWARD`, `FORWARD_TRANSITIVE`, `FULL`, `FULL_TRANSITIVE` and `NONE`.
 	CompatibilityLevel *string `pulumi:"compatibilityLevel"`

@@ -31,11 +31,10 @@ public final class GetOrganizationResult {
     /**
      * @return Tenant identifier. **Deprecated**: This field is deprecated and will be removed in the next major release.
      * 
-     * @deprecated
-     * This field is deprecated and will be removed in the next major release.
+     * @deprecated This field is deprecated and will be removed in the next major release.
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in the next major release. */
+    @Deprecated
     private String tenantId;
     private @Nullable GetOrganizationTimeouts timeouts;
     /**
@@ -69,11 +68,10 @@ public final class GetOrganizationResult {
     /**
      * @return Tenant identifier. **Deprecated**: This field is deprecated and will be removed in the next major release.
      * 
-     * @deprecated
-     * This field is deprecated and will be removed in the next major release.
+     * @deprecated This field is deprecated and will be removed in the next major release.
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in the next major release. */
+    @Deprecated
     public String tenantId() {
         return this.tenantId;
     }

@@ -536,6 +536,30 @@ class OrganizationProject(pulumi.CustomResource):
         __props__.__dict__["timeouts"] = timeouts
         return OrganizationProject(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            base_port: pulumi.Input[Optional[_builtins.int]] = None,
+            billing_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ca_cert: pulumi.Input[Optional[_builtins.str]] = None,
+            organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+            parent_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OrganizationProjectTagArgs', 'OrganizationProjectTagArgsDict', 'outputs.OrganizationProjectTag']]]]] = None,
+            technical_emails: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            timeouts: pulumi.Input[Optional[Union['OrganizationProjectTimeoutsArgs', 'OrganizationProjectTimeoutsArgsDict', 'outputs.OrganizationProjectTimeouts']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["basePort"] = base_port
+        __props__["billingGroupId"] = billing_group_id
+        __props__["caCert"] = ca_cert
+        __props__["organizationId"] = organization_id
+        __props__["parentId"] = parent_id
+        __props__["projectId"] = project_id
+        __props__["tags"] = tags
+        __props__["technicalEmails"] = technical_emails
+        __props__["timeouts"] = timeouts
+        return pulumi.runtime.exists_resource(None, 'aiven:index/organizationProject:OrganizationProject', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="basePort")
     def base_port(self) -> pulumi.Output[_builtins.int]:

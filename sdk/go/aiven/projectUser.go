@@ -129,6 +129,12 @@ func (ProjectUserState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectUserState)(nil)).Elem()
 }
 
+// ProjectUserExists checks whether an existing ProjectUser resource with the given ID exists.
+func ProjectUserExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectUserState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("aiven:index/projectUser:ProjectUser", id, state, "", opts...)
+}
+
 type projectUserArgs struct {
 	// Email address of the user in lowercase. Changing this property forces recreation of the resource.
 	Email string `pulumi:"email"`

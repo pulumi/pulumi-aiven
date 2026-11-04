@@ -598,6 +598,38 @@ class MysqlUser(pulumi.CustomResource):
         __props__.__dict__["username"] = username
         return MysqlUser(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_cert: pulumi.Input[Optional[_builtins.str]] = None,
+            access_key: pulumi.Input[Optional[_builtins.str]] = None,
+            authentication: pulumi.Input[Optional[_builtins.str]] = None,
+            mysql_grants: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            password: pulumi.Input[Optional[_builtins.str]] = None,
+            password_encryption_type: pulumi.Input[Optional[_builtins.str]] = None,
+            password_wo: pulumi.Input[Optional[_builtins.str]] = None,
+            password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            service_name: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['MysqlUserTimeoutsArgs', 'MysqlUserTimeoutsArgsDict', 'outputs.MysqlUserTimeouts']]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            username: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accessCert"] = access_cert
+        __props__["accessKey"] = access_key
+        __props__["authentication"] = authentication
+        __props__["mysqlGrants"] = mysql_grants
+        __props__["password"] = password
+        __props__["passwordEncryptionType"] = password_encryption_type
+        __props__["passwordWo"] = password_wo
+        __props__["passwordWoVersion"] = password_wo_version
+        __props__["project"] = project
+        __props__["serviceName"] = service_name
+        __props__["timeouts"] = timeouts
+        __props__["type"] = type
+        __props__["username"] = username
+        return pulumi.runtime.exists_resource(None, 'aiven:index/mysqlUser:MysqlUser', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accessCert")
     def access_cert(self) -> pulumi.Output[_builtins.str]:

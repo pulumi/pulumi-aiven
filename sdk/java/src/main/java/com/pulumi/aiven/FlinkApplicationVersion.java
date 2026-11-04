@@ -209,11 +209,10 @@ public class FlinkApplicationVersion extends com.pulumi.resources.CustomResource
     /**
      * Application sinks
      * 
-     * @deprecated
-     * This field is deprecated and will be removed in the next major release. Use `sink` instead.
+     * @deprecated This field is deprecated and will be removed in the next major release. Use `sink` instead.
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in the next major release. Use `sink` instead. */
+    @Deprecated
     @Export(name="sinks", refs={List.class,FlinkApplicationVersionSink.class}, tree="[0,1]")
     private Output</* @Nullable */ List<FlinkApplicationVersionSink>> sinks;
 
@@ -241,11 +240,10 @@ public class FlinkApplicationVersion extends com.pulumi.resources.CustomResource
     /**
      * Application sources
      * 
-     * @deprecated
-     * This field is deprecated and will be removed in the next major release. Use `source` instead.
+     * @deprecated This field is deprecated and will be removed in the next major release. Use `source` instead.
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in the next major release. Use `source` instead. */
+    @Deprecated
     @Export(name="sources", refs={List.class,FlinkApplicationVersionSource.class}, tree="[0,1]")
     private Output</* @Nullable */ List<FlinkApplicationVersionSource>> sources;
 

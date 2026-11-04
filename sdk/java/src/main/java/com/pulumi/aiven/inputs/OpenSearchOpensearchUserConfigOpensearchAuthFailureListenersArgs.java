@@ -26,22 +26,20 @@ public final class OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersA
     /**
      * IP address rate limiting settings
      * 
-     * @deprecated
-     * This property is deprecated.
+     * @deprecated This property is deprecated.
      * 
      */
-    @Deprecated /* This property is deprecated. */
+    @Deprecated
     @Import(name="ipRateLimiting")
     private @Nullable Output<OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingArgs> ipRateLimiting;
 
     /**
      * @return IP address rate limiting settings
      * 
-     * @deprecated
-     * This property is deprecated.
+     * @deprecated This property is deprecated.
      * 
      */
-    @Deprecated /* This property is deprecated. */
+    @Deprecated
     public Optional<Output<OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingArgs>> ipRateLimiting() {
         return Optional.ofNullable(this.ipRateLimiting);
     }
@@ -85,11 +83,10 @@ public final class OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersA
          * 
          * @return builder
          * 
-         * @deprecated
-         * This property is deprecated.
+         * @deprecated This property is deprecated.
          * 
          */
-        @Deprecated /* This property is deprecated. */
+        @Deprecated
         public Builder ipRateLimiting(@Nullable Output<OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingArgs> ipRateLimiting) {
             $.ipRateLimiting = ipRateLimiting;
             return this;
@@ -100,11 +97,10 @@ public final class OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersA
          * 
          * @return builder
          * 
-         * @deprecated
-         * This property is deprecated.
+         * @deprecated This property is deprecated.
          * 
          */
-        @Deprecated /* This property is deprecated. */
+        @Deprecated
         public Builder ipRateLimiting(OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingArgs ipRateLimiting) {
             return ipRateLimiting(Output.of(ipRateLimiting));
         }

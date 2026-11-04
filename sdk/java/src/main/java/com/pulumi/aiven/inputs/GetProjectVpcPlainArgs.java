@@ -70,22 +70,20 @@ public final class GetProjectVpcPlainArgs extends com.pulumi.resources.InvokeArg
     /**
      * The ID of the VPC in `project/project_vpc_id` format. The field conflicts with `project`. Exactly one of the fields must be specified: `projectVpcId`, `cloudName` or `vpcId`. **Deprecated**: This attribute is deprecated and will be removed in a future version. Use `projectVpcId` instead.
      * 
-     * @deprecated
-     * This attribute is deprecated and will be removed in a future version. Use `projectVpcId` instead.
+     * @deprecated This attribute is deprecated and will be removed in a future version. Use `projectVpcId` instead.
      * 
      */
-    @Deprecated /* This attribute is deprecated and will be removed in a future version. Use `projectVpcId` instead. */
+    @Deprecated
     @Import(name="vpcId")
     private @Nullable String vpcId;
 
     /**
      * @return The ID of the VPC in `project/project_vpc_id` format. The field conflicts with `project`. Exactly one of the fields must be specified: `projectVpcId`, `cloudName` or `vpcId`. **Deprecated**: This attribute is deprecated and will be removed in a future version. Use `projectVpcId` instead.
      * 
-     * @deprecated
-     * This attribute is deprecated and will be removed in a future version. Use `projectVpcId` instead.
+     * @deprecated This attribute is deprecated and will be removed in a future version. Use `projectVpcId` instead.
      * 
      */
-    @Deprecated /* This attribute is deprecated and will be removed in a future version. Use `projectVpcId` instead. */
+    @Deprecated
     public Optional<String> vpcId() {
         return Optional.ofNullable(this.vpcId);
     }
@@ -161,11 +159,10 @@ public final class GetProjectVpcPlainArgs extends com.pulumi.resources.InvokeArg
          * 
          * @return builder
          * 
-         * @deprecated
-         * This attribute is deprecated and will be removed in a future version. Use `projectVpcId` instead.
+         * @deprecated This attribute is deprecated and will be removed in a future version. Use `projectVpcId` instead.
          * 
          */
-        @Deprecated /* This attribute is deprecated and will be removed in a future version. Use `projectVpcId` instead. */
+        @Deprecated
         public Builder vpcId(@Nullable String vpcId) {
             $.vpcId = vpcId;
             return this;

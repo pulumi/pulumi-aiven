@@ -260,6 +260,12 @@ func (ByocAwsEntityState) ElementType() reflect.Type {
 	return reflect.TypeOf((*byocAwsEntityState)(nil)).Elem()
 }
 
+// ByocAwsEntityExists checks whether an existing ByocAwsEntity resource with the given ID exists.
+func ByocAwsEntityExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ByocAwsEntityState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("aiven:index/byocAwsEntity:ByocAwsEntity", id, state, "", opts...)
+}
+
 type byocAwsEntityArgs struct {
 	// Cloud provider for the BYOC cloud. The possible values are `aws`, `azure`, `google` and `oracle`. Changing this property forces recreation of the resource.
 	CloudProvider string `pulumi:"cloudProvider"`

@@ -186,6 +186,12 @@ func (FlinkJarApplicationVersionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*flinkJarApplicationVersionState)(nil)).Elem()
 }
 
+// FlinkJarApplicationVersionExists checks whether an existing FlinkJarApplicationVersion resource with the given ID exists.
+func FlinkJarApplicationVersionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FlinkJarApplicationVersionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("aiven:index/flinkJarApplicationVersion:FlinkJarApplicationVersion", id, state, "", opts...)
+}
+
 type flinkJarApplicationVersionArgs struct {
 	// Application Id. Changing this property forces recreation of the resource.
 	ApplicationId string `pulumi:"applicationId"`

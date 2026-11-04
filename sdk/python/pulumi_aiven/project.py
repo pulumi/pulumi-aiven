@@ -625,6 +625,40 @@ class Project(pulumi.CustomResource):
         __props__.__dict__["use_source_project_billing_group"] = use_source_project_billing_group
         return Project(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            add_account_owners_admin_access: pulumi.Input[Optional[_builtins.bool]] = None,
+            available_credits: pulumi.Input[Optional[_builtins.str]] = None,
+            billing_group: pulumi.Input[Optional[_builtins.str]] = None,
+            ca_cert: pulumi.Input[Optional[_builtins.str]] = None,
+            copy_from_project: pulumi.Input[Optional[_builtins.str]] = None,
+            default_cloud: pulumi.Input[Optional[_builtins.str]] = None,
+            estimated_balance: pulumi.Input[Optional[_builtins.str]] = None,
+            parent_id: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_method: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectTagArgs', 'ProjectTagArgsDict', 'outputs.ProjectTag']]]]] = None,
+            technical_emails: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            use_source_project_billing_group: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["addAccountOwnersAdminAccess"] = add_account_owners_admin_access
+        __props__["availableCredits"] = available_credits
+        __props__["billingGroup"] = billing_group
+        __props__["caCert"] = ca_cert
+        __props__["copyFromProject"] = copy_from_project
+        __props__["defaultCloud"] = default_cloud
+        __props__["estimatedBalance"] = estimated_balance
+        __props__["parentId"] = parent_id
+        __props__["paymentMethod"] = payment_method
+        __props__["project"] = project
+        __props__["tags"] = tags
+        __props__["technicalEmails"] = technical_emails
+        __props__["useSourceProjectBillingGroup"] = use_source_project_billing_group
+        return pulumi.runtime.exists_resource(None, 'aiven:index/project:Project', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     @_utilities.deprecated("""Use parent_id instead. This field will be removed in the next major release.""")

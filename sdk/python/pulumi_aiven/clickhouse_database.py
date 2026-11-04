@@ -343,6 +343,22 @@ class ClickhouseDatabase(pulumi.CustomResource):
         __props__.__dict__["timeouts"] = timeouts
         return ClickhouseDatabase(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            service_name: pulumi.Input[Optional[_builtins.str]] = None,
+            termination_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+            timeouts: pulumi.Input[Optional[Union['ClickhouseDatabaseTimeoutsArgs', 'ClickhouseDatabaseTimeoutsArgsDict', 'outputs.ClickhouseDatabaseTimeouts']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["name"] = name
+        __props__["project"] = project
+        __props__["serviceName"] = service_name
+        __props__["terminationProtection"] = termination_protection
+        __props__["timeouts"] = timeouts
+        return pulumi.runtime.exists_resource(None, 'aiven:index/clickhouseDatabase:ClickhouseDatabase', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:

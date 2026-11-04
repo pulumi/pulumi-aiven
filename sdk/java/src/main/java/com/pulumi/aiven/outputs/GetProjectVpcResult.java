@@ -47,11 +47,10 @@ public final class GetProjectVpcResult {
     /**
      * @return The ID of the VPC in `project/project_vpc_id` format. The field conflicts with `project`. Exactly one of the fields must be specified: `projectVpcId`, `cloudName` or `vpcId`. **Deprecated**: This attribute is deprecated and will be removed in a future version. Use `projectVpcId` instead.
      * 
-     * @deprecated
-     * This attribute is deprecated and will be removed in a future version. Use `projectVpcId` instead.
+     * @deprecated This attribute is deprecated and will be removed in a future version. Use `projectVpcId` instead.
      * 
      */
-    @Deprecated /* This attribute is deprecated and will be removed in a future version. Use `projectVpcId` instead. */
+    @Deprecated
     private @Nullable String vpcId;
 
     private GetProjectVpcResult() {}
@@ -103,11 +102,10 @@ public final class GetProjectVpcResult {
     /**
      * @return The ID of the VPC in `project/project_vpc_id` format. The field conflicts with `project`. Exactly one of the fields must be specified: `projectVpcId`, `cloudName` or `vpcId`. **Deprecated**: This attribute is deprecated and will be removed in a future version. Use `projectVpcId` instead.
      * 
-     * @deprecated
-     * This attribute is deprecated and will be removed in a future version. Use `projectVpcId` instead.
+     * @deprecated This attribute is deprecated and will be removed in a future version. Use `projectVpcId` instead.
      * 
      */
-    @Deprecated /* This attribute is deprecated and will be removed in a future version. Use `projectVpcId` instead. */
+    @Deprecated
     public Optional<String> vpcId() {
         return Optional.ofNullable(this.vpcId);
     }

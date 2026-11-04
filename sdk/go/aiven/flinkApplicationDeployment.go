@@ -220,6 +220,12 @@ func (FlinkApplicationDeploymentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*flinkApplicationDeploymentState)(nil)).Elem()
 }
 
+// FlinkApplicationDeploymentExists checks whether an existing FlinkApplicationDeployment resource with the given ID exists.
+func FlinkApplicationDeploymentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FlinkApplicationDeploymentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("aiven:index/flinkApplicationDeployment:FlinkApplicationDeployment", id, state, "", opts...)
+}
+
 type flinkApplicationDeploymentArgs struct {
 	// Application Id. Changing this property forces recreation of the resource.
 	ApplicationId string `pulumi:"applicationId"`

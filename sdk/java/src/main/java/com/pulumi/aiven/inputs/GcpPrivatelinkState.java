@@ -34,22 +34,20 @@ public final class GcpPrivatelinkState extends com.pulumi.resources.ResourceArgs
     /**
      * Legacy response message retained for backward compatibility. **Deprecated**: This attribute is retained only for compatibility with state created by older provider versions and is no longer populated.
      * 
-     * @deprecated
-     * This attribute is retained only for compatibility with state created by older provider versions and is no longer populated.
+     * @deprecated This attribute is retained only for compatibility with state created by older provider versions and is no longer populated.
      * 
      */
-    @Deprecated /* This attribute is retained only for compatibility with state created by older provider versions and is no longer populated. */
+    @Deprecated
     @Import(name="message")
     private @Nullable Output<String> message;
 
     /**
      * @return Legacy response message retained for backward compatibility. **Deprecated**: This attribute is retained only for compatibility with state created by older provider versions and is no longer populated.
      * 
-     * @deprecated
-     * This attribute is retained only for compatibility with state created by older provider versions and is no longer populated.
+     * @deprecated This attribute is retained only for compatibility with state created by older provider versions and is no longer populated.
      * 
      */
-    @Deprecated /* This attribute is retained only for compatibility with state created by older provider versions and is no longer populated. */
+    @Deprecated
     public Optional<Output<String>> message() {
         return Optional.ofNullable(this.message);
     }
@@ -161,11 +159,10 @@ public final class GcpPrivatelinkState extends com.pulumi.resources.ResourceArgs
          * 
          * @return builder
          * 
-         * @deprecated
-         * This attribute is retained only for compatibility with state created by older provider versions and is no longer populated.
+         * @deprecated This attribute is retained only for compatibility with state created by older provider versions and is no longer populated.
          * 
          */
-        @Deprecated /* This attribute is retained only for compatibility with state created by older provider versions and is no longer populated. */
+        @Deprecated
         public Builder message(@Nullable Output<String> message) {
             $.message = message;
             return this;
@@ -176,11 +173,10 @@ public final class GcpPrivatelinkState extends com.pulumi.resources.ResourceArgs
          * 
          * @return builder
          * 
-         * @deprecated
-         * This attribute is retained only for compatibility with state created by older provider versions and is no longer populated.
+         * @deprecated This attribute is retained only for compatibility with state created by older provider versions and is no longer populated.
          * 
          */
-        @Deprecated /* This attribute is retained only for compatibility with state created by older provider versions and is no longer populated. */
+        @Deprecated
         public Builder message(String message) {
             return message(Output.of(message));
         }

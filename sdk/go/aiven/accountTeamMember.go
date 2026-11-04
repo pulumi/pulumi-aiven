@@ -148,6 +148,12 @@ func (AccountTeamMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*accountTeamMemberState)(nil)).Elem()
 }
 
+// AccountTeamMemberExists checks whether an existing AccountTeamMember resource with the given ID exists.
+func AccountTeamMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AccountTeamMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("aiven:index/accountTeamMember:AccountTeamMember", id, state, "", opts...)
+}
+
 type accountTeamMemberArgs struct {
 	// The unique account id. Changing this property forces recreation of the resource.
 	AccountId string `pulumi:"accountId"`

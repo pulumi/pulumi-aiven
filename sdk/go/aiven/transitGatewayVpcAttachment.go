@@ -217,6 +217,12 @@ func (TransitGatewayVpcAttachmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*transitGatewayVpcAttachmentState)(nil)).Elem()
 }
 
+// TransitGatewayVpcAttachmentExists checks whether an existing TransitGatewayVpcAttachment resource with the given ID exists.
+func TransitGatewayVpcAttachmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TransitGatewayVpcAttachmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("aiven:index/transitGatewayVpcAttachment:TransitGatewayVpcAttachment", id, state, "", opts...)
+}
+
 type transitGatewayVpcAttachmentArgs struct {
 	// AWS account ID that owns the Transit Gateway. Maximum length: `1024`. Changing this property forces recreation of the resource.
 	PeerCloudAccount string `pulumi:"peerCloudAccount"`

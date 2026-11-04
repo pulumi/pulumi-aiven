@@ -707,6 +707,52 @@ class KafkaConnectCustomPluginFile(pulumi.CustomResource):
         __props__.__dict__["verify_error_message"] = verify_error_message
         return KafkaConnectCustomPluginFile(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            content_type: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            created_by: pulumi.Input[Optional[_builtins.str]] = None,
+            file_description: pulumi.Input[Optional[_builtins.str]] = None,
+            file_sha256: pulumi.Input[Optional[_builtins.str]] = None,
+            file_size: pulumi.Input[Optional[_builtins.int]] = None,
+            file_status: pulumi.Input[Optional[_builtins.str]] = None,
+            organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+            plugin_classes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KafkaConnectCustomPluginFilePluginClassArgs', 'KafkaConnectCustomPluginFilePluginClassArgsDict', 'outputs.KafkaConnectCustomPluginFilePluginClass']]]]] = None,
+            plugin_file_id: pulumi.Input[Optional[_builtins.str]] = None,
+            plugin_id: pulumi.Input[Optional[_builtins.str]] = None,
+            plugin_name: pulumi.Input[Optional[_builtins.str]] = None,
+            plugin_version: pulumi.Input[Optional[_builtins.str]] = None,
+            service_type: pulumi.Input[Optional[_builtins.str]] = None,
+            source: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['KafkaConnectCustomPluginFileTimeoutsArgs', 'KafkaConnectCustomPluginFileTimeoutsArgsDict', 'outputs.KafkaConnectCustomPluginFileTimeouts']]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_by: pulumi.Input[Optional[_builtins.str]] = None,
+            verify_error_code: pulumi.Input[Optional[_builtins.int]] = None,
+            verify_error_message: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["contentType"] = content_type
+        __props__["createdAt"] = created_at
+        __props__["createdBy"] = created_by
+        __props__["fileDescription"] = file_description
+        __props__["fileSha256"] = file_sha256
+        __props__["fileSize"] = file_size
+        __props__["fileStatus"] = file_status
+        __props__["organizationId"] = organization_id
+        __props__["pluginClasses"] = plugin_classes
+        __props__["pluginFileId"] = plugin_file_id
+        __props__["pluginId"] = plugin_id
+        __props__["pluginName"] = plugin_name
+        __props__["pluginVersion"] = plugin_version
+        __props__["serviceType"] = service_type
+        __props__["source"] = source
+        __props__["timeouts"] = timeouts
+        __props__["updatedAt"] = updated_at
+        __props__["updatedBy"] = updated_by
+        __props__["verifyErrorCode"] = verify_error_code
+        __props__["verifyErrorMessage"] = verify_error_message
+        return pulumi.runtime.exists_resource(None, 'aiven:index/kafkaConnectCustomPluginFile:KafkaConnectCustomPluginFile', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="contentType")
     def content_type(self) -> pulumi.Output[_builtins.str]:

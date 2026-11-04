@@ -288,6 +288,24 @@ class OrganizationUser(pulumi.CustomResource):
         __props__.__dict__["user_id"] = user_id
         return OrganizationUser(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            accepted: pulumi.Input[Optional[_builtins.bool]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            invited_by: pulumi.Input[Optional[_builtins.str]] = None,
+            organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+            user_email: pulumi.Input[Optional[_builtins.str]] = None,
+            user_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accepted"] = accepted
+        __props__["createTime"] = create_time
+        __props__["invitedBy"] = invited_by
+        __props__["organizationId"] = organization_id
+        __props__["userEmail"] = user_email
+        __props__["userId"] = user_id
+        return pulumi.runtime.exists_resource(None, 'aiven:index/organizationUser:OrganizationUser', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""This field is deprecated and will be removed in the next major release.""")

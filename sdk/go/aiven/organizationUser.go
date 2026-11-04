@@ -118,6 +118,12 @@ func (OrganizationUserState) ElementType() reflect.Type {
 	return reflect.TypeOf((*organizationUserState)(nil)).Elem()
 }
 
+// OrganizationUserExists checks whether an existing OrganizationUser resource with the given ID exists.
+func OrganizationUserExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OrganizationUserState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("aiven:index/organizationUser:OrganizationUser", id, state, "", opts...)
+}
+
 type organizationUserArgs struct {
 	// The unique organization ID. Changing this property forces recreation of the resource.
 	OrganizationId string `pulumi:"organizationId"`

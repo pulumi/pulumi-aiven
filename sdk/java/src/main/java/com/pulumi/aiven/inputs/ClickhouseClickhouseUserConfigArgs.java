@@ -28,22 +28,20 @@ public final class ClickhouseClickhouseUserConfigArgs extends com.pulumi.resourc
     /**
      * Additional Cloud Regions for Backup Replication.
      * 
-     * @deprecated
-     * This property is deprecated.
+     * @deprecated This property is deprecated.
      * 
      */
-    @Deprecated /* This property is deprecated. */
+    @Deprecated
     @Import(name="additionalBackupRegions")
     private @Nullable Output<String> additionalBackupRegions;
 
     /**
      * @return Additional Cloud Regions for Backup Replication.
      * 
-     * @deprecated
-     * This property is deprecated.
+     * @deprecated This property is deprecated.
      * 
      */
-    @Deprecated /* This property is deprecated. */
+    @Deprecated
     public Optional<Output<String>> additionalBackupRegions() {
         return Optional.ofNullable(this.additionalBackupRegions);
     }
@@ -141,22 +139,20 @@ public final class ClickhouseClickhouseUserConfigArgs extends com.pulumi.resourc
     /**
      * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
-     * @deprecated
-     * Deprecated. Use `ipFilterString` instead.
+     * @deprecated Deprecated. Use `ipFilterString` instead.
      * 
      */
-    @Deprecated /* Deprecated. Use `ipFilterString` instead. */
+    @Deprecated
     @Import(name="ipFilters")
     private @Nullable Output<List<String>> ipFilters;
 
     /**
      * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
-     * @deprecated
-     * Deprecated. Use `ipFilterString` instead.
+     * @deprecated Deprecated. Use `ipFilterString` instead.
      * 
      */
-    @Deprecated /* Deprecated. Use `ipFilterString` instead. */
+    @Deprecated
     public Optional<Output<List<String>>> ipFilters() {
         return Optional.ofNullable(this.ipFilters);
     }
@@ -373,11 +369,10 @@ public final class ClickhouseClickhouseUserConfigArgs extends com.pulumi.resourc
          * 
          * @return builder
          * 
-         * @deprecated
-         * This property is deprecated.
+         * @deprecated This property is deprecated.
          * 
          */
-        @Deprecated /* This property is deprecated. */
+        @Deprecated
         public Builder additionalBackupRegions(@Nullable Output<String> additionalBackupRegions) {
             $.additionalBackupRegions = additionalBackupRegions;
             return this;
@@ -388,11 +383,10 @@ public final class ClickhouseClickhouseUserConfigArgs extends com.pulumi.resourc
          * 
          * @return builder
          * 
-         * @deprecated
-         * This property is deprecated.
+         * @deprecated This property is deprecated.
          * 
          */
-        @Deprecated /* This property is deprecated. */
+        @Deprecated
         public Builder additionalBackupRegions(String additionalBackupRegions) {
             return additionalBackupRegions(Output.of(additionalBackupRegions));
         }
@@ -548,11 +542,10 @@ public final class ClickhouseClickhouseUserConfigArgs extends com.pulumi.resourc
          * 
          * @return builder
          * 
-         * @deprecated
-         * Deprecated. Use `ipFilterString` instead.
+         * @deprecated Deprecated. Use `ipFilterString` instead.
          * 
          */
-        @Deprecated /* Deprecated. Use `ipFilterString` instead. */
+        @Deprecated
         public Builder ipFilters(@Nullable Output<List<String>> ipFilters) {
             $.ipFilters = ipFilters;
             return this;
@@ -563,11 +556,10 @@ public final class ClickhouseClickhouseUserConfigArgs extends com.pulumi.resourc
          * 
          * @return builder
          * 
-         * @deprecated
-         * Deprecated. Use `ipFilterString` instead.
+         * @deprecated Deprecated. Use `ipFilterString` instead.
          * 
          */
-        @Deprecated /* Deprecated. Use `ipFilterString` instead. */
+        @Deprecated
         public Builder ipFilters(List<String> ipFilters) {
             return ipFilters(Output.of(ipFilters));
         }
@@ -577,11 +569,10 @@ public final class ClickhouseClickhouseUserConfigArgs extends com.pulumi.resourc
          * 
          * @return builder
          * 
-         * @deprecated
-         * Deprecated. Use `ipFilterString` instead.
+         * @deprecated Deprecated. Use `ipFilterString` instead.
          * 
          */
-        @Deprecated /* Deprecated. Use `ipFilterString` instead. */
+        @Deprecated
         public Builder ipFilters(String... ipFilters) {
             return ipFilters(List.of(ipFilters));
         }

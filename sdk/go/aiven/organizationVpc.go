@@ -158,6 +158,12 @@ func (OrganizationVpcState) ElementType() reflect.Type {
 	return reflect.TypeOf((*organizationVpcState)(nil)).Elem()
 }
 
+// OrganizationVpcExists checks whether an existing OrganizationVpc resource with the given ID exists.
+func OrganizationVpcExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OrganizationVpcState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("aiven:index/organizationVpc:OrganizationVpc", id, state, "", opts...)
+}
+
 type organizationVpcArgs struct {
 	// The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.
 	CloudName string `pulumi:"cloudName"`

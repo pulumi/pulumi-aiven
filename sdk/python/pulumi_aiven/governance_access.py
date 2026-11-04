@@ -426,6 +426,26 @@ class GovernanceAccess(pulumi.CustomResource):
         __props__.__dict__["timeouts"] = timeouts
         return GovernanceAccess(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_data: pulumi.Input[Optional[Union['GovernanceAccessAccessDataArgs', 'GovernanceAccessAccessDataArgsDict', 'outputs.GovernanceAccessAccessData']]] = None,
+            access_id: pulumi.Input[Optional[_builtins.str]] = None,
+            access_name: pulumi.Input[Optional[_builtins.str]] = None,
+            access_type: pulumi.Input[Optional[_builtins.str]] = None,
+            organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+            owner_user_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['GovernanceAccessTimeoutsArgs', 'GovernanceAccessTimeoutsArgsDict', 'outputs.GovernanceAccessTimeouts']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accessData"] = access_data
+        __props__["accessId"] = access_id
+        __props__["accessName"] = access_name
+        __props__["accessType"] = access_type
+        __props__["organizationId"] = organization_id
+        __props__["ownerUserGroupId"] = owner_user_group_id
+        __props__["timeouts"] = timeouts
+        return pulumi.runtime.exists_resource(None, 'aiven:index/governanceAccess:GovernanceAccess', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accessData")
     def access_data(self) -> pulumi.Output['outputs.GovernanceAccessAccessData']:

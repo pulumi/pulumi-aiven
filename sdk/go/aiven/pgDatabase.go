@@ -155,6 +155,12 @@ func (PgDatabaseState) ElementType() reflect.Type {
 	return reflect.TypeOf((*pgDatabaseState)(nil)).Elem()
 }
 
+// PgDatabaseExists checks whether an existing PgDatabase resource with the given ID exists.
+func PgDatabaseExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PgDatabaseState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("aiven:index/pgDatabase:PgDatabase", id, state, "", opts...)
+}
+
 type pgDatabaseArgs struct {
 	// Service database name. Maximum length: `40`. Changing this property forces recreation of the resource.
 	DatabaseName string `pulumi:"databaseName"`

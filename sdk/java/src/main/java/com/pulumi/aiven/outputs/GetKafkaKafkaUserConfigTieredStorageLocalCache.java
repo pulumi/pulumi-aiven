@@ -14,22 +14,20 @@ public final class GetKafkaKafkaUserConfigTieredStorageLocalCache {
     /**
      * @return Local cache size in bytes. Example: `1073741824`.
      * 
-     * @deprecated
-     * This property is deprecated.
+     * @deprecated This property is deprecated.
      * 
      */
-    @Deprecated /* This property is deprecated. */
+    @Deprecated
     private @Nullable Integer size;
 
     private GetKafkaKafkaUserConfigTieredStorageLocalCache() {}
     /**
      * @return Local cache size in bytes. Example: `1073741824`.
      * 
-     * @deprecated
-     * This property is deprecated.
+     * @deprecated This property is deprecated.
      * 
      */
-    @Deprecated /* This property is deprecated. */
+    @Deprecated
     public Optional<Integer> size() {
         return Optional.ofNullable(this.size);
     }

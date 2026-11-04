@@ -385,6 +385,26 @@ class GcpOrgVpcPeeringConnection(pulumi.CustomResource):
         __props__.__dict__["timeouts"] = timeouts
         return GcpOrgVpcPeeringConnection(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            gcp_project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+            organization_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            peer_vpc: pulumi.Input[Optional[_builtins.str]] = None,
+            self_link: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['GcpOrgVpcPeeringConnectionTimeoutsArgs', 'GcpOrgVpcPeeringConnectionTimeoutsArgsDict', 'outputs.GcpOrgVpcPeeringConnectionTimeouts']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["gcpProjectId"] = gcp_project_id
+        __props__["organizationId"] = organization_id
+        __props__["organizationVpcId"] = organization_vpc_id
+        __props__["peerVpc"] = peer_vpc
+        __props__["selfLink"] = self_link
+        __props__["state"] = state
+        __props__["timeouts"] = timeouts
+        return pulumi.runtime.exists_resource(None, 'aiven:index/gcpOrgVpcPeeringConnection:GcpOrgVpcPeeringConnection', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="gcpProjectId")
     def gcp_project_id(self) -> pulumi.Output[_builtins.str]:

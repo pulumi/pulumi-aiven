@@ -206,6 +206,12 @@ func (MysqlUserState) ElementType() reflect.Type {
 	return reflect.TypeOf((*mysqlUserState)(nil)).Elem()
 }
 
+// MysqlUserExists checks whether an existing MysqlUser resource with the given ID exists.
+func MysqlUserExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MysqlUserState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("aiven:index/mysqlUser:MysqlUser", id, state, "", opts...)
+}
+
 type mysqlUserArgs struct {
 	// Service specific authentication details. Currently only used for MySQL where accepted options are 'mysql_native_password' and 'caching_sha2_password', latter being default when this is not explicitly set. The possible values are `cachingSha2Password` and `mysqlNativePassword`.
 	Authentication *string `pulumi:"authentication"`

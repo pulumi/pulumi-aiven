@@ -474,6 +474,24 @@ class ClickhouseGrant(pulumi.CustomResource):
         __props__.__dict__["user"] = user
         return ClickhouseGrant(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            privilege_grants: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClickhouseGrantPrivilegeGrantArgs', 'ClickhouseGrantPrivilegeGrantArgsDict', 'outputs.ClickhouseGrantPrivilegeGrant']]]]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            role: pulumi.Input[Optional[_builtins.str]] = None,
+            role_grants: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClickhouseGrantRoleGrantArgs', 'ClickhouseGrantRoleGrantArgsDict', 'outputs.ClickhouseGrantRoleGrant']]]]] = None,
+            service_name: pulumi.Input[Optional[_builtins.str]] = None,
+            user: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["privilegeGrants"] = privilege_grants
+        __props__["project"] = project
+        __props__["role"] = role
+        __props__["roleGrants"] = role_grants
+        __props__["serviceName"] = service_name
+        __props__["user"] = user
+        return pulumi.runtime.exists_resource(None, 'aiven:index/clickhouseGrant:ClickhouseGrant', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="privilegeGrants")
     def privilege_grants(self) -> pulumi.Output[Optional[Sequence['outputs.ClickhouseGrantPrivilegeGrant']]]:

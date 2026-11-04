@@ -155,6 +155,12 @@ func (CmkState) ElementType() reflect.Type {
 	return reflect.TypeOf((*cmkState)(nil)).Elem()
 }
 
+// CmkExists checks whether an existing Cmk resource with the given ID exists.
+func CmkExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CmkState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("aiven:index/cmk:Cmk", id, state, "", opts...)
+}
+
 type cmkArgs struct {
 	// The cloud provider hosting the key management service (KMS). The possible values are `aws`, `azure`, `gcp` and `oci`. Changing this property forces recreation of the resource.
 	CmkProvider string `pulumi:"cmkProvider"`

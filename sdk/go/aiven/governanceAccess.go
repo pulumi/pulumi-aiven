@@ -166,6 +166,12 @@ func (GovernanceAccessState) ElementType() reflect.Type {
 	return reflect.TypeOf((*governanceAccessState)(nil)).Elem()
 }
 
+// GovernanceAccessExists checks whether an existing GovernanceAccess resource with the given ID exists.
+func GovernanceAccessExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GovernanceAccessState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("aiven:index/governanceAccess:GovernanceAccess", id, state, "", opts...)
+}
+
 type governanceAccessArgs struct {
 	// access type specific data. Changing this property forces recreation of the resource.
 	AccessData GovernanceAccessAccessData `pulumi:"accessData"`

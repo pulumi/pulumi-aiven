@@ -856,6 +856,48 @@ class BillingGroup(pulumi.CustomResource):
         __props__.__dict__["zip_code"] = zip_code
         return BillingGroup(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            address_lines: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            billing_contact_emails: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            billing_currency: pulumi.Input[Optional[_builtins.str]] = None,
+            billing_emails: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            billing_extra_text: pulumi.Input[Optional[_builtins.str]] = None,
+            billing_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            card_id: pulumi.Input[Optional[_builtins.str]] = None,
+            city: pulumi.Input[Optional[_builtins.str]] = None,
+            company: pulumi.Input[Optional[_builtins.str]] = None,
+            copy_from_billing_group: pulumi.Input[Optional[_builtins.str]] = None,
+            country_code: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent_id: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['BillingGroupTimeoutsArgs', 'BillingGroupTimeoutsArgsDict', 'outputs.BillingGroupTimeouts']]] = None,
+            vat_id: pulumi.Input[Optional[_builtins.str]] = None,
+            zip_code: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["addressLines"] = address_lines
+        __props__["billingContactEmails"] = billing_contact_emails
+        __props__["billingCurrency"] = billing_currency
+        __props__["billingEmails"] = billing_emails
+        __props__["billingExtraText"] = billing_extra_text
+        __props__["billingGroupId"] = billing_group_id
+        __props__["cardId"] = card_id
+        __props__["city"] = city
+        __props__["company"] = company
+        __props__["copyFromBillingGroup"] = copy_from_billing_group
+        __props__["countryCode"] = country_code
+        __props__["name"] = name
+        __props__["parentId"] = parent_id
+        __props__["state"] = state
+        __props__["timeouts"] = timeouts
+        __props__["vatId"] = vat_id
+        __props__["zipCode"] = zip_code
+        return pulumi.runtime.exists_resource(None, 'aiven:index/billingGroup:BillingGroup', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     @_utilities.deprecated("""Use `parent_id` instead. This field will be removed in the next major release.""")

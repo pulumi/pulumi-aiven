@@ -261,11 +261,10 @@ public class Kafka extends com.pulumi.resources.CustomResource {
     /**
      * Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy. This attribute is deprecated, use `schemaRegistry` and `kafkaRest` instead.
      * 
-     * @deprecated
-     * Usage of this field is discouraged.
+     * @deprecated Usage of this field is discouraged.
      * 
      */
-    @Deprecated /* Usage of this field is discouraged. */
+    @Deprecated
     @Export(name="karapace", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> karapace;
 

@@ -94,14 +94,14 @@ public final class OpenSearchOpensearchUserConfigOpenidArgs extends com.pulumi.r
     }
 
     /**
-     * The HTTP header that stores the token. Typically the Authorization header with the Bearer schema: Authorization: Bearer \n\n. Optional. Default is Authorization. Example: `preferredUsername`.
+     * The HTTP header that stores the token. Typically the Authorization header with the Bearer schema: Authorization: Bearer &#92;n&#92;n. Optional. Default is Authorization. Example: `preferredUsername`.
      * 
      */
     @Import(name="jwtHeader")
     private @Nullable Output<String> jwtHeader;
 
     /**
-     * @return The HTTP header that stores the token. Typically the Authorization header with the Bearer schema: Authorization: Bearer \n\n. Optional. Default is Authorization. Example: `preferredUsername`.
+     * @return The HTTP header that stores the token. Typically the Authorization header with the Bearer schema: Authorization: Bearer &#92;n&#92;n. Optional. Default is Authorization. Example: `preferredUsername`.
      * 
      */
     public Optional<Output<String>> jwtHeader() {
@@ -339,7 +339,7 @@ public final class OpenSearchOpensearchUserConfigOpenidArgs extends com.pulumi.r
         }
 
         /**
-         * @param jwtHeader The HTTP header that stores the token. Typically the Authorization header with the Bearer schema: Authorization: Bearer \n\n. Optional. Default is Authorization. Example: `preferredUsername`.
+         * @param jwtHeader The HTTP header that stores the token. Typically the Authorization header with the Bearer schema: Authorization: Bearer &#92;n&#92;n. Optional. Default is Authorization. Example: `preferredUsername`.
          * 
          * @return builder
          * 
@@ -350,7 +350,7 @@ public final class OpenSearchOpensearchUserConfigOpenidArgs extends com.pulumi.r
         }
 
         /**
-         * @param jwtHeader The HTTP header that stores the token. Typically the Authorization header with the Bearer schema: Authorization: Bearer \n\n. Optional. Default is Authorization. Example: `preferredUsername`.
+         * @param jwtHeader The HTTP header that stores the token. Typically the Authorization header with the Bearer schema: Authorization: Bearer &#92;n&#92;n. Optional. Default is Authorization. Example: `preferredUsername`.
          * 
          * @return builder
          * 

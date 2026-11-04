@@ -169,6 +169,12 @@ func (ByocPermissionsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*byocPermissionsState)(nil)).Elem()
 }
 
+// ByocPermissionsExists checks whether an existing ByocPermissions resource with the given ID exists.
+func ByocPermissionsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ByocPermissionsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("aiven:index/byocPermissions:ByocPermissions", id, state, "", opts...)
+}
+
 type byocPermissionsArgs struct {
 	// Accounts.
 	Accounts []string `pulumi:"accounts"`

@@ -179,6 +179,12 @@ func (OrganizationAddressState) ElementType() reflect.Type {
 	return reflect.TypeOf((*organizationAddressState)(nil)).Elem()
 }
 
+// OrganizationAddressExists checks whether an existing OrganizationAddress resource with the given ID exists.
+func OrganizationAddressExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OrganizationAddressState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("aiven:index/organizationAddress:OrganizationAddress", id, state, "", opts...)
+}
+
 type organizationAddressArgs struct {
 	// Address lines.
 	AddressLines []string `pulumi:"addressLines"`

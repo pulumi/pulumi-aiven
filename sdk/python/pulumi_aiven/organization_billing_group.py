@@ -617,6 +617,36 @@ class OrganizationBillingGroup(pulumi.CustomResource):
         __props__.__dict__["vat_id"] = vat_id
         return OrganizationBillingGroup(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            billing_address_id: pulumi.Input[Optional[_builtins.str]] = None,
+            billing_contact_emails: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OrganizationBillingGroupBillingContactEmailArgs', 'OrganizationBillingGroupBillingContactEmailArgsDict', 'outputs.OrganizationBillingGroupBillingContactEmail']]]]] = None,
+            billing_emails: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OrganizationBillingGroupBillingEmailArgs', 'OrganizationBillingGroupBillingEmailArgsDict', 'outputs.OrganizationBillingGroupBillingEmail']]]]] = None,
+            billing_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            billing_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_invoice_text: pulumi.Input[Optional[_builtins.str]] = None,
+            organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_method: pulumi.Input[Optional[Union['OrganizationBillingGroupPaymentMethodArgs', 'OrganizationBillingGroupPaymentMethodArgsDict', 'outputs.OrganizationBillingGroupPaymentMethod']]] = None,
+            shipping_address_id: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['OrganizationBillingGroupTimeoutsArgs', 'OrganizationBillingGroupTimeoutsArgsDict', 'outputs.OrganizationBillingGroupTimeouts']]] = None,
+            vat_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["billingAddressId"] = billing_address_id
+        __props__["billingContactEmails"] = billing_contact_emails
+        __props__["billingEmails"] = billing_emails
+        __props__["billingGroupId"] = billing_group_id
+        __props__["billingGroupName"] = billing_group_name
+        __props__["createTime"] = create_time
+        __props__["customInvoiceText"] = custom_invoice_text
+        __props__["organizationId"] = organization_id
+        __props__["paymentMethod"] = payment_method
+        __props__["shippingAddressId"] = shipping_address_id
+        __props__["timeouts"] = timeouts
+        __props__["vatId"] = vat_id
+        return pulumi.runtime.exists_resource(None, 'aiven:index/organizationBillingGroup:OrganizationBillingGroup', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="billingAddressId")
     def billing_address_id(self) -> pulumi.Output[_builtins.str]:

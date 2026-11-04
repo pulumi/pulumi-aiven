@@ -712,6 +712,46 @@ class FlinkJarApplicationDeployment(pulumi.CustomResource):
         __props__.__dict__["version_id"] = version_id
         return FlinkJarApplicationDeployment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            application_id: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            created_by: pulumi.Input[Optional[_builtins.str]] = None,
+            deployment_id: pulumi.Input[Optional[_builtins.str]] = None,
+            entry_class: pulumi.Input[Optional[_builtins.str]] = None,
+            error_msg: pulumi.Input[Optional[_builtins.str]] = None,
+            job_id: pulumi.Input[Optional[_builtins.str]] = None,
+            last_savepoint: pulumi.Input[Optional[_builtins.str]] = None,
+            parallelism: pulumi.Input[Optional[_builtins.int]] = None,
+            program_args: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            restart_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            service_name: pulumi.Input[Optional[_builtins.str]] = None,
+            starting_savepoint: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['FlinkJarApplicationDeploymentTimeoutsArgs', 'FlinkJarApplicationDeploymentTimeoutsArgsDict', 'outputs.FlinkJarApplicationDeploymentTimeouts']]] = None,
+            version_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["applicationId"] = application_id
+        __props__["createdAt"] = created_at
+        __props__["createdBy"] = created_by
+        __props__["deploymentId"] = deployment_id
+        __props__["entryClass"] = entry_class
+        __props__["errorMsg"] = error_msg
+        __props__["jobId"] = job_id
+        __props__["lastSavepoint"] = last_savepoint
+        __props__["parallelism"] = parallelism
+        __props__["programArgs"] = program_args
+        __props__["project"] = project
+        __props__["restartEnabled"] = restart_enabled
+        __props__["serviceName"] = service_name
+        __props__["startingSavepoint"] = starting_savepoint
+        __props__["status"] = status
+        __props__["timeouts"] = timeouts
+        __props__["versionId"] = version_id
+        return pulumi.runtime.exists_resource(None, 'aiven:index/flinkJarApplicationDeployment:FlinkJarApplicationDeployment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="applicationId")
     def application_id(self) -> pulumi.Output[_builtins.str]:

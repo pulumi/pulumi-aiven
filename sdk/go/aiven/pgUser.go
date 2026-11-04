@@ -196,6 +196,12 @@ func (PgUserState) ElementType() reflect.Type {
 	return reflect.TypeOf((*pgUserState)(nil)).Elem()
 }
 
+// PgUserExists checks whether an existing PgUser resource with the given ID exists.
+func PgUserExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PgUserState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("aiven:index/pgUser:PgUser", id, state, "", opts...)
+}
+
 type pgUserArgs struct {
 	// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
 	Password *string `pulumi:"password"`

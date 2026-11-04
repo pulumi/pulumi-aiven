@@ -85,11 +85,10 @@ public final class PgPgUserConfig {
     /**
      * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
-     * @deprecated
-     * Deprecated. Use `ipFilterString` instead.
+     * @deprecated Deprecated. Use `ipFilterString` instead.
      * 
      */
-    @Deprecated /* Deprecated. Use `ipFilterString` instead. */
+    @Deprecated
     private @Nullable List<String> ipFilters;
     /**
      * @return Migrate data from existing server
@@ -109,11 +108,10 @@ public final class PgPgUserConfig {
     /**
      * @return System-wide settings for the pg*qualstats extension
      * 
-     * @deprecated
-     * This property is deprecated.
+     * @deprecated This property is deprecated.
      * 
      */
-    @Deprecated /* This property is deprecated. */
+    @Deprecated
     private @Nullable PgPgUserConfigPgQualstats pgQualstats;
     /**
      * @return Should the service which is being forked be a read replica (deprecated, use readReplica service integration instead).
@@ -303,11 +301,10 @@ public final class PgPgUserConfig {
     /**
      * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
-     * @deprecated
-     * Deprecated. Use `ipFilterString` instead.
+     * @deprecated Deprecated. Use `ipFilterString` instead.
      * 
      */
-    @Deprecated /* Deprecated. Use `ipFilterString` instead. */
+    @Deprecated
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
@@ -335,11 +332,10 @@ public final class PgPgUserConfig {
     /**
      * @return System-wide settings for the pg*qualstats extension
      * 
-     * @deprecated
-     * This property is deprecated.
+     * @deprecated This property is deprecated.
      * 
      */
-    @Deprecated /* This property is deprecated. */
+    @Deprecated
     public Optional<PgPgUserConfigPgQualstats> pgQualstats() {
         return Optional.ofNullable(this.pgQualstats);
     }

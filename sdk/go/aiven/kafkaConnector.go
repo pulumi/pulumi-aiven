@@ -181,6 +181,12 @@ func (KafkaConnectorState) ElementType() reflect.Type {
 	return reflect.TypeOf((*kafkaConnectorState)(nil)).Elem()
 }
 
+// KafkaConnectorExists checks whether an existing KafkaConnector resource with the given ID exists.
+func KafkaConnectorExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *KafkaConnectorState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("aiven:index/kafkaConnector:KafkaConnector", id, state, "", opts...)
+}
+
 type kafkaConnectorArgs struct {
 	// The Kafka connector configuration parameters.
 	Config map[string]string `pulumi:"config"`

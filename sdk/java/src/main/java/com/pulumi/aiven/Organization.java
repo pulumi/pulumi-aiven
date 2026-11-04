@@ -91,11 +91,10 @@ public class Organization extends com.pulumi.resources.CustomResource {
     /**
      * Tenant identifier. **Deprecated**: This field is deprecated and will be removed in the next major release.
      * 
-     * @deprecated
-     * This field is deprecated and will be removed in the next major release.
+     * @deprecated This field is deprecated and will be removed in the next major release.
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in the next major release. */
+    @Deprecated
     @Export(name="tenantId", refs={String.class}, tree="[0]")
     private Output<String> tenantId;
 

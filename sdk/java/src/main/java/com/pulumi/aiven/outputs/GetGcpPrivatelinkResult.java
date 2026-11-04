@@ -26,11 +26,10 @@ public final class GetGcpPrivatelinkResult {
     /**
      * @return Legacy response message retained for backward compatibility. **Deprecated**: This attribute is retained only for compatibility with state created by older provider versions and is no longer populated.
      * 
-     * @deprecated
-     * This attribute is retained only for compatibility with state created by older provider versions and is no longer populated.
+     * @deprecated This attribute is retained only for compatibility with state created by older provider versions and is no longer populated.
      * 
      */
-    @Deprecated /* This attribute is retained only for compatibility with state created by older provider versions and is no longer populated. */
+    @Deprecated
     private String message;
     /**
      * @return Project name.
@@ -67,11 +66,10 @@ public final class GetGcpPrivatelinkResult {
     /**
      * @return Legacy response message retained for backward compatibility. **Deprecated**: This attribute is retained only for compatibility with state created by older provider versions and is no longer populated.
      * 
-     * @deprecated
-     * This attribute is retained only for compatibility with state created by older provider versions and is no longer populated.
+     * @deprecated This attribute is retained only for compatibility with state created by older provider versions and is no longer populated.
      * 
      */
-    @Deprecated /* This attribute is retained only for compatibility with state created by older provider versions and is no longer populated. */
+    @Deprecated
     public String message() {
         return this.message;
     }

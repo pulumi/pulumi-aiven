@@ -239,6 +239,12 @@ func (KafkaTopicState) ElementType() reflect.Type {
 	return reflect.TypeOf((*kafkaTopicState)(nil)).Elem()
 }
 
+// KafkaTopicExists checks whether an existing KafkaTopic resource with the given ID exists.
+func KafkaTopicExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *KafkaTopicState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("aiven:index/kafkaTopic:KafkaTopic", id, state, "", opts...)
+}
+
 type kafkaTopicArgs struct {
 	// [Advanced parameters](https://aiven.io/docs/products/kafka/reference/advanced-params) to configure topics. Removing the block won't reset the topic configuration to default values. Instead, the topic will retain its last known configuration.
 	Config *KafkaTopicConfig `pulumi:"config"`

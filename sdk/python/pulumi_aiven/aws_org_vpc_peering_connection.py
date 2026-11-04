@@ -447,6 +447,30 @@ class AwsOrgVpcPeeringConnection(pulumi.CustomResource):
         __props__.__dict__["timeouts"] = timeouts
         return AwsOrgVpcPeeringConnection(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            aws_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            aws_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            aws_vpc_peering_connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+            aws_vpc_region: pulumi.Input[Optional[_builtins.str]] = None,
+            organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+            organization_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            peering_connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['AwsOrgVpcPeeringConnectionTimeoutsArgs', 'AwsOrgVpcPeeringConnectionTimeoutsArgsDict', 'outputs.AwsOrgVpcPeeringConnectionTimeouts']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["awsAccountId"] = aws_account_id
+        __props__["awsVpcId"] = aws_vpc_id
+        __props__["awsVpcPeeringConnectionId"] = aws_vpc_peering_connection_id
+        __props__["awsVpcRegion"] = aws_vpc_region
+        __props__["organizationId"] = organization_id
+        __props__["organizationVpcId"] = organization_vpc_id
+        __props__["peeringConnectionId"] = peering_connection_id
+        __props__["state"] = state
+        __props__["timeouts"] = timeouts
+        return pulumi.runtime.exists_resource(None, 'aiven:index/awsOrgVpcPeeringConnection:AwsOrgVpcPeeringConnection', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="awsAccountId")
     def aws_account_id(self) -> pulumi.Output[_builtins.str]:

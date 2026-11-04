@@ -504,6 +504,30 @@ class ConnectionPool(pulumi.CustomResource):
         __props__.__dict__["username"] = username
         return ConnectionPool(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            connection_uri: pulumi.Input[Optional[_builtins.str]] = None,
+            database_name: pulumi.Input[Optional[_builtins.str]] = None,
+            pool_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            pool_name: pulumi.Input[Optional[_builtins.str]] = None,
+            pool_size: pulumi.Input[Optional[_builtins.int]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            service_name: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['ConnectionPoolTimeoutsArgs', 'ConnectionPoolTimeoutsArgsDict', 'outputs.ConnectionPoolTimeouts']]] = None,
+            username: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["connectionUri"] = connection_uri
+        __props__["databaseName"] = database_name
+        __props__["poolMode"] = pool_mode
+        __props__["poolName"] = pool_name
+        __props__["poolSize"] = pool_size
+        __props__["project"] = project
+        __props__["serviceName"] = service_name
+        __props__["timeouts"] = timeouts
+        __props__["username"] = username
+        return pulumi.runtime.exists_resource(None, 'aiven:index/connectionPool:ConnectionPool', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="connectionUri")
     def connection_uri(self) -> pulumi.Output[_builtins.str]:

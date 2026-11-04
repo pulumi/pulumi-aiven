@@ -157,6 +157,12 @@ func (KafkaAclState) ElementType() reflect.Type {
 	return reflect.TypeOf((*kafkaAclState)(nil)).Elem()
 }
 
+// KafkaAclExists checks whether an existing KafkaAcl resource with the given ID exists.
+func KafkaAclExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *KafkaAclState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("aiven:index/kafkaAcl:KafkaAcl", id, state, "", opts...)
+}
+
 type kafkaAclArgs struct {
 	// Permission of an Aiven Kafka ACL entry, as opposed to a Kafka-native one. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
 	Permission string `pulumi:"permission"`

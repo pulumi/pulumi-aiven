@@ -193,6 +193,12 @@ func (StaticIpState) ElementType() reflect.Type {
 	return reflect.TypeOf((*staticIpState)(nil)).Elem()
 }
 
+// StaticIpExists checks whether an existing StaticIp resource with the given ID exists.
+func StaticIpExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *StaticIpState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("aiven:index/staticIp:StaticIp", id, state, "", opts...)
+}
+
 type staticIpArgs struct {
 	// Target cloud. Maximum length: `256`. Changing this property forces recreation of the resource.
 	CloudName string `pulumi:"cloudName"`

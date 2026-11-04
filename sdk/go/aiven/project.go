@@ -184,6 +184,12 @@ func (ProjectState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectState)(nil)).Elem()
 }
 
+// ProjectExists checks whether an existing Project resource with the given ID exists.
+func ProjectExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("aiven:index/project:Project", id, state, "", opts...)
+}
+
 type projectArgs struct {
 	// Link a project to an existing account using its account ID. This field is deprecated. Use `parentId` instead. To set up proper dependencies please refer to this variable as a reference.
 	//

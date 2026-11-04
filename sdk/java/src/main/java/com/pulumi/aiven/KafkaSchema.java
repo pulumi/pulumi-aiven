@@ -38,38 +38,38 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var kafka_schema1 = new KafkaSchema("kafka-schema1", KafkaSchemaArgs.builder()
  *             .project(kafka_schemas_project1.get("project"))
  *             .serviceName(kafka_service1.get("serviceName"))
  *             .subjectName("kafka-schema1")
  *             .compatibilityLevel("FORWARD")
  *             .schema("""
- *     {
- *       \"doc\": \"example\",
- *       \"fields\": [
- *         {
- *           \"default\": 5,
- *           \"doc\": \"my test number\",
- *           \"name\": \"test\",
- *           \"namespace\": \"test\",
- *           \"type\": \"int\"
- *         }
+ *     }{{@code
+ *       }&#92;{@code "doc}&#92;{@code ": }&#92;{@code "example}&#92;{@code ",
+ *       }&#92;{@code "fields}&#92;{@code ": [
+ *         }{{@code
+ *           }&#92;{@code "default}&#92;{@code ": 5,
+ *           }&#92;{@code "doc}&#92;{@code ": }&#92;{@code "my test number}&#92;{@code ",
+ *           }&#92;{@code "name}&#92;{@code ": }&#92;{@code "test}&#92;{@code ",
+ *           }&#92;{@code "namespace}&#92;{@code ": }&#92;{@code "test}&#92;{@code ",
+ *           }&#92;{@code "type}&#92;{@code ": }&#92;{@code "int}&#92;{@code "
+ *         }}{@code
  *       ],
- *       \"name\": \"example\",
- *       \"namespace\": \"example\",
- *       \"type\": \"record\"
- *     }
+ *       }&#92;{@code "name}&#92;{@code ": }&#92;{@code "example}&#92;{@code ",
+ *       }&#92;{@code "namespace}&#92;{@code ": }&#92;{@code "example}&#92;{@code ",
+ *       }&#92;{@code "type}&#92;{@code ": }&#92;{@code "record}&#92;{@code "
+ *     }}{@code
  *             """)
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

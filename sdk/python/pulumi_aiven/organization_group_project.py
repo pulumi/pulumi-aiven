@@ -323,6 +323,20 @@ class OrganizationGroupProject(pulumi.CustomResource):
         __props__.__dict__["timeouts"] = timeouts
         return OrganizationGroupProject(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            role: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['OrganizationGroupProjectTimeoutsArgs', 'OrganizationGroupProjectTimeoutsArgsDict', 'outputs.OrganizationGroupProjectTimeouts']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["groupId"] = group_id
+        __props__["project"] = project
+        __props__["role"] = role
+        __props__["timeouts"] = timeouts
+        return pulumi.runtime.exists_resource(None, 'aiven:index/organizationGroupProject:OrganizationGroupProject', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="groupId")
     def group_id(self) -> pulumi.Output[_builtins.str]:

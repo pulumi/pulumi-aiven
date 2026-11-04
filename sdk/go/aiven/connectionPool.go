@@ -186,6 +186,12 @@ func (ConnectionPoolState) ElementType() reflect.Type {
 	return reflect.TypeOf((*connectionPoolState)(nil)).Elem()
 }
 
+// ConnectionPoolExists checks whether an existing ConnectionPool resource with the given ID exists.
+func ConnectionPoolExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ConnectionPoolState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("aiven:index/connectionPool:ConnectionPool", id, state, "", opts...)
+}
+
 type connectionPoolArgs struct {
 	// Service database name. Maximum length: `63`. Changing this property forces recreation of the resource.
 	DatabaseName string `pulumi:"databaseName"`

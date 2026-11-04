@@ -20,11 +20,10 @@ public final class GetKafkaKafkaUserConfigTieredStorage {
     /**
      * @return Local cache configuration
      * 
-     * @deprecated
-     * This property is deprecated.
+     * @deprecated This property is deprecated.
      * 
      */
-    @Deprecated /* This property is deprecated. */
+    @Deprecated
     private @Nullable GetKafkaKafkaUserConfigTieredStorageLocalCache localCache;
 
     private GetKafkaKafkaUserConfigTieredStorage() {}
@@ -38,11 +37,10 @@ public final class GetKafkaKafkaUserConfigTieredStorage {
     /**
      * @return Local cache configuration
      * 
-     * @deprecated
-     * This property is deprecated.
+     * @deprecated This property is deprecated.
      * 
      */
-    @Deprecated /* This property is deprecated. */
+    @Deprecated
     public Optional<GetKafkaKafkaUserConfigTieredStorageLocalCache> localCache() {
         return Optional.ofNullable(this.localCache);
     }

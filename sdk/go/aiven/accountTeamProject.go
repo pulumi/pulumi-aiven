@@ -144,6 +144,12 @@ func (AccountTeamProjectState) ElementType() reflect.Type {
 	return reflect.TypeOf((*accountTeamProjectState)(nil)).Elem()
 }
 
+// AccountTeamProjectExists checks whether an existing AccountTeamProject resource with the given ID exists.
+func AccountTeamProjectExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AccountTeamProjectState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("aiven:index/accountTeamProject:AccountTeamProject", id, state, "", opts...)
+}
+
 type accountTeamProjectArgs struct {
 	// The unique account id
 	AccountId string `pulumi:"accountId"`

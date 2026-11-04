@@ -446,6 +446,28 @@ class UpgradeStep(pulumi.CustomResource):
         __props__.__dict__["timeouts"] = timeouts
         return UpgradeStep(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            auto_validation_delay_days: pulumi.Input[Optional[_builtins.int]] = None,
+            destination_project_name: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_service_name: pulumi.Input[Optional[_builtins.str]] = None,
+            organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+            source_project_name: pulumi.Input[Optional[_builtins.str]] = None,
+            source_service_name: pulumi.Input[Optional[_builtins.str]] = None,
+            step_id: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['UpgradeStepTimeoutsArgs', 'UpgradeStepTimeoutsArgsDict', 'outputs.UpgradeStepTimeouts']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["autoValidationDelayDays"] = auto_validation_delay_days
+        __props__["destinationProjectName"] = destination_project_name
+        __props__["destinationServiceName"] = destination_service_name
+        __props__["organizationId"] = organization_id
+        __props__["sourceProjectName"] = source_project_name
+        __props__["sourceServiceName"] = source_service_name
+        __props__["stepId"] = step_id
+        __props__["timeouts"] = timeouts
+        return pulumi.runtime.exists_resource(None, 'aiven:index/upgradeStep:UpgradeStep', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="autoValidationDelayDays")
     def auto_validation_delay_days(self) -> pulumi.Output[_builtins.int]:

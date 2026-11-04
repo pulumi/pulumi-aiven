@@ -236,6 +236,12 @@ func (KafkaConnectCustomPluginFileState) ElementType() reflect.Type {
 	return reflect.TypeOf((*kafkaConnectCustomPluginFileState)(nil)).Elem()
 }
 
+// KafkaConnectCustomPluginFileExists checks whether an existing KafkaConnectCustomPluginFile resource with the given ID exists.
+func KafkaConnectCustomPluginFileExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *KafkaConnectCustomPluginFileState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("aiven:index/kafkaConnectCustomPluginFile:KafkaConnectCustomPluginFile", id, state, "", opts...)
+}
+
 type kafkaConnectCustomPluginFileArgs struct {
 	// MIME type of the plugin file being uploaded. Use 'application/java-archive' for a single JAR file or 'application/zip' for a ZIP plugin bundle. Defaults to 'application/java-archive' when omitted. The possible values are `application/java-archive` and `application/zip`. Changing this property forces recreation of the resource.
 	ContentType *string `pulumi:"contentType"`

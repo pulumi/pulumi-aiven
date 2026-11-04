@@ -312,6 +312,24 @@ class OrganizationalUnit(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return OrganizationalUnit(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['OrganizationalUnitTimeoutsArgs', 'OrganizationalUnitTimeoutsArgsDict', 'outputs.OrganizationalUnitTimeouts']]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["createTime"] = create_time
+        __props__["name"] = name
+        __props__["parentId"] = parent_id
+        __props__["tenantId"] = tenant_id
+        __props__["timeouts"] = timeouts
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'aiven:index/organizationalUnit:OrganizationalUnit', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:

@@ -18,22 +18,20 @@ public final class KafkaKafkaUserConfigTieredStorageLocalCacheArgs extends com.p
     /**
      * Local cache size in bytes. Example: `1073741824`.
      * 
-     * @deprecated
-     * This property is deprecated.
+     * @deprecated This property is deprecated.
      * 
      */
-    @Deprecated /* This property is deprecated. */
+    @Deprecated
     @Import(name="size")
     private @Nullable Output<Integer> size;
 
     /**
      * @return Local cache size in bytes. Example: `1073741824`.
      * 
-     * @deprecated
-     * This property is deprecated.
+     * @deprecated This property is deprecated.
      * 
      */
-    @Deprecated /* This property is deprecated. */
+    @Deprecated
     public Optional<Output<Integer>> size() {
         return Optional.ofNullable(this.size);
     }
@@ -67,11 +65,10 @@ public final class KafkaKafkaUserConfigTieredStorageLocalCacheArgs extends com.p
          * 
          * @return builder
          * 
-         * @deprecated
-         * This property is deprecated.
+         * @deprecated This property is deprecated.
          * 
          */
-        @Deprecated /* This property is deprecated. */
+        @Deprecated
         public Builder size(@Nullable Output<Integer> size) {
             $.size = size;
             return this;
@@ -82,11 +79,10 @@ public final class KafkaKafkaUserConfigTieredStorageLocalCacheArgs extends com.p
          * 
          * @return builder
          * 
-         * @deprecated
-         * This property is deprecated.
+         * @deprecated This property is deprecated.
          * 
          */
-        @Deprecated /* This property is deprecated. */
+        @Deprecated
         public Builder size(Integer size) {
             return size(Output.of(size));
         }

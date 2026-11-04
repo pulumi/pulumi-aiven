@@ -182,6 +182,12 @@ func (AccountAuthenticationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*accountAuthenticationState)(nil)).Elem()
 }
 
+// AccountAuthenticationExists checks whether an existing AccountAuthentication resource with the given ID exists.
+func AccountAuthenticationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AccountAuthenticationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("aiven:index/accountAuthentication:AccountAuthentication", id, state, "", opts...)
+}
+
 type accountAuthenticationArgs struct {
 	// The unique id of the account.
 	AccountId string `pulumi:"accountId"`

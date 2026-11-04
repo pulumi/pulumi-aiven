@@ -81,11 +81,10 @@ public class BillingGroup extends com.pulumi.resources.CustomResource {
     /**
      * Account ID. Maximum length: `36`. **Deprecated**: Use `parentId` instead. This field will be removed in the next major release.
      * 
-     * @deprecated
-     * Use `parentId` instead. This field will be removed in the next major release.
+     * @deprecated Use `parentId` instead. This field will be removed in the next major release.
      * 
      */
-    @Deprecated /* Use `parentId` instead. This field will be removed in the next major release. */
+    @Deprecated
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 

@@ -674,6 +674,34 @@ class KafkaTopic(pulumi.CustomResource):
         __props__.__dict__["topic_name"] = topic_name
         return KafkaTopic(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            config: pulumi.Input[Optional[Union['KafkaTopicConfigArgs', 'KafkaTopicConfigArgsDict', 'outputs.KafkaTopicConfig']]] = None,
+            owner_user_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            partitions: pulumi.Input[Optional[_builtins.int]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            replication: pulumi.Input[Optional[_builtins.int]] = None,
+            service_name: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KafkaTopicTagArgs', 'KafkaTopicTagArgsDict', 'outputs.KafkaTopicTag']]]]] = None,
+            termination_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+            timeouts: pulumi.Input[Optional[Union['KafkaTopicTimeoutsArgs', 'KafkaTopicTimeoutsArgsDict', 'outputs.KafkaTopicTimeouts']]] = None,
+            topic_description: pulumi.Input[Optional[_builtins.str]] = None,
+            topic_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["config"] = config
+        __props__["ownerUserGroupId"] = owner_user_group_id
+        __props__["partitions"] = partitions
+        __props__["project"] = project
+        __props__["replication"] = replication
+        __props__["serviceName"] = service_name
+        __props__["tags"] = tags
+        __props__["terminationProtection"] = termination_protection
+        __props__["timeouts"] = timeouts
+        __props__["topicDescription"] = topic_description
+        __props__["topicName"] = topic_name
+        return pulumi.runtime.exists_resource(None, 'aiven:index/kafkaTopic:KafkaTopic', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def config(self) -> pulumi.Output[Optional['outputs.KafkaTopicConfig']]:

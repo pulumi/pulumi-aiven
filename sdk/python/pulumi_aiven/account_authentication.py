@@ -739,6 +739,48 @@ class AccountAuthentication(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return AccountAuthentication(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            authentication_id: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_join_team_id: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            saml_acs_url: pulumi.Input[Optional[_builtins.str]] = None,
+            saml_certificate: pulumi.Input[Optional[_builtins.str]] = None,
+            saml_digest_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+            saml_entity_id: pulumi.Input[Optional[_builtins.str]] = None,
+            saml_field_mapping: pulumi.Input[Optional[Union['AccountAuthenticationSamlFieldMappingArgs', 'AccountAuthenticationSamlFieldMappingArgsDict', 'outputs.AccountAuthenticationSamlFieldMapping']]] = None,
+            saml_idp_login_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+            saml_idp_url: pulumi.Input[Optional[_builtins.str]] = None,
+            saml_metadata_url: pulumi.Input[Optional[_builtins.str]] = None,
+            saml_signature_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+            saml_variant: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["authenticationId"] = authentication_id
+        __props__["autoJoinTeamId"] = auto_join_team_id
+        __props__["createTime"] = create_time
+        __props__["enabled"] = enabled
+        __props__["name"] = name
+        __props__["samlAcsUrl"] = saml_acs_url
+        __props__["samlCertificate"] = saml_certificate
+        __props__["samlDigestAlgorithm"] = saml_digest_algorithm
+        __props__["samlEntityId"] = saml_entity_id
+        __props__["samlFieldMapping"] = saml_field_mapping
+        __props__["samlIdpLoginAllowed"] = saml_idp_login_allowed
+        __props__["samlIdpUrl"] = saml_idp_url
+        __props__["samlMetadataUrl"] = saml_metadata_url
+        __props__["samlSignatureAlgorithm"] = saml_signature_algorithm
+        __props__["samlVariant"] = saml_variant
+        __props__["type"] = type
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'aiven:index/accountAuthentication:AccountAuthentication', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:

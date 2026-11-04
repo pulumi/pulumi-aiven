@@ -175,6 +175,12 @@ func (OpensearchUserState) ElementType() reflect.Type {
 	return reflect.TypeOf((*opensearchUserState)(nil)).Elem()
 }
 
+// OpensearchUserExists checks whether an existing OpensearchUser resource with the given ID exists.
+func OpensearchUserExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OpensearchUserState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("aiven:index/opensearchUser:OpensearchUser", id, state, "", opts...)
+}
+
 type opensearchUserArgs struct {
 	// The password of the service user (auto-generated if not provided). The field conflicts with `passwordWo`. Length must be between `8` and `256`.
 	Password *string `pulumi:"password"`

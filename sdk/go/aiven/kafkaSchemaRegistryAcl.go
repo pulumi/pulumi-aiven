@@ -155,6 +155,12 @@ func (KafkaSchemaRegistryAclState) ElementType() reflect.Type {
 	return reflect.TypeOf((*kafkaSchemaRegistryAclState)(nil)).Elem()
 }
 
+// KafkaSchemaRegistryAclExists checks whether an existing KafkaSchemaRegistryAcl resource with the given ID exists.
+func KafkaSchemaRegistryAclExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *KafkaSchemaRegistryAclState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("aiven:index/kafkaSchemaRegistryAcl:KafkaSchemaRegistryAcl", id, state, "", opts...)
+}
+
 type kafkaSchemaRegistryAclArgs struct {
 	// ACL entry for Schema Registry. The possible values are `schemaRegistryRead` and `schemaRegistryWrite`. Changing this property forces recreation of the resource.
 	Permission string `pulumi:"permission"`

@@ -1098,6 +1098,72 @@ class OpenSearch(pulumi.CustomResource):
         __props__.__dict__["termination_protection"] = termination_protection
         return OpenSearch(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            additional_disk_space: pulumi.Input[Optional[_builtins.str]] = None,
+            cloud_name: pulumi.Input[Optional[_builtins.str]] = None,
+            cmk_id: pulumi.Input[Optional[_builtins.str]] = None,
+            components: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OpenSearchComponentArgs', 'OpenSearchComponentArgsDict', 'outputs.OpenSearchComponent']]]]] = None,
+            disk_space: pulumi.Input[Optional[_builtins.str]] = None,
+            disk_space_cap: pulumi.Input[Optional[_builtins.str]] = None,
+            disk_space_default: pulumi.Input[Optional[_builtins.str]] = None,
+            disk_space_step: pulumi.Input[Optional[_builtins.str]] = None,
+            disk_space_used: pulumi.Input[Optional[_builtins.str]] = None,
+            maintenance_window_dow: pulumi.Input[Optional[_builtins.str]] = None,
+            maintenance_window_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            maintenance_window_time: pulumi.Input[Optional[_builtins.str]] = None,
+            opensearch_user_config: pulumi.Input[Optional[Union['OpenSearchOpensearchUserConfigArgs', 'OpenSearchOpensearchUserConfigArgsDict', 'outputs.OpenSearchOpensearchUserConfig']]] = None,
+            opensearches: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OpenSearchOpensearchArgs', 'OpenSearchOpensearchArgsDict', 'outputs.OpenSearchOpensearch']]]]] = None,
+            plan: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            project_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            service_host: pulumi.Input[Optional[_builtins.str]] = None,
+            service_integrations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OpenSearchServiceIntegrationArgs', 'OpenSearchServiceIntegrationArgsDict', 'outputs.OpenSearchServiceIntegration']]]]] = None,
+            service_name: pulumi.Input[Optional[_builtins.str]] = None,
+            service_password: pulumi.Input[Optional[_builtins.str]] = None,
+            service_port: pulumi.Input[Optional[_builtins.int]] = None,
+            service_type: pulumi.Input[Optional[_builtins.str]] = None,
+            service_uri: pulumi.Input[Optional[_builtins.str]] = None,
+            service_username: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            static_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OpenSearchTagArgs', 'OpenSearchTagArgsDict', 'outputs.OpenSearchTag']]]]] = None,
+            tech_emails: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OpenSearchTechEmailArgs', 'OpenSearchTechEmailArgsDict', 'outputs.OpenSearchTechEmail']]]]] = None,
+            termination_protection: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["additionalDiskSpace"] = additional_disk_space
+        __props__["cloudName"] = cloud_name
+        __props__["cmkId"] = cmk_id
+        __props__["components"] = components
+        __props__["diskSpace"] = disk_space
+        __props__["diskSpaceCap"] = disk_space_cap
+        __props__["diskSpaceDefault"] = disk_space_default
+        __props__["diskSpaceStep"] = disk_space_step
+        __props__["diskSpaceUsed"] = disk_space_used
+        __props__["maintenanceWindowDow"] = maintenance_window_dow
+        __props__["maintenanceWindowEnabled"] = maintenance_window_enabled
+        __props__["maintenanceWindowTime"] = maintenance_window_time
+        __props__["opensearchUserConfig"] = opensearch_user_config
+        __props__["opensearches"] = opensearches
+        __props__["plan"] = plan
+        __props__["project"] = project
+        __props__["projectVpcId"] = project_vpc_id
+        __props__["serviceHost"] = service_host
+        __props__["serviceIntegrations"] = service_integrations
+        __props__["serviceName"] = service_name
+        __props__["servicePassword"] = service_password
+        __props__["servicePort"] = service_port
+        __props__["serviceType"] = service_type
+        __props__["serviceUri"] = service_uri
+        __props__["serviceUsername"] = service_username
+        __props__["state"] = state
+        __props__["staticIps"] = static_ips
+        __props__["tags"] = tags
+        __props__["techEmails"] = tech_emails
+        __props__["terminationProtection"] = termination_protection
+        return pulumi.runtime.exists_resource(None, 'aiven:index/openSearch:OpenSearch', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="additionalDiskSpace")
     def additional_disk_space(self) -> pulumi.Output[_builtins.str]:

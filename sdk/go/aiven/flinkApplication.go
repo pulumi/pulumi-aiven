@@ -156,6 +156,12 @@ func (FlinkApplicationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*flinkApplicationState)(nil)).Elem()
 }
 
+// FlinkApplicationExists checks whether an existing FlinkApplication resource with the given ID exists.
+func FlinkApplicationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FlinkApplicationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("aiven:index/flinkApplication:FlinkApplication", id, state, "", opts...)
+}
+
 type flinkApplicationArgs struct {
 	// Application name. Maximum length: `128`.
 	Name *string `pulumi:"name"`

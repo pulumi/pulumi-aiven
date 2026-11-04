@@ -32,11 +32,10 @@ public final class GetOrganizationApplicationUserResult {
     /**
      * @return Alters super admin state of the organization application user. The default value is `false`. **Deprecated**: This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `aiven.OrganizationPermission` resource.
      * 
-     * @deprecated
-     * This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `aiven.OrganizationPermission` resource.
+     * @deprecated This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `aiven.OrganizationPermission` resource.
      * 
      */
-    @Deprecated /* This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `aiven.OrganizationPermission` resource. */
+    @Deprecated
     private Boolean isSuperAdmin;
     /**
      * @return Name.
@@ -80,11 +79,10 @@ public final class GetOrganizationApplicationUserResult {
     /**
      * @return Alters super admin state of the organization application user. The default value is `false`. **Deprecated**: This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `aiven.OrganizationPermission` resource.
      * 
-     * @deprecated
-     * This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `aiven.OrganizationPermission` resource.
+     * @deprecated This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `aiven.OrganizationPermission` resource.
      * 
      */
-    @Deprecated /* This field is no longer accepted by the API. For administrative tasks, assign application users the organization admin role instead using the `aiven.OrganizationPermission` resource. */
+    @Deprecated
     public Boolean isSuperAdmin() {
         return this.isSuperAdmin;
     }

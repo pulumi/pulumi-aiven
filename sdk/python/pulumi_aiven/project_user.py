@@ -292,6 +292,20 @@ class ProjectUser(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         return ProjectUser(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            accepted: pulumi.Input[Optional[_builtins.bool]] = None,
+            email: pulumi.Input[Optional[_builtins.str]] = None,
+            member_type: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accepted"] = accepted
+        __props__["email"] = email
+        __props__["memberType"] = member_type
+        __props__["project"] = project
+        return pulumi.runtime.exists_resource(None, 'aiven:index/projectUser:ProjectUser', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def accepted(self) -> pulumi.Output[_builtins.bool]:

@@ -184,6 +184,12 @@ func (ProjectVpcState) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectVpcState)(nil)).Elem()
 }
 
+// ProjectVpcExists checks whether an existing ProjectVpc resource with the given ID exists.
+func ProjectVpcExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProjectVpcState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("aiven:index/projectVpc:ProjectVpc", id, state, "", opts...)
+}
+
 type projectVpcArgs struct {
 	// Target cloud. Maximum length: `256`. Changing this property forces recreation of the resource.
 	CloudName string `pulumi:"cloudName"`

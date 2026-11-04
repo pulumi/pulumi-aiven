@@ -154,6 +154,12 @@ func (AwsVpcPeeringConnectionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*awsVpcPeeringConnectionState)(nil)).Elem()
 }
 
+// AwsVpcPeeringConnectionExists checks whether an existing AwsVpcPeeringConnection resource with the given ID exists.
+func AwsVpcPeeringConnectionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AwsVpcPeeringConnectionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("aiven:index/awsVpcPeeringConnection:AwsVpcPeeringConnection", id, state, "", opts...)
+}
+
 type awsVpcPeeringConnectionArgs struct {
 	// AWS account ID. Changing this property forces recreation of the resource.
 	AwsAccountId string `pulumi:"awsAccountId"`

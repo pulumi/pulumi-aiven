@@ -17,11 +17,10 @@ public final class GetBillingGroupResult {
     /**
      * @return Account ID. **Deprecated**: Use `parentId` instead. This field will be removed in the next major release.
      * 
-     * @deprecated
-     * Use `parentId` instead. This field will be removed in the next major release.
+     * @deprecated Use `parentId` instead. This field will be removed in the next major release.
      * 
      */
-    @Deprecated /* Use `parentId` instead. This field will be removed in the next major release. */
+    @Deprecated
     private String accountId;
     /**
      * @return Address lines 1 and 2. For example, street, PO box, or building.
@@ -114,11 +113,10 @@ public final class GetBillingGroupResult {
     /**
      * @return Account ID. **Deprecated**: Use `parentId` instead. This field will be removed in the next major release.
      * 
-     * @deprecated
-     * Use `parentId` instead. This field will be removed in the next major release.
+     * @deprecated Use `parentId` instead. This field will be removed in the next major release.
      * 
      */
-    @Deprecated /* Use `parentId` instead. This field will be removed in the next major release. */
+    @Deprecated
     public String accountId() {
         return this.accountId;
     }
